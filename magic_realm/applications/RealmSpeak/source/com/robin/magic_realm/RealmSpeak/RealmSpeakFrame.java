@@ -405,6 +405,9 @@ public class RealmSpeakFrame extends JFrame {
 		scroller.addLine(new ScrollLine("Original Map Graphics",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("George Goebel",listing,listingColor));
 		scroller.addLine(new ScrollLine());
+		scroller.addLine(new ScrollLine("Legendary Map Graphics",subheader,subheaderColor));
+		scroller.addLine(new ScrollLine("Casey Benn",listing,listingColor));
+		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Magic Realm Resources",header,headerColor,Color.black,2));
 		scroller.addLine(new ScrollLine("3rd Edition Manual",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Teresa Michelsen",listing,listingColor));

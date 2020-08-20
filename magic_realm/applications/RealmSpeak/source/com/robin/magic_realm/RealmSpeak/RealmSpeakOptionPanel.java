@@ -46,6 +46,9 @@ public class RealmSpeakOptionPanel extends JDialog {
 	protected JRadioButton frenzelChitsOption;
 	protected JCheckBox monsterNumbersOption;
 	
+	protected JRadioButton classicTilesOption;
+	protected JRadioButton legendaryTilesOption;
+
 	protected JCheckBox mapSliderOption;
 	protected JCheckBox highlightClearingNumbersOption;
 	protected JCheckBox showSeasonIconOption;
@@ -116,6 +119,15 @@ public class RealmSpeakOptionPanel extends JDialog {
 				classicChitsOption.setSelected(true);
 				break;
 		}
+
+		switch(options.getOptions().getInt(RealmSpeakOptions.TILES_DISPLAY_STYLE)) {
+			case RealmComponent.DISPLAY_TILES_STYLE_LEGENDARY:
+				legendaryTilesOption.setSelected(true);
+				break;
+			default:
+				classicTilesOption.setSelected(true);
+				break;
+		}
 		
 		mapSliderOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.MAP_SLIDER));
 		highlightClearingNumbersOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.HIGHLIGHT_CLEARING_NUMBERS));
@@ -164,6 +176,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 	private void saveOptions() {
 		options.getOptions().set(RealmSpeakOptions.ACTION_ICONS,getActionIconState());
 		options.getOptions().set(RealmSpeakOptions.CHIT_DISPLAY_STYLE,getChitDisplayStyle());
+		options.getOptions().set(RealmSpeakOptions.TILES_DISPLAY_STYLE,getTilesDisplayStyle());
 		options.getOptions().set(RealmSpeakOptions.METAL_LNF,crossPlatformLookAndFeelOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.MAP_SLIDER,mapSliderOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.HIGHLIGHT_CLEARING_NUMBERS,highlightClearingNumbersOption.isSelected());
@@ -215,6 +228,12 @@ public class RealmSpeakOptionPanel extends JDialog {
 		}
 		return RealmComponent.DISPLAY_STYLE_CLASSIC;
 	}
+	private int getTilesDisplayStyle() {
+		if (legendaryTilesOption.isSelected()) {
+			return RealmComponent.DISPLAY_TILES_STYLE_LEGENDARY;
+		}
+		return RealmComponent.DISPLAY_TILES_STYLE_CLASSIC;
+	}
 	private int getSelectedNumberOfChatLines() {
 		for (int i=0;i<showChatLinesOption.length;i++) {
 			if (showChatLinesOption[i].isSelected()) {
@@ -243,6 +262,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		left.add(getSoundOptionPanel());
 		left.add(getActionIconOptions());
 		left.add(getChitOptionsPanel());
+		left.add(getTilesOptionsPanel());
 		left.add(getMapOptionsPanel());
 		left.add(Box.createVerticalGlue());
 		center.add(left);
@@ -349,6 +369,18 @@ public class RealmSpeakOptionPanel extends JDialog {
 		panel.add(frenzelChitsOption);
 		monsterNumbersOption = new JCheckBox("Show Monster Numbers");
 		panel.add(monsterNumbersOption);
+		return panel;
+	}
+	private JPanel getTilesOptionsPanel() {
+		JPanel panel = new JPanel(new GridLayout(2,1));
+		panel.setBorder(BorderFactory.createTitledBorder("Game Tiles"));
+		ButtonGroup group = new ButtonGroup();
+		classicTilesOption = new JRadioButton("Classic Tiles");
+		group.add(classicTilesOption);
+		panel.add(classicTilesOption);
+		legendaryTilesOption = new JRadioButton("Legendary Realm");
+		group.add(legendaryTilesOption);
+		panel.add(legendaryTilesOption);
 		return panel;
 	}
 	private JPanel getMapOptionsPanel() {

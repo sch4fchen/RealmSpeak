@@ -38,8 +38,11 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	public static final int DISPLAY_STYLE_CLASSIC = 0;
 	public static final int DISPLAY_STYLE_COLOR = 1;
 	public static final int DISPLAY_STYLE_FRENZEL = 2;
-	
 	public static int displayStyle = DISPLAY_STYLE_COLOR;
+
+	public static final int DISPLAY_TILES_STYLE_CLASSIC = 0;
+	public static final int DISPLAY_TILES_STYLE_LEGENDARY = 1;
+	public static int displayTilesStyle = DISPLAY_TILES_STYLE_CLASSIC;	
 	
 	public static boolean isDisplayStyleColor() {
 		return displayStyle==DISPLAY_STYLE_COLOR;
@@ -817,6 +820,9 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 			comp = new FlyChitComponent(obj);
 		}
 		else if (obj.hasThisAttribute(TILE)) {
+			if (displayTilesStyle == DISPLAY_TILES_STYLE_LEGENDARY) {
+				obj.setThisAttribute("folder", "tiles_legendary");
+			}
 			comp = new TileComponent(obj);
 		}
 		else if (obj.hasThisAttribute(GOLD_SPECIAL)) {

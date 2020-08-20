@@ -41,6 +41,7 @@ public class RealmSpeakOptions {
 	public static final String METAL_LNF = "metalLnf";
 	public static final String ACTION_ICONS = "actionIcons";
 	public static final String CHIT_DISPLAY_STYLE = "chitDisplayStyle";
+	public static final String TILES_DISPLAY_STYLE = "tilesDisplayStyle";
 	public static final String MAP_SLIDER = "mapSlider";
 	public static final String HIGHLIGHT_CLEARING_NUMBERS = "hClearN";
 	public static final String SHOW_SEASON_ICON = "sSeasI";
@@ -77,6 +78,14 @@ public class RealmSpeakOptions {
 				break;
 			default:
 				RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_CLASSIC;
+				break;
+		}
+		switch(options.getInt(RealmSpeakOptions.TILES_DISPLAY_STYLE)) {
+			case RealmComponent.DISPLAY_TILES_STYLE_LEGENDARY:
+				RealmComponent.displayTilesStyle = RealmComponent.DISPLAY_TILES_STYLE_LEGENDARY;
+				break;
+			default:
+				RealmComponent.displayTilesStyle = RealmComponent.DISPLAY_TILES_STYLE_CLASSIC;
 				break;
 		}
 		MonsterChitComponent.showMonsterNumbers = options.getBoolean(MONSTER_NUMBERS);
