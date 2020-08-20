@@ -1,4 +1,23 @@
+Version 1.1.3.1 - Changes since 1.1.2.0
+NEW FEATURES:
+# Realm GM Features added:
+	 - Edit character relationships
+	 - Modify damage state of armor
+	 - Show damage state of armor
+	 - Include warning/sound chits in GamePieces (allow you to move and remove)
+	 - Ability to toggle alerted state of weapons
+	 - Feature to allow breaking a spell on a character
+	 - Show battling monsters and natives
+	 - Feature to force peace on battling monsters and natives
+	 - Filters added to game pieces table, so you can work with just the pieces you want
+	 - Ability to revert changes between saves
+	 - Setup Card Natives appear in Game Pieces table now
+	 - Right-click map to flip tiles (first option in right-click menu)
+	 - Feature to add Starting/Recorded spells to a character (completely unrestricted)
+	 - Add/Remove a permanent source of color magic to a character 
+
 Version 1.1.2.0 - Changes since 1.1.1.0
+QUEST UPDATE:
 NEW FEATURES:
 # BUG 1769 - Added support for CTRL-Click anywhere there is a right-click (for Mac-users with single button mice)
 BUGS/ISSUES:

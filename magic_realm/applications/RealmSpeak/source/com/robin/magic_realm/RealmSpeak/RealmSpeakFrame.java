@@ -386,6 +386,9 @@ public class RealmSpeakFrame extends JFrame {
 		scroller.addLine(new ScrollLine("Book of Quests",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Jay Richardson",listing,listingColor));
 		scroller.addLine(new ScrollLine());
+		scroller.addLine(new ScrollLine("More community quests",subheader,subheaderColor));
+		scroller.addLine(new ScrollLine("James Dean",listing,listingColor));
+		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Magic Realm the Boardgame",header,headerColor,Color.black,2));
 		scroller.addLine(new ScrollLine("Publisher",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Avalon Hill 1979",listing,listingColor));
@@ -497,7 +500,7 @@ public class RealmSpeakFrame extends JFrame {
 		text.append("<font size=\"+1\">Version "+Constants.REALM_SPEAK_VERSION+"</font></font><br><br>");
 		text.append("<table>");
 		text.append("<tr><td align=\"right\"><b>Compiled Java Version:</b></td><td border=1 align=\"center\" width=150>");
-		text.append("1.5.0_19");
+		text.append("1.8.0_261");
 		text.append("</td></tr><tr><td align=\"right\"><b>Current Java Version:</b></td><td border=1 align=\"center\" width=150>");
 		text.append(System.getProperty("java.version"));
 		text.append("</td></tr><tr><td align=\"right\"><b>Processing Power:</b></td><td border=1 align=\"center\" width=150>");
