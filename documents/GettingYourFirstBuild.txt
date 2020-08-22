@@ -41,3 +41,10 @@ WARNING:  BE VERY CAREFUL EDITING THE PATH VARIABLE!!  IF YOU DELETE SOMETHING I
 
 Robin (aka DewKid)
 
+
+
+Hints (by Richard Rambach aka sch4fchen):
+First time to run the game, you need to copy the .jar files from "libraries" directory, to "products" directory.
+Quests (*.rsqst) must be copied into the folder .../products/quests" (without subdirectory).
+Custom characters (*.rschar) must be copied into the folder .../products/characters".
+Developer hint: I used Eclipse as IDE, building with ant 1.10.8 and jdk-8u261 = 1.8.0_261
