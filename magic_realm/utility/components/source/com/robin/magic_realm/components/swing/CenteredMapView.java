@@ -357,6 +357,15 @@ public class CenteredMapView extends JComponent {
 	public boolean isTileAtPosition(Point pos) {
 		return mapGrid.get(pos)!=null;
 	}
+	public void updateTilesStyle() {
+		Collection tileObjects = RealmObjectMaster.getRealmObjectMaster(gameData).getTileObjects();
+		for (Iterator i=tileObjects.iterator();i.hasNext();) {
+			GameObject obj = (GameObject)i.next();
+			TileComponent tc = (TileComponent)RealmComponent.getRealmComponent(obj);
+			tc.initFilepaths();
+			tc.doRepaint();
+		}
+	}
 	public void updateGrid() {
 		mapGrid.clear();
 		planningMapGrid.clear();

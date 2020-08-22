@@ -84,6 +84,7 @@ public class RealmInspectorFrame extends RealmSpeakInternalFrame {
 		setTitle(sb.toString());
 		map.setShowEmbellishments(game.getGameStarted());
 		map.setReplot(true);
+		map.updateTilesStyle();
 		map.repaint();
 	}
 	private void initComponents() {

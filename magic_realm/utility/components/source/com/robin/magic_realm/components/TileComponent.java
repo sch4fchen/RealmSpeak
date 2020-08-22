@@ -288,21 +288,26 @@ public class TileComponent extends ChitComponent {
 		return edge;
 	}
 
-	protected void initSide(int side, Hashtable hash) {
-
+	public void initFilepaths() {
+		initFilepath(NORMAL_INDEX);
+		initFilepath(ENCHANTED_INDEX);
+	}
+	
+	protected void initFilepath(int side) {
 		String folder = gameObject.getThisAttribute("folder");
 		String imageName = gameObject.getThisAttribute("image");
-
 		// if (imageName.equals("borderland")) {
 		// imageName = "ambush"; // XXX Just to see it ...
 		// }
-		String tileSideName = side == NORMAL_INDEX ? "green" : "enchanted";
-
 		String imageEnd = side == NORMAL_INDEX ? "1" : "-e1";
 		String ext = ".gif";
-		String folderPath = "images/"+folder+"/";
+		String folderPath = "images/"+folder;
 		String fullImage = imageName + imageEnd + ext;
 		tileImagePath[side] = new HashMap<String,String>();
+		if (RealmComponent.displayTilesStyle == DISPLAY_TILES_STYLE_LEGENDARY) {
+			folderPath=folderPath+"_legendary";
+		}
+		folderPath=folderPath+"/";
 		if (calendar!=null) {
 			for (GameObject season:calendar.getAllSeasons()) {
 				String seasonName = season.getName();
@@ -313,9 +318,12 @@ public class TileComponent extends ChitComponent {
 			}
 		}
 		tileImagePath[side].put(DEFAULT_IMAGE_PATH,folderPath+fullImage);
-
-		Hashtable edgePositionHash = getEdgePositionHash();
-
+	}
+	
+	protected void initSide(int side, Hashtable hash) {
+		String tileSideName = side == NORMAL_INDEX ? "green" : "enchanted";
+		initFilepath(side);
+				
 		// Setup clearings
 		Hashtable clearingPositionHash = new Hashtable();
 		clearings[side] = new ArrayList();
@@ -355,6 +363,7 @@ public class TileComponent extends ChitComponent {
 			}
 		}
 		// Setup paths
+		Hashtable edgePositionHash = getEdgePositionHash();
 		paths[side] = new ArrayList();
 		int i = 1;
 		String from;

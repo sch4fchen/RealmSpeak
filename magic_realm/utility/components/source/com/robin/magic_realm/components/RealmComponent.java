@@ -820,9 +820,6 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 			comp = new FlyChitComponent(obj);
 		}
 		else if (obj.hasThisAttribute(TILE)) {
-			if (displayTilesStyle == DISPLAY_TILES_STYLE_LEGENDARY) {
-				obj.setThisAttribute("folder", "tiles_legendary");
-			}
 			comp = new TileComponent(obj);
 		}
 		else if (obj.hasThisAttribute(GOLD_SPECIAL)) {
