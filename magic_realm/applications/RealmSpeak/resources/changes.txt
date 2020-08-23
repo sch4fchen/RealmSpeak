@@ -4,6 +4,7 @@ QUEST UPDATE:
 # New quests (https://boardgamegeek.com/filepage/139595/quests-realmspeaks-expansion-1-version-10)
 NEW FEATURES:
 # Option to change tile style
+# Option to choose alternative tiles in new game menu
 BUGS/ISSUES:
 # Adapted etiles in XnViewMP with colours/brightness/intensity (colours: 0, brightness: -14, intensity: -8) and exposure (saturation: 8)
 

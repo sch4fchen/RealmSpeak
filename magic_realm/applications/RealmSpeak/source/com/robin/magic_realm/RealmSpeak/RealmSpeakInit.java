@@ -83,7 +83,10 @@ public class RealmSpeakInit {
 		
 		// Handle all pre-setup initialization
 		appendNames = new ArrayList<String>();
-		if (hostPrefs.getMixExpansionTilesEnabled()) {
+		if (hostPrefs.getAlternativeTilesEnabled()) {
+			enableAlternativeTilesInLoader(loader);
+		}
+		else if (hostPrefs.getMixExpansionTilesEnabled()) {
 			enableEtilesInLoader(loader);
 		}
 		if (hostPrefs.getMultiBoardEnabled()) {
@@ -164,6 +167,17 @@ public class RealmSpeakInit {
 		for (GameObject go:travelers) {
 			TravelerChitComponent traveler = (TravelerChitComponent)RealmComponent.getRealmComponent(go);
 			traveler.assignTravelerTemplate();
+		}
+	}
+	private void enableAlternativeTilesInLoader(RealmLoader rl) {
+		GamePool tilePool = new GamePool(rl.getData().getGameObjects());
+		ArrayList<GameObject> tiles = tilePool.find("tile");
+		GameObject.stripListKeyVals("this",hostPrefs.getGameKeyVals(),tiles);
+		ArrayList<GameObject> atiles = tilePool.find("a_tile");
+		GameObject.setListKeyVals("this",hostPrefs.getGameKeyVals(),atiles);
+		for (GameObject go:atiles)
+		{
+			go.addThisAttributeListItem("tile", "");
 		}
 	}
 	private void enableEtilesInLoader(RealmLoader rl) {

@@ -44,6 +44,7 @@ public class HostPrefWrapper extends GameObjectWrapper {
 	public static final String ENABLE_AUTOSAVE = "en_autosave";
 	public static final String ENABLE_AUTO_SETUP = "en_autoset";
 	public static final String ENABLE_PLAYER_SETUP = "en_playset";
+	public static final String ALTERNATIVE_TILES = "al_tiles";
 	public static final String MIX_EXPANSION_TILES = "mx_ex_tiles";
 	public static final String INCLUDE_EXPANSION_SPELLS = "inc_ex_spells";
 	public static final String ENABLE_MULTI_BOARD = "en_multbrd";
@@ -123,6 +124,9 @@ public class HostPrefWrapper extends GameObjectWrapper {
 	}
 	public boolean getBoardPlayerSetup() {
 		return getBoolean(ENABLE_PLAYER_SETUP);
+	}
+	public boolean getAlternativeTilesEnabled() {
+		return getBoolean(ALTERNATIVE_TILES);
 	}
 	public boolean getMixExpansionTilesEnabled() {
 		return getBoolean(MIX_EXPANSION_TILES);
@@ -213,6 +217,9 @@ public class HostPrefWrapper extends GameObjectWrapper {
 	}
 	public void setBoardPlayerSetup(boolean val) {
 		setBoolean(ENABLE_PLAYER_SETUP,val);
+	}
+	public void setAlternativeTilesEnabled(boolean val) {
+		setBoolean(ALTERNATIVE_TILES,val);
 	}
 	public void setMixExpansionTilesEnabled(boolean val) {
 		setBoolean(MIX_EXPANSION_TILES,val);

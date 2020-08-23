@@ -92,6 +92,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	protected JCheckBox disableBattles;
 	protected JLabel disableCombatWarning;
 	protected JCheckBox autosaveEnabled;
+	protected JCheckBox alternativeTilesEnabled;
 	protected JCheckBox mixExpansionTilesEnabled;
 	protected JCheckBox includeExpansionSpells;
 	protected JCheckBox includeNewSpells;
@@ -126,6 +127,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		autosaveEnabled.setSelected(hostPrefs.getAutosaveEnabled());
 		boardAutoSetup.setSelected(hostPrefs.getBoardAutoSetup());
 		boardPlayerSetup.setSelected(hostPrefs.getBoardPlayerSetup());
+		alternativeTilesEnabled.setSelected(hostPrefs.getAlternativeTilesEnabled());
 		mixExpansionTilesEnabled.setSelected(hostPrefs.getMixExpansionTilesEnabled());
 		includeExpansionSpells.setSelected(hostPrefs.getIncludeExpansionSpells());
 		includeNewSpells.setSelected(hostPrefs.getIncludeNewSpells());
@@ -133,7 +135,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		multiBoardEnabled.setSelected(hostPrefs.getMultiBoardEnabled());
 		multiBoardCount.setValue(hostPrefs.getMultiBoardCount());
 		minMapRating.setValue(hostPrefs.getMinimumMapRating());
-		vpTimedOption.setSelected(true); // this will be overidden by any other option
+		vpTimedOption.setSelected(true); // this will be overridden by any other option
 		vpEndlessOption.setSelected(hostPrefs.getRequiredVPsOff());
 		questBoqOption.setSelected(hostPrefs.hasPref(Constants.QST_BOOK_OF_QUESTS));
 		questQtrOption.setSelected(hostPrefs.hasPref(Constants.QST_QUEST_CARDS));
@@ -195,6 +197,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		autosaveEnabled.setSelected(prefMan.getBoolean("autosaveEnabled"));
 		boardAutoSetup.setSelected(prefMan.getBoolean("boardAutoSetup"));
 		boardPlayerSetup.setSelected(prefMan.getBoolean("boardPlayerSetup"));
+		alternativeTilesEnabled.setSelected(prefMan.getBoolean("alternativeTilesEnabled"));
 		mixExpansionTilesEnabled.setSelected(prefMan.getBoolean("mixExpansionTilesEnabled"));
 		
 		includeExpansionSpells.setSelected(prefMan.getBoolean("includeExpansionSpells"));
@@ -248,6 +251,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		prefMan.set("autosaveEnabled",autosaveEnabled.isSelected());
 		prefMan.set("boardAutoSetup",boardAutoSetup.isSelected());
 		prefMan.set("boardPlayerSetup",boardPlayerSetup.isSelected());
+		prefMan.set("alternativeTilesEnabled",alternativeTilesEnabled.isSelected());
 		prefMan.set("mixExpansionTilesEnabled",mixExpansionTilesEnabled.isSelected());
 		prefMan.set("includeExpansionSpells",includeExpansionSpells.isSelected());
 		prefMan.set("includeNewSpells", includeNewSpells.isSelected());
@@ -352,6 +356,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		autosaveEnabled.setEnabled(editMode);
 		boardAutoSetup.setEnabled(editMode);
 		boardPlayerSetup.setEnabled(editMode);
+		alternativeTilesEnabled.setEnabled(editMode);
 		mixExpansionTilesEnabled.setEnabled(editMode && variant.getAllowBoardVariants());
 		includeExpansionSpells.setEnabled(editMode && variant.getAllowBoardVariants());
 		includeNewSpells.setEnabled(editMode);
@@ -711,17 +716,26 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			box.add(boardAutoSetup);
 				minMapRating = notifier.getSlider(0,5,0);
 			box.add(Box.createHorizontalGlue());
+			
 		boardSetupBox.add(box);
 			box = group.createLabelLine("Player Pick");
 				boardPlayerSetup = notifier.getRadioButton("(Players build map)");
 				boardSetupOptions.add(boardPlayerSetup);
 			box.add(boardPlayerSetup);
 			box.add(Box.createHorizontalGlue());
+			
+		boardSetupBox.add(box);
+			box = group.createLabelLine("Alternative Tiles");
+				alternativeTilesEnabled = notifier.getCheckBox("");
+			box.add(alternativeTilesEnabled);
+			box.add(Box.createHorizontalGlue());
+			
 		boardSetupBox.add(box);
 			box = group.createLabelLine("Expansion Tiles");
 				mixExpansionTilesEnabled = notifier.getCheckBox("(randomly mixed)");
 			box.add(mixExpansionTilesEnabled);
 			box.add(Box.createHorizontalGlue());
+			
 		boardSetupBox.add(box);
 			box = group.createLabelLine("Expansion Spells");
 				includeExpansionSpells = notifier.getCheckBox("");
@@ -1070,6 +1084,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		disableBattles.setSelected(false);
 		autosaveEnabled.setSelected(true);
 		boardAutoSetup.setSelected(true);
+		alternativeTilesEnabled.setSelected(false);
 		mixExpansionTilesEnabled.setSelected(false);
 		includeExpansionSpells.setSelected(false);
 		includeNewSpells.setSelected(false);
@@ -1150,6 +1165,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		hostPrefs.setAutosaveEnabled(autosaveEnabled.isSelected());
 		hostPrefs.setBoardAutoSetup(boardAutoSetup.isSelected());
 		hostPrefs.setBoardPlayerSetup(boardPlayerSetup.isSelected());
+		hostPrefs.setAlternativeTilesEnabled(alternativeTilesEnabled.isSelected());
 		hostPrefs.setMixExpansionTilesEnabled(mixExpansionTilesEnabled.isSelected() && getSelectedGameVariant().getAllowBoardVariants());
 		hostPrefs.setIncludeExpansionSpells(includeExpansionSpells.isSelected() && getSelectedGameVariant().getAllowBoardVariants());
 		hostPrefs.setIncludeNewSpells(includeNewSpells.isSelected());
