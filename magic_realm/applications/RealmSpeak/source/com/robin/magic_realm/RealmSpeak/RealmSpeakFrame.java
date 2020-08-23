@@ -378,6 +378,7 @@ public class RealmSpeakFrame extends JFrame {
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Code Contributors",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Matt Gardner",listing,listingColor));
+		scroller.addLine(new ScrollLine("Richard",listing,listingColor));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Quest Development and",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Questing the Realm",subheader,subheaderColor));
@@ -404,10 +405,7 @@ public class RealmSpeakFrame extends JFrame {
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Original Map Graphics",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("George Goebel",listing,listingColor));
-		scroller.addLine(new ScrollLine());
-		scroller.addLine(new ScrollLine("Legendary Maptiles Graphics",subheader,subheaderColor));
-		scroller.addLine(new ScrollLine("Casey Benn",listing,listingColor));
-		scroller.addLine(new ScrollLine());
+		
 		scroller.addLine(new ScrollLine("Magic Realm Resources",header,headerColor,Color.black,2));
 		scroller.addLine(new ScrollLine("3rd Edition Manual",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Teresa Michelsen",listing,listingColor));
@@ -428,6 +426,12 @@ public class RealmSpeakFrame extends JFrame {
 		scroller.addLine(new ScrollLine("Remodeled Counter Layout",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Dan Evans",listing,listingColor));
 		scroller.addLine(new ScrollLine("John Frenzel",listing,listingColor));
+		scroller.addLine(new ScrollLine());
+		scroller.addLine(new ScrollLine("'Legendary Realm' Map Graphics",subheader,subheaderColor));
+		scroller.addLine(new ScrollLine("Casey Benn",listing,listingColor));
+		scroller.addLine(new ScrollLine());
+		scroller.addLine(new ScrollLine("'Deluxe' Map Graphics",subheader,subheaderColor));
+		scroller.addLine(new ScrollLine("Fabio Patris",listing,listingColor));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Websites",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Nand's Magic Realm",listing,listingColor,null,0,SwingConstants.CENTER,"http://www.nand.it/mr/"));

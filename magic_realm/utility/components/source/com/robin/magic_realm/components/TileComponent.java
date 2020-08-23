@@ -305,7 +305,10 @@ public class TileComponent extends ChitComponent {
 		String fullImage = imageName + imageEnd + ext;
 		tileImagePath[side] = new HashMap<String,String>();
 		if (RealmComponent.displayTilesStyle == DISPLAY_TILES_STYLE_LEGENDARY) {
-			folderPath=folderPath+"_legendary";
+			String legendaryTilePath = folderPath+"_legendary"+"/"+fullImage;
+			if (ResourceFinder.exists(legendaryTilePath)) {
+				folderPath=folderPath+"_legendary";
+			}
 		}
 		folderPath=folderPath+"/";
 		if (calendar!=null) {
