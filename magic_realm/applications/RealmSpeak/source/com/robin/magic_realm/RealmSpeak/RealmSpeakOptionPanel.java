@@ -373,7 +373,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 	}
 	private JPanel getTilesOptionsPanel() {
 		JPanel panel = new JPanel(new GridLayout(2,1));
-		panel.setBorder(BorderFactory.createTitledBorder("Standard tiles Style"));
+		panel.setBorder(BorderFactory.createTitledBorder("Standard Tiles Style"));
 		ButtonGroup group = new ButtonGroup();
 		classicTilesOption = new JRadioButton("Classic");
 		group.add(classicTilesOption);
