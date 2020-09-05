@@ -41,6 +41,10 @@ public class TileComponent extends ChitComponent {
 	private static String DEFAULT_IMAGE_PATH = "default";
 	private static boolean emergencyUpdateCalled = false; // only attempt this once!!
 	private static boolean showBorderlandConnectedClearings = false; // for debugging!
+	
+	public static final int DISPLAY_TILES_STYLE_CLASSIC = 0;
+	public static final int DISPLAY_TILES_STYLE_LEGENDARY = 1;
+	public static int displayTilesStyle = DISPLAY_TILES_STYLE_CLASSIC;
 
 	private static Logger logger = Logger.getLogger(TileComponent.class.getName());
 	
@@ -53,7 +57,7 @@ public class TileComponent extends ChitComponent {
 	public static final int TILE_HEIGHT = (int) (TILE_EDGE_LENGTH * root3);
 	public static final int CLEARING_RADIUS = (int) (TILE_EDGE_LENGTH / 6.0);
 	public static final int EDGE_RADIUS = (int) (TILE_EDGE_LENGTH / 8.0);
-
+	
 	public static Dimension iconDimensions = null;
 
 	protected static final int DRAW_BORDER = 5;
@@ -304,7 +308,7 @@ public class TileComponent extends ChitComponent {
 		String folderPath = "images/"+folder;
 		String fullImage = imageName + imageEnd + ext;
 		tileImagePath[side] = new HashMap<String,String>();
-		if (RealmComponent.displayTilesStyle == DISPLAY_TILES_STYLE_LEGENDARY) {
+		if (displayTilesStyle == DISPLAY_TILES_STYLE_LEGENDARY) {
 			String legendaryTilePath = folderPath+"_legendary"+"/"+fullImage;
 			if (ResourceFinder.exists(legendaryTilePath)) {
 				folderPath=folderPath+"_legendary";

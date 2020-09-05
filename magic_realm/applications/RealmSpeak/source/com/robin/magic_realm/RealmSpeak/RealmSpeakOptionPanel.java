@@ -28,6 +28,7 @@ import javax.swing.event.ChangeListener;
 
 import com.robin.general.sound.SoundCache;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.attribute.ChatLine.HeaderMode;
 
 public class RealmSpeakOptionPanel extends JDialog {
@@ -121,7 +122,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		}
 
 		switch(options.getOptions().getInt(RealmSpeakOptions.TILES_DISPLAY_STYLE)) {
-			case RealmComponent.DISPLAY_TILES_STYLE_LEGENDARY:
+			case TileComponent.DISPLAY_TILES_STYLE_LEGENDARY:
 				legendaryTilesOption.setSelected(true);
 				break;
 			default:
@@ -230,9 +231,9 @@ public class RealmSpeakOptionPanel extends JDialog {
 	}
 	private int getTilesDisplayStyle() {
 		if (legendaryTilesOption.isSelected()) {
-			return RealmComponent.DISPLAY_TILES_STYLE_LEGENDARY;
+			return TileComponent.DISPLAY_TILES_STYLE_LEGENDARY;
 		}
-		return RealmComponent.DISPLAY_TILES_STYLE_CLASSIC;
+		return TileComponent.DISPLAY_TILES_STYLE_CLASSIC;
 	}
 	private int getSelectedNumberOfChatLines() {
 		for (int i=0;i<showChatLinesOption.length;i++) {

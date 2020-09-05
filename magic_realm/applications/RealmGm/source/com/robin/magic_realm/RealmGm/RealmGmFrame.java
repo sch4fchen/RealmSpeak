@@ -21,6 +21,8 @@ import java.awt.BorderLayout;
 import java.awt.event.*;
 import java.beans.PropertyVetoException;
 import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.*;
 import javax.swing.event.InternalFrameAdapter;
@@ -32,10 +34,12 @@ import com.robin.general.io.FileUtilities;
 import com.robin.general.io.PreferenceManager;
 import com.robin.general.swing.ComponentTools;
 import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderModel;
+import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.utility.RealmUtility;
 
 public class RealmGmFrame extends JFrame {
 	private static final String MetalLookAndFeel = "MLAF";
+	private static final String TilesStyleLegendary = "TSL";
 	private static final String PreferredFilePath = "PFP";
 	
 //	private static final String DefaultWidth = "DW";
@@ -76,6 +80,7 @@ public class RealmGmFrame extends JFrame {
 	}
 	private void initComponents() {
 		updateLookAndFeel();
+		setTilesStyle();
 		setTitle("RealmSpeak GM");
 		setSize(1024,768);
 		//setSize(prefs.getInt(DefaultWidth),prefs.getInt(DefaultHeight));
@@ -102,6 +107,20 @@ public class RealmGmFrame extends JFrame {
 			ComponentTools.setSystemLookAndFeel();
 		}
 		SwingUtilities.updateComponentTreeUI(this);
+	}
+	private void setTilesStyle() {
+		if (prefs.getBoolean(TilesStyleLegendary)) {
+			TileComponent.displayTilesStyle = TileComponent.DISPLAY_TILES_STYLE_LEGENDARY;
+		}
+		else {
+			TileComponent.displayTilesStyle = TileComponent.DISPLAY_TILES_STYLE_CLASSIC;
+		}
+	}
+	private void updateTilesStyle() {
+		setTilesStyle();
+		if (editor != null) {
+			editor.reinitMap();
+		}	
 	}
 	private JMenuBar buildMenuBar() {
 		JMenuBar menu = new JMenuBar();
@@ -158,6 +177,14 @@ public class RealmGmFrame extends JFrame {
 			}
 		});
 		optionMenu.add(toggleLookAndFeel);
+		final JCheckBoxMenuItem toggleTilesStyle = new JCheckBoxMenuItem("Tile Style Legendary",prefs.getBoolean(TilesStyleLegendary));
+		toggleTilesStyle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				prefs.set(TilesStyleLegendary,toggleTilesStyle.isSelected());
+				updateTilesStyle();
+			}
+		});
+		optionMenu.add(toggleTilesStyle);
 		menu.add(optionMenu);
 		return menu;
 	}

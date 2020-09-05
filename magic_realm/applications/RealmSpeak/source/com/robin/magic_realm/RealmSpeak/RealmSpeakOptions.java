@@ -24,6 +24,7 @@ import com.robin.general.sound.SoundCache;
 import com.robin.general.swing.ComponentTools;
 import com.robin.magic_realm.components.MonsterChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.attribute.ChatLine;
 import com.robin.magic_realm.components.attribute.ChatLine.HeaderMode;
 import com.robin.magic_realm.components.utility.RealmUtility;
@@ -81,11 +82,11 @@ public class RealmSpeakOptions {
 				break;
 		}
 		switch(options.getInt(RealmSpeakOptions.TILES_DISPLAY_STYLE)) {
-			case RealmComponent.DISPLAY_TILES_STYLE_LEGENDARY:
-				RealmComponent.displayTilesStyle = RealmComponent.DISPLAY_TILES_STYLE_LEGENDARY;
+			case TileComponent.DISPLAY_TILES_STYLE_LEGENDARY:
+				TileComponent.displayTilesStyle = TileComponent.DISPLAY_TILES_STYLE_LEGENDARY;
 				break;
 			default:
-				RealmComponent.displayTilesStyle = RealmComponent.DISPLAY_TILES_STYLE_CLASSIC;
+				TileComponent.displayTilesStyle = TileComponent.DISPLAY_TILES_STYLE_CLASSIC;
 				break;
 		}
 		MonsterChitComponent.showMonsterNumbers = options.getBoolean(MONSTER_NUMBERS);

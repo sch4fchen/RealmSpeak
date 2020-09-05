@@ -219,6 +219,12 @@ public class RealmGameEditor extends JInternalFrame {
 			locationTable.repaint();
 		}
 	}
+	public void reinitMap() {
+		map.setReplot(true);
+		map.updateTilesStyle();
+		map.repaint();
+	}
+	
 	private void initComponents() {
 		updateTitle();
 		setSize(800,600);
