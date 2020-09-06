@@ -1,2 +1,2 @@
 echo off
-@start javaw -mx384m -cp RealmSpeakFull.jar com.robin.magic_realm.RealmGm.RealmGmFrame
+@start javaw -mx512m -cp RealmSpeakFull.jar com.robin.magic_realm.RealmGm.RealmGmFrame
