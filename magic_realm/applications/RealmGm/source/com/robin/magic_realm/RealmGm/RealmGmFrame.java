@@ -18,6 +18,7 @@
 package com.robin.magic_realm.RealmGm;
 
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.*;
 import java.beans.PropertyVetoException;
 import java.io.File;
@@ -35,12 +36,15 @@ import com.robin.general.io.PreferenceManager;
 import com.robin.general.swing.ComponentTools;
 import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderModel;
 import com.robin.magic_realm.components.TileComponent;
+import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.utility.RealmUtility;
 
 public class RealmGmFrame extends JFrame {
 	private static final String MetalLookAndFeel = "MLAF";
 	private static final String TilesStyleLegendary = "TSL";
 	private static final String PreferredFilePath = "PFP";
+	
+	private static final String ChitDisplayStyle = "CDS";
 	
 //	private static final String DefaultWidth = "DW";
 //	private static final String DefaultHeight = "DH";
@@ -53,6 +57,10 @@ public class RealmGmFrame extends JFrame {
 	private JMenuItem closeGame;
 	private JMenuItem saveGame;
 	private JMenuItem saveAsGame;
+	
+	private JRadioButton classicChitsOption;
+	private JRadioButton colorChitsOption;
+	private JRadioButton frenzelChitsOption;
 	
 	protected FileFilter saveGameFileFilter = new FileFilter() {
 		public boolean accept(File f) {
@@ -81,6 +89,7 @@ public class RealmGmFrame extends JFrame {
 	private void initComponents() {
 		updateLookAndFeel();
 		setTilesStyle();
+		setChitDisplayStyle();
 		setTitle("RealmSpeak GM");
 		setSize(1024,768);
 		//setSize(prefs.getInt(DefaultWidth),prefs.getInt(DefaultHeight));
@@ -108,6 +117,15 @@ public class RealmGmFrame extends JFrame {
 		}
 		SwingUtilities.updateComponentTreeUI(this);
 	}
+	private void reinitMap() {
+		if (editor != null) {
+			editor.reinitMap();
+		}	
+	}
+	private void updateTilesStyle() {
+		setTilesStyle();
+		reinitMap();
+	}
 	private void setTilesStyle() {
 		if (prefs.getBoolean(TilesStyleLegendary)) {
 			TileComponent.displayTilesStyle = TileComponent.DISPLAY_TILES_STYLE_LEGENDARY;
@@ -116,11 +134,21 @@ public class RealmGmFrame extends JFrame {
 			TileComponent.displayTilesStyle = TileComponent.DISPLAY_TILES_STYLE_CLASSIC;
 		}
 	}
-	private void updateTilesStyle() {
-		setTilesStyle();
-		if (editor != null) {
-			editor.reinitMap();
-		}	
+	private void setChitDisplayStyle() {
+		switch(prefs.getInt(ChitDisplayStyle)) {
+		case RealmComponent.DISPLAY_STYLE_CLASSIC:
+			RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_CLASSIC;
+			break;
+		case RealmComponent.DISPLAY_STYLE_COLOR:
+			RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_COLOR;
+			break;
+		case RealmComponent.DISPLAY_STYLE_FRENZEL:
+			RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_FRENZEL;
+			break;
+		default:
+			RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_CLASSIC;
+			break;
+	}
 	}
 	private JMenuBar buildMenuBar() {
 		JMenuBar menu = new JMenuBar();
@@ -185,8 +213,55 @@ public class RealmGmFrame extends JFrame {
 			}
 		});
 		optionMenu.add(toggleTilesStyle);
+		optionMenu.add(getChitOptionsPanel());
 		menu.add(optionMenu);
 		return menu;
+	}
+	private JPanel getChitOptionsPanel() {
+		int selected = prefs.getInt(ChitDisplayStyle);
+		JPanel panel = new JPanel(new GridLayout(3,1));
+		panel.setBorder(BorderFactory.createTitledBorder("Game Chits"));
+		ButtonGroup group = new ButtonGroup();
+		classicChitsOption = new JRadioButton("Classic Chits");
+		classicChitsOption.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				prefs.set(ChitDisplayStyle,RealmComponent.DISPLAY_STYLE_CLASSIC);
+				setChitDisplayStyle();
+				reinitMap();
+			}
+		});
+		if (selected == RealmComponent.DISPLAY_STYLE_CLASSIC) {
+			classicChitsOption.setSelected(true);
+		}
+		group.add(classicChitsOption);
+		panel.add(classicChitsOption);
+		colorChitsOption = new JRadioButton("Color Chits");
+		colorChitsOption.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				prefs.set(ChitDisplayStyle,RealmComponent.DISPLAY_STYLE_COLOR);
+				setChitDisplayStyle();
+				reinitMap();
+			}
+		});
+		if (selected == RealmComponent.DISPLAY_STYLE_COLOR) {
+			colorChitsOption.setSelected(true);
+		}
+		group.add(colorChitsOption);
+		panel.add(colorChitsOption);
+		frenzelChitsOption = new JRadioButton("Remodeled Chits");
+		frenzelChitsOption.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				prefs.set(ChitDisplayStyle,RealmComponent.DISPLAY_STYLE_FRENZEL);
+				setChitDisplayStyle();
+				reinitMap();
+			}
+		});
+		if (selected == RealmComponent.DISPLAY_STYLE_FRENZEL) {
+			frenzelChitsOption.setSelected(true);
+		}
+		group.add(frenzelChitsOption);
+		panel.add(frenzelChitsOption);
+		return panel;
 	}
 	private void closeGame() {
 		if (validateOkayToClose("Close Game")) {
