@@ -65,6 +65,7 @@ public class QuestLocationEditor extends GenericEditor {
 	
 	private static void initSuggestionWords(GameData realmSpeakData) {
 		suggestionWords = new ArrayList<String>();
+		Collections.addAll(suggestionWords, new String[] {"Wolf 1","Wolf 2","Tremendous Dragon","Lion","Eagle","Bird","Squirrel","Frog"});
 		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
 		String query = "!part,!summon,!spell,!tile,!character_chit,!virtual_dwelling,!season,!test,!character";
 		for(GameObject go:pool.find(query)) {
@@ -73,11 +74,17 @@ public class QuestLocationEditor extends GenericEditor {
 		}
 		for(GameObject go:pool.find("tile")) {
 			TileComponent tile = (TileComponent)RealmComponent.getRealmComponent(go);
-			suggestionWords.add(tile.getTileCode());
-			suggestionWords.add(go.getName());
+			if (!suggestionWords.contains(tile.getTileCode())) {
+				suggestionWords.add(tile.getTileCode());
+			}
+			if (!suggestionWords.contains(go.getName())) {
+				suggestionWords.add(go.getName());
+			}
 			for(ClearingDetail clearing:tile.getClearings()) {
 				String name = go.getName()+" "+clearing.getNum();
-				suggestionWords.add(name);
+				if (!suggestionWords.contains(name)) {
+					suggestionWords.add(name);
+				}
 			}
 		}
 		Collections.sort(suggestionWords);
