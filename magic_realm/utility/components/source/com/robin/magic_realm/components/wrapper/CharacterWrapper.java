@@ -380,6 +380,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public int getCurrentDay() {
 		return getInt(CURRENT_DAY);
 	}
+	public GamePhaseType getCurrentGamePhase() {
+		return GameWrapper.findGame(getGameObject().getGameData()).getGamePhase();
+	}
 	public int getBasicPhases() {
 		return getInt(BASIC_PHASES);
 	}
@@ -6292,8 +6295,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 		// Initialize quest
 		quest.initialize(frame,this);
 		
-		// Might be steps fulfilled right away, so check 
-		quest.testRequirements(frame,this,new QuestRequirementParams());
+		// Might be steps fulfilled right away, so check
+		QuestRequirementParams questRequirementParams = new QuestRequirementParams();
+		questRequirementParams.timeOfCall = getCurrentGamePhase();
+		quest.testRequirements(frame,this,questRequirementParams);
     	
     	addListItem(QUEST_ID,quest.getGameObject().getStringId());
     }
@@ -6324,7 +6329,9 @@ public class CharacterWrapper extends GameObjectWrapper {
     	return list==null?0:list.size();
     }
 	public boolean testQuestRequirements(JFrame parentFrame) {
-		return testQuestRequirements(parentFrame,new QuestRequirementParams(),true);
+		QuestRequirementParams qr = new QuestRequirementParams();
+		qr.timeOfCall = getCurrentGamePhase();
+		return testQuestRequirements(parentFrame,qr,true);
 	}
 	public boolean testQuestRequirements(JFrame parentFrame,QuestRequirementParams reqParams) {
 		return testQuestRequirements(parentFrame,reqParams,true);

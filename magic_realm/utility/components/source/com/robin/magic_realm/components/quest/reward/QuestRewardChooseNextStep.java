@@ -39,6 +39,8 @@ public class QuestRewardChooseNextStep extends QuestReward {
 	@Override
 	public void processReward(JFrame frame, CharacterWrapper character) {
 		QuestRequirementParams params = new QuestRequirementParams();
+		params.timeOfCall = character.getCurrentGamePhase();
+		
 		ArrayList<QuestStep> dependentSteps = new ArrayList<QuestStep>();
 		for(QuestStep step:Quest.currentQuest.getSteps()) {
 			if (step.getState()!=QuestStepState.Pending) continue;

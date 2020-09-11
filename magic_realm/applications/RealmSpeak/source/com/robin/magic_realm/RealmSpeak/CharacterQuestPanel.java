@@ -203,10 +203,12 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 		String dayKey = getCharacter().getCurrentDayKey();
 		RealmLogging.logMessage(getCharacter().getName(),"Activated Quest Card: "+quest.getName());
 		quest.setState(QuestState.Active, getCharacter().getCurrentDayKey(), getCharacter());
-		if (quest.testRequirements(getMainFrame(), getCharacter(), new QuestRequirementParams())) {
+		QuestRequirementParams questRequirementParams = new QuestRequirementParams();
+		questRequirementParams.timeOfCall = getGameHandler().getGame().getGamePhase();
+		if (quest.testRequirements(getMainFrame(), getCharacter(), questRequirementParams)) {
 			getCharacter().testQuestRequirements(getMainFrame()); // Make sure that all quests get updated (auto-journal)
 			getCharacterFrame().updateCharacter();
-			getMainFrame().getGameHandler().getInspector().redrawMap();
+			getGameHandler().getInspector().redrawMap();
 		}
 		if (quest.getState()!=QuestState.Assigned && quest.isAllPlay()) {
 			quest.revertAllPlay(dayKey,getCharacter());

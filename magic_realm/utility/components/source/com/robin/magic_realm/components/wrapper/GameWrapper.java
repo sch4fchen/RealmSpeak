@@ -24,6 +24,7 @@ import com.robin.general.swing.DieRoller;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmCalendar;
+import com.robin.magic_realm.components.quest.GamePhaseType;
 
 public class GameWrapper extends GameObjectWrapper {
 
@@ -116,6 +117,14 @@ public class GameWrapper extends GameObjectWrapper {
 	}
 	public int getState() {
 		return getInt(GAME_STATE);
+	}
+	public GamePhaseType getGamePhase() {
+		  switch (getState()) {
+			case GAME_STATE_RECORDING: return GamePhaseType.Birdsong;
+			case GAME_STATE_PLAYING: return GamePhaseType.EndOfPhase;
+			case GAME_STATE_RESOLVING: return GamePhaseType.StartOfEvening;
+			default: return GamePhaseType.Unspecified;
+		 }
 	}
 	public DieRoller getMonsterDie() {
 		String string = getString(GAME_MONSTER_DIE);
