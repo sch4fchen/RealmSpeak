@@ -6,6 +6,7 @@ NEW FEATURES:
 # Option to change tile style (including option in GM)
 # Option to change chit style in GM
 # Option to choose alternative tiles in new game menu
+# QuestBuilder: Support for Wolf 1, Wolf 2 and transforms in the location setup
 BUGS/ISSUES:
 # Adapted etiles in XnViewMP with colours/brightness/intensity (colours: 0, brightness: -14, intensity: -8) and exposure (saturation: 8)
 # When activating a quest, correct phase is checked for the requirements
