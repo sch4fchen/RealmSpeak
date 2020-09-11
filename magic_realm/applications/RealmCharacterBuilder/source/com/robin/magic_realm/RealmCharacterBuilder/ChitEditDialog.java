@@ -115,8 +115,11 @@ public class ChitEditDialog extends AggressiveDialog {
 					String action = ev.getActionCommand();
 					if (action.equals("SPECIAL")) {
 						String chitName;
-						while (reservedChitNames.contains((chitName = JOptionPane.showInputDialog("Chit Name?")).toUpperCase())) {
+						while ((chitName = JOptionPane.showInputDialog("Chit Name?")) != null && reservedChitNames.contains(chitName.toUpperCase())) {
 							JOptionPane.showMessageDialog(ChitEditDialog.this,"You cannot use any of the reserved chit names:  "+reservedChitNames,"Invalid Name",JOptionPane.ERROR_MESSAGE);
+						}
+						if (chitName == null) {
+							return;
 						}
 						
 						chit.getGameObject().setThisAttribute("action",chitName.toLowerCase());
