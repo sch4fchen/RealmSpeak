@@ -33,6 +33,7 @@ public class Constants {
 	public static final int COMBAT_SIDEBAR_WIDTH = 275;
 	
 	public static final int TERM_OF_HIRE = 14;
+	public static final int TEN_YEARS = 3360;
 	public static final int MAX_SPELL_COUNT = 14;
 	public static final int MAX_LEVEL = 4;
 	public static final int MAX_EXP_LEVEL = 11;

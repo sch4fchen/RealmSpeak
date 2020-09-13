@@ -90,7 +90,7 @@ public class QuestRewardHireling extends QuestReward {
 			if (!rc.isNativeLeader()) {
 				character.getGameObject().add(selected);
 			}
-			character.addHireling(selected, termofHire == TermOfHireType.Normal ? Constants.TERM_OF_HIRE : 3600); // permanent enough? :-)
+			character.addHireling(selected, termofHire == TermOfHireType.Normal ? Constants.TERM_OF_HIRE : Constants.TEN_YEARS); // permanent enough? :-)
 		}
 	}
 
