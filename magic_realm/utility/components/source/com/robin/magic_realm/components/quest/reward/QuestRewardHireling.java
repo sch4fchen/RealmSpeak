@@ -80,12 +80,17 @@ public class QuestRewardHireling extends QuestReward {
 				go.setThisAttribute(Constants.CLONED); // tag as cloned, so that the removeHireling method will expunge the clone
 				selected = go;
 			}
+			TermOfHireType termofHire = getTermOfHireType();
+			if (termofHire == TermOfHireType.PlaceInClearing) {
+				character.getCurrentLocation().clearing.add(selected,null);
+				return;
+			}
 			character.getCurrentLocation().clearing.add(selected,character);
 			RealmComponent rc = RealmComponent.getRealmComponent(selected);
 			if (!rc.isNativeLeader()) {
 				character.getGameObject().add(selected);
 			}
-			character.addHireling(selected, getTermOfHireType() == TermOfHireType.Normal ? Constants.TERM_OF_HIRE : 9999); // permanent enough? :-)
+			character.addHireling(selected, termofHire == TermOfHireType.Normal ? Constants.TERM_OF_HIRE : 3600); // permanent enough? :-)
 		}
 	}
 
@@ -113,6 +118,9 @@ public class QuestRewardHireling extends QuestReward {
 		ChitAcquisitionType at = getAcquisitionType();
 		if (at == ChitAcquisitionType.Lose) {
 			sb.append(" leaves the character.");
+		}
+		else if (getTermOfHireType() == TermOfHireType.PlaceInClearing) {
+			sb.append(" is placed in the characters clearing.");
 		}
 		else {
 			sb.append(" joins as a ");
