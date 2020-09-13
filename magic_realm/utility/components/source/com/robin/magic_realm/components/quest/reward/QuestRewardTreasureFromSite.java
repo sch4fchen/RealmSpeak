@@ -79,13 +79,13 @@ public class QuestRewardTreasureFromSite extends QuestReward {
 		GameObject treasure = null;
 		switch(getDrawType()) {
 			case Top:
-				treasure = (GameObject)hold.get(0);
+				treasure = (GameObject)treasures.get(0);
 				break;
 			case Bottom:
-				treasure = (GameObject)hold.get(hold.size()-1);
+				treasure = (GameObject)treasures.get(treasures.size()-1);
 				break;
 			case Random:
-				treasure = (GameObject)hold.get(RandomNumber.getRandom(hold.size()));
+				treasure = (GameObject)treasures.get(RandomNumber.getRandom(hold.size()));
 				break;
 			case Choice:
 				RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,getTitleForDialog()+" Which treasure?",false);
