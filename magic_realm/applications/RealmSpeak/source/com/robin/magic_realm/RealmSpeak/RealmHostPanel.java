@@ -436,8 +436,6 @@ public class RealmHostPanel extends JPanel {
 				monsterDieRoller.addRedDie();
 			}
 			monsterDieRoller.rollDice("Monster Roll");
-//System.err.println("RealmHostPanel: DEBUGGO");
-//monsterDieRoller.setValue(0,3);
 			game.setMonsterDie(monsterDieRoller);
 			host.broadcast("host","Monster Die roll is "+monsterDieRoller.getDescription(false));
 

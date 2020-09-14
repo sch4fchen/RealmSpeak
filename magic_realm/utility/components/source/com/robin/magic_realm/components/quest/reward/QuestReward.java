@@ -114,6 +114,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case ChooseNextStep:			return "Player chooses the next step to process from those steps that follow this step, and fullfill requirements.";
 				//case CustomTreasure:			return "Create a new treasure by taking an existing treasure, renaming it, and giving it new  base attributes.";
 				case TreasureFromSite:			return "Gain a treasure from a specific site, dwelling, or Scholar.";
+				case TreasureFromHq:			return "Gain a treasure from a specific HQ.";
 				case SpellFromSite:				return "Learn a spell from a specific site, book, artifact, or Shaman.";
 			}
 			return "(No Description)";

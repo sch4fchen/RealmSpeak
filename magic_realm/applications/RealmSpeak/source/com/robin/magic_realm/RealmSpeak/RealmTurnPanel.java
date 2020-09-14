@@ -421,8 +421,6 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			}
 		});
 		panel.add(postponeTurnButton);
-//		Die monsterDie = new Die(25,5,Color.red,Color.white);
-//		monsterDie.setFace(game.getMonsterDie());
 		DieRoller monsterDieRoller = game.getMonsterDie();
 		monsterDieRoller.setAllRed();
 		JLabel monsterDieLabel = new JLabel("Monster Die:",monsterDieRoller.getIcon(),SwingConstants.CENTER);
