@@ -71,6 +71,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		//SummonMonster,   // Summon a specific monster
 		Teleport,
 		TreasureFromSite, // Select Random/Top/Bottom/Choice from a specific TL/Scholar/Dwelling (NOT minor TLs or TWTs though)
+		TreasureFromHq,
 		Visitor,
 		;
 		public boolean isShown() {
@@ -315,6 +316,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case TreasureFromSite:
 				reward = new QuestRewardTreasureFromSite(go);
+				break;
+			case TreasureFromHq:
+				reward = new QuestRewardTreasureFromHq(go);
 				break;
 			case SpellFromSite:
 				reward = new QuestRewardSpellFromSite(go);

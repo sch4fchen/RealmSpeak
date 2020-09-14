@@ -30,27 +30,26 @@ import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.quest.DrawType;
 import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
+import com.robin.magic_realm.components.table.Loot;
+import com.robin.magic_realm.components.utility.SetupCardUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
-public class QuestRewardSpellFromSite extends QuestReward {
+public class QuestRewardTreasureFromHq extends QuestReward {
 	
-	public static final String SITE_REGEX = "_siterx";
+	public static final String HQ_REGEX = "_hqrx";
 	public static final String DRAW_TYPE = "_dt";
 
-	public QuestRewardSpellFromSite(GameObject go) {
+	public QuestRewardTreasureFromHq(GameObject go) {
 		super(go);
 	}
 
 	@Override
 	public void processReward(JFrame frame, CharacterWrapper character) {
 		GamePool pool = new GamePool(getGameData().getGameObjects());
-		ArrayList<GameObject> sourceObjects = pool.find("spell_site");
-		sourceObjects.addAll(pool.find("visitor,!name=Scholar")); 
-		sourceObjects.addAll(pool.find("artifact")); 
-		sourceObjects.addAll(pool.find("book,magic")); 
-		ArrayList<GameObject> objects = getObjectList(sourceObjects,getSiteRegex());
+		ArrayList<GameObject> sourceObjects = pool.find("rank=HQ");
+		ArrayList<GameObject> objects = getObjectList(sourceObjects,getHqRegex());
 		if (objects.isEmpty()) {
-			JOptionPane.showMessageDialog(frame,"The site specified by the reward was not found!","Quest Error",JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"The HQ specified by the reward was not found!","Quest Error",JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		GameObject selected = null;
@@ -58,50 +57,51 @@ public class QuestRewardSpellFromSite extends QuestReward {
 			selected = objects.get(0);
 		}
 		else {
-			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,getTitleForDialog()+" Select a Site to learn a spell from:",false);
+			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,getTitleForDialog()+" Select a HQ to recieve treasure from:",false);
 			chooser.addGameObjects(objects,true);
 			chooser.setVisible(true);
 			selected = chooser.getFirstSelectedComponent().getGameObject();
 		}
 		
-		ArrayList hold = selected.getHold();
-		ArrayList<GameObject> learnable = new ArrayList<GameObject>();
+		GameObject holder = SetupCardUtility.getDenizenHolder(selected);
+		ArrayList<GameObject> hold = new ArrayList(holder.getHold());
+		ArrayList<GameObject> treasures = new ArrayList<GameObject>();
 		for(Object o:hold) {
-			GameObject spell = (GameObject)o;
-			if (character.canLearn(spell)) {
-				learnable.add(spell);
+			RealmComponent rc = RealmComponent.getRealmComponent((GameObject)o);
+			if (rc.isTreasure()) {
+				treasures.add((GameObject)o);
 			}
 		}
-		if (learnable.isEmpty()) {
-			Quest.showQuestMessage(frame,getParentQuest(),"There are no spells to learn here.",getTitleForDialog(),RealmComponent.getRealmComponent(selected));
+		if (treasures.isEmpty()) {
+			Quest.showQuestMessage(frame,getParentQuest(),"The HQ specified by the reward was empty.",getTitleForDialog(),RealmComponent.getRealmComponent(selected));
 			return;
 		}
-		GameObject spell = null;
+		GameObject treasure = null;
 		switch(getDrawType()) {
 			case Top:
-				spell = (GameObject)learnable.get(0);
+				treasure = (GameObject)treasures.get(0);
 				break;
 			case Bottom:
-				spell = (GameObject)learnable.get(learnable.size()-1);
+				treasure = (GameObject)treasures.get(treasures.size()-1);
 				break;
 			case Random:
-				spell = (GameObject)learnable.get(RandomNumber.getRandom(learnable.size()));
+				treasure = (GameObject)treasures.get(RandomNumber.getRandom(treasures.size()));
 				break;
 			case Choice:
-				RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,getTitleForDialog()+" Which spell?",false);
-				chooser.addGameObjects(learnable,true);
+				RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,getTitleForDialog()+" Which treasure?",false);
+				chooser.addGameObjects(treasures,true);
 				chooser.setVisible(true);
-				chooser.getFirstSelectedComponent().getGameObject();
+				treasure = chooser.getFirstSelectedComponent().getGameObject();
 				break;
 		}		
-		if (spell!=null) { // shouldn't ever be null
-			character.recordNewSpell(frame,spell);
+		if (treasure!=null) { // shouldn't ever be null
+			Loot.addItemToCharacter(frame,null,character,treasure);
 		}
 	}
 	
 	@Override
 	public RewardType getRewardType() {
-		return RewardType.SpellFromSite;
+		return RewardType.TreasureFromHq;
 	}
 
 	@Override
@@ -109,19 +109,19 @@ public class QuestRewardSpellFromSite extends QuestReward {
 		StringBuilder sb = new StringBuilder();
 		switch(getDrawType()) {
 			case Top:
-				sb.append("Learn the top");
+				sb.append("Take the top");
 				break;
 			case Bottom:
-				sb.append("Learn the bottom");
+				sb.append("Take the bottom");
 				break;
 			case Choice:
-				sb.append("Learn a");
+				sb.append("Choose a");
 				break;
 			case Random:
-				sb.append("Learn a random");
+				sb.append("Get a random");
 		}
-		sb.append(" spell from /");
-		sb.append(getSiteRegex());
+		sb.append(" treasure from /");
+		sb.append(getHqRegex());
 		sb.append("/.");
 		return sb.toString();
 	}
@@ -130,8 +130,8 @@ public class QuestRewardSpellFromSite extends QuestReward {
 		return DrawType.valueOf(getString(DRAW_TYPE));
 	}
 	
-	public String getSiteRegex() {
-		return getString(SITE_REGEX);
+	public String getHqRegex() {
+		return getString(HQ_REGEX);
 	}
 	public static ArrayList<GameObject> getObjectList(ArrayList<GameObject> sourceObjects,String regEx) {
 		Pattern pattern = (regEx==null || regEx.length()==0)?null:Pattern.compile(regEx);
