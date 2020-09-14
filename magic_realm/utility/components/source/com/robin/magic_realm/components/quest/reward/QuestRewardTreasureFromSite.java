@@ -91,7 +91,7 @@ public class QuestRewardTreasureFromSite extends QuestReward {
 				RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,getTitleForDialog()+" Which treasure?",false);
 				chooser.addGameObjects(treasures,true);
 				chooser.setVisible(true);
-				chooser.getFirstSelectedComponent().getGameObject();
+				treasure = chooser.getFirstSelectedComponent().getGameObject();
 				break;
 		}		
 		if (treasure!=null) { // shouldn't ever be null
