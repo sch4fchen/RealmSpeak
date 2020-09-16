@@ -17,6 +17,8 @@
  */
 package com.robin.general.io;
 
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.Date;
 import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
@@ -35,8 +37,8 @@ public class LoggingFormatter extends Formatter {
 
 	// Line separator string.  This is the value of the line.separator
 	// property at the moment that the SimpleFormatter was created.
-	private final String lineSeparator = (String) java.security.AccessController.doPrivileged(
-			   new sun.security.action.GetPropertyAction("line.separator"));
+	private final String lineSeparator = (String) AccessController.doPrivileged(
+				       (PrivilegedAction<String>) () -> System.getProperty("line.separator")); 
 
 	/**
 	 * Format the given LogRecord.
