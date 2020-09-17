@@ -104,6 +104,9 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case SummonGuardian:
 				list.add(new QuestPropertyBlock(QuestRequirementLocation.LOCATION, "Summon Guardian for ", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
+			case SummonMonster:
+				list.add(new QuestPropertyBlock(QuestRewardSummonMonster.MONSTER_NAME, "Monster", FieldType.CompanionSelector, getAllCompanionKeyValues()));
+				break;
 			case AlterHide:
 				list.add(new QuestPropertyBlock(QuestRewardAlterHide.GAIN_TYPE, "Hide status", FieldType.StringSelector, GainType.values()));
 				break;

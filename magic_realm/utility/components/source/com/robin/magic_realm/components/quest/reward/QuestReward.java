@@ -68,7 +68,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		StripInventory,
 		SummonGuardian,
 		//SummonRoll,		// Force a monster summoning roll with a specific number
-		//SummonMonster,   // Summon a specific monster
+		SummonMonster,   // Summon a specific monster
 		Teleport,
 		TreasureFromSite, // Select Random/Top/Bottom/Choice from a specific TL/Scholar/Dwelling (NOT minor TLs or TWTs though)
 		TreasureFromHq,
@@ -100,6 +100,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case QuestComplete:				return "Tells RealmSpeak that the character has completed this quest.";
 				case QuestFailed:				return "Tells RealmSpeak that the character has failed this quest.";
 				case SummonGuardian:			return "For a specific quest location, summon the treasure site guardian (if any)";
+				case SummonMonster:				return "Summon a Monster to the characters clearing.";
 				case ScareMonsters:				return "Randomly move all monsters in current clearing to other clearings either in the same tile or other tiles, as defined.";
 				case AlterHide:					return "Change questing character's hide status (from hidden to unhidden, or the other way around).";
 				case MarkDenizen:				return "Mark a particular denizen for later reference.  This is useful if you want to make sure a character kills (for example) a particular monster.";
@@ -275,6 +276,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case SummonGuardian:
 				reward = new QuestRewardSummonGuardian(go);
+				break;
+			case SummonMonster:
+				reward = new QuestRewardSummonMonster(go);
 				break;
 			case AlterHide:
 				reward = new QuestRewardAlterHide(go);

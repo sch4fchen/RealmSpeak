@@ -9,6 +9,8 @@ NEW FEATURES:
 # QuestBuilder: Support for companions Wolf 1, Wolf 2 and transforms in the location setup
 # QuestBuilder: Support for Hireling reward to place the Hireling in the characters clearing instead of hiring it.
 # QuestBuilder: Support for TreasureFromHQ reward.
+# QuestBuilder: Support for SummonMonster reward.
+# QuestBuilder: Make Tremendous Dragon available as Companion
 BUGS/ISSUES:
 # Adapted etiles in XnViewMP with colours/brightness/intensity (colours: 0, brightness: -14, intensity: -8) and exposure (saturation: 8)
 # When activating a quest, correct phase is checked for the requirements

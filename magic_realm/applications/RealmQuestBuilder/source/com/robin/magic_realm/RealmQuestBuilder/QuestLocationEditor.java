@@ -50,6 +50,9 @@ public class QuestLocationEditor extends GenericEditor {
 	private JLabel descriptionLabel;
 	private SuggestionTextArea locationList;
 	
+	private static String [] wolfs = new String [] {"Wolf 1","Wolf 2"};
+	private static String [] transforms = new String [] {"Tremendous Dragon","Lion","Eagle","Bird","Squirrel","Frog"};
+	
 	public QuestLocationEditor(JFrame parent,GameData realmSpeakData,Quest quest,QuestLocation location) {
 		super(parent,realmSpeakData);
 		this.parent = parent;
@@ -65,7 +68,8 @@ public class QuestLocationEditor extends GenericEditor {
 	
 	private static void initSuggestionWords(GameData realmSpeakData) {
 		suggestionWords = new ArrayList<String>();
-		Collections.addAll(suggestionWords, new String[] {"Wolf 1","Wolf 2","Tremendous Dragon","Lion","Eagle","Bird","Squirrel","Frog"});
+		Collections.addAll(suggestionWords, wolfs);
+		Collections.addAll(suggestionWords, transforms);
 		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
 		String query = "!part,!summon,!spell,!tile,!character_chit,!virtual_dwelling,!season,!test,!character";
 		for(GameObject go:pool.find(query)) {

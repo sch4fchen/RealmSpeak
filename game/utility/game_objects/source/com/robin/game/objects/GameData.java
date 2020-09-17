@@ -192,7 +192,7 @@ public class GameData extends ModifyableObject implements Serializable {
 		ArrayList<GameObject> ret = new ArrayList<GameObject>();
 		for(String test:gameObjectNameHash.keySet()) {
 			if (test.equalsIgnoreCase(name)) {
-				ret.addAll( gameObjectNameHash.getList(test));
+				ret.addAll(gameObjectNameHash.getList(test));
 			}
 		}
 		return ret;
