@@ -1611,24 +1611,3 @@ if (obj==null) {
 		setName(getName()+" - Erased");
 	}
 }
-
-/*
- <GameObject id="628" name="Berserker Move H5*">
- <AttributeBlock blockName="this">
- <attribute character_chit="berserker" />
- <attribute action="move" />
- <attribute strength="H" />
- <attribute speed="5" />
- <attribute effort="1" />
- <attributeList keyName="actions">
- <attributeVal N1="move 123" />
- <attributeVal N2="hide" />
- <attributeVal N3="hide" />
- <attributeVal N4="hide" />
- </attributeList>
- <attribute character_level="1" />
- <attribute original_game="" />
- </AttributeBlock>
- </GameObject>
-
- */

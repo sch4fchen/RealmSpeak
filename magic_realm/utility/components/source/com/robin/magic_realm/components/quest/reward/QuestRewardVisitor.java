@@ -68,7 +68,7 @@ public class QuestRewardVisitor extends QuestReward {
 		if (at == ChitAcquisitionType.Lose) {
 			if (selected.hasThisAttribute(Constants.CLONED)) {
 				selected.detach();
-				selected.clearAllAttributes();
+				getGameData().removeObject(selected);
 			}
 			else {
 				character.getCurrentLocation().clearing.add(selected,character);

@@ -5694,9 +5694,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		// Finally, make sure any clones are expunged (stupid clones!!  kill them all!)
 		if (hireling.hasThisAttribute(Constants.CLONED)) {
-			//getGameData().removeObject(hireling); // I'd like to simply delete the object...  but there are problems with this.
+			getGameData().removeObject(hireling); // I'd like to simply delete the object...  but there are problems with this.
 			// Instead, lets erase the clone's memory so it has no effect!
-			hireling.clearAllAttributes();
+			// hireling.clearAllAttributes();
 		}
 	}
 	/**
