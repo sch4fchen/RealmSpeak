@@ -17,29 +17,17 @@
  */
 package com.robin.general.io;
 
-import java.security.AccessController;
-import java.security.PrivilegedAction;
 import java.util.Date;
 import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
 
 public class LoggingFormatter extends Formatter {
-//	private static long startTime = System.currentTimeMillis(); // milliseconds from 1/1/1970 as of when this class was loaded
 
 	Date dat = new Date();
 
-	// Column separator string.  Could be read from a property.
+	// Column separator string. Could be read from a property.
 	private final static String columnSeparator = "\t";
-//	private final static String format = "{0,date}"+columnSeparator+"{0,time}";
-//	private MessageFormat formatter;
-
-//	private Object args[] = new Object[1];
-
-	// Line separator string.  This is the value of the line.separator
-	// property at the moment that the SimpleFormatter was created.
-	private final String lineSeparator = (String) AccessController.doPrivileged(
-				       (PrivilegedAction<String>) () -> System.getProperty("line.separator")); 
-
+	
 	/**
 	 * Format the given LogRecord.
 	 * @param record the log record to be formatted.
@@ -47,21 +35,6 @@ public class LoggingFormatter extends Formatter {
 	 */
 	public synchronized String format(LogRecord record) {
 		StringBuffer sb = new StringBuffer();
-//		if (System.getProperty(LoggingConstants.DEBUG_SHOW_TIMESTAMP) != null && System.getProperty(LoggingConstants.DEBUG_SHOW_TIMESTAMP).equalsIgnoreCase(LoggingConstants.TRUE)) {
-//			sb.append(((record.getMillis() - startTime) / 1000.0) + "s");
-//			sb.append(columnSeparator);
-//		}
-//		if (System.getProperty(LoggingConstants.DEBUG_SHOW_DATETIME) != null && System.getProperty(LoggingConstants.DEBUG_SHOW_DATETIME).equalsIgnoreCase(LoggingConstants.TRUE)) {
-//			dat.setTime(record.getMillis());
-//			args[0] = dat;
-//			StringBuffer text = new StringBuffer();
-//			if (formatter == null) {
-//				formatter = new MessageFormat(format);
-//			}
-//			formatter.format(args, text, null);
-//			sb.append(text);
-//			sb.append(columnSeparator);
-//		}
 		sb.append(record.getLevel().getLocalizedName());
 		sb.append(columnSeparator);
 		if (record.getSourceClassName() != null) {	
@@ -89,7 +62,7 @@ public class LoggingFormatter extends Formatter {
 				sb.append(element.toString());
 			}
 		}
-		sb.append(lineSeparator);
+		sb.append(System.lineSeparator());
 		return sb.toString();
 	}
 	private String truncateClassName(String className) {
