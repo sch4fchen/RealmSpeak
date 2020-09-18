@@ -155,7 +155,7 @@ public class QuestLocationEditor extends GenericEditor {
 		StringBuilder sb = new StringBuilder();
 		for (String token:getLocationList()) {
 			sb.append(token);
-			if (!QuestLocation.validLocation(realmSpeakData,token)) {
+			if (!Arrays.asList(wolfs).contains(token) && !Arrays.asList(transforms).contains(token) && !QuestLocation.validLocation(realmSpeakData,token)) {
 				sb.append(INVALID);
 			}
 			sb.append("\n");
