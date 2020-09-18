@@ -4,7 +4,7 @@ If you want to run RealmSpeak with cheat mode turned ON (useful for reproducing 
 
 If you are a non-Windows user, you simply need put the word "CHEAT" as an argument to the java launch command, like this:
 
-	javaw -mx384m -cp mail.jar:activation.jar:RealmSpeak.jar com.robin.magic_realm.RealmSpeak.RealmSpeakFrame CHEAT
+	javaw -mx512m -cp mail.jar:activation.jar:RealmSpeak.jar com.robin.magic_realm.RealmSpeak.RealmSpeakFrame CHEAT
 
 Once cheat mode is enabled, you will be able to access the cheat dialog by clicking on the character token/name on the character frame (not the map!).  You know, the window that shows your character, click on the token next to the name of your character.
 
