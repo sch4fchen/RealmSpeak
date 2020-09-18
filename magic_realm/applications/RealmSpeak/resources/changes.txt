@@ -9,15 +9,16 @@ NEW FEATURES:
 # Option to change chit style in GM
 # Option to choose alternative tiles in new game menu
 # QuestBuilder: Support for companions Wolf 1, Wolf 2 and transforms in the location setup
-# QuestBuilder: Support for Hireling reward to place the Hireling in the characters clearing instead of hiring it.
-# QuestBuilder: Support for TreasureFromHQ reward.
-# QuestBuilder: Support for SummonMonster reward.
+# QuestBuilder: Support for Hireling reward to place the Hireling in the characters clearing instead of hiring it
+# QuestBuilder: Support for TreasureFromHQ reward
+# QuestBuilder: Support for SummonMonster reward
 # QuestBuilder: Make Tremendous Dragon available as Companion
 BUGS/ISSUES:
 # Adapted etiles in XnViewMP with colours/brightness/intensity (colours: 0, brightness: -14, intensity: -8) and exposure (saturation: 8)
-# When activating a quest, correct phase is checked for the requirements
+# When activating a quest, correct phase is checked for the requirements.
 # Quest: TreasureFromSite reward is now always a treasure (cannot "pull" monster/guardian of the site anymore).
 # Quest: TreasureFromSite reward: choosing treasure works now.
+# Quest: Removing hireling, deletes hireling (GameObject) instead of erasing all attributes.
 
 Version 1.1.3.2 - Changes since 1.1.3.1
 # unknown
