@@ -49,6 +49,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		SearchResult, // (optional location designation) Clues, Paths, Passages, Hidden Enemies, Discover Chit(s), Learn and Awaken, Curse!, Awaken, Counters, Treasure Cards,Perceive Spell
 		TimePassed,
 		Trade,
+		Probability,
 		;
 		public String getDescription() {
 			switch (this) {
@@ -86,6 +87,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests whether the character has followed a specific path."; 
 				case ColorMagic:
 					return "Tests whether the character is in the presence of a specific color of magic (either permanent or burning a chit).";
+				case Probability:
+					return "Requirement is met with a certain probability.";
 			}
 			return "(No Description)";
 		}
@@ -208,6 +211,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case ColorMagic:
 				requirement = new QuestRequirementColorMagic(go);
+				break;
+			case Probability:
+				requirement = new QuestRequirementProbability(go);
 				break;
 			default:
 				throw new IllegalArgumentException("Unsupported RequirementType: " + type.toString());

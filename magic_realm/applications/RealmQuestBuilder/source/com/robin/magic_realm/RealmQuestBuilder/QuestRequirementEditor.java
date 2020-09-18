@@ -131,6 +131,9 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case ColorMagic:
 				list.add(new QuestPropertyBlock(QuestRequirementColorMagic.COLOR_KEY, "In the presence of color magic", FieldType.StringSelector, new String[]{"White","Grey","Gold","Purple","Black"}));
 				break;
+			case Probability:
+				list.add(new QuestPropertyBlock(QuestRequirementProbability.CHANCE, "Probability in % (1-100)", FieldType.Number));
+				break;
 		}
 		return list;
 	}
