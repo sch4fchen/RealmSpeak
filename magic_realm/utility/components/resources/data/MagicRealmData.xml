@@ -30441,7 +30441,7 @@
         <attribute path_5_type="normal" />
 		<attribute path_5_arc="20.9,71.5" />
         <attribute path_6_from="clearing_5" />
-        <attribute path_6_to="NO" />
+        <attribute path_6_to="NW" />
         <attribute path_6_type="normal" />
 		<attribute path_6_arc="79.3,34.6" />
 		<attribute path_7_from="clearing_2" />
@@ -30482,7 +30482,7 @@
         <attribute path_5_type="normal" />
 		<attribute path_5_arc="20.9,71.5" />
         <attribute path_6_from="clearing_5" />
-        <attribute path_6_to="NO" />
+        <attribute path_6_to="NW" />
         <attribute path_6_type="normal" />
 		<attribute path_6_arc="79.3,34.6" />
 		<attribute path_7_from="clearing_2" />
