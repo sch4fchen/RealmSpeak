@@ -1924,19 +1924,18 @@ public class RealmSpeakFrame extends JFrame {
 				gameHandler.cleanup();
 			}
 			gameHandler = null;
-			host.stopListening();
 			desktop.removeAll();
 			gameControlFrames.clear();
 			characterFrames.clear();
-			CenteredMapView.clearTileLayer();
 			realmHostFrame = null;
+			CenteredMapView.clearTileLayer();
+			host.stopListening();
 			host = null;
 			updateControls();
 			updateWindowMenu();
 			networkingOption.doClick();
 			networkingOption.doClick();
-//			ImageCache.resetCache();///this shouldn't be necessary
-//			MagicRealmImage.resetImages();
+			ImageCache.resetCache();
 			System.gc(); // This TOTALLY shouldn't be necessary, but what can it hurt?
 			repaint();
 		}
