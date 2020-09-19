@@ -507,7 +507,7 @@ public class RealmSpeakFrame extends JFrame {
 		text.append("<font size=\"+1\">Version "+Constants.REALM_SPEAK_VERSION+"</font></font><br><br>");
 		text.append("<table>");
 		text.append("<tr><td align=\"right\"><b>Compiled Java Version:</b></td><td border=1 align=\"center\" width=150>");
-		text.append("15");
+		text.append("1.8.0_261");
 		text.append("</td></tr><tr><td align=\"right\"><b>Current Java Version:</b></td><td border=1 align=\"center\" width=150>");
 		text.append(System.getProperty("java.version"));
 		text.append("</td></tr><tr><td align=\"right\"><b>Processing Power:</b></td><td border=1 align=\"center\" width=150>");
