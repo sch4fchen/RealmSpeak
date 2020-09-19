@@ -10,7 +10,7 @@ WARNING:  BE VERY CAREFUL EDITING THE PATH VARIABLE!!  IF YOU DELETE SOMETHING I
 
 3)  Add the ant/bin and java/bin directories to your path variable (Windows).  My path variable looks like this:
 
-	%SystemRoot%\system32;%SystemRoot%;C:\apache-ant-1.7.0\bin;C:\Program Files\Java\jdk1.6.0_07\bin;
+	%SystemRoot%\system32;%SystemRoot%;C:\apache-ant-1.10.8\bin;C:\Program Files\Java\jdk1.8.0_261\bin;
 
 WARNING:  BE VERY CAREFUL EDITING THE PATH VARIABLE!!  IF YOU DELETE SOMETHING IMPORTANT, YOU MAY KILL INSTALLED APPS!!!  MAKE A COPY OF THE PATH BEFORE YOU START EDITING!!!!  YOU HAVE BEEN WARNED!!!!!!!!!!!!!!!!!!
 
@@ -47,4 +47,4 @@ Hints (by Richard Rambach aka sch4fchen):
 First time to run the game, you need to copy the .jar files from "libraries" directory, to "products" directory.
 Quests (*.rsqst) must be copied into the folder .../products/quests" (without subdirectory).
 Custom characters (*.rschar) must be copied into the folder .../products/characters".
-Developer hint: I used Eclipse as IDE, building with ant 1.10.8 and jdk-8u261 = 1.8.0_261
+Developer hint: I used Eclipse as IDE, building with ant 1.10.8 and OpenJDK 15
