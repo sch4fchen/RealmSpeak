@@ -9,9 +9,9 @@ If you are a Mac user, unpack the MacRealmSpeak.zip, and use the AppleScript fil
 
 Do not click the RealmSpeak.jar file directly anymore - memory doesn't get set up properly if you do this, and you WILL get an error.
 
-If the batch file does something unexpected, you may need to download the Java Runtime from:
+If the batch file does something unexpected, you may need to download the Java JDK (which includes the Runtime/JVM) from:
 
-	http://java.sun.com/javase/downloads/index.jsp
+	https://adoptopenjdk.net/
 
 Make sure you get the "JDK 15" or later.
 
