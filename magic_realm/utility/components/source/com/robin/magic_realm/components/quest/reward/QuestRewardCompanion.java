@@ -26,6 +26,7 @@ import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.quest.GainType;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.utility.ClearingUtility;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.TemplateLibrary;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -39,20 +40,20 @@ public class QuestRewardCompanion extends QuestReward {
 	}
 
 	public void processReward(JFrame frame,CharacterWrapper character) {
-		// TODO Test both branches of logic
-		// -- consider a companion that is killed
 		if (getGainType()==GainType.Gain) {
 			GameObject template = TemplateLibrary.getSingleton().getCompanionTemplate(getCompanionKeyName(),getCompanionQuery());
 			GameObject companion = TemplateLibrary.getSingleton().createCompanionFromTemplate(getGameData(),template);
-			character.addHireling(companion,99999);
+			character.addHireling(companion,Constants.TEN_YEARS);
 			character.getGameObject().add(companion);
 		}
 		else {
 			GamePool pool = new GamePool(character.getGameObject().getHold());
-			GameObject companion = pool.findFirst(getCompanionQuery());
-			character.removeHireling(companion);
-			// Companions must be removed from the map as well, since they are not rehired!
-			ClearingUtility.moveToLocation(companion,null);
+			GameObject companion = pool.findFirst(getCompanionQuery()) != null ? pool.findFirst(getCompanionQuery()) : pool.findFirst("name="+getCompanionKeyName());
+			if (companion!=null) {
+				character.removeHireling(companion);
+				// Companions must be removed from the map as well, since they are not rehired!
+				ClearingUtility.moveToLocation(companion,null);
+			}
 		}
 	}
 	

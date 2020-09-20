@@ -130,7 +130,6 @@ public class TemplateLibrary {
 					}
 					
 					// update some specific attributes
-					template.removeThisAttribute("rank");
 					template.removeThisAttribute("setup_start");
 					template.removeThisAttribute("monster_die");
 					template.removeThisAttribute("hire_type");
