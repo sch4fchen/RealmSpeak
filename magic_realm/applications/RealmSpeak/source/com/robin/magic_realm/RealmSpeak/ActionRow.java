@@ -1231,7 +1231,7 @@ public class ActionRow {
 			RealmTradeDialog tradeDialog;
 			if (TRADE_BUY.equals(tradeAction)) {
 				// Buying
-				tradeDialog = new RealmTradeDialog(gameHandler.getMainFrame(),"Select an item or spell to BUY from "+traderRel+":",false,false,true);
+				tradeDialog = new RealmTradeDialog(gameHandler.getMainFrame(),"Select an item or spell to BUY from "+traderRel+":",false,true,true);
 				
 				// Log what is being offered up
 				StringBufferedList sb = new StringBufferedList();
@@ -1266,6 +1266,12 @@ public class ActionRow {
 			tradeDialog.setVisible(true);
 			
 			Collection selComponents = tradeDialog.getSelectedRealmComponents();
+			// Cancel when buying ends action
+			if (selComponents == null && TRADE_BUY.equals(tradeAction)) {
+				completed = true;
+				return;
+			}
+			
 			if (selComponents!=null && selComponents.size()>0) {
 				boolean repair = TRADE_REPAIR.equals(tradeAction);
 				if (TRADE_BUY.equals(tradeAction) || repair) { // TRADE_BUY or TRADE_REPAIR
