@@ -19,7 +19,7 @@ BUGS/ISSUES:
 # Quest: TreasureFromSite reward is now always a treasure (cannot "pull" monster/guardian of the site anymore).
 # Quest: TreasureFromSite reward: choosing treasure works now.
 # Quest: Removing hireling, deletes hireling (GameObject) instead of erasing all attributes.
-# Quest: Removing companion works also for natives with rank (e.g. Company 2).
+# Quest: Removing companion works also for natives with rank (e.g. Company 2) and transforms (e.g. Lion).
 
 Version 1.1.3.2 - Changes since 1.1.3.1
 # unknown
