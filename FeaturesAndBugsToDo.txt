@@ -1,8 +1,6 @@
 ::RealmSpeak::
 Problems/Reminders:
 -- Minotaur buckler not really implemented as I would like:  it should be able to block hits...
-NOTES TO SELF TO HELP REMEMBER WHAT I (Robin) WAS DOING...
-- Need to make sure that when Remains of Thief is found, the items contained therein are included in the result list!
 
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
