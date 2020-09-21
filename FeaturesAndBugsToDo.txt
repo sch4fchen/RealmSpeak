@@ -1,0 +1,145 @@
+::RealmSpeak::
+Problems/Reminders:
+-- Minotaur buckler not really implemented as I would like:  it should be able to block hits...
+NOTES TO SELF TO HELP REMEMBER WHAT I (Robin) WAS DOING...
+- Need to make sure that when Remains of Thief is found, the items contained therein are included in the result list!
+
+--::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
+---:::FEATURES:::---
+House rule to allow Remains of Thief and Mouldy Skeleton to drop in the clearing instead of discard
+GM: Shuffle components, Flag in gameData: Shuffle when loading (and remove flag)
+A way for the Host to give any character the "Do no write move" ability (for beginners!) (same as Timeless Jewel treasure -> CharacterWrapper.java)
+0001829: Feature Request - First Edition Killer Caves
+0001828: Feature Request - First Edition Optional Rule - Glory
+0001827: Feature Request - First Edition Optional Rules - Hiring Characters (Solitare)
+0001826: Feature Request - First Edition Optional Rules - The Deadly Realm
+0001825: Feature Request - First Edition Optional Rule - Buying on Credit
+0001823: Feature Request - First Edition Optional Rule - Stealing
+0001822: Feature Request: First Edition Optional Rule - Steel Against Magic
+0001820: Feature Request: First Edition Optional Rules - Dissolving Doors
+0001819: Feature Request: First Edition Search Tables
+0001818: Feature Request: First Edition: Parry Optional Combat Rules
+Expasion 1: Parry
+0001797: Feature Request - BOQ Two Handed Weapon Opt Rules
+Expasion 1: Two-Handed Combat
+0001750: Option to disable battling natives
+0001674: Host should be able to disable "Add Character"
+0001645: Automatic HTML export
+0001563: Showing flip sides of tiles and counters in HTML
+0001493: Allow Tile Selection Before Game Play
+0001447: Log breakdown by day
+0001358: Monster Roll per Set
+0001232: Flying Activities: Optional Rule # 3: Flying Activities.
+0001068: Development Games in Hall of Fame
+0001037: Half Months
+0000893: End Game Log
+Support Alerted Monsters Advanced rule
+House Rule to reveal Site Cards and allow searching
+Quest: Need a Open requirement to test when Vault/Chest/CryptOfTheKnight is accessed...
+Quest: 0001805: Spell Effects as Quest Rewards
+Quest: Need new reward:  Gain Custom Treasure: CustomTreasure // Pick a treasure, clone, and rename it
+Quest: New reward: SummonRoll
+Quest: It'd be nice if the kill requirement let you specify size (L,M,H,T)
+What about a controlled monster luring/deploying against your hirelings?
+Extended Treachery:  luring/deploying against their own group triggers the same consequences
+Should always be safe at guilds, if you are a member (from monsters and natives)
+Guilds not showing up on friendliness chart - should they?  Yes!
+Be nice to have a randomize native positioning
+---:::BUGS:::---
+Wizard advancement - didn't get MOVE M5->MAGIC III
+When choosing a flying hex, the thick border spills over onto the treasure cards and other...
+Don't know about this one:  Does Flowers of Rest work correctly in combat?
+!0001879: Color magic fatigue counted against character when used in encounter step to energize a spell
+!0001869: blocking occurs on start of phase instead of end -> fixed?
+!0001858: PotP Terror wounds Belt of Strength coverted chits
+!0001830: Moving into cave lost ALL remaining phases
+0001875: state of multiple rest is not saved correctly
+0001874: notebook does not auto-note when PEACE OF NATURE is active
+0001873: treasure cards with extra phase must be kept until _end_ of added phase
+0001871: Repeatedly starting/loading games may expose a leak
+0001870: inconsistent selection of multiple elements
+0001868: The killed natives reappears as hired
+0001867: end combat button block remote game
+0001866: Cannot set the number of starting spells for a newcharacter.
+0001865: Steed bug in Character Builder
+0001864: Realmspeak bug report: Armor destroyed before Ointment of Steel (see  mkiever/RealmSpeak fork)
+0001862: targeting other character with "summon elemental" leads to delayed lock
+0001861: Battle utility cannot set Pilgrim to T Harm from earlier use of wish for strength
+0001860: cannot get move by pony in specific conditions
+0001859: horses phase can be canceled by inactivate it.
+0001857: Killed natives for sale in the HQ's inventory
+0001856: teleport spell do not move caster to the random clearings at midnight
+0001854: saves lost the recorded actions
+0001851: Unable select targets to own hireling.
+0001850: the multiply kill bonus do not multiply by its number to kill
+0001847: hired natives block the owners.
+0001846: "no mission/visitor flips" does not allow use both sides of chips
+0001845: can not learn spell from the atrifacts
+0001844: Transformed into a monster and still able to extend combat be fatiguing any color chits.
+0001835: Search and finding item in Pool did not fatigue
+0001832: Secret in the Pool does not give LOOT
+0001796: Wish for Peace not halting combat
+0001760: reloading lets me use sunlight phases in caves
+0001757: Casting Wish causes funny result
+0001745: can only start with color chit if i have spells?
+0001736: Dropped items after death should not be visible
+0001735: Player Cache is Visible
+0001731: Transform and Absorb Essence problems
+0001730: Small Blessing, Wish for Peace does not take immediate effect
+0001729: Gameplay Slow with >6 characters
+0001728: Problem with Control Dragon
+0001715: Memory Leak when Ending/Starting game without closing
+0001692: Incorrect sheltered phase - flying and after running away
+0001684: Melt Into Mist prevented Absorb Essence
+0001487: Not getting a bonus move when I activate Timeless Jewel
+0001431: Edit Hall of Fame?
+0001330: Ability to keep targets after control spell has energized
+0001079: Ponies and Easter
+0001066: TJ and New Advantages
+0000868: Allows MOVE with Shielded Lantern during Birdsong when it shouldn't
+0000667: Watchful Natives should be assigned by owning character
+0000444: Dropping/Trading the DragonFang Necklace
+
+Would like an API for generating a game summary:  without all the nitty gritty details, but still enough info to summarize the game.
+	- Need to track options setup
+	- Need to track character starts
+		- VPs chosen
+		- Starting dwelling
+		- Starting inventory/spells/gold
+	- Need to track events
+		- Clearing moved to each day (if move)
+		- Discoveries made
+		- Treasures found
+		- Combats fought
+	/* Generate a home page that shows a link to the detail log, and possibly a list of days...
+	 * 	- Clicking a day shows a new page with links:
+	 * 		- Map
+	 * 		- Characters
+	 * 		- Treasure setup card
+	 * 
+	 * Problems:
+	 * - Map doesn't change??
+	 * - Controlled monsters don't appear!
+	 */
+	 
+Nature Guild
+	Natives:	Scholar, Woodfolk
+	Cost:		4 Weapons (any kind) - these are destroyed.
+	Reward:		Two MAGIC II2* chits
+	Services:
+		Apprentice:
+		Journeyman:
+			Summon an animal companion for 10 gold
+		Master:
+
+Assassins Guild
+	Natives:	  Crone, Dragonmen
+	Cost:		  80 Notoriety per level
+	Reward:		  STAB T1** chit (THRUST box only)
+	Services:
+		Apprentice:
+			5 gold to buy a mark (L/M natives) -> Pays 10 gold	
+		Journeyman:
+			5 gold to buy a mark (H/T natives) -> Pays 20 gold
+		Master:
+			5 gold to buy a high profile mark (HQ natives) -> Pays 50 gold

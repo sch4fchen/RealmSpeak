@@ -1,2 +1,0 @@
-- Clarify which horse is which.
-- Still need to implement the "to leader" button
