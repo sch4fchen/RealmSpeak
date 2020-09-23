@@ -13,6 +13,7 @@ NEW FEATURES:
 # QuestBuilder: Make Tremendous Dragon available as Companion
 # QuestBuilder: Support for Probability QuestRequirement
 # TradeAction: Option to cancel buy, ending action.
+# Host can toggle "Beginner Mode" for characters (like Timeless Jewel: character does not need to write down actions).
 BUGS/ISSUES:
 # Adapted etiles in XnViewMP with colours/brightness/intensity (colours: 0, brightness: -14, intensity: -8) and exposure (saturation: 8)
 # When activating a quest, correct phase is checked for the requirements.

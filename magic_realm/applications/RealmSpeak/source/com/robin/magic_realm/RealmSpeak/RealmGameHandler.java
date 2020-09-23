@@ -66,6 +66,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	protected JButton suicideCharacterButton;
 	protected JButton transferCharacterButton;
 	protected JButton unlockCharacterButton;
+	protected JButton beginnerCharacterButton;
 
 	protected JButton showLogButton;
 
@@ -377,6 +378,18 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			}
 		});
 		box.add(unlockCharacterButton);
+		beginnerCharacterButton = new JButton(BEGINNER_ICON);
+		beginnerCharacterButton.setToolTipText("Toggle Beginner Mode");
+		beginnerCharacterButton.setEnabled(false);
+		beginnerCharacterButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				CharacterWrapper character = getSelectedCharacter();
+				character.toggleBeginner();
+				submitChanges();
+				updateCharacterList();
+			}
+		});
+		box.add(beginnerCharacterButton);
 		box.add(Box.createVerticalGlue());
 		showLogButton = new JButton(IconFactory.findIcon("icons/document.gif"));
 		showLogButton.setToolTipText("Toggle Game Log");
@@ -759,7 +772,8 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		editOptionsButton.setEnabled(isHostPlayer()); // ONLY the host can
 														// change options
 														// in-game
-
+		beginnerCharacterButton.setEnabled(character != null && isHostPlayer());
+		
 		suicideCharacterButton.setEnabled(canMakeChanges && canModifyCharacter);
 		transferCharacterButton.setEnabled(!charPoolLocked && inspector.getMap().isMapReady() && canModifyCharacter && !localGame);
 		unlockCharacterButton.setEnabled(!charPoolLocked && inspector.getMap().isMapReady() && canModifyCharacter && !localGame && character.hasPlayerPassword());
@@ -2189,10 +2203,11 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	}
 
 	private static final ImageIcon LOCK_ICON = IconFactory.findIcon("icons/lock.gif");
+	private static final ImageIcon BEGINNER_ICON = IconFactory.findIcon("icons/question.gif");
 
 	private class CharacterTableModel extends AbstractTableModel {
-		protected String[] columnName = { " ", " ", "Character", "Player", "Status", };
-		protected Class[] columnClass = { ImageIcon.class, ImageIcon.class, String.class, String.class, String.class, };
+		protected String[] columnName = { " ", " ", " ", "Character", "Player", "Status", };
+		protected Class[] columnClass = { ImageIcon.class, ImageIcon.class, ImageIcon.class, String.class, String.class, String.class, };
 		private ArrayList list;
 
 		public CharacterTableModel() {
@@ -2256,18 +2271,20 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				CharacterWrapper character = (CharacterWrapper) list.get(row);
 				switch (column) {
 					case 0:
-						return character.hasPlayerPassword() ? LOCK_ICON : null;
+						return character.isBeginner() ? BEGINNER_ICON : null;
 					case 1:
-						return character.getIcon();
+						return character.hasPlayerPassword() ? LOCK_ICON : null;
 					case 2:
-						return character.getCharacterLevelName();
+						return character.getIcon();
 					case 3:
+						return character.getCharacterLevelName();
+					case 4:
 						String name = character.getPlayerName();
 						if (name != null && name.equals(hostName) && !localGame) {
 							return name + " (host)";
 						}
 						return name;
-					case 4:
+					case 5:
 						boolean waiting = !game.getPlaceGoldSpecials() && !game.getGameStarted();
 						return character.getGameStatus(waiting);
 				}

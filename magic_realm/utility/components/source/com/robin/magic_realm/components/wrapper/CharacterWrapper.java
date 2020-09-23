@@ -205,6 +205,24 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return getBoolean(CHEATER);
 	}
 	
+	public void activateBeginner() {
+		getGameObject().setThisAttribute(Constants.DAYTIME_ACTIONS);
+	}
+	public void deactivateBeginner() {
+		getGameObject().removeThisAttribute(Constants.DAYTIME_ACTIONS);
+	}
+	public boolean isBeginner() {
+		return getGameObject().getThisAttribute(Constants.DAYTIME_ACTIONS) != null;
+	}
+	public void toggleBeginner() {
+		if (isBeginner()) {
+			deactivateBeginner();
+		}
+		else {
+			activateBeginner();
+		}
+	}
+	
 	public String getBlockName() {
 		return PLAYER_BLOCK;
 	}

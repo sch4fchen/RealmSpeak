@@ -1,12 +1,8 @@
 ::RealmSpeak::
-Problems/Reminders:
--- Minotaur buckler not really implemented as I would like:  it should be able to block hits...
-
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
-House rule to allow Remains of Thief and Mouldy Skeleton to drop in the clearing instead of discard
 GM: Shuffle components, Flag in gameData: Shuffle when loading (and remove flag)
-A way for the Host to give any character the "Do no write move" ability (for beginners!) (same as Timeless Jewel treasure -> CharacterWrapper.java)
+House rule to allow Remains of Thief and Mouldy Skeleton to drop in the clearing instead of discard
 0001829: Feature Request - First Edition Killer Caves
 0001828: Feature Request - First Edition Optional Rule - Glory
 0001827: Feature Request - First Edition Optional Rules - Hiring Characters (Solitare)
@@ -43,6 +39,7 @@ Extended Treachery:  luring/deploying against their own group triggers the same 
 Should always be safe at guilds, if you are a member (from monsters and natives)
 Guilds not showing up on friendliness chart - should they?  Yes!
 Be nice to have a randomize native positioning
+Minotaur buckler not really implemented as I would like:  it should be able to block hits...
 ---:::BUGS:::---
 Wizard advancement - didn't get MOVE M5->MAGIC III
 When choosing a flying hex, the thick border spills over onto the treasure cards and other...
