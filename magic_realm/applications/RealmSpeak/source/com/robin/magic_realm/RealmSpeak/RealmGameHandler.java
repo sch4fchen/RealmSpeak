@@ -68,6 +68,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	protected JButton unlockCharacterButton;
 	protected JButton beginnerCharacterButton;
 
+	protected JButton toggleAddCharacterButton;
 	protected JButton showLogButton;
 
 	protected JButton startMapBuildingButton;
@@ -108,6 +109,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	private String clientPlayerPass;
 	private String clientEmail;
 	private ArrayList<String> playerWarned = new ArrayList<String>();
+	private boolean addCharacterButtonEnabled = true;
 
 	// Update listener
 	protected ChangeListener updateFrameListener = new ChangeListener() {
@@ -391,6 +393,16 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		});
 		box.add(beginnerCharacterButton);
 		box.add(Box.createVerticalGlue());
+		toggleAddCharacterButton = new JButton(IconFactory.findIcon("icons/cross.gif"));
+		toggleAddCharacterButton.setToolTipText("Toggle AddCharacterButton");
+		toggleAddCharacterButton.setEnabled(false);
+		toggleAddCharacterButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				toggleAddCharacterButton();
+				updateControls();
+			}
+		});
+		box.add(toggleAddCharacterButton);
 		showLogButton = new JButton(IconFactory.findIcon("icons/document.gif"));
 		showLogButton.setToolTipText("Toggle Game Log");
 		showLogButton.addActionListener(new ActionListener() {
@@ -481,6 +493,15 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		return button;
 	}
 
+	public void toggleAddCharacterButton() {
+		if (addCharacterButtonEnabled) {
+			addCharacterButtonEnabled = false;
+		}
+		else {
+			addCharacterButtonEnabled = true;
+		}
+	}
+	
 	public void toggleLog() {
 		if (log.isVisible()) {
 			log.setVisible(false);
@@ -769,26 +790,20 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			}
 		}
 
-		editOptionsButton.setEnabled(isHostPlayer()); // ONLY the host can
-														// change options
-														// in-game
+		editOptionsButton.setEnabled(isHostPlayer()); // ONLY the host can change options in-game
+		toggleAddCharacterButton.setEnabled(isHostPlayer());
 		beginnerCharacterButton.setEnabled(character != null && isHostPlayer());
 		
 		suicideCharacterButton.setEnabled(canMakeChanges && canModifyCharacter);
 		transferCharacterButton.setEnabled(!charPoolLocked && inspector.getMap().isMapReady() && canModifyCharacter && !localGame);
 		unlockCharacterButton.setEnabled(!charPoolLocked && inspector.getMap().isMapReady() && canModifyCharacter && !localGame && character.hasPlayerPassword());
-		addCharacterButton.setEnabled(canMakeChanges);
+		addCharacterButton.setEnabled(canMakeChanges && (addCharacterButtonEnabled || isHostPlayer()));
 
 		boolean mapBuilder = hostPrefs.getBoardPlayerSetup() && !inspector.getMap().isMapReady();
 		startGameButton.setEnabled(isHostPlayer() && !mapBuilder && !game.getGameStarted() && !charPoolLocked && game.getGameMapBuilder() == null);
 		boolean canExtend = isHostPlayer() && !game.getGameEnded() && game.getState() == GameWrapper.GAME_STATE_GAMEOVER && !game.hasBeenRevealed();
 		endGameButton.setEnabled(isHostPlayer() && game.getGameStarted() && (canMakeChanges || canExtend));
-		extendGameButton.setEnabled(canExtend && !hostPrefs.hasPref(Constants.EXP_SUDDEN_DEATH)); // No
-																									// game
-																									// extensions
-																									// for
-																									// sudden
-																									// death!!
+		extendGameButton.setEnabled(canExtend && !hostPrefs.hasPref(Constants.EXP_SUDDEN_DEATH)); // No game extensions for sudden death!!
 
 		showDeadOption.setEnabled(hostPrefs != null && hostPrefs.hasPref(Constants.HOUSE1_DONT_RECYCLE_CHARACTERS));
 	}

@@ -17,10 +17,8 @@ Expasion 1: Parry
 0001797: Feature Request - BOQ Two Handed Weapon Opt Rules
 Expasion 1: Two-Handed Combat
 0001750: Option to disable battling natives
-0001674: Host should be able to disable "Add Character"
 0001645: Automatic HTML export
 0001563: Showing flip sides of tiles and counters in HTML
-0001493: Allow Tile Selection Before Game Play
 0001447: Log breakdown by day
 0001358: Monster Roll per Set
 0001232: Flying Activities: Optional Rule # 3: Flying Activities.
