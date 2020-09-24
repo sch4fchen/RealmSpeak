@@ -761,7 +761,6 @@ public class CharacterActionControlManager {
 			getCharacter().addCurrentAction(recordAction);
 			getCharacter().addCurrentActionValid(!recordingARed);
 		}
-//System.out.println("Recording "+recordAction+" with warning "+(recordingARed?"on":"off"));
 		
 		PhaseManager pm = getCharacter().getPhaseManager(true);
 		getCharacter().updatePhaseManagerWithCurrentActions(pm);
