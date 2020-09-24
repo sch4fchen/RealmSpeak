@@ -62,12 +62,6 @@ public class HallOfFame {
 		}
 	};
 	
-//	public static final String V_GREAT_TREASURES = "GT";
-//	public static final String V_USABLE_SPELLS = "US";
-//	public static final String V_FAME = "F";
-//	public static final String V_NOTORIETY = "N";
-//	public static final String V_GOLD = "G";
-	
 	private static HallOfFame singleton = null;
 	
 	private File zipFile;

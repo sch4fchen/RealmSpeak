@@ -92,7 +92,7 @@ public class HallOfFameView extends JPanel {
 	
 	private String getTable(String title,GameObject goList) {
 		StringBuffer sb = new StringBuffer();
-		sb.append("<table align=\"center\" width=390 cellspacing=\"2\"><tr><td bgcolor=\"66ff99\" align=\"center\" colspan=\"6\"><h2>");
+		sb.append("<table align=\"center\" width=390 cellspacing=\"2\"><tr><td bgcolor=\"66ff99\" align=\"center\" colspan=\"7\"><h2>");
 		sb.append(title);
 		sb.append("</td></tr>");
 		String header = "<th bgcolor=\"eeeeee\">";
@@ -104,6 +104,8 @@ public class HallOfFameView extends JPanel {
 		sb.append("Player</th>");
 		sb.append(header);
 		sb.append("Character</th>");
+		sb.append(header);
+		sb.append("Days</th>");
 		sb.append(header);
 		sb.append("VPs</th>");
 		sb.append(header);
@@ -128,6 +130,8 @@ public class HallOfFameView extends JPanel {
 			sb.append(go.getThisAttribute(HallOfFame.PLAYER_NAME));
 			sb.append("</td><td>");
 			sb.append(go.getName());
+			sb.append("</td><td align=\"center\">");
+			sb.append(go.getThisAttribute(HallOfFame.DAYS_PLAYED));
 			sb.append("</td><td align=\"center\">");
 			sb.append(go.getThisAttribute(HallOfFame.TOTAL_VPS));
 			sb.append("</td><td align=\"center\">");

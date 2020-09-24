@@ -22,7 +22,6 @@ Expasion 1: Two-Handed Combat
 0001447: Log breakdown by day
 0001358: Monster Roll per Set
 0001232: Flying Activities: Optional Rule # 3: Flying Activities.
-0001068: Development Games in Hall of Fame
 0000893: End Game Log
 Support Alerted Monsters Advanced rule
 House Rule to reveal Site Cards and allow searching
