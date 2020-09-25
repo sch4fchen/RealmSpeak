@@ -534,10 +534,9 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			}
 		}
 
-		endGameButton.setEnabled(false);
-		revealAllButton.setEnabled(true);
 		submitChanges();
 		updateControls();
+		endGameButton.setEnabled(false);
 		updateCharacterFrames();
 		broadcastMapReplot();
 	}
@@ -557,27 +556,22 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		int ret = JOptionPane.showConfirmDialog(getMainFrame(), "This will affect all characters.  Are you sure?", "Extend Game 1 Month", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 		if (ret == JOptionPane.YES_OPTION) {
 			GameData data = client.getGameData();
-
+			
 			RealmCalendar cal = RealmCalendar.getCalendar(getClient().getGameData());
 			int vps = cal.getVictoryPoints(game.getMonth());
 
+			game.setGameEnded(false);
 			// Update prefs
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 			hostPrefs.setNumberMonthsToPlay(hostPrefs.getNumberMonthsToPlay() + 1);
 
 			// Return game to recording state
 			game.setState(GameWrapper.GAME_STATE_RECORDING);
-
+			
 			// Return all characters to playing
 			for (Iterator i = data.getGameObjects().iterator(); i.hasNext();) {
 				GameObject go = (GameObject) i.next();
-				if (go.hasAttributeBlock(CharacterWrapper.PLAYER_BLOCK)) { // was
-																			// in
-																			// the
-																			// game
-																			// at
-																			// some
-																			// point
+				if (go.hasAttributeBlock(CharacterWrapper.PLAYER_BLOCK)) { // was in the game at some point
 					CharacterWrapper character = new CharacterWrapper(go);
 					if (character.isActive()) {
 						character.setGameOver(false);
@@ -802,7 +796,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		boolean mapBuilder = hostPrefs.getBoardPlayerSetup() && !inspector.getMap().isMapReady();
 		startGameButton.setEnabled(isHostPlayer() && !mapBuilder && !game.getGameStarted() && !charPoolLocked && game.getGameMapBuilder() == null);
 		boolean canExtend = isHostPlayer() && !game.getGameEnded() && game.getState() == GameWrapper.GAME_STATE_GAMEOVER && !game.hasBeenRevealed();
-		endGameButton.setEnabled(isHostPlayer() && game.getGameStarted() && (canMakeChanges || canExtend));
+		endGameButton.setEnabled(isHostPlayer() && game.getGameStarted() && !game.getGameEnded() && (canMakeChanges || canExtend));
 		extendGameButton.setEnabled(canExtend && !hostPrefs.hasPref(Constants.EXP_SUDDEN_DEATH)); // No game extensions for sudden death!!
 
 		showDeadOption.setEnabled(hostPrefs != null && hostPrefs.hasPref(Constants.HOUSE1_DONT_RECYCLE_CHARACTERS));
@@ -2098,7 +2092,8 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 
 						// Show game results panel
 						frame.showGameOver();
-
+						
+						revealAllButton.setEnabled(true);
 						if (isHostPlayer()) {
 							endGameButton.setEnabled(true);
 						}

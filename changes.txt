@@ -17,6 +17,7 @@ NEW FEATURES:
 # Host can toggle "Add Character" button for other players.
 BUGS/ISSUES:
 # Adapted etiles in XnViewMP with colours/brightness/intensity (colours: 0, brightness: -14, intensity: -8) and exposure (saturation: 8)
+# Hide "End game" button after ending the game.
 # When activating a quest, correct phase is checked for the requirements.
 # Quest: TreasureFromSite reward is now always a treasure (cannot "pull" monster/guardian of the site anymore).
 # Quest: TreasureFromSite reward: choosing treasure works now.
