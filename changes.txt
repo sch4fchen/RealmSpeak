@@ -12,6 +12,7 @@ NEW FEATURES:
 # QuestBuilder: Support for SummonMonster reward
 # QuestBuilder: Make Tremendous Dragon available as Companion
 # QuestBuilder: Support for Probability QuestRequirement
+# QuestBuilder: Support for Damage reward
 # TradeAction: Option to cancel buy, ending action.
 # Host can toggle "Beginner Mode" for characters (like Timeless Jewel: character does not need to write down actions).
 # Host can toggle "Add Character" button for other players.
