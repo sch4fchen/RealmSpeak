@@ -158,6 +158,10 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case ResetQuest:
 				break;
+			case Damage:
+				list.add(new QuestPropertyBlock(QuestRewardDamage.DAMAGE_TYPE, "Damage Type", FieldType.StringSelector, DamageType.values()));
+				list.add(new QuestPropertyBlock(QuestRewardDamage.AMOUNT, "Amount", FieldType.Number));
+				break;
 		}
 		return list;
 	}

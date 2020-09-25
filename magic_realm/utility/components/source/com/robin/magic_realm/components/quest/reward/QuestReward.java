@@ -73,6 +73,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		TreasureFromSite, // Select Random/Top/Bottom/Choice from a specific TL/Scholar/Dwelling (NOT minor TLs or TWTs though)
 		TreasureFromHq,
 		Visitor,
+		Damage,
 		;
 		public boolean isShown() {
 			switch(this) {
@@ -117,6 +118,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case TreasureFromSite:			return "Gain a treasure from a specific site, dwelling, or Scholar.";
 				case TreasureFromHq:			return "Gain a treasure from a specific HQ.";
 				case SpellFromSite:				return "Learn a spell from a specific site, book, artifact, or Shaman.";
+				case Damage:					return "Character receives fatigue or wounds.";
 			}
 			return "(No Description)";
 		}
@@ -327,6 +329,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case SpellFromSite:
 				reward = new QuestRewardSpellFromSite(go);
+				break;
+			case Damage:
+				reward = new QuestRewardDamage(go);
 				break;
 			default:
 				throw new IllegalArgumentException("Unsupported RewardType: "+type.toString());
