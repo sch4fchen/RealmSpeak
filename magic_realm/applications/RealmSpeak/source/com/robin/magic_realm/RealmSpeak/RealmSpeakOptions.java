@@ -85,6 +85,9 @@ public class RealmSpeakOptions {
 			case TileComponent.DISPLAY_TILES_STYLE_LEGENDARY:
 				TileComponent.displayTilesStyle = TileComponent.DISPLAY_TILES_STYLE_LEGENDARY;
 				break;
+			case TileComponent.DISPLAY_TILES_STYLE_LEGENDARY_WITH_ICONS:
+				TileComponent.displayTilesStyle = TileComponent.DISPLAY_TILES_STYLE_LEGENDARY_WITH_ICONS;
+				break;
 			default:
 				TileComponent.displayTilesStyle = TileComponent.DISPLAY_TILES_STYLE_CLASSIC;
 				break;

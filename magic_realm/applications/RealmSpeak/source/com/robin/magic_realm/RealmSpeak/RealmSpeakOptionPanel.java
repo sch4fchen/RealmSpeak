@@ -49,7 +49,8 @@ public class RealmSpeakOptionPanel extends JDialog {
 	
 	protected JRadioButton classicTilesOption;
 	protected JRadioButton legendaryTilesOption;
-
+	protected JRadioButton legendaryWithIconsTilesOption;
+	
 	protected JCheckBox mapSliderOption;
 	protected JCheckBox highlightClearingNumbersOption;
 	protected JCheckBox showSeasonIconOption;
@@ -124,6 +125,9 @@ public class RealmSpeakOptionPanel extends JDialog {
 		switch(options.getOptions().getInt(RealmSpeakOptions.TILES_DISPLAY_STYLE)) {
 			case TileComponent.DISPLAY_TILES_STYLE_LEGENDARY:
 				legendaryTilesOption.setSelected(true);
+				break;
+			case TileComponent.DISPLAY_TILES_STYLE_LEGENDARY_WITH_ICONS:
+				legendaryWithIconsTilesOption.setSelected(true);
 				break;
 			default:
 				classicTilesOption.setSelected(true);
@@ -232,6 +236,9 @@ public class RealmSpeakOptionPanel extends JDialog {
 	private int getTilesDisplayStyle() {
 		if (legendaryTilesOption.isSelected()) {
 			return TileComponent.DISPLAY_TILES_STYLE_LEGENDARY;
+		}
+		else if (legendaryWithIconsTilesOption.isSelected()) {
+			return TileComponent.DISPLAY_TILES_STYLE_LEGENDARY_WITH_ICONS;
 		}
 		return TileComponent.DISPLAY_TILES_STYLE_CLASSIC;
 	}
@@ -373,7 +380,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		return panel;
 	}
 	private JPanel getTilesOptionsPanel() {
-		JPanel panel = new JPanel(new GridLayout(2,1));
+		JPanel panel = new JPanel(new GridLayout(3,1));
 		panel.setBorder(BorderFactory.createTitledBorder("Standard Tiles Style"));
 		ButtonGroup group = new ButtonGroup();
 		classicTilesOption = new JRadioButton("Classic");
@@ -382,6 +389,9 @@ public class RealmSpeakOptionPanel extends JDialog {
 		legendaryTilesOption = new JRadioButton("Legendary Realm");
 		group.add(legendaryTilesOption);
 		panel.add(legendaryTilesOption);
+		legendaryWithIconsTilesOption = new JRadioButton("Legendary Realm (with Icons)");
+		group.add(legendaryWithIconsTilesOption);
+		panel.add(legendaryWithIconsTilesOption);
 		return panel;
 	}
 	private JPanel getMapOptionsPanel() {

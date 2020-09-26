@@ -44,6 +44,7 @@ public class TileComponent extends ChitComponent {
 	
 	public static final int DISPLAY_TILES_STYLE_CLASSIC = 0;
 	public static final int DISPLAY_TILES_STYLE_LEGENDARY = 1;
+	public static final int DISPLAY_TILES_STYLE_LEGENDARY_WITH_ICONS = 2;
 	public static int displayTilesStyle = DISPLAY_TILES_STYLE_CLASSIC;
 
 	private static Logger logger = Logger.getLogger(TileComponent.class.getName());
@@ -312,6 +313,12 @@ public class TileComponent extends ChitComponent {
 			String legendaryTilePath = folderPath+"_legendary"+"/"+fullImage;
 			if (ResourceFinder.exists(legendaryTilePath)) {
 				folderPath=folderPath+"_legendary";
+			}
+		}
+		else if (displayTilesStyle == DISPLAY_TILES_STYLE_LEGENDARY_WITH_ICONS) {
+			String legendaryWithIconsTilePath = folderPath+"_legendary_icons"+"/"+fullImage;
+			if (ResourceFinder.exists(legendaryWithIconsTilePath)) {
+				folderPath=folderPath+"_legendary_icons";
 			}
 		}
 		folderPath=folderPath+"/";

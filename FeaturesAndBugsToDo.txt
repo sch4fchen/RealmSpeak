@@ -1,6 +1,5 @@
 ::RealmSpeak::
 NEXT::
-show fatigue and wounds in quest editor
 Quest: custom counter. I'd like to be able to define a counter, set a step requirement for the counter at a set level, and then a step reward to increment the counter.
 step requirement for gold acquired in a step isn't working
 
