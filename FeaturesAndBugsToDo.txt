@@ -1,6 +1,4 @@
 ::RealmSpeak::
-NEXT::
-Quest: custom counter. I'd like to be able to define a counter, set a step requirement for the counter at a set level, and then a step reward to increment the counter.
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
 GM: Shuffle components, Flag in gameData: Shuffle when loading (and remove flag)
