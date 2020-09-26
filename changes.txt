@@ -1,6 +1,6 @@
 Version 1.1.3.4 - Changes since 1.1.3.3
 QUEST UPDATE:
-#
+# Display Fatigue and Wounds in quest editor
 NEW FEATURES:
 #
 BUGS/ISSUES:

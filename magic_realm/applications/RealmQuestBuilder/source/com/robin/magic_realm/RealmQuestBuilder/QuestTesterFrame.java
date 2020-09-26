@@ -65,6 +65,8 @@ public class QuestTesterFrame extends JFrame {
 	JLabel fameAmount;
 	JLabel notorietyAmount;
 	JLabel goldAmount;
+	JLabel fatigue;
+	JLabel wounds;
 
 	// Inventory
 	JList activeInventory;
@@ -359,6 +361,54 @@ public class QuestTesterFrame extends JFrame {
 			}
 		});
 		line.add(addGold);
+		box.add(line);
+		
+		line = group.createLabelLine("Recorded Fatique");
+		fatigue = new JLabel();
+		line.add(fatigue);
+		line.add(Box.createHorizontalGlue());
+		JButton subfatigue = new JButton("-");
+		subfatigue.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {		
+				character.setWeatherFatigue(character.getWeatherFatigue()-1);
+				updateCharacterPanel();
+				retestQuest();
+			}
+		});
+		line.add(subfatigue);
+		JButton addfatigue = new JButton("+");
+		addfatigue.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				character.setWeatherFatigue(character.getWeatherFatigue()+1);
+				updateCharacterPanel();
+				retestQuest();
+			}
+		});
+		line.add(addfatigue);
+		box.add(line);
+		
+		line = group.createLabelLine("Recorded Wounds");
+		wounds = new JLabel();
+		line.add(wounds);
+		line.add(Box.createHorizontalGlue());
+		JButton subwounds = new JButton("-");
+		subwounds.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {		
+				character.setExtraWounds(character.getExtraWounds()-1);
+				updateCharacterPanel();
+				retestQuest();
+			}
+		});
+		line.add(subwounds);
+		JButton addwounds = new JButton("+");
+		addwounds.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				character.setExtraWounds(character.getExtraWounds()+1);
+				updateCharacterPanel();
+				retestQuest();
+			}
+		});
+		line.add(addwounds);
 		box.add(line);
 
 		box.add(Box.createVerticalGlue());
@@ -1063,6 +1113,8 @@ public class QuestTesterFrame extends JFrame {
 		fameAmount.setText(String.valueOf((int) character.getFame()));
 		notorietyAmount.setText(String.valueOf((int) character.getNotoriety()));
 		goldAmount.setText(String.valueOf((int) character.getGold()));
+		fatigue.setText(String.valueOf((int) character.getWeatherFatigue()));
+		wounds.setText(String.valueOf((int) character.getExtraWounds()));
 
 		activeInventory.setListData(new Vector<GameObject>(character.getActiveInventory()));
 		inactiveInventory.setListData(new Vector<GameObject>(character.getInactiveInventory()));
