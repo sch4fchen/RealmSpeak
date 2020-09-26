@@ -48,6 +48,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		Companion,
 		//CustomTreasure, // Pick a treasure, clone, and rename it (change attributes?  could be cool... new value, new fame/not, diff weight... - pick from ALL treasures including expansion)
 						// No reason I couldn't make a special dialog for this one...
+		Damage,
 		Hireling,
 		Information,
 		Item,
@@ -58,9 +59,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 		MinorCharacter,
 		PathsPassages,
 		QuestComplete,
-		QuestFailed, 
-		RelationshipSet,
+		QuestFailed,
 		RelationshipChange,
+		RelationshipSet,
 		ResetQuest,
 		ScareMonsters, 
 		//Skill, // special ability (adv/disadv)  The more I think about this, this could be accomplished by providing a treasure, or minor character
@@ -70,10 +71,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 		//SummonRoll,		// Force a monster summoning roll with a specific number
 		SummonMonster,   // Summon a specific monster
 		Teleport,
-		TreasureFromSite, // Select Random/Top/Bottom/Choice from a specific TL/Scholar/Dwelling (NOT minor TLs or TWTs though)
 		TreasureFromHq,
+		TreasureFromSite, // Select Random/Top/Bottom/Choice from a specific TL/Scholar/Dwelling (NOT minor TLs or TWTs though)
 		Visitor,
-		Damage,
 		;
 		public boolean isShown() {
 			switch(this) {

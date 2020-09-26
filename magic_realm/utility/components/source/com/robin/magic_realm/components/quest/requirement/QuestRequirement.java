@@ -34,23 +34,23 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 	public enum RequirementType {
 		Active, // active or inactive
 		Attribute,
+		CastSpell,
 		ColorMagic,
 		Discovery, // must have a specific discovery
 		GamePhase, // end of phase, end of day, start of evening, midnight, birdsong
 		Inventory, // a requirement that tests what you have in inventory
 		Kill, 
 		LearnAwaken,
-		CastSpell,
 		Loot, // (optional location designation)
 		NoDenizens,
 		MinorCharacter,
 		MissionCampaign,
 		OccupyLocation,
 		Path, // follows a specific path
+		Probability,
 		SearchResult, // (optional location designation) Clues, Paths, Passages, Hidden Enemies, Discover Chit(s), Learn and Awaken, Curse!, Awaken, Counters, Treasure Cards,Perceive Spell
 		TimePassed,
 		Trade,
-		Probability,
 		;
 		public String getDescription() {
 			switch (this) {
@@ -58,6 +58,12 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests whether the quest is active or not (needed for Quest Cards)";
 				case Attribute:
 					return "Tests whether a specific attribute (fame, notoriety, gold) has reached a target number.";
+				case CastSpell:
+					return "Tests whether a spell has just been cast.";
+				case ColorMagic:
+					return "Tests whether the character is in the presence of a specific color of magic (either permanent or burning a chit).";
+				case Discovery:
+					return "Tests for a specific recorded discovery.";
 				case GamePhase:
 					return "Tests for a specific game phase (Birdsong, End-of-phase, End-of-turn, Evening).";
 				case Inventory:
@@ -66,32 +72,26 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests for a specific kill or kills.";
 				case LearnAwaken:
 					return "Tests whether a spell has just been awakened and/or learned.";
-				case CastSpell:
-					return "Tests whether a spell has just been cast.";
 				case Loot:
 					return "Tests for a specific item result of looting.";
-				case OccupyLocation:
-					return "Tests whether the character is in a specific location.";
-				case SearchResult:
-					return "Tests for a specific search result.";
-				case TimePassed:
-					return "Tests for a specific length of time passed.";
-				case MissionCampaign:
-					return "Tests for start/stop of Mission/Campaign chits.";
-				case Trade:
-					return "Tests for a specific TRADE occurrence.";
-				case Discovery:
-					return "Tests for a specific recorded discovery.";
 				case NoDenizens:
 					return "Tests for the absence of monster/natives in the clearing or tile.";
 				case MinorCharacter:
 					return "Tests for the presence of a minor character in the character inventory.";
+				case MissionCampaign:
+					return "Tests for start/stop of Mission/Campaign chits.";
+				case OccupyLocation:
+					return "Tests whether the character is in a specific location.";
 				case Path:
 					return "Tests whether the character has followed a specific path."; 
-				case ColorMagic:
-					return "Tests whether the character is in the presence of a specific color of magic (either permanent or burning a chit).";
 				case Probability:
 					return "Requirement is met with a certain probability.";
+				case SearchResult:
+					return "Tests for a specific search result.";
+				case TimePassed:
+					return "Tests for a specific length of time passed.";
+				case Trade:
+					return "Tests for a specific TRADE occurrence.";
 			}
 			return "(No Description)";
 		}

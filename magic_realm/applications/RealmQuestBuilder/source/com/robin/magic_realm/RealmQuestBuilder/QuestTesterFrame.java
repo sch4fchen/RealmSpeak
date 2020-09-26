@@ -103,7 +103,7 @@ public class QuestTesterFrame extends JFrame {
 
 	private void initComponents() {
 		setTitle("RealmSpeak Quest Tester");
-		setSize(1200, 768);
+		setSize(1280, 768);
 
 		setLayout(new BorderLayout());
 
@@ -451,8 +451,8 @@ public class QuestTesterFrame extends JFrame {
 		panel.add(makeTitledScrollPane("Inactive Inventory", inactiveInventory));
 
 		superPanel.add(panel, BorderLayout.CENTER);
-
 		JPanel controls = new JPanel(new GridLayout(2, 4));
+				
 		JButton addNew = new JButton("Item");
 		addNew.setToolTipText("Gain an item (treasure/weapon/armor)");
 		addNew.addActionListener(new ActionListener() {
@@ -468,26 +468,6 @@ public class QuestTesterFrame extends JFrame {
 			}
 		});
 		controls.add(addNew);
-		JButton addMc = new JButton("MC");
-		addMc.setToolTipText("Add a minor character");
-		addMc.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ev) {
-
-				String mcName = JOptionPane.showInputDialog("Minor Character Name"); // mcName??!?  Robble robble robble.
-				if (mcName == null)
-					return;
-
-				QuestMinorCharacter minorCharacter = quest.createMinorCharacter();
-				minorCharacter.setName(mcName);
-				minorCharacter.getGameObject().setThisAttribute(Constants.ACTIVATED);
-				//minorCharacter.setupAbilities();
-				character.getGameObject().add(minorCharacter.getGameObject());
-
-				updateCharacterPanel();
-				retestQuest();
-			}
-		});
-		controls.add(addMc);
 		JButton toggleActive = new JButton("Toggle");
 		toggleActive.setToolTipText("Activate/Deactivate the selected item above.");
 		toggleActive.addActionListener(new ActionListener() {
@@ -532,7 +512,29 @@ public class QuestTesterFrame extends JFrame {
 			}
 		});
 		controls.add(remove);
-		controls.add(Box.createGlue());
+		JButton drop = new JButton("Drop");
+		drop.setToolTipText("Drop the selected item in the clearing.");
+		drop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				TileLocation tl = character.getCurrentLocation();
+				if (activeInventory.getSelectedIndex() != -1) {
+					GameObject thing = (GameObject) activeInventory.getSelectedValue();
+					if (TreasureUtility.doDeactivate(QuestTesterFrame.this, character, thing)) {
+						tl.clearing.add(thing, character);
+						updateCharacterPanel();
+						retestQuest();
+					}
+				}
+				else if (inactiveInventory.getSelectedIndex() != -1) {
+					GameObject thing = (GameObject) inactiveInventory.getSelectedValue();
+					tl.clearing.add(thing, character);
+					updateCharacterPanel();
+					retestQuest();
+				}
+			}
+		});
+		controls.add(drop);
+
 		JButton buy = new JButton("Buy");
 		buy.setEnabled(false); // TODO This doesn't work yet
 		buy.setToolTipText("Buy an Item from a Native.");
@@ -582,30 +584,51 @@ public class QuestTesterFrame extends JFrame {
 			}
 		});
 		controls.add(sell);
-		JButton drop = new JButton("Drop");
-		drop.setToolTipText("Drop the selected item in the clearing.");
-		drop.addActionListener(new ActionListener() {
+		JButton addMc = new JButton("MC");
+		addMc.setToolTipText("Add a minor character");
+		addMc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				TileLocation tl = character.getCurrentLocation();
-				if (activeInventory.getSelectedIndex() != -1) {
-					GameObject thing = (GameObject) activeInventory.getSelectedValue();
-					if (TreasureUtility.doDeactivate(QuestTesterFrame.this, character, thing)) {
-						tl.clearing.add(thing, character);
-						updateCharacterPanel();
-						retestQuest();
-					}
-				}
-				else if (inactiveInventory.getSelectedIndex() != -1) {
-					GameObject thing = (GameObject) inactiveInventory.getSelectedValue();
-					tl.clearing.add(thing, character);
-					updateCharacterPanel();
-					retestQuest();
-				}
+
+				String mcName = JOptionPane.showInputDialog("Minor Character Name"); // mcName??!?  Robble robble robble.
+				if (mcName == null)
+					return;
+
+				QuestMinorCharacter minorCharacter = quest.createMinorCharacter();
+				minorCharacter.setName(mcName);
+				minorCharacter.getGameObject().setThisAttribute(Constants.ACTIVATED);
+				//minorCharacter.setupAbilities();
+				character.getGameObject().add(minorCharacter.getGameObject());
+
+				updateCharacterPanel();
+				retestQuest();
 			}
 		});
-		controls.add(drop);
+		controls.add(addMc);
+		JButton castSpell = new JButton("CastSpell");
+		castSpell.setToolTipText("Casts a spell");
+		castSpell.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				ArrayList<GameObject> spells = chooseOther("Spell", "spell");
+				if (spells == null)
+					return;
+				if (spells.size() != 1) {
+					JOptionPane.showMessageDialog(QuestTesterFrame.this, "Pick 1");
+					return;
+				}
+				updateCharacterPanel();
+								
+				GameObject castedSpell = spells.get(0);
+				String spellName = (castedSpell.getName().replaceAll("(\\s)\\[([0-9]+)\\]",""));
+				castedSpell.setName(spellName);
+				QuestRequirementParams reqParams = new QuestRequirementParams();
+				reqParams.actionType = CharacterActionType.CastSpell;
+				reqParams.objectList.add(castedSpell);
+				retestQuest(reqParams);
+			}
+		});
+		controls.add(castSpell);
+		
 		superPanel.add(controls, BorderLayout.SOUTH);
-
 		return superPanel;
 	}
 
