@@ -31,6 +31,8 @@ import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.effect.ISpellEffect;
 import com.robin.magic_realm.components.effect.SpellEffectContext;
 import com.robin.magic_realm.components.effect.SpellEffectFactory;
+import com.robin.magic_realm.components.quest.CharacterActionType;
+import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
 import com.robin.magic_realm.components.utility.*;
 
 /*
@@ -176,7 +178,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			}
 			setString(CASTER_ID, String.valueOf(caster.getGameObject().getId()));
 		}
-		
+
 		return this;
 	}
 	public CharacterWrapper getCaster() {
@@ -790,6 +792,11 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			if (expireImmediately) {
 				expireSpell();
 			}
+			
+			QuestRequirementParams reqParams = new QuestRequirementParams();
+			reqParams.actionType = CharacterActionType.CastSpell;
+			reqParams.objectList.add(getGameObject());
+			getCaster().testQuestRequirements(parent, reqParams);
 		}
 	}
 	
@@ -811,7 +818,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		// Once the spell affects its target, the marker chit should be removed!
 		if (caster!=null) {
 			combat.removeAttacker(caster);
-		}	
+		}
 	}
 	
 	public ClearingDetail getTargetAsClearing(RealmComponent target) {

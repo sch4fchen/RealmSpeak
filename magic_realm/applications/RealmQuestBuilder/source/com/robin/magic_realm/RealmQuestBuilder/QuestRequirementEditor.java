@@ -119,6 +119,9 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementLearnAwaken.REGEX_FILTER, "Spell filter (regex)", FieldType.Regex, null, new String[] { "spell,learnable" }));
 				list.add(new QuestPropertyBlock(QuestRequirementLearnAwaken.MUST_LEARN, "Must Learn Spell", FieldType.Boolean));
 				break;
+			case CastSpell:
+				list.add(new QuestPropertyBlock(QuestRequirementCastSpell.REGEX_FILTER, "Which spell to cast (regex)", FieldType.Regex, null, new String[] {"spell"}));
+				break;
 			case MinorCharacter:
 				list.add(new QuestPropertyBlock(QuestRequirementMinorCharacter.MINOR_CHARACTER, "Minor character ", FieldType.SmartTextLine, quest.getMinorCharacters().toArray()));
 				break;

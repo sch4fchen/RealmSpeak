@@ -40,6 +40,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		Inventory, // a requirement that tests what you have in inventory
 		Kill, 
 		LearnAwaken,
+		CastSpell,
 		Loot, // (optional location designation)
 		NoDenizens,
 		MinorCharacter,
@@ -65,6 +66,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests for a specific kill or kills.";
 				case LearnAwaken:
 					return "Tests whether a spell has just been awakened and/or learned.";
+				case CastSpell:
+					return "Tests whether a spell has just been cast.";
 				case Loot:
 					return "Tests for a specific item result of looting.";
 				case OccupyLocation:
@@ -202,6 +205,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case LearnAwaken:
 				requirement = new QuestRequirementLearnAwaken(go);
+				break;
+			case CastSpell:
+				requirement = new QuestRequirementCastSpell(go);
 				break;
 			case MinorCharacter:
 				requirement = new QuestRequirementMinorCharacter(go);

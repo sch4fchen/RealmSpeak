@@ -26,6 +26,7 @@ public enum CharacterActionType {
 	FailMissionCampaign,
 	CompleteMissionCampaign,
 	ActivatingItem,
+	CastSpell,
 	;
 	
 	public String getDescriptor() {
