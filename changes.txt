@@ -1,18 +1,26 @@
+Version 1.1.3.4 - Changes since 1.1.3.3
+QUEST UPDATE:
+#
+NEW FEATURES:
+#
+BUGS/ISSUES:
+#
+
 Version 1.1.3.3 - Changes since 1.1.3.2
 QUEST UPDATE:
 # Update on existing quests (with files from http://realmspeak.dewkid.com/custom/quests)
 # New quests (https://boardgamegeek.com/filepage/139595/quests-realmspeaks-expansion-1-version-10)
+# Support for companions Wolf 1, Wolf 2 and transforms in the location setup
+# Support for Hireling reward to place the Hireling in the characters clearing instead of hiring it
+# Support for TreasureFromHQ reward
+# Support for SummonMonster reward
+# Support for Probability QuestRequirement
+# Support for Damage reward
+# Make Tremendous Dragon available as Companion
 NEW FEATURES:
 # Option to change tile style (including option in GM)
 # Option to change chit style in GM
 # Option to choose alternative tiles in new game menu
-# QuestBuilder: Support for companions Wolf 1, Wolf 2 and transforms in the location setup
-# QuestBuilder: Support for Hireling reward to place the Hireling in the characters clearing instead of hiring it
-# QuestBuilder: Support for TreasureFromHQ reward
-# QuestBuilder: Support for SummonMonster reward
-# QuestBuilder: Make Tremendous Dragon available as Companion
-# QuestBuilder: Support for Probability QuestRequirement
-# QuestBuilder: Support for Damage reward
 # TradeAction: Option to cancel buy, ending action.
 # Host can toggle "Beginner Mode" for characters (like Timeless Jewel: character does not need to write down actions).
 # Host can toggle "Add Character" button for other players.
