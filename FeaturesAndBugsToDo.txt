@@ -1,8 +1,6 @@
 ::RealmSpeak::
 NEXT::
 Quest: custom counter. I'd like to be able to define a counter, set a step requirement for the counter at a set level, and then a step reward to increment the counter.
-step requirement for gold acquired in a step isn't working
-
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
 GM: Shuffle components, Flag in gameData: Shuffle when loading (and remove flag)
@@ -86,6 +84,7 @@ Don't know about this one:  Does Flowers of Rest work correctly in combat?
 0001715: Memory Leak when Ending/Starting game without closing
 0001692: Incorrect sheltered phase - flying and after running away
 0001684: Melt Into Mist prevented Absorb Essence
+0001606: Simultaneous Knight Attack Problem
 0001487: Not getting a bonus move when I activate Timeless Jewel
 0001431: Edit Hall of Fame?
 0001330: Ability to keep targets after control spell has energized

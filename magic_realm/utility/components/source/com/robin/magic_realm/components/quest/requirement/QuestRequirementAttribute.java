@@ -171,13 +171,15 @@ public class QuestRequirementAttribute extends QuestRequirement {
 				return go.getThisInt("notoriety");
 			case GreatTreasures:
 				return go.hasThisAttribute("great") ? 1 : 0;
+			default:
+				return 0; // no value for gold or recorded spells
 		}
-		return 0; // no value for gold or recorded spells
 	}
 
 	private int getKillsValue(CharacterWrapper character, AttributeType attribute, DayKey earliest) {
-		if (attribute != AttributeType.Fame && attribute != AttributeType.Notoriety)
-			return 0; // TODO What about gold bounties?
+		if (attribute != AttributeType.Fame && attribute != AttributeType.Notoriety && attribute != AttributeType.Gold) {
+			return 0;
+		}
 
 		String regex = getRegExFilter();
 		Pattern pattern = regex == null || regex.trim().length() == 0 ? null : Pattern.compile(regex);
@@ -204,6 +206,9 @@ public class QuestRequirementAttribute extends QuestRequirement {
 					good += (int) spoils.getFame();
 				else if (attribute == AttributeType.Notoriety)
 					good += (int) spoils.getNotoriety();
+				else if (attribute == AttributeType.Gold && go.hasThisAttribute("native")) {
+					good += Integer.parseInt(go.getThisAttribute("base_price"));
+				}
 			}
 		}
 		return good;

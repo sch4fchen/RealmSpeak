@@ -784,8 +784,6 @@ public class QuestBuilderFrame extends JFrame {
 
 	private JPanel buildQuestRulesPanel() {
 		questRulesTable = new JTable(new QuestRulesTableModel(quest));
-		// ComponentTools.lockColumnWidth(locationTable,0,100);
-		// ComponentTools.lockColumnWidth(locationTable,1,60);
 		questRulesTable.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent ev) {
 				if (ev.getClickCount() == 2) {

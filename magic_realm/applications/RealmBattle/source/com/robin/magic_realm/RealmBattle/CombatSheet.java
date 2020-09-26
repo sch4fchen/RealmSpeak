@@ -212,8 +212,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 				Iterator r=rs.iterator();
 				Iterator s=ss.iterator();
 				while(r.hasNext()) {
-					// TODO Would be nice to recognize whether a roll refers to a target on this
-					// sheet or not.
+					// TODO Would be nice to recognize whether a roll refers to a target on this sheet or not.
 					RollerResult rr = new RollerResult(
 							prefix+combat.getGameObject().getName()+type,
 							(String)r.next(),

@@ -828,16 +828,20 @@ public class QuestTesterFrame extends JFrame {
 				String dayKey = character.getCurrentDayKey();
 				ArrayList<GameObject> kills = character.getKills(dayKey);
 				int killCount = kills == null ? 0 : kills.size();
-				victim.getGameObject().setThisAttribute(Constants.DEAD);
+				GameObject victimGameObject = victim.getGameObject();
+				victimGameObject.setThisAttribute(Constants.DEAD);
 				Spoils spoils = new Spoils();
-				spoils.addFame(victim.getGameObject().getThisInt("fame"));
-				spoils.addNotoriety(victim.getGameObject().getThisInt("notoriety"));
+				spoils.addFame(victimGameObject.getThisInt("fame"));
+				spoils.addNotoriety(victimGameObject.getThisInt("notoriety"));
 				spoils.setUseMultiplier(true);
 				spoils.setMultiplier(killCount + 1);
-				character.addKill(victim.getGameObject(), spoils);
+				character.addKill(victimGameObject, spoils);
 				character.addFame(spoils.getFame());
 				character.addNotoriety(spoils.getNotoriety());
-				victim.getGameObject().detach();
+				if (victimGameObject.hasThisAttribute("native")) {
+					character.addGold(Integer.parseInt(victimGameObject.getThisAttribute("base_price")));
+				}				
+				victimGameObject.detach();
 				updateCharacterPanel();
 				int listLength = clearingComponents.getModel().getSize();
 				if (listLength > 0) {
