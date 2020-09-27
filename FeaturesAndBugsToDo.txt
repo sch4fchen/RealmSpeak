@@ -37,7 +37,6 @@ Guilds not showing up on friendliness chart - should they?  Yes!
 Be nice to have a randomize native positioning
 Minotaur buckler not really implemented as I would like:  it should be able to block hits...
 ---:::BUGS:::---
-The minor character ability to walk the woods on the 7th day does not seem to be working.
 Wizard advancement - didn't get MOVE M5->MAGIC III
 When choosing a flying hex, the thick border spills over onto the treasure cards and other...
 Don't know about this one:  Does Flowers of Rest work correctly in combat?
