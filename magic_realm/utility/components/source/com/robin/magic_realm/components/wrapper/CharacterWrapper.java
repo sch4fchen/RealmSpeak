@@ -1719,7 +1719,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean canWalkWoods(TileComponent tile) {
 		String condition = null;
 		
-		if(tile.isValley() && this.isValeWalker() ){return true;}
+		if (tile.isValley() && this.isValeWalker() ){return true;}
 		
 		GameObject transmorph = getTransmorph();
 		if (transmorph!=null) {
@@ -1729,10 +1729,13 @@ public class CharacterWrapper extends GameObjectWrapper {
 			condition = getGameObject().getThisAttribute(Constants.WALK_WOODS);
 		}
 		
-		if (condition==null) {
+		if (condition==null || condition.trim().length()!=0) {
 			ArrayList<GameObject> inventory = getGameObject().getHold();
 			for (GameObject item : inventory) {
-				condition = item.getThisAttribute(Constants.WALK_WOODS) != null ? item.getThisAttribute(Constants.WALK_WOODS) : condition;
+				String itemCondition = item.getThisAttribute(Constants.WALK_WOODS);
+				if (itemCondition != null && (condition==null || (condition.trim().length()!=0 && itemCondition.trim().length()==0))) {
+					condition = itemCondition;
+				}
 			}
 		}
 		
