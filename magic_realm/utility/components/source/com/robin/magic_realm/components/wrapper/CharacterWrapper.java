@@ -1728,6 +1728,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 		else {
 			condition = getGameObject().getThisAttribute(Constants.WALK_WOODS);
 		}
+		
+		if (condition==null) {
+			ArrayList<GameObject> inventory = getGameObject().getHold();
+			for (GameObject item : inventory) {
+				condition = item.getThisAttribute(Constants.WALK_WOODS) != null ? item.getThisAttribute(Constants.WALK_WOODS) : condition;
+			}
+		}
+		
 		if (condition!=null) {
 			if (condition.trim().length()==0) {
 				// if condition is empty, then we are good to go
