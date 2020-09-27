@@ -350,7 +350,7 @@ public class QuestLocation extends GameObjectWrapper {
 			GameObject go = gameData.getGameObjectByNameIgnoreCase(tileName);
 			if (go!=null) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
-				if (rc.isTile()) {
+				if (rc != null && rc.isTile()) {
 					TileComponent tile = (TileComponent)rc;
 					ClearingDetail clearing = clearingNum>0?tile.getClearing(clearingNum):null;
 					return new TileLocation(tile,clearing,false);
