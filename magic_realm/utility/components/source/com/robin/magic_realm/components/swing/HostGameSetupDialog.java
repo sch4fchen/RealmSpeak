@@ -369,7 +369,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		useWeather.setEnabled(editMode && startingSeason.getSelectedIndex()>0);
 	}
 	private void initComponents() {
-		setSize(850,750);
+		setSize(1000,750);
 		setLocationRelativeTo(null);
 		setModal(true);
 		
@@ -877,7 +877,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		gamePlayBox.add(box);
 			box = group.createLabelLine("Optional Season");
 				ArrayList seasons = new ArrayList(RealmCalendar.findSeasons(gameData));
-				seasons.add(1,"  Random Starting Season");
+				seasons.add(1,"  Random Season");
 				startingSeason = notifier.getComboBox(seasons.toArray());
 				startingSeason.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent ev) {
@@ -907,7 +907,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 						return this;
 					}
 				});
-				ComponentTools.lockComponentSize(startingSeason,200,40);
+				ComponentTools.lockComponentSize(startingSeason,160,40);
 			box.add(startingSeason);
 			box.add(Box.createHorizontalGlue());
 		gamePlayBox.add(box);
