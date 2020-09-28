@@ -41,9 +41,6 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 				SetupCardUtility.resetDenizen(denizen);
 			}
 		}
-		CenteredMapView map = CenteredMapView.getSingleton();
-		map.setReplot(true);
-		map.repaint();
 	}
 	
 	public String getDescription() {
