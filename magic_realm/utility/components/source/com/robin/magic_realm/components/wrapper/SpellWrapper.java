@@ -876,9 +876,6 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
 		return hostPrefs.hasPref(Constants.OPT_ENHANCED_MAGIC) || hostPrefs.hasPref(Constants.HOUSE2_REVISED_ENHANCED_MAGIC);
 	}
-//	public void testVirtual() {
-//		setBoolean(SPELL_VIRTUAL,true);
-//	}
 	public static void copyTransformToObject(GameObject source,String blockName,GameObject dest) {
 		String animalName = source.getAttribute(blockName,"name");
 		dest.setName(animalName);

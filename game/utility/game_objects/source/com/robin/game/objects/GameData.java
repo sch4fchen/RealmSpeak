@@ -21,6 +21,7 @@ import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
+import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
@@ -209,6 +210,16 @@ public class GameData extends ModifyableObject implements Serializable {
 		ArrayList<GameObject> val = gameObjectNameHash.getList(name);
 		if (val!=null) {
 			ret.addAll(val);
+		}
+		return ret;
+	}
+	public ArrayList<GameObject> getGameObjectsByNameRegex(String nameRegex) {
+		ArrayList<GameObject> ret = new ArrayList<GameObject>();
+		String regex = nameRegex.trim()+".*";
+		for(String test:gameObjectNameHash.keySet()) {
+			if (Pattern.matches(regex, test.trim())) {
+				ret.addAll(gameObjectNameHash.getList(test));
+			}
 		}
 		return ret;
 	}

@@ -347,7 +347,7 @@ public class CharacterHirelingPanel extends CharacterFramePanel {
 					horseSide2 = null;
 				}
 				termOfHire = null;
-				if (!rc.getGameObject().hasThisAttribute("companion")) {
+				if (!rc.getGameObject().hasThisAttribute(Constants.COMPANION)) {
 					termOfHire = new Integer(rc.getTermOfHire());
 				}
 			}

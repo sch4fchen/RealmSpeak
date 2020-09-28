@@ -2044,8 +2044,8 @@ public class RealmSpeakFrame extends JFrame {
 	}
 	public static void main(String[]args) {
 		String ver = System.getProperty("java.vm.version");
-		if (ver.startsWith("1.4.") || ver.startsWith("1.3.") || ver.startsWith("1.2.") || ver.startsWith("1.1.")) {
-			JOptionPane.showMessageDialog(null,"RealmSpeak is now compiled for Java 1.5.\nYou are currently running version "+ver
+		if (ver.startsWith("1.7.") || ver.startsWith("1.6.") || ver.startsWith("1.5.") || ver.startsWith("1.4.") || ver.startsWith("1.3.") || ver.startsWith("1.2.") || ver.startsWith("1.1.")) {
+			JOptionPane.showMessageDialog(null,"RealmSpeak is now compiled for Java 1.8.\nYou are currently running version "+ver
 					+".\nI would recommend upgrading your Java installation by visiting adoptopenjdk.net."
 					,"Old Java Installation",JOptionPane.WARNING_MESSAGE);
 		}

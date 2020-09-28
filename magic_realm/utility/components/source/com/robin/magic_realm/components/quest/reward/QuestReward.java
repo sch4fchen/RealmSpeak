@@ -60,6 +60,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		PathsPassages,
 		QuestComplete,
 		QuestFailed,
+		RegenerateDenizen,
 		RelationshipChange,
 		RelationshipSet,
 		ResetQuest,
@@ -88,37 +89,38 @@ public abstract class QuestReward extends AbstractQuestObject {
 
 		public String getDescription() {
 			switch(this) {
+				case ActivateQuest:				return "Activates the quest if not already active.  Primarily used for \"Questing the Realm\" gameplay option.";	
+				case AlterBlock:				return "Change questing character's blocked status (from blocked to unblocked, or the other way around).";	
+				case AlterHide:					return "Change questing character's hide status (from hidden to unhidden, or the other way around).";
+				case Attribute:					return "Modify Fame, Notoriety, or Gold.  Can either add or subtract points/gold.";
+				case ChooseNextStep:			return "Player chooses the next step to process from those steps that follow this step, and fullfill requirements.";
+				case Companion:					return "Add or remove a monster ally.";
+				//case CustomTreasure:			return "Create a new treasure by taking an existing treasure, renaming it, and giving it new  base attributes.";
+				case Damage:					return "Character receives fatigue or wounds.";
+				case Hireling:					return "Add or remove a hireling.";
 				case Information:				return "Displays a dialog with information in it.  This is a good way to inform the player what is happening.";
 				case Item:						return "Add an item to the character inventory, or take one away.  Allows for choosing items from a group.";
-				case Attribute:					return "Modify Fame, Notoriety, or Gold.  Can either add or subtract points/gold.";
-				case Hireling:					return "Add or remove a hireling.";
-				case Visitor:					return "Add or remove a visitor.";
-				case Companion:					return "Add or remove a monster ally.";
+				case Journal:					return "Add or update a journal entry for this quest.";
+				case LostInventoryToDefault:	return "All future lost inventory from this quest will go to wherever they started the game, including treasures.  This is the default setting.";
+				case LostInventoryToLocation:	return "All future lost inventory from this quest will go to a specified location.";
+				case MarkDenizen:				return "Mark a particular denizen for later reference.  This is useful if you want to make sure a character kills (for example) a particular monster.";
 				case MinorCharacter:			return "Add or remove a Minor Character.  Must create Minor Characters BEFORE creating this reward.";
-				case Teleport:					return "Teleport the character to a new location.  Must create a QuestLocation BEFORE creating this reward.";
-				case RelationshipSet:			return "Set the relationship of the character with a particular native group, or all natives in the clearing.";
-				case RelationshipChange:		return "Modify the relationship of the character with a particular native group, or all natives in the clearing.";
+				case PathsPassages:				return "Discover Paths and/or Passages in the current clearing or tile.";
 				case QuestComplete:				return "Tells RealmSpeak that the character has completed this quest.";
 				case QuestFailed:				return "Tells RealmSpeak that the character has failed this quest.";
+				case RegenerateDenizen:			return "Regenerates denizen back to the chart of appearance.";
+				case RelationshipChange:		return "Modify the relationship of the character with a particular native group, or all natives in the clearing.";
+				case RelationshipSet:			return "Set the relationship of the character with a particular native group, or all natives in the clearing.";
+				case ResetQuest:				return "Completely resets the quest, unmarking all quest steps and journal entries.";
+				case ScareMonsters:				return "Randomly move all monsters in current clearing to other clearings either in the same tile or other tiles, as defined.";
+				case SpellFromSite:				return "Learn a spell from a specific site, book, artifact, or Shaman.";
+				case StripInventory:			return "Removes ALL inventory and (optionally) gold from the character.";
 				case SummonGuardian:			return "For a specific quest location, summon the treasure site guardian (if any)";
 				case SummonMonster:				return "Summon a Monster to the characters clearing.";
-				case ScareMonsters:				return "Randomly move all monsters in current clearing to other clearings either in the same tile or other tiles, as defined.";
-				case AlterHide:					return "Change questing character's hide status (from hidden to unhidden, or the other way around).";
-				case MarkDenizen:				return "Mark a particular denizen for later reference.  This is useful if you want to make sure a character kills (for example) a particular monster.";
-				case StripInventory:			return "Removes ALL inventory and (optionally) gold from the character.";
-				case LostInventoryToLocation:	return "All future lost inventory from this quest will go to a specified location.";
-				case LostInventoryToDefault:	return "All future lost inventory from this quest will go to wherever they started the game, including treasures.  This is the default setting.";
-				case ActivateQuest:				return "Activates the quest if not already active.  Primarily used for \"Questing the Realm\" gameplay option.";
-				case ResetQuest:				return "Completely resets the quest, unmarking all quest steps and journal entries.";
-				case AlterBlock:				return "Change questing character's blocked status (from blocked to unblocked, or the other way around).";
-				case Journal:					return "Add or update a journal entry for this quest.";
-				case PathsPassages:				return "Discover Paths and/or Passages in the current clearing or tile.";
-				case ChooseNextStep:			return "Player chooses the next step to process from those steps that follow this step, and fullfill requirements.";
-				//case CustomTreasure:			return "Create a new treasure by taking an existing treasure, renaming it, and giving it new  base attributes.";
+				case Teleport:					return "Teleport the character to a new location.  Must create a QuestLocation BEFORE creating this reward.";
 				case TreasureFromSite:			return "Gain a treasure from a specific site, dwelling, or Scholar.";
 				case TreasureFromHq:			return "Gain a treasure from a specific HQ.";
-				case SpellFromSite:				return "Learn a spell from a specific site, book, artifact, or Shaman.";
-				case Damage:					return "Character receives fatigue or wounds.";
+				case Visitor:					return "Add or remove a visitor.";
 			}
 			return "(No Description)";
 		}
@@ -263,6 +265,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case Teleport:
 				reward = new QuestRewardTeleport(go);
+				break;
+			case RegenerateDenizen:
+				reward = new QuestRewardRegenerateDenizen(go);
 				break;
 			case RelationshipSet:
 				reward = new QuestRewardRelationshipSet(go);

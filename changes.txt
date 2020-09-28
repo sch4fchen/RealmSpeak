@@ -3,6 +3,7 @@ QUEST UPDATE:
 # Display Fatigue and Wounds in quest editor
 # Support for Cast a spell QuestRequirement
 # Support for Cast multiple (unique) spells QuestRequirement
+# Support for Regenerate denizen QuestReward
 NEW FEATURES:
 # Option to change tile style to Legendary Realm with icons
 BUGS/ISSUES:

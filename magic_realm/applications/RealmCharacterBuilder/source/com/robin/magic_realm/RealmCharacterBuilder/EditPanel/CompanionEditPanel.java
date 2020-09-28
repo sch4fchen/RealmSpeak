@@ -218,7 +218,7 @@ public class CompanionEditPanel extends AdvantageEditPanel {
 					GamePool pool = new GamePool(getGameData().getGameObjects());
 					ArrayList query = new ArrayList();
 					query.add("Name="+name);
-					query.add("companion");
+					query.add(Constants.COMPANION);
 					
 					// Delete the companion from the gameData object
 					GameObject companion = pool.findFirst(query);

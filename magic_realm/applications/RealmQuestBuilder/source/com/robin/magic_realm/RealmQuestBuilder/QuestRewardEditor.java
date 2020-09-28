@@ -116,7 +116,10 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case PathsPassages:
 				list.add(new QuestPropertyBlock(QuestRewardPathsPassages.DISCOVERY_TYPE, "Road type to discover", FieldType.StringSelector, RoadDiscoveryType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardPathsPassages.DISCOVERY_SCOPE, "Scope of discovery", FieldType.StringSelector, MapScopeType.values()));
-				break;		
+				break;	
+			case RegenerateDenizen:
+				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.DENIZEN_REGEX, "Denizen", FieldType.Regex, null, new String[] { "denizen" }));
+				break;	
 			case RelationshipChange:
 				list.add(new QuestPropertyBlock(QuestRewardRelationshipChange.NATIVE_GROUP, "Native group", FieldType.StringSelector, getRelationshipNames()));
 				list.add(new QuestPropertyBlock(QuestRewardRelationshipChange.GAIN_TYPE, "Gain or lose", FieldType.StringSelector, GainType.values()));

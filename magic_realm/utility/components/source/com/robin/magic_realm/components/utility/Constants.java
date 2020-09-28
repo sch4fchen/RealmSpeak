@@ -210,6 +210,7 @@ public class Constants {
 	
 	public static final String VISITOR = "visitor";
 	public static final String CLONED = "cloned";
+	public static final String COMPANION = "companion";
 	
 	// Spoils of War needed action
 	public static final String SPOILS_ = "spoils_";

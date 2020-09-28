@@ -187,7 +187,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		TextType tt;
 
 		// Draw Name
-		if (!getGameObject().hasThisAttribute("companion")) {
+		if (!getGameObject().hasThisAttribute(Constants.COMPANION)) {
 			String id;
 			if (getGameObject().hasThisAttribute(Constants.BOARD_NUMBER)) {
 				id = name.substring(name.length() - 4,name.length()-2).trim();
