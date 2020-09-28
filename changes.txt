@@ -2,6 +2,7 @@ Version 1.1.3.4 - Changes since 1.1.3.3
 QUEST UPDATE:
 # Display Fatigue and Wounds in quest editor
 # Support for Cast a spell QuestRequirement
+# Support for Cast multiple (unique) spells QuestRequirement
 NEW FEATURES:
 # Option to change tile style to Legendary Realm with icons
 BUGS/ISSUES:

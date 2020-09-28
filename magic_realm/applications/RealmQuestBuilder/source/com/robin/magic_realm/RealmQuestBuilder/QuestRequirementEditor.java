@@ -62,8 +62,12 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementAttribute.REGEX_FILTER, "Filter points to what things (regex)", FieldType.Regex, null, new String[] { "item", "spell", "denizen" }));
 				list.add(new QuestPropertyBlock(QuestRequirementAttribute.AUTO_JOURNAL, "Auto Journal Entry", FieldType.Boolean));
 				break;
+			case CastMultipleSpells:
+				list.add(new QuestPropertyBlock(QuestRequirementCastMultipleSpells.NUMBER_OF_SPELLS, "Number of spells", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRequirementCastMultipleSpells.UNIQUE, "Unique spells", FieldType.Boolean));
+				break;
 			case CastSpell:
-				list.add(new QuestPropertyBlock(QuestRequirementCastSpell.REGEX_FILTER, "Which spell to cast (regex)", FieldType.Regex, null, new String[] {"spell"}));
+				list.add(new QuestPropertyBlock(QuestRequirementCastSpell.REGEX_FILTER, "Spell to be casted (regex)", FieldType.Regex, null, new String[] {"spell"}));
 				break;
 			case ColorMagic:
 				list.add(new QuestPropertyBlock(QuestRequirementColorMagic.COLOR_KEY, "In the presence of color magic", FieldType.StringSelector, new String[]{"White","Grey","Gold","Purple","Black"}));

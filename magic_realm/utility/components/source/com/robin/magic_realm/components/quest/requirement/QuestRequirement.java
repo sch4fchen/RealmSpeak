@@ -34,6 +34,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 	public enum RequirementType {
 		Active, // active or inactive
 		Attribute,
+		CastMultipleSpells,
 		CastSpell,
 		ColorMagic,
 		Discovery, // must have a specific discovery
@@ -58,6 +59,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests whether the quest is active or not (needed for Quest Cards)";
 				case Attribute:
 					return "Tests whether a specific attribute (fame, notoriety, gold) has reached a target number.";
+				case CastMultipleSpells:
+					return "Tests whether a certain number of (unique) spells have been cast.";
 				case CastSpell:
 					return "Tests whether a spell has just been cast.";
 				case ColorMagic:
@@ -164,62 +167,65 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 	public static QuestRequirement getRequirement(RequirementType type, GameObject go) {
 		QuestRequirement requirement = null;
 		switch (type) {
-			case Attribute:
-				requirement = new QuestRequirementAttribute(go);
-				break;
-			case OccupyLocation:
-				requirement = new QuestRequirementLocation(go);
-				break;
-			case Loot:
-				requirement = new QuestRequirementLoot(go);
-				break;
-			case Kill:
-				requirement = new QuestRequirementKill(go);
-				break;
-			case TimePassed:
-				requirement = new QuestRequirementTimePassed(go);
-				break;
-			case GamePhase:
-				requirement = new QuestRequirementGamePhase(go);
-				break;
 			case Active:
 				requirement = new QuestRequirementActive(go);
 				break;
-			case SearchResult:
-				requirement = new QuestRequirementSearchResult(go);
+			case Attribute:
+				requirement = new QuestRequirementAttribute(go);
 				break;
-			case Inventory:
-				requirement = new QuestRequirementInventory(go);
-				break;
-			case MissionCampaign:
-				requirement = new QuestRequirementMissionCampaign(go);
-				break;
-			case Trade:
-				requirement = new QuestRequirementTrade(go);
-				break;
-			case Discovery:
-				requirement = new QuestRequirementDiscovery(go);
-				break;
-			case NoDenizens:
-				requirement = new QuestRequirementNoDenizens(go);
-				break;
-			case LearnAwaken:
-				requirement = new QuestRequirementLearnAwaken(go);
+			case CastMultipleSpells:
+				requirement = new QuestRequirementCastMultipleSpells(go);
 				break;
 			case CastSpell:
 				requirement = new QuestRequirementCastSpell(go);
 				break;
+			case ColorMagic:
+				requirement = new QuestRequirementColorMagic(go);
+				break;
+			case Discovery:
+				requirement = new QuestRequirementDiscovery(go);
+				break;
+			case GamePhase:
+				requirement = new QuestRequirementGamePhase(go);
+				break;
+			case Inventory:
+				requirement = new QuestRequirementInventory(go);
+				break;
+			case Kill:
+				requirement = new QuestRequirementKill(go);
+				break;
+			case LearnAwaken:
+				requirement = new QuestRequirementLearnAwaken(go);
+				break;
+			case Loot:
+				requirement = new QuestRequirementLoot(go);
+				break;
+			case NoDenizens:
+				requirement = new QuestRequirementNoDenizens(go);
+				break;
 			case MinorCharacter:
 				requirement = new QuestRequirementMinorCharacter(go);
+				break;
+			case MissionCampaign:
+				requirement = new QuestRequirementMissionCampaign(go);
+				break;
+			case TimePassed:
+				requirement = new QuestRequirementTimePassed(go);
+				break;
+			case Trade:
+				requirement = new QuestRequirementTrade(go);
+				break;
+			case OccupyLocation:
+				requirement = new QuestRequirementLocation(go);
 				break;
 			case Path:
 				requirement = new QuestRequirementPath(go);
 				break;
-			case ColorMagic:
-				requirement = new QuestRequirementColorMagic(go);
-				break;
 			case Probability:
 				requirement = new QuestRequirementProbability(go);
+				break;
+			case SearchResult:
+				requirement = new QuestRequirementSearchResult(go);
 				break;
 			default:
 				throw new IllegalArgumentException("Unsupported RequirementType: " + type.toString());
