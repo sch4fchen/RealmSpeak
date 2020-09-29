@@ -265,6 +265,7 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 		RealmLogging.logMessage(getCharacter().getName(),sb.toString());
 		updatePanel();
 		updateControls();
+		getGameHandler().getInspector().redrawMap();
 	}
 
 	private Quest getSelectedQuest() {

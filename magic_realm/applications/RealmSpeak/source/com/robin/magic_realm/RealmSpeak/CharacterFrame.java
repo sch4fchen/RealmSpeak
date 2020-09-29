@@ -536,6 +536,9 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			
 			// finally update the character
 			updateCharacter();
+			
+			// update map, some quests need it
+			gameHandler.getInspector().redrawMap();
 		}
 		updateControls();
 	}
@@ -661,7 +664,9 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 							qp.actionName = gsrc.getGameObject().getName();
 							qp.actionType = CharacterActionType.PickUpMissionCampaign;
 							qp.targetOfSearch = gsrc.getGameObject();
-							getCharacter().testQuestRequirements(gameHandler.getMainFrame(),qp);
+							if(getCharacter().testQuestRequirements(gameHandler.getMainFrame(),qp)) {
+								gameHandler.getInspector().redrawMap();
+							}
 	
 							gameHandler.submitChanges();
 							gameHandler.updateCharacterFrames();

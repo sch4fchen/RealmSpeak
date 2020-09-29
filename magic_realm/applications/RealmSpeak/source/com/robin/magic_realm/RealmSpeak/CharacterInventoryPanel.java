@@ -343,6 +343,7 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 				qp.targetOfSearch = gs.getGameObject();
 				if (getCharacter().testQuestRequirements(getMainFrame(),qp)) {
 					getCharacterFrame().updateCharacter();
+					getGameHandler().getInspector().redrawMap();
 				}
 			}
 							

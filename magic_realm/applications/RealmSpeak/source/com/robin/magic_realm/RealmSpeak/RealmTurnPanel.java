@@ -599,6 +599,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 					qp.targetOfSearch = gs.getGameObject();
 					if (getCharacter().testQuestRequirements(getMainFrame(),qp)) {
 						getCharacterFrame().updateCharacter();
+						getGameHandler().getInspector().redrawMap();
 					}
 				}				
 			}
@@ -746,6 +747,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 
 		if (getCharacter().testQuestRequirements(getMainFrame(),params)) {
 			getCharacterFrame().updateCharacter();
+			getGameHandler().getInspector().redrawMap();
 		}
 		
 		getGameHandler().submitChanges(); // Will this work okay?
@@ -1025,6 +1027,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		params.timeOfCall = GamePhaseType.EndOfTurn;
 		if (getCharacter().testQuestRequirements(getMainFrame(),params)) {
 			getCharacterFrame().updateCharacter();
+			getGameHandler().getInspector().redrawMap();
 		}
 		
 		// Flip chits, and summon monsters/natives
@@ -1072,7 +1075,9 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		
 		// Test requirements one more time (in case any are dependent on start of evening)
 		params.timeOfCall = GamePhaseType.StartOfEvening; // technically not evening until all players are done with their turn, but this is good enough I think
-		getCharacter().testQuestRequirements(getMainFrame(),params);
+		if(getCharacter().testQuestRequirements(getMainFrame(),params)) {
+			getGameHandler().getInspector().redrawMap();
+		}
 		
 		// cleanup and notify host
 		getCharacterFrame().hideYourTurn();

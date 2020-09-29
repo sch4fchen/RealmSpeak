@@ -160,6 +160,7 @@ public class CharacterActionPanel extends CharacterFramePanel {
 			params.timeOfCall = GamePhaseType.Birdsong;
 			if (getCharacter().testQuestRequirements(getMainFrame(),params)) {
 				getCharacterFrame().updateCharacter(); // might be recursive, but the requirements shouldn't yield rewards more than once...
+				getGameHandler().getInspector().redrawMap();
 			}
 			getCharacter().setNeedsQuestCheck(false);
 		}
