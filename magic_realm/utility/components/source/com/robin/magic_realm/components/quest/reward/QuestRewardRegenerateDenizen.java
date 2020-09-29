@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
+import com.robin.magic_realm.RealmSpeak.RealmGameHandler;
+import com.robin.magic_realm.RealmSpeak.RealmSpeakFrame;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.SetupCardUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -39,6 +41,11 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 			if (denizen != null && denizen.hasThisAttribute("denizen") && !denizen.hasThisAttribute(Constants.CLONED) && !denizen.hasThisAttribute(Constants.COMPANION)) {			
 				SetupCardUtility.resetDenizen(denizen);
 			}
+		}
+		RealmSpeakFrame realmSpeakFrame = (RealmSpeakFrame) frame;
+		RealmGameHandler gameHandler = realmSpeakFrame.getGameHandler();
+		if (gameHandler!=null) {
+			gameHandler.getInspector().redrawMap();
 		}
 	}
 	
