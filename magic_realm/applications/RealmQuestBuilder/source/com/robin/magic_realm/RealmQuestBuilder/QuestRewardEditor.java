@@ -77,6 +77,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case Companion:
 				list.add(new QuestPropertyBlock(QuestRewardCompanion.COMPANION_NAME, "Companion", FieldType.CompanionSelector, getAllCompanionKeyValues()));
 				list.add(new QuestPropertyBlock(QuestRewardCompanion.GAIN_TYPE, "Gain or lose", FieldType.StringSelector, GainType.values()));
+				list.add(new QuestPropertyBlock(QuestRewardCompanion.EXCLUDE_HORSE, "Exclude horse", FieldType.Boolean));
 				break;
 			case Damage:
 				list.add(new QuestPropertyBlock(QuestRewardDamage.DAMAGE_TYPE, "Damage Type", FieldType.StringSelector, DamageType.values()));

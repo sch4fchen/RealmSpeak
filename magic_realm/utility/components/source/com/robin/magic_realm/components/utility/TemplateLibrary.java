@@ -100,6 +100,10 @@ public class TemplateLibrary {
 		templateHash.put(name,go);
 	}
 	public GameObject getCompanionTemplate(String name,String query) {
+		return getCompanionTemplate(name,query,true);
+	}
+	
+	public GameObject getCompanionTemplate(String name,String query,boolean includeHorse) {
 		GameObject template = templateHash.get(name);
 		if (template==null) {
 			if (query.startsWith("Transform|")) {
@@ -119,14 +123,16 @@ public class TemplateLibrary {
 					template.copyAttributesFrom(go);
 					
 					// Get steeds
-					for (Iterator i=go.getHold().iterator();i.hasNext();) {
-						GameObject held = (GameObject)i.next();
-						GameObject heldTemplate = GameObject.createEmptyGameObject();
-						heldTemplate.copyAttributesFrom(held);
-						heldTemplate.setAttribute("trot","chit_color","paleyellow");
-						heldTemplate.setAttribute("gallop","chit_color","yellow");
-						heldTemplate.setThisAttribute(Constants.COMPANION);
-						template.add(heldTemplate);
+					if(includeHorse) {
+						for (Iterator i=go.getHold().iterator();i.hasNext();) {
+							GameObject held = (GameObject)i.next();
+							GameObject heldTemplate = GameObject.createEmptyGameObject();
+							heldTemplate.copyAttributesFrom(held);
+							heldTemplate.setAttribute("trot","chit_color","paleyellow");
+							heldTemplate.setAttribute("gallop","chit_color","yellow");
+							heldTemplate.setThisAttribute(Constants.COMPANION);
+							template.add(heldTemplate);
+						}
 					}
 					
 					// update some specific attributes

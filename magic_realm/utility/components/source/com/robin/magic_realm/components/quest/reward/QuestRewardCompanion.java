@@ -34,6 +34,7 @@ public class QuestRewardCompanion extends QuestReward {
 	
 	public static final String COMPANION_NAME = "_cn";
 	public static final String GAIN_TYPE = "_goc";
+	public static final String EXCLUDE_HORSE = "_eh";
 	
 	public QuestRewardCompanion(GameObject go) {
 		super(go);
@@ -41,7 +42,7 @@ public class QuestRewardCompanion extends QuestReward {
 
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		if (getGainType()==GainType.Gain) {
-			GameObject template = TemplateLibrary.getSingleton().getCompanionTemplate(getCompanionKeyName(),getCompanionQuery());
+			GameObject template = TemplateLibrary.getSingleton().getCompanionTemplate(getCompanionKeyName(),getCompanionQuery(),!excludeHorese());
 			GameObject companion = TemplateLibrary.getSingleton().createCompanionFromTemplate(getGameData(),template);
 			character.addHireling(companion,Constants.TEN_YEARS);
 			character.getGameObject().add(companion);
@@ -89,5 +90,9 @@ public class QuestRewardCompanion extends QuestReward {
 	
 	public String getCompanionQuery() {
 		return getString(QuestConstants.VALUE_PREFIX+COMPANION_NAME);
+	}
+	
+	public boolean excludeHorese() {
+		return getBoolean(EXCLUDE_HORSE);
 	}
 }
