@@ -145,7 +145,7 @@ public class QuestRequirementAttribute extends QuestRequirement {
 		String regex = getRegExFilter();
 		Pattern pattern = regex == null || regex.trim().length() == 0 ? null : Pattern.compile(regex);
 		int total = 0;
-		for (GameObject go : character.getActiveInventory()) {
+		for (GameObject go : character.getInventory()) {
 			if (pattern != null && !pattern.matcher(go.getName()).find())
 				continue; // skip inventory that doesn't match regex (if used)
 
