@@ -919,7 +919,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 					}
 				});
 			box.add(useWeather);
-				optionalWeatherWarning = new JLabel("Playing Seasons without Weather!");
+				optionalWeatherWarning = new JLabel("Seasons without Weather!");
 				optionalWeatherWarning.setFont(new Font("Dialog",Font.BOLD,12));
 				optionalWeatherWarning.setForeground(Color.red);
 			box.add(optionalWeatherWarning);
