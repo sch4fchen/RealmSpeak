@@ -69,8 +69,8 @@ public abstract class QuestReward extends AbstractQuestObject {
 		SpellFromSite,
 		StripInventory,
 		SummonGuardian,
-		//SummonRoll,		// Force a monster summoning roll with a specific number
-		SummonMonster,   // Summon a specific monster
+		SummonMonster,
+		SummonRoll,
 		Teleport,
 		TreasureFromHq,
 		TreasureFromSite, // Select Random/Top/Bottom/Choice from a specific TL/Scholar/Dwelling (NOT minor TLs or TWTs though)
@@ -116,7 +116,8 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case SpellFromSite:				return "Learn a spell from a specific site, book, artifact, or Shaman.";
 				case StripInventory:			return "Removes ALL inventory and (optionally) gold from the character.";
 				case SummonGuardian:			return "For a specific quest location, summon the treasure site guardian (if any)";
-				case SummonMonster:				return "Summon a Monster to the characters clearing.";
+				case SummonMonster:				return "Summon a specific Monster to the characters clearing.";
+				case SummonRoll:				return "Force a monster summoning roll with a specific number.";
 				case Teleport:					return "Teleport the character to a new location.  Must create a QuestLocation BEFORE creating this reward.";
 				case TreasureFromSite:			return "Gain a treasure from a specific site, dwelling, or Scholar.";
 				case TreasureFromHq:			return "Gain a treasure from a specific HQ.";
@@ -325,6 +326,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case SummonMonster:
 				reward = new QuestRewardSummonMonster(go);
+				break;
+			case SummonRoll:
+				reward = new QuestRewardSummonRoll(go);
 				break;
 			case Teleport:
 				reward = new QuestRewardTeleport(go);

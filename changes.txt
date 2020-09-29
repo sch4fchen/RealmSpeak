@@ -4,6 +4,7 @@ QUEST UPDATE:
 # Support for Cast a spell QuestRequirement
 # Support for Cast multiple (unique) spells QuestRequirement
 # Support for Regenerate denizen QuestReward
+# Support for Summon Roll QuestReward
 NEW FEATURES:
 # Option to change tile style to Legendary Realm with icons
 BUGS/ISSUES:
