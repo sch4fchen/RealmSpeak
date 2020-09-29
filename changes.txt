@@ -7,6 +7,7 @@ QUEST UPDATE:
 # Support for Summon Roll QuestReward
 # Support for Companions Native names in Quest Locations
 # Support for Companions to exclude horse
+# Support for QuestRequirementKill to define vulnerability
 NEW FEATURES:
 # Option to change tile style to Legendary Realm with icons
 BUGS/ISSUES:

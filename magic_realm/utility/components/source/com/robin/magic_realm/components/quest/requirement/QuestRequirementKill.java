@@ -69,7 +69,7 @@ public class QuestRequirementKill extends QuestRequirement {
 					String mark = go.getThisAttribute(QuestConstants.QUEST_MARK);
 					if (mark==null || !mark.equals(questId)) continue;
 				}
-				
+				if (getVulnerability()!=VulnerabilityType.undefined && VulnerabilityType.valueOf(go.getThisAttribute("vulnerability"))!=getVulnerability()) continue;
 				if (!go.hasThisAttribute(Constants.DEAD)) {
 					logger.fine(go.getName()+" is still alive.");
 					return false;
@@ -96,7 +96,7 @@ public class QuestRequirementKill extends QuestRequirement {
 					String mark = kill.getThisAttribute(QuestConstants.QUEST_MARK);
 					if (mark==null || !mark.equals(questId)) continue;
 				}
-				
+				if (getVulnerability()!=VulnerabilityType.undefined && VulnerabilityType.valueOf(kill.getThisAttribute("vulnerability"))!=getVulnerability()) continue;
 				validKills.add(kill);
 			}
 		}
