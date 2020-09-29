@@ -403,7 +403,7 @@ public class RealmUtility {
 		}
 		
 		// Deal with group belongings (if relevant)
-		if (rc.getGameObject().hasThisAttribute(Constants.SPOILS_GROUP_INV_DROP)) {
+		if (rc.getGameObject().hasThisAttribute(Constants.SPOILS_GROUP_INV_DROP) && !rc.getGameObject().hasThisAttribute(Constants.CLONED) && !rc.getGameObject().hasThisAttribute(Constants.COMPANION)) {
 			GameObject holder = SetupCardUtility.getDenizenHolder(rc.getGameObject());
 			moveInventory(holder,rcLocation.tile.getGameObject(),rcLocation.clearing.getNum(),true);
 			rc.getGameObject().removeThisAttribute(Constants.SPOILS_GROUP_INV_DROP);

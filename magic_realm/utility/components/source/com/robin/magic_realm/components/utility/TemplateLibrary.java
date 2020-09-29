@@ -125,7 +125,7 @@ public class TemplateLibrary {
 						heldTemplate.copyAttributesFrom(held);
 						heldTemplate.setAttribute("trot","chit_color","paleyellow");
 						heldTemplate.setAttribute("gallop","chit_color","yellow");
-						heldTemplate.setThisAttribute("companion");
+						heldTemplate.setThisAttribute(Constants.COMPANION);
 						template.add(heldTemplate);
 					}
 					
@@ -139,7 +139,7 @@ public class TemplateLibrary {
 				template.setName(name);
 				template.setAttribute("light","chit_color","paleyellow");
 				template.setAttribute("dark","chit_color","yellow");
-				template.setThisAttribute("companion"); // Makes these guys easy to find
+				template.setThisAttribute(Constants.COMPANION); // Makes these guys easy to find
 				template.setThisAttribute("query",query);
 				
 				templateHash.put(name,template);
