@@ -245,35 +245,53 @@ public abstract class QuestReward extends AbstractQuestObject {
 	public static QuestReward getReward(RewardType type,GameObject go) {
 		QuestReward reward = null;
 		switch(type) {
+			case ActivateQuest:
+				reward = new QuestRewardActivateQuest(go);
+				break;
+			case AlterBlock:
+				reward = new QuestRewardAlterBlock(go);
+				break;
+			case AlterHide:
+				reward = new QuestRewardAlterHide(go);
+				break;
+			case Attribute:
+				reward = new QuestRewardAttribute(go);
+				break;
+			case ChooseNextStep:
+				reward = new QuestRewardChooseNextStep(go);
+				break;
+			case Companion:
+				reward = new QuestRewardCompanion(go);
+				break;
+			case Damage:
+				reward = new QuestRewardDamage(go);
+				break;
+			case Hireling:
+				reward = new QuestRewardHireling(go);
+				break;
 			case Information:
 				reward = new QuestRewardInformation(go);
 				break;
 			case Item:
 				reward = new QuestRewardItem(go);
 				break;
-			case Attribute:
-				reward = new QuestRewardAttribute(go);
+			case Journal:
+				reward = new QuestRewardJournal(go);
+				break;	
+			case LostInventoryToDefault:
+				reward = new QuestRewardLostInventoryToDefault(go);
 				break;
-			case Hireling:
-				reward = new QuestRewardHireling(go);
+			case LostInventoryToLocation:
+				reward = new QuestRewardLostInventoryToLocation(go);
 				break;
-			case Visitor:
-				reward = new QuestRewardVisitor(go);
+			case MarkDenizen:
+				reward = new QuestRewardMarkDenizen(go);
 				break;
-			case Companion:
-				reward = new QuestRewardCompanion(go);
+			case MinorCharacter:
+				reward = new QuestRewardMinorCharacter(go);
 				break;
-			case Teleport:
-				reward = new QuestRewardTeleport(go);
-				break;
-			case RegenerateDenizen:
-				reward = new QuestRewardRegenerateDenizen(go);
-				break;
-			case RelationshipSet:
-				reward = new QuestRewardRelationshipSet(go);
-				break;
-			case RelationshipChange:
-				reward = new QuestRewardRelationshipChange(go);
+			case PathsPassages:
+				reward = new QuestRewardPathsPassages(go);
 				break;
 			case QuestComplete:
 				reward = new QuestRewardComplete(go);
@@ -281,62 +299,44 @@ public abstract class QuestReward extends AbstractQuestObject {
 			case QuestFailed:
 				reward = new QuestRewardFailed(go);
 				break;
+			case RegenerateDenizen:
+				reward = new QuestRewardRegenerateDenizen(go);
+				break;
+			case RelationshipChange:
+				reward = new QuestRewardRelationshipChange(go);
+				break;
+			case RelationshipSet:
+				reward = new QuestRewardRelationshipSet(go);
+				break;
+			case ResetQuest:
+				reward = new QuestRewardResetQuest(go);
+				break;
+			case ScareMonsters:
+				reward = new QuestRewardScareMonsters(go);
+				break;
+			case SpellFromSite:
+				reward = new QuestRewardSpellFromSite(go);
+				break;
+			case StripInventory:
+				reward = new QuestRewardStripInventory(go);
+				break;
 			case SummonGuardian:
 				reward = new QuestRewardSummonGuardian(go);
 				break;
 			case SummonMonster:
 				reward = new QuestRewardSummonMonster(go);
 				break;
-			case AlterHide:
-				reward = new QuestRewardAlterHide(go);
-				break;
-			case MinorCharacter:
-				reward = new QuestRewardMinorCharacter(go);
-				break;
-			case ScareMonsters:
-				reward = new QuestRewardScareMonsters(go);
-				break;
-			case MarkDenizen:
-				reward = new QuestRewardMarkDenizen(go);
-				break;
-			case StripInventory:
-				reward = new QuestRewardStripInventory(go);
-				break;
-			case LostInventoryToLocation:
-				reward = new QuestRewardLostInventoryToLocation(go);
-				break;
-			case LostInventoryToDefault:
-				reward = new QuestRewardLostInventoryToDefault(go);
-				break;
-			case AlterBlock:
-				reward = new QuestRewardAlterBlock(go);
-				break;
-			case ActivateQuest:
-				reward = new QuestRewardActivateQuest(go);
-				break;
-			case ResetQuest:
-				reward = new QuestRewardResetQuest(go);
-				break;
-			case Journal:
-				reward = new QuestRewardJournal(go);
-				break;
-			case PathsPassages:
-				reward = new QuestRewardPathsPassages(go);
-				break;
-			case ChooseNextStep:
-				reward = new QuestRewardChooseNextStep(go);
-				break;
-			case TreasureFromSite:
-				reward = new QuestRewardTreasureFromSite(go);
+			case Teleport:
+				reward = new QuestRewardTeleport(go);
 				break;
 			case TreasureFromHq:
 				reward = new QuestRewardTreasureFromHq(go);
 				break;
-			case SpellFromSite:
-				reward = new QuestRewardSpellFromSite(go);
+			case TreasureFromSite:
+				reward = new QuestRewardTreasureFromSite(go);
 				break;
-			case Damage:
-				reward = new QuestRewardDamage(go);
+			case Visitor:
+				reward = new QuestRewardVisitor(go);
 				break;
 			default:
 				throw new IllegalArgumentException("Unsupported RewardType: "+type.toString());
