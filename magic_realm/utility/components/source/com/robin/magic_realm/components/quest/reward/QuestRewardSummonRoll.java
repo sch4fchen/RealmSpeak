@@ -23,7 +23,7 @@ import java.util.Random;
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
-import com.robin.magic_realm.components.quest.DieRollEnum;
+import com.robin.magic_realm.components.quest.DieRollType;
 import com.robin.magic_realm.components.utility.SetupCardUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
@@ -43,7 +43,7 @@ public class QuestRewardSummonRoll extends QuestReward {
 	}
 	
 	public String getDescription() {
-		if (getString(DIE_ROLL)!=DieRollEnum.Random.toString()) {
+		if (getString(DIE_ROLL)!=DieRollType.Random.toString()) {
 			return "Summon roll with a die roll of "+getDieRoll()+".";
 		}
 		else {
@@ -58,7 +58,7 @@ public class QuestRewardSummonRoll extends QuestReward {
 	public int getDieRoll() {
 		String dieRoll = getString(DIE_ROLL);
 		Random rnd = new Random();	
-		switch (DieRollEnum.valueOf(dieRoll)) {
+		switch (DieRollType.valueOf(dieRoll)) {
 			case One:
 				return 1;
 			case Two:

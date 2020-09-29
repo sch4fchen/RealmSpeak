@@ -148,7 +148,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardSummonMonster.MONSTER_NAME, "Monster", FieldType.CompanionSelector, getAllCompanionKeyValues()));
 				break;
 			case SummonRoll:
-				list.add(new QuestPropertyBlock(QuestRewardSummonRoll.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollEnum.values()));
+				list.add(new QuestPropertyBlock(QuestRewardSummonRoll.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));
 				break;
 			case Teleport:
 				list.add(new QuestPropertyBlock(QuestRequirementLocation.LOCATION, "Teleport to", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
