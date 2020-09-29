@@ -272,6 +272,10 @@ public class QuestRequirementAttribute extends QuestRequirement {
 		sb.append(realValue);
 		sb.append(" ");
 		sb.append(getAttributeType().getDescription(realValue != 1));
+		if(hasRegExFilter()) {
+			sb.append(" from ");
+			sb.append(getRegExFilter());
+		}
 		TargetValueType tvt = getTargetValueType();
 		if (tvt != TargetValueType.Game) {
 			sb.append(" during the ");
