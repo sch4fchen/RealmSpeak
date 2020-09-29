@@ -27,6 +27,7 @@ import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.QuestStep;
+import com.robin.magic_realm.components.quest.VulnerabilityType;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.DayKey;
@@ -39,6 +40,7 @@ public class QuestRequirementKill extends QuestRequirement {
 	public static final String REQUIRE_MARK = "_rqm";
 	public static final String STEP_ONLY_KILLS = "_sok";
 	public static final String VALUE = "_rq";
+	public static final String VULNERABILITY = "_vy";
 	
 	public QuestRequirementKill(GameObject go) {
 		super(go);
@@ -116,11 +118,13 @@ public class QuestRequirementKill extends QuestRequirement {
 		sb.append(mark?" marked":"");
 		sb.append(" denizen");
 		sb.append(val==1?"":"s");
-		sb.append(" that match");
-		sb.append(val==1?"es":"");
-		sb.append(" regex: /");
-		sb.append(getRegExFilter());
-		sb.append("/");
+		if(!getRegExFilter().isEmpty()) {
+			sb.append(" that match");
+			sb.append(val==1?"es":"");
+			sb.append(" regex: /"+getRegExFilter()+"/");
+		}
+		sb.append(getVulnerability()!=VulnerabilityType.undefined?" with vulnerability "+getVulnerability():"");
+		sb.append(".");
 		return sb.toString();
 	}
 
@@ -139,5 +143,8 @@ public class QuestRequirementKill extends QuestRequirement {
 	}
 	public int getValue() {
 		return getInt(VALUE);
+	}
+	public VulnerabilityType getVulnerability() {
+		return VulnerabilityType.valueOf(getString(VULNERABILITY));
 	}
 }

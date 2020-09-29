@@ -87,6 +87,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case Kill:
 				list.add(new QuestPropertyBlock(QuestRequirementKill.REGEX_FILTER, "Denizen name filter (regex)", FieldType.Regex, null, new String[] { "denizen" }));
 				list.add(new QuestPropertyBlock(QuestRequirementKill.VALUE, "How many (" + QuestConstants.ALL_VALUE + " means ALL)", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRequirementKill.VULNERABILITY, "Vulnerability", FieldType.StringSelector, VulnerabilityType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementKill.STEP_ONLY_KILLS, "Only count kills for this step", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementKill.REQUIRE_MARK, "Mark is required", FieldType.Boolean));
 				break;
