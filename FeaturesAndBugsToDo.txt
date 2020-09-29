@@ -27,8 +27,7 @@ Support Alerted Monsters Advanced rule
 House Rule to reveal Site Cards and allow searching
 Quest: Need a Open requirement to test when Vault/Chest/CryptOfTheKnight is accessed...
 Quest: 0001805: Spell Effects as Quest Rewards
-Quest: Need new reward:  Gain Custom Treasure: CustomTreasure // Pick a treasure, clone, and rename it
-Quest: New reward: SummonRoll
+Quest: Need new reward: Gain Custom Treasure: CustomTreasure // Pick a treasure, clone, and rename it
 Quest: It'd be nice if the kill requirement let you specify size (L,M,H,T)
 What about a controlled monster luring/deploying against your hirelings?
 Extended Treachery:  luring/deploying against their own group triggers the same consequences
@@ -53,7 +52,7 @@ Don't know about this one:  Does Flowers of Rest work correctly in combat?
 0001867: end combat button block remote game
 0001866: Cannot set the number of starting spells for a newcharacter.
 0001865: Steed bug in Character Builder
-0001864: Realmspeak bug report: Armor destroyed before Ointment of Steel (see  mkiever/RealmSpeak fork)
+0001864: Armor destroyed before Ointment of Steel (see  mkiever/RealmSpeak fork)
 0001862: targeting other character with "summon elemental" leads to delayed lock
 0001861: Battle utility cannot set Pilgrim to T Harm from earlier use of wish for strength
 0001860: cannot get move by pony in specific conditions
