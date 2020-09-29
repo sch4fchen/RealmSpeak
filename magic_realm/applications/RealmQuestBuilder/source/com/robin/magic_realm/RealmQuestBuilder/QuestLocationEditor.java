@@ -28,6 +28,7 @@ import javax.swing.text.*;
 
 import com.robin.game.objects.*;
 import com.robin.general.swing.*;
+import com.robin.magic_realm.RealmCharacterBuilder.EditPanel.CompanionEditPanel;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.quest.*;
 
@@ -52,6 +53,23 @@ public class QuestLocationEditor extends GenericEditor {
 	
 	private static String [] wolfs = new String [] {"Wolf 1","Wolf 2"};
 	private static String [] transforms = new String [] {"Tremendous Dragon","Lion","Eagle","Bird","Squirrel","Frog"};
+	private static String [] companions = getAllCompanionNames();
+	
+	private static String[] getAllCompanionNames() {
+		ArrayList<String> companions = new ArrayList<String>();
+		String[] people = CompanionEditPanel.COMPANIONS[3];
+			boolean first = true;
+			for (String name : people) {
+				// skip first every time
+				if (first) {
+					first = false;
+					continue;
+				}
+				String[] ret = name.split(":");
+				companions.add(ret[0]);
+			}
+		return companions.toArray(new String[0]);
+	}
 	
 	public QuestLocationEditor(JFrame parent,GameData realmSpeakData,Quest quest,QuestLocation location) {
 		super(parent,realmSpeakData);
@@ -70,6 +88,7 @@ public class QuestLocationEditor extends GenericEditor {
 		suggestionWords = new ArrayList<String>();
 		Collections.addAll(suggestionWords, wolfs);
 		Collections.addAll(suggestionWords, transforms);
+		Collections.addAll(suggestionWords, companions);
 		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
 		String query = "!part,!summon,!spell,!tile,!character_chit,!virtual_dwelling,!season,!test,!character";
 		for(GameObject go:pool.find(query)) {
@@ -155,7 +174,7 @@ public class QuestLocationEditor extends GenericEditor {
 		StringBuilder sb = new StringBuilder();
 		for (String token:getLocationList()) {
 			sb.append(token);
-			if (!Arrays.asList(wolfs).contains(token) && !Arrays.asList(transforms).contains(token) && !QuestLocation.validLocation(realmSpeakData,token)) {
+			if (!Arrays.asList(wolfs).contains(token) && !Arrays.asList(transforms).contains(token) && !Arrays.asList(companions).contains(token) && !QuestLocation.validLocation(realmSpeakData,token)) {
 				sb.append(INVALID);
 			}
 			sb.append("\n");

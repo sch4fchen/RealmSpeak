@@ -5,6 +5,7 @@ QUEST UPDATE:
 # Support for Cast multiple (unique) spells QuestRequirement
 # Support for Regenerate denizen QuestReward
 # Support for Summon Roll QuestReward
+# Support for Companions Native names in Quest Locations
 NEW FEATURES:
 # Option to change tile style to Legendary Realm with icons
 BUGS/ISSUES:
