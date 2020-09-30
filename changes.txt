@@ -8,6 +8,7 @@ QUEST UPDATE:
 # Support for Companions Native names in Quest Locations
 # Support for Companions to exclude horse
 # Support for QuestRequirementKill to define vulnerability
+# Support for Quest Counters
 NEW FEATURES:
 # Option to change tile style to Legendary Realm with icons
 BUGS/ISSUES:
