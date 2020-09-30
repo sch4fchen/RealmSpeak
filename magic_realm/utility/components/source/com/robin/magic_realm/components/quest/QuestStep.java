@@ -88,18 +88,6 @@ public class QuestStep extends GameObjectWrapper {
 		return Quest.QUEST_BLOCK;
 	}
 
-	public boolean usesMinorCharacter(QuestMinorCharacter mc) {
-		for (QuestRequirement req : requirements) {
-			if (req.usesMinorCharacter(mc))
-				return true;
-		}
-		for (QuestReward reward : rewards) {
-			if (reward.usesMinorCharacter(mc))
-				return true;
-		}
-		return false;
-	}
-
 	public boolean usesLocationTag(String tag) {
 		String desc = getDescription();
 		if (desc != null && desc.contains(tag)) {
@@ -111,6 +99,34 @@ public class QuestStep extends GameObjectWrapper {
 		}
 		for (QuestReward reward : rewards) {
 			if (reward.usesLocationTag(tag))
+				return true;
+		}
+		return false;
+	}
+	
+	public boolean usesMinorCharacter(QuestMinorCharacter mc) {
+		for (QuestRequirement req : requirements) {
+			if (req.usesMinorCharacter(mc))
+				return true;
+		}
+		for (QuestReward reward : rewards) {
+			if (reward.usesMinorCharacter(mc))
+				return true;
+		}
+		return false;
+	}
+	
+	public boolean usesCounterTag(String tag) {
+		String desc = getDescription();
+		if (desc != null && desc.contains(tag)) {
+			return true;
+		}
+		for (QuestRequirement req : requirements) {
+			if (req.usesCounterTag(tag))
+				return true;
+		}
+		for (QuestReward reward : rewards) {
+			if (reward.usesCounterTag(tag))
 				return true;
 		}
 		return false;

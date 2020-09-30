@@ -78,7 +78,7 @@ public class QuestLocation extends GameObjectWrapper {
 		sb.append(".");
 		return sb.toString();
 	}
-	public Quest getParentQuest() {
+	private Quest getParentQuest() {
 		GameObject quest = getGameObject().getHeldBy();
 		return new Quest(quest);
 	}

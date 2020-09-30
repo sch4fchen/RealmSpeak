@@ -43,6 +43,7 @@ public class Quest extends GameObjectWrapper {
 	public static final String QUEST_STEP = "quest_step";
 	public static final String QUEST_LOCATION = "quest_location";
 	public static final String QUEST_MINOR_CHARS = "quest_minor_chars";
+	public static final String QUEST_COUNTER = "quest_counter";
 	public static final String QUEST_ACTION = "quest_action";
 	public static final String QUEST_REQUIREMENT = "quest_requirement";
 	public static final String QUEST_REWARD = "quest_reward";
@@ -63,19 +64,22 @@ public class Quest extends GameObjectWrapper {
 
 	// QuestAvailability - Which Guild? Which characters?
 
-	private ArrayList<QuestMinorCharacter> minorCharacters;
-	private ArrayList<QuestLocation> locations;
 	private ArrayList<QuestStep> steps;
 	private ArrayList<QuestRule> questRules;
+	private ArrayList<QuestLocation> locations;
+	private ArrayList<QuestMinorCharacter> minorCharacters;
+	private ArrayList<QuestCounter> counters;
 	
 	public String filepath; // This is just here so that the builder can save a quest it just loaded for viewDeck() - not guaranteed!
 	
 	public Quest(GameObject go) {
 		super(go);
-		minorCharacters = new ArrayList<QuestMinorCharacter>();
-		locations = new ArrayList<QuestLocation>();
 		steps = new ArrayList<QuestStep>();
 		questRules = new ArrayList<QuestRule>();
+		locations = new ArrayList<QuestLocation>();
+		minorCharacters = new ArrayList<QuestMinorCharacter>();
+		counters = new ArrayList<QuestCounter>();
+		
 
 		for (Iterator i = go.getHold().iterator(); i.hasNext();) {
 			GameObject held = (GameObject) i.next();
@@ -87,6 +91,9 @@ public class Quest extends GameObjectWrapper {
 			}
 			else if (held.hasThisAttribute(Quest.QUEST_MINOR_CHARS)) {
 				minorCharacters.add(new QuestMinorCharacter(held));
+			}
+			else if (held.hasThisAttribute(Quest.QUEST_COUNTER)) {
+				counters.add(new QuestCounter(held));
 			}
 		}
 		Collections.sort(steps, new Comparator<QuestStep>() {
@@ -246,13 +253,40 @@ public class Quest extends GameObjectWrapper {
 		}
 		return list;
 	}
+	
+	public boolean usesCounterTag(String tag) {
+		String desc = getDescription();
+		if (desc != null && desc.contains(tag)) {
+			return true;
+		}
 
-	public ArrayList<QuestMinorCharacter> getMinorCharacters() {
-		return minorCharacters;
+		for (QuestStep step : steps) {
+			if (step.usesCounterTag(tag)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public ArrayList<String> getCounterTags() {
+		ArrayList<String> list = new ArrayList<String>();
+		for (QuestCounter counter : getCounters()) {
+			list.add(counter.getTagName());
+		}
+		return list;
 	}
 
 	public ArrayList<QuestLocation> getLocations() {
 		return locations;
+	}
+	
+	public ArrayList<QuestMinorCharacter> getMinorCharacters() {
+		return minorCharacters;
+	}
+
+	public ArrayList<QuestCounter> getCounters() {
+		return counters;
 	}
 
 	public ArrayList<QuestStep> getSteps() {
@@ -386,6 +420,34 @@ public class Quest extends GameObjectWrapper {
 		return getList(REQ_RULES);
 	}
 
+	public QuestLocation createQuestLocation() {
+		QuestLocation ql = new QuestLocation(getGameData().createNewObject());
+		ql.init();
+		int num = 1;
+		while (true) {
+			String testName = "Location" + (num++);
+			for (QuestLocation test : locations) {
+				if (test.getName().equals(testName)) {
+					testName = null;
+					break;
+				}
+			}
+			if (testName != null) {
+				ql.setName(testName);
+				break;
+			}
+		}
+		ql.setLocationType(LocationType.Any);
+		getGameObject().add(ql.getGameObject());
+		locations.add(ql);
+		return ql;
+	}
+	
+	public void deleteQuestLocation(QuestLocation location) {
+		locations.remove(location);
+		location.getGameObject().delete();
+	}
+	
 	public QuestMinorCharacter createMinorCharacter() {
 		QuestMinorCharacter mc = new QuestMinorCharacter(getGameData().createNewObject());
 		mc.init();
@@ -415,41 +477,34 @@ public class Quest extends GameObjectWrapper {
 		minorCharacters.remove(mc);
 		mc.getGameObject().delete();
 	}
-
-	public QuestLocation createQuestLocation() {
-		QuestLocation ql = new QuestLocation(getGameData().createNewObject());
-		ql.init();
+	
+	public QuestCounter createQuestCounter() {
+		QuestCounter qc = new QuestCounter(getGameData().createNewObject());
+		qc.init();
 		int num = 1;
 		while (true) {
-			String testName = "Location" + (num++);
-			for (QuestLocation test : locations) {
+			String testName = "Counter" + (num++);
+			for (QuestCounter test : counters) {
 				if (test.getName().equals(testName)) {
 					testName = null;
 					break;
 				}
 			}
 			if (testName != null) {
-				ql.setName(testName);
+				qc.setName(testName);
 				break;
 			}
 		}
-		ql.setLocationType(LocationType.Any);
-		getGameObject().add(ql.getGameObject());
-		locations.add(ql);
-		return ql;
+		getGameObject().add(qc.getGameObject());
+		counters.add(qc);
+		return qc;
 	}
 
-	public void deleteStepAt(int index) {
-		QuestStep step = steps.get(index);
-		deleteQuestStep(step);
-		renumberSteps();
+	public void deleteQuestCounter(QuestCounter counter) {
+		counters.remove(counter);
+		counter.getGameObject().delete();
 	}
-
-	public void deleteQuestLocation(QuestLocation location) {
-		locations.remove(location);
-		location.getGameObject().delete();
-	}
-
+	
 	public QuestStep createQuestStep(boolean autoConnect) {
 		QuestStep step = new QuestStep(getGameData().createNewObject());
 		step.init();
@@ -464,6 +519,12 @@ public class Quest extends GameObjectWrapper {
 		step.setId(steps.size());
 		step.setName("Quest Step " + step.getId());
 		return step;
+	}
+	
+	public void deleteStepAt(int index) {
+		QuestStep step = steps.get(index);
+		deleteQuestStep(step);
+		renumberSteps();
 	}
 
 	public void moveStep(int index, int direction) {

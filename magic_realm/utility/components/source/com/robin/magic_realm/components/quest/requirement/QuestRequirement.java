@@ -129,17 +129,23 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 	}
 
 	/**
-	 * Override this method if minor character is relevant, and handle
-	 * appropriately.
+	 * Override this method if location is relevant, and handle appropriately.
+	 */
+	public boolean usesLocationTag(String tag) {
+		return false;
+	}
+	
+	/**
+	 * Override this method if minor character is relevant, and handle appropriately.
 	 */
 	public boolean usesMinorCharacter(QuestMinorCharacter mc) {
 		return false;
 	}
 
 	/**
-	 * Override this method if location is relevant, and handle appropriately.
+	 * Override this method if counter is relevant, and handle appropriately.
 	 */
-	public boolean usesLocationTag(String tag) {
+	public boolean usesCounterTag(String tag) {
 		return false;
 	}
 

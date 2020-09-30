@@ -67,6 +67,9 @@ public class QuestBuilderFrame extends JFrame {
 
 	private JTable minorCharacterTable;
 	private QuestTableEditorPanel minorCharacterPanel;
+	
+	private JTable counterTable;
+	private QuestTableEditorPanel counterPanel;
 
 	// private QuestView questView;
 	private QuestStepView questStepView;
@@ -171,17 +174,21 @@ public class QuestBuilderFrame extends JFrame {
 		questDescription.setFont(QuestGuiConstants.QuestDescriptionFont);
 		rebuildSteps();
 
-		minorCharacterTable.clearSelection();
-		((MinorCharacterTableModel) minorCharacterTable.getModel()).setQuest(quest);
-		minorCharacterTable.revalidate();
-
-		locationTable.clearSelection();
-		((LocationTableModel) locationTable.getModel()).setQuest(quest);
-		locationTable.revalidate();
-
 		ruleLimitationTable.clearSelection();
 		((RuleLimitationTableModel) ruleLimitationTable.getModel()).setQuest(quest);
 		ruleLimitationTable.revalidate();
+		
+		locationTable.clearSelection();
+		((LocationTableModel) locationTable.getModel()).setQuest(quest);
+		locationTable.revalidate();
+		
+		minorCharacterTable.clearSelection();
+		((MinorCharacterTableModel) minorCharacterTable.getModel()).setQuest(quest);
+		minorCharacterTable.revalidate();
+		
+		counterTable.clearSelection();
+		((CounterTableModel) counterTable.getModel()).setQuest(quest);
+		counterTable.revalidate();
 
 		readOtherOptions();
 
@@ -350,6 +357,9 @@ public class QuestBuilderFrame extends JFrame {
 	}
 
 	private void updateControls() {
+		counterPanel.getEditAction().setEnabled(counterTable.getSelectedRowCount() == 1);
+		counterPanel.getDeleteAction().setEnabled(counterTable.getSelectedRowCount() == 1);
+		
 		minorCharacterPanel.getEditAction().setEnabled(minorCharacterTable.getSelectedRowCount() == 1);
 		minorCharacterPanel.getDeleteAction().setEnabled(minorCharacterTable.getSelectedRowCount() == 1);
 
@@ -612,6 +622,7 @@ public class QuestBuilderFrame extends JFrame {
 		buildQuestRulesPanel(); // just so there are no NPEs
 		optionsPane.addTab("Locations", buildLocationPanel());
 		optionsPane.addTab("Minor Characters", buildMinorCharacterPanel());
+		optionsPane.addTab("Counters", buildCounterPanel());
 		return optionsPane;
 	}
 
@@ -847,7 +858,7 @@ public class QuestBuilderFrame extends JFrame {
 				QuestLocationEditor editor = new QuestLocationEditor(QuestBuilderFrame.this, realmSpeakData, quest, loc);
 				editor.setVisible(true);
 				if (!editor.canceledEdit && oldTag != loc.getTagName()) {
-					updateLocationName(oldTag, loc.getTagName());
+					updateTagName(oldTag, loc.getTagName());
 				}
 				locationTable.clearSelection();
 				locationTable.revalidate();
@@ -858,7 +869,7 @@ public class QuestBuilderFrame extends JFrame {
 				int selRow = locationTable.getSelectedRow();
 				QuestLocation loc = quest.getLocations().get(selRow);
 				if (quest.usesLocationTag(loc.getTagName())) {
-					JOptionPane.showMessageDialog(QuestBuilderFrame.this, "Cannot delete a location that is in use.  Remove from description and/or steps before deleting.", "Location cannot be deleted", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(QuestBuilderFrame.this, "Cannot delete a location that is in use.  Remove from description and/or steps before deleting.", "Location cannot be deleted.", JOptionPane.ERROR_MESSAGE);
 				}
 				else {
 					quest.deleteQuestLocation(loc);
@@ -869,25 +880,6 @@ public class QuestBuilderFrame extends JFrame {
 			}
 		};
 		return locationPanel;
-	}
-
-	private void updateLocationName(String oldTagName, String newTagName) {
-		if (oldTagName.equals(newTagName))
-			return;
-		String desc = quest.getDescription();
-		if (desc != null) {
-			desc = StringUtilities.findAndReplace(desc, oldTagName, newTagName);
-			quest.setDescription(desc);
-			questDescription.setText(desc);
-		}
-		for (QuestStep step : quest.getSteps()) {
-			desc = step.getDescription();
-			if (desc != null) {
-				desc = StringUtilities.findAndReplace(desc, oldTagName, newTagName);
-				step.setDescription(desc);
-			}
-		}
-		rebuildSteps();
 	}
 
 	private JPanel buildMinorCharacterPanel() {
@@ -932,7 +924,7 @@ public class QuestBuilderFrame extends JFrame {
 				int selRow = minorCharacterTable.getSelectedRow();
 				QuestMinorCharacter mc = quest.getMinorCharacters().get(selRow);
 				if (quest.usesMinorCharacter(mc)) {
-					JOptionPane.showMessageDialog(QuestBuilderFrame.this, "Cannot delete a minor character that is in use.  Remove from rewards before deleting.", "Minor Character cannot be deleted", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(QuestBuilderFrame.this, "Cannot delete a minor character that is in use.  Remove from rewards before deleting.", "Minor Character cannot be deleted.", JOptionPane.ERROR_MESSAGE);
 				}
 				else {
 					quest.deleteMinorCharacter(mc);
@@ -945,6 +937,84 @@ public class QuestBuilderFrame extends JFrame {
 		return minorCharacterPanel;
 	}
 
+	private JPanel buildCounterPanel() {
+		counterTable = new JTable(new CounterTableModel(quest));
+		ComponentTools.lockColumnWidth(counterTable, 0, 100);
+		counterTable.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent ev) {
+				if (ev.getClickCount() == 2) {
+					counterPanel.edit();
+				}
+			}
+		});
+		counterTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent ev) {
+				updateControls();
+			}
+		});
+		counterPanel = new QuestTableEditorPanel("Counters", counterTable) {
+			public void add() {
+				QuestCounter counter = quest.createQuestCounter();
+				QuestCounterEditor editor = new QuestCounterEditor(QuestBuilderFrame.this, realmSpeakData, quest, counter);
+				editor.setVisible(true);
+				if (editor.getCanceledEdit()) {
+					quest.deleteQuestCounter(counter);
+				}
+				counterTable.clearSelection();
+				counterTable.revalidate();
+				updateControls();
+			}
+
+			public void edit() {
+				int selRow = counterTable.getSelectedRow();
+				QuestCounter counter = quest.getCounters().get(selRow);
+				String oldTag = counter.getTagName();
+				QuestCounterEditor editor = new QuestCounterEditor(QuestBuilderFrame.this, realmSpeakData, quest, counter);
+				editor.setVisible(true);
+				if (!editor.canceledEdit && oldTag != counter.getTagName()) {
+					updateTagName(oldTag, counter.getTagName());
+				}
+				counterTable.clearSelection();
+				counterTable.revalidate();
+				updateControls();
+			}
+
+			public void delete() {
+				int selRow = counterTable.getSelectedRow();
+				QuestCounter counter = quest.getCounters().get(selRow);
+				if (quest.usesCounterTag(counter.getTagName())) {
+					JOptionPane.showMessageDialog(QuestBuilderFrame.this, "Cannot delete a counter that is in use.  Remove from description and/or steps before deleting.", "Counter cannot be deleted.", JOptionPane.ERROR_MESSAGE);
+				}
+				else {
+					quest.deleteQuestCounter(counter);
+					counterTable.clearSelection();
+					counterTable.revalidate();
+					updateControls();
+				}
+			}
+		};
+		return counterPanel;
+	}
+	
+	private void updateTagName(String oldTagName, String newTagName) {
+		if (oldTagName.equals(newTagName))
+			return;
+		String desc = quest.getDescription();
+		if (desc != null) {
+			desc = StringUtilities.findAndReplace(desc, oldTagName, newTagName);
+			quest.setDescription(desc);
+			questDescription.setText(desc);
+		}
+		for (QuestStep step : quest.getSteps()) {
+			desc = step.getDescription();
+			if (desc != null) {
+				desc = StringUtilities.findAndReplace(desc, oldTagName, newTagName);
+				step.setDescription(desc);
+			}
+		}
+		rebuildSteps();
+	}
+	
 	private JPanel buildQuestDiagramPanel() {
 		questStepView = new QuestStepView();
 		questStepView.addChangeListener(new ChangeListener() {
