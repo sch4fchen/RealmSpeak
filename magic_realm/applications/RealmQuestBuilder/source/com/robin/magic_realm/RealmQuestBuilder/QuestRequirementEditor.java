@@ -72,6 +72,12 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case ColorMagic:
 				list.add(new QuestPropertyBlock(QuestRequirementColorMagic.COLOR_KEY, "In the presence of color magic", FieldType.StringSelector, new String[]{"White","Grey","Gold","Purple","Black"}));
 				break;
+			case Counter:
+				list.add(new QuestPropertyBlock(QuestRequirementCounter.COUNTER, "Quest Counter", FieldType.GameObjectWrapperSelector, quest.getCounters().toArray()));
+				list.add(new QuestPropertyBlock(QuestRequirementCounter.TARGET_VALUE, "Target count", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRequirementCounter.EXCEED_TARGET_VALUE, "Exceed target value allowed", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementCounter.SUBCEED_TARGET_VALUE, "Subceed target value allowed", FieldType.Boolean));
+				break;
 			case Discovery:
 				list.add(new QuestPropertyBlock(QuestRequirementDiscovery.DISCOVERY_KEY, "Discovery", FieldType.StringSelector, getDiscoveryStrings().toArray()));
 				break;

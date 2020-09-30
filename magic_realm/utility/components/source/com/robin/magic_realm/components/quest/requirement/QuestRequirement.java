@@ -37,6 +37,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		CastMultipleSpells,
 		CastSpell,
 		ColorMagic,
+		Counter,
 		Discovery, // must have a specific discovery
 		GamePhase, // end of phase, end of day, start of evening, midnight, birdsong
 		Inventory, // a requirement that tests what you have in inventory
@@ -65,6 +66,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests whether a spell has just been cast.";
 				case ColorMagic:
 					return "Tests whether the character is in the presence of a specific color of magic (either permanent or burning a chit).";
+				case Counter:
+					return "Tests whether a specific counter has reached a certain value.";
 				case Discovery:
 					return "Tests for a specific recorded discovery.";
 				case GamePhase:
@@ -187,6 +190,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case ColorMagic:
 				requirement = new QuestRequirementColorMagic(go);
+				break;
+			case Counter:
+				requirement = new QuestRequirementCounter(go);
 				break;
 			case Discovery:
 				requirement = new QuestRequirementDiscovery(go);
