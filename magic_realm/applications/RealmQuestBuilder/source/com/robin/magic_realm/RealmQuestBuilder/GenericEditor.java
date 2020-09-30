@@ -19,7 +19,6 @@ package com.robin.magic_realm.RealmQuestBuilder;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
 
 import com.robin.game.objects.GameData;
@@ -29,7 +28,7 @@ import com.robin.general.swing.ComponentTools;
 public abstract class GenericEditor extends AggressiveDialog {
 	
 	protected GameData realmSpeakData;
-	protected boolean canceledEdit;
+	protected boolean canceledEdit = true;
 	
 	protected JButton okButton;
 	protected JButton cancelButton;
