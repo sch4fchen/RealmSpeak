@@ -145,6 +145,10 @@ public class QuestRequirementKill extends QuestRequirement {
 		return getInt(VALUE);
 	}
 	public VulnerabilityType getVulnerability() {
+		String vulnerability = getString(VULNERABILITY);
+		if (vulnerability == null) { // compatibility for old quests
+			return VulnerabilityType.undefined;
+		}
 		return VulnerabilityType.valueOf(getString(VULNERABILITY));
 	}
 }

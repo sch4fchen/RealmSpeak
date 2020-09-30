@@ -42,7 +42,7 @@ public class QuestRewardCompanion extends QuestReward {
 
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		if (getGainType()==GainType.Gain) {
-			GameObject template = TemplateLibrary.getSingleton().getCompanionTemplate(getCompanionKeyName(),getCompanionQuery(),!excludeHorese());
+			GameObject template = TemplateLibrary.getSingleton().getCompanionTemplate(getCompanionKeyName(),getCompanionQuery(),!excludeHorse());
 			GameObject companion = TemplateLibrary.getSingleton().createCompanionFromTemplate(getGameData(),template);
 			character.addHireling(companion,Constants.TEN_YEARS);
 			character.getGameObject().add(companion);
@@ -92,7 +92,7 @@ public class QuestRewardCompanion extends QuestReward {
 		return getString(QuestConstants.VALUE_PREFIX+COMPANION_NAME);
 	}
 	
-	public boolean excludeHorese() {
+	public boolean excludeHorse() {
 		return getBoolean(EXCLUDE_HORSE);
 	}
 }

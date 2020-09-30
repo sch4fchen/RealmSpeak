@@ -14,7 +14,7 @@ BUGS/ISSUES:
 # Quest: Fixed QuestRequirementAttribute with gold and regex (=gold bounty of native)
 # Quest: Fix QuestRequirementAttribute not counting inactive GreatTreasures
 # Quest: Fix QuestLocation testing for companion which is a transform
-# Fix "Walk the woods" ability granted by an item/minor character.
+# Fix "Walk the woods" ability granted by an item/minor character
 # Fix Native HQs (cloned or companions) droppings items from SetupCard
 
 Version 1.1.3.3 - Changes since 1.1.3.2
