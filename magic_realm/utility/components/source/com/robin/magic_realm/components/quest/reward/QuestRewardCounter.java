@@ -19,7 +19,6 @@ package com.robin.magic_realm.components.quest.reward;
 
 import javax.swing.JFrame;
 
-import com.robin.game.GameSetupEncoder.Encoder;
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.QuestCounter;
