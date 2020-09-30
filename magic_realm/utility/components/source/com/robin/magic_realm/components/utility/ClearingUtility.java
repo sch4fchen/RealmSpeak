@@ -183,11 +183,13 @@ public class ClearingUtility {
 			// Treasures in a native hold not yet seen by a player should NOT give off color
 			if (rc.isNativeLeader()) {
 				GameObject holder = SetupCardUtility.getDenizenHolder(rc.getGameObject());
-				for (Iterator i=holder.getHold().iterator();i.hasNext();) {
-					GameObject go = (GameObject)i.next();
-					if (go.hasThisAttribute(Constants.TREASURE_SEEN)) {
-						RealmComponent arc = RealmComponent.getRealmComponent(go);
-						list.addAll(dissolveIntoSeenStuff(arc));
+				if (holder != null) {
+					for (Iterator i=holder.getHold().iterator();i.hasNext();) {
+						GameObject go = (GameObject)i.next();
+						if (go.hasThisAttribute(Constants.TREASURE_SEEN)) {
+							RealmComponent arc = RealmComponent.getRealmComponent(go);
+							list.addAll(dissolveIntoSeenStuff(arc));
+						}
 					}
 				}
 			}
