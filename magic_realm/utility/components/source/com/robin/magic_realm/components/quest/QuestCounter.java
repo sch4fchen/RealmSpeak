@@ -23,6 +23,7 @@ public class QuestCounter extends GameObjectWrapper {
 	private static String TAG_FRONT = "<";
 	private static String TAG_END = ">";
 	private int startCount = 0;
+	private int count = 0;
 	
 	public QuestCounter(GameObject go) {
 		super(go);
@@ -48,5 +49,26 @@ public class QuestCounter extends GameObjectWrapper {
 	}
 	public void setStartCount(int initialValue) {
 		startCount = initialValue;
+	}
+	public void increaseCounter() {
+		increaseCounterByValue(1);
+	}
+	public void increaseCounterByValue(int value) {
+		setCount(getCount() + value);
+	}
+	public void decreaseCounter() {
+		decreaseCounterByValue(1);
+	}
+	public void decreaseCounterByValue(int value) {
+		setCount(getCount() - value);
+	}
+	public void setCounter(int value) {
+		setCount(value);
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
 	}
 }

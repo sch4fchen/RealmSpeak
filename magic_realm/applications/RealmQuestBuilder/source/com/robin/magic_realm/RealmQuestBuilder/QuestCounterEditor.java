@@ -18,7 +18,6 @@
 package com.robin.magic_realm.RealmQuestBuilder;
 
 import java.awt.BorderLayout;
-
 import javax.swing.*;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
@@ -34,15 +33,16 @@ public class QuestCounterEditor extends GenericEditor {
 	private QuestCounter counter;
 	
 	private JTextField name;
-	private JTextField startCount;
+	private IntegerField startCount;
 	
 	public QuestCounterEditor(JFrame parent,GameData realmSpeakData,Quest quest,QuestCounter counter) {
 		super(parent,realmSpeakData);
 		this.quest = quest;
 		this.counter = counter;
 		initComponents();
-		setLocationRelativeTo(parent);
 		name.setText(counter.getName());
+		startCount.setText(String.valueOf(counter.getStartCount()));
+		setLocationRelativeTo(parent);
 	}
 		protected boolean isValidForm() {
 		return true;
@@ -52,10 +52,11 @@ public class QuestCounterEditor extends GenericEditor {
 	}
 	private void saveCounter() {
 		counter.setName(name.getText());
+		counter.setStartCount(startCount.getInt());
 	}
 	private void initComponents() {
 		setTitle("Quest Counter");
-		setSize(640,480);
+		setSize(420,140);
 		setLayout(new BorderLayout());
 		add(buildForm(),BorderLayout.CENTER);
 		add(buildOkCancelLine(),BorderLayout.SOUTH);
@@ -104,7 +105,21 @@ public class QuestCounterEditor extends GenericEditor {
 		line.add(new JLabel("(No spaces allowed)"));
 		line.add(Box.createHorizontalGlue());
 		form.add(line);
-		form.add(Box.createVerticalGlue());	
+		form.add(Box.createVerticalGlue());
+		
+		line = group.createLabelLine("Initial count");
+		startCount = new IntegerField(0);
+		startCount.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				updateControls();
+			}
+		});
+		ComponentTools.lockComponentSize(startCount,50,25);
+		line.add(startCount);
+		line.add(Box.createHorizontalStrut(10));
+		line.add(Box.createHorizontalGlue());
+		form.add(line);
+		form.add(Box.createVerticalGlue());
 		
 		return form;
 	}
