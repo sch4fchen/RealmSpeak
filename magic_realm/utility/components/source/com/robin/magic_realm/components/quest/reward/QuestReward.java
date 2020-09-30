@@ -48,6 +48,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		Companion,
 		//CustomTreasure, // Pick a treasure, clone, and rename it (change attributes?  could be cool... new value, new fame/not, diff weight... - pick from ALL treasures including expansion)
 						// No reason I couldn't make a special dialog for this one...
+		Counter,
 		Damage,
 		Hireling,
 		Information,
@@ -96,6 +97,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case ChooseNextStep:			return "Player chooses the next step to process from those steps that follow this step, and fullfill requirements.";
 				case Companion:					return "Add or remove a monster ally.";
 				//case CustomTreasure:			return "Create a new treasure by taking an existing treasure, renaming it, and giving it new  base attributes.";
+				case Counter:					return "Modify count value of a counter";
 				case Damage:					return "Character receives fatigue or wounds.";
 				case Hireling:					return "Add or remove a hireling.";
 				case Information:				return "Displays a dialog with information in it.  This is a good way to inform the player what is happening.";
@@ -270,6 +272,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case Companion:
 				reward = new QuestRewardCompanion(go);
+				break;
+			case Counter:
+				reward = new QuestRewardCounter(go);
 				break;
 			case Damage:
 				reward = new QuestRewardDamage(go);

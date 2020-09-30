@@ -50,16 +50,16 @@ public class QuestCounter extends GameObjectWrapper {
 	public void setStartCount(int initialValue) {
 		startCount = initialValue;
 	}
-	public void increaseCounter() {
-		increaseCounterByValue(1);
+	public void increaseCount() {
+		increaseCountByValue(1);
 	}
-	public void increaseCounterByValue(int value) {
+	public void increaseCountByValue(int value) {
 		setCount(getCount() + value);
 	}
-	public void decreaseCounter() {
-		decreaseCounterByValue(1);
+	public void decreaseCount() {
+		decreaseCountByValue(1);
 	}
-	public void decreaseCounterByValue(int value) {
+	public void decreaseCountByValue(int value) {
 		setCount(getCount() - value);
 	}
 	public void setCounter(int value) {

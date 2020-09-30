@@ -79,6 +79,12 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardCompanion.GAIN_TYPE, "Gain or lose", FieldType.StringSelector, GainType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardCompanion.EXCLUDE_HORSE, "Exclude horse", FieldType.Boolean));
 				break;
+			case Counter:
+				list.add(new QuestPropertyBlock(QuestRewardCounter.COUNTER, "Quest Counter", FieldType.GameObjectWrapperSelector, quest.getCounters().toArray()));
+				list.add(new QuestPropertyBlock(QuestRewardCounter.SET_COUNT, "Current count", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRewardCounter.INCREASE_COUNT, "Increase count by", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRewardCounter.DECREASE_COUNT, "Decrease count by", FieldType.Number));
+				break;
 			case Damage:
 				list.add(new QuestPropertyBlock(QuestRewardDamage.DAMAGE_TYPE, "Damage Type", FieldType.StringSelector, DamageType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardDamage.AMOUNT, "Amount", FieldType.Number));
