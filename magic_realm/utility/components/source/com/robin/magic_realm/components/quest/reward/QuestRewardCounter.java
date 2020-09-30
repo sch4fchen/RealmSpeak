@@ -19,7 +19,9 @@ package com.robin.magic_realm.components.quest.reward;
 
 import javax.swing.JFrame;
 
+import com.robin.game.GameSetupEncoder.Encoder;
 import com.robin.game.objects.GameObject;
+import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.QuestCounter;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -35,7 +37,9 @@ public class QuestRewardCounter extends QuestReward {
 	
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		QuestCounter counter = getQuestCounter();
-		counter.setCount(getValueToSet());
+		if (needToSetQuestCount()) {
+			counter.setCount(getValueToSet());
+		}
 		counter.increaseCountByValue(getValueToIncrease());
 		counter.decreaseCountByValue(getValueToDecrease());
 	}
@@ -43,7 +47,15 @@ public class QuestRewardCounter extends QuestReward {
 	public String getDescription() {
 		QuestCounter questCounter = getQuestCounter();
 		if (questCounter==null) return "ERROR - No counter found!";
-		return "Value of " +getQuestCounter().getName() +" is set to " +getValueToSet() +".";
+		
+		StringBuffer sb = new StringBuffer();
+		sb.append(getQuestCounter().getName());
+		sb.append(" is changed by " +totalChange());
+		if (needToSetQuestCount()) {
+			sb.append(" and is set to " +getValueToSet());
+		}
+		sb.append(".");
+		return sb.toString();
 	}
 	public RewardType getRewardType() {
 		return RewardType.Counter;
@@ -66,5 +78,11 @@ public class QuestRewardCounter extends QuestReward {
 	}
 	public int getValueToDecrease() {
 		return getInt(DECREASE_COUNT);
+	}
+	private int totalChange() {
+		return getValueToIncrease()-getValueToDecrease();
+	}
+	private boolean needToSetQuestCount() {
+		return getValueToSet() != QuestConstants.ALL_VALUE;
 	}
 }
