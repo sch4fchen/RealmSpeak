@@ -18,6 +18,7 @@ BUGS/ISSUES:
 # Fix "Walk the woods" ability granted by an item/minor character
 # Fix Native HQs (cloned or companions) droppings items from SetupCard
 # Fix NullPointException when closing some dialogs in QuestEditor via "x"
+# Fix NullPointException when getting treasures for companions
 
 Version 1.1.3.3 - Changes since 1.1.3.2
 QUEST UPDATE:
