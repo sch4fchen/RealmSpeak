@@ -82,8 +82,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case Counter:
 				list.add(new QuestPropertyBlock(QuestRewardCounter.COUNTER, "Quest Counter", FieldType.GameObjectWrapperSelector, quest.getCounters().toArray()));
 				list.add(new QuestPropertyBlock(QuestRewardCounter.SET_COUNT, "Set current count ("+ QuestConstants.ALL_VALUE+"=no change)", FieldType.Number));
-				list.add(new QuestPropertyBlock(QuestRewardCounter.INCREASE_COUNT, "Increase count", FieldType.Number));
-				list.add(new QuestPropertyBlock(QuestRewardCounter.DECREASE_COUNT, "Decrease count", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRewardCounter.INCREASE_COUNT, "Increase count ("+ QuestConstants.ALL_VALUE+"=no change)", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRewardCounter.DECREASE_COUNT, "Decrease count ("+ QuestConstants.ALL_VALUE+"=no change)", FieldType.Number));
 				break;
 			case Damage:
 				list.add(new QuestPropertyBlock(QuestRewardDamage.DAMAGE_TYPE, "Damage Type", FieldType.StringSelector, DamageType.values()));

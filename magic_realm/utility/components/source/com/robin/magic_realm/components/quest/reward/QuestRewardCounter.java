@@ -39,8 +39,12 @@ public class QuestRewardCounter extends QuestReward {
 		if (needToSetQuestCount()) {
 			counter.setCount(getValueToSet());
 		}
-		counter.increaseCountByValue(getValueToIncrease());
-		counter.decreaseCountByValue(getValueToDecrease());
+		if (needToIncreaseQuestCount()) {
+			counter.increaseCountByValue(getValueToIncrease());
+		}
+		if (needToDecreaseQuestCount()) {
+			counter.decreaseCountByValue(getValueToDecrease());
+		}
 	}
 	
 	public String getDescription() {
@@ -83,5 +87,11 @@ public class QuestRewardCounter extends QuestReward {
 	}
 	private boolean needToSetQuestCount() {
 		return getValueToSet() != QuestConstants.ALL_VALUE;
+	}
+	private boolean needToIncreaseQuestCount() {
+		return getValueToIncrease() != QuestConstants.ALL_VALUE;
+	}
+	private boolean needToDecreaseQuestCount() {
+		return getValueToDecrease() != QuestConstants.ALL_VALUE;
 	}
 }
