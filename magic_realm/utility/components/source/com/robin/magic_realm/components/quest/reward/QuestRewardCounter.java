@@ -36,14 +36,14 @@ public class QuestRewardCounter extends QuestReward {
 	
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		QuestCounter counter = getQuestCounter();
-		if (needToSetQuestCount()) {
-			counter.setCount(getValueToSet());
-		}
 		if (needToIncreaseQuestCount()) {
 			counter.increaseCountByValue(getValueToIncrease());
 		}
 		if (needToDecreaseQuestCount()) {
 			counter.decreaseCountByValue(getValueToDecrease());
+		}
+		if (needToSetQuestCount()) {
+			counter.setCount(getValueToSet());
 		}
 	}
 	
@@ -77,10 +77,20 @@ public class QuestRewardCounter extends QuestReward {
 		return getInt(SET_COUNT);
 	}
 	public int getValueToIncrease() {
-		return getInt(INCREASE_COUNT);
+		if (needToIncreaseQuestCount()) {
+			return getInt(INCREASE_COUNT);
+		}
+		else {
+			return 0;
+		}
 	}
 	public int getValueToDecrease() {
-		return getInt(DECREASE_COUNT);
+		if (needToDecreaseQuestCount()) {
+			return getInt(DECREASE_COUNT);
+		}
+		else {
+			return 0;
+		}
 	}
 	private int totalChange() {
 		return getValueToIncrease()-getValueToDecrease();
