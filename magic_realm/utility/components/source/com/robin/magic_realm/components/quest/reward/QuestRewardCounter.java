@@ -77,21 +77,11 @@ public class QuestRewardCounter extends QuestReward {
 		return getInt(SET_COUNT);
 	}
 	public int getValueToIncrease() {
-		if (needToIncreaseQuestCount()) {
-			return getInt(INCREASE_COUNT);
-		}
-		else {
-			return 0;
-		}
+		return getInt(INCREASE_COUNT)!=QuestConstants.ALL_VALUE?getInt(INCREASE_COUNT):0;
 	}
 	public int getValueToDecrease() {
-		if (needToDecreaseQuestCount()) {
-			return getInt(DECREASE_COUNT);
-		}
-		else {
-			return 0;
-		}
-	}
+		return getInt(DECREASE_COUNT)!=QuestConstants.ALL_VALUE?getInt(DECREASE_COUNT):0;
+	}		
 	private int totalChange() {
 		return getValueToIncrease()-getValueToDecrease();
 	}
