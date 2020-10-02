@@ -1,5 +1,6 @@
 Version 1.1.3.4 - Changes since 1.1.3.3
 QUEST UPDATE:
+# Update on existing quests and a lot of new quests by Steve
 # Display Fatigue and Wounds in quest editor
 # Support for Cast a spell QuestRequirement
 # Support for Cast multiple (unique) spells QuestRequirement
