@@ -17,6 +17,8 @@
  */
 package com.robin.magic_realm.components.quest.reward;
 
+import java.util.Hashtable;
+
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
@@ -93,5 +95,8 @@ public class QuestRewardCounter extends QuestReward {
 	}
 	private boolean needToDecreaseQuestCount() {
 		return getValueToDecrease() != QuestConstants.ALL_VALUE;
+	}
+	public void updateIds(Hashtable<Long, GameObject> lookup) {
+		updateIdsForKey(lookup,COUNTER);
 	}
 }

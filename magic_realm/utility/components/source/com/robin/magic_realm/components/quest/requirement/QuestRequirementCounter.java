@@ -17,6 +17,9 @@
  */
 package com.robin.magic_realm.components.quest.requirement;
 
+import java.util.ArrayList;
+import java.util.Hashtable;
+
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
@@ -75,5 +78,8 @@ public class QuestRequirementCounter extends QuestRequirement {
 	}
 	public boolean subceedAllowed() {
 		return getBoolean(SUBCEED_TARGET_VALUE);
+	}
+	public void updateIds(Hashtable<Long, GameObject> lookup) {
+		updateIdsForKey(lookup,COUNTER);
 	}
 }
