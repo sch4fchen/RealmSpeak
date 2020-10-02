@@ -54,9 +54,14 @@ public class QuestRewardCounter extends QuestReward {
 		
 		StringBuffer sb = new StringBuffer();
 		sb.append(getQuestCounter().getName());
-		sb.append(" is changed by " +totalChange());
+		if (totalChange() != 0) {
+			sb.append(" is changed by " +totalChange());
+		}
+		if (totalChange() != 0 && needToSetQuestCount()) {
+			sb.append(" and");
+		}
 		if (needToSetQuestCount()) {
-			sb.append(" and is set to " +getValueToSet());
+			sb.append(" is set to " +getValueToSet());
 		}
 		sb.append(".");
 		return sb.toString();
