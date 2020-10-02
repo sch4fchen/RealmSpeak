@@ -10,6 +10,7 @@ QUEST UPDATE:
 # Support for QuestRequirementKill to define vulnerability
 # Support for Quest Counters
 # Support for Teleport QuestReward
+# Support for Hidden QuestRequirement (and toggle hide in quest tester)
 NEW FEATURES:
 # Option to change tile style to Legendary Realm with icons
 BUGS/ISSUES:

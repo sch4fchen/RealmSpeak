@@ -40,6 +40,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		Counter,
 		Discovery, // must have a specific discovery
 		GamePhase, // end of phase, end of day, start of evening, midnight, birdsong
+		Hidden,
 		Inventory, // a requirement that tests what you have in inventory
 		Kill, 
 		LearnAwaken,
@@ -72,6 +73,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests for a specific recorded discovery.";
 				case GamePhase:
 					return "Tests for a specific game phase (Birdsong, End-of-phase, End-of-turn, Evening).";
+				case Hidden:
+					return "Tests if character is hidden.";
 				case Inventory:
 					return "Tests the contents of inventory.";
 				case Kill:
@@ -199,6 +202,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case GamePhase:
 				requirement = new QuestRequirementGamePhase(go);
+				break;
+			case Hidden:
+				requirement = new QuestRequirementHidden(go);
 				break;
 			case Inventory:
 				requirement = new QuestRequirementInventory(go);

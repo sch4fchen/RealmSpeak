@@ -84,6 +84,8 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case GamePhase:
 				list.add(new QuestPropertyBlock(QuestRequirementGamePhase.GAME_PHASE_TYPE, "Only at", FieldType.StringSelector, GamePhaseType.values()));
 				break;
+			case Hidden:
+				break;
 			case Inventory:
 				list.add(new QuestPropertyBlock(QuestRequirementInventory.TREASURE_TYPE, "Type of inventory", FieldType.StringSelector, TreasureType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementInventory.REGEX_FILTER, "Inventory name filter (regex)", FieldType.Regex, null, new String[] { "item","treasure_within_treasure" }));

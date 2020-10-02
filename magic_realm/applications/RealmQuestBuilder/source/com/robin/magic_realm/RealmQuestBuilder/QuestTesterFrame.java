@@ -251,6 +251,13 @@ public class QuestTesterFrame extends JFrame {
 		charName = new JLabel();
 		line.add(charName);
 		line.add(Box.createHorizontalGlue());
+		JButton toggleHidden = new JButton("Toggle hidden");
+		toggleHidden.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				toggleHidden();
+			}
+		});
+		line.add(toggleHidden);
 		box.add(line);
 
 		line = group.createLabelLine("Current Location");
@@ -1167,6 +1174,16 @@ public class QuestTesterFrame extends JFrame {
 		searchClearingButton.setEnabled(true); // always on?
 	}
 
+	private void toggleHidden() {
+		if (character.isHidden()) {
+			character.setHidden(false);
+		}
+		else {
+			character.setHidden(true);
+		}
+		retestQuest();
+	}
+	
 	private void chooseNewLocation() {
 		GamePool pool = new GamePool(gameData.getGameObjects());
 		Hashtable<String, ClearingDetail> hash = new Hashtable<String, ClearingDetail>();
