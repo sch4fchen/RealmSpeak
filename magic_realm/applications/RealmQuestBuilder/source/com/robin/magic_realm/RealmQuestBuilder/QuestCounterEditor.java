@@ -41,7 +41,6 @@ public class QuestCounterEditor extends GenericEditor {
 		this.counter = counter;
 		initComponents();
 		name.setText(counter.getName());
-		startCount.setText(String.valueOf(counter.getStartCount()));
 		setLocationRelativeTo(parent);
 	}
 		protected boolean isValidForm() {
@@ -52,7 +51,7 @@ public class QuestCounterEditor extends GenericEditor {
 	}
 	private void saveCounter() {
 		counter.setName(name.getText());
-		counter.setStartCount(startCount.getInt());
+		counter.setCount(startCount.getInt());
 	}
 	private void initComponents() {
 		setTitle("Quest Counter");
@@ -108,7 +107,7 @@ public class QuestCounterEditor extends GenericEditor {
 		form.add(Box.createVerticalGlue());
 		
 		line = group.createLabelLine("Initial count");
-		startCount = new IntegerField(0);
+		startCount = new IntegerField(counter.getCount());
 		startCount.addCaretListener(new CaretListener() {
 			public void caretUpdate(CaretEvent e) {
 				updateControls();

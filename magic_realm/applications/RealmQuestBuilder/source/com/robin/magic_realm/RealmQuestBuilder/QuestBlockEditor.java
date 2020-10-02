@@ -95,6 +95,7 @@ public abstract class QuestBlockEditor extends GenericEditor {
 					go.setString(block.getKeyName(),((JTextArea)block.getComponent()).getText().trim());
 					break;
 				case Number:
+				case NumberAll:
 					go.setInt(block.getKeyName(),((IntegerField)block.getComponent()).getInt());
 					break;
 				case StringSelector:
@@ -186,6 +187,11 @@ public abstract class QuestBlockEditor extends GenericEditor {
 				case Number:
 					int n = go.getInt(block.getKeyName());
 					component = new IntegerField(n==0?1:n);
+					ComponentTools.lockComponentSize(component,150,25);
+					break;
+				case NumberAll:
+					int i = go.getInt(block.getKeyName());
+					component = new IntegerField(i);
 					ComponentTools.lockComponentSize(component,150,25);
 					break;
 				case StringSelector:

@@ -18,7 +18,6 @@
 package com.robin.magic_realm.components.quest.reward;
 
 import java.util.Hashtable;
-
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
@@ -70,7 +69,7 @@ public class QuestRewardCounter extends QuestReward {
 		if (id!=null) {
 			GameObject go = getGameData().getGameObject(Long.valueOf(id));
 			if (go!=null) {
-				return new QuestCounter(go);
+				return new QuestCounter(go, go.getThisInt("count"));
 			}
 		}
 		return null;
@@ -79,10 +78,10 @@ public class QuestRewardCounter extends QuestReward {
 		return getInt(SET_COUNT);
 	}
 	public int getValueToIncrease() {
-		return getInt(INCREASE_COUNT)!=QuestConstants.ALL_VALUE?getInt(INCREASE_COUNT):0;
+		return getInt(INCREASE_COUNT);
 	}
 	public int getValueToDecrease() {
-		return getInt(DECREASE_COUNT)!=QuestConstants.ALL_VALUE?getInt(DECREASE_COUNT):0;
+		return getInt(DECREASE_COUNT);
 	}		
 	private int totalChange() {
 		return getValueToIncrease()-getValueToDecrease();
@@ -91,10 +90,10 @@ public class QuestRewardCounter extends QuestReward {
 		return getValueToSet() != QuestConstants.ALL_VALUE;
 	}
 	private boolean needToIncreaseQuestCount() {
-		return getValueToIncrease() != QuestConstants.ALL_VALUE;
+		return getValueToIncrease() != 0;
 	}
 	private boolean needToDecreaseQuestCount() {
-		return getValueToDecrease() != QuestConstants.ALL_VALUE;
+		return getValueToDecrease() != 0;
 	}
 	public void updateIds(Hashtable<Long, GameObject> lookup) {
 		updateIdsForKey(lookup,COUNTER);

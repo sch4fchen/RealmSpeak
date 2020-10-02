@@ -93,7 +93,7 @@ public class Quest extends GameObjectWrapper {
 				minorCharacters.add(new QuestMinorCharacter(held));
 			}
 			else if (held.hasThisAttribute(Quest.QUEST_COUNTER)) {
-				counters.add(new QuestCounter(held));
+				counters.add(new QuestCounter(held, held.getThisInt("count")));
 			}
 		}
 		Collections.sort(steps, new Comparator<QuestStep>() {

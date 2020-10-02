@@ -22,11 +22,15 @@ import com.robin.game.objects.*;
 public class QuestCounter extends GameObjectWrapper {
 	private static String TAG_FRONT = "<";
 	private static String TAG_END = ">";
-	private int startCount = 0;
-	private int count = 0;
+	private final String COUNT = "count";
 	
 	public QuestCounter(GameObject go) {
 		super(go);
+		go.setThisAttribute(COUNT, "0");
+	}
+	public QuestCounter(GameObject go, int count) {
+		super(go);
+		go.setThisAttribute(COUNT, count);
 	}
 	public Quest getParentQuest() {
 		GameObject quest = getGameObject().getHeldBy();
@@ -37,18 +41,13 @@ public class QuestCounter extends GameObjectWrapper {
 	}
 	public void init() {
 		getGameObject().setThisAttribute(Quest.QUEST_COUNTER);
+		getGameObject().setThisAttribute(COUNT, 0);
 	}
 	public String getBlockName() {
 		return Quest.QUEST_BLOCK;
 	}
 	public String getTagName() {
 		return TAG_FRONT + getName() + TAG_END;
-	}
-	public int getStartCount() {
-		return startCount;
-	}
-	public void setStartCount(int initialValue) {
-		startCount = initialValue;
 	}
 	public void increaseCount() {
 		increaseCountByValue(1);
@@ -62,13 +61,10 @@ public class QuestCounter extends GameObjectWrapper {
 	public void decreaseCountByValue(int value) {
 		setCount(getCount() - value);
 	}
-	public void setCounter(int value) {
-		setCount(value);
-	}
 	public int getCount() {
-		return count;
+		return getGameObject().getThisInt(COUNT);
 	}
 	public void setCount(int count) {
-		this.count = count;
+		getGameObject().setThisAttribute(COUNT, count);
 	}
 }

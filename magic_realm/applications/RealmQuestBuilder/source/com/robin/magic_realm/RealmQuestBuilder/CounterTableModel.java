@@ -55,7 +55,7 @@ public class CounterTableModel extends AbstractTableModel {
 				case 0:
 					return counter.getName();
 				case 1:
-					return counter.getStartCount();
+					return counter.getCount();
 			}
 		}
 		return null;

@@ -17,9 +17,7 @@
  */
 package com.robin.magic_realm.components.quest.requirement;
 
-import java.util.ArrayList;
 import java.util.Hashtable;
-
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
@@ -65,7 +63,7 @@ public class QuestRequirementCounter extends QuestRequirement {
 		if (id!=null) {
 			GameObject go = getGameData().getGameObject(Long.valueOf(id));
 			if (go!=null) {
-				return new QuestCounter(go);
+				return new QuestCounter(go, go.getThisInt("count"));
 			}
 		}
 		return null;
