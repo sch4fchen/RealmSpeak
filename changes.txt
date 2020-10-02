@@ -11,6 +11,7 @@ QUEST UPDATE:
 # Support for Quest Counters
 # Support for Teleport QuestReward
 # Support for Hidden QuestRequirement (and toggle hide in quest tester)
+# Support for NoEffect requirement for QuestRequirementSearch
 NEW FEATURES:
 # Option to change tile style to Legendary Realm with icons
 BUGS/ISSUES:

@@ -141,6 +141,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementSearchResult.RESULT2, "OR", FieldType.StringSelector, SearchResultType.optionalValues()));
 				list.add(new QuestPropertyBlock(QuestRequirementSearchResult.RESULT3, "OR", FieldType.StringSelector, SearchResultType.optionalValues()));
 				list.add(new QuestPropertyBlock(QuestRequirementSearchResult.REQUIRES_GAIN, "Require search effect", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementSearchResult.REQUIRES_NO_GAIN, "Requires no search effect", FieldType.Boolean));
 				break;
 			case TimePassed:
 				list.add(new QuestPropertyBlock(QuestRequirementTimePassed.VALUE, "How many days", FieldType.Number));

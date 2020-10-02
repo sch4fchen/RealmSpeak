@@ -37,6 +37,7 @@ public class QuestRequirementSearchResult extends QuestRequirement {
 	public static final String RESULT2 = "_r2";
 	public static final String RESULT3 = "_r3";
 	public static final String REQUIRES_GAIN = "_rqg";
+	public static final String REQUIRES_NO_GAIN = "_rqng";
 	public static final String TARGET_REGEX = "_rx";
 	public static final String LOCATION = "_lcn";
 	public static final String TARGET_LOC = "_tlcn";
@@ -52,9 +53,18 @@ public class QuestRequirementSearchResult extends QuestRequirement {
 			logger.fine("Search table name "+reqParams.actionName+" does not match "+reqTable);
 			return false;
 		}
+		
 		ArrayList<SearchResultType> acceptibleSearchResults = getAcceptableSearchResults();
 		if (reqParams!=null && reqParams.searchType!=null && acceptibleSearchResults.contains(reqParams.searchType)) {
-			if (!requiresGain() || reqParams.searchHadAnEffect) {
+			if(requiresGain() && !reqParams.searchHadAnEffect) {
+				logger.fine("Requires some type of search gain, and there wasn't any.");
+				return false;
+			}
+			if(requiresNoGain() && reqParams.searchHadAnEffect) {
+				logger.fine("Requires no search gain, but there was some.");
+				return false;
+			}
+			
 				// So far so good.  Now make sure the search target is accurate if a regex was specified
 				String regex = getTargetRegEx();
 				Pattern pattern = regex!=null && regex.trim().length()>0?Pattern.compile(regex):null;
@@ -75,10 +85,6 @@ public class QuestRequirementSearchResult extends QuestRequirement {
 				}
 				
 				return regexGood && qlGood && tlGood;
-			}
-			else {
-				logger.fine("Requires some type of search gain, and there wasn't any.");
-			}
 		}
 		else {
 			if (reqParams==null) {
@@ -189,6 +195,9 @@ public class QuestRequirementSearchResult extends QuestRequirement {
 	}
 	public boolean requiresGain() {
 		return getBoolean(REQUIRES_GAIN);
+	}
+	public boolean requiresNoGain() {
+		return getBoolean(REQUIRES_NO_GAIN);
 	}
 	public String getTargetRegEx() {
 		return getString(TARGET_REGEX);
