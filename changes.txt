@@ -9,6 +9,7 @@ QUEST UPDATE:
 # Support for Companions to exclude horse
 # Support for QuestRequirementKill to define vulnerability
 # Support for Quest Counters
+# Support for Teleport QuestReward
 NEW FEATURES:
 # Option to change tile style to Legendary Realm with icons
 BUGS/ISSUES:
