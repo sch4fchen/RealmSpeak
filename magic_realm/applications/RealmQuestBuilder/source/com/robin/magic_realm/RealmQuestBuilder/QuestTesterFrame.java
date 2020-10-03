@@ -541,12 +541,36 @@ public class QuestTesterFrame extends JFrame {
 			}
 		});
 		controls.add(drop);
-
 		JButton buy = new JButton("Buy");
-		buy.setEnabled(false); // TODO This doesn't work yet
 		buy.setToolTipText("Buy an Item from a Native.");
 		buy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
+				ArrayList<GameObject> list = chooseOther("Seller", "visitor", "native,rank=HQ");
+				if (list == null)
+					return;
+				if (list.size() != 1) {
+					JOptionPane.showMessageDialog(QuestTesterFrame.this, "Pick 1");
+					return;
+				}
+				GameObject seller = list.get(0);		
+				QuestRequirementParams params = new QuestRequirementParams();
+				params.actionType = CharacterActionType.Trading;
+				params.actionName = TradeType.Buy.toString();
+				params.objectList = new ArrayList<GameObject>();
+				params.targetOfSearch = seller;			
+				ArrayList<GameObject> items = chooseSomething();
+				if (items == null)
+					return;
+				for (GameObject item : items) {
+					RealmComponent itemRc = RealmComponent.getRealmComponent(item);
+					int price = TreasureUtility.getBasePrice(null, itemRc);
+					character.setGold(character.getGold()-price);
+					Loot.addItemToCharacter(QuestTesterFrame.this, null, character, item, HostPrefWrapper.findHostPrefs(gameData));
+					params.objectList.add(item);
+				}
+				character.testQuestRequirements(QuestTesterFrame.this, params);
+				updateCharacterPanel();
+				retestQuest();
 			}
 		});
 		controls.add(buy);
@@ -571,19 +595,19 @@ public class QuestTesterFrame extends JFrame {
 				params.targetOfSearch = list.get(0);
 
 				if (activeInventory.getSelectedIndex() != -1) {
-					GameObject thing = (GameObject) activeInventory.getSelectedValue();
-					if (TreasureUtility.doDeactivate(QuestTesterFrame.this, character, thing)) {
-						thing.detach();
-						params.objectList.add(thing);
+					GameObject item = (GameObject) activeInventory.getSelectedValue();
+					if (TreasureUtility.doDeactivate(QuestTesterFrame.this, character, item)) {
+						item.detach();
+						params.objectList.add(item);
 						character.testQuestRequirements(QuestTesterFrame.this, params);
 						updateCharacterPanel();
 						retestQuest();
 					}
 				}
 				else if (inactiveInventory.getSelectedIndex() != -1) {
-					GameObject thing = (GameObject) inactiveInventory.getSelectedValue();
-					thing.detach();
-					params.objectList.add(thing);
+					GameObject item = (GameObject) inactiveInventory.getSelectedValue();
+					item.detach();
+					params.objectList.add(item);
 					character.testQuestRequirements(QuestTesterFrame.this, params);
 					updateCharacterPanel();
 					retestQuest();
