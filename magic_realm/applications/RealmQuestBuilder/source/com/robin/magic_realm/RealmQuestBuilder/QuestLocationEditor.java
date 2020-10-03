@@ -51,8 +51,6 @@ public class QuestLocationEditor extends GenericEditor {
 	private JLabel descriptionLabel;
 	private SuggestionTextArea locationList;
 	
-	private static String [] wolfs = new String [] {"Wolf 1","Wolf 2"};
-	private static String [] transforms = new String [] {"Tremendous Dragon","Lion","Eagle","Bird","Squirrel","Frog"};
 	private static String [] companions = getAllCompanionNames();
 	
 	private static String[] getAllCompanionNames() {
@@ -86,8 +84,8 @@ public class QuestLocationEditor extends GenericEditor {
 	
 	private static void initSuggestionWords(GameData realmSpeakData) {
 		suggestionWords = new ArrayList<String>();
-		Collections.addAll(suggestionWords, wolfs);
-		Collections.addAll(suggestionWords, transforms);
+		Collections.addAll(suggestionWords, QuestConstants.wolfs);
+		Collections.addAll(suggestionWords, QuestConstants.transforms);
 		Collections.addAll(suggestionWords, companions);
 		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
 		String query = "!part,!summon,!spell,!tile,!character_chit,!virtual_dwelling,!season,!test,!character";
@@ -174,7 +172,7 @@ public class QuestLocationEditor extends GenericEditor {
 		StringBuilder sb = new StringBuilder();
 		for (String token:getLocationList()) {
 			sb.append(token);
-			if (!Arrays.asList(wolfs).contains(token) && !Arrays.asList(transforms).contains(token) && !Arrays.asList(companions).contains(token) && !QuestLocation.validLocation(realmSpeakData,token)) {
+			if (!Arrays.asList(QuestConstants.wolfs).contains(token) && !Arrays.asList(QuestConstants.transforms).contains(token) && !Arrays.asList(companions).contains(token) && !QuestLocation.validLocation(realmSpeakData,token)) {
 				sb.append(INVALID);
 			}
 			sb.append("\n");

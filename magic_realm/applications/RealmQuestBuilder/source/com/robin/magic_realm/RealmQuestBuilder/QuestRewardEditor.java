@@ -108,6 +108,12 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardJournal.ENTRY_TYPE, "Entry type", FieldType.StringSelector, new String[] { QuestStepState.Pending.toString(), QuestStepState.Finished.toString(), QuestStepState.Failed.toString() }));
 				list.add(new QuestPropertyBlock(QuestRewardJournal.TEXT, "Text", FieldType.TextLine));
 				break;
+			case KillDenizen:
+				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.DENIZEN_REGEX, "Denizen", FieldType.Regex, null, new String[] { "denizen" }));
+				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_HIRELINGS, "Kill hirelings", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_COMPANIONS, "Kill companions/summoned monsters", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_LIMITED, "Kill ONLY those (see above)", FieldType.Boolean));
+				break;
 			case LostInventoryToDefault:
 				break;
 			case LostInventoryToLocation:

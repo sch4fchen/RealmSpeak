@@ -54,6 +54,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		Information,
 		Item,
 		Journal,
+		KillDenizen,
 		LostInventoryToDefault,
 		LostInventoryToLocation,
 		MarkDenizen,
@@ -103,6 +104,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case Information:				return "Displays a dialog with information in it.  This is a good way to inform the player what is happening.";
 				case Item:						return "Add an item to the character inventory, or take one away.  Allows for choosing items from a group.";
 				case Journal:					return "Add or update a journal entry for this quest.";
+				case KillDenizen:				return "Kills a denizen.";
 				case LostInventoryToDefault:	return "All future lost inventory from this quest will go to wherever they started the game, including treasures.  This is the default setting.";
 				case LostInventoryToLocation:	return "All future lost inventory from this quest will go to a specified location.";
 				case MarkDenizen:				return "Mark a particular denizen for later reference.  This is useful if you want to make sure a character kills (for example) a particular monster.";
@@ -290,6 +292,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case Journal:
 				reward = new QuestRewardJournal(go);
+				break;
+			case KillDenizen:
+				reward = new QuestRewardKillDenizen(go);
 				break;	
 			case LostInventoryToDefault:
 				reward = new QuestRewardLostInventoryToDefault(go);

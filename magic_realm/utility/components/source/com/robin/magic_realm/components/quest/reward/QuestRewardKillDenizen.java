@@ -21,36 +21,56 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
+import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.utility.Constants;
-import com.robin.magic_realm.components.utility.SetupCardUtility;
+import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
-public class QuestRewardRegenerateDenizen extends QuestReward {
+public class QuestRewardKillDenizen extends QuestReward {
 	
 	public static final String DENIZEN_REGEX = "_drx";
+	public static final String KILL_HIRELINGS = "_kh";
+	public static final String KILL_COMPANIONS = "_kc";
+	public static final String KILL_LIMITED = "_kl";
 	
-	public QuestRewardRegenerateDenizen(GameObject go) {
+	public QuestRewardKillDenizen(GameObject go) {
 		super(go);
 	}
 
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		ArrayList<GameObject> denizens = character.getGameData().getGameObjectsByNameRegex(getDenizenNameRegex());
 		for (GameObject denizen : denizens) {
-			if (denizen != null && denizen.hasThisAttribute("denizen") && !denizen.hasThisAttribute(Constants.CLONED) && !denizen.hasThisAttribute(Constants.COMPANION)) {			
-				SetupCardUtility.resetDenizen(denizen);
+			if (!killHirelings() && denizen.hasThisAttribute(Constants.CLONED)) {
+				continue;
 			}
+			if (!killCompanionsAndSummonedMonsters() && denizen.hasThisAttribute(Constants.COMPANION)) {
+				continue;
+			}
+			if (killOnlyHirelingsCompanionsSummonedMonsters() && !denizen.hasThisAttribute(Constants.CLONED) && !denizen.hasThisAttribute(Constants.COMPANION)) {
+				continue;
+			}
+			
+			RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
+			RealmUtility.makeDead(denizenRc);
 		}
 	}
 	
 	public String getDescription() {
-		return getDenizenNameRegex() +" is/are regenerated.";
+		return getDenizenNameRegex() +" is/are killed.";
 	}
-	
 	private String getDenizenNameRegex() {
 		return getString(DENIZEN_REGEX);
 	}
-
+	private Boolean killHirelings() {
+		return getBoolean(KILL_HIRELINGS);
+	}
+	private Boolean killCompanionsAndSummonedMonsters() {
+		return getBoolean(KILL_COMPANIONS);
+	}
+	private Boolean killOnlyHirelingsCompanionsSummonedMonsters() {
+		return getBoolean(KILL_LIMITED);
+	}
 	public RewardType getRewardType() {
-		return RewardType.RegenerateDenizen;
+		return RewardType.KillDenizen;
 	}
 }

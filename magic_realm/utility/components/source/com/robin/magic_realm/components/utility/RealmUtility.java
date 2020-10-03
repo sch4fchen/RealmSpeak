@@ -396,7 +396,7 @@ public class RealmUtility {
 		}
 		else {
 			// This is the default
-			if (!rcLocation.isFlying()) { // Had to add this for when wasps die because the queen is killed!
+			if (rcLocation != null && !rcLocation.isFlying()) { // Had to add this for when wasps die because the queen is killed!
 				moveInventory(rc.getGameObject(),rcLocation.tile.getGameObject(),rcLocation.clearing.getNum(),true);
 				rc.getGameObject().removeThisAttribute(Constants.SPOILS_INVENTORY_DROP);
 			}
