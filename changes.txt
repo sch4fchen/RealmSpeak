@@ -13,7 +13,8 @@ QUEST UPDATE:
 # Support for Teleport QuestReward
 # Support for Hidden QuestRequirement (and toggle hide in quest tester)
 # Support for NoEffect requirement for QuestRequirementSearch
-# Support for Kill denizen QuestReward
+# Support for KillDenizen QuestReward
+# Support for SpellEffect QuestReward
 # Support for buy action in QuestTester
 NEW FEATURES:
 # Option to change tile style to Legendary Realm with icons

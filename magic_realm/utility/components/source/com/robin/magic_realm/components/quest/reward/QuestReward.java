@@ -68,6 +68,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		ResetQuest,
 		ScareMonsters, 
 		//Skill, // special ability (adv/disadv)  The more I think about this, this could be accomplished by providing a treasure, or minor character
+		SpellEffect,
 		SpellFromSite,
 		StripInventory,
 		SummonGuardian,
@@ -117,6 +118,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case RelationshipSet:			return "Set the relationship of the character with a particular native group, or all natives in the clearing.";
 				case ResetQuest:				return "Completely resets the quest, unmarking all quest steps and journal entries.";
 				case ScareMonsters:				return "Randomly move all monsters in current clearing to other clearings either in the same tile or other tiles, as defined.";
+				case SpellEffect:				return "Cast a spell effect on the character and/or other targets.";
 				case SpellFromSite:				return "Learn a spell from a specific site, book, artifact, or Shaman.";
 				case StripInventory:			return "Removes ALL inventory and (optionally) gold from the character.";
 				case SummonGuardian:			return "For a specific quest location, summon the treasure site guardian (if any)";
@@ -331,6 +333,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case ScareMonsters:
 				reward = new QuestRewardScareMonsters(go);
+				break;
+			case SpellEffect:
+				reward = new QuestRewardSpellEffect(go);
 				break;
 			case SpellFromSite:
 				reward = new QuestRewardSpellFromSite(go);

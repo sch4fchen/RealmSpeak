@@ -44,13 +44,13 @@ import com.robin.magic_realm.components.utility.*;
 public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	public static final JFrame dummyFrame = new JFrame(); // this is so affectSpells can work on Battle emulator
 	
-	private static final String SPELL_ALIVE = "alive";		// Any spell that is alive - could be inert or nullified, but it is alive
+	public static final String SPELL_ALIVE = "alive";		// Any spell that is alive - could be inert or nullified, but it is alive
 	private static final String SPELL_INERT = "inert";		// Inert means that the spell is alive, but not functioning due to lack of color
 	private static final String SPELL_AFFECTED = "affected";	// indicates the spell has affected targets
 	private static final String SPELL_NULLIFIED = "nullified";	// A spell is nullified when the target is melted into mist, but will be restored when that condition ends
 	private static final String SPELL_VIRTUAL = "virtual";		// A virtual spell is an instance of a real spell when cast using Enhanced Magic rules (i.e., the spell isn't tied up)
 	public static final String INCANTATION_TIE = "incantation_tie";
-	private static final String CASTER_ID = "caster_id";
+	public static final String CASTER_ID = "caster_id";
 	
 	private static final String TARGET_IDS = "target_ids";
 	private static final String TARGET_EXTRA_IDENTIFIER = "target_ex_id";

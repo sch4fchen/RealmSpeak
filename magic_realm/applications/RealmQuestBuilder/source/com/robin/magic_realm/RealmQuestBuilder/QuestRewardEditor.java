@@ -146,6 +146,15 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case ScareMonsters:
 				break;
+			case SpellEffect:
+				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.SPELL_REGEX, "Spell", FieldType.Regex, null, new String[] { "spell" }));
+				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.AFFECT_CHARACTER, "Affect character", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.TARGET_REGEX, "Affect targets", FieldType.Regex, null, new String[] { "vulnerability" }));
+				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.EXPIRE_IMMEDIATELY, "Expire immediately", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.AFFECT_HIRELINGS, "Affect hirelings", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.AFFECT_COMPANIONS, "Affect companions/summoned monsters", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.AFFECT_LIMITED, "Affect ONLY those (see above)", FieldType.Boolean));
+				break;
 			case SpellFromSite:
 				list.add(new QuestPropertyBlock(QuestRewardTreasureFromSite.SITE_REGEX, "Site RegEx", FieldType.Regex, null, new String[] { "spell_site","visitor,!name=Scholar","artifact","book,magic" }));
 				list.add(new QuestPropertyBlock(QuestRewardTreasureFromSite.DRAW_TYPE, "Draw Type", FieldType.StringSelector, DrawType.values()));
