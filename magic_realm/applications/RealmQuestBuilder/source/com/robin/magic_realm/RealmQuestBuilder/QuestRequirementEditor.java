@@ -77,6 +77,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementCounter.TARGET_VALUE, "Target count", FieldType.NumberAll));
 				list.add(new QuestPropertyBlock(QuestRequirementCounter.EXCEED_TARGET_VALUE, "Exceed target value allowed", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementCounter.SUBCEED_TARGET_VALUE, "Subceed target value allowed", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementCounter.AUTO_JOURNAL, "Auto Journal Entry", FieldType.Boolean));
 				break;
 			case Discovery:
 				list.add(new QuestPropertyBlock(QuestRequirementDiscovery.DISCOVERY_KEY, "Discovery", FieldType.StringSelector, getDiscoveryStrings().toArray()));

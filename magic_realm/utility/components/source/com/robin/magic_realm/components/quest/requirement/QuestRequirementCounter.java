@@ -22,6 +22,7 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.quest.QuestCounter;
+import com.robin.magic_realm.components.quest.QuestStepState;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRequirementCounter extends QuestRequirement {
@@ -36,24 +37,46 @@ public class QuestRequirementCounter extends QuestRequirement {
 	}
 	
 	protected boolean testFulfillsRequirement(JFrame frame,CharacterWrapper character,QuestRequirementParams reqParams) {
+		boolean success = false;
 		QuestCounter counter = getQuestCounter();
 		if(counter.getCount() == getTargetValue()) {
-			return true;
+			success = true;
 		}
 		if (exceedAllowed() && counter.getCount() >= getTargetValue()) {
-			return true;
+			success = true;
 		}
 		if (subceedAllowed() && counter.getCount() <= getTargetValue()) {
-			return true;
+			success = true;
 		}
 		
-		return false;
+		boolean autoJournal = isAutoJournal();
+		if (autoJournal) {
+			if (success) {
+				getParentQuest().addJournalEntry("REQ" + getGameObject().getStringId(), QuestStepState.Finished, buildDescriptionText() + "  Done!");
+			}
+			else {
+				StringBuilder sb = new StringBuilder(buildDescriptionText());
+				sb.append("  Still need ");
+				sb.append(getTargetValue() - counter.getCount());
+				sb.append(".");
+				getParentQuest().addJournalEntry("REQ" + getGameObject().getStringId(), QuestStepState.Pending, sb.toString());
+			}
+		}
+		
+		return success;
 	}
 	
 	public RequirementType getRequirementType() {
 		return RequirementType.Counter;
 	}
 	protected String buildDescription() {
+		String desc = buildDescriptionText();
+		if (isAutoJournal()) {
+			desc += " (Auto Journal ON)";
+		}
+		return desc;
+	}
+	private String buildDescriptionText() {
 		QuestCounter questCounter = getQuestCounter();
 		if (questCounter==null) return "ERROR - No counter found!";
 		return getQuestCounter().getName() +" must reach " +getTargetValue() +".";
