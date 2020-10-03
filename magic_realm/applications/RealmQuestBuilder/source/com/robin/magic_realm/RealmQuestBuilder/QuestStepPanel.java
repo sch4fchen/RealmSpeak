@@ -224,7 +224,9 @@ public class QuestStepPanel extends JPanel {
 			public void add() {
 				ButtonOptionDialog dialog = new ButtonOptionDialog(parent, null, "Choose a requirement type:", "New Requirement", true,3);
 				for (RequirementType rt : RequirementType.values()) {
-					boolean enabled = rt!=RequirementType.OccupyLocation || quest.getLocations().size()>0;
+					boolean enabled = (rt!=RequirementType.OccupyLocation && rt!=RequirementType.Counter)
+							|| (rt==RequirementType.OccupyLocation && quest.getLocations().size()>0)
+							|| (rt==RequirementType.Counter && quest.getCounters().size()>0);
 					dialog.addSelectionObject(rt,enabled,rt.getDescription());
 				}
 				dialog.setVisible(true);
@@ -333,7 +335,9 @@ public class QuestStepPanel extends JPanel {
 			public void add() {
 				ButtonOptionDialog dialog = new ButtonOptionDialog(parent, null, "Choose a reward type:", "New Reward", true,3);
 				for (RewardType rt : RewardType.values()) {
-					boolean enabled = !rt.requiresLocations() || quest.getLocations().size()>0;
+					boolean enabled = (!rt.requiresLocations() && rt!=RewardType.Counter)
+							|| (rt.requiresLocations() && quest.getLocations().size()>0)
+							|| (rt==RewardType.Counter && quest.getCounters().size()>0);					
 					dialog.addSelectionObject(rt,enabled,rt.getDescription());
 				}
 				dialog.setVisible(true);
