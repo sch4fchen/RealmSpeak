@@ -100,6 +100,9 @@ public class QuestRewardSpellEffect extends QuestReward {
 		if (affectCharacter()) {
 			sb.append(" on the character");
 		}
+		if (affectCharacter() && !getTargetRegex().isEmpty()) {
+			sb.append(" and");
+		}
 		if (!getTargetRegex().isEmpty()) {
 			sb.append(" on target(s) /"+getTargetRegex()+"/");
 		}
