@@ -15,6 +15,7 @@ QUEST UPDATE:
 # Support for NoEffect requirement for QuestRequirementSearch
 # Support for KillDenizen QuestReward
 # Support for SpellEffect QuestReward
+# Support for Open QuestRequirement
 # Support for buy action in QuestTester
 NEW FEATURES:
 # Option to change tile style to Legendary Realm with icons

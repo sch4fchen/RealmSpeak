@@ -902,6 +902,12 @@ public class TreasureUtility {
 				
 				Loot loot = new Loot(frame,listener);
 				loot.handleSpecial(character,null,toOpen,false);
+				
+				QuestRequirementParams qr = new QuestRequirementParams();
+				qr.actionType = CharacterActionType.Open;
+				qr.targetOfSearch = toOpen;
+				character.testQuestRequirements(frame, qr);
+				
 				return toOpen;
 			}
 			else {

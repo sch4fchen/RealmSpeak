@@ -227,6 +227,7 @@ public class Constants {
 	public static final String RED_DIE = "red_die";
 	public static final String EXTRA_CAVE_PHASE = "extra_cave_phase";
 	public static final String NEEDS_OPEN = "needs_open";
+	public static final String SEARCH = "search";
 	public static final String NO_LOOT = "no_loot";
 	public static final String ACTIVATED = "activated";
 	public static final String FATIGUE_ASTERISK = "fatigue_asterisk";

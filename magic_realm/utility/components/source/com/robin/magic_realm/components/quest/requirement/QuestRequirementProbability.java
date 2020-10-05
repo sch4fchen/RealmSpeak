@@ -32,7 +32,7 @@ public class QuestRequirementProbability extends QuestRequirement {
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
 		int chance = getValue();
 		double random = 100*Math.random();
-		if ((int) random <= chance) {
+		if (((int) random)+1 <= chance) {
 			return true;
 		}
 		return false;

@@ -124,6 +124,10 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case OccupyLocation:
 				list.add(new QuestPropertyBlock(QuestRequirementLocation.LOCATION, "Quest Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
+			case Open:
+				list.add(new QuestPropertyBlock(QuestRequirementOpen.LOCATION_REGEX, "Location to open/search", FieldType.Regex, null, new String[] { "needs_open", "search" }));
+				list.add(new QuestPropertyBlock(QuestRequirementOpen.ONLY_CHARACTER, "Character has to open it (chest or vault)", FieldType.Boolean));
+				break;
 			case Path:
 				list.add(new QuestPropertyBlock(QuestRequirementPath.PATH, "Specific Path (like \"CV1 CV3 CV6 CV4 CV5\")", FieldType.SmartTextArea, getAllClearingCodes()));
 				list.add(new QuestPropertyBlock(QuestRequirementPath.TIME_RESTRICTION, "Only count moves made during the", FieldType.StringSelector, TargetValueType.values()));

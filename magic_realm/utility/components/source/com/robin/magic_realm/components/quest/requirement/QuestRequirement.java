@@ -48,6 +48,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		NoDenizens,
 		MinorCharacter,
 		MissionCampaign,
+		Open,
 		OccupyLocation,
 		Path, // follows a specific path
 		Probability,
@@ -91,6 +92,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests for start/stop of Mission/Campaign chits.";
 				case OccupyLocation:
 					return "Tests whether the character is in a specific location.";
+				case Open:
+					return "Tests whether the character (or anyone) opens specific location.";
 				case Path:
 					return "Tests whether the character has followed a specific path."; 
 				case Probability:
@@ -235,6 +238,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case OccupyLocation:
 				requirement = new QuestRequirementLocation(go);
+				break;
+			case Open:
+				requirement = new QuestRequirementOpen(go);
 				break;
 			case Path:
 				requirement = new QuestRequirementPath(go);

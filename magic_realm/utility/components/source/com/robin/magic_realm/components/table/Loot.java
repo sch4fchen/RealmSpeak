@@ -55,7 +55,7 @@ public class Loot extends RealmTable {
 		this.character = character;
 		this.treasureLocation = treasureLocation;
 		this.tileLocation = null;
-		searchPr = ActionPrerequisite.getActionPrerequisite(treasureLocation,treasureLocation.getThisAttribute("search"),"search");
+		searchPr = ActionPrerequisite.getActionPrerequisite(treasureLocation,treasureLocation.getThisAttribute(Constants.SEARCH),Constants.SEARCH);
 		drawPr = ActionPrerequisite.getActionPrerequisite(treasureLocation,treasureLocation.getThisAttribute("draw"),"draw from");
 	}
 	public Loot(JFrame frame,CharacterWrapper character,TileLocation tl,ChangeListener listener) {
