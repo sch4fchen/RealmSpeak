@@ -1,7 +1,7 @@
 Version 1.1.3.4 - Changes since 1.1.3.3
 QUEST UPDATE:
 # Update on existing quests and a lot of new quests by Steve
-# QuestTester: "Fullfill requirements"-button for a quest step
+# QuestTester: "Fulfill requirements"-button for a quest step
 # QuestTester: Display Fatigue and Wounds
 # QuestTester: Buy action
 # Quest Counters
