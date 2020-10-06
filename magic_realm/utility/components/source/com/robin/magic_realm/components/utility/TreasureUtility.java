@@ -182,7 +182,7 @@ public class TreasureUtility {
 				boolean success = TreasureUtility.openOneObject(parentFrame,character,openable,listener,false)!=null;
 				if (success) {
 					QuestRequirementParams qp = new QuestRequirementParams();
-					qp.actionType = CharacterActionType.ActivatingItem;
+					qp.actionType = CharacterActionType.Open;
 					qp.objectList = new ArrayList<GameObject>();
 					qp.objectList.add(thing);
 					character.testQuestRequirements(parentFrame,qp);
