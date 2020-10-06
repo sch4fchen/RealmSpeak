@@ -1,23 +1,24 @@
 Version 1.1.3.4 - Changes since 1.1.3.3
 QUEST UPDATE:
 # Update on existing quests and a lot of new quests by Steve
-# Display Fatigue and Wounds in QuestTester
-# Buy action in QuestTester
-# Support for Companions Native names in Quest Locations
-# Support for Companions to exclude horse
-# Support for QuestRequirementKill to define vulnerability
-# Support for single clearing for the Path QeustRequirement
-# NoEffect requirement for QuestRequirementSearch
-# Quest Counters 
-# Cast a spell QuestRequirement
-# Cast multiple (unique) spells QuestRequirement
-# Regenerate denizen QuestReward
-# Summon Roll QuestReward
-# Teleport QuestReward
-# Hidden QuestRequirement (and toggle hide in QuestTester)
-# KillDenizen QuestReward
-# SpellEffect QuestReward
-# Open QuestRequirement
+# QuestTester: "Fullfill requirements"-button for a quest step
+# QuestTester: Display Fatigue and Wounds
+# QuestTester: Buy action
+# Quest Counters
+# QuestLocations: Support for Companions Native names
+# QuestRequirement: Cast a spell
+# QuestRequirement: Cast multiple (unique) spells
+# QuestRequirement: Hidden (and toggle hide in QuestTester)
+# QuestRequirement: Open
+# QuestRequirementSearch: NoEffect option
+# QuestRequirementKill: option to define vulnerability
+# QuestRequirementPath: support for single clearing
+# QuestReward: Regenerate denizen
+# QuestReward: Summon Roll 
+# QuestReward: Teleport
+# QuestReward: KillDenizen 
+# QuestReward: SpellEffect
+# QuestRewardCompanion: Option to exclude horse
 NEW FEATURES:
 # Option to change tile style to Legendary Realm with icons
 ä Option to generate random numbers different in each session (even for same game)

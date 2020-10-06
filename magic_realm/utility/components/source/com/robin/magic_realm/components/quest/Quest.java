@@ -644,7 +644,7 @@ public class Quest extends GameObjectWrapper {
 		// How to handle MinorCharacters?  Might they be with the character?  Maybe I can prevent minor characters from moving to character until quest is active (which can't then be discarded?)
 	}
 
-	private void updateStepStates(String dayKey) {
+	public void updateStepStates(String dayKey) {
 		Hashtable<String, QuestStep> lookup = new Hashtable<String, QuestStep>();
 		for (QuestStep step : steps) {
 			lookup.put(step.getGameObject().getStringId(), step);

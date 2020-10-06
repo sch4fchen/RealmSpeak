@@ -71,7 +71,7 @@ public class QuestStepView extends JComponent {
 		changeListeners.remove(listener);
 		if (changeListeners.size()==0) changeListeners=null;
 	}
-	private void fireStateChanged() {
+	protected void fireStateChanged() {
 		if (changeListeners==null) return;
 		ChangeEvent ev = new ChangeEvent(this);
 		for (ChangeListener listener:changeListeners) {
@@ -174,7 +174,7 @@ public class QuestStepView extends JComponent {
 			}
 		}
 	}
-	private void layoutTokens() {
+	protected void layoutTokens() {
 		int rankSize = (int)((maxRank+1)*SQUARE)+(BORDER<<1) - SQUARE;
 		int displayOrderSize = ((maxDisplayOrder+1)*SQUARE)+(BORDER<<2);
 		int width = orientation==SwingConstants.HORIZONTAL?rankSize:displayOrderSize;
@@ -195,7 +195,7 @@ public class QuestStepView extends JComponent {
 			token.initOrientation(orientation,BORDER,SQUARE,displayOrderSize,hash.get(token.getViewRank()));
 		}
 	}
-	private void rebuildTokens(ArrayList<QuestStep> steps) {
+	protected void rebuildTokens(ArrayList<QuestStep> steps) {
 		maxRank = 0;
 		maxDisplayOrder = 0;
 		tokens = new ArrayList<QuestStepToken>();

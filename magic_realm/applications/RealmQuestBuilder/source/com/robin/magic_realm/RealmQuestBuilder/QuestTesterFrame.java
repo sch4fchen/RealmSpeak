@@ -51,7 +51,7 @@ public class QuestTesterFrame extends JFrame {
 	JLabel questName;
 	JButton activateButton;
 	JTextArea questDescription;
-	QuestStepView questStepView;
+	QuestStepInteractiveView questStepView;
 	JTextArea stepDetails;
 
 	JTextArea debugOutput;
@@ -142,7 +142,6 @@ public class QuestTesterFrame extends JFrame {
 		questDescription.setBackground(null);
 		questDescription.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		top.add(new JScrollPane(questDescription), BorderLayout.CENTER);
-
 		add(top, BorderLayout.NORTH);
 
 		JPanel main = new JPanel(new GridLayout(2, 1));
@@ -157,7 +156,7 @@ public class QuestTesterFrame extends JFrame {
 		debugPanel.setBorder(BorderFactory.createTitledBorder("Debug Output"));
 		mainTop.add(debugPanel);
 
-		questStepView = new QuestStepView();
+		questStepView = new QuestStepInteractiveView(QuestTesterFrame.this);
 		questStepView.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent ev) {
 				QuestStep selected = questStepView.getSelectedStep();
@@ -190,13 +189,29 @@ public class QuestTesterFrame extends JFrame {
 	private JPanel buildCharacterStatsPanel() {
 		JPanel superPanel = new JPanel(new BorderLayout());
 		JPanel topPanel = new JPanel(new GridLayout(2, 1));
+		JPanel questPanel = new JPanel(new GridLayout(1, 2));
 		JButton retestQuestButton = new JButton("Check Quest Now");
 		retestQuestButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				retestQuest();
 			}
 		});
-		topPanel.add(retestQuestButton);
+		questPanel.add(retestQuestButton);
+		JButton fullfillRequirements = new JButton("Fullfill requirements");
+		fullfillRequirements.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				QuestStep questStep = questStepView.getSelectedStep();
+				if (questStep!=null) {
+					questStepView.fullFillRequirementsForQuestStep(quest, questStep, character);
+					if (quest.getState() == QuestState.Complete) {
+						showQuestCompleted();
+					}
+					retestQuest();
+				}
+			}
+		});
+		questPanel.add(fullfillRequirements);
+		topPanel.add(questPanel);
 		JPanel phaseOptions = new JPanel(new GridLayout(1, 5));
 		ButtonGroup timeGroup = new ButtonGroup();
 		unspecifiedTime = new ForceTextToggle("Any");
@@ -259,7 +274,7 @@ public class QuestTesterFrame extends JFrame {
 		});
 		line.add(toggleHidden);
 		box.add(line);
-
+		
 		line = group.createLabelLine("Current Location");
 		currentLocation = new JLabel();
 		line.add(currentLocation);
@@ -1142,7 +1157,7 @@ public class QuestTesterFrame extends JFrame {
 			questName.setIcon(RealmComponent.getRealmComponent(quest.getGameObject()).getFaceUpIcon());
 
 			if (quest.getState() == QuestState.Complete) {
-				JOptionPane.showMessageDialog(this, "Quest is Complete!", "Quest Complete", JOptionPane.INFORMATION_MESSAGE, RealmComponent.getRealmComponent(quest.getGameObject()).getFaceUpIcon());
+				showQuestCompleted();
 			}
 		}
 		questStepView.repaint();
@@ -1160,6 +1175,10 @@ public class QuestTesterFrame extends JFrame {
 		if (eveningTime.isSelected())
 			return GamePhaseType.StartOfEvening;
 		return GamePhaseType.Unspecified;
+	}
+	
+	private void showQuestCompleted() {
+		JOptionPane.showMessageDialog(this, "Quest is Complete!", "Quest Complete", JOptionPane.INFORMATION_MESSAGE, RealmComponent.getRealmComponent(quest.getGameObject()).getFaceUpIcon());
 	}
 
 	private void updateCharacterPanel() {
