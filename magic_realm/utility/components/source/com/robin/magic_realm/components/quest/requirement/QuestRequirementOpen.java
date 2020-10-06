@@ -32,7 +32,7 @@ public class QuestRequirementOpen extends QuestRequirement {
 	private static Logger logger = Logger.getLogger(QuestRequirementOpen.class.getName());
 
 	public static final String LOCATION_REGEX = "_regex";
-	public static final String ONLY_CHARACTER = "_onlychar";
+	public static final String OPEN_BY_ANYONE = "_opnanyone";
 
 	public QuestRequirementOpen(GameObject go) {
 		super(go);
@@ -45,8 +45,7 @@ public class QuestRequirementOpen extends QuestRequirement {
 		}
 
 		String regex = getRegExFilter();
-		
-		
+				
 			if (characterHasToOpenIt() && (reqParams.actionType == CharacterActionType.Open || reqParams.actionType == CharacterActionType.SearchTable)) {
 				if (regex != null && regex.trim().length() > 0) {
 					Pattern pattern = Pattern.compile(regex);
@@ -88,6 +87,6 @@ public class QuestRequirementOpen extends QuestRequirement {
 		return getString(LOCATION_REGEX);
 	}
 	private Boolean characterHasToOpenIt() {
-		return getBoolean(ONLY_CHARACTER);
+		return !getBoolean(OPEN_BY_ANYONE);
 	}
 }

@@ -126,7 +126,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				break;
 			case Open:
 				list.add(new QuestPropertyBlock(QuestRequirementOpen.LOCATION_REGEX, "Location to open/search", FieldType.Regex, null, new String[] { "needs_open", "search" }));
-				list.add(new QuestPropertyBlock(QuestRequirementOpen.ONLY_CHARACTER, "Character has to open it (chest or vault)", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementOpen.OPEN_BY_ANYONE, "Open by anyone (chest or vault)", FieldType.Boolean));
 				break;
 			case Path:
 				list.add(new QuestPropertyBlock(QuestRequirementPath.PATH, "Specific Path (like \"CV1 CV3 CV6 CV4 CV5\")", FieldType.SmartTextArea, getAllClearingCodes()));
