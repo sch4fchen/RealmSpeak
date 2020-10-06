@@ -20,6 +20,7 @@ QUEST UPDATE:
 # Open QuestRequirement
 NEW FEATURES:
 # Option to change tile style to Legendary Realm with icons
+# Option to generate random numbers different in each session (even for same game)
 BUGS/ISSUES:
 # Quest: Fixed QuestRequirementAttribute with gold and regex (=gold bounty of native)
 # Quest: Fix QuestRequirementAttribute not counting inactive GreatTreasures

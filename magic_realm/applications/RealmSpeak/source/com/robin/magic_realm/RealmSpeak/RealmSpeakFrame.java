@@ -1761,6 +1761,9 @@ public class RealmSpeakFrame extends JFrame {
 			else if (hostPrefs.hasPref(Constants.RANDOM_MERSENNE_TWISTER)) {
 				RandomNumber.setRandomNumberGenerator(RandomNumberType.MersenneTwister);
 			}
+			else if (hostPrefs.hasPref(Constants.RANDOM_ON_THE_FLY)) {
+				RandomNumber.setRandomNumberGenerator(RandomNumberType.RandomOnTheFly);
+			}
 			else {
 				RandomNumber.setRandomNumberGenerator(RandomNumberType.System);
 			}

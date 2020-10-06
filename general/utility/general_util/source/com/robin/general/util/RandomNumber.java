@@ -79,6 +79,9 @@ public class RandomNumber {
 	}
 
 	public static int getRandom(int val) {
+		if(currentRandomNumberType == RandomNumberType.RandomOnTheFly) {
+			return (int) ((Math.random()*val));
+		}
 		return getSoleInstance().rand(val);
 	}
 

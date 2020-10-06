@@ -971,7 +971,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		String[] requiresGrudges = {Constants.OPT_GRUDGES};
 		String[] cannotIncludeExtGrudges = {Constants.TE_EXTENDED_GRUDGES};
 		
-		String[] exclusiveRandomGen = {Constants.RANDOM_R250_521,Constants.RANDOM_MERSENNE_TWISTER};
+		String[] exclusiveRandomGen = {Constants.RANDOM_R250_521,Constants.RANDOM_MERSENNE_TWISTER,Constants.RANDOM_ON_THE_FLY};
 		
 		newOptionPane.setTabHtmlDescription(OPTIONAL_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Optional Rules</font></body></html>");
 		
@@ -1052,6 +1052,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.setTabHtmlDescription(RANDOM_GEN_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Random Number Generator Preference - For more details see:</font><br>http://www.qbrundage.com/michaelb/pubs/essays/random_number_generation.html</body></html>");
 		newOptionPane.addOption(RANDOM_GEN_TAB,new GameOption(Constants.RANDOM_R250_521,"Use R250/521 - A very fast shift-register sequence random number generator, invented by Kirkpatrick and Stoll in 1981.",false,exclusiveRandomGen,null));
 		newOptionPane.addOption(RANDOM_GEN_TAB,new GameOption(Constants.RANDOM_MERSENNE_TWISTER,"Use Mersenne Twister - A twisted GFSR(624,397) invented by Matsumora and Nishimura in 1996.",false,exclusiveRandomGen,null));
+		newOptionPane.addOption(RANDOM_GEN_TAB,new GameOption(Constants.RANDOM_ON_THE_FLY,"Use Java Generator - Generating different results, even when loading same game and doing identical actions.",false,exclusiveRandomGen,null));
+		
 		
 		return newOptionPane;
 	}
