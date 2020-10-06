@@ -17,8 +17,10 @@
  */
 package com.robin.magic_realm.components.quest.requirement;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 import javax.swing.JFrame;
 
@@ -98,7 +100,12 @@ public class QuestRequirementPath extends QuestRequirement {
 	public static boolean testPath(String charPath,String testPath) {
 		
 		String[] each = testPath.split(" "); // "1 2 3 4 5"
-		String[] pathSections = new String[each.length - 1]; // "1 2" "2 3" "3 4" "4 5" 
+		String[] pathSections = new String[each.length - 1]; // "1 2" "2 3" "3 4" "4 5"
+		if (each.length == 1) {
+			String clearing = (String) Array.get(each, 0);
+			//return Pattern.matches(clearing, charPath);
+			return charPath.contains(clearing) == true;
+		}
 		
 		for (int i=0;i<pathSections.length;i++) {
 			StringBuilder sb = new StringBuilder(each[i]);

@@ -1,22 +1,23 @@
 Version 1.1.3.4 - Changes since 1.1.3.3
 QUEST UPDATE:
 # Update on existing quests and a lot of new quests by Steve
-# Display Fatigue and Wounds in quest editor
-# Support for Cast a spell QuestRequirement
-# Support for Cast multiple (unique) spells QuestRequirement
-# Support for Regenerate denizen QuestReward
-# Support for Summon Roll QuestReward
+# Display Fatigue and Wounds in QuestTester
+# Buy action in QuestTester
 # Support for Companions Native names in Quest Locations
 # Support for Companions to exclude horse
 # Support for QuestRequirementKill to define vulnerability
-# Support for Quest Counters
-# Support for Teleport QuestReward
-# Support for Hidden QuestRequirement (and toggle hide in quest tester)
-# Support for NoEffect requirement for QuestRequirementSearch
-# Support for KillDenizen QuestReward
-# Support for SpellEffect QuestReward
-# Support for Open QuestRequirement
-# Support for buy action in QuestTester
+# Support for single clearing for the Path QeustRequirement
+# NoEffect requirement for QuestRequirementSearch
+# Quest Counters 
+# Cast a spell QuestRequirement
+# Cast multiple (unique) spells QuestRequirement
+# Regenerate denizen QuestReward
+# Summon Roll QuestReward
+# Teleport QuestReward
+# Hidden QuestRequirement (and toggle hide in QuestTester)
+# KillDenizen QuestReward
+# SpellEffect QuestReward
+# Open QuestRequirement
 NEW FEATURES:
 # Option to change tile style to Legendary Realm with icons
 BUGS/ISSUES:
@@ -35,10 +36,10 @@ QUEST UPDATE:
 # New quests (https://boardgamegeek.com/filepage/139595/quests-realmspeaks-expansion-1-version-10)
 # Support for companions Wolf 1, Wolf 2 and transforms in the location setup
 # Support for Hireling reward to place the Hireling in the characters clearing instead of hiring it
-# Support for TreasureFromHQ reward
-# Support for SummonMonster reward
-# Support for Probability QuestRequirement
-# Support for Damage reward
+# TreasureFromHQ reward
+# SummonMonster reward
+# Probability QuestRequirement
+# Damage reward
 # Make Tremendous Dragon available as Companion
 NEW FEATURES:
 # Option to change tile style (including option in GM)
