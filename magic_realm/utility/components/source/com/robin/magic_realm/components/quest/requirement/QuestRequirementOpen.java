@@ -54,6 +54,9 @@ public class QuestRequirementOpen extends QuestRequirement {
 						if (!pattern.matcher(reqParams.targetOfSearch.getName()).find()) {
 							logger.fine(reqParams.targetOfSearch.getName()+" does not match regex /"+regex+"/");
 						}
+						else {
+							return true;
+						}
 					}
 					else if (reqParams.actionType == CharacterActionType.ActivatingItem) {
 						GameObject item = reqParams.objectList.get(0);
@@ -61,11 +64,11 @@ public class QuestRequirementOpen extends QuestRequirement {
 							if (item == null || !pattern.matcher(itemName).find()) {
 								logger.fine(itemName+" does not match regex /"+regex+"/");
 							}
+							else {
+								return true;
+							}
 						}
 					}
-				else {
-					return true;
-				}
 			}
 			else {
 				ArrayList<GameObject> needsToBeOpened = character.getGameData().getGameObjectsByNameRegex(getRegExFilter());

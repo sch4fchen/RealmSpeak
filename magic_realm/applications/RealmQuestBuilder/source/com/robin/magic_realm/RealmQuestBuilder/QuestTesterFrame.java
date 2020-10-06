@@ -83,6 +83,7 @@ public class QuestTesterFrame extends JFrame {
 	JButton searchClearingButton;
 	JButton killDenizenButton;
 	JButton discoverButton;
+	JButton openLocationButton;
 
 	JToggleButton unspecifiedTime;
 	JToggleButton birdsongTime;
@@ -693,6 +694,7 @@ public class QuestTesterFrame extends JFrame {
 	private JPanel buildCharacterClearingPanel() {
 		JPanel superPanel = new JPanel(new BorderLayout());
 		JPanel panel = new JPanel(new BorderLayout());
+		JPanel searchAndOpen = new JPanel(new GridLayout(1,2));
 
 		searchClearingButton = new JButton("Search");
 		searchClearingButton.addActionListener(new ActionListener() {
@@ -704,8 +706,21 @@ public class QuestTesterFrame extends JFrame {
 				doSearchOn(rc);
 			}
 		});
-		panel.add(searchClearingButton, BorderLayout.NORTH);
-
+		searchAndOpen.add(searchClearingButton);
+		openLocationButton = new JButton("Open Location");
+		openLocationButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				RealmComponent rc = (RealmComponent) clearingComponents.getSelectedValue();
+				ArrayList<GameObject> objectsToOpen = new ArrayList<GameObject>();
+				objectsToOpen.add(rc.getGameObject());
+				TreasureUtility.openOneObject(QuestTesterFrame.this, character, objectsToOpen, null, true);
+				updateCharacterPanel();
+				retestQuest();
+			}
+		});
+		searchAndOpen.add(openLocationButton);
+		panel.add(searchAndOpen, BorderLayout.NORTH);
+		
 		clearingComponents = new JList();
 		clearingComponents.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		clearingComponents.addListSelectionListener(new ListSelectionListener() {
@@ -1213,6 +1228,7 @@ public class QuestTesterFrame extends JFrame {
 		pickupFromClearingButton.setEnabled(rc != null);
 		removeFromClearingButton.setEnabled(rc != null);
 		discoverButton.setEnabled(rc != null);
+		openLocationButton.setEnabled(rc != null && rc.isTreasureLocation());
 		killDenizenButton.setEnabled(rc != null && (rc.isMonster() || rc.isNative()));
 		searchClearingButton.setEnabled(true); // always on?
 	}
@@ -1324,7 +1340,7 @@ public class QuestTesterFrame extends JFrame {
 		}
 		retestQuest(params);
 	}
-
+	
 	private void updateTextArea(final String text) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
