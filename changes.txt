@@ -21,7 +21,7 @@ QUEST UPDATE:
 # QuestRewardCompanion: Option to exclude horse
 NEW FEATURES:
 # Option to change tile style to Legendary Realm with icons
-ä Option to generate random numbers different in each session (even for same game)
+# Option to generate random numbers different in each session (even for same game)
 BUGS/ISSUES:
 # Quest: Fixed QuestRequirementAttribute with gold and regex (=gold bounty of native)
 # Quest: Fix QuestRequirementAttribute not counting inactive GreatTreasures
