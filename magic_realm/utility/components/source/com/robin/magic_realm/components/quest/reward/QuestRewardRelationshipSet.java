@@ -67,7 +67,7 @@ public class QuestRewardRelationshipSet extends QuestReward {
 		ArrayList<String> queryVisitors = new ArrayList<String>();
 		queryNatives.add("rank=HQ");
 		queryNatives.add("native="+getNativeGroup());
-		queryVisitors.add("visitor="+getNativeGroup());
+		queryVisitors.add("visitor="+getNativeGroup().toLowerCase());
 		
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 		if (hostPrefs.getMultiBoardEnabled()) {
