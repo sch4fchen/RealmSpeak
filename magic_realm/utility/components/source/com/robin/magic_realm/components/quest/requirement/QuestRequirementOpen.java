@@ -27,7 +27,6 @@ import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.quest.CharacterActionType;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
-import com.sun.org.apache.xerces.internal.xs.datatypes.ObjectList;
 
 public class QuestRequirementOpen extends QuestRequirement {
 	private static Logger logger = Logger.getLogger(QuestRequirementOpen.class.getName());
