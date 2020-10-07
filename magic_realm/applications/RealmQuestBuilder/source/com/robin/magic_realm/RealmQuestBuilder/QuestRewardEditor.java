@@ -224,7 +224,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			names.add(go.getThisAttribute("native"));
 		}
 		for (GameObject go : pool.find("visitor")) {
-			names.add(go.getName());
+			names.add(go.getThisAttribute("visitor"));
 		}
 		return names.toArray(new String[0]);
 	}

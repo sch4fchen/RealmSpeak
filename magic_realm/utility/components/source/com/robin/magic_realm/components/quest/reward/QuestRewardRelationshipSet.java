@@ -63,9 +63,11 @@ public class QuestRewardRelationshipSet extends QuestReward {
 		
 		// Fetch the group leader - if multiple boards, then match the warning chit board
 		GamePool pool = new GamePool(character.getGameData().getGameObjects());
-		ArrayList<String> query = new ArrayList<String>();
-		query.add("rank=HQ");
-		query.add("native="+getNativeGroup());
+		ArrayList<String> queryNatives = new ArrayList<String>();
+		ArrayList<String> queryVisitors = new ArrayList<String>();
+		queryNatives.add("rank=HQ");
+		queryNatives.add("native="+getNativeGroup());
+		queryVisitors.add("visitor="+getNativeGroup());
 		
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 		if (hostPrefs.getMultiBoardEnabled()) {
@@ -74,13 +76,16 @@ public class QuestRewardRelationshipSet extends QuestReward {
 				if (go.hasThisAttribute("warning") && go.hasThisAttribute("chit")) {
 					String board = go.getThisAttribute(Constants.BOARD_NUMBER);
 					if (board!=null) {
-						query.add(Constants.BOARD_NUMBER+"="+board);
+						queryNatives.add(Constants.BOARD_NUMBER+"="+board);
+						queryVisitors.add(Constants.BOARD_NUMBER+"="+board);
 					}
 				}
 			}
 		}
 		
-		return pool.find(query);
+		ArrayList<GameObject> representativeNatives = pool.find(queryNatives);
+		representativeNatives.addAll(pool.find(queryVisitors));
+		return representativeNatives;
 	}
 	
 	public boolean isAllNatives() {

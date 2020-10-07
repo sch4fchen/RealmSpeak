@@ -1,8 +1,32 @@
 ::RealmSpeak::
+Fix QuestRequirement Open (combination needs_key and search with anyone/character)
+QuestReward: SpellEffect: cast to location? or characters tile/clearing?
+QuestReward: Teleportation: QuestLocation: Random clearing if no clearing in regex; QuestLocation.fetchLocation: try fetchTileLocation -> check tileSide(enchanted?)+clearingType -> recheck?
+Reward: Gain Custom Treasure: CustomTreasure // Pick a treasure, clone, and rename it
+Reward: Discovery (path, treasureSite etc.)
+Reward: Move denizen (cloned/companion or not)
+Reward: Summon Monster to location
+Reward: Item: clone item? or steal?
+Reward: Drop item
+Reward: Destroy item (optional: must be in inventory of character)
+Reward: Transform Character and/or other target into "choose what transformation".
+Reward: Curse Character and/or other target into "choose what curse".
+Reward: Small Blessing (=Wish)
+Reward: Power of the Pit: Character and/or other target
+Reward: Heal (like spell)
+Requirement: Get Wounds
+Requirement: Has Hireling/Companion (regex)
+Requirement: Found hidden enemies (+QuestTester)
+Requirement: Relationship
+Requirement: Is MagicUser
+Requirement: Must fly (+QuestTester: make fly?)
+Requirement: Enchant action (+QuestTester)
+QuestTester: Provide Color of Magic
+Support Alerted Monsters Advanced rule
+0001797: Feature Request - BOQ Two Handed Weapon Opt Rules
+
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
-GM: Shuffle components, Flag in gameData: Shuffle when loading (and remove flag)
-House rule to allow Remains of Thief and Mouldy Skeleton to drop in the clearing instead of discard
 0001829: Feature Request - First Edition Killer Caves
 0001828: Feature Request - First Edition Optional Rule - Glory
 0001827: Feature Request - First Edition Optional Rules - Hiring Characters (Solitare)
@@ -14,7 +38,6 @@ House rule to allow Remains of Thief and Mouldy Skeleton to drop in the clearing
 0001819: Feature Request: First Edition Search Tables
 0001818: Feature Request: First Edition: Parry Optional Combat Rules
 Expasion 1: Parry
-0001797: Feature Request - BOQ Two Handed Weapon Opt Rules
 Expasion 1: Two-Handed Combat
 0001750: Option to disable battling natives
 0001645: Automatic HTML export
@@ -23,26 +46,24 @@ Expasion 1: Two-Handed Combat
 0001358: Monster Roll per Set
 0001232: Flying Activities: Optional Rule # 3: Flying Activities.
 0000893: End Game Log
-Support Alerted Monsters Advanced rule
 House Rule to reveal Site Cards and allow searching
-Quest: Need a Open requirement to test when Vault/Chest/CryptOfTheKnight is accessed...
-Quest: 0001805: Spell Effects as Quest Rewards
-Quest: Need new reward: Gain Custom Treasure: CustomTreasure // Pick a treasure, clone, and rename it
-Quest: It'd be nice if the kill requirement let you specify size (L,M,H,T)
 What about a controlled monster luring/deploying against your hirelings?
 Extended Treachery:  luring/deploying against their own group triggers the same consequences
 Should always be safe at guilds, if you are a member (from monsters and natives)
-Guilds not showing up on friendliness chart - should they?  Yes!
-Be nice to have a randomize native positioning
 Minotaur buckler not really implemented as I would like:  it should be able to block hits...
+::Scenarios Feature::
+GM = Scenario Editor: Save game with scenario name and description, Add Quest to character as soon as a character joins the game
+Shuffle components Flag in gameData when saving game/scenario: Shuffle when loading (and remove flag)
+RealSpeak: Load scenarios (overview with names and descriptions)
 ---:::BUGS:::---
 Wizard advancement - didn't get MOVE M5->MAGIC III
 When choosing a flying hex, the thick border spills over onto the treasure cards and other...
 Don't know about this one:  Does Flowers of Rest work correctly in combat?
-!0001879: Color magic fatigue counted against character when used in encounter step to energize a spell
-!0001869: blocking occurs on start of phase instead of end -> fixed?
-!0001858: PotP Terror wounds Belt of Strength coverted chits
-!0001830: Moving into cave lost ALL remaining phases
+Exorcise not breaking Curses?
+0001879: Color magic fatigue counted against character when used in encounter step to energize a spell
+0001869: blocking occurs on start of phase instead of end -> fixed?
+0001858: PotP Terror wounds Belt of Strength coverted chits
+0001830: Moving into cave lost ALL remaining phases
 0001875: state of multiple rest is not saved correctly
 0001874: notebook does not auto-note when PEACE OF NATURE is active
 0001873: treasure cards with extra phase must be kept until _end_ of added phase
@@ -78,7 +99,6 @@ Don't know about this one:  Does Flowers of Rest work correctly in combat?
 0001730: Small Blessing, Wish for Peace does not take immediate effect
 0001729: Gameplay Slow with >6 characters
 0001728: Problem with Control Dragon
-0001715: Memory Leak when Ending/Starting game without closing
 0001692: Incorrect sheltered phase - flying and after running away
 0001684: Melt Into Mist prevented Absorb Essence
 0001606: Simultaneous Knight Attack Problem
@@ -134,3 +154,36 @@ Assassins Guild
 			5 gold to buy a mark (H/T natives) -> Pays 20 gold
 		Master:
 			5 gold to buy a high profile mark (HQ natives) -> Pays 50 gold
+			
+			
+		//Tile name and clearing (like Awful Valley 2)
+		Pattern pattern = Pattern.compile("([a-zA-Z\\s]+)(\\d*)");
+		Matcher match = pattern.matcher(val);
+		if (match.matches()) {
+			String tileName = match.group(1).trim();
+			String clearingNumString = match.group(2).trim();
+			int clearingNum = clearingNumString.length()>0 ? Integer.valueOf(clearingNumString) : -1;
+			GameObject go = gameData.getGameObjectByNameIgnoreCase(tileName);
+			if (go!=null) {
+				RealmComponent rc = RealmComponent.getRealmComponent(go);
+				if (rc != null && rc.isTile()) {
+					TileComponent tile = (TileComponent)rc;
+					ClearingDetail clearing = clearingNum>0?tile.getClearing(clearingNum):null;
+					return new TileLocation(tile,clearing,false);
+				}
+			}
+		}
+		//Tile name alone
+		pattern = Pattern.compile("([a-zA-Z\\s]+)");
+		match = pattern.matcher(val);
+		if (match.matches()) {
+			String tileName = match.group(1).trim();
+			GameObject go = gameData.getGameObjectByNameIgnoreCase(tileName);
+			if (go!=null) {
+				RealmComponent rc = RealmComponent.getRealmComponent(go);
+				if (rc != null && rc.isTile()) {
+					TileComponent tile = (TileComponent)rc;
+					return new TileLocation(tile,false);
+				}
+			}
+		}
