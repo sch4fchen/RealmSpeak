@@ -45,39 +45,39 @@ public class QuestRequirementOpen extends QuestRequirement {
 			return false;
 		}
 
-		String regex = getRegExFilter();
-				
-			if (characterHasToOpenIt() && (reqParams.actionType == CharacterActionType.Open || reqParams.actionType == CharacterActionType.ActivatingItem || reqParams.actionType == CharacterActionType.SearchTable)) {
-				if (regex != null && regex.trim().length() > 0) {
-					Pattern pattern = Pattern.compile(regex);
-					if (reqParams.actionType == CharacterActionType.Open || reqParams.actionType == CharacterActionType.SearchTable) {
-						if (!pattern.matcher(reqParams.targetOfSearch.getName()).find()) {
-							logger.fine(reqParams.targetOfSearch.getName()+" does not match regex /"+regex+"/");
+		String regex = getRegExFilter();		
+		if (reqParams.actionType == CharacterActionType.Open || reqParams.actionType == CharacterActionType.ActivatingItem || reqParams.actionType == CharacterActionType.SearchTable) {
+			if (regex != null && regex.trim().length() > 0) {
+				Pattern pattern = Pattern.compile(regex);
+				if (reqParams.actionType == CharacterActionType.Open || reqParams.actionType == CharacterActionType.SearchTable) {
+					if (!pattern.matcher(reqParams.targetOfSearch.getName()).find()) {
+						logger.fine(reqParams.targetOfSearch.getName()+" does not match regex /"+regex+"/");
+					}
+					else {
+						return true;
+					}
+				}
+				else if (reqParams.actionType == CharacterActionType.ActivatingItem) {
+					GameObject item = reqParams.objectList.get(0);
+					String itemName = item != null ? item.getName() : "Item";
+						if (item == null || !pattern.matcher(itemName).find()) {
+							logger.fine(itemName+" does not match regex /"+regex+"/");
 						}
 						else {
 							return true;
 						}
 					}
-					else if (reqParams.actionType == CharacterActionType.ActivatingItem) {
-						GameObject item = reqParams.objectList.get(0);
-						String itemName = item != null ? item.getName() : "Item";
-							if (item == null || !pattern.matcher(itemName).find()) {
-								logger.fine(itemName+" does not match regex /"+regex+"/");
-							}
-							else {
-								return true;
-							}
-						}
-					}
-			}
-			else {
-				ArrayList<GameObject> needsToBeOpened = character.getGameData().getGameObjectsByNameRegex(getRegExFilter());
-				for (GameObject location : needsToBeOpened) {
-					if (!location.hasThisAttribute(Constants.NEEDS_OPEN) && !location.hasThisAttribute(Constants.SEARCH)) {
-						return true;
-					}
+				}
+		}
+
+		if (!characterHasToOpenIt()) {
+			ArrayList<GameObject> needsToBeOpened = character.getGameData().getGameObjectsByNameRegex(getRegExFilter());
+			for (GameObject location : needsToBeOpened) {
+				if (!location.hasThisAttribute(Constants.NEEDS_OPEN) && !location.hasThisAttribute(Constants.SEARCH)) {
+					return true;
 				}
 			}
+		}
 			
 		return false;
 	}
