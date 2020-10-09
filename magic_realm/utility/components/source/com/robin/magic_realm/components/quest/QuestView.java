@@ -26,6 +26,8 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import com.robin.general.swing.*;
+import com.robin.magic_realm.components.utility.Constants;
+import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestView extends JPanel implements Scrollable {
 
@@ -118,10 +120,13 @@ public class QuestView extends JPanel implements Scrollable {
 		revalidate();
 	}
 
-	public void updatePanel(Quest quest) {
+	public void updatePanel(Quest quest, CharacterWrapper character) {
 		this.quest = quest;
 		questName.setText(quest == null ? "" : quest.getName());
-		questDescription.setText(quest == null ? "" : quest.getDescription());
+		String description = quest == null ? "" : quest.getDescription();
+		String charactersName = character.getName() == null ? "adventurer" : character.getPlayerName();
+		description = description.replaceAll(Constants.CHARACTERS_NAME_PLACEHOLDER, charactersName);
+		questDescription.setText(description);
 		model.clear();
 		for(QuestJournalEntry entry:quest.getJournalEntries()) {
 			model.addElement(entry);
@@ -185,7 +190,7 @@ public class QuestView extends JPanel implements Scrollable {
 	public static void main(String[] args) {
 		final QuestView view = new QuestView();
 		final Quest quest = QuestLoader.loadQuestByName("Dragon Slayer");
-		view.updatePanel(quest);
+		view.updatePanel(quest, null);
 		JDialog frame = new JDialog();
 		frame.setLayout(new BorderLayout());
 		frame.setSize(600, 800);
@@ -198,7 +203,7 @@ public class QuestView extends JPanel implements Scrollable {
 				quest.addJournalEntry("adsf", QuestStepState.Pending, "Foobar!");
 				quest.addJournalEntry("adsfs", QuestStepState.Finished, "Foobarasdf !");
 				quest.addJournalEntry("adsfss", QuestStepState.Failed, "Foobar! 123 ");
-				view.updatePanel(quest);
+				view.updatePanel(quest, null);
 			}
 		});
 		frame.add(button,BorderLayout.SOUTH);

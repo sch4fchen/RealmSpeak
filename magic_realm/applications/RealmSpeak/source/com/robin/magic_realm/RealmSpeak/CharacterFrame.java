@@ -523,7 +523,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	 */
 	private void chooseQuest() {
 		ArrayList<Quest> quests = QuestLoader.findAvailableQuests(character,hostPrefs);
-		Quest quest = QuestChooser.chooseQuest(gameHandler.getMainFrame(),quests);
+		Quest quest = QuestChooser.chooseQuest(gameHandler.getMainFrame(),quests,getCharacter());
 		if (quest!=null) {
 			// Make the quest active by default (Book of Quests)
 			quest.setState(QuestState.Active,getCharacter().getCurrentDayKey(), getCharacter());

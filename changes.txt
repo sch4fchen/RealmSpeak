@@ -5,6 +5,7 @@ QUEST UPDATE:
 # QuestTester: Display Fatigue and Wounds
 # QuestTester: Buy action
 # QuestTester: Toggle enchant and magic color for clearing
+# Quest Description: Placeholder CHARACTERS_NAME is replaced with characters name.
 # Quest Counters
 # QuestLocations: Support for Companions Native names
 # QuestRequirement: Cast a spell

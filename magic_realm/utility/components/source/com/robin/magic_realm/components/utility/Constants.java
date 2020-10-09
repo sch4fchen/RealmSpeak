@@ -506,4 +506,6 @@ public class Constants {
 	public static final String TORCH_BEARER = "torch_bearer";
 	public static final String BLENDING = "blending";
 	public static final String SPIRIT_GUIDE = "spirit_guide";
+	
+	public static final String CHARACTERS_NAME_PLACEHOLDER = "CHARACTERS_NAME";
 }

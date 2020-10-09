@@ -88,7 +88,7 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 		QuestState state = quest.getState();
 		
 		QuestView view = new QuestView(state==QuestState.Assigned && (!quest.isAllPlay() || quest.isActivateable())?activateQuestListener:null);
-		view.updatePanel(quest);
+		view.updatePanel(quest,getCharacter());
 		ComponentTools.lockComponentSize(view,640,480);
 		FrameManager.showDefaultManagedFrame(getMainFrame(), view, qc.getGameObject().getName(), qc.getFaceUpIcon(), true);
 	}
@@ -316,7 +316,7 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 		}
 		else {
 			if (characterQuests.size() == 1) {
-				questView.updatePanel(characterQuests.get(0));
+				questView.updatePanel(characterQuests.get(0),getCharacter());
 			}
 		}
 	}

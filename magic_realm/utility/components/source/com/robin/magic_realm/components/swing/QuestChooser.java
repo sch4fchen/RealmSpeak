@@ -29,6 +29,7 @@ import javax.swing.event.ListSelectionListener;
 import com.robin.general.swing.AggressiveDialog;
 import com.robin.general.swing.ComponentTools;
 import com.robin.magic_realm.components.quest.*;
+import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestChooser extends AggressiveDialog {
 
@@ -40,16 +41,16 @@ public class QuestChooser extends AggressiveDialog {
 	private JButton okButton;
 	private JButton cancelButton;
 	
-	public QuestChooser(JFrame frame,ArrayList<Quest> listOfQuests) {
+	public QuestChooser(JFrame frame,ArrayList<Quest> listOfQuests,CharacterWrapper character) {
 		super(frame,"Quest Chooser",true);
 		this.listOfQuests = listOfQuests;
-		initComponents();
+		initComponents(character);
 		questList.setSelectedIndex(0);
 	}
 	public Quest getChosenQuest() {
 		return chosenQuest;
 	}
-	private void initComponents() {
+	private void initComponents(CharacterWrapper character) {
 		setSize(800,600);
 		setLayout(new BorderLayout());
 		questList = new JList(listOfQuests.toArray());
@@ -59,7 +60,7 @@ public class QuestChooser extends AggressiveDialog {
 			public void valueChanged(ListSelectionEvent e) {
 				int selRow = questList.getSelectedIndex();
 				Quest quest = selRow==-1?null:listOfQuests.get(selRow);
-				questView.updatePanel(quest);
+				questView.updatePanel(quest, character);
 				updateControls();
 			}
 		});
@@ -97,9 +98,9 @@ public class QuestChooser extends AggressiveDialog {
 		okButton.setEnabled(questList.getSelectedIndex()>=0);
 	}
 
-	public static Quest chooseQuest(JFrame frame,ArrayList<Quest> quests) {
+	public static Quest chooseQuest(JFrame frame,ArrayList<Quest> quests, CharacterWrapper character) {
 		if (quests.size()==0) return null;
-		QuestChooser chooser = new QuestChooser(frame,quests);
+		QuestChooser chooser = new QuestChooser(frame,quests,character);
 		chooser.setLocationRelativeTo(null);
 		chooser.setVisible(true);
 		return chooser.getChosenQuest();
@@ -107,7 +108,7 @@ public class QuestChooser extends AggressiveDialog {
 	
 	public static void main(String[] args) {
 		ComponentTools.setSystemLookAndFeel();
-		Quest quest = QuestChooser.chooseQuest(new JFrame(),QuestLoader.loadAllQuestsFromQuestFolder());
+		Quest quest = QuestChooser.chooseQuest(new JFrame(),QuestLoader.loadAllQuestsFromQuestFolder(),null);
 		System.out.println(quest);
 		System.exit(0);
 	}

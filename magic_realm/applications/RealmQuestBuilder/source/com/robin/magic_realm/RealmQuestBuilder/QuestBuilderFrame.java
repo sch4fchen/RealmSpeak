@@ -34,6 +34,7 @@ import com.robin.general.util.StringUtilities;
 import com.robin.magic_realm.components.EmptyCardComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.quest.*;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmLoader;
 import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
@@ -548,6 +549,7 @@ public class QuestBuilderFrame extends JFrame {
 		form.add(Box.createVerticalStrut(10));
 
 		line = group.createLabelLine("Quest Description");
+		line.setToolTipText("Placeholder "+Constants.CHARACTERS_NAME_PLACEHOLDER+" will be replaced with the characters name.");
 		line.add(Box.createHorizontalGlue());
 		form.add(line);
 
