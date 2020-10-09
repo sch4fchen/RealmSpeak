@@ -78,12 +78,15 @@ public class QuestTesterFrame extends JFrame {
 
 	// Clearing
 	JList clearingComponents;
+	JLabel clearingTitle;
 	JButton pickupFromClearingButton;
 	JButton removeFromClearingButton;
 	JButton searchClearingButton;
 	JButton killDenizenButton;
 	JButton discoverButton;
 	JButton openLocationButton;
+	JButton enchantLocationButton;
+	JButton magicForClearingButton;
 
 	JToggleButton unspecifiedTime;
 	JToggleButton birdsongTime;
@@ -692,9 +695,13 @@ public class QuestTesterFrame extends JFrame {
 	}
 
 	private JPanel buildCharacterClearingPanel() {
-		JPanel superPanel = new JPanel(new BorderLayout());
-		JPanel panel = new JPanel(new BorderLayout());
-		JPanel searchAndOpen = new JPanel(new GridLayout(1,2));
+		JPanel locationPanel = new JPanel(new BorderLayout());
+		JPanel locationButtonsWithTitlePanel = new JPanel(new GridLayout(2,1));
+		JPanel locationButtonsPanel = new JPanel(new GridLayout(2,2));
+		JPanel clearingChitsPanel = new JPanel(new BorderLayout());
+				
+		clearingTitle = new JLabel();
+		locationButtonsWithTitlePanel.add(clearingTitle, BorderLayout.NORTH);
 
 		searchClearingButton = new JButton("Search");
 		searchClearingButton.addActionListener(new ActionListener() {
@@ -706,7 +713,7 @@ public class QuestTesterFrame extends JFrame {
 				doSearchOn(rc);
 			}
 		});
-		searchAndOpen.add(searchClearingButton);
+		locationButtonsPanel.add(searchClearingButton);
 		openLocationButton = new JButton("Open Location");
 		openLocationButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
@@ -718,8 +725,41 @@ public class QuestTesterFrame extends JFrame {
 				retestQuest();
 			}
 		});
-		searchAndOpen.add(openLocationButton);
-		panel.add(searchAndOpen, BorderLayout.NORTH);
+		locationButtonsPanel.add(openLocationButton);
+		enchantLocationButton = new JButton("(Un)Enchant Location");
+		enchantLocationButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				TileComponent tile = character.getCurrentLocation().tile;
+				if (tile.isLightSideUp()) {
+					tile.setDarkSideUp();
+				}
+				else {
+					tile.setLightSideUp();
+				}
+				updateCharacterPanel();
+				retestQuest();
+			}
+		});
+		locationButtonsPanel.add(enchantLocationButton);
+		magicForClearingButton = new JButton("Magic color");
+		magicForClearingButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				int colorId = chooseMagicColorId();
+				if (colorId == -1) return;
+				ClearingDetail clearing = character.getCurrentLocation().clearing;
+				if (clearing.getMagic(colorId) == false) {
+					clearing.setMagic(colorId, true);
+				}
+				else {
+					clearing.setMagic(colorId, false);
+				}
+				updateCharacterPanel();
+				retestQuest();
+			}
+		});
+		locationButtonsPanel.add(magicForClearingButton);
+		locationButtonsWithTitlePanel.add(locationButtonsPanel, BorderLayout.NORTH);
+		clearingChitsPanel.add(locationButtonsWithTitlePanel, BorderLayout.NORTH);
 		
 		clearingComponents = new JList();
 		clearingComponents.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -729,9 +769,9 @@ public class QuestTesterFrame extends JFrame {
 			}
 		});
 		clearingComponents.setCellRenderer(new QuestListRenderer());
-		panel.add(new JScrollPane(clearingComponents), BorderLayout.CENTER);
-		panel.setBorder(BorderFactory.createTitledBorder("Current Clearing"));
-		superPanel.add(panel, BorderLayout.CENTER);
+		clearingChitsPanel.add(new JScrollPane(clearingComponents), BorderLayout.CENTER);
+		clearingChitsPanel.setBorder(BorderFactory.createTitledBorder("Current Clearing"));
+		locationPanel.add(clearingChitsPanel, BorderLayout.CENTER);
 
 		JPanel controls = new JPanel(new GridLayout(3, 4));
 		JButton addChit = new JButton("Chit");
@@ -937,9 +977,9 @@ public class QuestTesterFrame extends JFrame {
 			}
 		});
 		controls.add(killDenizenButton);
-		superPanel.add(controls, BorderLayout.SOUTH);
+		locationPanel.add(controls, BorderLayout.SOUTH);
 
-		return superPanel;
+		return locationPanel;
 	}
 
 	private ArrayList<GameObject> chooseSomething() {
@@ -1019,6 +1059,36 @@ public class QuestTesterFrame extends JFrame {
 		}
 		return null;
 	}
+	
+	private int chooseMagicColorId() {
+		ListChooser chooser = new ListChooser(this, "Select magic color:", Constants.MAGIC_COLORS);
+		chooser.setDoubleClickEnabled(true);
+		chooser.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		chooser.setLocationRelativeTo(this);
+		chooser.setVisible(true);
+		Object object = chooser.getSelectedItem();
+		return Arrays.asList(Constants.MAGIC_COLORS).indexOf(object);
+	}
+	
+	private String getEnchanted() {
+		if (character != null && character.getCurrentLocation() != null && character.getCurrentLocation().tile.isEnchanted()) {
+			return " (enchanted) ";
+		}
+		return "";
+	}
+	
+	private String getMagicColors() {
+		StringBuffer colors = new StringBuffer();
+		if (character != null && character.getCurrentLocation() != null) {		
+			for (String color : Constants.MAGIC_COLORS) {
+				int colorId = Arrays.asList(Constants.MAGIC_COLORS).indexOf(color);
+				if (character.getCurrentLocation().clearing.getMagic(colorId)) {
+					colors.append(color+" ");
+				};
+			}
+		}
+		return colors.toString();
+	}	
 
 	private void updateStepDetails(QuestStep step) {
 		StringBuffer sb = new StringBuffer();
@@ -1213,6 +1283,8 @@ public class QuestTesterFrame extends JFrame {
 		hirelings.setListData(new Vector<RealmComponent>(character.getAllHirelings()));
 		journalList.setListData(new Vector<QuestJournalEntry>(quest.getJournalEntries()));
 
+		clearingTitle.setText(character.getCurrentLocation().toString()+getEnchanted()+" "+getMagicColors());
+		
 		Vector<RealmComponent> rcs = new Vector<RealmComponent>();
 		for (RealmComponent rc : character.getCurrentLocation().clearing.getClearingComponents(true)) {
 			if (rc.isCharacter())

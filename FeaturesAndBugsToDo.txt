@@ -1,5 +1,8 @@
 ::RealmSpeak::
-Fix QuestRequirement Open (combination needs_key and search with anyone/character)
+Requirement: Enchant action
+
+Another useful thing might be to know the name of the character, so custom quests can be written for them.
+I noticed that when I alert a magic chit during the day and try to use it in the evening combat, the chit doesn't always show with the alerted (0) speed on it in the chit picker.
 QuestReward: SpellEffect: cast to location? or characters tile/clearing?
 QuestReward: Teleportation: QuestLocation: Random clearing if no clearing in regex; QuestLocation.fetchLocation: try fetchTileLocation -> check tileSide(enchanted?)+clearingType -> recheck?
 Reward: Gain Custom Treasure: CustomTreasure // Pick a treasure, clone, and rename it
@@ -14,16 +17,19 @@ Reward: Curse Character and/or other target into "choose what curse".
 Reward: Small Blessing (=Wish)
 Reward: Power of the Pit: Character and/or other target
 Reward: Heal (like spell)
+Reward: Item to location
 Requirement: Get Wounds
 Requirement: Has Hireling/Companion (regex)
 Requirement: Found hidden enemies (+QuestTester)
 Requirement: Relationship
 Requirement: Is MagicUser
+Requirement: IsFemale/IsMale
 Requirement: Must fly (+QuestTester: make fly?)
-Requirement: Enchant action (+QuestTester)
-QuestTester: Provide Color of Magic
+Reward + Requirement: GuildMember at Level 1-3 of Guild ??? + QuestTester
+RewardHireling+RewardCompanion: To Location
 Support Alerted Monsters Advanced rule
 0001797: Feature Request - BOQ Two Handed Weapon Opt Rules
+0001864: Armor destroyed before Ointment of Steel (see  mkiever/RealmSpeak fork)
 
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
@@ -56,6 +62,7 @@ GM = Scenario Editor: Save game with scenario name and description, Add Quest to
 Shuffle components Flag in gameData when saving game/scenario: Shuffle when loading (and remove flag)
 RealSpeak: Load scenarios (overview with names and descriptions)
 ---:::BUGS:::---
+I have found that combat ends after two rounds - even if hirelings have been killed.
 Wizard advancement - didn't get MOVE M5->MAGIC III
 When choosing a flying hex, the thick border spills over onto the treasure cards and other...
 Don't know about this one:  Does Flowers of Rest work correctly in combat?
@@ -73,7 +80,6 @@ Exorcise not breaking Curses?
 0001867: end combat button block remote game
 0001866: Cannot set the number of starting spells for a newcharacter.
 0001865: Steed bug in Character Builder
-0001864: Armor destroyed before Ointment of Steel (see  mkiever/RealmSpeak fork)
 0001862: targeting other character with "summon elemental" leads to delayed lock
 0001861: Battle utility cannot set Pilgrim to T Harm from earlier use of wish for strength
 0001860: cannot get move by pony in specific conditions
