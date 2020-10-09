@@ -1,6 +1,10 @@
 ::RealmSpeak::
+QuestRequirement: OccupyLocation works as intended?
+QuestReward: LostInventoryToLocation
+QuestReward: SummonGuardian
 QuestReward: SpellEffect: cast to location? or characters tile/clearing?
 QuestReward: Teleportation: QuestLocation: Random clearing if no clearing in regex; QuestLocation.fetchLocation: try fetchTileLocation -> check tileSide(enchanted?)+clearingType -> recheck?
+RewardHireling+RewardCompanion: To Location
 Reward: Gain Custom Treasure: CustomTreasure // Pick a treasure, clone, and rename it
 Reward: Discovery (path, treasureSite etc.)
 Reward: Move denizen (cloned/companion or not)
@@ -15,7 +19,6 @@ Reward: Power of the Pit: Character and/or other target
 Reward: Heal (like spell)
 Reward: Item to location
 Requirement: Enchant action at location (+enchant action in questTester)
-Requirement: Get Wounds
 Requirement: Has Hireling/Companion (regex)
 Requirement: Found hidden enemies (+QuestTester)
 Requirement: Relationship
@@ -23,10 +26,8 @@ Requirement: Is MagicUser
 Requirement: IsFemale/IsMale
 Requirement: Must fly (+QuestTester: make fly?)
 Reward + Requirement: GuildMember at Level 1-3 of Guild ??? + QuestTester
-RewardHireling+RewardCompanion: To Location
 Support Alerted Monsters Advanced rule
 0001797: Feature Request - BOQ Two Handed Weapon Opt Rules
-0001864: Armor destroyed before Ointment of Steel (see  mkiever/RealmSpeak fork)
 
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
