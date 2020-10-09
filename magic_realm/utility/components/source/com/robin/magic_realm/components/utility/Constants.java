@@ -208,9 +208,12 @@ public class Constants {
 	public static final String GONE = "_gone_"; // left the board
 	public static final String RANDOM_ASSIGNMENT_WINNER = "_ra_win_";
 	
+	// Monster/companion/hireling/visitor flags
 	public static final String VISITOR = "visitor";
 	public static final String CLONED = "cloned";
+	public static final String HIRELING = "hireling";
 	public static final String COMPANION = "companion";
+	public static final String SUMMONED = "summoned";
 	
 	// Spoils of War needed action
 	public static final String SPOILS_ = "spoils_";
@@ -363,6 +366,9 @@ public class Constants {
 	public static final String ACTIVATED_ITEMS = "ac_items"; // Identifies the items that were active before the transform (Absorb Essence only)
 	public static final String AFFECTS_CASTER = "affects_caster";
 	public static final String ATTRIBUTE_ADD = "attribute_add"; // Identifies that the spell will add attributes to the "this" block from the "attribute_add" block.
+	
+	// Magic
+	public static final String[] MAGIC_COLORS = new String[]{"White","Grey","Gold","Purple","Black"};
 	
 	// Expansion Generators
 	public static final String GENERATOR = "generator";

@@ -46,6 +46,8 @@ public class QuestRewardCompanion extends QuestReward {
 			GameObject companion = TemplateLibrary.getSingleton().createCompanionFromTemplate(getGameData(),template);
 			character.addHireling(companion,Constants.TEN_YEARS);
 			character.getGameObject().add(companion);
+			character.getCurrentLocation().clearing.add(companion,null);
+			
 		}
 		else {
 			GamePool pool = new GamePool(character.getGameObject().getHold());
@@ -80,19 +82,19 @@ public class QuestRewardCompanion extends QuestReward {
 		return RewardType.Companion;
 	}
 	
-	public GainType getGainType() {
+	private GainType getGainType() {
 		return GainType.valueOf(getString(GAIN_TYPE));
 	}
 
-	public String getCompanionKeyName() {
+	private String getCompanionKeyName() {
 		return getString(QuestConstants.KEY_PREFIX+COMPANION_NAME);
 	}
 	
-	public String getCompanionQuery() {
+	private String getCompanionQuery() {
 		return getString(QuestConstants.VALUE_PREFIX+COMPANION_NAME);
 	}
 	
-	public boolean excludeHorse() {
+	private boolean excludeHorse() {
 		return getBoolean(EXCLUDE_HORSE);
 	}
 }

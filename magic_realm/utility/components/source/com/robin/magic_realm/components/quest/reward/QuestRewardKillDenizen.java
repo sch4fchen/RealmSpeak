@@ -31,6 +31,7 @@ public class QuestRewardKillDenizen extends QuestReward {
 	public static final String DENIZEN_REGEX = "_drx";
 	public static final String KILL_HIRELINGS = "_kh";
 	public static final String KILL_COMPANIONS = "_kc";
+	public static final String KILL_SUMMONED = "_ks";
 	public static final String KILL_LIMITED = "_kl";
 	
 	public QuestRewardKillDenizen(GameObject go) {
@@ -40,13 +41,16 @@ public class QuestRewardKillDenizen extends QuestReward {
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		ArrayList<GameObject> denizens = character.getGameData().getGameObjectsByNameRegex(getDenizenNameRegex());
 		for (GameObject denizen : denizens) {
-			if (!killHirelings() && denizen.hasThisAttribute(Constants.CLONED)) {
+			if (!killHirelings() && denizen.hasThisAttribute(Constants.HIRELING)) {
 				continue;
 			}
-			if (!killCompanionsAndSummonedMonsters() && denizen.hasThisAttribute(Constants.COMPANION)) {
+			if (!killCompanions() && denizen.hasThisAttribute(Constants.COMPANION)) {
 				continue;
 			}
-			if (killOnlyHirelingsCompanionsSummonedMonsters() && !denizen.hasThisAttribute(Constants.CLONED) && !denizen.hasThisAttribute(Constants.COMPANION)) {
+			if (!killSummoned() && denizen.hasThisAttribute(Constants.SUMMONED)) {
+				continue;
+			}
+			if (killOnlyHirelingsCompanionsSummonedMonsters() && !denizen.hasThisAttribute(Constants.HIRELING) && !denizen.hasThisAttribute(Constants.COMPANION) && !denizen.hasThisAttribute(Constants.SUMMONED)) {
 				continue;
 			}
 			
@@ -64,8 +68,11 @@ public class QuestRewardKillDenizen extends QuestReward {
 	private Boolean killHirelings() {
 		return getBoolean(KILL_HIRELINGS);
 	}
-	private Boolean killCompanionsAndSummonedMonsters() {
+	private Boolean killCompanions() {
 		return getBoolean(KILL_COMPANIONS);
+	}
+	private Boolean killSummoned() {
+		return getBoolean(KILL_SUMMONED);
 	}
 	private Boolean killOnlyHirelingsCompanionsSummonedMonsters() {
 		return getBoolean(KILL_LIMITED);

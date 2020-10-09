@@ -80,17 +80,19 @@ public class QuestRewardHireling extends QuestReward {
 				go.setThisAttribute(Constants.CLONED); // tag as cloned, so that the removeHireling method will expunge the clone
 				selected = go;
 			}
+			selected.setThisAttribute(Constants.HIRELING);
 			TermOfHireType termofHire = getTermOfHireType();
-			if (termofHire == TermOfHireType.PlaceInClearing) {
-				character.getCurrentLocation().clearing.add(selected,null);
-				return;
-			}
-			character.getCurrentLocation().clearing.add(selected,character);
 			RealmComponent rc = RealmComponent.getRealmComponent(selected);
-			if (!rc.isNativeLeader()) {
-				character.getGameObject().add(selected);
+			if (termofHire != TermOfHireType.PlaceInClearing) {
+				if (!rc.isNativeLeader()) {
+					character.getGameObject().add(selected);
+				}
+				character.addHireling(selected, termofHire == TermOfHireType.Normal ? Constants.TERM_OF_HIRE : Constants.TEN_YEARS); // permanent enough? :-)
+				character.getCurrentLocation().clearing.add(selected,null);
 			}
-			character.addHireling(selected, termofHire == TermOfHireType.Normal ? Constants.TERM_OF_HIRE : Constants.TEN_YEARS); // permanent enough? :-)
+			else {
+				character.getCurrentLocation().clearing.add(selected,character);
+			}
 		}
 	}
 
@@ -134,15 +136,15 @@ public class QuestRewardHireling extends QuestReward {
 		return RewardType.Hireling;
 	}
 
-	public ChitAcquisitionType getAcquisitionType() {
+	private ChitAcquisitionType getAcquisitionType() {
 		return ChitAcquisitionType.valueOf(getString(ACQUISITION_TYPE));
 	}
 
-	public TermOfHireType getTermOfHireType() {
+	private TermOfHireType getTermOfHireType() {
 		return TermOfHireType.valueOf(getString(TERM_OF_HIRE));
 	}
 
-	public String getHirelingRegex() {
+	private String getHirelingRegex() {
 		return getString(HIRELING_REGEX);
 	}
 }

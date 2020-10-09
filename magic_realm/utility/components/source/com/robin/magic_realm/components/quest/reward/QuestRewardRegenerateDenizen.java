@@ -36,7 +36,7 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		ArrayList<GameObject> denizens = character.getGameData().getGameObjectsByNameRegex(getDenizenNameRegex());
 		for (GameObject denizen : denizens) {
-			if (denizen != null && denizen.hasThisAttribute("denizen") && !denizen.hasThisAttribute(Constants.CLONED) && !denizen.hasThisAttribute(Constants.COMPANION)) {			
+			if (denizen != null && denizen.hasThisAttribute("denizen") && !denizen.hasThisAttribute(Constants.CLONED) && !denizen.hasThisAttribute(Constants.COMPANION) && !denizen.hasThisAttribute(Constants.SUMMONED)) {			
 				SetupCardUtility.resetDenizen(denizen);
 			}
 		}

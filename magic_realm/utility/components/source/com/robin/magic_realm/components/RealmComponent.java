@@ -312,12 +312,20 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		return getGameObject().hasThisAttribute(Constants.COMPANION);
 	}
 	
+	public boolean isHireling() {
+		return getGameObject().hasThisAttribute(Constants.HIRELING);
+	}
+	
 	public boolean isCloned() {
 		return getGameObject().hasThisAttribute(Constants.CLONED);
 	}
 	
 	public boolean isMonster() {
 		return (this instanceof MonsterChitComponent) && !(this instanceof MonsterPartChitComponent);
+	}
+	
+	public boolean isSummoned() {
+		return getGameObject().hasThisAttribute(Constants.SUMMONED);
 	}
 	
 	public boolean isTraveler() {

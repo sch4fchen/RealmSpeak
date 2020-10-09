@@ -23,6 +23,7 @@ import javax.swing.JFrame;
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.quest.QuestConstants;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.TemplateLibrary;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -36,7 +37,9 @@ public class QuestRewardSummonMonster extends QuestReward {
 
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		GameObject template = TemplateLibrary.getSingleton().getCompanionTemplate(getMonsterKeyName(),getMonsterQuery());
-		GameObject monster = TemplateLibrary.getSingleton().createCompanionFromTemplate(getGameData(),template);			
+		GameObject monster = TemplateLibrary.getSingleton().createCompanionFromTemplate(getGameData(),template);
+		monster.removeThisAttribute(Constants.COMPANION);
+		monster.setThisAttribute(Constants.SUMMONED);
 		character.getCurrentLocation().clearing.add(monster,null);	
 	}
 	

@@ -38,6 +38,7 @@ public class QuestRewardSpellEffect extends QuestReward {
 	public static final String EXPIRE_IMMEDIATELY = "_eximdtly";
 	public static final String AFFECT_HIRELINGS = "_affh";
 	public static final String AFFECT_COMPANIONS = "_affc";
+	public static final String AFFECT_SUMMONED = "_affs";
 	public static final String AFFECT_LIMITED = "_affl";
 
 	public QuestRewardSpellEffect(GameObject go) {
@@ -72,13 +73,16 @@ public class QuestRewardSpellEffect extends QuestReward {
 				spell.addTarget(hostPref, character.getGameObject());
 			}
 			for (GameObject target : targets) {
-				if (!affectHirelings() && target.hasThisAttribute(Constants.CLONED)) {
+				if (!affectHirelings() && target.hasThisAttribute(Constants.HIRELING)) {
 					continue;
 				}
-				if (!affectCompanionsAndSummonedMonsters() && target.hasThisAttribute(Constants.COMPANION)) {
+				if (!affectCompanions() && target.hasThisAttribute(Constants.COMPANION)) {
 					continue;
 				}
-				if (affectOnlyHirelingsCompanionsSummonedMonsters() && !target.hasThisAttribute(Constants.CLONED) && !target.hasThisAttribute(Constants.COMPANION)) {
+				if (!affectSummoned() && target.hasThisAttribute(Constants.SUMMONED)) {
+					continue;
+				}
+				if (affectOnlyHirelingsCompanionsSummonedMonsters() && !target.hasThisAttribute(Constants.HIRELING) && !target.hasThisAttribute(Constants.COMPANION) && !target.hasThisAttribute(Constants.SUMMONED)) {
 					continue;
 				}
 				
@@ -124,8 +128,11 @@ public class QuestRewardSpellEffect extends QuestReward {
 	private Boolean affectHirelings() {
 		return getBoolean(AFFECT_HIRELINGS);
 	}
-	private Boolean affectCompanionsAndSummonedMonsters() {
+	private Boolean affectCompanions() {
 		return getBoolean(AFFECT_COMPANIONS);
+	}
+	private Boolean affectSummoned() {
+		return getBoolean(AFFECT_SUMMONED);
 	}
 	private Boolean affectOnlyHirelingsCompanionsSummonedMonsters() {
 		return getBoolean(AFFECT_LIMITED);

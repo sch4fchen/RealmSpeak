@@ -111,7 +111,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case KillDenizen:
 				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.DENIZEN_REGEX, "Denizen", FieldType.Regex, null, new String[] { "denizen" }));
 				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_HIRELINGS, "Kill hirelings", FieldType.Boolean));
-				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_COMPANIONS, "Kill companions/summoned monsters", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_COMPANIONS, "Kill companions", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_SUMMONED, "Kill summoned monsters", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_LIMITED, "Kill ONLY those (see above)", FieldType.Boolean));
 				break;
 			case LostInventoryToDefault:
@@ -152,7 +153,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.TARGET_REGEX, "Affect targets", FieldType.Regex, null, new String[] { "vulnerability" }));
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.EXPIRE_IMMEDIATELY, "Expire immediately", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.AFFECT_HIRELINGS, "Affect hirelings", FieldType.Boolean));
-				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.AFFECT_COMPANIONS, "Affect companions/summoned monsters", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.AFFECT_COMPANIONS, "Affect companions monsters", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.AFFECT_SUMMONED, "Affect summoned monsters", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.AFFECT_LIMITED, "Affect ONLY those (see above)", FieldType.Boolean));
 				break;
 			case SpellFromSite:
