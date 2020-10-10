@@ -70,7 +70,7 @@ public class QuestView extends JPanel implements Scrollable {
 			box.add(activateQuest);
 		}
 		JButton showTreeButton = new JButton(ImageCache.getIcon("quests/token",30));
-		showTreeButton.setToolTipText("Quest Debugger");
+		showTreeButton.setToolTipText("Quest Steps Overview");
 		showTreeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				if (quest==null) return;
@@ -89,7 +89,7 @@ public class QuestView extends JPanel implements Scrollable {
 				tree.setFirstSelectedStep();
 				panel.add(tree,BorderLayout.CENTER);
 				ComponentTools.lockComponentSize(panel,640,480);
-				JOptionPane.showMessageDialog(QuestView.this,panel,"Quest Debugger - "+quest.getName(),JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(QuestView.this,panel,"Quest Steps Overview - "+quest.getName(),JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		ComponentTools.lockComponentSize(showTreeButton,24,24);
