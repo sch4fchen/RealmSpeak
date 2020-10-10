@@ -38,7 +38,7 @@ public class ExorciseEffect implements ISpellEffect {
 			otherSpell.expireSpell();
 		}
 		else {
-			System.out.println("Invalid target?");
+			System.out.println("No effect on target.");
 		}
 
 	}
