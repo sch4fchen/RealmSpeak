@@ -693,9 +693,9 @@ public class BattleModel {
 		handleSortTies(battleChits, attackBlockOrder, attackBlocks);
 		
 		// Process hits in order
-		processHits(attackBlockOrder, attackBlocks, round);
 		totalHits = 0;
-
+		processHits(attackBlockOrder, attackBlocks, round);
+		
 		// Now, do all the appropriate scoring for characters that killed things
 		scoreKills(round);
 		
