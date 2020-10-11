@@ -28,7 +28,6 @@ public enum QuestStepState {
 	Finished,	// Gold with green check - Requirements have been met, and rewards have been divied out
 	Failed,		// Gold with red X - Another step that preempts this step was already completed (also, if step becomes impossible...)
 	;
-	//private static ImageIcon pendingIcon = ImageCache.getIcon("quests/token");
 	public static int tokenSizePercent = 60;
 	private static ImageIcon readyIcon = ImageCache.getIcon("quests/token",tokenSizePercent);
 	private static ImageIcon pendingIcon = ImageCache.getIcon("quests/tokenpending",tokenSizePercent);

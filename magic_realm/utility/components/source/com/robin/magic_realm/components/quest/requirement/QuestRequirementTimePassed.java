@@ -40,7 +40,7 @@ public class QuestRequirementTimePassed extends QuestRequirement {
 		QuestStep step = getParentStep();
 		DayKey start = step.getQuestStepStartTime();
 		if (start==null) {
-			logger.fine("Quest step has no start time?  This is a bug: contact Robin.");
+			logger.fine("Quest step has no start time?  This is a bug.");
 			return false;
 		}
 		DayKey now = new DayKey(reqParams.dayKey);

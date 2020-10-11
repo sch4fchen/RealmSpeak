@@ -1,10 +1,11 @@
 ::RealmSpeak::
+BUG Combat ends always after 2 rounds BUG
 QuestRequirement: OccupyLocation works as intended?
-QuestReward: LostInventoryToLocation
-QuestReward: SummonGuardian
+QuestReward: LostInventoryToLocation (extend location functionality)
+QuestReward: SummonGuardian to Location (extend location functionality)
 QuestReward: SpellEffect: cast to location? or characters tile/clearing?
 QuestReward: Teleportation: QuestLocation: Random clearing if no clearing in regex; QuestLocation.fetchLocation: try fetchTileLocation -> check tileSide(enchanted?)+clearingType -> recheck?
-RewardHireling+RewardCompanion: To Location
+RewardHireling+RewardCompanion: To Location (+extend location functionality)
 Reward: Gain Custom Treasure: CustomTreasure // Pick a treasure, clone, and rename it
 Reward: Discovery (path, treasureSite etc.)
 Reward: Move denizen (cloned/companion or not)
@@ -24,10 +25,12 @@ Requirement: Found hidden enemies (+QuestTester)
 Requirement: Relationship
 Requirement: Is MagicUser
 Requirement: IsFemale/IsMale
+Requirement: Is specific character (regex for OR)
 Requirement: Must fly (+QuestTester: make fly?)
 Reward + Requirement: GuildMember at Level 1-3 of Guild ??? + QuestTester
 Support Alerted Monsters Advanced rule
 0001797: Feature Request - BOQ Two Handed Weapon Opt Rules
+Requirement: After x Rounds of Combat
 
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
