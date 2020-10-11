@@ -153,7 +153,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.TARGET_REGEX, "Affect targets", FieldType.Regex, null, new String[] { "vulnerability" }));
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.EXPIRE_IMMEDIATELY, "Expire immediately", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.AFFECT_HIRELINGS, "Affect hirelings", FieldType.Boolean));
-				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.AFFECT_COMPANIONS, "Affect companions monsters", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.AFFECT_COMPANIONS, "Affect companions", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.AFFECT_SUMMONED, "Affect summoned monsters", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.AFFECT_LIMITED, "Affect ONLY those (see above)", FieldType.Boolean));
 				break;
