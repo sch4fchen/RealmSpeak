@@ -57,7 +57,7 @@ public class QuestRewardTeleport extends QuestReward {
 		}
 		int r = RandomNumber.getRandom(addresses.size());
 		String address = addresses.get(r);
-		TileLocation tileLocation = QuestLocation.fetchTileLocation(getGameData(),address);
+		TileLocation tileLocation = QuestLocation.fetchTileLocationWithClearing(getGameData(),address);
 		if(tileLocation == null) {
 			logger.fine("QuestLocation "+loc.getName()+" doesn't have any valid locations!");
 			return;

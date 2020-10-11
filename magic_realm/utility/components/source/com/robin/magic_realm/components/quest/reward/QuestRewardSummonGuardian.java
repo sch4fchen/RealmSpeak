@@ -42,7 +42,7 @@ public class QuestRewardSummonGuardian extends QuestReward {
 
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		QuestLocation loc = getQuestLocation();
-		RealmComponent[] pieces = loc.allPiecesForLocation(frame,character);
+		RealmComponent[] pieces = loc.allPiecesForLocationClearing(frame,character);
 		GamePool pool = new GamePool(getGameData().getGameObjects());
 		for(RealmComponent piece:pieces) {
 			if (!piece.isTreasureLocation()) continue;

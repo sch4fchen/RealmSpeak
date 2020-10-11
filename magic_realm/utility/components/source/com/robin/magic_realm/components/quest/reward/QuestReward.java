@@ -234,7 +234,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 			}
 		}
 		else {
-			tl = QuestLocation.fetchTileLocation(getGameData(),address);
+			tl = QuestLocation.fetchTileLocationWithClearing(getGameData(),address);
 		}
 		if (tl!=null) {
 			ClearingUtility.moveToLocation(go,tl);

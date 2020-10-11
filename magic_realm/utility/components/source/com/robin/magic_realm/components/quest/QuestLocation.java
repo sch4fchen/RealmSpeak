@@ -116,7 +116,7 @@ public class QuestLocation extends GameObjectWrapper {
 		}
 		return addresses;
 	}
-	public RealmComponent[] allPiecesForLocation(JFrame frame,CharacterWrapper character) {
+	public RealmComponent[] allPiecesForLocationClearing(JFrame frame,CharacterWrapper character) {
 		if (needsResolution()) {
 			if (getLocationType()==LocationType.Lock) {
 				RealmLogging.logMessage(QuestConstants.QUEST_ERROR,"Can't fetch chits for a LOCK type of location without requiring the character to first visit that location.");
@@ -133,7 +133,7 @@ public class QuestLocation extends GameObjectWrapper {
 				allPieces.addAll(pieces);
 			}
 			else {
-				TileLocation tl = fetchTileLocation(getGameData(),address);
+				TileLocation tl = fetchTileLocationWithClearing(getGameData(),address);
 				for(RealmComponent rc:tl.clearing.getClearingComponents()) {
 					if (rc.isChit()) {
 						allPieces.add((ChitComponent)rc);
@@ -192,7 +192,7 @@ public class QuestLocation extends GameObjectWrapper {
 		}
 		String matchingAddress = null;
 		for(String address:addressesToTest) {
-			TileLocation tl = fetchTileLocation(getGameData(),address);
+			TileLocation tl = fetchTileLocationWithClearing(getGameData(),address);
 			if (tl!=null) {
 				if ((isSameTile() && tl.tile.equals(current.tile))
 					|| tl.equals(current)) {
@@ -347,7 +347,7 @@ public class QuestLocation extends GameObjectWrapper {
 		return val==null?LocationTileSideType.Any:LocationTileSideType.valueOf(val);
 	}
 	
-	public static TileLocation fetchTileLocation(GameData gameData,String val) {
+	public static TileLocation fetchTileLocationWithClearing(GameData gameData,String val) {
 		// Tile coordinate (like AV2)
 		try {
 			return TileLocation.parseTileLocationNoPartway(gameData,val.toUpperCase());
@@ -392,6 +392,6 @@ public class QuestLocation extends GameObjectWrapper {
 		return ret.isEmpty() ? null : ret;
 	}
 	public static boolean validLocation(GameData gameData,String val) {
-		return fetchTileLocation(gameData,val)!=null || fetchPieces(gameData,val,false)!=null;
+		return fetchTileLocationWithClearing(gameData,val)!=null || fetchPieces(gameData,val,false)!=null;
 	}
 }
