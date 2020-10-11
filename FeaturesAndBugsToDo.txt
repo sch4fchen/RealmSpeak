@@ -1,5 +1,6 @@
 ::RealmSpeak::
 BUG Combat ends always after 2 rounds BUG
+QuestRequirement: Get Attribute in Location
 QuestRequirement: OccupyLocation works as intended?
 QuestReward: LostInventoryToLocation (extend location functionality)
 QuestReward: SummonGuardian to Location (extend location functionality)
