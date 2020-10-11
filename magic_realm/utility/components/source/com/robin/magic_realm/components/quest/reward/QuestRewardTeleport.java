@@ -55,16 +55,19 @@ public class QuestRewardTeleport extends QuestReward {
 			logger.fine("QuestLocation "+loc.getName()+" doesn't have any valid addresses!");
 			return;
 		}
-		int r = RandomNumber.getRandom(addresses.size());
-		String address = addresses.get(r);
-		TileLocation tileLocation = QuestLocation.fetchTileLocation(getGameData(),address);
-		if(tileLocation == null) {
+		
+		ArrayList<TileLocation> validLocations = new ArrayList<TileLocation>();
+		for (String address : addresses) {
+			TileLocation tileLocation = QuestLocation.fetchTileLocation(getGameData(),address);
+			validLocations.addAll(loc.getAllAllowedClearingsForTileLocation(tileLocation));
+		}
+		if(validLocations.isEmpty()) {
 			logger.fine("QuestLocation "+loc.getName()+" doesn't have any valid locations!");
 			return;
 		}
-		if(tileLocation.clearing == null) {
-			tileLocation.setRandomClearing();
-		}
+		int random = RandomNumber.getRandom(validLocations.size());
+		TileLocation tileLocation = validLocations.get(random);
+
 		character.moveToLocation(frame, tileLocation);
 	}
 	

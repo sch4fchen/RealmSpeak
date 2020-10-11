@@ -118,20 +118,23 @@ public class QuestLocation extends GameObjectWrapper {
 			}
 			else {
 				TileLocation tl = fetchTileLocation(getGameData(),address);
-				ArrayList<ClearingDetail> clearingsToFetch = new ArrayList<ClearingDetail>();
-				if (tl.clearing == null) {
-					for(ClearingDetail cl : tl.tile.getClearings()) {
-						clearingsToFetch.add(cl);
+				ArrayList<TileLocation> validLocations = getAllAllowedClearingsForTileLocation(tl);
+				for (TileLocation validLocation : validLocations) {
+					ArrayList<ClearingDetail> clearingsToFetch = new ArrayList<ClearingDetail>();
+					if (validLocation.clearing == null) {
+						for(ClearingDetail cl : validLocation.tile.getClearings()) {
+							clearingsToFetch.add(cl);
+						}
 					}
-				}
-				else {
-					clearingsToFetch.add(tl.clearing);
-				}
-				
-				for (ClearingDetail cl : clearingsToFetch) {
-					for(RealmComponent rc:cl.getClearingComponents()) {
-						if (rc.isChit()) {
-							allPieces.add((ChitComponent)rc);
+					else {
+						clearingsToFetch.add(validLocation.clearing);
+					}
+					
+					for (ClearingDetail cl : clearingsToFetch) {
+						for(RealmComponent rc:cl.getClearingComponents()) {
+							if (rc.isChit()) {
+								allPieces.add((ChitComponent)rc);
+							}
 						}
 					}
 				}
@@ -341,6 +344,30 @@ public class QuestLocation extends GameObjectWrapper {
 	public LocationTileSideType getLocationTileSideType() {
 		String val = getString(LOC_TILE_SIDE_TYPE);
 		return val==null?LocationTileSideType.Any:LocationTileSideType.valueOf(val);
+	}
+	
+	public ArrayList<TileLocation> getAllAllowedClearingsForTileLocation(TileLocation location) {
+		LocationTileSideType tileSideType = getLocationTileSideType();
+		LocationClearingType clearingType = getLocationClearingType();
+		ArrayList<TileLocation> locations = new ArrayList<TileLocation>();
+		ArrayList<ClearingDetail> clearingsToCheck = new ArrayList<ClearingDetail>();
+		if (location.clearing == null) {
+			for(ClearingDetail cl : location.tile.getClearings()) {
+				clearingsToCheck.add(cl);
+			}
+		}
+		else {
+			clearingsToCheck.add(location.clearing);
+		}
+		
+		for (ClearingDetail cl : clearingsToCheck) {
+			if (tileSideType.matches(location.tile) && clearingType.matches(cl)) {
+				TileLocation validLocation = new TileLocation(location.tile, cl, false);
+				locations.add(validLocation);
+			}
+		}
+		
+		return locations;
 	}
 	
 	public static TileLocation fetchTileLocation(GameData gameData,String val) {
