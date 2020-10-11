@@ -273,7 +273,7 @@ public class QuestLocationEditor extends GenericEditor {
 		form.add(line);
 		form.add(Box.createVerticalStrut(10));
 		
-		line = group.createLabelLine("Clearing or Tile");
+		line = group.createLabelLine("Clearing or Tile (only for requirements)");
 		ButtonGroup bg = new ButtonGroup();
 		sameClearing = new JRadioButton("Same Clearing",true);
 		bg.add(sameClearing);
