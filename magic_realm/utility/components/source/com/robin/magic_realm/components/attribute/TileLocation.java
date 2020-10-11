@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
+import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.TileComponent;
@@ -276,5 +277,10 @@ public class TileLocation {
 		}
 		GameObject tile = tiles.get(0);
 		return (TileComponent)RealmComponent.getRealmComponent(tile);
+	}
+	public void setRandomClearing() {
+			ArrayList<ClearingDetail> clearings = tile.getClearings();
+			int random = RandomNumber.getRandom(clearings.size());
+			clearing = clearings.get(random);
 	}
 }

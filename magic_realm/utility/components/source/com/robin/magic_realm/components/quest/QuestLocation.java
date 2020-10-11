@@ -117,10 +117,22 @@ public class QuestLocation extends GameObjectWrapper {
 				allPieces.addAll(pieces);
 			}
 			else {
-				TileLocation tl = fetchTileLocationWithClearing(getGameData(),address);
-				for(RealmComponent rc:tl.clearing.getClearingComponents()) {
-					if (rc.isChit()) {
-						allPieces.add((ChitComponent)rc);
+				TileLocation tl = fetchTileLocation(getGameData(),address);
+				ArrayList<ClearingDetail> clearingsToFetch = new ArrayList<ClearingDetail>();
+				if (tl.clearing == null) {
+					for(ClearingDetail cl : tl.tile.getClearings()) {
+						clearingsToFetch.add(cl);
+					}
+				}
+				else {
+					clearingsToFetch.add(tl.clearing);
+				}
+				
+				for (ClearingDetail cl : clearingsToFetch) {
+					for(RealmComponent rc:cl.getClearingComponents()) {
+						if (rc.isChit()) {
+							allPieces.add((ChitComponent)rc);
+						}
 					}
 				}
 			}
@@ -176,7 +188,7 @@ public class QuestLocation extends GameObjectWrapper {
 		}
 		String matchingAddress = null;
 		for(String address:addressesToTest) {
-			TileLocation tl = fetchTileLocationWithClearing(getGameData(),address);
+			TileLocation tl = fetchTileLocation(getGameData(),address);
 			if (tl!=null) {
 				if ((isSameTile() && tl.tile.equals(current.tile))
 					|| tl.equals(current)) {
@@ -331,7 +343,7 @@ public class QuestLocation extends GameObjectWrapper {
 		return val==null?LocationTileSideType.Any:LocationTileSideType.valueOf(val);
 	}
 	
-	public static TileLocation fetchTileLocationWithClearing(GameData gameData,String val) {
+	public static TileLocation fetchTileLocation(GameData gameData,String val) {
 		// Tile coordinate (like AV2)
 		try {
 			return TileLocation.parseTileLocationNoPartway(gameData,val.toUpperCase());
@@ -340,7 +352,7 @@ public class QuestLocation extends GameObjectWrapper {
 			// ignore exception - this just means its NOT a tile coordinate
 		}
 		
-		// Tile name and clearing (like Awful Valley 2) - what about tile name alone?
+		// Tile name and clearing (like Awful Valley 2)
 		Pattern pattern = Pattern.compile("([a-zA-Z\\s]+)(\\d*)");
 		Matcher match = pattern.matcher(val);
 		if (match.matches()) {
@@ -357,6 +369,21 @@ public class QuestLocation extends GameObjectWrapper {
 				}
 			}
 		}
+		//Tile name alone
+		pattern = Pattern.compile("([a-zA-Z\\s]+)");
+		match = pattern.matcher(val);
+		if (match.matches()) {
+			String tileName = match.group(1).trim();
+			GameObject go = gameData.getGameObjectByNameIgnoreCase(tileName);
+			if (go!=null) {
+				RealmComponent rc = RealmComponent.getRealmComponent(go);
+				if (rc != null && rc.isTile()) {
+					TileComponent tile = (TileComponent)rc;
+					return new TileLocation(tile,false);
+				}
+			}
+		}
+		
 		return null;
 	}
 
@@ -376,6 +403,6 @@ public class QuestLocation extends GameObjectWrapper {
 		return ret.isEmpty() ? null : ret;
 	}
 	public static boolean validLocation(GameData gameData,String val) {
-		return fetchTileLocationWithClearing(gameData,val)!=null || fetchPieces(gameData,val,false)!=null;
+		return fetchTileLocation(gameData,val)!=null || fetchPieces(gameData,val,false)!=null;
 	}
 }

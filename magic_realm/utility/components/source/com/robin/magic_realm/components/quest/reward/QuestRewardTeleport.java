@@ -57,10 +57,13 @@ public class QuestRewardTeleport extends QuestReward {
 		}
 		int r = RandomNumber.getRandom(addresses.size());
 		String address = addresses.get(r);
-		TileLocation tileLocation = QuestLocation.fetchTileLocationWithClearing(getGameData(),address);
+		TileLocation tileLocation = QuestLocation.fetchTileLocation(getGameData(),address);
 		if(tileLocation == null) {
 			logger.fine("QuestLocation "+loc.getName()+" doesn't have any valid locations!");
 			return;
+		}
+		if(tileLocation.clearing == null) {
+			tileLocation.setRandomClearing();
 		}
 		character.moveToLocation(frame, tileLocation);
 	}

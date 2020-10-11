@@ -7,6 +7,7 @@ QUEST UPDATE:
 # QuestTester: Toggle enchant and magic color for clearing
 # Quest Description: Placeholder CHARACTERS_NAME is replaced with characters name.
 # Quest Counters
+# QuestLocation: Support for Tile without clearing number (for SummonGuardian, Teleport, LostInventoryToLocation)
 # QuestLocations: Support for Companions Native names
 # QuestRequirement: Cast a spell
 # QuestRequirement: Cast multiple (unique) spells
