@@ -47,22 +47,6 @@ public class QuestLocation extends GameObjectWrapper {
 	public QuestLocation(GameObject go) {
 		super(go);
 	}
-	public QuestLocation(GameObject go, boolean copyAttributes) {
-		super(go);
-		this.setLocationType(LocationType.valueOf(go.getAttribute(getBlockName(), TYPE)));
-		this.setLockAddress(go.getAttribute(getBlockName(), LOCK_ADDRESS));
-		ArrayList<String> addresses = go.getAttributeList(getBlockName(),CHOICE_ADDRESSES);
-		if (addresses != null) {
-			this.addChoiceAddresses(go.getAttributeList(getBlockName(),CHOICE_ADDRESSES).toString());
-		}
-		this.setSameTile(go.hasAttribute(getBlockName(),SAME_TILE));
-		String clearingType = go.getAttribute(getBlockName(), LOC_CLEARING_TYPE);
-		LocationClearingType clearingTypeToCopy = clearingType==null?LocationClearingType.Any:LocationClearingType.valueOf(clearingType);
-		this.setLocationClearingType(clearingTypeToCopy);
-		String tileSide = go.getAttribute(getBlockName(), LOC_TILE_SIDE_TYPE);
-		LocationTileSideType tileSideToCopy = tileSide==null?LocationTileSideType.Any:LocationTileSideType.valueOf(tileSide);
-		this.setLocationTileSideType(tileSideToCopy);
-	}
 	public String getDescription() {
 		ArrayList list = getChoiceAddresses();
 		String locList = list == null ? "" : StringUtilities.collectionToString(list, ",");
@@ -116,7 +100,7 @@ public class QuestLocation extends GameObjectWrapper {
 		}
 		return addresses;
 	}
-	public RealmComponent[] allPiecesForLocationClearing(JFrame frame,CharacterWrapper character) {
+	public RealmComponent[] allPiecesForLocationClearings(JFrame frame,CharacterWrapper character) {
 		if (needsResolution()) {
 			if (getLocationType()==LocationType.Lock) {
 				RealmLogging.logMessage(QuestConstants.QUEST_ERROR,"Can't fetch chits for a LOCK type of location without requiring the character to first visit that location.");

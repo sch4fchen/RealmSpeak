@@ -87,7 +87,7 @@ public class QuestRewardTeleport extends QuestReward {
 		if (id!=null) {
 			GameObject go = getGameData().getGameObject(Long.valueOf(id));
 			if (go!=null) {
-				return new QuestLocation(go, true);
+				return new QuestLocation(go);
 			}
 		}
 		return null;
