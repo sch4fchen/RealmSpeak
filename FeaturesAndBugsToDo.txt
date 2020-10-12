@@ -28,7 +28,6 @@ Requirement: Must fly (+QuestTester: make fly?)
 Reward + Requirement: GuildMember at Level 1-3 of Guild ??? + QuestTester
 Support Alerted Monsters Advanced rule
 0001797: Feature Request - BOQ Two Handed Weapon Opt Rules
-Requirement: After x Rounds of Combat
 
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
