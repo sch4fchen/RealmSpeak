@@ -1,9 +1,6 @@
 ::RealmSpeak::
 QuestRequirement: Get Attribute in Location
-QuestReward: LostInventoryToLocation (extend location functionality)
-QuestReward: SummonGuardian to Location (extend location functionality)
 QuestReward: SpellEffect: cast to location? or characters tile/clearing?
-QuestReward: Teleportation: QuestLocation: Random clearing if no clearing in regex; QuestLocation.fetchLocation: try fetchTileLocation -> check tileSide(enchanted?)+clearingType -> recheck?
 RewardHireling+RewardCompanion: To Location (+extend location functionality)
 Reward: Gain Custom Treasure: CustomTreasure // Pick a treasure, clone, and rename it
 Reward: Discovery (path, treasureSite etc.)
@@ -18,9 +15,14 @@ Reward: Small Blessing (=Wish)
 Reward: Power of the Pit: Character and/or other target
 Reward: Heal (like spell)
 Reward: Item to location
-Requirement: Enchant action at location (+enchant action in questTester)
+Reward: Companion/Hireling in Location
+Reward: Kill denizen in Location
+Reward: Enchant tile (location)
+Reward: SummonFromAppearance: I'd think that either specifying a sound or warning chit and summoning to the tile if it's there, or specifying a monster and summoning it to its sound or warning chit (if it's in the tile) would be the way to go.
+Requirement: Enchant action (+enchant action in questTester) + Option: Color?
 Requirement: Has Hireling/Companion (regex)
 Requirement: Found hidden enemies (+QuestTester)
+Requirement: Kill only count in Location
 Requirement: Relationship
 Requirement: Is MagicUser
 Requirement: IsFemale/IsMale
@@ -160,36 +162,3 @@ Assassins Guild
 			5 gold to buy a mark (H/T natives) -> Pays 20 gold
 		Master:
 			5 gold to buy a high profile mark (HQ natives) -> Pays 50 gold
-			
-			
-		//Tile name and clearing (like Awful Valley 2)
-		Pattern pattern = Pattern.compile("([a-zA-Z\\s]+)(\\d*)");
-		Matcher match = pattern.matcher(val);
-		if (match.matches()) {
-			String tileName = match.group(1).trim();
-			String clearingNumString = match.group(2).trim();
-			int clearingNum = clearingNumString.length()>0 ? Integer.valueOf(clearingNumString) : -1;
-			GameObject go = gameData.getGameObjectByNameIgnoreCase(tileName);
-			if (go!=null) {
-				RealmComponent rc = RealmComponent.getRealmComponent(go);
-				if (rc != null && rc.isTile()) {
-					TileComponent tile = (TileComponent)rc;
-					ClearingDetail clearing = clearingNum>0?tile.getClearing(clearingNum):null;
-					return new TileLocation(tile,clearing,false);
-				}
-			}
-		}
-		//Tile name alone
-		pattern = Pattern.compile("([a-zA-Z\\s]+)");
-		match = pattern.matcher(val);
-		if (match.matches()) {
-			String tileName = match.group(1).trim();
-			GameObject go = gameData.getGameObjectByNameIgnoreCase(tileName);
-			if (go!=null) {
-				RealmComponent rc = RealmComponent.getRealmComponent(go);
-				if (rc != null && rc.isTile()) {
-					TileComponent tile = (TileComponent)rc;
-					return new TileLocation(tile,false);
-				}
-			}
-		}

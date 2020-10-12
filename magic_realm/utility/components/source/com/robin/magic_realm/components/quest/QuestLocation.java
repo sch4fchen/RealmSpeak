@@ -110,28 +110,35 @@ public class QuestLocation extends GameObjectWrapper {
 		}
 		
 		ArrayList<RealmComponent> allPieces = new ArrayList<RealmComponent>();
+		
 		ArrayList<String> addresses = getValidAddresses();
+		if (addresses.isEmpty()) {
+			ArrayList<TileLocation> validLocations = fetchAllLocations(getGameData());
+			for (TileLocation tl : validLocations) {
+				allPieces.addAll(tl.tile.getAllClearingComponents());
+			}
+			return allPieces.toArray(new RealmComponent[0]);
+		}
+		
+		LocationTileSideType tileSideType = getLocationTileSideType();
+		LocationClearingType clearingType = getLocationClearingType();
+		
 		for(String address:addresses) {
 			ArrayList<RealmComponent> pieces = fetchPieces(getGameData(),address,false);
 			if (pieces!=null) {
-				allPieces.addAll(pieces);
+				for (RealmComponent rc : pieces) {
+					TileLocation location = rc.getCurrentLocation();					
+					if (location != null && tileSideType.matches(location.tile) && clearingType.matches(location.clearing)) {
+						allPieces.add(rc);
+					}
+				}
 			}
 			else {
 				TileLocation tl = fetchTileLocation(getGameData(),address);
 				ArrayList<TileLocation> validLocations = getAllAllowedClearingsForTileLocation(tl);
-				for (TileLocation validLocation : validLocations) {
-					ArrayList<ClearingDetail> clearingsToFetch = new ArrayList<ClearingDetail>();
-					if (validLocation.clearing == null) {
-						for(ClearingDetail cl : validLocation.tile.getClearings()) {
-							clearingsToFetch.add(cl);
-						}
-					}
-					else {
-						clearingsToFetch.add(validLocation.clearing);
-					}
-					
-					for (ClearingDetail cl : clearingsToFetch) {
-						for(RealmComponent rc:cl.getClearingComponents()) {
+				if (validLocations != null) {
+					for (TileLocation validLocation : validLocations) {	
+						for(RealmComponent rc : validLocation.clearing.getClearingComponents()) {
 							if (rc.isChit()) {
 								allPieces.add((ChitComponent)rc);
 							}
@@ -351,6 +358,9 @@ public class QuestLocation extends GameObjectWrapper {
 		LocationClearingType clearingType = getLocationClearingType();
 		ArrayList<TileLocation> locations = new ArrayList<TileLocation>();
 		ArrayList<ClearingDetail> clearingsToCheck = new ArrayList<ClearingDetail>();
+		if (location == null) {
+			return null;
+		}
 		if (location.clearing == null) {
 			for(ClearingDetail cl : location.tile.getClearings()) {
 				clearingsToCheck.add(cl);
@@ -414,14 +424,14 @@ public class QuestLocation extends GameObjectWrapper {
 		return null;
 	}
 
-	public static ArrayList<RealmComponent> fetchPieces(GameData gameData, String val,boolean onlySeen) {
+	private static ArrayList<RealmComponent> fetchPieces(GameData gameData, String val,boolean onlySeen) {
 		ArrayList<GameObject> gos = gameData.getGameObjectsByNameIgnoreCase(val);
 		if (gos.isEmpty()) return null;
 		ArrayList<RealmComponent> ret = new ArrayList<RealmComponent>();
 		for (GameObject go : gos) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc==null) continue;
-			if (rc.isStateChit() || rc.isDwelling() || rc.isMonster() || rc.isNative() || rc.isItem() || rc.isGoldSpecial()) {
+			if (rc.isStateChit() || rc.isDwelling() || rc.isMonster() || rc.isNative() || rc.isItem() || rc.isGoldSpecial() || rc.isTreasureLocation() || rc.isGuild() || rc.isGate() || rc.isVisitor() || rc.isTraveler()) {
 				if (!onlySeen || !rc.isStateChit() || rc.getGameObject().hasThisAttribute("seen")) {
 					ret.add(rc);
 				}
@@ -429,6 +439,58 @@ public class QuestLocation extends GameObjectWrapper {
 		}
 		return ret.isEmpty() ? null : ret;
 	}
+	
+	public ArrayList<TileLocation> fetchAllLocations(JFrame frame, CharacterWrapper character, GameData gameData) {
+		if (needsResolution() && frame != null & character != null) {
+			if (getLocationType()==LocationType.Lock) {
+				RealmLogging.logMessage(QuestConstants.QUEST_ERROR,"Can't fetch locations for a LOCK type of location without requiring the character to first visit that location.");
+				return null;
+			}
+			resolveStepStart(frame,character);
+		}
+		return fetchAllLocations(gameData);
+	}
+	
+	public ArrayList<TileLocation> fetchAllLocations(GameData gameData) {
+		ArrayList<String> addresses = getValidAddresses();
+		ArrayList<TileLocation> allTileLocations = new ArrayList<TileLocation>();
+		
+		if (addresses.isEmpty()) {
+			ArrayList<GameObject> gameObjects = getGameObject().getGameData().getGameObjects();
+			for (GameObject go : gameObjects) {
+				if(go.hasThisAttribute("tile")) {
+					TileComponent tc = (TileComponent) RealmComponent.getRealmComponent(go);
+					TileLocation tileLocation = new TileLocation(tc);
+					ArrayList<TileLocation> validLocations = this.getAllAllowedClearingsForTileLocation(tileLocation);
+					if (validLocations != null) {
+						allTileLocations.addAll(this.getAllAllowedClearingsForTileLocation(tileLocation));
+					}
+				}
+			}
+		}
+		
+		for (String address : addresses) {
+			TileLocation location = fetchTileLocation(gameData, address);
+			ArrayList<TileLocation> validLocations = this.getAllAllowedClearingsForTileLocation(location);
+			if (validLocations != null) {
+				allTileLocations.addAll(validLocations);
+			}
+			ArrayList<GameObject> gos = gameData.getGameObjectsByNameIgnoreCase(address);
+			if (!gos.isEmpty()) {
+				for (GameObject go : gos) {
+					RealmComponent rc = RealmComponent.getRealmComponent(go);
+					if (rc==null) continue;
+					ArrayList<TileLocation> validPieceLocations = this.getAllAllowedClearingsForTileLocation(rc.getCurrentLocation());
+					if (validPieceLocations != null) {
+						allTileLocations.addAll(validPieceLocations);
+					}
+				}
+			}
+		}
+		
+		return allTileLocations;
+	}
+	
 	public static boolean validLocation(GameData gameData,String val) {
 		return fetchTileLocation(gameData,val)!=null || fetchPieces(gameData,val,false)!=null;
 	}

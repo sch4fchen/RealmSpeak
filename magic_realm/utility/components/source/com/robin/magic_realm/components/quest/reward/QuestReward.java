@@ -203,49 +203,25 @@ public abstract class QuestReward extends AbstractQuestObject {
 	}
 	
 	private void lostItemToLocation(GameObject go,QuestLocation location) {
-		ArrayList<String> addresses = new ArrayList<String>();
-		String lockAddress = location.getLockAddress();
-		if (lockAddress!=null) {
-			addresses.add(lockAddress);
-		}
-		else {
-			addresses.addAll(location.getChoiceAddresses());
-		}
-		
-		if (addresses.size()==0) {
-			throw new IllegalArgumentException("QuestLocation "+location.getName()+" doesn't have any valid addresses!");
-		}
-		
-		int r = RandomNumber.getRandom(addresses.size());
-		String address = addresses.get(r);
-		
-		boolean moved = false;
-		TileLocation tl = null;
-		ArrayList<RealmComponent> pieces = QuestLocation.fetchPieces(getGameData(),address,false);
-		if (pieces!=null && !pieces.isEmpty()) {
-			RealmComponent piece = pieces.get(0); // TODO Using only the first piece found isn't the best thing here, but it will work for now.
-			if (piece.isTreasureLocation() || piece.isDwelling() || piece.isVisitor()) {
-				piece.getGameObject().add(go);
-				moved = true;
-			}
-			else {
-				// Drop in clearing instead
-				tl = piece.getCurrentLocation();
-			}
-		}
-		else {
-			tl = QuestLocation.fetchTileLocation(getGameData(),address);
-		}
-		if (tl!=null) {
-			if (tl.clearing == null) {
-				tl.setRandomClearing();
-			}
-			ClearingUtility.moveToLocation(go,tl);
-			moved = true;
-		}
-		if (!moved) {
+		ArrayList<TileLocation> validLocations = new ArrayList<TileLocation>();
+		validLocations = location.fetchAllLocations(getGameData());
+		if(validLocations.isEmpty()) {
 			RealmLogging.logMessage(QuestConstants.QUEST_ERROR,"Item "+go.getName()+" didn't get moved to QuestLocation "+location.getName()+" for some reason...");
+			return;
 		}
+		int random = RandomNumber.getRandom(validLocations.size());
+		TileLocation tileLocation = validLocations.get(random);
+		
+		ArrayList<RealmComponent> clearingComponents = tileLocation.clearing.getClearingComponents();
+		if (!clearingComponents.isEmpty()) {
+			for (RealmComponent rc : clearingComponents) {
+				if (rc.isTreasureLocation() || rc.isDwelling() || rc.isVisitor()) {
+					rc.getGameObject().add(go);
+					return;
+				}
+			}
+		}
+		ClearingUtility.moveToLocation(go,tileLocation);
 	}
 
 	public abstract void processReward(JFrame frame,CharacterWrapper character);

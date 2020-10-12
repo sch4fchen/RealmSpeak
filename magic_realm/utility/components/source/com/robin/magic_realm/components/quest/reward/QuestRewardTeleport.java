@@ -39,35 +39,15 @@ public class QuestRewardTeleport extends QuestReward {
 	}
 
 	public void processReward(JFrame frame,CharacterWrapper character) {
-		QuestLocation loc = getQuestLocation();
-		ArrayList<String> addresses = new ArrayList<String>();
-		String lockAddress = loc.getLockAddress();
-		if (lockAddress!=null) {
-			addresses.add(lockAddress);
-		}
-		else {
-			ArrayList<String> choiceAddresses = loc.getChoiceAddresses();
-			if (choiceAddresses != null) {
-				addresses.addAll(loc.getChoiceAddresses());
-			}
-		}
-		if (addresses.size()==0) {
-			logger.fine("QuestLocation "+loc.getName()+" doesn't have any valid addresses!");
-			return;
-		}
-		
+		QuestLocation loc = getQuestLocation();		
 		ArrayList<TileLocation> validLocations = new ArrayList<TileLocation>();
-		for (String address : addresses) {
-			TileLocation tileLocation = QuestLocation.fetchTileLocation(getGameData(),address);
-			validLocations.addAll(loc.getAllAllowedClearingsForTileLocation(tileLocation));
-		}
+		validLocations = loc.fetchAllLocations(frame, character, getGameData());
 		if(validLocations.isEmpty()) {
 			logger.fine("QuestLocation "+loc.getName()+" doesn't have any valid locations!");
 			return;
 		}
 		int random = RandomNumber.getRandom(validLocations.size());
 		TileLocation tileLocation = validLocations.get(random);
-
 		character.moveToLocation(frame, tileLocation);
 	}
 	
