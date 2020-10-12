@@ -60,11 +60,9 @@ GM = Scenario Editor: Save game with scenario name and description, Add Quest to
 Shuffle components Flag in gameData when saving game/scenario: Shuffle when loading (and remove flag)
 RealSpeak: Load scenarios (overview with names and descriptions)
 ---:::BUGS:::---
-I have found that combat ends after two rounds - even if hirelings have been killed.
 Wizard advancement - didn't get MOVE M5->MAGIC III
 When choosing a flying hex, the thick border spills over onto the treasure cards and other...
 Don't know about this one:  Does Flowers of Rest work correctly in combat?
-Exorcise not breaking Curses?
 0001879: Color magic fatigue counted against character when used in encounter step to energize a spell
 0001869: blocking occurs on start of phase instead of end -> fixed?
 0001858: PotP Terror wounds Belt of Strength coverted chits
