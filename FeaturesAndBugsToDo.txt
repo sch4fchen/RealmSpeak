@@ -1,7 +1,6 @@
 ::RealmSpeak::
-QuestRequirement: Get Attribute in Location
-QuestReward: SpellEffect: cast to location? or characters tile/clearing?
-RewardHireling+RewardCompanion: To Location (+extend location functionality)
+Reward: SpellEffect: cast to location? or characters tile/clearing?
+Reward: Hireling+Companion: To Location (+extend location functionality)
 Reward: Gain Custom Treasure: CustomTreasure // Pick a treasure, clone, and rename it
 Reward: Discovery (path, treasureSite etc.)
 Reward: Move denizen (cloned/companion or not)
