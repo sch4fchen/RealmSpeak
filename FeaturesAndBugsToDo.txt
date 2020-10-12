@@ -21,9 +21,7 @@ Reward: SummonFromAppearance: I'd think that either specifying a sound or warnin
 Requirement: Enchant action (+enchant action in questTester) + Option: Color?
 Requirement: Has Hireling/Companion (regex)
 Requirement: Found hidden enemies (+QuestTester)
-Requirement: Kill only count in Location
 Requirement: Relationship
-Requirement: Is MagicUser
 Requirement: IsFemale/IsMale
 Requirement: Is specific character (regex for OR)
 Requirement: Must fly (+QuestTester: make fly?)
