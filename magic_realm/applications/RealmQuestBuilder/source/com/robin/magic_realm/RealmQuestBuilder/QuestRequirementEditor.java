@@ -114,6 +114,8 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementNoDenizens.NO_NATIVES, "No Natives", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementNoDenizens.TILE_WIDE, "All Tile Clearings", FieldType.Boolean));
 				break;
+			case MagicUser:
+				break;
 			case MinorCharacter:
 				list.add(new QuestPropertyBlock(QuestRequirementMinorCharacter.MINOR_CHARACTER, "Minor character ", FieldType.SmartTextLine, quest.getMinorCharacters().toArray()));
 				break;

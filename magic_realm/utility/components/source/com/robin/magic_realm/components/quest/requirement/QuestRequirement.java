@@ -46,6 +46,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		LearnAwaken,
 		Loot, // (optional location designation)
 		NoDenizens,
+		MagicUser,
 		MinorCharacter,
 		MissionCampaign,
 		Open,
@@ -86,6 +87,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests for a specific item result of looting.";
 				case NoDenizens:
 					return "Tests for the absence of monster/natives in the clearing or tile.";
+				case MagicUser:
+					return "Tests if character is a magic user.";
 				case MinorCharacter:
 					return "Tests for the presence of a minor character in the character inventory.";
 				case MissionCampaign:
@@ -223,6 +226,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case NoDenizens:
 				requirement = new QuestRequirementNoDenizens(go);
+				break;
+			case MagicUser:
+				requirement = new QuestRequirementMagicUser(go);
 				break;
 			case MinorCharacter:
 				requirement = new QuestRequirementMinorCharacter(go);

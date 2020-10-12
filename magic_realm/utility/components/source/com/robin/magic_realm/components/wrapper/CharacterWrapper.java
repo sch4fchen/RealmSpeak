@@ -192,6 +192,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		String levelKey = "level_"+getCharacterLevel();
 		return getGameObject().hasAttribute(levelKey,"spellcount");
 	}
+	public boolean isMagicUser() {
+		return getGameObject().hasThisAttribute("magicuser");
+	}
 	public String toString() {
 		return getCharacterName()+" played by "+getPlayerName();
 	}

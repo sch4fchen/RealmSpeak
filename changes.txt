@@ -13,6 +13,7 @@ QUEST UPDATE:
 # QuestRequirement: Cast a spell
 # QuestRequirement: Cast multiple (unique) spells
 # QuestRequirement: Hidden (and toggle hide in QuestTester)
+# QuestRequirement: Magic user
 # QuestRequirement: Open
 # QuestRequirementSearch: NoEffect option
 # QuestRequirementKill: option to define vulnerability
