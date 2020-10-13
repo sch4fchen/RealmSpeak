@@ -20,6 +20,7 @@ package com.robin.magic_realm.components.quest.requirement;
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
+import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRequirementProbability extends QuestRequirement {
@@ -31,8 +32,7 @@ public class QuestRequirementProbability extends QuestRequirement {
 
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
 		int chance = getValue();
-		double random = 100*Math.random();
-		if (((int) random)+1 <= chance) {
+		if (RandomNumber.getRandom(100)+1 <= chance) {
 			return true;
 		}
 		return false;

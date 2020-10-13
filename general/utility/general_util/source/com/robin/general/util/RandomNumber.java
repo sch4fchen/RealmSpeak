@@ -115,7 +115,7 @@ public class RandomNumber {
 	 * @return true if percent was successful
 	 */
 	public static boolean percentRollSuccess(int percent) {
-		return getRandom(100) < percent;
+		return getRandom(100) + 1 < percent;
 	}
 
 	/**
