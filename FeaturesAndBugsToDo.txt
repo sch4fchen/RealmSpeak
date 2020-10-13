@@ -22,7 +22,6 @@ Requirement: Enchant action (+enchant action in questTester) + Option: Color?
 Requirement: Has Hireling/Companion (regex)
 Requirement: Found hidden enemies (+QuestTester)
 Requirement: Relationship
-Requirement: IsFemale/IsMale
 Requirement: Is specific character (regex for OR)
 Requirement: Must fly (+QuestTester: make fly?)
 Reward + Requirement: GuildMember at Level 1-3 of Guild ??? + QuestTester

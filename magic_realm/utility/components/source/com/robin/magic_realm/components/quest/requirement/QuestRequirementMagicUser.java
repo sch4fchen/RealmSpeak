@@ -33,7 +33,7 @@ public class QuestRequirementMagicUser extends QuestRequirement {
 	}
 
 	protected String buildDescription() {
-		return "Only when character is a magic user.";
+		return "Character must be a magic user.";
 	}
 
 	public RequirementType getRequirementType() {

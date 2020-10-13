@@ -14,6 +14,8 @@ QUEST UPDATE:
 # QuestRequirement: Cast multiple (unique) spells
 # QuestRequirement: Hidden (and toggle hide in QuestTester)
 # QuestRequirement: Magic user
+# QuestRequirement: Fighter
+# QuestRequirement: Gender (female/male)
 # QuestRequirement: Open
 # QuestRequirementSearch: NoEffect option
 # QuestRequirementKill: option to define vulnerability

@@ -39,7 +39,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		ColorMagic,
 		Counter,
 		Discovery, // must have a specific discovery
+		Fighter,
 		GamePhase, // end of phase, end of day, start of evening, midnight, birdsong
+		Gender,
 		Hidden,
 		Inventory, // a requirement that tests what you have in inventory
 		Kill, 
@@ -73,8 +75,12 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests whether a specific counter has reached a certain value.";
 				case Discovery:
 					return "Tests for a specific recorded discovery.";
+				case Fighter:
+					return "Tests if character is a fighter.";
 				case GamePhase:
 					return "Tests for a specific game phase (Birdsong, End-of-phase, End-of-turn, Evening).";
+				case Gender:
+					return "Tests for characters gender.";
 				case Hidden:
 					return "Tests if character is hidden.";
 				case Inventory:
@@ -206,8 +212,14 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 			case Discovery:
 				requirement = new QuestRequirementDiscovery(go);
 				break;
+			case Fighter:
+				requirement = new QuestRequirementFighter(go);
+				break;
 			case GamePhase:
 				requirement = new QuestRequirementGamePhase(go);
+				break;
+			case Gender:
+				requirement = new QuestRequirementGender(go);
 				break;
 			case Hidden:
 				requirement = new QuestRequirementHidden(go);

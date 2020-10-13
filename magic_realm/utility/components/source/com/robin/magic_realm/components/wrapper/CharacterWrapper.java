@@ -195,6 +195,28 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean isMagicUser() {
 		return getGameObject().hasThisAttribute("magicuser");
 	}
+	public boolean isFighter() {
+		return getGameObject().hasThisAttribute("fighter");
+	}
+	public boolean isFemale() {
+		return getGameObject().getThisAttribute("pronoun") == "she";
+	}
+	public boolean isMale() {
+		return getGameObject().getThisAttribute("pronoun") == "he";
+	}
+	public GenderType getGender() {
+		String gender = getGameObject().getThisAttribute("pronoun");
+		if (gender == null) {
+			return GenderType.Undefined;
+		}
+		if (gender.matches("she")) {
+			return GenderType.Female;
+		}
+		if (gender.matches("he")) {
+			return GenderType.Male;
+		}
+		return GenderType.Undefined;
+	}
 	public String toString() {
 		return getCharacterName()+" played by "+getPlayerName();
 	}

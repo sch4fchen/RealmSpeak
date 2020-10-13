@@ -83,8 +83,13 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case Discovery:
 				list.add(new QuestPropertyBlock(QuestRequirementDiscovery.DISCOVERY_KEY, "Discovery", FieldType.StringSelector, getDiscoveryStrings().toArray()));
 				break;
+			case Fighter:
+				break;
 			case GamePhase:
 				list.add(new QuestPropertyBlock(QuestRequirementGamePhase.GAME_PHASE_TYPE, "Only at", FieldType.StringSelector, GamePhaseType.values()));
+				break;
+			case Gender:
+				list.add(new QuestPropertyBlock(QuestRequirementGender.GENDER, "Gender", FieldType.StringSelector, new String[] { GenderType.Female.toString(), GenderType.Male.toString() }));
 				break;
 			case Hidden:
 				break;
