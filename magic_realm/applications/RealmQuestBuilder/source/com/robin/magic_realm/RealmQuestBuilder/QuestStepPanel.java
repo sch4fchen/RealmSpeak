@@ -90,11 +90,13 @@ public class QuestStepPanel extends JPanel {
 		requirementPanel.getDeleteAction().setEnabled(requirementsTable.getSelectedRowCount()==1);
 		requirementPanel.getMoveUpAction().setEnabled(requirementsTable.getSelectedRow()>0);
 		requirementPanel.getMoveDownAction().setEnabled(requirementsTable.getSelectedRow()>=0 && requirementsTable.getSelectedRow()<step.getRequirements().size()-1);
+		requirementPanel.updateUI();
 		
 		rewardPanel.getEditAction().setEnabled(rewardsTable.getSelectedRowCount()==1);
 		rewardPanel.getDeleteAction().setEnabled(rewardsTable.getSelectedRowCount()==1);
 		rewardPanel.getMoveUpAction().setEnabled(rewardsTable.getSelectedRow()>0);
 		rewardPanel.getMoveDownAction().setEnabled(rewardsTable.getSelectedRow()>=0 && rewardsTable.getSelectedRow()<step.getRewards().size()-1);
+		rewardPanel.updateUI();
 	}
 	
 	private void initComponents() {

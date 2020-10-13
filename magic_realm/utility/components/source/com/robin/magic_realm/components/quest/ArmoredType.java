@@ -17,9 +17,8 @@
  */
 package com.robin.magic_realm.components.quest;
 
-public enum VulnerabilityType {
+public enum ArmoredType {
 	Any,
-	M,
-	H,
-	T,
+	Unarmored,
+	Armored
 }

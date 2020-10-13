@@ -25,6 +25,7 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
+import com.robin.magic_realm.components.quest.ArmoredType;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.QuestStep;
 import com.robin.magic_realm.components.quest.VulnerabilityType;
@@ -41,6 +42,7 @@ public class QuestRequirementKill extends QuestRequirement {
 	public static final String STEP_ONLY_KILLS = "_sok";
 	public static final String VALUE = "_rq";
 	public static final String VULNERABILITY = "_vy";
+	public static final String ARMORED = "_arm";
 	
 	public QuestRequirementKill(GameObject go) {
 		super(go);
@@ -69,7 +71,8 @@ public class QuestRequirementKill extends QuestRequirement {
 					String mark = go.getThisAttribute(QuestConstants.QUEST_MARK);
 					if (mark==null || !mark.equals(questId)) continue;
 				}
-				if (getVulnerability()!=VulnerabilityType.undefined && VulnerabilityType.valueOf(go.getThisAttribute("vulnerability"))!=getVulnerability()) continue;
+				if (getVulnerability()!=VulnerabilityType.Any && VulnerabilityType.valueOf(go.getThisAttribute("vulnerability"))!=getVulnerability()) continue;
+				if ((getArmored() == ArmoredType.Armored && !go.hasThisAttribute("armored"))|| (getArmored() == ArmoredType.Unarmored && go.hasThisAttribute("armored"))) continue;
 				if (!go.hasThisAttribute(Constants.DEAD)) {
 					logger.fine(go.getName()+" is still alive.");
 					return false;
@@ -96,7 +99,9 @@ public class QuestRequirementKill extends QuestRequirement {
 					String mark = kill.getThisAttribute(QuestConstants.QUEST_MARK);
 					if (mark==null || !mark.equals(questId)) continue;
 				}
-				if (getVulnerability()!=VulnerabilityType.undefined && VulnerabilityType.valueOf(kill.getThisAttribute("vulnerability"))!=getVulnerability()) continue;
+				if (getVulnerability()!=VulnerabilityType.Any && VulnerabilityType.valueOf(kill.getThisAttribute("vulnerability"))!=getVulnerability()) continue;
+				if ((getArmored() == ArmoredType.Armored && !kill.hasThisAttribute("armored")) || (getArmored() == ArmoredType.Unarmored && kill.hasThisAttribute("armored"))) continue;
+				
 				validKills.add(kill);
 			}
 		}
@@ -116,6 +121,9 @@ public class QuestRequirementKill extends QuestRequirement {
 		sb.append(mark?"":"any ");
 		sb.append(val==QuestConstants.ALL_VALUE?"ALL":""+val);
 		sb.append(mark?" marked":"");
+		if (getArmored() != ArmoredType.Any) {
+			sb.append(" "+getArmored().toString().toLowerCase());
+		}
 		sb.append(" denizen");
 		sb.append(val==1?"":"s");
 		if(!getRegExFilter().isEmpty()) {
@@ -123,7 +131,7 @@ public class QuestRequirementKill extends QuestRequirement {
 			sb.append(val==1?"es":"");
 			sb.append(" regex: /"+getRegExFilter()+"/");
 		}
-		sb.append(getVulnerability()!=VulnerabilityType.undefined?" with vulnerability "+getVulnerability():"");
+		sb.append(getVulnerability()!=VulnerabilityType.Any?" with vulnerability "+getVulnerability():"");
 		sb.append(".");
 		return sb.toString();
 	}
@@ -146,9 +154,16 @@ public class QuestRequirementKill extends QuestRequirement {
 	}
 	public VulnerabilityType getVulnerability() {
 		String vulnerability = getString(VULNERABILITY);
-		if (vulnerability == null) { // compatibility for old quests
-			return VulnerabilityType.undefined;
+		if (vulnerability == null || vulnerability == "undefined") { // compatibility for old quests
+			return VulnerabilityType.Any;
 		}
 		return VulnerabilityType.valueOf(getString(VULNERABILITY));
+	}
+	public ArmoredType getArmored() {
+		String armor = getString(ARMORED);
+		if (armor == null) { // compatibility for old quests
+			return ArmoredType.Any;
+		}
+		return ArmoredType.valueOf(getString(ARMORED));
 	}
 }
