@@ -36,6 +36,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		Attribute,
 		CastMultipleSpells,
 		CastSpell,
+		CharacterClass,
 		ColorMagic,
 		Counter,
 		Discovery, // must have a specific discovery
@@ -72,6 +73,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests whether a certain number of (unique) spells have been cast.";
 				case CastSpell:
 					return "Tests whether a spell has just been cast.";
+				case CharacterClass:
+					return "Tests for the characters class.";
 				case ColorMagic:
 					return "Tests whether the character is in the presence of a specific color of magic (either permanent or burning a chit).";
 				case Counter:
@@ -87,7 +90,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				case GamePhase:
 					return "Tests for a specific game phase (Birdsong, End-of-phase, End-of-turn, Evening).";
 				case Gender:
-					return "Tests for characters gender.";
+					return "Tests for the characters gender.";
 				case Hidden:
 					return "Tests if the character is hidden.";
 				case HideResult:
@@ -211,6 +214,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case CastSpell:
 				requirement = new QuestRequirementCastSpell(go);
+				break;
+			case CharacterClass:
+				requirement = new QuestRequirementCharacterClass(go);
 				break;
 			case ColorMagic:
 				requirement = new QuestRequirementColorMagic(go);

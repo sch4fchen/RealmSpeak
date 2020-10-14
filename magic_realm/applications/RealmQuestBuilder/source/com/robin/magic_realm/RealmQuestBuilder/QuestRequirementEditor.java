@@ -70,6 +70,9 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case CastSpell:
 				list.add(new QuestPropertyBlock(QuestRequirementCastSpell.REGEX_FILTER, "Spell to be casted (regex)", FieldType.Regex, null, new String[] {"spell"}));
 				break;
+			case CharacterClass:
+				list.add(new QuestPropertyBlock(QuestRequirementCharacterClass.REGEX_FILTER, "Character(s)", FieldType.Regex, null, new String[] {"character"}));
+				break;
 			case ColorMagic:
 				list.add(new QuestPropertyBlock(QuestRequirementColorMagic.COLOR_KEY, "In the presence of color magic.", FieldType.StringSelector, Constants.MAGIC_COLORS));
 				break;
@@ -176,7 +179,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 		}
 		return list;
 	}
-	
+
 	private String[] getAllClearingCodes() {
 		ArrayList<String> list = new ArrayList<String>();
 		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
