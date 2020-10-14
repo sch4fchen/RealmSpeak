@@ -15,44 +15,44 @@
  *
  * http://www.gnu.org/licenses/
  */
-package com.robin.magic_realm.components.quest.reward;
-
-import java.util.ArrayList;
+package com.robin.magic_realm.components.quest.requirement;
 
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
+import com.robin.general.swing.DieRoller;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.quest.DieRollType;
-import com.robin.magic_realm.components.utility.SetupCardUtility;
+import com.robin.magic_realm.components.utility.DieRollBuilder;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
-import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
-public class QuestRewardSummonRoll extends QuestReward {
-	
+public class QuestRequirementHideResult extends QuestRequirement {
+
 	public static final String DIE_ROLL = "_dr";
 	
-	public QuestRewardSummonRoll(GameObject go) {
+	public QuestRequirementHideResult(GameObject go) {
 		super(go);
 	}
 
-	public void processReward(JFrame frame,CharacterWrapper character) {
-		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
-		ArrayList<GameObject> summoned = new ArrayList<GameObject>();
-		SetupCardUtility.summonMonsters(hostPrefs, summoned, character, getDieRoll());
+	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
+		DieRoller roller = DieRollBuilder.getDieRollBuilder(frame,character).createHideRoller();
+		if (roller.getHighDieResult() < getDieRoll()) { 
+			return true;
+		}
+		return false;
 	}
-	
-	public String getDescription() {
+
+	protected String buildDescription() {
 		if (getString(DIE_ROLL)!=DieRollType.Random.toString()) {
-			return "Summon roll with a die roll of "+getDieRoll()+".";
+			return "Requires a successful hide roll below or equal to "+getDieRoll()+".";
 		}
 		else {
-			return "Summon roll with a random die roll.";
+			return "Requires a successful hide roll below or equal to a random value (1-6).";
 		}
 	}
 
-	public RewardType getRewardType() {
-		return RewardType.SummonRoll;
+	public RequirementType getRequirementType() {
+		return RequirementType.HideResult;
 	}
 	
 	public int getDieRoll() {

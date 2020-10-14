@@ -96,6 +96,9 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				break;
 			case Hidden:
 				break;
+			case HideResult:
+				list.add(new QuestPropertyBlock(QuestRequirementHideResult.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));
+				break;
 			case Inventory:
 				list.add(new QuestPropertyBlock(QuestRequirementInventory.TREASURE_TYPE, "Type of inventory", FieldType.StringSelector, TreasureType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementInventory.REGEX_FILTER, "Inventory name filter (regex)", FieldType.Regex, null, new String[] { "item","treasure_within_treasure" }));

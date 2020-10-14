@@ -18,6 +18,7 @@ QUEST UPDATE:
 # QuestRequirement: Fly (Flying or ability to fly)
 # QuestRequirement: Gender (female/male)
 # QuestRequirement: Open
+# QuestRequirement: Hide result
 # QuestRequirementSearch: NoEffect option
 # QuestRequirementKill: option to define vulnerability
 # QuestRequirementPath: support for single clearing

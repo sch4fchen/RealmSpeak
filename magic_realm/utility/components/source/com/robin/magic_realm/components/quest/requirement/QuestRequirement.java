@@ -44,6 +44,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		GamePhase, // end of phase, end of day, start of evening, midnight, birdsong
 		Gender,
 		Hidden,
+		HideResult,
 		Inventory, // a requirement that tests what you have in inventory
 		Kill, 
 		LearnAwaken,
@@ -86,6 +87,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests for characters gender.";
 				case Hidden:
 					return "Tests if the character is hidden.";
+				case HideResult:
+					return "Tests if the character succeeds a hide roll (below or equal to a specfic value).";
 				case Inventory:
 					return "Tests the contents of inventory.";
 				case Kill:
@@ -229,6 +232,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case Hidden:
 				requirement = new QuestRequirementHidden(go);
+				break;
+			case HideResult:
+				requirement = new QuestRequirementHideResult(go);
 				break;
 			case Inventory:
 				requirement = new QuestRequirementInventory(go);
