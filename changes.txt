@@ -15,6 +15,7 @@ QUEST UPDATE:
 # QuestRequirement: Hidden (and toggle hide in QuestTester)
 # QuestRequirement: Magic user
 # QuestRequirement: Fighter
+# QuestRequirement: Fly (Flying or ability to fly)
 # QuestRequirement: Gender (female/male)
 # QuestRequirement: Open
 # QuestRequirementSearch: NoEffect option

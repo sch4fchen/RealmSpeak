@@ -85,7 +85,7 @@ public class QuestTesterFrame extends JFrame {
 	JButton killDenizenButton;
 	JButton discoverButton;
 	JButton openLocationButton;
-	JButton enchantLocationButton;
+	JToggleButton enchantLocationButton;
 	JButton magicForClearingButton;
 
 	JToggleButton unspecifiedTime;
@@ -270,13 +270,20 @@ public class QuestTesterFrame extends JFrame {
 		charName = new JLabel();
 		line.add(charName);
 		line.add(Box.createHorizontalGlue());
-		JButton toggleHidden = new JButton("Toggle hidden");
+		JToggleButton toggleHidden = new JToggleButton("Hidden");
 		toggleHidden.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				toggleHidden();
 			}
 		});
 		line.add(toggleHidden);
+		JToggleButton toggleFlying = new JToggleButton("Flying");
+		toggleFlying.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				toggleFlying();
+			}
+		});
+		line.add(toggleFlying);
 		box.add(line);
 		
 		line = group.createLabelLine("Current Location");
@@ -726,7 +733,7 @@ public class QuestTesterFrame extends JFrame {
 			}
 		});
 		locationButtonsPanel.add(openLocationButton);
-		enchantLocationButton = new JButton("(Un)Enchant Location");
+		enchantLocationButton = new JToggleButton("Enchant Location");
 		enchantLocationButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				TileComponent tile = character.getCurrentLocation().tile;
@@ -1311,6 +1318,18 @@ public class QuestTesterFrame extends JFrame {
 		}
 		else {
 			character.setHidden(true);
+		}
+		retestQuest();
+	}
+	
+	private void toggleFlying() {
+		if (character.getCurrentLocation().isFlying()) {
+			character.getCurrentLocation().setFlying(false);
+			character.getGameObject().removeThisAttribute("isflying");
+		}
+		else {
+			character.getCurrentLocation().setFlying(true);
+			character.getGameObject().setThisAttribute("isflying");
 		}
 		retestQuest();
 	}

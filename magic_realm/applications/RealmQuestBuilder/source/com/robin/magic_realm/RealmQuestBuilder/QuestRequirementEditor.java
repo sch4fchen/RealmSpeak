@@ -85,6 +85,9 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				break;
 			case Fighter:
 				break;
+			case Fly:
+				list.add(new QuestPropertyBlock(QuestRequirementFly.FLY, "Needs to fly?", FieldType.StringSelector, new String[] { QuestRequirementFly.FLYING,QuestRequirementFly.ABILITY_TO_FLY }));
+				break;
 			case GamePhase:
 				list.add(new QuestPropertyBlock(QuestRequirementGamePhase.GAME_PHASE_TYPE, "Only at", FieldType.StringSelector, GamePhaseType.values()));
 				break;

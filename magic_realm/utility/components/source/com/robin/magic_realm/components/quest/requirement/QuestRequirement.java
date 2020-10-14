@@ -40,6 +40,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		Counter,
 		Discovery, // must have a specific discovery
 		Fighter,
+		Fly,
 		GamePhase, // end of phase, end of day, start of evening, midnight, birdsong
 		Gender,
 		Hidden,
@@ -76,13 +77,15 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				case Discovery:
 					return "Tests for a specific recorded discovery.";
 				case Fighter:
-					return "Tests if character is a fighter.";
+					return "Tests if the character is a fighter.";
+				case Fly:
+					return "Tests if the character is currently flying or has the ability to fly.";
 				case GamePhase:
 					return "Tests for a specific game phase (Birdsong, End-of-phase, End-of-turn, Evening).";
 				case Gender:
 					return "Tests for characters gender.";
 				case Hidden:
-					return "Tests if character is hidden.";
+					return "Tests if the character is hidden.";
 				case Inventory:
 					return "Tests the contents of inventory.";
 				case Kill:
@@ -94,7 +97,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				case NoDenizens:
 					return "Tests for the absence of monster/natives in the clearing or tile.";
 				case MagicUser:
-					return "Tests if character is a magic user.";
+					return "Tests if the character is a magic user.";
 				case MinorCharacter:
 					return "Tests for the presence of a minor character in the character inventory.";
 				case MissionCampaign:
@@ -214,6 +217,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case Fighter:
 				requirement = new QuestRequirementFighter(go);
+				break;
+			case Fly:
+				requirement = new QuestRequirementFly(go);
 				break;
 			case GamePhase:
 				requirement = new QuestRequirementGamePhase(go);
