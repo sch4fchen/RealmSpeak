@@ -19,6 +19,7 @@ QUEST UPDATE:
 # QuestRequirement: Gender (female/male)
 # QuestRequirement: Open
 # QuestRequirement: Hide result
+# QuestRequirement: Find hidden enemies
 # QuestRequirementSearch: NoEffect option
 # QuestRequirementKill: option to define vulnerability
 # QuestRequirementPath: support for single clearing
