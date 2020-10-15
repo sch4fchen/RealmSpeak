@@ -154,7 +154,7 @@ public class QuestRequirementKill extends QuestRequirement {
 	}
 	public VulnerabilityType getVulnerability() {
 		String vulnerability = getString(VULNERABILITY);
-		if (vulnerability == null || vulnerability == "undefined") { // compatibility for old quests
+		if (vulnerability == null || vulnerability.matches("undefined")) { // compatibility for old quests
 			return VulnerabilityType.Any;
 		}
 		return VulnerabilityType.valueOf(getString(VULNERABILITY));
