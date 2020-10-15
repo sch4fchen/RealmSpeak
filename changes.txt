@@ -1,6 +1,9 @@
-Version 1.1.3.4 - Changes since 1.1.3.3
+Version 1.1.3.5 - Changes since 1.1.3.4 -- outlook
 QUEST UPDATE:
 # Update on existing quests and a lot of new quests by Steve
+
+Version 1.1.3.4 - Changes since 1.1.3.3
+QUEST UPDATE:
 # QuestTester: "Fulfill requirements"-button for a quest step
 # QuestTester: Display Fatigue and Wounds
 # QuestTester: Buy action
@@ -25,9 +28,9 @@ QUEST UPDATE:
 # QuestRequirementKill: option to define vulnerability
 # QuestRequirementPath: support for single clearing
 # QuestReward: Regenerate denizen
-# QuestReward: Summon Roll 
+# QuestReward: Summon Roll
 # QuestReward: Teleport
-# QuestReward: KillDenizen 
+# QuestReward: KillDenizen
 # QuestReward: SpellEffect
 # QuestRewardItem: Filter for great items
 # QuestRewardCompanion: Option to exclude horse
