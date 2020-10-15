@@ -22,23 +22,26 @@ import java.util.ArrayList;
 public enum ChitItemType {
 	None,
 	Treasure,
-	Horse,
 	Weapon,
 	Armor,
+	Great,
+	Horse,
 	;
 	
 	static String[] ItemKeyVals = {"item"};
 	static String[] TreasureKeyVals = {"item","treasure"};
-	static String[] HorseKeyVals = {"item","horse"};
 	static String[] WeaponKeyVals = {"item","weapon","!character","!treasure","original_game","!magic"};
 	static String[] ArmorKeyVals = {"item","armor","!character","!treasure","original_game","!magic"};
+	static String[] GreatKeyVals = {"item","great"};
+	static String[] HorseKeyVals = {"item","horse"};
 	public String[] getKeyVals() {
 		switch(this) {
 			case None:		return ItemKeyVals;
 			case Treasure:	return TreasureKeyVals;
-			case Horse:		return HorseKeyVals;
 			case Weapon:	return WeaponKeyVals;
 			case Armor:		return ArmorKeyVals;
+			case Great:		return GreatKeyVals;
+			case Horse:		return HorseKeyVals;
 		}
 		throw new IllegalStateException("Unknown ChitItemType?"); // can this even happen?
 	}

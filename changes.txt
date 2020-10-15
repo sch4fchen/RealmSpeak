@@ -29,6 +29,7 @@ QUEST UPDATE:
 # QuestReward: Teleport
 # QuestReward: KillDenizen 
 # QuestReward: SpellEffect
+# QuestRewardItem: Filter for great items
 # QuestRewardCompanion: Option to exclude horse
 NEW FEATURES:
 # Option to change tile style to Legendary Realm with icons
