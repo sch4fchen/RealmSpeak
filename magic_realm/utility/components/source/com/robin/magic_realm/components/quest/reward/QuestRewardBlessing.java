@@ -17,44 +17,39 @@
  */
 package com.robin.magic_realm.components.quest.reward;
 
-import java.util.ArrayList;
-
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
-import com.robin.general.util.RandomNumber;
+import com.robin.general.swing.DieRoller;
 import com.robin.magic_realm.components.quest.DieRollType;
-import com.robin.magic_realm.components.utility.SetupCardUtility;
+import com.robin.magic_realm.components.table.Wish;
+import com.robin.magic_realm.components.utility.DieRollBuilder;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
-import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
-public class QuestRewardSummonRoll extends QuestReward {
+public class QuestRewardBlessing extends QuestReward {
 	
 	public static final String DIE_ROLL = "_dr";
 	
-	public QuestRewardSummonRoll(GameObject go) {
+	public QuestRewardBlessing(GameObject go) {
 		super(go);
 	}
 
-	public void processReward(JFrame frame,CharacterWrapper character) {
-		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
-		ArrayList<GameObject> summoned = new ArrayList<GameObject>();
-		SetupCardUtility.summonMonsters(hostPrefs, summoned, character, getDieRoll());
+	@Override
+	public void processReward(JFrame frame, CharacterWrapper character) {
+		Wish wish = new Wish(frame);
+		DieRoller roller = DieRollBuilder.getDieRollBuilder(frame, character, getDieRoll()).createRoller(wish);
+		roller.rollDice("Wish");
+		wish.apply(character,roller);
 	}
 	
-	public String getDescription() {
-		if (getString(DIE_ROLL)!=DieRollType.Random.toString()) {
-			return "Summon roll with a die roll of "+getDieRoll()+".";
-		}
-		else {
-			return "Summon roll with a random die roll.";
-		}
-	}
-
+	@Override
 	public RewardType getRewardType() {
-		return RewardType.SummonRoll;
+		return RewardType.Blessing;
 	}
-	
+	@Override
+	public String getDescription() {
+		return "Heals all chits of the character.";
+	}
 	private int getDieRoll() {
 		String dieRoll = getString(DIE_ROLL);
 		return getDieRoll(DieRollType.valueOf(dieRoll));

@@ -71,6 +71,9 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardAttribute.GAIN_TYPE, "Gain or lose", FieldType.StringSelector, GainType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardAttribute.ATTRIBUTE_CHANGE, "Amount", FieldType.Number));
 				break;
+			case Blessing:
+				list.add(new QuestPropertyBlock(QuestRewardBlessing.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));
+				break;
 			case ChooseNextStep:
 				list.add(new QuestPropertyBlock(QuestRewardChooseNextStep.TEXT, "Text", FieldType.TextLine));
 				break;

@@ -44,6 +44,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		AlterBlock,
 		AlterHide,
 		Attribute,
+		Blessing,
 		ChooseNextStep,
 		Companion,
 		//CustomTreasure, // Pick a treasure, clone, and rename it (change attributes?  could be cool... new value, new fame/not, diff weight... - pick from ALL treasures including expansion)
@@ -97,6 +98,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case AlterBlock:				return "Change questing character's blocked status (from blocked to unblocked, or the other way around).";	
 				case AlterHide:					return "Change questing character's hide status (from hidden to unhidden, or the other way around).";
 				case Attribute:					return "Modify Fame, Notoriety, or Gold.  Can either add or subtract points/gold.";
+				case Blessing:					return "Grants the character a wish.";
 				case ChooseNextStep:			return "Player chooses the next step to process from those steps that follow this step, and fullfill requirements.";
 				case Companion:					return "Add or remove a monster ally.";
 				//case CustomTreasure:			return "Create a new treasure by taking an existing treasure, renaming it, and giving it new  base attributes.";
@@ -252,6 +254,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 			case Attribute:
 				reward = new QuestRewardAttribute(go);
 				break;
+			case Blessing:
+				reward = new QuestRewardBlessing(go);
+				break;
 			case ChooseNextStep:
 				reward = new QuestRewardChooseNextStep(go);
 				break;
@@ -362,6 +367,24 @@ public abstract class QuestReward extends AbstractQuestObject {
 			sb.append(rt.getDescription());
 			sb.append("</td></tr><br>");
 			System.out.println(sb.toString());
+		}
+	}
+	public int getDieRoll(DieRollType dieRoll) {
+		switch (dieRoll) {
+			case One:
+				return 1;
+			case Two:
+				return 2;
+			case Three:
+				return 3;
+			case Four:
+				return 4;
+			case Five:
+				return 5;
+			case Six:
+				return 6;
+			default:
+				return RandomNumber.getDieRoll(6);
 		}
 	}
 }

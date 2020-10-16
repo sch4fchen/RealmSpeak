@@ -6,14 +6,11 @@ Reward: Discovery (path, treasureSite etc.)
 Reward: Move denizen (cloned/companion or not)
 Reward: Summon Monster to location
 Reward: Item: clone item? or steal?
-Reward: Drop item
+Reward: Item to location
 Reward: Destroy item (optional: must be in inventory of character)
 Reward: Transform Character and/or other target into "choose what transformation".
 Reward: Curse Character and/or other target into "choose what curse".
-Reward: Small Blessing (=Wish)
 Reward: Power of the Pit: Character and/or other target
-Reward: Item to location
-Reward: Companion/Hireling in Location
 Reward: Kill denizen in Location
 Reward: Enchant tile (location)
 Reward: SummonFromAppearance: I'd think that either specifying a sound or warning chit and summoning to the tile if it's there, or specifying a monster and summoning it to its sound or warning chit (if it's in the tile) would be the way to go.
@@ -22,6 +19,7 @@ Requirement: Has Hireling/Companion (regex)
 Reward + Requirement: GuildMember at Level 1-3 of Guild ??? + QuestTester
 Support Alerted Monsters Advanced rule
 0001797: Feature Request - BOQ Two Handed Weapon Opt Rules
+Recycle Non-All-Play Zero Point Quests (Event Cards)
 
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
