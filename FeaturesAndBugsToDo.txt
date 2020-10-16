@@ -1,4 +1,5 @@
 ::RealmSpeak::
+What does "LostInventoryToLocation" and "LostInventoryToDefault"?
 Reward: SpellEffect: cast to location? or characters tile/clearing?
 Reward: Hireling+Companion: To Location (+extend location functionality)
 Reward: Gain Custom Treasure: CustomTreasure // Pick a treasure, clone, and rename it
@@ -12,7 +13,6 @@ Reward: Transform Character and/or other target into "choose what transformation
 Reward: Curse Character and/or other target into "choose what curse".
 Reward: Small Blessing (=Wish)
 Reward: Power of the Pit: Character and/or other target
-Reward: Heal (like spell)
 Reward: Item to location
 Reward: Companion/Hireling in Location
 Reward: Kill denizen in Location

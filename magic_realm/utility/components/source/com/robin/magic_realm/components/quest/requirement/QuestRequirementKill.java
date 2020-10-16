@@ -140,26 +140,26 @@ public class QuestRequirementKill extends QuestRequirement {
 		return RequirementType.Kill;
 	}
 	
-	public String getRegExFilter() {
+	private String getRegExFilter() {
 		return getString(REGEX_FILTER);
 	}
-	public boolean getOnlyCountKillsForStep() {
+	private boolean getOnlyCountKillsForStep() {
 		return getBoolean(STEP_ONLY_KILLS);
 	}
-	public boolean getRequireMark() {
+	private boolean getRequireMark() {
 		return getBoolean(REQUIRE_MARK);
 	}
-	public int getValue() {
+	private int getValue() {
 		return getInt(VALUE);
 	}
-	public VulnerabilityType getVulnerability() {
+	private VulnerabilityType getVulnerability() {
 		String vulnerability = getString(VULNERABILITY);
 		if (vulnerability == null || vulnerability.matches("undefined")) { // compatibility for old quests
 			return VulnerabilityType.Any;
 		}
 		return VulnerabilityType.valueOf(getString(VULNERABILITY));
 	}
-	public ArmoredType getArmored() {
+	private ArmoredType getArmored() {
 		String armor = getString(ARMORED);
 		if (armor == null) { // compatibility for old quests
 			return ArmoredType.Any;

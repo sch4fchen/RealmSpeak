@@ -4761,7 +4761,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return ret;
 	}
-	public Collection getAllEffortChits() {
+	public Collection<CharacterActionChitComponent> getAllEffortChits() {
 		ArrayList allEffortChits = new ArrayList();
 		Collection c = getAllChits();
 		for (Iterator i=c.iterator();i.hasNext();) {
@@ -4816,7 +4816,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return flyChits;
 	}
 	
-	public ArrayList getRestableChits() {
+	public ArrayList<CharacterActionChitComponent> getRestableChits() {
 		ArrayList restChoices = new ArrayList();
 		if (!hasCurse(Constants.WITHER)) {
 			restChoices.addAll(getFatiguedChits());

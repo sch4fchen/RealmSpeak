@@ -32,6 +32,7 @@ QUEST UPDATE:
 # QuestReward: Teleport
 # QuestReward: KillDenizen
 # QuestReward: SpellEffect
+# QuestReward: Heal
 # QuestRewardItem: Filter for great items
 # QuestRewardCompanion: Option to exclude horse
 NEW FEATURES:

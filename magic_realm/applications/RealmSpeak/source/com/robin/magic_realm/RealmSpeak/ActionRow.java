@@ -1359,7 +1359,7 @@ public class ActionRow {
 			result = "Cannot REST while transmorphed.";
 		}
 		else {
-			ArrayList restChoices = character.getRestableChits();
+			ArrayList<CharacterActionChitComponent> restChoices = character.getRestableChits();
 			if (!restChoices.isEmpty()) { // has to be chits to rest!
 				if (RealmUtility.willBeBlocked(character,isFollowing,false)) {
 					// Block after the first phase!
