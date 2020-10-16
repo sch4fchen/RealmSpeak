@@ -59,6 +59,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		OccupyLocation,
 		Path, // follows a specific path
 		Probability,
+		Relationship,
 		SearchResult, // (optional location designation) Clues, Paths, Passages, Hidden Enemies, Discover Chit(s), Learn and Awaken, Curse!, Awaken, Counters, Treasure Cards,Perceive Spell
 		TimePassed,
 		Trade,
@@ -119,6 +120,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests whether the character has followed a specific path."; 
 				case Probability:
 					return "Requirement is met with a certain probability.";
+				case Relationship:
+					return "Tests whether the character has certain relationship with specific natives."; 
 				case SearchResult:
 					return "Tests for a specific search result.";
 				case TimePassed:
@@ -272,12 +275,6 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 			case MissionCampaign:
 				requirement = new QuestRequirementMissionCampaign(go);
 				break;
-			case TimePassed:
-				requirement = new QuestRequirementTimePassed(go);
-				break;
-			case Trade:
-				requirement = new QuestRequirementTrade(go);
-				break;
 			case OccupyLocation:
 				requirement = new QuestRequirementLocation(go);
 				break;
@@ -290,8 +287,17 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 			case Probability:
 				requirement = new QuestRequirementProbability(go);
 				break;
+			case Relationship:
+				requirement = new QuestRequirementRelationship(go);
+				break;
 			case SearchResult:
 				requirement = new QuestRequirementSearchResult(go);
+				break;
+			case TimePassed:
+				requirement = new QuestRequirementTimePassed(go);
+				break;
+			case Trade:
+				requirement = new QuestRequirementTrade(go);
 				break;
 			default:
 				throw new IllegalArgumentException("Unsupported RequirementType: " + type.toString());

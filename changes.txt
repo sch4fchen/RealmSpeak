@@ -24,6 +24,7 @@ QUEST UPDATE:
 # QuestRequirement: Hide result
 # QuestRequirement: Find hidden enemies
 # QuestRequirement: Character class
+# QuestRequirement: Relationship
 # QuestRequirementSearch: NoEffect option
 # QuestRequirementKill: option to define vulnerability
 # QuestRequirementPath: support for single clearing
@@ -33,7 +34,7 @@ QUEST UPDATE:
 # QuestReward: KillDenizen
 # QuestReward: SpellEffect
 # QuestReward: Heal
-# QuestRewardItem: Filter for great items
+# QuestRewardItem: Filter for great items, add different possibilities for losing an item
 # QuestRewardCompanion: Option to exclude horse
 NEW FEATURES:
 # Option to change tile style to Legendary Realm with icons

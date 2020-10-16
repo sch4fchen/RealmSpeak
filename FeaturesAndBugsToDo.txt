@@ -1,5 +1,4 @@
 ::RealmSpeak::
-What does "LostInventoryToLocation" and "LostInventoryToDefault"?
 Reward: SpellEffect: cast to location? or characters tile/clearing?
 Reward: Hireling+Companion: To Location (+extend location functionality)
 Reward: Gain Custom Treasure: CustomTreasure // Pick a treasure, clone, and rename it
@@ -20,7 +19,6 @@ Reward: Enchant tile (location)
 Reward: SummonFromAppearance: I'd think that either specifying a sound or warning chit and summoning to the tile if it's there, or specifying a monster and summoning it to its sound or warning chit (if it's in the tile) would be the way to go.
 Requirement: Enchant action (+enchant action in questTester) + Option: Color?
 Requirement: Has Hireling/Companion (regex)
-Requirement: Relationship
 Reward + Requirement: GuildMember at Level 1-3 of Guild ??? + QuestTester
 Support Alerted Monsters Advanced rule
 0001797: Feature Request - BOQ Two Handed Weapon Opt Rules

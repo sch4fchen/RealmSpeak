@@ -193,7 +193,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 			lostItemToLocation(toRemove,location);
 		}
 	}
-	private void lostItemToDefault(GameObject go) {
+	public void lostItemToDefault(GameObject go) {
 		GameObject originalSetupOwner = go.getGameObjectFromAttribute("this",Constants.SETUP);
 		if (originalSetupOwner!=null) {
 			originalSetupOwner.add(go);

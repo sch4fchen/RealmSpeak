@@ -101,7 +101,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardInformation.INFORMATION_TEXT, "Information to provide", FieldType.TextArea));
 				break;
 			case Item:
-				list.add(new QuestPropertyBlock(QuestRewardItem.GAIN_TYPE, "Gain or lose item", FieldType.StringSelector, GainType.values()));
+				list.add(new QuestPropertyBlock(QuestRewardItem.GAIN_TYPE, "Gain or lose item", FieldType.StringSelector, ItemGainType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardItem.ITEM_DESC, "Description", FieldType.TextLine));
 				list.add(new QuestPropertyBlock(QuestRewardItem.ITEM_CHITTYPES, "Item Type Restriction", FieldType.ChitType));
 				list.add(new QuestPropertyBlock(QuestRewardItem.ITEM_REGEX, "Item RegEx", FieldType.Regex));

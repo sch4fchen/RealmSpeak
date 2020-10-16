@@ -29,6 +29,7 @@ import com.robin.game.objects.*;
 import com.robin.general.graphics.GraphicsUtil;
 import com.robin.general.swing.*;
 import com.robin.magic_realm.components.*;
+import com.robin.magic_realm.components.attribute.RelationshipType;
 import com.robin.magic_realm.components.attribute.Spoils;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.*;
@@ -67,6 +68,7 @@ public class QuestTesterFrame extends JFrame {
 	JLabel goldAmount;
 	JLabel fatigue;
 	JLabel wounds;
+	JLabel relationship;
 
 	// Inventory
 	JList activeInventory;
@@ -107,7 +109,7 @@ public class QuestTesterFrame extends JFrame {
 
 	private void initComponents() {
 		setTitle("RealmSpeak Quest Tester");
-		setSize(1280, 768);
+		setSize(1280, 960);
 
 		setLayout(new BorderLayout());
 
@@ -443,6 +445,34 @@ public class QuestTesterFrame extends JFrame {
 		});
 		line.add(addwounds);
 		box.add(line);
+		
+		line = group.createLabelLine("Relationship");
+		relationship = new JLabel();
+		line.add(relationship);
+		line.add(Box.createHorizontalGlue());
+		JButton relationship = new JButton("Set");
+		relationship.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				ArrayList<GameObject> list = chooseOther("native","rank=HQ","visitor");
+				if (list == null)
+					return;
+				if (list.size() != 1) {
+					JOptionPane.showMessageDialog(QuestTesterFrame.this, "Pick 1");
+					return;
+				}
+				int targetRel = chooseRelationshipLevel();
+				ArrayList<GameObject> representativeNativesToChange = QuestRequirementRelationship.getRepresentativeNatives(character);
+				for(GameObject denizen:representativeNativesToChange) {
+					int current = character.getRelationship(denizen);
+					int diff = targetRel - current;
+					character.changeRelationship(denizen,diff);
+				}
+				
+				retestQuest();
+			}
+		});
+		line.add(relationship);
+		box.add(line);
 
 		box.add(Box.createVerticalGlue());
 		panel.add(box, BorderLayout.NORTH);
@@ -490,7 +520,7 @@ public class QuestTesterFrame extends JFrame {
 		addNew.setToolTipText("Gain an item (treasure/weapon/armor)");
 		addNew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				ArrayList<GameObject> things = chooseSomething();
+				ArrayList<GameObject> things = chooseItem();
 				if (things == null)
 					return;
 				for (GameObject thing : things) {
@@ -584,7 +614,7 @@ public class QuestTesterFrame extends JFrame {
 				params.actionName = TradeType.Buy.toString();
 				params.objectList = new ArrayList<GameObject>();
 				params.targetOfSearch = seller;			
-				ArrayList<GameObject> items = chooseSomething();
+				ArrayList<GameObject> items = chooseItem();
 				if (items == null)
 					return;
 				for (GameObject item : items) {
@@ -814,7 +844,7 @@ public class QuestTesterFrame extends JFrame {
 		JButton addItem = new JButton("Item");
 		addItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				ArrayList<GameObject> things = chooseSomething();
+				ArrayList<GameObject> things = chooseItem();
 				if (things == null)
 					return;
 				for (GameObject thing : things) {
@@ -989,7 +1019,7 @@ public class QuestTesterFrame extends JFrame {
 		return locationPanel;
 	}
 
-	private ArrayList<GameObject> chooseSomething() {
+	private ArrayList<GameObject> chooseItem() {
 		GamePool pool = new GamePool(gameData.getGameObjects());
 		Hashtable<String, GameObject> hash = new Hashtable<String, GameObject>();
 		ArrayList<String> weaponList = new ArrayList<String>();
@@ -1075,6 +1105,16 @@ public class QuestTesterFrame extends JFrame {
 		chooser.setVisible(true);
 		Object object = chooser.getSelectedItem();
 		return Arrays.asList(Constants.MAGIC_COLORS).indexOf(object);
+	}
+	
+	private int chooseRelationshipLevel() {
+		ListChooser chooser = new ListChooser(this, "Choose releationship", RelationshipType.RelationshipNames);
+		chooser.setDoubleClickEnabled(true);
+		chooser.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		chooser.setLocationRelativeTo(this);
+		chooser.setVisible(true);
+		Object object = chooser.getSelectedItem();
+		return RelationshipType.getIntFor(object.toString());
 	}
 	
 	private String getEnchanted() {
@@ -1409,7 +1449,7 @@ public class QuestTesterFrame extends JFrame {
 		}
 		else if (SEARCH_RESULT_TREASURE.equals(gain)) {
 			params.searchHadAnEffect = true;
-			ArrayList<GameObject> stuff = chooseSomething();
+			ArrayList<GameObject> stuff = chooseItem();
 			if (stuff == null || stuff.size() == 0)
 				return;
 			params.objectList = stuff;

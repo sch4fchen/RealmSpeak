@@ -44,7 +44,6 @@ public class QuestRewardRelationshipSet extends QuestReward {
 		ArrayList<GameObject> representativeNativesToChange = getRepresentativeNatives(character);
 		if (representativeNativesToChange==null) return;
 		
-		// Do the change
 		String name = getRelationshipName();
 		int targetRel = RelationshipType.getIntFor(name);
 		for(GameObject denizen:representativeNativesToChange) {
@@ -93,7 +92,7 @@ public class QuestRewardRelationshipSet extends QuestReward {
 		return group.equals("Clearing");
 	}
 	
-	private ArrayList<GameObject> fetchNativesFromClearing(TileLocation tl, CharacterWrapper character) {
+	private static ArrayList<GameObject> fetchNativesFromClearing(TileLocation tl, CharacterWrapper character) {
 		
 		ArrayList<String> groupsToChange = new ArrayList<String>();
 		ArrayList<GameObject> representativeNativesToChange = new ArrayList<GameObject>();

@@ -26,10 +26,12 @@ import javax.swing.JOptionPane;
 
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
+import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.ChitItemType;
-import com.robin.magic_realm.components.quest.GainType;
+import com.robin.magic_realm.components.quest.ItemGainType;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.table.Loot;
+import com.robin.magic_realm.components.utility.ClearingUtility;
 import com.robin.magic_realm.components.utility.TreasureUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -45,7 +47,7 @@ public class QuestRewardItem extends QuestReward {
 	}
 
 	public void processReward(JFrame frame,CharacterWrapper character) {
-		boolean isGain = getGainType()==GainType.Gain;
+		boolean isGain = getGainType()==ItemGainType.Gain;
 		String actionDescription;
 		ArrayList<GameObject> objects;
 		if (isGain) {
@@ -71,7 +73,19 @@ public class QuestRewardItem extends QuestReward {
 		}
 		else {
 			if (TreasureUtility.doDeactivate(null,character,selected)) { // null JFrame so that character isn't hit with any popups
-				lostItem(selected);
+				switch (getGainType()) {
+				case LoseToClearing:
+					TileLocation location = character.getCurrentLocation();
+					if (location.clearing == null) {
+						location.setRandomClearing();
+					}
+					ClearingUtility.moveToLocation(selected,location);
+				case LoseToLocation:
+					lostItem(selected);
+				default:
+				case LoseToChartOfAppearance:
+					lostItemToDefault(selected);
+				}
 			}
 			else {
 				JOptionPane.showMessageDialog(frame,"The "+selected.getName()+" could not be removed from your inventory.","Quest Error",JOptionPane.ERROR_MESSAGE);
@@ -80,15 +94,19 @@ public class QuestRewardItem extends QuestReward {
 	}
 	
 	public String getDescription() {
-		return (getGainType()==GainType.Gain?"Gains":"Loses")+" "+getItemDescription();
+		return (getGainType()==ItemGainType.Gain?"Gains":"Loses")+" "+getItemDescription();
 	}
 
 	public RewardType getRewardType() {
 		return RewardType.Item;
 	}
 	
-	public GainType getGainType() {
-		return GainType.valueOf(getString(GAIN_TYPE));
+	public ItemGainType getGainType() {
+		String gainType = getString(GAIN_TYPE);
+		if (gainType.matches("Lose")) { // compatibility for old quests
+			return ItemGainType.LoseToLocation;
+		}
+		return ItemGainType.valueOf(getString(GAIN_TYPE));
 	}
 	
 	public String getItemDescription() {

@@ -25,6 +25,7 @@ import javax.swing.JFrame;
 import com.robin.game.objects.*;
 import com.robin.magic_realm.RealmQuestBuilder.QuestPropertyBlock.FieldType;
 import com.robin.magic_realm.components.*;
+import com.robin.magic_realm.components.attribute.RelationshipType;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.quest.requirement.*;
 import com.robin.magic_realm.components.utility.Constants;
@@ -156,6 +157,10 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				break;
 			case Probability:
 				list.add(new QuestPropertyBlock(QuestRequirementProbability.CHANCE, "Probability in % (1-100)", FieldType.Number));
+				break;
+			case Relationship:
+				list.add(new QuestPropertyBlock(QuestRequirementRelationship.NATIVE_GROUP, "Native group", FieldType.Regex, null, new String[] {"native,rank=HQ", "visitor"}));
+				list.add(new QuestPropertyBlock(QuestRequirementRelationship.RELATIONSHIP_LEVEL, "Relationship", FieldType.StringSelector, RelationshipType.RelationshipNames));
 				break;
 			case SearchResult:
 				list.add(new QuestPropertyBlock(QuestRequirementSearchResult.REQ_TABLENAME, "Search table", FieldType.StringSelector, SearchTableType.values()));
