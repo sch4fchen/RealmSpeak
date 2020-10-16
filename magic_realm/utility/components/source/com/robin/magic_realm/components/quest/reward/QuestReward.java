@@ -105,7 +105,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case Heal:						return "Heals action chits of the character.";
 				case Hireling:					return "Add or remove a hireling.";
 				case Information:				return "Displays a dialog with information in it.  This is a good way to inform the player what is happening.";
-				case Item:						return "Add an item to the character inventory, or take one away.  Allows for choosing items from a group.";
+				case Item:						return "Add an item to the character inventory, or take one away (placed to location defined by 'LostInventoryToLocation/Default').  Allows for choosing items from a group.";
 				case Journal:					return "Add or update a journal entry for this quest.";
 				case KillDenizen:				return "Kills a denizen.";
 				case LostInventoryToDefault:	return "All future lost inventory from this quest will go to wherever they started the game, including treasures.  This is the default setting.";
@@ -122,7 +122,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case ScareMonsters:				return "Randomly move all monsters in current clearing to other clearings either in the same tile or other tiles, as defined.";
 				case SpellEffect:				return "Cast a spell effect on the character and/or other targets.";
 				case SpellFromSite:				return "Learn a spell from a specific site, book, artifact, or Shaman.";
-				case StripInventory:			return "Removes ALL inventory and (optionally) gold from the character.";
+				case StripInventory:			return "Removes ALL inventory and (optionally) gold from the character (placed to location defined by 'LostInventoryToLocation/Default').";
 				case SummonGuardian:			return "For a specific quest location, summon the treasure site guardian (if any)";
 				case SummonMonster:				return "Summon a specific Monster to the characters clearing.";
 				case SummonRoll:				return "Force a monster summoning roll with a specific number.";
