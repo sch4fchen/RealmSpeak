@@ -1,6 +1,7 @@
 Version 1.1.3.5 - Changes since 1.1.3.4 -- outlook
 QUEST UPDATE:
 # Update on existing quests and a lot of new quests by Steve
+# QuestRequirement: Hirelings
 
 Version 1.1.3.4 - Changes since 1.1.3.3
 QUEST UPDATE:
@@ -53,7 +54,7 @@ BUGS/ISSUES:
 # Fix Native HQs (cloned or companions) droppings items from SetupCard
 # Fix NullPointException when closing some dialogs in QuestEditor via "x"
 # Fix NullPointException when getting treasures for companions
-# FIx coordinates for Borderland tile
+# Fix coordinates for Borderland tile
 # Fix Exorcise not fatigue color chits in clearing
 # Fix combat ending after 2 rounds even if hits were made
 
