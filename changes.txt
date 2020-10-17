@@ -2,6 +2,7 @@ Version 1.1.3.5 - Changes since 1.1.3.4 -- outlook
 QUEST UPDATE:
 # Update on existing quests and a lot of new quests by Steve
 # QuestRequirement: Hirelings
+# QuestRequirement: Enchant action
 
 Version 1.1.3.4 - Changes since 1.1.3.3
 QUEST UPDATE:

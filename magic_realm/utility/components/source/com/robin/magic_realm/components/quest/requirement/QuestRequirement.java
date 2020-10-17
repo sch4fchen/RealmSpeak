@@ -40,6 +40,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		ColorMagic,
 		Counter,
 		Discovery, // must have a specific discovery
+		Enchant,
 		Fighter,
 		Fly,
 		FoundHiddenEnemies,
@@ -84,6 +85,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests whether a specific counter has reached a certain value.";
 				case Discovery:
 					return "Tests for a specific recorded discovery.";
+				case Enchant:
+					return "Tests for enchant action.";
 				case Fighter:
 					return "Tests if the character is a fighter.";
 				case Fly:
@@ -235,6 +238,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case Discovery:
 				requirement = new QuestRequirementDiscovery(go);
+				break;
+			case Enchant:
+				requirement = new QuestRequirementEnchant(go);
 				break;
 			case Fighter:
 				requirement = new QuestRequirementFighter(go);

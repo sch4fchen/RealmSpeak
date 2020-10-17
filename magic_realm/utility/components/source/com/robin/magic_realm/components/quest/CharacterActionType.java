@@ -28,6 +28,7 @@ public enum CharacterActionType {
 	ActivatingItem,
 	CastSpell,
 	Open,
+	Enchant,
 	;
 	
 	public String getDescriptor() {

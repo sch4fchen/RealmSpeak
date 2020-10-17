@@ -803,6 +803,12 @@ public class QuestTesterFrame extends JFrame {
 				else {
 					tile.setLightSideUp();
 				}
+				
+				QuestRequirementParams params = new QuestRequirementParams();
+				params.actionType = CharacterActionType.Enchant;
+				params.actionName = "tile";
+				character.testQuestRequirements(QuestTesterFrame.this, params);
+				
 				updateCharacterPanel();
 				retestQuest();
 			}

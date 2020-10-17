@@ -87,6 +87,9 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case Discovery:
 				list.add(new QuestPropertyBlock(QuestRequirementDiscovery.DISCOVERY_KEY, "Discovery", FieldType.StringSelector, getDiscoveryStrings().toArray()));
 				break;
+			case Enchant:
+				list.add(new QuestPropertyBlock(QuestRequirementEnchant.TYPE, "Target", FieldType.StringSelector, new String[] { "chit", "tile"} ));
+				break;
 			case Fighter:
 				break;
 			case Fly:

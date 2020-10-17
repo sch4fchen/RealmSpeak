@@ -27,6 +27,8 @@ import com.robin.general.util.*;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.attribute.DayAction.ActionId;
+import com.robin.magic_realm.components.quest.CharacterActionType;
+import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
 import com.robin.magic_realm.components.store.GuildStore;
 import com.robin.magic_realm.components.store.Store;
 import com.robin.magic_realm.components.swing.*;
@@ -1813,6 +1815,11 @@ public class ActionRow {
 						}
 						gameHandler.updateCharacterFrames();
 						gameHandler.broadcastMapReplot();
+						
+						QuestRequirementParams params = new QuestRequirementParams();
+						params.actionType = CharacterActionType.Enchant;
+						params.actionName = "tile";
+						character.testQuestRequirements(gameHandler.getMainFrame());
 					}
 					else {
 						// enchant a chit
@@ -1837,6 +1844,11 @@ public class ActionRow {
 							chit.enchant(enchantNumber);
 							result = "enchanted "+chit.getGameObject().getName();
 							gameHandler.updateCharacterFrames();
+							
+							QuestRequirementParams params = new QuestRequirementParams();
+							params.actionType = CharacterActionType.Enchant;
+							params.actionName = "chit";
+							character.testQuestRequirements(gameHandler.getMainFrame());
 						}// this shouldn't happen
 					}
 				}

@@ -12,7 +12,6 @@ Reward: Transform Character and/or other target into "choose what transformation
 Reward: Kill denizen in Location
 Reward: Enchant tile (location)
 Reward: SummonFromAppearance: I'd think that either specifying a sound or warning chit and summoning to the tile if it's there, or specifying a monster and summoning it to its sound or warning chit (if it's in the tile) would be the way to go.
-Requirement: Enchant action (+enchant action in questTester) + Option: Color?
 New Feature Request: Control Monster
 Recycle Non-All-Play Zero Point Quests (Event Cards)
 Support Alerted Monsters Advanced rule
