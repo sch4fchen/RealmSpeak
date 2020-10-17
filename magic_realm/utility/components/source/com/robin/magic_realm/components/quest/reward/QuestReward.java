@@ -63,6 +63,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		MarkDenizen,
 		MinorCharacter,
 		PathsPassages,
+		PowerOfThePit,
 		QuestComplete,
 		QuestFailed,
 		RegenerateDenizen,
@@ -117,6 +118,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case MarkDenizen:				return "Mark a particular denizen for later reference.  This is useful if you want to make sure a character kills (for example) a particular monster.";
 				case MinorCharacter:			return "Add or remove a Minor Character.  Must create Minor Characters BEFORE creating this reward.";
 				case PathsPassages:				return "Discover Paths and/or Passages in the current clearing or tile.";
+				case PowerOfThePit:				return "Grants the character a Power of the Pit.";
 				case QuestComplete:				return "Tells RealmSpeak that the character has completed this quest.";
 				case QuestFailed:				return "Tells RealmSpeak that the character has failed this quest.";
 				case RegenerateDenizen:			return "Regenerates denizen back to the chart of appearance.";
@@ -306,6 +308,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case PathsPassages:
 				reward = new QuestRewardPathsPassages(go);
+				break;
+			case PowerOfThePit:
+				reward = new QuestRewardPowerOfThePit(go);
 				break;
 			case QuestComplete:
 				reward = new QuestRewardComplete(go);
