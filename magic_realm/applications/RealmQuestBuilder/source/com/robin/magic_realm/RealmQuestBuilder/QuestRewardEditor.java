@@ -88,6 +88,9 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardCounter.INCREASE_COUNT, "Increase count", FieldType.NumberAll));
 				list.add(new QuestPropertyBlock(QuestRewardCounter.DECREASE_COUNT, "Decrease count", FieldType.NumberAll));
 				break;
+			case Curse:
+				list.add(new QuestPropertyBlock(QuestRewardCurse.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));
+				break;
 			case Damage:
 				list.add(new QuestPropertyBlock(QuestRewardDamage.DAMAGE_TYPE, "Damage Type", FieldType.StringSelector, DamageType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardDamage.AMOUNT, "Amount", FieldType.Number));

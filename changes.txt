@@ -37,6 +37,7 @@ QUEST UPDATE:
 # QuestReward: Heal
 # QuestReward: Blessing
 # QuestReward: PowerOfThePit
+# QuestReward: Curse
 # QuestReward: Guild
 # QuestRewardItem: Filter for great items, add different possibilities for losing an item
 # QuestRewardCompanion: Option to exclude horse
