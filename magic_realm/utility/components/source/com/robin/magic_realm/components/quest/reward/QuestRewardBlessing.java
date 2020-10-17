@@ -48,7 +48,7 @@ public class QuestRewardBlessing extends QuestReward {
 	}
 	@Override
 	public String getDescription() {
-		return "Heals all chits of the character.";
+		return "Grants the character a wish.";
 	}
 	private int getDieRoll() {
 		String dieRoll = getString(DIE_ROLL);
