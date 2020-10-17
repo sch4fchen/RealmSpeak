@@ -71,9 +71,6 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardAttribute.GAIN_TYPE, "Gain or lose", FieldType.StringSelector, GainType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardAttribute.ATTRIBUTE_CHANGE, "Amount", FieldType.Number));
 				break;
-			case Blessing:
-				list.add(new QuestPropertyBlock(QuestRewardBlessing.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));
-				break;
 			case ChooseNextStep:
 				list.add(new QuestPropertyBlock(QuestRewardChooseNextStep.TEXT, "Text", FieldType.TextLine));
 				break;
@@ -207,6 +204,9 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case Visitor:
 				list.add(new QuestPropertyBlock(QuestRewardVisitor.VISITOR_REGEX, "Visitor RegEx", FieldType.Regex, null, new String[] { "visitor" }));
 				list.add(new QuestPropertyBlock(QuestRewardVisitor.ACQUISITION_TYPE, "Method to acquire hireling", FieldType.StringSelector, ChitAcquisitionType.values()));
+				break;
+			case Wish:
+				list.add(new QuestPropertyBlock(QuestRewardWish.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));
 				break;
 		}
 		return list;

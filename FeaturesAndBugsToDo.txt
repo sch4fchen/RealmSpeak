@@ -14,9 +14,10 @@ Reward: Enchant tile (location)
 Reward: SummonFromAppearance: I'd think that either specifying a sound or warning chit and summoning to the tile if it's there, or specifying a monster and summoning it to its sound or warning chit (if it's in the tile) would be the way to go.
 Requirement: Enchant action (+enchant action in questTester) + Option: Color?
 Requirement: Has Hireling/Companion (regex)
+New Feature Request: Control Monster
+Recycle Non-All-Play Zero Point Quests (Event Cards)
 Support Alerted Monsters Advanced rule
 0001797: Feature Request - BOQ Two Handed Weapon Opt Rules
-Recycle Non-All-Play Zero Point Quests (Event Cards)
 
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---

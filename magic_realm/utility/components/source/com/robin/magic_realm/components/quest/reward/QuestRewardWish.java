@@ -26,11 +26,11 @@ import com.robin.magic_realm.components.table.Wish;
 import com.robin.magic_realm.components.utility.DieRollBuilder;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
-public class QuestRewardBlessing extends QuestReward {
+public class QuestRewardWish extends QuestReward {
 	
 	public static final String DIE_ROLL = "_dr";
 	
-	public QuestRewardBlessing(GameObject go) {
+	public QuestRewardWish(GameObject go) {
 		super(go);
 	}
 
@@ -44,7 +44,7 @@ public class QuestRewardBlessing extends QuestReward {
 	
 	@Override
 	public RewardType getRewardType() {
-		return RewardType.Blessing;
+		return RewardType.Wish;
 	}
 	@Override
 	public String getDescription() {
