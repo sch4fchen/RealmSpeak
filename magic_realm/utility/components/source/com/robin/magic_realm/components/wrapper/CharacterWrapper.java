@@ -30,6 +30,7 @@ import com.robin.general.util.*;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.attribute.DayAction.ActionId;
+import com.robin.magic_realm.components.attribute.GuildLevelType.GuildLevel;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
@@ -6274,13 +6275,13 @@ public class CharacterWrapper extends GameObjectWrapper {
     		int level = getCurrentGuildLevel();
     		switch(level) {
     			case 1:
-    				levelName="Apprentice";
+    				levelName=GuildLevel.Apprentice.toString();
     				break;
     			case 2:
-    				levelName="Journeyman";
+    				levelName=GuildLevel.Journeyman.toString();
     				break;
     			case 3:
-    				levelName="Master";
+    				levelName=GuildLevel.Master.toString();
     				break;
     		}
     		return StringUtilities.capitalize(guild)+" Guild "+levelName;

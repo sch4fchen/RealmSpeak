@@ -25,6 +25,7 @@ QUEST UPDATE:
 # QuestRequirement: Find hidden enemies
 # QuestRequirement: Character class
 # QuestRequirement: Relationship
+# QuestRequirement: Guild
 # QuestRequirementSearch: NoEffect option
 # QuestRequirementKill: option to define vulnerability
 # QuestRequirementPath: support for single clearing
@@ -35,6 +36,7 @@ QUEST UPDATE:
 # QuestReward: SpellEffect
 # QuestReward: Heal
 # QuestReward: Blessing
+# QuestReward: Guild
 # QuestRewardItem: Filter for great items, add different possibilities for losing an item
 # QuestRewardCompanion: Option to exclude horse
 NEW FEATURES:

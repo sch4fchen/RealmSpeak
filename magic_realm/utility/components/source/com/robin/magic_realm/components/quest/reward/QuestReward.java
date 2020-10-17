@@ -51,6 +51,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 						// No reason I couldn't make a special dialog for this one...
 		Counter,
 		Damage,
+		Guild,
 		Heal,
 		Hireling,
 		Information,
@@ -104,6 +105,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				//case CustomTreasure:			return "Create a new treasure by taking an existing treasure, renaming it, and giving it new  base attributes.";
 				case Counter:					return "Modify count value of a counter";
 				case Damage:					return "Character receives fatigue or wounds.";
+				case Guild	:					return "Sets the characters guild and guild level.";
 				case Heal:						return "Heals action chits of the character.";
 				case Hireling:					return "Add or remove a hireling.";
 				case Information:				return "Displays a dialog with information in it.  This is a good way to inform the player what is happening.";
@@ -268,6 +270,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case Damage:
 				reward = new QuestRewardDamage(go);
+				break;
+			case Guild:
+				reward = new QuestRewardGuild(go);
 				break;
 			case Heal:
 				reward = new QuestRewardHeal(go);

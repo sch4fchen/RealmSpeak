@@ -92,6 +92,10 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardDamage.DAMAGE_TYPE, "Damage Type", FieldType.StringSelector, DamageType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardDamage.AMOUNT, "Amount", FieldType.Number));
 				break;
+			case Guild:
+				list.add(new QuestPropertyBlock(QuestRewardGuild.GUILD, "Guild", FieldType.StringSelector, getGuildNames()));
+				list.add(new QuestPropertyBlock(QuestRewardGuild.GUILD_LEVEL, "Guild level (1-3)", FieldType.Number));
+				break;
 			case Heal:
 				list.add(new QuestPropertyBlock(QuestRewardHeal.HEAL, "Heal chits", FieldType.StringSelector, HealType.values()));
 				break;
@@ -233,6 +237,17 @@ public class QuestRewardEditor extends QuestBlockEditor {
 		}
 		for (GameObject go : pool.find("visitor")) {
 			names.add(go.getThisAttribute("visitor"));
+		}
+		return names.toArray(new String[0]);
+	}
+	
+	private String[] getGuildNames() {
+		ArrayList<String> names = new ArrayList<String>();
+		names.add(QuestConstants.CURRENT);
+		names.add(QuestConstants.REMOVE);
+		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
+		for (GameObject go : pool.find("guild")) {
+			names.add(go.getName());
 		}
 		return names.toArray(new String[0]);
 	}

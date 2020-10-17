@@ -45,6 +45,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		FoundHiddenEnemies,
 		GamePhase, // end of phase, end of day, start of evening, midnight, birdsong
 		Gender,
+		Guild,
 		Hidden,
 		HideResult,
 		Inventory, // a requirement that tests what you have in inventory
@@ -92,6 +93,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests for a specific game phase (Birdsong, End-of-phase, End-of-turn, Evening).";
 				case Gender:
 					return "Tests for the characters gender.";
+				case Guild:
+					return "Tests if the character has a certain guild level.";
 				case Hidden:
 					return "Tests if the character is hidden.";
 				case HideResult:
@@ -244,6 +247,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case Gender:
 				requirement = new QuestRequirementGender(go);
+				break;
+			case Guild:
+				requirement = new QuestRequirementGuild(go);
 				break;
 			case Hidden:
 				requirement = new QuestRequirementHidden(go);

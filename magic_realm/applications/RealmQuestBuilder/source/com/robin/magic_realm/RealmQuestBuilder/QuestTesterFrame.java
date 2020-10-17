@@ -29,6 +29,8 @@ import com.robin.game.objects.*;
 import com.robin.general.graphics.GraphicsUtil;
 import com.robin.general.swing.*;
 import com.robin.magic_realm.components.*;
+import com.robin.magic_realm.components.attribute.GuildLevelType;
+import com.robin.magic_realm.components.attribute.GuildLevelType.GuildLevel;
 import com.robin.magic_realm.components.attribute.RelationshipType;
 import com.robin.magic_realm.components.attribute.Spoils;
 import com.robin.magic_realm.components.attribute.TileLocation;
@@ -69,6 +71,7 @@ public class QuestTesterFrame extends JFrame {
 	JLabel fatigue;
 	JLabel wounds;
 	JLabel relationship;
+	JLabel guild;
 
 	// Inventory
 	JList activeInventory;
@@ -472,6 +475,33 @@ public class QuestTesterFrame extends JFrame {
 			}
 		});
 		line.add(relationship);
+		box.add(line);
+		
+		line = group.createLabelLine("Guild");
+		guild = new JLabel();
+		line.add(guild);
+		line.add(Box.createHorizontalGlue());
+		JButton guild = new JButton("Set");
+		guild.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				ArrayList<GameObject> guildName = chooseOther("Guilds", "guild");
+				if (guildName == null)
+					return;
+				if (guildName.size() != 1) {
+					JOptionPane.showMessageDialog(QuestTesterFrame.this, "Pick 1");
+					return;
+				}
+				GuildLevel level = chooseGuildLevel();
+				int guildLevel = GuildLevelType.getIntFor(level);
+				
+				character.setCurrentGuild(guildName.get(0).getName());
+				character.setCurrentGuildLevel(guildLevel);
+				
+				updateCharacterPanel();
+				retestQuest();
+			}
+		});
+		line.add(guild);
 		box.add(line);
 
 		box.add(Box.createVerticalGlue());
@@ -1117,6 +1147,16 @@ public class QuestTesterFrame extends JFrame {
 		return RelationshipType.getIntFor(object.toString());
 	}
 	
+	private GuildLevel chooseGuildLevel() {
+		ListChooser chooser = new ListChooser(this, "Choose guild level", GuildLevel.values() );
+		chooser.setDoubleClickEnabled(true);
+		chooser.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		chooser.setLocationRelativeTo(this);
+		chooser.setVisible(true);
+		GuildLevel selected = (GuildLevel) chooser.getSelectedItem();
+		return selected;
+	}
+	
 	private String getEnchanted() {
 		if (character != null && character.getCurrentLocation() != null && character.getCurrentLocation().tile.isEnchanted()) {
 			return " (enchanted) ";
@@ -1324,6 +1364,7 @@ public class QuestTesterFrame extends JFrame {
 		goldAmount.setText(String.valueOf((int) character.getGold()));
 		fatigue.setText(String.valueOf((int) character.getWeatherFatigue()));
 		wounds.setText(String.valueOf((int) character.getExtraWounds()));
+		guild.setText(character.getCurrentGuildLevelName());
 
 		activeInventory.setListData(new Vector<GameObject>(character.getActiveInventory()));
 		inactiveInventory.setListData(new Vector<GameObject>(character.getInactiveInventory()));

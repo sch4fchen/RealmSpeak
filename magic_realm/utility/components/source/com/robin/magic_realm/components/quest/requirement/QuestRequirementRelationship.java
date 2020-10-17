@@ -28,23 +28,50 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 public class QuestRequirementRelationship extends QuestRequirement {
 
 	public static final String NATIVE_GROUP = "_native_grp_rgx";
-	public static final String RELATIONSHIP_LEVEL = "_relLevel";
+	public static final String RELATIONSHIP_LEVEL = "_rel_lvl";
+	public static final String EXCEED_LEVEL = "_excd_lvl";
+	public static final String SUBCEED_LEVEL = "_sucd_lvl";
 	
 	public QuestRequirementRelationship(GameObject go) {
 		super(go);
 	}
 
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
+		boolean fulfilled = false;
 		for (GameObject nativeGroup : getRepresentativeNatives(character)) {
-			if (nativeGroup.getName().toLowerCase().matches(getNativesRegex().toLowerCase()) && character.getRelationship(nativeGroup) == getRelationshipLevel()) {
-				return true;
+			if (getNativesRegex().isEmpty() || nativeGroup.getName().toLowerCase().matches(getNativesRegex().toLowerCase())) {
+					if (exceedAllowed() && character.getRelationship(nativeGroup) >= getRelationshipLevel()) {
+						fulfilled = true;
+					}
+					if (subceedAllowed() && character.getRelationship(nativeGroup) <= getRelationshipLevel()) {
+						fulfilled = true;
+					}
+					if(character.getRelationship(nativeGroup) == getRelationshipLevel()) {
+						fulfilled = true;
+					}
 			}
 		}
-		return false;
+		return fulfilled;
 	}
 
 	protected String buildDescription() {
-		return "Character with "+getNativesRegex()+" must be "+getRelationship()+".";
+		StringBuffer sb = new StringBuffer();
+		sb.append("Characters relationship with ");
+		if (!getNativesRegex().isEmpty()) {
+				sb.append(getNativesRegex());
+		}
+		else {
+			sb.append("any natives");
+		}
+		sb.append(" must be "+getRelationship());
+		if (exceedAllowed()) {
+			sb.append(" or better");
+		}
+		if (subceedAllowed()) {
+			sb.append(" or worse");
+		}
+		sb.append(".");
+		return sb.toString();
 	}
 	public RequirementType getRequirementType() {
 		return RequirementType.Relationship;
@@ -68,5 +95,11 @@ public class QuestRequirementRelationship extends QuestRequirement {
 	}
 	private String getRelationship() {
 		return getString(RELATIONSHIP_LEVEL);
+	}
+	private boolean exceedAllowed() {
+		return getBoolean(EXCEED_LEVEL);
+	}
+	private boolean subceedAllowed() {
+		return getBoolean(SUBCEED_LEVEL);
 	}
 }

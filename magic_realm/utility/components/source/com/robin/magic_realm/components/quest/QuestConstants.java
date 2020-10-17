@@ -31,6 +31,9 @@ public class QuestConstants {
 	public static final String CHOICE = "Player Choice";
 	public static final String RANDOM = "Randomly Selected";
 	
+	public static final String CURRENT = "Current";
+	public static final String REMOVE = "Remove";
+	
 	//-------------------------------
 	
 	public static final String FLAG_TESTING = "testing";

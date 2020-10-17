@@ -91,13 +91,13 @@ public class QuestRequirementCounter extends QuestRequirement {
 		}
 		return null;
 	}
-	public int getTargetValue() {
+	private int getTargetValue() {
 		return getInt(TARGET_VALUE);
 	}
-	public boolean exceedAllowed() {
+	private boolean exceedAllowed() {
 		return getBoolean(EXCEED_TARGET_VALUE);
 	}
-	public boolean subceedAllowed() {
+	private boolean subceedAllowed() {
 		return getBoolean(SUBCEED_TARGET_VALUE);
 	}
 	public void updateIds(Hashtable<Long, GameObject> lookup) {

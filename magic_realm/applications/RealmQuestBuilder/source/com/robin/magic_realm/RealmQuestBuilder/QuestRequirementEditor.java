@@ -100,6 +100,12 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case Gender:
 				list.add(new QuestPropertyBlock(QuestRequirementGender.GENDER, "Gender", FieldType.StringSelector, new String[] { GenderType.Female.toString(), GenderType.Male.toString() }));
 				break;
+			case Guild:
+				list.add(new QuestPropertyBlock(QuestRequirementGuild.GUILD, "Guild", FieldType.Regex, null, new String[] { "guild" }));
+				list.add(new QuestPropertyBlock(QuestRequirementGuild.GUILD_LEVEL, "Guild level (1-3)", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRequirementGuild.EXCEED_LEVEL, "Exceed target level allowed", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementGuild.SUBCEED_LEVEL, "Subceed target level allowed", FieldType.Boolean));
+				break;
 			case Hidden:
 				break;
 			case HideResult:
@@ -161,6 +167,8 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case Relationship:
 				list.add(new QuestPropertyBlock(QuestRequirementRelationship.NATIVE_GROUP, "Native group", FieldType.Regex, null, new String[] {"native,rank=HQ", "visitor"}));
 				list.add(new QuestPropertyBlock(QuestRequirementRelationship.RELATIONSHIP_LEVEL, "Relationship", FieldType.StringSelector, RelationshipType.RelationshipNames));
+				list.add(new QuestPropertyBlock(QuestRequirementRelationship.EXCEED_LEVEL, "Exceed target level allowed", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementRelationship.SUBCEED_LEVEL, "Subceed target level allowed", FieldType.Boolean));
 				break;
 			case SearchResult:
 				list.add(new QuestPropertyBlock(QuestRequirementSearchResult.REQ_TABLENAME, "Search table", FieldType.StringSelector, SearchTableType.values()));
