@@ -224,7 +224,7 @@ public class QuestStepPanel extends JPanel {
 
 		requirementPanel = new QuestTableEditorPanel("Requirements",requirementsTable,true) {
 			public void add() {
-				ButtonOptionDialog dialog = new ButtonOptionDialog(parent, null, "Choose a requirement type:", "New Requirement", true,3);
+				ButtonOptionDialog dialog = new ButtonOptionDialog(parent, null, "Choose a requirement type:", "New Requirement", true,4);
 				for (RequirementType rt : RequirementType.values()) {
 					boolean enabled = (rt!=RequirementType.OccupyLocation && rt!=RequirementType.Counter)
 							|| (rt==RequirementType.OccupyLocation && quest.getLocations().size()>0)
@@ -335,7 +335,7 @@ public class QuestStepPanel extends JPanel {
 		
 		rewardPanel = new QuestTableEditorPanel("Rewards",rewardsTable,true) {
 			public void add() {
-				ButtonOptionDialog dialog = new ButtonOptionDialog(parent, null, "Choose a reward type:", "New Reward", true,3);
+				ButtonOptionDialog dialog = new ButtonOptionDialog(parent, null, "Choose a reward type:", "New Reward", true,4);
 				for (RewardType rt : RewardType.values()) {
 					boolean enabled = (!rt.requiresLocations() && rt!=RewardType.Counter)
 							|| (rt.requiresLocations() && quest.getLocations().size()>0)
