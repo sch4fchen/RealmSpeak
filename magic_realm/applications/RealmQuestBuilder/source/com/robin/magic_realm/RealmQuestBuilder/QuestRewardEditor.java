@@ -87,6 +87,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case Curse:
 				list.add(new QuestPropertyBlock(QuestRewardCurse.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));
+				list.add(new QuestPropertyBlock(QuestRewardCurse.DIE_ROLL, "Remove all curses", FieldType.Boolean));
 				break;
 			case Damage:
 				list.add(new QuestPropertyBlock(QuestRewardDamage.DAMAGE_TYPE, "Damage Type", FieldType.StringSelector, DamageType.values()));

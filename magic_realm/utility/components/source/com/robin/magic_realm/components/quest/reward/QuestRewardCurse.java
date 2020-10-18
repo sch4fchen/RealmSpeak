@@ -29,6 +29,7 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 public class QuestRewardCurse extends QuestReward {
 	
 	public static final String DIE_ROLL = "_dr";
+	public static final String REMOVE_CURSES = "_rmv_curses";
 	
 	public QuestRewardCurse(GameObject go) {
 		super(go);
@@ -36,6 +37,11 @@ public class QuestRewardCurse extends QuestReward {
 
 	@Override
 	public void processReward(JFrame frame, CharacterWrapper character) {
+		if (removeCurses()) {
+			character.removeAllCurses();
+			return;
+		}
+		
 		Curse curse = new Curse(frame);
 		DieRoller roller = DieRollBuilder.getDieRollBuilder(frame, character, getDieRoll()).createRoller(curse);
 		roller.rollDice("Curse");
@@ -48,10 +54,16 @@ public class QuestRewardCurse extends QuestReward {
 	}
 	@Override
 	public String getDescription() {
+		if (removeCurses()) {
+			return "Remove all curses from the character.";
+		}
 		return "Curse the character.";
 	}
 	private int getDieRoll() {
 		String dieRoll = getString(DIE_ROLL);
 		return getDieRoll(DieRollType.valueOf(dieRoll));
+	}
+	private Boolean removeCurses() {
+		return getBoolean(REMOVE_CURSES);
 	}
 }
