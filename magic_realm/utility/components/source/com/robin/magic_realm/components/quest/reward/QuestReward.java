@@ -51,6 +51,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		Counter,
 		Curse,
 		Damage,
+		EnchantTile,
 		Guild,
 		Heal,
 		Hireling,
@@ -107,6 +108,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case Counter:					return "Modify count value of a counter.";
 				case Curse:						return "Curses the character.";
 				case Damage:					return "Character receives fatigue or wounds.";
+				case EnchantTile:				return "Enchants (or unenchants) characters tile and/or tile(s) of a location.";
 				case Guild	:					return "Sets the characters guild and guild level.";
 				case Heal:						return "Heals action chits of the character.";
 				case Hireling:					return "Add or remove a hireling.";
@@ -274,6 +276,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case Damage:
 				reward = new QuestRewardDamage(go);
+				break;
+			case EnchantTile:
+				reward = new QuestRewardEnchantTile(go);
 				break;
 			case Guild:
 				reward = new QuestRewardGuild(go);

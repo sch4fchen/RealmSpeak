@@ -92,6 +92,12 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardDamage.DAMAGE_TYPE, "Damage Type", FieldType.StringSelector, DamageType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardDamage.AMOUNT, "Amount", FieldType.Number));
 				break;
+			case EnchantTile:
+				list.add(new QuestPropertyBlock(QuestRewardEnchantTile.UNENCHANT, "Unenchant tiles", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardEnchantTile.CHARACTERS_TILE, "Affect characters tile", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardEnchantTile.AFFECT_LOCATION, "Affect location", FieldType.StringSelector, new String[] {QuestRewardEnchantTile.NONE,QuestRewardEnchantTile.RANDOM_TILE,QuestRewardEnchantTile.ALL_TILES} ));
+				list.add(new QuestPropertyBlock(QuestRewardEnchantTile.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
+				break;
 			case Guild:
 				list.add(new QuestPropertyBlock(QuestRewardGuild.GUILD, "Guild", FieldType.StringSelector, getGuildNames()));
 				list.add(new QuestPropertyBlock(QuestRewardGuild.GUILD_LEVEL, "Guild level (1-3)", FieldType.Number));
