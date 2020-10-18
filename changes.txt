@@ -4,6 +4,7 @@ QUEST UPDATE:
 # QuestRequirement: Hirelings
 # QuestRequirement: Enchant action
 # QuestReward: Enchant tile(s)
+# QuestRewardCurse: Option to remove all curses from character
 
 Version 1.1.3.4 - Changes since 1.1.3.3
 QUEST UPDATE:
