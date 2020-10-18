@@ -13,6 +13,7 @@ Reward: SummonFromAppearance: I'd think that either specifying a sound or warnin
 New Feature Request: Control Monster
 Recycle Non-All-Play Zero Point Quests (Event Cards)
 Support Alerted Monsters Advanced rule
+FEATURE REQUEST: The bug was that when you offer options in step rewards (the A, B, C... features, once the screen fills up with too many options, there is no vertical scroll bar to see the whole set of choices. Can you make this window scrollable?
 
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
