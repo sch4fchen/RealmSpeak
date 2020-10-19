@@ -10,7 +10,15 @@ Reward: Item to location
 Reward: Destroy item (optional: must be in inventory of character)
 Reward: Kill denizen in Location
 Reward: SummonFromAppearance: I'd think that either specifying a sound or warning chit and summoning to the tile if it's there, or specifying a monster and summoning it to its sound or warning chit (if it's in the tile) would be the way to go.
-New Feature Request: Control Monster
+New Feature Request: Control Monster:
+Just to summarize, try adapting the minor character ability MonsterInteraction to select between immunity and control.
+Then, if Control, if in the same clearing during combat with a selected monster, make it a hireling with a term of 1 day. The term should expire at midnight.
+DETAILED: I'd like to be able to conditionally control any monster, with the exception that it would expire at midnight, not the next day.
+I'm thinking that ControlMonster should be added as a special ability for minor characters, similar to the MonsterInteraction immune ability. In fact, an elegant approach would be to extend the MonsterInteraction ability to toggle between Immunity/Control.
+Since Immunity only works when the character is in the clearing with the monster, I'd think that Control should work the same way. I don't want Control to be like making the monster a hired leader, where it can go off on its own to do the character's bidding (although that's a nice idea for a new feature to add a "Leader" checkbox to the Companion reward).
+ControMonster would only work when in the same clearing with a monster in the evening. It would treat the monster as a companion with a term of hire of 1 day. At midnight, the term would expire. During the day phases, the monster would still block the character. In the evening, it would show up in the character's hireling list during combat. At midnight, it would go back to being uncontrolled.
+Regarding next day control (like the spells), I'm thinking that is too strong an advantage. The character can just keep moving the monster to the clearing it intends to go to and regain control in the evening. My intention was simply to make the monsters "friendly" to the character's party (hirelings and companions, not followers) when the character is in their clearing.
+
 Recycle Non-All-Play Zero Point Quests (Event Cards)
 Support Alerted Monsters Advanced rule
 

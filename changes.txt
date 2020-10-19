@@ -5,6 +5,8 @@ QUEST UPDATE:
 # QuestRequirement: Enchant action
 # QuestReward: Enchant tile(s)
 # QuestRewardCurse: Option to remove all curses from character
+BUGS/ISSUES:
+#Fix ResetQuest testing requirements before resetting properly
 
 Version 1.1.3.4 - Changes since 1.1.3.3
 QUEST UPDATE:
