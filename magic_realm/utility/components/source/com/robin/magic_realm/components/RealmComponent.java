@@ -1042,6 +1042,17 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		}
 		return immunities;
 	}
+	public ArrayList getControllableMonsters() {
+		ArrayList controls = new ArrayList();
+		if (getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL)) {
+			controls.addAll(getGameObject().getThisAttributeList(Constants.MONSTER_CONTROL));
+		}
+		if (isCharacter()) {
+			CharacterWrapper character = new CharacterWrapper(getGameObject());
+			controls.addAll(character.getActiveInventoryValuesForThisKey(Constants.MONSTER_CONTROL,","));
+		}
+		return controls;
+	}
 	public String getFacing() {
 		return getGameObject().getThisAttribute(Constants.FACING_KEY);
 	}

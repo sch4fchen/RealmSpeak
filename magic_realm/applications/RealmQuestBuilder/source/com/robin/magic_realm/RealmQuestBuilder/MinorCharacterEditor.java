@@ -155,6 +155,7 @@ public class MinorCharacterEditor extends GenericEditor {
 			public void add() {
 				ButtonOptionDialog dialog = new ButtonOptionDialog(parent, null, "Choose an ability type:", "New Ability", true);
 				for (AbilityType rt : AbilityType.values()) {
+					if (rt == AbilityType.MonsterInteraction) continue; // new naming: MonsterImmunity, but this is needed for old abilities
 					dialog.addSelectionObject(rt);
 				}
 				dialog.setLocationRelativeTo(this);

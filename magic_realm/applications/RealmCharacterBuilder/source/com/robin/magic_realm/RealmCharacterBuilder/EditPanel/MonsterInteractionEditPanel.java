@@ -44,12 +44,16 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 	};
 
 	private Hashtable<String,JCheckBox> hash;
+	private String selection;
 	
-	public MonsterInteractionEditPanel(CharacterWrapper pChar, String levelKey) {
+	public MonsterInteractionEditPanel(CharacterWrapper pChar, String levelKey, String selection) {
 		super(pChar, levelKey);
+		this.selection = selection;
+		setBorder(BorderFactory.createTitledBorder(toString())); // update name
+		
 		hash = new Hashtable<String,JCheckBox>();
 		setLayout(new BorderLayout());
-		
+				
 		JPanel main = new JPanel(new GridLayout(1,5));
 		
 		Box box = Box.createVerticalBox();
@@ -81,7 +85,25 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 		
 		add(main,"Center");
 		
-		ArrayList list = getAttributeList(Constants.MONSTER_IMMUNITY);
+		updateSelection();
+	}
+	
+	private boolean immunitySelected() {
+		return selection == Constants.MONSTER_IMMUNITY;
+	}
+	private boolean controlSelected() {
+		return selection == Constants.MONSTER_CONTROL;
+	}
+	
+	private void updateSelection() {
+		ArrayList list = new ArrayList();
+		if (immunitySelected()) {
+			list = getAttributeList(Constants.MONSTER_IMMUNITY);
+		}
+		else if (controlSelected()) {
+			list = getAttributeList(Constants.MONSTER_CONTROL);
+		}
+		
 		if (list!=null) {
 			for (Iterator i=list.iterator();i.hasNext();) {
 				String name = (String)i.next();
@@ -92,6 +114,7 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 			}
 		}
 	}
+	
 	private void addOptionList(Box box,String[] list) {
 		JPanel panel = new JPanel(new GridLayout(list.length-1,1));
 		panel.setBorder(BorderFactory.createTitledBorder(list[0]));
@@ -112,11 +135,21 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 				list.add(name);
 			}
 		}
-		setAttributeList(Constants.MONSTER_IMMUNITY,list);
+		if (immunitySelected()) {
+			setAttributeList(Constants.MONSTER_IMMUNITY,list);
+		}
+		else if (controlSelected()) {
+			setAttributeList(Constants.MONSTER_CONTROL,list);
+		}
 	}
 	public String getSuggestedDescription() {
 		StringBuffer sb = new StringBuffer();
-		sb.append("Is immune to the ");
+		if (immunitySelected()) {
+			sb.append("Is immune to the ");
+		}
+		else if (controlSelected()) {
+			sb.append("Can control the ");
+		}
 		StringBufferedList list = new StringBufferedList(", ","and ");
 		for (String name:hash.keySet()) {
 			JCheckBox option = hash.get(name);
@@ -131,10 +164,16 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 	}
 
 	public boolean isCurrent() {
+		if (controlSelected()) {
+			return hasAttribute(Constants.MONSTER_CONTROL);
+		}
 		return hasAttribute(Constants.MONSTER_IMMUNITY);
 	}
 	
 	public String toString() {
+		if (controlSelected()) {
+			return "Monster Control";
+		}
 		return "Monster Immunity";
 	}
 }

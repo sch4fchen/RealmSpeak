@@ -31,6 +31,7 @@ import com.robin.general.io.FileManager;
 import com.robin.general.swing.*;
 import com.robin.general.util.OrderedHashtable;
 import com.robin.magic_realm.RealmCharacterBuilder.EditPanel.*;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class AdvantageEditDialog extends AggressiveDialog {
@@ -309,7 +310,8 @@ public class AdvantageEditDialog extends AggressiveDialog {
 		panelList.add(new GoldAdjustmentEditPanel(model.getCharacter(),levelKey));
 		panelList.add(new ItemRestrictionsEditPanel(model.getCharacter(),levelKey));
 		panelList.add(new MiscellaneousEditPanel(model.getCharacter(),levelKey));
-		panelList.add(new MonsterInteractionEditPanel(model.getCharacter(),levelKey));
+		panelList.add(new MonsterInteractionEditPanel(model.getCharacter(),levelKey, Constants.MONSTER_IMMUNITY));
+		panelList.add(new MonsterInteractionEditPanel(model.getCharacter(),levelKey, Constants.MONSTER_CONTROL));
 		panelList.add(new SpecialActionEditPanel(model.getCharacter(),levelKey));
 		panelList.add(new StartingInventoryEditPanel(model.getCharacter(),levelKey,magicRealmData));
 		panelList.add(new TacticsChangeEditPanel(model.getCharacter(),levelKey));

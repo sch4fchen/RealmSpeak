@@ -25,6 +25,7 @@ import com.robin.game.objects.GameObject;
 import com.robin.general.swing.ComponentTools;
 import com.robin.magic_realm.RealmCharacterBuilder.EditPanel.*;
 import com.robin.magic_realm.components.quest.QuestMinorCharacter;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class AbilityEditor extends GenericEditor {
@@ -34,6 +35,8 @@ public class AbilityEditor extends GenericEditor {
 		ExtraAction,
 		MiscellaneousAbilities,
 		MonsterInteraction,
+		MonsterImmunity,
+		MonsterControl,
 		SpecialAction,
 		TacticsChange,
 	}
@@ -82,7 +85,11 @@ public class AbilityEditor extends GenericEditor {
 				editPanel = new MiscellaneousEditPanel(template,TEMPLATE_ABILITY_BLOCK);
 				break;
 			case MonsterInteraction:
-				editPanel = new MonsterInteractionEditPanel(template,TEMPLATE_ABILITY_BLOCK);
+			case MonsterImmunity:
+				editPanel = new MonsterInteractionEditPanel(template,TEMPLATE_ABILITY_BLOCK,Constants.MONSTER_IMMUNITY);
+				break;
+			case MonsterControl:
+				editPanel = new MonsterInteractionEditPanel(template,TEMPLATE_ABILITY_BLOCK,Constants.MONSTER_CONTROL);
 				break;
 			case SpecialAction:
 				editPanel = new SpecialActionEditPanel(template,TEMPLATE_ABILITY_BLOCK);

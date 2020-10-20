@@ -5,6 +5,8 @@ QUEST UPDATE:
 # QuestRequirement: Enchant action
 # QuestReward: Enchant tile(s)
 # QuestRewardCurse: Option to remove all curses from character
+NEW FEATURES:
+# Add new ability for minor characters and character editor: Control Monster
 BUGS/ISSUES:
 #Fix ResetQuest testing requirements before resetting properly
 

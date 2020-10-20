@@ -75,6 +75,7 @@ public class BattlesWrapper extends GameObjectWrapper {
 		if (current!=null) {
 			clearBattleInfo(current,data);
 		}
+		
 		ArrayList list = new ArrayList(getList(BATTLE_LOCATION));
 		if (!list.isEmpty()) {
 			String tlKey = (String)list.remove(0);
@@ -82,6 +83,27 @@ public class BattlesWrapper extends GameObjectWrapper {
 			setString(CURRENT_BATTLE_LOCATION,tlKey);
 			TileLocation tl = TileLocation.parseTileLocation(data,tlKey);
 			BattleModel model = RealmBattle.buildBattleModel(tl,data);
+			
+			ArrayList<RealmComponent> combatants = tl.clearing.getClearingComponents();
+			for (RealmComponent monster : combatants) {
+				if (monster.isCharacter()) continue;
+				ArrayList<CharacterWrapper> characterCanControl = new ArrayList<CharacterWrapper>();
+				for (RealmComponent characterRc : combatants) {
+					if (!characterRc.isCharacter()) continue;
+					CharacterWrapper characterWrapper = new CharacterWrapper(characterRc.getGameObject());
+						for (Object monsterType : characterRc.getControllableMonsters() ) {
+							if (monster.toString().matches(monsterType.toString())) {
+								if (!characterCanControl.contains(characterWrapper)) {
+									characterCanControl.add(characterWrapper);
+								}
+							}
+						}
+
+				}
+				if (characterCanControl.toArray().length == 1) { // only if exactly one character can control this monster
+					characterCanControl.get(0).addHireling(monster.getGameObject(), 1);
+				}
+			}
 			
 			if (GameClient.GetMostRecentClient()!=null) {
 				GameClient.GetMostRecentClient().broadcast(RealmLogging.BATTLE,"Battle resolving at "+tl+":");
