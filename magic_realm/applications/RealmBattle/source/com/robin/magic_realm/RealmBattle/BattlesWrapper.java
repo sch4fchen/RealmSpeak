@@ -25,10 +25,12 @@ import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GameObjectWrapper;
 import com.robin.game.server.GameClient;
 import com.robin.magic_realm.components.*;
+import com.robin.magic_realm.components.attribute.Strength;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
+import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class BattlesWrapper extends GameObjectWrapper {
 	
@@ -124,6 +126,19 @@ public class BattlesWrapper extends GameObjectWrapper {
 						if (rc.isChit() && !rc.isCharacter()) {
 							ChitComponent chit = (ChitComponent)rc;
 							chit.setLightSideUp();
+
+							if (HostPrefWrapper.findHostPrefs(data).hasPref(Constants.OPT_ALERTED_MONSTERS) && hasUnhiddenCharactersOrControlledDenizen(combatants) && !rc.isHiredOrControlled() && !rc.isCompanion()) {
+								Strength vulnerability = null;
+								if (rc.isMonster()) {
+									vulnerability = ((MonsterChitComponent)rc).getVulnerability();
+								}
+								else if (rc.isNative()) {
+									vulnerability = ((NativeChitComponent)rc).getVulnerability();
+								}
+								if (vulnerability != null && vulnerability.weakerOrEqualTo(Strength.valueOf("H"))) {
+									chit.setDarkSideUp();
+								}
+							}
 						}
 						rc.clearTarget();
 						
@@ -133,6 +148,11 @@ public class BattlesWrapper extends GameObjectWrapper {
 							MonsterPartChitComponent weapon = monster.getWeapon();
 							if (weapon!=null && weapon.isDarkSideUp()) {
 								weapon.setLightSideUp();
+							}
+							
+							if (HostPrefWrapper.findHostPrefs(data).hasPref(Constants.OPT_ALERTED_MONSTERS) && hasUnhiddenCharactersOrControlledDenizen(combatants)
+									&& weapon!=null && monster.getVulnerability().weakerOrEqualTo(Strength.valueOf("H")) && !rc.isHiredOrControlled() && !rc.isCompanion()) {
+								weapon.setDarkSideUp();
 							}
 						}
 					}
@@ -162,6 +182,17 @@ public class BattlesWrapper extends GameObjectWrapper {
 			character.clearCombat();
 			character.decrementCombatCount();
 		}
+	}
+	private static boolean hasUnhiddenCharactersOrControlledDenizen(ArrayList<RealmComponent> combatants) {
+		for (RealmComponent combatant : combatants) {
+			if(combatant.isCharacter() && combatant.isHidden() == false) {
+				return true;
+			}
+			if((combatant.isHiredOrControlled() || combatant.isCompanion()) && combatant.isHidden() == false) {
+				return true;
+			}
+		}
+		return false;
 	}
 	/**
 	 * Returns the current battle location

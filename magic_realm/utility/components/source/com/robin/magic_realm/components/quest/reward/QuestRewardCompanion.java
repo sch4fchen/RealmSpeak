@@ -47,7 +47,6 @@ public class QuestRewardCompanion extends QuestReward {
 			character.addHireling(companion,Constants.TEN_YEARS);
 			character.getGameObject().add(companion);
 			character.getCurrentLocation().clearing.add(companion,null);
-			
 		}
 		else {
 			GamePool pool = new GamePool(character.getGameObject().getHold());

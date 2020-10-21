@@ -5747,6 +5747,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			leader.setJustUnhired(true);
 		}
 		
+		hireling.removeThisAttribute(Constants.HIRELING);
 		// Finally, make sure any clones are expunged (stupid clones!!  kill them all!)
 		if (hireling.hasThisAttribute(Constants.CLONED)) {
 			getGameData().removeObject(hireling); // I'd like to simply delete the object...  but there are problems with this.

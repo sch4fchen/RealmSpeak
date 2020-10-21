@@ -8,6 +8,7 @@ QUEST UPDATE:
 # QuestRewardChooseNextStep: Random choice option
 NEW FEATURES:
 # Add new ability for minor characters and character editor: Control Monster
+# Optional Rule: Alerted Monsters
 BUGS/ISSUES:
 #Fix ResetQuest testing requirements before resetting properly
 

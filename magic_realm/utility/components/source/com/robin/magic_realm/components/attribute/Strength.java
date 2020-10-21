@@ -137,6 +137,12 @@ public class Strength {
 	public boolean strongerThan(Strength other) {
 		return strengthId > other.strengthId;
 	}
+	public boolean weakerOrEqualTo(Strength other) {
+		return strengthId <= other.strengthId;
+	}
+	public boolean weakerTo(Strength other) {
+		return strengthId < other.strengthId;
+	}
 	public boolean isRed() {
 		return strengthId==RED;
 	}

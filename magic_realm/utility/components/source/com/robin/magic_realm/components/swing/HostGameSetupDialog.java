@@ -973,14 +973,14 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		
 		String[] exclusiveRandomGen = {Constants.RANDOM_R250_521,Constants.RANDOM_MERSENNE_TWISTER,Constants.RANDOM_ON_THE_FLY};
 		
-		newOptionPane.setTabHtmlDescription(OPTIONAL_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Optional Rules</font></body></html>");
-		
-// These two rules are handled on the first tab
-//		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_SEASONS_COLOR,"2.2/6 - Seasonal colors - The color of magic available on the 7th day of each month varies from month to month, instead of always being BLACK/WHITE.",false));
-//		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_WEATHER,"2.4 - Weather - The weather affects players week to week (only applicable if seasons are used - see first tab)",false));
-		
+		// These two rules are handled on the first tab
+		// newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_SEASONS_COLOR,"2.2/6 - Seasonal colors - The color of magic available on the 7th day of each month varies from month to month, instead of always being BLACK/WHITE.",false));
+		// newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_WEATHER,"2.4 - Weather - The weather affects players week to week (only applicable if seasons are used - see first tab)",false));
+	
+		newOptionPane.setTabHtmlDescription(OPTIONAL_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Optional Rules</font></body></html>");	
 		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_QUIET_MONSTERS,"QUIET MONSTERS 3.1-3.4 - Hidden characters and hirelings do not cause chits to flip, or monsters to be summoned.",false));
 		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_NO_BATTLE_DIST,"QUIET MONSTERS 3.5 - When positioning attackers on a character sheet, they do NOT have to be positioned in as many red boxes as possible.",false));
+		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_ALERTED_MONSTERS,"ALERTED MONSTERS 3.6 - When combat starts in a clearing with unhidden characters, hired or controlled denizens, then all uncontrolled denizens (not tremendous) turn dark side up.",false));
 		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_COMMERCE,"COMMERCE 4.1-4.3 - This includes changes in native trading prices based on the group and using the commerce table for selling goods.",false));
 		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_GRUDGES,"GRUDGES/GRATITUDES 4.4 - Selling/Buying items with special FAME prices affect friendliness with certain native groups.  Also, killing FRIENDLY or ALLIED natives affects your friendliness quite negatively.",false,null,null,cannotIncludeExtGrudges));
 		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_STUMBLE,"STUMBLE 5.1 - Roll on stumble table when running.",false));

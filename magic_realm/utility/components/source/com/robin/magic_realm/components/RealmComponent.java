@@ -248,6 +248,11 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	public boolean isPlayerControlledLeader() {
 		return isCharacter() || isHiredLeader() || isControlledMonster() || isControlledNative();
 	}
+	
+	public boolean isHiredOrControlled() {
+		return isControlledMonster() || isControlledNative() || isHiredLeader() || isHireling() ;
+	}
+	
 	public boolean canSpy() {
 		return isPlayerControlledLeader() || isFamiliar();
 	}
