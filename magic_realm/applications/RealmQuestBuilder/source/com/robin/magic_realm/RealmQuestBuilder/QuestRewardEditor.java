@@ -73,6 +73,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case ChooseNextStep:
 				list.add(new QuestPropertyBlock(QuestRewardChooseNextStep.TEXT, "Text", FieldType.TextLine));
+				list.add(new QuestPropertyBlock(QuestRewardChooseNextStep.RANDOM, "Random choice", FieldType.Boolean));
 				break;
 			case Companion:
 				list.add(new QuestPropertyBlock(QuestRewardCompanion.COMPANION_NAME, "Companion", FieldType.CompanionSelector, getAllCompanionKeyValues()));
