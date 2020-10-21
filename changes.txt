@@ -5,6 +5,7 @@ QUEST UPDATE:
 # QuestRequirement: Enchant action
 # QuestReward: Enchant tile(s)
 # QuestRewardCurse: Option to remove all curses from character
+# QuestRewardSummonMonster: Option to summon monster to a location
 # QuestRewardChooseNextStep: Random choice option
 NEW FEATURES:
 # Add new ability for minor characters and character editor: Control Monster
