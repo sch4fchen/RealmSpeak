@@ -24,6 +24,7 @@ import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GameObjectWrapper;
 import com.robin.game.server.GameClient;
+import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.Strength;
 import com.robin.magic_realm.components.attribute.TileLocation;
@@ -141,7 +142,11 @@ public class BattlesWrapper extends GameObjectWrapper {
 										chit.setDarkSideUp();
 									}
 									if(hostPrefs.hasPref(Constants.OPT_ALERTED_MONSTERS_VARIANT)) {
-										
+										int dieRoll1 = RandomNumber.getDieRoll(6);
+										int dieRoll2 = RandomNumber.getDieRoll(6);
+										if (dieRoll1 == 6 || dieRoll2 == 6) {
+											chit.setDarkSideUp();
+										}
 									}
 								}
 							}
@@ -163,7 +168,11 @@ public class BattlesWrapper extends GameObjectWrapper {
 									weapon.setDarkSideUp();
 								}
 								if(hostPrefs.hasPref(Constants.OPT_ALERTED_MONSTERS_VARIANT)) {
-									
+									int dieRoll1 = RandomNumber.getDieRoll(6);
+									int dieRoll2 = RandomNumber.getDieRoll(6);
+									if (dieRoll1 == 6 || dieRoll2 == 6) {
+										weapon.setDarkSideUp();
+									}
 								}
 							}
 						}
