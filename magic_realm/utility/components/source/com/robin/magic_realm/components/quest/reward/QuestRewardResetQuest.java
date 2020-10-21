@@ -35,7 +35,6 @@ public class QuestRewardResetQuest extends QuestReward {
 		Quest quest = getParentQuest();
 		quest.reset();
 		quest.initialize(frame,character);
-		quest.getGameObject().getGameData().commit();
 		QuestRequirementParams params = new QuestRequirementParams();
 		params.timeOfCall = character.getCurrentGamePhase();
 		quest.testRequirements(frame,character,params);

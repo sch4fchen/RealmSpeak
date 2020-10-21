@@ -1,18 +1,19 @@
 ::RealmSpeak::
-Reward: SpellEffect: cast to location? or characters tile/clearing?
-Reward: Hireling+Companion: To Location (+extend location functionality)
-Reward: Gain Custom Treasure: CustomTreasure // Pick a treasure, clone, and rename it
-Reward: Discovery (path, treasureSite etc.), at clearing/tile/location (check PathPassages Reward)
-Reward: Move denizen (cloned/companion or not)
-Reward: Summon Monster to location
-Reward: Item: clone item? or steal?
-Reward: Item to location
-Reward: Destroy item (optional: must be in inventory of character)
-Reward: Kill denizen in Location
-Reward: SummonFromAppearance: I'd think that either specifying a sound or warning chit and summoning to the tile if it's there, or specifying a monster and summoning it to its sound or warning chit (if it's in the tile) would be the way to go.
+Support Alerted Monsters Advanced rule: BattlesWrapper: 123
+QuestReset: Killed Monsters not resetting
 Add Random to ChooseNextStep Reward
+Reward: SpellEffect: cast to location? or characters tile/clearing?
+Reward: Summon Monster to location
+Reward: Kill denizen in Location
+Reward: Hireling+Companion: To Location (+extend location functionality)
+Reward: Item to location
+Reward: Item: clone item? or steal?
+Reward: Destroy item (optional: must be in inventory of character)
+Reward: Discovery (path, treasureSite etc.), at clearing/tile/location (check PathPassages Reward)
+Reward: Gain Custom Treasure: CustomTreasure // Pick a treasure, clone, and rename it
+Reward: Move denizen (cloned/companion or not)
+Reward: SummonFromAppearance: I'd think that either specifying a sound or warning chit and summoning to the tile if it's there, or specifying a monster and summoning it to its sound or warning chit (if it's in the tile) would be the way to go.
 Recycle Non-All-Play Zero Point Quests (Event Cards)
-Support Alerted Monsters Advanced rule
 
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
