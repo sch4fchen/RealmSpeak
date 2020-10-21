@@ -1,6 +1,5 @@
 ::RealmSpeak::
 Reward: SpellEffect: cast to location? or characters tile/clearing?
-Reward: Kill denizen in Location
 Reward: Hireling+Companion: To Location (+extend location functionality)
 Reward: Item to location
 Reward: Item: clone item? or steal?

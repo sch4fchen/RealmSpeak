@@ -6,6 +6,7 @@ QUEST UPDATE:
 # QuestReward: Enchant tile(s)
 # QuestRewardCurse: Option to remove all curses from character
 # QuestRewardSummonMonster: Option to summon monster to a location
+# QuestRewardKillDenizen: Option to kill only denizens in a location
 # QuestRewardChooseNextStep: Random choice option
 NEW FEATURES:
 # Add new ability for minor characters and character editor: Control Monster

@@ -18,10 +18,13 @@
 package com.robin.magic_realm.components.quest.reward;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
+
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.quest.QuestLocation;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -33,6 +36,8 @@ public class QuestRewardKillDenizen extends QuestReward {
 	public static final String KILL_COMPANIONS = "_kc";
 	public static final String KILL_SUMMONED = "_ks";
 	public static final String KILL_LIMITED = "_kl";
+	public static final String KILL_IN_LOCATION = "_k_i_loc";
+	public static final String LOCATION = "_loc";
 	
 	public QuestRewardKillDenizen(GameObject go) {
 		super(go);
@@ -54,13 +59,28 @@ public class QuestRewardKillDenizen extends QuestReward {
 				continue;
 			}
 			
+			if (locationOnly()) {
+				QuestLocation loc = getQuestLocation();
+				RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
+				if (loc.locationMatchAddressForRealmComponent(frame, character, denizenRc)) {
+					RealmUtility.makeDead(denizenRc);
+				}
+			}
+			else {
 			RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
 			RealmUtility.makeDead(denizenRc);
+			}
 		}
 	}
 	
 	public String getDescription() {
-		return getDenizenNameRegex() +" is/are killed.";
+		StringBuffer sb = new StringBuffer();
+		sb.append(getDenizenNameRegex() +" is/are killed");
+		if (locationOnly()) {
+			sb.append(" in "+getQuestLocation().getName());
+		}
+		sb.append(".");
+		return sb.toString();
 	}
 	private String getDenizenNameRegex() {
 		return getString(DENIZEN_REGEX);
@@ -80,4 +100,29 @@ public class QuestRewardKillDenizen extends QuestReward {
 	public RewardType getRewardType() {
 		return RewardType.KillDenizen;
 	}
+	private boolean locationOnly() {
+		return getBoolean(KILL_IN_LOCATION);
+	}
+	public boolean usesLocationTag(String tag) {
+		QuestLocation loc = getQuestLocation();
+		return loc!=null && tag.equals(loc.getName());
+	}
+	public QuestLocation getQuestLocation() {
+		String id = getString(LOCATION);
+		if (id!=null) {
+			GameObject go = getGameData().getGameObject(Long.valueOf(id));
+			if (go!=null) {
+				return new QuestLocation(go);
+			}
+		}
+		return null;
+	}
+	
+	public void setQuestLocation(QuestLocation location) {
+		setString(LOCATION,location.getGameObject().getStringId());
+	}
+	public void updateIds(Hashtable<Long, GameObject> lookup) {
+		updateIdsForKey(lookup,LOCATION);
+	}
+	
 }

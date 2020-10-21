@@ -224,7 +224,55 @@ public class QuestLocation extends GameObjectWrapper {
 		
 		return false;
 	}
-	public void resolveQuestStart(JFrame frame,CharacterWrapper character) {
+	public boolean locationMatchAddressForRealmComponent(JFrame frame,CharacterWrapper character, RealmComponent rc) {
+		LocationType type = getLocationType();
+		if (needsResolution() && frame != null & character != null) {
+			if (type==LocationType.Lock) {
+				RealmLogging.logMessage(QuestConstants.QUEST_ERROR,"Can't fetch locations for a LOCK type of location without requiring the character to first visit that location.");
+				return false;
+			}
+			resolveStepStart(frame,character);
+		}
+		TileLocation loc = rc.getCurrentLocation();
+		ArrayList<String> addressesToTest = getValidAddresses();
+		LocationClearingType clearingType = getLocationClearingType();
+		LocationTileSideType tileSideType = getLocationTileSideType();
+		
+		if (clearingType!=LocationClearingType.Any && !clearingType.matches(loc.clearing)) return false;
+		if (tileSideType!=LocationTileSideType.Any && !tileSideType.matches(loc.tile)) return false;
+		if (addressesToTest.isEmpty()) return true; // If there are NO addresses, then anything is allowed
+		
+		ArrayList<RealmComponent> clearingComponents;
+		if (isSameTile()) {
+			clearingComponents = loc.tile.getAllClearingComponents(); 
+		}
+		else {
+			clearingComponents = loc.tile.getOffroadRealmComponents(); // state chits without a clearing
+			clearingComponents.addAll(loc.clearing.getClearingComponents());
+		}
+		String matchingAddress = null;
+		for(String address:addressesToTest) {
+			TileLocation tl = fetchTileLocation(getGameData(),address);
+			if (tl!=null) {
+				if ((isSameTile() && tl.tile.equals(loc.tile))
+					|| tl.equals(loc)) {
+						matchingAddress = address;
+						break;
+				}
+			}
+			ArrayList<RealmComponent> pieces = fetchPieces(getGameData(),address,true);
+			if (CollectionUtility.containsAny(clearingComponents,pieces)) {
+				matchingAddress = address;
+				break;
+			}
+		}
+		if (matchingAddress!=null) {
+			return true;
+		}
+		
+		return false;
+	}
+		public void resolveQuestStart(JFrame frame,CharacterWrapper character) {
 		ArrayList choices = getChoiceAddresses();
 		if (choices==null || choices.size()==0) return;
 		if (choices.size()==1) {
