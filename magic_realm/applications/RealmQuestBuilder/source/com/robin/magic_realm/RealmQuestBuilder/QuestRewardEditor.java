@@ -179,6 +179,10 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.AFFECT_COMPANIONS, "Affect companions", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.AFFECT_SUMMONED, "Affect summoned monsters", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.AFFECT_LIMITED, "Affect ONLY those (see above)", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.TARGET_IN_LOCATION, "Affect ONLY targets in location", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.ALL_TARGETS_IN_LOCATION, "Affect ALL targets in location", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.ALL_TARGETS_IN_RANDOM_LOCATION, "Affect targets in random location", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
 			case SpellFromSite:
 				list.add(new QuestPropertyBlock(QuestRewardTreasureFromSite.SITE_REGEX, "Site RegEx", FieldType.Regex, null, new String[] { "spell_site","visitor,!name=Scholar","artifact","book,magic" }));

@@ -18,11 +18,17 @@
 package com.robin.magic_realm.components.quest.reward;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
+import com.robin.general.util.RandomNumber;
+import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.quest.QuestLocation;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.GameWrapper;
@@ -33,13 +39,18 @@ public class QuestRewardSpellEffect extends QuestReward {
 	
 	public static final String SPELL_REGEX = "_spellrx";
 	public static final String AFFECT_CHARACTER = "_affchar";
-	public static final String AFFECT_CHARACTERS_LOCATION = "_affcharloc";
+	public static final String AFFECT_CHARACTERS_TILE = "_affchartile";
+	public static final String AFFECT_CHARACTERS_CLEARING = "_affchartile";
 	public static final String TARGET_REGEX = "_targetrx";
 	public static final String EXPIRE_IMMEDIATELY = "_eximdtly";
 	public static final String AFFECT_HIRELINGS = "_affh";
 	public static final String AFFECT_COMPANIONS = "_affc";
 	public static final String AFFECT_SUMMONED = "_affs";
 	public static final String AFFECT_LIMITED = "_affl";
+	public static final String TARGET_IN_LOCATION = "_target_in_loc";
+	public static final String ALL_TARGETS_IN_LOCATION = "_aff_all_targets_in_loc";
+	public static final String ALL_TARGETS_IN_RANDOM_LOCATION = "_aff_target_in_rnd_loc";
+	public static final String LOCATION = "_loc";
 
 	public QuestRewardSpellEffect(GameObject go) {
 		super(go);
@@ -65,13 +76,38 @@ public class QuestRewardSpellEffect extends QuestReward {
 		}
 		GameWrapper gameWrapper = GameWrapper.findGame(getGameObject().getGameData());
 		HostPrefWrapper hostPref = HostPrefWrapper.findHostPrefs(getGameData());
+		QuestLocation loc = getQuestLocation();
 		for (GameObject sp : spells) {
 			SpellWrapper spell = new SpellWrapper(sp);
 			spell.setString(SpellWrapper.CASTER_ID, String.valueOf(character.getGameObject().getId()));
 			spell.setString(SpellWrapper.SPELL_ALIVE,"");
 			if (affectCharacter()) {
-				spell.addTarget(hostPref, character.getGameObject());
+				if (!targetMustBeInLocation() || loc == null || loc.locationMatchAddress(frame, character)) {
+					spell.addTarget(hostPref, character.getGameObject());
 			}
+			if (affectAllTargetsInLocation()) {
+				ArrayList<TileLocation> validLocations = loc.fetchAllLocations(frame, character, character.getGameData());
+				for (TileLocation location : validLocations) {
+					ArrayList<RealmComponent> validTargets = location.clearing.getClearingComponents();
+					for (RealmComponent validTarget : validTargets) {
+						if (validTarget.toString().matches(getTargetRegex())) {
+							targets.add(validTarget.getGameObject());
+						}
+					}
+				}
+			}
+			if (affectTargetsInRandomLocation()) {
+				ArrayList<TileLocation> validLocations = loc.fetchAllLocations(frame, character, character.getGameData());
+				int random = RandomNumber.getRandom(validLocations.size());
+				TileLocation location = validLocations.get(random);
+				ArrayList<RealmComponent> validTargets = location.clearing.getClearingComponents();
+				for (RealmComponent validTarget : validTargets) {
+					if (validTarget.getName().matches(getTargetRegex())) {
+						targets.add(validTarget.getGameObject());
+					}
+				}
+			}
+				
 			for (GameObject target : targets) {
 				if (!affectHirelings() && target.hasThisAttribute(Constants.HIRELING)) {
 					continue;
@@ -85,10 +121,15 @@ public class QuestRewardSpellEffect extends QuestReward {
 				if (affectOnlyHirelingsCompanionsSummonedMonsters() && !target.hasThisAttribute(Constants.HIRELING) && !target.hasThisAttribute(Constants.COMPANION) && !target.hasThisAttribute(Constants.SUMMONED)) {
 					continue;
 				}
+				RealmComponent targetRc = RealmComponent.getRealmComponent(target);
+				if (targetMustBeInLocation() && loc != null || !loc.locationMatchAddressForRealmComponent(frame, character, targetRc)) {
+					continue;
+				}
 				
 				spell.addTarget(hostPref, target);
 			}
 			spell.affectTargets(frame, gameWrapper, expireImmediately());
+			}
 		}
 	}
 	
@@ -111,6 +152,9 @@ public class QuestRewardSpellEffect extends QuestReward {
 			sb.append(" on target(s) /"+getTargetRegex()+"/");
 		}
 		sb.append(".");
+		if (targetMustBeInLocation()) {
+			sb.append("Targets must be in "+getQuestLocation().getName()+".");
+		}
 		return sb.toString();
 	}
 	public String getSpellRegex() {
@@ -136,5 +180,34 @@ public class QuestRewardSpellEffect extends QuestReward {
 	}
 	private Boolean affectOnlyHirelingsCompanionsSummonedMonsters() {
 		return getBoolean(AFFECT_LIMITED);
+	}
+	private Boolean targetMustBeInLocation() {
+		return getBoolean(TARGET_IN_LOCATION);
+	}
+	private Boolean affectAllTargetsInLocation() {
+		return getBoolean(ALL_TARGETS_IN_LOCATION);
+	}
+	private Boolean affectTargetsInRandomLocation() {
+		return getBoolean(ALL_TARGETS_IN_RANDOM_LOCATION);
+	}
+	public boolean usesLocationTag(String tag) {
+		QuestLocation loc = getQuestLocation();
+		return loc!=null && tag.equals(loc.getName());
+	}
+	public QuestLocation getQuestLocation() {
+		String id = getString(LOCATION);
+		if (id!=null) {
+			GameObject go = getGameData().getGameObject(Long.valueOf(id));
+			if (go!=null) {
+				return new QuestLocation(go);
+			}
+		}
+		return null;
+	}
+	public void setQuestLocation(QuestLocation location) {
+		setString(LOCATION,location.getGameObject().getStringId());
+	}
+	public void updateIds(Hashtable<Long, GameObject> lookup) {
+		updateIdsForKey(lookup,LOCATION);
 	}
 }

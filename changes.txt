@@ -8,6 +8,7 @@ QUEST UPDATE:
 # QuestRewardSummonMonster: Option to summon monster to a location
 # QuestRewardKillDenizen: Option to kill only denizens in a location
 # QuestRewardChooseNextStep: Random choice option
+# QuestRewardSpllEffect: Option to affect all targets in location (or random location), option that target must be in location
 NEW FEATURES:
 # Add new ability for minor characters and character editor: Control Monster
 # Optional Rule: Alerted Monsters

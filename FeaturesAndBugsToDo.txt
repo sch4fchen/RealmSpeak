@@ -1,5 +1,4 @@
 ::RealmSpeak::
-Reward: SpellEffect: cast to location? or characters tile/clearing?
 Reward: Hireling+Companion: To Location (+extend location functionality)
 Reward: Discovery (path, treasureSite etc.), at clearing/tile/location (check PathPassages Reward)
 Reward: Item to location
