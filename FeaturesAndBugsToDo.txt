@@ -1,10 +1,10 @@
 ::RealmSpeak::
 Reward: SpellEffect: cast to location? or characters tile/clearing?
 Reward: Hireling+Companion: To Location (+extend location functionality)
+Reward: Discovery (path, treasureSite etc.), at clearing/tile/location (check PathPassages Reward)
 Reward: Item to location
 Reward: Item: clone item? or steal?
 Reward: Destroy item (optional: must be in inventory of character)
-Reward: Discovery (path, treasureSite etc.), at clearing/tile/location (check PathPassages Reward)
 Reward: Gain Custom Treasure: CustomTreasure // Pick a treasure, clone, and rename it
 Reward: Move denizen (cloned/companion or not)
 Reward: SummonFromAppearance: I'd think that either specifying a sound or warning chit and summoning to the tile if it's there, or specifying a monster and summoning it to its sound or warning chit (if it's in the tile) would be the way to go.
