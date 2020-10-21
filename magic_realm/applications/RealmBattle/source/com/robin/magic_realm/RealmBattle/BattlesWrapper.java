@@ -85,6 +85,7 @@ public class BattlesWrapper extends GameObjectWrapper {
 			setString(CURRENT_BATTLE_LOCATION,tlKey);
 			TileLocation tl = TileLocation.parseTileLocation(data,tlKey);
 			BattleModel model = RealmBattle.buildBattleModel(tl,data);
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 			
 			ArrayList<RealmComponent> combatants = tl.clearing.getClearingComponents();
 			for (RealmComponent monster : combatants) {
@@ -127,7 +128,7 @@ public class BattlesWrapper extends GameObjectWrapper {
 							ChitComponent chit = (ChitComponent)rc;
 							chit.setLightSideUp();
 
-							if (HostPrefWrapper.findHostPrefs(data).hasPref(Constants.OPT_ALERTED_MONSTERS) && hasUnhiddenCharactersOrControlledDenizen(combatants) && !rc.isHiredOrControlled() && !rc.isCompanion()) {
+							if ((hostPrefs.hasPref(Constants.OPT_ALERTED_MONSTERS) || hostPrefs.hasPref(Constants.OPT_ALERTED_MONSTERS_VARIANT)) && !rc.isHiredOrControlled() && !rc.isCompanion()) {
 								Strength vulnerability = null;
 								if (rc.isMonster()) {
 									vulnerability = ((MonsterChitComponent)rc).getVulnerability();
@@ -136,10 +137,16 @@ public class BattlesWrapper extends GameObjectWrapper {
 									vulnerability = ((NativeChitComponent)rc).getVulnerability();
 								}
 								if (vulnerability != null && vulnerability.weakerOrEqualTo(Strength.valueOf("H"))) {
-									chit.setDarkSideUp();
+									if (hostPrefs.hasPref(Constants.OPT_ALERTED_MONSTERS) && hasUnhiddenCharactersOrControlledDenizen(combatants)) {
+										chit.setDarkSideUp();
+									}
+									if(hostPrefs.hasPref(Constants.OPT_ALERTED_MONSTERS_VARIANT)) {
+										
+									}
 								}
 							}
 						}
+						
 						rc.clearTarget();
 						
 						// Flip monster weapons light side up
@@ -150,9 +157,14 @@ public class BattlesWrapper extends GameObjectWrapper {
 								weapon.setLightSideUp();
 							}
 							
-							if (HostPrefWrapper.findHostPrefs(data).hasPref(Constants.OPT_ALERTED_MONSTERS) && hasUnhiddenCharactersOrControlledDenizen(combatants)
+							if ((hostPrefs.hasPref(Constants.OPT_ALERTED_MONSTERS) || hostPrefs.hasPref(Constants.OPT_ALERTED_MONSTERS_VARIANT))
 									&& weapon!=null && monster.getVulnerability().weakerOrEqualTo(Strength.valueOf("H")) && !rc.isHiredOrControlled() && !rc.isCompanion()) {
-								weapon.setDarkSideUp();
+								if (hostPrefs.hasPref(Constants.OPT_ALERTED_MONSTERS) && hasUnhiddenCharactersOrControlledDenizen(combatants)) {
+									weapon.setDarkSideUp();
+								}
+								if(hostPrefs.hasPref(Constants.OPT_ALERTED_MONSTERS_VARIANT)) {
+									
+								}
 							}
 						}
 					}

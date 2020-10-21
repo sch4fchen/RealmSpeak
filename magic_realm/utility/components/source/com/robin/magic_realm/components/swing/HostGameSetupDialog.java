@@ -948,24 +948,17 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(ADVANCED_RULES_TAB,new GameOption(Constants.ADV_SERIOUS_WOUNDS,"SERIOUS WOUNDS 4.5 - Characters suffer 1D6 wounds instead of death when harm matches vulnerability.",false));
 		newOptionPane.addOption(ADVANCED_RULES_TAB,new GameOption(Constants.ADV_DRAGON_HEADS,"DRAGON HEADS 4.6 - Instead of striking, Dragon Heads do a flame missile attack.",false));
 		
-		// Missile table rules are exclusive
-		String[] exclusiveMissileRules = {Constants.OPT_MISSILE,Constants.REV_MISSILE};
-		
-		String[] exclusiveEnhancedMagicRules = {Constants.OPT_ENHANCED_MAGIC,Constants.HOUSE2_REVISED_ENHANCED_MAGIC};
-		
 		String[] requiresNoVisitorMissionFlip = {Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE};
 		String[] cannotIncludeIgnoreMissions = {Constants.HOUSE2_IGNORE_CAMPAIGNS};
-		String[] overridesNoNegativePointsOrIgnoreCampaigns = {
-				Constants.HOUSE1_NO_NEGATIVE_POINTS,
-				Constants.HOUSE2_IGNORE_CAMPAIGNS
-		};
-		String[] cannotIncludeCampaignDebt = {
-				Constants.HOUSE2_CAMPAIGN_DEBT
-		};
+		String[] overridesNoNegativePointsOrIgnoreCampaigns = {Constants.HOUSE1_NO_NEGATIVE_POINTS,Constants.HOUSE2_IGNORE_CAMPAIGNS};
+		String[] cannotIncludeCampaignDebt = {Constants.HOUSE2_CAMPAIGN_DEBT};
+		String[] exclusiveEnhancedMagicRules = {Constants.OPT_ENHANCED_MAGIC,Constants.HOUSE2_REVISED_ENHANCED_MAGIC};
 		
-		String[] requiresFumbleRules = {Constants.OPT_FUMBLE};
+		String[] requiresAlertedMonsterRule = {Constants.OPT_ALERTED_MONSTERS};
 		String[] cannotIncludeSepRiderRules = {Constants.OPT_RIDING_HORSES};
-		
+		String[] requiresFumbleRules = {Constants.OPT_FUMBLE};
+		String[] exclusiveMissileRules = {Constants.OPT_MISSILE,Constants.REV_MISSILE};
+				
 		String[] requiresDevelopmentRules = {Constants.EXP_DEVELOPMENT};
 		String[] cannotIncludeExpDevRules = {Constants.EXP_DEVELOPMENT_PLUS,Constants.EXP_DEV_EXCLUDE_SW,Constants.EXP_DEV_3RD_REL};
 		String[] requiresGrudges = {Constants.OPT_GRUDGES};
@@ -981,6 +974,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_QUIET_MONSTERS,"QUIET MONSTERS 3.1-3.4 - Hidden characters and hirelings do not cause chits to flip, or monsters to be summoned.",false));
 		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_NO_BATTLE_DIST,"QUIET MONSTERS 3.5 - When positioning attackers on a character sheet, they do NOT have to be positioned in as many red boxes as possible.",false));
 		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_ALERTED_MONSTERS,"ALERTED MONSTERS 3.6 - When combat starts in a clearing with unhidden characters, hired or controlled denizens, then all uncontrolled denizens (not tremendous) turn dark side up.",false));
+		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_ALERTED_MONSTERS_VARIANT,"ALERTED MONSTERS 3.6 Variant - When combat starts in a clearing  then all uncontrolled denizens (not tremendous) randomly turn dark side up.",false,null,requiresAlertedMonsterRule));
 		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_COMMERCE,"COMMERCE 4.1-4.3 - This includes changes in native trading prices based on the group and using the commerce table for selling goods.",false));
 		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_GRUDGES,"GRUDGES/GRATITUDES 4.4 - Selling/Buying items with special FAME prices affect friendliness with certain native groups.  Also, killing FRIENDLY or ALLIED natives affects your friendliness quite negatively.",false,null,null,cannotIncludeExtGrudges));
 		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_STUMBLE,"STUMBLE 5.1 - Roll on stumble table when running.",false));

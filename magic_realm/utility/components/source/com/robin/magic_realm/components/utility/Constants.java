@@ -428,6 +428,7 @@ public class Constants {
 	public static final String OPT_QUIET_MONSTERS = "QuietMonsters";
 	public static final String OPT_NO_BATTLE_DIST = "NoBattleDist";
 	public static final String OPT_ALERTED_MONSTERS = "AlertedMonsters";
+	public static final String OPT_ALERTED_MONSTERS_VARIANT = "AlertedMonstersVariant";
 	public static final String OPT_COMMERCE = "Commerce";
 	public static final String OPT_GRUDGES = "GrudgesGrats"; // Grudges and Gratitudes
 	public static final String OPT_CHAR_ABILITY_WIZARD_MAGIC_CHIT = "OptCharWizardMagicChit";
