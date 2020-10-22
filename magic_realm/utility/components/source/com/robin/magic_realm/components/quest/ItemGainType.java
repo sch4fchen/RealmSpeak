@@ -19,7 +19,9 @@ package com.robin.magic_realm.components.quest;
 
 public enum ItemGainType {
 	Gain,
+	GainCloned,
 	LoseToClearing,
 	LoseToLocation,
-	LoseToChartOfAppearance
+	LoseToChartOfAppearance,
+	Destroy,
 }

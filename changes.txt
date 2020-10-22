@@ -8,6 +8,7 @@ QUEST UPDATE:
 # QuestReward: Move denizen
 # QuestReward: Find hidden enemies
 # QuestReward: Discover Treasure site
+# QuestReward: Custom treasure
 # QuestRewardPathsPassages: Option find paths and passages in a location
 # QuestRewardCurse: Option to remove all curses from character
 # QuestRewardSummonMonster: Option to summon monster to a location

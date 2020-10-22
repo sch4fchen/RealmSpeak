@@ -84,13 +84,25 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case Counter:
 				list.add(new QuestPropertyBlock(QuestRewardCounter.COUNTER, "Quest Counter", FieldType.GameObjectWrapperSelector, quest.getCounters().toArray()));
-				list.add(new QuestPropertyBlock(QuestRewardCounter.SET_COUNT, "Set current count ("+ QuestConstants.ALL_VALUE+"=no change)", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRewardCounter.SET_COUNT, "Set current count ("+QuestConstants.ALL_VALUE+"=no change)", FieldType.NumberAll));
 				list.add(new QuestPropertyBlock(QuestRewardCounter.INCREASE_COUNT, "Increase count", FieldType.NumberAll));
 				list.add(new QuestPropertyBlock(QuestRewardCounter.DECREASE_COUNT, "Decrease count", FieldType.NumberAll));
 				break;
 			case Curse:
 				list.add(new QuestPropertyBlock(QuestRewardCurse.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardCurse.DIE_ROLL, "Remove all curses", FieldType.Boolean));
+				break;
+			case CustomTreasure:
+				list.add(new QuestPropertyBlock(QuestRewardCustomTreasure.TREASURE_REGEX, "Treasure RegEx", FieldType.Regex, null, new String[] { "treasure" }));
+				list.add(new QuestPropertyBlock(QuestRewardCustomTreasure.TREASURE_NAME, "Name", FieldType.TextLine));
+				list.add(new QuestPropertyBlock(QuestRewardCustomTreasure.TREASURE_PRICE, "Price ("+QuestConstants.ALL_VALUE+"=no change)", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRewardCustomTreasure.TREASURE_FAME, "Fame ("+QuestConstants.ALL_VALUE+"=no change)", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRewardCustomTreasure.TREASURE_NOTORIETY, "Notoriety ("+QuestConstants.ALL_VALUE+"=no change)", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRewardCustomTreasure.TREASURE_WEIGHT, "Weight", FieldType.StringSelector, new String[] {QuestRewardCustomTreasure.NO_CHANGE,"N","M","L","H","T"}));
+				list.add(new QuestPropertyBlock(QuestRewardCustomTreasure.TREASURE_SIZE, "Size", FieldType.StringSelector, new String[] {QuestRewardCustomTreasure.NO_CHANGE,QuestRewardCustomTreasure.SMALL,QuestRewardCustomTreasure.LARGE}));
+				list.add(new QuestPropertyBlock(QuestRewardCustomTreasure.TREASURE_GREAT, "Great?", FieldType.StringSelector, new String[] {QuestRewardCustomTreasure.NO_CHANGE,QuestRewardCustomTreasure.NOT_GREAT,QuestRewardCustomTreasure.GREAT}));
+				list.add(new QuestPropertyBlock(QuestRewardCustomTreasure.LOCATION_ONLY, "Appers in location", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardCustomTreasure.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
 			case Damage:
 				list.add(new QuestPropertyBlock(QuestRewardDamage.DAMAGE_TYPE, "Damage Type", FieldType.StringSelector, DamageType.values()));
