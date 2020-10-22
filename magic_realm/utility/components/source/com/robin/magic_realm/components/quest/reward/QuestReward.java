@@ -52,6 +52,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		Curse,
 		Damage,
 		EnchantTile,
+		FindHiddenEnemies,
 		Guild,
 		Heal,
 		Hireling,
@@ -110,6 +111,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case Curse:						return "Curses the character.";
 				case Damage:					return "Character receives fatigue or wounds.";
 				case EnchantTile:				return "Enchants (or unenchants) characters tile and/or tile(s) of a location.";
+				case FindHiddenEnemies:			return "Character finds hidden enemies.";
 				case Guild	:					return "Sets the characters guild and guild level.";
 				case Heal:						return "Heals action chits of the character.";
 				case Hireling:					return "Add or remove a hireling.";
@@ -281,6 +283,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case EnchantTile:
 				reward = new QuestRewardEnchantTile(go);
+				break;
+			case FindHiddenEnemies:
+				reward = new QuestRewardFindHiddenEnemies(go);
 				break;
 			case Guild:
 				reward = new QuestRewardGuild(go);
