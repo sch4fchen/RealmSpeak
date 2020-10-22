@@ -9,6 +9,7 @@ QUEST UPDATE:
 # QuestRewardCurse: Option to remove all curses from character
 # QuestRewardSummonMonster: Option to summon monster to a location
 # QuestRewardHireling: Option to add hireling to a location
+# QuestRewardCompanion: Option to add companion to a location
 # QuestRewardKillDenizen: Option to kill only denizens in a location
 # QuestRewardChooseNextStep: Random choice option
 # QuestRewardSpllEffect: Option to affect all targets in location (or random location), option that target must be in location

@@ -17,24 +17,34 @@
  */
 package com.robin.magic_realm.components.quest.reward;
 
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.logging.Logger;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
+import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.GainType;
 import com.robin.magic_realm.components.quest.QuestConstants;
+import com.robin.magic_realm.components.quest.QuestLocation;
+import com.robin.magic_realm.components.quest.QuestStep;
 import com.robin.magic_realm.components.utility.ClearingUtility;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.TemplateLibrary;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRewardCompanion extends QuestReward {
-	
+	private static Logger logger = Logger.getLogger(QuestStep.class.getName());
 	public static final String COMPANION_NAME = "_cn";
 	public static final String GAIN_TYPE = "_goc";
 	public static final String EXCLUDE_HORSE = "_eh";
+	public static final String LOCATION_ONLY = "_loc_only";
+	public static final String LOCATION = "_loc";
 	
 	public QuestRewardCompanion(GameObject go) {
 		super(go);
@@ -47,6 +57,19 @@ public class QuestRewardCompanion extends QuestReward {
 			character.addHireling(companion,Constants.TEN_YEARS);
 			character.getGameObject().add(companion);
 			character.getCurrentLocation().clearing.add(companion,null);
+			if (locationOnly()) {
+				QuestLocation loc = getQuestLocation();
+				ArrayList<TileLocation> validLocations = new ArrayList<TileLocation>();
+				validLocations = loc.fetchAllLocations(frame, character, getGameData());
+				if(validLocations.isEmpty()) {
+					logger.fine("QuestLocation "+loc.getName()+" doesn't have any valid locations!");
+					return;
+				}
+				int random = RandomNumber.getRandom(validLocations.size());
+				TileLocation tileLocation = validLocations.get(random);
+				tileLocation.clearing.add(companion,null);
+			}
+			
 		}
 		else {
 			GamePool pool = new GamePool(character.getGameObject().getHold());
@@ -69,11 +92,15 @@ public class QuestRewardCompanion extends QuestReward {
 		StringBuilder sb = new StringBuilder();
 		sb.append(getCompanionKeyName());
 		if (getGainType()==GainType.Gain) {
-			sb.append(" joins as a companion.");
+			sb.append(" joins as a companion");
+			if (locationOnly() ) {
+				sb.append(" in "+getQuestLocation().getName());
+			}
 		}
 		else {
-			sb.append(" leaves the character.");
+			sb.append(" leaves the character");
 		}
+		sb.append(".");
 		return sb.toString();
 	}
 
@@ -95,5 +122,31 @@ public class QuestRewardCompanion extends QuestReward {
 	
 	private boolean excludeHorse() {
 		return getBoolean(EXCLUDE_HORSE);
+	}
+	
+	private boolean locationOnly() {
+		return getBoolean(LOCATION_ONLY);
+	}
+
+	public boolean usesLocationTag(String tag) {
+		QuestLocation loc = getQuestLocation();
+		return loc!=null && tag.equals(loc.getName());
+	}
+	public QuestLocation getQuestLocation() {
+		String id = getString(LOCATION);
+		if (id!=null) {
+			GameObject go = getGameData().getGameObject(Long.valueOf(id));
+			if (go!=null) {
+				return new QuestLocation(go);
+			}
+		}
+		return null;
+	}
+	
+	public void setQuestLocation(QuestLocation location) {
+		setString(LOCATION,location.getGameObject().getStringId());
+	}
+	public void updateIds(Hashtable<Long, GameObject> lookup) {
+		updateIdsForKey(lookup,LOCATION);
 	}
 }
