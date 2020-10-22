@@ -39,8 +39,7 @@ public class QuestRewardSpellEffect extends QuestReward {
 	
 	public static final String SPELL_REGEX = "_spellrx";
 	public static final String AFFECT_CHARACTER = "_affchar";
-	public static final String AFFECT_CHARACTERS_TILE = "_affchartile";
-	public static final String AFFECT_CHARACTERS_CLEARING = "_affchartile";
+	public static final String AFFECT_ALL_TARGETS_IN_CHARACTERS_CLEARING = "_aff_all_targets_at_char";
 	public static final String TARGET_REGEX = "_targetrx";
 	public static final String EXPIRE_IMMEDIATELY = "_eximdtly";
 	public static final String AFFECT_HIRELINGS = "_affh";
@@ -85,26 +84,28 @@ public class QuestRewardSpellEffect extends QuestReward {
 				if (!targetMustBeInLocation() || loc == null || loc.locationMatchAddress(frame, character)) {
 					spell.addTarget(hostPref, character.getGameObject());
 			}
+				
+			ArrayList<RealmComponent> validTargets = new ArrayList<RealmComponent>();
+			if (affectAllTargetsInCharactersLocation()) {
+				TileLocation location = character.getCurrentLocation();
+				validTargets.addAll(location.clearing.getClearingComponents());
+			}	
 			if (affectAllTargetsInLocation()) {
 				ArrayList<TileLocation> validLocations = loc.fetchAllLocations(frame, character, character.getGameData());
 				for (TileLocation location : validLocations) {
-					ArrayList<RealmComponent> validTargets = location.clearing.getClearingComponents();
-					for (RealmComponent validTarget : validTargets) {
-						if (validTarget.toString().matches(getTargetRegex())) {
-							targets.add(validTarget.getGameObject());
-						}
-					}
+					validTargets.addAll(location.clearing.getClearingComponents());
 				}
 			}
 			if (affectTargetsInRandomLocation()) {
 				ArrayList<TileLocation> validLocations = loc.fetchAllLocations(frame, character, character.getGameData());
 				int random = RandomNumber.getRandom(validLocations.size());
 				TileLocation location = validLocations.get(random);
-				ArrayList<RealmComponent> validTargets = location.clearing.getClearingComponents();
-				for (RealmComponent validTarget : validTargets) {
-					if (validTarget.getName().matches(getTargetRegex())) {
-						targets.add(validTarget.getGameObject());
-					}
+				validTargets.addAll(location.clearing.getClearingComponents());
+	
+			}
+			for (RealmComponent validTarget : validTargets) {
+				if (getTargetRegex().isEmpty() || validTarget.getName().matches(getTargetRegex())) {
+					targets.add(validTarget.getGameObject());
 				}
 			}
 				
@@ -162,6 +163,9 @@ public class QuestRewardSpellEffect extends QuestReward {
 	}
 	private Boolean affectCharacter() {
 		return getBoolean(AFFECT_CHARACTER);
+	}
+	private Boolean affectAllTargetsInCharactersLocation() {
+		return getBoolean(AFFECT_ALL_TARGETS_IN_CHARACTERS_CLEARING);
 	}
 	private String getTargetRegex() {
 		return getString(TARGET_REGEX);

@@ -173,6 +173,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case SpellEffect:
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.SPELL_REGEX, "Spell", FieldType.Regex, null, new String[] { "spell" }));
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.AFFECT_CHARACTER, "Affect character", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.AFFECT_ALL_TARGETS_IN_CHARACTERS_CLEARING, "Affect all targets in characters clearing", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.TARGET_REGEX, "Affect targets", FieldType.Regex, null, new String[] { "vulnerability" }));
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.EXPIRE_IMMEDIATELY, "Expire immediately", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.AFFECT_HIRELINGS, "Affect hirelings", FieldType.Boolean));
