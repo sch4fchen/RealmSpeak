@@ -18,24 +18,32 @@
 package com.robin.magic_realm.components.quest.reward;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
+import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.ChitAcquisitionType;
+import com.robin.magic_realm.components.quest.QuestLocation;
+import com.robin.magic_realm.components.quest.QuestStep;
 import com.robin.magic_realm.components.quest.TermOfHireType;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRewardHireling extends QuestReward {
-
+	private static Logger logger = Logger.getLogger(QuestStep.class.getName());
 	public static final String HIRELING_REGEX = "_hrx";
 	public static final String ACQUISITION_TYPE = "_goc";
 	public static final String TERM_OF_HIRE = "_toh";
+	public static final String LOCATION_ONLY = "_loc_only";
+	public static final String LOCATION = "_loc";
 
 	public QuestRewardHireling(GameObject go) {
 		super(go);
@@ -83,15 +91,28 @@ public class QuestRewardHireling extends QuestReward {
 			selected.setThisAttribute(Constants.HIRELING);
 			TermOfHireType termofHire = getTermOfHireType();
 			RealmComponent rc = RealmComponent.getRealmComponent(selected);
-			if (termofHire != TermOfHireType.PlaceInClearing) {
+			if (termofHire == TermOfHireType.Normal || termofHire == TermOfHireType.Permanent) {
 				if (!rc.isNativeLeader()) {
 					character.getGameObject().add(selected);
 				}
 				character.addHireling(selected, termofHire == TermOfHireType.Normal ? Constants.TERM_OF_HIRE : Constants.TEN_YEARS); // permanent enough? :-)
 				character.getCurrentLocation().clearing.add(selected,null);
 			}
-			else {
-				character.getCurrentLocation().clearing.add(selected,character);
+			else if (termofHire == TermOfHireType.PlaceInClearing) {
+					character.getCurrentLocation().clearing.add(selected,character);
+			}
+			
+			if (locationOnly()) {
+				QuestLocation loc = getQuestLocation();
+				ArrayList<TileLocation> validLocations = new ArrayList<TileLocation>();
+				validLocations = loc.fetchAllLocations(frame, character, getGameData());
+				if(validLocations.isEmpty()) {
+					logger.fine("QuestLocation "+loc.getName()+" doesn't have any valid locations!");
+					return;
+				}
+				int random = RandomNumber.getRandom(validLocations.size());
+				TileLocation tileLocation = validLocations.get(random);
+				tileLocation.clearing.add(selected,null);
 			}
 		}
 	}
@@ -119,16 +140,20 @@ public class QuestRewardHireling extends QuestReward {
 		sb.append(getHirelingRegex());
 		ChitAcquisitionType at = getAcquisitionType();
 		if (at == ChitAcquisitionType.Lose) {
-			sb.append(" leaves the character.");
+			sb.append(" leaves the character");
 		}
 		else if (getTermOfHireType() == TermOfHireType.PlaceInClearing) {
-			sb.append(" is placed in the characters clearing.");
+			sb.append(" is placed in the clearing");
 		}
 		else {
 			sb.append(" joins as a ");
 			sb.append(getTermOfHireType().toString().toLowerCase());
-			sb.append(" hireling.");
+			sb.append(" hireling");
 		}
+		if (locationOnly()) {
+			sb.append(" in "+getQuestLocation().getName());
+		}
+		sb.append(".");
 		return sb.toString();
 	}
 
@@ -143,8 +168,34 @@ public class QuestRewardHireling extends QuestReward {
 	private TermOfHireType getTermOfHireType() {
 		return TermOfHireType.valueOf(getString(TERM_OF_HIRE));
 	}
+	
+	private boolean locationOnly() {
+		return getBoolean(LOCATION_ONLY);
+	}
 
 	private String getHirelingRegex() {
 		return getString(HIRELING_REGEX);
+	}
+	
+	public boolean usesLocationTag(String tag) {
+		QuestLocation loc = getQuestLocation();
+		return loc!=null && tag.equals(loc.getName());
+	}
+	public QuestLocation getQuestLocation() {
+		String id = getString(LOCATION);
+		if (id!=null) {
+			GameObject go = getGameData().getGameObject(Long.valueOf(id));
+			if (go!=null) {
+				return new QuestLocation(go);
+			}
+		}
+		return null;
+	}
+	
+	public void setQuestLocation(QuestLocation location) {
+		setString(LOCATION,location.getGameObject().getStringId());
+	}
+	public void updateIds(Hashtable<Long, GameObject> lookup) {
+		updateIdsForKey(lookup,LOCATION);
 	}
 }

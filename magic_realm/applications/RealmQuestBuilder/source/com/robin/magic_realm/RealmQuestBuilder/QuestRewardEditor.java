@@ -111,6 +111,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardHireling.HIRELING_REGEX, "Native RegEx", FieldType.Regex, null, new String[] { "native,rank" }));
 				list.add(new QuestPropertyBlock(QuestRewardHireling.ACQUISITION_TYPE, "Method to acquire hireling", FieldType.StringSelector, ChitAcquisitionType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardHireling.TERM_OF_HIRE, "Term of hire", FieldType.StringSelector, TermOfHireType.values()));
+				list.add(new QuestPropertyBlock(QuestRewardHireling.LOCATION_ONLY, "Apper in location", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardHireling.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
 			case Information:
 				list.add(new QuestPropertyBlock(QuestRewardInformation.INFORMATION_TEXT, "Information to provide", FieldType.TextArea));
