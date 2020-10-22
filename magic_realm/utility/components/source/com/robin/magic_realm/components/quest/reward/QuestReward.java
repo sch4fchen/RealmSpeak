@@ -51,6 +51,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		Counter,
 		Curse,
 		Damage,
+		DiscoverTreasureSite,
 		EnchantTile,
 		FindHiddenEnemies,
 		Guild,
@@ -110,6 +111,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case Counter:					return "Modify count value of a counter.";
 				case Curse:						return "Curses the character.";
 				case Damage:					return "Character receives fatigue or wounds.";
+				case DiscoverTreasureSite:		return "Character discovers treasure site(s).";
 				case EnchantTile:				return "Enchants (or unenchants) characters tile and/or tile(s) of a location.";
 				case FindHiddenEnemies:			return "Character finds hidden enemies.";
 				case Guild	:					return "Sets the characters guild and guild level.";
@@ -280,6 +282,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case Damage:
 				reward = new QuestRewardDamage(go);
+				break;
+			case DiscoverTreasureSite:
+				reward = new QuestRewardDiscoverTreasureSite(go);
 				break;
 			case EnchantTile:
 				reward = new QuestRewardEnchantTile(go);

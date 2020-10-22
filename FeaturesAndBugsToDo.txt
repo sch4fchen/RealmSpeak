@@ -1,5 +1,4 @@
 ::RealmSpeak::
-Reward: Discovery e.g. TreasureSite, at clearing/tile/location
 Reward: Item to location; Item: clone item? or steal?; Destroy item (optional: must be in inventory of character)
 Reward: Gain Custom Treasure: CustomTreasure // Pick a treasure, clone, and rename it
 Reward: SummonFromAppearance: I'd think that either specifying a sound or warning chit and summoning to the tile if it's there, or specifying a monster and summoning it to its sound or warning chit (if it's in the tile) would be the way to go.
