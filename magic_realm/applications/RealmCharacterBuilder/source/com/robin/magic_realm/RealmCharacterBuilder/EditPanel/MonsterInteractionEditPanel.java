@@ -23,6 +23,7 @@ import java.util.*;
 
 import javax.swing.*;
 
+import com.robin.general.swing.ComponentTools;
 import com.robin.general.swing.IntegerField;
 import com.robin.general.util.StringBufferedList;
 import com.robin.magic_realm.components.utility.Constants;
@@ -64,6 +65,7 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 			duration = getAttribute(Constants.MONSTER_CONTROL_DURATION);
 			durationComponent = new IntegerField(duration == null ? "1" : duration);
 			durationComponent.setVisible(true);
+			ComponentTools.lockComponentSize(durationComponent,36,18);
 			box.add(durationComponent);
 			add(box,"North");
 		}
