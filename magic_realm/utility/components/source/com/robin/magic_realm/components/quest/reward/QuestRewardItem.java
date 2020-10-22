@@ -71,9 +71,15 @@ public class QuestRewardItem extends QuestReward {
 		if (isGain) {
 			Loot.addItemToCharacter(frame,null,character,selected);
 		}
+		if (getGainType()==ItemGainType.GainCloned) {
+			GameObject newitem = selected.copy();
+			Loot.addItemToCharacter(frame,null,character,newitem);
+		}
 		else {
 			if (TreasureUtility.doDeactivate(null,character,selected)) { // null JFrame so that character isn't hit with any popups
 				switch (getGainType()) {
+				case Destroy:
+					character.getGameData().removeObject(selected);
 				case LoseToClearing:
 					TileLocation location = character.getCurrentLocation();
 					if (location.clearing == null) {
