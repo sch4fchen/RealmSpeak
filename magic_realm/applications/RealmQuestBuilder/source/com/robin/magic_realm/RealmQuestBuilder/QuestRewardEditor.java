@@ -147,6 +147,15 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardMinorCharacter.MINOR_CHARACTER, "Minor character ", FieldType.SmartTextLine, quest.getMinorCharacters().toArray()));
 				list.add(new QuestPropertyBlock(QuestRewardMinorCharacter.GAIN_TYPE, "Gain or lose", FieldType.StringSelector, GainType.values()));
 				break;
+			case MoveDenizen:
+				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.DENIZEN_REGEX, "Denizen", FieldType.Regex, null, new String[] { "denizen" }));
+				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_TO_SAME_CLEARING, "Move all to same clearing", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
+				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_HIRELINGS, "Move hirelings", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_COMPANIONS, "Move companions", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_SUMMONED, "Move summoned monsters", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_LIMITED, "Move ONLY those (see above)", FieldType.Boolean));
+				break;
 			case PathsPassages:
 				list.add(new QuestPropertyBlock(QuestRewardPathsPassages.DISCOVERY_TYPE, "Road type to discover", FieldType.StringSelector, RoadDiscoveryType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardPathsPassages.DISCOVERY_SCOPE, "Scope of discovery", FieldType.StringSelector, MapScopeType.values()));
@@ -205,7 +214,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardSummonRoll.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));
 				break;
 			case Teleport:
-				list.add(new QuestPropertyBlock(QuestRequirementLocation.LOCATION, "Teleport to", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
+				list.add(new QuestPropertyBlock(QuestRewardTeleport.LOCATION, "Teleport to", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
 			case TreasureFromHq:
 				list.add(new QuestPropertyBlock(QuestRewardTreasureFromHq.HQ_REGEX, "HQ RegEx", FieldType.Regex, null, new String[] { "rank=HQ" }));

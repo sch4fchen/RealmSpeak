@@ -1,7 +1,5 @@
 ::RealmSpeak::
-Done button bug
 Reward: Hireling+Companion: To Location (+extend location functionality)
-Reward: Move denizen (cloned/companion or not) to random location
 Reward: Discovery (path, treasureSite etc.), at clearing/tile/location (check PathPassages Reward)
 Reward: Item to location; Item: clone item? or steal?; Destroy item (optional: must be in inventory of character)
 Reward: Gain Custom Treasure: CustomTreasure // Pick a treasure, clone, and rename it

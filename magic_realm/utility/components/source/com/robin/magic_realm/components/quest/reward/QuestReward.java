@@ -63,6 +63,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		LostInventoryToLocation,
 		MarkDenizen,
 		MinorCharacter,
+		MoveDenizen,
 		PathsPassages,
 		PowerOfThePit,
 		QuestComplete,
@@ -120,6 +121,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case LostInventoryToLocation:	return "All future lost inventory from this quest will go to a specified location.";
 				case MarkDenizen:				return "Mark a particular denizen for later reference.  This is useful if you want to make sure a character kills (for example) a particular monster.";
 				case MinorCharacter:			return "Add or remove a Minor Character.  Must create Minor Characters BEFORE creating this reward.";
+				case MoveDenizen	:			return "Moves one or several denizen to a location.";
 				case PathsPassages:				return "Discover Paths and/or Passages in the current clearing or tile.";
 				case PowerOfThePit:				return "Grants the character a Power of the Pit.";
 				case QuestComplete:				return "Tells RealmSpeak that the character has completed this quest.";
@@ -144,7 +146,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 			return "(No Description)";
 		}
 		public boolean requiresLocations() {
-			return this==Teleport || this==SummonGuardian || this==LostInventoryToLocation;
+			return this==LostInventoryToLocation || this == MoveDenizen || this==SummonGuardian || this==Teleport;
 		}
 	}
 	
@@ -312,6 +314,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case MinorCharacter:
 				reward = new QuestRewardMinorCharacter(go);
+				break;
+			case MoveDenizen:
+				reward = new QuestRewardMoveDenizen(go);
 				break;
 			case PathsPassages:
 				reward = new QuestRewardPathsPassages(go);

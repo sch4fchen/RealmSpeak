@@ -5,6 +5,7 @@ QUEST UPDATE:
 # QuestRequirement: Hirelings
 # QuestRequirement: Enchant action
 # QuestReward: Enchant tile(s)
+# QuestReward: Move denizen
 # QuestRewardCurse: Option to remove all curses from character
 # QuestRewardSummonMonster: Option to summon monster to a location
 # QuestRewardKillDenizen: Option to kill only denizens in a location
