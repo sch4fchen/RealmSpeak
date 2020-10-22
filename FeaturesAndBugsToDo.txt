@@ -1,5 +1,4 @@
 ::RealmSpeak::
-MonsterControl: Duration
 Done button bug
 Reward: Hireling+Companion: To Location (+extend location functionality)
 Reward: Move denizen (cloned/companion or not) to random location

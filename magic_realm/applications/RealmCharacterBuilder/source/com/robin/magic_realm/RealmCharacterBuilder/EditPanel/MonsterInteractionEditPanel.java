@@ -23,6 +23,7 @@ import java.util.*;
 
 import javax.swing.*;
 
+import com.robin.general.swing.IntegerField;
 import com.robin.general.util.StringBufferedList;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -45,15 +46,28 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 
 	private Hashtable<String,JCheckBox> hash;
 	private String selection;
+	private String duration;
+	JTextField durationComponent = new JTextField("Duration");
 	
-	public MonsterInteractionEditPanel(CharacterWrapper pChar, String levelKey, String selection) {
+	public MonsterInteractionEditPanel(CharacterWrapper pChar, String levelKey, String selected) {
 		super(pChar, levelKey);
-		this.selection = selection;
+		this.selection = selected;
 		setBorder(BorderFactory.createTitledBorder(toString())); // update name
 		
 		hash = new Hashtable<String,JCheckBox>();
 		setLayout(new BorderLayout());
-				
+		
+		if (controlSelected()) {
+			Box box = Box.createHorizontalBox();
+			JLabel label = new JLabel("Duration (empty or 0 = forever):  ");
+			box.add(label);
+			duration = getAttribute(Constants.MONSTER_CONTROL_DURATION);
+			durationComponent = new IntegerField(duration == null ? "1" : duration);
+			durationComponent.setVisible(true);
+			box.add(durationComponent);
+			add(box,"North");
+		}
+		
 		JPanel main = new JPanel(new GridLayout(1,5));
 		
 		Box box = Box.createVerticalBox();
@@ -140,6 +154,8 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 		}
 		else if (controlSelected()) {
 			setAttributeList(Constants.MONSTER_CONTROL,list);
+			duration = durationComponent.getText();
+			setAttribute(Constants.MONSTER_CONTROL_DURATION,duration == null || duration == "0" ? String.valueOf(Constants.TEN_YEARS) : duration);
 		}
 	}
 	public String getSuggestedDescription() {

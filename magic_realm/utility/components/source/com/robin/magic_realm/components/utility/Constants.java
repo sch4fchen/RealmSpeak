@@ -186,6 +186,7 @@ public class Constants {
 	public static final String WALK_WOODS = "walk_woods";
 	public static final String MONSTER_IMMUNITY = "monster_immunity";
 	public static final String MONSTER_CONTROL = "monster_control";
+	public static final String MONSTER_CONTROL_DURATION = "monster_control_duration";
 	public static final String BONUS_CHIT = "bonus_chit";
 	public static final String SPECIAL_ACTION = "special_action";
 	public static final String BONUS_INVENTORY = "bonus_inv";

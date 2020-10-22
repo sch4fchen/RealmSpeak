@@ -91,21 +91,22 @@ public class BattlesWrapper extends GameObjectWrapper {
 			ArrayList<RealmComponent> combatants = tl.clearing.getClearingComponents();
 			for (RealmComponent monster : combatants) {
 				if (monster.isCharacter()) continue;
-				ArrayList<CharacterWrapper> characterCanControl = new ArrayList<CharacterWrapper>();
+				ArrayList<RealmComponent> characterCanControl = new ArrayList<RealmComponent>();
 				for (RealmComponent characterRc : combatants) {
 					if (!characterRc.isCharacter()) continue;
-					CharacterWrapper characterWrapper = new CharacterWrapper(characterRc.getGameObject());
 						for (Object monsterType : characterRc.getControllableMonsters() ) {
 							if (monster.toString().matches(monsterType.toString())) {
-								if (!characterCanControl.contains(characterWrapper)) {
-									characterCanControl.add(characterWrapper);
+								if (!characterCanControl.contains(characterRc)) {
+									characterCanControl.add(characterRc);
 								}
 							}
 						}
 
 				}
 				if (characterCanControl.toArray().length == 1) { // only if exactly one character can control this monster
-					characterCanControl.get(0).addHireling(monster.getGameObject(), 1);
+					CharacterWrapper characterWrapper = new CharacterWrapper(characterCanControl.get(0).getGameObject());
+					int duration = characterCanControl.get(0).getControllableMonstersDuration();
+					characterWrapper.addHireling(monster.getGameObject(), duration);
 				}
 			}
 			

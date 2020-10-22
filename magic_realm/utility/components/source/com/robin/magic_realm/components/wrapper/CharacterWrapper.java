@@ -2487,6 +2487,19 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return lowest;
 	}
+	public Integer getHighestIntegerForActiveInventoryKey(String key) {
+		Integer highest = null;
+		if (getGameObject().hasThisAttribute(key)) {
+			highest = getGameObject().getThisInt(key);
+		}
+		for (GameObject go:getAllActiveInventoryThisKeyAndValue(key,null)) {
+			Integer num = go.getInteger("this",key);
+			if (highest==null || num.intValue()>highest.intValue()) {
+				highest = num;
+			}
+		}
+		return highest;
+	}
 	public int getReplaceFight() {
 		Integer num = getLowestIntegerForActiveInventoryKey(Constants.REPLACE_FIGHT);
 		return num==null?0:num.intValue();

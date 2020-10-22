@@ -1058,6 +1058,18 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		}
 		return controls;
 	}
+	public int getControllableMonstersDuration() {
+		int duration = 0;
+		if (getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL_DURATION)) {
+			duration = getGameObject().getThisInt(Constants.MONSTER_CONTROL_DURATION);
+		}
+		if (isCharacter()) {
+			CharacterWrapper character = new CharacterWrapper(getGameObject());
+			int inventoryDuration = character.getHighestIntegerForActiveInventoryKey(Constants.MONSTER_CONTROL_DURATION);
+			duration = Math.max(duration, inventoryDuration);
+		}
+		return duration;
+	}
 	public String getFacing() {
 		return getGameObject().getThisAttribute(Constants.FACING_KEY);
 	}
