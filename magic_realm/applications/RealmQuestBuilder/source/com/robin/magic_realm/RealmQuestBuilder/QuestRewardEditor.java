@@ -102,6 +102,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardEnchantTile.AFFECT_LOCATION, "Affect location", FieldType.StringSelector, new String[] {QuestRewardEnchantTile.NONE,QuestRewardEnchantTile.RANDOM_TILE,QuestRewardEnchantTile.ALL_TILES} ));
 				list.add(new QuestPropertyBlock(QuestRewardEnchantTile.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
+			case FindHiddenEnemies:
+				break;
 			case Guild:
 				list.add(new QuestPropertyBlock(QuestRewardGuild.GUILD, "Guild", FieldType.StringSelector, getGuildNames()));
 				list.add(new QuestPropertyBlock(QuestRewardGuild.GUILD_LEVEL, "Guild level (1-3)", FieldType.Number));
@@ -163,6 +165,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case PathsPassages:
 				list.add(new QuestPropertyBlock(QuestRewardPathsPassages.DISCOVERY_TYPE, "Road type to discover", FieldType.StringSelector, RoadDiscoveryType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardPathsPassages.DISCOVERY_SCOPE, "Scope of discovery", FieldType.StringSelector, MapScopeType.values()));
+				list.add(new QuestPropertyBlock(QuestRewardPathsPassages.LOCATION_ONLY, "Only in location", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardPathsPassages.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
 			case PowerOfThePit:
 				list.add(new QuestPropertyBlock(QuestRewardPowerOfThePit.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));

@@ -53,6 +53,7 @@ public class QuestRewardSummonMonster extends QuestReward {
 		monster.setThisAttribute(Constants.SUMMONED);
 		if (locationOnly()) {
 			QuestLocation loc = getQuestLocation();
+			if (loc == null) return;
 			ArrayList<TileLocation> validLocations = new ArrayList<TileLocation>();
 			validLocations = loc.fetchAllLocations(frame, character, getGameData());
 			if(validLocations.isEmpty()) {

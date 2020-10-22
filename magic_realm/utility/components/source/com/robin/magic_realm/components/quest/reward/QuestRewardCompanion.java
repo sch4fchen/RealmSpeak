@@ -59,6 +59,7 @@ public class QuestRewardCompanion extends QuestReward {
 			character.getCurrentLocation().clearing.add(companion,null);
 			if (locationOnly()) {
 				QuestLocation loc = getQuestLocation();
+				if (loc == null) return;
 				ArrayList<TileLocation> validLocations = new ArrayList<TileLocation>();
 				validLocations = loc.fetchAllLocations(frame, character, getGameData());
 				if(validLocations.isEmpty()) {

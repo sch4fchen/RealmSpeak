@@ -7,6 +7,7 @@ QUEST UPDATE:
 # QuestReward: Enchant tile(s)
 # QuestReward: Move denizen
 # QuestReward: Find hidden enemies
+# QuestRewardPathsPassages: Option find paths and passages in a location
 # QuestRewardCurse: Option to remove all curses from character
 # QuestRewardSummonMonster: Option to summon monster to a location
 # QuestRewardHireling: Option to add hireling to a location
