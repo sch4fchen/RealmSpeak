@@ -23,5 +23,5 @@ public enum ItemGainType {
 	LoseToClearing,
 	LoseToLocation,
 	LoseToChartOfAppearance,
-	Destroy,
+	RemoveFromGame,
 }

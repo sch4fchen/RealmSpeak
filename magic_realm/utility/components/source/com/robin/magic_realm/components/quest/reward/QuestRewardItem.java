@@ -78,7 +78,7 @@ public class QuestRewardItem extends QuestReward {
 		else {
 			if (TreasureUtility.doDeactivate(null,character,selected)) { // null JFrame so that character isn't hit with any popups
 				switch (getGainType()) {
-				case Destroy:
+				case RemoveFromGame:
 					character.getGameData().removeObject(selected);
 				case LoseToClearing:
 					TileLocation location = character.getCurrentLocation();
