@@ -623,7 +623,7 @@ public class QuestBuilderFrame extends JFrame {
 		//		optionsPane.addTab("Quest Rules", buildQuestRulesPanel());
 		buildQuestRulesPanel(); // just so there are no NPEs
 		optionsPane.addTab("Locations", buildLocationPanel());
-		optionsPane.addTab("Minor Characters", buildMinorCharacterPanel());
+		optionsPane.addTab("Minor Characters (+ability)", buildMinorCharacterPanel());
 		optionsPane.addTab("Counters", buildCounterPanel());
 		return optionsPane;
 	}
