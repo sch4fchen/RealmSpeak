@@ -32,6 +32,7 @@ import com.robin.magic_realm.components.quest.ItemGainType;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.table.Loot;
 import com.robin.magic_realm.components.utility.ClearingUtility;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.TreasureUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -73,6 +74,7 @@ public class QuestRewardItem extends QuestReward {
 		}
 		if (getGainType()==ItemGainType.GainCloned) {
 			GameObject newitem = selected.copy();
+			newitem.setThisAttribute(Constants.CLONED);
 			Loot.addItemToCharacter(frame,null,character,newitem);
 		}
 		else {
