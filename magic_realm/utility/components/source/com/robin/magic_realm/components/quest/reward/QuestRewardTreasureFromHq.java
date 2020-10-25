@@ -31,6 +31,7 @@ import com.robin.magic_realm.components.quest.DrawType;
 import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.table.Loot;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.SetupCardUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -48,17 +49,23 @@ public class QuestRewardTreasureFromHq extends QuestReward {
 		GamePool pool = new GamePool(getGameData().getGameObjects());
 		ArrayList<GameObject> sourceObjects = pool.find("rank=HQ");
 		ArrayList<GameObject> objects = getObjectList(sourceObjects,getHqRegex());
-		if (objects.isEmpty()) {
+		ArrayList<GameObject> validObjects = new ArrayList<GameObject>();
+		for (GameObject object : objects) {
+			if (!object.hasThisAttribute(Constants.CLONED)) {
+				validObjects.add(object);
+			}
+		}
+		if (validObjects.isEmpty()) {
 			JOptionPane.showMessageDialog(frame,"The HQ specified by the reward was not found!","Quest Error",JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		GameObject selected = null;
-		if (objects.size()==1) {
-			selected = objects.get(0);
+		if (validObjects.size()==1) {
+			selected = validObjects.get(0);
 		}
 		else {
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,getTitleForDialog()+" Select a HQ to recieve treasure from:",false);
-			chooser.addGameObjects(objects,true);
+			chooser.addGameObjects(validObjects,true);
 			chooser.setVisible(true);
 			selected = chooser.getFirstSelectedComponent().getGameObject();
 		}
