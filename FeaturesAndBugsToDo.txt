@@ -1,6 +1,6 @@
 ::RealmSpeak::
 Reward: Extra chit
-Reward: SummonFromAppearance: I'd think that either specifying a sound or warning chit and summoning to the tile if it's there, or specifying a monster and summoning it to its sound or warning chit (if it's in the tile) would be the way to go.
+Reward: SummonFromAppearance
 Recycle Non-All-Play Zero Point Quests (Event Cards)
 
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php

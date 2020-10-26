@@ -26,7 +26,6 @@ import com.robin.magic_realm.RealmCharacterBuilder.EditPanel.CompanionEditPanel;
 import com.robin.magic_realm.RealmQuestBuilder.QuestPropertyBlock.FieldType;
 import com.robin.magic_realm.components.attribute.RelationshipType;
 import com.robin.magic_realm.components.quest.*;
-import com.robin.magic_realm.components.quest.requirement.QuestRequirementLocation;
 import com.robin.magic_realm.components.quest.reward.*;
 
 public class QuestRewardEditor extends QuestBlockEditor {
@@ -232,6 +231,13 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardSummonMonster.SUMMON_TO_LOCATION, "Summon to location", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardSummonMonster.RANDOM_LOCATION, "Random clearing of location", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardSummonMonster.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
+				break;
+			case SummonFromAppearance:
+				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearance.CHIT, "Chit", FieldType.Regex, null, new String[] { "warning", "sound", "treasure_location", "dwelling" }));
+				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearance.DENIZEN, "Denizen", FieldType.Regex, null, new String[] { "vulnerability", "setup_start" }));
+				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearance.SUMMON_LIVING_DENIZENS, "Summon living denizens", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearance.SUMMON_TO, "Summon to", FieldType.StringSelector, QuestRewardSummonFromAppearance.SummonTo.values()));
+				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearance.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
 			case SummonRoll:
 				list.add(new QuestPropertyBlock(QuestRewardSummonRoll.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));

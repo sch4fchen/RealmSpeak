@@ -353,6 +353,14 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		return false;
 	}
 	
+	public boolean isSound() {
+		return (this instanceof SoundChitComponent);
+	}
+	
+	public boolean isWarning() {
+		return (this instanceof WarningChitComponent);
+	}
+	
 	public boolean hasMagicProtection() {
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
 		return character.hasMagicProtection();

@@ -74,12 +74,12 @@ public abstract class QuestReward extends AbstractQuestObject {
 		RelationshipSet,
 		ResetQuest,
 		ScareMonsters, 
-		//Skill, // special ability (adv/disadv)  The more I think about this, this could be accomplished by providing a treasure, or minor character
 		SpellEffect,
 		SpellFromSite,
 		StripInventory,
 		SummonGuardian,
 		SummonMonster,
+		SummonFromAppearance,
 		SummonRoll,
 		Teleport,
 		TreasureFromHq,
@@ -138,7 +138,8 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case SpellFromSite:				return "Learn a spell from a specific site, book, artifact, or Shaman.";
 				case StripInventory:			return "Removes ALL inventory and (optionally) gold from the character (placed to location defined by 'LostInventoryToLocation/Default').";
 				case SummonGuardian:			return "For a specific quest location, summon the treasure site guardian (if any)";
-				case SummonMonster:				return "Summon a specific Monster to the characters clearing.";
+				case SummonMonster:				return "Summon a specific monster to the characters clearing.";
+				case SummonFromAppearance:		return "Summon a specific monster from the chart of appearance to a sound or warning chit.";
 				case SummonRoll:				return "Force a monster summoning roll with a specific number.";
 				case Teleport:					return "Teleport the character to a new location.  Must create a QuestLocation BEFORE creating this reward.";
 				case TreasureFromSite:			return "Gain a treasure from a specific site, dwelling, or Scholar.";
@@ -371,6 +372,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case SummonMonster:
 				reward = new QuestRewardSummonMonster(go);
+				break;
+			case SummonFromAppearance:
+				reward = new QuestRewardSummonFromAppearance(go);
 				break;
 			case SummonRoll:
 				reward = new QuestRewardSummonRoll(go);

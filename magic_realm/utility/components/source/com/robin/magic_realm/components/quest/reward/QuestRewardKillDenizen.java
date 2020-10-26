@@ -46,6 +46,7 @@ public class QuestRewardKillDenizen extends QuestReward {
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		ArrayList<GameObject> denizens = character.getGameData().getGameObjectsByNameRegex(getDenizenNameRegex());
 		for (GameObject denizen : denizens) {
+			if (!denizen.hasThisAttribute("vulnerability")) continue;
 			if (!killHirelings() && denizen.hasThisAttribute(Constants.HIRELING)) {
 				continue;
 			}
@@ -67,8 +68,8 @@ public class QuestRewardKillDenizen extends QuestReward {
 				}
 			}
 			else {
-			RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
-			RealmUtility.makeDead(denizenRc);
+				RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
+				RealmUtility.makeDead(denizenRc);
 			}
 		}
 	}

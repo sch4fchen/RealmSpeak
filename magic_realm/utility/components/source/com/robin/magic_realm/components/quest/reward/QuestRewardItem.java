@@ -82,17 +82,21 @@ public class QuestRewardItem extends QuestReward {
 				switch (getGainType()) {
 				case RemoveFromGame:
 					character.getGameData().removeObject(selected);
+					break;
 				case LoseToClearing:
 					TileLocation location = character.getCurrentLocation();
 					if (location.clearing == null) {
 						location.setRandomClearing();
 					}
 					ClearingUtility.moveToLocation(selected,location);
+					break;
 				case LoseToLocation:
 					lostItem(selected);
+					break;
 				default:
 				case LoseToChartOfAppearance:
 					lostItemToDefault(selected);
+					break;
 				}
 			}
 			else {
