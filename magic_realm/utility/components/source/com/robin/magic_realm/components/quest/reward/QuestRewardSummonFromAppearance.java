@@ -39,6 +39,8 @@ public class QuestRewardSummonFromAppearance extends QuestReward {
 	public static final String CHIT = "_chit";
 	public static final String DENIZEN = "_denizen";
 	public static final String SUMMON_LIVING_DENIZENS = "_summon_living_denizens";
+	public static final String MAX_DENIZENS = "_max_denizens";
+	public static final String MAX_DENIZEN_HOLDERS = "_max_denizen_holders";
 	public static final String SUMMON_TO = "_summon_to";
 	public static final String LOCATION = "_loc";
 	
@@ -55,6 +57,8 @@ public class QuestRewardSummonFromAppearance extends QuestReward {
 	}
 
 	public void processReward(JFrame frame,CharacterWrapper character) {
+		int summonedDenizens = 0;
+		ArrayList<GameObject> summonedDenizenHolders = new ArrayList<GameObject>();
 		ArrayList<TileLocation> allQuestLocations = new ArrayList<TileLocation>();
 		if (toLocation()) {
 			QuestLocation loc = getQuestLocation();
@@ -209,6 +213,12 @@ public class QuestRewardSummonFromAppearance extends QuestReward {
 					if (denizen.getHeldBy() == denizenHolder) {
 						clearingSummonTo.add(denizen, null);
 					}
+					summonedDenizens = summonedDenizens + 1;
+					if (summonedDenizens >= maxDenizens()) return;
+					if (!summonedDenizenHolders.contains(denizen)) {
+						summonedDenizenHolders.add(denizenHolder);
+					}
+					if (summonedDenizenHolders.size() >= maxDenizenHolders()) return;
 				}
 			}
 		}
@@ -249,6 +259,12 @@ public class QuestRewardSummonFromAppearance extends QuestReward {
 	}
 	private boolean summonLivingDenizens() {
 		return getBoolean(SUMMON_LIVING_DENIZENS);
+	}
+	private int maxDenizens() {
+		return getInt(MAX_DENIZENS);
+	}
+	private int maxDenizenHolders() {
+		return getInt(MAX_DENIZEN_HOLDERS);
 	}
 	
 	private SummonTo summonTo() {
