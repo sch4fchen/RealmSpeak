@@ -26,6 +26,7 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
+import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
@@ -142,10 +143,15 @@ public class QuestRewardSummonFromAppearance extends QuestReward {
 				validChits.addAll(pool.find(query));
 			}
 		}
-		
+
 		ArrayList<GameObject> validDenizens = new ArrayList<GameObject>();
 		if (!getDenizenName().isEmpty()) {
-			validDenizens = character.getGameData().getGameObjectsByNameRegex(getDenizenName());
+			ArrayList<GameObject> possibleDenizens = character.getGameData().getGameObjectsByNameRegex(getDenizenName());
+			for (GameObject denizen : possibleDenizens) {
+				if (denizen.hasThisAttribute("vulnerability") && denizen.hasThisAttribute("setup_start")) {
+					validDenizens.add(denizen);
+				}
+			}
 		}
 		else {
 			GamePool pool = new GamePool(getGameData().getGameObjects());
@@ -171,10 +177,11 @@ public class QuestRewardSummonFromAppearance extends QuestReward {
 				}
 				if (rcChit.isSound()) {
 					String soundsList = denizenHolder.getThisAttribute("summon");
+					if (soundsList == null) continue;
 					List<String> sounds = Arrays.asList(soundsList.split("\\s*,\\s*"));
-					String sound = chit.getThisAttribute("sound");;
+					String sound = chit.getThisAttribute("sound").toLowerCase();
 					for (String soundName : sounds) {
-						if (soundName.toLowerCase().matches(sound.toLowerCase())) {
+						if (soundName.toLowerCase().matches(sound)) {
 							int clearingNumber = chit.getThisInt("clearing");
 							clearingSummonTo = rcChit.getCurrentLocation().tile.getClearing(clearingNumber);
 							break;
@@ -182,15 +189,15 @@ public class QuestRewardSummonFromAppearance extends QuestReward {
 					}
 				}
 				if (rcChit.isWarning()) {
-					// Large Campfire, Stink
-					String warningsList = denizen.getThisAttribute("warning");
+					String warningsList = denizenHolder.getThisAttribute("summon");
+					if (warningsList == null) continue;
 					List<String> warnings = Arrays.asList(warningsList.split("\\s*,\\s*"));
-					String warning = chit.getThisAttribute("warning");;
+					String warning = chit.getName().toLowerCase();
 					for (String warningName : warnings) {
-						warningName = warningName.split("\\s+")[0];
-						if (warningName.toLowerCase().matches(warning.toLowerCase())) {
-							int clearingNumber = chit.getThisInt("clearing");
-							clearingSummonTo = rcChit.getCurrentLocation().tile.getClearing(clearingNumber);
+						if (warningName.toLowerCase().matches(warning)) {
+							ArrayList<ClearingDetail> clearings = rcChit.getCurrentLocation().tile.getClearings();
+							int random = RandomNumber.getRandom(clearings.size());
+							clearingSummonTo = rcChit.getCurrentLocation().tile.getClearing(random);
 						}
 					}
 				}
