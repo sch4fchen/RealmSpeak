@@ -48,8 +48,8 @@ public class QuestRewardSummonFromAppearance extends QuestReward {
 		Anywhere,
 		CharactersClearing,
 		CharactersTile,
-		LocationsClearings,
-		LocationsTiles
+		QuestLocationClearings,
+		QuestLocationTiles
 	}
 	
 	public QuestRewardSummonFromAppearance(GameObject go) {
@@ -84,14 +84,14 @@ public class QuestRewardSummonFromAppearance extends QuestReward {
 						validChits.add(chit);
 					};
 				break;
-				case LocationsClearings:
+				case QuestLocationClearings:
 					for (TileLocation tl : allQuestLocations)
 						if (rc.getCurrentLocation() == tl) {	
 							validChits.add(chit);
 							break;
 					};
 				break;
-				case LocationsTiles:
+				case QuestLocationTiles:
 					for (TileLocation tl : allQuestLocations)
 						if (rc.getCurrentLocation().tile == tl.tile) {	
 							validChits.add(chit);
@@ -108,7 +108,7 @@ public class QuestRewardSummonFromAppearance extends QuestReward {
 		else {
 			if (toLocation()) {
 				switch(summonTo()) {
-					case LocationsClearings:
+					case QuestLocationClearings:
 						for (TileLocation tl : allQuestLocations) {
 							ArrayList<RealmComponent> clearingComponents = tl.clearing.getClearingComponents();
 							for (RealmComponent rc : clearingComponents) {
@@ -118,7 +118,7 @@ public class QuestRewardSummonFromAppearance extends QuestReward {
 							}
 						};
 						break;
-					case LocationsTiles:
+					case QuestLocationTiles:
 						for (TileLocation tl : allQuestLocations) {
 							ArrayList<RealmComponent> clearingComponents = tl.tile.getAllClearingComponents();
 							for (RealmComponent rc : clearingComponents) {
@@ -271,7 +271,7 @@ public class QuestRewardSummonFromAppearance extends QuestReward {
 		return SummonTo.valueOf(getString(SUMMON_TO));
 	}
 	private boolean toLocation() {
-		return summonTo() == SummonTo.LocationsClearings || summonTo() == SummonTo.LocationsTiles;
+		return summonTo() == SummonTo.QuestLocationClearings || summonTo() == SummonTo.QuestLocationTiles;
 	}
 	
 	public RewardType getRewardType() {

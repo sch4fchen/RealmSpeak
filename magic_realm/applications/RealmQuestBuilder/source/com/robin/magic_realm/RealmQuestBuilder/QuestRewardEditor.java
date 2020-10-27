@@ -238,8 +238,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearance.SUMMON_LIVING_DENIZENS, "Summon living denizens", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearance.MAX_DENIZENS, "Max.# of summoned denizens", FieldType.Number));
 				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearance.MAX_DENIZEN_HOLDERS, "Max.# of monster boxes", FieldType.Number));
-				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearance.SUMMON_TO, "Summon to", FieldType.StringSelector, QuestRewardSummonFromAppearance.SummonTo.values()));
-				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearance.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
+				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearance.SUMMON_TO, "Chit location", FieldType.StringSelector, QuestRewardSummonFromAppearance.SummonTo.values()));
+				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearance.LOCATION, "Quest Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
 			case SummonRoll:
 				list.add(new QuestPropertyBlock(QuestRewardSummonRoll.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));
