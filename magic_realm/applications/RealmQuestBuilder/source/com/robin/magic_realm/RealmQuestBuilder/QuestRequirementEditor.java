@@ -55,6 +55,9 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 		ArrayList<QuestPropertyBlock> list = new ArrayList<QuestPropertyBlock>();
 		list.add(new QuestPropertyBlock(QuestRequirement.NOT,"NOT",FieldType.Boolean));
 		switch (requirement.getRequirementType()) {
+			case Action:
+				list.add(new QuestPropertyBlock(QuestRequirementAction.ACTION, "Action", FieldType.StringSelector, CharacterActionType.values()));
+				break;
 			case Active:
 				break;
 			case Attribute:

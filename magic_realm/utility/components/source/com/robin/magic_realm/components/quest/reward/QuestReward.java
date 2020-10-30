@@ -50,7 +50,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 		Curse,
 		CustomTreasure,
 		Damage,
+		DiscardQuest,
 		DiscoverTreasureSite,
+		DrawQuests,
 		EnchantTile,
 		FindHiddenEnemies,
 		Guild,
@@ -73,6 +75,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		RelationshipChange,
 		RelationshipSet,
 		ResetQuest,
+		ResetQuestToDeck,
 		ScareMonsters, 
 		SpellEffect,
 		SpellFromSite,
@@ -110,7 +113,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case Curse:						return "Curses the character.";
 				case CustomTreasure:			return "Create a new treasure by taking an existing treasure, renaming it, and giving it new base attributes.";
 				case Damage:					return "Character receives fatigue or wounds.";
+				case DiscardQuest:				return "Current quest is discarded.";
 				case DiscoverTreasureSite:		return "Character discovers treasure site(s).";
+				case DrawQuests:				return "Character draws quest card(s).";
 				case EnchantTile:				return "Enchants (or unenchants) characters tile and/or tile(s) of a location.";
 				case FindHiddenEnemies:			return "Character finds hidden enemies.";
 				case Guild	:					return "Sets the characters guild and guild level.";
@@ -133,6 +138,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case RelationshipChange:		return "Modify the relationship of the character with a particular native group, or all natives in the clearing.";
 				case RelationshipSet:			return "Set the relationship of the character with a particular native group, or all natives in the clearing.";
 				case ResetQuest:				return "Completely resets the quest, unmarking all quest steps and journal entries.";
+				case ResetQuestToDeck:			return "Resets the quest and shuffles it into the available quests again.";
 				case ScareMonsters:				return "Randomly move all monsters in current clearing to other clearings either in the same tile or other tiles, as defined.";
 				case SpellEffect:				return "Cast a spell effect on the character and/or other targets.";
 				case SpellFromSite:				return "Learn a spell from a specific site, book, artifact, or Shaman.";
@@ -286,8 +292,14 @@ public abstract class QuestReward extends AbstractQuestObject {
 			case Damage:
 				reward = new QuestRewardDamage(go);
 				break;
+			case DiscardQuest:
+				reward = new QuestRewardDiscardQuest(go);
+				break;
 			case DiscoverTreasureSite:
 				reward = new QuestRewardDiscoverTreasureSite(go);
+				break;
+			case DrawQuests:
+				reward = new QuestRewardDrawQuests(go);
 				break;
 			case EnchantTile:
 				reward = new QuestRewardEnchantTile(go);
@@ -354,6 +366,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case ResetQuest:
 				reward = new QuestRewardResetQuest(go);
+				break;
+			case ResetQuestToDeck:
+				reward = new QuestRewardResetQuestToDeck(go);
 				break;
 			case ScareMonsters:
 				reward = new QuestRewardScareMonsters(go);

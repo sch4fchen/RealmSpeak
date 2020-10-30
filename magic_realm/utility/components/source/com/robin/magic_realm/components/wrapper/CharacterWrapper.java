@@ -5026,6 +5026,22 @@ public class CharacterWrapper extends GameObjectWrapper {
 					}
 				}
 			}
+			else if (go.hasThisAttribute("quest_minor_chars") && go.hasThisAttribute("activated")) {
+				GameObjectBlockManager man = new GameObjectBlockManager(go);
+				GameObject bonusChit = man.extractGameObjectFromBlocks(Constants.BONUS_CHIT+"design",false);
+				if (bonusChit != null) {
+					bonusChit.setThisAttribute("icon_type",go.getThisAttribute("icon_type"));
+					bonusChit.setThisAttribute("icon_folder",go.getThisAttribute("icon_folder"));
+					bonusChit.setThisAttribute(Constants.CHIT_EARNED);
+					RealmComponent rc = RealmComponent.getRealmComponent(bonusChit);
+					CharacterActionChitComponent bonusActionChit = (CharacterActionChitComponent)rc;
+					if (!transmorphed || bonusActionChit.isColor()) { // if transmorphed, you only have color chits
+						if (stateId==-1 || bonusActionChit.getStateId()==stateId) {
+							list.add(bonusActionChit);
+						}
+					}
+				}
+			}
 		}
 		return list;
 	}

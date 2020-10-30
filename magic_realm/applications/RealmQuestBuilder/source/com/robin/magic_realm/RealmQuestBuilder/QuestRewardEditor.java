@@ -107,8 +107,12 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardDamage.DAMAGE_TYPE, "Damage Type", FieldType.StringSelector, DamageType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardDamage.AMOUNT, "Amount", FieldType.Number));
 				break;
+			case DiscardQuest:
+				break;
 			case DiscoverTreasureSite:
 				list.add(new QuestPropertyBlock(QuestRewardDiscoverTreasureSite.SITE_REGEX, "Treasure site", FieldType.Regex, null, new String[] { "treasure_location" }));
+				break;
+			case DrawQuests:
 				break;
 			case EnchantTile:
 				list.add(new QuestPropertyBlock(QuestRewardEnchantTile.UNENCHANT, "Unenchant tiles", FieldType.Boolean));
@@ -137,6 +141,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case Item:
 				list.add(new QuestPropertyBlock(QuestRewardItem.GAIN_TYPE, "Gain or lose item", FieldType.StringSelector, ItemGainType.values()));
+				list.add(new QuestPropertyBlock(QuestRewardItem.DAMAGED_ITEM, "Damaged item (if gained)", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardItem.ITEM_DESC, "Description", FieldType.TextLine));
 				list.add(new QuestPropertyBlock(QuestRewardItem.ITEM_CHITTYPES, "Item Type Restriction", FieldType.ChitType));
 				list.add(new QuestPropertyBlock(QuestRewardItem.ITEM_REGEX, "Item RegEx", FieldType.Regex));
@@ -198,6 +203,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardRelationshipSet.RELATIONSHIP_SET, "Relationship to set", FieldType.StringSelector, RelationshipType.RelationshipNames));
 				break;
 			case ResetQuest:
+				break;
+			case ResetQuestToDeck:
 				break;
 			case ScareMonsters:
 				break;

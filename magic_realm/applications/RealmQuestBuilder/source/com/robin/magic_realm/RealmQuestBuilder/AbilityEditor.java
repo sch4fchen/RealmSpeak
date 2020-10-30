@@ -19,11 +19,14 @@ package com.robin.magic_realm.RealmQuestBuilder;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
+import com.robin.game.objects.GameObjectBlockManager;
 import com.robin.general.swing.ComponentTools;
 import com.robin.magic_realm.RealmCharacterBuilder.EditPanel.*;
+import com.robin.magic_realm.components.CharacterActionChitComponent;
 import com.robin.magic_realm.components.quest.QuestMinorCharacter;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -33,6 +36,7 @@ public class AbilityEditor extends GenericEditor {
 		ColorSource,
 		DieModification,
 		ExtraAction,
+		ExtraChit,
 		MiscellaneousAbilities,
 		MonsterInteraction,
 		MonsterImmunity,
@@ -58,6 +62,15 @@ public class AbilityEditor extends GenericEditor {
 		target.removeAttributeBlock(TEMPLATE_ABILITY_BLOCK);
 		target.setAttribute(targetBlock,QuestMinorCharacter.ABILITY_DESCRIPTION,editPanel.getSuggestedDescription());
 		target.setAttribute(targetBlock,QuestMinorCharacter.ABILITY_TYPE,type.toString());
+		
+		GameObjectBlockManager manTarget = new GameObjectBlockManager(target);
+		manTarget.clearBlocks(Constants.BONUS_CHIT+TEMPLATE_ABILITY_BLOCK);
+		GameObjectBlockManager manTemplate = new GameObjectBlockManager(template.getGameObject());
+		GameObject go = manTemplate.extractGameObjectFromBlocks(Constants.BONUS_CHIT+TEMPLATE_ABILITY_BLOCK,true);
+		if (go != null) {
+			CharacterActionChitComponent extraChit = new CharacterActionChitComponent(go);
+			manTarget.storeGameObjectInBlocks(extraChit.getGameObject(),Constants.BONUS_CHIT+TEMPLATE_ABILITY_BLOCK);
+		}
 	}
 	@Override
 	protected boolean isValidForm() {
@@ -71,6 +84,7 @@ public class AbilityEditor extends GenericEditor {
 		setSize(700,500);
 		setLayout(new BorderLayout());
 		editPanel = null;
+		JDialog frame = new JDialog();
 		switch(type) {
 			case ColorSource:
 				editPanel = new ColorSourceEditPanel(template,TEMPLATE_ABILITY_BLOCK);
@@ -80,6 +94,9 @@ public class AbilityEditor extends GenericEditor {
 				break;
 			case ExtraAction:
 				editPanel = new ExtraActionEditPanel(template,TEMPLATE_ABILITY_BLOCK);
+				break;
+			case ExtraChit:
+				editPanel = new ExtraChitEditPanel(frame, template,TEMPLATE_ABILITY_BLOCK);
 				break;
 			case MiscellaneousAbilities:
 				editPanel = new MiscellaneousEditPanel(template,TEMPLATE_ABILITY_BLOCK);

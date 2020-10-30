@@ -27,10 +27,13 @@ import javax.swing.table.AbstractTableModel;
 
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
+import com.robin.game.objects.GameObjectBlockManager;
 import com.robin.general.swing.*;
 import com.robin.magic_realm.RealmQuestBuilder.AbilityEditor.AbilityType;
+import com.robin.magic_realm.components.CharacterActionChitComponent;
 import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.QuestMinorCharacter;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class MinorCharacterEditor extends GenericEditor {
@@ -191,6 +194,15 @@ public class MinorCharacterEditor extends GenericEditor {
 				CharacterWrapper template = new CharacterWrapper(GameObject.createEmptyGameObject());
 				template.getGameObject().copyAttributeBlockFrom(minorCharacter.getGameObject(),abilityBlock);
 				template.getGameObject().copyAttributeBlock(abilityBlock,AbilityEditor.TEMPLATE_ABILITY_BLOCK);
+				if (type == AbilityType.ExtraChit) {
+					GameObjectBlockManager manMinorChar = new GameObjectBlockManager(minorCharacter.getGameObject());
+					GameObject go = manMinorChar.extractGameObjectFromBlocks(Constants.BONUS_CHIT+AbilityEditor.TEMPLATE_ABILITY_BLOCK,true);
+					if (go != null) {
+						CharacterActionChitComponent extraChit = new CharacterActionChitComponent(go);
+						GameObjectBlockManager manTemplate = new GameObjectBlockManager(template.getGameObject());
+						manTemplate.storeGameObjectInBlocks(extraChit.getGameObject(),Constants.BONUS_CHIT+AbilityEditor.TEMPLATE_ABILITY_BLOCK);
+					}
+				}
 				AbilityEditor editor = new AbilityEditor(parent,"Edit Ability",type,template);
 				editor.setLocationRelativeTo(this);
 				editor.setVisible(true);

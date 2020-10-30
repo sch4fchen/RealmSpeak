@@ -1,7 +1,3 @@
-::RealmSpeak::
-Reward: Extra chit
-Recycle Non-All-Play Zero Point Quests (Event Cards)
-
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
 0001829: Feature Request - First Edition Killer Caves

@@ -148,6 +148,7 @@ public class QuestDeck extends GameObjectWrapper {
 	public int drawCards(JFrame frame,CharacterWrapper character) {
 		int cardsDrawn = 0;
 		int n = character.getQuestSlotCount() - character.getUnfinishedQuestCount();
+		if (getListCount(QUEST_CARD_LIST)==0) reshuffle();
 		while(n>0 && getCardCount()>0) {
 			Quest quest = drawCard();
 			if (quest==null) break; // shouldn't happen, but just in case!

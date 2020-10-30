@@ -32,6 +32,7 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 public abstract class QuestRequirement extends AbstractQuestObject {
 
 	public enum RequirementType {
+		Action,
 		Active, // active or inactive
 		Attribute,
 		CastMultipleSpells,
@@ -69,8 +70,10 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		;
 		public String getDescription() {
 			switch (this) {
+				case Action:
+					return "Tests for the character to execute a specific action.";
 				case Active:
-					return "Tests whether the quest is active or not (needed for Quest Cards)";
+					return "Tests whether the quest is active or not (needed for Quest Cards).";
 				case Attribute:
 					return "Tests whether a specific attribute (fame, notoriety, gold) has reached a target number.";
 				case CastMultipleSpells:
@@ -215,6 +218,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 	public static QuestRequirement getRequirement(RequirementType type, GameObject go) {
 		QuestRequirement requirement = null;
 		switch (type) {
+			case Action:
+				requirement = new QuestRequirementAction(go);
+				break;
 			case Active:
 				requirement = new QuestRequirementActive(go);
 				break;

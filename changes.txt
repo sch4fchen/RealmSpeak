@@ -2,25 +2,31 @@ Version 1.1.3.5 - Changes since 1.1.3.4
 QUEST UPDATE:
 # Moved quests in testing to a separate folder
 # Update on existing quests and a new quests by Steve
+# New ability for minor characters: Extra chit
 # QuestRequirement: Hirelings
 # QuestRequirement: Enchant action
+# QuestRequirement: Action
 # QuestReward: Enchant tile(s)
 # QuestReward: Move denizen
 # QuestReward: Find hidden enemies
-# QuestReward: Discover Treasure site
+# QuestReward: Discover treasure site
 # QuestReward: Custom treasure
 # QuestReward: Summon from Chart of Appearance
+# QuestReward: Reset quest to deck
+# QuestReward: Discard quest
+# QuestReward: Draw quests
 # QuestRewardPathsPassages: Option find paths and passages in a location
 # QuestRewardCurse: Option to remove all curses from character
 # QuestRewardSummonMonster: Option to summon monster to a location
 # QuestRewardHireling: Option to add hireling to a location
 # QuestRewardCompanion: Option to add companion to a location
 # QuestRewardKillDenizen: Option to kill only denizens in a location
-# QuestRewardItem: Options to clone or destroy item
+# QuestRewardItem: Options to clone or remove item from game
+# QuestRewardItem: Option to damage armor if gained
 # QuestRewardChooseNextStep: Random choice option
 # QuestRewardSpllEffect: Option to affect all targets in location (or random location), option that target must be in location
 NEW FEATURES:
-# Add new ability for minor characters and character editor: Control Monster
+# New ability for minor characters and character editor: Control Monster
 # Optional Rule: Alerted Monsters
 BUGS/ISSUES:
 # Fix icon on legendary highpass tiles
@@ -29,7 +35,7 @@ BUGS/ISSUES:
 Version 1.1.3.4 - Changes since 1.1.3.3
 QUEST UPDATE:
 # QuestTester: "Fulfill requirements"-button for a quest step
-# QuestTester: Display Fatigue and Wounds
+# QuestTester: Display fatigue and wounds
 # QuestTester: Buy action
 # QuestTester: Toggle enchant and magic color for clearing
 # Quest Description: Placeholder CHARACTERS_NAME is replaced with characters name.
@@ -42,7 +48,7 @@ QUEST UPDATE:
 # QuestRequirement: Hidden (and toggle hide in QuestTester)
 # QuestRequirement: Magic user
 # QuestRequirement: Fighter
-# QuestRequirement: Fly (Flying or ability to fly)
+# QuestRequirement: Fly (flying or ability to fly)
 # QuestRequirement: Gender (female/male)
 # QuestRequirement: Open
 # QuestRequirement: Hide result
@@ -51,10 +57,10 @@ QUEST UPDATE:
 # QuestRequirement: Relationship
 # QuestRequirement: Guild
 # QuestRequirementSearch: NoEffect option
-# QuestRequirementKill: option to define vulnerability
-# QuestRequirementPath: support for single clearing
-# QuestReward: Regenerate denizen
-# QuestReward: Summon Roll
+# QuestRequirementKill: Option to define vulnerability
+# QuestRequirementPath: Support for single clearing
+# QuestReward: RegenerateDenizen
+# QuestReward: SummonRoll
 # QuestReward: Teleport
 # QuestReward: KillDenizen
 # QuestReward: SpellEffect
@@ -89,7 +95,7 @@ QUEST UPDATE:
 # Support for Hireling reward to place the Hireling in the characters clearing instead of hiring it
 # TreasureFromHQ reward
 # SummonMonster reward
-# Probability QuestRequirement
+# Probability requirement
 # Damage reward
 # Make Tremendous Dragon available as Companion
 NEW FEATURES:

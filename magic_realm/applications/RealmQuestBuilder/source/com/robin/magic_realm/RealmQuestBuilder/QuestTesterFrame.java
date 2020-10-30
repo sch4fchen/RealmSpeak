@@ -1405,6 +1405,9 @@ public class QuestTesterFrame extends JFrame {
 		}
 		else {
 			character.setHidden(true);
+			QuestRequirementParams params = new QuestRequirementParams();
+			params.actionType = CharacterActionType.Hide;
+			character.testQuestRequirements(QuestTesterFrame.this,params);
 		}
 		retestQuest();
 	}
@@ -1417,6 +1420,9 @@ public class QuestTesterFrame extends JFrame {
 		else {
 			character.getCurrentLocation().setFlying(true);
 			character.getGameObject().setThisAttribute("isflying");
+			QuestRequirementParams params = new QuestRequirementParams();
+			params.actionType = CharacterActionType.Fly;
+			character.testQuestRequirements(QuestTesterFrame.this,params);
 		}
 		retestQuest();
 	}
@@ -1444,6 +1450,11 @@ public class QuestTesterFrame extends JFrame {
 			ClearingDetail clearing = hash.get(val);
 			character.moveToLocation(this, clearing.getTileLocation());
 			updateCharacterPanel();
+			
+			QuestRequirementParams params = new QuestRequirementParams();
+			params.actionType = CharacterActionType.Move;
+			character.testQuestRequirements(QuestTesterFrame.this, params);
+			
 			retestQuest();
 		}
 	}
@@ -1488,6 +1499,7 @@ public class QuestTesterFrame extends JFrame {
 		String gain = (String) dialog.getSelectedObject();
 
 		QuestRequirementParams params = new QuestRequirementParams();
+		params.actionType = CharacterActionType.SearchTable;
 		params.searchType = result;
 		params.targetOfSearch = rc.getGameObject();
 		params.actionName = table.toString();

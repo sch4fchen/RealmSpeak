@@ -626,6 +626,10 @@ public class ActionRow {
 					else {
 						result = "Failed";
 					}
+					
+					QuestRequirementParams params = new QuestRequirementParams();
+					params.actionType = CharacterActionType.Hide;
+					character.testQuestRequirements(gameHandler.getMainFrame(),params);
 				}
 				else {
 					result = "HIDE table is disabled, due to inclement weather.";
@@ -634,6 +638,9 @@ public class ActionRow {
 		}
 		else {
 			result = "N/A";
+			QuestRequirementParams params = new QuestRequirementParams();
+			params.actionType = CharacterActionType.Hide;
+			character.testQuestRequirements(gameHandler.getMainFrame(),params);
 		}
 	}
 	private void doFortifyAction() {
@@ -650,6 +657,10 @@ public class ActionRow {
 		else {
 			result = "N/A";
 		}
+		
+		QuestRequirementParams params = new QuestRequirementParams();
+		params.actionType = CharacterActionType.Fortify;
+		character.testQuestRequirements(gameHandler.getMainFrame(),params);
 	}
 	private void doMoveAction() {
 		TileLocation current = character.getCurrentLocation();
@@ -893,6 +904,10 @@ public class ActionRow {
 							character.removeActionFollower(follower,gameHandler.getGame().getMonsterDie());
 						}
 					}
+					
+					QuestRequirementParams params = new QuestRequirementParams();
+					params.actionType = CharacterActionType.Move;
+					character.testQuestRequirements(gameHandler.getMainFrame(),params);
 					
 					gameHandler.getInspector().getMap().centerOn(character.getCurrentLocation());
 					gameHandler.updateCharacterFrames();
@@ -1379,6 +1394,10 @@ public class ActionRow {
 				rester.setVisible(true);
 				if (rester.isFinished()) {
 					result = "Rested "+(count+bonusCount)+" asterisk"+((count+bonusCount)==1?"":"s");
+					
+					QuestRequirementParams params = new QuestRequirementParams();
+					params.actionType = CharacterActionType.Rest;
+					character.testQuestRequirements(gameHandler.getMainFrame(),params);
 				}
 				else {
 					// Cancelled!
@@ -1391,6 +1410,9 @@ public class ActionRow {
 				}
 				else {
 					result = "You are fully rested.";
+					QuestRequirementParams params = new QuestRequirementParams();
+					params.actionType = CharacterActionType.Rest;
+					character.testQuestRequirements(gameHandler.getMainFrame(),params);
 				}
 			}
 		}
@@ -1440,8 +1462,12 @@ public class ActionRow {
 			}
 		}
 		else {
-			result = "no one to heal"; 
+			result = "no one to heal";
 		}
+		
+		QuestRequirementParams params = new QuestRequirementParams();
+		params.actionType = CharacterActionType.Heal;
+		character.testQuestRequirements(gameHandler.getMainFrame(),params);
 	}
 	private void doAlertAction() {
 		// Make sure followers get an alert too!
@@ -1502,7 +1528,12 @@ public class ActionRow {
 						chit.makeAlerted();
 					}
 				}
-				result = "alerted "+rc.getGameObject().getName();
+				result = "alerted "+rc.getGameObject().getName();				
+				
+				QuestRequirementParams params = new QuestRequirementParams();
+				params.actionType = CharacterActionType.Alert;
+				character.testQuestRequirements(gameHandler.getMainFrame(),params);
+				
 				gameHandler.updateCharacterFrames();
 			}
 			else {
@@ -1523,6 +1554,9 @@ public class ActionRow {
 		}
 		else {
 			result = "nothing to alert";
+			QuestRequirementParams params = new QuestRequirementParams();
+			params.actionType = CharacterActionType.Alert;
+			character.testQuestRequirements(gameHandler.getMainFrame(),params);
 		}
 	}
 	private void doRepairAction() {
@@ -1551,6 +1585,9 @@ public class ActionRow {
 		else {
 			result = "nothing to repair";
 		}
+		QuestRequirementParams params = new QuestRequirementParams();
+		params.actionType = CharacterActionType.Repair;
+		character.testQuestRequirements(gameHandler.getMainFrame(),params);
 	}
 	private void doHireAction() {
 		// Player chooses from native groups, and then gets to bid on lowest ranked native
@@ -1677,6 +1714,10 @@ public class ActionRow {
 				else {
 					handleTable();
 				}
+				
+				QuestRequirementParams params = new QuestRequirementParams();
+				params.actionType = CharacterActionType.Hire;
+				character.testQuestRequirements(gameHandler.getMainFrame(),params);
 			}
 			else {
 				completed = false;
@@ -1819,7 +1860,7 @@ public class ActionRow {
 						QuestRequirementParams params = new QuestRequirementParams();
 						params.actionType = CharacterActionType.Enchant;
 						params.actionName = "tile";
-						character.testQuestRequirements(gameHandler.getMainFrame());
+						character.testQuestRequirements(gameHandler.getMainFrame(), params);
 					}
 					else {
 						// enchant a chit
@@ -1848,7 +1889,7 @@ public class ActionRow {
 							QuestRequirementParams params = new QuestRequirementParams();
 							params.actionType = CharacterActionType.Enchant;
 							params.actionName = "chit";
-							character.testQuestRequirements(gameHandler.getMainFrame());
+							character.testQuestRequirements(gameHandler.getMainFrame(),params);
 						}// this shouldn't happen
 					}
 				}
@@ -1860,6 +1901,9 @@ public class ActionRow {
 		}
 		else {
 			result = "nothing to enchant";
+			QuestRequirementParams params = new QuestRequirementParams();
+			params.actionType = CharacterActionType.Enchant;
+			character.testQuestRequirements(gameHandler.getMainFrame(), params);
 		}
 	}
 	private void doEnhancedPeerAction() {
@@ -1964,6 +2008,11 @@ public class ActionRow {
 				result = "Flew to tile and landed.";
 			}
 			gameHandler.getInspector().getMap().centerOn(character.getCurrentLocation());
+			
+			QuestRequirementParams params = new QuestRequirementParams();
+			params.actionType = CharacterActionType.Fly;
+			character.testQuestRequirements(gameHandler.getMainFrame(),params);
+			
 			gameHandler.updateCharacterFrames();
 			
 			// Character's do not stay hidden when they fly
@@ -2063,6 +2112,10 @@ public class ActionRow {
 				
 				// If cache is empty, delete it
 				cache.testEmpty();
+				
+				QuestRequirementParams params = new QuestRequirementParams();
+				params.actionType = CharacterActionType.Cache;
+				character.testQuestRequirements(gameHandler.getMainFrame(), params);
 			}
 			else {
 				completed = false;

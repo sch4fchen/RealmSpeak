@@ -26,6 +26,8 @@ import javax.swing.JOptionPane;
 
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
+import com.robin.magic_realm.components.ArmorChitComponent;
+import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.ChitItemType;
 import com.robin.magic_realm.components.quest.ItemGainType;
@@ -39,6 +41,7 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 public class QuestRewardItem extends QuestReward {
 	
 	public static final String GAIN_TYPE = "_g"; // gain or lose
+	public static final String DAMAGED_ITEM = "_d";
 	public static final String ITEM_DESC = "_idsc";
 	public static final String ITEM_CHITTYPES = "_ict";
 	public static final String ITEM_REGEX = "_irx";
@@ -48,10 +51,9 @@ public class QuestRewardItem extends QuestReward {
 	}
 
 	public void processReward(JFrame frame,CharacterWrapper character) {
-		boolean isGain = getGainType()==ItemGainType.Gain;
 		String actionDescription;
 		ArrayList<GameObject> objects;
-		if (isGain) {
+		if (isGain()) {
 			actionDescription = ": Select ONE item to gain.";
 			objects = getObjectList(getGameData().getGameObjects(),getChitTypes(),getItemRegex());
 		}
@@ -69,13 +71,19 @@ public class QuestRewardItem extends QuestReward {
 			chooser.setVisible(true);
 			selected = chooser.getFirstSelectedComponent().getGameObject();
 		}
-		if (isGain) {
-			Loot.addItemToCharacter(frame,null,character,selected);
-		}
+		
 		if (getGainType()==ItemGainType.GainCloned) {
-			GameObject newitem = selected.copy();
-			newitem.setThisAttribute(Constants.CLONED);
-			Loot.addItemToCharacter(frame,null,character,newitem);
+			GameObject newItem = selected.copy();
+			newItem.setThisAttribute(Constants.CLONED);
+			selected = newItem;
+		}
+		
+		if (isGain()) {
+			if (damagedItem() && selected.hasThisAttribute("armor")) {
+				ArmorChitComponent selectedItem = (ArmorChitComponent) RealmComponent.getRealmComponent(selected);
+				selectedItem.setLightSideUp();
+			}
+			Loot.addItemToCharacter(frame,null,character,selected);
 		}
 		else {
 			if (TreasureUtility.doDeactivate(null,character,selected)) { // null JFrame so that character isn't hit with any popups
@@ -105,8 +113,16 @@ public class QuestRewardItem extends QuestReward {
 		}
 	}
 	
+	private boolean isGain() {
+		return getGainType()==ItemGainType.Gain || getGainType()==ItemGainType.GainCloned;
+	}
+	
+	private boolean damagedItem() {
+		return getBoolean(DAMAGED_ITEM);
+	}
+	
 	public String getDescription() {
-		return (getGainType()==ItemGainType.Gain?"Gains":"Loses")+" "+getItemDescription();
+		return (isGain()?"Gains":"Loses")+" "+getItemDescription();
 	}
 
 	public RewardType getRewardType() {

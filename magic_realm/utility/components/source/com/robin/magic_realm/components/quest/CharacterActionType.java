@@ -19,16 +19,26 @@ package com.robin.magic_realm.components.quest;
 
 public enum CharacterActionType {
 	Unknown,
+	ActivatingItem,
+	Alert,
+	Cache,
+	CastSpell,
+	Enchant,
+	Fly,
+	Fortify,
+	Heal,
+	Hide,
+	Hire,
+	Move,
+	Open,
+	Repair,
+	Rest,
 	SearchTable,
 	Trading,
-	PickUpMissionCampaign,
 	AbandonMissionCampaign,
-	FailMissionCampaign,
 	CompleteMissionCampaign,
-	ActivatingItem,
-	CastSpell,
-	Open,
-	Enchant,
+	FailMissionCampaign,
+	PickUpMissionCampaign,
 	;
 	
 	public String getDescriptor() {
