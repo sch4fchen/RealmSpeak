@@ -1190,6 +1190,10 @@ public class ActionRow {
 				completed = false;
 			}
 		}
+		
+		QuestRequirementParams params = new QuestRequirementParams();
+		params.actionType = CharacterActionType.Trading;
+		character.testQuestRequirements(gameHandler.getMainFrame(),params);
 	}
 	private void processTrade(RealmComponent trader,String tradeAction,HostPrefWrapper hostPrefs) {
 		ArrayList<GameObject> hold = null;
@@ -1717,6 +1721,7 @@ public class ActionRow {
 				
 				QuestRequirementParams params = new QuestRequirementParams();
 				params.actionType = CharacterActionType.Hire;
+				params.objectList.add(last.getGameObject());
 				character.testQuestRequirements(gameHandler.getMainFrame(),params);
 			}
 			else {
@@ -1726,6 +1731,10 @@ public class ActionRow {
 		else {
 			result = "Nobody to hire";
 		}
+		
+		QuestRequirementParams params = new QuestRequirementParams();
+		params.actionType = CharacterActionType.Hire;
+		character.testQuestRequirements(gameHandler.getMainFrame(),params);
 	}
 	private void doSpellAction() {
 		TileLocation targetClearing = character.getCurrentLocation();

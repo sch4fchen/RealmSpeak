@@ -57,6 +57,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 		switch (requirement.getRequirementType()) {
 			case Action:
 				list.add(new QuestPropertyBlock(QuestRequirementAction.ACTION, "Action", FieldType.StringSelector, CharacterActionType.values()));
+				list.add(new QuestPropertyBlock(QuestRequirementAction.ACTION_WITHOUT_NATIVES, "Hire and trade action without natives", FieldType.Boolean));
 				break;
 			case Active:
 				break;
