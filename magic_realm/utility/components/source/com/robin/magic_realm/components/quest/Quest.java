@@ -620,17 +620,26 @@ public class Quest extends GameObjectWrapper {
 	}
 
 	/**
-	 * Initializes the quest for use by a character.
+	 * Initializes the quest for use by a character, with resetting the locations.
 	 */
 	public void initialize(JFrame parentFrame, CharacterWrapper character) {
+		initialize(parentFrame, character, true);
+	}
+	
+	/**
+	 * Initializes the quest for use by a character.
+	 */
+	public void initialize(JFrame parentFrame, CharacterWrapper character, boolean resetLocation) {
 		setOwner(character);
 		String dayKey = character.getCurrentDayKey();
 		for (QuestStep step : steps) {
 			step.setState(QuestStepState.Pending, dayKey);
 		}
 		updateStepStates(dayKey);
-		for (QuestLocation location : getLocations()) {
-			location.resolveQuestStart(parentFrame, character);
+		if (resetLocation) {
+			for (QuestLocation location : getLocations()) {
+				location.resolveQuestStart(parentFrame, character);
+			}
 		}
 	}
 
