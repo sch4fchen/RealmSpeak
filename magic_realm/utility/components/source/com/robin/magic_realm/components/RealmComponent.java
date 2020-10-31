@@ -1078,7 +1078,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 				duration = Math.max(duration, inventoryDuration);
 			}
 		}
-		return duration;
+		return duration == 0 ? Constants.TEN_YEARS : duration;
 	}
 	public String getFacing() {
 		return getGameObject().getThisAttribute(Constants.FACING_KEY);

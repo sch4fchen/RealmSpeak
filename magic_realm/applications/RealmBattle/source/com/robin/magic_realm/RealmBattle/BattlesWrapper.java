@@ -95,7 +95,7 @@ public class BattlesWrapper extends GameObjectWrapper {
 				for (RealmComponent characterRc : combatants) {
 					if (!characterRc.isCharacter()) continue;
 						for (Object monsterType : characterRc.getControllableMonsters() ) {
-							if (monster.toString().matches(monsterType.toString())) {
+							if (monster.toString().matches(monsterType.toString()+".*")) {
 								if (!characterCanControl.contains(characterRc)) {
 									characterCanControl.add(characterRc);
 								}
