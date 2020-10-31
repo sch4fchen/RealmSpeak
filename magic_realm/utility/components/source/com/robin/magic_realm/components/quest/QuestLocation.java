@@ -234,6 +234,10 @@ public class QuestLocation extends GameObjectWrapper {
 			resolveStepStart(frame,character);
 		}
 		TileLocation loc = rc.getCurrentLocation();
+		if (loc == null) {
+			return false;
+		}
+		
 		ArrayList<String> addressesToTest = getValidAddresses();
 		LocationClearingType clearingType = getLocationClearingType();
 		LocationTileSideType tileSideType = getLocationTileSideType();

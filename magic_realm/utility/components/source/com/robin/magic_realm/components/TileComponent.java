@@ -995,7 +995,7 @@ public class TileComponent extends ChitComponent {
 			if (goc instanceof StateChitComponent) {
 				StateChitComponent state = (StateChitComponent) goc;
 				if (!state.isFaceUp()) {
-					continue; // as much as I hate this flow statement, I'm using it here to exclude face down chits from the view
+					continue;
 				}
 			}
 			if (clearingNum == null) {

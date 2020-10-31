@@ -89,7 +89,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case Curse:
 				list.add(new QuestPropertyBlock(QuestRewardCurse.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));
-				list.add(new QuestPropertyBlock(QuestRewardCurse.DIE_ROLL, "Remove all curses", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardCurse.REMOVE_CURSES, "Remove all curses", FieldType.Boolean));
 				break;
 			case CustomTreasure:
 				list.add(new QuestPropertyBlock(QuestRewardCustomTreasure.TREASURE_REGEX, "Treasure RegEx", FieldType.Regex, null, new String[] { "treasure" }));
