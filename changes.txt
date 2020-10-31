@@ -15,7 +15,7 @@ QUEST UPDATE:
 # QuestReward: Reset quest to deck
 # QuestReward: Discard quest
 # QuestReward: Draw quests
-# QuestRewardPathsPassages: Option find paths and passages in a location
+# QuestRewardPathsPassages: Option to find paths and passages in a location
 # QuestRewardCurse: Option to remove all curses from character
 # QuestRewardSummonMonster: Option to summon monster to a location
 # QuestRewardHireling: Option to add hireling to a location
