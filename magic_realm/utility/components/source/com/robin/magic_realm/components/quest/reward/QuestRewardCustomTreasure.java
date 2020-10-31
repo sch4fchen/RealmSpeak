@@ -135,7 +135,7 @@ public class QuestRewardCustomTreasure extends QuestReward {
 	}
 	
 	public String getDescription() {
-		if (locationOnly()) {
+		if (locationOnly() && getQuestLocation() != null) {
 			return "Custom treasure "+getTreasureName()+" is placed in "+getQuestLocation().getName();
 		}
 		return "Custom treasure "+getTreasureName()+" is given to the character.";

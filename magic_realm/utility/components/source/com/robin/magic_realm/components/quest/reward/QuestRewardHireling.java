@@ -151,7 +151,7 @@ public class QuestRewardHireling extends QuestReward {
 			sb.append(getTermOfHireType().toString().toLowerCase());
 			sb.append(" hireling");
 		}
-		if (locationOnly()) {
+		if (locationOnly() && getQuestLocation() != null) {
 			sb.append(" in "+getQuestLocation().getName());
 		}
 		sb.append(".");

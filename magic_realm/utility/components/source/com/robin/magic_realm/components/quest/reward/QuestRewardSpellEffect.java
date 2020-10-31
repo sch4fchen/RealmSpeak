@@ -153,7 +153,7 @@ public class QuestRewardSpellEffect extends QuestReward {
 			sb.append(" on target(s) /"+getTargetRegex()+"/");
 		}
 		sb.append(".");
-		if (targetMustBeInLocation()) {
+		if (targetMustBeInLocation() && getQuestLocation() != null) {
 			sb.append("Targets must be in "+getQuestLocation().getName()+".");
 		}
 		return sb.toString();

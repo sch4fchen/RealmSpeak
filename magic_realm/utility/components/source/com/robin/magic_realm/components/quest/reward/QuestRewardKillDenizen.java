@@ -77,7 +77,7 @@ public class QuestRewardKillDenizen extends QuestReward {
 	public String getDescription() {
 		StringBuffer sb = new StringBuffer();
 		sb.append(getDenizenNameRegex() +" is/are killed");
-		if (locationOnly()) {
+		if (locationOnly() && getQuestLocation() != null) {
 			sb.append(" in "+getQuestLocation().getName());
 		}
 		sb.append(".");

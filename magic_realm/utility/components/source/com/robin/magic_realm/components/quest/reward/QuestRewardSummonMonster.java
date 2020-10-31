@@ -84,7 +84,7 @@ public class QuestRewardSummonMonster extends QuestReward {
 	}
 	
 	public String getDescription() {
-		if (locationOnly()) {
+		if (locationOnly() && getQuestLocation() != null) {
 			StringBuilder sb = new StringBuilder();
 			sb.append(getMonsterKeyName()+" is summoned in ");
 			if (randomLocation()) {

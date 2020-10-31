@@ -94,7 +94,7 @@ public class QuestRewardCompanion extends QuestReward {
 		sb.append(getCompanionKeyName());
 		if (getGainType()==GainType.Gain) {
 			sb.append(" joins as a companion");
-			if (locationOnly() ) {
+			if (locationOnly() && getQuestLocation() != null ) {
 				sb.append(" in "+getQuestLocation().getName());
 			}
 		}

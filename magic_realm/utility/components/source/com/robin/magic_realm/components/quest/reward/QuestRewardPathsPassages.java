@@ -133,7 +133,7 @@ public class QuestRewardPathsPassages extends QuestReward {
 				sb.append(" tile");
 				break;
 		}
-		if (locationOnly() ) {
+		if (locationOnly() && getQuestLocation() != null) {
 			sb.append(" of "+getQuestLocation().getName());
 		}
 		sb.append(".");
