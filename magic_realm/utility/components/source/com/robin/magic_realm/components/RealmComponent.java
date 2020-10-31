@@ -1073,8 +1073,10 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		}
 		if (isCharacter()) {
 			CharacterWrapper character = new CharacterWrapper(getGameObject());
-			int inventoryDuration = character.getHighestIntegerForActiveInventoryKey(Constants.MONSTER_CONTROL_DURATION);
-			duration = Math.max(duration, inventoryDuration);
+			Integer inventoryDuration = character.getHighestIntegerForActiveInventoryKey(Constants.MONSTER_CONTROL_DURATION);
+			if (inventoryDuration != null) {
+				duration = Math.max(duration, inventoryDuration);
+			}
 		}
 		return duration;
 	}
