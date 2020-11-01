@@ -23,6 +23,7 @@ import java.util.Hashtable;
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
+import com.robin.game.objects.GamePool;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.quest.QuestLocation;
 import com.robin.magic_realm.components.utility.Constants;
@@ -45,9 +46,19 @@ public class QuestRewardKillDenizen extends QuestReward {
 	}
 
 	public void processReward(JFrame frame,CharacterWrapper character) {
-		ArrayList<GameObject> denizens = character.getGameData().getGameObjectsByNameRegex(getDenizenNameRegex());
+		ArrayList<GameObject> denizens = new ArrayList<GameObject>();
+		if (!getDenizenNameRegex().isEmpty()) {
+			denizens = character.getGameData().getGameObjectsByNameRegex(getDenizenNameRegex());
+		}
+		else {
+			GamePool pool = new GamePool(getGameData().getGameObjects());
+			ArrayList<String> query = new ArrayList<String>();
+			query.add("vulnerability");
+			query.add("denizen");
+			denizens.addAll(pool.find(query));
+		}
 		for (GameObject denizen : denizens) {
-			if (!denizen.hasThisAttribute("vulnerability")) continue;
+			if (!denizen.hasThisAttribute("vulnerability") || !denizen.hasThisAttribute("denizen")) continue;
 			GameObject denizenHolder = SetupCardUtility.getDenizenHolder(denizen);
 			if (denizen.getHeldBy() == denizenHolder) continue;
 			if (!killHirelings() && denizen.hasThisAttribute(Constants.HIRELING)) {
@@ -79,7 +90,12 @@ public class QuestRewardKillDenizen extends QuestReward {
 	
 	public String getDescription() {
 		StringBuffer sb = new StringBuffer();
-		sb.append(getDenizenNameRegex() +" is/are killed");
+		if (getDenizenNameRegex().isEmpty()) {
+			sb.append("All denizens are killed");
+		}
+		else {
+			sb.append(getDenizenNameRegex() +" is/are killed");
+		}
 		if (locationOnly() && getQuestLocation() != null) {
 			sb.append(" in "+getQuestLocation().getName());
 		}
