@@ -19,7 +19,6 @@ Expasion 1: Two-Handed Combat
 0001447: Log breakdown by day
 0001358: Monster Roll per Set
 0001232: Flying Activities: Optional Rule # 3: Flying Activities.
-0000893: End Game Log
 House Rule to reveal Site Cards and allow searching
 What about a controlled monster luring/deploying against your hirelings?
 Extended Treachery:  luring/deploying against their own group triggers the same consequences
@@ -31,7 +30,6 @@ Shuffle components Flag in gameData when saving game/scenario: Shuffle when load
 RealSpeak: Load scenarios (overview with names and descriptions)
 ---:::BUGS:::---
 Wizard advancement - didn't get MOVE M5->MAGIC III
-When choosing a flying hex, the thick border spills over onto the treasure cards and other...
 Don't know about this one:  Does Flowers of Rest work correctly in combat?
 0001879: Color magic fatigue counted against character when used in encounter step to energize a spell
 0001869: blocking occurs on start of phase instead of end -> fixed?
