@@ -2126,13 +2126,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return pm;
 	}
 	public void updatePhaseManagerWithCurrentActions(PhaseManager pm) {
-//System.out.println("----updatePhaseManagerWithCurrentActions");
 		TileLocation current = getCurrentLocation();
 		if (getClearingPlot()!=null) {
 			boolean pony = isPonyActive();
 			int moveNumber = 0;
 			TileLocation loc = current;
-//System.out.println("getClearingPlot().size()=="+getClearingPlot().size());
 			for (Iterator i=getCurrentActions().iterator();i.hasNext();) {
 				String action = (String)i.next();
 				boolean inCave = false;
@@ -2141,12 +2139,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 					inCave = loc!=null && loc.isInClearing() && loc.clearing.isCave();
 					moveNumber++;
 				}
-//System.out.println("loc="+loc);
 				pm.forcePerformedAction(action,pony&&!inCave,loc);
 			}
 		}
 		pm.removeLocationSpecificFreeActions(getPlannedLocation());
-//System.out.println("----DONE");
 	}
 	public GameObject getPonyGameObject() {
 		BattleHorse steed = getActiveSteed();
@@ -4824,6 +4820,20 @@ public class CharacterWrapper extends GameObjectWrapper {
 				CharacterActionChitComponent chit  = (CharacterActionChitComponent)rc;
 				if (chit.isFly() && chit.isActive() && chit.getGameObject().hasThisAttribute(Constants.CHIT_EARNED)) {
 					flyChits.add(rc);
+				}
+			}
+			else if (go.hasThisAttribute("quest_minor_chars") && go.hasThisAttribute("activated")) {
+				GameObjectBlockManager man = new GameObjectBlockManager(go);
+				GameObject bonusChit = man.extractGameObjectFromBlocks(Constants.BONUS_CHIT+"design",false);
+				if (bonusChit != null) {
+					bonusChit.setThisAttribute("icon_type",go.getThisAttribute("icon_type"));
+					bonusChit.setThisAttribute("icon_folder",go.getThisAttribute("icon_folder"));
+					bonusChit.setThisAttribute(Constants.CHIT_EARNED);
+					RealmComponent bonusChitRc = RealmComponent.getRealmComponent(bonusChit);
+					CharacterActionChitComponent bonusActionChit = (CharacterActionChitComponent)bonusChitRc;
+					if (bonusActionChit.isFlyChit() || (bonusActionChit.isFly() && bonusActionChit.isActive())) {
+						flyChits.add(bonusActionChit);
+					}
 				}
 			}
 		}

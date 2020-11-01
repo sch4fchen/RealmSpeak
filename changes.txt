@@ -8,6 +8,7 @@ BUGS/ISSUES:
 # Fix QuestRewardCurse
 # Fix QuestRewardKillDenizen kill denizen on Chart of Appearance
 # Fix QuestLocation testing for game pieces not on the board
+# Fix Fly chits awarded by minor character not usable
 
 Version 1.1.3.5 - Changes since 1.1.3.4
 QUEST UPDATE:
