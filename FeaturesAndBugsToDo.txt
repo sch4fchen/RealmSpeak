@@ -30,7 +30,6 @@ Shuffle components Flag in gameData when saving game/scenario: Shuffle when load
 RealSpeak: Load scenarios (overview with names and descriptions)
 ---:::BUGS:::---
 Wizard advancement - didn't get MOVE M5->MAGIC III
-Don't know about this one:  Does Flowers of Rest work correctly in combat?
 0001879: Color magic fatigue counted against character when used in encounter step to energize a spell
 0001869: blocking occurs on start of phase instead of end -> fixed?
 0001858: PotP Terror wounds Belt of Strength coverted chits
