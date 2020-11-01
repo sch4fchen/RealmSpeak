@@ -26,6 +26,7 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.general.util.RandomNumber;
+import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.QuestConstants;
@@ -38,6 +39,7 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 public class QuestRewardSummonMonster extends QuestReward {
 	private static Logger logger = Logger.getLogger(QuestStep.class.getName());
 	public static final String MONSTER_NAME = "_mn";
+	public static final String RANDOM_CLEARING = "_rc";
 	public static final String SUMMON_TO_LOCATION = "_summon_loc";
 	public static final String RANDOM_LOCATION = "_rnd_loc";
 	public static final String LOCATION = "_loc";
@@ -74,6 +76,12 @@ public class QuestRewardSummonMonster extends QuestReward {
 			return;
 		}
 		
+		if (randomClearing()) {
+			ArrayList<ClearingDetail> clearings = character.getCurrentLocation().tile.getClearings();
+			int random = RandomNumber.getRandom(clearings.size());
+			clearings.get(random).add(monster,null);
+			return;
+		}
 		character.getCurrentLocation().clearing.add(monster,null);
 	}
 	
@@ -93,6 +101,9 @@ public class QuestRewardSummonMonster extends QuestReward {
 			sb.append(getQuestLocation().getName());
 			return sb.toString();
 		}
+		if (randomClearing()) {
+			return getMonsterKeyName()+" is summoned in a random clearing of characters tile.";
+		}
 		return getMonsterKeyName()+" is summoned in the characters clearing.";
 	}
 
@@ -106,6 +117,10 @@ public class QuestRewardSummonMonster extends QuestReward {
 	
 	private String getMonsterQuery() {
 		return getString(QuestConstants.VALUE_PREFIX+MONSTER_NAME);
+	}
+	
+	private boolean randomClearing() {
+		return getBoolean(RANDOM_CLEARING);
 	}
 	
 	private boolean locationOnly() {
