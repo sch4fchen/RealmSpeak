@@ -877,11 +877,51 @@ public class RealmUtility {
 			}
 		}
 		
+		for (ColorMagic color : dayColors) {
+			if (color.getColorNumber() == ColorMagic.WHITE) {
+				addEnchantableTileForGameObject(data, enchantableTiles, "Chapel");
+				addEnchantableTileForGameObject(data, enchantableTiles, "Sacred Grail");
+			}
+		}
+		for (ColorMagic color : dayColors) {
+			if (color.getColorNumber() == ColorMagic.BLACK) {
+				addEnchantableTileForGameObject(data, enchantableTiles, "Toadstool Circle");
+				addEnchantableTileForGameObject(data, enchantableTiles, "Cloven Hoof");
+			}
+		}
+		for (ColorMagic color : dayColors) {
+			if (color.getColorNumber() == ColorMagic.GRAY) {
+				addEnchantableTileForGameObject(data, enchantableTiles, "Golden Icon");
+			}
+		}
+		for (ColorMagic color : dayColors) {
+			if (color.getColorNumber() == ColorMagic.PURPLE) {
+				addEnchantableTileForGameObject(data, enchantableTiles, "Dragon Essence");
+			}
+		}
+		for (ColorMagic color : dayColors) {
+			if (color.getColorNumber() == ColorMagic.GOLD) {
+				addEnchantableTileForGameObject(data, enchantableTiles, "Flowers of Rest");
+			}
+		}
+		
 		// Flip em!
 		for(TileComponent tile:enchantableTiles) {
 			tile.flip();
 		}
 	}
+	private static void addEnchantableTileForGameObject(GameData data, ArrayList<TileComponent> enchantableTiles, String gameObejctName) {
+		GameObject go = data.getGameObjectByNameIgnoreCase(gameObejctName);
+		if (!go.hasThisAttribute("color_source")) return;
+		RealmComponent rc = RealmComponent.getRealmComponent(go);
+		if (rc.isTreasure() && !go.hasThisAttribute(Constants.TREASURE_SEEN)) return;
+		
+		TileLocation location = rc.getCurrentLocation();
+		if (location != null && location.tile != null && !enchantableTiles.contains(location.tile)) {
+			enchantableTiles.add(location.tile);
+		}
+	}
+	
 	public static boolean willBeBlocked(CharacterWrapper character,boolean isFollowing,boolean blockMonsters) {
 		// Player's current clearing is checked for monsters, and blocked if needed
 		boolean blocked = false;

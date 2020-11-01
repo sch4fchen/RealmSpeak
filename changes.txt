@@ -3,6 +3,8 @@ QUEST UPDATE:
 # QuestRewardResetQuest: Option not to reset locations
 # QuestRewardSummonMonster: Option to summon to a random clearing of characters tile
 # QuestRewardKillDenizen: Kill all denizens, if denizen regex is empty
+NEW FEATURES:
+# Automatic Enchanting optional rule: tiles with certain treasures (or chapel) now turn over as well
 BUGS/ISSUES:
 # Fix Control Monster ability with empty duration or duration of 0; fix controlling Wolf 1 and Wolf 2
 # Fix QuestRewardCurse
