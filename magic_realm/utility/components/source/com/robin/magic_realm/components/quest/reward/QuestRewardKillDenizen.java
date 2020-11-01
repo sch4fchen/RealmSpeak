@@ -27,6 +27,7 @@ import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.quest.QuestLocation;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmUtility;
+import com.robin.magic_realm.components.utility.SetupCardUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRewardKillDenizen extends QuestReward {
@@ -47,6 +48,8 @@ public class QuestRewardKillDenizen extends QuestReward {
 		ArrayList<GameObject> denizens = character.getGameData().getGameObjectsByNameRegex(getDenizenNameRegex());
 		for (GameObject denizen : denizens) {
 			if (!denizen.hasThisAttribute("vulnerability")) continue;
+			GameObject denizenHolder = SetupCardUtility.getDenizenHolder(denizen);
+			if (denizen.getHeldBy() == denizenHolder) continue;
 			if (!killHirelings() && denizen.hasThisAttribute(Constants.HIRELING)) {
 				continue;
 			}

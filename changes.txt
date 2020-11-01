@@ -4,6 +4,7 @@ QUEST UPDATE:
 BUGS/ISSUES:
 # Fix Control Monster ability with empty duration or duration of 0; fix controlling Wolf 1 and Wolf 2
 # Fix QuestRewardCurse
+# Fix QuestRewardKillDenizen kill denizen on Chart of Appearance
 
 Version 1.1.3.5 - Changes since 1.1.3.4
 QUEST UPDATE:
