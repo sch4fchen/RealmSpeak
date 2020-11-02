@@ -235,6 +235,7 @@ public class QuestTesterFrame extends JFrame {
 		birdsongTime = new ForceTextToggle("Birdsong");
 		birdsongTime.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
+				GameWrapper.findGame(gameData).setState(GameWrapper.GAME_STATE_RECORDING);
 				retestQuest();
 			}
 		});
@@ -243,6 +244,7 @@ public class QuestTesterFrame extends JFrame {
 		phaseTime = new ForceTextToggle("Phase");
 		phaseTime.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
+				GameWrapper.findGame(gameData).setState(GameWrapper.GAME_STATE_PLAYING);
 				retestQuest();
 			}
 		});
@@ -251,6 +253,7 @@ public class QuestTesterFrame extends JFrame {
 		turnTime = new ForceTextToggle("Turn");
 		turnTime.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
+				GameWrapper.findGame(gameData).setState(GameWrapper.GAME_STATE_RESOLVING);
 				retestQuest();
 			}
 		});
@@ -259,6 +262,7 @@ public class QuestTesterFrame extends JFrame {
 		eveningTime = new ForceTextToggle("Evening");
 		eveningTime.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
+				GameWrapper.findGame(gameData).setState(GameWrapper.GAME_STATE_DAYEND);
 				retestQuest();
 			}
 		});
