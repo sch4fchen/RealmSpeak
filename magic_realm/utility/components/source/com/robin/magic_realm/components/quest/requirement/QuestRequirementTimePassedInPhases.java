@@ -92,6 +92,6 @@ public class QuestRequirementTimePassedInPhases extends QuestRequirement {
 	}
 	
 	public RequirementType getRequirementType() {
-		return RequirementType.NextPhase;
+		return RequirementType.TimePassedInPhases;
 	}
 }
