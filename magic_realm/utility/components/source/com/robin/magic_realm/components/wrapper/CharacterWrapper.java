@@ -1912,7 +1912,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean addsOneToMoveExceptCaves() {
 		if (affectedByKey(Constants.NO_SUNLIGHT)) {
 			boolean house = HostPrefWrapper.findHostPrefs(getGameObject().getGameData()).hasPref(Constants.HOUSE1_DWARF_ACTION);
-			if (house) {
+			if (house && this.getCharacterName().matches("Dwarf")) {
 				return true;
 			}
 		}
@@ -1921,7 +1921,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean canUseSunlightPhases() {
 		if (affectedByKey(Constants.NO_SUNLIGHT)) {
 			boolean house = HostPrefWrapper.findHostPrefs(getGameObject().getGameData()).hasPref(Constants.HOUSE1_DWARF_ACTION);
-			if (!house) {
+			if (!house && this.getCharacterName().matches("Dwarf")) {
 				return false;
 			}
 		}
