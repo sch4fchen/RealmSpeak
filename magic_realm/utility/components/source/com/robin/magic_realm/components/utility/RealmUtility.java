@@ -877,34 +877,6 @@ public class RealmUtility {
 			}
 		}
 		
-		for (ColorMagic color : dayColors) {
-			if (color.getColorNumber() == ColorMagic.WHITE) {
-				addEnchantableTileForGameObject(data, enchantableTiles, "Chapel");
-				addEnchantableTileForGameObject(data, enchantableTiles, "Sacred Grail");
-			}
-		}
-		for (ColorMagic color : dayColors) {
-			if (color.getColorNumber() == ColorMagic.BLACK) {
-				addEnchantableTileForGameObject(data, enchantableTiles, "Toadstool Circle");
-				addEnchantableTileForGameObject(data, enchantableTiles, "Cloven Hoof");
-			}
-		}
-		for (ColorMagic color : dayColors) {
-			if (color.getColorNumber() == ColorMagic.GRAY) {
-				addEnchantableTileForGameObject(data, enchantableTiles, "Golden Icon");
-			}
-		}
-		for (ColorMagic color : dayColors) {
-			if (color.getColorNumber() == ColorMagic.PURPLE) {
-				addEnchantableTileForGameObject(data, enchantableTiles, "Dragon Essence");
-			}
-		}
-		for (ColorMagic color : dayColors) {
-			if (color.getColorNumber() == ColorMagic.GOLD) {
-				addEnchantableTileForGameObject(data, enchantableTiles, "Flowers of Rest");
-			}
-		}
-		
 		// Flip em!
 		for(TileComponent tile:enchantableTiles) {
 			tile.flip();
