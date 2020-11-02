@@ -4,8 +4,9 @@ QUEST UPDATE:
 # QuestRewardSummonMonster: Option to summon to a random clearing of characters tile
 # QuestRewardKillDenizen: Kill all denizens, if denizen regex is empty
 NEW FEATURES:
-# HouseRule 1 "Productive Dwarf" is only applied to "Dwarf" (not other characters without sunlight phases)
+
 BUGS/ISSUES:
+# HouseRule 1 "Productive Dwarf" is only applied to "Dwarf" (not other characters without sunlight phases)
 # Fix Control Monster ability with empty duration or duration of 0; fix controlling Wolf 1 and Wolf 2
 # Fix QuestRewardCurse
 # Fix QuestRewardKillDenizen kill denizen on Chart of Appearance
