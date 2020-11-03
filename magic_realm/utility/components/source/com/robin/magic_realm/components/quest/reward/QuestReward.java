@@ -75,6 +75,8 @@ public abstract class QuestReward extends AbstractQuestObject {
 		RelationshipChange,
 		RelationshipSet,
 		ResetQuest,
+		ResetQuestLocations,
+		ResetQuestSteps,
 		ResetQuestToDeck,
 		ScareMonsters, 
 		SpellEffect,
@@ -138,6 +140,8 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case RelationshipChange:		return "Modify the relationship of the character with a particular native group, or all natives in the clearing.";
 				case RelationshipSet:			return "Set the relationship of the character with a particular native group, or all natives in the clearing.";
 				case ResetQuest:				return "Completely resets the quest, unmarking all quest steps and journal entries.";
+				case ResetQuestLocations:		return "Completely resets the quest locations.";
+				case ResetQuestSteps:			return "Resets all quest steps depending (with a certain 'depth') on current step.";
 				case ResetQuestToDeck:			return "Resets the quest and shuffles it into the available quests again.";
 				case ScareMonsters:				return "Randomly move all monsters in current clearing to other clearings either in the same tile or other tiles, as defined.";
 				case SpellEffect:				return "Cast a spell effect on the character and/or other targets.";
@@ -367,6 +371,12 @@ public abstract class QuestReward extends AbstractQuestObject {
 			case ResetQuest:
 				reward = new QuestRewardResetQuest(go);
 				break;
+			case ResetQuestLocations:
+				reward = new QuestRewardResetQuestLocations(go);
+				break;
+			case ResetQuestSteps:
+				reward = new QuestRewardResetQuestSteps(go);
+				break;	
 			case ResetQuestToDeck:
 				reward = new QuestRewardResetQuestToDeck(go);
 				break;

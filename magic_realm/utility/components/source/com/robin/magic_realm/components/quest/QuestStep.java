@@ -141,7 +141,7 @@ public class QuestStep extends GameObjectWrapper {
 		return getInt(ID);
 	}
 
-	protected void clearStates() {
+	public void clearStates() {
 		clear(STATE);
 		for (QuestStepState state : QuestStepState.values()) {
 			clear(state.toString());

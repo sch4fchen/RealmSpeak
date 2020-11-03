@@ -205,6 +205,14 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case ResetQuest:
 				list.add(new QuestPropertyBlock(QuestRewardResetQuest.NOT_RESET_FOR_LOCATIONS, "Don't reset locations", FieldType.Boolean));
 				break;
+			case ResetQuestLocations:
+				break;
+			case ResetQuestSteps:
+				list.add(new QuestPropertyBlock(QuestRewardResetQuestSteps.RESET_METHOD, "Reset mode", FieldType.StringSelector, QuestRewardResetQuestSteps.ResetMethod.values()));
+				list.add(new QuestPropertyBlock(QuestRewardResetQuestSteps.RESET_DEPENDENT_QUEST_STEPS, "Reset steps requiring resetted steps", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardResetQuestSteps.QUEST_STEPS_DEPTH, "Cascade 'depth'", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRewardResetQuestSteps.QUEST_STEP_NAME, "Quest Step", FieldType.StringSelector, quest.getSteps().toArray()));
+				break;
 			case ResetQuestToDeck:
 				break;
 			case ScareMonsters:
