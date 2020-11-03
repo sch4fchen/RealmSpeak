@@ -196,8 +196,8 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case TimePassed:
 				list.add(new QuestPropertyBlock(QuestRequirementTimePassed.VALUE, "How many days", FieldType.Number));
 				break;
-			case TimePassedInPhases:
-				list.add(new QuestPropertyBlock(QuestRequirementTimePassedInPhases.PHASES_TO_SKIP, "Phases to pass (1 day has 4 phases)", FieldType.Number));
+			case TimePassedPhases:
+				list.add(new QuestPropertyBlock(QuestRequirementTimePassedPhases.PHASES_TO_SKIP, "Phases to pass (1 day has 4 phases)", FieldType.Number));
 				break;
 			case Trade:
 				list.add(new QuestPropertyBlock(QuestRequirementTrade.TRADE_TYPE, "Buy or Sell", FieldType.StringSelector,  TradeType.values()));

@@ -380,8 +380,7 @@ public class QuestStep extends GameObjectWrapper {
 				if (req.fulfillsRequirement(frame, character, reqParams)) {
 					logger.fine("Requirement " + req.getName() + " fulfilled.");
 					oneFulfilled = true;
-					// we continue here in case there are any "Lock" type
-					// requirements!
+					// we continue here in case there are any "Lock" type requirements!
 				}
 			}
 			return oneFulfilled;

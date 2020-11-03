@@ -66,7 +66,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		Relationship,
 		SearchResult, // (optional location designation) Clues, Paths, Passages, Hidden Enemies, Discover Chit(s), Learn and Awaken, Curse!, Awaken, Counters, Treasure Cards,Perceive Spell
 		TimePassed,
-		TimePassedInPhases,
+		TimePassedPhases,
 		Trade,
 		;
 		public String getDescription() {
@@ -139,7 +139,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests for a specific search result.";
 				case TimePassed:
 					return "Tests for a specific length of time (in days) passed.";
-				case TimePassedInPhases:
+				case TimePassedPhases:
 					return "Tests for a specific length of time (in phases) passed.";
 				case Trade:
 					return "Tests for a specific TRADE occurrence.";
@@ -323,8 +323,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 			case TimePassed:
 				requirement = new QuestRequirementTimePassed(go);
 				break;
-			case TimePassedInPhases:
-				requirement = new QuestRequirementTimePassedInPhases(go);
+			case TimePassedPhases:
+				requirement = new QuestRequirementTimePassedPhases(go);
 				break;
 			case Trade:
 				requirement = new QuestRequirementTrade(go);

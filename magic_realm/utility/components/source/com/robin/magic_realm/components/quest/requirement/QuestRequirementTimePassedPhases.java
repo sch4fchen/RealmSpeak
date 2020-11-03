@@ -24,12 +24,12 @@ import com.robin.magic_realm.components.quest.GamePhaseType;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.DayKey;
 
-public class QuestRequirementTimePassedInPhases extends QuestRequirement {
+public class QuestRequirementTimePassedPhases extends QuestRequirement {
 	public static final String PHASES_TO_SKIP = "_ph_skip";
 	private static final String PHASE_STARTED = "_ph_started";
 	private static final String DAY_STARTED = "_day_started";
 
-	public QuestRequirementTimePassedInPhases(GameObject go) {
+	public QuestRequirementTimePassedPhases(GameObject go) {
 		super(go);
 	}
 
@@ -92,6 +92,6 @@ public class QuestRequirementTimePassedInPhases extends QuestRequirement {
 	}
 	
 	public RequirementType getRequirementType() {
-		return RequirementType.TimePassedInPhases;
+		return RequirementType.TimePassedPhases;
 	}
 }
