@@ -358,6 +358,8 @@ public class QuestStep extends GameObjectWrapper {
 			boolean resetTime = false;
 			boolean ret = true;
 			for (QuestRequirement req : reqs) {
+				if (req instanceof QuestRequirementNextPhase && ret == false) continue;
+				
 				if (req.fulfillsRequirement(frame, character, reqParams)) {
 					logger.fine(getClassName(req.getClass()) + " SUCCESS");
 				}

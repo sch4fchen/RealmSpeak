@@ -24,12 +24,12 @@ import com.robin.magic_realm.components.quest.GamePhaseType;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.DayKey;
 
-public class QuestRequirementTimePassedPhases extends QuestRequirement {
+public class QuestRequirementNextPhase extends QuestRequirement {
 	public static final String PHASES_TO_SKIP = "_ph_skip";
 	private static final String PHASE_STARTED = "_ph_started";
 	private static final String DAY_STARTED = "_day_started";
 
-	public QuestRequirementTimePassedPhases(GameObject go) {
+	public QuestRequirementNextPhase(GameObject go) {
 		super(go);
 	}
 
@@ -85,13 +85,13 @@ public class QuestRequirementTimePassedPhases extends QuestRequirement {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Must wait ");
 		sb.append(val);
-		sb.append(" day");
+		sb.append(" phase");
 		sb.append(val==1?"":"s");
-		sb.append(".");
+		sb.append("after first time testing this requirement.");
 		return sb.toString();
 	}
 	
 	public RequirementType getRequirementType() {
-		return RequirementType.TimePassedPhases;
+		return RequirementType.NextPhase;
 	}
 }

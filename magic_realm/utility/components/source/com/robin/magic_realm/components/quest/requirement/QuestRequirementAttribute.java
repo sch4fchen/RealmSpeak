@@ -284,6 +284,10 @@ public class QuestRequirementAttribute extends QuestRequirement {
 		sb.append(".");
 		return sb.toString();
 	}
+	
+	public boolean usesAutoJournal() {
+		return true;
+	}
 
 	public AttributeType getAttributeType() {
 		return AttributeType.valueOf(getString(ATTRIBUTE_TYPE));

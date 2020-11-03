@@ -55,6 +55,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		Kill, 
 		LearnAwaken,
 		Loot, // (optional location designation)
+		NextPhase,
 		NoDenizens,
 		MagicUser,
 		MinorCharacter,
@@ -66,7 +67,6 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		Relationship,
 		SearchResult, // (optional location designation) Clues, Paths, Passages, Hidden Enemies, Discover Chit(s), Learn and Awaken, Curse!, Awaken, Counters, Treasure Cards,Perceive Spell
 		TimePassed,
-		TimePassedPhases,
 		Trade,
 		;
 		public String getDescription() {
@@ -117,6 +117,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests whether a spell has just been awakened and/or learned.";
 				case Loot:
 					return "Tests for a specific item result of looting.";
+				case NextPhase:
+					return "Tests for a specific length of time (in phases) passed after first time testing this requirement.";
 				case NoDenizens:
 					return "Tests for the absence of monster/natives in the clearing or tile.";
 				case MagicUser:
@@ -139,8 +141,6 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests for a specific search result.";
 				case TimePassed:
 					return "Tests for a specific length of time (in days) passed.";
-				case TimePassedPhases:
-					return "Tests for a specific length of time (in phases) passed.";
 				case Trade:
 					return "Tests for a specific TRADE occurrence.";
 			}
@@ -194,6 +194,13 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 	 * Override this method if counter is relevant, and handle appropriately.
 	 */
 	public boolean usesCounterTag(String tag) {
+		return false;
+	}
+	
+	/**
+	 * Override this method if auto journal is relevant, and handle appropriately.
+	 */
+	public boolean usesAutoJournal() {
 		return false;
 	}
 
@@ -290,6 +297,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 			case Loot:
 				requirement = new QuestRequirementLoot(go);
 				break;
+			case NextPhase:
+				requirement = new QuestRequirementNextPhase(go);
+				break;
 			case NoDenizens:
 				requirement = new QuestRequirementNoDenizens(go);
 				break;
@@ -322,9 +332,6 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case TimePassed:
 				requirement = new QuestRequirementTimePassed(go);
-				break;
-			case TimePassedPhases:
-				requirement = new QuestRequirementTimePassedPhases(go);
 				break;
 			case Trade:
 				requirement = new QuestRequirementTrade(go);

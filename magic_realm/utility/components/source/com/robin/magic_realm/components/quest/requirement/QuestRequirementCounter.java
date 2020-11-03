@@ -103,4 +103,7 @@ public class QuestRequirementCounter extends QuestRequirement {
 	public void updateIds(Hashtable<Long, GameObject> lookup) {
 		updateIdsForKey(lookup,COUNTER);
 	}
+	public boolean usesAutoJournal() {
+		return true;
+	}
 }

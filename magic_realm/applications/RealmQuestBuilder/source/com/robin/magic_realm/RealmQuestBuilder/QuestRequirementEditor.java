@@ -145,6 +145,9 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementLoot.TREASURE_TYPE, "Type of Loot to acquire", FieldType.StringSelector, TreasureType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementLoot.REGEX_FILTER, "Loot name filter (regex)", FieldType.Regex, null, new String[] { "item","treasure_within_treasure" }));
 				break;
+			case NextPhase:
+				list.add(new QuestPropertyBlock(QuestRequirementNextPhase.PHASES_TO_SKIP, "Phases to pass (1 day has 4 phases)", FieldType.Number));
+				break;
 			case NoDenizens:
 				list.add(new QuestPropertyBlock(QuestRequirementNoDenizens.NO_MONSTERS, "No Monsters", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementNoDenizens.NO_NATIVES, "No Natives", FieldType.Boolean));
@@ -195,9 +198,6 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				break;
 			case TimePassed:
 				list.add(new QuestPropertyBlock(QuestRequirementTimePassed.VALUE, "How many days", FieldType.Number));
-				break;
-			case TimePassedPhases:
-				list.add(new QuestPropertyBlock(QuestRequirementTimePassedPhases.PHASES_TO_SKIP, "Phases to pass (1 day has 4 phases)", FieldType.Number));
 				break;
 			case Trade:
 				list.add(new QuestPropertyBlock(QuestRequirementTrade.TRADE_TYPE, "Buy or Sell", FieldType.StringSelector,  TradeType.values()));
