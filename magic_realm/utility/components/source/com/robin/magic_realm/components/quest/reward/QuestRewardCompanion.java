@@ -103,6 +103,9 @@ public class QuestRewardCompanion extends QuestReward {
 		}
 		else {
 			sb.append(" leaves the character");
+			if (leaveCompanionInGameWhenLost()) {
+				sb.append(" (stays in game)");
+			}
 		}
 		sb.append(".");
 		return sb.toString();
