@@ -32,7 +32,6 @@ Wizard advancement - didn't get MOVE M5->MAGIC III
 0001879: Color magic fatigue counted against character when used in encounter step to energize a spell
 0001869: blocking occurs on start of phase instead of end -> fixed?
 0001858: PotP Terror wounds Belt of Strength coverted chits
-0001830: Moving into cave lost ALL remaining phases
 0001875: state of multiple rest is not saved correctly
 0001874: notebook does not auto-note when PEACE OF NATURE is active
 0001873: treasure cards with extra phase must be kept until _end_ of added phase
@@ -57,6 +56,7 @@ Wizard advancement - didn't get MOVE M5->MAGIC III
 0001844: Transformed into a monster and still able to extend combat be fatiguing any color chits.
 0001835: Search and finding item in Pool did not fatigue
 0001832: Secret in the Pool does not give LOOT
+0001830: Moving into cave lost ALL remaining phases
 0001796: Wish for Peace not halting combat
 0001760: reloading lets me use sunlight phases in caves
 0001757: Casting Wish causes funny result
