@@ -15,6 +15,7 @@ BUGS/ISSUES:
 # Fix Control Monster ability with empty duration or duration of 0; fix controlling Wolf 1 and Wolf 2
 # Fix QuestRewardCurse
 # Fix QuestRewardKillDenizen kill denizen on Chart of Appearance
+# Fix QuestRewardCompanion losing a companion
 # Fix QuestLocation testing for game pieces not on the board
 # Fix Fly chits awarded by minor character not usable
 

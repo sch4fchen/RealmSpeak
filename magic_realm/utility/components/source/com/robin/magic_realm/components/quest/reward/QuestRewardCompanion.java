@@ -57,6 +57,7 @@ public class QuestRewardCompanion extends QuestReward {
 			GameObject companion = TemplateLibrary.getSingleton().createCompanionFromTemplate(getGameData(),template);
 			character.addHireling(companion,Constants.TEN_YEARS);
 			character.getCurrentLocation().clearing.add(companion,null);
+			character.getGameObject().add(companion);
 			if (locationOnly()) {
 				QuestLocation loc = getQuestLocation();
 				if (loc == null) return;
@@ -70,16 +71,21 @@ public class QuestRewardCompanion extends QuestReward {
 				TileLocation tileLocation = validLocations.get(random);
 				tileLocation.clearing.add(companion,null);
 			}
-			character.getGameObject().add(companion);
 		}
 		else {
-			GamePool pool = new GamePool(character.getGameObject().getHold());
-			GameObject companion = pool.findFirst(getCompanionQuery()) != null ? pool.findFirst(getCompanionQuery()) : pool.findFirst("name="+getCompanionKeyName());
-			if (companion!=null) {
-				character.removeHireling(companion);
-				// Companions must be removed from the map as well, since they are not rehired!
-				if (!leaveCompanionInGameWhenLost()) {
-					ClearingUtility.moveToLocation(companion,null);
+			GamePool pool = new GamePool(character.getGameData().getGameObjects());
+			ArrayList<GameObject> companionsExisting = new ArrayList<GameObject>();
+			companionsExisting.addAll(pool.find(getCompanionQuery()));
+			companionsExisting.addAll(pool.find("name="+getCompanionKeyName()));
+			for (GameObject companion : companionsExisting ) {
+				RealmComponent companionRc = RealmComponent.getRealmComponent(companion);
+				if (companionRc.getOwnerId() != null && companionRc.getOwnerId().matches(String.valueOf(character.getGameObject().getId()))) {
+					character.removeHireling(companion);
+					// Companions must be removed from the map as well, since they are not rehired!
+					if (!leaveCompanionInGameWhenLost()) {
+						ClearingUtility.moveToLocation(companion,null);
+					}
+					return;
 				}
 			}
 		}
