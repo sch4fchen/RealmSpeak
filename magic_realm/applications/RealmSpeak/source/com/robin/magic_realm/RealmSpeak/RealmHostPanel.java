@@ -398,6 +398,30 @@ public class RealmHostPanel extends JPanel {
 					character.setMountainMoveCost(cal.getMountainMoveCost(game.getMonth()));
 					character.startNewDay(cal,hostPrefs);
 					
+					if (current.clearing != null) {
+						ArrayList<RealmComponent> clearingComponents = current.clearing.getClearingComponents();
+						for (RealmComponent monster : clearingComponents) {
+							if (monster.isCharacter()) continue;
+							ArrayList<RealmComponent> characterCanControl = new ArrayList<RealmComponent>();
+							for (RealmComponent characterRc : clearingComponents) {
+								if (!characterRc.isCharacter()) continue;
+									for (Object monsterType : characterRc.getControllableMonsters() ) {
+										if (monster.toString().matches(monsterType.toString()+".*")) {
+											if (!characterCanControl.contains(characterRc)) {
+												characterCanControl.add(characterRc);
+											}
+										}
+									}
+
+							}
+							if (characterCanControl.toArray().length == 1) { // only if exactly one character can control this monster
+								CharacterWrapper characterWrapper = new CharacterWrapper(characterCanControl.get(0).getGameObject());
+								int duration = characterCanControl.get(0).getControllableMonstersDuration();
+								characterWrapper.addHireling(monster.getGameObject(), duration);
+							}
+						}
+					}
+					
 //						if (game.getTurnCount()>1 && game.getDay()==1) {
 //							// New month (other than first).  Update VPs
 //							character.updateNewVPRequirement(1);
@@ -417,14 +441,14 @@ public class RealmHostPanel extends JPanel {
 		}
 		
 		// Extract active characters, so we don't get stuck in an infinite loop
-		ArrayList activeCharacters = new ArrayList();
+		ArrayList<CharacterWrapper> activeCharacters = new ArrayList<CharacterWrapper>();
 		for (Iterator i = livingCharacters.iterator(); i.hasNext();) {
 			CharacterWrapper character = new CharacterWrapper((GameObject) i.next());
 			if (character.isActive()) {
 				activeCharacters.add(character);
 			}
 		}
-
+		
 		if (activeCharacters.size() > 0 && recordingCount == 0 && game.getState() != GameWrapper.GAME_STATE_GAMEOVER) { // FINISH BIRDSONG, START PLAY
 			// Done recording, order players, and start next phase
 			logger.fine("Done recording.  Order players and start next phase.");
