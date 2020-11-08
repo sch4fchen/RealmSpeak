@@ -78,6 +78,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		ResetQuestLocations,
 		ResetQuestSteps,
 		ResetQuestToDeck,
+		Rest,
 		ScareMonsters, 
 		SpellEffect,
 		SpellFromSite,
@@ -143,6 +144,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case ResetQuestLocations:		return "Completely resets the quest locations.";
 				case ResetQuestSteps:			return "Resets all quest steps depending (with a certain 'depth') on current step.";
 				case ResetQuestToDeck:			return "Resets the quest and shuffles it into the available quests again.";
+				case Rest:						return "Rests characters chits.";
 				case ScareMonsters:				return "Randomly move all monsters in current clearing to other clearings either in the same tile or other tiles, as defined.";
 				case SpellEffect:				return "Cast a spell effect on the character and/or other targets.";
 				case SpellFromSite:				return "Learn a spell from a specific site, book, artifact, or Shaman.";
@@ -379,6 +381,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;	
 			case ResetQuestToDeck:
 				reward = new QuestRewardResetQuestToDeck(go);
+				break;
+			case Rest:
+				reward = new QuestRewardRest(go);
 				break;
 			case ScareMonsters:
 				reward = new QuestRewardScareMonsters(go);

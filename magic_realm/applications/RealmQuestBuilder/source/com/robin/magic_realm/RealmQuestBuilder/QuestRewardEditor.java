@@ -215,6 +215,9 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case ResetQuestToDeck:
 				break;
+			case Rest:
+				list.add(new QuestPropertyBlock(QuestRewardRest.AMOUNT, "Number of asterisks", FieldType.Number));
+				break;
 			case ScareMonsters:
 				break;
 			case SpellEffect:
