@@ -77,6 +77,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case Companion:
 				list.add(new QuestPropertyBlock(QuestRewardCompanion.COMPANION_NAME, "Companion", FieldType.CompanionSelector, getAllCompanionKeyValues()));
 				list.add(new QuestPropertyBlock(QuestRewardCompanion.GAIN_TYPE, "Gain or lose", FieldType.StringSelector, GainType.values()));
+				list.add(new QuestPropertyBlock(QuestRewardCompanion.COMPANION_STAYS_INGAME, "Leave companion ingame (if lost)", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardCompanion.EXCLUDE_HORSE, "Exclude horse", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardCompanion.LOCATION_ONLY, "Appear in location", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardCompanion.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));

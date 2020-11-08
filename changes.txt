@@ -7,6 +7,7 @@ QUEST UPDATE:
 # QuestRewardResetQuest: Option not to reset locations
 # QuestRewardSummonMonster: Option to summon to a random clearing of characters tile
 # QuestRewardKillDenizen: Kill all denizens, if denizen regex is empty
+# QuestRewardCompanion: Option to leave companion in game if removed from character
 NEW FEATURES:
 # 
 BUGS/ISSUES:

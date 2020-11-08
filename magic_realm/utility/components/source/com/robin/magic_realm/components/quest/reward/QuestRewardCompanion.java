@@ -43,6 +43,7 @@ public class QuestRewardCompanion extends QuestReward {
 	public static final String COMPANION_NAME = "_cn";
 	public static final String GAIN_TYPE = "_goc";
 	public static final String EXCLUDE_HORSE = "_eh";
+	public static final String COMPANION_STAYS_INGAME = "_cig";
 	public static final String LOCATION_ONLY = "_loc_only";
 	public static final String LOCATION = "_loc";
 	
@@ -78,7 +79,9 @@ public class QuestRewardCompanion extends QuestReward {
 			if (companion!=null) {
 				character.removeHireling(companion);
 				// Companions must be removed from the map as well, since they are not rehired!
-				ClearingUtility.moveToLocation(companion,null);
+				if (!leaveCompanionInGameWhenLost()) {
+					ClearingUtility.moveToLocation(companion,null);
+				}
 			}
 		}
 	}
@@ -119,6 +122,10 @@ public class QuestRewardCompanion extends QuestReward {
 	
 	private String getCompanionQuery() {
 		return getString(QuestConstants.VALUE_PREFIX+COMPANION_NAME);
+	}
+	
+	private boolean leaveCompanionInGameWhenLost() {
+		return getBoolean(COMPANION_STAYS_INGAME);
 	}
 	
 	private boolean excludeHorse() {
