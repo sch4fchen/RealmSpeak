@@ -78,7 +78,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardCompanion.COMPANION_NAME, "Companion", FieldType.CompanionSelector, getAllCompanionKeyValues()));
 				list.add(new QuestPropertyBlock(QuestRewardCompanion.GAIN_TYPE, "Gain or lose", FieldType.StringSelector, GainType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardCompanion.EXCLUDE_HORSE, "Exclude horse", FieldType.Boolean));
-				list.add(new QuestPropertyBlock(QuestRewardCompanion.LOCATION_ONLY, "Apper in location", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardCompanion.LOCATION_ONLY, "Appear in location", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardCompanion.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
 			case Counter:
@@ -133,7 +133,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardHireling.HIRELING_REGEX, "Native RegEx", FieldType.Regex, null, new String[] { "native,rank" }));
 				list.add(new QuestPropertyBlock(QuestRewardHireling.ACQUISITION_TYPE, "Method to acquire hireling", FieldType.StringSelector, ChitAcquisitionType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardHireling.TERM_OF_HIRE, "Term of hire", FieldType.StringSelector, TermOfHireType.values()));
-				list.add(new QuestPropertyBlock(QuestRewardHireling.LOCATION_ONLY, "Apper in location", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardHireling.LOCATION_ONLY, "Appear in location", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardHireling.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
 			case Information:
