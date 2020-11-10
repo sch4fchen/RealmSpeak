@@ -1921,9 +1921,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean canUseSunlightPhases() {
 		if (affectedByKey(Constants.NO_SUNLIGHT)) {
 			boolean house = HostPrefWrapper.findHostPrefs(getGameObject().getGameData()).hasPref(Constants.HOUSE1_DWARF_ACTION);
-			if (!house && this.getCharacterName().matches("Dwarf")) {
-				return false;
+			if (house && this.getCharacterName().matches("Dwarf")) {
+				return true;
 			}
+			return false;
 		}
 		return true;
 	}
