@@ -193,6 +193,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case RegenerateDenizen:
 				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.DENIZEN_REGEX, "Denizen", FieldType.Regex, null, new String[] { "denizen" }));
+				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.CHARACTERS_CLEARING, "In characters clearing only", FieldType.Boolean));
 				break;	
 			case RelationshipChange:
 				list.add(new QuestPropertyBlock(QuestRewardRelationshipChange.NATIVE_GROUP, "Native group", FieldType.StringSelector, getRelationshipNames()));
