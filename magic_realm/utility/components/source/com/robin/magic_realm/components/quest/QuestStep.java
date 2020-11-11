@@ -440,7 +440,6 @@ public class QuestStep extends GameObjectWrapper {
 		if (keys.size() == 0)
 			return QuestReward.ALL_REWARD_GROUP;
 
-		JScrollPane scrollable = new JScrollPane();
 		// Nope! Better ask the player then
 		int columns = (int) Math.ceil(rewardGroups.size()/5.0);
 		ButtonOptionDialog chooser = new ButtonOptionDialog(frame, null, "Select a reward group:", "Reward Chooser", false, columns);
@@ -473,7 +472,6 @@ public class QuestStep extends GameObjectWrapper {
 			reverseLookup.put(object, key);
 		}
 		chooser.setVisible(true);
-		scrollable.add(chooser);
 		String selectedString = (String) chooser.getSelectedObject();
 		return reverseLookup.get(selectedString);
 	}

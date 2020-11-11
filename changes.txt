@@ -13,6 +13,7 @@ NEW FEATURES:
 # 
 BUGS/ISSUES:
 # HouseRule 1 "Productive Dwarf" is only applied to "Dwarf" (not other characters without sunlight phases)
+# Fix selecting reward does not give reward
 # Fix Control Monster ability with empty duration or duration of 0; fix controlling Wolf 1 and Wolf 2
 # Fix QuestRewardCurse
 # Fix QuestRewardKillDenizen kill denizen on Chart of Appearance
