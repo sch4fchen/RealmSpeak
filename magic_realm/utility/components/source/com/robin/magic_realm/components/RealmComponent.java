@@ -1056,7 +1056,8 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		return immunities;
 	}
 	public boolean hasEnhancedMonsterControlAbility() {
-		return getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL_ENHANCED);
+		CharacterWrapper character = new CharacterWrapper(getGameObject());
+		return getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL_ENHANCED) || !character.getActiveInventoryValuesForThisKey(Constants.MONSTER_CONTROL_ENHANCED,null).isEmpty();
 	}
 	public ArrayList getControllableMonsters() {
 		ArrayList controls = new ArrayList();
@@ -1066,6 +1067,21 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		if (isCharacter()) {
 			CharacterWrapper character = new CharacterWrapper(getGameObject());
 			controls.addAll(character.getActiveInventoryValuesForThisKey(Constants.MONSTER_CONTROL,","));
+		}
+		return controls;
+	}
+	public ArrayList getControllableMonstersEnhanced() {
+		ArrayList controls = new ArrayList();
+		if (getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL) && getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL_ENHANCED)) {
+			controls.addAll(getGameObject().getThisAttributeList(Constants.MONSTER_CONTROL));
+		}
+		if (isCharacter()) {
+			CharacterWrapper character = new CharacterWrapper(getGameObject());
+			for (GameObject inventory : character.getActiveInventoryAndTravelers()) {
+				if (inventory.hasThisAttribute(Constants.MONSTER_CONTROL) && inventory.hasThisAttribute(Constants.MONSTER_CONTROL_ENHANCED)) {
+					controls.addAll(inventory.getThisAttributeList(Constants.MONSTER_CONTROL));
+				}
+			};
 		}
 		return controls;
 	}

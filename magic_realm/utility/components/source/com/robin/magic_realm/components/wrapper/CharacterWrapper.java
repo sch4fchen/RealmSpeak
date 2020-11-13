@@ -2428,7 +2428,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			|| SpellUtility.affectedByBewitchingSpellKey(getGameObject(),key);
 	}
 	
-	private ArrayList<GameObject> getActiveInventoryAndTravelers() {
+	public ArrayList<GameObject> getActiveInventoryAndTravelers() {
 		ArrayList<GameObject> ret = getActiveInventory();
 		ret.addAll(getFollowingTravelers());
 		ret.addAll(getMinorCharacters());
@@ -6509,8 +6509,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 				if (monster.isCharacter()) continue;
 				ArrayList<RealmComponent> characterCanControl = new ArrayList<RealmComponent>();
 				for (RealmComponent characterRc : clearingComponents) {
-					if (!characterRc.isCharacter() || !characterRc.hasEnhancedMonsterControlAbility()) continue;
-						for (Object monsterType : characterRc.getControllableMonsters() ) {
+					if (!characterRc.isCharacter()) continue;
+						for (Object monsterType : characterRc.getControllableMonstersEnhanced() ) {
 							if (monster.toString().matches(monsterType.toString()+".*")) {
 								if (!characterCanControl.contains(characterRc)) {
 									characterCanControl.add(characterRc);
