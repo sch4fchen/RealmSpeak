@@ -10,7 +10,7 @@ QUEST UPDATE:
 # QuestRewardRegenerateDenizen: Option to regenerate denizen only in characters clearing
 # QuestRewardCompanion: Option to leave companion in game if removed from character
 NEW FEATURES:
-# 
+# Control Monster: Option for "enhanced" ability: can control monsters at the start of Birdsong and at the end of a turn as well
 BUGS/ISSUES:
 # HouseRule 1 "Productive Dwarf" is only applied to "Dwarf" (not other characters without sunlight phases)
 # Fix selecting reward does not give reward
