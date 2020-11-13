@@ -123,8 +123,8 @@ public class MinorCharacterEditor extends GenericEditor {
 		ComponentTools.lockComponentSize(name,200,25);
 		line.add(name);
 		virtual = new JCheckBox("Virtual - Does not to appear in inventory (e.g. ability)");
-		line.add(Box.createHorizontalStrut(10));
 		virtual.setToolTipText("If a minor character is virtual, it won't appear in the character inventory.");
+		line.add(Box.createHorizontalStrut(10));
 		line.add(virtual);
 		line.add(Box.createHorizontalGlue());
 		form.add(line);

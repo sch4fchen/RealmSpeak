@@ -58,6 +58,7 @@ public class AbilityEditor extends GenericEditor {
 	}
 	public void update(GameObject target,String targetBlock) {
 		target.copyAttributeBlockFrom(template.getGameObject(),TEMPLATE_ABILITY_BLOCK);
+		target.removeAttributeBlock(targetBlock);
 		target.copyAttributeBlock(TEMPLATE_ABILITY_BLOCK,targetBlock);
 		target.removeAttributeBlock(TEMPLATE_ABILITY_BLOCK);
 		target.setAttribute(targetBlock,QuestMinorCharacter.ABILITY_DESCRIPTION,editPanel.getSuggestedDescription());
