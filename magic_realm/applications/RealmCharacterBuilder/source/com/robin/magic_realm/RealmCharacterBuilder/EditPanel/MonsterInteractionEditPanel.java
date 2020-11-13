@@ -48,6 +48,7 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 	private Hashtable<String,JCheckBox> hash;
 	private String selection;
 	private String duration;
+	private JCheckBox enhancedControl;
 	JTextField durationComponent = new JTextField("Duration");
 	
 	public MonsterInteractionEditPanel(CharacterWrapper pChar, String levelKey, String selected) {
@@ -67,6 +68,12 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 			durationComponent.setVisible(true);
 			ComponentTools.lockComponentSize(durationComponent,36,18);
 			box.add(durationComponent);
+			enhancedControl = new JCheckBox("Enhanced Control");
+			if (hasAttribute(Constants.MONSTER_CONTROL_ENHANCED)) {
+				enhancedControl.setSelected(true);
+			}
+			box.add(Box.createHorizontalStrut(40));
+			box.add(enhancedControl);
 			add(box,"North");
 		}
 		
@@ -158,6 +165,12 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 			setAttributeList(Constants.MONSTER_CONTROL,list);
 			duration = durationComponent.getText();
 			setAttribute(Constants.MONSTER_CONTROL_DURATION,duration == null || duration == "0" ? String.valueOf(Constants.TEN_YEARS) : duration);
+			if (enhancedControl.isSelected()) {
+				setAttribute(Constants.MONSTER_CONTROL_ENHANCED);
+			}
+			else {
+				removeAttribute(Constants.MONSTER_CONTROL_ENHANCED);
+			}
 		}
 	}
 	public String getSuggestedDescription() {

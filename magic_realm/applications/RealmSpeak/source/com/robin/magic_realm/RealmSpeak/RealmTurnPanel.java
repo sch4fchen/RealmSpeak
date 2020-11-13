@@ -1079,6 +1079,8 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			getGameHandler().getInspector().redrawMap();
 		}
 		
+		getCharacter().distributeMonsterControlInCurrentClearing();
+		
 		// cleanup and notify host
 		getCharacterFrame().hideYourTurn();
 		getCharacter().setPlayOrder(0);

@@ -1055,6 +1055,9 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		}
 		return immunities;
 	}
+	public boolean hasEnhancedMonsterControlAbility() {
+		return getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL_ENHANCED);
+	}
 	public ArrayList getControllableMonsters() {
 		ArrayList controls = new ArrayList();
 		if (getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL)) {

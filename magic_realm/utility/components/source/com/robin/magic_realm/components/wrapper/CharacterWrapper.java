@@ -6501,4 +6501,30 @@ public class CharacterWrapper extends GameObjectWrapper {
 		clear(POST_QUEST_PARAMS);
 		return reward;
 	}
+	public void distributeMonsterControlInCurrentClearing() {
+		TileLocation current = this.getCurrentLocation();
+		if (current.clearing != null) {
+			ArrayList<RealmComponent> clearingComponents = current.clearing.getClearingComponents();
+			for (RealmComponent monster : clearingComponents) {
+				if (monster.isCharacter()) continue;
+				ArrayList<RealmComponent> characterCanControl = new ArrayList<RealmComponent>();
+				for (RealmComponent characterRc : clearingComponents) {
+					if (!characterRc.isCharacter() || !characterRc.hasEnhancedMonsterControlAbility()) continue;
+						for (Object monsterType : characterRc.getControllableMonsters() ) {
+							if (monster.toString().matches(monsterType.toString()+".*")) {
+								if (!characterCanControl.contains(characterRc)) {
+									characterCanControl.add(characterRc);
+								}
+							}
+						}
+
+				}
+				if (characterCanControl.toArray().length == 1) { // only if exactly one character can control this monster
+					CharacterWrapper characterWrapper = new CharacterWrapper(characterCanControl.get(0).getGameObject());
+					int duration = characterCanControl.get(0).getControllableMonstersDuration();
+					characterWrapper.addHireling(monster.getGameObject(), duration);
+				}
+			}
+		}
+	}
 }
