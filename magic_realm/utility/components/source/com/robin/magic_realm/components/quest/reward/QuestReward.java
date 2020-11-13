@@ -88,6 +88,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		SummonFromAppearance,
 		SummonRoll,
 		Teleport,
+		Transmorph,
 		TreasureFromHq,
 		TreasureFromSite, // Select Random/Top/Bottom/Choice from a specific TL/Scholar/Dwelling (NOT minor TLs or TWTs though)
 		Visitor,
@@ -154,6 +155,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case SummonFromAppearance:		return "Summon a specific monster from the chart of appearance to a sound or warning chit.";
 				case SummonRoll:				return "Force a monster summoning roll with a specific number.";
 				case Teleport:					return "Teleport the character to a new location.  Must create a QuestLocation BEFORE creating this reward.";
+				case Transmorph:				return "Transmorphs the character.";
 				case TreasureFromSite:			return "Gain a treasure from a specific site, dwelling, or Scholar.";
 				case TreasureFromHq:			return "Gain a treasure from a specific HQ.";
 				case Visitor:					return "Add or remove a visitor.";
@@ -411,6 +413,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case Teleport:
 				reward = new QuestRewardTeleport(go);
+				break;
+			case Transmorph:
+				reward = new QuestRewardTransmorph(go);
 				break;
 			case TreasureFromHq:
 				reward = new QuestRewardTreasureFromHq(go);

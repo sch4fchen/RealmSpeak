@@ -163,7 +163,7 @@ public class TransmorphEffect implements ISpellEffect {
 		}
 	}
 	
-	private GameObject prepareTransformation(String transformName, RealmComponent target, SpellWrapper spell, JFrame frame){
+	public GameObject prepareTransformation(String transformName, RealmComponent target, SpellWrapper spell, JFrame frame){
 		GameData data = spell.getGameObject().getGameData();
 		GameObject trans = data.createNewObject();
 		
@@ -173,7 +173,7 @@ public class TransmorphEffect implements ISpellEffect {
 		IconGroup group = new IconGroup(RealmComponent.getRealmComponent(trans).getIcon(),IconGroup.VERTICAL,1);
 		
 		String pronoun = getPronoun(trans.getName());
-		String message = "The " + target.getGameObject().getName()+" was transformed into " + pronoun + transformName + ".";
+		String message = "The " + target.getGameObject().getName()+" was transformed into " + pronoun + trans.getName() + ".";
 		RealmLogging.logMessage(RealmLogging.BATTLE, message);
 		FrameManager.showDefaultManagedFrame(frame, message, "Transform", group, true);
 		

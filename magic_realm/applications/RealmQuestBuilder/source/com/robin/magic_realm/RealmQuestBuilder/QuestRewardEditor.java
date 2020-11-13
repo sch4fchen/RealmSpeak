@@ -269,6 +269,10 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case Teleport:
 				list.add(new QuestPropertyBlock(QuestRewardTeleport.LOCATION, "Teleport to", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
+			case Transmorph:
+				list.add(new QuestPropertyBlock(QuestRewardTransmorph.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));
+				list.add(new QuestPropertyBlock(QuestRewardTransmorph.REVERT_TRANSFORMATION, "Revert transformation", FieldType.Boolean));
+				break;
 			case TreasureFromHq:
 				list.add(new QuestPropertyBlock(QuestRewardTreasureFromHq.HQ_REGEX, "HQ RegEx", FieldType.Regex, null, new String[] { "rank=HQ" }));
 				list.add(new QuestPropertyBlock(QuestRewardTreasureFromHq.DRAW_TYPE, "Draw Type", FieldType.StringSelector, DrawType.values()));
