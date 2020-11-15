@@ -24,7 +24,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import com.robin.game.objects.GameObject;
-import com.robin.game.objects.GamePool;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
@@ -57,8 +56,7 @@ public class QuestRewardSpellEffect extends QuestReward {
 
 	@Override
 	public void processReward(JFrame frame, CharacterWrapper character) {
-		GamePool pool = new GamePool(getGameData().getGameObjects());
-		ArrayList<GameObject> potentialSpells = pool.find(getSpellRegex());
+		ArrayList<GameObject> potentialSpells = character.getGameData().getGameObjectsByNameRegex(getSpellRegex());
 		ArrayList<GameObject> spells = new ArrayList<GameObject>();
 		for (GameObject sp : potentialSpells) {
 			if (sp.hasThisAttribute("spell")) {
@@ -71,7 +69,7 @@ public class QuestRewardSpellEffect extends QuestReward {
 		}
 		ArrayList<GameObject> targets = new ArrayList<GameObject>();
 		if (!getTargetRegex().isEmpty()) {
-			targets = pool.find(getTargetRegex());
+			targets = character.getGameData().getGameObjectsByNameRegex(getTargetRegex());
 		}
 		GameWrapper gameWrapper = GameWrapper.findGame(getGameObject().getGameData());
 		HostPrefWrapper hostPref = HostPrefWrapper.findHostPrefs(getGameData());
