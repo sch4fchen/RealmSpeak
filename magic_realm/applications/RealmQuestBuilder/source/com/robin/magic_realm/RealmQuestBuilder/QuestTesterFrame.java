@@ -63,6 +63,7 @@ public class QuestTesterFrame extends JFrame {
 	JLabel charName;
 	JLabel currentLocation;
 	JLabel currentDay;
+	JLabel currentWeather;
 	JLabel gtAmount;
 	JLabel spellAmount;
 	JLabel fameAmount;
@@ -325,6 +326,23 @@ public class QuestTesterFrame extends JFrame {
 			}
 		});
 		line.add(changeDay);
+		box.add(line);
+		
+		line = group.createLabelLine("Current Weather");
+		currentWeather = new JLabel();
+		line.add(currentWeather);
+		line.add(Box.createHorizontalGlue());
+		JButton changeWeather = new JButton("Change");
+		changeWeather.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				String weather = chooseWeather();
+				RealmCalendar realmCalender = RealmCalendar.getCalendar(character.getGameData());
+				realmCalender.setWeatherResult(RealmCalendar.getWeatherInt(weather));	
+				updateCharacterPanel();
+				retestQuest();
+			}
+		});
+		line.add(changeWeather);
 		box.add(line);
 
 		line = group.createLabelLine("Great Treasures");
@@ -1137,6 +1155,16 @@ public class QuestTesterFrame extends JFrame {
 		return null;
 	}
 	
+	private String chooseWeather() {
+		ListChooser chooser = new ListChooser(this, "Choose weather", new String[] {RealmCalendar.WEATHER_CLEAR, RealmCalendar.WEATHER_SHOWERS, RealmCalendar.WEATHER_STORM, RealmCalendar.WEATHER_SPECIAL} );
+		chooser.setDoubleClickEnabled(true);
+		chooser.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		chooser.setLocationRelativeTo(this);
+		chooser.setVisible(true);
+		String selected = (String) chooser.getSelectedItem();
+		return selected;
+	}
+	
 	private int chooseMagicColorId() {
 		ListChooser chooser = new ListChooser(this, "Select magic color:", Constants.MAGIC_COLORS);
 		chooser.setDoubleClickEnabled(true);
@@ -1368,6 +1396,7 @@ public class QuestTesterFrame extends JFrame {
 		charName.setIcon(RealmComponent.getRealmComponent(character.getGameObject()).getSmallIcon());
 		currentLocation.setText(character.getCurrentLocation().toString());
 		currentDay.setText(character.getCurrentDayKey());
+		currentWeather.setText(RealmCalendar.getCalendar(character.getGameData()).getWeatherTypeName(character.getCurrentMonth()));
 		gtAmount.setText(String.valueOf(character.getGreatTreasureScore().getOwnedPoints()));
 		fameAmount.setText(String.valueOf((int) character.getFame()));
 		notorietyAmount.setText(String.valueOf((int) character.getNotoriety()));
