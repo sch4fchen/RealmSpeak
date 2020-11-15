@@ -27,6 +27,7 @@ import com.robin.magic_realm.RealmQuestBuilder.QuestPropertyBlock.FieldType;
 import com.robin.magic_realm.components.attribute.RelationshipType;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.quest.reward.*;
+import com.robin.magic_realm.components.utility.RealmCalendar;
 
 public class QuestRewardEditor extends QuestBlockEditor {
 
@@ -288,6 +289,9 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case Visitor:
 				list.add(new QuestPropertyBlock(QuestRewardVisitor.VISITOR_REGEX, "Visitor RegEx", FieldType.Regex, null, new String[] { "visitor" }));
 				list.add(new QuestPropertyBlock(QuestRewardVisitor.ACQUISITION_TYPE, "Method to acquire hireling", FieldType.StringSelector, ChitAcquisitionType.values()));
+				break;
+			case Weather:
+				list.add(new QuestPropertyBlock(QuestRewardWeather.WEATHER, "Weather", FieldType.StringSelector,  new String[] {RealmCalendar.WEATHER_CLEAR, RealmCalendar.WEATHER_SHOWERS, RealmCalendar.WEATHER_STORM, RealmCalendar.WEATHER_SPECIAL}));
 				break;
 			case Wish:
 				list.add(new QuestPropertyBlock(QuestRewardWish.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));

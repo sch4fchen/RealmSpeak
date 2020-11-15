@@ -33,8 +33,8 @@ import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class RealmCalendar {
 	
-	public static final int DAYS_IN_A_MONTH = 28; //28
-	public static final int WEEKS_IN_A_MONTH = 4; //4
+	public static final int DAYS_IN_A_MONTH = 28;
+	public static final int WEEKS_IN_A_MONTH = 4;
 	private static final ColorMagic DAY_14_COLOR = new ColorMagic(ColorMagic.GRAY,true);
 	private static final ColorMagic DAY_21_COLOR = new ColorMagic(ColorMagic.PURPLE,true);
 	private static final ColorMagic DAY_28_COLOR = new ColorMagic(ColorMagic.GOLD,true);
@@ -368,6 +368,7 @@ public class RealmCalendar {
 	public void setWeatherResult(int result) {
 		switch(result) {
 			default:
+			case 3:
 				game.setWeather(RealmCalendar.WEATHER_SPECIAL);
 				break;
 			case 4:
@@ -381,7 +382,19 @@ public class RealmCalendar {
 				break;
 		}
 	}
-	
+	public static int getWeatherInt(String weather) {
+		switch (weather) {
+		case RealmCalendar.WEATHER_SPECIAL:
+			return 3;
+		case RealmCalendar.WEATHER_STORM:
+			return 4;
+		case RealmCalendar.WEATHER_SHOWERS:
+			return 5;
+		default:
+		case RealmCalendar.WEATHER_CLEAR:
+			return 6;
+		}
+	}
 	public static boolean isSeventhDay(int day) {
 		return day==7 || day==14 || day==21 || day==28;
 	}

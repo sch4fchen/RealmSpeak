@@ -29,6 +29,7 @@ import com.robin.magic_realm.components.attribute.RelationshipType;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.quest.requirement.*;
 import com.robin.magic_realm.components.utility.Constants;
+import com.robin.magic_realm.components.utility.RealmCalendar;
 
 public class QuestRequirementEditor extends QuestBlockEditor {
 
@@ -196,6 +197,9 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementSearchResult.REQUIRES_GAIN, "Require search effect", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementSearchResult.REQUIRES_NO_GAIN, "Requires no search effect", FieldType.Boolean));
 				break;
+			case Season:
+				list.add(new QuestPropertyBlock(QuestRequirementSeason.SEASON, "Season", FieldType.StringSelector, getSeasonStrings().toArray() ));
+				break;
 			case TimePassed:
 				list.add(new QuestPropertyBlock(QuestRequirementTimePassed.VALUE, "How many days", FieldType.Number));
 				break;
@@ -203,6 +207,9 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementTrade.TRADE_TYPE, "Buy or Sell", FieldType.StringSelector,  TradeType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementTrade.TRADE_ITEM_REGEX, "Item Traded", FieldType.Regex, null, new String[] { "item" }));
 				list.add(new QuestPropertyBlock(QuestRequirementTrade.TRADE_WITH_REGEX, "Trade With", FieldType.Regex, null, new String[] { "native,rank=HQ","visitor" }));
+				break;
+			case Weather:
+				list.add(new QuestPropertyBlock(QuestRequirementWeather.WEATHER, "Weather", FieldType.StringSelector, new String[] {RealmCalendar.WEATHER_CLEAR, RealmCalendar.WEATHER_SHOWERS, RealmCalendar.WEATHER_STORM, RealmCalendar.WEATHER_SPECIAL}));
 				break;
 		}
 		return list;
@@ -257,6 +264,16 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			list.addAll(locations);
 		}
 		list.add(0, null);
+		return list;
+	}
+	
+	private ArrayList<String> getSeasonStrings() {
+		ArrayList<String> list = new ArrayList<String>();
+		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
+		for(GameObject go:pool.find("season")) {
+			list.add(go.getName());
+		}
+		Collections.sort(list);		
 		return list;
 	}
 }

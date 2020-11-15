@@ -5,6 +5,9 @@ QUEST UPDATE:
 # QuestReward: Reset quest locations
 # QuestReward: Rest
 # QuestReward: Transmorph
+# QuestReward: Weather
+# QuestRequirement: Weather
+# QuestRequirement: Season
 # QuestRewardResetQuest: Option not to reset locations
 # QuestRewardSummonMonster: Option to summon to a random clearing of characters tile
 # QuestRewardKillDenizen: Kill all denizens, if denizen regex is empty

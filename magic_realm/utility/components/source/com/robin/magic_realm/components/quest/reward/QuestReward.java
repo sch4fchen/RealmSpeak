@@ -92,6 +92,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		TreasureFromHq,
 		TreasureFromSite, // Select Random/Top/Bottom/Choice from a specific TL/Scholar/Dwelling (NOT minor TLs or TWTs though)
 		Visitor,
+		Weather,
 		Wish,
 		;
 		public boolean isShown() {
@@ -159,6 +160,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case TreasureFromSite:			return "Gain a treasure from a specific site, dwelling, or Scholar.";
 				case TreasureFromHq:			return "Gain a treasure from a specific HQ.";
 				case Visitor:					return "Add or remove a visitor.";
+				case Weather:					return "Sets the weather.";
 				case Wish:						return "Grants the character a wish.";
 			}
 			return "(No Description)";
@@ -425,6 +427,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case Visitor:
 				reward = new QuestRewardVisitor(go);
+				break;
+			case Weather:
+				reward = new QuestRewardWeather(go);
 				break;
 			case Wish:
 				reward = new QuestRewardWish(go);

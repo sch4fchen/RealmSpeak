@@ -65,9 +65,11 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		Path, // follows a specific path
 		Probability,
 		Relationship,
+		Season,
 		SearchResult, // (optional location designation) Clues, Paths, Passages, Hidden Enemies, Discover Chit(s), Learn and Awaken, Curse!, Awaken, Counters, Treasure Cards,Perceive Spell
 		TimePassed,
 		Trade,
+		Weather,
 		;
 		public String getDescription() {
 			switch (this) {
@@ -139,10 +141,14 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests whether the character has certain relationship with specific natives."; 
 				case SearchResult:
 					return "Tests for a specific search result.";
+				case Season:
+					return "Tests for a specific season.";
 				case TimePassed:
 					return "Tests for a specific length of time (in days) passed.";
 				case Trade:
 					return "Tests for a specific TRADE occurrence.";
+				case Weather:
+					return "Tests for a specific weather.";
 			}
 			return "(No Description)";
 		}
@@ -330,11 +336,17 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 			case SearchResult:
 				requirement = new QuestRequirementSearchResult(go);
 				break;
+			case Season:
+				requirement = new QuestRequirementSeason(go);
+				break;
 			case TimePassed:
 				requirement = new QuestRequirementTimePassed(go);
 				break;
 			case Trade:
 				requirement = new QuestRequirementTrade(go);
+				break;
+			case Weather:
+				requirement = new QuestRequirementWeather(go);
 				break;
 			default:
 				throw new IllegalArgumentException("Unsupported RequirementType: " + type.toString());
