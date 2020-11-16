@@ -105,7 +105,7 @@ public class ColorMagic implements Comparable {
 			case WHITE:			return Color.white;
 			case GRAY:			return Color.gray;
 			case GOLD:			return Color.yellow;
-			case PURPLE:			return Color.magenta;
+			case PURPLE:		return Color.magenta;
 			case BLACK:			return Color.black;
 		}
 		return null;

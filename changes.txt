@@ -6,6 +6,7 @@ QUEST UPDATE:
 # QuestReward: Rest
 # QuestReward: Transmorph
 # QuestReward: Weather
+# QuestReward: MagicColor
 # QuestRequirement: Weather
 # QuestRequirement: Season
 # QuestRewardResetQuest: Option not to reset locations

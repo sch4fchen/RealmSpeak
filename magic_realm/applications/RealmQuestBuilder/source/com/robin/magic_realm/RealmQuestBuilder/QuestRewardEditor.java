@@ -27,6 +27,7 @@ import com.robin.magic_realm.RealmQuestBuilder.QuestPropertyBlock.FieldType;
 import com.robin.magic_realm.components.attribute.RelationshipType;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.quest.reward.*;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmCalendar;
 
 public class QuestRewardEditor extends QuestBlockEditor {
@@ -166,6 +167,12 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case LostInventoryToLocation:
 				list.add(new QuestPropertyBlock(QuestRewardLostInventoryToLocation.LOCATION, "Send inventory to", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
+				break;
+			case MagicColor:
+				list.add(new QuestPropertyBlock(QuestRewardMagicColor.COLOR, "Magic color", FieldType.StringSelector, Constants.MAGIC_COLORS));
+				list.add(new QuestPropertyBlock(QuestRewardMagicColor.REMOVE, "Remove color", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMagicColor.AFFECT, "Target", FieldType.StringSelector, new String[] {QuestRewardMagicColor.CHARACTERS_CLEARING, QuestRewardMagicColor.CHARACTERS_TILE, QuestRewardMagicColor.LOC_RANDOM_CLEARING, QuestRewardMagicColor.LOC_RANDOM_TILE, QuestRewardMagicColor.LOC_ALL_TILES, QuestRewardMagicColor.ALL} ));
+				list.add(new QuestPropertyBlock(QuestRewardMagicColor.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
 			case MarkDenizen:
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.DENIZEN_REGEX, "Denizen name filter (regex)", FieldType.Regex, null, new String[] { "denizen" }));
