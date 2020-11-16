@@ -35,9 +35,9 @@ public class QuestRequirementWeather extends QuestRequirement {
 	}
 
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
+		RealmCalendar realmCalender = RealmCalendar.getCalendar(character.getGameData());
 		if (weatherEnabled()) {
-			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
-			if (!hostPrefs.hasPref(Constants.OPT_WEATHER)) {
+			if (!realmCalender.isUsingWeather()) {
 				return false;
 			}
 		}
@@ -45,7 +45,7 @@ public class QuestRequirementWeather extends QuestRequirement {
 		if (getWeather().isEmpty()) {
 			return true;
 		}
-		RealmCalendar realmCalender = RealmCalendar.getCalendar(character.getGameData());
+		
 		String currentWeather = realmCalender.getWeatherTypeName(character.getCurrentMonth());
 		return currentWeather.toLowerCase().matches(getWeather());
 	}
