@@ -56,8 +56,8 @@ public class QuestRewardCompanion extends QuestReward {
 			GameObject template = TemplateLibrary.getSingleton().getCompanionTemplate(getCompanionKeyName(),getCompanionQuery(),!excludeHorse());
 			GameObject companion = TemplateLibrary.getSingleton().createCompanionFromTemplate(getGameData(),template);
 			character.addHireling(companion,Constants.TEN_YEARS);
-			character.getCurrentLocation().clearing.add(companion,null);
 			character.getGameObject().add(companion);
+			character.getCurrentLocation().clearing.add(companion,null);
 			if (locationOnly()) {
 				QuestLocation loc = getQuestLocation();
 				if (loc == null) return;
