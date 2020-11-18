@@ -30,6 +30,7 @@ public class QuestRequirementHirelings extends QuestRequirement {
 	public static final String HIRELING_REGEX = "_regex";
 	public static final String AMOUNT = "_amount";
 	public static final String MUST_FOLLOW = "_must_follow";
+	public static final String SAME_LOCATION = "_with_character";
 
 	public QuestRequirementHirelings(GameObject go) {
 		super(go);
@@ -45,6 +46,7 @@ public class QuestRequirementHirelings extends QuestRequirement {
 		}
 		for (RealmComponent hireling : hirelings) {
 			if (getRegExFilter().isEmpty() || hireling.getGameObject().getName().matches("(.*)"+getRegExFilter()+"(.*)")) {
+				if (sameLocation() && !(hireling.getCurrentLocation().tile == character.getCurrentLocation().tile && hireling.getCurrentLocation().clearing == character.getCurrentLocation().clearing)) continue;
 				amount++;
 			}
 		}
@@ -73,5 +75,8 @@ public class QuestRequirementHirelings extends QuestRequirement {
 	}
 	private boolean mustFollow() {
 		return getBoolean(MUST_FOLLOW);
+	}
+	private boolean sameLocation() {
+		return getBoolean(SAME_LOCATION);
 	}
 }

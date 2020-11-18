@@ -14,6 +14,7 @@ QUEST UPDATE:
 # QuestRewardKillDenizen: Kill all denizens, if denizen regex is empty
 # QuestRewardRegenerateDenizen: Option to regenerate denizen only in characters clearing
 # QuestRewardCompanion: Option to leave companion in game if removed from character
+# QuestRequirementHireling: Option that the hireling needs to be in the same location as the character, option to check for non native hirelings (e.g. companions)
 NEW FEATURES:
 # Control Monster: Option for "enhanced" ability: can control monsters at the start of Birdsong and at the end of a turn as well
 BUGS/ISSUES:
