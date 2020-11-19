@@ -59,14 +59,14 @@ public class SpellEffectFactory {
 			case "levitate": return new ISpellEffect[]{new NoWeightEffect()};
 			case "lost": return new ISpellEffect[]{new ApplyNamedEffect(Constants.SP_MOVE_IS_RANDOM)};
 			case "mage guard": return new ISpellEffect[]{new MageGuardEffect()};
-		
+
 			case "make whole": return new ISpellEffect[]{new MakeWholeEffect()};
 			case "melt into mist": return new ISpellEffect[]{new NullifyEffect(),new DisengageEffect(), new TransmorphEffect("mist")};
 			case "miracle": return new ISpellEffect[]{new MiracleEffect()};
 			case "open gate": return new ISpellEffect[]{new TeleportEffect("KnownGate")};
 		
 			case "peace": return new ISpellEffect[]{new PeaceEffect()};
-			//case "peace with nature": return new ISpellEffect[]{new ApplyNamedEffect(Constants.PEACE_WITH_NATURE)};
+			case "peace with nature": return new ISpellEffect[]{new ApplyNamedEffect(Constants.PEACE_WITH_NATURE)};
 		
 			case "pentangle": return new ISpellEffect[]{new NullifyEffect()};
 			case "persuade": return new ISpellEffect[]{new PacifyEffect(1)};
