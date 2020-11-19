@@ -355,7 +355,6 @@ public class QuestStep extends GameObjectWrapper {
 		if (reqs.isEmpty()) return true; // no requirements means auto-success
 		QuestStepType type = getReqType();
 		if (type == QuestStepType.And) {
-			boolean resetTime = false;
 			boolean ret = true;
 			for (QuestRequirement req : reqs) {
 				if (req instanceof QuestRequirementNextPhase && ret == false) continue;
@@ -364,15 +363,9 @@ public class QuestStep extends GameObjectWrapper {
 					logger.fine(getClassName(req.getClass()) + " SUCCESS");
 				}
 				else {
-					if (!(req instanceof QuestRequirementTimePassed)) {
-						resetTime = true;
-					}
 					ret = false;
 					// we continue the loop here in case there are any "Auto-Journal" requirements that need updates
 				}
-			}
-			if (resetTime) {
-				setState(QuestStepState.Ready, character.getCurrentDayKey());
 			}
 			return ret;
 		}
