@@ -37,6 +37,7 @@ import com.robin.magic_realm.components.wrapper.SpellWrapper;
 public class QuestRewardSpellEffect extends QuestReward {
 	
 	public static final String SPELL_REGEX = "_spellrx";
+	public static final String UNEFFECT = "_uneffect";
 	public static final String AFFECT_CHARACTER = "_affchar";
 	public static final String AFFECT_ALL_TARGETS_IN_CHARACTERS_CLEARING = "_aff_all_targets_at_char";
 	public static final String TARGET_REGEX = "_targetrx";
@@ -127,6 +128,10 @@ public class QuestRewardSpellEffect extends QuestReward {
 				
 				spell.addTarget(hostPref, target);
 			}
+			if (uneffect()) {
+				spell.unaffectTargets();
+				return;
+			}
 			spell.affectTargets(frame, gameWrapper, expireImmediately());
 			}
 		}
@@ -158,6 +163,9 @@ public class QuestRewardSpellEffect extends QuestReward {
 	}
 	public String getSpellRegex() {
 		return getString(SPELL_REGEX);
+	}
+	private Boolean uneffect() {
+		return getBoolean(UNEFFECT);
 	}
 	private Boolean affectCharacter() {
 		return getBoolean(AFFECT_CHARACTER);
