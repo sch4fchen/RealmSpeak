@@ -46,6 +46,9 @@ public class SpellEffectFactory {
 			case "filcher": return new ISpellEffect[]{new FilcherEffect()};
 			
 			case "flame staff": return new ISpellEffect[]{new AddSharpnessEffect(2)};
+			
+			case "flying carpet spell": return new ISpellEffect[]{new FlyStrengthEffect()};
+			
 			case "fog": return new ISpellEffect[]{new ApplyNamedEffect(Constants.SP_NO_PEER)};
 		
 			case "gravity": return new ISpellEffect[]{new ApplyClearingEffect("heavied")};
