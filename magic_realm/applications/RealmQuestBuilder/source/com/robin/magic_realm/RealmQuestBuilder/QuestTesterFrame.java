@@ -207,8 +207,8 @@ public class QuestTesterFrame extends JFrame {
 			}
 		});
 		questPanel.add(retestQuestButton);
-		JButton fullfillRequirements = new JButton("Fullfill requirements");
-		fullfillRequirements.addActionListener(new ActionListener() {
+		JButton fulfillRequirements = new JButton("Fulfill requirements");
+		fulfillRequirements.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				QuestStep questStep = questStepView.getSelectedStep();
 				if (questStep!=null) {
@@ -220,7 +220,7 @@ public class QuestTesterFrame extends JFrame {
 				}
 			}
 		});
-		questPanel.add(fullfillRequirements);
+		questPanel.add(fulfillRequirements);
 		topPanel.add(questPanel);
 		JPanel phaseOptions = new JPanel(new GridLayout(1, 5));
 		ButtonGroup timeGroup = new ButtonGroup();
