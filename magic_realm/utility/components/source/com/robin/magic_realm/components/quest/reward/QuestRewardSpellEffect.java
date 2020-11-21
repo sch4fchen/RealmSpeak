@@ -136,9 +136,6 @@ public class QuestRewardSpellEffect extends QuestReward {
 			}
 			else {
 				spell.affectTargets(frame, gameWrapper, expireImmediately());
-				/*for (RealmComponent rc : spell.getTargets()) {
-					spell.castSpellNoEnhancedMagic(rc.getGameObject());
-				}*/
 			}
 		}
 	}
