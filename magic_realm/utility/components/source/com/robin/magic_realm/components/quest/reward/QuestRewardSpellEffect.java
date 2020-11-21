@@ -82,6 +82,7 @@ public class QuestRewardSpellEffect extends QuestReward {
 			if (affectCharacter()) {
 				if (!targetMustBeInLocation() || loc == null || loc.locationMatchAddress(frame, character)) {
 					spell.addTarget(hostPref, character.getGameObject());
+				}
 			}
 				
 			ArrayList<RealmComponent> validTargets = new ArrayList<RealmComponent>();
@@ -128,11 +129,16 @@ public class QuestRewardSpellEffect extends QuestReward {
 				
 				spell.addTarget(hostPref, target);
 			}
+			
 			if (uneffect()) {
 				spell.unaffectTargets();
 				return;
 			}
-			spell.affectTargets(frame, gameWrapper, expireImmediately());
+			else {
+				spell.affectTargets(frame, gameWrapper, expireImmediately());
+				/*for (RealmComponent rc : spell.getTargets()) {
+					spell.castSpellNoEnhancedMagic(rc.getGameObject());
+				}*/
 			}
 		}
 	}
