@@ -46,6 +46,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		Attribute,
 		ChooseNextStep,
 		Companion,
+		Control,
 		Counter,
 		Curse,
 		CustomTreasure,
@@ -115,6 +116,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case Attribute:					return "Modify Fame, Notoriety, or Gold.  Can either add or subtract points/gold.";
 				case ChooseNextStep:			return "Player chooses the next step to process from those steps that follow this step, and fullfill requirements.";
 				case Companion:					return "Add or remove a monster ally.";
+				case Control:					return "Gives the character control over denizens.";
 				case Counter:					return "Modify count value of a counter.";
 				case Curse:						return "Curses the character.";
 				case CustomTreasure:			return "Create a new treasure by taking an existing treasure, renaming it, and giving it new base attributes.";
@@ -291,6 +293,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case Companion:
 				reward = new QuestRewardCompanion(go);
+				break;
+			case Control:
+				reward = new QuestRewardControl(go);
 				break;
 			case Counter:
 				reward = new QuestRewardCounter(go);
