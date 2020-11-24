@@ -127,7 +127,7 @@ public class TileLocation {
 	}
 	
 	public boolean isCave(){
-		return clearing.isCave();
+		return clearing != null && clearing.isCave();
 	}
 	
 	public boolean isAtDwelling(boolean includeRedSpecial) {
