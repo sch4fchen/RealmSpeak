@@ -83,25 +83,23 @@ public class CharacterChitPanel extends CharacterFramePanel {
 		add(box,"South");
 	}
 	public void updateControls() {
-		boolean onlyColorChits = false;
+		boolean onlyColorMagicChits = false;
 		boolean followingActive = getCharacter().isFollowingCharacterPlayingTurn();
 		boolean playingTurn = getCharacterFrame().getTurnPanel()!=null && getCharacterFrame().getTurnPanel().hasActionsLeft();
 		if ((playingTurn || followingActive) && !getCharacter().isGone() && getGameHandler().getGame().isDaylight()) {
 			TileLocation tl = getCharacter().getCurrentLocation();
 			if (tl!=null && !tl.isBetweenClearings() && !tl.isBetweenTiles()) {
 				RealmComponent rc = chitHolderPanel.getSelectedComponent();
-				if (rc!=null) {
-					onlyColorChits = true;
-					if (rc.isMagicChit()) {
-						MagicChit chit = (MagicChit)rc;
-						if (!chit.isColor()) {
-							onlyColorChits = false;
-						}
+				if (rc!=null && rc.isMagicChit()) {
+					onlyColorMagicChits = true;
+					MagicChit chit = (MagicChit)rc;
+					if (!chit.isColor()) {
+						onlyColorMagicChits = false;
 					}
 				}
 			}
 		}
-		fatigueChitButton.setEnabled(onlyColorChits);
+		fatigueChitButton.setEnabled(onlyColorMagicChits);
 	}
 	public void updatePanel() {
 		// Refresh the chit panel
@@ -124,8 +122,7 @@ public class CharacterChitPanel extends CharacterFramePanel {
 		viewer.setVisible(true);
 	}
 	public void burnColorChit() {
-		// This will provide the character a way to recover their color chits
-		// without having to use them in a spell
+		// This will provide the character a way to recover their color chits without having to use them in a spell
 		MagicChit chit = (MagicChit)chitHolderPanel.getSelectedComponent();
 		// because of button disabling, we know this is a color chit
 		
@@ -138,8 +135,7 @@ public class CharacterChitPanel extends CharacterFramePanel {
 			se = getCharacter().getSpellExtras();
 			int seAfter = se==null?0:se.size();
 			if (seAfter>seBefore) {
-				// A spell (or spells) were energized manually during the turn.  Make sure these
-				// make it into the PhaseManager
+				// A spell (or spells) were energized manually during the turn.  Make sure these make it into the PhaseManager
 				ArrayList ses = getCharacter().getSpellExtraSources();
 				for (int i=seBefore;i<seAfter;i++) {
 					String seAction = (String)se.get(i);
@@ -152,7 +148,6 @@ public class CharacterChitPanel extends CharacterFramePanel {
 		getCharacterFrame().updateActiveCurses(); // in case any curses are nullified
 		chitHolderPanel.clearSelected();
 		getCharacterFrame().updateCharacter();
-//		updatePanel();
 		getGameHandler().getInspector().redrawMap();
 		getGameHandler().submitChanges();
 	}
