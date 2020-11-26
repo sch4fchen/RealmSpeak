@@ -123,7 +123,7 @@ public class QuestRewardSpellEffect extends QuestReward {
 					continue;
 				}
 				RealmComponent targetRc = RealmComponent.getRealmComponent(target);
-				if (targetMustBeInLocation() && loc != null || !loc.locationMatchAddressForRealmComponent(frame, character, targetRc)) {
+				if (targetMustBeInLocation() && (loc == null || !loc.locationMatchAddressForRealmComponent(frame, character, targetRc))) {
 					continue;
 				}
 				
