@@ -29,6 +29,7 @@ import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.quest.reward.*;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmCalendar;
+import com.robin.magic_realm.components.utility.SpellUtility;
 
 public class QuestRewardEditor extends QuestBlockEditor {
 
@@ -301,6 +302,10 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case Teleport:
 				list.add(new QuestPropertyBlock(QuestRewardTeleport.LOCATION, "Teleport to", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
+				break;
+			case TeleportChoose:
+				list.add(new QuestPropertyBlock(QuestRewardTeleportChoose.TELEPORT_TYPE, "Tpye of choice", FieldType.StringSelector, SpellUtility.TeleportType.values()));
+				list.add(new QuestPropertyBlock(QuestRewardTeleportChoose.REASON, "Reason in message", FieldType.TextLine));
 				break;
 			case Transmorph:
 				list.add(new QuestPropertyBlock(QuestRewardTransmorph.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));

@@ -15,6 +15,7 @@ QUEST UPDATE:
 # QuestReward: TalkToWiseBird
 # QuestReward: SpellEffectOnCharacter
 # QuestReward: SpellEffectOnTile
+# QuestReward: TeleportChoose
 # QuestRequirement: Weather
 # QuestRequirement: Season
 # QuestRewardResetQuest: Option not to reset locations

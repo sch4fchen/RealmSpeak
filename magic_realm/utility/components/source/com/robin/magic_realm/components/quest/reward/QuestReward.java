@@ -96,6 +96,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		SummonRoll,
 		TalkToWiseBird,
 		Teleport,
+		TeleportChoose,
 		Transmorph,
 		TreasureFromHq,
 		TreasureFromSite, // Select Random/Top/Bottom/Choice from a specific TL/Scholar/Dwelling (NOT minor TLs or TWTs though)
@@ -146,7 +147,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case MakeWhole:					return "Heals all fatigue and wounds, cancels wither curse and repairs items.";
 				case MarkDenizen:				return "Mark a particular denizen for later reference.  This is useful if you want to make sure a character kills (for example) a particular monster.";
 				case MinorCharacter:			return "Add or remove a Minor Character.  Must create Minor Characters BEFORE creating this reward.";
-				case MoveDenizen	:			return "Moves one or several denizen to a location.";
+				case MoveDenizen	:			return "Move one or several denizen to a location.";
 				case PathsPassages:				return "Discover Paths and/or Passages in the current clearing or tile.";
 				case PowerOfThePit:				return "Grants the character a Power of the Pit.";
 				case QuestComplete:				return "Tells RealmSpeak that the character has completed this quest.";
@@ -161,9 +162,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case ResetQuestToDeck:			return "Resets the quest and shuffles it into the available quests again.";
 				case Rest:						return "Rests characters chits.";
 				case ScareMonsters:				return "Randomly move all monsters in current clearing to other clearings either in the same tile or other tiles, as defined.";
-				case SpellEffect:				return "Casts a spell effect on the character and/or other targets.";
-				case SpellEffectOnCharacter:	return "Casts a spell effect on the character which grants/removes an ability forever.";
-				case SpellEffectOnTile:			return "Casts a spell effect on the character tile or removes it.";
+				case SpellEffect:				return "Cast a spell effect on the character and/or other targets.";
+				case SpellEffectOnCharacter:	return "Cast a spell effect on the character which grants/removes an ability forever.";
+				case SpellEffectOnTile:			return "Cast a spell effect on the character tile or removes it.";
 				case SpellFromSite:				return "Learn a spell from a specific site, book, artifact, or Shaman.";
 				case StripInventory:			return "Removes ALL inventory and (optionally) gold from the character (placed to location defined by 'LostInventoryToLocation/Default').";
 				case SummonGuardian:			return "For a specific quest location, summon the treasure site guardian (if any)";
@@ -171,7 +172,8 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case SummonFromAppearance:		return "Summon a specific monster from the chart of appearance to a sound or warning chit.";
 				case SummonRoll:				return "Force a monster summoning roll with a specific number.";
 				case TalkToWiseBird:			return "Character does instantly a free peer action";
-				case Teleport:					return "Teleport the character to a new location.  Must create a QuestLocation BEFORE creating this reward.";
+				case Teleport:					return "Teleport the character to a new location. Must create a QuestLocation BEFORE creating this reward.";
+				case TeleportChoose:			return "Teleport the character to another clearing. Note: no effect in QuestTester";
 				case Transmorph:				return "Transmorphs the character.";
 				case TreasureFromSite:			return "Gain a treasure from a specific site, dwelling, or Scholar.";
 				case TreasureFromHq:			return "Gain a treasure from a specific HQ.";
@@ -455,6 +457,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case Teleport:
 				reward = new QuestRewardTeleport(go);
+				break;
+			case TeleportChoose:
+				reward = new QuestRewardTeleportChoose(go);
 				break;
 			case Transmorph:
 				reward = new QuestRewardTransmorph(go);
