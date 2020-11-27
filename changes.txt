@@ -13,6 +13,7 @@ QUEST UPDATE:
 # QuestReward: Repair
 # QuestReward: MakeWhole
 # QuestReward: TalkToWiseBird
+# QuestReward: SpellEffectOnCharacter
 # QuestRequirement: Weather
 # QuestRequirement: Season
 # QuestRewardResetQuest: Option not to reset locations

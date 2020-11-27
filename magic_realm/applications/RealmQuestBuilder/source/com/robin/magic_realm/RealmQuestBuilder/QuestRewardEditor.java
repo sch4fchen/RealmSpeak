@@ -260,6 +260,10 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.ALL_TARGETS_IN_RANDOM_LOCATION, "Affect targets in random location", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffect.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
+			case SpellEffectOnCharacter:
+				list.add(new QuestPropertyBlock(QuestRewardSpellEffectOnCharacter.SPELL, "Spell", FieldType.StringSelector, QuestRewardSpellEffectOnCharacter.EffectOnCharacter.values()));
+				list.add(new QuestPropertyBlock(QuestRewardSpellEffectOnCharacter.REMOVE, "Remove spell", FieldType.Boolean));
+				break;
 			case SpellFromSite:
 				list.add(new QuestPropertyBlock(QuestRewardTreasureFromSite.SITE_REGEX, "Site RegEx", FieldType.Regex, null, new String[] { "spell_site","visitor,!name=Scholar","artifact","book,magic" }));
 				list.add(new QuestPropertyBlock(QuestRewardTreasureFromSite.DRAW_TYPE, "Draw Type", FieldType.StringSelector, DrawType.values()));

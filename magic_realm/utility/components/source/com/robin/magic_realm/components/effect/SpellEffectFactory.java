@@ -32,7 +32,7 @@ public class SpellEffectFactory {
 		
 			case "dissolve spell": return new ISpellEffect[]{new CancelEffect()};
 			case "divine might": return new ISpellEffect[]{new ApplyNamedEffect(Constants.STRONG_MF)};
-			case "divine protection": return new ISpellEffect[]{new ApplyNamedEffect("adds_armor")};
+			case "divine protection": return new ISpellEffect[]{new ApplyNamedEffect(Constants.ADDS_ARMOR)};
 		
 			case "elemental power": return new ISpellEffect[]{new ForcedEnchantEffect()};
 			case "elemental spirit": return new ISpellEffect[]{new ChitChangeEffect()};
@@ -95,9 +95,9 @@ public class SpellEffectFactory {
 		
 			case "sense danger": return new ISpellEffect[]{new ExtraActionEffect("A")};
 			case "serpent tongue": return new ISpellEffect[]{new ControlEffect()};
-			case "shrink": return new ISpellEffect[]{new ApplyNamedEffect("shrink")};
+			case "shrink": return new ISpellEffect[]{new ApplyNamedEffect(Constants.SHRINK)};
 		
-			case "slow monster": return new ISpellEffect[]{new ApplyNamedEffect("slowed")};
+			case "slow monster": return new ISpellEffect[]{new ApplyNamedEffect(Constants.SLOWED)};
 			case "small blessing": return new ISpellEffect[]{new SmallBlessingEffect()};
 			case "sparkle": return new ISpellEffect[]{new UnassignEffect()};
 		
