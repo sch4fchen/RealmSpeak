@@ -20,7 +20,6 @@ package com.robin.magic_realm.components.quest.reward;
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
-import com.robin.magic_realm.RealmQuestBuilder.QuestTesterFrame;
 import com.robin.magic_realm.components.utility.SpellUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -34,7 +33,7 @@ public class QuestRewardTeleportChoose extends QuestReward {
 	}
 
 	public void processReward(JFrame frame,CharacterWrapper character) {
-		if (frame instanceof QuestTesterFrame) return;
+		if (frame.getTitle().matches("RealmSpeak Quest Tester")) return;
 		SpellUtility.doTeleport(frame, getReason(), character,getTeleportType());
 	}
 	
