@@ -32,6 +32,7 @@ public class QuestRewardSpellEffectOnCharacter extends QuestReward {
 		BlazingLightX,
 		DivineMight,
 		DivineProtection,
+		Lost,
 		PeaceWithNature,
 		Premonition,
 		Prophecy,
@@ -56,6 +57,9 @@ public class QuestRewardSpellEffectOnCharacter extends QuestReward {
 			break;
 		case DivineProtection:
 			effect = Constants.ADDS_ARMOR;
+			break;
+		case Lost:
+			effect = Constants.SP_MOVE_IS_RANDOM;
 			break;
 		case PeaceWithNature:
 			effect = Constants.PEACE_WITH_NATURE;
