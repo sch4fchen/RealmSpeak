@@ -55,6 +55,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		DiscoverTreasureSite,
 		DrawQuests,
 		EnchantTile,
+		Exorcise,
 		FindHiddenEnemies,
 		Guild,
 		Heal,
@@ -66,6 +67,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		LostInventoryToDefault,
 		LostInventoryToLocation,
 		MagicColor,
+		MakeWhole,
 		MarkDenizen,
 		MinorCharacter,
 		MoveDenizen,
@@ -76,6 +78,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		RegenerateDenizen,
 		RelationshipChange,
 		RelationshipSet,
+		Repair,
 		ResetQuest,
 		ResetQuestLocations,
 		ResetQuestSteps,
@@ -89,6 +92,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		SummonMonster,
 		SummonFromAppearance,
 		SummonRoll,
+		TalkToWiseBird,
 		Teleport,
 		Transmorph,
 		TreasureFromHq,
@@ -125,6 +129,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case DiscoverTreasureSite:		return "Character discovers treasure site(s).";
 				case DrawQuests:				return "Character draws quest card(s).";
 				case EnchantTile:				return "Enchants (or unenchants) characters tile and/or tile(s) of a location.";
+				case Exorcise:					return "Exorcise spell is cast";
 				case FindHiddenEnemies:			return "Character finds hidden enemies.";
 				case Guild	:					return "Sets the characters guild and guild level.";
 				case Heal:						return "Heals action chits of the character.";
@@ -136,6 +141,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case LostInventoryToDefault:	return "All future lost inventory from this quest will go to wherever they started the game, including treasures.  This is the default setting.";
 				case LostInventoryToLocation:	return "All future lost inventory from this quest will go to a specified location.";
 				case MagicColor:				return "Provides a magic color to a clearing.";
+				case MakeWhole:					return "Heals all fatigue and wounds, cancels wither curse and repairs items.";
 				case MarkDenizen:				return "Mark a particular denizen for later reference.  This is useful if you want to make sure a character kills (for example) a particular monster.";
 				case MinorCharacter:			return "Add or remove a Minor Character.  Must create Minor Characters BEFORE creating this reward.";
 				case MoveDenizen	:			return "Moves one or several denizen to a location.";
@@ -146,6 +152,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case RegenerateDenizen:			return "Regenerates denizen back to the chart of appearance.";
 				case RelationshipChange:		return "Modify the relationship of the character with a particular native group, or all natives in the clearing.";
 				case RelationshipSet:			return "Set the relationship of the character with a particular native group, or all natives in the clearing.";
+				case Repair:					return "Repairs all items ot fhe character.";
 				case ResetQuest:				return "Completely resets the quest, unmarking all quest steps and journal entries.";
 				case ResetQuestLocations:		return "Completely resets the quest locations.";
 				case ResetQuestSteps:			return "Resets all quest steps depending (with a certain 'depth') on current step.";
@@ -159,6 +166,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case SummonMonster:				return "Summon a specific monster to the characters clearing.";
 				case SummonFromAppearance:		return "Summon a specific monster from the chart of appearance to a sound or warning chit.";
 				case SummonRoll:				return "Force a monster summoning roll with a specific number.";
+				case TalkToWiseBird:			return "Character does instantly a free peer action";
 				case Teleport:					return "Teleport the character to a new location.  Must create a QuestLocation BEFORE creating this reward.";
 				case Transmorph:				return "Transmorphs the character.";
 				case TreasureFromSite:			return "Gain a treasure from a specific site, dwelling, or Scholar.";
@@ -321,6 +329,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 			case EnchantTile:
 				reward = new QuestRewardEnchantTile(go);
 				break;
+			case Exorcise:
+				reward = new QuestRewardExorcise(go);
+				break;
 			case FindHiddenEnemies:
 				reward = new QuestRewardFindHiddenEnemies(go);
 				break;
@@ -354,6 +365,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 			case MagicColor:
 				reward = new QuestRewardMagicColor(go);
 				break;
+			case MakeWhole:
+				reward = new QuestRewardMakeWhole(go);
+				break;
 			case MarkDenizen:
 				reward = new QuestRewardMarkDenizen(go);
 				break;
@@ -383,6 +397,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case RelationshipSet:
 				reward = new QuestRewardRelationshipSet(go);
+				break;
+			case Repair:
+				reward = new QuestRewardRepair(go);
 				break;
 			case ResetQuest:
 				reward = new QuestRewardResetQuest(go);
@@ -422,6 +439,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case SummonRoll:
 				reward = new QuestRewardSummonRoll(go);
+				break;
+			case TalkToWiseBird:
+				reward = new QuestRewardTalkToWiseBird(go);
 				break;
 			case Teleport:
 				reward = new QuestRewardTeleport(go);

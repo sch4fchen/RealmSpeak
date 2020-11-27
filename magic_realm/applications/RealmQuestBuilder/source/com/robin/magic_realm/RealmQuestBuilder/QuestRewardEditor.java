@@ -129,6 +129,10 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardEnchantTile.AFFECT_LOCATION, "Affect location", FieldType.StringSelector, new String[] {QuestRewardEnchantTile.NONE,QuestRewardEnchantTile.RANDOM_TILE,QuestRewardEnchantTile.ALL_TILES} ));
 				list.add(new QuestPropertyBlock(QuestRewardEnchantTile.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
+			case Exorcise:
+				list.add(new QuestPropertyBlock(QuestRewardExorcise.LOCATION_ONLY, "Cast exorcise in location", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardExorcise.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
+				break;
 			case FindHiddenEnemies:
 				break;
 			case Guild:
@@ -180,6 +184,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardMagicColor.AFFECT, "Target", FieldType.StringSelector, new String[] {QuestRewardMagicColor.CHARACTERS_CLEARING, QuestRewardMagicColor.CHARACTERS_TILE, QuestRewardMagicColor.LOC_RANDOM_CLEARING, QuestRewardMagicColor.LOC_RANDOM_TILE, QuestRewardMagicColor.LOC_ALL_TILES, QuestRewardMagicColor.ALL} ));
 				list.add(new QuestPropertyBlock(QuestRewardMagicColor.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
+			case MakeWhole:
+				break;
 			case MarkDenizen:
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.DENIZEN_REGEX, "Denizen name filter (regex)", FieldType.Regex, null, new String[] { "denizen" }));
 				break;
@@ -217,6 +223,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case RelationshipSet:
 				list.add(new QuestPropertyBlock(QuestRewardRelationshipSet.NATIVE_GROUP, "Native group", FieldType.StringSelector, getRelationshipNames()));
 				list.add(new QuestPropertyBlock(QuestRewardRelationshipSet.RELATIONSHIP_SET, "Relationship to set", FieldType.StringSelector, RelationshipType.RelationshipNames));
+				break;
+			case Repair:
 				break;
 			case ResetQuest:
 				list.add(new QuestPropertyBlock(QuestRewardResetQuest.NOT_RESET_FOR_LOCATIONS, "Don't reset locations", FieldType.Boolean));
@@ -280,6 +288,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case SummonRoll:
 				list.add(new QuestPropertyBlock(QuestRewardSummonRoll.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));
+				break;
+			case TalkToWiseBird:
 				break;
 			case Teleport:
 				list.add(new QuestPropertyBlock(QuestRewardTeleport.LOCATION, "Teleport to", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));

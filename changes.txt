@@ -9,6 +9,10 @@ QUEST UPDATE:
 # QuestReward: Weather
 # QuestReward: MagicColor
 # QuestReward: Control
+# QuestReward: Exorcise
+# QuestReward: Repair
+# QuestReward: MakeWhole
+# QuestReward: TalkToWiseBird
 # QuestRequirement: Weather
 # QuestRequirement: Season
 # QuestRewardResetQuest: Option not to reset locations
