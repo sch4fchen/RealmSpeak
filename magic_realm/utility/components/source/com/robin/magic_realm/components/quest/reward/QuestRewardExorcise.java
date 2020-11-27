@@ -53,7 +53,9 @@ public class QuestRewardExorcise extends QuestReward {
 			for (TileLocation location : locations) {
 				if (location.clearing != null) {
 					for (RealmComponent target : location.clearing.getClearingComponents()) {
-						spell.addTarget(hostPrefs, target.getGameObject());
+						if (!spell.getTargets().contains(target)) {
+							spell.addTarget(hostPrefs, target.getGameObject());
+						}
 					}
 				}
 			}

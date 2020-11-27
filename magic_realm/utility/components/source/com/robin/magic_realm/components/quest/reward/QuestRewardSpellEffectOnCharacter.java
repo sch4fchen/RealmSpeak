@@ -32,6 +32,7 @@ public class QuestRewardSpellEffectOnCharacter extends QuestReward {
 		BlazingLightX,
 		DivineMight,
 		DivineProtection,
+		HurricaneWinds,
 		Lost,
 		PeaceWithNature,
 		Premonition,
@@ -58,6 +59,13 @@ public class QuestRewardSpellEffectOnCharacter extends QuestReward {
 		case DivineProtection:
 			effect = Constants.ADDS_ARMOR;
 			break;
+		case HurricaneWinds:
+			if (remove()) {
+				character.getGameObject().removeThisAttribute(Constants.BLOWS_TARGET);
+				return;
+			}
+			character.getGameObject().setThisAttribute(Constants.BLOWS_TARGET,character.getGameData().getGameObjectByNameIgnoreCase("hurricane winds").getStringId());
+			return;
 		case Lost:
 			effect = Constants.SP_MOVE_IS_RANDOM;
 			break;
@@ -102,7 +110,10 @@ public class QuestRewardSpellEffectOnCharacter extends QuestReward {
 	}
 	
 	public String getDescription() {
-		return "Applies the spell effect "+getSpell()+" on the character.";
+		if (remove()) {
+			return "Removes the spell effect "+getSpell()+" from the character.";
+		}
+		return "Applies the spell effect "+getSpell()+" on the character (with unlimited duration).";
 	}
 	public RewardType getRewardType() {
 		return RewardType.SpellEffectOnCharacter;
