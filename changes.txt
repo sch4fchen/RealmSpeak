@@ -16,6 +16,7 @@ QUEST UPDATE:
 # QuestReward: SpellEffectOnCharacter
 # QuestReward: SpellEffectOnTile
 # QuestReward: TeleportChoose
+# QuestReward: Phantasm
 # QuestRequirement: Weather
 # QuestRequirement: Season
 # QuestRewardResetQuest: Option not to reset locations

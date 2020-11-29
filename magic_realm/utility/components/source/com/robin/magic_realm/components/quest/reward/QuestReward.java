@@ -72,6 +72,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		MinorCharacter,
 		MoveDenizen,
 		PathsPassages,
+		Phantasm,
 		PowerOfThePit,
 		QuestComplete,
 		QuestFailed,
@@ -149,6 +150,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case MinorCharacter:			return "Add or remove a Minor Character.  Must create Minor Characters BEFORE creating this reward.";
 				case MoveDenizen	:			return "Move one or several denizen to a location.";
 				case PathsPassages:				return "Discover Paths and/or Passages in the current clearing or tile.";
+				case Phantasm:					return "Give or remove a phantasm to the character.";
 				case PowerOfThePit:				return "Grants the character a Power of the Pit.";
 				case QuestComplete:				return "Tells RealmSpeak that the character has completed this quest.";
 				case QuestFailed:				return "Tells RealmSpeak that the character has failed this quest.";
@@ -385,6 +387,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case PathsPassages:
 				reward = new QuestRewardPathsPassages(go);
+				break;
+			case Phantasm:
+				reward = new QuestRewardPhantasm(go);
 				break;
 			case PowerOfThePit:
 				reward = new QuestRewardPowerOfThePit(go);

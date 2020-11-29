@@ -778,7 +778,7 @@ public class CharacterActionControlManager {
 	}
 	public void updateControls(PhaseManager pm,boolean recordingActions,boolean birdsong) {
 		TileLocation planned = getCharacter().getPlannedLocation();
-		finishAction.setEnabled(getCharacter().isActive() && recordingActions && ((!planned.isBetweenClearings() && !planned.isBetweenTiles()) || getCharacter().canDoDaytimeRecord()));
+		finishAction.setEnabled(getCharacter().isActive() && recordingActions && planned != null && ((!planned.isBetweenClearings() && !planned.isBetweenTiles()) || getCharacter().canDoDaytimeRecord()));
 		boolean canBackspace = getCharacter().isActive() && recordingActions && getCharacter().getCurrentActionCount()>0;
 		boolean canUnsend = getCharacter().isActive() && birdsong && !getCharacter().isDoRecord();
 		backAction.setEnabled(canBackspace || canUnsend);

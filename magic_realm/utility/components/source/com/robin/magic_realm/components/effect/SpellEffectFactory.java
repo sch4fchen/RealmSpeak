@@ -9,7 +9,6 @@ public class SpellEffectFactory {
 			case "animate": return new ISpellEffect[]{new AnimateEffect()};
 			case "ask demon": return new ISpellEffect[]{new AskDemonEffect()};
 		
-			//case "bad luck": I AM NOT SURE WHAT GOES HERE);
 			case "bewilder": return new ISpellEffect[]{new ApplyClearingEffect("bewildered")};
 			case "blazing light": return new ISpellEffect[]{new ExtraCavePhaseEffect()};
 			case "blazing light x": return new ISpellEffect[]{new ApplyNamedEffect(Constants.TORCH_BEARER)};

@@ -209,6 +209,9 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardPathsPassages.LOCATION_ONLY, "Only in location", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardPathsPassages.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
+			case Phantasm:
+				list.add(new QuestPropertyBlock(QuestRewardPhantasm.REMOVE, "Remove phantasm", FieldType.Boolean));
+				break;
 			case PowerOfThePit:
 				list.add(new QuestPropertyBlock(QuestRewardPowerOfThePit.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));
 				break;
