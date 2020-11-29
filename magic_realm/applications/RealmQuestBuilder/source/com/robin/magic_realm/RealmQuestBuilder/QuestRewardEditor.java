@@ -229,6 +229,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardRelationshipSet.RELATIONSHIP_SET, "Relationship to set", FieldType.StringSelector, RelationshipType.RelationshipNames));
 				break;
 			case Repair:
+				list.add(new QuestPropertyBlock(QuestRewardRepair.ITEM, "Items (all if empty)", FieldType.Regex, null, new String[] { "armor,item" }));
 				break;
 			case ResetQuest:
 				list.add(new QuestPropertyBlock(QuestRewardResetQuest.NOT_RESET_FOR_LOCATIONS, "Don't reset locations", FieldType.Boolean));
