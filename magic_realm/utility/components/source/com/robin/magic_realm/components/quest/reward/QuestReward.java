@@ -88,6 +88,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		ScareMonsters, 
 		SpellEffectOnCharacter,
 		SpellEffectOnTile,
+		SpellEffectSummon,
 		SpellFromSite,
 		StripInventory,
 		SummonGuardian,
@@ -165,6 +166,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case ScareMonsters:				return "Randomly move all monsters in current clearing to other clearings either in the same tile or other tiles, as defined.";
 				case SpellEffectOnCharacter:	return "Cast a spell effect on the character which grants/removes an ability forever.";
 				case SpellEffectOnTile:			return "Cast a spell effect on the character tile or removes it.";
+				case SpellEffectSummon:			return "Summon creatures for the character.";
 				case SpellFromSite:				return "Learn a spell from a specific site, book, artifact, or Shaman.";
 				case StripInventory:			return "Removes ALL inventory and (optionally) gold from the character (placed to location defined by 'LostInventoryToLocation/Default').";
 				case SummonGuardian:			return "For a specific quest location, summon the treasure site guardian (if any)";
@@ -433,6 +435,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case SpellEffectOnTile:
 				reward = new QuestRewardSpellEffectOnTile(go);
+				break;
+			case SpellEffectSummon:
+				reward = new QuestRewardSpellEffectSummon(go);
 				break;
 			case SpellFromSite:
 				reward = new QuestRewardSpellFromSite(go);

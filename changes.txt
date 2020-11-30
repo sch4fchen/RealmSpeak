@@ -16,6 +16,7 @@ QUEST UPDATE:
 # QuestReward: TalkToWiseBird
 # QuestReward: SpellEffectOnCharacter
 # QuestReward: SpellEffectOnTile
+# QuestReward: SpellEffectSummon
 # QuestReward: TeleportChoose
 # QuestReward: Phantasm
 # QuestRequirement: Weather

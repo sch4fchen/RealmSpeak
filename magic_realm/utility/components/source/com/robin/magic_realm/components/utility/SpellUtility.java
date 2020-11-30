@@ -210,7 +210,7 @@ started the game, and any other monster or native goes to its box
 on the Appearance Chart. Note: If a hired native is teleported to
 the Appearance Chart, he instantly becomes unhired.
 	 */
-	private static enum SummonType {
+	public static enum SummonType {
 		undead,
 		animal,
 		elemental,

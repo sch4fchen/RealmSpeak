@@ -1,6 +1,7 @@
 package com.robin.magic_realm.components.effect;
 
 import com.robin.magic_realm.components.utility.Constants;
+import com.robin.magic_realm.components.utility.SpellUtility;
 
 public class SpellEffectFactory {	
 	public static ISpellEffect[] create(String spellName){
@@ -82,7 +83,7 @@ public class SpellEffectFactory {
 			case "prophecy": return new ISpellEffect[]{new ApplyNamedEffect(Constants.DAYTIME_ACTIONS)};
 			case "protection from magic": return new ISpellEffect[]{new PhaseChitEffect(), new NullifyEffect()}; //also protection from magic
 
-			case "raise dead": return new ISpellEffect[]{new SummonEffect("undead")};
+			case "raise dead": return new ISpellEffect[]{new SummonEffect(SpellUtility.SummonType.undead.toString())};
 			case "remedy": return new ISpellEffect[]{new CancelEffect()};
 			case "repair armor": return new ISpellEffect[]{new RepairEffect()};
 			case "reverse power": return new ISpellEffect[]{new ColorModEffect()};
@@ -105,8 +106,8 @@ public class SpellEffectFactory {
 			case "stone gaze": return new ISpellEffect[]{new PetrifyEffect()};
 		
 			case "summon aid": return new ISpellEffect[]{new SummonAidEffect()};
-			case "summon animal": return new ISpellEffect[]{new SummonEffect("animal")};
-			case "summon elemental": return new ISpellEffect[]{new SummonEffect("elemental")};
+			case "summon animal": return new ISpellEffect[]{new SummonEffect(SpellUtility.SummonType.animal.toString())};
+			case "summon elemental": return new ISpellEffect[]{new SummonEffect(SpellUtility.SummonType.elemental.toString())};
 			case "sword song": return new ISpellEffect[]{new ApplyNamedEffect("alerted_weapon"), new AlertWeaponEffect()};
 		
 			case "talk to wise bird": return new ISpellEffect[]{new InstantPeerEffect()};
