@@ -31,8 +31,15 @@ import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class QuestRewardTransmorph extends QuestReward {
 	
+	public static final String TRANSMORPH_TYPE = "_type";
 	public static final String DIE_ROLL = "_dr";
 	public static final String REVERT_TRANSFORMATION = "_revert";
+	
+	public enum TransmorphType {
+		Animal,
+		Statue,
+		Mist
+	}
 	
 	public QuestRewardTransmorph(GameObject go) {
 		super(go);
@@ -43,20 +50,41 @@ public class QuestRewardTransmorph extends QuestReward {
 		GameWrapper gameWrapper = GameWrapper.findGame(getGameData());
 		RealmComponent target = RealmComponent.getRealmComponent(character.getGameObject());
 		GamePool pool = new GamePool(getGameData().getGameObjects());
-		GameObject sp = pool.findFirst("name=Transform");
+		
+		TransmorphEffect transmorph;
+		String transformBlock;
+		GameObject sp;	
+		switch (getTransmorphType()) {
+			default:	
+			case Animal:
+				transmorph = new TransmorphEffect("roll");
+				transformBlock = "roll"+getDieRoll();
+				sp = pool.findFirst("name=Transform");
+				break;
+			case Mist:
+				transmorph = new TransmorphEffect("mist");
+				transformBlock = "mist";
+				sp = pool.findFirst("name=Melt Into Mist");
+				break;
+			case Statue:
+				transmorph = new TransmorphEffect("statue");
+				transformBlock = "statue";
+				sp = pool.findFirst("name=Stone Gaze");
+				break;
+		}
+	
+		if (sp == null) return;
 		SpellWrapper spell = new SpellWrapper(sp);
 		spell.setString(SpellWrapper.CASTER_ID, String.valueOf(character.getGameObject().getId()));
 		SpellEffectContext spellEffectContext = new SpellEffectContext(frame, gameWrapper, target, spell, character.getGameObject());
-		TransmorphEffect transmorph = new TransmorphEffect("roll");
 		
 		if (revert()) {
 			transmorph.unapply(spellEffectContext);
 			return;
 		}
 	
-		String transformBlock = "roll"+getDieRoll();
-		GameObject transformAnimal = transmorph.prepareTransformation(transformBlock, target, spell, frame);
-		character.setTransmorph(transformAnimal);
+		GameObject transform = transmorph.prepareTransformation(transformBlock, target, spell, frame);
+		character.setTransmorph(transform);
 	}
 	
 	@Override
@@ -68,7 +96,10 @@ public class QuestRewardTransmorph extends QuestReward {
 		if (revert()) {
 			return "Character is tranformed back.";
 		}
-		return "Transmorphs the character.";
+		return "Transmorphs the character into "+getTransmorphType()+".";
+	}
+	private TransmorphType getTransmorphType() {
+		return TransmorphType.valueOf(getString(TRANSMORPH_TYPE));
 	}
 	private boolean revert() {
 		return getBoolean(REVERT_TRANSFORMATION);

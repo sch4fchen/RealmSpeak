@@ -296,7 +296,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardTeleportChoose.REASON, "Reason in message", FieldType.TextLine));
 				break;
 			case Transmorph:
-				list.add(new QuestPropertyBlock(QuestRewardTransmorph.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));
+				list.add(new QuestPropertyBlock(QuestRewardTransmorph.TRANSMORPH_TYPE, "Transformation type", FieldType.StringSelector, QuestRewardTransmorph.TransmorphType.values()));
+				list.add(new QuestPropertyBlock(QuestRewardTransmorph.DIE_ROLL, "Die roll (for Animal)", FieldType.StringSelector, DieRollType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardTransmorph.REVERT_TRANSFORMATION, "Revert transformation", FieldType.Boolean));
 				break;
 			case TreasureFromHq:
