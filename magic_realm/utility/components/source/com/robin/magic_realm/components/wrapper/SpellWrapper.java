@@ -44,6 +44,8 @@ import com.robin.magic_realm.components.utility.*;
 public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	public static final JFrame dummyFrame = new JFrame(); // this is so affectSpells can work on Battle emulator
 	
+	public static final String SPELL_BLOCK_NAME = "_s_Block";
+	
 	public static final String SPELL_ALIVE = "alive";		// Any spell that is alive - could be inert or nullified, but it is alive
 	private static final String SPELL_INERT = "inert";		// Inert means that the spell is alive, but not functioning due to lack of color
 	private static final String SPELL_AFFECTED = "affected";	// indicates the spell has affected targets
@@ -54,7 +56,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	
 	private static final String TARGET_IDS = "target_ids";
 	private static final String TARGET_EXTRA_IDENTIFIER = "target_ex_id";
-	private static final String SECONDARY_TARGET = "secondary_target";
+	public static final String SECONDARY_TARGET = "secondary_target";
 	private static final String RED_DIE_LOCK = "red_die_lock";
 
 	private static final String ALWAYS_ACTIVE = "always_active";
@@ -75,7 +77,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		return getGameObject().getName();
 	}
 	public String getBlockName() {
-		return "_s_Block";
+		return SPELL_BLOCK_NAME;
 	}
 	public ColorMagic getRequiredColorMagic() {
 		return ColorMagic.makeColorMagic(getGameObject().getThisAttribute("magic_color"),true);

@@ -22,6 +22,7 @@ import javax.swing.JFrame;
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class QuestRewardSpellEffectOnCharacter extends QuestReward {
 	
@@ -64,12 +65,12 @@ public class QuestRewardSpellEffectOnCharacter extends QuestReward {
 			if (hurricanWinds == null) return;
 			if (remove()) {
 				character.getGameObject().removeThisAttribute(Constants.BLOWS_TARGET);
-				hurricanWinds.removeAttribute("_s_Block","secondary_target");
+				hurricanWinds.removeAttribute(SpellWrapper.SPELL_BLOCK_NAME,SpellWrapper.SECONDARY_TARGET);
 				return;
 			}
 			
 			if(character.getCurrentLocation() == null || character.getCurrentLocation().tile == null) return;
-			hurricanWinds.setAttribute("_s_Block","secondary_target",character.getCurrentLocation().tile.getGameObject().getStringId());
+			hurricanWinds.setAttribute(SpellWrapper.SPELL_BLOCK_NAME,SpellWrapper.SECONDARY_TARGET,character.getCurrentLocation().tile.getGameObject().getStringId());
 			character.getGameObject().setThisAttribute(Constants.BLOWS_TARGET,hurricanWinds.getStringId());
 			return;
 		case Lost:
