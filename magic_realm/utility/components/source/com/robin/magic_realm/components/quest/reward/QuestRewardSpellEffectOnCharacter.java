@@ -60,11 +60,17 @@ public class QuestRewardSpellEffectOnCharacter extends QuestReward {
 			effect = Constants.ADDS_ARMOR;
 			break;
 		case HurricaneWinds:
+			GameObject hurricanWinds = character.getGameData().getGameObjectByNameIgnoreCase("hurricane winds");
+			if (hurricanWinds == null) return;
 			if (remove()) {
 				character.getGameObject().removeThisAttribute(Constants.BLOWS_TARGET);
+				hurricanWinds.removeAttribute("_s_Block","secondary_target");
 				return;
 			}
-			character.getGameObject().setThisAttribute(Constants.BLOWS_TARGET,character.getGameData().getGameObjectByNameIgnoreCase("hurricane winds").getStringId());
+			
+			if(character.getCurrentLocation() == null || character.getCurrentLocation().tile == null) return;
+			hurricanWinds.setAttribute("_s_Block","secondary_target",character.getCurrentLocation().tile.getGameObject().getStringId());
+			character.getGameObject().setThisAttribute(Constants.BLOWS_TARGET,hurricanWinds.getStringId());
 			return;
 		case Lost:
 			effect = Constants.SP_MOVE_IS_RANDOM;
