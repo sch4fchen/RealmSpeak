@@ -39,7 +39,8 @@ BUGS/ISSUES:
 # Fix QuestLocation testing for game pieces not on the board
 # Fix Fly chits awarded by minor character not usable
 # Fix Monstername in Transmorph hint message
-# Fix Flying Carpet Spell not working on Flying Carpet
+# Fix Flying Carpet spell not working on Flying Carpet
+# Fix Control Dragon spell not working
 
 Version 1.1.3.5 - Changes since 1.1.3.4
 QUEST UPDATE:

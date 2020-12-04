@@ -22,6 +22,7 @@ public class SpellEffectFactory {
 			case "broomstick": return new ISpellEffect[]{new FlyChitEffect()};
 		
 			case "control bats": return new ISpellEffect[]{new ControlEffect()};
+			case "control dragon": return new ISpellEffect[]{new ControlEffect()};
 			case "curse": return new ISpellEffect[]{new CurseEffect()};
 	
 			case "exorcise": return new ISpellEffect[]{new ExorciseEffect()};
@@ -128,7 +129,3 @@ public class SpellEffectFactory {
 		}
 	}
 }
-		
-
-	
-
