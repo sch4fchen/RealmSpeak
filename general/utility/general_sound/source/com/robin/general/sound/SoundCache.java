@@ -17,6 +17,7 @@
  */
 package com.robin.general.sound;
 
+import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -55,7 +56,8 @@ public class SoundCache {
 		try {
 			InputStream stream = ResourceFinder.getInputStream(soundPath);
 			if (stream!=null) {
-				AudioInputStream ais = AudioSystem.getAudioInputStream(stream);
+				InputStream bufferedStream = new BufferedInputStream(stream);
+				AudioInputStream ais = AudioSystem.getAudioInputStream(bufferedStream);
 				clip = loadClip(ais);
 				adjustVolume(clip,currentGain);
 			}
