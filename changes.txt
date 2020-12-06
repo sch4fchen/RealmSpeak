@@ -1,5 +1,6 @@
 Version 1.1.3.7 - Changes since 1.1.3.6
-#
+QUEST UPDATE:
+# QuestRequirement Attribute, Kill, Path: Option to count points only for same day
 
 Version 1.1.3.6 - Changes since 1.1.3.5
 QUEST UPDATE:

@@ -20,8 +20,6 @@ package com.robin.magic_realm.components.quest.requirement;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.logging.Logger;
-import java.util.regex.Pattern;
-
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
@@ -68,6 +66,9 @@ public class QuestRequirementPath extends QuestRequirement {
 				break;
 			case Step:
 				startKey = getParentStep().getQuestStepStartTime();
+				break;
+			case Day:
+				startKey = new DayKey(character.getCurrentDayKey());
 				break;
 		}
 		
@@ -138,6 +139,9 @@ public class QuestRequirementPath extends QuestRequirement {
 				break;
 			case Step:
 				sb.append(" during the step");
+				break;
+			case Day:
+				sb.append(" during the current day");
 				break;
 		}
 		if (!isAllowTransport()) {

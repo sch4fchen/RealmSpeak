@@ -136,7 +136,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementKill.VALUE, "How many (" + QuestConstants.ALL_VALUE + " means ALL)", FieldType.Number));
 				list.add(new QuestPropertyBlock(QuestRequirementKill.VULNERABILITY, "Vulnerability", FieldType.StringSelector, VulnerabilityType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementKill.ARMORED, "Armor", FieldType.StringSelector, ArmoredType.values()));
-				list.add(new QuestPropertyBlock(QuestRequirementKill.STEP_ONLY_KILLS, "Only count kills for this step", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementKill.TARGET_VALUE_TYPE, "Only count points gained during the", FieldType.StringSelector, TargetValueType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementKill.REQUIRE_MARK, "Mark is required", FieldType.Boolean));
 				break;
 			case LearnAwaken:

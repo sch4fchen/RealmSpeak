@@ -40,6 +40,7 @@ public class QuestRequirementAttribute extends QuestRequirement {
 	public static final String REGEX_FILTER = "_regex"; // to limit fame/notoriety gain to a particular type of monster or treasure type
 
 	public static final String VALUE_OFFSET = "_vo";
+	private static final String VALUE_OFFSET_DAY = "_vod";
 
 	public QuestRequirementAttribute(GameObject go) {
 		super(go);
@@ -54,8 +55,15 @@ public class QuestRequirementAttribute extends QuestRequirement {
 
 	private void initValueOffset(CharacterWrapper character) {
 		if (hasValueOffset())
-			return; // NEVER overwrite it again
+			return; // NEVER overwrite it again, but for earliest = day
 		setValueOffset(calculateCurrentPoints(character, null)); // we set daykey to null, so that no time filter is applied
+	}
+	
+	private void resetValueOffsetForPastDays(CharacterWrapper character) {
+		if (getValueOffsetDay() == null || !getValueOffsetDay().matches(character.getCurrentDayKey())) {
+			setValueOffset(calculateCurrentPoints(character, null));
+			setValueOffsetDay(character.getCurrentDayKey());
+		}
 	}
 
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
@@ -71,6 +79,10 @@ public class QuestRequirementAttribute extends QuestRequirement {
 			case Step:
 				earliest = getParentStep().getQuestStepStartTime();
 				initValueOffset(character);
+				break;
+			case Day:
+				earliest = new DayKey(character.getCurrentDayKey());
+				resetValueOffsetForPastDays(character);
 				break;
 		}
 
@@ -312,6 +324,14 @@ public class QuestRequirementAttribute extends QuestRequirement {
 
 	private void setValueOffset(int val) {
 		setInt(VALUE_OFFSET, val);
+	}
+	
+	private void setValueOffsetDay(String dayKey) {
+		setString(VALUE_OFFSET_DAY, dayKey);
+	}
+	
+	private String getValueOffsetDay() {
+		return getString(VALUE_OFFSET_DAY);
 	}
 
 	private boolean hasValueOffset() {

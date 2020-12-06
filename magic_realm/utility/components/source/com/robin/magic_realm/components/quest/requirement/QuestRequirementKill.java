@@ -28,6 +28,7 @@ import com.robin.game.objects.GamePool;
 import com.robin.magic_realm.components.quest.ArmoredType;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.QuestStep;
+import com.robin.magic_realm.components.quest.TargetValueType;
 import com.robin.magic_realm.components.quest.VulnerabilityType;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -39,10 +40,11 @@ public class QuestRequirementKill extends QuestRequirement {
 
 	public static final String REGEX_FILTER = "_regex";
 	public static final String REQUIRE_MARK = "_rqm";
-	public static final String STEP_ONLY_KILLS = "_sok";
+	public static final String TARGET_VALUE_TYPE = "_tvt";
 	public static final String VALUE = "_rq";
 	public static final String VULNERABILITY = "_vy";
 	public static final String ARMORED = "_arm";
+	private static final String STEP_ONLY_KILLS = "_sok"; // compatibility for old quests
 	
 	public QuestRequirementKill(GameObject go) {
 		super(go);
@@ -51,10 +53,21 @@ public class QuestRequirementKill extends QuestRequirement {
 	protected boolean testFulfillsRequirement(JFrame frame,CharacterWrapper character,QuestRequirementParams reqParams) {
 		logger.fine(buildDescription());
 		QuestStep step = getParentStep();
-		DayKey earliestTime = getOnlyCountKillsForStep()?step.getQuestStepStartTime():step.getQuestStartTime();
-		if (earliestTime==null) {
-			logger.fine("Quest has no start time?  This is a bug: contact Robin.");
-			return false;
+		DayKey earliestTime = new DayKey(1,1);
+		TargetValueType tvt = getTargetValueType();
+		switch (tvt) {
+			case Game:
+				earliestTime = new DayKey(1,1);
+				break;
+			case Quest:
+				earliestTime = step.getQuestStartTime();
+				break;
+			case Step:
+				earliestTime = step.getQuestStepStartTime();
+				break;
+			case Day:
+				earliestTime = new DayKey(character.getCurrentDayKey());
+				break;
 		}
 		
 		boolean requireMark = getRequireMark();
@@ -143,8 +156,16 @@ public class QuestRequirementKill extends QuestRequirement {
 	private String getRegExFilter() {
 		return getString(REGEX_FILTER);
 	}
-	private boolean getOnlyCountKillsForStep() {
-		return getBoolean(STEP_ONLY_KILLS);
+	public TargetValueType getTargetValueType() {
+		if (getString(TARGET_VALUE_TYPE) == null) { // compatibility for old quests
+			if (getBoolean(STEP_ONLY_KILLS)) { 
+				return TargetValueType.Step;
+			}
+			else {
+				return TargetValueType.Quest;
+			}
+		}
+		return TargetValueType.valueOf(getString(TARGET_VALUE_TYPE));
 	}
 	private boolean getRequireMark() {
 		return getBoolean(REQUIRE_MARK);

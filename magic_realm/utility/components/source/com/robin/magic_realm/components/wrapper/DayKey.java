@@ -68,8 +68,8 @@ public class DayKey implements Comparable<DayKey> {
 		return Integer.valueOf(dayKey.substring(dayIndex+5)).intValue();
 	}
 	public DayKey addDays(int numberOfDays) {
-		this.month = this.month + ((this.day+numberOfDays)/28);
-		this.day = (this.day+numberOfDays)%28;
+		int month = this.month + ((this.day+numberOfDays)/28);
+		int day = (this.day+numberOfDays)%28;
 		return new DayKey(month, day);
 	}
 }

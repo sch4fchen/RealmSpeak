@@ -450,7 +450,7 @@ public class Constants {
 	// Revised Rules
 	public static final String REV_MISSILE = "RevisedMissileTable";
 	public static final String REV_DAMPEN_FAST_SPELLS = "DampenFastSpells";
-//	
+	
 	// Expanding the Realm Rules
 	public static final String EXP_DOUBLE_MONSTER_DIE = "DoubleMonsterDie";
 	public static final String EXP_NO_DWELLING_START = "NoDwellingStart";
