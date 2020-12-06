@@ -2,9 +2,9 @@ Version 1.1.3.6 - Changes since 1.1.3.5
 QUEST UPDATE:
 # Not resetting quest step, if a requirement fails
 # REMOVED QuestRewardSpellEffect
-# QuestReward: Next phase
-# QuestReward: Reset quest steps
-# QuestReward: Reset quest locations
+# QuestReward: Nextphase
+# QuestReward: Resetqueststeps
+# QuestReward: Resetquestlocations
 # QuestReward: Rest
 # QuestReward: Transmorph
 # QuestReward: Weather
@@ -24,8 +24,8 @@ QUEST UPDATE:
 # QuestRewardResetQuest: Option not to reset locations
 # QuestRewardSummonMonster: Option to summon to a random clearing of characters tile
 # QuestRewardKillDenizen: Kill all denizens, if denizen regex is empty
-# QuestRewardRegenerateDenizen: Option to regenerate denizen only in characters clearing
-# QuestRewardCompanion: Option to leave companion in game if removed from character
+# QuestRewardRegenerateDenizen: Option to regenerate only denizens in characters clearing
+# QuestRewardCompanion: Option to leave companion in game, if removed from character
 # QuestRequirementHireling: Option that the hireling needs to be in the same location as the character, option to check for non native hirelings (e.g. companions)
 NEW FEATURES:
 # Control Monster: Option for "enhanced" ability: can control monsters at the start of Birdsong and at the end of a turn as well
@@ -34,7 +34,7 @@ BUGS/ISSUES:
 # Fix selecting reward does not give reward
 # Fix Control Monster ability with empty duration or duration of 0; fix controlling Wolf 1 and Wolf 2
 # Fix QuestRewardCurse
-# Fix QuestRewardKillDenizen kill denizen on Chart of Appearance
+# Fix QuestRewardKillDenizen killing denizen on Chart of Appearance
 # Fix QuestRewardCompanion losing a companion
 # Fix QuestLocation testing for game pieces not on the board
 # Fix Fly chits awarded by minor character not usable
