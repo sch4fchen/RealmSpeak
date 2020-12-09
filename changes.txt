@@ -78,7 +78,7 @@ NEW FEATURES:
 # New ability for minor characters and character editor: Control Monster
 # Optional Rule: Alerted Monsters
 BUGS/ISSUES:
-# Fix icon on legendary highpass tiles
+# Fix icon on legendary highpass tile
 # Fix QuestRewardTreasureFromHq for cloned HQ (not able to select cloned HQ)
 
 Version 1.1.3.4 - Changes since 1.1.3.3
