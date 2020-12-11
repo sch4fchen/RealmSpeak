@@ -38,10 +38,12 @@ public class QuestRewardResetQuestLocations extends QuestReward {
 		if (resetAllLocations() || getQuestLocation() == null) {
 			Quest quest = getParentQuest();
 			for (QuestLocation location : quest.getLocations()) {
+				location.clearLockAddress();
 				location.resolveQuestStart(frame, character);
 			}
 			return;
 		}
+		getQuestLocation().clearLockAddress();
 		getQuestLocation().resolveQuestStart(frame, character);
 	}
 

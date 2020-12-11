@@ -367,6 +367,10 @@ public class QuestLocation extends GameObjectWrapper {
 		return getString(LOCK_ADDRESS);
 	}
 	
+	public void clearLockAddress() {
+		removeAttribute(LOCK_ADDRESS);
+	}
+	
 	public void addChoiceAddresses(String val) {
 		addListItem(CHOICE_ADDRESSES,val);
 	}
