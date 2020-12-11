@@ -1092,7 +1092,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			JOptionPane.showMessageDialog(null,"Number of months to play must be a number greater than zero");
 			return false;
 		}
-		else if (vpSuddenDeathOption.isSelected() || fixedVps.isSelected() && readInt(vpsToAchieve.getText())<1) {
+		else if ((vpSuddenDeathOption.isSelected() || (vpTimedOption.isSelected() && fixedVps.isSelected())) && readInt(vpsToAchieve.getText())<1) {
 			JOptionPane.showMessageDialog(null,"VPs to Achieve must be a number greater than zero");
 			return false;
 		}

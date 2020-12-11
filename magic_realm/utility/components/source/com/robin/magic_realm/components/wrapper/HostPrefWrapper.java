@@ -39,6 +39,7 @@ public class HostPrefWrapper extends GameObjectWrapper {
 	public static final String PLAYERS_ALLOWED_TAG = "pl_allowed";
 	public static final String CHARACTERS_PER_PLAYER_TAG = "char_per_player";
 	public static final String NUMBER_OF_MONTHS_TO_PLAY = "n_mon_play";
+	public static final String VPS_FIXED = "vps_fixed";
 	public static final String VPS_TO_ACHIEVE = "vps_2_achv";
 	public static final String ENABLE_BATTLES = "en_batt";
 	public static final String ENABLE_AUTOSAVE = "en_autosave";
@@ -109,6 +110,9 @@ public class HostPrefWrapper extends GameObjectWrapper {
 	}
 	public int getNumberMonthsToPlay() {
 		return getInt(NUMBER_OF_MONTHS_TO_PLAY);
+	}
+	public boolean isFixedVps() {
+		return getBoolean(VPS_FIXED);
 	}
 	public int getVpsToAchieve() {
 		return getInt(VPS_TO_ACHIEVE);
@@ -199,6 +203,9 @@ public class HostPrefWrapper extends GameObjectWrapper {
 	}
 	public void setNumberMonthsToPlay(int val) {
 		setInt(NUMBER_OF_MONTHS_TO_PLAY,val);
+	}
+	public void setFixedVps(boolean val) {
+		setBoolean(VPS_FIXED,val);
 	}
 	public void setVpsToAchieveString(String val) {
 		setString(VPS_TO_ACHIEVE,val);
