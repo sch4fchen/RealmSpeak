@@ -382,7 +382,7 @@ public class RealmHostPanel extends JPanel {
 				TileLocation current = character.getCurrentLocation();
 
 				// First, see if game is over!
-				if (game.getState() == GameWrapper.GAME_STATE_GAMEOVER) {
+				if (game.isGameOver()) {
 					// Mark game over
 					character.applyMidnight();
 					character.setGameOver(true);
