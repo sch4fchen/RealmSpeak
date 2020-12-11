@@ -235,6 +235,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardResetQuest.NOT_RESET_FOR_LOCATIONS, "Don't reset locations", FieldType.Boolean));
 				break;
 			case ResetQuestLocations:
+				list.add(new QuestPropertyBlock(QuestRewardResetQuestLocations.RESET_ALL_LOCATIONS, "Reset all locations", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardResetQuestLocations.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
 			case ResetQuestSteps:
 				list.add(new QuestPropertyBlock(QuestRewardResetQuestSteps.RESET_METHOD, "Reset mode", FieldType.StringSelector, QuestRewardResetQuestSteps.ResetMethod.values()));
