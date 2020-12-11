@@ -799,68 +799,6 @@ public class HostGameSetupDialog extends AggressiveDialog {
 				box.add(Box.createHorizontalGlue());
 				gamePlayBox.add(box);
 			}
-//			box = group.createLine();
-				disableReqVpsWarning = new JLabel("VP Assignment is Disabled (no Hall of Fame)");
-//				disableReqVpsWarning.setFont(new Font("Dialog",Font.BOLD,12));
-//				disableReqVpsWarning.setForeground(Color.red);
-//			box.add(disableReqVpsWarning);
-//			box.add(Box.createHorizontalGlue());
-//		gamePlayBox.add(box);
-		
-//		ButtonGroup vpAssignment = new ButtonGroup();
-//			box = group.createLabelLine("VP Assignment");
-//				Box vpAssignmentBox = Box.createHorizontalBox();
-//					disableReqVPs = notifier.getRadioButton("None");
-//					disableReqVPs.addActionListener(new ActionListener() {
-//						public void actionPerformed(ActionEvent ev) {
-//							updateWarnings();
-//						}
-//					});
-//				vpAssignmentBox.add(disableReqVPs);
-//				vpAssignment.add(disableReqVPs);
-//					vpsPerMonthOption = notifier.getRadioButton("VPs/Month");
-//					vpsPerMonthOption.addActionListener(new ActionListener() {
-//						public void actionPerformed(ActionEvent ev) {
-//							updateWarnings();
-//						}
-//					});
-//				vpAssignmentBox.add(vpsPerMonthOption);
-//				vpAssignment.add(vpsPerMonthOption);
-//					anyVpsAllowedOption = notifier.getRadioButton("Any # VPs");
-//					anyVpsAllowedOption.addActionListener(new ActionListener() {
-//						public void actionPerformed(ActionEvent ev) {
-//							updateWarnings();
-//						}
-//					});
-//				vpAssignmentBox.add(anyVpsAllowedOption);
-//				vpAssignment.add(anyVpsAllowedOption);
-//					suddenDeathOption = notifier.getRadioButton("Sudden Death");
-//					suddenDeathOption.addActionListener(new ActionListener() {
-//						public void actionPerformed(ActionEvent ev) {
-//							updateWarnings();
-//						}
-//					});
-//				vpAssignmentBox.add(suddenDeathOption);
-//				vpAssignment.add(suddenDeathOption);
-//			vpAssignmentBox.setBorder(BorderFactory.createCompoundBorder(
-//					BorderFactory.createEmptyBorder(5,5,5,5),
-//					BorderFactory.createTitledBorder("")
-//					));
-//			box.add(vpAssignmentBox);
-//			box.add(Box.createHorizontalGlue());
-//		gamePlayBox.add(box);
-//			timeLimitLine = group.createLabelLine("Number of Months");
-//				numberMonthsToPlay = notifier.getIntegerField();
-//				ComponentTools.lockComponentSize(numberMonthsToPlay,50,25);
-//			timeLimitLine.add(numberMonthsToPlay);
-//			timeLimitLine.add(Box.createHorizontalGlue());
-//		gamePlayBox.add(timeLimitLine);
-//			vpAssignmentLine = group.createLabelLine("VPs to Achieve");
-//				vpsToAchieve = notifier.getIntegerField();
-//				ComponentTools.lockComponentSize(vpsToAchieve,50,25);
-//			vpAssignmentLine.add(vpsToAchieve);
-//			vpAssignmentLine.add(Box.createHorizontalGlue());
-//		gamePlayBox.add(vpAssignmentLine);
 			box = group.createLabelLine("Disable Combat");
 				disableBattles = notifier.getCheckBox("");
 				disableBattles.addActionListener(new ActionListener() {

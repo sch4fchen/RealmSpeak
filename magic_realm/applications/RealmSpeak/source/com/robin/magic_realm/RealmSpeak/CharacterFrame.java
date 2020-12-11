@@ -1488,27 +1488,27 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					updateActiveCurses();
 				}
 				else if ("eyemist".equals(thingName)) {
-					(new Curse(gameHandler.getMainFrame())).applyOne(character);
+					(new Curse(gameHandler.getMainFrame(), character.getGameObject())).applyOne(character);
 					updateActiveCurses();
 				}
 				else if ("squeak".equals(thingName)) {
-					(new Curse(gameHandler.getMainFrame())).applyTwo(character);
+					(new Curse(gameHandler.getMainFrame(), character.getGameObject())).applyTwo(character);
 					updateActiveCurses();
 				}
 				else if ("wither".equals(thingName)) {
-					(new Curse(gameHandler.getMainFrame())).applyThree(character);
+					(new Curse(gameHandler.getMainFrame(), character.getGameObject())).applyThree(character);
 					updateActiveCurses();
 				}
 				else if ("illhealth".equals(thingName)) {
-					(new Curse(gameHandler.getMainFrame())).applyFour(character);
+					(new Curse(gameHandler.getMainFrame(), character.getGameObject())).applyFour(character);
 					updateActiveCurses();
 				}
 				else if ("ashes".equals(thingName)) {
-					(new Curse(gameHandler.getMainFrame())).applyFive(character);
+					(new Curse(gameHandler.getMainFrame(), character.getGameObject())).applyFive(character);
 					updateActiveCurses();
 				}
 				else if ("disgust".equals(thingName)) {
-					(new Curse(gameHandler.getMainFrame())).applySix(character);
+					(new Curse(gameHandler.getMainFrame(), character.getGameObject())).applySix(character);
 					updateActiveCurses();
 				}
 				else if (thingName.startsWith("findhe")) {
