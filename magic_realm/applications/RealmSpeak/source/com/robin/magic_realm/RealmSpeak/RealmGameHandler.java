@@ -514,8 +514,6 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	}
 
 	private void finalizeGame() {
-		game.setDay(1);
-		game.setMonth(hostPrefs.getNumberMonthsToPlay() + 1);
 		game.setGameEnded(true);
 
 		// Expire ALL spells
@@ -537,6 +535,15 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		submitChanges();
 		updateControls();
 		endGameButton.setEnabled(false);
+		
+		for (Object characterFrame : characterFrames.values()) {
+			CharacterFrame frame = (CharacterFrame) characterFrame;
+			if (frame.getCharacter().isActive()) {
+				frame.getCharacter().setGameOver(true);
+			}
+		}
+		
+		updateCharacterList();
 		updateCharacterFrames();
 		broadcastMapReplot();
 	}
@@ -556,6 +563,9 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		int ret = JOptionPane.showConfirmDialog(getMainFrame(), "This will affect all characters.  Are you sure?", "Extend Game 1 Month", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 		if (ret == JOptionPane.YES_OPTION) {
 			GameData data = client.getGameData();
+			
+			game.setDay(1);
+			game.setMonth(hostPrefs.getNumberMonthsToPlay() + 1);
 			
 			RealmCalendar cal = RealmCalendar.getCalendar(getClient().getGameData());
 			int vps = cal.getVictoryPoints(game.getMonth());
@@ -592,9 +602,8 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			revealAllButton.setEnabled(false);
 			updateControls();
 			broadcastAttention();
-
-			// Send info
 			submitChanges();
+			updateCharacterFrames();
 		}
 	}
 
@@ -795,7 +804,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 
 		boolean mapBuilder = hostPrefs.getBoardPlayerSetup() && !inspector.getMap().isMapReady();
 		startGameButton.setEnabled(isHostPlayer() && !mapBuilder && !game.getGameStarted() && !charPoolLocked && game.getGameMapBuilder() == null);
-		boolean canExtend = isHostPlayer() && !game.getGameEnded() && game.getState() == GameWrapper.GAME_STATE_GAMEOVER && !game.hasBeenRevealed();
+		boolean canExtend = isHostPlayer() && !game.getGameEnded() && game.isGameOver() && !game.hasBeenRevealed();
 		endGameButton.setEnabled(isHostPlayer() && game.getGameStarted() && !game.getGameEnded() && (canMakeChanges || canExtend));
 		extendGameButton.setEnabled(canExtend && !hostPrefs.hasPref(Constants.EXP_SUDDEN_DEATH)); // No game extensions for sudden death!!
 

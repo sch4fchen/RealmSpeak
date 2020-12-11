@@ -4,6 +4,7 @@ QUEST UPDATE:
 # QuestRewardResetQuestLocations: Option to reset a single quest location
 NEW FEATURES:
 # Option to set custom amount of VPs for timed mode
+# Show endgame scoring when ending a game early
 BUGS/ISSUES:
 # Fix companion Imp casting curse on monster
 

@@ -487,7 +487,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		shoutButton.setEnabled(tradeButton.isEnabled());
 		singleButtonManager.updateButtonVisibility();
 		if (!gameHandler.isLocal() && singleButtonManager.hasMandatoryShowing()) SoundUtility.playAttention();
-		actionPanel.updateControls(recordingActions && gameHandler.getGame().getGameStarted() && !gameHandler.getGame().isGameOver() && !singleButtonManager.hasMandatoryShowing());
+		actionPanel.updateControls(recordingActions && gameHandler.getGame().getGameStarted() && (!gameHandler.getGame().isGameOver() && !gameHandler.game.getGameEnded()) && !singleButtonManager.hasMandatoryShowing());
 		if (chitPanel != null) {
 			chitPanel.updateControls();
 		}
