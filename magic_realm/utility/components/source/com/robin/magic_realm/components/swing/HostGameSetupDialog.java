@@ -76,6 +76,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	protected JLabel disableReqVpsWarning;
 	
 	protected JCheckBox anyVpsAllowedOption;
+	protected JCheckBox fixedVps;
 	
 	protected Box timeLimitLine;
 	protected Box vpAssignmentLine;
@@ -122,6 +123,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		gamePass.setText(hostPrefs.getGamePass());
 		setSelectedGameVariant(hostPrefs.getGameKeyVals());
 		numberMonthsToPlay.setText(String.valueOf(hostPrefs.getNumberMonthsToPlay()));
+		fixedVps.setSelected(hostPrefs.isFixedVps());
 		vpsToAchieve.setText(String.valueOf(hostPrefs.getVpsToAchieve()));
 		disableBattles.setSelected(!hostPrefs.getEnableBattles());
 		autosaveEnabled.setSelected(hostPrefs.getAutosaveEnabled());
@@ -192,6 +194,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		gamePass.setText(prefMan.get("gamePass"));
 		setSelectedGameVariant(prefMan.get("gameVersion","Original Game"));
 		numberMonthsToPlay.setText(prefMan.get("numberMonthsToPlay"));
+		fixedVps.setSelected(prefMan.getBoolean("fixedVps"));
 		vpsToAchieve.setText(prefMan.get("vpsToAchieve"));
 		disableBattles.setSelected(!prefMan.getBoolean("battlesEnabled"));
 		autosaveEnabled.setSelected(prefMan.getBoolean("autosaveEnabled"));
@@ -246,6 +249,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		prefMan.set("gamePass",gamePass.getText());
 		prefMan.set("gameVersion",getSelectedGameVariant().getKeyVals());
 		prefMan.set("numberMonthsToPlay",numberMonthsToPlay.getText());
+		prefMan.set("fixedVps",fixedVps.isSelected());
 		prefMan.set("vpsToAchieve",vpsToAchieve.getText());
 		prefMan.set("battlesEnabled",!disableBattles.isSelected());
 		prefMan.set("autosaveEnabled",autosaveEnabled.isSelected());
@@ -338,6 +342,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			gameVariants[i].setEnabled(editMode);
 		}
 		numberMonthsToPlay.setEnabled(editMode);
+		fixedVps.setEnabled(editMode);
 		vpsToAchieve.setEnabled(editMode);
 		anyVpsAllowedOption.setEnabled(editMode);
 		
@@ -558,6 +563,14 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		ComponentTools.lockComponentSize(numberMonthsToPlay,50,20);
 		timeLimitLine.add(numberMonthsToPlay);
 		timeLimitLine.add(Box.createHorizontalGlue());
+		fixedVps = notifier.getCheckBox("Custom amount of VPs ");
+		fixedVps.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				updateWarnings();
+			}
+		});
+		timeLimitLine.add(fixedVps);
+		timeLimitLine.add(Box.createHorizontalGlue());
 		optionSpecifics.add(timeLimitLine);
 		
 		vpAssignmentLine = Box.createHorizontalBox();
@@ -575,7 +588,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		JPanel buttonPanel = new JPanel(new GridLayout(2,3));
 		
 		buttonPanel.add(vpEndlessOption=new VictoryConditionButton("Endless","No time limit or VPs\nNo Hall of Fame\nGame ends when you decide to quit"));
-		buttonPanel.add(vpTimedOption=new VictoryConditionButton("Timed","Defined time limit\nAssign one VP per week plus one\nHighest score at game end wins"));
+		buttonPanel.add(vpTimedOption=new VictoryConditionButton("Timed","Defined time limit\nStandard: Assign one VP per week plus one\nHighest score at game end wins"));
 		buttonPanel.add(vpSuddenDeathOption=new VictoryConditionButton("Sudden Death","Predefined # of VPs\nNo Time Limit\nFirst to achieve VPs wins"));
 		buttonPanel.add(questGuildsOption=new VictoryConditionButton("Guild Quests","Quests are given at guilds (expansion)\nQuests do not earn VPs\n------- NOT READY YET -------\nENDLESS, TIMED or SUDDEN DEATH"));
 		buttonPanel.add(questQtrOption=new VictoryConditionButton("Questing the Realm","Hand of Quest Cards\nFinish quests to earn VPs\n\nTIMED or SUDDEN DEATH"));
@@ -1000,7 +1013,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		testEmailButton.setEnabled(emailNotification.isSelected());
 		
 		timeLimitLine.setVisible(vpTimedOption.isSelected());
-		vpAssignmentLine.setVisible(vpSuddenDeathOption.isSelected() && !anyVpsAllowedOption.isSelected() && !questBoqOption.isSelected());
+		vpAssignmentLine.setVisible(vpSuddenDeathOption.isSelected() || (vpTimedOption.isSelected() && fixedVps.isSelected()) && !anyVpsAllowedOption.isSelected() && !questBoqOption.isSelected());
 		
 		updateControls();
 	}
@@ -1034,6 +1047,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		startingSeason.setSelectedIndex(0);
 		useWeather.setSelected(true);
 		vpTimedOption.setSelected(true);
+		fixedVps.setSelected(false);
 		vpsToAchieve.setText("5");
 		
 		for (Iterator i=optionPane.getGameOptionKeys().iterator();i.hasNext();) {
@@ -1078,7 +1092,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			JOptionPane.showMessageDialog(null,"Number of months to play must be a number greater than zero");
 			return false;
 		}
-		else if (vpSuddenDeathOption.isSelected() && readInt(vpsToAchieve.getText())<1) {
+		else if (vpSuddenDeathOption.isSelected() || fixedVps.isSelected() && readInt(vpsToAchieve.getText())<1) {
 			JOptionPane.showMessageDialog(null,"VPs to Achieve must be a number greater than zero");
 			return false;
 		}
@@ -1094,6 +1108,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		hostPrefs.setGameKeyVals(getSelectedGameVariant().getKeyVals());
 		hostPrefs.setGameSetupName(getSelectedGameVariant().getSetup());
 		hostPrefs.setNumberMonthsToPlayString(numberMonthsToPlay.getText());
+		hostPrefs.setFixedVps(fixedVps.isSelected());
 		hostPrefs.setVpsToAchieveString(vpsToAchieve.getText());
 		hostPrefs.setEnableBattles(!disableBattles.isSelected());
 		hostPrefs.setAutosaveEnabled(autosaveEnabled.isSelected());
@@ -1129,6 +1144,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		hostPrefs.setPref(Constants.OPT_WEATHER,useWeather.isSelected());
 		hostPrefs.setPref(Constants.EXP_SUDDEN_DEATH,vpSuddenDeathOption.isSelected());
 		hostPrefs.setPref(Constants.HOUSE2_ANY_VPS,anyVpsAllowedOption.isSelected());
+		hostPrefs.setFixedVps(fixedVps.isSelected());
 		
 		return true;
 	}

@@ -1547,7 +1547,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 					if (!hostPrefs.getRequiredVPsOff() && !hostPrefs.hasPref(Constants.QST_BOOK_OF_QUESTS)) {
 						RealmCalendar cal = RealmCalendar.getCalendar(getClient().getGameData());
 						int vps = 0;
-						if (hostPrefs.hasPref(Constants.EXP_SUDDEN_DEATH)) {
+						if (hostPrefs.hasPref(Constants.EXP_SUDDEN_DEATH) || hostPrefs.isFixedVps()) {
 							vps = hostPrefs.getVpsToAchieve();
 						}
 						else {

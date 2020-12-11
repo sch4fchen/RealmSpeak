@@ -2,6 +2,8 @@ Version 1.1.3.7 - Changes since 1.1.3.6
 QUEST UPDATE:
 # QuestRequirement Attribute, Kill, Path: Option to count points only for same day
 # QuestRewardResetQuestLocations: Option to reset a single quest location
+NEW FEATURES:
+# Option to set custom amount of VPs for timed mode
 BUGS/ISSUES:
 # Fix companion Imp casting curse on monster
 
