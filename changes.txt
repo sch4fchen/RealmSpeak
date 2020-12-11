@@ -1,15 +1,18 @@
 Version 1.1.3.7 - Changes since 1.1.3.6
 QUEST UPDATE:
+# Update on existing quests and a new quests by Steve
 # QuestRequirement Attribute, Kill, Path: Option to count points only for same day
 # QuestRewardResetQuestLocations: Option to reset a single quest location
 NEW FEATURES:
 # Option to set custom amount of VPs for timed mode
-# Show endgame scoring when ending a game early
+# Ending a game early shows endgame scoring 
+# Ending a game early disables actions for the characters
 BUGS/ISSUES:
 # Fix companion Imp casting curse on monster
 
 Version 1.1.3.6 - Changes since 1.1.3.5
 QUEST UPDATE:
+# Update on existing quests and a new quests by Steve
 # Not resetting quest step, if a requirement fails
 # REMOVED QuestRewardSpellEffect
 # QuestReward: Nextphase
