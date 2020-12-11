@@ -11,8 +11,9 @@ public class CurseEffect implements ISpellEffect {
 	@Override
 	public void apply(SpellEffectContext context) {
 		CharacterWrapper character = context.getCharacterTarget();
+		CharacterWrapper caster = context.getCharacterCaster();
 		
-		Curse curse = new Curse(context.Parent);
+		Curse curse = new Curse(context.Parent, caster.getGameObject());
 		DieRoller roller = DieRollBuilder.getDieRollBuilder(context.Parent,character,context.Spell.getRedDieLock()).createRoller(curse);
 		roller.rollDice("Curse");
 		String result = curse.apply(character,roller);

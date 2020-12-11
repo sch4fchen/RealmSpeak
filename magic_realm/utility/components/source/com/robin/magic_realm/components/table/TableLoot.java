@@ -135,7 +135,7 @@ public class TableLoot extends Loot {
 		}
 		else if ("curse".equals(result)) {
 			// Test code for curse result
-			setNewTable(new Curse(getParentFrame()));
+			setNewTable(new Curse(getParentFrame(), character.getGameObject()));
 			ret = "Curse!";
 			qp.searchType = SearchResultType.Curse;
 			qp.searchHadAnEffect = true;

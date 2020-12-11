@@ -104,7 +104,7 @@ public class ReadRunes extends RealmTable {
 
 	public String applyFive(CharacterWrapper character) {
 		// Curse
-		setNewTable(new Curse(getParentFrame()));
+		setNewTable(new Curse(getParentFrame(), character.getGameObject()));
 		
 		QuestRequirementParams qp = new QuestRequirementParams();
 		qp.actionName = getTableKey();

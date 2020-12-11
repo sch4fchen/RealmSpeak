@@ -491,7 +491,7 @@ public class TreasureUtility {
 		if (thing.hasThisAttribute(Constants.WISH_AND_CURSE)) {
 			// Roll wish and curse (same die roll for both tables)
 			Wish wish = new Wish(parentFrame);
-			Curse curse = new Curse(parentFrame);
+			Curse curse = new Curse(parentFrame, character.getGameObject());
 			DieRoller roller = DieRollBuilder.getDieRollBuilder(parentFrame,character).createRoller(wish);
 			roller.rollDice("Wish/Curse");
 			wish.apply(character,roller);

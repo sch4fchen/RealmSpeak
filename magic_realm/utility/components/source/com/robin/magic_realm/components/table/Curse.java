@@ -35,9 +35,11 @@ public class Curse extends RealmTable {
 	
 	private boolean harm;
 	private boolean cursed;
+	private GameObject caster;
 	
-	public Curse(JFrame frame) {
+	public Curse(JFrame frame, GameObject caster) {
 		super(frame,null);
+		this.caster = caster;
 	}
 	public boolean harmWasApplied() {
 		return harm;
@@ -53,6 +55,10 @@ public class Curse extends RealmTable {
 		// Determine the destination client
 		RealmComponent destOwner = targetRc.getOwner();
 		// destOwner should NOT be null at this point!
+		if (destOwner == null) {
+			RealmComponent chasterRc = RealmComponent.getRealmComponent(this.caster);
+			destOwner = chasterRc.getOwner();
+		}
 		CharacterWrapper destCharacter = new CharacterWrapper(destOwner.getGameObject());
 		return destCharacter.getPlayerName();
 	}
@@ -76,7 +82,7 @@ public class Curse extends RealmTable {
 				"The "+character.getCharacterName()+" is hit with a curse, but it has no effect!");
 		return "Unaffected";
 	}
-	private String getCurseTitle(CharacterWrapper character) {
+	private static String getCurseTitle(CharacterWrapper character) {
 		return character.getGameObject().getName()+"'s Curse!";
 	}
 	public String applyOne(CharacterWrapper character) {
@@ -186,7 +192,7 @@ public class Curse extends RealmTable {
 		return "Disgust";
 	}
 	public static Curse doNow(JFrame parent,GameObject attacker,GameObject target) {
-		Curse curse = new Curse(parent);
+		Curse curse = new Curse(parent, attacker);
 		CharacterWrapper victim = new CharacterWrapper(target);
 		// Use the "victim" here instead of the caster, because the victim is the one rolling for the curse (coming from an Imp!!)
 		DieRoller roller = DieRollBuilder.getDieRollBuilder(parent,victim).createRoller(curse);

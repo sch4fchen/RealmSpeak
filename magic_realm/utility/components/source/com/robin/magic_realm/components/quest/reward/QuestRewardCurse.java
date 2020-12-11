@@ -42,7 +42,7 @@ public class QuestRewardCurse extends QuestReward {
 			return;
 		}
 		
-		Curse curse = new Curse(frame);
+		Curse curse = new Curse(frame, character.getGameObject());
 		DieRoller roller = DieRollBuilder.getDieRollBuilder(frame, character, getDieRoll()).createRoller(curse);
 		roller.rollDice("Curse");
 		curse.apply(character,roller);

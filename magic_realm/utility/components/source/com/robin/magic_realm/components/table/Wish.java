@@ -273,11 +273,6 @@ public class Wish extends RealmTable {
 	}
 
 	public String applyFour(CharacterWrapper character) {
-//		sendMessage(character.getGameObject().getGameData(),
-//				getDestClientName(character.getGameObject()),
-//				getWishTitle(character),
-//				"\"I wish for peace\"");
-		
 		JOptionPane.showMessageDialog(getParentFrame(),"\"I wish for peace\"",getWishTitle(character),JOptionPane.INFORMATION_MESSAGE,getRollerImage());
 		// Combat ends in clearing for the day.  All spells not yet in effect are canceled.
 		

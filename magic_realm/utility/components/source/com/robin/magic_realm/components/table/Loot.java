@@ -414,7 +414,7 @@ public class Loot extends RealmTable {
 	 */
 	public void handleSpecial(CharacterWrapper character, ClearingDetail currentClearing, GameObject thing,boolean addByDefault) {
 		if (thing.hasThisAttribute("curse")) {
-			setNewTable(new Curse(getParentFrame()));
+			setNewTable(new Curse(getParentFrame(), character.getGameObject()));
 		}
 		if (thing.hasThisAttribute("add_to_pile")) {
 			// Add everything to pile
