@@ -1,6 +1,7 @@
 Version 1.1.3.7 - Changes since 1.1.3.6
 QUEST UPDATE:
 # Update on existing quests and a new quests by Steve
+# Secret quests: hide when viewing character and in "All quests" overview
 # QuestRequirement Attribute, Kill, Path: Option to count points only for same day
 # QuestRewardResetQuestLocations: Option to reset a single quest location
 NEW FEATURES:

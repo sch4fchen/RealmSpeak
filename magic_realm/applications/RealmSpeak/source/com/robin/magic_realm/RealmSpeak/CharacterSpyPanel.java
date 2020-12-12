@@ -180,11 +180,11 @@ public class CharacterSpyPanel extends JPanel {
 				QuestCardComponent card = (QuestCardComponent)RealmComponent.getRealmComponent(quest.getGameObject());
 				
 				QuestState state = quest.getState();
-				if (state==QuestState.Assigned && !quest.isAllPlay()) {
+				if (state==QuestState.Assigned && !quest.isAllPlay() && !quest.isSecretQuest()) {
 					questsPanel.add(new JLabel(new ImageIcon(card.getFaceDownImage())));
 					slots--;
 				}
-				else if (state==QuestState.Active && !quest.isAllPlay()) {
+				else if (state==QuestState.Active && !quest.isAllPlay() && !quest.isSecretQuest()) {
 					questsPanel.add(new JLabel(new ImageIcon(card.getFaceUpImage())));
 					slots--;
 				}

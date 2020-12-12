@@ -169,7 +169,7 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 				boolean added = false;
 				RealmObjectPanel panel = new RealmObjectPanel();
 				for(Quest quest:characterQuests) {
-					if (quest.isAllPlay() && !quest.getState().isFinished()) {
+					if (quest.isAllPlay() && !quest.isSecretQuest() && !quest.getState().isFinished()) {
 						panel.addObject(quest.getGameObject());
 						added = true;
 					}
