@@ -315,6 +315,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardTreasureFromSite.DRAW_TYPE, "Draw Type", FieldType.StringSelector, DrawType.values()));
 				break;
 			case QuestComplete:
+				list.add(new QuestPropertyBlock(QuestRewardComplete.WIN_BOQ, "Win Book of Quests game with this 'Event'", FieldType.Boolean));
 				break;
 			case QuestFailed:
 				break;

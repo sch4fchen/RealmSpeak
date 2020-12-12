@@ -2,8 +2,10 @@ Version 1.1.3.7 - Changes since 1.1.3.6
 QUEST UPDATE:
 # Update on existing quests and a new quests by Steve
 # Book of Quests: Support for "Events"
+# Book of Quests: Support to set more than 1 VP
 # QuestRequirement Attribute, Kill, Path: Option to count points only for same day
 # QuestRewardResetQuestLocations: Option to reset a single quest location
+# QuestRewardQuestComplete: Option to win in BoQ game with event
 NEW FEATURES:
 # Option to set custom amount of VPs for timed mode
 # Ending a game early shows endgame scoring 

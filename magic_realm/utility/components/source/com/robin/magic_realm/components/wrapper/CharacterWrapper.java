@@ -6477,6 +6477,17 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return count;
 	}
+	public int getFinishedNonEventQuestCount() {
+		int count = 0;
+		for(Quest quest:getAllQuests()) {
+			if (quest.isEvent()) continue;
+			QuestState state = quest.getState();
+			if (state==QuestState.Complete) {
+				count++;
+			}
+		}
+		return count;
+	}
 	public int getActiveQuestCount() {
 		int count = 0;
 		for(Quest quest:getAllQuests()) {
@@ -6486,10 +6497,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 		return count;
-	}
-	public boolean isAllQuestsComplete() {
-		if (getAllNonEventQuests().size() == 0) return false; // have to have at least one personal quest, to have all quests complete!
-		return getUnfinishedQuestCount()==0;
 	}
 	public int getQuestSlotCount() {
 		return getCharacterLevel() + 1;

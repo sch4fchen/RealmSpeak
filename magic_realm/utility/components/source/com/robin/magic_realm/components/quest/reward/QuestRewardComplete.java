@@ -25,12 +25,21 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRewardComplete extends QuestReward {
 
+	public final static String WIN_BOQ = "_win_boq";
+	
 	public QuestRewardComplete(GameObject go) {
 		super(go);
 	}
 
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		getParentQuest().setState(QuestState.Complete,character.getCurrentDayKey(), character);
+		if (winBookOfQuestGame()) {
+			getParentQuest().setEvent(false);
+		}
+	}
+	
+	private boolean winBookOfQuestGame() {
+		return getBoolean(WIN_BOQ);
 	}
 	
 	public String getDescription() {

@@ -209,6 +209,10 @@ public class Quest extends GameObjectWrapper {
 		return getBoolean(QuestConstants.BOQ_EVENT);
 	}
 	
+	public void setEvent(boolean val) {
+		setBoolean(QuestConstants.BOQ_EVENT, val);
+	}
+	
 	public boolean isTesting() {
 		return getBoolean(QuestConstants.FLAG_TESTING);
 	}
