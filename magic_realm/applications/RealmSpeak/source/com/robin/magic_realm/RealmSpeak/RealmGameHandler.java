@@ -2094,9 +2094,9 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 								SoundUtility.playAttention();
 						}
 					}
-					else if (game.isGameOver() && character.isGameOver()) {
+					else if (character.isGameOver()) {
 						// Update Hall of Fame if VPs are used
-						if (!hostPrefs.getRequiredVPsOff() && character.isCharacter()) {
+						if (game.isGameOver() && !hostPrefs.getRequiredVPsOff() && character.isCharacter()) {
 							HallOfFame.consider(hostPrefs, character);
 						}
 
