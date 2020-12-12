@@ -6420,6 +6420,16 @@ public class CharacterWrapper extends GameObjectWrapper {
     	}
     	return quests;
     }
+    public ArrayList<Quest> getAllNonEventQuests() {
+		ArrayList<Quest> quests = getAllQuests();
+		ArrayList<Quest> personalQuests = new ArrayList<Quest>();
+		for (Quest quest : quests) {
+			if (!quest.isEvent()) {
+				personalQuests.add(quest);
+			}
+		}
+		return personalQuests;
+    }
     public int getQuestCount() {
     	ArrayList list = getList(QUEST_ID);
     	return list==null?0:list.size();
@@ -6459,7 +6469,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public int getUnfinishedQuestCount() {
 		int count = 0;
 		for(Quest quest:getAllQuests()) {
-			if (quest.isAllPlay()) continue; // ignore all play quests
+			if (quest.isAllPlay() || quest.isEvent()) continue;
 			QuestState state = quest.getState();
 			if (state!=QuestState.Complete && state!=QuestState.Failed) {
 				count++;
@@ -6478,7 +6488,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return count;
 	}
 	public boolean isAllQuestsComplete() {
-		if (getQuestCount()==0) return false; // have to have at least one quest, to have all quests complete!
+		if (getAllNonEventQuests().size() == 0) return false; // have to have at least one personal quest, to have all quests complete!
 		return getUnfinishedQuestCount()==0;
 	}
 	public int getQuestSlotCount() {

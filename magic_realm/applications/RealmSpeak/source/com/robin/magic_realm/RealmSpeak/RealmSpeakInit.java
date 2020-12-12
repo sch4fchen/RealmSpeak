@@ -381,9 +381,13 @@ public class RealmSpeakInit {
 		deck.shuffle();
 	}
 	private void prepBookOfQuests() {
+		QuestBookEvents book = QuestBookEvents.findBook(data);
 		for(Quest template:QuestLoader.loadAllQuestsFromQuestFolder()) {
 			if (template.getBoolean(QuestConstants.WORKS_WITH_BOQ)) {
-				template.copyQuestToGameData(data);
+				Quest quest = template.copyQuestToGameData(data);
+				if (quest.isEvent()) {
+					book.addEvent(quest);
+				}
 			}
 		}
 	}

@@ -33,6 +33,7 @@ import com.robin.general.swing.IconFactory;
 import com.robin.general.util.*;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.*;
+import com.robin.magic_realm.components.quest.QuestBookEvents;
 import com.robin.magic_realm.components.quest.QuestDeck;
 import com.robin.magic_realm.components.swing.*;
 import com.robin.magic_realm.components.wrapper.*;
@@ -53,6 +54,7 @@ public class RealmUtility {
 		SpellMasterWrapper.MASTER_ID = null;
 		SummaryEventWrapper.SEW_ID = null;
 		QuestDeck.DECK_ID = null;
+		QuestBookEvents.BOOK_ID = null;
 		DieRollBuilder.reset();
 		RealmComponent.reset();
 		SetupCardUtility.reset();

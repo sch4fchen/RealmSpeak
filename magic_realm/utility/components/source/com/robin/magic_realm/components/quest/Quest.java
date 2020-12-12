@@ -205,6 +205,10 @@ public class Quest extends GameObjectWrapper {
 		clear(QuestConstants.QTR_ALL_PLAY);
 	}
 	
+	public boolean isEvent() {
+		return getBoolean(QuestConstants.BOQ_EVENT);
+	}
+	
 	public boolean isTesting() {
 		return getBoolean(QuestConstants.FLAG_TESTING);
 	}
@@ -740,7 +744,7 @@ public class Quest extends GameObjectWrapper {
 	public boolean testRequirements(JFrame parentFrame, CharacterWrapper character, QuestRequirementParams reqParams) {
 		QuestState state = getState();
 
-		boolean canTest = state == QuestState.Active || ((isAllPlay() || isSecretQuest()) && state == QuestState.Assigned);
+		boolean canTest = state == QuestState.Active || ((isAllPlay() || isEvent() || isSecretQuest()) && state == QuestState.Assigned);
 		if (!canTest) {
 			return false;
 		}

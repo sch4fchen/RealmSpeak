@@ -293,7 +293,7 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 	}
 
 	public void updatePanel() {
-		characterQuests = getCharacter().getAllQuests();
+		characterQuests = getCharacter().getAllNonEventQuests();
 		
 		if (getHostPrefs().hasPref(Constants.QST_QUEST_CARDS)) {
 			int slots = getCharacter().getQuestSlotCount();

@@ -1027,7 +1027,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				return character.isActive()
 						&& character.isCharacter()
 						&& quests
-						&& character.getQuestCount()==0
+						&& character.getAllNonEventQuests().size()==0
 						&& QuestLoader.hasQuestsToLoad(character,hostPrefs);
 			}
 		};

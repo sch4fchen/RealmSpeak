@@ -43,6 +43,7 @@ public class QuestConstants {
 	
 	public static final String WORKS_WITH_BOQ = "_rboq";
 	public static final String WORKS_WITH_QTR = "_rqtr";
+	public static final String BOQ_EVENT = "_boqev";
 	public static final String QTR_ALL_PLAY = "_qallp";
 	public static final String QTR_SECRET_QUEST = "_secq";
 	public static final String CARD_COUNT = "_ccnt";

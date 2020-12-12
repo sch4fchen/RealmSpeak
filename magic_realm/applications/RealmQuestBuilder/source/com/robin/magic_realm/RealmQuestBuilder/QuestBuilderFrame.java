@@ -86,6 +86,7 @@ public class QuestBuilderFrame extends JFrame {
 	private PreferenceManager prefs;
 
 	private JCheckBox bookOfQuests;
+	private JCheckBox bookOfQuestsEvent;
 	private JCheckBox questingTheRealm;
 	private JCheckBox allPlayQuestOption;
 	private JCheckBox secretQuestOption;
@@ -208,6 +209,7 @@ public class QuestBuilderFrame extends JFrame {
 		brokenFlag.setSelected(quest.getBoolean(QuestConstants.FLAG_BROKEN));
 
 		bookOfQuests.setSelected(quest.getBoolean(QuestConstants.WORKS_WITH_BOQ));
+		bookOfQuestsEvent.setSelected(quest.getBoolean(QuestConstants.BOQ_EVENT));
 		questingTheRealm.setSelected(quest.getBoolean(QuestConstants.WORKS_WITH_QTR));
 		cardCount.setText(quest.getString(QuestConstants.CARD_COUNT));
 		vpReward.setText(quest.getString(QuestConstants.VP_REWARD));
@@ -244,6 +246,7 @@ public class QuestBuilderFrame extends JFrame {
 
 		quest.setBoolean(QuestConstants.WORKS_WITH_BOQ, bookOfQuests.isSelected());
 		quest.setBoolean(QuestConstants.WORKS_WITH_QTR, questingTheRealm.isSelected());
+		quest.setBoolean(QuestConstants.BOQ_EVENT, bookOfQuestsEvent.isSelected());
 		quest.setBoolean(QuestConstants.QTR_ALL_PLAY, allPlayQuestOption.isSelected());
 		quest.setBoolean(QuestConstants.QTR_SECRET_QUEST, secretQuestOption.isSelected());
 		quest.setInt(QuestConstants.CARD_COUNT, cardCount.getInt());
@@ -633,49 +636,54 @@ public class QuestBuilderFrame extends JFrame {
 		/*
 		 * TODO Add the following:
 		 * 
-		 * Game Variants (Original, Pruitts, Expansion One, Extra Crispy) (Extra Crispy?!?)
-		 * 
-		 * Seasons and/or weather (specific season?) Number of boards...? (Extra Crispy?!!!???!!?)
+		 * Seasons and/or weather (specific season?)?
 		 */
 
 		JPanel panel = new JPanel(new GridLayout(1, 3));
 
-		JPanel reallyLeft = new JPanel(new GridLayout(10, 1));
+		JPanel reallyLeft = new JPanel(new GridLayout(11, 1));
 		reallyLeft.setBorder(BorderFactory.createTitledBorder("Quest Type"));
 		bookOfQuests = new JCheckBox("Book of Quests");
 		bookOfQuests.addActionListener(cardUpdateListener);
 		reallyLeft.add(bookOfQuests);
+		
+		UniformLabelGroup groupBoQ = new UniformLabelGroup(31);
+		Box lineBoQ = groupBoQ.createLine();
+		bookOfQuestsEvent = new JCheckBox("Event");
+		lineBoQ.add(bookOfQuestsEvent);
+		reallyLeft.add(lineBoQ);
+		
 		questingTheRealm = new JCheckBox("Questing the Realm");
 		questingTheRealm.addActionListener(cardUpdateListener);
 		reallyLeft.add(questingTheRealm);
 
-		UniformLabelGroup group = new UniformLabelGroup();
-		Box line = group.createLine();
+		UniformLabelGroup groupQtR = new UniformLabelGroup();
+		Box lineQtR = groupQtR.createLine();
 		allPlayQuestOption = new JCheckBox("All Play");
 		allPlayQuestOption.addActionListener(cardUpdateListener);
-		line.add(allPlayQuestOption);
-		line.add(Box.createHorizontalGlue());
-		reallyLeft.add(line);
+		lineQtR.add(allPlayQuestOption);
+		lineQtR.add(Box.createHorizontalGlue());
+		reallyLeft.add(lineQtR);
 
-		line = group.createLine();
+		lineQtR = groupQtR.createLine();
 		secretQuestOption = new JCheckBox("Secret Quest");
-		line.add(secretQuestOption);
-		line.add(Box.createHorizontalGlue());
-		reallyLeft.add(line);
+		lineQtR.add(secretQuestOption);
+		lineQtR.add(Box.createHorizontalGlue());
+		reallyLeft.add(lineQtR);
 
-		line = group.createLabelLine("# of Cards");
+		lineQtR = groupQtR.createLabelLine("# of Cards");
 		cardCount = new IntegerField("1");
 		ComponentTools.lockComponentSize(cardCount, 50, 22);
-		line.add(cardCount);
-		line.add(Box.createHorizontalGlue());
-		reallyLeft.add(line);
-		line = group.createLabelLine("VP Value");
+		lineQtR.add(cardCount);
+		lineQtR.add(Box.createHorizontalGlue());
+		reallyLeft.add(lineQtR);
+		lineQtR = groupQtR.createLabelLine("VP Value");
 		vpReward = new IntegerField("1");
 		vpReward.addCaretListener(cardUpdateCaretListener);
 		ComponentTools.lockComponentSize(vpReward, 50, 22);
-		line.add(vpReward);
-		line.add(Box.createHorizontalGlue());
-		reallyLeft.add(line);
+		lineQtR.add(vpReward);
+		lineQtR.add(Box.createHorizontalGlue());
+		reallyLeft.add(lineQtR);
 
 		guildQuestOption = new JCheckBox("Guild Quest:");
 		guildQuestOption.setEnabled(false); // TODO Until this is implemented...
@@ -686,25 +694,25 @@ public class QuestBuilderFrame extends JFrame {
 		});
 		reallyLeft.add(guildQuestOption);
 		ButtonGroup guildGroup = new ButtonGroup();
-		Box box = Box.createHorizontalBox();
+		Box boxGuilds = Box.createHorizontalBox();
 		fightersGuildQuestOption = new JRadioButton("Fighters Guild", true);
-		box.add(Box.createHorizontalStrut(25));
-		box.add(fightersGuildQuestOption);
-		reallyLeft.add(box);
+		boxGuilds.add(Box.createHorizontalStrut(25));
+		boxGuilds.add(fightersGuildQuestOption);
+		reallyLeft.add(boxGuilds);
 		guildGroup.add(fightersGuildQuestOption);
 
-		box = Box.createHorizontalBox();
+		boxGuilds = Box.createHorizontalBox();
 		magicGuildQuestOption = new JRadioButton("Magic Guild");
-		box.add(Box.createHorizontalStrut(25));
-		box.add(magicGuildQuestOption);
-		reallyLeft.add(box);
+		boxGuilds.add(Box.createHorizontalStrut(25));
+		boxGuilds.add(magicGuildQuestOption);
+		reallyLeft.add(boxGuilds);
 		guildGroup.add(magicGuildQuestOption);
 
-		box = Box.createHorizontalBox();
+		boxGuilds = Box.createHorizontalBox();
 		thievesGuildQuestOption = new JRadioButton("Thieves Guild");
-		box.add(Box.createHorizontalStrut(25));
-		box.add(thievesGuildQuestOption);
-		reallyLeft.add(box);
+		boxGuilds.add(Box.createHorizontalStrut(25));
+		boxGuilds.add(thievesGuildQuestOption);
+		reallyLeft.add(boxGuilds);
 		guildGroup.add(thievesGuildQuestOption);
 
 		panel.add(reallyLeft);
@@ -747,12 +755,11 @@ public class QuestBuilderFrame extends JFrame {
 		femaleCharacterOption = new JCheckBox("Female Characters");
 		charLim.add(femaleCharacterOption);
 
-		// Box line = Box.createHorizontalBox();
 		specificCharacterListOption = new JCheckBox("Specific Characters");
 		charLim.add(specificCharacterListOption);
-		line = Box.createHorizontalBox();
+		Box lineCharacters = Box.createHorizontalBox();
 		specificCharacterListField = new JTextField();
-		line.add(specificCharacterListField);
+		lineCharacters.add(specificCharacterListField);
 		specificCharacterHelperButton = new JButton("...");
 		specificCharacterHelperButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
@@ -768,8 +775,8 @@ public class QuestBuilderFrame extends JFrame {
 				specificCharacterListField.setText(helper.getText());
 			}
 		});
-		line.add(specificCharacterHelperButton);
-		charLim.add(line);
+		lineCharacters.add(specificCharacterHelperButton);
+		charLim.add(lineCharacters);
 
 		right.add(charLim);
 		right.add(Box.createVerticalGlue());

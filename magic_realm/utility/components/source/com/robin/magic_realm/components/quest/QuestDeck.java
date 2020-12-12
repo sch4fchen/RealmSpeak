@@ -102,7 +102,7 @@ public class QuestDeck extends GameObjectWrapper {
 		}
 		return allPlay;
 	}
-	public ArrayList<Quest> getAllPlayCards() {
+	private ArrayList<Quest> getAllPlayCards() {
 		ArrayList<Quest> allPlay = new ArrayList<Quest>();
 		for(GameObject go:getAllPlayCardsAsObjects()) {
 			Quest quest = new Quest(go);

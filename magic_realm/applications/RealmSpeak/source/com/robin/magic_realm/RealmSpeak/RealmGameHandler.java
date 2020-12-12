@@ -1668,6 +1668,11 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 						deck.setupAllPlayCards(getMainFrame(),character);
 						deck.drawCards(getMainFrame(),character);
 					}
+					
+					if (hostPrefs.hasPref(Constants.QST_BOOK_OF_QUESTS)) {
+						QuestBookEvents book = QuestBookEvents.findBook(client.getGameData());
+						book.setupEvents(getMainFrame(),character);
+					}
 
 					// No need to send again - it'll get sent quickly enough
 
