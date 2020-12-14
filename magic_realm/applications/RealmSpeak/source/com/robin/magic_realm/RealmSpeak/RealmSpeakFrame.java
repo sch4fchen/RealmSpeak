@@ -230,6 +230,8 @@ public class RealmSpeakFrame extends JFrame {
  		});
 		exportHTMLFileManager = new FileManager(this,"Export Destination",null);
 		readFramePreferences();
+		
+		this.setIconImage(IconFactory.findIcon("icons/icon.gif").getImage());
 	}
 	
 	private RealmSpeakOptions realmSpeakOptions;

@@ -6466,10 +6466,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return count;
 	}
-	public int getUnfinishedQuestCount() {
+	public int getUnfinishedNotAllPlayQuestCount() {
 		int count = 0;
 		for(Quest quest:getAllQuests()) {
-			if (quest.isAllPlay() || quest.isEvent()) continue;
+			if (quest.isAllPlay()) continue;
 			QuestState state = quest.getState();
 			if (state!=QuestState.Complete && state!=QuestState.Failed) {
 				count++;
@@ -6477,12 +6477,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return count;
 	}
-	public int getFinishedNonEventQuestCount() {
+	public int getUnfinishedNonEventQuestCount() {
 		int count = 0;
 		for(Quest quest:getAllQuests()) {
 			if (quest.isEvent()) continue;
 			QuestState state = quest.getState();
-			if (state==QuestState.Complete) {
+			if (state!=QuestState.Complete && state!=QuestState.Failed) {
 				count++;
 			}
 		}

@@ -68,7 +68,7 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 		ins.setBackground(MagicRealmColor.PALEYELLOW);
 		ins.setFont(new Font("Dialog",Font.BOLD,14));
 		add(ins,"North");
-		if (getHostPrefs().hasPref(Constants.QST_QUEST_CARDS)) {
+		if (getHostPrefs().isUsingQuestCards() || getHostPrefs().isUsingGuildQuests()) {
 			add(createQuestCardPanel());
 		}
 		else {
@@ -277,7 +277,7 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 	}
 
 	private void updateControls() {
-		if (getHostPrefs().hasPref(Constants.QST_QUEST_CARDS)) {
+		if (getHostPrefs().isUsingQuestCards() || getHostPrefs().isUsingGuildQuests()) {
 			Quest selQuest = getSelectedQuest();
 			boolean gameStarted = getGame().getGameStarted();
 			activateQuestButton.setEnabled(gameStarted && selQuest != null && selQuest.getState() == QuestState.Assigned && !selQuest.isAllPlay());
@@ -287,15 +287,15 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 			boolean isBirdsong = getGameHandler().getGame().isRecording();
 			discardQuestButton.setEnabled(canDiscardQuests && characterIsAtDwelling && isBirdsong && selQuest!=null && selQuest.isDiscardable());
 
-			boolean hasAvailableSlots = (getCharacter().getQuestSlotCount() - getCharacter().getUnfinishedQuestCount()) > 0;
+			boolean hasAvailableSlots = (getCharacter().getQuestSlotCount() - getCharacter().getUnfinishedNotAllPlayQuestCount()) > 0;
 			drawQuestsButton.setEnabled(characterIsAtDwelling && isBirdsong && hasAvailableSlots && getCharacter().isCharacter());
 		}
 	}
 
 	public void updatePanel() {
-		characterQuests = getCharacter().getAllNonEventQuests();
+		characterQuests = getCharacter().getAllQuests();
 		
-		if (getHostPrefs().hasPref(Constants.QST_QUEST_CARDS)) {
+		if (getHostPrefs().isUsingQuestCards() || getHostPrefs().isUsingGuildQuests()) {
 			int slots = getCharacter().getQuestSlotCount();
 			questHandPanel.removeAll();
 			completedQuestsPanel.removeAll();
@@ -314,9 +314,9 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 				questHandPanel.add(new EmptyCardComponent());
 			}
 		}
-		else {
-			if (characterQuests.size() == 1) {
-				questView.updatePanel(characterQuests.get(0),getCharacter());
+		else { //BoQ
+			if (getCharacter().getAllNonEventQuests().size() == 1) {
+				questView.updatePanel(getCharacter().getAllNonEventQuests().get(0),getCharacter());
 			}
 		}
 	}

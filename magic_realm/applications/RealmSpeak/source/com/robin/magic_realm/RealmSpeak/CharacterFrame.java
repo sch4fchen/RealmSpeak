@@ -772,9 +772,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		if (hostPrefs.getGameKeyVals().contains("rw_expansion_1")) {
 			tabs.addTab(null, ImageCache.getIcon("tab/expansionOne"), getExpansionOnePanel(),"Expansion");
 		}
-		if (hostPrefs.hasPref(Constants.QST_BOOK_OF_QUESTS)
-				|| hostPrefs.hasPref(Constants.QST_QUEST_CARDS)
-				|| hostPrefs.hasPref(Constants.QST_GUILD_QUESTS)) {
+		if (hostPrefs.isUsingQuests()) {
 			tabs.addTab(null, ImageCache.getIcon("tab/quest"), getQuestPanel(),"Quest");
 		}
 		tabs.addTab(null, ImageCache.getIcon("tab/chat"), getChatPanel(),"Chat");
@@ -1020,14 +1018,11 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		// Quest Button
 		chooseQuestButton = new SingleButton("Choose Quest",true) {
 			public boolean needsShow() {
-				boolean quests = hostPrefs.hasPref(Constants.QST_BOOK_OF_QUESTS)
-				|| hostPrefs.hasPref(Constants.QST_QUEST_CARDS)
-				|| hostPrefs.hasPref(Constants.QST_GUILD_QUESTS);
+				boolean questsCards = hostPrefs.isUsingQuestCards() || hostPrefs.isUsingGuildQuests();
 				
 				return character.isActive()
 						&& character.isCharacter()
-						&& quests
-						&& character.getAllNonEventQuests().size()==0
+						&& (questsCards && character.getQuestCount()==0 || (hostPrefs.isUsingBookOfQuests() && character.getAllNonEventQuests().size()==0))
 						&& QuestLoader.hasQuestsToLoad(character,hostPrefs);
 			}
 		};

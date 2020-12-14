@@ -48,8 +48,10 @@ public class QuestLoader {
 		ArrayList<Quest> quests = new ArrayList<Quest>();
 		for (GameObject go : allUnassingedQuests) {
 			Quest quest = new Quest(go);
-			if (quest.canChooseQuest(character, hostPrefs) && !quest.isEvent()) {
-				quests.add(quest);
+			if (quest.canChooseQuest(character, hostPrefs)) {
+				if (hostPrefs.isUsingQuestCards() || (hostPrefs.isUsingBookOfQuests() && !quest.isEvent()) || hostPrefs.isUsingGuildQuests()) {
+					quests.add(quest);
+				}
 			}
 		}
 		return quests;

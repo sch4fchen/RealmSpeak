@@ -166,6 +166,18 @@ public class HostPrefWrapper extends GameObjectWrapper {
 	public String getStartingSeason() {
 		return getString(START_SEASON);
 	}
+	public boolean isUsingQuests() {
+		return getBoolean(Constants.QST_QUEST_CARDS) || getBoolean(Constants.QST_GUILD_QUESTS) || getBoolean(Constants.QST_BOOK_OF_QUESTS);
+	}
+	public boolean isUsingQuestCards() {
+		return getBoolean(Constants.QST_QUEST_CARDS);
+	}
+	public boolean isUsingBookOfQuests() {
+		return getBoolean(Constants.QST_BOOK_OF_QUESTS);
+	}
+	public boolean isUsingGuildQuests() {
+		return getBoolean(Constants.QST_GUILD_QUESTS);
+	}
 	
 	// Setters
 	public void setHostName(String val) {

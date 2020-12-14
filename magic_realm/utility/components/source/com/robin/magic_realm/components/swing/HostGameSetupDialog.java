@@ -374,7 +374,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		useWeather.setEnabled(editMode && startingSeason.getSelectedIndex()>0);
 	}
 	private void initComponents() {
-		setSize(1024,750);
+		setSize(1048,750);
 		setLocationRelativeTo(null);
 		setModal(true);
 		
@@ -592,7 +592,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		buttonPanel.add(vpSuddenDeathOption=new VictoryConditionButton("Sudden Death","Predefined # of VPs\nNo Time Limit\nFirst to achieve VPs wins"));
 		buttonPanel.add(questGuildsOption=new VictoryConditionButton("Guild Quests","Quests are given at guilds (expansion)\nQuests do not earn VPs\n------- NOT READY YET -------\nENDLESS, TIMED or SUDDEN DEATH"));
 		buttonPanel.add(questQtrOption=new VictoryConditionButton("Questing the Realm","Hand of Quest Cards\nFinish quests to earn VPs\n\nTIMED or SUDDEN DEATH"));
-		buttonPanel.add(questBoqOption=new VictoryConditionButton("Book of Quests","Each character picks ONE quest\nFirst to finish SET NUMBER of quests wins\n\nSUDDEN DEATH only"));
+		buttonPanel.add(questBoqOption=new VictoryConditionButton("Book of Quests","Each character picks ONE quest\nFirst to finish quest wins\n\nSUDDEN DEATH only"));
 		
 		questGuildsOption.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent ev) {
@@ -1013,7 +1013,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		testEmailButton.setEnabled(emailNotification.isSelected());
 		
 		timeLimitLine.setVisible(vpTimedOption.isSelected());
-		vpAssignmentLine.setVisible(vpSuddenDeathOption.isSelected() || (vpTimedOption.isSelected() && fixedVps.isSelected()) && !anyVpsAllowedOption.isSelected() && !questBoqOption.isSelected());
+		vpAssignmentLine.setVisible((vpSuddenDeathOption.isSelected() || (vpTimedOption.isSelected() && fixedVps.isSelected() && !anyVpsAllowedOption.isSelected())) && !questBoqOption.isSelected());
+		anyVpsAllowedOption.setVisible((vpTimedOption.isSelected() || vpSuddenDeathOption.isSelected()) && !questBoqOption.isSelected());
 		
 		updateControls();
 	}
@@ -1075,10 +1076,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		if (gamePort.getText().length()==0 ||
 				hostName.getText().length()==0 ||
 				gameTitle.getText().length()==0 ||
-				gamePass.getText().length()==0 ||
-				(!vpSuddenDeathOption.isSelected() && numberMonthsToPlay.getText().length()==0) ||
-				(vpSuddenDeathOption.isSelected() && vpsToAchieve.getText().length()==0)
-				) {
+				gamePass.getText().length()==0) {
 			JOptionPane.showMessageDialog(null,"You must enter a value in every field");
 			return false;
 		}
@@ -1088,11 +1086,11 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			JOptionPane.showMessageDialog(null,"Game Port must be greater than 1000");
 			return false;
 		}
-		else if (!vpSuddenDeathOption.isSelected() && readInt(numberMonthsToPlay.getText())<1) {
+		else if (vpTimedOption.isSelected() && readInt(numberMonthsToPlay.getText())<1) {
 			JOptionPane.showMessageDialog(null,"Number of months to play must be a number greater than zero");
 			return false;
 		}
-		else if ((vpSuddenDeathOption.isSelected() || (vpTimedOption.isSelected() && fixedVps.isSelected())) && readInt(vpsToAchieve.getText())<1) {
+		else if ((vpSuddenDeathOption.isSelected() || (vpTimedOption.isSelected() && fixedVps.isSelected())) && !questBoqOption.isSelected() && readInt(vpsToAchieve.getText())<1) {
 			JOptionPane.showMessageDialog(null,"VPs to Achieve must be a number greater than zero");
 			return false;
 		}

@@ -1,3 +1,6 @@
+What about a controlled monster luring/deploying against your hirelings?
+Extended Treachery:  luring/deploying against their own group triggers the same consequences
+
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
 0001829: Feature Request - First Edition Killer Caves
@@ -19,8 +22,6 @@ Expasion 1: Two-Handed Combat
 0001447: Log breakdown by day
 0001358: Monster Roll per Set
 0001232: Flying Activities: Optional Rule # 3: Flying Activities.
-What about a controlled monster luring/deploying against your hirelings?
-Extended Treachery:  luring/deploying against their own group triggers the same consequences
 Should always be safe at guilds, if you are a member (from monsters and natives)
 Minotaur buckler not really implemented as I would like:  it should be able to block hits...
 ::Scenarios Feature::

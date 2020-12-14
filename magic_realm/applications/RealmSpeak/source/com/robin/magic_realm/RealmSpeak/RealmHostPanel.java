@@ -865,7 +865,7 @@ public class RealmHostPanel extends JPanel {
 		if (hostPrefs.hasPref(Constants.QST_BOOK_OF_QUESTS)) {
 			for (GameObject go:livingCharacters) {
 				CharacterWrapper character = new CharacterWrapper(go);
-				if (character.isCharacter() && character.getFinishedNonEventQuestCount()==hostPrefs.getVpsToAchieve()) {
+				if (character.isCharacter() && character.getAllNonEventQuests().size()>0 && character.getUnfinishedNonEventQuestCount()==0) {
 					setGameOver();
 					break;
 				}
