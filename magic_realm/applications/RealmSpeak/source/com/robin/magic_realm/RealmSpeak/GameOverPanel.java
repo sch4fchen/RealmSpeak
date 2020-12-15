@@ -73,16 +73,13 @@ public class GameOverPanel extends JPanel {
 				CharacterResult r1 = (CharacterResult)o1;
 				CharacterResult r2 = (CharacterResult)o2;
 				int ret=0;
-				if (usingQuests()) {
+				if (hostPrefs.isUsingBookOfQuests()) {
 					ret = r2.getCharacter().getCompletedQuestCount() - r1.getCharacter().getCompletedQuestCount();
 				}
 				if (ret==0) ret = r2.getCharacter().getTotalScore() - r1.getCharacter().getTotalScore(); 
 				return ret;
 			}
 		});
-	}
-	private boolean usingQuests() {
-		return hostPrefs.hasPref(Constants.QST_BOOK_OF_QUESTS);
 	}
 	private void initComponents() {
 		setLayout(new BorderLayout());
@@ -91,7 +88,7 @@ public class GameOverPanel extends JPanel {
 		resultTable.setRowHeight(40);
 		resultTable.setDefaultRenderer(ImageIcon.class,new CharacterResultTableCellRenderer());
 		resultTable.setDefaultRenderer(Integer.class,new ScoreCellRenderer());
-		if (!usingQuests()) {
+		if (!hostPrefs.isUsingBookOfQuests()) {
 			resultTable.getColumnModel().getColumn(4).setMaxWidth(0);
 		}
 		resultTable.getColumnModel().getColumn(0).setMaxWidth(60);
@@ -187,7 +184,7 @@ public class GameOverPanel extends JPanel {
 					case 3:
 						return character.getCharacterName();
 					case 4:
-						return character.getCompletedQuestCount()+" / "+character.getQuestCount();
+						return character.getCompletedQuestCount()+" / "+character.getAllNonEventQuests().size();
 					case 5:
 						return character.isDead()?"DEAD":String.valueOf(character.getTotalAssignedVPs());
 					case 6:
