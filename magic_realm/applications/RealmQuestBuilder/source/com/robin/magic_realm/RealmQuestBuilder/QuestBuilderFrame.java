@@ -147,6 +147,7 @@ public class QuestBuilderFrame extends JFrame {
 		if (lastDir == null)
 			lastDir = ".";
 		lastQuestFilePath = new File(lastDir);
+		setIconImage(IconFactory.findIcon("images/tab/record.gif").getImage());
 	}
 
 	public void exitApp() {

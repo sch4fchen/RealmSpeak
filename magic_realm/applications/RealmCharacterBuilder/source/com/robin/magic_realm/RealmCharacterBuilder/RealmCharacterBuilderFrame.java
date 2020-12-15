@@ -29,6 +29,7 @@ import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
 import com.robin.general.io.FileManager;
 import com.robin.general.swing.ComponentTools;
+import com.robin.general.swing.IconFactory;
 import com.robin.general.swing.ImageCache;
 import com.robin.magic_realm.components.utility.*;
 
@@ -76,6 +77,7 @@ public class RealmCharacterBuilderFrame extends JFrame {
 	}
 	private void initComponents() {
 		setTitle("Realm Character Builder");
+		setIconImage(IconFactory.findIcon("images/actions/hire.gif").getImage());
 		setSize(1050,700);
 //		setResizable(false);
 		

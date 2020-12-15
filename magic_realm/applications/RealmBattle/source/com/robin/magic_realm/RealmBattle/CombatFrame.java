@@ -274,6 +274,7 @@ public class CombatFrame extends JFrame {
 	 */
 	private CombatFrame(JFrame frame,String playerName,ActionListener listener) {
 		super("RealmSpeak Combat Frame for "+playerName);
+		setIconImage(IconFactory.findIcon("images/combat/combatsummary.gif").getImage());
 		
 		// this will guarantee no lockup... but then dialogs are lying around??
 		//setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);

@@ -34,6 +34,7 @@ import com.robin.game.objects.GameData;
 import com.robin.general.io.FileUtilities;
 import com.robin.general.io.PreferenceManager;
 import com.robin.general.swing.ComponentTools;
+import com.robin.general.swing.IconFactory;
 import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderModel;
 import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.RealmComponent;
@@ -91,6 +92,7 @@ public class RealmGmFrame extends JFrame {
 		setTilesStyle();
 		setChitDisplayStyle();
 		setTitle("RealmSpeak GM");
+		setIconImage(IconFactory.findIcon("images/badges/elvish_studies.gif").getImage());
 		setSize(1024,768);
 		//setSize(prefs.getInt(DefaultWidth),prefs.getInt(DefaultHeight));
 		setLocationRelativeTo(null);

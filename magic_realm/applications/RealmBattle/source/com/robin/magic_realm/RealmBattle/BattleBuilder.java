@@ -28,6 +28,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import com.robin.game.objects.*;
+import com.robin.general.swing.IconFactory;
 import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderModel;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.TileLocation;
@@ -96,6 +97,7 @@ public class BattleBuilder extends JFrame {
 		setSize(800,650);
 		setLocationRelativeTo(null);
 		setTitle("RealmSpeak Battle Builder");
+		setIconImage(IconFactory.findIcon("images/combat/combatsummary.gif").getImage());
 		getContentPane().setLayout(new BorderLayout());
 		
 		Box box;
