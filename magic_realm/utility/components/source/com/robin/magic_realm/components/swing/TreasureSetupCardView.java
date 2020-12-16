@@ -717,6 +717,7 @@ public class TreasureSetupCardView extends JComponent {
 			return TS_VIEW;
 		}
 		private void initComponents() {
+			this.setIconImage(IconFactory.findIcon("images/interface/setup.gif").getImage());
 			// I'd like it to be this big
 			Dimension best = new Dimension(view.cardSize.width+25,view.cardSize.height+75);
 			

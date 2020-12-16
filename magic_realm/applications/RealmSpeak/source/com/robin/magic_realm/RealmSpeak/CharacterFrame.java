@@ -745,6 +745,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	}
 
 	public void initComponents(int iconSize) {
+		setFrameIcon(IconFactory.findIcon("images/actions/hire.gif"));
 		setSize(500, 500);
 		setMinimumSize(new Dimension(500, 500));
 		JPanel layoutPanel = new JPanel(new BorderLayout());

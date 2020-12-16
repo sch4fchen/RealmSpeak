@@ -30,6 +30,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 import com.robin.game.objects.*;
 import com.robin.general.swing.ComponentTools;
+import com.robin.general.swing.IconFactory;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.swing.CenteredMapView;
@@ -131,6 +132,7 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 		}
 	}
 	private void initComponents() {
+		setFrameIcon(IconFactory.findIcon("images/interface/build.gif"));
 		getContentPane().setLayout(new BorderLayout());
 		
 		tilePickTable = new JTable(tilePickModel);

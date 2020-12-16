@@ -64,6 +64,7 @@ public class RealmCalendarViewer extends JFrame implements ManagedFrame {
 	}
 	private void initComponents() {
 		setSize(800,600);
+		setIconImage(IconFactory.findIcon("images/interface/calendar.gif").getImage());
 		calendar = new JPanel(new GridLayout(4,7));
 		dayPanel = new JPanel[4*7];
 		int dn = 0;

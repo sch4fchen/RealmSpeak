@@ -27,6 +27,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import com.robin.game.objects.GameData;
+import com.robin.general.swing.IconFactory;
 import com.robin.magic_realm.components.attribute.ChatLine;
 import com.robin.magic_realm.components.swing.CenteredMapView;
 import com.robin.magic_realm.components.utility.Constants;
@@ -88,6 +89,7 @@ public class RealmInspectorFrame extends RealmSpeakInternalFrame {
 		map.repaint();
 	}
 	private void initComponents() {
+		setFrameIcon(IconFactory.findIcon("images/interface/build.gif"));
 		setSize(640,480);
 		getContentPane().setLayout(new BorderLayout());
 		

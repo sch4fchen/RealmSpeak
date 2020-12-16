@@ -130,6 +130,7 @@ public class QuestBuilderFrame extends JFrame {
 	};
 
 	public QuestBuilderFrame() {
+		setIconImage(IconFactory.findIcon("images/tab/record.gif").getImage());
 		RealmLoader loader = new RealmLoader();
 		realmSpeakData = loader.getData();
 		HostPrefWrapper hostPrefs = HostPrefWrapper.createDefaultHostPrefs(realmSpeakData);
@@ -147,7 +148,6 @@ public class QuestBuilderFrame extends JFrame {
 		if (lastDir == null)
 			lastDir = ".";
 		lastQuestFilePath = new File(lastDir);
-		setIconImage(IconFactory.findIcon("images/tab/record.gif").getImage());
 	}
 
 	public void exitApp() {

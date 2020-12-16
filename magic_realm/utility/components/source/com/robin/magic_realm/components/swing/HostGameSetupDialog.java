@@ -374,6 +374,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		useWeather.setEnabled(editMode && startingSeason.getSelectedIndex()>0);
 	}
 	private void initComponents() {
+		setIconImage(IconFactory.findIcon("images/interface/options.gif").getImage());
 		setSize(1048,750);
 		setLocationRelativeTo(null);
 		setModal(true);

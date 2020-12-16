@@ -9,7 +9,7 @@ NEW FEATURES:
 # Option to set custom amount of VPs for timed mode
 # Ending a game early shows endgame scoring 
 # Ending a game early disables actions for the characters
-# RealmSpeak icon added
+# Icons added to different windows
 BUGS/ISSUES:
 # Fix companion Imp casting curse on monster
 

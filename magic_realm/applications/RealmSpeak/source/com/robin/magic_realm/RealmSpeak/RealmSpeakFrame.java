@@ -217,7 +217,6 @@ public class RealmSpeakFrame extends JFrame {
 			protected JMenuItem aboutHelp;
 	
 	public RealmSpeakFrame() {
-		setIconImage(IconFactory.findIcon("images/logo/icon.gif").getImage());
 		initComponents();
 		gameControlFrames = new ArrayList<RealmSpeakInternalFrame>();
 		characterFrames = new ArrayList<CharacterFrame>();
@@ -638,6 +637,7 @@ public class RealmSpeakFrame extends JFrame {
 	}
 	public void initComponents() {
 		setTitle(Constants.APPLICATION_NAME);
+		setIconImage(IconFactory.findIcon("images/logo/icon.gif").getImage());
 		desktop = new JDesktopPane();
 		windowLayoutManager = new WindowLayoutManager(this,desktop);
 		setContentPane(new JPanel(new BorderLayout()));
