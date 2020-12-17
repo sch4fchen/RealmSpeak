@@ -7,6 +7,7 @@ QUEST UPDATE:
 # QuestRewardQuestComplete: Option to win in BoQ game with event
 # QuestRewardKillDenizen: Option to reward character with the kill
 # QuestRewardKillDenizen: Option that denizen must be in characters clearing
+# QuestRewardSummonMonster: Option to summon monster from chart of appearance
 NEW FEATURES:
 # Option to set custom amount of VPs for timed mode
 # Ending a game early shows endgame scoring 

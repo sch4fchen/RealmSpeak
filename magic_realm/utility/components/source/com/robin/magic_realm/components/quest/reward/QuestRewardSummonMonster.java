@@ -33,26 +33,48 @@ import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.QuestLocation;
 import com.robin.magic_realm.components.quest.QuestStep;
 import com.robin.magic_realm.components.utility.Constants;
+import com.robin.magic_realm.components.utility.SetupCardUtility;
 import com.robin.magic_realm.components.utility.TemplateLibrary;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRewardSummonMonster extends QuestReward {
 	private static Logger logger = Logger.getLogger(QuestStep.class.getName());
 	public static final String MONSTER_NAME = "_mn";
+	public static final String SUMMON_TYPE = "_summon_from_chart";
 	public static final String RANDOM_CLEARING = "_rc";
 	public static final String SUMMON_TO_LOCATION = "_summon_loc";
 	public static final String RANDOM_LOCATION = "_rnd_loc";
 	public static final String LOCATION = "_loc";
+	
+	public static enum SummonType {
+		NewMonster,
+		SummonFromSetupCard,
+		SummonFromSetupCardOrMap
+	}
 	
 	public QuestRewardSummonMonster(GameObject go) {
 		super(go);
 	}
 
 	public void processReward(JFrame frame,CharacterWrapper character) {
-		GameObject template = TemplateLibrary.getSingleton().getCompanionTemplate(getMonsterKeyName(),getMonsterQuery());
-		GameObject monster = TemplateLibrary.getSingleton().createCompanionFromTemplate(getGameData(),template);
-		monster.removeThisAttribute(Constants.COMPANION);
-		monster.setThisAttribute(Constants.SUMMONED);
+		GameObject monster = null;
+		if (getSummonType() == SummonType.NewMonster) {
+			GameObject template = TemplateLibrary.getSingleton().getCompanionTemplate(getMonsterKeyName(),getMonsterQuery());
+			monster = TemplateLibrary.getSingleton().createCompanionFromTemplate(getGameData(),template);
+			monster.removeThisAttribute(Constants.COMPANION);
+			monster.setThisAttribute(Constants.SUMMONED);
+		}
+		else {
+			ArrayList<GameObject> monsters = getGameData().getGameObjectsByName(getMonsterKeyName());
+			for (GameObject validMonster : monsters) {
+				if (getSummonType() == SummonType.SummonFromSetupCard && validMonster.getHeldBy() != SetupCardUtility.getDenizenHolder(validMonster)) continue;
+				monster = validMonster;
+				SetupCardUtility.resetDenizen(monster);
+				break;
+			}
+			if (monster == null) return;
+		}
+		
 		if (locationOnly()) {
 			QuestLocation loc = getQuestLocation();
 			if (loc == null) return;
@@ -117,6 +139,15 @@ public class QuestRewardSummonMonster extends QuestReward {
 	
 	private String getMonsterQuery() {
 		return getString(QuestConstants.VALUE_PREFIX+MONSTER_NAME);
+	}
+	
+
+	private SummonType getSummonType() {
+		String summonType = getString(SUMMON_TYPE);
+		if (summonType == null) { // compatibility for old quests
+			return SummonType.NewMonster;
+		}
+		return SummonType.valueOf(getString(SUMMON_TYPE));
 	}
 	
 	private boolean randomClearing() {

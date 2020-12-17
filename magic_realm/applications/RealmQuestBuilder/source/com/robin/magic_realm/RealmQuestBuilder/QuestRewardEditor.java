@@ -277,6 +277,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case SummonMonster:
 				list.add(new QuestPropertyBlock(QuestRewardSummonMonster.MONSTER_NAME, "Monster", FieldType.CompanionSelector, getAllCompanionKeyValues()));
+				list.add(new QuestPropertyBlock(QuestRewardSummonMonster.SUMMON_TYPE, "Summon type", FieldType.StringSelector, QuestRewardSummonMonster.SummonType.values()) );
 				list.add(new QuestPropertyBlock(QuestRewardSummonMonster.RANDOM_CLEARING, "Random clearing of characters tile", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardSummonMonster.SUMMON_TO_LOCATION, "Summon to location", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardSummonMonster.RANDOM_LOCATION, "Random clearing of location", FieldType.Boolean));
