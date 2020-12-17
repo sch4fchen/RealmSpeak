@@ -18,6 +18,8 @@
 package com.robin.magic_realm.components.quest.requirement;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
+
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
@@ -39,7 +41,7 @@ public class QuestRequirementRelationship extends QuestRequirement {
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
 		boolean fulfilled = false;
 		for (GameObject nativeGroup : getRepresentativeNatives(character)) {
-			if (getNativesRegex().isEmpty() || nativeGroup.getName().toLowerCase().matches(getNativesRegex().toLowerCase())) {
+			if (getNativesRegex().isEmpty() || Pattern.compile(getNativesRegex().toLowerCase()).matcher(nativeGroup.getName().toLowerCase()).find()) {
 					if (exceedAllowed() && character.getRelationship(nativeGroup) >= getRelationshipLevel()) {
 						fulfilled = true;
 					}

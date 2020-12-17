@@ -18,6 +18,7 @@
 package com.robin.magic_realm.components.quest.requirement;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import javax.swing.JFrame;
 
@@ -45,7 +46,7 @@ public class QuestRequirementHirelings extends QuestRequirement {
 			hirelings = character.getAllHirelings();
 		}
 		for (RealmComponent hireling : hirelings) {
-			if (getRegExFilter().isEmpty() || hireling.getGameObject().getName().matches("(.*)"+getRegExFilter()+"(.*)")) {
+			if (getRegExFilter().isEmpty() || Pattern.compile(getRegExFilter()).matcher(hireling.getGameObject().getName()).find()) {
 				if (sameLocation() && !(hireling.getCurrentLocation().tile == character.getCurrentLocation().tile && hireling.getCurrentLocation().clearing == character.getCurrentLocation().clearing)) continue;
 				amount++;
 			}

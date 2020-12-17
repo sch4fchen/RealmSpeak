@@ -104,7 +104,6 @@ public class QuestRequirementPath extends QuestRequirement {
 		String[] pathSections = new String[each.length - 1]; // "1 2" "2 3" "3 4" "4 5"
 		if (each.length == 1) {
 			String clearing = (String) Array.get(each, 0);
-			//return Pattern.matches(clearing, charPath);
 			return charPath.contains(clearing) == true;
 		}
 		

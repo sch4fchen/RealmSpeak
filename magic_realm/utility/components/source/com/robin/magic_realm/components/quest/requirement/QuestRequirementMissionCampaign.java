@@ -44,7 +44,7 @@ public class QuestRequirementMissionCampaign extends QuestRequirement {
 		CharacterActionType actionType = getActionType();
 		if (reqParams != null && reqParams.actionType == actionType) {
 			String regex = getRegExFilter();
-			boolean match = regex == null || regex.length() == 0 ? true : Pattern.matches(regex, reqParams.actionName);
+			boolean match = regex == null || regex.length() == 0 ? true : Pattern.compile(regex).matcher(reqParams.actionName).find();
 			if (!match) {
 				logger.fine(character.getName()+" did not interact with correct mission/campaign matching "+regex+":"+reqParams.actionName);
 			}
