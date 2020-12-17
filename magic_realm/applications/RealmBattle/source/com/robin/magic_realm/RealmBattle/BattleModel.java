@@ -1197,7 +1197,7 @@ public class BattleModel {
 		sb.append(" ");
 		return sb.toString();
 	}
-	private Spoils getSpoils(GameObject attackerGo,GameObject victimGo) {
+	public static Spoils getSpoils(GameObject attackerGo,GameObject victimGo) {
 		Spoils spoils = new Spoils();
 		RealmComponent attacker = RealmComponent.getRealmComponent(attackerGo);
 		RealmComponent victim = RealmComponent.getRealmComponent(victimGo);

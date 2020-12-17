@@ -5,6 +5,7 @@ QUEST UPDATE:
 # QuestRequirement Attribute, Kill, Path: Option to count points only for same day
 # QuestRewardResetQuestLocations: Option to reset a single quest location
 # QuestRewardQuestComplete: Option to win in BoQ game with event
+# QuestRewardKillDenizen: Option to reward character with the kill
 NEW FEATURES:
 # Option to set custom amount of VPs for timed mode
 # Ending a game early shows endgame scoring 

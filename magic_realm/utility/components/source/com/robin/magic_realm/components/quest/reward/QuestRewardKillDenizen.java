@@ -24,7 +24,9 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
+import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.attribute.Spoils;
 import com.robin.magic_realm.components.quest.QuestLocation;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmUtility;
@@ -34,6 +36,7 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 public class QuestRewardKillDenizen extends QuestReward {
 	
 	public static final String DENIZEN_REGEX = "_drx";
+	public static final String REWARD_CHARACTER = "_rc";
 	public static final String KILL_HIRELINGS = "_kh";
 	public static final String KILL_COMPANIONS = "_kc";
 	public static final String KILL_SUMMONED = "_ks";
@@ -85,6 +88,20 @@ public class QuestRewardKillDenizen extends QuestReward {
 				RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
 				RealmUtility.makeDead(denizenRc);
 			}
+			
+			if (rewardCharacter()) {
+				Spoils spoils = BattleModel.getSpoils(character.getGameObject(),denizen);
+				character.addKill(denizen,spoils);
+				if (spoils.hasFameOrNotoriety()) {
+					character.addFame(spoils.getFame());
+					character.addNotoriety(spoils.getNotoriety());
+				}
+				if (spoils.hasGold()) {
+					character.addGold(spoils.getGoldBounty());
+					character.addGold(spoils.getGoldRecord());
+				}
+
+			}
 		}
 	}
 	
@@ -104,6 +121,9 @@ public class QuestRewardKillDenizen extends QuestReward {
 	}
 	private String getDenizenNameRegex() {
 		return getString(DENIZEN_REGEX);
+	}
+	private boolean rewardCharacter() {
+		return getBoolean(REWARD_CHARACTER);
 	}
 	private Boolean killHirelings() {
 		return getBoolean(KILL_HIRELINGS);
