@@ -17,6 +17,8 @@
  */
 package com.robin.magic_realm.components.quest.requirement;
 
+import java.util.regex.Pattern;
+
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
@@ -31,7 +33,7 @@ public class QuestRequirementCharacterClass extends QuestRequirement {
 	}
 
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
-		return character.getCharacterName().matches(getRegExFilter());
+		return Pattern.compile(getRegExFilter()).matcher(character.getCharacterName()).find();
 	}
 
 	protected String buildDescription() {

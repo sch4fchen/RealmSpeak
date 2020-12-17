@@ -17,6 +17,8 @@
  */
 package com.robin.magic_realm.components.quest.requirement;
 
+import java.util.regex.Pattern;
+
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
@@ -34,7 +36,7 @@ public class QuestRequirementGuild extends QuestRequirement {
 	}
 
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
-		if (character.getCurrentGuild() != null && (getGuildName().isEmpty() || character.getCurrentGuild().matches(getGuildName()))) {
+		if (character.getCurrentGuild() != null && (getGuildName().isEmpty() || Pattern.compile(getGuildName()).matcher(character.getCurrentGuild()).find())) {
 			if (exceedAllowed()) {
 				return character.getCurrentGuildLevel() >= getGuildLevel();
 			}
