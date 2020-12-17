@@ -24,7 +24,6 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
-import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.Spoils;
 import com.robin.magic_realm.components.attribute.TileLocation;
@@ -63,7 +62,7 @@ public class QuestRewardKillDenizen extends QuestReward {
 			denizens.addAll(pool.find(query));
 		}
 		for (GameObject denizen : denizens) {
-			if (!denizen.hasThisAttribute("vulnerability") || !denizen.hasThisAttribute("denizen")) continue;
+			if (!denizen.hasThisAttribute("vulnerability") || !denizen.hasThisAttribute("denizen") || denizen.hasThisAttribute(Constants.DEAD)) continue;
 			GameObject denizenHolder = SetupCardUtility.getDenizenHolder(denizen);
 			if (denizen.getHeldBy() == denizenHolder) continue;
 			if (!killHirelings() && denizen.hasThisAttribute(Constants.HIRELING)) {
@@ -96,7 +95,7 @@ public class QuestRewardKillDenizen extends QuestReward {
 			}
 			
 			if (rewardCharacter()) {
-				Spoils spoils = BattleModel.getSpoils(character.getGameObject(),denizen);
+				Spoils spoils = Spoils.getSpoils(character.getGameObject(),denizen);
 				character.addKill(denizen,spoils);
 				if (spoils.hasFameOrNotoriety()) {
 					character.addFame(spoils.getFame());

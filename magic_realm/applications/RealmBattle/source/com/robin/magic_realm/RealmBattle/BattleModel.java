@@ -850,7 +850,7 @@ public class BattleModel {
 
 					int multiplier = attackerCombat.getHitResultCount();
 
-					Spoils spoils = getSpoils(attacker,kill);
+					Spoils spoils = Spoils.getSpoils(attacker,kill);
 					spoils.setMultiplier(multiplier);
 					spoils.setDivisor(divides);
 
@@ -1196,42 +1196,6 @@ public class BattleModel {
 		}
 		sb.append(" ");
 		return sb.toString();
-	}
-	public static Spoils getSpoils(GameObject attackerGo,GameObject victimGo) {
-		Spoils spoils = new Spoils();
-		RealmComponent attacker = RealmComponent.getRealmComponent(attackerGo);
-		RealmComponent victim = RealmComponent.getRealmComponent(victimGo);
-		RealmComponent attackerOwner = attacker.getOwner();
-		
-		if (attacker.isCharacter() || attackerOwner!=null) { // Attacker is Character or Hireling
-			// Use multiplier only if attacker is a character, and the victim is not
-			spoils.setUseMultiplier(attacker.isCharacter() && !victim.isCharacter());
-			
-			// Fame and Notoriety Bounty
-			spoils.addFame(victim.getGameObject().getThisInt("fame"));
-			spoils.addNotoriety(victim.getGameObject().getThisInt("notoriety"));
-			if (victim.isCharacter()) {
-				CharacterWrapper victimRecord = new CharacterWrapper(victim.getGameObject());
-				spoils.addNotoriety(victimRecord.getRoundedNotoriety()); // stored a bit differently
-				if (victimRecord.isTransmorphed()) {
-					GameObject go = victimRecord.getTransmorph();
-					spoils.addFame(go.getThisInt("fame"));
-					spoils.addNotoriety(go.getThisInt("notoriety"));
-				}
-			}
-			
-			if (attacker.isPlayerControlledLeader()) { // Attacker is a Character or hired leader or controlled monster
-				// Gold Bounty
-				if (!victim.isMonster()) {
-					spoils.setGoldBounty(victim.getGameObject().getThisInt("base_price"));
-				}
-				
-				// Recorded Gold
-				CharacterWrapper victimRecord = new CharacterWrapper(victim.getGameObject());
-				spoils.setGoldRecord(victimRecord.getRoundedGold());
-			}
-		}
-		return spoils;
 	}
 	private Harm getAdjustedHarm(BattleChit attacker,int fumbleModifier,String targetId) {
 		if (hostPrefs.hasPref(Constants.OPT_FUMBLE)) {
