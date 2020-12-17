@@ -19,6 +19,7 @@ package com.robin.magic_realm.components.quest.reward;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.regex.Pattern;
 
 import javax.swing.JFrame;
 
@@ -48,7 +49,7 @@ public class QuestRewardControl extends QuestReward {
 		if (remove()) {
 			targets.addAll(character.getAllHirelings());
 			for (RealmComponent target : targets) {
-				if (!target.toString().matches(getTargetRegex())) continue;
+				if (!Pattern.compile(getTargetRegex()).matcher(target.toString()).find()) continue;
 				character.removeHireling(target.getGameObject());
 			}
 			return;
@@ -71,7 +72,7 @@ public class QuestRewardControl extends QuestReward {
 		}
 		
 		for (RealmComponent target : targets) {
-			if (!target.toString().matches(getTargetRegex())) continue;
+			if (!Pattern.compile(getTargetRegex()).matcher(target.toString()).find()) continue;
 			
 			if (target.isMonster() || target.isNative()) {
 				ChitComponent chit = (ChitComponent)target;

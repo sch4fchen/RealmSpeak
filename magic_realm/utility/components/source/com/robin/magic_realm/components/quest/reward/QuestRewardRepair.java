@@ -17,6 +17,8 @@
  */
 package com.robin.magic_realm.components.quest.reward;
 
+import java.util.regex.Pattern;
+
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
@@ -34,10 +36,10 @@ public class QuestRewardRepair extends QuestReward {
 	}
 
 	public void processReward(JFrame frame,CharacterWrapper character) {
-		if (getRegex().isEmpty()) {
+		if (!getRegex().isEmpty()) {
 			character.getInventory().stream()
 			.map(obj -> (GameObject)obj)
-			.filter(go -> go.getName().matches(getRegex()))
+			.filter(go -> Pattern.compile(getRegex()).matcher(go.getName()).find())
 			.map(go -> RealmComponent.getRealmComponent(go))
 			.filter(rc -> rc.isArmor())
 			.map(rc -> (ArmorChitComponent)rc)

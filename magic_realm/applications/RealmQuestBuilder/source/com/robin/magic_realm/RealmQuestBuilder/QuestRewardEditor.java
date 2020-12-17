@@ -102,7 +102,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardCurse.REMOVE_CURSES, "Remove all curses", FieldType.Boolean));
 				break;
 			case CustomTreasure:
-				list.add(new QuestPropertyBlock(QuestRewardCustomTreasure.TREASURE_REGEX, "Treasure RegEx", FieldType.Regex, null, new String[] { "treasure" }));
+				list.add(new QuestPropertyBlock(QuestRewardCustomTreasure.TREASURE_REGEX, "Treasure", FieldType.Regex, null, new String[] { "treasure" }));
 				list.add(new QuestPropertyBlock(QuestRewardCustomTreasure.TREASURE_NAME, "Name", FieldType.TextLine));
 				list.add(new QuestPropertyBlock(QuestRewardCustomTreasure.TREASURE_PRICE, "Price ("+QuestConstants.ALL_VALUE+"=no change)", FieldType.NumberAll));
 				list.add(new QuestPropertyBlock(QuestRewardCustomTreasure.TREASURE_FAME, "Fame ("+QuestConstants.ALL_VALUE+"=no change)", FieldType.NumberAll));
