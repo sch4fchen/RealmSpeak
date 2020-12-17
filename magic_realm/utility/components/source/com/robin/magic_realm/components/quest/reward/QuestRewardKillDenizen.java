@@ -27,6 +27,7 @@ import com.robin.game.objects.GamePool;
 import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.Spoils;
+import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.QuestLocation;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmUtility;
@@ -41,6 +42,7 @@ public class QuestRewardKillDenizen extends QuestReward {
 	public static final String KILL_COMPANIONS = "_kc";
 	public static final String KILL_SUMMONED = "_ks";
 	public static final String KILL_LIMITED = "_kl";
+	public static final String KILL_IN_CHAR_LOCATION = "_k_i_cloc";
 	public static final String KILL_IN_LOCATION = "_k_i_loc";
 	public static final String LOCATION = "_loc";
 	
@@ -76,16 +78,20 @@ public class QuestRewardKillDenizen extends QuestReward {
 			if (killOnlyHirelingsCompanionsSummonedMonsters() && !denizen.hasThisAttribute(Constants.HIRELING) && !denizen.hasThisAttribute(Constants.COMPANION) && !denizen.hasThisAttribute(Constants.SUMMONED)) {
 				continue;
 			}
+			RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
+			if (charLocationOnly()) {
+				TileLocation charLoc = character.getCurrentLocation();
+				TileLocation denizenLoc = denizenRc.getCurrentLocation();
+				if (charLoc == null || denizenLoc == null || charLoc.tile == null|| denizenLoc.tile == null || charLoc.tile != denizenLoc.tile || charLoc.tile != denizenLoc.tile ) continue;
+			}
 			
 			if (locationOnly()) {
 				QuestLocation loc = getQuestLocation();
-				RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
 				if (loc.locationMatchAddressForRealmComponent(frame, character, denizenRc)) {
 					RealmUtility.makeDead(denizenRc);
 				}
 			}
 			else {
-				RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
 				RealmUtility.makeDead(denizenRc);
 			}
 			
@@ -139,6 +145,9 @@ public class QuestRewardKillDenizen extends QuestReward {
 	}
 	public RewardType getRewardType() {
 		return RewardType.KillDenizen;
+	}
+	private boolean charLocationOnly() {
+		return getBoolean(KILL_IN_CHAR_LOCATION);
 	}
 	private boolean locationOnly() {
 		return getBoolean(KILL_IN_LOCATION);

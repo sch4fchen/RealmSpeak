@@ -6,6 +6,7 @@ QUEST UPDATE:
 # QuestRewardResetQuestLocations: Option to reset a single quest location
 # QuestRewardQuestComplete: Option to win in BoQ game with event
 # QuestRewardKillDenizen: Option to reward character with the kill
+# QuestRewardKillDenizen: Option that denizen must be in characters clearing
 NEW FEATURES:
 # Option to set custom amount of VPs for timed mode
 # Ending a game early shows endgame scoring 

@@ -172,6 +172,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_COMPANIONS, "Kill companions", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_SUMMONED, "Kill summoned monsters", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_LIMITED, "Kill ONLY those (see above)", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_IN_CHAR_LOCATION, "Denizen must be in characters location", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_IN_LOCATION, "Denizen must be in location", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
