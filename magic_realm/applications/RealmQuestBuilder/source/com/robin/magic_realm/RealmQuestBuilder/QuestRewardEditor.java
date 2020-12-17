@@ -280,14 +280,14 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardSummonMonster.RANDOM_LOCATION, "Random clearing of location", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardSummonMonster.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
-			case SummonFromAppearance:
-				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearance.CHIT, "Chit to summon to", FieldType.Regex, null, new String[] { "warning", "sound", "treasure_location", "dwelling" }));
-				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearance.DENIZEN, "Denizen (all if empty)", FieldType.Regex, null, new String[] { "vulnerability", "setup_start" }));
-				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearance.SUMMON_LIVING_DENIZENS, "Summon living denizens", FieldType.Boolean));
-				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearance.MAX_DENIZENS, "Max.# of summoned denizens", FieldType.Number));
-				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearance.MAX_DENIZEN_HOLDERS, "Max.# of monster boxes", FieldType.Number));
-				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearance.SUMMON_TO, "Chit location", FieldType.StringSelector, QuestRewardSummonFromAppearance.SummonTo.values()));
-				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearance.LOCATION, "Quest Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
+			case SummonFromAppearanceToChit:
+				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearanceToChit.CHIT, "Chit to summon to", FieldType.Regex, null, new String[] { "warning", "sound", "treasure_location", "dwelling" }));
+				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearanceToChit.DENIZEN, "Denizen (all if empty)", FieldType.Regex, null, new String[] { "vulnerability", "setup_start" }));
+				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearanceToChit.SUMMON_LIVING_DENIZENS, "Summon living denizens", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearanceToChit.MAX_DENIZENS, "Max.# of summoned denizens", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearanceToChit.MAX_DENIZEN_HOLDERS, "Max.# of monster boxes", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearanceToChit.SUMMON_TO, "Chit location", FieldType.StringSelector, QuestRewardSummonFromAppearanceToChit.SummonTo.values()));
+				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearanceToChit.LOCATION, "Quest Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
 			case SummonRoll:
 				list.add(new QuestPropertyBlock(QuestRewardSummonRoll.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));

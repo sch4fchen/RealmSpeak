@@ -35,7 +35,7 @@ import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.SetupCardUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
-public class QuestRewardSummonFromAppearance extends QuestReward {
+public class QuestRewardSummonFromAppearanceToChit extends QuestReward {
 	public static final String CHIT = "_chit";
 	public static final String DENIZEN = "_denizen";
 	public static final String SUMMON_LIVING_DENIZENS = "_summon_living_denizens";
@@ -52,7 +52,7 @@ public class QuestRewardSummonFromAppearance extends QuestReward {
 		QuestLocationTiles
 	}
 	
-	public QuestRewardSummonFromAppearance(GameObject go) {
+	public QuestRewardSummonFromAppearanceToChit(GameObject go) {
 		super(go);
 	}
 
@@ -275,7 +275,7 @@ public class QuestRewardSummonFromAppearance extends QuestReward {
 	}
 	
 	public RewardType getRewardType() {
-		return RewardType.SummonFromAppearance;
+		return RewardType.SummonFromAppearanceToChit;
 	}
 	
 	public boolean usesLocationTag(String tag) {
