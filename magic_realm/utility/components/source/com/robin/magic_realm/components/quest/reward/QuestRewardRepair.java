@@ -37,9 +37,10 @@ public class QuestRewardRepair extends QuestReward {
 
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		if (!getRegex().isEmpty()) {
+			Pattern pattern = Pattern.compile(getRegex());
 			character.getInventory().stream()
 			.map(obj -> (GameObject)obj)
-			.filter(go -> Pattern.compile(getRegex()).matcher(go.getName()).find())
+			.filter(go -> pattern.matcher(go.getName()).find())
 			.map(go -> RealmComponent.getRealmComponent(go))
 			.filter(rc -> rc.isArmor())
 			.map(rc -> (ArmorChitComponent)rc)

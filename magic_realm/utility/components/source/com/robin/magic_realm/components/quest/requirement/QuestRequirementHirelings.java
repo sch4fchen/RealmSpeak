@@ -45,8 +45,9 @@ public class QuestRequirementHirelings extends QuestRequirement {
 		else {
 			hirelings = character.getAllHirelings();
 		}
+		Pattern pattern = Pattern.compile(getRegExFilter());
 		for (RealmComponent hireling : hirelings) {
-			if (getRegExFilter().isEmpty() || Pattern.compile(getRegExFilter()).matcher(hireling.getGameObject().getName()).find()) {
+			if (getRegExFilter().isEmpty() || pattern.matcher(hireling.getGameObject().getName()).find()) {
 				if (sameLocation() && !(hireling.getCurrentLocation().tile == character.getCurrentLocation().tile && hireling.getCurrentLocation().clearing == character.getCurrentLocation().clearing)) continue;
 				amount++;
 			}

@@ -40,8 +40,9 @@ public class QuestRequirementRelationship extends QuestRequirement {
 
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
 		boolean fulfilled = false;
+		Pattern pattern = Pattern.compile(getNativesRegex().toLowerCase());
 		for (GameObject nativeGroup : getRepresentativeNatives(character)) {
-			if (getNativesRegex().isEmpty() || Pattern.compile(getNativesRegex().toLowerCase()).matcher(nativeGroup.getName().toLowerCase()).find()) {
+			if (getNativesRegex().isEmpty() || pattern.matcher(nativeGroup.getName().toLowerCase()).find()) {
 					if (exceedAllowed() && character.getRelationship(nativeGroup) >= getRelationshipLevel()) {
 						fulfilled = true;
 					}

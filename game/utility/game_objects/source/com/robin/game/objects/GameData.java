@@ -216,8 +216,9 @@ public class GameData extends ModifyableObject implements Serializable {
 	public ArrayList<GameObject> getGameObjectsByNameRegex(String nameRegex) {
 		ArrayList<GameObject> ret = new ArrayList<GameObject>();
 		String regex = nameRegex.trim()+".*";
+		Pattern pattern = Pattern.compile(regex);
 		for(String test:gameObjectNameHash.keySet()) {
-			if (Pattern.compile(regex).matcher(test.trim()).find()) {
+			if (pattern.matcher(test.trim()).find()) {
 				ret.addAll(gameObjectNameHash.getList(test));
 			}
 		}

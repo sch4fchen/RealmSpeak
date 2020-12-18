@@ -45,11 +45,12 @@ public class QuestRewardControl extends QuestReward {
 
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		ArrayList<RealmComponent> targets = new ArrayList<RealmComponent>();
+		Pattern pattern = Pattern.compile(getTargetRegex());
 		
 		if (remove()) {
 			targets.addAll(character.getAllHirelings());
 			for (RealmComponent target : targets) {
-				if (!Pattern.compile(getTargetRegex()).matcher(target.toString()).find()) continue;
+				if (!pattern.matcher(target.toString()).find()) continue;
 				character.removeHireling(target.getGameObject());
 			}
 			return;
@@ -72,7 +73,7 @@ public class QuestRewardControl extends QuestReward {
 		}
 		
 		for (RealmComponent target : targets) {
-			if (!Pattern.compile(getTargetRegex()).matcher(target.toString()).find()) continue;
+			if (!pattern.matcher(target.toString()).find()) continue;
 			
 			if (target.isMonster() || target.isNative()) {
 				ChitComponent chit = (ChitComponent)target;
