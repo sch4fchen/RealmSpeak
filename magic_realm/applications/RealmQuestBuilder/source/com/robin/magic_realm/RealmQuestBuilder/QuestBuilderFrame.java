@@ -26,6 +26,7 @@ import java.util.logging.Formatter;
 
 import javax.swing.*;
 import javax.swing.event.*;
+import javax.swing.filechooser.FileFilter;
 
 import com.robin.game.objects.*;
 import com.robin.general.io.*;
@@ -283,6 +284,8 @@ public class QuestBuilderFrame extends JFrame {
 
 	private void loadQuest() {
 		JFileChooser chooser = new JFileChooser(lastQuestFilePath);
+		chooser.setAcceptAllFileFilterUsed(false);
+		chooser.setFileFilter(questGameFileFilter);
 		if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
 			File file = chooser.getSelectedFile();
 			if (file != null) {
@@ -298,6 +301,16 @@ public class QuestBuilderFrame extends JFrame {
 		}
 	}
 
+	protected FileFilter questGameFileFilter = new FileFilter() {
+		public boolean accept(File f) {
+			return f.isDirectory() || (f.isFile() && f.getPath().endsWith("rsqst"));
+		}
+
+		public String getDescription() {
+			return "RealmSpeak Quest Files (*.rsqst)";
+		}
+	};
+	
 	private void saveAsQuest() {
 		saveQuest(lastQuestFile, false);
 	}
