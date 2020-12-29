@@ -1,8 +1,6 @@
-4/14/2009
-
 Contained herein is all the code and resources you need to build RealmSpeak from scratch.  If you follow these instructions, it should be pretty easy to accomplish.
 
-1)  Install ant (http://ant.apache.org/) - At the time of this writing, I'm using ant 1.7.0
+1)  Install ant (http://ant.apache.org/) - At the time of this writing, I'm using ant 1.8.0
 
 2)  Install Java JDK (http://java.sun.com/) - You probably already have the JRE installed (at least), but you really should have the JDK.  On the website, look for Downloads, and choose Java SE.  From there, find the latest JDK.  At the time of this writing, the latest is called "JDK 6 Update 13".  You don't need JavaFX, JavaEE, or NetBeans, so don't download those unless you have a good reason to.
 
@@ -43,7 +41,7 @@ Robin (aka DewKid)
 
 
 
-Hints (by Richard Rambach aka sch4fchen):
+Hints (by Richard aka sch4fchen):
 First time to run the game, you need to copy the .jar files from "libraries" directory, to "products" directory.
 Quests (*.rsqst) must be copied into the folder .../products/quests" (without subdirectory).
 Custom characters (*.rschar) must be copied into the folder .../products/characters".

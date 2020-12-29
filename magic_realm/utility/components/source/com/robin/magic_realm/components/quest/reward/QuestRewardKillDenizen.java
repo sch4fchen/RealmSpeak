@@ -88,25 +88,30 @@ public class QuestRewardKillDenizen extends QuestReward {
 				QuestLocation loc = getQuestLocation();
 				if (loc.locationMatchAddressForRealmComponent(frame, character, denizenRc)) {
 					RealmUtility.makeDead(denizenRc);
+					if (rewardCharacter()) {
+						giveReward(character, denizen);
+					}
 				}
 			}
 			else {
 				RealmUtility.makeDead(denizenRc);
-			}
-			
-			if (rewardCharacter()) {
-				Spoils spoils = Spoils.getSpoils(character.getGameObject(),denizen);
-				character.addKill(denizen,spoils);
-				if (spoils.hasFameOrNotoriety()) {
-					character.addFame(spoils.getFame());
-					character.addNotoriety(spoils.getNotoriety());
+				if (rewardCharacter()) {
+					giveReward(character, denizen);
 				}
-				if (spoils.hasGold()) {
-					character.addGold(spoils.getGoldBounty());
-					character.addGold(spoils.getGoldRecord());
-				}
-
 			}
+		}
+	}
+	
+	private void giveReward(CharacterWrapper character, GameObject denizen) {
+		Spoils spoils = Spoils.getSpoils(character.getGameObject(),denizen);
+		character.addKill(denizen,spoils);
+		if (spoils.hasFameOrNotoriety()) {
+			character.addFame(spoils.getFame());
+			character.addNotoriety(spoils.getNotoriety());
+		}
+		if (spoils.hasGold()) {
+			character.addGold(spoils.getGoldBounty());
+			character.addGold(spoils.getGoldRecord());
 		}
 	}
 	
