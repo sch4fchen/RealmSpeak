@@ -1,6 +1,24 @@
 What about a controlled monster luring/deploying against your hirelings?
 Extended Treachery:  luring/deploying against their own group triggers the same consequences
 
+::Scenarios Feature::
+RealSpeak: Load scenarios (overview with names and descriptions)
+Scenarios: different file extension
+RealmSpeak + GM: save game as scenario (with scenario name and description)
+Load scenarios: show game options
+GM: option to change game options
+Shuffle components Flag in gameData when saving game/scenario: Shuffle when loading (and remove flag)
+GM: Add Quest to character as soon as a character joins the game
+How to place tiles? change tile placement in GM?
+
+0001358: Monster Roll per Set
+0001797: Feature Request - BOQ Two Handed Weapon Opt Rules
+Expansion 1: Parry
+Expansion 1: Two-Handed Combat
+Expansion 1: More Ambushes
+
+BoQ: UNPREDICTABLE WEATHER, ADDITIONAL BOUNTY POINTS FOR DISCOVERIES
+
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
 0001829: Feature Request - First Edition Killer Caves
@@ -14,8 +32,8 @@ Extended Treachery:  luring/deploying against their own group triggers the same 
 0001819: Feature Request: First Edition Search Tables
 0001818: Feature Request: First Edition: Parry Optional Combat Rules
 0001797: Feature Request - BOQ Two Handed Weapon Opt Rules
-Expasion 1: Parry
-Expasion 1: Two-Handed Combat
+Expansion 1: Parry
+Expansion 1: Two-Handed Combat
 0001750: Option to disable battling natives
 0001645: Automatic HTML export
 0001563: Showing flip sides of tiles and counters in HTML
@@ -24,10 +42,6 @@ Expasion 1: Two-Handed Combat
 0001232: Flying Activities: Optional Rule # 3: Flying Activities.
 Should always be safe at guilds, if you are a member (from monsters and natives)
 Minotaur buckler not really implemented as I would like:  it should be able to block hits...
-::Scenarios Feature::
-GM = Scenario Editor: Save game with scenario name and description, Add Quest to character as soon as a character joins the game
-Shuffle components Flag in gameData when saving game/scenario: Shuffle when loading (and remove flag)
-RealSpeak: Load scenarios (overview with names and descriptions)
 ---:::BUGS:::---
 Wizard advancement - didn't get MOVE M5->MAGIC III
 0001879: Color magic fatigue counted against character when used in encounter step to energize a spell
