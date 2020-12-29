@@ -217,7 +217,6 @@ public class RealmCalendarViewer extends JFrame implements ManagedFrame {
 	private JEditorPane createSeasonInfoPane() {
 		int month = game.getMonth()+monthOffset;
 		
-//		ImageIcon icon = realmCalendar.getFullSeasonIcon(month);
 		GameObject season = realmCalendar.getCurrentSeason(month);
 		
 		String rowHeaderStart = "<tr><td align=\"right\" bgcolor=\"#33cc00\"><b>";
@@ -238,7 +237,7 @@ public class RealmCalendarViewer extends JFrame implements ManagedFrame {
 		text.append(rowHeaderStart);
 		text.append("Description:");
 		text.append(rowContentStart);
-		text.append(season.getThisAttribute("description"));
+		text.append(season.getThisAttribute("description") == null ? "---" : season.getThisAttribute("description"));
 		text.append(rowEnd);
 		
 		text.append(rowHeaderStart);
@@ -344,15 +343,7 @@ public class RealmCalendarViewer extends JFrame implements ManagedFrame {
 	protected void showSeasonInfo() {
 		JOptionPane.showMessageDialog(this,createSeasonInfoPane(),"Season/Weather Detail",JOptionPane.PLAIN_MESSAGE);
 	}
-//	public Image createSeasonInfo(int width,int height) {
-//		BufferedImage bi = new BufferedImage(width,height,BufferedImage.TYPE_4BYTE_ABGR);
-//		Graphics g = bi.getGraphics();
-//		JEditorPane pane = createSeasonInfoPane();
-//		pane.setPreferredSize(new Dimension(width,height));
-//		pane.setVisible(true);
-//		pane.paintAll(g);
-//		return bi;
-//	}
+
 	protected String filter(String in) {
 		return in==null?"":in;
 	}
@@ -371,7 +362,6 @@ public class RealmCalendarViewer extends JFrame implements ManagedFrame {
 		hostPrefs.setStartingSeason("Random");
 		hostPrefs.setPref(Constants.OPT_WEATHER,true);
 		GameWrapper game = GameWrapper.findGame(loader.getData());
-//		game.setSeasonOffset(0);
 		game.setDay(13);
 		ComponentTools.setSystemLookAndFeel();
 		RealmCalendarViewer view = new RealmCalendarViewer(loader.getData());

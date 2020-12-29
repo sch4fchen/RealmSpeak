@@ -147,17 +147,20 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			optionPane.setOption(key,hostPrefs.hasPref(key));
 		}
 		String season = hostPrefs.getStartingSeason();
-		if (season!=null) {
-			GameObject startingSeasonGo = gameData.getGameObjectByName(hostPrefs.getStartingSeason());
-			if (startingSeasonGo!=null) {
-				startingSeason.setSelectedItem(startingSeasonGo); // specific
-			}
-			else {
-				startingSeason.setSelectedIndex(1); // random
-			}
+		if (season == null) {
+			startingSeason.setSelectedIndex(0);
 		}
 		else {
-			startingSeason.setSelectedIndex(0); // no seasons
+			GameObject startingSeasonGo = gameData.getGameObjectByName(hostPrefs.getStartingSeason());
+			if (startingSeasonGo!=null) {
+				startingSeason.setSelectedItem(startingSeasonGo);
+			}
+			else if (season.matches(RealmCalendar.RANDOM_SEASON)){
+				startingSeason.setSelectedIndex(1);
+			}
+			else if (season.matches(RealmCalendar.UNPREDICTABLE_SEASON)){
+				startingSeason.setSelectedIndex(2);
+			}
 		}
 		useWeather.setSelected(hostPrefs.hasPref(Constants.OPT_WEATHER));
 		vpSuddenDeathOption.setSelected(hostPrefs.hasPref(Constants.EXP_SUDDEN_DEATH));
@@ -220,17 +223,20 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			optionPane.setOption(key,prefMan.getBoolean(key));
 		}
 		String name = prefMan.get("startingSeason");
-		if (name!=null) {
-			GameObject startingSeasonGo = gameData.getGameObjectByName(name);
-			if (startingSeasonGo!=null) {
-				startingSeason.setSelectedItem(startingSeasonGo); // specific
-			}
-			else {
-				startingSeason.setSelectedIndex(1); // random
-			}
+		if (name == null) {
+			startingSeason.setSelectedIndex(0);
 		}
 		else {
-			startingSeason.setSelectedIndex(0); // no seasons
+			GameObject startingSeasonGo = gameData.getGameObjectByName(name);
+			if (startingSeasonGo!=null) {
+				startingSeason.setSelectedItem(startingSeasonGo);
+			}
+			else if(name.matches(RealmCalendar.RANDOM_SEASON)) {
+				startingSeason.setSelectedIndex(1);
+			}
+			else if(name.matches(RealmCalendar.UNPREDICTABLE_SEASON)) {
+				startingSeason.setSelectedIndex(2);
+			}
 		}
 		useWeather.setSelected(prefMan.getBoolean(Constants.OPT_WEATHER));
 		vpSuddenDeathOption.setSelected(prefMan.getBoolean(Constants.EXP_SUDDEN_DEATH));
@@ -829,7 +835,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		gamePlayBox.add(box);
 			box = group.createLabelLine("Optional Season");
 				ArrayList seasons = new ArrayList(RealmCalendar.findSeasons(gameData));
-				seasons.add(1,"  Random Season");
+				seasons.add(1,RealmCalendar.RANDOM_SEASON);
+				seasons.add(2,RealmCalendar.UNPREDICTABLE_SEASON);
 				startingSeason = notifier.getComboBox(seasons.toArray());
 				startingSeason.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent ev) {
@@ -839,7 +846,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 				startingSeason.setRenderer(new DefaultListCellRenderer() {
 					public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
 						super.getListCellRendererComponent(list,value,index,isSelected,cellHasFocus);
-						if (index==2) {
+						if (index==3) {
 							setBorder(TOP_LINE);
 						}
 						else {

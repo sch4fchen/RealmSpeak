@@ -226,8 +226,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 					ret = JOptionPane.showConfirmDialog(getMainFrame(), "Allow characters to place visitor/mission chits?", "Visitor/Mission", JOptionPane.YES_NO_OPTION);
 				}
 				else {
-					// If there are no characters yet, then there is no point
-					// asking
+					// If there are no characters yet, then there is no point asking
 					ret = JOptionPane.NO_OPTION;
 				}
 				broadcast("host", "Host has started the game.");
@@ -239,6 +238,8 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				else if (ret == JOptionPane.NO_OPTION) {
 					randomGoldSpecialPlacement();
 				}
+				RealmCalendar calendar = RealmCalendar.getCalendar(client.getGameData());
+				calendar.updateSeason(1, true);
 			}
 		});
 		box.add(startGameButton);

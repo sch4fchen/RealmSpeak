@@ -17,7 +17,7 @@ Expansion 1: Parry
 Expansion 1: Two-Handed Combat
 Expansion 1: More Ambushes
 
-BoQ: UNPREDICTABLE WEATHER, ADDITIONAL BOUNTY POINTS FOR DISCOVERIES
+BoQ: ADDITIONAL BOUNTY POINTS FOR DISCOVERIES
 
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---

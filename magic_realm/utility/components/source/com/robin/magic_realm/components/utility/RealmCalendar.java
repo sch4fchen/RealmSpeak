@@ -35,6 +35,7 @@ public class RealmCalendar {
 	
 	public static final int DAYS_IN_A_MONTH = 28;
 	public static final int WEEKS_IN_A_MONTH = 4;
+	public static final int NUMBER_OF_SEASONS = 13;
 	private static final ColorMagic DAY_14_COLOR = new ColorMagic(ColorMagic.GRAY,true);
 	private static final ColorMagic DAY_21_COLOR = new ColorMagic(ColorMagic.PURPLE,true);
 	private static final ColorMagic DAY_28_COLOR = new ColorMagic(ColorMagic.GOLD,true);
@@ -61,6 +62,10 @@ public class RealmCalendar {
 	public static final String WEATHER_SHOWERS = "showers";
 	public static final String WEATHER_STORM = "storm";
 	public static final String WEATHER_SPECIAL = "special";
+	
+	public static final String RANDOM_SEASON = "Random Season";
+	public static final String UNPREDICTABLE_SEASON = "Unpredictable";
+	public static final String UNPREDICTABLE_WEATHER = "Unpredictable weather";
 	
 	private static RealmCalendar currentCalendar = null;
 	
@@ -91,6 +96,8 @@ public class RealmCalendar {
 	private ImageIcon fullSeasonIcon;
 	private ArrayList<ColorMagic> seventhDayColors;
 	private boolean usingWeather;
+	private boolean seasonIsSet = false;
+	private boolean unpredictableWeather = false;
 	
 	private RealmCalendar(GameData data,GameWrapper game,HostPrefWrapper hostPrefs) {
 		this.gameData = data;
@@ -102,40 +109,53 @@ public class RealmCalendar {
 			seasonOffset = game.getSeasonOffset();
 		}
 		else {
-			String val = hostPrefs.getStartingSeason();
-			if (val==null) { // This happens when loading an old savegame, and IGNORE_VERSION is on
-				seasonOffset = -1;
-				System.err.println("RealmCalendar:  Loading old game");
-				// May not work anyway, but at least this wont stop it
+			seasonOffset = -1;
+			if (!hostPrefs.getStartingSeason().matches(UNPREDICTABLE_SEASON)) {
+				setSeason(hostPrefs);
 			}
-			else {
-				if (val.toLowerCase().indexOf("random")>=0) {
-					seasonOffset = RandomNumber.getRandom(13);
-					// set the starting season to 
-				}
-				else {
-					seasonOffset = getIndexOf(val)-1;
-				}
+			if (seasonIsSet == false) {
+				game.setSeasonOffset(seasonOffset);
+				unpredictableWeather = true;
 			}
-			game.setSeasonOffset(seasonOffset);
 		}
 	}
 	public boolean isUsingWeather() {
 		return usingWeather;
 	}
+	public void setSeason(HostPrefWrapper hostPrefs) {
+		String val = hostPrefs.getStartingSeason();
+		if (val==null) { // This happens when loading an old savegame and IGNORE_VERSION is on
+			System.err.println("RealmCalendar: Loading old game");
+			// May not work anyway, but at least this wont stop it
+		}
+		else {
+			if (val.matches(RANDOM_SEASON) || val.matches(UNPREDICTABLE_SEASON)) {
+				seasonOffset = RandomNumber.getRandom(NUMBER_OF_SEASONS);
+			}
+			else {
+				seasonOffset = getIndexOf(val)-1;
+			}
+		}
+		game.setSeasonOffset(seasonOffset);
+		unpredictableWeather = false;
+		seasonIsSet = true;
+	}
 	private void updateSeason(int month) {
+		updateSeason(month, false);
+	}
+	public void updateSeason(int month, boolean forceUpdate) {
 		boolean changes = false;
 		if (currentWeather==null || !currentWeather.equals(game.getWeather())) {
 			currentWeather = game.getWeather();
 			changes = true;
 		}
-		if (currentMonth!=month || currentSeason==null) {
+		if (currentMonth!=month || currentSeason==null || forceUpdate) {
 			currentMonth = month;
 			if (seasonOffset==-1) {
 				currentSeason = seasonsHash.get(new Integer(0));
 			}
 			else {
-				int n = ((currentMonth+seasonOffset-1)%13)+1;
+				int n = ((currentMonth+seasonOffset-1)%NUMBER_OF_SEASONS)+1;
 				currentSeason = seasonsHash.get(new Integer(n));
 			}
 			changes = true;
@@ -170,7 +190,7 @@ public class RealmCalendar {
 		weatherName = currentSeason.getAttribute(currentWeather,"name");
 		weatherTypeName = StringUtilities.capitalize(currentWeather);
 		specialNotes = 0;
-		seasonDescription = "";
+		seasonDescription = "---";
 		if (currentSeason.hasAttribute(currentWeather,"special")) {
 			String note = currentSeason.getAttribute(currentWeather,"special"); // note = "note3" (for example)
 			specialNotes = Integer.valueOf(note.substring(4)).intValue();
@@ -197,6 +217,11 @@ public class RealmCalendar {
 		while(tokens.hasMoreTokens()) {
 			String val = tokens.nextToken();
 			seventhDayColors.add(ColorMagic.makeColorMagic(val,true));
+		}
+		
+		if (unpredictableWeather) {
+			seasonName = UNPREDICTABLE_WEATHER;
+			weatherName = "";
 		}
 	}
 	private void loadSeasonsHash() {
@@ -399,12 +424,17 @@ public class RealmCalendar {
 		return day==7 || day==14 || day==21 || day==28;
 	}
 	public static RealmCalendar getCalendar(GameData data) {
+		GameWrapper game = GameWrapper.findGame(data);
 		if (currentCalendar==null) {
-			GameWrapper game = GameWrapper.findGame(data);
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 			if (hostPrefs!=null) {
 				currentCalendar = new RealmCalendar(data,game,hostPrefs);
 			}
+		}
+		if (currentCalendar.seasonIsSet == false && game.getGameStarted() == true) {
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
+			currentCalendar.setSeason(hostPrefs);
+			currentCalendar.updateSeasonAttributes();
 		}
 		return currentCalendar;
 	}
