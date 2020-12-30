@@ -1,14 +1,15 @@
-new bat files for running: GameBuilderFrame, RealmViewer, TileEditFrame
+new bat files for running: GameBuilderFrame, RealmViewer, TileEditFrame (check saving)
+RealmSpeak: LaunchQuestBuilder, LaunchGM, LaunchGameBuilder, LaunchRealmViewer, LaunchTileEditFrame
 
 What about a controlled monster luring/deploying against your hirelings?
 Extended Treachery:  luring/deploying against their own group triggers the same consequences
 
 ::Scenarios Feature::
-RealmSpeak + GM: save game as scenario (with scenario name and description), have a different file extension
-RealSpeak: Load scenarios (overview with names and descriptions), show game options
 GM: Change tile placement
-Shuffle components Flag in gameData when saving game/scenario: Shuffle when loading (and remove flag)
 GM: add and remove quests from BoQ deck (incl. events), QtR deck (incl. all play)
+RealmSpeak + GM: save game as scenario (with scenario name and description), have a different file extension
+RealSpeak: Load scenarios (overview with names and descriptions), list game options
+Shuffle components Flag in gameData when saving scenario: Shuffle when loading
 
 0001358: Monster Roll per Set
 0001797: Feature Request - BOQ Two Handed Weapon Opt Rules

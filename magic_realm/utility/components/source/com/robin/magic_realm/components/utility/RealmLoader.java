@@ -24,7 +24,7 @@ import com.robin.game.objects.*;
 
 public class RealmLoader {
 
-	public static final String DATA_PATH = "data/MagicRealmData.xml";
+	public static String DATA_PATH = "data/MagicRealmData.xml";
 
 	private GameData master; // needed to determine changes
 	private GameData data;

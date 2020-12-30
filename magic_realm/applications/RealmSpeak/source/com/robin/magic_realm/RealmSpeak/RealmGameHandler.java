@@ -131,7 +131,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		this.clientEmail = email;
 		inspector = null;
 		initComponents();
-		setup(host, null, -1, name, pass);
+		setup(host, null, -1, name, pass, RealmLoader.DATA_PATH);
 	}
 
 	public RealmGameHandler(RealmSpeakFrame parent, String ip, int port, String name, String pass, String ppass, String email, boolean hostPlayer) {
@@ -143,7 +143,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		this.clientEmail = email;
 		inspector = null;
 		initComponents();
-		setup(null, ip, port, name, pass);
+		setup(null, ip, port, name, pass, RealmLoader.DATA_PATH);
 	}
 
 	public void removeAllCharacterFrames() {
@@ -1113,8 +1113,8 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		}
 	}
 
-	public void setup(GameHost host, String ip, int port, String name, String pass) {
-		client = new GameClient(RealmLoader.DATA_PATH, ip, name, pass, port) {
+	public void setup(GameHost host, String ip, int port, String name, String pass, String dataPath) {
+		client = new GameClient(dataPath, ip, name, pass, port) {
 			public void receiveInfoDirect(ArrayList inList) {
 				RealmDirectInfoHolder info = new RealmDirectInfoHolder(client.getGameData(), inList);
 				handleDirectInfo(info);

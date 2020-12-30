@@ -114,6 +114,16 @@ public class RealmSpeakFrame extends JFrame {
 		}
 	};
 	
+	protected FileFilter gameDataFileFilter = new FileFilter() {
+		public boolean accept(File f) {
+			return f.isDirectory() || (f.isFile() && f.getPath().endsWith("xml"));
+		}
+
+		public String getDescription() {
+			return "RealmSpeak Game Files (*.xml)";
+		}
+	};
+	
 	protected JMenuBar menu;
 		protected JMenu fileMenu;
 			protected JMenuItem newGame;
@@ -128,6 +138,7 @@ public class RealmSpeakFrame extends JFrame {
 			protected JMenuItem exportHTMLSummary;
 			protected JMenuItem exportHTMLSummaryHighQuality;
 			
+			protected JMenuItem gameDataFile;
 			protected JMenuItem gamePlayOptions;
 			
 			protected JMenuItem exitRealmSpeak;
@@ -208,7 +219,6 @@ public class RealmSpeakFrame extends JFrame {
 			protected JMenuItem guildRules;
 			
 		protected JMenu helpMenu;
-//			protected JMenuItem gcHelp;
 			protected JMenuItem launchCharacterEditorHelp;
 			protected JMenuItem spurGameHelp;
 			protected JMenuItem ruleCreditsHelp;
@@ -576,11 +586,12 @@ public class RealmSpeakFrame extends JFrame {
 		restoreGameBirdsong.setEnabled(!joinedGame && !gameInProgress && isAutosave);
 		
 		saveCurrentGame.setEnabled(gameInProgress);
-		
 		endCurrentGame.setEnabled(gameInProgress && inBirdsong);
 		
 		exportHTMLSummary.setEnabled(gameInProgress || joinedGame);
 		exportHTMLSummaryHighQuality.setEnabled(gameInProgress || joinedGame);
+		
+		gameDataFile.setEnabled(!joinedGame && !gameInProgress);
 		
 		spurGameHelp.setEnabled(gameInProgress);
 		launchCharacterEditorHelp.setEnabled(!joinedGame && !gameInProgress);
@@ -764,8 +775,15 @@ public class RealmSpeakFrame extends JFrame {
 						RealmSpeakOptionPanel panel = new RealmSpeakOptionPanel(RealmSpeakFrame.this,realmSpeakOptions);
 						panel.setVisible(true);
 					}
-				});				
+				});		
 			fileMenu.add(gamePlayOptions);
+				gameDataFile = new JMenuItem("Custom GameData file");
+				gameDataFile.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent ev) {
+						setGameDataFile();
+					}
+				});
+			fileMenu.add(gameDataFile);
 			fileMenu.add(new JSeparator());
 				exitRealmSpeak = new JMenuItem("Exit");
 				exitRealmSpeak.setMnemonic(KeyEvent.VK_X);
@@ -1611,6 +1629,14 @@ public class RealmSpeakFrame extends JFrame {
 			host.getGameData().zipToFile(lastSaveGame);
 			RealmLogWindow.getSingleton().save(lastSaveGame);
 			resetStatus();
+		}
+	}
+	private void setGameDataFile() {
+		JFileChooser chooser = new JFileChooser(new File("./"));
+		chooser.setAcceptAllFileFilterUsed(false);
+		chooser.setFileFilter(gameDataFileFilter);
+		if (chooser.showOpenDialog(this)==JFileChooser.APPROVE_OPTION) {
+			RealmLoader.DATA_PATH = chooser.getSelectedFile().toPath().toString();
 		}
 	}
 	public JDesktopPane getDesktop() {
