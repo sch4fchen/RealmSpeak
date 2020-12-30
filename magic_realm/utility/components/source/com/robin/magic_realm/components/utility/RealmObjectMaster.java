@@ -48,6 +48,9 @@ public class RealmObjectMaster {
 	private RealmObjectMaster(GameData data) {
 		this.data = data;
 		this.hostPrefs = HostPrefWrapper.findHostPrefs(data);
+		if (this.hostPrefs == null) {
+			this.hostPrefs = HostPrefWrapper.createDefaultHostPrefs(data);
+		}
 	}
 	
 	public static void resetAll() {

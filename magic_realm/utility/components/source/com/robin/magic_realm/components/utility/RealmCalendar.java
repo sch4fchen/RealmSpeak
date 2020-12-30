@@ -429,9 +429,10 @@ public class RealmCalendar {
 		GameWrapper game = GameWrapper.findGame(data);
 		if (currentCalendar==null) {
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
-			if (hostPrefs!=null) {
-				currentCalendar = new RealmCalendar(data,game,hostPrefs);
+			if (hostPrefs == null) {
+				hostPrefs = HostPrefWrapper.createDefaultHostPrefs(data);
 			}
+			currentCalendar = new RealmCalendar(data,game,hostPrefs);
 		}
 		if (currentCalendar.seasonIsSet == false && game.getGameStarted() == true) {
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);

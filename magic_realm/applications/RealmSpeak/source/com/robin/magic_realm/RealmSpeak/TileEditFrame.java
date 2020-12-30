@@ -759,10 +759,6 @@ public class TileEditFrame extends JFrame {
 		else {
 			data.loadFromFile(new File(dataFilename));
 		}
-		
-//		StringBuffer result = new StringBuffer();
-//		data.doSetup(result,"standard_game"); // don't do a setup!  this is very bad!
-//		System.out.println(result.toString());		
 	
 		new TileEditFrame(data).setVisible(true);
 	}
