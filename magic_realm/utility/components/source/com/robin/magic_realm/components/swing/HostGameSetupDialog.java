@@ -37,15 +37,16 @@ import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class HostGameSetupDialog extends AggressiveDialog {
 	private static final String MAIN_TAB = "Game";
-	private static final String ADVANCED_RULES_TAB = "Advanced";
-	private static final String OPTIONAL_RULES_TAB = "Optional";
-	private static final String OPTIONAL_CHAR_RULES_TAB = "Characters";
+	private static final String EXTENDED_CHAR_RULES_TAB = "Character Capabilities";
+	private static final String DENIZEN_RULES_TAB = "Denizen Rules";
+	private static final String ADVANCED_MAGIC_RULES_TAB = "Advanced Magic";
+	private static final String EXTENDING_GAME_SYSTEM_TAB = "Game System";
+	private static final String EXPANDING_REALM_TAB = "Expanded Realm";
 	private static final String REVISED_RULES_TAB = "Revised";
-	private static final String EXPANDING_RULES_TAB = "Expanding";
+	private static final String OPTIONAL_CHAR_RULES_TAB = "Characters";
 	private static final String HOUSE1_RULES_TAB = "Robin's House";
 	private static final String HOUSE2_RULES_TAB = "Other House";
 	private static final String HOUSE3_RULES_TAB = "More House";
-	private static final String TE_RULES_TAB = "3rd Edition";
 	private static final String RANDOM_GEN_TAB = "# Generators";
 	
 	private static final Border TOP_LINE = BorderFactory.createMatteBorder(2,0,0,0,Color.blue);
@@ -900,13 +901,6 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addTab(MAIN_TAB,mainPanel);
 		newOptionPane.addActionListener(notifier);
 		
-		newOptionPane.setTabHtmlDescription(ADVANCED_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Advanced Rules</font></body></html>");
-		newOptionPane.addOption(ADVANCED_RULES_TAB,new GameOption(Constants.ADV_CACHING,"CACHING 1.0 - Characters may record a CACHE action during their turn to create private caches of treasure and gold.",false));
-		newOptionPane.addOption(ADVANCED_RULES_TAB,new GameOption(Constants.ADV_DROPPING,"DROPPING AND LOSING BELONGINGS 3.0 - With this rule, characters have a choice of dropping an item in plain sight (where anyone can find it), or throwing it away (so it can only be found by searching).",false));
-		newOptionPane.addOption(ADVANCED_RULES_TAB,new GameOption(Constants.ADV_AMBUSHES,"AMBUSH RULES 4.2 - A successful HIDE roll on missile attacks while hidden, allow you to stay hidden.",false));
-		newOptionPane.addOption(ADVANCED_RULES_TAB,new GameOption(Constants.ADV_SERIOUS_WOUNDS,"SERIOUS WOUNDS 4.5 - Characters suffer 1D6 wounds instead of death when harm matches vulnerability.",false));
-		newOptionPane.addOption(ADVANCED_RULES_TAB,new GameOption(Constants.ADV_DRAGON_HEADS,"DRAGON HEADS 4.6 - Instead of striking, Dragon Heads do a flame missile attack.",false));
-		
 		String[] requiresNoVisitorMissionFlip = {Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE};
 		String[] cannotIncludeIgnoreMissions = {Constants.HOUSE2_IGNORE_CAMPAIGNS};
 		String[] overridesNoNegativePointsOrIgnoreCampaigns = {Constants.HOUSE1_NO_NEGATIVE_POINTS,Constants.HOUSE2_IGNORE_CAMPAIGNS};
@@ -925,25 +919,45 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		
 		String[] exclusiveRandomGen = {Constants.RANDOM_R250_521,Constants.RANDOM_MERSENNE_TWISTER,Constants.RANDOM_ON_THE_FLY};
 		
-		// These two rules are handled on the first tab
-		// newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_SEASONS_COLOR,"2.2/6 - Seasonal colors - The color of magic available on the 7th day of each month varies from month to month, instead of always being BLACK/WHITE.",false));
-		// newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_WEATHER,"2.4 - Weather - The weather affects players week to week (only applicable if seasons are used - see first tab)",false));
-	
-		newOptionPane.setTabHtmlDescription(OPTIONAL_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Optional Rules</font></body></html>");	
-		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_QUIET_MONSTERS,"QUIET MONSTERS 3.1-3.4 - Hidden characters and hirelings do not cause chits to flip, or monsters to be summoned.",false));
-		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_NO_BATTLE_DIST,"QUIET MONSTERS 3.5 - When positioning attackers on a character sheet, they do NOT have to be positioned in as many red boxes as possible.",false));
-		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_ALERTED_MONSTERS,"ALERTED MONSTERS 3.6 - When combat starts in a clearing with unhidden characters, hired or controlled denizens, then all uncontrolled denizens (not tremendous) turn dark side up.",false));
-		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_ALERTED_MONSTERS_VARIANT,"ALERTED MONSTERS 3.6 Variant - When combat starts in a clearing  then all uncontrolled denizens (not tremendous) randomly turn dark side up.",false,null,requiresAlertedMonsterRule));
-		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_COMMERCE,"COMMERCE 4.1-4.3 - This includes changes in native trading prices based on the group and using the commerce table for selling goods.",false));
-		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_GRUDGES,"GRUDGES/GRATITUDES 4.4 - Selling/Buying items with special FAME prices affect friendliness with certain native groups.  Also, killing FRIENDLY or ALLIED natives affects your friendliness quite negatively.",false,null,null,cannotIncludeExtGrudges));
-		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_STUMBLE,"STUMBLE 5.1 - Roll on stumble table when running.",false));
-		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_RIDING_HORSES,"RIDING HORSES 5.2-5.3 - Characters MUST play active horses to run away.  No MOVE chits or BOOTS cards are allowed.  Also, any character or denizen on horseback, can play both a maneuver for the rider, as well as the horse.  When attacking mounted opponents, the rider may be targeted separate from the horse, but are then subject to the rider's maneuver when calculating harm. (REQUIRES FUMBLE RULES)",false,null,requiresFumbleRules));
-		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_FUMBLE,"FUMBLE 5.4 - Roll on fumble table for melee attacks.",false,null,null,cannotIncludeSepRiderRules));
-		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_MISSILE,"OPTIONAL MISSILE TABLE 5.4 - Use the Optional Missile Table for missile attacks.",false,exclusiveMissileRules,null));
-		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_PENETRATING_ARMOR,"PENETRATING ARMOR 5.5 - When a missile attack hits a character's armor, the harm is inflicted on the character but the armor reduces the harm.",false));
-		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_AUTOMATIC_ENCHANTING,"AUTOMATIC ENCHANTING 6.0 - Certain map tiles flip over automatically at the end of each week, changing many of the roadways and making more color magic available.",false));
-		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_ENHANCED_ARTIFACTS,"ENHANCED ARTIFACTS AND SPELL BOOKS 7.0 - This rule allows characters to use Artifacts and Spell Books as extra Magic chits.",false));
-		newOptionPane.addOption(OPTIONAL_RULES_TAB,new GameOption(Constants.OPT_ENHANCED_MAGIC,"ENHANCED MAGIC 8.0 - Spells and Magic chits are not tied up by the casting of a spell, which allows the casting of multiple instances of a single spell.",false,exclusiveEnhancedMagicRules,null));
+		newOptionPane.setTabHtmlDescription(EXTENDED_CHAR_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Extended Character Capabilities</font></body></html>");	
+		newOptionPane.addOption(EXTENDED_CHAR_RULES_TAB,new GameOption(Constants.ADV_SERIOUS_WOUNDS,"SERIOUS WOUNDS A.1 - Characters suffer 1D6 wounds instead of death when harm matches vulnerability.",false));
+		newOptionPane.addOption(EXTENDED_CHAR_RULES_TAB,new GameOption(Constants.ADV_AMBUSHES,"AMBUSHES A.2 - A successful HIDE roll on missile attacks while hidden, allow you to stay hidden.",false));
+		newOptionPane.addOption(EXTENDED_CHAR_RULES_TAB,new GameOption(Constants.ADV_CACHING,"CACHING A.4 - Characters may record a CACHE action during their turn to create private caches of treasure and gold.",false));
+		newOptionPane.addOption(EXTENDED_CHAR_RULES_TAB,new GameOption(Constants.ADV_DROPPING,"DROPPING AND LOSING BELONGINGS A.5 - With this rule, characters have a choice of dropping an item in plain sight (where anyone can find it), or throwing it away (so it can only be found by searching).",false));
+		newOptionPane.addOption(EXTENDED_CHAR_RULES_TAB,new GameOption(Constants.TE_KNIGHT_ADJUSTMENT,"KNIGHTS ADJUSTMENT (3rd ed) - To limit the Black/White Knight's advantage, their ALLY starts off as FRIENDLY.",false));
+		
+		newOptionPane.setTabHtmlDescription(DENIZEN_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Denizen Optional Rules</font></body></html>");
+		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.OPT_QUIET_MONSTERS,"QUIET MONSTERS B.1.1-1.4 - Hidden characters and hirelings do not cause chits to flip, or monsters to be summoned.",false));
+		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.OPT_NO_BATTLE_DIST,"QUIET MONSTERS B.1.5 - When positioning attackers on a character sheet, they do NOT have to be positioned in as many red boxes as possible.",false));
+		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.OPT_ALERTED_MONSTERS,"ALERTED MONSTERS B.2 - When combat starts in a clearing with unhidden characters, hired or controlled denizens, then all uncontrolled denizens (not tremendous) turn dark side up.",false));
+		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.OPT_ALERTED_MONSTERS_VARIANT,"ALERTED MONSTERS B.2 Variant - When combat starts in a clearing  then all uncontrolled denizens (not tremendous) randomly turn dark side up.",false,null,requiresAlertedMonsterRule));
+		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.ADV_DRAGON_HEADS,"DRAGON HEADS B.3 - Instead of striking, Dragon Heads do a flame missile attack.",false));
+		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.TE_WATCHFUL_NATIVES,"WATCHFUL NATIVES B.4 - Unassigned natives become \"watchful\", and are not susceptible to suprise attacks.",false));
+		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.OPT_GRUDGES,"GRUDGES/GRATITUDES B.6 - Selling/Buying items with special FAME prices affect friendliness with certain native groups.  Also, killing FRIENDLY or ALLIED natives affects your friendliness quite negatively.",false,null,null,cannotIncludeExtGrudges));
+		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.TE_EXTENDED_GRUDGES,"EXTENDED GRUDGES B.7 - Killing an unhired neutral, unfriendly or enemy native reduces one�s friendship level with the native�s group one level for the rest of the game.  This penalty can only be applied once per character per native group per evening.  REQUIRES Grudges optional rule to be in play.",false,null,requiresGrudges));
+		
+		newOptionPane.setTabHtmlDescription(ADVANCED_MAGIC_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Advanced Magic Rules</font></body></html>");
+		newOptionPane.addOption(ADVANCED_MAGIC_RULES_TAB,new GameOption(Constants.OPT_ENHANCED_MAGIC,"ENHANCED MAGIC C.1 - Spells and Magic chits are not tied up by the casting of a spell, which allows the casting of multiple instances of a single spell.",false,exclusiveEnhancedMagicRules,null));
+		newOptionPane.addOption(ADVANCED_MAGIC_RULES_TAB,new GameOption(Constants.TE_BENEVOLENT_SPELLS,"BENEVOLENT SPELLS C.2 - With this rule, some spells can be cast on your hired natives without causing them to attack you.",false));
+		newOptionPane.addOption(ADVANCED_MAGIC_RULES_TAB,new GameOption(Constants.OPT_ENHANCED_ARTIFACTS,"ENHANCED ARTIFACTS AND SPELL BOOKS C.3 - This rule allows characters to use Artifacts and Spell Books as extra Magic chits.",false));
+		newOptionPane.addOption(ADVANCED_MAGIC_RULES_TAB,new GameOption(Constants.OPT_AUTOMATIC_ENCHANTING,"AUTOMATIC ENCHANTING C.5 - Certain map tiles flip over automatically at the end of each week, changing many of the roadways and making more color magic available.",false));
+		
+		newOptionPane.setTabHtmlDescription(EXTENDING_GAME_SYSTEM_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Extended Game System</font></body></html>");
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_COMMERCE,"COMMERCE D.2 - This includes changes in native trading prices based on the group and using the commerce table for selling goods.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_FUMBLE,"FUMBLE D.3.1 - Roll on fumble table for melee attacks.",false,null,null,cannotIncludeSepRiderRules));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_RIDING_HORSES,"RIDING HORSES D.3.2-3.3 - Characters MUST play active horses to run away.  No MOVE chits or BOOTS cards are allowed.  Also, any character or denizen on horseback, can play both a maneuver for the rider, as well as the horse.  When attacking mounted opponents, the rider may be targeted separate from the horse, but are then subject to the rider's maneuver when calculating harm. (REQUIRES FUMBLE RULES)",false,null,requiresFumbleRules));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_STUMBLE,"STUMBLE D.3.4 - Roll on stumble table when running.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_MISSILE,"OPTIONAL MISSILE TABLE D.3.4 - Use the Optional Missile Table for missile attacks.",false,exclusiveMissileRules,null));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PENETRATING_ARMOR,"PENETRATING ARMOR D.3.5 - When a missile attack hits a character's armor, the harm is inflicted on the character but the armor reduces the harm.",false));
+		
+		newOptionPane.setTabHtmlDescription(EXPANDING_REALM_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Expanding the Realm</font></body></html>");
+		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_CUSTOM_CHARS,"CUSTOM CHARACTERS - Allow players to choose from custom characters.",true,null,requiresDevelopmentRules));
+		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_NO_DWELLING_START,"SOLITAIRE E.1.5-1.6 - No Dwelling Start - Dwellings/Ghosts are NOT revealed at the start, rather discovered like the Campfires.  Since there are no Dwellings at the start, you must enter the map from the edge.",false));
+		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_DOUBLE_MONSTER_DIE,"SOLITAIRE E.1.7 - Two Rows Prowling - Rather than roll a single die for prowling monsters, two dice are rolled, and two rows are prowling at once.  If the die rolls are the same, only one row prowls.",false));
+		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_DEVELOPMENT,"DEVELOPMENT E.5 - Characters may start at a level less than four, and work their way up by earning chits.",false,null,null,cannotIncludeExpDevRules));
+		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_DEVELOPMENT_PLUS,"EXTENDED DEVELOPMENT E.6 - Characters may develop past level four.  No chits are gained past four, but each new level leads to a reward, as outlined in the 3rd edition rules.",false,null,requiresDevelopmentRules));
+		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_DEV_EXCLUDE_SW,"EXCLUDE STARTING WORTH - For purposes of development ONLY, starting equipment value is not considered when gaining chits but is considered for end game victory points.",false,null,requiresDevelopmentRules));
+		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_DEV_3RD_REL,"GAIN 3RD RELATIONSHIPS - When you achieve 3rd level, you receive the relationships you would have normally had.  If you are playing with GRUDGES/GRATITUDES, these levels ARE affected by the difference.",false,null,requiresDevelopmentRules));
 		
 		newOptionPane.setTabHtmlDescription(OPTIONAL_CHAR_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Optional Character Rules</font></body></html>");
 		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_WIZARD_MAGIC_CHIT,"1.2a - WIZARD uses a MAGIC III2* instead of one MOVE M5 chit",false));
@@ -955,16 +969,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_DRUID_CURSES,"1.6b - DRUID is immune to curses.",false));
 		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_ELF,"1.7 - ELF must choose between Light Elf, or Great Elf.  Affects which chits can be played during the game.",false));
 		
-		newOptionPane.setTabHtmlDescription(EXPANDING_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Expanding the Realm</font></body></html>");
-		newOptionPane.addOption(EXPANDING_RULES_TAB,new GameOption(Constants.EXP_NO_DWELLING_START,"SOLITAIRE 1.5-1.6 - No Dwelling Start - Dwellings/Ghosts are NOT revealed at the start, rather discovered like the Campfires.  Since there are no Dwellings at the start, you must enter the map from the edge.",false));
-		newOptionPane.addOption(EXPANDING_RULES_TAB,new GameOption(Constants.EXP_DOUBLE_MONSTER_DIE,"SOLITAIRE 1.7 - Two Rows Prowling - Rather than roll a single die for prowling monsters, two dice are rolled, and two rows are prowling at once.  If the die rolls are the same, only one row prowls.",false));
-		newOptionPane.addOption(EXPANDING_RULES_TAB,new GameOption(Constants.EXP_DEVELOPMENT,"DEVELOPMENT 5.0 - Characters may start at a level less than four, and work their way up by earning chits.",false,null,null,cannotIncludeExpDevRules));
-		newOptionPane.addOption(EXPANDING_RULES_TAB,new GameOption(Constants.EXP_DEVELOPMENT_PLUS,"EXTENDED DEVELOPMENT 6.0 - Characters may develop past level four.  No chits are gained past four, but each new level leads to a reward, as outlined in the 3rd edition rules.",false,null,requiresDevelopmentRules));
-		newOptionPane.addOption(EXPANDING_RULES_TAB,new GameOption(Constants.EXP_DEV_EXCLUDE_SW,"EXCLUDE STARTING WORTH - For purposes of development ONLY, starting equipment value is not considered when gaining chits but is considered for end game victory points.",false,null,requiresDevelopmentRules));
-		newOptionPane.addOption(EXPANDING_RULES_TAB,new GameOption(Constants.EXP_DEV_3RD_REL,"GAIN 3RD RELATIONSHIPS - When you achieve 3rd level, you receive the relationships you would have normally had.  If you are playing with GRUDGES/GRATITUDES, these levels ARE affected by the difference.",false,null,requiresDevelopmentRules));
-		newOptionPane.addOption(EXPANDING_RULES_TAB,new GameOption(Constants.EXP_CUSTOM_CHARS,"CUSTOM CHARACTERS - Allow players to choose from custom characters.",true,null,requiresDevelopmentRules));
-		
-		newOptionPane.setTabHtmlDescription(REVISED_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Revised Rules from http://www.triremis.com.au/pmwiki/pmwiki.php</font></body></html>");
+		newOptionPane.setTabHtmlDescription(REVISED_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Revised Rules</font></body></html>");
 		newOptionPane.addOption(REVISED_RULES_TAB,new GameOption(Constants.REV_MISSILE,"Revised Missile Table - Use the Revised Optional Missile Table for all missile attacks.",false,exclusiveMissileRules,null));
 		newOptionPane.addOption(REVISED_RULES_TAB,new GameOption(Constants.REV_DAMPEN_FAST_SPELLS,"Hamblen's Kludge Adjustment - Drop one sharpness star from Attack spells (ie., Fiery Blast) cast at speed zero.",false));
 		
@@ -995,12 +1000,6 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_SNOW_HIDE_EXCLUDE_CAVES,"Snow Hiding in Caves - Ignore special weather conditions that prevent hiding due to snow or soft ground, when you perform the HIDE activity in a cave.",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_VP_DEVELOPMENT_RAMP,"No VP Development Ramp - When playing with development rules, earn one chit for every VP gained, regardless of level",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_RESTRICT_VPS_FOR_DEV,"No VP Restrictions for Development - For purposes of development only, don't restrict VP gains to assigned VPs.",false));
-		
-		newOptionPane.setTabHtmlDescription(TE_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">3rd Edition Rules</font></body></html>");
-		newOptionPane.addOption(TE_RULES_TAB,new GameOption(Constants.TE_KNIGHT_ADJUSTMENT,"KNIGHTS ADJUSTMENT - To limit the Black/White Knight's advantage, their ALLY starts off as FRIENDLY.",false));
-		newOptionPane.addOption(TE_RULES_TAB,new GameOption(Constants.TE_WATCHFUL_NATIVES,"WATCHFUL NATIVES - Unassigned natives become \"watchful\", and are not susceptible to suprise attacks.",false));
-		newOptionPane.addOption(TE_RULES_TAB,new GameOption(Constants.TE_EXTENDED_GRUDGES,"EXTENDED GRUDGES - Killing an unhired neutral, unfriendly or enemy native reduces one�s friendship level with the native�s group one level for the rest of the game.  This penalty can only be applied once per character per native group per evening.  REQUIRES Grudges optional rule to be in play.",false,null,requiresGrudges));
-		newOptionPane.addOption(TE_RULES_TAB,new GameOption(Constants.TE_BENEVOLENT_SPELLS,"BENEVOLENT SPELLS - With this rule, some spells can be cast on your hired natives without causing them to attack you.",false));
 		
 		newOptionPane.setTabHtmlDescription(RANDOM_GEN_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Random Number Generator Preference - For more details see:</font><br>http://www.qbrundage.com/michaelb/pubs/essays/random_number_generation.html</body></html>");
 		newOptionPane.addOption(RANDOM_GEN_TAB,new GameOption(Constants.RANDOM_R250_521,"Use R250/521 - A very fast shift-register sequence random number generator, invented by Kirkpatrick and Stoll in 1981.",false,exclusiveRandomGen,null));
