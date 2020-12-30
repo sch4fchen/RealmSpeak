@@ -3,7 +3,6 @@ Extended Treachery:  luring/deploying against their own group triggers the same 
 
 ::Scenarios Feature::
 GM: Change tile placement
-GM: Change game options
 RealmSpeak + GM: save game as scenario (with scenario name and description), have a different file extension
 RealSpeak: Load scenarios (overview with names and descriptions), show game options
 Shuffle components Flag in gameData when saving game/scenario: Shuffle when loading (and remove flag)
