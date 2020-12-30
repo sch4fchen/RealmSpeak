@@ -222,6 +222,8 @@ public class RealmCalendar {
 		if (unpredictableWeather) {
 			seasonName = UNPREDICTABLE_WEATHER;
 			weatherName = "";
+			seasonIcon = ImageCache.getIcon("tab/turn");
+			fullSeasonIcon = ImageCache.getIcon("tab/turn",150);
 		}
 	}
 	private void loadSeasonsHash() {
