@@ -86,8 +86,7 @@ public class Loot extends RealmTable {
 						if (!spy.hasTreasureLocationDiscovery(treasureLocation.getName())) {
 							spy.addTreasureLocationDiscovery(treasureLocation.getName());
 						}
-						// Observing a character looting a Site card leads to the discovery
-						// of the site card AND the original Site chit!!!
+						// Observing a character looting a Site card leads to the discovery of the site card AND the original Site chit!!!
 						String siteChitName = treasureLocation.getThisAttribute("siteChitName");
 						if (siteChitName!=null && !spy.hasTreasureLocationDiscovery(siteChitName)) {
 							spy.addTreasureLocationDiscovery(siteChitName);

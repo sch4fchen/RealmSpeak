@@ -436,6 +436,7 @@ public class RealmCalendar {
 		if (currentCalendar.seasonIsSet == false && game.getGameStarted() == true) {
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 			currentCalendar.setSeason(hostPrefs);
+			currentCalendar.updateSeason(currentCalendar.currentMonth);
 			currentCalendar.updateSeasonAttributes();
 		}
 		return currentCalendar;

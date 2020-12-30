@@ -303,7 +303,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		editOptionsButton = createButton("images/interface/options.gif", "Game Options...");
 		editOptionsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				HostGameSetupDialog setup = new HostGameSetupDialog(new JFrame(), "Game Options for Battle", client.getGameData());
+				HostGameSetupDialog setup = new HostGameSetupDialog(new JFrame(), "Game Options", client.getGameData());
 				setup.loadPrefsFromData();
 				setup.setVisible(true);
 				submitChanges();

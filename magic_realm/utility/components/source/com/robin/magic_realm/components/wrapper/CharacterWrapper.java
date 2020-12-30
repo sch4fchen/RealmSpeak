@@ -3309,16 +3309,38 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (hasTreasureLocationDiscovery(name)) { // don't add it more than once!
 			return;
 		}
+		GameData gameData = getGameObject().getGameData();
+		GameObject discovery = gameData.getGameObjectByNameIgnoreCase(name);
 		if (isMinion()) {
 			getHiringCharacter().addTreasureLocationDiscovery(name);
+			discovery.setThisAttribute(Constants.DISCOVERED);
+			return;
 		}
-		else {
-			addListItem(DISC_TREASURE_LOCATIONS,name);
-			for (Iterator i=getActionFollowers().iterator();i.hasNext();) {
-				CharacterWrapper actionFollower = (CharacterWrapper)i.next();
-				if (!actionFollower.isMinion()) { // otherwise, there is a possiblilty for an infinite loop!
-					actionFollower.addTreasureLocationDiscovery(name);
+
+		addListItem(DISC_TREASURE_LOCATIONS,name);
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
+		if (hostPrefs.hasPref(Constants.EXP_BOUNTY_POINTS_FOR_DISCOVERIES) && this.isCharacter() && !discovery.hasThisAttribute(Constants.DISCOVERED)) {
+			RealmComponent rc = RealmComponent.getRealmComponent(gameData.getGameObjectByNameIgnoreCase(name));
+			if (rc.isTreasureLocation() && discovery.hasThisAttribute(Constants.DISCOVERY)) {
+				if (rc.isChit()) {
+					this.addFame(5);
 				}
+				else {
+					this.addFame(10);
+					this.addNotoriety(5);
+				}
+			}
+			else if (rc.isRedSpecial()) {
+				this.addFame(10);
+				this.addNotoriety(10);
+			}
+		}
+		discovery.setThisAttribute(Constants.DISCOVERED);
+		
+		for (Iterator i=getActionFollowers().iterator();i.hasNext();) {
+			CharacterWrapper actionFollower = (CharacterWrapper)i.next();
+			if (!actionFollower.isMinion()) { // otherwise, there is a possiblilty for an infinite loop!
+				actionFollower.addTreasureLocationDiscovery(name);
 			}
 		}
 	}

@@ -14,8 +14,6 @@ Expansion 1: Parry
 Expansion 1: Two-Handed Combat
 Expansion 1: More Ambushes
 
-BoQ: ADDITIONAL BOUNTY POINTS FOR DISCOVERIES: addTreasureLocationDiscovery in CharacterWrapper
-
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
 0001829: Feature Request - First Edition Killer Caves

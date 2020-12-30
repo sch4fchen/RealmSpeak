@@ -142,6 +142,8 @@ public class Constants {
 	public static final String FACING_KEY = "facing";
 	public static final String GOLD_SPECIAL_PLACED = "placed";
 	public static final String REQUIRES_APPROVAL = "req_app";
+	public static final String DISCOVERY = "discovery";
+	public static final String DISCOVERED = "discovered";
 	
 	// ThisAttributes for DieRoller - The accompaning value lists tables that are affected
 	public static final String PLUS_ONE = "plus_one";
@@ -460,6 +462,7 @@ public class Constants {
 	public static final String EXP_DEV_3RD_REL = "DevEarn3rdRelationships";
 	public static final String EXP_CUSTOM_CHARS = "CustomCharacters";
 	public static final String EXP_SUDDEN_DEATH = "SuddenDeath";
+	public static final String EXP_BOUNTY_POINTS_FOR_DISCOVERIES = "BountyPointsForDiscoeries";
 	
 	// 3rd edition rules
 	public static final String TE_KNIGHT_ADJUSTMENT = "KnightAdjustment";
@@ -489,7 +492,6 @@ public class Constants {
 	public static final String HOUSE2_IGNORE_CAMPAIGNS = "NoCampaigns";
 	public static final String HOUSE2_CAMPAIGN_DEBT = "CampaignDebt";
 	public static final String HOUSE2_DAY_END_TRADING_ON = "DayEndTradingOn";
-	//public static final String HOUSE2_OTHER_CLANS = "HouseOtherClans"; // TODO This isn't written yet
 	
 	// MORE House Rules
 	public static final String HOUSE3_DWELLING_ARMOR_REPAIR = "DwellingArmorRepair";

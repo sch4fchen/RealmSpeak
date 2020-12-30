@@ -10,6 +10,7 @@ QUEST UPDATE:
 # QuestRewardSummonMonster: Option to summon monster from chart of appearance
 NEW FEATURES:
 # New season option: Unpredictable weather (BoQ variant)
+# New game option: Additional Bounty points for discoveries (BoQ variant)
 # Option to set custom amount of VPs for timed mode
 # Ending a game early shows endgame scoring 
 # Ending a game early disables actions for the characters
