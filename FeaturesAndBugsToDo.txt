@@ -2,14 +2,11 @@ What about a controlled monster luring/deploying against your hirelings?
 Extended Treachery:  luring/deploying against their own group triggers the same consequences
 
 ::Scenarios Feature::
-RealSpeak: Load scenarios (overview with names and descriptions)
-Scenarios: different file extension
-RealmSpeak + GM: save game as scenario (with scenario name and description)
-Load scenarios: show game options
-GM: option to change game options
+GM: Change tile placement
+GM: Change game options
+RealmSpeak + GM: save game as scenario (with scenario name and description), have a different file extension
+RealSpeak: Load scenarios (overview with names and descriptions), show game options
 Shuffle components Flag in gameData when saving game/scenario: Shuffle when loading (and remove flag)
-GM: Add Quest to character as soon as a character joins the game
-How to place tiles? change tile placement in GM?
 
 0001358: Monster Roll per Set
 0001797: Feature Request - BOQ Two Handed Weapon Opt Rules
