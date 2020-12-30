@@ -427,15 +427,14 @@ public class RealmCalendar {
 	}
 	public static RealmCalendar getCalendar(GameData data) {
 		GameWrapper game = GameWrapper.findGame(data);
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
+		if (hostPrefs == null) {
+			hostPrefs = HostPrefWrapper.createDefaultHostPrefs(data);
+		}
 		if (currentCalendar==null) {
-			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
-			if (hostPrefs == null) {
-				hostPrefs = HostPrefWrapper.createDefaultHostPrefs(data);
-			}
 			currentCalendar = new RealmCalendar(data,game,hostPrefs);
 		}
-		if (currentCalendar.seasonIsSet == false && game.getGameStarted() == true) {
-			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
+		if (hostPrefs.getStartingSeason().matches(UNPREDICTABLE_SEASON) && currentCalendar.seasonIsSet == false && game.getGameStarted() == true) {
 			currentCalendar.setSeason(hostPrefs);
 			currentCalendar.updateSeason(currentCalendar.currentMonth);
 			currentCalendar.updateSeasonAttributes();
