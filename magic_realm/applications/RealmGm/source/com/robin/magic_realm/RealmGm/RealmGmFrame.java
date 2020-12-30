@@ -22,8 +22,6 @@ import java.awt.GridLayout;
 import java.awt.event.*;
 import java.beans.PropertyVetoException;
 import java.io.File;
-import java.util.Arrays;
-import java.util.List;
 
 import javax.swing.*;
 import javax.swing.event.InternalFrameAdapter;
@@ -37,6 +35,7 @@ import com.robin.general.swing.ComponentTools;
 import com.robin.general.swing.IconFactory;
 import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderModel;
 import com.robin.magic_realm.components.TileComponent;
+import com.robin.magic_realm.components.swing.HostGameSetupDialog;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.utility.RealmUtility;
 
@@ -62,6 +61,7 @@ public class RealmGmFrame extends JFrame {
 	private JRadioButton classicChitsOption;
 	private JRadioButton colorChitsOption;
 	private JRadioButton frenzelChitsOption;
+	private JButton gameOptions;
 	
 	protected FileFilter saveGameFileFilter = new FileFilter() {
 		public boolean accept(File f) {
@@ -109,6 +109,7 @@ public class RealmGmFrame extends JFrame {
 		closeGame.setEnabled(editor!=null);
 		saveGame.setEnabled(editor!=null && editor.getGameData().isModified());
 		saveAsGame.setEnabled(editor!=null);
+		gameOptions.setEnabled(editor!=null);
 	}
 	private void updateLookAndFeel() {
 		if (prefs.getBoolean(MetalLookAndFeel)) {
@@ -212,9 +213,18 @@ public class RealmGmFrame extends JFrame {
 			}
 		});
 		optionMenu.add(toggleLookAndFeel);
+		gameOptions = new JButton("Game Options");
+		gameOptions.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				HostGameSetupDialog setup = new HostGameSetupDialog(new JFrame(),"Game Options",editor.getGameData());
+				setup.loadPrefsFromData();
+				setup.setVisible(true);
+			}
+		});
 		
 		optionMenu.add(getTilesOptionsPanel());
 		optionMenu.add(getChitOptionsPanel());
+		optionMenu.add(gameOptions);
 		menu.add(optionMenu);
 		return menu;
 	}

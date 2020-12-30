@@ -16,6 +16,7 @@ NEW FEATURES:
 # Ending a game early disables actions for the characters
 # Icons added to different windows
 # Restructuring optional rules reflecting 3rd edition rulebook
+# Realm GM: Option to change game options/rules
 BUGS/ISSUES:
 # Fix companion Imp casting curse on monster
 
