@@ -17,7 +17,7 @@ NEW FEATURES:
 # Icons added to different windows
 # Restructuring optional rules reflecting 3rd edition rulebook
 # Option to set custom GameData file
-# Option to launch tools from RealmSpeak (tool menu): CharacterBuilder, QuestBuilder, GM
+# Option to launch tools from RealmSpeak (tool menu): CharacterBuilder, QuestBuilder, GM, GameBuilder
 # Realm GM: Option to change game options/rules
 BUGS/ISSUES:
 # Fix companion Imp casting curse on monster

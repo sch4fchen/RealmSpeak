@@ -28,6 +28,7 @@ import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.filechooser.FileFilter;
 
+import com.robin.game.GameBuilder.GameBuilderFrame;
 import com.robin.game.objects.*;
 import com.robin.game.server.GameHost;
 import com.robin.game.server.GameServer;
@@ -231,6 +232,7 @@ public class RealmSpeakFrame extends JFrame {
 			protected JMenuItem launchCharacterEditor;
 			protected JMenuItem launchQuestEditor;
 			protected JMenuItem launchGm;
+			protected JMenuItem launchGameEditor;
 	
 	public RealmSpeakFrame() {
 		initComponents();
@@ -604,6 +606,7 @@ public class RealmSpeakFrame extends JFrame {
 		launchCharacterEditor.setEnabled(!joinedGame && !gameInProgress);
 		launchQuestEditor.setEnabled(!joinedGame && !gameInProgress);
 		launchGm.setEnabled(!joinedGame && !gameInProgress);
+		launchGameEditor.setEnabled(!joinedGame && !gameInProgress);
 		
 		joinNetworkGame.setEnabled(!joinedGame);
 	}
@@ -1469,7 +1472,7 @@ public class RealmSpeakFrame extends JFrame {
 		
 		toolMenu = new JMenu("Tools");
 		toolMenu.setMnemonic(KeyEvent.VK_T);
-		launchCharacterEditor = new JMenuItem("Launch Character Builder (closes RealmSpeak)");
+		launchCharacterEditor = new JMenuItem("Character Builder (closes RealmSpeak)");
 		launchCharacterEditor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				setVisible(false);
@@ -1478,7 +1481,7 @@ public class RealmSpeakFrame extends JFrame {
 			}
 		});
 		toolMenu.add(launchCharacterEditor);
-		launchQuestEditor = new JMenuItem("Launch Quest Builder (closes RealmSpeak)");
+		launchQuestEditor = new JMenuItem("Quest Builder (closes RealmSpeak)");
 		launchQuestEditor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				setVisible(false);
@@ -1487,7 +1490,7 @@ public class RealmSpeakFrame extends JFrame {
 			}
 		});
 		toolMenu.add(launchQuestEditor);
-		launchGm = new JMenuItem("Launch GameMaster Editor (closes RealmSpeak)");
+		launchGm = new JMenuItem("GameMaster Editor (closes RealmSpeak)");
 		launchGm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				setVisible(false);
@@ -1496,6 +1499,15 @@ public class RealmSpeakFrame extends JFrame {
 			}
 		});
 		toolMenu.add(launchGm);
+		launchGameEditor = new JMenuItem("Game Builder (closes RealmSpeak)");
+		launchGameEditor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				setVisible(false);
+				dispose();
+				GameBuilderFrame.main(null);
+			}
+		});
+		toolMenu.add(launchGameEditor);
 		menu.add(toolMenu);
 		
 		setJMenuBar(menu);
