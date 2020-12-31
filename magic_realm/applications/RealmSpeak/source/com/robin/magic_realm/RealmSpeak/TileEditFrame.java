@@ -36,6 +36,7 @@ import com.robin.general.io.ArgumentParser;
 import com.robin.general.io.ResourceFinder;
 import com.robin.general.swing.ButtonOptionDialog;
 import com.robin.general.swing.ComponentTools;
+import com.robin.general.swing.IconFactory;
 import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.PathDetail;
 import com.robin.magic_realm.components.RealmComponent;
@@ -100,6 +101,7 @@ public class TileEditFrame extends JFrame {
 	}
 	private void initComponents() {
 		setTitle("Tile Editor");
+		setIconImage(IconFactory.findIcon("images/interface/build.gif").getImage());
 		setSize(900,600);
 		getContentPane().setLayout(new BorderLayout());
 		setLocation(50,50);

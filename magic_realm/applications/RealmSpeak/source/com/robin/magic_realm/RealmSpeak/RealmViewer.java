@@ -24,6 +24,7 @@ import java.util.*;
 import javax.swing.*;
 
 import com.robin.game.objects.*;
+import com.robin.general.swing.IconFactory;
 import com.robin.magic_realm.MRMap.MapBuilder;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.TileLocation;
@@ -148,6 +149,7 @@ public class RealmViewer extends JFrame {
 	}
 	private void initComponents() {
 		setTitle("Realm Viewer");
+		setIconImage(IconFactory.findIcon("images/interface/calendar.gif").getImage());
 		setSize(1300,800);
 		getContentPane().setLayout(new BorderLayout());
 		setLocation(50,50);

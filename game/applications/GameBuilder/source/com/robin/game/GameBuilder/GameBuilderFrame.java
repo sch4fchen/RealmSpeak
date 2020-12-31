@@ -29,6 +29,7 @@ import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameSetup;
 import com.robin.general.io.PreferenceManager;
 import com.robin.general.swing.ComponentTools;
+import com.robin.general.swing.IconFactory;
 
 public class GameBuilderFrame extends JFrame {
 	public static final String LAST_DIR = "last_dir";
@@ -218,6 +219,7 @@ public class GameBuilderFrame extends JFrame {
 	}
 	public void initComponents() {
 		setTitle("GBuilder");
+		setIconImage(IconFactory.findIcon("images/tab/disc.gif").getImage());
 		ComponentTools.maximize(this);
 		setLocation(0,0);
 		desktop = new JDesktopPane();

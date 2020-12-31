@@ -1,8 +1,7 @@
-new bat files for running: GameBuilderFrame, RealmViewer, TileEditFrame (check saving)
+new bat files for running: GameBuilderFrame, RealmViewer, TileEditFrame
 RealmSpeak Toolbar: LaunchRealmViewer, LaunchTileEditFrame
 RealmViewer and TileEditFrame: check saving, check loading custom xml gameData file
 MagicRealmData.xml in "data" folder to reference?!
-Icons for GameBuilder, RealmViewer, TileEditor
 
 What about a controlled monster luring/deploying against your hirelings?
 Extended Treachery:  luring/deploying against their own group triggers the same consequences
