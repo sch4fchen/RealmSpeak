@@ -38,6 +38,8 @@ import com.robin.general.util.RandomNumberType;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
 import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderFrame;
 import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderModel;
+import com.robin.magic_realm.RealmGm.RealmGmFrame;
+import com.robin.magic_realm.RealmQuestBuilder.QuestBuilderFrame;
 import com.robin.magic_realm.components.GoldSpecialChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.swing.*;
@@ -219,12 +221,16 @@ public class RealmSpeakFrame extends JFrame {
 			protected JMenuItem guildRules;
 			
 		protected JMenu helpMenu;
-			protected JMenuItem launchCharacterEditorHelp;
 			protected JMenuItem spurGameHelp;
 			protected JMenuItem ruleCreditsHelp;
 			protected JMenuItem licenseHelp;
 			protected JMenuItem creditsHelp;
 			protected JMenuItem aboutHelp;
+			
+		protected JMenu toolMenu;
+			protected JMenuItem launchCharacterEditor;
+			protected JMenuItem launchQuestEditor;
+			protected JMenuItem launchGm;
 	
 	public RealmSpeakFrame() {
 		initComponents();
@@ -594,7 +600,10 @@ public class RealmSpeakFrame extends JFrame {
 		gameDataFile.setEnabled(!joinedGame && !gameInProgress);
 		
 		spurGameHelp.setEnabled(gameInProgress);
-		launchCharacterEditorHelp.setEnabled(!joinedGame && !gameInProgress);
+		
+		launchCharacterEditor.setEnabled(!joinedGame && !gameInProgress);
+		launchQuestEditor.setEnabled(!joinedGame && !gameInProgress);
+		launchGm.setEnabled(!joinedGame && !gameInProgress);
 		
 		joinNetworkGame.setEnabled(!joinedGame);
 	}
@@ -1428,16 +1437,6 @@ public class RealmSpeakFrame extends JFrame {
 				});
 			helpMenu.add(spurGameHelp);
 			helpMenu.add(new JSeparator());
-				launchCharacterEditorHelp = new JMenuItem("Launch Character Builder (closes RealmSpeak)");
-				launchCharacterEditorHelp.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent ev) {
-						setVisible(false);
-						dispose();
-						RealmCharacterBuilderFrame.main(null);
-					}
-				});
-			helpMenu.add(launchCharacterEditorHelp);
-			helpMenu.add(new JSeparator());
 				ruleCreditsHelp = new JMenuItem("3rd Edition Rule Credits");
 				ruleCreditsHelp.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent ev) {
@@ -1467,6 +1466,37 @@ public class RealmSpeakFrame extends JFrame {
 				});
 			helpMenu.add(aboutHelp);
 		menu.add(helpMenu);
+		
+		toolMenu = new JMenu("Tools");
+		toolMenu.setMnemonic(KeyEvent.VK_T);
+		launchCharacterEditor = new JMenuItem("Launch Character Builder (closes RealmSpeak)");
+		launchCharacterEditor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				setVisible(false);
+				dispose();
+				RealmCharacterBuilderFrame.main(null);
+			}
+		});
+		toolMenu.add(launchCharacterEditor);
+		launchQuestEditor = new JMenuItem("Launch Quest Builder (closes RealmSpeak)");
+		launchQuestEditor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				setVisible(false);
+				dispose();
+				QuestBuilderFrame.main(null);
+			}
+		});
+		toolMenu.add(launchQuestEditor);
+		launchGm = new JMenuItem("Launch GameMaster Editor (closes RealmSpeak)");
+		launchGm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				setVisible(false);
+				dispose();
+				RealmGmFrame.main(null);
+			}
+		});
+		toolMenu.add(launchGm);
+		menu.add(toolMenu);
 		
 		setJMenuBar(menu);
 		

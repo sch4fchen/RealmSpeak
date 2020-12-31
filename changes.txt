@@ -9,7 +9,6 @@ QUEST UPDATE:
 # QuestRewardKillDenizen: Option that denizen must be in characters clearing
 # QuestRewardSummonMonster: Option to summon monster from chart of appearance
 NEW FEATURES:
-# Option to set custom GameData file
 # New season option: Unpredictable weather (BoQ variant)
 # New game option: Additional Bounty points for discoveries (BoQ variant)
 # Option to set custom amount of VPs for timed mode
@@ -17,6 +16,8 @@ NEW FEATURES:
 # Ending a game early disables actions for the characters
 # Icons added to different windows
 # Restructuring optional rules reflecting 3rd edition rulebook
+# Option to set custom GameData file
+# Option to launch tools from RealmSpeak (tool menu): CharacterBuilder, QuestBuilder, GM
 # Realm GM: Option to change game options/rules
 BUGS/ISSUES:
 # Fix companion Imp casting curse on monster
