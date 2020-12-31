@@ -1,6 +1,4 @@
 new bat files for running: GameBuilderFrame, RealmViewer, TileEditFrame
-RealmSpeak Toolbar: LaunchTileEditFrame
-TileEditFrame: check saving, check loading custom xml gameData file
 MagicRealmData.xml in "data" folder to reference?!
 
 What about a controlled monster luring/deploying against your hirelings?

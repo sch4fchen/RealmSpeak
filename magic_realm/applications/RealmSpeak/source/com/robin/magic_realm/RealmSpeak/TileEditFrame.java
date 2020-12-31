@@ -730,7 +730,7 @@ public class TileEditFrame extends JFrame {
 		Vector tiles = new Vector();
 		for (Iterator i=data.getGameObjects().iterator();i.hasNext();) {
 			GameObject go = (GameObject)i.next();
-			if (go.hasKey("tile")) {
+			if (go.hasKey("tile") || go.hasKey("a_tile")) {
 				tiles.addElement(go);
 			}
 		}
