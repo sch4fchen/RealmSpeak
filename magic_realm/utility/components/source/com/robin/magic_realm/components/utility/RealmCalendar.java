@@ -96,7 +96,6 @@ public class RealmCalendar {
 	private ImageIcon fullSeasonIcon;
 	private ArrayList<ColorMagic> seventhDayColors;
 	private boolean usingWeather;
-	private boolean seasonIsSet = false;
 	private boolean unpredictableWeather = false;
 	
 	private RealmCalendar(GameData data,GameWrapper game,HostPrefWrapper hostPrefs) {
@@ -113,7 +112,7 @@ public class RealmCalendar {
 			if (!hostPrefs.getStartingSeason().matches(UNPREDICTABLE_SEASON)) {
 				setSeason(hostPrefs);
 			}
-			if (seasonIsSet == false) {
+			else {
 				game.setSeasonOffset(seasonOffset);
 				unpredictableWeather = true;
 			}
@@ -138,7 +137,6 @@ public class RealmCalendar {
 		}
 		game.setSeasonOffset(seasonOffset);
 		unpredictableWeather = false;
-		seasonIsSet = true;
 	}
 	private void updateSeason(int month) {
 		updateSeason(month, false);
@@ -434,7 +432,7 @@ public class RealmCalendar {
 		if (currentCalendar==null) {
 			currentCalendar = new RealmCalendar(data,game,hostPrefs);
 		}
-		if (hostPrefs.getStartingSeason().matches(UNPREDICTABLE_SEASON) && currentCalendar.seasonIsSet == false && game.getGameStarted() == true) {
+		if (hostPrefs.getStartingSeason().matches(UNPREDICTABLE_SEASON) && currentCalendar.unpredictableWeather == true && game.getGameStarted() == true) {
 			currentCalendar.setSeason(hostPrefs);
 			currentCalendar.updateSeason(currentCalendar.currentMonth);
 			currentCalendar.updateSeasonAttributes();

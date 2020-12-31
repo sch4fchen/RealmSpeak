@@ -1,5 +1,5 @@
 new bat files for running: GameBuilderFrame, RealmViewer, TileEditFrame (check saving)
-RealmSpeak: LaunchQuestBuilder, LaunchGM, LaunchGameBuilder, LaunchRealmViewer, LaunchTileEditFrame
+RealmSpeak: Toolbar: LaunchCharacterBuilder, LaunchQuestBuilder, LaunchGM, LaunchGameBuilder, LaunchRealmViewer, LaunchTileEditFrame
 
 What about a controlled monster luring/deploying against your hirelings?
 Extended Treachery:  luring/deploying against their own group triggers the same consequences
