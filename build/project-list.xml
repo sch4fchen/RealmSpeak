@@ -252,6 +252,7 @@
 		<depend type="project" name="RealmCharacterBuilder"/>
 		<depend type="project" name="RealmQuestBuilder"/>
 		<depend type="project" name="RealmGm"/>
+		<depend type="project" name="GameBuilder"/>
 	</project>
 </project-list>
 

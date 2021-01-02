@@ -18,6 +18,7 @@ NEW FEATURES:
 # Restructuring optional rules reflecting 3rd edition rulebook
 # Option to set custom GameData file
 # Option to launch tools from RealmSpeak (tool menu): GM, CharacterBuilder, QuestBuilder, GameBuilder, TileEditor, RealmViewer
+# Bat files for running tools directly
 # Realm GM: Option to change game options/rules
 BUGS/ISSUES:
 # Fix companion Imp casting curse on monster
