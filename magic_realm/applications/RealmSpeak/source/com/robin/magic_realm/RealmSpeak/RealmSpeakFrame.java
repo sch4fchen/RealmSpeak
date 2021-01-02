@@ -1480,6 +1480,7 @@ public class RealmSpeakFrame extends JFrame {
 		launchGm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				setVisible(false);
+				DebugUtility.shutDown();
 				dispose();
 				RealmGmFrame.main(null);
 			}
@@ -1489,6 +1490,7 @@ public class RealmSpeakFrame extends JFrame {
 		launchCharacterEditor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				setVisible(false);
+				DebugUtility.shutDown();
 				dispose();
 				RealmCharacterBuilderFrame.main(null);
 			}
@@ -1498,6 +1500,7 @@ public class RealmSpeakFrame extends JFrame {
 		launchQuestEditor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				setVisible(false);
+				DebugUtility.shutDown();
 				dispose();
 				QuestBuilderFrame.main(null);
 			}
@@ -1507,6 +1510,7 @@ public class RealmSpeakFrame extends JFrame {
 		launchGameEditor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				setVisible(false);
+				DebugUtility.shutDown();
 				dispose();
 				GameBuilderFrame.main(null);
 			}
@@ -1516,6 +1520,7 @@ public class RealmSpeakFrame extends JFrame {
 		launchTileEditor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				setVisible(false);
+				DebugUtility.shutDown();
 				dispose();
 				TileEditFrame.main(new String[] {"file="+RealmLoader.DATA_PATH});
 			}
@@ -1525,6 +1530,7 @@ public class RealmSpeakFrame extends JFrame {
 		launchRealmViewer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				setVisible(false);
+				DebugUtility.shutDown();
 				dispose();
 				RealmViewer.main(null);
 			}

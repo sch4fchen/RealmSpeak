@@ -221,7 +221,10 @@
 		<depend type="project" name="realm_components"/>
 		<depend type="project" name="MRMap"/>
 		<depend type="project" name="RealmBattle"/>
+		<depend type="project" name="RealmGm"/>
 		<depend type="project" name="RealmCharacterBuilder"/>
+		<depend type="project" name="RealmQuestBuilder"/>
+		<depend type="project" name="GameBuilder"/>
 	</project>
 	
 	<!-- removed main-class to intentionally disable double-clickable jar -->
