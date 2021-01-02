@@ -52,7 +52,6 @@ public class CenteredMapView extends JComponent {
 	}
 	public static CenteredMapView getSingleton() {
 		if (singleton==null) {
-			// Hmm, should try to recover from this... How about
 			initSingleton(GameClient.GetMostRecentClient().getGameData());
 		}
 		return singleton;
@@ -62,7 +61,6 @@ public class CenteredMapView extends JComponent {
 			tileLayer.flush();
 			tileLayer = null;
 			singleton = null;
-//			System.err.println("spoo!");
 		}
 	}
 	
@@ -116,12 +114,10 @@ public class CenteredMapView extends JComponent {
 	
 	private String mapAttentionMessage = null;
 	
-//	private boolean markedClearings = false;
 	private String markClearingAlertText = null;
 	
 	private ArrayList clearingPlot = null; // a collection of ClearingDetail objects to indicate a path to be drawn on the map
 	
-//	private Point lastMovePos = null;
 	private TileComponent viewTile = null;
 	
 	private boolean enableShiftFlip;
@@ -156,8 +152,8 @@ public class CenteredMapView extends JComponent {
 	public CenteredMapView(GameData data) {
 		this(data,true,false);
 	}
-	public CenteredMapView(GameData data,boolean enableShiftFlip,boolean enableRightClickFlip) {
-		mapRightClickMenu = new MapRightClickMenu(enableRightClickFlip);
+	public CenteredMapView(GameData data,boolean enableShiftFlip,boolean enableGmFunctions) {
+		mapRightClickMenu = new MapRightClickMenu(enableGmFunctions);
 		this.enableShiftFlip = enableShiftFlip;
 		setDoubleBuffered(true);
 		this.gameData = data;
@@ -1022,7 +1018,7 @@ public class CenteredMapView extends JComponent {
 		}
 		
 		// Draw mouse-over clearing contents, if any
-		if (currentTileLocation!=null && showEmbellishments && !drawSeasonInfo) {
+		if (currentTileLocation!=null && !(currentTileLocation.tile instanceof EmptyTileComponent) && showEmbellishments && !drawSeasonInfo) {
 			if (clearingHighlight && currentTileLocation.isInClearing()) {
 				Point p = findLocationPoint(currentTileLocation);
 				double csx = (p.x-TileComponent.CLEARING_RADIUS)*scale;
@@ -1250,6 +1246,7 @@ public class CenteredMapView extends JComponent {
 			for (Iterator i=sortedKeys.iterator();i.hasNext();) {
 				Point gridPos = (Point)i.next();
 				TileComponent tile = (TileComponent)mapGrid.get(gridPos);
+				if (tile instanceof EmptyTileComponent) continue; 
 				tile.drawEmbellishments(g,displayOption);
 			}
 		}
@@ -1319,6 +1316,7 @@ public class CenteredMapView extends JComponent {
 		private ChitDisplayOption displayOption;
 		
 		private JMenuItem flipTile; // used by GM tool
+		private JMenuItem removeTile; // used by GM tool
 		
 		private JCheckBoxMenuItem showCharacters;
 		private JCheckBoxMenuItem showMonsters;
@@ -1338,9 +1336,9 @@ public class CenteredMapView extends JComponent {
 		private TileLocation tileLocation;
 		private ClearingDetail clearing;
 		
-		public MapRightClickMenu(boolean enableRightClickFlip) {
+		public MapRightClickMenu(boolean enableGmFunctions) {
 			displayOption = new ChitDisplayOption();
-			initMenu(enableRightClickFlip);
+			initMenu(enableGmFunctions);
 		}
 		public void setTileLocation(TileLocation tl) {
 			tileLocation = tl;
@@ -1356,8 +1354,8 @@ public class CenteredMapView extends JComponent {
 			separator.setVisible(clearing!=null);
 			showClearingDetail.setVisible(clearing!=null);
 		}
-		private void initMenu(boolean enableRightClickFlip) {
-			if (enableRightClickFlip) {
+		private void initMenu(boolean enableGmFunctions) {
+			if (enableGmFunctions) {
 				flipTile = new JMenuItem("Flip Tile (GM)");
 				flipTile.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent ev) {
@@ -1366,7 +1364,25 @@ public class CenteredMapView extends JComponent {
 						redraw();
 					}
 				});
-				add(flipTile);
+				add(flipTile);				
+				removeTile = new JMenuItem("Remove Tile (GM)");
+				removeTile.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent ev) {
+						if (tileLocation==null) return;
+						GameObject tileGo = tileLocation.tile.getGameObject();
+						String position = tileGo.getAttribute("mapGrid","mapPosition");
+						int x = Integer.parseInt(position.split(",")[0]);
+						int y = Integer.parseInt(position.split(",")[1]);
+						Point point = new Point(x,y);
+						mapGrid.remove(point);
+						tileGo.removeThisAttribute(ClearingDetail.BL_CONNECT);
+						tileGo.removeAttribute("mapGrid","mapPosition");
+						currentTileLocation = null;
+						rebuildFromScratch();
+						mapReady = false;
+					}
+				});
+				add(removeTile);
 				add(new JSeparator());
 			}
 			

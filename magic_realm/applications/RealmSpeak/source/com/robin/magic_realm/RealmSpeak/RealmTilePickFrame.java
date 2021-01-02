@@ -121,13 +121,11 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 			// Reset treasure location monsters
 			RealmUtility.finishBoardSetupAfterBuild(hostPrefs,data);
-//System.out.println(gameHandler.getClient().getClientName()+": Map ready");
 		}
 		else {
 			if (go!=null) {
 				nextPlayer = go.getThisAttribute(Constants.PLAYER_TO_PLACE_NEXT);
 			}
-//System.out.println(gameHandler.getClient().getClientName()+": nextPlayer = "+nextPlayer);
 			game.setGameMapBuilder(nextPlayer);
 		}
 	}

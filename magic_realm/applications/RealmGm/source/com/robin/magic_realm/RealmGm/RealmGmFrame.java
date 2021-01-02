@@ -46,9 +46,6 @@ public class RealmGmFrame extends JFrame {
 	
 	private static final String ChitDisplayStyle = "CDS";
 	
-//	private static final String DefaultWidth = "DW";
-//	private static final String DefaultHeight = "DH";
-	
 	private PreferenceManager prefs;
 	private JDesktopPane desktop;
 	private RealmGameEditor editor;
@@ -76,15 +73,9 @@ public class RealmGmFrame extends JFrame {
 	public RealmGmFrame() {
 		prefs = new PreferenceManager("RealmSpeak","RealmGm");
 		prefs.loadPreferences();
-		if (!prefs.canLoad()) {
-			//prefs.set(DefaultWidth,800);
-			//prefs.set(DefaultHeight,600);
-		}
 		initComponents();
 	}
 	private void savePrefs() {
-		//prefs.set(DefaultWidth,getSize().width);
-		//prefs.set(DefaultHeight,getSize().height);
 		prefs.savePreferences();
 	}
 	private void initComponents() {
@@ -94,7 +85,6 @@ public class RealmGmFrame extends JFrame {
 		setTitle("RealmSpeak GM");
 		setIconImage(IconFactory.findIcon("images/badges/elvish_studies.gif").getImage());
 		setSize(1024,768);
-		//setSize(prefs.getInt(DefaultWidth),prefs.getInt(DefaultHeight));
 		setLocationRelativeTo(null);
 		
 		setJMenuBar(buildMenuBar());
@@ -356,10 +346,6 @@ public class RealmGmFrame extends JFrame {
 			gameData.zipFromFile(file);
 //			gameData.setTracksChanges(true);
 			addGame(FileUtilities.getFilename(file,true),gameData);
-			
-//			for (Iterator i=gameData.getObjectChanges().iterator();i.hasNext();) {
-//				System.out.println(i.next());
-//			}
 		}
 		updateControls();
 	}

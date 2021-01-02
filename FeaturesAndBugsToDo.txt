@@ -1,5 +1,6 @@
 new bat files for running: GameBuilderFrame, RealmViewer, TileEditFrame
 MagicRealmData.xml in "data" folder to reference?!
+test: Custom images for gameData file in folder?
 
 What about a controlled monster luring/deploying against your hirelings?
 Extended Treachery:  luring/deploying against their own group triggers the same consequences

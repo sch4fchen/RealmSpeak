@@ -717,10 +717,8 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		if (playerNames.size() > 0) { // FIXME for now
 			// Randomize playerNames here?
 
-			// If more than one player, then assign tiles randomly to each
-			// player
-			// Find player with borderland, and activate (how?) for placing
-			// tiles
+			// If more than one player, then assign tiles randomly to each player
+			// Find player with borderland, and activate (how?) for placing tiles
 			ArrayList tileObjects = new ArrayList(RealmObjectMaster.getRealmObjectMaster(client.getGameData()).getTileObjects());
 			int nameIndex = 0;
 			String playerName = (String) playerNames.get(nameIndex);
@@ -743,8 +741,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		}
 		else {
 			// If a single player, assign no tiles, and activate.
-			// An active player with no tiles, but tiles left to place, will get
-			// a random tile.
+			// An active player with no tiles, but tiles left to place, will get a random tile.
 			game.setGameMapBuilder((String) playerNames.iterator().next());
 		}
 
