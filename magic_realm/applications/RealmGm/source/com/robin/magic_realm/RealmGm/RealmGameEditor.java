@@ -28,16 +28,21 @@ import javax.swing.table.AbstractTableModel;
 
 import com.robin.game.objects.*;
 import com.robin.general.swing.ComponentTools;
+import com.robin.general.swing.IconFactory;
+import com.robin.general.swing.ListChooser;
 import com.robin.general.swing.TableSorter;
 import com.robin.magic_realm.RealmBattle.BattlesWrapper;
 import com.robin.magic_realm.RealmBattle.RealmBattle;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.quest.Quest;
+import com.robin.magic_realm.components.quest.QuestLoader;
 import com.robin.magic_realm.components.swing.*;
 import com.robin.magic_realm.components.table.Loot;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
+import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class RealmGameEditor extends JInternalFrame {
 	
@@ -53,8 +58,10 @@ public class RealmGameEditor extends JInternalFrame {
 	private ArrayList<RealmComponent> thingsWithLocations;
 	private ArrayList<RealmComponent> thingsWithLocationsFiltered;
 	private ArrayList<TileComponent> tiles;
+	private ArrayList<Quest> quests;
 	
 	private JTable locationTable;
+	private JTable questTable;
 	private JButton showChanges;
 	private JButton revertChanges;
 	
@@ -82,6 +89,13 @@ public class RealmGameEditor extends JInternalFrame {
 	private Action makeDamaged;
 	private Action makeRepaired;
 	private Action toggleAlerted;
+	
+	// Quests
+	private Action addQuest;
+	private Action removeQuest;
+	private Action assignQuest;
+	private Action unassignQuest;
+	private Action resetQuest;
 	
 	public RealmGameEditor(RealmGmFrame frame,String title,GameData gameData) {
 		super(title,true,true,true,true);
@@ -236,6 +250,11 @@ public class RealmGameEditor extends JInternalFrame {
 		map.setScale(0.5);
 		map.centerMap();
 		tabs.add("Map",map);
+		
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
+		if (hostPrefs.isUsingQuests()) {
+			tabs.add("Quests",buildQuestTab(hostPrefs.isUsingBookOfQuests()==true ? Constants.QuestDeckMode.BoQ : Constants.QuestDeckMode.QtR));
+		}
 		add(tabs,BorderLayout.CENTER);
 		Box box = Box.createHorizontalBox();
 		revertChanges = new JButton("Revert Changes");
@@ -857,6 +876,213 @@ public class RealmGameEditor extends JInternalFrame {
 				return chit.getName()+" (battling)";
 			}
 			return chit.getName();
+		}
+	}
+	
+	private JPanel buildQuestTab(Constants.QuestDeckMode mode) {
+		ArrayList<Quest> quests = new ArrayList<Quest>();
+		GamePool pool = new GamePool(gameData.getGameObjects());
+    	for(GameObject go:pool.find("quest")) {
+    		quests.add(new Quest(go));
+    	}		
+    	this.quests = quests;
+		JPanel panel = new JPanel(new BorderLayout());
+		questTable = new JTable(new DeckTableModel(mode));
+		TableSorter.makeSortable(questTable);
+		ComponentTools.lockColumnWidth(questTable,0,40);
+		ComponentTools.lockColumnWidth(questTable,1,40);
+		ComponentTools.lockColumnWidth(questTable,2,50);
+		ComponentTools.lockColumnWidth(questTable,3,40);
+		
+		JPanel toolbar = new JPanel(new BorderLayout());
+		JPanel controls = new JPanel(new GridLayout(2,1));
+		controls.add(buildQuestToolbar());
+		toolbar.add(controls);
+		panel.add(toolbar,BorderLayout.NORTH);
+		
+		panel.add(new JScrollPane(questTable),BorderLayout.CENTER);
+		return panel;		
+	}
+	
+	private Box buildQuestToolbar() {
+		Box box = Box.createHorizontalBox();
+		box.add(new JLabel("Actions:"));
+		addQuest = new AbstractAction("Add") {
+			public void actionPerformed(ActionEvent ev) {
+				ArrayList<Quest> quests = QuestLoader.loadAllQuestsFromQuestFolder();
+				Hashtable<String, Quest> hash = new Hashtable<String, Quest>();
+				ArrayList<String> questList = new ArrayList<String>();
+					for (Quest quest : quests) {
+						questList.add(quest.getName());				
+						hash.put(quest.getName(), quest);
+					}
+				ListChooser chooser = new ListChooser(new JFrame(), "Select a quest:", quests);
+				chooser.setDoubleClickEnabled(true);
+				chooser.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+				chooser.setLocationRelativeTo(parent);
+				chooser.setVisible(true);
+				Vector<Quest> v = chooser.getSelectedItems();
+				if (v == null || v.isEmpty()) return;
+				Quest selectedQuest = v.get(0);
+				gameData.createNewObject(selectedQuest.getGameObject());
+				updateQuestTable();
+			}
+		};
+		box.add(new JButton(addQuest));
+		removeQuest = new AbstractAction("Remove") {
+			public void actionPerformed(ActionEvent ev) {
+				ArrayList<Quest> quests = getSelectedQuest();
+				for (Quest quest : quests) {
+					quest.unassign();
+					gameData.removeObject(quest.getGameObject());
+				}
+				updateQuestTable();
+			}
+		};
+		box.add(new JButton(removeQuest));
+		assignQuest = new AbstractAction("Assign") {
+			public void actionPerformed(ActionEvent ev) {
+				Hashtable<String, CharacterWrapper> hash = new Hashtable<String, CharacterWrapper>();
+				ListChooser chooser = new ListChooser(new JFrame(), "Select a character:", characters);
+				chooser.setDoubleClickEnabled(true);
+				chooser.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+				chooser.setLocationRelativeTo(parent);
+				chooser.setVisible(true);
+				Vector<CharacterWrapper> v = chooser.getSelectedItems();
+				if (v == null || v.isEmpty()) return;
+				CharacterWrapper selectedCharacter = v.get(0);
+				ArrayList<Quest> quests = getSelectedQuest();
+				for (Quest quest : quests) {
+					quest.setOwner(selectedCharacter);
+				}
+				updateQuestTable();
+			}
+		};
+		box.add(new JButton(assignQuest));
+		unassignQuest = new AbstractAction("Unassign") {
+			public void actionPerformed(ActionEvent ev) {
+				ArrayList<Quest> quests = getSelectedQuest();
+				for (Quest quest : quests) {
+					quest.unassign();
+				}
+				updateQuestTable();
+			}
+		};
+		box.add(new JButton(unassignQuest));
+		resetQuest = new AbstractAction("Reset") {
+			public void actionPerformed(ActionEvent ev) {
+				ArrayList<Quest> quests = getSelectedQuest();
+				for (Quest quest : quests) {
+					quest.reset();
+				}
+				updateQuestTable();
+			}
+		};
+		box.add(new JButton(resetQuest));
+		return box;
+	}
+	private void updateQuestTable() {
+		ArrayList<Quest> quests = new ArrayList<Quest>();
+		GamePool pool = new GamePool(gameData.getGameObjects());
+    	for(GameObject go:pool.find("quest")) {
+    		quests.add(new Quest(go));
+    	}		
+    	this.quests = quests;
+    	questTable.clearSelection();
+    	questTable.revalidate();
+    	questTable.repaint();
+	}
+	private ArrayList<Quest> getSelectedQuest() {
+		ArrayList<Quest> selected = new ArrayList<Quest>();
+		TableSorter sorter = TableSorter.getSorter(questTable);
+		for (int row:questTable.getSelectedRows()) {
+			int index = sorter.convertRowIndexToModel(row);
+			selected.add(quests.get(index));
+		}
+		return selected;
+	}
+	private class DeckTableModel extends AbstractTableModel {
+		public DeckTableModel(Constants.QuestDeckMode mode) {
+			this.mode = mode;
+		}
+		private Constants.QuestDeckMode mode;
+		
+		ImageIcon test = IconFactory.findIcon("icons/search.gif");
+		ImageIcon cross = IconFactory.findIcon("icons/cross.gif");
+		ImageIcon check = IconFactory.findIcon("icons/check.gif");
+		ImageIcon plus = IconFactory.findIcon("icons/plus.gif");
+		
+		private String[] HEADER_QtR = {
+			"TEST",
+			"BAD",
+			"ALL",
+			"ACT",
+			"Name",
+			"Character",
+			"State"
+		};
+		private String[] HEADER_BoQ = {
+				"TEST",
+				"BAD",
+				"EVENT",
+				"ACT",
+				"Name",
+				"Character",
+				"State"
+		};
+		private Class[] CLASS = {
+			ImageIcon.class,
+			ImageIcon.class,
+			ImageIcon.class,
+			ImageIcon.class,
+			String.class,
+			String.class,
+			String.class
+		};
+		public int getColumnCount() {
+			switch (mode) {
+				default:
+				case QtR:
+					return HEADER_QtR.length;
+				case BoQ:
+					return HEADER_BoQ.length;
+			}
+		}	
+		public Class getColumnClass(int col) {
+			return CLASS[col];
+		}
+		public String getColumnName(int col) {
+			switch (mode) {
+				default:
+				case QtR:
+					return HEADER_QtR[col];
+				case BoQ:
+					return HEADER_BoQ[col];
+				}
+		}
+		public int getRowCount() {
+			return quests.size();
+		}
+		public Object getValueAt(int rowIndex, int columnIndex) {
+			if (rowIndex<getRowCount()) {
+				Quest quest = quests.get(rowIndex);
+				switch(columnIndex) {
+					case 0:		return quest.isTesting()?test:null;
+					case 1:		return quest.isBroken()?cross:null;
+					case 2:			
+						switch (mode) {
+							case QtR:
+								return quest.isAllPlay()?check:null;
+							case BoQ:
+								return quest.isEvent()?check:null;
+						}
+					case 3:		return quest.isActivateable()?plus:null;
+					case 4:		return quest.getName();
+					case 5:		return quest.getOwner()==null?null:quest.getOwner().getPlayerName()+" ("+quest.getOwner().getName()+")";
+					case 6:		return quest.getState();
+				}
+			}
+			return null;
 		}
 	}
 }

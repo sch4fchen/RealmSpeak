@@ -174,7 +174,7 @@ public class Quest extends GameObjectWrapper {
 		return found;
 	}
 
-	private void setOwner(CharacterWrapper owner) {
+	public void setOwner(CharacterWrapper owner) {
 		setString(QUEST_OWNER, owner.getGameObject().getStringId());
 	}
 
@@ -191,6 +191,11 @@ public class Quest extends GameObjectWrapper {
 		if (character != null) {
 			character.removeQuest(this);
 		}
+	}
+	
+	public void unassign() {
+		removeFromOwner();
+		clear(QUEST_OWNER);
 	}
 
 	public String toString() {

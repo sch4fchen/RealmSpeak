@@ -1133,8 +1133,7 @@ public class QuestTesterFrame extends JFrame {
 		for (String kv : keyVals) {
 			for (GameObject thing : pool.find(kv)) {
 				String itemKey = getKey(thing);
-				if (hash.containsKey(itemKey))
-					continue;
+				if (hash.containsKey(itemKey)) continue;
 				chitList.add(itemKey);
 				hash.put(itemKey, thing);
 			}
