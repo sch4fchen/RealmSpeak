@@ -23,6 +23,7 @@ NEW FEATURES:
 # Realm GM: Option to change game options/rules
 # Realm GM: Option to add and remove tiles
 # Realm GM: Quest table incl. adding, removing, assigning, unassigning and resetting quests
+# New character ability: Extra move cost for non-cave clearings
 BUGS/ISSUES:
 # Fix companion Imp casting curse on monster
 

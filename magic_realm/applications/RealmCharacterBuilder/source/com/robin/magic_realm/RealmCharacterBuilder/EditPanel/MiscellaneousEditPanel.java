@@ -47,6 +47,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 	};
 	private static String[][] NEW_MISC_ADVANTAGE = {
 		{"-1 Mountain MOVE Cost",Constants.MOUNTAIN_MOVE_ADJ,"-1"},
+		{"+1 Non-Cave MOVE Cost",Constants.NONCAVE_MOVE_DISADVANTAGE,""},
 		{"Effort Limit of 3",Constants.EFFORT_LIMIT,"3"},
 		{"FIGHT chits without a weapon do full harm",Constants.FIGHT_NO_WEAPON,""},
 		{"No need to record your turn.",Constants.DAYTIME_ACTIONS,""},
