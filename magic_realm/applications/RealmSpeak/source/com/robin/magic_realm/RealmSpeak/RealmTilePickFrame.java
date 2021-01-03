@@ -50,7 +50,7 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 	
 	private JTable tilePickTable;
 	private TilePickTableModel tilePickModel;
-	private ArrayList tilesToAdd;
+	private ArrayList<GameObject> tilesToAdd;
 	
 	private JLabel instruction;
 	private boolean canPlace = false;
@@ -68,7 +68,7 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 		this.game = game;
 		this.map = map;
 		
-		tilesToAdd = new ArrayList();
+		tilesToAdd = new ArrayList<GameObject>();
 		tilePickModel = new TilePickTableModel();
 		
 		refreshTiles();
@@ -82,7 +82,7 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 		
 		// Find tiles (if any) that are to be distributed
 		GamePool pool = new GamePool(RealmObjectMaster.getRealmObjectMaster(gameHandler.getClient().getGameData()).getTileObjects());
-		Collection tiles = pool.find(Constants.PLAYER_TO_PLACE+"="+gameHandler.getClient().getClientName());
+		ArrayList<GameObject> tiles = pool.find(Constants.PLAYER_TO_PLACE+"="+gameHandler.getClient().getClientName());
 		tilesToAdd.addAll(tiles);
 		
 		// Determine solePlayer:
@@ -351,9 +351,9 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 		public TilePickTableModel() {
 			cache = new Hashtable<GameObject,ImageIcon[]>();
 		}
-		public ArrayList getData() {
+		public ArrayList<GameObject> getData() {
 			if (solePlayer) {
-				ArrayList list = new ArrayList();
+				ArrayList<GameObject> list = new ArrayList<GameObject>();
 				if (solePlayerIndex>=0) {
 					list.add(tilesToAdd.get(solePlayerIndex));
 				}

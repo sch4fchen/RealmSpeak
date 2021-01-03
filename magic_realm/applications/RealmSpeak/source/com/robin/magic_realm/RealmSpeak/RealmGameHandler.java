@@ -1923,13 +1923,10 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				parent.addFrameToDesktop(tilePickFrame);
 			}
 		}
-		else {
-			if (tilePickFrame != null) {
-				getInspector().getMap().updateGrid(); // Guarantee that the map
-														// is built properly
+		else if (tilePickFrame != null) {
+				getInspector().getMap().updateGrid(); // Guarantee that the map is built properly
 				parent.removeFrameFromDesktop(tilePickFrame);
 				tilePickFrame = null;
-			}
 		}
 		if (tilePickFrame != null) {
 			// tilePickFrame.refreshPlaceables();

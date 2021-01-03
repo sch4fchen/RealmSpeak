@@ -20,6 +20,7 @@ NEW FEATURES:
 # Option to launch tools from RealmSpeak (tool menu): GM, CharacterBuilder, QuestBuilder, GameBuilder, TileEditor, RealmViewer
 # Bat files for running tools directly
 # Realm GM: Option to change game options/rules
+# Realm GM: Option to add and remove tiles
 BUGS/ISSUES:
 # Fix companion Imp casting curse on monster
 
