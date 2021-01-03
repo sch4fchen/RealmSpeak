@@ -1,11 +1,5 @@
 What about a controlled monster luring/deploying against your hirelings?
 Extended Treachery:  luring/deploying against their own group triggers the same consequences
-
-::Scenarios Feature::
-RealmSpeak + GM: save game as scenario (with scenario name and description), have a different file extension
-RealSpeak: Load scenarios (overview with names and descriptions), list game options
-Shuffle components Flag in gameData when saving scenario: Shuffle when loading
-
 0001358: Monster Roll per Set
 0001797: Feature Request - BOQ Two Handed Weapon Opt Rules
 Expansion 1: Parry
@@ -36,6 +30,10 @@ Expansion 1: More Ambushes
 0001232: Flying Activities: Optional Rule # 3: Flying Activities.
 Should always be safe at guilds, if you are a member (from monsters and natives)
 Minotaur buckler not really implemented as I would like:  it should be able to block hits...
+::Scenarios Feature::
+RealmSpeak + GM: save game as scenario (with scenario name and description), have a different file extension
+RealSpeak: Load scenarios (overview with names and descriptions), list game options
+Shuffle components Flag in gameData when saving scenario: Shuffle when loading
 ---:::BUGS:::---
 Wizard advancement - didn't get MOVE M5->MAGIC III
 0001879: Color magic fatigue counted against character when used in encounter step to energize a spell
