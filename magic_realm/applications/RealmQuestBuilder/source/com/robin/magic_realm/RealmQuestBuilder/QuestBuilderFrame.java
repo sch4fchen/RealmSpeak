@@ -482,7 +482,7 @@ public class QuestBuilderFrame extends JFrame {
 		JMenuItem viewDeckItemQtR = new JMenuItem("View Quest Cards Deck for QtR");
 		viewDeckItemQtR.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				viewDeck(QuestDeckViewer.DeckMode.QtR);
+				viewDeck(Constants.QuestDeckMode.QtR);
 			}
 		});
 		viewDeckItemQtR.setMnemonic(KeyEvent.VK_V);
@@ -491,7 +491,7 @@ public class QuestBuilderFrame extends JFrame {
 		JMenuItem viewDeckItemBoQ = new JMenuItem("View Quest Cards Deck for BoQ");
 		viewDeckItemBoQ.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				viewDeck(QuestDeckViewer.DeckMode.BoQ);
+				viewDeck(Constants.QuestDeckMode.BoQ);
 			}
 		});
 		viewDeckItemBoQ.setMnemonic(KeyEvent.VK_B);
@@ -527,7 +527,7 @@ public class QuestBuilderFrame extends JFrame {
 		}
 	}
 
-	private void viewDeck(QuestDeckViewer.DeckMode mode) {
+	private void viewDeck(Constants.QuestDeckMode mode) {
 		System.setProperty("questFolder", lastQuestFilePath.getAbsolutePath());
 		ArrayList<Quest> quests = QuestLoader.loadAllQuestsFromQuestFolder();
 		ArrayList<Quest> questCards = new ArrayList<Quest>();

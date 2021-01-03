@@ -507,7 +507,11 @@ public class Constants {
 	// Quests
 	public static final String QST_BOOK_OF_QUESTS = "BookOfQuests";
 	public static final String QST_QUEST_CARDS = "QuestingTheRealm";
-	public static final String QST_GUILD_QUESTS = "GuildQuests";
+	public static final String QST_GUILD_QUESTS = "GuildQuests";	
+	public enum QuestDeckMode {
+		QtR,
+		BoQ
+	}
 	
 	public static final Stroke THICK_STROKE = new BasicStroke(3);
 	public static final String TORCH_BEARER = "torch_bearer";

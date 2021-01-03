@@ -26,20 +26,16 @@ import javax.swing.table.AbstractTableModel;
 
 import com.robin.general.swing.*;
 import com.robin.magic_realm.components.quest.*;
+import com.robin.magic_realm.components.utility.Constants;
 
-public class QuestDeckViewer extends AggressiveDialog {
-	public enum DeckMode {
-		QtR,
-		BoQ
-	}
-	
+public class QuestDeckViewer extends AggressiveDialog {	
 	JTable table;
-	private DeckMode mode;
+	private Constants.QuestDeckMode mode;
 	private ArrayList<Quest> quests;
 	private int totalVPs=0;
 	private int deckCards=0;
 	private Quest selectedQuest;
-	public QuestDeckViewer(JFrame frame, ArrayList<Quest> input, DeckMode mode) {
+	public QuestDeckViewer(JFrame frame, ArrayList<Quest> input, Constants.QuestDeckMode mode) {
 		super(frame, "Quest Deck", true);
 		this.quests = input;
 		this.mode = mode;
@@ -89,7 +85,7 @@ public class QuestDeckViewer extends AggressiveDialog {
 		ComponentTools.lockColumnWidth(table,2,50);
 		ComponentTools.lockColumnWidth(table,3,40);
 		ComponentTools.lockColumnWidth(table,5,200);
-		if (mode == DeckMode.QtR) {
+		if (mode == Constants.QuestDeckMode.QtR) {
 			ComponentTools.lockColumnWidth(table,6,50);
 			ComponentTools.lockColumnWidth(table,7,40);
 			ComponentTools.lockColumnWidth(table,8,60);
