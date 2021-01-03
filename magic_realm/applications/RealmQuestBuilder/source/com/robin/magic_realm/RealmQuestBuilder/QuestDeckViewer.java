@@ -28,31 +28,51 @@ import com.robin.general.swing.*;
 import com.robin.magic_realm.components.quest.*;
 
 public class QuestDeckViewer extends AggressiveDialog {
+	public enum DeckMode {
+		QtR,
+		BoQ
+	}
+	
 	JTable table;
+	private DeckMode mode;
 	private ArrayList<Quest> quests;
 	private int totalVPs=0;
 	private int deckCards=0;
 	private Quest selectedQuest;
-	public QuestDeckViewer(JFrame frame, ArrayList<Quest> input) {
+	public QuestDeckViewer(JFrame frame, ArrayList<Quest> input, DeckMode mode) {
 		super(frame, "Quest Deck", true);
 		this.quests = input;
+		this.mode = mode;
 		setLayout(new BorderLayout());
 		setSize(800,600);
 		
 		int allPlayCount = 0;
+		int eventCount = 0;
 		totalVPs=0;
 		deckCards=0;
-		for(Quest quest:quests) {
-			int count = quest.getInt(QuestConstants.CARD_COUNT);
-			if (quest.isAllPlay()) {
-				allPlayCount += count;
-			}
-			else {
-				deckCards += count;
-			}
-			totalVPs += (quest.getInt(QuestConstants.VP_REWARD)*count);
+		switch (mode) {
+			case QtR:
+				for(Quest quest:quests) {
+					int count = quest.getInt(QuestConstants.CARD_COUNT);
+					if (quest.isAllPlay()) {
+						allPlayCount += count;
+					}
+					else {
+						deckCards += count;
+					}
+					totalVPs += (quest.getInt(QuestConstants.VP_REWARD)*count);
+				}
+			case BoQ:
+				for(Quest quest:quests) {
+					if (quest.isEvent()) {
+						eventCount ++;
+					}
+					else {
+						deckCards ++;
+					}
+				}
 		}
-		
+
 		table = new JTable(new DeckTableModel());
 		table.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent ev) {
@@ -66,22 +86,32 @@ public class QuestDeckViewer extends AggressiveDialog {
 		TableSorter.makeSortable(table);
 		ComponentTools.lockColumnWidth(table,0,40);
 		ComponentTools.lockColumnWidth(table,1,40);
-		ComponentTools.lockColumnWidth(table,2,40);
+		ComponentTools.lockColumnWidth(table,2,50);
 		ComponentTools.lockColumnWidth(table,3,40);
 		ComponentTools.lockColumnWidth(table,5,200);
-		ComponentTools.lockColumnWidth(table,6,50);
-		ComponentTools.lockColumnWidth(table,7,40);
-		ComponentTools.lockColumnWidth(table,8,60);
+		if (mode == DeckMode.QtR) {
+			ComponentTools.lockColumnWidth(table,6,50);
+			ComponentTools.lockColumnWidth(table,7,40);
+			ComponentTools.lockColumnWidth(table,8,60);
+		}
 		add(new JScrollPane(table),BorderLayout.CENTER);
 		
 		Box box = Box.createHorizontalBox();
 		box.add(Box.createHorizontalGlue());
 		box.add(new JLabel("Deck Cards: "+deckCards));
 		box.add(Box.createHorizontalGlue());
-		box.add(new JLabel("All Play Cards: "+allPlayCount));
-		box.add(Box.createHorizontalGlue());
-		box.add(new JLabel("Total VPs: "+totalVPs));
-		box.add(Box.createHorizontalGlue());
+		switch (mode) {
+			case QtR:
+				box.add(new JLabel("All Play Cards: "+allPlayCount));
+				box.add(Box.createHorizontalGlue());
+				box.add(new JLabel("Total VPs: "+totalVPs));
+				box.add(Box.createHorizontalGlue());
+				break;
+			case BoQ:
+				box.add(new JLabel("Events: "+eventCount));
+				box.add(Box.createHorizontalGlue());
+				break;
+		}
 		JButton close = new JButton("Close");
 		close.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
@@ -96,7 +126,7 @@ public class QuestDeckViewer extends AggressiveDialog {
 	public Quest getSelectedQuest() {
 		return selectedQuest;
 	}
-	private static String[] HEADER = {
+	private static String[] HEADER_QtR = {
 		"TEST",
 		"BAD",
 		"ALL",
@@ -105,8 +135,16 @@ public class QuestDeckViewer extends AggressiveDialog {
 		"Minor Characters",
 		"Count",
 		"VPs",
-		"% Draw",
+		"% Draw"
 	};
+	private static String[] HEADER_BoQ = {
+			"TEST",
+			"BAD",
+			"EVENT",
+			"ACT",
+			"Name",
+			"Minor Characters"
+		};
 	private static Class[] CLASS = {
 		ImageIcon.class,
 		ImageIcon.class,
@@ -127,7 +165,13 @@ public class QuestDeckViewer extends AggressiveDialog {
 		}
 
 		public int getColumnCount() {
-			return HEADER.length;
+			switch (mode) {
+				default:
+				case QtR:
+					return HEADER_QtR.length;
+				case BoQ:
+					return HEADER_BoQ.length;
+			}
 		}
 		
 		public Class getColumnClass(int col) {
@@ -135,7 +179,13 @@ public class QuestDeckViewer extends AggressiveDialog {
 		}
 		
 		public String getColumnName(int col) {
-			return HEADER[col];
+			switch (mode) {
+				default:
+				case QtR:
+					return HEADER_QtR[col];
+				case BoQ:
+					return HEADER_BoQ[col];
+				}
 		}
 
 		public int getRowCount() {
@@ -148,7 +198,13 @@ public class QuestDeckViewer extends AggressiveDialog {
 				switch(columnIndex) {
 					case 0:			return quest.isTesting()?test:null;
 					case 1:			return quest.isBroken()?cross:null;
-					case 2:			return quest.isAllPlay()?check:null;
+					case 2:			
+						switch (mode) {
+							case QtR:
+								return quest.isAllPlay()?check:null;
+							case BoQ:
+								return quest.isEvent()?check:null;
+						}
 					case 3:			return quest.isActivateable()?plus:null;
 					case 4:			return quest.getName();
 					case 5:			return getMinorCharacters(quest);

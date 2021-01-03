@@ -479,15 +479,25 @@ public class QuestBuilderFrame extends JFrame {
 		menuBar.add(fileMenu);
 
 		JMenu toolsMenu = new JMenu("Tools");
-		JMenuItem viewDeckItem = new JMenuItem("View Quest Cards Deck");
-		viewDeckItem.addActionListener(new ActionListener() {
+		JMenuItem viewDeckItemQtR = new JMenuItem("View Quest Cards Deck for QtR");
+		viewDeckItemQtR.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				viewDeck();
+				viewDeck(QuestDeckViewer.DeckMode.QtR);
 			}
 		});
-		viewDeckItem.setMnemonic(KeyEvent.VK_V);
-		viewDeckItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.CTRL_MASK | InputEvent.SHIFT_MASK));
-		toolsMenu.add(viewDeckItem);
+		viewDeckItemQtR.setMnemonic(KeyEvent.VK_V);
+		viewDeckItemQtR.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.CTRL_MASK | InputEvent.SHIFT_MASK));
+		toolsMenu.add(viewDeckItemQtR);
+		JMenuItem viewDeckItemBoQ = new JMenuItem("View Quest Cards Deck for BoQ");
+		viewDeckItemBoQ.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				viewDeck(QuestDeckViewer.DeckMode.BoQ);
+			}
+		});
+		viewDeckItemBoQ.setMnemonic(KeyEvent.VK_B);
+		viewDeckItemBoQ.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, InputEvent.CTRL_MASK | InputEvent.SHIFT_MASK));
+		toolsMenu.add(viewDeckItemBoQ);
+		
 		toolsMenu.add(new JSeparator());
 		JMenuItem launchQuestTesterItem = new JMenuItem("Test Quest");
 		launchQuestTesterItem.addActionListener(new ActionListener() {
@@ -517,16 +527,27 @@ public class QuestBuilderFrame extends JFrame {
 		}
 	}
 
-	private void viewDeck() {
+	private void viewDeck(QuestDeckViewer.DeckMode mode) {
 		System.setProperty("questFolder", lastQuestFilePath.getAbsolutePath());
 		ArrayList<Quest> quests = QuestLoader.loadAllQuestsFromQuestFolder();
 		ArrayList<Quest> questCards = new ArrayList<Quest>();
-		for (Quest quest : quests) {
-			if (quest.getBoolean(QuestConstants.WORKS_WITH_QTR)) {
-				questCards.add(quest);
+		switch (mode) {
+		case QtR:
+			for (Quest quest : quests) {
+				if (quest.getBoolean(QuestConstants.WORKS_WITH_QTR)) {
+					questCards.add(quest);
+				}
 			}
+			break;
+		case BoQ:
+			for (Quest quest : quests) {
+				if (quest.getBoolean(QuestConstants.WORKS_WITH_BOQ)) {
+					questCards.add(quest);
+				}
+			}
+			break;
 		}
-		QuestDeckViewer viewer = new QuestDeckViewer(this, questCards);
+		QuestDeckViewer viewer = new QuestDeckViewer(this, questCards, mode);
 		viewer.setLocationRelativeTo(this);
 		viewer.setVisible(true);
 		
