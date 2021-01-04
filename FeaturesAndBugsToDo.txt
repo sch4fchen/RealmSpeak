@@ -1,7 +1,17 @@
+GameEditor: default: (through RS and bat): magicRealmData
+GameEditor through RS: open custom XML
+
+TileEditor: DisplayStyle
+RealmViewer: open XML file
+CharacterBuilder: open XML file
+QuestBuilder: open XML file
+
+Fix alternative tiles
+
 What about a controlled monster luring/deploying against your hirelings?
 Extended Treachery:  luring/deploying against their own group triggers the same consequences
 
-Existing optional rule as ability: Serious wounds, Ambushes, Enchanted Magic + Revised enchanted Magic, Benevolent spells, Enchanted artifacts and spell books, NOT fumble, NOT stumble, Penetrating Armor (against your target), Bounty points for discoveries, Birdsong rearrangement, Extra shelters, Snow hiding in cave 
+Existing optional rules as abilities: Serious wounds, Ambushes, Enchanted Magic + Revised enchanted Magic, Benevolent spells, Enchanted artifacts and spell books, NOT fumble, NOT stumble, Penetrating Armor (against your target), Bounty points for discoveries, Birdsong rearrangement, Extra shelters, Snow hiding in cave 
 0001358: Monster Roll per Set
 0001797: Feature Request - BOQ Two Handed Weapon Opt Rules
 Expansion 1: Parry + Ability: Parry

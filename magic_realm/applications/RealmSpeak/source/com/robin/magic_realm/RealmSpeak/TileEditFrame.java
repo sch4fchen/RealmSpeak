@@ -756,7 +756,8 @@ public class TileEditFrame extends JFrame {
 		JMenuItem openGameData = new JMenuItem("Open Game Data");
 		openGameData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				setGameDataFile();
+				boolean gameLoaded = setGameDataFile();
+				if (!gameLoaded) return;
 				GameData data = new GameData();
 				data.loadFromPath(RealmLoader.DATA_PATH);
 				updateGameData(data);
@@ -768,13 +769,15 @@ public class TileEditFrame extends JFrame {
 
 		return menuBar;
 	}
-	private void setGameDataFile() {
+	private boolean setGameDataFile() {
 		JFileChooser chooser = new JFileChooser(new File("./"));
 		chooser.setAcceptAllFileFilterUsed(false);
 		chooser.setFileFilter(GameFileFilters.createGameDataFileFilter());
 		if (chooser.showOpenDialog(this)==JFileChooser.APPROVE_OPTION) {
 			RealmLoader.DATA_PATH = chooser.getSelectedFile().toPath().toString();
+			return true;
 		}
+		return false;
 	}
 	private void updateGameData(GameData data) {
 		this.data = data;

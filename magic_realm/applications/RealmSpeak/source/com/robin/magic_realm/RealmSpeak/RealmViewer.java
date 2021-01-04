@@ -76,10 +76,10 @@ public class RealmViewer extends JFrame {
 		
 		// Add the summonables
 		JFrame dummy = new JFrame();
-		CharacterWrapper amazon = new CharacterWrapper(data.getGameObjectByName("Amazon"));
-		list.addAll((new RaiseDead(dummy)).getOneOfEach(amazon));
-		list.addAll((new SummonAnimal(dummy)).getOneOfEach(amazon));
-		list.addAll((new SummonElemental(dummy)).getOneOfEach(amazon));
+		CharacterWrapper character = new CharacterWrapper(pool.findFirst("character"));
+		list.addAll((new RaiseDead(dummy)).getOneOfEach(character));
+		list.addAll((new SummonAnimal(dummy)).getOneOfEach(character));
+		list.addAll((new SummonElemental(dummy)).getOneOfEach(character));
 		
 		MonsterCreator mc = new MonsterCreator("test");
 		list.add(SetupCardUtility.createBlob(mc,data));
