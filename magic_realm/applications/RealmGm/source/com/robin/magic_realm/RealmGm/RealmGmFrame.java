@@ -37,6 +37,7 @@ import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderModel;
 import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.swing.HostGameSetupDialog;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.utility.GameFileFilters;
 import com.robin.magic_realm.components.utility.RealmUtility;
 
 public class RealmGmFrame extends JFrame {
@@ -60,15 +61,7 @@ public class RealmGmFrame extends JFrame {
 	private JRadioButton frenzelChitsOption;
 	private JButton gameOptions;
 	
-	protected FileFilter saveGameFileFilter = new FileFilter() {
-		public boolean accept(File f) {
-			return f.isDirectory() || (f.isFile() && f.getPath().endsWith("rsgame"));
-		}
-
-		public String getDescription() {
-			return "RealmSpeak Save Files (*.rsgame)";
-		}
-	};
+	protected FileFilter saveGameFileFilter = GameFileFilters.createSaveGameFileFilter();
 	
 	public RealmGmFrame() {
 		prefs = new PreferenceManager("RealmSpeak","RealmGm");

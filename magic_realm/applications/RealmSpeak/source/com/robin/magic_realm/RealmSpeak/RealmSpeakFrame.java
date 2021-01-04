@@ -107,25 +107,8 @@ public class RealmSpeakFrame extends JFrame {
 	
 	protected FileManager exportHTMLFileManager;
 	
-	protected FileFilter saveGameFileFilter = new FileFilter() {
-		public boolean accept(File f) {
-			return f.isDirectory() || (f.isFile() && f.getPath().endsWith("rsgame"));
-		}
-
-		public String getDescription() {
-			return "RealmSpeak Save Files (*.rsgame)";
-		}
-	};
-	
-	protected FileFilter gameDataFileFilter = new FileFilter() {
-		public boolean accept(File f) {
-			return f.isDirectory() || (f.isFile() && f.getPath().endsWith("xml"));
-		}
-
-		public String getDescription() {
-			return "RealmSpeak Game Files (*.xml)";
-		}
-	};
+	protected FileFilter saveGameFileFilter = GameFileFilters.createSaveGameFileFilter();
+	protected FileFilter gameDataFileFilter = GameFileFilters.createGameDataFileFilter();
 	
 	protected JMenuBar menu;
 		protected JMenu fileMenu;

@@ -12,18 +12,20 @@ QUEST UPDATE:
 NEW FEATURES:
 # New season option: Unpredictable weather (BoQ variant)
 # New game option: Additional Bounty points for discoveries (BoQ variant)
+# New character ability: Extra move cost for non-cave clearings
 # Option to set custom amount of VPs for timed mode
 # Ending a game early shows endgame scoring 
 # Ending a game early disables actions for the characters
 # Icons added to different windows
 # Restructuring optional rules reflecting 3rd edition rulebook
 # Option to set custom GameData file
+TOOLS
 # Option to launch tools from RealmSpeak (tool menu): GM, CharacterBuilder, QuestBuilder, GameBuilder, TileEditor, RealmViewer
 # Bat files for running tools directly
 # Realm GM: Option to change game options/rules
 # Realm GM: Option to add and remove tiles
 # Realm GM: Quest table incl. adding, removing, assigning, unassigning and resetting quests
-# New character ability: Extra move cost for non-cave clearings
+# TileEditor: Option to load different game data file
 BUGS/ISSUES:
 # Fix companion Imp casting curse on monster
 

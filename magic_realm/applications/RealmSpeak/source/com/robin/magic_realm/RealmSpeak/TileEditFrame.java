@@ -41,6 +41,8 @@ import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.PathDetail;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.TileEditComponent;
+import com.robin.magic_realm.components.utility.GameFileFilters;
+import com.robin.magic_realm.components.utility.RealmLoader;
 import com.robin.magic_realm.components.utility.RealmUtility;
 
 public class TileEditFrame extends JFrame {
@@ -105,10 +107,11 @@ public class TileEditFrame extends JFrame {
 		setSize(900,600);
 		getContentPane().setLayout(new BorderLayout());
 		setLocation(50,50);
+		setJMenuBar(buildMenuBar());
 		
 		Box box;
 		JScrollPane sp;
-			
+		
 		tileList = new JList(getTiles());
 		tileList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tileList.addListSelectionListener(new ListSelectionListener() {
@@ -747,6 +750,36 @@ public class TileEditFrame extends JFrame {
 	public void saveFile() {
 		data.saveToFile(new File(dataFilename));
 	}
+	private JMenuBar buildMenuBar() {
+		JMenuBar menuBar = new JMenuBar();
+		JMenu fileMenu = new JMenu("File");
+		JMenuItem openGameData = new JMenuItem("Open Game Data");
+		openGameData.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				setGameDataFile();
+				GameData data = new GameData();
+				data.loadFromPath(RealmLoader.DATA_PATH);
+				updateGameData(data);
+				tileList.setListData(getTiles());
+			}
+		});
+		fileMenu.add(openGameData);
+		menuBar.add(fileMenu);
+
+		return menuBar;
+	}
+	private void setGameDataFile() {
+		JFileChooser chooser = new JFileChooser(new File("./"));
+		chooser.setAcceptAllFileFilterUsed(false);
+		chooser.setFileFilter(GameFileFilters.createGameDataFileFilter());
+		if (chooser.showOpenDialog(this)==JFileChooser.APPROVE_OPTION) {
+			RealmLoader.DATA_PATH = chooser.getSelectedFile().toPath().toString();
+		}
+	}
+	private void updateGameData(GameData data) {
+		this.data = data;
+	}
+	
 	public static String dataFilename = null;
 	public static void main(String[]args) {
 		RealmUtility.setupTextType();
@@ -759,7 +792,7 @@ public class TileEditFrame extends JFrame {
 			data.loadFromStream(ResourceFinder.getInputStream(dataFilename));
 		}
 		else {
-			data.loadFromFile(new File(dataFilename));
+			data.loadFromPath(dataFilename);
 		}
 	
 		new TileEditFrame(data).setVisible(true);

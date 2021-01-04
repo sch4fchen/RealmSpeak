@@ -340,10 +340,6 @@ public class GameBuilderFrame extends JFrame {
 		return null;
 	}
 	public void addDataFrame(GameDataFrame frame) {
-		Dimension size = desktop.getSize();
-		int width = Math.min(600,size.width);
-		int height = size.height;
-		frame.setSize(new Dimension(width,height));
 		openGameNames.add(frame.getGameData().getGameName());
 		gameDataFrames.add(frame);
 		frame.setVisible(true);
