@@ -23,7 +23,7 @@ TOOLS:
 # RealmSpeak: Option to set custom GameData file
 # Realm GM: Option to change game options/rules
 # Realm GM: Option to add and remove tiles
-# Realm GM: Quest table incl. adding, removing, assigning, unassigning and resetting quests
+# Realm GM: Quest table with actions: adding, removing, assigning, unassigning and resetting quests
 # TileEditor: Option to load different game data file, option to change tile style
 # QuestBuilder: Option to set custom GameData file
 # QuestBuilder: View Quest Card Deck for BoQ
