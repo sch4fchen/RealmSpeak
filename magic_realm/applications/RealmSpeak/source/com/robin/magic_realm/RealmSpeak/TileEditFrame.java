@@ -33,6 +33,7 @@ import javax.swing.event.MouseInputAdapter;
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
 import com.robin.general.io.ArgumentParser;
+import com.robin.general.io.PreferenceManager;
 import com.robin.general.io.ResourceFinder;
 import com.robin.general.swing.ButtonOptionDialog;
 import com.robin.general.swing.ComponentTools;
@@ -40,13 +41,17 @@ import com.robin.general.swing.IconFactory;
 import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.PathDetail;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.TileEditComponent;
 import com.robin.magic_realm.components.utility.GameFileFilters;
 import com.robin.magic_realm.components.utility.RealmLoader;
 import com.robin.magic_realm.components.utility.RealmUtility;
 
 public class TileEditFrame extends JFrame {
-
+	private static final String MetalLookAndFeel = "MLAF";
+	private static final String TilesDisplayStyle = "TS";	
+	
+	private PreferenceManager prefs;
 	protected GameData data;
 	
 	protected JButton saveButton;
@@ -107,6 +112,9 @@ public class TileEditFrame extends JFrame {
 		setSize(900,600);
 		getContentPane().setLayout(new BorderLayout());
 		setLocation(50,50);
+		
+		prefs = new PreferenceManager("RealmSpeak","TileEditor");
+		prefs.loadPreferences();
 		setJMenuBar(buildMenuBar());
 		
 		Box box;
@@ -766,8 +774,88 @@ public class TileEditFrame extends JFrame {
 		});
 		fileMenu.add(openGameData);
 		menuBar.add(fileMenu);
-
+		JMenu optionMenu = new JMenu("Options");
+		final JCheckBoxMenuItem toggleLookAndFeel = new JCheckBoxMenuItem("Cross Platform Look and Feel",prefs.getBoolean(MetalLookAndFeel));
+		toggleLookAndFeel.setSelected(true);
+		toggleLookAndFeel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				prefs.set(MetalLookAndFeel,toggleLookAndFeel.isSelected());
+				updateLookAndFeel();
+			}
+		});
+		optionMenu.add(toggleLookAndFeel);		
+		optionMenu.add(getTilesOptionsPanel());
+		menuBar.add(optionMenu);
 		return menuBar;
+	}
+	private void updateLookAndFeel() {
+		if (prefs.getBoolean(MetalLookAndFeel)) {
+			ComponentTools.setMetalLookAndFeel();
+		}
+		else {
+			ComponentTools.setSystemLookAndFeel();
+		}
+		SwingUtilities.updateComponentTreeUI(this);
+	}
+	private JPanel getTilesOptionsPanel() {
+		int selected = prefs.getInt(TilesDisplayStyle);
+		JPanel panel = new JPanel(new GridLayout(3,1));
+		panel.setBorder(BorderFactory.createTitledBorder("Standard Tiles Style"));
+		ButtonGroup group = new ButtonGroup();
+		JRadioButton classicTilesOption = new JRadioButton("Classic");
+		classicTilesOption.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				prefs.set(TilesDisplayStyle,TileComponent.DISPLAY_TILES_STYLE_CLASSIC);
+				updateTilesStyle();
+			}
+		});
+		if (selected == TileComponent.DISPLAY_TILES_STYLE_CLASSIC) {
+			classicTilesOption.setSelected(true);
+		}
+		group.add(classicTilesOption);
+		panel.add(classicTilesOption);
+		JRadioButton legendaryTilesOption = new JRadioButton("Legendary Realm");
+		legendaryTilesOption.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				prefs.set(TilesDisplayStyle,TileComponent.DISPLAY_TILES_STYLE_LEGENDARY);
+				updateTilesStyle();
+			}
+		});
+		if (selected == TileComponent.DISPLAY_TILES_STYLE_LEGENDARY) {
+			legendaryTilesOption.setSelected(true);
+		}
+		group.add(legendaryTilesOption);
+		panel.add(legendaryTilesOption);
+		JRadioButton legendaryWithIconsTilesOption = new JRadioButton("Legendary Realm (with Icons)");
+		legendaryWithIconsTilesOption.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				prefs.set(TilesDisplayStyle,TileComponent.DISPLAY_TILES_STYLE_LEGENDARY_WITH_ICONS);
+				updateTilesStyle();
+			}
+		});
+		if (selected == TileComponent.DISPLAY_TILES_STYLE_LEGENDARY_WITH_ICONS) {
+			legendaryWithIconsTilesOption.setSelected(true);
+		}
+		group.add(legendaryWithIconsTilesOption);
+		panel.add(legendaryWithIconsTilesOption);
+		return panel;
+	}
+	private void setTilesStyle() {
+		switch(prefs.getInt(TilesDisplayStyle)) {
+		case TileComponent.DISPLAY_TILES_STYLE_LEGENDARY:
+			TileComponent.displayTilesStyle = TileComponent.DISPLAY_TILES_STYLE_LEGENDARY;
+			break;
+		case TileComponent.DISPLAY_TILES_STYLE_LEGENDARY_WITH_ICONS:
+			TileComponent.displayTilesStyle = TileComponent.DISPLAY_TILES_STYLE_LEGENDARY_WITH_ICONS;
+			break;
+		default:
+			TileComponent.displayTilesStyle = TileComponent.DISPLAY_TILES_STYLE_CLASSIC;
+			break;
+		}
+	}
+	private void updateTilesStyle() {
+		setTilesStyle();
+		updateTileView();
 	}
 	private boolean setGameDataFile() {
 		JFileChooser chooser = new JFileChooser(new File("./"));

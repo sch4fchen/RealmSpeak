@@ -25,7 +25,7 @@ TOOLS
 # Realm GM: Option to change game options/rules
 # Realm GM: Option to add and remove tiles
 # Realm GM: Quest table incl. adding, removing, assigning, unassigning and resetting quests
-# TileEditor: Option to load different game data file
+# TileEditor: Option to load different game data file, option to change tile style
 BUGS/ISSUES:
 # Fix companion Imp casting curse on monster
 

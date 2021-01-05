@@ -1,7 +1,6 @@
 GameEditor: default: (through RS and bat): magicRealmData
 GameEditor through RS: open custom XML
 
-TileEditor: DisplayStyle
 RealmViewer: open XML file
 CharacterBuilder: open XML file
 QuestBuilder: open XML file
