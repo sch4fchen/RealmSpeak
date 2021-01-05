@@ -29,7 +29,7 @@ Abilities:
 	Fatigue MAGIC to reduce speed on one MOVE chit
 	Cast a permanent spell (like prophecy) at the start (others?)
 	cannot attack from hidden
-Tools: RealmViewer: open XML file; GameBuilder: launch RealmViewer
+Tools: RealmViewer: open XML file
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
 0001819: Feature Request: First Edition Search Tables

@@ -767,7 +767,8 @@ public class TileEditFrame extends JFrame {
 				boolean gameLoaded = setGameDataFile();
 				if (!gameLoaded) return;
 				GameData data = new GameData();
-				data.loadFromPath(RealmLoader.DATA_PATH);
+				dataFilename = RealmLoader.DATA_PATH;
+				data.loadFromPath(dataFilename);
 				updateGameData(data);
 				tileList.setListData(getTiles());
 			}
