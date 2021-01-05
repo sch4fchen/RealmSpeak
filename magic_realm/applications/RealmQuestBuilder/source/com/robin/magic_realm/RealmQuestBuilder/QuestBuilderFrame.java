@@ -36,9 +36,9 @@ import com.robin.magic_realm.components.EmptyCardComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.utility.Constants;
+import com.robin.magic_realm.components.utility.GameFileFilters;
 import com.robin.magic_realm.components.utility.RealmLoader;
 import com.robin.magic_realm.components.utility.RealmUtility;
-import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class QuestBuilderFrame extends JFrame {
 	public static final String LAST_DIR = "last_dir";
@@ -134,8 +134,6 @@ public class QuestBuilderFrame extends JFrame {
 		setIconImage(IconFactory.findIcon("images/tab/record.gif").getImage());
 		RealmLoader loader = new RealmLoader();
 		realmSpeakData = loader.getData();
-		HostPrefWrapper hostPrefs = HostPrefWrapper.createDefaultHostPrefs(realmSpeakData);
-		hostPrefs.setGameKeyVals("rw_expansion_1");
 		initComponents();
 		initNewQuest();
 		updateControls();
@@ -152,8 +150,7 @@ public class QuestBuilderFrame extends JFrame {
 	}
 
 	public void exitApp() {
-		// Should check all GameData windows, and verify that changes have been
-		// saved
+		// Should check all GameData windows, and verify that changes have been saved
 		prefs.set(LAST_DIR, lastQuestFilePath.getPath());
 		prefs.savePreferences();
 		setVisible(false);
@@ -161,6 +158,17 @@ public class QuestBuilderFrame extends JFrame {
 		System.exit(0);
 	}
 
+	private boolean setGameDataFile() {
+		JFileChooser chooser = new JFileChooser(new File("./"));
+		chooser.setAcceptAllFileFilterUsed(false);
+		chooser.setFileFilter(GameFileFilters.createGameDataFileFilter());
+		if (chooser.showOpenDialog(this)==JFileChooser.APPROVE_OPTION) {
+			RealmLoader.DATA_PATH = chooser.getSelectedFile().toPath().toString();
+			return true;
+		}
+		return false;
+	}
+	
 	private void initNewQuest() {
 		GameData gameData = new GameData(Quest.GAME_DATA_NAME);
 		quest = new Quest(gameData.createNewObject());
@@ -466,6 +474,21 @@ public class QuestBuilderFrame extends JFrame {
 			}
 		});
 		fileMenu.add(saveAsQuestItem);
+		fileMenu.add(new JSeparator());
+		JMenuItem gameDataFile = new JMenuItem("Custom GameData file");
+		gameDataFile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				if (canOverwriteQuest("Load new game data?")) {
+					boolean gameLoaded = setGameDataFile();
+					if (!gameLoaded) return;
+					RealmLoader loader = new RealmLoader();
+					realmSpeakData = loader.getData();
+					initNewQuest();
+					updateControls();
+				}
+			}
+		});
+		fileMenu.add(gameDataFile);
 		fileMenu.add(new JSeparator());
 		JMenuItem exitItem = new JMenuItem("Exit");
 		exitItem.addActionListener(new ActionListener() {
