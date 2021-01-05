@@ -53,9 +53,10 @@ public class TileEditFrame extends JFrame {
 	
 	private PreferenceManager prefs;
 	protected GameData data;
+	public static String dataFilename = null;
 	
 	protected JButton saveButton;
-	
+		
 	protected JPanel tileView;
 	protected TileEditComponent activeTile;
 	protected JButton flipButton;
@@ -872,7 +873,6 @@ public class TileEditFrame extends JFrame {
 		this.data = data;
 	}
 	
-	public static String dataFilename = null;
 	public static void main(String[]args) {
 		RealmUtility.setupTextType();
 		ArgumentParser ap = new ArgumentParser(args);

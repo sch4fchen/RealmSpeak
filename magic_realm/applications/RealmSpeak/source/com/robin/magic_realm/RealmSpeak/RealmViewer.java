@@ -187,16 +187,11 @@ public class RealmViewer extends JFrame {
 		query.add("rw_expansion_1");
 		StringBuffer result = new StringBuffer();
 		data.doSetup(result,"rw_expansion_1_setup",query);
-		//query.add("!original_game");
+		//query.add("!original_game");	
+		new RealmViewer(data,query).setVisible(true);
 		
-		boolean showPieces = true;
 		boolean showMap = false;
 		boolean showChooser = false;
-		
-		if (showPieces) {
-			new RealmViewer(data,query).setVisible(true);
-		}
-		
 		if (showChooser || showMap) {
 			HostPrefWrapper hostPrefs = new HostPrefWrapper(data.createNewObject());
 			hostPrefs.setHostName("Test");
