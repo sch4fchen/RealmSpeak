@@ -27,6 +27,7 @@ TOOLS:
 # TileEditor: Option to load different game data file, option to change tile style
 # QuestBuilder: Option to set custom GameData file
 # QuestBuilder: View Quest Card Deck for BoQ
+# CharacterBuilder: Option to set custom GameData file
 BUGS/ISSUES:
 # Fix companion Imp casting curse on monster
 

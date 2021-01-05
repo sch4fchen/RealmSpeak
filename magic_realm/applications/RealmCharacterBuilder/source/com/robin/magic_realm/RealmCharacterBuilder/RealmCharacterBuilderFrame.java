@@ -46,6 +46,7 @@ public class RealmCharacterBuilderFrame extends JFrame {
 	private JMenuItem exportCharacterCardWithoutPictureItem;
 	private JMenuItem exportCharacterChitsAndGearItem;
 	private JMenuItem exportAllCharacterGraphicsItem;
+	private JMenuItem loadGameDataFile;
 	private JMenuItem exitItem;
 	
 	private JMenu helpMenu;
@@ -79,7 +80,6 @@ public class RealmCharacterBuilderFrame extends JFrame {
 		setTitle("Realm Character Builder");
 		setIconImage(IconFactory.findIcon("images/actions/hire.gif").getImage());
 		setSize(1050,700);
-//		setResizable(false);
 		
 		JMenuBar menuBar = new JMenuBar();
 		fileMenu = new JMenu("File");
@@ -163,6 +163,19 @@ public class RealmCharacterBuilderFrame extends JFrame {
 				}
 			});
 		fileMenu.add(exportAllCharacterGraphicsItem);
+		fileMenu.add(new JSeparator());
+		loadGameDataFile = new JMenuItem("Load GameData file");
+		loadGameDataFile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				boolean gameLoaded = setGameDataFile();
+				if (!gameLoaded) return;
+				RealmLoader loader = new RealmLoader();
+				magicRealmData = loader.getData();
+				TemplateLibrary.reinitSingleton();
+				updateControls();
+			}
+		});
+		fileMenu.add(loadGameDataFile);
 		fileMenu.add(new JSeparator());
 			exitItem = new JMenuItem("Exit");
 			exitItem.addActionListener(new ActionListener() {
@@ -342,6 +355,16 @@ public class RealmCharacterBuilderFrame extends JFrame {
 		buildPanel = null;
 		updateControls();
 	}
+	private boolean setGameDataFile() {
+		JFileChooser chooser = new JFileChooser(new File("./"));
+		chooser.setAcceptAllFileFilterUsed(false);
+		chooser.setFileFilter(GameFileFilters.createGameDataFileFilter());
+		if (chooser.showOpenDialog(this)==JFileChooser.APPROVE_OPTION) {
+			RealmLoader.DATA_PATH = chooser.getSelectedFile().toPath().toString();
+			return true;
+		}
+		return false;
+	}
 	public static void main(String[] args) {
 		ComponentTools.setSystemLookAndFeel();
 		RealmUtility.setupTextType();
@@ -353,7 +376,5 @@ public class RealmCharacterBuilderFrame extends JFrame {
 			}
 		});
 		frame.setVisible(true);
-//		frame.startNewCharacter();
-//		frame.updateControls();
 	}
 }

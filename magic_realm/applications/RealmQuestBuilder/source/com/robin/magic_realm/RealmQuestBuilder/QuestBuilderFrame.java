@@ -475,8 +475,8 @@ public class QuestBuilderFrame extends JFrame {
 		});
 		fileMenu.add(saveAsQuestItem);
 		fileMenu.add(new JSeparator());
-		JMenuItem gameDataFile = new JMenuItem("Custom GameData file");
-		gameDataFile.addActionListener(new ActionListener() {
+		JMenuItem loadGameDataFile = new JMenuItem("Load GameData file");
+		loadGameDataFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				if (canOverwriteQuest("Load new game data?")) {
 					boolean gameLoaded = setGameDataFile();
@@ -488,7 +488,7 @@ public class QuestBuilderFrame extends JFrame {
 				}
 			}
 		});
-		fileMenu.add(gameDataFile);
+		fileMenu.add(loadGameDataFile);
 		fileMenu.add(new JSeparator());
 		JMenuItem exitItem = new JMenuItem("Exit");
 		exitItem.addActionListener(new ActionListener() {

@@ -1,6 +1,3 @@
-CharacterBuilder: open XML file
-QuestBuilder: open XML file
-
 Fix alternative tiles
 
 What about a controlled monster luring/deploying against your hirelings?

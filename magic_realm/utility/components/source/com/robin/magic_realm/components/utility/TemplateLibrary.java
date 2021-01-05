@@ -39,6 +39,10 @@ public class TemplateLibrary {
 	private GamePool dataPool;
 	private Hashtable<String,GameObject> templateHash;
 	
+	public static TemplateLibrary reinitSingleton() {
+		singleton = new TemplateLibrary();
+		return singleton;
+	}
 	private TemplateLibrary() {
 		RealmLoader loader = new RealmLoader();
 		dataPool = new GamePool(loader.getData().getGameObjects());
