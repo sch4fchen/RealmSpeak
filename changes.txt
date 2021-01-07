@@ -8,6 +8,7 @@ QUEST UPDATE:
 # QuestRewardKillDenizen: Option to reward character with the kill
 # QuestRewardKillDenizen: Option that denizen must be in characters clearing
 # QuestRewardSummonMonster: Option to summon monster from chart of appearance
+# QuestRewardMoveDenizen: Option to move to characters clearing or tile, option to define clearing number
 NEW FEATURES:
 # New season option: Unpredictable weather (BoQ variant)
 # New game option: Additional Bounty points for discoveries (BoQ variant)

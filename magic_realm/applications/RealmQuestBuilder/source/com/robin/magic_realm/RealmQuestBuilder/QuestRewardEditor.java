@@ -198,7 +198,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case MoveDenizen:
 				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.DENIZEN_REGEX, "Denizen", FieldType.Regex, null, new String[] { "denizen" }));
-				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_TO_SAME_CLEARING, "Move all to same clearing", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_OPTION, "Move to", FieldType.StringSelector, QuestRewardMoveDenizen.MoveOption.values()));
+				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.CLEARING, "Clearing", FieldType.StringSelector, QuestRewardMoveDenizen.ClearingSelection.values()));
 				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_HIRELINGS, "Move hirelings", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_COMPANIONS, "Move companions", FieldType.Boolean));

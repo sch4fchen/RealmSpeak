@@ -186,7 +186,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 			return "(No Description)";
 		}
 		public boolean requiresLocations() {
-			return this==LostInventoryToLocation || this == MoveDenizen || this==SummonGuardian || this==Teleport;
+			return this==LostInventoryToLocation || this==SummonGuardian || this==Teleport;
 		}
 	}
 	
