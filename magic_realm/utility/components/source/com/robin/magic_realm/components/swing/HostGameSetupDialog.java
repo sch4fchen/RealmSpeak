@@ -716,12 +716,12 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			minMapRating.setPaintLabels(true);
 			minMapRating.setOrientation(JSlider.VERTICAL);
 			Hashtable labelTable = new Hashtable();
-			labelTable.put( 0, new JLabel("0 - Any (Fast)") );
+			labelTable.put( 0, new JLabel("0 - Any (Fast)  ") );
 			labelTable.put( 1, new JLabel("1") );
 			labelTable.put( 2, new JLabel("2") );
 			labelTable.put( 3, new JLabel("3") );
 			labelTable.put( 4, new JLabel("4") );
-			labelTable.put( 5, new JLabel("5 - Smart (Long)") );
+			labelTable.put( 5, new JLabel("5 - Smart (Long)  ") );
 			minMapRating.setLabelTable( labelTable );
 		ratingBox.add(minMapRating);
 		
