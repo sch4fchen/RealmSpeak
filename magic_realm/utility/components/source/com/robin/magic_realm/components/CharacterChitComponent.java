@@ -645,7 +645,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			}
 			else if (harm.getAppliedStrength().strongerOrEqualTo(vulnerability)) {
 				// Direct hit (no armor)
-				if (hostPrefs.hasPref(Constants.ADV_SERIOUS_WOUNDS) && harm.getAppliedStrength().equalTo(vulnerability)) {
+				if ((hostPrefs.hasPref(Constants.ADV_SERIOUS_WOUNDS) || character.affectedByKey(Constants.TOUGHNESS)) && harm.getAppliedStrength().equalTo(vulnerability)) {
 					// Serious wounds
 					Collection c = character.getNonWoundedChits();
 					DieRoller roller = DieRollBuilder.getDieRollBuilder(null,character).createRoller("wounds");

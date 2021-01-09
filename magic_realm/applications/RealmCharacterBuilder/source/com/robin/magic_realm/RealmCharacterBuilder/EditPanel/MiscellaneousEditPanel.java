@@ -54,6 +54,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"Can open CHEST, CRYPT, or VAULT without the Lost Keys.",Constants.PICKS_LOCKS,""},
 		{"Can walk woods on the 7th day of every week.",Constants.WALK_WOODS,"7th"},
 		{"Has natural armor (like armored monster).",Constants.ARMORED,""},
+		{"Suffer wounds instead of death when harm matches vulnerability.",Constants.TOUGHNESS,""},
 	};
 	private ButtonGroup group;
 	private ArrayList<JRadioButton> buttonList;

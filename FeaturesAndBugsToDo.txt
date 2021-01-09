@@ -1,13 +1,11 @@
 Fix alternative tiles
 
-Existing optional rules as abilities?: Serious wounds, Ambushes, Enchanted Magic + Revised enchanted Magic, Benevolent spells, Enchanted artifacts and spell books, NOT fumble, NOT stumble, Penetrating Armor (against your target), Bounty points for discoveries, Birdsong rearrangement, Extra shelters, Snow hiding in cave 
+Existing optional rules as abilities?: Ambushes, Revised enchanted Magic, Benevolent spells, Enchanted artifacts and spell books, NOT fumble, NOT stumble, Penetrating Armor (against your target), Bounty points for discoveries, Birdsong rearrangement, Extra shelters, Snow hiding in cave 
 0001358: Monster Roll per Set
 0001797: Feature Request - BOQ Two Handed Weapon Opt Rules
 Expansion 1: Parry + Ability: Parry
 Expansion 1: Two-Handed Combat + Ability: Dual Wielding
 Expansion 1: More Ambushes + Ability: Advanced_Ambush
-MERLIN'S USED HORSE LOT?: http://www.nand.it/mr/mr15.html
-Alerting During Combat (+ability): A character can play a FIGHT counter during the encounter step at exactly the same time and under the same restrictions that he could play a MOVE counter to run away. If he plays the FIGHT counter he cannot do any other actions that encounter step. If he plays the FIGHT counter then his weapon is instantly turned ready side up, and is ready for that Round's melee step. (Special: The Berserker can play his BERSERK counter similarly during an encounter step to go Berserk.)
 A LITTLE HELP FROM FRIENDS: http://www.nand.it/mr/mr02.html
 0001829: Feature Request - First Edition Killer Caves: First Edition rule 40.9. "Horses are killed and removed from play when they enter a cave clearing".
 0001828: Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.

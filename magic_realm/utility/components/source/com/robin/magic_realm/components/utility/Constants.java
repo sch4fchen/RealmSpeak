@@ -196,7 +196,7 @@ public class Constants {
 	public static final String BONUS_INVENTORY = "bonus_inv";
 	public static final String ARMORED = "armored";
 	public static final String ADDS_ARMOR = "adds_armor";
-	
+	public static final String TOUGHNESS = "toughness";	
 	public static final String VALE_WALKER="vale_walker";
 	
 	// Relationships

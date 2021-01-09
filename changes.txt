@@ -14,6 +14,7 @@ NEW FEATURES:
 # New season option: Unpredictable weather (BoQ variant)
 # New game option: Additional Bounty points for discoveries (BoQ variant)
 # New character ability: Extra move cost for non-cave clearings
+# New character ability: Toughness: Works like serious wounds rule
 # Option to set custom amount of VPs for timed mode
 # Ending a game early shows endgame scoring 
 # Ending a game early disables actions for the characters
