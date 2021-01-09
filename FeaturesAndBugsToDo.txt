@@ -5,7 +5,6 @@ Fix alternative tiles
 Expansion 1: Parry + Ability: Parry
 Expansion 1: Two-Handed Combat + Ability: Dual Wielding
 Expansion 1: More Ambushes + Ability: Advanced_Ambush
-0001750: Option to disable battling natives
 A LITTLE HELP FROM FRIENDS: http://www.nand.it/mr/mr02.html
 0001829: Feature Request - First Edition Killer Caves: First Edition rule 40.9. "Horses are killed and removed from play when they enter a cave clearing".
 0001828: Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
@@ -17,12 +16,6 @@ A LITTLE HELP FROM FRIENDS: http://www.nand.it/mr/mr02.html
 0001820: Feature Request: First Edition Optional Rules - Dissolving Doors
 0001819: Feature Request: First Edition Search Tables
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability)
-Abilities:
-	cannot initiate attacks on natives (ie., can only target battling natives)
-	L and M monsters are FRIENDLY and hireable
-	monster immunity (specific) - should fix demon immunity to be a bit more generalized
-	Fatigue MAGIC to reduce speed on one MOVE chit
-	cannot attack from hidden
 ::Scenarios Feature::
 Shuffle components Flag in gameData when saving scenario: Shuffle when loading
 RealmSpeak + GM: save game as scenario (with scenario name and description), have a different file extension
@@ -33,8 +26,13 @@ RealSpeak: Load scenarios (overview with names and descriptions), list game opti
 0001563: Showing flip sides of tiles and counters in HTML
 0001447: Log breakdown by day
 0001232: Flying Activities: Optional Rule # 3: Flying Activities.
+0001750: Option to disable battling natives
 Should always be safe at guilds, if you are a member (from monsters and natives)
 Minotaur buckler not really implemented as I would like:  it should be able to block hits...
+Abilities:
+	Cannot initiate attacks on natives (i.e. can only target battling natives)
+	Fatigue MAGIC to reduce speed on one MOVE chit
+	Cannot attack from hidden
 ---:::BUGS:::---
 Wizard advancement - didn't get MOVE M5->MAGIC III
 0001879: Color magic fatigue counted against character when used in encounter step to energize a spell
