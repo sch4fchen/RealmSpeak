@@ -1955,7 +1955,7 @@ public class CombatFrame extends JFrame {
 			}
 			// Casting a spell causes you to become unhidden, if it targets an individual (not clearing)
 			if (spell.targetsCharacterOrDenizen() && activeCharacter.isHidden()) {
-				if (spell.getTargetCount()<=1 && hostPrefs.hasPref(Constants.ADV_AMBUSHES)) {
+				if (spell.getTargetCount()<=1 && (hostPrefs.hasPref(Constants.ADV_AMBUSHES) || activeCharacter.affectedByKey(Constants.SNEAKY))) {
 					// You get an ambush roll to see if you stay hidden
 					ambushRoll = DieRollBuilder.getDieRollBuilder(this,activeCharacter).createHideRoller();
 					ambusher = RealmComponent.getRealmComponent(activeCharacter.getGameObject());
@@ -2214,7 +2214,7 @@ public class CombatFrame extends JFrame {
 			if (theAttacker.isCharacter() && parent!=null && hostPrefs!=null) {
 				CharacterChitComponent charChit = (CharacterChitComponent)theAttacker;
 				CharacterWrapper character = new CharacterWrapper(charChit.getGameObject());
-				if (charChit.isMissile() && hostPrefs.hasPref(Constants.ADV_AMBUSHES)) {
+				if (charChit.isMissile() && (hostPrefs.hasPref(Constants.ADV_AMBUSHES) || character.affectedByKey(Constants.SNEAKY))){
 					// You get an ambush roll to see if you stay hidden
 					ambushRoll = DieRollBuilder.getDieRollBuilder(parent,character).createHideRoller();
 					ambusher = theAttacker;

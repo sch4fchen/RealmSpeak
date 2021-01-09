@@ -1,8 +1,6 @@
-Performance improvement: don't test quest requirements without auto journal when already requirement failed
-
 Fix alternative tiles
 
-Existing optional rules as abilities: Ambushes, Revised enchanted Magic, Benevolent spells, Enchanted artifacts and spell books, Penetrating Armor (against your target), Bounty points for discoveries, Birdsong rearrangement, Extra shelters, Snow hiding in cave 
+Existing optional rules as abilities: Benevolent spells, Enchanted artifacts and spell books, Penetrating Armor (against your target), Bounty points for discoveries, Birdsong rearrangement, Extra shelters, Snow hiding in cave 
 0001358: Monster Roll per Set
 0001797: Feature Request - BOQ Two Handed Weapon Opt Rules
 Expansion 1: Parry + Ability: Parry
@@ -28,6 +26,7 @@ Abilities:
 	Cast a permanent spell (like prophecy) at the start (others?)
 	cannot attack from hidden
 ::Scenarios Feature::
+
 RealmSpeak + GM: save game as scenario (with scenario name and description), have a different file extension
 RealSpeak: Load scenarios (overview with names and descriptions), list game options
 Shuffle components Flag in gameData when saving scenario: Shuffle when loading

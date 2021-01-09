@@ -198,6 +198,8 @@ public class Constants {
 	public static final String ADDS_ARMOR = "adds_armor";
 	public static final String TOUGHNESS = "toughness";	
 	public static final String VALE_WALKER="vale_walker";
+	public static final String SNEAKY = "sneaky";
+	public static final String ENHANCED_MAGIC = "enhanced_magic";
 	
 	// Relationships
 	public static final String BASE_RELATIONSHIP = "relationship";

@@ -10,16 +10,19 @@ QUEST UPDATE:
 # QuestRewardSummonMonster: Option to summon monster from chart of appearance
 # QuestRewardMoveDenizen: Option to move to characters clearing or tile, option to define clearing number
 NEW FEATURES:
+# Performance improvements for testing quest requirements
 # New game option: Extended Treachery
 # New season option: Unpredictable weather (BoQ variant)
 # New game option: Additional Bounty points for discoveries (BoQ variant)
-# New character ability: Extra move cost for non-cave clearings
-# New character ability: Toughness: Works like serious wounds rule
 # Option to set custom amount of VPs for timed mode
 # Ending a game early shows endgame scoring 
 # Ending a game early disables actions for the characters
 # Icons added to different windows
 # Restructuring optional rules reflecting 3rd edition rulebook
+# New character ability: Extra move cost for non-cave clearings
+# New character ability: Toughness: Works like optional serious wounds rule
+# New character ability: Sneaky: Works like optional ambushes rule
+# New character ability: Enhanced magic: Works like optional revised enhanced magic rule
 TOOLS:
 # Option to launch tools from RealmSpeak (tool menu): GM, CharacterBuilder, QuestBuilder, GameBuilder, TileEditor, RealmViewer
 # Bat files for running tools directly

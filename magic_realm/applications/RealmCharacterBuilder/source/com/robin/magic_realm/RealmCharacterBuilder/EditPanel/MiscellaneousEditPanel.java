@@ -55,6 +55,8 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"Can walk woods on the 7th day of every week.",Constants.WALK_WOODS,"7th"},
 		{"Has natural armor (like armored monster).",Constants.ARMORED,""},
 		{"Suffer wounds instead of death when harm matches vulnerability.",Constants.TOUGHNESS,""},
+		{"A successful HIDE roll on missile attacks, allows to stay hidden.",Constants.SNEAKY,""},
+		{"Can cast multiple instances of a single spell.",Constants.ENHANCED_MAGIC,""},
 	};
 	private ButtonGroup group;
 	private ArrayList<JRadioButton> buttonList;

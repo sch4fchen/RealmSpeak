@@ -876,7 +876,8 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	}
 	private boolean isUsingEnhancedMagic() {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
-		return hostPrefs.hasPref(Constants.OPT_ENHANCED_MAGIC) || hostPrefs.hasPref(Constants.HOUSE2_REVISED_ENHANCED_MAGIC);
+		CharacterWrapper caster = findSpellCasterToCastSpell();
+		return hostPrefs.hasPref(Constants.OPT_ENHANCED_MAGIC) || hostPrefs.hasPref(Constants.HOUSE2_REVISED_ENHANCED_MAGIC) || (caster != null && caster.affectedByKey(Constants.ENHANCED_MAGIC));
 	}
 	public static void copyTransformToObject(GameObject source,String blockName,GameObject dest) {
 		String animalName = source.getAttribute(blockName,"name");
