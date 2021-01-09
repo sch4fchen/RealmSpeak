@@ -970,11 +970,17 @@ public class CombatFrame extends JFrame {
 					instructionLabel = new JLabel("Lure Denizens",IconFactory.findIcon("icons/arrow4.gif"),JLabel.LEADING);
 					instructionLabel.setFont(INSTRUCTION_FONT);
 					list.add(instructionLabel);
+					if (hostPrefs.hasPref(Constants.TE_EXTENDED_TREACHERY)) {
+						list.add(getTreacheryButton());
+					}
 					break;
 				case Constants.COMBAT_DEPLOY:
 					instructionLabel = new JLabel("Deploy/Charge",IconFactory.findIcon("icons/arrow2.gif"),JLabel.LEADING);
 					instructionLabel.setFont(INSTRUCTION_FONT);
 					list.add(instructionLabel);
+					if (hostPrefs.hasPref(Constants.TE_EXTENDED_TREACHERY)) {
+						list.add(getTreacheryButton());
+					}
 					list.add(getChargeButton());
 					break;
 				case Constants.COMBAT_ACTIONS:
@@ -1762,13 +1768,16 @@ public class CombatFrame extends JFrame {
 					ArrayList attackers = currentBattleModel.getAttackersFor(rc);
 					ArrayList denizens = new ArrayList(currentBattleModel.getDenizenBattleGroup().getBattleParticipants());
 					denizens.retainAll(attackers); // intersection to find all denizen attackers
-					// Be sure to strip out any red-side-up monsters
+					// Be sure to strip out any red-side-up monsters and natives of same group for extended treachery
 					ArrayList remove = new ArrayList();
 					for (Iterator i=denizens.iterator();i.hasNext();) {
 						RealmComponent dc = (RealmComponent)i.next();
 						if (dc.isMonster() && ((MonsterChitComponent)dc).isPinningOpponent()) {
 							remove.add(dc);
 						}
+						if (hostPrefs.hasPref(Constants.TE_EXTENDED_TREACHERY) && !activeCharacter.getTreacheryPreference() && lurer.isNative() && RealmUtility.getGroupName(lurer).matches(RealmUtility.getGroupName(dc))) {
+							remove.add(dc);
+						}						
 					}
 					denizens.removeAll(remove);
 					
@@ -1797,10 +1806,16 @@ public class CombatFrame extends JFrame {
 		denizenPanel.clearSelected();
 		for (Iterator i=denizens.iterator();i.hasNext();) {
 			RealmComponent denizen = (RealmComponent)i.next();
-			lureDenizen(lurer,box,denizen);
 			if (hostPrefs.hasPref(Constants.TE_EXTENDED_TREACHERY) && lurer.isNative() && RealmUtility.getGroupName(lurer).matches(RealmUtility.getGroupName(denizen))) {
+				if (!activeCharacter.getTreacheryPreference()) {
+					String message = "The "+lurer.getGameObject().getName()+" cannot lure the "+denizen.getGameObject().getName()+" because it would trigger treachery.";
+					JOptionPane.showMessageDialog(this,message,"Treachery",JOptionPane.WARNING_MESSAGE,denizen.getIcon());
+					return;
+				}
 				BattleUtility.processTreachery(new CharacterWrapper(lurer.getOwner().getGameObject()),denizen);
 			}
+			
+			lureDenizen(lurer,box,denizen);
 		}
 
 	}

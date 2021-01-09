@@ -52,8 +52,8 @@ public class RealmComponentOptionChooser extends AggressiveDialog {
 	
 	private Font TITLE_FONT = new Font("Dialog", Font.BOLD, 14);
 
-	private OrderedHashtable textHash;
-	private HashLists componentHashLists;
+	private OrderedHashtable<String, String> textHash;
+	private HashLists<String, ArrayList<RealmComponent>> componentHashLists;
 	private HashLists iconHashLists;
 	
 	private JScrollPane viewComponentsPane;
@@ -64,7 +64,7 @@ public class RealmComponentOptionChooser extends AggressiveDialog {
 
 	private String selectedKey = null;
 	private String selectedText = null;
-	private ArrayList selectedComponents = null;
+	private ArrayList<RealmComponent> selectedComponents = null;
 	
 	private int hTextPos = SwingConstants.LEADING;
 	private int vTextPos = SwingConstants.CENTER;
@@ -78,8 +78,8 @@ public class RealmComponentOptionChooser extends AggressiveDialog {
 
 	public RealmComponentOptionChooser(JFrame parent, String title,boolean includeCancel) {
 		super(parent, "", true);
-		textHash = new OrderedHashtable();
-		componentHashLists = new HashLists();
+		textHash = new OrderedHashtable<String, String>();
+		componentHashLists = new HashLists<String, ArrayList<RealmComponent>>();
 		iconHashLists= new HashLists();
 		initComponents(title,includeCancel);
 		updateLayout();
@@ -365,7 +365,7 @@ public class RealmComponentOptionChooser extends AggressiveDialog {
 
 		return new ImageIcon(image);
 	}
-	public ArrayList getSelectedComponents() {
+	public ArrayList<RealmComponent> getSelectedComponents() {
 		return selectedComponents;
 	}
 	/**
@@ -449,9 +449,9 @@ public class RealmComponentOptionChooser extends AggressiveDialog {
 	private class SelectButton extends JButton implements ActionListener {
 		private String key;
 		private String text;
-		private ArrayList rcs;
+		private ArrayList<RealmComponent> rcs;
 
-		public SelectButton(String key, String text, ArrayList rcs, Collection icons) {
+		public SelectButton(String key, String text, ArrayList<RealmComponent> rcs, Collection icons) {
 			super(text);
 			this.key = key;
 			this.text = text;

@@ -210,8 +210,7 @@ public class BattleUtility {
 				else {
 					// Victim's stuff is abandoned in clearing
 					victim.getGameObject().setThisAttribute(Constants.SPOILS_INVENTORY_DROP);
-					RealmLogging.logMessage(RealmLogging.BATTLE,"The "+victim.getGameObject().getName()
-									+" drops inventory in the clearing.");
+					RealmLogging.logMessage(RealmLogging.BATTLE,"The "+victim.getGameObject().getName()+" drops inventory in the clearing.");
 				}
 			}
 		}
@@ -220,14 +219,12 @@ public class BattleUtility {
 				if (attacker.isMonster() || attacker.isMonsterPart() || attacker.isTreasure()) { // Monster or Toadstool Circle
 					// Victim's stuff is abandoned in clearing
 					victim.getGameObject().setThisAttribute(Constants.SPOILS_INVENTORY_DROP);
-					RealmLogging.logMessage(RealmLogging.BATTLE,"The "+victim.getGameObject().getName()
-									+" drops inventory in the clearing.");
+					RealmLogging.logMessage(RealmLogging.BATTLE,"The "+victim.getGameObject().getName()+" drops inventory in the clearing.");
 				}
 				else {
 					// Victim's stuff is put onto setup card
 					victim.getGameObject().setThisAttribute(Constants.SPOILS_INVENTORY_SETUP);
-					RealmLogging.logMessage(RealmLogging.BATTLE,"The "+victim.getGameObject().getName()+"'s stuff is taken by the "
-									+attacker.getGameObject().getThisAttribute("native"));
+					RealmLogging.logMessage(RealmLogging.BATTLE,"The "+victim.getGameObject().getName()+"'s stuff is taken by the "+attacker.getGameObject().getThisAttribute("native"));
 				}
 			}
 		}
@@ -246,8 +243,7 @@ public class BattleUtility {
 		if (victimOwner==null && (victim.isNativeLeader() || victim.isTransformedNativeLeader())) { // Unhired leader
 			// Group's stuff is abandoned in the clearing
 			victim.getGameObject().setThisAttribute(Constants.SPOILS_GROUP_INV_DROP);
-			RealmLogging.logMessage(RealmLogging.BATTLE,"The native leader for the "+victim.getGameObject().getThisAttribute("native")
-							+" drops the group's store in the clearing.");
+			RealmLogging.logMessage(RealmLogging.BATTLE,"The native leader for the "+victim.getGameObject().getThisAttribute("native")+" drops the group's store in the clearing.");
 		}
 		victim.getGameObject().setThisAttribute(Constants.SPOILS_DONE);
 	}

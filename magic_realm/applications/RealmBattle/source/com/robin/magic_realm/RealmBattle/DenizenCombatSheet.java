@@ -509,7 +509,9 @@ public class DenizenCombatSheet extends CombatSheet {
 		for (Iterator i=combatFrame.getUnassignedDenizens().iterator();i.hasNext();) {
 			RealmComponent denizen = (RealmComponent)i.next();
 			if (denizen.getTarget()==null && !denizen.isMistLike()) {
-				chooser.addRealmComponent(denizen);
+				if (!extendedTreachery(denizen) || combatFrame.getActiveCharacter().getTreacheryPreference()) {
+					chooser.addRealmComponent(denizen);
+				}
 			}
 		}
 		
@@ -519,21 +521,21 @@ public class DenizenCombatSheet extends CombatSheet {
 		if (sheetOwner.isPlayerControlledLeader()) {
 			sheetOwnerChar = new CharacterWrapper(sheetOwner.getGameObject());
 		}
-		ArrayList combatSheets = combatFrame.getAllCombatSheets();
-		for (Iterator i=combatSheets.iterator();i.hasNext();) {
-			CombatSheet sheet = (CombatSheet)i.next();
+		ArrayList<CombatSheet> combatSheets = combatFrame.getAllCombatSheets();
+		for (CombatSheet sheet : combatSheets) {
 			RealmComponent aSheetOwner = sheet.getSheetOwner();
 			RealmComponent aOwner = sheet.getSheetOwner().getOwner();
 			if (!owner.equals(aOwner)) {
 				if (!aSheetOwner.isHidden() || (sheetOwnerChar!=null && sheetOwnerChar.foundHiddenEnemy(aSheetOwner.getGameObject()))) {
-					chooser.addRealmComponent(aSheetOwner);
+					if (!extendedTreachery(aSheetOwner) || combatFrame.getActiveCharacter().getTreacheryPreference()) {
+						chooser.addRealmComponent(aSheetOwner);
+					}
 				}
 			}
 		}
 		
 		// cycle through other sheet participants - identify sheet owner in each case with a small icon
-		for (Iterator i=combatSheets.iterator();i.hasNext();) {
-			CombatSheet sheet = (CombatSheet)i.next();
+		for (CombatSheet sheet : combatSheets) {
 			RealmComponent aSheetOwner = sheet.getSheetOwner();
 			for (Iterator n=sheet.getAllParticipantsOnSheet().iterator();n.hasNext();) {
 				RealmComponent participant = (RealmComponent)n.next();
@@ -543,9 +545,11 @@ public class DenizenCombatSheet extends CombatSheet {
 						// Make sure the deploying native can "see" the participant
 						if (!participant.isMistLike()) {
 							if (!participant.isHidden() || (sheetOwnerChar!=null && sheetOwnerChar.foundHiddenEnemy(participant.getGameObject()))) {
-								String option = chooser.generateOption();
-								chooser.addRealmComponentToOption(option,aSheetOwner,RealmComponentOptionChooser.DisplayOption.MediumIcon);
-								chooser.addRealmComponentToOption(option,participant);
+								if (!extendedTreachery(participant) || combatFrame.getActiveCharacter().getTreacheryPreference()) {
+									String option = chooser.generateOption();
+									chooser.addRealmComponentToOption(option,aSheetOwner,RealmComponentOptionChooser.DisplayOption.MediumIcon);
+									chooser.addRealmComponentToOption(option,participant);
+								}
 							}
 						}
 					}
@@ -611,7 +615,7 @@ public class DenizenCombatSheet extends CombatSheet {
 					deployTarget.setHidden(false);
 				}
 				
-				if (hostPrefs.hasPref(Constants.TE_EXTENDED_TREACHERY) && sheetOwner.isNative() && RealmUtility.getGroupName(sheetOwner).matches(RealmUtility.getGroupName(deployTarget))) {
+				if (extendedTreachery(deployTarget)) {
 					BattleUtility.processTreachery(new CharacterWrapper(sheetOwner.getOwner().getGameObject()),deployTarget);
 				}
 				
@@ -633,6 +637,10 @@ public class DenizenCombatSheet extends CombatSheet {
 				combatFrame.madeChange();
 			}
 		}
+	}
+	
+	private boolean extendedTreachery(RealmComponent denizen) {
+		return hostPrefs.hasPref(Constants.TE_EXTENDED_TREACHERY) && sheetOwner.isNative() && RealmUtility.getGroupName(sheetOwner).matches(RealmUtility.getGroupName(denizen));
 	}
 	
 	public boolean hasUnpositionedDenizens() {

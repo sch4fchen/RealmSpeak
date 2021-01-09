@@ -1,11 +1,14 @@
+Performance improvement: don't test quest requirements without auto journal when already requirement failed
+
 Fix alternative tiles
 
-Existing optional rules as abilities?: Ambushes, Revised enchanted Magic, Benevolent spells, Enchanted artifacts and spell books, NOT fumble, NOT stumble, Penetrating Armor (against your target), Bounty points for discoveries, Birdsong rearrangement, Extra shelters, Snow hiding in cave 
+Existing optional rules as abilities: Ambushes, Revised enchanted Magic, Benevolent spells, Enchanted artifacts and spell books, Penetrating Armor (against your target), Bounty points for discoveries, Birdsong rearrangement, Extra shelters, Snow hiding in cave 
 0001358: Monster Roll per Set
 0001797: Feature Request - BOQ Two Handed Weapon Opt Rules
 Expansion 1: Parry + Ability: Parry
 Expansion 1: Two-Handed Combat + Ability: Dual Wielding
 Expansion 1: More Ambushes + Ability: Advanced_Ambush
+0001750: Option to disable battling natives
 A LITTLE HELP FROM FRIENDS: http://www.nand.it/mr/mr02.html
 0001829: Feature Request - First Edition Killer Caves: First Edition rule 40.9. "Horses are killed and removed from play when they enter a cave clearing".
 0001828: Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
@@ -15,6 +18,7 @@ A LITTLE HELP FROM FRIENDS: http://www.nand.it/mr/mr02.html
 0001823: Feature Request - First Edition Optional Rule - Stealing: (+Ability): A hidden character can LOOT to draw the items being carried by another character in his Clearing. He can draw only from the character's inactive items (which are piled up by their owner for the purpose), and he must make a normal HIDE roll each time he loots; if he fails the roll he is unhidden.
 0001822: Feature Request: First Edition Optional Rule - Steel Against Magic: (+Disadvantage) A character cannot play a MAGIC counter if he has any weapon counter except a staff activated.
 0001820: Feature Request: First Edition Optional Rules - Dissolving Doors
+0001819: Feature Request: First Edition Search Tables
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability)
 Abilities:
 	cannot initiate attacks on natives (ie., can only target battling natives)
@@ -23,20 +27,18 @@ Abilities:
 	Fatigue MAGIC to reduce speed on one MOVE chit
 	Cast a permanent spell (like prophecy) at the start (others?)
 	cannot attack from hidden
+::Scenarios Feature::
+RealmSpeak + GM: save game as scenario (with scenario name and description), have a different file extension
+RealSpeak: Load scenarios (overview with names and descriptions), list game options
+Shuffle components Flag in gameData when saving scenario: Shuffle when loading
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
-0001819: Feature Request: First Edition Search Tables
-0001750: Option to disable battling natives
 0001645: Automatic HTML export
 0001563: Showing flip sides of tiles and counters in HTML
 0001447: Log breakdown by day
 0001232: Flying Activities: Optional Rule # 3: Flying Activities.
 Should always be safe at guilds, if you are a member (from monsters and natives)
 Minotaur buckler not really implemented as I would like:  it should be able to block hits...
-::Scenarios Feature::
-RealmSpeak + GM: save game as scenario (with scenario name and description), have a different file extension
-RealSpeak: Load scenarios (overview with names and descriptions), list game options
-Shuffle components Flag in gameData when saving scenario: Shuffle when loading
 ---:::BUGS:::---
 Wizard advancement - didn't get MOVE M5->MAGIC III
 0001879: Color magic fatigue counted against character when used in encounter step to energize a spell
