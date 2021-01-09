@@ -202,6 +202,7 @@ public class Constants {
 	public static final String ENHANCED_MAGIC = "enhanced_magic";
 	public static final String ENHANCED_ARTIFACTS = "enhanced_artifacts";
 	public static final String ADVENTURER = "adventurer";
+	public static final String ADVANCED_SHELTERS = "advanced_shelters";
 	
 	// Relationships
 	public static final String BASE_RELATIONSHIP = "relationship";

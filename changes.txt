@@ -25,6 +25,7 @@ NEW FEATURES:
 # New character ability: Enhanced magic: Works like optional revised enhanced magic rule
 # New character ability: Enhanced artifacts: Works like optional enhanced artifacts and spell books rule
 # New character ability: Adventurer: Works like optional discovery rule
+# New character ability: Advanced shelters: Works like optional extra shelters rule
 TOOLS:
 # Option to launch tools from RealmSpeak (tool menu): GM, CharacterBuilder, QuestBuilder, GameBuilder, TileEditor, RealmViewer
 # Bat files for running tools directly

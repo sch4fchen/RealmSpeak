@@ -59,6 +59,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"Can cast multiple instances of a single spell.",Constants.ENHANCED_MAGIC,""},
 		{"Can use Artifacts and Spell Books as extra Magic chits.",Constants.ENHANCED_ARTIFACTS,""},
 		{"Gains points for recording certain discoveries.",Constants.ADVENTURER,""},
+		{"The Lost City and Lost Castle chits count as shelters.",Constants.ADVANCED_SHELTERS,""},
 	};
 	private ButtonGroup group;
 	private ArrayList<JRadioButton> buttonList;

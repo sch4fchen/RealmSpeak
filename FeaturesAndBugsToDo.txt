@@ -1,6 +1,5 @@
 Fix alternative tiles
 
-Existing optional rules as abilities: Birdsong rearrangement, Extra shelters, Snow hiding in cave 
 0001358: Monster Roll per Set
 0001797: Feature Request - BOQ Two Handed Weapon Opt Rules
 Expansion 1: Parry + Ability: Parry
