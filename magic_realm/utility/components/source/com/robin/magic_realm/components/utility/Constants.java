@@ -201,6 +201,7 @@ public class Constants {
 	public static final String SNEAKY = "sneaky";
 	public static final String ENHANCED_MAGIC = "enhanced_magic";
 	public static final String ENHANCED_ARTIFACTS = "enhanced_artifacts";
+	public static final String ADVENTURER = "adventurer";
 	
 	// Relationships
 	public static final String BASE_RELATIONSHIP = "relationship";

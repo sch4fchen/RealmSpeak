@@ -58,6 +58,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"A successful HIDE roll on missile attacks, allows to stay hidden.",Constants.SNEAKY,""},
 		{"Can cast multiple instances of a single spell.",Constants.ENHANCED_MAGIC,""},
 		{"Can use Artifacts and Spell Books as extra Magic chits.",Constants.ENHANCED_ARTIFACTS,""},
+		{"Gains points for recording certain discoveries.",Constants.ADVENTURER,""},
 	};
 	private ButtonGroup group;
 	private ArrayList<JRadioButton> buttonList;

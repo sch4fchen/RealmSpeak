@@ -3322,7 +3322,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 
 		addListItem(DISC_TREASURE_LOCATIONS,name);
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
-		if (hostPrefs.hasPref(Constants.EXP_BOUNTY_POINTS_FOR_DISCOVERIES) && this.isCharacter() && !discovery.hasThisAttribute(Constants.DISCOVERED)) {
+		if ((hostPrefs.hasPref(Constants.EXP_BOUNTY_POINTS_FOR_DISCOVERIES) || this.affectedByKey(Constants.ADVENTURER)) && this.isCharacter() && !discovery.hasThisAttribute(Constants.DISCOVERED)) {
 			RealmComponent rc = RealmComponent.getRealmComponent(gameData.getGameObjectByNameIgnoreCase(name));
 			if (rc.isTreasureLocation() && discovery.hasThisAttribute(Constants.DISCOVERY)) {
 				if (rc.isChit()) {
