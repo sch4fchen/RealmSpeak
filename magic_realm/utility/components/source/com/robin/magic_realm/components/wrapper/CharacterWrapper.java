@@ -4032,7 +4032,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		if (!hasType) {
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
-			if (hostPrefs.hasPref(Constants.OPT_ENHANCED_ARTIFACTS)) {
+			if (hostPrefs.hasPref(Constants.OPT_ENHANCED_ARTIFACTS) || affectedByKey(Constants.ENHANCED_ARTIFACTS)) {
 				// Search artifacts
 				for (GameObject item:getInventory()) {
 					RealmComponent rc = RealmComponent.getRealmComponent(item);
@@ -4236,7 +4236,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		
 		// Now filter out the non-castable spells (missing some component)
-		boolean optionalArtifacts = hostPrefs.hasPref(Constants.OPT_ENHANCED_ARTIFACTS);
+		boolean optionalArtifacts = hostPrefs.hasPref(Constants.OPT_ENHANCED_ARTIFACTS) || affectedByKey(Constants.ENHANCED_ARTIFACTS);
 		ArrayList castableSpellSets = new ArrayList();
 		for (SpellSet set:potentialSets) {
 			// First, validate chit types (if needed)

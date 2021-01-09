@@ -23,6 +23,7 @@ NEW FEATURES:
 # New character ability: Toughness: Works like optional serious wounds rule
 # New character ability: Sneaky: Works like optional ambushes rule
 # New character ability: Enhanced magic: Works like optional revised enhanced magic rule
+# New character ability: Enhanced artifacts: Works like optional enhanced artifacts and spell books rule
 TOOLS:
 # Option to launch tools from RealmSpeak (tool menu): GM, CharacterBuilder, QuestBuilder, GameBuilder, TileEditor, RealmViewer
 # Bat files for running tools directly

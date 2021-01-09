@@ -181,7 +181,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	}
 	private void updateAvailableColorMagic() {
 		Collection colors = character.getChitColorSources();
-		if (hostPrefs.hasPref(Constants.OPT_ENHANCED_ARTIFACTS)) {
+		if (hostPrefs.hasPref(Constants.OPT_ENHANCED_ARTIFACTS) || character.affectedByKey(Constants.ENHANCED_ARTIFACTS)) {
 			colors.addAll(character.getEnchantedArtifactColorSources());
 		}
 		colors.addAll(character.getInfiniteColorSources());

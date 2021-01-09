@@ -1762,7 +1762,7 @@ public class ActionRow {
 		Collections.sort(enchantableChits);
 		enchantable.addAll(enchantableChits);
 		
-		if (hostPrefs.hasPref(Constants.OPT_ENHANCED_ARTIFACTS)) {
+		if (hostPrefs.hasPref(Constants.OPT_ENHANCED_ARTIFACTS) || character.affectedByKey(Constants.ENHANCED_ARTIFACTS)) {
 			// Enchantable Artifacts and Books
 			for(GameObject item:character.getActiveInventory()) {
 				RealmComponent rc = RealmComponent.getRealmComponent(item);
