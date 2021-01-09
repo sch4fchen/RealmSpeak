@@ -468,6 +468,7 @@ public class Constants {
 	// 3rd edition rules
 	public static final String TE_KNIGHT_ADJUSTMENT = "KnightAdjustment";
 	public static final String TE_WATCHFUL_NATIVES = "WatchfulNatives";
+	public static final String TE_EXTENDED_TREACHERY = "ExtendedTreachery";
 	public static final String TE_EXTENDED_GRUDGES = "ExtendedGrudges";
 	public static final String TE_BENEVOLENT_SPELLS = "BenevolentSpells";
 	

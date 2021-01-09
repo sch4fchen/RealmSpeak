@@ -400,7 +400,7 @@ public class CombatFrame extends JFrame {
 	public void updateHotspotIndicators() {
 		int n=0;
 		for (RealmComponent rc:new ArrayList<RealmComponent>(allParticipants)) {
-			CombatSheet cs = CombatSheet.createCombatSheet(this,currentBattleModel,rc,interactiveFrame);
+			CombatSheet cs = CombatSheet.createCombatSheet(this,currentBattleModel,rc,interactiveFrame, hostPrefs);
 			participantHasHotspots[n++] = cs.hasHotspots();
 		}
 		participantTable.revalidate();
@@ -598,7 +598,7 @@ public class CombatFrame extends JFrame {
 			if (actionState==Constants.COMBAT_RESOLVING) {
 				if (allParticipants!=null) {
 					for (RealmComponent rc:allParticipants) {
-						CombatSheet sheet = CombatSheet.createCombatSheet(this,currentBattleModel,rc,interactiveFrame);
+						CombatSheet sheet = CombatSheet.createCombatSheet(this,currentBattleModel,rc,interactiveFrame, hostPrefs);
 						if (sheet.hasBattleRolls()) {
 							battleRolls = true;
 							break;
@@ -1272,7 +1272,7 @@ public class CombatFrame extends JFrame {
 				}
 				else {
 					RealmComponent rc = allParticipants.get(row-1);
-					activeCombatSheet = CombatSheet.createCombatSheet(this,currentBattleModel,rc,interactiveFrame);
+					activeCombatSheet = CombatSheet.createCombatSheet(this,currentBattleModel,rc,interactiveFrame, hostPrefs);
 					activeCombatSheet.addMouseListener(mouseListener);
 					activeCombatSheet.addMouseMotionListener(mouseListener);
 					combatSheetPanel.add(new JScrollPane(activeCombatSheet),"Center");
@@ -1462,7 +1462,7 @@ public class CombatFrame extends JFrame {
 			ArrayList friendly = CombatSheet.filterFriends(activeParticipant,allParticipants);
 			for (Iterator i=friendly.iterator();i.hasNext();) {
 				RealmComponent rc = (RealmComponent)i.next();
-				CombatSheet sheet = CombatSheet.createCombatSheet(this,currentBattleModel,rc,interactiveFrame);
+				CombatSheet sheet = CombatSheet.createCombatSheet(this,currentBattleModel,rc,interactiveFrame, hostPrefs);
 				
 				// Verify that all denizens are positioned
 				if (sheet.hasUnpositionedDenizens()) {
@@ -1500,7 +1500,7 @@ public class CombatFrame extends JFrame {
 			ArrayList friendly = CombatSheet.filterFriends(activeParticipant,allParticipants);
 			for (Iterator i=friendly.iterator();i.hasNext();) {
 				RealmComponent rc = (RealmComponent)i.next();
-				CombatSheet sheet = CombatSheet.createCombatSheet(this,currentBattleModel,rc,interactiveFrame);
+				CombatSheet sheet = CombatSheet.createCombatSheet(this,currentBattleModel,rc,interactiveFrame, hostPrefs);
 				
 				// Verify that all targets (that need to be) are assigned
 				if (sheet.needsTargetAssignment()) {
@@ -1798,7 +1798,11 @@ public class CombatFrame extends JFrame {
 		for (Iterator i=denizens.iterator();i.hasNext();) {
 			RealmComponent denizen = (RealmComponent)i.next();
 			lureDenizen(lurer,box,denizen);
+			if (hostPrefs.hasPref(Constants.TE_EXTENDED_TREACHERY) && lurer.isNative() && RealmUtility.getGroupName(lurer).matches(RealmUtility.getGroupName(denizen))) {
+				BattleUtility.processTreachery(new CharacterWrapper(lurer.getOwner().getGameObject()),denizen);
+			}
 		}
+
 	}
 	private boolean lureDenizen(RealmComponent lurer,int box,RealmComponent denizen) {
 		if (denizen.isMistLike()) {
@@ -3366,7 +3370,7 @@ public class CombatFrame extends JFrame {
 		ArrayList<CombatSheet> sheets = new ArrayList<CombatSheet>();
 		// Actually creates them
 		for (RealmComponent rc:allParticipants) {
-			sheets.add(CombatSheet.createCombatSheet(this,currentBattleModel,rc,interactiveFrame));
+			sheets.add(CombatSheet.createCombatSheet(this,currentBattleModel,rc,interactiveFrame, hostPrefs));
 		}
 		return sheets;
 	}

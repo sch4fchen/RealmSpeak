@@ -879,12 +879,12 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		}
 		return null;
 	}
-	public static CombatSheet createCombatSheet(CombatFrame frame,BattleModel currentBattleModel,RealmComponent rc,boolean interactiveFrame) {
+	public static CombatSheet createCombatSheet(CombatFrame frame,BattleModel currentBattleModel,RealmComponent rc,boolean interactiveFrame, HostPrefWrapper hostPrefs) {
 		if (rc.isCharacter()) {
 			return new CharacterCombatSheet(frame,currentBattleModel,rc,interactiveFrame);
 		}
 		else {
-			return new DenizenCombatSheet(frame,currentBattleModel,rc,interactiveFrame);
+			return new DenizenCombatSheet(frame,currentBattleModel,rc,interactiveFrame, hostPrefs);
 		}
 	}
 	private KeyListener shiftKeyListener = new KeyListener() {

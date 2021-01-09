@@ -253,21 +253,6 @@ public class BattleUtility {
 	}
 	public static boolean treacheryFlag = false;
 	public static void processTreachery(CharacterWrapper activeCharacter,RealmComponent theTarget) {
-// TODO Write this code...
-//g. Treachery: When a character specifies one of his own
-//hired natives as a target for himself or one of his hirelings, all
-//members of the target�s group that are currently under hire to
-//that character instantly �rebel�, no matter where they are on the
-//map. Hirelings also rebel if they are chosen as the target of any
-//spell (Exception: Benevolent Spells optional Rule 10.C.2).
-//Natives hired by other characters and natives in other groups are
-//not affected. The rebels instantly become unhired and the
-//character loses Fame points equal to the Notoriety bounty of
-//each rebel.
-//g.1) Rebels cannot attack nor be attacked by monsters and
-//unhired natives. All such attacks are instantly cancelled.
-//g.2) Rebels are automatically battling all characters and
-//hirelings who are attacking them or who they are attacking.
 		treacheryFlag = true;
 		for (RealmComponent rc:activeCharacter.getAllHirelingsFromSame(theTarget)) {
 			moveToNewSheet(rc,false,false);

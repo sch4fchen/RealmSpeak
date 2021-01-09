@@ -30,6 +30,7 @@ import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.utility.BattleUtility;
 import com.robin.magic_realm.components.utility.Constants;
+import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.wrapper.*;
 
 public class DenizenCombatSheet extends CombatSheet {
@@ -93,6 +94,7 @@ public class DenizenCombatSheet extends CombatSheet {
 	
 	private boolean isOwnedByActive;
 	private boolean targetNeedsAssignment = false;
+	HostPrefWrapper hostPrefs;
 	
 	/**
 	 * Testing constructor ONLY!!!
@@ -100,11 +102,12 @@ public class DenizenCombatSheet extends CombatSheet {
 	private DenizenCombatSheet() {
 		super();
 	}
-	public DenizenCombatSheet(CombatFrame frame,BattleModel model,RealmComponent participant,boolean interactiveFrame) {
+	public DenizenCombatSheet(CombatFrame frame,BattleModel model,RealmComponent participant,boolean interactiveFrame, HostPrefWrapper hostPrefs) {
 		super(frame,model,participant,interactiveFrame);
 		
 		RealmComponent owner = sheetOwner.getOwner();
 		isOwnedByActive = (owner!=null && owner.equals(combatFrame.getActiveParticipant()));
+		this.hostPrefs = hostPrefs;
 		
 		updateLayout();
 	}
@@ -606,6 +609,10 @@ public class DenizenCombatSheet extends CombatSheet {
 				// As does the deployTarget (if hidden)
 				if (deployTarget.isHidden()) {
 					deployTarget.setHidden(false);
+				}
+				
+				if (hostPrefs.hasPref(Constants.TE_EXTENDED_TREACHERY) && sheetOwner.isNative() && RealmUtility.getGroupName(sheetOwner).matches(RealmUtility.getGroupName(deployTarget))) {
+					BattleUtility.processTreachery(new CharacterWrapper(sheetOwner.getOwner().getGameObject()),deployTarget);
 				}
 				
 				// Make sure deployment causes natives to battle appropriately

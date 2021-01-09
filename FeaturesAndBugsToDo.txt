@@ -1,9 +1,6 @@
 Fix alternative tiles
 
-What about a controlled monster luring/deploying against your hirelings?
-Extended Treachery:  luring/deploying against their own group triggers the same consequences
-
-Existing optional rules as abilities: Serious wounds, Ambushes, Enchanted Magic + Revised enchanted Magic, Benevolent spells, Enchanted artifacts and spell books, NOT fumble, NOT stumble, Penetrating Armor (against your target), Bounty points for discoveries, Birdsong rearrangement, Extra shelters, Snow hiding in cave 
+Existing optional rules as abilities?: Serious wounds, Ambushes, Enchanted Magic + Revised enchanted Magic, Benevolent spells, Enchanted artifacts and spell books, NOT fumble, NOT stumble, Penetrating Armor (against your target), Bounty points for discoveries, Birdsong rearrangement, Extra shelters, Snow hiding in cave 
 0001358: Monster Roll per Set
 0001797: Feature Request - BOQ Two Handed Weapon Opt Rules
 Expansion 1: Parry + Ability: Parry
@@ -15,7 +12,7 @@ A LITTLE HELP FROM FRIENDS: http://www.nand.it/mr/mr02.html
 Severe Wounds (instead of serious wounds) + ability: http://www.nand.it/mr/mr11.html
 0001829: Feature Request - First Edition Killer Caves: First Edition rule 40.9. "Horses are killed and removed from play when they enter a cave clearing".
 0001828: Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
-0001827: Feature Request - First Edition Optional Rules - Hiring Characters (Solitare): http://www.nand.it/mr/mr08.html
+0001827: Feature Request - First Edition Optional Rules - Hiring Characters (Solitaire): http://www.nand.it/mr/mr08.html
 0001826: Feature Request - First Edition Optional Rules - The Deadly Realm: http://www.nand.it/mr/mr06.html
 0001825: Feature Request - First Edition Optional Rule - Buying on Credit
 0001823: Feature Request - First Edition Optional Rule - Stealing: (+Ability): A hidden character can LOOT to draw the items being carried by another character in his Clearing. He can draw only from the character's inactive items (which are piled up by their owner for the purpose), and he must make a normal HIDE roll each time he loots; if he fails the roll he is unhidden.
