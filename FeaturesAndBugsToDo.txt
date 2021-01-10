@@ -1,5 +1,6 @@
 Fix alternative tiles
 
+RealmSpeak: Option: shuffle hidden components when loading a game
 0001358: Monster Roll per Set
 0001797: Feature Request - BOQ Two Handed Weapon Opt Rules
 Expansion 1: Parry + Ability: "Parry 1?"
@@ -17,7 +18,7 @@ A LITTLE HELP FROM FRIENDS: http://www.nand.it/mr/mr02.html
 0001819: Feature Request: First Edition Search Tables
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry 2?")
 ::Scenarios Feature::
-Shuffle components Flag in gameData when saving scenario: Shuffle when loading
+Shuffle components Flag in gameData when saving scenario: Shuffle when loading OR NO shuffling when loading
 RealmSpeak + GM: save game as scenario (with scenario name and description), have a different file extension
 RealSpeak: Load scenarios (overview with names and descriptions), list game options
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
