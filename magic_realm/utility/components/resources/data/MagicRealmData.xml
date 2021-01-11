@@ -4799,6 +4799,7 @@
         <attribute length="16" />
         <attribute base_price="8" />
         <attribute missile="" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="medium_bow" />
@@ -4824,6 +4825,7 @@
         <attribute length="14" />
         <attribute base_price="6" />
         <attribute missile="" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="light_bow" />
@@ -4849,6 +4851,7 @@
         <attribute length="14" />
         <attribute base_price="6" />
         <attribute missile="" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="light_bow" />
@@ -4874,6 +4877,7 @@
         <attribute length="12" />
         <attribute base_price="10" />
         <attribute missile="" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="crossbow" />
@@ -4898,6 +4902,7 @@
         <attribute weight="L" />
         <attribute length="9" />
         <attribute base_price="1" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="staff" />
@@ -4920,6 +4925,7 @@
         <attribute weight="L" />
         <attribute length="9" />
         <attribute base_price="1" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="staff" />
@@ -4942,6 +4948,7 @@
         <attribute weight="H" />
         <attribute length="8" />
         <attribute base_price="10" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="great_sword" />
@@ -4992,6 +4999,7 @@
         <attribute weight="H" />
         <attribute length="6" />
         <attribute base_price="8" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="morning_star" />
@@ -5016,6 +5024,7 @@
         <attribute weight="H" />
         <attribute length="5" />
         <attribute base_price="8" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="great_axe" />
@@ -5041,6 +5050,7 @@
         <attribute weight="H" />
         <attribute length="5" />
         <attribute base_price="8" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="great_axe" />
@@ -5284,6 +5294,7 @@
         <attribute weight="M" />
         <attribute length="10" />
         <attribute base_price="6" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="spear" />
@@ -5307,6 +5318,7 @@
         <attribute weight="M" />
         <attribute length="10" />
         <attribute base_price="6" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="spear" />
@@ -5330,6 +5342,7 @@
         <attribute weight="M" />
         <attribute length="10" />
         <attribute base_price="6" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="spear" />
@@ -5353,6 +5366,7 @@
         <attribute weight="M" />
         <attribute length="10" />
         <attribute base_price="6" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="spear" />
@@ -25301,6 +25315,7 @@
         <attribute weight="H" />
         <attribute length="10" />
         <attribute base_price="8" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute icon_type="halberd" />
         <attribute icon_folder="weapons" />
@@ -25322,6 +25337,7 @@
         <attribute weight="H" />
         <attribute length="10" />
         <attribute base_price="8" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute icon_type="halberd" />
         <attribute icon_folder="weapons" />
@@ -25343,6 +25359,7 @@
         <attribute weight="H" />
         <attribute length="10" />
         <attribute base_price="8" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute icon_type="halberd" />
         <attribute icon_folder="weapons" />
@@ -25364,6 +25381,7 @@
         <attribute weight="H" />
         <attribute length="10" />
         <attribute base_price="8" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute icon_type="halberd" />
         <attribute icon_folder="weapons" />
@@ -26408,6 +26426,7 @@
         <attribute weight="L" />
         <attribute length="9" />
         <attribute base_price="1" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute icon_type="staff" />
         <attribute icon_folder="weapons" />
@@ -26428,6 +26447,7 @@
         <attribute weight="L" />
         <attribute length="9" />
         <attribute base_price="1" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute icon_type="staff" />
         <attribute icon_folder="weapons" />
@@ -26448,6 +26468,7 @@
         <attribute weight="L" />
         <attribute length="9" />
         <attribute base_price="1" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute icon_type="staff" />
         <attribute icon_folder="weapons" />
@@ -26468,6 +26489,7 @@
         <attribute weight="L" />
         <attribute length="9" />
         <attribute base_price="1" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute icon_type="staff" />
         <attribute icon_folder="weapons" />
@@ -26533,6 +26555,7 @@
         <attribute length="14" />
         <attribute base_price="6" />
         <attribute missile="" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute icon_type="light_bow" />
         <attribute icon_folder="weapons" />
@@ -26601,6 +26624,7 @@
         <attribute weight="H" />
         <attribute length="10" />
         <attribute base_price="8" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute icon_type="halberd" />
         <attribute icon_folder="weapons" />
