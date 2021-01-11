@@ -990,7 +990,23 @@ public class BattleModel {
 				int fumbleModifier = 0;
 				if (hostPrefs.hasPref(Constants.OPT_FUMBLE)) {
 					fumbleModifier = attacker.getAttackSpeed().getNum() - target.getMoveSpeed().getNum();
-					logBattleInfo("fumble = "+attacker.getAttackSpeed().getNum()+" - "+target.getMoveSpeed().getNum()+" = "+fumbleModifier+" (base speed difference)");
+					if (hostPrefs.hasPref(Constants.OPT_TWO_HANDED_WEAPONS) && RealmComponent.getRealmComponent(attackerCombat.getGameObject()).isCharacter()) {
+						CharacterWrapper attackerCharacter = new CharacterWrapper(attackerCombat.getGameObject());
+						ArrayList<GameObject> activeInventory = attackerCharacter.getActiveInventory();
+						boolean shield = false;
+						boolean twoHandedWeapon = false;
+						for (GameObject item : activeInventory) {
+							if (item.hasThisAttribute("shield") && item.getThisAttribute("weight") != "L") shield = true;
+							if (item.hasThisAttribute("two_handed")) twoHandedWeapon = true;
+						}
+						if (twoHandedWeapon && shield) {
+							fumbleModifier = fumbleModifier+2;
+							logBattleInfo("fumble = "+attacker.getAttackSpeed().getNum()+" - "+target.getMoveSpeed().getNum()+" = "+fumbleModifier+" (base speed difference and two-handed weapon malus)");
+						}
+					}
+					else {
+						logBattleInfo("fumble = "+attacker.getAttackSpeed().getNum()+" - "+target.getMoveSpeed().getNum()+" = "+fumbleModifier+" (base speed difference)");
+					}
 					if (hitType==UNDERCUT) {
 						fumbleModifier += 4;
 						logBattleInfo("fumble + 4 = "+fumbleModifier+" (for undercut)");

@@ -4411,6 +4411,7 @@
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
+		<attribute shield="" />
         <attribute armor_choice="" />
         <attribute armor="" />
         <attribute original_game="" />
@@ -4436,6 +4437,7 @@
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
+		<attribute shield="" />
         <attribute armor_choice="" />
         <attribute armor="" />
         <attribute original_game="" />
@@ -4461,6 +4463,7 @@
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
+		<attribute shield="" />
         <attribute armor_choice="" />
         <attribute armor="" />
         <attribute original_game="" />
@@ -4486,6 +4489,7 @@
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
+		<attribute shield="" />
         <attribute armor_choice="" />
         <attribute armor="" />
         <attribute original_game="" />
@@ -4620,6 +4624,7 @@
       <AttributeBlock blockName="this">
         <attribute vulnerability="H" />
         <attribute weight="H" />
+		<attribute shield="" />
         <attribute armor_choice="" />
         <attribute magic="Jade" />
         <attribute fame="4" />
@@ -16604,6 +16609,7 @@
         <attribute weight="H" />
         <attribute facing="face_dn" />
         <attribute fame="2" />
+		<attribute shield="" />
         <attribute armor="" />
         <attribute armor_row="1" />
         <attribute armor_choice="" />
@@ -23020,6 +23026,7 @@
       <AttributeBlock blockName="this">
         <attribute vulnerability="L" />
         <attribute weight="L" />
+		<attribute shield="" />
         <attribute armor_choice="" />
         <attribute armor="" />
         <attribute icon_type="buckler" />
@@ -25425,6 +25432,7 @@
       <AttributeBlock blockName="this">
         <attribute vulnerability="L" />
         <attribute weight="L" />
+		<attribute shield="" />
         <attribute armor_choice="" />
         <attribute armor="" />
         <attribute icon_type="buckler" />
@@ -26818,6 +26826,7 @@
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
+		<attribute shield="" />
         <attribute armor_choice="" />
         <attribute armor="" />
         <attribute icon_type="shield" />
@@ -26888,6 +26897,7 @@
       <AttributeBlock blockName="this">
         <attribute vulnerability="L" />
         <attribute weight="L" />
+		<attribute shield="" />
         <attribute armor_choice="" />
         <attribute armor="" />
         <attribute icon_type="buckler" />
@@ -26969,6 +26979,7 @@
       <AttributeBlock blockName="this">
         <attribute vulnerability="L" />
         <attribute weight="L" />
+		<attribute shield="" />
         <attribute armor_choice="" />
         <attribute armor="" />
         <attribute icon_type="buckler" />

@@ -450,6 +450,7 @@ public class Constants {
 	public static final String OPT_CHAR_ABILITY_DRUID_CURSES = "OptCharDruidCurses";
 	public static final String OPT_CHAR_ABILITY_ELF = "OptCharElf";
 	public static final String OPT_PENETRATING_ARMOR = "OptPenArmor";
+	public static final String OPT_TWO_HANDED_WEAPONS = "OptTwoHandedWeapons";
 	public static final String OPT_RIDING_HORSES = "OptRidingHorses";
 	public static final String OPT_AUTOMATIC_ENCHANTING = "OptAutomaticEnchanting";
 	public static final String OPT_ENHANCED_MAGIC = "OptEnhancedMagic";
