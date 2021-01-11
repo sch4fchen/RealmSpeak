@@ -2,7 +2,6 @@ Fix alternative tiles
 
 RealmSpeak: Option: shuffle hidden components when loading a game
 0001358: Monster Roll per Set
-0001797: Feature Request - BOQ Two Handed Weapon Opt Rules
 Expansion 1: Parry + Ability: "Parry 1?"
 Expansion 1: Two-Handed Combat + Ability: "Dual Wielding"
 Expansion 1: More Ambushes + Ability: "Advanced_Ambush"

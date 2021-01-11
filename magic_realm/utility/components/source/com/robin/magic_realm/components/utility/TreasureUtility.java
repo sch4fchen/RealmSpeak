@@ -115,7 +115,7 @@ public class TreasureUtility {
 			
 //			Strength characterVulnerability = new Strength(character.getGameObject().getThisAttribute("vulnerability"));
 			Strength characterCarryWeight = character.getNeededSupportWeight();
-			Collection activeInventory = character.getActiveInventory();
+			ArrayList<GameObject> activeInventory = character.getActiveInventory();
 			ArmorType armorType = getArmorType(thing);
 			if (thing.hasThisAttribute("boots")) {
 				// Boots card
@@ -124,8 +124,7 @@ public class TreasureUtility {
 				Strength bootStrength = new Strength(thing.getThisAttribute("strength"));
 				if (bootStrength.strongerOrEqualTo(characterCarryWeight)) {
 					// If good, then inactivate any existing boots
-					for (Iterator i=activeInventory.iterator();i.hasNext();) {
-						GameObject otherThing = (GameObject)i.next();
+					for (GameObject otherThing : activeInventory) {
 						if (otherThing.hasThisAttribute("boots")) {
 							otherThing.removeThisAttribute(Constants.ACTIVATED);
 							break; // no need to keep searching as long as this code is in place
@@ -151,8 +150,7 @@ public class TreasureUtility {
 				Strength horseStrength = new Strength(thing.getAttribute("trot","strength"));
 				if (horseStrength.strongerOrEqualTo(characterCarryWeight)) {
 					// If good, then inactivate any existing horses
-					for (Iterator i=activeInventory.iterator();i.hasNext();) {
-						GameObject otherThing = (GameObject)i.next();
+					for (GameObject otherThing : activeInventory) {
 						if (otherThing.hasThisAttribute("horse")) {
 							otherThing.removeThisAttribute(Constants.ACTIVATED);
 							break; // no need to keep searching as long as this code is in place
@@ -167,8 +165,7 @@ public class TreasureUtility {
 			else if (thing.hasThisAttribute("gloves")) {
 				// Gloves
 				// Inactivate any existing gloves
-				for (Iterator i=activeInventory.iterator();i.hasNext();) {
-					GameObject otherThing = (GameObject)i.next();
+				for (GameObject otherThing : activeInventory) {
 					if (otherThing.hasThisAttribute("gloves")) {
 						otherThing.removeThisAttribute(Constants.ACTIVATED);
 						break; // no need to keep searching as long as this code is in place
@@ -191,8 +188,7 @@ public class TreasureUtility {
 			}
 			else if (armorType!=ArmorType.None && armorType!=ArmorType.Special) {
 				// Inactivate any existing armor of the same ArmorType
-				for (Iterator i=activeInventory.iterator();i.hasNext();) {
-					GameObject otherThing = (GameObject)i.next();
+				for (GameObject otherThing : activeInventory) {
 					ArmorType otherArmor = getArmorType(otherThing);
 					if (otherArmor==armorType) {
 						if (doDeactivate(parentFrame,character,otherThing)) {
@@ -203,14 +199,27 @@ public class TreasureUtility {
 						}
 					}
 				}
+				
+				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(thing.getGameData());
+				if (hostPrefs.hasPref(Constants.OPT_TWO_HANDED_WEAPONS) && thing.hasThisAttribute("shield")) {
+					for (GameObject otherThing : activeInventory) {
+						if (otherThing.hasThisAttribute("weapon")) {
+							boolean twoHandedMissleWeaponWithFumbleRule = !hostPrefs.hasPref(Constants.OPT_FUMBLE) && otherThing.hasThisAttribute("two_handed");
+							boolean towHandedWeaponWithoutFumbleRule = hostPrefs.hasPref(Constants.OPT_FUMBLE) && otherThing.hasThisAttribute("two_handed") && otherThing.hasThisAttribute("missile");
+							if (twoHandedMissleWeaponWithFumbleRule || towHandedWeaponWithoutFumbleRule) {
+								JOptionPane.showMessageDialog(parentFrame,"The "+thing.getName()+" can only be activated with a one-handed weapon at the same time.");
+								return false;
+							}
+						}
+					}
+				}
+				
 			}
 			else if (thing.hasThisAttribute("weapon")) {
 				// Inactivate any existing weapon
-				for (Iterator i=activeInventory.iterator();i.hasNext();) {
-					GameObject otherThing = (GameObject)i.next();
+				for (GameObject otherThing : activeInventory) {
 					if (otherThing.hasThisAttribute("weapon")) {
 						WeaponChitComponent weapon = (WeaponChitComponent)RealmComponent.getRealmComponent(otherThing);
-						
 						if (weapon.isAlerted() && !weapon.getGameObject().hasThisAttribute(Constants.ALERTED_WEAPON)) {
 							CharacterChitComponent chit = (CharacterChitComponent)RealmComponent.getRealmComponent(character.getGameObject());
 							if (!chit.activeWeaponStaysAlerted()) {
@@ -221,10 +230,18 @@ public class TreasureUtility {
 								weapon.setAlerted(false);
 							}
 						}
-						
 						otherThing.removeThisAttribute(Constants.ACTIVATED);
-						break; // no need to keep searching as long as this code is in place
 					}
+					
+					HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(thing.getGameData());
+					if (hostPrefs.hasPref(Constants.OPT_TWO_HANDED_WEAPONS) && otherThing.hasThisAttribute("shield")) {
+						boolean twoHandedMissleWeaponWithFumbleRule = !hostPrefs.hasPref(Constants.OPT_FUMBLE) && thing.hasThisAttribute("two_handed");
+						boolean towHandedWeaponWithoutFumbleRule = hostPrefs.hasPref(Constants.OPT_FUMBLE) && thing.hasThisAttribute("two_handed") && thing.hasThisAttribute("missile");
+						if (twoHandedMissleWeaponWithFumbleRule || towHandedWeaponWithoutFumbleRule) {
+							otherThing.removeThisAttribute(Constants.ACTIVATED);
+						}
+					}
+
 				}
 			}
 			else if (thing.hasThisAttribute(Constants.ADD_CHIT)) {
