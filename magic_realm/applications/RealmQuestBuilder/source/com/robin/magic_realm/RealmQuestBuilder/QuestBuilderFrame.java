@@ -345,6 +345,8 @@ public class QuestBuilderFrame extends JFrame {
 					super.approveSelection();
 				}
 			};
+			chooser.setAcceptAllFileFilterUsed(false);
+			chooser.setFileFilter(questGameFileFilter);
 			if (chooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
 				selectedFile = FileUtilities.fixFileExtension(chooser.getSelectedFile(), QuestConstants.DEFAULT_EXTENSION);
 			}
