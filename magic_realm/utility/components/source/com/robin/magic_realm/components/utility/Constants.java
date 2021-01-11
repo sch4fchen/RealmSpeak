@@ -200,6 +200,7 @@ public class Constants {
 	public static final String VALE_WALKER="vale_walker";
 	public static final String SNEAKY = "sneaky";
 	public static final String STRONG = "strong";
+	public static final String SHARPSHOOTER = "sharpshooter";
 	public static final String ENHANCED_MAGIC = "enhanced_magic";
 	public static final String ENHANCED_ARTIFACTS = "enhanced_artifacts";
 	public static final String ADVENTURER = "adventurer";

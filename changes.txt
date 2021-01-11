@@ -2,6 +2,7 @@ Version 1.1.3.8 - Changes since 1.1.3.7
 NEW FEATURES:
 # Optional Rule: Two-handed weapons (BoQ variant)
 # New character ability: Strong: Can activate two handed weapon and shield at the same time
+# New character ability: Sharpshooter: Works like optional "penetrating armor" rule
 
 Version 1.1.3.7 - Changes since 1.1.3.6
 QUEST UPDATE:
@@ -25,12 +26,12 @@ NEW FEATURES:
 # Icons added to different windows
 # Restructuring optional rules reflecting 3rd edition rulebook
 # New character ability: Extra move cost for non-cave clearings
-# New character ability: Toughness: Works like optional serious wounds rule
-# New character ability: Sneaky: Works like optional ambushes rule
-# New character ability: Enhanced magic: Works like optional revised enhanced magic rule
-# New character ability: Enhanced artifacts: Works like optional enhanced artifacts and spell books rule
-# New character ability: Adventurer: Works like optional discovery rule
-# New character ability: Advanced shelters: Works like optional extra shelters rule
+# New character ability: Toughness: Works like optional "serious wounds" rule
+# New character ability: Sneaky: Works like optional "ambushes" rule
+# New character ability: Enhanced magic: Works like optional "revised enhanced magic" rule
+# New character ability: Enhanced artifacts: Works like optional "enhanced artifacts and spell books" rule
+# New character ability: Adventurer: Works like optional "discovery" rule
+# New character ability: Advanced shelters: Works like optional "extra shelters" rule
 TOOLS:
 # Option to launch tools from RealmSpeak (tool menu): GM, CharacterBuilder, QuestBuilder, GameBuilder, TileEditor, RealmViewer
 # Bat files for running tools directly

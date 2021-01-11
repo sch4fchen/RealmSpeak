@@ -512,7 +512,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				RealmLogging.logMessage(attacker.getGameObject().getName(),"Harm is greater than Tremendous ("+harm+")!");
 				RealmLogging.logMessage(attacker.getGameObject().getName(),"Missile attack hits a vital unarmored spot!");
 			}
-			else if (hostPrefs.hasPref(Constants.OPT_PENETRATING_ARMOR) && attacker.isMissile()) {
+			else if ((hostPrefs.hasPref(Constants.OPT_PENETRATING_ARMOR) || character.affectedByKey(Constants.SHARPSHOOTER)) && attacker.isMissile()) {
 				// When Penetrating Armor is in play, and the attack is a missile attack, then the armor is never actually "hit".
 				
 				/*
