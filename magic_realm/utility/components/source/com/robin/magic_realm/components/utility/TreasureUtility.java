@@ -201,7 +201,7 @@ public class TreasureUtility {
 				}
 				
 				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(thing.getGameData());
-				if (hostPrefs.hasPref(Constants.OPT_TWO_HANDED_WEAPONS) && thing.hasThisAttribute("shield")) {
+				if (hostPrefs.hasPref(Constants.OPT_TWO_HANDED_WEAPONS) && thing.hasThisAttribute("shield") && !RealmComponent.getRealmComponent(character.getGameObject()).affectedByKey(Constants.STRONG)) {
 					for (GameObject otherThing : activeInventory) {
 						if (otherThing.hasThisAttribute("weapon")) {
 							boolean twoHandedMissleWeaponWithFumbleRule = !hostPrefs.hasPref(Constants.OPT_FUMBLE) && otherThing.hasThisAttribute("two_handed");
@@ -234,7 +234,7 @@ public class TreasureUtility {
 					}
 					
 					HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(thing.getGameData());
-					if (hostPrefs.hasPref(Constants.OPT_TWO_HANDED_WEAPONS) && otherThing.hasThisAttribute("shield")) {
+					if (hostPrefs.hasPref(Constants.OPT_TWO_HANDED_WEAPONS) && otherThing.hasThisAttribute("shield") && !RealmComponent.getRealmComponent(character.getGameObject()).affectedByKey(Constants.STRONG)) {
 						boolean twoHandedMissleWeaponWithFumbleRule = !hostPrefs.hasPref(Constants.OPT_FUMBLE) && thing.hasThisAttribute("two_handed");
 						boolean towHandedWeaponWithoutFumbleRule = hostPrefs.hasPref(Constants.OPT_FUMBLE) && thing.hasThisAttribute("two_handed") && thing.hasThisAttribute("missile");
 						if (twoHandedMissleWeaponWithFumbleRule || towHandedWeaponWithoutFumbleRule) {

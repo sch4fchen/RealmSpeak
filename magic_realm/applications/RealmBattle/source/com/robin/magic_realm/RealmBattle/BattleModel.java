@@ -995,9 +995,11 @@ public class BattleModel {
 						ArrayList<GameObject> activeInventory = attackerCharacter.getActiveInventory();
 						boolean shield = false;
 						boolean twoHandedWeapon = false;
-						for (GameObject item : activeInventory) {
-							if (item.hasThisAttribute("shield") && item.getThisAttribute("weight") != "L") shield = true;
-							if (item.hasThisAttribute("two_handed")) twoHandedWeapon = true;
+						if (!RealmComponent.getRealmComponent(attackerCombat.getGameObject()).affectedByKey(Constants.STRONG)) {
+							for (GameObject item : activeInventory) {
+								if (item.hasThisAttribute("shield") && item.getThisAttribute("weight") != "L") shield = true;
+								if (item.hasThisAttribute("two_handed")) twoHandedWeapon = true;
+							}
 						}
 						if (twoHandedWeapon && shield) {
 							fumbleModifier = fumbleModifier+2;
