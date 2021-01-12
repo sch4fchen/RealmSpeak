@@ -138,7 +138,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case Guild:
 				list.add(new QuestPropertyBlock(QuestRewardGuild.GUILD, "Guild", FieldType.StringSelector, getGuildNames()));
-				list.add(new QuestPropertyBlock(QuestRewardGuild.GUILD_LEVEL, "Guild level (1-3)", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRewardGuild.GUILD_CHANGE, "Change level", FieldType.StringSelector, QuestRewardGuild.GuildGainType.values()));
+				list.add(new QuestPropertyBlock(QuestRewardGuild.GUILD_LEVEL, "Set guild level (1-3)", FieldType.Number));
 				break;
 			case Heal:
 				list.add(new QuestPropertyBlock(QuestRewardHeal.HEAL, "Heal chits", FieldType.StringSelector, HealType.values()));
