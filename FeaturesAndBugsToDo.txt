@@ -1,4 +1,4 @@
-Fix alternative tiles
+Fix alternative tiles with tile editor (e.g. paths)
 
 RealmSpeak: Option: shuffle hidden components when loading a game
 
@@ -8,7 +8,8 @@ Expansion 1: Parry + Ability: "Parry 1?"
 Expansion 1: Two-Handed Combat + Ability: "Dual Wielding"
 Expansion 1: More Ambushes + Ability: "Advanced_Ambush"
 Expansion 1: Should always be safe at guilds, if you are a member (from monsters and natives)
-Expansion 1: other rules?
+Expansion 1: 4. Bounty, 5. Stealing, Guilds? Joining? Benefit after guild quest? Guild chit?
+Expansion 1: Guild Quests
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry 2?")
 0001819: Feature Request: First Edition Search Tables
 0001820: Feature Request: First Edition Optional Rules - Dissolving Doors
@@ -31,10 +32,6 @@ A LITTLE HELP FROM FRIENDS: http://www.nand.it/mr/mr02.html
 0001447: Log breakdown by day
 0001232: Flying Activities: Optional Rule # 3: Flying Activities.
 0001750: Option to disable battling natives
-Abilities:
-	Cannot initiate attacks on natives (i.e. can only target battling natives)
-	Fatigue MAGIC to reduce speed on one MOVE chit
-	Cannot attack from hidden
 ---:::BUGS:::---
 Wizard advancement - didn't get MOVE M5->MAGIC III
 0001879: Color magic fatigue counted against character when used in encounter step to energize a spell
@@ -87,6 +84,10 @@ Wizard advancement - didn't get MOVE M5->MAGIC III
 0000667: Watchful Natives should be assigned by owning character
 0000444: Dropping/Trading the DragonFang Necklace
 ---:::IDEAS:::---
+Character abilities:
+	Cannot initiate attacks on natives (i.e. can only target battling natives)
+	Fatigue MAGIC to reduce speed on one MOVE chit
+	Cannot attack from hidden
 Would be nice to make weapon abilities too:
 	Immobilizing - When it hits all attacks undercut
 	Stunning - Target cannot play an attack next round
