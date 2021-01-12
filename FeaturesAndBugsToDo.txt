@@ -1,34 +1,36 @@
 Fix alternative tiles
 
 RealmSpeak: Option: shuffle hidden components when loading a game
+
 0001358: Monster Roll per Set
+Expansion 1: Minotaur buckler not really implemented as I would like:  it should be able to block hits...
 Expansion 1: Parry + Ability: "Parry 1?"
 Expansion 1: Two-Handed Combat + Ability: "Dual Wielding"
 Expansion 1: More Ambushes + Ability: "Advanced_Ambush"
-A LITTLE HELP FROM FRIENDS: http://www.nand.it/mr/mr02.html
-0001829: Feature Request - First Edition Killer Caves: First Edition rule 40.9. "Horses are killed and removed from play when they enter a cave clearing".
-0001828: Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
-0001827: Feature Request - First Edition Optional Rules - Hiring Characters (Solitaire): http://www.nand.it/mr/mr08.html
-0001826: Feature Request - First Edition Optional Rules - The Deadly Realm: http://www.nand.it/mr/mr06.html
-0001825: Feature Request - First Edition Optional Rule - Buying on Credit
-0001823: Feature Request - First Edition Optional Rule - Stealing: (+Ability: "Thief"): A hidden character can LOOT to draw the items being carried by another character in his Clearing. He can draw only from the character's inactive items (which are piled up by their owner for the purpose), and he must make a normal HIDE roll each time he loots; if he fails the roll he is unhidden.
-0001822: Feature Request: First Edition Optional Rule - Steel Against Magic: (+Disadvantage) A character cannot play a MAGIC counter if he has any weapon counter except a staff activated.
-0001820: Feature Request: First Edition Optional Rules - Dissolving Doors
-0001819: Feature Request: First Edition Search Tables
+Expansion 1: Should always be safe at guilds, if you are a member (from monsters and natives)
+Expansion 1: other rules?
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry 2?")
-::Scenarios Feature::
-Shuffle components Flag in gameData when saving scenario: Shuffle when loading OR NO shuffling when loading
-RealmSpeak + GM: save game as scenario (with scenario name and description), have a different file extension
-RealSpeak: Load scenarios (overview with names and descriptions), list game options
+0001819: Feature Request: First Edition Search Tables
+0001820: Feature Request: First Edition Optional Rules - Dissolving Doors
+0001822: Feature Request: First Edition Optional Rule - Steel Against Magic: (+Disadvantage) A character cannot play a MAGIC counter if he has any weapon counter except a staff activated.
+0001823: Feature Request - First Edition Optional Rule - Stealing: (+Ability: "Thief"): A hidden character can LOOT to draw the items being carried by another character in his Clearing. He can draw only from the character's inactive items (which are piled up by their owner for the purpose), and he must make a normal HIDE roll each time he loots; if he fails the roll he is unhidden.
+0001825: Feature Request - First Edition Optional Rule - Buying on Credit
+0001826: Feature Request - First Edition Optional Rules - The Deadly Realm: http://www.nand.it/mr/mr06.html
+0001827: Feature Request - First Edition Optional Rules - Hiring Characters (Solitaire): http://www.nand.it/mr/mr08.html
+0001828: Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
+0001829: Feature Request - First Edition Killer Caves: First Edition rule 40.9. "Horses are killed and removed from play when they enter a cave clearing".
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
+::Scenarios Feature::
+	Shuffle components Flag in gameData when saving scenario: Shuffle when loading OR NO shuffling when loading
+	RealmSpeak + GM: save game as scenario (with scenario name and description), have a different file extension
+	RealSpeak: Load scenarios (overview with names and descriptions), list game options
+A LITTLE HELP FROM FRIENDS: http://www.nand.it/mr/mr02.html
 0001645: Automatic HTML export
 0001563: Showing flip sides of tiles and counters in HTML
 0001447: Log breakdown by day
 0001232: Flying Activities: Optional Rule # 3: Flying Activities.
 0001750: Option to disable battling natives
-Should always be safe at guilds, if you are a member (from monsters and natives)
-Minotaur buckler not really implemented as I would like:  it should be able to block hits...
 Abilities:
 	Cannot initiate attacks on natives (i.e. can only target battling natives)
 	Fatigue MAGIC to reduce speed on one MOVE chit
