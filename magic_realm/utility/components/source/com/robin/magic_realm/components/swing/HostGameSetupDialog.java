@@ -354,6 +354,9 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		anyVpsAllowedOption.setEnabled(editMode);
 		
 		questGuildsOption.setEnabled(getSelectedGameVariant().getTitle()=="Expansion One");
+		if (questGuildsOption.isSelected() && getSelectedGameVariant().getTitle()!="Expansion One") {
+			questGuildsOption.setSelected(false);
+		}
 		
 		if (!editMode) {
 			vpEndlessOption.setEnabled(false);

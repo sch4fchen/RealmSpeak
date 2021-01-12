@@ -4,12 +4,13 @@ RealmSpeak: Option: shuffle hidden components when loading a game
 
 0001358: Monster Roll per Set
 Expansion 1: Minotaur buckler not really implemented as I would like:  it should be able to block hits...
-Expansion 1: Parry + Ability: "Parry 1?"
+Expansion 1: Parry + Ability: "Parry"
 Expansion 1: Two-Handed Combat + Ability: "Dual Wielding"
 Expansion 1: More Ambushes + Ability: "Advanced_Ambush"
 Expansion 1: Should always be safe at guilds, if you are a member (from monsters and natives)
 Expansion 1: 4. Bounty, 5. Stealing, Guilds? Joining? Benefit after guild quest? Guild chit?
 Expansion 1: Guild Quests
+Expansion 1: Assassin Guild, Nature Guild (see below)
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry 2?")
 0001819: Feature Request: First Edition Search Tables
 0001820: Feature Request: First Edition Optional Rules - Dissolving Doors
