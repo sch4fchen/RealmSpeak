@@ -668,7 +668,6 @@ public class ClearingUtility {
 					int r = RandomNumber.getRandom(connectedClearings.size());
 					ClearingDetail clearing = connectedClearings.get(r);
 					chit.setThisAttribute("clearing",clearing.getNum());
-					//System.out.println("adding a clearing to "+chit.getName());
 				}
 			}
 		}

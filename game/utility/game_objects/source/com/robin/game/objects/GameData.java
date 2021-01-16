@@ -713,16 +713,16 @@ public class GameData extends ModifyableObject implements Serializable {
 	/**
 	 * Process the game objects with a setup type
 	 */
-	public ArrayList doSetup(String setupName,ArrayList<String> keyVals) {
+	public ArrayList<GameObject> doSetup(String setupName,ArrayList<String> keyVals) {
 		return doSetup(new StringBuffer(),findSetup(setupName),keyVals);
 	}
-	public ArrayList doSetup(StringBuffer result,String setupName,ArrayList<String> keyVals) {
+	public ArrayList<GameObject> doSetup(StringBuffer result,String setupName,ArrayList<String> keyVals) {
 		return doSetup(result,findSetup(setupName),keyVals);
 	}
-	public ArrayList doSetup(StringBuffer result,GameSetup setup,ArrayList<String> keyVals) {
+	public ArrayList<GameObject> doSetup(StringBuffer result,GameSetup setup,ArrayList<String> keyVals) {
 		if (setup!=null) {
 			GamePool pool = new GamePool(gameObjects);
-			ArrayList aCopy = setup.processSetup(result,pool.find(keyVals));
+			ArrayList<GameObject> aCopy = setup.processSetup(result,pool.find(keyVals));
 			return aCopy;
 		}
 		return null;

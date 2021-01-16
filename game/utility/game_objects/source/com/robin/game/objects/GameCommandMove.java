@@ -29,7 +29,7 @@ public class GameCommandMove extends GameCommand {
 	public String getTypeName() {
 		return NAME;
 	}
-	protected String process(ArrayList allGameObjects) {
+	protected String process(ArrayList<GameObject> allGameObjects) {
 		GamePool fromPool = parent.getPool(from);
 		GamePool toPool = parent.getPool(to);
 		return move(fromPool,toPool);

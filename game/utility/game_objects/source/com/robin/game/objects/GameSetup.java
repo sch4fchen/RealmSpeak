@@ -28,6 +28,8 @@ import org.jdom.Attribute;
 import org.jdom.Element;
 
 import com.robin.general.io.ModifyableObject;
+import com.robin.magic_realm.components.quest.QuestDeck;
+import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class GameSetup extends ModifyableObject implements Serializable {
 	public static final String ALL = "ALL";
@@ -37,7 +39,7 @@ public class GameSetup extends ModifyableObject implements Serializable {
 	
 	protected GameData parent;
 	
-	protected Hashtable pools;
+	protected Hashtable<String, GamePool> pools;
 	
 	public GameSetup(GameData parentData) {
 		parent = parentData;
@@ -138,16 +140,15 @@ public class GameSetup extends ModifyableObject implements Serializable {
 		return command;
 	}
 	public void copyCommandsFrom(GameSetup setup) {
-		ArrayList commands = setup.getGameCommands();
-		for (Iterator i=commands.iterator();i.hasNext();) {
-			GameCommand command = (GameCommand)i.next();
+		ArrayList<GameCommand> commands = setup.getGameCommands();
+		for (GameCommand command : commands) {
 			GameCommand newCommand = GameCommand.getCommandForName(this,command.getTypeName());
 			gameCommands.add(newCommand);
 			newCommand.copyFrom(command);
 		}
 		setModified(true);
 	}
-	public ArrayList processSetup(StringBuffer result,ArrayList gameObjects) {
+	public ArrayList<GameObject> processSetup(StringBuffer result,ArrayList<GameObject> gameObjects) {
 		pools = new Hashtable();
 		pools.put(ALL,new GamePool(gameObjects));
 		result.append("Pool ALL was created: "+gameObjects.size()+"\n");
@@ -155,10 +156,9 @@ public class GameSetup extends ModifyableObject implements Serializable {
 			result.append(command.doCommand(gameObjects));
 		}
 		result.append("---DONE---");
-		ArrayList keys = new ArrayList(pools.keySet());
+		ArrayList<String> keys = new ArrayList<String>(pools.keySet());
 		Collections.sort(keys);
-		for (Iterator i=keys.iterator();i.hasNext();) {
-			String key = (String)i.next();
+		for (String key : keys) {
 			GamePool pool = (GamePool)pools.get(key);
 			result.append(key+": "+pool.size()+" left\n");
 		}
@@ -265,5 +265,40 @@ public class GameSetup extends ModifyableObject implements Serializable {
 		}
 		gameCommands.clear();
 		gameCommands = expanded;
+	}
+	
+	public static void randomizeSetup(HostPrefWrapper hostPrefs, GameData data) {
+		GamePool pool = new GamePool(data.getGameObjects());
+		if (hostPrefs.isUsingQuestCards()) {
+			QuestDeck deck = QuestDeck.findDeck(data);
+			deck.shuffle();
+		}
+		ArrayList<String> query = new ArrayList<String>();
+		//warning chits
+		String[] chitsQueries = new String[] {"tile_type=V", "tile_type=W", "tile_type=M", "tile_type=C", "tile_type=S", "tile_type=X"};
+		for (String tileType : chitsQueries) {
+			query.add("chit");
+			query.add("!seen");
+			query.add(tileType);
+			randomizeGameObjects(query, pool);
+			query.clear();
+		}
+		//sound chits
+		query.add("chit");
+		query.add("sound");
+		query.add("!seen");
+		randomizeGameObjects(query, pool);
+		query.clear();
+	}
+	
+	private static void randomizeGameObjects(ArrayList<String> query, GamePool pool) {
+		ArrayList<GameObject> chits = pool.extract(query);
+		ArrayList<GameObject> parents =  new ArrayList<GameObject>();
+		for (GameObject chit : chits) {
+			parents.add(chit.getHeldBy());
+		}
+		GamePool chitPool = new GamePool(chits);
+		GamePool parentsPool = new GamePool(parents);
+		chitPool.distribute(parentsPool, chitPool.size(), GamePool.RANDOM);
 	}
 }

@@ -1629,9 +1629,8 @@ public class RealmSpeakFrame extends JFrame {
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 			String hostName = hostPrefs.getHostName();
 			GamePool pool = new GamePool(data.getGameObjects());
-			Collection characterGameObjects = pool.extract(CharacterWrapper.getKeyVals());
-			for (Iterator i=characterGameObjects.iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
+			ArrayList<GameObject> characterGameObjects = pool.extract(CharacterWrapper.getKeyVals());
+			for (GameObject go : characterGameObjects) {
 				CharacterWrapper character = new CharacterWrapper(go);
 				if (!character.getPlayerName().equals(hostName) && character.isActive()) {
 					if (netConnect) {
@@ -1657,6 +1656,9 @@ public class RealmSpeakFrame extends JFrame {
 			showStatus("Loading game data...");
 			RealmLoader loader = new RealmLoader();
 			makeHost(loader.getMaster(),data,netConnect);
+			if (realmSpeakOptions.getOptions().getBoolean(RealmSpeakOptions.RANDOM_SETUP)) {
+				GameSetup.randomizeSetup(hostPrefs, data);
+			}
 			resetStatus();
 		}
 		else {
@@ -1879,14 +1881,6 @@ public class RealmSpeakFrame extends JFrame {
 			
 		// Launch a game connection frame
 		realmHostFrame = new RealmHostPanel(host,netConnect);
-//		realmHostFrame.addChangeListener(new ChangeListener() {
-//			public void stateChanged(ChangeEvent ev) {
-//				// The only point you can save a game, is during the recording stage...
-//				boolean saveable = realmHostFrame.getGameState()==GameWrapper.GAME_STATE_RECORDING;
-//				saveCurrentGame.setEnabled(saveable);
-//				endCurrentGame.setEnabled(saveable);
-//			}
-//		});
 		
 		setTitle("Realm Speak"+(netConnect?" (Hosting)":" (Local)"));
 	

@@ -75,7 +75,7 @@ public class GamePool extends ArrayList {
 	public GameObject findFirst(String keyVals) {
 		return findFirst(makeKeyVals(keyVals));
 	}
-	public GameObject findFirst(Collection keyVals) {
+	public GameObject findFirst(Collection<String> keyVals) {
 		ArrayList<GameObject> list = find(keyVals);
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -92,7 +92,7 @@ public class GamePool extends ArrayList {
 	/**
 	 * Locates all GameObjects that have all members of "keyVals" in their attributes
 	 */
-	public ArrayList<GameObject> find(Collection keyVals) {
+	public ArrayList<GameObject> find(Collection<String> keyVals) {
 		ArrayList<GameObject> foundObjects = new ArrayList<GameObject>();
 		for (int i=0;i<size();i++) {
 			GameObject go = (GameObject)get(i);
@@ -125,7 +125,7 @@ public class GamePool extends ArrayList {
 	/**
 	 * Locates and extracts (removes) all GameObjects that have all members of "keyVals" in their attributes
 	 */
-	public ArrayList<GameObject> extract(Collection keyVals) {
+	public ArrayList<GameObject> extract(Collection<String> keyVals) {
 		return extract(keyVals,0);
 	}
 	/**
@@ -134,7 +134,7 @@ public class GamePool extends ArrayList {
 	 * @param keyVals		The keyvals
 	 * @param limit		The maximum number of objects to extract, or if less than 1, all of them.
 	 */
-	public ArrayList<GameObject> extract(Collection keyVals,int limit) {
+	public ArrayList<GameObject> extract(Collection<String> keyVals,int limit) {
 		ArrayList<GameObject> extractedObjects = find(keyVals);
 		for (GameObject extracted:extractedObjects) {
 			remove(extracted);
@@ -234,9 +234,6 @@ public class GamePool extends ArrayList {
 	 */
 	public int distribute(GamePool dist,int number,int type) {
  		int count = 0;
-//System.out.println("size = "+size());
-//System.out.println("number = "+number);
-//System.out.println("dist.size = "+dist.size());
 		while(size()>0 && number>0 && dist.size()>0) {
 			int n;
 			switch(type) {
@@ -258,7 +255,6 @@ public class GamePool extends ArrayList {
 			int distIndex = count % dist.size();
 			GameObject goAcceptor = dist.getGameObject(distIndex);
 			goAcceptor.add(go);
-//System.out.println("distribute "+go+" to "+goAcceptor);
 			count++;
 			number--;
 		}

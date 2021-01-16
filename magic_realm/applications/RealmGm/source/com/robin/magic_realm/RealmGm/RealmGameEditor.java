@@ -752,6 +752,15 @@ public class RealmGameEditor extends JInternalFrame {
 		makeRepaired.setEnabled(armorCount>0);
 		toggleAlerted.setEnabled(weaponCount>0);
 	}
+	public void updateTables() {
+		locationTable.revalidate();
+		locationTable.repaint();
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
+		if (hostPrefs.isUsingQuests()) {
+			updateQuestTable();
+		}
+		updateControls();
+	}
 	private boolean isBattling(RealmComponent rc) {
 		if (battleLocation==null) return false;
 		if (!rc.isDenizen()) return false;

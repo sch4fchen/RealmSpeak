@@ -36,7 +36,7 @@ public abstract class GameCommand extends ModifyableObject implements Serializab
 	protected GameSetup parent;
 	
 	public abstract String getTypeName();
-	protected abstract String process(ArrayList allGameObjects);
+	protected abstract String process(ArrayList<GameObject> allGameObjects);
 	
 	public GameCommand(GameSetup setup) {
 		parent = setup;
@@ -167,7 +167,7 @@ public abstract class GameCommand extends ModifyableObject implements Serializab
 	/**
 	 * Processes the command, and returns a result string (for debugging setups)
 	 */
-	public String doCommand(ArrayList allGameObjects) {
+	public String doCommand(ArrayList<GameObject> allGameObjects) {
 		StringBuffer result = new StringBuffer();
 		result.append("---> "+toString()+"\n");
 		result.append(process(allGameObjects));

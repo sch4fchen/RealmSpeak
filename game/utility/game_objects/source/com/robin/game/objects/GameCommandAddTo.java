@@ -18,7 +18,6 @@
 package com.robin.game.objects;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class GameCommandAddTo extends GameCommand {
 
@@ -30,15 +29,14 @@ public class GameCommandAddTo extends GameCommand {
 	public String getTypeName() {
 		return NAME;
 	}
-	protected String process(ArrayList allGameObjects) {
+	protected String process(ArrayList<GameObject> allGameObjects) {
 		GamePool fromPool = parent.getPool(from);
 		return addTo(fromPool,allGameObjects);
 	}
-	public String addTo(GamePool fromPool,ArrayList allGameObjects) {
+	public String addTo(GamePool fromPool,ArrayList<GameObject> allGameObjects) {
 		// First find the targetObject copy
 		GameObject targetObjectCopy = null;
-		for (Iterator i=allGameObjects.iterator();i.hasNext();) {
-			GameObject copyObject = (GameObject)i.next();
+		for (GameObject copyObject : allGameObjects) {
 			if (copyObject.equalsId(targetObject.getId())) {
 				targetObjectCopy = copyObject;
 				break;
@@ -46,9 +44,8 @@ public class GameCommandAddTo extends GameCommand {
 		}
 		
 		// Now, populate the contains of the copy
-		ArrayList picked = fromPool.pick(count,transferType);
-		for (Iterator i=picked.iterator();i.hasNext();) {
-			GameObject obj = (GameObject)i.next();
+		ArrayList<GameObject> picked = fromPool.pick(count,transferType);
+		for (GameObject obj : picked) {
 			targetObjectCopy.add(obj);
 		}
 		return "Picked:  "+picked.size()+":  "+from+"="+fromPool.size()+"\n";

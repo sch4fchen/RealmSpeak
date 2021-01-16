@@ -29,7 +29,7 @@ public class GameCommandCreate extends GameCommand {
 	public String getTypeName() {
 		return NAME;
 	}
-	protected String process(ArrayList allGameObjects) {
+	protected String process(ArrayList<GameObject> allGameObjects) {
 		return create(newPool);
 	}
 	public String create(String inPool) {

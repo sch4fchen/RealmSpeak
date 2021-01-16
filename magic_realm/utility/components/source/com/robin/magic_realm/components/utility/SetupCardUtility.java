@@ -147,7 +147,7 @@ public class SetupCardUtility {
 		
 		// Expansion:  handle generated monsters
 		ArrayList<GameObject> nonCurrentTileProwlers = new ArrayList<GameObject>();
-		ArrayList generatedQuery = new ArrayList();
+		ArrayList<String> generatedQuery = new ArrayList<String>();
 		generatedQuery.add(Constants.GENERATED);
 		generatedQuery.add("monster_die="+monsterDie);
 		generatedQuery.add("!"+Constants.DEAD);
@@ -158,7 +158,7 @@ public class SetupCardUtility {
 		}
 		
 		// Expansion:  handle visible travelers
-		ArrayList travelerQuery = new ArrayList();
+		ArrayList<String> travelerQuery = new ArrayList<String>();
 		travelerQuery.add(RealmComponent.TRAVELER);
 		travelerQuery.add(Constants.SPAWNED);
 		travelerQuery.add("!"+RealmComponent.OWNER_ID);
@@ -519,27 +519,24 @@ public class SetupCardUtility {
 		return total;
 	}
 
-	private static ArrayList getWarnings(Collection gameObjects,int monsterDie,boolean includeWarningSounds) {
-		ArrayList gos = new ArrayList(gameObjects);
+	private static ArrayList<GameObject> getWarnings(Collection<GameObject> gameObjects,int monsterDie,boolean includeWarningSounds) {
+		ArrayList<GameObject> gos = new ArrayList<GameObject>(gameObjects);
 		
 		// Find all "seen" treasures
-		ArrayList seen = new ArrayList();
-		for (Iterator i=gameObjects.iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		ArrayList<RealmComponent> seen = new ArrayList<RealmComponent>();
+		for (GameObject go : gameObjects) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			seen.addAll(ClearingUtility.dissolveIntoSeenStuff(rc));
 		}
-		for (Iterator i=seen.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : seen) {
 			if (!gos.contains(rc.getGameObject())) {
 				gos.add(rc.getGameObject());
 			}
 		}
 		
 		// Now process warnings
-		ArrayList warnings = new ArrayList();
-		for (Iterator i=gos.iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		ArrayList<GameObject> warnings = new ArrayList<GameObject>();
+		for (GameObject go : gos) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (!rc.isDwelling() && go.hasThisAttribute("warning")) {
 				if (rc instanceof WarningChitComponent) {
@@ -564,10 +561,9 @@ public class SetupCardUtility {
 	 * location that matches up with the summon name.  This method is used by the summonMonsters(...) method
 	 * to determine which monsters/natives are summoned for a given warning or sound chit name.
 	 */
-	private static GameObject getFirstLocationWithSummonName(ArrayList otherLocations,String name,String boardNum) {
+	private static GameObject getFirstLocationWithSummonName(ArrayList<GameObject> otherLocations,String name,String boardNum) {
 		name = name.toLowerCase();
-		for (Iterator o=otherLocations.iterator();o.hasNext();) {
-			GameObject loc = (GameObject)o.next();
+		for (GameObject loc : otherLocations) {
 			String locBoardNum = loc.getThisAttribute(Constants.BOARD_NUMBER);
 			if ((boardNum==null && locBoardNum==null) || (boardNum!=null && boardNum.equals(locBoardNum))) {
 				if (loc.getHoldCount()>0) {

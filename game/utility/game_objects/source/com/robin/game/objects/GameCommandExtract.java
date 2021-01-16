@@ -29,13 +29,13 @@ public class GameCommandExtract extends GameCommand {
 	public String getTypeName() {
 		return NAME;
 	}
-	protected String process(ArrayList allGameObjects) {
+	protected String process(ArrayList<GameObject> allGameObjects) {
 		GamePool fromPool = parent.getPool(from);
 		GamePool toPool = parent.getPool(to);
 		return extract(fromPool,toPool);
 	}
 	public String extract(GamePool fromPool,GamePool toPool) {
-		ArrayList extracted = fromPool.extract(keyVals,count);
+		ArrayList<GameObject> extracted = fromPool.extract(keyVals,count);
 		toPool.addAll(extracted);
 		return "Extracted:  "+extracted.size()+":  "+from+"="+fromPool.size()+"   "+to+"="+toPool.size()+"\n";
 	}
