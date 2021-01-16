@@ -23105,6 +23105,7 @@
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute part="" />
+		<attribute shield="" />
         <attribute icon_type="minotaur_buckler" />
         <attribute icon_folder="monsters2" />
         <attribute rw_expansion_1="" />

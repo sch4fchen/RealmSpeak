@@ -134,11 +134,11 @@ public class QuestRewardSummonMonster extends QuestReward {
 	}
 	
 	private String getMonsterKeyName() {
-		return getString(QuestConstants.KEY_PREFIX+MONSTER_NAME);
+		return getString(QuestConstants.KEY_PREFIX+MONSTER_NAME).trim();
 	}
 	
 	private String getMonsterQuery() {
-		return getString(QuestConstants.VALUE_PREFIX+MONSTER_NAME);
+		return getString(QuestConstants.VALUE_PREFIX+MONSTER_NAME).trim();
 	}
 	
 

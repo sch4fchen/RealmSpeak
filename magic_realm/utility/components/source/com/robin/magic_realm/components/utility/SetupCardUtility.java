@@ -629,6 +629,14 @@ public class SetupCardUtility {
 			}
 		}
 		
+		if (rc.isMonster()) {
+			MonsterChitComponent monster = (MonsterChitComponent)rc;
+			MonsterPartChitComponent shield = monster.getShield();
+			if (shield != null) {
+				shield.setDestroyed(false);
+			}
+		}
+		
 		GameObject denizenHolder = SetupCardUtility.getDenizenHolder(denizen);
 		if (denizen.hasThisAttribute("garrison")) {
 			// Garrison natives return to the board immediately

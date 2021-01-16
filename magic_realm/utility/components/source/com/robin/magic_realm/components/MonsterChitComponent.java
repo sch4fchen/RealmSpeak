@@ -121,7 +121,10 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 					GameObject weapon = (GameObject)i.next();
 					RealmComponent rc = RealmComponent.getRealmComponent(weapon);
 					if (rc.isMonsterPart()) { // Might be a Hurricane Winds FLY chit
-						return (MonsterPartChitComponent) RealmComponent.getRealmComponent(weapon);
+						MonsterPartChitComponent monsterPart = (MonsterPartChitComponent) RealmComponent.getRealmComponent(weapon);
+						if (!monsterPart.isDestroyed()) {
+							return monsterPart;
+						}
 					}
 				}
 			}
@@ -491,6 +494,26 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	public boolean isArmored() {
 		return getGameObject().hasThisAttribute(Constants.ARMORED);
 	}
+	
+	public boolean hasActiveShield() {
+		ArrayList<GameObject> hold = getGameObject().getHoldAsGameObjects();
+		for (GameObject item : hold) {
+			if (item.hasThisAttribute("shield") && !item.hasThisAttribute(Constants.DESTROYED)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public MonsterPartChitComponent getShield() {
+		ArrayList<GameObject> hold = getGameObject().getHoldAsGameObjects();
+		for (GameObject item : hold) {
+			if (item.hasThisAttribute("shield")) {
+				return (MonsterPartChitComponent) RealmComponent.getRealmComponent(item);
+			}
+		}
+		return null;
+	}
 
 	public boolean applyHit(GameWrapper game,HostPrefWrapper hostPrefs, BattleChit attacker, int box, Harm attackerHarm,int attackOrderPos) {
 		Harm harm = new Harm(attackerHarm);
@@ -498,6 +521,19 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		if (!harm.getIgnoresArmor() && isArmored()) {
 			harm.dampenSharpness();
 			RealmLogging.logMessage(attacker.getGameObject().getName(),"Hits armor, and reduces sharpness: "+harm.toString());
+		}
+		if (!harm.getIgnoresArmor() && hasActiveShield()) {
+			harm.dampenSharpness();
+			RealmLogging.logMessage(attacker.getGameObject().getName(),"Hits shield, and reduces sharpness: "+harm.toString());
+			MonsterPartChitComponent shield = getShield();
+			if (harm.getAppliedStrength().strongerThan(shield.getStrength())) {
+				shield.setDestroyed(true);
+				CombatWrapper shieldCombat = new CombatWrapper(getShield().getGameObject());
+				shieldCombat.setKilledBy(attacker.getGameObject());
+				shieldCombat.setHitByOrderNumber(attackOrderPos);
+				RealmLogging.logMessage(attacker.getGameObject().getName(),"Destroys shield.");
+			}
+			return false; // Any attack hitting the shield, does not harm the monster.
 		}
 		Strength applied = harm.getAppliedStrength();
 		if (applied.strongerOrEqualTo(vulnerability)) {

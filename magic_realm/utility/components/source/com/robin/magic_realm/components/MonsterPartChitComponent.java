@@ -82,4 +82,17 @@ public class MonsterPartChitComponent extends MonsterChitComponent {
 		}
 		return super.isMissile();
 	}
+	
+	public boolean isDestroyed() {
+		return getGameObject().hasThisAttribute(Constants.DESTROYED);
+	}
+	
+	public void setDestroyed(boolean value) {
+		if (value) {
+			getGameObject().setThisAttribute(Constants.DESTROYED);
+		}
+		else {
+			getGameObject().removeThisAttribute(Constants.DESTROYED);
+		}
+	}
 }

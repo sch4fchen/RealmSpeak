@@ -1,6 +1,8 @@
 Version 1.1.3.8 - Changes since 1.1.3.7
 QUEST UPDATE:
 # QuestRewardGuild: Option to increase and decrease guild level
+NEW FEATURES:
+# Minotaur can block hits, his shield can be destroyed
 
 Version 1.1.3.8 - Changes since 1.1.3.7
 NEW FEATURES:
