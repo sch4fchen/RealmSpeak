@@ -84,13 +84,12 @@ public class BattleModel {
 		return round;
 	}
 	
-	private void logBattleInfo(String info) {
+	private static void logBattleInfo(String info) {
 		CombatFrame.broadcastMessage(RealmLogging.BATTLE,info);
 	}
 	
 	public boolean arePinningMonsters() {
-		for (Iterator i=getAllBattleParticipants(true).iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : getAllBattleParticipants(true)) {
 			if (rc.isMonster()) {
 				MonsterChitComponent monster = (MonsterChitComponent)rc;
 				if (monster.isPinningOpponent()) {
@@ -254,7 +253,7 @@ public class BattleModel {
 			for (RealmComponent denizen:denizenBattleGroup.getBattleParticipants()) {
 				CombatWrapper combat = new CombatWrapper(denizen.getGameObject());
 				if (!denizen.isAssigned() && !combat.isPeaceful() && !denizen.isMistLike()) {
-					ArrayList availableGroups = new ArrayList();
+					ArrayList<BattleGroup> availableGroups = new ArrayList<BattleGroup>();
 					// Find one possibility for each BattleGroup
 					for (BattleGroup bg:characterBattleGroups) {
 						if (bg.hasAvailableParticipant(denizen)) {
@@ -469,9 +468,8 @@ public class BattleModel {
 		// Find and hash all spells and casters cast this round by speed
 		HashLists spells = new HashLists();
 		HashLists casters = new HashLists();
-		ArrayList spellCasters = new ArrayList();
-		for (Iterator i=getAllParticipatingCharacters().iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		ArrayList<RealmComponent> spellCasters = new ArrayList<RealmComponent>();
+		for (CharacterChitComponent rc : getAllParticipatingCharacters()) {
 			CombatWrapper character = new CombatWrapper(rc.getGameObject());
 			GameObject go = character.getCastSpell();
 			if (go!=null) {
@@ -498,7 +496,7 @@ public class BattleModel {
 					SpellWrapper spell = (SpellWrapper)n.next();
 					if (spell.isAlive() && !spell.targetsClearing()) { // might have already been cancelled!
 						ArrayList unaffectedCasters = casters.getList(speed);
-						ArrayList targets = spell.getTargets();
+						ArrayList<RealmComponent> targets = spell.getTargets();
 						targets.retainAll(spellCasters);
 						targets.removeAll(unaffectedCasters);
 					

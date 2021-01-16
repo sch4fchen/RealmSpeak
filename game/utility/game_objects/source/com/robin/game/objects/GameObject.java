@@ -72,7 +72,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		}
 		attributeBlocks = new OrderedHashtable();
 		heldBy = null;
-		hold = new ArrayList();
+		hold = new ArrayList<GameObject>();
 		reset();
 		revertNameToDefault();
 		setModified(true);

@@ -495,7 +495,7 @@ public class ActionRow {
 	 * 
 	 * See Loot.characterFindsItem
 	 */
-	private String[] breakOutKeys(String in) {
+	private static String[] breakOutKeys(String in) {
 		String[] ret = null;
 		int start = in.indexOf("##");
 		if (start>=0) {
@@ -516,7 +516,7 @@ public class ActionRow {
 	/**
 	 * This is the secret portion of the string.  In the example above, this would return "Deft Gloves".
 	 */
-	private String getSecretKey(String in) {
+	private static String getSecretKey(String in) {
 		String[] ret = breakOutKeys(in);
 		if (ret!=null) {
 			return ret[1];
@@ -526,7 +526,7 @@ public class ActionRow {
 	/**
 	 * This is the nonsecret portion of the string.  In the example above, this would return "Treasure".
 	 */
-	private String getNonsecretKey(String in) {
+	private static String getNonsecretKey(String in) {
 		String[] ret = breakOutKeys(in);
 		if (ret!=null) {
 			return ret[0];
@@ -575,7 +575,7 @@ public class ActionRow {
 			}
 		}
 	}
-	private GameObject getSleepObject(CharacterWrapper testCharacter) {
+	private static GameObject getSleepObject(CharacterWrapper testCharacter) {
 		TileLocation current = testCharacter.getCurrentLocation();
 		if (current.isInClearing()) {
 			// First check to see if character has fatigued chits, and can rest
@@ -616,8 +616,7 @@ public class ActionRow {
 					if (roller.getHighDieResult() < 6) {
 						result = "Succeeded";
 						character.setHidden(true);
-						for (Iterator i=character.getActionFollowers().iterator();i.hasNext();) {
-							CharacterWrapper follower = (CharacterWrapper)i.next();
+						for (CharacterWrapper follower : character.getActionFollowers()) {
 							if (!follower.hasCurse(Constants.SQUEAK)) {
 								follower.setHidden(true);
 							}
@@ -780,13 +779,12 @@ public class ActionRow {
 					}
 					
 					// Move followers - FIXME Not totally right... but close!
-					ArrayList actionFollowers = character.getActionFollowers();
+					ArrayList<CharacterWrapper> actionFollowers = character.getActionFollowers();
 					
 					if (actionFollowers.size()>0) {
-						ArrayList canLeaveBehind = new ArrayList();
-						ArrayList encumberedFollowers = new ArrayList();
-						for (Iterator i=actionFollowers.iterator();i.hasNext();) {
-							CharacterWrapper follower = (CharacterWrapper)i.next();
+						ArrayList<CharacterWrapper> canLeaveBehind = new ArrayList<CharacterWrapper>();
+						ArrayList<CharacterWrapper> encumberedFollowers = new ArrayList<CharacterWrapper>();
+						for (CharacterWrapper follower : actionFollowers) {
 							if (!follower.foundHiddenEnemy(character.getGameObject())) {
 								canLeaveBehind.add(follower);
 							}
@@ -796,7 +794,7 @@ public class ActionRow {
 						}
 						if (!encumberedFollowers.isEmpty()) {
 							StringBuffer message = new StringBuffer();
-							for (Iterator i=encumberedFollowers.iterator();i.hasNext();) {
+							for (Iterator<CharacterWrapper> i=encumberedFollowers.iterator();i.hasNext();) {
 								CharacterWrapper follower = (CharacterWrapper)i.next();
 								if (message.length()>0) {
 									if (i.hasNext()) {

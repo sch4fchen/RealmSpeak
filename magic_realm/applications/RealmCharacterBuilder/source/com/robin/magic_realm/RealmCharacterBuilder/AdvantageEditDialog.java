@@ -246,9 +246,8 @@ public class AdvantageEditDialog extends AggressiveDialog {
 	private void clearLevelAdvantages() {
 		// Clears out all current advantages
 		OrderedHashtable attributeBlock = model.getCharacter().getGameObject().getAttributeBlock(levelKey);
-		ArrayList keys = new ArrayList(attributeBlock.keySet());
-		for (Iterator i=keys.iterator();i.hasNext();) {
-			String key = (String)i.next();
+		ArrayList<String> keys = new ArrayList<String>(attributeBlock.keySet());
+		for (String key : keys) {
 			if (!saveAttributes.contains(key)) {
 				model.getCharacter().getGameObject().removeAttribute(levelKey,key);
 			}

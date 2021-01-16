@@ -959,7 +959,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return best;
 	}
-	private Strength getHirelingMoveStrength(RealmComponent rc) {
+	private static Strength getHirelingMoveStrength(RealmComponent rc) {
 		Strength hirelingMoveStrength = new Strength(rc.getGameObject().getThisAttribute("vulnerability"));
 		RealmComponent nativeHorse = (RealmComponent)rc.getHorse();
 		if (nativeHorse!=null) {
@@ -4808,11 +4808,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return allEffortChits;
 	}
-	public Collection getActiveEffortChits() {
-		ArrayList activeEffortChits = new ArrayList();
-		Collection c = getActiveChits();
-		for (Iterator i=c.iterator();i.hasNext();) {
-			CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+	public Collection<CharacterActionChitComponent> getActiveEffortChits() {
+		ArrayList<CharacterActionChitComponent> activeEffortChits = new ArrayList();
+		Collection<CharacterActionChitComponent> c = getActiveChits();
+		for (CharacterActionChitComponent chit : c) {
 			if (chit.getEffortAsterisks()>0) {
 				activeEffortChits.add(chit);
 			}

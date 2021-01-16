@@ -70,7 +70,7 @@ public class ActionPrerequisite {
 		GamePool pool = new GamePool();
 		pool.addAll(character.getActivatedTreasureObjects());
 		
-		ArrayList query = new ArrayList();
+		ArrayList<String> query = new ArrayList<String>();
 		query.add("key");
 		if (source.hasThisAttribute(Constants.BOARD_NUMBER)) {
 			query.add(Constants.BOARD_NUMBER+"="+source.getThisAttribute(Constants.BOARD_NUMBER));
@@ -131,10 +131,9 @@ public class ActionPrerequisite {
 		}
 		else {
 			// Instead, you need to fatigue a T chit
-			ArrayList tremendousChits = new ArrayList();
-			Collection active = character.getActiveChits();
-			for (Iterator i=active.iterator();i.hasNext();) {
-				CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+			ArrayList<CharacterActionChitComponent> tremendousChits = new ArrayList<CharacterActionChitComponent>();
+			Collection<CharacterActionChitComponent> active = character.getActiveChits();
+			for (CharacterActionChitComponent chit : active) {
 				if ("T".equals(chit.getStrength().toString())) {
 					tremendousChits.add(chit);
 				}
@@ -226,15 +225,14 @@ public class ActionPrerequisite {
 		return success;
 	}
 	private boolean selectAndFatigueChit(JFrame frame,CharacterWrapper character) {
-		Collection active = character.getActiveEffortChits();
+		Collection<CharacterActionChitComponent> active = character.getActiveEffortChits();
 		if (active.isEmpty()) {
 			JOptionPane.showMessageDialog(frame,"You don't have any active chits to fatigue!","No Chits to Fatigue",JOptionPane.WARNING_MESSAGE);
 			return false;
 		}
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,"You must fatigue a chit to "+messageText+" this site:",false);
 		int keyN = 0;
-		for (Iterator i=active.iterator();i.hasNext();) {
-			CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+		for (CharacterActionChitComponent chit : active) {
 			String key = "N"+(keyN++);
 			chooser.addOption(key,"Fatigue");
 			chooser.addRealmComponentToOption(key,chit);
@@ -246,10 +244,9 @@ public class ActionPrerequisite {
 			
 			if (chit.getEffortAsterisks()==2) {
 				// Need to make change
-				Collection fatigued = character.getFatiguedChits(); // In case you need to make change
-				ArrayList singleAsteriskFatiguedChits = new ArrayList();
-				for (Iterator i=fatigued.iterator();i.hasNext();) {
-					CharacterActionChitComponent fatiguedChit = (CharacterActionChitComponent)i.next();
+				Collection<CharacterActionChitComponent> fatigued = character.getFatiguedChits(); // In case you need to make change
+				ArrayList<CharacterActionChitComponent> singleAsteriskFatiguedChits = new ArrayList<CharacterActionChitComponent>();
+				for (CharacterActionChitComponent fatiguedChit : fatigued) {
 					if (fatiguedChit.getEffortAsterisks()==1) {
 						singleAsteriskFatiguedChits.add(fatiguedChit);
 					}
