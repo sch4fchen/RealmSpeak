@@ -1758,7 +1758,7 @@ public class ActionRow {
 		ArrayList<MagicChit> enchantable = new ArrayList<MagicChit>();
 		
 		// Chits
-		ArrayList enchantableChits = character.getEnchantableChits();
+		ArrayList<CharacterActionChitComponent> enchantableChits = character.getEnchantableChits();
 		Collections.sort(enchantableChits);
 		enchantable.addAll(enchantableChits);
 		

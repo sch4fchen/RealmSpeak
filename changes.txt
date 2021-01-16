@@ -3,9 +3,6 @@ QUEST UPDATE:
 # QuestRewardGuild: Option to increase and decrease guild level
 NEW FEATURES:
 # Minotaur can block hits, shield can be destroyed
-# Option to randomize setup when loading saved game
-TOOLS:
-# GM: Option to randomize game setup
 
 Version 1.1.3.8 - Changes since 1.1.3.7
 NEW FEATURES:

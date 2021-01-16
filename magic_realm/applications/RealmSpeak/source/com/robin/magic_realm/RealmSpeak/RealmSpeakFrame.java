@@ -1656,9 +1656,6 @@ public class RealmSpeakFrame extends JFrame {
 			showStatus("Loading game data...");
 			RealmLoader loader = new RealmLoader();
 			makeHost(loader.getMaster(),data,netConnect);
-			if (realmSpeakOptions.getOptions().getBoolean(RealmSpeakOptions.RANDOM_SETUP)) {
-				GameSetup.randomizeSetup(hostPrefs, data);
-			}
 			resetStatus();
 		}
 		else {

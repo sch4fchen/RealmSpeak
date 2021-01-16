@@ -29,7 +29,6 @@ import javax.swing.event.InternalFrameEvent;
 import javax.swing.filechooser.FileFilter;
 
 import com.robin.game.objects.GameData;
-import com.robin.game.objects.GameSetup;
 import com.robin.general.io.FileUtilities;
 import com.robin.general.io.PreferenceManager;
 import com.robin.general.swing.ComponentTools;
@@ -40,7 +39,6 @@ import com.robin.magic_realm.components.swing.HostGameSetupDialog;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.utility.GameFileFilters;
 import com.robin.magic_realm.components.utility.RealmUtility;
-import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class RealmGmFrame extends JFrame {
 	private static final String MetalLookAndFeel = "MLAF";
@@ -62,7 +60,6 @@ public class RealmGmFrame extends JFrame {
 	private JRadioButton colorChitsOption;
 	private JRadioButton frenzelChitsOption;
 	private JButton gameOptions;
-	private JButton randomizeSetup;
 	
 	protected FileFilter saveGameFileFilter = GameFileFilters.createSaveGameFileFilter();
 	
@@ -96,7 +93,6 @@ public class RealmGmFrame extends JFrame {
 		saveGame.setEnabled(editor!=null && editor.getGameData().isModified());
 		saveAsGame.setEnabled(editor!=null);
 		gameOptions.setEnabled(editor!=null);
-		randomizeSetup.setEnabled(editor!=null);
 	}
 	private void updateLookAndFeel() {
 		if (prefs.getBoolean(MetalLookAndFeel)) {
@@ -200,7 +196,7 @@ public class RealmGmFrame extends JFrame {
 			}
 		});
 		optionMenu.add(toggleLookAndFeel);
-		JPanel gameButtons = new JPanel(new GridLayout(2,1));
+		JPanel gameButtons = new JPanel(new GridLayout(1,1));
 		gameOptions = new JButton("Game Options");
 		gameOptions.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
@@ -210,16 +206,6 @@ public class RealmGmFrame extends JFrame {
 			}
 		});
 		gameButtons.add(gameOptions);
-		randomizeSetup = new JButton("Randomize Setup");
-		randomizeSetup.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ev) {
-				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(editor.getGameData());
-				GameSetup.randomizeSetup(hostPrefs, editor.getGameData());
-				editor.updateTables();
-				reinitMap();
-			}
-		});
-		gameButtons.add(randomizeSetup);
 		
 		optionMenu.add(getTilesOptionsPanel());
 		optionMenu.add(getChitOptionsPanel());

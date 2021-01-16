@@ -54,9 +54,9 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	protected boolean updatingList = false;
 	protected JTable characterTable;
 	protected CharacterTableModel characterTableModel;
-	protected ArrayList characterList;
-	protected Hashtable characterFrames;
-	protected ArrayList characterFrameOrder;
+	protected ArrayList<CharacterWrapper> characterList;
+	protected Hashtable<String, CharacterFrame> characterFrames;
+	protected ArrayList<String> characterFrameOrder;
 
 	protected JLabel connectionStatus;
 	protected GameClient client;
@@ -161,9 +161,9 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		setSize(500, 300);
 		setLocation(200, 100);
 		setContentPane(new JPanel(new BorderLayout()));
-		characterList = new ArrayList();
-		characterFrames = new Hashtable();
-		characterFrameOrder = new ArrayList();
+		characterList = new ArrayList<CharacterWrapper>();
+		characterFrames = new Hashtable<String, CharacterFrame>();
+		characterFrameOrder = new ArrayList<String>();
 		characterTableModel = new CharacterTableModel();
 		characterTable = new JTable(characterTableModel);
 		characterTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -178,7 +178,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				CharacterWrapper character = getSelectedCharacter();
 				if (character != null && !character.isDead()) {
 					String id = character.getGameObject().getStringId();
-					CharacterFrame frame = (CharacterFrame) characterFrames.get(id);
+					CharacterFrame frame = characterFrames.get(id);
 					if (frame != null) {
 						frame.toFront();
 						frame.centerOnToken();
@@ -611,7 +611,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	}
 
 	private void startGoldSpecialPlacement() {
-		ArrayList chars = new ArrayList(characterList);
+		ArrayList<CharacterWrapper> chars = new ArrayList<CharacterWrapper>(characterList);
 		if (chars.isEmpty()) {
 			randomGoldSpecialPlacement();
 		}
@@ -626,7 +626,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		// Place the 6 gold specials randomly
 		GameData data = client.getGameData();
 		RealmObjectMaster rom = RealmObjectMaster.getRealmObjectMaster(data);
-		ArrayList query = new ArrayList();
+		ArrayList<String> query = new ArrayList<String>();
 		query.add("!" + Constants.GOLD_SPECIAL_PLACED);
 		if (hostPrefs.hasPref(Constants.HOUSE2_IGNORE_CAMPAIGNS)) {
 			query.add("!campaign");
@@ -651,15 +651,12 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				chit[1 - s].setThisAttribute(Constants.GOLD_SPECIAL_PLACED);
 			}
 			target.setThisAttribute(Constants.GOLD_SPECIAL_PLACED);
-			// System.out.println(chit[s].getName()+" is added to "+target.getName());
 		}
 
-		// Need to also guarantee that no characters have the place vistor
-		// button
-		ArrayList chars = new ArrayList(characterList);
+		// Need to also guarantee that no characters have the place visitor button
+		ArrayList<CharacterWrapper> chars = new ArrayList<CharacterWrapper>(characterList);
 		if (!chars.isEmpty()) {
-			for (Iterator i = chars.iterator(); i.hasNext();) {
-				CharacterWrapper c = (CharacterWrapper) i.next();
+			for (CharacterWrapper c : chars) {
 				if (c.isCharacter()) {
 					c.setNeedsChooseGoldSpecial(false);
 				}
@@ -670,7 +667,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	}
 
 	public void incrementCharacterToPlace() {
-		ArrayList chars = new ArrayList(characterList);
+		ArrayList<CharacterWrapper> chars = new ArrayList<CharacterWrapper>(characterList);
 		if (!chars.isEmpty()) {
 			// Sort by join order
 			Collections.sort(chars, new Comparator() {
@@ -683,8 +680,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			});
 			boolean incremented = false;
 			boolean selectNext = false;
-			for (Iterator i = chars.iterator(); i.hasNext();) {
-				CharacterWrapper c = (CharacterWrapper) i.next();
+			for (CharacterWrapper c : chars) {
 				if (c.isCharacter()) {
 					if (selectNext) {
 						incremented = true;
@@ -929,23 +925,14 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				GameObject spellObject = (GameObject) i.next();
 				SpellWrapper spell = new SpellWrapper(spellObject);
 				TileLocation before = spell.getCurrentLocation();
-				spell.affectTargets(CombatFrame.getSingleton(), game, true); // this
-																				// is
-																				// STILL
-																				// happening
-																				// in
-																				// a
-																				// thread...
+				spell.affectTargets(CombatFrame.getSingleton(), game, true); // this is STILL happening in a thread...
 				TileLocation after = spell.getCurrentLocation();
-				// System.out.println("before="+before);
-				// System.out.println("after="+after);
 				if (!before.equals(after)) {
 					// The spell transported its target, so update combat
 					RealmBattle.testCombatInClearing(before, client.getGameData());
 				}
 			}
-			// If a spell is being applied through direct info, then make sure
-			// the combat frame reflects the change!!
+			// If a spell is being applied through direct info, then make sure the combat frame reflects the change!!
 			resetCombatFrame();
 		}
 		// else if
@@ -1875,7 +1862,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 
 	private GameWrapper findGame() {
 		GamePool pool = new GamePool(client.getGameData().getGameObjects());
-		Collection mrGameObjects = pool.extract(GameWrapper.getKeyVals());
+		Collection<GameObject> mrGameObjects = pool.extract(GameWrapper.getKeyVals());
 		if (mrGameObjects.size() == 1) {
 			GameObject go = (GameObject) mrGameObjects.iterator().next();
 			return new GameWrapper(go);
@@ -1957,14 +1944,13 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		spellMaster.energizePermanentSpells(getMainFrame(), game);
 
 		GamePool pool = new GamePool(RealmObjectMaster.getRealmObjectMaster(client.getGameData()).getPlayerCharacterObjects());
-		Collection characterGameObjects = pool.extract(CharacterWrapper.getKeyVals());
-		ArrayList charactersAndMinions = new ArrayList();
-		for (Iterator i = characterGameObjects.iterator(); i.hasNext();) {
-			GameObject go = (GameObject) i.next();
+		Collection<GameObject> characterGameObjects = pool.extract(CharacterWrapper.getKeyVals());
+		ArrayList<GameObject> charactersAndMinions = new ArrayList<GameObject>();
+		for (GameObject go : characterGameObjects) {
 			CharacterWrapper character = new CharacterWrapper(go);
 			charactersAndMinions.add(go);
 			if (character.isActive()) {
-				Collection minions = character.getMinions();
+				Collection<GameObject> minions = character.getMinions();
 				if (minions != null) {
 					charactersAndMinions.addAll(minions);
 				}
@@ -2144,8 +2130,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 
 			// This guarantees all characters have their combat reset when
 			// combat ends
-			for (Iterator i = charactersAndMinions.iterator(); i.hasNext();) {
-				GameObject go = (GameObject) i.next();
+			for (GameObject go : charactersAndMinions) {
 				CharacterWrapper character = new CharacterWrapper(go);
 				if (character.getCombatStatus() > 0) {
 					character.clearCombat();
@@ -2171,8 +2156,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	};
 
 	public void showCharacterFrame(CharacterWrapper character) {
-		for (Iterator i = characterFrames.values().iterator(); i.hasNext();) {
-			CharacterFrame frame = (CharacterFrame) i.next();
+		for (CharacterFrame frame : characterFrames.values()) {
 			CharacterWrapper test = frame.getCharacter();
 			if (test.getGameObject().equals(character.getGameObject())) {
 				frame.toFront();
@@ -2214,8 +2198,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	 * an item is picked up)
 	 */
 	public void updateCharacterFrames() {
-		for (Iterator i = characterFrames.values().iterator(); i.hasNext();) {
-			CharacterFrame frame = (CharacterFrame) i.next();
+		for (CharacterFrame frame : characterFrames.values()) {
 			if (frame.getCharacter().isActive()) {
 				frame.updateCharacter();
 			}
@@ -2229,17 +2212,16 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	private class CharacterTableModel extends AbstractTableModel {
 		protected String[] columnName = { " ", " ", " ", "Character", "Player", "Status", };
 		protected Class[] columnClass = { ImageIcon.class, ImageIcon.class, ImageIcon.class, String.class, String.class, String.class, };
-		private ArrayList list;
+		private ArrayList<CharacterWrapper> list;
 
 		public CharacterTableModel() {
 			rebuild();
 		}
 
 		public void rebuild() {
-			list = new ArrayList();
+			list = new ArrayList<CharacterWrapper>();
 			if (characterList != null) {
-				for (Iterator i = characterList.iterator(); i.hasNext();) {
-					CharacterWrapper character = (CharacterWrapper) i.next();
+				for (CharacterWrapper character : characterList) {
 					if (showDeadOption.isSelected() || !character.isDead()) {
 						list.add(character);
 					}
@@ -2257,8 +2239,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 
 		public int getCharacterRow(CharacterWrapper character) {
 			int row = 0;
-			for (Iterator i = list.iterator(); i.hasNext();) {
-				CharacterWrapper test = (CharacterWrapper) i.next();
+			for (CharacterWrapper test : list) {
 				if (test.equals(character)) {
 					return row;
 				}
@@ -2346,8 +2327,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 
 	public void updateToolbarOptions(int inIconSize) {
 		this.iconSize = inIconSize;
-		for (Iterator i = characterFrames.values().iterator(); i.hasNext();) {
-			CharacterFrame frame = (CharacterFrame) i.next();
+		for (CharacterFrame frame : characterFrames.values()) {
 			frame.actionPanel.modifyToolbarIconStyle(iconSize);
 			frame.updateControls();
 		}

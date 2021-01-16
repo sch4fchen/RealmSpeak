@@ -1,6 +1,5 @@
 Fix alternative tiles with tile editor (e.g. paths)
 
-//Randomize hidden components: treasure cards, spell cards, red special, gold special?, dwellings (if hidden), campfires+gates+treasure locations, guilds?, site chits, campaigns, visitors, missions, travellers, treasures within treasures
 Expansion 1: 4. Bounty, 5. Stealing
 Expansion 1: Parry + Ability: "Parry"
 Expansion 1: Two-Handed Combat + Ability: "Dual Wielding"
@@ -26,10 +25,6 @@ Expansion 1: Events
 0001358: Monster Roll per Set
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
-::Scenarios Feature::
-	Shuffle components Flag in gameData when saving scenario: Shuffle when loading OR NO shuffling when loading
-	RealmSpeak + GM: save game as scenario (with scenario name and description), have a different file extension
-	RealSpeak: Load scenarios (overview with names and descriptions), list game options
 A LITTLE HELP FROM FRIENDS: http://www.nand.it/mr/mr02.html
 0001645: Automatic HTML export
 0001563: Showing flip sides of tiles and counters in HTML

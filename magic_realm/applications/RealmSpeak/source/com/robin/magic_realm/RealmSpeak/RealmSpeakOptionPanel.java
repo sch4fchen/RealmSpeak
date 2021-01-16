@@ -70,8 +70,6 @@ public class RealmSpeakOptionPanel extends JDialog {
 	protected JRadioButton dailyCombatOnOption;
 	protected JRadioButton dailyCombatOnSpellcastersOption;
 	
-	protected JCheckBox loadingWithRandomSetupOption;
-	
 	protected JCheckBox enableSoundItem;
 	protected JSlider adjustVolumeItem;
 	
@@ -167,7 +165,6 @@ public class RealmSpeakOptionPanel extends JDialog {
 		else if ("ON_S".equals(val)) {
 			dailyCombatOnSpellcastersOption.setSelected(true);
 		}
-		loadingWithRandomSetupOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.RANDOM_SETUP));
 		
 		monsterNumbersOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.MONSTER_NUMBERS,false));
 		
@@ -200,7 +197,6 @@ public class RealmSpeakOptionPanel extends JDialog {
 		else if (dailyCombatOnSpellcastersOption.isSelected()) {
 			options.getOptions().set(RealmSpeakOptions.DAILY_COMBAT,"ON_S");
 		}
-		options.getOptions().set(RealmSpeakOptions.RANDOM_SETUP,loadingWithRandomSetupOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.MONSTER_NUMBERS,monsterNumbersOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.HEAVY_INV_WARNING,showHeavyInvWarningOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.INCOMPLETE_PHASE_WARNING,showIncompleteRecordWarningOption.isSelected());
@@ -284,7 +280,6 @@ public class RealmSpeakOptionPanel extends JDialog {
 		right.add(getChatLineOptionsPanel());
 		right.add(getPopupWindowOptions());
 		right.add(getDailyCombatOptionPanel());
-		right.add(getLoadGameOptionPanel());
 		right.add(Box.createVerticalGlue());
 		center.add(right);
 		
@@ -466,13 +461,6 @@ public class RealmSpeakOptionPanel extends JDialog {
 		dailyCombatOnSpellcastersOption = new JRadioButton("ON for spellcasters");
 		group.add(dailyCombatOnSpellcastersOption);
 		panel.add(dailyCombatOnSpellcastersOption);
-		return panel;
-	}
-	private JPanel getLoadGameOptionPanel() {
-		JPanel panel = new JPanel(new GridLayout(1,1));
-		panel.setBorder(BorderFactory.createTitledBorder("Loading Game"));
-		loadingWithRandomSetupOption = new JCheckBox("Random Setup");
-		panel.add(loadingWithRandomSetupOption);
 		return panel;
 	}
 	private JPanel getSoundOptionPanel() {

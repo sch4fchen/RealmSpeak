@@ -4738,7 +4738,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return 1;
 	}
-	public ArrayList getEnchantableChits() {
+	public ArrayList<CharacterActionChitComponent> getEnchantableChits() {
 		if (isPhantasm()) {
 			return getHiringCharacter().getEnchantableChits();
 		}

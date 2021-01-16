@@ -49,7 +49,6 @@ public class RealmSpeakOptions {
 	public static final String NUMBER_OF_CHAT_LINES = "nlChat";
 	public static final String HEADER_CHAT_LINES = "hChatL";
 	public static final String DAILY_COMBAT = "dailyCombat";
-	public static final String RANDOM_SETUP = "randomSetup";
 	public static final String MONSTER_NUMBERS = "monsterNumbers";
 	public static final String HEAVY_INV_WARNING = "heavyInvWarning";
 	public static final String INCOMPLETE_PHASE_WARNING = "incompletePhaseWarning";

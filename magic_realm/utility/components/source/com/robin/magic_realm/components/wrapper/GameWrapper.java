@@ -93,8 +93,8 @@ public class GameWrapper extends GameObjectWrapper {
 	public boolean isGameOver() {
 		return getState()==GAME_STATE_GAMEOVER;
 	}
-	public static Collection getKeyVals() {
-		ArrayList keyVals = new ArrayList();
+	public static Collection<String> getKeyVals() {
+		ArrayList<String> keyVals = new ArrayList<String>();
 		keyVals.add(GAME_STATE);
 		return keyVals;
 	}

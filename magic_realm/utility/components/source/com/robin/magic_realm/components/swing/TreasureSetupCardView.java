@@ -62,7 +62,7 @@ public class TreasureSetupCardView extends JComponent {
 	
 	private GameData data;
 	private GameWrapper game;
-	private ArrayList sections;
+	private ArrayList<String> sections;
 	private Dimension cardSize;
 	private Hashtable sectionRowHash;
 	private ArrayList nonMdList;
@@ -108,7 +108,7 @@ public class TreasureSetupCardView extends JComponent {
 	private void initView() {
 		// Get all the section objects
 		GamePool pool = new GamePool(data.getGameObjects());
-		ArrayList query = new ArrayList();
+		ArrayList<String> query = new ArrayList<String>();
 		query.add("ts_section");
 		query.add(hostPrefs.getGameKeyVals());
 		if (boardKey!=null) {
@@ -146,9 +146,8 @@ public class TreasureSetupCardView extends JComponent {
 		
 		// Hash by section and monster die
 		HashLists hash = new HashLists();
-		sections = new ArrayList();
-		for (Iterator i=list.iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		sections = new ArrayList<String>();
+		for (GameObject go : list) {
 			String section = go.getThisAttribute("ts_section");
 			if (!sections.contains(section)) {
 				sections.add(section);

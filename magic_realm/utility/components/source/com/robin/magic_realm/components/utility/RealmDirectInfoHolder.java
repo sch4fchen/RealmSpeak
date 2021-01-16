@@ -150,8 +150,8 @@ public class RealmDirectInfoHolder {
 		GameObject go = data.getGameObject(Long.valueOf(id));
 		return new CharacterWrapper(go);
 	}
-	public ArrayList getGameObjects() {
-		ArrayList ret = new ArrayList();
+	public ArrayList<GameObject> getGameObjects() {
+		ArrayList<GameObject> ret = new ArrayList<GameObject>();
 		for (int i=GAME_OBJECT_ID_LIST_START;i<list.size();i++) {
 			String id = (String)list.get(i);
 			ret.add(data.getGameObject(Long.valueOf(id)));

@@ -28,8 +28,6 @@ import org.jdom.Attribute;
 import org.jdom.Element;
 
 import com.robin.general.io.ModifyableObject;
-import com.robin.magic_realm.components.quest.QuestDeck;
-import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class GameSetup extends ModifyableObject implements Serializable {
 	public static final String ALL = "ALL";
@@ -265,40 +263,5 @@ public class GameSetup extends ModifyableObject implements Serializable {
 		}
 		gameCommands.clear();
 		gameCommands = expanded;
-	}
-	
-	public static void randomizeSetup(HostPrefWrapper hostPrefs, GameData data) {
-		GamePool pool = new GamePool(data.getGameObjects());
-		if (hostPrefs.isUsingQuestCards()) {
-			QuestDeck deck = QuestDeck.findDeck(data);
-			deck.shuffle();
-		}
-		ArrayList<String> query = new ArrayList<String>();
-		//warning chits
-		String[] chitsQueries = new String[] {"tile_type=V", "tile_type=W", "tile_type=M", "tile_type=C", "tile_type=S", "tile_type=X"};
-		for (String tileType : chitsQueries) {
-			query.add("chit");
-			query.add("!seen");
-			query.add(tileType);
-			randomizeGameObjects(query, pool);
-			query.clear();
-		}
-		//sound chits
-		query.add("chit");
-		query.add("sound");
-		query.add("!seen");
-		randomizeGameObjects(query, pool);
-		query.clear();
-	}
-	
-	private static void randomizeGameObjects(ArrayList<String> query, GamePool pool) {
-		ArrayList<GameObject> chits = pool.extract(query);
-		ArrayList<GameObject> parents =  new ArrayList<GameObject>();
-		for (GameObject chit : chits) {
-			parents.add(chit.getHeldBy());
-		}
-		GamePool chitPool = new GamePool(chits);
-		GamePool parentsPool = new GamePool(parents);
-		chitPool.distribute(parentsPool, chitPool.size(), GamePool.RANDOM);
 	}
 }
