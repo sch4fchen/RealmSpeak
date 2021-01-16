@@ -65,7 +65,7 @@ public class GameData extends ModifyableObject implements Serializable {
 	protected HashLists<String,GameObject> gameObjectNameHash;
 	protected ArrayList<GameObject> filteredGameObjects;
 	
-	protected ArrayList gameSetups;
+	protected ArrayList<GameSetup> gameSetups;
 	
 	protected boolean tracksChanges = false;
 	private ArrayList<GameObjectChange> objectChanges;
@@ -374,7 +374,7 @@ public class GameData extends ModifyableObject implements Serializable {
 	public ArrayList<GameObject> getFilteredGameObjects() {
 		return filter?filteredGameObjects:gameObjects;
 	}
-	public ArrayList getGameSetups() {
+	public ArrayList<GameSetup> getGameSetups() {
 		return gameSetups;
 	}
 	public void resetIdToMax(Collection c) {

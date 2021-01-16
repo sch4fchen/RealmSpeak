@@ -260,7 +260,7 @@ public class AttributeEditor extends AggressiveDialog {
 		JFrame frame = new JFrame();
 		String key = "test";
 		OrderedHashtable block = new OrderedHashtable();
-		ArrayList list = new ArrayList();
+		ArrayList<String> list = new ArrayList<String>();
 		list.add("this is a really really long string that you want to see the beginning of");
 		list.add("is");
 		list.add("a");

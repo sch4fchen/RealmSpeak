@@ -406,11 +406,10 @@ public class BattleModel {
 			denizenBattleGroup.allHorsesGallop();
 			
 			// Denizens select their target
-			for (Iterator i=denizenBattleGroup.getBattleParticipants().iterator();i.hasNext();) {
-				RealmComponent denizen = (RealmComponent)i.next();
+			for (RealmComponent denizen : denizenBattleGroup.getBattleParticipants()) {
 				if (!denizen.isMonster()
 						|| !((MonsterChitComponent)denizen).isPinningOpponent()) {
-					ArrayList attackers = getAttackersFor(denizen);
+					ArrayList<RealmComponent> attackers = getAttackersFor(denizen);
 					if (!attackers.isEmpty()) {
 						Collections.sort(attackers,new TargetIndexComparator());
 						// Target the last one, unless a character
@@ -1375,12 +1374,11 @@ public class BattleModel {
 		}
 		return totalHarm;
 	}
-	private void repositionAndChangeTactics(String prefix,CombatWrapper sheetOwner,ArrayList groupList) {
+	private void repositionAndChangeTactics(String prefix,CombatWrapper sheetOwner,ArrayList<RealmComponent> groupList) {
 		if (groupList.size()>0) {
 			// Hash by box
 			HashLists boxHash = new HashLists();
-			for (Iterator i=groupList.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : groupList) {
 				CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 				int box = combat.getCombatBox();
 				if (box>0) {
