@@ -4411,7 +4411,7 @@
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
-		<attribute shield="" />
+        <attribute shield="" />
         <attribute armor_choice="" />
         <attribute armor="" />
         <attribute original_game="" />
@@ -4437,7 +4437,7 @@
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
-		<attribute shield="" />
+        <attribute shield="" />
         <attribute armor_choice="" />
         <attribute armor="" />
         <attribute original_game="" />
@@ -4463,7 +4463,7 @@
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
-		<attribute shield="" />
+        <attribute shield="" />
         <attribute armor_choice="" />
         <attribute armor="" />
         <attribute original_game="" />
@@ -4489,7 +4489,7 @@
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
-		<attribute shield="" />
+        <attribute shield="" />
         <attribute armor_choice="" />
         <attribute armor="" />
         <attribute original_game="" />
@@ -4624,7 +4624,7 @@
       <AttributeBlock blockName="this">
         <attribute vulnerability="H" />
         <attribute weight="H" />
-		<attribute shield="" />
+        <attribute shield="" />
         <attribute armor_choice="" />
         <attribute magic="Jade" />
         <attribute fame="4" />
@@ -4804,7 +4804,7 @@
         <attribute length="16" />
         <attribute base_price="8" />
         <attribute missile="" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="medium_bow" />
@@ -4830,7 +4830,7 @@
         <attribute length="14" />
         <attribute base_price="6" />
         <attribute missile="" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="light_bow" />
@@ -4856,7 +4856,7 @@
         <attribute length="14" />
         <attribute base_price="6" />
         <attribute missile="" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="light_bow" />
@@ -4882,7 +4882,7 @@
         <attribute length="12" />
         <attribute base_price="10" />
         <attribute missile="" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="crossbow" />
@@ -4907,7 +4907,7 @@
         <attribute weight="L" />
         <attribute length="9" />
         <attribute base_price="1" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="staff" />
@@ -4930,7 +4930,7 @@
         <attribute weight="L" />
         <attribute length="9" />
         <attribute base_price="1" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="staff" />
@@ -4953,7 +4953,7 @@
         <attribute weight="H" />
         <attribute length="8" />
         <attribute base_price="10" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="great_sword" />
@@ -5004,7 +5004,7 @@
         <attribute weight="H" />
         <attribute length="6" />
         <attribute base_price="8" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="morning_star" />
@@ -5029,7 +5029,7 @@
         <attribute weight="H" />
         <attribute length="5" />
         <attribute base_price="8" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="great_axe" />
@@ -5055,7 +5055,7 @@
         <attribute weight="H" />
         <attribute length="5" />
         <attribute base_price="8" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="great_axe" />
@@ -5299,7 +5299,7 @@
         <attribute weight="M" />
         <attribute length="10" />
         <attribute base_price="6" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="spear" />
@@ -5323,7 +5323,7 @@
         <attribute weight="M" />
         <attribute length="10" />
         <attribute base_price="6" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="spear" />
@@ -5347,7 +5347,7 @@
         <attribute weight="M" />
         <attribute length="10" />
         <attribute base_price="6" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="spear" />
@@ -5371,7 +5371,7 @@
         <attribute weight="M" />
         <attribute length="10" />
         <attribute base_price="6" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="spear" />
@@ -6853,7 +6853,7 @@
           <attributeVal N0="monsters" />
           <attributeVal N1="spells" />
           <attributeVal N2="curses" />
-		  <attributeVal N3="combatants" />
+          <attributeVal N3="combatants" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
@@ -6955,7 +6955,7 @@
         <attribute host_okay="" />
         <attribute benevolent="" />
         <attribute rw_expansion_1="" />
-        <attribute upg_swap_out=""/>
+        <attribute upg_swap_out="" />
         <attribute learnable="" />
       </AttributeBlock>
     </GameObject>
@@ -7524,7 +7524,7 @@
         <attribute host_okay="" />
         <attribute benevolent="" />
         <attribute rw_expansion_1="" />
-        <attribute upg_swap_out=""/>
+        <attribute upg_swap_out="" />
         <attribute learnable="" />
       </AttributeBlock>
     </GameObject>
@@ -15726,7 +15726,7 @@
         <attribute author="Expansion 1" />
         <attribute benevolent="" />
         <attribute learnable="" />
-        <attribute upg_swap_out =""/>
+        <attribute upg_swap_out="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="643" name="Summon Animal">
@@ -16609,7 +16609,7 @@
         <attribute weight="H" />
         <attribute facing="face_dn" />
         <attribute fame="2" />
-		<attribute shield="" />
+        <attribute shield="" />
         <attribute armor="" />
         <attribute armor_row="1" />
         <attribute armor_choice="" />
@@ -23026,7 +23026,7 @@
       <AttributeBlock blockName="this">
         <attribute vulnerability="L" />
         <attribute weight="L" />
-		<attribute shield="" />
+        <attribute shield="" />
         <attribute armor_choice="" />
         <attribute armor="" />
         <attribute icon_type="buckler" />
@@ -23105,7 +23105,7 @@
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute part="" />
-		<attribute shield="" />
+        <attribute shield="" />
         <attribute icon_type="minotaur_buckler" />
         <attribute icon_folder="monsters2" />
         <attribute rw_expansion_1="" />
@@ -25323,7 +25323,7 @@
         <attribute weight="H" />
         <attribute length="10" />
         <attribute base_price="8" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute icon_type="halberd" />
         <attribute icon_folder="weapons" />
@@ -25345,7 +25345,7 @@
         <attribute weight="H" />
         <attribute length="10" />
         <attribute base_price="8" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute icon_type="halberd" />
         <attribute icon_folder="weapons" />
@@ -25367,7 +25367,7 @@
         <attribute weight="H" />
         <attribute length="10" />
         <attribute base_price="8" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute icon_type="halberd" />
         <attribute icon_folder="weapons" />
@@ -25389,7 +25389,7 @@
         <attribute weight="H" />
         <attribute length="10" />
         <attribute base_price="8" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute icon_type="halberd" />
         <attribute icon_folder="weapons" />
@@ -25433,7 +25433,7 @@
       <AttributeBlock blockName="this">
         <attribute vulnerability="L" />
         <attribute weight="L" />
-		<attribute shield="" />
+        <attribute shield="" />
         <attribute armor_choice="" />
         <attribute armor="" />
         <attribute icon_type="buckler" />
@@ -26435,7 +26435,7 @@
         <attribute weight="L" />
         <attribute length="9" />
         <attribute base_price="1" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute icon_type="staff" />
         <attribute icon_folder="weapons" />
@@ -26456,7 +26456,7 @@
         <attribute weight="L" />
         <attribute length="9" />
         <attribute base_price="1" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute icon_type="staff" />
         <attribute icon_folder="weapons" />
@@ -26477,7 +26477,7 @@
         <attribute weight="L" />
         <attribute length="9" />
         <attribute base_price="1" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute icon_type="staff" />
         <attribute icon_folder="weapons" />
@@ -26498,7 +26498,7 @@
         <attribute weight="L" />
         <attribute length="9" />
         <attribute base_price="1" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute icon_type="staff" />
         <attribute icon_folder="weapons" />
@@ -26564,7 +26564,7 @@
         <attribute length="14" />
         <attribute base_price="6" />
         <attribute missile="" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute icon_type="light_bow" />
         <attribute icon_folder="weapons" />
@@ -26633,7 +26633,7 @@
         <attribute weight="H" />
         <attribute length="10" />
         <attribute base_price="8" />
-		<attribute two_handed="" />
+        <attribute two_handed="" />
         <attribute weapon="" />
         <attribute icon_type="halberd" />
         <attribute icon_folder="weapons" />
@@ -26827,7 +26827,7 @@
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
-		<attribute shield="" />
+        <attribute shield="" />
         <attribute armor_choice="" />
         <attribute armor="" />
         <attribute icon_type="shield" />
@@ -26898,7 +26898,7 @@
       <AttributeBlock blockName="this">
         <attribute vulnerability="L" />
         <attribute weight="L" />
-		<attribute shield="" />
+        <attribute shield="" />
         <attribute armor_choice="" />
         <attribute armor="" />
         <attribute icon_type="buckler" />
@@ -26980,7 +26980,7 @@
       <AttributeBlock blockName="this">
         <attribute vulnerability="L" />
         <attribute weight="L" />
-		<attribute shield="" />
+        <attribute shield="" />
         <attribute armor_choice="" />
         <attribute armor="" />
         <attribute icon_type="buckler" />
@@ -27053,7 +27053,7 @@
         <attribute benevolent="" />
         <attribute new_spells_1="" />
         <attribute learnable="" />
-        <attribute vale_walker=""/>
+        <attribute vale_walker="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1116" name="Blazing Light X">
@@ -27065,8 +27065,8 @@
         <attribute magic_color="purple" />
         <attribute clearing_req="C" />
         <attribute torch_bearer="" />
-        <attribute always_active=""/>
-        <attribute ends_in_sunlight=""/>
+        <attribute always_active="" />
+        <attribute ends_in_sunlight="" />
         <attribute alt_monsters1_game="" />
         <attribute host_okay="" />
         <attribute benevolent="" />
@@ -27085,7 +27085,7 @@
         <attribute host_okay="" />
         <attribute alt_monsters1_game="" />
         <attribute benevolent="" />
-        <attribute no_battle=""/>
+        <attribute no_battle="" />
         <attribute new_spells_1="" />
         <attribute learnable="" />
       </AttributeBlock>
@@ -27127,7 +27127,7 @@
         <attribute new_spells_1="" />
         <attribute learnable="" />
       </AttributeBlock>
-    </GameObject>  
+    </GameObject>
     <GameObject id="1120" name="Blend Into Background X">
       <AttributeBlock blockName="this">
         <attribute spell="II" />
@@ -27136,14 +27136,14 @@
         <attribute text="Extra HIDE phase until you fail to hide" />
         <attribute magic_color="grey" />
         <attribute blending="" />
-        <attribute always_active=""/>
+        <attribute always_active="" />
         <attribute alt_monsters1_game="" />
         <attribute host_okay="" />
         <attribute benevolent="" />
         <attribute upg_day_spells="" />
         <attribute learnable="" />
       </AttributeBlock>
-    </GameObject>  
+    </GameObject>
     <GameObject id="1121" name="See Hidden Signs X">
       <AttributeBlock blockName="this">
         <attribute spell="III" />
@@ -27152,14 +27152,14 @@
         <attribute text="Extra SEARCH phase until you discover a site, path, or loot a treasure card" />
         <attribute magic_color="gold" />
         <attribute seeking="" />
-        <attribute always_active=""/>
+        <attribute always_active="" />
         <attribute alt_monsters1_game="" />
         <attribute host_okay="" />
         <attribute benevolent="" />
         <attribute upg_day_spells="" />
         <attribute learnable="" />
       </AttributeBlock>
-    </GameObject> 
+    </GameObject>
     <GameObject id="1122" name="Spirit Guide">
       <AttributeBlock blockName="this">
         <attribute spell="VII" />
@@ -27169,12 +27169,12 @@
         <attribute magic_color="any" />
         <attribute spirit_guide="" />
         <attribute alt_monsters1_game="" />
-        <attribute new_spells_1=""/>
+        <attribute new_spells_1="" />
         <attribute host_okay="" />
         <attribute benevolent="" />
         <attribute learnable="" />
       </AttributeBlock>
-    </GameObject> 
+    </GameObject>
     <GameObject id="1123" name="Summon Aid">
       <AttributeBlock blockName="this">
         <attribute spell="VI" />
@@ -27183,7 +27183,7 @@
         <attribute text="Summon a member of a FRIENDLY native group to your aid, but don't get him killed" />
         <attribute magic_color="any" />
         <attribute alt_monsters1_game="" />
-        <attribute new_spells_1=""/>
+        <attribute new_spells_1="" />
         <attribute host_okay="" />
         <attribute benevolent="" />
         <attribute learnable="" />
@@ -27197,7 +27197,7 @@
         <attribute text="Item has negligible weight" />
         <attribute magic_color="black" />
         <attribute alt_monsters1_game="" />
-        <attribute upg_day_spells=""/>
+        <attribute upg_day_spells="" />
         <attribute host_okay="" />
         <attribute benevolent="" />
         <attribute learnable="" />
@@ -27211,13 +27211,13 @@
         <attribute text="Staff gains two sharpness stars" />
         <attribute magic_color="purple" />
         <attribute alt_monsters1_game="" />
-        <attribute new_spells_1=""/>
+        <attribute new_spells_1="" />
         <attribute host_okay="" />
         <attribute benevolent="" />
         <attribute learnable="" />
       </AttributeBlock>
     </GameObject>
-     <GameObject id="1126" name="Mage Guard">
+    <GameObject id="1126" name="Mage Guard">
       <AttributeBlock blockName="this">
         <attribute spell="VI" />
         <attribute duration="combat" />
@@ -27225,12 +27225,12 @@
         <attribute text="Staff blocks as an H shield" />
         <attribute magic_color="any" />
         <attribute alt_monsters1_game="" />
-        <attribute new_spells_1=""/>
+        <attribute new_spells_1="" />
         <attribute host_okay="" />
         <attribute benevolent="" />
         <attribute learnable="" />
       </AttributeBlock>
-    </GameObject>  
+    </GameObject>
     <GameObject id="1127" name="Filcher">
       <AttributeBlock blockName="this">
         <attribute spell="VI" />
@@ -27239,14 +27239,14 @@
         <attribute text="Steal from a native group, but if they find out, there will be trouble" />
         <attribute magic_color="black" />
         <attribute alt_monsters1_game="" />
-        <attribute new_spells_1=""/>
+        <attribute new_spells_1="" />
         <attribute host_okay="" />
         <attribute benevolent="" />
-        <attribute no_battle=""/>
+        <attribute no_battle="" />
         <attribute learnable="" />
       </AttributeBlock>
-	</GameObject>
-	<GameObject id="1128" name="Awful Valley">
+    </GameObject>
+    <GameObject id="1128" name="Awful Valley">
       <AttributeBlock blockName="this">
         <attribute tile_type="V" />
         <attribute a_tile="" />
@@ -27260,78 +27260,86 @@
         <attribute rw_expansion_1="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
-        <attribute offroad_xy="56.3,74.2" />
+        <attribute offroad_xy="56.4,74.8" />
         <attribute clearing_1_type="normal" />
-        <attribute clearing_1_xy="27.2,35.5" />
+        <attribute clearing_1_xy="26.8,35.4" />
         <attribute clearing_2_type="normal" />
-        <attribute clearing_2_xy="28.2,67.3" />
+        <attribute clearing_2_xy="27.4,66.4" />
         <attribute clearing_4_type="normal" />
-        <attribute clearing_4_xy="70.8,52.5" />
+        <attribute clearing_4_xy="70.5,51.9" />
         <attribute clearing_5_type="normal" />
-        <attribute clearing_5_xy="50.7,20.1" />
+        <attribute clearing_5_xy="50.6,19.1" />
         <attribute path_1_from="clearing_1" />
         <attribute path_1_to="NW" />
         <attribute path_1_type="normal" />
+        <attribute path_1_arc="15.7,28.4" />
         <attribute path_2_from="clearing_2" />
         <attribute path_2_to="clearing_5" />
         <attribute path_2_type="normal" />
-        <attribute path_2_arc="47.5,45.5" />
+        <attribute path_2_arc="50.2,55.4" />
         <attribute path_3_from="clearing_1" />
         <attribute path_3_to="clearing_4" />
         <attribute path_3_type="normal" />
+        <attribute path_3_arc="44.5,46.1" />
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="SW" />
         <attribute path_4_type="normal" />
+        <attribute path_4_arc="17.5,73.8" />
         <attribute path_5_from="clearing_4" />
         <attribute path_5_to="NE" />
         <attribute path_5_type="normal" />
-        <attribute path_5_arc="78.5,32.5" />
+        <attribute path_5_arc="71.3,35.8" />
         <attribute path_6_from="clearing_4" />
         <attribute path_6_to="SE" />
         <attribute path_6_type="normal" />
-		<attribute path_6_arc="78.1,69.1" />
+        <attribute path_6_arc="71.9,67.3" />
         <attribute path_7_from="clearing_5" />
         <attribute path_7_to="N" />
         <attribute path_7_type="normal" />
+        <attribute path_7_arc="50.6,3.0" />
       </AttributeBlock>
       <AttributeBlock blockName="enchanted">
-        <attribute offroad_xy="56.3,74.2" />
+        <attribute offroad_xy="56.2,74.1" />
         <attribute clearing_1_type="normal" />
-        <attribute clearing_1_xy="27.2,35.5" />
+        <attribute clearing_1_xy="27.0,35.1" />
         <attribute clearing_1_magic="R" />
         <attribute clearing_2_type="normal" />
-        <attribute clearing_2_xy="28.2,67.3" />
+        <attribute clearing_2_xy="27.6,66.2" />
         <attribute clearing_2_magic="R" />
         <attribute clearing_4_type="normal" />
-        <attribute clearing_4_xy="70.8,52.5" />
+        <attribute clearing_4_xy="70.5,51.7" />
         <attribute clearing_4_magic="R" />
         <attribute clearing_5_type="normal" />
-        <attribute clearing_5_xy="50.7,20.1" />
+        <attribute clearing_5_xy="50.6,18.8" />
         <attribute clearing_5_magic="R" />
         <attribute path_1_from="clearing_1" />
         <attribute path_1_to="NW" />
         <attribute path_1_type="normal" />
+        <attribute path_1_arc="16.5,28.4" />
         <attribute path_2_from="clearing_2" />
         <attribute path_2_to="clearing_5" />
         <attribute path_2_type="normal" />
-        <attribute path_2_arc="47.5,45.5" />
+        <attribute path_2_arc="51.0,54.5" />
         <attribute path_3_from="clearing_1" />
         <attribute path_3_to="clearing_4" />
         <attribute path_3_type="normal" />
+        <attribute path_3_arc="46.5,47.5" />
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="SW" />
         <attribute path_4_type="normal" />
+        <attribute path_4_arc="16.7,73.8" />
         <attribute path_5_from="clearing_4" />
         <attribute path_5_to="NE" />
         <attribute path_5_type="normal" />
-        <attribute path_5_arc="78.5,32.5" />
+        <attribute path_5_arc="73.5,31.2" />
         <attribute path_6_from="clearing_4" />
         <attribute path_6_to="SE" />
         <attribute path_6_type="normal" />
-		<attribute path_6_arc="78.1,69.1" />
+        <attribute path_6_arc="70.3,64.3" />
         <attribute path_7_from="clearing_5" />
         <attribute path_7_to="N" />
         <attribute path_7_type="normal" />
+        <attribute path_7_arc="51.8,6.0" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1129" name="Bad Valley">
@@ -27348,78 +27356,86 @@
         <attribute rw_expansion_1="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
-        <attribute offroad_xy="50.7,74.7" />
+        <attribute offroad_xy="15.9,47.3" />
         <attribute clearing_1_type="normal" />
-        <attribute clearing_1_xy="72.8,65.4" />
+        <attribute clearing_1_xy="72.7,65.9" />
         <attribute clearing_2_type="normal" />
-        <attribute clearing_2_xy="27.6,66.6" />
+        <attribute clearing_2_xy="28.0,66.4" />
         <attribute clearing_4_type="normal" />
-        <attribute clearing_4_xy="38.6,30.6" />
+        <attribute clearing_4_xy="38.7,30.7" />
         <attribute clearing_5_type="normal" />
-        <attribute clearing_5_xy="72.8,35.3" />
+        <attribute clearing_5_xy="72.5,34.7" />
         <attribute path_1_from="clearing_1" />
         <attribute path_1_to="clearing_4" />
         <attribute path_1_type="normal" />
-        <attribute path_1_arc="53.7,49.2" />
+        <attribute path_1_arc="50.8,49.1" />
         <attribute path_2_from="clearing_1" />
         <attribute path_2_to="SE" />
         <attribute path_2_type="normal" />
+        <attribute path_2_arc="84.6,74.1" />
         <attribute path_3_from="clearing_2" />
         <attribute path_3_to="clearing_5" />
         <attribute path_3_type="normal" />
+        <attribute path_3_arc="56.6,48.4" />
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="SW" />
         <attribute path_4_type="normal" />
+        <attribute path_4_arc="16.1,74.3" />
         <attribute path_5_from="clearing_4" />
         <attribute path_5_to="NW" />
         <attribute path_5_type="normal" />
-        <attribute path_5_arc="24.9,32.0" />
+        <attribute path_5_arc="28.2,37.2" />
         <attribute path_6_from="clearing_4" />
         <attribute path_6_to="N" />
         <attribute path_6_type="normal" />
-        <attribute path_6_arc="50.0,11.4" />
+        <attribute path_6_arc="52.4,17.7" />
         <attribute path_7_from="clearing_5" />
         <attribute path_7_to="NE" />
         <attribute path_7_type="normal" />
+        <attribute path_7_arc="82.4,27.5" />
       </AttributeBlock>
       <AttributeBlock blockName="enchanted">
-        <attribute offroad_xy="50.7,74.7" />
+        <attribute offroad_xy="15.1,46.3" />
         <attribute clearing_1_type="normal" />
-        <attribute clearing_1_xy="72.8,65.4" />
+        <attribute clearing_1_xy="72.5,65.2" />
         <attribute clearing_1_magic="R" />
         <attribute clearing_2_type="normal" />
-        <attribute clearing_2_xy="27.6,66.6" />
+        <attribute clearing_2_xy="27.2,66.2" />
         <attribute clearing_2_magic="R" />
         <attribute clearing_4_type="normal" />
-        <attribute clearing_4_xy="38.6,30.6" />
+        <attribute clearing_4_xy="38.3,30.3" />
         <attribute clearing_4_magic="R" />
         <attribute clearing_5_type="normal" />
-        <attribute clearing_5_xy="72.8,35.3" />
+        <attribute clearing_5_xy="72.9,34.2" />
         <attribute clearing_5_magic="R" />
         <attribute path_1_from="clearing_1" />
         <attribute path_1_to="clearing_4" />
         <attribute path_1_type="normal" />
-        <attribute path_1_arc="53.7,49.2" />
+        <attribute path_1_arc="54.0,51.9" />
         <attribute path_2_from="clearing_1" />
         <attribute path_2_to="SE" />
         <attribute path_2_type="normal" />
+        <attribute path_2_arc="84.6,73.8" />
         <attribute path_3_from="clearing_2" />
         <attribute path_3_to="clearing_5" />
         <attribute path_3_type="normal" />
+        <attribute path_3_arc="45.9,55.2" />
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="SW" />
         <attribute path_4_type="normal" />
+        <attribute path_4_arc="19.1,72.4" />
         <attribute path_5_from="clearing_4" />
         <attribute path_5_to="NW" />
         <attribute path_5_type="normal" />
-        <attribute path_5_arc="24.9,32.0" />
+        <attribute path_5_arc="28.6,36.3" />
         <attribute path_6_from="clearing_4" />
         <attribute path_6_to="N" />
         <attribute path_6_type="normal" />
-        <attribute path_6_arc="50.0,11.4" />
+        <attribute path_6_arc="50.4,20.5" />
         <attribute path_7_from="clearing_5" />
         <attribute path_7_to="NE" />
         <attribute path_7_type="normal" />
+        <attribute path_7_arc="83.4,26.1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1130" name="Curst Valley">
@@ -27436,80 +27452,86 @@
         <attribute rw_expansion_1="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
-        <attribute offroad_xy="17.1,53.8" />
+        <attribute offroad_xy="13.1,55.0" />
         <attribute clearing_1_type="normal" />
-        <attribute clearing_1_xy="50.0,20.0" />
+        <attribute clearing_1_xy="49.5,19.5" />
         <attribute clearing_2_type="normal" />
-        <attribute clearing_2_xy="26.4,36.2" />
+        <attribute clearing_2_xy="26.8,36.3" />
         <attribute clearing_4_type="normal" />
-        <attribute clearing_4_xy="58.8,71.0" />
+        <attribute clearing_4_xy="59.0,72.0" />
         <attribute clearing_5_type="normal" />
-        <attribute clearing_5_xy="73.6,34.8" />
+        <attribute clearing_5_xy="73.5,35.4" />
         <attribute path_1_from="clearing_1" />
         <attribute path_1_to="N" />
         <attribute path_1_type="normal" />
+        <attribute path_1_arc="48.5,7.4" />
         <attribute path_2_from="clearing_2" />
         <attribute path_2_to="clearing_5" />
         <attribute path_2_type="normal" />
-        <attribute path_2_arc="51.7,44.8" />
+        <attribute path_2_arc="46.7,53.6" />
         <attribute path_3_from="clearing_1" />
         <attribute path_3_to="clearing_4" />
         <attribute path_3_type="normal" />
-        <attribute path_3_arc="51.7,44.8" />
+        <attribute path_3_arc="51.2,46.6" />
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="NW" />
         <attribute path_4_type="normal" />
+        <attribute path_4_arc="15.9,28.9" />
         <attribute path_5_from="clearing_4" />
         <attribute path_5_to="SW" />
         <attribute path_5_type="normal" />
-        <attribute path_5_arc="33.4,69.1" />
+        <attribute path_5_arc="34.0,64.5" />
         <attribute path_6_from="clearing_4" />
         <attribute path_6_to="SE" />
         <attribute path_6_type="normal" />
-        <attribute path_6_arc="77.7,69.6" />
+        <attribute path_6_arc="73.9,64.3" />
         <attribute path_7_from="clearing_5" />
         <attribute path_7_to="NE" />
         <attribute path_7_type="normal" />
+        <attribute path_7_arc="85.8,27.9" />
       </AttributeBlock>
       <AttributeBlock blockName="enchanted">
-        <attribute offroad_xy="17.1,53.8" />
+        <attribute offroad_xy="14.5,55.9" />
         <attribute clearing_1_type="normal" />
-        <attribute clearing_1_xy="50.0,20.0" />
+        <attribute clearing_1_xy="49.7,19.8" />
         <attribute clearing_1_magic="R" />
         <attribute clearing_2_type="normal" />
-        <attribute clearing_2_xy="26.4,36.2" />
+        <attribute clearing_2_xy="26.8,36.1" />
         <attribute clearing_2_magic="R" />
         <attribute clearing_4_type="normal" />
-        <attribute clearing_4_xy="58.8,71.0" />
+        <attribute clearing_4_xy="59.2,72.0" />
         <attribute clearing_4_magic="R" />
         <attribute clearing_5_type="normal" />
-        <attribute clearing_5_xy="73.6,34.8" />
+        <attribute clearing_5_xy="73.3,35.6" />
         <attribute clearing_5_magic="R" />
         <attribute path_1_from="clearing_1" />
         <attribute path_1_to="N" />
         <attribute path_1_type="normal" />
+        <attribute path_1_arc="49.3,4.8" />
         <attribute path_2_from="clearing_2" />
         <attribute path_2_to="clearing_5" />
         <attribute path_2_type="normal" />
-        <attribute path_2_arc="51.7,44.8" />
+        <attribute path_2_arc="46.9,53.3" />
         <attribute path_3_from="clearing_1" />
         <attribute path_3_to="clearing_4" />
         <attribute path_3_type="normal" />
-        <attribute path_3_arc="51.7,44.8" />
+        <attribute path_3_arc="50.6,43.5" />
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="NW" />
         <attribute path_4_type="normal" />
+        <attribute path_4_arc="15.7,29.1" />
         <attribute path_5_from="clearing_4" />
         <attribute path_5_to="SW" />
         <attribute path_5_type="normal" />
-        <attribute path_5_arc="33.4,69.1" />
+        <attribute path_5_arc="35.2,64.3" />
         <attribute path_6_from="clearing_4" />
         <attribute path_6_to="SE" />
         <attribute path_6_type="normal" />
-        <attribute path_6_arc="77.7,69.6" />
+        <attribute path_6_arc="75.8,64.1" />
         <attribute path_7_from="clearing_5" />
         <attribute path_7_to="NE" />
         <attribute path_7_type="normal" />
+        <attribute path_7_arc="85.4,27.7" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1131" name="Dark Valley">
@@ -27526,78 +27548,86 @@
         <attribute rw_expansion_1="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
-        <attribute offroad_xy="45.5,74.2" />
+        <attribute offroad_xy="45.3,74.1" />
         <attribute clearing_1_type="normal" />
-        <attribute clearing_1_xy="72.8,35.7" />
+        <attribute clearing_1_xy="73.1,35.6" />
         <attribute clearing_2_type="normal" />
-        <attribute clearing_2_xy="49.9,19.3" />
+        <attribute clearing_2_xy="49.5,19.5" />
         <attribute clearing_4_type="normal" />
-        <attribute clearing_4_xy="29.4,52.0" />
+        <attribute clearing_4_xy="29.6,52.4" />
         <attribute clearing_5_type="normal" />
-        <attribute clearing_5_xy="72.2,66.6" />
+        <attribute clearing_5_xy="72.1,66.4" />
         <attribute path_1_from="clearing_1" />
         <attribute path_1_to="NE" />
         <attribute path_1_type="normal" />
+        <attribute path_1_arc="84.4,28.6" />
         <attribute path_2_from="clearing_2" />
         <attribute path_2_to="clearing_5" />
         <attribute path_2_type="normal" />
-        <attribute path_2_arc="53.7,45.0" />
+        <attribute path_2_arc="51.0,58.5" />
         <attribute path_3_from="clearing_1" />
         <attribute path_3_to="clearing_4" />
         <attribute path_3_type="normal" />
+        <attribute path_3_arc="59.2,45.9" />
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="N" />
         <attribute path_4_type="normal" />
+        <attribute path_4_arc="49.1,6.0" />
         <attribute path_5_from="clearing_4" />
         <attribute path_5_to="SW" />
         <attribute path_5_type="normal" />
-        <attribute path_5_arc="22.1,68.0" />		
+        <attribute path_5_arc="28.4,68.0" />
         <attribute path_6_from="clearing_4" />
         <attribute path_6_to="NW" />
         <attribute path_6_type="normal" />
-        <attribute path_6_arc="22.1,32.5" />
+        <attribute path_6_arc="25.8,31.7" />
         <attribute path_7_from="clearing_5" />
         <attribute path_7_to="SE" />
         <attribute path_7_type="normal" />
+        <attribute path_7_arc="84.0,74.1" />
       </AttributeBlock>
       <AttributeBlock blockName="enchanted">
-        <attribute offroad_xy="45.5,74.2" />
+        <attribute offroad_xy="45.3,74.1" />
         <attribute clearing_1_type="normal" />
-        <attribute clearing_1_xy="72.8,35.7" />
+        <attribute clearing_1_xy="73.5,35.1" />
         <attribute clearing_1_magic="R" />
         <attribute clearing_2_type="normal" />
-        <attribute clearing_2_xy="49.9,19.3" />
+        <attribute clearing_2_xy="50.2,18.8" />
         <attribute clearing_2_magic="R" />
         <attribute clearing_4_type="normal" />
-        <attribute clearing_4_xy="29.4,52.0" />
+        <attribute clearing_4_xy="29.8,51.9" />
         <attribute clearing_4_magic="R" />
         <attribute clearing_5_type="normal" />
-        <attribute clearing_5_xy="72.2,66.6" />
+        <attribute clearing_5_xy="73.1,66.2" />
         <attribute clearing_5_magic="R" />
         <attribute path_1_from="clearing_1" />
         <attribute path_1_to="NE" />
         <attribute path_1_type="normal" />
+        <attribute path_1_arc="84.6,28.9" />
         <attribute path_2_from="clearing_2" />
         <attribute path_2_to="clearing_5" />
         <attribute path_2_type="normal" />
-        <attribute path_2_arc="53.7,45.0" />
+        <attribute path_2_arc="49.7,54.7" />
         <attribute path_3_from="clearing_1" />
         <attribute path_3_to="clearing_4" />
         <attribute path_3_type="normal" />
+        <attribute path_3_arc="57.2,46.8" />
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="N" />
         <attribute path_4_type="normal" />
+        <attribute path_4_arc="48.9,4.1" />
         <attribute path_5_from="clearing_4" />
         <attribute path_5_to="SW" />
         <attribute path_5_type="normal" />
-        <attribute path_5_arc="22.1,68.0" />		
+        <attribute path_5_arc="30.6,65.2" />
         <attribute path_6_from="clearing_4" />
         <attribute path_6_to="NW" />
         <attribute path_6_type="normal" />
-        <attribute path_6_arc="22.1,32.5" />
+        <attribute path_6_arc="27.4,31.7" />
         <attribute path_7_from="clearing_5" />
         <attribute path_7_to="SE" />
         <attribute path_7_type="normal" />
+        <attribute path_7_arc="80.8,72.0" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1132" name="Evil Valley">
@@ -27614,75 +27644,81 @@
         <attribute rw_expansion_1="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
-        <attribute offroad_xy="49.5,74.2" />
+        <attribute offroad_xy="11.0,51.2" />
         <attribute clearing_1_type="normal" />
-        <attribute clearing_1_xy="27.8,65.7" />
+        <attribute clearing_1_xy="27.6,65.5" />
         <attribute clearing_2_type="normal" />
-        <attribute clearing_2_xy="27.7,33.9" />
+        <attribute clearing_2_xy="28.0,34.4" />
         <attribute clearing_4_type="normal" />
-        <attribute clearing_4_xy="62.0,30.6" />
+        <attribute clearing_4_xy="61.8,30.5" />
         <attribute clearing_5_type="normal" />
-        <attribute clearing_5_xy="72.4,66.4" />
+        <attribute clearing_5_xy="72.7,66.6" />
         <attribute path_1_from="clearing_1" />
         <attribute path_1_to="SW" />
         <attribute path_1_type="normal" />
+        <attribute path_1_arc="18.5,73.4" />
         <attribute path_2_from="clearing_2" />
         <attribute path_2_to="clearing_5" />
         <attribute path_2_type="normal" />
+        <attribute path_2_arc="48.5,50.5" />
         <attribute path_3_from="clearing_1" />
         <attribute path_3_to="clearing_4" />
         <attribute path_3_type="normal" />
-        <attribute path_3_arc="47.3,48.5" />
+        <attribute path_3_arc="49.7,48.9" />
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="NW" />
         <attribute path_4_type="normal" />
+        <attribute path_4_arc="18.3,26.8" />
         <attribute path_5_from="clearing_4" />
         <attribute path_5_to="N" />
         <attribute path_5_type="normal" />
-        <attribute path_5_arc="51.1,13.0" />
+        <attribute path_5_arc="48.1,15.8" />
         <attribute path_6_from="clearing_4" />
         <attribute path_6_to="NE" />
         <attribute path_6_type="normal" />
-        <attribute path_6_arc="79.5,30.6" />
+        <attribute path_6_arc="75.2,36.3" />
         <attribute path_7_from="clearing_5" />
         <attribute path_7_to="SE" />
         <attribute path_7_type="normal" />
       </AttributeBlock>
       <AttributeBlock blockName="enchanted">
-        <attribute offroad_xy="49.5,74.2" />
+        <attribute offroad_xy="11.0,51.2" />
         <attribute clearing_1_type="normal" />
-        <attribute clearing_1_xy="27.8,65.7" />
+        <attribute clearing_1_xy="27.6,65.5" />
         <attribute clearing_1_magic="R" />
         <attribute clearing_2_type="normal" />
-        <attribute clearing_2_xy="27.7,33.9" />
+        <attribute clearing_2_xy="27.4,34.4" />
         <attribute clearing_2_magic="R" />
         <attribute clearing_4_type="normal" />
-        <attribute clearing_4_xy="62.0,30.6" />
+        <attribute clearing_4_xy="61.8,29.8" />
         <attribute clearing_4_magic="R" />
         <attribute clearing_5_type="normal" />
-        <attribute clearing_5_xy="72.4,66.4" />
+        <attribute clearing_5_xy="72.9,66.8" />
         <attribute clearing_5_magic="R" />
         <attribute path_1_from="clearing_1" />
         <attribute path_1_to="SW" />
         <attribute path_1_type="normal" />
+        <attribute path_1_arc="19.1,72.7" />
         <attribute path_2_from="clearing_2" />
         <attribute path_2_to="clearing_5" />
         <attribute path_2_type="normal" />
+        <attribute path_2_arc="47.3,49.8" />
         <attribute path_3_from="clearing_1" />
         <attribute path_3_to="clearing_4" />
         <attribute path_3_type="normal" />
-        <attribute path_3_arc="47.3,48.5" />
+        <attribute path_3_arc="48.7,49.8" />
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="NW" />
         <attribute path_4_type="normal" />
+        <attribute path_4_arc="18.3,27.2" />
         <attribute path_5_from="clearing_4" />
         <attribute path_5_to="N" />
         <attribute path_5_type="normal" />
-        <attribute path_5_arc="51.1,13.0" />
+        <attribute path_5_arc="48.5,19.3" />
         <attribute path_6_from="clearing_4" />
         <attribute path_6_to="NE" />
         <attribute path_6_type="normal" />
-        <attribute path_6_arc="79.5,30.6" />
+        <attribute path_6_arc="75.8,37.0" />
         <attribute path_7_from="clearing_5" />
         <attribute path_7_to="SE" />
         <attribute path_7_type="normal" />
@@ -27712,7 +27748,7 @@
         <attribute path_1_from="clearing_2" />
         <attribute path_1_to="clearing_4" />
         <attribute path_1_type="normal" />
-		<attribute path_1_arc="43.5,45.9" />
+        <attribute path_1_arc="43.5,45.9" />
         <attribute path_2_from="clearing_2" />
         <attribute path_2_to="SW" />
         <attribute path_2_type="normal" />
@@ -27747,7 +27783,7 @@
         <attribute path_1_from="clearing_2" />
         <attribute path_1_to="clearing_5" />
         <attribute path_1_type="normal" />
-		<attribute path_1_arc="42.2,39.4" />
+        <attribute path_1_arc="42.2,39.4" />
         <attribute path_2_from="clearing_2" />
         <attribute path_2_to="SW" />
         <attribute path_2_type="normal" />
@@ -28152,7 +28188,7 @@
         <attribute path_9_from="clearing_3" />
         <attribute path_9_to="clearing_6" />
         <attribute path_9_type="hidden" />
-		<attribute path_9_arc="53.3,67.3" />
+        <attribute path_9_arc="53.3,67.3" />
         <attribute path_10_from="clearing_4" />
         <attribute path_10_to="clearing_5" />
         <attribute path_10_type="normal" />
@@ -28190,14 +28226,14 @@
         <attribute path_2_from="clearing_1" />
         <attribute path_2_to="clearing_4" />
         <attribute path_2_type="normal" />
-		<attribute path_2_arc="34.6,52.9" />
+        <attribute path_2_arc="34.6,52.9" />
         <attribute path_3_from="clearing_2" />
         <attribute path_3_to="clearing_5" />
         <attribute path_3_type="normal" />
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="clearing_6" />
         <attribute path_4_type="normal" />
-		<attribute path_4_arc="58.4,27.1" />
+        <attribute path_4_arc="58.4,27.1" />
         <attribute path_5_from="clearing_3" />
         <attribute path_5_to="clearing_4" />
         <attribute path_5_type="hidden" />
@@ -28208,7 +28244,7 @@
         <attribute path_7_from="clearing_3" />
         <attribute path_7_to="SE" />
         <attribute path_7_type="normal" />
-		<attribute path_7_arc="78.5,72.6" />
+        <attribute path_7_arc="78.5,72.6" />
         <attribute path_8_from="clearing_4" />
         <attribute path_8_to="clearing_6" />
         <attribute path_8_type="hidden" />
@@ -28288,7 +28324,7 @@
         <attribute path_8_from="clearing_4" />
         <attribute path_8_to="N" />
         <attribute path_8_type="normal" />
-		<attribute path_8_arc="52.5,19.0" />
+        <attribute path_8_arc="52.5,19.0" />
         <attribute path_9_from="clearing_2" />
         <attribute path_9_to="clearing_5" />
         <attribute path_9_type="normal" />
@@ -28340,7 +28376,7 @@
         <attribute path_7_from="clearing_4" />
         <attribute path_7_to="N" />
         <attribute path_7_type="normal" />
-		<attribute path_7_arc="52.5,19.0" />
+        <attribute path_7_arc="52.5,19.0" />
         <attribute path_8_from="clearing_2" />
         <attribute path_8_to="clearing_5" />
         <attribute path_8_type="normal" />
@@ -28525,7 +28561,7 @@
         <attribute clearing_6_type="mountain" />
         <attribute clearing_6_xy="69.6,37.1" />
         <attribute clearing_6_magic="P" />
-		<attribute path_1_from="clearing_1" />
+        <attribute path_1_from="clearing_1" />
         <attribute path_1_to="clearing_3" />
         <attribute path_1_type="normal" />
         <attribute path_2_from="clearing_2" />
@@ -28535,14 +28571,13 @@
         <attribute path_3_from="clearing_2" />
         <attribute path_3_to="clearing_5" />
         <attribute path_3_type="normal" />
-        <attribute path_3_arc="51.3,91.6" />
+        <attribute path_3_arc="57.7,49.0" />
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="SW" />
         <attribute path_4_type="normal" />
         <attribute path_5_from="clearing_3" />
         <attribute path_5_to="clearing_6" />
         <attribute path_5_type="hidden" />
-		<attribute path_3_arc="57.7,49.0" />
         <attribute path_6_from="clearing_4" />
         <attribute path_6_to="N" />
         <attribute path_6_type="normal" />
@@ -28555,7 +28590,7 @@
         <attribute path_9_from="clearing_4" />
         <attribute path_9_to="clearing_6" />
         <attribute path_9_type="normal" />
-		<attribute path_10_from="clearing_1" />
+        <attribute path_10_from="clearing_1" />
         <attribute path_10_to="clearing_4" />
         <attribute path_10_type="secret" />
       </AttributeBlock>
@@ -28596,7 +28631,7 @@
         <attribute path_3_from="clearing_2" />
         <attribute path_3_to="clearing_3" />
         <attribute path_3_type="normal" />
-		<attribute path_3_arc="38.0,60.3" />
+        <attribute path_3_arc="38.0,60.3" />
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="clearing_5" />
         <attribute path_4_type="hidden" />
@@ -28649,7 +28684,7 @@
         <attribute path_3_from="clearing_2" />
         <attribute path_3_to="clearing_3" />
         <attribute path_3_type="normal" />
-		<attribute path_3_arc="38.0,60.3" />
+        <attribute path_3_arc="38.0,60.3" />
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="clearing_5" />
         <attribute path_4_type="hidden" />
@@ -28711,7 +28746,7 @@
         <attribute path_3_from="clearing_2" />
         <attribute path_3_to="clearing_3" />
         <attribute path_3_type="normal" />
-		<attribute path_3_arc="74.2,27.8" />
+        <attribute path_3_arc="74.2,27.8" />
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="NE" />
         <attribute path_4_type="normal" />
@@ -28723,7 +28758,7 @@
         <attribute path_6_from="clearing_2" />
         <attribute path_6_to="S" />
         <attribute path_6_type="normal" />
-		<attribute path_6_arc="60.0,73.8" />
+        <attribute path_6_arc="60.0,73.8" />
         <attribute path_7_from="clearing_3" />
         <attribute path_7_to="clearing_6" />
         <attribute path_7_type="normal" />
@@ -28778,7 +28813,7 @@
         <attribute path_3_from="clearing_2" />
         <attribute path_3_to="clearing_3" />
         <attribute path_3_type="normal" />
-		<attribute path_3_arc="74.2,27.8" />
+        <attribute path_3_arc="74.2,27.8" />
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="NE" />
         <attribute path_4_type="normal" />
@@ -28790,7 +28825,7 @@
         <attribute path_6_from="clearing_2" />
         <attribute path_6_to="S" />
         <attribute path_6_type="normal" />
-		<attribute path_6_arc="60.0,73.8" />
+        <attribute path_6_arc="60.0,73.8" />
         <attribute path_7_from="clearing_3" />
         <attribute path_7_to="clearing_6" />
         <attribute path_7_type="normal" />
@@ -29005,7 +29040,7 @@
         <attribute path_1_from="clearing_1" />
         <attribute path_1_to="clearing_2" />
         <attribute path_1_type="hidden" />
-		<attribute path_1_arc="50.7,30.9" />
+        <attribute path_1_arc="50.7,30.9" />
         <attribute path_2_from="clearing_1" />
         <attribute path_2_to="clearing_4" />
         <attribute path_2_type="hidden" />
@@ -29043,7 +29078,7 @@
         <attribute path_12_from="clearing_6" />
         <attribute path_12_to="NE" />
         <attribute path_12_type="normal" />
-		<attribute path_12_arc="81.1,28.8" />
+        <attribute path_12_arc="81.1,28.8" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1146" name="Caves">
@@ -29200,7 +29235,7 @@
         <attribute path_9_from="clearing_4" />
         <attribute path_9_to="clearing_6" />
         <attribute path_9_type="caves" />
-		<attribute path_9_arc="46.9,69.6" />
+        <attribute path_9_arc="46.9,69.6" />
         <attribute path_10_from="clearing_5" />
         <attribute path_10_to="NW" />
         <attribute path_10_type="normal" />
@@ -29239,14 +29274,14 @@
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="clearing_6" />
         <attribute path_4_type="caves" />
-		<attribute path_4_arc="54.9,41.3" />
+        <attribute path_4_arc="54.9,41.3" />
         <attribute path_5_from="clearing_2" />
         <attribute path_5_to="N" />
         <attribute path_5_type="normal" />
         <attribute path_6_from="clearing_3" />
         <attribute path_6_to="clearing_5" />
         <attribute path_6_type="caves" />
-		<attribute path_6_arc="35.8,25.8" />
+        <attribute path_6_arc="35.8,25.8" />
         <attribute path_7_from="clearing_3" />
         <attribute path_7_to="clearing_6" />
         <attribute path_7_type="caves" />
@@ -29257,20 +29292,20 @@
         <attribute path_9_from="clearing_4" />
         <attribute path_9_to="clearing_6" />
         <attribute path_9_type="caves" />
-		<attribute path_9_arc="49.7,68.9" />
+        <attribute path_9_arc="49.7,68.9" />
         <attribute path_10_from="clearing_5" />
         <attribute path_10_to="NW" />
         <attribute path_10_type="normal" />
       </AttributeBlock>
     </GameObject>
-	<GameObject id="1148" name="Ambush">
+    <GameObject id="1148" name="Ambush">
       <AttributeBlock blockName="this">
         <attribute tile_type="XM" />
         <attribute a_tile="" />
         <attribute rw_expansion_1="" />
         <attribute print="" />
         <attribute image="ambush" />
-        <attribute facing="dark" />
+        <attribute facing="light" />
         <attribute code="AM" />
         <attribute folder="etiles_alternative" />
         <attribute etile="" />
@@ -29292,14 +29327,14 @@
         <attribute path_1_from="clearing_1" />
         <attribute path_1_to="clearing_3" />
         <attribute path_1_type="normal" />
-		<attribute path_1_arc="40.8,28.5" />
+        <attribute path_1_arc="40.8,28.5" />
         <attribute path_2_from="clearing_3" />
         <attribute path_2_to="clearing_6" />
         <attribute path_2_type="normal" />
         <attribute path_3_from="clearing_1" />
         <attribute path_3_to="NW" />
         <attribute path_3_type="normal" />
-		<attribute path_3_arc="16.5,26.0" />
+        <attribute path_3_arc="16.5,26.0" />
         <attribute path_4_from="clearing_5" />
         <attribute path_4_to="SW" />
         <attribute path_4_type="normal" />
@@ -29313,11 +29348,11 @@
         <attribute path_7_from="clearing_4" />
         <attribute path_7_to="NE" />
         <attribute path_7_type="normal" />
-		<attribute path_8_from="clearing_3" />
+        <attribute path_8_from="clearing_3" />
         <attribute path_8_to="clearing_4" />
         <attribute path_8_type="hidden" />
         <attribute path_8_arc="62.4,46.9" />
-		<attribute path_9_from="clearing_5" />
+        <attribute path_9_from="clearing_5" />
         <attribute path_9_to="clearing_6" />
         <attribute path_9_type="hidden" />
         <attribute path_9_arc="41.2,74.0" />
@@ -29345,14 +29380,14 @@
         <attribute path_1_from="clearing_1" />
         <attribute path_1_to="clearing_3" />
         <attribute path_1_type="normal" />
-		<attribute path_1_arc="40.8,28.5" />
+        <attribute path_1_arc="40.8,28.5" />
         <attribute path_2_from="clearing_3" />
         <attribute path_2_to="clearing_6" />
         <attribute path_2_type="normal" />
         <attribute path_3_from="clearing_1" />
         <attribute path_3_to="NW" />
         <attribute path_3_type="normal" />
-		<attribute path_3_arc="16.5,26.0" />
+        <attribute path_3_arc="16.5,26.0" />
         <attribute path_4_from="clearing_5" />
         <attribute path_4_to="SW" />
         <attribute path_4_type="normal" />
@@ -29366,7 +29401,7 @@
         <attribute path_7_from="clearing_4" />
         <attribute path_7_to="NE" />
         <attribute path_7_type="normal" />
-		<attribute path_8_from="clearing_5" />
+        <attribute path_8_from="clearing_5" />
         <attribute path_8_to="clearing_4" />
         <attribute path_8_type="secret" />
         <attribute path_8_arc="49.7,52.4" />
@@ -29417,7 +29452,7 @@
         <attribute path_6_from="clearing_1" />
         <attribute path_6_to="NW" />
         <attribute path_6_type="normal" />
-		<attribute path_6_arc="20.3,26.7" />
+        <attribute path_6_arc="20.3,26.7" />
         <attribute path_7_from="clearing_4" />
         <attribute path_7_to="SW" />
         <attribute path_7_type="normal" />
@@ -29468,7 +29503,7 @@
         <attribute path_6_from="clearing_1" />
         <attribute path_6_to="NW" />
         <attribute path_6_type="normal" />
-		<attribute path_6_arc="20.3,26.7" />
+        <attribute path_6_arc="20.3,26.7" />
         <attribute path_7_from="clearing_4" />
         <attribute path_7_to="SW" />
         <attribute path_7_type="normal" />
@@ -29519,11 +29554,11 @@
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="clearing_3" />
         <attribute path_4_type="hidden" />
-		<attribute path_4_arc="38.6,55.7" />
+        <attribute path_4_arc="38.6,55.7" />
         <attribute path_5_from="clearing_3" />
         <attribute path_5_to="clearing_4" />
         <attribute path_5_type="hidden" />
-		<attribute path_5_arc="61.0,54.8" />
+        <attribute path_5_arc="61.0,54.8" />
         <attribute path_6_from="clearing_2" />
         <attribute path_6_to="clearing_5" />
         <attribute path_6_type="normal" />
@@ -29533,7 +29568,7 @@
         <attribute path_8_from="clearing_5" />
         <attribute path_8_to="clearing_6" />
         <attribute path_8_type="caves" />
-		<attribute path_8_arc="50.5,85.8" />
+        <attribute path_8_arc="50.5,85.8" />
         <attribute path_9_from="clearing_2" />
         <attribute path_9_to="SW" />
         <attribute path_9_type="normal" />
@@ -29563,19 +29598,6 @@
         <attribute clearing_6_type="caves" />
         <attribute clearing_6_xy="67.0,84.9" />
         <attribute clearing_6_magic="P" />
-        <attribute offroad_xy="77.5,30.2" />
-        <attribute clearing_1_type="mountain" />
-        <attribute clearing_1_xy="49.3,21.8" />
-        <attribute clearing_2_type="woods" />
-        <attribute clearing_2_xy="24.7,53.8" />
-        <attribute clearing_3_type="woods" />
-        <attribute clearing_3_xy="49.9,67.5" />
-        <attribute clearing_4_type="woods" />
-        <attribute clearing_4_xy="74.6,53.8" />
-        <attribute clearing_5_type="caves" />
-        <attribute clearing_5_xy="30.8,82.1" />
-        <attribute clearing_6_type="caves" />
-        <attribute clearing_6_xy="67.0,84.9" />
         <attribute path_1_from="clearing_1" />
         <attribute path_1_to="clearing_2" />
         <attribute path_1_type="normal" />
@@ -29600,7 +29622,7 @@
         <attribute path_8_from="clearing_5" />
         <attribute path_8_to="clearing_6" />
         <attribute path_8_type="caves" />
-		<attribute path_8_arc="50.5,85.8" />
+        <attribute path_8_arc="50.5,85.8" />
         <attribute path_9_from="clearing_2" />
         <attribute path_9_to="SW" />
         <attribute path_9_type="normal" />
@@ -29654,18 +29676,18 @@
         <attribute path_5_from="clearing_4" />
         <attribute path_5_to="NE" />
         <attribute path_5_type="normal" />
-		<attribute path_5_arc="75.9,28.1" />
+        <attribute path_5_arc="75.9,28.1" />
         <attribute path_6_from="clearing_2" />
         <attribute path_6_to="NW" />
         <attribute path_6_type="normal" />
-		<attribute path_6_arc="18.5,26.7" />
+        <attribute path_6_arc="18.5,26.7" />
         <attribute path_7_from="clearing_1" />
         <attribute path_7_to="SW" />
         <attribute path_7_type="normal" />
         <attribute path_8_from="clearing_5" />
         <attribute path_8_to="SE" />
         <attribute path_8_type="normal" />
-		<attribute path_8_arc="82.5,68.2" />
+        <attribute path_8_arc="82.5,68.2" />
       </AttributeBlock>
       <AttributeBlock blockName="enchanted">
         <attribute offroad_xy="46.3,79.1" />
@@ -29700,18 +29722,18 @@
         <attribute path_4_from="clearing_4" />
         <attribute path_4_to="NE" />
         <attribute path_4_type="normal" />
-		<attribute path_4_arc="75.9,28.1" />
+        <attribute path_4_arc="75.9,28.1" />
         <attribute path_5_from="clearing_2" />
         <attribute path_5_to="NW" />
         <attribute path_5_type="normal" />
-		<attribute path_5_arc="18.5,26.7" />
+        <attribute path_5_arc="18.5,26.7" />
         <attribute path_6_from="clearing_1" />
         <attribute path_6_to="SW" />
         <attribute path_6_type="normal" />
         <attribute path_7_from="clearing_5" />
         <attribute path_7_to="SE" />
         <attribute path_7_type="normal" />
-		<attribute path_7_arc="82.5,68.2" />
+        <attribute path_7_arc="82.5,68.2" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1152" name="Snake">
@@ -29799,7 +29821,7 @@
         <attribute path_4_from="clearing_3" />
         <attribute path_4_to="clearing_6" />
         <attribute path_4_type="normal" />
-		<attribute path_4_arc="57.9,53.1" />
+        <attribute path_4_arc="57.9,53.1" />
         <attribute path_5_from="clearing_4" />
         <attribute path_5_to="clearing_5" />
         <attribute path_5_type="normal" />
@@ -30073,25 +30095,24 @@
         <attribute path_4_from="clearing_1" />
         <attribute path_4_to="clearing_2" />
         <attribute path_4_type="normal" />
-		<attribute path_5_arc="50.3,33.6" />
+        <attribute path_5_arc="38.4,57.3" />
         <attribute path_5_from="clearing_2" />
         <attribute path_5_to="clearing_3" />
         <attribute path_5_type="normal" />
-		<attribute path_5_arc="38.4,57.3" />
         <attribute path_6_from="clearing_1" />
         <attribute path_6_to="clearing_3" />
         <attribute path_6_type="normal" />
-		<attribute path_6_arc="60.8,55.9" />
+        <attribute path_6_arc="60.8,55.9" />
         <attribute path_7_from="clearing_4" />
         <attribute path_7_to="SE" />
         <attribute path_7_type="normal" />
         <attribute path_8_from="clearing_1" />
         <attribute path_8_to="NE" />
         <attribute path_8_type="normal" />
-		<attribute path_9_from="clearing_2" />
+        <attribute path_9_from="clearing_2" />
         <attribute path_9_to="clearing_5" />
         <attribute path_9_type="secret" />
-		<attribute path_9_arc="19.7,47.3" />
+        <attribute path_9_arc="19.7,47.3" />
       </AttributeBlock>
       <AttributeBlock blockName="enchanted">
         <attribute offroad_xy="68.2,13.5" />
@@ -30127,22 +30148,22 @@
         <attribute path_4_from="clearing_1" />
         <attribute path_4_to="clearing_2" />
         <attribute path_4_type="normal" />
-		<attribute path_4_arc="50.3,33.4" />
+        <attribute path_4_arc="50.3,33.4" />
         <attribute path_5_from="clearing_2" />
         <attribute path_5_to="clearing_3" />
         <attribute path_5_type="normal" />
-		<attribute path_5_arc="38.2,56.4" />
+        <attribute path_5_arc="38.2,56.4" />
         <attribute path_6_from="clearing_1" />
         <attribute path_6_to="clearing_3" />
         <attribute path_6_type="normal" />
-		<attribute path_6_arc="60.8,55.2" />
+        <attribute path_6_arc="60.8,55.2" />
         <attribute path_7_from="clearing_1" />
         <attribute path_7_to="NE" />
         <attribute path_7_type="normal" />
-		<attribute path_8_from="clearing_1" />
+        <attribute path_8_from="clearing_1" />
         <attribute path_8_to="clearing_4" />
         <attribute path_8_type="secret" />
-		<attribute path_8_arc="76.1,51.3" />
+        <attribute path_8_arc="76.1,51.3" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1156" name="Volcano">
@@ -30242,7 +30263,7 @@
         <attribute path_7_from="clearing_5" />
         <attribute path_7_to="clearing_6" />
         <attribute path_7_type="secret" />
-		<attribute path_7_arc="43.1,29.7" />
+        <attribute path_7_arc="43.1,29.7" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1157" name="Decrepid Swamp">
@@ -30288,11 +30309,11 @@
         <attribute path_6_from="clearing_2" />
         <attribute path_6_to="NE" />
         <attribute path_6_type="normal" />
-		<attribute path_6_arc="81.1,28.8" />
-		<attribute path_7_from="clearing_4" />
+        <attribute path_6_arc="81.1,28.8" />
+        <attribute path_7_from="clearing_4" />
         <attribute path_7_to="clearing_5" />
         <attribute path_7_type="hidden" />
-		<attribute path_7_arc="45.7,65.9" />
+        <attribute path_7_arc="45.7,65.9" />
       </AttributeBlock>
       <AttributeBlock blockName="enchanted">
         <attribute offroad_xy="82.7,53.6" />
@@ -30318,11 +30339,11 @@
         <attribute path_3_from="clearing_1" />
         <attribute path_3_to="N" />
         <attribute path_3_type="normal" />
-		<attribute path_3_arc="47.9,11.1" />
+        <attribute path_3_arc="47.9,11.1" />
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="NE" />
         <attribute path_4_type="normal" />
-		<attribute path_4_arc="82.1,29.2" />
+        <attribute path_4_arc="82.1,29.2" />
         <attribute path_5_from="clearing_4" />
         <attribute path_5_to="SW" />
         <attribute path_5_type="normal" />
@@ -30330,11 +30351,11 @@
         <attribute path_6_from="clearing_5" />
         <attribute path_6_to="SE" />
         <attribute path_6_type="normal" />
-		<attribute path_6_arc="77.7,68.7" />
-		<attribute path_7_from="clearing_1" />
+        <attribute path_6_arc="77.7,68.7" />
+        <attribute path_7_from="clearing_1" />
         <attribute path_7_to="clearing_4" />
         <attribute path_7_type="hidden" />
-		<attribute path_7_arc="32.6,46.9" />
+        <attribute path_7_arc="32.6,46.9" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1158" name="Foul Swamp">
@@ -30370,23 +30391,23 @@
         <attribute path_3_from="clearing_2" />
         <attribute path_3_to="N" />
         <attribute path_3_type="normal" />
-		<attribute path_3_arc="50.7,06.5" />
-		<attribute path_4_from="clearing_5" />
+        <attribute path_3_arc="50.7,06.5" />
+        <attribute path_4_from="clearing_5" />
         <attribute path_4_to="SE" />
         <attribute path_4_type="normal" />
-		<attribute path_4_arc="79.5,68.0" />
-		<attribute path_5_from="clearing_4" />
+        <attribute path_4_arc="79.5,68.0" />
+        <attribute path_5_from="clearing_4" />
         <attribute path_5_to="SW" />
         <attribute path_5_type="normal" />
-		<attribute path_5_arc="21.1,71.2" />
+        <attribute path_5_arc="21.1,71.2" />
         <attribute path_6_from="clearing_1" />
         <attribute path_6_to="NW" />
         <attribute path_6_type="normal" />
-		<attribute path_6_arc="17.7,28.3" />	
-		<attribute path_7_from="clearing_4" />
+        <attribute path_6_arc="17.7,28.3" />
+        <attribute path_7_from="clearing_4" />
         <attribute path_7_to="clearing_5" />
         <attribute path_7_type="hidden" />
-		<attribute path_7_arc="53.9,68.0" />	
+        <attribute path_7_arc="53.9,68.0" />
       </AttributeBlock>
       <AttributeBlock blockName="enchanted">
         <attribute offroad_xy="77.5,31.6" />
@@ -30413,7 +30434,7 @@
         <attribute path_3_from="clearing_4" />
         <attribute path_3_to="SW" />
         <attribute path_3_type="normal" />
-		<attribute path_3_arc="23.3,68.9" />
+        <attribute path_3_arc="23.3,68.9" />
         <attribute path_4_from="clearing_5" />
         <attribute path_4_to="SE" />
         <attribute path_4_type="normal" />
@@ -30426,10 +30447,10 @@
         <attribute path_6_to="N" />
         <attribute path_6_type="normal" />
         <attribute path_6_arc="51.7,10.2" />
-		<attribute path_7_from="clearing_2" />
+        <attribute path_7_from="clearing_2" />
         <attribute path_7_to="clearing_5" />
         <attribute path_7_type="hidden" />
-		<attribute path_7_arc="68.2,45.5" />
+        <attribute path_7_arc="68.2,45.5" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1159" name="Putrid Swamp">
@@ -30457,7 +30478,7 @@
         <attribute path_1_from="clearing_1" />
         <attribute path_1_to="clearing_2" />
         <attribute path_1_type="normal" />
-		<attribute path_1_arc="40.6,26.5" />
+        <attribute path_1_arc="40.6,26.5" />
         <attribute path_2_from="clearing_4" />
         <attribute path_2_to="clearing_5" />
         <attribute path_2_type="normal" />
@@ -30471,15 +30492,15 @@
         <attribute path_5_from="clearing_4" />
         <attribute path_5_to="SW" />
         <attribute path_5_type="normal" />
-		<attribute path_5_arc="20.9,71.5" />
+        <attribute path_5_arc="20.9,71.5" />
         <attribute path_6_from="clearing_5" />
         <attribute path_6_to="NW" />
         <attribute path_6_type="normal" />
-		<attribute path_6_arc="79.3,34.6" />
-		<attribute path_7_from="clearing_2" />
+        <attribute path_6_arc="79.3,34.6" />
+        <attribute path_7_from="clearing_2" />
         <attribute path_7_to="clearing_5" />
         <attribute path_7_type="hidden" />
-		<attribute path_7_arc="56.1,33.6" />
+        <attribute path_7_arc="56.1,33.6" />
       </AttributeBlock>
       <AttributeBlock blockName="enchanted">
         <attribute offroad_xy="70.2,78.2" />
@@ -30498,7 +30519,7 @@
         <attribute path_1_from="clearing_1" />
         <attribute path_1_to="clearing_4" />
         <attribute path_1_type="normal" />
-		<attribute path_1_arc="33.2,51.3" />
+        <attribute path_1_arc="33.2,51.3" />
         <attribute path_2_from="clearing_4" />
         <attribute path_2_to="clearing_5" />
         <attribute path_2_type="hidden" />
@@ -30512,15 +30533,15 @@
         <attribute path_5_from="clearing_4" />
         <attribute path_5_to="SW" />
         <attribute path_5_type="normal" />
-		<attribute path_5_arc="20.9,71.5" />
+        <attribute path_5_arc="20.9,71.5" />
         <attribute path_6_from="clearing_5" />
         <attribute path_6_to="NW" />
         <attribute path_6_type="normal" />
-		<attribute path_6_arc="79.3,34.6" />
-		<attribute path_7_from="clearing_2" />
+        <attribute path_6_arc="79.3,34.6" />
+        <attribute path_7_from="clearing_2" />
         <attribute path_7_to="clearing_5" />
         <attribute path_7_type="normal" />
-		<attribute path_7_arc="59.6,36.9" />
+        <attribute path_7_arc="59.6,36.9" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1160" name="Smelly Swamp">
@@ -30552,7 +30573,7 @@
         <attribute path_2_from="clearing_2" />
         <attribute path_2_to="clearing_5" />
         <attribute path_2_type="normal" />
-		<attribute path_2_arc="66.8,51.7" />
+        <attribute path_2_arc="66.8,51.7" />
         <attribute path_3_from="clearing_5" />
         <attribute path_3_to="SE" />
         <attribute path_3_type="normal" />
@@ -30560,19 +30581,19 @@
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="NE" />
         <attribute path_4_type="normal" />
-		<attribute path_4_arc="82.3,28.1" />
+        <attribute path_4_arc="82.3,28.1" />
         <attribute path_5_from="clearing_1" />
         <attribute path_5_to="N" />
         <attribute path_5_type="normal" />
-		<attribute path_5_arc="49.5,05.3" />
+        <attribute path_5_arc="49.5,05.3" />
         <attribute path_6_from="clearing_4" />
         <attribute path_6_to="NW" />
         <attribute path_6_type="normal" />
-		<attribute path_6_arc="20.5,34.3" />
-		<attribute path_7_from="clearing_4" />
+        <attribute path_6_arc="20.5,34.3" />
+        <attribute path_7_from="clearing_4" />
         <attribute path_7_to="clearing_5" />
         <attribute path_7_type="hidden" />
-		<attribute path_7_arc="44.9,57.8" />
+        <attribute path_7_arc="44.9,57.8" />
       </AttributeBlock>
       <AttributeBlock blockName="enchanted">
         <attribute offroad_xy="40.2,79.4" />
@@ -30595,7 +30616,7 @@
         <attribute path_2_from="clearing_2" />
         <attribute path_2_to="clearing_5" />
         <attribute path_2_type="hidden" />
-		<attribute path_2_arc="65.2,49.4" />
+        <attribute path_2_arc="65.2,49.4" />
         <attribute path_3_from="clearing_5" />
         <attribute path_3_to="SE" />
         <attribute path_3_type="normal" />
@@ -30603,19 +30624,19 @@
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="NE" />
         <attribute path_4_type="normal" />
-		<attribute path_4_arc="82.3,28.1" />
+        <attribute path_4_arc="82.3,28.1" />
         <attribute path_5_from="clearing_1" />
         <attribute path_5_to="N" />
         <attribute path_5_type="normal" />
-		<attribute path_5_arc="49.5,05.3" />
+        <attribute path_5_arc="49.5,05.3" />
         <attribute path_6_from="clearing_4" />
         <attribute path_6_to="NW" />
         <attribute path_6_type="normal" />
-		<attribute path_6_arc="20.5,34.3" />
-		<attribute path_7_from="clearing_4" />
+        <attribute path_6_arc="20.5,34.3" />
+        <attribute path_7_from="clearing_4" />
         <attribute path_7_to="clearing_5" />
         <attribute path_7_type="normal" />
-		<attribute path_7_arc="46.9,62.4" />
+        <attribute path_7_arc="46.9,62.4" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1161" name="Sweet Swamp">
@@ -30647,7 +30668,7 @@
         <attribute path_2_from="clearing_2" />
         <attribute path_2_to="clearing_5" />
         <attribute path_2_type="normal" />
-		<attribute path_2_arc="59.0,36.9" />
+        <attribute path_2_arc="59.0,36.9" />
         <attribute path_3_from="clearing_5" />
         <attribute path_3_to="NE" />
         <attribute path_3_type="normal" />
@@ -30655,19 +30676,19 @@
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="N" />
         <attribute path_4_type="normal" />
-		<attribute path_4_arc="50.5,05.1" />
+        <attribute path_4_arc="50.5,05.1" />
         <attribute path_5_from="clearing_4" />
         <attribute path_5_to="SW" />
         <attribute path_5_type="normal" />
-		<attribute path_5_arc="21.7,71.2" />
+        <attribute path_5_arc="21.7,71.2" />
         <attribute path_6_from="clearing_1" />
         <attribute path_6_to="NW" />
         <attribute path_6_type="normal" />
-		<attribute path_6_arc="17.1,27.6" />
-		<attribute path_7_from="clearing_4" />
+        <attribute path_6_arc="17.1,27.6" />
+        <attribute path_7_from="clearing_4" />
         <attribute path_7_to="clearing_5" />
         <attribute path_7_type="hidden" />
-		<attribute path_7_arc="51.5,70.1" />
+        <attribute path_7_arc="51.5,70.1" />
       </AttributeBlock>
       <AttributeBlock blockName="enchanted">
         <attribute offroad_xy="69.8,78.0" />
@@ -30690,7 +30711,7 @@
         <attribute path_2_from="clearing_2" />
         <attribute path_2_to="clearing_5" />
         <attribute path_2_type="hidden" />
-		<attribute path_2_arc="55.3,36.7" />
+        <attribute path_2_arc="55.3,36.7" />
         <attribute path_3_from="clearing_5" />
         <attribute path_3_to="NE" />
         <attribute path_3_type="normal" />
@@ -30698,19 +30719,39 @@
         <attribute path_4_from="clearing_2" />
         <attribute path_4_to="N" />
         <attribute path_4_type="normal" />
-		<attribute path_4_arc="50.5,05.1" />
+        <attribute path_4_arc="50.5,05.1" />
         <attribute path_5_from="clearing_4" />
         <attribute path_5_to="SW" />
         <attribute path_5_type="normal" />
-		<attribute path_5_arc="21.7,71.2" />
+        <attribute path_5_arc="21.7,71.2" />
         <attribute path_6_from="clearing_1" />
         <attribute path_6_to="NW" />
         <attribute path_6_type="normal" />
-		<attribute path_6_arc="17.1,27.6" />
-		<attribute path_7_from="clearing_4" />
+        <attribute path_6_arc="17.1,27.6" />
+        <attribute path_7_from="clearing_4" />
         <attribute path_7_to="clearing_5" />
         <attribute path_7_type="normal" />
-		<attribute path_7_arc="53.1,61.7" />
+        <attribute path_7_arc="53.1,61.7" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1162" name="Created by GameWrapper">
+      <AttributeBlock blockName="_gb__">
+        <attribute _v_="1.1.3.9" />
+        <attribute _d__="0" />
+        <attribute _m__="1" />
+        <attribute _gs__="1" />
+        <attribute _weth_="clear" />
+        <attribute _wtdi_="5" />
+        <attribute _seasoff_="-1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1163" name="GameObject">
+      <AttributeBlock blockName="_host_preferences_">
+        <attribute h_name__="default" />
+        <attribute g_setup="standard_game" />
+        <attribute g_keyvals="original_game" />
+        <attribute n_brd_use="1" />
+        <attribute start_season="No Seasons" />
       </AttributeBlock>
     </GameObject>
   </objects>
