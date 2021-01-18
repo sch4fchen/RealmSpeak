@@ -21431,7 +21431,7 @@
         <attribute rw_expansion_1="" />
         <attribute print="" />
         <attribute image="ambush" />
-        <attribute facing="dark" />
+        <attribute facing="light" />
         <attribute code="AM" />
         <attribute folder="etiles" />
         <attribute etile="" />
