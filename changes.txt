@@ -3,6 +3,8 @@ QUEST UPDATE:
 # QuestRewardGuild: Option to increase and decrease guild level
 NEW FEATURES:
 # Minotaur can block hits, shield can be destroyed
+BUGS/ISSUES:
+# Adapt clearings and paths for alternative tiles
 
 Version 1.1.3.8 - Changes since 1.1.3.7
 NEW FEATURES:
