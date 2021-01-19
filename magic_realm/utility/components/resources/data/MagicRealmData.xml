@@ -30900,26 +30900,6 @@
         <attribute path_7_arc="54.6,63.8" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1162" name="Created by GameWrapper">
-      <AttributeBlock blockName="_gb__">
-        <attribute _v_="1.1.3.9" />
-        <attribute _d__="0" />
-        <attribute _m__="1" />
-        <attribute _gs__="1" />
-        <attribute _weth_="clear" />
-        <attribute _wtdi_="5" />
-        <attribute _seasoff_="-1" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="1163" name="GameObject">
-      <AttributeBlock blockName="_host_preferences_">
-        <attribute h_name__="default" />
-        <attribute g_setup="standard_game" />
-        <attribute g_keyvals="original_game" />
-        <attribute n_brd_use="1" />
-        <attribute start_season="No Seasons" />
-      </AttributeBlock>
-    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
