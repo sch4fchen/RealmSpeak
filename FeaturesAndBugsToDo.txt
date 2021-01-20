@@ -1,4 +1,4 @@
-
+0001358: Monster Roll per Set
 Expansion 1: 4. Bounty, 5. Stealing
 Expansion 1: Parry + Ability: "Parry"
 Expansion 1: Two-Handed Combat + Ability: "Dual Wielding"
@@ -21,7 +21,6 @@ Expansion 1: Events
 0001827: Feature Request - First Edition Optional Rules - Hiring Characters (Solitaire): http://www.nand.it/mr/mr08.html
 0001828: Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 0001829: Feature Request - First Edition Killer Caves: First Edition rule 40.9. "Horses are killed and removed from play when they enter a cave clearing".
-0001358: Monster Roll per Set
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
 A LITTLE HELP FROM FRIENDS: http://www.nand.it/mr/mr02.html
