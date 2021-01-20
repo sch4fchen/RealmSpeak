@@ -45,7 +45,7 @@ public class SetupCardUtility {
 	 * 
 	 * It will also relocate monsters that are prowling to the specified clearing.
 	 */
-	public static void summonMonsters(ArrayList<GameObject> summoned,TileLocation tl,GameData data,boolean includeWarningSounds,boolean includeSiteChits,int monsterDie) {
+	public static void summonMonsters(ArrayList<GameObject> summoned,TileLocation tl,GameData data,boolean includeWarningSounds,boolean includeSiteChits,int monsterDie,String boardNumber) {
 		if (DebugUtility.isNoSummon()) {
 			// If Debug NO_SUMMON mode is active, then return without doing anything
 			return;
@@ -58,7 +58,7 @@ public class SetupCardUtility {
 		// Use a pool to locate all the possible summoning objects for the given monsterDie
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		GamePool pool = new GamePool(data.getGameObjects());
-		ArrayList keyVals = new ArrayList();
+		ArrayList<String> keyVals = new ArrayList<String>();
 		keyVals.add(hostPrefs.getGameKeyVals());
 		keyVals.add("monster_die="+monsterDie);
 		keyVals.add("!monster"); // no monsters (just their summon boxes)
@@ -66,11 +66,13 @@ public class SetupCardUtility {
 		ArrayList<GameObject> summons = pool.find(keyVals);
 		
 		// Break out the objects into three groups
-		ArrayList goldSpecials = new ArrayList(); // Visitor/Mission chit boxes
-		ArrayList dwellingSpecific = new ArrayList(); // Native groups
-		ArrayList treasureLocations = new ArrayList(); // Specific Monsters
-		ArrayList otherLocations = new ArrayList(); // summoned in a specific order
+		ArrayList<GameObject> goldSpecials = new ArrayList<GameObject>(); // Visitor/Mission chit boxes
+		ArrayList<GameObject> dwellingSpecific = new ArrayList<GameObject>(); // Native groups
+		ArrayList<GameObject> treasureLocations = new ArrayList<GameObject>(); // Specific Monsters
+		ArrayList<GameObject> otherLocations = new ArrayList<GameObject>(); // summoned in a specific order
 		for (GameObject go:summons) {
+			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
+			
 			if (go.hasKey("gold_special_target")) {
 				goldSpecials.add(go);
 			}
@@ -111,11 +113,13 @@ public class SetupCardUtility {
 		 * Warning chits summon monsters FIRST
 		 * THEN Sound chits (low numbers summon before higher numbers)
 		 */
-		ArrayList warningChits = SetupCardUtility.getWarnings(tl.tile.getGameObject().getHold(),monsterDie,includeWarningSounds); // this is done separately to capture treasures...
-		ArrayList soundChits = new ArrayList();
-		ArrayList prowlingMonsters = new ArrayList();
-		for (Iterator i=tl.tile.getGameObject().getHold().iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		ArrayList<GameObject> warningChits = SetupCardUtility.getWarnings(tl.tile.getGameObject().getHold(),monsterDie,includeWarningSounds); // this is done separately to capture treasures...
+		ArrayList<GameObject> soundChits = new ArrayList<GameObject>();
+		ArrayList<GameObject> prowlingMonsters = new ArrayList<GameObject>();
+		for (Object o : tl.tile.getGameObject().getHold()) {
+			GameObject go = (GameObject)o;
+			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
+			
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc instanceof SoundChitComponent) {
 				SoundChitComponent sound = (SoundChitComponent)rc;
@@ -152,18 +156,24 @@ public class SetupCardUtility {
 		generatedQuery.add("monster_die="+monsterDie);
 		generatedQuery.add("!"+Constants.DEAD);
 		for (GameObject go:pool.find(generatedQuery)) {
+			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
+			
 			if (!prowlingMonsters.contains(go)) {
 				nonCurrentTileProwlers.add(go);
 			}
 		}
 		
 		// Expansion:  handle visible travelers
+		ArrayList<GameObject> travelers = new ArrayList<GameObject>();
 		ArrayList<String> travelerQuery = new ArrayList<String>();
 		travelerQuery.add(RealmComponent.TRAVELER);
 		travelerQuery.add(Constants.SPAWNED);
 		travelerQuery.add("!"+RealmComponent.OWNER_ID);
 		travelerQuery.add("monster_die="+monsterDie);
-		ArrayList<GameObject> travelers = pool.find(travelerQuery);
+		for (GameObject go:pool.find(travelerQuery)) {
+			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
+			travelers.add(go);
+		}
 		
 		// Now the process can begin
 		
@@ -183,9 +193,7 @@ public class SetupCardUtility {
 		}
 		
 		// Before anything can be summoned, all prowling monsters on the tile need to be moved to the clearing,
-		for (Iterator i=prowlingMonsters.iterator();i.hasNext();) {
-			GameObject prowler = (GameObject)i.next();
-			
+		for (GameObject prowler : prowlingMonsters) {
 			// Verify that the clearing changes, if not, then NO BLOCKING OCCURS!!
 			int fromClearing = prowler.getThisInt("clearing");
 			if (fromClearing==clearingNum) continue;
@@ -206,11 +214,8 @@ public class SetupCardUtility {
 		if (dwellingInClearing!=null) {
 			String dwellingType = dwellingInClearing.getThisAttribute("dwelling").toLowerCase();
 			String bn = dwellingInClearing.getThisAttribute(Constants.BOARD_NUMBER);
-			for (Iterator i=dwellingSpecific.iterator();i.hasNext();) {
-				GameObject nativeDwelling = (GameObject)i.next();
-				
-				// need to test the clearing to see if any dwellings are in it that match
-				// the attribute "dwelling" in this object
+			for (GameObject nativeDwelling : dwellingSpecific) {
+				// need to test the clearing to see if any dwellings are in it that match the attribute "dwelling" in this object
 				String dwelling = nativeDwelling.getThisAttribute("dwelling").toLowerCase();
 				if (dwelling.indexOf(dwellingType)>=0) {
 					// Make sure boardNumber compares (Board B Company only goes to Board B L Fire)
@@ -223,9 +228,8 @@ public class SetupCardUtility {
 		}
 		
 		// Cycle through gold specials, and summon chits if needed
-		Collection clearingComponents = tl.clearing.getClearingComponents();
-		for (Iterator i=goldSpecials.iterator();i.hasNext();) {
-			GameObject gs = (GameObject)i.next();
+		ArrayList<RealmComponent> clearingComponents = tl.clearing.getClearingComponents();
+		for (GameObject gs : goldSpecials) {
 			String bn = gs.getThisAttribute(Constants.BOARD_NUMBER);
 			
 			// This does not need the bn, because it will be compared to the native attribute
@@ -241,8 +245,7 @@ public class SetupCardUtility {
 			}
 			
 			// Iterate through clearing components
-			for (Iterator n=clearingComponents.iterator();n.hasNext();) {
-				RealmComponent rc = (RealmComponent)n.next();
+			for (RealmComponent rc : clearingComponents) {
 				String rcBn = rc.getGameObject().getThisAttribute(Constants.BOARD_NUMBER);
 				if (bn==null?rcBn==null:bn.equals(rcBn)) { // Make sure the goldSpecialTarget matches the boardNumber of the component
 					// Must be an unhired native leader!
@@ -266,6 +269,8 @@ public class SetupCardUtility {
 		
 		// Expansion: Generate monsters from SEEN generators 
 		for (GameObject go:pool.find("seen,generator,!destroyed,monster_die="+monsterDie)) {
+			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
+			
 			StateChitComponent rc = (StateChitComponent)RealmComponent.getRealmComponent(go);
 			if (!rc.hasSummonedToday(monsterDie)) { // Even generators only summon once per day
 				newMonsters.addAll(generateMonsters(go,ClearingUtility.getTileLocation(go).clearing));
@@ -276,17 +281,15 @@ public class SetupCardUtility {
 		if (includeSiteChits) {
 			String tileType = tl.tile.getTileType();
 			// Cycle through treasure locations and summon their guardians (if any)
-			for (Iterator i=treasureLocations.iterator();i.hasNext();) {
-				GameObject trLoc = (GameObject)i.next();
+			for (GameObject trLoc : treasureLocations) {
 				StateChitComponent chit = (StateChitComponent)RealmComponent.getRealmComponent(trLoc);
 				chit.addSummonedToday(monsterDie);
 				
 				int tlClearing = trLoc.getThisInt("clearing");
 				ClearingDetail clearing = tl.tile.getClearing(tlClearing);
 				
-				ArrayList hold = new ArrayList(trLoc.getHold());
-				for (Iterator n=hold.iterator();n.hasNext();) {
-					GameObject go = (GameObject)n.next();
+				ArrayList<GameObject> hold = new ArrayList<GameObject>(trLoc.getHold());
+				for (GameObject go : hold) {
 					if (go.hasThisAttribute("monster")) {
 						// Guardian might have a tilereq, if playing Pruitt's monsters!
 						String tileReq = go.getThisAttribute(Constants.SETUP_START_TILE_REQ); // this is optional, and necessary for Pruitt's monsters
@@ -301,8 +304,9 @@ public class SetupCardUtility {
 		}
 		
 		// Cycle through warning chits and summon anything possible (warning chits are already filtered when getWarnings is called)
-		for (Iterator i=warningChits.iterator();i.hasNext();) {
-			GameObject warning = (GameObject)i.next();
+		for (GameObject warning : warningChits) {
+			if(!GameObjectMatchesBoardNumber(warning,boardNumber)) continue;
+			
 			RealmComponent rc = RealmComponent.getRealmComponent(warning);
 			if (rc.isStateChit()) { // Might be a treasure, like Dragon Essence (bug 453)
 				StateChitComponent chit = (StateChitComponent)rc;
@@ -332,8 +336,7 @@ public class SetupCardUtility {
 		if (includeWarningSounds) {
 			// Cycle through sound chits and summon anything possible
 			String tileType = tl.tile.getGameObject().getThisAttribute("tile_type");
-			for (Iterator i=soundChits.iterator();i.hasNext();) {
-				GameObject sound = (GameObject)i.next();
+			for (GameObject sound : soundChits) {				
 				StateChitComponent chit = (StateChitComponent)RealmComponent.getRealmComponent(sound);
 				chit.addSummonedToday(monsterDie);
 				
@@ -349,8 +352,7 @@ public class SetupCardUtility {
 			}
 		}
 		summoned.addAll(newMonsters);
-		for (Iterator n=newMonsters.iterator();n.hasNext();) {
-			GameObject added = (GameObject)n.next();
+		for (GameObject added : newMonsters) {
 			RealmComponent rc = RealmComponent.getRealmComponent(added);
 			if (rc.isMonster()) {
 				SetupCardUtility.updateMonsterBlock((MonsterChitComponent)rc);
@@ -371,6 +373,10 @@ public class SetupCardUtility {
 		mc.setupSide(go,"dark","L",0,3,0,5,"lightblue");
 		go.setThisAttribute(Constants.GM_GROW);
 		return go;
+	}
+	private static boolean GameObjectMatchesBoardNumber(GameObject go,String boardNumber) {
+		String bn = go.getThisAttribute(Constants.BOARD_NUMBER);	
+		return (boardNumber == null || (bn==null && boardNumber == "") || (bn != null && boardNumber.matches(bn)));
 	}
 	private static ArrayList<GameObject> generateMonsters(GameObject generator,ClearingDetail clearing) {
 		ArrayList<GameObject> list = new ArrayList<GameObject>();
@@ -403,6 +409,7 @@ public class SetupCardUtility {
 				clearing.add(go,null);
 				go.setThisAttribute("monster_die",generator.getThisAttribute("monster_die"));
 				go.setThisAttribute(Constants.GENERATOR_ID,generator.getStringId());
+				go.setThisAttribute((Constants.BOARD_NUMBER), generator.getThisAttribute(Constants.BOARD_NUMBER));
 			}
 		}
 		list.addAll(mc.getMonstersCreated());
@@ -583,7 +590,37 @@ public class SetupCardUtility {
 		return null;
 	}
 
+	public static void summonMonsters(HostPrefWrapper hostPrefs,ArrayList<GameObject> summoned,CharacterWrapper character,DieRoller monsterDieRoller) {
+		int diceRolled = monsterDieRoller.getNumberOfDice();
+		
+		if (hostPrefs.hasPref(Constants.EXP_DOUBLE_MONSTER_DIE)) {
+			for (int i=0; i<diceRolled/2; i++) {
+				String boardNumber = "";
+				if (i>0) {
+					boardNumber = Constants.MULTI_BOARD_APPENDS.substring(i-1, i);
+				}
+				SetupCardUtility.summonMonsters(hostPrefs,new ArrayList<GameObject>(),character,monsterDieRoller.getValue(2*i),boardNumber);
+				if (monsterDieRoller.getValue(2*i)!=monsterDieRoller.getValue(2*i+1)) {
+					SetupCardUtility.summonMonsters(hostPrefs,new ArrayList<GameObject>(),character,monsterDieRoller.getValue(2*i+1),boardNumber);
+				}
+			}
+			return;
+		}
+		
+		for (int i=0; i<diceRolled; i++) {
+			String boardNumber = "";
+			if (i>0) {
+				boardNumber = Constants.MULTI_BOARD_APPENDS.substring(i-1, i);
+			}
+			SetupCardUtility.summonMonsters(hostPrefs,new ArrayList<GameObject>(),character,monsterDieRoller.getValue(i), boardNumber);
+		}
+	}
+	
 	public static void summonMonsters(HostPrefWrapper hostPrefs,ArrayList<GameObject> summoned,CharacterWrapper character,int monsterDie) {
+		summonMonsters(hostPrefs, summoned, character, monsterDie, null);
+	}
+	
+	public static void summonMonsters(HostPrefWrapper hostPrefs,ArrayList<GameObject> summoned,CharacterWrapper character,int monsterDie, String boardNumber) {
 		if (!character.isMinion() && !character.isSleep()) { // Minions and sleeping characters do not summon monsters or prowling denizens
 			TileLocation current = character.getCurrentLocation();
 			boolean atPeaceWithNature = character.affectedByKey(Constants.PEACE_WITH_NATURE);
@@ -600,7 +637,7 @@ public class SetupCardUtility {
 					siteChits = false;
 				}
 				
-				summonMonsters(summoned,current,character.getGameObject().getGameData(),warningSounds,siteChits,monsterDie);
+				summonMonsters(summoned,current,character.getGameObject().getGameData(),warningSounds,siteChits,monsterDie, boardNumber);
 			}
 		}
 	}
@@ -661,8 +698,7 @@ public class SetupCardUtility {
 	public static void updateMonsterBlock(MonsterChitComponent monster) {
 		if (!monster.isMistLike()) { // Misty monsters don't block
 			TileLocation prowlerLocation = ClearingUtility.getTileLocation(monster);
-			for (Iterator n=prowlerLocation.clearing.getClearingComponents().iterator();n.hasNext();) {
-				RealmComponent rc = (RealmComponent)n.next();
+			for (RealmComponent rc : prowlerLocation.clearing.getClearingComponents()) {
 				if (rc.isPlayerControlledLeader()) {
 					if (!rc.isHidden() && !rc.isMistLike()) {
 						if (!rc.isImmuneTo(monster)) {
@@ -687,29 +723,29 @@ public class SetupCardUtility {
 		GameWrapper game = GameWrapper.findGame(data);
 		GamePool pool = new GamePool(data.getGameObjects());
 		
-		ArrayList keyVals = new ArrayList();
+		ArrayList<String> keyVals = new ArrayList<String>();
 		keyVals.add(hostPrefs.getGameKeyVals());
 		keyVals.add("monster_die="+monsterDie);
 		keyVals.add("setup_start"); // this should get all monsters and natives
 		keyVals.add("clearing"); // this identifies those that are on tiles
 		keyVals.add("!"+RealmComponent.OWNER_ID); // this identifies unhired natives
-		Collection returning = pool.extract(keyVals);
+		Collection<GameObject> returning = pool.extract(keyVals);
 		
-		keyVals = new ArrayList();
+		keyVals = new ArrayList<String>();
 		keyVals.add(hostPrefs.getGameKeyVals());
 		keyVals.add("monster_die="+monsterDie);
 		keyVals.add("setup_start"); // this should get all monsters and natives
 		keyVals.add("needs_init"); // this identifies those that need to initialized (start of game)
 		returning.addAll(pool.extract(keyVals));
 		
-		keyVals = new ArrayList();
+		keyVals = new ArrayList<String>();
 		keyVals.add(hostPrefs.getGameKeyVals());
 		keyVals.add("monster_die="+monsterDie);
 		keyVals.add("setup_start"); // this should get all monsters and natives
 		keyVals.add(Constants.DEAD); // this identifies those that are DEAD
 		returning.addAll(pool.extract(keyVals));
 		
-		keyVals = new ArrayList();
+		keyVals = new ArrayList<String>();
 		keyVals.add(hostPrefs.getGameKeyVals());
 		keyVals.add("monster_die=99"); // the ghosts
 		keyVals.add("setup_start");
@@ -721,8 +757,7 @@ public class SetupCardUtility {
 			GameClient.broadcastClient("host","7th day - denizens return to setup card:");
 		}
 		
-		for (Iterator i=returning.iterator();i.hasNext();) {
-			GameObject denizen = (GameObject)i.next();
+		for (GameObject denizen : returning) {
 			GameClient.broadcastClient("host"," - "+denizen.getName());
 			game.addRegeneratedDenizen(denizen);
 			resetDenizen(denizen);
@@ -735,14 +770,13 @@ public class SetupCardUtility {
 	}
 	
 	private static void flipGoldSpecialChits(HostPrefWrapper hostPrefs,GamePool pool,int monsterDie) {
-		ArrayList keyVals = new ArrayList();
+		ArrayList<String> keyVals = new ArrayList<String>();
 		keyVals.add(hostPrefs.getGameKeyVals());
 		keyVals.add("monster_die="+monsterDie);
 		keyVals.add("gold_special");
-		ArrayList allGoldSpecial = pool.extract(keyVals);
-		ArrayList toFlip = new ArrayList();
-		for (Iterator i=allGoldSpecial.iterator();i.hasNext();) {
-			GameObject side1 = (GameObject)i.next();
+		ArrayList<GameObject> allGoldSpecial = pool.extract(keyVals);
+		ArrayList<GameObject> toFlip = new ArrayList<GameObject>();
+		for (GameObject side1 : allGoldSpecial) {
 			GameObject holder = side1.getHeldBy();
 			if (holder!=null) {
 				RealmComponent rc = RealmComponent.getRealmComponent(holder);
@@ -751,8 +785,7 @@ public class SetupCardUtility {
 				}
 			}
 		}
-		for (Iterator i=toFlip.iterator();i.hasNext();) {
-			GameObject side1 = (GameObject)i.next();
+		for (GameObject side1 : toFlip) {
 			GameObject side2 = side1.getGameObjectFromThisAttribute("pairid");
 			GameObject holder = side1.getHeldBy();
 			if (side1.hasThisAttribute("clearing")) {
@@ -771,9 +804,8 @@ public class SetupCardUtility {
 				String clearing = dwelling.getThisAttribute("clearing");
 				if (clearing!=null) {
 					GamePool subpool = new GamePool(dwelling.getHold());
-					ArrayList natives = subpool.find(GamePool.makeKeyVals("rank"));
-					for (Iterator n=natives.iterator();n.hasNext();) {
-						GameObject aNative = (GameObject)n.next();
+					ArrayList<GameObject> natives = subpool.find(GamePool.makeKeyVals("rank"));
+					for (GameObject aNative : natives) {
 						aNative.setThisAttribute("clearing",clearing);
 						tile.add(aNative);
 					}
@@ -786,27 +818,25 @@ public class SetupCardUtility {
 		if (!hostPrefs.hasPref(Constants.EXP_NO_DWELLING_START)) { // Make sure option is enabled before revealing dwellings
 			// Dwellings and ghosts should be remapped to the appropriate tiles
 			// Simply flip those chits face up, and the rest will work
-			ArrayList keyVals = new ArrayList();
+			ArrayList<String> keyVals = new ArrayList<String>();
 			keyVals.add(hostPrefs.getGameKeyVals());
 			keyVals.add("warning");
 			keyVals.add("tile_type=V");
 			keyVals.add("chit");
 			GamePool pool = new GamePool(data.getGameObjects());
-			Collection warningChits = pool.find(keyVals);
-			for (Iterator i=warningChits.iterator();i.hasNext();) {
-				GameObject warningChit = (GameObject)i.next();
+			Collection<GameObject> warningChits = pool.find(keyVals);
+			for (GameObject warningChit : warningChits) {
 				WarningChitComponent wc = (WarningChitComponent)RealmComponent.getRealmComponent(warningChit);
 				wc.setFaceUp();
 			}
 			
 			// Bring in native groups for each of the dwellings
-			keyVals = new ArrayList();
+			keyVals = new ArrayList<String>();
 			keyVals.add(hostPrefs.getGameKeyVals());
 			keyVals.add("dwelling");
 			pool = new GamePool(data.getGameObjects());
-			Collection dwellings = pool.find(keyVals);
-			for (Iterator i=dwellings.iterator();i.hasNext();) {
-				GameObject dwelling = (GameObject)i.next();
+			Collection<GameObject> dwellings = pool.find(keyVals);
+			for (GameObject dwelling : dwellings) {
 				setupDwellingNatives(dwelling);
 			}
 		}
@@ -830,7 +860,7 @@ public class SetupCardUtility {
 		String block = denizen.hasAttributeBlock("this_h")?"this_h":"this";
 		String holderName = denizen.getAttribute(block,"setup_start");
 		if (holderName!=null) {
-			ArrayList keys = new ArrayList();
+			ArrayList<String> keys = new ArrayList<String>();
 			String boardNum = denizen.getThisAttribute(Constants.BOARD_NUMBER);
 			if (boardNum!=null) {
 				holderName = holderName + " " + boardNum;
@@ -843,18 +873,17 @@ public class SetupCardUtility {
 			keys.add("!character");
 			keys.add("ts_section");
 			GamePool pool = new GamePool(data.getGameObjects());
-			ArrayList holders = pool.find(keys);
+			ArrayList<GameObject> holders = pool.find(keys);
 			
 			GameObject denizenHolder = null;
 			if (holders.size()==1) {
 				// only 1?  Then its obvious
-				denizenHolder = (GameObject)holders.iterator().next();
+				denizenHolder = holders.iterator().next();
 			}
 			else {
 				// more than 1?  Better crossreference with box_num
 				String boxNum = denizen.getAttribute(block,"box_num");
-				for (Iterator n=holders.iterator();n.hasNext();) {
-					GameObject holder = (GameObject)n.next();
+				for (GameObject holder : holders) {
 					if (holder==null || holder.getThisAttribute("box_num")==null) {
 						return null;
 					}
@@ -885,7 +914,7 @@ public class SetupCardUtility {
 		int boards = hostPrefs.getMultiBoardEnabled() ? hostPrefs.getMultiBoardCount() : 1;
 		int totalChitsToPlace = boards * 6;
 		RealmObjectMaster rom = RealmObjectMaster.getRealmObjectMaster(hostPrefs.getGameData());
-		ArrayList gs = new ArrayList(rom.findObjects("gold_special,"+Constants.GOLD_SPECIAL_PLACED, false));
+		ArrayList<GameObject> gs = new ArrayList<GameObject>(rom.findObjects("gold_special,"+Constants.GOLD_SPECIAL_PLACED, false));
 		int placedChits = gs.size();
 		if (!hostPrefs.hasPref(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE)) {
 			placedChits >>= 1; // divide by 2

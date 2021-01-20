@@ -63,7 +63,7 @@ public class RealmHostPanel extends JPanel {
 	
 	protected JButton killConnectionButton;
 
-	protected ArrayList changeListeners;
+	protected ArrayList<ChangeListener> changeListeners;
 
 	private boolean listen;
 	private boolean doAutoSave = false;
@@ -197,20 +197,18 @@ public class RealmHostPanel extends JPanel {
 
 				// Find all characters belonging to that server
 				GamePool pool = new GamePool(RealmObjectMaster.getRealmObjectMaster(host.getGameData()).getPlayerCharacterObjects());
-				ArrayList keyVals = new ArrayList();
+				ArrayList<String> keyVals = new ArrayList<String>();
 				keyVals.add(CharacterWrapper.NAME_KEY + "=" + server.getClientName());
-				Collection chars = pool.find(keyVals);
+				ArrayList<GameObject> chars = pool.find(keyVals);
 				if (chars != null && !chars.isEmpty()) {
-					for (Iterator i = chars.iterator(); i.hasNext();) {
-						GameObject aChar = (GameObject) i.next();
+					for (GameObject aChar : chars) {
 						CharacterWrapper lostChar = new CharacterWrapper(aChar);
 						if (lostChar.isActive()) {
 							lostChar.setMissingInAction(true);
 						}
-						Collection minions = lostChar.getMinions();
+						ArrayList<GameObject> minions = lostChar.getMinions();
 						if (minions!=null) {
-							for (Iterator m=minions.iterator();m.hasNext();) {
-								GameObject minion = (GameObject)m.next();
+							for (GameObject minion : minions) {
 								CharacterWrapper lostMinion = new CharacterWrapper(minion);
 								lostMinion.setMissingInAction(true);
 							}
@@ -253,7 +251,7 @@ public class RealmHostPanel extends JPanel {
 
 	public void addChangeListener(ChangeListener listener) {
 		if (changeListeners == null) {
-			changeListeners = new ArrayList();
+			changeListeners = new ArrayList<ChangeListener>();
 		}
 		changeListeners.add(listener);
 	}
@@ -270,8 +268,7 @@ public class RealmHostPanel extends JPanel {
 	private void fireStateChanged() {
 		if (changeListeners != null) {
 			ChangeEvent ev = new ChangeEvent(this);
-			for (Iterator i = changeListeners.iterator(); i.hasNext();) {
-				ChangeListener listener = (ChangeListener) i.next();
+			for (ChangeListener listener : changeListeners) {
 				listener.stateChanged(ev);
 			}
 		}
@@ -370,8 +367,8 @@ public class RealmHostPanel extends JPanel {
 			}
 		}
 
-		for (Iterator i = livingCharacters.iterator(); i.hasNext();) {
-			CharacterWrapper character = new CharacterWrapper((GameObject) i.next());
+		for (GameObject characterGo : livingCharacters) {
+			CharacterWrapper character = new CharacterWrapper(characterGo);
 
 			if (character.getCurrentMonth() != game.getMonth() || character.getCurrentDay() != game.getDay()) {
 				// Must be a new character or new day - set 'em up.
@@ -418,8 +415,8 @@ public class RealmHostPanel extends JPanel {
 		
 		// Extract active characters, so we don't get stuck in an infinite loop
 		ArrayList<CharacterWrapper> activeCharacters = new ArrayList<CharacterWrapper>();
-		for (Iterator i = livingCharacters.iterator(); i.hasNext();) {
-			CharacterWrapper character = new CharacterWrapper((GameObject) i.next());
+		for (GameObject characterGo : livingCharacters) {
+			CharacterWrapper character = new CharacterWrapper(characterGo);
 			if (character.isActive()) {
 				activeCharacters.add(character);
 			}
@@ -431,10 +428,19 @@ public class RealmHostPanel extends JPanel {
 
 			// Roll monster die (or dice)
 			DieRoller monsterDieRoller = new DieRoller();
+			int numberOfDice = 1;
 			monsterDieRoller.addRedDie();
+			if (hostPrefs.hasPref(Constants.EXP_MONSTER_DIE_PER_SET) && hostPrefs.getMultiBoardEnabled()) {
+				numberOfDice = hostPrefs.getMultiBoardCount();
+			}
 			if (hostPrefs.hasPref(Constants.EXP_DOUBLE_MONSTER_DIE)) {
+				numberOfDice = numberOfDice*2;
+			}
+			
+			for (int i=1; i<numberOfDice; i++) {
 				monsterDieRoller.addRedDie();
 			}
+			
 			monsterDieRoller.rollDice("Monster Roll");
 			game.setMonsterDie(monsterDieRoller);
 			host.broadcast("host","Monster Die roll is "+monsterDieRoller.getDescription(false));
@@ -449,12 +455,12 @@ public class RealmHostPanel extends JPanel {
 			}
 
 			// Figure out who is following who, and determine which characters actually get to move here
-			ArrayList allChars = new ArrayList(getLivingCharacters());
-			HashMap followHash = new HashMap(); // to identify follow cycles
-			HashMap charHash = new HashMap(); // to identify all characters quickly
-			ArrayList charPool = new ArrayList(); // the ultimate list of characters that perform actions
-			for (Iterator i = allChars.iterator(); i.hasNext();) {
-				CharacterWrapper character = new CharacterWrapper((GameObject) i.next());
+			ArrayList<GameObject> allChars = new ArrayList<GameObject>(getLivingCharacters());
+			HashMap<String,String> followHash = new HashMap<String,String>(); // to identify follow cycles
+			HashMap<String,CharacterWrapper> charHash = new HashMap<String,CharacterWrapper>(); // to identify all characters quickly
+			ArrayList<CharacterWrapper> charPool = new ArrayList<CharacterWrapper>(); // the ultimate list of characters that perform actions
+			for (GameObject characterGo : allChars) {
+				CharacterWrapper character = new CharacterWrapper(characterGo);
 				if (!character.isGone() && !character.isJustUnhired()) {
 					character.setTodaysMonsterRoll(monsterDieRoller);
 					character.clearActionFollowers();
@@ -466,9 +472,8 @@ public class RealmHostPanel extends JPanel {
 				}
 			}
 			if (followHash.size() > 0) {
-				ArrayList keys = new ArrayList(charHash.keySet());
-				for (Iterator i = keys.iterator(); i.hasNext();) {
-					String id = (String) i.next();
+				ArrayList<String> keys = new ArrayList<String>(charHash.keySet());
+				for (String id : keys) {
 					CharacterWrapper character = (CharacterWrapper) charHash.get(id);
 					String nextFollowId = id;
 					String followId = null;
@@ -498,7 +503,7 @@ public class RealmHostPanel extends JPanel {
 			}
 			
 			// Randomize the character order
-			ArrayList randPool = new ArrayList();
+			ArrayList<CharacterWrapper> randPool = new ArrayList<CharacterWrapper>();
 			while (!charPool.isEmpty()) {
 				int r = RandomNumber.getRandom(charPool.size());
 				randPool.add(charPool.remove(r));
@@ -506,9 +511,8 @@ public class RealmHostPanel extends JPanel {
 			charPool = randPool;
 			
 			// Strip out characters that have an ability to choose which turn to take
-			ArrayList prefCharPool = new ArrayList(); // the characters who will get to go before anyone else
-			for (Iterator i=charPool.iterator();i.hasNext();) {
-				CharacterWrapper character = (CharacterWrapper)i.next();
+			ArrayList<CharacterWrapper> prefCharPool = new ArrayList<CharacterWrapper>(); // the characters who will get to go before anyone else
+			for (CharacterWrapper character : charPool) {
 				if (character.affectedByKey(Constants.CHOOSE_TURN)) {
 					prefCharPool.add(character);
 				}
@@ -527,17 +531,16 @@ public class RealmHostPanel extends JPanel {
 			}
 
 			int order = 2;
-			for (Iterator i = charPool.iterator(); i.hasNext();) {
+			for (Iterator<CharacterWrapper> i = charPool.iterator(); i.hasNext();) {
 				CharacterWrapper character = (CharacterWrapper) i.next();
 				if (character.isMinion()) {
 					// Skip the minion - it will be assigned a turn when the owner is assigned a turn
 					continue;
 				}
 				
-				ArrayList minions = character.getMinions();
+				ArrayList<GameObject> minions = character.getMinions();
 				if (minions!=null) {
-					for (Iterator n=minions.iterator();n.hasNext();) {
-						GameObject minion = (GameObject)n.next();
+					for (GameObject minion : minions) {
 						CharacterWrapper minChar = new CharacterWrapper(minion);
 						if (minChar.getFollowStringId()==null) {
 							if (minChar.canPlay()) {
@@ -560,17 +563,15 @@ public class RealmHostPanel extends JPanel {
 				character.setLastPlayer(!i.hasNext());
 				// Followers get their "turns" directly AFTER the guide
 				boolean first = true;
-				for (Iterator n = character.getActionFollowers().iterator(); n.hasNext();) {
-					CharacterWrapper actionFollower = (CharacterWrapper) n.next();
+				for (CharacterWrapper actionFollower : character.getActionFollowers()) {
 					if (!first) {
 						actionFollower.setNoSummon(true); // Every follower should not summon monsters!  They are a group.
 					}
 					first = false;
 
-					ArrayList actionFollowerMinions = actionFollower.getMinions();
+					ArrayList<GameObject> actionFollowerMinions = actionFollower.getMinions();
 					if (actionFollowerMinions!=null) {
-						for (Iterator m=actionFollowerMinions.iterator();m.hasNext();) {
-							GameObject minion = (GameObject)m.next();
+						for (GameObject minion : actionFollowerMinions) {
 							CharacterWrapper minChar = new CharacterWrapper(minion);
 							if (minChar.getFollowStringId()==null) {
 								// The following character has a familiar that is not following anyone, so it goes right
@@ -592,13 +593,12 @@ public class RealmHostPanel extends JPanel {
 	}
 	private void updateGameStatePlaying() { // DAYTIME
 		logger.fine("DAYTIME");
-		Collection activeCharacters = getLivingCharacters();
+		ArrayList<GameObject> activeCharacters = getLivingCharacters();
 		int min = Integer.MAX_VALUE;
-//			ArrayList postponedChars = new ArrayList(); // I think there can only be one at a time here...
 		CharacterWrapper postponedChar = null;
-		ArrayList chars = new ArrayList();
-		for (Iterator i = activeCharacters.iterator(); i.hasNext();) {
-			CharacterWrapper character = new CharacterWrapper((GameObject) i.next());
+		ArrayList<CharacterWrapper> chars = new ArrayList<CharacterWrapper>();
+		for (GameObject characterGo : activeCharacters) {
+			CharacterWrapper character = new CharacterWrapper(characterGo);
 			if (!character.isJustUnhired()) { // In case a Native HQ is returned to the setup card after a wish result
 				int playOrder = character.getPlayOrder();
 				if (playOrder > 0) {
@@ -684,8 +684,7 @@ public class RealmHostPanel extends JPanel {
 				// renumber
 				int n=1;
 				CharacterWrapper last = null;
-				for (Iterator i = chars.iterator(); i.hasNext();) {
-					CharacterWrapper character = (CharacterWrapper) i.next();
+				for (CharacterWrapper character : chars) {
 					character.setPlayOrder(n);
 					if (n==1) {
 						sendEmail("It is the "+character.getGameObject().getName()+"'s turn to play.",character.getPlayerName());
@@ -703,8 +702,8 @@ public class RealmHostPanel extends JPanel {
 		}
 		else {
 			// move on to the next game stage here
-			for (Iterator i = activeCharacters.iterator(); i.hasNext();) {
-				CharacterWrapper character = new CharacterWrapper((GameObject) i.next());
+			for (GameObject characterGo : activeCharacters) {
+				CharacterWrapper character = new CharacterWrapper(characterGo);
 				character.applySunset();
 			}
 			game.setState(GameWrapper.GAME_STATE_RESOLVING);
@@ -816,8 +815,7 @@ public class RealmHostPanel extends JPanel {
 		}
 		
 		// Decrement all terms of hire
-		for (Iterator i = pool.find(hostPrefs.getGameKeyVals() + "," + RealmComponent.OWNER_TERM_OF_HIRE).iterator(); i.hasNext();) {
-			GameObject go = (GameObject) i.next();
+		for (GameObject go : pool.find(hostPrefs.getGameKeyVals() + "," + RealmComponent.OWNER_TERM_OF_HIRE)) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			rc.decrementTermOfHire(daysToAdd);
 			if (rc.getTermOfHire() == 0) {
@@ -1051,7 +1049,7 @@ public class RealmHostPanel extends JPanel {
 							String email = clientName == null ? null : playerEmails.get(null);
 							return email == null ? "NA" : email;
 						case 3:
-							Collection c = RealmObjectMaster.getRealmObjectMaster(host.getGameData()).getPlayerCharacterObjects();
+							ArrayList<GameObject> c = RealmObjectMaster.getRealmObjectMaster(host.getGameData()).getPlayerCharacterObjects();
 							return new Integer((new GamePool(c)).find(CharacterWrapper.NAME_KEY + "=" + server.getClientName()).size());
 					}
 				}

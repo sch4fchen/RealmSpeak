@@ -35,7 +35,7 @@ public class MonsterCreator {
 	}
 	public GameObject createOrReuseMonster(GameData data) {
 		GamePool pool = new GamePool(data.getGameObjects());
-		ArrayList query = new ArrayList();
+		ArrayList<String> query = new ArrayList<String>();
 		query.add(monsterKey);
 		query.add(Constants.DEAD);
 		GameObject go = pool.findFirst(query);

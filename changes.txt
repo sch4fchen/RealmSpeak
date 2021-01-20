@@ -3,6 +3,7 @@ QUEST UPDATE:
 # QuestRewardGuild: Option to increase and decrease guild level
 NEW FEATURES:
 # Minotaur can block hits, shield can be destroyed
+# Optional Rule: Monster roll per Magic Realm set
 BUGS/ISSUES:
 # Adapt clearings and paths for alternative tiles
 

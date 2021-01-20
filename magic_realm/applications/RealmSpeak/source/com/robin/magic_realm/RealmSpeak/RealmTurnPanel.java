@@ -1032,8 +1032,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		
 		// Flip chits, and summon monsters/natives
 		if (getsTurn && current!=null && !getCharacter().isMinion() && !getCharacter().isSleep()) {
-			// UPDATE - According to RH, it doesn't matter whether or not you completed actions: if you
-			// fall asleep, you simply aren't there until Sunset
+			// UPDATE - According to RH, it doesn't matter whether or not you completed actions: if you fall asleep, you simply aren't there until Sunset
 			
 			if (!getCharacter().isHidden() || !hostPrefs.hasPref(Constants.OPT_QUIET_MONSTERS)) {
 				ArrayList<StateChitComponent> flipped = current.tile.setChitsFaceUp();
@@ -1043,10 +1042,8 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			}
 			DieRoller monsterDieRoller = game.getMonsterDie();
 			ArrayList<GameObject> summoned = new ArrayList<GameObject>();
-			SetupCardUtility.summonMonsters(hostPrefs,summoned,getCharacter(),monsterDieRoller.getValue(0));
-			if (monsterDieRoller.getNumberOfDice()==2 && monsterDieRoller.getValue(0)!=monsterDieRoller.getValue(1)) {
-				SetupCardUtility.summonMonsters(hostPrefs,summoned,getCharacter(),monsterDieRoller.getValue(1));
-			}
+			SetupCardUtility.summonMonsters(hostPrefs,summoned,getCharacter(),monsterDieRoller);
+			
 			if (getMainFrame().getGameHandler().isOption(RealmSpeakOptions.TURN_END_RESULTS)) {
 				if (!summoned.isEmpty()) {
 					RealmObjectPanel panel = new RealmObjectPanel();
@@ -1182,12 +1179,12 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		}
 	}
 	public void doAbandonActionFollowers() {
-		ArrayList toRemove = new ArrayList();
+		ArrayList<CharacterWrapper> toRemove = new ArrayList<CharacterWrapper>();
 		if (actionFollowers.size()==1) {
 			toRemove.add(actionFollowers.get(0));
 		}
 		else {
-			ArrayList list = new ArrayList();
+			ArrayList<GameObject> list = new ArrayList<GameObject>();
 			for (CharacterWrapper aFollower:actionFollowers) {
 				list.add(aFollower.getGameObject());
 			}
@@ -1195,15 +1192,13 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			chooser.addObjectsToChoose(list);
 			chooser.setVisible(true);
 			if (chooser.pressedOkay()) {
-				for (Iterator i=chooser.getChosenObjects().iterator();i.hasNext();) {
-					GameObject go = (GameObject)i.next();
+				for (GameObject go : chooser.getChosenObjects()) {
 					toRemove.add(new CharacterWrapper(go));
 				}
 			}
 		}
 		DieRoller monsterDieRoller = game.getMonsterDie();
-		for (Iterator i=toRemove.iterator();i.hasNext();) {
-			CharacterWrapper aFollower = (CharacterWrapper)i.next();
+		for (CharacterWrapper aFollower : toRemove) {
 			getCharacter().removeActionFollower(aFollower,monsterDieRoller);
 		}
 		

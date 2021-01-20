@@ -742,7 +742,7 @@ public class CenteredMapView extends JComponent {
 		if (tl!=null) {
 			int monsterDie = RandomNumber.getHighLow(1,6); // Change number here for testing
 			if (tl.hasClearing()) {
-				SetupCardUtility.summonMonsters(new ArrayList<GameObject>(),tl,gameData,true,true,monsterDie);
+				SetupCardUtility.summonMonsters(new ArrayList<GameObject>(),tl,gameData,true,true,monsterDie,null);
 			}
 			else {
 				SetupCardUtility.resetDenizens(gameData,monsterDie);

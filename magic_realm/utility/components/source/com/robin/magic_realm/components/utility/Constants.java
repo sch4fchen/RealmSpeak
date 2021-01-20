@@ -464,6 +464,7 @@ public class Constants {
 	
 	// Expanding the Realm Rules
 	public static final String EXP_DOUBLE_MONSTER_DIE = "DoubleMonsterDie";
+	public static final String EXP_MONSTER_DIE_PER_SET = "MonsterDiePerSet";
 	public static final String EXP_NO_DWELLING_START = "NoDwellingStart";
 	public static final String EXP_DEVELOPMENT = "AllowDevelopment";
 	public static final String EXP_DEVELOPMENT_PLUS = "DevelopmentPastFour";

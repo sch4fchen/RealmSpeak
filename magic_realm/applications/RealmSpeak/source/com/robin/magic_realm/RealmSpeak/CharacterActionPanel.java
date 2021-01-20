@@ -27,6 +27,7 @@ import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableColumn;
 
+import com.robin.game.objects.GameObject;
 import com.robin.general.swing.*;
 import com.robin.magic_realm.components.attribute.PhaseManager;
 import com.robin.magic_realm.components.quest.GamePhaseType;
@@ -37,7 +38,7 @@ import com.robin.magic_realm.components.wrapper.*;
 
 public class CharacterActionPanel extends CharacterFramePanel {
 	
-	private static Hashtable dieIconHash = null;
+	private static Hashtable<Integer, ImageIcon> dieIconHash = null;
 	
 	private HostPrefWrapper hostPrefs;
 	
@@ -64,8 +65,11 @@ public class CharacterActionPanel extends CharacterFramePanel {
 				if (i>2) n=50; // 3,4,6,7
 				if (i==6) {
 					n=20; // monsterdie
+					if (hostPrefs.hasPref(Constants.EXP_MONSTER_DIE_PER_SET) && hostPrefs.getMultiBoardEnabled()) {
+						n = n*hostPrefs.getMultiBoardCount();
+					}
 					if (hostPrefs.hasPref(Constants.EXP_DOUBLE_MONSTER_DIE)) {
-						n=40;
+						n=n*2;
 					}
 				}
 				TableColumn col = actionHistoryTable.getColumnModel().getColumn(i);
@@ -139,7 +143,7 @@ public class CharacterActionPanel extends CharacterFramePanel {
 		Collection allDays = getCharacter().getGameObject().getAttributeList(getCharacter().getBlockName(),CharacterWrapper.ALL_DAYS);
 		if (allDays!=null && row<allDays.size()) {
 			String dayKey = (String)(new ArrayList(allDays)).get(row);
-			ArrayList kills = getCharacter().getKills(dayKey);
+			ArrayList<GameObject> kills = getCharacter().getKills(dayKey);
 			RealmObjectPanel panel = new RealmObjectPanel();
 			panel.addObjects(kills);
 			JOptionPane.showMessageDialog(getGameHandler().getMainFrame(),panel,getCharacter().getCharacterName()+" Kills",JOptionPane.INFORMATION_MESSAGE,null);
@@ -231,7 +235,7 @@ public class CharacterActionPanel extends CharacterFramePanel {
 						DieRoller roller = getCharacter().getMonsterRoll(dayKey);
 						if (roller!=null) {
 							if (dieIconHash==null) {
-								dieIconHash = new Hashtable();
+								dieIconHash = new Hashtable<Integer, ImageIcon>();
 								for (int i=1;i<=6;i++) {
 									DieRoller dr = new DieRoller(String.valueOf(i),16,4);
 									dr.setAllRed();

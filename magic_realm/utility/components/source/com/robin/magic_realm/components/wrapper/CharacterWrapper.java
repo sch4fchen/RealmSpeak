@@ -3097,10 +3097,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 					
 					// Summon monsters now.
 					if (monsterDieRoller!=null) { // Might be null if sleep was the cause for stopping following
-						SetupCardUtility.summonMonsters(hostPrefs,new ArrayList<GameObject>(),follower,monsterDieRoller.getValue(0));
-						if (monsterDieRoller.getNumberOfDice()==2 && monsterDieRoller.getValue(0)!=monsterDieRoller.getValue(1)) {
-							SetupCardUtility.summonMonsters(hostPrefs,new ArrayList<GameObject>(),follower,monsterDieRoller.getValue(1));
-						}
+						SetupCardUtility.summonMonsters(hostPrefs,new ArrayList<GameObject>(),follower,monsterDieRoller);
 					}
 				}
 				setList(ACTION_FOLLOWER,newlist);
