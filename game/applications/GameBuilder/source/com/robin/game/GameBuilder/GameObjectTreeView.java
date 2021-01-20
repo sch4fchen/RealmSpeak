@@ -27,18 +27,17 @@ import com.robin.game.objects.*;
 public class GameObjectTreeView extends JFrame {
 	protected JTree tree;
 	
-	public GameObjectTreeView(Collection gameObjects) {
+	public GameObjectTreeView(Collection<GameObject> gameObjects) {
 		init(gameObjects);
 	}
-	private void init(Collection gameObjects) {
+	private void init(Collection<GameObject> gameObjects) {
 		setSize(400,500);
 		getContentPane().setLayout(new BorderLayout());
 			DefaultMutableTreeNode top = new DefaultMutableTreeNode("top");
 			
 			// Add all base objects (not held by anything)
-			Hashtable hash = new Hashtable();
-			for (Iterator i=gameObjects.iterator();i.hasNext();) {
-				GameObject object = (GameObject)i.next();
+			Hashtable<String, DefaultMutableTreeNode> hash = new Hashtable<String, DefaultMutableTreeNode>();
+			for (GameObject object : gameObjects) {
 				DefaultMutableTreeNode node = new DefaultMutableTreeNode(object);
 				if (object.getHeldBy()==null) {
 					top.add(node);
@@ -47,11 +46,10 @@ public class GameObjectTreeView extends JFrame {
 			}
 			
 			// Now use the hash to add all the branches
-			for (Iterator i=gameObjects.iterator();i.hasNext();) {
-				GameObject object = (GameObject)i.next();
+			for (GameObject object : gameObjects) {
 				DefaultMutableTreeNode node = (DefaultMutableTreeNode)hash.get(object.toString());
-				for (Iterator c=object.getHold().iterator();c.hasNext();) {
-					GameObject heldObject = (GameObject)c.next();
+				for (Object o : object.getHold()) {
+					GameObject heldObject = (GameObject) o;
 					DefaultMutableTreeNode child = (DefaultMutableTreeNode)hash.get(heldObject.toString());
 					node.add(child);
 				}

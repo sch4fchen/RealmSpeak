@@ -219,10 +219,9 @@ public class GameObjectFrame extends JInternalFrame implements Modifyable,Saveab
 					public void add() {
 						GameObjectChooser chooser = new GameObjectChooser(this,object);
 						chooser.setVisible(true);
-						ArrayList chosenObjects = chooser.getChosenObjects();
+						ArrayList<GameObject> chosenObjects = chooser.getChosenObjects();
 						if (chosenObjects!=null) {
-							for (Iterator i=chosenObjects.iterator();i.hasNext();) {
-								GameObject chosenObject = (GameObject)i.next();
+							for (GameObject chosenObject : chosenObjects) {
 								object.add(chosenObject);
 							}
 							setModified(true);
