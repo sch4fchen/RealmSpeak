@@ -124,7 +124,6 @@ public class Hex {
 		for (int i=0;i<keywords.size();i++) {
 			String keyword = (String)keywords.get(i);
 			if (keyword.toUpperCase().startsWith(check)) {
-//System.out.println(keyword+" startswith "+check);
 				return true;
 			}
 		}
@@ -135,7 +134,6 @@ public class Hex {
 		for (int i=0;i<keywords.size();i++) {
 			String keyword = (String)keywords.get(i);
 			if (keyword.toUpperCase().indexOf(check)>=0) {
-//System.out.println(keyword+" startswith "+check);
 				return true;
 			}
 		}

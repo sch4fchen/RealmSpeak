@@ -138,7 +138,6 @@ public abstract class GameClient extends GameNet {
 	}
 	public void kill() {
 		leave = true;
-		//System.out.println("Client should die soon");
 	}
 	public String getClientName() {
 		return clientName;
@@ -476,7 +475,6 @@ public abstract class GameClient extends GameNet {
 		}
 		
 		logger.fine("submitAndWait");
-//System.out.println("submitAndWait");
 		client.submitChanges();
 		try {
 			Thread.sleep(MILLISECONDS_SLEEP_PER_REQUEST); // give it a chance...
@@ -489,7 +487,6 @@ public abstract class GameClient extends GameNet {
 			ex.printStackTrace();
 		}
 		logger.fine("Done waiting");
-//System.out.println("Done waiting");
 	}
 	
 	public static void broadcastClient(String key,String message) {

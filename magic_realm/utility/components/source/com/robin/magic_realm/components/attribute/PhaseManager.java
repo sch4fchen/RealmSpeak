@@ -435,7 +435,6 @@ public class PhaseManager {
 		}
 		else {
 			ArrayList list = freeActions.getList(trimmedPhase(phase));
-//System.out.println("Using "+go);
 			list.remove(new Requirement(go));
 			usedObjects.add(go);
 			if (go==ponyObject) {
@@ -467,7 +466,6 @@ public class PhaseManager {
 							// If the free action was never used, then be sure to free it up if it becomes available again
 							// (like when the player moves BACK into the clearing with the TOADSTOOL CIRCLE)
 							allObjects.remove(r.getGameObject());
-//System.out.println("Removing "+r.getGameObject());
 						}
 					}
 				}

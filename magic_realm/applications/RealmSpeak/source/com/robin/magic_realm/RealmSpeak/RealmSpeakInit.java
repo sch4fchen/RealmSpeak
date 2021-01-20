@@ -352,7 +352,6 @@ public class RealmSpeakInit {
 			}
 			
 			rating = MapRating.getMapRating(data);
-			//System.out.println("Map Rating = "+rating);
 			lastRating = rating;
 		}
 		

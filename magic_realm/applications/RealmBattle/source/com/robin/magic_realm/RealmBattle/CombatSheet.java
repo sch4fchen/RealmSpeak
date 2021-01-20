@@ -165,11 +165,9 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 				}
 			}
 		}
-//System.out.println(index+" "+list+" count="+count);
 		return count;
 	}
 	protected void updateBattleChitsWithRolls(CombatWrapper combat) {
-//System.out.println("updateBattleChitsWithRolls from "+combat.getGameObject().getName());
 		if ((combat.getMissileRolls()!=null && combat.getMissileRolls().size()>0)
 				|| (combat.getFumbleRolls()!=null && combat.getFumbleRolls().size()>0)) {
 			BattleChit bc = (BattleChit)RealmComponent.getRealmComponent(combat.getGameObject());
@@ -241,9 +239,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		return !getBattleRolls().isEmpty();
 	}
 	protected void updateRollerResults() {
-//System.out.println("updateRollerResults: battleChitsWithRolls.isEmpty()=="+battleChitsWithRolls.isEmpty());
 		if (combatFrame.getRollerResults()!=null) {
-//System.out.println("doing it");
 			combatFrame.getRollerResults().setBattleRolls(getBattleRolls());
 		}
 	}
@@ -283,7 +279,6 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			int dy = Math.abs(test.y-p.y);
 			if (dx<range && dy<range) {
 				int side = p.x<test.x?SwingConstants.LEFT:SwingConstants.RIGHT;
-//System.out.println(p.x<test.x?"left":"right");
 				handleClick(index.intValue(),side);
 				combatFrame.updateHotspotIndicators();
 				break;

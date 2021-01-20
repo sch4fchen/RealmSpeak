@@ -392,8 +392,7 @@ public class CenteredMapView extends JComponent {
 			}
 		}
 		
-		mapReady = (emptyCount==0); // No empties?  The map is ready!
-//System.out.println("emptyCount = "+emptyCount);
+		mapReady = (emptyCount==0);
 		if (emptyCount>0) {
 			if (emptyCount<tileObjects.size()) {
 				// Add a border of empty tiles

@@ -327,7 +327,6 @@ public class CharacterCombatSheet extends CombatSheet {
 		sheetParticipants = new ArrayList();
 		ArrayList exclude = new ArrayList();
 		ArrayList all = model.getAllBattleParticipants(true);
-//System.out.println("---------------updateLayout for "+sheetOwner.getGameObject().getName());
 		for (Iterator i=all.iterator();i.hasNext();) {
 			RealmComponent rc = (RealmComponent)i.next();
 			CombatWrapper rcCombat = new CombatWrapper(rc.getGameObject());
@@ -335,7 +334,6 @@ public class CharacterCombatSheet extends CombatSheet {
 			
 			// If targeting the sheetOwner, put them on the sheet in the target boxes
 			if (target!=null && target.equals(sheetOwner)) {
-//System.out.println(rc.getGameObject().getName()+" is targeting owner");
 				if (!rc.isCharacter()) {
 					exclude.add(rc);
 					if (!addedToDead(rc)) {

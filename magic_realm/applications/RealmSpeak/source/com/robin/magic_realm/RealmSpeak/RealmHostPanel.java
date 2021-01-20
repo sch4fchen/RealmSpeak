@@ -298,7 +298,6 @@ public class RealmHostPanel extends JPanel {
 			RealmLogWindow.getSingleton().save(AUTOSAVEFILE_BIRDSONG);
 			doAutoSave = false;
 			logger.fine("Saved file");
-//System.out.println("Auto save during update");
 		}
 		logger.fine("updateGame - done");
 	}
@@ -308,7 +307,6 @@ public class RealmHostPanel extends JPanel {
 			host.getGameData().zipToFile(AUTOSAVEFILE);
 			RealmLogWindow.getSingleton().save(AUTOSAVEFILE);
 			logger.fine("Saved midday file");
-//System.out.println("Auto save midday during update");
 		}
 	}
 
@@ -951,7 +949,7 @@ public class RealmHostPanel extends JPanel {
 	 */
 	private GameWrapper findGame() {
 		GamePool pool = new GamePool(host.getGameData().getGameObjects());
-		Collection mrGameObjects = pool.extract(GameWrapper.getKeyVals());
+		Collection<GameObject> mrGameObjects = pool.extract(GameWrapper.getKeyVals());
 		if (mrGameObjects.size() == 1) {
 			GameObject go = (GameObject) mrGameObjects.iterator().next();
 			return new GameWrapper(go);
@@ -995,10 +993,10 @@ public class RealmHostPanel extends JPanel {
 	 */
 	private ArrayList<GameObject> getLivingCharacters() {
 		GamePool pool = new GamePool(RealmObjectMaster.getRealmObjectMaster(host.getGameData()).getPlayerCharacterObjects());
-		ArrayList list = pool.find(CharacterWrapper.NAME_KEY);
+		ArrayList<GameObject> list = pool.find(CharacterWrapper.NAME_KEY);
 		ArrayList<GameObject> active = new ArrayList<GameObject>();
-		for (Iterator i = list.iterator(); i.hasNext();) {
-			CharacterWrapper character = new CharacterWrapper((GameObject) i.next());
+		for (GameObject characterGo : list) {
+			CharacterWrapper character = new CharacterWrapper(characterGo);
 			if (!character.isDead()) {
 				active.add(character.getGameObject());
 				ArrayList<GameObject> minions = character.getMinions();

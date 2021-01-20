@@ -384,7 +384,6 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 		int n=1;
 		for (GameObject go:pool.find("traveler_template")) {
 			System.out.println((n++)+delim+getInfo(delim,go));
-			//System.out.println(go.getName()+" - "+go.getThisAttribute("text"));
 		}
 	}
 }

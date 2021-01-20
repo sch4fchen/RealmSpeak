@@ -829,8 +829,6 @@ public class SetupCardUtility {
 		GameData data = denizen.getGameData();
 		String block = denizen.hasAttributeBlock("this_h")?"this_h":"this";
 		String holderName = denizen.getAttribute(block,"setup_start");
-//System.out.println(denizen.fineDetail());
-//System.out.println("holderName="+holderName);
 		if (holderName!=null) {
 			ArrayList keys = new ArrayList();
 			String boardNum = denizen.getThisAttribute(Constants.BOARD_NUMBER);

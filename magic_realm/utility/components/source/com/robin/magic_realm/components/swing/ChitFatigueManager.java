@@ -163,7 +163,6 @@ public class ChitFatigueManager extends ChitManager {
 				int effort = ((CharacterActionChitComponent)chit).getEffortAsterisks();
 				val += effort;
 				val += 1; // Add one more, because each fatigued chit can be wounded to satisfy fatigue, and non-effort chits can be wounded too.
-//System.out.println(chit.getGameObject().getName()+" is "+effort+" + 1");
 			}
 		}
 		// fatigued chits are wounded one at a time after this (this can only happen when special weather conditions are in play)
@@ -171,7 +170,6 @@ public class ChitFatigueManager extends ChitManager {
 			ChitComponent chit = (ChitComponent)i.next();
 			if (chit.isActionChit() && validChit((CharacterActionChitComponent)chit)) {
 				val += 1; // effort has no effect at this point
-//System.out.println(chit.getGameObject().getName()+" is 1 more");
 			}
 		}
 		

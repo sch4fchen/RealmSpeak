@@ -74,7 +74,7 @@ public class MapRating {
 				connectedTiles.add(clearing.getParent());
 			}
 		}
-//System.out.println(go.getName()+":  "+found.size()+" clearings, and "+connectedTiles.size()+" tiles");
+
 		return connectedTiles.size()-1;		// don't count the original tile
 	}
 }

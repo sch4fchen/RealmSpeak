@@ -42,10 +42,8 @@ public class CustomCharacterLibrary {
 		customCharacterImageHash = new Hashtable<String,ImageIcon>();
 	}
 	public void addCustomCharacterTemplate(GameObject character,ImageIcon detailImage) {
-//System.out.println("Adding "+character.getName());
 		customCharacterHash.put(character.getName(),character);
 		customCharacterImageHash.put(character.getName(),detailImage);
-//JOptionPane.showMessageDialog(null,new JLabel(detailImage));
 	}
 	public ArrayList<String> getCharacterTemplateNameList() {
 		return new ArrayList<String>(customCharacterHash.keySet());

@@ -28,7 +28,6 @@ public class ModifyableObject {
 	protected ArrayList changeListeners;		// fired when modified status changes
 	
 	public void setModified(boolean val) {
-//System.out.println(toString()+" was set to modified="+val);
 		modified = val;
 		fireChange();
 	}
@@ -47,7 +46,6 @@ public class ModifyableObject {
 			changeListeners = new ArrayList();
 		}
 		changeListeners.add(listener);
-//System.out.println(toString()+" has "+changeListeners.size()+" listeners");
 	}
 	public void removeChangeListener(ChangeListener listener) {
 		if (changeListeners!=null) {
@@ -58,13 +56,11 @@ public class ModifyableObject {
 		}
 	}
 	protected void fireChange() {
-//System.out.println(toString()+" fireChange()");
 		if (changeListeners!=null) {
 			ChangeEvent event = new ChangeEvent(this);
 			for (Iterator i=changeListeners.iterator();i.hasNext();) {
 				ChangeListener listener = (ChangeListener)i.next();
 				listener.stateChanged(event);
-//System.out.println("listener "+listener);
 			}
 		}
 	}

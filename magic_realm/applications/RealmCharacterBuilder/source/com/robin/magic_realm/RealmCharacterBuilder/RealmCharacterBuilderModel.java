@@ -569,12 +569,10 @@ public class RealmCharacterBuilderModel {
 		}
 		ArrayList<String> unknownChars = new ArrayList<String>();
 		File customFolder = new File(customFolderPath);
-//System.out.println(customFolder.getAbsolutePath());
 		if (customFolder.isDirectory() && customFolder.exists()) {
 			File[] charFile = customFolder.listFiles();
 			for (int i=0;i<charFile.length;i++) {
 				if (charFile[i].getAbsolutePath().endsWith(".rschar")) {
-//System.out.println(charFile[i].getAbsolutePath());
 					try {
 						RealmCharacterBuilderModel model = RealmCharacterBuilderModel.createFromFile(charFile[i]);
 						if (model!=null) {
@@ -596,7 +594,6 @@ public class RealmCharacterBuilderModel {
 						String at = ex.getStackTrace().length>0?("\n            at "+ex.getStackTrace()[0].toString()):"";
 						unknownChars.add(charFile[i].getName()+" - "+ex.toString()+at);
 					}
-//System.out.println(CustomCharacterLibrary.getSingleton().getCharacterUniqueKey(model.getCharacter().getGameObject().getName()));
 				}
 			}
 		}

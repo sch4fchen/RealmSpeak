@@ -68,8 +68,6 @@ public class DieRule {
 		else {
 			locationList = makeList(locationListString);
 		}
-//System.out.println("keyList = "+keyList);
-//System.out.println("locationList = "+locationList);
 	}
 	public boolean conditionsMet(String key,ArrayList<String> chitDescList) {
 		if (key.indexOf(',')>0) {

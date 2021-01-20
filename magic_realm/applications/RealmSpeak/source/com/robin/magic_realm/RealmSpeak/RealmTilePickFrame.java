@@ -255,7 +255,6 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 		map.rebuildFromScratch();
 		
 		String active = game.getGameMapBuilder();
-//System.out.println(gameHandler.getClient().getClientName()+":  active = "+active);
 		canPlace = (active!=null && active.equals(gameHandler.getClient().getClientName()));
 		
 		int validRow = getBorderLandIndex();

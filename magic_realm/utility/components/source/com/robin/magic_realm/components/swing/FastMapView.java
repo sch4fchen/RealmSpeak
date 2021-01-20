@@ -52,7 +52,7 @@ public class FastMapView extends JComponent {
 	
 	// Data
 	private GameData gameData;
-	private Hashtable mapGrid;
+	private Hashtable<Point, TileComponent> mapGrid;
 	
 	// Map Drawing
 	private double scale = 1.0;
@@ -142,10 +142,9 @@ public class FastMapView extends JComponent {
 		});
 	}
 	public void updateGrid() {
-		mapGrid = new Hashtable();
-		Collection tileObjects = RealmObjectMaster.getRealmObjectMaster(gameData).getTileObjects();
-		for (Iterator i=tileObjects.iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		mapGrid = new Hashtable<Point, TileComponent>();
+		Collection<GameObject> tileObjects = RealmObjectMaster.getRealmObjectMaster(gameData).getTileObjects();
+		for (GameObject go : tileObjects) {
 			TileComponent tile = (TileComponent)RealmComponent.getRealmComponent(go);
 			tile.setAlwaysPaint(true);
 			String pos = (String)go.getAttribute("mapGrid","mapPosition");
@@ -217,7 +216,6 @@ public class FastMapView extends JComponent {
 		for (Iterator i=mapGrid.keySet().iterator();i.hasNext();) {
 			Point gp = (Point)i.next();
 			Point p = convertGridToCoordinate(gp);
-//System.out.println("p="+p);
 			TileComponent tile = (TileComponent)mapGrid.get(gp);
 			tile.paintTo(g,p.x+offset.x,p.y+offset.y,TILE_SIZE.width,TILE_SIZE.height);
 		}

@@ -79,8 +79,6 @@ public class PowerOfThePit extends RealmTable {
 	}
 	public String apply(CharacterWrapper character,DieRoller roller) {
 		harm = false;
-//System.out.println("PowerOfThePit:  REMOVE THIS CODE");
-//roller.setValue(0,3);if (roller.getNumberOfDice()>1) roller.setValue(1,3);
 		if (character.isMistLike()) {
 			return "Unaffected - Mist";
 		}
@@ -275,7 +273,6 @@ public class PowerOfThePit extends RealmTable {
 		ArrayList<RealmComponent> killed = new ArrayList<RealmComponent>();
 		TileLocation tl = character.getCurrentLocation();
 		if (tl.isInClearing()) {
-//System.out.println("killEverythingInClearing="+tl);
 			HashSet<RealmComponent> livingThings = new HashSet<RealmComponent>();
 			for (RealmComponent rc:tl.clearing.getClearingComponents()) {
 				if (rc.isPlayerControlledLeader()) {

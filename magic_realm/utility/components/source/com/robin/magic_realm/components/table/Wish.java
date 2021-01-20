@@ -66,10 +66,6 @@ public class Wish extends RealmTable {
 		return KEY;
 	}
 	public String apply(CharacterWrapper character,DieRoller roller) {
-//System.out.println("Wish:  REMOVE THESE LINES!!!!!!!!!");
-//roller.setValue(0,1);
-//roller.setValue(1,1);
-//return applyFive(character);
 		if (!character.isMistLike() && !character.hasMagicProtection()) {
 			WishRunner wr = new WishRunner(this,character,roller);
 			SwingUtilities.invokeLater(wr);

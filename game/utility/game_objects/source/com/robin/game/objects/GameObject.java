@@ -1535,7 +1535,6 @@ if (obj==null) {
 			StringTokenizer tokens = new StringTokenizer(keyVal, "=");
 			String key = tokens.nextToken().trim().toLowerCase();
 			if (!key.startsWith("!")) {
-//System.out.println("stripping "+blockName+","+key+" from "+name);
 				removeAttribute(blockName,key);
 			}
 		}

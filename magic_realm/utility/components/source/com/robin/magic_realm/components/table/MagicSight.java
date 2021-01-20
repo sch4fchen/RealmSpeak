@@ -43,11 +43,6 @@ public class MagicSight extends Search {
 	public String getTableKey() {
 		return "MagicSight";
 	}
-//public String apply(CharacterWrapper character,DieRoller roller) {
-//System.out.println("MagicSight:  REMOVE THIS CODE");
-//this.roller = roller;
-//return applyThree(character);
-//}
 	
 	public String applyOne(CharacterWrapper character) {
 		// Choice

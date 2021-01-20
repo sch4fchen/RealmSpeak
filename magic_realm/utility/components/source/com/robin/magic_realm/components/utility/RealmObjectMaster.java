@@ -73,7 +73,6 @@ public class RealmObjectMaster {
 	
 	public ArrayList<GameObject> findObjects(String keyVals,boolean asComponents) {
 		keyVals = hostPrefs.getGameKeyVals()+","+keyVals;
-//System.out.println("findObjects for "+keyVals);
 		GamePool pool = new GamePool(data.getGameObjects());
 		ArrayList<GameObject> objects = pool.find(keyVals);
 		if (asComponents) {
@@ -84,7 +83,6 @@ public class RealmObjectMaster {
 			}
 			return list;
 		}
-//System.out.println("found: "+objects);
 		return objects;
 	}
 	

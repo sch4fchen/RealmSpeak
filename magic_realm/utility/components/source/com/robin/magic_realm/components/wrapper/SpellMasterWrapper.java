@@ -467,21 +467,17 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 	private static final String SPELL_MASTER_KEY = "__RealmSpellMaster_";
 	public static Long MASTER_ID = null;
 	public static SpellMasterWrapper getSpellMaster(GameData data) {
-//System.out.println("MASTER_ID = "+MASTER_ID+", dataid = "+data.dataid);
 		if (MASTER_ID==null) {
-//System.out.println(data.toIdentifier()+": MASTER_ID is null");
 			GamePool pool = new GamePool(data.getGameObjects());
 			ArrayList list = pool.find(SPELL_MASTER_KEY);
 			GameObject gm = null;
 			if (list!=null && list.size()==1) {
 				gm = (GameObject)list.iterator().next();
-//System.out.println(data.toIdentifier()+": Found a SpellMaster!");
 			}
 			if (gm==null) {
 				gm = data.createNewObject();
 				gm.setName(SPELL_MASTER_KEY);
 				gm.setThisAttribute(SPELL_MASTER_KEY);
-//System.out.println(data.toIdentifier()+": Creating a new SpellMaster!");
 			}
 			MASTER_ID = new Long(gm.getId());
 			return new SpellMasterWrapper(gm);

@@ -725,11 +725,8 @@ public class RealmBattle {
 	 * @return		true if combat still active
 	 */
 	public static boolean testCombatInClearing(TileLocation location,GameData data) {
-//System.out.println("RealmBattle:  testCombatInClearing for data "+data.toIdentifier());
 		BattleModel battleModel = buildBattleModel(location,data);
-//System.out.println("RealmBattle:  group count="+battleModel.getGroupCount(true));
 		if (battleModel.getGroupCount(false)==0) {
-//System.out.println("RealmBattle:  endCombatInClearing");
 			endCombatInClearing(location,data);
 			return false;
 		}
