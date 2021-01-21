@@ -375,8 +375,9 @@ public class SetupCardUtility {
 		return go;
 	}
 	private static boolean GameObjectMatchesBoardNumber(GameObject go,String boardNumber) {
+		if (boardNumber == null) return true;
 		String bn = go.getThisAttribute(Constants.BOARD_NUMBER);	
-		return (boardNumber == null || (bn==null && boardNumber == "") || (bn != null && boardNumber.matches(bn)));
+		return (bn==null && boardNumber == "") || (bn != null && boardNumber.matches(bn));
 	}
 	private static ArrayList<GameObject> generateMonsters(GameObject generator,ClearingDetail clearing) {
 		ArrayList<GameObject> list = new ArrayList<GameObject>();
@@ -591,28 +592,35 @@ public class SetupCardUtility {
 	}
 
 	public static void summonMonsters(HostPrefWrapper hostPrefs,ArrayList<GameObject> summoned,CharacterWrapper character,DieRoller monsterDieRoller) {
-		int diceRolled = monsterDieRoller.getNumberOfDice();
-		
-		if (hostPrefs.hasPref(Constants.EXP_DOUBLE_MONSTER_DIE)) {
-			for (int i=0; i<diceRolled/2; i++) {
-				String boardNumber = "";
-				if (i>0) {
-					boardNumber = Constants.MULTI_BOARD_APPENDS.substring(i-1, i);
-				}
-				SetupCardUtility.summonMonsters(hostPrefs,new ArrayList<GameObject>(),character,monsterDieRoller.getValue(2*i),boardNumber);
-				if (monsterDieRoller.getValue(2*i)!=monsterDieRoller.getValue(2*i+1)) {
-					SetupCardUtility.summonMonsters(hostPrefs,new ArrayList<GameObject>(),character,monsterDieRoller.getValue(2*i+1),boardNumber);
-				}
+		if (!hostPrefs.hasPref(Constants.EXP_MONSTER_DIE_PER_SET)) {
+			SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(0),null);
+			if (hostPrefs.hasPref(Constants.EXP_DOUBLE_MONSTER_DIE) && monsterDieRoller.getValue(0)!=monsterDieRoller.getValue(1)) {
+				SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(1),null);
 			}
-			return;
 		}
-		
-		for (int i=0; i<diceRolled; i++) {
-			String boardNumber = "";
-			if (i>0) {
-				boardNumber = Constants.MULTI_BOARD_APPENDS.substring(i-1, i);
+		else {
+			int diceRolled = monsterDieRoller.getNumberOfDice();
+			if (hostPrefs.hasPref(Constants.EXP_DOUBLE_MONSTER_DIE)) {
+				for (int i=0; i<diceRolled/2; i++) {
+					String boardNumber = "";
+					if (i>0) {
+						boardNumber = Constants.MULTI_BOARD_APPENDS.substring(i-1, i);
+					}
+					SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(2*i),boardNumber);
+					if (monsterDieRoller.getValue(2*i)!=monsterDieRoller.getValue(2*i+1)) {
+						SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(2*i+1),boardNumber);
+					}
+				}
 			}
-			SetupCardUtility.summonMonsters(hostPrefs,new ArrayList<GameObject>(),character,monsterDieRoller.getValue(i), boardNumber);
+			else {
+				for (int i=0; i<diceRolled; i++) {
+					String boardNumber = "";
+					if (i>0) {
+						boardNumber = Constants.MULTI_BOARD_APPENDS.substring(i-1, i);
+					}
+					SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(i), boardNumber);
+				}
+			}
 		}
 	}
 	
