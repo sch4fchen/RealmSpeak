@@ -429,7 +429,6 @@ public class RealmHostPanel extends JPanel {
 			// Roll monster die (or dice)
 			DieRoller monsterDieRoller = new DieRoller();
 			int numberOfDice = 1;
-			monsterDieRoller.addRedDie();
 			if (hostPrefs.hasPref(Constants.EXP_MONSTER_DIE_PER_SET) && hostPrefs.getMultiBoardEnabled()) {
 				numberOfDice = hostPrefs.getMultiBoardCount();
 			}
@@ -437,7 +436,7 @@ public class RealmHostPanel extends JPanel {
 				numberOfDice = numberOfDice*2;
 			}
 			
-			for (int i=1; i<numberOfDice; i++) {
+			for (int i=0; i<numberOfDice; i++) {
 				monsterDieRoller.addRedDie();
 			}
 			

@@ -592,7 +592,7 @@ public class SetupCardUtility {
 	}
 
 	public static void summonMonsters(HostPrefWrapper hostPrefs,ArrayList<GameObject> summoned,CharacterWrapper character,DieRoller monsterDieRoller) {
-		if (!hostPrefs.hasPref(Constants.EXP_MONSTER_DIE_PER_SET)) {
+		if (!hostPrefs.getMultiBoardEnabled() || !hostPrefs.hasPref(Constants.EXP_MONSTER_DIE_PER_SET)) {
 			SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(0),null);
 			if (hostPrefs.hasPref(Constants.EXP_DOUBLE_MONSTER_DIE) && monsterDieRoller.getValue(0)!=monsterDieRoller.getValue(1)) {
 				SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(1),null);
