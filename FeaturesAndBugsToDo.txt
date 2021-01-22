@@ -1,11 +1,12 @@
-0001826: Feature Request - First Edition Optional Rules - The Deadly Realm: http://www.nand.it/mr/mr06.html
-0001822: Feature Request: First Edition Optional Rule - Steel Against Magic: (+Disadvantage) A character cannot play a MAGIC counter if he has any weapon counter except a staff activated.
-0001829: Feature Request - First Edition Killer Caves: First Edition rule 40.9. "Horses are killed and removed from play when they enter a cave clearing".
-0001819: Feature Request: First Edition Search Tables
 Expansion 1: Parry + Ability: "Parry"
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry 2?")
 Expansion 1: Two-Handed Combat + Ability: "Dual Wielding"
 Expansion 1: More Ambushes + Ability: "Advanced_Ambush"
+
+0001826: Feature Request - First Edition Optional Rules - The Deadly Realm: http://www.nand.it/mr/mr06.html
+0001829: Feature Request - First Edition Killer Caves: First Edition rule 40.9. "Horses are killed and removed from play when they enter a cave clearing".
+0001822: Feature Request: First Edition Optional Rule - Steel Against Magic: (+Disadvantage) A character cannot play a MAGIC counter if he has any weapon counter except a staff activated.
+0001819: Feature Request: First Edition Search Tables
 Expansion 1: Spells: Magic Shield, Sleep, Fear, Wall of Force, Duel, Spider web, Rocks Glow, Mystic boots, Flame sword, Fighting hands, Magic mirror, Lucky blow, Fire trap
 Expansion 1: Items: Ring of the mage?, Elf finger?, Fools gold, Magic patch, Color capture gem, Burning oil, Magic meat, Needful thing, Sorceror's eye, Cursed bell, Mysterious scroll, Ointment of slip, Thieves decoy, Lockpit set, Archers glove, Hound, Beast away, Book of war strategy, Twisted book, Book of the druids, Sorcereror's tome 
 Expansion 1: Travelers: Pathfinder, Doppleganger, Bounty Hunter, Children, Necromancer, Gate Master, Soothsayer
