@@ -3,9 +3,9 @@ Expansion 1: Parry + Ability: "Parry"
 Expansion 1: Two-Handed Combat + Ability: "Dual Wielding"
 Expansion 1: More Ambushes + Ability: "Advanced_Ambush"
 Expansion 1: Spells: Magic Shield, Sleep, Fear, Wall of Force, Duel, Spider web, Rocks Glow, Mystic boots, Flame sword, Fighting hands, Magic mirror, Lucky blow, Fire trap
-Expansion 1: Items: Ring of the mage?, Elf finger?, Fools gold, Magic patch, Color capture gem, Burning oil, Magic meat, Needful thing, Sorceror's eye, Cursed bell, Mysteriouss scroll, Leper cloak, Ointment of slip, Demon leash, Thieves decoy, Lockpit set, Archers glove, Hound, ear plugs, Beast away, Book of war strategy, Twisted book, Book of the druids, Sorcereror's tome 
-Expansion 1: Travelers: Pathfinder, Doppleganger, Bounty Hunter, Children, Necromancer, Gate Master, Siren, Soothsayer
-Expansion 1: Graveyard, Library
+Expansion 1: Items: Ring of the mage?, Elf finger?, Fools gold, Magic patch, Color capture gem, Burning oil, Magic meat, Needful thing, Sorceror's eye, Cursed bell, Mysterious scroll, Ointment of slip, Thieves decoy, Lockpit set, Archers glove, Hound, Beast away, Book of war strategy, Twisted book, Book of the druids, Sorcereror's tome 
+Expansion 1: Travelers: Pathfinder, Doppleganger, Bounty Hunter, Children, Necromancer, Gate Master, Soothsayer
+Expansion 1: Graveyard
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry 2?")
 0001819: Feature Request: First Edition Search Tables
 0001820: Feature Request: First Edition Optional Rules - Dissolving Doors
