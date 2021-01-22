@@ -203,8 +203,7 @@ public class RealmSpeakInit {
 		for (String appendName:appendNames) {
 			long start = data.getMaxId()+1;
 			doubleLoader.getData().renumberObjectsStartingWith(start);
-			for (Iterator i=doubleLoader.getData().getGameObjects().iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
+			for (GameObject go : doubleLoader.getData().getGameObjects()) {
 				if (!go.hasThisAttribute("season")) { // The one exception
 					GameObject dub = data.createNewObject(go.getId());
 					dub.copyFrom(go);
@@ -215,8 +214,7 @@ public class RealmSpeakInit {
 		}
 		
 		// Resolve objects (holds can't be calculated until all are loaded!)
-		for (Iterator i=data.getGameObjects().iterator();i.hasNext();) {
-			GameObject obj = (GameObject)i.next();
+		for (GameObject obj : data.getGameObjects()) {
 			obj.resolveHold(data.getGameObjectIDHash());
 		}
 		
@@ -302,15 +300,14 @@ public class RealmSpeakInit {
 		ArrayList<GameObject> monsters = pool.find("monster");
 		
 		// First, count each type
-		HashLists hl = new HashLists();
+		HashLists<String, GameObject> hl = new HashLists<String, GameObject>();
 		for (GameObject go:monsters) {
 			hl.put(go.getName(),go);
 		}
 		
 		// Only number those where there is more than one
-		for (Iterator i=hl.keySet().iterator();i.hasNext();) {
-			String name = (String)i.next();
-			ArrayList list = hl.getList(name);
+		for (String name : hl.keySet()) {
+			ArrayList<GameObject> list = hl.getList(name);
 			if (list.size()>1) {
 				for (int n=0;n<list.size();n++) {
 					GameObject go = (GameObject)list.get(n);
@@ -331,7 +328,7 @@ public class RealmSpeakInit {
 		}
 	}
 	private void doBoardAutoSetup() {
-		Collection keyVals = GamePool.makeKeyVals(hostPrefs.getGameKeyVals());
+		Collection<String> keyVals = GamePool.makeKeyVals(hostPrefs.getGameKeyVals());
 		lastRating = -1;
 		mapAttempt = 0;
 		MapProgressReportable reporter = new MapProgressReportable() {
@@ -391,22 +388,21 @@ public class RealmSpeakInit {
 		}
 	}
 	private void prepGuildQuests() {
+		QuestDeck deck = QuestDeck.findDeck(data);
 		for(Quest template:QuestLoader.loadAllQuestsFromQuestFolder()) {
-			if (template.getBoolean(QuestConstants.FOR_FIGHTERS_GUILD)
-					|| template.getBoolean(QuestConstants.FOR_MAGIC_GUILD)
-					|| template.getBoolean(QuestConstants.FOR_THIEVES_GUILD)) {
-				template.copyQuestToGameData(data);
+			if (template.getGuild()!=null) {
+				Quest quest = template.copyQuestToGameData(data);
+				deck.addCards(quest,1);
 			}
 		}
 	}
 	private void doItemSpellCasting() {
 		GamePool pool = new GamePool(data.getGameObjects());
-		ArrayList query = new ArrayList();
+		ArrayList<String> query = new ArrayList<String>();
 		query.addAll(GamePool.makeKeyVals(hostPrefs.getGameKeyVals()));
 		query.add(Constants.CAST_SPELL_ON_INIT);
-		Collection needsSpellInit = pool.find(query);
-		for (Iterator i=needsSpellInit.iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		Collection<GameObject> needsSpellInit = pool.find(query);
+		for (GameObject go : needsSpellInit) {
 			for (Iterator n=go.getHold().iterator();n.hasNext();) {
 				GameObject sgo = (GameObject)n.next();
 				if (sgo.hasThisAttribute("spell")) {

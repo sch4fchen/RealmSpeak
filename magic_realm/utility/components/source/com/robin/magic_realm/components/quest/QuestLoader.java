@@ -41,7 +41,7 @@ public class QuestLoader {
 
 	public static ArrayList<Quest> findAvailableQuests(CharacterWrapper character, HostPrefWrapper hostPrefs) {
 		GamePool pool = new GamePool(character.getGameData().getGameObjects());
-		ArrayList query = new ArrayList();
+		ArrayList<String> query = new ArrayList<String>();
 		query.add(RealmComponent.QUEST);
 		query.add("!"+Quest.STATE);
 		ArrayList<GameObject> allUnassingedQuests = pool.find(query);

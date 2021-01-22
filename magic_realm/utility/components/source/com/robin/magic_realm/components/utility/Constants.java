@@ -521,7 +521,8 @@ public class Constants {
 	public static final String QST_GUILD_QUESTS = "GuildQuests";	
 	public enum QuestDeckMode {
 		QtR,
-		BoQ
+		BoQ,
+		GQ
 	}
 	
 	public static final Stroke THICK_STROKE = new BasicStroke(3);

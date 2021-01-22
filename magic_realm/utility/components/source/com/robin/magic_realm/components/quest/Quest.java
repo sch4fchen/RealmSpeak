@@ -206,6 +206,19 @@ public class Quest extends GameObjectWrapper {
 		return getBoolean(QuestConstants.QTR_ALL_PLAY);
 	}
 	
+	public String getGuild() {
+		if (getGameObject().hasAttribute(getBlockName(),QuestConstants.FOR_FIGHTERS_GUILD)) {
+			return "fighters";
+		}
+		if (getGameObject().hasAttribute(getBlockName(),QuestConstants.FOR_MAGIC_GUILD)) {
+			return "magic";
+		}
+		if (getGameObject().hasAttribute(getBlockName(),QuestConstants.FOR_THIEVES_GUILD)) {
+			return "thieves";
+		}
+		return null;
+	}
+	
 	public void clearAllPlay() {
 		clear(QuestConstants.QTR_ALL_PLAY);
 	}

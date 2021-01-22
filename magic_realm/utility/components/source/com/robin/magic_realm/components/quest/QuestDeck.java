@@ -25,6 +25,7 @@ import javax.swing.JFrame;
 import com.robin.game.objects.*;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class QuestDeck extends GameObjectWrapper {
 	
@@ -122,7 +123,7 @@ public class QuestDeck extends GameObjectWrapper {
 	/**
 	 * This will select a random quest card, remove it from the "deck", and add it to the current GameData collection.
 	 */
-	public Quest drawCard() {
+	private Quest drawCard() {
 		ArrayList list = getList(QUEST_CARD_LIST);
 		if (list!=null && list.size()>0) {
 			//int r = RandomNumber.getRandom(list.size());
@@ -146,12 +147,18 @@ public class QuestDeck extends GameObjectWrapper {
 		return null;
 	}
 	public int drawCards(JFrame frame,CharacterWrapper character) {
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 		int cardsDrawn = 0;
 		int n = character.getQuestSlotCount() - character.getUnfinishedNotAllPlayQuestCount();
 		if (getListCount(QUEST_CARD_LIST)==0) reshuffle();
 		while(n>0 && getCardCount()>0) {
 			Quest quest = drawCard();
 			if (quest==null) break; // shouldn't happen, but just in case!
+			if (hostPrefs.isUsingGuildQuests()) {
+				String guildName = character.getCurrentLocation().clearing.getGuild().getGameObject().getThisAttribute("guild");
+				if (!quest.getGuild().matches(guildName)) break;
+			}
+				
 			quest.setState(QuestState.Assigned, character.getCurrentDayKey(), character); // indicates when the quest was first assigned
 			character.addQuest(frame,quest);
 			cardsDrawn++;

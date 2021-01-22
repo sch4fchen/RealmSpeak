@@ -601,7 +601,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		buttonPanel.add(vpEndlessOption=new VictoryConditionButton("Endless","No time limit or VPs\nNo Hall of Fame\nGame ends when you decide to quit"));
 		buttonPanel.add(vpTimedOption=new VictoryConditionButton("Timed","Defined time limit\nStandard: Assign one VP per week plus one\nHighest score at game end wins"));
 		buttonPanel.add(vpSuddenDeathOption=new VictoryConditionButton("Sudden Death","Predefined # of VPs\nNo Time Limit\nFirst to achieve VPs wins"));
-		buttonPanel.add(questGuildsOption=new VictoryConditionButton("Guild Quests","Quests are given at guilds (expansion)\nQuests do not earn VPs\n------- NOT READY YET -------\nENDLESS, TIMED or SUDDEN DEATH"));
+		buttonPanel.add(questGuildsOption=new VictoryConditionButton("Guild Quests","Quests are given at guilds (expansion)\nQuests do not earn VPs\n\nENDLESS, TIMED or SUDDEN DEATH"));
 		buttonPanel.add(questQtrOption=new VictoryConditionButton("Questing the Realm","Hand of Quest Cards\nFinish quests to earn VPs\n\nTIMED or SUDDEN DEATH"));
 		buttonPanel.add(questBoqOption=new VictoryConditionButton("Book of Quests","Each character picks ONE quest\nFirst to finish quest wins\n\nSUDDEN DEATH only"));
 		

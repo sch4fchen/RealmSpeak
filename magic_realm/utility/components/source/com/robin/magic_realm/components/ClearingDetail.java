@@ -201,10 +201,9 @@ public class ClearingDetail {
 			sb.append(type);
 			sb.append(")");
 		}
-		Collection c = getClearingColorMagic();
+		Collection<ColorMagic> c = getClearingColorMagic();
 		if (c.size()>0) {
-			for (Iterator i=c.iterator();i.hasNext();) {
-				ColorMagic cm = (ColorMagic)i.next();
+			for (ColorMagic cm : c) {
 				sb.append(" ");
 				sb.append(cm.getColorName());
 			}
@@ -260,10 +259,9 @@ public class ClearingDetail {
 			return parent.getEdgePath(Tile.convertEdge(other.getType(),parent.getRotation()));
 		}
 		else {
-			ArrayList paths = (ArrayList)getConnectedPaths();
+			ArrayList<PathDetail> paths = getConnectedPaths();
 			if (paths!=null) { // might be null if this clearing is not connected to any other
-				for (Iterator i=paths.iterator();i.hasNext();) {
-					PathDetail path = (PathDetail)i.next();
+				for (PathDetail path : paths) {
 					if (path.findConnection(this)==other) {
 						return path;
 					}
@@ -329,8 +327,7 @@ public class ClearingDetail {
 		ArrayList<RealmComponent> c = getParent().getRealmComponentsAt(getNum());
 		if (includeSites) {
 			ArrayList<RealmComponent> more = new ArrayList<RealmComponent>();
-			for (Iterator i=c.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : c) {
 				if (rc.isTreasureLocation() && !rc.isCacheChit()) {
 					// Check TLs for face up SITE CARDS, cuz those should be painted too
 					for (Iterator n=rc.getGameObject().getHold().iterator();n.hasNext();) {
@@ -359,12 +356,10 @@ public class ClearingDetail {
 	 */
 	public ArrayList<RealmComponent> getDeepClearingComponents() {
 		ArrayList<RealmComponent> found = new ArrayList<RealmComponent>();
-		for (Iterator i=getParent().getRealmComponentsAt(getNum()).iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : getParent().getRealmComponentsAt(getNum())) {
 			found.add(rc);
-			Collection gos = RealmUtility.getAllGameObjectsIn(rc.getGameObject(),true);
-			for (Iterator n=gos.iterator();n.hasNext();) {
-				GameObject go = (GameObject)n.next();
+			Collection<GameObject> gos = RealmUtility.getAllGameObjectsIn(rc.getGameObject(),true);
+			for (GameObject go : gos) {
 				RealmComponent inrc = RealmComponent.getRealmComponent(go);
 				if (!found.contains(inrc)) {
 					found.add(inrc);
@@ -448,9 +443,16 @@ public class ClearingDetail {
 		this.absolutePosition = absolutePosition;
 	}
 	public RealmComponent getDwelling() {
-		for (Iterator n=getClearingComponents().iterator();n.hasNext();) {
-			RealmComponent rc = (RealmComponent)n.next();
+		for (RealmComponent rc : getClearingComponents()) {
 			if (rc.isDwelling()) {
+				return rc;
+			}
+		}
+		return null;
+	}
+	public RealmComponent getGuild() {
+		for (RealmComponent rc : getClearingComponents()) {
+			if (rc.isGuild()) {
 				return rc;
 			}
 		}
@@ -459,9 +461,11 @@ public class ClearingDetail {
 	public boolean holdsDwelling() {
 		return getDwelling()!=null;
 	}
+	public boolean holdsGuild() {
+		return getGuild()!=null;
+	}
 	public boolean holdsRedSpecial() {
-		for (Iterator n=getClearingComponents().iterator();n.hasNext();) {
-			RealmComponent rc = (RealmComponent)n.next();
+		for (RealmComponent rc : getClearingComponents()) {
 			if (rc.isRedSpecial()) {
 				return true;
 			}
@@ -473,8 +477,7 @@ public class ClearingDetail {
 	 * Visitor, or if the chit is a 2nd campaign chit (characters can only carry ONE campaign chit at a time)
 	 */
 	public boolean holdsGoldSpecial(String currentCampaign) {
-		for (Iterator n=getClearingComponents().iterator();n.hasNext();) {
-			RealmComponent rc = (RealmComponent)n.next();
+		for (RealmComponent rc : getClearingComponents()) {
 			if (rc.isGoldSpecial() && !rc.getGameObject().hasThisAttribute("visitor")) {
 				if (currentCampaign==null || !rc.getGameObject().hasThisAttribute("campaign")) {
 					return true;

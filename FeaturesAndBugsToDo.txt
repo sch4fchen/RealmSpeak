@@ -5,7 +5,6 @@ Expansion 1: More Ambushes + Ability: "Advanced_Ambush"
 Expansion 1: Should always be safe at guilds, if you are a member (from monsters and natives)
 Expansion 1: Guilds: Joining? Gaining guild quest? Benefit after guild quest? Guild chit?
 Expansion 1: Guild Quests: add quests
-Expansion 1: Guild Quest mode
 Expansion 1: Assassin Guild, Nature Guild (see below)
 Expansion 1: Spells?!: e.g. Magic Shield, Sleep, Wall of Force, Rocks Glow, Mystic boots, Flame sword, Fighting hands, Lucky blow, Fire trap
 Expansion 1: Items?!

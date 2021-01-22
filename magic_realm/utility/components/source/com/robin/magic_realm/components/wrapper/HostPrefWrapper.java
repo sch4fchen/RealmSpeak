@@ -178,6 +178,18 @@ public class HostPrefWrapper extends GameObjectWrapper {
 	public boolean isUsingGuildQuests() {
 		return getBoolean(Constants.QST_GUILD_QUESTS);
 	}
+	public Constants.QuestDeckMode getQuestMode() {
+		if (getBoolean(Constants.QST_QUEST_CARDS)) {
+			return Constants.QuestDeckMode.QtR;
+		}
+		if (getBoolean(Constants.QST_BOOK_OF_QUESTS)) {
+			return Constants.QuestDeckMode.BoQ;
+		}
+		if (getBoolean(Constants.QST_GUILD_QUESTS)) {
+			return Constants.QuestDeckMode.GQ;
+		}
+		return null;
+	}
 	
 	// Setters
 	public void setHostName(String val) {

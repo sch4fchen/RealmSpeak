@@ -736,8 +736,8 @@ public class RealmUtility {
 	/**
 	 * A recursive method for extracting a tree of game objects
 	 */
-	public static Collection getAllGameObjectsIn(GameObject go,boolean excludeUnseenTreasures) {
-		ArrayList ret = new ArrayList();
+	public static Collection<GameObject> getAllGameObjectsIn(GameObject go,boolean excludeUnseenTreasures) {
+		ArrayList<GameObject> ret = new ArrayList<GameObject>();
 		for (Iterator i=go.getHold().iterator();i.hasNext();) {
 			GameObject ingo = (GameObject)i.next();
 			RealmComponent rc = RealmComponent.getRealmComponent(ingo);

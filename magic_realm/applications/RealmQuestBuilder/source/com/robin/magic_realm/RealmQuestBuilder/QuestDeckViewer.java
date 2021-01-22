@@ -48,6 +48,7 @@ public class QuestDeckViewer extends AggressiveDialog {
 		deckCards=0;
 		switch (mode) {
 			case QtR:
+			case GQ:
 				for(Quest quest:quests) {
 					int count = quest.getInt(QuestConstants.CARD_COUNT);
 					if (quest.isAllPlay()) {
@@ -58,6 +59,7 @@ public class QuestDeckViewer extends AggressiveDialog {
 					}
 					totalVPs += (quest.getInt(QuestConstants.VP_REWARD)*count);
 				}
+				break;
 			case BoQ:
 				for(Quest quest:quests) {
 					if (quest.isEvent()) {
@@ -67,6 +69,7 @@ public class QuestDeckViewer extends AggressiveDialog {
 						deckCards ++;
 					}
 				}
+				break;
 		}
 
 		table = new JTable(new DeckTableModel());
@@ -106,6 +109,8 @@ public class QuestDeckViewer extends AggressiveDialog {
 			case BoQ:
 				box.add(new JLabel("Events: "+eventCount));
 				box.add(Box.createHorizontalGlue());
+				break;
+			case GQ:
 				break;
 		}
 		JButton close = new JButton("Close");
@@ -165,6 +170,7 @@ public class QuestDeckViewer extends AggressiveDialog {
 				default:
 				case QtR:
 					return HEADER_QtR.length;
+				case GQ:
 				case BoQ:
 					return HEADER_BoQ.length;
 			}
@@ -179,6 +185,7 @@ public class QuestDeckViewer extends AggressiveDialog {
 				default:
 				case QtR:
 					return HEADER_QtR[col];
+				case GQ:
 				case BoQ:
 					return HEADER_BoQ[col];
 				}
@@ -198,6 +205,7 @@ public class QuestDeckViewer extends AggressiveDialog {
 						switch (mode) {
 							case QtR:
 								return quest.isAllPlay()?check:null;
+							case GQ:
 							case BoQ:
 								return quest.isEvent()?check:null;
 						}

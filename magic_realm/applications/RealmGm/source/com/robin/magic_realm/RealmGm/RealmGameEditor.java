@@ -253,7 +253,7 @@ public class RealmGameEditor extends JInternalFrame {
 		
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
 		if (hostPrefs.isUsingQuests()) {
-			tabs.add("Quests",buildQuestTab(hostPrefs.isUsingBookOfQuests()==true ? Constants.QuestDeckMode.BoQ : Constants.QuestDeckMode.QtR));
+			tabs.add("Quests",buildQuestTab(hostPrefs.getQuestMode()));
 		}
 		add(tabs,BorderLayout.CENTER);
 		Box box = Box.createHorizontalBox();
@@ -1044,6 +1044,7 @@ public class RealmGameEditor extends JInternalFrame {
 				default:
 				case QtR:
 					return HEADER_QtR.length;
+				case GQ:
 				case BoQ:
 					return HEADER_BoQ.length;
 			}
@@ -1056,6 +1057,7 @@ public class RealmGameEditor extends JInternalFrame {
 				default:
 				case QtR:
 					return HEADER_QtR[col];
+				case GQ:
 				case BoQ:
 					return HEADER_BoQ[col];
 				}
@@ -1073,6 +1075,7 @@ public class RealmGameEditor extends JInternalFrame {
 						switch (mode) {
 							case QtR:
 								return quest.isAllPlay()?check:null;
+							case GQ:
 							case BoQ:
 								return quest.isEvent()?check:null;
 						}

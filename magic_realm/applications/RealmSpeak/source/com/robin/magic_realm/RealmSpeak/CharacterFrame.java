@@ -522,7 +522,18 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	 * This is really only for the Book of Quests game play
 	 */
 	private void chooseQuest() {
-		ArrayList<Quest> quests = QuestLoader.findAvailableQuests(character,hostPrefs);
+		ArrayList<Quest> quests = new ArrayList<Quest>();
+		if (hostPrefs.isUsingGuildQuests()) {
+			String guildName = character.getCurrentLocation().clearing.getGuild().getGameObject().getThisAttribute("guild");
+			for (Quest quest : QuestLoader.findAvailableQuests(character,hostPrefs)) {
+				if (quest.getGuild().matches(guildName)) {
+					quests.add(quest);
+				}
+			}
+		}
+		else {
+			 quests = QuestLoader.findAvailableQuests(character,hostPrefs);
+		}
 		Quest quest = QuestChooser.chooseQuest(gameHandler.getMainFrame(),quests,getCharacter());
 		if (quest!=null) {
 			// Make the quest active by default (Book of Quests)
@@ -1018,12 +1029,10 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 
 		// Quest Button
 		chooseQuestButton = new SingleButton("Choose Quest",true) {
-			public boolean needsShow() {
-				boolean questsCards = hostPrefs.isUsingQuestCards() || hostPrefs.isUsingGuildQuests();
-				
+			public boolean needsShow() {				
 				return character.isActive()
 						&& character.isCharacter()
-						&& (questsCards && character.getQuestCount()==0 || (hostPrefs.isUsingBookOfQuests() && character.getAllNonEventQuests().size()==0))
+						&& (hostPrefs.isUsingQuestCards() && character.getQuestCount()==0 || (hostPrefs.isUsingBookOfQuests() && character.getAllNonEventQuests().size()==0))
 						&& QuestLoader.hasQuestsToLoad(character,hostPrefs);
 			}
 		};

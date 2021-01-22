@@ -133,6 +133,10 @@ public class TileLocation {
 	public boolean isAtDwelling(boolean includeRedSpecial) {
 		return isInClearing() && (clearing.holdsDwelling() || (includeRedSpecial && clearing.holdsRedSpecial()));
 	}
+	
+	public boolean isAtGuild() {
+		return isInClearing() && clearing.holdsGuild() && clearing.getGuild().getGameObject().hasThisAttribute("seen");
+	}
 	/**
 	 * @return		true if this location is in a cave or in the mountains.  Between caves or between mountains is considered the same as being in a cave or mountain clearing.
 	 */

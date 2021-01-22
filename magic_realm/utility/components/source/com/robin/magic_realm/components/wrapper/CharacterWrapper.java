@@ -290,8 +290,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return list;
 	}
-	public static Collection getKeyVals() {
-		ArrayList keyVals = new ArrayList();
+	public static Collection<String> getKeyVals() {
+		ArrayList<String> keyVals = new ArrayList<String>();
 		keyVals.add(NAME_KEY);
 		return keyVals;
 	}
@@ -373,7 +373,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return getBoolean(BLOCKING);
 	}
 	public boolean hasBlockDecision(GameObject go) {
-		ArrayList list = getList(BLOCK_DECISION);
+		ArrayList<String> list = getList(BLOCK_DECISION);
 		return list!=null && list.contains(go.getStringId());
 	}
 	public boolean isSleep() {
@@ -659,7 +659,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 */
 	public ArrayList<RealmComponent> getMoveSpeedOptions(Speed speedToBeat,boolean includeActionChits,boolean flipHorses) {
 		ArrayList<RealmComponent> list = new ArrayList<RealmComponent>();
-		ArrayList searchList = new ArrayList();
+		ArrayList<RealmComponent> searchList = new ArrayList<RealmComponent>();
 		if (includeActionChits) {
 			searchList.addAll(getActiveMoveChits());
 			searchList.addAll(getFlyChits());
@@ -1601,9 +1601,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		
 		markAllInventoryNotNew();
-		Collection inv = getInventory();
-		for (Iterator i=inv.iterator();i.hasNext();) {
-			GameObject item = (GameObject)i.next();
+		ArrayList<GameObject> inv = getInventory();
+		for (GameObject item : inv) {
 			RealmComponent rc = RealmComponent.getRealmComponent(item);
 			if (rc.isWeapon()) {
 				// Unalert weapons
@@ -1653,8 +1652,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		boolean noFatigue = 
 				getGameObject().hasAttribute(Constants.OPTIONAL_BLOCK,Constants.NO_MAGIC_FATIGUE)
 				|| affectedByKey(Constants.NO_MAGIC_FATIGUE);
-		for (Iterator i=getAlertedChits().iterator();i.hasNext();) {
-			CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+		for (CharacterActionChitComponent chit : getAlertedChits()) {
 			if (noFatigue) {
 				chit.makeActive();
 			}
@@ -1669,8 +1667,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		// Heal curses at Chapel
 		if (current.hasClearing() && !current.isBetweenClearings()) {
-			for (Iterator i=current.clearing.getClearingComponents().iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : current.clearing.getClearingComponents()) {
 				if (rc.isDwelling()) {
 					if (rc.getGameObject().getName().startsWith("Chapel")) { // In case there is a Chapel B
 						RealmLogging.logMessage(getGameObject().getName(),"Spent the night at the Chapel.");
@@ -1686,8 +1683,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		getGameObject().removeThisAttribute(Constants.ENHANCED_VULNERABILITY);
 		
 		// Expire combat spells
-		for (Iterator n=getAliveSpells().iterator();n.hasNext();) {
-			SpellWrapper spell = (SpellWrapper)n.next();
+		for (SpellWrapper spell : getAliveSpells()) {
 			// Combat spells are over at midnight
 			if (spell.isCombatSpell()) {
 				spell.expireSpell();
@@ -4526,7 +4522,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	private GameObject fetchItem(JFrame frame,String levelKey,GamePool pool,String itemName,String hostKeyVals,boolean chooseSource) {
 		GameObject item = null;
 		itemName = RealmUtility.updateNameToBoard(getGameObject(),itemName);
-		ArrayList keyVals = new ArrayList();
+		ArrayList<String> keyVals = new ArrayList<String>();
 		keyVals.add(hostKeyVals);
 		keyVals.add("name="+itemName);
 		keyVals.add("!magic");
@@ -4566,10 +4562,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return getGameObject().getAttributeList(PLAYER_BLOCK,ALL_DAYS);
 	}
 	public void clearAllDays() {
-		ArrayList list = getAllDayKeys();
+		ArrayList<String> list = getAllDayKeys();
 		if (list!=null) {
-			for (Iterator i=list.iterator();i.hasNext();) {
-				String dayKey = (String)i.next();
+			for (String dayKey : list) {
 				getGameObject().removeAttributeBlock(dayKey);
 			}
 		}
@@ -4689,11 +4684,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (hasCurse(Constants.WITHER)) {
 			removeCurse(Constants.WITHER);
 		}
-		ArrayList chitsToHeal = new ArrayList();
+		ArrayList<CharacterActionChitComponent> chitsToHeal = new ArrayList<CharacterActionChitComponent>();
 		chitsToHeal.addAll(getFatiguedChits());
 		chitsToHeal.addAll(getWoundedChits());
-		for (Iterator i=chitsToHeal.iterator();i.hasNext();) {
-			CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+		for (CharacterActionChitComponent chit : chitsToHeal) {
 			chit.makeActive();
 		}
 	}
@@ -4751,10 +4745,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public ArrayList<CharacterActionChitComponent> getAllMagicChits() {
 		ArrayList<CharacterActionChitComponent> ret = new ArrayList<CharacterActionChitComponent>();
-		ArrayList pool = new ArrayList();
+		ArrayList<CharacterActionChitComponent> pool = new ArrayList<CharacterActionChitComponent>();
 		pool.addAll(getAllChits());
-		for (Iterator i=pool.iterator();i.hasNext();) {
-			CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+		for (CharacterActionChitComponent chit : pool) {
 			if ("MAGIC".equals(chit.getAction())) {
 				ret.add(chit);
 			}
@@ -4766,18 +4759,16 @@ public class CharacterWrapper extends GameObjectWrapper {
 		ArrayList<CharacterActionChitComponent> pool = new ArrayList<CharacterActionChitComponent>();
 		pool.addAll(getActiveChits());
 		pool.addAll(getAlertedChits()); // I think ONLY MAGIC chits can be alerted
-		for (Iterator i=pool.iterator();i.hasNext();) {
-			CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+		for (CharacterActionChitComponent chit : pool) {
 			if ("MAGIC".equals(chit.getAction())) {
 				ret.add(chit);
 			}
 		}
 		return ret;
 	}
-	public Collection getActiveMoveChits() {
-		ArrayList ret = new ArrayList();
-		for (Iterator i=getActiveChits().iterator();i.hasNext();) {
-			CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+	public Collection<CharacterActionChitComponent> getActiveMoveChits() {
+		ArrayList<CharacterActionChitComponent> ret = new ArrayList<CharacterActionChitComponent>();
+		for (CharacterActionChitComponent chit : getActiveChits()) {
 			if (chit.isMove()) {
 				ret.add(chit);
 			}
@@ -4785,9 +4776,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return ret;
 	}
 	public Collection getActiveFightChits() {
-		ArrayList ret = new ArrayList();
-		for (Iterator i=getActiveChits().iterator();i.hasNext();) {
-			CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+		ArrayList<CharacterActionChitComponent> ret = new ArrayList<CharacterActionChitComponent>();
+		for (CharacterActionChitComponent chit : getActiveChits()) {
 			if (chit.isFight()) {
 				ret.add(chit);
 			}
@@ -4795,10 +4785,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return ret;
 	}
 	public Collection<CharacterActionChitComponent> getAllEffortChits() {
-		ArrayList allEffortChits = new ArrayList();
-		Collection c = getAllChits();
-		for (Iterator i=c.iterator();i.hasNext();) {
-			CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+		ArrayList<CharacterActionChitComponent> allEffortChits = new ArrayList<CharacterActionChitComponent>();
+		Collection<CharacterActionChitComponent> c = getAllChits();
+		for (CharacterActionChitComponent chit : c) {
 			if (chit.getEffortAsterisks()>0) {
 				allEffortChits.add(chit);
 			}
@@ -4816,10 +4805,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return activeEffortChits;
 	}
 	public Collection getActiveFightAlertChits(Speed fastestAttacker) { // only one right now:  BERSERK
-		ArrayList activeFightAlertChits = new ArrayList();
-		Collection c = getActiveChits();
-		for (Iterator i=c.iterator();i.hasNext();) {
-			CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+		ArrayList<CharacterActionChitComponent> activeFightAlertChits = new ArrayList<CharacterActionChitComponent>();
+		Collection<CharacterActionChitComponent> c = getActiveChits();
+		for (CharacterActionChitComponent chit : c) {
 			if (chit.isFightAlert() && chit.getSpeed().fasterThan(fastestAttacker)) {
 				activeFightAlertChits.add(chit);
 			}

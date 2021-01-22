@@ -161,38 +161,38 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 		});
 		controls.add(drawQuestsButton);
 
-		viewAllPlayCardsButton = new JButton("All-Play Cards");
-		viewAllPlayCardsButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ev) {
-				//QuestDeck deck = QuestDeck.findDeck(getCharacter().getGameData());
-				
-				boolean added = false;
-				RealmObjectPanel panel = new RealmObjectPanel();
-				for(Quest quest:characterQuests) {
-					if (quest.isAllPlay() && !quest.getState().isFinished()) {
-						panel.addObject(quest.getGameObject());
-						added = true;
+		if (getHostPrefs().isUsingQuestCards()) {
+			viewAllPlayCardsButton = new JButton("All-Play Cards");
+			viewAllPlayCardsButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {	
+					boolean added = false;
+					RealmObjectPanel panel = new RealmObjectPanel();
+					for(Quest quest:characterQuests) {
+						if (quest.isAllPlay() && !quest.getState().isFinished()) {
+							panel.addObject(quest.getGameObject());
+							added = true;
+						}
+					}
+					panel.addMouseListener(new MouseAdapter() {
+						public void mousePressed(MouseEvent ev) {
+							RealmObjectPanel panel = (RealmObjectPanel)ev.getSource();
+							showQuestInfo(panel.getComponentAt(ev.getPoint()));
+						}
+					});
+	
+					ComponentTools.lockComponentSize(panel,640,480);
+					
+					if (added) {
+						FrameManager.showDefaultManagedFrame(getMainFrame(), new JScrollPane(panel), "Available All-Play Cards", ImageCache.getIcon("quests/token"), true);
+					}
+					else {
+						JOptionPane.showMessageDialog(getMainFrame(), "No All-Play cards left.", "None Left", JOptionPane.INFORMATION_MESSAGE);
 					}
 				}
-				panel.addMouseListener(new MouseAdapter() {
-					public void mousePressed(MouseEvent ev) {
-						RealmObjectPanel panel = (RealmObjectPanel)ev.getSource();
-						showQuestInfo(panel.getComponentAt(ev.getPoint()));
-					}
-				});
-
-				ComponentTools.lockComponentSize(panel,640,480);
-				
-				if (added) {
-					FrameManager.showDefaultManagedFrame(getMainFrame(), new JScrollPane(panel), "Available All-Play Cards", ImageCache.getIcon("quests/token"), true);
-				}
-				else {
-					JOptionPane.showMessageDialog(getMainFrame(), "No All-Play cards left.", "None Left", JOptionPane.INFORMATION_MESSAGE);
-				}
-			}
-		});
-		controls.add(Box.createHorizontalGlue());
-		controls.add(viewAllPlayCardsButton);
+			});
+			controls.add(Box.createHorizontalGlue());
+			controls.add(viewAllPlayCardsButton);
+		}
 		
 		panel.add(controls,BorderLayout.SOUTH);
 		
@@ -284,11 +284,13 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 
 			boolean canDiscardQuests = !getCharacter().alreadyDiscardedQuests() && gameStarted;
 			boolean characterIsAtDwelling = getCharacter().getCurrentLocation().isAtDwelling(true);
+			boolean characterIsAtGuild = getCharacter().getCurrentLocation().isAtGuild();
 			boolean isBirdsong = getGameHandler().getGame().isRecording();
 			discardQuestButton.setEnabled(canDiscardQuests && characterIsAtDwelling && isBirdsong && selQuest!=null && selQuest.isDiscardable());
 
 			boolean hasAvailableSlots = (getCharacter().getQuestSlotCount() - getCharacter().getUnfinishedNotAllPlayQuestCount()) > 0;
-			drawQuestsButton.setEnabled(characterIsAtDwelling && isBirdsong && hasAvailableSlots && getCharacter().isCharacter());
+			drawQuestsButton.setEnabled(isBirdsong && hasAvailableSlots && getCharacter().isCharacter() &&
+					((getHostPrefs().isUsingQuestCards() && characterIsAtDwelling) || (getHostPrefs().isUsingGuildQuests() && characterIsAtGuild)));
 		}
 	}
 

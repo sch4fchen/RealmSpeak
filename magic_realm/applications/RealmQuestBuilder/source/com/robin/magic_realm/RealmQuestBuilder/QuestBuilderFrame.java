@@ -402,11 +402,9 @@ public class QuestBuilderFrame extends JFrame {
 		moveStepDown.setEnabled(quest.getSteps().size() > 1);
 
 		questStepView.updateSteps(quest.getSteps());
-		// questView.updatePanel(quest);
 
 		QuestStepPanel stepPanel = (QuestStepPanel) questSteps.getSelectedComponent();
 		questStepView.setSelectedStep(stepPanel.getStep());
-		// questView.setSelectedStep(stepPanel.getStep());
 
 		fightersGuildQuestOption.setEnabled(guildQuestOption.isSelected());
 		magicGuildQuestOption.setEnabled(guildQuestOption.isSelected());
@@ -522,6 +520,15 @@ public class QuestBuilderFrame extends JFrame {
 		viewDeckItemBoQ.setMnemonic(KeyEvent.VK_B);
 		viewDeckItemBoQ.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, InputEvent.CTRL_MASK | InputEvent.SHIFT_MASK));
 		toolsMenu.add(viewDeckItemBoQ);
+		JMenuItem viewDeckItemGQ = new JMenuItem("View Quest Cards Deck for Guild Quests");
+		viewDeckItemGQ.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				viewDeck(Constants.QuestDeckMode.GQ);
+			}
+		});
+		viewDeckItemGQ.setMnemonic(KeyEvent.VK_G);
+		viewDeckItemGQ.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_MASK | InputEvent.SHIFT_MASK));
+		toolsMenu.add(viewDeckItemGQ);
 		
 		toolsMenu.add(new JSeparator());
 		JMenuItem launchQuestTesterItem = new JMenuItem("Test Quest");
@@ -567,6 +574,13 @@ public class QuestBuilderFrame extends JFrame {
 		case BoQ:
 			for (Quest quest : quests) {
 				if (quest.getBoolean(QuestConstants.WORKS_WITH_BOQ)) {
+					questCards.add(quest);
+				}
+			}
+			break;
+		case GQ:
+			for (Quest quest : quests) {
+				if (quest.getGuild()!=null) {
 					questCards.add(quest);
 				}
 			}
@@ -746,7 +760,6 @@ public class QuestBuilderFrame extends JFrame {
 		reallyLeft.add(lineQtR);
 
 		guildQuestOption = new JCheckBox("Guild Quest:");
-		guildQuestOption.setEnabled(false); // TODO Until this is implemented...
 		guildQuestOption.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				updateControls();

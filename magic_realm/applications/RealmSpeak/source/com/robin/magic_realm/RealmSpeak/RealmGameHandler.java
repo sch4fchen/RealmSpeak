@@ -581,8 +581,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			game.setState(GameWrapper.GAME_STATE_RECORDING);
 			
 			// Return all characters to playing
-			for (Iterator i = data.getGameObjects().iterator(); i.hasNext();) {
-				GameObject go = (GameObject) i.next();
+			for (GameObject go : data.getGameObjects()) {
 				if (go.hasAttributeBlock(CharacterWrapper.PLAYER_BLOCK)) { // was in the game at some point
 					CharacterWrapper character = new CharacterWrapper(go);
 					if (character.isActive()) {
@@ -911,8 +910,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			killCharacterTradeFrame();
 		}
 		else if (RealmDirectInfoHolder.SPELL_AFFECT_TARGETS.equals(command)) {
-			for (Iterator i = info.getGameObjects().iterator(); i.hasNext();) {
-				GameObject spellObject = (GameObject) i.next();
+			for (GameObject spellObject : info.getGameObjects()) {
 				SpellWrapper spell = new SpellWrapper(spellObject);
 				spell.affectTargets(CombatFrame.getSingleton(), game, false);
 			}
@@ -921,8 +919,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			resetCombatFrame();
 		}
 		else if (RealmDirectInfoHolder.SPELL_AFFECT_TARGETS_EXPIRE_IMMEDIATE.equals(command)) {
-			for (Iterator i = info.getGameObjects().iterator(); i.hasNext();) {
-				GameObject spellObject = (GameObject) i.next();
+			for (GameObject spellObject : info.getGameObjects()) {
 				SpellWrapper spell = new SpellWrapper(spellObject);
 				TileLocation before = spell.getCurrentLocation();
 				spell.affectTargets(CombatFrame.getSingleton(), game, true); // this is STILL happening in a thread...
@@ -1381,7 +1378,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	 * objects for the current game
 	 */
 	public GamePool getGamePool() {
-		ArrayList keyVals = new ArrayList();
+		ArrayList<String> keyVals = new ArrayList<String>();
 		if (hostPrefs == null) { // this only happens when running the character
 									// frame standalone
 			hostPrefs = HostPrefWrapper.findHostPrefs(client.getGameData());
@@ -1577,7 +1574,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 					// 1) Find the dwelling or ghost gameObject
 					if (!hostPrefs.hasPref(Constants.EXP_NO_DWELLING_START)) {
 						String starting = dialog.getChosenStartName().toLowerCase();
-						ArrayList dwellingKeyVals = new ArrayList();
+						ArrayList<String> dwellingKeyVals = new ArrayList<String>();
 						if (starting.equals("ghost")) {
 							dwellingKeyVals.add("monster");
 							dwellingKeyVals.add("icon_type=ghost");
@@ -1594,7 +1591,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 								dwellingKeyVals.add("!" + Constants.BOARD_NUMBER);
 							}
 						}
-						Collection startingChits = pool.find(dwellingKeyVals);
+						Collection<GameObject> startingChits = pool.find(dwellingKeyVals);
 						if (startingChits != null && !startingChits.isEmpty()) {
 							GameObject startingChit = (GameObject) startingChits.iterator().next();
 							// 2) Get the heldBy (tile)
@@ -1959,9 +1956,8 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		boolean needSubmit = false;
 		characterList.clear();
 		CharacterWrapper interactiveCharacter = null;
-		ArrayList allFound = new ArrayList();
-		for (Iterator i = charactersAndMinions.iterator(); i.hasNext();) {
-			GameObject go = (GameObject) i.next();
+		ArrayList<String> allFound = new ArrayList<String>();
+		for (GameObject go : charactersAndMinions) {
 			CharacterWrapper character = new CharacterWrapper(go);
 			characterList.add(character);
 
@@ -2099,10 +2095,9 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			}
 		}
 		// Remove any leftover frames (Phantasms, or Familiar)
-		ArrayList leftover = new ArrayList(characterFrames.keySet());
+		ArrayList<String> leftover = new ArrayList<String>(characterFrames.keySet());
 		leftover.removeAll(allFound);
-		for (Iterator i = leftover.iterator(); i.hasNext();) {
-			String id = (String) i.next();
+		for (String id : leftover) {
 			characterTable.clearSelection();
 			CharacterFrame frame = (CharacterFrame) characterFrames.remove(id);
 			characterFrameOrder.remove(id);
@@ -2173,8 +2168,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	 * Brings the next recording frame to front, if any
 	 */
 	public void showNextRecordFrame() {
-		for (Iterator i = characterFrames.values().iterator(); i.hasNext();) {
-			CharacterFrame frame = (CharacterFrame) i.next();
+		for (CharacterFrame frame : characterFrames.values()) {
 			CharacterWrapper character = frame.getCharacter();
 			if (character.isDoRecord()) {
 				characterTable.clearSelection();
