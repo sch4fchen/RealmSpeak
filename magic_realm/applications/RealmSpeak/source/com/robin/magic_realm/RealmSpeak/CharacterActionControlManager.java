@@ -31,6 +31,7 @@ import com.robin.magic_realm.components.attribute.DayAction.ActionId;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class CharacterActionControlManager {
 	private boolean recordingARed = false;
@@ -616,8 +617,10 @@ public class CharacterActionControlManager {
 			doRecord(DayAction.ENH_PEER_ACTION.getCode(),tl,1);
 		}
 		else {
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
 			boolean enhancedPeer = getCharacter().hasActiveInventoryThisKeyAndValue(Constants.SPECIAL_ACTION,"ENHANCED_PEER");
 			boolean mtToMtPeer = tl!=null && tl.hasClearing() && tl.clearing.isMountain() && getCharacter().hasActiveInventoryThisKey(Constants.MOUNTAIN_PEER);
+			boolean flyingActivity = hostPrefs.hasPref(Constants.ADV_FLYING_ACTIVITIES) && character.getCurrentActionsCodes().contains(DayAction.FLY_ACTION.getCode());
 			if (mtToMtPeer && enhancedPeer) {
 				// The player has the Crystal Ball AND Ancient Telescope.  Now its necessary to see what restrictions there
 				// are for this peer.  If the player has done nothing but non-mt-to-mt peers, we need to know if he/she
@@ -651,7 +654,7 @@ public class CharacterActionControlManager {
 				getGameHandler().getInspector().getMap().markAllClearings(true);
 			}
 			
-			if (tl.hasClearing()) {
+			if (tl.hasClearing() && !flyingActivity) {
 				tl.clearing.setMarked(false); // exclude current clearing
 			}
 			
@@ -659,7 +662,10 @@ public class CharacterActionControlManager {
 				if (clearing.getParent().getGameObject().hasThisAttribute(Constants.SP_NO_PEER)) {
 					clearing.setMarked(false);
 				}
-				else if (!enhancedPeer && !mtToMtPeer) {
+				else if (!enhancedPeer && !mtToMtPeer && !flyingActivity) {
+					clearing.setMarkColor(Color.red);
+				}
+				else if (flyingActivity && !clearing.isMountain() && !clearing.isWoods()) {
 					clearing.setMarkColor(Color.red);
 				}
 			}
@@ -783,6 +789,7 @@ public class CharacterActionControlManager {
 		boolean canUnsend = getCharacter().isActive() && birdsong && !getCharacter().isDoRecord();
 		backAction.setEnabled(canBackspace || canUnsend);
 		timeToSend = finishAction.isEnabled();
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
 		
 		boolean inCave = getCharacter().isActive() && planned!=null && planned.isInClearing() && planned.clearing.isCave();
 		boolean pony = getCharacter().isActive() && getCharacter().isPonyActive();

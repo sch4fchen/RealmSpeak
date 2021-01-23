@@ -80,7 +80,7 @@ public class ExtraActionEditPanel extends AdvantageEditPanel {
 		for (String action:actionHash.keySet()) {
 			JRadioButton button = actionHash.get(action);
 			if (button.isSelected()) {
-				ArrayList list = new ArrayList();
+				ArrayList<String> list = new ArrayList<String>();
 				list.add(action);
 				setAttributeList(Constants.EXTRA_ACTIONS,list);
 				break;

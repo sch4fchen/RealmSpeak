@@ -17,7 +17,6 @@ A LITTLE HELP FROM FRIENDS: http://www.nand.it/mr/mr02.html
 0001563: Showing flip sides of tiles and counters in HTML
 0001645: Automatic HTML export
 0001447: Log breakdown by day
-0001232: Flying Activities: Optional Rule # 3: Flying Activities.
 0001750: Option to disable battling natives
 0001828: Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 0001827: Feature Request - First Edition Optional Rules - Hiring Characters (Solitaire): http://www.nand.it/mr/mr08.html

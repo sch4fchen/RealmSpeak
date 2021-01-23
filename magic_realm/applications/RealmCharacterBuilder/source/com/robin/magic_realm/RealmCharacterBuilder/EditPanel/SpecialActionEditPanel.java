@@ -67,7 +67,7 @@ public class SpecialActionEditPanel extends AdvantageEditPanel implements Action
 		main.add(Box.createVerticalGlue());
 		add(main,"Center");
 	}
-	private String getButtonAction(JRadioButton button) {
+	private static String getButtonAction(JRadioButton button) {
 		String text = button.getText();
 		return text.substring(6,text.indexOf(" - "));
 	}
@@ -77,7 +77,7 @@ public class SpecialActionEditPanel extends AdvantageEditPanel implements Action
 	}
 
 	protected void applyAdvantage() {
-		ArrayList list = new ArrayList();
+		ArrayList<String> list = new ArrayList<String>();
 		list.add(currentSpecialAction);
 		setAttributeList(Constants.SPECIAL_ACTION,list);
 	}

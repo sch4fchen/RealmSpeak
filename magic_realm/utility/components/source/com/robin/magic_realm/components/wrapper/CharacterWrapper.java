@@ -1264,31 +1264,39 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * 
 	 * @return				A Collection of actions for the given day
 	 */
-	public ArrayList getActions(String dayKey) {
+	public ArrayList<String> getActions(String dayKey) {
 		return getList(dayKey);
 	}
 	/**
 	 * @return		The total number of actions for the current day
 	 */
 	public int getCurrentActionCount() {
-		ArrayList c = getCurrentActions();
+		ArrayList<String> c = getCurrentActions();
 		return c==null?0:c.size();
 	}
 	/**
 	 * @return		A Collection of action strings optionally appended with a ClearingDetail.getShorthand()
 	 */
-	public ArrayList getCurrentActions() {
+	public ArrayList<String> getCurrentActions() {
 		return getCurrentActions(false);
+	}
+	
+	public ArrayList<String> getCurrentActionsCodes() {
+		ArrayList<String> actions = new ArrayList<String>();
+		for (String action : getCurrentActions(false)) {
+			actions.add(action.split("-")[0]);
+		}
+		return actions;
 	}
 	/**
 	 * @param excludeBlockedActions		If true, then no blocked actions will be included
 	 * 
 	 * @return		A Collection of action strings optionally appended with a ClearingDetail.getShorthand()
 	 */
-	public ArrayList getCurrentActions(boolean excludeBlockedActions) {
-		ArrayList c = getList(getCurrentDayKey());
+	public ArrayList<String> getCurrentActions(boolean excludeBlockedActions) {
+		ArrayList<String> c = getList(getCurrentDayKey());
 		if (c==null) {
-			c = new ArrayList();
+			c = new ArrayList<String>();
 		}
 		if (excludeBlockedActions) {
 			return filterBlocked(c);
@@ -2258,13 +2266,19 @@ public class CharacterWrapper extends GameObjectWrapper {
 			return false;
 		}
 		else if (id==ActionId.EnhPeer && !isMinion() && location!=null) {
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
+			boolean flyingActivity = hostPrefs.hasPref(Constants.ADV_FLYING_ACTIVITIES) && getCurrentActionsCodes().contains(DayAction.FLY_ACTION.getCode());
+			if (flyingActivity) {
+				return true;
+			}
 			boolean enhancedPeer = hasActiveInventoryThisKeyAndValue(Constants.SPECIAL_ACTION,"ENHANCED_PEER");
 			boolean mtToMtPeer = location!=null && location.hasClearing() && location.clearing.isMountain() && hasActiveInventoryThisKey(Constants.MOUNTAIN_PEER);
 			if (!enhancedPeer && !mtToMtPeer) {
 				return false;
 			}
+			return true;
 		}
-		else if (id==ActionId.RemSpell) {
+		if (id==ActionId.RemSpell) {
 			if (!hasActiveInventoryThisKeyAndValue(Constants.SPECIAL_ACTION,"REMOTE_SPELL")) {
 				return false;
 			}

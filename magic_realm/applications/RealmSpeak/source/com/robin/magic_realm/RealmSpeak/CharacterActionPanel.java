@@ -253,7 +253,7 @@ public class CharacterActionPanel extends CharacterFramePanel {
 						}
 						return null;
 					case KILLS:
-						ArrayList kills = getCharacter().getKills(dayKey);
+						ArrayList<GameObject> kills = getCharacter().getKills(dayKey);
 						return kills.isEmpty()?"-":String.valueOf(kills.size());
 				}
 			}

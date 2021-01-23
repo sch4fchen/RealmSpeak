@@ -926,6 +926,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.setTabHtmlDescription(EXTENDED_CHAR_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Extended Character Capabilities</font></body></html>");	
 		newOptionPane.addOption(EXTENDED_CHAR_RULES_TAB,new GameOption(Constants.ADV_SERIOUS_WOUNDS,"SERIOUS WOUNDS A.1 - Characters suffer 1D6 wounds instead of death when harm matches vulnerability.",false));
 		newOptionPane.addOption(EXTENDED_CHAR_RULES_TAB,new GameOption(Constants.ADV_AMBUSHES,"AMBUSHES A.2 - A successful HIDE roll on missile attacks while hidden, allow you to stay hidden.",false));
+		newOptionPane.addOption(EXTENDED_CHAR_RULES_TAB,new GameOption(Constants.ADV_FLYING_ACTIVITIES,"FLYING ACTIVITIES A.3 - Flying characters can inspect the tiles they fly over and do the Alert activity.",false));
 		newOptionPane.addOption(EXTENDED_CHAR_RULES_TAB,new GameOption(Constants.ADV_CACHING,"CACHING A.4 - Characters may record a CACHE action during their turn to create private caches of treasure and gold.",false));
 		newOptionPane.addOption(EXTENDED_CHAR_RULES_TAB,new GameOption(Constants.ADV_DROPPING,"DROPPING AND LOSING BELONGINGS A.5 - With this rule, characters have a choice of dropping an item in plain sight (where anyone can find it), or throwing it away (so it can only be found by searching).",false));
 		

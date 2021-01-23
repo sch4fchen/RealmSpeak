@@ -166,13 +166,13 @@ public class AttributeEditor extends AggressiveDialog {
 		updateEditFields();
 	}
 
-	private JTextField createNewEditBox() {
+	private static JTextField createNewEditBox() {
 		JTextField field = new JTextField();
 		ComponentTools.lockComponentSize(field, 300, 23);
 		return field;
 	}
 
-	private JTextField[] createEditBoxes(JTextField[] current, int newLength) {
+	private static JTextField[] createEditBoxes(JTextField[] current, int newLength) {
 		JTextField[] newField = new JTextField[newLength];
 		for (int i = 0; i < newLength; i++) {
 			if (i < current.length) {
@@ -260,7 +260,7 @@ public class AttributeEditor extends AggressiveDialog {
 		JFrame frame = new JFrame();
 		String key = "test";
 		OrderedHashtable block = new OrderedHashtable();
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		list.add("this is a really really long string that you want to see the beginning of");
 		list.add("is");
 		list.add("a");

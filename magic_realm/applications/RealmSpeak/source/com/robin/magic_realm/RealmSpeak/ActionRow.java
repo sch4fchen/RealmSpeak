@@ -328,7 +328,8 @@ public class ActionRow {
 	
 	public void landCharacterIfNeeded() {
 		ActionId id = CharacterWrapper.getIdForAction(action);
-		if (id!=ActionId.Fly) {
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
+		if (id!=ActionId.Fly && !(hostPrefs.hasPref(Constants.ADV_FLYING_ACTIVITIES) && (id==ActionId.Alert || id==ActionId.EnhPeer))) {
 			// Make sure character is on the ground if not flying
 			if (character.land(gameHandler.getMainFrame())) {
 				// Check for blocking immediately
@@ -1484,10 +1485,9 @@ public class ActionRow {
 			follower.addCurrentActionValid(true);
 		}
 		// Player chooses from all inactive weapons and spell chits
-		ArrayList alertChoices = new ArrayList();
-		Collection c = character.getActiveChits();
-		for (Iterator i=c.iterator();i.hasNext();) {
-			CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+		ArrayList<ChitComponent> alertChoices = new ArrayList<ChitComponent>();
+		Collection<CharacterActionChitComponent> c = character.getActiveChits();
+		for (CharacterActionChitComponent chit : c) {
 			if (chit.isMagic() || chit.isFightAlert()) {
 				alertChoices.add(chit);
 			}
@@ -1499,8 +1499,7 @@ public class ActionRow {
 		if (alertChoices.size()>0) {
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Alert which?",true);
 			int keyN = 0;
-			for (Iterator i=alertChoices.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : alertChoices) {
 				if (rc.isWeapon()) {
 					// Add both sides of weapon, if any
 					weapon = (WeaponChitComponent)rc;

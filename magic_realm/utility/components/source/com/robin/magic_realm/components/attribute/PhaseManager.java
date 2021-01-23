@@ -31,6 +31,7 @@ import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.DayAction.ActionId;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 /**
@@ -304,8 +305,15 @@ public class PhaseManager {
 	}
 	private boolean phaseRequiresObject(String phase) {
 		ActionId action = CharacterWrapper.getIdForAction(phase);
-		if (action==ActionId.EnhPeer && !character.hasActiveInventoryThisKeyAndValue(Constants.SPECIAL_ACTION,"ENHANCED_PEER")) {
-			return true;
+		if (action==ActionId.EnhPeer) {
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameObject().getGameData());
+			boolean flyingActivity = hostPrefs.hasPref(Constants.ADV_FLYING_ACTIVITIES) && character.getCurrentActionsCodes().contains(DayAction.FLY_ACTION.getCode());
+			if (flyingActivity) {
+				return false;
+			}
+			if (!character.hasActiveInventoryThisKeyAndValue(Constants.SPECIAL_ACTION,"ENHANCED_PEER")) {
+				return true;
+			}
 		}
 		return false;
 	}
@@ -486,7 +494,7 @@ public class PhaseManager {
 		ArrayList list = getRequiredObjects(action);
 		return list==null?0:list.size();
 	}
-	private String simplifyAction(String action) {
+	private static String simplifyAction(String action) {
 		DayAction da = DayAction.getDayAction(CharacterWrapper.getIdForAction(action));
 		String simple = da.getCode();
 		if (action.indexOf('!')==1) {
@@ -524,7 +532,7 @@ public class PhaseManager {
 			if (parent!=null) {
 				// Sort the strings from the gameobjects
 				ArrayList<String> strings = new ArrayList<String>();
-				ArrayList<GameObject> requiredObjects = new ArrayList<GameObject>();
+				ArrayList<GameObject> requiredObjects = new ArrayList<>();
 				Collection clearingObjects = character.getCurrentClearingExtraActionObjects();
 				refreshInventoryLists();
 				for (Iterator i=list.iterator();i.hasNext();) {
@@ -541,7 +549,7 @@ public class PhaseManager {
 				if (requiredObjects.size()>0) {
 					// There are required items here!
 					GameObject toUse = null;
-					ArrayList<GameObject> needValidate = new ArrayList<GameObject>();
+					ArrayList<GameObject> needValidate = new ArrayList<>();
 					for (GameObject go:requiredObjects) {
 						if (character.getGameObject().equals(go) || active.contains(go) || clearingObjects.contains(go)) {
 							return true;
