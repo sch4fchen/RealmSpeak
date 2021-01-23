@@ -304,11 +304,11 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 			completedQuestsPanel.removeAll();
 			for(Quest quest:characterQuests) {
 				if (quest.getState().isFinished()) {
-					if  (quest.getInt(QuestConstants.VP_REWARD)>0) {
+					if  (quest.getInt(QuestConstants.VP_REWARD)>0 || getHostPrefs().isUsingGuildQuests()) {
 						completedQuestsPanel.addObject(quest.getGameObject());
 					}
 				}
-				else if (!quest.isAllPlay()) {
+				else if (!quest.isAllPlay() || getHostPrefs().isUsingGuildQuests()) {
 					questHandPanel.addObject(quest.getGameObject());
 					slots--;
 				}
