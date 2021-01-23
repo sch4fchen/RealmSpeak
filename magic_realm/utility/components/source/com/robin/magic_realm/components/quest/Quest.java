@@ -243,10 +243,6 @@ public class Quest extends GameObjectWrapper {
 		return getBoolean(QuestConstants.QTR_SECRET_QUEST);
 	}
 
-	public boolean isDiscardable() {
-		return !isAllPlay() && getState() == QuestState.Assigned;
-	}
-
 	public boolean usesMinorCharacter(QuestMinorCharacter mc) {
 		for (QuestStep step : steps) {
 			if (step.usesMinorCharacter(mc)) {

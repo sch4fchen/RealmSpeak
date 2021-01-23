@@ -286,7 +286,8 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 			boolean characterIsAtDwelling = getCharacter().getCurrentLocation().isAtDwelling(true);
 			boolean characterIsAtGuild = getCharacter().getCurrentLocation().isAtGuild();
 			boolean isBirdsong = getGameHandler().getGame().isRecording();
-			discardQuestButton.setEnabled(canDiscardQuests && characterIsAtDwelling && isBirdsong && selQuest!=null && selQuest.isDiscardable());
+			discardQuestButton.setEnabled(canDiscardQuests && isBirdsong && selQuest!=null && selQuest.getState() == QuestState.Assigned &&
+					((getHostPrefs().isUsingQuestCards() && characterIsAtDwelling && !selQuest.isAllPlay()) || (getHostPrefs().isUsingGuildQuests() && characterIsAtGuild)));
 
 			boolean hasAvailableSlots = (getCharacter().getQuestSlotCount() - getCharacter().getUnfinishedNotAllPlayQuestCount()) > 0;
 			drawQuestsButton.setEnabled(isBirdsong && hasAvailableSlots && getCharacter().isCharacter() &&
