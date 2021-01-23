@@ -111,10 +111,9 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 	 * 
 	 * @return				A list of ALL breakable spells (currently Combat,Day,Permanent) that are in the clearing.
 	 */
-	public ArrayList getAllSpellsInClearing(TileLocation location,boolean needForCancel) {
-		ArrayList ret = new ArrayList();
-		for (Iterator i=getSpells(null).iterator();i.hasNext();) {
-			SpellWrapper spell = (SpellWrapper)i.next();
+	public ArrayList<SpellWrapper> getAllSpellsInClearing(TileLocation location,boolean needForCancel) {
+		ArrayList<SpellWrapper> ret = new ArrayList<SpellWrapper>();
+		for (SpellWrapper spell : getSpells(null)) {
 			if (!needForCancel || !spell.isNoCancelSpell()) {
 				TileLocation test = spell.getCurrentLocation();
 				if (test!=null) { // test might be null if the spell is targeting a treasure that hasn't yet been seen
@@ -131,7 +130,7 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 	}
 	private ArrayList<SpellWrapper> getSpells(String duration) {
 		GameData data = getGameObject().getGameData();
-		ArrayList ids = new ArrayList();
+		ArrayList<String> ids = new ArrayList<String>();
 		if (duration==null) {
 			ids.addAll(getList(PERMANENT_SPELLS));
 			ids.addAll(getList(DAY_SPELLS));
@@ -143,8 +142,7 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 			ids.addAll(getList(duration));
 		}
 		ArrayList<SpellWrapper> ret = new ArrayList<SpellWrapper>();
-		for (Iterator i=ids.iterator();i.hasNext();) {
-			String id = (String)i.next();
+		for (String id : ids) {
 			GameObject go = data.getGameObject(Long.valueOf(id));
 			ret.add(new SpellWrapper(go));
 		}
@@ -214,7 +212,7 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 	 * Calculates spell locations, and figures out the colors (infinite sources only here)
 	 */
 	public void energizePermanentSpells(JFrame frame,GameWrapper game) {
-		HashLists conflicts = new HashLists();
+		HashLists<GameObject, SpellWrapper> conflicts = new HashLists<GameObject, SpellWrapper>();
 		for (SpellWrapper spell:getSpells(PERMANENT_SPELLS)) {
 			if (spell.isInert()) { // no point energizing non-inert spells!
 				TileLocation loc = spell.getCurrentLocation();
@@ -256,10 +254,9 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 		}
 		
 		// Resolve conflicts per target (if any)
-		for (Iterator i=conflicts.keySet().iterator();i.hasNext();) {
-			GameObject target = (GameObject)i.next();
+		for (GameObject target : conflicts.keySet()) {
 			SpellWrapper strongest = null;
-			ArrayList list = conflicts.getList(target);
+			ArrayList<SpellWrapper> list = conflicts.getList(target);
 			if (list.size()==1) {
 				// No conflict!
 				strongest = (SpellWrapper)list.get(0);
@@ -268,8 +265,7 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 				// Multiple spells affecting target - find the strongest one
 				ArrayList<SpellWrapper> strongGroup = new ArrayList<SpellWrapper>();
 				int bestStrength = 0;
-				for (Iterator n=list.iterator();n.hasNext();) {
-					SpellWrapper spell = (SpellWrapper)n.next();
+				for (SpellWrapper spell : list) {
 					int strength = spell.getConflictStrength();
 					if (strength > bestStrength) {
 						strongGroup.clear();
@@ -315,9 +311,9 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 			}
 		}
 	}
-	private boolean spellCanEnergize(GameWrapper game,TileLocation loc,SpellWrapper spell,boolean includeCalendar) {
+	private static boolean spellCanEnergize(GameWrapper game,TileLocation loc,SpellWrapper spell,boolean includeCalendar) {
 		RealmCalendar cal = RealmCalendar.getCalendar(game.getGameObject().getGameData());
-		ArrayList infiniteSources = new ArrayList();
+		ArrayList<ColorMagic> infiniteSources = new ArrayList<ColorMagic>();
 		if (loc.isInClearing()) {
 			infiniteSources.addAll(loc.clearing.getAllSourcesOfColor(true));
 		}
@@ -415,9 +411,9 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 
 	public void removeSpell(SpellWrapper spell) {
 		String duration = spell.getGameObject().getThisAttribute("duration");
-		ArrayList list = getList(duration);
+		ArrayList<String> list = getList(duration);
 		if (list!=null && list.contains(spell.getGameObject().getStringId())) {
-			list = new ArrayList(list);
+			list = new ArrayList<String>(list);
 			list.remove(spell.getGameObject().getStringId());
 			setList(duration,list);
 		}
@@ -469,7 +465,7 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 	public static SpellMasterWrapper getSpellMaster(GameData data) {
 		if (MASTER_ID==null) {
 			GamePool pool = new GamePool(data.getGameObjects());
-			ArrayList list = pool.find(SPELL_MASTER_KEY);
+			ArrayList<GameObject> list = pool.find(SPELL_MASTER_KEY);
 			GameObject gm = null;
 			if (list!=null && list.size()==1) {
 				gm = (GameObject)list.iterator().next();

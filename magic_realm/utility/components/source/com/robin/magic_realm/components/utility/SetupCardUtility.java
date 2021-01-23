@@ -397,7 +397,7 @@ public class SetupCardUtility {
 				go = createBlob(mc,data);
 			}
 			else if ("zombie1".equals(iconType)) {
-				if (noUndeadAllowed) break; // yes, break out of the loop
+				if (noUndeadAllowed) break;
 				go = RaiseDead.createUndead(mc,data);
 				// color these undead a little differently to distinguish them from others
 				go.setAttribute("light","chit_color","gray");
