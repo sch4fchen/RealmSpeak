@@ -1,6 +1,7 @@
 Version 1.1.3.9 - Changes since 1.1.3.8
 QUEST UPDATE:
 # Support for Guild Quests Mode
+# Info when drawing from empty quest deck
 # QuestRewardGuild: Option to increase and decrease guild level
 NEW FEATURES:
 # Minotaur can block hits, shield can be destroyed
