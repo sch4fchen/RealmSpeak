@@ -160,12 +160,13 @@ public class QuestDeck extends GameObjectWrapper {
 		int cardsDrawn = 0;
 		int n = character.getQuestSlotCount() - character.getUnfinishedNotAllPlayQuestCount();
 		if (getListCount(QUEST_CARD_LIST)==0) reshuffle();
+		if (getListCount(QUEST_CARD_LIST)==0) JOptionPane.showMessageDialog(frame,"There are no available quests to draw.","No available quests",JOptionPane.INFORMATION_MESSAGE);
 		boolean reshuffled = false;
 		while(n>0 && getCardCount()>0) {
 			Quest quest = drawCard(character);
 			if (quest==null) {
 				if (reshuffled) {
-					JOptionPane.showMessageDialog(frame,"There are no more available quests to draw.","No available quests",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(frame,"There are not enough available quests to draw.","Not enough available quests",JOptionPane.INFORMATION_MESSAGE);
 					break;
 				}
 				reshuffle();
