@@ -123,7 +123,7 @@ public class QuestDeck extends GameObjectWrapper {
 	/**
 	 * This will select a random quest card, remove it from the "deck", and add it to the current GameData collection.
 	 */
-	private Quest drawCard() {
+	private Quest drawCard(CharacterWrapper character) {
 		ArrayList list = getList(QUEST_CARD_LIST);
 		if (list!=null && list.size()>0) {
 			//int r = RandomNumber.getRandom(list.size());
@@ -138,6 +138,15 @@ public class QuestDeck extends GameObjectWrapper {
 			// If this is the last card, then "reshuffle" with discards
 			if (getListCount(QUEST_CARD_LIST)==0) reshuffle();
 			
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
+			if (hostPrefs.isUsingGuildQuests()) {
+				String guildName = character.getCurrentLocation().clearing.getGuild().getGameObject().getThisAttribute("guild");
+				if (!card.getGuild().matches(guildName)) {
+					discardCard(card);
+					return null;
+				}
+			}
+			
 			if (card.getBoolean(QUEST_CARD_TEMPLATE)) {
 				// Since this is just a card template, need to make a physical copy
 				card = card.copyQuestToGameData(getGameData());
@@ -147,19 +156,21 @@ public class QuestDeck extends GameObjectWrapper {
 		return null;
 	}
 	public int drawCards(JFrame frame,CharacterWrapper character) {
-		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 		int cardsDrawn = 0;
 		int n = character.getQuestSlotCount() - character.getUnfinishedNotAllPlayQuestCount();
 		if (getListCount(QUEST_CARD_LIST)==0) reshuffle();
+		boolean reshuffled = false;
 		while(n>0 && getCardCount()>0) {
-			Quest quest = drawCard();
-			if (quest==null) break; // shouldn't happen, but just in case!
-			if (hostPrefs.isUsingGuildQuests()) {
-				String guildName = character.getCurrentLocation().clearing.getGuild().getGameObject().getThisAttribute("guild");
-				if (!quest.getGuild().matches(guildName)) break;
+			Quest quest = drawCard(character);
+			if (quest==null) {
+				if (reshuffled) {
+					break;
+				}
+				reshuffle();
+				reshuffled = true;
+				continue;
 			}
-				
-			quest.setState(QuestState.Assigned, character.getCurrentDayKey(), character); // indicates when the quest was first assigned
+			quest.setState(QuestState.Assigned, character.getCurrentDayKey(), character);
 			character.addQuest(frame,quest);
 			cardsDrawn++;
 			n--;
