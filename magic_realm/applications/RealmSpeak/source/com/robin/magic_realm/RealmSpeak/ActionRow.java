@@ -1958,7 +1958,7 @@ public class ActionRow {
 		flyStrengthChits = strongEnough;
 		
 		// Make sure intended target tile for flying is possible (might not be if a previously recorded move is invalid!)
-		ArrayList allAvailableTiles = new ArrayList(current.tile.getAllAdjacentTiles());
+		ArrayList<TileComponent> allAvailableTiles = new ArrayList<>(current.tile.getAllAdjacentTiles());
 		allAvailableTiles.add(current.tile);
 		if (!allAvailableTiles.contains(location.tile)) {
 			result = "Target tile too far away.";

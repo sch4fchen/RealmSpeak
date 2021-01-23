@@ -7,7 +7,7 @@ Expansion 1: More Ambushes + Ability: "Advanced_Ambush"
 0001822: Feature Request: First Edition Optional Rule - Steel Against Magic: (+Disadvantage) A character cannot play a MAGIC counter if he has any weapon counter except a staff activated.
 
 Expansion 1: Spells: Magic Shield, Sleep, Fear, Wall of Force, Duel, Spider web, Rocks Glow, Mystic boots, Flame sword, Fighting hands, Magic mirror, Lucky blow, Fire trap
-Expansion 1: Items: Ring of the mage?, Elf finger?, Fools gold, Magic patch, Color capture gem, Burning oil, Magic meat, Needful thing, Sorceror's eye, Cursed bell, Mysterious scroll, Ointment of slip, Archers glove, Hound, Beast away, Book of war strategy, Twisted book, Book of the druids, Sorcereror's tome 
+Expansion 1: Items: Ring of the mage, Fools gold, Magic patch, Color capture gem, Burning oil, Magic meat, Needful thing, Sorceror's eye, Cursed bell, Mysterious scroll, Ointment of slip, Archers glove, Hound, Beast away, Book of war strategy, Twisted book, Book of the druids, Sorcereror's tome 
 Expansion 1: Travelers: Pathfinder, Doppleganger, Necromancer, Gate Master, Soothsayer
 Expansion 1: Graveyard (=Tomb?)
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php

@@ -3,6 +3,7 @@ QUEST UPDATE:
 # Support for Guild Quests Mode
 # Info when drawing from empty quest deck
 # QuestRewardGuild: Option to increase and decrease guild level
+# QuestRewardTeleport: Choose clearing in same tile 
 NEW FEATURES:
 # Minotaur can block hits, shield can be destroyed
 # Optional Rule: Monster roll per Magic Realm set

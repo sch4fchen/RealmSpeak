@@ -43,6 +43,7 @@ public class SpellUtility {
 		ChooseTileTwo,
 		RandomClearing,
 		KnownGate,
+		ClearingInSameTile,
 	}
 	
 	public static void heal(CharacterWrapper character) {
@@ -132,6 +133,13 @@ public class SpellUtility {
 					else {
 						JOptionPane.showMessageDialog(frame,"The "+character.getGameObject().getName()+" has not discovered any gates!  Spell fails.",reason,JOptionPane.WARNING_MESSAGE);
 						return;
+					}
+					break;
+				case ClearingInSameTile:
+					CenteredMapView.getSingleton().setMarkClearingAlertText("Teleport "+character.getGameObject().getName()+" to which clearing?");
+					CenteredMapView.getSingleton().markAllClearings(false);
+					for (ClearingDetail clearing : planned.tile.getClearings()) {
+						clearing.setMarked(true);
 					}
 					break;
 			}

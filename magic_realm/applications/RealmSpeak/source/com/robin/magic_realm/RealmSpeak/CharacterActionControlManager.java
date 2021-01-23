@@ -26,6 +26,7 @@ import javax.swing.*;
 
 import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.attribute.DayAction.ActionId;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
@@ -650,6 +651,20 @@ public class CharacterActionControlManager {
 			if (mtToMtPeer) {
 				getGameHandler().getInspector().getMap().markClearings("mountain",true);
 			}
+			else if (flyingActivity) {
+				getGameHandler().getInspector().getMap().markAllClearings(false);
+				Collection<TileComponent> adjTiles = tl.tile.getAllAdjacentTiles();
+				ArrayList<TileComponent> tiles = new ArrayList<>();
+				tiles.add(tl.tile);
+				tiles.addAll(adjTiles);
+				for (TileComponent tile : tiles) {
+					for (ClearingDetail clearing : tile.getClearings()) {
+						if (clearing.isMountain() || clearing.isWoods()) {
+							clearing.setMarked(true);
+						}
+					}
+				}
+			}
 			else {
 				getGameHandler().getInspector().getMap().markAllClearings(true);
 			}
@@ -663,9 +678,6 @@ public class CharacterActionControlManager {
 					clearing.setMarked(false);
 				}
 				else if (!enhancedPeer && !mtToMtPeer && !flyingActivity) {
-					clearing.setMarkColor(Color.red);
-				}
-				else if (flyingActivity && !clearing.isMountain() && !clearing.isWoods()) {
 					clearing.setMarkColor(Color.red);
 				}
 			}

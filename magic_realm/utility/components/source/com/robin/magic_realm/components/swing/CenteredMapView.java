@@ -629,10 +629,8 @@ public class CenteredMapView extends JComponent {
 		return list;
 	}
 	public void markAllClearings(boolean setMark) {
-		for (Iterator i=mapGrid.values().iterator();i.hasNext();) {
-			TileComponent tile = (TileComponent)i.next();
-			for (Iterator n=tile.getClearings().iterator();n.hasNext();) {
-				ClearingDetail clearing = (ClearingDetail)n.next();
+		for (TileComponent tile : mapGrid.values()) {
+			for (ClearingDetail clearing : tile.getClearings()) {
 				if (clearing.isMarked()!=setMark) {
 					clearing.setMarked(setMark);
 				}
@@ -642,9 +640,8 @@ public class CenteredMapView extends JComponent {
 		repaint();
 	}
 	public void markAllMapEdges(boolean setMark) {
-		ArrayList<ClearingDetail> allMapEdges = new ArrayList<ClearingDetail>();
-		for (Iterator i=mapGrid.values().iterator();i.hasNext();) {
-			TileComponent tile = (TileComponent)i.next();
+		ArrayList<ClearingDetail> allMapEdges = new ArrayList<>();
+		for (TileComponent tile : mapGrid.values()) {
 			allMapEdges.addAll(tile.getMapEdges());
 		}
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
@@ -666,20 +663,17 @@ public class CenteredMapView extends JComponent {
 		}
 	}
 	public void markMapEdges(ClearingDetail clearing,boolean setMark) {
-		for (Iterator i=clearing.getConnectedPaths().iterator();i.hasNext();) {
-			PathDetail path = (PathDetail)i.next();
+		for (PathDetail path : clearing.getConnectedPaths()) {
 			if (path.connectsToMapEdge()) {
 				path.getEdgeAsClearing().setMarked(setMark);
 			}
 		}
 	}
 	public void markClearings(String clearingType,boolean setMark) {
-		for (Iterator i=mapGrid.values().iterator();i.hasNext();) {
-			TileComponent tile = (TileComponent)i.next();
+		for (TileComponent tile : mapGrid.values()) {
 			ArrayList<ClearingDetail> c = tile.getClearings(clearingType);
 			if (!c.isEmpty()) {
-				for (Iterator n=c.iterator();n.hasNext();) {
-					ClearingDetail clearing = (ClearingDetail)n.next();
+				for (ClearingDetail clearing : c) {
 					clearing.setMarked(setMark);
 				}
 //				tile.doRepaint(); // KEEP FOR NOW
@@ -692,8 +686,7 @@ public class CenteredMapView extends JComponent {
 		markClearings(clearings,setMark,null);
 	}
 	public void markClearings(ArrayList<ClearingDetail> clearings,boolean setMark,Color color) {
-		for (Iterator i=clearings.iterator();i.hasNext();) {
-			ClearingDetail clearing = (ClearingDetail)i.next();
+		for (ClearingDetail clearing : clearings) {
 			clearing.setMarked(setMark);
 			if (color!=null) {
 				clearing.setMarkColor(color);
