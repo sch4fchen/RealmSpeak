@@ -6,6 +6,7 @@ QUEST UPDATE:
 NEW FEATURES:
 # Minotaur can block hits, shield can be destroyed
 # Optional Rule: Monster roll per Magic Realm set
+# Optional Rule: 1st edtion killer caves
 BUGS/ISSUES:
 # Adapt clearings and paths for all alternative tiles
 

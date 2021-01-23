@@ -481,6 +481,9 @@ public class Constants {
 	public static final String TE_EXTENDED_GRUDGES = "ExtendedGrudges";
 	public static final String TE_BENEVOLENT_SPELLS = "BenevolentSpells";
 	
+	// 1st edition rules
+	public static final String FE_KILLER_CAVES = "KillerCaves";
+	
 	// My House Rules
 	public static final String HOUSE1_DWARF_ACTION = "DwarfActions";
 	public static final String HOUSE1_NO_NEGATIVE_POINTS = "NoNegPoints";

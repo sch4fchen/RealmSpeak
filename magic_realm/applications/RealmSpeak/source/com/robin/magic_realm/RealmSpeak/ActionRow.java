@@ -692,8 +692,7 @@ public class ActionRow {
 			
 			// Find all clearings that match the number
 			ArrayList<ClearingDetail> clearings = new ArrayList<ClearingDetail>();
-			for (Iterator i=current.clearing.getConnectedPaths().iterator();i.hasNext();) {
-				PathDetail path = (PathDetail)i.next();
+			for (PathDetail path : current.clearing.getConnectedPaths()) {
 				ClearingDetail clearing = path.findConnection(current.clearing);
 				if (clearing!=null) {
 					if (clearing.getNum()==c) {
@@ -743,7 +742,7 @@ public class ActionRow {
 			boolean overridePath = false;
 			
 			if (character.canWalkWoods(current.tile) || (current.isTileOnly() && !current.isFlying())) {
-				ArrayList validClearings = new ArrayList();
+				ArrayList<ClearingDetail> validClearings = new ArrayList<ClearingDetail>();
 				if (current.clearing!=null) {
 					validClearings.addAll(current.clearing.getParent().getClearings());
 				}
@@ -878,9 +877,18 @@ public class ActionRow {
 						character.updatePathKnowledge(reverse);
 					}
 					
+					HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
+					if (hostPrefs.hasPref(Constants.FE_KILLER_CAVES) && location.clearing.isCave()) {
+						for (GameObject item : character.getInventory()) {
+							if (RealmComponent.getRealmComponent(item).isHorse()) {
+								TreasureUtility.doDeactivate(gameHandler.getMainFrame(), character, item);
+								item.detach();
+							}
+						}
+					}
+					
 					// Move the action followers too (FIXME What happens to followers following a character leaving a map?)
-					for (Iterator i=actionFollowers.iterator();i.hasNext();) {
-						CharacterWrapper follower = (CharacterWrapper)i.next();
+					for (CharacterWrapper follower :  actionFollowers) {
 						if (!overridePath || path!=null) {
 							if (follower.canFollow()) {
 								follower.moveToLocation(gameHandler.getMainFrame(),location);
@@ -1202,11 +1210,11 @@ public class ActionRow {
 			if (trader.isNative()) {
 				// Native Leader - trade with their dwelling's hold
 				GameObject holder = SetupCardUtility.getDenizenHolder(trader.getGameObject());
-				hold = new ArrayList(holder.getHold());
+				hold = new ArrayList<GameObject>(holder.getHold());
 			}
 			else {
 				// Visitor or Guild - trade directly with their hold
-				hold = new ArrayList();
+				hold = new ArrayList<GameObject>();
 				for(Object o:trader.getGameObject().getHold()) {
 					GameObject go = (GameObject)o;
 					RealmComponent rc = RealmComponent.getRealmComponent(go);
@@ -1233,8 +1241,7 @@ public class ActionRow {
 			// Cool - now do trading
 			
 			// First, make sure all treasures are marked as "seen"
-			for (Iterator i=hold.iterator();i.hasNext();) {
-				GameObject item = (GameObject)i.next();
+			for (GameObject item : hold) {
 				if (!item.hasThisAttribute(Constants.TREASURE_SEEN)) {
 					item.setThisAttribute(Constants.TREASURE_SEEN);
 				}
@@ -1284,7 +1291,7 @@ public class ActionRow {
 			tradeDialog.setTradeObjects(hold);
 			tradeDialog.setVisible(true);
 			
-			Collection selComponents = tradeDialog.getSelectedRealmComponents();
+			Collection<RealmComponent> selComponents = tradeDialog.getSelectedRealmComponents();
 			// Cancel when buying ends action
 			if (selComponents == null && TRADE_BUY.equals(tradeAction)) {
 				completed = true;
@@ -1341,8 +1348,7 @@ public class ActionRow {
 				else {
 					// Log what is being sold
 					StringBufferedList sb = new StringBufferedList();
-					for(Iterator i=selComponents.iterator();i.hasNext();) {
-						RealmComponent rc = (RealmComponent)i.next();
+					for(RealmComponent rc : selComponents) {
 						sb.append(rc.getGameObject().getName());
 					}
 					sb.countIdenticalItems();
@@ -1419,8 +1425,7 @@ public class ActionRow {
 			}
 		}
 		// Make sure followers get a rest too!
-		for (Iterator i=character.getActionFollowers().iterator();i.hasNext();) {
-			CharacterWrapper follower = (CharacterWrapper)i.next();
+		for (CharacterWrapper follower : character.getActionFollowers()) {
 			if (!follower.hasCurse(Constants.ILL_HEALTH)
 					&& !follower.isTransmorphed()
 					&& !follower.getRestableChits().isEmpty()) {
@@ -1473,8 +1478,7 @@ public class ActionRow {
 	}
 	private void doAlertAction() {
 		// Make sure followers get an alert too!
-		for (Iterator i=character.getActionFollowers().iterator();i.hasNext();) {
-			CharacterWrapper follower = (CharacterWrapper)i.next();
+		for (CharacterWrapper follower : character.getActionFollowers()) {
 			follower.addCurrentAction(DayAction.ALERT_ACTION.getCode());
 			follower.addCurrentActionTypeCode(actionTypeCode);
 			follower.addCurrentActionValid(true);
@@ -1599,17 +1603,16 @@ public class ActionRow {
 		// HIRE same as TRADE, only the merchandise is the natives themselves
 		// Term of hire is fourteen days, or until the character is killed
 		TileLocation tl = character.getCurrentLocation();
-		ArrayList hireables = ClearingUtility.getAllHireables(character,tl.clearing);
-		HashLists hash = RealmUtility.hashNativesByGroupName(hireables);
+		ArrayList<RealmComponent> hireables = ClearingUtility.getAllHireables(character,tl.clearing);
+		HashLists<String, RealmComponent> hash = RealmUtility.hashNativesByGroupName(hireables);
 		if (hash.size()>0) {
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Hire which?",true);
 			chooser.setButtonTextPosition(SwingConstants.CENTER,SwingConstants.BOTTOM);
 			//chooser.setForceColumns(1);
 			chooser.setFillByRow(false);
 			chooser.setSortBiggestFirst(true);
-			for (Iterator i=hash.keySet().iterator();i.hasNext();) {
-				String groupName = (String)i.next();
-				ArrayList list = hash.getList(groupName);
+			for (String groupName : hash.keySet()) {
+				ArrayList<RealmComponent> list = hash.getList(groupName);
 				Collections.sort(list,new Comparator() {
 					public int compare(Object o1,Object o2) {
 						RealmComponent n1 = (RealmComponent)o1;
@@ -1695,7 +1698,7 @@ public class ActionRow {
 					result = "Cancelled Hire";
 					return;
 				}
-				ArrayList list = new ArrayList(chooser.getSelectedComponents());
+				ArrayList<RealmComponent> list = new ArrayList<RealmComponent>(chooser.getSelectedComponents());
 				ChitComponent last = (ChitComponent)list.get(list.size()-1);
 				
 				// Now we have the group to hire.  Need to do the Meeting table...

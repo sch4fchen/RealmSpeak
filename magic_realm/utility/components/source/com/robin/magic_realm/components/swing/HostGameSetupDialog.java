@@ -44,6 +44,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	private static final String EXPANDING_REALM_TAB = "Expanded Realm";
 	private static final String REVISED_RULES_TAB = "Revised";
 	private static final String OPTIONAL_CHAR_RULES_TAB = "Characters";
+	private static final String FIRST_EDITION_RULES_TAB = "First Edition";
 	private static final String HOUSE1_RULES_TAB = "Robin's House";
 	private static final String HOUSE2_RULES_TAB = "Other House";
 	private static final String HOUSE3_RULES_TAB = "More House";
@@ -979,6 +980,9 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.setTabHtmlDescription(REVISED_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Revised Rules</font></body></html>");
 		newOptionPane.addOption(REVISED_RULES_TAB,new GameOption(Constants.REV_MISSILE,"Revised Missile Table - Use the Revised Optional Missile Table for all missile attacks.",false,exclusiveMissileRules,null));
 		newOptionPane.addOption(REVISED_RULES_TAB,new GameOption(Constants.REV_DAMPEN_FAST_SPELLS,"Hamblen's Kludge Adjustment - Drop one sharpness star from Attack spells (ie., Fiery Blast) cast at speed zero.",false));
+		
+		newOptionPane.setTabHtmlDescription(FIRST_EDITION_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">First Edition Rules</font></body></html>");
+		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_KILLER_CAVES,"Killer Caves - Horses are killed when they enter a cave clearing.", false));
 		
 		newOptionPane.setTabHtmlDescription(HOUSE1_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Robin's House Rules</font></body></html>");
 		newOptionPane.addOption(HOUSE1_RULES_TAB,new GameOption(Constants.HOUSE1_DWARF_ACTION,"Productive Dwarf - (This rule replaces section 1.1 of the advantage section for the Dwarf)  The Dwarf must spend one additional consecutive move phase to enter any non-cave clearing, but otherwise receives the normal number of phases.  (Special thanks to Daniel Farrow for this alternative rule which is much more workable than the one I was using!)",false));

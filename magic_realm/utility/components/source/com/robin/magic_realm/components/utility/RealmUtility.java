@@ -217,10 +217,9 @@ public class RealmUtility {
 	/**
 	 * @param c			A Collection of GameObjects that have already been identified as natives
 	 */
-	public static HashLists hashNativesByGroupName(Collection c) {
-		HashLists hash = new HashLists();
-		for (Iterator i=c.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+	public static HashLists<String, RealmComponent> hashNativesByGroupName(Collection<RealmComponent> c) {
+		HashLists<String, RealmComponent> hash = new HashLists<String, RealmComponent>();
+		for (RealmComponent rc : c) {
 			hash.put(getGroupName(rc),rc);
 		}
 		return hash;

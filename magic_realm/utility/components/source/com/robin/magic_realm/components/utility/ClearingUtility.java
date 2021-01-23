@@ -505,11 +505,10 @@ public class ClearingUtility {
 	/**
 	 * @return		A collection of unhired natives in the clearing
 	 */
-	public static ArrayList getAllHireables(CharacterWrapper character,ClearingDetail clearing) {
-		ArrayList hireables = new ArrayList();
-		Collection c = clearing.getClearingComponents();
-		for (Iterator i=c.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+	public static ArrayList<RealmComponent> getAllHireables(CharacterWrapper character,ClearingDetail clearing) {
+		ArrayList<RealmComponent> hireables = new ArrayList();
+		Collection<RealmComponent> c = clearing.getClearingComponents();
+		for (RealmComponent rc : c) {
 			if (rc.isNative() && rc.getOwnerId()==null) {
 				hireables.add(rc);
 			}
@@ -521,8 +520,7 @@ public class ClearingUtility {
 			}
 		}
 		// Include all of the character's current hirelings (for "rehire")
-		for (Iterator i=character.getAllHirelings().iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : character.getAllHirelings()) {
 			if (rc.isCompanion()) continue; // companions cannot be "rehired"
 			TileLocation tl = getTileLocation(rc);
 			if (tl.clearing.equals(clearing)) {
@@ -532,12 +530,11 @@ public class ClearingUtility {
 		return hireables;
 	}
 
-	public static ArrayList getGuidesInClearing(TileLocation location) {
-		ArrayList list = new ArrayList();
+	public static ArrayList<RealmComponent> getGuidesInClearing(TileLocation location) {
+		ArrayList<RealmComponent> list = new ArrayList<RealmComponent>();
 		if (location.isInClearing()) {
-			Collection c = location.clearing.getClearingComponents();
-			for (Iterator i=c.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			Collection<RealmComponent> c = location.clearing.getClearingComponents();
+			for (RealmComponent rc : c) {
 				if (rc.isPlayerControlledLeader()) {
 					// Valid Guide
 					list.add(rc);

@@ -4,7 +4,6 @@ Expansion 1: Two-Handed Combat + Ability: "Dual Wielding"
 Expansion 1: More Ambushes + Ability: "Advanced_Ambush"
 0001826: Feature Request - First Edition Optional Rules - The Deadly Realm: http://www.nand.it/mr/mr06.html
 0001819: Feature Request: First Edition Search Tables
-0001829: Feature Request - First Edition Killer Caves: First Edition rule 40.9. "Horses are killed and removed from play when they enter a cave clearing".
 0001822: Feature Request: First Edition Optional Rule - Steel Against Magic: (+Disadvantage) A character cannot play a MAGIC counter if he has any weapon counter except a staff activated.
 
 Expansion 1: Spells: Magic Shield, Sleep, Fear, Wall of Force, Duel, Spider web, Rocks Glow, Mystic boots, Flame sword, Fighting hands, Magic mirror, Lucky blow, Fire trap
