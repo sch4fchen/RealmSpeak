@@ -2063,8 +2063,7 @@ public class ActionRow {
 			chooser.generateOption("New CACHE");
 			
 			// Add all existing caches in clearing
-			for (Iterator i=tl.clearing.getClearingComponents().iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : tl.clearing.getClearingComponents()) {
 				if (rc.isCacheChit()) {
 					if (rc.getOwner()==charRc) { // Only the individual that created the cache can open it!
 						String key = chooser.generateOption("Open");

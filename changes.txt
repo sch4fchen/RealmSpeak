@@ -9,6 +9,7 @@ NEW FEATURES:
 # Optional Rule: 1st edtion killer caves
 BUGS/ISSUES:
 # Adapt clearings and paths for all alternative tiles
+# HTML export: hide characters chaches 
 
 Version 1.1.3.8 - Changes since 1.1.3.7
 NEW FEATURES:

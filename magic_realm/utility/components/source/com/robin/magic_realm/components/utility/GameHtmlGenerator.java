@@ -231,6 +231,13 @@ public class GameHtmlGenerator extends HtmlGenerator {
 		}
 		writeString(path+File.separator+page,container.getName(),sb.toString(),SETUP_HTML);
 	}
+	private void removeCaches() {
+		GamePool pool = new GamePool(data.getGameObjects());
+		ArrayList<GameObject> caches = pool.find("cache_number");
+		for (GameObject cache : caches) {
+			cache.detach();
+		}
+	}
 	private void generateMap(String path) {
 		// Map
 		CenteredMapView map = CenteredMapView.getSingleton();
@@ -355,6 +362,7 @@ public class GameHtmlGenerator extends HtmlGenerator {
 		writeString(path+File.separator+file,clearing.getDescription(),sb.toString(),"../"+MAP_PAGE);
 	}
 	private void generateImages(String path) {
+		removeCaches();
 		generateMap(path);
 		
 		// Setup Card

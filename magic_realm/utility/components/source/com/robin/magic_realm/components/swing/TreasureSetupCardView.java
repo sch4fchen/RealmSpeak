@@ -64,7 +64,7 @@ public class TreasureSetupCardView extends JComponent {
 	private GameWrapper game;
 	private ArrayList<String> sections;
 	private Dimension cardSize;
-	private Hashtable sectionRowHash;
+	private Hashtable<String, HashLists<String, GameObject>> sectionRowHash;
 	private ArrayList<GameObject> nonMdList;
 	
 	private Image image;
@@ -145,7 +145,7 @@ public class TreasureSetupCardView extends JComponent {
 		});
 		
 		// Hash by section and monster die
-		HashLists hash = new HashLists();
+		HashLists<String, GameObject> hash = new HashLists<String, GameObject>();
 		sections = new ArrayList<String>();
 		for (GameObject go : list) {
 			String section = go.getThisAttribute("ts_section");
@@ -165,13 +165,13 @@ public class TreasureSetupCardView extends JComponent {
 		}
 		
 		// Take each subsection (section+monster_die) and divide into groups based on summon string
-		sectionRowHash = new Hashtable();
+		sectionRowHash = new Hashtable<String, HashLists<String, GameObject>>();
 		for (int n=1;n<=6;n++) {
 			for (String section : sections) {
 				String key = section+n;
 				ArrayList<GameObject> row = hash.getList(key);
 				if (row!=null) {
-					HashLists groups = new HashLists();
+					HashLists<String, GameObject> groups = new HashLists<String, GameObject>();
 					for (GameObject go : row) {
 						String summon = go.getThisAttribute("summon");
 						if (summon==null) {
@@ -213,16 +213,14 @@ public class TreasureSetupCardView extends JComponent {
 		int maxwidth = 0;
 		for (int n=1;n<=6;n++) {
 			int width = 0;
-			for (Iterator i=sections.iterator();i.hasNext();) {
-				String section = (String)i.next();
+			for (String section : sections) {
 				String key = section+n;
-				HashLists groups = (HashLists)sectionRowHash.get(key);
+				HashLists<String, GameObject> groups = sectionRowHash.get(key);
 				if (groups!=null) {
 					for (Iterator t=groups.values().iterator();t.hasNext();) {
-						ArrayList group = (ArrayList)t.next();
+						ArrayList<GameObject> group = (ArrayList)t.next();
 						width += (SPACING<<1);
-						for (Iterator g=group.iterator();g.hasNext();) {
-							GameObject go = (GameObject)g.next();
+						for (GameObject go : group) {
 							String size = getChitSizeAttribute(go);
 							width += ChitComponent.getDimensionForSize(size).width;
 						}
@@ -465,13 +463,12 @@ public class TreasureSetupCardView extends JComponent {
 			
 			for (String section : sections) {
 				String key = section+n;
-				HashLists groups = (HashLists)sectionRowHash.get(key);
+				HashLists<String, GameObject> groups = sectionRowHash.get(key);
 				if (groups!=null) {
 					x += SPACING;
 					ArrayList<SummonGroup> summons = new ArrayList<SummonGroup>();
-					for (Iterator t=groups.keySet().iterator();t.hasNext();) {
-						String summon = (String)t.next();
-						ArrayList group = (ArrayList)groups.get(summon);
+					for (String summon : groups.keySet()) {
+						ArrayList<GameObject> group = (ArrayList<GameObject>)groups.get(summon);
 						summons.add(new SummonGroup(summon,group));
 					}
 					
