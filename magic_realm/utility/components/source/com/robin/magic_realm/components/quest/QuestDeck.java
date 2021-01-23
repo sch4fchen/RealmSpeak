@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import com.robin.game.objects.*;
 import com.robin.general.util.RandomNumber;
@@ -164,6 +165,7 @@ public class QuestDeck extends GameObjectWrapper {
 			Quest quest = drawCard(character);
 			if (quest==null) {
 				if (reshuffled) {
+					JOptionPane.showMessageDialog(frame,"There are no more available quests to draw.","No available quests",JOptionPane.INFORMATION_MESSAGE);
 					break;
 				}
 				reshuffle();
