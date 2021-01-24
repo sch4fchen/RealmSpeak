@@ -42,10 +42,6 @@ public class Locate extends Search {
 	public String getTableKey() {
 		return "Locate";
 	}
-//public String apply(CharacterWrapper character,DieRoller roller) {
-//System.err.println("Locate.java DEBUGGO");
-//return applyFour(character);
-//}
 	public String applyOne(CharacterWrapper character) {
 		// Choice
 		return doChoice(character);
@@ -83,7 +79,7 @@ public class Locate extends Search {
 	
 	@Override
 	protected ArrayList<ImageIcon> getHintIcons(CharacterWrapper character) {
-		ArrayList<ImageIcon> list = new ArrayList<ImageIcon>();
+		ArrayList<ImageIcon> list = new ArrayList<>();
 		for(PathDetail path:getAllUndiscoveredPassages(character)) {
 			list.add(new PathIcon(path));
 		}
@@ -91,25 +87,5 @@ public class Locate extends Search {
 			list.add(getIconForSearch(rc));
 		}
 		return list;
-	}
-	
-	protected String doPassages(CharacterWrapper character) {
-		ArrayList<PathDetail> list = getAllUndiscoveredPassages(character);
-		for (PathDetail path:list) {
-			character.addSecretPassageDiscovery(path.getFullPathKey());
-		}
-		
-		QuestRequirementParams qp = new QuestRequirementParams();
-		qp.actionName = getTableKey();
-		qp.actionType = CharacterActionType.SearchTable;
-		qp.searchType = SearchResultType.Passages;
-		
-		String ret = "Passage(s)";
-		if (list.size()>0) {
-			ret = "Found "+list.size()+" passage(s)";
-			qp.searchHadAnEffect = true;
-		}
-		character.testQuestRequirements(getParentFrame(),qp);
-		return ret;
 	}
 }

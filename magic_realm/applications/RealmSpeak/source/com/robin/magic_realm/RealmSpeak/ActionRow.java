@@ -985,6 +985,11 @@ public class ActionRow {
 			addTableToChooser(chooseSearch,RealmTable.magicSight(gameHandler.getMainFrame()));
 		}
 		else {
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
+			if (hostPrefs.hasPref(Constants.FE_SEARCH_TABLES)) {
+				addTableToChooser(chooseSearch,RealmTable.search1ed(gameHandler.getMainFrame(),null));
+			}
+			
 			if (character.getPeerAny()) {
 				addTableToChooser(chooseSearch,RealmTable.peerAny(gameHandler.getMainFrame()));
 			}

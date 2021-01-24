@@ -78,7 +78,7 @@ public abstract class RealmTable {
 		return null;
 	}
 	protected void sendMessage(GameData data,String clientName,String title,String message) {
-		ArrayList strings = new ArrayList();
+		ArrayList<String> strings = new ArrayList<>();
 		strings.add(title);
 		strings.add(message);
 		strings.add(roller==null?"":roller.getStringResult());
@@ -167,6 +167,9 @@ public abstract class RealmTable {
 	
 	// STATIC METHODS
 	
+	public static RealmTable search1ed(JFrame frame,ClearingDetail clearing) {
+		return new Search1ed(frame,clearing);
+	}
 	public static RealmTable peer(JFrame frame,ClearingDetail clearing) {
 		return new Peer(frame,clearing);
 	}

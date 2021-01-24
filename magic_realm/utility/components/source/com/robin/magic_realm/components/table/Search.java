@@ -96,7 +96,7 @@ public abstract class Search extends RealmTable {
 		character.testQuestRequirements(getParentFrame(),qp);
 	}
 	protected ArrayList<ImageIcon> convertPathDetailToImageIcon(ArrayList<PathDetail> paths) {
-		ArrayList<ImageIcon> list = new ArrayList<ImageIcon>();
+		ArrayList<ImageIcon> list = new ArrayList<>();
 		if (paths!=null) {
 			for (PathDetail path:paths) {
 				list.add(new PathIcon(path));
@@ -105,7 +105,7 @@ public abstract class Search extends RealmTable {
 		return list;
 	}
 	protected ArrayList<ImageIcon> convertRealmComponentToImageIcon(ArrayList<RealmComponent> chits) {
-		ArrayList<ImageIcon> list = new ArrayList<ImageIcon>();
+		ArrayList<ImageIcon> list = new ArrayList<>();
 		if (chits!=null) {
 			for (RealmComponent rc:chits) {
 				list.add(getIconForSearch(rc));
@@ -114,12 +114,11 @@ public abstract class Search extends RealmTable {
 		return list;
 	}
 	protected ArrayList<PathDetail> getAllUndiscoveredPaths(CharacterWrapper character) {
-		ArrayList<PathDetail> list = new ArrayList<PathDetail>();
+		ArrayList<PathDetail> list = new ArrayList<>();
 		ClearingDetail currentClearing = getCurrentClearing(character);
-		ArrayList passages = currentClearing.getConnectedPaths();
+		ArrayList<PathDetail> passages = currentClearing.getConnectedPaths();
 		if (passages==null) return list;
-		for (Iterator n=passages.iterator();n.hasNext();) {
-			PathDetail path = (PathDetail)n.next();
+		for (PathDetail path : passages) {
 			if (path.isHidden()) {
 				if (!character.hasHiddenPathDiscovery(path.getFullPathKey())) {
 					list.add(path);
@@ -129,12 +128,11 @@ public abstract class Search extends RealmTable {
 		return list;
 	}
 	protected ArrayList<PathDetail> getAllUndiscoveredPassages(CharacterWrapper character) {
-		ArrayList<PathDetail> list = new ArrayList<PathDetail>();
+		ArrayList<PathDetail> list = new ArrayList<>();
 		ClearingDetail currentClearing = getCurrentClearing(character);
-		ArrayList passages = currentClearing.getConnectedPaths();
+		ArrayList<PathDetail> passages = currentClearing.getConnectedPaths();
 		if (passages==null) return list;
-		for (Iterator n=passages.iterator();n.hasNext();) {
-			PathDetail path = (PathDetail)n.next();
+		for (PathDetail path : passages) {
 			if (path.isSecret()) {
 				if (!character.hasSecretPassageDiscovery(path.getFullPathKey())) {
 					list.add(path);
@@ -144,7 +142,7 @@ public abstract class Search extends RealmTable {
 		return list;
 	}
 	protected ArrayList<RealmComponent> getAllDiscoverableChits(CharacterWrapper character,boolean onlyUndiscovered) {
-		ArrayList<RealmComponent> list = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> list = new ArrayList<>();
 		ClearingDetail currentClearing = getCurrentClearing(character);
 		for (RealmComponent rc:currentClearing.getClearingComponents()) {
 			if (rc.getGameObject().hasThisAttribute("chit")
@@ -180,10 +178,9 @@ public abstract class Search extends RealmTable {
 		// Discover treasure locations in current clearing
 		String message = "Discover chit(s) - Found ";
 		ClearingDetail currentClearing = getCurrentClearing(character);
-		Collection allChits = currentClearing.getClearingComponents();
+		Collection<RealmComponent> allChits = currentClearing.getClearingComponents();
 		int count=0;
-		for (Iterator n=allChits.iterator();n.hasNext();) {
-			RealmComponent rc = (RealmComponent)n.next();
+		for (RealmComponent rc : allChits) {
 			// only discover discovery chits
 			if (rc.getGameObject().hasThisAttribute("chit")) {
 				boolean foundSomething = discoverChit(getParentFrame(),character,currentClearing,rc,qp,getListener());
@@ -232,13 +229,11 @@ public abstract class Search extends RealmTable {
 				}
 				return true;
 			}
-			else {
-				discoveryName = discoveryName + " ("+thing.getName()+")";
-				Loot.addItemToCharacter(frame,listener,character,thing);
-				currentClearing.remove(rc.getGameObject());
-				qp.objectList.add(rc.getGameObject());
-				return true;
-			}
+			discoveryName = discoveryName + " ("+thing.getName()+")";
+			Loot.addItemToCharacter(frame,listener,character,thing);
+			currentClearing.remove(rc.getGameObject());
+			qp.objectList.add(rc.getGameObject());
+			return true;
 		}
 		else if (rc.isGate() || rc.isGuild() || rc.isRedSpecial()) {
 			if (!character.hasOtherChitDiscovery(rc.getGameObject().getName())) {
@@ -248,5 +243,52 @@ public abstract class Search extends RealmTable {
 			}
 		}
 		return false;
+	}
+	protected String doPaths(CharacterWrapper character) {
+		ArrayList<PathDetail> list = getAllUndiscoveredPaths(character);
+		for (PathDetail path:list) {
+			character.addHiddenPathDiscovery(path.getFullPathKey());
+		}
+		QuestRequirementParams qp = new QuestRequirementParams();
+		qp.actionName = getTableKey();
+		qp.actionType = CharacterActionType.SearchTable;
+		qp.searchType = SearchResultType.Paths;
+		String ret = "Path(s)";
+		if (list.size() > 0) {
+			ret = "Found " + list.size() + " path(s)";
+			qp.searchHadAnEffect = true;
+		}
+		character.testQuestRequirements(getParentFrame(),qp);
+		return ret;
+	}
+	protected String doPassages(CharacterWrapper character) {
+		ArrayList<PathDetail> list = getAllUndiscoveredPassages(character);
+		for (PathDetail path:list) {
+			character.addSecretPassageDiscovery(path.getFullPathKey());
+		}
+		
+		QuestRequirementParams qp = new QuestRequirementParams();
+		qp.actionName = getTableKey();
+		qp.actionType = CharacterActionType.SearchTable;
+		qp.searchType = SearchResultType.Passages;
+		
+		String ret = "Passage(s)";
+		if (list.size()>0) {
+			ret = "Found "+list.size()+" passage(s)";
+			qp.searchHadAnEffect = true;
+		}
+		character.testQuestRequirements(getParentFrame(),qp);
+		return ret;
+	}
+	protected String doHiddenEnemies(CharacterWrapper character) {
+		QuestRequirementParams qp = new QuestRequirementParams();
+		qp.actionName = getTableKey();
+		qp.actionType = CharacterActionType.SearchTable;
+		qp.searchType = SearchResultType.HiddenEnemies;
+		qp.searchHadAnEffect = !character.foundHiddenEnemies();
+		character.testQuestRequirements(getParentFrame(),qp);
+		
+		character.setFoundHiddenEnemies(true);
+		return "Found hidden enemies";
 	}
 }

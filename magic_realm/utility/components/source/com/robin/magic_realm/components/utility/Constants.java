@@ -144,6 +144,7 @@ public class Constants {
 	public static final String REQUIRES_APPROVAL = "req_app";
 	public static final String DISCOVERY = "discovery";
 	public static final String DISCOVERED = "discovered";
+	public static final String GLIMPSED_COUNTERS = "glimpsedCounters";
 	
 	// ThisAttributes for DieRoller - The accompaning value lists tables that are affected
 	public static final String PLUS_ONE = "plus_one";
@@ -485,6 +486,7 @@ public class Constants {
 	// 1st edition rules
 	public static final String FE_KILLER_CAVES = "KillerCaves";
 	public static final String FE_DEADLY_REALM = "DeadlyRealm";
+	public static final String FE_SEARCH_TABLES = "FirstEditionSearchTables";
 	
 	// My House Rules
 	public static final String HOUSE1_DWARF_ACTION = "DwarfActions";

@@ -61,16 +61,7 @@ public class Peer extends Search {
 
 	public String applyThree(CharacterWrapper character) {
 		// Hidden Enemies, Paths
-		
-		QuestRequirementParams qp = new QuestRequirementParams();
-		qp.actionName = getTableKey();
-		qp.actionType = CharacterActionType.SearchTable;
-		qp.searchType = SearchResultType.HiddenEnemies;
-		qp.searchHadAnEffect = !character.foundHiddenEnemies();
-		character.testQuestRequirements(getParentFrame(),qp);
-		
-		character.setFoundHiddenEnemies(true); // marks ALL hidden enemies
-		
+		doHiddenEnemies(character);
 		String pathRes = doPaths(character);
 		if (pathRes!=null) {
 			return "Found hidden enemies and "+pathRes;
@@ -80,17 +71,7 @@ public class Peer extends Search {
 
 	public String applyFour(CharacterWrapper character) {
 		// Found Hidden Enemies
-		
-		QuestRequirementParams qp = new QuestRequirementParams();
-		qp.actionName = getTableKey();
-		qp.actionType = CharacterActionType.SearchTable;
-		qp.searchType = SearchResultType.HiddenEnemies;
-		qp.searchHadAnEffect = !character.foundHiddenEnemies();
-		character.testQuestRequirements(getParentFrame(),qp);
-		
-		character.setFoundHiddenEnemies(true); // marks ALL hidden enemies
-		
-		return "Found hidden enemies";
+		return doHiddenEnemies(character);
 	}
 
 	public String applyFive(CharacterWrapper character) {
@@ -106,28 +87,10 @@ public class Peer extends Search {
 
 	@Override
 	protected ArrayList<ImageIcon> getHintIcons(CharacterWrapper character) {
-		ArrayList<ImageIcon> list = new ArrayList<ImageIcon>();
+		ArrayList<ImageIcon> list = new ArrayList<>();
 		for(PathDetail path:getAllUndiscoveredPaths(character)) {
 			list.add(new PathIcon(path));
 		}
 		return list;
-	}
-
-	protected String doPaths(CharacterWrapper character) {
-		ArrayList<PathDetail> list = getAllUndiscoveredPaths(character);
-		for (PathDetail path:list) {
-			character.addHiddenPathDiscovery(path.getFullPathKey());
-		}
-		QuestRequirementParams qp = new QuestRequirementParams();
-		qp.actionName = getTableKey();
-		qp.actionType = CharacterActionType.SearchTable;
-		qp.searchType = SearchResultType.Paths;
-		String ret = "Path(s)";
-		if (list.size() > 0) {
-			ret = "Found " + list.size() + " path(s)";
-			qp.searchHadAnEffect = true;
-		}
-		character.testQuestRequirements(getParentFrame(),qp);
-		return ret;
 	}
 }

@@ -52,6 +52,6 @@ public class AnyClearingPeer extends Peer {
 	}
 	@Override
 	protected ArrayList<ImageIcon> getHintIcons(CharacterWrapper character) {
-		return new ArrayList<ImageIcon>();
+		return new ArrayList<>();
 	}
 }

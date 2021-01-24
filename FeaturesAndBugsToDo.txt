@@ -1,7 +1,7 @@
 0001819: Feature Request: First Edition Search Tables
 0001822: Feature Request: First Edition Optional Rule - Steel Against Magic: (+Disadvantage) A character cannot play a MAGIC counter if he has any weapon counter except a staff activated.
-0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry 2?")
-Expansion 1: Parry + Ability: "Parry"
+0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry")
+Expansion 1: Parry + Ability: "ParryLikeShield"
 Expansion 1: Two-Handed Combat + Ability: "Dual Wielding"
 Expansion 1: More Ambushes + Ability: "Advanced_Ambush"
 

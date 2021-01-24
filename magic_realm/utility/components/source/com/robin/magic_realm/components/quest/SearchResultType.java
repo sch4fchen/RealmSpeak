@@ -63,8 +63,8 @@ public enum SearchResultType {
 			case TreasureCards:
 			case Counters:
 				return true;
+			default: return false;
 		}
-		return false;
 	}
 	public boolean canGetSpell() {
 		switch(this) {
@@ -72,11 +72,11 @@ public enum SearchResultType {
 			case Awaken:
 			case PerceiveSpell:
 				return true;
+			default: return false;
 		}
-		return false;
 	}
 	public static String[] optionalValues() {
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		list.add("");
 		for(SearchResultType rt:values()) {
 			list.add(rt.toString());
@@ -95,7 +95,7 @@ public enum SearchResultType {
 		return null;
 	}
 	public static SearchResultType[] getSearchResultTypes(SearchTableType table) {
-		ArrayList<SearchResultType> list = new ArrayList<SearchResultType>();
+		ArrayList<SearchResultType> list = new ArrayList<>();
 		list.add(SearchResultType.Any);
 		switch(table) {
 			case Any:
