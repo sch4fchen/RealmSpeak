@@ -1,14 +1,14 @@
+Expansion 1: Items: Magic path
+Expansion 1: More Ambushes/Throwing Weapons + Ability: "Throwing_weapons"
+Expansion 1: Two-Handed Combat + Ability: "Dual Wielding"
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry")
 Expansion 1: Parry + Ability: "ParryLikeShield"
-Expansion 1: Two-Handed Combat + Ability: "Dual Wielding"
-Expansion 1: More Ambushes + Ability: "Advanced_Ambush"
 
-Expansion 1: Assassin Guild, Nature Guild (see below)
-Expansion 1: Spells: Magic Shield, Sleep, Fear, Wall of Force, Duel, Spider web, Rocks Glow, Mystic boots, Flame sword, Fighting hands, Magic mirror, Lucky blow, Fire trap
-Expansion 1: Items: Ring of the mage, Fools gold, Magic patch, Color capture gem, Burning oil, Magic meat, Needful thing, Sorceror's eye, Cursed bell, Mysterious scroll, Ointment of slip, Archers glove, Hound, Beast away, Book of war strategy, Twisted book, Book of the druids, Sorcereror's tome 
-Expansion 1: Travelers: Pathfinder, Doppleganger, Necromancer, Gate Master, Soothsayer
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
+Expansion 1: Spells: Magic Shield, Sleep, Wall of Force, Duel, Spider web, Rocks Glow, Mystic boots, Flame sword, Fighting hands, Magic mirror, Lucky blow, Fire trap
+Expansion 1: Travelers: Doppleganger, Necromancer, Soothsayer
+Expansion 1: Assassin Guild, Nature Guild (see below)
 A LITTLE HELP FROM FRIENDS: http://www.nand.it/mr/mr02.html
 0001563: Showing flip sides of tiles and counters in HTML
 0001645: Automatic HTML export
