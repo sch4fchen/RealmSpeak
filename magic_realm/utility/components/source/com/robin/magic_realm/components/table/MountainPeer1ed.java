@@ -28,8 +28,6 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class MountainPeer1ed extends Peer {
 	
-	private static final String[] TYPES = {"woods","normal","mountain"};
-	
 	public MountainPeer1ed(JFrame frame) {
 		super(frame);
 	}

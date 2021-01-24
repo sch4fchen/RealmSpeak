@@ -30,9 +30,12 @@ import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class PeerClearingChooser {
+	
+	private static final String[] TYPES = {"woods","normal","mountain"};
+	
 	public PeerClearingChooser() {
 	}
-	
+		
 	public static TileLocation chooseAnyClearing(JFrame frame, CharacterWrapper character) {
 		TileLocation planned = character.getPlannedLocation();
 		CenteredMapView.getSingleton().setMarkClearingAlertText("Peer into which clearing?");
