@@ -36,7 +36,7 @@ public class Search1ed extends Search {
 		super(frame,clearing);
 	}
 	public String getTableName(boolean longDescription) {
-		return "Search"+(longDescription?"\n(Secret Passages, Hidden Paths, Hidden Enemies, Treasure Locations)":"");
+		return "Search"+(longDescription?"\n(Glimpse, Secret Passages, Hidden Paths, Hidden Enemies)":"");
 	}
 	public String getTableKey() {
 		return "Search1ed";

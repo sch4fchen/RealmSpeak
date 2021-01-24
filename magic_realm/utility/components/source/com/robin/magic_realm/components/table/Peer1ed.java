@@ -34,7 +34,7 @@ public class Peer1ed extends Search {
 		super(frame,clearing);
 	}
 	public String getTableName(boolean longDescription) {
-		return "Peer"+(longDescription?"\n(Hidden Paths, Hidden Enemies)":"");
+		return "Peer"+(longDescription?"\n(Glimpse, Hidden Enemies)":"");
 	}
 	public String getTableKey() {
 		return "Peer";
