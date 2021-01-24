@@ -996,13 +996,27 @@ public class ActionRow {
 			else {
 				RealmCalendar cal = RealmCalendar.getCalendar(gameHandler.getClient().getGameData());
 				boolean canPeer = character.canPeer() && !cal.isPeerDisabled(character.getCurrentMonth());
-				addTableToChooser(chooseSearch,RealmTable.peer(gameHandler.getMainFrame(),null),canPeer);
+				
+				
+				if (!hostPrefs.hasPref(Constants.FE_SEARCH_TABLES)) {
+					addTableToChooser(chooseSearch,RealmTable.peer(gameHandler.getMainFrame(),null),canPeer);
+				}
+				else {
+					addTableToChooser(chooseSearch,RealmTable.peer1ed(gameHandler.getMainFrame(),null),canPeer);
+				}
+				
 				if (current.clearing.isMountain()) {
 					// If in a mountain clearing, allow peer into mountain/woods clearing in same or adjacent tiles
 					addTableToChooser(chooseSearch,RealmTable.mountainPeer(gameHandler.getMainFrame()),canPeer);
 				}
 			}
-			addTableToChooser(chooseSearch,RealmTable.locate(gameHandler.getMainFrame(),null));
+			
+			if (!hostPrefs.hasPref(Constants.FE_SEARCH_TABLES)) {
+				addTableToChooser(chooseSearch,RealmTable.locate(gameHandler.getMainFrame(),null));
+			}
+			else {
+				addTableToChooser(chooseSearch,RealmTable.locate1ed(gameHandler.getMainFrame(),null));
+			}
 		}
 		
 		for (RealmComponent rc:current.clearing.getClearingComponents()) {

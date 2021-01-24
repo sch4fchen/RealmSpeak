@@ -173,6 +173,9 @@ public abstract class RealmTable {
 	public static RealmTable peer(JFrame frame,ClearingDetail clearing) {
 		return new Peer(frame,clearing);
 	}
+	public static RealmTable peer1ed(JFrame frame,ClearingDetail clearing) {
+		return new Peer1ed(frame,clearing);
+	}
 	public static RealmTable mountainPeer(JFrame frame) {
 		return new MountainPeer(frame);
 	}
@@ -181,6 +184,9 @@ public abstract class RealmTable {
 	}
 	public static RealmTable locate(JFrame frame,ClearingDetail clearing) {
 		return new Locate(frame,clearing);
+	}
+	public static RealmTable locate1ed(JFrame frame,ClearingDetail clearing) {
+		return new Locate1ed(frame,clearing);
 	}
 	public static RealmTable loot(JFrame frame,CharacterWrapper character,TileLocation tl,ChangeListener listener) {
 		return new Loot(frame,character,tl,listener);

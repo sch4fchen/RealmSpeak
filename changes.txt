@@ -10,6 +10,7 @@ NEW FEATURES:
 # Optional Rule: Flying activities
 # Optional Rule: 1st edition: Killer caves
 # Optional Rule: 1st edition: Deadly realm
+# Optional Rule: 1st edition: Search tables
 BUGS/ISSUES:
 # Adapt clearings and paths for all alternative tiles
 # HTML export: hide characters caches 

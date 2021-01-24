@@ -22,55 +22,60 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
-import com.robin.general.swing.ButtonOptionDialog;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.swing.PathIcon;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
-public class Search1ed extends Search {
-	public Search1ed(JFrame frame) {
+public class Locate1ed extends Search {
+	public Locate1ed(JFrame frame) {
 		this(frame,null);
 	}
-	public Search1ed(JFrame frame,ClearingDetail clearing) {
+	public Locate1ed(JFrame frame,ClearingDetail clearing) {
 		super(frame,clearing);
 	}
 	public String getTableName(boolean longDescription) {
-		return "Search"+(longDescription?"\n(Secret Passages, Hidden Paths, Hidden Enemies, Treasure Locations)":"");
+		return "Locate"+(longDescription?"\n(Hidden Paths, Treasure Locations)":"");
 	}
 	public String getTableKey() {
-		return "Search1ed";
+		return "Locate";
 	}
 	public String applyOne(CharacterWrapper character) {
+		// Choice
 		return doChoice1ed(character);
 	}
 
 	public String applyTwo(CharacterWrapper character) {
-		return doGlimpse(character);
+		// Choice
+		return doChoice1ed(character);
 	}
 
 	public String applyThree(CharacterWrapper character) {
-		return doPassages(character);
-	}
-
-	public String applyFour(CharacterWrapper character) {
+		// Hidden paths
 		return doPaths(character);
 	}
 
+	public String applyFour(CharacterWrapper character) {
+		// Glimpse to find
+		return applyFive(character);
+	}
+
 	public String applyFive(CharacterWrapper character) {
-		return doHiddenEnemies(character);
+		// Glimpse to find
+		if (character.getGameObject().getThisAttribute(Constants.GLIMPSED_COUNTERS+character.getCurrentLocation().tile.getName()).matches(character.getCurrentDayKey())) {
+			return doDiscoverChits(character);
+		}
+		return "Nothing";
 	}
 
 	public String applySix(CharacterWrapper character) {
+		// Nothing
 		return "Nothing";
 	}
 	
 	@Override
 	protected ArrayList<ImageIcon> getHintIcons(CharacterWrapper character) {
 		ArrayList<ImageIcon> list = new ArrayList<>();
-		for(PathDetail path:getAllUndiscoveredPassages(character)) {
-			list.add(new PathIcon(path));
-		}
 		for(PathDetail path:getAllUndiscoveredPaths(character)) {
 			list.add(new PathIcon(path));
 		}

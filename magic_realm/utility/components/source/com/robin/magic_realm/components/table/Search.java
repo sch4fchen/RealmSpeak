@@ -31,6 +31,7 @@ import com.robin.magic_realm.components.quest.SearchResultType;
 import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
 import com.robin.magic_realm.components.swing.PathIcon;
 import com.robin.magic_realm.components.utility.ClearingUtility;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public abstract class Search extends RealmTable {
@@ -290,5 +291,47 @@ public abstract class Search extends RealmTable {
 		
 		character.setFoundHiddenEnemies(true);
 		return "Found hidden enemies";
+	}
+	protected String doGlimpse(CharacterWrapper character) {
+		character.getGameObject().setThisAttribute(Constants.GLIMPSED_COUNTERS+character.getCurrentLocation().tile.getName(), character.getCurrentDayKey());
+		doClues(character);
+		return "Glimpse counters";
+	}
+	
+	protected String doChoice1ed(CharacterWrapper character) {
+		String hiddenEnemies = "Hidden enemies";
+		String hiddenPaths = "Hidden paths";
+		String secretPassages = "Secret passages";
+		String findCounters = "Find counters";
+		
+		ImageIcon paths = getIconFromList(convertPathDetailToImageIcon(getAllUndiscoveredPaths(character)));
+		ImageIcon passages = getIconFromList(convertPathDetailToImageIcon(getAllUndiscoveredPassages(character)));
+		ImageIcon chits = getIconFromList(convertRealmComponentToImageIcon(getAllDiscoverableChits(character,true)));
+		
+		ButtonOptionDialog chooseSearch = new ButtonOptionDialog(getParentFrame(), null, "Choice:", "", false);
+
+		chooseSearch.addSelectionObject(hiddenEnemies);
+		chooseSearch.addSelectionObject(hiddenPaths);
+		chooseSearch.setSelectionObjectIcon(hiddenPaths,paths);
+		chooseSearch.addSelectionObject(secretPassages);
+		chooseSearch.setSelectionObjectIcon(secretPassages,passages);
+		chooseSearch.addSelectionObject(findCounters);
+		chooseSearch.setSelectionObjectIcon(findCounters,chits);
+		chooseSearch.setVisible(true);
+		String choice = (String)chooseSearch.getSelectedObject();
+		if (choice.equals(hiddenEnemies)) {
+			return "Choice - "+doHiddenEnemies(character);
+		}
+		if (choice.equals(hiddenPaths)) {
+			return "Choice - "+doPaths(character);
+		}
+		if (choice.equals(secretPassages)) {
+			return "Choice - "+doPassages(character);
+		}
+		if (choice.equals(findCounters)) {
+			return "Choice - "+doDiscoverChits(character);
+		}
+
+		return null;
 	}
 }

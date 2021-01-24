@@ -659,7 +659,7 @@ public class CharacterActionControlManager {
 				tiles.addAll(adjTiles);
 				for (TileComponent tile : tiles) {
 					for (ClearingDetail clearing : tile.getClearings()) {
-						if (clearing.isMountain() || clearing.isWoods()) {
+						if (!clearing.isCave()) {
 							clearing.setMarked(true);
 						}
 					}
