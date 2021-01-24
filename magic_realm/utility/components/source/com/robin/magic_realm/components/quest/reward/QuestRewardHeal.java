@@ -40,12 +40,16 @@ public class QuestRewardHeal extends QuestReward {
 		switch (getHealType()) {
 		case Fatigued:
 			chits = character.getFatiguedChits();
+			break;
 		case Wounded:
 			chits = character.getWoundedChits();
+			break;
 		case Restable:
 			chits = character.getRestableChits();
+			break;
 		case Magic:
 			chits = character.getAllMagicChits();
+			break;
 		case All:
 		default:
 			chits = character.getAllChits();

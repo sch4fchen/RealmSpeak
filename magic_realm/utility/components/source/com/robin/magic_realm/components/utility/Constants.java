@@ -204,6 +204,7 @@ public class Constants {
 	public static final String SHARPSHOOTER = "sharpshooter";
 	public static final String ENHANCED_MAGIC = "enhanced_magic";
 	public static final String ENHANCED_ARTIFACTS = "enhanced_artifacts";
+	public static final String STAFF_RESTRICTED_SPELLCASTING = "staff_restricted_spellcasting";
 	public static final String ADVENTURER = "adventurer";
 	public static final String ADVANCED_SHELTERS = "advanced_shelters";
 	
@@ -484,9 +485,10 @@ public class Constants {
 	public static final String TE_BENEVOLENT_SPELLS = "BenevolentSpells";
 	
 	// 1st edition rules
+	public static final String FE_SEARCH_TABLES = "FirstEditionSearchTables";
 	public static final String FE_KILLER_CAVES = "KillerCaves";
 	public static final String FE_DEADLY_REALM = "DeadlyRealm";
-	public static final String FE_SEARCH_TABLES = "FirstEditionSearchTables";
+	public static final String FE_STEEL_AGAINST_MAGIC = "SteelAgainstMagic";
 	
 	// My House Rules
 	public static final String HOUSE1_DWARF_ACTION = "DwarfActions";

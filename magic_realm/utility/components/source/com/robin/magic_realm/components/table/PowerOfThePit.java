@@ -225,8 +225,7 @@ public class PowerOfThePit extends RealmTable {
 				+"All of the target's active MAGIC chits become fatigued.");
 		
 		// All of the target's active MAGIC chits become fatigued
-		for (Iterator i=character.getActiveMagicChits().iterator();i.hasNext();) {
-			CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+		for (CharacterActionChitComponent chit : character.getActiveMagicChits()) {
 			if (!chit.isFatigued()) {
 				chit.makeFatigued();
 				harm = true;

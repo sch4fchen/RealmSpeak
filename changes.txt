@@ -11,6 +11,7 @@ NEW FEATURES:
 # Optional Rule: 1st edition: Killer caves
 # Optional Rule: 1st edition: Deadly realm
 # Optional Rule: 1st edition: Search tables
+# Optional Rule: 1st edition: Steel against Magic
 BUGS/ISSUES:
 # Adapt clearings and paths for all alternative tiles
 # HTML export: hide characters caches 

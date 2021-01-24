@@ -18,7 +18,6 @@
 package com.robin.magic_realm.RealmBattle.targeting;
 
 import java.util.Collection;
-import java.util.Iterator;
 
 import com.robin.general.util.StringUtilities;
 import com.robin.magic_realm.RealmBattle.BattleModel;
@@ -42,13 +41,12 @@ public class SpellTargetingMagic extends SpellTargetingMultiple {
 		int paren2 = targetType.indexOf(")");
 		if (paren1>0 && paren2>paren1) {
 			String chitList = targetType.substring(paren1+1,paren2);
-			Collection allChits = character.getActiveMagicChits();
-			Collection types = null;
+			Collection<CharacterActionChitComponent> allChits = character.getActiveMagicChits();
+			Collection<String> types = null;
 			if (!"all".equals(chitList)) {
 				types = StringUtilities.stringToCollection(chitList,",");
 			}
-			for (Iterator i=allChits.iterator();i.hasNext();) {
-				CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+			for (CharacterActionChitComponent chit : allChits) {
 				if (types==null || types.contains(chit.getMagicType())) {
 					gameObjects.add(chit.getGameObject());
 				}

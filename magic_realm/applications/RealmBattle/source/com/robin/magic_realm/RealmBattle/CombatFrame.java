@@ -1378,7 +1378,7 @@ public class CombatFrame extends JFrame {
 						&& !changes);
 			}
 			if (castSpellButton!=null) {
-				Collection castableSpellSets = null;
+				Collection<SpellSet> castableSpellSets = null;
 				if (activeCharacterIsHere) {
 					castableSpellSets = activeCharacter.getCastableSpellSets();
 				}
@@ -1410,7 +1410,8 @@ public class CombatFrame extends JFrame {
 				selectTargetFromUnassignedButton.setEnabled(!changes && activeCharacterIsHere);
 			}
 			if (useColorChitButton!=null) {
-				useColorChitButton.setEnabled(activeCharacter.getColorMagicChits().size()>0);
+				useColorChitButton.setEnabled(activeCharacter.getColorMagicChits().size()>0
+						&& ((!hostPrefs.hasPref(Constants.FE_STEEL_AGAINST_MAGIC) && !activeCharacter.affectedByKey(Constants.STAFF_RESTRICTED_SPELLCASTING)) || activeCharacter.hasOnlyStaffAsActivatedWeapon()));
 			}
 			undoButton.setEnabled(interactiveFrame && endCombatFrame==null && (changes || nonaffectingChanges));
 		}
@@ -3066,7 +3067,7 @@ public class CombatFrame extends JFrame {
 		}
 	}
 	public void castSpell() {
-		Collection castableSpellSets = activeCharacter.getCastableSpellSets();
+		Collection<SpellSet> castableSpellSets = activeCharacter.getCastableSpellSets();
 		if (castableSpellSets.size()>0) {
 			// Find fastest attacker move speed
 			MoveActivator activator = new MoveActivator(this);
@@ -3075,8 +3076,7 @@ public class CombatFrame extends JFrame {
 			// create a hash list of spells (filtering on speed)
 			Hashtable spellHash = new Hashtable();
 			HashLists spellSetHashlists = new HashLists();
-			for (Iterator i=castableSpellSets.iterator();i.hasNext();) {
-				SpellSet set = (SpellSet)i.next(); // by definition, the set is castable, but we need to test the speed
+			for (SpellSet set : castableSpellSets) { // by definition, the set is castable, but we need to test the speed
 				// Speed must be equal to or faster than all move speeds on sheet
 				set.filterSpeed(fastest);
 				if (set.canBeCast()) {
@@ -3092,16 +3092,13 @@ public class CombatFrame extends JFrame {
 				chooser.setVisible(true);
 				if (chooser.getSelectedText()!=null) {
 					SpellWrapper spell = new SpellWrapper(chooser.getFirstSelectedComponent().getGameObject());
-					ArrayList list = spellSetHashlists.getList(spell.getGameObject().getName());
+					ArrayList<SpellSet> list = spellSetHashlists.getList(spell.getGameObject().getName());
 					chooser = new RealmComponentOptionChooser(this,"Choose Casting Options for "+spell.getName()+":",true);
 					// Then choose a set
 					Hashtable setHash = new Hashtable();
 					int keyN = 0;
-					for (Iterator i=list.iterator();i.hasNext();) {
-						SpellSet set = (SpellSet)i.next(); // by definition, the set is castable
-						
-						for (Iterator t=set.getValidTypeObjects().iterator();t.hasNext();) {
-							GameObject type = (GameObject)t.next();
+					for (SpellSet set : list) { // by definition, the set is castable
+						for (GameObject type : set.getValidTypeObjects()) {
 							if (set.getInfiniteSource()!=null) {
 								// No need to pick a color chit
 								String key = "P"+(keyN++);

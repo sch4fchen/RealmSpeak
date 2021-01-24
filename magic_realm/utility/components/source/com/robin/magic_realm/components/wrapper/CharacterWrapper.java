@@ -659,13 +659,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 */
 	public ArrayList<RealmComponent> getMoveSpeedOptions(Speed speedToBeat,boolean includeActionChits,boolean flipHorses) {
 		ArrayList<RealmComponent> list = new ArrayList<RealmComponent>();
-		ArrayList<RealmComponent> searchList = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> searchList = new ArrayList<>();
 		if (includeActionChits) {
 			searchList.addAll(getActiveMoveChits());
 			searchList.addAll(getFlyChits());
 		}
-		for (Iterator i=getActiveInventory().iterator();i.hasNext();) {
-			GameObject item = (GameObject)i.next();
+		for (GameObject item : getActiveInventory()) {
 			searchList.add(RealmComponent.getRealmComponent(item));
 		}
 		GameObject transmorph = getTransmorph();
@@ -895,8 +894,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		Strength best = new Strength(); // negligible by default
 		if (includeActionChits) {
 			// Check active chits
-			for (Iterator i=getActiveChits().iterator();i.hasNext();) {
-				CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+			for (CharacterActionChitComponent chit : getActiveChits()) {
 				if (chit.isMove() && !chit.isMoveLock()) { // DUCK chit cannot be played to carry items
 					if (!chit.getGameObject().hasThisAttribute(Constants.UNPLAYABLE)) {
 						Strength chitStrength = chit.getStrength();
@@ -922,8 +920,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 		// Check active treasures and horses (pack horses are figured in later when determining needed support weight
-		for (Iterator i=getInventory().iterator();i.hasNext();) {
-			GameObject item = (GameObject)i.next();
+		for (GameObject item : getInventory()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(item);
 			Strength itemStrength = null;
 			if (item.hasThisAttribute(Constants.ACTIVATED)) {
@@ -950,8 +947,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	private Strength getBestFollowingHirelingStrength() {
 		Strength best = new Strength();
-		for (Iterator i=getFollowingHirelings().iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : getFollowingHirelings()) {
 			Strength hirelingMoveStrength = getHirelingMoveStrength(rc);
 			if (hirelingMoveStrength.strongerThan(best)) {
 				best = hirelingMoveStrength;
@@ -980,8 +976,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		Strength best = new Strength(); // negligible by default
 		if (includeActionChits) {
 			// Check active chits
-			for (Iterator i=getActiveChits().iterator();i.hasNext();) {
-				CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+			for (CharacterActionChitComponent chit : getActiveChits()) {
 				if (chit.isFight()) {
 					Strength chitStrength = chit.getStrength();
 					if (chitStrength.strongerThan(best)) {
@@ -1001,8 +996,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		if (includeHirelings) {
 			// Check fight strengths of following hirelings
-			for (Iterator i=getFollowingHirelings().iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : getFollowingHirelings()) {
 				Strength fight1 = new Strength(rc.getGameObject().getAttribute("light","strength"));
 				Strength fight2 = new Strength(rc.getGameObject().getAttribute("dark","strength"));
 				if (fight1.strongerThan(best)) {
@@ -1835,7 +1829,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 					ret.addAll(tl.tile.getClearings());
 					ret.addAll(tl.tile.getMapEdges());
 				}
-				ArrayList<PathDetail> paths = new ArrayList<PathDetail>();
+				ArrayList<PathDetail> paths = new ArrayList<>();
 				ArrayList<PathDetail> cPaths = tl.clearing.getConnectedPaths();
 				if (cPaths!=null) {
 					paths.addAll(cPaths);
@@ -4187,6 +4181,16 @@ public class CharacterWrapper extends GameObjectWrapper {
 		colorChits.addAll(getEnchantedArtifacts());
 		return colorChits;
 	}
+	public boolean hasOnlyStaffAsActivatedWeapon() {
+		ArrayList<GameObject> activeInventory = this.getActiveInventory();
+		for (GameObject item : activeInventory) {
+			RealmComponent rc = RealmComponent.getRealmComponent(item);
+			if (rc.isWeapon() && !item.getName().toLowerCase().matches("staff")) {
+				return false;
+			}
+		}
+		return true;
+	}
 	/**
 	 * @return		A Collection of SpellSet objects representing all the spells available to the character, whether it
 	 * 				be a recorded spell, or one that was awakened in a book or artifact.
@@ -4194,12 +4198,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public ArrayList<SpellSet> getCastableSpellSets() {
 		// Find all color sources
 		Collection infiniteColors = getInfiniteColorSources();
-		ArrayList<MagicChit> colorChits = getColorMagicChits();
-		
+		ArrayList<MagicChit> colorChits = new ArrayList<>();
+		ArrayList<CharacterActionChitComponent> magicChits = new ArrayList<>();
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
-		
-		// Find all available magic chits
-		Collection magicChits = getActiveMagicChits();
+		if ((!hostPrefs.hasPref(Constants.FE_STEEL_AGAINST_MAGIC) && !this.affectedByKey(Constants.STAFF_RESTRICTED_SPELLCASTING)) || hasOnlyStaffAsActivatedWeapon()) {
+			colorChits = getColorMagicChits();
+			// Find all available magic chits
+			magicChits = getActiveMagicChits();
+		}
 		
 		// Start a collection of potential spell sets
 		ArrayList<SpellSet> potentialSets = new ArrayList<SpellSet>();
@@ -4250,8 +4256,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			String spellType = set.getCastMagicType();
 			if (set.getValidTypeObjects().size()==0
 					|| optionalArtifacts) { // Allows MAGIC chits to cast spells on artifacts!
-				for (Iterator n=magicChits.iterator();n.hasNext();) {
-					CharacterActionChitComponent chit = (CharacterActionChitComponent)n.next();
+				for (CharacterActionChitComponent chit : magicChits) {
 					if (spellType.equals(chit.getMagicType()) && !set.alreadyHasChit(chit)) {
 						set.addTypeObject(chit.getGameObject());
 					}
@@ -4832,8 +4837,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public Collection getFlyChits() {
 		return getFlyChits(false);
 	}
-	public Collection getFlyChits(boolean excludeActionChits) {
-		ArrayList flyChits = new ArrayList();
+	public Collection<RealmComponent> getFlyChits(boolean excludeActionChits) {
+		ArrayList<RealmComponent> flyChits = new ArrayList<>();
 		for (Iterator i=getGameObject().getHold().iterator();i.hasNext();) {
 			GameObject go = (GameObject)i.next();
 			RealmComponent rc = RealmComponent.getRealmComponent(go);

@@ -578,7 +578,7 @@ public class BattleBuilder extends JFrame {
 	}
 	private void updateDenizenPanel() {
 		denizenPanel.removeAll();
-		ArrayList<GameObject> denizens = new ArrayList<GameObject>();
+		ArrayList<GameObject> denizens = new ArrayList<>();
 		denizens.addAll(pool.find("monster,!part,"+hostPrefs.getGameKeyVals()+","+BATTLE_BUILDER_KEY));
 		denizens.addAll(pool.find("native,!horse,!treasure,"+hostPrefs.getGameKeyVals()+","+BATTLE_BUILDER_KEY));
 		for(GameObject denizen:denizens) {
@@ -664,7 +664,6 @@ public class BattleBuilder extends JFrame {
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Permanent Spell to Cast:",true);
 		chooser.addGameObjects(spells,false);
 		chooser.setMaxGroupSize(spells.size());
-		//chooser.setForceColumns(5);
 		chooser.setVisible(true);
 		if (chooser.getSelectedText()!=null) {
 			RealmComponent rc = chooser.getFirstSelectedComponent();

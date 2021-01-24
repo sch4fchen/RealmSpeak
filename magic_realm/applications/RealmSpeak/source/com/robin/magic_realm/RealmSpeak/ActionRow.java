@@ -1774,14 +1774,13 @@ public class ActionRow {
 		}
 		doSpellAction(character.getInfiniteColorSources(),targetClearing);
 	}
-	private void doSpellAction(Collection colorMagicSources,TileLocation targetClearing) {
-		// SPX actions are ignored.  Need to ask player if they want
-		// to enchant a chit, or a tile.  The tile option would only be available if the conditions are right
-		// (right color/invocation combination available)
+	private void doSpellAction(Collection<ColorMagic> colorMagicSources,TileLocation targetClearing) {
+		// SPX actions are ignored.  Need to ask player if they want to enchant a chit, or a tile.
+		// The tile option would only be available if the conditions are right (right color/invocation combination available)
 		
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
 		
-		ArrayList<MagicChit> enchantable = new ArrayList<MagicChit>();
+		ArrayList<MagicChit> enchantable = new ArrayList<>();
 		
 		// Chits
 		ArrayList<CharacterActionChitComponent> enchantableChits = character.getEnchantableChits();
@@ -1803,10 +1802,9 @@ public class ActionRow {
 	
 		if (!enchantable.isEmpty()) {
 			// Determine if any of the color magic (infinite sources first) are available to enchant the tile
-			ArrayList tileEnchantableSets = new ArrayList(); // CharacterChitActionComponent[] set
+			ArrayList<RealmComponent[]> tileEnchantableSets = new ArrayList<>(); // CharacterChitActionComponent[] set
 			for (MagicChit chit:enchantable) {
-				for (Iterator i=colorMagicSources.iterator();i.hasNext();) {
-					ColorMagic infiniteSource = (ColorMagic)i.next();
+				for (ColorMagic infiniteSource : colorMagicSources) {
 					if (chit.compatibleWith(infiniteSource)) {
 						// Create a set of one (no need to use up your own color magic when there is an infinite source!)
 						RealmComponent[] set = new RealmComponent[2];
@@ -1818,8 +1816,10 @@ public class ActionRow {
 				}
 			}
 			// check own color chits (player may not want to use infinite source if it uses the wrong chit!)
-			ArrayList<MagicChit> colorMagicChits = new ArrayList<MagicChit>();
-			colorMagicChits.addAll(character.getColorChits());
+			ArrayList<MagicChit> colorMagicChits = new ArrayList<>();
+			if ((!hostPrefs.hasPref(Constants.FE_STEEL_AGAINST_MAGIC) && !character.affectedByKey(Constants.STAFF_RESTRICTED_SPELLCASTING)) || character.hasOnlyStaffAsActivatedWeapon()) {
+				colorMagicChits.addAll(character.getColorChits());
+			}
 			if (hostPrefs.hasPref(Constants.OPT_ENHANCED_ARTIFACTS)) {
 				// Artifacts and Books enchanted into color
 				for(GameObject item:character.getActiveInventory()) {
@@ -2075,7 +2075,7 @@ public class ActionRow {
 		}
 	}
 	private void doRemoteSpellAction() {
-		Collection colorSources = character.getInfiniteColorSources();
+		Collection<ColorMagic> colorSources = character.getInfiniteColorSources();
 		colorSources.addAll(location.clearing.getAllSourcesOfColor(true));
 		doSpellAction(colorSources,location);
 	}
