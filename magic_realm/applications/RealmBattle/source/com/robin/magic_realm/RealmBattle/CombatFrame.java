@@ -1465,9 +1465,8 @@ public class CombatFrame extends JFrame {
 		}
 		else if (actionState==Constants.COMBAT_POSITIONING) {
 			// Verify that everything that needs to be done, has been done (but only worry about friendly sheets)
-			ArrayList friendly = CombatSheet.filterFriends(activeParticipant,allParticipants);
-			for (Iterator i=friendly.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			ArrayList<RealmComponent> friendly = CombatSheet.filterFriends(activeParticipant,allParticipants);
+			for (RealmComponent rc : friendly) {
 				CombatSheet sheet = CombatSheet.createCombatSheet(this,currentBattleModel,rc,interactiveFrame, hostPrefs);
 				
 				// Verify that all denizens are positioned
@@ -1478,6 +1477,11 @@ public class CombatFrame extends JFrame {
 				// Verify that as many combat boxes as can be used, ARE used
 				if (!sheet.usesMaxCombatBoxes() && !hostPrefs.hasPref(Constants.OPT_NO_BATTLE_DIST)) {
 					return new RealmComponentError(rc,"Not using enough boxes","You must place targets in as many boxes as possible (up to 3) before continuing.");
+				}
+				
+				// Verify that combat boxes are used equally
+				if (hostPrefs.hasPref(Constants.FE_DEADLY_REALM) && sheet.getSheetOwner().isCharacter() && !sheet.usesCombatBoxesEqually()) {
+					return new RealmComponentError(rc,"Not using boxes equally","You must place targets as equally as possible.");
 				}
 			}
 			// Verify that attack spell (if any) was placed

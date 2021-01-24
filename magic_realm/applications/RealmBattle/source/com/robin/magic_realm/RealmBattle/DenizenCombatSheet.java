@@ -651,6 +651,10 @@ public class DenizenCombatSheet extends CombatSheet {
 		return usesMaxCombatBoxes(POS_ATTACKERS_BOX1);
 	}
 	
+	public boolean usesCombatBoxesEqually() {
+		return usesCombatBoxesEqually(POS_ATTACKERS_BOX1);
+	}
+	
 	public boolean needsTargetAssignment() {
 		return targetNeedsAssignment;
 	}

@@ -609,6 +609,9 @@ public class CharacterCombatSheet extends CombatSheet {
 	public boolean usesMaxCombatBoxes() {
 		return usesMaxCombatBoxes(POS_TARGET_BOX1);
 	}
+	public boolean usesCombatBoxesEqually() {
+		return usesCombatBoxesEqually(POS_TARGET_BOX1);
+	}
 	public boolean needsTargetAssignment() {
 		return false;
 	}

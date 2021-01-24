@@ -44,6 +44,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 	
 	public abstract boolean hasUnpositionedDenizens();
 	public abstract boolean usesMaxCombatBoxes();
+	public abstract boolean usesCombatBoxesEqually();
 	public abstract boolean needsTargetAssignment();
 	
 	protected abstract Point[] getPositions();
@@ -61,7 +62,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 	protected CombatFrame combatFrame;
 	protected BattleModel model;
 	protected RealmComponent sheetOwner;
-	protected Collection sheetParticipants;
+	protected Collection<RealmComponent> sheetParticipants;
 	protected HashLists layoutHash;
 	protected Hashtable rollerHash; // indexes to rollers
 	
@@ -151,21 +152,47 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		
 		return total>2?boxCount==3:boxCount==total;
 	}
+	protected boolean usesCombatBoxesEqually(int index) {
+		int total = 0;
+		int boxCount = 0;
+		for (int i=index;i<index+3;i++) {
+			int count = countAttacks(i, true);
+			boxCount++;
+			total += count;
+		}
+		
+		int minAttackers = total/boxCount;
+		int maxAttackers = (total + boxCount - 1) / boxCount;
+		
+		for (int i=index;i<index+3;i++) {
+			int attacksInBox = countAttacks(i, true);
+			if (attacksInBox < minAttackers || attacksInBox > maxAttackers) {
+				return false;
+			}
+		}
+		return true;
+	}
 	/**
-	 * @return		The total number of attacks in the box:  doesn't include horses!
+	 * @return		The total number of attacks in the box
 	 */
-	protected int countAttacks(int index) {
+	protected int countAttacks(int index, boolean includeHorses) {
 		int count = 0;
 		ArrayList list = layoutHash.getList(new Integer(index));
 		if (list!=null) {
 			for (Iterator i=list.iterator();i.hasNext();) {
 				RealmComponent rc = (RealmComponent)i.next();
-				if (!rc.isNativeHorse() && !rc.isActionChit()) {
+				if ((includeHorses || !rc.isNativeHorse()) && !rc.isActionChit()) {
 					count++;
 				}
 			}
 		}
 		return count;
+	}
+	/**
+	 * @return		The total number of attacks in the box:  doesn't include horses!
+	 */
+	protected int countAttacks(int index) {
+		return countAttacks(index, false);
 	}
 	protected void updateBattleChitsWithRolls(CombatWrapper combat) {
 		if ((combat.getMissileRolls()!=null && combat.getMissileRolls().size()>0)
@@ -820,10 +847,9 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 	/**
 	 * Returns true, if the list contains at least one friend, or one unhired denizen.
 	 */
-	public static boolean containsFriendOrDenizen(RealmComponent attacker,ArrayList list) {
+	public static boolean containsFriendOrDenizen(RealmComponent attacker,ArrayList<RealmComponent> list) {
 		if (list!=null) {
-			for (Iterator i=list.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : list) {
 				if (rc.isNative() || rc.isMonster() || rc.isCharacter() || rc.isActionChit()) {
 					RealmComponent owner = rc.getOwner();
 					if (owner==null || attacker.equals(rc.getOwner())) {
@@ -834,11 +860,10 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		}
 		return false;
 	}
-	public static ArrayList filterEnemies(RealmComponent attacker,ArrayList list) {
+	public static ArrayList<RealmComponent> filterEnemies(RealmComponent attacker,ArrayList<RealmComponent> list) {
 		if (list!=null) {
-			ArrayList ret = new ArrayList();
-			for (Iterator i=list.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			ArrayList<RealmComponent> ret = new ArrayList<>();
+			for (RealmComponent rc : list) {
 				if (!attacker.equals(rc.getOwner())) {
 					ret.add(rc);
 				}
@@ -847,11 +872,10 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		}
 		return null;
 	}
-	public static ArrayList filterFriends(RealmComponent attacker,ArrayList list) {
+	public static ArrayList<RealmComponent> filterFriends(RealmComponent attacker,ArrayList<RealmComponent> list) {
 		if (list!=null) {
-			ArrayList ret = new ArrayList();
-			for (Iterator i=list.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			ArrayList<RealmComponent> ret = new ArrayList<>();
+			for (RealmComponent rc : list) {
 				if (attacker.equals(rc.getOwner())) {
 					ret.add(rc);
 				}
@@ -860,11 +884,10 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		}
 		return null;
 	}
-	public static ArrayList filterFriendsAndDenizens(RealmComponent attacker,ArrayList list) {
+	public static ArrayList<RealmComponent> filterFriendsAndDenizens(RealmComponent attacker,ArrayList<RealmComponent> list) {
 		if (list!=null) {
-			ArrayList ret = new ArrayList();
-			for (Iterator i=list.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			ArrayList<RealmComponent> ret = new ArrayList<>();
+			for (RealmComponent rc : list) {
 				RealmComponent owner = rc.getOwner();
 				if (owner==null || attacker.equals(rc.getOwner())) {
 					ret.add(rc);
@@ -878,9 +901,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		if (rc.isCharacter()) {
 			return new CharacterCombatSheet(frame,currentBattleModel,rc,interactiveFrame);
 		}
-		else {
-			return new DenizenCombatSheet(frame,currentBattleModel,rc,interactiveFrame, hostPrefs);
-		}
+		return new DenizenCombatSheet(frame,currentBattleModel,rc,interactiveFrame, hostPrefs);
 	}
 	private KeyListener shiftKeyListener = new KeyListener() {
 		public void keyTyped(KeyEvent e) {

@@ -1,5 +1,3 @@
-0001826: Feature Request - First Edition Optional Rules - The Deadly Realm: http://www.nand.it/mr/mr06.html: Combat Rules
-
 0001819: Feature Request: First Edition Search Tables
 0001822: Feature Request: First Edition Optional Rule - Steel Against Magic: (+Disadvantage) A character cannot play a MAGIC counter if he has any weapon counter except a staff activated.
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry 2?")
