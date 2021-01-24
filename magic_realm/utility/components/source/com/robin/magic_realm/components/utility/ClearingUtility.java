@@ -113,10 +113,9 @@ public class ClearingUtility {
 		if (clearing==-1) {
 			clearing = recommendedClearing(tile);
 		}
-		ArrayList<GameObject> added = new ArrayList<GameObject>();
-		Collection hold = new ArrayList(gameObject.getHold()); // this construction is necessary to prevent concurrent modification errors
-		for (Iterator h=hold.iterator();h.hasNext();) {
-			GameObject go = (GameObject)h.next();
+		ArrayList<GameObject> added = new ArrayList<>();
+		Collection<GameObject> hold = new ArrayList<GameObject>(gameObject.getHold()); // this construction is necessary to prevent concurrent modification errors
+		for (GameObject go : hold) {
 			if (testKey==null || go.hasThisAttribute(testKey)) {
 				go.setThisAttribute("clearing",String.valueOf(clearing));
 				GameClient.broadcastClient("host",go.getName()+" is added to "+tile.getName()+", clearing "+clearing);
@@ -131,10 +130,9 @@ public class ClearingUtility {
 	}
 
 	public static Collection getAbandonedItems(TileLocation tileLocation) {
-		ArrayList list = new ArrayList();
-		Collection stuff = tileLocation.clearing.getClearingComponents();
-		for (Iterator i=stuff.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		ArrayList<GameObject> list = new ArrayList<>();
+		Collection<RealmComponent> stuff = tileLocation.clearing.getClearingComponents();
+		for (RealmComponent rc : stuff) {
 			GameObject obj = rc.getGameObject();
 			if (!rc.isPlainSight() && !obj.hasThisAttribute(Constants.CANNOT_MOVE) && rc.isItem()) {
 				list.add(obj);
@@ -152,12 +150,11 @@ public class ClearingUtility {
 	 */
 	public static void restoreChitState(GameData data) {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
-		Collection tileObjects = RealmObjectMaster.getRealmObjectMaster(data).getTileObjects();
+		Collection<GameObject> tileObjects = RealmObjectMaster.getRealmObjectMaster(data).getTileObjects();
 		
 		// Check all the tiles
 		boolean chitsStayFaceUp = hostPrefs.hasPref(Constants.HOUSE1_CHIT_REMAIN_FACE_UP);
-		for (Iterator i=tileObjects.iterator();i.hasNext();) {
-			GameObject obj = (GameObject)i.next();
+		for (GameObject obj : tileObjects) {
 			TileComponent tc = (TileComponent)RealmComponent.getRealmComponent(obj);
 			if (!chitsStayFaceUp && !tc.holdsCharacter()) {
 				tc.setChitsFaceDown(); // ALWAYS turn them face down
@@ -170,7 +167,7 @@ public class ClearingUtility {
 	 * If the provided component can hold inventory, then the inventory is deduced and broken down into individual "seen" items.
 	 */
 	public static ArrayList<RealmComponent> dissolveIntoSeenStuff(RealmComponent rc) {
-		ArrayList<RealmComponent> list = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> list = new ArrayList<>();
 		if (rc.isAnyLeader() || rc.isVisitor() || rc.isCacheChit()) {
 			// check all character and native leader treasures
 			for (Iterator i=rc.getGameObject().getHold().iterator();i.hasNext();) {
@@ -367,7 +364,7 @@ public class ClearingUtility {
 		TileComponent tile = null;
 		RealmComponent parent = null;
 		
-		ArrayList<GameObject> searched = new ArrayList<GameObject>();
+		ArrayList<GameObject> searched = new ArrayList<>();
 		
 		// Find the top level parent, that isn't a tile
 		while(parent==null && go.getHeldBy()!=null) {

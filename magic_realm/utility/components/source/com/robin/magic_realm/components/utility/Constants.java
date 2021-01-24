@@ -484,6 +484,7 @@ public class Constants {
 	
 	// 1st edition rules
 	public static final String FE_KILLER_CAVES = "KillerCaves";
+	public static final String FE_DEADLY_REALM = "DeadlyRealm";
 	
 	// My House Rules
 	public static final String HOUSE1_DWARF_ACTION = "DwarfActions";

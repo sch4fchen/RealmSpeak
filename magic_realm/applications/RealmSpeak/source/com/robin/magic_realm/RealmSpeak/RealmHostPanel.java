@@ -790,6 +790,7 @@ public class RealmHostPanel extends JPanel {
 		
 		// New Day
 		int daysToAdd = 1; // default
+		int bumpMonth = 0;
 		if (RealmCalendar.isSeventhDay(game.getDay())) {
 			// Apply new weather here (if using weather)
 			if (hostPrefs.isUsingSeasons() && hostPrefs.hasPref(Constants.OPT_WEATHER)) {
@@ -804,13 +805,16 @@ public class RealmHostPanel extends JPanel {
 			}
 			
 			// When calculating days in the NEXT week, we may be referring to a new month
-			int bumpMonth = game.getDay()==28?1:0;
+			bumpMonth = game.getDay()==28?1:0;
 			
 			// Determine how many days in the week (DIW)
 			int days = cal.getDays(game.getMonth()+bumpMonth);
 			
 			// Add a number of days equal to (8-DIW)
 			daysToAdd = 8-days;
+		}
+		if (hostPrefs.hasPref(Constants.FE_DEADLY_REALM) && bumpMonth == 1) {
+			SetupCardUtility.turnMonstersAndNativesDarkSideUp(host.getGameData());
 		}
 		
 		// Decrement all terms of hire

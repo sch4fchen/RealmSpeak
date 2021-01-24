@@ -24,6 +24,7 @@ import com.robin.game.server.GameClient;
 import com.robin.general.swing.DieRoller;
 import com.robin.general.util.*;
 import com.robin.magic_realm.components.*;
+import com.robin.magic_realm.components.attribute.Strength;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.table.MonsterGrow;
 import com.robin.magic_realm.components.table.RaiseDead;
@@ -58,7 +59,7 @@ public class SetupCardUtility {
 		// Use a pool to locate all the possible summoning objects for the given monsterDie
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		GamePool pool = new GamePool(data.getGameObjects());
-		ArrayList<String> keyVals = new ArrayList<String>();
+		ArrayList<String> keyVals = new ArrayList<>();
 		keyVals.add(hostPrefs.getGameKeyVals());
 		keyVals.add("monster_die="+monsterDie);
 		keyVals.add("!monster"); // no monsters (just their summon boxes)
@@ -66,10 +67,10 @@ public class SetupCardUtility {
 		ArrayList<GameObject> summons = pool.find(keyVals);
 		
 		// Break out the objects into three groups
-		ArrayList<GameObject> goldSpecials = new ArrayList<GameObject>(); // Visitor/Mission chit boxes
-		ArrayList<GameObject> dwellingSpecific = new ArrayList<GameObject>(); // Native groups
-		ArrayList<GameObject> treasureLocations = new ArrayList<GameObject>(); // Specific Monsters
-		ArrayList<GameObject> otherLocations = new ArrayList<GameObject>(); // summoned in a specific order
+		ArrayList<GameObject> goldSpecials = new ArrayList<>(); // Visitor/Mission chit boxes
+		ArrayList<GameObject> dwellingSpecific = new ArrayList<>(); // Native groups
+		ArrayList<GameObject> treasureLocations = new ArrayList<>(); // Specific Monsters
+		ArrayList<GameObject> otherLocations = new ArrayList<>(); // summoned in a specific order
 		for (GameObject go:summons) {
 			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
 			
@@ -265,7 +266,7 @@ public class SetupCardUtility {
 			}
 		}
 		
-		ArrayList<GameObject> newMonsters = new ArrayList<GameObject>();
+		ArrayList<GameObject> newMonsters = new ArrayList<>();
 		
 		// Expansion: Generate monsters from SEEN generators 
 		for (GameObject go:pool.find("seen,generator,!destroyed,monster_die="+monsterDie)) {
@@ -320,7 +321,7 @@ public class SetupCardUtility {
 			}
 			String summonName = warningName+" "+tileType; // ie., bones C
 			
-			String boardNum = (String)warning.getThisAttribute(Constants.BOARD_NUMBER);
+			String boardNum = warning.getThisAttribute(Constants.BOARD_NUMBER);
 			GameObject loc = SetupCardUtility.getFirstLocationWithSummonName(otherLocations,summonName,boardNum);
 			if (loc!=null) {
 				// found one!  do summon by dumping hold to tile
@@ -343,7 +344,7 @@ public class SetupCardUtility {
 				String soundName = sound.getThisAttribute("sound"); // ie., roar
 				String name = soundName+" "+tileType; // ie., roar M
 				int soundClearing = sound.getThisInt("clearing");
-				String boardNum = (String)sound.getThisAttribute(Constants.BOARD_NUMBER);
+				String boardNum = sound.getThisAttribute(Constants.BOARD_NUMBER);
 				GameObject loc = SetupCardUtility.getFirstLocationWithSummonName(otherLocations,name,boardNum);
 				if (loc!=null) {
 					// found one!  do summon by dumping hold to tile
@@ -351,6 +352,35 @@ public class SetupCardUtility {
 				}
 			}
 		}
+		if (hostPrefs.hasPref(Constants.FE_DEADLY_REALM)) {
+			ArrayList<ClearingDetail> clearings = tl.tile.getClearings();
+			for (ClearingDetail clearing : clearings) {
+				ArrayList<RealmComponent> reds = clearing.getRedSpecials();
+				for (RealmComponent redSpecial : reds) {
+					GameObject redSpecialGo = redSpecial.getGameObject();
+					if (!redSpecialGo.hasThisAttribute("seen")) continue;
+					
+					String name = null;
+					if (redSpecialGo.getThisAttribute(RealmComponent.RED_SPECIAL).matches("lost_castle")) {
+						name = "castle";
+					}
+					else if (redSpecial.getGameObject().getThisAttribute(RealmComponent.RED_SPECIAL).matches("lost_city")) {
+						name = "city";
+					}
+					else {
+						continue;
+					}
+					
+					String boardNum = redSpecialGo.getThisAttribute(Constants.BOARD_NUMBER);
+					GameObject loc = SetupCardUtility.getFirstLocationWithTsSection(otherLocations,name,boardNum);
+					if (loc!=null) {
+						// found one!  do summon by dumping hold to tile
+						newMonsters.addAll(ClearingUtility.dumpHoldToTile(tl.tile.getGameObject(),loc,clearing.getNum()));
+					}
+				}
+			}
+		}
+		
 		summoned.addAll(newMonsters);
 		for (GameObject added : newMonsters) {
 			RealmComponent rc = RealmComponent.getRealmComponent(added);
@@ -590,6 +620,22 @@ public class SetupCardUtility {
 		}
 		return null;
 	}
+	
+	private static GameObject getFirstLocationWithTsSection(ArrayList<GameObject> otherLocations,String name,String boardNum) {
+		name = name.toLowerCase();
+		for (GameObject loc : otherLocations) {
+			String locBoardNum = loc.getThisAttribute(Constants.BOARD_NUMBER);
+			if ((boardNum==null && locBoardNum==null) || (boardNum!=null && boardNum.equals(locBoardNum))) {
+				if (loc.getHoldCount()>0) {
+					String section = loc.getThisAttribute("ts_section"); // TODO Maybe this should be an AttributeList...
+					if (section!=null && section.matches(name)) {
+							return loc;
+					}
+				}
+			}
+		}
+		return null;
+	}
 
 	public static void summonMonsters(HostPrefWrapper hostPrefs,ArrayList<GameObject> summoned,CharacterWrapper character,DieRoller monsterDieRoller) {
 		if (!hostPrefs.getMultiBoardEnabled() || !hostPrefs.hasPref(Constants.EXP_MONSTER_DIE_PER_SET)) {
@@ -731,7 +777,7 @@ public class SetupCardUtility {
 		GameWrapper game = GameWrapper.findGame(data);
 		GamePool pool = new GamePool(data.getGameObjects());
 		
-		ArrayList<String> keyVals = new ArrayList<String>();
+		ArrayList<String> keyVals = new ArrayList<>();
 		keyVals.add(hostPrefs.getGameKeyVals());
 		keyVals.add("monster_die="+monsterDie);
 		keyVals.add("setup_start"); // this should get all monsters and natives
@@ -739,21 +785,21 @@ public class SetupCardUtility {
 		keyVals.add("!"+RealmComponent.OWNER_ID); // this identifies unhired natives
 		Collection<GameObject> returning = pool.extract(keyVals);
 		
-		keyVals = new ArrayList<String>();
+		keyVals = new ArrayList<>();
 		keyVals.add(hostPrefs.getGameKeyVals());
 		keyVals.add("monster_die="+monsterDie);
 		keyVals.add("setup_start"); // this should get all monsters and natives
 		keyVals.add("needs_init"); // this identifies those that need to initialized (start of game)
 		returning.addAll(pool.extract(keyVals));
 		
-		keyVals = new ArrayList<String>();
+		keyVals = new ArrayList<>();
 		keyVals.add(hostPrefs.getGameKeyVals());
 		keyVals.add("monster_die="+monsterDie);
 		keyVals.add("setup_start"); // this should get all monsters and natives
 		keyVals.add(Constants.DEAD); // this identifies those that are DEAD
 		returning.addAll(pool.extract(keyVals));
 		
-		keyVals = new ArrayList<String>();
+		keyVals = new ArrayList<>();
 		keyVals.add(hostPrefs.getGameKeyVals());
 		keyVals.add("monster_die=99"); // the ghosts
 		keyVals.add("setup_start");
@@ -909,7 +955,7 @@ public class SetupCardUtility {
 	public static GameObject getDwellingLeader(GameObject dwelling) {
 		String setupStart = StringUtilities.capitalize(dwelling.getThisAttribute("dwelling"));
 		String boardNumber = dwelling.getThisAttribute(Constants.BOARD_NUMBER);
-		ArrayList<String> query = new ArrayList<String>();
+		ArrayList<String> query = new ArrayList<>();
 		query.add("rank=HQ");
 		query.add("setup_start="+setupStart);
 		if (boardNumber!=null) {
@@ -928,5 +974,35 @@ public class SetupCardUtility {
 			placedChits >>= 1; // divide by 2
 		}
 		return placedChits<totalChitsToPlace;
+	}
+	
+	public static void turnMonstersAndNativesDarkSideUp(GameData data) {
+		GamePool pool = new GamePool(data.getGameObjects());
+		ArrayList<String> query = new ArrayList<>();
+		query.add("denizen");
+		query.add("monster");
+		Collection<GameObject> monsters = pool.find(query);
+		query.clear();
+		query.add("denizen");
+		query.add("native");
+		Collection<GameObject> natives = pool.find(query);
+		
+		ArrayList<GameObject> denizens = new ArrayList<>();
+		denizens.addAll(monsters);
+		denizens.addAll(natives);
+		
+		for (GameObject denizen : denizens) {
+			RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
+			if (denizenRc instanceof MonsterChitComponent) {
+				MonsterChitComponent monsterChit = (MonsterChitComponent) denizenRc;
+				if (monsterChit.getVulnerability().weakerOrEqualTo(Strength.valueOf("H")) && monsterChit.isLightSideUp()) {
+					monsterChit.setDarkSideUp();
+				}
+			}
+			else if (denizenRc.isNative() && !denizenRc.isHiredOrControlled()) {
+				NativeChitComponent nativeChit = (NativeChitComponent) denizenRc;
+				nativeChit.setDarkSideUp();
+			}
+		}
 	}
 }

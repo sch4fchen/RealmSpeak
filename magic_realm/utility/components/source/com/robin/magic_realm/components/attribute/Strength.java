@@ -74,9 +74,9 @@ public class Strength {
 	}
 	public String getChitString() {
 		switch(strengthId) {
-			case LIGHT:			return "L";
+			case LIGHT:				return "L";
 			case MEDIUM:			return "M";
-			case HEAVY:			return "H";
+			case HEAVY:				return "H";
 			case TREMENDOUS:		return "T";
 			case MAXIMUM:			return "X";
 			case RED:				return "!";
@@ -85,9 +85,9 @@ public class Strength {
 	}
 	public String getChar() {
 		switch(strengthId) {
-			case LIGHT:			return "L";
+			case LIGHT:				return "L";
 			case MEDIUM:			return "M";
-			case HEAVY:			return "H";
+			case HEAVY:				return "H";
 			case TREMENDOUS:		return "T";
 			case MAXIMUM:			return "X";
 			case RED:				return "!";
@@ -96,9 +96,9 @@ public class Strength {
 	}
 	public String toString() {
 		switch(strengthId) {
-			case LIGHT:			return "L";
+			case LIGHT:				return "L";
 			case MEDIUM:			return "M";
-			case HEAVY:			return "H";
+			case HEAVY:				return "H";
 			case TREMENDOUS:		return "T";
 			case MAXIMUM:			return "X";
 			case RED:				return "RED";
@@ -107,9 +107,9 @@ public class Strength {
 	}
 	public String fullString() {
 		switch(strengthId) {
-			case LIGHT:			return "Light";
+			case LIGHT:				return "Light";
 			case MEDIUM:			return "Medium";
-			case HEAVY:			return "Heavy";
+			case HEAVY:				return "Heavy";
 			case TREMENDOUS:		return "Tremendous";
 			case MAXIMUM:			return "Maximum";
 			case RED:				return "RED";

@@ -35,13 +35,13 @@ public class GameCommandDialog extends JDialog {
 	protected GameCommand originalCommand;
 	protected GameCommand modelCommand; // This is the model that allows us to know which controls are showing
 	
-	protected JComboBox type;
+	protected JComboBox<String> type;
 	protected JTextField newPool;
 	protected JComboBox from;
 	protected JComboBox to;
 	protected JLabel targetObject;
 	protected IntegerField count;
-	protected JComboBox transferType;
+	protected JComboBox<String> transferType;
 	protected JTextField keyVals;
 	
 	protected Box newPoolBox;
@@ -52,7 +52,7 @@ public class GameCommandDialog extends JDialog {
 	protected Box transferTypeBox;
 	protected Box keyValsBox;
 	
-	public GameCommandDialog(ArrayList allCommands,GameCommand originalCommand) {
+	public GameCommandDialog(ArrayList<GameCommand> allCommands,GameCommand originalCommand) {
 		this.originalCommand = originalCommand;
 		modelCommand = GameCommand.getCommandForName(originalCommand.getGameSetup(),originalCommand.getTypeName());
 		modelCommand.copyFrom(originalCommand);
@@ -76,8 +76,8 @@ public class GameCommandDialog extends JDialog {
 		getContentPane().validate();
 		getContentPane().repaint();
 	}
-	private ArrayList findAvailablePoolNames(ArrayList allCommands) {
-		ArrayList previousPoolNames = new ArrayList();
+	private ArrayList<String> findAvailablePoolNames(ArrayList<GameCommand> allCommands) {
+		ArrayList<String> previousPoolNames = new ArrayList<>();
 		previousPoolNames.add("ALL");
 		for (Iterator i=allCommands.iterator();i.hasNext();) {
 			GameCommand prev = (GameCommand)i.next();
@@ -165,7 +165,7 @@ public class GameCommandDialog extends JDialog {
 				countBox.add(Box.createHorizontalGlue());
 			box.add(countBox);
 				transferTypeBox = group.createLabelLine("Transfer");
-					transferType = new JComboBox();
+					transferType = new JComboBox<String>();
 					transferType.addItem(GamePool.RANDOM_NAME);
 					transferType.addItem(GamePool.FROM_BEGINNING_NAME);
 					transferType.addItem(GamePool.FROM_END_NAME);
@@ -223,7 +223,6 @@ public class GameCommandDialog extends JDialog {
 			newCommand.setCount(n.intValue());
 		}
 		catch(NumberFormatException ex) {
-			// Ignore
 		}
 		newCommand.setTargetObject(modelCommand.getTargetObject());
 		newCommand.setTransferType(GamePool.getTransferType((String)transferType.getSelectedItem()));

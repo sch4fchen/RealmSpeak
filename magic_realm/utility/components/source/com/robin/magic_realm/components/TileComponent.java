@@ -848,7 +848,7 @@ public class TileComponent extends ChitComponent {
 		offroad.x += lastPaintLocation.x;
 		offroad.y += lastPaintLocation.y;
 		
-		ArrayList componentsToDraw = new ArrayList();
+		ArrayList<RealmComponent> componentsToDraw = new ArrayList<>();
 		
 		if (displayOption.tileBewitchingSpells) {
 			SpellMasterWrapper spellMaster = SpellMasterWrapper.getSpellMaster(getGameObject().getGameData());
@@ -1016,7 +1016,7 @@ public class TileComponent extends ChitComponent {
 			if (!obj.hasThisAttribute("otherClearing")) { // ignore components that are partway
 				RealmComponent goc = RealmComponent.getRealmComponent(obj);
 				String clearingNum = obj.getThisAttribute("clearing");
-				if (goc instanceof RedSpecialChitComponent) {
+				if (goc.isRedSpecial()) {
 					ArrayList innerHold = new ArrayList(obj.getHold());
 					for (Iterator n = innerHold.iterator(); n.hasNext();) {
 						GameObject chit = (GameObject) n.next();
@@ -1038,14 +1038,14 @@ public class TileComponent extends ChitComponent {
 	/**
 	 * Returns a collection of chits that can be shown to the player when they get the "Clues" result on a search table.
 	 */
-	public Collection getClues() {
-		ArrayList clues = new ArrayList();
+	public Collection<StateChitComponent> getClues() {
+		ArrayList<StateChitComponent> clues = new ArrayList<>();
 		for (Iterator i = gameObject.getHold().iterator(); i.hasNext();) {
 			GameObject obj = (GameObject) i.next();
 			RealmComponent goc = RealmComponent.getRealmComponent(obj);
 			if (goc instanceof StateChitComponent) {
 				StateChitComponent state = (StateChitComponent) goc;
-				if (state instanceof RedSpecialChitComponent) { // resolve red specials...
+				if (state.isRedSpecial()) {
 					for (Iterator n = obj.getHold().iterator(); n.hasNext();) {
 						GameObject chit = (GameObject) n.next();
 						StateChitComponent innerState = (StateChitComponent) RealmComponent.getRealmComponent(chit);
@@ -1062,12 +1062,12 @@ public class TileComponent extends ChitComponent {
 		return clues;
 	}
 
-	private Ellipse2D.Float getClearingShape(Point p, int radius) {
+	private static Ellipse2D.Float getClearingShape(Point p, int radius) {
 		int diam = radius << 1;
 		return new Ellipse2D.Float(p.x - radius, p.y - radius, diam, diam);
 	}
 
-	private void drawClearing(Graphics2D g, ClearingDetail detail, int radius, boolean dottedBorder) {
+	private static void drawClearing(Graphics2D g, ClearingDetail detail, int radius, boolean dottedBorder) {
 		Point p = detail.getPosition();
 		Shape shape = getClearingShape(p, radius);
 		if (dottedBorder) {
@@ -1080,7 +1080,7 @@ public class TileComponent extends ChitComponent {
 		}
 	}
 
-	private void drawPath(Graphics2D g, PathDetail detail, int size, boolean dottedBorder) {
+	private static void drawPath(Graphics2D g, PathDetail detail, int size, boolean dottedBorder) {
 		Shape shape = detail.getShape();
 		Stroke stroke = new BasicStroke(detail.isNarrow() ? (size >> 1) : size);
 		if (dottedBorder) {
@@ -1129,7 +1129,7 @@ public class TileComponent extends ChitComponent {
 	}
 
 	private ArrayList<StateChitComponent> setChitsFacing(boolean up) {
-		ArrayList<StateChitComponent> flipped = new ArrayList<StateChitComponent>();
+		ArrayList<StateChitComponent> flipped = new ArrayList<>();
 		ArrayList hold = new ArrayList(gameObject.getHold()); // to prevent concurrent modification when red specials are revealed
 		for (Iterator i = hold.iterator(); i.hasNext();) {
 			GameObject go = (GameObject) i.next();

@@ -140,10 +140,14 @@ public class RealmSpeakInit {
 		
 		// Some items require a spell be cast (Flying Carpet)
 		doItemSpellCasting();
+		
+		if (hostPrefs.hasPref(Constants.FE_DEADLY_REALM)) {
+			SetupCardUtility.turnMonstersAndNativesDarkSideUp(data);
+		}
 	}
 	private void cleanupTiles() {
 		ArrayList<GameObject> tiles = RealmObjectMaster.getRealmObjectMaster(data).getTileObjects();
-		ArrayList<GameObject> unused = new ArrayList<GameObject>();
+		ArrayList<GameObject> unused = new ArrayList<>();
 		for(GameObject tile:tiles) {
 			if (tile.getHoldCount()==0) {
 				unused.add(tile);
@@ -398,7 +402,7 @@ public class RealmSpeakInit {
 	}
 	private void doItemSpellCasting() {
 		GamePool pool = new GamePool(data.getGameObjects());
-		ArrayList<String> query = new ArrayList<String>();
+		ArrayList<String> query = new ArrayList<>();
 		query.addAll(GamePool.makeKeyVals(hostPrefs.getGameKeyVals()));
 		query.add(Constants.CAST_SPELL_ON_INIT);
 		Collection<GameObject> needsSpellInit = pool.find(query);

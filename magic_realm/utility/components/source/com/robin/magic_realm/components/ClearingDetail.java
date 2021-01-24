@@ -299,7 +299,7 @@ public class ClearingDetail {
 	}
 	public ArrayList<RealmComponent> getClearingComponentsInPlainSight(CharacterWrapper character) {
 		boolean hidden = character.isHidden();
-		ArrayList<RealmComponent> plainSight = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> plainSight = new ArrayList<>();
 		ArrayList<RealmComponent> list = getClearingComponents(false);
 		for(RealmComponent item:list) {
 			if (item.isPlainSight()) {
@@ -326,7 +326,7 @@ public class ClearingDetail {
 	public ArrayList<RealmComponent> getClearingComponents(boolean includeSites) {
 		ArrayList<RealmComponent> c = getParent().getRealmComponentsAt(getNum());
 		if (includeSites) {
-			ArrayList<RealmComponent> more = new ArrayList<RealmComponent>();
+			ArrayList<RealmComponent> more = new ArrayList<>();
 			for (RealmComponent rc : c) {
 				if (rc.isTreasureLocation() && !rc.isCacheChit()) {
 					// Check TLs for face up SITE CARDS, cuz those should be painted too
@@ -355,7 +355,7 @@ public class ClearingDetail {
 	 * other objects.  In fact, this will get all objects, regardless of depth.
 	 */
 	public ArrayList<RealmComponent> getDeepClearingComponents() {
-		ArrayList<RealmComponent> found = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> found = new ArrayList<>();
 		for (RealmComponent rc : getParent().getRealmComponentsAt(getNum())) {
 			found.add(rc);
 			Collection<GameObject> gos = RealmUtility.getAllGameObjectsIn(rc.getGameObject(),true);
@@ -400,13 +400,13 @@ public class ClearingDetail {
 	 * Returns all sources of magic in this clearing, available to everyone.
 	 */
 	public ArrayList<ColorMagic> getAllSourcesOfColor(boolean checkForColorMods) {
-		ArrayList<ColorMagic> list = new ArrayList<ColorMagic>();
+		ArrayList<ColorMagic> list = new ArrayList<>();
 		for (RealmComponent rc:getClearingComponents()) {
 			list.addAll(SpellUtility.getSourcesOfColor(rc));
 		}
 		list.addAll(getClearingColorMagic());
 		
-		ArrayList<ColorMagic> uniqueList = new ArrayList<ColorMagic>();
+		ArrayList<ColorMagic> uniqueList = new ArrayList<>();
 		for (ColorMagic cm:list) {
 			if (!uniqueList.contains(cm)) {
 				uniqueList.add(cm);
@@ -422,7 +422,7 @@ public class ClearingDetail {
 		return uniqueList;
 	}
 	public ArrayList<GameObject> getAllActivatedStuff() {
-		ArrayList<GameObject> stuff = new ArrayList<GameObject>();
+		ArrayList<GameObject> stuff = new ArrayList<>();
 		for (RealmComponent rc:getClearingComponents()) {
 			for (RealmComponent seen:ClearingUtility.dissolveIntoSeenStuff(rc)) {
 				GameObject thing = seen.getGameObject();
@@ -457,6 +457,15 @@ public class ClearingDetail {
 			}
 		}
 		return null;
+	}
+	public ArrayList<RealmComponent> getRedSpecials() {
+		ArrayList<RealmComponent> reds = new ArrayList<>();
+		for (RealmComponent rc : getClearingComponents()) {
+			if (rc.isRedSpecial()) {
+				reds.add(rc);
+			}
+		}
+		return reds;
 	}
 	public boolean holdsDwelling() {
 		return getDwelling()!=null;

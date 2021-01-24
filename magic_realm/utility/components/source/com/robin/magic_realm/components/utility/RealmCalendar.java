@@ -211,7 +211,7 @@ public class RealmCalendar {
 		// Magic is a bit more involved
 		String magic = currentSeason.getThisAttribute("magic");
 		tokens = new StringTokenizer(magic,",");
-		seventhDayColors = new ArrayList<ColorMagic>();
+		seventhDayColors = new ArrayList<>();
 		while(tokens.hasMoreTokens()) {
 			String val = tokens.nextToken();
 			seventhDayColors.add(ColorMagic.makeColorMagic(val,true));
@@ -225,19 +225,18 @@ public class RealmCalendar {
 		}
 	}
 	private void loadSeasonsHash() {
-		seasonsHash = new Hashtable<Integer,GameObject>();
+		seasonsHash = new Hashtable<>();
 		GamePool pool = new GamePool(gameData.getGameObjects());
-		ArrayList list = pool.find("season");
-		for (Iterator i=list.iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		ArrayList<GameObject> list = pool.find("season");
+		for (GameObject go : list) {
 			Integer n = go.getInteger("this","season");
 			seasonsHash.put(n,go);
 		}
 	}
 	private int getIndexOf(String seasonName) {
-		ArrayList list = getAllSeasons();
+		ArrayList<GameObject> list = getAllSeasons();
 		for (int i=0;i<list.size();i++) {
-			GameObject go = (GameObject)list.get(i);
+			GameObject go = list.get(i);
 			if (go.getName().equals(seasonName)) {
 				return i;
 			}
@@ -245,7 +244,7 @@ public class RealmCalendar {
 		throw new IllegalArgumentException("Invalid argument: "+seasonName);
 	}
 	public ArrayList<GameObject> getAllSeasons() {
-		ArrayList<GameObject> list = new ArrayList<GameObject>(seasonsHash.values());
+		ArrayList<GameObject> list = new ArrayList<>(seasonsHash.values());
 		Collections.sort(list,seasonComparator);
 		return list;
 	}
@@ -356,7 +355,7 @@ public class RealmCalendar {
 	}
 	public ArrayList<ColorMagic> getColorMagic(int month,int day) {
 		updateSeason(month);
-		ArrayList<ColorMagic> colors = new ArrayList<ColorMagic>();
+		ArrayList<ColorMagic> colors = new ArrayList<>();
 		
 		if (day==7) {
 			colors.addAll(seventhDayColors);
@@ -374,9 +373,9 @@ public class RealmCalendar {
 		return colors;
 	}
 	public String getColorMagicName(int month,int day) {
-		Collection c = getColorMagic(month,day);
+		Collection<ColorMagic> c = getColorMagic(month,day);
 		if (c.size()==1) {
-			ColorMagic cm = (ColorMagic)c.iterator().next();
+			ColorMagic cm = c.iterator().next();
 			return cm.getColorName();
 		}
 		else if (c.size()==2) {
@@ -442,9 +441,9 @@ public class RealmCalendar {
 	public static void reset() {
 		currentCalendar = null;
 	}
-	public static ArrayList findSeasons(GameData data) {
+	public static ArrayList<GameObject> findSeasons(GameData data) {
 		GamePool pool = new GamePool(data.getGameObjects());
-		ArrayList list = pool.find("season");
+		ArrayList<GameObject> list = pool.find("season");
 		Collections.sort(list,seasonComparator);
 		return list;
 	}
