@@ -26,18 +26,16 @@ import com.robin.general.swing.DieRoller;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
-public class MountainPeer extends Peer1ed {
+public class AnyClearingPeer1ed extends Peer1ed {
 	
-	private static final String[] TYPES = {"woods","normal","mountain"};
-	
-	public MountainPeer(JFrame frame) {
+	public AnyClearingPeer1ed(JFrame frame) {
 		super(frame);
 	}
 	public String getTableName(boolean longDescription) {
-		return "Peer Neighboring Clearing";
+		return "Peer Any Clearing";
 	}
 	public String apply(CharacterWrapper character, DieRoller inRoller) {
-		TileLocation tl = PeerClearingChooser.chooseClearingFromMountain(getParentFrame(), character);
+		TileLocation tl = PeerClearingChooser.chooseAnyClearing(getParentFrame(), character);
 		targetClearing = tl.clearing;
 		return tl.toString()+": "+super.apply(character,inRoller);
 	}

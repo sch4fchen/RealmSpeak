@@ -24,8 +24,6 @@ import javax.swing.JFrame;
 
 import com.robin.general.swing.DieRoller;
 import com.robin.magic_realm.components.attribute.TileLocation;
-import com.robin.magic_realm.components.swing.CenteredMapView;
-import com.robin.magic_realm.components.swing.TileLocationChooser;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class AnyClearingPeer extends Peer {
@@ -37,16 +35,7 @@ public class AnyClearingPeer extends Peer {
 		return "Peer Any Clearing";
 	}
 	public String apply(CharacterWrapper character, DieRoller inRoller) {
-		// Pick a clearing to PEER
-		TileLocation planned = character.getPlannedLocation();
-		CenteredMapView.getSingleton().setMarkClearingAlertText("Peer into which clearing?");
-		CenteredMapView.getSingleton().markAllClearings(true);
-		TileLocationChooser chooser = new TileLocationChooser(getParentFrame(),CenteredMapView.getSingleton(),planned);
-		chooser.setVisible(true);
-		
-		// Do the peer
-		CenteredMapView.getSingleton().markAllClearings(false);
-		TileLocation tl = chooser.getSelectedLocation();
+		TileLocation tl = PeerClearingChooser.chooseAnyClearing(getParentFrame(), character);
 		targetClearing = tl.clearing;
 		return tl.toString()+": "+super.apply(character,inRoller);
 	}

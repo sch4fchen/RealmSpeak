@@ -179,8 +179,14 @@ public abstract class RealmTable {
 	public static RealmTable mountainPeer(JFrame frame) {
 		return new MountainPeer(frame);
 	}
+	public static RealmTable mountainPeer1ed(JFrame frame) {
+		return new MountainPeer1ed(frame);
+	}
 	public static RealmTable peerAny(JFrame frame) {
 		return new AnyClearingPeer(frame);
+	}
+	public static RealmTable peerAny1ed(JFrame frame) {
+		return new AnyClearingPeer1ed(frame);
 	}
 	public static RealmTable locate(JFrame frame,ClearingDetail clearing) {
 		return new Locate(frame,clearing);

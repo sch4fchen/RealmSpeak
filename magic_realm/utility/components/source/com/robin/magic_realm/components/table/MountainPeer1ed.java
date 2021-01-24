@@ -26,11 +26,11 @@ import com.robin.general.swing.DieRoller;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
-public class MountainPeer extends Peer1ed {
+public class MountainPeer1ed extends Peer {
 	
 	private static final String[] TYPES = {"woods","normal","mountain"};
 	
-	public MountainPeer(JFrame frame) {
+	public MountainPeer1ed(JFrame frame) {
 		super(frame);
 	}
 	public String getTableName(boolean longDescription) {
