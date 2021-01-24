@@ -456,7 +456,6 @@ public class DieRoller extends JComponent {
 		JFrame frame = new JFrame();
 		frame.getContentPane().setLayout(new BorderLayout());
 			final DieRoller roller = new DieRoller();
-//roller.adjustDieSize(25,6);
 			roller.addWhiteDie();
 			roller.addWhiteDie();
 			roller.addWhiteDie();
