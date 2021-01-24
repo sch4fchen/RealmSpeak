@@ -195,6 +195,7 @@ public class CombatFrame extends JFrame {
 	
 	protected static DieRoller ambushRoll = null;
 	protected static RealmComponent ambusher = null;
+	protected static boolean ambushRollAtEndOfCombatRound = false;
 	public static boolean successfulAmbush() {
 		return ambushRoll!=null && ambushRoll.getHighDieResult()<6;
 	}
@@ -1229,6 +1230,11 @@ public class CombatFrame extends JFrame {
 	private void doNext() {
 		if (activeCharacterIsHere) activeCharacter.testQuestRequirements(this);
 		if (okayToContinue()) {
+			if (ambushRollAtEndOfCombatRound && actionState==Constants.COMBAT_RESOLVING) {
+				ambushRoll = DieRollBuilder.getDieRollBuilder(this,activeCharacter).createHideRoller();
+				ambusher = RealmComponent.getRealmComponent(activeCharacter.getGameObject());
+				ambushRollAtEndOfCombatRound = false;
+			}
 			checkAmbush();
 			checkRunAway();
 			if (actionState==Constants.COMBAT_ASSIGN || actionState==Constants.COMBAT_DEPLOY) {
@@ -1961,9 +1967,14 @@ public class CombatFrame extends JFrame {
 			// Casting a spell causes you to become unhidden, if it targets an individual (not clearing)
 			if (spell.targetsCharacterOrDenizen() && activeCharacter.isHidden()) {
 				if (spell.getTargetCount()<=1 && (hostPrefs.hasPref(Constants.ADV_AMBUSHES) || activeCharacter.affectedByKey(Constants.SNEAKY))) {
-					// You get an ambush roll to see if you stay hidden
-					ambushRoll = DieRollBuilder.getDieRollBuilder(this,activeCharacter).createHideRoller();
-					ambusher = RealmComponent.getRealmComponent(activeCharacter.getGameObject());
+					if (hostPrefs.hasPref(Constants.FE_AMBUSH_END_OF_COMBATROUND)) {
+						ambushRollAtEndOfCombatRound = true;
+					}
+					else {
+						// You get an ambush roll to see if you stay hidden
+						ambushRoll = DieRollBuilder.getDieRollBuilder(this,activeCharacter).createHideRoller();
+						ambusher = RealmComponent.getRealmComponent(activeCharacter.getGameObject());
+					}
 				}
 				else {
 					activeCharacter.setHidden(false,false);
@@ -2086,9 +2097,7 @@ public class CombatFrame extends JFrame {
 		if (hostPrefs.hasPref(Constants.TE_WATCHFUL_NATIVES)) {
 			if (theTarget.getOwner()!=null) return; // this doesn't apply to hirelings!!
 			String targetedGroup = theTarget.getGameObject().getThisAttribute("native");
-			/* Get all the unassigned natives of this group in the clearing, and
-			 * make them "watchful"
-			 */
+			/* Get all the unassigned natives of this group in the clearing, and make them "watchful" */
 			
 			BattleGroup group = currentBattleModel.getDenizenBattleGroup();
 			if (group!=null) {
@@ -2215,15 +2224,20 @@ public class CombatFrame extends JFrame {
 		// A hidden attacker becomes unhidden on targeting (AMBUSH rules will change how this works somewhat)
 		if (theAttacker.isHidden()) {
 			boolean hiddenStatus = false;
-			
 			if (theAttacker.isCharacter() && parent!=null && hostPrefs!=null) {
 				CharacterChitComponent charChit = (CharacterChitComponent)theAttacker;
 				CharacterWrapper character = new CharacterWrapper(charChit.getGameObject());
 				if (charChit.isMissile() && (hostPrefs.hasPref(Constants.ADV_AMBUSHES) || character.affectedByKey(Constants.SNEAKY))){
-					// You get an ambush roll to see if you stay hidden
-					ambushRoll = DieRollBuilder.getDieRollBuilder(parent,character).createHideRoller();
-					ambusher = theAttacker;
-					hiddenStatus = true; // postpone until hide roll is performed
+					if (hostPrefs.hasPref(Constants.FE_AMBUSH_END_OF_COMBATROUND)) {
+						ambushRollAtEndOfCombatRound = true;
+						hiddenStatus = true;
+					}
+					else {
+						// You get an ambush roll to see if you stay hidden
+						ambushRoll = DieRollBuilder.getDieRollBuilder(parent,character).createHideRoller();
+						ambusher = theAttacker;
+						hiddenStatus = true; // postpone until hide roll is performed
+					}
 				}
 			}
 			if (!hiddenStatus) {

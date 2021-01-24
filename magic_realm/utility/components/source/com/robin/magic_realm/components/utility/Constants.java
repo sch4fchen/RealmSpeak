@@ -489,6 +489,7 @@ public class Constants {
 	public static final String FE_KILLER_CAVES = "KillerCaves";
 	public static final String FE_DEADLY_REALM = "DeadlyRealm";
 	public static final String FE_STEEL_AGAINST_MAGIC = "SteelAgainstMagic";
+	public static final String FE_AMBUSH_END_OF_COMBATROUND = "AmbushRollEndOfCombatround";
 	
 	// My House Rules
 	public static final String HOUSE1_DWARF_ACTION = "DwarfActions";
