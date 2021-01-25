@@ -1,13 +1,13 @@
-Expansion 1: Items: Magic path
-Expansion 1: More Ambushes/Throwing Weapons + Ability: "Throwing_weapons"
+Expansion 1: More Ambushes/Throwing Weapons + Ability: "Throwing_weapons": Spear, Axe, Dagger?
 Expansion 1: Two-Handed Combat + Ability: "Dual Wielding"
-0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry")
+0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): no missle attacks
 Expansion 1: Parry + Ability: "ParryLikeShield"
 
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
-Expansion 1: Spells: Magic Shield, Sleep, Wall of Force, Duel, Spider web, Rocks Glow, Mystic boots, Flame sword, Fighting hands, Magic mirror, Lucky blow, Fire trap
+Expansion 1: Items: Magic path, Hound, Magic meat, Needful thing
 Expansion 1: Travelers: Doppleganger, Necromancer, Soothsayer
+Expansion 1: Spells (to "New spells": new_spells_1): Magic Shield, Sleep, Wall of Force, Duel, Spider web, Rocks Glow, Mystic boots, Flame sword, Fighting hands, Magic mirror, Lucky blow, Fire trap
 Expansion 1: Assassin Guild, Nature Guild (see below)
 A LITTLE HELP FROM FRIENDS: http://www.nand.it/mr/mr02.html
 0001563: Showing flip sides of tiles and counters in HTML
