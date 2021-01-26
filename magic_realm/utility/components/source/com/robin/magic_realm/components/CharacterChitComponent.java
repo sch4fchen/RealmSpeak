@@ -99,7 +99,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		GameObject transmorph = character.getTransmorph();
 		if (transmorph != null) {
 			// Draw image
-			String icon_type = (String) transmorph.getThisAttribute(Constants.ICON_TYPE);
+			String icon_type = transmorph.getThisAttribute(Constants.ICON_TYPE);
 			if (icon_type != null) {
 				String iconDir = transmorph.getThisAttribute(Constants.ICON_FOLDER);
 				if (useColorIcons()) {
@@ -107,7 +107,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				}
 				drawIcon(g,iconDir, icon_type, 0.75);
 			}
-			icon_type = (String) gameObject.getThisAttribute(Constants.ICON_TYPE);
+			icon_type = gameObject.getThisAttribute(Constants.ICON_TYPE);
 			if (icon_type != null) {
 				String iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER);
 				int offset = (getChitSize()>>2);
@@ -214,9 +214,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			if (rc == this) {
 				return BattleUtility.getMoveSpeed(getTransmorphedComponent());
 			}
-			else {
-				return BattleUtility.getMoveSpeed(rc);
-			}
+			return BattleUtility.getMoveSpeed(rc);
 		}
 		return new Speed();
 	}
@@ -288,8 +286,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	
 	public GameObject getTreasureWeaponObject() {
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
-		for (Iterator i=character.getActiveInventory().iterator();i.hasNext();) {
-			GameObject item = (GameObject)i.next();
+		for (GameObject item : character.getActiveInventory()) {
 			if (item.hasThisAttribute("attack")) {
 				return item;
 			}
@@ -379,9 +376,9 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	}
 	private ArrayList<RealmComponent> getArmors(int box,int attackOrderPos) {
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
-		ArrayList<RealmComponent> armors = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> armors = new ArrayList<>();
 		
-		ArrayList<GameObject> search = new ArrayList<GameObject>();
+		ArrayList<GameObject> search = new ArrayList<>();
 		search.addAll(character.getActiveInventory());
 		if (character.isFortified()) {
 			search.add(character.getGameObject());
@@ -647,7 +644,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				// Direct hit (no armor)
 				if ((hostPrefs.hasPref(Constants.ADV_SERIOUS_WOUNDS) || character.affectedByKey(Constants.TOUGHNESS)) && harm.getAppliedStrength().equalTo(vulnerability)) {
 					// Serious wounds
-					Collection c = character.getNonWoundedChits();
+					Collection<CharacterActionChitComponent> c = character.getNonWoundedChits();
 					DieRoller roller = DieRollBuilder.getDieRollBuilder(null,character).createRoller("wounds");
 					int seriousWounds = roller.getHighDieResult();
 					int currentWounds = combat.getNewWounds();
@@ -672,7 +669,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				}
 			}
 			else if (harm.isWound()) {
-				Collection c = character.getNonWoundedChits();
+				Collection<CharacterActionChitComponent> c = character.getNonWoundedChits();
 				if (c.size() > 1) {
 					combat.addNewWounds(1);
 				}
@@ -686,7 +683,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			if (!characterWasKilled && !tookSeriousWounds && harm.getAppliedStrength().strongerOrEqualTo(minForWound)) {
 				// Wound character here, unless character is immune...
 				if (armor==null || !character.hasActiveInventoryThisKey(Constants.STOP_WOUNDS)) {
-					Collection c = character.getActiveChits();
+					Collection<CharacterActionChitComponent> c = character.getActiveChits();
 					int currentWounds = combat.getNewWounds();
 					if (c != null && c.size() > currentWounds) {
 						// Can't do the selection here! (this is called from the host, not the client)
@@ -747,11 +744,9 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			if (weapon != null) {
 				return weapon.isMissile();
 			}
-			else {
-				GameObject tw = getTreasureWeaponObject();
-				if (tw!=null) {
-					return tw.hasThisAttribute("missile");
-				}
+			GameObject tw = getTreasureWeaponObject();
+			if (tw!=null) {
+				return tw.hasThisAttribute("missile");
 			}
 		}
 		return false;

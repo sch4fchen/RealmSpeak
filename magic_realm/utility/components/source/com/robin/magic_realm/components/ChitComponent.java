@@ -301,10 +301,9 @@ if (icon==null) {
 		Graphics2D g = (Graphics2D)g1;
 		if (CombatWrapper.hasCombatInfo(getGameObject())) {
 			int offset = (getChitSize()-32)>>1;
-			Collection attackers = (new CombatWrapper(getGameObject())).getAttackers();
+			Collection<GameObject> attackers = (new CombatWrapper(getGameObject())).getAttackers();
 			if (!attackers.isEmpty()) {
-				for (Iterator i=attackers.iterator();i.hasNext();) {
-					GameObject go = (GameObject)i.next();
+				for (GameObject go : attackers) {
 					RealmComponent rc = RealmComponent.getRealmComponent(go);
 					if (rc.isCharacter()) { // only show character markers (everything else is based on position on sheets)
 						CharacterWrapper character = new CharacterWrapper(go);

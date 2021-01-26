@@ -529,10 +529,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return getBoolean(SPELL_CONFLICTS);
 	}
 	public ArrayList<SpellWrapper> getSpellConflicts() {
-		ArrayList<SpellWrapper> conflicts = new ArrayList<SpellWrapper>();
-		ArrayList list = getList(SPELL_CONFLICTS);
-		for (Iterator i=list.iterator();i.hasNext();) {
-			String id = (String)i.next();
+		ArrayList<SpellWrapper> conflicts = new ArrayList<>();
+		ArrayList<String> list = getList(SPELL_CONFLICTS);
+		for (String id : list) {
 			GameObject go = getGameObject().getGameData().getGameObject(Long.valueOf(id));
 			conflicts.add(new SpellWrapper(go));
 		}
