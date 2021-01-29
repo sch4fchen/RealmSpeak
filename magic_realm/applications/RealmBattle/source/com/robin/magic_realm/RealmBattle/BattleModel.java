@@ -407,15 +407,14 @@ public class BattleModel {
 			
 			// Denizens select their target
 			for (RealmComponent denizen : denizenBattleGroup.getBattleParticipants()) {
-				if (!denizen.isMonster()
-						|| !((MonsterChitComponent)denizen).isPinningOpponent()) {
+				if (!denizen.isMonster() || !((MonsterChitComponent)denizen).isPinningOpponent()) {
 					ArrayList<RealmComponent> attackers = getAttackersFor(denizen);
 					if (!attackers.isEmpty()) {
 						Collections.sort(attackers,new TargetIndexComparator());
 						// Target the last one, unless a character
 						int n = attackers.size()-1;
 						RealmComponent target = null;
-						while(n>=0 && (target = (RealmComponent)attackers.get(n)).isCharacter()) {
+						while(n>=0 && (target = attackers.get(n)).isCharacter()) {
 							target = null;
 							n--;
 						}
@@ -684,8 +683,8 @@ public class BattleModel {
 		sortAccordingToRound(battleChits, round);
 		
 		// Group attackers that have same length and speed (simultaneous)
-		ArrayList<String> attackBlockOrder = new ArrayList<String>();
-		HashLists<String,BattleChit> attackBlocks = new HashLists<String,BattleChit>();
+		ArrayList<String> attackBlockOrder = new ArrayList<>();
+		HashLists<String,BattleChit> attackBlocks = new HashLists<>();
 
 		handleSortTies(battleChits, attackBlockOrder, attackBlocks);
 		
@@ -773,9 +772,25 @@ public class BattleModel {
 
 	private static void handleSortTies(ArrayList<BattleChit>battleChits, ArrayList<String> attackBlockOrder, HashLists<String, BattleChit> attackBlocks) {
 		for (BattleChit battleChit : battleChits) {
-			String key = battleChit.getLength()+":"+battleChit.getAttackSpeed().getNum();
-			if (!attackBlockOrder.contains(key)) {
-				attackBlockOrder.add(key);
+			String key = null;
+			if (battleChit.isCharacter()) {
+				CharacterChitComponent characterChit = (CharacterChitComponent) battleChit;
+				int weaponNumber = 0;
+				for (GameObject weapon : characterChit.getActiveWeaponsObjects()) {
+					if (!CombatWrapper.hasCombatInfo(weapon)) continue;
+					key = characterChit.getLengthForWeapon(weaponNumber)+":"+characterChit.getAttackSpeedForWeapon(weaponNumber).getNum();
+					if (!attackBlockOrder.contains(key)) {
+						attackBlockOrder.add(key);
+					}
+					attackBlocks.put(key,battleChit);
+					weaponNumber++;
+				}
+			}
+			else {
+				key = battleChit.getLength()+":"+battleChit.getAttackSpeed().getNum();
+				if (!attackBlockOrder.contains(key)) {
+					attackBlockOrder.add(key);
+				}
 			}
 			attackBlocks.put(key,battleChit);
 		}
@@ -990,7 +1005,7 @@ public class BattleModel {
 						ArrayList<GameObject> activeInventory = attackerCharacter.getActiveInventory();
 						boolean shield = false;
 						boolean twoHandedWeapon = false;
-						if (!RealmComponent.getRealmComponent(attackerCombat.getGameObject()).affectedByKey(Constants.STRONG)) {
+						if (!attackerCharacter.affectedByKey(Constants.STRONG)) {
 							for (GameObject item : activeInventory) {
 								if (item.hasThisAttribute("shield") && item.getThisAttribute("weight") != "L") shield = true;
 								if (item.hasThisAttribute("two_handed")) twoHandedWeapon = true;
