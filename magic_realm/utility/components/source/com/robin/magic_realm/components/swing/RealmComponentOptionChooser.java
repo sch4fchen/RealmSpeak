@@ -78,8 +78,8 @@ public class RealmComponentOptionChooser extends AggressiveDialog {
 
 	public RealmComponentOptionChooser(JFrame parent, String title,boolean includeCancel) {
 		super(parent, "", true);
-		textHash = new OrderedHashtable<String, String>();
-		componentHashLists = new HashLists<String, ArrayList<RealmComponent>>();
+		textHash = new OrderedHashtable<>();
+		componentHashLists = new HashLists<>();
 		iconHashLists= new HashLists();
 		initComponents(title,includeCancel);
 		updateLayout();
@@ -140,7 +140,7 @@ public class RealmComponentOptionChooser extends AggressiveDialog {
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 	}
 	
-	public void setViewComponents(Collection c) {
+	public void setViewComponents(Collection<RealmComponent> c) {
 		viewComponentsPanel.addRealmComponents(c);
 		viewComponentsPane.setVisible(true);
 		pack();
@@ -152,7 +152,6 @@ public class RealmComponentOptionChooser extends AggressiveDialog {
 	
 	public void addOption(String optionKey, String text) {
 		textHash.put(optionKey, text);
-//		updateLayout();
 	}
 	
 	public String generateOption() {
@@ -437,10 +436,9 @@ public class RealmComponentOptionChooser extends AggressiveDialog {
 	/**
 	 * Convenience method for doing a simple String selection
 	 */
-	public void addStrings(Collection list) {
+	public void addStrings(Collection<String> list) {
 		int keyN = 0;
-		for (Iterator i=list.iterator();i.hasNext();) {
-			String string = (String)i.next();
+		for (String string : list) {
 			String key = "N"+(keyN++);
 			addOption(key,string);
 		}

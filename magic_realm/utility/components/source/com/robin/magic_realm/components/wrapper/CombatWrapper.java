@@ -34,7 +34,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	public static final String GROUP_CIRCLE = "C";
 	public static final String GROUP_SQUARE = "S";
 	
-	private static final String COMBAT_BLOCK = "CMB_BLK_";
+	public static final String COMBAT_BLOCK = "CMB_BLK_";
 	
 	// Combat Information
 	private static final String COMBAT_HIT_RESULT_LIST = "CMB_RES_LIST";

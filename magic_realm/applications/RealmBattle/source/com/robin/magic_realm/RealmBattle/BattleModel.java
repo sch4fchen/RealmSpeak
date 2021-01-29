@@ -595,7 +595,7 @@ public class BattleModel {
 		for (Iterator i=all.iterator();i.hasNext();) {
 			RealmComponent rc = (RealmComponent)i.next();
 			RealmComponent target = rc.getTarget();
-			ArrayList attackers = getAttackersFor(rc,false,true); // don't include character attackers here!
+			ArrayList<RealmComponent> attackers = getAttackersFor(rc,false,true); // don't include character attackers here!
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 			if (combat.isSheetOwner()/* && (target!=null || attackers.size()>0)*/) {
 				if (rc.isCharacter()) {
@@ -620,8 +620,8 @@ public class BattleModel {
 				}
 				else {
 					// Setup some more lists
-					ArrayList targets = new ArrayList(); // intentional misnomer - only ever one target
-					ArrayList attackersMinusTarget = new ArrayList();
+					ArrayList<RealmComponent> targets = new ArrayList<>(); // intentional misnomer - only ever one target
+					ArrayList<RealmComponent> attackersMinusTarget = new ArrayList<>();
 					if (attackers.size()>0) {
 						attackersMinusTarget.addAll(attackers);
 					}
@@ -644,7 +644,7 @@ public class BattleModel {
 					repositionAndChangeTactics(CombatWrapper.GROUP_CIRCLE,combat,attackersMinusTarget);
 					
 					if (rc.getOwnerId()==null) {
-						ArrayList self = new ArrayList();
+						ArrayList<RealmComponent> self = new ArrayList<>();
 						self.add(rc);
 						repositionAndChangeTactics(CombatWrapper.GROUP_RED,combat,self);
 					}
@@ -657,13 +657,13 @@ public class BattleModel {
 	 * @return The number of hits that occurred during this round
 	 */
 	public int doResolveAttacks(int round) {
-		killedTallyHash = new HashLists<GameObject,GameObject>();
-		killTallyHash = new HashLists<GameObject,GameObject>();
-		killerOrder = new ArrayList<GameObject>();
+		killedTallyHash = new HashLists<>();
+		killTallyHash = new HashLists<>();
+		killerOrder = new ArrayList<>();
 		
 		spellCasting = false;
 		
-		ArrayList<RealmComponent> all = new ArrayList<RealmComponent>(getAllBattleParticipants(true));
+		ArrayList<RealmComponent> all = new ArrayList<>(getAllBattleParticipants(true));
 		
 		// Since things might have been killed previously this round (PoP), be sure to start with them now
 		populateKillLists(all);
@@ -717,7 +717,7 @@ public class BattleModel {
 	}
 
 	//collect all the battle chits that have targets, including weapons
-	private ArrayList<BattleChit>collectBattleChits(ArrayList<RealmComponent> allBattleChits) {
+	private static ArrayList<BattleChit>collectBattleChits(ArrayList<RealmComponent> allBattleChits) {
 		ArrayList<BattleChit> battleChits = new ArrayList<BattleChit>();
 		for (RealmComponent realmComponent : allBattleChits) {
 			BattleChit battleChit=(BattleChit)realmComponent;
@@ -746,8 +746,7 @@ public class BattleModel {
 		return battleChits;
 	}
 
-	private void collectSpells(ArrayList<BattleChit>battleChits,
-							   ArrayList<CharacterChitComponent> participatingCharacters) {
+	private static void collectSpells(ArrayList<BattleChit>battleChits, ArrayList<CharacterChitComponent> participatingCharacters) {
 		for (CharacterChitComponent characterChitComponent : participatingCharacters) {
 			CharacterWrapper character = new CharacterWrapper(characterChitComponent.getGameObject());
 			for (SpellWrapper spell : character.getAliveSpells()) {
@@ -758,7 +757,7 @@ public class BattleModel {
 		}
 	}
 	
-	private void sortAccordingToRound(ArrayList<BattleChit>battleChits, int round) {
+	private static void sortAccordingToRound(ArrayList<BattleChit>battleChits, int round) {
 		RealmLogging.clearIndent();
 		if (round==1) {
 			// 1st round, sort by length first, then speed
@@ -772,8 +771,7 @@ public class BattleModel {
 		}
 	}
 
-	private void handleSortTies(ArrayList<BattleChit>battleChits, ArrayList<String> attackBlockOrder, 
-								HashLists<String, BattleChit> attackBlocks) {
+	private static void handleSortTies(ArrayList<BattleChit>battleChits, ArrayList<String> attackBlockOrder, HashLists<String, BattleChit> attackBlocks) {
 		for (BattleChit battleChit : battleChits) {
 			String key = battleChit.getLength()+":"+battleChit.getAttackSpeed().getNum();
 			if (!attackBlockOrder.contains(key)) {
