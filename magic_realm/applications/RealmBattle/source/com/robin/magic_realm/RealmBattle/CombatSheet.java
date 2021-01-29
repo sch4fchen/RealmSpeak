@@ -541,7 +541,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 	protected void placeAllAttacks(int attackBox1,int weaponBox1,Collection excludeList) {
 		boolean reveal = combatFrame.getActionState()>=Constants.COMBAT_RESOLVING;
 		
-		ArrayList all = new ArrayList(model.getAllBattleParticipants(true));
+		ArrayList<RealmComponent> all = new ArrayList<>(model.getAllBattleParticipants(true));
 		
 		// Sort by target index (lower first), to keep stack ordering correct
 		Collections.sort(all,new TargetIndexComparator());
@@ -550,8 +550,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		 * Cycle through all participants that are in the model, that are targeting one of the monsters or
 		 * natives in the target boxes.  (go into the attack boxes)
 		 */
-		for (Iterator i=all.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : all) {
 			CombatWrapper rcCombat = new CombatWrapper(rc.getGameObject());
 			RealmComponent target = rc.getTarget();
 			GameObject spell = rcCombat.getCastSpell();
