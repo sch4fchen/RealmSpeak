@@ -1,6 +1,8 @@
 Version 1.1.4.0 - Changes since 1.1.3.9
 NEW FEATURES:
 # Option to change character chit style to Legendary style
+# Optional Rule: Dual wielding (Expansion 1 variant)
+# New character ability: Dual wielding
 BUGS/ISSUES:
 # Fix off-road chit location for Borderland and Cliff tile
 # Fix error loading custom characters after shutting down a game

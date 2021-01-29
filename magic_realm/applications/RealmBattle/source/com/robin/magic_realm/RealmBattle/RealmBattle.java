@@ -410,9 +410,8 @@ public class RealmBattle {
 		BattleModel model = buildBattleModel(current,character.getGameObject().getGameData());
 		boolean canSkipCombat = model.canSkipCombat(character.getCombatStatus());
 		BattleGroup denizens = model.getDenizenBattleGroup();
-		ArrayList sheetOwners = new ArrayList();
-		for (Iterator i=model.getAllBattleParticipants(true).iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		ArrayList<RealmComponent> sheetOwners = new ArrayList<>();
+		for (RealmComponent rc : model.getAllBattleParticipants(true)) {
 			CombatWrapper rcCombat = new CombatWrapper(rc.getGameObject());
 			if (rcCombat.isSheetOwner()) {
 				sheetOwners.add(rc);
@@ -516,16 +515,15 @@ public class RealmBattle {
 					// Test to see if the character is present and has potential targets to assign
 					BattleGroup group = model.getBattleGroup(charRc);
 					if (activeUnmistyCharacterIsHere) {
-						Collection c = model.getAllOtherBattleParticipants(group,true,character.getTreacheryPreference());
+						Collection<RealmComponent> c = model.getAllOtherBattleParticipants(group,true,character.getTreacheryPreference());
 						if (c.size()>0) {
 							return true;
 						}
 					}
 					else {
 						// Test to see if any hireling has any potential targets (more than one attacker)
-						for (Iterator i=group.getBattleParticipants().iterator();i.hasNext();) {
-							RealmComponent rc = (RealmComponent)i.next();
-							Collection c = model.getAttackersFor(rc);
+						for (RealmComponent rc : group.getBattleParticipants()) {
+							Collection<RealmComponent> c = model.getAttackersFor(rc);
 							if (c.size()>1) {
 								return true;
 							}
@@ -536,7 +534,7 @@ public class RealmBattle {
 			case Constants.COMBAT_POSITIONING: // playing attacks and manuevers
 				return true; // Show positioning every round - this allows hidden characters to extend combat by fatiguing on purpose...
 			case Constants.COMBAT_TACTICS: // flips denizens, repositions, allows characters that *can* to replace MOVE or FIGHT
-				Collection attackers = model.getAttackersFor(RealmComponent.getRealmComponent(character.getGameObject()));
+				Collection<RealmComponent> attackers = model.getAttackersFor(RealmComponent.getRealmComponent(character.getGameObject()));
 				RealmComponent attacker = RealmComponent.getRealmComponent(character.getGameObject());
 				RealmComponent target = attacker.getTarget();
 				return (activeCharacterIsHere 
@@ -570,11 +568,10 @@ public class RealmBattle {
 	 */
 	public static BattleModel buildBattleModel(TileLocation tl,GameData data) {
 		HashLists lists = new HashLists();
-		Collection c = ClearingUtility.getCombatantsInClearing(tl);
+		Collection<RealmComponent> c = ClearingUtility.getCombatantsInClearing(tl);
 		
 		// Hash all combatants by ownerid - uncontrolled denizens will be owned by UNCONTROLLED
-		for (Iterator i=c.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : c) {
 			String ownerid = rc.getOwnerId(); // Note:  characters own themselves
 			if (ownerid==null) {
 				// uncontrolled denizen
@@ -651,9 +648,8 @@ public class RealmBattle {
 		boolean fatigue = tile.getWasFatigue(); // from running characters (rare situation)
 		boolean spellCasting = false;
 		if (!fatigue) { // only continue if we got false on fatigue
-			ArrayList characters = model.getAllParticipatingCharacters();
-			for (Iterator i=characters.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			ArrayList<CharacterChitComponent> characters = model.getAllParticipatingCharacters();
+			for (RealmComponent rc : characters) {
 				CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
 				Effort effortUsed = BattleUtility.getEffortUsed(character);
 				int free = character.getEffortFreeAsterisks();
@@ -713,9 +709,7 @@ public class RealmBattle {
 			updateClearingOrder(data);
 			return false;
 		}
-		else {
-			logger.finer("Combat continues in "+location);
-		}
+		logger.finer("Combat continues in "+location);
 		return true;
 	}
 	/**
@@ -749,8 +743,7 @@ public class RealmBattle {
 		cw.setWasFatigue(false);
 		
 		// Need to clear out all monster combat info here too!
-		for (Iterator i=location.clearing.getClearingComponents().iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : location.clearing.getClearingComponents()) {
 			CombatWrapper.clearAllCombatInfo(rc.getGameObject());
 			rc.clearTarget();
 			

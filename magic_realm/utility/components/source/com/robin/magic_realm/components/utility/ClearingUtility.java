@@ -541,8 +541,8 @@ public class ClearingUtility {
 		return list;
 	}
 
-	public static Collection getCombatantsInClearing(TileLocation location) {
-		ArrayList list = new ArrayList();
+	public static Collection<RealmComponent> getCombatantsInClearing(TileLocation location) {
+		ArrayList<RealmComponent> list = new ArrayList<>();
 		if (location.isInClearing()) {
 			for (RealmComponent rc:location.clearing.getClearingComponents()) {
 				if (rc.isCharacter() || rc.isMonster() || rc.isNative() || rc.isCombativeTraveler() || rc.isCompanion()) {
@@ -554,7 +554,7 @@ public class ClearingUtility {
 	}
 
 	public static ArrayList<CharacterWrapper> getCharactersInClearing(TileLocation location) {
-		ArrayList<CharacterWrapper> list = new ArrayList<CharacterWrapper>();
+		ArrayList<CharacterWrapper> list = new ArrayList<>();
 		if (location.hasClearing()) {
 			for (RealmComponent rc:location.clearing.getClearingComponents()) {
 				if (rc.isCharacter()) {
