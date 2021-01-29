@@ -202,7 +202,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		}
 	}
 	private ArrayList getBattleRolls() {
-		ArrayList battleRolls = new ArrayList();
+		ArrayList<RollerResult> battleRolls = new ArrayList<>();
 		if (!battleChitsWithRolls.isEmpty()) {
 			// Deduce and build all fumble/stumble rolls (in order)
 			if (combatFrame.getCurrentRound()==1) {
@@ -589,16 +589,17 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 								MonsterChitComponent transmorph = characterChit.getTransmorphedComponent();
 								if (transmorph==null) {
 									// Cycle through character fight chits and weapons for attack
-									RealmComponent weapon = character.getActiveWeapon();
-									if (weapon!=null) {
-										CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
-										int box = combat.getCombatBox();
-										if (box>0) {
-											layoutHash.put(new Integer(weaponBox1+box-1),weapon);
+									ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
+									if (weapons!=null) {
+										for (WeaponChitComponent weapon : weapons) {
+											CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
+											int box = combat.getCombatBox();
+											if (box>0) {
+												layoutHash.put(new Integer(weaponBox1+box-1),weapon);
+											}
 										}
 									}
-									for (Iterator n=character.getActiveFightChits().iterator();n.hasNext();) {
-										RealmComponent chit = (RealmComponent)n.next();
+									for (RealmComponent chit : character.getActiveFightChits()) {
 										CombatWrapper combat = new CombatWrapper(chit.getGameObject());
 										int box = combat.getCombatBox();
 										if (box>0 && combat.getPlacedAsFight()) {
@@ -607,8 +608,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 									}
 									
 									// Look for gloves, and/or weapon inventory
-									for (Iterator n=character.getActiveInventory().iterator();n.hasNext();) {
-										GameObject go = (GameObject)n.next();
+									for (GameObject go : character.getActiveInventory()) {
 										RealmComponent item = RealmComponent.getRealmComponent(go);
 										if (item.getGameObject().hasThisAttribute("gloves")) {
 											CombatWrapper combat = new CombatWrapper(item.getGameObject());

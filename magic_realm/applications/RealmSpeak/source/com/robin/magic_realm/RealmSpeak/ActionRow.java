@@ -1514,9 +1514,9 @@ public class ActionRow {
 				alertChoices.add(chit);
 			}
 		}
-		WeaponChitComponent weapon = character.getActiveWeapon();
-		if (weapon!=null) {
-			alertChoices.add(weapon);
+		ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
+		if (weapons!=null && weapons.get(0) != null) {
+			alertChoices.add(weapons.get(0));
 		}
 		if (alertChoices.size()>0) {
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Alert which?",true);
@@ -1524,7 +1524,7 @@ public class ActionRow {
 			for (RealmComponent rc : alertChoices) {
 				if (rc.isWeapon()) {
 					// Add both sides of weapon, if any
-					weapon = (WeaponChitComponent)rc;
+					WeaponChitComponent weapon = (WeaponChitComponent)rc;
 					String key = "a"+(keyN++);
 					chooser.addOption(key,"Alert");
 					chooser.addRealmComponentToOption(key,weapon,weapon.isAlerted()?RealmComponentOptionChooser.DisplayOption.Normal:RealmComponentOptionChooser.DisplayOption.Flipside);

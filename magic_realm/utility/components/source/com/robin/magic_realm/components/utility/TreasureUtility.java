@@ -198,9 +198,8 @@ public class TreasureUtility {
 				}
 				
 				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(thing.getGameData());
-				RealmComponent characterRc = RealmComponent.getRealmComponent(character.getGameObject());
-				boolean twoHandedWeaponResctriction = hostPrefs.hasPref(Constants.OPT_TWO_HANDED_WEAPONS) && !characterRc.affectedByKey(Constants.STRONG);
-				boolean dualWielding = hostPrefs.hasPref(Constants.OPT_DUAL_WIELDING) || characterRc.affectedByKey(Constants.DUAL_WIELDING);
+				boolean twoHandedWeaponResctriction = hostPrefs.hasPref(Constants.OPT_TWO_HANDED_WEAPONS) && !character.affectedByKey(Constants.STRONG);
+				boolean dualWielding = hostPrefs.hasPref(Constants.OPT_DUAL_WIELDING) || character.affectedByKey(Constants.DUAL_WIELDING);
 				if (thing.hasThisAttribute("shield") && (twoHandedWeaponResctriction || dualWielding)) {
 					boolean secondWeaponActive = false;
 					for (GameObject otherThing : activeInventory) {
@@ -224,10 +223,9 @@ public class TreasureUtility {
 			else if (thing.hasThisAttribute("weapon")) {
 				// Inactivate any existing weapon
 				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(thing.getGameData());
-				RealmComponent characterRc = RealmComponent.getRealmComponent(character.getGameObject());
 				for (GameObject otherThing : activeInventory) {
 					if (otherThing.hasThisAttribute("weapon")) {
-						if ((hostPrefs.hasPref(Constants.OPT_DUAL_WIELDING) || characterRc.affectedByKey(Constants.DUAL_WIELDING))
+						if ((hostPrefs.hasPref(Constants.OPT_DUAL_WIELDING) || character.affectedByKey(Constants.DUAL_WIELDING))
 							&& !thing.hasThisAttribute("two_handed") && !otherThing.hasThisAttribute("two_handed")
 							&& (character.getVulnerability().strongerThan((RealmComponent.getRealmComponent(thing)).getWeight())
 							&& character.getVulnerability().strongerThan((RealmComponent.getRealmComponent(otherThing)).getWeight()))) {
@@ -260,7 +258,7 @@ public class TreasureUtility {
 						}
 					}
 					
-					if (hostPrefs.hasPref(Constants.OPT_TWO_HANDED_WEAPONS) && otherThing.hasThisAttribute("shield") && !characterRc.affectedByKey(Constants.STRONG)) {
+					if (hostPrefs.hasPref(Constants.OPT_TWO_HANDED_WEAPONS) && otherThing.hasThisAttribute("shield") && !character.affectedByKey(Constants.STRONG)) {
 						boolean twoHandedMissleWeaponWithFumbleRule = !hostPrefs.hasPref(Constants.OPT_FUMBLE) && thing.hasThisAttribute("two_handed");
 						boolean towHandedWeaponWithoutFumbleRule = hostPrefs.hasPref(Constants.OPT_FUMBLE) && thing.hasThisAttribute("two_handed") && thing.hasThisAttribute("missile");
 						if (twoHandedMissleWeaponWithFumbleRule || towHandedWeaponWithoutFumbleRule) {
@@ -476,16 +474,18 @@ public class TreasureUtility {
 	private static boolean handlePotionEffects(JFrame parentFrame,CharacterWrapper character,GameObject thing) {
 		// some potion and phase chit effects are immediate
 		if (thing.hasThisAttribute("attack")) {
-			WeaponChitComponent weapon = character.getActiveWeapon();
-			if (weapon!=null) {
-				int ret = JOptionPane.showConfirmDialog(parentFrame,"You are about to deactivate your primary weapon.  Are you sure?","",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+			ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
+			if (weapons!=null) {
+				int ret = JOptionPane.showConfirmDialog(parentFrame,"You are about to deactivate your primary weapon(s).  Are you sure?","",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 				if (ret==JOptionPane.NO_OPTION) {
 					return false;
 				}
-				if (weapon.isAlerted()) {
-					weapon.setAlerted(false);
+				for (WeaponChitComponent weapon : weapons) {
+					if (weapon.isAlerted()) {
+						weapon.setAlerted(false);
+					}
+					weapon.getGameObject().removeThisAttribute(Constants.ACTIVATED);
 				}
-				weapon.getGameObject().removeThisAttribute(Constants.ACTIVATED);
 			}
 		}
 		if (thing.hasThisAttribute(Constants.REPAIR_ONE)) {
@@ -544,10 +544,9 @@ public class TreasureUtility {
 				// Select bewitching spells to cancel (spellcaster or target must be in clearing)
 				TileLocation current = character.getCurrentLocation();
 				SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(thing.getGameData());
-				Collection spells = sm.getAllSpellsInClearing(current,true);
+				Collection<SpellWrapper> spells = sm.getAllSpellsInClearing(current,true);
 				if (!spells.isEmpty()) {
-					for (Iterator i=spells.iterator();i.hasNext();) {
-						SpellWrapper spell = (SpellWrapper)i.next();
+					for (SpellWrapper spell : spells) {
 						RealmComponent src = RealmComponent.getRealmComponent(spell.getGameObject());
 						chooser.addRealmComponent(src);
 					}
@@ -578,8 +577,9 @@ public class TreasureUtility {
 				}
 			}
 		}
+		
 		if (thing.hasThisAttribute(Constants.ALERTED_WEAPON)) {
-			WeaponChitComponent weapon = character.getActiveWeapon();
+			WeaponChitComponent weapon = character.getActiveWeapons().get(0);
 			if (weapon!=null) {
 				if (!weapon.isAlerted()) {
 					weapon.setAlerted(true);
@@ -588,7 +588,7 @@ public class TreasureUtility {
 		}
 		
 		GameObject weaponObject = null;
-		WeaponChitComponent weapon = character.getActiveWeapon();
+		WeaponChitComponent weapon = character.getActiveWeapons().get(0);
 		if (weapon!=null) {
 			weaponObject = weapon.getGameObject();
 		}

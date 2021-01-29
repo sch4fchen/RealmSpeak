@@ -775,8 +775,17 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * 				a negligible weight.
 	 */
 	public Strength getActiveWeaponWeight() {
-		WeaponChitComponent weapon = getActiveWeapon();
-		return weapon==null?(new Strength()):weapon.getWeight();
+		ArrayList<WeaponChitComponent> weapons = getActiveWeapons();
+		if (weapons == null) {
+			return new Strength();
+		}
+		Strength lowestWeaponsWeight = Strength.valueOf("T");
+		for (WeaponChitComponent weapon : weapons) {
+			if ((weapon.getWeight()).weakerTo(lowestWeaponsWeight)) {
+				lowestWeaponsWeight = weapon.getWeight();
+			}
+		}
+		return lowestWeaponsWeight;
 	}
 	/**
 	 * @param fightStrength			strength to test
@@ -784,12 +793,15 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * @return						true if provided strength is strong enough to wield the active weapon
 	 */
 	public boolean canFight(Strength fightStrength) {
-		RealmComponent weapon = getActiveWeapon();
-		if (weapon!=null) {
-			Strength weaponWeight = new Strength(weapon.getWeight());
-			if (!fightStrength.strongerOrEqualTo(weaponWeight)) {
-				return false;
+		ArrayList<WeaponChitComponent> weapons = getActiveWeapons();
+		if (weapons!=null) {
+			for (WeaponChitComponent weapon : weapons) {
+				Strength weaponWeight = new Strength(weapon.getWeight());
+				if (fightStrength.strongerOrEqualTo(weaponWeight)) {
+					return true;
+				}
 			}
+			return false;
 		}
 		return true;
 	}
@@ -1992,15 +2004,17 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return steed;
 	}
-	public WeaponChitComponent getActiveWeapon() {
+	public ArrayList<WeaponChitComponent> getActiveWeapons() {
 		if (getTransmorph()==null) {
 			Collection<GameObject> inv = getInventory();
+			ArrayList <WeaponChitComponent> list = new ArrayList<>();
 			for (GameObject go : inv) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
 				if (rc.isActivated() && rc.isWeapon()) {
-					return (WeaponChitComponent)rc; // should only be one!!
+					list.add((WeaponChitComponent)rc);
 				}
 			}
+			return list;
 		}
 		return null;
 	}

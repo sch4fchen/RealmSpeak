@@ -229,12 +229,14 @@ public class BattleSummaryRow implements Comparable<BattleSummaryRow> {
 					RealmComponent attackChit = charChit.getAttackChit();
 					
 					RealmComponent weapon = null;
-					GameObject wgo = charChit.getActiveWeaponObject();
-					if (wgo!=null) {
-						weapon = RealmComponent.getRealmComponent(wgo);
-						ImageIcon wicon = weapon.getIcon();
-						yoff = ChitComponent.T_CHIT_SIZE - wicon.getIconHeight();
-						g.drawImage(wicon.getImage(),x,y+yoff,null);
+					ArrayList<GameObject> wgos = charChit.getActiveWeaponsObjects();
+					if (wgos!=null) {
+						for (GameObject wgo : wgos) {
+							weapon = RealmComponent.getRealmComponent(wgo);
+							ImageIcon wicon = weapon.getIcon();
+							yoff = ChitComponent.T_CHIT_SIZE - wicon.getIconHeight();
+							g.drawImage(wicon.getImage(),x,y+yoff,null);
+						}
 					}
 					if (attackChit!=null) {
 						if (attackChit.isCard()) {
