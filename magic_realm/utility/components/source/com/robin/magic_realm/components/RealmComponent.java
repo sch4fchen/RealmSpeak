@@ -19,6 +19,7 @@ package com.robin.magic_realm.components;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 import java.util.*;
 
 import javax.swing.ImageIcon;
@@ -60,7 +61,9 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	public static final String OWNER_ID = "owner_id"; // game object id of owner
 	public static final String OWNER_TERM_OF_HIRE = "owner_term";
 	private static final String TARGET_ID = "target_id"; // game object id of target
+	private static final String TARGET_2ND_ID = "target__2nd_id"; // game object id of secondary target
 	private static final String TARGET_INDEX = "targ_idx"; // a counter that indicates who targets who first (needed for War!)
+	private static final String TARGET_2ND_INDEX = "targ_2nd_idx"; // a counter that indicates who targets who first (needed for War!)
 
 	// Chit identifiers
 	public static final String CHARACTER = "character";
@@ -566,6 +569,17 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	}
 	
 	/**
+	 * Set the secondary target
+	 */
+	public void set2ndTarget(RealmComponent target) {
+		gameObject.setAttribute(REALMCOMPONENT_BLOCK,TARGET_2ND_ID, target.gameObject.getStringId());
+		int ti = nextTargetIndex(gameObject.getGameData());
+		gameObject.setAttribute(REALMCOMPONENT_BLOCK,TARGET_2ND_INDEX,ti);
+		CombatWrapper combat = new CombatWrapper(target.getGameObject());
+		combat.addAttacker(getGameObject());
+	}
+	
+	/**
 	 * @return		A number that indicates a point in time that the target was assigned.  Lower numbers
 	 * 				indicate earlier assignments.
 	 */
@@ -579,6 +593,13 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	public RealmComponent getTarget() {
 		return RealmComponent.getRealmComponentFromId(gameObject.getGameData(), gameObject.getAttribute(REALMCOMPONENT_BLOCK,TARGET_ID));
 	}
+	
+	/**
+	 * Get the secondary target
+	 */
+	public RealmComponent get2ndTarget() {
+		return RealmComponent.getRealmComponentFromId(gameObject.getGameData(), gameObject.getAttribute(REALMCOMPONENT_BLOCK,TARGET_2ND_ID));
+	}
 
 	/**
 	 * Clear primary target
@@ -588,6 +609,8 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		if (target!=null) {
 			gameObject.removeAttribute(REALMCOMPONENT_BLOCK,TARGET_ID);
 			gameObject.removeAttribute(REALMCOMPONENT_BLOCK,TARGET_INDEX);
+			gameObject.removeAttribute(REALMCOMPONENT_BLOCK,TARGET_2ND_ID);
+			gameObject.removeAttribute(REALMCOMPONENT_BLOCK,TARGET_2ND_INDEX);
 			CombatWrapper combat = new CombatWrapper(target.getGameObject());
 			combat.removeAttacker(getGameObject());
 			
@@ -609,6 +632,12 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		String val = gameObject.getAttribute(REALMCOMPONENT_BLOCK,TARGET_ID);
 		if (val != null) {
 			if (val.equals(comp.gameObject.getStringId())) {
+				return true;
+			}
+		}
+		String val2nd = gameObject.getAttribute(REALMCOMPONENT_BLOCK,TARGET_2ND_ID);
+		if (val2nd != null) {
+			if (val2nd.equals(comp.gameObject.getStringId())) {
 				return true;
 			}
 		}
@@ -868,7 +897,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 			comp = new MinorCharacterChitComponent(obj);
 		}
 		if (comp != null && cache) {
-			Hashtable componentHash = getComponentHash(obj);
+			Hashtable<Comparable, Serializable> componentHash = getComponentHash(obj);
 			componentHash.put(new Long(obj.getId()), comp);
 		}
 		return comp;
@@ -878,7 +907,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		return createRealmComponent(go,false);
 	}
 
-	private static Hashtable getComponentHash(GameObject go) {
+	private static Hashtable<Comparable, Serializable> getComponentHash(GameObject go) {
 		return getComponentHash(go.getGameData());
 	}
 	
@@ -899,9 +928,9 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	 * @return			The Hashtable for the corresponding data object.  This is necessary to keep client and
 	 * 					host data separated when handling these objects!
 	 */
-	private static Hashtable getComponentHash(GameData data) {
+	private static Hashtable<Comparable, Serializable> getComponentHash(GameData data) {
 		if (dataComponentHash == null) {
-			dataComponentHash = new Hashtable();
+			dataComponentHash = new Hashtable<Long, Hashtable<Comparable<String>, Serializable>>();
 		}
 		Long dataid = new Long(data.getDataId());
 		Hashtable componentHash = (Hashtable) dataComponentHash.get(dataid);
