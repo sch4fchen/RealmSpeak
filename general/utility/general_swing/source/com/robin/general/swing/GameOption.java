@@ -33,9 +33,9 @@ public class GameOption {
 	private JCheckBox activeCB;
 	private JPanel panel;
 	
-	private ArrayList overrideKeys;
-	private ArrayList includeKeys;
-	private ArrayList cantHaveKeys;
+	private ArrayList<String> overrideKeys;
+	private ArrayList<String> includeKeys;
+	private ArrayList<String> cantHaveKeys;
 	
 	private GameOptionPane gameOptionPane;
 	
@@ -50,15 +50,15 @@ public class GameOption {
 	public GameOption(String inKey,String description,boolean active,String[] overrides,String[] includes,String[] cantHaves) {
 		this.key = inKey;
 		this.description = description;
-		overrideKeys = new ArrayList();
+		overrideKeys = new ArrayList<>();
 		if (overrides!=null) {
 			overrideKeys.addAll(Arrays.asList(overrides));
 		}
-		includeKeys = new ArrayList();
+		includeKeys = new ArrayList<>();
 		if (includes!=null) {
 			includeKeys.addAll(Arrays.asList(includes));
 		}
-		cantHaveKeys = new ArrayList();
+		cantHaveKeys = new ArrayList<>();
 		if (cantHaves!=null) {
 			cantHaveKeys.addAll(Arrays.asList(cantHaves));
 		}
@@ -93,11 +93,7 @@ public class GameOption {
 			box.add(Box.createVerticalGlue());
 		panel.add(box,"West");
 		panel.add(Box.createVerticalStrut(30),"East");
-//		panel.setMinimumSize(new Dimension(1,1));
-//		panel.setPreferredSize(new Dimension(1,1));
-//		panel.setMaximumSize(new Dimension(1,1));
 		panel.setMaximumSize(new Dimension(2000,50));
-//		panel.setPreferredSize(new Dimension(2000,50));
 		updateColor();
 	}
 	public void setActionListener(ActionListener listener) {
@@ -109,16 +105,14 @@ public class GameOption {
 	private void updateOthers() {
 		if (activeCB.isSelected()) {
 			// turn off overrides
-			for (Iterator i=getOverrideKeys().iterator();i.hasNext();) {
-				String overrideKey = (String)i.next();
+			for (String overrideKey : getOverrideKeys()) {
 				if (!overrideKey.equals(key)) {
 					gameOptionPane.setOption(overrideKey,false);
 				}
 			}
 			
 			// turn on includes
-			for (Iterator i=getIncludeKeys().iterator();i.hasNext();) {
-				String includeKey = (String)i.next();
+			for (String includeKey : getIncludeKeys()) {
 				if (!includeKey.equals(key)) {
 					gameOptionPane.setOption(includeKey,true);
 				}
@@ -126,21 +120,20 @@ public class GameOption {
 		}
 		else {
 			// turn off cant haves
-			for (Iterator i=getCantHaveKeys().iterator();i.hasNext();) {
-				String cantHaveKey = (String)i.next();
+			for (String cantHaveKey : getCantHaveKeys()) {
 				if (!cantHaveKey.equals(key)) {
 					gameOptionPane.setOption(cantHaveKey,false);
 				}
 			}
 		}
 	}
-	public Collection getOverrideKeys() {
+	public Collection<String> getOverrideKeys() {
 		return overrideKeys;
 	}
-	public Collection getIncludeKeys() {
+	public Collection<String> getIncludeKeys() {
 		return includeKeys;
 	}
-	public Collection getCantHaveKeys() {
+	public Collection<String> getCantHaveKeys() {
 		return cantHaveKeys;
 	}
 	private void updateColor() {

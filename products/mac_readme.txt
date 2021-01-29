@@ -1,6 +1,6 @@
 THIS README is for MAC USERS ONLY
 
-Unpack the MacRealmSpeak.zip archive, and move the three applescript files to the same level as the RealmSpeak.jar file.  Double-click the appropriate script (one launches the game, one launches the battle simulator, and one launches the character builder), and the game should start.  Do not click the RealmSpeak.jar file directly anymore - memory doesn't get set up properly if you do this.
+Unpack the MacRealmSpeak.zip archive, and move the three applescript files to the same level as the RealmSpeakFull.jar file.  Double-click the appropriate script (one launches the game, one launches the battle simulator, and one launches the character builder), and the game should start.  Do not click the RealmSpeak.jar file directly anymore - memory doesn't get set up properly if you do this.
 
 If the batch file does something unexpected, you may need to get the latest version of Java.
 

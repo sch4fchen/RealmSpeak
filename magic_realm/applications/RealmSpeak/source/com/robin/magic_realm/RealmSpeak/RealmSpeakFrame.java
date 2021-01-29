@@ -2009,7 +2009,7 @@ public class RealmSpeakFrame extends JFrame {
 			updateWindowMenu();
 			networkingOption.doClick();
 			networkingOption.doClick();
-			ImageCache.resetCache();
+			//ImageCache.resetCache();
 			System.gc(); // This TOTALLY shouldn't be necessary, but what can it hurt?
 			repaint();
 		}

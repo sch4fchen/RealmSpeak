@@ -1,7 +1,7 @@
-Expansion 1: More Ambushes/Throwing Weapons + Ability: "Throwing_weapons": Spear, Axe, Dagger?
-Expansion 1: Two-Handed Combat + Ability: "Dual Wielding"
-0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): no missle attacks
+Expansion 1: More Ambushes/Throwing Weapons + Ability: Spear, Axe, Dagger?
+0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): no missile attacks?
 Expansion 1: Parry + Ability: "ParryLikeShield"
+Expansion 1: Two-Handed Combat + Ability: "Dual Wielding" (not for two_handed?)
 
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---

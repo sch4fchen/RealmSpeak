@@ -102,12 +102,11 @@ public class Tile {
 	 * Reconstructs the mapGrid hash from the prebuilt gameobjects.  Note that this method can only be called
 	 * AFTER setting up the map with buildMap
 	 */
-	public static Hashtable readMap(GameData data,Collection keyVals) {
-		Hashtable mapGrid = new Hashtable();
+	public static Hashtable<Point, Tile> readMap(GameData data,Collection<String> keyVals) {
+		Hashtable<Point, Tile> mapGrid = new Hashtable<>();
 		// loop through all gameObjects to get tiles
 		GamePool pool = new GamePool(data.getGameObjects());
-		for (Iterator i=pool.extract(keyVals).iterator();i.hasNext();) {
-			GameObject obj = (GameObject)i.next();
+		for (GameObject obj : pool.extract(keyVals)) {
 			if (obj.hasKey("tile")) {
 				Tile tile = new Tile(obj);
 				tile.readFromGameObject();
@@ -117,7 +116,7 @@ public class Tile {
 		return mapGrid;
 	}
 	
-	protected ArrayList clearings;
+	protected ArrayList<String> clearings;
 
 	protected GameObject gameObject;
 	
@@ -381,8 +380,8 @@ if (debug) System.out.println(name+":"+clearingKey);
 	/**
 	 * @return		A Collection of Point objects that reference possible map placements
 	 */
-	public static ArrayList findAvailableMapPositions(Hashtable mapGrid) {
-		ArrayList availableMapPositions = new ArrayList();
+	public static ArrayList<Point> findAvailableMapPositions(Hashtable mapGrid) {
+		ArrayList<Point> availableMapPositions = new ArrayList<>();
 		for (Iterator t=mapGrid.values().iterator();t.hasNext();) {
 			Tile tile = (Tile)t.next();
 			Point pos = tile.getMapPosition();

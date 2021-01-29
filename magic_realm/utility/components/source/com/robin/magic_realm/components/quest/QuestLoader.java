@@ -41,11 +41,11 @@ public class QuestLoader {
 
 	public static ArrayList<Quest> findAvailableQuests(CharacterWrapper character, HostPrefWrapper hostPrefs) {
 		GamePool pool = new GamePool(character.getGameData().getGameObjects());
-		ArrayList<String> query = new ArrayList<String>();
+		ArrayList<String> query = new ArrayList<>();
 		query.add(RealmComponent.QUEST);
 		query.add("!"+Quest.STATE);
 		ArrayList<GameObject> allUnassingedQuests = pool.find(query);
-		ArrayList<Quest> quests = new ArrayList<Quest>();
+		ArrayList<Quest> quests = new ArrayList<>();
 		for (GameObject go : allUnassingedQuests) {
 			Quest quest = new Quest(go);
 			if (quest.canChooseQuest(character, hostPrefs)) {
@@ -73,9 +73,8 @@ public class QuestLoader {
 	}
 
 	public static ArrayList<Quest> loadAllQuestsFromQuestFolder() {
-		ArrayList<Quest> quests = new ArrayList<Quest>();
+		ArrayList<Quest> quests = new ArrayList<>();
 		File questFolder = new File(getQuestFolderPath());
-		// System.out.println(customFolder.getAbsolutePath());
 		if (questFolder.isDirectory() && questFolder.exists()) {
 			File[] questFile = questFolder.listFiles();
 			for (int i = 0; i < questFile.length; i++) {
@@ -96,7 +95,7 @@ public class QuestLoader {
 		data.ignoreRandomSeed = true;
 		File file = new File(filePath);
 		if (data.zipFromFile(file)) {
-			Quest quest = new Quest((GameObject) data.getGameObjects().iterator().next());
+			Quest quest = new Quest(data.getGameObjects().iterator().next());
 			if (quest.isValid()) {
 				quest.filepath = filePath; // This is just here so that the builder can save a quest it just loaded for viewDeck() - not guaranteed!
 				return quest;

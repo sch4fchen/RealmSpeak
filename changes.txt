@@ -1,4 +1,11 @@
 Version 1.1.4.0 - Changes since 1.1.3.9
+NEW FEATURES:
+# Option to change character chit style to Legendary style
+BUGS/ISSUES:
+# Fix off-road chit location for Borderland and Cliff tile
+# Fix error loading custom characters after shutting down a game
+# Adapt Linux files to run RealmSpeakFull.jar instead of RealmSpeak.jar
+# Runlinux-questbuild file to run QuestBuilder
 
 Version 1.1.3.9 - Changes since 1.1.3.8
 QUEST UPDATE:
@@ -7,6 +14,7 @@ QUEST UPDATE:
 # QuestRewardGuild: Option to increase and decrease guild level
 # QuestRewardTeleport: Choose clearing in same tile 
 NEW FEATURES:
+# Use png instead of gif images by default
 # Minotaur can block hits, shield can be destroyed
 # Optional Rule: Monster roll per Magic Realm set
 # Optional Rule: Flying activities

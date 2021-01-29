@@ -82,12 +82,12 @@ public class CenteredMapView extends JComponent {
 	public static final int MAP_BORDER = 10;
 	
 	protected Hashtable<Point,TileComponent> mapGrid;
-	protected Hashtable mapGridCoor;
+	protected Hashtable<Point, Rectangle> mapGridCoor;
 	protected Dimension tileSize = new Dimension(TileComponent.TILE_WIDTH,TileComponent.TILE_HEIGHT);
 	
 	// These are needed for map building
-	protected Hashtable planningMapGrid;	// Point:Tile
-	protected ArrayList availablePositions;
+	protected Hashtable<Point, Tile> planningMapGrid;	// Point:Tile
+	protected ArrayList<Point> availablePositions;
 	
 	protected Point mouseHover = null;
 	protected Point sticky = null;
@@ -355,9 +355,8 @@ public class CenteredMapView extends JComponent {
 		return mapGrid.get(pos)!=null;
 	}
 	public void updateTilesStyle() {
-		Collection tileObjects = RealmObjectMaster.getRealmObjectMaster(gameData).getTileObjects();
-		for (Iterator i=tileObjects.iterator();i.hasNext();) {
-			GameObject obj = (GameObject)i.next();
+		ArrayList<GameObject> tileObjects = RealmObjectMaster.getRealmObjectMaster(gameData).getTileObjects();
+		for (GameObject obj : tileObjects) {
 			TileComponent tc = (TileComponent)RealmComponent.getRealmComponent(obj);
 			tc.initFilepaths();
 			tc.doRepaint();
@@ -368,18 +367,17 @@ public class CenteredMapView extends JComponent {
 		planningMapGrid.clear();
 		availablePositions.clear();
 		RealmObjectMaster.getRealmObjectMaster(gameData).resetTileObjects();
-		Collection tileObjects = RealmObjectMaster.getRealmObjectMaster(gameData).getTileObjects();
+		Collection<GameObject> tileObjects = RealmObjectMaster.getRealmObjectMaster(gameData).getTileObjects();
 		
 		// Add all the tiles
 		int emptyCount = 0;
-		ArrayList points = new ArrayList();
-		for (Iterator i=tileObjects.iterator();i.hasNext();) {
-			GameObject obj = (GameObject)i.next();
+		ArrayList<Point> points = new ArrayList<>();
+		for (GameObject obj : tileObjects) {
 			TileComponent tc = (TileComponent)RealmComponent.getRealmComponent(obj); // ClassCastException here when building triple boards?
 			tc.resetClearingPositions();
 			tc.doRepaint();
-			String pos = (String)obj.getAttribute("mapGrid","mapPosition");
-			String rot = (String)obj.getAttribute("mapGrid","mapRotation");
+			String pos = obj.getAttribute("mapGrid","mapPosition");
+			String rot = obj.getAttribute("mapGrid","mapRotation");
 			
 			if (pos!=null && rot!=null) {
 				tc.setRotation(Integer.valueOf(rot).intValue());
@@ -748,11 +746,10 @@ public class CenteredMapView extends JComponent {
 		double normalX = (p.x - offset.x)/scale;
 		double normalY = (p.y - offset.y)/scale;
 		Point normal = new Point((int)normalX,(int)normalY);
-		for (Iterator i=mapGridCoor.keySet().iterator();i.hasNext();) {
-			Point gridPos = (Point)i.next();
-			Rectangle rect = (Rectangle)mapGridCoor.get(gridPos);
+		for (Point gridPos : mapGridCoor.keySet()) {
+			Rectangle rect = mapGridCoor.get(gridPos);
 			if (rect.contains(normal)) {
-				TileComponent tile = (TileComponent)mapGrid.get(gridPos);
+				TileComponent tile = mapGrid.get(gridPos);
 				if (tile!=null) { // not sure how this is possible, but it happened once during map builder
 					Shape shape = tile.getShape(rect.x,rect.y,tileSize.width);
 					if (shape.contains(normal)) {
@@ -767,9 +764,7 @@ public class CenteredMapView extends JComponent {
 						if (clearing!=null) {
 							return new TileLocation(clearing);
 						}
-						else {
-							return new TileLocation(tile);
-						}
+						return new TileLocation(tile);
 					}
 				}
 			}
@@ -810,8 +805,8 @@ public class CenteredMapView extends JComponent {
 		int minY = Integer.MAX_VALUE;
 		int maxX = Integer.MIN_VALUE;
 		int maxY = Integer.MIN_VALUE;
-		for (Enumeration e=mapGrid.keys();e.hasMoreElements();) {
-			Point pos = (Point)e.nextElement();
+		for (Enumeration<Point> e=mapGrid.keys();e.hasMoreElements();) {
+			Point pos = e.nextElement();
 			int x = pos.x * colWidth;
 			int y = (pos.x * rowAdjust) + (pos.y * rowHeight);
 			if (x<minX) {
@@ -843,9 +838,8 @@ public class CenteredMapView extends JComponent {
 		offset.x = borderRect.x + (borderRect.width>>1);
 		offset.y = borderRect.y + (borderRect.height>>1);
 		
-		mapGridCoor = new Hashtable();
-		for (Iterator i=mapGrid.keySet().iterator();i.hasNext();) {
-			Point gridPos = (Point)i.next();
+		mapGridCoor = new Hashtable<>();
+		for (Point gridPos : mapGrid.keySet()) {
 			Point plotPos = convertGridToCoordinate(gridPos);
 			Rectangle rect = new Rectangle(plotPos.x,plotPos.y,tileSize.width,tileSize.height);
 			mapGridCoor.put(gridPos,rect);

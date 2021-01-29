@@ -36,6 +36,7 @@ import com.robin.general.swing.IconFactory;
 import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderModel;
 import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.swing.HostGameSetupDialog;
+import com.robin.magic_realm.components.CharacterChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.utility.GameFileFilters;
 import com.robin.magic_realm.components.utility.RealmUtility;
@@ -46,6 +47,7 @@ public class RealmGmFrame extends JFrame {
 	private static final String PreferredFilePath = "PFP";
 	
 	private static final String ChitDisplayStyle = "CDS";
+	private static final String CharacterChitDisplayStyle = "CDS";
 	
 	private PreferenceManager prefs;
 	private JDesktopPane desktop;
@@ -59,6 +61,8 @@ public class RealmGmFrame extends JFrame {
 	private JRadioButton classicChitsOption;
 	private JRadioButton colorChitsOption;
 	private JRadioButton frenzelChitsOption;
+	private JRadioButton classicCharacterChitsOption;
+	private JRadioButton legendaryCharacterChitsOption;
 	private JButton gameOptions;
 	
 	protected FileFilter saveGameFileFilter = GameFileFilters.createSaveGameFileFilter();
@@ -75,6 +79,7 @@ public class RealmGmFrame extends JFrame {
 		updateLookAndFeel();
 		setTilesStyle();
 		setChitDisplayStyle();
+		setCharacterChitDisplayStyle();
 		setTitle("RealmSpeak GM");
 		setIconImage(IconFactory.findIcon("images/badges/elvish_studies.gif").getImage());
 		setSize(1024,768);
@@ -139,7 +144,20 @@ public class RealmGmFrame extends JFrame {
 		default:
 			RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_CLASSIC;
 			break;
+		}
 	}
+	private void setCharacterChitDisplayStyle() {
+		switch(prefs.getInt(CharacterChitDisplayStyle)) {
+		case CharacterChitComponent.DISPLAY_STYLE_CLASSIC:
+			CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_CLASSIC;
+			break;
+		case CharacterChitComponent.DISPLAY_STYLE_LEGENDARY:
+			CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_LEGENDARY;
+			break;
+		default:
+			CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_CLASSIC;
+			break;
+		}
 	}
 	private JMenuBar buildMenuBar() {
 		JMenuBar menu = new JMenuBar();
@@ -209,6 +227,7 @@ public class RealmGmFrame extends JFrame {
 		
 		optionMenu.add(getTilesOptionsPanel());
 		optionMenu.add(getChitOptionsPanel());
+		optionMenu.add(getCharacterChitOptionsPanel());
 		optionMenu.add(gameButtons);
 		menu.add(optionMenu);
 		return menu;
@@ -300,6 +319,39 @@ public class RealmGmFrame extends JFrame {
 		}
 		group.add(frenzelChitsOption);
 		panel.add(frenzelChitsOption);
+		return panel;
+	}
+	private JPanel getCharacterChitOptionsPanel() {
+		int selected = prefs.getInt(CharacterChitDisplayStyle);
+		JPanel panel = new JPanel(new GridLayout(2,1));
+		panel.setBorder(BorderFactory.createTitledBorder("Character Game Chits Style"));
+		ButtonGroup group = new ButtonGroup();
+		classicCharacterChitsOption = new JRadioButton("Classic");
+		classicCharacterChitsOption.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				prefs.set(CharacterChitDisplayStyle,CharacterChitComponent.DISPLAY_STYLE_CLASSIC);
+				setCharacterChitDisplayStyle();
+				reinitMap();
+			}
+		});
+		if (selected == CharacterChitComponent.DISPLAY_STYLE_CLASSIC) {
+			classicCharacterChitsOption.setSelected(true);
+		}
+		group.add(classicCharacterChitsOption);
+		panel.add(classicCharacterChitsOption);
+		legendaryCharacterChitsOption = new JRadioButton("Legendary");
+		legendaryCharacterChitsOption.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				prefs.set(CharacterChitDisplayStyle,CharacterChitComponent.DISPLAY_STYLE_LEGENDARY);
+				setCharacterChitDisplayStyle();
+				reinitMap();
+			}
+		});
+		if (selected == CharacterChitComponent.DISPLAY_STYLE_LEGENDARY) {
+			legendaryCharacterChitsOption.setSelected(true);
+		}
+		group.add(legendaryCharacterChitsOption);
+		panel.add(legendaryCharacterChitsOption);
 		return panel;
 	}
 	private void closeGame() {

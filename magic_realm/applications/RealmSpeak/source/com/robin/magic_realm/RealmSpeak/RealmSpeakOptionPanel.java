@@ -27,6 +27,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import com.robin.general.sound.SoundCache;
+import com.robin.magic_realm.components.CharacterChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.attribute.ChatLine.HeaderMode;
@@ -46,6 +47,9 @@ public class RealmSpeakOptionPanel extends JDialog {
 	protected JRadioButton colorChitsOption;
 	protected JRadioButton frenzelChitsOption;
 	protected JCheckBox monsterNumbersOption;
+	
+	protected JRadioButton classicCharacterChitsOption;
+	protected JRadioButton legendaryCharacterChitsOption;
 	
 	protected JRadioButton classicTilesOption;
 	protected JRadioButton legendaryTilesOption;
@@ -121,6 +125,18 @@ public class RealmSpeakOptionPanel extends JDialog {
 				classicChitsOption.setSelected(true);
 				break;
 		}
+		
+		switch(options.getOptions().getInt(RealmSpeakOptions.CHARACTER_CHIT_DISPLAY_STYLE)) {
+			case CharacterChitComponent.DISPLAY_STYLE_CLASSIC:
+				classicCharacterChitsOption.setSelected(true);
+				break;
+			case CharacterChitComponent.DISPLAY_STYLE_LEGENDARY:
+				legendaryCharacterChitsOption.setSelected(true);
+				break;
+			default:
+				classicCharacterChitsOption.setSelected(true);
+				break;
+		}
 
 		switch(options.getOptions().getInt(RealmSpeakOptions.TILES_DISPLAY_STYLE)) {
 			case TileComponent.DISPLAY_TILES_STYLE_LEGENDARY:
@@ -181,6 +197,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 	private void saveOptions() {
 		options.getOptions().set(RealmSpeakOptions.ACTION_ICONS,getActionIconState());
 		options.getOptions().set(RealmSpeakOptions.CHIT_DISPLAY_STYLE,getChitDisplayStyle());
+		options.getOptions().set(RealmSpeakOptions.CHARACTER_CHIT_DISPLAY_STYLE,getCharacterChitDisplayStyle());
 		options.getOptions().set(RealmSpeakOptions.TILES_DISPLAY_STYLE,getTilesDisplayStyle());
 		options.getOptions().set(RealmSpeakOptions.METAL_LNF,crossPlatformLookAndFeelOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.MAP_SLIDER,mapSliderOption.isSelected());
@@ -233,6 +250,12 @@ public class RealmSpeakOptionPanel extends JDialog {
 		}
 		return RealmComponent.DISPLAY_STYLE_CLASSIC;
 	}
+	private int getCharacterChitDisplayStyle() {
+		if (legendaryCharacterChitsOption.isSelected()) {
+			return CharacterChitComponent.DISPLAY_STYLE_LEGENDARY;
+		}
+		return CharacterChitComponent.DISPLAY_STYLE_CLASSIC;
+	}
 	private int getTilesDisplayStyle() {
 		if (legendaryTilesOption.isSelected()) {
 			return TileComponent.DISPLAY_TILES_STYLE_LEGENDARY;
@@ -269,13 +292,14 @@ public class RealmSpeakOptionPanel extends JDialog {
 		left.add(getLookAndFeelOptions());
 		left.add(getSoundOptionPanel());
 		left.add(getActionIconOptions());
-		left.add(getChitOptionsPanel());
+		left.add(getChitsOptionsPanel());
+		left.add(getCharacterChitsOptionPanel());
 		left.add(getTilesOptionsPanel());
-		left.add(getMapOptionsPanel());
 		left.add(Box.createVerticalGlue());
 		center.add(left);
 		
 		Box right = Box.createVerticalBox();
+		left.add(getMapOptionsPanel());
 		right.add(getChatDisplayOptionsPanel());
 		right.add(getChatLineOptionsPanel());
 		right.add(getPopupWindowOptions());
@@ -362,7 +386,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		panel.add(shortTextOption);
 		return panel;
 	}
-	private JPanel getChitOptionsPanel() {
+	private JPanel getChitsOptionsPanel() {
 		JPanel panel = new JPanel(new GridLayout(4,1));
 		panel.setBorder(BorderFactory.createTitledBorder("Game Chits"));
 		ButtonGroup group = new ButtonGroup();
@@ -377,6 +401,18 @@ public class RealmSpeakOptionPanel extends JDialog {
 		panel.add(frenzelChitsOption);
 		monsterNumbersOption = new JCheckBox("Show Monster Numbers");
 		panel.add(monsterNumbersOption);
+		return panel;
+	}
+	private JPanel getCharacterChitsOptionPanel() {
+		JPanel panel = new JPanel(new GridLayout(2,1));
+		panel.setBorder(BorderFactory.createTitledBorder("Character Chits Style"));
+		ButtonGroup group = new ButtonGroup();
+		classicCharacterChitsOption = new JRadioButton("Classic");
+		group.add(classicCharacterChitsOption);
+		panel.add(classicCharacterChitsOption);
+		legendaryCharacterChitsOption = new JRadioButton("Legendary Realm");
+		group.add(legendaryCharacterChitsOption);
+		panel.add(legendaryCharacterChitsOption);
 		return panel;
 	}
 	private JPanel getTilesOptionsPanel() {

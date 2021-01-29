@@ -22,6 +22,7 @@ import javax.swing.SwingUtilities;
 import com.robin.general.io.PreferenceManager;
 import com.robin.general.sound.SoundCache;
 import com.robin.general.swing.ComponentTools;
+import com.robin.magic_realm.components.CharacterChitComponent;
 import com.robin.magic_realm.components.MonsterChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.TileComponent;
@@ -42,6 +43,7 @@ public class RealmSpeakOptions {
 	public static final String METAL_LNF = "metalLnf";
 	public static final String ACTION_ICONS = "actionIcons";
 	public static final String CHIT_DISPLAY_STYLE = "chitDisplayStyle";
+	public static final String CHARACTER_CHIT_DISPLAY_STYLE = "characterChitDisplayStyle";
 	public static final String TILES_DISPLAY_STYLE = "tilesDisplayStyle";
 	public static final String MAP_SLIDER = "mapSlider";
 	public static final String HIGHLIGHT_CLEARING_NUMBERS = "hClearN";
@@ -79,6 +81,17 @@ public class RealmSpeakOptions {
 				break;
 			default:
 				RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_CLASSIC;
+				break;
+		}
+		switch(options.getInt(RealmSpeakOptions.CHARACTER_CHIT_DISPLAY_STYLE)) {
+			case CharacterChitComponent.DISPLAY_STYLE_CLASSIC:
+				CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_CLASSIC;
+				break;
+			case CharacterChitComponent.DISPLAY_STYLE_LEGENDARY:
+				CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_LEGENDARY;
+				break;
+			default:
+				CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_CLASSIC;
 				break;
 		}
 		switch(options.getInt(RealmSpeakOptions.TILES_DISPLAY_STYLE)) {

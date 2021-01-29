@@ -5203,6 +5203,7 @@
         <attribute weight="M" />
         <attribute length="2" />
         <attribute base_price="4" />
+		<attribute throwable="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="axe" />
@@ -5228,6 +5229,7 @@
         <attribute weight="M" />
         <attribute length="2" />
         <attribute base_price="4" />
+		<attribute throwable="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="axe" />
@@ -5300,6 +5302,7 @@
         <attribute length="10" />
         <attribute base_price="6" />
         <attribute two_handed="" />
+		<attribute throwable="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="spear" />
@@ -5324,6 +5327,7 @@
         <attribute length="10" />
         <attribute base_price="6" />
         <attribute two_handed="" />
+		<attribute throwable="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="spear" />
@@ -5348,6 +5352,7 @@
         <attribute length="10" />
         <attribute base_price="6" />
         <attribute two_handed="" />
+		<attribute throwable="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="spear" />
@@ -5372,6 +5377,7 @@
         <attribute length="10" />
         <attribute base_price="6" />
         <attribute two_handed="" />
+		<attribute throwable="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="spear" />
@@ -10201,7 +10207,7 @@
         <attribute rw_expansion_1="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
-        <attribute offroad_xy="48.9,82.2" />
+        <attribute offroad_xy="70.3,88.1" />
         <attribute clearing_1_type="mountain" />
         <attribute clearing_1_xy="27.0,35.4" />
         <attribute clearing_2_type="woods" />
@@ -10247,7 +10253,7 @@
         <attribute path_10_type="normal" />
       </AttributeBlock>
       <AttributeBlock blockName="enchanted">
-        <attribute offroad_xy="50.2,75.0" />
+        <attribute offroad_xy="69.5,87.8" />
         <attribute clearing_1_type="mountain" />
         <attribute clearing_1_xy="26.4,35.6" />
         <attribute clearing_1_magic="P" />
@@ -10313,7 +10319,7 @@
         <attribute rw_expansion_1="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
-        <attribute offroad_xy="61.8,75.7" />
+        <attribute offroad_xy="71.5,89.2" />
         <attribute clearing_1_type="woods" />
         <attribute clearing_1_xy="34.2,18.6" />
         <attribute clearing_2_type="woods" />
@@ -10373,7 +10379,7 @@
         <attribute path_12_arc="20.7,69.9" />
       </AttributeBlock>
       <AttributeBlock blockName="enchanted">
-        <attribute offroad_xy="61.4,17.7" />
+        <attribute offroad_xy="29.8,87.6" />
         <attribute clearing_1_type="normal" />
         <attribute clearing_1_xy="40.7,15.1" />
         <attribute clearing_1_magic="R" />
@@ -26588,6 +26594,7 @@
         <attribute weight="M" />
         <attribute length="2" />
         <attribute base_price="4" />
+		<attribute throwable="" />
         <attribute weapon="" />
         <attribute icon_type="axe" />
         <attribute icon_folder="weapons" />
@@ -26611,6 +26618,7 @@
         <attribute weight="M" />
         <attribute length="2" />
         <attribute base_price="4" />
+		<attribute throwable="" />
         <attribute weapon="" />
         <attribute icon_type="axe" />
         <attribute icon_folder="weapons" />

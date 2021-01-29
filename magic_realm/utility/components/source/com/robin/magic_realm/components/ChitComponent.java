@@ -55,7 +55,6 @@ public abstract class ChitComponent extends RealmComponent {
 	protected Color lightColor = MagicRealmColor.TAN;
 	protected Color darkColor = MagicRealmColor.TAN;
 	
-	protected String imageExtension = ".gif";
 	private boolean showFlipSide = false;
 	private boolean ignoreDamage = false;
 	
@@ -85,7 +84,7 @@ public abstract class ChitComponent extends RealmComponent {
 		}
 		throw new IllegalArgumentException("Invalid size: "+size);
 	}
-	private static int SHADOW_BORDER = 4;
+	public static int SHADOW_BORDER = 4;
 	protected void updateSize() {
 		if (getSize().width == getChitSize()+SHADOW_BORDER) return;
 		int chitSize = getChitSize()+SHADOW_BORDER;
@@ -183,8 +182,6 @@ public abstract class ChitComponent extends RealmComponent {
 		gameObject.getAttributeBlock("this").put(Constants.FACING_KEY,lightSide?LIGHT_SIDE_UP:DARK_SIDE_UP); // under the hood!
 		updateSize();
 		
-		// (whew!)
-		
 		return image;
 	}
 	protected void drawIcon(Graphics g,String type,String name,double size) {
@@ -194,16 +191,15 @@ public abstract class ChitComponent extends RealmComponent {
 //		Color backing = isLightSideUp()?lightColor:darkColor;
 		String filename = type+"/"+name;
 		ImageIcon icon = ImageCache.getIcon(filename);
-if (icon==null) {
-//	System.out.println(gameObject.getXMLString());
-	throw new IllegalArgumentException("icon can not be null: "+filename);
-}
+		if (icon==null) {
+				throw new IllegalArgumentException("icon can not be null: "+filename);
+		}
 		drawIcon(g,icon,size,offsetx,offsety,backing);
 	}
 	
 	protected void drawIcon(Graphics g,ImageIcon icon,double size,int offsetx,int offsety,Color backing) {
-		int sx = (int)((double)icon.getIconWidth()*size);
-		int sy = (int)((double)icon.getIconHeight()*size);
+		int sx = (int)(icon.getIconWidth()*size);
+		int sy = (int)(icon.getIconHeight()*size);
 		
 		int dx = ((getChitSize()-sx)>>1)+offsetx;
 		int dy = ((getChitSize()-sy)>>1)+offsety;
@@ -217,6 +213,10 @@ if (icon==null) {
 	}
 	
 	public void paintComponent(Graphics g1) {
+		paintComponent(g1, true);
+	}
+	
+	public void paintComponent(Graphics g1, boolean includeChitBacking) {
 		Graphics2D g = (Graphics2D)g1;
 		int chitSize = getChitSize();
 		
@@ -230,8 +230,8 @@ if (icon==null) {
 			
 			Color shadowColor = new Color(0,0,0,40);
 			g.setColor(shadowColor);
-			for (int i=0;i<4;i++) {
-				Shape shape = getShape(i+4,i+4,chitSize-(i<<1));
+			for (int i=0;i<SHADOW_BORDER;i++) {
+				Shape shape = getShape(i+SHADOW_BORDER,i+SHADOW_BORDER,chitSize-(i<<1));
 				g.fill(shape);
 			}
 		}
@@ -242,16 +242,18 @@ if (icon==null) {
 			g.draw(shape);
 		}
 		
-		// Draw Chit Backing
 		mainColor = isLightSideUp()?lightColor:darkColor;
 		edgeColor = GraphicsUtil.convertColor(mainColor,Color.black,10);
 		
-		for (int i=0;i<=BORDER_WIDTH;i++) {
-			Shape shape = getShape(i,i,chitSize-(i<<1));
-			Color color = GraphicsUtil.convertColor(edgeColor,mainColor,(i*100)/BORDER_WIDTH);
-			g.setColor(color);
-			g.fill(shape);
+		if (includeChitBacking) {
+			for (int i=0;i<=BORDER_WIDTH;i++) {
+				Shape shape = getShape(i,i,chitSize-(i<<1));
+				Color color = GraphicsUtil.convertColor(edgeColor,mainColor,(i*100)/BORDER_WIDTH);
+				g.setColor(color);
+				g.fill(shape);
+			}
 		}
+		
 		String extraShadingType = getExtraBoardShadingType();
 		if (extraShadingType!=null) {
 			g.setColor(edgeColor);

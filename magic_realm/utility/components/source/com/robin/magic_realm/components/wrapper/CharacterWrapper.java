@@ -3452,8 +3452,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		if (includeFollowingHirelings) {
 			// Hirelings hide and unhide with character
-			for (Iterator i=getFollowingHirelings().iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : getFollowingHirelings()) {
 				rc.setHidden(val);
 			}
 		}
@@ -3464,8 +3463,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public void unhideAllCharacterFollowers() {
 		// Unhide the followers that are currently following
-		for (Iterator i=getActionFollowers().iterator();i.hasNext();) {
-			CharacterWrapper actionFollower = (CharacterWrapper)i.next();
+		for (CharacterWrapper actionFollower : getActionFollowers()) {
 			actionFollower.setHidden(false);
 		}
 		
