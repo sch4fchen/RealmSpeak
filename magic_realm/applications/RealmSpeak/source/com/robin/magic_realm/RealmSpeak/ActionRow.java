@@ -692,7 +692,7 @@ public class ActionRow {
 			int c = roller.getTotal();
 			
 			// Find all clearings that match the number
-			ArrayList<ClearingDetail> clearings = new ArrayList<ClearingDetail>();
+			ArrayList<ClearingDetail> clearings = new ArrayList<>();
 			for (PathDetail path : current.clearing.getConnectedPaths()) {
 				ClearingDetail clearing = path.findConnection(current.clearing);
 				if (clearing!=null) {
@@ -709,24 +709,22 @@ public class ActionRow {
 				result = "Random move to clearing "+c+" is invalid!";
 				return;
 			}
+			result = "Random move to clearing "+c+": ";
+			
+			if (clearings.size()==1) {
+				// If one, do move action
+				location = new TileLocation(clearings.get(0));
+			}
 			else {
-				result = "Random move to clearing "+c+": ";
+				// If more than one, let player choose
+				CenteredMapView.getSingleton().setMarkClearingAlertText("Random move to clearing "+c+": pick one!");
+				CenteredMapView.getSingleton().markClearings(clearings,true);
+				TileLocationChooser chooser = new TileLocationChooser(gameHandler.getMainFrame(),CenteredMapView.getSingleton(),current);
+				chooser.setVisible(true);
 				
-				if (clearings.size()==1) {
-					// If one, do move action
-					location = new TileLocation(clearings.get(0));
-				}
-				else {
-					// If more than one, let player choose
-					CenteredMapView.getSingleton().setMarkClearingAlertText("Random move to clearing "+c+": pick one!");
-					CenteredMapView.getSingleton().markClearings(clearings,true);
-					TileLocationChooser chooser = new TileLocationChooser(gameHandler.getMainFrame(),CenteredMapView.getSingleton(),current);
-					chooser.setVisible(true);
-					
-					// Update the location
-					CenteredMapView.getSingleton().markClearings(clearings,false);
-					location = chooser.getSelectedLocation();
-				}
+				// Update the location
+				CenteredMapView.getSingleton().markClearings(clearings,false);
+				location = chooser.getSelectedLocation();
 			}
 		}
 		
@@ -743,7 +741,7 @@ public class ActionRow {
 			boolean overridePath = false;
 			
 			if (character.canWalkWoods(current.tile) || (current.isTileOnly() && !current.isFlying())) {
-				ArrayList<ClearingDetail> validClearings = new ArrayList<ClearingDetail>();
+				ArrayList<ClearingDetail> validClearings = new ArrayList<>();
 				if (current.clearing!=null) {
 					validClearings.addAll(current.clearing.getParent().getClearings());
 				}
@@ -782,8 +780,8 @@ public class ActionRow {
 					ArrayList<CharacterWrapper> actionFollowers = character.getActionFollowers();
 					
 					if (actionFollowers.size()>0) {
-						ArrayList<CharacterWrapper> canLeaveBehind = new ArrayList<CharacterWrapper>();
-						ArrayList<CharacterWrapper> encumberedFollowers = new ArrayList<CharacterWrapper>();
+						ArrayList<CharacterWrapper> canLeaveBehind = new ArrayList<>();
+						ArrayList<CharacterWrapper> encumberedFollowers = new ArrayList<>();
 						for (CharacterWrapper follower : actionFollowers) {
 							if (!follower.foundHiddenEnemy(character.getGameObject())) {
 								canLeaveBehind.add(follower);
@@ -795,7 +793,7 @@ public class ActionRow {
 						if (!encumberedFollowers.isEmpty()) {
 							StringBuffer message = new StringBuffer();
 							for (Iterator<CharacterWrapper> i=encumberedFollowers.iterator();i.hasNext();) {
-								CharacterWrapper follower = (CharacterWrapper)i.next();
+								CharacterWrapper follower = i.next();
 								if (message.length()>0) {
 									if (i.hasNext()) {
 										message.append(", ");
@@ -1092,9 +1090,7 @@ public class ActionRow {
 			doSearchAction(); // recurses because we don't want to use up a search
 			return;
 		}
-		else {
-			searchTable = (RealmTable)selected;
-		}
+		searchTable = (RealmTable)selected;
 
 		if (searchTable==null) {
 			// player cancelled the dialog, so get out of here
@@ -1241,7 +1237,7 @@ public class ActionRow {
 			}
 			else {
 				// Visitor or Guild - trade directly with their hold
-				hold = new ArrayList<GameObject>();
+				hold = new ArrayList<>();
 				for(Object o:trader.getGameObject().getHold()) {
 					GameObject go = (GameObject)o;
 					RealmComponent rc = RealmComponent.getRealmComponent(go);
@@ -1330,7 +1326,7 @@ public class ActionRow {
 				if (TRADE_BUY.equals(tradeAction) || repair) { // TRADE_BUY or TRADE_REPAIR
 					
 					// Can only be one item purchased
-					RealmComponent merchandise = (RealmComponent)selComponents.iterator().next();
+					RealmComponent merchandise = selComponents.iterator().next();
 					
 					// Let's make sure this item CAN be bought
 					if (!repair && hostPrefs.hasPref(Constants.HOUSE1_NO_NEGATIVE_POINTS)) {
@@ -1463,7 +1459,7 @@ public class ActionRow {
 	private void doHealAction() {
 		// Select a character in the same clearing that has wounds/fatigue, and does not have ILL_HEALTH, or is transmorphed
 		TileLocation current = character.getCurrentLocation();
-		ArrayList<RealmComponent> canBeHealed = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> canBeHealed = new ArrayList<>();
 		for (RealmComponent rc:current.clearing.getClearingComponents()) {
 			if (rc.isCharacter()) {
 				if (!rc.getGameObject().equals(character.getGameObject())) { // can't be you!
@@ -1511,7 +1507,7 @@ public class ActionRow {
 			follower.addCurrentActionValid(true);
 		}
 		// Player chooses from all inactive weapons and spell chits
-		ArrayList<ChitComponent> alertChoices = new ArrayList<ChitComponent>();
+		ArrayList<ChitComponent> alertChoices = new ArrayList<>();
 		Collection<CharacterActionChitComponent> c = character.getActiveChits();
 		for (CharacterActionChitComponent chit : c) {
 			if (chit.isMagic() || chit.isFightAlert()) {
@@ -1591,7 +1587,7 @@ public class ActionRow {
 		}
 	}
 	private void doRepairAction() {
-		ArrayList<ArmorChitComponent> damagedArmor = new ArrayList<ArmorChitComponent>();
+		ArrayList<ArmorChitComponent> damagedArmor = new ArrayList<>();
 		for(GameObject go:character.getInventory()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc.isArmor()) {
@@ -1638,15 +1634,13 @@ public class ActionRow {
 			chooser.setSortBiggestFirst(true);
 			for (String groupName : hash.keySet()) {
 				ArrayList<RealmComponent> list = hash.getList(groupName);
-				Collections.sort(list,new Comparator() {
-					public int compare(Object o1,Object o2) {
-						RealmComponent n1 = (RealmComponent)o1;
-						String rs1 = n1.getGameObject().getThisAttribute("rank");
+				Collections.sort(list,new Comparator<RealmComponent>() {
+					public int compare(RealmComponent o1,RealmComponent o2) {
+						String rs1 = o1.getGameObject().getThisAttribute("rank");
 						if (rs1==null) rs1 = "0";
 						Integer rank1 = "HQ".equals(rs1)?new Integer(0):Integer.valueOf(rs1);
 						
-						RealmComponent n2 = (RealmComponent)o2;
-						String rs2 = n2.getGameObject().getThisAttribute("rank");
+						String rs2 = o2.getGameObject().getThisAttribute("rank");
 						if (rs2==null) rs2 = "0";
 						Integer rank2 = "HQ".equals(rs2)?new Integer(0):Integer.valueOf(rs2);
 						
@@ -1661,8 +1655,7 @@ public class ActionRow {
 					basePrice = 0;
 					int rehire = 0;
 					int newhire = 0;
-					for (Iterator n=list.iterator();n.hasNext();) {
-						RealmComponent rc = (RealmComponent)n.next();
+					for (RealmComponent rc : list) {
 						if (rc.getOwnerId()==null) newhire++; else rehire++;
 						chooser.addRealmComponentToOption(option,rc);
 						basePrice += rc.getGameObject().getThisInt("base_price");
@@ -1689,8 +1682,7 @@ public class ActionRow {
 					// Add only the last unhired member of the group
 					// Add all the hired natives (one at a time)
 					last = null;
-					for (Iterator n=list.iterator();n.hasNext();) {
-						RealmComponent rc = (RealmComponent)n.next();
+					for (RealmComponent rc : list) {
 						if (rc.getOwnerId()==null) {
 							last = (ChitComponent)rc;
 						}
@@ -1723,7 +1715,7 @@ public class ActionRow {
 					result = "Cancelled Hire";
 					return;
 				}
-				ArrayList<RealmComponent> list = new ArrayList<RealmComponent>(chooser.getSelectedComponents());
+				ArrayList<RealmComponent> list = new ArrayList<>(chooser.getSelectedComponents());
 				ChitComponent last = (ChitComponent)list.get(list.size()-1);
 				
 				// Now we have the group to hire.  Need to do the Meeting table...
@@ -1860,8 +1852,7 @@ public class ActionRow {
 				}
 				compChooser.addRealmComponentToOption(key,chit);
 			}
-			for (Iterator i=tileEnchantableSets.iterator();i.hasNext();) {
-				RealmComponent[] chit = (RealmComponent[])i.next();
+			for (RealmComponent[] chit : tileEnchantableSets) {
 				String key = "k"+(keyN++);
 				compChooser.addOption(key,"Tile");
 				for (int n=0;n<chit.length;n++) {
@@ -1878,9 +1869,8 @@ public class ActionRow {
 						tile.flip();
 						result = "enchanted "+tile.getTileName();
 						// fatigue the chit(s) used to do it
-						Collection chits = compChooser.getSelectedComponents();
-						for (Iterator i=chits.iterator();i.hasNext();) {
-							RealmComponent rc = (RealmComponent)i.next();
+						Collection<RealmComponent> chits = compChooser.getSelectedComponents();
+						for (RealmComponent rc : chits) {
 							if (rc.isMagicChit()) {
 								MagicChit chit = (MagicChit)rc;
 								if (chit.isColor()) { // Only fatigue the color chit - not the incantation
@@ -2056,8 +2046,7 @@ public class ActionRow {
 			}
 			
 			// Followers shouldn't follow here, unless they can fly, or they are a familiar
-			for (Iterator i=character.getActionFollowers().iterator();i.hasNext();) {
-				CharacterWrapper follower = (CharacterWrapper)i.next();
+			for (CharacterWrapper follower : character.getActionFollowers()) {
 				if (follower.mustFly() || follower.isFamiliar()) {
 					follower.moveToLocation(gameHandler.getMainFrame(),location);
 					if (follower.isHidden()) {

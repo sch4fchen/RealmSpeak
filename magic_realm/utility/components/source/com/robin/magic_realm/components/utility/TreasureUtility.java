@@ -229,8 +229,8 @@ public class TreasureUtility {
 					if (otherThing.hasThisAttribute("weapon")) {
 						if ((hostPrefs.hasPref(Constants.OPT_DUAL_WIELDING) || characterRc.affectedByKey(Constants.DUAL_WIELDING))
 							&& !thing.hasThisAttribute("two_handed") && !otherThing.hasThisAttribute("two_handed")
-							&& (character.getVulnerability().strongerOrEqualTo((RealmComponent.getRealmComponent(thing)).getWeight())
-							&& character.getVulnerability().strongerOrEqualTo((RealmComponent.getRealmComponent(otherThing)).getWeight()))) {
+							&& (character.getVulnerability().strongerThan((RealmComponent.getRealmComponent(thing)).getWeight())
+							&& character.getVulnerability().strongerThan((RealmComponent.getRealmComponent(otherThing)).getWeight()))) {
 							boolean secondWeaponActive = false;
 							for (GameObject activeItem : activeInventory) {
 								if (activeItem.hasThisAttribute("shield")) {
