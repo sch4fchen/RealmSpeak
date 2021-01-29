@@ -260,7 +260,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		 * Assumptions:
 		 * 		1)  Each game object with the same id in each data object has the same blockNames
 		 */
-		ArrayList changes = new ArrayList();
+		ArrayList<GameObjectChange> changes = new ArrayList<>();
 		for (Iterator i = getAttributeBlockNames().iterator(); i.hasNext();) {
 			String blockName = (String) i.next();
 			OrderedHashtable block = getAttributeBlock(blockName);
@@ -556,13 +556,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 
 				if (val instanceof String) { // attribute
 					Element attributeElement = new Element("attribute");
-					//try {
-						attributeElement.setAttribute(key, val.toString());
-					//}
-					//catch(IllegalNameException ex) {
-					//	System.out.println(fineDetail());
-					//	throw ex;
-					//}
+					attributeElement.setAttribute(key, val.toString());
 					element.addContent(attributeElement);
 				}
 				else if (val instanceof Collection) { // attributeList
@@ -583,7 +577,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		return element;
 	}
 
-	public ArrayList getAttributeList(String blockName, String key) {
+	public ArrayList<String> getAttributeList(String blockName, String key) {
 		if (uncommitted != null) {
 			return uncommitted.getAttributeList(blockName, key);
 		}
@@ -593,9 +587,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 			if (obj==null || obj instanceof ArrayList) {
 				return (ArrayList)obj;
 			}
-			else{
-				throw new IllegalArgumentException("Found string instead of list for '"+blockName+"' and '"+key+"' in GameObject "+getName());
-			}
+			throw new IllegalArgumentException("Found string instead of list for '"+blockName+"' and '"+key+"' in GameObject "+getName());
 		}
 		return null;
 	}
@@ -629,8 +621,8 @@ public class GameObject extends ModifyableObject implements Serializable {
 	}
 	
 	public ArrayList<GameObject> getHoldAsGameObjects(){
-		ArrayList<GameObject> result = new ArrayList<GameObject>();
-		ArrayList toCopy = new ArrayList();
+		ArrayList<GameObject> result = new ArrayList<>();
+		ArrayList<GameObject> toCopy = new ArrayList<>();
 		
 		if (uncommitted != null) {
 			toCopy = uncommitted.hold;
@@ -638,8 +630,8 @@ public class GameObject extends ModifyableObject implements Serializable {
 			toCopy = hold;
 		}
 
-		for(Iterator i=toCopy.iterator();i.hasNext();){
-			result.add((GameObject)i.next());
+		for(Iterator<GameObject> i=toCopy.iterator();i.hasNext();){
+			result.add(i.next());
 		}
 		
 		return result;
@@ -690,7 +682,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		return getAttributeBlock(THIS);
 	}
 
-	public ArrayList getThisAttributeList(String key) {
+	public ArrayList<String> getThisAttributeList(String key) {
 		return getAttributeList(THIS, key);
 	}
 
@@ -726,10 +718,6 @@ public class GameObject extends ModifyableObject implements Serializable {
 	}
 	public Element getXML() {
 		if (uncommitted != null) {
-//			System.out.println("------CURRENT----------\n"+fineDetail());
-//			System.out.println("-----UNCOMMITTED-------\n"+uncommitted.fineDetail());
-//			System.out.println("----CHANGES-----\n"+parent.getObjectChanges());
-//			throw new IllegalStateException("Cannot generate XML for uncommitted object: "+toString());
 			return uncommitted.getXML();
 		}
 		Element element = new Element("GameObject");
@@ -780,15 +768,14 @@ public class GameObject extends ModifyableObject implements Serializable {
 	 * The format for a keyVal is "key=val", and a key alone is simply "key".  Will also exclude
 	 * items from the list based on negative keys like "!key=val" and "!key".
 	 */
-	public boolean hasAllKeyVals(Collection keyVals) {
+	public boolean hasAllKeyVals(Collection<String> keyVals) {
 		if (uncommitted != null) {
 			return uncommitted.hasAllKeyVals(keyVals);
 		}
 		// First, cleanup the keys and keyVals
-		ArrayList fixedKeyVals = new ArrayList();
-		ArrayList fixedNegativeKeyVals = new ArrayList();
-		for (Iterator i = keyVals.iterator(); i.hasNext();) {
-			String string = (String) i.next();
+		ArrayList<String> fixedKeyVals = new ArrayList<>();
+		ArrayList<String> fixedNegativeKeyVals = new ArrayList<>();
+		for (String string : keyVals) {
 			StringTokenizer tokens = new StringTokenizer(string, "=");
 			if (tokens.countTokens() == 1) {
 				String key = tokens.nextToken().trim().toLowerCase();

@@ -212,8 +212,8 @@ public class AttributeEditor extends AggressiveDialog {
 		subButton.setEnabled(editBox.length > 1);
 	}
 
-	private ArrayList readCurrentFields() {
-		ArrayList list = new ArrayList();
+	private ArrayList<String> readCurrentFields() {
+		ArrayList<String> list = new ArrayList<>();
 		if (editBox != null) {
 			for (int i = 0; i < editBox.length; i++) {
 				if (editBox[i] != null) {

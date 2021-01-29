@@ -53,14 +53,14 @@ public class GameBuilderFrame extends JFrame {
 		
 	protected JDesktopPane desktop;
 	protected int desktopWindowCount;
-	protected ArrayList gameDataFrames;
-	protected ArrayList openGameNames;
+	protected ArrayList<GameDataFrame> gameDataFrames;
+	protected ArrayList<String> openGameNames;
 	
 	protected File lastPath;
 	
 	public GameBuilderFrame() {
-		gameDataFrames = new ArrayList();
-		openGameNames = new ArrayList();
+		gameDataFrames = new ArrayList<>();
+		openGameNames = new ArrayList<>();
 		prefs = new PreferenceManager("GameBuilder","GameBuilder.cfg") {
 			protected void createDefaultPreferences(Properties props) {
 				props.put(LAST_DIR,System.getProperty("user.home"));
@@ -202,7 +202,7 @@ public class GameBuilderFrame extends JFrame {
 
 						if (setup==null) return;
 						StringBuffer result = new StringBuffer();
-						ArrayList<String> keyVals = new ArrayList<String>();
+						ArrayList<String> keyVals = new ArrayList<>();
 						//keyVals.add("original_game");
 						//keyVals.add("rw_expansion_1"); // TODO These keyVals need to be available with each setup somehow
 						GameObjectTreeView view = new GameObjectTreeView(data.doSetup(result,setup,keyVals));
@@ -297,8 +297,7 @@ public class GameBuilderFrame extends JFrame {
 		updateMenu();
 	}
 	public void saveAllGame() {
-		for (Iterator i=gameDataFrames.iterator();i.hasNext();) {
-			GameDataFrame frame = (GameDataFrame)i.next();
+		for (GameDataFrame frame : gameDataFrames) {
 			if (frame.isModified()) {
 				frame.save(this);
 			}
@@ -306,8 +305,6 @@ public class GameBuilderFrame extends JFrame {
 		updateMenu();
 	}
 	public void saveAsGame() {
-		// Find active GameData window
-//		Saveable obj = (Saveable)desktop.getSelectedFrame();
 		GameDataFrame activeDataFrame = getFrontDataFrame();
 		activeDataFrame.saveAs(this);
 		updateMenu();
@@ -315,7 +312,7 @@ public class GameBuilderFrame extends JFrame {
 	public void revertGame() {
 		if (JOptionPane.showConfirmDialog(this,"Reverting to old version will lose any changes made since last save.\nContinue?","Revert to saved version",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION) {
 			GameDataFrame activeDataFrame = getFrontDataFrame();
-			if (activeDataFrame.revert(this)) {
+			if (activeDataFrame.revert()) {
 				JOptionPane.showMessageDialog(this,"Game successfully reverted.","Done",JOptionPane.INFORMATION_MESSAGE);
 			}
 			updateMenu();
@@ -331,8 +328,7 @@ public class GameBuilderFrame extends JFrame {
 		System.exit(0);
 	}
 	public GameDataFrame getFrontDataFrame() {
-		for (Iterator i=gameDataFrames.iterator();i.hasNext();) {
-			GameDataFrame frame = (GameDataFrame)i.next();
+		for (GameDataFrame frame : gameDataFrames) {
 			if (frame.getLayer()==0) {
 				return frame;
 			}
@@ -363,8 +359,7 @@ public class GameBuilderFrame extends JFrame {
 		closeFile.setEnabled(activeDataFrame!=null);
 		saveFile.setEnabled(activeDataFrame!=null && activeDataFrame.isModified());
 		boolean foundModified = false;
-		for (Iterator i=gameDataFrames.iterator();i.hasNext();) {
-			GameDataFrame frame = (GameDataFrame)i.next();
+		for (GameDataFrame frame : gameDataFrames) {
 			if (frame.isModified()) {
 				// Only the first modified file is needed to set enabled status
 				foundModified = true;

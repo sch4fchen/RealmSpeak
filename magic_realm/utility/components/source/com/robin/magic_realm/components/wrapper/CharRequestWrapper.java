@@ -45,15 +45,15 @@ public class CharRequestWrapper extends GameObjectWrapper {
 	public void addBlockList(String blockKey) {
 		addListItem(CHAR_REQUEST_LIST,blockKey);
 	}
-	public ArrayList getBlockList() {
-		ArrayList list = getList(CHAR_REQUEST_LIST);
+	public ArrayList<String> getBlockList() {
+		ArrayList<String> list = getList(CHAR_REQUEST_LIST);
 		if (list==null) {
-			list = new ArrayList();
+			list = new ArrayList<>();
 		}
 		return list;
 	}
 	public String getNextAvailableBlockName() {
-		ArrayList list = getBlockList();
+		ArrayList<String> list = getBlockList();
 		int n=0;
 		while(n<10000) { // Just so this isn't an infinite loop!
 			String testKey = CHAR_REQUEST_BLOCK+n;
@@ -80,8 +80,7 @@ public class CharRequestWrapper extends GameObjectWrapper {
 		getGameObject().setAttribute(block,REQ_KEY,reqKey);
 	}
 	public boolean hasCharacterRequests() {
-		for (Iterator i=getBlockList().iterator();i.hasNext();) {
-			String block = (String)i.next();
+		for (String block : getBlockList()) {
 			if (getGameObject().hasAttributeBlock(block)) {
 				return true;
 			}
@@ -97,8 +96,7 @@ public class CharRequestWrapper extends GameObjectWrapper {
 	}
 	public CharacterRequest getCharacterRequest(CharacterWrapper character) {
 		GameData data = getGameObject().getGameData();
-		for (Iterator i=getBlockList().iterator();i.hasNext();) {
-			String block = (String)i.next();
+		for (String block : getBlockList()) {
 			if (getGameObject().hasAttributeBlock(block)) {
 				CharacterRequest request = getCharacterRequest(data,block);
 				if (character.getGameObject().equals(request.getCharacter().getGameObject())) {
@@ -110,8 +108,7 @@ public class CharRequestWrapper extends GameObjectWrapper {
 	}
 	public boolean clearRequest(CharacterRequest request) {
 		GameData data = getGameObject().getGameData();
-		for (Iterator i=getBlockList().iterator();i.hasNext();) {
-			String block = (String)i.next();
+		for (String block : getBlockList()) {
 			if (getGameObject().hasAttributeBlock(block)) {
 				CharacterRequest aRequest = getCharacterRequest(data,block);
 				if (request.equals(aRequest)) {

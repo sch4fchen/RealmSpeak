@@ -164,13 +164,9 @@ public class GameDataFrame extends JInternalFrame implements Modifyable,Saveable
 			if (!zipfile) {
 				return data.saveToFile(filePath);
 			}
-			else {
-				return data.zipToFile(filePath);
-			}
+			return data.zipToFile(filePath);
 		}
-		else {
-			return saveAs(component);
-		}
+		return saveAs(component);
 	}
 	public boolean saveAs(Component component) {
 		updateLastPath();
@@ -192,7 +188,7 @@ public class GameDataFrame extends JInternalFrame implements Modifyable,Saveable
 		}
 		return false;
 	}
-	public boolean revert(Component component) {
+	public boolean revert() {
 		updateLastPath();
 		if (filePath!=null) {
 			return data.loadFromFile(filePath);
@@ -300,7 +296,7 @@ public class GameDataFrame extends JInternalFrame implements Modifyable,Saveable
 						public void duplicate() {
 							int[] row = getSelectedRows();
 							
-							ArrayList<GameObject> objectsToDuplicate = new ArrayList<GameObject>();
+							ArrayList<GameObject> objectsToDuplicate = new ArrayList<>();
 							for (int i=0;i<row.length;i++) {
 								GameObject obj = data.getFilteredGameObjects().get(row[i]);
 								objectsToDuplicate.add(obj);
@@ -317,7 +313,7 @@ public class GameDataFrame extends JInternalFrame implements Modifyable,Saveable
 							int[] row = getSelectedRows();
 							
 							// First get all selected objects
-							ArrayList<GameObject> delObjects = new ArrayList<GameObject>();
+							ArrayList<GameObject> delObjects = new ArrayList<>();
 							for (int i=0;i<row.length;i++) {
 								GameObject obj = data.getFilteredGameObjects().get(row[i]);
 								delObjects.add(obj);
@@ -335,7 +331,7 @@ public class GameDataFrame extends JInternalFrame implements Modifyable,Saveable
 						}
 						public void edit() {
 							int row = getSelectedRow();
-							GameObject obj = (GameObject)data.getFilteredGameObjects().get(row);
+							GameObject obj = data.getFilteredGameObjects().get(row);
 							GameObjectFrame of = getObjectFrame(obj);
 							popUpInternalFrame(of);
 						}
@@ -353,7 +349,7 @@ public class GameDataFrame extends JInternalFrame implements Modifyable,Saveable
 									}
 									
 									if (val!=null) {
-										ArrayList<GameObject> editObjects = new ArrayList<GameObject>(data.getFilteredGameObjects());
+										ArrayList<GameObject> editObjects = new ArrayList<>(data.getFilteredGameObjects());
 										int[] row = getSelectedRows();
 										if (removingChange) {
 											// Remove attribute from all selected objects
@@ -380,7 +376,7 @@ public class GameDataFrame extends JInternalFrame implements Modifyable,Saveable
 							// First get all selected objects
 							int min = Integer.MAX_VALUE;
 							int max = Integer.MIN_VALUE;
-							ArrayList<GameObject> shiftObjects = new ArrayList<GameObject>();
+							ArrayList<GameObject> shiftObjects = new ArrayList<>();
 							for (int i=0;i<row.length;i++) {
 								GameObject obj = data.getFilteredGameObjects().get(row[i]);
 								shiftObjects.add(obj);
@@ -409,7 +405,7 @@ public class GameDataFrame extends JInternalFrame implements Modifyable,Saveable
 						public void updateSelection(ArrayList<GameObject> objects) {
 							int[] row = new int[objects.size()];
 							int n=0;
-							for (Iterator i=objects.iterator();i.hasNext();) {
+							for (Iterator<GameObject> i=objects.iterator();i.hasNext();) {
 								row[n++] = data.getFilteredGameObjects().indexOf(i.next());
 							}
 							setSelectedRows(row);
@@ -426,7 +422,7 @@ public class GameDataFrame extends JInternalFrame implements Modifyable,Saveable
 					}
 					public void duplicate() {
 						int row = getSelectedRow();
-						GameSetup selSetup = (GameSetup)data.getGameSetups().get(row);
+						GameSetup selSetup = data.getGameSetups().get(row);
 						GameSetup setup = data.createNewSetup();
 						setup.copyCommandsFrom(selSetup);
 						// no need to pop up a frame
@@ -435,7 +431,7 @@ public class GameDataFrame extends JInternalFrame implements Modifyable,Saveable
 						int[] row = getSelectedRows();
 						
 						// First get all selected objects
-						ArrayList<GameSetup> delSetups = new ArrayList<GameSetup>();
+						ArrayList<GameSetup> delSetups = new ArrayList<>();
 						for (int i=0;i<row.length;i++) {
 							GameSetup setup = data.getGameSetups().get(row[i]);
 							delSetups.add(setup);
@@ -453,7 +449,7 @@ public class GameDataFrame extends JInternalFrame implements Modifyable,Saveable
 					}
 					public void edit() {
 						int row = getSelectedRow();
-						GameSetup setup = (GameSetup)data.getGameSetups().get(row);
+						GameSetup setup = data.getGameSetups().get(row);
 						GameSetupFrame sf = getSetupFrame(setup);
 						popUpInternalFrame(sf);
 					}
@@ -491,7 +487,7 @@ public class GameDataFrame extends JInternalFrame implements Modifyable,Saveable
 	public GameObjectFrame getObjectFrame(GameObject obj) {
 		GameObjectFrame frame = null;
 		if (obj!=null) {
-			frame = (GameObjectFrame)gameObjectFrames.get(obj.getBarcode());
+			frame = gameObjectFrames.get(obj.getBarcode());
 		}
 		if (frame==null) {
 			frame = createNewObjectFrame(obj);
@@ -511,7 +507,7 @@ public class GameDataFrame extends JInternalFrame implements Modifyable,Saveable
 	public GameSetupFrame getSetupFrame(GameSetup setup) {
 		GameSetupFrame frame = null;
 		if (setup!=null) {
-			frame = (GameSetupFrame)gameSetupFrames.get(setup.getBarcode());
+			frame = gameSetupFrames.get(setup.getBarcode());
 		}
 		if (frame==null) {
 			frame = createNewSetupFrame(setup);

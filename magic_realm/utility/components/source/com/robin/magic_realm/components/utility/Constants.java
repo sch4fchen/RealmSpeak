@@ -201,6 +201,7 @@ public class Constants {
 	public static final String VALE_WALKER="vale_walker";
 	public static final String SNEAKY = "sneaky";
 	public static final String STRONG = "strong";
+	public static final String DUAL_WIELDING = "dual_wielding";
 	public static final String SHARPSHOOTER = "sharpshooter";
 	public static final String ENHANCED_MAGIC = "enhanced_magic";
 	public static final String ENHANCED_ARTIFACTS = "enhanced_artifacts";
@@ -456,6 +457,8 @@ public class Constants {
 	public static final String OPT_CHAR_ABILITY_ELF = "OptCharElf";
 	public static final String OPT_PENETRATING_ARMOR = "OptPenArmor";
 	public static final String OPT_TWO_HANDED_WEAPONS = "OptTwoHandedWeapons";
+	public static final String OPT_DUAL_WIELDING = "OptDualWielding";
+	public static final String OPT_THROWING_WEAPONS = "OptThrowingWeapons";
 	public static final String OPT_RIDING_HORSES = "OptRidingHorses";
 	public static final String OPT_AUTOMATIC_ENCHANTING = "OptAutomaticEnchanting";
 	public static final String OPT_ENHANCED_MAGIC = "OptEnhancedMagic";

@@ -71,7 +71,7 @@ public abstract class GameObjectWrapper {
 	 * Utility method for extracting the int value
 	 */
 	public double getDouble(String key) {
-		String val = (String)gameObject.getAttribute(getBlockName(),key);
+		String val = gameObject.getAttribute(getBlockName(),key);
 		if (val!=null) {
 			try {
 				return Double.valueOf(val).doubleValue();
@@ -90,11 +90,11 @@ public abstract class GameObjectWrapper {
 	public boolean getBoolean(String key) {
 		return gameObject.hasAttribute(getBlockName(),key);
 	}
-	public ArrayList getList(String key) {
+	public ArrayList<String> getList(String key) {
 		return gameObject.getAttributeList(getBlockName(),key);
 	}
 	public int getListCount(String key) {
-		ArrayList list = getList(key);
+		ArrayList<String> list = getList(key);
 		return list==null?0:list.size();
 	}
 	public void setInt(String key,int val) {
@@ -119,7 +119,7 @@ public abstract class GameObjectWrapper {
 			gameObject.removeAttribute(getBlockName(),key);
 		}
 	}
-	public void setList(String key,ArrayList in) {
+	public void setList(String key,ArrayList<String> in) {
 		gameObject.setAttributeList(getBlockName(),key,in);
 	}
 	public void addListItem(String key,String val) {
@@ -127,9 +127,9 @@ public abstract class GameObjectWrapper {
 	}
 	public boolean removeListItem(String key,String val) {
 		boolean ret = false;
-		ArrayList list = getList(key);
+		ArrayList<String> list = getList(key);
 		if (list!=null && list.contains(val)) {
-			list = new ArrayList(list);
+			list = new ArrayList<>(list);
 			ret = list.remove(val);
 			setList(key,list);
 		}

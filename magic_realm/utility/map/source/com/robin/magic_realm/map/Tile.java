@@ -143,7 +143,7 @@ public class Tile {
 		}
 	}
 	public void build() {
-		clearings = new ArrayList();
+		clearings = new ArrayList<>();
 		paths = new Hashtable[2];
 		paths[SIDE_NORMAL] = new Hashtable();
 		buildPaths(paths[SIDE_NORMAL],gameObject.getAttributeBlock("normal"));
@@ -174,11 +174,11 @@ public class Tile {
 		this.name = name;
 	}
 	
-	public boolean connectsToTilename(Hashtable mapGrid,String clearingKey,String tilename) {
+	public boolean connectsToTilename(Hashtable<Point,Tile> mapGrid,String clearingKey,String tilename) {
 if (debug) System.out.println("------------------");
-		return connectsToTilename(mapGrid,clearingKey,tilename,new ArrayList());
+		return connectsToTilename(mapGrid,clearingKey,tilename,new ArrayList<String>());
 	} 
-	private boolean connectsToTilename(Hashtable mapGrid,String clearingKey,String tilename,ArrayList touchedClearings) {
+	private boolean connectsToTilename(Hashtable<Point,Tile> mapGrid,String clearingKey,String tilename,ArrayList<String> touchedClearings) {
 if (debug) System.out.println(name+":"+clearingKey);
 		touchedClearings.add(name+":"+clearingKey);
 
@@ -189,13 +189,12 @@ if (debug) System.out.println(name+":"+clearingKey);
 		}
 	
 		// Get all clearings connected to this clearing
-		Collection c = getConnected(clearingKey);
+		Collection<String> c = getConnected(clearingKey);
 		
 		// Remove any clearings already "touched"
 		if (c!=null && c.size()>0) {
 			// Cycle through connected clearings
-			for (Iterator i=c.iterator();i.hasNext();) {
-				String connectedClearing = (String)i.next();
+			for (String connectedClearing : c) {
 				if (!touchedClearings.contains(name+":"+connectedClearing)) {
 					if (isEdge(connectedClearing)) {
 						touchedClearings.add(name+":"+connectedClearing);
@@ -205,17 +204,16 @@ if (debug) System.out.println(name+":"+clearingKey);
 						// First find the tile that connects on that side
 						int realEdge = getRealEdgeNumber(connectedClearing);
 						Point adjPos = getAdjacentPosition(position,realEdge);
-						Tile adjTile = (Tile)mapGrid.get(adjPos);
+						Tile adjTile = mapGrid.get(adjPos);
 						
 						if (adjTile!=null) {
 							// Find the edge of the adjacent tile that touches this tile
 							int adjTileRealEdge = (realEdge+3)%6;
 							int adjTileRelativeEdge = adjTileRealEdge-adjTile.getRotation();
 							while(adjTileRelativeEdge<0) adjTileRelativeEdge+=6;
-							Collection newTileClearings = adjTile.getConnected(getEdgeName(adjTileRelativeEdge));
+							Collection<String> newTileClearings = adjTile.getConnected(getEdgeName(adjTileRelativeEdge));
 							if (newTileClearings!=null) {
-								for (Iterator nt=newTileClearings.iterator();nt.hasNext();) {
-									String newTileClearing = (String)nt.next();
+								for (String newTileClearing : newTileClearings) {
 									if (adjTile.connectsToTilename(mapGrid,newTileClearing,tilename,touchedClearings)) {
 										// The connected clearing on the adjacent tile connects to tilename, so this connects.
 										return true;
@@ -241,8 +239,8 @@ if (debug) System.out.println(name+":"+clearingKey);
 		return clearings.size();
 	}
 	
-	public Collection getConnected(String clearing) {
-		return (Collection)paths[side].get(clearing);
+	public Collection<String> getConnected(String clearing) {
+		return (Collection<String>)paths[side].get(clearing);
 	}
 	public GameObject getGameObject() {
 		return gameObject;
@@ -295,10 +293,10 @@ if (debug) System.out.println(name+":"+clearingKey);
 		}
 	}
 	
-	private void updatePathHash(Hashtable pathHash,String from,String to) {
-		ArrayList list = (ArrayList)pathHash.get(from);
+	private void updatePathHash(Hashtable<String, ArrayList<String>> pathHash,String from,String to) {
+		ArrayList<String> list = pathHash.get(from);
 		if (list==null) {
-			list = new ArrayList();
+			list = new ArrayList<>();
 			pathHash.put(from,list);
 		}
 		if (!list.contains(to)) {
@@ -380,10 +378,9 @@ if (debug) System.out.println(name+":"+clearingKey);
 	/**
 	 * @return		A Collection of Point objects that reference possible map placements
 	 */
-	public static ArrayList<Point> findAvailableMapPositions(Hashtable mapGrid) {
+	public static ArrayList<Point> findAvailableMapPositions(Hashtable<Point, Tile> mapGrid) {
 		ArrayList<Point> availableMapPositions = new ArrayList<>();
-		for (Iterator t=mapGrid.values().iterator();t.hasNext();) {
-			Tile tile = (Tile)t.next();
+		for (Tile tile : mapGrid.values()) {
 			Point pos = tile.getMapPosition();
 			
 			// Cycle through all adjacent positions to the mapped tile
@@ -398,7 +395,7 @@ if (debug) System.out.println(name+":"+clearingKey);
 							// Count adjacent tiles (joined or not)
 							int adjCount = 0;
 							for (int adj=0;adj<6;adj++) {
-								Tile adjTile = (Tile)mapGrid.get(Tile.getAdjacentPosition(adjPos,adj));
+								Tile adjTile = mapGrid.get(Tile.getAdjacentPosition(adjPos,adj));
 								if (adjTile!=null) {
 									adjCount++;
 								}

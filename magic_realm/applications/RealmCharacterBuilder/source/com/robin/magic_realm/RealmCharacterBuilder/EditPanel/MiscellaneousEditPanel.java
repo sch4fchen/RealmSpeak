@@ -57,6 +57,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"Suffer wounds instead of death when harm matches vulnerability.",Constants.TOUGHNESS,""},
 		{"A successful HIDE roll on missile attacks, allows to stay hidden.",Constants.SNEAKY,""},
 		{"Can activate a two-handed weapon and a shield.",Constants.STRONG,""},
+		{"Can use two weapons, one in each hand.",Constants.DUAL_WIELDING,""},
 		{"Can penetrate targets armor with missile weapons.",Constants.SHARPSHOOTER,""},
 		{"Can cast multiple instances of a single spell.",Constants.ENHANCED_MAGIC,""},
 		{"Can use Artifacts and Spell Books as extra Magic chits.",Constants.ENHANCED_ARTIFACTS,""},

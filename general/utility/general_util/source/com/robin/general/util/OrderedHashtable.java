@@ -24,7 +24,7 @@ import java.util.*;
  * to it.
  */
 public class OrderedHashtable<T,U> extends Hashtable<T,U> {
-	protected ArrayList<T> orderedKeys = new ArrayList<T>();
+	protected ArrayList<T> orderedKeys = new ArrayList<>();
 	
 	// overrides
 	public void clear() {
@@ -34,12 +34,11 @@ public class OrderedHashtable<T,U> extends Hashtable<T,U> {
 	public U put(T key,U value) {
 		U ret = super.put(key,value);
 		if (orderedKeys==null) {
-			orderedKeys = new ArrayList();
+			orderedKeys = new ArrayList<>();
 		}
 		if (!orderedKeys.contains(key)) {
 			orderedKeys.add(key);
 		}
-//validate();
 		return ret;
 	}
 	public void putAll(Map map) {
@@ -53,9 +52,9 @@ public class OrderedHashtable<T,U> extends Hashtable<T,U> {
 		return new LinkedHashSet(orderedKeys);
 	}
 	public Collection<U> values() {
-		ArrayList vals = new ArrayList();
+		ArrayList<U> vals = new ArrayList<>();
 		if (orderedKeys==null) {
-			orderedKeys = new ArrayList();
+			orderedKeys = new ArrayList<>();
 		}
 		for (T key:orderedKeys) {
 			vals.add(get(key));
@@ -65,7 +64,6 @@ public class OrderedHashtable<T,U> extends Hashtable<T,U> {
 	public U remove(Object key) {
 		U ret = super.remove(key);
 		orderedKeys.remove(key);
-//validate();
 		return ret;
 	}
 	
@@ -87,7 +85,7 @@ public class OrderedHashtable<T,U> extends Hashtable<T,U> {
 		return orderedKeys;
 	}
 	public Object insert(int index,T key,U val) {
-		ArrayList newOrderedKeys = new ArrayList();
+		ArrayList<T> newOrderedKeys = new ArrayList<>();
 		for (int i=0;i<orderedKeys.size();i++) {
 			if (i==index) {
 				newOrderedKeys.add(key);
@@ -98,7 +96,7 @@ public class OrderedHashtable<T,U> extends Hashtable<T,U> {
 		return this.put(key,val);
 	}
 	public Object replace(int index,T key,U val) {
-		ArrayList newOrderedKeys = new ArrayList();
+		ArrayList<T> newOrderedKeys = new ArrayList<>();
 		for (int i=0;i<orderedKeys.size();i++) {
 			String currentKey = (String)orderedKeys.get(i);
 			if (i==index) {

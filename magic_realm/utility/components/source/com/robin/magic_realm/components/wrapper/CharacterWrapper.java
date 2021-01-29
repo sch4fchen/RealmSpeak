@@ -729,18 +729,16 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * 
 	 * @return 						All the options the character could use as an attack chit
 	 */
-	public Collection getFightSpeedOptions(Speed speedToBeat,boolean includeActionChits) {
-		ArrayList list = new ArrayList();
-		ArrayList searchList = new ArrayList();
+	public Collection<RealmComponent> getFightSpeedOptions(Speed speedToBeat,boolean includeActionChits) {
+		ArrayList<RealmComponent> list = new ArrayList<>();
+		ArrayList<RealmComponent> searchList = new ArrayList<>();
 		if (includeActionChits) {
 			searchList.addAll(getActiveFightChits());
 		}
-		for (Iterator i=getActiveInventory().iterator();i.hasNext();) {
-			GameObject item = (GameObject)i.next();
+		for (GameObject item : getActiveInventory()) {
 			searchList.add(RealmComponent.getRealmComponent(item));
 		}
-		for (Iterator i=searchList.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : searchList) {
 			if (!rc.getGameObject().hasThisAttribute(Constants.UNPLAYABLE)) {
 				Speed speed = BattleUtility.getFightSpeed(rc);
 				if (speed!=null && speed.fasterThan(speedToBeat)) {
@@ -1224,12 +1222,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * Returns a collection of game objects for the specified day key
 	 */
 	public ArrayList<GameObject> getKills(String dayKey) {
-		ArrayList<GameObject> kills = new ArrayList<GameObject>();
-		Collection ids = getGameObject().getAttributeList(KILL_BLOCK,dayKey);
+		ArrayList<GameObject> kills = new ArrayList<>();
+		Collection<String> ids = getGameObject().getAttributeList(KILL_BLOCK,dayKey);
 		if (ids!=null) {
 			GameData data = getGameObject().getGameData();
-			for (Iterator i=ids.iterator();i.hasNext();) {
-				String id = (String)i.next();
+			for (String id : ids) {
 				GameObject kill = data.getGameObject(Long.valueOf(id));
 				if (!kills.contains(kill)) { // This check should be unnecessary if addKill is doing its job
 					kills.add(kill);
@@ -1242,8 +1239,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * Returns a collection of game objects for the specified day key
 	 */
 	public ArrayList<Spoils> getKillSpoils(String dayKey) {
-		ArrayList<Spoils> killSpoils = new ArrayList<Spoils>();
-		ArrayList keys = getGameObject().getAttributeList(KILL_BLOCK,dayKey+"S");
+		ArrayList<Spoils> killSpoils = new ArrayList<>();
+		ArrayList<String> keys = getGameObject().getAttributeList(KILL_BLOCK,dayKey+"S");
 		if (keys!=null) {
 			for(Object key:keys) {
 				killSpoils.add(new Spoils(key.toString()));
@@ -1316,10 +1313,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return false;
 	}
-	private ArrayList filterBlocked(Collection in) {
-		ArrayList list = new ArrayList();
-		for (Iterator i=in.iterator();i.hasNext();) {
-			String action = (String)i.next();
+	private static ArrayList<String> filterBlocked(Collection<String> in) {
+		ArrayList<String> list = new ArrayList<>();
+		for (String action : in) {
 			if (Constants.BLOCKED.equals(action)) {
 				break;
 			}
@@ -1331,13 +1327,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * @return		A Collection of action string representing every recorded action, starting with the earliest.
 	 * 				Note, blocked actions that never occurred are left out of this list!!
 	 */
-	public Collection getAllActions() {
-		ArrayList list = new ArrayList();
-		Collection dayKeys = getAllDayKeys();
+	public Collection<String> getAllActions() {
+		ArrayList<String> list = new ArrayList<>();
+		Collection<String> dayKeys = getAllDayKeys();
 		if (dayKeys!=null && !dayKeys.isEmpty()) {
-			for (Iterator i=getAllDayKeys().iterator();i.hasNext();) {
-				String dayKey = (String)i.next();
-				Collection actions = getActions(dayKey);
+			for (String dayKey : getAllDayKeys()) {
+				Collection<String> actions = getActions(dayKey);
 				if (actions!=null && !actions.isEmpty()) {
 					list.addAll(filterBlocked(actions));
 				}
@@ -1370,7 +1365,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	/**
 	 * @return		A Collection of "T" or "F", where "T" means the action is valid at the time of record
 	 */
-	public Collection getCurrentActionValids() {
+	public Collection<String> getCurrentActionValids() {
 		return getList(getCurrentDayKey()+"V");
 	}
 	public void setCurrentActionValids(ArrayList in) {
@@ -1379,7 +1374,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	/**
 	 * @param in	Set the current action list for the current day
 	 */
-	public void setCurrentActions(ArrayList in) {
+	public void setCurrentActions(ArrayList<String> in) {
 		setList(getCurrentDayKey(),in);
 	}
 	public void addCurrentAction(String action) {
@@ -1412,14 +1407,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 			ActionId id = CharacterWrapper.getIdForAction(firstAction);
 			if (id==ActionId.Follow) return true; // If you followed someone, you've done actions.
 		}
-		ArrayList list = getList(getCurrentDayKey()+"P");
+		ArrayList<String> list = getList(getCurrentDayKey()+"P");
 		return list!=null && list.size()>0;
 	}
 	public ActionState getStateForAction(String action,int index) {
 		ActionState state = ActionState.Pending; // default
-		ArrayList list = getList(getCurrentDayKey()+"P");
+		ArrayList<String> list = getList(getCurrentDayKey()+"P");
 		if (list!=null && index<list.size()) {
-			String val = (String)list.get(index);
+			String val = list.get(index);
 			if (action.equals(val.substring(1))) { // not sure why it wouldn't...
 				String token = val.substring(0,1);
 				if ("C".equals(token)) {
@@ -1437,17 +1432,17 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public String getMessageForAction(int index) {
 		String message = null;
-		ArrayList list = getList(getCurrentDayKey()+"M");
+		ArrayList<String> list = getList(getCurrentDayKey()+"M");
 		if (list!=null && index<list.size()) {
-			message = (String)list.get(index);
+			message = list.get(index);
 		}
 		return message;
 	}
 	public DieRoller getRollerForAction(int index) {
 		DieRoller roller = null;
-		ArrayList list = getList(getCurrentDayKey()+"R");
+		ArrayList<String> list = getList(getCurrentDayKey()+"R");
 		if (list!=null && index<list.size()) {
-			String stringResult = (String)list.get(index);
+			String stringResult = list.get(index);
 			if (stringResult.length()>0) {
 				roller = new DieRoller(stringResult,25,6);
 			}
@@ -1457,7 +1452,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	/**
 	 * @see #getCurrentActionTypeCodes()
 	 */
-	public void setCurrentActionTypeCodes(ArrayList in) {
+	public void setCurrentActionTypeCodes(ArrayList<String> in) {
 		setList(getCurrentDayKey()+"C",in);
 	}
 	public void addCurrentActionTypeCode(String code) {
@@ -1515,8 +1510,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		// Inactivate horses if entering a cave
 		if (location.isInClearing()) {
 			boolean cave = location.clearing.isCave();
-			for (Iterator i=getInventory().iterator();i.hasNext();) {
-				GameObject inv = (GameObject)i.next();
+			for (GameObject inv : getInventory()) {
 				RealmComponent rc = RealmComponent.getRealmComponent(inv);
 				if (cave && rc.isHorse() && rc.isActivated()) {
 					if (frame!=null) {
@@ -1950,12 +1944,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return pm.canAddAction(testMove,isPonyActive());
 	}
 	public ArrayList<GameObject> getAllOpenableSites() {
-		ArrayList<GameObject> openable = new ArrayList<GameObject>();
+		ArrayList<GameObject> openable = new ArrayList<>();
 		TileLocation tl = getCurrentLocation();
 		if (tl!=null && tl.hasClearing()) {
-			Collection c = tl.clearing.getClearingComponents();
-			for (Iterator i=c.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			Collection<RealmComponent> c = tl.clearing.getClearingComponents();
+			for (RealmComponent rc : c) {
 				GameObject thing = rc.getGameObject();
 				// Does it need to be opened?
 				if (thing.hasThisAttribute(Constants.NEEDS_OPEN)) {
@@ -1969,9 +1962,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return openable;
 	}
 	public RealmComponent getActiveBoots() {
-		Collection inv = getInventory();
-		for (Iterator i=inv.iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		Collection<GameObject> inv = getInventory();
+		for (GameObject go : inv) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc.isActivated() && rc.isTreasure() && go.hasThisAttribute("boots")) {
 				return rc;
@@ -1984,9 +1976,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public BattleHorse getActiveSteed(int attackOrderPos) {
 		BattleHorse steed = null;
-		Collection inv = getInventory();
-		for (Iterator i=inv.iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		Collection<GameObject> inv = getInventory();
+		for (GameObject go : inv) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc.isNativeHorse() || (rc.isActivated() && rc.isHorse())) {
 				steed = (BattleHorse)rc;
@@ -2003,9 +1994,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public WeaponChitComponent getActiveWeapon() {
 		if (getTransmorph()==null) {
-			Collection inv = getInventory();
-			for (Iterator i=inv.iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
+			Collection<GameObject> inv = getInventory();
+			for (GameObject go : inv) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
 				if (rc.isActivated() && rc.isWeapon()) {
 					return (WeaponChitComponent)rc; // should only be one!!
@@ -2014,13 +2004,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return null;
 	}
-	public Collection getCurrentClearingExtraActionObjects() {
-		ArrayList list = new ArrayList();
+	public Collection<GameObject> getCurrentClearingExtraActionObjects() {
+		ArrayList<GameObject> list = new ArrayList<>();
 		TileLocation current = getCurrentLocation(); // must be in the same clearing when recording
 		if (current!=null && current.hasClearing() && !current.isBetweenClearings()) {
 			// Now we can search for this case
-			for (Iterator i=current.clearing.getClearingComponents().iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : current.clearing.getClearingComponents()) {
 				String free = rc.getGameObject().getThisAttribute(Constants.EXTRA_ACTIONS_CLEARING);
 				if (free!=null) {
 					list.add(rc.getGameObject());
@@ -4574,7 +4563,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return item;
 	}
-	public ArrayList getAllDayKeys() {
+	public ArrayList<String> getAllDayKeys() {
 		return getGameObject().getAttributeList(PLAYER_BLOCK,ALL_DAYS);
 	}
 	public void clearAllDays() {
@@ -4791,7 +4780,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return ret;
 	}
-	public Collection getActiveFightChits() {
+	public Collection<CharacterActionChitComponent> getActiveFightChits() {
 		ArrayList<CharacterActionChitComponent> ret = new ArrayList<CharacterActionChitComponent>();
 		for (CharacterActionChitComponent chit : getActiveChits()) {
 			if (chit.isFight()) {
