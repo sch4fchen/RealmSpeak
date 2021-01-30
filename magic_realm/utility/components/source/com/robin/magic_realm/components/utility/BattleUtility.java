@@ -132,9 +132,8 @@ public class BattleUtility {
 		return attentionMarker;
 	}
 
-	public static RealmComponent findFightComponentWithCombatBox(Collection list) {
-		for (Iterator i=list.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+	public static RealmComponent findFightComponentWithCombatBox(Collection<RealmComponent> list) {
+		for (RealmComponent rc : list) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 			if (combat.getCombatBox()>0 && (!rc.isActionChit() || combat.getPlacedAsFight())) {
 				// found it!

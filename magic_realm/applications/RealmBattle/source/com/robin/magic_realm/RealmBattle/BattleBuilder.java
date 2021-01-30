@@ -290,9 +290,7 @@ public class BattleBuilder extends JFrame {
 				updateControls();
 				return true;
 			}
-			else {
-				CombatFrame.close();
-			}
+			CombatFrame.close();
 		}
 		else {
 			// Editing an existing battle

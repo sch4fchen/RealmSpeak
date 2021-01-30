@@ -43,7 +43,7 @@ public class BattleGroup implements Comparable {
 	 */
 	public BattleGroup(RealmComponent owningCharacter) {
 		this.owningCharacter = owningCharacter;
-		this.battleParticipants = new ArrayList<RealmComponent>();
+		this.battleParticipants = new ArrayList<>();
 	}
 	public String toString() {
 		return "BattleGroup:"+owningCharacter+":"+battleParticipants.size();
@@ -63,7 +63,7 @@ public class BattleGroup implements Comparable {
 		}
 	}
 	public ArrayList<RealmComponent> getHirelings() {
-		ArrayList<RealmComponent> ret = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> ret = new ArrayList<>();
 		ret.addAll(battleParticipants);
 		if (owningCharacter!=null) {
 			ret.remove(owningCharacter);

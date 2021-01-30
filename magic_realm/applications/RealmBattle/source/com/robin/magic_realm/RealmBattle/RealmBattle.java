@@ -94,7 +94,7 @@ public class RealmBattle {
 		
 		BattlesWrapper battles = getBattles(data);
 		
-		ArrayList battleLocations = new ArrayList();
+		ArrayList<TileLocation> battleLocations = new ArrayList<>();
 		
 		// Find all combat clearings by locating all active characters and leaders
 		GamePool pool = new GamePool(RealmObjectMaster.getRealmObjectMaster(data).getPlayerCharacterObjects());
@@ -111,17 +111,15 @@ public class RealmBattle {
 						if (battleModel.getDenizenBattleGroup()==null && !character.getWantsCombat()) {
 							// make sure there is at least one character battling another (might all be friendly)
 							boolean battlingChars = false;
-							ArrayList leaders = battleModel.getAllLeaders();
-							for (Iterator n=leaders.iterator();n.hasNext();) {
-								RealmComponent rc1 = (RealmComponent)n.next();
+							ArrayList<RealmComponent> leaders = battleModel.getAllLeaders();
+							for (RealmComponent rc1 : leaders) {
 								CharacterWrapper char1 = new CharacterWrapper(rc1.getGameObject());
 								if (char1.getWantsCombat()) {
 									// If somebody wants combat, then get out of here anyway
 									battlingChars = true;
 								}
 								else {
-									for (Iterator t=leaders.iterator();t.hasNext();) {
-										RealmComponent rc2 = (RealmComponent)t.next();
+									for (RealmComponent rc2 : leaders) {
 										if (char1.isEnemy(rc2.getGameObject())) {
 											battlingChars = true;
 											break;
@@ -156,7 +154,7 @@ public class RealmBattle {
 		if (battleLocations.size()>0) {
 			while(battleLocations.size()>0) {
 				int r = RandomNumber.getRandom(battleLocations.size());
-				TileLocation location = (TileLocation)battleLocations.remove(r);
+				TileLocation location = battleLocations.remove(r);
 				battles.addBattleLocation(location,data);
 			}
 			battles.initNextBattleLocation(data); // this starts it off
@@ -172,10 +170,9 @@ public class RealmBattle {
 	public static HashLists findCharacterStates(TileLocation currentCombatLocation,GameData data) {
 		// Get all characters involved in battle
 		BattleModel model = buildBattleModel(currentCombatLocation,data);
-		Collection c = model.getAllOwningCharacters();
+		Collection<RealmComponent> c = model.getAllOwningCharacters();
 		HashLists lists = new HashLists();
-		for (Iterator n=c.iterator();n.hasNext();) {
-			RealmComponent rc = (RealmComponent)n.next();
+		for (RealmComponent rc : c) {
 			CharacterWrapper aChar = new CharacterWrapper(rc.getGameObject());
 			int astate = aChar.getCombatStatus();
 			if (astate>0) {
@@ -451,8 +448,7 @@ public class RealmBattle {
 				// Check for unassigned denizens
 				RealmComponent characterTarget = null;
 				if (denizens!=null && denizens.size()>0) {
-					for (Iterator i=denizens.getBattleParticipants().iterator();i.hasNext();) {
-						RealmComponent rc = (RealmComponent)i.next();
+					for (RealmComponent rc : denizens.getBattleParticipants()) {
 						RealmComponent target = rc.getTarget();
 						if (target==null) { // only need one unassigned denizen
 							return true;
@@ -484,8 +480,7 @@ public class RealmBattle {
 				 * hired natives, or if combat can be skipped
 				 */
 				int count = 0;
-				for (Iterator i=model.getAllParticipatingCharacters().iterator();i.hasNext();) {
-					CharacterChitComponent chit = (CharacterChitComponent)i.next();
+				for (CharacterChitComponent chit : model.getAllParticipatingCharacters()) {
 					if (!chit.isMistLike()) {
 						count++;
 					}
