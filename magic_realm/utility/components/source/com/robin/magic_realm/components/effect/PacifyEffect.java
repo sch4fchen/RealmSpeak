@@ -35,6 +35,10 @@ public class PacifyEffect implements ISpellEffect {
 		if (targetTarget!=null && targetTarget.getGameObject().equals(context.Spell.getCaster().getGameObject())) {
 			target.clearTarget();
 		}
+		RealmComponent targetTarget2 = target.get2ndTarget();
+		if (targetTarget2!=null && targetTarget2.getGameObject().equals(context.Spell.getCaster().getGameObject())) {
+			target.clear2ndTarget();
+		}
 		
 		// If you made them watchful, make them unwatchful again
 		combat.setWatchful(false);

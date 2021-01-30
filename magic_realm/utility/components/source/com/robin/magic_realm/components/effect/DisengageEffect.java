@@ -17,7 +17,7 @@ public class DisengageEffect implements ISpellEffect {
 		
 		attackers.stream()
 			.map(a -> RealmComponent.getRealmComponent(a))
-			.forEach(rc -> rc.clearTarget());
+			.forEach(rc -> rc.clearTargets());
 	
 		attackers.stream()
 			.map(a -> new CombatWrapper(a))

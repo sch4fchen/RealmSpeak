@@ -424,7 +424,7 @@ public class RealmGameEditor extends JInternalFrame {
 					if (isBattling(rc)) {
 						CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 						combat.setPeace(true);
-						rc.clearTarget();
+						rc.clearTargets();
 					}
 				}
 				locationTable.revalidate();

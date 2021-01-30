@@ -45,7 +45,7 @@ public class ControlEffect implements ISpellEffect {
 			}
 			
 			// For now, clear the target, though this isn't totally right (see rule 45.5)
-			target.clearTarget();
+			target.clearTargets();
 			if (target.isMonster() || target.isNative()) {
 				ChitComponent chit = (ChitComponent)target;
 				if (chit.isDarkSideUp()) { // Always flip to light side on control!

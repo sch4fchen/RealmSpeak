@@ -252,7 +252,7 @@ public class TransmorphEffect implements ISpellEffect {
 		}
 		if (target.isMistLike()) {
 			// Mists cannot have a target!
-			target.clearTarget();
+			target.clearTargets();
 		
 		}
 	}
@@ -271,14 +271,33 @@ public class TransmorphEffect implements ISpellEffect {
 			CombatWrapper ttc = new CombatWrapper(targetsTarget.getGameObject());
 			ttc.removeAttacker(target.getGameObject());
 			
-			if (targetsTarget.targeting(target)) {
+			if (targetsTarget.getTarget() == target) {
 				// Only clear targetsTarget if actually targeting the target (that's not confusing at all)
 				targetsTarget.clearTarget();
 			}
-			
-			// Clear its target
-			target.clearTarget();
+			if (targetsTarget.get2ndTarget() == target) {
+				// Only clear targetsTarget if actually targeting the target (that's not confusing at all)
+				targetsTarget.clear2ndTarget();
+			}
 		}
+		RealmComponent targetsTarget2 = target.get2ndTarget();
+		if (targetsTarget2!=null) {
+			// Make sure that the target isn't already an attacker somewhere else
+			CombatWrapper ttc2 = new CombatWrapper(targetsTarget2.getGameObject());
+			ttc2.removeAttacker(target.getGameObject());
+			
+			if (targetsTarget2.getTarget() == target) {
+				// Only clear targetsTarget if actually targeting the target (that's not confusing at all)
+				targetsTarget2.clearTarget();
+			}
+			if (targetsTarget2.get2ndTarget() == target) {
+				// Only clear targetsTarget if actually targeting the target (that's not confusing at all)
+				targetsTarget2.clear2ndTarget();
+			}
+		}
+		// Clear its target
+		target.clearTargets();
+		
 		if (!spell.getGameObject().getHold().contains(target.getGameObject())) {
 			spell.getGameObject().add(target.getGameObject());
 			target.getGameObject().removeThisAttribute("clearing");

@@ -601,6 +601,11 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		return RealmComponent.getRealmComponentFromId(gameObject.getGameData(), gameObject.getAttribute(REALMCOMPONENT_BLOCK,TARGET_2ND_ID));
 	}
 
+	public void clearTargets() {
+		clearTarget();
+		clear2ndTarget();
+	}
+	
 	/**
 	 * Clear primary target
 	 */
@@ -609,6 +614,25 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		if (target!=null) {
 			gameObject.removeAttribute(REALMCOMPONENT_BLOCK,TARGET_ID);
 			gameObject.removeAttribute(REALMCOMPONENT_BLOCK,TARGET_INDEX);
+			CombatWrapper combat = new CombatWrapper(target.getGameObject());
+			combat.removeAttacker(getGameObject());
+			
+			// Seems like a RED-side-up T Monster should flip back to light when the target is cleared...
+			if (isMonster()) {
+				MonsterChitComponent monster = (MonsterChitComponent)this;
+				if (monster.isPinningOpponent()) {
+					monster.flip();
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Clear secondary target
+	 */
+	public void clear2ndTarget() {
+		RealmComponent target = get2ndTarget();
+		if (target!=null) {
 			gameObject.removeAttribute(REALMCOMPONENT_BLOCK,TARGET_2ND_ID);
 			gameObject.removeAttribute(REALMCOMPONENT_BLOCK,TARGET_2ND_INDEX);
 			CombatWrapper combat = new CombatWrapper(target.getGameObject());

@@ -153,7 +153,7 @@ public class BattlesWrapper extends GameObjectWrapper {
 							}
 						}
 						
-						rc.clearTarget();
+						rc.clearTargets();
 						
 						// Flip monster weapons light side up
 						if (rc.isMonster()) {

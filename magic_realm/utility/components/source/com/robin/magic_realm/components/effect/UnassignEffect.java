@@ -7,7 +7,7 @@ public class UnassignEffect implements ISpellEffect {
 	@Override
 	public void apply(SpellEffectContext context) {
 		// TODO Auto-generated method stub
-		context.Target.clearTarget();
+		context.Target.clearTargets();
 		CombatWrapper aCombat = new CombatWrapper(context.Target.getGameObject());
 		aCombat.setSheetOwner(false);
 	}

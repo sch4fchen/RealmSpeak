@@ -740,7 +740,7 @@ public class RealmBattle {
 		// Need to clear out all monster combat info here too!
 		for (RealmComponent rc : location.clearing.getClearingComponents()) {
 			CombatWrapper.clearAllCombatInfo(rc.getGameObject());
-			rc.clearTarget();
+			rc.clearTargets();
 			
 			// Return monsters/natives to light side
 			if (rc.isMonster() || rc.isNative()) {

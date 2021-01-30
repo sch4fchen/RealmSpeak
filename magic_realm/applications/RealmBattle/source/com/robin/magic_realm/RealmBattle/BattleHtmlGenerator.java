@@ -129,11 +129,10 @@ public class BattleHtmlGenerator extends HtmlGenerator {
 		return action+" in "+current.clearing.getDescription();
 	}
 	private ArrayList<RealmComponent> getUnassignedDenizens() {
-		ArrayList<RealmComponent> list = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> list = new ArrayList<>();
 		BattleGroup denizenGroup = battleModel.getDenizenBattleGroup();
 		if (denizenGroup!=null && denizenGroup.size()>0) {
-			for (Iterator i=denizenGroup.getBattleParticipants().iterator();i.hasNext();) {
-				RealmComponent denizen = (RealmComponent)i.next();
+			for (RealmComponent denizen : denizenGroup.getBattleParticipants()) {
 				CombatWrapper combat = new CombatWrapper(denizen.getGameObject());
 				if (denizen.getTarget()==null && !combat.isSheetOwner()) {
 					list.add(denizen);

@@ -140,7 +140,7 @@ public class Wish extends RealmTable {
 				}
 				
 				// Make sure it has no targets!
-				rc.clearTarget();
+				rc.clearTargets();
 				
 				if (rc.isCharacter()) {
 					// Special handling

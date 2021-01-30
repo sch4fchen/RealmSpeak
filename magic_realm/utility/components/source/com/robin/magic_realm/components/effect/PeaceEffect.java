@@ -29,7 +29,7 @@ public class PeaceEffect implements ISpellEffect {
 		}
 		else {
 			combat.setPeace(true);
-			context.Target.clearTarget();
+			context.Target.clearTargets();
 			if (context.Target.isCharacter()) {
 				// Cancel any cast spells
 				GameObject go = combat.getCastSpell();
