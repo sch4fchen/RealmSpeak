@@ -5746,7 +5746,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (!characterRc.equals(rc.getOwner())) return; // not this character's hireling?  return!
 		
 		rc.clearOwner(); // this also clears the term of hire
-		rc.clearTarget(); // make sure they aren't targeting anyone
+		rc.clearTargets(); // make sure they aren't targeting anyone
 		rc.setHidden(false); // make sure they aren't hidden
 		
 		GameObject heldByGo = rc.getGameObject().getHeldBy();

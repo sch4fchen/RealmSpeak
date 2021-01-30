@@ -448,7 +448,7 @@ public class RealmUtility {
 		}
 		
 		// Last thing to do is clear target and owner
-		rc.clearTarget();
+		rc.clearTargets();
 		rc.clearOwner();
 		
 		// Make sure it is light side up for the next regeneration!
