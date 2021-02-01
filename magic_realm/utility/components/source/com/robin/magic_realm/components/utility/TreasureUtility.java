@@ -579,7 +579,7 @@ public class TreasureUtility {
 		}
 		
 		if (thing.hasThisAttribute(Constants.ALERTED_WEAPON)) {
-			WeaponChitComponent weapon = character.getActiveWeapons().get(0);
+			WeaponChitComponent weapon = character.getActivePrimaryWeapon();
 			if (weapon!=null) {
 				if (!weapon.isAlerted()) {
 					weapon.setAlerted(true);
@@ -588,7 +588,7 @@ public class TreasureUtility {
 		}
 		
 		GameObject weaponObject = null;
-		WeaponChitComponent weapon = character.getActiveWeapons().get(0);
+		WeaponChitComponent weapon = character.getActivePrimaryWeapon();
 		if (weapon!=null) {
 			weaponObject = weapon.getGameObject();
 		}

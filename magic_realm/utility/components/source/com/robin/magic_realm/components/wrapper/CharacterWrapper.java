@@ -2004,6 +2004,18 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return steed;
 	}
+	public WeaponChitComponent getActivePrimaryWeapon() {
+		if (getTransmorph()==null) {
+			Collection<GameObject> inv = getInventory();
+			for (GameObject go : inv) {
+				RealmComponent rc = RealmComponent.getRealmComponent(go);
+				if (rc.isActivated() && rc.isWeapon()) {
+					return (WeaponChitComponent)rc;
+				}
+			}
+		}
+		return null;
+	}
 	public ArrayList<WeaponChitComponent> getActiveWeapons() {
 		if (getTransmorph()==null) {
 			Collection<GameObject> inv = getInventory();

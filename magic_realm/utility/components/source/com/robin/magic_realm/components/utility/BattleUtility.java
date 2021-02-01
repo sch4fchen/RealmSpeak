@@ -267,6 +267,7 @@ public class BattleUtility {
 		// Move the target to its own sheet (if necessary), and handle old sheet if needed
 		CombatWrapper combat = new CombatWrapper(toMove.getGameObject());
 		RealmComponent deployTargetsTarget = toMove.getTarget();
+		RealmComponent deployTargetsTarget2 = toMove.get2ndTarget();
 		if (!combat.isSheetOwner()) {
 			combat.setSheetOwner(true); // well it is NOW!
 			if (deployTargetsTarget!=null && !deployTargetsTarget.isCharacter()) {
@@ -284,6 +285,21 @@ public class BattleUtility {
 					}
 				}
 			}
+			if (deployTargetsTarget2!=null && !deployTargetsTarget2.isCharacter()) {
+				CombatWrapper dttc2 = new CombatWrapper(deployTargetsTarget2.getGameObject());
+				if (dttc2.getAttackerCount()==1) {
+					if (lastAttackerFollows) {
+						// Move off the sheet...
+						dttc2.setSheetOwner(false);
+						
+						// ... and onto the new one as the last attacker
+						deployTargetsTarget2.setTarget(toMove);
+					}
+					else {
+						deployTargetsTarget2.clear2ndTarget();
+					}
+				}
+			}
 		}
 		if (keepTarget) {
 			// I think the ONLY time this can happen, is when 2 T monsters hit the native... Can THAT happen?
@@ -296,7 +312,7 @@ public class BattleUtility {
 		}
 		else {
 			// Clear the target
-			toMove.clearTarget();
+			toMove.clearTargets();
 		}
 	}
 }
