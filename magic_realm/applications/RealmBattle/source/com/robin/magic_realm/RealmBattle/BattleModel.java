@@ -148,8 +148,7 @@ public class BattleModel {
 	
 	public boolean areUnhiredNatives() {
 		if (denizenBattleGroup != null) {
-			for (Iterator i=denizenBattleGroup.getBattleParticipants().iterator();i.hasNext();) {
-				RealmComponent denizen = (RealmComponent)i.next();
+			for (RealmComponent denizen : denizenBattleGroup.getBattleParticipants()) {
 				if (denizen.isNative()) {
 					return true;
 				}
@@ -160,8 +159,7 @@ public class BattleModel {
 	
 	public boolean areUnassignedDenizens() {
 		if (denizenBattleGroup != null) {
-			for (Iterator i=denizenBattleGroup.getBattleParticipants().iterator();i.hasNext();) {
-				RealmComponent denizen = (RealmComponent)i.next();
+			for (RealmComponent denizen : denizenBattleGroup.getBattleParticipants()) {
 				if (denizen.getTarget()==null) {
 					return true;
 				}
@@ -339,7 +337,7 @@ public class BattleModel {
 	 * @return			All characters involved in battle (includes characters that are absent, but have hirelings)
 	 */
 	public ArrayList<RealmComponent> getAllOwningCharacters() {
-		ArrayList<RealmComponent> ret = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> ret = new ArrayList<>();
 		for (BattleGroup group:characterBattleGroups) {
 			RealmComponent rc = group.getOwningCharacter();
 			if (rc!=null) {
@@ -353,7 +351,7 @@ public class BattleModel {
 	 * Returns a list of all native leaders, and controlled monsters in the clearing (not characters).
 	 */
 	public ArrayList<RealmComponent> getAllLeaders() {
-		ArrayList<RealmComponent> ret = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> ret = new ArrayList<>();
 		ArrayList<RealmComponent> list  = getAllBattleParticipants(false);
 		for (Iterator i=list.iterator();i.hasNext();) {
 			RealmComponent rc = (RealmComponent)i.next();
@@ -369,7 +367,7 @@ public class BattleModel {
 	 * @return			All characters in the battle (not owningCharacters!)
 	 */
 	public ArrayList<CharacterChitComponent> getAllParticipatingCharacters() {
-		ArrayList<CharacterChitComponent> ret = new ArrayList<CharacterChitComponent>();
+		ArrayList<CharacterChitComponent> ret = new ArrayList<>();
 		for (BattleGroup group:characterBattleGroups) {
 			CharacterChitComponent rc = group.getCharacterInBattle();
 			if (rc!=null) {
@@ -383,7 +381,7 @@ public class BattleModel {
 	 * Returns a Collection of all the battle groups in this model.
 	 */
 	public ArrayList<BattleGroup> getAllBattleGroups(boolean includeDenizens) {
-		ArrayList<BattleGroup> all = new ArrayList<BattleGroup>();
+		ArrayList<BattleGroup> all = new ArrayList<>();
 		all.addAll(characterBattleGroups);
 		if (includeDenizens && denizenBattleGroup != null) {
 			all.add(denizenBattleGroup);
@@ -394,8 +392,8 @@ public class BattleModel {
 	/**
 	 * Returns a collection of all battle groups that are not the specified battle group\ (denizens and characters are grouped together)
 	 */
-	public ArrayList findOtherBattleGroups(BattleGroup bg, boolean includeDenizens) {
-		ArrayList otherBattleGroups = getAllBattleGroups(includeDenizens);
+	public ArrayList<BattleGroup> findOtherBattleGroups(BattleGroup bg, boolean includeDenizens) {
+		ArrayList<BattleGroup> otherBattleGroups = getAllBattleGroups(includeDenizens);
 		otherBattleGroups.remove(bg);
 		return otherBattleGroups;
 	}
@@ -432,15 +430,15 @@ public class BattleModel {
 		}
 		
 		// Assign targets for hirelings where obvious
-		ArrayList<RealmComponent> owners = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> owners = new ArrayList<>();
 		for (BattleGroup bg:characterBattleGroups) {
 			owners.add(bg.getOwningCharacter());
 			for (RealmComponent hireling:bg.getHirelings()) {
-				if (hireling.getTarget()==null) {
-					ArrayList attackers = getAttackersFor(hireling,true,false);
+				if (hireling.getTarget()==null && hireling.get2ndTarget()==null) {
+					ArrayList<RealmComponent> attackers = getAttackersFor(hireling,true,false);
 					if (attackers.size()==1) {
 						// its obvious, so do it here
-						RealmComponent soleAttacker = (RealmComponent)attackers.iterator().next();
+						RealmComponent soleAttacker = attackers.iterator().next();
 						hireling.setTarget(soleAttacker);
 						CombatFrame.makeTarget(null,null,hireling,soleAttacker,theGame);
 					}
@@ -450,7 +448,7 @@ public class BattleModel {
 		
 		// Assign the order for target selection (randomized every round)
 		RealmLogging.logMessage(RealmLogging.BATTLE,"Assigning random target selection order.");
-		ArrayList<RealmComponent> randomOrder = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> randomOrder = new ArrayList<>();
 		while(!owners.isEmpty()) {
 			int r = RandomNumber.getRandom(owners.size());
 			randomOrder.add(owners.remove(r));
@@ -558,10 +556,9 @@ public class BattleModel {
 	public void doFixSheetOwners() {
 		BattleGroup battleGroup = getDenizenBattleGroup();
 		if (battleGroup!=null) {
-			for (Iterator i=battleGroup.getBattleParticipants().iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : battleGroup.getBattleParticipants()) {
 				CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-				if (rc.getTarget()==null && combat.getAttackerCount()>0 && !combat.isSheetOwner()) { // being attacked, but not already on their own sheet
+				if (rc.getTarget()==null && rc.get2ndTarget()==null && combat.getAttackerCount()>0 && !combat.isSheetOwner()) { // being attacked, but not already on their own sheet
 					// As far as I know, there is NEVER a reason that the denizen shouldn't get their own sheet at this time
 					combat.setSheetOwner(true);
 					combat.setCombatBox(1);
@@ -590,10 +587,10 @@ public class BattleModel {
 		 * 		CIRCLE - Attackers = 0-n
 		 * 		RED - Self
 		 */
-		ArrayList all = getAllBattleParticipants(true);
-		for (Iterator i=all.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		ArrayList<RealmComponent> all = getAllBattleParticipants(true);
+		for (RealmComponent rc : all) {
 			RealmComponent target = rc.getTarget();
+			RealmComponent target2 = rc.get2ndTarget();
 			ArrayList<RealmComponent> attackers = getAttackersFor(rc,false,true); // don't include character attackers here!
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 			if (combat.isSheetOwner()/* && (target!=null || attackers.size()>0)*/) {
@@ -606,10 +603,9 @@ public class BattleModel {
 					}
 					
 					// Circle group - hirelings or denizens targeting targets on character sheet
-					ArrayList helpers = new ArrayList();
-					for (Iterator n=all.iterator();n.hasNext();) {
-						RealmComponent test = (RealmComponent)n.next();
-						if (!test.isCharacter() && attackers.contains(test.getTarget())) {
+					ArrayList<RealmComponent> helpers = new ArrayList<>();
+					for (RealmComponent test : all) {
+						if (!test.isCharacter() && (attackers.contains(test.getTarget()) || attackers.contains(test.get2ndTarget())) ) {
 							helpers.add(test);
 						}
 					}
@@ -632,6 +628,17 @@ public class BattleModel {
 							MonsterPartChitComponent weapon = monster.getWeapon();
 							if (weapon!=null) {
 								attackersMinusTarget.remove(weapon);
+							}
+						}
+					}
+					if (target2!=null) {
+						targets.add(target2);
+						attackersMinusTarget.remove(target2);
+						if (target2.isMonster()) {
+							MonsterChitComponent monster2 = (MonsterChitComponent)target2;
+							MonsterPartChitComponent weapon2 = monster2.getWeapon();
+							if (weapon2!=null) {
+								attackersMinusTarget.remove(weapon2);
 							}
 						}
 					}
@@ -717,7 +724,7 @@ public class BattleModel {
 
 	//collect all the battle chits that have targets, including weapons
 	private static ArrayList<BattleChit>collectBattleChits(ArrayList<RealmComponent> allBattleChits) {
-		ArrayList<BattleChit> battleChits = new ArrayList<BattleChit>();
+		ArrayList<BattleChit> battleChits = new ArrayList<>();
 		for (RealmComponent realmComponent : allBattleChits) {
 			BattleChit battleChit=(BattleChit)realmComponent;
 			if (battleChit.getTarget()!=null) {
@@ -805,14 +812,25 @@ public class BattleModel {
 			for (BattleChit attacker : attackBlocks.getList(key)) {
 				if (attacker instanceof SpellWrapper) {
 					SpellWrapper spell = (SpellWrapper)attacker;
-					for (Iterator n=spell.getTargets().iterator();n.hasNext();) {
-						BattleChit target = (BattleChit)n.next();
+					for (RealmComponent rc : spell.getTargets()) {
+						BattleChit target = (BattleChit)rc;
 						doTargetAttack(attacker,target,round,attackOrderPos);
 						RealmLogging.clearIndent();
 					}
 				}
 				else {
-					BattleChit target = (BattleChit)attacker.getTarget();
+					BattleChit target = null;
+					if (attacker.isCharacter()) {
+						CharacterChitComponent character = (CharacterChitComponent)attacker;
+						target = (BattleChit) character.getTarget();
+						// all but the first hit, attack the second target
+						if (character.get2ndTarget() != null) {
+							character.setTarget(character.get2ndTarget());
+						}
+					}
+					else {
+						target = (BattleChit)attacker.getTarget();
+					}
 					doTargetAttack(attacker,target,round,attackOrderPos);
 				}
 				RealmLogging.clearIndent();
@@ -1197,7 +1215,7 @@ public class BattleModel {
 			attackerCombat.addHitType(ATTACK_CANCELLED,target.getGameObject());
 		}
 	}
-	private String getCombatantInformation(BattleChit chit,boolean attacker) {
+	private static String getCombatantInformation(BattleChit chit,boolean attacker) {
 		StringBuffer sb = new StringBuffer();
 		sb.append(chit.getGameObject().getName());
 		if (chit instanceof RealmComponent) {
@@ -1607,17 +1625,18 @@ public class BattleModel {
 		logBattleInfo("---- DISENGAGEMENT ----");
 		
 		// Flip all native horses to light side
-		for (Iterator i=getAllBattleGroups(true).iterator();i.hasNext();) {
-			BattleGroup bg = (BattleGroup)i.next();
+		for (BattleGroup bg : getAllBattleGroups(true)) {
 			bg.allHorsesWalk();
 		}
 		
 		// Need to get rid of dead participants here - wounds should have been handled already?  fatigued effort?
-		ArrayList attackSpellsToExpire = new ArrayList();
-		ArrayList<RealmComponent> rcsToMakeDead = new ArrayList<RealmComponent>();
+		ArrayList<SpellWrapper> attackSpellsToExpire = new ArrayList<>();
+		ArrayList<RealmComponent> rcsToMakeDead = new ArrayList<>();
 		ArrayList<RealmComponent> all = getAllBattleParticipants(true);
 		for (RealmComponent rc:all) {
 			boolean disengage=true;
+			boolean disengage1 = true;
+			boolean disengage2 = true;
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 			
 			// Adjust weapon alertness
@@ -1634,8 +1653,7 @@ public class BattleModel {
 					character.setFortDamaged(false);
 				}
 				
-				for (Iterator n=character.getActiveInventory().iterator();n.hasNext();) {
-					GameObject thing = (GameObject)n.next();
+				for (GameObject thing : character.getActiveInventory()) {
 					CombatWrapper thingCombat = new CombatWrapper(thing);
 					if (thingCombat.getKilledBy()!=null) { // A dead thing means destroyed
 						rc.getGameObject().remove(thing);
@@ -1649,8 +1667,7 @@ public class BattleModel {
 				}
 				
 				// Cue up attack spells to expire (don't expire until AFTER Grudges are determined)
-				for (Iterator n=character.getAliveSpells().iterator();n.hasNext();) {
-					SpellWrapper spell = (SpellWrapper)n.next();
+				for (SpellWrapper spell : character.getAliveSpells()) {
 					// Attack spells are over at the end of a round of combat
 					if (spell.isAttackSpell()) {
 						attackSpellsToExpire.add(spell);
@@ -1688,8 +1705,7 @@ public class BattleModel {
 			}
 			
 			// Test for deadness :)
-			RealmComponent target = rc.getTarget();
-			CombatWrapper targetCombat = target==null?null:(new CombatWrapper(target.getGameObject()));
+
 			if (rc.isNative()) {
 				// Handle dead native horses separately
 				RealmComponent horse = (RealmComponent)rc.getHorse();
@@ -1777,7 +1793,7 @@ public class BattleModel {
 					// Clear all attackers
 					for (GameObject attacker:combat.getAttackers()) {
 						RealmComponent arc = RealmComponent.getRealmComponent(attacker);
-						arc.clearTarget();
+						arc.clearTargets();
 						combat.removeAttacker(attacker);
 					}
 					
@@ -1790,50 +1806,81 @@ public class BattleModel {
 					logBattleInfo(rc+" is blown away to "+tile.getGameObject().getName()+"!");
 				}
 				else {
+					RealmComponent target1 = rc.getTarget();
+					RealmComponent target2 = rc.get2ndTarget();
+					CombatWrapper targetCombat1 = target1==null?null:(new CombatWrapper(target1.getGameObject()));
+					CombatWrapper targetCombat2 = target2==null?null:(new CombatWrapper(target2.getGameObject()));
+					
 					// Determine disengagement rules
 					if (rc.isMonster()) {
-						if (!testRedDeadDisengage((MonsterChitComponent)rc,combat,targetCombat)) {
+						if (!testRedDeadDisengage((MonsterChitComponent)rc,combat,targetCombat1)) {
 							disengage = false;
 						}
 					}
 					else if (rc.isCharacter()) {
 						MonsterChitComponent transmorph = ((CharacterChitComponent)rc).getTransmorphedComponent();
 						if (transmorph!=null) {
-							if (!testRedDeadDisengage(transmorph,combat,targetCombat)) {
+							if (!testRedDeadDisengage(transmorph,combat,targetCombat1)) {
 								disengage = false;
 							}
 						}
 					}
-					
-					if (target!=null) {
+					if (target1!=null) {
 						// If the target is a character, and the attacker is a denizen, then don't disengage
-						if (target.isCharacter() && rc.getOwner()==null) {
+						if (target1.isCharacter() && rc.getOwner()==null) {
 							logBattleInfo(rc+" won't disengage when fighting a character");
-							disengage = false; // don't disengage when fighting a character
+							disengage1 = false; // don't disengage when fighting a character
 						}
 						
-						if (!rc.isCharacter() && target.isMonster()) {
-							MonsterChitComponent monster = (MonsterChitComponent)target;
+						if (!rc.isCharacter() && target1.isMonster()) {
+							MonsterChitComponent monster = (MonsterChitComponent)target1;
 							if (monster.isPinningOpponent()) {
 								RealmComponent monsterTarget = monster.getTarget();
 								if (monsterTarget.equals(rc)) {
 									logBattleInfo(rc+" can't disengage when held by a Red-side-up Tremendous monster");
-									disengage = false;
+									disengage1 = false;
 								}
 							}
 						}
 						
 						// If the target is dead (regardless of who), always disengage
-						if (targetCombat.getKilledBy()!=null) { 
+						if (targetCombat1.getKilledBy()!=null) { 
 							logBattleInfo(rc+" disengages because target is dead");
-							disengage = true; // always disengage if target is dead
+							disengage1 = true; // always disengage if target is dead
+						}
+					}
+					if (target2!=null) {
+						// If the target is a character, and the attacker is a denizen, then don't disengage
+						if (target2.isCharacter() && rc.getOwner()==null) {
+							logBattleInfo(rc+" won't disengage when fighting a character");
+							disengage2 = false; // don't disengage when fighting a character
+						}
+						
+						if (!rc.isCharacter() && target2.isMonster()) {
+							MonsterChitComponent monster = (MonsterChitComponent)target2;
+							if (monster.isPinningOpponent()) {
+								RealmComponent monsterTarget = monster.getTarget();
+								if (monsterTarget.equals(rc)) {
+									logBattleInfo(rc+" can't disengage when held by a Red-side-up Tremendous monster");
+									disengage2 = false;
+								}
+							}
+						}
+						
+						// If the target is dead (regardless of who), always disengage
+						if (targetCombat2.getKilledBy()!=null) { 
+							logBattleInfo(rc+" disengages because target is dead");
+							disengage2 = true; // always disengage if target is dead
 						}
 					}
 				}
 			}
 				
-			if (disengage) {
+			if (disengage && disengage1) {
 				rc.clearTarget();
+			}
+			if (disengage && disengage2) {
+				rc.clear2ndTarget();
 			}
 		}
 		
@@ -1841,8 +1888,7 @@ public class BattleModel {
 		for (RealmComponent rc:rcsToMakeDead) {
 			RealmUtility.makeDead(rc);
 		}
-		for (Iterator i=attackSpellsToExpire.iterator();i.hasNext();) {
-			SpellWrapper spell = (SpellWrapper)i.next();
+		for (SpellWrapper spell : attackSpellsToExpire) {
 			spell.expireSpell();
 		}
 		for (RealmComponent rc:all) {
@@ -1862,7 +1908,7 @@ public class BattleModel {
 			}
 				
 			// Clear out all round combat info (include all held stuff)
-			ArrayList removeList = new ArrayList();
+			ArrayList<GameObject> removeList = new ArrayList<>();
 			ArrayList hold = new ArrayList(rc.getGameObject().getHold()); // to prevent concurrent mod issues when flychits are expired
 			for (Iterator n=hold.iterator();n.hasNext();) {
 				GameObject held = (GameObject)n.next();
@@ -1884,8 +1930,7 @@ public class BattleModel {
 			
 			if (rc.isCharacter()) {
 				// Expire any spells on fly chits (special case) - is this really necessary?  It seems like this happens above with fly.useFly()...
-				for (Iterator n=rcc.getUsedChits().iterator();n.hasNext();) {
-					GameObject go = (GameObject)n.next();
+				for (GameObject go : rcc.getUsedChits()) {
 					RealmComponent goc = RealmComponent.getRealmComponent(go);
 					if (goc.isFlyChit()) {
 						FlyChitComponent flyChit = (FlyChitComponent)goc;
@@ -1915,8 +1960,7 @@ public class BattleModel {
 			CombatWrapper.clearRoundCombatInfo(rc.getGameObject());
 			
 			// Remove any dead horses...
-			for (Iterator n=removeList.iterator();n.hasNext();) {
-				GameObject held = (GameObject)n.next();
+			for (GameObject held : removeList) {
 				rc.getGameObject().remove(held);
 				CombatWrapper.clearAllCombatInfo(held);
 			}
@@ -1932,6 +1976,11 @@ public class BattleModel {
 			RealmComponent target = rc.getTarget();
 			if (target!=null) {
 				CombatWrapper combat = new CombatWrapper(target.getGameObject());
+				combat.addAttacker(rc.getGameObject());
+			}
+			RealmComponent target2 = rc.get2ndTarget();
+			if (target2!=null) {
+				CombatWrapper combat = new CombatWrapper(target2.getGameObject());
 				combat.addAttacker(rc.getGameObject());
 			}
 		}
@@ -1985,7 +2034,7 @@ public class BattleModel {
 		for (Iterator i=getAllBattleParticipants(true).iterator();i.hasNext();) {
 			RealmComponent bp = (RealmComponent)i.next();
 			if (includeCharacters || !bp.isCharacter()) {
-				if (bp.getTarget()!=null && rc.equals(bp.getTarget())) {
+				if ((bp.getTarget()!=null && rc.equals(bp.getTarget())) || (bp.get2ndTarget()!=null && rc.equals(bp.get2ndTarget()))) {
 					list.add(bp);
 					if (includeWeapons && bp instanceof MonsterChitComponent) {
 						MonsterChitComponent monster = (MonsterChitComponent)bp;
@@ -2047,10 +2096,9 @@ public class BattleModel {
 	 * @return		A list of all RealmComponents in the clearing that are currently being affected
 	 * 				by Hurricane Winds
 	 */
-	public ArrayList getAllBlowees() {
-		ArrayList list = new ArrayList();
-		for (Iterator i=getAllBattleParticipants(true).iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+	public ArrayList<RealmComponent> getAllBlowees() {
+		ArrayList<RealmComponent> list = new ArrayList<>();
+		for (RealmComponent rc : getAllBattleParticipants(true)) {
 			if (rc.getGameObject().hasThisAttribute(Constants.BLOWS_TARGET)) {
 				list.add(rc);
 			}
@@ -2059,8 +2107,7 @@ public class BattleModel {
 	}
 	public boolean somebodyIsTargeted() {
 		boolean ret = false;
-		for (Iterator i=getAllBattleParticipants(true).iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : getAllBattleParticipants(true)) {
 			logger.finest(rc.getGameObject().getName()+"...");
 			CombatWrapper rcCombat = new CombatWrapper(rc.getGameObject());
 			if (rc.getTarget()!=null) {
@@ -2143,16 +2190,14 @@ public class BattleModel {
 	 * Disengage ALL targets
 	 */
 	public void makePeace() {
-		for (Iterator i=getAllBattleParticipants(true).iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
-			rc.clearTarget();
+		for (RealmComponent rc : getAllBattleParticipants(true)) {
+			rc.clearTargets();
 		}
 	}
 	
-	public static ArrayList<RealmComponent> getParticipantsFromGroups(Collection battleGroups) {
-		ArrayList<RealmComponent> participants = new ArrayList<RealmComponent>();
-		for (Iterator i = battleGroups.iterator(); i.hasNext();) {
-			BattleGroup bg = (BattleGroup) i.next();
+	public static ArrayList<RealmComponent> getParticipantsFromGroups(Collection<BattleGroup> battleGroups) {
+		ArrayList<RealmComponent> participants = new ArrayList<>();
+		for (BattleGroup bg : battleGroups) {
 			participants.addAll(bg.getBattleParticipants());
 		}
 		return participants;
