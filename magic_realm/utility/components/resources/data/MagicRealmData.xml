@@ -4692,6 +4692,7 @@
         <attribute notoriety="3" />
         <attribute base_price="20" />
         <attribute magic="" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="great_sword" />
