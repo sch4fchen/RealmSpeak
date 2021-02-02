@@ -50,6 +50,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 	
 	protected JRadioButton classicCharacterChitsOption;
 	protected JRadioButton legendaryCharacterChitsOption;
+	protected JRadioButton legendaryTexturedCharacterChitsOption;
 	
 	protected JRadioButton classicTilesOption;
 	protected JRadioButton legendaryTilesOption;
@@ -132,6 +133,9 @@ public class RealmSpeakOptionPanel extends JDialog {
 				break;
 			case CharacterChitComponent.DISPLAY_STYLE_LEGENDARY:
 				legendaryCharacterChitsOption.setSelected(true);
+				break;
+			case CharacterChitComponent.DISPLAY_STYLE_LEGENDARY_TEXTURED:
+				legendaryTexturedCharacterChitsOption.setSelected(true);
 				break;
 			default:
 				classicCharacterChitsOption.setSelected(true);
@@ -253,6 +257,9 @@ public class RealmSpeakOptionPanel extends JDialog {
 	private int getCharacterChitDisplayStyle() {
 		if (legendaryCharacterChitsOption.isSelected()) {
 			return CharacterChitComponent.DISPLAY_STYLE_LEGENDARY;
+		}
+		if (legendaryTexturedCharacterChitsOption.isSelected()) {
+			return CharacterChitComponent.DISPLAY_STYLE_LEGENDARY_TEXTURED;
 		}
 		return CharacterChitComponent.DISPLAY_STYLE_CLASSIC;
 	}
@@ -404,7 +411,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		return panel;
 	}
 	private JPanel getCharacterChitsOptionPanel() {
-		JPanel panel = new JPanel(new GridLayout(2,1));
+		JPanel panel = new JPanel(new GridLayout(3,1));
 		panel.setBorder(BorderFactory.createTitledBorder("Character Chits Style"));
 		ButtonGroup group = new ButtonGroup();
 		classicCharacterChitsOption = new JRadioButton("Classic");
@@ -413,6 +420,9 @@ public class RealmSpeakOptionPanel extends JDialog {
 		legendaryCharacterChitsOption = new JRadioButton("Legendary Realm");
 		group.add(legendaryCharacterChitsOption);
 		panel.add(legendaryCharacterChitsOption);
+		legendaryTexturedCharacterChitsOption = new JRadioButton("Legendary Realm (textured)");
+		group.add(legendaryTexturedCharacterChitsOption);
+		panel.add(legendaryTexturedCharacterChitsOption);
 		return panel;
 	}
 	private JPanel getTilesOptionsPanel() {

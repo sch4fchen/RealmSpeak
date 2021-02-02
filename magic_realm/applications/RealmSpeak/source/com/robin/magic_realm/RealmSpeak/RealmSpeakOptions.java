@@ -90,6 +90,9 @@ public class RealmSpeakOptions {
 			case CharacterChitComponent.DISPLAY_STYLE_LEGENDARY:
 				CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_LEGENDARY;
 				break;
+			case CharacterChitComponent.DISPLAY_STYLE_LEGENDARY_TEXTURED:
+				CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_LEGENDARY_TEXTURED;
+				break;
 			default:
 				CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_CLASSIC;
 				break;
