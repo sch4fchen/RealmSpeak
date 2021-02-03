@@ -1773,11 +1773,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 				// if condition is empty, then we are good to go
 				return true;
 			}
-			else {
-				// not empty?  there are conditions we need to verify
-				if ("7th".equals(condition)) {
-					return RealmCalendar.isSeventhDay(getCurrentDay());
-				}
+			// not empty?  there are conditions we need to verify
+			if ("7th".equals(condition)) {
+				return RealmCalendar.isSeventhDay(getCurrentDay());
 			}
 		}
 		return false;
@@ -2518,19 +2516,18 @@ public class CharacterWrapper extends GameObjectWrapper {
 		Integer num = getLowestIntegerForActiveInventoryKey(Constants.REPLACE_FIGHT);
 		return num==null?0:num.intValue();
 	}
-	public boolean canReplaceFight(RealmComponent target) {
-		ArrayList list = new ArrayList();
+	public boolean canReplaceFight(BattleChit target) {
+		ArrayList<BattleChit> list = new ArrayList<>();
 		list.add(target);
 		return canReplaceFight(list);
 	}
-	public boolean canReplaceFight(Collection targetComponents) {
+	public boolean canReplaceFight(Collection<BattleChit> targetComponents) {
 		int replaceFight = getReplaceFight();
 		Speed speedToBeatFight = null;
 		if (replaceFight>0) {
 			// if the targets move beats or equals, then no replace fight happens
 			speedToBeatFight = new Speed(replaceFight);
-			for (Iterator i=targetComponents.iterator();i.hasNext();) {
-				BattleChit chit = (BattleChit)i.next();
+			for (BattleChit chit : targetComponents) {
 				if (chit.getMoveSpeed().fasterThanOrEqual(speedToBeatFight)) {
 					speedToBeatFight = null;
 					break;
@@ -2543,19 +2540,18 @@ public class CharacterWrapper extends GameObjectWrapper {
 		Integer num = getLowestIntegerForActiveInventoryKey(Constants.REPLACE_MOVE);
 		return num==null?0:num.intValue();
 	}
-	public boolean canReplaceMove(RealmComponent attacker) {
-		ArrayList list = new ArrayList();
+	public boolean canReplaceMove(BattleChit attacker) {
+		ArrayList<BattleChit> list = new ArrayList<>();
 		list.add(attacker);
 		return canReplaceFight(list);
 	}
-	public boolean canReplaceMove(Collection attackerComponents) {
+	public boolean canReplaceMove(Collection<BattleChit> attackerComponents) {
 		int replaceMove = getReplaceMove();
 		Speed speedToBeatMove = null;
 		if (replaceMove>0) {
 			// if the targets move beats or equals, then no replace move happens
 			speedToBeatMove = new Speed(replaceMove);
-			for (Iterator i=attackerComponents.iterator();i.hasNext();) {
-				BattleChit chit = (BattleChit)i.next();
+			for (BattleChit chit : attackerComponents) {
 				if (chit.getAttackSpeed().fasterThanOrEqual(speedToBeatMove)) {
 					speedToBeatMove = null;
 					break;
@@ -3121,11 +3117,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 */
 	public ArrayList<CharacterWrapper> getActionFollowers() {
 		GameData data = getGameObject().getGameData();
-		ArrayList<CharacterWrapper> ret = new ArrayList<CharacterWrapper>();
-		ArrayList list = getList(ACTION_FOLLOWER);
+		ArrayList<CharacterWrapper> ret = new ArrayList<>();
+		ArrayList<String> list = getList(ACTION_FOLLOWER);
 		if (list!=null && !list.isEmpty()) {
-			for (Iterator i=list.iterator();i.hasNext();) {
-				GameObject go = data.getGameObject(Long.valueOf((String)i.next()));
+			for (String i : list) {
+				GameObject go = data.getGameObject(Long.valueOf(i));
 				CharacterWrapper follower = new CharacterWrapper(go);
 				if (!follower.isStopFollowing()) {
 					ret.add(follower);
@@ -3137,10 +3133,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public ArrayList<CharacterWrapper> getStoppedActionFollowers() {
 		GameData data = getGameObject().getGameData();
 		ArrayList<CharacterWrapper> ret = new ArrayList<CharacterWrapper>();
-		ArrayList list = getList(ACTION_FOLLOWER);
+		ArrayList<String> list = getList(ACTION_FOLLOWER);
 		if (list!=null && !list.isEmpty()) {
-			for (Iterator i=list.iterator();i.hasNext();) {
-				GameObject go = data.getGameObject(Long.valueOf((String)i.next()));
+			for (String i : list) {
+				GameObject go = data.getGameObject(Long.valueOf(i));
 				CharacterWrapper follower = new CharacterWrapper(go);
 				if (follower.isStopFollowing()) {
 					ret.add(follower);
