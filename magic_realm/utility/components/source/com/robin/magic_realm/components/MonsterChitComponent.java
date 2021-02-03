@@ -367,7 +367,8 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	// BattleChit Interface
 	public boolean targets(BattleChit chit) {
 		RealmComponent rc = getTarget();
-		return (rc != null && rc.equals(chit));
+		RealmComponent rc2 = get2ndTarget();
+		return ((rc != null && rc.equals(chit)) || (rc2 != null && rc2.equals(chit)));
 	}
 
 	public Integer getLength() {

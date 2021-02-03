@@ -431,8 +431,7 @@ public class RealmBattle {
 				}
 				// Check to see if any of the character's hirelings can lure
 				boolean hirelingsCanLure = false;
-				for (Iterator i=model.getBattleGroup(charRc).getBattleParticipants().iterator();i.hasNext();) {
-					RealmComponent test = (RealmComponent)i.next();
+				for (RealmComponent test : model.getBattleGroup(charRc).getBattleParticipants()) {
 					if (!test.isCharacter()) {
 						if (model.getAttackersFor(test).size()==0) { // found one!
 							hirelingsCanLure = true;
@@ -450,6 +449,7 @@ public class RealmBattle {
 				if (denizens!=null && denizens.size()>0) {
 					for (RealmComponent rc : denizens.getBattleParticipants()) {
 						RealmComponent target = rc.getTarget();
+						RealmComponent target2 = rc.get2ndTarget();
 						if (target==null) { // only need one unassigned denizen
 							return true;
 						}
@@ -461,6 +461,16 @@ public class RealmBattle {
 									return true;
 								}
 								characterTarget = target;
+							}
+						}
+						else if (target2!=null && target2.isCharacter()) {
+							if (!rc.isMonster() || !((MonsterChitComponent)rc).isPinningOpponent()) {
+								// Don't include red-side-up monsters
+								if (!target2.getGameObject().equals(character.getGameObject())) {
+									// At least one denizen is targeting a character that is not THIS character
+									return true;
+								}
+								characterTarget = target2;
 							}
 						}
 					}
@@ -532,8 +542,9 @@ public class RealmBattle {
 				Collection<RealmComponent> attackers = model.getAttackersFor(RealmComponent.getRealmComponent(character.getGameObject()));
 				RealmComponent attacker = RealmComponent.getRealmComponent(character.getGameObject());
 				RealmComponent target = attacker.getTarget();
+				RealmComponent target2 = attacker.get2ndTarget();
 				return (activeCharacterIsHere 
-						&& ( (target!=null && character.canReplaceFight(target))
+						&& ( ((target!=null && character.canReplaceFight(target)) || (target2!=null && character.canReplaceFight(target2)) )
 								|| character.canReplaceMove(attackers)));
 			case Constants.COMBAT_RESOLVING: // determines hits, show results
 				return true; // Show resolution every round - this guarantees that everything is cleaned up properly.

@@ -202,7 +202,8 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	// BattleChit Interface - by itself, a character has no stats - its all in the chits
 	public boolean targets(BattleChit chit) {
 		RealmComponent rc = getTarget();
-		return (rc != null && rc.equals(chit));
+		RealmComponent rc2 = get2ndTarget();
+		return ((rc != null && rc.equals(chit)) || (rc2 != null && rc2.equals(chit)));
 	}
 
 	public Integer getLength() {
