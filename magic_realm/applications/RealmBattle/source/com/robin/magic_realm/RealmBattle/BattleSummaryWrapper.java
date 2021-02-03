@@ -22,6 +22,7 @@ import java.util.Iterator;
 
 import com.robin.game.objects.*;
 import com.robin.magic_realm.components.BattleChit;
+import com.robin.magic_realm.components.CharacterChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
@@ -36,15 +37,14 @@ public class BattleSummaryWrapper extends GameObjectWrapper {
 	public String getBlockName() {
 		return "_BSUM_";
 	}
-	public void initFromBattleChits(ArrayList battleChits) {
+	public void initFromBattleChits(ArrayList<BattleChit> battleChits) {
 		clearBattleSummary();
 		
-		for (Iterator i=battleChits.iterator();i.hasNext();) {
-			BattleChit bp = (BattleChit)i.next();
+		for (BattleChit bp : battleChits) {
 			if (bp instanceof SpellWrapper) {
 				SpellWrapper spell = (SpellWrapper)bp;
-				for (Iterator n=spell.getTargets().iterator();n.hasNext();) {
-					BattleChit target = (BattleChit)n.next();
+				for (RealmComponent rc : spell.getTargets()) {
+					BattleChit target = (BattleChit)rc;
 					addBattleSummaryKill(bp.getGameObject(),target.getGameObject());
 				}
 			}
@@ -57,6 +57,12 @@ public class BattleSummaryWrapper extends GameObjectWrapper {
 				}
 				if (target!=null) {
 					addBattleSummaryKill(bp.getGameObject(),target.getGameObject());
+				}
+				if (bp instanceof CharacterChitComponent) {
+					BattleChit target2 = (BattleChit) ((CharacterChitComponent)bp).get2ndTarget();
+					if (target2!=null) {
+						addBattleSummaryKill(bp.getGameObject(),target2.getGameObject());
+					}
 				}
 			}
 		}

@@ -416,10 +416,9 @@ public class CombatFrame extends JFrame {
 	public void updateDenizenPanel() {
 		BattleGroup denizenGroup = currentBattleModel.getDenizenBattleGroup();
 		if (denizenGroup!=null && denizenGroup.size()>0) {
-			for (Iterator i=denizenGroup.getBattleParticipants().iterator();i.hasNext();) {
-				RealmComponent denizen = (RealmComponent)i.next();
+			for (RealmComponent denizen : denizenGroup.getBattleParticipants()) {
 				CombatWrapper combat = new CombatWrapper(denizen.getGameObject());
-				if (denizen.getTarget()==null && !combat.isSheetOwner()) {
+				if (denizen.getTarget()==null && denizen.get2ndTarget()==null && !combat.isSheetOwner()) {
 					denizenPanel.addRealmComponent(denizen);
 				}
 			}
@@ -1503,7 +1502,7 @@ public class CombatFrame extends JFrame {
 			}
 			
 			// Make sure the character has placed an attack
-			if (activeCharacterIsHere && activeParticipant.getTarget()!=null) {
+			if (activeCharacterIsHere && activeParticipant.getTarget()!=null && activeParticipant.get2ndTarget()!=null) {
 				CombatWrapper charCombat = new CombatWrapper(activeParticipant.getGameObject());
 				if (!charCombat.getPlayedAttack() && canPlayAttack(0)) {
 					return new RealmComponentError(activeParticipant,"Missing Attack Placement","The active character needs to place an attack.  Do you want to continue anyway?",true);
@@ -1845,6 +1844,11 @@ public class CombatFrame extends JFrame {
 				CombatWrapper combat = new CombatWrapper(target.getGameObject());
 				combat.removeAttacker(denizen.getGameObject());
 			}
+			RealmComponent target2 = denizen.get2ndTarget();
+			if (target2!=null) {
+				CombatWrapper combat = new CombatWrapper(target2.getGameObject());
+				combat.removeAttacker(denizen.getGameObject());
+			}
 			
 			denizen.setTarget(lurer);
 			CombatWrapper combat = new CombatWrapper(denizen.getGameObject());
@@ -2167,7 +2171,7 @@ public class CombatFrame extends JFrame {
 					NativeChitComponent member = (NativeChitComponent)rc;
 					if (!activeCharacter.isBattling(member.getGameObject())) continue; // watchful natives only attack those they are battling
 					CombatWrapper combat = new CombatWrapper(member.getGameObject());
-					if (!combat.isPeaceful() && combat.isWatchful() && member.getTarget()==null && (!combat.isSheetOwner() || combat.getAttackerCount()==0)) { // unassigned and watchful
+					if (!combat.isPeaceful() && combat.isWatchful() && member.getTarget()==null && member.get2ndTarget()==null && (!combat.isSheetOwner() || combat.getAttackerCount()==0)) { // unassigned and watchful
 						/*
 						 * Okay, now we have a watchful native, which means one of his/her group was attacked
 						 * AFTER the assignment round by the activeCharacter or minion.  What should happen is:

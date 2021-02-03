@@ -134,7 +134,7 @@ public class BattleHtmlGenerator extends HtmlGenerator {
 		if (denizenGroup!=null && denizenGroup.size()>0) {
 			for (RealmComponent denizen : denizenGroup.getBattleParticipants()) {
 				CombatWrapper combat = new CombatWrapper(denizen.getGameObject());
-				if (denizen.getTarget()==null && !combat.isSheetOwner()) {
+				if (denizen.getTarget()==null && denizen.get2ndTarget()==null && !combat.isSheetOwner()) {
 					list.add(denizen);
 				}
 			}

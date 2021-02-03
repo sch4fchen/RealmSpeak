@@ -152,7 +152,7 @@ public class CombatSuggestionAi {
 			if (!hirelings.isEmpty()) {
 				for (Iterator i=hirelings.iterator();i.hasNext();) {
 					RealmComponent hireling = (RealmComponent)i.next();
-					if (hireling.getTarget()==null) {
+					if (hireling.getTarget()==null && hireling.get2ndTarget()==null) {
 						CombatWrapper combat = new CombatWrapper(hireling.getGameObject());
 						if (combat.getAttackerCount()==0) {
 							iconGroup = new IconGroup(hireling.getIcon(),IconGroup.VERTICAL,4);
@@ -296,7 +296,7 @@ public class CombatSuggestionAi {
 			boolean denizensOnSheets = false;
 			boolean unassignedDenizens = false;
 			for (RealmComponent rc : battleModel.getDenizenBattleGroup().getBattleParticipants()) {
-				if (rc.getTarget()!=null) {
+				if (rc.getTarget()!=null || rc.get2ndTarget()!=null) {
 					denizensOnSheets = true;
 				}
 				else {
@@ -307,7 +307,7 @@ public class CombatSuggestionAi {
 			BattleGroup battleGroup = battleModel.getParticipantsBattleGroup(combatFrame.getActiveParticipant());
 			for (RealmComponent participant : battleGroup.getBattleParticipants()) {
 				CombatWrapper combat = new CombatWrapper(participant.getGameObject());
-				if (combat.isSheetOwner() && participant.getTarget()==null) {
+				if (combat.isSheetOwner() && participant.getTarget()==null && participant.get2ndTarget()==null) {
 					ArrayList<RealmComponent> attackers = combat.getAttackersAsComponents();
 					if (!attackers.isEmpty()) {
 						iconGroup = new IconGroup(participant.getIcon(),IconGroup.VERTICAL,4);
@@ -379,7 +379,7 @@ public class CombatSuggestionAi {
 					return;
 				}
 			}
-			else if (cc.getAttackCombatBox()==0 && cc.getTarget()!=null) {
+			else if (cc.getAttackCombatBox()==0 && cc.getTarget()!=null && cc.get2ndTarget()!=null) {
 				if (cc.getManeuverChit()==null) {
 					suggestion.append("No need to play a maneuver, because there are no attackers on your sheet.");
 				}

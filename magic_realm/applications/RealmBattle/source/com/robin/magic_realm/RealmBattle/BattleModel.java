@@ -160,7 +160,7 @@ public class BattleModel {
 	public boolean areUnassignedDenizens() {
 		if (denizenBattleGroup != null) {
 			for (RealmComponent denizen : denizenBattleGroup.getBattleParticipants()) {
-				if (denizen.getTarget()==null) {
+				if (denizen.getTarget()==null && denizen.get2ndTarget()==null) {
 					return true;
 				}
 			}
@@ -2030,7 +2030,7 @@ public class BattleModel {
 		return getAttackersFor(rc,true,true);
 	}
 	public ArrayList<RealmComponent> getAttackersFor(RealmComponent rc,boolean includeCharacters,boolean includeWeapons) {
-		ArrayList<RealmComponent> list = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> list = new ArrayList<>();
 		for (Iterator i=getAllBattleParticipants(true).iterator();i.hasNext();) {
 			RealmComponent bp = (RealmComponent)i.next();
 			if (includeCharacters || !bp.isCharacter()) {
@@ -2110,7 +2110,7 @@ public class BattleModel {
 		for (RealmComponent rc : getAllBattleParticipants(true)) {
 			logger.finest(rc.getGameObject().getName()+"...");
 			CombatWrapper rcCombat = new CombatWrapper(rc.getGameObject());
-			if (rc.getTarget()!=null) {
+			if (rc.getTarget()!=null || rc.get2ndTarget()!=null) {
 				ret = true;
 				logger.finest("is targeting someone");
 				break;

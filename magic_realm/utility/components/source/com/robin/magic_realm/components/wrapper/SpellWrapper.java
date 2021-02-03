@@ -410,7 +410,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			}
 			
 			// if target is an unassigned denizen, move them to their own sheet (sucker punch)
-			if (rc.getOwnerId()==null && rc.getTarget()==null) {
+			if (rc.getOwnerId()==null && rc.getTarget()==null && rc.get2ndTarget()==null) {
 				if (!hostPrefs.hasPref(Constants.TE_WATCHFUL_NATIVES)) {
 					combat.setSheetOwner(true);
 				}

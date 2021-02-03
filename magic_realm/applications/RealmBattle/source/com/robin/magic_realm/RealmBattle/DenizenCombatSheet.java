@@ -137,7 +137,8 @@ public class DenizenCombatSheet extends CombatSheet {
 				case POS_DEFENDER_TARGET_BOX2:
 				case POS_DEFENDER_TARGET_BOX3:
 					RealmComponent target = sheetOwner.getTarget();
-					if (target!=null && target.hasHorse()) return horseRiderSplit;
+					RealmComponent target2 = sheetOwner.get2ndTarget();
+					if ((target!=null && target.hasHorse()) || (target2!=null && target2.hasHorse())) return horseRiderSplit;
 					break;
 				case POS_ATTACKERS_BOX1:
 				case POS_ATTACKERS_BOX2:
@@ -228,6 +229,7 @@ public class DenizenCombatSheet extends CombatSheet {
 				if (combatFrame.getActiveCharacter()!=null
 						&& combatFrame.getActiveCharacterIsHere()
 						&& combatFrame.getActiveParticipant().getTarget()==null
+						&& combatFrame.getActiveParticipant().get2ndTarget()==null
 						&& spell==null) {
 					String title = combatFrame.getActiveCharacter().getGameObject().getName()+" Target";
 					if (containsEnemy(
@@ -248,7 +250,8 @@ public class DenizenCombatSheet extends CombatSheet {
 				// Hireling assign
 				if (isOwnedByActive
 						&& layoutHash.get(new Integer(POS_ATTACKERS_BOX1))!=null
-						&& sheetOwner.getTarget()==null) {
+						&& sheetOwner.getTarget()==null
+						&& sheetOwner.get2ndTarget()==null) {
 					hotspotHash.put(new Integer(POS_DEFENDER_TARGET_BOX1),sheetOwner.getGameObject().getName()+" Target");
 					targetNeedsAssignment = true;
 				}
@@ -303,11 +306,13 @@ public class DenizenCombatSheet extends CombatSheet {
 				
 				// Character might have a target to attack
 				RealmComponent target = combatFrame.getActiveParticipant().getTarget();
-				ArrayList allSheetParticipants = new ArrayList(sheetParticipants);
+				RealmComponent target2 = combatFrame.getActiveParticipant().get2ndTarget();
+				ArrayList<RealmComponent> allSheetParticipants = new ArrayList<>(sheetParticipants);
 				allSheetParticipants.add(sheetOwner);
 				boolean sheetHasTarget = target!=null && sheetParticipants.contains(target);
+				boolean sheetHasTarget2 = target2!=null && sheetParticipants.contains(target2);
 				boolean sheetHasSpellTarget = spell!=null && spell.isAttackSpell() && spell.targetsRealmComponents(allSheetParticipants);
-				if (sheetHasTarget || sheetHasSpellTarget) {
+				if (sheetHasTarget || sheetHasTarget2 || sheetHasSpellTarget) {
 					int boxReq = spell==null?0:spell.getGameObject().getThisInt("box_req"); // most spells will be zero
 					if (spell==null || boxReq==0 || boxReq==1) {
 						hotspotHash.put(new Integer(POS_ATTACKERS_WEAPON1),"Attack");
@@ -325,7 +330,7 @@ public class DenizenCombatSheet extends CombatSheet {
 			
 				// Check conditions for REPLACE_FIGHT (Battle Bracelets)
 				RealmComponent aTarget = combatFrame.getActiveParticipant().getTarget();
-				if (combatFrame.getActiveParticipant().getTarget()!=null && sheetParticipants.contains(aTarget)) {
+				if (aTarget!=null && sheetParticipants.contains(aTarget)) {
 					if (character.canReplaceFight(aTarget)) {
 						// can replace fight
 						hotspotHash.put(new Integer(POS_ATTACKERS_WEAPON1),"Replace Attack");
@@ -341,10 +346,10 @@ public class DenizenCombatSheet extends CombatSheet {
 		battleChitsWithRolls.clear();
 		layoutHash.clear();
 		
-		sheetParticipants = new ArrayList();
+		sheetParticipants = new ArrayList<>();
 		sheetParticipants.add(sheetOwner);
 		
-		ArrayList excludeList = new ArrayList();
+		ArrayList<RealmComponent> excludeList = new ArrayList<>();
 		excludeList.add(sheetOwner);
 		
 		if (isOwnedByActive || combatFrame.getActionState()>=Constants.COMBAT_RESOLVING || sheetOwner.getOwnerId()==null) {
@@ -366,14 +371,24 @@ public class DenizenCombatSheet extends CombatSheet {
 				placeParticipant(defenderTarget,POS_DEFENDER_TARGET_BOX1);
 			}
 		}
+		RealmComponent defenderTarget2 = sheetOwner.get2ndTarget();
+		if (defenderTarget2!=null) {
+			sheetParticipants.add(defenderTarget2);
+			excludeList.add(defenderTarget2);
+			if (!addedToDead(defenderTarget2)) {
+				placeParticipant(defenderTarget2,POS_DEFENDER_TARGET_BOX1);
+			}
+		}
 		
 		// If the sheet owner is a denizen, then ALL denizens should be in the middle... I think...
-		if (sheetOwner.getOwnerId()==null && defenderTarget!=null) {
+		if (sheetOwner.getOwnerId()==null && (defenderTarget!=null || defenderTarget2!=null)) {
 			int p = 1;
-			ArrayList denizens = new ArrayList(model.getDenizenBattleGroup().getBattleParticipants());
-			for (Iterator i=denizens.iterator();i.hasNext();) {
-				RealmComponent denizen = (RealmComponent)i.next();
-				if (!excludeList.contains(denizen) && defenderTarget.equals(denizen.getTarget())) {
+			ArrayList<RealmComponent> denizens = new ArrayList<>(model.getDenizenBattleGroup().getBattleParticipants());
+			for (RealmComponent denizen : denizens) {
+				if (!excludeList.contains(denizen) && (
+						(defenderTarget!=null && (defenderTarget.equals(denizen.getTarget()) || defenderTarget.equals(denizen.get2ndTarget())))
+					|| (defenderTarget2!=null && (defenderTarget2.equals(denizen.getTarget()) || defenderTarget2.equals(denizen.get2ndTarget())))
+						)) {
 					placeParticipant(denizen,POS_DEFENDER_BOX1+p);
 					p++;
 					p%=3;
@@ -478,7 +493,7 @@ public class DenizenCombatSheet extends CombatSheet {
 			case POS_DEFENDER_TARGET_BOX2:
 			case POS_DEFENDER_TARGET_BOX3:
 				if (combatFrame.getActionState()==Constants.COMBAT_ASSIGN) {
-					if (sheetOwner.getTarget()==null) {
+					if (sheetOwner.getTarget()==null && sheetOwner.get2ndTarget()==null) {
 						// Assign Target for denizen (sheetOwner)
 						combatFrame.assignTarget(sheetOwner,layoutHash.getList(new Integer(POS_ATTACKERS_BOX1)));
 						updateLayout(); // so target can move to new box, if needed
@@ -508,7 +523,7 @@ public class DenizenCombatSheet extends CombatSheet {
 		// start with unassigned denizens
 		for (Iterator i=combatFrame.getUnassignedDenizens().iterator();i.hasNext();) {
 			RealmComponent denizen = (RealmComponent)i.next();
-			if (denizen.getTarget()==null && !denizen.isMistLike()) {
+			if (denizen.getTarget()==null && denizen.get2ndTarget()==null && !denizen.isMistLike()) {
 				if (!extendedTreachery(denizen) || combatFrame.getActiveCharacter().getTreacheryPreference()) {
 					chooser.addRealmComponent(denizen);
 				}
@@ -572,7 +587,8 @@ public class DenizenCombatSheet extends CombatSheet {
 				if (monster.isPinningOpponent()) {
 					deployTargetKeepsTarget = true;
 					RealmComponent rc = monster.getTarget();
-					if (rc.isCharacter()) {
+					RealmComponent rc2 = monster.get2ndTarget();
+					if (rc.isCharacter() || rc2.isCharacter()) {
 						deployTargetMovesToNewSheet = false;
 					}
 				}
@@ -581,7 +597,7 @@ public class DenizenCombatSheet extends CombatSheet {
 			// Select side
 			if (combatFrame.selectDeploymentSide((ChitComponent)sheetOwner)) {
 				// Set the target, and leave sheet
-				if (deployTarget.getTarget()==null) {
+				if (deployTarget.getTarget()==null && deployTarget.get2ndTarget()==null) {
 					combatFrame.removeDenizen(deployTarget);
 				}
 				sheetOwner.setTarget(deployTarget);
