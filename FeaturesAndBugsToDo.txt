@@ -1,8 +1,7 @@
 Expansion 1: Two-Handed Combat + Ability: "Dual Wielding"
 CombatSheet: placeAllAttacks
 BattleModel: doResolveAttacks -> doTargetAttack -> getAdjustedHarm, sortAccordingToRound, handleSortTies, processHits
-BattleModel: getCombatantInformation (only for log)
-RealmComponent.getTarget
+RealmComponent.getTarget: CharacterCombatSheet + CombatSheet: placeAllAttacks
 CharacterChitComponent:
 	getLength + Comparer
 	getAttackSpeed + Comparer
@@ -10,7 +9,6 @@ CharacterChitComponent:
 	isMissile
 	getMissileType
 	hitsOnTie
-"DUAL" comments in CharacterChitComponent
 RULES: Check which weapon can hit which target, check speed and harm
 
 Expansion 1: More Ambushes/Throwing Weapons + Ability: Spear, Axe, Dagger?
