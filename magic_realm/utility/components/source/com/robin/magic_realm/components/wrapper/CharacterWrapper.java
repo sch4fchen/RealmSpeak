@@ -184,7 +184,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	// Contains a list of clearings (ClearingDetail objects) that the character is planning to
 	// traverse (includes starting clearing).  This is used to determine move rules and next possible
 	// moves when plotting actions.
-	private ArrayList clearingPlot;
+	private ArrayList<TileLocation> clearingPlot;
 	
 	public CharacterWrapper(GameObject gameObject) {
 		super(gameObject);
@@ -1038,7 +1038,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		setBoolean(MISSING_IN_ACTION,val);
 	}
 	public ArrayList<String> getAllRelationshipBlocks(HostPrefWrapper hostPrefs) {
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		int boards = hostPrefs.getMultiBoardEnabled()?hostPrefs.getMultiBoardCount():1;
 		for (int i=0;i<boards;i++) {
 			String block = Constants.GAME_RELATIONSHIP;
@@ -1188,9 +1188,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 	}
 	public String getFollowStringId() {
-		Collection c = getCurrentActions();
+		Collection<String> c = getCurrentActions();
 		if (c!=null && c.size()==1) {
-			String action = (String)c.iterator().next();
+			String action = c.iterator().next();
 			if (getIdForAction(action)==ActionId.Follow) {
 				int tilde = action.indexOf('~');
 				String id = action.substring(tilde+1);
@@ -1284,7 +1284,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	
 	public ArrayList<String> getCurrentActionsCodes() {
-		ArrayList<String> actions = new ArrayList<String>();
+		ArrayList<String> actions = new ArrayList<>();
 		for (String action : getCurrentActions(false)) {
 			actions.add(action.split("-")[0]);
 		}
@@ -1298,7 +1298,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public ArrayList<String> getCurrentActions(boolean excludeBlockedActions) {
 		ArrayList<String> c = getList(getCurrentDayKey());
 		if (c==null) {
-			c = new ArrayList<String>();
+			c = new ArrayList<>();
 		}
 		if (excludeBlockedActions) {
 			return filterBlocked(c);
@@ -1380,7 +1380,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public Collection<String> getCurrentActionValids() {
 		return getList(getCurrentDayKey()+"V");
 	}
-	public void setCurrentActionValids(ArrayList in) {
+	public void setCurrentActionValids(ArrayList<String> in) {
 		setList(getCurrentDayKey()+"V",in);
 	}
 	/**
@@ -1413,7 +1413,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		addListItem(getCurrentDayKey()+"R",roller==null?"":roller.getStringResult());
 	}
 	public boolean hasDoneActionsToday() {
-		ArrayList current = getCurrentActions();
+		ArrayList<String> current = getCurrentActions();
 		if (current!=null && current.size()>0){
 			String firstAction = (String)current.get(0);
 			ActionId id = CharacterWrapper.getIdForAction(firstAction);
@@ -2198,7 +2198,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			RealmCalendar cal = RealmCalendar.getCalendar(getGameObject().getGameData());
 			if (cal.isHideDisabled(getCurrentMonth())) {
 				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameData());
-				boolean ableToIgnoreDisableHide = hostPrefs.hasPref(Constants.HOUSE3_SNOW_HIDE_EXCLUDE_CAVES) && location.isInClearing() && location.clearing.isCave();
+				boolean ableToIgnoreDisableHide = hostPrefs.hasPref(Constants.HOUSE3_SNOW_HIDE_EXCLUDE_CAVES) && location!=null && location.isInClearing() && location.clearing.isCave();
 				if (!ableToIgnoreDisableHide) {
 					return false;
 				}
@@ -2261,8 +2261,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				// Must be in a clearing
 				if (location.hasClearing() && !location.isBetweenClearings()) {
 					// Must be someone to follow
-					for (Iterator n=location.clearing.getClearingComponents().iterator();n.hasNext();) {
-						RealmComponent rc = (RealmComponent)n.next();
+					for (RealmComponent rc : location.clearing.getClearingComponents()) {
 						// Someone, that isn't yourself (character or native leader only!)
 						if (rc.isPlayerControlledLeader() && !rc.getGameObject().equals(getGameObject())) {
 							// Only one is required!
@@ -2334,11 +2333,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 */
 	public ArrayList<GameObject> getMinions() {
 		GameData data = getGameObject().getGameData();
-		ArrayList list = getList(MINION_ID);
+		ArrayList<String> list = getList(MINION_ID);
 		if (list!=null && !list.isEmpty()) {
-			ArrayList<GameObject> ret = new ArrayList<GameObject>();
-			for (Iterator i=list.iterator();i.hasNext();) {
-				String id = (String)i.next();
+			ArrayList<GameObject> ret = new ArrayList<>();
+			for (String id : list) {
 				GameObject fam = data.getGameObject(Long.valueOf(id));
 				ret.add(fam);
 			}
@@ -2359,11 +2357,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return null;
 	}
 	public int getMinionCount() {
-		ArrayList list = getList(MINION_ID);
+		ArrayList<String> list = getList(MINION_ID);
 		return list==null?0:list.size();
 	}
 	public ArrayList<GameObject> getInventory() {
-		ArrayList<GameObject> ret = new ArrayList<GameObject>();
+		ArrayList<GameObject> ret = new ArrayList<>();
 		for (Iterator i=getGameObject().getHold().iterator();i.hasNext();) {
 			GameObject go = (GameObject)i.next();
 			if (go.hasThisAttribute(Constants.REQUIRES_APPROVAL)) continue;
@@ -2378,15 +2376,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return ret;
 	}
-	public Collection getBoons(GameObject denizen) {
+	public Collection<GameObject> getBoons(GameObject denizen) {
 		String nativeName = denizen.getThisAttribute("native");
 		if (nativeName==null) {
 			nativeName = denizen.getThisAttribute("visitor");
 		}
-		ArrayList list = new ArrayList();
-		Collection c = getInventory();
-		for (Iterator i=c.iterator();i.hasNext();) {
-			GameObject item = (GameObject)i.next();
+		ArrayList<GameObject> list = new ArrayList<>();
+		Collection<GameObject> c = getInventory();
+		for (GameObject item : c) {
 			if (item.hasThisAttribute("boon")) {
 				String toWhom = item.getThisAttribute("boon");
 				if (toWhom.equals(nativeName)) {
@@ -2397,10 +2394,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return list;
 	}
 	public ArrayList<GameObject> getSellableInventory() {
-		ArrayList<GameObject> list = new ArrayList<GameObject>();
-		Collection c = getInventory();
-		for (Iterator i=c.iterator();i.hasNext();) {
-			GameObject item = (GameObject)i.next();
+		ArrayList<GameObject> list = new ArrayList<>();
+		Collection<GameObject> c = getInventory();
+		for (GameObject item : c) {
 			RealmComponent rc = RealmComponent.getRealmComponent(item);
 			if (rc.isItem() // must be an item (not a boon, quest, phase chit, other)
 					&& !rc.isNativeHorse() // leaders can't sell their own horse!!
@@ -2419,7 +2415,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 */
 	public ArrayList<GameObject> getScorableInventory() {
 		Strength strength = getMoveStrength(true,false);
-		ArrayList<GameObject> carryable = new ArrayList<GameObject>();
+		ArrayList<GameObject> carryable = new ArrayList<>();
 		
 		for (GameObject go:getInventory()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
@@ -2573,19 +2569,17 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * that ALL inventory is "not new" for purposes of knowing when they can be activated.  (3ed rule 7.5.5.f)
 	 */
 	public void markAllInventoryNotNew() {
-		Collection inv = getInventory();
-		for (Iterator i=inv.iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		Collection<GameObject> inv = getInventory();
+		for (GameObject go : inv) {
 			if (go.hasThisAttribute(Constants.TREASURE_NEW)) {
 				go.removeThisAttribute(Constants.TREASURE_NEW);
 			}
 		}
 	}
 	public ArrayList<GameObject> getActiveInventory() {
-		ArrayList<GameObject> active = new ArrayList<GameObject>();
-		Collection inv = getInventory();
-		for (Iterator i=inv.iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		ArrayList<GameObject> active = new ArrayList<>();
+		Collection<GameObject> inv = getInventory();
+		for (GameObject go : inv) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc.isActivated()) {
 				active.add(go);
@@ -2597,7 +2591,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return getInactiveInventory(false);
 	}
 	public ArrayList<GameObject> getInactiveInventory(boolean includePhaseChits) {
-		ArrayList<GameObject> inactive = new ArrayList<GameObject>();
+		ArrayList<GameObject> inactive = new ArrayList<>();
 		for (GameObject go:getInventory()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (!rc.isActivated() && !rc.isBoon() && (includePhaseChits || !rc.isPhaseChit())) {
@@ -2607,7 +2601,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return inactive;
 	}
 	public ArrayList<GameObject> getDroppableInventory() {
-		ArrayList<GameObject> list = new ArrayList<GameObject>();
+		ArrayList<GameObject> list = new ArrayList<>();
 		for (GameObject go:getInventory()) {
 			Inventory inv = new Inventory(go);
 			if (inv.canDrop()) {

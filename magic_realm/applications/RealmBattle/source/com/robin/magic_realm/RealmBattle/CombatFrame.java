@@ -284,7 +284,6 @@ public class CombatFrame extends JFrame {
 		
 		this.playerName = playerName;
 		this.finishedActionListener = listener;
-		allParticipants = new ArrayList<RealmComponent>();
 		if (lastKnownLocation==null) {
 			lastKnownLocation = ComponentTools.findPreferredRectangle(970,Integer.MAX_VALUE);
 		}
@@ -338,7 +337,7 @@ public class CombatFrame extends JFrame {
 		denizenPanel.clearSelected();
 		denizenPanel.repaint();
 	}
-	public Collection getUnassignedDenizens() {
+	public Collection<Component> getUnassignedDenizens() {
 		return Arrays.asList(denizenPanel.getComponents());
 	}
 	public void refreshParticipants() {
@@ -346,8 +345,7 @@ public class CombatFrame extends JFrame {
 		// Build BattleParticipant list by examining flag for sheetOwner
 		ArrayList<RealmComponent> chars = new ArrayList<>();
 		ArrayList<RealmComponent> everyoneElse = new ArrayList<>();
-		for (Iterator i=currentBattleModel.getAllBattleParticipants(true).iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : currentBattleModel.getAllBattleParticipants(true)) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 			if (rc.isCharacter()) {
 				chars.add(rc);
@@ -357,11 +355,9 @@ public class CombatFrame extends JFrame {
 			}
 		}
 		// Sort chars by combat order, and add them first
-		Collections.sort(chars,new Comparator() {
-			public int compare(Object o1,Object o2) {
+		Collections.sort(chars,new Comparator<RealmComponent>() {
+			public int compare(RealmComponent rc1,RealmComponent rc2) {
 				int ret = 0;
-				RealmComponent rc1 = (RealmComponent)o1;
-				RealmComponent rc2 = (RealmComponent)o2;
 				CharacterWrapper c1 = new CharacterWrapper(rc1.getGameObject());
 				CharacterWrapper c2 = new CharacterWrapper(rc2.getGameObject());
 				ret = c1.getCombatPlayOrder()-c2.getCombatPlayOrder();
@@ -400,7 +396,7 @@ public class CombatFrame extends JFrame {
 	}
 	public void updateHotspotIndicators() {
 		int n=0;
-		for (RealmComponent rc:new ArrayList<RealmComponent>(allParticipants)) {
+		for (RealmComponent rc:new ArrayList<>(allParticipants)) {
 			CombatSheet cs = CombatSheet.createCombatSheet(this,currentBattleModel,rc,interactiveFrame, hostPrefs);
 			participantHasHotspots[n++] = cs.hasHotspots();
 		}
@@ -450,16 +446,16 @@ public class CombatFrame extends JFrame {
 			}
 			
 			// Understand the current state (ie., luring, deploying, etc)
-			HashLists lists = RealmBattle.findCharacterStates(currentCombatLocation,gameData);
+			HashLists<Integer,CharacterWrapper> lists = RealmBattle.findCharacterStates(currentCombatLocation,gameData);
 			if (lists.isEmpty()) {
 				// This happens when a player's hireling is asking to END combat when the owner is not present.
 				// Not sure why, but doing a "return" here solves the problem.
 				return;
 			}
-			ArrayList states = new ArrayList(lists.keySet());
+			ArrayList<Integer> states = new ArrayList<>(lists.keySet());
 			Collections.sort(states);
 			
-			Integer firstState = (Integer)states.iterator().next();
+			Integer firstState = states.iterator().next();
 			if (firstState.intValue()>=Constants.COMBAT_WAIT) {
 				return;
 //				// Shoudn't encounter a WAIT state here!
@@ -477,14 +473,13 @@ public class CombatFrame extends JFrame {
 				// activeCharacter is the character that is viewing the frame, EXCEPT in the case where everyone
 				// is viewing the results.  In THIS case, activeCharacter is simply the first one in the list, which
 				// doesn't really mean ANYTHING.
-				ArrayList characterList = lists.getList(firstState);
-				activeCharacter = (CharacterWrapper)characterList.iterator().next();
+				ArrayList<CharacterWrapper> characterList = lists.getList(firstState);
+				activeCharacter = characterList.iterator().next();
 				activeParticipant = RealmComponent.getRealmComponent(activeCharacter.getGameObject());
 				activeCharacterIsHere = currentBattleModel.getBattleGroup(activeParticipant).getCharacterInBattle()!=null;
 				activeCharacterIsTransmorphed = activeCharacter.getTransmorph()!=null;
 				
-				for (Iterator i=characterList.iterator();i.hasNext();) {
-					CharacterWrapper character = (CharacterWrapper)i.next();
+				for (CharacterWrapper character : characterList) {
 					if (character.getDoInstantPeer()) {
 						// Only process if the character belongs to THIS player
 						if (character.getPlayerName().equals(GameClient.GetMostRecentClient().getClientName())) {
@@ -513,11 +508,10 @@ public class CombatFrame extends JFrame {
 				logger.finer("actionState = "+actionState);
 				
 				// Action Controls
-				ArrayList controls = createControls();
+				ArrayList<JComponent> controls = createControls();
 				controlPanel.removeAll();
-				for (Iterator i=controls.iterator();i.hasNext();) {
+				for (JComponent component : controls) {
 					JPanel panel = new JPanel(new BorderLayout());
-					JComponent component = (JComponent)i.next();
 					panel.add(component,"Center");
 					controlPanel.add(panel);
 				}
@@ -949,7 +943,7 @@ public class CombatFrame extends JFrame {
 		return suggestButton;
 	}
 	
-	private ArrayList createControls() {
+	private ArrayList<JComponent> createControls() {
 		ArrayList list = new ArrayList();
 		roundLabel = new JLabel("Round "+getCurrentRound(),JLabel.CENTER);
 		roundLabel.setFont(COMBAT_ROUND_FONT);
