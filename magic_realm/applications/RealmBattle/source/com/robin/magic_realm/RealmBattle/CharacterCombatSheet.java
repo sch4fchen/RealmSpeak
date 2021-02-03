@@ -325,10 +325,9 @@ public class CharacterCombatSheet extends CombatSheet {
 		 * are targeting the sheetOwner.  (go into target boxes)
 		 */
 		sheetParticipants = new ArrayList();
-		ArrayList exclude = new ArrayList();
-		ArrayList all = model.getAllBattleParticipants(true);
-		for (Iterator i=all.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		ArrayList<RealmComponent> exclude = new ArrayList<>();
+		ArrayList<RealmComponent> all = model.getAllBattleParticipants(true);
+		for (RealmComponent rc : all) {
 			CombatWrapper rcCombat = new CombatWrapper(rc.getGameObject());
 			RealmComponent target = rc.getTarget();
 			

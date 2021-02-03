@@ -346,22 +346,18 @@ public class RealmBattle {
 					// TODO But DONT preserve the daylight order for TARGET selection...
 					
 					if (actionState==Constants.COMBAT_ASSIGN) {
-						Collections.sort(choices,new Comparator() {
-							public int compare(Object o1,Object o2) {
+						Collections.sort(choices,new Comparator<CharacterWrapper>() {
+							public int compare(CharacterWrapper c1,CharacterWrapper c2) {
 								int ret = 0;
-								CharacterWrapper c1 = (CharacterWrapper)o1;
-								CharacterWrapper c2 = (CharacterWrapper)o2;
 								ret = c1.getMeleePlayOrder()-c2.getMeleePlayOrder();
 								return ret;
 							}
 						});
 					}
 					else {
-						Collections.sort(choices,new Comparator() {
-							public int compare(Object o1,Object o2) {
+						Collections.sort(choices,new Comparator<CharacterWrapper>() {
+							public int compare(CharacterWrapper c1,CharacterWrapper c2) {
 								int ret = 0;
-								CharacterWrapper c1 = (CharacterWrapper)o1;
-								CharacterWrapper c2 = (CharacterWrapper)o2;
 								ret = c1.getCombatPlayOrder()-c2.getCombatPlayOrder();
 								return ret;
 							}

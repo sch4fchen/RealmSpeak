@@ -63,14 +63,13 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 	protected BattleModel model;
 	protected RealmComponent sheetOwner;
 	protected Collection<RealmComponent> sheetParticipants;
-	protected HashLists layoutHash;
-	protected Hashtable rollerHash; // indexes to rollers
+	protected HashLists<Integer,RealmComponent> layoutHash;
 	
 	protected Integer mouseHoverIndex;
 	protected boolean mouseHoverShift = false;
-	protected ArrayList battleChitsWithRolls;
+	protected ArrayList<BattleChit> battleChitsWithRolls;
 	
-	protected Hashtable hotspotHash; // hotspot indices (Integer) are the key, and the value is a String
+	protected Hashtable<Integer,String> hotspotHash;
 	
 	protected RollerGroup redGroup;
 	protected RollerGroup squareGroup;
@@ -84,9 +83,9 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 	 * Testing constructor ONLY!!!
 	 */
 	protected CombatSheet() {
-		battleChitsWithRolls = new ArrayList();
-		hotspotHash = new Hashtable();
-		layoutHash = new HashLists();
+		battleChitsWithRolls = new ArrayList<>();
+		hotspotHash = new Hashtable<>();
+		layoutHash = new HashLists<>();
 		mouseHoverIndex = null;
 		positions = getPositions();
 		offset = new int[positions.length];
@@ -98,9 +97,9 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		this.model = model;
 		this.sheetOwner = participant;
 		this.interactiveFrame = interactiveFrame;
-		battleChitsWithRolls = new ArrayList();
-		hotspotHash = new Hashtable();
-		layoutHash = new HashLists();
+		battleChitsWithRolls = new ArrayList<>();
+		hotspotHash = new Hashtable<>();
+		layoutHash = new HashLists<>();
 		mouseHoverIndex = null;
 		positions = getPositions();
 		offset = new int[positions.length];
@@ -122,13 +121,12 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 	/**
 	 * Gets a list of all RCs in the three boxes.  Excludes any character attacks, horses, or parts
 	 */
-	protected ArrayList getAllBoxListFromLayout(int box1) {
-		ArrayList all = new ArrayList();
+	protected ArrayList<RealmComponent> getAllBoxListFromLayout(int box1) {
+		ArrayList<RealmComponent> all = new ArrayList<>();
 		for (int i=0;i<3;i++) {
-			ArrayList list = layoutHash.getList(new Integer(box1+i));
+			ArrayList<RealmComponent> list = layoutHash.getList(new Integer(box1+i));
 			if (list!=null) {
-				for (Iterator n=list.iterator();n.hasNext();) {
-					RealmComponent rc = (RealmComponent)n.next();
+				for (RealmComponent rc : list) {
 					if (!rc.isNativeHorse() && !rc.isMonsterPart() && !rc.isActionChit()) {
 						all.add(rc);
 					}
@@ -201,7 +199,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			battleChitsWithRolls.add(bc);
 		}
 	}
-	private ArrayList getBattleRolls() {
+	private ArrayList<RollerResult> getBattleRolls() {
 		ArrayList<RollerResult> battleRolls = new ArrayList<>();
 		if (!battleChitsWithRolls.isEmpty()) {
 			// Deduce and build all fumble/stumble rolls (in order)
@@ -211,8 +209,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			else {
 				Collections.sort(battleChitsWithRolls,new BattleChitSpeedComparator());
 			}
-			for (Iterator i=battleChitsWithRolls.iterator();i.hasNext();) {
-				BattleChit bc = (BattleChit)i.next();
+			for (BattleChit bc : battleChitsWithRolls) {
 				
 				RealmComponent rc = (RealmComponent)bc;
 				CombatWrapper combat = new CombatWrapper(bc.getGameObject());
@@ -538,7 +535,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		}
 		return false;
 	}
-	protected void placeAllAttacks(int attackBox1,int weaponBox1,Collection excludeList) {
+	protected void placeAllAttacks(int attackBox1,int weaponBox1,Collection<RealmComponent> excludeList) {
 		boolean reveal = combatFrame.getActionState()>=Constants.COMBAT_RESOLVING;
 		
 		ArrayList<RealmComponent> all = new ArrayList<>(model.getAllBattleParticipants(true));
@@ -553,12 +550,13 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		for (RealmComponent rc : all) {
 			CombatWrapper rcCombat = new CombatWrapper(rc.getGameObject());
 			RealmComponent target = rc.getTarget();
+			RealmComponent target2 = rc.get2ndTarget();
 			GameObject spell = rcCombat.getCastSpell();
 			
 			// If targeting any of the sheetOwners targets, put them on the sheet in the attacker boxes
-			boolean isInactiveSheetOwner = target==null && spell==null && sheetOwner.equals(rc);
+			boolean isInactiveSheetOwner = target==null && target2==null && spell==null && sheetOwner.equals(rc);
 			boolean castingASpell = spell!=null;
-			boolean targetingSomeoneOnThisSheet = target!=null && (sheetParticipants.contains(target) || sheetOwner.equals(target));
+			boolean targetingSomeoneOnThisSheet = (target!=null && (sheetParticipants.contains(target) || sheetOwner.equals(target))) || (target2!=null && (sheetParticipants.contains(target2) || sheetOwner.equals(target2)));
 			if (!targetingSomeoneOnThisSheet && target!=null) {
 				RealmComponent targetsTarget = target.getTarget();
 				if (targetsTarget!=null && sheetParticipants.contains(targetsTarget)) {
@@ -648,19 +646,18 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 						}
 						else {
 							// Attack spells are placed here
-							ArrayList targetTest = new ArrayList();
+							ArrayList<RealmComponent> targetTest = new ArrayList<>();
 							targetTest.addAll(sheetParticipants);
 							targetTest.add(sheetOwner);
 							SpellWrapper sw = new SpellWrapper(spell);
 							if (sw.isAttackSpell() && sw.isAlive()) {
-								ArrayList targeted = sw.getTargetedRealmComponents(targetTest);
+								ArrayList<RealmComponent> targeted = sw.getTargetedRealmComponents(targetTest);
 								boolean showAttack = targeted.size()>0;
 								
 								// If the attacker is NOT the active participant and...
 								if (!rc.equals(combatFrame.getActiveParticipant())) {
 									// ... any of the targeted are owned by the activeParticipant, then don't show attack (maintains secrecy)
-									for (Iterator n=targeted.iterator();n.hasNext();) {
-										RealmComponent test = (RealmComponent)n.next();
+									for (RealmComponent test : targeted) {
 										if (test.getOwnerId()!=null && test.getOwner().equals(combatFrame.getActiveParticipant())) {
 											showAttack = false;
 											break;
@@ -786,8 +783,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 	 * @return		true if attacked by another character (hirelings are ignored for this check, however)
 	 */
 	protected boolean isAttackedByCharacter() {
-		for (Iterator i=model.getAttackersFor(sheetOwner).iterator();i.hasNext();) {
-			RealmComponent attacker = (RealmComponent)i.next();
+		for (RealmComponent attacker : model.getAttackersFor(sheetOwner)) {
 			if (attacker.isCharacter()) {
 				return true;
 			}
@@ -809,10 +805,9 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		public DieRoller changeTacticsRoller3;
 	}
 	
-	public boolean containsHorse(ArrayList list) {
+	public boolean containsHorse(ArrayList<RealmComponent> list) {
 		if (list!=null) {
-			for (Iterator i=list.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : list) {
 				if (rc.hasHorse()) {
 					return true;
 				}
@@ -821,10 +816,9 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		return false;
 	}
 	
-	public boolean containsEnemy(RealmComponent attacker,ArrayList list) {
+	public boolean containsEnemy(RealmComponent attacker,ArrayList<RealmComponent> list) {
 		if (list!=null) {
-			for (Iterator i=list.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : list) {
 				if (combatFrame.allowsTreachery() || !attacker.equals(rc.getOwner())) {
 					return true;
 				}
@@ -832,10 +826,9 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		}
 		return false;
 	}
-	public boolean containsFriend(RealmComponent attacker,ArrayList list) {
+	public boolean containsFriend(RealmComponent attacker,ArrayList<RealmComponent> list) {
 		if (list!=null) {
-			for (Iterator i=list.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : list) {
 				if (attacker.equals(rc.getOwner())) {
 					return true;
 				}
