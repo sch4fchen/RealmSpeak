@@ -2516,18 +2516,19 @@ public class CharacterWrapper extends GameObjectWrapper {
 		Integer num = getLowestIntegerForActiveInventoryKey(Constants.REPLACE_FIGHT);
 		return num==null?0:num.intValue();
 	}
-	public boolean canReplaceFight(BattleChit target) {
-		ArrayList<BattleChit> list = new ArrayList<>();
+	public boolean canReplaceFight(RealmComponent target) {
+		ArrayList<RealmComponent> list = new ArrayList<>();
 		list.add(target);
 		return canReplaceFight(list);
 	}
-	public boolean canReplaceFight(Collection<BattleChit> targetComponents) {
+	public boolean canReplaceFight(Collection<RealmComponent> targetComponents) {
 		int replaceFight = getReplaceFight();
 		Speed speedToBeatFight = null;
 		if (replaceFight>0) {
 			// if the targets move beats or equals, then no replace fight happens
 			speedToBeatFight = new Speed(replaceFight);
-			for (BattleChit chit : targetComponents) {
+			for (RealmComponent chitRc : targetComponents) {
+				BattleChit chit = (BattleChit) chitRc;
 				if (chit.getMoveSpeed().fasterThanOrEqual(speedToBeatFight)) {
 					speedToBeatFight = null;
 					break;
@@ -2540,18 +2541,19 @@ public class CharacterWrapper extends GameObjectWrapper {
 		Integer num = getLowestIntegerForActiveInventoryKey(Constants.REPLACE_MOVE);
 		return num==null?0:num.intValue();
 	}
-	public boolean canReplaceMove(BattleChit attacker) {
-		ArrayList<BattleChit> list = new ArrayList<>();
+	public boolean canReplaceMove(RealmComponent attacker) {
+		ArrayList<RealmComponent> list = new ArrayList<>();
 		list.add(attacker);
 		return canReplaceFight(list);
 	}
-	public boolean canReplaceMove(Collection<BattleChit> attackerComponents) {
+	public boolean canReplaceMove(Collection<RealmComponent> attackerComponents) {
 		int replaceMove = getReplaceMove();
 		Speed speedToBeatMove = null;
 		if (replaceMove>0) {
 			// if the targets move beats or equals, then no replace move happens
 			speedToBeatMove = new Speed(replaceMove);
-			for (BattleChit chit : attackerComponents) {
+			for (RealmComponent chitRc : attackerComponents) {
+				BattleChit chit = (BattleChit) chitRc;
 				if (chit.getAttackSpeed().fasterThanOrEqual(speedToBeatMove)) {
 					speedToBeatMove = null;
 					break;
