@@ -344,8 +344,8 @@ public class CombatFrame extends JFrame {
 	public void refreshParticipants() {
 		allParticipants.clear();
 		// Build BattleParticipant list by examining flag for sheetOwner
-		ArrayList<RealmComponent> chars = new ArrayList<RealmComponent>();
-		ArrayList<RealmComponent> everyoneElse = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> chars = new ArrayList<>();
+		ArrayList<RealmComponent> everyoneElse = new ArrayList<>();
 		for (Iterator i=currentBattleModel.getAllBattleParticipants(true).iterator();i.hasNext();) {
 			RealmComponent rc = (RealmComponent)i.next();
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
@@ -851,7 +851,10 @@ public class CombatFrame extends JFrame {
 							RealmComponent target = activeParticipant.getTarget();
 							CombatWrapper combat = new CombatWrapper(target.getGameObject());
 							combat.removeAttacker(activeParticipant.getGameObject());
-							activeParticipant.clearTarget();
+							RealmComponent target2 = activeParticipant.get2ndTarget();
+							CombatWrapper combat2 = new CombatWrapper(target2.getGameObject());
+							combat2.removeAttacker(activeParticipant.getGameObject());
+							activeParticipant.clearTargets();
 							updateSelection();
 						}
 					}
@@ -1275,9 +1278,8 @@ public class CombatFrame extends JFrame {
 			lockNextButton.setVisible(false);
 			if (row>=0) {
 				if (row==0) {
-					ArrayList characters = new ArrayList();
-					for (Iterator i=currentBattleModel.getAllParticipatingCharacters().iterator();i.hasNext();) {
-						RealmComponent rc = (RealmComponent)i.next();
+					ArrayList<CharacterWrapper> characters = new ArrayList<>();
+					for (RealmComponent rc : currentBattleModel.getAllParticipatingCharacters()) {
 						characters.add(new CharacterWrapper(rc.getGameObject()));
 					}
 					combatSheetPanel.add(new JScrollPane(new CombatSummarySheet(characters)));
@@ -1298,10 +1300,9 @@ public class CombatFrame extends JFrame {
 							
 							// Before making the button visible, make sure that this isn't the LAST playing character
 							int count = 1;
-							Collection current = currentBattleModel.getAllParticipatingCharacters();
+							Collection<CharacterChitComponent> current = currentBattleModel.getAllParticipatingCharacters();
 							current.remove(rc);
-							for (Iterator i=current.iterator();i.hasNext();) {
-								RealmComponent cc = (RealmComponent)i.next();
+							for (RealmComponent cc : current) {
 								CombatWrapper cw = new CombatWrapper(cc.getGameObject());
 								if (!cw.isLockNext()) {
 									count++;
@@ -1656,8 +1657,7 @@ public class CombatFrame extends JFrame {
 			Strength weaponWeight = activeCharacter.getActiveWeaponWeight();
 			
 			// Find all active chits that have less than (effortLimit-totalEffort) asterisks
-			for (Iterator i=activeCharacter.getActiveFightChits().iterator();i.hasNext();) {
-				CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+			for (CharacterActionChitComponent chit :  activeCharacter.getActiveFightChits()) {
 				if (chit.getEffortAsterisks()<=effortLeft && chit.getStrength().strongerOrEqualTo(weaponWeight)) {
 					// Check the box_constraint (for fight_lock type options - custom characters only)
 					int constraint = chit.getGameObject().getThisInt("box_constraint");
@@ -1673,8 +1673,7 @@ public class CombatFrame extends JFrame {
 			}
 			
 			// Add any gloves cards
-			for (Iterator i=activeCharacter.getActiveInventory().iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
+			for (GameObject go: activeCharacter.getActiveInventory()) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
 				if (go.hasThisAttribute("gloves")) {
 					Strength gloveStrength = new Strength(go.getThisAttribute("strength"));
@@ -2040,7 +2039,7 @@ public class CombatFrame extends JFrame {
 	}
 	protected RealmComponent assignTarget(RealmComponent attacker,Collection list) {
 		if (list!=null && list.size()>0) {
-			ArrayList visibleList = findCanBeSeen(list,false);
+			ArrayList<RealmComponent> visibleList = findCanBeSeen(list,false);
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select a Target:",true);
 			chooser.addRealmComponents(visibleList,true);
 			chooser.setVisible(true);
@@ -2050,40 +2049,19 @@ public class CombatFrame extends JFrame {
 				if (theTarget.getGameObject().hasThisAttribute(Constants.NUMBER)) {
 					append = " "+theTarget.getGameObject().getThisAttribute(Constants.NUMBER);
 				}
-				if (hostPrefs.hasPref(Constants.OPT_RIDING_HORSES)) {
-					if (theTarget.isHorse() || theTarget.isNativeHorse()) {
-						// Change target to native
-						theTarget = RealmComponent.getRealmComponent(theTarget.getGameObject().getHeldBy());
-						append = " (aiming for horse)";
-					}
-					else if (theTarget.getHorse()!=null) {
-						CombatWrapper combat = new CombatWrapper(theTarget.getGameObject());
-						combat.setTargetingRider(attacker.getGameObject());
-						append = " (aiming for rider)";
-					}
-				}
+				aimingForHorseOrRider(attacker, theTarget, append);
 				attacker.setTarget(theTarget);
 				broadcastMessage(attacker.getGameObject().getName(),"Attacks the "+theTarget.getGameObject().getName()+append);
 				makeTarget(this,hostPrefs,attacker,theTarget,theGame);
-				if (theTarget.isNative() && theTarget.getOwnerId()==null) {
-					// non-battling unhired natives will begin battling the character immediately if attacked
-					if (!activeCharacter.isBattling(theTarget.getGameObject())) {
-						activeCharacter.addBattlingNative(theTarget.getGameObject());
-					}
-					makeWatchfulNatives(theTarget,true);
-				}
-				if (theTarget.isPacifiedBy(activeCharacter)) {
-					// Luring a pacified monster or native will break the spell
-					SpellWrapper spell = theTarget.getPacificationSpell(activeCharacter);
-					if (spell!=null) { // Might be null if Giants are pacified by the Pretty Rock
-						spell.expireSpell();
-						broadcastMessage(spell.getName()+" was broken!");
-						JOptionPane.showMessageDialog(this,spell.getName()+" was broken!");
+				handleNativeReaction(theTarget);
+				
+				if (attacker.isCharacter()) {
+					CharacterChitComponent character = (CharacterChitComponent) attacker;
+					if(character.getActiveWeaponsObjects().size() > 1) {
+						assign2ndTarget(character, list, visibleList);
 					}
 				}
-				if (theTarget.ownedBy(activeParticipant)) {
-					BattleUtility.processTreachery(activeCharacter,theTarget);
-				}
+				
 				changes = true;
 				updateControls();
 				repaintAll();
@@ -2091,6 +2069,59 @@ public class CombatFrame extends JFrame {
 			}
 		}
 		return null;
+	}
+	private void assign2ndTarget(RealmComponent attacker, Collection list, ArrayList<RealmComponent> visibleList) {
+		if (list==null || list.size()==0) return;
+		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select secondary Target:",true);
+		chooser.addRealmComponents(visibleList,true);
+		chooser.setVisible(true);
+		if (chooser.getSelectedText()!=null) {
+			RealmComponent theTarget = chooser.getFirstSelectedComponent();
+			String append = "";
+			if (theTarget.getGameObject().hasThisAttribute(Constants.NUMBER)) {
+				append = " "+theTarget.getGameObject().getThisAttribute(Constants.NUMBER);
+			}
+			aimingForHorseOrRider(attacker, theTarget, append);
+			attacker.set2ndTarget(theTarget);
+			broadcastMessage(attacker.getGameObject().getName(),"Attacks the "+theTarget.getGameObject().getName()+append);
+			makeTarget(this,hostPrefs,attacker,theTarget,theGame);
+			handleNativeReaction(theTarget);
+		}
+	}
+	private void aimingForHorseOrRider(RealmComponent attacker, RealmComponent theTarget, String message) {
+		if (hostPrefs.hasPref(Constants.OPT_RIDING_HORSES)) {
+			if (theTarget.isHorse() || theTarget.isNativeHorse()) {
+				// Change target to native
+				theTarget = RealmComponent.getRealmComponent(theTarget.getGameObject().getHeldBy());
+				message = " (aiming for horse)";
+			}
+			else if (theTarget.getHorse()!=null) {
+				CombatWrapper combat = new CombatWrapper(theTarget.getGameObject());
+				combat.setTargetingRider(attacker.getGameObject());
+				message = " (aiming for rider)";
+			}
+		}
+	}
+	private void handleNativeReaction(RealmComponent theTarget) {
+		if (theTarget.isNative() && theTarget.getOwnerId()==null) {
+			// non-battling unhired natives will begin battling the character immediately if attacked
+			if (!activeCharacter.isBattling(theTarget.getGameObject())) {
+				activeCharacter.addBattlingNative(theTarget.getGameObject());
+			}
+			makeWatchfulNatives(theTarget,true);
+		}
+		if (theTarget.isPacifiedBy(activeCharacter)) {
+			// Luring a pacified monster or native will break the spell
+			SpellWrapper spell = theTarget.getPacificationSpell(activeCharacter);
+			if (spell!=null) { // Might be null if Giants are pacified by the Pretty Rock
+				spell.expireSpell();
+			broadcastMessage(spell.getName()+" was broken!");
+				JOptionPane.showMessageDialog(this,spell.getName()+" was broken!");
+			}
+		}
+		if (theTarget.ownedBy(activeParticipant)) {
+			BattleUtility.processTreachery(activeCharacter,theTarget);
+		}
 	}
 	public void makeWatchfulNatives(RealmComponent theTarget,boolean makeTargetWatchful) {
 		// Check for watchful natives
@@ -2336,8 +2367,7 @@ public class CombatFrame extends JFrame {
 		return null;
 	}
 	public void replaceAttack(int box) {
-		RealmComponent weapon = activeCharacter.getActiveWeapon();
-		
+		WeaponChitComponent weapon = activeCharacter.getActivePrimaryWeapon();
 		Collection fightOptions = getAvailableFightOptions(box,false);
 		
 		// Find out which piece is placed, and change the box
@@ -2388,93 +2418,108 @@ public class CombatFrame extends JFrame {
 			return;
 		}
 		
-		// First, clear out any chits already in play for attack
-		for (Iterator i=activeCharacter.getActiveFightChits().iterator();i.hasNext();) {
-			CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
-			CombatWrapper combat = new CombatWrapper(chit.getGameObject());
-			if (combat.getPlacedAsFight()) {
-				CombatWrapper.clearRoundCombatInfo(chit.getGameObject());
-			}
-		}
-		
 		Collection fightOptions = getAvailableFightOptions(box);
+		RealmComponent weaponCard = null;
+		ArrayList<WeaponChitComponent> weapons = activeCharacter.getActiveWeapons();
 		
-		// Clear out any piece already in play for attack
-		for (Iterator i=fightOptions.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
-			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-			if (!rc.isActionChit() || combat.getPlacedAsFight()) {
-				CombatWrapper.clearRoundCombatInfo(rc.getGameObject());
+		// Check for Treasure Weapons (Alchemists Mixture)
+		for (GameObject item : activeCharacter.getActiveInventory()) {
+			if (item.hasThisAttribute("attack")) { // ONLY the Alchemists Mixture has this, for now! - Now the Holy Hand Grenade
+				weaponCard = RealmComponent.getRealmComponent(item);
 			}
 		}
-		RealmComponent weaponCard = null;
-		RealmComponent weapon = activeCharacter.getActiveWeapon();
-		if (weapon!=null) {
-			// Clear out weapon, if any played
-			CombatWrapper.clearRoundCombatInfo(weapon.getGameObject());
-		}
-		else {
-			// Check for Treasure Weapons (Alchemists Mixture)
-			for (Iterator n=activeCharacter.getActiveInventory().iterator();n.hasNext();) {
-				GameObject item = (GameObject)n.next();
-				if (item.hasThisAttribute("attack")) { // ONLY the Alchemists Mixture has this, for now! - Now the Holy Hand Grenade
-					weaponCard = RealmComponent.getRealmComponent(item);
+		
+		if (!charCombat.getPlayedAttack()) {
+			// First, clear out any chits already in play for attack
+			for (CharacterActionChitComponent chit : activeCharacter.getActiveFightChits()) {
+				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
+				if (combat.getPlacedAsFight()) {
+					CombatWrapper.clearRoundCombatInfo(chit.getGameObject());
 				}
 			}
+			// Clear out weapon, if any played
+			for (WeaponChitComponent weapon : weapons) {
+				weapon.getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
+			}
+			if (weaponCard != null) {
+				weaponCard.getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
+			}
 		}
 		
-		if (fightOptions.size()>0) {
-			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select Attack:",true);
-			int keyN = 0;
-			for (Iterator i=fightOptions.iterator();i.hasNext();) {
-				RealmComponent chit = (RealmComponent)i.next();
-				
-				// Normal Weapon
-				String key = "N"+(keyN++);
-				chooser.addOption(key,"");
-				chooser.addRealmComponentToOption(key,chit);
-				if (weapon!=null) {
+		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select Attack:",true);
+		int keyN = 0;
+		for (Iterator i=fightOptions.iterator();i.hasNext();) {
+			RealmComponent chit = (RealmComponent)i.next();
+			
+			String key = "N"+(keyN);
+			// Normal Weapon
+			if (weapons!=null) {
+				for (WeaponChitComponent weapon : weapons) {
+					if (CombatWrapper.hasCombatInfo(weapon.getGameObject())) continue;
+					
+					key = "N"+(keyN++);
+					chooser.addOption(key,"");
+					chooser.addRealmComponentToOption(key,chit);
 					chooser.addRealmComponentToOption(key,weapon);
 				}
-				else if (weaponCard!=null) {
-					chooser.addRealmComponentToOption(key,weaponCard);
-				}
-				
 			}
-			chooser.setVisible(true);
-			if (chooser.getSelectedText()!=null) {
-				charCombat.setPlayedAttack(true);
-				RealmComponent chit = chooser.getFirstSelectedComponent();
+			if (weaponCard!=null) {
+				if (CombatWrapper.hasCombatInfo(weaponCard.getGameObject())) continue;
+				
+				key = "N"+(keyN++);
+				chooser.addOption(key,"");
+				chooser.addRealmComponentToOption(key,chit);
+				chooser.addRealmComponentToOption(key,weaponCard);
+			}
+			
+		}
+		
+		chooser.addOption("Reset", "Reset");
+		chooser.setVisible(true);
+		if (chooser.getSelectedText() == "Reset") {
+			// First, clear out any chits already in play for attack
+			for (CharacterActionChitComponent chit : activeCharacter.getActiveFightChits()) {
 				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
-				combat.setCombatBox(box);
-				combat.setPlacedAsFight(true);
-				
-				if (chit instanceof MonsterFightChitComponent) {
-					// Might need to place a monster part too!
-					MonsterChitComponent monster = (MonsterChitComponent)RealmComponent.getRealmComponent(chit.getGameObject());
-					MonsterPartChitComponent monsterWeapon = monster.getWeapon();
-					if (monsterWeapon!=null) {
-						if (monsterWeapon.isLightSideUp()) {
-							monsterWeapon.flip();
-						}
-						positionExtra(monster,0,false,false);
+				if (combat.getPlacedAsFight()) {
+					CombatWrapper.clearRoundCombatInfo(chit.getGameObject());
+				}
+			}
+			// Clear out weapon, if any played
+			for (WeaponChitComponent weapon : weapons) {
+				weapon.getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
+			}
+			if (weaponCard != null) {
+				weaponCard.getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
+			}
+			
+			charCombat.setPlayedAttack(false);
+		}
+		else if (chooser.getSelectedText()!=null) {
+			charCombat.setPlayedAttack(true);
+			RealmComponent chit = chooser.getFirstSelectedComponent();
+			CombatWrapper combat = new CombatWrapper(chit.getGameObject());
+			combat.setCombatBox(box);
+			combat.setPlacedAsFight(true);
+			
+			if (chit instanceof MonsterFightChitComponent) {
+				// Might need to place a monster part too!
+				MonsterChitComponent monster = (MonsterChitComponent)RealmComponent.getRealmComponent(chit.getGameObject());
+				MonsterPartChitComponent monsterWeapon = monster.getWeapon();
+				if (monsterWeapon!=null) {
+					if (monsterWeapon.isLightSideUp()) {
+						monsterWeapon.flip();
 					}
-				}
-				
-				RealmComponent other = chooser.getLastSelectedComponent();
-				if (other!=null) {
-					combat = new CombatWrapper(other.getGameObject());
-					combat.setCombatBox(box);
+					positionExtra(monster,0,false,false);
 				}
 			}
-			else {
-				charCombat.setPlayedAttack(false);
+			
+			RealmComponent other = chooser.getLastSelectedComponent();
+			if (other!=null) {
+				combat = new CombatWrapper(other.getGameObject());
+				combat.setCombatBox(box);
 			}
-			updateSelection();
 		}
-		else {
-			JOptionPane.showMessageDialog(this,"There are no fight options available to you.","Cannot Attack",JOptionPane.ERROR_MESSAGE);
-		}
+		updateSelection();
 	}
 	public static final String[] BOX_NAME = {"Thrust/Charge","Swing/Dodge","Smash/Duck"};
 	public void positionTarget(int box,ArrayList targets,boolean includeFlipside,boolean horseSameBox) {
@@ -2942,7 +2987,7 @@ public class CombatFrame extends JFrame {
 			RealmComponent attacker = (RealmComponent)i.next();
 			CombatWrapper combat = new CombatWrapper(attacker.getGameObject());
 			combat.setWatchful(false); // just in case they were watchful - shouldn't be anymore.
-			attacker.clearTarget();
+			attacker.clearTargets();
 		}
 		
 		// Be sure to abandon heavy stuff
@@ -2987,16 +3032,19 @@ public class CombatFrame extends JFrame {
 		CombatWrapper.clearAllCombatInfo(activeCharacter.getGameObject());
 		
 		// Need to disengage any participants who are targeting the runner!
-		for (Iterator i=currentBattleModel.getAllBattleParticipants(true).iterator();i.hasNext();) {
-			RealmComponent bp = (RealmComponent)i.next();
+		for (RealmComponent bp : currentBattleModel.getAllBattleParticipants(true)) {
 			RealmComponent bpTarget = bp.getTarget();
 			if (bpTarget!=null && bpTarget.equals(activeParticipant)) {
 				bp.clearTarget();
 			}
+			RealmComponent bpTarget2 = bp.get2ndTarget();
+			if (bpTarget2!=null && bpTarget2.equals(activeParticipant)) {
+				bp.clear2ndTarget();
+			}
 		}
 		
 		// Also, disengage the runner
-		activeParticipant.clearTarget();
+		activeParticipant.clearTargets();
 //		activeCharacter.clearCombat(); // can't clear out combat status: messes up hirelings left behind
 		
 		// Need to check battle model - if nobody is left in the clearing to fight, things should get reset
@@ -3011,7 +3059,7 @@ public class CombatFrame extends JFrame {
 	}
 	public void alert() {
 		// Verify that the character has an active weapon or berserk chit to alert
-		WeaponChitComponent weapon = activeCharacter.getActiveWeapon();
+		WeaponChitComponent weapon = activeCharacter.getActivePrimaryWeapon();
 		
 		// Find fastest attacker move speed on your sheet
 		MoveActivator activator = new MoveActivator(this);
@@ -3804,9 +3852,8 @@ public class CombatFrame extends JFrame {
 	}
 	public void handleMissingMonsters() {
 		// What about doing a total cleanup of targets that have been teleported...
-		ArrayList all = currentBattleModel.getAllBattleParticipants(true);
-		for (Iterator i=all.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		ArrayList<RealmComponent> all = currentBattleModel.getAllBattleParticipants(true);
+		for (RealmComponent rc : all) {
 			RealmComponent target = rc.getTarget();
 			if (target!=null) {
 				if (!currentBattleModel.getBattleLocation().equals(target.getCurrentLocation())) {
@@ -3816,6 +3863,17 @@ public class CombatFrame extends JFrame {
 						combat.setCombatBox(1);
 					}
 					rc.clearTarget();
+				}
+			}
+			RealmComponent target2 = rc.get2ndTarget();
+			if (target2!=null) {
+				if (!currentBattleModel.getBattleLocation().equals(target2.getCurrentLocation())) {
+					CombatWrapper combat = new CombatWrapper(rc.getGameObject());
+					if (!combat.isSheetOwner()) {
+						combat.setSheetOwner(true);
+						combat.setCombatBox(1);
+					}
+					rc.clear2ndTarget();
 				}
 			}
 		}
