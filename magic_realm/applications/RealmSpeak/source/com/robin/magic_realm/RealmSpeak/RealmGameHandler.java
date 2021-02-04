@@ -624,13 +624,13 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		// Place the 6 gold specials randomly
 		GameData data = client.getGameData();
 		RealmObjectMaster rom = RealmObjectMaster.getRealmObjectMaster(data);
-		ArrayList<String> query = new ArrayList<String>();
+		ArrayList<String> query = new ArrayList<>();
 		query.add("!" + Constants.GOLD_SPECIAL_PLACED);
 		if (hostPrefs.hasPref(Constants.HOUSE2_IGNORE_CAMPAIGNS)) {
 			query.add("!campaign");
 		}
-		ArrayList<GameObject> gs = new ArrayList<GameObject>(rom.findObjects("gold_special", query, false));
-		ArrayList<GameObject> gt = new ArrayList<GameObject>(rom.findObjects("gold_special_target", query, false));
+		ArrayList<GameObject> gs = new ArrayList<>(rom.findObjects("gold_special", query, false));
+		ArrayList<GameObject> gt = new ArrayList<>(rom.findObjects("gold_special_target", query, false));
 		GameObject[] chit = new GameObject[2];
 		while (SetupCardUtility.stillChitsToPlace(hostPrefs)) {
 			int r = RandomNumber.getRandom(gs.size());

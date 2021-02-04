@@ -101,8 +101,8 @@ public class GoldSpecialPlacementDialog extends AggressiveDialog {
 		if (hostPrefs.hasPref(Constants.HOUSE2_IGNORE_CAMPAIGNS)) {
 			query.add("!campaign");
 		}
-		ArrayList<GameObject> gs = new ArrayList<GameObject>(rom.findObjects("gold_special",query, false));
-		destinations = new ArrayList<GameObject>(rom.findObjects("gold_special_target", false));
+		ArrayList<GameObject> gs = new ArrayList<>(rom.findObjects("gold_special",query, false));
+		destinations = new ArrayList<>(rom.findObjects("gold_special_target", false));
 		chits = new ArrayList<GameObject[]>();
 		while (!gs.isEmpty()) {
 			GameObject[] chit = new GameObject[2];

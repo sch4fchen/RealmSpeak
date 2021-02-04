@@ -35,7 +35,7 @@ import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
  */
 public class RealmObjectMaster {
 	
-	private static HashMap map = null;
+	private static HashMap<Long, RealmObjectMaster> map = null;
 	
 	private GameData data = null;
 	private HostPrefWrapper hostPrefs = null;
@@ -60,7 +60,7 @@ public class RealmObjectMaster {
 		}
 	}
 	
-	public ArrayList<GameObject> findObjects(String baseQuery,ArrayList keyVals,boolean asComponents) {
+	public ArrayList<GameObject> findObjects(String baseQuery,ArrayList<String> keyVals,boolean asComponents) {
 		String query = StringUtilities.collectionToString(keyVals,",");
 		if (baseQuery!=null && baseQuery.length()>0) {
 			if (query.length()>0) {
@@ -97,7 +97,7 @@ public class RealmObjectMaster {
 			playerCharacterObjects = null;
 		}
 		if (playerCharacterObjects==null) {
-			playerCharacterObjects = new ArrayList<GameObject>();
+			playerCharacterObjects = new ArrayList<>();
 			playerCharacterObjects.addAll(findObjects("character",false));
 			playerCharacterObjects.addAll(findObjects("native,rank",false)); // not just leaders anymore, due to Hypnotize spell!
 			playerCharacterObjects.addAll(findObjects("monster,!part",false));
@@ -111,7 +111,7 @@ public class RealmObjectMaster {
 	 */
 	public ArrayList<GameObject> getDenizenObjects() {
 		if (denizenObjects==null) {
-			denizenObjects = new ArrayList<GameObject>();
+			denizenObjects = new ArrayList<>();
 			denizenObjects.addAll(findObjects("native,rank",false));
 			denizenObjects.addAll(findObjects("monster,!part",false));
 		}
@@ -123,7 +123,7 @@ public class RealmObjectMaster {
 	 */
 	public ArrayList<GameObject> getTileObjects() {
 		if (tileObjects==null) {
-			tileObjects = new ArrayList<GameObject>();
+			tileObjects = new ArrayList<>();
 			tileObjects.addAll(findObjects("tile",false));
 		}
 		return tileObjects;
@@ -149,10 +149,10 @@ public class RealmObjectMaster {
 	 */
 	public static RealmObjectMaster getRealmObjectMaster(GameData data) {
 		if (map==null) {
-			map = new HashMap();
+			map = new HashMap<Long, RealmObjectMaster>();
 		}
 		Long id = new Long(data.getDataId());
-		RealmObjectMaster rom = (RealmObjectMaster)map.get(id);
+		RealmObjectMaster rom = map.get(id);
 		if (rom==null) {
 			rom = new RealmObjectMaster(data);
 			map.put(id,rom);

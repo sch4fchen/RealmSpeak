@@ -55,9 +55,8 @@ public abstract class SpellTargetingSingle extends SpellTargeting {
 			else {
 				// Rather than just dump them in, there should be a small icon indicating which sheet they are on
 				Hashtable<RealmComponent, RealmComponent> hash = new Hashtable<>();
-				ArrayList combatSheets = combatFrame.getAllCombatSheets();
-				for (Iterator i=combatSheets.iterator();i.hasNext();) {
-					CombatSheet sheet = (CombatSheet)i.next();
+				ArrayList<CombatSheet> combatSheets = combatFrame.getAllCombatSheets();
+				for (CombatSheet sheet : combatSheets) {
 					RealmComponent aSheetOwner = sheet.getSheetOwner();
 					Collection c = sheet.getAllParticipantsOnSheet();
 					for (Iterator n=c.iterator();n.hasNext();) {
