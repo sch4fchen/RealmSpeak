@@ -11,9 +11,10 @@ CharacterChitComponent:
 	hitsOnTie
 RULES: Check which weapon can hit which target, check speed and harm
 
+Dual Wielding: Option alert both weapons
 Expansion 1: More Ambushes/Throwing Weapons + Ability: Spear, Axe, Dagger?
-0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): no missile attacks?, Sharpness stars are ignored when comparing harm between attacks and parries? Alert?!
-Expansion 1: Parry + Ability: "ParryLikeShield":  no missile attacks?
+0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): Option: no missile attacks, ?:Sharpness stars are ignored when comparing harm between attacks and parries? Alert?!
+Expansion 1: Parry + Ability: "ParryLikeShield":  Option: no missile attacks
 SuperRealm: Steel Against Magic
 
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
