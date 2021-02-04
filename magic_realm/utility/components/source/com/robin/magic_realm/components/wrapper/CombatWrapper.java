@@ -171,23 +171,23 @@ public class CombatWrapper extends GameObjectWrapper {
 	public void addPeaceClearing(int clearing) {
 		addListItem(PEACE_CLEARING,String.valueOf(clearing));
 	}
-	public ArrayList getPeaceClearings() {
+	public ArrayList<String> getPeaceClearings() {
 		return getList(PEACE_CLEARING);
 	}
 	public boolean isPeaceClearing(int clearing) {
 		if (isPeaceful()) {
-			ArrayList list = getPeaceClearings();
+			ArrayList<String> list = getPeaceClearings();
 			return (list!=null && list.contains(String.valueOf(clearing)));
 		}
 		return false;
 	}
 	private void addRandomizePrefix(String prefix) {
-		ArrayList list = getRandomPrefices();
+		ArrayList<String> list = getRandomPrefices();
 		if (list==null || !list.contains(prefix)) {
 			addListItem(RANDOMIZE_PREFICES,prefix);
 		}
 	}
-	private ArrayList getRandomPrefices() {
+	private ArrayList<String> getRandomPrefices() {
 		return getList(RANDOMIZE_PREFICES);
 	}
 	public void setRepositionResult(String prefix,int val) {
@@ -220,43 +220,43 @@ public class CombatWrapper extends GameObjectWrapper {
 	public void addSeriousWoundRoll(String val) {
 		addListItem(SERIOUS_WOUND_ROLLS,val);
 	}
-	public ArrayList getSeriousWoundRolls() {
+	public ArrayList<String> getSeriousWoundRolls() {
 		return getList(SERIOUS_WOUND_ROLLS);
 	}
 	public void addMissileRoll(String val) {
 		addListItem(MISSILE_ROLLS,val);
 	}
-	public ArrayList getMissileRolls() {
+	public ArrayList<String> getMissileRolls() {
 		return getList(MISSILE_ROLLS);
 	}
 	public void addMissileRollSubtitle(String val) {
 		addListItem(MISSILE_ROLL_SUBTITLES,val);
 	}
-	public ArrayList getMissileRollSubtitles() {
+	public ArrayList<String> getMissileRollSubtitles() {
 		return getList(MISSILE_ROLL_SUBTITLES);
 	}
 	public void addMissileRollTargetId(String val) {
 		addListItem(MISSILE_ROLL_TARGETIDS,val);
 	}
-	public ArrayList getMissileRollTargetIds() {
+	public ArrayList<String> getMissileRollTargetIds() {
 		return getList(MISSILE_ROLL_TARGETIDS);
 	}
 	public void addFumbleRoll(String val) {
 		addListItem(FUMBLE_ROLLS,val);
 	}
-	public ArrayList getFumbleRolls() {
+	public ArrayList<String> getFumbleRolls() {
 		return getList(FUMBLE_ROLLS);
 	}
 	public void addFumbleRollSubtitle(String val) {
 		addListItem(FUMBLE_ROLL_SUBTITLES,val);
 	}
-	public ArrayList getFumbleRollSubtitles() {
+	public ArrayList<String> getFumbleRollSubtitles() {
 		return getList(FUMBLE_ROLL_SUBTITLES);
 	}
 	public void addFumbleRollTargetId(String val) {
 		addListItem(FUMBLE_ROLL_TARGETIDS,val);
 	}
-	public ArrayList getFumbleRollTargetIds() {
+	public ArrayList<String> getFumbleRollTargetIds() {
 		return getList(FUMBLE_ROLL_TARGETIDS);
 	}
 	public void addHitType(int hitType,GameObject target) {
@@ -264,15 +264,15 @@ public class CombatWrapper extends GameObjectWrapper {
 		addListItem(HIT_TYPE_ID,target.getStringId());
 	}
 	public Integer getHitType(GameObject target) {
-		ArrayList types = getList(HIT_TYPE);
-		ArrayList targetids = getList(HIT_TYPE_ID);
+		ArrayList<String> types = getList(HIT_TYPE);
+		ArrayList<String> targetids = getList(HIT_TYPE_ID);
 		if (types!=null) {
 			String id = target.getStringId();
-			Iterator h = types.iterator();
-			Iterator hi = targetids.iterator();
+			Iterator<String> h = types.iterator();
+			Iterator<String> hi = targetids.iterator();
 			while(h.hasNext()) {
-				String type = (String)h.next();
-				String tid = (String)hi.next();
+				String type = h.next();
+				String tid = hi.next();
 				if (id.equals(tid)) {
 					return Integer.valueOf(type);
 				}
@@ -285,15 +285,15 @@ public class CombatWrapper extends GameObjectWrapper {
 		addListItem(HARM_APPLIED_ID,target.getStringId());
 	}
 	public String getHarmApplied(GameObject target) {
-		ArrayList harms = getList(HARM_APPLIED);
-		ArrayList harmids = getList(HARM_APPLIED_ID);
+		ArrayList<String> harms = getList(HARM_APPLIED);
+		ArrayList<String> harmids = getList(HARM_APPLIED_ID);
 		if (harms!=null) {
 			String id = target.getStringId();
-			Iterator h = harms.iterator();
-			Iterator hi = harmids.iterator();
+			Iterator<String> h = harms.iterator();
+			Iterator<String> hi = harmids.iterator();
 			while(h.hasNext()) {
-				String harm = (String)h.next();
-				String tid = (String)hi.next();
+				String harm = h.next();
+				String tid = hi.next();
 				if (id.equals(tid)) {
 					return harm;
 				}
@@ -337,11 +337,10 @@ public class CombatWrapper extends GameObjectWrapper {
 		addListItem(HIT_BY_IDS,String.valueOf(attacker.getId()));
 	}
 	public boolean wasHitBy(GameObject attacker) {
-		ArrayList list = getList(HIT_BY_IDS);
+		ArrayList<String> list = getList(HIT_BY_IDS);
 		if (list!=null && !list.isEmpty()) {
 			String aid = attacker.getStringId();
-			for (Iterator i=list.iterator();i.hasNext();) {
-				String id = (String)i.next();
+			for (String id : list) {
 				if (aid.equals(id)) {
 					return true;
 				}
@@ -349,13 +348,12 @@ public class CombatWrapper extends GameObjectWrapper {
 		}
 		return false;
 	}
-	public ArrayList getHitByList() {
-		ArrayList list = getList(HIT_BY_IDS);
+	public ArrayList<GameObject> getHitByList() {
+		ArrayList<String> list = getList(HIT_BY_IDS);
 		if (list!=null && !list.isEmpty()) {
 			GameData data = getGameObject().getGameData();
-			ArrayList ret = new ArrayList();
-			for (Iterator i=list.iterator();i.hasNext();) {
-				String id = (String)i.next();
+			ArrayList<GameObject> ret = new ArrayList<>();
+			for (String id : list) {
 				ret.add(data.getGameObject(Long.valueOf(id)));
 			}
 			return ret;
@@ -405,9 +403,9 @@ public class CombatWrapper extends GameObjectWrapper {
 	public ArrayList<Integer> getAllRounds() {
 		ArrayList<Integer> rounds = null;
 		if (getBoolean(COMBAT_ROUND_RESULT_LIST)) {
-			rounds = new ArrayList<Integer>();
-			for (Iterator i=getList(COMBAT_ROUND_RESULT_LIST).iterator();i.hasNext();) {
-				rounds.add(Integer.valueOf((String)i.next()));
+			rounds = new ArrayList<>();
+			for (String i : getList(COMBAT_ROUND_RESULT_LIST)) {
+				rounds.add(Integer.valueOf(i));
 			}
 		}
 		return rounds;
@@ -416,9 +414,9 @@ public class CombatWrapper extends GameObjectWrapper {
 		GameData gameData = getGameObject().getGameData();
 		ArrayList<GameObject> kills = null;
 		if (getBoolean(COMBAT_KILL_RESULT_LIST)) {
-			kills = new ArrayList<GameObject>();
-			for (Iterator i=getList(COMBAT_KILL_RESULT_LIST).iterator();i.hasNext();) {
-				kills.add(gameData.getGameObject(Long.valueOf((String)i.next())));
+			kills = new ArrayList<>();
+			for (String i : getList(COMBAT_KILL_RESULT_LIST)) {
+				kills.add(gameData.getGameObject(Long.valueOf(i)));
 			}
 		}
 		return kills;
@@ -426,9 +424,9 @@ public class CombatWrapper extends GameObjectWrapper {
 	public ArrayList<Spoils> getAllSpoils() {
 		ArrayList<Spoils> spoils = null;
 		if (getBoolean(COMBAT_SPOILS_RESULT_LIST)) {
-			spoils = new ArrayList<Spoils>();
-			for (Iterator i=getList(COMBAT_SPOILS_RESULT_LIST).iterator();i.hasNext();) {
-				spoils.add(new Spoils((String)i.next()));
+			spoils = new ArrayList<>();
+			for (String i : getList(COMBAT_SPOILS_RESULT_LIST)) {
+				spoils.add(new Spoils(i));
 			}
 		}
 		return spoils;
@@ -437,19 +435,19 @@ public class CombatWrapper extends GameObjectWrapper {
 		setBoolean(COMBAT_HIT_RESULT_LIST,false);
 	}
 	public int getHitResultCount() {
-		ArrayList results = getList(COMBAT_HIT_RESULT_LIST);
+		ArrayList<String> results = getList(COMBAT_HIT_RESULT_LIST);
 		if (results!=null) {
 			return results.size();
 		}
 		return 0;
 	}
 	public int getRoundsOfMissing() {
-		ArrayList list = getList(COMBAT_HIT_RESULT_LIST);
+		ArrayList<String> list = getList(COMBAT_HIT_RESULT_LIST);
 		if (list!=null) {
-			ArrayList results = new ArrayList(list);
+			ArrayList<String> results = new ArrayList<>(list);
 			int count = 0;
 			for (int i=results.size()-1;i>=0;i--) {
-				String result = (String)results.get(i);
+				String result = results.get(i);
 				if ("M".equals(result)) {
 					count++;
 				}
@@ -462,12 +460,12 @@ public class CombatWrapper extends GameObjectWrapper {
 		return 0;
 	}
 	public boolean lastTwoAreMisses() {
-		ArrayList list = getList(COMBAT_HIT_RESULT_LIST);
+		ArrayList<String> list = getList(COMBAT_HIT_RESULT_LIST);
 		if (list!=null) {
-			ArrayList results = new ArrayList(list);
+			ArrayList<String> results = new ArrayList<>(list);
 			if (results!=null && results.size()>=2) {
-				String val1 = (String)results.remove(results.size()-1);
-				String val2 = (String)results.remove(results.size()-1);
+				String val1 = results.remove(results.size()-1);
+				String val2 = results.remove(results.size()-1);
 				return ("M".equals(val1) && "M".equals(val2));
 			}
 		}
@@ -533,7 +531,7 @@ public class CombatWrapper extends GameObjectWrapper {
 		return list;
 	}
 	public int getUsedChitCount() {
-		ArrayList ids = getList(USED_IDS);
+		ArrayList<String> ids = getList(USED_IDS);
 		if (ids!=null) {
 			return ids.size();
 		}
@@ -548,7 +546,7 @@ public class CombatWrapper extends GameObjectWrapper {
 					getGameObject().getName(),
 					"No longer affected by PEACE, because of attack by "+attacker.getName());
 		}
-		ArrayList ids = getList(ATTACKER_IDS);
+		ArrayList<String> ids = getList(ATTACKER_IDS);
 		if (ids==null || !ids.contains(attacker.getStringId())) {
 			addListItem(ATTACKER_IDS,attacker.getStringId());
 		}
@@ -562,10 +560,9 @@ public class CombatWrapper extends GameObjectWrapper {
 	public ArrayList<GameObject> getAttackers() {
 		GameData data = getGameObject().getGameData();
 		ArrayList<GameObject> list = new ArrayList<GameObject>();
-		ArrayList ids = getList(ATTACKER_IDS);
+		ArrayList<String> ids = getList(ATTACKER_IDS);
 		if (ids!=null) {
-			for (Iterator i=ids.iterator();i.hasNext();) {
-				String id = (String)i.next();
+			for (String id : ids) {
 				GameObject go = data.getGameObject(Long.valueOf(id));
 				list.add(go);
 			}
@@ -573,14 +570,14 @@ public class CombatWrapper extends GameObjectWrapper {
 		return list;
 	}
 	public ArrayList<RealmComponent> getAttackersAsComponents() {
-		ArrayList<RealmComponent> ret = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> ret = new ArrayList<>();
 		for (GameObject go:getAttackers()) {
 			ret.add(RealmComponent.getRealmComponent(go));
 		}
 		return ret;
 	}
 	public int getAttackerCount() {
-		ArrayList ids = getList(ATTACKER_IDS);
+		ArrayList<String> ids = getList(ATTACKER_IDS);
 		if (ids!=null) {
 			return ids.size();
 		}
@@ -623,10 +620,9 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,HIT_TYPE);
 			go.removeAttribute(COMBAT_BLOCK,HIT_TYPE_ID);
 			
-			ArrayList list = go.getAttributeList(COMBAT_BLOCK,RANDOMIZE_PREFICES);
+			ArrayList<String> list = go.getAttributeList(COMBAT_BLOCK,RANDOMIZE_PREFICES);
 			if (list!=null) {
-				for (Iterator i=list.iterator();i.hasNext();) {
-					String prefix = (String)i.next();
+				for (String prefix : list) {
 					go.removeAttribute(COMBAT_BLOCK,prefix+REPOSITION_RESULT);
 					for (int n=1;n<=3;n++) {
 						go.removeAttribute(COMBAT_BLOCK,prefix+CHANGE_TACTICS_RESULT+n);

@@ -122,7 +122,7 @@ public class HashLists<K,T> implements Map {
 	        }
 	    }
 	}
-	public Collection values() {
+	public Collection<ArrayList<T>> values() {
 	    return hash.values();
 	}
 }

@@ -48,13 +48,13 @@ public abstract class SpellTargetingSingle extends SpellTargeting {
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(combatFrame,"Select a Target for "+spell.getName()+":",true);
 		if (identifiers.isEmpty()) {
 			if (gameObjects.isEmpty()) {
-				ArrayList list = new ArrayList(secondaryTargets.keySet());
+				ArrayList<String> list = new ArrayList<>(secondaryTargets.keySet());
 				Collections.sort(list);
 				chooser.addStrings(list);
 			}
 			else {
 				// Rather than just dump them in, there should be a small icon indicating which sheet they are on
-				Hashtable hash = new Hashtable();
+				Hashtable<RealmComponent, RealmComponent> hash = new Hashtable<>();
 				ArrayList combatSheets = combatFrame.getAllCombatSheets();
 				for (Iterator i=combatSheets.iterator();i.hasNext();) {
 					CombatSheet sheet = (CombatSheet)i.next();

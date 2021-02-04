@@ -175,10 +175,9 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 	 */
 	protected int countAttacks(int index, boolean includeHorses) {
 		int count = 0;
-		ArrayList list = layoutHash.getList(new Integer(index));
+		ArrayList<RealmComponent> list = layoutHash.getList(new Integer(index));
 		if (list!=null) {
-			for (Iterator i=list.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : list) {
 				if ((includeHorses || !rc.isNativeHorse()) && !rc.isActionChit()) {
 					count++;
 				}
@@ -214,11 +213,11 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 				RealmComponent rc = (RealmComponent)bc;
 				CombatWrapper combat = new CombatWrapper(bc.getGameObject());
 				
-				ArrayList missileResults = combat.getMissileRolls();
-				ArrayList fumbleResults = combat.getFumbleRolls();
+				ArrayList<String> missileResults = combat.getMissileRolls();
+				ArrayList<String> fumbleResults = combat.getFumbleRolls();
 				
 				String type;
-				ArrayList rs,ss;
+				ArrayList<String> rs,ss;
 				if (fumbleResults!=null) {
 					type = " Fumble";
 					rs = fumbleResults;
@@ -231,14 +230,14 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 				}
 				
 				String prefix = (rc.isCharacter()?"":("B"+combat.getCombatBox()+" "));
-				Iterator r=rs.iterator();
-				Iterator s=ss.iterator();
+				Iterator<String> r=rs.iterator();
+				Iterator<String> s=ss.iterator();
 				while(r.hasNext()) {
 					// TODO Would be nice to recognize whether a roll refers to a target on this sheet or not.
 					RollerResult rr = new RollerResult(
 							prefix+combat.getGameObject().getName()+type,
-							(String)r.next(),
-							(String)s.next());
+							r.next(),
+							s.next());
 					battleRolls.add(rr);
 				}
 			}
@@ -248,10 +247,9 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		CharacterWrapper character = combatFrame.getActiveCharacter();
 		if (character!=null) {
 			CombatWrapper combat = new CombatWrapper(character.getGameObject());
-			ArrayList list = combat.getSeriousWoundRolls();
+			ArrayList<String> list = combat.getSeriousWoundRolls();
 			if (list!=null) {
-				for (Iterator i=list.iterator();i.hasNext();) {
-					String result = (String)i.next();
+				for (String result : list) {
 					RollerResult rr = new RollerResult(character.getCharacterName()+" Serious Wound",result,"");
 					battleRolls.add(rr);
 				}
@@ -273,9 +271,8 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 	public void updateMouseHover(Point p,boolean isShiftDown) {
 		Integer newIndex = null;
 		if (p!=null) {
-			for (Iterator i=layoutHash.keySet().iterator();i.hasNext();) {
+			for (Integer index : layoutHash.keySet()) {
 				int range = HOTSPOT_SIZE>>1;
-				Integer index = (Integer)i.next();
 				Point test = positions[index.intValue()];
 				if (test!=null) {
 					int dx = Math.abs(test.x-p.x);
@@ -295,9 +292,8 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		}
 	}
 	public void handleClick(Point p) {
-		for (Iterator i=hotspotHash.keySet().iterator();i.hasNext();) {
+		for (Integer index : hotspotHash.keySet()) {
 			int range = HOTSPOT_SIZE>>1;
-			Integer index = (Integer)i.next();
 			Point test = positions[index.intValue()];
 			int dx = Math.abs(test.x-p.x);
 			int dy = Math.abs(test.y-p.y);
@@ -309,12 +305,10 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			}
 		}
 	}
-	public Collection getAllParticipantsOnSheet() {
-		ArrayList list = new ArrayList();
-		for (Iterator i=layoutHash.values().iterator();i.hasNext();) {
-			ArrayList in = (ArrayList)i.next();
-			for (Iterator n=in.iterator();n.hasNext();) {
-				RealmComponent rc = (RealmComponent)n.next();
+	public Collection<RealmComponent> getAllParticipantsOnSheet() {
+		ArrayList<RealmComponent> list = new ArrayList<>();
+		for (ArrayList<RealmComponent> in : layoutHash.values()) {
+			for (RealmComponent rc : in) {
 				if (rc.isMonster() || rc.isCharacter() || rc.isNative()) {
 					list.add(rc);
 				}
@@ -328,22 +322,19 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		
 		// Draw components
 		Arrays.fill(offset,0);
-		for (Iterator i=layoutHash.keySet().iterator();i.hasNext();) {
-			Integer index = (Integer)i.next();
-			ArrayList list = layoutHash.getList(index);
+		for (Integer index : layoutHash.keySet()) {
+			ArrayList<RealmComponent> list = layoutHash.getList(index);
 			Collections.sort(list);
-			for (Iterator n=list.iterator();n.hasNext();) {
-				RealmComponent rc = (RealmComponent)n.next();
+			for (RealmComponent rc : list) {
 				paintRealmComponent(g,rc,index.intValue());
 			}
 		}
 		
 		// Draw hotspots
-		ArrayList hotspotKeys = new ArrayList(hotspotHash.keySet());
+		ArrayList<Integer> hotspotKeys = new ArrayList<>(hotspotHash.keySet());
 		Collections.sort(hotspotKeys);
-		for (Iterator i=hotspotKeys.iterator();i.hasNext();) {
-			Integer index = (Integer)i.next();
-			String name = (String)hotspotHash.get(index);
+		for (Integer index : hotspotKeys) {
+			String name = hotspotHash.get(index);
 			paintHotSpot(g,name,index.intValue());
 		}
 		
@@ -359,13 +350,12 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			int contentsX = 5;
 			int contentsY = 5;
 			
-			ArrayList c = layoutHash.getList(mouseHoverIndex);
+			ArrayList<RealmComponent> c = layoutHash.getList(mouseHoverIndex);
 			
 			if (c!=null) {
 				Rectangle[] plot = new Rectangle[c.size()];
 				int n=0;
-				for (Iterator i=c.iterator();i.hasNext();) {
-					RealmComponent rc = (RealmComponent)i.next();
+				for (RealmComponent rc : c) {
 					Dimension d = rc.getSize();
 					plot[n++] = new Rectangle(contentsX,contentsY,d.width,d.height);
 					contentsX += d.width;
@@ -376,14 +366,13 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 				if ((test.x+test.width)>maxSize.width) {
 					double scaling = ((double)(maxSize.width-test.width))/((double)(test.x));
 					for (int i=0;i<plot.length;i++) {
-						plot[i].x = (int)((double)plot[i].x*scaling);
+						plot[i].x = (int)(plot[i].x*scaling);
 					}
 				}
 				
 				// Finally, draw them
 				n=0;
-				for (Iterator i=c.iterator();i.hasNext();) {
-					RealmComponent rc = (RealmComponent)i.next();
+				for (RealmComponent rc : c) {
 					Rectangle r = plot[n++];
 					if (mouseHoverShift && rc.isChit()) {
 						// draw flipside
