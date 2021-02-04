@@ -22,10 +22,7 @@ import javax.swing.JFrame;
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.QuestDeck;
-import com.robin.magic_realm.components.quest.QuestState;
-import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
-import com.robin.magic_realm.components.wrapper.GameWrapper;
 
 public class QuestRewardResetQuestToDeck extends QuestReward {
 

@@ -24,7 +24,7 @@ import java.util.*;
 public class UniformLabelGroup {
 
 	private Font labelFont = null;
-	private Vector labelGroup = null;
+	private Vector<JLabel> labelGroup = null;
 	private int maxPixelWidth = 0;
 	private int borderWidth = 0;
 	private String longest; // only really useful for debugging purposes
@@ -51,7 +51,7 @@ public class UniformLabelGroup {
 	
 	public void add(JLabel jLabel) {
 		if (labelGroup==null) {
-			labelGroup = new Vector();
+			labelGroup = new Vector<>();
 		}
 		labelGroup.addElement(jLabel);
 		
@@ -68,7 +68,7 @@ public class UniformLabelGroup {
 		if (labelGroup!=null) {
 			Dimension d = new Dimension(maxPixelWidth+borderWidth,20);
 			for (int i=0;i<labelGroup.size();i++) {
-				JLabel jLabel = (JLabel)labelGroup.elementAt(i);
+				JLabel jLabel = labelGroup.elementAt(i);
 				jLabel.setMinimumSize(d);
 				jLabel.setMaximumSize(d);
 				jLabel.setPreferredSize(d);

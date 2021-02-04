@@ -24,9 +24,6 @@ import javax.swing.JFrame;
 
 import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.PathDetail;
-import com.robin.magic_realm.components.quest.CharacterActionType;
-import com.robin.magic_realm.components.quest.SearchResultType;
-import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
 import com.robin.magic_realm.components.swing.PathIcon;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 

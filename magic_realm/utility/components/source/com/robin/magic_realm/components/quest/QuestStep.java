@@ -22,7 +22,6 @@ import java.util.logging.Logger;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JScrollPane;
 
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GameObjectWrapper;
@@ -63,8 +62,8 @@ public class QuestStep extends GameObjectWrapper {
 	}
 
 	public void refresh() {
-		requirements = new ArrayList<QuestRequirement>();
-		rewards = new ArrayList<QuestReward>();
+		requirements = new ArrayList<>();
+		rewards = new ArrayList<>();
 		for (Iterator i = getGameObject().getHold().iterator(); i.hasNext();) {
 			GameObject held = (GameObject) i.next();
 			if (held.hasThisAttribute(Quest.QUEST_REQUIREMENT)) {
@@ -227,23 +226,23 @@ public class QuestStep extends GameObjectWrapper {
 		clear(REQ_STEPS);
 	}
 
-	public ArrayList getRequiredSteps() {
+	public ArrayList<String> getRequiredSteps() {
 		return getList(REQ_STEPS);
 	}
 
 	public boolean isOrigin() {
-		ArrayList requiredSteps = getRequiredSteps();
-		ArrayList failSteps = getFailSteps();
+		ArrayList<String> requiredSteps = getRequiredSteps();
+		ArrayList<String> failSteps = getFailSteps();
 		return (requiredSteps == null || requiredSteps.size() == 0) && (failSteps == null || failSteps.size() == 0);
 	}
 
 	public boolean requires(QuestStep step) {
-		ArrayList requiredSteps = getRequiredSteps();
+		ArrayList<String> requiredSteps = getRequiredSteps();
 		return requiredSteps != null && requiredSteps.contains(step.getGameObject().getStringId());
 	}
 	
 	public boolean requiresFail(QuestStep step) {
-		ArrayList failSteps = getFailSteps();
+		ArrayList<String> failSteps = getFailSteps();
 		return failSteps != null && failSteps.contains(step.getGameObject().getStringId());
 	}
 
@@ -259,7 +258,7 @@ public class QuestStep extends GameObjectWrapper {
 		clear(PREEMPT_STEPS);
 	}
 
-	public ArrayList getPreemptedSteps() {
+	public ArrayList<String> getPreemptedSteps() {
 		return getList(PREEMPT_STEPS);
 	}
 
@@ -275,7 +274,7 @@ public class QuestStep extends GameObjectWrapper {
 		clear(FAIL_STEPS);
 	}
 
-	public ArrayList getFailSteps() {
+	public ArrayList<String> getFailSteps() {
 		return getList(FAIL_STEPS);
 	}
 
@@ -326,7 +325,7 @@ public class QuestStep extends GameObjectWrapper {
 	}
 
 	private void updateIds(Hashtable<Long, GameObject> lookup, String key) {
-		ArrayList oldIds = getList(key);
+		ArrayList<String> oldIds = getList(key);
 		if (oldIds == null || oldIds.size() == 0)
 			return;
 		clear(key);
@@ -370,36 +369,34 @@ public class QuestStep extends GameObjectWrapper {
 			}
 			return ret;
 		}
-		else { // OR - any requirement fulfilled is a success
-			boolean oneFulfilled = false;
-			for (QuestRequirement req : reqs) {
-				if (req.fulfillsRequirement(frame, character, reqParams)) {
-					logger.fine("Requirement " + req.getName() + " fulfilled.");
-					oneFulfilled = true;
-					// we continue here in case there are any "Lock" type requirements!
-				}
+		// OR - any requirement fulfilled is a success
+		boolean oneFulfilled = false;
+		for (QuestRequirement req : reqs) {
+			if (req.fulfillsRequirement(frame, character, reqParams)) {
+				logger.fine("Requirement " + req.getName() + " fulfilled.");
+				oneFulfilled = true;
+				// we continue here in case there are any "Lock" type requirements!
 			}
-			return oneFulfilled;
 		}
+		return oneFulfilled;
 	}
 
 	public void preemptSteps(ArrayList<QuestStep> steps, String dayKey) {
-		ArrayList preempt = getPreemptedSteps();
+		ArrayList<String> preempt = getPreemptedSteps();
 		if (preempt == null)
 			return;
-		Hashtable<String, QuestStep> lookup = new Hashtable<String, QuestStep>();
+		Hashtable<String, QuestStep> lookup = new Hashtable<>();
 		for (QuestStep step : steps) {
 			lookup.put(step.getGameObject().getStringId(), step);
 		}
-		for (Iterator i = preempt.iterator(); i.hasNext();) {
-			String reqId = (String) i.next();
+		for (String reqId : preempt) {
 			QuestStep preemptedStep = lookup.get(reqId);
 			preemptedStep.setState(QuestStepState.Failed, dayKey);
 		}
 	}
 
 	public void doRewards(JFrame frame, CharacterWrapper character) {
-		HashLists<String, QuestReward> rewardGroups = new HashLists<String, QuestReward>();
+		HashLists<String, QuestReward> rewardGroups = new HashLists<>();
 		for (QuestReward reward : getRewards()) {
 			rewardGroups.put(reward.getRewardGroup(), reward);
 		}
@@ -416,7 +413,7 @@ public class QuestStep extends GameObjectWrapper {
 		
 		// If there are any group choice awards, get a choice (if needed) and proceed.
 		String selectedRewardGroup = chooseReward(frame, rewardGroups);
-		ArrayList<QuestReward> list = new ArrayList<QuestReward>();
+		ArrayList<QuestReward> list = new ArrayList<>();
 		if (selectedRewardGroup != QuestReward.ALL_REWARD_GROUP) {
 			list.addAll(rewardGroups.getList(selectedRewardGroup));
 		}
@@ -425,9 +422,9 @@ public class QuestStep extends GameObjectWrapper {
 		}
 	}
 
-	private String chooseReward(JFrame frame, HashLists<String, QuestReward> rewardGroups) {
+	private static String chooseReward(JFrame frame, HashLists<String, QuestReward> rewardGroups) {
 		// First see if the choice is obvious
-		ArrayList<String> keys = new ArrayList<String>(rewardGroups.keySet());
+		ArrayList<String> keys = new ArrayList<>(rewardGroups.keySet());
 		keys.remove(QuestReward.ALL_REWARD_GROUP);
 		if (keys.size() == 1)
 			return keys.get(0);
@@ -437,13 +434,13 @@ public class QuestStep extends GameObjectWrapper {
 		// Nope! Better ask the player then
 		int columns = (int) Math.ceil(rewardGroups.size()/5.0);
 		ButtonOptionDialog chooser = new ButtonOptionDialog(frame, null, "Select a reward group:", "Reward Chooser", false, columns);
-		keys = new ArrayList<String>(rewardGroups.keySet());
+		keys = new ArrayList<>(rewardGroups.keySet());
 		Collections.sort(keys);
-		Hashtable<String, String> reverseLookup = new Hashtable<String, String>();
+		Hashtable<String, String> reverseLookup = new Hashtable<>();
 		for (String key : keys) {
 			if (QuestReward.ALL_REWARD_GROUP.equals(key))
 				continue;
-			ArrayList<QuestReward> rewards = new ArrayList<QuestReward>();
+			ArrayList<QuestReward> rewards = new ArrayList<>();
 			rewards.addAll(rewardGroups.getList(key));
 			StringBuilder sb = new StringBuilder();
 			IconGroup icon = null;
@@ -474,10 +471,10 @@ public class QuestStep extends GameObjectWrapper {
 	 */
 	public ArrayList<QuestStep> findPendingFailTriggeredSteps(ArrayList<QuestStep> steps) {
 		String id = getGameObject().getStringId();
-		ArrayList<QuestStep> ret = new ArrayList<QuestStep>();
+		ArrayList<QuestStep> ret = new ArrayList<>();
 		for(QuestStep step:steps) {
 			if (step.getState()!=QuestStepState.Pending) continue;
-			ArrayList list = step.getFailSteps();
+			ArrayList<String> list = step.getFailSteps();
 			if (list!=null && list.contains(id)) ret.add(step);
 		}
 		return ret;

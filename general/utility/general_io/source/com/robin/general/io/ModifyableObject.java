@@ -25,7 +25,7 @@ public class ModifyableObject {
 	protected static long cum_barcode = 0;
 	protected long barcode = cum_barcode++;
 	protected boolean modified = false;
-	protected ArrayList changeListeners;		// fired when modified status changes
+	protected ArrayList<ChangeListener> changeListeners;		// fired when modified status changes
 	
 	public void setModified(boolean val) {
 		modified = val;
@@ -36,14 +36,14 @@ public class ModifyableObject {
 	}
 	protected void copyChangeListeners(ModifyableObject mo) {
 		if (mo.changeListeners!=null) {
-			for (Iterator i=mo.changeListeners.iterator();i.hasNext();) {
-				addChangeListener((ChangeListener)i.next());
+			for (ChangeListener i : mo.changeListeners) {
+				addChangeListener(i);
 			}
 		}
 	}
 	public void addChangeListener(ChangeListener listener) {
 		if (changeListeners==null) {
-			changeListeners = new ArrayList();
+			changeListeners = new ArrayList<>();
 		}
 		changeListeners.add(listener);
 	}
@@ -58,8 +58,7 @@ public class ModifyableObject {
 	protected void fireChange() {
 		if (changeListeners!=null) {
 			ChangeEvent event = new ChangeEvent(this);
-			for (Iterator i=changeListeners.iterator();i.hasNext();) {
-				ChangeListener listener = (ChangeListener)i.next();
+			for (ChangeListener listener : changeListeners) {
 				listener.stateChanged(event);
 			}
 		}

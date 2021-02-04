@@ -24,13 +24,13 @@ public class MoveRule {
 
 	private Object userData;
 	private float moveLeft;
-	private Collection rules;
+	private Collection<String> rules;
 	private boolean canMoveBoatless;
 	
 	public MoveRule(Object userData,float moveLeft) {
 		this.userData = userData==null?"":userData;
 		this.moveLeft = moveLeft;
-		this.rules = new ArrayList();
+		this.rules = new ArrayList<>();
 		canMoveBoatless = false;
 	}
 	public void setUserData(Object userData) {

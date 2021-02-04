@@ -22,7 +22,7 @@ public class GuildLevelType {
 		Apprentice,
 		Journeyman,
 		Master
-	};
+	}
 	
 	public static int getIntFor(GuildLevel level) {
 		switch (level) {

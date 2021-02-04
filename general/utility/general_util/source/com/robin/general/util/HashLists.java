@@ -33,12 +33,12 @@ public class HashLists<K,T> implements Map {
 	}
 	public HashLists(boolean forceUnique) {
 		this.forceUnique = forceUnique;
-	    hash = new Hashtable<K,ArrayList<T>>();
+	    hash = new Hashtable<>();
 	}
 	public Object put(Object key,Object val) {
 	    ArrayList<T> list = getList(key);
 	    if (list==null) {
-	        list = new ArrayList<T>();
+	        list = new ArrayList<>();
 	        hash.put((K)key,list);
 	    }
 	    if (!forceUnique || !list.contains(val)) {
@@ -58,7 +58,7 @@ public class HashLists<K,T> implements Map {
 	public ArrayList<T> getListAsNew(Object key) {
 		ArrayList<T> list = getList(key);
 		if (list!=null) {
-			return new ArrayList<T>(list);
+			return new ArrayList<>(list);
 		}
 		return null;
 	}
@@ -72,8 +72,7 @@ public class HashLists<K,T> implements Map {
 	    return hash.containsKey(key);
 	}
 	public boolean containsValue(Object val) {
-	    for (Iterator i=hash.values().iterator();i.hasNext();) {
-	        ArrayList list = (ArrayList)i.next();
+	    for (ArrayList<T> list : hash.values()) {
 	        if (list.contains(val)) {
 	            return true;
 	        }
@@ -87,8 +86,7 @@ public class HashLists<K,T> implements Map {
 	    return hash.keySet();
 	}
 	public void putAll(Map map) {
-	    for (Iterator i=map.keySet().iterator();i.hasNext();) {
-	        Object key = i.next();
+	    for (Object key : map.keySet()) {
 	        ArrayList list = getList(key);
 	        Object val = map.get(key);
 	        if (val instanceof Collection) {

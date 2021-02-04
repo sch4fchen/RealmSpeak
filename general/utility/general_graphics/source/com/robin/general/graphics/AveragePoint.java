@@ -25,15 +25,15 @@ import java.util.*;
  * collection.
  */
 public class AveragePoint extends Point {
-	protected ArrayList points;
+	protected ArrayList<Point> points;
 	public AveragePoint(int x,int y) {
 		super(x,y);
-		points = new ArrayList();
+		points = new ArrayList<>();
 		addPoint(x,y);
 	}
 	public AveragePoint(Point p) {
 		super(p);
-		points = new ArrayList();
+		points = new ArrayList<>();
 		addPoint(p);
 	}
 	public void addPoint(int valX,int valY) {
@@ -45,8 +45,7 @@ public class AveragePoint extends Point {
 	}
 	public Polygon getPolygon() {
 		Polygon poly = new Polygon();
-		for (Iterator i=points.iterator();i.hasNext();) {
-			Point p = (Point)i.next();
+		for (Point p : points) {
 			poly.addPoint(p.x,p.y);
 		}
 		return poly;
@@ -59,8 +58,7 @@ public class AveragePoint extends Point {
 		int tx = 0;
 		int ty = 0;
 		int n = 0;
-		for (Iterator i=points.iterator();i.hasNext();) {
-			Point p = (Point)i.next();
+		for (Point p : points) {
 			tx += p.x;
 			ty += p.y;
 			n++;

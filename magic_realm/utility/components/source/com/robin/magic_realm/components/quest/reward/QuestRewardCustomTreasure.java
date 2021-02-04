@@ -24,15 +24,11 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
-import com.robin.game.objects.GamePool;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.attribute.TileLocation;
-import com.robin.magic_realm.components.quest.AttributeType;
-import com.robin.magic_realm.components.quest.GainType;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.QuestLocation;
 import com.robin.magic_realm.components.quest.QuestStep;
-import com.robin.magic_realm.components.quest.reward.QuestReward.RewardType;
 import com.robin.magic_realm.components.table.Loot;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 

@@ -25,7 +25,7 @@ public class ChatLine {
 		CharacterName,
 		PlayerName,
 		Both,
-	};
+	}
 	
 	public static String BOLD_PREFIX = "b_";
 	private static HeaderMode headerMode = HeaderMode.CharacterName;
@@ -48,6 +48,8 @@ public class ChatLine {
 				return character.getName();
 			case PlayerName:
 				return character.getPlayerName();
+			case Both:
+				break;
 		}
 		return character.getName()+" ("+character.getPlayerName()+")";
 	}

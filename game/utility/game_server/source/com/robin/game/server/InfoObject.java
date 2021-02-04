@@ -22,11 +22,11 @@ import java.util.ArrayList;
 public class InfoObject {
 	private boolean forHost;
 	private String destClientName;
-	private ArrayList info; // list of Strings
+	private ArrayList<String> info; // list of Strings
 
-	public InfoObject(String destClientName, ArrayList info) {
+	public InfoObject(String destClientName, ArrayList<String> info) {
 		this.destClientName = destClientName;
-		this.info = new ArrayList(info);
+		this.info = new ArrayList<>(info);
 		this.forHost = destClientName==null;
 	}
 	public boolean isForHost() {
@@ -45,7 +45,7 @@ public class InfoObject {
 		return destClientName;
 	}
 
-	public ArrayList getInfo() {
+	public ArrayList<String> getInfo() {
 		return info;
 	}
 }

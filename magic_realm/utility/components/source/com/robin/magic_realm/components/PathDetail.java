@@ -176,20 +176,18 @@ public class PathDetail implements Comparable {
 		Point p2 = c2.getPosition();
 		if (arc!=null) {
 			return new QuadCurve2D.Float(
-					(float)p1.x,
-					(float)p1.y,
-					(float)arc.x,
-					(float)arc.y,
-					(float)p2.x,
-					(float)p2.y);
+					p1.x,
+					p1.y,
+					arc.x,
+					arc.y,
+					p2.x,
+					p2.y);
 		}
-		else {
-			return new Line2D.Float(
-					(float)p1.x,
-					(float)p1.y,
-					(float)p2.x,
-					(float)p2.y);
-		}
+		return new Line2D.Float(
+				p1.x,
+				p1.y,
+				p2.x,
+				p2.y);
 	}
 	public void setArcPoint(Point p) {
 		this.arc = p;

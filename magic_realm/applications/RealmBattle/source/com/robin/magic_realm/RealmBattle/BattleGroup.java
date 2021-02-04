@@ -199,9 +199,8 @@ public class BattleGroup implements Comparable {
 		}
 		
 		// Character not found/unhidden?  Find all unhidden hirelings, and query character
-		ArrayList unhiddenHirelings = new ArrayList();
-		for (Iterator i=getBattleParticipants().iterator();i.hasNext();) {
-			RealmComponent bp = (RealmComponent)i.next();
+		ArrayList<RealmComponent> unhiddenHirelings = new ArrayList<>();
+		for (RealmComponent bp : getBattleParticipants()) {
 			if (!bp.isCharacter() && !bp.isHidden()) {
 				// Make sure the hireling isn't already fighting a RED-side-up monster
 				if (!hasPinningAttacker(bp)) {
@@ -214,7 +213,7 @@ public class BattleGroup implements Comparable {
 			return attacker;
 		}
 		else if (unhiddenHirelings.size()==1) { // its obvious if only one hireling
-			return (RealmComponent)unhiddenHirelings.get(0);
+			return unhiddenHirelings.get(0);
 		}
 		
 		return null;  // This indicates that the character must pick an unhidden hireling

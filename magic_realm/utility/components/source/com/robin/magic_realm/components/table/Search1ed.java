@@ -22,10 +22,8 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
-import com.robin.general.swing.ButtonOptionDialog;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.swing.PathIcon;
-import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class Search1ed extends Search {
