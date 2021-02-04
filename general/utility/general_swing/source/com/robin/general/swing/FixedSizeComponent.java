@@ -27,7 +27,7 @@ public abstract class FixedSizeComponent extends JComponent {
 
 	private static final Insets NO_INSETS = new Insets(0,0,0,0);
 
-	private ArrayList changeListeners = null;
+	private ArrayList<ChangeListener> changeListeners = null;
 	
 	public abstract int getComponentWidth();
 	public abstract int getComponentHeight();
@@ -66,7 +66,7 @@ public abstract class FixedSizeComponent extends JComponent {
 	}
 	public void addChangeListener(ChangeListener listener) {
 		if (changeListeners==null) {
-			changeListeners = new ArrayList();
+			changeListeners = new ArrayList<>();
 		}
 		if (!changeListeners.contains(listener)) {
 			changeListeners.add(listener);
@@ -83,8 +83,7 @@ public abstract class FixedSizeComponent extends JComponent {
 	protected void fireStateChanged() {
 		if (changeListeners!=null && changeListeners.size()>0) {
 			ChangeEvent ev = new ChangeEvent(this);
-			for (Iterator i=changeListeners.iterator();i.hasNext();) {
-				ChangeListener listener = (ChangeListener)i.next();
+			for (ChangeListener listener : changeListeners) {
 				listener.stateChanged(ev);
 			}
 		}

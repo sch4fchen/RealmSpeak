@@ -26,9 +26,9 @@ import javax.swing.text.*;
 
 public class MultiQueryDialog extends AggressiveDialog {
 
-	protected Hashtable textComponents = new Hashtable();
-	protected Hashtable comboBoxes = new Hashtable();
-	protected ArrayList requiredInputComponents = new ArrayList();
+	protected Hashtable<String, JTextComponent> textComponents = new Hashtable<>();
+	protected Hashtable<String, JComboBox<String>> comboBoxes = new Hashtable<>();
+	protected ArrayList<JTextComponent> requiredInputComponents = new ArrayList<>();
 	
 	protected Box layoutBox;
 	protected JButton okay;
@@ -76,8 +76,7 @@ public class MultiQueryDialog extends AggressiveDialog {
 	}
 	public void updateButtons() {
 		boolean allClear = true;
-		for (Iterator i=requiredInputComponents.iterator();i.hasNext();) {
-			JTextComponent tc = (JTextComponent)i.next();
+		for (JTextComponent tc : requiredInputComponents) {
 			if (tc.getText().trim().length()==0) {
 				allClear = false;
 				break;
@@ -112,19 +111,19 @@ public class MultiQueryDialog extends AggressiveDialog {
 		addComponent(label,textComponent);
 		textComponents.put(key,textComponent);
 	}
-	public void addQueryLine(String key,String label,JComboBox comboBox) {
+	public void addQueryLine(String key,String label,JComboBox<String> comboBox) {
 		addComponent(label,comboBox);
 		comboBoxes.put(key,comboBox);
 	}
 	public String getText(String key) {
-		JTextComponent textComponent = (JTextComponent)textComponents.get(key);
+		JTextComponent textComponent = textComponents.get(key);
 		if (textComponent!=null) {
 			return textComponent.getText().trim();
 		}
 		return null;
 	}
 	public Object getComboChoice(String key) {
-		JComboBox comboBox = (JComboBox)comboBoxes.get(key);
+		JComboBox<String> comboBox = comboBoxes.get(key);
 		if (comboBox!=null) {
 			return comboBox.getSelectedItem();
 		}
@@ -137,7 +136,7 @@ public class MultiQueryDialog extends AggressiveDialog {
 		MultiQueryDialog dialog = new MultiQueryDialog(new JFrame(),"test");
 		dialog.addQueryLine("name","Name",new JTextField(),true);
 		dialog.addQueryLine("address","Address",new JTextField(),true);
-			JComboBox cb = new JComboBox();
+			JComboBox<String> cb = new JComboBox<>();
 			cb.addItem("Northern");
 			cb.addItem("Southern");
 			cb.addItem("Norweestum");

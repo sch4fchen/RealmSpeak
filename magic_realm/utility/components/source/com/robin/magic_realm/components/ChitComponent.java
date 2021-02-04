@@ -20,7 +20,6 @@ package com.robin.magic_realm.components;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Collection;
-import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 

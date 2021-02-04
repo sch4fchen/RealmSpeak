@@ -26,15 +26,15 @@ import com.robin.general.util.*;
 public class Encoder {
 
 	protected GameData data;
-	protected ArrayList printGroupings;
-	protected ArrayList codings;
-	protected Collection filter = null;
+	protected ArrayList<PrintGrouping> printGroupings;
+	protected ArrayList<Coding> codings;
+	protected Collection<String> filter = null;
 	
 	protected static final String LINE_END = "\r\n";
 	
 	public Encoder() {
-		printGroupings = new ArrayList();
-		codings = new ArrayList();
+		printGroupings = new ArrayList<>();
+		codings = new ArrayList<>();
 	}
 	public GameData getGameData() {
 		return data;
@@ -57,16 +57,16 @@ public class Encoder {
 	public void addCoding(Coding coding) {
 		codings.add(coding);
 	}
-	public void setFilter(Collection keyVals) {
+	public void setFilter(Collection<String> keyVals) {
 		filter = keyVals;
 	}
 	public boolean writeFile(String setupName,String filename) {
 		StringBuffer printString = new StringBuffer();
 
-		ArrayList<String> query = new ArrayList<String>();
+		ArrayList<String> query = new ArrayList<>();
 		query.add("original_game");
 	
-		ArrayList list = data.doSetup(setupName,query);
+		ArrayList<GameObject> list = data.doSetup(setupName,query);
 		System.out.println("Finished setup");
 		if (list!=null) {
 			GamePool pool = new GamePool(list);
@@ -83,14 +83,12 @@ public class Encoder {
 			
 			// Encode objects
 			StringBuffer codingResult = new StringBuffer();
-			for (Iterator i=codings.iterator();i.hasNext();) {
-				Coding coding = (Coding)i.next();
+			for (Coding coding : codings) {
 				codingResult.append(coding.encode(pool));
 			}
 			
 			// Lay out groups
-			for (Iterator i=printGroupings.iterator();i.hasNext();) {
-				PrintGrouping grouping = (PrintGrouping)i.next();
+			for (PrintGrouping grouping : printGroupings) {
 				printString.append(grouping.print(pool));
 			}
 			

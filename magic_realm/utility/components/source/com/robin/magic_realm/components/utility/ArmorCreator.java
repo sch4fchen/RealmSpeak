@@ -18,13 +18,13 @@ public class ArmorCreator {
 	
 	public ArmorCreator(String key){
 		armorKey = key;
-		armorCreated = new ArrayList<GameObject>();
+		armorCreated = new ArrayList<>();
 	}
 	
 	public GameObject createOrReuseArmor(GameData data){
 		GamePool pool = new GamePool(data.getGameObjects());
 			
-		ArrayList query = new ArrayList();
+		ArrayList<String> query = new ArrayList<>();
 		query.add(armorKey);
 		query.add(Constants.DESTROYED);
 		GameObject go = pool.findFirst(query);
@@ -60,7 +60,7 @@ public class ArmorCreator {
 		setupArmorLocations(go, armorLocations);
 	}
 	
-	private void setupArmorLocations(GameObject go, int locations){
+	private static void setupArmorLocations(GameObject go, int locations){
 		if(Extensions.hasFlag(locations, THRUST)) go.setThisAttribute("armor_thrust");
 		if(Extensions.hasFlag(locations, SWING)) go.setThisAttribute("armor_swing");
 		if(Extensions.hasFlag(locations, SMASH)) go.setThisAttribute("armor_smash");

@@ -20,7 +20,6 @@ package com.robin.magic_realm.components.quest.reward;
 import javax.swing.JFrame;
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.quest.DamageType;
-import com.robin.magic_realm.components.swing.ChitWoundManager;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRewardDamage extends QuestReward {

@@ -19,7 +19,6 @@ package com.robin.magic_realm.components.table;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -70,7 +69,7 @@ public class ActionPrerequisite {
 		GamePool pool = new GamePool();
 		pool.addAll(character.getActivatedTreasureObjects());
 		
-		ArrayList<String> query = new ArrayList<String>();
+		ArrayList<String> query = new ArrayList<>();
 		query.add("key");
 		if (source.hasThisAttribute(Constants.BOARD_NUMBER)) {
 			query.add(Constants.BOARD_NUMBER+"="+source.getThisAttribute(Constants.BOARD_NUMBER));
@@ -131,7 +130,7 @@ public class ActionPrerequisite {
 		}
 		else {
 			// Instead, you need to fatigue a T chit
-			ArrayList<CharacterActionChitComponent> tremendousChits = new ArrayList<CharacterActionChitComponent>();
+			ArrayList<CharacterActionChitComponent> tremendousChits = new ArrayList<>();
 			Collection<CharacterActionChitComponent> active = character.getActiveChits();
 			for (CharacterActionChitComponent chit : active) {
 				if ("T".equals(chit.getStrength().toString())) {

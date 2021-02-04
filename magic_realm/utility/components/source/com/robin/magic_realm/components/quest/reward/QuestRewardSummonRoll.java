@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
-import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.quest.DieRollType;
 import com.robin.magic_realm.components.utility.SetupCardUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -46,9 +45,7 @@ public class QuestRewardSummonRoll extends QuestReward {
 		if (getString(DIE_ROLL)!=DieRollType.Random.toString()) {
 			return "Summon roll with a die roll of "+getDieRoll()+".";
 		}
-		else {
-			return "Summon roll with a random die roll.";
-		}
+		return "Summon roll with a random die roll.";
 	}
 
 	public RewardType getRewardType() {

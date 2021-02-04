@@ -1,7 +1,7 @@
 Expansion 1: Two-Handed Combat + Ability: "Dual Wielding"
 CombatSheet: placeAllAttacks
 BattleModel: doResolveAttacks -> doTargetAttack -> getAdjustedHarm, sortAccordingToRound, handleSortTies, processHits
-RealmComponent.getTarget: CharacterCombatSheet + CombatSheet: placeAllAttacks
+RealmComponent.getTarget: CharacterCombatSheet
 CharacterChitComponent:
 	getLength + Comparer
 	getAttackSpeed + Comparer
@@ -11,6 +11,7 @@ CharacterChitComponent:
 	hitsOnTie
 RULES: Check which weapon can hit which target, check speed and harm
 
+Option not no load "Random events" in QtR mode
 Dual Wielding: Option alert both weapons
 Expansion 1: More Ambushes/Throwing Weapons + Ability: Spear, Axe, Dagger?
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): Option: no missile attacks, ?:Sharpness stars are ignored when comparing harm between attacks and parries? Alert?!

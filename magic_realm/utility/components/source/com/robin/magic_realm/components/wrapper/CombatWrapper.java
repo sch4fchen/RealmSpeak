@@ -497,13 +497,12 @@ public class CombatWrapper extends GameObjectWrapper {
 	public void addChargeChit(GameObject chit) {
 		addListItem(CHARGED_BY_IDS,String.valueOf(chit.getId()));
 	}
-	public Collection getChargeChits() {
+	public Collection<GameObject> getChargeChits() {
 		GameData data = getGameObject().getGameData();
-		ArrayList list = new ArrayList();
-		ArrayList ids = getList(CHARGED_BY_IDS);
+		ArrayList<GameObject> list = new ArrayList<>();
+		ArrayList<String> ids = getList(CHARGED_BY_IDS);
 		if (ids!=null) {
-			for (Iterator i=ids.iterator();i.hasNext();) {
-				String id = (String)i.next();
+			for (String id : ids) {
 				GameObject go = data.getGameObject(Long.valueOf(id));
 				list.add(go);
 			}
@@ -511,7 +510,7 @@ public class CombatWrapper extends GameObjectWrapper {
 		return list;
 	}
 	public int getChargeChitCount() {
-		ArrayList ids = getList(CHARGED_BY_IDS);
+		ArrayList<String> ids = getList(CHARGED_BY_IDS);
 		if (ids!=null) {
 			return ids.size();
 		}
@@ -523,11 +522,10 @@ public class CombatWrapper extends GameObjectWrapper {
 	}
 	public ArrayList<GameObject> getUsedChits() {
 		GameData data = getGameObject().getGameData();
-		ArrayList<GameObject> list = new ArrayList<GameObject>();
-		ArrayList ids = getList(USED_IDS);
+		ArrayList<GameObject> list = new ArrayList<>();
+		ArrayList<String> ids = getList(USED_IDS);
 		if (ids!=null) {
-			for (Iterator i=ids.iterator();i.hasNext();) {
-				String id = (String)i.next();
+			for (String id : ids) {
 				GameObject go = data.getGameObject(Long.valueOf(id));
 				list.add(go);
 			}
