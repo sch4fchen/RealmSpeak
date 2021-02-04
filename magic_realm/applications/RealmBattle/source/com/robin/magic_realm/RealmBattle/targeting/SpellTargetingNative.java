@@ -18,7 +18,6 @@
 package com.robin.magic_realm.RealmBattle.targeting;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
@@ -32,9 +31,8 @@ public class SpellTargetingNative extends SpellTargetingSingle {
 	}
 
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
-		ArrayList allParticipants = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true);
-		for (Iterator i=allParticipants.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		ArrayList<RealmComponent> allParticipants = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true);
+		for (RealmComponent rc : allParticipants) {
 			if (rc.isNative()) {
 				gameObjects.add(rc.getGameObject());
 			}

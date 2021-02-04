@@ -18,7 +18,6 @@
 package com.robin.magic_realm.RealmBattle.targeting;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
@@ -32,11 +31,10 @@ public class SpellTargetingSpiderOctopus extends SpellTargetingSingle {
 	}
 	
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
-		ArrayList allDenizens = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true);
-		ArrayList allParticipantsSansDenizens = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(false),true);
+		ArrayList<RealmComponent> allDenizens = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true);
+		ArrayList<RealmComponent> allParticipantsSansDenizens = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(false),true);
 		allDenizens.removeAll(allParticipantsSansDenizens);
-		for (Iterator i=allDenizens.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : allDenizens) {
 			if (rc.isMonster() && !rc.isPlayerControlledLeader()) {
 				String icon = rc.getGameObject().getAttribute(rc.getThisBlock(),"icon_type");
 				if ("spider".equals(icon) || "octopus".equals(icon)) {

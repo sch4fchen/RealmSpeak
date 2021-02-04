@@ -18,7 +18,6 @@
 package com.robin.magic_realm.RealmBattle.targeting;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
@@ -31,9 +30,8 @@ public class SpellTargetingGoblins extends SpellTargetingAll {
 		super(combatFrame, spell);
 	}
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
-		ArrayList allBattleParticipants = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true);
-		for (Iterator i=allBattleParticipants.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		ArrayList<RealmComponent> allBattleParticipants = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true);
+		for (RealmComponent rc : allBattleParticipants) {
 			if (rc.isMonster() && !rc.isPlayerControlledLeader()) {
 				String icon = rc.getGameObject().getAttribute(rc.getThisBlock(),"icon_type");
 				if (icon.startsWith("goblin_")) {

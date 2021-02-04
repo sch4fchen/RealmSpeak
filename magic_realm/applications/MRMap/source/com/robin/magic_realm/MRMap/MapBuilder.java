@@ -28,19 +28,17 @@ import com.robin.magic_realm.map.Tile;
 
 public class MapBuilder {
 	
-	public static ArrayList startTileList(GameData data,Collection keyVals) {
-		ArrayList tiles = new ArrayList();
-		Collection c = RealmObjectMaster.getRealmObjectMaster(data).getTileObjects();
-		for (Iterator i=c.iterator();i.hasNext();) {
-			GameObject obj = (GameObject)i.next();
+	public static ArrayList<Tile> startTileList(GameData data,Collection keyVals) {
+		ArrayList<Tile> tiles = new ArrayList<>();
+		Collection<GameObject> c = RealmObjectMaster.getRealmObjectMaster(data).getTileObjects();
+		for (GameObject obj : c) {
 			tiles.add(new Tile(obj));
 		}
 		return tiles;
 	}
-	public static Tile findBorderland(Collection tiles) {
+	public static Tile findBorderland(Collection<Tile> tiles) {
 		// Find the Borderland tile, and start it at position 0,0 with a random rotation
-		for (Iterator i=tiles.iterator();i.hasNext();) {
-			Tile tile = (Tile)i.next();
+		for (Tile tile : tiles) {
 			if (tile.getGameObject().getName().equals("Borderland")) {
 				return tile;
 			}
@@ -52,10 +50,10 @@ public class MapBuilder {
 		return autoBuildMap(data,keyVals,null);
 	}
 	public static boolean autoBuildMap(GameData data,Collection keyVals,MapProgressReportable reporter) {
-		ArrayList tiles = startTileList(data,keyVals);
+		ArrayList<Tile> tiles = startTileList(data,keyVals);
 		
 		// Find the Borderland tile, and start it at position 0,0 with a random rotation
-		Hashtable mapGrid = new Hashtable();
+		Hashtable<Point, Tile> mapGrid = new Hashtable<>();
 		Tile borderland = findBorderland(tiles);
 		mapGrid.put(new Point(0,0),borderland);
 		borderland.setMapPosition(new Point(0,0));
@@ -66,30 +64,24 @@ public class MapBuilder {
 		}
 		
 		// Cycle until the mapGrid has all the tiles
-System.out.println();
 		while(mapGrid.size()<tiles.size()) {
 			if (reporter!=null) {
 				reporter.setProgress(mapGrid.size(),tiles.size());
 			}
-System.out.print(mapGrid.size()+":");
 			// First, identify all connectable map placement locations
 			//		- Have paths leading to them
 			//		- Adjacent to at least two tiles (unless only one tile on map)
-			ArrayList availableMapPositions = Tile.findAvailableMapPositions(mapGrid);
+			ArrayList<Point> availableMapPositions = Tile.findAvailableMapPositions(mapGrid);
 			
 			// Cycle through every available (unplaced) tile
-			ArrayList allTileResults = new ArrayList();
-			for (Iterator t=tiles.iterator();t.hasNext();) {
-				Tile tile = (Tile)t.next();
-				
+			ArrayList<ArrayList<TileMappingPossibility>> allTileResults = new ArrayList<>();
+			for (Tile tile : tiles) {		
 				// Only use unmapped tiles
 				if (!mapGrid.contains(tile)) {
-					ArrayList tileResults = new ArrayList();
+					ArrayList<TileMappingPossibility> tileResults = new ArrayList<>();
 					
 					// Try the tile in every available position
-					for (Iterator a=availableMapPositions.iterator();a.hasNext();) {
-						Point pos = (Point)a.next();
-						
+					for (Point pos : availableMapPositions) {						
 						// Try every rotation
 						for (int rot=0;rot<6;rot++) {
 							// Test the tile at pos, with rotation rot
@@ -107,10 +99,10 @@ System.out.print(mapGrid.size()+":");
 			
 			if (allTileResults.size()>0) {
 				// First, pick a random tile result set
-				ArrayList tileResults = (ArrayList)allTileResults.get(RandomNumber.getRandom(allTileResults.size()));
+				ArrayList<TileMappingPossibility> tileResults = allTileResults.get(RandomNumber.getRandom(allTileResults.size()));
 				
 				// Then pick a random MappingResult from the set for this tile
-				TileMappingPossibility tmp = (TileMappingPossibility)tileResults.get(RandomNumber.getRandom(tileResults.size()));
+				TileMappingPossibility tmp = tileResults.get(RandomNumber.getRandom(tileResults.size()));
 				
 				// Add it to the grid
 				Tile tile = tmp.getTile();
@@ -144,8 +136,7 @@ System.out.print(mapGrid.size()+":");
 			}
 		}
 		
-		for (Iterator i=mapGrid.values().iterator();i.hasNext();) {
-			Tile tile = (Tile)i.next();
+		for (Tile tile : mapGrid.values()) {
 			tile.writeToGameObject();
 		}
 		System.out.println();
@@ -155,12 +146,10 @@ System.out.print(mapGrid.size()+":");
 	    RealmLoader loader = new RealmLoader();
 		GameData data = loader.getData();
 		System.out.println("loaded "+data.getGameObjects().size());
-		ArrayList keyVals = new ArrayList();
+		ArrayList<String> keyVals = new ArrayList<>();
 		keyVals.add("original_game");
-		while(!MapBuilder.autoBuildMap(data,keyVals));
-		System.out.println();
-		for (Iterator i=data.getGameObjects().iterator();i.hasNext();) {
-			GameObject obj = (GameObject)i.next();
+		while(!MapBuilder.autoBuildMap(data,keyVals))
+		for (GameObject obj : data.getGameObjects()) {
 			if (obj.hasKey("tile")) {
 				System.out.println(obj+":   "+obj.getAttributeBlock("mapGrid"));
 			}
