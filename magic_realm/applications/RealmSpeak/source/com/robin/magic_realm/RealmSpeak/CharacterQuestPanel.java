@@ -31,7 +31,6 @@ import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
 import com.robin.magic_realm.components.swing.*;
-import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmLogging;
 
 public class CharacterQuestPanel extends CharacterFramePanel {
@@ -220,7 +219,7 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 
 	private void doDiscardQuestCards() {
 		RealmObjectChooser chooser = new RealmObjectChooser("Discard Which Cards?", getGame().getGameData(), false);
-		ArrayList<GameObject> list = new ArrayList<GameObject>();
+		ArrayList<GameObject> list = new ArrayList<>();
 		for (Quest quest : getCharacter().getAllQuests()) {
 			if (quest.getState() == QuestState.Assigned && !quest.isAllPlay()) {
 				list.add(quest.getGameObject());

@@ -34,7 +34,7 @@ public class SpellTargetingHurtChit extends SpellTargetingMultiple {
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
 		// Assume that activeParticipant IS character
 		CharacterWrapper character = new CharacterWrapper(activeParticipant.getGameObject());
-		ArrayList<CharacterActionChitComponent> hurtChits = new ArrayList<CharacterActionChitComponent>();
+		ArrayList<CharacterActionChitComponent> hurtChits = new ArrayList<>();
 		hurtChits.addAll(character.getFatiguedChits());
 		hurtChits.addAll(character.getWoundedChits());
 		for (CharacterActionChitComponent chit:hurtChits) {

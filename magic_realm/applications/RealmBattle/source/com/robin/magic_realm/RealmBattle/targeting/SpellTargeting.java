@@ -41,7 +41,7 @@ public abstract class SpellTargeting {
 	protected SpellTargeting(CombatFrame combatFrame,SpellWrapper spell) {
 		this.combatFrame = combatFrame;
 		this.spell = spell;
-		gameObjects = new ArrayList<GameObject>();
+		gameObjects = new ArrayList<>();
 	}
 	protected boolean allowTargetingHirelings() {
 		return combatFrame.allowsTreachery() || (spell.isBenevolent() && combatFrame.getHostPrefs().hasPref(Constants.TE_BENEVOLENT_SPELLS));

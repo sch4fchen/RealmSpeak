@@ -18,7 +18,6 @@
 package com.robin.magic_realm.RealmBattle.targeting;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import com.robin.magic_realm.RealmBattle.BattleGroup;
 import com.robin.magic_realm.RealmBattle.BattleModel;
@@ -34,9 +33,8 @@ public class SpellTargetingAttacker extends SpellTargetingSingle {
 
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
 		BattleGroup bg = battleModel.getParticipantsBattleGroup(activeParticipant);
-		ArrayList otherOpponents = combatFrame.findCanBeSeen(battleModel.getAllOtherBattleParticipants(bg,true,combatFrame.allowsTreachery()),true);
-		for (Iterator i=otherOpponents.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		ArrayList<RealmComponent> otherOpponents = combatFrame.findCanBeSeen(battleModel.getAllOtherBattleParticipants(bg,true,combatFrame.allowsTreachery()),true);
+		for (RealmComponent rc : otherOpponents) {
 			gameObjects.add(rc.getGameObject());
 		}
 		return true;

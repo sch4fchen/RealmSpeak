@@ -35,7 +35,7 @@ public class ZipUtilities {
 		lastError = null;
 		File[] files = null;
 		try {
-			ArrayList<File> fileList = new ArrayList<File>();
+			ArrayList<File> fileList = new ArrayList<>();
 			BufferedOutputStream dest = null;
 			FileInputStream fis = new FileInputStream(zipFile);
 			ZipInputStream zis = new ZipInputStream(new BufferedInputStream(fis));

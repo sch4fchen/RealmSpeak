@@ -18,7 +18,6 @@
 package com.robin.magic_realm.RealmBattle.targeting;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import com.robin.magic_realm.RealmBattle.*;
 import com.robin.magic_realm.components.RealmComponent;
@@ -33,9 +32,8 @@ public class SpellTargetingUndead extends SpellTargetingMultiple {
 
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
 		BattleGroup bg = battleModel.getParticipantsBattleGroup(activeParticipant);
-		ArrayList otherOpponents = combatFrame.findCanBeSeen(battleModel.getAllOtherBattleParticipants(bg,true,combatFrame.allowsTreachery()),true);
-		for (Iterator i=otherOpponents.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		ArrayList<RealmComponent> otherOpponents = combatFrame.findCanBeSeen(battleModel.getAllOtherBattleParticipants(bg,true,combatFrame.allowsTreachery()),true);
+		for (RealmComponent rc : otherOpponents) {
 			if (rc.isMonster() && rc.getGameObject().hasThisAttribute(Constants.UNDEAD)) {
 				gameObjects.add(rc.getGameObject());
 			}

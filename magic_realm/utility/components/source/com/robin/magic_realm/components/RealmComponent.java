@@ -455,11 +455,10 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		}
 			
 		Integer pacifyType = null;
-		ArrayList list = getGameObject().getThisAttributeList("pacifyBlocks");
+		ArrayList<String> list = getGameObject().getThisAttributeList("pacifyBlocks");
 		if (list!=null) {
 			String testId = character.getGameObject().getStringId();
-			for (Iterator i=list.iterator();i.hasNext();) {
-				String pacifyBlock = (String)i.next();
+			for (String pacifyBlock : list) {
 				String charId = getGameObject().getAttribute(pacifyBlock,"pacifyChar");
 				if (charId.equals(testId)) {
 					pacifyType = getGameObject().getInt(pacifyBlock,"pacifyType");
@@ -473,7 +472,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 				invWithPacify.add(character.getGameObject());
 			}
 			for (GameObject test:invWithPacify) {
-				ArrayList monsters = test.getThisAttributeList("pacifymonster");
+				ArrayList<String> monsters = test.getThisAttributeList("pacifymonster");
 				if (monsters.contains(getGameObject().getName())) {
 					int testPacify = test.getThisInt("pacifyType");
 					if (pacifyType==null || testPacify>pacifyType) { // use the BEST one
@@ -486,11 +485,10 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	}
 	
 	public SpellWrapper getPacificationSpell(CharacterWrapper character) {
-		ArrayList list = getGameObject().getThisAttributeList("pacifyBlocks");
+		ArrayList<String> list = getGameObject().getThisAttributeList("pacifyBlocks");
 		if (list!=null) {
 			String testId = character.getGameObject().getStringId();
-			for (Iterator i=list.iterator();i.hasNext();) {
-				String pacifyBlock = (String)i.next();
+			for (String pacifyBlock : list) {
 				String charId = getGameObject().getAttribute(pacifyBlock,"pacifyChar");
 				if (charId.equals(testId)) {
 					GameObject theSpell = getGameObject().getGameData().getGameObject(Long.valueOf(pacifyBlock.substring(6)));
@@ -974,10 +972,9 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		return componentHash;
 	}
 
-	public static ArrayList getRealmComponents(Collection objects) {
-		ArrayList list = new ArrayList();
-		for (Iterator i = objects.iterator(); i.hasNext();) {
-			GameObject go = (GameObject) i.next();
+	public static ArrayList<RealmComponent> getRealmComponents(Collection<GameObject> objects) {
+		ArrayList<RealmComponent> list = new ArrayList<>();
+		for (GameObject go: objects) {
 			list.add(RealmComponent.getRealmComponent(go));
 		}
 		return list;
@@ -1035,7 +1032,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		if (stringId != null && componentHash != null) {
 			try {
 				Long id = Long.valueOf(stringId);
-				GameObject go = (GameObject) dataSource.getGameObject(id);
+				GameObject go = dataSource.getGameObject(id);
 				if (go!=null) {
 					return getRealmComponent(go);
 				}
@@ -1076,7 +1073,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		return !getImmunities().isEmpty();
 	}
 	public boolean isImmuneTo(RealmComponent rc) {
-		ArrayList list = getImmunities();
+		ArrayList<String> list = getImmunities();
 		if (!list.isEmpty()) {
 			// Make sure we resolve to the monster, not the part!
 			if (rc.isMonsterPart()) {
@@ -1092,8 +1089,8 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		}
 		return false;
 	}
-	private ArrayList getImmunities() {
-		ArrayList immunities = new ArrayList();
+	private ArrayList<String> getImmunities() {
+		ArrayList<String> immunities = new ArrayList<>();
 		if (getGameObject().hasThisAttribute(Constants.MONSTER_IMMUNITY)) {
 			immunities.addAll(getGameObject().getThisAttributeList(Constants.MONSTER_IMMUNITY));
 		}
@@ -1112,8 +1109,8 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
 		return getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL_ENHANCED) || !character.getActiveInventoryValuesForThisKey(Constants.MONSTER_CONTROL_ENHANCED,null).isEmpty();
 	}
-	public ArrayList getControllableMonsters() {
-		ArrayList controls = new ArrayList();
+	public ArrayList<String> getControllableMonsters() {
+		ArrayList<String> controls = new ArrayList<>();
 		if (getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL)) {
 			controls.addAll(getGameObject().getThisAttributeList(Constants.MONSTER_CONTROL));
 		}
@@ -1123,8 +1120,8 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		}
 		return controls;
 	}
-	public ArrayList getControllableMonstersEnhanced() {
-		ArrayList controls = new ArrayList();
+	public ArrayList<String> getControllableMonstersEnhanced() {
+		ArrayList<String> controls = new ArrayList<>();
 		if (getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL) && getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL_ENHANCED)) {
 			controls.addAll(getGameObject().getThisAttributeList(Constants.MONSTER_CONTROL));
 		}
