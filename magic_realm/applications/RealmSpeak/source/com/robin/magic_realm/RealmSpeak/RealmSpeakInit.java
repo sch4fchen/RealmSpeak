@@ -82,7 +82,7 @@ public class RealmSpeakInit {
 		}
 		
 		// Handle all pre-setup initialization
-		appendNames = new ArrayList<String>();
+		appendNames = new ArrayList<>();
 		if (hostPrefs.getAlternativeTilesEnabled()) {
 			enableAlternativeTilesInLoader(loader);
 		}
@@ -223,7 +223,7 @@ public class RealmSpeakInit {
 		}
 		
 		// Expand the setup to accommodate the new tiles
-		ArrayList<String> tiedPools = new ArrayList<String>();
+		ArrayList<String> tiedPools = new ArrayList<>();
 		tiedPools.add("SPELL_I");
 		tiedPools.add("SPELL_II");
 		tiedPools.add("SPELL_III");
@@ -304,7 +304,7 @@ public class RealmSpeakInit {
 		ArrayList<GameObject> monsters = pool.find("monster");
 		
 		// First, count each type
-		HashLists<String, GameObject> hl = new HashLists<String, GameObject>();
+		HashLists<String, GameObject> hl = new HashLists<>();
 		for (GameObject go:monsters) {
 			hl.put(go.getName(),go);
 		}
@@ -314,7 +314,7 @@ public class RealmSpeakInit {
 			ArrayList<GameObject> list = hl.getList(name);
 			if (list.size()>1) {
 				for (int n=0;n<list.size();n++) {
-					GameObject go = (GameObject)list.get(n);
+					GameObject go = list.get(n);
 					go.setThisAttribute(Constants.NUMBER,n+1);
 				}
 			}
@@ -322,7 +322,7 @@ public class RealmSpeakInit {
 	}
 	private void markItemStartingLocations() {
 		GamePool pool = new GamePool(data.getGameObjects());
-		ArrayList<String> query = new ArrayList<String>();
+		ArrayList<String> query = new ArrayList<>();
 		query.add("item");
 		query.add(hostPrefs.getGameKeyVals());
 		for(GameObject item:pool.find(query)) {
@@ -370,7 +370,9 @@ public class RealmSpeakInit {
 					// Add the template to the data object and init deck
 					Quest quest = template.copyQuestToGameData(data);
 					if (quest.isAllPlay()) {
-						deck.addAllPlayCard(quest); // count is ignored for all play cards
+						if (!hostPrefs.hasPref(Constants.QST_NO_GENERAL_QUESTS)) {
+							deck.addAllPlayCard(quest); // count is ignored for all play cards
+						}
 					}
 					else {
 						deck.addCards(quest,count);
@@ -385,7 +387,7 @@ public class RealmSpeakInit {
 		for(Quest template:QuestLoader.loadAllQuestsFromQuestFolder()) {
 			if (template.getBoolean(QuestConstants.WORKS_WITH_BOQ)) {
 				Quest quest = template.copyQuestToGameData(data);
-				if (quest.isEvent()) {
+				if (quest.isEvent() && !hostPrefs.hasPref(Constants.QST_NO_GENERAL_QUESTS)) {
 					book.addEvent(quest);
 				}
 			}

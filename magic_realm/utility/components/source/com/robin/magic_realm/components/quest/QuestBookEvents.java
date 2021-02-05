@@ -59,11 +59,10 @@ public class QuestBookEvents extends GameObjectWrapper {
 		}
 	}
 	private ArrayList<GameObject> getEventsAsObjects() {
-		ArrayList<GameObject> allPlay = new ArrayList<GameObject>();
-		ArrayList list = getList(QUEST_EVENT_LIST);
+		ArrayList<GameObject> allPlay = new ArrayList<>();
+		ArrayList<String> list = getList(QUEST_EVENT_LIST);
 		if (list!=null && list.size()>0) {
-			for(Iterator i=list.iterator();i.hasNext();) {
-				String questId = (String)i.next();
+			for(String questId : list) {
 				GameObject go = getGameData().getGameObject(Long.valueOf(questId));
 				allPlay.add(go);
 			}
@@ -71,7 +70,7 @@ public class QuestBookEvents extends GameObjectWrapper {
 		return allPlay;
 	}
 	private ArrayList<Quest> getEvents() {
-		ArrayList<Quest> events = new ArrayList<Quest>();
+		ArrayList<Quest> events = new ArrayList<>();
 		for(GameObject go:getEventsAsObjects()) {
 			Quest quest = new Quest(go);
 			events.add(quest);

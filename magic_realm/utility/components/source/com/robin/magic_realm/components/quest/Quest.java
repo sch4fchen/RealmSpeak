@@ -74,11 +74,11 @@ public class Quest extends GameObjectWrapper {
 	
 	public Quest(GameObject go) {
 		super(go);
-		steps = new ArrayList<QuestStep>();
-		questRules = new ArrayList<QuestRule>();
-		locations = new ArrayList<QuestLocation>();
-		minorCharacters = new ArrayList<QuestMinorCharacter>();
-		counters = new ArrayList<QuestCounter>();
+		steps = new ArrayList<>();
+		questRules = new ArrayList<>();
+		locations = new ArrayList<>();
+		minorCharacters = new ArrayList<>();
+		counters = new ArrayList<>();
 		
 
 		for (Iterator i = go.getHold().iterator(); i.hasNext();) {
@@ -126,9 +126,8 @@ public class Quest extends GameObjectWrapper {
 		// Remove unused objects (but only when quest is in a gamedata by itself)
 		if (!getGameData().getGameName().equals(GAME_DATA_NAME))
 			return;
-		ArrayList<GameObject> toRemove = new ArrayList<GameObject>();
-		for (Iterator i = getGameData().getGameObjects().iterator(); i.hasNext();) {
-			GameObject go = (GameObject) i.next();
+		ArrayList<GameObject> toRemove = new ArrayList<>();
+		for (GameObject go : getGameData().getGameObjects()) {
 			if (go.getId() > 0 && go.getHeldBy() == null) { // Not the quest, and not held by anything... get rid of it!!
 				toRemove.add(go);
 			}
@@ -158,11 +157,10 @@ public class Quest extends GameObjectWrapper {
 		setBoolean(QuestConstants.ACTIVATEABLE,foundActive);
 	}
 
-	private ArrayList<QuestStep> filterMissingSteps(ArrayList ids) {
-		ArrayList<QuestStep> found = new ArrayList<QuestStep>();
+	private ArrayList<QuestStep> filterMissingSteps(ArrayList<String> ids) {
+		ArrayList<QuestStep> found = new ArrayList<>();
 		if (ids != null) {
-			for (Iterator i = ids.iterator(); i.hasNext();) {
-				String id = (String) i.next();
+			for (String id : ids) {
 				for (QuestStep step : steps) {
 					if (step.getGameObject().getStringId().equals(id)) {
 						found.add(step);
@@ -269,7 +267,7 @@ public class Quest extends GameObjectWrapper {
 	}
 
 	public ArrayList<String> getLocationTags() {
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		for (QuestLocation loc : getLocations()) {
 			list.add(loc.getTagName());
 		}
@@ -292,7 +290,7 @@ public class Quest extends GameObjectWrapper {
 	}
 
 	public ArrayList<String> getCounterTags() {
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		for (QuestCounter counter : getCounters()) {
 			list.add(counter.getTagName());
 		}
@@ -378,7 +376,7 @@ public class Quest extends GameObjectWrapper {
 	}
 
 	public ArrayList<GameObject> findClones(ArrayList<GameObject> objects) {
-		ArrayList<GameObject> list = new ArrayList<GameObject>();
+		ArrayList<GameObject> list = new ArrayList<>();
 		GamePool pool = new GamePool(objects);
 		for (GameObject go : pool.find(Quest.QUEST_UNIQUE_ID + "=" + getInt(Quest.QUEST_UNIQUE_ID))) {
 			if (go.equals(getGameObject()))
@@ -438,7 +436,7 @@ public class Quest extends GameObjectWrapper {
 		clear(REQ_RULES);
 	}
 
-	public ArrayList getRequiredRuleKeys() {
+	public ArrayList<String> getRequiredRuleKeys() {
 		return getList(REQ_RULES);
 	}
 
@@ -676,7 +674,7 @@ public class Quest extends GameObjectWrapper {
 	}
 
 	public void updateStepStates(String dayKey) {
-		Hashtable<String, QuestStep> lookup = new Hashtable<String, QuestStep>();
+		Hashtable<String, QuestStep> lookup = new Hashtable<>();
 		for (QuestStep step : steps) {
 			lookup.put(step.getGameObject().getStringId(), step);
 		}
@@ -686,7 +684,7 @@ public class Quest extends GameObjectWrapper {
 
 			QuestStepType stepType = step.getLogicType();
 
-			ArrayList requiredSteps = step.getRequiredSteps();
+			ArrayList<String> requiredSteps = step.getRequiredSteps();
 			boolean markAsReady;
 			if (stepType == QuestStepType.And) {
 				// For AND, assume true, and mark false if any unfinished steps are found
@@ -696,10 +694,9 @@ public class Quest extends GameObjectWrapper {
 				// For OR, assume false if any required steps, and mark true if any finished steps are found
 				markAsReady = requiredSteps == null || requiredSteps.isEmpty();
 			}
-			ArrayList failSteps = step.getFailSteps();
+			ArrayList<String> failSteps = step.getFailSteps();
 			if (requiredSteps != null) {
-				for (Iterator i = requiredSteps.iterator(); i.hasNext();) {
-					String reqId = (String) i.next();
+				for (String reqId : requiredSteps) {
 					QuestStep requiredStep = lookup.get(reqId);
 					if (requiredStep.getState() == QuestStepState.Finished) {
 						if (stepType == QuestStepType.Or) {
@@ -732,10 +729,10 @@ public class Quest extends GameObjectWrapper {
 	}
 
 	private void clearJournalEntries() {
-		ArrayList list = getList(JOURNAL_KEYS);
+		ArrayList<String> list = getList(JOURNAL_KEYS);
 		if (list != null) {
-			for (Iterator i = list.iterator(); i.hasNext();) {
-				String blockKey = JOURNAL_KEYS + (String) i.next();
+			for (String i : list) {
+				String blockKey = JOURNAL_KEYS + i;
 				getGameObject().removeAttributeBlock(blockKey);
 			}
 			clear(JOURNAL_KEYS);
@@ -744,10 +741,10 @@ public class Quest extends GameObjectWrapper {
 
 	public ArrayList<QuestJournalEntry> getJournalEntries() {
 		ArrayList<QuestJournalEntry> entries = new ArrayList<QuestJournalEntry>();
-		ArrayList list = getList(JOURNAL_KEYS);
+		ArrayList<String> list = getList(JOURNAL_KEYS);
 		if (list != null) {
-			for (Iterator i = list.iterator(); i.hasNext();) {
-				String blockKey = JOURNAL_KEYS + (String) i.next();
+			for (String i : list) {
+				String blockKey = JOURNAL_KEYS + i;
 				QuestStepState entryType = QuestStepState.valueOf(getGameObject().getAttribute(blockKey, "entryType"));
 				String text = getGameObject().getAttribute(blockKey, "text");
 				entries.add(new QuestJournalEntry(entryType, text));
@@ -813,7 +810,7 @@ public class Quest extends GameObjectWrapper {
 	public Quest copyQuestToGameData(GameData gameData) {
 		// Duplicate all the objects in the quest
 		ArrayList<GameObject> allQuestObjects = getGameObject().getAllContainedGameObjects();
-		Hashtable<Long, GameObject> lookup = new Hashtable<Long, GameObject>();
+		Hashtable<Long, GameObject> lookup = new Hashtable<>();
 		for (GameObject questGo : allQuestObjects) {
 			GameObject go = gameData.createNewObject(questGo);
 			lookup.put(questGo.getId(), go);
