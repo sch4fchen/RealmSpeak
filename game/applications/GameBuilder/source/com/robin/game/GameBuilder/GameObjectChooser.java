@@ -36,14 +36,14 @@ import com.robin.general.swing.ListManagerPane;
 public class GameObjectChooser extends JDialog {
 
 	private String oldFilterString;
-	private ArrayList oldExcludeList;
+	private ArrayList<GameObject> oldExcludeList;
 
 	protected GameObject object;
 	protected GameData data;
 	protected ListManagerPane objectsPane;
 	protected JTextField objectsFilterField;
 	
-	protected ArrayList chosenObjects = null;
+	protected ArrayList<GameObject> chosenObjects = null;
 	
 	public GameObjectChooser(Component component,GameObject object) {
 		this(component,object,object.getGameData());
@@ -127,16 +127,16 @@ public class GameObjectChooser extends JDialog {
 			box.add(cancel);
 		getContentPane().add(box,"South");
 	}
-	private ArrayList getSelectedObjects() {
-		ArrayList objects = data.getFilteredGameObjects();
-		ArrayList selObjects = new ArrayList();
+	private ArrayList<GameObject> getSelectedObjects() {
+		ArrayList<GameObject> objects = data.getFilteredGameObjects();
+		ArrayList<GameObject> selObjects = new ArrayList<>();
 		int[] row = objectsPane.getSelectedRows();
 		for (int i=0;i<row.length;i++) {
 			selObjects.add(objects.get(row[i]));
 		}
 		return selObjects;
 	}
-	public ArrayList getChosenObjects() {
+	public ArrayList<GameObject> getChosenObjects() {
 		return chosenObjects;
 	}
 	public void close() {

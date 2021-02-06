@@ -17,8 +17,6 @@
  */
 package com.robin.magic_realm.RealmBattle.targeting;
 
-import java.util.Iterator;
-
 import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
 import com.robin.magic_realm.components.MonsterChitComponent;
@@ -35,8 +33,7 @@ public class SpellTargetingWeapon extends SpellTargetingSingle {
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
 		// Targets one weapon counter, native counter, Goblin counter, Ogre counter or Giant's club
 		TileLocation loc = battleModel.getBattleLocation();
-		for (Iterator i=loc.clearing.getDeepClearingComponents().iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : loc.clearing.getDeepClearingComponents()) {
 			if (rc.isWeapon()) {
 				gameObjects.add(rc.getGameObject());
 				identifiers.add(rc.getGameObject().getHeldBy().getName());

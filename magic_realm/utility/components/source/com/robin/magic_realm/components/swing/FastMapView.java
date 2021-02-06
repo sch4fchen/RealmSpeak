@@ -26,7 +26,6 @@ import java.io.File;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Hashtable;
-import java.util.Iterator;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -35,7 +34,6 @@ import javax.swing.event.MouseInputAdapter;
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
 import com.robin.general.graphics.GraphicsUtil;
-import com.robin.general.swing.MouseUtility;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.utility.RealmObjectMaster;
@@ -142,13 +140,13 @@ public class FastMapView extends JComponent {
 		});
 	}
 	public void updateGrid() {
-		mapGrid = new Hashtable<Point, TileComponent>();
+		mapGrid = new Hashtable<>();
 		Collection<GameObject> tileObjects = RealmObjectMaster.getRealmObjectMaster(gameData).getTileObjects();
 		for (GameObject go : tileObjects) {
 			TileComponent tile = (TileComponent)RealmComponent.getRealmComponent(go);
 			tile.setAlwaysPaint(true);
-			String pos = (String)go.getAttribute("mapGrid","mapPosition");
-			String rot = (String)go.getAttribute("mapGrid","mapRotation");
+			String pos = go.getAttribute("mapGrid","mapPosition");
+			String rot = go.getAttribute("mapGrid","mapRotation");
 			
 			if (pos!=null && rot!=null) {
 				tile.setRotation(Integer.valueOf(rot).intValue());
@@ -166,8 +164,8 @@ public class FastMapView extends JComponent {
 		int minY = Integer.MAX_VALUE;
 		int maxX = Integer.MIN_VALUE;
 		int maxY = Integer.MIN_VALUE;
-		for (Enumeration e=mapGrid.keys();e.hasMoreElements();) {
-			Point pos = (Point)e.nextElement();
+		for (Enumeration<Point> e=mapGrid.keys();e.hasMoreElements();) {
+			Point pos = e.nextElement();
 			int x = pos.x * colWidth;
 			int y = (pos.x * rowAdjust) + (pos.y * rowHeight);
 			if (x<minX) {
@@ -213,10 +211,9 @@ public class FastMapView extends JComponent {
 		AffineTransform at = AffineTransform.getScaleInstance(scale,scale);
 		g.setTransform(at);
 		
-		for (Iterator i=mapGrid.keySet().iterator();i.hasNext();) {
-			Point gp = (Point)i.next();
+		for (Point gp : mapGrid.keySet()) {
 			Point p = convertGridToCoordinate(gp);
-			TileComponent tile = (TileComponent)mapGrid.get(gp);
+			TileComponent tile = mapGrid.get(gp);
 			tile.paintTo(g,p.x+offset.x,p.y+offset.y,TILE_SIZE.width,TILE_SIZE.height);
 		}
 	}

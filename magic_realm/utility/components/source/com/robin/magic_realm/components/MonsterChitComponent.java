@@ -19,7 +19,6 @@ package com.robin.magic_realm.components;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import com.robin.game.objects.GameObject;
 import com.robin.general.graphics.StarShape;

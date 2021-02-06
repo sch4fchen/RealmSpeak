@@ -93,7 +93,7 @@ public class GamePool extends ArrayList {
 	 * Locates all GameObjects that have all members of "keyVals" in their attributes
 	 */
 	public ArrayList<GameObject> find(Collection<String> keyVals) {
-		ArrayList<GameObject> foundObjects = new ArrayList<GameObject>();
+		ArrayList<GameObject> foundObjects = new ArrayList<>();
 		for (int i=0;i<size();i++) {
 			GameObject go = (GameObject)get(i);
 			if (go.hasAllKeyVals(keyVals)) {

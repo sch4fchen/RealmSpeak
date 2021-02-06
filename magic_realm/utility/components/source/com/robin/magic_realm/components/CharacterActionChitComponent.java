@@ -172,13 +172,11 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		if ("M/F".equals(action)) {
 			return null;
 		}
-		else {
-			if (isMove()) {
-				return Color.blue;
-			}
-			else if (isFight() || isFightAlert()) {
-				return Color.red;
-			}
+		if (isMove()) {
+			return Color.blue;
+		}
+		else if (isFight() || isFightAlert()) {
+			return Color.red;
 		}
 		return null;
 	}
@@ -591,7 +589,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 	}
 	
 	public ArrayList<Integer> getEnchantableNumbers() {
-		ArrayList<Integer> list = new ArrayList<Integer>();
+		ArrayList<Integer> list = new ArrayList<>();
 		list.add(getMagicNumber());
 		return list;
 	}

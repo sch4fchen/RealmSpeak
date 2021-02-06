@@ -64,15 +64,14 @@ public class TileEditComponent extends TileComponent {
 		
 		// First, rip out all clearing/path keys from the side
 		OrderedHashtable hash = gameObject.getAttributeBlock(blockName);
-		ArrayList keysToRemove = new ArrayList();
+		ArrayList<String> keysToRemove = new ArrayList<>();
 		for (Enumeration e=hash.keys();e.hasMoreElements();) {
 			String key = (String)e.nextElement();
 			if (key.startsWith("path") || key.startsWith("clearing")) {
 				keysToRemove.add(key);
 			}
 		}
-		for (Iterator i=keysToRemove.iterator();i.hasNext();) {
-			String key = (String)i.next();
+		for (String key : keysToRemove) {
 			hash.remove(key);
 		}
 		
@@ -115,9 +114,9 @@ public class TileEditComponent extends TileComponent {
 	}
 	
 	protected String encodePoint(Point p) {
-		String px = new Double((p.x*100.0)/(double)TILE_WIDTH).toString()+". ";
+		String px = new Double((p.x*100.0)/TILE_WIDTH).toString()+". ";
 		px = px.substring(0,px.indexOf(".")+2);
-		String py = new Double((p.y*100.0)/(double)TILE_HEIGHT).toString()+". ";
+		String py = new Double((p.y*100.0)/TILE_HEIGHT).toString()+". ";
 		py = py.substring(0,py.indexOf(".")+2);
 		return px+","+py;
 	}

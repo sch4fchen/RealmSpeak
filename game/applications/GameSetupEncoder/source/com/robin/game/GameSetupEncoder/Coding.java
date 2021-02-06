@@ -36,8 +36,8 @@ public class Coding extends Properties {
 		this.codePrefix = codePrefix;
 		this.numLength = numLength;
 	}
-	public Collection getKeyVals() {
-		ArrayList keyVals = new ArrayList();
+	public Collection<String> getKeyVals() {
+		ArrayList<String> keyVals = new ArrayList<>();
 		for (Enumeration e=keys();e.hasMoreElements();) {
 			String key = (String)e.nextElement();
 			String val = getProperty(key);
@@ -55,7 +55,7 @@ public class Coding extends Properties {
 		sb.append(Encoder.LINE_END);
 		sb.append(StringUtilities.getRepeatString("-",79));
 		sb.append(Encoder.LINE_END);
-		Collection c = pool.find(getKeyVals());
+		Collection<GameObject> c = pool.find(getKeyVals());
 		pool = new GamePool(c);
 		pool.shuffle();
 		int n=1;
@@ -76,7 +76,7 @@ public class Coding extends Properties {
 		return sb.toString();
 	}
 	public static String getCode(GameObject object) {
-		String val = (String)object.getAttribute(BLOCK_NAME,CODE_VALUE);
+		String val = object.getAttribute(BLOCK_NAME,CODE_VALUE);
 		if (val==null) {
 			val="";
 		}

@@ -36,7 +36,7 @@ public class PieProgressBar extends JComponent {
 	private int wedges;
 	private boolean showDivisions;
 	
-	private Hashtable colorChange;
+	private Hashtable<Integer, Color> colorChange;
 
 	public PieProgressBar(int radius,int wedges,boolean showDivisions) {
 		this.wedges = wedges;
@@ -85,14 +85,14 @@ public class PieProgressBar extends JComponent {
 	}
 	public void setColor(int wedge,Color c) {
 		if (colorChange==null) {
-			colorChange = new Hashtable();
+			colorChange = new Hashtable<>();
 		}
 		colorChange.put(new Integer(wedge),c);
 	}
 	public void paintComponent(Graphics g1) {
 		Graphics2D g = (Graphics2D)g1;
 		
-		Ellipse2D.Double oval = new Ellipse2D.Double(0.0,0.0,(double)size.width,(double)size.height);
+		Ellipse2D.Double oval = new Ellipse2D.Double(0.0,0.0,size.width,size.height);
 		
 		g.setColor(Color.black);
 		g.fill(oval);
@@ -101,16 +101,16 @@ public class PieProgressBar extends JComponent {
 		Arc2D.Double arc;
 		
 		double end = 90f;
-		double change = ((double)currentWedge*360f)/(double)wedges;
+		double change = ((double)currentWedge*360f)/wedges;
 		double start = end - change;
 		if (start<0) {
 			start+=360f;
 		}
 		
-		arc = new Arc2D.Double(0f,0f,(double)size.width,(double)size.height,start,change,Arc2D.PIE);
+		arc = new Arc2D.Double(0f,0f,size.width,size.height,start,change,Arc2D.PIE);
 		Color wedgeColor = Color.blue;
 		if (colorChange!=null) {
-			Color c = (Color)colorChange.get(new Integer(currentWedge));
+			Color c = colorChange.get(new Integer(currentWedge));
 			if (c!=null) {
 				wedgeColor = c;
 			}
@@ -126,12 +126,12 @@ public class PieProgressBar extends JComponent {
 				start+=360f;
 			}
 			if (i>=currentWedge) {
-				arc = new Arc2D.Double(0.0,0.0,(double)size.width,(double)size.height,start,wedgeSize,Arc2D.PIE);
+				arc = new Arc2D.Double(0.0,0.0,size.width,size.height,start,wedgeSize,Arc2D.PIE);
 				g.setColor(Color.white);
 				g.fill(arc);
 			}
 			if (showDivisions) {
-				arc = new Arc2D.Double(0.0,0.0,(double)size.width,(double)size.height,start,wedgeSize,Arc2D.PIE);
+				arc = new Arc2D.Double(0.0,0.0,size.width,size.height,start,wedgeSize,Arc2D.PIE);
 				g.setColor(Color.black);
 				g.draw(arc);
 			}

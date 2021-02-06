@@ -36,7 +36,7 @@ public class SpellViewer extends JPanel {
 	private JLabel spellIcon;
 	private JLabel spellTable;
 	private JEditorPane spellDetail;
-	private JList spellList;
+	private JList<SpellListModel> spellList;
 	private SpellListModel spellListModel;
 	private JCheckBox typeOption;
 	
@@ -57,7 +57,7 @@ public class SpellViewer extends JPanel {
 	private JPanel getListPanel() {
 		JPanel panel = new JPanel(new BorderLayout());
 		spellListModel = new SpellListModel();
-		spellList = new JList(spellListModel);
+		spellList = new JList<SpellListModel>(spellListModel);
 		spellList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		spellList.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {

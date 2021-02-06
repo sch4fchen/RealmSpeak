@@ -35,7 +35,7 @@ public class Main extends Builder {
 		createTitle(new File(folder.getAbsolutePath()+File.separator+"title.htm"));
 		createMain(new File(folder.getAbsolutePath()+File.separator+"main.htm"));
 	}
-	private void createIcon(File folder,String iconPath,String name) {
+	private static void createIcon(File folder,String iconPath,String name) {
 		ImageIcon icon = IconFactory.findIcon(iconPath);
 		RealmCharacterBuilderModel.exportImage(new File(folder.getAbsolutePath()+File.separator+name),icon);
 	}

@@ -22,7 +22,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.Iterator;
 
 import javax.swing.*;
 
@@ -39,7 +38,7 @@ public class EndCombatFrame extends JFrame {
 	private ArrayList playersToRespond;
 	
 	private JTextArea responseArea;
-	private Hashtable responseHash;
+	private Hashtable<String, String> responseHash;
 	
 	private JButton closeButton;
 	private JButton cancelEndButton;
@@ -48,7 +47,7 @@ public class EndCombatFrame extends JFrame {
 		this.id = cum_id++;
 		this.parent = parent;
 		this.playersToRespond = playersToRespond;
-		responseHash = new Hashtable();
+		responseHash = new Hashtable<>();
 		initComponents();
 	}
 	public long getId() {
@@ -121,15 +120,14 @@ public class EndCombatFrame extends JFrame {
 		}
 	}
 	private String getUnanimousResponse() {
-		ArrayList all = new ArrayList();
-		for (Iterator i=responseHash.values().iterator();i.hasNext();) {
-			String response = (String)i.next();
+		ArrayList<String> all = new ArrayList<>();
+		for (String response : responseHash.values()) {
 			if (!all.contains(response)) {
 				all.add(response);
 			}
 		}
 		if (all.size()==1) { // unanimous response
-			return (String)all.get(0);
+			return all.get(0);
 		}
 		return null;
 	}

@@ -20,7 +20,6 @@ package com.robin.general.swing;
 import java.awt.BorderLayout;
 import java.awt.event.*;
 import java.util.HashMap;
-import java.util.Iterator;
 
 import javax.swing.*;
 
@@ -33,17 +32,17 @@ public class FrameManager {
 	public static String DEFAULT_FRAME_KEY = "default";
 	
 	private ManagedFrame mostRecentFrame;
-	private HashMap frameHash;
+	private HashMap<String,ManagedFrame> frameHash;
 	
 	private FrameManager() {
-		frameHash = new HashMap();
+		frameHash = new HashMap<>();
 	}
-	private void _dispose(ManagedFrame frame) {
+	private static void _dispose(ManagedFrame frame) {
 		frame.setVisible(false);
 		frame.dispose();
 		frame.cleanup();
 	}
-	private void _show(ManagedFrame frame) {
+	private static void _show(ManagedFrame frame) {
 		frame.setVisible(true);
 		frame.toFront();
 	}
@@ -64,7 +63,7 @@ public class FrameManager {
 	 * Forces a frame registered to the frameKey to display.  Returns false if there is not.
 	 */
 	public boolean showFrame(String frameKey) {
-		ManagedFrame cached = (ManagedFrame)frameHash.get(frameKey);
+		ManagedFrame cached = frameHash.get(frameKey);
 		if (cached!=null) {
 			_show(cached);
 			return true;
@@ -72,15 +71,14 @@ public class FrameManager {
 		return false;
 	}
 	public void disposeFrame(String frameKey) {
-		ManagedFrame cached = (ManagedFrame)frameHash.get(frameKey);
+		ManagedFrame cached = frameHash.get(frameKey);
 		if (cached!=null) {
 			_dispose(cached);
 			frameHash.remove(frameKey);
 		}
 	}
 	public void refresh() {
-		for(Iterator i=frameHash.values().iterator();i.hasNext();) {
-			ManagedFrame frame = (ManagedFrame)i.next();
+		for(ManagedFrame frame : frameHash.values()) {
 			frame.toFront();
 		}
 	}
