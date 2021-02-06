@@ -2,11 +2,12 @@ Expansion 1: Two-Handed Combat + Ability: "Dual Wielding"
 BattleModel: doResolveAttacks -> doTargetAttack -> getAdjustedHarm, sortAccordingToRound, processHits
 CharacterChitComponent:
 	getLength + Comparer
-	getAttackSpeed + Comparer
-	getHarm
-	isMissile
+	getAttackSpeed + Comparer + ...
+	getHarm + ...
+	isMissile + ...
 	getMissileType
 	hitsOnTie
+	applyHit
 RULES: Check which weapon can hit which target, check speed and harm
 
 Dual Wielding: Option alert both weapons
