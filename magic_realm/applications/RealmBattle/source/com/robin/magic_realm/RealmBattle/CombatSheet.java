@@ -548,14 +548,31 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			boolean targetingSomeoneOnThisSheet = (target!=null && (sheetParticipants.contains(target) || sheetOwner.equals(target))) || (target2!=null && (sheetParticipants.contains(target2) || sheetOwner.equals(target2)));
 			if (!targetingSomeoneOnThisSheet && target!=null) {
 				RealmComponent targetsTarget = target.getTarget();
+				RealmComponent targetsTarget2 = target.get2ndTarget();
 				if (targetsTarget!=null && sheetParticipants.contains(targetsTarget)) {
+					// This is sloppy, but will work
+					targetingSomeoneOnThisSheet = true;
+				}
+				else if (targetsTarget2!=null && sheetParticipants.contains(targetsTarget2)) {
+					// This is sloppy, but will work
+					targetingSomeoneOnThisSheet = true;
+				}
+			}
+			if (!targetingSomeoneOnThisSheet && target2!=null) {
+				RealmComponent targetsTarget = target2.getTarget();
+				RealmComponent targetsTarget2 = target2.get2ndTarget();
+				if (targetsTarget!=null && sheetParticipants.contains(targetsTarget)) {
+					// This is sloppy, but will work
+					targetingSomeoneOnThisSheet = true;
+				}
+				else if (targetsTarget2!=null && sheetParticipants.contains(targetsTarget2)) {
 					// This is sloppy, but will work
 					targetingSomeoneOnThisSheet = true;
 				}
 			}
 			if (isInactiveSheetOwner || targetingSomeoneOnThisSheet || castingASpell) {
 				if (excludeList==null || !excludeList.contains(rc)) {
-					if (!rc.isCharacter() && sheetParticipants.contains(target)) {
+					if (!rc.isCharacter() && (sheetParticipants.contains(target) || sheetParticipants.contains(target2))) {
 						if (!addedToDead(rc)) {
 							placeParticipant(rc,attackBox1);
 							sheetParticipants.add(rc);
@@ -568,9 +585,10 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 						if (spell==null) {
 							// Only show attacks if attacking a non-owned target, OR the attacker is the activeParticipant
 							if (reveal 
-									|| (target==null)
+									|| (target==null && target2==null)
 									|| (target!=null && target.getOwnerId()==null)
-									|| (target!=null && rc.equals(combatFrame.getActiveParticipant()))) {
+									|| (target2!=null && target2.getOwnerId()==null)
+									|| ((target!=null || target2!=null) && rc.equals(combatFrame.getActiveParticipant()))) {
 								
 								MonsterChitComponent transmorph = characterChit.getTransmorphedComponent();
 								if (transmorph==null) {

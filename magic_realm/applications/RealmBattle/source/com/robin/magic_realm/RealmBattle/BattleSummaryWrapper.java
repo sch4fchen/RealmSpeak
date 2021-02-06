@@ -69,15 +69,15 @@ public class BattleSummaryWrapper extends GameObjectWrapper {
 	}
 	public BattleSummary getBattleSummary() {
 		BattleSummary bs = new BattleSummary();
-		ArrayList attackers = getList(ATTACKERS);
-		ArrayList targets = getList(TARGETS);
+		ArrayList<String> attackers = getList(ATTACKERS);
+		ArrayList<String> targets = getList(TARGETS);
 		GameData data = getGameObject().getGameData();
 		if (attackers!=null && attackers.size()>0) {
-			Iterator k = attackers.iterator();
-			Iterator d = targets.iterator();
+			Iterator<String> k = attackers.iterator();
+			Iterator<String> d = targets.iterator();
 			while(k.hasNext()) {
-				String kid = (String)k.next();
-				String did = (String)d.next();
+				String kid = k.next();
+				String did = d.next();
 				GameObject kGo = data.getGameObject(Long.valueOf(kid));
 				GameObject dGo = data.getGameObject(Long.valueOf(did));
 				bs.addAttackerTarget(kGo,dGo);

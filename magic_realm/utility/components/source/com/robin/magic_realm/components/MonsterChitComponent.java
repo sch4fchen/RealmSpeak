@@ -115,10 +115,9 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 
 	public MonsterPartChitComponent getWeapon() {
 		if (!getGameObject().hasThisAttribute("animal")) { // as long as the monster isn't transformed!
-			ArrayList list = getGameObject().getHold();
+			ArrayList<GameObject> list = getGameObject().getHold();
 			if (list != null && list.size() > 0) {
-				for (Iterator i=list.iterator();i.hasNext();) {
-					GameObject weapon = (GameObject)i.next();
+				for (GameObject weapon : list) {
 					RealmComponent rc = RealmComponent.getRealmComponent(weapon);
 					if (rc.isMonsterPart()) { // Might be a Hurricane Winds FLY chit
 						MonsterPartChitComponent monsterPart = (MonsterPartChitComponent) RealmComponent.getRealmComponent(weapon);
@@ -314,7 +313,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		Color attackBack = isLightSideUp()?lightColor:darkColor;
 
 		// Draw image
-		String icon_type = (String)gameObject.getThisAttribute(Constants.ICON_TYPE);
+		String icon_type = gameObject.getThisAttribute(Constants.ICON_TYPE);
 		if (icon_type != null) {
 			if (isDisplayStyleFrenzel()) {
 				drawIcon(g, getIconFolder(), icon_type, 0.6,-5,1,null);
@@ -402,16 +401,14 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		if (magicType!=null && magicType.trim().length()>0) {
 			return magicType+getAttackSpeed().getNum();
 		}
-		else {
-			Strength str = getStrength();
-			if (!str.isNegligible()) {
-				StringBuffer sb = new StringBuffer(str.toString());
-				sb.append(getAttackSpeed().getNum());
-				for (int i=0;i<getSharpness();i++) {
-					sb.append("*");
-				}
-				return sb.toString();
+		Strength str = getStrength();
+		if (!str.isNegligible()) {
+			StringBuffer sb = new StringBuffer(str.toString());
+			sb.append(getAttackSpeed().getNum());
+			for (int i=0;i<getSharpness();i++) {
+				sb.append("*");
 			}
+			return sb.toString();
 		}
 		return "";
 	}
