@@ -392,7 +392,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			}
 			boolean hasWeapon = false;
 			boolean missileWeapon = false;
-			Harm baseHarm = BattleUtility.getHarm(rc); // harm from the attack (ignoring the weapon)
+			Harm baseHarm = getHarmForRealmComponent(rc); // harm from the attack (ignoring the weapon)
 			//DUAL
 			ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
 			if (weapons != null  && !weapons.isEmpty()) {
@@ -435,6 +435,20 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 
 		Harm totalHarm = new Harm(weaponStrength, sharpness, ignoreArmor);
 		return totalHarm;
+	}
+	
+	private static Harm getHarmForRealmComponent(RealmComponent rc) {
+		Harm harm = null;
+		if (rc.isTreasure() && rc.getGameObject().hasThisAttribute("strength")) {
+			// This wont work for weapons, but that's what I want here!  Weapons are in ADDITION to fight strength.
+			Strength strength = new Strength(rc.getGameObject().getThisAttribute("strength"));
+			harm = new Harm(strength,0);
+		}
+		if (rc.isBattleChit()) { // this handles character action chits, natives, and horses
+			BattleChit bc = (BattleChit)rc;
+			harm = bc.getHarm();
+		}
+		return harm;
 	}
 
 	public boolean hasNaturalArmor() {

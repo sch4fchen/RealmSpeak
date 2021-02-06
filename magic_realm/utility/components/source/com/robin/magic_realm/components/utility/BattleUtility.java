@@ -55,20 +55,6 @@ public class BattleUtility {
 		return speed;
 	}
 
-	public static Harm getHarm(RealmComponent rc) {
-		Harm harm = null;
-		if (rc.isTreasure() && rc.getGameObject().hasThisAttribute("strength")) {
-			// This wont work for weapons, but that's what I want here!  Weapons are in ADDITION to fight strength.
-			Strength strength = new Strength(rc.getGameObject().getThisAttribute("strength"));
-			harm = new Harm(strength,0);
-		}
-		if (rc.isBattleChit()) { // this handles character action chits, natives, and horses
-			BattleChit bc = (BattleChit)rc;
-			harm = bc.getHarm();
-		}
-		return harm;
-	}
-
 	public static ArrayList<CharacterActionChitComponent> getPlayedChits(CharacterWrapper character) {
 		ArrayList<CharacterActionChitComponent> list = new ArrayList<CharacterActionChitComponent>();
 		CombatWrapper combat = new CombatWrapper(character.getGameObject());
