@@ -4798,6 +4798,15 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return ret;
 	}
+	public Collection<RealmComponent> getActiveMoveChitsAsRealmComponents() {
+		ArrayList<RealmComponent> ret = new ArrayList<RealmComponent>();
+		for (CharacterActionChitComponent chit : getActiveChits()) {
+			if (chit.isMove()) {
+				ret.add((RealmComponent)chit);
+			}
+		}
+		return ret;
+	}
 	public Collection<CharacterActionChitComponent> getActiveFightChits() {
 		ArrayList<CharacterActionChitComponent> ret = new ArrayList<CharacterActionChitComponent>();
 		for (CharacterActionChitComponent chit : getActiveChits()) {
@@ -4838,7 +4847,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return activeFightAlertChits;
 		
 	}
-	public Collection getFlyChits() {
+	public Collection<RealmComponent> getFlyChits() {
 		return getFlyChits(false);
 	}
 	public Collection<RealmComponent> getFlyChits(boolean excludeActionChits) {

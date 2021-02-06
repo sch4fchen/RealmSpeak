@@ -283,6 +283,7 @@ public class CombatFrame extends JFrame {
 		suggestionAi = new CombatSuggestionAi(this);
 		
 		this.playerName = playerName;
+		this.allParticipants = new ArrayList<>();
 		this.finishedActionListener = listener;
 		if (lastKnownLocation==null) {
 			lastKnownLocation = ComponentTools.findPreferredRectangle(970,Integer.MAX_VALUE);
@@ -609,15 +610,14 @@ public class CombatFrame extends JFrame {
 		}
 	}
 	public boolean hasRandomAssignment() {
-		ArrayList list = activeCharacter.getGameObject().getThisAttributeList(Constants.RANDOM_ASSIGNMENT_WINNER);
+		ArrayList<String> list = activeCharacter.getGameObject().getThisAttributeList(Constants.RANDOM_ASSIGNMENT_WINNER);
 		return (list!=null && list.size()>0);
 	}
 	public void updateRandomAssignment() {
-		ArrayList list = activeCharacter.getGameObject().getThisAttributeList(Constants.RANDOM_ASSIGNMENT_WINNER);
+		ArrayList<String> list = activeCharacter.getGameObject().getThisAttributeList(Constants.RANDOM_ASSIGNMENT_WINNER);
 		if (list!=null) {
-			list = new ArrayList(list);
 			if (list.size()>0) {
-				String denizenId = (String)list.remove(0);
+				String denizenId = list.remove(0);
 				activeCharacter.getGameObject().setThisAttributeList(Constants.RANDOM_ASSIGNMENT_WINNER,list);
 				GameObject go = gameData.getGameObject(Long.valueOf(denizenId));
 				RealmComponent denizen = RealmComponent.getRealmComponent(go);
@@ -944,7 +944,7 @@ public class CombatFrame extends JFrame {
 	}
 	
 	private ArrayList<JComponent> createControls() {
-		ArrayList list = new ArrayList();
+		ArrayList<JComponent> list = new ArrayList<>();
 		roundLabel = new JLabel("Round "+getCurrentRound(),JLabel.CENTER);
 		roundLabel.setFont(COMBAT_ROUND_FONT);
 		roundLabel.setForeground(Color.blue);
@@ -1508,9 +1508,8 @@ public class CombatFrame extends JFrame {
 				return new RealmComponentError(null,"Missing spell attack","You must place your spell attack before continuing.");
 			}
 			
-			ArrayList friendly = CombatSheet.filterFriends(activeParticipant,allParticipants);
-			for (Iterator i=friendly.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			ArrayList<RealmComponent> friendly = CombatSheet.filterFriends(activeParticipant,allParticipants);
+			for (RealmComponent rc : friendly) {
 				CombatSheet sheet = CombatSheet.createCombatSheet(this,currentBattleModel,rc,interactiveFrame, hostPrefs);
 				
 				// Verify that all targets (that need to be) are assigned
@@ -1563,7 +1562,7 @@ public class CombatFrame extends JFrame {
 		return getAvailableManeuverOptions(box,includeHorses,true);
 	}
 	public Collection getAvailableManeuverOptions(int box,boolean includeHorses,boolean limitEffort) {
-		ArrayList list = new ArrayList();
+		ArrayList<RealmComponent> list = new ArrayList<>();
 		GameObject transmorph = activeCharacter.getTransmorph();
 		if (transmorph==null) {
 			int effortLeft = limitEffort?getAvailableEffort():2;
@@ -1572,10 +1571,9 @@ public class CombatFrame extends JFrame {
 			Strength heaviestInventory = activeCharacter.getNeededSupportWeight();
 			
 			// Find all active chits that have less than (effortLimit-totalEffort) asterisks
-			Collection c = activeCharacter.getActiveMoveChits();
+			Collection<RealmComponent> c = activeCharacter.getActiveMoveChitsAsRealmComponents();
 			c.addAll(activeCharacter.getFlyChits());
-			for (Iterator i=c.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : c) {
 				if (rc.isActionChit()) {
 					CharacterActionChitComponent chit = (CharacterActionChitComponent)rc;
 					if (chit.getEffortAsterisks()<=effortLeft && chit.getStrength().strongerOrEqualTo(heaviestInventory)) {
@@ -1598,8 +1596,7 @@ public class CombatFrame extends JFrame {
 			}
 			
 			// Add any boots cards or horses or flying carpets
-			for (Iterator i=activeCharacter.getActiveInventory().iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
+			for (GameObject go : activeCharacter.getActiveInventory()) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
 				if (go.hasThisAttribute("boots")) {
 					Strength bootStrength = new Strength(go.getThisAttribute("strength"));
@@ -1916,11 +1913,9 @@ public class CombatFrame extends JFrame {
 		}
 		updateSelection();
 	}
-	private ArrayList getSelectedCombatSheetParticipants() {
-		ArrayList list = new ArrayList();
-		for (Iterator i=activeCombatSheet.getAllParticipantsOnSheet().iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
-			
+	private ArrayList<RealmComponent> getSelectedCombatSheetParticipants() {
+		ArrayList<RealmComponent> list = new ArrayList<>();
+		for (RealmComponent rc : activeCombatSheet.getAllParticipantsOnSheet()) {
 			if (!rc.equals(activeParticipant) && (rc.isMonster() || rc.isNative())) {
 				list.add(rc);
 			}

@@ -218,12 +218,15 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			CharacterWrapper character = new CharacterWrapper(getGameObject());
 			boolean hasWeapon = false;
 			//DUAL
-			WeaponChitComponent weapon = character.getActiveWeapons().get(weaponNumber);
-			if (weapon != null) {
-				CombatWrapper wCombat = new CombatWrapper(weapon.getGameObject());
-				if (wCombat.getCombatBox()>0) {
-					hasWeapon = true;
-					length = weapon.getLength();
+			ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
+			if (weapons != null && weapons.size()>weaponNumber) {
+				WeaponChitComponent weapon = weapons.get(weaponNumber);
+				if (weapon != null) {
+					CombatWrapper wCombat = new CombatWrapper(weapon.getGameObject());
+					if (wCombat.getCombatBox()>0) {
+						hasWeapon = true;
+						length = weapon.getLength();
+					}
 				}
 			}
 			if (!hasWeapon) {
@@ -334,13 +337,16 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 
 			// Weapon speed overrides anything else
 			//DUAL
-			WeaponChitComponent weapon = character.getActiveWeapons().get(weaponNumber);
-			if (weapon != null) {
-				CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
-				if (combat.getCombatBox() > 0) { // only if it was played!
-					Speed weaponSpeed = weapon.getSpeed();
-					if (weaponSpeed != null) {
-						speed = weaponSpeed;
+			ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
+			if (weapons != null && weapons.size()>weaponNumber) {
+				WeaponChitComponent weapon = weapons.get(weaponNumber);
+				if (weapon != null) {
+					CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
+					if (combat.getCombatBox() > 0) { // only if it was played!
+						Speed weaponSpeed = weapon.getSpeed();
+						if (weaponSpeed != null) {
+							speed = weaponSpeed;
+						}
 					}
 				}
 			}
@@ -400,17 +406,20 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			boolean missileWeapon = false;
 			Harm baseHarm = BattleUtility.getHarm(rc); // harm from the attack (ignoring the weapon)
 			//DUAL
-			WeaponChitComponent weapon = character.getActiveWeapons().get(0);
-			if (weapon != null) {
-				if (weapon.getGameObject().hasThisAttribute(Constants.IGNORE_ARMOR)) {
-					ignoreArmor = true;
-				}
-				CombatWrapper wCombat = new CombatWrapper(weapon.getGameObject());
-				if (wCombat.getCombatBox()>0) {
-					hasWeapon = true;
-					missileWeapon = weapon.isMissile();
-					weaponStrength = weapon.getStrength();
-					sharpness = weapon.getSharpness();
+			ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
+			if (weapons != null  && !weapons.isEmpty()) {
+				WeaponChitComponent weapon = weapons.get(0);
+				if (weapon != null) {
+					if (weapon.getGameObject().hasThisAttribute(Constants.IGNORE_ARMOR)) {
+						ignoreArmor = true;
+					}
+					CombatWrapper wCombat = new CombatWrapper(weapon.getGameObject());
+					if (wCombat.getCombatBox()>0) {
+						hasWeapon = true;
+						missileWeapon = weapon.isMissile();
+						weaponStrength = weapon.getStrength();
+						sharpness = weapon.getSharpness();
+					}
 				}
 			}
 			if (!hasWeapon) {
@@ -823,9 +832,12 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		GameObject transmorph = character.getTransmorph();
 		if (transmorph == null) { // Character must not be transmorphed!
 			//DUAL
-			WeaponChitComponent weapon = character.getActiveWeapons().get(0);
-			if (weapon != null) {
-				return weapon.isMissile();
+			ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
+			if (weapons != null && !weapons.isEmpty()) {
+				WeaponChitComponent weapon = weapons.get(0);
+				if (weapon != null) {
+					return weapon.isMissile();
+				}
 			}
 			GameObject tw = getTreasureWeaponObject();
 			if (tw!=null) {
@@ -840,8 +852,8 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		GameObject transmorph = character.getTransmorph();
 		if (transmorph == null) { // Character must not be transmorphed!
 			//DUAL
-			WeaponChitComponent weapon = character.getActiveWeapons().get(0);
-			if (weapon == null) {
+			ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
+			if (weapons == null || weapons.get(0) != null) {
 				GameObject tw = getTreasureWeaponObject();
 				if (tw!=null) {
 					return tw.getThisAttribute("missile");

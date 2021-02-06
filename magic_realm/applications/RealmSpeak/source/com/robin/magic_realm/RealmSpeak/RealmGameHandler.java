@@ -2011,9 +2011,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 					characterFrameOrder.remove(id);
 					parent.removeFrameFromDesktop(frame);
 					if (character.isCharacter() && !hostPrefs.hasPref(Constants.HOUSE1_DONT_RECYCLE_CHARACTERS)) {
-						character.clearPlayerAttributes(); // puts it back in
-															// the player pool
-															// again
+						character.clearPlayerAttributes(); // puts it back in the player pool again
 						character.getGameObject().removeThisAttribute(Constants.DEAD);
 						characterList.remove(character);
 					}

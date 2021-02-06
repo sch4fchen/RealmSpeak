@@ -798,10 +798,9 @@ public class BattleModel {
 				if (!attackBlockOrder.contains(key)) {
 					attackBlockOrder.add(key);
 				}
+				attackBlocks.put(key,battleChit);
 			}
-			attackBlocks.put(key,battleChit);
 		}
-
 	}
 
 	private void processHits(ArrayList<String> attackBlockOrder, HashLists<String,BattleChit> attackBlocks, int round) {

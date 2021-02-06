@@ -202,7 +202,7 @@ public class PowerOfThePit extends RealmTable {
 		}
 		StringBuffer message = new StringBuffer();
 		message.append("Blight\n\n");
-		message.append("All of the target�s active chits that show effort asterisks become wounded.\n");
+		message.append("All of the target's active chits that show effort asterisks become wounded.\n");
 		message.append("Chits that are already fatigued or that show no asterisks are not affected.");
 		if (hasChits && !hasAtLeastOneGoodChit) {
 			kill(character.getGameObject());
@@ -239,7 +239,7 @@ public class PowerOfThePit extends RealmTable {
 				getDestClientName(caster,character.getGameObject()),
 				"Power of the Pit",
 				"Rust\n\n"
-				+"All of the target�s active armor counters suffer damage. Intact armor counters\n"
+				+"All of the target's active armor counters suffer damage. Intact armor counters\n"
 				+"become damaged, damaged armor counters are destroyed. Armor cards and inactive\n"
 				+"counters are not affected.");
 		// The target's active armor counters are damaged.  Armor cards and inactive counters are NOT affected.
