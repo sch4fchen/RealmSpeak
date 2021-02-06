@@ -64,6 +64,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	private static final String TARGET_2ND_ID = "target__2nd_id"; // game object id of secondary target
 	private static final String TARGET_INDEX = "targ_idx"; // a counter that indicates who targets who first (needed for War!)
 	private static final String TARGET_2ND_INDEX = "targ_2nd_idx"; // a counter that indicates who targets who first (needed for War!)
+	private static final String TARGET_ATTACKED = "targ_attacked";	
 
 	// Chit identifiers
 	public static final String CHARACTER = "character";
@@ -633,6 +634,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		if (target!=null) {
 			gameObject.removeAttribute(REALMCOMPONENT_BLOCK,TARGET_2ND_ID);
 			gameObject.removeAttribute(REALMCOMPONENT_BLOCK,TARGET_2ND_INDEX);
+			gameObject.removeAttribute(REALMCOMPONENT_BLOCK,TARGET_ATTACKED);
 			CombatWrapper combat = new CombatWrapper(target.getGameObject());
 			combat.removeAttacker(getGameObject());
 			
@@ -644,6 +646,14 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 				}
 			}
 		}
+	}
+	
+	public void setTargetAttacked() {
+		gameObject.setAttribute(REALMCOMPONENT_BLOCK,TARGET_ATTACKED);
+	}
+	
+	public boolean getTargetAttacked() {
+		return gameObject.hasAttribute(REALMCOMPONENT_BLOCK,TARGET_ATTACKED);
 	}
 
 	public boolean isDenizen() {

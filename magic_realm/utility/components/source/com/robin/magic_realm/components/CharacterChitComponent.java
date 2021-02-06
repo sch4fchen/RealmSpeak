@@ -925,6 +925,12 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			monster.clearTargets();
 		}
 	}
+	public void setTargetAttacked() {
+		super.setTargetAttacked();
+	}
+	public boolean getTargetAttacked() {
+		return super.getTargetAttacked();
+	}
 	public boolean isMistLike() {
 		RealmComponent rc = getTransmorphedComponent();
 		return rc!=null && rc.isMistLike();

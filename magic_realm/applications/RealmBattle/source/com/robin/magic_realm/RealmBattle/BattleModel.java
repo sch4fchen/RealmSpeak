@@ -812,10 +812,11 @@ public class BattleModel {
 					if (attacker.isCharacter()) {
 						CharacterChitComponent character = (CharacterChitComponent)attacker;
 						target = (BattleChit) character.getTarget();
-						// all but the first hit, attack the second target
-						if (character.get2ndTarget() != null) {
-							character.setTarget(character.get2ndTarget());
+						// all but the first attack, aim at the second target
+						if (character.get2ndTarget() != null && character.getTargetAttacked()) {
+							target = (BattleChit) character.get2ndTarget();
 						}
+						character.setTargetAttacked();
 					}
 					else {
 						target = (BattleChit)attacker.getTarget();
@@ -928,8 +929,7 @@ public class BattleModel {
 		
 		String attackCancelled = null;
 		
-		// You can't kill a target that is already dead, unless the target's killer attacked with the same
-		// speed and length (simultaneous)
+		// You can't kill a target that is already dead, unless the target's killer attacked with the same speed and length (simultaneous)
 		if (targetKiller!=null) {
 			BattleChit targetKillerChit = RealmComponent.getBattleChit(targetKiller);
 			boolean simultaneous = targetKillerChit.getAttackSpeed().equals(attacker.getAttackSpeed())
@@ -1591,7 +1591,7 @@ public class BattleModel {
 			// Determine if character has wishStrength, and hit with a physical attack
 			if (rc.isCharacter()) {
 				CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-				BattleChit battle = (BattleChit)rc;
+				CharacterChitComponent battle = (CharacterChitComponent)rc;
 				CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
 				if (character.getWishStrength()!=null) {
 					// Character has a "Wish for Strength" result applied
