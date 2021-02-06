@@ -41,7 +41,7 @@ public class CharacterCombatSheet extends CombatSheet {
 
 	private static final int POS_OWNER				= 0;
 	
-	private static final int POS_TARGET			= 1; // non-positioned targets
+	private static final int POS_TARGET				= 1; // non-positioned targets
 	private static final int POS_TARGET_BOX1		= 2;
 	private static final int POS_TARGET_BOX2		= 3;
 	private static final int POS_TARGET_BOX3		= 4;
@@ -50,7 +50,7 @@ public class CharacterCombatSheet extends CombatSheet {
 	private static final int POS_MOVE_BOX2			= 6;
 	private static final int POS_MOVE_BOX3			= 7;
 	
-	private static final int POS_ATTACK			= 8; // non-positioned attacks
+	private static final int POS_ATTACK				= 8; // non-positioned attacks
 	private static final int POS_ATTACK_BOX1		= 9;
 	private static final int POS_ATTACK_BOX2		=10;
 	private static final int POS_ATTACK_BOX3		=11;
@@ -189,7 +189,7 @@ public class CharacterCombatSheet extends CombatSheet {
 				}
 				break;
 			case Constants.COMBAT_ASSIGN:
-				if (combatFrame.getActiveParticipant().getTarget()==null && spell==null) {
+				if (combatFrame.getActiveParticipant().getTarget()==null && combatFrame.getActiveParticipant().get2ndTarget()==null && spell==null) {
 					if (containsEnemy(combatFrame.getActiveParticipant(),layoutHash.getList(new Integer(POS_TARGET)))) {
 						hotspotHash.put(new Integer(POS_TARGET),combatFrame.getActiveParticipant().getGameObject().getName()+" Target");
 					}
@@ -241,8 +241,10 @@ public class CharacterCombatSheet extends CombatSheet {
 				ArrayList<RealmComponent> allSheetParticipants = new ArrayList<>(sheetParticipants);
 				allSheetParticipants.add(sheetOwner);
 				RealmComponent target = combatFrame.getActiveParticipant().getTarget();
-				boolean sheetHasTarget = (target==null && spell==null && sheetOwner.equals(combatFrame.getActiveParticipant()))
-									|| (target!=null && allSheetParticipants.contains(target));
+				RealmComponent target2 = combatFrame.getActiveParticipant().get2ndTarget();
+				boolean sheetHasTarget = (target==null && target2==null && spell==null && sheetOwner.equals(combatFrame.getActiveParticipant()))
+									|| (target!=null && allSheetParticipants.contains(target))
+									|| (target2!=null && allSheetParticipants.contains(target2));
 				boolean sheetHasSpellTarget = spell!=null && spell.isAttackSpell() && spell.targetsRealmComponents(allSheetParticipants);
 				if (sheetHasTarget || sheetHasSpellTarget) {
 					int boxReq = spell==null?0:spell.getGameObject().getThisInt("box_req"); // most spells will be zero
@@ -282,6 +284,15 @@ public class CharacterCombatSheet extends CombatSheet {
 				RealmComponent aTarget = combatFrame.getActiveParticipant().getTarget();
 				if (combatFrame.getActiveParticipant().getTarget()!=null && (sheetParticipants.contains(aTarget) || sheetOwner.equals(aTarget))) {
 					if (character.canReplaceFight(aTarget)) {
+						// can replace fight
+						hotspotHash.put(new Integer(POS_ATTACK_BOX1),"Replace Fight");
+						hotspotHash.put(new Integer(POS_ATTACK_BOX2),"Replace Fight");
+						hotspotHash.put(new Integer(POS_ATTACK_BOX3),"Replace Fight");
+					}
+				}
+				RealmComponent aTarget2 = combatFrame.getActiveParticipant().get2ndTarget();
+				if (combatFrame.getActiveParticipant().getTarget()!=null && (sheetParticipants.contains(aTarget2) || sheetOwner.equals(aTarget2))) {
+					if (character.canReplaceFight(aTarget2)) {
 						// can replace fight
 						hotspotHash.put(new Integer(POS_ATTACK_BOX1),"Replace Fight");
 						hotspotHash.put(new Integer(POS_ATTACK_BOX2),"Replace Fight");
@@ -329,9 +340,10 @@ public class CharacterCombatSheet extends CombatSheet {
 		for (RealmComponent rc : all) {
 			CombatWrapper rcCombat = new CombatWrapper(rc.getGameObject());
 			RealmComponent target = rc.getTarget();
+			RealmComponent target2 = rc.get2ndTarget();
 			
 			// If targeting the sheetOwner, put them on the sheet in the target boxes
-			if (target!=null && target.equals(sheetOwner)) {
+			if ((target!=null && target.equals(sheetOwner)) || (target2!=null && target2.equals(sheetOwner))) {
 				if (!rc.isCharacter()) {
 					exclude.add(rc);
 					if (!addedToDead(rc)) {
