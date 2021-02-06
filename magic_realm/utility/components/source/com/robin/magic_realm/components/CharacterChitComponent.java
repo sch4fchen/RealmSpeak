@@ -42,20 +42,8 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	
 	public static int displayStyle = DISPLAY_STYLE_CLASSIC;
 	
-//	private static boolean pngTest = false;
-//	private static boolean usePng = false;
-
 	public CharacterChitComponent(GameObject obj) {
 		super(obj);
-//		if (!pngTest) {
-//			pngTest = true;
-//			if (IconFactory.findIcon("images/characters/amazon.png")!=null) {
-//				usePng = true;
-//			}
-//		}
-//		if (usePng) {
-//			imageExtension = ".png"; // this logic breaks when you absorb a monster... sigh
-//		}
 		lightColor = MagicRealmColor.FORESTGREEN;
 		darkColor = MagicRealmColor.PEACH;
 	}
@@ -203,7 +191,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	public boolean targets(BattleChit chit) {
 		RealmComponent rc = getTarget();
 		RealmComponent rc2 = get2ndTarget();
-		return ((rc != null && rc.equals(chit)) || (rc2 != null && rc2.equals(chit)));
+		return ((rc != null && rc.equals((RealmComponent)chit)) || (rc2 != null && rc2.equals((RealmComponent)chit)));
 	}
 
 	public Integer getLength() {

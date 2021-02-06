@@ -5660,8 +5660,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 		String nativeGroupName = nativeMember.getThisAttribute("native").toLowerCase();
 		getGameObject().addAttributeListItem(BATTLING_NATIVE_BLOCK,nativeGroupName,"");
 	}
-	public List getBattlingNativeGroups() {
-		ArrayList list = new ArrayList();
+	public List<String> getBattlingNativeGroups() {
+		ArrayList<String> list = new ArrayList<>();
 		Hashtable hash = getGameObject().getAttributeBlock(BATTLING_NATIVE_BLOCK);
 		if (hash!=null) {
 			list.addAll(hash.keySet());

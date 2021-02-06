@@ -173,10 +173,10 @@ public class BattleHtmlGenerator extends HtmlGenerator {
 		sb.append("</tr></table>");
 		
 		TileLocation current = battleModel.getBattleLocation();
-		ArrayList<Integer> color = new ArrayList<Integer>(); // only need to show one instance of each
+		ArrayList<Integer> color = new ArrayList<>(); // only need to show one instance of each
 		for (ColorMagic cm:current.clearing.getAllSourcesOfColor(true)) {
-			if (color.contains(cm.getColorNumber())) continue;
-			color.add(cm.getColorNumber());
+			if (color.contains(Integer.valueOf(cm.getColorNumber()))) continue;
+			color.add(Integer.valueOf(cm.getColorNumber()));
 			exportImage(path.path(cm.getColorName()+".jpg"),cm.getIcon(),1.0f,Color.white);
 			sb.append(generateImageElement(0,cm.getColorName(),cm.getColorName()+".jpg"));
 		}
@@ -186,8 +186,7 @@ public class BattleHtmlGenerator extends HtmlGenerator {
 		
 		for (CharacterChitComponent chit:battleModel.getAllParticipatingCharacters()) {
 			CharacterWrapper character = new CharacterWrapper(chit.getGameObject());
-			for (Iterator n=character.getBattlingNativeGroups().iterator();n.hasNext();) {
-				String groupName = (String)n.next();
+			for (String groupName : character.getBattlingNativeGroups()) {
 				sb.append("<table cellpadding=\"2\"><tr><td bgcolor=\"#FFFF00\">");
 				sb.append("<b>The ");
 				sb.append(StringUtilities.capitalize(groupName));
