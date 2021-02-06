@@ -2045,7 +2045,7 @@ public class CombatFrame extends JFrame {
 				aimingForHorseOrRider(attacker, theTarget, append);
 				attacker.setTarget(theTarget);
 				broadcastMessage(attacker.getGameObject().getName(),"Attacks the "+theTarget.getGameObject().getName()+append);
-				makeTarget(this,hostPrefs,attacker,theTarget,theGame);
+				makeTarget(this,hostPrefs,attacker,theTarget);
 				handleNativeReaction(theTarget);
 				
 				if (attacker.isCharacter()) {
@@ -2077,7 +2077,7 @@ public class CombatFrame extends JFrame {
 			aimingForHorseOrRider(attacker, theTarget, append);
 			attacker.set2ndTarget(theTarget);
 			broadcastMessage(attacker.getGameObject().getName(),"Attacks the "+theTarget.getGameObject().getName()+append);
-			makeTarget(this,hostPrefs,attacker,theTarget,theGame);
+			makeTarget(this,hostPrefs,attacker,theTarget);
 			handleNativeReaction(theTarget);
 		}
 	}
@@ -2125,8 +2125,7 @@ public class CombatFrame extends JFrame {
 			
 			BattleGroup group = currentBattleModel.getDenizenBattleGroup();
 			if (group!=null) {
-				for (Iterator i=group.getBattleParticipants().iterator();i.hasNext();) {
-					RealmComponent member = (RealmComponent)i.next();
+				for (RealmComponent member : group.getBattleParticipants()) {
 					if (makeTargetWatchful || !member.equals(theTarget)) {
 						String groupName = member.getGameObject().getThisAttribute("native");
 						if (member.isNative() && groupName.equals(targetedGroup)) {
@@ -2144,18 +2143,16 @@ public class CombatFrame extends JFrame {
 			BattleGroup group = currentBattleModel.getDenizenBattleGroup();
 			if (group!=null) {
 				// Determine available hirelings
-				ArrayList availableHirelings = new ArrayList();
-				ArrayList hirelings = getHirelings();
-				for (Iterator n=hirelings.iterator();n.hasNext();) {
-					RealmComponent rc = (RealmComponent)n.next();
+				ArrayList<RealmComponent> availableHirelings = new ArrayList<>();
+				ArrayList<RealmComponent> hirelings = getHirelings();
+				for (RealmComponent rc : hirelings) {
 					if (!rc.isHidden()) {
 						availableHirelings.add(rc);
 					}
 				}
 				
 				// Cycle through denizens, and assign watchful natives if necessary
-				for (Iterator i=group.getBattleParticipants().iterator();i.hasNext();) {
-					RealmComponent rc = (RealmComponent)i.next();
+				for (RealmComponent rc : group.getBattleParticipants()) {
 					if (!rc.isNative()) continue;
 					NativeChitComponent member = (NativeChitComponent)rc;
 					if (!activeCharacter.isBattling(member.getGameObject())) continue; // watchful natives only attack those they are battling
@@ -2184,13 +2181,13 @@ public class CombatFrame extends JFrame {
 								// character's choice...
 								if (availableHirelings.size()==1) {
 									// The choice is obvious
-									target = (RealmComponent)availableHirelings.get(0);
+									target = availableHirelings.get(0);
 								}
 								else {
 									// FIXME Active character decides how to distribute the watchfuls ... somehow
 									// For now, just assign them randomly...
 									int r = RandomNumber.getRandom(availableHirelings.size());
-									target = (RealmComponent)availableHirelings.get(r);
+									target = availableHirelings.get(r);
 								}
 							} // else nothing!
 							if (target!=null) {
@@ -2244,7 +2241,7 @@ public class CombatFrame extends JFrame {
 //			deployTarget.clearTarget();
 //		}
 //	}
-	public static void makeTarget(JFrame parent,HostPrefWrapper hostPrefs,RealmComponent theAttacker,RealmComponent theTarget,GameWrapper theGame) {
+	public static void makeTarget(JFrame parent,HostPrefWrapper hostPrefs,RealmComponent theAttacker,RealmComponent theTarget) {
 		// A hidden attacker becomes unhidden on targeting (AMBUSH rules will change how this works somewhat)
 		if (theAttacker.isHidden()) {
 			boolean hiddenStatus = false;
@@ -2431,8 +2428,10 @@ public class CombatFrame extends JFrame {
 				}
 			}
 			// Clear out weapon, if any played
-			for (WeaponChitComponent weapon : weapons) {
-				weapon.getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
+			if (weapons != null) {
+				for (WeaponChitComponent weapon : weapons) {
+					weapon.getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
+				}
 			}
 			if (weaponCard != null) {
 				weaponCard.getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
@@ -2741,10 +2740,9 @@ public class CombatFrame extends JFrame {
 		CombatFrame.broadcastMessage(activeCharacter.getGameObject().getName(),"Presses the END combat button.");
 		endButton.setEnabled(false);
 		nextButton.setEnabled(false);
-		ArrayList playersToRespond = new ArrayList();
-		Collection chars = currentBattleModel.getAllOwningCharacters();
-		for (Iterator i=chars.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		ArrayList<String> playersToRespond = new ArrayList<>();
+		Collection<RealmComponent> chars = currentBattleModel.getAllOwningCharacters();
+		for (RealmComponent rc : chars) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 			if (!combat.isLockNext()) {
 				CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
@@ -3013,8 +3011,7 @@ public class CombatFrame extends JFrame {
 		
 		// All following hirelings need to remain behind
 		TileLocation battleLocation = getBattleModel().getBattleLocation();
-		for (Iterator i=activeCharacter.getFollowingHirelings().iterator();i.hasNext();) {
-			RealmComponent hireling = (RealmComponent)i.next();
+		for (RealmComponent hireling : activeCharacter.getFollowingHirelings()) {
 			battleLocation.clearing.add(hireling.getGameObject(),null);
 			if (hireling.getGameObject().hasThisAttribute(Constants.CAPTURE)) {
 				activeCharacter.removeHireling(hireling.getGameObject());
@@ -3420,9 +3417,9 @@ public class CombatFrame extends JFrame {
 	/**
 	 * @return Returns the hirelings for the active participant
 	 */
-	public ArrayList getHirelings() {
+	public ArrayList<RealmComponent> getHirelings() {
 		BattleGroup battleGroup = currentBattleModel.getBattleGroup(activeParticipant);
-		ArrayList hirelings = new ArrayList();
+		ArrayList<RealmComponent> hirelings = new ArrayList<>();
 		if (battleGroup!=null) {
 			hirelings.addAll(battleGroup.getHirelings());
 		}

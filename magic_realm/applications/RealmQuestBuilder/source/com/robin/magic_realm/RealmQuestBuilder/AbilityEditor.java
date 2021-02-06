@@ -52,6 +52,7 @@ public class AbilityEditor extends GenericEditor {
 
 	public AbilityEditor(JFrame frame,String title,AbilityType type,CharacterWrapper template) {
 		super(frame,null);
+		this.setTitle(title);
 		this.type = type;
 		this.template = template;//new CharacterWrapper(GameObject.createEmptyGameObject());
 		initComponents();

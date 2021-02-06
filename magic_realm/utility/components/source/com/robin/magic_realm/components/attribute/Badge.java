@@ -72,7 +72,7 @@ public class Badge extends JLabel {
 		return "badges/"+iconName;
 	}
 	
-	private static Hashtable<String,Badge> cached = new Hashtable<String,Badge>();
+	private static Hashtable<String,Badge> cached = new Hashtable<>();
 	public static Badge getBadge(CharacterWrapper character,String advantage) {
 		String key = character.getGameObject().getStringId()+advantage;
 		Badge badge = cached.get(key);
@@ -82,7 +82,7 @@ public class Badge extends JLabel {
 				String badgeName = "custom/badges/one"; // default
 				for (int n=1;n<=4;n++) {
 					String levelKey = "level_"+n;
-					ArrayList list = character.getGameObject().getAttributeList(levelKey,"advantages");
+					ArrayList<String> list = character.getGameObject().getAttributeList(levelKey,"advantages");
 					if (list!=null && list.contains(advantage)) {
 						badgeName = character.getGameObject().getAttribute(levelKey,"badge_icon");
 						break;

@@ -2095,7 +2095,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		// If the character is not playing a turn, then they may only trade with the one character currently playing
 		if (!activePlayer) {
 			// Now we need to filter out those characters that are not playing their turn
-			ArrayList toKeep = new ArrayList();
+			ArrayList<RealmComponent> toKeep = new ArrayList<>();
 			for (RealmComponent rc:chars) {
 				CharacterWrapper trader = new CharacterWrapper(rc.getGameObject());
 				if (trader.isPlayingTurn() || trader.isFollowingCharacterPlayingTurn() || trader.isDayEndTradingActive() || character.isDayEndTradingActive()) {
@@ -2108,19 +2108,17 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		if (!chars.isEmpty()) {
 			return chars;
 		}
+		if (areChars) {
+			JOptionPane.showMessageDialog(
+					parent,
+					"None of the characters in the clearing are available for trading.",
+					"Trade/Share",JOptionPane.WARNING_MESSAGE);
+		}
 		else {
-			if (areChars) {
-				JOptionPane.showMessageDialog(
-						parent,
-						"None of the characters in the clearing are available for trading.",
-						"Trade/Share",JOptionPane.WARNING_MESSAGE);
-			}
-			else {
-				JOptionPane.showMessageDialog(
-						parent,
-						"There are no characters in the clearing to trade with.",
-						"Trade/Share",JOptionPane.WARNING_MESSAGE);
-			}
+			JOptionPane.showMessageDialog(
+					parent,
+					"There are no characters in the clearing to trade with.",
+					"Trade/Share",JOptionPane.WARNING_MESSAGE);
 		}
 		return null;
 	}
@@ -2156,7 +2154,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		if (character.needsLevelUp()) {
 			int newLevel = character.getCharacterLevel()+1;
 			AbstractAction action = null;
-			ArrayList<String> specialGains = new ArrayList<String>();
+			ArrayList<String> specialGains = new ArrayList<>();
 			if (hostPrefs.hasPref(Constants.HOUSE1_ALLOW_LEVEL_GAINS_PAST_FOUR)) {
 				switch(newLevel) {
 					case 5:

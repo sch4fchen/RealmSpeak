@@ -244,7 +244,7 @@ public class ActionPrerequisite {
 			if (chit.getEffortAsterisks()==2) {
 				// Need to make change
 				Collection<CharacterActionChitComponent> fatigued = character.getFatiguedChits(); // In case you need to make change
-				ArrayList<CharacterActionChitComponent> singleAsteriskFatiguedChits = new ArrayList<CharacterActionChitComponent>();
+				ArrayList<CharacterActionChitComponent> singleAsteriskFatiguedChits = new ArrayList<>();
 				for (CharacterActionChitComponent fatiguedChit : fatigued) {
 					if (fatiguedChit.getEffortAsterisks()==1) {
 						singleAsteriskFatiguedChits.add(fatiguedChit);

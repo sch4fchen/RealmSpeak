@@ -46,8 +46,8 @@ public class ActionRowChooser extends AggressiveDialog {
 		super(parent,title,true);
 		this.toLose = toLose;
 		lost = 0;
-		keepList = new ArrayList<ActionRow>();
-		loseList = new ArrayList<ActionRow>();
+		keepList = new ArrayList<>();
+		loseList = new ArrayList<>();
 		initComponents();
 		updateTally();
 	}
@@ -143,7 +143,7 @@ public class ActionRowChooser extends AggressiveDialog {
 			repaint();
 		}
 	}
-	private JPanel createTablePanel(ActionRowTableModel model,String title,Color titleColor) {
+	private static JPanel createTablePanel(ActionRowTableModel model,String title,Color titleColor) {
 		JPanel panel = new JPanel(new BorderLayout());
 		panel.add(new JScrollPane(model.createTable()),"Center");
 		JLabel label = new JLabel(title,JLabel.CENTER);
@@ -228,7 +228,7 @@ public class ActionRowChooser extends AggressiveDialog {
 	public static void main(String[] args) {
 		ActionRowChooser chooser = new ActionRowChooser(new JFrame(),"Test",2);
 		chooser.setLocationRelativeTo(null);
-		ArrayList<ActionRow> list = new ArrayList<ActionRow>();
+		ArrayList<ActionRow> list = new ArrayList<>();
 		list.add(new ActionRow("H",""));
 		ActionRow ar = new ActionRow("R","");
 		ar.setCount(4);

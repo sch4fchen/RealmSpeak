@@ -46,6 +46,8 @@ public class QuestRewardAttribute extends QuestReward {
 			case Gold:
 				character.addGold(val);
 				break;
+			default:
+				break;
 		}
 	}
 

@@ -36,7 +36,7 @@ public class QuestRequirementParams {
 	public int dieResult;
 	public SearchResultType searchType = SearchResultType.Any;
 	public GameObject targetOfSearch;
-	public ArrayList<GameObject> objectList =  new ArrayList<GameObject>();
+	public ArrayList<GameObject> objectList =  new ArrayList<>();
 	public boolean searchHadAnEffect;
 	public ColorMagic burnedColor;
 	
@@ -54,7 +54,7 @@ public class QuestRequirementParams {
 		targetOfSearch = null;
 	}
 	public String asString() {
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		list.add(timeOfCall.toString());
 		list.add(actionName);
 		list.add(dayKey);

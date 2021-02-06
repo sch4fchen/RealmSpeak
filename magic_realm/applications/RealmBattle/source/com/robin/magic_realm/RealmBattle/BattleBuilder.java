@@ -375,13 +375,12 @@ public class BattleBuilder extends JFrame {
 	}
 	private void changeClearing() {
 		// Choose a tile and clearing
-		Collection tiles = pool.find("tile,"+hostPrefs.getGameKeyVals());
-		Hashtable tileHash = new Hashtable();
-		for (Iterator i=tiles.iterator();i.hasNext();) {
-			GameObject tile = (GameObject)i.next();
+		Collection<GameObject> tiles = pool.find("tile,"+hostPrefs.getGameKeyVals());
+		Hashtable<String, GameObject> tileHash = new Hashtable<>();
+		for (GameObject tile : tiles) {
 			tileHash.put(tile.getName(),tile);
 		}
-		ArrayList tileNames = new ArrayList(tileHash.keySet());
+		ArrayList<String> tileNames = new ArrayList<>(tileHash.keySet());
 		Collections.sort(tileNames);
 		String tileName = (String)JOptionPane.showInputDialog(
 				null,
@@ -395,7 +394,7 @@ public class BattleBuilder extends JFrame {
 		if (tileName==null) {
 			return;
 		}
-		GameObject selectedTile = (GameObject)tileHash.get(tileName);
+		GameObject selectedTile = tileHash.get(tileName);
 		
 		TileComponent tile = (TileComponent)RealmComponent.getRealmComponent(selectedTile);
 		if (saidYes("Do you want to use the Enchanted side of the "+selectedTile.getName()+"?")) {
@@ -405,8 +404,8 @@ public class BattleBuilder extends JFrame {
 			tile.setLightSideUp();
 		}
 		
-		ArrayList clearingNames = new ArrayList();
-		Hashtable clearingHash = new Hashtable();
+		ArrayList<String> clearingNames = new ArrayList<>();
+		Hashtable<String, ClearingDetail> clearingHash = new Hashtable<>();
 		for (int i=1;i<=6;i++) {
 			ClearingDetail clearing = tile.getClearing(i);
 			if (clearing!=null) {
@@ -639,7 +638,7 @@ public class BattleBuilder extends JFrame {
 	}
 	private SpellWrapper querySpell() {
 		ArrayList<GameObject> spells = pool.find("spell,duration=permanent");
-		ArrayList<GameObject> toRemove = new ArrayList<GameObject>();
+		ArrayList<GameObject> toRemove = new ArrayList<>();
 		for (GameObject spell:spells) {
 			String spellType = spell.getThisAttribute("spell").trim();
 			if (spellType.length()==0 || !"IIIVIII".contains(spellType)) {
@@ -715,7 +714,7 @@ public class BattleBuilder extends JFrame {
 		return null;
 	}
 	private RealmComponent queryTarget(String targetType) {
-		ArrayList<GameObject> choices = new ArrayList<GameObject>();
+		ArrayList<GameObject> choices = new ArrayList<>();
 		boolean individual = "individual".equals(targetType);
 		if (individual || "monster".equals(targetType)) {
 			choices.addAll(pool.find("monster,"+BATTLE_BUILDER_KEY));
@@ -775,14 +774,14 @@ public class BattleBuilder extends JFrame {
 	
 	public static GameObject getBattleClearingReferenceObject(GameData data) {
 		GamePool thePool = new GamePool(data.getGameObjects());
-		Collection bc = thePool.find(BATTLE_CLEARING_KEY);
+		Collection<GameObject> bc = thePool.find(BATTLE_CLEARING_KEY);
 		GameObject bcObj = null;
 		if (bc.isEmpty()) {
 			bcObj = data.createNewObject();
 			bcObj.setThisAttribute(BATTLE_CLEARING_KEY);
 		}
 		else {
-			bcObj = (GameObject)bc.iterator().next();
+			bcObj = bc.iterator().next();
 		}
 		return bcObj;
 	}

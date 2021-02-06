@@ -36,7 +36,7 @@ public class GameObjectTreeView extends JFrame {
 			DefaultMutableTreeNode top = new DefaultMutableTreeNode("top");
 			
 			// Add all base objects (not held by anything)
-			Hashtable<String, DefaultMutableTreeNode> hash = new Hashtable<String, DefaultMutableTreeNode>();
+			Hashtable<String, DefaultMutableTreeNode> hash = new Hashtable<>();
 			for (GameObject object : gameObjects) {
 				DefaultMutableTreeNode node = new DefaultMutableTreeNode(object);
 				if (object.getHeldBy()==null) {
@@ -47,10 +47,10 @@ public class GameObjectTreeView extends JFrame {
 			
 			// Now use the hash to add all the branches
 			for (GameObject object : gameObjects) {
-				DefaultMutableTreeNode node = (DefaultMutableTreeNode)hash.get(object.toString());
+				DefaultMutableTreeNode node = hash.get(object.toString());
 				for (Object o : object.getHold()) {
 					GameObject heldObject = (GameObject) o;
-					DefaultMutableTreeNode child = (DefaultMutableTreeNode)hash.get(heldObject.toString());
+					DefaultMutableTreeNode child = hash.get(heldObject.toString());
 					node.add(child);
 				}
 			}

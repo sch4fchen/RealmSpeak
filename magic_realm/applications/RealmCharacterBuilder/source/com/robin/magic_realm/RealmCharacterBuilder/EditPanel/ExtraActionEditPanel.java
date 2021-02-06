@@ -36,7 +36,7 @@ public class ExtraActionEditPanel extends AdvantageEditPanel {
 		setLayout(new GridLayout(12,1));
 		
 		group = new ButtonGroup();
-		actionHash = new Hashtable<String,JRadioButton>();
+		actionHash = new Hashtable<>();
 		addOption("HIDE","H",true); // default
 		addOption("MOVE","M");
 		addOption("SEARCH","S");

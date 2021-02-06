@@ -2100,10 +2100,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		// search active treasures to determine if any items provide a free action
 		for (GameObject item:getEnhancingItems()) {
-			ArrayList free = item.getThisAttributeList(Constants.EXTRA_ACTIONS);
+			ArrayList<String> free = item.getThisAttributeList(Constants.EXTRA_ACTIONS);
 			if (free!=null) {
-				for (Iterator n=free.iterator();n.hasNext();) {
-					String freeAction = (String)n.next();
+				for (String freeAction : free) {
 					pm.addFreeAction(freeAction,item);
 				}
 			}
@@ -2123,16 +2122,15 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		
 		if (useClearingPlot) {
-			ArrayList cp = getClearingPlot();
-			ArrayList list = new ArrayList();
+			ArrayList<TileLocation> cp = getClearingPlot();
+			ArrayList<TileLocation> list = new ArrayList<>();
 			if (cp!=null && !cp.isEmpty()) {
 				list.addAll(cp);
 			}
 			if (list.isEmpty()) {
 				list.add(getCurrentLocation());
 			}
-			for (Iterator i=list.iterator();i.hasNext();) {
-				TileLocation tl = (TileLocation)i.next();
+			for (TileLocation tl : list) {
 				pm.updateClearing(tl);
 			}
 		}
@@ -2145,10 +2143,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 			boolean pony = isPonyActive();
 			int moveNumber = 0;
 			TileLocation loc = current;
-			for (Iterator i=getCurrentActions().iterator();i.hasNext();) {
-				String action = (String)i.next();
+			for (String action : getCurrentActions()) {
 				boolean inCave = false;
-				loc = (TileLocation)getClearingPlot().get(moveNumber);
+				loc = getClearingPlot().get(moveNumber);
 				if (action.startsWith("M") || action.startsWith("FLY")) {
 					inCave = loc!=null && loc.isInClearing() && loc.clearing.isCave();
 					moveNumber++;
@@ -2314,9 +2311,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		addListItem(MINION_ID,go.getStringId());
 	}
 	public void removeMinion(GameObject go) {
-		ArrayList list = getList(MINION_ID);
+		ArrayList<String> list = getList(MINION_ID);
 		if (list!=null && list.contains(go.getStringId())) {
-			list = new ArrayList(list);
+			list = new ArrayList<>(list);
 			list.remove(go.getStringId());
 			if (list.size()>0) {
 				setList(MINION_ID,list);
@@ -2617,10 +2614,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return items;
 	}
 	public ArrayList<GameObject> getActivatedTreasureObjects() {
-		ArrayList<GameObject> activatedTreasures = new ArrayList<GameObject>();
-		Collection inv = getInventory();
-		for (Iterator i=inv.iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		ArrayList<GameObject> activatedTreasures = new ArrayList<>();
+		Collection<GameObject> inv = getInventory();
+		for (GameObject go : inv) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc.isActivated() && (rc.isTreasure() || rc.isMinorCharacter())) {
 				activatedTreasures.add(go);
@@ -2629,7 +2625,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return activatedTreasures;
 	}
 	public ArrayList<GameObject> getMinorCharacters() {
-		ArrayList<GameObject> minorChars = new ArrayList<GameObject>();
+		ArrayList<GameObject> minorChars = new ArrayList<>();
 		for (GameObject go:getActiveInventory()) {
 			if (go.hasThisAttribute(Quest.QUEST_MINOR_CHARS)) {
 				minorChars.add(go);
@@ -2638,7 +2634,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return minorChars;
 	}
 	public ArrayList<GameObject> getFollowingTravelers() {
-		ArrayList<GameObject> travelers = new ArrayList<GameObject>();
+		ArrayList<GameObject> travelers = new ArrayList<>();
 		for (RealmComponent rc:getFollowingHirelings()) {
 			if (rc.isTraveler()) {
 				travelers.add(rc.getGameObject());
@@ -2648,7 +2644,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public Score getQuestPointScore() {
 		int count = 0;
-		ArrayList<GameObject> list = new ArrayList<GameObject>();
+		ArrayList<GameObject> list = new ArrayList<>();
 		for(Quest quest:getAllQuests()) {
 			if (quest.getState()==QuestState.Complete) {
 				count += quest.getInt(QuestConstants.VP_REWARD);
@@ -2659,7 +2655,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public Score getGreatTreasureScore() {
 		int count = 0;
-		ArrayList<GameObject> list = new ArrayList<GameObject>();
+		ArrayList<GameObject> list = new ArrayList<>();
 		for (GameObject go:getScorableInventory()) {
 			if (go.hasThisAttribute("great")) {
 				list.add(go);
@@ -3170,7 +3166,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		String id = "E"+characterObject.getStringId();
 		return getGameObject().hasAttribute(ENEMY_CHARACTER_BLOCK,id);
 	}
-	public ArrayList getTreasureLocationDiscoveries() {
+	public ArrayList<String> getTreasureLocationDiscoveries() {
 		if (isMinion()) {
 			return getHiringCharacter().getTreasureLocationDiscoveries();
 		}
@@ -3186,12 +3182,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * @return		The list of treasure location discoveries for the current clearing only
 	 */
 	public ArrayList<String> getCurrentClearingKnownTreasureLocations(boolean includeSiteCardLocationText) {
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		TileLocation current = getCurrentLocation();
 		if (current.isInClearing()) {
-			Hashtable<String,String> stuff = new Hashtable<String,String>();
-			for (Iterator i=current.clearing.getClearingComponents(false).iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			Hashtable<String,String> stuff = new Hashtable<>();
+			for (RealmComponent rc : current.clearing.getClearingComponents(false)) {
 				stuff.put(rc.getGameObject().getName(),rc.getGameObject().getName());
 				
 				// Search for Site Cards, which remain IN the Treasure Location
@@ -3204,10 +3199,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 				}
 			}
 			
-			ArrayList tls = getTreasureLocationDiscoveries();
+			ArrayList<String> tls = getTreasureLocationDiscoveries();
 			if (tls!=null && !tls.isEmpty()) {
-				for (Iterator i=tls.iterator();i.hasNext();) {
-					String disc = (String)i.next();
+				for (String disc : tls) {
 					if (stuff.containsKey(disc)) {
 						list.add(stuff.get(disc));
 					}
@@ -3221,21 +3215,19 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * @return		The list of gate discoveries for the current clearing only
 	 */
 	public ArrayList<String> getCurrentClearingKnownOtherChits() {
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		TileLocation current = getCurrentLocation();
 		if (current.isInClearing()) {
-			Hashtable<String,String> stuff = new Hashtable<String,String>();
-			for (Iterator i=current.clearing.getClearingComponents(false).iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			Hashtable<String,String> stuff = new Hashtable<>();
+			for (RealmComponent rc : current.clearing.getClearingComponents(false)) {
 				if (rc.isGate()) {
 					stuff.put(rc.getGameObject().getName(),rc.getGameObject().getName());
 				}
 			}
 			
-			ArrayList tls = getOtherChitDiscoveries();
+			ArrayList<String> tls = getOtherChitDiscoveries();
 			if (tls!=null && !tls.isEmpty()) {
-				for (Iterator i=tls.iterator();i.hasNext();) {
-					String disc = (String)i.next();
+				for (String disc : tls) {
 					if (stuff.containsKey(disc)) {
 						list.add(stuff.get(disc));
 					}
@@ -3249,22 +3241,20 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * @return		The list of hidden path discoveries for the current clearing only
 	 */
 	public ArrayList<String> getCurrentClearingKnownHiddenPaths() {
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		TileLocation current = getCurrentLocation();
 		if (current.isInClearing()) {
-			ArrayList<String> stuff = new ArrayList<String>();
+			ArrayList<String> stuff = new ArrayList<>();
 			
-			for (Iterator i=current.clearing.getConnectedPaths().iterator();i.hasNext();) {
-				PathDetail path = (PathDetail)i.next();
+			for (PathDetail path : current.clearing.getConnectedPaths()) {
 				if (path.isHidden()) {
 					stuff.add(path.getFullPathKey());
 				}
 			}
 			
-			ArrayList hps = getHiddenPathDiscoveries();
+			ArrayList<String> hps = getHiddenPathDiscoveries();
 			if (hps!=null && !hps.isEmpty()) {
-				for (Iterator i=hps.iterator();i.hasNext();) {
-					String disc = (String)i.next();
+				for (String disc : hps) {
 					if (stuff.contains(disc)) {
 						list.add(disc);
 					}
@@ -3278,22 +3268,20 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * @return		The list of hidden path discoveries for the current clearing only
 	 */
 	public ArrayList<String> getCurrentClearingKnownSecretPassages() {
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		TileLocation current = getCurrentLocation();
 		if (current.isInClearing()) {
-			ArrayList<String> stuff = new ArrayList<String>();
+			ArrayList<String> stuff = new ArrayList<>();
 			
-			for (Iterator i=current.clearing.getConnectedPaths().iterator();i.hasNext();) {
-				PathDetail path = (PathDetail)i.next();
+			for (PathDetail path : current.clearing.getConnectedPaths()) {
 				if (path.isSecret()) {
 					stuff.add(path.getFullPathKey());
 				}
 			}
 			
-			ArrayList sps = getSecretPassageDiscoveries();
+			ArrayList<String> sps = getSecretPassageDiscoveries();
 			if (sps!=null && !sps.isEmpty()) {
-				for (Iterator i=sps.iterator();i.hasNext();) {
-					String disc = (String)i.next();
+				for (String disc : sps) {
 					if (stuff.contains(disc)) {
 						list.add(disc);
 					}
@@ -3303,13 +3291,13 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		return list;
 	}
-	public ArrayList getHiddenPathDiscoveries() {
+	public ArrayList<String> getHiddenPathDiscoveries() {
 		if (isMinion()) {
 			return getHiringCharacter().getHiddenPathDiscoveries();
 		}
 		return getList(DISC_HIDDEN_PATHS);
 	}
-	public ArrayList getSecretPassageDiscoveries() {
+	public ArrayList<String> getSecretPassageDiscoveries() {
 		if (isMinion()) {
 			return getHiringCharacter().getSecretPassageDiscoveries();
 		}
@@ -3695,7 +3683,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 */
     public String[] getCharacterLevels()
     {
-        ArrayList levels = new ArrayList();
+        ArrayList<String> levels = new ArrayList<>();
         int level = 1;
         String lastLevelName = null;
         do
@@ -3714,7 +3702,7 @@ public class CharacterWrapper extends GameObjectWrapper {
                 levels.add((level+3)+" - "+lastLevelName+" + 4");
                 levels.add((level+4)+" - "+lastLevelName+" + 5");
                 levels.add((level+5)+" - "+lastLevelName+" + 6");
-                return (String[])(String[])levels.toArray(new String[levels.size()]);
+                return levels.toArray(new String[levels.size()]);
             }
         } while(true);
     }
@@ -3760,7 +3748,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * Returns an array of strings depicting the starting locations for this character
 	 */
 	public String[] getStartingLocations(boolean forceInnStart) {
-		ArrayList startingLocations = new ArrayList();
+		ArrayList<String> startingLocations = new ArrayList<>();
 		String startList = getGameObject().getThisAttribute("start");
 		StringTokenizer tokens = new StringTokenizer(startList,",");
 		while(tokens.hasMoreTokens()) {
@@ -3771,7 +3759,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				break;
 			}
 		}
-		return (String[])startingLocations.toArray(new String[startingLocations.size()]);
+		return startingLocations.toArray(new String[startingLocations.size()]);
 	}
 	/**
 	 * Clears out everything contained by the object representing the character (all inventory and chits)
@@ -3791,10 +3779,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		addOtherChitDiscovery("Fighters Guild");
 		if (getGameObject().hasThisAttribute(Constants.KNOWS_ROADS)) {
 			// add ALL paths/passages
-			Collection tiles = RealmObjectMaster.getRealmObjectMaster(getGameObject().getGameData()).getTileObjects();
-			ArrayList discoveries = new ArrayList();
-			for (Iterator i=tiles.iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
+			Collection<GameObject> tiles = RealmObjectMaster.getRealmObjectMaster(getGameObject().getGameData()).getTileObjects();
+			ArrayList<PathDetail> discoveries = new ArrayList<>();
+			for (GameObject go : tiles) {
 				TileComponent tile = (TileComponent)RealmComponent.getRealmComponent(go);
 				discoveries.addAll(tile.getHiddenPaths());
 				discoveries.addAll(tile.getSecretPassages());
@@ -3928,21 +3915,21 @@ public class CharacterWrapper extends GameObjectWrapper {
 		generalInitialization();
 	}
 	public ArrayList<String> getLevelAdvantages() {
-		ArrayList<String> advantages = new ArrayList<String>();
-		ArrayList list = getGameObject().getThisAttributeList("advantages");
+		ArrayList<String> advantages = new ArrayList<>();
+		ArrayList<String> list = getGameObject().getThisAttributeList("advantages");
 		if (list!=null) {
-			for (Iterator i=list.iterator();i.hasNext();) {
-				advantages.add((String)i.next());
+			for (String i : list) {
+				advantages.add(i);
 			}
 		}
 		return advantages;
 	}
 	public ArrayList<String> getOptionalLevelAdvantages() {
-		ArrayList<String> advantages = new ArrayList<String>();
-		ArrayList list = getGameObject().getAttributeList("optional","advantages");
+		ArrayList<String> advantages = new ArrayList<>();
+		ArrayList<String> list = getGameObject().getAttributeList("optional","advantages");
 		if (list!=null) {
-			for (Iterator i=list.iterator();i.hasNext();) {
-				advantages.add((String)i.next());
+			for (String i : list) {
+				advantages.add(i);
 			}
 		}
 		return advantages;
@@ -4673,7 +4660,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public String getCurrentDayKey() {
 		return DayKey.getString(getCurrentMonth(),getCurrentDay());
 	}
-	public ArrayList getClearingPlot() {
+	public ArrayList<TileLocation> getClearingPlot() {
 		return clearingPlot;
 	}
 	public void setClearingPlot(ArrayList clearingPlot) {

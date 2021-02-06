@@ -435,7 +435,7 @@ public class BattleModel {
 						// its obvious, so do it here
 						RealmComponent soleAttacker = attackers.iterator().next();
 						hireling.setTarget(soleAttacker);
-						CombatFrame.makeTarget(null,null,hireling,soleAttacker,theGame);
+						CombatFrame.makeTarget(null,null,hireling,soleAttacker);
 					}
 				}
 			}

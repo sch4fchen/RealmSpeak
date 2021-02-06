@@ -78,7 +78,7 @@ public class ActionIcon extends ImageIcon {
 	private static final Color BORDER_COLOR = new Color(0,0,0,40);
 	private static final Font WORD_FONT = UIManager.getFont("Label.font");
 	private static final Font CODE_FONT = WORD_FONT.deriveFont(Font.BOLD,WORD_FONT.getSize2D()+5);
-	private ImageIcon makeIcon(String val,boolean big) {
+	private static ImageIcon makeIcon(String val,boolean big) {
 		int n = big?1:-1;
 		int h = big?28:18;
 		int w = val.length()*(big?15:7);
