@@ -2442,6 +2442,8 @@ public class CombatFrame extends JFrame {
 		int keyN = 0;
 		for (Iterator i=fightOptions.iterator();i.hasNext();) {
 			RealmComponent chit = (RealmComponent)i.next();
+			CombatWrapper combat = new CombatWrapper(chit.getGameObject());
+			if(combat.getPlacedAsFight()) continue;
 			
 			String key = "N"+(keyN);
 			// Normal Weapon
