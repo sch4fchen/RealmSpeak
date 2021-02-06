@@ -66,7 +66,7 @@ public class BattleModel {
 		this.gameData = data;
 		this.battleLocation = battleLocation;
 		denizenBattleGroup = null;
-		characterBattleGroups = new ArrayList<BattleGroup>();
+		characterBattleGroups = new ArrayList<>();
 		hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
 		theGame = GameWrapper.findGame(gameData);
 	}
@@ -192,8 +192,7 @@ public class BattleModel {
 		return null;
 	}
 	public BattleGroup getParticipantsBattleGroup(RealmComponent participant) {
-		for (Iterator i=getAllBattleGroups(true).iterator();i.hasNext();) {
-			BattleGroup group = (BattleGroup)i.next();
+		for (BattleGroup group : getAllBattleGroups(true)) {
 			if (group.contains(participant)) {
 				return group;
 			}
@@ -222,8 +221,7 @@ public class BattleModel {
 			denizenBattleGroup.allHorsesWalk();
 			
 			// denizens reset to not having a sheet
-			for (Iterator p=denizenBattleGroup.getBattleParticipants().iterator();p.hasNext();) {
-				RealmComponent rc = (RealmComponent)p.next();
+			for (RealmComponent rc : denizenBattleGroup.getBattleParticipants()) {
 				CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 				if (combat.isSheetOwner()) {
 					combat.setSheetOwner(false);
@@ -234,8 +232,7 @@ public class BattleModel {
 		
 		// Setup combat sheet owners
 		// Make sure all non-hired participants in clearing are sheet owners (to start)
-		for (Iterator p=getAllBattleParticipants(false).iterator();p.hasNext();) {
-			RealmComponent rc = (RealmComponent)p.next();
+		for (RealmComponent rc : getAllBattleParticipants(false)) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 			if (!combat.isSheetOwner()) {
 				combat.setSheetOwner(true);
@@ -251,7 +248,7 @@ public class BattleModel {
 			for (RealmComponent denizen:denizenBattleGroup.getBattleParticipants()) {
 				CombatWrapper combat = new CombatWrapper(denizen.getGameObject());
 				if (!denizen.isAssigned() && !combat.isPeaceful() && !denizen.isMistLike()) {
-					ArrayList<BattleGroup> availableGroups = new ArrayList<BattleGroup>();
+					ArrayList<BattleGroup> availableGroups = new ArrayList<>();
 					// Find one possibility for each BattleGroup
 					for (BattleGroup bg:characterBattleGroups) {
 						if (bg.hasAvailableParticipant(denizen)) {
@@ -276,17 +273,16 @@ public class BattleModel {
 		}
 	}
 
-	private BattleGroup rollOffForWorst(Collection groups) {
+	private static BattleGroup rollOffForWorst(Collection<BattleGroup> groups) {
 		return rollOff(groups, false);
 	}
 
-	private BattleGroup rollOff(Collection groups, boolean best) {
+	private static BattleGroup rollOff(Collection<BattleGroup> groups, boolean best) {
 		if (groups.size() > 0) {
 			while (groups.size() > 1) { // As long as there are ties, the rolloff continues. Only one "winner" allowed.
 				int markRoll = best ? 99 : -99;
-				ArrayList markedRollers = new ArrayList();
-				for (Iterator i = groups.iterator(); i.hasNext();) {
-					BattleGroup bg = (BattleGroup) i.next();
+				ArrayList<BattleGroup> markedRollers = new ArrayList<>();
+				for (BattleGroup bg : groups) {
 					DieRoller roller = bg.createDieRoller("Roll Off");
 					// TODO Add the roller to the character somehow...
 					int roll = roller.getHighDieResult();
@@ -303,7 +299,7 @@ public class BattleModel {
 				}
 				groups = markedRollers;
 			}
-			return (BattleGroup) groups.iterator().next();
+			return groups.iterator().next();
 		}
 		return null;
 	}
@@ -462,9 +458,9 @@ public class BattleModel {
 	
 	public void doEnergizeSpells() {
 		// Find and hash all spells and casters cast this round by speed
-		HashLists spells = new HashLists();
-		HashLists casters = new HashLists();
-		ArrayList<RealmComponent> spellCasters = new ArrayList<RealmComponent>();
+		HashLists<Integer,SpellWrapper> spells = new HashLists<>();
+		HashLists<Integer,CharacterChitComponent> casters = new HashLists<>();
+		ArrayList<RealmComponent> spellCasters = new ArrayList<>();
 		for (CharacterChitComponent rc : getAllParticipatingCharacters()) {
 			CombatWrapper character = new CombatWrapper(rc.getGameObject());
 			GameObject go = character.getCastSpell();
@@ -481,24 +477,21 @@ public class BattleModel {
 		}
 		
 		if (spells.size()>0) {
-			ArrayList allSpeeds = new ArrayList(spells.keySet());
+			ArrayList<Integer> allSpeeds = new ArrayList<>(spells.keySet());
 			Collections.sort(allSpeeds);
 			
 			// Determine which spells cancel which spellcasters
-			for (Iterator i=allSpeeds.iterator();i.hasNext();) {
-				Integer speed = (Integer)i.next();
-				ArrayList spellsAtSpeed = spells.getList(speed);
-				for (Iterator n=spellsAtSpeed.iterator();n.hasNext();) {
-					SpellWrapper spell = (SpellWrapper)n.next();
+			for (Integer speed : allSpeeds) {
+				ArrayList<SpellWrapper> spellsAtSpeed = spells.getList(speed);
+				for (SpellWrapper spell : spellsAtSpeed) {
 					if (spell.isAlive() && !spell.targetsClearing()) { // might have already been cancelled!
-						ArrayList unaffectedCasters = casters.getList(speed);
+						ArrayList<CharacterChitComponent> unaffectedCasters = casters.getList(speed);
 						ArrayList<RealmComponent> targets = spell.getTargets();
 						targets.retainAll(spellCasters);
 						targets.removeAll(unaffectedCasters);
 					
 						if (targets.size()>0) {
-							for (Iterator t=targets.iterator();t.hasNext();) {
-								RealmComponent target = (RealmComponent)t.next();
+							for (RealmComponent target : targets) {
 								CombatWrapper combat = new CombatWrapper(target.getGameObject());
 								GameObject spellToCancelGo = combat.getCastSpell();
 								SpellWrapper spellToCancel = new SpellWrapper(spellToCancelGo);
@@ -1407,7 +1400,7 @@ public class BattleModel {
 	private void repositionAndChangeTactics(String prefix,CombatWrapper sheetOwner,ArrayList<RealmComponent> groupList) {
 		if (groupList.size()>0) {
 			// Hash by box
-			HashLists boxHash = new HashLists();
+			HashLists<Integer, RealmComponent> boxHash = new HashLists<>();
 			for (RealmComponent rc : groupList) {
 				CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 				int box = combat.getCombatBox();
@@ -1449,7 +1442,7 @@ public class BattleModel {
 			}
 		}
 	}
-	private void reposition(String prefix,CombatWrapper combatTarget,HashLists boxHash) {
+	private static void reposition(String prefix,CombatWrapper combatTarget,HashLists<Integer, RealmComponent> boxHash) {
 		DieRoller roller = new DieRoller(); // Rule 22.5/2 specifies that modifiers do NOT affect this roll
 		roller.addRedDie();
 		roller.rollDice("Reposition");
@@ -1459,9 +1452,9 @@ public class BattleModel {
 		}
 		int result = roller.getValue(0);
 		combatTarget.setRepositionResult(prefix,result); // Capture the result for purposes of displaying
-		ArrayList box1 = null;
-		ArrayList box2 = null;
-		ArrayList box3 = null;
+		ArrayList<RealmComponent> box1 = null;
+		ArrayList<RealmComponent> box2 = null;
+		ArrayList<RealmComponent> box3 = null;
 		// 1,2,3 means THAT box unchanged
 		// 4 no change
 		// 5 shift down/right
@@ -1512,14 +1505,13 @@ public class BattleModel {
 			repositionToBox(box3,3);
 		}
 	}
-	private void repositionToBox(ArrayList list,int box) {
-		for (Iterator i=list.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+	private static void repositionToBox(ArrayList<RealmComponent> list,int box) {
+		for (RealmComponent rc : list) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 			combat.setCombatBox(box);
 		}
 	}
-	private void changeTactics(String prefix,CombatWrapper combatTarget,HashLists boxHash) {
+	private void changeTactics(String prefix,CombatWrapper combatTarget,HashLists<Integer, RealmComponent> boxHash) {
 		DieRoller roller = new DieRoller(); // Rule 22.5/3 specifies that modifiers do NOT affect this roll
 		roller.addRedDie();
 		roller.addWhiteDie();
@@ -1528,7 +1520,7 @@ public class BattleModel {
 		changeTactics(prefix,combatTarget,boxHash,roller,2);
 		changeTactics(prefix,combatTarget,boxHash,roller,3);
 	}
-	private void changeTactics(String prefix,CombatWrapper combatTarget,HashLists boxHash,DieRoller roller,int boxNumber) {
+	private void changeTactics(String prefix,CombatWrapper combatTarget,HashLists<Integer, RealmComponent> boxHash,DieRoller roller,int boxNumber) {
 		roller.reset();
 		roller.rollDice("Change Tactics");
 		if (DebugUtility.isMonsterLock()) {
@@ -1539,12 +1531,12 @@ public class BattleModel {
 			roller.setValue(0,6);
 		}
 		int result = roller.getHighDieResult();
-		ArrayList list = boxHash.getList(new Integer(boxNumber));
+		ArrayList<RealmComponent> list = boxHash.getList(new Integer(boxNumber));
 		if (list!=null) {
 			// Make sure there is at least ONE chit to flip
 			boolean isOne = false;
-			for (Iterator i=list.iterator();i.hasNext();) {
-				ChitComponent chit = (ChitComponent)i.next(); // they should ALL be chits
+			for (RealmComponent rc : list) {
+				ChitComponent chit = (ChitComponent)rc; // they should ALL be chits
 				if (canChangeTactics(chit)) {
 					isOne = true;
 					break;
@@ -1558,7 +1550,7 @@ public class BattleModel {
 			}
 		}
 	}
-	private boolean canChangeTactics(ChitComponent chit) {
+	private static boolean canChangeTactics(ChitComponent chit) {
 		boolean flip = true;
 		if (chit.isMonster()) {
 			MonsterChitComponent monster = (MonsterChitComponent)chit;
@@ -1573,11 +1565,11 @@ public class BattleModel {
 		}
 		return flip;
 	}
-	private void changeTacticsOn(ArrayList list,int result,int boxNumber) {
+	private static void changeTacticsOn(ArrayList<RealmComponent> list,int result,int boxNumber) {
 		if (list!=null) {
 			boolean reportedChange = false;
-			for (Iterator i=list.iterator();i.hasNext();) {
-				ChitComponent chit = (ChitComponent)i.next(); // they should ALL be chits
+			for (RealmComponent rc : list) {
+				ChitComponent chit = (ChitComponent)rc; // they should ALL be chits
 				if (canChangeTactics(chit)) {
 					if (result==6 || chit.getGameObject().hasThisAttribute("sensitive_tactics")) {
 						if (!reportedChange) {
@@ -1997,7 +1989,7 @@ public class BattleModel {
 //			}
 //		}
 	}
-	private void doGrudge(RealmComponent killer,CharacterWrapper responsibleCharacter,RealmComponent rc,int penalty,String ruleName) {
+	private static void doGrudge(RealmComponent killer,CharacterWrapper responsibleCharacter,RealmComponent rc,int penalty,String ruleName) {
 		String currentRelString = RealmUtility.getRelationshipNameFor(responsibleCharacter,rc);
 		responsibleCharacter.changeRelationship(rc.getGameObject(),-penalty);
 		String newRelString = RealmUtility.getRelationshipNameFor(responsibleCharacter,rc);
@@ -2030,8 +2022,7 @@ public class BattleModel {
 	}
 	public ArrayList<RealmComponent> getAttackersFor(RealmComponent rc,boolean includeCharacters,boolean includeWeapons) {
 		ArrayList<RealmComponent> list = new ArrayList<>();
-		for (Iterator i=getAllBattleParticipants(true).iterator();i.hasNext();) {
-			RealmComponent bp = (RealmComponent)i.next();
+		for (RealmComponent bp : getAllBattleParticipants(true)) {
 			if (includeCharacters || !bp.isCharacter()) {
 				if ((bp.getTarget()!=null && rc.equals(bp.getTarget())) || (bp.get2ndTarget()!=null && rc.equals(bp.get2ndTarget()))) {
 					list.add(bp);

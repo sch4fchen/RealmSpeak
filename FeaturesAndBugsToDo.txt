@@ -8,7 +8,7 @@ CharacterChitComponent:
 	getMissileType
 	hitsOnTie
 	applyHit
-RULES: Check which weapon can hit which target, check speed and harm
+RULES: Check which weapon can hit which target, check speed, length and harm
 
 Dual Wielding: Option alert both weapons
 Expansion 1: More Ambushes/Throwing Weapons + Ability: Spear, Axe, Dagger?
