@@ -316,7 +316,7 @@ public class BattleModel {
 		return getParticipantsFromGroups(getAllBattleGroups(includeDenizens));
 	}
 	public ArrayList<RealmComponent> getAllOtherBattleParticipants(BattleGroup bg,boolean includeDenizens,boolean allowTreachery) {
-		ArrayList list = findOtherBattleGroups(bg,includeDenizens);
+		ArrayList<BattleGroup> list = findOtherBattleGroups(bg,includeDenizens);
 		if (allowTreachery) {
 			list.add(bg);
 		}
@@ -349,8 +349,7 @@ public class BattleModel {
 	public ArrayList<RealmComponent> getAllLeaders() {
 		ArrayList<RealmComponent> ret = new ArrayList<>();
 		ArrayList<RealmComponent> list  = getAllBattleParticipants(false);
-		for (Iterator i=list.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : list) {
 			if (rc.isPlayerControlledLeader() && !rc.isCharacter()) {
 				ret.add(rc);
 			}
@@ -514,11 +513,9 @@ public class BattleModel {
 					
 			// Non-attack spells go into effect here
 			CombatWrapper tile = new CombatWrapper(battleLocation.tile.getGameObject());
-			for (Iterator i=allSpeeds.iterator();i.hasNext();) {
-				Integer speed = (Integer)i.next();
-				ArrayList spellsAtSpeed = spells.getList(speed);
-				for (Iterator n=spellsAtSpeed.iterator();n.hasNext();) {
-					SpellWrapper spell = (SpellWrapper)n.next();
+			for (Integer speed : allSpeeds) {
+				ArrayList<SpellWrapper> spellsAtSpeed = spells.getList(speed);
+				for (SpellWrapper spell : spellsAtSpeed) {
 					if (spell.isInstantSpell()) {
 						spell.affectTargets(CombatFrame.getSingleton(),theGame,true);
 					}
@@ -1084,7 +1081,7 @@ public class BattleModel {
 						// Demon's Power of the Pit
 						logBattleInfo(target.getGameObject().getName()+" was hit with Power of the Pit along box "+attacker.getAttackCombatBox());
 						PowerOfThePit pop = PowerOfThePit.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject(),false,0);
-						ArrayList<GameObject> kills = new ArrayList<GameObject>(pop.getKills());
+						ArrayList<GameObject> kills = new ArrayList<>(pop.getKills());
 						kills.remove(targetCombat.getGameObject()); // Because targetCombat will be handled normally
 						
 						for (GameObject kill:kills) {
@@ -1520,7 +1517,7 @@ public class BattleModel {
 		changeTactics(prefix,combatTarget,boxHash,roller,2);
 		changeTactics(prefix,combatTarget,boxHash,roller,3);
 	}
-	private void changeTactics(String prefix,CombatWrapper combatTarget,HashLists<Integer, RealmComponent> boxHash,DieRoller roller,int boxNumber) {
+	private static void changeTactics(String prefix,CombatWrapper combatTarget,HashLists<Integer, RealmComponent> boxHash,DieRoller roller,int boxNumber) {
 		roller.reset();
 		roller.rollDice("Change Tactics");
 		if (DebugUtility.isMonsterLock()) {
