@@ -140,7 +140,7 @@ public class CharacterActionPanel extends CharacterFramePanel {
 		}
 	}
 	private void showKills(int row) {
-		Collection allDays = getCharacter().getGameObject().getAttributeList(getCharacter().getBlockName(),CharacterWrapper.ALL_DAYS);
+		Collection<String> allDays = getCharacter().getGameObject().getAttributeList(getCharacter().getBlockName(),CharacterWrapper.ALL_DAYS);
 		if (allDays!=null && row<allDays.size()) {
 			String dayKey = (String)(new ArrayList(allDays)).get(row);
 			ArrayList<GameObject> kills = getCharacter().getKills(dayKey);
@@ -197,7 +197,7 @@ public class CharacterActionPanel extends CharacterFramePanel {
 		public ActionHistoryTableModel() {
 		}
 		public int getRowCount() {
-			Collection allDays = getCharacter().getAllDayKeys();
+			Collection<String> allDays = getCharacter().getAllDayKeys();
 			return allDays==null?0:allDays.size();
 		}
 		public int getColumnCount() {
@@ -210,9 +210,9 @@ public class CharacterActionPanel extends CharacterFramePanel {
 			return columnClass[column];
 		}
 		public Object getValueAt(int row, int column) {
-			ArrayList allDays = getCharacter().getGameObject().getAttributeList(getCharacter().getBlockName(),CharacterWrapper.ALL_DAYS);
+			ArrayList<String> allDays = getCharacter().getGameObject().getAttributeList(getCharacter().getBlockName(),CharacterWrapper.ALL_DAYS);
 			if (allDays!=null && row<allDays.size()) {
-				String dayKey = (String)allDays.get(row);
+				String dayKey = allDays.get(row);
 				switch(column) {
 					case TURN:
 						return new Integer(row+1); // FIXME this isn't exactly right - doesn't reflect the game turn, only the turn of this character
@@ -235,7 +235,7 @@ public class CharacterActionPanel extends CharacterFramePanel {
 						DieRoller roller = getCharacter().getMonsterRoll(dayKey);
 						if (roller!=null) {
 							if (dieIconHash==null) {
-								dieIconHash = new Hashtable<Integer, ImageIcon>();
+								dieIconHash = new Hashtable<>();
 								for (int i=1;i<=6;i++) {
 									DieRoller dr = new DieRoller(String.valueOf(i),16,4);
 									dr.setAllRed();
@@ -245,11 +245,9 @@ public class CharacterActionPanel extends CharacterFramePanel {
 							if (roller.getNumberOfDice()==1) {
 								return dieIconHash.get(roller.getValue(0));
 							}
-							else {
-								roller = new DieRoller(roller.getStringResult(),16,4);
-								roller.setAllRed();
-								return roller.getIcon();
-							}
+							roller = new DieRoller(roller.getStringResult(),16,4);
+							roller.setAllRed();
+							return roller.getIcon();
 						}
 						return null;
 					case KILLS:
@@ -261,22 +259,20 @@ public class CharacterActionPanel extends CharacterFramePanel {
 		}
 		public String getActionString(String dayKey) {
 			boolean today = dayKey.equals(getCharacter().getCurrentDayKey());
-			Collection c = getCharacter().getActions(dayKey);
+			Collection<String> c = getCharacter().getActions(dayKey);
 			if (c!=null) {
 				StringBuffer sb = new StringBuffer();
-				Iterator vai = null;
+				Iterator<String> vai = null;
 				if (today) { // only today is drawn using html
 					sb.append("<html>");
-					Collection v = getCharacter().getCurrentActionValids();
+					Collection<String> v = getCharacter().getCurrentActionValids();
 					if (v==null) {
-						v = new ArrayList();
+						v = new ArrayList<>();
 					}
 					vai = v.iterator();
 				}
 				int zero = sb.length();
-				for (Iterator i=c.iterator();i.hasNext();) {
-					String action = (String)i.next();
-					
+				for (String action : c) {			
 					// Truncate anything starting with a tilde (~)
 					int tilde = action.indexOf('~');
 					if (tilde>=0) {

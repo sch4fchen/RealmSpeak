@@ -53,7 +53,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 	}
 
 	protected ArrayList<QuestPropertyBlock> createPropertyBlocks() {
-		ArrayList<QuestPropertyBlock> list = new ArrayList<QuestPropertyBlock>();
+		ArrayList<QuestPropertyBlock> list = new ArrayList<>();
 		list.add(new QuestPropertyBlock(QuestRequirement.NOT,"NOT",FieldType.Boolean));
 		switch (requirement.getRequirementType()) {
 			case Action:
@@ -180,6 +180,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				break;
 			case Probability:
 				list.add(new QuestPropertyBlock(QuestRequirementProbability.CHANCE, "Probability in % (1-100)", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRequirementProbability.MAX_NUMBER_OF_CHECKS, "Max. checks per day (0: unlimited)", FieldType.NumberAll));
 				break;
 			case Relationship:
 				list.add(new QuestPropertyBlock(QuestRequirementRelationship.NATIVE_GROUP, "Native group", FieldType.Regex, null, new String[] {"native,rank=HQ", "visitor"}));

@@ -1,4 +1,6 @@
 Version 1.1.4.0 - Changes since 1.1.3.9
+QUEST UPDATE:
+# QuestRequirementProbability: Option to limit number of checks per day
 NEW FEATURES:
 # Option to change character chit style to Legendary style
 # Optional Rule: Dual wielding (Expansion 1 variant)
