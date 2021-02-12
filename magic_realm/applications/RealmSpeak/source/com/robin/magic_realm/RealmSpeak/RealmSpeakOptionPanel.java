@@ -49,8 +49,8 @@ public class RealmSpeakOptionPanel extends JDialog {
 	protected JCheckBox monsterNumbersOption;
 	
 	protected JRadioButton classicCharacterChitsOption;
+	protected JRadioButton legendaryClassicCharacterChitsOption;
 	protected JRadioButton legendaryCharacterChitsOption;
-	protected JRadioButton legendaryTexturedCharacterChitsOption;
 	
 	protected JRadioButton classicTilesOption;
 	protected JRadioButton legendaryTilesOption;
@@ -131,11 +131,11 @@ public class RealmSpeakOptionPanel extends JDialog {
 			case CharacterChitComponent.DISPLAY_STYLE_CLASSIC:
 				classicCharacterChitsOption.setSelected(true);
 				break;
+			case CharacterChitComponent.DISPLAY_STYLE_LEGENDARY_CLASSIC:
+				legendaryClassicCharacterChitsOption.setSelected(true);
+				break;
 			case CharacterChitComponent.DISPLAY_STYLE_LEGENDARY:
 				legendaryCharacterChitsOption.setSelected(true);
-				break;
-			case CharacterChitComponent.DISPLAY_STYLE_LEGENDARY_TEXTURED:
-				legendaryTexturedCharacterChitsOption.setSelected(true);
 				break;
 			default:
 				classicCharacterChitsOption.setSelected(true);
@@ -255,11 +255,11 @@ public class RealmSpeakOptionPanel extends JDialog {
 		return RealmComponent.DISPLAY_STYLE_CLASSIC;
 	}
 	private int getCharacterChitDisplayStyle() {
+		if (legendaryClassicCharacterChitsOption.isSelected()) {
+			return CharacterChitComponent.DISPLAY_STYLE_LEGENDARY_CLASSIC;
+		}
 		if (legendaryCharacterChitsOption.isSelected()) {
 			return CharacterChitComponent.DISPLAY_STYLE_LEGENDARY;
-		}
-		if (legendaryTexturedCharacterChitsOption.isSelected()) {
-			return CharacterChitComponent.DISPLAY_STYLE_LEGENDARY_TEXTURED;
 		}
 		return CharacterChitComponent.DISPLAY_STYLE_CLASSIC;
 	}
@@ -417,12 +417,12 @@ public class RealmSpeakOptionPanel extends JDialog {
 		classicCharacterChitsOption = new JRadioButton("Classic");
 		group.add(classicCharacterChitsOption);
 		panel.add(classicCharacterChitsOption);
+		legendaryClassicCharacterChitsOption = new JRadioButton("Legendary Realm (classic hidden)");
+		group.add(legendaryClassicCharacterChitsOption);
+		panel.add(legendaryClassicCharacterChitsOption);
 		legendaryCharacterChitsOption = new JRadioButton("Legendary Realm");
 		group.add(legendaryCharacterChitsOption);
 		panel.add(legendaryCharacterChitsOption);
-		legendaryTexturedCharacterChitsOption = new JRadioButton("Legendary Realm (textured)");
-		group.add(legendaryTexturedCharacterChitsOption);
-		panel.add(legendaryTexturedCharacterChitsOption);
 		return panel;
 	}
 	private JPanel getTilesOptionsPanel() {

@@ -35,8 +35,8 @@ import com.robin.magic_realm.components.wrapper.*;
 public class CharacterChitComponent extends RoundChitComponent implements BattleChit,Horsebackable {
 
 	public static final int DISPLAY_STYLE_CLASSIC = 0;
-	public static final int DISPLAY_STYLE_LEGENDARY = 1;
-	public static final int DISPLAY_STYLE_LEGENDARY_TEXTURED = 2;
+	public static final int DISPLAY_STYLE_LEGENDARY_CLASSIC = 1;
+	public static final int DISPLAY_STYLE_LEGENDARY = 2;
 	public static final String HIDDEN = LIGHT_SIDE_UP;
 	public static final String UNHIDDEN = DARK_SIDE_UP;
 	
@@ -75,10 +75,10 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		return ImageCache.iconExists(iconFolder+"/" + iconName);
 	}
 	
-	private boolean legendaryTexturedImageExists() {
+	private boolean legendaryClassicImageExists() {
 		String iconName = gameObject.getThisAttribute(Constants.ICON_TYPE);
 		String iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER);
-		iconFolder = iconFolder+"_legendary_t";
+		iconFolder = iconFolder+"_legendary_c";
 		if (isHidden()) {
 			iconName=iconName+"_h";
 		}
@@ -86,10 +86,10 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	}
 	
 	public int getChitSize() {
-		if (displayStyle == DISPLAY_STYLE_LEGENDARY && legendaryImageExists()) {
+		if (displayStyle == DISPLAY_STYLE_LEGENDARY_CLASSIC && legendaryClassicImageExists()) {
 			return T_CHIT_SIZE-ChitComponent.SHADOW_BORDER;
 		}
-		if (displayStyle == DISPLAY_STYLE_LEGENDARY_TEXTURED && legendaryTexturedImageExists()) {
+		if (displayStyle == DISPLAY_STYLE_LEGENDARY && legendaryImageExists()) {
 			return T_CHIT_SIZE-ChitComponent.SHADOW_BORDER;
 		}
 		return T_CHIT_SIZE;
@@ -102,10 +102,10 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	}
 
 	public void paintComponent(Graphics g1) {
-		if (displayStyle == DISPLAY_STYLE_LEGENDARY && legendaryImageExists()) {
+		if (displayStyle == DISPLAY_STYLE_LEGENDARY_CLASSIC && legendaryClassicImageExists()) {
 			super.paintComponent(g1, false);
 		}
-		else if (displayStyle == DISPLAY_STYLE_LEGENDARY_TEXTURED && legendaryTexturedImageExists()) {
+		else if (displayStyle == DISPLAY_STYLE_LEGENDARY && legendaryImageExists()) {
 			super.paintComponent(g1, false);
 		}
 		else {
@@ -138,15 +138,15 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			String iconName = gameObject.getThisAttribute(Constants.ICON_TYPE);
 			String iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER);
 			if (iconName!=null && iconFolder!=null) {
-				if (displayStyle == DISPLAY_STYLE_LEGENDARY && legendaryImageExists()) {
-					iconFolder = iconFolder+"_legendary";
+				if (displayStyle == DISPLAY_STYLE_LEGENDARY_CLASSIC && legendaryClassicImageExists()) {
+					iconFolder = iconFolder+"_legendary_c";
 					if (isHidden()) {
 						iconName=iconName+"_h";
 					}
 					drawIcon(g,iconFolder,iconName,0.26);
 				}
-				else if (displayStyle == DISPLAY_STYLE_LEGENDARY_TEXTURED && legendaryTexturedImageExists()) {
-					iconFolder = iconFolder+"_legendary_t";
+				else if (displayStyle == DISPLAY_STYLE_LEGENDARY && legendaryImageExists()) {
+					iconFolder = iconFolder+"_legendary";
 					if (isHidden()) {
 						iconName=iconName+"_h";
 					}
@@ -163,10 +163,8 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			Stroke old = g.getStroke();
 			g.setStroke(Constants.THICK_STROKE);
 			int m = T_CHIT_SIZE>>1;
-			if (displayStyle == DISPLAY_STYLE_LEGENDARY && legendaryImageExists()) {
-				g.drawOval(0,0,2*m,2*m);
-			}
-			else if (displayStyle == DISPLAY_STYLE_LEGENDARY_TEXTURED && legendaryTexturedImageExists()) {
+			if ((displayStyle == DISPLAY_STYLE_LEGENDARY && legendaryImageExists())
+					 || (displayStyle == DISPLAY_STYLE_LEGENDARY_CLASSIC && legendaryClassicImageExists())) {
 				g.drawOval(0,0,2*m,2*m);
 			}
 			else {

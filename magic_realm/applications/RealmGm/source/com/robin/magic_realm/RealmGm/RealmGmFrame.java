@@ -62,8 +62,8 @@ public class RealmGmFrame extends JFrame {
 	private JRadioButton colorChitsOption;
 	private JRadioButton frenzelChitsOption;
 	private JRadioButton classicCharacterChitsOption;
+	private JRadioButton legendaryClassicCharacterChitsOption;
 	private JRadioButton legendaryCharacterChitsOption;
-	private JRadioButton legendaryTexturedCharacterChitsOption;
 	private JButton gameOptions;
 	
 	protected FileFilter saveGameFileFilter = GameFileFilters.createSaveGameFileFilter();
@@ -152,11 +152,11 @@ public class RealmGmFrame extends JFrame {
 		case CharacterChitComponent.DISPLAY_STYLE_CLASSIC:
 			CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_CLASSIC;
 			break;
+		case CharacterChitComponent.DISPLAY_STYLE_LEGENDARY_CLASSIC:
+			CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_LEGENDARY_CLASSIC;
+			break;
 		case CharacterChitComponent.DISPLAY_STYLE_LEGENDARY:
 			CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_LEGENDARY;
-			break;
-		case CharacterChitComponent.DISPLAY_STYLE_LEGENDARY_TEXTURED:
-			CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_LEGENDARY_TEXTURED;
 			break;
 		default:
 			CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_CLASSIC;
@@ -343,6 +343,19 @@ public class RealmGmFrame extends JFrame {
 		}
 		group.add(classicCharacterChitsOption);
 		panel.add(classicCharacterChitsOption);
+		legendaryClassicCharacterChitsOption = new JRadioButton("Legendary (classic hidden)");
+		legendaryClassicCharacterChitsOption.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				prefs.set(CharacterChitDisplayStyle,CharacterChitComponent.DISPLAY_STYLE_LEGENDARY_CLASSIC);
+				setCharacterChitDisplayStyle();
+				reinitMap();
+			}
+		});
+		if (selected == CharacterChitComponent.DISPLAY_STYLE_LEGENDARY_CLASSIC) {
+			legendaryClassicCharacterChitsOption.setSelected(true);
+		}
+		group.add(legendaryClassicCharacterChitsOption);
+		panel.add(legendaryClassicCharacterChitsOption);
 		legendaryCharacterChitsOption = new JRadioButton("Legendary");
 		legendaryCharacterChitsOption.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
@@ -356,19 +369,6 @@ public class RealmGmFrame extends JFrame {
 		}
 		group.add(legendaryCharacterChitsOption);
 		panel.add(legendaryCharacterChitsOption);
-		legendaryTexturedCharacterChitsOption = new JRadioButton("Legendary Textured");
-		legendaryTexturedCharacterChitsOption.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ev) {
-				prefs.set(CharacterChitDisplayStyle,CharacterChitComponent.DISPLAY_STYLE_LEGENDARY_TEXTURED);
-				setCharacterChitDisplayStyle();
-				reinitMap();
-			}
-		});
-		if (selected == CharacterChitComponent.DISPLAY_STYLE_LEGENDARY_TEXTURED) {
-			legendaryTexturedCharacterChitsOption.setSelected(true);
-		}
-		group.add(legendaryTexturedCharacterChitsOption);
-		panel.add(legendaryTexturedCharacterChitsOption);
 		return panel;
 	}
 	private void closeGame() {
