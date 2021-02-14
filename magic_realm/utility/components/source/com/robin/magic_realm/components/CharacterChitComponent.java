@@ -82,7 +82,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	private boolean legendaryClassicImageExists() {
 		String iconName = gameObject.getThisAttribute(Constants.ICON_TYPE);
 		String iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER);
-		iconFolder = iconFolder+"_legendary_c";
+		iconFolder = iconFolder+"_legendary_classic";
 		if (isHidden()) {
 			iconName=iconName+"_h";
 		}
@@ -138,7 +138,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					}
 				}
 				else if (displayStyle == DISPLAY_STYLE_LEGENDARY_CLASSIC) {
-					String iconDir_l = "characters_legendary_c";
+					String iconDir_l = "characters_legendary_classic";
 					String icon_type_l = icon_type;
 					if (isHidden()) {
 						icon_type_l=icon_type_l+"_h";
@@ -175,7 +175,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					drawIcon(g,iconFolder,iconName,0.26);
 				}
 				else if (displayStyle == DISPLAY_STYLE_LEGENDARY_CLASSIC && legendaryClassicImageExists()) {
-					iconFolder = iconFolder+"_legendary_c";
+					iconFolder = iconFolder+"_legendary_classic";
 					if (isHidden()) {
 						iconName=iconName+"_h";
 					}
