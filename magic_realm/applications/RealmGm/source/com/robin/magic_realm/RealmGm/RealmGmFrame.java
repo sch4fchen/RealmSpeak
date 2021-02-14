@@ -338,6 +338,7 @@ public class RealmGmFrame extends JFrame {
 		if (selected == RealmComponent.DISPLAY_STYLE_LEGENDARY) {
 			legendaryChitsOption.setSelected(true);
 		}
+		legendaryChitsOption.setEnabled(false);
 		group.add(legendaryChitsOption);
 		panel.add(legendaryChitsOption);
 		return panel;

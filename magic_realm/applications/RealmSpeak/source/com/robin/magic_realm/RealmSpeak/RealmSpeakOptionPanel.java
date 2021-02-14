@@ -414,6 +414,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		group.add(frenzelChitsOption);
 		panel.add(frenzelChitsOption);
 		legendaryChitsOption = new JRadioButton("Legendary Chits");
+		legendaryChitsOption.setEnabled(false);
 		group.add(legendaryChitsOption);
 		panel.add(legendaryChitsOption);
 		monsterNumbersOption = new JCheckBox("Show Monster Numbers");
