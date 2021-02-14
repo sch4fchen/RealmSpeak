@@ -187,7 +187,6 @@ public abstract class ChitComponent extends RealmComponent {
 		drawIcon(g,type,name,size,0,0,null);
 	}
 	protected void drawIcon(Graphics g,String type,String name,double size,int offsetx,int offsety,Color backing) {
-//		Color backing = isLightSideUp()?lightColor:darkColor;
 		String filename = type+"/"+name;
 		ImageIcon icon = ImageCache.getIcon(filename);
 		if (icon==null) {

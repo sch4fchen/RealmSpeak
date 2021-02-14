@@ -65,6 +65,10 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		return CHARACTER;
 	}
 
+	private static boolean imageExists(String iconName, String iconFolder) {
+		return ImageCache.iconExists(iconFolder+"/" + iconName);
+	}
+	
 	private boolean legendaryImageExists() {
 		String iconName = gameObject.getThisAttribute(Constants.ICON_TYPE);
 		String iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER);
@@ -72,7 +76,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		if (isHidden()) {
 			iconName=iconName+"_h";
 		}
-		return ImageCache.iconExists(iconFolder+"/" + iconName);
+		return imageExists(iconName, iconFolder);
 	}
 	
 	private boolean legendaryClassicImageExists() {
@@ -82,14 +86,14 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		if (isHidden()) {
 			iconName=iconName+"_h";
 		}
-		return ImageCache.iconExists(iconFolder+"/" + iconName);
+		return imageExists(iconName, iconFolder);
 	}
 	
 	public int getChitSize() {
-		if (displayStyle == DISPLAY_STYLE_LEGENDARY_CLASSIC && legendaryClassicImageExists()) {
+		if (displayStyle == DISPLAY_STYLE_LEGENDARY && legendaryImageExists()) {
 			return T_CHIT_SIZE-ChitComponent.SHADOW_BORDER;
 		}
-		if (displayStyle == DISPLAY_STYLE_LEGENDARY && legendaryImageExists()) {
+		if (displayStyle == DISPLAY_STYLE_LEGENDARY_CLASSIC && legendaryClassicImageExists()) {
 			return T_CHIT_SIZE-ChitComponent.SHADOW_BORDER;
 		}
 		return T_CHIT_SIZE;
@@ -102,10 +106,10 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	}
 
 	public void paintComponent(Graphics g1) {
-		if (displayStyle == DISPLAY_STYLE_LEGENDARY_CLASSIC && legendaryClassicImageExists()) {
+		if (displayStyle == DISPLAY_STYLE_LEGENDARY && legendaryImageExists()) {
 			super.paintComponent(g1, false);
 		}
-		else if (displayStyle == DISPLAY_STYLE_LEGENDARY && legendaryImageExists()) {
+		else if (displayStyle == DISPLAY_STYLE_LEGENDARY_CLASSIC && legendaryClassicImageExists()) {
 			super.paintComponent(g1, false);
 		}
 		else {
@@ -120,14 +124,39 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			// Draw image
 			String icon_type = transmorph.getThisAttribute(Constants.ICON_TYPE);
 			if (icon_type != null) {
+				boolean transformSkin = false;
 				String iconDir = transmorph.getThisAttribute(Constants.ICON_FOLDER);
-				if (useColorIcons()) {
-					iconDir = iconDir+"_c";
+				if (displayStyle == DISPLAY_STYLE_LEGENDARY) {
+					String iconDir_l = "characters_legendary";
+					String icon_type_l = icon_type;
+					if (isHidden()) {
+						icon_type_l=icon_type_l+"_h";
+					}
+					if (imageExists(icon_type_l,iconDir_l)) {
+						drawIcon(g,iconDir_l, icon_type_l, 0.26);
+						transformSkin = true;
+					}
 				}
-				drawIcon(g,iconDir, icon_type, 0.75);
+				else if (displayStyle == DISPLAY_STYLE_LEGENDARY_CLASSIC) {
+					String iconDir_l = "characters_legendary_c";
+					String icon_type_l = icon_type;
+					if (isHidden()) {
+						icon_type_l=icon_type_l+"_h";
+					}
+					if (imageExists(icon_type_l,iconDir_l)) {
+						drawIcon(g,iconDir_l, icon_type_l, 0.26);
+						transformSkin = true;
+					}
+				}
+				if (!transformSkin) {
+					if (useColorIcons()) {
+						iconDir = iconDir+"_c";
+					}
+					drawIcon(g,iconDir, icon_type, 0.75);
+				}
 			}
 			icon_type = gameObject.getThisAttribute(Constants.ICON_TYPE);
-			if (icon_type != null) {
+			if (icon_type != null && displayStyle == DISPLAY_STYLE_CLASSIC) {
 				String iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER);
 				int offset = (getChitSize()>>2);
 				drawIcon(g, iconFolder, icon_type, 0.30,0,offset,BACKING);
@@ -138,15 +167,15 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			String iconName = gameObject.getThisAttribute(Constants.ICON_TYPE);
 			String iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER);
 			if (iconName!=null && iconFolder!=null) {
-				if (displayStyle == DISPLAY_STYLE_LEGENDARY_CLASSIC && legendaryClassicImageExists()) {
-					iconFolder = iconFolder+"_legendary_c";
+				if (displayStyle == DISPLAY_STYLE_LEGENDARY && legendaryImageExists()) {
+					iconFolder = iconFolder+"_legendary";
 					if (isHidden()) {
 						iconName=iconName+"_h";
 					}
 					drawIcon(g,iconFolder,iconName,0.26);
 				}
-				else if (displayStyle == DISPLAY_STYLE_LEGENDARY && legendaryImageExists()) {
-					iconFolder = iconFolder+"_legendary";
+				else if (displayStyle == DISPLAY_STYLE_LEGENDARY_CLASSIC && legendaryClassicImageExists()) {
+					iconFolder = iconFolder+"_legendary_c";
 					if (isHidden()) {
 						iconName=iconName+"_h";
 					}

@@ -46,6 +46,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 	protected JRadioButton classicChitsOption;
 	protected JRadioButton colorChitsOption;
 	protected JRadioButton frenzelChitsOption;
+	protected JRadioButton legendaryChitsOption;
 	protected JCheckBox monsterNumbersOption;
 	
 	protected JRadioButton classicCharacterChitsOption;
@@ -121,6 +122,9 @@ public class RealmSpeakOptionPanel extends JDialog {
 				break;
 			case RealmComponent.DISPLAY_STYLE_FRENZEL:
 				frenzelChitsOption.setSelected(true);
+				break;
+			case RealmComponent.DISPLAY_STYLE_LEGENDARY:
+				legendaryChitsOption.setSelected(true);
 				break;
 			default:
 				classicChitsOption.setSelected(true);
@@ -252,6 +256,9 @@ public class RealmSpeakOptionPanel extends JDialog {
 		else if (frenzelChitsOption.isSelected()) {
 			return RealmComponent.DISPLAY_STYLE_FRENZEL;
 		}
+		else if (legendaryChitsOption.isSelected()) {
+			return RealmComponent.DISPLAY_STYLE_LEGENDARY;
+		}
 		return RealmComponent.DISPLAY_STYLE_CLASSIC;
 	}
 	private int getCharacterChitDisplayStyle() {
@@ -306,7 +313,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		center.add(left);
 		
 		Box right = Box.createVerticalBox();
-		left.add(getMapOptionsPanel());
+		right.add(getMapOptionsPanel());
 		right.add(getChatDisplayOptionsPanel());
 		right.add(getChatLineOptionsPanel());
 		right.add(getPopupWindowOptions());
@@ -394,7 +401,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		return panel;
 	}
 	private JPanel getChitsOptionsPanel() {
-		JPanel panel = new JPanel(new GridLayout(4,1));
+		JPanel panel = new JPanel(new GridLayout(5,1));
 		panel.setBorder(BorderFactory.createTitledBorder("Game Chits"));
 		ButtonGroup group = new ButtonGroup();
 		classicChitsOption = new JRadioButton("Classic Chits");
@@ -406,6 +413,9 @@ public class RealmSpeakOptionPanel extends JDialog {
 		frenzelChitsOption = new JRadioButton("Remodeled Chits");
 		group.add(frenzelChitsOption);
 		panel.add(frenzelChitsOption);
+		legendaryChitsOption = new JRadioButton("Legendary Chits");
+		group.add(legendaryChitsOption);
+		panel.add(legendaryChitsOption);
 		monsterNumbersOption = new JCheckBox("Show Monster Numbers");
 		panel.add(monsterNumbersOption);
 		return panel;

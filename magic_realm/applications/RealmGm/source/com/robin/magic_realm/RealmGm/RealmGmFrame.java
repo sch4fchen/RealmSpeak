@@ -61,6 +61,7 @@ public class RealmGmFrame extends JFrame {
 	private JRadioButton classicChitsOption;
 	private JRadioButton colorChitsOption;
 	private JRadioButton frenzelChitsOption;
+	private JRadioButton legendaryChitsOption;
 	private JRadioButton classicCharacterChitsOption;
 	private JRadioButton legendaryClassicCharacterChitsOption;
 	private JRadioButton legendaryCharacterChitsOption;
@@ -141,6 +142,9 @@ public class RealmGmFrame extends JFrame {
 			break;
 		case RealmComponent.DISPLAY_STYLE_FRENZEL:
 			RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_FRENZEL;
+			break;
+		case RealmComponent.DISPLAY_STYLE_LEGENDARY:
+			RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_LEGENDARY;
 			break;
 		default:
 			RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_CLASSIC;
@@ -281,7 +285,7 @@ public class RealmGmFrame extends JFrame {
 	}
 	private JPanel getChitOptionsPanel() {
 		int selected = prefs.getInt(ChitDisplayStyle);
-		JPanel panel = new JPanel(new GridLayout(3,1));
+		JPanel panel = new JPanel(new GridLayout(4,1));
 		panel.setBorder(BorderFactory.createTitledBorder("Game Chits"));
 		ButtonGroup group = new ButtonGroup();
 		classicChitsOption = new JRadioButton("Classic Chits");
@@ -323,6 +327,19 @@ public class RealmGmFrame extends JFrame {
 		}
 		group.add(frenzelChitsOption);
 		panel.add(frenzelChitsOption);
+		legendaryChitsOption = new JRadioButton("Legendary Chits");
+		legendaryChitsOption.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				prefs.set(ChitDisplayStyle,RealmComponent.DISPLAY_STYLE_LEGENDARY);
+				setChitDisplayStyle();
+				reinitMap();
+			}
+		});
+		if (selected == RealmComponent.DISPLAY_STYLE_LEGENDARY) {
+			legendaryChitsOption.setSelected(true);
+		}
+		group.add(legendaryChitsOption);
+		panel.add(legendaryChitsOption);
 		return panel;
 	}
 	private JPanel getCharacterChitOptionsPanel() {

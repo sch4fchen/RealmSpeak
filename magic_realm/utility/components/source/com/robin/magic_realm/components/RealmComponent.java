@@ -39,6 +39,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	public static final int DISPLAY_STYLE_CLASSIC = 0;
 	public static final int DISPLAY_STYLE_COLOR = 1;
 	public static final int DISPLAY_STYLE_FRENZEL = 2;
+	public static final int DISPLAY_STYLE_LEGENDARY = 3;
 	public static int displayStyle = DISPLAY_STYLE_COLOR;
 
 	public static boolean isDisplayStyleColor() {
@@ -46,6 +47,9 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	}
 	public static boolean isDisplayStyleFrenzel() {
 		return displayStyle==DISPLAY_STYLE_FRENZEL;
+	}
+	public static boolean isDisplayStyleLegendary() {
+		return displayStyle==DISPLAY_STYLE_LEGENDARY;
 	}
 	public static boolean useColorIcons() {
 		return displayStyle==DISPLAY_STYLE_COLOR || displayStyle==DISPLAY_STYLE_FRENZEL;
@@ -967,7 +971,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		Long dataid = new Long(data.getDataId());
 		Hashtable componentHash = (Hashtable) dataComponentHash.get(dataid);
 		if (componentHash == null) {
-			componentHash = new Hashtable();
+			componentHash = new Hashtable<>();
 			dataComponentHash.put(dataid, componentHash);
 			
 			// Make sure there is a master object to handle things like a target index counter

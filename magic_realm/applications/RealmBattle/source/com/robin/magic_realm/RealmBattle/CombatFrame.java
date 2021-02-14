@@ -3676,6 +3676,9 @@ public class CombatFrame extends JFrame {
 			case RealmComponent.DISPLAY_STYLE_FRENZEL:
 				RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_FRENZEL;
 				break;
+			case RealmComponent.DISPLAY_STYLE_LEGENDARY:
+				RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_LEGENDARY;
+				break;
 			default:
 				RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_CLASSIC;
 				break;
