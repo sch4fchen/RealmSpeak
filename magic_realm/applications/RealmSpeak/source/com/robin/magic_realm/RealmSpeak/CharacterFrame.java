@@ -1032,7 +1032,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			public boolean needsShow() {				
 				return character.isActive()
 						&& character.isCharacter()
-						&& (hostPrefs.isUsingQuestCards() && character.getQuestCount()==0 || (hostPrefs.isUsingBookOfQuests() && character.getAllNonEventQuests().size()==0))
+						&& hostPrefs.isUsingBookOfQuests() && character.getAllNonEventQuests().size()==0
 						&& QuestLoader.hasQuestsToLoad(character,hostPrefs);
 			}
 		};
