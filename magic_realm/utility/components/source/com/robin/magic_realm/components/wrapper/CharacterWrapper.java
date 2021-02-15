@@ -776,7 +776,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 */
 	public Strength getActiveWeaponWeight() {
 		ArrayList<WeaponChitComponent> weapons = getActiveWeapons();
-		if (weapons == null) {
+		if (weapons == null || weapons.isEmpty()) {
 			return new Strength();
 		}
 		Strength lowestWeaponsWeight = Strength.valueOf("T");
@@ -794,7 +794,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 */
 	public boolean canFight(Strength fightStrength) {
 		ArrayList<WeaponChitComponent> weapons = getActiveWeapons();
-		if (weapons!=null) {
+		if (weapons!=null && !weapons.isEmpty()) {
 			for (WeaponChitComponent weapon : weapons) {
 				Strength weaponWeight = new Strength(weapon.getWeight());
 				if (fightStrength.strongerOrEqualTo(weaponWeight)) {

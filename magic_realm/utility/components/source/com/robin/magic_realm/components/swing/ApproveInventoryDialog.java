@@ -128,7 +128,7 @@ public class ApproveInventoryDialog extends AggressiveDialog {
 		leftTableModel.updateRowHeights(leftTable);
 		rightTableModel.updateRowHeights(rightTable);
 	}
-	private Box getTitleLabel(String title) {
+	private static Box getTitleLabel(String title) {
 		Box box = Box.createHorizontalBox();
 		box.add(Box.createHorizontalGlue());
 		JLabel titleLabel = new JLabel(title);
@@ -152,7 +152,7 @@ public class ApproveInventoryDialog extends AggressiveDialog {
 		private ArrayList<GameObject> inventory;
 		
 		public ItemTableModel(ArrayList<GameObject> items) {
-			inventory = new ArrayList<GameObject>();
+			inventory = new ArrayList<>();
 			for (GameObject go:items) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
 				if (rc.isItem()) {
@@ -164,7 +164,7 @@ public class ApproveInventoryDialog extends AggressiveDialog {
 			return inventory;
 		}
 		public GameObject removeInventory(int index) {
-			GameObject go = (GameObject)inventory.remove(index);
+			GameObject go = inventory.remove(index);
 			fireTableDataChanged();
 			return go;
 		}
@@ -186,7 +186,7 @@ public class ApproveInventoryDialog extends AggressiveDialog {
 		}
 		public Object getValueAt(int row, int col) {
 			if (row<inventory.size()) {
-				GameObject go = (GameObject)inventory.get(row);
+				GameObject go = inventory.get(row);
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
 				switch(col) {
 					case 0:
@@ -204,7 +204,7 @@ public class ApproveInventoryDialog extends AggressiveDialog {
 		public void updateRowHeights(JTable table) {
 			int maxIconColWidth = 0;
 			for (int i=0;i<inventory.size();i++) {
-				GameObject go = (GameObject)inventory.get(i);
+				GameObject go = inventory.get(i);
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
 				
 				ImageIcon icon = rc.getIcon();

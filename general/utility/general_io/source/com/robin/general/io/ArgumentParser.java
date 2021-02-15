@@ -27,7 +27,7 @@ import java.util.*;
  */
 public class ArgumentParser {
 	private Properties props;
-	private Vector errors;
+	private Vector<String> errors;
 	public ArgumentParser(String[] args) {
 		parseArgs(args);
 	}
@@ -37,7 +37,7 @@ public class ArgumentParser {
 	}
 	private void parseArgs(String[] args) {
 		props = new Properties();
-		errors = new Vector();
+		errors = new Vector<>();
 		if (args!=null) {
 			for (int i=0;i<args.length;i++) {
 				KeyValuePair kvp = new KeyValuePair(args[i]);
@@ -63,15 +63,15 @@ public class ArgumentParser {
 		errors.addElement(error);
 	}
 	public String[] getErrors() {
-		return (String[])errors.toArray(new String[0]);
+		return errors.toArray(new String[0]);
 	}
 	public boolean hasErrors() {
 		return (errors.size()>0);
 	}
 	public String getErrorString() {
 		StringBuffer sb = new StringBuffer();
-		for (Iterator i=errors.iterator();i.hasNext();) {
-			sb.append((String)i.next()+"\n");
+		for (String error : errors) {
+			sb.append(error+"\n");
 		}
 		return sb.toString();
 	}

@@ -255,13 +255,12 @@ public class BattleBuilder extends JFrame {
 				RealmCharacterBuilderModel.addCustomCharacters(hostPrefs,gameData);
 						
 				// Some items require a spell be cast (Flying Carpet)
-				ArrayList keyVals = new ArrayList();
+				ArrayList<String> keyVals = new ArrayList<>();
 				keyVals.add(hostPrefs.getGameKeyVals());
 				keyVals.add(Constants.CAST_SPELL_ON_INIT);
 				SpellMasterWrapper.getSpellMaster(gameData); // make sure SpellMaster is created
-				Collection needsSpellInit = pool.find(keyVals);
-				for (Iterator i=needsSpellInit.iterator();i.hasNext();) {
-					GameObject go = (GameObject)i.next();
+				Collection<GameObject> needsSpellInit = pool.find(keyVals);
+				for (GameObject go : needsSpellInit) {
 					for (Iterator n=go.getHold().iterator();n.hasNext();) {
 						GameObject sgo = (GameObject)n.next();
 						if (sgo.hasThisAttribute("spell")) {
@@ -424,13 +423,12 @@ public class BattleBuilder extends JFrame {
 		if (clearingName==null) {
 			return;
 		}
-		battleClearing = (ClearingDetail)clearingHash.get(clearingName);
+		battleClearing = clearingHash.get(clearingName);
 		updateControls();
 	}
-	protected void checkHorses(Collection denizens) {
-		ArrayList horses = new ArrayList();
-		for (Iterator i=denizens.iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+	protected void checkHorses(Collection<GameObject> denizens) {
+		ArrayList<GameObject> horses = new ArrayList<>();
+		for (GameObject go : denizens) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			BattleHorse horse = rc.getHorse();
 			if (horse!=null) {
@@ -441,8 +439,7 @@ public class BattleBuilder extends JFrame {
 		if (!horses.isEmpty()) {
 			int ret = JOptionPane.showConfirmDialog(this,"Include horses?","",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 			boolean includeHorses = ret==JOptionPane.YES_OPTION;
-			for (Iterator i=horses.iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
+			for (GameObject go : horses) {
 				if (includeHorses) {
 					go.removeThisAttribute(Constants.DEAD);
 				}
@@ -453,19 +450,18 @@ public class BattleBuilder extends JFrame {
 		}
 	}
 	private void addDenizens() {
-		Collection monsters = pool.find("monster,!part,"+hostPrefs.getGameKeyVals()+",!"+BATTLE_BUILDER_KEY);
-		Collection natives = pool.find("native,!horse,!treasure,"+hostPrefs.getGameKeyVals()+",!"+BATTLE_BUILDER_KEY);
+		Collection<GameObject> monsters = pool.find("monster,!part,"+hostPrefs.getGameKeyVals()+",!"+BATTLE_BUILDER_KEY);
+		Collection<GameObject> natives = pool.find("native,!horse,!treasure,"+hostPrefs.getGameKeyVals()+",!"+BATTLE_BUILDER_KEY);
 		RealmObjectChooser denizenChooser = new RealmObjectChooser("Choose Denizens to Add:",gameData,false);
 		denizenChooser.addObjectsToChoose(monsters);
 		denizenChooser.addObjectsToChoose(natives);
 		denizenChooser.setVisible(true);
 		if (denizenChooser.pressedOkay()) {
-			Collection chosenDenizens = denizenChooser.getChosenObjects();
+			Collection<GameObject> chosenDenizens = denizenChooser.getChosenObjects();
 			if (chosenDenizens!=null && chosenDenizens.size()>0) {
 				chosenDenizens = makeDuplicates(chosenDenizens); // only if the option is selected
 				checkHorses(chosenDenizens);
-				for (Iterator i=chosenDenizens.iterator();i.hasNext();) {
-					GameObject go = (GameObject)i.next();
+				for (GameObject go : chosenDenizens) {
 					go.setThisAttribute(BATTLE_BUILDER_KEY);
 				}
 				denizenPanel.clearSelected();
@@ -474,11 +470,10 @@ public class BattleBuilder extends JFrame {
 			}
 		}
 	}
-	public Collection makeDuplicates(Collection in) {
+	public Collection<GameObject> makeDuplicates(Collection<GameObject> in) {
 		if (makeDuplicatesOption.isSelected()) {
 			ArrayList dups = new ArrayList();
-			for (Iterator i=in.iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
+			for (GameObject go :  in) {
 				GameObject dup = gameData.createNewObject(go);
 				Collection hold = go.getHold();
 				if (!hold.isEmpty()) {

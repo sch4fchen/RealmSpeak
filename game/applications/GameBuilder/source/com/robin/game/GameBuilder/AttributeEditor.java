@@ -184,7 +184,7 @@ public class AttributeEditor extends AggressiveDialog {
 
 	private void updateEditFields() {
 		editTypeButton.setText(editType == EditType.String ? "-> ArrayList" : "-> String");
-		ArrayList current = readCurrentFields();
+		ArrayList<String> current = readCurrentFields();
 		editPanel.removeAll();
 		buttonPanel.removeAll();
 		editPanel.setLayout(new GridLayout(editBox.length, 1));

@@ -376,7 +376,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
 		ArrayList<GameObject> weaponsGameObjects = new ArrayList<>();
 		ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
-		if (weapons==null) {
+		if (weapons==null || weapons.isEmpty()) {
 			weaponsGameObjects.add(getTreasureWeaponObject());
 			return weaponsGameObjects;
 		}
@@ -882,7 +882,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		if (transmorph == null) { // Character must not be transmorphed!
 			//DUAL
 			ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
-			if (weapons == null || weapons.get(0) != null) {
+			if (weapons == null || weapons.isEmpty()) {
 				GameObject tw = getTreasureWeaponObject();
 				if (tw!=null) {
 					return tw.getThisAttribute("missile");

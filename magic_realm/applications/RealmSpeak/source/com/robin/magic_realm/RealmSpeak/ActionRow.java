@@ -1515,7 +1515,7 @@ public class ActionRow {
 			}
 		}
 		ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
-		if (weapons!=null && weapons.get(0) != null) {
+		if (weapons!=null && !weapons.isEmpty()) {
 			alertChoices.add(weapons.get(0));
 		}
 		if (alertChoices.size()>0) {

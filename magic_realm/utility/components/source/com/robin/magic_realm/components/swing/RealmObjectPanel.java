@@ -30,7 +30,7 @@ import com.robin.general.swing.ImageCache;
 import com.robin.magic_realm.components.*;
 
 public class RealmObjectPanel extends JPanel implements Scrollable {
-	private static final ArrayList EMPTY_LIST = new ArrayList();
+	private static final ArrayList<RealmComponent> EMPTY_LIST = new ArrayList<>();
 	public static final int SINGLE_SELECTION = 1;
 	public static final int MULTIPLE_SELECTION = 2;
 	
@@ -186,7 +186,7 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 		fireSelectionChanged();
 	}
 	public GameObject[] getSelectedGameObjects() {
-		ArrayList gameObjects = new ArrayList();
+		ArrayList<GameObject> gameObjects = new ArrayList<>();
 		for (Iterator i=selected.iterator();i.hasNext();) {
 			RealmComponent comp = (RealmComponent)i.next();
 			gameObjects.add(comp.getGameObject());
@@ -230,9 +230,9 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 		super.add(rc);
 		adjustSize();
 	}
-	public void addRealmComponents(Collection c) {
-		for (Iterator i=c.iterator();i.hasNext();) {
-			addRealmComponent((RealmComponent)i.next());
+	public void addRealmComponents(Collection<RealmComponent> c) {
+		for (RealmComponent rc : c) {
+			addRealmComponent(rc);
 		}
 	}
 	public void addObject(GameObject obj) {
@@ -242,9 +242,9 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 		}
 		adjustSize();
 	}
-	public void addObjects(Collection c) {
-		for (Iterator i=c.iterator();i.hasNext();) {
-			RealmComponent comp = RealmComponent.getRealmComponent((GameObject)i.next());
+	public void addObjects(Collection<GameObject> c) {
+		for (GameObject go : c) {
+			RealmComponent comp = RealmComponent.getRealmComponent(go);
 			if (comp!=null && !(comp instanceof TileComponent)) {
 				super.add(comp);
 			}
@@ -283,11 +283,10 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 		}
 	}
 	public void paint(Graphics g) {
-		Collection rcs = getAllRealmComponents();
+		Collection<RealmComponent> rcs = getAllRealmComponents();
 		if (rcs==null) rcs = EMPTY_LIST;
 		if (flipViewOn==true) {
-			for (Iterator i=rcs.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : rcs) {
 				if (rc.isChit()) {
 					ChitComponent chit = (ChitComponent)rc;
 					chit.setShowFlipSide(true);
