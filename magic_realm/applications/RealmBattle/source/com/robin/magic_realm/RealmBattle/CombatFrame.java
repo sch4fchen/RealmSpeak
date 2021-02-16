@@ -2444,14 +2444,18 @@ public class CombatFrame extends JFrame {
 			RealmComponent chit = (RealmComponent)i.next();
 			CombatWrapper combat = new CombatWrapper(chit.getGameObject());
 			if(combat.getPlacedAsFight()) continue;
-			
-			String key = "N"+(keyN);
-			// Normal Weapon
-			if (weapons!=null) {
+					
+			if (weapons==null || weapons.isEmpty()) {
+				// Dagger
+				String key = "N"+(keyN++);
+				chooser.addOption(key,"");
+				chooser.addRealmComponentToOption(key,chit);
+			}
+			else {
 				for (WeaponChitComponent weapon : weapons) {
 					if (CombatWrapper.hasCombatInfo(weapon.getGameObject())) continue;
 					
-					key = "N"+(keyN++);
+					String key = "N"+(keyN++);
 					chooser.addOption(key,"");
 					chooser.addRealmComponentToOption(key,chit);
 					chooser.addRealmComponentToOption(key,weapon);
@@ -2460,7 +2464,7 @@ public class CombatFrame extends JFrame {
 			if (weaponCard!=null) {
 				if (CombatWrapper.hasCombatInfo(weaponCard.getGameObject())) continue;
 				
-				key = "N"+(keyN++);
+				String key = "N"+(keyN++);
 				chooser.addOption(key,"");
 				chooser.addRealmComponentToOption(key,chit);
 				chooser.addRealmComponentToOption(key,weaponCard);
