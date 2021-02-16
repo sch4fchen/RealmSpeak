@@ -773,14 +773,23 @@ public class BattleModel {
 			if (battleChit.isCharacter()) {
 				CharacterChitComponent characterChit = (CharacterChitComponent) battleChit;
 				int weaponNumber = 0;
-				for (GameObject weapon : characterChit.getActiveWeaponsObjects()) {
-					if (!CombatWrapper.hasCombatInfo(weapon)) continue;
-					key = characterChit.getLengthForWeapon(weaponNumber)+":"+characterChit.getAttackSpeedForWeapon(weaponNumber).getNum();
+				if (characterChit.getActiveWeaponsObjects() != null && !characterChit.getActiveWeaponsObjects().isEmpty()) {
+					for (GameObject weapon : characterChit.getActiveWeaponsObjects()) {
+						if (!CombatWrapper.hasCombatInfo(weapon)) continue;
+						key = characterChit.getLengthForWeapon(weaponNumber)+":"+characterChit.getAttackSpeedForWeapon(weaponNumber).getNum();
+						if (!attackBlockOrder.contains(key)) {
+							attackBlockOrder.add(key);
+						}
+						attackBlocks.put(key,battleChit);
+						weaponNumber++;
+					}
+				}
+				else { //dagger
+					key = "0:"+characterChit.getAttackSpeed().getNum();
 					if (!attackBlockOrder.contains(key)) {
 						attackBlockOrder.add(key);
 					}
 					attackBlocks.put(key,battleChit);
-					weaponNumber++;
 				}
 			}
 			else {

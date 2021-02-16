@@ -377,7 +377,9 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		ArrayList<GameObject> weaponsGameObjects = new ArrayList<>();
 		ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
 		if (weapons==null || weapons.isEmpty()) {
-			weaponsGameObjects.add(getTreasureWeaponObject());
+			if (getTreasureWeaponObject() != null) {
+				weaponsGameObjects.add(getTreasureWeaponObject());
+			}
 			return weaponsGameObjects;
 		}
 		for (WeaponChitComponent weapon : weapons) {
