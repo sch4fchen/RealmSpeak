@@ -430,7 +430,7 @@ public class RealmSpeakFrame extends JFrame {
 		scroller.addLine(new ScrollLine("Dan Evans",listing,listingColor));
 		scroller.addLine(new ScrollLine("John Frenzel",listing,listingColor));
 		scroller.addLine(new ScrollLine());
-		scroller.addLine(new ScrollLine("'Legendary Realm' Map Graphics",subheader,subheaderColor));
+		scroller.addLine(new ScrollLine("'Legendary Realm' Map and Chit Graphics",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Casey Benn",listing,listingColor));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("'Alternative' Map Graphics",subheader,subheaderColor));
