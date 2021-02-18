@@ -531,17 +531,15 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				chit.getGameObject().setThisAttribute("daysLeft", 1);
 			}
 		}
-
+		ArrayList<GameObject> characters = pool.find(CharacterWrapper.NAME_KEY);
+		for (GameObject character : characters) {
+			CharacterWrapper ch = new CharacterWrapper(character);
+			ch.setGameOver(true);
+		}
+		
 		submitChanges();
 		updateControls();
 		endGameButton.setEnabled(false);
-		
-		for (CharacterFrame frame : characterFrames.values()) {
-			if (frame.getCharacter().isActive()) {
-				frame.getCharacter().setGameOver(true);
-			}
-		}
-		
 		updateCharacterList();
 		updateCharacterFrames();
 		broadcastMapReplot();
@@ -1948,8 +1946,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			CharacterWrapper character = new CharacterWrapper(go);
 			characterList.add(character);
 
-			// don't forget to update any active frames! (maybe this is how they
-			// could be created...)
+			// don't forget to update any active frames! (maybe this is how they could be created...)
 			CharacterFrame frame = characterFrames.get(character.getGameObject().getStringId());
 			allFound.add(character.getGameObject().getStringId());
 
