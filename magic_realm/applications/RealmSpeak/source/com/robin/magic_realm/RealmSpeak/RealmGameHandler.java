@@ -1945,7 +1945,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		boolean needSubmit = false;
 		characterList.clear();
 		CharacterWrapper interactiveCharacter = null;
-		ArrayList<String> allFound = new ArrayList<String>();
+		ArrayList<String> allFound = new ArrayList<>();
 		for (GameObject go : charactersAndMinions) {
 			CharacterWrapper character = new CharacterWrapper(go);
 			characterList.add(character);

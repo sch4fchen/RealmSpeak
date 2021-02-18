@@ -55,7 +55,7 @@ NEW FEATURES:
 # Optional Rule: Additional Bounty points for discoveries (BoQ variant)
 # New season option: Unpredictable weather (BoQ variant)
 # Option to set custom amount of VPs for timed mode
-# Ending a game early shows endgame scoring 
+# Ending a game early shows endgame scoring
 # Ending a game early disables actions for the characters
 # Icons added to different windows
 # Restructuring optional rules reflecting 3rd edition rulebook

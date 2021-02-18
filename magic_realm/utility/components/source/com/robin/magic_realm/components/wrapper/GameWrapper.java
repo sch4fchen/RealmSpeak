@@ -94,7 +94,7 @@ public class GameWrapper extends GameObjectWrapper {
 		return getState()==GAME_STATE_GAMEOVER;
 	}
 	public static Collection<String> getKeyVals() {
-		ArrayList<String> keyVals = new ArrayList<String>();
+		ArrayList<String> keyVals = new ArrayList<>();
 		keyVals.add(GAME_STATE);
 		return keyVals;
 	}
@@ -291,12 +291,11 @@ public class GameWrapper extends GameObjectWrapper {
 		addListItem(GAME_LAST_REGEN,go.getStringId());
 	}
 	public ArrayList<GameObject> getRegeneratedDenizens() {
-		ArrayList ids = getList(GAME_LAST_REGEN);
+		ArrayList<String> ids = getList(GAME_LAST_REGEN);
 		if (ids!=null) {
 			if (!ids.isEmpty()) {
-				ArrayList<GameObject> list = new ArrayList<GameObject>();
-				for (Iterator i=ids.iterator();i.hasNext();) {
-					String id = (String)i.next();
+				ArrayList<GameObject> list = new ArrayList<>();
+				for (String id : ids) {
 					list.add(getGameObject().getGameData().getGameObject(Long.valueOf(id)));
 				}
 				return list;
@@ -320,11 +319,11 @@ public class GameWrapper extends GameObjectWrapper {
 		return hasListItem(GAME_TRAVELERS,traveler.getStringId());
 	}
 	public ArrayList<GameObject> getTravelerKnowledge() {
-		ArrayList<GameObject> travelers = new ArrayList<GameObject>();
-		ArrayList list = getList(GAME_TRAVELERS);
+		ArrayList<GameObject> travelers = new ArrayList<>();
+		ArrayList<String> list = getList(GAME_TRAVELERS);
 		if (list!=null) {
-			for(Iterator i=list.iterator();i.hasNext();) {
-				travelers.add(getGameObject().getGameObjectFromId((String)i.next()));
+			for(String i : list) {
+				travelers.add(getGameObject().getGameObjectFromId(i));
 			}
 		}
 		return travelers;
@@ -340,12 +339,12 @@ public class GameWrapper extends GameObjectWrapper {
 		for (int i=0;i<=qid;i++) {
 			String qAttribute = GAME_Q_PREFIX+i;
 			if (getGameObject().hasAttribute(GAME_BLOCK,qAttribute)) {
-				ArrayList list = getList(qAttribute);
-				String test = (String)list.get(0);
+				ArrayList<String> list = getList(qAttribute);
+				String test = list.get(0);
 				if (test.equals(answeringPlayerName)) {
 					String[] ret = new String[2];
-					ret[0] = (String)list.get(1); // askingPlayerName
-					ret[1] = (String)list.get(2); // question
+					ret[0] = list.get(1); // askingPlayerName
+					ret[1] = list.get(2); // question
 					getGameObject().removeAttribute(GAME_BLOCK,qAttribute); // remove so it doesn't get asked twice!
 					return ret;
 				}

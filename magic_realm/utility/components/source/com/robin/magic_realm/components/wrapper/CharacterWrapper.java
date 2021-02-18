@@ -269,9 +269,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		clearAllDays();
 		removeAllCurses();
 		
-		ArrayList tls = makeNewList(getTreasureLocationDiscoveries());
-		ArrayList hps = makeNewList(getHiddenPathDiscoveries());
-		ArrayList sps = makeNewList(getSecretPassageDiscoveries());
+		ArrayList<String> tls = makeNewList(getTreasureLocationDiscoveries());
+		ArrayList<String> hps = makeNewList(getHiddenPathDiscoveries());
+		ArrayList<String> sps = makeNewList(getSecretPassageDiscoveries());
 		
 		getGameObject().removeAttributeBlock(PLAYER_BLOCK);
 		
@@ -283,15 +283,15 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		getGameObject().removeAttributeBlock(VICTORY_REQ_BLOCK);
 	}
-	private ArrayList makeNewList(ArrayList inList) {
-		ArrayList list = new ArrayList();
+	private static ArrayList<String> makeNewList(ArrayList<String> inList) {
+		ArrayList<String> list = new ArrayList<>();
 		if (inList!=null) {
 			list.addAll(inList);
 		}
 		return list;
 	}
 	public static Collection<String> getKeyVals() {
-		ArrayList<String> keyVals = new ArrayList<String>();
+		ArrayList<String> keyVals = new ArrayList<>();
 		keyVals.add(NAME_KEY);
 		return keyVals;
 	}
@@ -657,7 +657,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * @return 						All the options (RealmComponent objects) the character could use as a maneuver
 	 */
 	public ArrayList<RealmComponent> getMoveSpeedOptions(Speed speedToBeat,boolean includeActionChits,boolean flipHorses) {
-		ArrayList<RealmComponent> list = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> list = new ArrayList<>();
 		ArrayList<RealmComponent> searchList = new ArrayList<>();
 		if (includeActionChits) {
 			searchList.addAll(getActiveMoveChits());
@@ -677,15 +677,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		
 		// Search
-		for (Iterator i=searchList.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
-//			if (rc.isHorse()) { // Removed this for v0.31 (messing up combat)
-//				SteedChitComponent horse = (SteedChitComponent)rc;
-//				if (!horse.isGalloping()) {
-//					horse.setGallop();
-//				}
-//			}
-			
+		for (RealmComponent rc : searchList) {		
 			if (!rc.getGameObject().hasThisAttribute(Constants.UNPLAYABLE)) {
 				Speed speed;
 				if (rc.isHorse()) {
@@ -1100,7 +1092,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (!isCharacter()) {
 			return getHiringCharacter().getGroupsWithRelationship(hostPrefs,relationship);
 		}
-		ArrayList<String[]> list = new ArrayList<String[]>();
+		ArrayList<String[]> list = new ArrayList<>();
 		for (String relBlock:getAllRelationshipBlocks(hostPrefs)) {
 			Hashtable hash = getGameObject().getAttributeBlock(relBlock);
 			for (Iterator i=hash.keySet().iterator();i.hasNext();) {
@@ -1145,7 +1137,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return rel + mod;
 	}
 	public ArrayList<String> getRelationshipList(String relBlock,int rel) {
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		OrderedHashtable hash = getGameObject().getAttributeBlock(relBlock);
 		for (Iterator i=hash.keySet().iterator();i.hasNext();) {
 			String groupName = (String)i.next();
@@ -1415,7 +1407,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean hasDoneActionsToday() {
 		ArrayList<String> current = getCurrentActions();
 		if (current!=null && current.size()>0){
-			String firstAction = (String)current.get(0);
+			String firstAction = current.get(0);
 			ActionId id = CharacterWrapper.getIdForAction(firstAction);
 			if (id==ActionId.Follow) return true; // If you followed someone, you've done actions.
 		}
@@ -1809,7 +1801,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return findAvailableClearingMoves(false);
 	}
 	public ArrayList<ClearingDetail> findAvailableClearingMoves(boolean ignoreActionPhaseCheck) {
-		ArrayList<ClearingDetail> ret = new ArrayList<ClearingDetail>();
+		ArrayList<ClearingDetail> ret = new ArrayList<>();
 		TileLocation tl = getPlannedLocation();
 		if (tl.hasClearing()) {
 			if (tl.isBetweenClearings()) { // only two options in this case!
@@ -3039,7 +3031,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			if (getGameObject().hasThisAttribute(Constants.MAXIMUM_GOLD)) {
 				int max = getGameObject().getThisInt(Constants.MAXIMUM_GOLD);
 				if (newGold>max) {
-					newGold = (double)max;
+					newGold = max;
 				}
 			}
 			if (newGold<0) { // this can happen during a "demand gold" situation when the character gets a net amount that is more than their maximum
@@ -3130,7 +3122,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public ArrayList<CharacterWrapper> getStoppedActionFollowers() {
 		GameData data = getGameObject().getGameData();
-		ArrayList<CharacterWrapper> ret = new ArrayList<CharacterWrapper>();
+		ArrayList<CharacterWrapper> ret = new ArrayList<>();
 		ArrayList<String> list = getList(ACTION_FOLLOWER);
 		if (list!=null && !list.isEmpty()) {
 			for (String i : list) {
@@ -3335,8 +3327,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		discovery.setThisAttribute(Constants.DISCOVERED);
 		
-		for (Iterator i=getActionFollowers().iterator();i.hasNext();) {
-			CharacterWrapper actionFollower = (CharacterWrapper)i.next();
+		for (CharacterWrapper actionFollower : getActionFollowers()) {
 			if (!actionFollower.isMinion()) { // otherwise, there is a possiblilty for an infinite loop!
 				actionFollower.addTreasureLocationDiscovery(name);
 			}
@@ -3403,14 +3394,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return hasListItem(DISC_OTHER,name);
 	}
 	public ArrayList<String> getAllDiscoveryKeys() {
-		ArrayList<String> list = new ArrayList<String>();
-		ArrayList tl = getList(DISC_TREASURE_LOCATIONS);
+		ArrayList<String> list = new ArrayList<>();
+		ArrayList<String> tl = getList(DISC_TREASURE_LOCATIONS);
 		if (tl!=null) list.addAll(tl);
-		ArrayList hp = getList(DISC_HIDDEN_PATHS);
+		ArrayList<String> hp = getList(DISC_HIDDEN_PATHS);
 		if (hp!=null) list.addAll(hp);
-		ArrayList sp = getList(DISC_SECRET_PASSAGES);
+		ArrayList<String> sp = getList(DISC_SECRET_PASSAGES);
 		if (sp!=null) list.addAll(sp);
-		ArrayList other = getList(DISC_OTHER);
+		ArrayList<String> other = getList(DISC_OTHER);
 		if (other!=null) list.addAll(other);
 		return list;
 	}
@@ -3463,8 +3454,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		
 		// ALSO unhide any followers that may be abandoned (like after running)
-		for (Iterator i=getAllHirelings().iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : getAllHirelings()) {
 			if (!rc.isPlayerControlledLeader()) { // leaders can handle themselves
 				GameObject hireling = rc.getGameObject();
 				GameObject heldBy = hireling.getHeldBy();
@@ -5903,7 +5893,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		Collection c = getList(MOVE_HISTORY);
 		return c!=null && !c.isEmpty();
 	}
-	public ArrayList getMoveHistory() {
+	public ArrayList<String> getMoveHistory() {
 		return getList(MOVE_HISTORY);
 	}
 	public ArrayList getMoveHistoryDayKeys() {

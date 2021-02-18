@@ -253,10 +253,9 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		if (blockButton.isSelected()) {
 			TileLocation current = getCharacter().getCurrentLocation();
 			if (current!=null && current.isInClearing()) {
-				list = new ArrayList<RealmComponent>();
+				list = new ArrayList<>();
 				boolean takingTurn = getCharacter().isPlayingTurn() && getCharacter().hasDoneActionsToday();
-				for (Iterator i=current.clearing.getClearingComponents().iterator();i.hasNext();) {
-					RealmComponent rc = (RealmComponent)i.next();
+				for (RealmComponent rc : current.clearing.getClearingComponents()) {
 					// Check to see that this component is not yourself, and one of:  character, hired leader, or ANY monster
 					// (Yeah, you could block unhired natives, but what's the point?)
 					if (!rc.getGameObject().equals(getCharacter().getGameObject())) {
@@ -434,9 +433,9 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		super.toFront();
 		updateControls();
 		if (character.isDoRecord()) {
-			ArrayList clearingPlot = getCharacter().getClearingPlot();
+			ArrayList<TileLocation> clearingPlot = getCharacter().getClearingPlot();
 			if (clearingPlot!=null) {
-				gameHandler.getInspector().getMap().setClearingPlot(new ArrayList(clearingPlot));
+				gameHandler.getInspector().getMap().setClearingPlot(new ArrayList<TileLocation>(clearingPlot));
 			}
 			else {
 				gameHandler.getInspector().getMap().clearClearingPlot();
@@ -522,7 +521,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	 * This is really only for the Book of Quests game play
 	 */
 	private void chooseQuest() {
-		ArrayList<Quest> quests = new ArrayList<Quest>();
+		ArrayList<Quest> quests = new ArrayList<>();
 		if (hostPrefs.isUsingGuildQuests()) {
 			String guildName = character.getCurrentLocation().clearing.getGuild().getGameObject().getThisAttribute("guild");
 			for (Quest quest : QuestLoader.findAvailableQuests(character,hostPrefs)) {
@@ -606,7 +605,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			// Return the object to the original owner
 			GameObject originalOwner = go.getGameObjectFromThisAttribute(Constants.REQUIRES_APPROVAL);
 			CharacterWrapper owningCharacter = new CharacterWrapper(originalOwner);
-			ArrayList<GameObject> stuff = new ArrayList<GameObject>();
+			ArrayList<GameObject> stuff = new ArrayList<>();
 			stuff.add(go);
 			go.removeThisAttribute(Constants.REQUIRES_APPROVAL);
 			RealmUtility.transferInventory(gameHandler.getMainFrame(),getCharacter(),owningCharacter,stuff,gameHandler.getUpdateFrameListener(),false);
@@ -628,11 +627,11 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		 */
 		RealmComponent chosenGS = null;
 		RealmComponent rc = null;
-		ArrayList list = new ArrayList();
+		ArrayList<RealmComponent> list = new ArrayList<>();
 		TileLocation tl = getCharacter().getCurrentLocation();
 		if (tl.isInClearing()) {
-			for (Iterator n = tl.clearing.getClearingComponents().iterator(); n.hasNext();) {
-				rc = (RealmComponent) n.next();
+			for (Iterator<RealmComponent> n = tl.clearing.getClearingComponents().iterator(); n.hasNext();) {
+				rc = n.next();
 				if (rc.isGoldSpecial() && !rc.isVisitor()) {
 					list.add(rc);
 					chosenGS = rc;
@@ -1445,17 +1444,15 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				}
 				else if ("heavies".equals(thingName)) {
 					GamePool pool = gameHandler.getGamePool();
-					Collection heavies = pool.find("weapon,weight=H");
-					for (Iterator i = heavies.iterator(); i.hasNext();) {
-						GameObject h = (GameObject) i.next();
+					Collection<GameObject> heavies = pool.find("weapon,weight=H");
+					for (GameObject h : heavies) {
 						character.getCurrentLocation().clearing.add(h,null);
 					}
 				}
 				else if ("n_death".equals(thingName)) {
 					TileLocation tl = getCharacter().getCurrentLocation();
-					Collection c = tl.clearing.getDeepClearingComponents();
-					for (Iterator i = c.iterator();i.hasNext();) {
-						RealmComponent rc = (RealmComponent)i.next();
+					Collection<RealmComponent> c = tl.clearing.getDeepClearingComponents();
+					for (RealmComponent rc : c) {
 						if (rc.isNative() && !rc.getGameObject().hasThisAttribute(Constants.DEAD)) {
 							RealmUtility.makeDead(rc);
 							System.out.println("Killed "+rc.getGameObject().getName());
@@ -1464,9 +1461,8 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				}
 				else if ("nh_death".equals(thingName)) {
 					TileLocation tl = getCharacter().getCurrentLocation();
-					Collection c = tl.clearing.getDeepClearingComponents();
-					for (Iterator i = c.iterator();i.hasNext();) {
-						RealmComponent rc = (RealmComponent)i.next();
+					Collection<RealmComponent> c = tl.clearing.getDeepClearingComponents();
+					for (RealmComponent rc : c) {
 						if (rc.isNativeHorse() && !rc.getGameObject().hasThisAttribute(Constants.DEAD)) {
 							rc.getGameObject().setThisAttribute(Constants.DEAD);
 							System.out.println("Killed "+rc.getGameObject().getName());
@@ -1577,8 +1573,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					character.setGold(Integer.valueOf(thingName.substring(4)));
 				}
 				else if ("oof".equals(thingName)) {
-					for (Iterator i = character.getActiveChits().iterator(); i.hasNext();) {
-						CharacterActionChitComponent chit = (CharacterActionChitComponent) i.next();
+					for (CharacterActionChitComponent chit : character.getActiveChits()) {
 						if (chit.getEffortAsterisks() > 0) {
 							chit.makeFatigued();
 						}
@@ -1588,8 +1583,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					}
 				}
 				else if ("smack".equals(thingName)) {
-					for (Iterator i = character.getActiveChits().iterator(); i.hasNext();) {
-						CharacterActionChitComponent chit = (CharacterActionChitComponent) i.next();
+					for (CharacterActionChitComponent chit : character.getActiveChits()) {
 						if (chit.getEffortAsterisks() > 0) {
 							chit.makeWounded();
 						}
@@ -1654,10 +1648,9 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				}
 				else if (thingName.equals("seeall")) {
 					// Shows the contents of EVERY treasure site
-					Collection all = gameHandler.getGamePool().find("print");
+					Collection<GameObject> all = gameHandler.getGamePool().find("print");
 					StringBuffer sb = new StringBuffer();
-					for (Iterator i = all.iterator(); i.hasNext();) {
-						GameObject site = (GameObject) i.next();
+					for (GameObject site : all) {
 						sb.append(site.getName());
 						sb.append(" ======================\n");
 						for (Iterator n = site.getHold().iterator(); n.hasNext();) {
@@ -1675,11 +1668,10 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					JOptionPane.showMessageDialog(gameHandler.getMainFrame(), pane);
 				}
 				else if (thingName.equals("manifest")) {
-					Hashtable hash = new Hashtable();
-					ArrayList list = new ArrayList();
-					Collection all = gameHandler.getGamePool().find("print");
-					for (Iterator i = all.iterator(); i.hasNext();) {
-						GameObject site = (GameObject) i.next();
+					Hashtable<String, String> hash = new Hashtable<>();
+					ArrayList<String> list = new ArrayList<>();
+					Collection<GameObject> all = gameHandler.getGamePool().find("print");
+					for (GameObject site : all) {
 						for (Iterator n = site.getHold().iterator(); n.hasNext();) {
 							GameObject item = (GameObject) n.next();
 							String name = item.getName();
@@ -1689,11 +1681,10 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 							hash.put(name, site.getName());
 						}
 					}
-					for (Iterator i = hash.keySet().iterator(); i.hasNext();) {
-						String name = (String) i.next();
+					for (String name : hash.keySet()) {
 						String at;
 						StringBuffer sb = new StringBuffer(name);
-						while ((at = (String) hash.get(name)) != null) {
+						while ((at = hash.get(name)) != null) {
 							sb.append(" -> ");
 							sb.append(at);
 							name = at;
@@ -1738,10 +1729,10 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					raiseDead.applySix(character);
 				}
 				else if (thingName.equals("path")) {
-					ArrayList history = character.getMoveHistory();
+					ArrayList<String> history = character.getMoveHistory();
 					StringBuilder sb = new StringBuilder();
 					for (int i=0;i<history.size();i++) {
-						String location = (String)history.get(i);
+						String location = history.get(i);
 						if (CharacterWrapper.MOVE_HISTORY_DAY.equals(location)) continue; // always ignore the days
 						if (sb.length()>0) sb.append(" ");
 						sb.append(location);
@@ -1758,7 +1749,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					ClearingUtility.markBorderlandConnectedClearings(hostPrefs,gameHandler.getClient().getGameData());
 				}
 				else if (thingName.equals("help")) {
-					ArrayList list = new ArrayList();
+					ArrayList<String> list = new ArrayList<>();
 					list.add("manifest    - Shows where everything is hidden");
 					list.add("seeall      - Shows each site, and what it contains");
 					list.add("discoverall - Discover all treasure locations in the current clearing");
@@ -2300,8 +2291,8 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		frame.setVisible(true);
 
 		GamePool pool = new GamePool(handler.getClient().getGameData().getGameObjects());
-		Collection characters = pool.find("character");
-		GameObject character = (GameObject) characters.iterator().next();
+		Collection<GameObject> characters = pool.find("character");
+		GameObject character = characters.iterator().next();
 		CharacterWrapper charw = new CharacterWrapper(character);
 		charw.setCharacterLevel(4);
 		charw.applyCurse(Constants.ASHES);

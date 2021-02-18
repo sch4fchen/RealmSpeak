@@ -27,7 +27,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import com.robin.game.objects.GameObject;
 import com.robin.general.swing.ImageCache;
 import com.robin.magic_realm.components.MagicRealmColor;
-import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmObjectMaster;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
@@ -38,7 +37,7 @@ public class GameOverPanel extends JPanel {
 	private static Font tableFont = new Font("Dialog",Font.PLAIN,18);
 	private static Font titleFont = new Font("Dialog",Font.BOLD,36);
 	
-	private ArrayList results;
+	private ArrayList<CharacterResult> results;
 	
 	private GameObject owningChar;
 	private HostPrefWrapper hostPrefs;
@@ -52,10 +51,9 @@ public class GameOverPanel extends JPanel {
 		initComponents();
 	}
 	private void buildResults() {
-		results = new ArrayList();
-		Collection c = RealmObjectMaster.getRealmObjectMaster(owningChar.getGameData()).getPlayerCharacterObjects();
-		for (Iterator i=c.iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		results = new ArrayList<>();
+		ArrayList<GameObject> c = RealmObjectMaster.getRealmObjectMaster(owningChar.getGameData()).getPlayerCharacterObjects();
+		for (GameObject go : c) {
 			CharacterWrapper cw = new CharacterWrapper(go);
 			if (cw.isCharacter()) {
 				if (go.hasAttributeBlock(CharacterWrapper.PLAYER_BLOCK)) { // was in the game at some point
@@ -68,10 +66,8 @@ public class GameOverPanel extends JPanel {
 			}
 		}
 		
-		Collections.sort(results,new Comparator() {
-			public int compare(Object o1,Object o2) {
-				CharacterResult r1 = (CharacterResult)o1;
-				CharacterResult r2 = (CharacterResult)o2;
+		Collections.sort(results,new Comparator<CharacterResult>() {
+			public int compare(CharacterResult r1,CharacterResult r2) {
 				int ret=0;
 				if (hostPrefs.isUsingBookOfQuests()) {
 					ret = r2.getCharacter().getCompletedQuestCount() - r1.getCharacter().getCompletedQuestCount();
@@ -162,13 +158,13 @@ public class GameOverPanel extends JPanel {
 			return columnClass[column];
 		}
 		private int getTopScore() {
-			CharacterResult result = (CharacterResult)results.get(0);
+			CharacterResult result = results.get(0);
 			CharacterWrapper character = result.getCharacter();
 			return character.getTotalScore();
 		}
 		public Object getValueAt(int row, int column) {
 			if (row<results.size()) {
-				CharacterResult result = (CharacterResult)results.get(row);
+				CharacterResult result = results.get(row);
 				CharacterWrapper character = result.getCharacter();
 				String rank = "";
 				if (row==0 || character.getTotalScore()==getTopScore()) {
