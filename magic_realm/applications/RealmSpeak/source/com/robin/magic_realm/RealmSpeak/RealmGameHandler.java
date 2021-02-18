@@ -527,8 +527,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		for (GameObject go : gs) {
 			GoldSpecialChitComponent chit = (GoldSpecialChitComponent) RealmComponent.getRealmComponent(go);
 			if (chit.stillInPlay()) {
-				// Set it to one day, so that the next midnight will cause it to
-				// expire
+				// Set it to one day, so that the next midnight will cause it to expire
 				chit.getGameObject().setThisAttribute("daysLeft", 1);
 			}
 		}
@@ -537,8 +536,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		updateControls();
 		endGameButton.setEnabled(false);
 		
-		for (Object characterFrame : characterFrames.values()) {
-			CharacterFrame frame = (CharacterFrame) characterFrame;
+		for (CharacterFrame frame : characterFrames.values()) {
 			if (frame.getCharacter().isActive()) {
 				frame.getCharacter().setGameOver(true);
 			}
