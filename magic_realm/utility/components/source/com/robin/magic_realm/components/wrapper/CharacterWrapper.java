@@ -6538,7 +6538,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public void distributeMonsterControlInCurrentClearing() {
 		TileLocation current = this.getCurrentLocation();
-		if (current.clearing != null) {
+		if (current != null && current.clearing != null) {
 			ArrayList<RealmComponent> clearingComponents = current.clearing.getClearingComponents();
 			for (RealmComponent monster : clearingComponents) {
 				if (monster.isCharacter()) continue;

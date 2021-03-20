@@ -723,7 +723,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		}
 		
 		//CJM -- This would be where to check if you ended in a cave or not
-		if(locationAfterAction.clearing == null || !locationAfterAction.isCave()){
+		if(locationAfterAction != null && (locationAfterAction.clearing == null || !locationAfterAction.isCave())){
 			endConditionalPermanentSpells("ends_in_sunlight");
 		}
 		
