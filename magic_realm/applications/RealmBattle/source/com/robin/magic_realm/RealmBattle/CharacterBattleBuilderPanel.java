@@ -353,7 +353,7 @@ public class CharacterBattleBuilderPanel extends JPanel {
 		addHirelingsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				String keyVals = hostPrefs.getGameKeyVals();
-				Collection natives = builder.getPool().find(keyVals+",native,!horse,!treasure,!"+BattleBuilder.BATTLE_BUILDER_KEY);
+				Collection<GameObject> natives = builder.getPool().find(keyVals+",native,!horse,!treasure,!"+BattleBuilder.BATTLE_BUILDER_KEY);
 				ArrayList<GameObject> travelers = builder.getPool().find(keyVals+",traveler,!"+BattleBuilder.BATTLE_BUILDER_KEY);
 				for(GameObject go:travelers) {
 					RealmComponent traveler = RealmComponent.getRealmComponent(go);
@@ -362,7 +362,7 @@ public class CharacterBattleBuilderPanel extends JPanel {
 						chit.setFaceUp();
 					}
 				}
-				Collection monsters = builder.getPool().find(keyVals+",monster,name=Giant,!"+BattleBuilder.BATTLE_BUILDER_KEY);
+				Collection<GameObject> monsters = builder.getPool().find(keyVals+",monster,name=Giant,!"+BattleBuilder.BATTLE_BUILDER_KEY);
 				monsters.addAll(builder.getPool().find(keyVals+",monster,name=Ogre,!"+BattleBuilder.BATTLE_BUILDER_KEY));
 				monsters.addAll(builder.getPool().find(keyVals+",monster,name=Spear Goblin,!"+BattleBuilder.BATTLE_BUILDER_KEY));
 				monsters.addAll(builder.getPool().find(keyVals+",monster,name=Axe Goblin,!"+BattleBuilder.BATTLE_BUILDER_KEY));
@@ -375,13 +375,12 @@ public class CharacterBattleBuilderPanel extends JPanel {
 				hirelingChooser.addObjectsToChoose(travelers);
 				hirelingChooser.setVisible(true);
 				if (hirelingChooser.pressedOkay()) {
-					Collection chosenNatives = hirelingChooser.getChosenObjects();
+					Collection<GameObject> chosenNatives = hirelingChooser.getChosenObjects();
 					if (chosenNatives!=null && chosenNatives.size()>0) {
 						chosenNatives = builder.makeDuplicates(chosenNatives); // only if the option is selected
 						builder.checkHorses(chosenNatives);
 						
-						for (Iterator i=chosenNatives.iterator();i.hasNext();) {
-							GameObject go = (GameObject)i.next();
+						for (GameObject go : chosenNatives) {
 							character.addHireling(go);
 							go.setThisAttribute(BattleBuilder.BATTLE_BUILDER_KEY);
 							RealmComponent hireling = RealmComponent.getRealmComponent(go);
@@ -417,8 +416,7 @@ public class CharacterBattleBuilderPanel extends JPanel {
 		toggleHiddenHirelingsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				nativesHidden = !nativesHidden;
-				for (Iterator i=character.getAllHirelings().iterator();i.hasNext();) {
-					RealmComponent hireling = (RealmComponent)i.next();
+				for (RealmComponent hireling : character.getAllHirelings()) {
 					hireling.setHidden(nativesHidden);
 				}
 				hirelingPanel.repaint();

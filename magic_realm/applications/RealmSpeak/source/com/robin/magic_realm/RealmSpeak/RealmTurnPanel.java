@@ -440,7 +440,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		add(top,"North");
 		
 		// Table
-		model = (ActionRowTableModel) new ActionRowTableModel();
+		model = new ActionRowTableModel();
 		actionTable = new JTable(model);
 		actionTable.setDefaultRenderer(ImageIcon.class,new ActionIconRenderer());
 		actionTable.setDefaultRenderer(JComponent.class,new ComponentRenderer());
@@ -612,6 +612,12 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			ar.setCancelled(true);
 			return true;
 		}
+		// Becomes unhidden at the start of the turn = before doing first action
+		if (!getCharacter().hasDoneActionsToday()) {
+			getCharacter().setHidden(false);
+			getCharacter().unhideAllCharacterFollowers();
+		}
+		
 		ar.landCharacterIfNeeded();
 		
 		GameObject requiredObject = null; // Get this BEFORE doing the action, in case an item is sold during the action

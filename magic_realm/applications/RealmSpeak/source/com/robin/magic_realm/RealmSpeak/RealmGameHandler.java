@@ -2037,11 +2037,8 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 						interactiveCharacter = character;
 					}
 					else if (active && character.getPlayOrder() == 1) {
-						// Becomes unhidden at the start of the turn, unless he
-						// is hidden as a result
-						// of following a guide...
-
-						if (!character.hasDoneActionsToday()) {
+						// Becomes unhidden at the start of the turn, unless he can postpone his turn or is hidden as a result of following a guide...
+						if (!character.hasDoneActionsToday() && (!character.affectedByKey(Constants.CHOOSE_TURN) || character.isLastPlayer())) {
 							character.setHidden(false);
 							character.unhideAllCharacterFollowers();
 						}
