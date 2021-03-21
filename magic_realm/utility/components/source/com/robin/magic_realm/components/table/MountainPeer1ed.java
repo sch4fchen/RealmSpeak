@@ -26,7 +26,7 @@ import com.robin.general.swing.DieRoller;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
-public class MountainPeer1ed extends Peer {
+public class MountainPeer1ed extends Peer1ed {
 	
 	public MountainPeer1ed(JFrame frame) {
 		super(frame);
