@@ -7,6 +7,7 @@ NEW FEATURES:
 # New character ability: Dual wielding
 # Optional Rule: No general quests (AllPlay for QtR, Events for BoQ)
 BUGS/ISSUES:
+# Fix using wrong MountainPeerTable (1st/3rd edition)
 # Fix game not working after character left the map
 # Fix swordsman becoming unhidden when postponing his turn
 # Fix off-road chit location for Borderland and Cliff tile
