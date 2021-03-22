@@ -13,6 +13,7 @@ BUGS/ISSUES:
 # Fix off-road chit location for Borderland and Cliff tile
 # Fix error loading custom characters after shutting down a game
 # Fix endgame scoring showing for clients
+# Fix spell viewer showing same spell multiple times
 # Adapt Linux files to run RealmSpeakFull.jar instead of RealmSpeak.jar
 # Runlinux-questbuild file to run QuestBuilder
 
