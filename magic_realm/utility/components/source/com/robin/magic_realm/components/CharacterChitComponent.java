@@ -129,9 +129,6 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				if (displayStyle == DISPLAY_STYLE_LEGENDARY) {
 					String iconDir_l = "characters_legendary";
 					String icon_type_l = icon_type;
-					if (isHidden()) {
-						icon_type_l=icon_type_l+"_h";
-					}
 					if (imageExists(icon_type_l,iconDir_l)) {
 						drawIcon(g,iconDir_l, icon_type_l, 0.26);
 						transformSkin = true;
@@ -140,9 +137,6 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				else if (displayStyle == DISPLAY_STYLE_LEGENDARY_CLASSIC) {
 					String iconDir_l = "characters_legendary_classic";
 					String icon_type_l = icon_type;
-					if (isHidden()) {
-						icon_type_l=icon_type_l+"_h";
-					}
 					if (imageExists(icon_type_l,iconDir_l)) {
 						drawIcon(g,iconDir_l, icon_type_l, 0.26);
 						transformSkin = true;
