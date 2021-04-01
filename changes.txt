@@ -9,6 +9,7 @@ NEW FEATURES:
 BUGS/ISSUES:
 # Fix using wrong MountainPeerTable (1st/3rd edition)
 # Fix game not working after character left the map
+# Fix deploying hirelings when playing with extended treachery
 # Fix swordsman becoming unhidden when postponing his turn
 # Fix off-road chit location for Borderland and Cliff tile
 # Fix error loading custom characters after shutting down a game

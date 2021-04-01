@@ -656,7 +656,7 @@ public class DenizenCombatSheet extends CombatSheet {
 	}
 	
 	private boolean extendedTreachery(RealmComponent denizen) {
-		return hostPrefs.hasPref(Constants.TE_EXTENDED_TREACHERY) && sheetOwner.isNative() && RealmUtility.getGroupName(sheetOwner).matches(RealmUtility.getGroupName(denizen));
+		return hostPrefs.hasPref(Constants.TE_EXTENDED_TREACHERY) && sheetOwner.isNative() && RealmUtility.getGroupName(denizen)!=null && RealmUtility.getGroupName(sheetOwner).matches(RealmUtility.getGroupName(denizen));
 	}
 	
 	public boolean hasUnpositionedDenizens() {
