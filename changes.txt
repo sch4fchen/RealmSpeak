@@ -17,6 +17,7 @@ BUGS/ISSUES:
 # Fix spell viewer showing same spell multiple times
 # Adapt Linux files to run RealmSpeakFull.jar instead of RealmSpeak.jar
 # Runlinux-questbuild file to run QuestBuilder
+# NewMacLaunchers.zip containing launchers for Mac
 
 Version 1.1.3.9 - Changes since 1.1.3.8
 QUEST UPDATE:
