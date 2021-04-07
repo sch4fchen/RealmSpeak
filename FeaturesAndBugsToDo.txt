@@ -1,6 +1,6 @@
 Expansion 1: Two-Handed Combat + Ability: "Dual Wielding"
 BattleModel: doResolveAttacks -> doTargetAttack -> getAdjustedHarm, sortAccordingToRound, processHits: use BattleChitAttack
-CharacterChitComponent:
+CharacterChitComponent (and comments //DUAL)
 	getLength + Comparer
 	getAttackSpeed + Comparer + ...
 	getHarm + ...

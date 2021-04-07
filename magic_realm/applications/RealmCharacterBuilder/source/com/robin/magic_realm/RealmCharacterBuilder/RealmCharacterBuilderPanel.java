@@ -284,7 +284,7 @@ public class RealmCharacterBuilderPanel extends JPanel {
 			int boxHeight = 200;
 			box = Box.createHorizontalBox();
 				String[] startingLoc = model.getCharacter().getStartingLocations(false);
-				ArrayList<String> list = new ArrayList(Arrays.asList(startingLoc));
+				ArrayList<String> list = new ArrayList<>(Arrays.asList(startingLoc));
 				JPanel locationControls = new JPanel(new GridLayout(5,1));
 				startInnChoice = new JCheckBox("Inn (ALWAYS)",true); // ALWAYS true
 				startInnChoice.setEnabled(false); // ALWAYS disabled (MUST have INN as a choice)
@@ -498,7 +498,7 @@ public class RealmCharacterBuilderPanel extends JPanel {
 			fairnessPanel.add(mfReasonPanel,BorderLayout.SOUTH);
 			topPanel.add(fairnessPanel,"South");
 		leftPanel.add(topPanel,"North");
-			ArrayList<String[]> relationships = new ArrayList<String[]>();
+			ArrayList<String[]> relationships = new ArrayList<>();
 			for (int i=0;i<RealmCharacterConstants.DEFAULT_RELATIONSHIPS.length;i++) {
 				relationships.add(RealmCharacterConstants.DEFAULT_RELATIONSHIPS[i]);
 			}
@@ -530,7 +530,7 @@ public class RealmCharacterBuilderPanel extends JPanel {
 		}
 	}
 	private void evaluateNow() {
-		TreeSet<String> notes = new TreeSet<String>();
+		TreeSet<String> notes = new TreeSet<>();
 		
 		boolean mediumArmor = false;
 		boolean mediumMoves = false;
@@ -657,7 +657,7 @@ public class RealmCharacterBuilderPanel extends JPanel {
 		JOptionPane.showMessageDialog(RealmCharacterBuilderPanel.this,sp,"Character Notes:",JOptionPane.PLAIN_MESSAGE);
 		model.getCharacter().getGameObject().setThisAttribute("extra_notes",editField.getText());
 	}
-	private ImageIcon resizeImage(ImageIcon image,int width,int height) {
+	private static ImageIcon resizeImage(ImageIcon image,int width,int height) {
 		if (image.getIconWidth()==width && image.getIconHeight()==height) {
 			// no resizing necessary
 			return image;
@@ -666,7 +666,7 @@ public class RealmCharacterBuilderPanel extends JPanel {
 	}
 	private void updateStartingLocation(String location,boolean selected) {
 		String[] startingLoc = model.getCharacter().getStartingLocations(false);
-		ArrayList<String> list = new ArrayList(Arrays.asList(startingLoc));
+		ArrayList<String> list = new ArrayList<>(Arrays.asList(startingLoc));
 		if (selected) {
 			// add it
 			list.add(location);
@@ -978,7 +978,7 @@ public class RealmCharacterBuilderPanel extends JPanel {
 			repaint();
 		}
 		private ArrayList<String> getMagicTypes() {
-			ArrayList<String> magicTypes = new ArrayList<String>();
+			ArrayList<String> magicTypes = new ArrayList<>();
 			ArrayList<CharacterActionChitComponent> list = model.getCharacter().getAllActionChitsSorted(level);
 			for (CharacterActionChitComponent cc:list) {
 				if (cc.isMagic()) {

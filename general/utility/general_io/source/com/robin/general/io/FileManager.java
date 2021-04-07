@@ -77,7 +77,7 @@ public class FileManager {
 			chooser = new JFileChooser(currentDirectory);
 		}
 		else {
-			chooser = new JFileChooser();
+			chooser = new JFileChooser(".");
 		}
 		if (title!=null) {
 			chooser.setDialogTitle(title);

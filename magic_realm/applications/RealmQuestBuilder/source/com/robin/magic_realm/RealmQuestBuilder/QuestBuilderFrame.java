@@ -300,7 +300,7 @@ public class QuestBuilderFrame extends JFrame {
 				GameData data = new GameData();
 				data.ignoreRandomSeed = true;
 				if (data.zipFromFile(file)) {
-					quest = new Quest((GameObject) data.getGameObjects().iterator().next());
+					quest = new Quest(data.getGameObjects().iterator().next());
 					quest.autoRepair(); // Just in case
 					readQuest();
 					setFile(file);
@@ -837,7 +837,7 @@ public class QuestBuilderFrame extends JFrame {
 		specificCharacterHelperButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				GamePool pool = new GamePool(realmSpeakData.getGameObjects());
-				ArrayList<String> names = new ArrayList<String>();
+				ArrayList<String> names = new ArrayList<>();
 				for (GameObject go : pool.find("character")) {
 					names.add(go.getName());
 				}
@@ -1201,7 +1201,7 @@ public class QuestBuilderFrame extends JFrame {
 		return panel;
 	}
 
-	private JLabel createHeaderLabel(String value) {
+	private static JLabel createHeaderLabel(String value) {
 		JLabel header = new JLabel(value);
 		header.setFont(HeaderFont);
 		header.setOpaque(true);
