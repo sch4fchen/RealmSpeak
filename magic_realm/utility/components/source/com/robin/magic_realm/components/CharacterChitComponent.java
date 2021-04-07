@@ -908,7 +908,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		boolean hitsOnTie = getGameObject().hasThisAttribute(Constants.HIT_TIE); // In case Ointment of Bite was applied to dagger
 		//DUAL
 		GameObject weapon = null;
-		if (getActiveWeaponsObjects()!=null) {
+		if (!getActiveWeaponsObjects().isEmpty()) {
 			weapon = getActiveWeaponsObjects().get(0);
 		}
 		return hitsOnTie || (weapon!=null && weapon.hasThisAttribute(Constants.HIT_TIE));
