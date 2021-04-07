@@ -56,7 +56,7 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 		this.selection = selected;
 		setBorder(BorderFactory.createTitledBorder(toString())); // update name
 		
-		hash = new Hashtable<String,JCheckBox>();
+		hash = new Hashtable<>();
 		setLayout(new BorderLayout());
 		
 		if (controlSelected()) {
@@ -68,7 +68,7 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 			durationComponent.setVisible(true);
 			ComponentTools.lockComponentSize(durationComponent,36,18);
 			box.add(durationComponent);
-			enhancedControl = new JCheckBox("Enhanced Control");
+			enhancedControl = new JCheckBox("Enhanced Command");
 			if (hasAttribute(Constants.MONSTER_CONTROL_ENHANCED)) {
 				enhancedControl.setSelected(true);
 			}
@@ -203,7 +203,7 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 	
 	public String toString() {
 		if (controlSelected()) {
-			return "Monster Control";
+			return "Monster Command";
 		}
 		return "Monster Immunity";
 	}
