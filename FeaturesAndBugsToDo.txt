@@ -16,6 +16,12 @@ Expansion 1: More Ambushes/Throwing Weapons + Ability: Spear, Axe, Dagger?
 Expansion 1: Parry + Ability: "ParryLikeShield":  Option: no missile attacks
 SuperRealm: Steel Against Magic
 
+Character Editor
+1) Ergänze die Spell Tables unter "Die Modifiers" um den Transform Spell
+2) Ergänze die Search Tables unter "Die Modifiers" um die "Treasures within Treasures"-Tabellen.
+3) Eine Umsetzung der Eigenschaft "Dragons cannot attack you. You cannot attack them nor loot the Hoard or Lair". In Realmspeak ist dies derzeit nur durch "Immunity from Dragons" umgesetzt, also unvollständig.
+4) Eine Umsetzung der Eigenschaft "cannot attack while hidden"
+
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
 Expansion 1: Items: Magic path, Hound, Magic meat, Needful thing
