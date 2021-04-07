@@ -47,16 +47,29 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 	}
 	
 	public int getChitSize() {
-		return getRider().isShrunk()?M_CHIT_SIZE:H_CHIT_SIZE;
+		if (getRider()!=null && getRider().isShrunk()) {
+			return M_CHIT_SIZE;
+		}
+		return H_CHIT_SIZE;
 	}
 	private NativeChitComponent getRider() {
-		return (NativeChitComponent)RealmComponent.getRealmComponent(getGameObject().getHeldBy());
+		RealmComponent rider = RealmComponent.getRealmComponent(getGameObject().getHeldBy());
+		if (rider instanceof NativeChitComponent) {
+			return (NativeChitComponent) rider;
+		}
+		return null;
 	}
 	protected int sizeModifier() {
-		return getRider().sizeModifier();
+		if (getRider()!=null ) {
+			getRider().sizeModifier();
+		}
+		return 0;
 	}
 	protected int speedModifier() {
-		return getRider().speedModifier();
+		if (getRider()!=null ) {
+			getRider().speedModifier();
+		}
+		return 0;
 	}
 	public String getLightSideStat() {
 		return "trot";
@@ -67,7 +80,7 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 	public String[] getFolderAndType() {
 		String name = gameObject.getName();
 		String letterCode = name.substring(0,1).toUpperCase();
-		String horse_type = (String)gameObject.getAttribute("this","horse");
+		String horse_type = gameObject.getAttribute("this","horse");
 		if (horse_type!=null) {
 			String folder = useColorIcons()?"steed_c":"steed";
 			horse_type = horse_type + (useColorIcons()?("_"+letterCode.toLowerCase()):"");
@@ -85,7 +98,7 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		String letterCode = name.substring(0,1).toUpperCase();
 		
 		// Draw image
-		String horse_type = (String)gameObject.getAttribute("this","horse");
+		String horse_type = gameObject.getAttribute("this","horse");
 		if (horse_type!=null) {
 			String folder = useColorIcons()?"steed_c":"steed";
 			horse_type = horse_type + (useColorIcons()?("_"+letterCode.toLowerCase()):"");
