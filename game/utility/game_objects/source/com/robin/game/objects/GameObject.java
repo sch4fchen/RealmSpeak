@@ -35,7 +35,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 	protected static XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat());
 
 	private static final String THIS = "this";
-	protected OrderedHashtable attributeBlocks; // Holds Hashtables linked by a type key
+	protected OrderedHashtable<String, OrderedHashtable> attributeBlocks; // Holds Hashtables linked by a type key
 	protected GameObject heldBy; // Can only be held by one parent
 	protected ArrayList hold; // All GameObjects contained by this object
 
@@ -116,7 +116,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		uncommitted._setVersion(version);
 		for (Iterator i = attributeBlocks.keySet().iterator(); i.hasNext();) {
 			String blockName = (String) i.next();
-			OrderedHashtable attributes = (OrderedHashtable) attributeBlocks.get(blockName);
+			OrderedHashtable attributes = attributeBlocks.get(blockName);
 			for (Iterator j = attributes.keySet().iterator(); j.hasNext();) {
 				String attributeKey = (String) j.next();
 				Object value = attributes.get(attributeKey);
@@ -219,7 +219,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		if (uncommitted != null) {
 			throw new IllegalStateException("Cannot buildChanges with uncommitted changes");
 		}
-		ArrayList<GameObjectChange> changes = new ArrayList<GameObjectChange>();
+		ArrayList<GameObjectChange> changes = new ArrayList<>();
 		for (Iterator i = getAttributeBlockNames().iterator(); i.hasNext();) {
 			String blockName = (String) i.next();
 			OrderedHashtable block = getAttributeBlock(blockName);
@@ -436,7 +436,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		if (!hasAttributeBlock(blockName)) {
 			attributeBlocks.put(blockName, new OrderedHashtable());
 		}
-		return (OrderedHashtable) attributeBlocks.get(blockName);
+		return attributeBlocks.get(blockName);
 	}
 
 	/**
@@ -495,7 +495,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 			return uncommitted.getAttribute(blockName, key);
 		}
 		if (attributeBlocks.containsKey(blockName)) {
-			OrderedHashtable attributeBlock = (OrderedHashtable) attributeBlocks.get(blockName);
+			OrderedHashtable attributeBlock = attributeBlocks.get(blockName);
 			return (String) attributeBlock.get(key.toLowerCase());
 		}
 		return null;
@@ -506,7 +506,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 			return uncommitted.getObject(blockName, key);
 		}
 		if (attributeBlocks.containsKey(blockName)) {
-			OrderedHashtable attributeBlock = (OrderedHashtable) attributeBlocks.get(blockName);
+			OrderedHashtable attributeBlock = attributeBlocks.get(blockName);
 			return attributeBlock.get(key.toLowerCase());
 		}
 		return null;
@@ -545,7 +545,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 			throw new IllegalStateException("Cannot generate XML for uncommitted object");
 		}
 		Element element = null;
-		OrderedHashtable attributeBlock = (OrderedHashtable) attributeBlocks.get(blockName);
+		OrderedHashtable attributeBlock = attributeBlocks.get(blockName);
 		if (attributeBlock != null) {
 			element = new Element("AttributeBlock");
 			element.setAttribute(new Attribute("blockName", blockName));
@@ -582,7 +582,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 			return uncommitted.getAttributeList(blockName, key);
 		}
 		if (attributeBlocks.containsKey(blockName)) {
-			OrderedHashtable attributeBlock = (OrderedHashtable) attributeBlocks.get(blockName);
+			OrderedHashtable attributeBlock = attributeBlocks.get(blockName);
 			Object obj = attributeBlock.get(key.toLowerCase());
 			if (obj==null || obj instanceof ArrayList) {
 				return (ArrayList)obj;
@@ -799,12 +799,12 @@ public class GameObject extends ModifyableObject implements Serializable {
 		}
 
 		// Now collect prepped keyVals from the attributeBlocks
-		HashSet attributes = new HashSet();
+		HashSet<String> attributes = new HashSet<>();
 		attributes.add("name=" + name); // name is always one of the choices
 		ArrayList absOrderedKeys = attributeBlocks.orderedKeys();
 		for (int i=0;i<absOrderedKeys.size();i++) {
 			String blockName = (String)absOrderedKeys.get(i);
-			OrderedHashtable attributeBlock = (OrderedHashtable) attributeBlocks.get(blockName);
+			OrderedHashtable attributeBlock = attributeBlocks.get(blockName);
 			ArrayList abOrderedKeys = attributeBlock.orderedKeys();
 			for (int k=0;k<abOrderedKeys.size();k++) {
 				String key = (String) abOrderedKeys.get(k);
@@ -874,7 +874,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		key = key.toLowerCase();
 		for (Enumeration e = attributeBlocks.keys(); e.hasMoreElements();) {
 			String blockName = (String) e.nextElement();
-			OrderedHashtable attributeBlock = (OrderedHashtable) attributeBlocks.get(blockName);
+			OrderedHashtable attributeBlock = attributeBlocks.get(blockName);
 			if (attributeBlock.containsKey(key)) {
 				return true;
 			}
@@ -890,7 +890,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 			return uncommitted.hasKey(blockName, key);
 		}
 		key = key.toLowerCase();
-		OrderedHashtable attributeBlock = (OrderedHashtable) attributeBlocks.get(blockName);
+		OrderedHashtable attributeBlock = attributeBlocks.get(blockName);
 		return (attributeBlock != null && attributeBlock.containsKey(key));
 	}
 
@@ -992,7 +992,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		stopUncommitted();
 		if (attributeBlocks.containsKey(from)) {
 			if (!attributeBlocks.containsKey(to)) {
-				OrderedHashtable block = (OrderedHashtable)attributeBlocks.remove(from);
+				OrderedHashtable block = attributeBlocks.remove(from);
 				attributeBlocks.put(to,block);
 				version++;
 			}
@@ -1097,7 +1097,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 	public boolean _removeAttribute(String blockName, String key) {
 		stopUncommitted();
 		if (attributeBlocks.containsKey(blockName)) {
-			OrderedHashtable attributeBlock = (OrderedHashtable) attributeBlocks.get(blockName);
+			OrderedHashtable attributeBlock = attributeBlocks.get(blockName);
 			boolean ret = (attributeBlock.remove(key.toLowerCase()) != null);
 			if (ret) {
 				setModified(true);

@@ -37,7 +37,7 @@ public class DieRollBuilder {
 	}
 	public static DieRollBuilder getDieRollBuilder(JFrame parent,CharacterWrapper character,int redDie) {
 		if (builderHash==null) {
-			builderHash = new Hashtable<Long,DieRollBuilder>();
+			builderHash = new Hashtable<>();
 		}
 		DieRollBuilder drb = builderHash.get(character.getGameObject().getId());
 		if (drb == null) {
@@ -82,7 +82,7 @@ public class DieRollBuilder {
 		ArrayList<String> chitDescriptionList = tl.tile.getChitDescriptionList();
 		
 		// Cycle through all activated treasures, bewitching spells, and character to determine modifiers
-		ArrayList objectsToTest = new ArrayList();
+		ArrayList<GameObject> objectsToTest = new ArrayList<>();
 		if (character!=null) {
 			objectsToTest.add(character.getGameObject()); // the character
 			objectsToTest.addAll(character.getEnhancingItems()); // active treasures and travelers

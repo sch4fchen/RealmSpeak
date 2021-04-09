@@ -19,9 +19,7 @@ SuperRealm: Steel Against Magic
 Character Editor
 1) "Die Modifiers": Add transform spell
 2) "Die Modifiers": Search tables: Add "Treasures within Treasures"
-3) Ability: "Dragons cannot attack you. You cannot attack them nor loot the Hoard or Lair". Only current similar ability: "Immunity from Dragons"
-4) Ability: "cannot attack while hidden"
-5) At the start of the game, activate all items (e.g. treasures, horses) received by abilities etc.
+3) Ability: "Dragons cannot attack you. You cannot attack them nor loot the Hoard or Lair". Only current similar ability: "Immunity from Dragons" -> Ability: Cannot attack certain enemies. Ability: Cannot loot certain location.
 
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
@@ -87,7 +85,7 @@ Wizard advancement - didn't get MOVE M5->MAGIC III
 Character abilities:
 	Cannot initiate attacks on natives (i.e. can only target battling natives)
 	Fatigue MAGIC to reduce speed on one MOVE chit
-	Cannot attack from hidden
+	Cannot attack from hidden (-> option to unhide voluntary needed?)
 Would be nice to make weapon abilities too:
 	Immobilizing - When it hits all attacks undercut
 	Stunning - Target cannot play an attack next round

@@ -89,7 +89,7 @@ public class DieRuleTest extends TestBaseWithLoader {
 	}
 	@Test
 	public void testNotWoods() {
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		list.add("cliff");
 		list.add("lost city b");
 		list.add("flutter");
@@ -99,7 +99,7 @@ public class DieRuleTest extends TestBaseWithLoader {
 	}
 	@Test
 	public void testAllDieModsLists() {
-		ArrayList<String> query = new ArrayList<String>();
+		ArrayList<String> query = new ArrayList<>();
 		query.add(Constants.DIEMOD);
 		ArrayList<GameObject> dieModObjs = findGameObjects(query);
 		for (GameObject go:dieModObjs) {

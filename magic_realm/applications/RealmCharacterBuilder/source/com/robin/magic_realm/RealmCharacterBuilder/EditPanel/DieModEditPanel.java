@@ -85,7 +85,7 @@ public class DieModEditPanel extends AdvantageEditPanel {
 		JPanel mainPanel = new JPanel(new GridLayout(1,3));
 		mainPanel.add(typePanel);
 		
-		optionsHash = new Hashtable<String,JCheckBox>();
+		optionsHash = new Hashtable<>();
 		
 		JPanel tableBox = new JPanel(new BorderLayout());
 		allTablesOption = new AllCheckBox("All Tables");
@@ -102,7 +102,7 @@ public class DieModEditPanel extends AdvantageEditPanel {
 		tableBox.add(allTablesOption,"North");
 		JPanel innerTableBox = new JPanel(new GridLayout(1,2));
 		tableBox.add(innerTableBox,"Center");
-		specificTableOptions = new ArrayList<JCheckBox>();
+		specificTableOptions = new ArrayList<>();
 		allTablesOption.setOptions(specificTableOptions);
 		Box column = null;
 		for (int i=0;i<TABLE.length;i++) {
@@ -131,7 +131,7 @@ public class DieModEditPanel extends AdvantageEditPanel {
 		conditionBox.add(allConditionsOption,"North");
 		JPanel innerConditionBox = new JPanel(new GridLayout(1,2));
 		conditionBox.add(innerConditionBox,"Center");
-		specificConditionOptions = new ArrayList<JCheckBox>();
+		specificConditionOptions = new ArrayList<>();
 		allConditionsOption.setOptions(specificConditionOptions);
 		column = null;
 		for (int i=0;i<CONDITION.length;i++) {
@@ -148,9 +148,9 @@ public class DieModEditPanel extends AdvantageEditPanel {
 		add(mainPanel,"Center");
 		
 		// Initialize
-		ArrayList diemodList = getAttributeList(Constants.DIEMOD);
+		ArrayList<String> diemodList = getAttributeList(Constants.DIEMOD);
 		if (diemodList!=null && !diemodList.isEmpty()) {
-			String diemod = (String)diemodList.get(0); // only ever ONE of these
+			String diemod = diemodList.get(0); // only ever ONE of these
 			StringTokenizer tokens = new StringTokenizer(diemod,":");
 			if (tokens.countTokens()==3) {
 				String typeKey = tokens.nextToken();
@@ -262,7 +262,7 @@ public class DieModEditPanel extends AdvantageEditPanel {
 		fullKey.append(typeKey);
 		fullKey.append(tableKey.toString());
 		fullKey.append(conditionKey.toString());
-		ArrayList list = new ArrayList();
+		ArrayList<String> list = new ArrayList<>();
 		list.add(fullKey.toString());
 		setAttributeList(Constants.DIEMOD,list);
 	}

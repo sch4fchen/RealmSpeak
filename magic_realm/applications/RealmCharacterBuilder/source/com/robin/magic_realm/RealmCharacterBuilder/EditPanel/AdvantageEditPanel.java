@@ -64,7 +64,7 @@ public abstract class AdvantageEditPanel extends JPanel {
 	protected void setAttributeList(String key,ArrayList list) {
 		character.setAttributeList(levelKey,key,list);
 	}
-	protected ArrayList getAttributeList(String key) {
+	protected ArrayList<String> getAttributeList(String key) {
 		if (character.getAttributeBlock(levelKey).get(key) instanceof ArrayList) {
 			return character.getAttributeList(levelKey,key);
 		}
