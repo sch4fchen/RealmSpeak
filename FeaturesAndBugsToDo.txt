@@ -17,10 +17,11 @@ Expansion 1: Parry + Ability: "ParryLikeShield":  Option: no missile attacks
 SuperRealm: Steel Against Magic
 
 Character Editor
-1) Ergänze die Spell Tables unter "Die Modifiers" um den Transform Spell
-2) Ergänze die Search Tables unter "Die Modifiers" um die "Treasures within Treasures"-Tabellen.
-3) Eine Umsetzung der Eigenschaft "Dragons cannot attack you. You cannot attack them nor loot the Hoard or Lair". In Realmspeak ist dies derzeit nur durch "Immunity from Dragons" umgesetzt, also unvollständig.
-4) Eine Umsetzung der Eigenschaft "cannot attack while hidden"
+1) "Die Modifiers": Add transform spell
+2) "Die Modifiers": Search tables: Add "Treasures within Treasures"
+3) Ability: "Dragons cannot attack you. You cannot attack them nor loot the Hoard or Lair". Only current similar ability: "Immunity from Dragons"
+4) Ability: "cannot attack while hidden"
+5) At the start of the game, activate all items (e.g. treasures, horses) received by abilities etc.
 
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 ---:::FEATURES:::---
