@@ -713,13 +713,10 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			if (GameHost.DATA_NAME.equals(data.getDataName())) {
 				// Should never "affectTargets" from the host.  Do it on the caster's client.
 				if (GameHost.mostRecentHost!=null) {
-					GameHost.mostRecentHost.distributeInfo(
-							buildAnInfoObject(destClientName,data,command));
+					GameHost.mostRecentHost.distributeInfo(buildAnInfoObject(destClientName,data,command));
 					return;
 				}
-				else {
-					throw new IllegalStateException("mostRecentHost is null?");
-				}
+				throw new IllegalStateException("mostRecentHost is null?");
 			}
 			else if (GameClient.DATA_NAME.equals(data.getDataName())) {
 				// With clients, make sure to affectTargets from the caster's client

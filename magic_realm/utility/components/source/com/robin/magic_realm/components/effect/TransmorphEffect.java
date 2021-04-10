@@ -40,7 +40,7 @@ public class TransmorphEffect implements ISpellEffect {
 		}
 		else if ("statue".equals(transmorph)){
 			GameObject transformStatue = prepareTransformation("statue", target, spell, context.Parent);
-			doActualTransformation(target, spell, combat, transformStatue);
+			doActualTransformation(target, spell, transformStatue);
 		}
 		else if ("roll".equals(transmorph) || "mist".equals(transmorph)) {
 			GameObject transformAnimal = spell.getTransformAnimal();
@@ -68,7 +68,7 @@ public class TransmorphEffect implements ISpellEffect {
 				transformAnimal = prepareTransformation(transformBlock, target, spell, context.Parent);
 			} 
 			
-			doActualTransformation(target, spell, combat, transformAnimal);
+			doActualTransformation(target, spell, transformAnimal);
 		}
 		
 		if (spell.getCaster().isTransmorphed()) {
@@ -93,11 +93,10 @@ public class TransmorphEffect implements ISpellEffect {
 			
 			// Restore active state of items
 			GameData data = spell.getGameObject().getGameData();
-			ArrayList list = spell.getList(Constants.ACTIVATED_ITEMS);
+			ArrayList<String> list = spell.getList(Constants.ACTIVATED_ITEMS);
 			
 			if (list!=null) {
-				for (Iterator i=list.iterator();i.hasNext();) {
-					String id = (String)i.next();
+				for (String id : list) {
 					GameObject go = data.getGameObject(Long.valueOf(id));
 					if (go!=null && inv.contains(go)) { // only do this if the item still exists in inventory
 						TreasureUtility.doActivate(null, spell.getCaster(),go,new ChangeListener() {
@@ -115,7 +114,9 @@ public class TransmorphEffect implements ISpellEffect {
 		else if ("roll".equals(transmorph) || "mist".equals(transmorph) || "statue".equals(transmorph)) {
 			if (target.isCharacter()) {
 				CharacterWrapper character = new CharacterWrapper(target.getGameObject());
-				character.setTransmorph(null);
+				if (!transmorph.equals("mist") || character.isMistLike()) {
+					character.setTransmorph(null);
+				}
 			}
 			else {
 				if (!target.getGameObject().hasAttributeBlock("this_h")) {
@@ -180,7 +181,7 @@ public class TransmorphEffect implements ISpellEffect {
 		return trans;
 	}
 	
-	private String getPronoun(String transformName){
+	private static String getPronoun(String transformName){
 		// Fix the pronoun
 		String pronoun = "a ";
 		if (transformName.startsWith("E")) {
@@ -193,7 +194,7 @@ public class TransmorphEffect implements ISpellEffect {
 		return pronoun;
 	}
 	
-	private void doActualTransformation(RealmComponent target, SpellWrapper spell, CombatWrapper combat, GameObject transformObj){
+	private static void doActualTransformation(RealmComponent target, SpellWrapper spell, GameObject transformObj){
 		// Do the actual transform
 		if (target.isCharacter()) {
 			CharacterWrapper character = new CharacterWrapper(target.getGameObject());
@@ -314,7 +315,4 @@ public class TransmorphEffect implements ISpellEffect {
 		}
 		spell.getCaster().setTransmorph(target.getGameObject());
 	}
-
-	
-
 }
