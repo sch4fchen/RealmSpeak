@@ -34,7 +34,7 @@ public class DieModEditPanel extends AdvantageEditPanel {
 	private static final String[][] TABLE = {
 		{"Actions","Hide","Hire","Trade"},
 		{"Battle","Missile","Thrown","Fumble","Stumble"},
-		{"Spells","Curse","PoP:powerofthepit","Wish"},
+		{"Spells","Curse","PoP:powerofthepit","Wish","Transform"},
 		{"Natives","Commerce","Meeting"},
 		{"Search","Locate","Loot","Magic Sight:magicsight","Peer","Read Runes:readrunes"},
 		{"Expansion","Raise Dead:raisedead","Summon Elemental:summonelemental","Summon Animal:summonanimal","Capture"},

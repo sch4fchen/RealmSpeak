@@ -6,6 +6,7 @@ NEW FEATURES:
 # Optional Rule: Dual wielding (Expansion 1 variant)
 # New character ability: Dual wielding
 # Optional Rule: No general quests (AllPlay for QtR, Events for BoQ)
+# Character Editor: Die modifiers: Add Transform spell
 BUGS/ISSUES:
 # Fix using wrong MountainPeerTable (1st/3rd edition)
 # Fix game not working after character left the map
