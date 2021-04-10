@@ -6557,6 +6557,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 				if (characterCanControl.toArray().length == 1) { // only if exactly one character can control this monster
 					CharacterWrapper characterWrapper = new CharacterWrapper(characterCanControl.get(0).getGameObject());
 					int duration = characterCanControl.get(0).getControllableMonstersDuration();
+					RealmComponent monsterOwner = monster.getOwner();
+					if(monsterOwner!=null && monsterOwner.isCharacter()) {
+						CharacterWrapper owner = new CharacterWrapper(monsterOwner.getGameObject());
+						owner.removeHireling(monster.getGameObject());
+					}
 					characterWrapper.addHireling(monster.getGameObject(), duration);
 				}
 			}

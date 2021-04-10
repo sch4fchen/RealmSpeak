@@ -59,8 +59,7 @@ public class BattlesWrapper extends GameObjectWrapper {
 		
 		// Bump combat count for each owning character
 		BattleModel model = RealmBattle.buildBattleModel(tl,data);
-		for (Iterator i=model.getAllOwningCharacters().iterator();i.hasNext();) {
-			RealmComponent chars = (RealmComponent)i.next();
+		for (RealmComponent chars : model.getAllOwningCharacters()) {
 			CharacterWrapper character = new CharacterWrapper(chars.getGameObject());
 			character.setCombatCount(character.getCombatCount()+1);
 		}
@@ -79,9 +78,9 @@ public class BattlesWrapper extends GameObjectWrapper {
 			clearBattleInfo(current,data);
 		}
 		
-		ArrayList list = new ArrayList(getList(BATTLE_LOCATION));
+		ArrayList<String> list = new ArrayList<>(getList(BATTLE_LOCATION));
 		if (!list.isEmpty()) {
-			String tlKey = (String)list.remove(0);
+			String tlKey = list.remove(0);
 			setList(BATTLE_LOCATION,list); // make sure the list is updated
 			setString(CURRENT_BATTLE_LOCATION,tlKey);
 			TileLocation tl = TileLocation.parseTileLocation(data,tlKey);
@@ -91,7 +90,7 @@ public class BattlesWrapper extends GameObjectWrapper {
 			ArrayList<RealmComponent> combatants = tl.clearing.getClearingComponents();
 			for (RealmComponent monster : combatants) {
 				if (monster.isCharacter()) continue;
-				ArrayList<RealmComponent> characterCanControl = new ArrayList<RealmComponent>();
+				ArrayList<RealmComponent> characterCanControl = new ArrayList<>();
 				for (RealmComponent characterRc : combatants) {
 					if (!characterRc.isCharacter()) continue;
 						for (Object monsterType : characterRc.getControllableMonsters() ) {
@@ -106,6 +105,11 @@ public class BattlesWrapper extends GameObjectWrapper {
 				if (characterCanControl.toArray().length == 1) { // only if exactly one character can control this monster
 					CharacterWrapper characterWrapper = new CharacterWrapper(characterCanControl.get(0).getGameObject());
 					int duration = characterCanControl.get(0).getControllableMonstersDuration();
+					RealmComponent monsterOwner = monster.getOwner();
+					if(monsterOwner!=null && monsterOwner.isCharacter()) {
+						CharacterWrapper owner = new CharacterWrapper(monsterOwner.getGameObject());
+						owner.removeHireling(monster.getGameObject());
+					}
 					characterWrapper.addHireling(monster.getGameObject(), duration);
 				}
 			}
@@ -113,12 +117,10 @@ public class BattlesWrapper extends GameObjectWrapper {
 			if (GameClient.GetMostRecentClient()!=null) {
 				GameClient.GetMostRecentClient().broadcast(RealmLogging.BATTLE,"Battle resolving at "+tl+":");
 				int count = 1;
-				for (Iterator i=model.getAllBattleGroups(true).iterator();i.hasNext();) {
+				for (BattleGroup group : model.getAllBattleGroups(true)) {
 					GameClient.GetMostRecentClient().broadcast(RealmLogging.BATTLE,"GROUP "+(count++));
-					BattleGroup group = (BattleGroup)i.next();
 					RealmComponent owner = group.getOwningCharacter();
-					for (Iterator n=group.getBattleParticipants().iterator();n.hasNext();) {
-						RealmComponent rc = (RealmComponent)n.next();
+					for (RealmComponent rc : group.getBattleParticipants()) {
 						String message = rc.getGameObject().getName();
 						if (owner!=null && owner!=rc) {
 							message = message+" ("+owner.getGameObject().getName()+")";
@@ -181,24 +183,20 @@ public class BattlesWrapper extends GameObjectWrapper {
 				}
 			}
 			
-			for (Iterator i=model.getAllOwningCharacters().iterator();i.hasNext();) {
+			for (RealmComponent owner : model.getAllOwningCharacters()) {
 				// owner may or may not be present, but they still are involved, and must make battle decisions
-				RealmComponent owner = (RealmComponent)i.next();
 				CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
 				character.setCombatStatus(STARTING_WAIT_STATE);
 			}
 			
 			return true;
 		}
-		else {
-			removeAttribute(CURRENT_BATTLE_LOCATION);
-		}
+		removeAttribute(CURRENT_BATTLE_LOCATION);
 		return false;
 	}
 	public void clearBattleInfo(TileLocation tl,GameData data) {
 		BattleModel model = RealmBattle.buildBattleModel(tl,data);
-		for (Iterator i=model.getAllOwningCharacters().iterator();i.hasNext();) {
-			RealmComponent owner = (RealmComponent)i.next();
+		for (RealmComponent owner : model.getAllOwningCharacters()) {
 			CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
 			CombatWrapper.clearAllCombatInfo(character.getGameObject());
 			character.clearCombat();

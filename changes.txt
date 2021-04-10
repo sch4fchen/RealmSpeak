@@ -10,12 +10,13 @@ BUGS/ISSUES:
 # Fix using wrong MountainPeerTable (1st/3rd edition)
 # Fix game not working after character left the map
 # Fix deploying hirelings when playing with extended treachery
+# Fix NativeSteeds without rider leading to display errors (e.g. chits not displayed on map)
 # Fix swordsman becoming unhidden when postponing his turn
-# Fix off-road chit location for Borderland and Cliff tile
 # Fix error loading custom characters after shutting down a game
+# Fix Control Monster ability to set correct term of hire and refresh term each round 
+# Fix off-road chit location for Borderland and Cliff tile
 # Fix endgame scoring showing for clients
 # Fix spell viewer showing same spell multiple times
-# Fix NativeSteeds without rider leading to display errors (e.g. chits not displayed on map)
 # Adapt Linux files to run RealmSpeakFull.jar instead of RealmSpeak.jar
 # Runlinux-questbuild file to run QuestBuilder
 # NewMacLaunchers.zip containing launchers for Mac
