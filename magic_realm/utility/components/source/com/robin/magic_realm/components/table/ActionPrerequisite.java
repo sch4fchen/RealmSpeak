@@ -114,7 +114,7 @@ public class ActionPrerequisite {
 			if (source.hasThisAttribute(Constants.BOARD_NUMBER)) {
 				boardNum = " "+source.getThisAttribute(Constants.BOARD_NUMBER);
 			}
-			failReason.append("you don't have the Lost Keys"+boardNum+" activated");
+			failReason.append("You don't have the Lost Keys"+boardNum+" activated");
 		}
 		// else Perform and Non-perform success!
 		return success;
