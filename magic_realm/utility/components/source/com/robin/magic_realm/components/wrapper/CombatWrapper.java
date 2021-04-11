@@ -464,7 +464,7 @@ public class CombatWrapper extends GameObjectWrapper {
 		ArrayList<String> list = getList(COMBAT_HIT_RESULT_LIST);
 		if (list!=null) {
 			ArrayList<String> results = new ArrayList<>(list);
-			if (results!=null && results.size()>=2) {
+			if (results.size()>=2) {
 				String val1 = results.remove(results.size()-1);
 				String val2 = results.remove(results.size()-1);
 				return ("M".equals(val1) && "M".equals(val2));
@@ -480,13 +480,16 @@ public class CombatWrapper extends GameObjectWrapper {
 		setBoolean(PLACED_AS_FIGHT,val);
 	}
 	public void setWeaponId(RealmComponent weapon) {
-		addListItem(WEAPON_ID,weapon.getGameObject().getStringId());
+		setString(WEAPON_ID,weapon.getGameObject().getStringId());
 	}
 	public boolean getPlacedAsMove() {
 		return getBoolean(PLACED_AS_MOVE);
 	}
 	public boolean getPlacedAsFight() {
 		return getBoolean(PLACED_AS_FIGHT);
+	}
+	public String getWeaponId() {
+		return getString(WEAPON_ID);
 	}
 	
 	// Charging
