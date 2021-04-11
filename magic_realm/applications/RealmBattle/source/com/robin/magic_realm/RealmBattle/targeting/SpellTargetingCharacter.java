@@ -18,7 +18,6 @@
 package com.robin.magic_realm.RealmBattle.targeting;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
@@ -37,9 +36,8 @@ public class SpellTargetingCharacter extends SpellTargetingSingle {
 	}
 
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
-		ArrayList allCharacters = combatFrame.findCanBeSeen(battleModel.getAllParticipatingCharacters(),true);
-		for (Iterator i=allCharacters.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		ArrayList<RealmComponent> allCharacters = combatFrame.findCanBeSeen(battleModel.getAllParticipatingCharactersAsRc(),true);
+		for (RealmComponent rc : allCharacters) {
 			CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
 			if (!lightOnly || !character.getVulnerability().strongerThan(new Strength("L"))) {
 				gameObjects.add(rc.getGameObject());

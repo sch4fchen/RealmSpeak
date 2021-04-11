@@ -373,6 +373,20 @@ public class BattleModel {
 	}
 
 	/**
+	 * @return			All characters in the battle (not owningCharacters!)
+	 */
+	public ArrayList<RealmComponent> getAllParticipatingCharactersAsRc() {
+		ArrayList<RealmComponent> ret = new ArrayList<>();
+		for (BattleGroup group:characterBattleGroups) {
+			RealmComponent rc = group.getCharacterInBattle();
+			if (rc!=null) {
+				ret.add(rc);
+			}
+		}
+		return ret;
+	}
+	
+	/**
 	 * Returns a Collection of all the battle groups in this model.
 	 */
 	public ArrayList<BattleGroup> getAllBattleGroups(boolean includeDenizens) {

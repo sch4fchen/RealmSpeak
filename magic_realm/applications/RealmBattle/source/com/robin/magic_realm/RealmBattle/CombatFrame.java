@@ -1875,7 +1875,7 @@ public class CombatFrame extends JFrame {
 	private void doChargeCharacter() {
 		boolean found = false;
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Charge Character",true);
-		for (RealmComponent rc:findCanBeSeen(currentBattleModel.getAllParticipatingCharacters(),false)) {
+		for (RealmComponent rc:findCanBeSeen(currentBattleModel.getAllParticipatingCharactersAsRc(),false)) {
 			if (!rc.isHorse() && !rc.equals(activeParticipant)) {
 				chooser.addRealmComponent(rc);
 				found = true;
@@ -2000,10 +2000,10 @@ public class CombatFrame extends JFrame {
 		}
 	}
 	protected void assignTarget() {
-		ArrayList list = getSelectedCombatSheetParticipants();
+		ArrayList<RealmComponent> list = getSelectedCombatSheetParticipants();
 		assignTarget(list);
 	}
-	protected RealmComponent assignTarget(Collection list) {
+	protected RealmComponent assignTarget(Collection<RealmComponent> list) {
 		return assignTarget(activeParticipant,list);
 	}
 	public boolean canBeSeen(RealmComponent rc,boolean magicAttack) {
@@ -2013,10 +2013,9 @@ public class CombatFrame extends JFrame {
 	/**
 	 * @return			The list of RealmComponents that can be seen by the activeCharacter.
 	 */
-	public ArrayList<RealmComponent> findCanBeSeen(Collection list,boolean magicAttack) {
-		ArrayList<RealmComponent> ret = new ArrayList<RealmComponent>();
-		for (Iterator i=list.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+	public ArrayList<RealmComponent> findCanBeSeen(Collection<RealmComponent> list,boolean magicAttack) {
+		ArrayList<RealmComponent> ret = new ArrayList<>();
+		for (RealmComponent rc : list) {
 			// Make sure participant is "visible" to attacker
 			if (canBeSeen(rc,magicAttack)) {
 				ret.add(rc);
@@ -2030,7 +2029,7 @@ public class CombatFrame extends JFrame {
 		}
 		return ret;
 	}
-	protected RealmComponent assignTarget(RealmComponent attacker,Collection list) {
+	protected RealmComponent assignTarget(RealmComponent attacker,Collection<RealmComponent> list) {
 		if (list!=null && list.size()>0) {
 			ArrayList<RealmComponent> visibleList = findCanBeSeen(list,false);
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select a Target:",true);

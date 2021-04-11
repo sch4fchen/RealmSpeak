@@ -18,7 +18,6 @@
 package com.robin.magic_realm.RealmBattle.targeting;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
@@ -45,11 +44,10 @@ public class SpellTargetingDemon extends SpellTargetingSpecial {
 	}
 
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
-		ArrayList allDenizens = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true);
-		ArrayList allParticipantsSansDenizens = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(false),true);
+		ArrayList<RealmComponent> allDenizens = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true);
+		ArrayList<RealmComponent> allParticipantsSansDenizens = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(false),true);
 		allDenizens.removeAll(allParticipantsSansDenizens);
-		for (Iterator i=allDenizens.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : allDenizens) {
 			if (rc.isMonster()) {
 				String icon = rc.getGameObject().getAttribute(rc.getThisBlock(),"icon_type");
 				if (icon.startsWith("demon")) {
@@ -72,7 +70,7 @@ public class SpellTargetingDemon extends SpellTargetingSpecial {
 		
 		// Pick a Player
 		GamePool pool = new GamePool(RealmObjectMaster.getRealmObjectMaster(battleModel.getGameData()).getPlayerCharacterObjects());
-		ArrayList<String> playerNames = new ArrayList<String>();
+		ArrayList<String> playerNames = new ArrayList<>();
 		ArrayList<GameObject> list = pool.find(CharacterWrapper.NAME_KEY);
 		for (GameObject go:list) {
 			CharacterWrapper character = new CharacterWrapper(go);
