@@ -119,7 +119,7 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 	}
 	
 	private void updateSelection() {
-		ArrayList list = new ArrayList();
+		ArrayList<String> list = new ArrayList<>();
 		if (immunitySelected()) {
 			list = getAttributeList(Constants.MONSTER_IMMUNITY);
 		}
@@ -128,8 +128,7 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 		}
 		
 		if (list!=null) {
-			for (Iterator i=list.iterator();i.hasNext();) {
-				String name = (String)i.next();
+			for (String name : list) {
 				JCheckBox option = hash.get(name);
 				if (option!=null) {
 					option.setSelected(true);
@@ -151,7 +150,7 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 	}
 
 	protected void applyAdvantage() {
-		ArrayList list = new ArrayList();
+		ArrayList<String> list = new ArrayList<>();
 		for (String name:hash.keySet()) {
 			JCheckBox option = hash.get(name);
 			if (option.isSelected()) {
@@ -179,7 +178,7 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 			sb.append("Is immune to the ");
 		}
 		else if (controlSelected()) {
-			sb.append("Can control the ");
+			sb.append("Can command the ");
 		}
 		StringBufferedList list = new StringBufferedList(", ","and ");
 		for (String name:hash.keySet()) {
