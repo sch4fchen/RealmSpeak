@@ -78,8 +78,7 @@ public class Loot extends RealmTable {
 		// Other characters in the clearing discover the treasureLocation when being looted (if found hidden enemies)
 		if (tileLocation==null) {
 			ClearingDetail current = character.getCurrentLocation().clearing;
-			for (Iterator i=current.getClearingComponents().iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : current.getClearingComponents()) {
 				if (rc.canSpy() && !rc.getGameObject().equals(character.getGameObject())) {
 					CharacterWrapper spy = new CharacterWrapper(rc.getGameObject());
 					if (!character.isHidden() || spy.foundHiddenEnemy(character.getGameObject())) {
@@ -154,7 +153,7 @@ public class Loot extends RealmTable {
 
 	protected String doLoot(CharacterWrapper character, int treasureNumber) {
 		ClearingDetail currentClearing = character.getCurrentLocation().clearing;
-		Collection treasures;
+		Collection<GameObject> treasures;
 		if (tileLocation==null) {
 			if (treasureLocation.hasThisAttribute(RealmComponent.CACHE_CHIT)) {
 				// This is a special case, where the person is looting someone's CACHE.  The first item in the
@@ -286,7 +285,7 @@ public class Loot extends RealmTable {
 
 		if (!thing.hasThisAttribute(Constants.NEEDS_OPEN)) {
 			// If doesn't need to be opened, or is already opened, then handle special attributes before adding
-			handleSpecial(character,currentClearing,thing,true);
+			handleSpecial(character,thing,true);
 		}
 		else {
 			// If the treasure is not "open", then just add the treasure directly
@@ -411,18 +410,15 @@ public class Loot extends RealmTable {
 	/**
 	 * This should be called upon receiving an item, or opening an item (like the chest) for the first time.
 	 */
-	public void handleSpecial(CharacterWrapper character, ClearingDetail currentClearing, GameObject thing,boolean addByDefault) {
+	public void handleSpecial(CharacterWrapper character, GameObject thing,boolean addByDefault) {
 		if (thing.hasThisAttribute("curse")) {
 			setNewTable(new Curse(getParentFrame(), character.getGameObject()));
 		}
 		if (thing.hasThisAttribute("add_to_pile")) {
 			// Add everything to pile
-			ArrayList list = new ArrayList(thing.getHold());
-			Collections.sort(list,new Comparator() { // sort by pile position (if any)
-				public int compare(Object o1,Object o2) {
-					GameObject go1 = (GameObject)o1;
-					GameObject go2 = (GameObject)o2;
-					
+			ArrayList<GameObject> list = new ArrayList<GameObject>(thing.getHold());
+			Collections.sort(list,new Comparator<GameObject>() { // sort by pile position (if any)
+				public int compare(GameObject go1,GameObject go2) {				
 					int pos1 = go1.getThisInt("pile_position");
 					int pos2 = go2.getThisInt("pile_position");
 					
@@ -432,10 +428,9 @@ public class Loot extends RealmTable {
 			
 			int listCount = list.size();
 			
-			ArrayList pile = new ArrayList(treasureLocation.getHold());
+			ArrayList<GameObject> pile = new ArrayList<GameObject>(treasureLocation.getHold());
 			pile.addAll(0,list);
-			for (Iterator i=pile.iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
+			for (GameObject go : pile) {
 				treasureLocation.add(go);
 			}
 			JOptionPane.showMessageDialog(getParentFrame(),listCount+" treasure"+(listCount==1?"":"s")+" added to the "+treasureLocation.getName()+" pile.","New Treasures",JOptionPane.INFORMATION_MESSAGE);
@@ -448,10 +443,9 @@ public class Loot extends RealmTable {
 		if (thing.hasThisAttribute(Constants.NO_LOOT)) {
 			// Gain all treasures immediately
 			RealmComponentDisplayDialog dialog = new RealmComponentDisplayDialog(getParentFrame(),"Found "+thing.getName(),"The "+thing.getName()+" contained the following items:");
-			ArrayList inside = new ArrayList(thing.getHold());
-			ArrayList<GameObject> gain = new ArrayList<GameObject>();
-			for (Iterator i=inside.iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
+			ArrayList<GameObject> inside = new ArrayList<GameObject>(thing.getHold());
+			ArrayList<GameObject> gain = new ArrayList<>();
+			for (GameObject go : inside) {
 				RealmComponent goRc = RealmComponent.getRealmComponent(go);
 				dialog.addRealmComponent(goRc);
 				if (goRc.isCard()) {
@@ -491,7 +485,7 @@ public class Loot extends RealmTable {
 	}
 	@Override
 	protected ArrayList<ImageIcon> getHintIcons(CharacterWrapper character) {
-		ArrayList<ImageIcon> list = new ArrayList<ImageIcon>();
+		ArrayList<ImageIcon> list = new ArrayList<>();
 		list.add(getIconForSearch(RealmComponent.getRealmComponent(treasureLocation)));
 		return list;
 	}

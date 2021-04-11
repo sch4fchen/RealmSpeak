@@ -37,6 +37,7 @@ public class DieModEditPanel extends AdvantageEditPanel {
 		{"Spells","Curse","PoP:powerofthepit","Wish","Transform"},
 		{"Natives","Commerce","Meeting"},
 		{"Search","Locate","Loot","Magic Sight:magicsight","Peer","Read Runes:readrunes"},
+		{"Treasure within Treasure","Toadstool Circle","Crypt of the Knight","Enchanted Meadow"},
 		{"Expansion","Raise Dead:raisedead","Summon Elemental:summonelemental","Summon Animal:summonanimal","Capture"},
 	};
 	

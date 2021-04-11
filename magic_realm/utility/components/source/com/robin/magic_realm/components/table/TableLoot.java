@@ -65,34 +65,26 @@ public class TableLoot extends Loot {
 		return "Loot the " + treasureLocation.getName()
 				+ (longDescription?("\n(" + treasureLocation.getHoldCount() + " left)"):"");
 	}
-//	public String getTableKey() { // This would be nice, but is a problem for anything that aids "LOOT" in general.
-//		String tlKey = treasureLocation.getThisAttribute("treasure_location");
-//		return tlKey==null?super.getTableKey():tlKey;
-//	}
-//public String apply(CharacterWrapper character,DieRoller roller) {
-//	System.err.println("DEBUG _ REMOVE THIS LINE TableLoot.apply");
-//	return applyThree(character);
-//}
+	
+	public String getTableKey() {
+		return "Loot"+","+treasureLocation.getName();
+	}
+	
 	public String applyOne(CharacterWrapper character) {
 		return applyFromTable(character,"roll_1");
 	}
-
 	public String applyTwo(CharacterWrapper character) {
 		return applyFromTable(character,"roll_2");
 	}
-
 	public String applyThree(CharacterWrapper character) {
 		return applyFromTable(character,"roll_3");
 	}
-
 	public String applyFour(CharacterWrapper character) {
 		return applyFromTable(character,"roll_4");
 	}
-
 	public String applyFive(CharacterWrapper character) {
 		return applyFromTable(character,"roll_5");
 	}
-
 	public String applySix(CharacterWrapper character) {
 		return applyFromTable(character,"roll_6");
 	}

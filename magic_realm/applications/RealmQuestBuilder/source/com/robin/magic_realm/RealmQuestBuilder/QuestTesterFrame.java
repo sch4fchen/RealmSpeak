@@ -1546,7 +1546,7 @@ public class QuestTesterFrame extends JFrame {
 			params.objectList = stuff;
 			for (GameObject thing : stuff) {
 				Loot loot = new Loot(this, character, rc.getGameObject(), null);
-				loot.handleSpecial(character, character.getCurrentLocation().clearing, thing, true);
+				loot.handleSpecial(character, thing, true);
 				//Loot.addItemToCharacter(this,null,character,thing);
 			}
 		}

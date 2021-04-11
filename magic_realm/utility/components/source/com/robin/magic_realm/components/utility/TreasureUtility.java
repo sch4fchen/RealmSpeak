@@ -292,7 +292,7 @@ public class TreasureUtility {
 				character.setExtraWounds(4);
 			}
 			else if (thing.hasThisAttribute(Constants.CONVERT_CHITS)) {
-				if (!doConvertChitsToNew(parentFrame,character,thing)) {
+				if (!doConvertChitsToNew(character,thing)) {
 					return false;
 				}
 			}
@@ -433,7 +433,7 @@ public class TreasureUtility {
 		return true;
 	}
 	
-	private static boolean doConvertChitsToNew(JFrame parentFrame,CharacterWrapper character,GameObject thing){
+	private static boolean doConvertChitsToNew(CharacterWrapper character,GameObject thing){
 		ArrayList<String> chitBlocks = thing.getThisAttributeList(Constants.CONVERT_CHITS);
 		int count = chitBlocks.size();
 		RealmObjectChooser chooser = new RealmObjectChooser("Select "+count+" chit"+(count==1?"":"s")+" to convert:",thing.getGameData(),false,false);
@@ -939,7 +939,7 @@ public class TreasureUtility {
 				JOptionPane.showMessageDialog(frame,"You opened the "+toOpen.getName()+".","Opened "+toOpen.getName(),JOptionPane.INFORMATION_MESSAGE);
 				
 				Loot loot = new Loot(frame,listener);
-				loot.handleSpecial(character,null,toOpen,false);
+				loot.handleSpecial(character,toOpen,false);
 				
 				QuestRequirementParams qr = new QuestRequirementParams();
 				qr.actionType = CharacterActionType.Open;

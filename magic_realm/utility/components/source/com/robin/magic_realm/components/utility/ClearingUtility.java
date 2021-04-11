@@ -129,7 +129,7 @@ public class ClearingUtility {
 		return added;
 	}
 
-	public static Collection getAbandonedItems(TileLocation tileLocation) {
+	public static Collection<GameObject> getAbandonedItems(TileLocation tileLocation) {
 		ArrayList<GameObject> list = new ArrayList<>();
 		Collection<RealmComponent> stuff = tileLocation.clearing.getClearingComponents();
 		for (RealmComponent rc : stuff) {

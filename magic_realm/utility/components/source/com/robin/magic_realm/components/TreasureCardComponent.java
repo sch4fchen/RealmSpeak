@@ -64,7 +64,7 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 			
 			// Draw spots first (text can overwrite without harm)
 			
-			String tSize = (String)gameObject.getAttribute("this","treasure");
+			String tSize = gameObject.getAttribute("this","treasure");
 			boolean large = tSize.equals("large");
 			boolean great = gameObject.hasKey("great");
 			
@@ -113,7 +113,7 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 			}
 			else {			
 				// Draw the description
-				String desc = (String)gameObject.getAttribute("this","text");
+				String desc = gameObject.getAttribute("this","text");
 				if (desc!=null) {
 					tt = new TextType(desc,PRINT_WIDTH,"NORMAL");
 					tt.draw(g,PRINT_MARGIN,pos,Alignment.Center);
@@ -135,7 +135,7 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 				}
 				
 				// Draw TWT designation
-				String twt = (String)gameObject.getAttribute("this","treasure_within_treasure");
+				String twt = gameObject.getAttribute("this","treasure_within_treasure");
 				if (twt!=null) {
 					tt = new TextType("P"+twt,PRINT_WIDTH,"TITLE_RED");
 					tt.draw(g,PRINT_MARGIN,CARD_HEIGHT - 50,Alignment.Center);
@@ -143,14 +143,14 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 				}
 				
 				// Draw magic
-				String magic = (String)gameObject.getThisAttribute("magic");
+				String magic = gameObject.getThisAttribute("magic");
 				if (magic!=null) {
 					ArrayList<String> tiedMagic = readTiedMagicTypes(getGameObject());
-					ArrayList enchantedMagic = gameObject.getThisAttributeList(Constants.ARTIFACT_ENHANCED_MAGIC);
-					ArrayList<String> finalList = new ArrayList<String>();
+					ArrayList<String> enchantedMagic = gameObject.getThisAttributeList(Constants.ARTIFACT_ENHANCED_MAGIC);
+					ArrayList<String> finalList = new ArrayList<>();
 					finalList.add(magic);
 					if (enchantedMagic!=null) {
-						TreeSet unique = new TreeSet();
+						TreeSet<String> unique = new TreeSet<>();
 						unique.addAll(enchantedMagic);
 						finalList.addAll(unique);
 					}
@@ -192,20 +192,20 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 					tt.draw(g,PRINT_MARGIN+5,pos,Alignment.Left);
 					
 					// Gold
-					String gold = (String)gameObject.getThisAttribute("base_price");
+					String gold = gameObject.getThisAttribute("base_price");
 					gold = gold==null?"0":gold;
 					tt = new TextType(gold,PRINT_WIDTH,"BOLD");
 					tt.draw(g,CARD_WIDTH-PRINT_MARGIN-5-tt.getWidth(g),pos,Alignment.Left);
 					
 					// Notoriety
-					String notoriety = (String)gameObject.getThisAttribute("notoriety");
+					String notoriety = gameObject.getThisAttribute("notoriety");
 					notoriety = notoriety==null?"":("N: "+notoriety);
 					tt = new TextType(notoriety,PRINT_WIDTH,"NORMAL");
 					tt.draw(g,PRINT_MARGIN,pos,Alignment.Center);
 					
 					// Fame
-					String fame = (String)gameObject.getThisAttribute("fame");
-					String nativeCode = (String)gameObject.getThisAttribute("native");
+					String fame = gameObject.getThisAttribute("fame");
+					String nativeCode = gameObject.getThisAttribute("native");
 					if (nativeCode==null) {
 						fame = fame==null?"":("FAME: "+fame);
 					}
@@ -318,7 +318,7 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 		return getAllMagicNumbers(5);
 	}
 	public ArrayList<Integer> getAllMagicNumbers(int maximum) {
-		ArrayList<Integer> list = new ArrayList<Integer>();
+		ArrayList<Integer> list = new ArrayList<>();
 		
 		ArrayList<String> types = readAvailableMagicTypes(null,getGameObject());
 		for(String type:types) {
@@ -354,20 +354,20 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 	}
 	
 	private static ArrayList<String> readTiedMagicTypes(GameObject treasure) {
-		ArrayList<String> magicTypes = new ArrayList<String>();
+		ArrayList<String> magicTypes = new ArrayList<>();
 		
 		// for backward compatibility
 		Object test = treasure.getThisAttributeBlock().get(SpellWrapper.INCANTATION_TIE); 
 		if (test instanceof String) {
 			SpellWrapper spell = new SpellWrapper(treasure.getGameObjectFromThisAttribute(SpellWrapper.INCANTATION_TIE));
-			ArrayList newList = new ArrayList();
+			ArrayList<String> newList = new ArrayList<>();
 			newList.add(spell.getCastMagicType());
 			treasure.removeThisAttribute(SpellWrapper.INCANTATION_TIE);
 			treasure.setThisAttributeList(SpellWrapper.INCANTATION_TIE,newList);
 		}
 		
 		// Ok, back to normal now
-		ArrayList list = treasure.getThisAttributeList(SpellWrapper.INCANTATION_TIE);
+		ArrayList<String> list = treasure.getThisAttributeList(SpellWrapper.INCANTATION_TIE);
 		if (list!=null) {
 			magicTypes.addAll(list);
 		}
@@ -375,7 +375,7 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 	}
 
 	public static ArrayList<String> readAvailableMagicTypes(String dayKey,GameObject treasure) {
-		ArrayList<String> possMagicTypes = new ArrayList<String>();
+		ArrayList<String> possMagicTypes = new ArrayList<>();
 		
 		String magic = treasure.getThisAttribute("magic");
 		if (magic!=null) {
@@ -383,10 +383,9 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 		}
 		
 		// Include any enchantments
-		ArrayList enchants = treasure.getThisAttributeList(Constants.ARTIFACT_ENHANCED_MAGIC);
+		ArrayList<String> enchants = treasure.getThisAttributeList(Constants.ARTIFACT_ENHANCED_MAGIC);
 		if (enchants!=null) {
-			for (Iterator i=enchants.iterator();i.hasNext();) {
-				String enchant = (String)i.next();
+			for (String enchant : enchants) {
 				if (!possMagicTypes.contains(enchant)) {
 					possMagicTypes.add(enchant);
 				}
@@ -396,10 +395,9 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 		// Figure out which magic types have already been used on this artifact today and remove them from possibilities
 		String usedKey = treasure.getThisAttribute(Constants.USED_SPELL);
 		if (usedKey!=null && usedKey.equals(dayKey)) {
-			ArrayList list = treasure.getThisAttributeList(Constants.USED_MAGIC_TYPE_LIST);
+			ArrayList<String> list = treasure.getThisAttributeList(Constants.USED_MAGIC_TYPE_LIST);
 			if (list!=null) {
-				for (Iterator n=list.iterator();n.hasNext();) {
-					String chitType = (String)n.next();
+				for (String chitType : list) {
 					possMagicTypes.remove(chitType);
 				}
 			}

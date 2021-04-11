@@ -99,24 +99,21 @@ public class DieRollBuilder {
 			mod += ClearingUtility.getClearingDieMod(tl);
 		}
 		
-		for (Iterator i=objectsToTest.iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
-			
-			ArrayList list = null;
+		for (GameObject go : objectsToTest) {			
+			ArrayList<String> list = null;
 			if (go.hasThisAttribute(Constants.DIEMOD)) {
-				list = new ArrayList(go.getThisAttributeList(Constants.DIEMOD));
+				list = new ArrayList<>(go.getThisAttributeList(Constants.DIEMOD));
 			}
 			if (go.hasAttribute(Constants.OPTIONAL_BLOCK,Constants.DIEMOD)) {
 				if (list==null) {
-					list = new ArrayList();
+					list = new ArrayList<>();
 				}
 				list.addAll(go.getAttributeList(Constants.OPTIONAL_BLOCK,Constants.DIEMOD));
 			}
 			
 			if (list!=null) {
 				String boardNumber = RealmUtility.updateNameToBoard(go,"");
-				for (Iterator n=list.iterator();n.hasNext();) {
-					String rule = (String)n.next();
+				for (String rule : list) {
 					rule = StringUtilities.findAndReplace(rule,Constants.BOARD_NUMBER_REPLACE_PATTERN,boardNumber);
 					DieRule dieRule = new DieRule(tl,rule);
 					if (dieRule.conditionsMet(key,chitDescriptionList)) {
