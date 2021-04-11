@@ -784,35 +784,11 @@ public class BattleModel {
 	private static void handleSortTies(ArrayList<BattleChit>battleChits, ArrayList<String> attackBlockOrder, HashLists<String, BattleChit> attackBlocks) {
 		for (BattleChit battleChit : battleChits) {
 			String key = null;
-			if (battleChit.isCharacter()) {
-				CharacterChitComponent characterChit = (CharacterChitComponent) battleChit;
-				int weaponNumber = 0;
-				if (characterChit.getActiveWeaponsObjects() != null && !characterChit.getActiveWeaponsObjects().isEmpty()) {
-					for (GameObject weapon : characterChit.getActiveWeaponsObjects()) {
-						if (!CombatWrapper.hasCombatInfo(weapon)) continue;
-						key = characterChit.getLengthForWeapon(weaponNumber)+":"+characterChit.getAttackSpeedForWeapon(weaponNumber).getNum();
-						if (!attackBlockOrder.contains(key)) {
-							attackBlockOrder.add(key);
-						}
-						attackBlocks.put(key,battleChit);
-						weaponNumber++;
-					}
-				}
-				else { //dagger
-					key = "0:"+characterChit.getAttackSpeed().getNum();
-					if (!attackBlockOrder.contains(key)) {
-						attackBlockOrder.add(key);
-					}
-					attackBlocks.put(key,battleChit);
-				}
+			key = battleChit.getLength()+":"+battleChit.getAttackSpeed().getNum();
+			if (!attackBlockOrder.contains(key)) {
+				attackBlockOrder.add(key);
 			}
-			else {
-				key = battleChit.getLength()+":"+battleChit.getAttackSpeed().getNum();
-				if (!attackBlockOrder.contains(key)) {
-					attackBlockOrder.add(key);
-				}
-				attackBlocks.put(key,battleChit);
-			}
+			attackBlocks.put(key,battleChit);
 		}
 	}
 

@@ -214,33 +214,31 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		RealmComponent rc2 = get2ndTarget();
 		return ((rc != null && rc.equals((RealmComponent)chit)) || (rc2 != null && rc2.equals((RealmComponent)chit)));
 	}
-
-	public Integer getLength() {
-		return getLengthForWeapon(0);
-	}
 	
-	public Integer getLengthForWeapon(int weaponNumber) {
+	public Integer getLength() {
 		MonsterChitComponent transmorph = getTransmorphedComponent();
 		if (transmorph==null) {
 			int length = 0; // default length (dagger)
 			// Derive this from the weapon used.
 			CharacterWrapper character = new CharacterWrapper(getGameObject());
 			boolean hasWeapon = false;
-			//DUAL
 			ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
-			if (weapons != null && weapons.size()>weaponNumber) {
-				WeaponChitComponent weapon = weapons.get(weaponNumber);
-				if (weapon != null) {
-					CombatWrapper wCombat = new CombatWrapper(weapon.getGameObject());
-					if (wCombat.getCombatBox()>0) {
-						hasWeapon = true;
-						length = weapon.getLength();
+			RealmComponent rc = getAttackChit();
+			CombatWrapper combatChit = new CombatWrapper(rc.getGameObject());
+			if (weapons != null) {
+				for (WeaponChitComponent weapon : weapons) {
+					if (combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
+						CombatWrapper wCombat = new CombatWrapper(weapon.getGameObject());
+						if (wCombat.getCombatBox()>0) {
+							hasWeapon = true;
+							length = weapon.getLength();
+						}
 					}
 				}
 			}
 			if (!hasWeapon) {
 				GameObject tw = getTreasureWeaponObject();
-				if (tw!=null) {
+				if (tw!=null && combatChit.getWeaponId() == tw.getStringId()) {
 					length = tw.getThisInt("length");
 				}
 			}
@@ -333,28 +331,24 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	 * @return The speed of the character's attack, which might be "stopped" if none was played
 	 */
 	public Speed getAttackSpeed() {
-		return getAttackSpeedForWeapon(0);
-	}
-	
-	public Speed getAttackSpeedForWeapon(int weaponNumber) {
 		// Find the character's attack for this round
 		Speed speed = new Speed();
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
 		RealmComponent rc = getAttackChit();
 		if (rc != null) {
 			speed = BattleUtility.getFightSpeed(rc);
-
 			// Weapon speed overrides anything else
-			//DUAL
 			ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
-			if (weapons != null && weapons.size()>weaponNumber) {
-				WeaponChitComponent weapon = weapons.get(weaponNumber);
-				if (weapon != null) {
-					CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
-					if (combat.getCombatBox() > 0) { // only if it was played!
-						Speed weaponSpeed = weapon.getSpeed();
-						if (weaponSpeed != null) {
-							speed = weaponSpeed;
+			if (weapons != null) {
+				CombatWrapper combatChit = new CombatWrapper(rc.getGameObject());
+				for (WeaponChitComponent weapon : weapons) {
+					if (combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
+						CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
+						if (combat.getCombatBox() > 0) { // only if it was played!
+							Speed weaponSpeed = weapon.getSpeed();
+							if (weaponSpeed != null) {
+								speed = weaponSpeed;
+							}
 						}
 					}
 				}
@@ -370,14 +364,11 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
 		ArrayList<GameObject> weaponsGameObjects = new ArrayList<>();
 		ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
-		if (weapons==null || weapons.isEmpty()) {
-			if (getTreasureWeaponObject() != null) {
-				weaponsGameObjects.add(getTreasureWeaponObject());
-			}
-			return weaponsGameObjects;
-		}
 		for (WeaponChitComponent weapon : weapons) {
 			weaponsGameObjects.add(weapon.getGameObject());
+		}
+		if (getTreasureWeaponObject() != null) {
+			weaponsGameObjects.add(getTreasureWeaponObject());
 		}
 		return weaponsGameObjects;
 	}
@@ -416,27 +407,27 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			boolean hasWeapon = false;
 			boolean missileWeapon = false;
 			Harm baseHarm = getHarmForRealmComponent(rc); // harm from the attack (ignoring the weapon)
-			//DUAL
+			CombatWrapper combatChit = new CombatWrapper(rc.getGameObject());
 			ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
-			if (weapons != null  && !weapons.isEmpty()) {
-				WeaponChitComponent weapon = weapons.get(0);
-				if (weapon != null) {
-					if (weapon.getGameObject().hasThisAttribute(Constants.IGNORE_ARMOR)) {
-						ignoreArmor = true;
+			if (weapons != null) {
+				for (WeaponChitComponent weapon : weapons) {
+					if (combatChit.getWeaponId().equals(weapon.getGameObject().getStringId()))
+						if (weapon.getGameObject().hasThisAttribute(Constants.IGNORE_ARMOR)) {
+							ignoreArmor = true;
+						}
+						CombatWrapper wCombat = new CombatWrapper(weapon.getGameObject());
+						if (wCombat.getCombatBox()>0) {
+							hasWeapon = true;
+							missileWeapon = weapon.isMissile();
+							weaponStrength = weapon.getStrength();
+							sharpness = weapon.getSharpness();
+						}
 					}
-					CombatWrapper wCombat = new CombatWrapper(weapon.getGameObject());
-					if (wCombat.getCombatBox()>0) {
-						hasWeapon = true;
-						missileWeapon = weapon.isMissile();
-						weaponStrength = weapon.getStrength();
-						sharpness = weapon.getSharpness();
-					}
-				}
 			}
 			if (!hasWeapon) {
 				// Check for treasure weapons
 				GameObject tw = getTreasureWeaponObject();
-				if (tw!=null) {
+				if (tw!=null && combatChit.getWeaponId() == tw.getStringId()) {
 					if (tw.hasThisAttribute(Constants.IGNORE_ARMOR)) {
 						ignoreArmor = true;
 					}
@@ -856,16 +847,18 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
 		GameObject transmorph = character.getTransmorph();
 		if (transmorph == null) { // Character must not be transmorphed!
-			//DUAL
 			ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
-			if (weapons != null && !weapons.isEmpty()) {
-				WeaponChitComponent weapon = weapons.get(0);
-				if (weapon != null) {
-					return weapon.isMissile();
+			RealmComponent rc = getAttackChit();
+			CombatWrapper combatChit = new CombatWrapper(rc.getGameObject());
+			if (weapons != null) {
+				for (WeaponChitComponent weapon : weapons) {
+					if (weapon != null && combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
+						return weapon.isMissile();
+					}
 				}
 			}
 			GameObject tw = getTreasureWeaponObject();
-			if (tw!=null) {
+			if (tw!=null && combatChit.getWeaponId() == tw.getStringId()) {
 				return tw.hasThisAttribute("missile");
 			}
 		}
@@ -876,13 +869,17 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
 		GameObject transmorph = character.getTransmorph();
 		if (transmorph == null) { // Character must not be transmorphed!
-			//DUAL
 			ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
-			if (weapons == null || weapons.isEmpty()) {
-				GameObject tw = getTreasureWeaponObject();
-				if (tw!=null) {
-					return tw.getThisAttribute("missile");
+			RealmComponent rc = getAttackChit();
+			CombatWrapper combatChit = new CombatWrapper(rc.getGameObject());
+			for (WeaponChitComponent weapon : weapons) {
+				if (weapon != null && combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
+					return weapon.getGameObject().getThisAttribute("missile");
 				}
+			}
+			GameObject tw = getTreasureWeaponObject();
+			if (tw!=null && combatChit.getWeaponId() == tw.getStringId()) {
+				return tw.getThisAttribute("missile");
 			}
 		}
 		return "";
@@ -906,12 +903,23 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	}
 	public boolean hitsOnTie() {
 		boolean hitsOnTie = getGameObject().hasThisAttribute(Constants.HIT_TIE); // In case Ointment of Bite was applied to dagger
-		//DUAL
-		GameObject weapon = null;
-		if (!getActiveWeaponsObjects().isEmpty()) {
-			weapon = getActiveWeaponsObjects().get(0);
+		boolean weaponHitsOnTie = false;
+		ArrayList<GameObject> weapons = getActiveWeaponsObjects();
+		RealmComponent rc = getAttackChit();
+		CombatWrapper combatChit = new CombatWrapper(rc.getGameObject());
+		if (weapons != null) {
+			for (GameObject weapon : weapons) {
+				if (combatChit.getWeaponId().equals(weapon.getStringId())) {
+					CombatWrapper wCombat = new CombatWrapper(weapon);
+					if (wCombat.getCombatBox()>0) {
+						if (weapon.hasThisAttribute(Constants.HIT_TIE)) {
+							weaponHitsOnTie = true;
+						}
+					}
+				}
+			}
 		}
-		return hitsOnTie || (weapon!=null && weapon.hasThisAttribute(Constants.HIT_TIE));
+		return hitsOnTie || weaponHitsOnTie;
 	}
 	public void changeWeaponState(boolean hit) {
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
