@@ -246,7 +246,7 @@ public class TableLoot extends Loot {
 			// Clues in a chosen tile
 			ArrayList<GameObject> tiles = RealmObjectMaster.getRealmObjectMaster(data).getTileObjects();
 			RealmComponentOptionChooser chooseSearch = new RealmComponentOptionChooser(getParentFrame(),"Clues for which tile:",false);
-			Hashtable<String,GameObject> hash = new Hashtable<String,GameObject>();
+			Hashtable<String,GameObject> hash = new Hashtable<>();
 			for(GameObject tile:tiles) {
 				chooseSearch.addOption(chooseSearch.generateOption(),tile.getName());
 				hash.put(tile.getName(),tile);
@@ -255,10 +255,10 @@ public class TableLoot extends Loot {
 			chooseSearch.pack();
 			chooseSearch.setVisible(true);
 			
-			String selected = (String)chooseSearch.getSelectedText();
+			String selected = chooseSearch.getSelectedText();
 			GameObject tile = hash.get(selected);
 			String title = "Clues in a Chosen Tile - "+selected;
-			doClues(title,character,tile);
+			doClues(character,tile);
 			ret = title;
 			qp.searchType = SearchResultType.Clues;
 			qp.searchHadAnEffect = true;
@@ -269,7 +269,7 @@ public class TableLoot extends Loot {
 			int r = RandomNumber.getRandom(tiles.size());
 			GameObject tile = tiles.get(r);
 			String title = "Clues in a Random Tile - "+tile.getName();
-			doClues(title,character,tile);
+			doClues(character,tile);
 			ret = title;
 			qp.searchType = SearchResultType.Clues;
 			qp.searchHadAnEffect = true;
@@ -277,7 +277,7 @@ public class TableLoot extends Loot {
 		character.testQuestRequirements(getParentFrame(),qp);
 		return ret;
 	}
-	private void doClues(String title,CharacterWrapper character,GameObject go) {
+	private void doClues(CharacterWrapper character,GameObject go) {
 		TileComponent tile = (TileComponent)RealmComponent.getRealmComponent(go);
 		ClearingDetail clearing = tile.getClearings().get(0); // first real clearing is good enough
 		String note = ClearingUtility.showTileChits(getParentFrame(),character,clearing,"Clues at "+go.getName());
