@@ -2397,7 +2397,7 @@ public class CombatFrame extends JFrame {
 			return;
 		}
 		
-		Collection fightOptions = getAvailableFightOptions(box);
+		Collection<RealmComponent> fightOptions = getAvailableFightOptions(box);
 		RealmComponent weaponCard = null;
 		ArrayList<WeaponChitComponent> weapons = activeCharacter.getActiveWeapons();
 		
@@ -2429,8 +2429,7 @@ public class CombatFrame extends JFrame {
 		
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select Attack:",true);
 		int keyN = 0;
-		for (Iterator i=fightOptions.iterator();i.hasNext();) {
-			RealmComponent chit = (RealmComponent)i.next();
+		for (RealmComponent chit : fightOptions) {
 			CombatWrapper combat = new CombatWrapper(chit.getGameObject());
 			if(combat.getPlacedAsFight()) continue;
 					
@@ -2487,7 +2486,11 @@ public class CombatFrame extends JFrame {
 			CombatWrapper combat = new CombatWrapper(chit.getGameObject());
 			combat.setCombatBox(box);
 			combat.setPlacedAsFight(true);
-			
+			if (chooser.getSelectedComponents().size()>= 2 ) {
+				RealmComponent weapon = chooser.getSelectedComponents().get(1);
+				combat.setWeaponId(weapon);
+			}
+
 			if (chit instanceof MonsterFightChitComponent) {
 				// Might need to place a monster part too!
 				MonsterChitComponent monster = (MonsterChitComponent)RealmComponent.getRealmComponent(chit.getGameObject());

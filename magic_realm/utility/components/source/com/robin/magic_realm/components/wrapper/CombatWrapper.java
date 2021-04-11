@@ -83,6 +83,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String HARM_APPLIED_ID = "HAID_";
 	private static final String HIT_TYPE = "HT_";
 	private static final String HIT_TYPE_ID = "HTID_";
+	private static final String WEAPON_ID = "WID_";
 	
 	private static final String HIT_BY_ORDER_NUMBER = "HIT_BY_ORDER_NUMBER";
 	
@@ -478,6 +479,9 @@ public class CombatWrapper extends GameObjectWrapper {
 	public void setPlacedAsFight(boolean val) {
 		setBoolean(PLACED_AS_FIGHT,val);
 	}
+	public void setWeaponId(RealmComponent weapon) {
+		addListItem(WEAPON_ID,weapon.getGameObject().getStringId());
+	}
 	public boolean getPlacedAsMove() {
 		return getBoolean(PLACED_AS_MOVE);
 	}
@@ -619,6 +623,7 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,HARM_APPLIED_ID);
 			go.removeAttribute(COMBAT_BLOCK,HIT_TYPE);
 			go.removeAttribute(COMBAT_BLOCK,HIT_TYPE_ID);
+			go.removeAttribute(COMBAT_BLOCK,WEAPON_ID);
 			
 			ArrayList<String> list = go.getAttributeList(COMBAT_BLOCK,RANDOMIZE_PREFICES);
 			if (list!=null) {
