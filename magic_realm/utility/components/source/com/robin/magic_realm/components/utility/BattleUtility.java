@@ -56,7 +56,7 @@ public class BattleUtility {
 	}
 
 	public static ArrayList<CharacterActionChitComponent> getPlayedChits(CharacterWrapper character) {
-		ArrayList<CharacterActionChitComponent> list = new ArrayList<CharacterActionChitComponent>();
+		ArrayList<CharacterActionChitComponent> list = new ArrayList<>();
 		CombatWrapper combat = new CombatWrapper(character.getGameObject());
 		for (GameObject go:combat.getUsedChits()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
@@ -130,10 +130,9 @@ public class BattleUtility {
 		return fightChits;
 	}
 
-	public static RealmComponent findMoveComponentWithCombatBox(Collection list,boolean includeHorse) {
+	public static RealmComponent findMoveComponentWithCombatBox(Collection<RealmComponent> list,boolean includeHorse) {
 		RealmComponent ret = null;
-		for (Iterator i=list.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : list) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 			if (combat.getCombatBox()>0 && (!rc.isActionChit() || combat.getPlacedAsMove())) {
 				if (!rc.isHorse() || includeHorse) {
@@ -179,7 +178,7 @@ public class BattleUtility {
 		// REWARDS
 		if (attacker.isCharacter() || attackerOwner!=null) { // Attacker is Character or Hireling
 			// Victim's inventory
-			Collection c = RealmUtility.findInventory(victim);
+			Collection<GameObject> c = RealmUtility.findInventory(victim);
 			if (!c.isEmpty() && victim.isPlayerControlledLeader()) {
 				if (attacker.isPlayerControlledLeader()) {
 					// Victim's stuff is taken by the attacker
@@ -188,8 +187,7 @@ public class BattleUtility {
 									"Gets inventory from the "
 									+victim.getGameObject().getName()
 									+":");
-					for (Iterator i=c.iterator();i.hasNext();) {
-						GameObject thing = (GameObject)i.next();
+					for (GameObject thing : c) {
 						RealmLogging.logMessage(attacker.getGameObject().getName(),"--> "+thing.getName());
 					}
 				}
