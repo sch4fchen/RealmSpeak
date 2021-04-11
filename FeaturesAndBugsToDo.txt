@@ -1,5 +1,5 @@
 Expansion 1: Two-Handed Combat + Ability: "Dual Wielding"
-BattleModel: doResolveAttacks -> doTargetAttack -> getAdjustedHarm, sortAccordingToRound, processHits
+BattleModel: doTargetAttack, collectBattleChits
 Check which weapon can hit which target, check speed, length and harm
 BUGs Dual Wielding:
 	Cannot Target character and denizen
