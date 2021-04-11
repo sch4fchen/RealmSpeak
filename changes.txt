@@ -3,9 +3,10 @@ QUEST UPDATE:
 # QuestRequirementProbability: Option to limit number of checks per day
 NEW FEATURES:
 # Option to change character chit style to Legendary style
+# Optional Rule: No general quests (AllPlay for QtR, Events for BoQ)
 # Optional Rule: Dual wielding (Expansion 1 variant)
 # New character ability: Dual wielding
-# Optional Rule: No general quests (AllPlay for QtR, Events for BoQ)
+# New character ability: No Ambush: Character gets unhidden when attacking from an ambush
 # Character Editor: Die modifiers: Add Transform spell
 BUGS/ISSUES:
 # Fix using wrong MountainPeerTable (1st/3rd edition)

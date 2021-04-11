@@ -17,7 +17,7 @@ Expansion 1: Parry + Ability: "ParryLikeShield":  Option: no missile attacks
 SuperRealm: Steel Against Magic
 
 Character Editor
-1) "Die Modifiers": Search tables: Add "Treasures within Treasures"
+1) "Die Modifiers": Search tables: Add "Treasures within Treasures" (e.g. Crypt of the Knight, Enchanted Meadow) 
 2) Ability: "Dragons cannot attack you. You cannot attack them nor loot the Hoard or Lair". Only current similar ability: "Immunity from Dragons" -> Ability: Cannot attack certain enemies. Ability: Cannot loot certain location.
 
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php

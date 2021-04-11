@@ -30,8 +30,9 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 	private static int COL_NAME = 0;
 	private static int COL_KEY = 1;
 	private static int COL_VAL = 2;
-	private static String[][] MISC_ADVANTAGE = {
+	private static String[][] MISC_ADVANTAGE_1 = {
 		{"Choose when to take your turn",Constants.CHOOSE_TURN,""},
+		{"No need to record your turn.",Constants.DAYTIME_ACTIONS,""},
 		{"Magic sight",Constants.MAGIC_SIGHT,""},
 		{"No monster summoning for sound/warning chits",Constants.PEACE_WITH_NATURE,""},
 		{"No monster summoning for treasure locations",Constants.DRUID_LULL,""},
@@ -44,18 +45,18 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"Extra Phase at Dwellings",Constants.EXTRA_DWELLING_PHASE,""},
 		{"Extra Phase in Caves",Constants.EXTRA_CAVE_PHASE,""},
 		{"Rest Counts Double",Constants.REST_DOUBLE,""},
-	};
-	private static String[][] NEW_MISC_ADVANTAGE = {
 		{"-1 Mountain MOVE Cost",Constants.MOUNTAIN_MOVE_ADJ,"-1"},
 		{"+1 Non-Cave MOVE Cost",Constants.NONCAVE_MOVE_DISADVANTAGE,""},
 		{"Effort Limit of 3",Constants.EFFORT_LIMIT,"3"},
+	};
+	private static String[][] MISC_ADVANTAGE_2 = {
 		{"FIGHT chits without a weapon do full harm",Constants.FIGHT_NO_WEAPON,""},
-		{"No need to record your turn.",Constants.DAYTIME_ACTIONS,""},
 		{"Can open CHEST, CRYPT, or VAULT without the Lost Keys.",Constants.PICKS_LOCKS,""},
 		{"Can walk woods on the 7th day of every week.",Constants.WALK_WOODS,"7th"},
 		{"Has natural armor (like armored monster).",Constants.ARMORED,""},
 		{"Suffer wounds instead of death when harm matches vulnerability.",Constants.TOUGHNESS,""},
 		{"A successful HIDE roll on missile attacks, allows to stay hidden.",Constants.SNEAKY,""},
+		{"Become unhidden when attacking from an ambush.",Constants.NO_AMBUSH,""},
 		{"Can activate a two-handed weapon and a shield.",Constants.STRONG,""},
 		{"Can use two weapons, one in each hand.",Constants.DUAL_WIELDING,""},
 		{"Can penetrate targets armor with missile weapons.",Constants.SHARPSHOOTER,""},
@@ -72,20 +73,20 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		super(pChar,levelKey);
 		
 		group = new ButtonGroup();
-		buttonList = new ArrayList<JRadioButton>();
+		buttonList = new ArrayList<>();
 		
 		setLayout(new GridLayout(1,2));
 		
 		String[] advKey = getAdvantageKey();
 		Box box1 = Box.createVerticalBox();
-		for (int i=0;i<MISC_ADVANTAGE.length;i++) {
-			addChoice(box1,MISC_ADVANTAGE[i],MISC_ADVANTAGE[i]==advKey);
+		for (int i=0;i<MISC_ADVANTAGE_1.length;i++) {
+			addChoice(box1,MISC_ADVANTAGE_1[i],MISC_ADVANTAGE_1[i]==advKey);
 		}
 		box1.add(Box.createVerticalGlue());
 		add(box1);
 		Box box2 = Box.createVerticalBox();
-		for (int i=0;i<NEW_MISC_ADVANTAGE.length;i++) {
-			addChoice(box2,NEW_MISC_ADVANTAGE[i],NEW_MISC_ADVANTAGE[i]==advKey);
+		for (int i=0;i<MISC_ADVANTAGE_2.length;i++) {
+			addChoice(box2,MISC_ADVANTAGE_2[i],MISC_ADVANTAGE_2[i]==advKey);
 		}
 		box2.add(Box.createVerticalGlue());
 		add(box2);
@@ -103,14 +104,14 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		box.add(button);
 	}
 	private String[] getAdvantageKey() {
-		for (int i=0;i<MISC_ADVANTAGE.length;i++) {
-			String[] adv = MISC_ADVANTAGE[i];
+		for (int i=0;i<MISC_ADVANTAGE_1.length;i++) {
+			String[] adv = MISC_ADVANTAGE_1[i];
 			if (hasAttribute(adv[COL_KEY])) {
 				return adv;
 			}
 		}
-		for (int i=0;i<NEW_MISC_ADVANTAGE.length;i++) {
-			String[] adv = NEW_MISC_ADVANTAGE[i];
+		for (int i=0;i<MISC_ADVANTAGE_2.length;i++) {
+			String[] adv = MISC_ADVANTAGE_2[i];
 			if (hasAttribute(adv[COL_KEY])) {
 				return adv;
 			}
@@ -121,30 +122,30 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		return getAdvantageKey()!=null;
 	}
 	protected void applyAdvantage() {
-		for (int i=0;i<MISC_ADVANTAGE.length;i++) {
+		for (int i=0;i<MISC_ADVANTAGE_1.length;i++) {
 			JRadioButton button = buttonList.get(i);
 			if (button.isSelected()) {
-				setAttribute(MISC_ADVANTAGE[i][COL_KEY],MISC_ADVANTAGE[i][COL_VAL]);
+				setAttribute(MISC_ADVANTAGE_1[i][COL_KEY],MISC_ADVANTAGE_1[i][COL_VAL]);
 				return;
 			}
 		}
-		for (int i=0;i<NEW_MISC_ADVANTAGE.length;i++) {
-			JRadioButton button = buttonList.get(i+MISC_ADVANTAGE.length);
+		for (int i=0;i<MISC_ADVANTAGE_2.length;i++) {
+			JRadioButton button = buttonList.get(i+MISC_ADVANTAGE_2.length);
 			if (button.isSelected()) {
-				setAttribute(NEW_MISC_ADVANTAGE[i][COL_KEY],NEW_MISC_ADVANTAGE[i][COL_VAL]);
+				setAttribute(MISC_ADVANTAGE_2[i][COL_KEY],MISC_ADVANTAGE_2[i][COL_VAL]);
 				return;
 			}
 		}
 	}
 	public String getSuggestedDescription() {
-		for (int i=0;i<MISC_ADVANTAGE.length;i++) {
+		for (int i=0;i<MISC_ADVANTAGE_1.length;i++) {
 			JRadioButton button = buttonList.get(i);
 			if (button.isSelected()) {
 				return button.getText();
 			}
 		}
-		for (int i=0;i<NEW_MISC_ADVANTAGE.length;i++) {
-			JRadioButton button = buttonList.get(i+MISC_ADVANTAGE.length);
+		for (int i=0;i<MISC_ADVANTAGE_2.length;i++) {
+			JRadioButton button = buttonList.get(i+MISC_ADVANTAGE_2.length);
 			if (button.isSelected()) {
 				return button.getText();
 			}
