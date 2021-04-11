@@ -8,7 +8,7 @@ NEW FEATURES:
 # New character ability: Dual wielding
 # New character ability: No Ambush: Character gets unhidden when attacking from an ambush
 # Character Editor: Die modifiers: Add Transform spell
-# Character Editor: Die modifiers: Add Treasure within treasures
+# Character Editor: Die modifiers: Add Treasures within Treasure
 BUGS/ISSUES:
 # Fix using wrong MountainPeerTable (1st/3rd edition)
 # Fix game not working after character left the map
