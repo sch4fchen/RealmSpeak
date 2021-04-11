@@ -566,7 +566,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	}
 	public ArrayList<GameObject> getAttackers() {
 		GameData data = getGameObject().getGameData();
-		ArrayList<GameObject> list = new ArrayList<GameObject>();
+		ArrayList<GameObject> list = new ArrayList<>();
 		ArrayList<String> ids = getList(ATTACKER_IDS);
 		if (ids!=null) {
 			for (String id : ids) {

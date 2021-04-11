@@ -789,19 +789,20 @@ public class CombatFrame extends JFrame {
 						}
 					}
 					
-					// Choosing an unassigned target puts them on their OWN sheet (sucker punch)
-					// unless watchful natives is in play
-					RealmComponent theTarget = assignTarget(targetList);
-					CombatWrapper targetCombat = theTarget==null?null:(new CombatWrapper(theTarget.getGameObject()));
+					// Choosing an unassigned target puts them on their OWN sheet (sucker punch) unless watchful natives is in play
+					ArrayList<RealmComponent> targets = assignTarget(targetList);
+					for (RealmComponent theTarget : targets) {
+						CombatWrapper targetCombat = theTarget==null?null:(new CombatWrapper(theTarget.getGameObject()));
 					
-					if (theTarget!=null && targetCombat!=null && (!theTarget.isNative() || !hostPrefs.hasPref(Constants.TE_WATCHFUL_NATIVES))) {
-						targetCombat.setSheetOwner(true);
-						targetCombat.setCombatBox(1);
-						changes = true;
-						removeDenizen(theTarget);
-						refreshParticipants();
-						repaint();
-						updateControls();
+						if (theTarget!=null && targetCombat!=null && (!theTarget.isNative() || !hostPrefs.hasPref(Constants.TE_WATCHFUL_NATIVES))) {
+							targetCombat.setSheetOwner(true);
+							targetCombat.setCombatBox(1);
+							changes = true;
+							removeDenizen(theTarget);
+							refreshParticipants();
+							repaint();
+							updateControls();
+						}
 					}
 				}
 			});
@@ -1995,7 +1996,7 @@ public class CombatFrame extends JFrame {
 		ArrayList<RealmComponent> list = getSelectedCombatSheetParticipants();
 		assignTarget(list);
 	}
-	protected RealmComponent assignTarget(Collection<RealmComponent> list) {
+	protected ArrayList<RealmComponent> assignTarget(Collection<RealmComponent> list) {
 		return assignTarget(activeParticipant,list);
 	}
 	public boolean canBeSeen(RealmComponent rc,boolean magicAttack) {
@@ -2021,7 +2022,8 @@ public class CombatFrame extends JFrame {
 		}
 		return ret;
 	}
-	protected RealmComponent assignTarget(RealmComponent attacker,Collection<RealmComponent> list) {
+	protected ArrayList<RealmComponent> assignTarget(RealmComponent attacker,Collection<RealmComponent> list) {
+		ArrayList<RealmComponent> targets = new ArrayList<>();
 		if (list!=null && list.size()>0) {
 			ArrayList<RealmComponent> visibleList = findCanBeSeen(list,false);
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select a Target:",true);
@@ -2038,24 +2040,25 @@ public class CombatFrame extends JFrame {
 				broadcastMessage(attacker.getGameObject().getName(),"Attacks the "+theTarget.getGameObject().getName()+append);
 				makeTarget(this,hostPrefs,attacker,theTarget);
 				handleNativeReaction(theTarget);
+				targets.add(theTarget);
 				
 				if (attacker.isCharacter()) {
 					CharacterChitComponent character = (CharacterChitComponent) attacker;
 					if(character.getActiveWeaponsObjects().size() > 1) {
-						assign2ndTarget(character, list, visibleList);
+						targets.add(assign2ndTarget(character, list, visibleList));
 					}
 				}
 				
 				changes = true;
 				updateControls();
 				repaintAll();
-				return theTarget;
+				return targets;
 			}
 		}
-		return null;
+		return targets;
 	}
-	private void assign2ndTarget(RealmComponent attacker, Collection<RealmComponent> list, ArrayList<RealmComponent> visibleList) {
-		if (list==null || list.size()==0) return;
+	private RealmComponent assign2ndTarget(RealmComponent attacker, Collection<RealmComponent> list, ArrayList<RealmComponent> visibleList) {
+		if (list==null || list.size()==0) return null;
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select secondary Target:",true);
 		chooser.addRealmComponents(visibleList,true);
 		chooser.setVisible(true);
@@ -2070,7 +2073,9 @@ public class CombatFrame extends JFrame {
 			broadcastMessage(attacker.getGameObject().getName(),"Attacks the "+theTarget.getGameObject().getName()+append);
 			makeTarget(this,hostPrefs,attacker,theTarget);
 			handleNativeReaction(theTarget);
+			return theTarget;
 		}
+		return null;
 	}
 	private void aimingForHorseOrRider(RealmComponent attacker, RealmComponent theTarget, String message) {
 		if (hostPrefs.hasPref(Constants.OPT_RIDING_HORSES)) {
@@ -2486,10 +2491,6 @@ public class CombatFrame extends JFrame {
 			CombatWrapper combat = new CombatWrapper(chit.getGameObject());
 			combat.setCombatBox(box);
 			combat.setPlacedAsFight(true);
-			if (chooser.getSelectedComponents().size()>= 2 ) {
-				RealmComponent weapon = chooser.getSelectedComponents().get(1);
-				combat.setWeaponId(weapon);
-			}
 
 			if (chit instanceof MonsterFightChitComponent) {
 				// Might need to place a monster part too!
@@ -2503,19 +2504,20 @@ public class CombatFrame extends JFrame {
 				}
 			}
 			
-			RealmComponent other = chooser.getLastSelectedComponent();
-			if (other!=null) {
-				combat = new CombatWrapper(other.getGameObject());
-				combat.setCombatBox(box);
+			RealmComponent weapon = chooser.getLastSelectedComponent();
+			if (weapon!=null) {
+				combat.setWeaponId(weapon);
+				CombatWrapper combatWeapon = new CombatWrapper(weapon.getGameObject());
+				combatWeapon.setCombatBox(box);
 			}
 		}
 		updateSelection();
 	}
 	public static final String[] BOX_NAME = {"Thrust/Charge","Swing/Dodge","Smash/Duck"};
-	public void positionTarget(int box,ArrayList targets,boolean includeFlipside,boolean horseSameBox) {
+	public void positionTarget(int box,ArrayList<RealmComponent> targets,boolean includeFlipside,boolean horseSameBox) {
 		RealmComponent target = null;
 		if (targets.size()==1) {
-			target = (RealmComponent)targets.iterator().next();
+			target = targets.iterator().next();
 		}
 		else {
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select Target to Position",true);
@@ -2524,9 +2526,8 @@ public class CombatFrame extends JFrame {
 			chooser.setVisible(true);
 			if (chooser.getSelectedText()!=null) {
 				if ("ALL".equals(chooser.getSelectedText())) {
-					for (Iterator i=targets.iterator();i.hasNext();) {
-						RealmComponent rc = (RealmComponent)i.next();
-						ArrayList targs = new ArrayList();
+					for (RealmComponent rc : targets) {
+						ArrayList<RealmComponent> targs = new ArrayList<>();
 						targs.add(rc);
 						positionTarget(box,targs,includeFlipside,horseSameBox); // recursive
 					}
