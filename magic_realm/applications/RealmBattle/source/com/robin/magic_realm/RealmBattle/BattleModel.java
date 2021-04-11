@@ -733,8 +733,8 @@ public class BattleModel {
 			BattleChit battleChit=(BattleChit)realmComponent;
 			if (battleChit.getTarget()!=null) {
 				// Only add battle chits that have targets
-				battleChits.add(battleChit);
 				if (battleChit.isMonster()) {
+					battleChits.add(battleChit);
 					MonsterChitComponent monster = (MonsterChitComponent)battleChit;
 					RealmComponent weapon = monster.getWeapon();
 					if (weapon!=null) {
@@ -750,6 +750,15 @@ public class BattleModel {
 							battleChits.add((BattleChit)weapon);
 						}
 					}
+					CharacterWrapper character = new CharacterWrapper(battleChit.getGameObject());
+					for (RealmComponent fightChit : BattleUtility.findFightComponentsWithCombatBox(character.getFightSpeedOptions(new Speed(), true))) {
+						CharacterChitComponent charChit = new CharacterChitComponent(chit.getGameObject());
+						charChit.setAttackChit(fightChit);
+						battleChits.add(charChit);
+					}
+				}
+				else {
+					battleChits.add(battleChit);
 				}
 			}
 		}

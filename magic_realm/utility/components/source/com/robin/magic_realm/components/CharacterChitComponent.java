@@ -42,6 +42,8 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	
 	public static int displayStyle = DISPLAY_STYLE_CLASSIC;
 	
+	private RealmComponent AttackChit;
+	
 	public CharacterChitComponent(GameObject obj) {
 		super(obj);
 		lightColor = MagicRealmColor.FORESTGREEN;
@@ -310,17 +312,10 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	}
 
 	public RealmComponent getAttackChit() {
-		RealmComponent rc = null;
-		CharacterWrapper character = new CharacterWrapper(getGameObject());
-		GameObject transmorph = character.getTransmorph();
-		if (transmorph == null) {
-			rc = BattleUtility.findFightComponentWithCombatBox(character.getFightSpeedOptions(new Speed(), true));
-		}
-		else {
-			// Fight is handled in the transmorphed monster object
-			rc = RealmComponent.getRealmComponent(transmorph);
-		}
-		return rc;
+		return this.AttackChit;
+	}
+	public void setAttackChit(RealmComponent rc) {
+		this.AttackChit = rc;
 	}
 
 	public boolean hasAnAttack() {

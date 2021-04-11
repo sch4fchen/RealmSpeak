@@ -1,10 +1,8 @@
 Expansion 1: Two-Handed Combat + Ability: "Dual Wielding"
-BattleModel: doTargetAttack, collectBattleChits
-CharacterChitComponent: getAttackChit
-Check which weapon can hit which target, check speed, length and harm
 BUGs Dual Wielding:
 	Cannot Target character and denizen
 	When targeting 2 denizens: attack is visible on both sheets
+Check which weapon can hit which target, check speed, length and harm
 
 Dual Wielding: Option alert both weapons
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): Option: no missile attacks, ?:Sharpness stars are ignored when comparing harm between attacks and parries? Alert?!

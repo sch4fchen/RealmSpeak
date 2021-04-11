@@ -118,15 +118,16 @@ public class BattleUtility {
 		return attentionMarker;
 	}
 
-	public static RealmComponent findFightComponentWithCombatBox(Collection<RealmComponent> list) {
+	public static ArrayList<RealmComponent> findFightComponentsWithCombatBox(Collection<RealmComponent> list) {
+		ArrayList<RealmComponent> fightChits = new ArrayList<>();
 		for (RealmComponent rc : list) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 			if (combat.getCombatBox()>0 && (!rc.isActionChit() || combat.getPlacedAsFight())) {
 				// found it!
-				return rc;
+				fightChits.add(rc);
 			}
 		}
-		return null;
+		return fightChits;
 	}
 
 	public static RealmComponent findMoveComponentWithCombatBox(Collection list,boolean includeHorse) {
