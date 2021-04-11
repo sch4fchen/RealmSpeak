@@ -207,9 +207,9 @@ public class CombatFrame extends JFrame {
 	}
 	
 	private static CombatFrame singleton = null;
-	public static CombatFrame getSingleton(JFrame frame,String playerName,ActionListener listener) {
+	public static CombatFrame getSingleton(String playerName,ActionListener listener) {
 		if (singleton==null) {
-			singleton = new CombatFrame(frame,playerName,listener);
+			singleton = new CombatFrame(playerName,listener);
 		}
 		singleton.playerName = playerName; // this probably isn't necessary, but to be consistent, this should happen
 		return singleton;
@@ -273,7 +273,7 @@ public class CombatFrame extends JFrame {
 	 * 
 	 * @see #getSingleton(String, ActionListener)
 	 */
-	private CombatFrame(JFrame frame,String playerName,ActionListener listener) {
+	private CombatFrame(String playerName,ActionListener listener) {
 		super("RealmSpeak Combat Frame for "+playerName);
 		setIconImage(IconFactory.findIcon("images/combat/combatsummary.gif").getImage());
 		
@@ -781,11 +781,11 @@ public class CombatFrame extends JFrame {
 			selectTargetFromUnassignedButton = new JButton("Select Unassigned Target");
 			selectTargetFromUnassignedButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
-					ArrayList targetList = new ArrayList();
+					ArrayList<RealmComponent> targetList = new ArrayList<>();
 					Component[] c = denizenPanel.getComponents();
 					for (int i=0;i<c.length;i++) {
 						if (c[i] instanceof RealmComponent) {
-							targetList.add(c[i]);
+							targetList.add((RealmComponent) c[i]);
 						}
 					}
 					
@@ -794,7 +794,7 @@ public class CombatFrame extends JFrame {
 					RealmComponent theTarget = assignTarget(targetList);
 					CombatWrapper targetCombat = theTarget==null?null:(new CombatWrapper(theTarget.getGameObject()));
 					
-					if (theTarget!=null && (!theTarget.isNative() || !hostPrefs.hasPref(Constants.TE_WATCHFUL_NATIVES))) {
+					if (theTarget!=null && targetCombat!=null && (!theTarget.isNative() || !hostPrefs.hasPref(Constants.TE_WATCHFUL_NATIVES))) {
 						targetCombat.setSheetOwner(true);
 						targetCombat.setCombatBox(1);
 						changes = true;
@@ -1324,8 +1324,7 @@ public class CombatFrame extends JFrame {
 	 */
 	private boolean activeHasRedSideUpMonster() {
 		if (activeCharacterIsHere) { // no need to search if not here!
-			for (Iterator i=currentBattleModel.getAllBattleParticipants(true).iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : currentBattleModel.getAllBattleParticipants(true)) {
 				if (rc.isMonster()) {
 					RealmComponent target = rc.getTarget();
 					if (target!=null && target.equals(activeParticipant)) {
@@ -1382,7 +1381,7 @@ public class CombatFrame extends JFrame {
 				if (activeCharacterIsHere) {
 					castableSpellSets = activeCharacter.getCastableSpellSets();
 				}
-				castSpellButton.setEnabled(endCombatFrame==null && !combat.isPeaceful() && activeCharacterIsHere && !combat.getHasCharged() && !activeCharacterIsTransmorphed && castableSpellSets.size()>0 && !changes);
+				castSpellButton.setEnabled(endCombatFrame==null && !combat.isPeaceful() && activeCharacterIsHere && !combat.getHasCharged() && !activeCharacterIsTransmorphed && castableSpellSets != null && castableSpellSets.size()>0 && !changes);
 			}
 			if (selectSpellTargetsButton!=null) {
 				GameObject go = combat.getCastSpell();
@@ -1543,11 +1542,10 @@ public class CombatFrame extends JFrame {
 	/**
 	 * Removes any pieces that have already been played this round
 	 */
-	private void filterUsedOptions(ArrayList list) {
+	private void filterUsedOptions(ArrayList<RealmComponent> list) {
 		// Be sure to remove any pieces that have already been played!
 		CombatWrapper combat = new CombatWrapper(activeCharacter.getGameObject());
-		for (Iterator i=combat.getUsedChits().iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		for (GameObject go : combat.getUsedChits()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			list.remove(rc);
 		}
@@ -1558,10 +1556,10 @@ public class CombatFrame extends JFrame {
 	 * 
 	 * @return					A collection of all maneuver possibilities for the chosen box.
 	 */
-	public Collection getAvailableManeuverOptions(int box,boolean includeHorses) {
+	public Collection<RealmComponent> getAvailableManeuverOptions(int box,boolean includeHorses) {
 		return getAvailableManeuverOptions(box,includeHorses,true);
 	}
-	public Collection getAvailableManeuverOptions(int box,boolean includeHorses,boolean limitEffort) {
+	public Collection<RealmComponent> getAvailableManeuverOptions(int box,boolean includeHorses,boolean limitEffort) {
 		ArrayList<RealmComponent> list = new ArrayList<>();
 		GameObject transmorph = activeCharacter.getTransmorph();
 		if (transmorph==null) {
@@ -1634,11 +1632,11 @@ public class CombatFrame extends JFrame {
 		return list;
 	}
 	
-	public Collection getAvailableFightOptions(int box) {
+	public Collection<RealmComponent> getAvailableFightOptions(int box) {
 		return getAvailableFightOptions(box,true);
 	}
-	public Collection getAvailableFightOptions(int box,boolean limitEffort) {
-		ArrayList list = new ArrayList();
+	public Collection<RealmComponent> getAvailableFightOptions(int box,boolean limitEffort) {
+		ArrayList<RealmComponent> list = new ArrayList<>();
 		GameObject transmorph = activeCharacter.getTransmorph();
 		if (transmorph==null) {
 			int effortLeft = limitEffort?getAvailableEffort():2;
@@ -1704,9 +1702,8 @@ public class CombatFrame extends JFrame {
 		int nextStatus = RealmBattle.getNextWaitState(actionState);
 		// Set status for ALL characters on the same client as activeCharacter on RESOLVING
 		if (actionState==Constants.COMBAT_RESOLVING) {
-			Collection allCharacters = currentBattleModel.getAllOwningCharacters();
-			for (Iterator i=allCharacters.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			Collection<RealmComponent> allCharacters = currentBattleModel.getAllOwningCharacters();
+			for (RealmComponent rc : allCharacters) {
 				CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
 				
 				if (playerName.equals(character.getPlayerName())) {
@@ -1719,20 +1716,18 @@ public class CombatFrame extends JFrame {
 			activeCharacter.setCombatStatus(nextStatus);
 		}
 	}
-	public boolean areDenizensToLure(RealmComponent lurer) {
+	public boolean areDenizensToLure() {
 		return denizenPanel.getComponentCount()>0 || !findCharactersWithDenizenAttackers().isEmpty();
 	}
 	public int selectedDenizenCount() {
 		return denizenPanel.getSelectedComponents().size();
 	}
-	private ArrayList findCharactersWithDenizenAttackers() {
-		ArrayList list = new ArrayList();
+	private ArrayList<RealmComponent> findCharactersWithDenizenAttackers() {
+		ArrayList<RealmComponent> list = new ArrayList<>();
 		if (currentBattleModel.areDenizens()) {
-			ArrayList denizens = new ArrayList(currentBattleModel.getDenizenBattleGroup().getBattleParticipants());
-			for (Iterator i=currentBattleModel.getAllParticipatingCharacters().iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
-				for (Iterator n=denizens.iterator();n.hasNext();) {
-					RealmComponent den = (RealmComponent)n.next();
+			ArrayList<RealmComponent> denizens = new ArrayList<>(currentBattleModel.getDenizenBattleGroup().getBattleParticipants());
+			for (RealmComponent rc : currentBattleModel.getAllParticipatingCharacters()) {
+				for (RealmComponent den : denizens) {
 					if (den.targeting(rc)) {
 						if (den.isMonster() && ((MonsterChitComponent)den).isPinningOpponent()) {
 							// Ignore red side up monsters (can't be lured)
@@ -1758,20 +1753,19 @@ public class CombatFrame extends JFrame {
 		else {
 			// Pick from characters sheets
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Lure from which Character Sheet?",true);
-			ArrayList list = findCharactersWithDenizenAttackers();
+			ArrayList<RealmComponent> list = findCharactersWithDenizenAttackers();
 			list.remove(lurer);
 			chooser.addRealmComponents(list,true);
 			if (chooser.hasOptions()) {
 				chooser.setVisible(true);
 				if (chooser.getSelectedText()!=null) {
 					RealmComponent rc = chooser.getFirstSelectedComponent();
-					ArrayList attackers = currentBattleModel.getAttackersFor(rc);
-					ArrayList denizens = new ArrayList(currentBattleModel.getDenizenBattleGroup().getBattleParticipants());
+					ArrayList<RealmComponent> attackers = currentBattleModel.getAttackersFor(rc);
+					ArrayList<RealmComponent> denizens = new ArrayList<>(currentBattleModel.getDenizenBattleGroup().getBattleParticipants());
 					denizens.retainAll(attackers); // intersection to find all denizen attackers
 					// Be sure to strip out any red-side-up monsters and natives of same group for extended treachery
-					ArrayList remove = new ArrayList();
-					for (Iterator i=denizens.iterator();i.hasNext();) {
-						RealmComponent dc = (RealmComponent)i.next();
+					ArrayList<RealmComponent> remove = new ArrayList<>();
+					for (RealmComponent dc : denizens) {
 						if (dc.isMonster() && ((MonsterChitComponent)dc).isPinningOpponent()) {
 							remove.add(dc);
 						}
@@ -1786,10 +1780,9 @@ public class CombatFrame extends JFrame {
 					RealmObjectChooser chooser2 = new RealmObjectChooser(title,gameData,!lureMultiple);
 					chooser2.addComponentsToChoose(denizens);
 					chooser2.setVisible(true);
-					Collection c = chooser2.getChosenObjects();
+					Collection<GameObject> c = chooser2.getChosenObjects();
 					if (c!=null && !c.isEmpty()) {
-						for (Iterator i=c.iterator();i.hasNext();) {
-							GameObject go = (GameObject)i.next();
+						for (GameObject go : c) {
 							RealmComponent luree = RealmComponent.getRealmComponent(go);
 							if (lureDenizen(lurer,box,luree)) {
 								changes = true;
@@ -1802,10 +1795,9 @@ public class CombatFrame extends JFrame {
 		updateSelection();
 	}
 	private void lureSelectedDenizens(RealmComponent lurer,int box) {
-		Collection denizens = denizenPanel.getSelectedComponents();
+		Collection<RealmComponent> denizens = denizenPanel.getSelectedComponents();
 		denizenPanel.clearSelected();
-		for (Iterator i=denizens.iterator();i.hasNext();) {
-			RealmComponent denizen = (RealmComponent)i.next();
+		for (RealmComponent denizen : denizens) {
 			if (hostPrefs.hasPref(Constants.TE_EXTENDED_TREACHERY) && lurer.isNative() && RealmUtility.getGroupName(lurer).matches(RealmUtility.getGroupName(denizen))) {
 				if (!activeCharacter.getTreacheryPreference()) {
 					String message = "The "+lurer.getGameObject().getName()+" cannot lure the "+denizen.getGameObject().getName()+" because it would trigger treachery.";
@@ -2062,7 +2054,7 @@ public class CombatFrame extends JFrame {
 		}
 		return null;
 	}
-	private void assign2ndTarget(RealmComponent attacker, Collection list, ArrayList<RealmComponent> visibleList) {
+	private void assign2ndTarget(RealmComponent attacker, Collection<RealmComponent> list, ArrayList<RealmComponent> visibleList) {
 		if (list==null || list.size()==0) return;
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select secondary Target:",true);
 		chooser.addRealmComponents(visibleList,true);
@@ -2270,11 +2262,10 @@ public class CombatFrame extends JFrame {
 		combat.addAttacker(theAttacker.getGameObject());
 	}
 	public void replaceManeuver(int box) {
-		Collection list = getAvailableManeuverOptions(box,true,false);
+		Collection<RealmComponent> list = getAvailableManeuverOptions(box,true,false);
 		
 		// Find out which maneuver is already placed, and change the box
-		for (Iterator i=list.iterator();i.hasNext();) {
-			RealmComponent maneuver = (RealmComponent)i.next();
+		for (RealmComponent maneuver : list) {
 			CombatWrapper combat = new CombatWrapper(maneuver.getGameObject());
 			if (combat.getCombatBox()>0) {
 				combat.setCombatBox(box);
@@ -2294,11 +2285,10 @@ public class CombatFrame extends JFrame {
 			}
 		}
 		
-		Collection moveOptions = getAvailableManeuverOptions(box,!activeHasRedSideUpMonster());
+		Collection<RealmComponent> moveOptions = getAvailableManeuverOptions(box,!activeHasRedSideUpMonster());
 		
 		// Clear out all options already in play
-		for (Iterator i=moveOptions.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : moveOptions) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 			if (!rc.isActionChit() || combat.getPlacedAsMove()) {
 				CombatWrapper.clearRoundCombatInfo(rc.getGameObject());
@@ -2311,7 +2301,7 @@ public class CombatFrame extends JFrame {
 			if (hostPrefs.hasPref(Constants.OPT_RIDING_HORSES)) {
 				BattleHorse horse  = activeCharacter.getActiveSteed();
 				if (horse!=null) {
-					ArrayList horseOnly = new ArrayList();
+					ArrayList<BattleHorse> horseOnly = new ArrayList<>();
 					horseOnly.add(horse);
 					RealmComponent chit = playManeuver(box,horseOnly);
 					if (chit==null) {
@@ -3539,7 +3529,7 @@ public class CombatFrame extends JFrame {
 		
 		interactiveFrame = interactive;
 		if (!interactiveFrame) {
-			CombatFrame frame = CombatFrame.getSingleton(parent,playerName,listener);
+			CombatFrame frame = CombatFrame.getSingleton(playerName,listener);
 			frame.updateFrame(data);
 			frame.updateControls();
 			frame.setVisible(true);
@@ -3551,7 +3541,7 @@ public class CombatFrame extends JFrame {
 		}
 		
 		// ALWAYS show the combat frame
-		CombatFrame frame = CombatFrame.getSingleton(parent,playerName,listener);
+		CombatFrame frame = CombatFrame.getSingleton(playerName,listener);
 		frame.updateFrame(data);
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -3812,9 +3802,7 @@ public class CombatFrame extends JFrame {
 				data.zipFromFile(lastSaveGame);
 				return data;
 			}
-			else {
-				JOptionPane.showMessageDialog(frame,"File not found:  "+lastSaveGame.getPath());
-			}
+			JOptionPane.showMessageDialog(frame,"File not found:  "+lastSaveGame.getPath());
 		}
 		return null;
 	}

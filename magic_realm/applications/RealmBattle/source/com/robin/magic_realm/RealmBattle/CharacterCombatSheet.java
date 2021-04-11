@@ -182,7 +182,7 @@ public class CharacterCombatSheet extends CombatSheet {
 			case Constants.COMBAT_LURE:
 				if (!sheetOwner.isMistLike()) {
 					if (sheetOwner.equals(combatFrame.getActiveParticipant())) {
-						if (combatFrame.areDenizensToLure(sheetOwner)) {
+						if (combatFrame.areDenizensToLure()) {
 							hotspotHash.put(new Integer(POS_TARGET),"Lure");
 						}
 					}

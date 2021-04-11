@@ -155,7 +155,7 @@ public class DenizenCombatSheet extends CombatSheet {
 		GameObject go = combat.getCastSpell();
 		SpellWrapper spell = go==null?null:new SpellWrapper(go);
 		hotspotHash.clear();
-		Collection c;
+		Collection<RealmComponent> c;
 		
 		if (!interactiveFrame) {
 			return;
@@ -166,8 +166,8 @@ public class DenizenCombatSheet extends CombatSheet {
 				if (isOwnedByActive && !sheetOwner.isMistLike()) {
 					c = layoutHash.getList(new Integer(POS_ATTACKERS_BOX1));
 					if (c==null || c.size()==0) {
-						if (combatFrame.areDenizensToLure(sheetOwner)) {
-							hotspotHash.put(POS_ATTACKERS_BOX1,"Lure");
+						if (combatFrame.areDenizensToLure()) {
+							hotspotHash.put(new Integer(POS_ATTACKERS_BOX1),"Lure");
 						}
 					}
 					
@@ -178,22 +178,21 @@ public class DenizenCombatSheet extends CombatSheet {
 							break;
 						}
 					}
-					hotspotHash.put(POS_DEFENDER_BOX1,"Flip");
+					hotspotHash.put(new Integer(POS_DEFENDER_BOX1),"Flip");
 					if (sheetOwner.hasHorse()) {
-						hotspotHash.put(POS_DEFENDER_BOX2,"Flip");
+						hotspotHash.put(new Integer(POS_DEFENDER_BOX2),"Flip");
 					}
 				}
 				break;
 			case Constants.COMBAT_RANDOM_ASSIGN:
 				if (!sheetOwner.isMistLike()) {
 					if (isOwnedByActive) {
-						if (combatFrame.areDenizensToLure(sheetOwner)) {
+						if (combatFrame.areDenizensToLure()) {
 							// Now, need to make sure this sheetOwner is not currently targeted by a RED-side-up T Monster
 							boolean hasRedSideAttacker = false;
 							c = layoutHash.getList(new Integer(POS_ATTACKERS_BOX1));
 							if (c!=null && !c.isEmpty()) {
-								for (Iterator i=c.iterator();i.hasNext();) {
-									RealmComponent rc = (RealmComponent)i.next();
+								for (RealmComponent rc : c) {
 									if (rc.isMonster()) {
 										MonsterChitComponent monster = (MonsterChitComponent)rc;
 										if (monster.isPinningOpponent()) {
@@ -437,7 +436,7 @@ public class DenizenCombatSheet extends CombatSheet {
 					combatFrame.assignTarget(filterEnemies(combatFrame.getActiveParticipant(),layoutHash.getList(new Integer(POS_ATTACKERS_BOX1))));
 				}
 				else if (combatFrame.getActionState()==Constants.COMBAT_POSITIONING) {
-					ArrayList list = getAllBoxListFromLayout(POS_ATTACKERS_BOX1);
+					ArrayList<RealmComponent> list = getAllBoxListFromLayout(POS_ATTACKERS_BOX1);
 					if (sheetOwner.getOwnerId()==null) {
 						list = filterFriends(combatFrame.getActiveParticipant(),list);
 					}
@@ -464,9 +463,8 @@ public class DenizenCombatSheet extends CombatSheet {
 			case POS_DEFENDER_BOX3:
 				if (combatFrame.getActionState()==Constants.COMBAT_LURE) {
 					// Flip the counter
-					ArrayList list = layoutHash.getList(index);
-					for (Iterator i=list.iterator();i.hasNext();) {
-						RealmComponent rc = (RealmComponent)i.next();
+					ArrayList<RealmComponent> list = layoutHash.getList(new Integer(index));
+					for (RealmComponent rc : list) {
 						rc.flip();
 					}
 				}
@@ -478,7 +476,7 @@ public class DenizenCombatSheet extends CombatSheet {
 //					ArrayList list = new ArrayList();
 //					list.add(sheetOwner);
 					// Though MOST of the time, this list will only contain ONE defender, it does happen when there are more
-					ArrayList list = getAllBoxListFromLayout(POS_DEFENDER_BOX1);
+					ArrayList<RealmComponent> list = getAllBoxListFromLayout(POS_DEFENDER_BOX1);
 					boolean includeFlipside = sheetOwner.getOwnerId()!=null && !sheetOwner.isTraveler();
 					combatFrame.positionAttacker(list,index-POS_DEFENDER_BOX1+1,includeFlipside,swingConstant==SwingConstants.LEFT);
 					updateLayout();
@@ -552,8 +550,7 @@ public class DenizenCombatSheet extends CombatSheet {
 		// cycle through other sheet participants - identify sheet owner in each case with a small icon
 		for (CombatSheet sheet : combatSheets) {
 			RealmComponent aSheetOwner = sheet.getSheetOwner();
-			for (Iterator n=sheet.getAllParticipantsOnSheet().iterator();n.hasNext();) {
-				RealmComponent participant = (RealmComponent)n.next();
+			for (RealmComponent participant : sheet.getAllParticipantsOnSheet()) {
 				if (participant!=null) {
 					RealmComponent participantOwner = participant.getOwner();
 					if (!owner.equals(participantOwner) && !aSheetOwner.equals(participant)) {

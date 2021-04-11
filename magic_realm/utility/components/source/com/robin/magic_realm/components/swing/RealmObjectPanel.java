@@ -45,11 +45,11 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 	
 	protected boolean flipView = false;
 	
-	private ArrayList listSelectionListeners;
+	private ArrayList<ListSelectionListener> listSelectionListeners;
 	
 	private FlowLayout layout;
 	
-	private ArrayList<RealmComponent> flipped = new ArrayList<RealmComponent>();
+	private ArrayList<RealmComponent> flipped = new ArrayList<>();
 	
 	public RealmObjectPanel() {
 		this(false,false); // default panel is non-interactive
@@ -118,7 +118,7 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 	public ArrayList<RealmComponent> getAllRealmComponents() {
 		Component[] c = getComponents();
 		if (c!=null && c.length>0) {
-			ArrayList<RealmComponent> list = new ArrayList<RealmComponent>();
+			ArrayList<RealmComponent> list = new ArrayList<>();
 			for (int i=0;i<c.length;i++) {
 				if (c[i] instanceof RealmComponent) {
 					list.add((RealmComponent)c[i]);
@@ -137,7 +137,7 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 	}
 	public void addSelectionListener(ListSelectionListener listener) {
 		if (listSelectionListeners == null) {
-			listSelectionListeners = new ArrayList();
+			listSelectionListeners = new ArrayList<>();
 		}
 		if (!listSelectionListeners.contains(listener)) {
 			listSelectionListeners.add(listener);
@@ -154,8 +154,7 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 	private void fireSelectionChanged() {
 		if (listSelectionListeners!=null) {
 			ListSelectionEvent ev = new ListSelectionEvent(this,0,0,false);
-			for (Iterator i=listSelectionListeners.iterator();i.hasNext();) {
-				ListSelectionListener listener = (ListSelectionListener)i.next();
+			for (ListSelectionListener listener : listSelectionListeners) {
 				listener.valueChanged(ev);
 			}
 		}
@@ -191,7 +190,7 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 			RealmComponent comp = (RealmComponent)i.next();
 			gameObjects.add(comp.getGameObject());
 		}
-		return (GameObject[])gameObjects.toArray(new GameObject[gameObjects.size()]);
+		return gameObjects.toArray(new GameObject[gameObjects.size()]);
 	}
 	public GameObject getSelectedGameObject() {
 		GameObject[] sel = getSelectedGameObjects();
@@ -206,8 +205,8 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 		}
 		return null;
 	}
-	public Collection getSelectedComponents() {
-		return new ArrayList(selected);
+	public Collection<RealmComponent> getSelectedComponents() {
+		return new ArrayList<RealmComponent>(selected);
 	}
 	public int getSelectedCount() {
 		return selected.size();
@@ -309,8 +308,7 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 		}
 		if (!isEnabled()) {
 			g.setColor(disabledColor);
-			for (Iterator i=rcs.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : rcs) {
 				Rectangle r = rc.getBounds();
 				g.fillRect(r.x,r.y,r.width,r.height);
 			}
@@ -369,10 +367,9 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 			if (target!=null) {
 				if (manualFlipEnabled && ev.isShiftDown()) {
 					// flip the object
-					if (target!=null && !target.isSpell() && !target.isTreasure()) {
-						RealmComponent rc = (RealmComponent)target;
-						rc.flip();
-						updateFlipped(rc);
+					if (!target.isSpell() && !target.isTreasure()) {
+						target.flip();
+						updateFlipped(target);
 						repaint();
 					}
 				}
