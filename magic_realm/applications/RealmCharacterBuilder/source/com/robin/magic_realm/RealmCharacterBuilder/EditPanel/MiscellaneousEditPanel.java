@@ -130,7 +130,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 			}
 		}
 		for (int i=0;i<MISC_ADVANTAGE_2.length;i++) {
-			JRadioButton button = buttonList.get(i+MISC_ADVANTAGE_2.length);
+			JRadioButton button = buttonList.get(i+MISC_ADVANTAGE_1.length);
 			if (button.isSelected()) {
 				setAttribute(MISC_ADVANTAGE_2[i][COL_KEY],MISC_ADVANTAGE_2[i][COL_VAL]);
 				return;
@@ -145,7 +145,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 			}
 		}
 		for (int i=0;i<MISC_ADVANTAGE_2.length;i++) {
-			JRadioButton button = buttonList.get(i+MISC_ADVANTAGE_2.length);
+			JRadioButton button = buttonList.get(i+MISC_ADVANTAGE_1.length);
 			if (button.isSelected()) {
 				return button.getText();
 			}
