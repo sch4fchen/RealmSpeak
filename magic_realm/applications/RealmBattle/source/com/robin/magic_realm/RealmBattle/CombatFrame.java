@@ -2365,7 +2365,7 @@ public class CombatFrame extends JFrame {
 		Collection<RealmComponent> fightOptions = getAvailableFightOptions(box);
 		return fightOptions.size()>0;
 	}
-	public void playAttack(int box) {
+	public void playAttack(int box, RealmComponent sheetOwner) {
 		CombatWrapper charCombat = new CombatWrapper(activeCharacter.getGameObject());
 		GameObject go = charCombat.getCastSpell();
 		SpellWrapper spell = go==null?null:new SpellWrapper(go);
@@ -2478,6 +2478,7 @@ public class CombatFrame extends JFrame {
 			CombatWrapper combat = new CombatWrapper(chit.getGameObject());
 			combat.setCombatBox(box);
 			combat.setPlacedAsFight(true);
+			combat.setSheetOwnerId(sheetOwner);
 
 			if (chit instanceof MonsterFightChitComponent) {
 				// Might need to place a monster part too!
@@ -2496,6 +2497,7 @@ public class CombatFrame extends JFrame {
 				combat.setWeaponId(weapon);
 				CombatWrapper combatWeapon = new CombatWrapper(weapon.getGameObject());
 				combatWeapon.setCombatBox(box);
+				combat.setSheetOwnerId(sheetOwner);
 			}
 		}
 		updateSelection();

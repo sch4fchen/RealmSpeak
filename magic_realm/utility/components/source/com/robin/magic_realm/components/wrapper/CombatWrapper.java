@@ -42,6 +42,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String COMBAT_KILL_RESULT_LIST = "CMB_KILL_LIST";
 	private static final String COMBAT_SPOILS_RESULT_LIST = "CMB_SPLS_LIST";
 	private static final String COMBAT_SHEET_OWNER = "CMB_SH_OWN";
+	private static final String SHEET_OWNER_ID = "CMB_SH_OWN_ID";
 	private static final String PEACE = "PEACE";
 	private static final String PEACE_CLEARING = "PEACE_CLEARING";
 	private static final String WATCHFUL = "WATCHFUL";
@@ -105,6 +106,12 @@ public class CombatWrapper extends GameObjectWrapper {
 	}
 	public void setSheetOwner(boolean val) {
 		setBoolean(COMBAT_SHEET_OWNER,val);
+	}
+	public void setSheetOwnerId(RealmComponent owner) {
+		setString(SHEET_OWNER_ID,owner.getGameObject().getStringId());
+	}
+	public String getSheetOwnerId() {
+		return getString(SHEET_OWNER_ID);
 	}
 	public boolean isSheetOwner() {
 		return getBoolean(COMBAT_SHEET_OWNER);

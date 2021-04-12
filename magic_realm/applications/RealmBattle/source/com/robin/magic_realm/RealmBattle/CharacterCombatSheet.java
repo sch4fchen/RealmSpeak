@@ -584,7 +584,7 @@ public class CharacterCombatSheet extends CombatSheet {
 			case POS_ATTACK_WEAPON3:
 				if (combatFrame.getActionState()==Constants.COMBAT_POSITIONING) {
 					// Play attack
-					combatFrame.playAttack(index-POS_ATTACK_WEAPON1+1);
+					combatFrame.playAttack(index-POS_ATTACK_WEAPON1+1,this.getSheetOwner());
 				}
 				break;
 			case POS_MOVE_BOX1:

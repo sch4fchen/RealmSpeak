@@ -451,7 +451,7 @@ public class DenizenCombatSheet extends CombatSheet {
 			case POS_ATTACKERS_WEAPON3:
 				if (combatFrame.getActionState()==Constants.COMBAT_POSITIONING) {
 					// Character Play attack
-					combatFrame.playAttack(index-POS_ATTACKERS_WEAPON1+1);
+					combatFrame.playAttack(index-POS_ATTACKERS_WEAPON1+1,this.getSheetOwner());
 				}
 				else if (combatFrame.getActionState()==Constants.COMBAT_TACTICS) {
 					// Character Move attack
