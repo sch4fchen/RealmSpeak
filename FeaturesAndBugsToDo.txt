@@ -1,6 +1,6 @@
 Expansion 1: Two-Handed Combat + Ability: "Dual Wielding"
 BUGs Dual Wielding:
-	When targeting 2 denizens: attack is visible on both sheets
+	When calculating if target is hit, check that chit was placed on correct sheet
 
 Dual Wielding: Option alert both weapons
 SuperRealm: Steel Against Magic: A character who is casting a spell and has no active armor counters may also use his active weapon and a second attention chit to target an individual and make a separate attack (or parry) if, and only if, the active weapon is the Staff.

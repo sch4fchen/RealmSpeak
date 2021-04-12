@@ -634,6 +634,7 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,HIT_TYPE);
 			go.removeAttribute(COMBAT_BLOCK,HIT_TYPE_ID);
 			go.removeAttribute(COMBAT_BLOCK,WEAPON_ID);
+			go.removeAttribute(COMBAT_BLOCK,SHEET_OWNER_ID);
 			
 			ArrayList<String> list = go.getAttributeList(COMBAT_BLOCK,RANDOMIZE_PREFICES);
 			if (list!=null) {

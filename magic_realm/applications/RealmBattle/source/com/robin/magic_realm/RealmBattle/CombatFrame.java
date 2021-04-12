@@ -2497,7 +2497,7 @@ public class CombatFrame extends JFrame {
 				combat.setWeaponId(weapon);
 				CombatWrapper combatWeapon = new CombatWrapper(weapon.getGameObject());
 				combatWeapon.setCombatBox(box);
-				combat.setSheetOwnerId(sheetOwner);
+				combatWeapon.setSheetOwnerId(sheetOwner);
 			}
 		}
 		updateSelection();

@@ -598,7 +598,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 										for (WeaponChitComponent weapon : weapons) {
 											CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
 											int box = combat.getCombatBox();
-											if (box>0) {
+											if (box>0 && this.sheetOwner.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
 												layoutHash.put(new Integer(weaponBox1+box-1),weapon);
 											}
 										}
@@ -606,7 +606,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 									for (RealmComponent chit : character.getActiveFightChits()) {
 										CombatWrapper combat = new CombatWrapper(chit.getGameObject());
 										int box = combat.getCombatBox();
-										if (box>0 && combat.getPlacedAsFight()) {
+										if (box>0 && combat.getPlacedAsFight() && this.sheetOwner.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
 											layoutHash.put(new Integer(attackBox1+box-1),chit);
 										}
 									}
@@ -617,14 +617,14 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 										if (item.getGameObject().hasThisAttribute("gloves")) {
 											CombatWrapper combat = new CombatWrapper(item.getGameObject());
 											int box = combat.getCombatBox();
-											if (box>0) {
+											if (box>0 && this.sheetOwner.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
 												layoutHash.put(new Integer(attackBox1+box-1),item);
 											}
 										}
 										else if (item.getGameObject().hasThisAttribute("attack")) {
 											CombatWrapper combat = new CombatWrapper(item.getGameObject());
 											int box = combat.getCombatBox();
-											if (box>0) {
+											if (box>0 && this.sheetOwner.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
 												layoutHash.put(new Integer(weaponBox1+box-1),item);
 											}
 										}
@@ -796,13 +796,6 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			}
 		}
 		return false;
-	}
-	
-	protected void showBattlingNatives() { // FIXME Write this code
-//		if (sheetOwner.equals(combatFrame.getActiveParticipant())) {
-//			CharacterWrapper character = combatFrame.getActiveCharacter();
-//			character.addBattlingNative()
-//		}
 	}
 	
 	protected static class RollerGroup {
