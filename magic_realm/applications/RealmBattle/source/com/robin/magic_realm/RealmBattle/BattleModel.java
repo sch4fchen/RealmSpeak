@@ -742,6 +742,7 @@ public class BattleModel {
 					}
 				}
 				else if (battleChit.isCharacter()) {
+					battleChits.add(battleChit);
 					CharacterChitComponent chit = (CharacterChitComponent)battleChit;
 					MonsterChitComponent transmorph = chit.getTransmorphedComponent();
 					if (transmorph!=null) {
@@ -938,7 +939,7 @@ public class BattleModel {
 		String attackCancelled = null;
 		
 		// Attack must be placed on target's sheet or target must be on character's sheet (=target attacks the character)
-		if (attacker.isCharacter()) {
+		if (attacker.isCharacter() && !(new CharacterWrapper(attacker.getGameObject()).isTransmorphed())) {
 			CombatWrapper combatAttackChit = new CombatWrapper(((CharacterChitComponent) attacker).getAttackChit().getGameObject());
 			CombatWrapper combatCharacter = new CombatWrapper(attacker.getGameObject());
 			if (!combatAttackChit.getSheetOwnerId().equals(target.getGameObject().getStringId())

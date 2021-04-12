@@ -189,9 +189,10 @@ public class CharacterCombatSheet extends CombatSheet {
 				}
 				break;
 			case Constants.COMBAT_ASSIGN:
+				ArrayList<WeaponChitComponent> weapons = (new CharacterWrapper(combatFrame.getActiveParticipant().getGameObject())).getActiveWeapons();
 				if (spell==null
 						&& (combatFrame.getActiveParticipant().getTarget()==null
-						|| (combatFrame.getActiveParticipant().get2ndTarget()==null && combatFrame.getActiveParticipant().isCharacter() &&  (new CharacterWrapper(combatFrame.getActiveParticipant().getGameObject())).getActiveWeapons().size() > 1))) {
+						|| (combatFrame.getActiveParticipant().get2ndTarget()==null && combatFrame.getActiveParticipant().isCharacter() && weapons!=null && weapons.size() > 1))) {
 					if (containsEnemy(combatFrame.getActiveParticipant(),layoutHash.getList(new Integer(POS_TARGET)))) {
 						hotspotHash.put(new Integer(POS_TARGET),combatFrame.getActiveParticipant().getGameObject().getName()+" Target");
 					}
