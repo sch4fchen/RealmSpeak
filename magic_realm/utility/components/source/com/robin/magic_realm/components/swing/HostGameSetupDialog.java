@@ -44,7 +44,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	private static final String EXPANDING_REALM_TAB = "Expanded Realm";
 	private static final String REVISED_RULES_TAB = "Revised";
 	private static final String OPTIONAL_CHAR_RULES_TAB = "Characters";
-	private static final String FIRST_EDITION_RULES_TAB = "First Edition";
+	private static final String FIRST_EDITION_RULES_TAB = "1st Edition/SuperRealm";
 	private static final String HOUSE1_RULES_TAB = "Robin's House";
 	private static final String HOUSE2_RULES_TAB = "Other House";
 	private static final String HOUSE3_RULES_TAB = "More House";

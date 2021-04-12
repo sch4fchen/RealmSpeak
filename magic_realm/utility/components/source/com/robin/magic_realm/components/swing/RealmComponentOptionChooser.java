@@ -80,7 +80,7 @@ public class RealmComponentOptionChooser extends AggressiveDialog {
 		super(parent, "", true);
 		textHash = new OrderedHashtable<>();
 		componentHashLists = new HashLists<>();
-		iconHashLists= new HashLists();
+		iconHashLists= new HashLists<Object, String>();
 		initComponents(title,includeCancel);
 		updateLayout();
 	}

@@ -65,7 +65,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	public static final String OWNER_ID = "owner_id"; // game object id of owner
 	public static final String OWNER_TERM_OF_HIRE = "owner_term";
 	private static final String TARGET_ID = "target_id"; // game object id of target
-	private static final String TARGET_2ND_ID = "target__2nd_id"; // game object id of secondary target
+	private static final String TARGET_2ND_ID = "target_2nd_id"; // game object id of secondary target
 	private static final String TARGET_INDEX = "targ_idx"; // a counter that indicates who targets who first (needed for War!)
 	private static final String TARGET_2ND_INDEX = "targ_2nd_idx"; // a counter that indicates who targets who first (needed for War!)
 	private static final String TARGET_ATTACKED = "targ_attacked";	
