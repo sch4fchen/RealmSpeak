@@ -359,8 +359,10 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
 		ArrayList<GameObject> weaponsGameObjects = new ArrayList<>();
 		ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
-		for (WeaponChitComponent weapon : weapons) {
-			weaponsGameObjects.add(weapon.getGameObject());
+		if (weapons != null) {
+			for (WeaponChitComponent weapon : weapons) {
+				weaponsGameObjects.add(weapon.getGameObject());
+			}
 		}
 		if (getTreasureWeaponObject() != null) {
 			weaponsGameObjects.add(getTreasureWeaponObject());
