@@ -585,7 +585,7 @@ public class DenizenCombatSheet extends CombatSheet {
 					deployTargetKeepsTarget = true;
 					RealmComponent rc = monster.getTarget();
 					RealmComponent rc2 = monster.get2ndTarget();
-					if (rc.isCharacter() || rc2.isCharacter()) {
+					if ((rc!=null && rc.isCharacter()) || (rc2!=null && rc2.isCharacter())) {
 						deployTargetMovesToNewSheet = false;
 					}
 				}

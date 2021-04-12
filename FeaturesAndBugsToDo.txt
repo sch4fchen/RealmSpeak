@@ -1,5 +1,3 @@
-Bug: Choice option for search -> Choices only from corresponding table
-
 Expansion 1: Two-Handed Combat + Ability: "Dual Wielding"
 BUGs Dual Wielding:
 	When targeting 2 denizens: attack is visible on both sheets
