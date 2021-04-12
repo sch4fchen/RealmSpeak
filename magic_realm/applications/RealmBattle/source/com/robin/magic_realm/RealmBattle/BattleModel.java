@@ -937,7 +937,7 @@ public class BattleModel {
 		
 		String attackCancelled = null;
 		
-		// Attack must be placed on targets sheet or target must be on characters sheet (=target attacks the character)
+		// Attack must be placed on target's sheet or target must be on character's sheet (=target attacks the character)
 		if (attacker.isCharacter()) {
 			CombatWrapper combatAttackChit = new CombatWrapper(((CharacterChitComponent) attacker).getAttackChit().getGameObject());
 			CombatWrapper combatCharacter = new CombatWrapper(attacker.getGameObject());
