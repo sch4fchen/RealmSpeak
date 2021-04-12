@@ -3795,7 +3795,7 @@ public class CombatFrame extends JFrame {
 			chooser = new JFileChooser(new File(filePath));
 		}
 		else {
-			chooser = new JFileChooser();
+			chooser = new JFileChooser(".");
 		}
 		chooser.setAcceptAllFileFilterUsed(false);
 		chooser.setFileFilter(saveGameFileFilter);
