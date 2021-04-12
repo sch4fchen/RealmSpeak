@@ -937,6 +937,16 @@ public class BattleModel {
 		
 		String attackCancelled = null;
 		
+		// Attack must be placed on targets sheet or target must be on characters sheet (=target attacks the character)
+		if (attacker.isCharacter()) {
+			CombatWrapper combatAttackChit = new CombatWrapper(((CharacterChitComponent) attacker).getAttackChit().getGameObject());
+			CombatWrapper combatCharacter = new CombatWrapper(attacker.getGameObject());
+			if (!combatAttackChit.getSheetOwnerId().equals(target.getGameObject().getStringId())
+					&& !(combatAttackChit.getSheetOwnerId().equals(attacker.getGameObject().getStringId()) && combatCharacter.getAttackers().contains(target.getTarget().getGameObject()))) {
+				logBattleInfo("Miss! ("+attacker+" placed the attack not on the target's sheet.");
+			}
+		}
+		
 		// You can't kill a target that is already dead, unless the target's killer attacked with the same speed and length (simultaneous)
 		if (targetKiller!=null) {
 			BattleChit targetKillerChit = RealmComponent.getBattleChit(targetKiller);
