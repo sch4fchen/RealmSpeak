@@ -4095,12 +4095,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 						if ("none".equals(key)) {
 							return null;
 						}
-						else {
-							RealmComponent sc = chooser.getFirstSelectedComponent();
-							if (!eraseSpell(sc.getGameObject())) {
-								// This should NEVER happen!!!
-								return null;
-							}
+						RealmComponent sc = chooser.getFirstSelectedComponent();
+						if (!eraseSpell(sc.getGameObject())) {
+							// This should NEVER happen!!!
+							return null;
 						}
 					}
 				}
@@ -4134,20 +4132,20 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return true;
 	}
 	public boolean isStartingSpell(GameObject spell) {
-		ArrayList sSpellIds = getList(STARTING_SPELLS);
+		ArrayList<String> sSpellIds = getList(STARTING_SPELLS);
 		return sSpellIds.contains(spell.getStringId());
 	}
 	public boolean isRecordedSpell(GameObject spell) {
-		ArrayList rSpellIds = getList(RECORDED_SPELLS);
+		ArrayList<String> rSpellIds = getList(RECORDED_SPELLS);
 		return rSpellIds.contains(spell.getStringId());
 	}
 	public boolean hasSpells() {
 		return !getAllSpellIds().isEmpty();
 	}
-	private ArrayList getAllSpellIds() {
-		ArrayList sSpellIds = getList(STARTING_SPELLS);
-		ArrayList rSpellIds = getList(RECORDED_SPELLS);
-		ArrayList spellIds = new ArrayList();
+	private ArrayList<String> getAllSpellIds() {
+		ArrayList<String> sSpellIds = getList(STARTING_SPELLS);
+		ArrayList<String> rSpellIds = getList(RECORDED_SPELLS);
+		ArrayList<String> spellIds = new ArrayList<>();
 		if (sSpellIds!=null) {
 			spellIds.addAll(sSpellIds);
 		}
@@ -4157,7 +4155,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return spellIds;
 	}
 	public ArrayList<MagicChit> getColorMagicChits() {
-		ArrayList<MagicChit> colorChits = new ArrayList<MagicChit>();
+		ArrayList<MagicChit> colorChits = new ArrayList<>();
 		colorChits.addAll(getColorChits());
 		colorChits.addAll(getEnchantedArtifacts());
 		return colorChits;
@@ -4172,13 +4170,23 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return true;
 	}
+	public boolean hasActiveArmorChits() {
+		ArrayList<GameObject> activeInventory = this.getActiveInventory();
+		for (GameObject item : activeInventory) {
+			RealmComponent rc = RealmComponent.getRealmComponent(item);
+			if (rc.isArmor() || rc.isArmorCard()) {
+				return true;
+			}
+		}
+		return false;
+	}
 	/**
 	 * @return		A Collection of SpellSet objects representing all the spells available to the character, whether it
 	 * 				be a recorded spell, or one that was awakened in a book or artifact.
 	 */
 	public ArrayList<SpellSet> getCastableSpellSets() {
 		// Find all color sources
-		Collection infiniteColors = getInfiniteColorSources();
+		Collection<ColorMagic> infiniteColors = getInfiniteColorSources();
 		ArrayList<MagicChit> colorChits = new ArrayList<>();
 		ArrayList<CharacterActionChitComponent> magicChits = new ArrayList<>();
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
@@ -4189,7 +4197,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		
 		// Start a collection of potential spell sets
-		ArrayList<SpellSet> potentialSets = new ArrayList<SpellSet>();
+		ArrayList<SpellSet> potentialSets = new ArrayList<>();
 		
 		// Collect all spells, recorded and in inventory (awakened)
 		TileLocation current = getCurrentLocation();
