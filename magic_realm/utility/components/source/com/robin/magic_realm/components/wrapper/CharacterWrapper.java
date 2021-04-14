@@ -1363,7 +1363,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * @return		A Collection of Strings that represent the types of clearings "from" where you are doing it,
 	 * 				and "to" where you are doing it.  For example, MM means from Mt to Mt (Enh. Peer)
 	 */
-	public ArrayList getCurrentActionTypeCodes() {
+	public ArrayList<String> getCurrentActionTypeCodes() {
 		return getList(getCurrentDayKey()+"C");
 	}
 	/**
@@ -1470,7 +1470,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public TileLocation getPlannedLocation() {
 		TileLocation ret = null;
 		if (clearingPlot!=null && !clearingPlot.isEmpty()) {
-			ret = (TileLocation)clearingPlot.get(clearingPlot.size()-1);
+			ret = clearingPlot.get(clearingPlot.size()-1);
 		}
 		else {
 			ret = getCurrentLocation();
@@ -1539,8 +1539,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (isSleep()) {
 			// Waking up
 			setSleep(false);
-			for (Iterator i=getFatiguedChits().iterator();i.hasNext();) {
-				CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+			for (CharacterActionChitComponent chit : getFatiguedChits()) {
 				chit.makeActive();
 			}
 		}
@@ -3076,9 +3075,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * 							appropriately for the abandoned follower.
 	 */
 	public void removeActionFollower(CharacterWrapper follower,DieRoller monsterDieRoller) {
-		ArrayList list = getList(ACTION_FOLLOWER);
+		ArrayList<String> list = getList(ACTION_FOLLOWER);
 		if (list!=null && !list.isEmpty()) {
-			ArrayList newlist = new ArrayList(list);
+			ArrayList<String> newlist = new ArrayList<>(list);
 			int index = newlist.indexOf(follower.getGameObject().getStringId());
 			if (index>=0) {
 				newlist.remove(index);
@@ -3087,7 +3086,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 					
 					// "first" follower is removed, so we need to update the NO_SUMMON to the next follower, if there is any
 					if (newlist.size()>0) {
-						String id = (String)newlist.iterator().next();
+						String id = newlist.iterator().next();
 						GameObject go = getGameObject().getGameData().getGameObject(Long.valueOf(id));
 						CharacterWrapper nextFollower = new CharacterWrapper(go);
 						nextFollower.setNoSummon(true);
@@ -4239,7 +4238,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		// Now filter out the non-castable spells (missing some component)
 		boolean optionalArtifacts = hostPrefs.hasPref(Constants.OPT_ENHANCED_ARTIFACTS) || affectedByKey(Constants.ENHANCED_ARTIFACTS);
-		ArrayList castableSpellSets = new ArrayList();
+		ArrayList<SpellSet> castableSpellSets = new ArrayList<>();
 		for (SpellSet set:potentialSets) {
 			// First, validate chit types (if needed)
 			String spellType = set.getCastMagicType();
@@ -4269,7 +4268,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				ColorMagic spellColor = set.getColorMagic();
 				if (spellColor==null) { // ANY
 					if (infiniteColors.size()>0) {
-						set.setInfiniteColor((ColorMagic)infiniteColors.iterator().next());
+						set.setInfiniteColor(infiniteColors.iterator().next());
 					}
 					else if (colorChits.size()>0) {
 						// Any of the chits may be used to cast the spell
@@ -4305,11 +4304,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 */
 	public ArrayList<GameObject> getAllSpells() {
 		GameData data = getGameObject().getGameData();
-		ArrayList<GameObject> allSpells = new ArrayList<GameObject>();
-		ArrayList spellIds = getAllSpellIds();
+		ArrayList<GameObject> allSpells = new ArrayList<>();
+		ArrayList<String> spellIds = getAllSpellIds();
 		if (!spellIds.isEmpty()) {
-			for (Iterator i=spellIds.iterator();i.hasNext();) {
-				String id = (String)i.next();
+			for (String id : spellIds) {
 				GameObject spell = data.getGameObject(Long.valueOf(id));
 				allSpells.add(spell);
 			}
@@ -4386,7 +4384,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		fetchStartingArmor(parentFrame,levelKey,pool,hostKeyVals,chooseSource);
 	}
 	private void fetchCompanions() { // custom characters only
-		ArrayList companionNames = getGameObject().getThisAttributeList(Constants.COMPANION_NAME);
+		ArrayList<String> companionNames = getGameObject().getThisAttributeList(Constants.COMPANION_NAME);
 		if (companionNames!=null && !companionNames.isEmpty()) {
 			// Remove any existing companions (in case we are developing here!)
 			for (RealmComponent hireling:getAllHirelings()) {
@@ -4403,8 +4401,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			ArrayList<GameObject> ccs = CustomCharacterLibrary.getSingleton().getCharacterCompanions(getGameObject());
 			if (!ccs.isEmpty()) {
 				String board = getGameObject().getThisAttribute(Constants.BOARD_NUMBER);
-				for (Iterator i=companionNames.iterator();i.hasNext();) {
-					String name = (String)i.next();
+				for (String name : companionNames) {
 					for (GameObject go:ccs) {
 						if (go.getName().equals(name)) {
 							GameObject companion = getGameObject().getGameData().createNewObject();
@@ -4442,7 +4439,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		else if (weapon!=null) {
 			// Fetch from the main object pool
-			item = fetchItem(frame,levelKey,pool,weapon,hostKeyVals,chooseSource);
+			item = fetchItem(frame,pool,weapon,hostKeyVals,chooseSource);
 			getGameObject().add(item);
 		}
 		if (item!=null) { // Might be null if someone strips a character, suicides, and respawns them
@@ -4511,7 +4508,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			StringTokenizer st = new StringTokenizer(armor,",");
 			while(st.hasMoreTokens()) {
 				String token = st.nextToken();
-				GameObject item = fetchItem(frame,levelKey,pool,token,hostKeyVals,!custom && chooseSource);
+				GameObject item = fetchItem(frame,pool,token,hostKeyVals,!custom && chooseSource);
 				if (item!=null) { // Might be null if someone strips a character, suicides, and respawns them
 					if (custom) {
 						// make a copy of the item
@@ -4527,10 +4524,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 	}
-	private GameObject fetchItem(JFrame frame,String levelKey,GamePool pool,String itemName,String hostKeyVals,boolean chooseSource) {
+	private GameObject fetchItem(JFrame frame,GamePool pool,String itemName,String hostKeyVals,boolean chooseSource) {
 		GameObject item = null;
 		itemName = RealmUtility.updateNameToBoard(getGameObject(),itemName);
-		ArrayList<String> keyVals = new ArrayList<String>();
+		ArrayList<String> keyVals = new ArrayList<>();
 		keyVals.add(hostKeyVals);
 		keyVals.add("name="+itemName);
 		keyVals.add("!magic");
@@ -5926,18 +5923,18 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 	}
-	public ArrayList getSpellExtras() {
-		ArrayList list = getList(SPELL_EXTRA_ACTIONS);
+	public ArrayList<String> getSpellExtras() {
+		ArrayList<String> list = getList(SPELL_EXTRA_ACTIONS);
 		if (list!=null && !list.isEmpty()) {
 			return new ArrayList(list);
 		}
 		return null;
 	}
-	public ArrayList getSpellExtraSources() {
+	public ArrayList<GameObject> getSpellExtraSources() {
 		ArrayList list = getList(SPELL_EXTRA_ACTION_SOURCE);
 		if (list!=null && !list.isEmpty()) {
 			GameData data = getGameObject().getGameData();
-			ArrayList ret = new ArrayList();
+			ArrayList<GameObject> ret = new ArrayList<>();
 			for (Iterator i=list.iterator();i.hasNext();) {
 				String id = (String)i.next();
 				GameObject go = data.getGameObject(Long.valueOf(id));

@@ -781,7 +781,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			}
 			
 			// Energize any permanent spells
-			ArrayList se = getCharacter().getSpellExtras();
+			ArrayList<String> se = getCharacter().getSpellExtras();
 			int seBefore = se==null?0:se.size();
 			spellMaster.energizePermanentSpells(getGameHandler().getMainFrame(),game);
 			ar.updateBlocked(); // check block status AFTER energizing spells - BUG 1624
@@ -791,10 +791,10 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			if (seAfter>seBefore) {
 				// A spell (or spells) were energized automatically during the turn.  Make sure these
 				// make it into the PhaseManager
-				ArrayList ses = getCharacter().getSpellExtraSources();
+				ArrayList<GameObject> ses = getCharacter().getSpellExtraSources();
 				for (int i=seBefore;i<seAfter;i++) {
-					String seAction = (String)se.get(i);
-					GameObject seGo = (GameObject)ses.get(i);
+					String seAction = se.get(i);
+					GameObject seGo = ses.get(i);
 					phaseManager.addFreeAction(seAction,seGo);
 				}
 			}
@@ -808,7 +808,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 					// Separate phases in case there is a mountain move or rest block
 					String phase = ar.getAction();
 					if (phase!=null) {
-						ArrayList separatePhases = new ArrayList();
+						ArrayList<String> separatePhases = new ArrayList<>();
 						for (int i=0;i<ar.getCount();i++) {
 							if (phase.indexOf(",")>=0) {
 								StringTokenizer phases = new StringTokenizer(phase,",");
@@ -822,8 +822,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 						}
 						
 						int ponyMovesBefore = phaseManager.getPonyMoves();
-						for (Iterator i=separatePhases.iterator();i.hasNext();) {
-							String aPhase = (String)i.next();
+						for (String aPhase : separatePhases) {
 							phaseManager.addPerformedPhase(aPhase,requiredObject,pony,locationAfterAction);
 							
 							// refresh the required object, so that freeActions isn't used more than is available!
@@ -834,8 +833,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 						
 						if (ponyMovesBefore>ponyMovesAfter) {
 							// Need to "ditch" all pony-less followers
-							for (Iterator i=getCharacter().getActionFollowers().iterator();i.hasNext();) {
-								CharacterWrapper follower = (CharacterWrapper)i.next();
+							for (CharacterWrapper follower : getCharacter().getActionFollowers()) {
 								BattleHorse horse = follower.getActiveSteed();
 								if (horse==null || horse.isDead() || !horse.doublesMove()) {
 									ClearingUtility.moveToLocation(follower.getGameObject(), locationBeforeAction);
@@ -843,8 +841,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 									getGameHandler().broadcast(follower.getGameObject().getName(),"Unable to follow Guide:  Guide is on a Pony");
 								}
 							}
-							for (Iterator i=getCharacter().getFollowingHirelings().iterator();i.hasNext();) {
-								RealmComponent hireling = (RealmComponent)i.next();
+							for (RealmComponent hireling : getCharacter().getFollowingHirelings()) {
 								BattleHorse horse = hireling.getHorse(false); // don't check location here!  If guide can do it, so can natives
 								if (horse==null || horse.isDead() || !horse.doublesMove()) {
 									// moving to the clearing is sufficient here
@@ -867,7 +864,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		return false;
 	}
 	
-	private boolean SearchWasFruitful(String result) {
+	private static boolean SearchWasFruitful(String result) {
 		//CJM -- this is very rough. I will have to test and make sure I catch all the possible results I need.
 		if(result.contains("Nothing")) return false;
 		if(result.contains("none")) return false;
@@ -917,19 +914,17 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		}
 	}
 	
-	private Collection getUnavailableManeuverOptions() {
+	private Collection<RealmComponent> getUnavailableManeuverOptions() {
 		// Limit maneuver choices to those that can handle the heaviest piece of inventory
 		Strength heaviestInventory = getCharacter().getNeededSupportWeight();
-		ArrayList list = new ArrayList();
-		for (Iterator i=getCharacter().getActiveMoveChits().iterator();i.hasNext();) {
-			CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+		ArrayList<RealmComponent> list = new ArrayList<>();
+		for (CharacterActionChitComponent chit : getCharacter().getActiveMoveChits()) {
 			if (!chit.getStrength().strongerOrEqualTo(heaviestInventory)) {
 				list.add(chit);
 			}
 		}
 		// Add any boots cards or horses
-		for (Iterator i=getCharacter().getActiveInventory().iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		for (GameObject go : getCharacter().getActiveInventory()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (go.hasThisAttribute("boots")) {
 				Strength bootStrength = new Strength(go.getThisAttribute("strength"));
@@ -969,8 +964,8 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		if (actionRows.size()>0) {
 			// NOTE:  current action type codes will be off, but I don't think it matters anymore...
 			// Actually, it does, so keep these up to date
-			Collection atc = getCharacter().getCurrentActionTypeCodes();
-			Collection oldCodes = new ArrayList();
+			Collection<String> atc = getCharacter().getCurrentActionTypeCodes();
+			Collection<String> oldCodes = new ArrayList<>();
 			if (atc!=null) {
 				oldCodes.addAll(atc);
 			}
