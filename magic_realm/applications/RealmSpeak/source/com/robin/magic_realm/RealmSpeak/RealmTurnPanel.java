@@ -228,17 +228,17 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			
 		// Now init
 		ActionRow.askAboutAbandoningFollowers = true;
-		actionRows = new ArrayList<ActionRow>();
-		ArrayList actions = getCharacter().getCurrentActions();
+		actionRows = new ArrayList<>();
+		ArrayList<String> actions = getCharacter().getCurrentActions();
 		if (actions!=null) {
-			ArrayList actionTypeCodes = getCharacter().getCurrentActionTypeCodes();
+			ArrayList<String> actionTypeCodes = getCharacter().getCurrentActionTypeCodes();
 			if (actionTypeCodes==null) {
-				actionTypeCodes = new ArrayList();
+				actionTypeCodes = new ArrayList<>();
 			}
 			isFollowing = false; // followers are exempt from blocking rules because the action is simultaneous with the guide.
 			for (int i=0;i<actions.size();i++) {
-				String action = (String)actions.get(i);
-				String actionTypeCode = (String)actionTypeCodes.get(i);
+				String action = actions.get(i);
+				String actionTypeCode = actionTypeCodes.get(i);
 				ActionRow ar = initActionRow(action,actionTypeCode);
 				if (ar!=null && !ar.isFollow()) {
 					CharacterWrapper.ActionState state = getCharacter().getStateForAction(action,i);
@@ -346,7 +346,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		boolean objectsNeedOpen = !getCharacter().getAllOpenableSites().isEmpty();
 		openButton.setEnabled(objectsNeedOpen);
 		
-		landButton.setEnabled(getCharacter().canDoDaytimeRecord() && current.isFlying() && !current.isBetweenTiles());
+		landButton.setEnabled(getCharacter().canDoDaytimeRecord() && current!=null && current.isFlying() && !current.isBetweenTiles());
 		landButton.setVisible(landButton.isEnabled());
 		if (pickupItemButton!=null) {
 			boolean canPickup = !landButton.isEnabled() && current!=null && current.isInClearing();
@@ -767,7 +767,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			}
 		
 			// Collect any newActions that may have spawned (ie., Curse as the result of a search)
-			ArrayList<ActionRow> newActions = new ArrayList<ActionRow>();
+			ArrayList<ActionRow> newActions = new ArrayList<>();
 			ActionRow newAction = ar.getNewAction();
 			while(newAction!=null) {
 				newAction.setSpawned(true);
@@ -908,7 +908,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 	}
 	
 	private void openSite() {
-		Collection openable = getCharacter().getAllOpenableSites();
+		Collection<GameObject> openable = getCharacter().getAllOpenableSites();
 		if (TreasureUtility.openOneObject(getGameHandler().getMainFrame(),getCharacter(),openable,getGameHandler().getUpdateFrameListener(),false)!=null) {
 			updateControls();
 		}
@@ -948,7 +948,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		getCharacter().setCombatPlayOrder(game.getNextDayTurnCount());
 		
 		// Check to see if any chits are going to be hindered in combat due to inventory, and report it here
-		Collection c = getUnavailableManeuverOptions();
+		Collection<RealmComponent> c = getUnavailableManeuverOptions();
 		if (getGameHandler().isOption(RealmSpeakOptions.HEAVY_INV_WARNING) && c.size()>0) {
 			RealmComponentDisplayDialog dialog = new RealmComponentDisplayDialog(
 					getGameHandler().getMainFrame(),
@@ -975,7 +975,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 
 			// Now, rebuild them from actionRows
 			boolean blocked = false;
-			Iterator fi = oldCodes.iterator();
+			Iterator<String> fi = oldCodes.iterator();
 			for (ActionRow ar:actionRows) {
 				if (!blocked && ar.isCancelled()) {
 					blocked = true;
@@ -987,7 +987,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 				if (action!=null) { // might be null if there was a re-roll on a table
 					String actionTypeCode = "*"; // actionTypeCode is the type of clearing from which the action was performed
 					try {
-						actionTypeCode = (String)fi.next(); // NoSuchElementException!?!?
+						actionTypeCode = fi.next(); // NoSuchElementException!?!?
 					}
 					catch(NoSuchElementException ex) {
 						// Well this will tell me what's happening if it happens again
@@ -1042,7 +1042,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 				}
 			}
 			DieRoller monsterDieRoller = game.getMonsterDie();
-			ArrayList<GameObject> summoned = new ArrayList<GameObject>();
+			ArrayList<GameObject> summoned = new ArrayList<>();
 			SetupCardUtility.summonMonsters(hostPrefs,summoned,getCharacter(),monsterDieRoller);
 			
 			if (getMainFrame().getGameHandler().isOption(RealmSpeakOptions.TURN_END_RESULTS)) {
@@ -1148,7 +1148,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		}
 	}
 	public void verifyAbandonActionFollowers() {
-		ArrayList canLeaveBehind = new ArrayList();
+		ArrayList<CharacterWrapper> canLeaveBehind = new ArrayList<>();
 		for (CharacterWrapper follower:actionFollowers) {
 			if (!follower.foundHiddenEnemy(getCharacter().getGameObject())) {
 				canLeaveBehind.add(follower);
@@ -1180,12 +1180,12 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		}
 	}
 	public void doAbandonActionFollowers() {
-		ArrayList<CharacterWrapper> toRemove = new ArrayList<CharacterWrapper>();
+		ArrayList<CharacterWrapper> toRemove = new ArrayList<>();
 		if (actionFollowers.size()==1) {
 			toRemove.add(actionFollowers.get(0));
 		}
 		else {
-			ArrayList<GameObject> list = new ArrayList<GameObject>();
+			ArrayList<GameObject> list = new ArrayList<>();
 			for (CharacterWrapper aFollower:actionFollowers) {
 				list.add(aFollower.getGameObject());
 			}
@@ -1249,14 +1249,14 @@ public class RealmTurnPanel extends CharacterFramePanel {
 	public void startDaytimeRecord() {
 		if (!isFollowing) {
 			// First, remove all pending actions
-			Collection atcc = getCharacter().getCurrentActionTypeCodes();
-			ArrayList atc = new ArrayList();
+			Collection<String> atcc = getCharacter().getCurrentActionTypeCodes();
+			ArrayList<String> atc = new ArrayList<>();
 			if (atcc!=null) {
 				atc.addAll(atcc);
 			}
-			Iterator n=atc.iterator();
+			Iterator<String> n=atc.iterator();
 			getCharacter().clearCurrentActions();
-			ArrayList<ActionRow> toRemove = new ArrayList<ActionRow>();
+			ArrayList<ActionRow> toRemove = new ArrayList<>();
 			for (ActionRow ar:actionRows) {
 				if (ar.getAction()!=null) { // ignore null action rows
 					if (ar.isPending()) {
@@ -1271,7 +1271,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 						// Add it back
 						getCharacter().addCurrentAction(ar.getAction());
 						getCharacter().addCurrentActionValid(true);
-						getCharacter().addCurrentActionTypeCode((String)n.next()); // TODO Check this
+						getCharacter().addCurrentActionTypeCode(n.next()); // TODO Check this
 					}
 				}
 			}
@@ -1311,7 +1311,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 	public void doLosePhases(int phases) {
 		// Find pending phases
 		int pendingCount = 0;
-		ArrayList<ActionRow> pendingPhases = new ArrayList<ActionRow>();
+		ArrayList<ActionRow> pendingPhases = new ArrayList<>();
 		for (ActionRow ar:actionRows) {
 			if (ar.isPending()) {
 				pendingPhases.add(ar);
