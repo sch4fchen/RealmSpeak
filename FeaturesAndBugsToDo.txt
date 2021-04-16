@@ -1,5 +1,3 @@
-Testing only: Combat + "Dual Wielding"
-
 Dual Wielding: Option alert both weapons
 SuperRealm: Steel Against Magic: A character who is casting a spell and has no active armor counters may also use his active weapon and a second attention chit to target an individual and make a separate attack (or parry) if, and only if, the active weapon is the Staff.
 

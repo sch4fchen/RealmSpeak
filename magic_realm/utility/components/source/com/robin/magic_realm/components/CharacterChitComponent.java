@@ -845,17 +845,20 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		GameObject transmorph = character.getTransmorph();
 		if (transmorph == null) { // Character must not be transmorphed!
 			ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
-			RealmComponent rc = getAttackChit();
-			CombatWrapper combatChit = new CombatWrapper(rc.getGameObject());
+			RealmComponent attackChit = getAttackChit();
+			CombatWrapper combatChit = null;
+			if (attackChit != null) {
+				combatChit = new CombatWrapper(attackChit.getGameObject());
+			}
 			if (weapons != null) {
 				for (WeaponChitComponent weapon : weapons) {
-					if (weapon != null && combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
+					if (weapon != null && (attackChit == null || combatChit.getWeaponId().equals(weapon.getGameObject().getStringId()))) {
 						return weapon.isMissile();
 					}
 				}
 			}
 			GameObject tw = getTreasureWeaponObject();
-			if (tw!=null && combatChit.getWeaponId() == tw.getStringId()) {
+			if (tw!=null && (attackChit == null || combatChit.getWeaponId() == tw.getStringId())) {
 				return tw.hasThisAttribute("missile");
 			}
 		}
