@@ -82,14 +82,14 @@ public class Advantage {
 	
 	public static Advantage createFromCharacter(GameObject character,String levelKey) {
 		String first = null;
-		ArrayList list = character.getAttributeList(levelKey,"advantages");
+		ArrayList<String> list = character.getAttributeList(levelKey,"advantages");
 		if (list!=null && !list.isEmpty()) {
-			first = (String)list.get(0); // For new characters, only ONE advantage per level is allowed
+			first = list.get(0); // For new characters, only ONE advantage per level is allowed
 		}
 		if (first==null) {
 			list = character.getAttributeList(levelKey,"optional");
 			if (list!=null && !list.isEmpty()) {
-				first = (String)list.get(0); // For new characters, only ONE advantage per level is allowed
+				first = list.get(0); // For new characters, only ONE advantage per level is allowed
 			}
 		}
 		if (first!=null) {
@@ -105,17 +105,4 @@ public class Advantage {
 		}
 		return null;
 	}
-//	public static Advantage createFromCharacter(GameObject character,String levelKey) {
-//		String badgeName = character.getAttribute(levelKey,"badge_icon");
-//		if (badgeName!=null) {
-//			Advantage advantage = new Advantage(badgeName);
-//			ArrayList list = character.getAttributeList(levelKey,"advantages");
-//			if (list!=null && !list.isEmpty()) {
-//				String first = (String)list.get(0); // For new characters, only ONE advantage per level is allowed
-//				advantage.setFullSring(first);
-//				return advantage;
-//			}
-//		}
-//		return null;
-//	}
 }

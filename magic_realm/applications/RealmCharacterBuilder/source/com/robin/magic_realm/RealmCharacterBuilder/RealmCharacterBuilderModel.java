@@ -174,7 +174,7 @@ public class RealmCharacterBuilderModel {
 	 * This will grab the weapon names from all four levels, and remove any GameObjects that are NOT used
 	 */
 	public void updateWeaponUsage() {
-		ArrayList<String> weapons = new ArrayList<String>();
+		ArrayList<String> weapons = new ArrayList<>();
 		for (int i=1;i<=4;i++) {
 			String levelKey = "level_"+i;
 			String weapon = character.getGameObject().getAttribute(levelKey,"weapon");
@@ -196,7 +196,7 @@ public class RealmCharacterBuilderModel {
 		}
 	}
 	public ArrayList<String> getAllWeaponNames() {
-		return new ArrayList<String>(weaponHash.keySet());
+		return new ArrayList<>(weaponHash.keySet());
 	}
 	public boolean saveToFile(File file,boolean graphicsOnly) {
 		String name = character.getGameObject().getName().replace(' ','_');
@@ -370,7 +370,7 @@ public class RealmCharacterBuilderModel {
 	}
 	
 	public ArrayList<GameObject> getAllExtraChits() {
-		ArrayList<GameObject> ret = new ArrayList<GameObject>();
+		ArrayList<GameObject> ret = new ArrayList<>();
 		for (int n=1;n<=4;n++) {
 			String levelKey = "level_"+n;
 			String blockName = Constants.BONUS_CHIT+levelKey;
@@ -384,7 +384,7 @@ public class RealmCharacterBuilderModel {
 	}
 	
 	public ArrayList<GameObject> getAllExtraInventory() {
-		ArrayList<GameObject> ret = new ArrayList<GameObject>();
+		ArrayList<GameObject> ret = new ArrayList<>();
 		for (int n=1;n<=4;n++) {
 			String levelKey = "level_"+n;
 			String blockName = Constants.BONUS_INVENTORY+levelKey;
@@ -413,10 +413,6 @@ public class RealmCharacterBuilderModel {
 		character.setThisAttribute("vulnerability","L");
 		character.setThisAttribute("icon_type","question");
 		character.setThisAttribute("icon_folder",RealmCharacterConstants.CUSTOM_ICON_BASE_PATH+"characters");
-// test
-//character.addAttributeListItem("level_2","advantages","TEST: Did this work?  What if this is a really really long explanation?");
-//character.setAttribute("level_2","badge_icon",RealmCharacterConstants.CUSTOM_ICON_BASE_PATH+"badges/two");
-//character.setAttribute("level_2","no_magic_fatigue","");
 		for (int i=1;i<=4;i++) {
 			String name = i==4?"Untitled":("Level "+i);
 			character.setAttribute("level_"+i,"name",name);

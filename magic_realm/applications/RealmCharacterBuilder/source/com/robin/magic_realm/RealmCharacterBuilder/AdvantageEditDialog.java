@@ -73,7 +73,7 @@ public class AdvantageEditDialog extends AggressiveDialog {
 			this.advantage = createAdvantage();
 		}
 		this.magicRealmData = magicRealmData;
-		saveAttributes = new ArrayList<String>(Arrays.asList(CharacterWrapper.DONT_COPY_ATTRIBUTES));
+		saveAttributes = new ArrayList<>(Arrays.asList(CharacterWrapper.DONT_COPY_ATTRIBUTES));
 		saveAttributes.remove("badge_icon");
 		initComponents();
 		setLocationRelativeTo(frame);
@@ -299,7 +299,7 @@ public class AdvantageEditDialog extends AggressiveDialog {
 		detailPanel = new JPanel(new BorderLayout());
 		detailPanel.setBorder(BorderFactory.createTitledBorder("Details"));
 		
-		panelList = new ArrayList<AdvantageEditPanel>();
+		panelList = new ArrayList<>();
 		panelList.add(defaultEditPanel = new BlankEditPanel(model.getCharacter(),levelKey));
 		panelList.add(new ColorSourceEditPanel(model.getCharacter(),levelKey));
 		panelList.add(new CompanionEditPanel(model.getCharacter(),levelKey));
