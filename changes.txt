@@ -20,7 +20,8 @@ BUGS/ISSUES:
 # Fix off-road chit location for Borderland and Cliff tile
 # Fix endgame scoring showing for clients
 # Fix spell viewer showing same spell multiple times
-# Fix Monster Control ability to set correct term of hire and refresh term each round 
+# Fix Monster Control ability to set correct term of hire and refresh term each round
+# Fix followers summoning monsters at the end of the guide's turn
 # Character Editor: Rename "Monster Control" to "Monster Command"
 # Adapt Linux files to run RealmSpeakFull.jar instead of RealmSpeak.jar
 # Runlinux-questbuild file to run QuestBuilder
