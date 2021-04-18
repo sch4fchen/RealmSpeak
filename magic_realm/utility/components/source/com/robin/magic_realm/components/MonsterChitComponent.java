@@ -193,7 +193,11 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 					length="0";
 				}
 				tt = new TextType("("+length+")", cs,statColor);
-				tt.draw(g,cs>>1,oy - tt.getHeight(g),Alignment.Left);
+				int offset = 0;
+				if (this.isAbsorbed()) {
+					offset = 12;
+				}
+				tt.draw(g,(cs>>1)-offset,oy - tt.getHeight(g),Alignment.Left);
 			}
 		}
 		

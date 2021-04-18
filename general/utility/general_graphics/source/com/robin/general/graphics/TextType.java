@@ -34,8 +34,8 @@ public class TextType {
 	protected static final Font defaultFont = new Font("Dialog",Font.PLAIN,11);
 	protected static final Color defaultColor = Color.black;
 
-	protected static Hashtable typeFonts = null;
-	protected static Hashtable typeColors = null;
+	protected static Hashtable<String, Font> typeFonts = null;
+	protected static Hashtable<String, Color> typeColors = null;
 	
 	/**
 	 * Adds a type to the TextType palette
@@ -43,13 +43,13 @@ public class TextType {
 	public static void addType(String typeName,Font font,Color color) {
 		if (font!=null) {
 			if (typeFonts==null) {
-				typeFonts = new Hashtable();
+				typeFonts = new Hashtable<>();
 			}
 			typeFonts.put(typeName,font);
 		}
 		if (color!=null) {
 			if (typeColors==null) {
-				typeColors = new Hashtable();
+				typeColors = new Hashtable<>();
 			}
 			typeColors.put(typeName,color);
 		}
@@ -76,7 +76,7 @@ public class TextType {
 	public Font getFont() {
 		Font font = null;
 		if (typeFonts!=null) {
-			font = (Font)typeFonts.get(type);
+			font = typeFonts.get(type);
 		}
 		if (font==null) {
 			font = defaultFont;
@@ -91,7 +91,7 @@ public class TextType {
 	public Color getColor() {
 		Color color = null;
 		if (typeColors!=null) {
-			color = (Color)typeColors.get(type);
+			color = typeColors.get(type);
 		}
 		if (color==null) {
 			color = defaultColor;
@@ -130,7 +130,7 @@ public class TextType {
 			// Build lines
 			int currentWidth = 0;
 			StringBuffer sb = new StringBuffer();
-			ArrayList lines = new ArrayList();
+			ArrayList<String> lines = new ArrayList<>();
 			for (int i=0;i<word.length;i++) {
 				int newWidth = currentWidth+wordWidth[i];
 				
@@ -151,7 +151,7 @@ public class TextType {
 				lines.add(sb.toString());
 			}
 			
-			line = (String[])lines.toArray(new String[lines.size()]);
+			line = lines.toArray(new String[lines.size()]);
 		}
 	}
 	
@@ -202,7 +202,7 @@ public class TextType {
 		if (rotate!=0) {
 			orig = g.getTransform();
 			AffineTransform rotated = new AffineTransform(orig);
-			rotated.rotate(Math.toRadians((double)rotate),x,y);
+			rotated.rotate(Math.toRadians(rotate),x,y);
 			g.setTransform(rotated);
 		}
 		int offset = 0;
