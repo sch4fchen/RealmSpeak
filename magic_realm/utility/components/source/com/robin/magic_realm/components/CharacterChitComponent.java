@@ -312,6 +312,12 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	}
 
 	public RealmComponent getAttackChit() {
+		CharacterWrapper character = new CharacterWrapper(getGameObject());
+		GameObject transmorph = character.getTransmorph();
+		if (transmorph != null) {
+			// Fight is handled in the transmorphed monster object
+			return RealmComponent.getRealmComponent(transmorph);
+		}
 		return this.AttackChit;
 	}
 	public void setAttackChit(RealmComponent rc) {

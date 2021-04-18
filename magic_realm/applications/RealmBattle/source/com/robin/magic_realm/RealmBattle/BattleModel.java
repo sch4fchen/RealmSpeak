@@ -745,9 +745,7 @@ public class BattleModel {
 					CharacterChitComponent chit = (CharacterChitComponent)battleChit;
 					MonsterChitComponent transmorph = chit.getTransmorphedComponent();
 					if (transmorph!=null) {
-						CharacterChitComponent charChit = new CharacterChitComponent(chit.getGameObject());
-						charChit.setAttackChit(transmorph.getFightChit());
-						battleChits.add(charChit);
+						battleChits.add(battleChit);
 						RealmComponent weapon = transmorph.getWeapon();
 						if (weapon!=null) {
 							battleChits.add((BattleChit)weapon);
@@ -1529,7 +1527,7 @@ public class BattleModel {
 			combat.setCombatBox(box);
 		}
 	}
-	private void changeTactics(String prefix,CombatWrapper combatTarget,HashLists<Integer, RealmComponent> boxHash) {
+	private static void changeTactics(String prefix,CombatWrapper combatTarget,HashLists<Integer, RealmComponent> boxHash) {
 		DieRoller roller = new DieRoller(); // Rule 22.5/3 specifies that modifiers do NOT affect this roll
 		roller.addRedDie();
 		roller.addWhiteDie();
