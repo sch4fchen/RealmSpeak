@@ -745,7 +745,9 @@ public class BattleModel {
 					CharacterChitComponent chit = (CharacterChitComponent)battleChit;
 					MonsterChitComponent transmorph = chit.getTransmorphedComponent();
 					if (transmorph!=null) {
-						battleChits.add(battleChit);
+						CharacterChitComponent charChit = new CharacterChitComponent(chit.getGameObject());
+						charChit.setAttackChit(transmorph.getFightChit());
+						battleChits.add(charChit);
 						RealmComponent weapon = transmorph.getWeapon();
 						if (weapon!=null) {
 							battleChits.add((BattleChit)weapon);
