@@ -2463,11 +2463,22 @@ public class CombatFrame extends JFrame {
 				}
 			}
 			// Clear out weapon, if any played
-			for (WeaponChitComponent weapon : weapons) {
-				weapon.getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
+			if (weapons != null) {
+				for (WeaponChitComponent weapon : weapons) {
+					weapon.getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
+				}
 			}
 			if (weaponCard != null) {
 				weaponCard.getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
+			}
+			
+			GameObject transmorph = activeCharacter.getTransmorph();
+			if (transmorph != null) {
+				RealmComponent rc = RealmComponent.getRealmComponent(transmorph);
+				if (rc.isMonster()) {
+					MonsterChitComponent monster = (MonsterChitComponent)rc;
+					monster.getFightChit().getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
+				}
 			}
 			
 			charCombat.setPlayedAttack(false);

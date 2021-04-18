@@ -3090,7 +3090,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 						GameObject go = getGameObject().getGameData().getGameObject(Long.valueOf(id));
 						CharacterWrapper nextFollower = new CharacterWrapper(go);
 						nextFollower.setNoSummon(true);
-						
 					}
 					
 					// Summon monsters now.
