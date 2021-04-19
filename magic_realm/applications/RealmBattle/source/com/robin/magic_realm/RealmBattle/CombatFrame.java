@@ -1287,7 +1287,7 @@ public class CombatFrame extends JFrame {
 					
 					if (rc.isCharacter()) {
 						CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
-						if (character.getPlayerName().equals(playerName)) { // FIXME NPE when adding, and then removing a character in the battle builder, and then playing a battle.
+						if (character.getPlayerName().equals(playerName)) {
 							lockNextButton.setEnabled(true);
 							CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 							setLockNext(combat.isLockNext());

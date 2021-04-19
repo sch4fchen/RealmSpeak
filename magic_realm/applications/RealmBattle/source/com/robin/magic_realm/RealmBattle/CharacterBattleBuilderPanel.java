@@ -83,8 +83,7 @@ public class CharacterBattleBuilderPanel extends JPanel {
 	private void initPanel() {
 		setLayout(new BorderLayout());
 		
-		for (Iterator i=character.getInventory().iterator();i.hasNext();) {
-			GameObject item = (GameObject)i.next();
+		for (GameObject item : character.getInventory()) {
 			item.setThisAttribute(BattleBuilder.BATTLE_BUILDER_KEY);
 		}
 		
@@ -100,20 +99,19 @@ public class CharacterBattleBuilderPanel extends JPanel {
 				character.getGameObject().removeThisAttribute(BattleBuilder.BATTLE_BUILDER_KEY);
 				Collection c = character.getInventory();
 				if (c!=null) {
-					for (Iterator i=character.getInventory().iterator();i.hasNext();) {
-						GameObject item = (GameObject)i.next();
+					for (GameObject item : character.getInventory()) {
 						item.removeThisAttribute(BattleBuilder.BATTLE_BUILDER_KEY);
 					}
 				}
 				c = hirelingPanel.getAllRealmComponents();
 				if (c!=null) {
-					for (Iterator i=hirelingPanel.getAllRealmComponents().iterator();i.hasNext();) {
-						RealmComponent rc = (RealmComponent)i.next();
+					for (RealmComponent rc : hirelingPanel.getAllRealmComponents()) {
 						rc.getGameObject().removeThisAttribute(BattleBuilder.BATTLE_BUILDER_KEY);
 					}
 				}
 				builder.deleteTab(character.getGameObject().getName());
 				character.clearPlayerAttributes(); // puts it back in the player pool again
+				character.moveToLocation(dummyFrame, null);
 			}
 		});
 		box.add(removeCharacterButton);
