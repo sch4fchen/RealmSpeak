@@ -1512,7 +1512,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		addMoveHistory(location);
 		
 		// Inactivate horses if entering a cave
-		if (location.isInClearing()) {
+		if (location!=null&&location.isInClearing()) {
 			boolean cave = location.clearing.isCave();
 			for (GameObject inv : getInventory()) {
 				RealmComponent rc = RealmComponent.getRealmComponent(inv);
