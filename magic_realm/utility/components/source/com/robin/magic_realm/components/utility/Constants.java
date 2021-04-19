@@ -203,6 +203,7 @@ public class Constants {
 	public static final String NO_AMBUSH = "no_ambush";
 	public static final String STRONG = "strong";
 	public static final String DUAL_WIELDING = "dual_wielding";
+	public static final String DUAL_WIELDING_ALERT = "dual_wielding_alert";
 	public static final String BATTLE_MAGE = "battle_mage";
 	public static final String SHARPSHOOTER = "sharpshooter";
 	public static final String ENHANCED_MAGIC = "enhanced_magic";

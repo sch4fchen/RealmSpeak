@@ -6,6 +6,7 @@ NEW FEATURES:
 # Optional Rule: No general quests (AllPlay for QtR, Events for BoQ)
 # Optional Rule: Dual wielding (Expansion 1 variant)
 # New character ability: Dual wielding
+# New character ability: Dual wielding (alert): can alert multiple weapons
 # New character ability: No Ambush: Character gets unhidden when attacking from an ambush
 # Character Editor: Die modifiers: Add Transform spell
 # Character Editor: Die modifiers: Add Treasures within Treasure

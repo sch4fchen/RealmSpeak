@@ -1516,7 +1516,14 @@ public class ActionRow {
 		}
 		ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
 		if (weapons!=null && !weapons.isEmpty()) {
-			alertChoices.add(weapons.get(0));
+			if (character.affectedByKey(Constants.DUAL_WIELDING_ALERT)) {
+				for (WeaponChitComponent weapon : weapons) {
+					alertChoices.add(weapon);
+				}
+			}
+			else {
+				alertChoices.add(weapons.get(0));
+			}
 		}
 		if (alertChoices.size()>0) {
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Alert which?",true);

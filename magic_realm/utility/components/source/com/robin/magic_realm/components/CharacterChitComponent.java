@@ -929,19 +929,31 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	}
 	public void changeWeaponState(boolean hit) {
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
+		if (character.affectedByKey(Constants.DUAL_WIELDING_ALERT)) {
+			ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
+			if (weapons != null && !weapons.isEmpty()) {
+				for (WeaponChitComponent weapon : weapons) {
+					alertWeapon(weapon, hit);
+				}
+			}
+			return;
+		}
+		
 		WeaponChitComponent weapon = character.getActivePrimaryWeapon();
 		if (weapon != null) {
-			// make sure weapon was played in combat this round (otherwise it doesn't change)
-			int box = (new CombatWrapper(weapon.getGameObject())).getCombatBox();
-			if (box > 0) {
-				if (activeWeaponStaysAlerted() || weapon.getGameObject().hasThisAttribute(Constants.ALERTED_WEAPON)) {
-					// Treat like the character just missed - keeps weapon alerted
-					hit = false;
+			alertWeapon(weapon, hit);
+		}
+	}
+	private void alertWeapon(WeaponChitComponent weapon, boolean hit) {
+		// make sure weapon was played in combat this round (otherwise it doesn't change)
+		int box = (new CombatWrapper(weapon.getGameObject())).getCombatBox();
+		if (box > 0) {
+			if (activeWeaponStaysAlerted() || weapon.getGameObject().hasThisAttribute(Constants.ALERTED_WEAPON)) {
+				// Treat like the character just missed - keeps weapon alerted
+				hit = false;
 				}
-
-				// hits should unalert weapons, misses should alert them
-				weapon.setAlerted(!hit);
-			}
+			// hits should unalert weapons, misses should alert them
+			weapon.setAlerted(!hit);
 		}
 	}
 	public void setTarget(RealmComponent comp) {

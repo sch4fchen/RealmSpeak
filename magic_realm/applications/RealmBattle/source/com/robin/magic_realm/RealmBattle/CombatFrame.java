@@ -3043,7 +3043,11 @@ public class CombatFrame extends JFrame {
 	}
 	public void alert() {
 		// Verify that the character has an active weapon or berserk chit to alert
-		WeaponChitComponent weapon = activeCharacter.getActivePrimaryWeapon();
+		WeaponChitComponent weaponPrimary = activeCharacter.getActivePrimaryWeapon();
+		ArrayList<WeaponChitComponent> weapons = null;
+		if (activeCharacter.affectedByKey(Constants.DUAL_WIELDING_ALERT)) {
+			weapons = activeCharacter.getActiveWeapons();
+		}
 		
 		// Find fastest attacker move speed on your sheet
 		MoveActivator activator = new MoveActivator(this);
@@ -3051,26 +3055,36 @@ public class CombatFrame extends JFrame {
 		
 		// Find all playable options
 		Collection fightAlertChits = activeCharacter.getActiveFightAlertChits(fastest);
-		if (weapon==null && fightAlertChits.isEmpty()) {
+		if (weaponPrimary==null && (weapons==null || weapons.isEmpty()) && fightAlertChits.isEmpty()) {
 			JOptionPane.showMessageDialog(this,"You have nothing to Alert or Unalert.","Alert/Berserk",JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
-		Collection fightSpeedOptions = activeCharacter.getFightSpeedOptions(fastest,true);
-		Collection availableFightOptions = getAvailableFightOptions(0);
+		Collection<RealmComponent> fightSpeedOptions = activeCharacter.getFightSpeedOptions(fastest,true);
+		Collection<RealmComponent> availableFightOptions = getAvailableFightOptions(0);
 		fightSpeedOptions.retainAll(availableFightOptions); // Intersection between the two
 		if (fightSpeedOptions.size()>0 || fightAlertChits.size()>0) {
 			// Choose one
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select an option:",true);
 			int keyN = 0;
 			// Weapon alert options
-			if (weapon!=null) {
-				String string = weapon.isAlerted()?"Unalert":"Alert";
-				for (Iterator i=fightSpeedOptions.iterator();i.hasNext();) {
-					RealmComponent rc = (RealmComponent)i.next();
+			if (weapons != null) {
+				for (WeaponChitComponent weapon : weapons) {
+					String string = weapon.isAlerted()?"Unalert":"Alert";
+					for (RealmComponent rc : fightSpeedOptions) {
+						String key = "C"+(keyN++);
+						chooser.addOption(key,string);
+						chooser.addRealmComponentToOption(key,rc);
+						chooser.addRealmComponentToOption(key,weapon);
+					}
+				}
+			}
+			else if (weaponPrimary!=null) {
+				String string = weaponPrimary.isAlerted()?"Unalert":"Alert";
+				for (RealmComponent rc : fightSpeedOptions) {
 					String key = "C"+(keyN++);
 					chooser.addOption(key,string);
 					chooser.addRealmComponentToOption(key,rc);
-					chooser.addRealmComponentToOption(key,weapon);
+					chooser.addRealmComponentToOption(key,weaponPrimary);
 				}
 			}
 			// Chit alert options (BERSERK)
@@ -3087,11 +3101,18 @@ public class CombatFrame extends JFrame {
 				CombatWrapper combat = new CombatWrapper(activeCharacter.getGameObject());
 				combat.addUsedChit(fightToPlay.getGameObject());
 				
-				if (weapon!=null && chooser.getSelectedComponents().size()==2) {
+				if (weapons!=null && chooser.getSelectedComponents().size()==2) {
 					// Alert or unalert the weapon
-					weapon.setAlerted(!weapon.isAlerted());
-					String word = weapon.isAlerted()?"Alerts":"Unalerts";
-					broadcastMessage(activeCharacter.getGameObject().getName(),word+" the "+weapon.getGameObject().getName());
+					WeaponChitComponent selectedWeapon = (WeaponChitComponent) chooser.getLastSelectedComponent();
+					selectedWeapon.setAlerted(!selectedWeapon.isAlerted());
+					String word = selectedWeapon.isAlerted()?"Alerts":"Unalerts";
+					broadcastMessage(activeCharacter.getGameObject().getName(),word+" the "+selectedWeapon.getGameObject().getName());
+				}
+				else if (weaponPrimary!=null && chooser.getSelectedComponents().size()==2) {
+					// Alert or unalert the weapon
+					weaponPrimary.setAlerted(!weaponPrimary.isAlerted());
+					String word = weaponPrimary.isAlerted()?"Alerts":"Unalerts";
+					broadcastMessage(activeCharacter.getGameObject().getName(),word+" the "+weaponPrimary.getGameObject().getName());
 				}
 				else {
 					// Kinda HAS to be the BERSERK chit here, because nothing else applies!
