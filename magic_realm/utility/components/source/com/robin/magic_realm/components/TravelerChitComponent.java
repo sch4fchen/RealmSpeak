@@ -240,7 +240,7 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 		}
 		return false;
 	}
-	public void changeWeaponState(boolean hit) {
+	public void changeWeaponState() {
 		// Do nothing
 	}
 	public int getAttackCombatBox() {

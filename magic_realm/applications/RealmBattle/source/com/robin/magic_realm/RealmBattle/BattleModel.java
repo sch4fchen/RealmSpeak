@@ -996,6 +996,7 @@ public class BattleModel {
 					// Intercepted!
 					hitType = INTERCEPT;
 					attackerCombat.setHitResult("Intercepted");
+					setWeaponHitForCharacter(attacker);
 					logBattleInfo("Intercepted! (box "+attacker.getAttackCombatBox()+" matches box "+target.getManeuverCombatBox()+")");
 				}
 				else if (undercuttingAllowed && attacker.getAttackSpeed().fasterThan(target.getMoveSpeed())) {
@@ -1007,6 +1008,7 @@ public class BattleModel {
 					else {
 						hitType = UNDERCUT;
 						attackerCombat.setHitResult("Undercut");
+						setWeaponHitForCharacter(attacker);
 						logBattleInfo("Undercut! ("+attacker.getAttackSpeed()+" is faster than "+target.getMoveSpeed()+")");
 					}
 				}
@@ -1014,6 +1016,7 @@ public class BattleModel {
 					// Check for the special case where a character has a HIT_TIE treasure alerted
 					hitType = UNDERCUT;
 					attackerCombat.setHitResult("Undercut");
+					setWeaponHitForCharacter(attacker);
 					logBattleInfo("Undercut (hits on tie)! ("+attacker.getAttackSpeed()+" is equal to "+target.getMoveSpeed()+")");
 				}
 				if (!undercuttingAllowed && hitType==MISS) {
@@ -1250,6 +1253,16 @@ public class BattleModel {
 		}
 		sb.append(" ");
 		return sb.toString();
+	}
+	private static void setWeaponHitForCharacter(BattleChit attacker) {
+		if (attacker.isCharacter() && !(new CharacterWrapper(attacker.getGameObject()).isTransmorphed())) {
+			RealmComponent attackChit = ((CharacterChitComponent)attacker).getAttackChit();
+			if (attackChit!=null) {
+				CombatWrapper combatAttack = new CombatWrapper(attackChit.getGameObject());
+				CombatWrapper attackerCombat = new CombatWrapper(attacker.getGameObject());
+				attackerCombat.setWeaponHit(combatAttack.getWeaponId());
+			}
+		}
 	}
 	private Harm getAdjustedHarm(BattleChit attacker,int fumbleModifier,String targetId) {
 		if (hostPrefs.hasPref(Constants.OPT_FUMBLE)) {
@@ -1648,7 +1661,7 @@ public class BattleModel {
 			
 			// Adjust weapon alertness
 			BattleChit battle = (BattleChit)rc;
-			battle.changeWeaponState(combat.getHitResult()!=null);
+			battle.changeWeaponState();
 			
 			// Get rid of destroyed stuff and fatigue magic
 			if (rc.isCharacter()) {

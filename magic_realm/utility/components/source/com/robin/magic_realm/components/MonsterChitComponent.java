@@ -553,7 +553,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		return gameObject.getThisAttribute("missile");
 	}
 	
-	public void changeWeaponState(boolean hit) {
+	public void changeWeaponState() {
 		// Do nothing
 	}
 

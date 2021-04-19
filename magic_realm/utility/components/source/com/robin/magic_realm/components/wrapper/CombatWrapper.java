@@ -85,6 +85,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String HIT_TYPE = "HT_";
 	private static final String HIT_TYPE_ID = "HTID_";
 	private static final String WEAPON_ID = "WID_";
+	private static final String HIT_WEAPON_ID = "HIT_WID_";
 	
 	private static final String HIT_BY_ORDER_NUMBER = "HIT_BY_ORDER_NUMBER";
 	
@@ -489,6 +490,9 @@ public class CombatWrapper extends GameObjectWrapper {
 	public void setWeaponId(RealmComponent weapon) {
 		setString(WEAPON_ID,weapon.getGameObject().getStringId());
 	}
+	public void setWeaponHit(String weaponId) {
+		addListItem(HIT_WEAPON_ID,weaponId);
+	}
 	public boolean getPlacedAsMove() {
 		return getBoolean(PLACED_AS_MOVE);
 	}
@@ -497,6 +501,12 @@ public class CombatWrapper extends GameObjectWrapper {
 	}
 	public String getWeaponId() {
 		return getString(WEAPON_ID);
+	}
+	public ArrayList<String> getWeaponsHit() {
+		return getList(HIT_WEAPON_ID);
+	}
+	public boolean weaponHasHit(String weaponId) {
+		return hasListItem(HIT_WEAPON_ID, weaponId);
 	}
 	
 	// Charging
@@ -634,6 +644,7 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,HIT_TYPE);
 			go.removeAttribute(COMBAT_BLOCK,HIT_TYPE_ID);
 			go.removeAttribute(COMBAT_BLOCK,WEAPON_ID);
+			go.removeAttribute(COMBAT_BLOCK,HIT_WEAPON_ID);
 			go.removeAttribute(COMBAT_BLOCK,SHEET_OWNER_ID);
 			
 			ArrayList<String> list = go.getAttributeList(COMBAT_BLOCK,RANDOMIZE_PREFICES);

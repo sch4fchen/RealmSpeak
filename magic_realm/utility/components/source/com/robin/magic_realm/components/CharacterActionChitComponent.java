@@ -747,7 +747,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		return null;
 	}
 
-	public void changeWeaponState(boolean hit) {
+	public void changeWeaponState() {
 		// Do nothing
 	}
 

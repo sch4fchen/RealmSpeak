@@ -248,7 +248,7 @@ public class TreasureUtility {
 							WeaponChitComponent weapon = (WeaponChitComponent)RealmComponent.getRealmComponent(otherThing);
 							if (weapon.isAlerted() && !weapon.getGameObject().hasThisAttribute(Constants.ALERTED_WEAPON)) {
 								CharacterChitComponent chit = (CharacterChitComponent)RealmComponent.getRealmComponent(character.getGameObject());
-								if (!chit.activeWeaponStaysAlerted()) {
+								if (!chit.activeWeaponStaysAlerted(weapon)) {
 									int ret = JOptionPane.showConfirmDialog(parentFrame,"You are about to deactivate an alerted weapon.  Are you sure?","",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 									if (ret==JOptionPane.NO_OPTION) {
 										return false;

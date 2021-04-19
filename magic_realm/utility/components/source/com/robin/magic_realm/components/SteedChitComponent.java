@@ -199,7 +199,7 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 	public String getMissileType() {
 		return null;
 	}
-	public void changeWeaponState(boolean hit) {
+	public void changeWeaponState() {
 		// Do nothing
 	}
 	public boolean hitsOnTie() {

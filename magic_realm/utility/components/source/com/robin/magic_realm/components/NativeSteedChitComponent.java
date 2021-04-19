@@ -209,7 +209,7 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 	public String getMissileType() {
 		return null;
 	}
-	public void changeWeaponState(boolean hit) {
+	public void changeWeaponState() {
 		// Do nothing
 	}
 	public boolean hitsOnTie() {

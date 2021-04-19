@@ -891,9 +891,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		return "";
 	}
 	
-	private boolean testEffectIsOnActiveWeapon(GameObject effector) {
-		CharacterWrapper character = new CharacterWrapper(getGameObject());
-		WeaponChitComponent weapon = character.getActivePrimaryWeapon();
+	private static boolean testEffectIsOnActiveWeapon(GameObject effector, WeaponChitComponent weapon) {	
 		if (weapon != null) {
 			String affectedWeaponId = effector.getThisAttribute(Constants.AFFECTED_WEAPON_ID);
 			if (affectedWeaponId != null && affectedWeaponId.equals(weapon.getGameObject().getStringId())) {
@@ -902,10 +900,10 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		}
 		return false;
 	}
-	public boolean activeWeaponStaysAlerted() {
+	public boolean activeWeaponStaysAlerted(WeaponChitComponent weapon) {
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
 		GameObject dust = character.getActiveInventoryThisKey(Constants.ALERTED_WEAPON);
-		return dust!=null && testEffectIsOnActiveWeapon(dust);
+		return dust!=null && testEffectIsOnActiveWeapon(dust, weapon);
 	}
 	public boolean hitsOnTie() {
 		boolean hitsOnTie = getGameObject().hasThisAttribute(Constants.HIT_TIE); // In case Ointment of Bite was applied to dagger
@@ -927,31 +925,28 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		}
 		return hitsOnTie || weaponHitsOnTie;
 	}
-	public void changeWeaponState(boolean hit) {
+	public void changeWeaponState() {
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
-		if (character.affectedByKey(Constants.DUAL_WIELDING_ALERT)) {
-			ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
-			if (weapons != null && !weapons.isEmpty()) {
-				for (WeaponChitComponent weapon : weapons) {
-					alertWeapon(weapon, hit);
+		ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
+		if (weapons != null && !weapons.isEmpty()) {
+			CombatWrapper charCombat = new CombatWrapper(getGameObject());
+			boolean hit = false;
+			for (WeaponChitComponent weapon : weapons) {
+				if (charCombat.weaponHasHit(weapon.getGameObject().getStringId())) {
+					hit = true;
 				}
+				alertWeapon(weapon, hit);
 			}
-			return;
-		}
-		
-		WeaponChitComponent weapon = character.getActivePrimaryWeapon();
-		if (weapon != null) {
-			alertWeapon(weapon, hit);
 		}
 	}
 	private void alertWeapon(WeaponChitComponent weapon, boolean hit) {
 		// make sure weapon was played in combat this round (otherwise it doesn't change)
 		int box = (new CombatWrapper(weapon.getGameObject())).getCombatBox();
 		if (box > 0) {
-			if (activeWeaponStaysAlerted() || weapon.getGameObject().hasThisAttribute(Constants.ALERTED_WEAPON)) {
+			if (activeWeaponStaysAlerted(weapon) || weapon.getGameObject().hasThisAttribute(Constants.ALERTED_WEAPON)) {
 				// Treat like the character just missed - keeps weapon alerted
 				hit = false;
-				}
+			}
 			// hits should unalert weapons, misses should alert them
 			weapon.setAlerted(!hit);
 		}
