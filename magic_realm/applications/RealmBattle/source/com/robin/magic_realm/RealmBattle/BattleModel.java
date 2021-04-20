@@ -941,10 +941,9 @@ public class BattleModel {
 		// Attack must be placed on target's sheet or target must be on character's sheet (=target attacks the character)
 		if (attacker.isCharacter() && !(new CharacterWrapper(attacker.getGameObject()).isTransmorphed())) {
 			CombatWrapper combatAttackChit = new CombatWrapper(((CharacterChitComponent) attacker).getAttackChit().getGameObject());
-			CombatWrapper combatCharacter = new CombatWrapper(attacker.getGameObject());
 			if (!combatAttackChit.getSheetOwnerId().equals(target.getGameObject().getStringId())
-					&& !(combatAttackChit.getSheetOwnerId().equals(attacker.getGameObject().getStringId()) && combatCharacter.getAttackers().contains(target.getTarget().getGameObject()))) {
-				logBattleInfo("Miss! ("+attacker+" placed the attack not on the target's sheet.");
+					&& !(combatAttackChit.getSheetOwnerId().equals(attacker.getGameObject().getStringId()) && attackerCombat.getAttackers().contains(target.getGameObject()))) {
+				attackCancelled = "Miss! ("+attacker+" placed the attack not on same sheet as target.)";
 			}
 		}
 		
