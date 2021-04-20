@@ -40,7 +40,9 @@ public class BattleSummaryWrapper extends GameObjectWrapper {
 	public void initFromBattleChits(ArrayList<BattleChit> battleChits) {
 		clearBattleSummary();
 		
+		ArrayList<GameObject> battleChitsAdded = new ArrayList<>();
 		for (BattleChit bp : battleChits) {
+			if (battleChitsAdded.contains(bp.getGameObject())) continue;
 			if (bp instanceof SpellWrapper) {
 				SpellWrapper spell = (SpellWrapper)bp;
 				for (RealmComponent rc : spell.getTargets()) {
@@ -63,8 +65,9 @@ public class BattleSummaryWrapper extends GameObjectWrapper {
 					if (target2!=null) {
 						addBattleSummaryKill(bp.getGameObject(),target2.getGameObject());
 					}
-				}
+				}	
 			}
+			battleChitsAdded.add(bp.getGameObject());
 		}
 	}
 	public BattleSummary getBattleSummary() {
