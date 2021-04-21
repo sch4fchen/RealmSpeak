@@ -136,7 +136,7 @@ public class AdvantageEditDialog extends AggressiveDialog {
 				line.add(Box.createHorizontalGlue());
 			infoPanel.add(line);
 				line = group.createLabelLine("Description");
-				descriptionField = new JTextArea();
+				descriptionField = new JTextArea(3,70);
 				descriptionField.addFocusListener(new FocusAdapter() {
 					public void focusGained(FocusEvent ev) {
 						descriptionField.selectAll();
