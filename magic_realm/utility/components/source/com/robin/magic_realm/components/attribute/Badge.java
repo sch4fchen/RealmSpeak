@@ -87,6 +87,14 @@ public class Badge extends JLabel {
 						badgeName = character.getGameObject().getAttribute(levelKey,"badge_icon");
 						break;
 					}
+					for (int i=1;i<=2;i++) {
+						levelKey = "level_"+n+"_"+i;
+						list = character.getGameObject().getAttributeList(levelKey,"advantages");
+						if (list!=null && list.contains(advantage)) {
+							badgeName = character.getGameObject().getAttribute(levelKey,"badge_icon");
+							break;
+						}
+					}
 				}
 				icon = ImageCache.getIcon(badgeName);
 			}
