@@ -4411,6 +4411,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 		GamePool pool = new GamePool(data.getGameObjects());
 		fetchStartingWeapon(parentFrame,levelKey,pool,hostKeyVals,chooseSource);
 		fetchStartingArmor(parentFrame,levelKey,pool,hostKeyVals,chooseSource);
+		for (int i = 1; i <= 2; i++) {
+			levelKey = "level_" + startingInventoryLevel + "_" + i;
+			fetchStartingWeapon(parentFrame, levelKey, pool, hostKeyVals, chooseSource);
+			fetchStartingArmor(parentFrame, levelKey, pool, hostKeyVals, chooseSource);
+		}
 	}
 	private void fetchCompanions() { // custom characters only
 		ArrayList<String> companionNames = getGameObject().getThisAttributeList(Constants.COMPANION_NAME);
