@@ -750,7 +750,9 @@ public class RealmCharacterBuilderPanel extends JPanel {
 		private JComboBox startingSpellCount;
 		
 		// Special Advantages
-		private AdvantagePanel advantagePanel;
+		private AdvantagePanel advantagePanel0;
+		private AdvantagePanel advantagePanel1;
+		private AdvantagePanel advantagePanel2;
 		
 		public CharacterLevelPanel(int level) {
 			this.level = level;
@@ -769,11 +771,13 @@ public class RealmCharacterBuilderPanel extends JPanel {
 			mainIcon.grabFocus();
 		}
 		private void initComponents() {
-			setLayout(new GridLayout(1,3));
+			setLayout(new GridLayout(1,5));
 			
 			add(getLeftPanel());
 			add(getMiddlePanel());
-			add(getRightPanel());
+			add(getAdvantage0());
+			add(getAdvantage1());
+			add(getAdvantage2());
 			setBorder(BorderFactory.createTitledBorder("Level "+level));
 			updateControls();
 		}
@@ -847,7 +851,6 @@ public class RealmCharacterBuilderPanel extends JPanel {
 			String armorList = model.getCharacter().getGameObject().getAttribute(levelKey,"armor");
 			if (armorList==null) armorList = "";
 			JPanel armorPanel = new JPanel(new GridLayout(7,1));
-			//Box armorPanel = Box.createVerticalBox();
 			cap = new JCheckBox("Cap",armorList.contains("Cap"));
 			cap.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
@@ -953,11 +956,23 @@ public class RealmCharacterBuilderPanel extends JPanel {
 			weaponPanel.setBorder(BorderFactory.createTitledBorder("Weapon"));
 			return weaponPanel;
 		}
-		private AdvantagePanel getRightPanel() {
-			advantagePanel = new AdvantagePanel(levelKey);
-			advantagePanel.setBorder(BorderFactory.createTitledBorder("Advantages"));
-			advantagePanel.updateAdvantage();
-			return advantagePanel;
+		private AdvantagePanel getAdvantage0() {
+			advantagePanel0 = new AdvantagePanel(levelKey);
+			advantagePanel0.setBorder(BorderFactory.createTitledBorder("Advantage"));
+			advantagePanel0.updateAdvantage();
+			return advantagePanel0;
+		}
+		private AdvantagePanel getAdvantage1() {
+			advantagePanel1 = new AdvantagePanel(levelKey+"_1");
+			advantagePanel1.setBorder(BorderFactory.createTitledBorder("Advantage"));
+			advantagePanel1.updateAdvantage();
+			return advantagePanel1;
+		}
+		private AdvantagePanel getAdvantage2() {
+			advantagePanel2 = new AdvantagePanel(levelKey+"_2");
+			advantagePanel2.setBorder(BorderFactory.createTitledBorder("Advantage"));
+			advantagePanel2.updateAdvantage();
+			return advantagePanel2;
 		}
 		public void updateWeaponIcon() {
 			String weaponName = model.getCharacter().getGameObject().getAttribute(levelKey,"weapon");

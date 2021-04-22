@@ -267,15 +267,14 @@ public class GoldSpecialPlacementDialog extends AggressiveDialog {
 	}
 	private String getCharacterInfo() {
 		String levelKey = "level_"+character.getCharacterLevel();
-		ArrayList types = character.getGameObject().getAttributeList(levelKey,"spelltypes"); // like [I,VII] (for example)
+		ArrayList<String> types = character.getGameObject().getAttributeList(levelKey,"spelltypes"); // like [I,VII] (for example)
 		String info;
 		if (types==null) {
 			info = character.getGameObject().getName()+" has no spell types.";
 		}
 		else {
 			StringBufferedList list = new StringBufferedList();
-			for (Iterator i=types.iterator();i.hasNext();) {
-				String val = (String)i.next();
+			for (String val : types) {
 				list.append(val);
 			}
 			info = character.getGameObject().getName()+" can learn<br>spells of type "+list.toString();

@@ -38,20 +38,20 @@ public class CustomCharacterLibrary {
 	private Hashtable<String,GameObject> customCharacterHash;
 	private Hashtable<String,ImageIcon> customCharacterImageHash;
 	private CustomCharacterLibrary() {
-		customCharacterHash = new Hashtable<String,GameObject>();
-		customCharacterImageHash = new Hashtable<String,ImageIcon>();
+		customCharacterHash = new Hashtable<>();
+		customCharacterImageHash = new Hashtable<>();
 	}
 	public void addCustomCharacterTemplate(GameObject character,ImageIcon detailImage) {
 		customCharacterHash.put(character.getName(),character);
 		customCharacterImageHash.put(character.getName(),detailImage);
 	}
 	public ArrayList<String> getCharacterTemplateNameList() {
-		return new ArrayList<String>(customCharacterHash.keySet());
+		return new ArrayList<>(customCharacterHash.keySet());
 	}
 	public GameObject getCharacterTemplate(String name) {
 		return customCharacterHash.get(name);
 	}
-	private String getNameFor(GameObject go) {
+	private static String getNameFor(GameObject go) {
 		return go.getAttribute("level_4","name");
 	}
 	public String getCharacterUniqueKey(GameObject go) {
@@ -66,7 +66,7 @@ public class CustomCharacterLibrary {
 		return null;
 	}
 	public ArrayList<GameObject> getCharacterTemplateList() {
-		return new ArrayList<GameObject>(customCharacterHash.values());
+		return new ArrayList<>(customCharacterHash.values());
 	}
 	public ImageIcon getCharacterImage(String name) {
 		return customCharacterImageHash.get(name);
@@ -90,7 +90,7 @@ public class CustomCharacterLibrary {
 	}
 	public ArrayList<String> getMissingCharacterNames(ArrayList<String> expectedList) {
 		ArrayList<String> allUniqueKeys = getAllUniqueKeys();
-		ArrayList<String> list =  new ArrayList<String>();
+		ArrayList<String> list =  new ArrayList<>();
 		for (String val:expectedList) {
 			if (!allUniqueKeys.contains(val)) {
 				int col = val.lastIndexOf(':');

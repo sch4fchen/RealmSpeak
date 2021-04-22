@@ -3820,25 +3820,34 @@ public class CharacterWrapper extends GameObjectWrapper {
 		for (int n=1;n<=currentLevel;n++) {
 			String levelKey = "level_"+n;
 			if (getGameObject().hasAttribute(levelKey,Constants.BONUS_CHIT)) {
-				// Make sure chit hasn't already been created
-				GameObject bonusChit = null;
-				for (Iterator i=getGameObject().getHold().iterator();i.hasNext();) {
-					GameObject go = (GameObject)i.next();
-					if (go.hasThisAttribute(RealmComponent.CHARACTER_CHIT) && levelKey.equals(go.getName())) {
-						bonusChit = go;
-						break;
-					}
-				}
-				if (bonusChit==null) {
-					// Nope!  Let's make it.
-					GameObjectBlockManager man = new GameObjectBlockManager(getGameObject());
-					bonusChit = man.extractGameObjectFromBlocks(Constants.BONUS_CHIT + levelKey,false);
-					bonusChit.setThisAttribute("icon_type",getGameObject().getThisAttribute("icon_type"));
-					bonusChit.setThisAttribute("icon_folder",getGameObject().getThisAttribute("icon_folder"));
-					bonusChit.setThisAttribute(Constants.CHIT_EARNED);
-					getGameObject().add(bonusChit);
+				addBonusChit(levelKey);
+			}
+			for (int i = 1; i <= 2; i++) {
+				levelKey = "level_" + n + "_" + i;
+				if (getGameObject().hasAttribute(levelKey,Constants.BONUS_CHIT)) {
+					addBonusChit(levelKey);
 				}
 			}
+		}
+	}
+	private void addBonusChit(String levelKey) {
+		// Make sure chit hasn't already been created
+		GameObject bonusChit = null;
+		for (Iterator i = getGameObject().getHold().iterator(); i.hasNext();) {
+			GameObject go = (GameObject) i.next();
+			if (go.hasThisAttribute(RealmComponent.CHARACTER_CHIT) && levelKey.equals(go.getName())) {
+				bonusChit = go;
+				break;
+			}
+		}
+		if (bonusChit == null) {
+			// Nope! Let's make it.
+			GameObjectBlockManager man = new GameObjectBlockManager(getGameObject());
+			bonusChit = man.extractGameObjectFromBlocks(Constants.BONUS_CHIT + levelKey, false);
+			bonusChit.setThisAttribute("icon_type", getGameObject().getThisAttribute("icon_type"));
+			bonusChit.setThisAttribute("icon_folder", getGameObject().getThisAttribute("icon_folder"));
+			bonusChit.setThisAttribute(Constants.CHIT_EARNED);
+			getGameObject().add(bonusChit);
 		}
 	}
 	private void fetchExtraInventory() {
@@ -3846,23 +3855,32 @@ public class CharacterWrapper extends GameObjectWrapper {
 		for (int n=1;n<=currentLevel;n++) {
 			String levelKey = "level_"+n;
 			if (getGameObject().hasAttribute(levelKey,Constants.BONUS_INVENTORY)) {
-				// Make sure inventory hasn't already been created
-				GameObject bonusInv = null;
-				for (Iterator i=getGameObject().getHold().iterator();i.hasNext();) {
-					GameObject go = (GameObject)i.next();
-					String tag = go.getThisAttribute(Constants.LEVEL_KEY_TAG);
-					if (levelKey.equals(tag)) {
-						bonusInv = go;
-						break;
-					}
-				}
-				if (bonusInv==null) {
-					// Nope!  Let's make it.
-					GameObjectBlockManager man = new GameObjectBlockManager(getGameObject());
-					bonusInv = man.extractGameObjectFromBlocks(Constants.BONUS_INVENTORY + levelKey,false);
-					getGameObject().add(bonusInv);
+				addExtraInventory(levelKey);
+			}
+			for (int i = 1; i <= 2; i++) {
+				levelKey = "level_" + n + "_" + i;
+				if (getGameObject().hasAttribute(levelKey,Constants.BONUS_INVENTORY)) {
+					addExtraInventory(levelKey);
 				}
 			}
+		}
+	}
+	private void addExtraInventory(String levelKey) {
+		// Make sure inventory hasn't already been created
+		GameObject bonusInv = null;
+		for (Iterator i = getGameObject().getHold().iterator(); i.hasNext();) {
+			GameObject go = (GameObject) i.next();
+			String tag = go.getThisAttribute(Constants.LEVEL_KEY_TAG);
+			if (levelKey.equals(tag)) {
+				bonusInv = go;
+				break;
+			}
+		}
+		if (bonusInv == null) {
+			// Nope! Let's make it.
+			GameObjectBlockManager man = new GameObjectBlockManager(getGameObject());
+			bonusInv = man.extractGameObjectFromBlocks(Constants.BONUS_INVENTORY + levelKey, false);
+			getGameObject().add(bonusInv);
 		}
 	}
 	public void tagUnplayableChits() {
@@ -3893,13 +3911,17 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public void updateLevelAttributes(HostPrefWrapper hostPrefs) {
 		getGameObject().setName(getCharacterLevelName());
 		eraseLevelAttributes();
-		List<String> dontCopy =Arrays.asList(DONT_COPY_ATTRIBUTES);
+		List<String> dontCopy = Arrays.asList(DONT_COPY_ATTRIBUTES);
 		// This should copy attributes from level_x into the "this" block.
-		// Attributes in  optional_x should go into the "optional" block.
+		// Attributes in optional_x should go into the "optional" block.
 		int currentLevel = getCharacterLevel();
-		for (int n=1;n<=currentLevel;n++) {
-			copyAttributes(dontCopy,"level_"+n,"this",null);
-			copyAttributes(dontCopy,"optional_"+n,"optional",hostPrefs);
+		for (int n = 1; n <= currentLevel; n++) {
+			copyAttributes(dontCopy, "level_" + n, "this", null);
+			copyAttributes(dontCopy, "optional_" + n, "optional", hostPrefs);
+			for (int i = 1; i <= 2; i++) {
+				copyAttributes(dontCopy, "level_" + n + "_" + i, "this", null);
+				copyAttributes(dontCopy, "optional_" + n + "_" + i, "optional", hostPrefs);
+			}
 		}
 		generalInitialization();
 	}
@@ -3950,18 +3972,25 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 	}
 	public void eraseLevelAttributes() {
-		List<String> dontCopy =Arrays.asList(DONT_COPY_ATTRIBUTES);
-		for (int n=1;n<=Constants.MAX_LEVEL;n++) {
-			String blockName = "level_"+n;
-			OrderedHashtable levelBlock = getGameObject().getAttributeBlock(blockName);
-			for (Iterator i=levelBlock.keySet().iterator();i.hasNext();) {
-				String key = (String)i.next();
-				if (!dontCopy.contains(key)) {
-					getGameObject().removeThisAttribute(key);
-				}
+		for (int n = 1; n <= Constants.MAX_LEVEL; n++) {
+			String blockName = "level_" + n;
+			eraseLevelBlock(blockName);
+			for (int i = 1; i <= 2; i++) {
+				blockName = "level_" + n + "_" + i;
+				eraseLevelBlock(blockName);
 			}
 		}
 		getGameObject().removeAttributeBlock("optional");
+	}
+	private void eraseLevelBlock(String blockName) {
+		List<String> dontCopy = Arrays.asList(DONT_COPY_ATTRIBUTES);
+		OrderedHashtable levelBlock = getGameObject().getAttributeBlock(blockName);
+		for (Iterator i = levelBlock.keySet().iterator(); i.hasNext();) {
+			String key = (String) i.next();
+			if (!dontCopy.contains(key)) {
+				getGameObject().removeThisAttribute(key);
+			}
+		}
 	}
 	/**
 	 * Fetches the character's chits based on level
