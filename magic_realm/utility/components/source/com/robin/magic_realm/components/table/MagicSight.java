@@ -111,11 +111,11 @@ public class MagicSight extends Search {
 				}
 				else {
 					RealmComponent rc = chooser.getFirstSelectedComponent();
-					topmostCounter = (GameObject)getTreasureCounters(rc.getGameObject()).iterator().next();
+					topmostCounter = getTreasureCounters(rc.getGameObject()).iterator().next();
 					loot = (Loot)RealmTable.loot(getParentFrame(),character,rc.getGameObject(),getListener());
 				}
 				if (loot.fulfilledPrerequisite(getParentFrame(),character)) {
-					lootResult = loot.characterFindsItem(character,character.getCurrentLocation().clearing,topmostCounter);
+					lootResult = loot.characterFindsItem(character,topmostCounter);
 				}
 				else {
 					// FIXME How to handle magic sight looting where prerequisites are NOT met?
@@ -205,7 +205,7 @@ public class MagicSight extends Search {
 					loot = (Loot)RealmTable.loot(getParentFrame(),character,rc.getGameObject(),getListener());
 				}
 				if (loot.fulfilledPrerequisite(getParentFrame(),character)) {
-					lootResult = loot.characterFindsItem(character,character.getCurrentLocation().clearing,topmostTreasureCard);
+					lootResult = loot.characterFindsItem(character,topmostTreasureCard);
 					RealmTable newTable = loot.getNewTable();
 					while(newTable!=null) {
 						newTable.apply(character, DieRollBuilder.getDieRollBuilder(getParentFrame(),character).createRoller(newTable));

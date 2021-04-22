@@ -187,7 +187,7 @@ public class Loot extends RealmTable {
 			GameObject thing = (GameObject) n.next();
 			treasureNumber--;
 			if (treasureNumber == 0) {
-				ret = characterFindsItem(character, currentClearing, thing);
+				ret = characterFindsItem(character, thing);
 				if (treasureLocation.hasThisAttribute(RealmComponent.CACHE_CHIT)) {
 					CacheChitComponent ccc = (CacheChitComponent)RealmComponent.getRealmComponent(treasureLocation);
 					ccc.testEmpty();
@@ -207,7 +207,7 @@ public class Loot extends RealmTable {
 			GameObject thing = (GameObject) n.next();
 			RealmComponent rc = RealmComponent.getRealmComponent(thing);
 			if (rc.isWeapon()) {
-				return characterFindsItem(character, currentClearing, thing);
+				return characterFindsItem(character, thing);
 			}
 		}
 		return "Nothing";
@@ -220,7 +220,7 @@ public class Loot extends RealmTable {
 			GameObject thing = (GameObject) n.next();
 			RealmComponent rc = RealmComponent.getRealmComponent(thing);
 			if (rc.isArmor()) {
-				return characterFindsItem(character, currentClearing, thing);
+				return characterFindsItem(character, thing);
 			}
 		}
 		return "Nothing";
@@ -233,7 +233,7 @@ public class Loot extends RealmTable {
 			GameObject thing = (GameObject) n.next();
 			RealmComponent rc = RealmComponent.getRealmComponent(thing);
 			if (rc.isHorse()) {
-				return characterFindsItem(character, currentClearing, thing);
+				return characterFindsItem(character, thing);
 			}
 		}
 		return "Nothing";
@@ -241,18 +241,17 @@ public class Loot extends RealmTable {
 
 	protected String takeTreasure(CharacterWrapper character) {
 		if (tileLocation!=null) return null;
-		ClearingDetail currentClearing = character.getCurrentLocation().clearing;
 		for (Iterator n = treasureLocation.getHold().iterator(); n.hasNext();) {
 			GameObject thing = (GameObject) n.next();
 			RealmComponent rc = RealmComponent.getRealmComponent(thing);
 			if (rc.isTreasure()) {
-				return characterFindsItem(character, currentClearing, thing);
+				return characterFindsItem(character, thing);
 			}
 		}
 		return "Nothing";
 	}
 
-	protected String characterFindsItem(CharacterWrapper character, ClearingDetail currentClearing, GameObject thing) {
+	protected String characterFindsItem(CharacterWrapper character, GameObject thing) {
 		GameObject source = thing.getHeldBy();
 		
 		if (!thing.hasThisAttribute(Constants.TREASURE_SEEN)) {
