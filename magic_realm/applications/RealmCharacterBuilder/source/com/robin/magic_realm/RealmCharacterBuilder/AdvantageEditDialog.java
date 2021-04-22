@@ -276,7 +276,7 @@ public class AdvantageEditDialog extends AggressiveDialog {
 		clearButton.setEnabled(advantage!=null);
 	}
 	public Advantage createAdvantage() {
-		int n = Integer.valueOf(levelKey.substring(levelKey.length()-1));
+		int n = Integer.valueOf(levelKey.split("_")[1]);
 		String name = null;
 		switch(n) {
 			case 1:		name = "one"; break;

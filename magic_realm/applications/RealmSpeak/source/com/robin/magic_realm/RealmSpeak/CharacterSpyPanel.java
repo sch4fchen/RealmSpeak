@@ -60,11 +60,10 @@ public class CharacterSpyPanel extends JPanel {
 		box.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
 		
 		// Attributes
-		ArrayList specialAdvantagesText = character.getGameObject().getThisAttributeList("advantages");
+		ArrayList<String> specialAdvantagesText = character.getGameObject().getThisAttributeList("advantages");
 		box.add(getTitle("Special Advantages:"));
 		if (specialAdvantagesText!=null) {
-			for (Iterator i=specialAdvantagesText.iterator();i.hasNext();) {
-				String sa = (String)i.next();
+			for (String sa : specialAdvantagesText) {
 				box.add(getTextLine("    "+sa));
 			}
 		}
@@ -73,11 +72,10 @@ public class CharacterSpyPanel extends JPanel {
 		}
 		
 		// Attributes
-		ArrayList optionalAdvantagesText = character.getGameObject().getAttributeList("optional","advantages");
+		ArrayList<String> optionalAdvantagesText = character.getGameObject().getAttributeList("optional","advantages");
 		box.add(getTitle("Optional Advantages:"));
 		if (optionalAdvantagesText!=null) {
-			for (Iterator i=optionalAdvantagesText.iterator();i.hasNext();) {
-				String sa = (String)i.next();
+			for (String sa : optionalAdvantagesText) {
 				box.add(getTextLine("    "+sa));
 			}
 		}

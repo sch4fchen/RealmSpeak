@@ -186,11 +186,9 @@ public class CharacterInfoCard {
 			
 			int spellCount = character.getGameObject().getInt(levelKey,"spellcount");
 			if (spellCount>0) {
-				ArrayList list = character.getGameObject().getAttributeList(levelKey,"spelltypes");
-				Collections.sort(list,new Comparator() {
-					public int compare(Object o1,Object o2) {
-						String s1 = (String)o1;
-						String s2 = (String)o2;
+				ArrayList<String> list = character.getGameObject().getAttributeList(levelKey,"spelltypes");
+				Collections.sort(list,new Comparator<String>() {
+					public int compare(String s1,String s2) {
 						int n1 = CharacterActionChitComponent.getMagicNumber(s1);
 						int n2 = CharacterActionChitComponent.getMagicNumber(s2);
 						return n1-n2;
@@ -280,20 +278,19 @@ public class CharacterInfoCard {
 		i = addPoliticsToImage(g, "ENEMY", character.getRelationshipList(Constants.GAME_RELATIONSHIP,RelationshipType.ENEMY), i);
 	}
 	private ArrayList<String> getAllLevelList(String key) {
-		ArrayList<String> allList = new ArrayList<String>();
+		ArrayList<String> allList = new ArrayList<>();
 		for (int n=1;n<=4;n++) {
 			String levelKey = "level_"+n;
-			ArrayList list = character.getGameObject().getAttributeList(levelKey,key);
+			ArrayList<String> list = character.getGameObject().getAttributeList(levelKey,key);
 			if (list!=null) {
-				for (Iterator i=list.iterator();i.hasNext();) {
-					String val =(String)i.next();
+				for (String val : list) {
 					allList.add(val);
 				}
 			}
 		}
 		return allList;
 	}
-	private void addChitToImage(Graphics g,int x,int y,CharacterActionChitComponent chit) {
+	private static void addChitToImage(Graphics g,int x,int y,CharacterActionChitComponent chit) {
 		g.setClip(x,y, 45, 45);
 		g.setFont(chitFont);
 		g.setColor(darkGreen);
