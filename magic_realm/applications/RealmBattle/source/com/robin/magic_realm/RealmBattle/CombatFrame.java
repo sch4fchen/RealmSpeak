@@ -2188,43 +2188,6 @@ public class CombatFrame extends JFrame {
 			}
 		}
 	}
-//	/**
-//	 * This method moves the specified target to its own sheet, and deals with the old sheet, if necessary.
-//	 */
-//	protected void moveTargetToNewSheet(RealmComponent deployTarget,boolean keepTarget) {
-//		// Move the target to its own sheet (if necessary), and handle old sheet if needed
-//		CombatWrapper combat = new CombatWrapper(deployTarget.getGameObject());
-//		RealmComponent deployTargetsTarget = deployTarget.getTarget();
-//		if (!combat.isSheetOwner()) {
-//			combat.setSheetOwner(true); // well it is NOW!
-//			
-//			if (deployTargetsTarget!=null && !deployTargetsTarget.isCharacter()) {
-//				ArrayList attackers = currentBattleModel.getAttackersFor(deployTargetsTarget,true,false);
-//				if (attackers.size()==1) { // deployTarget IS the last attacker
-//					CombatWrapper dttc = new CombatWrapper(deployTargetsTarget.getGameObject());
-//					
-//					// Move off the sheet...
-//					dttc.setSheetOwner(false);
-//					
-//					// ... and onto the new one as the last attacker
-//					deployTargetsTarget.setTarget(deployTarget);
-//				}
-//			}
-//		}
-//		if (keepTarget) {
-//			// I think the ONLY time this can happen, is when 2 T monsters hit the native... Can THAT happen?
-//			if (deployTargetsTarget!=null && !deployTargetsTarget.isCharacter()) {
-//				// If the deployTarget is keeping his target (RED-side monster), then the deployTargetsTarget should
-//				// move off the sheet anyway, dragging its attackers with it
-//				CombatWrapper dttc = new CombatWrapper(deployTargetsTarget.getGameObject());
-//				dttc.setSheetOwner(false);
-//			}
-//		}
-//		else {
-//			// Clear the target
-//			deployTarget.clearTarget();
-//		}
-//	}
 	public static void makeTarget(JFrame parent,HostPrefWrapper hostPrefs,RealmComponent theAttacker,RealmComponent theTarget) {
 		// A hidden attacker becomes unhidden on targeting (AMBUSH rules will change how this works somewhat)
 		if (theAttacker.isHidden()) {
