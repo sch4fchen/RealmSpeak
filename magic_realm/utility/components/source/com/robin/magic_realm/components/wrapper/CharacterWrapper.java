@@ -823,8 +823,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		Strength strongest = new Strength();
 		
 		// Pack horses
-		for (Iterator i=getInactiveInventory().iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		for (GameObject go : getInactiveInventory()) {
 			Strength horseStrength = new Strength(go.getAttribute("trot","strength"));
 			if (horseStrength.strongerThan(strongest)) {
 				strongest = horseStrength;
@@ -1305,10 +1304,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public boolean hasCurrentAction(String action) {
 		ActionId id = getIdForAction(action);
-		Collection c = getCurrentActions();
+		Collection<String> c = getCurrentActions();
 		if (c!=null) {
-			for (Iterator i=c.iterator();i.hasNext();) {
-				String test = (String)i.next();
+			for (String test : c) {
 				ActionId testId = getIdForAction(test);
 				if (id==testId) {
 					return true;
@@ -1547,8 +1545,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		clearActionBuffer(); // No need to hang onto this stuff forever
 		
 		// Expire day spells
-		for (Iterator n=getAliveSpells().iterator();n.hasNext();) {
-			SpellWrapper spell = (SpellWrapper)n.next();
+		for (SpellWrapper spell : getAliveSpells()) {
 			// Day spells are over at sunset
 			if (spell.isDaySpell()) {
 				spell.expireSpell();
@@ -1832,18 +1829,16 @@ public class CharacterWrapper extends GameObjectWrapper {
 				if (cPaths!=null) {
 					paths.addAll(cPaths);
 				}
-				if (paths!=null) {
-					for (PathDetail path:paths) {
-						if (validPath(path)) {
-							ClearingDetail connectedClearing = path.findConnection(tl.clearing);
-							if (connectedClearing==null) {
-								connectedClearing = path.getEdgeAsClearing();
-							}
-							if (!ret.contains(connectedClearing)) {
-								// Test that the connectedClearing CAN be moved to:
-								if (ignoreActionPhaseCheck || canMoveToClearing(connectedClearing)) {
-									ret.add(connectedClearing);
-								}
+				for (PathDetail path:paths) {
+					if (validPath(path)) {
+						ClearingDetail connectedClearing = path.findConnection(tl.clearing);
+						if (connectedClearing==null) {
+							connectedClearing = path.getEdgeAsClearing();
+						}
+						if (!ret.contains(connectedClearing)) {
+							// Test that the connectedClearing CAN be moved to:
+							if (ignoreActionPhaseCheck || canMoveToClearing(connectedClearing)) {
+								ret.add(connectedClearing);
 							}
 						}
 					}
@@ -1860,13 +1855,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * Returns all the clearings that are available assuming a future discovery is made (hidden path or passage)
 	 */
 	public ArrayList<ClearingDetail> findPossibleClearingMoves() {
-		ArrayList<ClearingDetail> ret = new ArrayList<ClearingDetail>();
+		ArrayList<ClearingDetail> ret = new ArrayList<>();
 		TileLocation tl = getPlannedLocation();
 		if (tl.hasClearing() && !tl.isBetweenClearings()) {
-			Collection c = tl.clearing.getConnectedPaths();
+			Collection<PathDetail> c = tl.clearing.getConnectedPaths();
 			if (c!=null) {
-				for (Iterator i=c.iterator();i.hasNext();) {
-					PathDetail path = (PathDetail)i.next();
+				for (PathDetail path : c) {
 					if (!validPath(path)) {
 						ClearingDetail connectedClearing = path.findConnection(tl.clearing);
 						// Test that the connectedClearing CAN be moved to:
@@ -2038,11 +2032,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public boolean hasSpecialAction(ActionId id) {
 		String name = DayAction.getDayAction(id).getName().toUpperCase();
-		ArrayList specialActions = getSpecialActions();
+		ArrayList<String> specialActions = getSpecialActions();
 		return specialActions.contains(name);
 	}
-	private ArrayList getSpecialActions() {
-		ArrayList specialActions = new ArrayList();
+	private ArrayList<String> getSpecialActions() {
+		ArrayList<String> specialActions = new ArrayList<>();
 		if (getGameObject().hasThisAttribute(Constants.SPECIAL_ACTION)) {
 			specialActions.addAll(getGameObject().getThisAttributeList(Constants.SPECIAL_ACTION));
 		}
@@ -2064,24 +2058,22 @@ public class CharacterWrapper extends GameObjectWrapper {
 			pm.addExtraCavePhase(getGameObject());
 		}		
 		
-		ArrayList extra = getGameObject().getThisAttributeList(Constants.EXTRA_ACTIONS);
+		ArrayList<String> extra = getGameObject().getThisAttributeList(Constants.EXTRA_ACTIONS);
 		if (extra!=null) {
-			for (Iterator i=extra.iterator();i.hasNext();) {
-				String extraAction = (String)i.next();
+			for (String extraAction : extra) {
 				pm.addFreeAction(extraAction,getGameObject(),null,true); // force character actions on the phase manager
 			}
 		}
 		if (getGameObject().hasThisAttribute(Constants.EXTRA_PHASE)) {
 			pm.addExtraBasicPhase();
 		}
-		ArrayList spellExtras = getSpellExtras();
+		ArrayList<String> spellExtras = getSpellExtras();
 		if (spellExtras!=null) {
-			ArrayList spellExtraSources = getSpellExtraSources();
+			ArrayList<GameObject> spellExtraSources = getSpellExtraSources();
 			if (spellExtraSources!=null) { // should never be NULL, but if it is, I don't want to break the game
-				Iterator ss = spellExtraSources.iterator();
-				for (Iterator i=spellExtras.iterator();i.hasNext();) {
-					String spellExtra = (String)i.next();
-					GameObject source = (GameObject)ss.next();
+				Iterator<GameObject> ss = spellExtraSources.iterator();
+				for (String spellExtra : spellExtras) {
+					GameObject source = ss.next();
 					pm.addFreeAction(spellExtra,source);
 				}
 			}
@@ -2265,7 +2257,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				return true;
 			}
 			boolean enhancedPeer = hasActiveInventoryThisKeyAndValue(Constants.SPECIAL_ACTION,"ENHANCED_PEER");
-			boolean mtToMtPeer = location!=null && location.hasClearing() && location.clearing.isMountain() && hasActiveInventoryThisKey(Constants.MOUNTAIN_PEER);
+			boolean mtToMtPeer = location.hasClearing() && location.clearing.isMountain() && hasActiveInventoryThisKey(Constants.MOUNTAIN_PEER);
 			if (!enhancedPeer && !mtToMtPeer) {
 				return false;
 			}
@@ -2451,7 +2443,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return query.allGameObjectsWithKeyAndValue(getActiveInventoryAndTravelers(),key,value);
 	}
 	public ArrayList<String> getActiveInventoryValuesForThisKey(String key,String delim) {
-		ArrayList<String> values = new ArrayList<String>();
+		ArrayList<String> values = new ArrayList<>();
 		for (GameObject item:getAllActiveInventoryThisKeyAndValue(key,null)) {
 			Object val = item.getObject("this",key);
 			ArrayList list;
@@ -2714,9 +2706,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		// Add notoriety from all treasures
 		int treasureNot = 0;
-		ArrayList<GameObject> list = new ArrayList<GameObject>();
-		for (Iterator i=getScorableInventory().iterator();i.hasNext();) {
-			GameObject item = (GameObject)i.next();
+		ArrayList<GameObject> list = new ArrayList<>();
+		for (GameObject item : getScorableInventory()) {
 			if (item.hasThisAttribute("notoriety")) {
 				list.add(item);
 				treasureNot += item.getThisInt("notoriety");
@@ -3380,8 +3371,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		else {
 			addListItem(DISC_OTHER,name);
-			for (Iterator i=getActionFollowers().iterator();i.hasNext();) {
-				CharacterWrapper actionFollower = (CharacterWrapper)i.next();
+			for (CharacterWrapper actionFollower : getActionFollowers()) {
 				actionFollower.addOtherChitDiscovery(name);
 			}
 		}
@@ -3473,8 +3463,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		setBoolean(FOUND_HIDDEN_ENEMIES,val);
 		
 		// Don't forget to update the followers!
-		for (Iterator i=getActionFollowers().iterator();i.hasNext();) {
-			CharacterWrapper actionFollower = (CharacterWrapper)i.next();
+		for (CharacterWrapper actionFollower : getActionFollowers()) {
 			actionFollower.setFoundHiddenEnemies(val);
 		}
 	}
@@ -3492,8 +3481,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			setString(FOUND_HIDDEN_ENEMIES,sb.toString());
 			
 			// Don't forget to update the followers!
-			for (Iterator i=getActionFollowers().iterator();i.hasNext();) {
-				CharacterWrapper actionFollower = (CharacterWrapper)i.next();
+			for (CharacterWrapper actionFollower : getActionFollowers()) {
 				actionFollower.addFoundHiddenEnemy(enemy);
 			}
 		}
@@ -3775,8 +3763,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				discoveries.addAll(tile.getHiddenPaths());
 				discoveries.addAll(tile.getSecretPassages());
 			}
-			for (Iterator i=discoveries.iterator();i.hasNext();) {
-				PathDetail path = (PathDetail)i.next();
+			for (PathDetail path : discoveries) {
 				if (path.isHidden() && !hasHiddenPathDiscovery(path.getFullPathKey())) {
 					addHiddenPathDiscovery(path.getFullPathKey());
 				}
@@ -4007,11 +3994,25 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * Fetches the chits for a given level, and adds them to the wrapped getGameObject()
 	 */
 	public void fetchChits(String levelKey,GamePool pool) {
-		ArrayList keyVals = new ArrayList();
+		ArrayList<String> keyVals = new ArrayList<>();
 		keyVals.add("character_chit="+getGameObject().getThisAttribute(Constants.ICON_TYPE));
 		keyVals.add(levelKey);
-		Collection found = pool.extract(keyVals);
+		Collection<GameObject> found = pool.extract(keyVals);
 		getGameObject().addAll(found);
+	}
+	public boolean canLoot(RealmComponent rc) {
+		if (this.affectedByKey(Constants.TREASURE_LOCATION_FEAR) && rc.isTreasureLocation()) {
+			ArrayList<String> fears = new ArrayList<>();
+			fears.addAll(this.getGameObject().getThisAttributeList(Constants.TREASURE_LOCATION_FEAR));
+			fears.addAll(this.getActiveInventoryValuesForThisKey(Constants.TREASURE_LOCATION_FEAR,","));
+			
+			String name = rc.getGameObject().getName();
+			if (rc.getGameObject().hasThisAttribute(Constants.BOARD_NUMBER)) {
+				name = name.substring(0,name.length()-2);
+			}
+			return !fears.contains(name);
+		}
+		return true;
 	}
 	/**
 	 * @param spell	The spell to test.
@@ -4027,7 +4028,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		// Examine all chits for a match (active, inactive, or enchanted)
 		boolean hasType = false;
-		ArrayList allChits = new ArrayList();
+		ArrayList<RealmComponent> allChits = new ArrayList<>();
 		allChits.addAll(getAllChits());
 		allChits.addAll(getDedicatedChits()); // don't forget the chits dedicated to spells!
 		allChits.addAll(getTransmorphedChits()); // and let's grab those that are transformed too, since that is also legal (apparently) - see bug 1733
@@ -4246,12 +4247,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 		// Find all treasures with spells on them
 		String dayKey = getCurrentDayKey();
 		for (GameObject treasure:getActivatedTreasureObjects()) {
-			Collection awakenedSpells = SpellUtility.getSpells(treasure,Boolean.TRUE,false,false);
+			Collection<GameObject> awakenedSpells = SpellUtility.getSpells(treasure,Boolean.TRUE,false,false);
 			if (awakenedSpells.size()>0) {
 				ArrayList<String> availMagicTypes = TreasureCardComponent.readAvailableMagicTypes(dayKey,treasure);
 				if (availMagicTypes.isEmpty()) continue;
-				for (Iterator n=awakenedSpells.iterator();n.hasNext();) {
-					GameObject go = (GameObject)n.next();
+				for (GameObject go : awakenedSpells) {
 					SpellWrapper spell = new SpellWrapper(go);
 					if (spell.canCast(code,current.tile.getClearingCount())) {
 						SpellSet set = new SpellSet(spell.getGameObject());
@@ -4344,7 +4344,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return allSpells;
 	}
 	public ArrayList<GameObject> getAllVirtualSpellsFor(GameObject spell) {
-		ArrayList<GameObject> virtualSpells = new ArrayList<GameObject>();
+		ArrayList<GameObject> virtualSpells = new ArrayList<>();
 		findVirtualSpellsFor(spell,virtualSpells);
 		return virtualSpells;
 	}
@@ -4356,7 +4356,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return virtualSpells;
 	}
-	private void findVirtualSpellsFor(GameObject spell,ArrayList<GameObject> virtualSpells) {
+	private static void findVirtualSpellsFor(GameObject spell,ArrayList<GameObject> virtualSpells) {
 		for (Iterator i=spell.getHold().iterator();i.hasNext();) {
 			GameObject go = (GameObject)i.next();
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
@@ -4369,15 +4369,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 	}
 	public int getRecordedSpellCount() {
-		ArrayList spellIds = getList(RECORDED_SPELLS);
+		ArrayList<String> spellIds = getList(RECORDED_SPELLS);
 		return spellIds==null?0:spellIds.size();
 	}
 	public ArrayList<GameObject> getRecordedSpells(GameData data) {
-		ArrayList<GameObject> recordedSpells = new ArrayList<GameObject>();
-		ArrayList spellIds = getList(RECORDED_SPELLS);
+		ArrayList<GameObject> recordedSpells = new ArrayList<>();
+		ArrayList<String> spellIds = getList(RECORDED_SPELLS);
 		if (spellIds!=null && !spellIds.isEmpty()) {
-			for (Iterator i=spellIds.iterator();i.hasNext();) {
-				String id = (String)i.next();
+			for (String id : spellIds) {
 				recordedSpells.add(data.getGameObject(Long.valueOf(id)));
 			}
 		}
@@ -4385,8 +4384,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public void calculateStartingWorth() {
 		int worth = getStartingGold();
-		for (Iterator i=getInventory().iterator();i.hasNext();) {
-			GameObject item = (GameObject)i.next();
+		for (GameObject item : getInventory()) {
 			int basePrice = item.getThisInt("base_price");
 			if (basePrice==0) {
 				// might be armor
@@ -4910,7 +4908,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	/**
 	 * Returns a Collection of chits that are dedicated to spells
 	 */
-	public Collection getDedicatedChits() {
+	public Collection<RealmComponent> getDedicatedChits() {
 		ArrayList list = new ArrayList();
 		for (Iterator i=getAliveSpells().iterator();i.hasNext();) {
 			SpellWrapper spell = (SpellWrapper)i.next();
@@ -4924,7 +4922,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return list;
 	}
-	public Collection getTransmorphedChits() {
+	public Collection<RealmComponent> getTransmorphedChits() {
 		ArrayList list = new ArrayList();
 		if (getTransmorph()==null) return list;
 		for (Iterator i=getGameObject().getHold().iterator();i.hasNext();) {

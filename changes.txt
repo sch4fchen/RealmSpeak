@@ -9,6 +9,7 @@ NEW FEATURES:
 # New character ability: Dual wielding (alert): can alert multiple weapons
 # New character ability: No Ambush: Character gets unhidden when attacking from an ambush
 # New character ability: Monster fear: Character cannot attack monster it fears
+# New character ability: Treasure location fear: Character cannot loot treasure location
 # Character Editor: Die modifiers: Add Transform spell
 # Character Editor: Die modifiers: Add Treasures within Treasure
 # Character Editor: Up to 3 advantages per level

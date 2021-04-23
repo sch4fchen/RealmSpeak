@@ -1035,7 +1035,7 @@ public class ActionRow {
 						// can't loot sites that still need to be opened (crypt, vault)
 						if (!rc.getGameObject().hasThisAttribute(Constants.NEEDS_OPEN)) {
 							Loot loot = (Loot)RealmTable.loot(gameHandler.getMainFrame(),character,rc.getGameObject(),gameHandler.getUpdateFrameListener());
-							if (!magicSight || (loot instanceof TableLoot)) {
+							if ((!magicSight || (loot instanceof TableLoot)) && character.canLoot(rc)) {
 								addTableToChooser(chooseSearch,loot);
 							}
 						}

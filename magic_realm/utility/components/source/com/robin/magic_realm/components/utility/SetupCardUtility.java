@@ -99,10 +99,8 @@ public class SetupCardUtility {
 			}
 		}
 		// Sort otherLocations by box_num attribute (those without it, will be sorted to the top)
-		Collections.sort(otherLocations,new Comparator() {
-			public int compare(Object o1,Object o2) {
-				GameObject go1 = (GameObject)o1;
-				GameObject go2 = (GameObject)o2;
+		Collections.sort(otherLocations,new Comparator<GameObject>() {
+			public int compare(GameObject go1,GameObject go2) {
 				int n1 = go1.getInt("this","box_num");
 				int n2 = go2.getInt("this","box_num");
 				return n1-n2;
@@ -140,10 +138,8 @@ public class SetupCardUtility {
 				}
 			}
 		}
-		Collections.sort(soundChits,new Comparator() { // sort sound (no need to sort warnings)
-			public int compare(Object o1,Object o2) {
-				GameObject go1 = (GameObject)o1;
-				GameObject go2 = (GameObject)o2;
+		Collections.sort(soundChits,new Comparator<GameObject>() { // sort sound (no need to sort warnings)
+			public int compare(GameObject go1,GameObject go2) {
 				int n1 = go1.getInt("this","clearing");
 				int n2 = go2.getInt("this","clearing");
 				return n1-n2;
@@ -151,8 +147,8 @@ public class SetupCardUtility {
 		});
 		
 		// Expansion:  handle generated monsters
-		ArrayList<GameObject> nonCurrentTileProwlers = new ArrayList<GameObject>();
-		ArrayList<String> generatedQuery = new ArrayList<String>();
+		ArrayList<GameObject> nonCurrentTileProwlers = new ArrayList<>();
+		ArrayList<String> generatedQuery = new ArrayList<>();
 		generatedQuery.add(Constants.GENERATED);
 		generatedQuery.add("monster_die="+monsterDie);
 		generatedQuery.add("!"+Constants.DEAD);
@@ -165,8 +161,8 @@ public class SetupCardUtility {
 		}
 		
 		// Expansion:  handle visible travelers
-		ArrayList<GameObject> travelers = new ArrayList<GameObject>();
-		ArrayList<String> travelerQuery = new ArrayList<String>();
+		ArrayList<GameObject> travelers = new ArrayList<>();
+		ArrayList<String> travelerQuery = new ArrayList<>();
 		travelerQuery.add(RealmComponent.TRAVELER);
 		travelerQuery.add(Constants.SPAWNED);
 		travelerQuery.add("!"+RealmComponent.OWNER_ID);
@@ -522,7 +518,7 @@ public class SetupCardUtility {
 		
 		// Find clearing to move to
 		int mostInterest = Integer.MIN_VALUE;
-		HashLists<Integer,ClearingDetail> choices = new HashLists<Integer,ClearingDetail>();
+		HashLists<Integer,ClearingDetail> choices = new HashLists<>();
 		// Include current clearing when deciding (though with one less incentive)
 		choices.put(calculateIncentive(current.clearing.getClearingComponents(),-2,-1)-1,current.clearing);
 		for (PathDetail path:current.clearing.getConnectedPaths()) {
@@ -558,10 +554,10 @@ public class SetupCardUtility {
 	}
 
 	private static ArrayList<GameObject> getWarnings(Collection<GameObject> gameObjects,int monsterDie,boolean includeWarningSounds) {
-		ArrayList<GameObject> gos = new ArrayList<GameObject>(gameObjects);
+		ArrayList<GameObject> gos = new ArrayList<>(gameObjects);
 		
 		// Find all "seen" treasures
-		ArrayList<RealmComponent> seen = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> seen = new ArrayList<>();
 		for (GameObject go : gameObjects) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			seen.addAll(ClearingUtility.dissolveIntoSeenStuff(rc));
@@ -824,12 +820,12 @@ public class SetupCardUtility {
 	}
 	
 	private static void flipGoldSpecialChits(HostPrefWrapper hostPrefs,GamePool pool,int monsterDie) {
-		ArrayList<String> keyVals = new ArrayList<String>();
+		ArrayList<String> keyVals = new ArrayList<>();
 		keyVals.add(hostPrefs.getGameKeyVals());
 		keyVals.add("monster_die="+monsterDie);
 		keyVals.add("gold_special");
 		ArrayList<GameObject> allGoldSpecial = pool.extract(keyVals);
-		ArrayList<GameObject> toFlip = new ArrayList<GameObject>();
+		ArrayList<GameObject> toFlip = new ArrayList<>();
 		for (GameObject side1 : allGoldSpecial) {
 			GameObject holder = side1.getHeldBy();
 			if (holder!=null) {
@@ -872,7 +868,7 @@ public class SetupCardUtility {
 		if (!hostPrefs.hasPref(Constants.EXP_NO_DWELLING_START)) { // Make sure option is enabled before revealing dwellings
 			// Dwellings and ghosts should be remapped to the appropriate tiles
 			// Simply flip those chits face up, and the rest will work
-			ArrayList<String> keyVals = new ArrayList<String>();
+			ArrayList<String> keyVals = new ArrayList<>();
 			keyVals.add(hostPrefs.getGameKeyVals());
 			keyVals.add("warning");
 			keyVals.add("tile_type=V");
@@ -914,7 +910,7 @@ public class SetupCardUtility {
 		String block = denizen.hasAttributeBlock("this_h")?"this_h":"this";
 		String holderName = denizen.getAttribute(block,"setup_start");
 		if (holderName!=null) {
-			ArrayList<String> keys = new ArrayList<String>();
+			ArrayList<String> keys = new ArrayList<>();
 			String boardNum = denizen.getThisAttribute(Constants.BOARD_NUMBER);
 			if (boardNum!=null) {
 				holderName = holderName + " " + boardNum;

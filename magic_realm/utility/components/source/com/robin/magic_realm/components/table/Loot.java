@@ -152,7 +152,6 @@ public class Loot extends RealmTable {
 	}
 
 	protected String doLoot(CharacterWrapper character, int treasureNumber) {
-		ClearingDetail currentClearing = character.getCurrentLocation().clearing;
 		Collection<GameObject> treasures;
 		if (tileLocation==null) {
 			if (treasureLocation.hasThisAttribute(RealmComponent.CACHE_CHIT)) {
@@ -202,7 +201,6 @@ public class Loot extends RealmTable {
 
 	protected String takeWeapon(CharacterWrapper character) {
 		if (tileLocation!=null) return null;
-		ClearingDetail currentClearing = character.getCurrentLocation().clearing;
 		for (Iterator n = treasureLocation.getHold().iterator(); n.hasNext();) {
 			GameObject thing = (GameObject) n.next();
 			RealmComponent rc = RealmComponent.getRealmComponent(thing);
@@ -215,7 +213,6 @@ public class Loot extends RealmTable {
 
 	protected String takeArmor(CharacterWrapper character) {
 		if (tileLocation!=null) return null;
-		ClearingDetail currentClearing = character.getCurrentLocation().clearing;
 		for (Iterator n = treasureLocation.getHold().iterator(); n.hasNext();) {
 			GameObject thing = (GameObject) n.next();
 			RealmComponent rc = RealmComponent.getRealmComponent(thing);
@@ -228,7 +225,6 @@ public class Loot extends RealmTable {
 
 	protected String takeHorse(CharacterWrapper character) {
 		if (tileLocation!=null) return null;
-		ClearingDetail currentClearing = character.getCurrentLocation().clearing;
 		for (Iterator n = treasureLocation.getHold().iterator(); n.hasNext();) {
 			GameObject thing = (GameObject) n.next();
 			RealmComponent rc = RealmComponent.getRealmComponent(thing);
