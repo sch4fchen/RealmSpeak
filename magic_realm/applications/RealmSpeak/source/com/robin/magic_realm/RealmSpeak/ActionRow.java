@@ -1026,7 +1026,7 @@ public class ActionRow {
 		
 		for (RealmComponent rc:current.clearing.getClearingComponents()) {
 			// Loot is a special case, as it requires a TL
-			if (rc.getGameObject().hasThisAttribute("treasure_location")) {
+			if (rc.getGameObject().hasThisAttribute(RealmComponent.TREASURE_LOCATION)) {
 				if (/*!rc.getGameObject().hasThisAttribute("discovery") ||*/ // Why did I have this?
 						character.hasTreasureLocationDiscovery(rc.getGameObject().getName())) {
 					

@@ -312,6 +312,7 @@ public class AdvantageEditDialog extends AggressiveDialog {
 		panelList.add(new MonsterInteractionEditPanel(model.getCharacter(),levelKey, Constants.MONSTER_IMMUNITY));
 		panelList.add(new MonsterInteractionEditPanel(model.getCharacter(),levelKey, Constants.MONSTER_CONTROL));
 		panelList.add(new MonsterInteractionEditPanel(model.getCharacter(),levelKey, Constants.MONSTER_FEAR));
+		panelList.add(new TreasureLocationEditPanel(model.getCharacter(),levelKey));
 		panelList.add(new SpecialActionEditPanel(model.getCharacter(),levelKey));
 		panelList.add(new StartingInventoryEditPanel(model.getCharacter(),levelKey,magicRealmData));
 		panelList.add(new TacticsChangeEditPanel(model.getCharacter(),levelKey));

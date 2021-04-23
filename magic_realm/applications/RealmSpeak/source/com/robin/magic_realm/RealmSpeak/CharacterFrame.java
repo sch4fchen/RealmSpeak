@@ -1635,9 +1635,8 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					ms.apply(character, roller);
 				}
 				else if (thingName.equals("discoverall")) {
-					Collection c = character.getCurrentLocation().clearing.getClearingComponents();
-					for (Iterator i = c.iterator(); i.hasNext();) {
-						RealmComponent rc = (RealmComponent) i.next();
+					Collection<RealmComponent> c = character.getCurrentLocation().clearing.getClearingComponents();
+					for (RealmComponent rc : c) {
 						if (rc.isTreasureLocation() || (rc.isTreasure() && rc.getGameObject().hasThisAttribute("treasure_location"))) {
 							character.addTreasureLocationDiscovery(rc.getGameObject().getName());
 						}

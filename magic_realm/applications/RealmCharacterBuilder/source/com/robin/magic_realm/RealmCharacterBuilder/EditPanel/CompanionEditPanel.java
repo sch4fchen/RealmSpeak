@@ -156,9 +156,9 @@ public class CompanionEditPanel extends AdvantageEditPanel {
 	public CompanionEditPanel(CharacterWrapper pChar, String levelKey) {
 		super(pChar, levelKey);
 		
-		hash = new Hashtable<String,RealmComponent>();
-		allPanels = new ArrayList<RealmObjectPanel>();
-		panelLookup = new Hashtable<String,RealmObjectPanel>();
+		hash = new Hashtable<>();
+		allPanels = new ArrayList<>();
+		panelLookup = new Hashtable<>();
 		
 		setLayout(new BorderLayout());
 		
@@ -198,17 +198,16 @@ public class CompanionEditPanel extends AdvantageEditPanel {
 			panel.setSelectionMode(RealmObjectPanel.SINGLE_SELECTION);
 			panel.addSelectionListener(listener);
 			
-			addOptionList(panel,COMPANIONS[i],i==0);
+			addOptionList(panel,COMPANIONS[i]);
 			tabs.addTab(COMPANIONS[i][0],panel);
 		}
 		
 		add(tabs,"Center");
 		
-		ArrayList list = getAttributeList(Constants.COMPANION_NAME);
+		ArrayList<String> list = getAttributeList(Constants.COMPANION_NAME);
 		if (list!=null) {
 			companionCount.setValue(list.size());
-			for (Iterator n=list.iterator();n.hasNext();) {
-				String name = (String)n.next();
+			for (String name : list) {
 				RealmComponent rc = hash.get(name);
 				RealmObjectPanel panel = panelLookup.get(name);
 				if (rc!=null && panel!=null) {
@@ -216,7 +215,7 @@ public class CompanionEditPanel extends AdvantageEditPanel {
 					panel.setSelected(rc);
 					
 					GamePool pool = new GamePool(getGameData().getGameObjects());
-					ArrayList query = new ArrayList();
+					ArrayList<String> query = new ArrayList<>();
 					query.add("Name="+name);
 					query.add(Constants.COMPANION);
 					
@@ -246,7 +245,7 @@ public class CompanionEditPanel extends AdvantageEditPanel {
 		}
 	}
 	
-	private void addOptionList(RealmObjectPanel panel,String[] list,boolean selectFirst) {
+	private void addOptionList(RealmObjectPanel panel,String[] list) {
 		for (int i=1;i<list.length;i++) {
 			StringTokenizer tokens = new StringTokenizer(list[i],":");
 			String name;
@@ -279,7 +278,7 @@ public class CompanionEditPanel extends AdvantageEditPanel {
 		String name = getOptionName();
 		if (selected!=null) {
 			int cc =getCompanionCount();
-			ArrayList list = new ArrayList();
+			ArrayList<String> list = new ArrayList<>();
 			for (int n=0;n<cc;n++) {
 				list.add(name);
 				TemplateLibrary.getSingleton().createCompanionFromTemplate(getGameData(),selected.getGameObject());

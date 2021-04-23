@@ -47,8 +47,8 @@ public class QuestRewardSummonGuardian extends QuestReward {
 		for(RealmComponent piece:pieces) {
 			if (!piece.isTreasureLocation()) continue;
 			
-			String locationName = piece.getGameObject().getThisAttribute("treasure_location");
-			ArrayList<String> query = new ArrayList<String>();
+			String locationName = piece.getGameObject().getThisAttribute(RealmComponent.TREASURE_LOCATION);
+			ArrayList<String> query = new ArrayList<>();
 			query.add("setup_start="+StringUtilities.capitalize(locationName));
 			String boardNumber = piece.getGameObject().getThisAttribute(Constants.BOARD_NUMBER);
 			if (boardNumber!=null) {

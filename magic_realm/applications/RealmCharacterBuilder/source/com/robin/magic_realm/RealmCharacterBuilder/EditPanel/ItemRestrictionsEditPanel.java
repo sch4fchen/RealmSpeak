@@ -53,7 +53,7 @@ public class ItemRestrictionsEditPanel extends AdvantageEditPanel {
 	public ItemRestrictionsEditPanel(CharacterWrapper pChar, String levelKey) {
 		super(pChar, levelKey);
 		
-		hash = new Hashtable<String,JCheckBox>();
+		hash = new Hashtable<>();
 		
 		setLayout(new BorderLayout());
 		
@@ -73,10 +73,9 @@ public class ItemRestrictionsEditPanel extends AdvantageEditPanel {
 		description.setFont(new Font("Dialog",Font.BOLD,16));
 		add(description,"North");
 		
-		ArrayList list = getAttributeList(Constants.ITEM_RESTRICTIONS);
+		ArrayList<String> list = getAttributeList(Constants.ITEM_RESTRICTIONS);
 		if (list!=null) {
-			for (Iterator i=list.iterator();i.hasNext();) {
-				String val = (String)i.next();
+			for (String val : list) {
 				JCheckBox option = hash.get(val);
 				if (option!=null) {
 					option.setSelected(true);
@@ -96,7 +95,7 @@ public class ItemRestrictionsEditPanel extends AdvantageEditPanel {
 	}
 
 	protected void applyAdvantage() {
-		ArrayList list = new ArrayList();
+		ArrayList<String> list = new ArrayList<>();
 		for (Iterator i=hash.keySet().iterator();i.hasNext();) {
 			String val = (String)i.next();
 			JCheckBox option = hash.get(val);

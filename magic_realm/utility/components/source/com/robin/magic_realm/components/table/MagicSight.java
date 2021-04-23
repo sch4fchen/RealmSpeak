@@ -71,7 +71,7 @@ public class MagicSight extends Search {
 		ArrayList<RealmComponent> clearingLoot = new ArrayList<>();
 		ArrayList<RealmComponent> components = new ArrayList<>();
 		for (RealmComponent rc : character.getCurrentLocation().clearing.getClearingComponents()) {
-			if (rc.getGameObject().hasThisAttribute("treasure_location")) {
+			if (rc.getGameObject().hasThisAttribute(RealmComponent.TREASURE_LOCATION)) {
 				if (!rc.getGameObject().hasThisAttribute("discovery") ||
 						character.hasTreasureLocationDiscovery(rc.getGameObject().getName())) {
 					// can't loot sites that still need to be opened (crypt, vault)
@@ -157,7 +157,7 @@ public class MagicSight extends Search {
 		ArrayList<RealmComponent> components = new ArrayList<>();
 		for (RealmComponent rc : character.getCurrentLocation().clearing.getClearingComponents()) {
 			boolean added = false;
-			if (rc.getGameObject().hasThisAttribute("treasure_location")) {
+			if (rc.getGameObject().hasThisAttribute(RealmComponent.TREASURE_LOCATION)) {
 				if (!rc.getGameObject().hasThisAttribute("discovery") ||
 						character.hasTreasureLocationDiscovery(rc.getGameObject().getName())) {
 					// can't loot sites that still need to be opened (crypt, vault)
@@ -248,7 +248,7 @@ public class MagicSight extends Search {
 		// 2)	Look at any one activated artifact/spellbook, or discovered site's spells, and learn any one you want
 		ArrayList<RealmComponent> components = new ArrayList<>();
 		for (RealmComponent rc : character.getCurrentLocation().clearing.getClearingComponents()) {
-			if (rc.getGameObject().hasThisAttribute("treasure_location")) {
+			if (rc.getGameObject().hasThisAttribute(RealmComponent.TREASURE_LOCATION)) {
 				if (!rc.getGameObject().hasThisAttribute("discovery") ||
 						character.hasTreasureLocationDiscovery(rc.getGameObject().getName())) {
 					// Site possibility, but does it have any spells?
