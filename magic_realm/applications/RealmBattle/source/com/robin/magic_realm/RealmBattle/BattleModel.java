@@ -972,7 +972,12 @@ public class BattleModel {
 		
 		// Before anything else, check to see if character is immune to the attacker
 		if (target!=null && (attacker instanceof RealmComponent) && target.isImmuneTo((RealmComponent)attacker)) {
-			attackCancelled = target.getGameObject().getName()+" is immune to "+attacker.getGameObject().getName()+"s";
+			attackCancelled = target.getGameObject().getName()+" is immune to "+attacker.getGameObject().getName()+".";
+		}
+		
+		// Before anything else, check to see if character fears the target
+		if ((attacker instanceof RealmComponent) && (target instanceof RealmComponent)  && ((RealmComponent)attacker).fears((RealmComponent)target)) {
+			attackCancelled = attacker.getGameObject().getName()+" fears "+target.getGameObject().getName()+" and cannot attack it.";
 		}
 		
 		logBattleInfo(">");

@@ -1163,6 +1163,34 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		}
 		return duration == 0 ? Constants.TEN_YEARS : duration;
 	}
+	public boolean fears(RealmComponent rc) {
+		ArrayList<String> list = getFears();
+		if (!list.isEmpty()) {
+			// Make sure we resolve to the monster, not the part!
+			if (rc.isMonsterPart()) {
+				rc = RealmComponent.getRealmComponent(rc.getGameObject().getHeldBy());
+			}
+			
+			// list will contain monster names like:  Flying Demon, Demon, Imp
+			String name = rc.getGameObject().getName();
+			if (rc.getGameObject().hasThisAttribute(Constants.BOARD_NUMBER)) {
+				name = name.substring(0,name.length()-2);
+			}
+			return list.contains(name);
+		}
+		return false;
+	}
+	private ArrayList<String> getFears() {
+		ArrayList<String> fears = new ArrayList<>();
+		if (getGameObject().hasThisAttribute(Constants.MONSTER_FEAR)) {
+			fears.addAll(getGameObject().getThisAttributeList(Constants.MONSTER_FEAR));
+		}
+		if (isCharacter()) {
+			CharacterWrapper character = new CharacterWrapper(getGameObject());
+			fears.addAll(character.getActiveInventoryValuesForThisKey(Constants.MONSTER_FEAR,","));
+		}
+		return fears;
+	}	
 	public String getFacing() {
 		return getGameObject().getThisAttribute(Constants.FACING_KEY);
 	}

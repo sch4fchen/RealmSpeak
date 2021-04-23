@@ -117,6 +117,10 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 	private boolean controlSelected() {
 		return selection == Constants.MONSTER_CONTROL;
 	}
+	private boolean fearSelected() {
+		return selection == Constants.MONSTER_FEAR;
+	}
+	
 	
 	private void updateSelection() {
 		ArrayList<String> list = new ArrayList<>();
@@ -125,6 +129,9 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 		}
 		else if (controlSelected()) {
 			list = getAttributeList(Constants.MONSTER_CONTROL);
+		}
+		else if (fearSelected()) {
+			list = getAttributeList(Constants.MONSTER_FEAR);
 		}
 		
 		if (list!=null) {
@@ -171,6 +178,9 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 				removeAttribute(Constants.MONSTER_CONTROL_ENHANCED);
 			}
 		}
+		else if (fearSelected()) {
+			setAttributeList(Constants.MONSTER_FEAR,list);
+		}
 	}
 	public String getSuggestedDescription() {
 		StringBuffer sb = new StringBuffer();
@@ -179,6 +189,9 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 		}
 		else if (controlSelected()) {
 			sb.append("Can command the ");
+		}
+		else if (controlSelected()) {
+			sb.append("Cannot attack the ");
 		}
 		StringBufferedList list = new StringBufferedList(", ","and ");
 		for (String name:hash.keySet()) {
@@ -197,12 +210,18 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 		if (controlSelected()) {
 			return hasAttribute(Constants.MONSTER_CONTROL);
 		}
+		else if (fearSelected()) {
+			return hasAttribute(Constants.MONSTER_FEAR);
+		}
 		return hasAttribute(Constants.MONSTER_IMMUNITY);
 	}
 	
 	public String toString() {
 		if (controlSelected()) {
 			return "Monster Command";
+		}
+		else if (fearSelected()) {
+			return "Monster Fear";
 		}
 		return "Monster Immunity";
 	}
