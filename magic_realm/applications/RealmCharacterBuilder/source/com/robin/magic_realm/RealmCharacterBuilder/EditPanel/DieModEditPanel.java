@@ -32,13 +32,14 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 public class DieModEditPanel extends AdvantageEditPanel {
 	
 	private static final String[][] TABLE = {
+		{"Natives","Commerce","Meeting"},
+		{"Spells","Curse","PoP:powerofthepit","Wish","Transform"},
 		{"Actions","Hide","Hire","Trade"},
 		{"Battle","Missile","Thrown","Fumble","Stumble"},
-		{"Spells","Curse","PoP:powerofthepit","Wish","Transform"},
-		{"Natives","Commerce","Meeting"},
-		{"Search","Locate","Loot","Magic Sight:magicsight","Peer","Read Runes:readrunes"},
-		{"Treasure within Treasure","Toadstool Circle","Crypt of the Knight","Enchanted Meadow"},
+		
 		{"Expansion","Raise Dead:raisedead","Summon Elemental:summonelemental","Summon Animal:summonanimal","Capture"},
+		{"Treasure within Treasure","Toadstool Circle","Crypt of the Knight","Enchanted Meadow"},
+		{"Search","Locate","Loot","Magic Sight:magicsight","Peer","Read Runes:readrunes"},
 	};
 	
 	private static final String[][] CONDITION = {
@@ -107,7 +108,7 @@ public class DieModEditPanel extends AdvantageEditPanel {
 		allTablesOption.setOptions(specificTableOptions);
 		Box column = null;
 		for (int i=0;i<TABLE.length;i++) {
-			if (i==0 || i==3) {
+			if (i==0 || i==4) {
 				column = Box.createVerticalBox();
 				column.add(Box.createVerticalGlue());
 				innerTableBox.add(column);

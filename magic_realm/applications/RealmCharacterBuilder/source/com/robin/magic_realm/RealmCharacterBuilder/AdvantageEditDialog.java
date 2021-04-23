@@ -80,7 +80,7 @@ public class AdvantageEditDialog extends AggressiveDialog {
 	}
 	private void initComponents() {
 		setLayout(new BorderLayout());
-		setSize(900,650);
+		setSize(900,680);
 		
 		mainPanel = new JPanel(new BorderLayout());
 			Box box = Box.createHorizontalBox();
