@@ -82,7 +82,7 @@ public class CustomCharacterLibrary {
 		return pool.find("companion");
 	}
 	private ArrayList<String> getAllUniqueKeys() {
-		ArrayList<String> list =  new ArrayList<String>();
+		ArrayList<String> list =  new ArrayList<>();
 		for (String name:getCharacterTemplateNameList()) {
 			list.add(getCharacterUniqueKey(name));
 		}

@@ -66,8 +66,8 @@ public class HostPrefWrapper extends GameObjectWrapper {
 	public String getBlockName() {
 		return HOST_PREF_BLOCK;
 	}
-	public static Collection getKeyVals() {
-		ArrayList keyVals = new ArrayList();
+	public static Collection<String> getKeyVals() {
+		ArrayList<String> keyVals = new ArrayList<>();
 		keyVals.add(HOST_NAME_TAG);
 		return keyVals;
 	}
@@ -292,11 +292,10 @@ public class HostPrefWrapper extends GameObjectWrapper {
 		return hasListItem(CHARACTER_KEY,key);
 	}
 	public ArrayList<String> getAllCharacterKeys() {
-		ArrayList list = getList(CHARACTER_KEY);
-		ArrayList<String> ret = new ArrayList<String>();
+		ArrayList<String> list = getList(CHARACTER_KEY);
+		ArrayList<String> ret = new ArrayList<>();
 		if (list!=null) {
-			for (Iterator i=list.iterator();i.hasNext();) {
-				String key = (String)i.next();
+			for (String key : list) {
 				ret.add(key);
 			}
 		}
@@ -325,9 +324,9 @@ public class HostPrefWrapper extends GameObjectWrapper {
 	public static HostPrefWrapper findHostPrefs(GameData data) {
 		if (HOST_PREF_ID==null) {
 			GamePool pool = new GamePool(data.getGameObjects());
-			Collection c = pool.extract(HostPrefWrapper.getKeyVals());
+			Collection<GameObject> c = pool.extract(HostPrefWrapper.getKeyVals());
 			if (c!=null && c.size()==1) {
-				GameObject hp = (GameObject)c.iterator().next();
+				GameObject hp = c.iterator().next();
 				HOST_PREF_ID = new Long(hp.getId());
 				return new HostPrefWrapper(hp);
 			}

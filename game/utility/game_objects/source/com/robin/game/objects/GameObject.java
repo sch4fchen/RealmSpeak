@@ -252,7 +252,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 	/**
 	 * @return			A list of GameObjectChange objects required to make this game object look exactly like the other
 	 */
-	public ArrayList buildChanges(GameObject other) {
+	public ArrayList<GameObjectChange> buildChanges(GameObject other) {
 		if (uncommitted != null || other.uncommitted != null) {
 			throw new IllegalStateException("Cannot buildChanges with uncommitted changes");
 		}

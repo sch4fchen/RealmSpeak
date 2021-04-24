@@ -30,7 +30,6 @@ public class ExorciseEffect implements ISpellEffect {
 			
 			// Fatigue Color Chits
 			targChar.getColorChits().stream()
-				.map(c -> (CharacterActionChitComponent)c)
 				.forEach(chit -> chit.makeFatigued());
 		}
 		else if (context.Target.isSpell()) {
