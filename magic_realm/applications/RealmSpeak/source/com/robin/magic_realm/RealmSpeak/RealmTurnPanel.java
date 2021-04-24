@@ -1071,12 +1071,6 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			}
 		}
 		
-		// Stop following and summon monsters for followers
-		DieRoller monsterDieRoller = game.getMonsterDie();
-		for (CharacterWrapper follower:getCharacter().getActionFollowers()) {
-			getCharacter().removeActionFollower(follower,monsterDieRoller);
-		}
-		
 		// Test requirements one more time (in case any are dependent on start of evening)
 		params.timeOfCall = GamePhaseType.StartOfEvening; // technically not evening until all players are done with their turn, but this is good enough I think
 		if(getCharacter().testQuestRequirements(getMainFrame(),params)) {
