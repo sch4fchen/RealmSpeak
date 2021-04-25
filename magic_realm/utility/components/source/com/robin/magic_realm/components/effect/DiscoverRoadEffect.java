@@ -11,7 +11,7 @@ public class DiscoverRoadEffect implements ISpellEffect {
 		character
 			.getCurrentClearing()
 			.getConnectedPaths()
-			.forEach(path -> character.updatePathKnowledge(path));
+			.forEach(path -> character.addPathKnowledge(path));
 	}
 
 	@Override

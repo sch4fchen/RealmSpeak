@@ -6320,8 +6320,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return getString(DEATH_REASON);
 	}
 	public void updatePathKnowledge(PathDetail path) {
-		if(isSpiritGuided())return;
-		
+		if(isSpiritGuided() || isMistLike())return;
+		addPathKnowledge(path);
+	}
+	public void addPathKnowledge(PathDetail path) {	
 		String pathName = path.getFullPathKey();
 		if (path.isSecret() && !hasSecretPassageDiscovery(pathName)) {
 			addSecretPassageDiscovery(path.getFullPathKey());
