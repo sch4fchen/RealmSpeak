@@ -73,7 +73,7 @@ public class SpellUtility {
 	}
 	
 	public static ArrayList<SpellWrapper>getBewitchingSpellsWithKey(GameObject target, String key){
-		ArrayList<SpellWrapper>result = new ArrayList<SpellWrapper>();
+		ArrayList<SpellWrapper>result = new ArrayList<>();
 		
 		for(SpellWrapper spell:getBewitchingSpells(target)){
 			if(spell.isActive() && spell.getGameObject().hasThisAttribute(key)){

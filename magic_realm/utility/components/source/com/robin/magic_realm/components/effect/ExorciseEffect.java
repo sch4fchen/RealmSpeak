@@ -1,7 +1,6 @@
 package com.robin.magic_realm.components.effect;
 
 import com.robin.game.objects.GameObject;
-import com.robin.magic_realm.components.CharacterActionChitComponent;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
@@ -14,6 +13,8 @@ public class ExorciseEffect implements ISpellEffect {
 		
 		if (context.Target.getGameObject().hasThisAttribute("demon")) {
 			combat.setKilledBy(context.Caster);
+			combat.setKilledLength(context.Spell.getLength());
+			combat.setKilledSpeed(context.Spell.getAttackSpeed());
 		}
 		else if (context.Target.isCharacter()) {
 			CharacterWrapper targChar = new CharacterWrapper(context.Target.getGameObject());

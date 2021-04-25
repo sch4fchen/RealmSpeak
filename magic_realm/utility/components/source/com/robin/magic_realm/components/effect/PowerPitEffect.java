@@ -7,7 +7,7 @@ public class PowerPitEffect implements ISpellEffect {
 	@Override
 	public void apply(SpellEffectContext context) {
 		int d = context.Spell.getRedDieLock();
-		PowerOfThePit.doNow(context.Parent,context.Spell.getCaster().getGameObject(),context.Target.getGameObject(),true,d);
+		PowerOfThePit.doNow(context.Parent,context.Spell.getCaster().getGameObject(),context.Target.getGameObject(),true,d,context.Spell.getLength(),context.Spell.getAttackSpeed());
 	}
 
 	@Override

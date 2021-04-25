@@ -531,6 +531,8 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 				shield.setDestroyed(true);
 				CombatWrapper shieldCombat = new CombatWrapper(getShield().getGameObject());
 				shieldCombat.setKilledBy(attacker.getGameObject());
+				shieldCombat.setKilledLength(attacker.getLength());
+				shieldCombat.setKilledSpeed(attacker.getAttackSpeed());
 				shieldCombat.setHitByOrderNumber(attackOrderPos);
 				RealmLogging.logMessage(attacker.getGameObject().getName(),"Destroys shield.");
 			}
@@ -541,6 +543,8 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 			// Dead monster!
 			CombatWrapper combat = new CombatWrapper(getGameObject());
 			combat.setKilledBy(attacker.getGameObject());
+			combat.setKilledLength(attacker.getLength());
+			combat.setKilledSpeed(attacker.getAttackSpeed());
 			return true;
 		}
 		return false;

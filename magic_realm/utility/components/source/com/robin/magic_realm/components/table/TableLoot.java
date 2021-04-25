@@ -26,6 +26,7 @@ import javax.swing.event.ChangeListener;
 import com.robin.game.objects.*;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.*;
+import com.robin.magic_realm.components.attribute.Speed;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.CharacterActionType;
 import com.robin.magic_realm.components.quest.SearchResultType;
@@ -167,7 +168,7 @@ public class TableLoot extends Loot {
 		}
 		else if ("power_pit".equals(result)) {
 			// Fire off a power of the pit attack
-			PowerOfThePit pop = new PowerOfThePit(getParentFrame(),treasureLocation);
+			PowerOfThePit pop = new PowerOfThePit(getParentFrame(),treasureLocation,0,new Speed(0));
 			pop.setMakeDeadWhenKilled(true);
 			setNewTable(pop); // Test PowerPit
 			ret = "Power of the Pit";

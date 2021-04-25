@@ -22,6 +22,7 @@ import java.util.*;
 import com.robin.game.objects.*;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.Harm;
+import com.robin.magic_realm.components.attribute.Speed;
 import com.robin.magic_realm.components.attribute.Spoils;
 import com.robin.magic_realm.components.utility.RealmLogging;
 
@@ -62,6 +63,8 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String HIT_RESULT = "HIT_RSLT";
 	private static final String HIT_BY_IDS = "HIT_BY_IDS"; // A list of all ids of killers, in the order they hit
 	private static final String KILLED_BY_ID = "KILLED_BY_ID"; // The fastest or longest killer (sounds silly, but I know what I mean here!)
+	private static final String KILLED_LENGTH = "KILLED_LENGTH";
+	private static final String KILLED_SPEED = "KILLED_SPEED";
 	private static final String NEW_WOUNDS = "NEW_WOUNDS";
 	private static final String MISSILE_ROLLS = "MISSILE_ROLLS";
 	private static final String MISSILE_ROLL_SUBTITLES = "M_ROLL_SS";
@@ -331,6 +334,12 @@ public class CombatWrapper extends GameObjectWrapper {
 	public void setKilledBy(GameObject killer) {
 		setString(KILLED_BY_ID,String.valueOf(killer.getId()));
 	}
+	public void setKilledLength(Integer length) {
+		setInt(KILLED_LENGTH,length.intValue());
+	}
+	public void setKilledSpeed(Speed speed) {
+		setInt(KILLED_SPEED,speed.getNum());
+	}
 	public GameObject getKilledBy() {
 		String id = getString(KILLED_BY_ID);
 		if (id!=null) {
@@ -338,6 +347,12 @@ public class CombatWrapper extends GameObjectWrapper {
 			return data.getGameObject(Long.valueOf(id));
 		}
 		return null;
+	}
+	public int getKilledLength() {
+		return getInt(KILLED_LENGTH);
+	}
+	public int getKilledSpeed() {
+		return getInt(KILLED_SPEED);
 	}
 	public boolean isDead() {
 		return getString(KILLED_BY_ID)!=null;
@@ -621,6 +636,8 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,PLACED_AS_MOVE);
 			go.removeAttribute(COMBAT_BLOCK,HIT_RESULT);
 			go.removeAttribute(COMBAT_BLOCK,KILLED_BY_ID);
+			go.removeAttribute(COMBAT_BLOCK,KILLED_LENGTH);
+			go.removeAttribute(COMBAT_BLOCK,KILLED_SPEED);
 			go.removeAttribute(COMBAT_BLOCK,NEW_WOUNDS);
 			go.removeAttribute(COMBAT_BLOCK,HEALING);
 			go.removeAttribute(COMBAT_BLOCK,MISSILE_ROLLS);

@@ -49,9 +49,9 @@ public class GameQuery {
 		return query(list,key,value,false);
 	}
 	private ArrayList<GameObject> query(ArrayList<GameObject> list,String key,String value,boolean stopAtFirst) {
-		ArrayList<GameObject> ret = new ArrayList<GameObject>();
+		ArrayList<GameObject> ret = new ArrayList<>();
 		for (GameObject go:list) {
-			ArrayList<String> blockNames = new ArrayList<String>();
+			ArrayList<String> blockNames = new ArrayList<>();
 			if (blockName!=null) {
 				blockNames.add(blockName);
 			}

@@ -236,6 +236,8 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 		if (applied.strongerOrEqualTo(vulnerability)) {
 			// Dead traveler!
 			combat.setKilledBy(attacker.getGameObject());
+			combat.setKilledLength(attacker.getLength());
+			combat.setKilledSpeed(attacker.getAttackSpeed());
 			return true;
 		}
 		return false;

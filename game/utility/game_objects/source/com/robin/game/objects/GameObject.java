@@ -898,7 +898,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		return hasAttribute(THIS, key);
 	}
 	
-	private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+	private static void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
 		in.defaultReadObject();
 	}
 

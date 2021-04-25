@@ -21,6 +21,7 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.general.swing.DieRoller;
+import com.robin.magic_realm.components.attribute.Speed;
 import com.robin.magic_realm.components.quest.DieRollType;
 import com.robin.magic_realm.components.table.PowerOfThePit;
 import com.robin.magic_realm.components.utility.DieRollBuilder;
@@ -36,7 +37,7 @@ public class QuestRewardPowerOfThePit extends QuestReward {
 
 	@Override
 	public void processReward(JFrame frame, CharacterWrapper character) {
-		PowerOfThePit powerOfthePit = new PowerOfThePit(frame, character.getGameObject());
+		PowerOfThePit powerOfthePit = new PowerOfThePit(frame, character.getGameObject(),0,new Speed(0));
 		DieRoller roller = DieRollBuilder.getDieRollBuilder(frame, character, getDieRoll()).createRoller(powerOfthePit);
 		roller.rollDice("Power of the Pit");
 		powerOfthePit.apply(character,roller);

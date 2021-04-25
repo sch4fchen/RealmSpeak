@@ -24,6 +24,7 @@ import javax.swing.JFrame;
 import com.robin.game.objects.GameObject;
 import com.robin.general.swing.DieRoller;
 import com.robin.magic_realm.components.*;
+import com.robin.magic_realm.components.attribute.Speed;
 import com.robin.magic_realm.components.attribute.Strength;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.utility.*;
@@ -47,11 +48,15 @@ public class PowerOfThePit extends RealmTable {
 	
 	private ArrayList<GameObject> kills;
 	private boolean harm;
+	private int length;
+	private Speed speed;
 	
-	public PowerOfThePit(JFrame frame,GameObject caster) {
+	public PowerOfThePit(JFrame frame,GameObject caster,int attackLength, Speed attackSpeed) {
 		super(frame,null);
 		this.caster = caster;
-		kills = new ArrayList<GameObject>();
+		this.length =  attackLength;
+		this.speed = attackSpeed;
+		kills = new ArrayList<>();
 	}
 	public boolean harmWasApplied() {
 		return kills.size()>0 || harm;
@@ -95,7 +100,7 @@ public class PowerOfThePit extends RealmTable {
 		}
 		return super.apply(character,roller);
 	}
-	private String getKilledString(ArrayList<RealmComponent> killed) {
+	private static String getKilledString(ArrayList<RealmComponent> killed) {
 		StringBuffer string = new StringBuffer();
 		if (!killed.isEmpty()) {
 			string.append("\n\n");
@@ -243,7 +248,7 @@ public class PowerOfThePit extends RealmTable {
 				+"become damaged, damaged armor counters are destroyed. Armor cards and inactive\n"
 				+"counters are not affected.");
 		// The target's active armor counters are damaged.  Armor cards and inactive counters are NOT affected.
-		ArrayList<GameObject> destroyed = new ArrayList<GameObject>();
+		ArrayList<GameObject> destroyed = new ArrayList<>();
 		for (GameObject inv:character.getActiveInventory()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(inv);
 			if (rc.isArmor()) {
@@ -255,6 +260,8 @@ public class PowerOfThePit extends RealmTable {
 					else {
 						CombatWrapper combat = new CombatWrapper(inv);
 						combat.setKilledBy(caster);
+						combat.setKilledLength(length);
+						combat.setKilledSpeed(speed);
 					}
 				}
 				else {
@@ -269,10 +276,10 @@ public class PowerOfThePit extends RealmTable {
 		return RESULT[5];
 	}
 	private ArrayList<RealmComponent> killEverythingInClearing(CharacterWrapper character,Strength power,boolean hiddenAreSafe,boolean charactersAreSafe) {
-		ArrayList<RealmComponent> killed = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> killed = new ArrayList<>();
 		TileLocation tl = character.getCurrentLocation();
 		if (tl.isInClearing()) {
-			HashSet<RealmComponent> livingThings = new HashSet<RealmComponent>();
+			HashSet<RealmComponent> livingThings = new HashSet<>();
 			for (RealmComponent rc:tl.clearing.getClearingComponents()) {
 				if (rc.isPlayerControlledLeader()) {
 					livingThings.add(rc);
@@ -320,6 +327,8 @@ public class PowerOfThePit extends RealmTable {
 		else {
 			CombatWrapper combat = new CombatWrapper(go);
 			combat.setKilledBy(caster);
+			combat.setKilledLength(length);
+			combat.setKilledSpeed(speed);
 			CombatWrapper tile = new CombatWrapper(victim.getCurrentLocation().tile.getGameObject());
 			tile.addHitResult();
 		}
@@ -327,8 +336,8 @@ public class PowerOfThePit extends RealmTable {
 	public ArrayList<GameObject> getKills() {
 		return kills;
 	}
-	public static PowerOfThePit doNow(JFrame parent,GameObject attacker,GameObject target,boolean casterRolls,int redDie) {
-		PowerOfThePit pop = new PowerOfThePit(parent,attacker);
+	public static PowerOfThePit doNow(JFrame parent,GameObject attacker,GameObject target,boolean casterRolls,int redDie,int attackLength, Speed attackSpeed) {
+		PowerOfThePit pop = new PowerOfThePit(parent,attacker,attackLength,attackSpeed);
 		pop.setMakeDeadWhenKilled(false);
 		CharacterWrapper caster = new CharacterWrapper(attacker);
 		CharacterWrapper victim = new CharacterWrapper(target);

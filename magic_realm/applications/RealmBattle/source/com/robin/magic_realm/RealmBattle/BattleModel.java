@@ -916,6 +916,8 @@ public class BattleModel {
 		CombatWrapper targetCombat = target==null?null:(new CombatWrapper(target.getGameObject()));
 		String attackerName = attacker.getGameObject().getName();
 		GameObject killer = attackerCombat.getKilledBy();
+		int killLength = attackerCombat.getKilledLength();
+		int killSpeed = attackerCombat.getKilledSpeed();
 		if (attacker instanceof SpellWrapper) {
 			// In the case of a spell, the attack is cancelled when the caster is dead
 			SpellWrapper spell = (SpellWrapper)attacker;
@@ -923,6 +925,8 @@ public class BattleModel {
 			if (character!=null) {
 				CombatWrapper casterCombat = new CombatWrapper(character.getGameObject());
 				killer = casterCombat.getKilledBy();
+				killLength = casterCombat.getKilledLength();
+				killSpeed = casterCombat.getKilledSpeed();
 				attackerName = character.getGameObject().getName();
 			}
 		}
@@ -933,9 +937,11 @@ public class BattleModel {
 			targetCombat = target==null?null:(new CombatWrapper(target.getGameObject()));
 			CombatWrapper weaponHolder = new CombatWrapper(monster.getGameObject());
 			killer = weaponHolder.getKilledBy(); // if holder is killed, their weapon attack is cancelled too!
+			killLength = weaponHolder.getKilledLength();
+			killSpeed = weaponHolder.getKilledSpeed();
 		}
 		GameObject targetKiller = targetCombat.getKilledBy();
-		
+
 		String attackCancelled = null;
 		
 		// Attack must be placed on target's sheet or target must be on character's sheet (=target attacks the character) or both must be on same denizen sheet
@@ -951,9 +957,15 @@ public class BattleModel {
 		
 		// You can't kill a target that is already dead, unless the target's killer attacked with the same speed and length (simultaneous)
 		if (targetKiller!=null) {
+			int targetKillerLength = targetCombat.getKilledLength();
+			int targetKillerSpeed = targetCombat.getKilledSpeed();
+			boolean simultaneous = targetKillerSpeed == attacker.getAttackSpeed().getNum()
+					&& targetKillerLength == attacker.getLength().intValue();
+			/*
 			BattleChit targetKillerChit = RealmComponent.getBattleChit(targetKiller);
 			boolean simultaneous = targetKillerChit.getAttackSpeed().equals(attacker.getAttackSpeed())
 										&& targetKillerChit.getLength().equals(attacker.getLength());
+			*/
 			if (!simultaneous) {
 				// nope - attack is cancelled
 				attackCancelled = target.getGameObject().getName()+" was already killed by "+targetKiller.getName()+".";
@@ -963,9 +975,13 @@ public class BattleModel {
 		// The attacker can't attack if he/she is dead, unless their attack is simultaneous with their killer.
 		if (killer!=null) {
 			// The attacker was killed, but was it simultaneous?
+			boolean simultaneous = killSpeed == attacker.getAttackSpeed().getNum()
+					&& killLength == attacker.getLength().intValue();
+			/*
 			BattleChit killerChit = RealmComponent.getBattleChit(killer);
 			boolean simultaneous = killerChit.getAttackSpeed().equals(attacker.getAttackSpeed())
 										&& killerChit.getLength().equals(attacker.getLength());
+			*/
 			if (!simultaneous) {
 				// nope - attack is cancelled
 				attackCancelled = attackerName+" was already killed by "+killer.getName()+".";
@@ -1108,7 +1124,7 @@ public class BattleModel {
 					if ("V".equals(magicType)) {
 						// Demon's Power of the Pit
 						logBattleInfo(target.getGameObject().getName()+" was hit with Power of the Pit along box "+attacker.getAttackCombatBox());
-						PowerOfThePit pop = PowerOfThePit.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject(),false,0);
+						PowerOfThePit pop = PowerOfThePit.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject(),false,0,attacker.getLength(),attacker.getAttackSpeed());
 						ArrayList<GameObject> kills = new ArrayList<>(pop.getKills());
 						kills.remove(targetCombat.getGameObject()); // Because targetCombat will be handled normally
 						

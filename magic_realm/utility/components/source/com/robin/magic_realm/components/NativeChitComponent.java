@@ -407,6 +407,8 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		if (applied.strongerOrEqualTo(vulnerability)) {
 			// Dead native!
 			combat.setKilledBy(attacker.getGameObject());
+			combat.setKilledLength(attacker.getLength());
+			combat.setKilledSpeed(attacker.getAttackSpeed());
 			return true;
 		}
 		return horseHarmed;

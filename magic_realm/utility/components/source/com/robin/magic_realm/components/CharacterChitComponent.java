@@ -584,6 +584,8 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			CombatWrapper monCombat = new CombatWrapper(transmorph.getGameObject());
 			if (monCombat.getKilledBy() != null) {
 				combat.setKilledBy(attacker.getGameObject());
+				combat.setKilledLength(attacker.getLength());
+				combat.setKilledSpeed(attacker.getAttackSpeed());
 				ret = true;
 			}
 			return ret;

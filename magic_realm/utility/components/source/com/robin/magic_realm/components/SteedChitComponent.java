@@ -187,6 +187,8 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 			// Dead horse!
 			CombatWrapper combat = new CombatWrapper(getGameObject());
 			combat.setKilledBy(attacker.getGameObject());
+			combat.setKilledLength(attacker.getLength());
+			combat.setKilledSpeed(attacker.getAttackSpeed());
 			combat.setHitByOrderNumber(attackOrderPos);
 			RealmLogging.logMessage(attacker.getGameObject().getName(),"Kills the "+getGameObject().getName());
 			return true;
