@@ -1747,7 +1747,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		
 		if (condition==null || condition.trim().length()!=0) {
-			ArrayList<GameObject> inventory = getGameObject().getHold();
+			ArrayList<GameObject> inventory = this.getActiveInventoryAndTravelers();
 			for (GameObject item : inventory) {
 				String itemCondition = item.getThisAttribute(Constants.WALK_WOODS);
 				if (itemCondition != null && (condition==null || (condition.trim().length()!=0 && itemCondition.trim().length()==0))) {

@@ -193,7 +193,7 @@ public class WeaponEditDialog extends AggressiveDialog {
 					weapon.setThisAttribute(Constants.WEAPON_START_LOCATION,button.getText());
 				}
 			};
-			slButtons = new ArrayList<JRadioButton>();
+			slButtons = new ArrayList<>();
 			for (int i=0;i<STARTING_LOCATION_OPTION.length;i++) {
 				JRadioButton button = new JRadioButton(STARTING_LOCATION_OPTION[i],i==0);
 				startingLocationPanel.add(button);
