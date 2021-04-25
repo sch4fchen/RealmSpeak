@@ -76,7 +76,7 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 	public void assignTravelerTemplate() {
 		if (getGameObject().hasThisAttribute(Constants.TEMPLATE_ASSIGNED)) return;
 		GamePool pool = new GamePool(getGameObject().getGameData().getGameObjects());
-		ArrayList query = new ArrayList();
+		ArrayList<String> query = new ArrayList<>();
 		query.add(Constants.TRAVELER_TEMPLATE);
 		query.add("!"+Constants.USED);
 		query.add("!notready");
@@ -104,16 +104,16 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 		getGameObject().addAll(template.getHold());
 		template.setThisAttribute(Constants.USED);
 	}
-	private ImageIcon getDieIcon(int val){
+	private static ImageIcon getDieIcon(int val){
 		if (dieIconHash==null) {
-			dieIconHash = new Hashtable<Integer,ImageIcon>();
+			dieIconHash = new Hashtable<>();
 			for (int i=1;i<=6;i++) {
 				DieRoller dr = new DieRoller(String.valueOf(i),16,4);
 				dr.setAllRed();
 				dieIconHash.put(new Integer(i),dr.getIcon());
 			}
 		}
-		return dieIconHash.get(val);
+		return dieIconHash.get(new Integer(val));
 	}
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -259,7 +259,7 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 			}
 		}
 		
-		return new Speed(getGameObject().getThisInt("attack_speed"),speedModifier());
+		return new Speed(new Integer(getGameObject().getThisInt("attack_speed")),speedModifier());
 	}
 	public Speed getFlySpeed() {
 		return null; // For now, there are no flying travelers.
@@ -280,7 +280,7 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 		return false;
 	}
 	public Integer getLength() {
-		return getThisInt("length");
+		return new Integer(getThisInt("length"));
 	}
 	public String getMagicType() {
 		return null; // For now, there are no magic flinging travelers.
@@ -296,9 +296,9 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 		int otherSpeed = getGameObject().getThisInt("move_speed_change");
 		if (otherSpeed>0) {
 			alteredMoveSpeed = true;
-			return new Speed(otherSpeed,speedModifier());
+			return new Speed(new Integer(otherSpeed),speedModifier());
 		}
-		return new Speed(getThisInt("move_speed"),speedModifier());
+		return new Speed(new Integer(getThisInt("move_speed")),speedModifier());
 	}
 	public boolean hasAnAttack() {
 		return (getThisAttribute("strength")!=null && getThisAttribute("strength").length()>0)

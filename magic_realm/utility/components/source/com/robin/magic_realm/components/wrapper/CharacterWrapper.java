@@ -4462,6 +4462,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	private void fetchStartingWeapon(JFrame frame,String levelKey,GamePool pool,String hostKeyVals,boolean chooseSource) {
 		String weapon = getGameObject().getAttribute(levelKey,"weapon");
+		if (weapon==null) { //e.g. levelKey = level_4_1
+			return;
+		}
 		GameObject item = null;
 		if (getGameObject().hasThisAttribute(Constants.CUSTOM_CHARACTER)) {
 			item = fetchItemFromTemplate(weapon);
@@ -4517,7 +4520,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 						}
 						// There should never be a T here:  the weaponLocation would not be null in the case of a custom weapon 
 					}
-					if (weaponLocation!=null) { // should never BE null, but oh well
+					if (weaponLocation!=null && !weaponLocation.equals("None")) { // should never BE null, but oh well
 						if (board!=null) {
 							weaponLocation = weaponLocation+" "+board;
 						}

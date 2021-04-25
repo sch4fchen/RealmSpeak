@@ -57,20 +57,26 @@ public class WeaponEditDialog extends AggressiveDialog {
 	private IntegerField priceField;
 	private ButtonPanel rangedOption;
 	
-	private static final String[] STARTING_LOCATION_OPTION = {
-		"Guard",
-		"House",
-		"Bashkar Dwelling",
-		"Inn",
-		"Company Dwelling",
-		"Woodfolk Dwelling",
-		"Chapel",
+	private static final String[] STARTING_LOCATION_OPTION = {		
+		"None",
+		"Crone",
 		"Lancer Dwelling",
+		"Woodfolk Dwelling",
+		
+		"Inn",
+		"Guard",
+		"Bashkar Dwelling",
+		"Dragonmen Dwelling",
+		
+		"House",
+		"Company Dwelling",
+		"Murker Dwelling",
+		"Warlock",
+		
+		"Chapel",
 		"Patrol Dwelling",
 		"Scholar",
 		"Shaman",
-		"Warlock",
-		"Crone",
 	};
 	private ArrayList<JRadioButton> slButtons;
 	
@@ -85,7 +91,7 @@ public class WeaponEditDialog extends AggressiveDialog {
 		setWeapon(weaponName);
 	}
 	private void initComponents() {
-		setSize(500,490);
+		setSize(640,480);
 		setLayout(new BorderLayout());
 		
 		JPanel mainPanel = new JPanel(new GridLayout(2,1));
