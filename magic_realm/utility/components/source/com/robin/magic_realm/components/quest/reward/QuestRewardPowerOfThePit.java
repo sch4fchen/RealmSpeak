@@ -38,8 +38,13 @@ public class QuestRewardPowerOfThePit extends QuestReward {
 	@Override
 	public void processReward(JFrame frame, CharacterWrapper character) {
 		PowerOfThePit powerOfthePit = new PowerOfThePit(frame, character.getGameObject(),0,new Speed(0));
-		DieRoller roller = DieRollBuilder.getDieRollBuilder(frame, character, getDieRoll()).createRoller(powerOfthePit);
-		roller.rollDice("Power of the Pit");
+		DieRoller roller;
+		if (getString(DIE_ROLL).equals(DieRollType.Random.toString())) {
+			roller = DieRollBuilder.getDieRollBuilder(frame, character, getDieRoll()).createRoller(powerOfthePit);
+		}
+		else {
+			roller = DieRollBuilder.getDieRollBuilder(frame, character, getDieRoll()).createRoller(powerOfthePit,1);
+		}
 		powerOfthePit.apply(character,roller);
 	}
 	

@@ -37,8 +37,13 @@ public class QuestRewardWish extends QuestReward {
 	@Override
 	public void processReward(JFrame frame, CharacterWrapper character) {
 		Wish wish = new Wish(frame);
-		DieRoller roller = DieRollBuilder.getDieRollBuilder(frame, character, getDieRoll()).createRoller(wish);
-		roller.rollDice("Wish");
+		DieRoller roller;
+		if (getString(DIE_ROLL).equals(DieRollType.Random.toString())) {
+			roller = DieRollBuilder.getDieRollBuilder(frame, character, getDieRoll()).createRoller(wish);
+		}
+		else {
+			roller = DieRollBuilder.getDieRollBuilder(frame, character, getDieRoll()).createRoller(wish,1);
+		}
 		wish.apply(character,roller);
 	}
 	

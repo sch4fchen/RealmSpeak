@@ -89,7 +89,7 @@ public class Wish extends RealmTable {
 			wish.superApply(character,roller);
 		}
 	}
-	private String getWishTitle(CharacterWrapper character) {
+	private static String getWishTitle(CharacterWrapper character) {
 		return character.getGameObject().getName()+"'s Wish";
 	}
 	public String applyOne(CharacterWrapper character) {
@@ -110,9 +110,8 @@ public class Wish extends RealmTable {
 		// Okay, first locate all possible targets in the clearing
 		TileLocation here = character.getCurrentLocation();
 		if (here.isInClearing()) {
-			ArrayList livingThings = new ArrayList();
-			for (Iterator i=here.clearing.getClearingComponents().iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			ArrayList<RealmComponent> livingThings = new ArrayList<>();
+			for (RealmComponent rc : here.clearing.getClearingComponents()) {
 				if (rc.isPlayerControlledLeader()) {
 					livingThings.add(rc);
 					CharacterWrapper aChar = new CharacterWrapper(rc.getGameObject());
@@ -217,13 +216,12 @@ public class Wish extends RealmTable {
 		
 		placeHash = new Hashtable();
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(getParentFrame(),"Vision - Select one box to examine treasure:",false);
-		ArrayList examine = new ArrayList();
+		ArrayList<GameObject> examine = new ArrayList<>();
 		examine.addAll(pool.find(gameKeyVals+",dwelling"));
 		examine.addAll(pool.find(gameKeyVals+",treasure_location"));
 		examine.addAll(pool.find(gameKeyVals+",visitor"));
 		int keyN = 0;
-		for (Iterator i=examine.iterator();i.hasNext();) {
-			GameObject place = (GameObject)i.next();
+		for (GameObject place : examine) {
 			int count = TreasureUtility.getTreasureCardCount(place);
 			if (count>0) {
 				String key = "N"+(keyN++);
@@ -246,10 +244,9 @@ public class Wish extends RealmTable {
 		GameObject place = (GameObject)placeHash.get(target);
 		RealmComponentDisplayDialog viewPanel = new RealmComponentDisplayDialog(getParentFrame(),"I wish for a vision","Vision of the "+place.getName());
 		Hashtable old = new Hashtable();
-		Collection c = TreasureUtility.getTreasureCards(place);
+		Collection<GameObject> c = TreasureUtility.getTreasureCards(place);
 		StringBufferedList list = new StringBufferedList();
-		for (Iterator n=c.iterator();n.hasNext();) {
-			GameObject treasure = (GameObject)n.next();
+		for (GameObject treasure : c) {
 			list.append(treasure.getName());
 			TreasureCardComponent rc = (TreasureCardComponent)RealmComponent.getRealmComponent(treasure);
 			String facing = rc.getFacing();
@@ -260,8 +257,7 @@ public class Wish extends RealmTable {
 		}
 		viewPanel.setVisible(true);
 		visionCharacter.addNote(place,"Vision",list.toString());
-		for (Iterator n=c.iterator();n.hasNext();) {
-			GameObject treasure = (GameObject)n.next();
+		for (GameObject treasure : c) {
 			String facing = (String)old.get(treasure);
 			// This next line allows me to change facing without saving the change
 			treasure.getThisAttributeBlock().put(Constants.FACING_KEY,facing);
@@ -285,13 +281,12 @@ public class Wish extends RealmTable {
 	public String applyFive(CharacterWrapper character) {
 		JOptionPane.showMessageDialog(getParentFrame(),"\"I wish for health\"",getWishTitle(character),JOptionPane.INFORMATION_MESSAGE,getRollerImage());
 		// Heal all fatigued and wounded chits
-		ArrayList toHeal = new ArrayList();
+		ArrayList<CharacterActionChitComponent> toHeal = new ArrayList<>();
 		toHeal.addAll(character.getFatiguedChits());
 		toHeal.addAll(character.getWoundedChits());
 		CombatWrapper combat = new CombatWrapper(character.getGameObject());
 		ArrayList<GameObject> used = combat.getUsedChits();
-		for (Iterator i=toHeal.iterator();i.hasNext();) {
-			CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+		for (CharacterActionChitComponent chit : toHeal) {
 			if (!used.contains(chit.getGameObject())) {
 				chit.makeActive();
 			}

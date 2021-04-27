@@ -43,8 +43,14 @@ public class QuestRewardCurse extends QuestReward {
 		}
 		
 		Curse curse = new Curse(frame, character.getGameObject());
-		DieRoller roller = DieRollBuilder.getDieRollBuilder(frame, character, getDieRoll()).createRoller(curse);
-		roller.rollDice("Curse");
+		DieRoller roller;
+		if (getString(DIE_ROLL).equals(DieRollType.Random.toString())) {
+			roller = DieRollBuilder.getDieRollBuilder(frame, character, getDieRoll()).createRoller(curse);
+		}
+		else {
+			roller = DieRollBuilder.getDieRollBuilder(frame, character, getDieRoll()).createRoller(curse,1);
+		}
+		
 		curse.apply(character,roller);
 	}
 	

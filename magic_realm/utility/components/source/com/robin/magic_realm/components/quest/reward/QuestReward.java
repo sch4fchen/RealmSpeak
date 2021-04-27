@@ -500,7 +500,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 			System.out.println(sb.toString());
 		}
 	}
-	public int getDieRoll(DieRollType dieRoll) {
+	public static int getDieRoll(DieRollType dieRoll) {
 		switch (dieRoll) {
 			case One:
 				return 1;

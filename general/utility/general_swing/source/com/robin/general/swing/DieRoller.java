@@ -20,6 +20,7 @@ package com.robin.general.swing;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.*;
@@ -48,8 +49,8 @@ public class DieRoller extends JComponent {
 	
 	private static final Font font = new Font(MODIFIER_FONT_NAME,Font.BOLD,12);
 	
-	protected ArrayList<Die> dice = new ArrayList<Die>();
-	protected Collection actionListeners;
+	protected ArrayList<Die> dice = new ArrayList<>();
+	protected Collection<ActionListener> actionListeners;
 	protected boolean hasRolled = false;
 	
 	protected boolean showPane = false;
@@ -155,7 +156,7 @@ public class DieRoller extends JComponent {
 	}
 	public void addActionListener(ActionListener listener) {
 		if (actionListeners==null) {
-			actionListeners = new ArrayList();
+			actionListeners = new ArrayList<>();
 		}
 		actionListeners.add(listener);
 	}
@@ -170,8 +171,7 @@ public class DieRoller extends JComponent {
 	private void fireActionPerformed() {
 		if (actionListeners!=null) {
 			ActionEvent ev = new ActionEvent(this,0,"Dice Rolled");
-			for (Iterator i=actionListeners.iterator();i.hasNext();) {
-				ActionListener listener = (ActionListener)i.next();
+			for (ActionListener listener : actionListeners) {
 				listener.actionPerformed(ev);
 			}
 		}
@@ -402,8 +402,8 @@ public class DieRoller extends JComponent {
 		return getDescription(false);
 	}
 	
-	public static ArrayList breakOutRollers(String in,int dieSize,int dotSize) {
-		ArrayList list = new ArrayList();
+	public static ArrayList<Serializable> breakOutRollers(String in,int dieSize,int dotSize) {
+		ArrayList<Serializable> list = new ArrayList<>();
 		int n;
 		boolean addingString = true;
 		if (in.startsWith(LOG_ANNOTATION)) {
@@ -437,8 +437,6 @@ public class DieRoller extends JComponent {
 		StringBuffer sb = new StringBuffer();
 		sb.append("This is a die roller here: ");
 		DieRoller roller = new DieRoller();
-//		roller.addWhiteDie();
-//		roller.addWhiteDie();
 		roller.rollDice();
 		sb.append(roller.getLogAnnotation());
 		sb.append(", but does that work?");

@@ -200,6 +200,9 @@ public class DieRollBuilder {
 	public DieRoller createFortifyRoller() {
 		return createRoller("Fortify");
 	}
+	public DieRoller createRoller(RealmTable table, int numDice) {
+		return createRoller(numDice,0,false,table.getTableKey());
+	}
 	private DieRoller createRoller(int numDice,int mod,boolean controlsRed,String text) {
 		DieRoller roller = new DieRoller();
 		roller.adjustDieSize(25, 6);
