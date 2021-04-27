@@ -2473,7 +2473,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		for (GameObject go:getAllActiveInventoryThisKeyAndValue(key,null)) {
 			Integer num = go.getInteger("this",key);
-			if (lowest==null || num.intValue()<lowest.intValue()) {
+			if (lowest==null || (num!=null&&num.intValue()<lowest.intValue())) {
 				lowest = num;
 			}
 		}
@@ -2486,7 +2486,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		for (GameObject go:getAllActiveInventoryThisKeyAndValue(key,null)) {
 			Integer num = go.getInteger("this",key);
-			if (highest==null || num.intValue()>highest.intValue()) {
+			if (highest==null || (num!=null&&num.intValue()>highest.intValue())) {
 				highest = num;
 			}
 		}

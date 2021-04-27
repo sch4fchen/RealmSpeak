@@ -1158,7 +1158,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 			CharacterWrapper character = new CharacterWrapper(getGameObject());
 			Integer inventoryDuration = character.getHighestIntegerForActiveInventoryKey(Constants.MONSTER_CONTROL_DURATION);
 			if (inventoryDuration != null) {
-				duration = Math.max(duration, inventoryDuration);
+				duration = Math.max(duration, inventoryDuration.intValue());
 			}
 		}
 		return duration == 0 ? Constants.TEN_YEARS : duration;
