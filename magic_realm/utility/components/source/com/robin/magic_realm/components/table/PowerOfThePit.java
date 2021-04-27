@@ -48,13 +48,11 @@ public class PowerOfThePit extends RealmTable {
 	
 	private ArrayList<GameObject> kills;
 	private boolean harm;
-	private int length;
 	private Speed speed;
 	
-	public PowerOfThePit(JFrame frame,GameObject caster,int attackLength, Speed attackSpeed) {
+	public PowerOfThePit(JFrame frame,GameObject caster,Speed attackSpeed) {
 		super(frame,null);
 		this.caster = caster;
-		this.length =  attackLength;
 		this.speed = attackSpeed;
 		kills = new ArrayList<>();
 	}
@@ -260,7 +258,7 @@ public class PowerOfThePit extends RealmTable {
 					else {
 						CombatWrapper combat = new CombatWrapper(inv);
 						combat.setKilledBy(caster);
-						combat.setKilledLength(length);
+						combat.setKilledLength(17);
 						combat.setKilledSpeed(speed);
 					}
 				}
@@ -327,7 +325,7 @@ public class PowerOfThePit extends RealmTable {
 		else {
 			CombatWrapper combat = new CombatWrapper(go);
 			combat.setKilledBy(caster);
-			combat.setKilledLength(length);
+			combat.setKilledLength(17);
 			combat.setKilledSpeed(speed);
 			CombatWrapper tile = new CombatWrapper(victim.getCurrentLocation().tile.getGameObject());
 			tile.addHitResult();
@@ -336,8 +334,8 @@ public class PowerOfThePit extends RealmTable {
 	public ArrayList<GameObject> getKills() {
 		return kills;
 	}
-	public static PowerOfThePit doNow(JFrame parent,GameObject attacker,GameObject target,boolean casterRolls,int redDie,int attackLength, Speed attackSpeed) {
-		PowerOfThePit pop = new PowerOfThePit(parent,attacker,attackLength,attackSpeed);
+	public static PowerOfThePit doNow(JFrame parent,GameObject attacker,GameObject target,boolean casterRolls,int redDie,Speed attackSpeed) {
+		PowerOfThePit pop = new PowerOfThePit(parent,attacker,attackSpeed);
 		pop.setMakeDeadWhenKilled(false);
 		CharacterWrapper caster = new CharacterWrapper(attacker);
 		CharacterWrapper victim = new CharacterWrapper(target);

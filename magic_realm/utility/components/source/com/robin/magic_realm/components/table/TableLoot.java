@@ -168,7 +168,7 @@ public class TableLoot extends Loot {
 		}
 		else if ("power_pit".equals(result)) {
 			// Fire off a power of the pit attack
-			PowerOfThePit pop = new PowerOfThePit(getParentFrame(),treasureLocation,0,new Speed(0));
+			PowerOfThePit pop = new PowerOfThePit(getParentFrame(),treasureLocation,new Speed(0));
 			pop.setMakeDeadWhenKilled(true);
 			setNewTable(pop); // Test PowerPit
 			ret = "Power of the Pit";

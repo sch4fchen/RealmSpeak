@@ -1624,7 +1624,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				}
 				else if (thingName.startsWith("pop")) {
 					int roll = Integer.valueOf(thingName.substring(3)).intValue();
-					PowerOfThePit pop = new PowerOfThePit(gameHandler.getMainFrame(), character.getGameObject(), 0, new Speed(0));
+					PowerOfThePit pop = new PowerOfThePit(gameHandler.getMainFrame(), character.getGameObject(), new Speed(0));
 					roller.setValue(0, roll);
 					pop.apply(character, roller);
 				}
