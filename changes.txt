@@ -1,6 +1,4 @@
 Version 1.1.4.1 - Changes since 1.1.4.0
-QUEST UPDATE:
-NEW FEATURES:
 BUGS/ISSUES:
 # Fix casting power of the pit spell
 # Fix quest rewards Curse, PowerOfThePit and Wish using correct value for the die roller
