@@ -1281,8 +1281,10 @@ public class BattleModel {
 			RealmComponent attackChit = ((CharacterChitComponent)attacker).getAttackChit();
 			if (attackChit!=null) {
 				CombatWrapper combatAttack = new CombatWrapper(attackChit.getGameObject());
-				CombatWrapper attackerCombat = new CombatWrapper(attacker.getGameObject());
-				attackerCombat.setWeaponHit(combatAttack.getWeaponId());
+				if (combatAttack.getWeaponId()!=null) {
+					CombatWrapper attackerCombat = new CombatWrapper(attacker.getGameObject());
+					attackerCombat.setWeaponHit(combatAttack.getWeaponId());
+				}
 			}
 		}
 	}
@@ -1645,11 +1647,10 @@ public class BattleModel {
 			// Determine if character has wishStrength, and hit with a physical attack
 			if (rc.isCharacter()) {
 				CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-				CharacterChitComponent battle = (CharacterChitComponent)rc;
 				CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
 				if (character.getWishStrength()!=null) {
 					// Character has a "Wish for Strength" result applied
-					if (combat.getHitResult()!=null && !battle.getAttackSpeed().isInfinitelySlow()) {
+					if (combat.getHitResult()!=null && !BattleUtility.findFightComponentsWithCombatBox(character.getActiveFightChitsAsRealmComponents()).isEmpty()) {
 						// Character hit a target this round with a physical attack (chit or gloves)
 						character.clearWishStrength();
 					}

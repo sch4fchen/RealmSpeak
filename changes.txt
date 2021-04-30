@@ -1,3 +1,7 @@
+Version 1.1.4.2 - Changes since 1.1.4.1
+BUGS/ISSUES:
+# Fix strength effect by a wish applying infinite long
+
 Version 1.1.4.1 - Changes since 1.1.4.0
 BUGS/ISSUES:
 # Fix casting power of the pit spell

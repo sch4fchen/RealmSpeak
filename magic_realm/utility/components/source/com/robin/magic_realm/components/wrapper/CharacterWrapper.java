@@ -4770,7 +4770,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (isPhantasm()) {
 			return getHiringCharacter().getEnchantableChits();
 		}
-		ArrayList<CharacterActionChitComponent> ret = new ArrayList<CharacterActionChitComponent>();
+		ArrayList<CharacterActionChitComponent> ret = new ArrayList<>();
 		ArrayList<CharacterActionChitComponent> list = getActiveChits();
 		list.addAll(getAlertedChits());
 		for (CharacterActionChitComponent chit:list) {
@@ -4781,8 +4781,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return ret;
 	}
 	public ArrayList<CharacterActionChitComponent> getAllMagicChits() {
-		ArrayList<CharacterActionChitComponent> ret = new ArrayList<CharacterActionChitComponent>();
-		ArrayList<CharacterActionChitComponent> pool = new ArrayList<CharacterActionChitComponent>();
+		ArrayList<CharacterActionChitComponent> ret = new ArrayList<>();
+		ArrayList<CharacterActionChitComponent> pool = new ArrayList<>();
 		pool.addAll(getAllChits());
 		for (CharacterActionChitComponent chit : pool) {
 			if ("MAGIC".equals(chit.getAction())) {
@@ -4792,8 +4792,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return ret;
 	}
 	public ArrayList<CharacterActionChitComponent> getActiveMagicChits() {
-		ArrayList<CharacterActionChitComponent> ret = new ArrayList<CharacterActionChitComponent>();
-		ArrayList<CharacterActionChitComponent> pool = new ArrayList<CharacterActionChitComponent>();
+		ArrayList<CharacterActionChitComponent> ret = new ArrayList<>();
+		ArrayList<CharacterActionChitComponent> pool = new ArrayList<>();
 		pool.addAll(getActiveChits());
 		pool.addAll(getAlertedChits()); // I think ONLY MAGIC chits can be alerted
 		for (CharacterActionChitComponent chit : pool) {
@@ -4804,7 +4804,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return ret;
 	}
 	public Collection<CharacterActionChitComponent> getActiveMoveChits() {
-		ArrayList<CharacterActionChitComponent> ret = new ArrayList<CharacterActionChitComponent>();
+		ArrayList<CharacterActionChitComponent> ret = new ArrayList<>();
 		for (CharacterActionChitComponent chit : getActiveChits()) {
 			if (chit.isMove()) {
 				ret.add(chit);
@@ -4813,16 +4813,25 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return ret;
 	}
 	public Collection<RealmComponent> getActiveMoveChitsAsRealmComponents() {
-		ArrayList<RealmComponent> ret = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> ret = new ArrayList<>();
 		for (CharacterActionChitComponent chit : getActiveChits()) {
 			if (chit.isMove()) {
-				ret.add((RealmComponent)chit);
+				ret.add(chit);
 			}
 		}
 		return ret;
 	}
 	public Collection<CharacterActionChitComponent> getActiveFightChits() {
-		ArrayList<CharacterActionChitComponent> ret = new ArrayList<CharacterActionChitComponent>();
+		ArrayList<CharacterActionChitComponent> ret = new ArrayList<>();
+		for (CharacterActionChitComponent chit : getActiveChits()) {
+			if (chit.isFight()) {
+				ret.add(chit);
+			}
+		}
+		return ret;
+	}
+	public Collection<RealmComponent> getActiveFightChitsAsRealmComponents() {
+		ArrayList<RealmComponent> ret = new ArrayList<>();
 		for (CharacterActionChitComponent chit : getActiveChits()) {
 			if (chit.isFight()) {
 				ret.add(chit);
@@ -4831,7 +4840,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return ret;
 	}
 	public Collection<CharacterActionChitComponent> getAllEffortChits() {
-		ArrayList<CharacterActionChitComponent> allEffortChits = new ArrayList<CharacterActionChitComponent>();
+		ArrayList<CharacterActionChitComponent> allEffortChits = new ArrayList<>();
 		Collection<CharacterActionChitComponent> c = getAllChits();
 		for (CharacterActionChitComponent chit : c) {
 			if (chit.getEffortAsterisks()>0) {
@@ -4841,7 +4850,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return allEffortChits;
 	}
 	public Collection<CharacterActionChitComponent> getActiveEffortChits() {
-		ArrayList<CharacterActionChitComponent> activeEffortChits = new ArrayList();
+		ArrayList<CharacterActionChitComponent> activeEffortChits = new ArrayList<>();
 		Collection<CharacterActionChitComponent> c = getActiveChits();
 		for (CharacterActionChitComponent chit : c) {
 			if (chit.getEffortAsterisks()>0) {
@@ -4850,8 +4859,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return activeEffortChits;
 	}
-	public Collection getActiveFightAlertChits(Speed fastestAttacker) { // only one right now:  BERSERK
-		ArrayList<CharacterActionChitComponent> activeFightAlertChits = new ArrayList<CharacterActionChitComponent>();
+	public Collection<CharacterActionChitComponent> getActiveFightAlertChits(Speed fastestAttacker) { // only one right now:  BERSERK
+		ArrayList<CharacterActionChitComponent> activeFightAlertChits = new ArrayList<>();
 		Collection<CharacterActionChitComponent> c = getActiveChits();
 		for (CharacterActionChitComponent chit : c) {
 			if (chit.isFightAlert() && chit.getSpeed().fasterThan(fastestAttacker)) {
@@ -4897,7 +4906,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	
 	public ArrayList<CharacterActionChitComponent> getRestableChits() {
-		ArrayList restChoices = new ArrayList();
+		ArrayList<CharacterActionChitComponent> restChoices = new ArrayList<>();
 		if (!hasCurse(Constants.WITHER)) {
 			restChoices.addAll(getFatiguedChits());
 		}
@@ -4909,9 +4918,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * Returns a Collection of chits that are dedicated to spells
 	 */
 	public Collection<RealmComponent> getDedicatedChits() {
-		ArrayList list = new ArrayList();
-		for (Iterator i=getAliveSpells().iterator();i.hasNext();) {
-			SpellWrapper spell = (SpellWrapper)i.next();
+		ArrayList<RealmComponent> list = new ArrayList<>();
+		for (SpellWrapper spell : getAliveSpells()) {
 			GameObject go = spell.getIncantationObject();
 			if (go!=null) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
@@ -4923,7 +4931,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return list;
 	}
 	public Collection<RealmComponent> getTransmorphedChits() {
-		ArrayList list = new ArrayList();
+		ArrayList<RealmComponent> list = new ArrayList<>();
 		if (getTransmorph()==null) return list;
 		for (Iterator i=getGameObject().getHold().iterator();i.hasNext();) {
 			GameObject go = (GameObject)i.next();
@@ -4947,13 +4955,13 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return getChits(-1);
 	}
 	public ArrayList<CharacterActionChitComponent> getNonWoundedChits() {
-		ArrayList<CharacterActionChitComponent> list = new ArrayList<CharacterActionChitComponent>();
+		ArrayList<CharacterActionChitComponent> list = new ArrayList<>();
 		list.addAll(getActiveChits());
 		list.addAll(getFatiguedChits());
 		return list;
 	}
 	public ArrayList<CharacterActionChitComponent> getActiveAndAlertChits() {
-		ArrayList<CharacterActionChitComponent> list = new ArrayList<CharacterActionChitComponent>();
+		ArrayList<CharacterActionChitComponent> list = new ArrayList<>();
 		list.addAll(getActiveChits());
 		list.addAll(getAlertedChits());
 		return list;
@@ -4974,7 +4982,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (isPhantasm()) {
 			return getHiringCharacter().getColorChits();
 		}
-		ArrayList ret = new ArrayList();
+		ArrayList<CharacterActionChitComponent> ret = new ArrayList<>();
 		ret.addAll(getChits(CharacterActionChitComponent.COLOR_WHITE_ID));
 		ret.addAll(getChits(CharacterActionChitComponent.COLOR_GRAY_ID));
 		ret.addAll(getChits(CharacterActionChitComponent.COLOR_GOLD_ID));
@@ -5034,7 +5042,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public ArrayList<CharacterActionChitComponent> getAdvancementChits() {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
-		ArrayList<CharacterActionChitComponent> list = new ArrayList<CharacterActionChitComponent>();
+		ArrayList<CharacterActionChitComponent> list = new ArrayList<>();
 		int nextLevel = getCharacterLevel()+1;
 		RealmComponent berserk = null;
 		for (Iterator i=getGameObject().getHold().iterator();i.hasNext();) {
@@ -5057,7 +5065,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return list;
 	}
-	private boolean validChit(HostPrefWrapper hostPrefs,GameObject go) {
+	private static boolean validChit(HostPrefWrapper hostPrefs,GameObject go) {
 		boolean optionalChits = hostPrefs!=null && hostPrefs.hasPref(Constants.OPT_CHAR_ABILITY_WIZARD_MAGIC_CHIT);
 		String opt = go.getThisAttribute("optional");
 		if (opt!=null) {
@@ -5075,7 +5083,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	private ArrayList<CharacterActionChitComponent> getChits(int stateId,boolean includeUnearnedChits) {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
 		boolean transmorphed = isTransmorphed();
-		ArrayList<CharacterActionChitComponent> list = new ArrayList<CharacterActionChitComponent>();
+		ArrayList<CharacterActionChitComponent> list = new ArrayList<>();
 		ArrayList hold = new ArrayList(getGameObject().getHold());
 		for (Iterator i=hold.iterator();i.hasNext();) {
 			GameObject go = (GameObject)i.next();
@@ -5111,24 +5119,23 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return list;
 	}
-	public Collection getChitColorSources() {
-		ArrayList ret = new ArrayList();
-		Collection colorChits = getColorChits();
-		for (Iterator i=colorChits.iterator();i.hasNext();) {
-			CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+	public Collection<ColorMagic> getChitColorSources() {
+		ArrayList<ColorMagic> ret = new ArrayList<>();
+		Collection<CharacterActionChitComponent> colorChits = getColorChits();
+		for (CharacterActionChitComponent chit : colorChits) {
 			ret.add(chit.getColorMagic());
 		}
 		return ret;
 	}
-	public Collection getEnchantedArtifactColorSources() {
-		ArrayList ret = new ArrayList();
+	public Collection<ColorMagic> getEnchantedArtifactColorSources() {
+		ArrayList<ColorMagic> ret = new ArrayList<>();
 		for(MagicChit chit:getEnchantedArtifacts()) {
 			ret.add(chit.getColorMagic());
 		}
 		return ret;
 	}
 	public ArrayList<MagicChit> getEnchantedArtifacts() {
-		ArrayList<MagicChit> ret = new ArrayList<MagicChit>();
+		ArrayList<MagicChit> ret = new ArrayList<>();
 		for(GameObject go:getInventory()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc.isMagicChit()) {
@@ -5342,22 +5349,20 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (mustFly()) {
 			return true;
 		}
-		else {
-			if (location!=null && location.isFlying() && (location.isBetweenTiles() || location.isTileOnly())) {
-				if (location.isTileOnly()) {
-					TileLocation current = getCurrentLocation();
-					if (!current.isBetweenTiles() && !getGameObject().hasThisAttribute(Constants.LAND_FIRST)) {
-						return true;
-					}
-				}
-				else {
-					// already flying
+		if (location!=null && location.isFlying() && (location.isBetweenTiles() || location.isTileOnly())) {
+			if (location.isTileOnly()) {
+				TileLocation current = getCurrentLocation();
+				if (!current.isBetweenTiles() && !getGameObject().hasThisAttribute(Constants.LAND_FIRST)) {
 					return true;
 				}
 			}
-			StrengthChit flyStrengthChit = getStrongestFlyStrengthChit(true);
-			return flyStrengthChit!=null && flyStrengthChit.getStrength().strongerOrEqualTo(getVulnerability());
+			else {
+				// already flying
+				return true;
+			}
 		}
+		StrengthChit flyStrengthChit = getStrongestFlyStrengthChit(true);
+		return flyStrengthChit!=null && flyStrengthChit.getStrength().strongerOrEqualTo(getVulnerability());
 	}
 	/**
 	 * Forces the character to land.  If they are already on the ground, this has no further effect.
@@ -5414,10 +5419,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		spellMaster.expireBewitchingSpells(getGameObject());
 		
 		// Make sure all minions are removed from the map
-		Collection minions = getMinions();
+		Collection<GameObject> minions = getMinions();
 		if (minions!=null) {
-			for (Iterator n=minions.iterator();n.hasNext();) {
-				GameObject min = (GameObject)n.next();
+			for (GameObject min : minions) {
 				ClearingUtility.moveToLocation(min,null);
 				CharacterWrapper minion = new CharacterWrapper(min);
 				minion.clearPlayerAttributes();
@@ -5425,8 +5429,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		
 		// Unhire hirelings left on the map, and make sure they aren't targeting anyone
-		for (Iterator i=getAllHirelings().iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : getAllHirelings()) {
 			GameObject hireling = rc.getGameObject();
 			if (!getGameObject().getHold().contains(hireling)) {
 				removeHireling(hireling);
@@ -5475,8 +5478,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (!getGameObject().hasThisAttribute(Constants.SPOILS_INVENTORY_SETUP)
 				&& !getGameObject().hasThisAttribute(Constants.SPOILS_INVENTORY_TAKEN)) {
 			// Drop all inventory in clearing if not destined for something else
-			for (Iterator n=getInventory().iterator();n.hasNext();) {
-				GameObject item = (GameObject)n.next();
+			for (GameObject item : getInventory()) {
 				RealmComponent itemRc = RealmComponent.getRealmComponent(item);
 				
 				// Check for activated potions (which should NOT be dropped)
@@ -5512,10 +5514,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		
 		// Make sure all minions are removed from the map
-		Collection minions = getMinions();
+		Collection<GameObject> minions = getMinions();
 		if (minions!=null) {
-			for (Iterator n=minions.iterator();n.hasNext();) {
-				GameObject min = (GameObject)n.next();
+			for (GameObject min : minions) {
 				ClearingUtility.moveToLocation(min,null);
 				CharacterWrapper minion = new CharacterWrapper(min);
 				minion.clearPlayerAttributes();
@@ -5523,26 +5524,23 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		
 		// Abandon all hirelings in the clearing, and make sure they aren't targeting anyone
-		for (Iterator i=getAllHirelings().iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : getAllHirelings()) {
 			GameObject hireling = rc.getGameObject();
 			removeHireling(hireling);
 		}
 		
-		Collection beforeCc = current.clearing.getClearingComponents();
+		Collection<RealmComponent> beforeCc = current.clearing.getClearingComponents();
 		
 		// Cancel all spells
-		for (Iterator i=getAliveSpells().iterator();i.hasNext();) {
-			SpellWrapper spell = (SpellWrapper)i.next();
+		for (SpellWrapper spell : getAliveSpells()) {
 			spell.expireSpell(); // Restored monsters will be put into character's clearing, where they will be immediately killed in the next bit of code
 		}
 		
 		// Be sure to kill off any monsters that reappear
-		Collection afterCc = current.clearing.getClearingComponents();
+		Collection<RealmComponent> afterCc = current.clearing.getClearingComponents();
 		afterCc.removeAll(beforeCc);
 		if (afterCc.size()>0) {
-			for (Iterator i=afterCc.iterator();i.hasNext();) {
-				RealmComponent appear = (RealmComponent)i.next();
+			for (RealmComponent appear : afterCc) {
 				if (appear.isMonster()) {
 					RealmUtility.makeDead(appear);
 				}
@@ -5575,7 +5573,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	
 	// Static methods
-	private static Hashtable actionIdHash = null;
+	private static Hashtable<String,ActionId> actionIdHash = null;
 	public static DayAction getActionForString(String action) {
 		ActionId id = getIdForAction(action);
 		if (id!=ActionId.NoAction) {
@@ -5586,7 +5584,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static ActionId getIdForAction(String action) {
 		if (actionIdHash==null) {
 			// build it
-			actionIdHash = new Hashtable();
+			actionIdHash = new Hashtable<>();
 			
 			actionIdHash.put(DayAction.getDayAction(ActionId.Hide).getCode(),ActionId.Hide);
 			actionIdHash.put(DayAction.getDayAction(ActionId.Search).getCode(),ActionId.Search);

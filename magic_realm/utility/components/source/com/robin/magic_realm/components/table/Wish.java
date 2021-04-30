@@ -201,7 +201,7 @@ public class Wish extends RealmTable {
 		return RESULT[1];
 	}
 
-	private Hashtable placeHash;
+	private Hashtable<String,GameObject> placeHash;
 	private CharacterWrapper visionCharacter;
 	public String applyThree(CharacterWrapper character) {
 		JOptionPane.showMessageDialog(getParentFrame(),"\"I wish for a vision\"",getWishTitle(character),JOptionPane.INFORMATION_MESSAGE,getRollerImage());
@@ -214,7 +214,7 @@ public class Wish extends RealmTable {
 		pool.addAll(data.getGameObjects());
 		String gameKeyVals = hostPref.getGameKeyVals();
 		
-		placeHash = new Hashtable();
+		placeHash = new Hashtable<>();
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(getParentFrame(),"Vision - Select one box to examine treasure:",false);
 		ArrayList<GameObject> examine = new ArrayList<>();
 		examine.addAll(pool.find(gameKeyVals+",dwelling"));
@@ -241,9 +241,9 @@ public class Wish extends RealmTable {
 		return RESULT[2];
 	}
 	private void showVision(String target) {
-		GameObject place = (GameObject)placeHash.get(target);
+		GameObject place = placeHash.get(target);
 		RealmComponentDisplayDialog viewPanel = new RealmComponentDisplayDialog(getParentFrame(),"I wish for a vision","Vision of the "+place.getName());
-		Hashtable old = new Hashtable();
+		Hashtable<GameObject, String> old = new Hashtable<>();
 		Collection<GameObject> c = TreasureUtility.getTreasureCards(place);
 		StringBufferedList list = new StringBufferedList();
 		for (GameObject treasure : c) {
@@ -258,7 +258,7 @@ public class Wish extends RealmTable {
 		viewPanel.setVisible(true);
 		visionCharacter.addNote(place,"Vision",list.toString());
 		for (GameObject treasure : c) {
-			String facing = (String)old.get(treasure);
+			String facing = old.get(treasure);
 			// This next line allows me to change facing without saving the change
 			treasure.getThisAttributeBlock().put(Constants.FACING_KEY,facing);
 		}
