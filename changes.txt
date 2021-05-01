@@ -1,4 +1,6 @@
 Version 1.1.4.2 - Changes since 1.1.4.1
+NEW FEATURES:
+# Option to launch Battle Builder from RealmSpeak (tool menu)
 BUGS/ISSUES:
 # Fix strength effect by a wish applying infinite long
 

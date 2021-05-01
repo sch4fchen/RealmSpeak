@@ -39,49 +39,51 @@ public class DebugUtility {
 	private static File errorFile = null;
 	
 	public static void setupArgs(String[] args) {
-		for (int i=0;i<args.length;i++) {
-			if ("DEBUG".equals(args[i].toUpperCase())) {
-				DEBUG_ON = true;
-				System.out.println("DEBUG is ON");
-			}
-			else if ("CHEAT".equals(args[i].toUpperCase())) {
-				CHEAT_ON = true;
-				System.out.println("CHEAT is ON");
-			}
-			else if ("MONSTER_LOCK".equals(args[i].toUpperCase())) {
-				MONSTER_REPO_LOCK = true;
-				System.out.println("MONSTER_LOCK is ON");
-			}
-			else if ("MONSTER_FLIP".equals(args[i].toUpperCase())) {
-				MONSTER_FLIP = true;
-				System.out.println("MONSTER_FLIP is ON");
-			}
-			else if ("NO_SUMMON".equals(args[i].toUpperCase())) {
-				NO_SUMMON = true;
-				System.out.println("NO_SUMMON is ON");
-			}
-			else if ("SMALL_FRAME".equals(args[i].toUpperCase())) {
-				SMALL_FRAME = true;
-				System.out.println("SMALL_FRAME is ON");
-			}
-			else if ("DISABLE_ERROR_LOGGING".equals(args[i].toUpperCase())) {
-				DISABLE_ERROR_LOGGING = true;
-				System.out.println("DISABLE_ERROR_LOGGING is ON");
-			}
-			else if ("DISABLE_FAMILIAR".equals(args[i].toUpperCase())) {
-				DISABLE_FAMILIAR = true;
-				System.out.println("DISABLE_FAMILIAR is ON");
-			}
-			else if ("IGNORE_CHARS".equals(args[i].toUpperCase())) {
-				IGNORE_CHARS = true;
-				System.out.println("IGNORE_CHARS is ON");
-			}
-			else if ("SUMMON_MULTIPLE".equals(args[i].toUpperCase())) {
-				SUMMON_MULTIPLE = true;
-				System.out.println("SUMMON_MULTIPLE is ON");
-			}
-			else if (args[i].toUpperCase().endsWith(".RSGAME")) {
-				System.setProperty(LAUNCH_GAME,args[i]);
+		if (args != null) {
+			for (int i=0;i<args.length;i++) {
+				if ("DEBUG".equals(args[i].toUpperCase())) {
+					DEBUG_ON = true;
+					System.out.println("DEBUG is ON");
+				}
+				else if ("CHEAT".equals(args[i].toUpperCase())) {
+					CHEAT_ON = true;
+					System.out.println("CHEAT is ON");
+				}
+				else if ("MONSTER_LOCK".equals(args[i].toUpperCase())) {
+					MONSTER_REPO_LOCK = true;
+					System.out.println("MONSTER_LOCK is ON");
+				}
+				else if ("MONSTER_FLIP".equals(args[i].toUpperCase())) {
+					MONSTER_FLIP = true;
+					System.out.println("MONSTER_FLIP is ON");
+				}
+				else if ("NO_SUMMON".equals(args[i].toUpperCase())) {
+					NO_SUMMON = true;
+					System.out.println("NO_SUMMON is ON");
+				}
+				else if ("SMALL_FRAME".equals(args[i].toUpperCase())) {
+					SMALL_FRAME = true;
+					System.out.println("SMALL_FRAME is ON");
+				}
+				else if ("DISABLE_ERROR_LOGGING".equals(args[i].toUpperCase())) {
+					DISABLE_ERROR_LOGGING = true;
+					System.out.println("DISABLE_ERROR_LOGGING is ON");
+				}
+				else if ("DISABLE_FAMILIAR".equals(args[i].toUpperCase())) {
+					DISABLE_FAMILIAR = true;
+					System.out.println("DISABLE_FAMILIAR is ON");
+				}
+				else if ("IGNORE_CHARS".equals(args[i].toUpperCase())) {
+					IGNORE_CHARS = true;
+					System.out.println("IGNORE_CHARS is ON");
+				}
+				else if ("SUMMON_MULTIPLE".equals(args[i].toUpperCase())) {
+					SUMMON_MULTIPLE = true;
+					System.out.println("SUMMON_MULTIPLE is ON");
+				}
+				else if (args[i].toUpperCase().endsWith(".RSGAME")) {
+					System.setProperty(LAUNCH_GAME,args[i]);
+				}
 			}
 		}
 		if (!DISABLE_ERROR_LOGGING) {

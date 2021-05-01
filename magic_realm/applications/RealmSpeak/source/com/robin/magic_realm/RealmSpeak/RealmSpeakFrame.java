@@ -213,6 +213,7 @@ public class RealmSpeakFrame extends JFrame {
 			
 		protected JMenu toolMenu;
 			protected JMenuItem launchGm;
+			protected JMenuItem launchBattleBuilder;
 			protected JMenuItem launchCharacterEditor;
 			protected JMenuItem launchQuestEditor;
 			protected JMenuItem launchGameEditor;
@@ -221,8 +222,8 @@ public class RealmSpeakFrame extends JFrame {
 	
 	public RealmSpeakFrame() {
 		initComponents();
-		gameControlFrames = new ArrayList<RealmSpeakInternalFrame>();
-		characterFrames = new ArrayList<CharacterFrame>();
+		gameControlFrames = new ArrayList<>();
+		characterFrames = new ArrayList<>();
 		addComponentListener(new ComponentAdapter() {
 			public void componentResized(ComponentEvent e) {
 				int lastLayout = windowLayoutManager.getLastLayout();
@@ -1469,6 +1470,16 @@ public class RealmSpeakFrame extends JFrame {
 			}
 		});
 		toolMenu.add(launchGm);
+		launchBattleBuilder = new JMenuItem("Battle Builder");
+		launchBattleBuilder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				setVisible(false);
+				DebugUtility.shutDown();
+				dispose();
+				CombatFrame.main(null);
+			}
+		});
+		toolMenu.add(launchBattleBuilder);
 		launchCharacterEditor = new JMenuItem("Character Builder");
 		launchCharacterEditor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
@@ -1636,10 +1647,9 @@ public class RealmSpeakFrame extends JFrame {
 					if (netConnect) {
 						// Set missing in action (show as offline)
 						character.setMissingInAction(true);
-						Collection minions = character.getMinions();
+						Collection<GameObject> minions = character.getMinions();
 						if (minions!=null) {
-							for (Iterator m=minions.iterator();m.hasNext();) {
-								GameObject minion = (GameObject)m.next();
+							for (GameObject minion : minions) {
 								CharacterWrapper lostMinion = new CharacterWrapper(minion);
 								lostMinion.setMissingInAction(true);
 							}
@@ -1696,8 +1706,7 @@ public class RealmSpeakFrame extends JFrame {
 	}
 	public ICharacterFrame getCharacterFrame(CharacterWrapper character) {
 		if (characterFrames!=null && !characterFrames.isEmpty()) {
-			for (Iterator i=characterFrames.iterator();i.hasNext();) {
-				ICharacterFrame frame = (ICharacterFrame)i.next();
+			for (ICharacterFrame frame : characterFrames) {
 				if (frame.getCharacter().equals(character)) {
 					return frame;
 				}
@@ -1732,7 +1741,7 @@ public class RealmSpeakFrame extends JFrame {
 		frame.dispose();
 		if (frame instanceof CharacterFrame) {
 			((CharacterFrame)frame).cleanup();
-			characterFrames.remove((CharacterFrame)frame);
+			characterFrames.remove(frame);
 		}
 		else {
 			gameControlFrames.remove(frame);
@@ -1894,7 +1903,7 @@ public class RealmSpeakFrame extends JFrame {
 		
 		updateControls();
 	}
-	private int readInt(String val) {
+	private static int readInt(String val) {
 		try {
 			Integer num = Integer.valueOf(val);
 			return num.intValue();
@@ -2039,7 +2048,7 @@ public class RealmSpeakFrame extends JFrame {
 		return null;
 	}
 	public ArrayList<String> getAllServerNames() {
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		if (host!=null) {
 			for (GameServer server:host.getServers()) {
 				list.add(server.getClientName());
