@@ -1,5 +1,6 @@
 Version 1.1.4.3 - Changes since 1.1.4.2
 NEW FEATURES:
+# Hidden variant for transformed character chits in Legendary style
 BUGS/ISSUES:
 
 Version 1.1.4.2 - Changes since 1.1.4.1
