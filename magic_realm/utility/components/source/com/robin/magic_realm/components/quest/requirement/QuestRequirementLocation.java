@@ -43,11 +43,6 @@ public class QuestRequirementLocation extends QuestRequirement {
 			logger.fine(character.getName()+" is not at specified location: "+location.getName());
 			return false;
 		}
-		TileLocation tl = character.getCurrentLocation();
-		if (!tl.isInClearing()) {
-			logger.fine(character.getName()+" is not in a clearing.");
-			return false;
-		}
 		return true;
 	}
 	

@@ -3,6 +3,7 @@ NEW FEATURES:
 # Hidden variant for transformed character chits in Legendary style
 # Super Realm tiles (Legendary style) for creating custom games
 BUGS/ISSUES:
+# QuestRequirementLocation: supports now non-clearing locations
 
 Version 1.1.4.2 - Changes since 1.1.4.1
 NEW FEATURES:

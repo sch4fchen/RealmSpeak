@@ -165,13 +165,11 @@ public class TileLocation {
 			}
 			return tile.getTileCode()+clearing.getNumString();
 		}
-		else {
-			String letter = flying?"F":"W";
-			if (isBetweenClearings()) {
-				return letter+"P:"+tile.getTileCode()+"&"+other.tile.getTileCode();
-			}
-			return letter+":"+tile.getTileCode(); // flying or walking woods
+		String letter = flying?"F":"W";
+		if (isBetweenClearings()) {
+			return letter+"P:"+tile.getTileCode()+"&"+other.tile.getTileCode();
 		}
+		return letter+":"+tile.getTileCode(); // flying or walking woods
 		
 		/*
 		 * Examples:  (showing every possibility)

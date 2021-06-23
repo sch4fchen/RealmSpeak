@@ -670,8 +670,8 @@ public class ClearingUtility {
 		Hashtable<Point,TileComponent> mapGrid = new Hashtable<Point,TileComponent>();
 		for(GameObject go:RealmObjectMaster.getRealmObjectMaster(data).getTileObjects()) {
 			TileComponent tc = (TileComponent)RealmComponent.getRealmComponent(go);
-			String pos = (String)go.getAttribute("mapGrid","mapPosition");
-			String rot = (String)go.getAttribute("mapGrid","mapRotation");
+			String pos = go.getAttribute("mapGrid","mapPosition");
+			String rot = go.getAttribute("mapGrid","mapRotation");
 			
 			if (pos!=null && rot!=null) {
 				tc.setRotation(Integer.valueOf(rot).intValue());
@@ -688,7 +688,7 @@ public class ClearingUtility {
 			for (int d=0;d<6;d++) { // Get ALL adjacent tiles, not just connected ones!
 				String edge = Tile.getEdgeName(d);
 				Point adjPos = Tile.getAdjacentPosition(mapPos,d);
-				TileComponent adjTile = (TileComponent)mapGrid.get(adjPos);
+				TileComponent adjTile = mapGrid.get(adjPos);
 				if (adjTile!=null) {
 					// found adjacent tile
 					tile.putAdjacentTile(edge,adjTile);

@@ -987,7 +987,7 @@ public class TileComponent extends ChitComponent {
 	}
 
 	public ArrayList<RealmComponent> getOffroadRealmComponents() {
-		ArrayList<RealmComponent> found = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> found = new ArrayList<>();
 		for (Iterator i = gameObject.getHold().iterator(); i.hasNext();) {
 			GameObject obj = (GameObject) i.next();
 			RealmComponent goc = RealmComponent.getRealmComponent(obj);
@@ -1009,7 +1009,7 @@ public class TileComponent extends ChitComponent {
 	 * Returns a collection of all RealmComponents in this clearing. It does not directly return objects contained by other objects, except for RedSpecialChitComponent and TWT Sites
 	 */
 	public ArrayList<RealmComponent> getRealmComponentsAt(int clearing) {
-		ArrayList<RealmComponent> found = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> found = new ArrayList<>();
 		ArrayList hold = new ArrayList(gameObject.getHold());
 		for (Iterator i = hold.iterator(); i.hasNext();) {
 			GameObject obj = (GameObject) i.next();

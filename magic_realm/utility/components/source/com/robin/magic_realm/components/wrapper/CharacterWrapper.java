@@ -5704,7 +5704,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * @return		All hirelings in the game object hold
 	 */
 	public ArrayList<RealmComponent> getFollowingHirelings() {
-		ArrayList<RealmComponent> list = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> list = new ArrayList<>();
 		for (Iterator i=getGameObject().getHold().iterator();i.hasNext();) {
 			GameObject go = (GameObject)i.next();
 			RealmComponent rc = RealmComponent.getRealmComponent(go);

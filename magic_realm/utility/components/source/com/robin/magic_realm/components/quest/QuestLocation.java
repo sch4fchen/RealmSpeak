@@ -48,7 +48,7 @@ public class QuestLocation extends GameObjectWrapper {
 		super(go);
 	}
 	public String getDescription() {
-		ArrayList list = getChoiceAddresses();
+		ArrayList<String> list = getChoiceAddresses();
 		String locList = list == null ? "" : StringUtilities.collectionToString(list, ",");
 		LocationType type = getLocationType();
 		LocationClearingType lc = getLocationClearingType();
@@ -87,7 +87,7 @@ public class QuestLocation extends GameObjectWrapper {
 		return quest.getName();
 	}
 	private ArrayList<String> getValidAddresses() {
-		ArrayList<String> addresses = new ArrayList<String>();
+		ArrayList<String> addresses = new ArrayList<>();
 		String lock = getLockAddress();
 		if (lock!=null) {
 			addresses.add(lock);
@@ -109,7 +109,7 @@ public class QuestLocation extends GameObjectWrapper {
 			resolveStepStart(frame,character);
 		}
 		
-		ArrayList<RealmComponent> allPieces = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> allPieces = new ArrayList<>();
 		
 		ArrayList<String> addresses = getValidAddresses();
 		if (addresses.isEmpty()) {
@@ -140,7 +140,7 @@ public class QuestLocation extends GameObjectWrapper {
 					for (TileLocation validLocation : validLocations) {	
 						for(RealmComponent rc : validLocation.clearing.getClearingComponents()) {
 							if (rc.isChit()) {
-								allPieces.add((ChitComponent)rc);
+								allPieces.add(rc);
 							}
 						}
 					}
@@ -169,7 +169,6 @@ public class QuestLocation extends GameObjectWrapper {
 		ArrayList<String> addressesToTest = getValidAddresses();
 		
 		TileLocation current = character.getCurrentLocation();
-		if (!current.isInClearing()) return false; // let's assume for now that you HAVE to be in a clearing to satisfy a location requirement
 		
 		LocationClearingType clearingType = getLocationClearingType();
 		LocationTileSideType tileSideType = getLocationTileSideType();
@@ -181,19 +180,25 @@ public class QuestLocation extends GameObjectWrapper {
 		
 		ArrayList<RealmComponent> clearingComponents;
 		if (specificObject!=null) {
-			clearingComponents= new ArrayList<RealmComponent>();
+			clearingComponents= new ArrayList<>();
 			clearingComponents.add(RealmComponent.getRealmComponent(specificObject));
 		}
 		else {
 			if (isSameTile()) {
-				clearingComponents = current.tile.getAllClearingComponents(); 
+				clearingComponents = current.tile.getAllClearingComponents();
+				clearingComponents.addAll(current.tile.getOffroadRealmComponents());
 			}
 			else {
-				clearingComponents = current.tile.getOffroadRealmComponents(); // state chits without a clearing
-				clearingComponents.addAll(current.clearing.getClearingComponents());
+				clearingComponents = current.tile.getOffroadRealmComponents();
+				if (current.clearing != null) {
+					clearingComponents.addAll(current.clearing.getClearingComponents());
+				}
 			}
 			for(GameObject go:character.getInventory()) {
 				clearingComponents.add(RealmComponent.getRealmComponent(go));
+			}
+			for(RealmComponent rc:character.getFollowingHirelings()) {
+				clearingComponents.add(RealmComponent.getRealmComponent(rc.getGameObject()));
 			}
 		}
 		String matchingAddress = null;
@@ -277,11 +282,11 @@ public class QuestLocation extends GameObjectWrapper {
 		return false;
 	}
 		public void resolveQuestStart(JFrame frame,CharacterWrapper character) {
-		ArrayList choices = getChoiceAddresses();
+		ArrayList<String> choices = getChoiceAddresses();
 		if (choices==null || choices.size()==0) return;
 		if (choices.size()==1) {
 			// This is easy
-			setLockAddress((String)choices.get(0));
+			setLockAddress(choices.get(0));
 			return;
 		}
 		
@@ -289,7 +294,7 @@ public class QuestLocation extends GameObjectWrapper {
 		LocationType type = getLocationType();
 		if (type==LocationType.QuestRandom) {
 			int r = RandomNumber.getRandom(choices.size());
-			setLockAddress((String)choices.get(r));
+			setLockAddress(choices.get(r));
 			String message = getTagName()+" is at the "+getLockAddress().toUpperCase();
 			character.addNote(getGameObject(),getQuestName(),message);
 			Quest.showQuestMessage(frame,getParentQuest(),message,getGameObject().getHeldBy().getName());
@@ -309,7 +314,7 @@ public class QuestLocation extends GameObjectWrapper {
 		LocationType type = getLocationType();
 		if (type==LocationType.StepRandom) {
 			int r = RandomNumber.getRandom(choices.size());
-			setLockAddress((String)choices.get(r));
+			setLockAddress(choices.get(r));
 			String message = getTagName()+" is at the "+getLockAddress().toUpperCase();
 			character.addNote(getGameObject(),getQuestName(),message);
 			Quest.showQuestMessage(frame,getParentQuest(),message,getGameObject().getHeldBy().getName());
@@ -412,8 +417,8 @@ public class QuestLocation extends GameObjectWrapper {
 	public ArrayList<TileLocation> getAllAllowedClearingsForTileLocation(TileLocation location) {
 		LocationTileSideType tileSideType = getLocationTileSideType();
 		LocationClearingType clearingType = getLocationClearingType();
-		ArrayList<TileLocation> locations = new ArrayList<TileLocation>();
-		ArrayList<ClearingDetail> clearingsToCheck = new ArrayList<ClearingDetail>();
+		ArrayList<TileLocation> locations = new ArrayList<>();
+		ArrayList<ClearingDetail> clearingsToCheck = new ArrayList<>();
 		if (location == null) {
 			return null;
 		}
@@ -483,7 +488,7 @@ public class QuestLocation extends GameObjectWrapper {
 	private static ArrayList<RealmComponent> fetchPieces(GameData gameData, String val,boolean onlySeen) {
 		ArrayList<GameObject> gos = gameData.getGameObjectsByNameIgnoreCase(val);
 		if (gos.isEmpty()) return null;
-		ArrayList<RealmComponent> ret = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> ret = new ArrayList<>();
 		for (GameObject go : gos) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc==null) continue;
@@ -509,7 +514,7 @@ public class QuestLocation extends GameObjectWrapper {
 	
 	public ArrayList<TileLocation> fetchAllLocations(GameData gameData) {
 		ArrayList<String> addresses = getValidAddresses();
-		ArrayList<TileLocation> allTileLocations = new ArrayList<TileLocation>();
+		ArrayList<TileLocation> allTileLocations = new ArrayList<>();
 		
 		if (addresses.isEmpty()) {
 			ArrayList<GameObject> gameObjects = getGameObject().getGameData().getGameObjects();
