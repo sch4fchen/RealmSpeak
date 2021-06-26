@@ -46,13 +46,13 @@ public class ClearingUtility {
 	}
 	public static GameObject findDwellingInClearing(GameObject tile,int clearing) {
 		GamePool pool = new GamePool(tile.getHold());
-		ArrayList keyVals = new ArrayList();
+		ArrayList<String> keyVals = new ArrayList<>();
 		keyVals.add("dwelling");
 		keyVals.add("tile_type");
 		keyVals.add("clearing="+clearing);
-		Collection dwellings = pool.find(keyVals);
+		Collection<GameObject> dwellings = pool.find(keyVals);
 		if (dwellings.size()==1) {
-			GameObject dwelling = (GameObject)dwellings.iterator().next();
+			GameObject dwelling = dwellings.iterator().next();
 			return dwelling;
 		}
 		
@@ -61,12 +61,12 @@ public class ClearingUtility {
 	
 	public static void markBorderlandConnectedClearings(HostPrefWrapper hostPrefs,GameData gameData) {
 		ArrayList<GameObject> tiles = RealmObjectMaster.getRealmObjectMaster(gameData).getTileObjects();
-		Collection keyVals = GamePool.makeKeyVals(hostPrefs.getGameKeyVals());
-		Hashtable mapGrid = Tile.readMap(gameData,keyVals);
+		Collection<String> keyVals = GamePool.makeKeyVals(hostPrefs.getGameKeyVals());
+		Hashtable<Point, Tile> mapGrid = Tile.readMap(gameData,keyVals);
 		for(GameObject tile:tiles) {
 			if (tile.getHoldCount()==0) continue;
 			TileComponent tileRc = (TileComponent)RealmComponent.getRealmComponent(tile);
-			Tile mapTile = (Tile)mapGrid.get(Tile.getPositionFromGameObject(tile));
+			Tile mapTile = mapGrid.get(Tile.getPositionFromGameObject(tile));
 			for (int i=1;i<=6;i++) {
 				ClearingDetail clearing = tileRc.getClearing(i);
 				if (clearing==null) continue;
@@ -92,9 +92,7 @@ public class ClearingUtility {
 			if (clearing.isConnectsToBorderland()) {
 				return i;
 			}
-			else {
-				lowestUnconnectedClearing = i;
-			}
+			lowestUnconnectedClearing = i;
 		}
 		return lowestUnconnectedClearing;
 	}
@@ -313,14 +311,12 @@ public class ClearingUtility {
 	public static int getClearingDieMod(TileLocation tl) {
 		int mod = 0;
 		if (tl!=null && tl.hasClearing()) {
-			ArrayList seen = new ArrayList();
+			ArrayList<RealmComponent> seen = new ArrayList<>();
 			// Check for presence of cloven hoof (the only plus_one item at present) in the clearing
-			for (Iterator i=tl.clearing.getClearingComponents().iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : tl.clearing.getClearingComponents()) {
 				seen.addAll(dissolveIntoSeenStuff(rc));
 			}
-			for (Iterator i=seen.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : seen) {
 				GameObject go = rc.getGameObject();
 				if (go.hasThisAttribute(Constants.PLUS_ONE) && go.hasThisAttribute(Constants.TREASURE_SEEN)) {
 					mod++;
@@ -332,14 +328,12 @@ public class ClearingUtility {
 	
 	public static GameObject getItemInClearingWithKey(TileLocation tl,String key) {
 		if (tl!=null && tl.hasClearing()) {
-			ArrayList seen = new ArrayList();
+			ArrayList<RealmComponent> seen = new ArrayList<>();
 			// Check for presence of cloven hoof (the only plus_one item at present) in the clearing
-			for (Iterator i=tl.clearing.getClearingComponents().iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : tl.clearing.getClearingComponents()) {
 				seen.addAll(dissolveIntoSeenStuff(rc));
 			}
-			for (Iterator i=seen.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : seen) {
 				GameObject go = rc.getGameObject();
 				if (go.hasThisAttribute(key) && go.hasThisAttribute(Constants.TREASURE_SEEN)) {
 					return go;
@@ -436,20 +430,18 @@ public class ClearingUtility {
 	public static int calculateClearingCount(TileLocation tl1,TileLocation tl2) {
 		int val = 0;
 		if (tl1!=null && tl2!=null && !tl1.equals(tl2)) {
-			ArrayList all = new ArrayList();
-			ArrayList list = new ArrayList();
+			ArrayList<ClearingDetail> all = new ArrayList<>();
+			ArrayList<ClearingDetail> list = new ArrayList<>();
 			list.add(tl1.clearing);
 			int count = 0;
 			while(!list.isEmpty()) {
 				count++;
-				ArrayList found = new ArrayList();
-				for (Iterator i=list.iterator();i.hasNext();) {
-					ClearingDetail clearing = (ClearingDetail)i.next();
+				ArrayList<ClearingDetail> found = new ArrayList<>();
+				for (ClearingDetail clearing : list) {
 					if (!all.contains(clearing)) {
 						all.add(clearing);
-						Collection c = clearing.getConnectedPaths();
-						for (Iterator n=c.iterator();n.hasNext();) {
-							PathDetail path = (PathDetail)n.next();
+						Collection<PathDetail> c = clearing.getConnectedPaths();
+						for (PathDetail path : c) {
 							ClearingDetail connectedClearing = path.findConnection(clearing);
 							if (connectedClearing!=null) {
 								if (connectedClearing.equals(tl2.clearing)) {
@@ -503,7 +495,7 @@ public class ClearingUtility {
 	 * @return		A collection of unhired natives in the clearing
 	 */
 	public static ArrayList<RealmComponent> getAllHireables(CharacterWrapper character,ClearingDetail clearing) {
-		ArrayList<RealmComponent> hireables = new ArrayList();
+		ArrayList<RealmComponent> hireables = new ArrayList<>();
 		Collection<RealmComponent> c = clearing.getClearingComponents();
 		for (RealmComponent rc : c) {
 			if (rc.isNative() && rc.getOwnerId()==null) {
@@ -528,7 +520,7 @@ public class ClearingUtility {
 	}
 
 	public static ArrayList<RealmComponent> getGuidesInClearing(TileLocation location) {
-		ArrayList<RealmComponent> list = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> list = new ArrayList<>();
 		if (location.isInClearing()) {
 			Collection<RealmComponent> c = location.clearing.getClearingComponents();
 			for (RealmComponent rc : c) {
@@ -568,12 +560,11 @@ public class ClearingUtility {
 
 	public static String showTileChits(JFrame parentFrame,CharacterWrapper character,ClearingDetail currentClearing,String title) {
 		// Show the tile chits - do I resolve lost city and castle too? - yes, I should
-		Collection c = currentClearing.getParent().getClues();
+		Collection<StateChitComponent> c = currentClearing.getParent().getClues();
 		if (!c.isEmpty()) {
 			RealmObjectPanel cluePanel = new RealmObjectPanel();
 			StringBufferedList note = new StringBufferedList();
-			for (Iterator n=c.iterator();n.hasNext();) {
-				StateChitComponent state = (StateChitComponent)n.next();
+			for (StateChitComponent state : c) {
 				if (state.isTreasureLocation()) {
 					note.append(state.getGameObject().getName()+" "+state.getGameObject().getThisAttribute("clearing"));
 				}
@@ -586,8 +577,7 @@ public class ClearingUtility {
 			JOptionPane.showMessageDialog(parentFrame,cluePanel,title,JOptionPane.INFORMATION_MESSAGE);
 			
 			// restore facing
-			for (Iterator n=c.iterator();n.hasNext();) {
-				StateChitComponent state = (StateChitComponent)n.next();
+			for (StateChitComponent state : c) {
 				state.setFaceDown();
 			}
 			return note.toString();
@@ -599,7 +589,7 @@ public class ClearingUtility {
 	 * Finds all characters and hired leaders that are not your character, and that are not blocked and are awake.
 	 */
 	public static ArrayList<RealmComponent> findAllAwakeUnblockedCharactersInClearing(CharacterWrapper character) {
-		ArrayList<RealmComponent> list = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> list = new ArrayList<>();
 		TileLocation current = character.getCurrentLocation();
 		for (Iterator n=current.clearing.getClearingComponents().iterator();n.hasNext();) {
 			RealmComponent rc = (RealmComponent)n.next();
@@ -643,8 +633,8 @@ public class ClearingUtility {
 			
 			// Make sure all chits have a valid clearing
 			TileComponent tileC = (TileComponent)RealmComponent.getRealmComponent(tile);
-			ArrayList<GameObject> chits = new ArrayList<GameObject>();
-			ArrayList<ClearingDetail> connectedClearings = new ArrayList<ClearingDetail>();
+			ArrayList<GameObject> chits = new ArrayList<>();
+			ArrayList<ClearingDetail> connectedClearings = new ArrayList<>();
 			for (ClearingDetail clearing:tileC.getClearings()){
 				if (clearing.isConnectsToBorderland()) {
 					connectedClearings.add(clearing);
