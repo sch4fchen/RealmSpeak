@@ -545,6 +545,10 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		}
 	}
 	
+	public void setTermOfHire(int newTerm) {
+		gameObject.setAttribute(REALMCOMPONENT_BLOCK,OWNER_TERM_OF_HIRE,newTerm);
+	}
+	
 	public void addTermOfHire(int val) {
 		int currentTerm = getTermOfHire();
 		int newTerm = currentTerm+val;

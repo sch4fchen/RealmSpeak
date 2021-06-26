@@ -44,7 +44,7 @@ public class CharacterHirelingPanel extends CharacterFramePanel {
 	
 	private JTable hirelingTable;
 	private HirelingTableModel tableModel;
-	private ArrayList hirelings;
+	private ArrayList<HirelingDetailComponent> hirelings;
 	
 	private JButton assignUnderlings;
 	private JButton unassignUnderlings;
@@ -100,21 +100,17 @@ public class CharacterHirelingPanel extends CharacterFramePanel {
 		updateControls();
 	}
 	public void updatePanel() {
-		hirelings = new ArrayList();
-		ArrayList allHirelings = getCharacter().getAllHirelings();
-		ArrayList fHirelings = getCharacter().getFollowingHirelings(); // likely the same group
-		for (Iterator i=fHirelings.iterator();i.hasNext();) {
-			RealmComponent fHireling = (RealmComponent)i.next();
+		hirelings = new ArrayList<>();
+		ArrayList<RealmComponent> allHirelings = getCharacter().getAllHirelings();
+		ArrayList<RealmComponent> fHirelings = getCharacter().getFollowingHirelings(); // likely the same group
+		for (RealmComponent fHireling : fHirelings) {
 			if (!allHirelings.contains(fHireling)) {
 				allHirelings.add(fHireling);
 			}
 		}
 		// Sort hirelings here
-		Collections.sort(allHirelings,new Comparator() {
-			public int compare(Object o1,Object o2) {
-				RealmComponent r1 = (RealmComponent)o1;
-				RealmComponent r2 = (RealmComponent)o2;
-				
+		Collections.sort(allHirelings,new Comparator<RealmComponent>() {
+			public int compare(RealmComponent r1,RealmComponent r2) {
 				String group1 = r1.getGameObject().getThisAttribute("native");
 				if (group1==null) {
 					group1 = r1.getGameObject().getName();
@@ -144,8 +140,7 @@ public class CharacterHirelingPanel extends CharacterFramePanel {
 				return ret;
 			}
 		});
-		for (Iterator i=allHirelings.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : allHirelings) {
 			hirelings.add(new HirelingDetailComponent(rc));
 		}
 		if (tableModel!=null) {
@@ -155,11 +150,11 @@ public class CharacterHirelingPanel extends CharacterFramePanel {
 	}
 	public void updateControls() {
 		if (hirelingTable!=null) {
-			selectedUnderlings = new ArrayList<RealmComponent>();
+			selectedUnderlings = new ArrayList<>();
 			if (hirelingTable.getSelectedRowCount()>0) {
 				int[] selRow = hirelingTable.getSelectedRows();
 				for (int i=0;i<selRow.length;i++) {
-					HirelingDetailComponent detail = (HirelingDetailComponent)hirelings.get(selRow[i]);
+					HirelingDetailComponent detail = hirelings.get(selRow[i]);
 					if (!detail.realmComponent.isNativeLeader()) {
 						if (detail.mine && !detail.captured) {
 							selectedUnderlings.add(detail.realmComponent);
@@ -199,9 +194,8 @@ public class CharacterHirelingPanel extends CharacterFramePanel {
 		if (selectedUnderlings.isEmpty()) return;
 		
 		// Need to group underlings by location - assignment may not be the same for all
-		HashLists underlingHash = new HashLists();
-		for (Iterator i=selectedUnderlings.iterator();i.hasNext();) {
-			RealmComponent underling = (RealmComponent)i.next();
+		HashLists<TileLocation,RealmComponent> underlingHash = new HashLists<>();
+		for (RealmComponent underling : selectedUnderlings) {
 			TileLocation location = ClearingUtility.getTileLocation(underling);
 			if (location!=null && location.isInClearing()) { // This should always be true, I think
 				underlingHash.put(location,underling);
@@ -210,10 +204,9 @@ public class CharacterHirelingPanel extends CharacterFramePanel {
 		
 		// Now, query each group of hirelings according to their clearing
 		boolean wasQueried = false; // Need to know this, in case there are no characters/leaders to assign hirelings to
-		for (Iterator i=underlingHash.keySet().iterator();i.hasNext();) {
-			TileLocation location = (TileLocation)i.next();
-			ArrayList list = underlingHash.getList(location);
-			Collection guides = ClearingUtility.getGuidesInClearing(location);
+		for (TileLocation location : underlingHash.keySet()) {
+			ArrayList<RealmComponent> list = underlingHash.getList(location);
+			Collection<RealmComponent> guides = ClearingUtility.getGuidesInClearing(location);
 			if (!guides.isEmpty()) {
 				wasQueried = true;
 				RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(
@@ -227,8 +220,7 @@ public class CharacterHirelingPanel extends CharacterFramePanel {
 				if (text!=null) {
 					if ("None".equals(text)) {
 						// Unassign
-						for (Iterator n=list.iterator();n.hasNext();) {
-							RealmComponent underling = (RealmComponent)n.next();
+						for (RealmComponent underling : list) {
 							location.clearing.add(underling.getGameObject(),null);
 						}
 					}
@@ -236,8 +228,7 @@ public class CharacterHirelingPanel extends CharacterFramePanel {
 						// Assign to selected guide
 						RealmComponent guide = chooser.getFirstSelectedComponent();
 						boolean extraActions = false;
-						for (Iterator n=list.iterator();n.hasNext();) {
-							RealmComponent underling = (RealmComponent)n.next();
+						for (RealmComponent underling : list) {
 							guide.getGameObject().add(underling.getGameObject());
 							if (underling.getGameObject().hasThisAttribute(Constants.EXTRA_ACTIONS)) {
 								extraActions = true;
@@ -285,7 +276,7 @@ public class CharacterHirelingPanel extends CharacterFramePanel {
 		}
 		public Object getValueAt(int row, int column) {
 			if (row<hirelings.size()) {
-				HirelingDetailComponent detail = (HirelingDetailComponent)hirelings.get(row);
+				HirelingDetailComponent detail = hirelings.get(row);
 				switch(column) {
 					case 0:	return detail.getOwner();
 					case 1:	return detail.getFollowing();
