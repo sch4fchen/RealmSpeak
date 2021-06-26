@@ -106,11 +106,17 @@ public class BattlesWrapper extends GameObjectWrapper {
 					CharacterWrapper characterWrapper = new CharacterWrapper(characterCanControl.get(0).getGameObject());
 					int duration = characterCanControl.get(0).getControllableMonstersDuration();
 					RealmComponent monsterOwner = monster.getOwner();
-					if(monsterOwner!=null && monsterOwner.isCharacter()) {
-						CharacterWrapper owner = new CharacterWrapper(monsterOwner.getGameObject());
-						owner.removeHireling(monster.getGameObject());
+					
+					if(monsterOwner!=null && monsterOwner.isCharacter() && monsterOwner.getGameObject() == characterWrapper.getGameObject()) {
+						monster.setTermOfHire(duration);
 					}
-					characterWrapper.addHireling(monster.getGameObject(), duration);
+					else {
+						if(monsterOwner!=null && monsterOwner.isCharacter()) {
+							CharacterWrapper owner = new CharacterWrapper(monsterOwner.getGameObject());
+							owner.removeHireling(monster.getGameObject());
+						}
+						characterWrapper.addHireling(monster.getGameObject(), duration);
+					}
 				}
 			}
 			

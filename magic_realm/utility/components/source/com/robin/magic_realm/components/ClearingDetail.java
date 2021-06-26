@@ -258,13 +258,11 @@ public class ClearingDetail {
 		if (other.isEdge()) {
 			return parent.getEdgePath(Tile.convertEdge(other.getType(),parent.getRotation()));
 		}
-		else {
-			ArrayList<PathDetail> paths = getConnectedPaths();
-			if (paths!=null) { // might be null if this clearing is not connected to any other
-				for (PathDetail path : paths) {
-					if (path.findConnection(this)==other) {
-						return path;
-					}
+		ArrayList<PathDetail> paths = getConnectedPaths();
+		if (paths!=null) { // might be null if this clearing is not connected to any other
+			for (PathDetail path : paths) {
+				if (path.findConnection(this)==other) {
+					return path;
 				}
 			}
 		}
