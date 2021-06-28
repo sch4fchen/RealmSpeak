@@ -60,6 +60,7 @@ public class ActionRow {
 	private String blankReason = null;; // identifies a BLANK phase
 	private boolean spawned = false; // identifies "spawned" actions that aren't recorded or tracked
 	private boolean invalid = false; // identifies an INVALID phase (this doesn't count as a real phase!!)
+	private boolean invalidPlanned = false; // identifies an phase, which was INVALID when planned
 
 	private RealmTurnPanel turnPanel;
 	private RealmGameHandler gameHandler;
@@ -2190,6 +2191,12 @@ public class ActionRow {
 	}
 	public boolean isInvalidPhase() {
 		return invalid;
+	}
+	public void setInvalidPlannedPhase() {
+		invalidPlanned = true;
+	}
+	public boolean isInvalidPlannedPhase() {
+		return invalidPlanned;
 	}
 	public boolean willMoveToCave() {
 		return (action.startsWith("M") && location.isInClearing() && location.clearing.isCave());

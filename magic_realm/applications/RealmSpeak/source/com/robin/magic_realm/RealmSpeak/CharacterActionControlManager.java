@@ -464,11 +464,11 @@ public class CharacterActionControlManager {
 		// cap better NOT be null here!
 		cap.scrollActionTableToVisible();
 		
-		ArrayList actions = new ArrayList();
-		Collection c = getCharacter().getCurrentActions();
+		ArrayList<String> actions = new ArrayList<>();
+		Collection<String> c = getCharacter().getCurrentActions();
 		if (c!=null && !c.isEmpty()) {
 			actions.addAll(c);
-			String removed = (String)actions.remove(actions.size()-1);
+			String removed = actions.remove(actions.size()-1);
 			if (removed.startsWith(DayAction.MOVE_ACTION.getCode()) || removed.startsWith(DayAction.FLY_ACTION.getCode())) {
 				// deleting a move, so delete a clearing plot
 				getCharacter().chompClearingPlot();
@@ -478,12 +478,12 @@ public class CharacterActionControlManager {
 			if (getCharacter().getClearingPlot()==null) {
 				getCharacter().rebuildClearingPlot();
 			}
-			getGameHandler().getInspector().getMap().setClearingPlot(new ArrayList(getCharacter().getClearingPlot()));
+			getGameHandler().getInspector().getMap().setClearingPlot(new ArrayList<>(getCharacter().getClearingPlot()));
 		}
 		getCharacter().setCurrentActions(actions);
 		
 		// Don't forget to delete the actionTypeCode entry
-		ArrayList actionTypeCodes = new ArrayList();
+		ArrayList<String> actionTypeCodes = new ArrayList<>();
 		c = getCharacter().getCurrentActionTypeCodes();
 		if (c!=null && !c.isEmpty()) {
 			actionTypeCodes.addAll(c);
@@ -492,7 +492,7 @@ public class CharacterActionControlManager {
 		getCharacter().setCurrentActionTypeCodes(actionTypeCodes);
 		
 		// And the valids (aigh)
-		ArrayList valids = new ArrayList();
+		ArrayList<String> valids = new ArrayList<>();
 		c = getCharacter().getCurrentActionValids();
 		if (c!=null && !c.isEmpty()) {
 			valids.addAll(c);

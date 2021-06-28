@@ -232,6 +232,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		ArrayList<String> actions = getCharacter().getCurrentActions();
 		if (actions!=null) {
 			ArrayList<String> actionTypeCodes = getCharacter().getCurrentActionTypeCodes();
+			ArrayList<String> actionTypeValids = (ArrayList<String>) getCharacter().getCurrentActionValids();
 			if (actionTypeCodes==null) {
 				actionTypeCodes = new ArrayList<>();
 			}
@@ -240,6 +241,9 @@ public class RealmTurnPanel extends CharacterFramePanel {
 				String action = actions.get(i);
 				String actionTypeCode = actionTypeCodes.get(i);
 				ActionRow ar = initActionRow(action,actionTypeCode);
+				if (actionTypeValids.get(i) == "F") {
+					ar.setInvalidPlannedPhase();
+				}
 				if (ar!=null && !ar.isFollow()) {
 					CharacterWrapper.ActionState state = getCharacter().getStateForAction(action,i);
 					ar.setActionState(state);
@@ -1313,6 +1317,9 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		int pendingCount = 0;
 		ArrayList<ActionRow> pendingPhases = new ArrayList<>();
 		for (ActionRow ar:actionRows) {
+			if (ar.isInvalidPlannedPhase()) {
+				ar.setActionState(ActionState.Invalid);
+			}
 			if (ar.isPending()) {
 				pendingPhases.add(ar);
 				pendingCount += (ar.getPhaseCount()*ar.getCount());
