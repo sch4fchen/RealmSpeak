@@ -56,14 +56,14 @@ public class Wedge {
 		return pos;
 	}
 
-	public ArrayList makeWedges(int divisions) {
+	public ArrayList<Wedge> makeWedges(int divisions) {
 		return makeWedges(divisions, false);
 	}
 
-	public ArrayList makeWedges(int divisions, boolean moveCenter) {
+	public ArrayList<Wedge> makeWedges(int divisions, boolean moveCenter) {
 		if (divisions <= 0)
 			throw new IllegalArgumentException("Wedge divisions must be greater than zero.");
-		ArrayList wedges = new ArrayList();
+		ArrayList<Wedge> wedges = new ArrayList<>();
 		Point newCenter = center;
 		double st = start;
 		double fin = finish;
@@ -86,7 +86,7 @@ public class Wedge {
 				divisions++;
 		}
 		double range = fin - st;
-		double d = range / (double) divisions;
+		double d = range / divisions;
 		for (int i = 0; i < divisions; i++) {
 			wedges.add(new Wedge(newCenter, r, (int) st, (int) (st + d)));
 			st += d;
@@ -104,10 +104,10 @@ public class Wedge {
 	}
 
 	public boolean isLike(Wedge wedge) {
-		if (wedge != null)
+		if (wedge != null) {
 			return wedge.center.x == center.x && wedge.center.y == center.y && wedge.radius == radius && wedge.start == start && wedge.finish == finish;
-		else
-			return false;
+		}
+		return false;
 	}
 
 	private AveragePoint center;

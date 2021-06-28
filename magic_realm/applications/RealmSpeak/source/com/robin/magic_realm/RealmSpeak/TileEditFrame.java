@@ -638,7 +638,7 @@ public class TileEditFrame extends JFrame {
 	public void addPath() {
 		// TODO Working here
 		if (activeTile!=null) {
-			ArrayList list = new ArrayList(activeTile.getClearingDetail());
+			ArrayList<String> list = new ArrayList<String>(activeTile.getClearingDetail());
 			ButtonOptionDialog chooser = new ButtonOptionDialog(this,null,"From which clearing?","");
 			chooser.addSelectionObjects(list);
 			chooser.setVisible(true);
@@ -669,7 +669,7 @@ public class TileEditFrame extends JFrame {
 						Hashtable edgePositionHash = activeTile.getEdgePositionHash();
 						c2 = new ClearingDetail(activeTile,edge,(Point)edgePositionHash.get(edge),activeTile.getFacingIndex());
 					}
-					ArrayList paths = new ArrayList(activeTile.getPathDetail());
+					ArrayList<PathDetail> paths = new ArrayList<PathDetail>(activeTile.getPathDetail());
 					PathDetail path = new PathDetail(activeTile,paths.size()+1,c1.getName(),c2Name,c1,c2,null,"normal",activeTile.getFacingName());
 					paths.add(path);
 					activeTile.setPathDetail(paths);
@@ -682,7 +682,7 @@ public class TileEditFrame extends JFrame {
 		if (activeTile!=null) {
 			int index = pathList.getSelectedIndex();
 			if (index>=0) {
-				ArrayList list = new ArrayList(activeTile.getPathDetail());
+				ArrayList<PathDetail> list = new ArrayList<PathDetail>(activeTile.getPathDetail());
 				list.remove(index);
 				activeTile.setPathDetail(list);
 				updatePathList(index);
@@ -694,10 +694,10 @@ public class TileEditFrame extends JFrame {
 			int index = pathList.getSelectedIndex();
 			
 			if (index>0) {
-				ArrayList list = new ArrayList(activeTile.getPathDetail());
+				ArrayList<PathDetail> list = new ArrayList<PathDetail>(activeTile.getPathDetail());
 				
-				PathDetail selected = (PathDetail)list.get(index);
-				PathDetail toSwap = (PathDetail)list.get(index-1);
+				PathDetail selected = list.get(index);
+				PathDetail toSwap = list.get(index-1);
 				
 				list.set(index-1,selected);
 				list.set(index,toSwap);
@@ -713,10 +713,10 @@ public class TileEditFrame extends JFrame {
 			int index = pathList.getSelectedIndex();
 			
 			if ((index+1)<pathList.getModel().getSize()) {
-				ArrayList list = new ArrayList(activeTile.getPathDetail());
+				ArrayList<PathDetail> list = new ArrayList<PathDetail>(activeTile.getPathDetail());
 				
-				PathDetail selected = (PathDetail)list.get(index);
-				PathDetail toSwap = (PathDetail)list.get(index+1);
+				PathDetail selected = list.get(index);
+				PathDetail toSwap = list.get(index+1);
 				
 				list.set(index+1,selected);
 				list.set(index,toSwap);
@@ -738,10 +738,9 @@ public class TileEditFrame extends JFrame {
 			}
 		}
 	}
-	public Vector getTiles() {
-		Vector tiles = new Vector();
-		for (Iterator i=data.getGameObjects().iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+	public Vector<GameObject> getTiles() {
+		Vector<GameObject> tiles = new Vector<>();
+		for (GameObject go : data.getGameObjects()) {
 			if (go.hasKey("tile") || go.hasKey("a_tile")) {
 				tiles.addElement(go);
 			}
