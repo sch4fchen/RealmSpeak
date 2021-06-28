@@ -1,4 +1,6 @@
 Version 1.1.4.4 - Changes since 1.1.4.3
+QUEST UPDATE:
+# BoQ Quest: Realm Wars
 NEW FEATURES:
 # MonsterCommand: controlled monsters won't stop following at the end of a round
 BUGS/ISSUES:
