@@ -117,6 +117,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardDamage.DAMAGE_TYPE, "Damage Type", FieldType.StringSelector, DamageType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardDamage.AMOUNT, "Amount", FieldType.Number));
 				break;
+			case DeactivateQuest:
+				break;
 			case DiscardQuest:
 				break;
 			case DiscoverTreasureSite:

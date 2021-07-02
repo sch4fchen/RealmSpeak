@@ -2,6 +2,7 @@ Version 1.1.4.4 - Changes since 1.1.4.3
 QUEST UPDATE:
 # New BoQ Quest: Realm Wars
 # Update to a lot of quests (e.g. fix probability in Violent Storm quest)
+# QuestReward: Deactivate Quest
 NEW FEATURES:
 # MonsterCommand: controlled monsters won't stop following at the end of a round
 BUGS/ISSUES:

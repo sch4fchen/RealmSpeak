@@ -51,6 +51,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		Curse,
 		CustomTreasure,
 		Damage,
+		DeactivateQuest,
 		DiscardQuest,
 		DiscoverTreasureSite,
 		DrawQuests,
@@ -324,6 +325,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case Damage:
 				reward = new QuestRewardDamage(go);
+				break;
+			case DeactivateQuest:
+				reward = new QuestRewardDeactivateQuest(go);
 				break;
 			case DiscardQuest:
 				reward = new QuestRewardDiscardQuest(go);
