@@ -13,7 +13,7 @@ public class ExorciseEffect implements ISpellEffect {
 		
 		if (context.Target.getGameObject().hasThisAttribute("demon")) {
 			combat.setKilledBy(context.Caster);
-			combat.setKilledLength(context.Spell.getLength());
+			combat.setKilledLength(18);
 			combat.setKilledSpeed(context.Spell.getAttackSpeed());
 		}
 		else if (context.Target.isCharacter()) {
