@@ -1,3 +1,10 @@
+Version 2021-07-03
+
+* Optimized Discover Lost City/Castle quests.
+
+==========================================================================
+
+
 Version 2021-06-30
 
 * Optimized many quests to improve performance.
