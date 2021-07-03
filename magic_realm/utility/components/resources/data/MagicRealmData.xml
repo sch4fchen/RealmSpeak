@@ -6848,7 +6848,7 @@
         <attribute spell="I" />
         <attribute duration="instant" />
         <attribute target="clearing" />
-        <attribute text="Remove all magic demons and imp" />
+        <attribute text="Remove all magic demons and imps" />
         <attribute magic_color="white" />
         <attribute original_game="" />
         <attribute exorcise="" />
