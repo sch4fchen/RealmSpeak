@@ -40,16 +40,14 @@ public class SpellTargetingClearing extends SpellTargetingSpecial {
 	
 		ArrayList<String> clearingTargetType = spell.getGameObject().getThisAttributeList("target_clearing");
 		if (clearingTargetType.contains("combatants")) {
-			ArrayList allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
-			for (Iterator i=allBattleParticipants.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
+			for (RealmComponent rc : allBattleParticipants) {
 				gameObjects.add(rc.getGameObject());
 			}
 		}
 		if (clearingTargetType.contains("monsters")) {
-			ArrayList allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
-			for (Iterator i=allBattleParticipants.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
+			for (RealmComponent rc : allBattleParticipants) {
 				if (rc.isMonster()) {
 					gameObjects.add(rc.getGameObject());
 				}
@@ -57,24 +55,21 @@ public class SpellTargetingClearing extends SpellTargetingSpecial {
 		}
 		if (clearingTargetType.contains("spells")) {
 			SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(spell.getGameObject().getGameData());
-			for (Iterator i=sm.getAllSpellsInClearing(battleModel.getBattleLocation(),true).iterator();i.hasNext();) {
-				SpellWrapper sw = (SpellWrapper)i.next();
+			for (SpellWrapper sw : sm.getAllSpellsInClearing(battleModel.getBattleLocation(),true)) {
 				gameObjects.add(sw.getGameObject());
 			}
 		}
 		if (clearingTargetType.contains("curses")) {
-			for (Iterator i=battleModel.getAllParticipatingCharacters().iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : battleModel.getAllParticipatingCharacters()) {
 				CharacterWrapper thisCharacter = new CharacterWrapper(rc.getGameObject());
-				Collection curses = thisCharacter.getAllCurses();
+				Collection<String> curses = thisCharacter.getAllCurses();
 				if (curses.size()>0) {
 					gameObjects.add(rc.getGameObject());
 				}
 			}
 		}
 		boolean ignorebattle = spell.getGameObject().hasThisAttribute("nobattle");
-		for (Iterator i=gameObjects.iterator();i.hasNext();) {
-			GameObject theTarget = (GameObject)i.next();
+		for (GameObject theTarget : gameObjects) {
 			spell.addTarget(combatFrame.getHostPrefs(),theTarget,ignorebattle);
 			if (!ignorebattle) {
 				combatFrame.makeWatchfulNatives(RealmComponent.getRealmComponent(theTarget),true);
