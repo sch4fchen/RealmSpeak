@@ -6857,10 +6857,10 @@
         <attribute rw_expansion_1="" />
         <attribute learnable="" />
         <attributeList keyName="target_clearing">
-          <attributeVal N0="monsters" />
-          <attributeVal N1="spells" />
-          <attributeVal N2="curses" />
-          <attributeVal N3="combatants" />
+          <attributeVal N0="characters" />
+          <attributeVal N1="demons" />
+          <attributeVal N2="spells" />
+          <attributeVal N3="curses" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
