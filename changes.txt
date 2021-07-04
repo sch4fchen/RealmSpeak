@@ -5,6 +5,7 @@ QUEST UPDATE:
 # QuestReward: Deactivate Quest
 NEW FEATURES:
 # MonsterCommand: controlled monsters won't stop following at the end of a round
+# Add MagicRealmData.xml as separate file as example/template
 BUGS/ISSUES:
 # Fix loosing invalid actions by Violent Storm
 # Fix NullPointException for Exorcise spell
