@@ -247,9 +247,7 @@ public class Loot extends RealmTable {
 		return "Nothing";
 	}
 
-	protected String characterFindsItem(CharacterWrapper character, GameObject thing) {
-		GameObject source = thing.getHeldBy();
-		
+	public String characterFindsItem(CharacterWrapper character, GameObject thing) {
 		if (!thing.hasThisAttribute(Constants.TREASURE_SEEN)) {
 			thing.setThisAttribute(Constants.TREASURE_SEEN);
 		}
@@ -295,6 +293,7 @@ public class Loot extends RealmTable {
 		 *  2nd Edition Rule # (optional) 	
 		 */
 		
+		GameObject source = thing.getHeldBy();
 		if (source!=null && source.hasThisAttribute(Constants.MIN_LARGE_T) && !source.hasThisAttribute(Constants.DESTROYED)) {
 			int minLarge = source.getThisInt(Constants.MIN_LARGE_T);
 			int totalLarge = 0;
@@ -409,7 +408,7 @@ public class Loot extends RealmTable {
 		if (thing.hasThisAttribute("curse")) {
 			setNewTable(new Curse(getParentFrame(), character.getGameObject()));
 		}
-		if (thing.hasThisAttribute("add_to_pile")) {
+		if (thing.hasThisAttribute("add_to_pile") && treasureLocation != null) {
 			// Add everything to pile
 			ArrayList<GameObject> list = new ArrayList<GameObject>(thing.getHold());
 			Collections.sort(list,new Comparator<GameObject>() { // sort by pile position (if any)
@@ -457,7 +456,7 @@ public class Loot extends RealmTable {
 				addItemToCharacter(getParentFrame(),getListener(),character,go,hostPrefs);
 			}
 		}
-		if (thing.hasThisAttribute(Constants.CANNOT_MOVE)) {
+		if (thing.hasThisAttribute(Constants.CANNOT_MOVE) && treasureLocation != null) {
 			// Discover this site card immediately (not found by normal searching!!)
 			character.addTreasureLocationDiscovery(thing.getName());
 			

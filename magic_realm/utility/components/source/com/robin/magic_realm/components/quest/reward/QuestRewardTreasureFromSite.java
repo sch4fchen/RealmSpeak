@@ -65,7 +65,7 @@ public class QuestRewardTreasureFromSite extends QuestReward {
 		}
 		
 		ArrayList hold = selected.getHold();
-		ArrayList<GameObject> treasures = new ArrayList<GameObject>();
+		ArrayList<GameObject> treasures = new ArrayList<>();
 		for(Object o:hold) {
 			RealmComponent rc = RealmComponent.getRealmComponent((GameObject)o);
 			if (rc.isTreasure()) {
@@ -79,13 +79,13 @@ public class QuestRewardTreasureFromSite extends QuestReward {
 		GameObject treasure = null;
 		switch(getDrawType()) {
 			case Top:
-				treasure = (GameObject)treasures.get(0);
+				treasure = treasures.get(0);
 				break;
 			case Bottom:
-				treasure = (GameObject)treasures.get(treasures.size()-1);
+				treasure = treasures.get(treasures.size()-1);
 				break;
 			case Random:
-				treasure = (GameObject)treasures.get(RandomNumber.getRandom(treasures.size()));
+				treasure = treasures.get(RandomNumber.getRandom(treasures.size()));
 				break;
 			case Choice:
 				RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,getTitleForDialog()+" Which treasure?",false);
@@ -95,7 +95,8 @@ public class QuestRewardTreasureFromSite extends QuestReward {
 				break;
 		}		
 		if (treasure!=null) { // shouldn't ever be null
-			Loot.addItemToCharacter(frame,null,character,treasure);
+			Loot loot = new Loot(frame, null);
+			loot.characterFindsItem(character, treasure);
 		}
 	}
 	
