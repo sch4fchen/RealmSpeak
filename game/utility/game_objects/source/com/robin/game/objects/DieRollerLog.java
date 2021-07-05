@@ -45,11 +45,11 @@ public class DieRollerLog implements DieRollerLoggable {
 		gameObject.addThisAttributeListItem(REASON_LIST,reason==null?"":reason);
 	}
 	public int getTotalRolls() {
-		ArrayList rolls = gameObject.getThisAttributeList(ROLL_LIST);
+		ArrayList<String> rolls = gameObject.getThisAttributeList(ROLL_LIST);
 		return rolls==null?0:rolls.size();
 	}
 	public Integer[] getDieMultiples() {
-		ArrayList<Integer> multiples = new ArrayList<Integer>();
+		ArrayList<Integer> multiples = new ArrayList<>();
 		for(DieRoller roller:getDieRollers()) {
 			int nod = roller.getNumberOfDice();
 			if (!multiples.contains(nod)) {
@@ -111,7 +111,7 @@ public class DieRollerLog implements DieRollerLoggable {
 	}
 	public ArrayList<DieRoller> getDieRollers() {
 		if (cache==null || dirty) {
-			cache = new ArrayList<DieRoller>();
+			cache = new ArrayList<>();
 			ArrayList<String> rolls = gameObject.getThisAttributeList(ROLL_LIST);
 			if (rolls!=null) {
 				for(String roll:rolls) {
@@ -204,10 +204,10 @@ public class DieRollerLog implements DieRollerLoggable {
 		}
 		return sb.toString();
 	}
-	private void appendField(StringBuilder sb,String field,int length) {
+	private static void appendField(StringBuilder sb,String field,int length) {
 		appendField(sb,field,length,' ');
 	}
-	private void appendField(StringBuilder sb,String field,int length,char c) {
+	private static void appendField(StringBuilder sb,String field,int length,char c) {
 		sb.append(field);
 		while(length-field.length()>0) {
 			sb.append(c);

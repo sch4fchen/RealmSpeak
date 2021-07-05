@@ -5853,7 +5853,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 */
 	public ArrayList<RealmComponent> getAllHirelings() {
 		GameData data = getGameObject().getGameData();
-		ArrayList<RealmComponent> list = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> list = new ArrayList<>();
 		OrderedHashtable hash = getGameObject().getAttributeBlock(HIRELING_BLOCK);
 		for (Iterator i=hash.keySet().iterator();i.hasNext();) {
 			String id = (String)i.next();
@@ -5862,7 +5862,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return list;
 	}
 	public ArrayList<RealmComponent> getAllHirelingsFromSame(RealmComponent rc) {
-		ArrayList<RealmComponent> list = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> list = new ArrayList<>();
 		if (rc.isNative()) {
 			String groupName = RealmUtility.getGroupName(rc);
 			for (RealmComponent test:getAllHirelings()) {
