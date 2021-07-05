@@ -11,6 +11,7 @@ BUGS/ISSUES:
 # Fix NullPointException for Exorcise spell
 # Exorcise spell only targeting demons, spells, curses and characters, not all monsters
 # Fix NullPointException for generating monsters by a monster generator
+# QuestRewardTreasureFromSite: Handle special treasure effects when gaining treasure
 
 Version 1.1.4.3 - Changes since 1.1.4.2
 NEW FEATURES:

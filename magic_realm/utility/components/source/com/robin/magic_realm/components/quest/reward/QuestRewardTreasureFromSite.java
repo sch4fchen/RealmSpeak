@@ -95,7 +95,7 @@ public class QuestRewardTreasureFromSite extends QuestReward {
 				break;
 		}		
 		if (treasure!=null) { // shouldn't ever be null
-			Loot loot = new Loot(frame, null);
+			Loot loot = new Loot(frame, character, selected, null);
 			loot.characterFindsItem(character, treasure);
 		}
 	}
