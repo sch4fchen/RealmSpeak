@@ -113,8 +113,8 @@ public class SetupCardUtility {
 		 * THEN Sound chits (low numbers summon before higher numbers)
 		 */
 		ArrayList<GameObject> warningChits = SetupCardUtility.getWarnings(tl.tile.getGameObject().getHold(),monsterDie,includeWarningSounds); // this is done separately to capture treasures...
-		ArrayList<GameObject> soundChits = new ArrayList<GameObject>();
-		ArrayList<GameObject> prowlingMonsters = new ArrayList<GameObject>();
+		ArrayList<GameObject> soundChits = new ArrayList<>();
+		ArrayList<GameObject> prowlingMonsters = new ArrayList<>();
 		for (Object o : tl.tile.getGameObject().getHold()) {
 			GameObject go = (GameObject)o;
 			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
@@ -406,7 +406,7 @@ public class SetupCardUtility {
 		return (bn==null && boardNumber == "") || (bn != null && boardNumber.matches(bn));
 	}
 	private static ArrayList<GameObject> generateMonsters(GameObject generator,ClearingDetail clearing) {
-		ArrayList<GameObject> list = new ArrayList<GameObject>();
+		ArrayList<GameObject> list = new ArrayList<>();
 		GameData data = generator.getGameData();
 		String dieString = generator.getThisAttribute(Constants.GENERATOR);
 		if (dieString==null) return list;
@@ -436,7 +436,9 @@ public class SetupCardUtility {
 				clearing.add(go,null);
 				go.setThisAttribute("monster_die",generator.getThisAttribute("monster_die"));
 				go.setThisAttribute(Constants.GENERATOR_ID,generator.getStringId());
-				go.setThisAttribute((Constants.BOARD_NUMBER), generator.getThisAttribute(Constants.BOARD_NUMBER));
+				if (generator.getThisAttribute(Constants.BOARD_NUMBER) != null) {
+					go.setThisAttribute((Constants.BOARD_NUMBER), generator.getThisAttribute(Constants.BOARD_NUMBER));
+				}
 			}
 		}
 		list.addAll(mc.getMonstersCreated());
@@ -458,7 +460,7 @@ public class SetupCardUtility {
 		int furthest = Integer.MIN_VALUE;
 		if (monster.flies()) {
 			// Find tiles to move to
-			HashLists<Integer,TileComponent> choices = new HashLists<Integer,TileComponent>();
+			HashLists<Integer,TileComponent> choices = new HashLists<>();
 			for (TileComponent adj:current.tile.getAllAdjacentTiles()) {
 				int distanceFromHome = ClearingUtility.getDistanceBetweenTiles(adj,home.tile);
 				
@@ -480,7 +482,7 @@ public class SetupCardUtility {
 		}
 		else {
 			// Find clearing to move to
-			HashLists<Integer,ClearingDetail> choices = new HashLists<Integer,ClearingDetail>();
+			HashLists<Integer,ClearingDetail> choices = new HashLists<>();
 			for (PathDetail path:current.clearing.getConnectedPaths()) {
 				ClearingDetail other = path.findConnection(current.clearing);
 				int distanceFromHome = ClearingUtility.calculateClearingCount(home,other.getTileLocation()); // is this going to kill performance?
@@ -881,7 +883,7 @@ public class SetupCardUtility {
 			}
 			
 			// Bring in native groups for each of the dwellings
-			keyVals = new ArrayList<String>();
+			keyVals = new ArrayList<>();
 			keyVals.add(hostPrefs.getGameKeyVals());
 			keyVals.add("dwelling");
 			pool = new GamePool(data.getGameObjects());
@@ -964,7 +966,7 @@ public class SetupCardUtility {
 		int boards = hostPrefs.getMultiBoardEnabled() ? hostPrefs.getMultiBoardCount() : 1;
 		int totalChitsToPlace = boards * 6;
 		RealmObjectMaster rom = RealmObjectMaster.getRealmObjectMaster(hostPrefs.getGameData());
-		ArrayList<GameObject> gs = new ArrayList<GameObject>(rom.findObjects("gold_special,"+Constants.GOLD_SPECIAL_PLACED, false));
+		ArrayList<GameObject> gs = new ArrayList<>(rom.findObjects("gold_special,"+Constants.GOLD_SPECIAL_PLACED, false));
 		int placedChits = gs.size();
 		if (!hostPrefs.hasPref(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE)) {
 			placedChits >>= 1; // divide by 2

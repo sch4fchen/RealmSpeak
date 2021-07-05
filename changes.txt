@@ -10,6 +10,7 @@ BUGS/ISSUES:
 # Fix loosing invalid actions by Violent Storm
 # Fix NullPointException for Exorcise spell
 # Exorcise spell only targeting demons, spells, curses and characters, not all monsters
+# Fix NullPointException for generating monsters by a monster generator
 
 Version 1.1.4.3 - Changes since 1.1.4.2
 NEW FEATURES:
