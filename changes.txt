@@ -1,5 +1,6 @@
 Version 1.1.4.5 - Changes since 1.1.4.4
 QUEST UPDATE:
+# QuestRequirementLocation: Option to check character is in a clearing
 NEW FEATURES:
 # Remove warning when sending no actions and character has Prophecy power
 BUGS/ISSUES:

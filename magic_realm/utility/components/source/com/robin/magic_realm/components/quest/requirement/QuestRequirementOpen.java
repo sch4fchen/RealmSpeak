@@ -98,7 +98,7 @@ public class QuestRequirementOpen extends QuestRequirement {
 	public String getRegExFilter() {
 		return getString(LOCATION_REGEX);
 	}
-	private Boolean characterHasToOpenIt() {
+	private boolean characterHasToOpenIt() {
 		return !getBoolean(OPEN_BY_ANYONE);
 	}
 }
