@@ -437,7 +437,7 @@ public class CharacterActionControlManager {
 		}
 	}
 	private void doFinish() {
-		if (getGameHandler().isOption(RealmSpeakOptions.INCOMPLETE_PHASE_WARNING) && canStillRecord()) {
+		if (getGameHandler().isOption(RealmSpeakOptions.INCOMPLETE_PHASE_WARNING) && canStillRecord() && !getCharacter().affectedByKey(Constants.DAYTIME_ACTIONS)) {
 			int ret = JOptionPane.showConfirmDialog(
 					getGameHandler().getMainFrame(),
 					"You still have phases to record.  Send anyway?",
@@ -801,7 +801,6 @@ public class CharacterActionControlManager {
 		boolean canUnsend = getCharacter().isActive() && birdsong && !getCharacter().isDoRecord();
 		backAction.setEnabled(canBackspace || canUnsend);
 		timeToSend = finishAction.isEnabled();
-		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
 		
 		boolean inCave = getCharacter().isActive() && planned!=null && planned.isInClearing() && planned.clearing.isCave();
 		boolean pony = getCharacter().isActive() && getCharacter().isPonyActive();
