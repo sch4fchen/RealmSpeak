@@ -32,7 +32,7 @@ public class QuestRequirementLocation extends QuestRequirement {
 	private static Logger logger = Logger.getLogger(QuestRequirementLocation.class.getName());
 	
 	public static final String LOCATION = "_l";
-	public static final String CLEARING = "_c";
+	public static final String NON_CLEARING = "_c";
 	
 	public QuestRequirementLocation(GameObject go) {
 		super(go);
@@ -40,7 +40,7 @@ public class QuestRequirementLocation extends QuestRequirement {
 	
 	protected boolean testFulfillsRequirement(JFrame frame,CharacterWrapper character,QuestRequirementParams reqParams) {
 		QuestLocation location = getQuestLocation();
-		if (characterMustBeInClearing() && !character.getCurrentLocation().isInClearing()) {
+		if (!nonClearingAllowed() && !character.getCurrentLocation().isInClearing()) {
 			logger.fine(character.getName()+" is not in a clearing.");
 			return false;
 		}		
@@ -51,8 +51,8 @@ public class QuestRequirementLocation extends QuestRequirement {
 		return true;
 	}
 	
-	private boolean characterMustBeInClearing() {
-		return getBoolean(CLEARING);
+	private boolean nonClearingAllowed() {
+		return getBoolean(NON_CLEARING);
 	}
 	
 	public boolean usesLocationTag(String tag) {

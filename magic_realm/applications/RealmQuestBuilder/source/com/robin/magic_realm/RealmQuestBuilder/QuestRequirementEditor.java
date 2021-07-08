@@ -167,7 +167,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				break;
 			case OccupyLocation:
 				list.add(new QuestPropertyBlock(QuestRequirementLocation.LOCATION, "Quest Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
-				list.add(new QuestPropertyBlock(QuestRequirementLocation.CLEARING, "Must be in a clearing", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementLocation.NON_CLEARING, "Non-clearing location allowed", FieldType.Boolean));
 				break;
 			case Open:
 				list.add(new QuestPropertyBlock(QuestRequirementOpen.LOCATION_REGEX, "Location to open/search", FieldType.Regex, null, new String[] { "needs_open", "search" }));
