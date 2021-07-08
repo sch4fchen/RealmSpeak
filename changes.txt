@@ -4,6 +4,7 @@ QUEST UPDATE:
 NEW FEATURES:
 # Remove warning when sending no actions and character has Prophecy power
 BUGS/ISSUES:
+# Fix NullPointException when for QuestPanel when character is not in a location
 
 Version 1.1.4.4 - Changes since 1.1.4.3
 QUEST UPDATE:
