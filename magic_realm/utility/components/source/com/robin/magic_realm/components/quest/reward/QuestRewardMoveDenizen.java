@@ -24,6 +24,7 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.general.util.RandomNumber;
+import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.QuestLocation;
 import com.robin.magic_realm.components.utility.Constants;
@@ -35,6 +36,12 @@ public class QuestRewardMoveDenizen extends QuestReward {
 		CharactersTile,
 		CharactersClearing,
 		Location
+	}
+	
+	public enum MoveFromOption {
+		Everywhere,
+		CharactersTile,
+		CharactersClearing
 	}
 	
 	public enum ClearingSelection {
@@ -49,6 +56,7 @@ public class QuestRewardMoveDenizen extends QuestReward {
 	}
 	
 	public static final String DENIZEN_REGEX = "_drx";
+	public static final String MOVE_FROM_OPTION = "_mfo";
 	public static final String MOVE_OPTION = "_mo";
 	public static final String CLEARING = "_cl";
 	public static final String LOCATION = "_loc";
@@ -64,8 +72,17 @@ public class QuestRewardMoveDenizen extends QuestReward {
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		ArrayList<GameObject> denizens = character.getGameData().getGameObjectsByNameRegex(getDenizenNameRegex());
 		QuestLocation loc = getQuestLocation();
-		ArrayList<GameObject> denizensToMove = new ArrayList<GameObject>();
+		TileLocation charactersLoc= character.getCurrentLocation();
+		ArrayList<GameObject> denizensToMove = new ArrayList<>();
 		for (GameObject denizen : denizens) {
+			TileLocation denizenLoc = RealmComponent.getRealmComponent(denizen).getCurrentLocation();
+			if(getMoveFromOption() == MoveFromOption.CharactersClearing
+					&& (denizenLoc == null || charactersLoc == null || denizenLoc.tile != charactersLoc.tile || denizenLoc.clearing != charactersLoc.clearing)) {
+				continue;
+			}
+			if(getMoveFromOption() == MoveFromOption.CharactersTile && (denizenLoc == null || charactersLoc == null || denizenLoc.tile != charactersLoc.tile)) {
+				continue;
+			}
 			if (!moveHirelings() && denizen.hasThisAttribute(Constants.HIRELING)) {
 				continue;
 			}
@@ -78,7 +95,6 @@ public class QuestRewardMoveDenizen extends QuestReward {
 			if (moveOnlyHirelingsCompanionsSummonedMonsters() && !denizen.hasThisAttribute(Constants.HIRELING) && !denizen.hasThisAttribute(Constants.COMPANION) && !denizen.hasThisAttribute(Constants.SUMMONED)) {
 				continue;
 			}
-			
 			denizensToMove.add(denizen);
 		}
 		
@@ -181,7 +197,7 @@ public class QuestRewardMoveDenizen extends QuestReward {
 			}
 	}
 	private static void moveDenizensToLocationToClearing(ArrayList<TileLocation> locations, int clearingNumber, ArrayList<GameObject> denizensToMove) {
-		ArrayList<TileLocation> validLocations = new ArrayList<TileLocation>();
+		ArrayList<TileLocation> validLocations = new ArrayList<>();
 		for (TileLocation loc : locations) {
 			if (loc.clearing.getNum() == clearingNumber) {
 				validLocations.add(loc);
@@ -208,6 +224,9 @@ public class QuestRewardMoveDenizen extends QuestReward {
 	}
 	private String getDenizenNameRegex() {
 		return getString(DENIZEN_REGEX);
+	}
+	private MoveFromOption getMoveFromOption() {
+		return MoveFromOption.valueOf(getString(MOVE_FROM_OPTION));
 	}
 	private MoveOption getMoveOption() {
 		return MoveOption.valueOf(getString(MOVE_OPTION));
