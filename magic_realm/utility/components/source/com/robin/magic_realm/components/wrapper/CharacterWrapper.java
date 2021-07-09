@@ -2809,6 +2809,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public void setPlayerName(String val) {
 		setString(NAME_KEY,val);
 	}
+	public void removePlayerName() {
+		removeAttribute(NAME_KEY);
+	}
 	public void setPlayerPassword(String val) {
 		setString(PASSWORD_KEY,val);
 		for(RealmComponent rc:getAllHirelings()) {

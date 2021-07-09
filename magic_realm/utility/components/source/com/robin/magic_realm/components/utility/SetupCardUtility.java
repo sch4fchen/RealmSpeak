@@ -700,6 +700,9 @@ public class SetupCardUtility {
 		// Remove tile clearing definition
 		denizen.removeThisAttribute("clearing");
 		
+		// Remove Player controlling character
+		(new CharacterWrapper(denizen)).removePlayerName();
+		
 		// Remove all DEAD designations and leftover killedBy info - make sure light side up too!
 		CombatWrapper.clearAllCombatInfo(denizen);
 		denizen.removeThisAttribute(Constants.DEAD);
