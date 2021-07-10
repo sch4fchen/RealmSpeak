@@ -108,7 +108,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	protected JSlider minMapRating;
 	protected JRadioButton boardPlayerSetup;
 	
-	protected JComboBox startingSeason;
+	protected JComboBox<GameObject> startingSeason;
 	protected JCheckBox useWeather;
 	protected JLabel optionalWeatherWarning;
 	
@@ -144,8 +144,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		questBoqOption.setSelected(hostPrefs.hasPref(Constants.QST_BOOK_OF_QUESTS));
 		questQtrOption.setSelected(hostPrefs.hasPref(Constants.QST_QUEST_CARDS));
 		questGuildsOption.setSelected(hostPrefs.hasPref(Constants.QST_GUILD_QUESTS));
-		for (Iterator i=optionPane.getGameOptionKeys().iterator();i.hasNext();) {
-			String key = (String)i.next();
+		for (String key : optionPane.getGameOptionKeys()) {
 			optionPane.setOption(key,hostPrefs.hasPref(key));
 		}
 		String season = hostPrefs.getStartingSeason();
@@ -220,8 +219,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		questBoqOption.setSelected(prefMan.getBoolean(Constants.QST_BOOK_OF_QUESTS));
 		questQtrOption.setSelected(prefMan.getBoolean(Constants.QST_QUEST_CARDS));
 		questGuildsOption.setSelected(prefMan.getBoolean(Constants.QST_GUILD_QUESTS));
-		for (Iterator i=optionPane.getGameOptionKeys().iterator();i.hasNext();) {
-			String key = (String)i.next();
+		for (String key : optionPane.getGameOptionKeys()) {
 			optionPane.setOption(key,prefMan.getBoolean(key));
 		}
 		String name = prefMan.get("startingSeason");
@@ -276,8 +274,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		prefMan.set(Constants.QST_QUEST_CARDS,questQtrOption.isSelected());
 		prefMan.set(Constants.QST_GUILD_QUESTS,questGuildsOption.isSelected());
 		
-		for (Iterator i=optionPane.getGameOptionKeys().iterator();i.hasNext();) {
-			String key = (String)i.next();
+		for (String key : optionPane.getGameOptionKeys()) {
 			prefMan.set(key,optionPane.getOption(key));
 		}
 		Object obj = startingSeason.getSelectedItem();
@@ -719,7 +716,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			minMapRating.setPaintTicks(true);
 			minMapRating.setPaintLabels(true);
 			minMapRating.setOrientation(JSlider.VERTICAL);
-			Hashtable labelTable = new Hashtable();
+			Hashtable<Integer, JLabel> labelTable = new Hashtable<>();
 			labelTable.put( 0, new JLabel("0 - Any (Fast)  ") );
 			labelTable.put( 1, new JLabel("1") );
 			labelTable.put( 2, new JLabel("2") );
@@ -839,7 +836,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			box.add(Box.createHorizontalGlue());
 		gamePlayBox.add(box);
 			box = group.createLabelLine("Optional Season");
-				ArrayList seasons = new ArrayList(RealmCalendar.findSeasons(gameData));
+				ArrayList seasons = new ArrayList<>(RealmCalendar.findSeasons(gameData));
 				seasons.add(1,RealmCalendar.RANDOM_SEASON);
 				seasons.add(2,RealmCalendar.UNPREDICTABLE_SEASON);
 				startingSeason = notifier.getComboBox(seasons.toArray());
@@ -1077,15 +1074,14 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		fixedVps.setSelected(false);
 		vpsToAchieve.setText("5");
 		
-		for (Iterator i=optionPane.getGameOptionKeys().iterator();i.hasNext();) {
-			String key = (String)i.next();
+		for (String key : optionPane.getGameOptionKeys()) {
 			optionPane.setOption(key,false);
 		}
 		
 		updateWarnings();
 		loadingPrefs = false;
 	}
-	public int readInt(String val) {
+	public static int readInt(String val) {
 		try {
 			Integer n = Integer.valueOf(val);
 			return n.intValue();
@@ -1160,8 +1156,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			hostPrefs.setStartingSeason(obj.toString());
 		}
 		
-		for (Iterator i=optionPane.getGameOptionKeys().iterator();i.hasNext();) {
-			String optionKey = (String)i.next();
+		for (String optionKey : optionPane.getGameOptionKeys()) {
 			hostPrefs.setPref(optionKey,optionPane.getOption(optionKey));
 		}
 		
@@ -1194,7 +1189,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			return;
 		}
 		
-		ArrayList<String> recipients = new ArrayList<String>();
+		ArrayList<String> recipients = new ArrayList<>();
 		recipients.add(address);
 		String error = RealmMail.sendMail(smtp,address,recipients,gameTitle.getText(),"Test","This is a test of the e-mail notification setup within RealmSpeak.  If you receieved this e-mail by mistake, please ignore it.");
 		if (error!=null) {

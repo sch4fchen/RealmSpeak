@@ -27,9 +27,9 @@ import com.robin.general.util.*;
 
 public class GameOptionPane extends JPanel implements ActionListener {
 
-	private OrderedHashtable keyHash; // String key:String tabKey
+	private OrderedHashtable<String, String> keyHash;
 	private OrderedHashtable tabHash; // String tabKey:OrderedHashtable options or String tabKey:Component c
-	private Hashtable tabDescriptionHash; // String tabKey:String desc
+	private Hashtable<String, String> tabDescriptionHash;
 	private boolean editMode;
 	private int tabPlacement = JTabbedPane.TOP;
 	private ArrayList<ActionListener> actionListeners;
@@ -46,14 +46,14 @@ public class GameOptionPane extends JPanel implements ActionListener {
 	public GameOptionPane(int tabPlacement,boolean editMode) {
 		super(new BorderLayout());
 		this.editMode = editMode;
-		keyHash = new OrderedHashtable();
-		tabHash = new OrderedHashtable();
-		tabDescriptionHash = new Hashtable();
+		keyHash = new OrderedHashtable<>();
+		tabHash = new OrderedHashtable<>();
+		tabDescriptionHash = new Hashtable<>();
 		this.tabPlacement = tabPlacement;
 	}
 	public void addActionListener(ActionListener actionListener) {
 		if (actionListeners==null) {
-			actionListeners = new ArrayList<ActionListener>();
+			actionListeners = new ArrayList<>();
 		}
 		if (!actionListeners.contains(actionListener)) {
 			actionListeners.add(actionListener);
@@ -70,14 +70,10 @@ public class GameOptionPane extends JPanel implements ActionListener {
 	public String[] getTabKeys() {
 		return (String[])tabHash.keySet().toArray(new String[0]);
 	}
-//	public ArrayList<String> getOrderedOptionKeys() {
-//		ArrayList<String> list = new ArrayList<String>();
-//		return list;
-//	}
 	public String[] getOptionDescriptions(String tabKey,boolean active) {
 		Object obj = tabHash.get(tabKey);
 		if (obj instanceof OrderedHashtable) {
-			ArrayList rules = new ArrayList();
+			ArrayList<String> rules = new ArrayList<>();
 			OrderedHashtable options = (OrderedHashtable)obj;
 			for (Iterator i=options.orderedKeys().iterator();i.hasNext();) {
 				String key = (String)i.next();
@@ -86,7 +82,7 @@ public class GameOptionPane extends JPanel implements ActionListener {
 					rules.add(option.getDescription());
 				}
 			}
-			return (String[])rules.toArray(new String[rules.size()]);
+			return rules.toArray(new String[rules.size()]);
 		}
 		return null;
 	}
@@ -104,9 +100,9 @@ public class GameOptionPane extends JPanel implements ActionListener {
 	}
 	public void addOption(String tabKey,GameOption option) {
 		if (!keyHash.containsKey(option.getKey())) {
-			OrderedHashtable options = (OrderedHashtable)tabHash.get(tabKey);
+			OrderedHashtable<String, GameOption> options = (OrderedHashtable)tabHash.get(tabKey);
 			if (options==null) {
-				options = new OrderedHashtable();
+				options = new OrderedHashtable<>();
 				tabHash.put(tabKey,options);
 			}
 			options.put(option.getKey(),option);
@@ -120,10 +116,10 @@ public class GameOptionPane extends JPanel implements ActionListener {
 	}
 	public GameOption getGameOption(String optionKey) {
 		GameOption option = null;
-		String tabKey = (String)keyHash.get(optionKey);
+		String tabKey = keyHash.get(optionKey);
 		if (tabKey!=null) {
-			OrderedHashtable options = (OrderedHashtable)tabHash.get(tabKey);
-			option = (GameOption)options.get(optionKey);
+			OrderedHashtable<String, GameOption> options = (OrderedHashtable)tabHash.get(tabKey);
+			option = options.get(optionKey);
 		}
 		return option;
 	}
@@ -142,7 +138,7 @@ public class GameOptionPane extends JPanel implements ActionListener {
 		}
 		throw new IllegalStateException("!!");
 	}
-	public Collection getGameOptionKeys() {
+	public Collection<String> getGameOptionKeys() {
 		return keyHash.keySet();
 	}
 	public void buildPane() {

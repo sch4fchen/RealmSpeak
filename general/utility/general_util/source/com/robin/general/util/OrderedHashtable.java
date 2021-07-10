@@ -48,8 +48,8 @@ public class OrderedHashtable<T,U> extends Hashtable<T,U> {
 			put(key,val);
 		}
 	}
-	public Set keySet() {
-		return new LinkedHashSet(orderedKeys);
+	public Set<T> keySet() {
+		return new LinkedHashSet<>(orderedKeys);
 	}
 	public Collection<U> values() {
 		ArrayList<U> vals = new ArrayList<>();
