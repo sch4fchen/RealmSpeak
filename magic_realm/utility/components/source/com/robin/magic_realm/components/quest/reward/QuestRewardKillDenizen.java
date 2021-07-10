@@ -50,13 +50,13 @@ public class QuestRewardKillDenizen extends QuestReward {
 	}
 
 	public void processReward(JFrame frame,CharacterWrapper character) {
-		ArrayList<GameObject> denizens = new ArrayList<GameObject>();
+		ArrayList<GameObject> denizens = new ArrayList<>();
 		if (!getDenizenNameRegex().isEmpty()) {
 			denizens = character.getGameData().getGameObjectsByNameRegex(getDenizenNameRegex());
 		}
 		else {
 			GamePool pool = new GamePool(getGameData().getGameObjects());
-			ArrayList<String> query = new ArrayList<String>();
+			ArrayList<String> query = new ArrayList<>();
 			query.add("vulnerability");
 			query.add("denizen");
 			denizens.addAll(pool.find(query));
@@ -81,7 +81,7 @@ public class QuestRewardKillDenizen extends QuestReward {
 			if (charLocationOnly()) {
 				TileLocation charLoc = character.getCurrentLocation();
 				TileLocation denizenLoc = denizenRc.getCurrentLocation();
-				if (charLoc == null || denizenLoc == null || charLoc.tile == null|| denizenLoc.tile == null || charLoc.tile != denizenLoc.tile || charLoc.tile != denizenLoc.tile ) continue;
+				if (charLoc == null || denizenLoc == null || charLoc.tile == null || denizenLoc.tile == null || charLoc.tile != denizenLoc.tile || charLoc.clearing != denizenLoc.clearing ) continue;
 			}
 			
 			if (locationOnly()) {
@@ -102,7 +102,7 @@ public class QuestRewardKillDenizen extends QuestReward {
 		}
 	}
 	
-	private void giveReward(CharacterWrapper character, GameObject denizen) {
+	private static void giveReward(CharacterWrapper character, GameObject denizen) {
 		Spoils spoils = Spoils.getSpoils(character.getGameObject(),denizen);
 		character.addKill(denizen,spoils);
 		if (spoils.hasFameOrNotoriety()) {
