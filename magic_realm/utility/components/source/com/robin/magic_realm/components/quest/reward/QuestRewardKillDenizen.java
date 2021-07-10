@@ -43,6 +43,7 @@ public class QuestRewardKillDenizen extends QuestReward {
 	public static final String KILL_CLONED = "_kcloned";
 	public static final String KILL_LIMITED = "_kl";
 	public static final String KILL_IN_CHAR_LOCATION = "_k_i_cloc";
+	public static final String KILL_IN_CHAR_TILE = "_k_i_ctile";
 	public static final String KILL_IN_LOCATION = "_k_i_loc";
 	public static final String LOCATION = "_loc";
 	
@@ -85,7 +86,12 @@ public class QuestRewardKillDenizen extends QuestReward {
 			if (charLocationOnly()) {
 				TileLocation charLoc = character.getCurrentLocation();
 				TileLocation denizenLoc = denizenRc.getCurrentLocation();
-				if (charLoc == null || denizenLoc == null || charLoc.tile == null || denizenLoc.tile == null || charLoc.tile != denizenLoc.tile || charLoc.clearing != denizenLoc.clearing ) continue;
+				if (charLoc == null || denizenLoc == null || charLoc.tile == null || denizenLoc.tile == null || charLoc.tile != denizenLoc.tile || charLoc.clearing != denizenLoc.clearing) continue;
+			}
+			if (charTileOnly()) {
+				TileLocation charLoc = character.getCurrentLocation();
+				TileLocation denizenLoc = denizenRc.getCurrentLocation();
+				if (charLoc == null || denizenLoc == null || charLoc.tile == null || denizenLoc.tile == null || charLoc.tile != denizenLoc.tile) continue;
 			}
 			
 			if (locationOnly()) {
@@ -159,6 +165,9 @@ public class QuestRewardKillDenizen extends QuestReward {
 	}
 	private boolean charLocationOnly() {
 		return getBoolean(KILL_IN_CHAR_LOCATION);
+	}
+	private boolean charTileOnly() {
+		return getBoolean(KILL_IN_CHAR_TILE);
 	}
 	private boolean locationOnly() {
 		return getBoolean(KILL_IN_LOCATION);

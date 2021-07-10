@@ -176,7 +176,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_SUMMONED, "Kill summoned monsters", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_CLONED, "Kill cloned denizens", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_LIMITED, "Kill ONLY those (see above)", FieldType.Boolean));
-				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_IN_CHAR_LOCATION, "Denizen must be in characters location", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_IN_CHAR_LOCATION, "Denizen must be in characters clearing", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_IN_CHAR_TILE, "Denizen must be in characters tile", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_IN_LOCATION, "Denizen must be in location", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
