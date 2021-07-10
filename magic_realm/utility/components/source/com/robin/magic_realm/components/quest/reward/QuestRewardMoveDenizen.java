@@ -226,7 +226,9 @@ public class QuestRewardMoveDenizen extends QuestReward {
 		return getString(DENIZEN_REGEX);
 	}
 	private MoveFromOption getMoveFromOption() {
-		return MoveFromOption.valueOf(getString(MOVE_FROM_OPTION));
+		String moveFromOption = getString(MOVE_FROM_OPTION);
+		if (moveFromOption == null) return MoveFromOption.Everywhere;
+		return MoveFromOption.valueOf(moveFromOption);
 	}
 	private MoveOption getMoveOption() {
 		return MoveOption.valueOf(getString(MOVE_OPTION));
