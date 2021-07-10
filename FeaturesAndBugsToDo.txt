@@ -1,7 +1,7 @@
+---:::FEATURES:::---
+Fog of War: show only tiles adjacent to character(s) and with connection, when on mountain clearing, reveal all adjacent tiles
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): Option: no missile attacks, ?:Sharpness stars are ignored when comparing harm between attacks and parries? Alert?!
 Expansion 1: Parry + Ability: "ParryLikeShield":  Option: no missile attacks
---::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
----:::FEATURES:::---
 Expansion 1: More Ambushes/Throwing Weapons + Ability: Spear, Axe, Dagger?
 Expansion 1: Items: Magic path, Hound, Magic meat, Needful thing
 Expansion 1: Travelers: Doppleganger, Necromancer, Soothsayer
@@ -16,7 +16,14 @@ SuperRealm: Steel Against Magic: A character who is casting a spell and has no a
 0001827: Feature Request - First Edition Optional Rules - Hiring Characters (Solitaire): http://www.nand.it/mr/mr08.html
 0001825: Feature Request - First Edition Optional Rule - Buying on Credit
 0001820: Feature Request: First Edition Optional Rules - Dissolving Doors
+Character abilities:
+	NativeFriendly: Cannot initiate attacks on natives (i.e. can only target battling natives)
+	MagicMove: Fatigue MAGIC to reduce speed on one MOVE chit
+Would be nice to make weapon abilities too:
+	Immobilizing - When it hits all attacks undercut
+	Stunning - Target cannot play an attack next round
 ---:::BUGS:::---
+--::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 Wizard advancement - didn't get MOVE M5->MAGIC III
 0001879: Color magic fatigue counted against character when used in encounter step to energize a spell
 0001869: blocking occurs on start of phase instead of end -> fixed?
@@ -62,13 +69,6 @@ Wizard advancement - didn't get MOVE M5->MAGIC III
 0000667: Watchful Natives should be assigned by owning character
 0000444: Dropping/Trading the DragonFang Necklace
 ---:::IDEAS:::---
-Character abilities:
-	Cannot initiate attacks on natives (i.e. can only target battling natives)
-	Fatigue MAGIC to reduce speed on one MOVE chit
-Would be nice to make weapon abilities too:
-	Immobilizing - When it hits all attacks undercut
-	Stunning - Target cannot play an attack next round
-
 Would like an API for generating a game summary:  without all the nitty gritty details, but still enough info to summarize the game.
 	- Need to track options setup
 	- Need to track character starts
