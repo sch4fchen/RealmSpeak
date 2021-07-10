@@ -68,7 +68,7 @@ public class ClearingDetail {
 		this.magic = new boolean[5];
 		this.side = side;
 		Arrays.fill(magic,false);
-		extras = new ArrayList<String>();
+		extras = new ArrayList<>();
 	}
 	public TileLocation getTileLocation() {
 		return new TileLocation(this);
@@ -276,7 +276,7 @@ public class ClearingDetail {
 	}
 	public ArrayList<PathDetail> getAllConnectedPaths() {
 		ArrayList<PathDetail> p;
-		ArrayList<PathDetail> allPaths = new ArrayList<PathDetail>();
+		ArrayList<PathDetail> allPaths = new ArrayList<>();
 		p = getConnectedPaths();
 		if (p!=null) allPaths.addAll(p);
 		p = getConnectedMapEdges();
@@ -372,7 +372,7 @@ public class ClearingDetail {
 	 * 				clearing's own color magic)
 	 */
 	public ArrayList<ColorMagic> getClearingColorMagic() {
-		ArrayList<ColorMagic> list = new ArrayList<ColorMagic>();
+		ArrayList<ColorMagic> list = new ArrayList<>();
 		if (magic[MAGIC_WHITE]) {
 			list.add(new ColorMagic(ColorMagic.WHITE,true));
 		}

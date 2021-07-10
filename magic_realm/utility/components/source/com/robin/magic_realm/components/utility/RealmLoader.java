@@ -41,9 +41,8 @@ public class RealmLoader {
 		long maxid = master.getMaxId();
 		GamePool pool = new GamePool(data.getGameObjects());
 		ArrayList<GameObject> found = pool.find(keyVals);
-		ArrayList<GameObject> toDelete = new ArrayList<GameObject>();
-		for (Iterator i=data.getGameObjects().iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		ArrayList<GameObject> toDelete = new ArrayList<>();
+		for (GameObject go : data.getGameObjects()) {
 			if (go.getId()<=maxid) { // only consider objects in the master
 				if (!found.contains(go)) {
 					// Make sure it isn't held by...
@@ -73,7 +72,7 @@ public class RealmLoader {
 	public static void main(String[] args) {
 		RealmLoader loader = new RealmLoader();
 		GamePool pool = new GamePool(loader.getData().getGameObjects());
-		ArrayList<String> query = new ArrayList<String>();
+		ArrayList<String> query = new ArrayList<>();
 		query.add("rw_expansion_1");
 		query.add("treasure");
 		String tab = "\t";

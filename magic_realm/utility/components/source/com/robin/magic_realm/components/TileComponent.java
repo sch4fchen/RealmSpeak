@@ -141,8 +141,8 @@ public class TileComponent extends ChitComponent {
 	/**
 	 * Returns a collection of strings representing precise connected edges AFTER rotation (ie., N,S,NE)
 	 */
-	public ArrayList getConnectedEdges() {
-		ArrayList list = new ArrayList();
+	public ArrayList<String> getConnectedEdges() {
+		ArrayList<String> list = new ArrayList<>();
 		for (Iterator i = paths[getFacingIndex()].iterator(); i.hasNext();) {
 			PathDetail path = (PathDetail) i.next();
 			String edge = path.getEdge();
@@ -173,7 +173,7 @@ public class TileComponent extends ChitComponent {
 	 * Returns a collection of PathDetail objects that connect this clearing to another (or null if none)
 	 */
 	public ArrayList<PathDetail> findConnections(ClearingDetail clearing) {
-		ArrayList<PathDetail> connections = new ArrayList<PathDetail>();
+		ArrayList<PathDetail> connections = new ArrayList<>();
 		for (Iterator i = paths[getFacingIndex()].iterator(); i.hasNext();) {
 			PathDetail path = (PathDetail) i.next();
 			if (path.findConnection(clearing) != null) {
@@ -184,7 +184,7 @@ public class TileComponent extends ChitComponent {
 	}
 	
 	public ArrayList<PathDetail> findConnectedMapEdges(ClearingDetail clearing) {
-		ArrayList<PathDetail> connections = new ArrayList<PathDetail>();
+		ArrayList<PathDetail> connections = new ArrayList<>();
 		for (Iterator i = paths[getFacingIndex()].iterator(); i.hasNext();) {
 			PathDetail path = (PathDetail) i.next();
 			if (path.connectsToMapEdge() && path.hasClearing(clearing)) {
@@ -272,8 +272,8 @@ public class TileComponent extends ChitComponent {
 		return gameObject.getThisAttribute("tile_type");
 	}
 
-	public Hashtable getEdgePositionHash() {
-		Hashtable edgePositionHash = new Hashtable();
+	public static Hashtable<String, Point> getEdgePositionHash() {
+		Hashtable<String, Point> edgePositionHash = new Hashtable<>();
 		edgePositionHash.put("S", new Point(TILE_WIDTH >> 1, TILE_HEIGHT));
 		edgePositionHash.put("SW", new Point(TILE_WIDTH >> 3, TILE_HEIGHT - (TILE_HEIGHT >> 2)));
 		edgePositionHash.put("NW", new Point(TILE_WIDTH >> 3, TILE_HEIGHT >> 2));
@@ -511,7 +511,7 @@ public class TileComponent extends ChitComponent {
 	 * @param clearingType If clearingType is null, all clearings are returned
 	 */
 	public ArrayList<ClearingDetail> getClearings(String clearingType) {
-		ArrayList<ClearingDetail> list = new ArrayList<ClearingDetail>();
+		ArrayList<ClearingDetail> list = new ArrayList<>();
 		for (Iterator i = clearings[getFacingIndex()].iterator(); i.hasNext();) {
 			ClearingDetail clearing = (ClearingDetail) i.next();
 			if (clearingType == null || clearing.getType().equals(clearingType)) {
@@ -521,7 +521,7 @@ public class TileComponent extends ChitComponent {
 		return list;
 	}
 	public ArrayList<ClearingDetail> getEnchantedClearings() {
-		ArrayList<ClearingDetail> list = new ArrayList<ClearingDetail>();
+		ArrayList<ClearingDetail> list = new ArrayList<>();
 		for (Iterator i = clearings[ENCHANTED_INDEX].iterator(); i.hasNext();) {
 			ClearingDetail clearing = (ClearingDetail) i.next();
 			list.add(clearing);
@@ -557,7 +557,7 @@ public class TileComponent extends ChitComponent {
 	}
 	
 	public ArrayList<ClearingDetail> getMapEdges() {
-		ArrayList<ClearingDetail> mapEdges = new ArrayList<ClearingDetail>();
+		ArrayList<ClearingDetail> mapEdges = new ArrayList<>();
 		for (Iterator i = paths[getFacingIndex()].iterator(); i.hasNext();) {
 			PathDetail path = (PathDetail) i.next();
 			if (path.connectsToMapEdge()) {
