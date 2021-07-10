@@ -57,7 +57,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 	}
 
 	protected ArrayList<QuestPropertyBlock> createPropertyBlocks() {
-		ArrayList<QuestPropertyBlock> list = new ArrayList<QuestPropertyBlock>();
+		ArrayList<QuestPropertyBlock> list = new ArrayList<>();
 		list.add(new QuestPropertyBlock(QuestReward.REWARD_GROUP, "Reward group", FieldType.StringSelector, RewardGroups));
 		switch (reward.getRewardType()) {
 			case ActivateQuest:
@@ -174,6 +174,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_HIRELINGS, "Kill hirelings", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_COMPANIONS, "Kill companions", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_SUMMONED, "Kill summoned monsters", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_CLONED, "Kill cloned denizens", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_LIMITED, "Kill ONLY those (see above)", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_IN_CHAR_LOCATION, "Denizen must be in characters location", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardKillDenizen.KILL_IN_LOCATION, "Denizen must be in location", FieldType.Boolean));
@@ -342,8 +343,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 		return list;
 	}
 
-	private KeyValuePair[] getAllCompanionKeyValues() {
-		ArrayList<KeyValuePair> companions = new ArrayList<KeyValuePair>();
+	private static KeyValuePair[] getAllCompanionKeyValues() {
+		ArrayList<KeyValuePair> companions = new ArrayList<>();
 		for (String[] section : CompanionEditPanel.COMPANIONS) {
 			boolean first = true;
 			for (String name : section) {
@@ -365,7 +366,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 	}
 
 	private String[] getRelationshipNames() {
-		ArrayList<String> names = new ArrayList<String>();
+		ArrayList<String> names = new ArrayList<>();
 		names.add("Clearing");
 		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
 		for (GameObject go : pool.find("native,rank=HQ")) {
@@ -378,7 +379,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 	}
 	
 	private String[] getGuildNames() {
-		ArrayList<String> names = new ArrayList<String>();
+		ArrayList<String> names = new ArrayList<>();
 		names.add(QuestConstants.CURRENT);
 		names.add(QuestConstants.REMOVE);
 		GamePool pool = new GamePool(realmSpeakData.getGameObjects());

@@ -40,6 +40,7 @@ public class QuestRewardKillDenizen extends QuestReward {
 	public static final String KILL_HIRELINGS = "_kh";
 	public static final String KILL_COMPANIONS = "_kc";
 	public static final String KILL_SUMMONED = "_ks";
+	public static final String KILL_CLONED = "_kcloned";
 	public static final String KILL_LIMITED = "_kl";
 	public static final String KILL_IN_CHAR_LOCATION = "_k_i_cloc";
 	public static final String KILL_IN_LOCATION = "_k_i_loc";
@@ -74,7 +75,10 @@ public class QuestRewardKillDenizen extends QuestReward {
 			if (!killSummoned() && denizen.hasThisAttribute(Constants.SUMMONED)) {
 				continue;
 			}
-			if (killOnlyHirelingsCompanionsSummonedMonsters() && !denizen.hasThisAttribute(Constants.HIRELING) && !denizen.hasThisAttribute(Constants.COMPANION) && !denizen.hasThisAttribute(Constants.SUMMONED)) {
+			if (!killCloned() && denizen.hasThisAttribute(Constants.CLONED)) {
+				continue;
+			}
+			if (killOnlyHirelingsCompanionsSummonedMonsters() && !denizen.hasThisAttribute(Constants.HIRELING) && !denizen.hasThisAttribute(Constants.COMPANION) && !denizen.hasThisAttribute(Constants.SUMMONED)  && !denizen.hasThisAttribute(Constants.CLONED)) {
 				continue;
 			}
 			RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
@@ -143,6 +147,9 @@ public class QuestRewardKillDenizen extends QuestReward {
 	}
 	private Boolean killSummoned() {
 		return getBoolean(KILL_SUMMONED);
+	}
+	private Boolean killCloned() {
+		return getBoolean(KILL_CLONED);
 	}
 	private Boolean killOnlyHirelingsCompanionsSummonedMonsters() {
 		return getBoolean(KILL_LIMITED);

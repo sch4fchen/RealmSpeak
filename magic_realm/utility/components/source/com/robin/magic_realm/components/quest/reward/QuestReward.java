@@ -136,7 +136,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case EnchantTile:				return "Enchants (or unenchants) characters tile and/or tile(s) of a location.";
 				case Exorcise:					return "Exorcise spell is cast";
 				case FindHiddenEnemies:			return "Character finds hidden enemies.";
-				case Guild	:					return "Sets the characters guild and guild level.";
+				case Guild:						return "Sets the characters guild and guild level.";
 				case Heal:						return "Heals action chits of the character.";
 				case Hireling:					return "Add or remove a hireling.";
 				case Information:				return "Displays a dialog with information in it.  This is a good way to inform the player what is happening.";
@@ -149,7 +149,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case MakeWhole:					return "Heals all fatigue and wounds, cancels wither curse and repairs items.";
 				case MarkDenizen:				return "Mark a particular denizen for later reference.  This is useful if you want to make sure a character kills (for example) a particular monster.";
 				case MinorCharacter:			return "Add or remove a Minor Character.  Must create Minor Characters BEFORE creating this reward.";
-				case MoveDenizen	:			return "Move one or several denizen to a location.";
+				case MoveDenizen:				return "Move one or several denizen to a location.";
 				case PathsPassages:				return "Discover Paths and/or Passages in the current clearing or tile.";
 				case Phantasm:					return "Give or remove a phantasm to the character.";
 				case PowerOfThePit:				return "Grants the character a Power of the Pit.";
