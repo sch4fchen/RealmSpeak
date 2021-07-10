@@ -6,6 +6,7 @@ QUEST UPDATE:
 NEW FEATURES:
 # Remove warning when sending no actions and character has Prophecy power
 BUGS/ISSUES:
+# Fix QuestRewardKillDenizen with selected option "Characters location" now only kills denizen in the corresponding clearing
 # Fix game crash after dead hireling is reset (when playing with quests)
 
 Version 1.1.4.4 - Changes since 1.1.4.3
