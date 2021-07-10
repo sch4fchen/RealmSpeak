@@ -30,6 +30,7 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 	
 	public static final String DENIZEN_REGEX = "_drx";
 	public static final String CHARACTERS_CLEARING = "_ch_cl";
+	public static final String CHARACTERS_TILE = "_ch_cl";
 	
 	public QuestRewardRegenerateDenizen(GameObject go) {
 		super(go);
@@ -39,9 +40,14 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 		ArrayList<GameObject> denizens = character.getGameData().getGameObjectsByNameRegex(getDenizenNameRegex());
 		for (GameObject denizen : denizens) {
 			if (denizen != null && denizen.hasThisAttribute("denizen") && !denizen.hasThisAttribute(Constants.CLONED) && !denizen.hasThisAttribute(Constants.COMPANION) && !denizen.hasThisAttribute(Constants.SUMMONED)) {				
-				if (charactersLocationOnly()) {
-					RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
+				RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
+				if (charactersClearingOnly()) {
 					if(denizenRc.getCurrentLocation() == null || character.getCurrentLocation() == null || denizenRc.getCurrentLocation().tile != character.getCurrentLocation().tile || denizenRc.getCurrentLocation().clearing != character.getCurrentLocation().clearing) {
+						continue;
+					}
+				}
+				if (charactersTileOnly()) {
+					if(denizenRc.getCurrentLocation() == null || character.getCurrentLocation() == null || denizenRc.getCurrentLocation().tile != character.getCurrentLocation().tile) {
 						continue;
 					}
 				}
@@ -53,8 +59,11 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 	public String getDescription() {
 		StringBuffer sb = new StringBuffer();
 		sb.append(getDenizenNameRegex() +" is/are regenerated");
-		if (charactersLocationOnly()) {
+		if (charactersClearingOnly()) {
 			sb.append(" in the characters clearing");
+		}
+		if (charactersTileOnly()) {
+			sb.append(" in the characters tile");
 		}
 		sb.append(".");
 		return sb.toString();
@@ -64,7 +73,10 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 		return getString(DENIZEN_REGEX);
 	}
 
-	private Boolean charactersLocationOnly() {
+	private Boolean charactersClearingOnly() {
+		return getBoolean(CHARACTERS_CLEARING);
+	}
+	private Boolean charactersTileOnly() {
 		return getBoolean(CHARACTERS_CLEARING);
 	}
 	
