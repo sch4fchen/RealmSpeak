@@ -83,6 +83,7 @@ public class QuestRewardKillDenizen extends QuestReward {
 				continue;
 			}
 			RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
+			if (denizenRc == null) continue;
 			if (charLocationOnly()) {
 				TileLocation charLoc = character.getCurrentLocation();
 				TileLocation denizenLoc = denizenRc.getCurrentLocation();
