@@ -57,7 +57,7 @@ public class WindowLayoutManager {
 	}
 	// Key pattern:   <Layout#>_<Window><mod>
 	// Value will be:   <x>_<y>_<width>_<height>
-	private String getKeyFor(int layoutNumber,String windowName,int modifier) {
+	private static String getKeyFor(int layoutNumber,String windowName,int modifier) {
 		StringBuilder key = new StringBuilder();
 		key.append(layoutNumber);
 		key.append("_");
@@ -122,7 +122,7 @@ public class WindowLayoutManager {
 		return preferenceManager.getInt(LAST_LAYOUT); // returns 0 if none found
 	}
 	private void generateMenus() {
-		getters = new Hashtable<Integer,LayoutMenuItem>();
+		getters = new Hashtable<>();
 		clearCustomLayoutsItem = new JMenuItem("Clear All Custom Layouts");
 		clearCustomLayoutsItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
@@ -163,7 +163,7 @@ public class WindowLayoutManager {
 	}
 	private boolean applyLayout(int layoutNumber) {
 		int windowsRestored = 0;
-		Hashtable<String,Integer> instanceCount = new Hashtable<String,Integer>();
+		Hashtable<String,Integer> instanceCount = new Hashtable<>();
 		Rectangle mr = getLayout(layoutNumber,MAIN_WINDOW,0);
 		if (mr!=null) {
 			mainFrame.setLocation(mr.x,mr.y);
@@ -194,7 +194,7 @@ public class WindowLayoutManager {
 	}
 	private boolean captureCurrentLayout(int layoutNumber,String layoutName) {
 		int windowsCaptured = 0;
-		Hashtable<String,Integer> instanceCount = new Hashtable<String,Integer>();
+		Hashtable<String,Integer> instanceCount = new Hashtable<>();
 		for (Component component:desktop.getComponents()) {
 			if (!(component instanceof RealmSpeakInternalFrame)) continue;
 			RealmSpeakInternalFrame frame = (RealmSpeakInternalFrame)component;

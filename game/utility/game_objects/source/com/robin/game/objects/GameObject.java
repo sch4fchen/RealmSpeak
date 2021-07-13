@@ -1020,12 +1020,11 @@ public class GameObject extends ModifyableObject implements Serializable {
 	public void _copyAttributeBlockFrom(GameObject source,String blockName) {
 		stopUncommitted();
 		if (source.hasAttributeBlock(blockName)) {
-			OrderedHashtable block = source.getAttributeBlock(blockName);
-			for (Iterator i=block.keySet().iterator();i.hasNext();) {
-				String key = (String)i.next();
+			OrderedHashtable<String, Object> block = source.getAttributeBlock(blockName);
+			for (String key : block.keySet()) {
 				Object val = block.get(key);
 				if (val instanceof ArrayList) {
-					ArrayList copy = new ArrayList((ArrayList)val);
+					ArrayList<String> copy = new ArrayList<>((ArrayList<String>)val);
 					_setAttributeList(blockName,key,copy);
 				}
 				else {
@@ -1040,12 +1039,12 @@ public class GameObject extends ModifyableObject implements Serializable {
 	
 	public void copyAttributeBlock(String fromBlockName,String toBlockName) {
 		// This doesn't use committed block or GameObjectChange - it just uses the base setAttribute and setAttributeList methods, so it will still get tracked
-		OrderedHashtable block = getAttributeBlock(fromBlockName);
+		OrderedHashtable<String, Object> block = getAttributeBlock(fromBlockName);
 		for (Object ok:block.keySet()) {
 			String key = (String)ok;
 			Object val = block.get(key);
 			if (val instanceof ArrayList) {
-				ArrayList copy = new ArrayList((ArrayList)val);
+				ArrayList<String> copy = new ArrayList<>((ArrayList<String>)val);
 				setAttributeList(toBlockName,key,copy);
 			}
 			else {

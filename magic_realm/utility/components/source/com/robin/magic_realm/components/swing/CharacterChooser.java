@@ -46,7 +46,7 @@ public class CharacterChooser extends AggressiveDialog {
 	private ArrayList<GameObject> availableMagicUsers;
 	private JLabel characterDisplay;
 	private CharacterListModel listModel;
-	private JList characterList;
+	private JList<CharacterListModel> characterList;
 	
 	private JCheckBox showRegularOption;
 	private JCheckBox showCustomOption;
@@ -70,9 +70,9 @@ public class CharacterChooser extends AggressiveDialog {
 		setLocationRelativeTo(frame);
 	}
 	private void buildLists() {
-		availableCharacterObjects = new ArrayList<GameObject>();
-		availableFighters = new ArrayList<GameObject>();
-		availableMagicUsers = new ArrayList<GameObject>();
+		availableCharacterObjects = new ArrayList<>();
+		availableFighters = new ArrayList<>();
+		availableMagicUsers = new ArrayList<>();
 		for (GameObject go:allCharacterObjects) {
 			boolean custom = go.hasThisAttribute(Constants.CUSTOM_CHARACTER);
 			boolean okayToAdd = false;
@@ -106,7 +106,7 @@ public class CharacterChooser extends AggressiveDialog {
 		
 		JPanel left = new JPanel(new BorderLayout());
 		listModel = new CharacterListModel();
-		characterList = new JList(listModel);
+		characterList = new JList<CharacterListModel>(listModel);
 		characterList.setBackground(new Color(200,255,255));
 		left.add(new JScrollPane(characterList),"Center");
 		showRegularOption = new JCheckBox("Regular",true);
@@ -190,7 +190,7 @@ public class CharacterChooser extends AggressiveDialog {
 			public void actionPerformed(ActionEvent ev) {
 				int index = characterList.getSelectedIndex();
 				if (index>=0) {
-					chosenCharacter = (GameObject)availableCharacterObjects.get(index);
+					chosenCharacter = availableCharacterObjects.get(index);
 					cleanExit();
 				}
 			}
@@ -224,7 +224,7 @@ public class CharacterChooser extends AggressiveDialog {
 		int index = characterList.getSelectedIndex();
 		GameObject go = null;
 		if (index>=0) {
-			go = (GameObject)availableCharacterObjects.get(index);
+			go = availableCharacterObjects.get(index);
 		}
 		if (go!=null) {
 			characterDisplay.setIcon(getCharacterImage(go));
@@ -236,13 +236,13 @@ public class CharacterChooser extends AggressiveDialog {
 		}
 		System.gc();
 	}
-	private class CharacterListModel extends AbstractListModel {
+	protected class CharacterListModel extends AbstractListModel {
 		public int getSize() {
 			return availableCharacterObjects==null?0:availableCharacterObjects.size();
 		}
 		public Object getElementAt(int index) {
 			if (index<getSize()) {
-				GameObject go = (GameObject)availableCharacterObjects.get(index);
+				GameObject go = availableCharacterObjects.get(index);
 				return go.getName();
 			}
 			return null;
@@ -256,7 +256,7 @@ public class CharacterChooser extends AggressiveDialog {
 	private class CharacterListCellRenderer extends DefaultListCellRenderer {
 		public Component getListCellRendererComponent(JList list,Object value,int index,boolean isSelected,boolean cellHasFocus) {
 			super.getListCellRendererComponent(list,value,index,isSelected,cellHasFocus);
-			GameObject go = (GameObject)availableCharacterObjects.get(index);
+			GameObject go = availableCharacterObjects.get(index);
 			setIcon(go.hasThisAttribute("fighter")?fighterIcon:magicuserIcon);
 			setFont(go.hasThisAttribute(Constants.CUSTOM_CHARACTER)?ITALIC:NORMAL);
 			return this;

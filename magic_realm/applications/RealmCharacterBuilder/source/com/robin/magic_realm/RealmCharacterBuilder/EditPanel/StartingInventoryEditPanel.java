@@ -126,7 +126,7 @@ public class StartingInventoryEditPanel extends AdvantageEditPanel {
 		}
 	}
 	private void pickTreasure() {
-		ArrayList query = new ArrayList();
+		ArrayList<String> query = new ArrayList<>();
 		query.add("treasure");
 		query.add("!treasure_within_treasure");
 		query.add("!book");
@@ -139,7 +139,7 @@ public class StartingInventoryEditPanel extends AdvantageEditPanel {
 		}
 	}
 	private void pickHorse() {
-		ArrayList query = new ArrayList();
+		ArrayList<String> query = new ArrayList<>();
 		query.add("original_game"); // original game only for now
 		query.add("horse");
 		GameObject go = pickGameObject(query,"Choose a Horse:");
@@ -147,10 +147,10 @@ public class StartingInventoryEditPanel extends AdvantageEditPanel {
 			extraInventory = new SteedChitComponent(go);
 		}
 	}
-	private GameObject pickGameObject(ArrayList query,String title) {
+	private GameObject pickGameObject(ArrayList<String> query,String title) {
 		GamePool pool = new GamePool(magicRealmData.getGameObjects());
 		ArrayList<GameObject> list = pool.find(query);
-		ArrayList<GameObject> remove = new ArrayList<GameObject>();
+		ArrayList<GameObject> remove = new ArrayList<>();
 		for(GameObject go:list) {
 			if (go.getHoldCount()>0) {
 				remove.add(go);

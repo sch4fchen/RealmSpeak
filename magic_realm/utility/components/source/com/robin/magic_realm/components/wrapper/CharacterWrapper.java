@@ -5155,7 +5155,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 */
 	public ArrayList<ColorMagic> getInfiniteColorSources() {
 		// Get all clearing and color sources
-		ArrayList<ColorMagic> color = new ArrayList<ColorMagic>();
+		ArrayList<ColorMagic> color = new ArrayList<>();
 		TileLocation tl = getCurrentLocation();
 		boolean inClearing = tl!=null && tl.hasClearing() && !tl.isBetweenClearings();
 		if (inClearing) {
@@ -5251,7 +5251,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		 * - Transmorphed into a flying monster (this works)
 		 * - Already flying
 		 */
-		ArrayList<StrengthChit> list = new ArrayList<StrengthChit>();
+		ArrayList<StrengthChit> list = new ArrayList<>();
 		
 		GameObject transmorph = getTransmorph();
 		if (transmorph!=null && transmorph.hasThisAttribute("flying")) {
@@ -5279,8 +5279,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 			
 			// Check fly chits
-			for (Iterator i=getFlyChits().iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : getFlyChits()) {
 				if (rc.isFlyChit()) {
 					FlyChitComponent flyChit = (FlyChitComponent)rc;
 					if (flyChit.getOwnerId()==null) { // for now, only allow fly chits that are not OWNED (not malicious)
@@ -5389,8 +5388,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 			
 			// Land all followers
-			for (Iterator i=getActionFollowers().iterator();i.hasNext();) {
-				CharacterWrapper follower = (CharacterWrapper)i.next();
+			for (CharacterWrapper follower : getActionFollowers()) {
 				follower.moveToLocation(frame, current);
 			}
 			
@@ -5443,8 +5441,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		ClearingUtility.moveToLocation(getGameObject(),null);
 		
 		// Cancel all spells
-		for (Iterator i=getAliveSpells().iterator();i.hasNext();) {
-			SpellWrapper spell = (SpellWrapper)i.next();
+		for (SpellWrapper spell : getAliveSpells()) {
 			spell.expireSpell(); // Restored monsters will be put to location null, which is out of the game
 		}
 		
@@ -5554,8 +5551,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		ClearingUtility.moveToLocation(getGameObject(),null);
 		
 		// Mark all chits active again
-		for (Iterator i=getAllChits().iterator();i.hasNext();) {
-			CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+		for (CharacterActionChitComponent chit : getAllChits()) {
 			chit.makeActive();
 		}
 		
@@ -5613,13 +5609,13 @@ public class CharacterWrapper extends GameObjectWrapper {
 			actionIdHash.put(DayAction.getDayAction(ActionId.RemSpell).getCode(),ActionId.RemSpell);
 		}
 		if (action!=null) {
-			ActionId t1 = (ActionId)actionIdHash.get(action);
+			ActionId t1 = actionIdHash.get(action);
 			if (t1==null) { // try 3 chars
-				t1 = (ActionId)actionIdHash.get(action.substring(0,3));
+				t1 = actionIdHash.get(action.substring(0,3));
 				if (t1==null) { // try 2 chars
-					t1 = (ActionId)actionIdHash.get(action.substring(0,2));
+					t1 = actionIdHash.get(action.substring(0,2));
 					if (t1==null) { // try 1
-						t1 = (ActionId)actionIdHash.get(action.substring(0,1));
+						t1 = actionIdHash.get(action.substring(0,1));
 					}
 				}
 			}
@@ -5642,7 +5638,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * @return			Collection of SpellWrapper objects representing living (cast) spells
 	 */
 	public ArrayList<SpellWrapper> getAliveSpells() {
-		ArrayList<SpellWrapper> list = new ArrayList<SpellWrapper>();
+		ArrayList<SpellWrapper> list = new ArrayList<>();
 		ArrayList<GameObject> spells = getAllSpells();
 		for (GameObject go:spells) {
 			SpellWrapper spell = new SpellWrapper(go);
@@ -5657,10 +5653,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		// check inventory (might be a spell being cast from artifact/book)
 		for (GameObject treasure:getActivatedTreasureObjects()) {
-			Collection awakenedSpells = SpellUtility.getSpells(treasure,Boolean.TRUE,false,true);
+			Collection<GameObject> awakenedSpells = SpellUtility.getSpells(treasure,Boolean.TRUE,false,true);
 			if (awakenedSpells.size()>0) {
-				for (Iterator n=awakenedSpells.iterator();n.hasNext();) {
-					GameObject go = (GameObject)n.next();
+				for (GameObject go : awakenedSpells) {
 					SpellWrapper spell = new SpellWrapper(go);
 					if (spell.isAlive()) {
 						list.add(spell);
@@ -5690,7 +5685,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public List<String> getBattlingNativeGroups() {
 		ArrayList<String> list = new ArrayList<>();
-		Hashtable hash = getGameObject().getAttributeBlock(BATTLING_NATIVE_BLOCK);
+		Hashtable<String, Object> hash = getGameObject().getAttributeBlock(BATTLING_NATIVE_BLOCK);
 		if (hash!=null) {
 			list.addAll(hash.keySet());
 			Collections.sort(list);
@@ -5857,9 +5852,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public ArrayList<RealmComponent> getAllHirelings() {
 		GameData data = getGameObject().getGameData();
 		ArrayList<RealmComponent> list = new ArrayList<>();
-		OrderedHashtable hash = getGameObject().getAttributeBlock(HIRELING_BLOCK);
-		for (Iterator i=hash.keySet().iterator();i.hasNext();) {
-			String id = (String)i.next();
+		OrderedHashtable<String, Object> hash = getGameObject().getAttributeBlock(HIRELING_BLOCK);
+		for (String id : hash.keySet()) {
 			list.add(RealmComponent.getRealmComponentFromId(data,id.substring(1)));
 		}
 		return list;
@@ -5904,9 +5898,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * @return		true if MOVE actions have been recorded for today
 	 */
 	public boolean hasMoveActionsToday() {
-		Collection actions = getCurrentActions(true);
-		for (Iterator i=actions.iterator();i.hasNext();) {
-			String action = (String)i.next();
+		Collection<String> actions = getCurrentActions(true);
+		for (String action : actions) {
 			if (action.startsWith("M-")) {
 				return true;
 			}
@@ -5928,13 +5921,13 @@ public class CharacterWrapper extends GameObjectWrapper {
 		addListItem(MOVE_HISTORY_DAY_KEY,getCurrentDayKey());
 	}
 	public boolean hasMoveHistory() {
-		Collection c = getList(MOVE_HISTORY);
+		Collection<String> c = getList(MOVE_HISTORY);
 		return c!=null && !c.isEmpty();
 	}
 	public ArrayList<String> getMoveHistory() {
 		return getList(MOVE_HISTORY);
 	}
-	public ArrayList getMoveHistoryDayKeys() {
+	public ArrayList<String> getMoveHistoryDayKeys() {
 		return getList(MOVE_HISTORY_DAY_KEY);
 	}
 	public void addSpellExtraAction(String action,GameObject spellObject) {
@@ -5942,9 +5935,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		addListItem(SPELL_EXTRA_ACTION_SOURCE,spellObject.getStringId());
 	}
 	public void removeSpellExtraAction(String action) {
-		ArrayList list = getList(SPELL_EXTRA_ACTIONS);
+		ArrayList<String> list = getList(SPELL_EXTRA_ACTIONS);
 		if (list!=null) {
-			list = new ArrayList(list);
+			list = new ArrayList<>(list);
 			int n = list.indexOf(action);
 			if (n>=0) {
 				list.remove(n);
@@ -5959,17 +5952,16 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public ArrayList<String> getSpellExtras() {
 		ArrayList<String> list = getList(SPELL_EXTRA_ACTIONS);
 		if (list!=null && !list.isEmpty()) {
-			return new ArrayList(list);
+			return new ArrayList<>(list);
 		}
 		return null;
 	}
 	public ArrayList<GameObject> getSpellExtraSources() {
-		ArrayList list = getList(SPELL_EXTRA_ACTION_SOURCE);
+		ArrayList<String> list = getList(SPELL_EXTRA_ACTION_SOURCE);
 		if (list!=null && !list.isEmpty()) {
 			GameData data = getGameObject().getGameData();
 			ArrayList<GameObject> ret = new ArrayList<>();
-			for (Iterator i=list.iterator();i.hasNext();) {
-				String id = (String)i.next();
+			for (String id : list) {
 				GameObject go = data.getGameObject(Long.valueOf(id));
 				ret.add(go);
 			}
@@ -5994,9 +5986,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return null;
 	}
 	public ArrayList<GameObject> inactivateAllBelongings() {
-		ArrayList<GameObject> list = new ArrayList<GameObject>();
-		for (Iterator i=getActiveInventory().iterator();i.hasNext();) {
-			GameObject item = (GameObject)i.next();
+		ArrayList<GameObject> list = new ArrayList<>();
+		for (GameObject item : getActiveInventory()) {
 			if (TreasureUtility.doDeactivate(null,this,item)) {
 				list.add(item);
 			}

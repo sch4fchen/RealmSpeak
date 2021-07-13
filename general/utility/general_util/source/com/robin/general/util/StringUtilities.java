@@ -136,7 +136,7 @@ public class StringUtilities {
 		return ret;
 	}
 	public static String intArrayToString(int[] array,String delim) {
-		ArrayList list = new ArrayList();
+		ArrayList<Integer> list = new ArrayList<>();
 		for (int i=0;i<array.length;i++) {
 			list.add(new Integer(array[i]));
 		}

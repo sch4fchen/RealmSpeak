@@ -130,7 +130,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	 * Finds the spellcaster for a spell
 	 */
 	private CharacterWrapper findSpellCasterToCastSpell() {
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		GameObject caster = getGameObject().getHeldBy();
 		GameObject lastNonNull = caster; 
 		while (caster!=null && !caster.hasThisAttribute("character") && !Constants.STORE_SPELLCAST.equals(caster.getThisAttribute(Constants.STORE))) {
@@ -372,7 +372,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		}
 		
 		String removeId = target.getStringId();
-		ArrayList targetids = getList(TARGET_IDS);
+		ArrayList<String> targetids = getList(TARGET_IDS);
 		if (targetids.contains(removeId)) {
 			targetids.remove(removeId);
 			return true;
@@ -431,10 +431,10 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		}
 	}
 	public RealmComponent getFirstTarget() {
-		ArrayList targetids = getList(TARGET_IDS);
+		ArrayList<String> targetids = getList(TARGET_IDS);
 		if(targetids == null)return null;
 		
-		Optional first = targetids.stream().findFirst();		
+		Optional<String> first = targetids.stream().findFirst();		
 		GameObject target = getGameObject().getGameData().getGameObject(first.get());
 		return RealmComponent.getRealmComponent(target);
 	}
@@ -456,14 +456,14 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 						.mapToObj(id -> getGameObject().getGameData().getGameObject(id))
 						.map(go -> RealmComponent.getRealmComponent(go))
 						.collect(Collectors.toCollection(ArrayList::new))
-				: new ArrayList<RealmComponent>();
+				: new ArrayList<>();
 	}
 	/**
 	 * This returns the number of actual targets.  If a single target is listed more than once (i.e., Stones Fly), it still is only
 	 * counted once.
 	 */
 	public int getTargetCount() {
-		ArrayList targetids = getList(TARGET_IDS);
+		ArrayList<String> targetids = getList(TARGET_IDS);
 		
 		return targetids != null
 				? (int) targetids.stream().distinct().count()
@@ -472,7 +472,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	
 	public boolean targetsGameObject(GameObject go) {
 		boolean ret = false;
-		ArrayList targetids = getList(TARGET_IDS);
+		ArrayList<String> targetids = getList(TARGET_IDS);
 		if (targetids!=null) {
 			ret = targetids.contains(go.getStringId());
 		}
@@ -486,7 +486,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	 * @return		true if any one component is targeted
 	 */
 	public boolean targetsRealmComponents(Collection<?> components) {
-		ArrayList targetids = getList(TARGET_IDS);
+		ArrayList<String> targetids = getList(TARGET_IDS);
 		if(targetids == null) return false;
 		
 		return components.stream()
@@ -495,14 +495,14 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	}
 	
 	public ArrayList<RealmComponent> getTargetedRealmComponents(Collection<?> components) {
-		ArrayList targetids = getList(TARGET_IDS);
+		ArrayList<String> targetids = getList(TARGET_IDS);
 		
 		return targetids != null
 				? components.stream()
 						.map(c -> (RealmComponent)c)
 						.filter(rc -> targetids.contains(rc.getGameObject().getStringId()))
 						.collect(Collectors.toCollection(ArrayList::new))
-				: new ArrayList<RealmComponent>();
+				: new ArrayList<>();
 	}
 	
 	/**

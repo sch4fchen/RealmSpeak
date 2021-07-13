@@ -465,9 +465,9 @@ the Appearance Chart, he instantly becomes unhired.
 		}
 		character.getGameObject().add(summon); // so that you don't have to assign as a follower right away
 		
-		ArrayList list = spell.getGameObject().getThisAttributeList("created");
+		ArrayList<String> list = spell.getGameObject().getThisAttributeList("created");
 		if (list==null) {
-			list = new ArrayList();
+			list = new ArrayList<>();
 		}
 		
 		if(createdMonsters == null){

@@ -166,10 +166,10 @@ public class CharacterTradeFrame extends JFrame {
 	private void sendMessage(String val,int gold) {
 		sendMessage(val,null,gold);
 	}
-	private void sendMessage(String val,Collection gameObjects) {
+	private void sendMessage(String val,Collection<GameObject> gameObjects) {
 		sendMessage(val,gameObjects,-1);
 	}
-	private void sendMessage(String val,Collection gameObjects,int gold) {
+	private void sendMessage(String val,Collection<GameObject> gameObjects,int gold) {
 		RealmDirectInfoHolder info = new RealmDirectInfoHolder(gameHandler.getClient().getGameData());
 		info.setCommand(val);
 		if (RealmDirectInfoHolder.TRADE_GOLD.equals(val) && gold>=0) {
@@ -180,7 +180,7 @@ public class CharacterTradeFrame extends JFrame {
 		}
 		gameHandler.getClient().sendInfoDirect(otherClientName,info.getInfo());
 	}
-	private void sendMessageStrings(String val,Collection strings) {
+	private void sendMessageStrings(String val,Collection<String> strings) {
 		RealmDirectInfoHolder info = new RealmDirectInfoHolder(gameHandler.getClient().getGameData());
 		info.setCommand(val);
 		if (strings!=null) {
@@ -209,10 +209,10 @@ public class CharacterTradeFrame extends JFrame {
 	public void removeInventory(ArrayList<GameObject> in) {
 		otherPanel.removeInventory(in);
 	}
-	public void addDiscoveries(Collection in) {
+	public void addDiscoveries(Collection<String> in) {
 		otherPanel.addDiscoveries(in);
 	}
-	public void removeDiscoveries(Collection in) {
+	public void removeDiscoveries(Collection<String> in) {
 		otherPanel.removeDiscoveries(in);
 	}
 	public void setGold(int gold) {
@@ -243,9 +243,8 @@ public class CharacterTradeFrame extends JFrame {
 		gameHandler.submitChanges();
 		gameHandler.updateCharacterFrames();
 	}
-	public void updateDiscoveries(CharacterWrapper character,ArrayList<String> newDiscoveries) {
-		for (Iterator i=newDiscoveries.iterator();i.hasNext();) {
-			String discovery = (String)i.next();
+	public static void updateDiscoveries(CharacterWrapper character,ArrayList<String> newDiscoveries) {
+		for (String discovery : newDiscoveries) {
 			if (discovery.startsWith(TREASURE_LOCATION)) {
 				String tl = discovery.substring(TREASURE_LOCATION.length());
 				String site = null;
@@ -307,7 +306,7 @@ public class CharacterTradeFrame extends JFrame {
 		private RealmObjectPanel view;
 		
 		private ArrayList<String> discoveries;
-		private JList discoveryList;
+		private JList<DiscoveryListModel> discoveryList;
 		private DiscoveryListModel discoveryModel;
 		private JButton shareButton;
 		private JButton unshareButton;
@@ -316,7 +315,7 @@ public class CharacterTradeFrame extends JFrame {
 		
 		public TradePanel(String clientName,CharacterWrapper character,boolean useApprove) {
 			super(new BorderLayout());
-			onTheTable = new ArrayList<GameObject>();
+			onTheTable = new ArrayList<>();
 			setBorder(BorderFactory.createLoweredBevelBorder());
 			this.character = character;
 			JLabel title = new JLabel(this.character.getGameObject().getName());
@@ -330,9 +329,9 @@ public class CharacterTradeFrame extends JFrame {
 			view = new RealmObjectPanel(hasControl,false);
 			add(new JScrollPane(view),"Center");
 			
-			discoveries = new ArrayList<String>();
+			discoveries = new ArrayList<>();
 			discoveryModel = new DiscoveryListModel(discoveries);
-			discoveryList = new JList(discoveryModel);
+			discoveryList = new JList<DiscoveryListModel>(discoveryModel);
 			discoveryList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 			add(new JScrollPane(discoveryList),"East");
 			
@@ -448,9 +447,8 @@ public class CharacterTradeFrame extends JFrame {
 			}
 		}
 		private void addInventory() {
-			ArrayList unpresentedInventory = new ArrayList();
-			for (Iterator i=character.getInventory().iterator();i.hasNext();) {
-				GameObject item = (GameObject)i.next();
+			ArrayList<GameObject> unpresentedInventory = new ArrayList<>();
+			for (GameObject item : character.getInventory()) {
 				Inventory inventory = new Inventory(item);
 				if (inventory.canDrop()) {
 					unpresentedInventory.add(item);
@@ -463,7 +461,7 @@ public class CharacterTradeFrame extends JFrame {
 				chooser.setVisible(true);
 				ArrayList<GameObject> newInventory = chooser.getSelectedObjects();
 				if (newInventory!=null && !newInventory.isEmpty()) {
-					ArrayList<GameObject> mustDeactivate = new ArrayList<GameObject>();
+					ArrayList<GameObject> mustDeactivate = new ArrayList<>();
 					for (GameObject go:newInventory) {
 						if (go.hasThisAttribute(Constants.MUST_DEACTIVATE) && go.hasThisAttribute(Constants.ACTIVATED)) {
 							mustDeactivate.add(go);
@@ -487,7 +485,7 @@ public class CharacterTradeFrame extends JFrame {
 		private void removeInventory() {
 			GameObject[] selGo = view.getSelectedGameObjects();
 			if (selGo.length>0) {
-				ArrayList<GameObject> toRemove = new ArrayList<GameObject>(Arrays.asList(selGo));
+				ArrayList<GameObject> toRemove = new ArrayList<>(Arrays.asList(selGo));
 				removeInventory(toRemove);
 				sendMessage(RealmDirectInfoHolder.TRADE_REMOVE_OBJECTS,toRemove);
 			}
@@ -504,13 +502,12 @@ public class CharacterTradeFrame extends JFrame {
 			CharacterWrapper from = activeTransfer?active:include;
 			CharacterWrapper to = activeTransfer?include:active;
 			
-			ArrayList<String> dees = new ArrayList<String>();
+			ArrayList<String> dees = new ArrayList<>();
 			
 			// Treasure Locations
-			ArrayList temp = from.getCurrentClearingKnownTreasureLocations(true);
+			ArrayList<String> temp = from.getCurrentClearingKnownTreasureLocations(true);
 			if (!temp.isEmpty()) {
-				for (Iterator i=temp.iterator();i.hasNext();) {
-					String tl = (String)i.next();
+				for (String tl : temp) {
 					String test = tl;
 					int paren = test.indexOf(" ( + ");
 					if (paren>=0) {
@@ -525,8 +522,7 @@ public class CharacterTradeFrame extends JFrame {
 			// Hidden Paths
 			temp = from.getCurrentClearingKnownHiddenPaths();
 			if (!temp.isEmpty()) {
-				for (Iterator i=temp.iterator();i.hasNext();) {
-					String hp = (String)i.next();
+				for (String hp : temp) {
 					if (!to.hasHiddenPathDiscovery(hp)) {
 						dees.add(HIDDEN_PATH+hp);
 					}
@@ -536,8 +532,7 @@ public class CharacterTradeFrame extends JFrame {
 			// Secret Passages
 			temp = from.getCurrentClearingKnownSecretPassages();
 			if (!temp.isEmpty()) {
-				for (Iterator i=temp.iterator();i.hasNext();) {
-					String sp = (String)i.next();
+				for (String sp : temp) {
 					if (!to.hasSecretPassageDiscovery(sp)) {
 						dees.add(SECRET_PASSAGE+sp);
 					}
@@ -547,8 +542,7 @@ public class CharacterTradeFrame extends JFrame {
 			// Gates and Guilds
 			temp = from.getCurrentClearingKnownOtherChits();
 			if (!temp.isEmpty()) {
-				for (Iterator i=temp.iterator();i.hasNext();) {
-					String sp = (String)i.next();
+				for (String sp : temp) {
 					if (!to.hasSecretPassageDiscovery(sp)) {
 						dees.add(GATE+sp);
 					}
@@ -569,14 +563,14 @@ public class CharacterTradeFrame extends JFrame {
 				}
 			}
 		}
-		public void addDiscoveries(Collection newDiscoveries) {
+		public void addDiscoveries(Collection<String> newDiscoveries) {
 			discoveries.addAll(newDiscoveries);
 			Collections.sort(discoveries);
 			discoveryModel.fireChange();
 			discoveryList.repaint();
 		}
 		public void removeDiscoveries() {
-			ArrayList toRemove = new ArrayList();
+			ArrayList<String> toRemove = new ArrayList<>();
 			int[] sel = discoveryList.getSelectedIndices();
 			for (int i=0;i<sel.length;i++) {
 				toRemove.add(discoveries.get(sel[i]));
@@ -586,7 +580,7 @@ public class CharacterTradeFrame extends JFrame {
 				sendMessageStrings(RealmDirectInfoHolder.TRADE_REMOVE_DISC,toRemove);
 			}
 		}
-		public void removeDiscoveries(Collection toRemove) {
+		public void removeDiscoveries(Collection<String> toRemove) {
 			discoveries.removeAll(toRemove);
 			discoveryModel.fireChange();
 			discoveryList.repaint();
@@ -617,8 +611,8 @@ public class CharacterTradeFrame extends JFrame {
 	}
 	
 	private class DiscoveryListModel extends AbstractListModel {
-		private ArrayList data;
-		public DiscoveryListModel(ArrayList data) {
+		private ArrayList<String> data;
+		public DiscoveryListModel(ArrayList<String> data) {
 			this.data = data;
 		}
 		public int getSize() {
