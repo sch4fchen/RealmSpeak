@@ -4693,18 +4693,17 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public ArrayList<TileLocation> getClearingPlot() {
 		return clearingPlot;
 	}
-	public void setClearingPlot(ArrayList clearingPlot) {
+	public void setClearingPlot(ArrayList<TileLocation> clearingPlot) {
 		this.clearingPlot = clearingPlot;
 	}
 	public void resetClearingPlot() {
 		clearingPlot = null;
 	}
 	public void rebuildClearingPlot() {
-		clearingPlot = new ArrayList();
+		clearingPlot = new ArrayList<>();
 		clearingPlot.add(getCurrentLocation());
 
-		for (Iterator i=getCurrentActions().iterator();i.hasNext();) {
-			String action = (String)i.next();
+		for (String action : getCurrentActions()) {
 			if (action.indexOf('-')>0) {
 				TileLocation tl = ClearingUtility.deduceLocationFromAction(getGameObject().getGameData(),action);
 				clearingPlot.add(tl);
@@ -4724,7 +4723,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (hasCurse(Constants.WITHER)) {
 			removeCurse(Constants.WITHER);
 		}
-		ArrayList<CharacterActionChitComponent> chitsToHeal = new ArrayList<CharacterActionChitComponent>();
+		ArrayList<CharacterActionChitComponent> chitsToHeal = new ArrayList<>();
 		chitsToHeal.addAll(getFatiguedChits());
 		chitsToHeal.addAll(getWoundedChits());
 		for (CharacterActionChitComponent chit : chitsToHeal) {
@@ -4732,8 +4731,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 	}
 	public void doHealWoundsToFatigue() {
-		for (Iterator i=getWoundedChits().iterator();i.hasNext();) {
-			CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+		for (CharacterActionChitComponent chit : getWoundedChits()) {
 			if (chit.getEffortAsterisks()==0) {
 				chit.makeActive();
 				RealmUtility.reportChitFatigue(this,chit,"Healed chit to active: ");
@@ -6451,8 +6449,8 @@ public class CharacterWrapper extends GameObjectWrapper {
     	removeListItem(QUEST_ID,quest.getGameObject().getStringId());
     }
     public ArrayList<GameObject> getAllQuestObjects() {
-    	ArrayList<GameObject> quests = new ArrayList<GameObject>();
-    	ArrayList list = getList(QUEST_ID);
+    	ArrayList<GameObject> quests = new ArrayList<>();
+    	ArrayList<String> list = getList(QUEST_ID);
     	if (list!=null) {
     		for(Object o:list) {
     			String id = (String)o;
@@ -6463,7 +6461,7 @@ public class CharacterWrapper extends GameObjectWrapper {
     	return quests;
     }
     public ArrayList<Quest> getAllQuests() {
-    	ArrayList<Quest> quests = new ArrayList<Quest>();
+    	ArrayList<Quest> quests = new ArrayList<>();
     	for(GameObject go:getAllQuestObjects()) {
     		quests.add(new Quest(go));
     	}
@@ -6471,7 +6469,7 @@ public class CharacterWrapper extends GameObjectWrapper {
     }
     public ArrayList<Quest> getAllNonEventQuests() {
 		ArrayList<Quest> quests = getAllQuests();
-		ArrayList<Quest> personalQuests = new ArrayList<Quest>();
+		ArrayList<Quest> personalQuests = new ArrayList<>();
 		for (Quest quest : quests) {
 			if (!quest.isEvent()) {
 				personalQuests.add(quest);
@@ -6480,7 +6478,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return personalQuests;
     }
     public int getQuestCount() {
-    	ArrayList list = getList(QUEST_ID);
+    	ArrayList<String> list = getList(QUEST_ID);
     	return list==null?0:list.size();
     }
 	public boolean testQuestRequirements(JFrame parentFrame) {
@@ -6573,7 +6571,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			ArrayList<RealmComponent> clearingComponents = current.clearing.getClearingComponents();
 			for (RealmComponent monster : clearingComponents) {
 				if (monster.isCharacter()) continue;
-				ArrayList<RealmComponent> characterCanControl = new ArrayList<RealmComponent>();
+				ArrayList<RealmComponent> characterCanControl = new ArrayList<>();
 				for (RealmComponent characterRc : clearingComponents) {
 					if (!characterRc.isCharacter()) continue;
 						for (Object monsterType : characterRc.getControllableMonstersEnhanced() ) {

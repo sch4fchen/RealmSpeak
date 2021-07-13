@@ -2038,7 +2038,7 @@ public class CombatFrame extends JFrame {
 				if (theTarget.getGameObject().hasThisAttribute(Constants.NUMBER)) {
 					append = " "+theTarget.getGameObject().getThisAttribute(Constants.NUMBER);
 				}
-				aimingForHorseOrRider(attacker, theTarget, append);
+				append = aimingForHorseOrRider(attacker, theTarget, append);
 				if (attacker.getTarget()==null) {
 					attacker.setTarget(theTarget);
 				}
@@ -2065,7 +2065,7 @@ public class CombatFrame extends JFrame {
 		}
 		return null;
 	}
-	private void aimingForHorseOrRider(RealmComponent attacker, RealmComponent theTarget, String message) {
+	private String aimingForHorseOrRider(RealmComponent attacker, RealmComponent theTarget, String message) {
 		if (hostPrefs.hasPref(Constants.OPT_RIDING_HORSES)) {
 			if (theTarget.isHorse() || theTarget.isNativeHorse()) {
 				// Change target to native
@@ -2078,6 +2078,7 @@ public class CombatFrame extends JFrame {
 				message = " (aiming for rider)";
 			}
 		}
+		return message;
 	}
 	private void handleNativeReaction(RealmComponent theTarget) {
 		if (theTarget.isNative() && theTarget.getOwnerId()==null) {
@@ -2231,10 +2232,9 @@ public class CombatFrame extends JFrame {
 	}
 	public void playManeuver(int box) {
 		// First, clear out any chits already in play for maneuver
-		Collection c = activeCharacter.getActiveMoveChits();
+		Collection<RealmComponent> c = activeCharacter.getActiveMoveChitsAsRealmComponents();
 		c.addAll(activeCharacter.getFlyChits());
-		for (Iterator i=c.iterator();i.hasNext();) {
-			RealmComponent chit = (RealmComponent)i.next();
+		for (RealmComponent chit : c) {
 			CombatWrapper combat = new CombatWrapper(chit.getGameObject());
 			if (combat.getPlacedAsMove()) {
 				CombatWrapper.clearRoundCombatInfo(chit.getGameObject());
@@ -2725,8 +2725,7 @@ public class CombatFrame extends JFrame {
 			RealmDirectInfoHolder info = new RealmDirectInfoHolder(gameData,playerName);
 			info.setCommand(RealmDirectInfoHolder.QUERY_YN);
 			info.setString(endCombatFrame.getId()+":"+playerName+" wants to END combat.  Do you agree?");
-			for (Iterator i=playersToRespond.iterator();i.hasNext();) {
-				String charPlayerName = (String)i.next();
+			for (String charPlayerName : playersToRespond) {
 				GameClient.GetMostRecentClient().sendInfoDirect(charPlayerName,info.getInfo());
 			}
 			
@@ -2799,13 +2798,12 @@ public class CombatFrame extends JFrame {
 		
 		// Pick a clearing to run to
 		if (runToClearingOptions.size()==1) {
-			runToClearing = (TileLocation)runToClearingOptions.iterator().next();
+			runToClearing = runToClearingOptions.iterator().next();
 		}
 		else {
 			CenteredMapView.getSingleton().setMarkClearingAlertText("Run towards which clearing?");
 			CenteredMapView.getSingleton().markAllClearings(false);
-			for (Iterator i=runToClearingOptions.iterator();i.hasNext();) {
-				TileLocation tl = (TileLocation)i.next();
+			for (TileLocation tl : runToClearingOptions) {
 				if (tl.isInClearing()) {
 					ClearingDetail clearing = tl.clearing;
 					clearing.setMarked(true);
@@ -2929,10 +2927,9 @@ public class CombatFrame extends JFrame {
 	/**
 	 * Finishes the run activity after going through the choices
 	 */
-	private boolean doRun(TileLocation runToClearing,Fly fly,ArrayList attackers,RealmComponent moveChit) {
+	private boolean doRun(TileLocation runToClearing,Fly fly,ArrayList<RealmComponent> attackers,RealmComponent moveChit) {
 		// If ran away, then there are no attackers anymore.
-		for (Iterator i=attackers.iterator();i.hasNext();) {
-			RealmComponent attacker = (RealmComponent)i.next();
+		for (RealmComponent attacker : attackers) {
 			CombatWrapper combat = new CombatWrapper(attacker.getGameObject());
 			combat.setWatchful(false); // just in case they were watchful - shouldn't be anymore.
 			attacker.clearTargets();
@@ -3017,7 +3014,7 @@ public class CombatFrame extends JFrame {
 		Speed fastest = activator.getFastestAttackerMoveSpeed();
 		
 		// Find all playable options
-		Collection fightAlertChits = activeCharacter.getActiveFightAlertChits(fastest);
+		Collection<CharacterActionChitComponent> fightAlertChits = activeCharacter.getActiveFightAlertChits(fastest);
 		if (weaponPrimary==null && (weapons==null || weapons.isEmpty()) && fightAlertChits.isEmpty()) {
 			JOptionPane.showMessageDialog(this,"You have nothing to Alert or Unalert.","Alert/Berserk",JOptionPane.INFORMATION_MESSAGE);
 			return;
@@ -3051,8 +3048,7 @@ public class CombatFrame extends JFrame {
 				}
 			}
 			// Chit alert options (BERSERK)
-			for (Iterator i=fightAlertChits.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : fightAlertChits) {
 				String key = "C"+(keyN++);
 				chooser.addOption(key,StringUtilities.capitalize(rc.getGameObject().getThisAttribute("action")));
 				chooser.addRealmComponentToOption(key,rc);
@@ -3158,9 +3154,9 @@ public class CombatFrame extends JFrame {
 						// CAST THE SPELL
 						CombatWrapper combat = new CombatWrapper(activeCharacter.getGameObject());
 						Collection<RealmComponent> c = chooser.getSelectedComponents();
-						Iterator i=c.iterator();
+						Iterator<RealmComponent> i=c.iterator();
 						// Magic chits/treasure fatigue at the end of the spell, so tie it to spell here (both ways)
-						RealmComponent incantationComponent = (RealmComponent)i.next();
+						RealmComponent incantationComponent = i.next();
 						
 						if (!incantationComponent.isActionChit()) {
 							// If it's anything but an action chit, then tag it as having been used this evening

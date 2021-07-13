@@ -459,7 +459,7 @@ public class PhaseManager {
 	}
 	public void removeLocationSpecificFreeActions(TileLocation tl) {
 		// Moved, so make sure that any free actions gained by location are removed
-		ArrayList<String> removeKeys = new ArrayList<String>();
+		ArrayList<String> removeKeys = new ArrayList<>();
 		for (Iterator i=freeActions.keySet().iterator();i.hasNext();) {
 			String key = (String)i.next();
 			ArrayList remove = new ArrayList();
@@ -831,7 +831,7 @@ public class PhaseManager {
 		GameData data = new GameData();
 		GameObject thing1 = data.createNewObject();
 		GameObject thing2 = data.createNewObject();
-		ArrayList activatedObjects = new ArrayList();
+		ArrayList<GameObject> activatedObjects = new ArrayList<>();
 		activatedObjects.add(thing1);
 //		activatedObjects.add(thing2);
 		
