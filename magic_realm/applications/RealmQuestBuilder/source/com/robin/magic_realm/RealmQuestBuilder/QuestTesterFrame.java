@@ -1059,7 +1059,8 @@ public class QuestTesterFrame extends JFrame {
 				character.addNotoriety(spoils.getNotoriety());
 				if (victimGameObject.hasThisAttribute("native")) {
 					character.addGold(Integer.parseInt(victimGameObject.getThisAttribute("base_price")));
-				}				
+				}
+				character.removeHireling(victimGameObject);
 				victimGameObject.detach();
 				updateCharacterPanel();
 				int listLength = clearingComponents.getModel().getSize();
