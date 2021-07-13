@@ -94,14 +94,13 @@ public class QuestRequirementKill extends QuestRequirement {
 			return true;
 		}
 		
-		ArrayList<GameObject> validKills = new ArrayList<GameObject>();
-		ArrayList allDayKeys = character.getAllDayKeys();
+		ArrayList<GameObject> validKills = new ArrayList<>();
+		ArrayList<String> allDayKeys = character.getAllDayKeys();
 		if (allDayKeys==null) {
 			logger.fine("Character hasn't had a turn yet.");
 			return false;
 		}
-		for(Object obj:allDayKeys) {
-			String dayKeyString = (String)obj;
+		for(String dayKeyString:allDayKeys) {
 			DayKey dayKey = new DayKey(dayKeyString);
 			if (dayKey.before(earliestTime)) continue; // ignore kills on days before the earliest allowable date
 			
@@ -161,9 +160,7 @@ public class QuestRequirementKill extends QuestRequirement {
 			if (getBoolean(STEP_ONLY_KILLS)) { 
 				return TargetValueType.Step;
 			}
-			else {
-				return TargetValueType.Quest;
-			}
+			return TargetValueType.Quest;
 		}
 		return TargetValueType.valueOf(getString(TARGET_VALUE_TYPE));
 	}

@@ -1129,9 +1129,7 @@ public class TreasureUtility {
 		}
 		
 		// Reward character
-		if (character!=null) {
-			character.addFame(20);
-			character.addNotoriety(20);
-		}
+		character.addFame(20);
+		character.addNotoriety(20);
 	}
 }

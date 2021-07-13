@@ -33,7 +33,7 @@ public class TileEditComponent extends TileComponent {
 		setAlwaysPaint(true);
 	}
 	
-	public Collection getClearingDetail() {
+	public Collection<ClearingDetail> getClearingDetail() {
 		return clearings[getFacingIndex()];
 	}
 	public void setClearingDetail(Collection c) {
@@ -41,7 +41,7 @@ public class TileEditComponent extends TileComponent {
 		changed = true;
 		repaint();
 	}
-	public Collection getPathDetail() {
+	public Collection<PathDetail> getPathDetail() {
 		return paths[getFacingIndex()];
 	}
 	public void setPathDetail(Collection c) {

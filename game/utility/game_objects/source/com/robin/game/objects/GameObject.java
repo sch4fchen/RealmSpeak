@@ -432,9 +432,9 @@ public class GameObject extends ModifyableObject implements Serializable {
 	/**
 	 * Create a new attribute block (ie., side_1, side_2, this)
 	 */
-	private OrderedHashtable createAttributeBlock(String blockName) {
+	private OrderedHashtable<String, Object> createAttributeBlock(String blockName) {
 		if (!hasAttributeBlock(blockName)) {
-			attributeBlocks.put(blockName, new OrderedHashtable());
+			attributeBlocks.put(blockName, new OrderedHashtable<>());
 		}
 		return attributeBlocks.get(blockName);
 	}
@@ -462,8 +462,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		return _allAttributesMatch(go) && go._allAttributesMatch(this);
 	}
 	private boolean _allAttributesMatch(GameObject go) {
-		for (Iterator i=getAttributeBlockNames().iterator();i.hasNext();) {
-			String attributeBlock = (String)i.next();
+		for (String attributeBlock : getAttributeBlockNames()) {
 			if (!go.hasAttributeBlock(attributeBlock)) {
 				return false;
 			}
@@ -512,7 +511,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		return null;
 	}
 
-	public OrderedHashtable getAttributeBlock(String blockName) {
+	public OrderedHashtable<String, Object> getAttributeBlock(String blockName) {
 		if (uncommitted != null) {
 			return uncommitted.getAttributeBlock(blockName);
 		}
@@ -526,7 +525,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		return attributeBlocks.size();
 	}
 
-	public Collection getAttributeBlockNames() {
+	public Collection<String> getAttributeBlockNames() {
 		if (uncommitted != null) {
 			return uncommitted.getAttributeBlockNames();
 		}

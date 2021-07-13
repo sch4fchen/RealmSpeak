@@ -62,7 +62,7 @@ public class TileEditFrame extends JFrame {
 	protected JButton flipButton;
 	protected JButton applyButton;
 	protected JButton toggleDetailButton;
-	protected JList tileList;
+	protected JList<GameObject> tileList;
 	
 	protected boolean selectionLock = false;
 	protected boolean editOffroad = false;
@@ -72,7 +72,7 @@ public class TileEditFrame extends JFrame {
 	protected JLabel changeWarningLabel;
 	
 	protected JPanel clearingView;
-		protected JList clearingList;
+		protected JList<ClearingDetail> clearingList;
 		protected Box clearingControls;
 			protected ButtonGroup clearingTypeGroup;
 				protected JRadioButton normalClearingType;
@@ -87,7 +87,7 @@ public class TileEditFrame extends JFrame {
 				protected JCheckBox blackClearingMagic;		// B
 				
 	protected JPanel pathView;
-		protected JList pathList;
+		protected JList<PathDetail> pathList;
 		protected JPanel pathControls;
 			protected ButtonGroup pathTypeGroup;
 				protected JRadioButton normalPathType;
@@ -121,7 +121,7 @@ public class TileEditFrame extends JFrame {
 		Box box;
 		JScrollPane sp;
 		
-		tileList = new JList(getTiles());
+		tileList = new JList<>(getTiles());
 		tileList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tileList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent ev) {
@@ -145,7 +145,7 @@ public class TileEditFrame extends JFrame {
 			JPanel editPanel = new JPanel(new GridLayout(2,1));
 				JPanel clearingEditPanel = new JPanel(new BorderLayout());
 				clearingEditPanel.add(new JLabel("Clearings:"),"North");
-					clearingList = new JList();
+					clearingList = new JList<>();
 					clearingList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 					clearingList.addListSelectionListener(new ListSelectionListener() {
 						public void valueChanged(ListSelectionEvent ev) {
@@ -243,7 +243,7 @@ public class TileEditFrame extends JFrame {
 			editPanel.add(clearingEditPanel);
 				JPanel pathEditPanel = new JPanel(new BorderLayout());
 				pathEditPanel.add(new JLabel("Paths:"),"North");
-					pathList = new JList();
+					pathList = new JList<>();
 					pathList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 					pathList.addListSelectionListener(new ListSelectionListener() {
 						public void valueChanged(ListSelectionEvent ev) {
@@ -461,7 +461,7 @@ public class TileEditFrame extends JFrame {
 		if (activeTile!=null) {
 			tileView.remove(activeTile);
 		}
-		GameObject tile = (GameObject)tileList.getSelectedValue();
+		GameObject tile = tileList.getSelectedValue();
 		if (tile!=null) {
 			activeTile = new TileEditComponent(tile);
 			activeTile.initSize();
@@ -478,10 +478,10 @@ public class TileEditFrame extends JFrame {
 	}
 	public void updateClearingList() {
 		if (activeTile!=null) {
-			clearingList.setListData(new Vector(activeTile.getClearingDetail()));
+			clearingList.setListData(new Vector<>(activeTile.getClearingDetail()));
 		}
 		else {
-			clearingList.setListData(new Vector());
+			clearingList.setListData(new Vector<>());
 		}
 		clearingList.revalidate();
 		clearingList.repaint();
@@ -489,7 +489,7 @@ public class TileEditFrame extends JFrame {
 	public void updateClearingButtons() {
 		ClearingDetail selected = null;
 		if (activeTile!=null) {
-			selected = (ClearingDetail)clearingList.getSelectedValue();
+			selected = clearingList.getSelectedValue();
 			if (selected!=null) {
 				String type = selected.getType();
 				if (type.equals("normal")) {
@@ -527,7 +527,7 @@ public class TileEditFrame extends JFrame {
 	public void updateClearings() {
 		ClearingDetail selected = null;
 		if (activeTile!=null) {
-			selected = (ClearingDetail)clearingList.getSelectedValue();
+			selected = clearingList.getSelectedValue();
 			if (selected!=null) {
 				if (normalClearingType.isSelected()) {
 					selected.setType("normal");
@@ -557,7 +557,7 @@ public class TileEditFrame extends JFrame {
 	}
 	public void changeClearingPos(Point p) {
 		if (activeTile!=null) {
-			ClearingDetail selected = (ClearingDetail)clearingList.getSelectedValue();
+			ClearingDetail selected = clearingList.getSelectedValue();
 			if (selected!=null) {
 				activeTile.didChange();
 				updateControls();
@@ -571,10 +571,10 @@ public class TileEditFrame extends JFrame {
 	}
 	public void updatePathList(int newIndex) {
 		if (activeTile!=null) {
-			pathList.setListData(new Vector(activeTile.getPathDetail()));
+			pathList.setListData(new Vector<>(activeTile.getPathDetail()));
 		}
 		else {
-			pathList.setListData(new Vector());
+			pathList.setListData(new Vector<>());
 		}
 		if (newIndex>=0) {
 			pathList.setSelectedIndex(newIndex);
@@ -585,7 +585,7 @@ public class TileEditFrame extends JFrame {
 	public void updatePathButtons() {
 		PathDetail selected = null;
 		if (activeTile!=null) {
-			selected = (PathDetail)pathList.getSelectedValue();
+			selected = pathList.getSelectedValue();
 			if (selected!=null) {
 				String type = selected.getType();
 				if (type.equals("normal")) {
@@ -614,7 +614,7 @@ public class TileEditFrame extends JFrame {
 	public void updatePaths() {
 		PathDetail selected = null;
 		if (activeTile!=null) {
-			selected = (PathDetail)pathList.getSelectedValue();
+			selected = pathList.getSelectedValue();
 			if (selected!=null) {
 				if (normalPathType.isSelected()) {
 					selected.setType("normal");
@@ -638,7 +638,7 @@ public class TileEditFrame extends JFrame {
 	public void addPath() {
 		// TODO Working here
 		if (activeTile!=null) {
-			ArrayList<String> list = new ArrayList<String>(activeTile.getClearingDetail());
+			ArrayList<Object> list = new ArrayList<>(activeTile.getClearingDetail());
 			ButtonOptionDialog chooser = new ButtonOptionDialog(this,null,"From which clearing?","");
 			chooser.addSelectionObjects(list);
 			chooser.setVisible(true);
@@ -666,10 +666,10 @@ public class TileEditFrame extends JFrame {
 					else {
 						String edge = (String)o2;
 						c2Name = edge;
-						Hashtable edgePositionHash = activeTile.getEdgePositionHash();
-						c2 = new ClearingDetail(activeTile,edge,(Point)edgePositionHash.get(edge),activeTile.getFacingIndex());
+						Hashtable<String, Point> edgePositionHash = TileComponent.getEdgePositionHash();
+						c2 = new ClearingDetail(activeTile,edge,edgePositionHash.get(edge),activeTile.getFacingIndex());
 					}
-					ArrayList<PathDetail> paths = new ArrayList<PathDetail>(activeTile.getPathDetail());
+					ArrayList<PathDetail> paths = new ArrayList<>(activeTile.getPathDetail());
 					PathDetail path = new PathDetail(activeTile,paths.size()+1,c1.getName(),c2Name,c1,c2,null,"normal",activeTile.getFacingName());
 					paths.add(path);
 					activeTile.setPathDetail(paths);
@@ -682,7 +682,7 @@ public class TileEditFrame extends JFrame {
 		if (activeTile!=null) {
 			int index = pathList.getSelectedIndex();
 			if (index>=0) {
-				ArrayList<PathDetail> list = new ArrayList<PathDetail>(activeTile.getPathDetail());
+				ArrayList<PathDetail> list = new ArrayList<>(activeTile.getPathDetail());
 				list.remove(index);
 				activeTile.setPathDetail(list);
 				updatePathList(index);
@@ -694,7 +694,7 @@ public class TileEditFrame extends JFrame {
 			int index = pathList.getSelectedIndex();
 			
 			if (index>0) {
-				ArrayList<PathDetail> list = new ArrayList<PathDetail>(activeTile.getPathDetail());
+				ArrayList<PathDetail> list = new ArrayList<>(activeTile.getPathDetail());
 				
 				PathDetail selected = list.get(index);
 				PathDetail toSwap = list.get(index-1);
@@ -713,7 +713,7 @@ public class TileEditFrame extends JFrame {
 			int index = pathList.getSelectedIndex();
 			
 			if ((index+1)<pathList.getModel().getSize()) {
-				ArrayList<PathDetail> list = new ArrayList<PathDetail>(activeTile.getPathDetail());
+				ArrayList<PathDetail> list = new ArrayList<>(activeTile.getPathDetail());
 				
 				PathDetail selected = list.get(index);
 				PathDetail toSwap = list.get(index+1);
@@ -729,7 +729,7 @@ public class TileEditFrame extends JFrame {
 	}
 	public void addPathArcPoint(Point p) {
 		if (activeTile!=null) {
-			PathDetail selected = (PathDetail)pathList.getSelectedValue();
+			PathDetail selected = pathList.getSelectedValue();
 			if (selected!=null) {
 				activeTile.didChange();
 				updateControls();

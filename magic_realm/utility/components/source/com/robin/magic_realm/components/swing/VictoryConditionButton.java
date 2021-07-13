@@ -67,7 +67,7 @@ public class VictoryConditionButton extends JPanel {
 	}
 	public void addChangeListener(ChangeListener changeListener) {
 		if (changeListeners==null) {
-			changeListeners = new ArrayList<ChangeListener>();
+			changeListeners = new ArrayList<>();
 		}
 		if (!changeListeners.contains(changeListener)) {
 			changeListeners.add(changeListener);

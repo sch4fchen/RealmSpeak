@@ -81,9 +81,9 @@ public class VersionManager {
 				
 				// - fix lost city, lost castle, and ruins diemods
 				if (character.hasAttribute(levelKey,Constants.DIEMOD)) {
-					ArrayList list = character.getAttributeList(levelKey,Constants.DIEMOD);
+					ArrayList<String> list = character.getAttributeList(levelKey,Constants.DIEMOD);
 					if (!list.isEmpty()) {
-						String val = (String)list.get(0);
+						String val = list.get(0);
 						StringUtilities.findAndReplace(val,"Lost City","Lost City%");
 						StringUtilities.findAndReplace(val,"Lost Castle","Lost Castle%");
 						StringUtilities.findAndReplace(val,"%ruins","%ruins%");
