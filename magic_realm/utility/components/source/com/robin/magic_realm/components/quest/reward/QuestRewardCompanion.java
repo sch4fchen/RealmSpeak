@@ -61,7 +61,7 @@ public class QuestRewardCompanion extends QuestReward {
 			if (locationOnly()) {
 				QuestLocation loc = getQuestLocation();
 				if (loc == null) return;
-				ArrayList<TileLocation> validLocations = new ArrayList<TileLocation>();
+				ArrayList<TileLocation> validLocations = new ArrayList<>();
 				validLocations = loc.fetchAllLocations(frame, character, getGameData());
 				if(validLocations.isEmpty()) {
 					logger.fine("QuestLocation "+loc.getName()+" doesn't have any valid locations!");
@@ -74,12 +74,12 @@ public class QuestRewardCompanion extends QuestReward {
 		}
 		else {
 			GamePool pool = new GamePool(character.getGameData().getGameObjects());
-			ArrayList<GameObject> companionsExisting = new ArrayList<GameObject>();
+			ArrayList<GameObject> companionsExisting = new ArrayList<>();
 			companionsExisting.addAll(pool.find(getCompanionQuery()));
 			companionsExisting.addAll(pool.find("name="+getCompanionKeyName()));
 			for (GameObject companion : companionsExisting ) {
 				RealmComponent companionRc = RealmComponent.getRealmComponent(companion);
-				if (companionRc.getOwnerId() != null && companionRc.getOwnerId().matches(String.valueOf(character.getGameObject().getId()))) {
+				if (companionRc != null && companionRc.getOwnerId() != null && companionRc.getOwnerId().matches(String.valueOf(character.getGameObject().getId()))) {
 					character.removeHireling(companion);
 					// Companions must be removed from the map as well, since they are not rehired!
 					if (!leaveCompanionInGameWhenLost()) {
