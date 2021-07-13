@@ -42,6 +42,7 @@ public class QuestRewardHireling extends QuestReward {
 	public static final String HIRELING_REGEX = "_hrx";
 	public static final String ACQUISITION_TYPE = "_goc";
 	public static final String TERM_OF_HIRE = "_toh";
+	public static final String EXCLUDE_HORSE = "_eh";
 	public static final String LOCATION_ONLY = "_loc_only";
 	public static final String LOCATION = "_loc";
 
@@ -55,7 +56,7 @@ public class QuestRewardHireling extends QuestReward {
 		ArrayList<GameObject> objects;
 		if (at == ChitAcquisitionType.Lose) {
 			actionDescription = ": Select ONE hireling to lose.";
-			objects = new ArrayList<GameObject>();
+			objects = new ArrayList<>();
 			for (RealmComponent rc : character.getAllHirelings()) {
 				objects.add(rc.getGameObject());
 			}
@@ -82,15 +83,28 @@ public class QuestRewardHireling extends QuestReward {
 			character.removeHireling(selected);
 		}
 		else {
+			RealmComponent rc = RealmComponent.getRealmComponent(selected);
 			if (at == ChitAcquisitionType.Clone) {
 				GameObject go = getGameData().createNewObject();
 				go.copyAttributesFrom(selected);
 				go.setThisAttribute(Constants.CLONED); // tag as cloned, so that the removeHireling method will expunge the clone
 				selected = go;
+				if (!excludeHorse()) {
+					for (Object o : rc.getHold()) {
+						GameObject heldGo = (GameObject) o;
+						RealmComponent heldRc = RealmComponent.getRealmComponent(heldGo);
+						if (heldRc.isNativeHorse() || heldRc.isHorse()) {
+							GameObject horse = getGameData().createNewObject();
+							horse.copyAttributesFrom(heldGo);
+							horse.setThisAttribute(Constants.CLONED);
+							selected.add(horse);
+						}
+					}
+					
+				}
 			}
 			selected.setThisAttribute(Constants.HIRELING);
 			TermOfHireType termofHire = getTermOfHireType();
-			RealmComponent rc = RealmComponent.getRealmComponent(selected);
 			if (termofHire == TermOfHireType.Normal || termofHire == TermOfHireType.Permanent) {
 				if (!rc.isNativeLeader()) {
 					character.getGameObject().add(selected);
@@ -105,7 +119,7 @@ public class QuestRewardHireling extends QuestReward {
 			if (locationOnly()) {
 				QuestLocation loc = getQuestLocation();
 				if (loc == null) return;
-				ArrayList<TileLocation> validLocations = new ArrayList<TileLocation>();
+				ArrayList<TileLocation> validLocations = new ArrayList<>();
 				validLocations = loc.fetchAllLocations(frame, character, getGameData());
 				if(validLocations.isEmpty()) {
 					logger.fine("QuestLocation "+loc.getName()+" doesn't have any valid locations!");
@@ -118,10 +132,10 @@ public class QuestRewardHireling extends QuestReward {
 		}
 	}
 
-	private ArrayList<GameObject> getObjectList(ArrayList<GameObject> sourceObjects, ChitAcquisitionType at, String regEx) {
+	private static ArrayList<GameObject> getObjectList(ArrayList<GameObject> sourceObjects, ChitAcquisitionType at, String regEx) {
 		Pattern pattern = (regEx == null || regEx.length() == 0) ? null : Pattern.compile(regEx);
 		GamePool pool = new GamePool(sourceObjects);
-		ArrayList<GameObject> objects = new ArrayList<GameObject>();
+		ArrayList<GameObject> objects = new ArrayList<>();
 		for (GameObject go : pool.find("native,rank")) {
 			if (pattern == null || pattern.matcher(go.getName()).find()) {
 				if (at == ChitAcquisitionType.Available) {
@@ -176,6 +190,10 @@ public class QuestRewardHireling extends QuestReward {
 
 	private String getHirelingRegex() {
 		return getString(HIRELING_REGEX);
+	}
+	
+	private boolean excludeHorse() {
+		return getBoolean(EXCLUDE_HORSE);
 	}
 	
 	public boolean usesLocationTag(String tag) {

@@ -5,6 +5,7 @@ QUEST UPDATE:
 # QuestRewardRegenerateDenizen: Option to regenerate only denizens of character's tile
 # QuestRewardKillDenizen: Option to kill only denizens of character's tile
 # QuestRewardKillDenizen: Option to kill only cloned denizens
+# QuestRewardHireling: Add horse to cloned hireling, option to exclude horse for cloned hireling
 NEW FEATURES:
 # Remove warning when sending no actions and character has Prophecy power
 BUGS/ISSUES:

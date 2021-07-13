@@ -5814,7 +5814,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				ClearingUtility.moveToLocation(follow.getGameObject(),current);
 			}
 			
-			ArrayList<GameObject> booty = new ArrayList<GameObject>(leader.getInventory());
+			ArrayList<GameObject> booty = new ArrayList<>(leader.getInventory());
 			if (rc.isNativeLeader()) {
 				// All inventory is added to the native's box
 				GameObject holder = SetupCardUtility.getDenizenHolder(hireling);
