@@ -80,6 +80,7 @@ public class QuestTesterFrame extends JFrame {
 
 	// Hirelings
 	JList<RealmComponent> hirelings;
+	JButton hirelingToggleFollow;
 	JList<QuestJournalEntry> journalList;
 
 	// Clearing
@@ -773,14 +774,46 @@ public class QuestTesterFrame extends JFrame {
 
 	private JPanel buildCharacterHirelingPanel() {
 		JPanel panel = new JPanel(new GridLayout(2, 1));
+		JPanel hirelingsPanel = new JPanel(new BorderLayout());	
 		hirelings = new JList<>();
+		hirelings.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		hirelings.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				updateHirelingsButtons();
+			}
+		});
 		hirelings.setCellRenderer(new HirelingListRenderer());
-		panel.add(makeTitledScrollPane("Hirelings", hirelings));
+		hirelingsPanel.add(hirelings);
+		hirelingToggleFollow = new JButton("Toggle Follow");
+		hirelingToggleFollow.setToolTipText("Toggle hireling to follow character");
+		hirelingToggleFollow.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				RealmComponent hireling = hirelings.getSelectedValue();
+				if (hireling != null) {
+					if (hireling.getHeldBy().getGameObject() != character.getGameObject()) {
+						character.getGameObject().add(hireling.getGameObject());
+					}
+					else {
+						if (character.getCurrentLocation() != null && character.getCurrentLocation().clearing != null) {
+							character.getCurrentLocation().clearing.add(hireling.getGameObject(), null);
+						}					
+					}
+				}
+				hirelings.updateUI();
+			}
+		});
+		hirelingsPanel.add(hirelingToggleFollow, BorderLayout.SOUTH);
+		panel.add(makeTitledScrollPane("Hirelings", hirelingsPanel));
 
 		journalList = new JList<>();
 		journalList.setCellRenderer(new JournalEntryListRenderer());
 		panel.add(makeTitledScrollPane("Journal", journalList));
 		return panel;
+	}
+	
+	private void updateHirelingsButtons() {
+		RealmComponent rc = hirelings.getSelectedValue();
+		hirelingToggleFollow.setEnabled(rc != null);
 	}
 
 	private JPanel buildCharacterClearingPanel() {
@@ -1420,6 +1453,7 @@ public class QuestTesterFrame extends JFrame {
 		}
 		clearingComponents.setListData(rcs);
 		updateClearingButtons();
+		updateHirelingsButtons();
 	}
 
 	private void updateClearingButtons() {
@@ -1649,6 +1683,10 @@ public class QuestTesterFrame extends JFrame {
 				else {
 					sb.append(" (permanent)");
 				}
+				if (go.getHeldBy() == character.getGameObject()) {
+					sb.append(" (following)");
+				}
+				
 				setText(sb.toString());
 			}
 			return this;

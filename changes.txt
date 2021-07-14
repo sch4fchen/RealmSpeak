@@ -7,6 +7,7 @@ QUEST UPDATE:
 # QuestRewardKillDenizen: Option to kill only cloned denizens
 # QuestRewardHireling: Add horse to cloned hireling, option to exclude horse for cloned hireling
 # QuestTester: Killing denizen removes it from character's hirelings
+# QuestTester: Toggle follow for hirelings
 NEW FEATURES:
 # Remove warning when sending no actions and character has Prophecy power
 BUGS/ISSUES:
