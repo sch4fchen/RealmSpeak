@@ -784,7 +784,7 @@ public class QuestTesterFrame extends JFrame {
 		});
 		hirelings.setCellRenderer(new HirelingListRenderer());
 		hirelingsPanel.add(hirelings);
-		hirelingToggleFollow = new JButton("Toggle Follow");
+		hirelingToggleFollow = new JButton("Follow");
 		hirelingToggleFollow.setToolTipText("Toggle hireling to follow character");
 		hirelingToggleFollow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
