@@ -96,7 +96,7 @@ public class GameData extends ModifyableObject implements Serializable {
 			for (GameObject go : gameObjects) {
 				md.update(go.getName().getBytes());
 				OrderedHashtable hash = go.getAttributeBlocks();
-				ArrayList<String> blocks = new ArrayList(hash.keySet());
+				ArrayList<String> blocks = new ArrayList<>(hash.keySet());
 				Collections.sort(blocks);
 				for (String blockName : blocks) {
 					OrderedHashtable block = (OrderedHashtable)hash.get(blockName);

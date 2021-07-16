@@ -89,6 +89,7 @@ public class QuestRewardItem extends QuestReward {
 			if (TreasureUtility.doDeactivate(null,character,selected)) { // null JFrame so that character isn't hit with any popups
 				switch (getGainType()) {
 				case RemoveFromGame:
+					lostItemToDefault(selected);
 					character.getGameData().removeObject(selected);
 					break;
 				case LoseToClearing:
