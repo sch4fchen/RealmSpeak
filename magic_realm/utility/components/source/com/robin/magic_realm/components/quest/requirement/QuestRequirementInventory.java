@@ -33,6 +33,7 @@ public class QuestRequirementInventory extends QuestRequirementLoot {
 	
 	public static final String NUMBER = "_num";
 	public static final String ITEM_ACTIVE = "_iact";
+	public static final String ITEM_DEACTIVE = "_idact";
 
 	public QuestRequirementInventory(GameObject go) {
 		super(go);
@@ -40,6 +41,7 @@ public class QuestRequirementInventory extends QuestRequirementLoot {
 
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
 		boolean reqActive = mustBeActive();
+		boolean reqDeactive = mustBeDeactive();
 		ArrayList<GameObject> matches;
 		if (reqActive && reqParams.actionType==CharacterActionType.ActivatingItem) {
 			reqActive = false; // since we already know we are activating the item, don't test for it later (actually causes a problem with the Chest which is opened instead of activated!)
@@ -49,19 +51,30 @@ public class QuestRequirementInventory extends QuestRequirementLoot {
 			matches = filterObjectsForRequirement(character,character.getInventory(),logger);
 		}
 		int n = getNumber();
-		if (matches.size()>=n) {
+		int found = matches.size();
+		if (found>=n) {
 			if (reqActive) {
 				for(GameObject match:matches) {
 					if (!match.hasThisAttribute(Constants.ACTIVATED)) {
 						logger.fine(match.getName()+" must be activated.");
-						return false;
+						found--;
+					}
+				}
+			}
+			if (reqDeactive) {
+				for(GameObject match:matches) {
+					if (match.hasThisAttribute(Constants.ACTIVATED)) {
+						logger.fine(match.getName()+" must be deactivated.");
+						found--;
 					}
 				}
 			}
 			
-			return true;
+			if (found>=n) {
+				return true;
+			}
 		}
-		logger.fine("Only "+matches.size()+" items were found, when "+n+" was expected.");
+		logger.fine("Only "+found+" items were found, when "+n+" was expected.");
 		return false;
 	}
 
@@ -71,6 +84,9 @@ public class QuestRequirementInventory extends QuestRequirementLoot {
 		sb.append(mustBeActive()?"activate ":"own ");
 		int num = getNumber();
 		sb.append(num);
+		if(mustBeDeactive()) {
+			sb.append("deactivated ");
+		}
 		TreasureType tt = getTreasureType();
 		if (tt!=TreasureType.Any) {
 			sb.append(" ");
@@ -97,5 +113,8 @@ public class QuestRequirementInventory extends QuestRequirementLoot {
 	}
 	public boolean mustBeActive() {
 		return getBoolean(ITEM_ACTIVE);
+	}
+	public boolean mustBeDeactive() {
+		return getBoolean(ITEM_DEACTIVE);
 	}
 }

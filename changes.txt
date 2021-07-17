@@ -4,6 +4,7 @@ QUEST UPDATE:
 # QuestRequirementLocation: Option to check character can be in a non-clearing location
 # QuestRewardMoveDenizen: Option to move only denizens of character's tile or clearing
 # QuestRewardRegenerateDenizen: Option to regenerate only denizens of character's tile
+# QuestRequirementInventory: Option to check for deactivated items
 # QuestRewardKillDenizen: Option to kill only denizens of character's tile
 # QuestRewardKillDenizen: Option to kill only cloned denizens
 # QuestRewardHireling: Add horse to cloned hireling, option to exclude horse for cloned hireling

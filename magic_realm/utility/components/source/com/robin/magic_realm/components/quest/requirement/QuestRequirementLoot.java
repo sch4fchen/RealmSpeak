@@ -43,14 +43,12 @@ public class QuestRequirementLoot extends QuestRequirement {
 			ArrayList<GameObject> matches = filterObjectsForRequirement(character,reqParams.objectList,logger);
 			return !matches.isEmpty();
 		}
-		else {
-			logger.fine(character.getName()+" did not Loot.");
-		}
+		logger.fine(character.getName()+" did not Loot.");
 		return false;
 	}
 	
 	protected ArrayList<GameObject> filterObjectsForRequirement(CharacterWrapper character,ArrayList<GameObject> objects,Logger myLogger) {
-		ArrayList<GameObject> matches = new ArrayList<GameObject>();
+		ArrayList<GameObject> matches = new ArrayList<>();
 		if (objects.isEmpty()) {
 			myLogger.fine("No items to test.");
 			return matches;
