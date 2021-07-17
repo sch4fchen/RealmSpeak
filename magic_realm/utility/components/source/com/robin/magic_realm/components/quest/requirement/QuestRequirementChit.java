@@ -28,7 +28,7 @@ import com.robin.magic_realm.components.quest.VulnerabilityType;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRequirementChit extends QuestRequirement {	
-	public static final String TYPE = "_type"; //Any,Move,Fight,Magic,Fly
+	public static final String TYPE = "_type";
 	public static final String AMOUNT = "_amount";
 	public static final String STRENGTH = "_strength";
 	public static final String SPEED = "_speed";
