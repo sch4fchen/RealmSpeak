@@ -31,6 +31,12 @@ public class ColorMagic implements Comparable {
 	public static final int PURPLE = 4;
 	public static final int BLACK = 5;
 	
+	public static final String White = "White";
+	public static final String Grey = "Grey";
+	public static final String Gold = "Gold";
+	public static final String Purple = "Purple";
+	public static final String Black = "Black";
+	
 	private int color;
 	private boolean infinite;
 	public ColorMagic(int color,boolean infinite) {
@@ -66,11 +72,11 @@ public class ColorMagic implements Comparable {
 //	}
 	public String getColorName() {
 		switch(color) {
-			case WHITE:			return "White";
-			case GRAY:			return "Grey";
-			case GOLD:			return "Gold";
-			case PURPLE:		return "Purple";
-			case BLACK:			return "Black";
+			case WHITE:			return White;
+			case GRAY:			return Grey;
+			case GOLD:			return Gold;
+			case PURPLE:		return Purple;
+			case BLACK:			return Black;
 		}
 		return null; // this shouldn't happen
 	}

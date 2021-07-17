@@ -4772,9 +4772,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			return getHiringCharacter().getEnchantableChits();
 		}
 		ArrayList<CharacterActionChitComponent> ret = new ArrayList<>();
-		ArrayList<CharacterActionChitComponent> list = getActiveChits();
-		list.addAll(getAlertedChits());
-		for (CharacterActionChitComponent chit:list) {
+		for (CharacterActionChitComponent chit:getAlertedChits()) {
 			if ("MAGIC".equals(chit.getAction()) && chit.getMagicNumber()<6) {
 				ret.add(chit);
 			}
@@ -4783,9 +4781,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public ArrayList<CharacterActionChitComponent> getAllMagicChits() {
 		ArrayList<CharacterActionChitComponent> ret = new ArrayList<>();
-		ArrayList<CharacterActionChitComponent> pool = new ArrayList<>();
-		pool.addAll(getAllChits());
-		for (CharacterActionChitComponent chit : pool) {
+		for (CharacterActionChitComponent chit : getAllChits()) {
 			if ("MAGIC".equals(chit.getAction())) {
 				ret.add(chit);
 			}

@@ -1,5 +1,6 @@
 Version 1.1.4.5 - Changes since 1.1.4.4
 QUEST UPDATE:
+# QuestRequirement: Chit
 # QuestRequirementLocation: Option to check character can be in a non-clearing location
 # QuestRewardMoveDenizen: Option to move only denizens of character's tile or clearing
 # QuestRewardRegenerateDenizen: Option to regenerate only denizens of character's tile

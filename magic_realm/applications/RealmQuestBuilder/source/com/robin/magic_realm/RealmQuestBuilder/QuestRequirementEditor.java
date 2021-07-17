@@ -25,6 +25,7 @@ import javax.swing.JFrame;
 import com.robin.game.objects.*;
 import com.robin.magic_realm.RealmQuestBuilder.QuestPropertyBlock.FieldType;
 import com.robin.magic_realm.components.*;
+import com.robin.magic_realm.components.attribute.ColorMagic;
 import com.robin.magic_realm.components.attribute.RelationshipType;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.quest.requirement.*;
@@ -78,6 +79,17 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				break;
 			case CharacterClass:
 				list.add(new QuestPropertyBlock(QuestRequirementCharacterClass.REGEX_FILTER, "Character(s)", FieldType.Regex, null, new String[] {"character"}));
+				break;
+			case Chit:
+				list.add(new QuestPropertyBlock(QuestRequirementChit.TYPE, "Chit type", FieldType.StringSelector, QuestRequirementChit.ChitType.values()));
+				list.add(new QuestPropertyBlock(QuestRequirementChit.AMOUNT, "Number of chits", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRequirementChit.STRENGTH, "Strength of the chits", FieldType.StringSelector, VulnerabilityType.values()));
+				list.add(new QuestPropertyBlock(QuestRequirementChit.SPEED, "Speed of the chits (0=any)", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRequirementChit.MAGIC_TYPE, "Magic type (only for magic chits)", FieldType.StringSelector, new Object[] { "Any",ColorMagic.White,ColorMagic.Grey,ColorMagic.Gold,ColorMagic.Purple,ColorMagic.Black }));
+				list.add(new QuestPropertyBlock(QuestRequirementChit.MAGIC_LEVEL, "Magic level (only for magic chits)", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRequirementChit.ONLY_ACTIVE, "Chits must be active", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementChit.NOT_FATIGUED, "Chits must not be fatigued", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementChit.NOT_WOUNDED, "Chits must not be wounded", FieldType.Boolean));
 				break;
 			case ColorMagic:
 				list.add(new QuestPropertyBlock(QuestRequirementColorMagic.COLOR_KEY, "In the presence of color magic.", FieldType.StringSelector, Constants.MAGIC_COLORS));

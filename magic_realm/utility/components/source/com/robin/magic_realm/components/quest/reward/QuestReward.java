@@ -258,7 +258,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 	}
 	
 	private void lostItemToLocation(GameObject go,QuestLocation location) {
-		ArrayList<TileLocation> validLocations = new ArrayList<TileLocation>();
+		ArrayList<TileLocation> validLocations = new ArrayList<>();
 		validLocations = location.fetchAllLocations(getGameData());
 		if(validLocations.isEmpty()) {
 			RealmLogging.logMessage(QuestConstants.QUEST_ERROR,"Item "+go.getName()+" didn't get moved to QuestLocation "+location.getName()+" for some reason...");

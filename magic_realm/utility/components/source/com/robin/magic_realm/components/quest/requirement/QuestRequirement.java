@@ -38,6 +38,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		CastMultipleSpells,
 		CastSpell,
 		CharacterClass,
+		Chit,
 		ColorMagic,
 		Counter,
 		Discovery, // must have a specific discovery
@@ -85,6 +86,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests whether a spell has just been cast.";
 				case CharacterClass:
 					return "Tests for the characters class.";
+				case Chit:
+					return "Tests for whether the characters has certain chits.";
 				case ColorMagic:
 					return "Tests whether the character is in the presence of a specific color of magic (either permanent or burning a chit).";
 				case Counter:
@@ -251,6 +254,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case CharacterClass:
 				requirement = new QuestRequirementCharacterClass(go);
+				break;
+			case Chit:
+				requirement = new QuestRequirementChit(go);
 				break;
 			case ColorMagic:
 				requirement = new QuestRequirementColorMagic(go);
