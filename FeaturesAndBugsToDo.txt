@@ -1,5 +1,4 @@
-BUG: Load game data with corresponding expansion in QuestTester
-Fix QuestRewardItem: in Tester working, in RS not; in Tester: works for Cloven Hoof, Infernal Bell, Ring of Pain BUT NOT Dragon Essence (no item to choose), Ring of Shejoh (no item to choose), Ghost Armor (cannot be removed)), Bone Hand (cannot be removed
+Fix QuestRewardItem: in Tester working, in RS not; in Tester: works for Cloven Hoof, Infernal Bell, Ring of Pain BUT NOT Dragon Essence (no item to choose), Ring of Shejoh (no item to choose)
 ---:::FEATURES:::---
 Guilds: Assassins, Nature
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): Option: no missile attacks, ?:Sharpness stars are ignored when comparing harm between attacks and parries? Alert?!

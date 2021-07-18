@@ -636,39 +636,48 @@ public class TreasureUtility {
 	}
 
 	public static boolean doDeactivate(JFrame frame,CharacterWrapper character,GameObject thing) {
+		return doDeactivate(frame, character, thing, false);
+	}
+	public static boolean doDeactivate(JFrame frame,CharacterWrapper character,GameObject thing, boolean forceDeactivation) {
 		if (!thing.hasThisAttribute(Constants.ACTIVATED)) {
 			return true; // already deactivated, so automatically successful.
 		}
-		// Potions cannot be deactivated - they expire at midnight
-		if (thing.hasThisAttribute("potion")) {
-			if (frame!=null) {
-				JOptionPane.showMessageDialog(frame,"Potions cannot be deactivated.  They expire at midnight.");
-			}
-			return false;
-		}
-		if (thing.hasThisAttribute(Constants.CURSED)) {
-			if (frame!=null) {
-				JOptionPane.showMessageDialog(frame,"The "+thing.getName()+" is CURSED, and can only be deactivated (and hence destroyed) at the Chapel at midnight.");
-			}
-			return false;
-		}
-		if (thing.hasThisAttribute("phase_chit")) {
-			if (frame!=null) {
-				JOptionPane.showMessageDialog(frame,"Phase chits cannot be deactivated.  They expire at the end of the phase.");
-			}
-			return false;
-		}
-		if (thing.hasThisAttribute("weapon")) {
-			WeaponChitComponent weapon = (WeaponChitComponent)RealmComponent.getRealmComponent(thing);
-			if (weapon.isAlerted()) {
+		if (!forceDeactivation) {
+			// Potions cannot be deactivated - they expire at midnight
+			if (thing.hasThisAttribute("potion")) {
 				if (frame!=null) {
-					int ret = JOptionPane.showConfirmDialog(frame,"You are about to deactivate an alerted weapon.  Are you sure?","",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-					if (ret==JOptionPane.NO_OPTION) {
-						return false;
-					}
+					JOptionPane.showMessageDialog(frame,"Potions cannot be deactivated.  They expire at midnight.");
 				}
-				weapon.setAlerted(false);
+				return false;
 			}
+			if (thing.hasThisAttribute(Constants.CURSED)) {
+				if (frame!=null) {
+					JOptionPane.showMessageDialog(frame,"The "+thing.getName()+" is CURSED, and can only be deactivated (and hence destroyed) at the Chapel at midnight.");
+				}
+				return false;
+			}
+			if (thing.hasThisAttribute("phase_chit")) {
+				if (frame!=null) {
+					JOptionPane.showMessageDialog(frame,"Phase chits cannot be deactivated.  They expire at the end of the phase.");
+				}
+				return false;
+			}
+			if (thing.hasThisAttribute("weapon")) {
+				WeaponChitComponent weapon = (WeaponChitComponent)RealmComponent.getRealmComponent(thing);
+				if (weapon.isAlerted()) {
+					if (frame!=null) {
+						int ret = JOptionPane.showConfirmDialog(frame,"You are about to deactivate an alerted weapon.  Are you sure?","",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+						if (ret==JOptionPane.NO_OPTION) {
+							return false;
+						}
+					}
+					weapon.setAlerted(false);
+				}
+			}
+		}
+		else if(thing.hasThisAttribute("weapon")) {
+			WeaponChitComponent weapon = (WeaponChitComponent)RealmComponent.getRealmComponent(thing);
+			weapon.setAlerted(false);
 		}
 		if (thing.hasThisAttribute(Constants.ADD_CHIT)) {
 			GamePool pool = new GamePool(character.getGameObject().getHold());

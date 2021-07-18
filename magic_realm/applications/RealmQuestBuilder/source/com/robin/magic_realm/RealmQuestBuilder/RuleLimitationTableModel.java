@@ -39,13 +39,12 @@ public class RuleLimitationTableModel extends DefaultTableModel {
 	public RuleLimitationTableModel(Quest quest, GameData realmSpeakData) {
 		this.quest = quest;
 
-		keys = new ArrayList<String>();
-		descriptions = new Hashtable<String, String>();
+		keys = new ArrayList<>();
+		descriptions = new Hashtable<>();
 
 		HostGameSetupDialog dialog = new HostGameSetupDialog(null, null, realmSpeakData);
 		GameOptionPane gop = dialog.getGameOptionPane();
-		for (Iterator i = gop.getGameOptionKeys().iterator(); i.hasNext();) {
-			String key = (String) i.next();
+		for (String key : gop.getGameOptionKeys()) {
 			keys.add(key);
 		}
 		for (String key : keys) {

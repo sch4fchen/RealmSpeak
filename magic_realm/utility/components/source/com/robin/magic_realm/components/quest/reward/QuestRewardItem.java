@@ -45,6 +45,7 @@ public class QuestRewardItem extends QuestReward {
 	public static final String ITEM_DESC = "_idsc";
 	public static final String ITEM_CHITTYPES = "_ict";
 	public static final String ITEM_REGEX = "_irx";
+	public static final String FORCE_DEACTIVATION = "_fd";
 	
 	public QuestRewardItem(GameObject go) {
 		super(go);
@@ -89,7 +90,7 @@ public class QuestRewardItem extends QuestReward {
 			Loot.addItemToCharacter(frame,null,character,selected);
 		}
 		else {
-			if (TreasureUtility.doDeactivate(null,character,selected)) { // null JFrame so that character isn't hit with any popups
+			if (TreasureUtility.doDeactivate(null,character,selected,forceDeactivation())) { // null JFrame so that character isn't hit with any popups
 				switch (getGainType()) {
 				case RemoveFromGame:
 					lostItemToDefault(selected);
@@ -139,6 +140,10 @@ public class QuestRewardItem extends QuestReward {
 			return ItemGainType.LoseToLocation;
 		}
 		return ItemGainType.valueOf(getString(GAIN_TYPE));
+	}
+	
+	public boolean forceDeactivation() {
+		return getBoolean(FORCE_DEACTIVATION);
 	}
 	
 	public String getItemDescription() {
