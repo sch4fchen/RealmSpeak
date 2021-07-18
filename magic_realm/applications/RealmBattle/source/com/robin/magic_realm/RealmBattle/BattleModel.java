@@ -939,6 +939,61 @@ public class BattleModel {
 			killer = weaponHolder.getKilledBy(); // if holder is killed, their weapon attack is cancelled too!
 			killLength = weaponHolder.getKilledLength();
 			killSpeed = weaponHolder.getKilledSpeed();
+			if (killer == null && attackerCombat.getKilledBy() != null) {
+				killer = attackerCombat.getKilledBy();
+				killLength = attackerCombat.getKilledLength();
+				killSpeed = attackerCombat.getKilledSpeed();
+			}
+			else if (killer != null && attackerCombat.getKilledBy() != null) {
+				if (round == 1) {
+					if (weaponHolder.getKilledLength() > attackerCombat.getKilledLength()) {
+						killer = weaponHolder.getKilledBy();
+						killLength = weaponHolder.getKilledLength();
+						killSpeed = weaponHolder.getKilledSpeed();
+					}
+					else if (weaponHolder.getKilledLength() < attackerCombat.getKilledLength()) {
+						killer = attackerCombat.getKilledBy();
+						killLength = attackerCombat.getKilledLength();
+						killSpeed = attackerCombat.getKilledSpeed();
+					}
+					else {
+						if (weaponHolder.getKilledSpeed() <= attackerCombat.getKilledSpeed()) {
+							killer = weaponHolder.getKilledBy();
+							killLength = weaponHolder.getKilledLength();
+							killSpeed = weaponHolder.getKilledSpeed();
+						}
+						else {
+							killer = attackerCombat.getKilledBy();
+							killLength = attackerCombat.getKilledLength();
+							killSpeed = attackerCombat.getKilledSpeed();
+						}
+					}
+				}
+				else {
+					if (weaponHolder.getKilledSpeed() < attackerCombat.getKilledSpeed()) {
+						killer = weaponHolder.getKilledBy();
+						killLength = weaponHolder.getKilledLength();
+						killSpeed = weaponHolder.getKilledSpeed();
+					}
+					else if (weaponHolder.getKilledSpeed() > attackerCombat.getKilledSpeed()) {
+						killer = attackerCombat.getKilledBy();
+						killLength = attackerCombat.getKilledLength();
+						killSpeed = attackerCombat.getKilledSpeed();
+					}
+					else {
+						if (weaponHolder.getKilledLength() >= attackerCombat.getKilledSpeed()) {
+							killer = weaponHolder.getKilledBy();
+							killLength = weaponHolder.getKilledLength();
+							killSpeed = weaponHolder.getKilledSpeed();
+						}
+						else {
+							killer = attackerCombat.getKilledBy();
+							killLength = attackerCombat.getKilledLength();
+							killSpeed = attackerCombat.getKilledSpeed();
+						}
+					}
+				}
+			}
 		}
 		GameObject targetKiller = targetCombat.getKilledBy();
 

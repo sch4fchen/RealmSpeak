@@ -1,7 +1,6 @@
 BUG: QuestRewardItem: Losing item does not work
-Minotaur shield: should not attack after was destroyed
-Quests: Mark Item: Mark item when activating or when gained. Rewards: Loose or destroy marked item. Requirement: Have marked item in inventory. Activate marked item.
 QuestReward: Fatigue/Wound chits (type, number, etc -> see req chit) -> character can choose which chit to fatigue/wound
+Quests: Mark Item: Mark item when activating or when gained. Rewards: Loose or destroy marked item. Requirement: Have marked item in inventory. Activate marked item.
 ---:::FEATURES:::---
 Guilds: Assassins, Nature
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): Option: no missile attacks, ?:Sharpness stars are ignored when comparing harm between attacks and parries? Alert?!
