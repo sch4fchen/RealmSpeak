@@ -534,7 +534,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 				shieldCombat.setKilledLength(attacker.getLength());
 				shieldCombat.setKilledSpeed(attacker.getAttackSpeed());
 				shieldCombat.setHitByOrderNumber(attackOrderPos);
-				RealmLogging.logMessage(attacker.getGameObject().getName(),"Destroys shield.");
+				RealmLogging.logMessage(attacker.getGameObject().getName(),"Destroys "+this.getName()+"'s shield.");
 			}
 			return false; // Any attack hitting the shield, does not harm the monster.
 		}
