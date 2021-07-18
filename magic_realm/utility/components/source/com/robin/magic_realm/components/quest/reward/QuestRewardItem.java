@@ -65,6 +65,9 @@ public class QuestRewardItem extends QuestReward {
 		if (objects.size()==1) {
 			selected = objects.get(0);
 		}
+		else if(objects.size()==0) {
+			return;
+		}
 		else {
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,getTitleForDialog()+actionDescription,false);
 			chooser.addGameObjects(objects,true);
