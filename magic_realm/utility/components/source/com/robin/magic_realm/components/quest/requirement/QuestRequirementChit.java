@@ -32,8 +32,8 @@ public class QuestRequirementChit extends QuestRequirement {
 	public static final String AMOUNT = "_amount";
 	public static final String STRENGTH = "_strength";
 	public static final String SPEED = "_speed";
+	public static final String MAGIC_COLOR = "_magic_color";
 	public static final String MAGIC_TYPE = "_magic_type";
-	public static final String MAGIC_LEVEL = "_magic_level";
 	public static final String ONLY_ACTIVE = "_only_active";
 	public static final String NOT_FATIGUED = "_not_fatigued";
 	public static final String NOT_WOUNDED = "_not_wounded";
@@ -66,7 +66,7 @@ public class QuestRequirementChit extends QuestRequirement {
 			break;
 		case Magic:
 			for (CharacterActionChitComponent chit : chitsToCheck) {
-				if (chit.isMagic() && chit.getMagicNumber()>=getMagicLevel() && (getMagicType().matches("Any") || chit.getColorMagic().getColorName().matches(getMagicType()))) {
+				if (chit.isMagic() && chit.getMagicNumber()==getMagicType() && (getMagicColor().matches("Any") || chit.getColorMagic().getColorName().matches(getMagicColor()))) {
 					chits.add(chit);
 				}
 			}
@@ -124,11 +124,11 @@ public class QuestRequirementChit extends QuestRequirement {
 	private int getSpeed() {
 		return getInt(SPEED);
 	}
-	private String getMagicType() {
-		return getString(MAGIC_TYPE);
+	private String getMagicColor() {
+		return getString(MAGIC_COLOR);
 	}
-	private int getMagicLevel() {
-		return getInt(MAGIC_LEVEL);
+	private int getMagicType() {
+		return getInt(MAGIC_TYPE);
 	}
 	private boolean onlyActive() {
 		return getBoolean(ONLY_ACTIVE);

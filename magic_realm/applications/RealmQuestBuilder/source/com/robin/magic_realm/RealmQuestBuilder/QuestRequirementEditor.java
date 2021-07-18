@@ -85,8 +85,8 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementChit.AMOUNT, "Number of chits", FieldType.Number));
 				list.add(new QuestPropertyBlock(QuestRequirementChit.STRENGTH, "Strength of the chits", FieldType.StringSelector, VulnerabilityType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementChit.SPEED, "Speed of the chits (0=any)", FieldType.NumberAll));
-				list.add(new QuestPropertyBlock(QuestRequirementChit.MAGIC_TYPE, "Magic type (only for magic chits)", FieldType.StringSelector, new Object[] { "Any",ColorMagic.White,ColorMagic.Grey,ColorMagic.Gold,ColorMagic.Purple,ColorMagic.Black }));
-				list.add(new QuestPropertyBlock(QuestRequirementChit.MAGIC_LEVEL, "Magic level (only for magic chits)", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRequirementChit.MAGIC_COLOR, "Magic color (only for magic chits)", FieldType.StringSelector, new Object[] { "Any",ColorMagic.White,ColorMagic.Grey,ColorMagic.Gold,ColorMagic.Purple,ColorMagic.Black }));
+				list.add(new QuestPropertyBlock(QuestRequirementChit.MAGIC_TYPE, "Magic type (only for magic chits)", FieldType.Number));
 				list.add(new QuestPropertyBlock(QuestRequirementChit.ONLY_ACTIVE, "Chits must be active", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementChit.NOT_FATIGUED, "Chits must not be fatigued", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementChit.NOT_WOUNDED, "Chits must not be wounded", FieldType.Boolean));
