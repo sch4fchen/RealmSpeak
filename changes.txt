@@ -3,7 +3,7 @@ QUEST UPDATE:
 # QuestRequirement: Chit
 # QuestRequirementInventory: Option to check for deactivated items
 # QuestRequirementLocation: Option to check character can be in a non-clearing location
-# QuestRewardItem: Option to force loosing an item (e.g. cursed items)
+# QuestRewardItem: Option to force losing an item (e.g. cursed items)
 # QuestRewardMoveDenizen: Option to move only denizens of character's tile or clearing
 # QuestRewardRegenerateDenizen: Option to regenerate only denizens of character's tile
 # QuestRewardKillDenizen: Option to kill only denizens of character's tile

@@ -1,4 +1,5 @@
-Fix QuestRewardItem: in Tester working, in RS not; in Tester: works for Cloven Hoof, Infernal Bell, Ring of Pain BUT NOT Dragon Essence (no item to choose), Ring of Shejoh (no item to choose)
+Quests: Mark Item: Mark item when activating or when gained. Rewards: Loose or destroy marked item. Requirement: Have marked item in inventory. Activate marked item.
+QuestReward: Fatigue/Wound chits (type, number, etc -> see req chit) -> character can choose which chit to fatigue/wound
 ---:::FEATURES:::---
 Guilds: Assassins, Nature
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): Option: no missile attacks, ?:Sharpness stars are ignored when comparing harm between attacks and parries? Alert?!
@@ -8,7 +9,6 @@ Expansion 1: Items: Magic path, Hound, Magic meat, Needful thing
 Expansion 1: Travelers: Doppleganger, Necromancer, Soothsayer
 Expansion 1: Spells (to "New spells": new_spells_1): Magic Shield, Sleep, Wall of Force, Duel, Spider web, Rocks Glow, Mystic boots, Flame sword, Fighting hands, Magic mirror, Lucky blow, Fire trap
 SuperRealm: Steel Against Magic: A character who is casting a spell and has no active armor counters may also use his active weapon and a second attention chit to target an individual and make a separate attack (or parry) if, and only if, the active weapon is the Staff.
-QuestReward: Fatigue/Wound chits (type, number, etc -> see req chit) -> character can choose which chit to fatigue/wound
 Merlin's Use Horse Lot: http://www.nand.it/mr/mr15.html
 0001563: Showing flip sides of tiles and counters in HTML
 0001645: Automatic HTML export
