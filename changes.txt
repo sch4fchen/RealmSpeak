@@ -1,5 +1,6 @@
 Version 1.1.4.5 - Changes since 1.1.4.4
 QUEST UPDATE:
+# Updates to James' quests
 # QuestRequirement: Chit
 # QuestRequirementInventory: Option to check for deactivated items
 # QuestRequirementLocation: Option to check character can be in a non-clearing location
@@ -17,7 +18,7 @@ BUGS/ISSUES:
 # Fix QuestRewardKillDenizen with selected option "Characters location" now only kills denizen in the corresponding clearing
 # Fix QuestRewardItem: Fix RemoveFromGame option
 # Fix game crash after dead hireling is reset (when playing with quests)
-# Fix Minotaur's buckler not blocking all hits
+# Fix Minotaur's buckler blocking behaviour
 
 Version 1.1.4.4 - Changes since 1.1.4.3
 QUEST UPDATE:
