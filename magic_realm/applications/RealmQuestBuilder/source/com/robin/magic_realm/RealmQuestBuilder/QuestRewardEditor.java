@@ -211,6 +211,12 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case MarkDenizen:
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.DENIZEN_REGEX, "Denizen name filter (regex)", FieldType.Regex, null, new String[] { "denizen" }));
 				break;
+			case MarkItem:
+				list.add(new QuestPropertyBlock(QuestRewardMarkItem.ITEM_REGEX, "Item RegEx", FieldType.Regex));
+				list.add(new QuestPropertyBlock(QuestRewardMarkItem.ITEM_CHITTYPES, "Item Type Restriction", FieldType.ChitType));
+				list.add(new QuestPropertyBlock(QuestRewardMarkItem.ITEM_INVENTORY, "In character's inventory", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkItem.SINGLE_ITEM, "Character must choose single item", FieldType.Boolean));
+				break;
 			case MinorCharacter:
 				list.add(new QuestPropertyBlock(QuestRewardMinorCharacter.MINOR_CHARACTER, "Minor character ", FieldType.SmartTextLine, quest.getMinorCharacters().toArray()));
 				list.add(new QuestPropertyBlock(QuestRewardMinorCharacter.GAIN_TYPE, "Gain or lose", FieldType.StringSelector, GainType.values()));

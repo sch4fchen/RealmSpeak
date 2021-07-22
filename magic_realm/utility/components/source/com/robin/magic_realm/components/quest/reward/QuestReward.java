@@ -71,6 +71,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		MagicColor,
 		MakeWhole,
 		MarkDenizen,
+		MarkItem,
 		MinorCharacter,
 		MoveDenizen,
 		PathsPassages,
@@ -150,6 +151,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case MagicColor:				return "Provides a magic color to a clearing.";
 				case MakeWhole:					return "Heals all fatigue and wounds, cancels wither curse and repairs items.";
 				case MarkDenizen:				return "Mark a particular denizen for later reference.  This is useful if you want to make sure a character kills (for example) a particular monster.";
+				case MarkItem:					return "Marks particular item(s) for later reference.  This is useful if you want to make sure a character owns (for example) a particular item.";
 				case MinorCharacter:			return "Add or remove a Minor Character.  Must create Minor Characters BEFORE creating this reward.";
 				case MoveDenizen:				return "Move one or several denizen to a location.";
 				case PathsPassages:				return "Discover Paths and/or Passages in the current clearing or tile.";
@@ -387,6 +389,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case MarkDenizen:
 				reward = new QuestRewardMarkDenizen(go);
+				break;
+			case MarkItem:
+				reward = new QuestRewardMarkItem(go);
 				break;
 			case MinorCharacter:
 				reward = new QuestRewardMinorCharacter(go);

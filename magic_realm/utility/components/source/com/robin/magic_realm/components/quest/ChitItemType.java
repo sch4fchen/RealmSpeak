@@ -47,7 +47,7 @@ public enum ChitItemType {
 	}
 	public static ArrayList<String> listToStrings(ArrayList<ChitItemType> types) {
 		if (types==null) return null;
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		for(ChitItemType cit:types) {
 			list.add(cit.toString());
 		}
@@ -55,7 +55,7 @@ public enum ChitItemType {
 	}
 	public static ArrayList<ChitItemType> listToTypes(ArrayList<String> strings) {
 		if (strings==null) return null;
-		ArrayList<ChitItemType> list = new ArrayList<ChitItemType>();
+		ArrayList<ChitItemType> list = new ArrayList<>();
 		for(String string:strings) {
 			list.add(ChitItemType.valueOf(string));
 		}
