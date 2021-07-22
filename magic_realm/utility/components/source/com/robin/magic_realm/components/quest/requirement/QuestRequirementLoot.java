@@ -25,6 +25,7 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
+import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.TreasureType;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -33,6 +34,7 @@ public class QuestRequirementLoot extends QuestRequirement {
 	
 	public static final String TREASURE_TYPE = "_tt";
 	public static final String REGEX_FILTER = "_regex";
+	public static final String REQ_MARK = "_req_mark";
 	
 	public QuestRequirementLoot(GameObject go) {
 		super(go);
@@ -93,9 +95,13 @@ public class QuestRequirementLoot extends QuestRequirement {
 		if (!typeMatches.isEmpty()) {
 			String regex = getRegExFilter();
 			Pattern pattern = regex==null || regex.trim().length()==0?null:Pattern.compile(regex);
-			
+			String questId = getParentQuest().getGameObject().getStringId();
 			for(GameObject go:typeMatches) {
 				if (pattern==null || pattern.matcher(go.getName()).find()) {
+					if (requiresMark()) {
+						String mark = go.getThisAttribute(QuestConstants.QUEST_MARK);
+						if (mark==null || !mark.equals(questId)) continue;
+					}
 					matches.add(go);
 				}
 			}
@@ -137,5 +143,8 @@ public class QuestRequirementLoot extends QuestRequirement {
 	}
 	public String getRegExFilter() {
 		return getString(REGEX_FILTER);
+	}
+	public boolean requiresMark() {
+		return getBoolean(REQ_MARK);
 	}
 }

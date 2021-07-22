@@ -291,7 +291,7 @@ public abstract class QuestBlockEditor extends GenericEditor {
 		return go==null?null:(ChitComponent)RealmComponent.getRealmComponent(go);
 	}
 	private String launchRegexHelper(String text,QuestPropertyBlock block) {
-		ArrayList<String> objectNames = new ArrayList<String>();
+		ArrayList<String> objectNames = new ArrayList<>();
 		if (chitTypePanel!=null) {
 			ArrayList<GameObject> objects = QuestRewardItem.getObjectList(realmSpeakData.getGameObjects(),chitTypePanel.getChitItemTypes(),null); 
 			for(GameObject go:objects) {
@@ -312,7 +312,7 @@ public abstract class QuestBlockEditor extends GenericEditor {
 				}
 			}
 			else {
-				objectNames = new ArrayList<String>(realmSpeakData.getAllGameObjectNames());
+				objectNames = new ArrayList<>(realmSpeakData.getAllGameObjectNames());
 			}
 		}
 		Collections.sort(objectNames);

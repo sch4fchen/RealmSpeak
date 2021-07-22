@@ -31,6 +31,7 @@ import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.ChitItemType;
 import com.robin.magic_realm.components.quest.ItemGainType;
+import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.table.Loot;
 import com.robin.magic_realm.components.utility.ClearingUtility;
@@ -46,6 +47,8 @@ public class QuestRewardItem extends QuestReward {
 	public static final String ITEM_CHITTYPES = "_ict";
 	public static final String ITEM_REGEX = "_irx";
 	public static final String FORCE_DEACTIVATION = "_fd";
+	public static final String MARK_ITEM = "_mi";
+	public static final String REQ_MARK = "_rm";
 	
 	public QuestRewardItem(GameObject go) {
 		super(go);
@@ -62,6 +65,19 @@ public class QuestRewardItem extends QuestReward {
 			actionDescription = ": Select ONE item from your inventory to lose.";
 			objects = getObjectList(character.getInventory(),getChitTypes(),getItemRegex());
 		}
+		
+		if (requiresMark()) {
+			ArrayList<GameObject> objectsToCheck = new ArrayList<>();
+			objectsToCheck.addAll(objects);
+			objects.clear();
+			String questId = getParentQuest().getGameObject().getStringId();
+			for (GameObject item : objectsToCheck) {
+				String mark = item.getThisAttribute(QuestConstants.QUEST_MARK);
+				if (mark==null || !mark.equals(questId)) continue;
+				objects.add(item);
+			}
+		}
+		
 		GameObject selected = null;
 		if (objects.size()==1) {
 			selected = objects.get(0);
@@ -80,6 +96,10 @@ public class QuestRewardItem extends QuestReward {
 			GameObject newItem = selected.copy();
 			newItem.setThisAttribute(Constants.CLONED);
 			selected = newItem;
+		}
+		
+		if (markItem()) {
+			selected.setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
 		}
 		
 		if (isGain()) {
@@ -145,6 +165,14 @@ public class QuestRewardItem extends QuestReward {
 		return getBoolean(FORCE_DEACTIVATION);
 	}
 	
+	public boolean markItem() {
+		return getBoolean(MARK_ITEM);
+	}
+	
+	public boolean requiresMark() {
+		return getBoolean(REQ_MARK);
+	}
+	
 	public String getItemDescription() {
 		return getString(ITEM_DESC);
 	}
@@ -159,7 +187,7 @@ public class QuestRewardItem extends QuestReward {
 	
 	public static ArrayList<GameObject> getObjectList(ArrayList<GameObject> sourceObjects,ArrayList<ChitItemType> chitItemTypes,String regEx) {
 		Pattern pattern = (regEx==null || regEx.length()==0)?null:Pattern.compile(regEx);
-		ArrayList<GameObject> objects = new ArrayList<GameObject>();
+		ArrayList<GameObject> objects = new ArrayList<>();
 		GamePool pool = new GamePool(sourceObjects);
 		for(ChitItemType cit:chitItemTypes) {
 			for(GameObject obj:pool.extract(Arrays.asList(cit.getKeyVals()))) {

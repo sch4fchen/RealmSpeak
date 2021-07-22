@@ -34,6 +34,7 @@ public class QuestRequirementInventory extends QuestRequirementLoot {
 	public static final String NUMBER = "_num";
 	public static final String ITEM_ACTIVE = "_iact";
 	public static final String ITEM_DEACTIVE = "_idact";
+	public static final String REQ_MARK = "_req_mark";
 
 	public QuestRequirementInventory(GameObject go) {
 		super(go);

@@ -1,6 +1,9 @@
 Version 1.1.4.6 - Changes since 1.1.4.5
 QUEST UPDATE:
 # QuestReward: DamageChit
+# QuestRewardItem: Option to mark item, option for required mark for item
+# QuestRequirementInventory: Option for marked items
+# QuestRequirementLoot: Option for marked items
 NEW FEATURES:
 #
 BUGS/ISSUES:

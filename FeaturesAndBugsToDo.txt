@@ -1,4 +1,4 @@
-Quests: Mark Item: Mark item when activating or when gained. Rewards: Loose or destroy marked item. Requirement: Have marked item in inventory. Activate marked item.
+Quests: Mark Item: Mark item when activating
 ---:::FEATURES:::---
 Guilds: Assassins, Nature
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): Option: no missile attacks, ?:Sharpness stars are ignored when comparing harm between attacks and parries? Alert?!

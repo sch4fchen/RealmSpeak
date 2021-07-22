@@ -143,6 +143,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementInventory.NUMBER, "How many in inventory?", FieldType.Number));
 				list.add(new QuestPropertyBlock(QuestRequirementInventory.ITEM_ACTIVE, "Require activated?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementInventory.ITEM_DEACTIVE, "Require deactivated?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementInventory.REQ_MARK, "Requires mark?", FieldType.Boolean));
 				break;
 			case Kill:
 				list.add(new QuestPropertyBlock(QuestRequirementKill.REGEX_FILTER, "Denizen name filter (regex)", FieldType.Regex, null, new String[] { "denizen" }));
@@ -159,6 +160,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case Loot:
 				list.add(new QuestPropertyBlock(QuestRequirementLoot.TREASURE_TYPE, "Type of Loot to acquire", FieldType.StringSelector, TreasureType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementLoot.REGEX_FILTER, "Loot name filter (regex)", FieldType.Regex, null, new String[] { "item","treasure_within_treasure" }));
+				list.add(new QuestPropertyBlock(QuestRequirementLoot.REQ_MARK, "Loot requires mark", FieldType.Boolean));
 				break;
 			case NextPhase:
 				list.add(new QuestPropertyBlock(QuestRequirementNextPhase.PHASES_TO_SKIP, "Phases to pass (1 day has 4 phases)", FieldType.Number));

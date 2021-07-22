@@ -174,6 +174,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardItem.ITEM_CHITTYPES, "Item Type Restriction", FieldType.ChitType));
 				list.add(new QuestPropertyBlock(QuestRewardItem.ITEM_REGEX, "Item RegEx", FieldType.Regex));
 				list.add(new QuestPropertyBlock(QuestRewardItem.FORCE_DEACTIVATION, "Force losing (e.g. cursed)", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardItem.MARK_ITEM, "Mark item", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardItem.REQ_MARK, "Requires mark", FieldType.Boolean));
 				break;
 			case Journal:
 				list.add(new QuestPropertyBlock(QuestRewardJournal.JOURNAL_KEY, "Journal Key (no spaces)", FieldType.NoSpacesTextLine));
