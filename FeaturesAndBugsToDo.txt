@@ -1,4 +1,3 @@
-QuestReward: Fatigue/Wound chits (type, number, etc -> see req chit) -> character can choose which chit to fatigue/wound
 Quests: Mark Item: Mark item when activating or when gained. Rewards: Loose or destroy marked item. Requirement: Have marked item in inventory. Activate marked item.
 ---:::FEATURES:::---
 Guilds: Assassins, Nature
