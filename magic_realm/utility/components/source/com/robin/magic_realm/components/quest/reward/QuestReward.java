@@ -51,6 +51,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		Curse,
 		CustomTreasure,
 		Damage,
+		DamageChit,
 		DeactivateQuest,
 		DiscardQuest,
 		DiscoverTreasureSite,
@@ -130,6 +131,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case Curse:						return "Curses the character.";
 				case CustomTreasure:			return "Create a new treasure by taking an existing treasure, renaming it, and giving it new base attributes.";
 				case Damage:					return "Character receives fatigue or wounds.";
+				case DamageChit:				return "Character must fatigue or wound a specific chit.";
 				case DiscardQuest:				return "Current quest is discarded.";
 				case DiscoverTreasureSite:		return "Character discovers treasure site(s).";
 				case DrawQuests:				return "Character draws quest card(s).";
@@ -325,6 +327,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case Damage:
 				reward = new QuestRewardDamage(go);
+				break;
+			case DamageChit:
+				reward = new QuestRewardDamageChit(go);
 				break;
 			case DeactivateQuest:
 				reward = new QuestRewardDeactivateQuest(go);

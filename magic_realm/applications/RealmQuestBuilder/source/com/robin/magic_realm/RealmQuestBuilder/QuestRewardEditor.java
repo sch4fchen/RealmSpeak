@@ -24,6 +24,7 @@ import javax.swing.JFrame;
 import com.robin.game.objects.*;
 import com.robin.magic_realm.RealmCharacterBuilder.EditPanel.CompanionEditPanel;
 import com.robin.magic_realm.RealmQuestBuilder.QuestPropertyBlock.FieldType;
+import com.robin.magic_realm.components.attribute.ColorMagic;
 import com.robin.magic_realm.components.attribute.RelationshipType;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.quest.reward.*;
@@ -116,6 +117,15 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case Damage:
 				list.add(new QuestPropertyBlock(QuestRewardDamage.DAMAGE_TYPE, "Damage Type", FieldType.StringSelector, DamageType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardDamage.AMOUNT, "Amount", FieldType.Number));
+				break;
+			case DamageChit:
+				list.add(new QuestPropertyBlock(QuestRewardDamageChit.DAMAGE_TYPE, "Damage Type", FieldType.StringSelector, DamageType.values()));
+				list.add(new QuestPropertyBlock(QuestRewardDamageChit.TYPE, "Chit type", FieldType.StringSelector, QuestRewardDamageChit.ChitType.values()));
+				list.add(new QuestPropertyBlock(QuestRewardDamageChit.STRENGTH, "Strength of the chit", FieldType.StringSelector, VulnerabilityType.values()));
+				list.add(new QuestPropertyBlock(QuestRewardDamageChit.SPEED, "Speed of the chit (0=any)", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRewardDamageChit.MAGIC_COLOR, "Magic color (only for magic chit)", FieldType.StringSelector, new Object[] { "Any",ColorMagic.White,ColorMagic.Grey,ColorMagic.Gold,ColorMagic.Purple,ColorMagic.Black }));
+				list.add(new QuestPropertyBlock(QuestRewardDamageChit.MAGIC_TYPE, "Magic type (only for magic chit)", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRewardDamageChit.ONLY_ACTIVE, "Chit must be active", FieldType.Boolean));
 				break;
 			case DeactivateQuest:
 				break;
