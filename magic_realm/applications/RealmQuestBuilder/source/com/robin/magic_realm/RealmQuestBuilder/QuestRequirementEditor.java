@@ -156,7 +156,10 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case LearnAwaken:
 				list.add(new QuestPropertyBlock(QuestRequirementLearnAwaken.REGEX_FILTER, "Spell filter (regex)", FieldType.Regex, null, new String[] { "spell,learnable" }));
 				list.add(new QuestPropertyBlock(QuestRequirementLearnAwaken.MUST_LEARN, "Must Learn Spell", FieldType.Boolean));
-				break;			
+				break;
+			case LocationExists:
+				list.add(new QuestPropertyBlock(QuestRequirementLocationExists.LOCATION, "Quest Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
+				break;	
 			case Loot:
 				list.add(new QuestPropertyBlock(QuestRequirementLoot.TREASURE_TYPE, "Type of Loot to acquire", FieldType.StringSelector, TreasureType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementLoot.REGEX_FILTER, "Loot name filter (regex)", FieldType.Regex, null, new String[] { "item","treasure_within_treasure" }));
@@ -235,7 +238,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 	}
 
 	private String[] getAllClearingCodes() {
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
 		for(GameObject go:pool.find("tile")) {
 			TileComponent tile = (TileComponent)RealmComponent.getRealmComponent(go);
@@ -248,7 +251,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 	}
 	
 	private ArrayList<String> getDiscoveryStrings() {
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		
 		// Build the discovery lists
 		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
@@ -260,7 +263,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 		}
 		Collections.sort(list);
 		
-		ArrayList<String> sublist = new ArrayList<String>();
+		ArrayList<String> sublist = new ArrayList<>();
 		for(GameObject go:pool.find("tile")) {
 			TileComponent tile = (TileComponent)RealmComponent.getRealmComponent(go);
 			for(PathDetail path:tile.getHiddenPaths()) {
@@ -277,7 +280,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 	}
 
 	private ArrayList<QuestLocation> getOptionalQuestLocationArray() {
-		ArrayList<QuestLocation> list = new ArrayList<QuestLocation>();
+		ArrayList<QuestLocation> list = new ArrayList<>();
 		ArrayList<QuestLocation> locations = quest.getLocations();
 		if (locations != null) {
 			list.addAll(locations);
@@ -287,7 +290,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 	}
 	
 	private ArrayList<String> getSeasonStrings() {
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
 		for(GameObject go:pool.find("season")) {
 			list.add(go.getName());

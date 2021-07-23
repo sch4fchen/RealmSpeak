@@ -55,6 +55,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		Inventory, // a requirement that tests what you have in inventory
 		Kill, 
 		LearnAwaken,
+		LocationExists,
 		Loot, // (optional location designation)
 		NextPhase,
 		NoDenizens,
@@ -120,6 +121,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests for a specific kill or kills.";
 				case LearnAwaken:
 					return "Tests whether a spell has just been awakened and/or learned.";
+				case LocationExists:
+					return "Tests whether a location exists.";
 				case Loot:
 					return "Tests for a specific item result of looting.";
 				case NextPhase:
@@ -152,6 +155,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests for a specific TRADE occurrence.";
 				case Weather:
 					return "Tests for a specific weather.";
+			default:
+				break;
 			}
 			return "(No Description)";
 		}
@@ -305,6 +310,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case LearnAwaken:
 				requirement = new QuestRequirementLearnAwaken(go);
+				break;
+			case LocationExists:
+				requirement = new QuestRequirementLocationExists(go);
 				break;
 			case Loot:
 				requirement = new QuestRequirementLoot(go);

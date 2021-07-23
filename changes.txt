@@ -1,5 +1,6 @@
 Version 1.1.4.6 - Changes since 1.1.4.5
 QUEST UPDATE:
+# QuestReward: LocationExists
 # QuestReward: DamageChit
 # QuestReward: MarkItem
 # QuestRewardItem: Option to mark item, option for required mark for item
