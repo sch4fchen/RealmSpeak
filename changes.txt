@@ -1,3 +1,11 @@
+Version 1.1.4.7 - Changes since 1.1.4.6
+QUEST UPDATE:
+#
+NEW FEATURES:
+#
+BUGS/ISSUES:
+#
+
 Version 1.1.4.6 - Changes since 1.1.4.5
 QUEST UPDATE:
 # QuestReward: LocationExists
@@ -6,13 +14,10 @@ QUEST UPDATE:
 # QuestRewardItem: Option to mark item, option for required mark for item
 # QuestRequirementInventory: Option for marked items
 # QuestRequirementLoot: Option for marked items
-NEW FEATURES:
-#
 BUGS/ISSUES:
 # Fix attack with TreasureItem
 # Fix enchant action to enchant active (instead of alerted) magic chits
 # Fix activating Timeless Jewel un-hiding character
-
 
 Version 1.1.4.5 - Changes since 1.1.4.4
 QUEST UPDATE:
