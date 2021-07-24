@@ -436,7 +436,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			if (!hasWeapon) {
 				// Check for treasure weapons
 				GameObject tw = getTreasureWeaponObject();
-				if (tw!=null && combatChit.getWeaponId() == tw.getStringId()) {
+				if (tw!=null && combatChit.getWeaponId().equals(tw.getStringId())) {
 					if (tw.hasThisAttribute(Constants.IGNORE_ARMOR)) {
 						ignoreArmor = true;
 					}

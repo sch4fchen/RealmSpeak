@@ -4784,7 +4784,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			return getHiringCharacter().getEnchantableChits();
 		}
 		ArrayList<CharacterActionChitComponent> ret = new ArrayList<>();
-		for (CharacterActionChitComponent chit:getAlertedChits()) {
+		for (CharacterActionChitComponent chit:getActiveMagicChits()) {
 			if ("MAGIC".equals(chit.getAction()) && chit.getMagicNumber()<6) {
 				ret.add(chit);
 			}
