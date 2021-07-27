@@ -43,6 +43,7 @@ public class QuestRewardHireling extends QuestReward {
 	public static final String ACQUISITION_TYPE = "_goc";
 	public static final String TERM_OF_HIRE = "_toh";
 	public static final String EXCLUDE_HORSE = "_eh";
+	public static final String HIRELING_RENAME = "_hname";
 	public static final String LOCATION_ONLY = "_loc_only";
 	public static final String LOCATION = "_loc";
 
@@ -81,6 +82,9 @@ public class QuestRewardHireling extends QuestReward {
 
 		if (at == ChitAcquisitionType.Lose) {
 			character.removeHireling(selected);
+			if (renameHirelingTo() != null && !renameHirelingTo().isEmpty()) {
+				selected.setName(renameHirelingTo());
+			}
 		}
 		else {
 			RealmComponent rc = RealmComponent.getRealmComponent(selected);
@@ -103,6 +107,7 @@ public class QuestRewardHireling extends QuestReward {
 					
 				}
 			}
+			
 			selected.setThisAttribute(Constants.HIRELING);
 			TermOfHireType termofHire = getTermOfHireType();
 			if (termofHire == TermOfHireType.Normal || termofHire == TermOfHireType.Permanent) {
@@ -128,6 +133,10 @@ public class QuestRewardHireling extends QuestReward {
 				int random = RandomNumber.getRandom(validLocations.size());
 				TileLocation tileLocation = validLocations.get(random);
 				tileLocation.clearing.add(selected,null);
+			}
+			
+			if (renameHirelingTo() != null && !renameHirelingTo().isEmpty()) {
+				selected.setName(renameHirelingTo());
 			}
 		}
 	}
@@ -194,6 +203,10 @@ public class QuestRewardHireling extends QuestReward {
 	
 	private boolean excludeHorse() {
 		return getBoolean(EXCLUDE_HORSE);
+	}
+	
+	private String renameHirelingTo() {
+		return getString(HIRELING_RENAME);
 	}
 	
 	public boolean usesLocationTag(String tag) {

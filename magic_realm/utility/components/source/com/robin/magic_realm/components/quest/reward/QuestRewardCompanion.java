@@ -44,6 +44,7 @@ public class QuestRewardCompanion extends QuestReward {
 	public static final String GAIN_TYPE = "_goc";
 	public static final String EXCLUDE_HORSE = "_eh";
 	public static final String COMPANION_STAYS_INGAME = "_cig";
+	public static final String COMPANION_RENAME = "_cname";
 	public static final String LOCATION_ONLY = "_loc_only";
 	public static final String LOCATION = "_loc";
 	
@@ -71,6 +72,9 @@ public class QuestRewardCompanion extends QuestReward {
 				TileLocation tileLocation = validLocations.get(random);
 				tileLocation.clearing.add(companion,null);
 			}
+			if (renameCompanionTo() != null && !renameCompanionTo().isEmpty()) {
+				companion.setName(renameCompanionTo());
+			}
 		}
 		else {
 			GamePool pool = new GamePool(character.getGameData().getGameObjects());
@@ -84,6 +88,9 @@ public class QuestRewardCompanion extends QuestReward {
 					// Companions must be removed from the map as well, since they are not rehired!
 					if (!leaveCompanionInGameWhenLost()) {
 						ClearingUtility.moveToLocation(companion,null);
+					}
+					if (renameCompanionTo() != null && !renameCompanionTo().isEmpty()) {
+						companion.setName(renameCompanionTo());
 					}
 					return;
 				}
@@ -138,6 +145,10 @@ public class QuestRewardCompanion extends QuestReward {
 	
 	private boolean excludeHorse() {
 		return getBoolean(EXCLUDE_HORSE);
+	}
+	
+	private String renameCompanionTo() {
+		return getString(COMPANION_RENAME);
 	}
 	
 	private boolean locationOnly() {
