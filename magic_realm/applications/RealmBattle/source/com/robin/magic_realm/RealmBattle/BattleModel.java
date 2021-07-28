@@ -1705,7 +1705,15 @@ public class BattleModel {
 				CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
 				if (character.getWishStrength()!=null) {
 					// Character has a "Wish for Strength" result applied
-					if (combat.getHitResult()!=null && !BattleUtility.findFightComponentsWithCombatBox(character.getActiveFightChitsAsRealmComponents()).isEmpty()) {
+					Collection<RealmComponent> list = character.getActiveFightChitsAsRealmComponents();
+					// Add any gloves cards
+					for (GameObject go: character.getActiveInventory()) {
+						RealmComponent item = RealmComponent.getRealmComponent(go);
+						if (go.hasThisAttribute("gloves")) {
+							list.add(item);
+						}
+					}
+					if (combat.getHitResult()!=null && !BattleUtility.findFightComponentsWithCombatBox(list).isEmpty()) {
 						// Character hit a target this round with a physical attack (chit or gloves)
 						character.clearWishStrength();
 					}
