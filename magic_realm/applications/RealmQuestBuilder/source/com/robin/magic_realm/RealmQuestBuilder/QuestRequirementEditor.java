@@ -66,7 +66,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case Attribute:
 				list.add(new QuestPropertyBlock(QuestRequirementAttribute.ATTRIBUTE_TYPE, "Which attribute to measure", FieldType.StringSelector, AttributeType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementAttribute.TARGET_VALUE_TYPE, "Only count points gained during the", FieldType.StringSelector, TargetValueType.values()));
-				list.add(new QuestPropertyBlock(QuestRequirementAttribute.VALUE, "How much should it be", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRequirementAttribute.VALUE, "How much should it be", FieldType.NumberAll));
 				list.add(new QuestPropertyBlock(QuestRequirementAttribute.REGEX_FILTER, "Filter points to what things (regex)", FieldType.Regex, null, new String[] { "item", "spell", "denizen" }));
 				list.add(new QuestPropertyBlock(QuestRequirementAttribute.AUTO_JOURNAL, "Auto Journal Entry", FieldType.Boolean));
 				break;
