@@ -51,10 +51,9 @@ public class ExtraActionEditPanel extends AdvantageEditPanel {
 		addOption("CACHE","C");
 		
 		// Initialize, if you can
-		ArrayList extra = getAttributeList(Constants.EXTRA_ACTIONS);
+		ArrayList<String> extra = getAttributeList(Constants.EXTRA_ACTIONS);
 		if (extra!=null) {
-			for (Iterator i=extra.iterator();i.hasNext();) {
-				String extraAction = (String)i.next();
+			for (String extraAction : extra) {
 				JRadioButton button = actionHash.get(extraAction);
 				button.setSelected(true);
 				break; // assume only ONE per list
@@ -80,7 +79,7 @@ public class ExtraActionEditPanel extends AdvantageEditPanel {
 		for (String action:actionHash.keySet()) {
 			JRadioButton button = actionHash.get(action);
 			if (button.isSelected()) {
-				ArrayList<String> list = new ArrayList<String>();
+				ArrayList<String> list = new ArrayList<>();
 				list.add(action);
 				setAttributeList(Constants.EXTRA_ACTIONS,list);
 				break;

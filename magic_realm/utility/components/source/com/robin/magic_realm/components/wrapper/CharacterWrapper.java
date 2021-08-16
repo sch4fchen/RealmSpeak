@@ -2098,7 +2098,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			ArrayList<String> free = item.getThisAttributeList(Constants.EXTRA_ACTIONS);
 			if (free!=null) {
 				for (String freeAction : free) {
-					pm.addFreeAction(freeAction,item);
+					pm.addFreeAction(freeAction,item,null,true);
 				}
 			}
 			if (item.hasThisAttribute(Constants.EXTRA_CAVE_PHASE)) {

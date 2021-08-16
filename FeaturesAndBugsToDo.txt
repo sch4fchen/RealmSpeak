@@ -1,6 +1,8 @@
-BUG?: KillDenizen of renamed hirelings does not work in RealmSpeak, only in QuestTester; QuestRewardHireling also shows renamed denizens in RealmSpeak
-Hide Hirelings/Companions/SummonedMonsters optional if added to undiscovered dwelling -> add to corresponding setup card
-Hireling: Option: only choose from not cloned hirelings (e.g. Clone Soldier 1, clone again -> still only original Soldier 1 to choose from)
+Feature: Add lich and zombie to summon monster reward (# all generated monsters?)
+BUG?: RENAMING in RS does not work?: KillDenizen of renamed hirelings does not work in RealmSpeak, only in QuestTester; QuestRewardHireling also shows renamed denizens in RealmSpeak
+Feature: Hide Hirelings/Companions/SummonedMonsters optional if added to undiscovered dwelling -> add to corresponding setup card
+Feature: Hireling: Option: only choose from not cloned hirelings (e.g. Clone Soldier 1, clone again -> still only original Soldier 1 to choose from)
+House rule: not allow to attack neutral, friendly or allie natives + house rule in notes of book of learnings + house rule: no battles against natives at all
 ---:::FEATURES:::---
 Guilds: Assassins, Nature
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): Option: no missile attacks, ?:Sharpness stars are ignored when comparing harm between attacks and parries? Alert?!

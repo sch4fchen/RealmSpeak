@@ -6,6 +6,7 @@ NEW FEATURES:
 #
 BUGS/ISSUES:
 # Fix "wish for strength" expiring when using gloves for successful attack
+# Fix granting all additional actions by minor characters
 
 Version 1.1.4.6 - Changes since 1.1.4.5
 QUEST UPDATE:
