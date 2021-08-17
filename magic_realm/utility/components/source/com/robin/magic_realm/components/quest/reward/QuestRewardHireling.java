@@ -40,6 +40,7 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 public class QuestRewardHireling extends QuestReward {
 	private static Logger logger = Logger.getLogger(QuestStep.class.getName());
 	public static final String HIRELING_REGEX = "_hrx";
+	public static final String EXCLUDE_CLONED = "_hrx_ec";
 	public static final String ACQUISITION_TYPE = "_goc";
 	public static final String TERM_OF_HIRE = "_toh";
 	public static final String EXCLUDE_HORSE = "_eh";
@@ -66,7 +67,7 @@ public class QuestRewardHireling extends QuestReward {
 			actionDescription = ": Select ONE hireling to join you.";
 			objects = getGameData().getGameObjects();
 		}
-		ArrayList<GameObject> selectionObjects = getObjectList(objects, at, getHirelingRegex());
+		ArrayList<GameObject> selectionObjects = getObjectList(objects, at, getHirelingRegex(), excludeCloned());
 		if (selectionObjects.size() == 0)
 			return; // no real reward!
 		GameObject selected = null;
@@ -141,18 +142,20 @@ public class QuestRewardHireling extends QuestReward {
 		}
 	}
 
-	private static ArrayList<GameObject> getObjectList(ArrayList<GameObject> sourceObjects, ChitAcquisitionType at, String regEx) {
+	private static ArrayList<GameObject> getObjectList(ArrayList<GameObject> sourceObjects, ChitAcquisitionType at, String regEx, boolean excludeCloned) {
 		Pattern pattern = (regEx == null || regEx.length() == 0) ? null : Pattern.compile(regEx);
 		GamePool pool = new GamePool(sourceObjects);
 		ArrayList<GameObject> objects = new ArrayList<>();
 		for (GameObject go : pool.find("native,rank")) {
 			if (pattern == null || pattern.matcher(go.getName()).find()) {
+				RealmComponent rc = RealmComponent.getRealmComponent(go);
 				if (at == ChitAcquisitionType.Available) {
 					// Make sure these are not already hired
-					RealmComponent rc = RealmComponent.getRealmComponent(go);
 					if (rc.getOwnerId() != null)
 						continue;
 				}
+				if (excludeCloned && rc.isCloned())
+					continue;
 				objects.add(go);
 			}
 		}
@@ -199,6 +202,10 @@ public class QuestRewardHireling extends QuestReward {
 
 	private String getHirelingRegex() {
 		return getString(HIRELING_REGEX);
+	}
+	
+	private boolean excludeCloned() {
+		return getBoolean(EXCLUDE_CLONED);
 	}
 	
 	private boolean excludeHorse() {

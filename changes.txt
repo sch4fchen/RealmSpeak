@@ -3,6 +3,7 @@ QUEST UPDATE:
 # QuestRewardHireling: Option to rename hireling
 # QuestRewardCompanion: Option to rename companion
 # QuestRewardSummonMonster and QuestRewardCompanion: add Lich
+# QuestRewardHireling: Option to exclude cloned hirelings in regex search
 NEW FEATURES:
 #
 BUGS/ISSUES:

@@ -159,6 +159,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case Hireling:
 				list.add(new QuestPropertyBlock(QuestRewardHireling.HIRELING_REGEX, "Native RegEx", FieldType.Regex, null, new String[] { "native,rank" }));
+				list.add(new QuestPropertyBlock(QuestRewardHireling.EXCLUDE_CLONED, "Exclude cloned hirelings in regex search", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardHireling.ACQUISITION_TYPE, "Method to acquire hireling", FieldType.StringSelector, ChitAcquisitionType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardHireling.TERM_OF_HIRE, "Term of hire", FieldType.StringSelector, TermOfHireType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardHireling.EXCLUDE_HORSE, "Exclude horse for cloned", FieldType.Boolean));
