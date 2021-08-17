@@ -533,11 +533,12 @@ public class ClearingUtility {
 		return list;
 	}
 
-	public static Collection<RealmComponent> getCombatantsInClearing(TileLocation location) {
+	public static Collection<RealmComponent> getCombatantsInClearing(TileLocation location, GameData data) {
 		ArrayList<RealmComponent> list = new ArrayList<>();
 		if (location.isInClearing()) {
 			for (RealmComponent rc:location.clearing.getClearingComponents()) {
 				if (rc.isCharacter() || rc.isMonster() || rc.isNative() || rc.isCombativeTraveler() || rc.isCompanion()) {
+					if (rc.isNative() && !rc.isHiredOrControlled() && HostPrefWrapper.findHostPrefs(data).hasPref(Constants.HOUSE2_NO_NATIVES_BATTLING)) continue;
 					list.add(rc);
 				}
 			}
@@ -558,7 +559,7 @@ public class ClearingUtility {
 		return list;
 	}
 
-	public static String showTileChits(JFrame parentFrame,CharacterWrapper character,ClearingDetail currentClearing,String title) {
+	public static String showTileChits(JFrame parentFrame,ClearingDetail currentClearing,String title) {
 		// Show the tile chits - do I resolve lost city and castle too? - yes, I should
 		Collection<StateChitComponent> c = currentClearing.getParent().getClues();
 		if (!c.isEmpty()) {

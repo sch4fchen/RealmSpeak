@@ -273,7 +273,7 @@ public class TableLoot extends Loot {
 	private void doClues(CharacterWrapper character,GameObject go) {
 		TileComponent tile = (TileComponent)RealmComponent.getRealmComponent(go);
 		ClearingDetail clearing = tile.getClearings().get(0); // first real clearing is good enough
-		String note = ClearingUtility.showTileChits(getParentFrame(),character,clearing,"Clues at "+go.getName());
+		String note = ClearingUtility.showTileChits(getParentFrame(),clearing,"Clues at "+go.getName());
 		if (note!=null) {
 			character.addNote(clearing.getParent(),"Clues",note);
 		}

@@ -84,7 +84,7 @@ public abstract class Search extends RealmTable {
 	}
 	protected void doClues(CharacterWrapper character) {
 		ClearingDetail currentClearing = getCurrentClearing(character);
-		String note = ClearingUtility.showTileChits(getParentFrame(),character,currentClearing,"Clues");
+		String note = ClearingUtility.showTileChits(getParentFrame(),currentClearing,"Clues");
 		if (note!=null) {
 			character.addNote(currentClearing.getParent(),"Clues",note);
 		}

@@ -1266,7 +1266,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			public void actionPerformed(ActionEvent ev) {
 				// Show character chits privately instead
 				TileLocation tl = getCharacter().getCurrentLocation();
-				ClearingUtility.showTileChits(gameHandler.getMainFrame(),getCharacter(),tl.clearing,tl.tile.getTileName()+" Chits");
+				ClearingUtility.showTileChits(gameHandler.getMainFrame(),tl.clearing,tl.tile.getTileName()+" Chits");
 			}
 		});
 		box.add(viewChitsButton);

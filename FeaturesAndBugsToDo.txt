@@ -1,5 +1,5 @@
 Feature: Add zombie to summon monster reward (+ all generated monsters?)
-House rule: not allow to attack neutral, friendly or allie natives + house rule in notes of book of learnings + house rule: no battles against natives at all
+House rule: not allow to attack neutral, friendly or allied natives
 ---:::FEATURES:::---
 Guilds: Assassins, Nature
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): Option: no missile attacks, ?:Sharpness stars are ignored when comparing harm between attacks and parries? Alert?!

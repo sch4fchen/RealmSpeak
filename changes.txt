@@ -5,7 +5,7 @@ QUEST UPDATE:
 # QuestRewardSummonMonster and QuestRewardCompanion: add Lich
 # QuestRewardHireling: Option to exclude cloned hirelings in regex search
 NEW FEATURES:
-#
+# New HouseRule: "No native battling": Unhired and uncontrolled natives don't participate in combat
 BUGS/ISSUES:
 # Fix "wish for strength" expiring when using gloves for successful attack
 # Fix granting all additional actions by minor characters

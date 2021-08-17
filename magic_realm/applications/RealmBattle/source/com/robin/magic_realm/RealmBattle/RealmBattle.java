@@ -564,7 +564,7 @@ public class RealmBattle {
 	 */
 	public static BattleModel buildBattleModel(TileLocation tl,GameData data) {
 		HashLists<String,RealmComponent> lists = new HashLists<>();
-		Collection<RealmComponent> c = ClearingUtility.getCombatantsInClearing(tl);
+		Collection<RealmComponent> c = ClearingUtility.getCombatantsInClearing(tl,data);
 		
 		// Hash all combatants by ownerid - uncontrolled denizens will be owned by UNCONTROLLED
 		for (RealmComponent rc : c) {
