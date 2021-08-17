@@ -94,6 +94,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		SpellEffectSummon,
 		SpellFromSite,
 		StripInventory,
+		SummonGeneratedMonster,
 		SummonGuardian,
 		SummonMonster,
 		SummonFromAppearanceToChit,
@@ -174,8 +175,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case SpellEffectSummon:			return "Summon creatures for the character.";
 				case SpellFromSite:				return "Learn a spell from a specific site, book, artifact, or Shaman.";
 				case StripInventory:			return "Removes ALL inventory and (optionally) gold from the character (placed to location defined by 'LostInventoryToLocation/Default').";
+				case SummonGeneratedMonster:	return "Generate and summon a specific monster to the a clearing.";
 				case SummonGuardian:			return "For a specific quest location, summon the treasure site guardian (if any)";
-				case SummonMonster:				return "Summon a specific monster to the characters clearing.";
+				case SummonMonster:				return "Summon a specific monster to the a clearing.";
 				case SummonFromAppearanceToChit:		return "Summon a specific monster from the chart of appearance to a sound or warning chit.";
 				case SummonRoll:				return "Force a monster summoning roll with a specific number.";
 				case TalkToWiseBird:			return "Character does instantly a free peer action";
@@ -458,6 +460,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case StripInventory:
 				reward = new QuestRewardStripInventory(go);
+				break;
+			case SummonGeneratedMonster:
+				reward = new QuestRewardSummonGeneratedMonster(go);
 				break;
 			case SummonGuardian:
 				reward = new QuestRewardSummonGuardian(go);

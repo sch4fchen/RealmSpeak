@@ -72,7 +72,7 @@ public class RealmViewer extends JFrame {
 	}
 	private void addData() {
 		GamePool pool = new GamePool(data.getGameObjects());
-		ArrayList<GameObject> list = new ArrayList<GameObject>(pool.find(keyVals));
+		ArrayList<GameObject> list = new ArrayList<>(pool.find(keyVals));
 		
 		// Add the summonables
 		JFrame dummy = new JFrame();
@@ -85,8 +85,8 @@ public class RealmViewer extends JFrame {
 		list.add(SetupCardUtility.createBlob(mc,data));
 		list.add(SetupCardUtility.createWasp(mc,data));
 		
-		ArrayList<GameObject> treasureList = new ArrayList<GameObject>();
-		ArrayList<GameObject> spellList = new ArrayList<GameObject>();
+		ArrayList<GameObject> treasureList = new ArrayList<>();
+		ArrayList<GameObject> spellList = new ArrayList<>();
 		for (GameObject obj:list) {
 			RealmComponent rc = RealmComponent.getRealmComponent(obj);
 			if (rc!=null) {

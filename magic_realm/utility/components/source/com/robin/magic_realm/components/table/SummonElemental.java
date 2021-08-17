@@ -32,7 +32,7 @@ public class SummonElemental extends MonsterTable {
 
 	public static final String KEY = "SummonElemental";
 	
-	private enum ElementalType {
+	public enum ElementalType {
 		Earth,
 		Fire,
 		Water,
@@ -101,8 +101,7 @@ public class SummonElemental extends MonsterTable {
 	public String applySix(CharacterWrapper character) {
 		return "No Effect";
 	}
-	private void summonElemental(CharacterWrapper character, ElementalType type) {
-		GameData data = character.getGameObject().getGameData();
+	public GameObject createElemental(GameData data, ElementalType type) {
 		GameObject elemental = getMonsterCreator().createOrReuseMonster(data);
 		switch(type) {
 			case Earth:
@@ -127,6 +126,11 @@ public class SummonElemental extends MonsterTable {
 				getMonsterCreator().setupSide(elemental,"dark","H",0,4,0,4,"gray");
 				break;
 		}
+		return elemental;
+	}
+	private void summonElemental(CharacterWrapper character, ElementalType type) {
+		GameData data = character.getGameObject().getGameData();
+		GameObject elemental = createElemental(data, type);
 		TileLocation tl = character.getCurrentLocation();
 		character.addHireling(elemental);
 		CombatWrapper combat = new CombatWrapper(elemental);

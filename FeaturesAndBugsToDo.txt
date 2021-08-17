@@ -1,6 +1,4 @@
-QuestReward: Generate Monster: Like SummonMonster but for the generated Monsters
 House rule: not allow to attack neutral, friendly or allied natives
-
 ---:::FEATURES:::---
 Guilds: Assassins, Nature
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): Option: no missile attacks, ?:Sharpness stars are ignored when comparing harm between attacks and parries? Alert?!

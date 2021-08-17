@@ -99,7 +99,7 @@ public class RaiseDead extends MonsterTable {
 	}
 	public ArrayList<GameObject> getOneOfEach(CharacterWrapper character) {
 		GameData data = character.getGameObject().getGameData();
-		ArrayList<GameObject> list = new ArrayList<GameObject>();
+		ArrayList<GameObject> list = new ArrayList<>();
 		list.add(createSkeleton(getMonsterCreator(),data));
 		list.add(createSkeletonArcher(getMonsterCreator(),data));
 		list.add(createSkeletonSwordsman(getMonsterCreator(),data));
@@ -108,7 +108,7 @@ public class RaiseDead extends MonsterTable {
 		}
 		return list;
 	}
-	private static GameObject createSkeleton(MonsterCreator monsterCreator,GameData data) {
+	public static GameObject createSkeleton(MonsterCreator monsterCreator,GameData data) {
 		// L4/4 and L2/6
 		GameObject go = monsterCreator.createOrReuseMonster(data);
 		monsterCreator.setupGameObject(go,"Skeleton","skull","M",false);
@@ -116,7 +116,7 @@ public class RaiseDead extends MonsterTable {
 		monsterCreator.setupSide(go,"dark","L",0,2,0,6,"gray");
 		return go;
 	}
-	private static GameObject createSkeletonArcher(MonsterCreator monsterCreator,GameData data) {
+	public static GameObject createSkeletonArcher(MonsterCreator monsterCreator,GameData data) {
 		// -/3 and M*3/5
 		GameObject go = monsterCreator.createOrReuseMonster(data);
 		monsterCreator.setupGameObject(go,"Skeletal Archer","skullbow","M",false);
@@ -124,7 +124,7 @@ public class RaiseDead extends MonsterTable {
 		monsterCreator.setupSide(go,"dark","M",1,3,14,5,"gray");
 		return go;
 	}
-	private static GameObject createSkeletonSwordsman(MonsterCreator monsterCreator,GameData data) {
+	public static GameObject createSkeletonSwordsman(MonsterCreator monsterCreator,GameData data) {
 		// L*4/4 and L*2/6
 		GameObject go = monsterCreator.createOrReuseMonster(data);
 		monsterCreator.setupGameObject(go,"Skeletal Swordsman","skullsword","M",false);
@@ -132,7 +132,7 @@ public class RaiseDead extends MonsterTable {
 		monsterCreator.setupSide(go,"dark","L",1,2,3,6,"gray");
 		return go;
 	}
-	private static GameObject createZombie(MonsterCreator monsterCreator,GameData data,int r) {
+	public static GameObject createZombie(MonsterCreator monsterCreator,GameData data,int r) {
 		GameObject go = monsterCreator.createOrReuseMonster(data);
 		int z = RandomNumber.getRandom(2)+1;
 		monsterCreator.setupGameObject(go,"Zombie","zombie"+z,"M",false);

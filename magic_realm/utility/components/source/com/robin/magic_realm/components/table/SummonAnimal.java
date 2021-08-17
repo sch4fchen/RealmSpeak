@@ -29,7 +29,7 @@ public class SummonAnimal extends MonsterTable {
 
 	public static final String KEY = "SummonAnimal";
 	
-	private enum AnimalType {
+	public enum AnimalType {
 		Basilisk,
 		Eagle,
 		Bear,
@@ -74,8 +74,7 @@ public class SummonAnimal extends MonsterTable {
 		summonAnimal(character,AnimalType.Squirrel);
 		return "Squirrel Summoned";
 	}
-	private void summonAnimal(CharacterWrapper character, AnimalType type) {
-		GameData data = character.getGameObject().getGameData();
+	public GameObject createAnimal(GameData data, AnimalType type) {
 		GameObject animal = getMonsterCreator().createOrReuseMonster(data);
 		switch(type) {
 			case Basilisk:
@@ -110,6 +109,11 @@ public class SummonAnimal extends MonsterTable {
 				getMonsterCreator().setupSide(animal,"dark",null,0,0,0,2,"forestgreen");
 				break;
 		}
+		return animal;
+	}
+	private void summonAnimal(CharacterWrapper character, AnimalType type) {
+		GameData data = character.getGameObject().getGameData();
+		GameObject animal = createAnimal(data, type);
 		TileLocation tl = character.getCurrentLocation();
 		character.addHireling(animal);
 		CombatWrapper combat = new CombatWrapper(animal);

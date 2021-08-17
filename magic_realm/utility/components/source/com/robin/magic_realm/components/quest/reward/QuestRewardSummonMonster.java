@@ -140,7 +140,6 @@ public class QuestRewardSummonMonster extends QuestReward {
 	private String getMonsterQuery() {
 		return getString(QuestConstants.VALUE_PREFIX+MONSTER_NAME).trim();
 	}
-	
 
 	private SummonType getSummonType() {
 		String summonType = getString(SUMMON_TYPE);
