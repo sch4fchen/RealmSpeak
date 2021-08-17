@@ -1,4 +1,5 @@
 QuestReward: Generate Monster: Like SummonMonster but for the generated Monsters
+House rule: not allow to attack neutral, friendly or allied natives
 
 ---:::FEATURES:::---
 Guilds: Assassins, Nature
@@ -8,7 +9,6 @@ Expansion 1: More Ambushes/Throwing Weapons + Ability: Spear, Axe, Dagger?
 Expansion 1: Items: Magic path, Hound, Magic meat, Needful thing
 Expansion 1: Travelers: Doppleganger, Necromancer, Soothsayer
 Expansion 1: Spells (to "New spells": new_spells_1): Magic Shield, Sleep, Wall of Force, Duel, Spider web, Rocks Glow, Mystic boots, Flame sword, Fighting hands, Magic mirror, Lucky blow, Fire trap
-House rule: not allow to attack neutral, friendly or allied natives
 SuperRealm: Steel Against Magic: A character who is casting a spell and has no active armor counters may also use his active weapon and a second attention chit to target an individual and make a separate attack (or parry) if, and only if, the active weapon is the Staff.
 Merlin's Use Horse Lot: http://www.nand.it/mr/mr15.html
 0001563: Showing flip sides of tiles and counters in HTML

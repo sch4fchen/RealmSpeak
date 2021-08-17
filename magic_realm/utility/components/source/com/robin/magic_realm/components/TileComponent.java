@@ -102,7 +102,7 @@ public class TileComponent extends ChitComponent {
 	private boolean alwaysPaint = false;
 	private boolean needsRepaint = true;
 
-	private Hashtable<String,TileComponent> edgeTiles = new Hashtable<String,TileComponent>();
+	private Hashtable<String,TileComponent> edgeTiles = new Hashtable<>();
 
 	private Rectangle lastPaintLocation = null;
 	private Point[] lastOffroadPaintLocation = new Point[2];

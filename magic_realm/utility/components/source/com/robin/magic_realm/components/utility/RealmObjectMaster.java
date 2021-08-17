@@ -60,7 +60,7 @@ public class RealmObjectMaster {
 		}
 	}
 	
-	public ArrayList<GameObject> findObjects(String baseQuery,ArrayList<String> keyVals,boolean asComponents) {
+	public ArrayList<GameObject> findObjects(String baseQuery,ArrayList<String> keyVals) {
 		String query = StringUtilities.collectionToString(keyVals,",");
 		if (baseQuery!=null && baseQuery.length()>0) {
 			if (query.length()>0) {
@@ -68,21 +68,13 @@ public class RealmObjectMaster {
 			}
 			query += baseQuery;
 		}
-		return findObjects(query,asComponents);
+		return findObjects(query);
 	}
 	
-	public ArrayList<GameObject> findObjects(String keyVals,boolean asComponents) {
+	public ArrayList<GameObject> findObjects(String keyVals) {
 		keyVals = hostPrefs.getGameKeyVals()+","+keyVals;
 		GamePool pool = new GamePool(data.getGameObjects());
 		ArrayList<GameObject> objects = pool.find(keyVals);
-		if (asComponents) {
-			ArrayList list = new ArrayList();
-			for (Iterator i=objects.iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
-				list.add(RealmComponent.getRealmComponent(go));
-			}
-			return list;
-		}
 		return objects;
 	}
 	
@@ -98,9 +90,9 @@ public class RealmObjectMaster {
 		}
 		if (playerCharacterObjects==null) {
 			playerCharacterObjects = new ArrayList<>();
-			playerCharacterObjects.addAll(findObjects("character",false));
-			playerCharacterObjects.addAll(findObjects("native,rank",false)); // not just leaders anymore, due to Hypnotize spell!
-			playerCharacterObjects.addAll(findObjects("monster,!part",false));
+			playerCharacterObjects.addAll(findObjects("character"));
+			playerCharacterObjects.addAll(findObjects("native,rank")); // not just leaders anymore, due to Hypnotize spell!
+			playerCharacterObjects.addAll(findObjects("monster,!part"));
 //			playerCharacterObjects.addAll(getCachedObjects("familiar",false));
 		}
 		return playerCharacterObjects;
@@ -112,8 +104,8 @@ public class RealmObjectMaster {
 	public ArrayList<GameObject> getDenizenObjects() {
 		if (denizenObjects==null) {
 			denizenObjects = new ArrayList<>();
-			denizenObjects.addAll(findObjects("native,rank",false));
-			denizenObjects.addAll(findObjects("monster,!part",false));
+			denizenObjects.addAll(findObjects("native,rank"));
+			denizenObjects.addAll(findObjects("monster,!part"));
 		}
 		return denizenObjects;
 	}
@@ -124,7 +116,7 @@ public class RealmObjectMaster {
 	public ArrayList<GameObject> getTileObjects() {
 		if (tileObjects==null) {
 			tileObjects = new ArrayList<>();
-			tileObjects.addAll(findObjects("tile",false));
+			tileObjects.addAll(findObjects("tile"));
 		}
 		return tileObjects;
 	}
@@ -137,9 +129,9 @@ public class RealmObjectMaster {
 	 */
 	public ArrayList<GameObject> getDwellingObjects() {
 		if (dwellingObjects==null) {
-			dwellingObjects = new ArrayList<GameObject>();
-			dwellingObjects.addAll(findObjects("dwelling",false));
-			dwellingObjects.addAll(findObjects("guild",false));
+			dwellingObjects = new ArrayList<>();
+			dwellingObjects.addAll(findObjects("dwelling"));
+			dwellingObjects.addAll(findObjects("guild"));
 		}
 		return dwellingObjects;
 	}
@@ -149,7 +141,7 @@ public class RealmObjectMaster {
 	 */
 	public static RealmObjectMaster getRealmObjectMaster(GameData data) {
 		if (map==null) {
-			map = new HashMap<Long, RealmObjectMaster>();
+			map = new HashMap<>();
 		}
 		Long id = new Long(data.getDataId());
 		RealmObjectMaster rom = map.get(id);

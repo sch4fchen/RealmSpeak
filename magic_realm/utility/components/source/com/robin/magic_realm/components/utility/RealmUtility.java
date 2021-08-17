@@ -829,7 +829,7 @@ public class RealmUtility {
 	}
 	public static void doMatchGoldSpecials(GameData data) {
 		RealmObjectMaster rom = RealmObjectMaster.getRealmObjectMaster(data);
-		GamePool gsPool = new GamePool(rom.findObjects("gold_special",false));
+		GamePool gsPool = new GamePool(rom.findObjects("gold_special"));
 		GameObject[] chit = new GameObject[2];
 		while(!gsPool.isEmpty()) {
 			GameObject first = (GameObject)gsPool.get(0);

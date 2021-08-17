@@ -31,6 +31,7 @@ import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.utility.RealmLogging;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.map.Tile;
 
 public class QuestLocation extends GameObjectWrapper {
 	private static String TAG_FRONT = "<";
@@ -460,7 +461,7 @@ public class QuestLocation extends GameObjectWrapper {
 			GameObject go = gameData.getGameObjectByNameIgnoreCase(tileName);
 			if (go!=null) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
-				if (rc != null && rc.isTile()) {
+				if (rc != null && rc.isTile() && go.getAttribute(Tile.MAP_GRID, Tile.MAP_POSITION) != null) {
 					TileComponent tile = (TileComponent)rc;
 					ClearingDetail clearing = clearingNum>0?tile.getClearing(clearingNum):null;
 					return new TileLocation(tile,clearing,false);
@@ -475,7 +476,7 @@ public class QuestLocation extends GameObjectWrapper {
 			GameObject go = gameData.getGameObjectByNameIgnoreCase(tileName);
 			if (go!=null) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
-				if (rc != null && rc.isTile()) {
+				if (rc != null && rc.isTile() && go.getAttribute(Tile.MAP_GRID, Tile.MAP_POSITION) != null) {
 					TileComponent tile = (TileComponent)rc;
 					return new TileLocation(tile,false);
 				}

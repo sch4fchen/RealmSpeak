@@ -96,18 +96,18 @@ public class GoldSpecialPlacementDialog extends AggressiveDialog {
 	}
 	private void initData() {
 		RealmObjectMaster rom = RealmObjectMaster.getRealmObjectMaster(gameData);
-		ArrayList query = new ArrayList();
+		ArrayList<String> query = new ArrayList<>();
 		query.add("!"+Constants.GOLD_SPECIAL_PLACED);
 		if (hostPrefs.hasPref(Constants.HOUSE2_IGNORE_CAMPAIGNS)) {
 			query.add("!campaign");
 		}
-		ArrayList<GameObject> gs = new ArrayList<>(rom.findObjects("gold_special",query, false));
-		destinations = new ArrayList<>(rom.findObjects("gold_special_target", false));
-		chits = new ArrayList<GameObject[]>();
+		ArrayList<GameObject> gs = new ArrayList<>(rom.findObjects("gold_special",query));
+		destinations = new ArrayList<>(rom.findObjects("gold_special_target"));
+		chits = new ArrayList<>();
 		while (!gs.isEmpty()) {
 			GameObject[] chit = new GameObject[2];
-			chit[0] = (GameObject) gs.remove(0);
-			chit[1] = (GameObject) gameData.getGameObject(Long.valueOf(chit[0].getThisAttribute("pairid")));
+			chit[0] = gs.remove(0);
+			chit[1] = gameData.getGameObject(Long.valueOf(chit[0].getThisAttribute("pairid")));
 			gs.remove(chit[1]);
 			chits.add(chit);
 		}
@@ -128,7 +128,7 @@ public class GoldSpecialPlacementDialog extends AggressiveDialog {
 		int count = 0;
 		int pageCount = 0;
 		ButtonGroup group = new ButtonGroup();
-		chitButtons = new ArrayList<JToggleButton>();
+		chitButtons = new ArrayList<>();
 		boolean ignoreCampaigns = hostPrefs.hasPref(Constants.HOUSE2_IGNORE_CAMPAIGNS);
 		for (GameObject[] chit:chits) {
 			if (count%6==0) {
@@ -193,7 +193,7 @@ public class GoldSpecialPlacementDialog extends AggressiveDialog {
 		DestinationPanel dPanel = null;
 		count = 0;
 		pageCount = 0;
-		destButtons = new ArrayList<PlaceButton>();
+		destButtons = new ArrayList<>();
 		for (GameObject go:destinations) {
 			if (count%7==0) {
 				if (dPanel!=null) {
@@ -333,7 +333,7 @@ public class GoldSpecialPlacementDialog extends AggressiveDialog {
 	private static void prepMultiboard(HostPrefWrapper hostPrefs,GameData data) {
 		RealmLoader doubleLoader = new RealmLoader();
 		
-		ArrayList<String> appendNames = new ArrayList<String>();
+		ArrayList<String> appendNames = new ArrayList<>();
 		doubleLoader.cleanupData(hostPrefs.getGameKeyVals());
 		int count = hostPrefs.getMultiBoardCount();
 		for (int n=0;n<count-1;n++) {
@@ -343,8 +343,7 @@ public class GoldSpecialPlacementDialog extends AggressiveDialog {
 		for (String appendName:appendNames) {
 			long start = data.getMaxId()+1;
 			doubleLoader.getData().renumberObjectsStartingWith(start);
-			for (Iterator i=doubleLoader.getData().getGameObjects().iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
+			for (GameObject go : doubleLoader.getData().getGameObjects()) {
 				if (!go.hasThisAttribute("season")) { // The one exception
 					GameObject dub = data.createNewObject(go.getId());
 					dub.copyFrom(go);
@@ -355,8 +354,7 @@ public class GoldSpecialPlacementDialog extends AggressiveDialog {
 		}
 		
 		// Resolve objects (holds can't be calculated until all are loaded!)
-		for (Iterator i=data.getGameObjects().iterator();i.hasNext();) {
-			GameObject obj = (GameObject)i.next();
+		for (GameObject obj : data.getGameObjects()) {
 			obj.resolveHold(data.getGameObjectIDHash());
 		}
 		

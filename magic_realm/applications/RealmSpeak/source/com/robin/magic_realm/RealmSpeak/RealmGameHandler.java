@@ -625,8 +625,8 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		if (hostPrefs.hasPref(Constants.HOUSE2_IGNORE_CAMPAIGNS)) {
 			query.add("!campaign");
 		}
-		ArrayList<GameObject> gs = new ArrayList<>(rom.findObjects("gold_special", query, false));
-		ArrayList<GameObject> gt = new ArrayList<>(rom.findObjects("gold_special_target", query, false));
+		ArrayList<GameObject> gs = new ArrayList<>(rom.findObjects("gold_special", query));
+		ArrayList<GameObject> gt = new ArrayList<>(rom.findObjects("gold_special_target", query));
 		GameObject[] chit = new GameObject[2];
 		while (SetupCardUtility.stillChitsToPlace(hostPrefs)) {
 			int r = RandomNumber.getRandom(gs.size());
