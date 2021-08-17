@@ -44,8 +44,8 @@ public class QuestRewardResetQuestSteps extends QuestReward {
 	@Override
 	public void processReward(JFrame frame, CharacterWrapper character) {
 		String currentDay = character.getCurrentDayKey();
-		ArrayList<QuestStep> stepsToReset = new ArrayList<QuestStep>();
-		ArrayList<QuestStep> dependentSteps = new ArrayList<QuestStep>();
+		ArrayList<QuestStep> stepsToReset = new ArrayList<>();
+		ArrayList<QuestStep> dependentSteps = new ArrayList<>();
 		Quest quest = getParentQuest();
 		QuestStep currentStep = getParentStep();
 		
@@ -77,7 +77,7 @@ public class QuestRewardResetQuestSteps extends QuestReward {
 		}
 		
 		if (resetDependentSteps()) {
-			ArrayList<QuestStep> moreStepsToReset = new ArrayList<QuestStep>();
+			ArrayList<QuestStep> moreStepsToReset = new ArrayList<>();
 			boolean newStepsToAdd = true;
 			while (newStepsToAdd) {
 				newStepsToAdd = false;

@@ -337,10 +337,12 @@ public class QuestTesterFrame extends JFrame {
 		changeWeather.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				String weather = chooseWeather();
-				RealmCalendar realmCalender = RealmCalendar.getCalendar(character.getGameData());
-				realmCalender.setWeatherResult(RealmCalendar.getWeatherInt(weather));	
-				updateCharacterPanel();
-				retestQuest();
+				if (weather != null) {
+					RealmCalendar realmCalender = RealmCalendar.getCalendar(character.getGameData());
+					realmCalender.setWeatherResult(RealmCalendar.getWeatherInt(weather));	
+					updateCharacterPanel();
+					retestQuest();
+				}
 			}
 		});
 		line.add(changeWeather);
