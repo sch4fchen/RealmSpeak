@@ -121,6 +121,10 @@ public class QuestRewardHireling extends QuestReward {
 					character.getCurrentLocation().clearing.add(selected,character);
 			}
 			
+			if (renameHirelingTo() != null && !renameHirelingTo().isEmpty()) {
+				selected.setName(renameHirelingTo());
+			}
+			
 			if (locationOnly()) {
 				QuestLocation loc = getQuestLocation();
 				if (loc == null) return;
@@ -133,10 +137,6 @@ public class QuestRewardHireling extends QuestReward {
 				int random = RandomNumber.getRandom(validLocations.size());
 				TileLocation tileLocation = validLocations.get(random);
 				tileLocation.clearing.add(selected,null);
-			}
-			
-			if (renameHirelingTo() != null && !renameHirelingTo().isEmpty()) {
-				selected.setName(renameHirelingTo());
 			}
 		}
 	}
