@@ -1,4 +1,4 @@
-Feature: Add zombie to summon monster reward (+ all generated monsters?)
+QuestReward: Generate Monster: Like SummonMonster but for the generated Monsters
 House rule: not allow to attack neutral, friendly or allied natives
 ---:::FEATURES:::---
 Guilds: Assassins, Nature
