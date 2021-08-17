@@ -2,6 +2,7 @@ Version 1.1.4.7 - Changes since 1.1.4.6
 QUEST UPDATE:
 # QuestRewardHireling: Option to rename hireling
 # QuestRewardCompanion: Option to rename companion
+# QuestRewardSummonMonster and QuestRewardCompanion: add Lich
 NEW FEATURES:
 #
 BUGS/ISSUES:

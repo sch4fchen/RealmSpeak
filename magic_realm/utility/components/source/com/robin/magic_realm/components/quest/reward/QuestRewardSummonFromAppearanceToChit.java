@@ -58,15 +58,15 @@ public class QuestRewardSummonFromAppearanceToChit extends QuestReward {
 
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		int summonedDenizens = 0;
-		ArrayList<GameObject> summonedDenizenHolders = new ArrayList<GameObject>();
-		ArrayList<TileLocation> allQuestLocations = new ArrayList<TileLocation>();
+		ArrayList<GameObject> summonedDenizenHolders = new ArrayList<>();
+		ArrayList<TileLocation> allQuestLocations = new ArrayList<>();
 		if (toLocation()) {
 			QuestLocation loc = getQuestLocation();
 			if (loc == null) return;
 			allQuestLocations = loc.fetchAllLocations(character.getGameData());
 		}
 		
-		ArrayList<GameObject> validChits = new ArrayList<GameObject>();
+		ArrayList<GameObject> validChits = new ArrayList<>();
 		if (!getChit().isEmpty()) {
 			ArrayList<GameObject> chits = character.getGameData().getGameObjectsByNameRegex(getChit());
 			for (GameObject chit : chits) {
@@ -77,26 +77,26 @@ public class QuestRewardSummonFromAppearanceToChit extends QuestReward {
 				case CharactersClearing:
 					if (rc.getCurrentLocation() == character.getCurrentLocation()) {
 						validChits.add(chit);
-					};
+					}
 				break;
 				case CharactersTile:
 					if (rc.getCurrentLocation().tile == character.getCurrentLocation().tile) {
 						validChits.add(chit);
-					};
+					}
 				break;
 				case QuestLocationClearings:
 					for (TileLocation tl : allQuestLocations)
 						if (rc.getCurrentLocation() == tl) {	
 							validChits.add(chit);
 							break;
-					};
+					}
 				break;
 				case QuestLocationTiles:
 					for (TileLocation tl : allQuestLocations)
 						if (rc.getCurrentLocation().tile == tl.tile) {	
 							validChits.add(chit);
 							break;
-					};
+					}
 				break;
 				case Anywhere:
 				default:
@@ -116,7 +116,7 @@ public class QuestRewardSummonFromAppearanceToChit extends QuestReward {
 									validChits.add(rc.getGameObject());
 								}
 							}
-						};
+						}
 						break;
 					case QuestLocationTiles:
 						for (TileLocation tl : allQuestLocations) {
@@ -126,14 +126,14 @@ public class QuestRewardSummonFromAppearanceToChit extends QuestReward {
 									validChits.add(rc.getGameObject());
 								}
 							}
-						};
+						}
 					break;
 					default: break;
 				}
 			}
 			else {
 				GamePool pool = new GamePool(getGameData().getGameObjects());
-				ArrayList<String> query = new ArrayList<String>();
+				ArrayList<String> query = new ArrayList<>();
 				query.add("warning");
 				validChits.addAll(pool.find(query));
 				query.clear();
@@ -148,7 +148,7 @@ public class QuestRewardSummonFromAppearanceToChit extends QuestReward {
 			}
 		}
 
-		ArrayList<GameObject> validDenizens = new ArrayList<GameObject>();
+		ArrayList<GameObject> validDenizens = new ArrayList<>();
 		if (!getDenizenName().isEmpty()) {
 			ArrayList<GameObject> possibleDenizens = character.getGameData().getGameObjectsByNameRegex(getDenizenName());
 			for (GameObject denizen : possibleDenizens) {
@@ -159,7 +159,7 @@ public class QuestRewardSummonFromAppearanceToChit extends QuestReward {
 		}
 		else {
 			GamePool pool = new GamePool(getGameData().getGameObjects());
-			ArrayList<String> query = new ArrayList<String>();
+			ArrayList<String> query = new ArrayList<>();
 			query.add("vulnerability");
 			query.add("setup_start");
 			validDenizens.addAll(pool.find(query));

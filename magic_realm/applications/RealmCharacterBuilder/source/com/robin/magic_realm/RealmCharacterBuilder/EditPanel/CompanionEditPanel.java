@@ -132,6 +132,7 @@ public class CompanionEditPanel extends AdvantageEditPanel {
 			"Harpy",
 			"Wasp Queen",
 			"Shade",
+			"Lich",
 			"Carnoplant",
 			"Dragonman:native=Dragonmen,rank=1",
 			"Dragonman2:native=Dragonmen,rank=2",
