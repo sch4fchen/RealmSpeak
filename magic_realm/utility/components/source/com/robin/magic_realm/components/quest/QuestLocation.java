@@ -445,6 +445,7 @@ public class QuestLocation extends GameObjectWrapper {
 	public static TileLocation fetchTileLocation(GameData gameData,String val) {
 		return fetchTileLocation(gameData,val,true);
 	}
+	
 	public static TileLocation fetchTileLocation(GameData gameData,String val,boolean tileMustBePlaced) {
 		// Tile coordinate (like AV2)
 		try {
