@@ -443,6 +443,9 @@ public class QuestLocation extends GameObjectWrapper {
 	}
 	
 	public static TileLocation fetchTileLocation(GameData gameData,String val) {
+		return fetchTileLocation(gameData,val,true);
+	}
+	public static TileLocation fetchTileLocation(GameData gameData,String val,boolean tileMustBePlaced) {
 		// Tile coordinate (like AV2)
 		try {
 			return TileLocation.parseTileLocationNoPartway(gameData,val.toUpperCase());
@@ -476,7 +479,7 @@ public class QuestLocation extends GameObjectWrapper {
 			GameObject go = gameData.getGameObjectByNameIgnoreCase(tileName);
 			if (go!=null) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
-				if (rc != null && rc.isTile() && go.getAttribute(Tile.MAP_GRID, Tile.MAP_POSITION) != null) {
+				if (rc != null && rc.isTile() && (!tileMustBePlaced || go.getAttribute(Tile.MAP_GRID, Tile.MAP_POSITION) != null)) {
 					TileComponent tile = (TileComponent)rc;
 					return new TileLocation(tile,false);
 				}
@@ -554,6 +557,6 @@ public class QuestLocation extends GameObjectWrapper {
 	}
 	
 	public static boolean validLocation(GameData gameData,String val) {
-		return fetchTileLocation(gameData,val)!=null || fetchPieces(gameData,val,false)!=null;
+		return fetchTileLocation(gameData,val,false)!=null || fetchPieces(gameData,val,false)!=null;
 	}
 }
