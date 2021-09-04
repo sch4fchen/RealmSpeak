@@ -23,7 +23,12 @@ import java.util.regex.Pattern;
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
+import com.robin.magic_realm.components.BattleChit;
+import com.robin.magic_realm.components.MonsterChitComponent;
+import com.robin.magic_realm.components.NativeChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.attribute.Strength;
+import com.robin.magic_realm.components.quest.VulnerabilityType;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRequirementHirelings extends QuestRequirement {
@@ -32,6 +37,15 @@ public class QuestRequirementHirelings extends QuestRequirement {
 	public static final String AMOUNT = "_amount";
 	public static final String MUST_FOLLOW = "_must_follow";
 	public static final String SAME_LOCATION = "_with_character";
+	public static final String VULNERARBILITY = "_vulnerability";
+	public static final String ATTACK_STRENGTH = "_strength";
+	public static final String ATTACK_SPEED = "_attack_speed";
+	public static final String ATTACK_LENGTH = "_attack_length";
+	public static final String SHARPNESS = "_sharpness";
+	public static final String MISSILE = "_missile";
+	public static final String MOVE_SPEED = "_move_speed";
+	public static final String FLY_SPEED = "_fly_speed";
+	public static final String ARMORED = "_armored";
 
 	public QuestRequirementHirelings(GameObject go) {
 		super(go);
@@ -49,6 +63,39 @@ public class QuestRequirementHirelings extends QuestRequirement {
 		for (RealmComponent hireling : hirelings) {
 			if (getRegExFilter().isEmpty() || pattern.matcher(hireling.getGameObject().getName()).find()) {
 				if (sameLocation() && !(hireling.getCurrentLocation().tile == character.getCurrentLocation().tile && hireling.getCurrentLocation().clearing == character.getCurrentLocation().clearing)) continue;
+				if (checkStats()) {
+					BattleChit denizen = null;
+					Strength vul = new Strength();
+					Strength str = new Strength();
+					int sharp = 0;
+					Boolean armored = false;
+					if (hireling.isNative()) {
+						denizen = (NativeChitComponent) hireling;
+						vul = ((NativeChitComponent) denizen).getVulnerability();
+						str = ((NativeChitComponent) denizen).getStrength();
+						sharp = ((NativeChitComponent) denizen).getSharpness();
+						armored = ((NativeChitComponent) denizen).isArmored();
+					}
+					else if (hireling.isMonster()) {
+						denizen = (MonsterChitComponent) hireling;
+						vul = ((MonsterChitComponent) denizen).getVulnerability();
+						str = ((MonsterChitComponent) denizen).getStrength();
+						sharp = ((MonsterChitComponent) denizen).getSharpness();
+						armored = ((MonsterChitComponent) denizen).isArmored();
+					}
+					else {
+						continue;
+					}
+					if (getVulnerability() != VulnerabilityType.Any && vul.weakerTo(new Strength(getVulnerability().toString()))) continue;
+					if (getAttackStrength() != VulnerabilityType.Any && str.weakerTo(new Strength(getAttackStrength().toString()))) continue;
+					if (getAttackSpeed() != 0 && denizen.getAttackSpeed().getNum()>getAttackSpeed()) continue;
+					if (getAttackLength() != 0 && denizen.getLength()<getAttackLength()) continue;
+					if (getSharpness() != 0 && sharp<getSharpness()) continue;
+					if (getMissile() && !denizen.isMissile()) continue;
+					if (getMoveSpeed() != 0 && denizen.getMoveSpeed().getNum()>getMoveSpeed()) continue;
+					if (getFlySpeed() != 0 && denizen.getFlySpeed().getNum()>getFlySpeed()) continue;
+					if (getArmored() && !armored) continue;
+				}
 				amount++;
 			}
 		}
@@ -80,5 +127,43 @@ public class QuestRequirementHirelings extends QuestRequirement {
 	}
 	private boolean sameLocation() {
 		return getBoolean(SAME_LOCATION);
+	}
+	private boolean checkStats() {
+		return getVulnerability() != VulnerabilityType.Any || getAttackStrength() != VulnerabilityType.Any
+				|| getAttackSpeed() != 0 || getAttackLength() != 0 || getSharpness() != 0
+				|| getMissile() || getMoveSpeed() != 0 || getFlySpeed() != 0 || getArmored();
+	}
+	private VulnerabilityType getVulnerability() {
+		if (getString(VULNERARBILITY) == null) {
+			return VulnerabilityType.Any;
+		}
+		return VulnerabilityType.valueOf(getString(VULNERARBILITY));
+	}
+	private VulnerabilityType getAttackStrength() {
+		if (getString(ATTACK_STRENGTH) == null) {
+			return VulnerabilityType.Any;
+		}
+		return VulnerabilityType.valueOf(getString(ATTACK_STRENGTH));
+	}
+	private int getAttackSpeed() {
+		return getInt(ATTACK_SPEED);
+	}
+	private int getAttackLength() {
+		return getInt(ATTACK_LENGTH);
+	}
+	private int getSharpness() {
+		return getInt(SHARPNESS);
+	}
+	private Boolean getMissile() {
+		return getBoolean(MISSILE);
+	}
+	private int getMoveSpeed() {
+		return getInt(MOVE_SPEED);
+	}
+	private int getFlySpeed() {
+		return getInt(FLY_SPEED);
+	}
+	private Boolean getArmored() {
+		return getBoolean(ARMORED);
 	}
 }

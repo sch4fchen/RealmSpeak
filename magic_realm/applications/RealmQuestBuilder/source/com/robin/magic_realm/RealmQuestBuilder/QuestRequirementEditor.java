@@ -136,6 +136,15 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementHirelings.AMOUNT, "Number of hirelings", FieldType.Number));
 				list.add(new QuestPropertyBlock(QuestRequirementHirelings.MUST_FOLLOW, "Must be following", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementHirelings.SAME_LOCATION, "Same location (incl. character riding it)", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementHirelings.VULNERARBILITY, "Vulnerability", FieldType.StringSelector, VulnerabilityType.values()));
+				list.add(new QuestPropertyBlock(QuestRequirementHirelings.ATTACK_STRENGTH, "Attack strength", FieldType.StringSelector, VulnerabilityType.values()));
+				list.add(new QuestPropertyBlock(QuestRequirementHirelings.ATTACK_SPEED, "Attack speed", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRequirementHirelings.ATTACK_LENGTH, "Attack length", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRequirementHirelings.SHARPNESS, "Number of sharpness stars", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRequirementHirelings.MOVE_SPEED, "Move speed", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRequirementHirelings.FLY_SPEED, "Fly speed", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRequirementHirelings.MISSILE, "Must own missile attack", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementHirelings.ARMORED, "Must be armored", FieldType.Boolean));
 				break;
 			case Inventory:
 				list.add(new QuestPropertyBlock(QuestRequirementInventory.TREASURE_TYPE, "Type of inventory", FieldType.StringSelector, TreasureType.values()));
