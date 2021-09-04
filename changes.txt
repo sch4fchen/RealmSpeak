@@ -3,7 +3,7 @@ QUEST UPDATE:
 # QuestReward: SummonGeneratedMonster
 # QuestRewardHireling: Option to rename hireling
 # QuestRewardCompanion: Option to rename companion
-# QuestRewardSummonMonster and QuestRewardCompanion: add Lich
+# QuestRewardSummonMonster and QuestRewardCompanion: add more monsters from expansions
 # QuestRewardHireling: Option to exclude cloned hirelings in regex search
 NEW FEATURES:
 # New HouseRule: "No native battling": Unhired and uncontrolled natives don't participate in combat

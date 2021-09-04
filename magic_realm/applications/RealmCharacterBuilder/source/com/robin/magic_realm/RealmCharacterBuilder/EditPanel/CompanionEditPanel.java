@@ -132,7 +132,9 @@ public class CompanionEditPanel extends AdvantageEditPanel {
 			"Harpy",
 			"Wasp Queen",
 			"Shade",
+			"Wraith:name=Wraith,monster=",
 			"Lich",
+			"Tomb Guard",
 			"Carnoplant",
 			"Dragonman:native=Dragonmen,rank=1",
 			"Dragonman2:native=Dragonmen,rank=2",
@@ -140,8 +142,13 @@ public class CompanionEditPanel extends AdvantageEditPanel {
 			"Dragonman4:native=Dragonmen,rank=4",
 			"Dragonman5:native=Dragonmen,rank=HQ",
 			"Swamp Thing",
+			"Swamp Haunt",
 			"Rat Man",
 			"Blow Dart:native=Murker,rank=3",
+			"Skeleton",
+			"Skeletal Archer",
+			"Skeletal Swordsman",
+			"Wyrm"
 		},
 	};
 	
