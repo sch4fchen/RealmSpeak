@@ -1,5 +1,5 @@
-House rule: not allow to attack neutral, friendly or allied natives
 ---:::FEATURES:::---
+House rule: not allow to attack neutral, friendly or allied natives
 Guilds: Assassins, Nature
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): Option: no missile attacks, ?:Sharpness stars are ignored when comparing harm between attacks and parries? Alert?!
 Expansion 1: Parry + Ability: "ParryLikeShield":  Option: no missile attacks
