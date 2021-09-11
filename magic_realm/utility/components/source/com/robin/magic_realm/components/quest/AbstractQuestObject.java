@@ -32,7 +32,9 @@ public abstract class AbstractQuestObject extends GameObjectWrapper {
 		if (stringId==null) return;
 		Long oldId = Long.valueOf(stringId);
 		GameObject go = lookup.get(oldId);
-		setString(key,go.getStringId());
+		if (go != null) {
+			setString(key,go.getStringId());
+		}
 	}
 	public String getBlockName() {
 		return Quest.QUEST_BLOCK;

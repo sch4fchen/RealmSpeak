@@ -332,7 +332,9 @@ public abstract class QuestBlockEditor extends GenericEditor {
 			String id = go.getString(block.getKeyName());
 			if (id!=null) {
 				GameObject ref = go.getGameData().getGameObject(Long.valueOf(id));
-				current = ref.getName();
+				if (ref != null) {
+					current = ref.getName();
+				}
 			}
 		}
 		else {
