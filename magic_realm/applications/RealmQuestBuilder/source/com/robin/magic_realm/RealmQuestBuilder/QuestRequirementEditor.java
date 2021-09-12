@@ -145,6 +145,8 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementHirelings.FLY_SPEED, "Fly speed", FieldType.NumberAll));
 				list.add(new QuestPropertyBlock(QuestRequirementHirelings.MISSILE, "Must own missile attack", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementHirelings.ARMORED, "Must be armored", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementHirelings.CHECK_BOTH_SIDES, "Check ligth and dark chit sides", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementHirelings.INCLUDE_WEAPONS, "Include monster weapons", FieldType.Boolean));
 				break;
 			case Inventory:
 				list.add(new QuestPropertyBlock(QuestRequirementInventory.TREASURE_TYPE, "Type of inventory", FieldType.StringSelector, TreasureType.values()));
