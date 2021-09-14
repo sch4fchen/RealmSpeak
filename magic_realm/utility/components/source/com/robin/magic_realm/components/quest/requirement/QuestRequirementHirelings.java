@@ -124,7 +124,7 @@ public class QuestRequirementHirelings extends QuestRequirement {
 						isMissile = isMissile ? isMissile : denizen.isMissile();
 						moveSpeed = moveSpeed.fasterThanOrEqual(moveSpeed2) ? moveSpeed : moveSpeed2;
 						Speed flySpeed2 = denizen.getFlySpeed();
-						flySpeed = flySpeed.fasterThanOrEqual(flySpeed2) ? flySpeed : flySpeed2;
+						flySpeed = (flySpeed != null && flySpeed.fasterThanOrEqual(flySpeed2)) ? flySpeed : flySpeed2;
 						denizen.flip();
 					}
 					
@@ -147,7 +147,7 @@ public class QuestRequirementHirelings extends QuestRequirement {
 					if (getSharpness() != 0 && sharp<getSharpness()) continue;
 					if (getMissile() && !isMissile) continue;
 					if (getMoveSpeed() != 0 && moveSpeed.getNum()>getMoveSpeed()) continue;
-					if (getFlySpeed() != 0 && flySpeed.getNum()>getFlySpeed()) continue;
+					if (getFlySpeed() != 0 && (flySpeed == null || flySpeed.getNum()>getFlySpeed())) continue;
 					if (getArmored() && !armored) continue;
 				}
 				amount++;
