@@ -88,7 +88,7 @@ public class QuestView extends JPanel implements Scrollable {
 				});
 				tree.setFirstSelectedStep();
 				panel.add(tree,BorderLayout.CENTER);
-				ComponentTools.lockComponentSize(panel,640,480);
+				ComponentTools.lockComponentSize(panel,640,720);
 				JOptionPane.showMessageDialog(QuestView.this,panel,"Quest Steps Overview - "+quest.getName(),JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
