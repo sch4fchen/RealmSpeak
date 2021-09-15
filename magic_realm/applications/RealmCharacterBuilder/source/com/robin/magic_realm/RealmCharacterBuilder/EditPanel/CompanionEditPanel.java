@@ -70,6 +70,7 @@ public class CompanionEditPanel extends AdvantageEditPanel {
 			"H Dragon",
 			"Tremendous Dragon:Transform|roll1",
 			"Minotaur:name=Minotaur,alt_monsters1_game",
+			"Gator",
 		},
 		{"Big Monsters",
 			"Behemoth",
