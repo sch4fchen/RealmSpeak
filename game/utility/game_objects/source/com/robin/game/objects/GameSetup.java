@@ -154,10 +154,10 @@ public class GameSetup extends ModifyableObject implements Serializable {
 			result.append(command.doCommand(gameObjects));
 		}
 		result.append("---DONE---");
-		ArrayList<String> keys = new ArrayList<String>(pools.keySet());
+		ArrayList<String> keys = new ArrayList<>(pools.keySet());
 		Collections.sort(keys);
 		for (String key : keys) {
-			GamePool pool = (GamePool)pools.get(key);
+			GamePool pool = pools.get(key);
 			result.append(key+": "+pool.size()+" left\n");
 		}
 		return gameObjects;
@@ -168,7 +168,7 @@ public class GameSetup extends ModifyableObject implements Serializable {
 		}
 	}
 	public GamePool getPool(String poolName) {
-		return (GamePool)pools.get(poolName);
+		return pools.get(poolName);
 	}
 	public void moveObjectsBefore(ArrayList objects,GameCommand indexObject) {
 		moveObjects(objects,indexObject,true);

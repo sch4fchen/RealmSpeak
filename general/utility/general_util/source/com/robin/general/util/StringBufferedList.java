@@ -30,7 +30,7 @@ public class StringBufferedList {
 	public StringBufferedList(String comma,String and) {
 		this.comma = comma;
 		this.and = and;
-		list = new ArrayList<String>();
+		list = new ArrayList<>();
 	}
 	public int size() {
 		return list.size();
@@ -45,7 +45,7 @@ public class StringBufferedList {
 	}
 	public void countIdenticalItems() {
 		HashLists hash = new HashLists();
-		ArrayList<String> keys = new ArrayList<String>();
+		ArrayList<String> keys = new ArrayList<>();
 		int n=0;
 		for (String string:list) {
 			hash.put(string,"n"+(n++));

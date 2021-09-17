@@ -1244,7 +1244,7 @@ public class QuestTesterFrame extends JFrame {
 				int colorId = Arrays.asList(Constants.MAGIC_COLORS).indexOf(color);
 				if (character.getCurrentLocation().clearing.getMagic(colorId)) {
 					colors.append(color+" ");
-				};
+				}
 			}
 		}
 		return colors.toString();
@@ -1732,7 +1732,7 @@ public class QuestTesterFrame extends JFrame {
 		data.ignoreRandomSeed = true;
 		File file = (args.length > 0 && args[0].trim().length() > 0) ? new File(args[0]) : null;
 		if (file != null && data.zipFromFile(file)) {
-			Quest aQuest = new Quest((GameObject) data.getGameObjects().iterator().next());
+			Quest aQuest = new Quest(data.getGameObjects().iterator().next());
 			aQuest.autoRepair(); // Just in case
 
 			final QuestTesterFrame frame = new QuestTesterFrame(aQuest, "Berserker");

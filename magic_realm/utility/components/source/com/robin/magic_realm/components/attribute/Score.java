@@ -76,11 +76,11 @@ public class Score {
 		return getEarnedVictoryPoints(restrictToAssigned,false);
 	}
 	public int getEarnedVictoryPoints(boolean restrictToAssigned,boolean excludeStartingWorth) {
-		double p = (double)getPoints();
+		double p = getPoints();
 		if (excludeStartingWorth) {
 			p -= ownedPoints;
 		}
-		double val = p/(double)getMultiplier();
+		double val = p/getMultiplier();
 		int earnedVps = (new Double(Math.floor(val))).intValue();
 		if (restrictToAssigned) {
 			if (vps>0) {

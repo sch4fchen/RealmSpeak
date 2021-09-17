@@ -36,7 +36,7 @@ public class MoveActivator {
 		NO_MOVE_POSSIBLE,
 		SUCCESSFUL,
 		UNSUCCESSFUL,
-	};
+	}
 	
 	public static final String FLIP_SIDE_TEXT = "(back)";
 	

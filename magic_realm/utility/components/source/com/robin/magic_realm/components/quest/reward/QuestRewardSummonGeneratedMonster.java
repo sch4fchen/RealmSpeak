@@ -21,25 +21,19 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.logging.Logger;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.ClearingDetail;
-import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
-import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.QuestLocation;
 import com.robin.magic_realm.components.quest.QuestStep;
-import com.robin.magic_realm.components.quest.reward.QuestRewardSummonMonster.SummonType;
 import com.robin.magic_realm.components.table.RaiseDead;
 import com.robin.magic_realm.components.table.SummonAnimal;
 import com.robin.magic_realm.components.table.SummonElemental;
-import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.MonsterCreator;
 import com.robin.magic_realm.components.utility.SetupCardUtility;
-import com.robin.magic_realm.components.utility.TemplateLibrary;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRewardSummonGeneratedMonster extends QuestReward {

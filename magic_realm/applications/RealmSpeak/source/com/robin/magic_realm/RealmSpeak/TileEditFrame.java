@@ -22,7 +22,6 @@ import java.awt.event.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.Vector;
 
 import javax.swing.*;

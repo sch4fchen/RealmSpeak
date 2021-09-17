@@ -504,12 +504,12 @@ public class ClearingDetail {
 		getParent().getGameObject().addThisAttributeListItem(freeActionObjectKey(),go.getStringId());
 	}
 	public boolean removeFreeAction(String action) {
-		ArrayList list = getParent().getGameObject().getThisAttributeList(freeActionKey());
+		ArrayList<String> list = getParent().getGameObject().getThisAttributeList(freeActionKey());
 		if (list!=null) {
 			int index = list.indexOf(action);
 			if (index>=0) {
 				list.remove(index);
-				ArrayList objectList = getParent().getGameObject().getThisAttributeList(freeActionObjectKey());
+				ArrayList<String> objectList = getParent().getGameObject().getThisAttributeList(freeActionObjectKey());
 				objectList.remove(index);
 				if (list.isEmpty()) {
 					getParent().getGameObject().removeThisAttribute(freeActionKey());
@@ -524,16 +524,16 @@ public class ClearingDetail {
 		}
 		return false;
 	}
-	public ArrayList getFreeActions() {
+	public ArrayList<String> getFreeActions() {
 		return getParent().getGameObject().getThisAttributeList(freeActionKey());
 	}
 	public GameObject getFreeActionObject(String action) {
-		ArrayList list = getParent().getGameObject().getThisAttributeList(freeActionKey());
+		ArrayList<String> list = getParent().getGameObject().getThisAttributeList(freeActionKey());
 		if (list!=null) {
 			int index = list.indexOf(action);
 			if (index>=0) {
-				ArrayList objectList = getParent().getGameObject().getThisAttributeList(freeActionObjectKey());
-				String id = (String)objectList.get(index);
+				ArrayList<String> objectList = getParent().getGameObject().getThisAttributeList(freeActionObjectKey());
+				String id = objectList.get(index);
 				return parent.getGameObject().getGameData().getGameObject(Long.valueOf(id));
 			}
 		}
@@ -546,7 +546,7 @@ public class ClearingDetail {
 		getParent().getGameObject().addThisAttributeListItem(spellEffectKey(),effect);
 	}
 	public boolean removeSpellEffect(String effect) {
-		ArrayList list = getParent().getGameObject().getThisAttributeList(spellEffectKey());
+		ArrayList<String> list = getParent().getGameObject().getThisAttributeList(spellEffectKey());
 		if (list!=null) {
 			int index = list.indexOf(effect);
 			if (index>=0) {

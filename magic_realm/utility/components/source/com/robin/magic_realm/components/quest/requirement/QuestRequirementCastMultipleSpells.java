@@ -30,7 +30,7 @@ public class QuestRequirementCastMultipleSpells extends QuestRequirement {
 	public static final String NUMBER_OF_SPELLS = "_nos";
 	public static String UNIQUE = "_unique";
 	private int numberOfSpellsToBeCasted = 0;
-	private List<String> spellsCasted = new ArrayList<String>();
+	private List<String> spellsCasted = new ArrayList<>();
 
 	public QuestRequirementCastMultipleSpells(GameObject go) {
 		super(go);

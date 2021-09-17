@@ -228,7 +228,7 @@ public class GameObjectFrame extends JInternalFrame implements Modifyable,Saveab
 						}
 					}
 					public void delete() {
-						ArrayList hold = (ArrayList)object.getHold();
+						ArrayList hold = object.getHold();
 						
 						int[] rows = containsPane.getSelectedRows();
 						ArrayList holdToDelete = new ArrayList();

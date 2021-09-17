@@ -86,7 +86,7 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 		tilesToAdd.addAll(tiles);
 		
 		// Determine solePlayer:
-		GameObject firstTile = (GameObject)tiles.iterator().next();
+		GameObject firstTile = tiles.iterator().next();
 		String p1 = firstTile.getThisAttribute(Constants.PLAYER_TO_PLACE);
 		String p2 = firstTile.getThisAttribute(Constants.PLAYER_TO_PLACE_NEXT);
 		if (p1.equals(p2)) {
@@ -101,7 +101,7 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 		TileComponent tile = (TileComponent)e.getSource();
 		int selRow = tilesToAdd.indexOf(tile.getGameObject());
 //		tilePickModel.removeCache(selRow);
-		GameObject go = (GameObject)tilesToAdd.remove(selRow);
+		GameObject go = tilesToAdd.remove(selRow);
 		doNextPlayer(go);
 		go.removeThisAttribute(Constants.PLAYER_TO_PLACE);
 		go.removeThisAttribute(Constants.PLAYER_TO_PLACE_NEXT);
@@ -200,7 +200,7 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 	
 	private int getBorderLandIndex() {
 		for (int i=0;i<tilesToAdd.size();i++) {
-			GameObject go = (GameObject)tilesToAdd.get(i);
+			GameObject go = tilesToAdd.get(i);
 			if ("Borderland".equals(go.getName()) && !go.hasThisAttribute(Constants.BOARD_NUMBER)) {
 				return i;
 			}
@@ -213,9 +213,9 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 			solePlayerIndex = getBorderLandIndex();
 			if (solePlayerIndex == -1) {
 				// No borderland?  Choose a random tile that CAN be placed.
-				ArrayList placeableIndices = new ArrayList();
+				ArrayList<Integer> placeableIndices = new ArrayList<>();
 				for (int i=0;i<tilesToAdd.size();i++) {
-					GameObject go = (GameObject)tilesToAdd.get(i);
+					GameObject go = tilesToAdd.get(i);
 					Collection c = map.getPlaceables(go);
 					if (!c.isEmpty()) {
 						placeableIndices.add(new Integer(i));
@@ -235,12 +235,12 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 						return;
 					}
 					int r = RandomNumber.getRandom(placeableIndices.size());
-					Integer n = (Integer)placeableIndices.get(r);
+					Integer n = placeableIndices.get(r);
 					solePlayerIndex = n.intValue();
 				}
 			}
 			else {
-				GameObject go = (GameObject)tilesToAdd.get(solePlayerIndex);
+				GameObject go = tilesToAdd.get(solePlayerIndex);
 				go.setThisAttribute(Constants.PLACEABLE);
 			}
 			tilePickModel.fireTableDataChanged();
@@ -266,7 +266,7 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 			if (tilePickTable.getSelectedRowCount()==0) {
 				// This is sloppy, but...
 				for (int i=0;i<tilesToAdd.size();i++) {
-					GameObject go = (GameObject)tilesToAdd.get(i);
+					GameObject go = tilesToAdd.get(i);
 					Collection c = map.getPlaceables(go);
 					if (!c.isEmpty()) {
 						go.setThisAttribute(Constants.PLACEABLE);
@@ -308,7 +308,7 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 		tilePickTable.clearSelection();
 //		for (int i=0;i<10;i++) // FIXME Debugging
 		if (solePlayerIndex>=0) {
-			ArrayList list = new ArrayList();
+			ArrayList<GameObject> list = new ArrayList<>();
 			list.add(tilesToAdd.get(solePlayerIndex));
 			map.placeRandom(this,list);
 		}
@@ -348,11 +348,11 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 		private Hashtable<GameObject,ImageIcon[]> cache;
 		
 		public TilePickTableModel() {
-			cache = new Hashtable<GameObject,ImageIcon[]>();
+			cache = new Hashtable<>();
 		}
 		public ArrayList<GameObject> getData() {
 			if (solePlayer) {
-				ArrayList<GameObject> list = new ArrayList<GameObject>();
+				ArrayList<GameObject> list = new ArrayList<>();
 				if (solePlayerIndex>=0) {
 					list.add(tilesToAdd.get(solePlayerIndex));
 				}
@@ -374,7 +374,7 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 		}
 		public Object getValueAt(int row, int col) {
 			if (row<tilesToAdd.size()) {
-				GameObject go = (GameObject)getData().get(row);
+				GameObject go = getData().get(row);
 				switch(col) {
 					case 0:
 						return cache.get(go)[0];
@@ -398,7 +398,7 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 		public void updateRowHeights(JTable table) {
 			int maxIconColWidth = 0;
 			for (int i=0;i<getData().size();i++) {
-				GameObject go = (GameObject)getData().get(i);
+				GameObject go = getData().get(i);
 				TileComponent rc = (TileComponent)RealmComponent.getRealmComponent(go);
 				ImageIcon[] icon = cache.get(go);
 				if (icon == null) {

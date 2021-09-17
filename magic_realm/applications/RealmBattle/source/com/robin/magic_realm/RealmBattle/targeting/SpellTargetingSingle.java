@@ -68,7 +68,7 @@ public abstract class SpellTargetingSingle extends SpellTargeting {
 				for (Iterator i=gameObjects.iterator();i.hasNext();) {
 					GameObject gameObject = (GameObject)i.next();
 					RealmComponent rc = RealmComponent.getRealmComponent(gameObject);
-					RealmComponent aSheetOwner = (RealmComponent)hash.get(rc);
+					RealmComponent aSheetOwner = hash.get(rc);
 					String option = chooser.generateOption();
 					if (aSheetOwner!=null) {
 						chooser.addRealmComponentToOption(option,aSheetOwner,RealmComponentOptionChooser.DisplayOption.MediumIcon);
@@ -83,7 +83,7 @@ public abstract class SpellTargetingSingle extends SpellTargeting {
 		else {
 			for (int i=0;i<identifiers.size();i++) {
 				String identifier = (String)identifiers.get(i);
-				GameObject pick = (GameObject)gameObjects.get(i);
+				GameObject pick = gameObjects.get(i);
 				RealmComponent rc = RealmComponent.getRealmComponent(pick);
 				String option = identifier+i;
 				chooser.addOption(option,identifier);
@@ -135,7 +135,7 @@ public abstract class SpellTargetingSingle extends SpellTargeting {
 		}
 		return false;
 	}
-	private void updateChooserWithContent(RealmComponentOptionChooser chooser,String option,RealmComponent rc) {
+	private static void updateChooserWithContent(RealmComponentOptionChooser chooser,String option,RealmComponent rc) {
 		for (Iterator h=rc.getGameObject().getHold().iterator();h.hasNext();) {
 			GameObject hgo = (GameObject)h.next();
 			chooser.addGameObjectToOption(option,hgo);

@@ -80,7 +80,7 @@ public class CharacterInfoCard {
 		int by = 70;
 		int bw = PICTURE_WIDTH; //(388-(bx<<1));
 		int bh = PICTURE_HEIGHT; //(607-(by<<1));
-		Shape ellipse = new Ellipse2D.Double((double)bx,(double)by,(double)bw,(double)bh);
+		Shape ellipse = new Ellipse2D.Double(bx,by,bw,bh);
 		
 		g.setColor(Color.white);
 		g.setFont(titleFont);

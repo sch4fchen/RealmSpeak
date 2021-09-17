@@ -19,13 +19,11 @@ package com.robin.magic_realm.components.utility;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.general.util.StringUtilities;
-import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 /**

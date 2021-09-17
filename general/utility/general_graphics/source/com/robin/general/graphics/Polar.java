@@ -71,7 +71,7 @@ public class Polar {
 		}
 		else {
 			length = (int)Math.sqrt((dx*dx)+(dy*dy));
-			angle = toDegrees(Math.atan2((double)dy,(double)dx));
+			angle = toDegrees(Math.atan2(dy,dx));
 		}
 		origin = center;
 		setRect();
@@ -96,11 +96,11 @@ public class Polar {
 	}
 		
 	public static double toRadians(int deg) {
-		return (Math.PI * (double)deg)/180;
+		return (Math.PI * deg)/180;
 	}
 	
 	public static int toDegrees(double rad) {
-		return normalAngle((int)(((double)rad * 180)/Math.PI));
+		return normalAngle((int)((rad * 180)/Math.PI));
 	}
 	
 	private void init() {
@@ -124,8 +124,8 @@ public class Polar {
 		
 	private Point getPoint() {
 		normalizeAngle();
-		int x = ((int)((double)length * cos[angle])) + origin.x;
-		int y = ((int)((double)length * sin[angle])) + origin.y;
+		int x = ((int)(length * cos[angle])) + origin.x;
+		int y = ((int)(length * sin[angle])) + origin.y;
 		return new Point(x,y);
 	}
 	

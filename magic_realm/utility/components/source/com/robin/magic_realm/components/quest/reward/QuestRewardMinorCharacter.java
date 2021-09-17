@@ -82,7 +82,7 @@ public class QuestRewardMinorCharacter extends QuestReward {
 		CharacterWrapper character = getParentQuest().getOwner();
 		if (character==null) return null; // what to do here?  shouldn't ever happen - the reward shouldn't be given while this quest is still a template!
 		
-		ArrayList<String> query = new ArrayList<String>();
+		ArrayList<String> query = new ArrayList<>();
 		query.add(Quest.QUEST_MINOR_CHARS);
 		query.add("name="+id);
 		

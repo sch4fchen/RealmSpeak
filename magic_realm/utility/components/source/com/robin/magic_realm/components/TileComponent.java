@@ -421,8 +421,8 @@ public class TileComponent extends ChitComponent {
 			StringTokenizer st = new StringTokenizer(pos, ",");
 			float px = Float.valueOf(st.nextToken()).floatValue();
 			float py = Float.valueOf(st.nextToken()).floatValue();
-			int x = (int) ((px * (float) TILE_WIDTH) / 100.0);
-			int y = (int) ((py * (float) TILE_HEIGHT) / 100.0);
+			int x = (int) ((px * TILE_WIDTH) / 100.0);
+			int y = (int) ((py * TILE_HEIGHT) / 100.0);
 			return new Point(x, y);
 		}
 		return null;
@@ -456,10 +456,10 @@ public class TileComponent extends ChitComponent {
 	}
 
 	public static Shape getHexShape(int x, int y, int sx, int sy, int insetBorder, double scale) {
-		double dx = ((double) x * scale) + sx;
-		double dy = ((double) y * scale) + sy;
+		double dx = (x * scale) + sx;
+		double dy = (y * scale) + sy;
 		double val = TILE_EDGE_LENGTH * scale;
-		double dib = (double) insetBorder * scale;
+		double dib = insetBorder * scale;
 		int tw = (int) (val * 2.0);
 		int th = (int) (val * root3);
 		return getHexShape((int) dx, (int) dy, tw, th, tw - (int) (dib * 2));

@@ -140,7 +140,7 @@ public class CacheTransferDialog extends AggressiveDialog {
 		ArrayList<GameObject> cacheFinalInventory = cacheTableModel.getInventory();
 		
 		// First, transfer all items in cache that the character is taking
-		ArrayList<GameObject> getting = new ArrayList<GameObject>(cacheInventory);
+		ArrayList<GameObject> getting = new ArrayList<>(cacheInventory);
 		getting.removeAll(cacheFinalInventory);
 		RealmUtility.transferInventory((JFrame)parent, cache, character, getting, listener,false);
 		cacheInventory.removeAll(getting);
@@ -181,7 +181,7 @@ public class CacheTransferDialog extends AggressiveDialog {
 		inventoryTableModel.updateRowHeights(inventoryTable);
 		cacheTableModel.updateRowHeights(cacheTable);
 	}
-	private Box getTitleLabel(String title) {
+	private static Box getTitleLabel(String title) {
 		Box box = Box.createHorizontalBox();
 		box.add(Box.createHorizontalGlue());
 		JLabel titleLabel = new JLabel(title);
@@ -209,7 +209,7 @@ public class CacheTransferDialog extends AggressiveDialog {
 		private boolean includePosition;
 		
 		public CacheTableModel(CharacterWrapper bin,boolean includePosition) {
-			inventory = new ArrayList<GameObject>();
+			inventory = new ArrayList<>();
 			for (GameObject go:bin.getInventory()) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
 				if (rc.isItem()) {
@@ -223,7 +223,7 @@ public class CacheTransferDialog extends AggressiveDialog {
 			return inventory;
 		}
 		public GameObject removeInventory(int index) {
-			GameObject go = (GameObject)inventory.remove(index);
+			GameObject go = inventory.remove(index);
 			fireTableDataChanged();
 			return go;
 		}
@@ -265,7 +265,7 @@ public class CacheTransferDialog extends AggressiveDialog {
 					}
 				}
 				else {
-					GameObject go = (GameObject)inventory.get(row-1);
+					GameObject go = inventory.get(row-1);
 					RealmComponent rc = RealmComponent.getRealmComponent(go);
 					switch(col + (includePosition?0:1)) {
 						case 0:
@@ -287,7 +287,7 @@ public class CacheTransferDialog extends AggressiveDialog {
 			int maxIconColWidth = 0;
 			table.setRowHeight(0,50);
 			for (int i=0;i<inventory.size();i++) {
-				GameObject go = (GameObject)inventory.get(i);
+				GameObject go = inventory.get(i);
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
 				
 				ImageIcon icon = rc.getIcon();

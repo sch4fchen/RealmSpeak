@@ -258,7 +258,7 @@ public class SpellSelector extends AggressiveDialog {
 	public ArrayList<GameObject> getSpellSelection() {
 		return spellSelection;
 	}
-	private SpellCardComponent getSpellFromPanel(RealmObjectPanel panel,Point p) {
+	private static SpellCardComponent getSpellFromPanel(RealmObjectPanel panel,Point p) {
 		Component c = panel.getComponentAt(p);
 		if (c!=null && c instanceof SpellCardComponent) {
 			return (SpellCardComponent)c;
@@ -275,7 +275,7 @@ public class SpellSelector extends AggressiveDialog {
 		int change = totalPicks-all.size();
 		if (change<0) {
 			// Remove empties
-			ArrayList newList = new ArrayList();
+			ArrayList<Component> newList = new ArrayList<>();
 			for (Iterator i=all.iterator();i.hasNext();) {
 				RealmComponent rc = (RealmComponent)i.next();
 				if (change<0 && rc instanceof EmptyCardComponent) {
@@ -310,7 +310,7 @@ public class SpellSelector extends AggressiveDialog {
 		if (sc!=null) {
 			SpellCardComponent nsc = new SpellCardComponent(sc.getGameObject());
 			
-			ArrayList all = new ArrayList(Arrays.asList(toPanel.getComponents()));
+			ArrayList<Component> all = new ArrayList<>(Arrays.asList(toPanel.getComponents()));
 			for (int i=0;i<all.size();i++) {
 				CardComponent card = (CardComponent)all.get(i);
 				if (card instanceof EmptyCardComponent) {
@@ -326,7 +326,7 @@ public class SpellSelector extends AggressiveDialog {
 	private void removeSelection(Point p) {
 		SpellCardComponent sc = getSpellFromPanel(toPanel,p);
 		if (sc!=null) {
-			ArrayList all = new ArrayList(Arrays.asList(toPanel.getComponents()));
+			ArrayList<Component> all = new ArrayList<>(Arrays.asList(toPanel.getComponents()));
 			int n = all.indexOf(sc);
 			all.remove(n);
 			all.add(n,new EmptyCardComponent());
@@ -368,7 +368,7 @@ public class SpellSelector extends AggressiveDialog {
 			}
 		});
 		for (int i=0;i<chits.size();i++) {
-			ChitComponent chit = (ChitComponent)chits.get(i);
+			ChitComponent chit = chits.get(i);
 			chitBinPanel.addChit(chit, i);
 		}
 		enchantPanel.add(chitBinPanel,"Center");
@@ -392,7 +392,7 @@ public class SpellSelector extends AggressiveDialog {
 		RealmLoader loader = new RealmLoader();
 		GameData data = loader.getData();
 		GamePool pool = new GamePool(data.getGameObjects());
-		ArrayList<GameObject> choices = new ArrayList<GameObject>();//pool.find("spell");
+		ArrayList<GameObject> choices = new ArrayList<>();//pool.find("spell");
 		choices.addAll(pool.find("spell=V"));
 		choices.addAll(pool.find("spell=VI"));
 		choices.addAll(pool.find("spell=VII"));

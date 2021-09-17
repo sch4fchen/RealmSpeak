@@ -59,7 +59,7 @@ public class SpellUtility {
 	
 	public static void repair(CharacterWrapper character){
 		character.getInventory().stream()
-			.map(obj -> (GameObject)obj)
+			.map(obj -> obj)
 			.map(go -> RealmComponent.getRealmComponent(go))
 			.filter(rc -> rc.isArmor())
 			.map(rc -> (ArmorChitComponent)rc)
@@ -245,9 +245,9 @@ the Appearance Chart, he instantly becomes unhired.
 		String result = monsterTable.apply(character,roller);
 		RealmLogging.logMessage(caster.getName(),monsterTable.getTableName(true)+" roll: "+roller.getDescription());
 		RealmLogging.logMessage(caster.getName(),monsterTable.getTableName(true)+" result: "+result);
-		ArrayList list = spell.getGameObject().getThisAttributeList("created");
+		ArrayList<String> list = spell.getGameObject().getThisAttributeList("created");
 		if (list==null) {
-			list = new ArrayList();
+			list = new ArrayList<>();
 		}
 		for(GameObject go:monsterTable.getMonsterCreator().getMonstersCreated()) {
 			list.add(go.getStringId());
@@ -257,11 +257,10 @@ the Appearance Chart, he instantly becomes unhired.
 	
 	public static ArrayList<GameObject> getCreatedCompanions(SpellWrapper spell) {
 		GameData gameData = spell.getGameObject().getGameData();
-		ArrayList<GameObject> created = new ArrayList<GameObject>();
-		ArrayList list = spell.getGameObject().getThisAttributeList("created");
+		ArrayList<GameObject> created = new ArrayList<>();
+		ArrayList<String> list = spell.getGameObject().getThisAttributeList("created");
 		if (list!=null) {
-			for(Iterator i=list.iterator();i.hasNext();) {
-				String id = (String)i.next();
+			for(String id : list) {
 				GameObject go = gameData.getGameObject(Long.valueOf(id));
 				created.add(go);
 			}
@@ -285,7 +284,7 @@ the Appearance Chart, he instantly becomes unhired.
 		return getSpells(spellLocation,awakened,excludeAsteriskType,false).size();
 	}
 	public static ArrayList<GameObject> getSpells(GameObject spellLocation,Boolean awakened,boolean excludeAsteriskType,boolean ignoreEnchanted) {
-		ArrayList<GameObject> list = new ArrayList<GameObject>();
+		ArrayList<GameObject> list = new ArrayList<>();
 		
 		RealmComponent sl = RealmComponent.getRealmComponent(spellLocation);
 		if (ignoreEnchanted || !sl.isEnchanted()) { // enchanted artifacts/books cannot have active spells!
@@ -319,10 +318,9 @@ the Appearance Chart, he instantly becomes unhired.
 	}
 	
 	public static ArrayList<ColorMagic> getSourcesOfColor(RealmComponent test) {
-		ArrayList<ColorMagic> colors = new ArrayList<ColorMagic>();
-		ArrayList seen = ClearingUtility.dissolveIntoSeenStuff(test);
-		for (Iterator i=seen.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		ArrayList<ColorMagic> colors = new ArrayList<>();
+		ArrayList<RealmComponent> seen = ClearingUtility.dissolveIntoSeenStuff(test);
+		for (RealmComponent rc : seen) {
 			String colorName = getColorSourceName(rc);
 			ColorMagic cm = ColorMagic.makeColorMagic(colorName,true);
 			if (cm!=null) {

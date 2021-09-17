@@ -18,7 +18,6 @@
 package com.robin.magic_realm.components.table;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.swing.JFrame;
 
@@ -126,14 +125,13 @@ public class Curse extends RealmTable {
 			// Cannot have ANY active effort asterisks
 			character.applyCurse(Constants.WITHER);
 			
-			ArrayList toFatigue = new ArrayList();
+			ArrayList<CharacterActionChitComponent> toFatigue = new ArrayList<>();
 			toFatigue.addAll(character.getActiveEffortChits());
 			toFatigue.addAll(character.getAlertedChits());
 			toFatigue.addAll(character.getColorChits());
 			
 			// Fatigue all active effort asterisks here
-			for (Iterator i=toFatigue.iterator();i.hasNext();) {
-				CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+			for (CharacterActionChitComponent chit : toFatigue) {
 				chit.makeFatigued();
 				harm = true;
 			}

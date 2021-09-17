@@ -103,7 +103,7 @@ public class GameSetupFrame extends JInternalFrame implements Modifyable,Saveabl
 				}
 				public void duplicate() {
 					int row = getSelectedRow();
-					GameCommand command = (GameCommand)setup.getGameCommands().get(row);
+					GameCommand command = setup.getGameCommands().get(row);
 					GameCommand dupCommand = setup.createNewCommand();
 					dupCommand.copyFrom(command);
 					setModified(true);
@@ -114,20 +114,19 @@ public class GameSetupFrame extends JInternalFrame implements Modifyable,Saveabl
 					// First get all selected commands
 					ArrayList<GameCommand> delCommands = new ArrayList<>();
 					for (int i=0;i<row.length;i++) {
-						GameCommand command = (GameCommand)setup.getGameCommands().get(row[i]);
+						GameCommand command = setup.getGameCommands().get(row[i]);
 						delCommands.add(command);
 					}
 					
 					// Now delete them
-					for (Iterator i=delCommands.iterator();i.hasNext();) {
-						GameCommand command = (GameCommand)i.next();
+					for (GameCommand command : delCommands) {
 						setup.removeCommand(command);
 					}
 					setModified(true);
 				}
 				public void edit() {
 					int row = commandsPane.getSelectedRow();
-					GameCommand command = (GameCommand)setup.getGameCommands().get(row);
+					GameCommand command = setup.getGameCommands().get(row);
 					GameCommandDialog chooser = new GameCommandDialog(setup.getGameCommands(),command);
 					chooser.setLocationRelativeTo(this);
 					chooser.setVisible(true);
@@ -140,7 +139,7 @@ public class GameSetupFrame extends JInternalFrame implements Modifyable,Saveabl
 					int max = Integer.MIN_VALUE;
 					ArrayList<GameCommand> shiftObjects = new ArrayList<>();
 					for (int i=0;i<row.length;i++) {
-						GameCommand command = (GameCommand)setup.getGameCommands().get(row[i]);
+						GameCommand command = setup.getGameCommands().get(row[i]);
 						shiftObjects.add(command);
 						min = Math.min(row[i],min);
 						max = Math.max(row[i],max);
@@ -149,7 +148,7 @@ public class GameSetupFrame extends JInternalFrame implements Modifyable,Saveabl
 					if (direction==1) {
 						// Down
 						if ((max+1)<setup.getGameCommands().size()) {
-							GameCommand command = (GameCommand)setup.getGameCommands().get(max+1);
+							GameCommand command = setup.getGameCommands().get(max+1);
 							setup.moveObjectsAfter(shiftObjects,command);
 							updateSelection(shiftObjects);
 						}
@@ -157,7 +156,7 @@ public class GameSetupFrame extends JInternalFrame implements Modifyable,Saveabl
 					else {
 						// Up
 						if ((min-1)>=0) {
-							GameCommand command = (GameCommand)setup.getGameCommands().get(min-1);
+							GameCommand command = setup.getGameCommands().get(min-1);
 							setup.moveObjectsBefore(shiftObjects,command);
 							updateSelection(shiftObjects);
 						}

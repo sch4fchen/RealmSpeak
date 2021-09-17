@@ -49,7 +49,7 @@ public class QuestRewardTreasureFromHq extends QuestReward {
 		GamePool pool = new GamePool(getGameData().getGameObjects());
 		ArrayList<GameObject> sourceObjects = pool.find("rank=HQ");
 		ArrayList<GameObject> objects = getObjectList(sourceObjects,getHqRegex());
-		ArrayList<GameObject> validObjects = new ArrayList<GameObject>();
+		ArrayList<GameObject> validObjects = new ArrayList<>();
 		for (GameObject object : objects) {
 			if (!object.hasThisAttribute(Constants.CLONED)) {
 				validObjects.add(object);
@@ -86,13 +86,13 @@ public class QuestRewardTreasureFromHq extends QuestReward {
 		GameObject treasure = null;
 		switch(getDrawType()) {
 			case Top:
-				treasure = (GameObject)treasures.get(0);
+				treasure = treasures.get(0);
 				break;
 			case Bottom:
-				treasure = (GameObject)treasures.get(treasures.size()-1);
+				treasure = treasures.get(treasures.size()-1);
 				break;
 			case Random:
-				treasure = (GameObject)treasures.get(RandomNumber.getRandom(treasures.size()));
+				treasure = treasures.get(RandomNumber.getRandom(treasures.size()));
 				break;
 			case Choice:
 				RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,getTitleForDialog()+" Which treasure?",false);

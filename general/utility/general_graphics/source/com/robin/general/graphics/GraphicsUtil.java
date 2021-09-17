@@ -157,7 +157,7 @@ public class GraphicsUtil {
 			angle = 0;
 		}
 		else {
-			angle = Math.atan2((double)dy,(double)dx);
+			angle = Math.atan2(dy,dx);
 		}
 
 		
@@ -201,8 +201,8 @@ public class GraphicsUtil {
 			// ...but do the line SEGMENTS intersect?
 			if (ua>=0.0 && ua<=1.0 && ub>=0.0 && ub<=1.0) {
 				// Yes, the line segements intersect
-				int x = line1P1.x + (int)(ua * (double)(line1P2.x - line1P1.x));
-				int y = line1P1.y + (int)(ua * (double)(line1P2.y - line1P1.y));
+				int x = line1P1.x + (int)(ua * (line1P2.x - line1P1.x));
+				int y = line1P1.y + (int)(ua * (line1P2.y - line1P1.y));
 				return new Point(x,y);
 			}
 		}
@@ -409,8 +409,8 @@ public class GraphicsUtil {
 			u = u/((dx*dx)+(dy*dy));
 			if (u<0.0 || u>1.0)
 				return 999999;
-			intersectionX = (int)((double)x1 + (u*(double)dx));
-			intersectionY = (int)((double)y1 + (u*(double)dy));
+			intersectionX = (int)(x1 + (u*dx));
+			intersectionY = (int)(y1 + (u*dy));
 		}
 		dx = intersectionX - px;
 		dy = intersectionY - py;

@@ -18,7 +18,6 @@
 package com.robin.magic_realm.RealmBattle;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;

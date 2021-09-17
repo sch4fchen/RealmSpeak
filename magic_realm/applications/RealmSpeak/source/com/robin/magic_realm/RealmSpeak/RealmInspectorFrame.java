@@ -111,7 +111,7 @@ public class RealmInspectorFrame extends RealmSpeakInternalFrame {
 		zoomSlider = new JSlider(10,100,70);
 		zoomSlider.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent ev) {
-				double val = (double)zoomSlider.getValue();
+				double val = zoomSlider.getValue();
 				double scale = val/100.0;
 				map.setScale(scale);
 			}

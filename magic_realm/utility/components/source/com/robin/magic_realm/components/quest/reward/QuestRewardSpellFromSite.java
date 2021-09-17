@@ -79,13 +79,13 @@ public class QuestRewardSpellFromSite extends QuestReward {
 		GameObject spell = null;
 		switch(getDrawType()) {
 			case Top:
-				spell = (GameObject)learnable.get(0);
+				spell = learnable.get(0);
 				break;
 			case Bottom:
-				spell = (GameObject)learnable.get(learnable.size()-1);
+				spell = learnable.get(learnable.size()-1);
 				break;
 			case Random:
-				spell = (GameObject)learnable.get(RandomNumber.getRandom(learnable.size()));
+				spell = learnable.get(RandomNumber.getRandom(learnable.size()));
 				break;
 			case Choice:
 				RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,getTitleForDialog()+" Which spell?",false);
