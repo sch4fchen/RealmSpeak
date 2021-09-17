@@ -1093,9 +1093,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		ArrayList<String[]> list = new ArrayList<>();
 		for (String relBlock:getAllRelationshipBlocks(hostPrefs)) {
-			Hashtable hash = getGameObject().getAttributeBlock(relBlock);
-			for (Iterator i=hash.keySet().iterator();i.hasNext();) {
-				String groupName = (String)i.next();
+			Hashtable<String,Object> hash = getGameObject().getAttributeBlock(relBlock);
+			for (String groupName : hash.keySet()) {
 				int rel = Integer.valueOf(hash.get(groupName).toString()).intValue();
 				if (rel>RelationshipType.ALLY) rel=RelationshipType.ALLY;
 				if (rel<RelationshipType.ENEMY) rel=RelationshipType.ENEMY;
@@ -1137,9 +1136,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public ArrayList<String> getRelationshipList(String relBlock,int rel) {
 		ArrayList<String> list = new ArrayList<>();
-		OrderedHashtable hash = getGameObject().getAttributeBlock(relBlock);
-		for (Iterator i=hash.keySet().iterator();i.hasNext();) {
-			String groupName = (String)i.next();
+		OrderedHashtable<String,Object> hash = getGameObject().getAttributeBlock(relBlock);
+		for (String groupName : hash.keySet()) {
 			if (rel==getGameObject().getInt(relBlock,groupName)) {
 				list.add(groupName);
 			}
@@ -1157,11 +1155,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public void initRelationships(HostPrefWrapper hostPrefs) {
 		// Init relationships
 		if (getCharacterLevel()>=3) { // only get the base relationships at level 3 or higher - otherwise all neutral!
-			OrderedHashtable baseBlock = getGameObject().getAttributeBlock(Constants.BASE_RELATIONSHIP);
+			OrderedHashtable<String,Object> baseBlock = getGameObject().getAttributeBlock(Constants.BASE_RELATIONSHIP);
 			ArrayList<String> relBlocks = getAllRelationshipBlocks(hostPrefs);
 			for (String relBlock:relBlocks) {
-				for (Iterator n=baseBlock.keySet().iterator();n.hasNext();) {
-					String key = (String)n.next();
+				for (String key:baseBlock.keySet()) {
 					int baseRel = getGameObject().getInt(Constants.BASE_RELATIONSHIP,key);
 					int currRel = getGameObject().getInt(relBlock,key);
 					getGameObject().setAttribute(relBlock,key,baseRel+currRel);
@@ -2692,7 +2689,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		// Add fame from all treasures (not Fame Price!!)
 		int treasureFame = 0;
-		ArrayList<GameObject> list = new ArrayList<GameObject>();
+		ArrayList<GameObject> list = new ArrayList<>();
 		for (Iterator i=getScorableInventory().iterator();i.hasNext();) {
 			GameObject item = (GameObject)i.next();
 			if (!item.hasThisAttribute("native")) { // no Fame Price values allowed!
@@ -3522,7 +3519,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		ArrayList<String> list = null;
 		String foundEnemyList = getString(FOUND_HIDDEN_ENEMIES);
 		if (foundEnemyList!=null && foundEnemyList.length()>0) {
-			list = new ArrayList<String>();
+			list = new ArrayList<>();
 			StringTokenizer tokens = new StringTokenizer(foundEnemyList,",");
 			while(tokens.hasMoreTokens()) {
 				list.add(tokens.nextToken());
@@ -3613,7 +3610,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		getGameObject().removeAttribute(CURSES_BLOCK,curse);
 	}
 	public ArrayList<String> getAllCurses() {
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		if (getGameObject().hasAttribute(CURSES_BLOCK,Constants.ASHES)) list.add(Constants.ASHES);
 		if (getGameObject().hasAttribute(CURSES_BLOCK,Constants.DISGUST)) list.add(Constants.DISGUST);
 		if (getGameObject().hasAttribute(CURSES_BLOCK,Constants.EYEMIST)) list.add(Constants.EYEMIST);
@@ -3986,9 +3983,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	private void eraseLevelBlock(String blockName) {
 		List<String> dontCopy = Arrays.asList(DONT_COPY_ATTRIBUTES);
-		OrderedHashtable levelBlock = getGameObject().getAttributeBlock(blockName);
-		for (Iterator i = levelBlock.keySet().iterator(); i.hasNext();) {
-			String key = (String) i.next();
+		OrderedHashtable<String,Object> levelBlock = getGameObject().getAttributeBlock(blockName);
+		for (String key : levelBlock.keySet()) {
 			if (!dontCopy.contains(key)) {
 				getGameObject().removeThisAttribute(key);
 			}
@@ -4044,8 +4040,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 		allChits.addAll(getAllChits());
 		allChits.addAll(getDedicatedChits()); // don't forget the chits dedicated to spells!
 		allChits.addAll(getTransmorphedChits()); // and let's grab those that are transformed too, since that is also legal (apparently) - see bug 1733
-		for (Iterator i=allChits.iterator();i.hasNext();) {
-			CharacterActionChitComponent chit = (CharacterActionChitComponent)i.next();
+		for (RealmComponent i : allChits) {
+			CharacterActionChitComponent chit = (CharacterActionChitComponent)i;
 			if (chit.isMagic()) {
 				if (chit.getMagicNumber()==number) {
 					hasType = true;
@@ -4355,14 +4351,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return allSpells;
 	}
-	public ArrayList<GameObject> getAllVirtualSpellsFor(GameObject spell) {
+	public static ArrayList<GameObject> getAllVirtualSpellsFor(GameObject spell) {
 		ArrayList<GameObject> virtualSpells = new ArrayList<>();
 		findVirtualSpellsFor(spell,virtualSpells);
 		return virtualSpells;
 	}
-	public ArrayList<GameObject> getAllVirtualSpellsFor(ArrayList<GameObject> spells) {
+	public static ArrayList<GameObject> getAllVirtualSpellsFor(ArrayList<GameObject> spells) {
 		// Add the virtual spell cards (enhanced magic) here
-		ArrayList<GameObject> virtualSpells = new ArrayList<GameObject>();
+		ArrayList<GameObject> virtualSpells = new ArrayList<>();
 		for (GameObject spell:spells) {
 			findVirtualSpellsFor(spell,virtualSpells);
 		}
@@ -4484,11 +4480,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (getGameObject().hasThisAttribute(Constants.CUSTOM_CHARACTER)) {
 			item = fetchItemFromTemplate(weapon);
 		}
-		else if (weapon!=null) {
-			// Fetch from the main object pool
-			item = fetchItem(frame,pool,weapon,hostKeyVals,chooseSource);
-			getGameObject().add(item);
-		}
+		// Fetch from the main object pool
+		item = fetchItem(frame,pool,weapon,hostKeyVals,chooseSource);
+		getGameObject().add(item);
 		if (item!=null) { // Might be null if someone strips a character, suicides, and respawns them
 			WeaponChitComponent wcc = (WeaponChitComponent)RealmComponent.getRealmComponent(item);
 			wcc.setAlerted(false);
@@ -4535,7 +4529,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 						}
 						// There should never be a T here:  the weaponLocation would not be null in the case of a custom weapon 
 					}
-					if (weaponLocation!=null && !weaponLocation.equals("None")) { // should never BE null, but oh well
+					if (!weaponLocation.equals("None")) { // should never BE null, but oh well
 						if (board!=null) {
 							weaponLocation = weaponLocation+" "+board;
 						}
@@ -4580,7 +4574,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		keyVals.add("!magic");
 		ArrayList<GameObject> found = pool.extract(keyVals);
 		if (found!=null && found.size()>0) {
-			ArrayList<GameObject> available = new ArrayList<GameObject>();
+			ArrayList<GameObject> available = new ArrayList<>();
 			for (GameObject obj:found) {
 				GameObject heldBy = obj.getHeldBy();
 				if (heldBy==null || !heldBy.hasKey(NAME_KEY)) {
@@ -4591,7 +4585,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			if (available.size()>0) {
 				if (chooseSource) {
 					RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,"Choose a "+itemName+":",false);
-					Hashtable<String,GameObject> hashOptions = new Hashtable<String,GameObject>();
+					Hashtable<String,GameObject> hashOptions = new Hashtable<>();
 					for (GameObject obj:available) {
 						String where = obj.getHeldBy()==null?"?":obj.getHeldBy().getName();
 						String option = chooser.generateOption(where);
@@ -5027,7 +5021,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return level < actualLevel;
 	}
 	public ArrayList<CharacterActionChitComponent> getAllActionChitsSorted(int level) {
-		ArrayList<CharacterActionChitComponent> list = new ArrayList<CharacterActionChitComponent>();
+		ArrayList<CharacterActionChitComponent> list = new ArrayList<>();
 		for (Iterator i=getGameObject().getHold().iterator();i.hasNext();) {
 			GameObject go = (GameObject)i.next();
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
@@ -6128,12 +6122,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (getGameObject().hasThisAttribute(attribute)) {
 			return true;
 		}
-		else {
-			// Check the tile
-			TileLocation tl = getCurrentLocation();
-			if (tl!=null && tl.tile.getGameObject().hasThisAttribute(attribute)) {
-				return true;
-			}
+		// Check the tile
+		TileLocation tl = getCurrentLocation();
+		if (tl!=null && tl.tile.getGameObject().hasThisAttribute(attribute)) {
+			return true;
 		}
 		return false;
 	}
@@ -6268,7 +6260,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return note;
 	}
 	public ArrayList<Note> getNotes() {
-		ArrayList<Note> list = new ArrayList<Note>();
+		ArrayList<Note> list = new ArrayList<>();
 		GameObject go = getGameObject();
 		int current = go.getInt(NOTE_BLOCK,NOTE_BLOCK);
 		for (int i=0;i<current;i++) {
@@ -6388,7 +6380,7 @@ public class CharacterWrapper extends GameObjectWrapper {
     	return rc.isGuild() && rc.getGameObject().getThisAttribute("guild").equals(getCurrentGuild());
     }
     public ArrayList<GameObject> getInventoryToApprove() {
-    	ArrayList<GameObject> list = new ArrayList<GameObject>();
+    	ArrayList<GameObject> list = new ArrayList<>();
 		for (Iterator i=getGameObject().getHold().iterator();i.hasNext();) {
 			GameObject go = (GameObject)i.next();
 			if (go.hasThisAttribute(Constants.REQUIRES_APPROVAL)) {
@@ -6500,7 +6492,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean testQuestRequirements(JFrame parentFrame,QuestRequirementParams reqParams,boolean processPost) {
 		boolean reward = false;
 		if (processPost && processPostQuestParams(parentFrame)) reward = true; // Process anything that might have been missed before testing new reqParams
-		ArrayList<Integer> cardTypesWithReward = new ArrayList<Integer>();
+		ArrayList<Integer> cardTypesWithReward = new ArrayList<>();
 		for(Quest quest:getAllQuests()) {
 			int uid = quest.getUniqueId();
 			if (cardTypesWithReward.contains(uid)) continue;

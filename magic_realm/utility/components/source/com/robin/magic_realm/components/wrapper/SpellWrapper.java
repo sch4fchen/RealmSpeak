@@ -783,7 +783,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			energize();
 			
 			ISpellEffect[] effects = SpellEffectFactory.create(getName().toLowerCase());	
-			getTargets().forEach(t -> affect(effects, parent, theGame, (RealmComponent)t));	
+			getTargets().forEach(t -> affect(effects, parent, theGame, t));	
 			
 			if (!(isPhaseSpell() && hasPhaseChit())) { // ignore phase spells that still have a phase chit active!!
 				setBoolean(SPELL_AFFECTED,true);
@@ -883,14 +883,13 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 					
 		// Ignore these attributes
 		String[] ignorVars = {"light_color","dark_color"};
-		ArrayList<String> ignoreTest = new ArrayList<String>(Arrays.asList(ignorVars));
+		ArrayList<String> ignoreTest = new ArrayList<>(Arrays.asList(ignorVars));
 		
 		// Earmark some attributes for the "this" block
 		String[] thisVars = {"vulnerability",Constants.ICON_FOLDER,Constants.ICON_TYPE,"flying","walk_woods","armored","name","mist_like"};
-		ArrayList<String> thisTest = new ArrayList<String>(Arrays.asList(thisVars));
-		Hashtable hash = source.getAttributeBlock(blockName);
-		for (Iterator i=hash.keySet().iterator();i.hasNext();) {
-			String key = (String)i.next();
+		ArrayList<String> thisTest = new ArrayList<>(Arrays.asList(thisVars));
+		Hashtable<String,Object> hash = source.getAttributeBlock(blockName);
+		for (String key : hash.keySet()) {
 			if (!ignoreTest.contains(key)) {
 				String val = (String)hash.get(key);
 				if (thisTest.contains(key)) {
