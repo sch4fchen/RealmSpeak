@@ -60,24 +60,24 @@ public class HexMap extends JComponent implements Scrollable {
 	protected Dimension mapSize;
 	
 	protected Image defaultImage;	// icon to use for empty hexes
-	protected Hashtable sets;
+	protected Hashtable<HexMapPoint, HexSet> sets;
 	protected Hashtable<HexMapPoint, Hex> hexes;
-	protected Hashtable distanceHash;   // hash of all empty hexes - tells how many spaces away from occupied hexes
-	protected Collection<ArrayList<HexMapPoint>> waterBodies;
+	protected Hashtable<HexMapPoint, Integer> distanceHash;   // hash of all empty hexes - tells how many spaces away from occupied hexes
+	protected Collection<Collection<HexMapPoint>> waterBodies;
 	protected Hashtable hexDrawCoordinates;
 	protected ArrayList<HexMapPoint> allHexPositions;
 	
 	// Selections
-	protected Hashtable selectionRules;
-	protected Hashtable selectionBorder;
+	protected Hashtable<HexMapPoint, MoveRule> selectionRules;
+	protected Hashtable<HexMapPoint, Comparable> selectionBorder;
 	
 	// Saved selections
-	protected Hashtable savedSelectionBorder;
-	protected Hashtable savedSelectionRules;
+	protected Hashtable<HexMapPoint, Comparable> savedSelectionBorder;
+	protected Hashtable<HexMapPoint, MoveRule> savedSelectionRules;
 	
 	// Optimization for water distance searches
 	protected HexMapPoint lastWaterMarkStart;
-	protected Hashtable lastMarkHash; // keep this to optimize searches on the same pos
+	protected Hashtable<HexMapPoint, Integer> lastMarkHash; // keep this to optimize searches on the same pos
 	
 	protected int width;			// width (in hexes)
 	protected int height;			// height (in hexes)
@@ -263,11 +263,10 @@ public class HexMap extends JComponent implements Scrollable {
 		}
 		return false;
 	}
-	public Collection getActiveLandPoints() {
-		ArrayList landPoints = new ArrayList();
-		for (Iterator i=hexes.keySet().iterator();i.hasNext();) {
-			HexMapPoint pos = (HexMapPoint)i.next();
-			Hex hex = (Hex)hexes.get(pos);
+	public Collection<HexMapPoint> getActiveLandPoints() {
+		ArrayList<HexMapPoint> landPoints = new ArrayList<>();
+		for (HexMapPoint pos : hexes.keySet()) {
+			Hex hex = hexes.get(pos);
 			if (hex.isActive()) {
 				landPoints.add(pos);
 			}
@@ -286,7 +285,7 @@ public class HexMap extends JComponent implements Scrollable {
 		return null;
 	}
 	public HexSet[] getAllSets() {
-		return (HexSet[])sets.values().toArray(new HexSet[0]);
+		return sets.values().toArray(new HexSet[0]);
 	}
 	/**
 	 * Selects a region that would be covered by the HexSet, without actually adding the set
@@ -341,10 +340,10 @@ public class HexMap extends JComponent implements Scrollable {
 	public void clearHex(HexMapPoint pos) {
 		hexes.remove(pos);
 	}
-	public Hashtable getHexes() {
+	public Hashtable<HexMapPoint, Hex> getHexes() {
 		return hexes;
 	}
-	public Hashtable getDistances() {
+	public Hashtable<HexMapPoint, Integer> getDistances() {
 		return distanceHash;
 	}
 	public ArrayList<HexMapPoint> getAllEdgePositions() {
@@ -375,22 +374,20 @@ public class HexMap extends JComponent implements Scrollable {
 		}
 		distanceHash = markDistances(toMark,hexDrawCoordinates.keySet());
 	}
-	public Hashtable markDistances(Collection toMark,Collection searchSet) {
-		Hashtable markHash = new Hashtable();
+	public Hashtable markDistances(Collection<HexMapPoint> toMark,Collection<HexMapPoint> searchSet) {
+		Hashtable<HexMapPoint, Integer> markHash = new Hashtable<>();
 		
 		// Now iteratively search for non-occupied hexes adjacent to a distance
 		Integer distance = new Integer(0);
 		while(toMark.size()>0) {
 			// Mark the toMark
-			for (Iterator i=toMark.iterator();i.hasNext();) {
-				HexMapPoint pos = (HexMapPoint)i.next();
+			for (HexMapPoint pos : toMark) {
 				markHash.put(pos,distance);
 			}
 			
 			// Find the next layer
-			toMark = new ArrayList();
-			for (Iterator i=searchSet.iterator();i.hasNext();) {
-				HexMapPoint pos = (HexMapPoint)i.next();
+			toMark = new ArrayList<>();
+			for (HexMapPoint pos : searchSet) {
 				if (!markHash.containsKey(pos)) { // only check hexes not already marked
 					HexMapPoint[] adj = pos.getAdjacentPoints();
 					for (int n=0;n<adj.length;n++) {
@@ -418,7 +415,7 @@ public class HexMap extends JComponent implements Scrollable {
 			}
 		}
 		
-		waterBodies = new ArrayList<ArrayList<HexMapPoint>>();
+		waterBodies = new ArrayList<>();
 		while(allEmpty.size()>0) {
 			// Start a new water body
 			ArrayList<HexMapPoint> waterBody = new ArrayList<>();
@@ -478,7 +475,7 @@ public class HexMap extends JComponent implements Scrollable {
 		return null; // no mutual water body was found!
 	}
 	
-	public Collection<ArrayList<HexMapPoint>> getWaterBodies() {
+	public Collection<Collection<HexMapPoint>> getWaterBodies() {
 		return waterBodies;
 	}
 	
@@ -858,7 +855,7 @@ public class HexMap extends JComponent implements Scrollable {
 		token.drawToken(g,r.x,r.y,r.width,r.height);
 	}
 	public boolean isBoatless(HexMapPoint pos) {
-		MoveRule rule = (MoveRule)selectionRules.get(pos);
+		MoveRule rule = selectionRules.get(pos);
 		return (rule!=null && rule.getCanMoveBoatless());
 	}
 	public Collection getSelectedPositions() {
@@ -867,18 +864,17 @@ public class HexMap extends JComponent implements Scrollable {
 	public void setSelectedPositions(Collection list) {
 		setSelectedPositions((HexMapPoint[])list.toArray(new HexMapPoint[list.size()]));
 	}
-	public void setSelectedPositions(Hashtable moveRules) {
+	public void setSelectedPositions(Hashtable<HexMapPoint,MoveRule> moveRules) {
 		setSelectedPositions(moveRules.keySet());
-		for (Iterator i=moveRules.keySet().iterator();i.hasNext();) {
-			HexMapPoint pos = (HexMapPoint)i.next();
-			MoveRule rule = (MoveRule)moveRules.get(pos);
+		for (HexMapPoint pos : moveRules.keySet()) {
+			MoveRule rule = moveRules.get(pos);
 			selectionRules.put(pos,rule);
 		}
 		repaint();
 	}
 	public void setSelectedPositions(HexMapPoint[] pos) {
-		selectionRules = new Hashtable();
-		selectionBorder = new Hashtable();
+		selectionRules = new Hashtable<>();
+		selectionBorder = new Hashtable<>();
 		if (pos!=null) {
 			for (int i=0;i<pos.length;i++) {
 				selectionBorder.put(pos[i],""); // placeholder
@@ -888,12 +884,12 @@ public class HexMap extends JComponent implements Scrollable {
 		repaint();
 	}
 	public void saveSelectionState() {
-		savedSelectionRules = (Hashtable)selectionRules.clone();
-		savedSelectionBorder = (Hashtable)selectionBorder.clone();
+		savedSelectionRules = (Hashtable<HexMapPoint, MoveRule>)selectionRules.clone();
+		savedSelectionBorder = (Hashtable<HexMapPoint, Comparable>)selectionBorder.clone();
 	}
 	public void restoreSelectionState() {
-		selectionRules = (Hashtable)savedSelectionRules.clone();
-		selectionBorder = (Hashtable)savedSelectionBorder.clone();
+		selectionRules = (Hashtable<HexMapPoint, MoveRule>)savedSelectionRules.clone();
+		selectionBorder = (Hashtable<HexMapPoint, Comparable>)savedSelectionBorder.clone();
 		updateSelectionBorder();
 		repaint();
 	}
@@ -901,14 +897,13 @@ public class HexMap extends JComponent implements Scrollable {
 	 * Return the selection rule for this selection position.  Returns null if none was applied.
 	 */
 	public MoveRule getSelectionRule(HexMapPoint pos) {
-		return (MoveRule)selectionRules.get(pos);
+		return selectionRules.get(pos);
 	}
 	/**
 	 * This will generate a number for every selected hex that will identify which sides require a border
 	 */
 	private void updateSelectionBorder() {
-		for (Iterator i=selectionBorder.keySet().iterator();i.hasNext();) {
-			HexMapPoint pos = (HexMapPoint)i.next();
+		for (HexMapPoint pos : selectionBorder.keySet()) {
 			int flag = 0x00;
 			HexMapPoint[] adj = pos.getAdjacentPoints();
 			for (int n=0;n<adj.length;n++) {
@@ -923,8 +918,8 @@ public class HexMap extends JComponent implements Scrollable {
 		return selectionBorder.get(pos)!=null;
 	}
 	public void clearSelection() {
-		selectionRules = new Hashtable();
-		selectionBorder = new Hashtable();
+		selectionRules = new Hashtable<>();
+		selectionBorder = new Hashtable<>();
 		repaint();
 	}
 	public Dimension getPreferredScrollableViewportSize() {
@@ -1049,8 +1044,7 @@ public class HexMap extends JComponent implements Scrollable {
 	 */
 	public void setShowRotatedHexes(boolean showRotatedHexes) {
 		this.showRotatedHexes = showRotatedHexes;
-		for (Iterator i=getHexes().values().iterator();i.hasNext();) {
-			Hex hex = (Hex)i.next();
+		for (Hex hex : getHexes().values()) {
 			hex.updateImageRotation(showRotatedHexes);
 		}
 		revalidate();
