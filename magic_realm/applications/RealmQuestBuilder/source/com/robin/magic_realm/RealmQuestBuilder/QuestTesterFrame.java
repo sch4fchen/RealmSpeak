@@ -80,6 +80,8 @@ public class QuestTesterFrame extends JFrame {
 
 	// Hirelings
 	JList<RealmComponent> hirelings;
+	JButton hirelingAdd;
+	JButton hirelingUnhire;
 	JButton hirelingToggleFollow;
 	JList<QuestJournalEntry> journalList;
 
@@ -784,8 +786,40 @@ public class QuestTesterFrame extends JFrame {
 				updateHirelingsButtons();
 			}
 		});
+		JPanel hirelingButtons = new JPanel(new GridLayout(1, 3));
 		hirelings.setCellRenderer(new HirelingListRenderer());
 		hirelingsPanel.add(hirelings);
+		hirelingAdd = new JButton("Add");
+		hirelingAdd.setToolTipText("Hire new hirelings");
+		hirelingAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				ArrayList<GameObject> things = chooseOther("Hireling", "native,!treasure,!dwelling,!horse,!boon");
+				if (things == null)
+					return;
+				for (GameObject thing : things) {
+					thing.setThisAttribute("seen");
+					thing.removeThisAttribute(Constants.DEAD);
+					character.getCurrentLocation().clearing.add(thing, null);
+					character.addHireling(thing);
+				}
+				updateCharacterPanel();
+				retestQuest();
+			}
+		});
+		hirelingButtons.add(hirelingAdd);
+		hirelingUnhire = new JButton("Unhire");
+		hirelingUnhire.setToolTipText("Unhire hireling");
+		hirelingUnhire.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				RealmComponent hireling = hirelings.getSelectedValue();
+				if (hireling != null) {
+					character.removeHireling(hireling.getGameObject());
+				}
+				updateCharacterPanel();
+				retestQuest();
+			}
+		});
+		hirelingButtons.add(hirelingUnhire);
 		hirelingToggleFollow = new JButton("Follow");
 		hirelingToggleFollow.setToolTipText("Toggle hireling to follow character");
 		hirelingToggleFollow.addActionListener(new ActionListener() {
@@ -802,9 +836,11 @@ public class QuestTesterFrame extends JFrame {
 					}
 				}
 				hirelings.updateUI();
+				retestQuest();
 			}
 		});
-		hirelingsPanel.add(hirelingToggleFollow, BorderLayout.SOUTH);
+		hirelingButtons.add(hirelingToggleFollow);
+		hirelingsPanel.add(hirelingButtons, BorderLayout.SOUTH);
 		panel.add(makeTitledScrollPane("Hirelings", hirelingsPanel));
 
 		journalList = new JList<>();
@@ -816,6 +852,7 @@ public class QuestTesterFrame extends JFrame {
 	private void updateHirelingsButtons() {
 		RealmComponent rc = hirelings.getSelectedValue();
 		hirelingToggleFollow.setEnabled(rc != null);
+		hirelingUnhire.setEnabled(rc != null);
 	}
 
 	private JPanel buildCharacterClearingPanel() {
