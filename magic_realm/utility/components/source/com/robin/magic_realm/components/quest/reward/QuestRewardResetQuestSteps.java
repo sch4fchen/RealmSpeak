@@ -31,6 +31,7 @@ public class QuestRewardResetQuestSteps extends QuestReward {
 	public static final String QUEST_STEPS_DEPTH = "_depth";
 	public static final String QUEST_STEP_NAME = "_step_name";
 	public static final String RESET_DEPENDENT_QUEST_STEPS = "_reset_dependent_steps";
+	public static final String RESET_DEPENDENT_FAILED_QUEST_STEPS = "_reset_dependent_steps";
 
 	public enum ResetMethod {
 		CascadedReset,
@@ -76,14 +77,14 @@ public class QuestRewardResetQuestSteps extends QuestReward {
 			break;
 		}
 		
-		if (resetDependentSteps()) {
+		if (resetRequiredSteps() || resetRequiredFailedSteps()) {
 			ArrayList<QuestStep> moreStepsToReset = new ArrayList<>();
 			boolean newStepsToAdd = true;
 			while (newStepsToAdd) {
 				newStepsToAdd = false;
 				for(QuestStep step:quest.getSteps()) {
 					for(QuestStep resettedStep:stepsToReset) {
-						if (step.requires(resettedStep) && !moreStepsToReset.contains(step)) {
+						if (!moreStepsToReset.contains(step) && ((resetRequiredSteps() && step.requires(resettedStep)) || (resetRequiredFailedSteps() && step.requiresFail(resettedStep)))) {
 							moreStepsToReset.add(step);
 							newStepsToAdd = true;
 						}
@@ -125,7 +126,10 @@ public class QuestRewardResetQuestSteps extends QuestReward {
 	private String questStepToReset() {
 		return getString(QUEST_STEP_NAME);
 	}
-	private boolean resetDependentSteps() {
+	private boolean resetRequiredSteps() {
 		return getBoolean(RESET_DEPENDENT_QUEST_STEPS);
+	}
+	private boolean resetRequiredFailedSteps() {
+		return getBoolean(RESET_DEPENDENT_FAILED_QUEST_STEPS);
 	}
 }
