@@ -45,7 +45,7 @@ public class QuestStepInteractiveView extends QuestStepView {
 		});		
 	}
 	
-	public void fullFillRequirementsForQuestStep(Quest quest, QuestStep questStep, CharacterWrapper character) {
+	public void fulfillRequirementsForQuestStep(Quest quest, QuestStep questStep, CharacterWrapper character) {
 		ArrayList<QuestStep> questSteps = quest.getSteps();
 		String dayKey = character.getCurrentDayKey();
 		questStep.preemptSteps(questSteps, dayKey);
@@ -55,6 +55,30 @@ public class QuestStepInteractiveView extends QuestStepView {
 		questStep.doRewards(frame, character);
 		Quest.currentQuest = null;
 		QuestStep.currentStep = null;
+		quest.updateStepStates(dayKey);
+	}
+	
+	public static void failRequirementsForQuestStep(Quest quest, QuestStep questStep, CharacterWrapper character) {
+		ArrayList<QuestStep> questSteps = quest.getSteps();
+		String dayKey = character.getCurrentDayKey();
+		questStep.preemptSteps(questSteps, dayKey);
+		questStep.setState(QuestStepState.Failed, dayKey);
+		quest.updateStepStates(dayKey);
+	}
+	
+	public static void readyQuestStep(Quest quest, QuestStep questStep, CharacterWrapper character) {
+		ArrayList<QuestStep> questSteps = quest.getSteps();
+		String dayKey = character.getCurrentDayKey();
+		questStep.preemptSteps(questSteps, dayKey);
+		questStep.setState(QuestStepState.Ready, dayKey);
+		quest.updateStepStates(dayKey);
+	}
+	
+	public static void pendQuestStep(Quest quest, QuestStep questStep, CharacterWrapper character) {
+		ArrayList<QuestStep> questSteps = quest.getSteps();
+		String dayKey = character.getCurrentDayKey();
+		questStep.preemptSteps(questSteps, dayKey);
+		questStep.setState(QuestStepState.Pending, dayKey);
 		quest.updateStepStates(dayKey);
 	}
 }

@@ -116,7 +116,7 @@ public class QuestTesterFrame extends JFrame {
 
 	private void initComponents() {
 		setTitle("RealmSpeak Quest Tester");
-		setSize(1280, 960);
+		setSize(1400, 960);
 
 		setLayout(new BorderLayout());
 
@@ -202,20 +202,20 @@ public class QuestTesterFrame extends JFrame {
 	private JPanel buildCharacterStatsPanel() {
 		JPanel superPanel = new JPanel(new BorderLayout());
 		JPanel topPanel = new JPanel(new GridLayout(2, 1));
-		JPanel questPanel = new JPanel(new GridLayout(1, 2));
-		JButton retestQuestButton = new JButton("Check Quest Now");
+		JPanel questPanel = new JPanel(new GridLayout(2, 3));
+		JButton retestQuestButton = new JButton("Check Quest");
 		retestQuestButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				retestQuest();
 			}
 		});
 		questPanel.add(retestQuestButton);
-		JButton fulfillRequirements = new JButton("Fulfill requirements");
+		JButton fulfillRequirements = new JButton("Fulfill step");
 		fulfillRequirements.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				QuestStep questStep = questStepView.getSelectedStep();
 				if (questStep!=null) {
-					questStepView.fullFillRequirementsForQuestStep(quest, questStep, character);
+					questStepView.fulfillRequirementsForQuestStep(quest, questStep, character);
 					if (quest.getState() == QuestState.Complete) {
 						showQuestCompleted();
 					}
@@ -224,6 +224,48 @@ public class QuestTesterFrame extends JFrame {
 			}
 		});
 		questPanel.add(fulfillRequirements);
+		JButton failRequirements = new JButton("Fail step");
+		failRequirements.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				QuestStep questStep = questStepView.getSelectedStep();
+				if (questStep!=null) {
+					QuestStepInteractiveView.failRequirementsForQuestStep(quest, questStep, character);
+					if (quest.getState() == QuestState.Complete) {
+						showQuestCompleted();
+					}
+					retestQuest();
+				}
+			}
+		});
+		questPanel.add(failRequirements);
+		JButton ready = new JButton("Ready step");
+		ready.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				QuestStep questStep = questStepView.getSelectedStep();
+				if (questStep!=null) {
+					QuestStepInteractiveView.readyQuestStep(quest, questStep, character);
+					if (quest.getState() == QuestState.Complete) {
+						showQuestCompleted();
+					}
+					retestQuest();
+				}
+			}
+		});
+		questPanel.add(ready);
+		JButton pend = new JButton("Pend step");
+		pend.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				QuestStep questStep = questStepView.getSelectedStep();
+				if (questStep!=null) {
+					QuestStepInteractiveView.pendQuestStep(quest, questStep, character);
+					if (quest.getState() == QuestState.Complete) {
+						showQuestCompleted();
+					}
+					retestQuest();
+				}
+			}
+		});
+		questPanel.add(pend);
 		topPanel.add(questPanel);
 		JPanel phaseOptions = new JPanel(new GridLayout(1, 5));
 		ButtonGroup timeGroup = new ButtonGroup();
