@@ -2,7 +2,7 @@ Version 1.1.4.7 - Changes since 1.1.4.6
 QUEST UPDATE:
 # QuestTester: Option to add new hirelings and unhire hirelings
 # QuestTester: Option to change quest step state
-# QuestRewardResetQuestSteps: Option to reset steps requiring resetted steps as failed
+# QuestRewardResetQuestSteps: Option to reset steps requiring resetted steps as failed, option to ready resetted steps
 # QuestRequirementHirelings: More options to define hireling stats
 # QuestReward: SummonGeneratedMonster
 # QuestRewardHireling: Option to rename hireling

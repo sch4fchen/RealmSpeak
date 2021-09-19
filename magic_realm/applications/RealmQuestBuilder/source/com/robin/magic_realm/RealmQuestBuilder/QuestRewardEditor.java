@@ -275,6 +275,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardResetQuestSteps.RESET_METHOD, "Reset mode", FieldType.StringSelector, QuestRewardResetQuestSteps.ResetMethod.values()));
 				list.add(new QuestPropertyBlock(QuestRewardResetQuestSteps.RESET_DEPENDENT_QUEST_STEPS, "Reset steps requiring resetted steps", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardResetQuestSteps.RESET_DEPENDENT_FAILED_QUEST_STEPS, "Reset steps requiring resetted steps as failed", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardResetQuestSteps.READY_RESETTED_STEPS, "Ready resetted steps", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardResetQuestSteps.QUEST_STEPS_DEPTH, "Cascade 'depth'", FieldType.NumberAll));
 				list.add(new QuestPropertyBlock(QuestRewardResetQuestSteps.QUEST_STEP_NAME, "Quest Step", FieldType.StringSelector, quest.getSteps().toArray()));
 				break;

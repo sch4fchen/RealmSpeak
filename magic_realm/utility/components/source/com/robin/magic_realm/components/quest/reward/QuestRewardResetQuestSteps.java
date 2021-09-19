@@ -32,6 +32,7 @@ public class QuestRewardResetQuestSteps extends QuestReward {
 	public static final String QUEST_STEP_NAME = "_step_name";
 	public static final String RESET_DEPENDENT_QUEST_STEPS = "_reset_dependent_steps";
 	public static final String RESET_DEPENDENT_FAILED_QUEST_STEPS = "_reset_dependent_failed_steps";
+	public static final String READY_RESETTED_STEPS = "_ready_resetted_steps";
 
 	public enum ResetMethod {
 		CascadedReset,
@@ -95,8 +96,14 @@ public class QuestRewardResetQuestSteps extends QuestReward {
 		}
 		
 		for(QuestStep step:stepsToReset) {
+			if (step.getState() == QuestStepState.Pending) continue;
 			step.clearStates();
-			step.setState(QuestStepState.Pending, currentDay);
+			if (readyResettedSteps()) {
+				step.setState(QuestStepState.Ready, currentDay);
+			}
+			else {
+				step.setState(QuestStepState.Pending, currentDay);
+			}
 		}
 		quest.updateStepStates(currentDay);
 	}
@@ -131,5 +138,8 @@ public class QuestRewardResetQuestSteps extends QuestReward {
 	}
 	private boolean resetRequiredFailedSteps() {
 		return getBoolean(RESET_DEPENDENT_FAILED_QUEST_STEPS);
+	}
+	private boolean readyResettedSteps() {
+		return getBoolean(READY_RESETTED_STEPS);
 	}
 }
