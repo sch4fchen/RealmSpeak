@@ -1,5 +1,6 @@
 Version 1.1.4.7 - Changes since 1.1.4.6
 QUEST UPDATE:
+# Update on existing quests by Steve
 # Updates to James' quests and new quests
 # QuestTester: Option to add new hirelings and unhire hirelings
 # QuestTester: Option to change quest step state
@@ -10,6 +11,7 @@ QUEST UPDATE:
 # QuestRewardCompanion: Option to rename companion
 # QuestRewardSummonMonster and QuestRewardCompanion: add more monsters from expansions
 # QuestRewardHireling: Option to exclude cloned hirelings in regex search
+# Add launchSmartQuestBuilder.bat
 NEW FEATURES:
 # New HouseRule: "No native battling": Unhired and uncontrolled natives don't participate in combat
 BUGS/ISSUES:

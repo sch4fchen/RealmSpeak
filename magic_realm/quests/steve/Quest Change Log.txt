@@ -1,3 +1,21 @@
+Version 2021-07-xx
+
+* The Physiologus - added Expansion 1 monsters, fixed Dragon bonus bug.
+* The Mythologist - added display of progress counter.
+* The Hidden Ring - fixed activation issues with other treasures.
+* The Glimmering Ring - fixed activation issues with other treasures, fixed deactivation issues, fixed gold color.
+* The Gifted Child - fixed lion companion.
+* Cave Miner - fixed situation with no gold left.
+* Mountain Hermit - fixed situation with no gold left.
+
+New Questing the Realm Quest
+
+* As Time Goes By - escort a hero to a clearing with Giant Bats
+
+
+==========================================================================
+
+
 Version 2021-07-03
 
 * Optimized Discover Lost City/Castle quests.
