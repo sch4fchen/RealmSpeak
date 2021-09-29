@@ -1,5 +1,6 @@
 Version 1.1.4.7 - Changes since 1.1.4.6
 QUEST UPDATE:
+# Updates to James' quests and new quests
 # QuestTester: Option to add new hirelings and unhire hirelings
 # QuestTester: Option to change quest step state
 # QuestRewardResetQuestSteps: Option to reset steps requiring resetted steps as failed, option to ready resetted steps
