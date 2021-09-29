@@ -87,7 +87,7 @@ public class QuestRequirementNextPhase extends QuestRequirement {
 		sb.append(val);
 		sb.append(" phase");
 		sb.append(val==1?"":"s");
-		sb.append("after first time testing this requirement.");
+		sb.append(" after first time testing this requirement.");
 		return sb.toString();
 	}
 	
