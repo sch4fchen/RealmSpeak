@@ -75,7 +75,9 @@ public class QuestRewardMoveDenizen extends QuestReward {
 		TileLocation charactersLoc= character.getCurrentLocation();
 		ArrayList<GameObject> denizensToMove = new ArrayList<>();
 		for (GameObject denizen : denizens) {
-			TileLocation denizenLoc = RealmComponent.getRealmComponent(denizen).getCurrentLocation();
+			RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
+			if (denizenRc == null || !denizenRc.isDenizen()) continue;
+			TileLocation denizenLoc = denizenRc.getCurrentLocation();
 			if(getMoveFromOption() == MoveFromOption.CharactersClearing
 					&& (denizenLoc == null || charactersLoc == null || denizenLoc.tile != charactersLoc.tile || denizenLoc.clearing != charactersLoc.clearing)) {
 				continue;
