@@ -145,7 +145,7 @@ public class Constants {
 	public static final String DISCOVERY = "discovery";
 	public static final String DISCOVERED = "discovered";
 	public static final String GLIMPSED_COUNTERS = "glimpsedCounters";
-	
+
 	// ThisAttributes for DieRoller - The accompaning value lists tables that are affected
 	public static final String PLUS_ONE = "plus_one";
 	public static final String DIEMOD = "diemod";

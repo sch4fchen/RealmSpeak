@@ -56,6 +56,7 @@ public class QuestRewardMinorCharacter extends QuestReward {
 		if (getGainType()==GainType.Gain) {
 			minorCharacter.getGameObject().setThisAttribute(Constants.ACTIVATED);
 			minorCharacter.setupAbilities();
+			minorCharacter.setupBonusChit();
 			character.getGameObject().add(minorCharacter.getGameObject());
 		}
 		else {

@@ -4890,17 +4890,15 @@ public class CharacterWrapper extends GameObjectWrapper {
 					flyChits.add(rc);
 				}
 			}
-			else if (go.hasThisAttribute("quest_minor_chars") && go.hasThisAttribute("activated")) {
-				GameObjectBlockManager man = new GameObjectBlockManager(go);
-				GameObject bonusChit = man.extractGameObjectFromBlocks(Constants.BONUS_CHIT+"design",false);
-				if (bonusChit != null) {
-					bonusChit.setThisAttribute("icon_type",go.getThisAttribute("icon_type"));
-					bonusChit.setThisAttribute("icon_folder",go.getThisAttribute("icon_folder"));
-					bonusChit.setThisAttribute(Constants.CHIT_EARNED);
-					RealmComponent bonusChitRc = RealmComponent.getRealmComponent(bonusChit);
-					CharacterActionChitComponent bonusActionChit = (CharacterActionChitComponent)bonusChitRc;
-					if (bonusActionChit.isFlyChit() || (bonusActionChit.isFly() && bonusActionChit.isActive())) {
-						flyChits.add(bonusActionChit);
+			else if (go.hasThisAttribute(Quest.QUEST_MINOR_CHARS) && go.hasThisAttribute("activated")) {
+				for (Iterator n = go.getHold().iterator(); n.hasNext();) {
+					GameObject bonusChit = (GameObject) n.next();
+					if (bonusChit.hasThisAttribute(Constants.CHIT_EARNED)) {
+						RealmComponent bonusChitRc = RealmComponent.getRealmComponent(bonusChit);
+						CharacterActionChitComponent bonusActionChit = (CharacterActionChitComponent) bonusChitRc;
+						if (bonusActionChit.isFlyChit() || (bonusActionChit.isFly() && bonusActionChit.isActive())) {
+							flyChits.add(bonusActionChit);
+						}
 					}
 				}
 			}
@@ -5103,18 +5101,16 @@ public class CharacterWrapper extends GameObjectWrapper {
 					}
 				}
 			}
-			else if (go.hasThisAttribute("quest_minor_chars") && go.hasThisAttribute("activated")) {
-				GameObjectBlockManager man = new GameObjectBlockManager(go);
-				GameObject bonusChit = man.extractGameObjectFromBlocks(Constants.BONUS_CHIT+"design",false);
-				if (bonusChit != null) {
-					bonusChit.setThisAttribute("icon_type",go.getThisAttribute("icon_type"));
-					bonusChit.setThisAttribute("icon_folder",go.getThisAttribute("icon_folder"));
-					bonusChit.setThisAttribute(Constants.CHIT_EARNED);
-					RealmComponent rc = RealmComponent.getRealmComponent(bonusChit);
-					CharacterActionChitComponent bonusActionChit = (CharacterActionChitComponent)rc;
-					if (!transmorphed || bonusActionChit.isColor()) { // if transmorphed, you only have color chits
-						if (stateId==-1 || bonusActionChit.getStateId()==stateId) {
-							list.add(bonusActionChit);
+			else if (go.hasThisAttribute(Quest.QUEST_MINOR_CHARS) && go.hasThisAttribute("activated")) {
+				for (Iterator n = go.getHold().iterator(); n.hasNext();) {
+					GameObject bonusChit = (GameObject) n.next();
+					if (bonusChit.hasThisAttribute(Constants.CHIT_EARNED)) {
+						RealmComponent rc = RealmComponent.getRealmComponent(bonusChit);
+						CharacterActionChitComponent bonusActionChit = (CharacterActionChitComponent) rc;
+						if (!transmorphed || bonusActionChit.isColor()) { // if transmorphed, you only have color chits
+							if (stateId == -1 || bonusActionChit.getStateId() == stateId) {
+								list.add(bonusActionChit);
+							}
 						}
 					}
 				}
