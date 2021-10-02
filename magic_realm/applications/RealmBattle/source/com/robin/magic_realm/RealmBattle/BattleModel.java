@@ -27,6 +27,7 @@ import com.robin.general.util.HashLists;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.*;
+import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.table.Curse;
 import com.robin.magic_realm.components.table.PowerOfThePit;
 import com.robin.magic_realm.components.utility.*;
@@ -2032,6 +2033,13 @@ public class BattleModel {
 					fly.useFly();
 				}
 				CombatWrapper.clearRoundCombatInfo(held);
+				
+				if (held.hasThisAttribute(Quest.QUEST_MINOR_CHARS)) {
+					for (Iterator m = held.getHold().iterator(); m.hasNext();) {
+						GameObject bonusChit = (GameObject) m.next();
+						CombatWrapper.clearRoundCombatInfo(bonusChit);
+					}
+				}
 			}
 			
 			if (rc.isCharacter()) {

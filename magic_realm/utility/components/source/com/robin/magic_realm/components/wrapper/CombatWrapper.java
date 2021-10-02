@@ -24,6 +24,7 @@ import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.Harm;
 import com.robin.magic_realm.components.attribute.Speed;
 import com.robin.magic_realm.components.attribute.Spoils;
+import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.utility.RealmLogging;
 
 /**
@@ -685,6 +686,13 @@ public class CombatWrapper extends GameObjectWrapper {
 				for (Iterator i=go.getHold().iterator();i.hasNext();) {
 					GameObject held = (GameObject)i.next();
 					clearAllCombatInfo(held);
+					
+					if (held.hasThisAttribute(Quest.QUEST_MINOR_CHARS)) {
+						for (Iterator n = held.getHold().iterator(); n.hasNext();) {
+							GameObject bonusChit = (GameObject) n.next();
+							clearAllCombatInfo(bonusChit);
+						}
+					}
 				}
 			}
 		}
