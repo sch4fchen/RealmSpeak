@@ -370,9 +370,7 @@ public class RealmSpeakInit {
 					// Add the template to the data object and init deck
 					Quest quest = template.copyQuestToGameData(data);
 					if (quest.isAllPlay()) {
-						if (!hostPrefs.hasPref(Constants.QST_NO_GENERAL_QUESTS)) {
-							deck.addAllPlayCard(quest); // count is ignored for all play cards
-						}
+						deck.addAllPlayCard(quest); // count is ignored for all play cards
 					}
 					else {
 						deck.addCards(quest,count);
@@ -387,7 +385,7 @@ public class RealmSpeakInit {
 		for(Quest template:QuestLoader.loadAllQuestsFromQuestFolder()) {
 			if (template.getBoolean(QuestConstants.WORKS_WITH_BOQ)) {
 				Quest quest = template.copyQuestToGameData(data);
-				if (quest.isEvent() && !hostPrefs.hasPref(Constants.QST_NO_GENERAL_QUESTS)) {
+				if (quest.isEvent()) {
 					book.addEvent(quest);
 				}
 			}

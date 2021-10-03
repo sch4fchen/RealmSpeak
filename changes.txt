@@ -1,5 +1,6 @@
 Version 1.1.4.8 - Changes since 1.1.4.7
 QUEST UPDATE:
+# Remove option to disable "All-Play" (QtR) or "Event" (BoQ) quests
 NEW FEATURES:
 BUGS/ISSUES:
 

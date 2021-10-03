@@ -1632,12 +1632,10 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 					
 					if (hostPrefs.hasPref(Constants.QST_QUEST_CARDS)) {
 						QuestDeck deck = QuestDeck.findDeck(client.getGameData());
-						if (!hostPrefs.hasPref(Constants.QST_NO_GENERAL_QUESTS)) {
-							deck.setupAllPlayCards(getMainFrame(),character);
-						}
+						deck.setupAllPlayCards(getMainFrame(),character);
 						deck.drawCards(getMainFrame(),character);
 					}
-					if (hostPrefs.hasPref(Constants.QST_BOOK_OF_QUESTS) && !hostPrefs.hasPref(Constants.QST_NO_GENERAL_QUESTS)) {
+					if (hostPrefs.hasPref(Constants.QST_BOOK_OF_QUESTS)) {
 						QuestBookEvents book = QuestBookEvents.findBook(client.getGameData());
 						book.setupEvents(getMainFrame(),character);
 					}
