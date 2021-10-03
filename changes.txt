@@ -1,3 +1,8 @@
+Version 1.1.4.8 - Changes since 1.1.4.7
+QUEST UPDATE:
+NEW FEATURES:
+BUGS/ISSUES:
+
 Version 1.1.4.7 - Changes since 1.1.4.6
 QUEST UPDATE:
 # Update on existing quests by Steve
