@@ -77,7 +77,16 @@ public class QuestDeckViewer extends AggressiveDialog {
 			public void mouseClicked(MouseEvent ev) {
 				if (ev.getClickCount()!=2) return;
 				int row = table.getSelectedRow();
-				selectedQuest = quests.get(row);
+				int lastColumn = table.getColumnCount()-1;
+				String filePath= (String) table.getValueAt(row, lastColumn);
+				
+				for (Quest quest : quests) {
+					if (quest.filepath == filePath) {
+						selectedQuest = quest;
+						break;
+					}
+				}
+				
 				setVisible(false);
 				dispose();
 			}
@@ -136,7 +145,8 @@ public class QuestDeckViewer extends AggressiveDialog {
 		"Minor Characters",
 		"Count",
 		"VPs",
-		"% Draw"
+		"% Draw",
+		"FilePath"
 	};
 	private static String[] HEADER_BoQ = {
 			"TEST",
@@ -144,7 +154,8 @@ public class QuestDeckViewer extends AggressiveDialog {
 			"EVENT",
 			"ACT",
 			"Name",
-			"Minor Characters"
+			"Minor Characters",
+			"FilePath"
 		};
 	private static Class[] CLASS = {
 		ImageIcon.class,
@@ -156,6 +167,7 @@ public class QuestDeckViewer extends AggressiveDialog {
 		Integer.class,
 		Integer.class,
 		Integer.class,
+		String.class
 	};
 	static ImageIcon test = IconFactory.findIcon("icons/search.gif");
 	static ImageIcon cross = IconFactory.findIcon("icons/cross.gif");
@@ -215,6 +227,7 @@ public class QuestDeckViewer extends AggressiveDialog {
 					case 6:			return quest.getInt(QuestConstants.CARD_COUNT);
 					case 7:			return quest.getInt(QuestConstants.VP_REWARD);
 					case 8:			return (int)Math.round(quest.getInt(QuestConstants.CARD_COUNT)*100.0/deckCards);
+					case 9:			return quest.filepath;
 				}
 			}
 			return null;
