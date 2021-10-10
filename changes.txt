@@ -1,8 +1,9 @@
 Version 1.1.4.8 - Changes since 1.1.4.7
 QUEST UPDATE:
 # Remove option to disable "All-Play" (QtR) or "Event" (BoQ) quests
-# Quest Builder: Load correct quest when viewing Quest Cards Deck and double clicking on a quest
+# Quest Builder: Load correct quest when viewing Quest Cards Deck and double clicking on a quest#
 NEW FEATURES:
+# Remove Minor characters when dying 
 BUGS/ISSUES:
 # Fix generators not on the map trying to generate new monsters
 

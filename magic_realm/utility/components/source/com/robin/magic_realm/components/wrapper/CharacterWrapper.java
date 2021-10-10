@@ -5470,6 +5470,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 		SpellMasterWrapper spellMaster = SpellMasterWrapper.getSpellMaster(getGameObject().getGameData());
 		spellMaster.expireBewitchingSpells(getGameObject());
 		
+		for (GameObject minorCharacterGo : getMinorCharacters()) {
+			getGameObject().remove(minorCharacterGo);
+		}
+		
 		// Deal with spoils
 		if (!getGameObject().hasThisAttribute(Constants.SPOILS_INVENTORY_SETUP)
 				&& !getGameObject().hasThisAttribute(Constants.SPOILS_INVENTORY_TAKEN)) {
@@ -5524,7 +5528,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			GameObject hireling = rc.getGameObject();
 			removeHireling(hireling);
 		}
-		
+			
 		Collection<RealmComponent> beforeCc = current.clearing.getClearingComponents();
 		
 		// Cancel all spells
