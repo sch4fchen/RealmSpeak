@@ -270,8 +270,11 @@ public class SetupCardUtility {
 			
 			StateChitComponent rc = (StateChitComponent)RealmComponent.getRealmComponent(go);
 			if (!rc.hasSummonedToday(monsterDie)) { // Even generators only summon once per day
-				newMonsters.addAll(generateMonsters(go,ClearingUtility.getTileLocation(go).clearing));
-				rc.addSummonedToday(monsterDie);
+				TileLocation genTl = ClearingUtility.getTileLocation(go);
+				if (genTl!= null) {
+					newMonsters.addAll(generateMonsters(go,genTl.clearing));
+					rc.addSummonedToday(monsterDie);
+				}
 			}
 		}
 		
