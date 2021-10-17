@@ -6,6 +6,7 @@ NEW FEATURES:
 # Remove Minor characters when dying 
 BUGS/ISSUES:
 # Fix generators not on the map trying to generate new monsters
+# Fix loading custom characters with custom items
 
 Version 1.1.4.7 - Changes since 1.1.4.6
 QUEST UPDATE:

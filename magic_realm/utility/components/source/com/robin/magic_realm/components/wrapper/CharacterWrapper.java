@@ -4480,8 +4480,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (getGameObject().hasThisAttribute(Constants.CUSTOM_CHARACTER)) {
 			item = fetchItemFromTemplate(weapon);
 		}
-		// Fetch from the main object pool
-		item = fetchItem(frame,pool,weapon,hostKeyVals,chooseSource);
+		if (item == null) {
+			// Fetch from the main object pool
+			item = fetchItem(frame,pool,weapon,hostKeyVals,chooseSource);
+		}
 		getGameObject().add(item);
 		if (item!=null) { // Might be null if someone strips a character, suicides, and respawns them
 			WeaponChitComponent wcc = (WeaponChitComponent)RealmComponent.getRealmComponent(item);
