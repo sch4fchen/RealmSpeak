@@ -59,6 +59,7 @@ public class RealmLogWindow extends JFrame {
 	private JMenu filterMenu;
 	private JMenuItem allDaysFilter;
 	private JMenuItem todayFilter;
+	private JMenuItem specificDayFilter;
 	private JMenuItem yesterdayFilter;
 	private JMenuItem realmSpeakFilter;
 	private JMenuItem realmBattleFilter;
@@ -168,7 +169,7 @@ public class RealmLogWindow extends JFrame {
 		return key;
 	}
 
-	private String getHtml(String[] line) {
+	private static String getHtml(String[] line) {
 		StringBuffer sb = new StringBuffer("\n<br>");
 		String style = getStyleName(line[0]);
 		String alias = getAliasName(line[0]);
@@ -297,6 +298,29 @@ public class RealmLogWindow extends JFrame {
 				textPane.setDocument(docFiltered);
 			}
 		});
+		specificDayFilter = new JMenuItem("Day...");
+		specificDayFilter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				String month = JOptionPane.showInputDialog("Month?");
+				if (month==null || month.trim().length()==0 || !month.matches("\\d")) {
+					JOptionPane.showMessageDialog(new JFrame(),"Enter valid month.");
+					return;
+				}
+				String day = JOptionPane.showInputDialog("Day?");
+				if (day==null || day.trim().length()==0 || !day.matches("\\d")) {
+					JOptionPane.showMessageDialog(new JFrame(),"Enter valid day.");
+					return;
+				}
+				
+				DayKey dayKey = new DayKey(Integer.parseInt(month),Integer.parseInt(day));
+				try {
+					docFiltered.remove(0, docFiltered.getLength());
+				} catch (BadLocationException e) {
+				}
+				addContentForDay(dayKey);
+				textPane.setDocument(docFiltered);
+			}
+		});
 		realmSpeakFilter = new JMenuItem("RealmSpeak");
 		realmSpeakFilter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
@@ -324,6 +348,7 @@ public class RealmLogWindow extends JFrame {
 		filterMenu.add(allDaysFilter);
 		filterMenu.add(todayFilter);
 		filterMenu.add(yesterdayFilter);
+		filterMenu.add(specificDayFilter);
 		filterMenu.add(realmSpeakFilter);
 		filterMenu.add(realmBattleFilter);
 		JMenuBar bar = new JMenuBar();

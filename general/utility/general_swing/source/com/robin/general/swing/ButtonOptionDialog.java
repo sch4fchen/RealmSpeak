@@ -57,11 +57,11 @@ public class ButtonOptionDialog extends AggressiveDialog {
 	public ButtonOptionDialog(JFrame parent,Icon icon,String message,String title,boolean includeCancel,int columns) {
 		super(parent,title,true);
 		this.columns = columns;
-		buttons = new Hashtable<String,JButton>();
-		labels = new Hashtable<String,JLabel>();
-		buttonBoxes = new ArrayList<Box>();
+		buttons = new Hashtable<>();
+		labels = new Hashtable<>();
+		buttonBoxes = new ArrayList<>();
 		selectedObject = null;
-		objectNameHash = new Hashtable<String,Object>();
+		objectNameHash = new Hashtable<>();
 		getContentPane().setLayout(new BorderLayout());
 		
 			questionPanel = new JPanel(new BorderLayout(10,10));
@@ -101,7 +101,7 @@ public class ButtonOptionDialog extends AggressiveDialog {
 		
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 	}
-	private void setBestAreaSize(JTextArea area) {
+	private static void setBestAreaSize(JTextArea area) {
 //		ComponentTools.lockComponentSize(area,200,70);
 		area.setMinimumSize(new Dimension(20,20));
 //		String text = area.getText();
@@ -123,8 +123,8 @@ public class ButtonOptionDialog extends AggressiveDialog {
 		if (finished) {
 			throw new IllegalStateException("You cannot add selection objects to finished panel.");
 		}
-		for (Iterator i=c.iterator();i.hasNext();) {
-			addSelectionObject(i.next());
+		for (Object o : c) {
+			addSelectionObject(o);
 		}
 	}
 	public void addSelectionObjectArray(Object[] object) {

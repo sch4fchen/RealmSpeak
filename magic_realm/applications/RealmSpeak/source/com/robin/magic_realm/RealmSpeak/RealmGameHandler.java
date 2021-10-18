@@ -239,6 +239,9 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				}
 				RealmCalendar calendar = RealmCalendar.getCalendar(client.getGameData());
 				calendar.updateSeason(1, true);
+				broadcast("host", "========================================");
+				broadcast("host", "Month "+game.getMonth()+", Day "+game.getDay());
+				broadcast("host", "========================================");
 			}
 		});
 		box.add(startGameButton);
