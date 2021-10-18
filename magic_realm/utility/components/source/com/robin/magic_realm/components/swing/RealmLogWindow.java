@@ -22,6 +22,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.zip.DeflaterOutputStream;
 import java.util.zip.InflaterInputStream;
 
@@ -30,6 +32,7 @@ import javax.swing.text.*;
 
 import com.robin.general.io.FileUtilities;
 import com.robin.magic_realm.components.utility.RealmLogging;
+import com.robin.magic_realm.components.wrapper.DayKey;
 
 public class RealmLogWindow extends JFrame {
 	public static final String INDENT_BLOCK = "    ";
@@ -53,16 +56,23 @@ public class RealmLogWindow extends JFrame {
 	private JMenuItem clearFileMenu;
 	private JMenuItem saveLogFileMenu;
 	private JMenuItem closeFileMenu;
+	private JMenu filterMenu;
+	private JMenuItem allDaysFilter;
+	private JMenuItem todayFilter;
+	private JMenuItem yesterdayFilter;
+	private JMenuItem realmSpeakFilter;
+	private JMenuItem realmBattleFilter;
 
 	private JTextPane textPane;
 	private StyledDocument doc;
+	private StyledDocument docFiltered;
 	private ArrayList<String[]> list;
 	
 	private int indent = 0;
 
 	private RealmLogWindow() {
 		initComponents();
-		list = new ArrayList<String[]>();
+		list = new ArrayList<>();
 	}
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
@@ -74,7 +84,7 @@ public class RealmLogWindow extends JFrame {
 		}
 		return sb.toString();
 	}
-	private String getSaveFilePathFromFile(File rsGameFile) {
+	private static String getSaveFilePathFromFile(File rsGameFile) {
 		String path = FileUtilities.getFilePathString(rsGameFile,true,false);
 		return path+".rslog";
 	}
@@ -87,7 +97,7 @@ public class RealmLogWindow extends JFrame {
 			FileOutputStream fileStream = new FileOutputStream(saveFilePath);
 			DeflaterOutputStream deflater = new DeflaterOutputStream(fileStream);
 			PrintStream stream = new PrintStream(deflater);
-			ArrayList<String[]> safeList = new ArrayList<String[]>(list);
+			ArrayList<String[]> safeList = new ArrayList<>(list);
 			stream.println(safeList.size());
 			for (String[] line:safeList) {
 				stream.println(line[0]);
@@ -139,7 +149,7 @@ public class RealmLogWindow extends JFrame {
 		list.clear();
 	}
 	
-	private String getStyleName(String key) {
+	private static String getStyleName(String key) {
 		if ("host".equals(key)) {
 			return "bold";
 		}
@@ -148,7 +158,7 @@ public class RealmLogWindow extends JFrame {
 		}
 		return "blue";
 	}
-	private String getAliasName(String key) {
+	private static String getAliasName(String key) {
 		if ("host".equals(key)) {
 			return "RealmSpeak";
 		}
@@ -232,7 +242,6 @@ public class RealmLogWindow extends JFrame {
 	}
 
 	private void initComponents() {
-
 		fileMenu = new JMenu("File");
 		clearFileMenu = new JMenuItem("Clear");
 		clearFileMenu.addActionListener(new ActionListener() {
@@ -256,8 +265,70 @@ public class RealmLogWindow extends JFrame {
 			}
 		});
 		fileMenu.add(closeFileMenu);
+		filterMenu = new JMenu("Filter");
+		allDaysFilter = new JMenuItem("All days");
+		allDaysFilter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				textPane.setDocument(doc);
+				scrollToEnd();
+			}
+		});
+		todayFilter = new JMenuItem("Today");
+		todayFilter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				try {
+					docFiltered.remove(0, docFiltered.getLength());
+				} catch (BadLocationException e) {
+				}
+				DayKey today = getLatestMonthAndDay();
+				addContentForDay(today);
+				textPane.setDocument(docFiltered);
+			}
+		});
+		yesterdayFilter = new JMenuItem("Yesterday");
+		yesterdayFilter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				try {
+					docFiltered.remove(0, docFiltered.getLength());
+				} catch (BadLocationException e) {
+				}
+				DayKey today = getLatestMonthAndDay().addDays(-1);
+				addContentForDay(today);
+				textPane.setDocument(docFiltered);
+			}
+		});
+		realmSpeakFilter = new JMenuItem("RealmSpeak");
+		realmSpeakFilter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				try {
+					docFiltered.remove(0, docFiltered.getLength());
+				} catch (BadLocationException e) {
+				}
+				addContentToDocFiltered("host");	
+				textPane.setDocument(docFiltered);
+				scrollToEnd();
+			}
+		});
+		realmBattleFilter = new JMenuItem("RealmBattle");
+		realmBattleFilter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				try {
+					docFiltered.remove(0, docFiltered.getLength());
+				} catch (BadLocationException e) {
+				}
+				addContentToDocFiltered(RealmLogging.BATTLE);	
+				textPane.setDocument(docFiltered);
+				scrollToEnd();
+			}
+		});
+		filterMenu.add(allDaysFilter);
+		filterMenu.add(todayFilter);
+		filterMenu.add(yesterdayFilter);
+		filterMenu.add(realmSpeakFilter);
+		filterMenu.add(realmBattleFilter);
 		JMenuBar bar = new JMenuBar();
 		bar.add(fileMenu);
+		bar.add(filterMenu);
 		setJMenuBar(bar);
 
 		textPane = new JTextPane();
@@ -270,7 +341,6 @@ public class RealmLogWindow extends JFrame {
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(new JScrollPane(textPane), "Center");
 	}
-
 	private void initStyles() {
 		doc = textPane.getStyledDocument();
 		Style def = StyleContext.getDefaultStyleContext().getStyle(StyleContext.DEFAULT_STYLE);
@@ -287,8 +357,79 @@ public class RealmLogWindow extends JFrame {
 		s = doc.addStyle("redbold", regular);
 		StyleConstants.setForeground(s, Color.red);
 		StyleConstants.setBold(s, true);
+		
+		//docFiltered
+		docFiltered = new JTextPane().getStyledDocument();
+		regular = docFiltered.addStyle("regular", def);
+		StyleConstants.setFontFamily(def, "SansSerif");
+
+		s = docFiltered.addStyle("blue", regular);
+		StyleConstants.setForeground(s, Color.blue);
+
+		s = docFiltered.addStyle("bold", regular);
+		StyleConstants.setBold(s, true);
+
+		s = docFiltered.addStyle("redbold", regular);
+		StyleConstants.setForeground(s, Color.red);
+		StyleConstants.setBold(s, true);
 	}
 
+	private void addContentToDocFiltered(String key) {
+		for (String[] line : list) {
+			try {
+				if (line[0].matches(key)) {
+					docFiltered.insertString(docFiltered.getLength(),getAliasName(line[0]),docFiltered.getStyle(getStyleName(line[0])));
+					docFiltered.insertString(docFiltered.getLength(), " - " + line[1] + "\n", docFiltered.getStyle("regular"));
+				}
+			} catch (BadLocationException e) {}
+		}
+	}
+	
+	private void addContentForDay(DayKey dayKey) {
+		int lineNumberStart = 0;
+		int lineNumberEnd = list.size();
+		for (String[] line : list) {
+			if (line[1].matches(".*Month "+DayKey.getMonth(dayKey.toString())+", Day "+DayKey.getDay(dayKey.toString())+".*")) {
+				break;
+			}
+			lineNumberStart++;
+		}
+		for (int i = lineNumberStart+1; i < list.size(); i++) {
+			String[] line = list.get(i);
+			if (line[1].matches(".*Month \\d, Day \\d.*")) {
+				lineNumberEnd = i;
+				break;
+			}
+		}
+		for (int i = lineNumberStart; i < lineNumberEnd; i++) {
+			String[] line = list.get(i);
+			try {
+				docFiltered.insertString(docFiltered.getLength(),getAliasName(line[0]),docFiltered.getStyle(getStyleName(line[0])));
+				docFiltered.insertString(docFiltered.getLength(), " - " + line[1] + "\n", docFiltered.getStyle("regular"));
+			} catch (BadLocationException e) {
+				e.toString();
+			}
+		}
+	}
+	
+	private DayKey getLatestMonthAndDay() {
+		int month = 0;
+		int day = 0;
+		Pattern monthPattern = Pattern.compile("Month \\d");
+		Pattern dayPattern = Pattern.compile("Day \\d");
+		for (String[] line : list) {
+			if (line[1].matches(".*Month \\d, Day \\d.*")) {
+				Matcher monthMatcher = monthPattern.matcher(line[1]);
+				monthMatcher.find();
+				month = Integer.parseInt(monthMatcher.group().replaceAll("[^0-9]", ""));
+				Matcher dayMatcher = dayPattern.matcher(line[1]);
+				dayMatcher.find();
+				day = Integer.parseInt(dayMatcher.group().replaceAll("[^0-9]", ""));
+			}
+		}
+		return new DayKey(month,day);
+	}
+	
 	public static void main(String[] args) {
 		final RealmLogWindow log = new RealmLogWindow();
 		JButton button = new JButton("down");
