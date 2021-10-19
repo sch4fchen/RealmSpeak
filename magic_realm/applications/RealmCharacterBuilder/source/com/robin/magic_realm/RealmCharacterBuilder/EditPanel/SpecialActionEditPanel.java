@@ -49,9 +49,9 @@ public class SpecialActionEditPanel extends AdvantageEditPanel implements Action
 		
 		currentSpecialAction = SPECIAL_ACTIONS[0][0];
 		
-		ArrayList special = getAttributeList(Constants.SPECIAL_ACTION);
+		ArrayList<String> special = getAttributeList(Constants.SPECIAL_ACTION);
 		if (special!=null) {
-			currentSpecialAction = (String)special.get(0);
+			currentSpecialAction = special.get(0);
 		}		
 		
 		ButtonGroup bg = new ButtonGroup();
@@ -77,7 +77,7 @@ public class SpecialActionEditPanel extends AdvantageEditPanel implements Action
 	}
 
 	protected void applyAdvantage() {
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		list.add(currentSpecialAction);
 		setAttributeList(Constants.SPECIAL_ACTION,list);
 	}

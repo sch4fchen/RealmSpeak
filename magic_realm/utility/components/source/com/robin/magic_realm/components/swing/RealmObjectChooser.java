@@ -23,7 +23,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -166,17 +165,15 @@ public class RealmObjectChooser extends JDialog {
 		setModal(true);
 		setSize(640,500);
 	}
-	public void addObjectsToChoose(Collection objects) {
-		ArrayList list = new ArrayList(objects);
-		for (Iterator i=list.iterator();i.hasNext();) {
-			GameObject object = (GameObject)i.next();
+	public void addObjectsToChoose(Collection<GameObject> objects) {
+		ArrayList<GameObject> list = new ArrayList<>(objects);
+		for (GameObject object : list) {
 			panel.addObject(object);
 		}
 		panel.revalidate();
 	}
-	public void addComponentsToChoose(Collection components) {
-		for (Iterator i=components.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+	public void addComponentsToChoose(Collection<RealmComponent> components) {
+		for (RealmComponent rc : components) {
 			panel.add(rc);
 		}
 		panel.revalidate();
@@ -190,7 +187,7 @@ public class RealmObjectChooser extends JDialog {
 		
 		if (object.length>0) {
 			okay = true;
-			chosenObjects = new ArrayList<GameObject>();
+			chosenObjects = new ArrayList<>();
 			for (int i=0;i<object.length;i++) {
 				// quickly verify that the chosenObject is still in gameData!
 				if (validateChosenObjects && !gameData.validate(object[i])) {

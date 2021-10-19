@@ -301,24 +301,17 @@ public class RealmLogWindow extends JFrame {
 		specificDayFilter = new JMenuItem("Day...");
 		specificDayFilter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				String month = JOptionPane.showInputDialog("Month?");
-				if (month==null || month.trim().length()==0 || !month.matches("\\d")) {
-					JOptionPane.showMessageDialog(new JFrame(),"Enter valid month.");
-					return;
+				MonthDaySelectionDialog dialog = new MonthDaySelectionDialog(new JFrame());
+				dialog.setVisible(true);
+				DayKey selectecDayKey = dialog.getSelectedDayKey();
+				if (selectecDayKey != null) {
+					try {
+						docFiltered.remove(0, docFiltered.getLength());
+					} catch (BadLocationException e) {
+					}
+					addContentForDay(selectecDayKey);
+					textPane.setDocument(docFiltered);
 				}
-				String day = JOptionPane.showInputDialog("Day?");
-				if (day==null || day.trim().length()==0 || !day.matches("\\d")) {
-					JOptionPane.showMessageDialog(new JFrame(),"Enter valid day.");
-					return;
-				}
-				
-				DayKey dayKey = new DayKey(Integer.parseInt(month),Integer.parseInt(day));
-				try {
-					docFiltered.remove(0, docFiltered.getLength());
-				} catch (BadLocationException e) {
-				}
-				addContentForDay(dayKey);
-				textPane.setDocument(docFiltered);
 			}
 		});
 		realmSpeakFilter = new JMenuItem("RealmSpeak");
