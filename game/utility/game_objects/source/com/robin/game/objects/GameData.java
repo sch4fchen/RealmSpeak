@@ -479,7 +479,7 @@ public class GameData extends ModifyableObject implements Serializable {
 		File tempFile = new File(path+ZIP_INTERNAL_FILENAME);
 		
 		if (saveToFile(tempFile)) {
-			ArrayList<File> files = new ArrayList<File>();
+			ArrayList<File> files = new ArrayList<>();
 			files.add(tempFile);
 			ZipUtilities.zip(zipFile,files.toArray(new File[files.size()]));
 			tempFile.delete();

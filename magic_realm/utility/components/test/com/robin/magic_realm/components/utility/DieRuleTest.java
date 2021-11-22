@@ -62,7 +62,7 @@ public class DieRuleTest extends TestBaseWithLoader {
 	}
 	@Test
 	public void testRuinsChit() {
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		list.add("cliff");
 		list.add("ruins m");
 		list.add("flutter");
@@ -72,7 +72,7 @@ public class DieRuleTest extends TestBaseWithLoader {
 	}
 	@Test
 	public void testLostCityChit() {
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		list.add("cliff");
 		list.add("lost city b");
 		list.add("flutter");

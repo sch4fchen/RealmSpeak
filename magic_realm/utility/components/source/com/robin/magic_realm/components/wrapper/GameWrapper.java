@@ -358,9 +358,9 @@ public class GameWrapper extends GameObjectWrapper {
 	public static GameWrapper findGame(GameData data) {
 		if (GAME_ID==null) {
 			GamePool pool = new GamePool(data.getGameObjects());
-			ArrayList list = pool.find(getKeyVals());
+			ArrayList<GameObject> list = pool.find(getKeyVals());
 			if (list.size()==1) {
-				GameObject gw = (GameObject)list.get(0);
+				GameObject gw = list.get(0);
 				GAME_ID = new Long(gw.getId());
 				return new GameWrapper(gw);
 			}

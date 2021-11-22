@@ -47,12 +47,9 @@ public class HallOfFame {
 	public static final String CAT_MAGIC_USERS = "MagicUser";
 	public static final String CAT_FIGHTERS = "Fighter";
 	
-	private Comparator scoreComparator = new Comparator() {
-		public int compare(Object o1, Object o2) {
+	private Comparator<GameObject> scoreComparator = new Comparator<GameObject>() {
+		public int compare(GameObject go1, GameObject go2) {
 			int ret = 0;
-			
-			GameObject go1 = (GameObject)o1;
-			GameObject go2 = (GameObject)o2;
 			
 			int s1 = go1.getThisInt(TOTAL_SCORE);
 			int s2 = go2.getThisInt(TOTAL_SCORE);
@@ -80,10 +77,9 @@ public class HallOfFame {
 		}
 	}
 	
-	public ArrayList getAllCharacterNames() {
-		ArrayList names = new ArrayList();
-		for (Iterator i=hallData.getGameObjects().iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+	public ArrayList<String> getAllCharacterNames() {
+		ArrayList<String> names = new ArrayList<>();
+		for (GameObject go : hallData.getGameObjects()) {
 			if (go.getHeldBy()!=null && !names.contains(go.getName())) {
 				names.add(go.getName());
 			}
@@ -167,8 +163,7 @@ public class HallOfFame {
 	private void saveResults() {
 		if (hallData!=null) {
 			// First, remove all NEW_ENTRY keys
-			for (Iterator i=hallData.getGameObjects().iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
+			for (GameObject go : hallData.getGameObjects()) {
 				go.removeThisAttribute(NEW_ENTRY);
 			}
 			hallData.zipToFile(zipFile);

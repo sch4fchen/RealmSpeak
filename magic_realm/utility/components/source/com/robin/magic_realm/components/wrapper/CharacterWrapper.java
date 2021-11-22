@@ -3347,8 +3347,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		else {
 			addListItem(DISC_HIDDEN_PATHS,name);
-			for (Iterator i=getActionFollowers().iterator();i.hasNext();) {
-				CharacterWrapper actionFollower = (CharacterWrapper)i.next();
+			for (CharacterWrapper actionFollower : getActionFollowers()) {
 				actionFollower.addHiddenPathDiscovery(name);
 			}
 		}
@@ -3365,8 +3364,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		else {
 			addListItem(DISC_SECRET_PASSAGES,name);
-			for (Iterator i=getActionFollowers().iterator();i.hasNext();) {
-				CharacterWrapper actionFollower = (CharacterWrapper)i.next();
+			for (CharacterWrapper actionFollower : getActionFollowers()) {
 				actionFollower.addSecretPassageDiscovery(name);
 			}
 		}
@@ -3945,7 +3943,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return advantages;
 	}
 	private void copyAttributes(List<String> dontCopy,String blockName,String targetBlock,HostPrefWrapper hostPrefs) {
-		OrderedHashtable levelBlock = getGameObject().getAttributeBlock(blockName);
+		OrderedHashtable<String, Object> levelBlock = getGameObject().getAttributeBlock(blockName);
 		if (hostPrefs!=null) {
 			String optKey = (String)levelBlock.get("optkey");
 			if (optKey!=null && !hostPrefs.hasPref(optKey)) {
@@ -3953,8 +3951,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				return;
 			}
 		}
-		for (Iterator i=levelBlock.keySet().iterator();i.hasNext();) {
-			String key = (String)i.next();
+		for (String key : levelBlock.keySet()) {
 			if (!dontCopy.contains(key)) {
 				Object val = levelBlock.get(key);
 				if (val instanceof ArrayList) {
