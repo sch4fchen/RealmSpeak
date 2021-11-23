@@ -23,6 +23,7 @@ import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.quest.*;
 
+@SuppressWarnings("static-method")
 public class QuestRequirementParamsTest {
 	@BeforeClass
 	public static void oneTimeSetUp() {

@@ -283,8 +283,7 @@ public class RealmUtility {
 		}
 		return sb.toString();
 	}
-	public static void fetchStartingSpells(JFrame parent,CharacterWrapper character,GameData data,boolean enchantOption) {
-		
+	public static void fetchStartingSpells(JFrame parent,CharacterWrapper character,GameData data,boolean enchantOption) {	
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		String hostKeyVals = hostPrefs.getGameKeyVals();
 		
@@ -621,7 +620,7 @@ public class RealmUtility {
 	public static void burnColorChit(JFrame parent,GameWrapper game,CharacterWrapper character,MagicChit colorChit) {
 		// See if we can energize a permanent spell
 		ColorMagic chitColor = colorChit.getColorMagic();
-		ArrayList<SpellWrapper> possSpells = new ArrayList<SpellWrapper>();
+		ArrayList<SpellWrapper> possSpells = new ArrayList<>();
 		TileLocation loc = character.getCurrentLocation();
 		SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(character.getGameObject().getGameData());
 		for (SpellWrapper spell : sm.getAllSpellsInClearing(loc,false)) {

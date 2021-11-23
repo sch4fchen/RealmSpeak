@@ -121,8 +121,8 @@ public class DieRule {
 		}
 		return false;
 	}
-	private ArrayList<String> makeList(String input) {
-		ArrayList<String> list = new ArrayList<String>();
+	private static ArrayList<String> makeList(String input) {
+		ArrayList<String> list = new ArrayList<>();
 		StringTokenizer tokens = new StringTokenizer(input,",");
 		while(tokens.hasMoreTokens()) {
 			list.add(tokens.nextToken());

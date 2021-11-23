@@ -470,7 +470,7 @@ public class ClearingUtility {
 	 * Returns all native leaders, visitors, and travelers w/stores that are in the clearing.
 	 */
 	public static ArrayList<RealmComponent> getAllTraders(ClearingDetail clearing) {
-		ArrayList<RealmComponent> traders = new ArrayList<RealmComponent>();
+		ArrayList<RealmComponent> traders = new ArrayList<>();
 		for (RealmComponent rc:clearing.getClearingComponents()) {
 			if (rc.isNative() && rc.getOwnerId()==null) {
 				String rank = rc.getGameObject().getThisAttribute("rank");
@@ -658,7 +658,7 @@ public class ClearingUtility {
 		}
 	}
 	public static void initAdjacentTiles(GameData data) {
-		Hashtable<Point,TileComponent> mapGrid = new Hashtable<Point,TileComponent>();
+		Hashtable<Point,TileComponent> mapGrid = new Hashtable<>();
 		for(GameObject go:RealmObjectMaster.getRealmObjectMaster(data).getTileObjects()) {
 			TileComponent tc = (TileComponent)RealmComponent.getRealmComponent(go);
 			String pos = go.getAttribute("mapGrid","mapPosition");

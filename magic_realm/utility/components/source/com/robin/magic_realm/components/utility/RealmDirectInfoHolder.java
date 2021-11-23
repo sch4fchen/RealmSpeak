@@ -83,12 +83,12 @@ public class RealmDirectInfoHolder {
 	public String toString() {
 		return "RealmDirectInfoHolder: "+list.toString();
 	}
-	public RealmDirectInfoHolder(GameData data,ArrayList in) {
+	public RealmDirectInfoHolder(GameData data,ArrayList<String> in) {
 		this(data);
 		if (in.size()<GAME_OBJECT_ID_LIST_START) {
 			throw new IllegalArgumentException("Invalid list");
 		}
-		list = new ArrayList<String>(in);
+		list = new ArrayList<>(in);
 	}
 	public RealmDirectInfoHolder(GameData data,String playerName) {
 		this(data);

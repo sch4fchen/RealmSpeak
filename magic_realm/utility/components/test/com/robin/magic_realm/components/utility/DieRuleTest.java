@@ -26,6 +26,7 @@ import org.junit.Test;
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.*;
 
+@SuppressWarnings("static-method")
 public class DieRuleTest extends TestBaseWithLoader {
 	
 	@Test
@@ -103,8 +104,7 @@ public class DieRuleTest extends TestBaseWithLoader {
 		query.add(Constants.DIEMOD);
 		ArrayList<GameObject> dieModObjs = findGameObjects(query);
 		for (GameObject go:dieModObjs) {
-			for (Iterator i=go.getAttributeBlockNames().iterator();i.hasNext();) {
-				String blockName = (String)i.next();
+			for (String blockName : go.getAttributeBlockNames()) {
 				if (!go.hasAttribute(blockName,Constants.DIEMOD)) continue;
 				go.getAttributeList(blockName,Constants.DIEMOD);
 			}

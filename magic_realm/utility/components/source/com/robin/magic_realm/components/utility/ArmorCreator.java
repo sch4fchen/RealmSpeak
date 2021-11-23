@@ -38,7 +38,7 @@ public class ArmorCreator {
 		return go;	
 	}
 	
-	public void setupSide(GameObject go, String side, int price, String chitColor ){
+	public static void setupSide(GameObject go, String side, int price, String chitColor ){
 		go.removeAttribute(side, "base_price");
 		go.removeAttribute(side, "chit_color");
 		

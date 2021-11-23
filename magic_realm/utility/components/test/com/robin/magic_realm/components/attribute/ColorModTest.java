@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import org.junit.*;
 import com.robin.game.objects.GameObject;
 
+@SuppressWarnings("static-method")
 public class ColorModTest {
 	@BeforeClass
 	public static void oneTimeSetUp() {

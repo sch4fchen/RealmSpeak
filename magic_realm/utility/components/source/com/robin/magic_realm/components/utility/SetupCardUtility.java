@@ -391,15 +391,15 @@ public class SetupCardUtility {
 	public static GameObject createWasp(MonsterCreator mc,GameData data) {
 		GameObject go = mc.createOrReuseMonster(data);
 		mc.setupGameObject(go,"Wasp","wasp","M",false,true);
-		mc.setupSide(go,"light","L",1,2,0,3,"yellow");
-		mc.setupSide(go,"dark","L",1,2,0,3,"yellow");
+		MonsterCreator.setupSide(go,"light","L",1,2,0,3,"yellow");
+		MonsterCreator.setupSide(go,"dark","L",1,2,0,3,"yellow");
 		return go;
 	}
 	public static GameObject createBlob(MonsterCreator mc,GameData data) {
 		GameObject go = mc.createOrReuseMonster(data);
 		mc.setupGameObject(go,"Blob","blob","L",false);
-		mc.setupSide(go,"light","L",0,3,0,5,"lightblue");
-		mc.setupSide(go,"dark","L",0,3,0,5,"lightblue");
+		MonsterCreator.setupSide(go,"light","L",0,3,0,5,"lightblue");
+		MonsterCreator.setupSide(go,"dark","L",0,3,0,5,"lightblue");
 		go.setThisAttribute(Constants.GM_GROW);
 		return go;
 	}
@@ -574,7 +574,7 @@ public class SetupCardUtility {
 		}
 		
 		// Now process warnings
-		ArrayList<GameObject> warnings = new ArrayList<GameObject>();
+		ArrayList<GameObject> warnings = new ArrayList<>();
 		for (GameObject go : gos) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (!rc.isDwelling() && go.hasThisAttribute("warning")) {

@@ -883,8 +883,8 @@ public class TreasureUtility {
 	
 	public static ArrayList<GameObject> getTreasures(GameObject treasureLocation,CharacterWrapper character) {
 		ArrayList<GameObject> list = new ArrayList<>();
-		for (Iterator<GameObject> i=treasureLocation.getHold().iterator();i.hasNext();) {
-			GameObject obj = i.next();
+		for (Iterator i=treasureLocation.getHold().iterator();i.hasNext();) {
+			GameObject obj = (GameObject) i.next();
 			if (character!=null && hasSeen(character,obj)) continue;
 			RealmComponent rc = RealmComponent.getRealmComponent(obj);
 			if (!rc.isMonster() && !rc.isSpell() && !rc.isNative()) {

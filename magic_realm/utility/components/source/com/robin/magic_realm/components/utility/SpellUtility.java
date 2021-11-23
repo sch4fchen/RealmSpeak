@@ -110,6 +110,7 @@ public class SpellUtility {
 		}
 		else {
 			switch(teleportType) {
+				default:
 				case ChooseAny:
 					CenteredMapView.getSingleton().setMarkClearingAlertText("Teleport "+character.getGameObject().getName()+" to which clearing?");
 					CenteredMapView.getSingleton().markAllClearings(true);
@@ -184,7 +185,7 @@ public class SpellUtility {
 	
 	private static ArrayList<GateChitComponent> findKnownGatesForCharacter(CharacterWrapper character) {
 		GameData gameData = character.getGameObject().getGameData();
-		ArrayList<GateChitComponent> knownGates = new ArrayList<GateChitComponent>();
+		ArrayList<GateChitComponent> knownGates = new ArrayList<>();
 		
 		character.getOtherChitDiscoveries().stream()
 			.map(d -> RealmComponent.getRealmComponent(gameData.getGameObjectByName(d)))

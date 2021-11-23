@@ -1714,9 +1714,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		// Expire Battling Natives
 		if (getGameObject().hasAttributeBlock(BATTLING_NATIVE_BLOCK)) {
-			OrderedHashtable hash = getGameObject().getAttributeBlock(BATTLING_NATIVE_BLOCK);
-			for (Iterator i=hash.keySet().iterator();i.hasNext();) {
-				String nativeGroup = (String)i.next();
+			OrderedHashtable<String, Object> hash = getGameObject().getAttributeBlock(BATTLING_NATIVE_BLOCK);
+			for (String nativeGroup : hash.keySet()) {
 				getGameObject().removeAttribute(BATTLING_NATIVE_BLOCK,nativeGroup);
 			}
 		}
@@ -2690,8 +2689,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		// Add fame from all treasures (not Fame Price!!)
 		int treasureFame = 0;
 		ArrayList<GameObject> list = new ArrayList<>();
-		for (Iterator i=getScorableInventory().iterator();i.hasNext();) {
-			GameObject item = (GameObject)i.next();
+		for (GameObject item : getScorableInventory()) {
 			if (!item.hasThisAttribute("native")) { // no Fame Price values allowed!
 				if (item.hasThisAttribute("fame")) {
 					list.add(item);
