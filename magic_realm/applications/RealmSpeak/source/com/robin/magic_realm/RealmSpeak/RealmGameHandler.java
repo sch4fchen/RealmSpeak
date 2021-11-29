@@ -2012,8 +2012,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 						characterList.remove(character);
 					}
 				}
-				else if (character.isJustUnhired()) { // A hired leader becomes
-														// unhired
+				else if (character.isJustUnhired()) { // A hired leader becomes unhired
 					characterTable.clearSelection();
 					String id = character.getGameObject().getStringId();
 					characterFrames.remove(id);

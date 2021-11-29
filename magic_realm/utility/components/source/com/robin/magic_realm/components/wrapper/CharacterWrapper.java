@@ -5742,6 +5742,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			// Check to see if hireling is a leader, and if so, make him active
 			if (rc.isNativeLeader()) {
 				CharacterWrapper leader = new CharacterWrapper(hireling);
+				leader.setJustUnhired(false);
 				leader.setPlayerName(getPlayerName());
 				leader.setPlayerPassword(getPlayerPassword());
 				leader.setPlayerEmail(getPlayerEmail());

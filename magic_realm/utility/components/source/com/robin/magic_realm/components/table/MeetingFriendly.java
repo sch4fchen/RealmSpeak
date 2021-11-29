@@ -22,11 +22,12 @@ import java.util.Collection;
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
+import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TradeInfo;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class MeetingFriendly extends Meeting {
-	public MeetingFriendly(JFrame frame,TradeInfo tradeInfo,GameObject merchandise,Collection hireGroup) {
+	public MeetingFriendly(JFrame frame,TradeInfo tradeInfo,GameObject merchandise,Collection<RealmComponent> hireGroup) {
 		super(frame,tradeInfo,merchandise,hireGroup);
 	}
 	public String getMeetingTableName() {

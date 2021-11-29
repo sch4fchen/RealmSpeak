@@ -18,7 +18,6 @@
 package com.robin.magic_realm.components.table;
 
 import java.util.Collection;
-import java.util.Iterator;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -38,11 +37,11 @@ public abstract class Meeting extends Trade {
 	public static final String BLOCK_BATTLE = "Block/Battle";
 	
 	protected GameObject merchandise; // might be null if hiring or rolling for meeting
-	protected Collection hireGroup; // might be null if trading or rolling for meeting
+	protected Collection<RealmComponent> hireGroup; // might be null if trading or rolling for meeting
 	
 	protected boolean blockBattle;
 	
-	public Meeting(JFrame frame,TradeInfo trader,GameObject merchandise,Collection hireGroup) {
+	public Meeting(JFrame frame,TradeInfo trader,GameObject merchandise,Collection<RealmComponent> hireGroup) {
 		super(frame,trader);
 		this.merchandise = merchandise;
 		this.hireGroup = hireGroup;
@@ -193,10 +192,11 @@ public abstract class Meeting extends Trade {
 	public void hiringNatives(CharacterWrapper character,int mult) {
 		int basePrice = 0;
 		RealmComponent last = null;
-		for (Iterator n=hireGroup.iterator();n.hasNext();) {
-			last = (RealmComponent)n.next();
-			basePrice += last.getGameObject().getThisInt("base_price");
+		for (RealmComponent hire : hireGroup) {
+			basePrice += hire.getGameObject().getThisInt("base_price");
+			last = hire;
 		}
+		if (last == null) return;
 		//if (basePrice>0) { // Was this necessary?
 		int askingPrice = basePrice * mult;
 		
@@ -264,8 +264,7 @@ public abstract class Meeting extends Trade {
 					character.addGold(-askingPrice);
 					
 					// Hire the group!
-					for (Iterator n=hireGroup.iterator();n.hasNext();) {
-						RealmComponent rc = (RealmComponent)n.next();
+					for (RealmComponent rc : hireGroup) {
 						character.addHireling(rc.getGameObject());
 					}
 				}
@@ -284,7 +283,7 @@ public abstract class Meeting extends Trade {
 			JOptionPane.showMessageDialog(getParentFrame(),sb.toString(),offerTitle,JOptionPane.INFORMATION_MESSAGE,last.getIcon());
 		}
 	}
-	public static Meeting createMeetingTable(JFrame frame,CharacterWrapper character,TileLocation currentLocation,RealmComponent trader,RealmComponent merchandise,Collection hireGroup,int ignoreBuyDrinksLimit) {
+	public static Meeting createMeetingTable(JFrame frame,CharacterWrapper character,TileLocation currentLocation,RealmComponent trader,RealmComponent merchandise,Collection<RealmComponent> hireGroup,int ignoreBuyDrinksLimit) {
 		TradeInfo tradeInfo = getTradeInfo(frame,character,trader,currentLocation,ignoreBuyDrinksLimit,hireGroup==null?0:hireGroup.size());
 		
 		GameObject merchObj = merchandise==null?null:merchandise.getGameObject();
