@@ -1,6 +1,6 @@
 Version 1.1.5.0 - Changes since 1.1.4.9
 BUGS/ISSUES:
-# Fix hired native leaders not showing up in character list for some rare cases
+# Fix re-hired native leaders, who died, not showing up in character list
 
 Version 1.1.4.9 - Changes since 1.1.4.8
 QUEST UPDATE:
