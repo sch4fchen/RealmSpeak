@@ -499,6 +499,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 
 	public Speed getMoveSpeed() {
 		if (isMove()) {
+			if (this.isMagicMove()) return new Speed(0);
 			if (!gameObject.hasAttribute(ALTERNATE_ATTRIBUTES, "speed")) {
 				// speedChange is ignored if speed is already altered by a treasure
 				int speedChange = getGameObject().getThisInt("move_speed_change");
@@ -516,6 +517,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 	}
 	
 	public Speed getFlySpeed() {
+		if (this.isMagicMove()) return new Speed(0);
 		return new Speed(getChitAttribute("speed"));
 	}
 
@@ -717,6 +719,18 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		if (gameObject.hasAttribute(ALTERNATE_ATTRIBUTES, "speed")) {
 			gameObject.removeAttribute(ALTERNATE_ATTRIBUTES, "speed");
 		}
+	}
+	
+	public void setMagicMove(boolean value) {
+		if (value) {
+			gameObject.setThisAttribute(Constants.CHIT_SPEED_MAGIC_BOOST);
+		} else {
+			gameObject.removeThisAttribute(Constants.CHIT_SPEED_MAGIC_BOOST);
+		}
+	}
+	
+	public boolean isMagicMove() {
+		return gameObject.hasThisAttribute(Constants.CHIT_SPEED_MAGIC_BOOST);
 	}
 
 	public int getManeuverCombatBox() {

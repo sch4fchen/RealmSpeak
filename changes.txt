@@ -1,4 +1,6 @@
 Version 1.1.5.0 - Changes since 1.1.4.9
+NEW FEATURES:
+# New character ability: Magic Move
 BUGS/ISSUES:
 # Fix re-hired native leaders, who died, not showing up in character list
 

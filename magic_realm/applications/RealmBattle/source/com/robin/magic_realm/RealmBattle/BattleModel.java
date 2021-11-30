@@ -1754,6 +1754,12 @@ public class BattleModel {
 			if (rc.isCharacter()) {
 				CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
 				
+				for (CharacterActionChitComponent chit:character.getAllChits()) {
+					if (chit.isMagicMove()) {
+						chit.setMagicMove(false);
+					}
+				}
+				
 				if (character.isFortDamaged() && !character.isFortified()) { // destroyed fort
 					// completely remove fort
 					character.setFortified(false);
@@ -2013,7 +2019,7 @@ public class BattleModel {
 			if (expiredOne) {
 				character.updateChitEffects();
 			}
-				
+
 			// Clear out all round combat info (include all held stuff)
 			ArrayList<GameObject> removeList = new ArrayList<>();
 			ArrayList hold = new ArrayList(rc.getGameObject().getHold()); // to prevent concurrent mod issues when flychits are expired

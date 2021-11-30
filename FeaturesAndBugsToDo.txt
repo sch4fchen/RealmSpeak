@@ -1,6 +1,7 @@
 ---:::FEATURES:::---
 House rule: not allow to attack neutral, friendly or allied natives
-Guilds: Assassins, Nature
+Character ability: NativeFriendly: Cannot initiate attacks on natives (i.e. can only target battling natives)
+0001828: Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): Option: no missile attacks, ?:Sharpness stars are ignored when comparing harm between attacks and parries? Alert?!
 Expansion 1: Parry + Ability: "ParryLikeShield":  Option: no missile attacks
 Expansion 1: More Ambushes/Throwing Weapons + Ability: Spear, Axe, Dagger?
@@ -11,16 +12,13 @@ SuperRealm: Steel Against Magic: A character who is casting a spell and has no a
 Merlin's Use Horse Lot: http://www.nand.it/mr/mr15.html
 0001563: Showing flip sides of tiles and counters in HTML
 0001645: Automatic HTML export
-0001828: Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 0001827: Feature Request - First Edition Optional Rules - Hiring Characters (Solitaire): http://www.nand.it/mr/mr08.html
 0001825: Feature Request - First Edition Optional Rule - Buying on Credit
 0001820: Feature Request: First Edition Optional Rules - Dissolving Doors
-Character abilities:
-	NativeFriendly: Cannot initiate attacks on natives (i.e. can only target battling natives)
-	MagicMove: Fatigue MAGIC to reduce speed on one MOVE chit
 Would be nice to make weapon abilities too:
 	Immobilizing - When it hits all attacks undercut
 	Stunning - Target cannot play an attack next round
+Guilds: Assassins, Nature
 ---:::BUGS:::---
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 Wizard advancement - didn't get MOVE M5->MAGIC III

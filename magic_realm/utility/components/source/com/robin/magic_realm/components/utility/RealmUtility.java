@@ -604,16 +604,10 @@ public class RealmUtility {
 		}
 	}
 	public static MagicChit burnColorChit(JFrame parent,GameWrapper game,CharacterWrapper character) {
-		ArrayList<MagicChit> colorChits = character.getColorMagicChits();
-		if (!colorChits.isEmpty()) {
-			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(parent,"Choose Color Chit to Fatigue:",true);
-			chooser.addRealmComponents(colorChits,false);
-			chooser.setVisible(true);
-			if (chooser.getSelectedText()!=null) {
-				MagicChit colorChit = (MagicChit)chooser.getFirstSelectedComponent();
-				burnColorChit(parent,game,character,colorChit);
-				return colorChit;
-			}
+		MagicChit colorChit = selectColorMagicChitToFatigue(parent, character);
+		if (colorChit != null) {
+			burnColorChit(parent,game,character,colorChit);
+			return colorChit;
 		}
 		return null;
 	}
@@ -684,6 +678,32 @@ public class RealmUtility {
 		}
 		colorChit.makeFatigued();
 		RealmUtility.reportChitFatigue(character,colorChit,"Fatigued color chit: ");
+	}
+	public static CharacterActionChitComponent selectMoveChitToBoost(JFrame parent,CharacterWrapper character) {
+		Collection<CharacterActionChitComponent> moveChits = character.getActiveMoveChits();
+		if (!moveChits.isEmpty()) {
+			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(parent,"Choose Move Chit to boost:",true);
+			chooser.addRealmComponents(moveChits,false);
+			chooser.setVisible(true);
+			if (chooser.getSelectedText()!=null) {
+				CharacterActionChitComponent CharacterActionChitComponent = (CharacterActionChitComponent)chooser.getFirstSelectedComponent();
+				return CharacterActionChitComponent;
+			}
+		}
+		return null;
+	}
+	public static MagicChit selectColorMagicChitToFatigue(JFrame parent,CharacterWrapper character) {
+		ArrayList<MagicChit> colorChits = character.getColorMagicChits();
+		if (!colorChits.isEmpty()) {
+			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(parent,"Choose Color Chit to Fatigue:",true);
+			chooser.addRealmComponents(colorChits,false);
+			chooser.setVisible(true);
+			if (chooser.getSelectedText()!=null) {
+				MagicChit colorChit = (MagicChit)chooser.getFirstSelectedComponent();
+				return colorChit;
+			}
+		}
+		return null;		
 	}
 	public static Object chooseSpell(JFrame parent,ArrayList<SpellWrapper> possSpells,boolean allowNone,boolean allowCancel) {
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(

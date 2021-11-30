@@ -170,6 +170,7 @@ public class CombatFrame extends JFrame {
 	// Change tactics for transmorphed players
 	private JButton changeTacticsButton;
 	private JButton useColorChitButton;
+	private JButton useMagicMoveButton;
 	
 	private CombatSuggestionAi suggestionAi;
 	
@@ -329,6 +330,7 @@ public class CombatFrame extends JFrame {
 		selectTargetFromUnassignedButton = null;
 		changeTacticsButton = null;
 		useColorChitButton = null;
+		useMagicMoveButton = null;
 		
 		if (participantTable!=null) {
 			participantTable.clearSelection();
@@ -876,6 +878,30 @@ public class CombatFrame extends JFrame {
 		}
 		return useColorChitButton;
 	}
+	private JButton getUseMagicMoveButton() {
+		if (useMagicMoveButton==null) {
+			useMagicMoveButton = new JButton("Magic Move");
+			useMagicMoveButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					CharacterActionChitComponent moveChit = RealmUtility.selectMoveChitToBoost(CombatFrame.this,activeCharacter);
+					if (moveChit == null) return;
+					MagicChit colorChit = RealmUtility.selectColorMagicChitToFatigue(CombatFrame.this,activeCharacter);
+					if (colorChit == null) return;
+					
+					colorChit.makeFatigued();
+					RealmUtility.reportChitFatigue(activeCharacter,colorChit,"Fatigued color chit: ");
+					CombatWrapper combat = new CombatWrapper(activeCharacter.getGameObject());
+					combat.addUsedChit(colorChit.getGameObject());
+					RealmLogging.logMessage(activeCharacter.getGameObject().getName(),"Boosted move chit: "+moveChit.getShortName());
+					moveChit.setMagicMove(true);
+					nonaffectingChanges = true;
+					updateControls();
+					repaint();
+				}
+			});
+		}
+		return useMagicMoveButton;
+	}
 	private JPanel getShowPanel() {
 		if (showPanel==null) {
 			showPanel = new JPanel(new GridLayout(1,3));
@@ -1000,6 +1026,9 @@ public class CombatFrame extends JFrame {
 
 					if (activeCharacterIsHere) {
 						list.add(getUseColorChitButton());
+					}
+					if (activeCharacterIsHere && activeCharacter.affectedByKey(Constants.MAGIC_MOVE)) {
+						list.add(getUseMagicMoveButton());
 					}
 					break;
 				case Constants.COMBAT_ASSIGN:
@@ -1412,6 +1441,9 @@ public class CombatFrame extends JFrame {
 			if (useColorChitButton!=null) {
 				useColorChitButton.setEnabled(activeCharacter.getColorMagicChits().size()>0
 						&& ((!hostPrefs.hasPref(Constants.FE_STEEL_AGAINST_MAGIC) && !activeCharacter.affectedByKey(Constants.STAFF_RESTRICTED_SPELLCASTING)) || activeCharacter.hasOnlyStaffAsActivatedWeapon()));
+			}
+			if (useMagicMoveButton!=null) {
+				useMagicMoveButton.setEnabled(activeCharacterIsHere && activeCharacter.affectedByKey(Constants.MAGIC_MOVE) && activeCharacter.getActiveMoveChits().size() > 0 && activeCharacter.getColorChits().size() > 0);
 			}
 			undoButton.setEnabled(interactiveFrame && endCombatFrame==null && (changes || nonaffectingChanges));
 		}

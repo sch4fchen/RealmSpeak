@@ -213,6 +213,7 @@ public class Constants {
 	public static final String STAFF_RESTRICTED_SPELLCASTING = "staff_restricted_spellcasting";
 	public static final String ADVENTURER = "adventurer";
 	public static final String ADVANCED_SHELTERS = "advanced_shelters";
+	public static final String MAGIC_MOVE = "magic_move";
 	
 	// Relationships
 	public static final String BASE_RELATIONSHIP = "relationship";
@@ -315,6 +316,7 @@ public class Constants {
 	public static final String IMMUNE_BREATH = "immune_breath";
 	public static final String ABSORB_POP = "absorb_pop";
 	public static final String CHIT_SPEED_INC = "chit_speed_inc";
+	public static final String CHIT_SPEED_MAGIC_BOOST = "chit_speed_magic_boost";
 	public static final String MAJOR_WOUND = "major_wound"; // take 4 wounds on activation, no rest allowed
 	public static final String HALF_PRICE = "half_price";
 	public static final String CONVERT_CHITS = "convert_chits";
