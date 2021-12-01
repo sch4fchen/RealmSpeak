@@ -1787,6 +1787,7 @@ public class CombatFrame extends JFrame {
 			// Pick from characters sheets
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Lure from which Character Sheet?",true);
 			ArrayList<RealmComponent> list = findCharactersWithDenizenAttackers();
+			list = CombatSheet.filterNativeFriendly(lurer, list);
 			list.remove(lurer);
 			chooser.addRealmComponents(list,true);
 			if (chooser.hasOptions()) {
@@ -1830,6 +1831,7 @@ public class CombatFrame extends JFrame {
 	private void lureSelectedDenizens(RealmComponent lurer,int box) {
 		Collection<RealmComponent> denizens = denizenPanel.getSelectedComponents();
 		denizenPanel.clearSelected();
+		denizens = CombatSheet.filterNativeFriendly(lurer, denizens);
 		for (RealmComponent denizen : denizens) {
 			if (hostPrefs.hasPref(Constants.TE_EXTENDED_TREACHERY) && lurer.isNative() && RealmUtility.getGroupName(lurer).matches(RealmUtility.getGroupName(denizen))) {
 				if (!activeCharacter.getTreacheryPreference()) {
@@ -2062,6 +2064,7 @@ public class CombatFrame extends JFrame {
 				chooserTitle = "Select secondary target:";
 			}
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,chooserTitle,true);
+			visibleList = CombatSheet.filterNativeFriendly(attacker, visibleList);
 			chooser.addRealmComponents(visibleList,true);
 			chooser.setVisible(true);
 			if (chooser.getSelectedText()!=null) {

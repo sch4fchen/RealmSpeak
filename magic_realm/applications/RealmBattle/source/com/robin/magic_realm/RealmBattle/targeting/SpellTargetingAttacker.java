@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import com.robin.magic_realm.RealmBattle.BattleGroup;
 import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
+import com.robin.magic_realm.RealmBattle.CombatSheet;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
@@ -34,6 +35,7 @@ public class SpellTargetingAttacker extends SpellTargetingSingle {
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
 		BattleGroup bg = battleModel.getParticipantsBattleGroup(activeParticipant);
 		ArrayList<RealmComponent> otherOpponents = combatFrame.findCanBeSeen(battleModel.getAllOtherBattleParticipants(bg,true,combatFrame.allowsTreachery()),true);
+		otherOpponents = CombatSheet.filterNativeFriendly(activeParticipant, otherOpponents);
 		for (RealmComponent rc : otherOpponents) {
 			gameObjects.add(rc.getGameObject());
 		}

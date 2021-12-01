@@ -19,7 +19,6 @@ package com.robin.magic_realm.RealmBattle.targeting;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
@@ -44,18 +43,16 @@ public class SpellTargetingSound extends SpellTargetingSingle {
 		TileLocation here = battleModel.getBattleLocation();
 		GameData gameData = spell.getGameObject().getGameData();
 		GamePool pool = new GamePool(gameData.getGameObjects());
-		Collection tiles = RealmObjectMaster.getRealmObjectMaster(gameData).getTileObjects();
-		ArrayList sixClearingTiles = new ArrayList();
-		for (Iterator i=tiles.iterator();i.hasNext();) {
-			GameObject tile = (GameObject)i.next();
+		Collection<GameObject> tiles = RealmObjectMaster.getRealmObjectMaster(gameData).getTileObjects();
+		ArrayList<GameObject> sixClearingTiles = new ArrayList<>();
+		for (GameObject tile : tiles) {
 			TileComponent tc = (TileComponent)RealmComponent.getRealmComponent(tile);
 			if (tc.getClearingCount()==6) {
 				sixClearingTiles.add(tile);
 			}
 		}
-		Collection c = pool.find("sound,chit");
-		for (Iterator i=c.iterator();i.hasNext();) {
-			GameObject soundChitObject = (GameObject)i.next();
+		Collection<GameObject> c = pool.find("sound,chit");
+		for (GameObject soundChitObject : c) {
 			GameObject tile = soundChitObject.getHeldBy();
 			if (tile!=null && !tile.hasThisAttribute("tile")) {
 				tile = tile.getHeldBy(); // this jumps up one from lost castle or city
@@ -65,7 +62,7 @@ public class SpellTargetingSound extends SpellTargetingSingle {
 				if (soundChit.isFaceUp()) {
 					gameObjects.add(soundChitObject);
 					identifiers.add(tile.getName());
-					ArrayList tileChoices = new ArrayList();
+					ArrayList<GameObject> tileChoices = new ArrayList<>();
 					if (here.tile.getGameObject().equals(tile)) {
 						// Moving sound from here to somewhere else
 						tileChoices.addAll(sixClearingTiles);

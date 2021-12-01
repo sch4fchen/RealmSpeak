@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
+import com.robin.magic_realm.RealmBattle.CombatSheet;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
@@ -31,8 +32,9 @@ public class SpellTargetingDenizen extends SpellTargetingSingle {
 	}
 
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
-		ArrayList<RealmComponent> allBattleParticipants = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true);
-		for (RealmComponent rc : allBattleParticipants) {
+		ArrayList<RealmComponent> potentialTargets = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true);
+		potentialTargets = CombatSheet.filterNativeFriendly(activeParticipant, potentialTargets);
+		for (RealmComponent rc : potentialTargets) {
 			if (rc.isMonster() || rc.isNative()) {
 				gameObjects.add(rc.getGameObject());
 			}

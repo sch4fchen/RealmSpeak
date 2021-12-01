@@ -34,8 +34,8 @@ import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public abstract class SpellTargetingSingle extends SpellTargeting {
 	
-	protected ArrayList identifiers = new ArrayList();
-	protected Hashtable secondaryTargets = new Hashtable(); // A hash of lists by identifier
+	protected ArrayList<String> identifiers = new ArrayList<>();
+	protected Hashtable<String, ArrayList> secondaryTargets = new Hashtable<>(); // A hash of lists by identifier
 	protected String secondaryTargetChoiceString = "";
 
 	protected SpellTargetingSingle(CombatFrame combatFrame, SpellWrapper spell) {
@@ -58,15 +58,13 @@ public abstract class SpellTargetingSingle extends SpellTargeting {
 				ArrayList<CombatSheet> combatSheets = combatFrame.getAllCombatSheets();
 				for (CombatSheet sheet : combatSheets) {
 					RealmComponent aSheetOwner = sheet.getSheetOwner();
-					Collection c = sheet.getAllParticipantsOnSheet();
-					for (Iterator n=c.iterator();n.hasNext();) {
-						RealmComponent sp = (RealmComponent)n.next();
+					Collection<RealmComponent> c = sheet.getAllParticipantsOnSheet();
+					for (RealmComponent sp : c) {
 						hash.put(sp,aSheetOwner);
 					}
 				}
 				
-				for (Iterator i=gameObjects.iterator();i.hasNext();) {
-					GameObject gameObject = (GameObject)i.next();
+				for (GameObject gameObject : gameObjects) {
 					RealmComponent rc = RealmComponent.getRealmComponent(gameObject);
 					RealmComponent aSheetOwner = hash.get(rc);
 					String option = chooser.generateOption();
@@ -82,7 +80,7 @@ public abstract class SpellTargetingSingle extends SpellTargeting {
 		}
 		else {
 			for (int i=0;i<identifiers.size();i++) {
-				String identifier = (String)identifiers.get(i);
+				String identifier = identifiers.get(i);
 				GameObject pick = gameObjects.get(i);
 				RealmComponent rc = RealmComponent.getRealmComponent(pick);
 				String option = identifier+i;
@@ -99,9 +97,8 @@ public abstract class SpellTargetingSingle extends SpellTargeting {
 			RealmComponent theTarget = chooser.getLastSelectedComponent();
 			if (theTarget==null) {
 				CombatFrame.broadcastMessage(activeCharacter.getGameObject().getName(),"Targets the "+selText+" with "+spell.getGameObject().getName());
-				ArrayList list = (ArrayList)secondaryTargets.get(selText);
-				for (Iterator i=list.iterator();i.hasNext();) {
-					RealmComponent rc = (RealmComponent)i.next();
+				ArrayList<RealmComponent> list = secondaryTargets.get(selText);
+				for (RealmComponent rc : list) {
 					spell.addTarget(hostPrefs,rc.getGameObject());
 					combatFrame.makeWatchfulNatives(rc,true);
 				}
@@ -115,10 +112,9 @@ public abstract class SpellTargetingSingle extends SpellTargeting {
 				}
 				if (!secondaryTargets.isEmpty()) {
 					chooser = new RealmComponentOptionChooser(combatFrame,secondaryTargetChoiceString,false);
-					Hashtable hash = new Hashtable();
-					ArrayList list = (ArrayList)secondaryTargets.get(selText);
-					for (Iterator i=list.iterator();i.hasNext();) {
-						GameObject st = (GameObject)i.next();
+					Hashtable<String, GameObject> hash = new Hashtable<>();
+					ArrayList<GameObject> list = secondaryTargets.get(selText);
+					for (GameObject st : list) {
 						String name = st.getName();
 						chooser.addOption(name,name); // FIXME This assumes names only here
 						hash.put(name,st);
@@ -126,7 +122,7 @@ public abstract class SpellTargetingSingle extends SpellTargeting {
 					chooser.setVisible(true);
 					selText = chooser.getSelectedText();
 					if (selText!=null) {
-						GameObject st = (GameObject)hash.get(selText);
+						GameObject st = hash.get(selText);
 						spell.setSecondaryTarget(st);
 					} // shouldn't ever be null with no cancel button!
 				}

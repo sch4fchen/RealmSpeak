@@ -32,6 +32,7 @@ public class SpellTargetingOtherOpponents extends SpellTargetingMultiple {
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
 		BattleGroup bg = battleModel.getParticipantsBattleGroup(activeParticipant);
 		ArrayList<RealmComponent> potentialTargets = combatFrame.findCanBeSeen(battleModel.getAllOtherBattleParticipants(bg,true,combatFrame.allowsTreachery()),true);
+		potentialTargets = CombatSheet.filterNativeFriendly(activeParticipant, potentialTargets);
 		potentialTargets.remove(bg.getOwningCharacter()); // Never target yourself here
 		for (RealmComponent rc:potentialTargets) {
 			gameObjects.add(rc.getGameObject());

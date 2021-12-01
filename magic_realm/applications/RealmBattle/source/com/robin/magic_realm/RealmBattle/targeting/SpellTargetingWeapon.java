@@ -17,8 +17,11 @@
  */
 package com.robin.magic_realm.RealmBattle.targeting;
 
+import java.util.Collection;
+
 import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
+import com.robin.magic_realm.RealmBattle.CombatSheet;
 import com.robin.magic_realm.components.MonsterChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
@@ -33,7 +36,9 @@ public class SpellTargetingWeapon extends SpellTargetingSingle {
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
 		// Targets one weapon counter, native counter, Goblin counter, Ogre counter or Giant's club
 		TileLocation loc = battleModel.getBattleLocation();
-		for (RealmComponent rc : loc.clearing.getDeepClearingComponents()) {
+		Collection<RealmComponent> realmComponents = loc.clearing.getDeepClearingComponents();
+		realmComponents = CombatSheet.filterNativeFriendly(activeParticipant, realmComponents);
+		for (RealmComponent rc : realmComponents) {
 			if (rc.isWeapon()) {
 				gameObjects.add(rc.getGameObject());
 				identifiers.add(rc.getGameObject().getHeldBy().getName());

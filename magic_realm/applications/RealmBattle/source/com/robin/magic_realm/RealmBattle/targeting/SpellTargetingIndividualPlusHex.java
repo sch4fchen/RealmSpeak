@@ -18,7 +18,6 @@
 package com.robin.magic_realm.RealmBattle.targeting;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.RealmBattle.BattleModel;
@@ -40,8 +39,7 @@ public class SpellTargetingIndividualPlusHex extends SpellTargetingIndividual {
 		TileLocation here = battleModel.getBattleLocation();
 		
 		ArrayList adjTiles = new ArrayList();
-		for (Iterator i=here.tile.getAllAdjacentTiles().iterator();i.hasNext();) {
-			TileComponent tile = (TileComponent)i.next();
+		for (TileComponent tile : here.tile.getAllAdjacentTiles()) {
 			adjTiles.add(tile.getGameObject());
 		}
 		

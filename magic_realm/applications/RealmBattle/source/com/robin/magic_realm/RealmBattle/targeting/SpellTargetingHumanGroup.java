@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
+import com.robin.magic_realm.RealmBattle.CombatSheet;
 import com.robin.magic_realm.components.MonsterChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
@@ -33,9 +34,10 @@ public class SpellTargetingHumanGroup extends SpellTargetingSingle {
 
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
 		// Giants, or Ogres, or Native Group
-		ArrayList<RealmComponent> allDenizens = battleModel.getAllBattleParticipants(true);
+		ArrayList<RealmComponent> potentialTargets = battleModel.getAllBattleParticipants(true);
+		potentialTargets = CombatSheet.filterNativeFriendly(activeParticipant, potentialTargets);
 		String ownerId = activeParticipant.getGameObject().getStringId();
-		for (RealmComponent rc:allDenizens) {
+		for (RealmComponent rc:potentialTargets) {
 			if (!rc.isCharacter() && (rc.getOwnerId()==null || rc.getOwnerId().equals(ownerId))) {
 				String groupName = null;
 				if (rc.isMonster() && !rc.isPlayerControlledLeader()) {

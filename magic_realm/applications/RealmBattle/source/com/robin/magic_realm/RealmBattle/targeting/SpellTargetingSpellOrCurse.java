@@ -18,7 +18,6 @@
 package com.robin.magic_realm.RealmBattle.targeting;
 
 import java.util.Collection;
-import java.util.Iterator;
 
 import com.robin.game.objects.GameData;
 import com.robin.magic_realm.RealmBattle.BattleModel;
@@ -39,8 +38,7 @@ public class SpellTargetingSpellOrCurse extends SpellTargetingSingle {
 		GameData gameData = spell.getGameObject().getGameData();
 		if (targetType.indexOf("spell")>=0) {
 			SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(gameData);
-			for (Iterator i=sm.getAllSpellsInClearing(battleModel.getBattleLocation(),true).iterator();i.hasNext();) {
-				SpellWrapper targetSpell = (SpellWrapper)i.next();
+			for (SpellWrapper targetSpell : sm.getAllSpellsInClearing(battleModel.getBattleLocation(),true)) {
 				if (targetSpell.isAlive()) {
 					identifiers.add(targetSpell.getTargetsName());
 					gameObjects.add(targetSpell.getGameObject());
@@ -48,13 +46,11 @@ public class SpellTargetingSpellOrCurse extends SpellTargetingSingle {
 			}
 		}
 		if (targetType.indexOf("curse")>=0) {
-			for (Iterator i=battleModel.getAllParticipatingCharacters().iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : battleModel.getAllParticipatingCharacters()) {
 				CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
-				Collection curses = character.getAllCurses();
+				Collection<String> curses = character.getAllCurses();
 				if (curses.size()>0) {
-					for (Iterator n=curses.iterator();n.hasNext();) {
-						String curse = (String)n.next();
+					for (String curse : curses) {
 						identifiers.add(curse);
 						gameObjects.add(rc.getGameObject());
 					}

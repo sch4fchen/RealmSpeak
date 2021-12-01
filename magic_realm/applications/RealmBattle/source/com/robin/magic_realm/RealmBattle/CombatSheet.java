@@ -890,7 +890,8 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		}
 		return null;
 	}
-	public static ArrayList<RealmComponent> filterNativeFriendly(RealmComponent attacker,ArrayList<RealmComponent> list) {
+	public static ArrayList<RealmComponent> filterNativeFriendly(RealmComponent attacker,Collection<RealmComponent> list) {
+		if (attacker == null) return (ArrayList<RealmComponent>) list;
 		if (list!=null) {
 			ArrayList<RealmComponent> ret = new ArrayList<>();
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(attacker.getGameObject().getGameData());

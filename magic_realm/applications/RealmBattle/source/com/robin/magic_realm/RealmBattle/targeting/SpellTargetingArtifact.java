@@ -18,7 +18,6 @@
 package com.robin.magic_realm.RealmBattle.targeting;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.RealmBattle.BattleModel;
@@ -37,11 +36,10 @@ public class SpellTargetingArtifact extends SpellTargetingSingle {
 		// Assume that activeParticipant IS character
 		CharacterWrapper character = new CharacterWrapper(activeParticipant.getGameObject());
 		secondaryTargetChoiceString = "Select a spell to enchant artifact with:";
-		ArrayList spellPossibilities = new ArrayList(character.getAllSpells());
+		ArrayList<GameObject> spellPossibilities = new ArrayList<>(character.getAllSpells());
 		// TODO Eliminate the casting spell?  Maybe not...
 		if (spellPossibilities.size()>0) { // can't enchant an artifact with a recorded spell, if you have none!
-			for (Iterator i=character.getInventory().iterator();i.hasNext();) {
-				GameObject item = (GameObject)i.next();
+			for (GameObject item : character.getInventory()) {
 				if (item.hasThisAttribute("artifact") || item.hasThisAttribute("book")) {
 					RealmComponent rc = RealmComponent.getRealmComponent(item);
 					if (!rc.isEnchanted()) {

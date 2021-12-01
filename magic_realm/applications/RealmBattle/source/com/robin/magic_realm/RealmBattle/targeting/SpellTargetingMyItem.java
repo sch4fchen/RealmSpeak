@@ -43,7 +43,7 @@ public class SpellTargetingMyItem extends SpellTargetingSingle {
 
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
 		CharacterWrapper caster = spell.getCaster();
-		ArrayList<GameObject> inv = new ArrayList<GameObject>();
+		ArrayList<GameObject> inv = new ArrayList<>();
 		if (active) {
 			inv.addAll(caster.getActiveInventory());
 		}

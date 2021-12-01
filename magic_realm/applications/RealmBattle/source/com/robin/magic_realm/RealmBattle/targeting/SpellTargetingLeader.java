@@ -31,6 +31,7 @@ public class SpellTargetingLeader extends SpellTargetingSingle {
 
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
 		ArrayList<RealmComponent> potentialTargets = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(false),true);
+		potentialTargets = CombatSheet.filterNativeFriendly(activeParticipant, potentialTargets);
 		for (RealmComponent rc:potentialTargets) {
 			if (rc.isAnyLeader()) {
 				gameObjects.add(rc.getGameObject());

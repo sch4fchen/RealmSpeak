@@ -31,6 +31,7 @@ public class SpellTargetingIndividual extends SpellTargetingSingle {
 
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
 		ArrayList<RealmComponent> potentialTargets = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true);
+		potentialTargets = CombatSheet.filterNativeFriendly(activeParticipant, potentialTargets);
 		for (RealmComponent rc:potentialTargets) {
 			gameObjects.add(rc.getGameObject());
 		}

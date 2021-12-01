@@ -68,7 +68,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"Cannot play a MAGIC counter, if he has any weapon counter except a staff activated.",Constants.STAFF_RESTRICTED_SPELLCASTING,""},
 		{"Gains points for recording certain discoveries.",Constants.ADVENTURER,""},
 		{"The Lost City and Lost Castle chits count as shelters.",Constants.ADVANCED_SHELTERS,""},
-		{"Cannot target neutral, friendly and allies natives.",Constants.ADVANCED_SHELTERS,""},
+		{"Cannot target neutral, friendly and allied natives.",Constants.ADVANCED_SHELTERS,""},
 	};
 	private ButtonGroup group;
 	private ArrayList<JRadioButton> buttonList;
