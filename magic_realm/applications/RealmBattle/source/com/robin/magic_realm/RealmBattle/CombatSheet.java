@@ -32,6 +32,7 @@ import com.robin.general.graphics.TextType.Alignment;
 import com.robin.general.swing.DieRoller;
 import com.robin.general.util.HashLists;
 import com.robin.magic_realm.components.*;
+import com.robin.magic_realm.components.attribute.RelationshipType;
 import com.robin.magic_realm.components.attribute.RollerResult;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.utility.Constants;
@@ -805,7 +806,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		public DieRoller changeTacticsRoller3;
 	}
 	
-	public boolean containsHorse(ArrayList<RealmComponent> list) {
+	public static boolean containsHorse(ArrayList<RealmComponent> list) {
 		if (list!=null) {
 			for (RealmComponent rc : list) {
 				if (rc.hasHorse()) {
@@ -826,7 +827,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		}
 		return false;
 	}
-	public boolean containsFriend(RealmComponent attacker,ArrayList<RealmComponent> list) {
+	public static boolean containsFriend(RealmComponent attacker,ArrayList<RealmComponent> list) {
 		if (list!=null) {
 			for (RealmComponent rc : list) {
 				if (attacker.equals(rc.getOwner())) {
@@ -882,6 +883,35 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			for (RealmComponent rc : list) {
 				RealmComponent owner = rc.getOwner();
 				if (owner==null || attacker.equals(rc.getOwner())) {
+					ret.add(rc);
+				}
+			}
+			return ret;
+		}
+		return null;
+	}
+	public static ArrayList<RealmComponent> filterNativeFriendly(RealmComponent attacker,ArrayList<RealmComponent> list) {
+		if (list!=null) {
+			ArrayList<RealmComponent> ret = new ArrayList<>();
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(attacker.getGameObject().getGameData());
+			for (RealmComponent rc : list) {
+				if (rc.isNative() && !((NativeChitComponent)rc).isHiredOrControlled()) {				
+					RealmComponent owner = attacker;
+					while (owner.isHiredOrControlled()) {
+						owner = owner.getOwner();
+					}
+					CharacterWrapper ownerCharacter = new CharacterWrapper(owner.getGameObject());
+					boolean ownerIsNativeFriendly = ownerCharacter.affectedByKey(Constants.NATIVE_FRIENDLY);
+					boolean ownerIsBattlingNative = ownerCharacter.isBattling(rc.getGameObject());
+					if (!ownerIsBattlingNative && (ownerIsNativeFriendly || hostPrefs.hasPref(Constants.HOUSE2_NATIVES_FRIENDLY))) {
+						int relationship = ownerCharacter.getRelationship(rc.getGameObject());
+						boolean groupIsNeutralFriendlyAllied = relationship == RelationshipType.NEUTRAL || relationship == RelationshipType.FRIENDLY || relationship == RelationshipType.NEUTRAL;
+						if (!groupIsNeutralFriendlyAllied) {
+							ret.add(rc);
+						}
+					}
+				}
+				else {
 					ret.add(rc);
 				}
 			}

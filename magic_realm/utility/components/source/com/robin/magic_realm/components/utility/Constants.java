@@ -208,12 +208,13 @@ public class Constants {
 	public static final String DUAL_WIELDING_ALERT = "dual_wielding_alert";
 	public static final String BATTLE_MAGE = "battle_mage";
 	public static final String SHARPSHOOTER = "sharpshooter";
+	public static final String MAGIC_MOVE = "magic_move";
 	public static final String ENHANCED_MAGIC = "enhanced_magic";
 	public static final String ENHANCED_ARTIFACTS = "enhanced_artifacts";
 	public static final String STAFF_RESTRICTED_SPELLCASTING = "staff_restricted_spellcasting";
 	public static final String ADVENTURER = "adventurer";
 	public static final String ADVANCED_SHELTERS = "advanced_shelters";
-	public static final String MAGIC_MOVE = "magic_move";
+	public static final String NATIVE_FRIENDLY = "native_friendly";
 	
 	// Relationships
 	public static final String BASE_RELATIONSHIP = "relationship";
@@ -525,6 +526,7 @@ public class Constants {
 	public static final String HOUSE2_CAMPAIGN_DEBT = "CampaignDebt";
 	public static final String HOUSE2_DAY_END_TRADING_ON = "DayEndTradingOn";
 	public static final String HOUSE2_NO_NATIVES_BATTLING = "NoNativesBattling";
+	public static final String HOUSE2_NATIVES_FRIENDLY = "NativeFriendly";
 	
 	// MORE House Rules
 	public static final String HOUSE3_DWELLING_ARMOR_REPAIR = "DwellingArmorRepair";
