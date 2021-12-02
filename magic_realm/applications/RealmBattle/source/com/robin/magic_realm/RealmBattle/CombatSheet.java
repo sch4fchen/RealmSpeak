@@ -923,7 +923,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			}
 			if (!ownerIsBattlingNativeGroup && (ownerIsNativeFriendly || hostPrefs.hasPref(Constants.HOUSE2_NATIVES_FRIENDLY))) {
 				int relationship = ownerCharacter.getRelationship(rc.getGameObject());
-				boolean groupIsNeutralFriendlyAllied = relationship == RelationshipType.NEUTRAL || relationship == RelationshipType.FRIENDLY || relationship == RelationshipType.NEUTRAL;
+				boolean groupIsNeutralFriendlyAllied = relationship == RelationshipType.FRIENDLY || relationship == RelationshipType.NEUTRAL;
 				if (groupIsNeutralFriendlyAllied) {
 					return true;
 				}
