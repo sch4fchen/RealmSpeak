@@ -23,7 +23,6 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -48,16 +47,14 @@ public class CombatSummarySheet extends JLabel {
 		"Disengage",
 	};
 	
-	private ArrayList characters;
+	private ArrayList<CharacterWrapper> characters;
 	
-	public CombatSummarySheet(ArrayList characters) { // These will be CharacterWrapper objects (ultimately)
+	public CombatSummarySheet(ArrayList<CharacterWrapper> characters) { // These will be CharacterWrapper objects (ultimately)
 		super("");
 		this.characters = characters;
-		Collections.sort(characters,new Comparator() {
-			public int compare(Object o1,Object o2) {
+		Collections.sort(characters,new Comparator<CharacterWrapper>() {
+			public int compare(CharacterWrapper c1,CharacterWrapper c2) {
 				int ret = 0;
-				CharacterWrapper c1 = (CharacterWrapper)o1;
-				CharacterWrapper c2 = (CharacterWrapper)o2;
 				ret = c1.getCombatPlayOrder()-c2.getCombatPlayOrder();
 				return ret;
 			}
@@ -95,8 +92,7 @@ public class CombatSummarySheet extends JLabel {
 		g.setColor(Color.black);
 		x = 10;
 		y = 180;
-		for (Iterator i=characters.iterator();i.hasNext();) {
-			CharacterWrapper character = (CharacterWrapper)i.next();
+		for (CharacterWrapper character : characters) {
 			String name = character.getGameObject().getName();
 			g.drawString(name,x,y);
 			y += 30;
@@ -128,7 +124,7 @@ public class CombatSummarySheet extends JLabel {
 		Stroke normalStroke = g.getStroke();
 		
 		for (int r=0;r<characters.size();r++) {
-			CharacterWrapper character = (CharacterWrapper)characters.get(r);
+			CharacterWrapper character = characters.get(r);
 			boolean active = true;
 			int stage = character.getCombatStatus();
 			if (stage>Constants.COMBAT_WAIT) {
@@ -171,11 +167,8 @@ public class CombatSummarySheet extends JLabel {
 		x = 5;
 		y = listBottom;
 		g.setColor(Color.black);
-		for (Iterator i=characters.iterator();i.hasNext();) {
-			CharacterWrapper character = (CharacterWrapper)i.next();
-			for (Iterator n=character.getBattlingNativeGroups().iterator();n.hasNext();) {
-				String groupName = (String)n.next();
-				
+		for (CharacterWrapper character : characters) {
+			for (String groupName : character.getBattlingNativeGroups()) {
 				StringBuffer sb = new StringBuffer();
 				sb.append("The ");
 				sb.append(StringUtilities.capitalize(groupName));
@@ -188,7 +181,7 @@ public class CombatSummarySheet extends JLabel {
 			}
 		}
 	}
-	private Rectangle getRectangleForPosition(int row,int col) {
+	private static Rectangle getRectangleForPosition(int row,int col) {
 		int x = (col * 30) + 132;
 		int y = (row * 30) + 162;
 		return new Rectangle(x,y,24,24);

@@ -1779,15 +1779,20 @@ public class CombatFrame extends JFrame {
 		return list;
 	}
 	public void lureDenizens(RealmComponent lurer,int box,boolean lureMultiple) {
+		lureDenizens(lurer,box,lureMultiple, true) ;
+	}
+	public void lureDenizens(RealmComponent lurer,int box,boolean lureMultiple, boolean filterNativeFriendly) {
 		if (denizenPanel.getSelectedCount()>0) {
-			lureSelectedDenizens(lurer,box);
+			lureSelectedDenizens(lurer,box, filterNativeFriendly);
 			changes = true;
 		}
 		else {
 			// Pick from characters sheets
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Lure from which Character Sheet?",true);
 			ArrayList<RealmComponent> list = findCharactersWithDenizenAttackers();
-			list = CombatSheet.filterNativeFriendly(lurer, list);
+			if (filterNativeFriendly) {
+				list = CombatSheet.filterNativeFriendly(lurer, list);
+			}
 			list.remove(lurer);
 			chooser.addRealmComponents(list,true);
 			if (chooser.hasOptions()) {
@@ -1828,14 +1833,17 @@ public class CombatFrame extends JFrame {
 		}
 		updateSelection();
 	}
-	private void lureSelectedDenizens(RealmComponent lurer,int box) {
+	private void lureSelectedDenizens(RealmComponent lurer,int box,boolean filterNativeFriendly) {
 		Collection<RealmComponent> denizens = denizenPanel.getSelectedComponents();
 		denizenPanel.clearSelected();
-		Collection<RealmComponent> validDenizens = CombatSheet.filterNativeFriendly(lurer, denizens);
-		if (validDenizens.size() < denizens.size()) {
-			String message = "The "+lurer.getGameObject().getName()+" cannot lure some denizen(s) because the "+lurer.getGameObject().getName()+" is native friendly to this group.";
-			JOptionPane.showMessageDialog(this,message,"Native friendly",JOptionPane.WARNING_MESSAGE,lurer.getIcon());
-			return;
+		Collection<RealmComponent> validDenizens = denizens;
+		if (filterNativeFriendly) {
+			validDenizens = CombatSheet.filterNativeFriendly(lurer, denizens);
+			if (validDenizens.size() < denizens.size()) {
+				String message = "The "+lurer.getGameObject().getName()+" cannot lure some denizen(s) because the "+lurer.getGameObject().getName()+" is native friendly to this group.";
+				JOptionPane.showMessageDialog(this,message,"Native friendly",JOptionPane.WARNING_MESSAGE,lurer.getIcon());
+				return;
+			}
 		}
 		
 		for (RealmComponent denizen : validDenizens) {

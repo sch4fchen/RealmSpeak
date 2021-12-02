@@ -428,7 +428,7 @@ public class DenizenCombatSheet extends CombatSheet {
 				}
 				else if (combatFrame.getActionState()==Constants.COMBAT_RANDOM_ASSIGN) {
 					// Do random assignment (guaranteed to have ONE selected here)
-					combatFrame.lureDenizens(sheetOwner,1,false);
+					combatFrame.lureDenizens(sheetOwner,1,false,false);
 					combatFrame.updateRandomAssignment();
 				}
 				else if (combatFrame.getActionState()==Constants.COMBAT_ASSIGN) {
@@ -518,10 +518,12 @@ public class DenizenCombatSheet extends CombatSheet {
 		// Deploy
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(combatFrame,"Deploy to which target?",true);
 		
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(combatFrame.getActiveCharacter().getGameObject().getGameData());
 		// start with unassigned denizens
 		for (Iterator i=combatFrame.getUnassignedDenizens().iterator();i.hasNext();) {
 			RealmComponent denizen = (RealmComponent)i.next();
 			if (denizen.getTarget()==null && denizen.get2ndTarget()==null && !denizen.isMistLike()) {
+				if(attackerIsFriendlyToDenizen(RealmComponent.getRealmComponent(combatFrame.getActiveCharacter().getGameObject()),denizen,hostPrefs)) continue;
 				if (!extendedTreachery(denizen) || combatFrame.getActiveCharacter().getTreacheryPreference()) {
 					chooser.addRealmComponent(denizen);
 				}
@@ -540,6 +542,7 @@ public class DenizenCombatSheet extends CombatSheet {
 			RealmComponent aOwner = sheet.getSheetOwner().getOwner();
 			if (!owner.equals(aOwner)) {
 				if (!aSheetOwner.isHidden() || (sheetOwnerChar!=null && sheetOwnerChar.foundHiddenEnemy(aSheetOwner.getGameObject()))) {
+					if(attackerIsFriendlyToDenizen(RealmComponent.getRealmComponent(combatFrame.getActiveCharacter().getGameObject()),aSheetOwner,hostPrefs)) continue;
 					if (!extendedTreachery(aSheetOwner) || combatFrame.getActiveCharacter().getTreacheryPreference()) {
 						chooser.addRealmComponent(aSheetOwner);
 					}
@@ -557,6 +560,7 @@ public class DenizenCombatSheet extends CombatSheet {
 						// Make sure the deploying native can "see" the participant
 						if (!participant.isMistLike()) {
 							if (!participant.isHidden() || (sheetOwnerChar!=null && sheetOwnerChar.foundHiddenEnemy(participant.getGameObject()))) {
+								if(attackerIsFriendlyToDenizen(RealmComponent.getRealmComponent(combatFrame.getActiveCharacter().getGameObject()),participant,hostPrefs)) continue;
 								if (!extendedTreachery(participant) || combatFrame.getActiveCharacter().getTreacheryPreference()) {
 									String option = chooser.generateOption();
 									chooser.addRealmComponentToOption(option,aSheetOwner,RealmComponentOptionChooser.DisplayOption.MediumIcon);

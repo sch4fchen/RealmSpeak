@@ -896,32 +896,42 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			ArrayList<RealmComponent> ret = new ArrayList<>();
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(attacker.getGameObject().getGameData());
 			for (RealmComponent rc : list) {
-				if (rc.isNative() && !((NativeChitComponent)rc).isHiredOrControlled()) {				
-					RealmComponent owner = attacker;
-					while (owner.isHiredOrControlled()) {
-						owner = owner.getOwner();
-					}
-					CharacterWrapper ownerCharacter = new CharacterWrapper(owner.getGameObject());
-					boolean ownerIsNativeFriendly = ownerCharacter.affectedByKey(Constants.NATIVE_FRIENDLY);
-					//characterIsBattlingNative = 
-					if (ownerIsNativeFriendly || hostPrefs.hasPref(Constants.HOUSE2_NATIVES_FRIENDLY)) {
-						int relationship = ownerCharacter.getRelationship(rc.getGameObject());
-						boolean groupIsNeutralFriendlyAllied = relationship == RelationshipType.NEUTRAL || relationship == RelationshipType.FRIENDLY || relationship == RelationshipType.NEUTRAL;
-						if (!groupIsNeutralFriendlyAllied) {
-							ret.add(rc);
-						}
-					}
-					else {
-						ret.add(rc);
-					}
-				}
-				else {
+				if (!attackerIsFriendlyToDenizen(attacker,rc,hostPrefs)) {
 					ret.add(rc);
 				}
 			}
 			return ret;
 		}
 		return null;
+	}
+	public static boolean attackerIsFriendlyToDenizen(RealmComponent attacker, RealmComponent rc, HostPrefWrapper hostPrefs) {
+		if (rc.isNative() && !((NativeChitComponent)rc).isHiredOrControlled()) {
+			RealmComponent owner = attacker;
+			while (owner.isHiredOrControlled()) {
+				owner = owner.getOwner();
+			}
+			CharacterWrapper ownerCharacter = new CharacterWrapper(owner.getGameObject());
+			boolean ownerIsNativeFriendly = ownerCharacter.affectedByKey(Constants.NATIVE_FRIENDLY);
+			boolean ownerIsBattlingNativeGroup = false;
+			Collection<String> battlingNativeGroups = ownerCharacter.getBattlingNativeGroups();
+			String nativeGroup = rc.getGameObject().getThisAttribute("native");
+			for (String group : battlingNativeGroups) {
+				if (group.toLowerCase().matches(nativeGroup.toLowerCase())) {
+					ownerIsBattlingNativeGroup = true;
+					break;
+				}
+			}
+			if (!ownerIsBattlingNativeGroup && (ownerIsNativeFriendly || hostPrefs.hasPref(Constants.HOUSE2_NATIVES_FRIENDLY))) {
+				int relationship = ownerCharacter.getRelationship(rc.getGameObject());
+				boolean groupIsNeutralFriendlyAllied = relationship == RelationshipType.NEUTRAL || relationship == RelationshipType.FRIENDLY || relationship == RelationshipType.NEUTRAL;
+				if (groupIsNeutralFriendlyAllied) {
+					return true;
+				}
+				return false;
+			}
+			return false;
+		}
+		return false;
 	}
 	public static CombatSheet createCombatSheet(CombatFrame frame,BattleModel currentBattleModel,RealmComponent rc,boolean interactiveFrame, HostPrefWrapper hostPrefs) {
 		if (rc.isCharacter()) {
