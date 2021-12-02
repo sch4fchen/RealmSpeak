@@ -1831,8 +1831,14 @@ public class CombatFrame extends JFrame {
 	private void lureSelectedDenizens(RealmComponent lurer,int box) {
 		Collection<RealmComponent> denizens = denizenPanel.getSelectedComponents();
 		denizenPanel.clearSelected();
-		denizens = CombatSheet.filterNativeFriendly(lurer, denizens);
-		for (RealmComponent denizen : denizens) {
+		Collection<RealmComponent> validDenizens = CombatSheet.filterNativeFriendly(lurer, denizens);
+		if (validDenizens.size() < denizens.size()) {
+			String message = "The "+lurer.getGameObject().getName()+" cannot lure some denizen(s) because the "+lurer.getGameObject().getName()+" is native friendly to this group.";
+			JOptionPane.showMessageDialog(this,message,"Native friendly",JOptionPane.WARNING_MESSAGE,lurer.getIcon());
+			return;
+		}
+		
+		for (RealmComponent denizen : validDenizens) {
 			if (hostPrefs.hasPref(Constants.TE_EXTENDED_TREACHERY) && lurer.isNative() && RealmUtility.getGroupName(lurer).matches(RealmUtility.getGroupName(denizen))) {
 				if (!activeCharacter.getTreacheryPreference()) {
 					String message = "The "+lurer.getGameObject().getName()+" cannot lure the "+denizen.getGameObject().getName()+" because it would trigger treachery.";
