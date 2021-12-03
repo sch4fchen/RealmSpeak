@@ -1,6 +1,6 @@
 Version 1.1.5.0 - Changes since 1.1.4.9
 NEW FEATURES:
-# Optional Rule: Native Friendly: Neutral, friendly or allied natives cannot be lured or targeted
+# Optional Rule: Native Friendly: Friendly or allied natives cannot be lured or targeted
 # New character ability: Native Friendly
 # New character ability: Magic Move
 BUGS/ISSUES:
