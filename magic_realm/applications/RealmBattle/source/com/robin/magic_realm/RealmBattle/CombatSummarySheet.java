@@ -27,10 +27,13 @@ import java.util.Comparator;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import com.robin.game.objects.GameObject;
 import com.robin.general.graphics.GraphicsUtil;
 import com.robin.general.util.StringUtilities;
+import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.CombatWrapper;
 
 public class CombatSummarySheet extends JLabel {
 	private static final String[] COMBAT_STAGES  = {
@@ -48,9 +51,15 @@ public class CombatSummarySheet extends JLabel {
 	};
 	
 	private ArrayList<CharacterWrapper> characters;
+	private BattleModel battleModel;
 	
-	public CombatSummarySheet(ArrayList<CharacterWrapper> characters) { // These will be CharacterWrapper objects (ultimately)
+	public CombatSummarySheet(BattleModel battleModel) {
 		super("");
+		this.battleModel = battleModel;
+		ArrayList<CharacterWrapper> characters = new ArrayList<>();
+		for (RealmComponent rc : battleModel.getAllParticipatingCharacters()) {
+			characters.add(new CharacterWrapper(rc.getGameObject()));
+		}
 		this.characters = characters;
 		Collections.sort(characters,new Comparator<CharacterWrapper>() {
 			public int compare(CharacterWrapper c1,CharacterWrapper c2) {
@@ -163,7 +172,7 @@ public class CombatSummarySheet extends JLabel {
 			}
 		}
 		
-		// List battling natives
+		// List battling natives for each character
 		x = 5;
 		y = listBottom;
 		g.setColor(Color.black);
@@ -179,6 +188,32 @@ public class CombatSummarySheet extends JLabel {
 				g.drawString(sb.toString(),x,y+20);
 				y += 20;
 			}
+		}
+		
+		// Battle overview
+		y += 60;
+		g.drawString("BATTLE OVERVIEW",x,y);
+		y += 40;
+		g.drawString("DEFENDER",x+50,y);
+		g.drawString("ATTACKERS",x+200,y);
+		y += 45;
+		for (RealmComponent battleParticipant : battleModel.getAllBattleParticipants(true)) {
+			g.drawString(battleParticipant.toString(),x,y);
+			g.drawImage(battleParticipant.getImage(),x+80,y-40,80,80,null);
+			CombatWrapper cr = new CombatWrapper(battleParticipant.getGameObject());
+			int xAttacker = x+110;
+			int attackerCount = 0;
+			for (GameObject attacker : cr.getAttackers()) {
+				attackerCount += 1;
+				if (attackerCount % 5 == 0) {
+					y += 90;
+					xAttacker = x+110;
+				}
+				xAttacker = xAttacker+90;
+				RealmComponent attackerRc = RealmComponent.getRealmComponent(attacker);
+				g.drawImage(attackerRc.getImage(),xAttacker,y-40,80,80,null);
+			}
+			y += 90;
 		}
 	}
 	private static Rectangle getRectangleForPosition(int row,int col) {

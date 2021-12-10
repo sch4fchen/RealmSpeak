@@ -1301,11 +1301,7 @@ public class CombatFrame extends JFrame {
 			lockNextButton.setVisible(false);
 			if (row>=0) {
 				if (row==0) {
-					ArrayList<CharacterWrapper> characters = new ArrayList<>();
-					for (RealmComponent rc : currentBattleModel.getAllParticipatingCharacters()) {
-						characters.add(new CharacterWrapper(rc.getGameObject()));
-					}
-					combatSheetPanel.add(new JScrollPane(new CombatSummarySheet(characters)));
+					combatSheetPanel.add(new JScrollPane(new CombatSummarySheet(this.currentBattleModel)));
 				}
 				else {
 					RealmComponent rc = allParticipants.get(row-1);
