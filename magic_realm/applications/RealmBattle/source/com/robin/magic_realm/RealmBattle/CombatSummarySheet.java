@@ -70,7 +70,7 @@ public class CombatSummarySheet extends JLabel {
 		});
 		int numberOfCharacters = characters.size();
 		int numberOfParticipants = battleModel.getAllBattleParticipants(true).size();
-		int totalHeight = 200 + numberOfCharacters*200 + (numberOfParticipants-numberOfCharacters)*120;
+		int totalHeight = 200 + numberOfCharacters*200 + (numberOfParticipants-numberOfCharacters)*125;
 		int width = 590;
 		BufferedImage bi = new BufferedImage(width,totalHeight,BufferedImage.TYPE_3BYTE_BGR);
 		Graphics g = bi.getGraphics();
@@ -198,10 +198,12 @@ public class CombatSummarySheet extends JLabel {
 		y += 60;
 		g.drawString("BATTLE OVERVIEW",x,y);
 		y += 40;
+		
 		g.drawString("DEFENDER",x+50,y);
 		g.drawString("ATTACKERS",x+200,y);
-		y += 45;
+		y -= 45;
 		for (RealmComponent battleParticipant : battleModel.getAllBattleParticipants(true)) {
+			y += 90;
 			g.drawString(battleParticipant.toString(),x,y);
 			g.drawImage(battleParticipant.getImage(),x+80,y-40,80,80,null);
 			CombatWrapper cr = new CombatWrapper(battleParticipant.getGameObject());
@@ -212,12 +214,29 @@ public class CombatSummarySheet extends JLabel {
 					y += 90;
 					xAttacker = x+110;
 				}
-				xAttacker = xAttacker+90;
+				xAttacker += 90;
 				RealmComponent attackerRc = RealmComponent.getRealmComponent(attacker);
 				g.drawImage(attackerRc.getImage(),xAttacker,y-40,80,80,null);
 				attackerCount += 1;
 			}
-			y += 90;
+		}
+		y += 60;
+		
+		g.drawString("NOT ATTACKED (UNASSIGNED)",x+50,y);
+		y += 50;
+		int xUnassigned = x;
+		int unassignedCount = 0;
+		for (RealmComponent battleParticipant : battleModel.getAllBattleParticipants(true)) {
+			if (unassignedCount != 0 && unassignedCount % 6 == 0) {
+				y += 90;
+				xUnassigned = x;
+			}
+			CombatWrapper cr = new CombatWrapper(battleParticipant.getGameObject());
+			if (cr.getAttackerCount() == 0) {
+				g.drawImage(battleParticipant.getImage(),xUnassigned,y-40,80,80,null);
+				xUnassigned += 90;
+				unassignedCount +=1;
+			}
 		}
 	}
 	private static Rectangle getRectangleForPosition(int row,int col) {
