@@ -68,10 +68,14 @@ public class CombatSummarySheet extends JLabel {
 				return ret;
 			}
 		});
-		BufferedImage bi = new BufferedImage(595,748,BufferedImage.TYPE_3BYTE_BGR); // same size as character combat
+		int numberOfCharacters = characters.size();
+		int numberOfParticipants = battleModel.getAllBattleParticipants(true).size();
+		int totalHeight = 200 + numberOfCharacters*200 + (numberOfParticipants-numberOfCharacters)*120;
+		int width = 590;
+		BufferedImage bi = new BufferedImage(width,totalHeight,BufferedImage.TYPE_3BYTE_BGR);
 		Graphics g = bi.getGraphics();
 		g.setColor(Color.white);
-		g.fillRect(0,0,595,748);
+		g.fillRect(0,0,width,totalHeight);
 		setIcon(new ImageIcon(bi));
 	}
 	private Font STAGE_FONT = new Font("Dialog",Font.BOLD,12);
@@ -204,14 +208,14 @@ public class CombatSummarySheet extends JLabel {
 			int xAttacker = x+110;
 			int attackerCount = 0;
 			for (GameObject attacker : cr.getAttackers()) {
-				attackerCount += 1;
-				if (attackerCount % 5 == 0) {
+				if (attackerCount != 0 && attackerCount % 4 == 0) {
 					y += 90;
 					xAttacker = x+110;
 				}
 				xAttacker = xAttacker+90;
 				RealmComponent attackerRc = RealmComponent.getRealmComponent(attacker);
 				g.drawImage(attackerRc.getImage(),xAttacker,y-40,80,80,null);
+				attackerCount += 1;
 			}
 			y += 90;
 		}
