@@ -193,12 +193,9 @@ public class CombatSummarySheet extends JLabel {
 				y += 20;
 			}
 		}
-		
-		// Battle overview
-		y += 60;
-		g.drawString("BATTLE OVERVIEW",x,y);
 		y += 40;
 		
+		// Battle overview
 		g.drawString("DEFENDER",x+10,y);
 		g.drawString("ATTACKERS",x+120,y);
 		y -= 45;
