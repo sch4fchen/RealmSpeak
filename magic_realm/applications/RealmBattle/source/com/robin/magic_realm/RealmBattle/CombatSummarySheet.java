@@ -70,7 +70,7 @@ public class CombatSummarySheet extends JLabel {
 		});
 		int numberOfCharacters = characters.size();
 		int numberOfParticipants = battleModel.getAllBattleParticipants(true).size();
-		int totalHeight = 200 + numberOfCharacters*200 + (numberOfParticipants-numberOfCharacters)*125;
+		int totalHeight = 300 + numberOfCharacters*300 + (numberOfParticipants-numberOfCharacters)*50;
 		int width = 590;
 		BufferedImage bi = new BufferedImage(width,totalHeight,BufferedImage.TYPE_3BYTE_BGR);
 		Graphics g = bi.getGraphics();
@@ -199,20 +199,21 @@ public class CombatSummarySheet extends JLabel {
 		g.drawString("BATTLE OVERVIEW",x,y);
 		y += 40;
 		
-		g.drawString("DEFENDER",x+50,y);
-		g.drawString("ATTACKERS",x+200,y);
+		g.drawString("DEFENDER",x+10,y);
+		g.drawString("ATTACKERS",x+120,y);
 		y -= 45;
 		for (RealmComponent battleParticipant : battleModel.getAllBattleParticipants(true)) {
-			y += 90;
-			g.drawString(battleParticipant.toString(),x,y);
-			g.drawImage(battleParticipant.getImage(),x+80,y-40,80,80,null);
 			CombatWrapper cr = new CombatWrapper(battleParticipant.getGameObject());
-			int xAttacker = x+110;
+			if (!battleParticipant.isCharacter() && !battleParticipant.isHiredOrControlled() && cr.getAttackers().size() == 0) continue;
+			
+			y += 90;
+			g.drawImage(battleParticipant.getImage(),x,y-40,80,80,null);
+			int xAttacker = x+30;
 			int attackerCount = 0;
 			for (GameObject attacker : cr.getAttackers()) {
-				if (attackerCount != 0 && attackerCount % 4 == 0) {
+				if (attackerCount != 0 && attackerCount % 5 == 0) {
 					y += 90;
-					xAttacker = x+110;
+					xAttacker = x+30;
 				}
 				xAttacker += 90;
 				RealmComponent attackerRc = RealmComponent.getRealmComponent(attacker);
@@ -220,9 +221,9 @@ public class CombatSummarySheet extends JLabel {
 				attackerCount += 1;
 			}
 		}
-		y += 60;
+		y += 80;
 		
-		g.drawString("NOT ATTACKED (UNASSIGNED)",x+50,y);
+		int yUnassignedHeadline = y;
 		y += 50;
 		int xUnassigned = x;
 		int unassignedCount = 0;
@@ -232,11 +233,14 @@ public class CombatSummarySheet extends JLabel {
 				xUnassigned = x;
 			}
 			CombatWrapper cr = new CombatWrapper(battleParticipant.getGameObject());
-			if (cr.getAttackerCount() == 0) {
+			if (!battleParticipant.isCharacter() && !battleParticipant.isHiredOrControlled() && cr.getAttackerCount() == 0 && !battleParticipant.hasTarget()) {
 				g.drawImage(battleParticipant.getImage(),xUnassigned,y-40,80,80,null);
 				xUnassigned += 90;
 				unassignedCount +=1;
 			}
+		}
+		if (unassignedCount != 0) {
+			g.drawString("UNASSIGNED",x+10,yUnassignedHeadline);
 		}
 	}
 	private static Rectangle getRectangleForPosition(int row,int col) {

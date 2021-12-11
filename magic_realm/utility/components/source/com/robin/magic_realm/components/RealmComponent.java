@@ -608,6 +608,10 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		return RealmComponent.getRealmComponentFromId(gameObject.getGameData(), gameObject.getAttribute(REALMCOMPONENT_BLOCK,TARGET_2ND_ID));
 	}
 
+	public boolean hasTarget() {
+		return getTarget() != null || get2ndTarget() != null;
+	}
+	
 	public void clearTargets() {
 		clearTarget();
 		clear2ndTarget();
