@@ -70,7 +70,7 @@ public class CombatSummarySheet extends JLabel {
 		});
 		int numberOfCharacters = characters.size();
 		int numberOfParticipants = battleModel.getAllBattleParticipants(true).size();
-		int totalHeight = 300 + numberOfCharacters*300 + (numberOfParticipants-numberOfCharacters)*50;
+		int totalHeight = 250 + numberOfCharacters*150 + (numberOfParticipants-numberOfCharacters)*50;
 		int width = 590;
 		BufferedImage bi = new BufferedImage(width,totalHeight,BufferedImage.TYPE_3BYTE_BGR);
 		Graphics g = bi.getGraphics();
