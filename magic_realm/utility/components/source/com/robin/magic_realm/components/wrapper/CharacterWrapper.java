@@ -6163,11 +6163,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		addNote(go,event,note);
 	}
-	public void addNoteTrade(GameObject trader,Collection hold) {
+	public void addNoteTrade(GameObject trader,Collection<GameObject> hold) {
 		// Update the character notebook accordingly
 		StringBufferedList list = new StringBufferedList();
-		for (Iterator i=hold.iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		for (GameObject go : hold) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc.isTreasure() || rc.isSpell()) {
 				list.append(go.getName());

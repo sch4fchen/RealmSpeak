@@ -95,8 +95,7 @@ public class QuestRewardHireling extends QuestReward {
 				go.setThisAttribute(Constants.CLONED); // tag as cloned, so that the removeHireling method will expunge the clone
 				selected = go;
 				if (!excludeHorse()) {
-					for (Object o : rc.getHold()) {
-						GameObject heldGo = (GameObject) o;
+					for (GameObject heldGo : rc.getHold()) {
 						RealmComponent heldRc = RealmComponent.getRealmComponent(heldGo);
 						if (heldRc.isNativeHorse() || heldRc.isHorse()) {
 							GameObject horse = getGameData().createNewObject();

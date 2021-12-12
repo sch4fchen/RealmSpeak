@@ -19,7 +19,7 @@ package com.robin.game.objects;
 
 import java.util.*;
 
-public class GamePool extends ArrayList {
+public class GamePool extends ArrayList<GameObject> {
 
 	public static final int RANDOM = 0;
 	public static final int FROM_BEGINNING = 1;
@@ -36,37 +36,17 @@ public class GamePool extends ArrayList {
 		random = new Random();
 	}
 	
-	public GamePool(Collection c) {
+	public GamePool(Collection<GameObject> c) {
 		super();
 		addAll(c);
 		random = new Random();
 	}
 	
 	public GameObject getGameObject(int index) {
-		return (GameObject)get(index);
+		return get(index);
 	}
-
-	/**
-	 * Overridden method guarantees that the added object is a GameObject
-	 */
-	public boolean add(Object o) {
-		if (o instanceof GameObject) {
-			return super.add(o);
-		}
-		return false;
-	}
-	/**
-	 * Overridden method guarantees that the added collection contains only GameObjects
-	 */
-	public boolean addAll(Collection c) {
-		for (Iterator i=c.iterator();i.hasNext();) {
-			if (!(i.next() instanceof GameObject)) {
-				return false;
-			}
-		}
-		return super.addAll(c);
-	}
-	public ArrayList pick(int number,int type) {
+	
+	public ArrayList<GameObject> pick(int number,int type) {
 		GamePool temp = new GamePool();
 		move(temp,number,type);
 		return temp;
@@ -95,7 +75,7 @@ public class GamePool extends ArrayList {
 	public ArrayList<GameObject> find(Collection<String> keyVals) {
 		ArrayList<GameObject> foundObjects = new ArrayList<>();
 		for (int i=0;i<size();i++) {
-			GameObject go = (GameObject)get(i);
+			GameObject go = get(i);
 			if (go.hasAllKeyVals(keyVals)) {
 				foundObjects.add(go);
 			}
@@ -106,9 +86,9 @@ public class GamePool extends ArrayList {
 	 * This is useful for translating the hold into a generic typed array
 	 */
 	public ArrayList<GameObject> findAll() {
-		ArrayList<GameObject> foundObjects = new ArrayList<GameObject>();
+		ArrayList<GameObject> foundObjects = new ArrayList<>();
 		for (int i=0;i<size();i++) {
-			GameObject go = (GameObject)get(i);
+			GameObject go = get(i);
 			foundObjects.add(go);
 		}
 		return foundObjects;
@@ -306,7 +286,7 @@ public class GamePool extends ArrayList {
 	 */
 	public static ArrayList<String> makeKeyVals(String string) {
 		StringTokenizer tokens = new StringTokenizer(string,",");
-		ArrayList<String> keyVals = new ArrayList<String>();
+		ArrayList<String> keyVals = new ArrayList<>();
 		while(tokens.hasMoreTokens()) {
 			keyVals.add(tokens.nextToken());
 		}

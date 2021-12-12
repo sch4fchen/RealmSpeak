@@ -52,7 +52,7 @@ public class SellHold extends Store {
 	
 	public String doService(JFrame frame) {
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,"Buy which?",true);
-		for(GameObject go:new ArrayList<GameObject>(trader.getHold())) {
+		for(GameObject go:new ArrayList<>(trader.getHold())) {
 			int basePrice = go.getThisInt("base_price");
 			chooser.addGameObject(go,basePrice+" gold",DisplayOption.FaceUp);
 		}

@@ -140,7 +140,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		return d.width + d.height;
 	}
 
-	public Collection getHold() {
+	public Collection<GameObject> getHold() {
 		return gameObject.getHold();
 	}
 	
