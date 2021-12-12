@@ -136,7 +136,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		}
 		return all;
 	}
-	protected DieRoller makeRoller(String val) {
+	protected static DieRoller makeRoller(String val) {
 		return new DieRoller(val,25,6);
 	}
 	protected boolean usesMaxCombatBoxes(int index) {

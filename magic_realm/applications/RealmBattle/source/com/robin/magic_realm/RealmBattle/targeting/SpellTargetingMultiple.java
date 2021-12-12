@@ -18,7 +18,6 @@
 package com.robin.magic_realm.RealmBattle.targeting;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
@@ -50,21 +49,21 @@ public abstract class SpellTargetingMultiple extends SpellTargeting {
 		}
 		chooser.setVisible(true);
 		if (chooser.pressedOkay()) {
-			ArrayList chosen = new ArrayList(chooser.getChosenObjects());
+			ArrayList<GameObject> chosen = new ArrayList<>(chooser.getChosenObjects());
 			
 			// This is lazy, but there is really only ONE spell that has such a rule, so I'm not going generalize
 			if (requiredTargets==4 && chosen.size()<requiredTargets) {
 				if (chosen.size()==1) {
 					// All 4 go to same target
-					GameObject target = (GameObject)chosen.get(0);
+					GameObject target = chosen.get(0);
 					for (int i=0;i<3;i++) {
 						chosen.add(target);
 					}
 				}
 				else if (chosen.size()==2) {
 					// 2 go to each
-					GameObject t1 = (GameObject)chosen.get(0);
-					GameObject t2 = (GameObject)chosen.get(1);
+					GameObject t1 = chosen.get(0);
+					GameObject t2 = chosen.get(1);
 					chosen.add(t1);
 					chosen.add(t2);
 				}
@@ -83,8 +82,7 @@ public abstract class SpellTargetingMultiple extends SpellTargeting {
 				}
 			}
 			
-			for (Iterator i=chosen.iterator();i.hasNext();) {
-				GameObject theTarget = (GameObject)i.next();
+			for (GameObject theTarget : chosen) {
 				spell.addTarget(hostPrefs,theTarget);
 				combatFrame.makeWatchfulNatives(RealmComponent.getRealmComponent(theTarget),true);
 				String append = "";

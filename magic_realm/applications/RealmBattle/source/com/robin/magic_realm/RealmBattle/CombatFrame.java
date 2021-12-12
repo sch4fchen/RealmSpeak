@@ -1301,7 +1301,7 @@ public class CombatFrame extends JFrame {
 			lockNextButton.setVisible(false);
 			if (row>=0) {
 				if (row==0) {
-					combatSheetPanel.add(new JScrollPane(new CombatSummarySheet(this.currentBattleModel)));
+					combatSheetPanel.add(new JScrollPane(new CombatSummarySheet(this)));
 				}
 				else {
 					RealmComponent rc = allParticipants.get(row-1);
@@ -2961,8 +2961,7 @@ public class CombatFrame extends JFrame {
 		}
 		if (runToClearingOptions.isEmpty()) {
 			// what ARE the choices?
-			for (Iterator i=activeCharacter.findAvailableClearingMoves(true).iterator();i.hasNext();) {
-				ClearingDetail clearing = (ClearingDetail)i.next();
+			for (ClearingDetail clearing : activeCharacter.findAvailableClearingMoves(true)) {
 				TileLocation tl = new TileLocation(clearing);
 				runToClearingOptions.add(tl);
 			}

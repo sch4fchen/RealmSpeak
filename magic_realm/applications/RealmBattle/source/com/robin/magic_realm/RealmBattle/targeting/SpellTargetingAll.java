@@ -37,8 +37,7 @@ public abstract class SpellTargetingAll extends SpellTargeting {
 	}
 	public boolean assign(HostPrefWrapper hostPrefs,CharacterWrapper activeCharacter) {
 		boolean ignorebattle = spell.getGameObject().hasThisAttribute("nobattle");
-		for (Iterator i=gameObjects.iterator();i.hasNext();) {
-			GameObject theTarget = (GameObject)i.next();
+		for (GameObject theTarget : gameObjects) {
 			spell.addTarget(hostPrefs,theTarget,ignorebattle);
 			if (!ignorebattle) {
 				combatFrame.makeWatchfulNatives(RealmComponent.getRealmComponent(theTarget),true);

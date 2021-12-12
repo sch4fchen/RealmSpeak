@@ -52,10 +52,12 @@ public class CombatSummarySheet extends JLabel {
 	
 	private ArrayList<CharacterWrapper> characters;
 	private BattleModel battleModel;
+	private CombatFrame combatFrame;
 	
-	public CombatSummarySheet(BattleModel battleModel) {
+	public CombatSummarySheet(CombatFrame combatFrame) {
 		super("");
-		this.battleModel = battleModel;
+		this.battleModel = combatFrame.getBattleModel();
+		this.combatFrame = combatFrame;
 		ArrayList<CharacterWrapper> characters = new ArrayList<>();
 		for (RealmComponent rc : battleModel.getAllParticipatingCharacters()) {
 			characters.add(new CharacterWrapper(rc.getGameObject()));
@@ -199,10 +201,8 @@ public class CombatSummarySheet extends JLabel {
 		g.drawString("DEFENDER",x+10,y);
 		g.drawString("ATTACKERS",x+120,y);
 		y -= 45;
-		for (RealmComponent battleParticipant : battleModel.getAllBattleParticipants(true)) {
-			CombatWrapper cr = new CombatWrapper(battleParticipant.getGameObject());
-			if (!battleParticipant.isCharacter() && !battleParticipant.isHiredOrControlled() && cr.getAttackers().size() == 0) continue;
-			
+		for (RealmComponent battleParticipant : combatFrame.getAllParticipants()) {
+			CombatWrapper cr = new CombatWrapper(battleParticipant.getGameObject());			
 			y += 90;
 			g.drawImage(battleParticipant.getImage(),x,y-40,80,80,null);
 			int xAttacker = x+30;
@@ -230,7 +230,7 @@ public class CombatSummarySheet extends JLabel {
 				xUnassigned = x;
 			}
 			CombatWrapper cr = new CombatWrapper(battleParticipant.getGameObject());
-			if (!battleParticipant.isCharacter() && !battleParticipant.isHiredOrControlled() && cr.getAttackerCount() == 0 && !battleParticipant.hasTarget()) {
+			if (!cr.isSheetOwner() && cr.getAttackerCount() == 0 && !battleParticipant.hasTarget()) {
 				g.drawImage(battleParticipant.getImage(),xUnassigned,y-40,80,80,null);
 				xUnassigned += 90;
 				unassignedCount +=1;

@@ -52,9 +52,9 @@ public class SpellTargetingHumanGroup extends SpellTargetingSingle {
 				}
 				
 				if (groupName!=null) {
-					ArrayList list = (ArrayList)secondaryTargets.get(groupName);
+					ArrayList list = secondaryTargets.get(groupName);
 					if (list==null) {
-						list = new ArrayList();
+						list = new ArrayList<>();
 						secondaryTargets.put(groupName,list);
 					}
 					list.add(rc);
