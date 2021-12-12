@@ -55,7 +55,7 @@ public class FilcherEffect implements ISpellEffect {
 		oneTime = true; //don't run through this for each native in the group
 	}
 
-	private void stealFromDwelling(SpellEffectContext context, String nativeGroup, String dwellingName, CharacterWrapper cc, RollResult result, boolean suspicious) {
+	private static void stealFromDwelling(SpellEffectContext context, String nativeGroup, String dwellingName, CharacterWrapper cc, RollResult result, boolean suspicious) {
 		String msg;
 		GameObject dwelling = context.Game.getGameData().getGameObjectByName(dwellingName);
 		

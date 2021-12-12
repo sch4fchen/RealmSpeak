@@ -48,8 +48,7 @@ public class GameObjectTreeView extends JFrame {
 			// Now use the hash to add all the branches
 			for (GameObject object : gameObjects) {
 				DefaultMutableTreeNode node = hash.get(object.toString());
-				for (Object o : object.getHold()) {
-					GameObject heldObject = (GameObject) o;
+				for (GameObject heldObject : object.getHold()) {
 					DefaultMutableTreeNode child = hash.get(heldObject.toString());
 					node.add(child);
 				}

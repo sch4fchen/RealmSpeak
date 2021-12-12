@@ -346,14 +346,14 @@ public class RealmCharacterBuilderModel {
 		return list;
 	}
 	public ArrayList<GameObject> getAllCompanions() {
-		ArrayList<String> companionNames = new ArrayList<String>();
+		ArrayList<String> companionNames = new ArrayList<>();
 		for (int i=1;i<=4;i++) {
 			ArrayList list = character.getGameObject().getAttributeList("level_"+i,Constants.COMPANION_NAME);
 			if (list!=null) {
 				companionNames.addAll(list);
 			}
 		}
-		ArrayList<GameObject> ret = new ArrayList<GameObject>();
+		ArrayList<GameObject> ret = new ArrayList<>();
 		for (String name:companionNames) {
 			for (Iterator i=character.getGameObject().getGameData().getGameObjects().iterator();i.hasNext();) {
 				GameObject go = (GameObject)i.next();

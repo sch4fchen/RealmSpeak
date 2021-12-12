@@ -909,8 +909,7 @@ public class TreasureUtility {
 
 	public static Collection<GameObject> getTreasureCards(GameObject treasureLocation) {
 		ArrayList<GameObject> list = new ArrayList<>();
-		for (Iterator<GameObject> i=treasureLocation.getHold().iterator();i.hasNext();) {
-			GameObject obj = i.next();
+		for (GameObject obj : treasureLocation.getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(obj);
 			if (rc.isTreasure()) {
 				list.add(obj);

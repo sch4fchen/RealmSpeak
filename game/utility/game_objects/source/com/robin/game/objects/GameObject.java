@@ -37,7 +37,8 @@ public class GameObject extends ModifyableObject implements Serializable {
 	private static final String THIS = "this";
 	protected OrderedHashtable<String, OrderedHashtable> attributeBlocks; // Holds Hashtables linked by a type key
 	protected GameObject heldBy; // Can only be held by one parent
-	protected ArrayList hold; // All GameObjects contained by this object
+	protected ArrayList<GameObject> hold; // All GameObjects contained by this object
+	protected ArrayList<Long> holdIds;
 
 	protected GameObject uncommitted; // a skeleton game object to manage uncommitted changes (tracks attributes AND hold)
 
@@ -72,7 +73,8 @@ public class GameObject extends ModifyableObject implements Serializable {
 		}
 		attributeBlocks = new OrderedHashtable<>();
 		heldBy = null;
-		hold = new ArrayList<GameObject>();
+		hold = new ArrayList<>();
+		holdIds = new ArrayList<>();
 		reset();
 		revertNameToDefault();
 		setModified(true);
@@ -129,6 +131,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		}
 		uncommitted.heldBy = heldBy;
 		uncommitted.hold.addAll(hold);
+		uncommitted.holdIds.addAll(holdIds);
 		
 		uncommitted.copyChangeListeners(this);
 	}
@@ -235,13 +238,17 @@ public class GameObject extends ModifyableObject implements Serializable {
 			}
 		}
 
-		for (Iterator i = hold.iterator(); i.hasNext();) {
-			GameObject obj = (GameObject) i.next();
+		for (GameObject obj : hold) {
 			GameHoldAddChange change = new GameHoldAddChange(this);
 			change.setHoldId(obj.getId());
 			changes.add(change);
 		}
-
+		for (Long id : holdIds) {
+			GameHoldAddChange change = new GameHoldAddChange(this);
+			change.setHoldId(id);
+			changes.add(change);
+		}
+		
 		return changes;
 	}
 
@@ -349,21 +356,33 @@ public class GameObject extends ModifyableObject implements Serializable {
 		}
 
 		// Search for hold additions
-		for (Iterator i = other.hold.iterator(); i.hasNext();) {
-			GameObject go = (GameObject) i.next();
+		for (GameObject go : other.hold) {
 			if (!hold.contains(go)) {
 				GameHoldAddChange action = new GameHoldAddChange(other);
 				action.setHoldId(go.getId());
 				changes.add(action);
 			}
 		}
+		for (Long id : other.holdIds) {
+			if (!holdIds.contains(id)) {
+				GameHoldAddChange action = new GameHoldAddChange(other);
+				action.setHoldId(id);
+				changes.add(action);
+			}
+		}
 
 		// Search for hold removals
-		for (Iterator i = hold.iterator(); i.hasNext();) {
-			GameObject go = (GameObject) i.next();
+		for (GameObject go : hold) {
 			if (!other.hold.contains(go)) {
 				GameHoldRemoveChange action = new GameHoldRemoveChange(other);
 				action.setHoldId(go.getId());
+				changes.add(action);
+			}
+		}
+		for (Long id : holdIds) {
+			if (!other.holdIds.contains(id)) {
+				GameHoldRemoveChange action = new GameHoldRemoveChange(other);
+				action.setHoldId(id);
 				changes.add(action);
 			}
 		}
@@ -378,7 +397,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		if (needHoldResolved) {
 			throw new IllegalArgumentException("Cannot remove object:  needHoldResolved is true");
 		}
-		GameObject[] toClear = (GameObject[]) hold.toArray(new GameObject[hold.size()]);
+		GameObject[] toClear = hold.toArray(new GameObject[hold.size()]);
 		for (int i = 0; i < toClear.length; i++) {
 			remove(toClear[i]);
 		}
@@ -419,7 +438,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		needHoldResolved = true;
 		for (Iterator i = obj.getHold().iterator(); i.hasNext();) {
 			GameObject held = (GameObject) i.next();
-			hold.add(new Long(held.getId()));
+			holdIds.add(new Long(held.getId()));
 		}
 	}
 
@@ -605,7 +624,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		return heldBy;
 	}
 
-	public ArrayList getHold() {
+	public ArrayList<GameObject> getHold() {
 		if (uncommitted != null) {
 			return uncommitted.hold;
 		}
@@ -719,8 +738,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 			element.addContent(getAttributeBlockXML(blockName));
 		}
 		// Gather contains info
-		for (Iterator i = hold.iterator(); i.hasNext();) {
-			GameObject go = (GameObject) i.next();
+		for (GameObject go : hold) {
 			element.addContent(go.getContainsXML());
 		}
 
@@ -1099,29 +1117,10 @@ public class GameObject extends ModifyableObject implements Serializable {
 	public void reset() {
 		attributeBlocks.clear();
 		hold.clear();
+		holdIds.clear();
 		needHoldResolved = false;
 	}
 
-//	/**
-//	 * Provide this method with a collection of all objects to resolve the hold
-//	 */
-//	public void resolveHold(Collection allObjects) {
-//		if (needHoldResolved) {
-//			needHoldResolved = false;
-//			// Fix hold
-//			ArrayList numbers = hold;
-//			hold = new ArrayList();
-//			for (Iterator n = numbers.iterator(); n.hasNext();) {
-//				Long number = (Long) n.next();
-//				for (Iterator i = allObjects.iterator(); i.hasNext();) {
-//					GameObject obj = (GameObject) i.next();
-//					if (obj.equalsId(number)) {
-//						add(obj);
-//					}
-//				}
-//			}
-//		}
-//	}
 	/**
 	 * This should be faster than the way I was doing it (iterate through a collection)
 	 */
@@ -1129,10 +1128,9 @@ public class GameObject extends ModifyableObject implements Serializable {
 		if (needHoldResolved) {
 			needHoldResolved = false;
 			// Fix hold
-			ArrayList numbers = hold;
-			hold = new ArrayList();
-			for (Iterator n = numbers.iterator(); n.hasNext();) {
-				Long number = (Long) n.next();
+			ArrayList<Long> numbers = holdIds;
+			hold = new ArrayList<>();
+			for (Long number : numbers) {
 				GameObject obj = objectHash.get(number);
 			if (obj==null) {
 				System.out.println("Error during resolveHold:  Cannot find: "+number);
@@ -1403,7 +1401,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 	}
 
 	public void setXML(Element element) {
-		String sid = (String) element.getAttribute("id").getValue();
+		String sid = element.getAttribute("id").getValue();
 		try {
 			Integer n = Integer.valueOf(sid);
 			id = n.intValue();
@@ -1411,7 +1409,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 			revertNameToDefault();
 			Attribute nameAtt = element.getAttribute("name");
 			if (nameAtt != null) {
-				setName((String) nameAtt.getValue());
+				setName(nameAtt.getValue());
 			}
 
 			// Retrieve attribute block info
@@ -1426,8 +1424,8 @@ public class GameObject extends ModifyableObject implements Serializable {
 			// for now, add ids to hold and set the flag to resolve
 			for (Iterator i = contains.iterator(); i.hasNext();) {
 				Element contain = (Element) i.next();
-				String csid = (String) contain.getAttribute("id").getValue();
-				hold.add(Long.valueOf(csid));
+				String csid = contain.getAttribute("id").getValue();
+				holdIds.add(Long.valueOf(csid));
 			}
 			needHoldResolved = true;
 			setModified(true);
