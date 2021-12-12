@@ -717,7 +717,7 @@ public class RealmUtility {
 			String casterName = (caster!=null && caster.getGameObject().hasThisAttribute("character"))?caster.getGameObject().getName():"";
 			chooser.addOption(key,casterName);
 			chooser.addRealmComponentToOption(key,RealmComponent.getRealmComponent(spell.getGameObject()));
-			ArrayList targets = spell.getTargets();
+			ArrayList<RealmComponent> targets = spell.getTargets();
 			if (targets.size()>0) {
 				chooser.addRealmComponentToOption(key,(RealmComponent)targets.get(0));
 				if (targets.size()>1) {

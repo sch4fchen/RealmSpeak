@@ -217,7 +217,7 @@ public abstract class Search extends RealmTable {
 			return true;
 		}
 		else if (rc.getGameObject().hasThisAttribute("minor_tl")) {
-			GameObject thing = (GameObject)rc.getGameObject().getHold().get(0); // better be one thing there!
+			GameObject thing = rc.getGameObject().getHold().get(0); // better be one thing there!
 			if (thing.hasThisAttribute("spell")) {
 				if (character.canLearn(thing)) {
 					discoveryName = discoveryName + " (learned "+thing.getName()+")";

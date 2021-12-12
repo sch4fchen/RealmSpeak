@@ -161,8 +161,8 @@ public class GameHtmlGenerator extends HtmlGenerator {
 			GameObject container = i.next();
 			if (container.getHoldCount()>0) {
 				boolean allMonsters = true;
-				for (Iterator j=container.getHold().iterator();j.hasNext();) {
-					RealmComponent test = RealmComponent.getRealmComponent((GameObject)j.next());
+				for (GameObject go : container.getHold()) {
+					RealmComponent test = RealmComponent.getRealmComponent(go);
 					if (!test.isMonster()) {
 						allMonsters = false;
 						break;
@@ -209,8 +209,7 @@ public class GameHtmlGenerator extends HtmlGenerator {
 		sb.append("<h1>");
 		sb.append(container.getName());
 		sb.append("</h1>\n");
-		for (Iterator i=container.getHold().iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		for (GameObject go : container.getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			
 			ImageIcon icon = rc.getIcon();
