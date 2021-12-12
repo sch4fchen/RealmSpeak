@@ -288,7 +288,7 @@ public class SetupCardUtility {
 				int tlClearing = trLoc.getThisInt("clearing");
 				ClearingDetail clearing = tl.tile.getClearing(tlClearing);
 				
-				ArrayList<GameObject> hold = new ArrayList<GameObject>(trLoc.getHold());
+				ArrayList<GameObject> hold = new ArrayList<>(trLoc.getHold());
 				for (GameObject go : hold) {
 					if (go.hasThisAttribute("monster")) {
 						// Guardian might have a tilereq, if playing Pruitt's monsters!

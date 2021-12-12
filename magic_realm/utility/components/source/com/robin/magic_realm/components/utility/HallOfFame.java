@@ -97,10 +97,9 @@ public class HallOfFame {
 		return go;
 	}
 	
-	private boolean isWorthy(ArrayList list,GameObject go) {
+	private static boolean isWorthy(ArrayList<GameObject> list,GameObject go) {
 		int score = go.getThisInt(TOTAL_SCORE);
-		for (Iterator i=list.iterator();i.hasNext();) {
-			GameObject test = (GameObject)i.next();
+		for (GameObject test : list) {
 			int ts = test.getThisInt(TOTAL_SCORE);
 			if (score>ts) { // only need one!
 				return true;
@@ -117,7 +116,7 @@ public class HallOfFame {
 	private void updateList(String listName,GameObject go) {
 		GameObject listGo = getHolderFor(listName);
 		
-		ArrayList list = listGo.getHold();
+		ArrayList<GameObject> list = listGo.getHold();
 		if (list.size()<MAX_ENTRIES_PER_CATEGORY || isWorthy(list,go)) {
 			add(listGo,go);
 			Collections.sort(list,scoreComparator);

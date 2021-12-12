@@ -289,8 +289,7 @@ the Appearance Chart, he instantly becomes unhired.
 		
 		RealmComponent sl = RealmComponent.getRealmComponent(spellLocation);
 		if (ignoreEnchanted || !sl.isEnchanted()) { // enchanted artifacts/books cannot have active spells!
-			for (Iterator i=spellLocation.getHold().iterator();i.hasNext();) {
-				GameObject obj = (GameObject)i.next();
+			for (GameObject obj : spellLocation.getHold()) {
 				RealmComponent rc = RealmComponent.getRealmComponent(obj);
 				if (rc.isSpell()) {
 					String spellType = obj.getThisAttribute("spell");

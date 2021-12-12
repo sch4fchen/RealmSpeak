@@ -433,7 +433,7 @@ public class RealmUtility {
 			}
 			
 			// Check to see if there were any hirelings following this guide
-			ArrayList<GameObject> stuff = new ArrayList<GameObject>(rc.getGameObject().getHold());
+			ArrayList<GameObject> stuff = new ArrayList<>(rc.getGameObject().getHold());
 			for (GameObject go : stuff) {
 				RealmComponent test = RealmComponent.getRealmComponent(go);
 				if (test.isNative() || test.isMonster()) {
@@ -469,7 +469,7 @@ public class RealmUtility {
 	}
 	public static Collection<GameObject> findInventory(RealmComponent victim) {
 		ArrayList<GameObject> list = new ArrayList<>();
-		Collection<GameObject> holderHold = new ArrayList<GameObject>(victim.getGameObject().getHold()); // to avoid concurrent mods
+		Collection<GameObject> holderHold = new ArrayList<>(victim.getGameObject().getHold()); // to avoid concurrent mods
 		for (GameObject go : holderHold) {
 			RealmComponent thing = RealmComponent.getRealmComponent(go);
 			if (thing.isItem()) {

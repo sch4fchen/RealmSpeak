@@ -436,8 +436,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 	public void copyFrom(GameObject obj) {
 		copyAttributesFrom(obj);
 		needHoldResolved = true;
-		for (Iterator i = obj.getHold().iterator(); i.hasNext();) {
-			GameObject held = (GameObject) i.next();
+		for (GameObject held : obj.getHold()) {
 			holdIds.add(new Long(held.getId()));
 		}
 	}
@@ -544,7 +543,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		return attributeBlocks.keySet();
 	}
 
-	public OrderedHashtable getAttributeBlocks() {
+	public OrderedHashtable<String, OrderedHashtable> getAttributeBlocks() {
 		if (uncommitted != null) {
 			return uncommitted.getAttributeBlocks();
 		}

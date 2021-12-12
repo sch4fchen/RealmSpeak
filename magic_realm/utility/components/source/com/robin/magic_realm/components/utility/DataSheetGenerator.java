@@ -54,10 +54,9 @@ public class DataSheetGenerator {
 		stream.println("*** MONSTERS ***");
 		printLine(stream,MONSTER_INFO);
 		GamePool pool = new GamePool(data.getGameObjects());
-		Collection monsters = pool.find("monster");
+		Collection<GameObject> monsters = pool.find("monster");
 		String[] line = new String[MONSTER_INFO.length];
-		for (Iterator i=monsters.iterator();i.hasNext();) {
-			GameObject monster = (GameObject)i.next();
+		for (GameObject monster : monsters) {
 			MonsterChitComponent rc = (MonsterChitComponent)RealmComponent.getRealmComponent(monster);
 			line[0] = monster.getName();
 			line[1] = rc.getVulnerability().toString();
@@ -93,10 +92,9 @@ public class DataSheetGenerator {
 		stream.println("*** NATIVES ***");
 		printLine(stream,NATIVE_INFO);
 		GamePool pool = new GamePool(data.getGameObjects());
-		Collection natives = pool.find("hire_type");
+		Collection<GameObject> natives = pool.find("hire_type");
 		String[] line = new String[NATIVE_INFO.length];
-		for (Iterator i=natives.iterator();i.hasNext();) {
-			GameObject aNative = (GameObject)i.next();
+		for (GameObject aNative : natives) {
 			NativeChitComponent rc = (NativeChitComponent)RealmComponent.getRealmComponent(aNative);
 			line[0] = aNative.getName();
 			line[1] = rc.getVulnerability().toString();
@@ -129,10 +127,9 @@ public class DataSheetGenerator {
 		stream.println("*** NATIVE HORSES ***");
 		printLine(stream,NATIVE_HORSE_INFO);
 		GamePool pool = new GamePool(data.getGameObjects());
-		Collection nativeHorses = pool.find("native,horse");
+		Collection<GameObject> nativeHorses = pool.find("native,horse");
 		String[] line = new String[NATIVE_HORSE_INFO.length];
-		for (Iterator i=nativeHorses.iterator();i.hasNext();) {
-			GameObject nativeHorse = (GameObject)i.next();
+		for (GameObject nativeHorse : nativeHorses) {
 			NativeSteedChitComponent rc = (NativeSteedChitComponent)RealmComponent.getRealmComponent(nativeHorse);
 			line[0] = nativeHorse.getName();
 			line[1] = rc.getVulnerability().toString();
@@ -161,10 +158,9 @@ public class DataSheetGenerator {
 		stream.println("*** HORSES ***");
 		printLine(stream,HORSE_INFO);
 		GamePool pool = new GamePool(data.getGameObjects());
-		Collection horses = pool.find("!native,horse");
+		Collection<GameObject> horses = pool.find("!native,horse");
 		String[] line = new String[HORSE_INFO.length];
-		for (Iterator i=horses.iterator();i.hasNext();) {
-			GameObject horse = (GameObject)i.next();
+		for (GameObject horse : horses) {
 			SteedChitComponent rc = (SteedChitComponent)RealmComponent.getRealmComponent(horse);
 			line[0] = horse.getName();
 			line[1] = rc.getVulnerability().toString();
@@ -190,10 +186,9 @@ public class DataSheetGenerator {
 		stream.println("*** WEAPONS ***");
 		printLine(stream,WEAPON_INFO);
 		GamePool pool = new GamePool(data.getGameObjects());
-		Collection weapons = pool.find("weapon,!character");
+		Collection<GameObject> weapons = pool.find("weapon,!character");
 		String[] line = new String[WEAPON_INFO.length];
-		for (Iterator i=weapons.iterator();i.hasNext();) {
-			GameObject weapon = (GameObject)i.next();
+		for (GameObject weapon : weapons) {
 			WeaponChitComponent rc = (WeaponChitComponent)RealmComponent.getRealmComponent(weapon);
 			line[0] = weapon.getName();
 			line[1] = rc.getWeight().toString();
@@ -220,10 +215,9 @@ public class DataSheetGenerator {
 		stream.println("*** ARMOR ***");
 		printLine(stream,ARMOR_INFO);
 		GamePool pool = new GamePool(data.getGameObjects());
-		Collection armors = pool.find("armor,!character,!treasure");
+		Collection<GameObject> armors = pool.find("armor,!character,!treasure");
 		String[] line = new String[ARMOR_INFO.length];
-		for (Iterator i=armors.iterator();i.hasNext();) {
-			GameObject armor = (GameObject)i.next();
+		for (GameObject armor : armors) {
 			ArmorChitComponent rc = (ArmorChitComponent)RealmComponent.getRealmComponent(armor);
 			line[0] = armor.getName();
 			line[1] = rc.getVulnerability().toString();

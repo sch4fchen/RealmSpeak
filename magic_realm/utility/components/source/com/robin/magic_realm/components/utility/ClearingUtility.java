@@ -112,7 +112,7 @@ public class ClearingUtility {
 			clearing = recommendedClearing(tile);
 		}
 		ArrayList<GameObject> added = new ArrayList<>();
-		Collection<GameObject> hold = new ArrayList<GameObject>(gameObject.getHold()); // this construction is necessary to prevent concurrent modification errors
+		Collection<GameObject> hold = new ArrayList<>(gameObject.getHold()); // this construction is necessary to prevent concurrent modification errors
 		for (GameObject go : hold) {
 			if (testKey==null || go.hasThisAttribute(testKey)) {
 				go.setThisAttribute("clearing",String.valueOf(clearing));
@@ -168,8 +168,7 @@ public class ClearingUtility {
 		ArrayList<RealmComponent> list = new ArrayList<>();
 		if (rc.isAnyLeader() || rc.isVisitor() || rc.isCacheChit()) {
 			// check all character and native leader treasures
-			for (Iterator i=rc.getGameObject().getHold().iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
+			for (GameObject go : rc.getGameObject().getHold()) {
 				RealmComponent arc = RealmComponent.getRealmComponent(go);
 				list.addAll(dissolveIntoSeenStuff(arc));
 			}
@@ -179,8 +178,7 @@ public class ClearingUtility {
 			if (rc.isNativeLeader()) {
 				GameObject holder = SetupCardUtility.getDenizenHolder(rc.getGameObject());
 				if (holder != null) {
-					for (Iterator i=holder.getHold().iterator();i.hasNext();) {
-						GameObject go = (GameObject)i.next();
+					for (GameObject go : holder.getHold()) {
 						if (go.hasThisAttribute(Constants.TREASURE_SEEN)) {
 							RealmComponent arc = RealmComponent.getRealmComponent(go);
 							list.addAll(dissolveIntoSeenStuff(arc));
@@ -193,8 +191,7 @@ public class ClearingUtility {
 				// Look for transmorphed inventory in bewitching spells
 				CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
 				for (SpellWrapper spell:SpellUtility.getBewitchingSpells(character.getGameObject())) {
-					for (Iterator n=spell.getGameObject().getHold().iterator();n.hasNext();) {
-						GameObject item = (GameObject)n.next();
+					for (GameObject item : spell.getGameObject().getHold()) {
 						if (item.hasThisAttribute(Constants.TREASURE_SEEN)) {
 							list.add(RealmComponent.getRealmComponent(item));
 						}
@@ -592,8 +589,7 @@ public class ClearingUtility {
 	public static ArrayList<RealmComponent> findAllAwakeUnblockedCharactersInClearing(CharacterWrapper character) {
 		ArrayList<RealmComponent> list = new ArrayList<>();
 		TileLocation current = character.getCurrentLocation();
-		for (Iterator n=current.clearing.getClearingComponents().iterator();n.hasNext();) {
-			RealmComponent rc = (RealmComponent)n.next();
+		for (RealmComponent rc : current.clearing.getClearingComponents()) {
 			// Someone, that isn't yourself
 			if (!rc.getGameObject().equals(character.getGameObject())) {
 				// and is a character or hired leader
@@ -641,8 +637,7 @@ public class ClearingUtility {
 					connectedClearings.add(clearing);
 				}
 			}
-			for (Iterator i=tile.getHold().iterator();i.hasNext();) {
-				GameObject chit = (GameObject)i.next();
+			for (GameObject chit : tile.getHold()) {
 				chits.add(chit);
 				if (chit.hasThisAttribute("red_special")) {
 					chits.addAll(chit.getHold());

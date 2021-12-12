@@ -85,7 +85,7 @@ public abstract class TestBaseWithLoader {
 		return go;
 	}
 	protected void putGameObjectInClearing(GameObject go,String tileName,int clearingNum) {
-		GameObject tile = findGameObject("Crag");
+		GameObject tile = findGameObject(tileName);
 		tile.add(go);
 		go.setThisAttribute("clearing",clearingNum);
 	}
