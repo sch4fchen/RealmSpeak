@@ -77,7 +77,7 @@ public class BattleBuilder extends JFrame {
 	private boolean cancelled = false;
 	
 	public BattleBuilder() {
-		characterPanels = new ArrayList<CharacterBattleBuilderPanel>();
+		characterPanels = new ArrayList<>();
 		initComponents();
 	}
 	public boolean isCancelled() {
@@ -89,7 +89,7 @@ public class BattleBuilder extends JFrame {
 	public GamePool getPool() {
 		return pool;
 	}
-	private boolean saidYes(String message) {
+	private static boolean saidYes(String message) {
 		int ret = JOptionPane.showConfirmDialog(null,message,"Realm Battle",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 		return ret==JOptionPane.YES_OPTION;
 	}
@@ -261,8 +261,7 @@ public class BattleBuilder extends JFrame {
 				SpellMasterWrapper.getSpellMaster(gameData); // make sure SpellMaster is created
 				Collection<GameObject> needsSpellInit = pool.find(keyVals);
 				for (GameObject go : needsSpellInit) {
-					for (Iterator n=go.getHold().iterator();n.hasNext();) {
-						GameObject sgo = (GameObject)n.next();
+					for (GameObject sgo : go.getHold()) {
 						if (sgo.hasThisAttribute("spell")) {
 							SpellWrapper spell = new SpellWrapper(sgo);
 							spell.castSpellNoEnhancedMagic(go);
@@ -328,9 +327,8 @@ public class BattleBuilder extends JFrame {
 		// Denizens...
 		BattleGroup denGroup = model.getDenizenBattleGroup();
 		if (denGroup!=null) {
-			ArrayList toAdd = new ArrayList();
-			for (Iterator i=denGroup.getBattleParticipants().iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			ArrayList<GameObject> toAdd = new ArrayList<>();
+			for (RealmComponent rc : denGroup.getBattleParticipants()) {
 				GameObject go = rc.getGameObject();
 				go.setThisAttribute(BATTLE_BUILDER_KEY);
 				toAdd.add(go);
@@ -339,8 +337,7 @@ public class BattleBuilder extends JFrame {
 		}
 		
 		// Characters...
-		for (Iterator b=model.getAllBattleGroups(false).iterator();b.hasNext();) {
-			BattleGroup group = (BattleGroup)b.next();
+		for (BattleGroup group : model.getAllBattleGroups(false)) {
 			RealmComponent rc = group.getOwningCharacter();
 			
 			// Add tab
@@ -354,8 +351,7 @@ public class BattleBuilder extends JFrame {
 			}
 			
 			// Tag everyone else
-			for (Iterator i=group.getBattleParticipants().iterator();i.hasNext();) {
-				RealmComponent bp = (RealmComponent)i.next();
+			for (RealmComponent bp : group.getBattleParticipants()) {
 				if (bp!=rc) {
 					bp.getGameObject().setThisAttribute(BATTLE_BUILDER_KEY);
 				}
@@ -472,10 +468,10 @@ public class BattleBuilder extends JFrame {
 	}
 	public Collection<GameObject> makeDuplicates(Collection<GameObject> in) {
 		if (makeDuplicatesOption.isSelected()) {
-			ArrayList dups = new ArrayList();
+			ArrayList<GameObject> dups = new ArrayList<>();
 			for (GameObject go :  in) {
 				GameObject dup = gameData.createNewObject(go);
-				Collection hold = go.getHold();
+				Collection<GameObject> hold = go.getHold();
 				if (!hold.isEmpty()) {
 					// This recursive behavior will guarantee that the duplication goes deep
 					dup.addAll(makeDuplicates(hold));
@@ -489,10 +485,9 @@ public class BattleBuilder extends JFrame {
 		return in;
 	}
 	private void removeDenizens() {
-		ArrayList all = new ArrayList(Arrays.asList(denizenPanel.getComponents()));
-		Collection selDenizens = denizenPanel.getSelectedComponents();
-		for (Iterator i=selDenizens.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		ArrayList all = new ArrayList<>(Arrays.asList(denizenPanel.getComponents()));
+		Collection<RealmComponent> selDenizens = denizenPanel.getSelectedComponents();
+		for (RealmComponent rc : selDenizens) {
 			rc.getGameObject().removeThisAttribute(BATTLE_BUILDER_KEY);
 			all.remove(rc);
 			battleClearing.remove(rc.getGameObject());
@@ -527,8 +522,7 @@ public class BattleBuilder extends JFrame {
 				newChar.copyAttributesFrom(chosen);
 				RealmComponent.clearOwner(newChar);
 				newChar.setThisKeyVals(hostPrefs.getGameKeyVals());
-				for (Iterator i=chosen.getHold().iterator();i.hasNext();) {
-					GameObject go = (GameObject)i.next();
+				for (GameObject go : chosen.getHold()) {
 					if (go.hasThisAttribute("character_chit")) {
 						GameObject newChit = gameData.createNewObject();
 						newChit.copyAttributesFrom(go);
@@ -750,9 +744,8 @@ public class BattleBuilder extends JFrame {
 		repaint();
 	}
 	private void doFinish() {
-		Collection everything = pool.find(BATTLE_BUILDER_KEY);
-		for (Iterator i=everything.iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		Collection<GameObject> everything = pool.find(BATTLE_BUILDER_KEY);
+		for (GameObject go : everything) {
 			go.removeThisAttribute(BATTLE_BUILDER_KEY);
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc.isCharacter() || rc.isNative() || rc.isMonster() || rc.isTraveler()) {

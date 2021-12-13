@@ -1922,7 +1922,7 @@ public class BattleModel {
 					RealmComponent target1 = rc.getTarget();
 					RealmComponent target2 = rc.get2ndTarget();
 					CombatWrapper targetCombat1 = target1==null?null:(new CombatWrapper(target1.getGameObject()));
-					CombatWrapper targetCombat2 = target2==null?null:(new CombatWrapper(target2.getGameObject()));
+					CombatWrapper targetCombat2 = new CombatWrapper(target2.getGameObject());
 					
 					// Determine disengagement rules
 					if (rc.isMonster()) {
@@ -2022,9 +2022,8 @@ public class BattleModel {
 
 			// Clear out all round combat info (include all held stuff)
 			ArrayList<GameObject> removeList = new ArrayList<>();
-			ArrayList hold = new ArrayList(rc.getGameObject().getHold()); // to prevent concurrent mod issues when flychits are expired
-			for (Iterator n=hold.iterator();n.hasNext();) {
-				GameObject held = (GameObject)n.next();
+			ArrayList<GameObject> hold = new ArrayList<>(rc.getGameObject().getHold()); // to prevent concurrent mod issues when flychits are expired
+			for (GameObject held : hold) {
 				CombatWrapper combat = new CombatWrapper(held);
 				
 				// If a "held" item is a horse, and its dead, then remove it
@@ -2041,8 +2040,7 @@ public class BattleModel {
 				CombatWrapper.clearRoundCombatInfo(held);
 				
 				if (held.hasThisAttribute(Quest.QUEST_MINOR_CHARS)) {
-					for (Iterator m = held.getHold().iterator(); m.hasNext();) {
-						GameObject bonusChit = (GameObject) m.next();
+					for (GameObject bonusChit : held.getHold()) {
 						CombatWrapper.clearRoundCombatInfo(bonusChit);
 					}
 				}
