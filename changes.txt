@@ -1,6 +1,6 @@
 Version 1.1.5.1 - Changes since 1.1.5.0
 NEW FEATURES:
-# Combat Summary: Add participants overview
+# Combat Summary: Add overview with participants
 
 Version 1.1.5.0 - Changes since 1.1.4.9
 NEW FEATURES:

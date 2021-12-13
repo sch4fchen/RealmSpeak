@@ -243,11 +243,6 @@ public class GameObject extends ModifyableObject implements Serializable {
 			change.setHoldId(obj.getId());
 			changes.add(change);
 		}
-		for (Long id : holdIds) {
-			GameHoldAddChange change = new GameHoldAddChange(this);
-			change.setHoldId(id);
-			changes.add(change);
-		}
 		
 		return changes;
 	}
@@ -334,8 +329,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		}
 
 		// Check for new blocks
-		for (Iterator i = other.getAttributeBlockNames().iterator(); i.hasNext();) {
-			String blockName = (String) i.next();
+		for (String blockName : other.getAttributeBlockNames()) {
 			if (!hasAttributeBlock(blockName)) {
 				OrderedHashtable otherBlock = other.getAttributeBlock(blockName);
 				for (Iterator k = otherBlock.keySet().iterator(); k.hasNext();) {
@@ -363,26 +357,12 @@ public class GameObject extends ModifyableObject implements Serializable {
 				changes.add(action);
 			}
 		}
-		for (Long id : other.holdIds) {
-			if (!holdIds.contains(id)) {
-				GameHoldAddChange action = new GameHoldAddChange(other);
-				action.setHoldId(id);
-				changes.add(action);
-			}
-		}
 
 		// Search for hold removals
 		for (GameObject go : hold) {
 			if (!other.hold.contains(go)) {
 				GameHoldRemoveChange action = new GameHoldRemoveChange(other);
 				action.setHoldId(go.getId());
-				changes.add(action);
-			}
-		}
-		for (Long id : holdIds) {
-			if (!other.holdIds.contains(id)) {
-				GameHoldRemoveChange action = new GameHoldRemoveChange(other);
-				action.setHoldId(id);
 				changes.add(action);
 			}
 		}
@@ -1120,22 +1100,19 @@ public class GameObject extends ModifyableObject implements Serializable {
 		needHoldResolved = false;
 	}
 
-	/**
-	 * This should be faster than the way I was doing it (iterate through a collection)
-	 */
 	public void resolveHold(HashMap<Long, GameObject> objectHash) {
 		if (needHoldResolved) {
 			needHoldResolved = false;
 			// Fix hold
-			ArrayList<Long> numbers = holdIds;
 			hold = new ArrayList<>();
-			for (Long number : numbers) {
+			for (Long number : holdIds) {
 				GameObject obj = objectHash.get(number);
-			if (obj==null) {
-				System.out.println("Error during resolveHold:  Cannot find: "+number);
-			}
+				if (obj==null) {
+					System.out.println("Error during resolveHold:  Cannot find: "+number);
+				}
 				add(obj);
 			}
+			holdIds.clear();
 		}
 	}
 
