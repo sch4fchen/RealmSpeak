@@ -29,7 +29,7 @@ public class AnimateEffect implements ISpellEffect {
 		go.setAttribute("dark","move_speed",go.getAttributeInt("dark","move_speed")+1);
 		
 		if (go.getHoldCount()==1) {
-			GameObject weapon = (GameObject)go.getHold().get(0);
+			GameObject weapon = go.getHold().get(0);
 			weapon.setAttribute("light","attack_speed",weapon.getAttributeInt("light","attack_speed")+1);
 			weapon.setAttribute("dark","attack_speed",weapon.getAttributeInt("dark","attack_speed")+1);
 		}
@@ -54,7 +54,7 @@ public class AnimateEffect implements ISpellEffect {
 			go.removeAttributeBlock("light_an");
 			go.removeAttributeBlock("dark_an");
 			if (go.getHoldCount()==1) {
-				GameObject weapon = (GameObject)go.getHold().get(0);
+				GameObject weapon = go.getHold().get(0);
 				weapon.setAttribute("light","attack_speed",weapon.getAttributeInt("light","attack_speed")-1);
 				weapon.setAttribute("dark","attack_speed",weapon.getAttributeInt("dark","attack_speed")-1);
 			}

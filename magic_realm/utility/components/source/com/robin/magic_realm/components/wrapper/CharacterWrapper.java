@@ -1028,7 +1028,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public void setMissingInAction(boolean val) {
 		setBoolean(MISSING_IN_ACTION,val);
 	}
-	public ArrayList<String> getAllRelationshipBlocks(HostPrefWrapper hostPrefs) {
+	public static ArrayList<String> getAllRelationshipBlocks(HostPrefWrapper hostPrefs) {
 		ArrayList<String> list = new ArrayList<>();
 		int boards = hostPrefs.getMultiBoardEnabled()?hostPrefs.getMultiBoardCount():1;
 		for (int i=0;i<boards;i++) {
@@ -2348,8 +2348,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public ArrayList<GameObject> getInventory() {
 		ArrayList<GameObject> ret = new ArrayList<>();
-		for (Iterator i=getGameObject().getHold().iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		for (GameObject go : getGameObject().getHold()) {
 			if (go.hasThisAttribute(Constants.REQUIRES_APPROVAL)) continue;
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc==null) {
@@ -3183,8 +3182,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				
 				// Search for Site Cards, which remain IN the Treasure Location
 				if (rc.isTreasureLocation()) {
-					for (Iterator n=rc.getGameObject().getHold().iterator();n.hasNext();) {
-						GameObject go = (GameObject)n.next();
+					for (GameObject go : rc.getGameObject().getHold()) {
 						String thingName = go.getName() + (includeSiteCardLocationText?(" ( + "+rc.getGameObject().getName()+")"):"");
 						stuff.put(go.getName(),thingName);
 					}
@@ -3828,8 +3826,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	private void addBonusChit(String levelKey) {
 		// Make sure chit hasn't already been created
 		GameObject bonusChit = null;
-		for (Iterator i = getGameObject().getHold().iterator(); i.hasNext();) {
-			GameObject go = (GameObject) i.next();
+		for (GameObject go : getGameObject().getHold()) {
 			if (go.hasThisAttribute(RealmComponent.CHARACTER_CHIT) && levelKey.equals(go.getName())) {
 				bonusChit = go;
 				break;
@@ -3863,8 +3860,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	private void addExtraInventory(String levelKey) {
 		// Make sure inventory hasn't already been created
 		GameObject bonusInv = null;
-		for (Iterator i = getGameObject().getHold().iterator(); i.hasNext();) {
-			GameObject go = (GameObject) i.next();
+		for (GameObject go : getGameObject().getHold()) {
 			String tag = go.getThisAttribute(Constants.LEVEL_KEY_TAG);
 			if (levelKey.equals(tag)) {
 				bonusInv = go;
@@ -4360,8 +4356,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return virtualSpells;
 	}
 	private static void findVirtualSpellsFor(GameObject spell,ArrayList<GameObject> virtualSpells) {
-		for (Iterator i=spell.getHold().iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		for (GameObject go : spell.getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc.isSpell()) {
 				SpellWrapper vSpell = new SpellWrapper(go);
@@ -4445,8 +4440,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 								companion.setName(companion.getName()+" "+board);
 								companion.setThisAttribute(Constants.BOARD_NUMBER,board);
 							}
-							for (Iterator n=go.getHold().iterator();n.hasNext();) {
-								GameObject held = (GameObject)n.next();
+							for (GameObject held : go.getHold()) {
 								GameObject heldThing = getGameObject().getGameData().createNewObject();
 								heldThing.copyAttributesFrom(held);
 								if (board!=null) {
@@ -4875,8 +4869,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public Collection<RealmComponent> getFlyChits(boolean excludeActionChits) {
 		ArrayList<RealmComponent> flyChits = new ArrayList<>();
-		for (Iterator i=getGameObject().getHold().iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		for (GameObject go : getGameObject().getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc.isFlyChit()) {
 				flyChits.add(rc);
@@ -4888,8 +4881,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				}
 			}
 			else if (go.hasThisAttribute(Quest.QUEST_MINOR_CHARS) && go.hasThisAttribute("activated")) {
-				for (Iterator n = go.getHold().iterator(); n.hasNext();) {
-					GameObject bonusChit = (GameObject) n.next();
+				for (GameObject bonusChit : go.getHold()) {
 					if (bonusChit.hasThisAttribute(Constants.CHIT_EARNED)) {
 						RealmComponent bonusChitRc = RealmComponent.getRealmComponent(bonusChit);
 						CharacterActionChitComponent bonusActionChit = (CharacterActionChitComponent) bonusChitRc;
@@ -4931,8 +4923,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public Collection<RealmComponent> getTransmorphedChits() {
 		ArrayList<RealmComponent> list = new ArrayList<>();
 		if (getTransmorph()==null) return list;
-		for (Iterator i=getGameObject().getHold().iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		for (GameObject go : getGameObject().getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (!rc.isActionChit()) continue;
 			list.add(rc);
@@ -4990,8 +4981,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public void initChits() {
 		int characterLevel = getCharacterLevel();
-		for (Iterator i=getGameObject().getHold().iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		for (GameObject go : getGameObject().getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc.isActionChit()) {
 				int level = go.getThisInt("level");
@@ -5017,8 +5007,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public ArrayList<CharacterActionChitComponent> getAllActionChitsSorted(int level) {
 		ArrayList<CharacterActionChitComponent> list = new ArrayList<>();
-		for (Iterator i=getGameObject().getHold().iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		for (GameObject go : getGameObject().getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc.isActionChit()) {
 				CharacterActionChitComponent c = (CharacterActionChitComponent)rc;
@@ -5043,8 +5032,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		ArrayList<CharacterActionChitComponent> list = new ArrayList<>();
 		int nextLevel = getCharacterLevel()+1;
 		RealmComponent berserk = null;
-		for (Iterator i=getGameObject().getHold().iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		for (GameObject go : getGameObject().getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc.isActionChit()) {
 				if (validChit(hostPrefs,go)) {
@@ -5082,9 +5070,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
 		boolean transmorphed = isTransmorphed();
 		ArrayList<CharacterActionChitComponent> list = new ArrayList<>();
-		ArrayList hold = new ArrayList(getGameObject().getHold());
-		for (Iterator i=hold.iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		ArrayList<GameObject> hold = new ArrayList<>(getGameObject().getHold());
+		for (GameObject go : hold) {
 			if (includeUnearnedChits || go.hasThisAttribute(Constants.CHIT_EARNED)) {
 				if (validChit(hostPrefs,go)) {
 					RealmComponent rc = RealmComponent.getRealmComponent(go);
@@ -5099,8 +5086,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				}
 			}
 			else if (go.hasThisAttribute(Quest.QUEST_MINOR_CHARS) && go.hasThisAttribute("activated")) {
-				for (Iterator n = go.getHold().iterator(); n.hasNext();) {
-					GameObject bonusChit = (GameObject) n.next();
+				for (GameObject bonusChit : go.getHold()) {
 					if (bonusChit.hasThisAttribute(Constants.CHIT_EARNED)) {
 						RealmComponent rc = RealmComponent.getRealmComponent(bonusChit);
 						CharacterActionChitComponent bonusActionChit = (CharacterActionChitComponent) rc;
@@ -5386,9 +5372,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 			
 			// Look for any leftover followers that might have been just unhired!
-			ArrayList hold = new ArrayList(getGameObject().getHold());
-			for (Iterator i=hold.iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
+			ArrayList<GameObject> hold = new ArrayList<>(getGameObject().getHold());
+			for (GameObject go : hold) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
 				if (!rc.isCompanion() && (rc.isMonster() || rc.isNative()) && rc.getTermOfHire()==0) {
 					ClearingUtility.moveToLocation(go,current);
@@ -5707,8 +5692,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 */
 	public ArrayList<RealmComponent> getFollowingHirelings() {
 		ArrayList<RealmComponent> list = new ArrayList<>();
-		for (Iterator i=getGameObject().getHold().iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		for (GameObject go : getGameObject().getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc.isNative() || rc.isMonster() || rc.isTraveler()) {
 				list.add(rc);
@@ -6385,8 +6369,7 @@ public class CharacterWrapper extends GameObjectWrapper {
     }
     public ArrayList<GameObject> getInventoryToApprove() {
     	ArrayList<GameObject> list = new ArrayList<>();
-		for (Iterator i=getGameObject().getHold().iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		for (GameObject go : getGameObject().getHold()) {
 			if (go.hasThisAttribute(Constants.REQUIRES_APPROVAL)) {
 				list.add(go);
 			}

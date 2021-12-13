@@ -38,7 +38,7 @@ public class SuggestionTextArea extends JTextArea {
 
 	private static enum Mode {
 		INSERT, COMPLETION
-	};
+	}
 
 	private Mode mode = Mode.INSERT;
 	private boolean lineModeOn = false;
@@ -198,7 +198,7 @@ public class SuggestionTextArea extends JTextArea {
 	}
 	
 	public static void main(String[] args) {
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 		// list.add("DragonsLair");
 		// list.add("UndeadTown");
 		// list.add("DraconicTemple");

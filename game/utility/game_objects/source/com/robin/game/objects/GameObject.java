@@ -396,7 +396,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		// Need to do a deep copy here!
 		for (Iterator i = obj.getAttributeBlocks().orderedKeys().iterator(); i.hasNext();) {
 			String blockName = (String) i.next();
-			OrderedHashtable block = (OrderedHashtable) obj.getAttributeBlocks().get(blockName);
+			OrderedHashtable block = obj.getAttributeBlocks().get(blockName);
 			for (Iterator v = block.orderedKeys().iterator(); v.hasNext();) {
 				String key = (String) v.next();
 				Object val = block.get(key);

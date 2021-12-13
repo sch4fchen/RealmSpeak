@@ -19,7 +19,6 @@ package com.robin.game.server;
 
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.logging.Logger;
 
 import com.robin.game.objects.GameData;
@@ -50,7 +49,7 @@ public class GameHost {
 	
 	protected ArrayList<GameServer> servers;
 	
-	protected ArrayList gameHostListeners;
+	protected ArrayList<GameHostListener> gameHostListeners;
 
 	public GameHost(String dataPath,String gameTitle,String password) {
 		mostRecentHost = this;
@@ -82,7 +81,7 @@ public class GameHost {
 		this.connector = null;
 		this.gameTitle = title;
 		this.password = pass;
-		servers = new ArrayList<GameServer>();
+		servers = new ArrayList<>();
 	}
 	public String getGameTitle() {
 		return gameTitle;
@@ -92,7 +91,7 @@ public class GameHost {
 	}
 	public void addGameHostListener(GameHostListener listener) {
 		if (gameHostListeners == null) {
-			gameHostListeners = new ArrayList();
+			gameHostListeners = new ArrayList<>();
 		}
 		gameHostListeners.add(listener);
 	}
@@ -108,8 +107,7 @@ public class GameHost {
 	}
 	public void fireHostOnly(InfoObject io) {
 		if (gameHostListeners!=null) {
-			for (Iterator i=gameHostListeners.iterator();i.hasNext();) {
-				GameHostListener listener = (GameHostListener)i.next();
+			for (GameHostListener listener : gameHostListeners) {
 				listener.handleHostOnlyInfo(io);
 			}
 		}
@@ -121,8 +119,7 @@ public class GameHost {
 	}
 	public void fireHostModified(GameHostEvent event) {
 		if (gameHostListeners!=null) {
-			for (Iterator i=gameHostListeners.iterator();i.hasNext();) {
-				GameHostListener listener = (GameHostListener)i.next();
+			for (GameHostListener listener : gameHostListeners) {
 				listener.hostModified(event);
 			}
 		}
@@ -130,8 +127,7 @@ public class GameHost {
 	public void fireServerLost(GameServer server) {
 		if (gameHostListeners!=null) {
 			GameHostEvent event = new GameHostEvent(this,server,GameHostEvent.NOTICE_LOST_CONNECTION);
-			for (Iterator i=gameHostListeners.iterator();i.hasNext();) {
-				GameHostListener listener = (GameHostListener)i.next();
+			for (GameHostListener listener : gameHostListeners) {
 				listener.serverLost(event);
 			}
 		}
@@ -190,7 +186,7 @@ public class GameHost {
 	}
 	public void killAllOutsideConnections() {
 		// Assume that the first connection is the host's player, and shut down all the rest.
-		ArrayList<GameServer> list = new ArrayList<GameServer>();
+		ArrayList<GameServer> list = new ArrayList<>();
 		list.add(servers.remove(0));
 		shutdown();
 		servers = list;
@@ -216,10 +212,10 @@ public class GameHost {
 		return gameData.getGameObject(id);
 	}
 	
-	public synchronized boolean applyChanges(GameServer activeServer,ArrayList changes) {
+	public synchronized boolean applyChanges(GameServer activeServer,ArrayList<GameObjectChange> changes) {
 		return applyChanges(activeServer,changes,true);
 	}
-	public synchronized boolean applyChanges(GameServer activeServer,ArrayList changes,boolean fireChange) {
+	public synchronized boolean applyChanges(GameServer activeServer,ArrayList<GameObjectChange> changes,boolean fireChange) {
 		if (changes!=null && !changes.isEmpty()) {
 //			for (Iterator i=changes.iterator();i.hasNext();) {
 //				GameObjectChange change = (GameObjectChange)i.next();
@@ -229,8 +225,7 @@ public class GameHost {
 //				}
 //			}
 			logger.fine("Host apply changes: "+changes.size()+" changes.");
-			for (Iterator i=changes.iterator();i.hasNext();) {
-				GameObjectChange action = (GameObjectChange)i.next();
+			for (GameObjectChange action : changes) {
 				logger.finer("--> "+action);
 				action.applyChange(gameData);
 			}
@@ -300,14 +295,13 @@ public class GameHost {
 			}
 		}
 	}
-	public synchronized ArrayList getMasterToGameChanges() {
+	public synchronized ArrayList<GameObjectChange> getMasterToGameChanges() {
 		return masterData.buildChanges(gameData);
 	}
 	public void _testBuildChanges() {
-		ArrayList changes = getMasterToGameChanges();
+		ArrayList<GameObjectChange> changes = getMasterToGameChanges();
 		System.out.println("changes="+changes.size());
-		for (Iterator i=changes.iterator();i.hasNext();) {
-			GameObjectChange change = (GameObjectChange)i.next();
+		for (GameObjectChange change : changes) {
 			System.out.println(change);
 		}
 		changes.clear();

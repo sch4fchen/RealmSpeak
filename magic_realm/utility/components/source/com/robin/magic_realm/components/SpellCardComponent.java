@@ -109,7 +109,7 @@ public class SpellCardComponent extends CardComponent {
 			pos += tt.getHeight(g);
 			
 			// Draw the description
-			String desc = (String)gameObject.getAttribute("this","text");
+			String desc = gameObject.getAttribute("this","text");
 			if (desc!=null) {
 				tt = new TextType(desc,PRINT_WIDTH,"NORMAL");
 				tt.draw(g,PRINT_MARGIN,pos,Alignment.Center);
@@ -148,9 +148,8 @@ public class SpellCardComponent extends CardComponent {
 			
 			// If the spell is alive, and a chit was used, the chit will be shown here
 			if (includeEmbellishments) {
-				ArrayList list = getGameObject().getHold();
-				for (Iterator i=list.iterator();i.hasNext();) {
-					GameObject held = (GameObject)i.next();
+				ArrayList<GameObject> list = getGameObject().getHold();
+				for (GameObject held : list) {
 					RealmComponent rc = RealmComponent.getRealmComponent(held);
 					if (rc.isActionChit()) {
 						rc.paint(g.create(20,(CARD_HEIGHT>>1)-13,ChitComponent.M_CHIT_SIZE,ChitComponent.M_CHIT_SIZE));

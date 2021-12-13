@@ -37,5 +37,5 @@ public class ChatLineViewOption extends JRadioButton {
 			new ChatLineViewOption("1 Lines of Chat",1),
 			new ChatLineViewOption("Chat OFF",0),
 		};
-	};
+	}
 }

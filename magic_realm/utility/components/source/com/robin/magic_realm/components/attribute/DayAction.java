@@ -38,7 +38,7 @@ public class DayAction {
 		Heal,
 		Repair,
 		Fortify,
-	};
+	}
 	
 	public static DayAction HIDE_ACTION = new DayAction(ActionId.Hide,"Hide","H","hide");
 	public static DayAction MOVE_ACTION = new DayAction(ActionId.Move,"Move","M","move"); // (clearing)

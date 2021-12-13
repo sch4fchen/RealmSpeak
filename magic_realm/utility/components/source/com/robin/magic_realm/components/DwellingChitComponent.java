@@ -63,7 +63,7 @@ public class DwellingChitComponent extends SquareChitComponent {
 		boolean useColor = useColorIcons();
 		
 		// Draw image
-		String icon_type = (String)gameObject.getThisAttribute(Constants.ICON_TYPE);
+		String icon_type = gameObject.getThisAttribute(Constants.ICON_TYPE);
 		if (icon_type!=null) {
 			drawIcon(g,"dwellings"+(useColor?"_c":""),icon_type,0.9);
 		}

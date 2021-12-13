@@ -57,7 +57,7 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 	
 	public CharacterVictoryPanel(CharacterFrame parent) {
 		super(parent);
-		calcColumns = new ArrayList<Integer>();
+		calcColumns = new ArrayList<>();
 		init();
 	}
 	private void init() {
@@ -285,17 +285,17 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 		panel.add(getDescriptorLabel(val,VALUE_FONT));
 		return panel;
 	}
-	private JPanel getDescriptorBlock(boolean wide) {
+	private static JPanel getDescriptorBlock(boolean wide) {
 		JPanel panel = new JPanel(new GridLayout(2,1));
 		ComponentTools.lockComponentSize(panel,wide?CardComponent.CARD_WIDTH:40,CardComponent.CARD_HEIGHT<<1);
 		return panel;
 	}
-	private JLabel getDescriptorLabel(String text,Font font) {
+	private static JLabel getDescriptorLabel(String text,Font font) {
 		JLabel label = new JLabel(text,JLabel.CENTER);
 		label.setFont(font);
 		return label;
 	}
-	private JTextPane getDescriptorArea(String text,Font font) {
+	private static JTextPane getDescriptorArea(String text,Font font) {
 		JTextPane area = new JTextPane();
 		area.setText(text);
 		area.setEditable(false);
@@ -323,7 +323,7 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 		QuestPoints,
 		Totals,
 		;
-	};
+	}
 	
 	private static final int COL_CATEGORY = 0;
 	private static final int COL_POINTS = 1;
@@ -341,7 +341,7 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 	private ArrayList<VictoryTableRow> tableRows;
 	private void initializeTableRows(HostPrefWrapper hostPrefs) {
 		boolean showQuestPoints = hostPrefs.hasPref(Constants.QST_QUEST_CARDS);
-		tableRows = new ArrayList<VictoryTableRow>();
+		tableRows = new ArrayList<>();
 		if (showQuestPoints) {
 			tableRows.add(new ScoreRow(hostPrefs,"Quest Pts",VictoryRowType.QuestPoints) {
 				public Score getScore() {

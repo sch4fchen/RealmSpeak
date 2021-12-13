@@ -84,7 +84,7 @@ public class GameSetup extends ModifyableObject implements Serializable {
 		reset();
 		Attribute nameAtt = element.getAttribute("name");
 		if (nameAtt!=null) {
-			setName((String)nameAtt.getValue());
+			setName(nameAtt.getValue());
 		}
 		
 		// Read all commands

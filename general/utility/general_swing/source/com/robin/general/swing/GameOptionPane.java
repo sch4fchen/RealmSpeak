@@ -169,7 +169,7 @@ public class GameOptionPane extends JPanel implements ActionListener {
 			}
 			
 			// Add description
-			String html = (String)tabDescriptionHash.get(tabKey);
+			String html = tabDescriptionHash.get(tabKey);
 			if (html!=null) {
 				Box hbox = Box.createHorizontalBox();
 					JEditorPane pane = new JEditorPane("text/html",html) {
@@ -235,7 +235,7 @@ public class GameOptionPane extends JPanel implements ActionListener {
 		public String getTabKey() {
 			return tabKey;
 		}
-	};
+	}
 	public void dumpResults() {
 		for (Iterator i=tabHash.keySet().iterator();i.hasNext();) {
 			String tabKey = (String)i.next();

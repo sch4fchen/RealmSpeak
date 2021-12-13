@@ -683,13 +683,10 @@ public class CombatWrapper extends GameObjectWrapper {
 		if (hasCombatInfo(go)) {
 			go.removeAttributeBlock(COMBAT_BLOCK);
 			if (go.getHoldCount()>0) {
-				for (Iterator i=go.getHold().iterator();i.hasNext();) {
-					GameObject held = (GameObject)i.next();
+				for (GameObject held : go.getHold()) {
 					clearAllCombatInfo(held);
-					
 					if (held.hasThisAttribute(Quest.QUEST_MINOR_CHARS)) {
-						for (Iterator n = held.getHold().iterator(); n.hasNext();) {
-							GameObject bonusChit = (GameObject) n.next();
+						for (GameObject bonusChit : held.getHold()) {
 							clearAllCombatInfo(bonusChit);
 						}
 					}

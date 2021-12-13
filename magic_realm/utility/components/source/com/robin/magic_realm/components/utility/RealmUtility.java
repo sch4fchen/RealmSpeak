@@ -719,7 +719,7 @@ public class RealmUtility {
 			chooser.addRealmComponentToOption(key,RealmComponent.getRealmComponent(spell.getGameObject()));
 			ArrayList<RealmComponent> targets = spell.getTargets();
 			if (targets.size()>0) {
-				chooser.addRealmComponentToOption(key,(RealmComponent)targets.get(0));
+				chooser.addRealmComponentToOption(key,targets.get(0));
 				if (targets.size()>1) {
 					// TODO Would be nice to indicate there are other targets...
 				}
@@ -747,8 +747,7 @@ public class RealmUtility {
 	 */
 	public static Collection<GameObject> getAllGameObjectsIn(GameObject go,boolean excludeUnseenTreasures) {
 		ArrayList<GameObject> ret = new ArrayList<>();
-		for (Iterator i=go.getHold().iterator();i.hasNext();) {
-			GameObject ingo = (GameObject)i.next();
+		for (GameObject ingo : go.getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(ingo);
 			if (!excludeUnseenTreasures || !rc.isTreasure() || ingo.hasThisAttribute(Constants.TREASURE_SEEN)) {
 				ret.add(ingo);
@@ -851,7 +850,7 @@ public class RealmUtility {
 		GamePool gsPool = new GamePool(rom.findObjects("gold_special"));
 		GameObject[] chit = new GameObject[2];
 		while(!gsPool.isEmpty()) {
-			GameObject first = (GameObject)gsPool.get(0);
+			GameObject first = gsPool.get(0);
 			String pair = first.getThisAttribute("pair");
 			ArrayList<GameObject> list = gsPool.extract("pair="+pair); // should always be 2
 			if ((list.size()%2)!=0) throw new IllegalStateException("Gold Special size is not divisible by 2? -> "+list.size());

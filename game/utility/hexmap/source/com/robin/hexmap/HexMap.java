@@ -469,7 +469,7 @@ public class HexMap extends JComponent implements Scrollable {
 					lastWaterMarkStart = from;
 					lastMarkHash = markDistances(toMark,waterBody);
 				}
-				return (Integer)lastMarkHash.get(to);
+				return lastMarkHash.get(to);
 			}
 		}
 		return null; // no mutual water body was found!
@@ -508,7 +508,7 @@ public class HexMap extends JComponent implements Scrollable {
 	 * Returns a distance from land value (a value of 1, means adjacent to land)
 	 */
 	public int getDistanceFromLand(HexMapPoint pos) {
-		Integer val = (Integer)distanceHash.get(pos);
+		Integer val = distanceHash.get(pos);
 		return val.intValue();
 	}
 	/**
@@ -701,7 +701,7 @@ public class HexMap extends JComponent implements Scrollable {
 						}
 						
 						// Mark movesleft
-						MoveRule rule = (MoveRule)selectionRules.get(pos);
+						MoveRule rule = selectionRules.get(pos);
 						if (rule!=null) {
 							moveRulePos.add(pos);
 							moveRules.add(rule);

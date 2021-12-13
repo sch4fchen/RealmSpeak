@@ -48,7 +48,7 @@ public class RealmComponentOptionChooser extends AggressiveDialog {
 		MediumIcon,
 		Darkside,
 		FaceUp,
-	};
+	}
 	
 	private Font TITLE_FONT = new Font("Dialog", Font.BOLD, 14);
 

@@ -57,7 +57,7 @@ public class ActionRow {
 	
 	private boolean autoMarkInventory;
 	
-	private String blankReason = null;; // identifies a BLANK phase
+	private String blankReason = null; // identifies a BLANK phase
 	private boolean spawned = false; // identifies "spawned" actions that aren't recorded or tracked
 	private boolean invalid = false; // identifies an INVALID phase (this doesn't count as a real phase!!)
 	private boolean invalidPlanned = false; // identifies an phase, which was INVALID when planned
@@ -1234,7 +1234,7 @@ public class ActionRow {
 			if (trader.isNative()) {
 				// Native Leader - trade with their dwelling's hold
 				GameObject holder = SetupCardUtility.getDenizenHolder(trader.getGameObject());
-				hold = new ArrayList<GameObject>(holder.getHold());
+				hold = new ArrayList<>(holder.getHold());
 			}
 			else {
 				// Visitor or Guild - trade directly with their hold
@@ -1965,7 +1965,7 @@ public class ActionRow {
 		
 		// Strip out any chits that aren't strong enough to support character
 		Strength vul = character.getVulnerability();
-		ArrayList<StrengthChit> strongEnough = new ArrayList<StrengthChit>();
+		ArrayList<StrengthChit> strongEnough = new ArrayList<>();
 		for (StrengthChit sc:flyStrengthChits) {
 			if (sc.getStrength().strongerOrEqualTo(vul)) {
 				strongEnough.add(sc);

@@ -86,7 +86,7 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		super.paintComponent(g);
 		
 		// Draw image
-		String horse_type = (String)gameObject.getAttribute("this","horse");
+		String horse_type = gameObject.getAttribute("this","horse");
 		if (horse_type!=null) {
 			drawIcon(g,"steed"+(useColorIcons()?"_c":""),horse_type,0.5);
 		}
@@ -97,7 +97,7 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		String asterisk = isTrotting()?"":"*";
 		
 		Speed speed = isTrotting()?getTrotSpeed():getGallopSpeed();
-		String strength = (String)gameObject.getAttribute(statSide,"strength");
+		String strength = gameObject.getAttribute(statSide,"strength");
 		
 		TextType tt = new TextType(strength,getChitSize(),"BIG_BOLD");
 		tt.draw(g,10,(getChitSize()>>1)-tt.getHeight(g),Alignment.Left);

@@ -67,7 +67,7 @@ public class RealmCharacterWebFrame extends JFrame {
 	}
 	private void refresh() {
 		fetchRscharFiles();
-		layoutRecords = new ArrayList<RscharLayout>();
+		layoutRecords = new ArrayList<>();
 		if (webLayoutFile!=null) {
 			if (!loadFromFile(webLayoutFile)) {
 				webLayoutFile = null;
@@ -95,7 +95,7 @@ public class RealmCharacterWebFrame extends JFrame {
 				if (ev.getClickCount()==2) {
 					int row = layoutTable.getSelectedRow();
 					if (row>=0) {
-						RscharLayout layout = (RscharLayout)layoutRecords.get(row);
+						RscharLayout layout = layoutRecords.get(row);
 						CharacterInfoCard card = layout.getModel().getCard();
 						ImageIcon icon = card.getImageIcon(true);
 						JOptionPane.showMessageDialog(RealmCharacterWebFrame.this,new JLabel(icon));
@@ -217,7 +217,7 @@ public class RealmCharacterWebFrame extends JFrame {
 			
 			// Create all the folders
 			Menu menu = new Menu();
-			Hashtable<String,File> folders = new Hashtable<String,File>();
+			Hashtable<String,File> folders = new Hashtable<>();
 			for (RscharLayout rec:layoutRecords) {
 				String folder = rec.getWebFolder();
 				File webFolder;
@@ -287,7 +287,7 @@ public class RealmCharacterWebFrame extends JFrame {
 		Collections.sort(layoutRecords);
 	}
 	private void fetchRscharFiles() {
-		rscharFiles = new ArrayList<File>();
+		rscharFiles = new ArrayList<>();
 		File[] files = characterFolder.listFiles(new FileFilter() {
 			public boolean accept(File file) {
 				if (file.isFile()) {

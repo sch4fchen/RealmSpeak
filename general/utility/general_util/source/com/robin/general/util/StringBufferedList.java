@@ -67,7 +67,7 @@ public class StringBufferedList {
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
 		for (int i=0;i<list.size();i++) {
-			String val = (String)list.get(i);
+			String val = list.get(i);
 			if (sb.length()>0) {
 				sb.append(comma);
 				if (i==(list.size()-1)) {

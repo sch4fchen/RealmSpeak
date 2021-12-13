@@ -1153,7 +1153,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 				if (inventory.hasThisAttribute(Constants.MONSTER_CONTROL) && inventory.hasThisAttribute(Constants.MONSTER_CONTROL_ENHANCED)) {
 					controls.addAll(inventory.getThisAttributeList(Constants.MONSTER_CONTROL));
 				}
-			};
+			}
 		}
 		return controls;
 	}

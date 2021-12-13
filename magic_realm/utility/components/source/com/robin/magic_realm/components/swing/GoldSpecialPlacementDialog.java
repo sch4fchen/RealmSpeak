@@ -216,7 +216,7 @@ public class GoldSpecialPlacementDialog extends AggressiveDialog {
 			}
 			
 			if (go.getHoldCount()>0) {
-				GameObject hold = (GameObject)go.getHold().get(0);
+				GameObject hold = go.getHold().get(0);
 				destRow.add(new JLabel(hold.getName(),JLabel.CENTER));
 			}
 			else {

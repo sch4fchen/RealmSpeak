@@ -84,7 +84,7 @@ public class ArmorChitComponent extends RoundChitComponent {
 		super.paintComponent(g);
 		
 		// Draw image
-		String icon_type = (String)gameObject.getThisAttribute(Constants.ICON_TYPE);
+		String icon_type = gameObject.getThisAttribute(Constants.ICON_TYPE);
 		if (icon_type!=null) {
 			drawIcon(g,"armor",icon_type,0.5);
 		}
