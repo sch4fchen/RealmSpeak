@@ -97,6 +97,7 @@ public class BattleBuilder extends JFrame {
 		setSize(800,800);
 		setLocationRelativeTo(null);
 		setTitle("RealmSpeak Battle Builder");
+		getContentPane().setBackground(BackgroundColorUtility.getBackgroundColor());
 		setIconImage(IconFactory.findIcon("images/combat/combatsummary.gif").getImage());
 		getContentPane().setLayout(new BorderLayout());
 		

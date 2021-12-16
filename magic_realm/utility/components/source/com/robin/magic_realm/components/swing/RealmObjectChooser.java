@@ -31,6 +31,7 @@ import javax.swing.event.ListSelectionListener;
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.utility.BackgroundColorUtility;
 import com.robin.magic_realm.components.utility.RealmLoader;
 import com.robin.magic_realm.components.utility.RealmUtility;
 
@@ -54,6 +55,7 @@ public class RealmObjectChooser extends JDialog {
 	}
 	public RealmObjectChooser(String title,GameData data,boolean singleSelection,boolean manualFlipEnabled) {
 		setTitle(title);
+		getContentPane().setBackground(BackgroundColorUtility.getBackgroundColor());
 		this.gameData = data;
 		initComponents(singleSelection,manualFlipEnabled);
 		setLocationRelativeTo(null);

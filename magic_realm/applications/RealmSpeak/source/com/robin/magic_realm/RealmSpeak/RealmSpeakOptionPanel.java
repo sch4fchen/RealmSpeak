@@ -36,6 +36,11 @@ public class RealmSpeakOptionPanel extends JDialog {
 
 	protected JRadioButton systemLookAndFeelOption;
 	protected JRadioButton crossPlatformLookAndFeelOption;
+	
+	protected JRadioButton backgroundColor0;
+	protected JRadioButton backgroundColor1;
+	protected JRadioButton backgroundColor2;
+	protected JRadioButton backgroundColor3;
 
 	protected JRadioButton largeIconsOption;
 	protected JRadioButton mediumIconsOption;
@@ -93,6 +98,21 @@ public class RealmSpeakOptionPanel extends JDialog {
 	private void updateControls() {
 		crossPlatformLookAndFeelOption.setSelected(options.getOptions().isPref(RealmSpeakOptions.METAL_LNF));
 		systemLookAndFeelOption.setSelected(!crossPlatformLookAndFeelOption.isSelected());
+		switch(options.getOptions().getInt(RealmSpeakOptions.BACKGROUND_COLOR)) {
+			default:
+			case RealmSpeakOptions.BACKGROUND_COLOR_0:
+				backgroundColor0.setSelected(true);
+				break;
+			case RealmSpeakOptions.BACKGROUND_COLOR_1:
+				backgroundColor1.setSelected(true);
+				break;
+			case RealmSpeakOptions.BACKGROUND_COLOR_2:
+				backgroundColor2.setSelected(true);
+				break;
+			case RealmSpeakOptions.BACKGROUND_COLOR_3:
+				backgroundColor3.setSelected(true);
+				break;
+		}
 		
 		switch(options.getOptions().getInt(RealmSpeakOptions.ACTION_ICONS)) {
 			case ActionIcon.ACTION_ICON_MEDIUM:
@@ -208,6 +228,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		options.getOptions().set(RealmSpeakOptions.CHARACTER_CHIT_DISPLAY_STYLE,getCharacterChitDisplayStyle());
 		options.getOptions().set(RealmSpeakOptions.TILES_DISPLAY_STYLE,getTilesDisplayStyle());
 		options.getOptions().set(RealmSpeakOptions.METAL_LNF,crossPlatformLookAndFeelOption.isSelected());
+		options.getOptions().set(RealmSpeakOptions.BACKGROUND_COLOR,getSelectedBackgroundColor());
 		options.getOptions().set(RealmSpeakOptions.MAP_SLIDER,mapSliderOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.HIGHLIGHT_CLEARING_NUMBERS,highlightClearingNumbersOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.SHOW_SEASON_ICON,showSeasonIconOption.isSelected());
@@ -230,6 +251,23 @@ public class RealmSpeakOptionPanel extends JDialog {
 		options.getOptions().set(RealmSpeakOptions.TURN_END_RESULTS,showTurnEndResultsOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.ENABLE_SOUND,enableSoundItem.isSelected());
 		mainFrame.saveFramePreferences();
+	}
+	private int getSelectedBackgroundColor() {
+		if (backgroundColor0.isSelected()) {
+			return RealmSpeakOptions.BACKGROUND_COLOR_0;
+		}
+		else if (backgroundColor1.isSelected()) {
+			return RealmSpeakOptions.BACKGROUND_COLOR_1;
+		}
+		else if (backgroundColor2.isSelected()) {
+			return RealmSpeakOptions.BACKGROUND_COLOR_2;
+		}
+		else if (backgroundColor3.isSelected()) {
+			return RealmSpeakOptions.BACKGROUND_COLOR_3;
+		}
+		else {
+			return RealmSpeakOptions.BACKGROUND_COLOR_0;
+		}
 	}
 	private int getActionIconState() {
 		if (largeIconsOption.isSelected()) {
@@ -304,6 +342,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		
 		Box left = Box.createVerticalBox();
 		left.add(getLookAndFeelOptions());
+		left.add(getBackgroundColorChooser());
 		left.add(getSoundOptionPanel());
 		left.add(getActionIconOptions());
 		left.add(getChitsOptionsPanel());
@@ -377,6 +416,24 @@ public class RealmSpeakOptionPanel extends JDialog {
 		});
 		group.add(systemLookAndFeelOption);
 		panel.add(systemLookAndFeelOption);
+		return panel;
+	}
+	private JPanel getBackgroundColorChooser() {
+		JPanel panel = new JPanel(new GridLayout(4,1));
+		panel.setBorder(BorderFactory.createTitledBorder("Background Color (requires restart)"));
+		ButtonGroup group = new ButtonGroup();
+		backgroundColor0 = new JRadioButton("Default");
+		group.add(backgroundColor0);
+		panel.add(backgroundColor0);
+		backgroundColor1 = new JRadioButton("Color 1");
+		group.add(backgroundColor1);
+		panel.add(backgroundColor1);
+		backgroundColor2 = new JRadioButton("Color 2"); 
+		group.add(backgroundColor2);
+		panel.add(backgroundColor2);
+		backgroundColor3 = new JRadioButton("Color 3"); 
+		group.add(backgroundColor3);
+		panel.add(backgroundColor3);
 		return panel;
 	}
 	private JPanel getActionIconOptions() {

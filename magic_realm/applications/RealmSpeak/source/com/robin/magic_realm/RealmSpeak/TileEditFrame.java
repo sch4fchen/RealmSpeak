@@ -42,6 +42,7 @@ import com.robin.magic_realm.components.PathDetail;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.TileEditComponent;
+import com.robin.magic_realm.components.utility.BackgroundColorUtility;
 import com.robin.magic_realm.components.utility.GameFileFilters;
 import com.robin.magic_realm.components.utility.RealmLoader;
 import com.robin.magic_realm.components.utility.RealmUtility;
@@ -108,6 +109,7 @@ public class TileEditFrame extends JFrame {
 	}
 	private void initComponents() {
 		setTitle("Tile Editor");
+		getContentPane().setBackground(BackgroundColorUtility.getBackgroundColor());
 		setIconImage(IconFactory.findIcon("images/interface/build.gif").getImage());
 		setSize(900,600);
 		getContentPane().setLayout(new BorderLayout());

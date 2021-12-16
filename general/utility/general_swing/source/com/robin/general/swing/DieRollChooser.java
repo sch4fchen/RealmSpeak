@@ -24,6 +24,7 @@ import javax.swing.*;
 import javax.swing.event.*;
 
 import com.robin.general.util.RandomNumber;
+import com.robin.magic_realm.components.utility.BackgroundColorUtility;
 
 public class DieRollChooser extends JDialog {
 
@@ -52,6 +53,7 @@ public class DieRollChooser extends JDialog {
 		setSize(350,300);
 		setTitle(title);
 		getContentPane().setLayout(new BorderLayout());
+		getContentPane().setBackground(BackgroundColorUtility.getBackgroundColor());
 		
 		Box line;
 		Box column;

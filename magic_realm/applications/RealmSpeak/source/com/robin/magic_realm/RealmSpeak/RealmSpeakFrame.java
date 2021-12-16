@@ -650,8 +650,10 @@ public class RealmSpeakFrame extends JFrame {
 		setTitle(Constants.APPLICATION_NAME);
 		setIconImage(IconFactory.findIcon("images/logo/icon.gif").getImage());
 		desktop = new JDesktopPane();
+		desktop.setBackground(BackgroundColorUtility.getBackgroundColor());
 		windowLayoutManager = new WindowLayoutManager(this,desktop);
 		setContentPane(new JPanel(new BorderLayout()));
+		getContentPane().setBackground(BackgroundColorUtility.getBackgroundColor());
 		getContentPane().add(desktop,"Center");
 			status = new JLabel(" ");
 			status.setOpaque(true);

@@ -21,6 +21,9 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.table.*;
+
+import com.robin.magic_realm.components.utility.BackgroundColorUtility;
+
 import java.util.*;
 
 public class OutlineList extends JPanel implements ActionListener {
@@ -50,6 +53,7 @@ public class OutlineList extends JPanel implements ActionListener {
 	}
 	public void init() {
 		table = new JTable();
+		table.setBackground(BackgroundColorUtility.getBackgroundColor());
 		table.setModel(new AbstractTableModel() {
 			public int getRowCount() {
 				return data.size();
