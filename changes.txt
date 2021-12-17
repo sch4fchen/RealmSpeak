@@ -1,7 +1,7 @@
 Version 1.1.5.1 - Changes since 1.1.5.0
 NEW FEATURES:
 # Combat Summary: Add overview with participants
-# Option to choose background color for windows
+# Option to choose color scheme
 
 Version 1.1.5.0 - Changes since 1.1.4.9
 NEW FEATURES:
