@@ -26,7 +26,7 @@ import java.util.Hashtable;
 import javax.swing.*;
 
 import com.robin.game.server.GameClient;
-import com.robin.magic_realm.components.utility.BackgroundColorUtility;
+import com.robin.magic_realm.components.utility.CustomColorUtility;
 import com.robin.magic_realm.components.utility.RealmDirectInfoHolder;
 
 public class EndCombatFrame extends JFrame {
@@ -57,7 +57,7 @@ public class EndCombatFrame extends JFrame {
 	private void initComponents() {
 		setSize(400,400);
 		setTitle("End Combat");
-		getContentPane().setBackground(BackgroundColorUtility.getBackgroundColor());
+		getContentPane().setBackground(CustomColorUtility.getBackgroundColor());
 		setLocationRelativeTo(parent);
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(new JLabel("Waiting for responses..."),"North");

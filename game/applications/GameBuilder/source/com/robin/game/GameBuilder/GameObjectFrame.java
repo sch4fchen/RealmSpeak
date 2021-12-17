@@ -32,6 +32,7 @@ import com.robin.general.io.*;
 import com.robin.general.swing.ComponentTools;
 import com.robin.general.swing.ListManagerPane;
 import com.robin.general.util.OrderedHashtable;
+import com.robin.magic_realm.components.utility.CustomColorUtility;
 
 public class GameObjectFrame extends JInternalFrame implements Modifyable,Saveable,Closeable {
 	
@@ -83,7 +84,11 @@ public class GameObjectFrame extends JInternalFrame implements Modifyable,Saveab
 			box = Box.createHorizontalBox();
 			currentIdLabel = new JLabel("",JLabel.CENTER);
 			currentIdLabel.setFont(ID_FONT);
-			currentIdLabel.setBackground(Color.white);
+			if (CustomColorUtility.getBackgroundColor() == null) {
+				currentIdLabel.setBackground(Color.white);
+			} else {
+				currentIdLabel.setBackground(CustomColorUtility.getBackgroundColor());
+			}
 			currentIdLabel.setOpaque(true);
 			currentIdLabel.setBorder(BorderFactory.createEtchedBorder());
 			ComponentTools.lockComponentSize(currentIdLabel,50,25);

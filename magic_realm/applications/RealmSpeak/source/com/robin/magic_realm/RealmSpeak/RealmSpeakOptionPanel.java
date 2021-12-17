@@ -31,6 +31,7 @@ import com.robin.magic_realm.components.CharacterChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.attribute.ChatLine.HeaderMode;
+import com.robin.magic_realm.components.utility.CustomColorUtility;
 
 public class RealmSpeakOptionPanel extends JDialog {
 
@@ -100,16 +101,16 @@ public class RealmSpeakOptionPanel extends JDialog {
 		systemLookAndFeelOption.setSelected(!crossPlatformLookAndFeelOption.isSelected());
 		switch(options.getOptions().getInt(RealmSpeakOptions.BACKGROUND_COLOR)) {
 			default:
-			case RealmSpeakOptions.BACKGROUND_COLOR_0:
+			case CustomColorUtility.BACKGROUND_COLOR_0:
 				backgroundColor0.setSelected(true);
 				break;
-			case RealmSpeakOptions.BACKGROUND_COLOR_1:
+			case CustomColorUtility.BACKGROUND_COLOR_1:
 				backgroundColor1.setSelected(true);
 				break;
-			case RealmSpeakOptions.BACKGROUND_COLOR_2:
+			case CustomColorUtility.BACKGROUND_COLOR_2:
 				backgroundColor2.setSelected(true);
 				break;
-			case RealmSpeakOptions.BACKGROUND_COLOR_3:
+			case CustomColorUtility.BACKGROUND_COLOR_3:
 				backgroundColor3.setSelected(true);
 				break;
 		}
@@ -254,19 +255,19 @@ public class RealmSpeakOptionPanel extends JDialog {
 	}
 	private int getSelectedBackgroundColor() {
 		if (backgroundColor0.isSelected()) {
-			return RealmSpeakOptions.BACKGROUND_COLOR_0;
+			return CustomColorUtility.BACKGROUND_COLOR_0;
 		}
 		else if (backgroundColor1.isSelected()) {
-			return RealmSpeakOptions.BACKGROUND_COLOR_1;
+			return CustomColorUtility.BACKGROUND_COLOR_1;
 		}
 		else if (backgroundColor2.isSelected()) {
-			return RealmSpeakOptions.BACKGROUND_COLOR_2;
+			return CustomColorUtility.BACKGROUND_COLOR_2;
 		}
 		else if (backgroundColor3.isSelected()) {
-			return RealmSpeakOptions.BACKGROUND_COLOR_3;
+			return CustomColorUtility.BACKGROUND_COLOR_3;
 		}
 		else {
-			return RealmSpeakOptions.BACKGROUND_COLOR_0;
+			return CustomColorUtility.BACKGROUND_COLOR_0;
 		}
 	}
 	private int getActionIconState() {
@@ -420,18 +421,18 @@ public class RealmSpeakOptionPanel extends JDialog {
 	}
 	private JPanel getBackgroundColorChooser() {
 		JPanel panel = new JPanel(new GridLayout(4,1));
-		panel.setBorder(BorderFactory.createTitledBorder("Background Color (requires restart)"));
+		panel.setBorder(BorderFactory.createTitledBorder("Color schema (requires restart)"));
 		ButtonGroup group = new ButtonGroup();
 		backgroundColor0 = new JRadioButton("Default");
 		group.add(backgroundColor0);
 		panel.add(backgroundColor0);
-		backgroundColor1 = new JRadioButton("Color 1");
+		backgroundColor1 = new JRadioButton("Schema 1");
 		group.add(backgroundColor1);
 		panel.add(backgroundColor1);
-		backgroundColor2 = new JRadioButton("Color 2"); 
+		backgroundColor2 = new JRadioButton("Schema 2"); 
 		group.add(backgroundColor2);
 		panel.add(backgroundColor2);
-		backgroundColor3 = new JRadioButton("Color 3"); 
+		backgroundColor3 = new JRadioButton("Schema 3"); 
 		group.add(backgroundColor3);
 		panel.add(backgroundColor3);
 		return panel;

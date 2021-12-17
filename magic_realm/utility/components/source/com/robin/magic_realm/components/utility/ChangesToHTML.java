@@ -58,7 +58,7 @@ public class ChangesToHTML extends JFrame {
 	}
 	private void initComponents() {
 		setTitle("Tool for making HTML from changes.txt");
-		getContentPane().setBackground(BackgroundColorUtility.getBackgroundColor());
+		getContentPane().setBackground(CustomColorUtility.getBackgroundColor());
 		setSize(800,800);
 		getContentPane().setLayout(new BorderLayout());
 		JPanel mainPane = new JPanel(new GridLayout(2,1));

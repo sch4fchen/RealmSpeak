@@ -160,7 +160,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		setSize(500, 300);
 		setLocation(200, 100);
 		setContentPane(new JPanel(new BorderLayout()));
-		getContentPane().setBackground(BackgroundColorUtility.getBackgroundColor());
+		getContentPane().setBackground(CustomColorUtility.getBackgroundColor());
 		characterList = new ArrayList<>();
 		characterFrames = new Hashtable<>();
 		characterFrameOrder = new ArrayList<>();

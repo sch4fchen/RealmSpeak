@@ -27,6 +27,7 @@ import com.robin.general.graphics.GraphicsUtil;
 import com.robin.general.swing.ImageCache;
 import com.robin.general.util.HashLists;
 import com.robin.general.util.RandomNumber;
+import com.robin.magic_realm.components.utility.CustomColorUtility;
 
 public class HexMap extends JComponent implements Scrollable {
 	
@@ -110,6 +111,8 @@ public class HexMap extends JComponent implements Scrollable {
 		reset();
 	}
 	public Color getMapBackground() {
+		Color color = CustomColorUtility.getBackgroundColor();
+		if (color != null) return color;
 		return mapBackground;
 	}
 	public void setMapBackground(Color color) {
@@ -131,13 +134,14 @@ public class HexMap extends JComponent implements Scrollable {
 	public void reset() {
 		setDimensions();
 		initHexPositions();
-		sets = new Hashtable<HexMapPoint, HexSet>();
-		hexes = new Hashtable<HexMapPoint, Hex>();
+		sets = new Hashtable<>();
+		hexes = new Hashtable<>();
 		selectionRules = new Hashtable<HexMapPoint, MoveRule>();
 		selectionBorder = new Hashtable<HexMapPoint, Comparable>();
 		tokens = new ArrayList<>();
 		clearTags();
 		clearGuides();
+		setMapBackground(getMapBackground());
 	}
 	public void setShowNumbering(boolean val) {
 		showNumbering = val;
@@ -631,7 +635,7 @@ public class HexMap extends JComponent implements Scrollable {
 		}
 		
 		// Draw the map
-		g.setColor(mapBackground);
+		g.setColor(getMapBackground());
 		g.fillRect(view.x,view.y,view.width,view.height);
 		Hashtable<Rectangle, String> labelsToDraw = new Hashtable<>();
 		ArrayList<HexMapPoint> moveRulePos = new ArrayList<>();

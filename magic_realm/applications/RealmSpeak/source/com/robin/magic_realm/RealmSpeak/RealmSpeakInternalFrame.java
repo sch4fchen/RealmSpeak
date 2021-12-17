@@ -20,7 +20,7 @@ package com.robin.magic_realm.RealmSpeak;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 
-import com.robin.magic_realm.components.utility.BackgroundColorUtility;
+import com.robin.magic_realm.components.utility.CustomColorUtility;
 
 public abstract class RealmSpeakInternalFrame extends JInternalFrame {
 	
@@ -30,7 +30,7 @@ public abstract class RealmSpeakInternalFrame extends JInternalFrame {
 	
 	public RealmSpeakInternalFrame(String title, boolean resizable, boolean closable, boolean maximizable, boolean iconifiable) {
 		super(title,resizable,closable,maximizable,iconifiable);
-		getContentPane().setBackground(BackgroundColorUtility.getBackgroundColor());
+		getContentPane().setBackground(CustomColorUtility.getBackgroundColor());
 	}
 	public void clearForceWidth() {
 		forceWidth = null;

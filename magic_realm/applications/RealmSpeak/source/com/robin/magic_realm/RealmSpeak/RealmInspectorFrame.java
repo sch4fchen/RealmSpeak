@@ -30,7 +30,7 @@ import com.robin.game.objects.GameData;
 import com.robin.general.swing.IconFactory;
 import com.robin.magic_realm.components.attribute.ChatLine;
 import com.robin.magic_realm.components.swing.CenteredMapView;
-import com.robin.magic_realm.components.utility.BackgroundColorUtility;
+import com.robin.magic_realm.components.utility.CustomColorUtility;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmCalendar;
 import com.robin.magic_realm.components.wrapper.*;
@@ -93,7 +93,7 @@ public class RealmInspectorFrame extends RealmSpeakInternalFrame {
 		setFrameIcon(IconFactory.findIcon("images/interface/build.gif"));
 		setSize(640,480);
 		getContentPane().setLayout(new BorderLayout());
-		getContentPane().setBackground(BackgroundColorUtility.getBackgroundColor());
+		getContentPane().setBackground(CustomColorUtility.getBackgroundColor());
 		
 		map = new CenteredMapView(gameData);
 		map.setShowEmbellishments(game.getGameStarted());

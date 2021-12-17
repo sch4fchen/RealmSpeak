@@ -23,6 +23,8 @@ import java.util.HashMap;
 
 import javax.swing.*;
 
+import com.robin.magic_realm.components.utility.CustomColorUtility;
+
 /**
  * This class manages onscreen frames, and allows an application to guarantee that there is only one of each type,
  * as specified by a unique key.
@@ -127,6 +129,7 @@ public class FrameManager {
 			this.parent = parent;
 			setLayout(new BorderLayout());
 			JPanel panel = new JPanel(new BorderLayout(10,10));
+			panel.setBackground(CustomColorUtility.getBackgroundColor());
 			panel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 			panel.add(message,"Center");
 			if (icon!=null) {

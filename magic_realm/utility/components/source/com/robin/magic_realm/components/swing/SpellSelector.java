@@ -130,7 +130,7 @@ public class SpellSelector extends AggressiveDialog {
 		setSize(840,600);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
-		getContentPane().setBackground(BackgroundColorUtility.getBackgroundColor());
+		getContentPane().setBackground(CustomColorUtility.getBackgroundColor());
 		
 		enchantPanel = new JPanel(new BorderLayout());
 			JLabel enchantLabel = new JLabel("Enchant",JLabel.CENTER);

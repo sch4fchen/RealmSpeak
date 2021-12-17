@@ -28,6 +28,7 @@ import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.attribute.ChatLine;
 import com.robin.magic_realm.components.attribute.ChatLine.HeaderMode;
+import com.robin.magic_realm.components.utility.CustomColorUtility;
 import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -42,10 +43,6 @@ public class RealmSpeakOptions {
 	
 	public static final String METAL_LNF = "metalLnf";
 	public static final String BACKGROUND_COLOR = "backgroundColor";
-	public static final int BACKGROUND_COLOR_0 = 0;
-	public static final int BACKGROUND_COLOR_1 = 1;
-	public static final int BACKGROUND_COLOR_2 = 2;
-	public static final int BACKGROUND_COLOR_3 = 3;
 	public static final String ACTION_ICONS = "actionIcons";
 	public static final String CHIT_DISPLAY_STYLE = "chitDisplayStyle";
 	public static final String CHARACTER_CHIT_DISPLAY_STYLE = "characterChitDisplayStyle";
@@ -137,6 +134,7 @@ public class RealmSpeakOptions {
 		else {
 			ComponentTools.setSystemLookAndFeel();
 		}
+		CustomColorUtility.initColors();
 		SwingUtilities.updateComponentTreeUI(frame);
 	}
 	private void readFramePreferences() {
@@ -147,7 +145,7 @@ public class RealmSpeakOptions {
 		else {
 			// setup defaults TODO Might need more defaults here
 			options.set(METAL_LNF,true);
-			options.set(BACKGROUND_COLOR, BACKGROUND_COLOR_0);
+			options.set(BACKGROUND_COLOR, CustomColorUtility.BACKGROUND_COLOR_0);
 			options.set(ACTION_ICONS,ActionIcon.ACTION_ICON_NORMAL);
 			options.set(MAP_SLIDER,false);
 			options.set(DAILY_COMBAT,"ON");

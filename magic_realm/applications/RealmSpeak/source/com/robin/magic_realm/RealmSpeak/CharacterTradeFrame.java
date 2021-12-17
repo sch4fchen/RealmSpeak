@@ -36,7 +36,7 @@ import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.Inventory;
 import com.robin.magic_realm.components.swing.RealmObjectPanel;
 import com.robin.magic_realm.components.swing.RealmTradeDialog;
-import com.robin.magic_realm.components.utility.BackgroundColorUtility;
+import com.robin.magic_realm.components.utility.CustomColorUtility;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmDirectInfoHolder;
 import com.robin.magic_realm.components.utility.RealmLoader;
@@ -102,7 +102,7 @@ public class CharacterTradeFrame extends JFrame {
 		}
 		
 		setTitle(clientName+" - Trade Window");
-		getContentPane().setBackground(BackgroundColorUtility.getBackgroundColor());
+		getContentPane().setBackground(CustomColorUtility.getBackgroundColor());
 		setSize(640,480);
 		setLocationRelativeTo(gameHandler.getMainFrame());
 		getContentPane().setLayout(new BorderLayout());
