@@ -59,13 +59,19 @@ public class CustomColorUtility {
 	
 	public static void initColors() {
 		Color color = getBackgroundColor();
-		if (color != null) {
-			UIManager.put("Panel.background", color);
-			UIManager.put("ScrollPane.background", color);
-			//UIManager.put("Table.foreground",color);
-			//UIManager.put("Table.background",color);
-			//UIManager.put("TableHeader.foreground",color);
-			//UIManager.put("TableHeader.background",color);
-		}
+		UIManager.put("Panel.background", color);
+		UIManager.put("ScrollPane.background", color);
+		UIManager.put("OptionPane.background", color);
+		UIManager.put("Button.background", color);
+		UIManager.put("CheckBox.background",color);
+		UIManager.put("CheckBoxMenuItem.background",color);
+		UIManager.put("ComboBox.background",color);
+		UIManager.put("RadioButton.background",color);
+		UIManager.put("RadioButtonMenuItem.background",color);
+		UIManager.put("Slider.background",color);
+		//UIManager.put("Table.foreground",color);
+		//UIManager.put("Table.background",color);
+		//UIManager.put("TableHeader.foreground",color);
+		//UIManager.put("TableHeader.background",color);
 	}
 }

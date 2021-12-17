@@ -653,7 +653,7 @@ public class CenteredMapView extends JComponent {
 			}
 		}
 	}
-	public void markMapEdges(ClearingDetail clearing,boolean setMark) {
+	public static void markMapEdges(ClearingDetail clearing,boolean setMark) {
 		for (PathDetail path : clearing.getConnectedPaths()) {
 			if (path.connectsToMapEdge()) {
 				path.getEdgeAsClearing().setMarked(setMark);

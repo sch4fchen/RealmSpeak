@@ -32,7 +32,7 @@ public class ControlNotifier implements ActionListener,CaretListener,ChangeListe
 	}
 	public void addActionListener(ActionListener actionListener) {
 		if (actionListeners==null) {
-			actionListeners = new ArrayList<ActionListener>();
+			actionListeners = new ArrayList<>();
 		}
 		if (!actionListeners.contains(actionListener)) {
 			actionListeners.add(actionListener);
@@ -76,13 +76,11 @@ public class ControlNotifier implements ActionListener,CaretListener,ChangeListe
 	}
 	public JButton getButton(String name) {
 		JButton button = new JButton(name);
-		button.setOpaque(false);
 		button.addActionListener(this);
 		return button;
 	}
 	public JCheckBox getCheckBox(String name) {
 		JCheckBox button = new JCheckBox(name);
-		button.setOpaque(false);
 		button.addActionListener(this);
 		return button;
 	}
@@ -91,19 +89,16 @@ public class ControlNotifier implements ActionListener,CaretListener,ChangeListe
 	}
 	public JRadioButton getRadioButton(String name,boolean checked) {
 		JRadioButton button = new JRadioButton(name,checked);
-		button.setOpaque(false);
 		button.addActionListener(this);
 		return button;
 	}
 	public JSlider getSlider(int min,int max,int value) {
 		JSlider slider = new JSlider(min,max,value);
-		slider.setOpaque(false);
 		slider.addChangeListener(this);
 		return slider;
 	}
 	public JComboBox getComboBox(Object[] array) {
 		JComboBox cb = new JComboBox(array);
-		cb.setOpaque(false);
 		cb.addActionListener(this);
 		return cb;
 	}
