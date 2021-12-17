@@ -1921,8 +1921,8 @@ public class BattleModel {
 				else {
 					RealmComponent target1 = rc.getTarget();
 					RealmComponent target2 = rc.get2ndTarget();
-					CombatWrapper targetCombat1 = target1==null?null:(new CombatWrapper(target1.getGameObject()));
-					CombatWrapper targetCombat2 = new CombatWrapper(target2.getGameObject());
+					CombatWrapper targetCombat1 = target1==null?null:new CombatWrapper(target1.getGameObject());
+					CombatWrapper targetCombat2 = target2==null?null:new CombatWrapper(target2.getGameObject());
 					
 					// Determine disengagement rules
 					if (rc.isMonster()) {
