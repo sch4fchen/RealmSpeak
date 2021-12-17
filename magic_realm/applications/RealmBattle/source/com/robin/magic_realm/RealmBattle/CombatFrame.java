@@ -37,7 +37,6 @@ import com.robin.general.util.*;
 import com.robin.magic_realm.RealmBattle.MoveActivator.MoveActionResult;
 import com.robin.magic_realm.RealmBattle.targeting.SpellTargeting;
 import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderModel;
-import com.robin.magic_realm.RealmSpeak.RealmSpeakOptions;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.swing.*;
@@ -3675,7 +3674,7 @@ public class CombatFrame extends JFrame {
 		if (gamePrefMan.canLoad()) {
 			gamePrefMan.loadPreferences();
 		}
-		switch(gamePrefMan.getInt(RealmSpeakOptions.CHIT_DISPLAY_STYLE)) {
+		switch(gamePrefMan.getInt("chitDisplayStyle")) {
 			case RealmComponent.DISPLAY_STYLE_CLASSIC:
 				RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_CLASSIC;
 				break;
