@@ -149,7 +149,6 @@ public class RealmViewer extends JFrame {
 	}
 	private void initComponents() {
 		setTitle("Realm Viewer");
-		getContentPane().setBackground(CustomColorUtility.getBackgroundColor());
 		setIconImage(IconFactory.findIcon("images/interface/calendar.gif").getImage());
 		setSize(1300,800);
 		getContentPane().setLayout(new BorderLayout());

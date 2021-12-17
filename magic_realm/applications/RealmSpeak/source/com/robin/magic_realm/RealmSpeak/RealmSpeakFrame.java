@@ -45,6 +45,7 @@ import com.robin.magic_realm.components.GoldSpecialChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.swing.*;
 import com.robin.magic_realm.components.utility.*;
+import com.robin.magic_realm.components.utility.CustomColorUtility;
 import com.robin.magic_realm.components.wrapper.*;
 
 import edu.stanford.ejalbert.BrowserLauncher;
@@ -651,10 +652,8 @@ public class RealmSpeakFrame extends JFrame {
 		setTitle(Constants.APPLICATION_NAME);
 		setIconImage(IconFactory.findIcon("images/logo/icon.gif").getImage());
 		desktop = new JDesktopPane();
-		desktop.setBackground(CustomColorUtility.getBackgroundColor());
 		windowLayoutManager = new WindowLayoutManager(this,desktop);
 		setContentPane(new JPanel(new BorderLayout()));
-		getContentPane().setBackground(CustomColorUtility.getBackgroundColor());
 		getContentPane().add(desktop,"Center");
 			status = new JLabel(" ");
 			status.setOpaque(true);

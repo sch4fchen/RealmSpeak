@@ -31,7 +31,6 @@ import javax.swing.*;
 import javax.swing.text.*;
 
 import com.robin.general.io.FileUtilities;
-import com.robin.magic_realm.components.utility.CustomColorUtility;
 import com.robin.magic_realm.components.utility.RealmLogging;
 import com.robin.magic_realm.components.wrapper.DayKey;
 
@@ -356,7 +355,6 @@ public class RealmLogWindow extends JFrame {
 		setSize(500, 600);
 		setLocationRelativeTo(null);
 		setTitle("RealmSpeak Log");
-		getContentPane().setBackground(CustomColorUtility.getBackgroundColor());
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(new JScrollPane(textPane), "Center");
 	}

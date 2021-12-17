@@ -28,7 +28,6 @@ import com.robin.game.objects.GameObject;
 import com.robin.general.graphics.GraphicsUtil;
 import com.robin.general.swing.ImageCache;
 import com.robin.magic_realm.components.*;
-import com.robin.magic_realm.components.utility.CustomColorUtility;
 
 public class RealmObjectPanel extends JPanel implements Scrollable {
 	private static final ArrayList<RealmComponent> EMPTY_LIST = new ArrayList<>();
@@ -57,7 +56,6 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 	}
 	public RealmObjectPanel(boolean enableSelection,boolean enableManualFlip) {
 		super();
-		setBackground(CustomColorUtility.getBackgroundColor());
 		this.selectionEnabled = enableSelection;
 		this.manualFlipEnabled = enableManualFlip;
 		layout = new FlowLayout();

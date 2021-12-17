@@ -99,7 +99,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 	private void updateControls() {
 		crossPlatformLookAndFeelOption.setSelected(options.getOptions().isPref(RealmSpeakOptions.METAL_LNF));
 		systemLookAndFeelOption.setSelected(!crossPlatformLookAndFeelOption.isSelected());
-		switch(options.getOptions().getInt(RealmSpeakOptions.BACKGROUND_COLOR)) {
+		switch(options.getOptions().getInt(CustomColorUtility.BACKGROUND_COLOR)) {
 			default:
 			case CustomColorUtility.BACKGROUND_COLOR_0:
 				backgroundColor0.setSelected(true);
@@ -229,7 +229,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		options.getOptions().set(RealmSpeakOptions.CHARACTER_CHIT_DISPLAY_STYLE,getCharacterChitDisplayStyle());
 		options.getOptions().set(RealmSpeakOptions.TILES_DISPLAY_STYLE,getTilesDisplayStyle());
 		options.getOptions().set(RealmSpeakOptions.METAL_LNF,crossPlatformLookAndFeelOption.isSelected());
-		options.getOptions().set(RealmSpeakOptions.BACKGROUND_COLOR,getSelectedBackgroundColor());
+		options.getOptions().set(CustomColorUtility.BACKGROUND_COLOR,getSelectedBackgroundColor());
 		options.getOptions().set(RealmSpeakOptions.MAP_SLIDER,mapSliderOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.HIGHLIGHT_CLEARING_NUMBERS,highlightClearingNumbersOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.SHOW_SEASON_ICON,showSeasonIconOption.isSelected());

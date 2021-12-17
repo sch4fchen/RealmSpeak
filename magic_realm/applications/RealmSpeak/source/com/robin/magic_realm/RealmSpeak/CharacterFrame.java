@@ -760,7 +760,6 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		setMinimumSize(new Dimension(500, 500));
 		JPanel layoutPanel = new JPanel(new BorderLayout());
 		setContentPane(layoutPanel);
-		getContentPane().setBackground(CustomColorUtility.getBackgroundColor());
 		
 		getActionPanel().modifyToolbarIconStyle(iconSize);
 

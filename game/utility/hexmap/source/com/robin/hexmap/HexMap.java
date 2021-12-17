@@ -27,7 +27,6 @@ import com.robin.general.graphics.GraphicsUtil;
 import com.robin.general.swing.ImageCache;
 import com.robin.general.util.HashLists;
 import com.robin.general.util.RandomNumber;
-import com.robin.magic_realm.components.utility.CustomColorUtility;
 
 public class HexMap extends JComponent implements Scrollable {
 	
@@ -111,8 +110,6 @@ public class HexMap extends JComponent implements Scrollable {
 		reset();
 	}
 	public Color getMapBackground() {
-		Color color = CustomColorUtility.getBackgroundColor();
-		if (color != null) return color;
 		return mapBackground;
 	}
 	public void setMapBackground(Color color) {

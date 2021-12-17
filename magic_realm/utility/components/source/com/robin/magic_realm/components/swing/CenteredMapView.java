@@ -858,12 +858,7 @@ public class CenteredMapView extends JComponent {
 			if (tileLayer==null) {
 				tileLayer = new BufferedImage(borderRect.width,borderRect.height,BufferedImage.TYPE_3BYTE_BGR);
 				Graphics ig = tileLayer.getGraphics();
-				Color bg = CustomColorUtility.getBackgroundColor();
-				if (bg != null) {
-					ig.setColor(bg);
-				} else {
-					ig.setColor(UIManager.getColor("ScrollPane.background"));
-				}
+				ig.setColor(UIManager.getColor("ScrollPane.background"));
 				ig.fillRect(0,0,borderRect.width,borderRect.height);
 //				g.setColor(Color.black);
 //				g.drawRect(0,0,borderRect.width-1,borderRect.height-1);

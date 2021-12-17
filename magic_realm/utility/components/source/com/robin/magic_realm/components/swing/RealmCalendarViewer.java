@@ -79,7 +79,6 @@ public class RealmCalendarViewer extends JFrame implements ManagedFrame {
 		}
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(calendar,"Center");
-		getContentPane().setBackground(CustomColorUtility.getBackgroundColor());
 		
 		// Header
 		JPanel header = new JPanel(new BorderLayout());

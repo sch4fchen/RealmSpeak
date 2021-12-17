@@ -22,13 +22,13 @@ import java.awt.*;
 import javax.swing.UIManager;
 
 import com.robin.general.io.PreferenceManager;
-import com.robin.magic_realm.RealmSpeak.RealmSpeakOptions;
 
 public class CustomColorUtility {
 	private final static Color WHITE = Color.WHITE;
 	private final static Color LIGHT = Color.LIGHT_GRAY;
 	private final static Color DARK = Color.DARK_GRAY;
 	
+	public static final String BACKGROUND_COLOR = "backgroundColor";
 	public static final int BACKGROUND_COLOR_0 = 0;
 	public static final int BACKGROUND_COLOR_1 = 1;
 	public static final int BACKGROUND_COLOR_2 = 2;
@@ -40,7 +40,7 @@ public class CustomColorUtility {
 			gamePrefMan.loadPreferences();
 		}
 		
-		return getBackgroundColorFromSelection(gamePrefMan.getInt(RealmSpeakOptions.BACKGROUND_COLOR));
+		return getBackgroundColorFromSelection(gamePrefMan.getInt(BACKGROUND_COLOR));
 	}
 	
 	public static Color getBackgroundColorFromSelection(int selection) {
