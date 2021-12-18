@@ -421,18 +421,18 @@ public class RealmSpeakOptionPanel extends JDialog {
 	}
 	private JPanel getBackgroundColorChooser() {
 		JPanel panel = new JPanel(new GridLayout(4,1));
-		panel.setBorder(BorderFactory.createTitledBorder("Color scheme"));
+		panel.setBorder(BorderFactory.createTitledBorder("Color scheme (requires restart)"));
 		ButtonGroup group = new ButtonGroup();
 		backgroundColor0 = new JRadioButton("Default");
 		group.add(backgroundColor0);
 		panel.add(backgroundColor0);
-		backgroundColor1 = new JRadioButton("Scheme 1");
+		backgroundColor1 = new JRadioButton("White");
 		group.add(backgroundColor1);
 		panel.add(backgroundColor1);
-		backgroundColor2 = new JRadioButton("Scheme 2"); 
+		backgroundColor2 = new JRadioButton("Light gray"); 
 		group.add(backgroundColor2);
 		panel.add(backgroundColor2);
-		backgroundColor3 = new JRadioButton("Scheme 3"); 
+		backgroundColor3 = new JRadioButton("Gray"); 
 		group.add(backgroundColor3);
 		panel.add(backgroundColor3);
 		return panel;

@@ -24,10 +24,6 @@ import javax.swing.UIManager;
 import com.robin.general.io.PreferenceManager;
 
 public class CustomColorUtility {
-	private final static Color WHITE = Color.WHITE;
-	private final static Color LIGHT = Color.LIGHT_GRAY;
-	private final static Color DARK = Color.DARK_GRAY;
-	
 	public static final String BACKGROUND_COLOR = "backgroundColor";
 	public static final int BACKGROUND_COLOR_0 = 0;
 	public static final int BACKGROUND_COLOR_1 = 1;
@@ -49,29 +45,34 @@ public class CustomColorUtility {
 		case BACKGROUND_COLOR_0:
 			return null;
 		case BACKGROUND_COLOR_1:
-			return WHITE;
+			return Color.WHITE;
 		case BACKGROUND_COLOR_2:
-			return LIGHT;
+			return Color.LIGHT_GRAY;
 		case BACKGROUND_COLOR_3:
-			return DARK;
+			return Color.GRAY;
 		}
 	}
 	
 	public static void initColors() {
 		Color color = getBackgroundColor();
 		UIManager.put("Panel.background", color);
-		UIManager.put("ScrollPane.background", color);
+		UIManager.put("EditorPane.background", color);
 		UIManager.put("OptionPane.background", color);
+		UIManager.put("ScrollPane.background", color);
+		UIManager.put("Desktop.background", color);
+		UIManager.put("InternalFrame.background", color);
+		
 		UIManager.put("Button.background", color);
 		UIManager.put("CheckBox.background",color);
 		UIManager.put("CheckBoxMenuItem.background",color);
 		UIManager.put("ComboBox.background",color);
+		UIManager.put("List.background",color);
 		UIManager.put("RadioButton.background",color);
 		UIManager.put("RadioButtonMenuItem.background",color);
 		UIManager.put("Slider.background",color);
-		//UIManager.put("Table.foreground",color);
-		//UIManager.put("Table.background",color);
-		//UIManager.put("TableHeader.foreground",color);
-		//UIManager.put("TableHeader.background",color);
+		UIManager.put("TabbedPane.background",color);
+		UIManager.put("Table.background",color);
+		UIManager.put("TableHeader.background",color);
+		UIManager.put("ToggleButton.background",color);
 	}
 }
