@@ -209,6 +209,30 @@ public class CombatSummarySheet extends JPanel {
 			});
 			chartButton.setBounds(x,y-10,65,20);
 			add(chartButton);
+			
+			RealmComponent owner = battleParticipant.getOwner();
+			boolean isOwnedByActive = (owner!=null && owner.equals(combatFrame.getActiveParticipant()));
+			if (combatFrame.getActionState() == Constants.COMBAT_LURE && combatFrame.areDenizensToLure() && (combatFrame.getActiveParticipant() ==  battleParticipant || isOwnedByActive) && !battleParticipant.isMistLike() ) {
+				JButton lureButton = new JButton("Lure");
+				lureButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent ev) {
+						if (battleParticipant.isCharacter()) {
+							combatFrame.lureDenizens(battleParticipant,0,true);
+						} else {
+							DenizenCombatSheet denizenSheet = new DenizenCombatSheet(combatFrame,combatFrame.getBattleModel(),battleParticipant,false,null);
+							if (denizenSheet.canLureMoreDenizens()) {
+								DenizenCombatSheet.lureDenizens(combatFrame,battleParticipant);
+							}
+							else {
+								DenizenCombatSheet.showDialogOnlySingleDenizenCanBeLured(combatFrame);
+							}
+						}
+					}
+				});
+				lureButton.setBounds(x,y+15,65,20);
+				add(lureButton);
+			}
+			
 			int xAttacker = x+110;
 			int attackerCount = 0;
 			for (GameObject attacker : cr.getAttackers()) {
@@ -224,6 +248,7 @@ public class CombatSummarySheet extends JPanel {
 		}
 		y += 80;
 		
+		/*
 		int yUnassignedHeadline = y;
 		y += 50;
 		int xUnassigned = x;
@@ -243,6 +268,7 @@ public class CombatSummarySheet extends JPanel {
 		if (unassignedCount != 0) {
 			g.drawString("UNASSIGNED",x+10,yUnassignedHeadline);
 		}
+		*/
 	}
 	private static Rectangle getRectangleForPosition(int row,int col) {
 		int x = (col * 30) + 132;

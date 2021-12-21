@@ -164,11 +164,8 @@ public class DenizenCombatSheet extends CombatSheet {
 		switch(combatFrame.getActionState()) {
 			case Constants.COMBAT_LURE:
 				if (isOwnedByActive && !sheetOwner.isMistLike()) {
-					c = layoutHash.getList(new Integer(POS_ATTACKERS_BOX1));
-					if (c==null || c.size()==0) {
-						if (combatFrame.areDenizensToLure()) {
-							hotspotHash.put(new Integer(POS_ATTACKERS_BOX1),"Lure");
-						}
+					if (canLureMoreDenizens() && combatFrame.areDenizensToLure()) {
+						hotspotHash.put(new Integer(POS_ATTACKERS_BOX1),"Lure");
 					}
 					
 					// Only add the Flip action if not a "pinning" type Monster
@@ -417,14 +414,7 @@ public class DenizenCombatSheet extends CombatSheet {
 			case POS_ATTACKERS_BOX2:
 			case POS_ATTACKERS_BOX3:
 				if (combatFrame.getActionState()==Constants.COMBAT_LURE) {
-					int lureCount = combatFrame.selectedDenizenCount();
-					if (lureCount<=1) {
-						// Luring
-						combatFrame.lureDenizens(sheetOwner,1,false);
-					}
-					else if (lureCount>1) {
-						JOptionPane.showMessageDialog(combatFrame,"A hireling can only lure one denizen","Invalid Lure",JOptionPane.WARNING_MESSAGE);
-					}
+					lureDenizens(combatFrame,sheetOwner);
 				}
 				else if (combatFrame.getActionState()==Constants.COMBAT_RANDOM_ASSIGN) {
 					// Do random assignment (guaranteed to have ONE selected here)
@@ -520,8 +510,8 @@ public class DenizenCombatSheet extends CombatSheet {
 		
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(combatFrame.getActiveCharacter().getGameObject().getGameData());
 		// start with unassigned denizens
-		for (Iterator i=combatFrame.getUnassignedDenizens().iterator();i.hasNext();) {
-			RealmComponent denizen = (RealmComponent)i.next();
+		for (Component denizenComponent : combatFrame.getUnassignedDenizens()) {
+			RealmComponent denizen = (RealmComponent)denizenComponent;
 			if (denizen.getTarget()==null && denizen.get2ndTarget()==null && !denizen.isMistLike()) {
 				if(attackerIsFriendlyToDenizen(RealmComponent.getRealmComponent(combatFrame.getActiveCharacter().getGameObject()),denizen,hostPrefs)) continue;
 				if (!extendedTreachery(denizen) || combatFrame.getActiveCharacter().getTreacheryPreference()) {
@@ -685,6 +675,26 @@ public class DenizenCombatSheet extends CombatSheet {
 		// This implementation does nothing
 	}
 	
+	public static void lureDenizens(CombatFrame combatFrame, RealmComponent sheetOwner) {
+		int lureCount = combatFrame.selectedDenizenCount();
+		if (lureCount<=1) {
+			// Luring
+			combatFrame.lureDenizens(sheetOwner,1,false);
+		}
+		else if (lureCount>1) {
+			showDialogOnlySingleDenizenCanBeLured(combatFrame);
+		}
+	}
+	
+	public boolean canLureMoreDenizens() {
+		ArrayList<RealmComponent> c = layoutHash.getList(new Integer(DenizenCombatSheet.POS_ATTACKERS_BOX1));
+		return (c==null || c.size()==0)?true:false;
+	}
+	
+	public static void showDialogOnlySingleDenizenCanBeLured(CombatFrame combatFrame) {
+		JOptionPane.showMessageDialog(combatFrame,"A hireling can only lure one denizen","Invalid Lure",JOptionPane.WARNING_MESSAGE);
+	}
+	
 	/**
 	 * Testing only
 	 */
@@ -693,20 +703,20 @@ public class DenizenCombatSheet extends CombatSheet {
 		frame.getContentPane().setLayout(new BorderLayout());
 		DenizenCombatSheet sheet = new DenizenCombatSheet();
 		sheet.redGroup = new CombatSheet.RollerGroup();
-		sheet.redGroup.repositionRoller = sheet.makeRoller("2:4");
-		sheet.redGroup.changeTacticsRoller1 = sheet.makeRoller("2:4");
-		sheet.redGroup.changeTacticsRoller2 = sheet.makeRoller("2:4");
-		sheet.redGroup.changeTacticsRoller3 = sheet.makeRoller("2:4");
+		sheet.redGroup.repositionRoller = CombatSheet.makeRoller("2:4");
+		sheet.redGroup.changeTacticsRoller1 = CombatSheet.makeRoller("2:4");
+		sheet.redGroup.changeTacticsRoller2 = CombatSheet.makeRoller("2:4");
+		sheet.redGroup.changeTacticsRoller3 = CombatSheet.makeRoller("2:4");
 		sheet.circleGroup = new CombatSheet.RollerGroup();
-		sheet.circleGroup.repositionRoller = sheet.makeRoller("2:4");
-		sheet.circleGroup.changeTacticsRoller1 = sheet.makeRoller("2:4");
-		sheet.circleGroup.changeTacticsRoller2 = sheet.makeRoller("2:4");
-		sheet.circleGroup.changeTacticsRoller3 = sheet.makeRoller("2:4");
+		sheet.circleGroup.repositionRoller = CombatSheet.makeRoller("2:4");
+		sheet.circleGroup.changeTacticsRoller1 = CombatSheet.makeRoller("2:4");
+		sheet.circleGroup.changeTacticsRoller2 = CombatSheet.makeRoller("2:4");
+		sheet.circleGroup.changeTacticsRoller3 = CombatSheet.makeRoller("2:4");
 		sheet.squareGroup = new CombatSheet.RollerGroup();
-		sheet.squareGroup.repositionRoller = sheet.makeRoller("2:4");
-		sheet.squareGroup.changeTacticsRoller1 = sheet.makeRoller("2:4");
-		sheet.squareGroup.changeTacticsRoller2 = sheet.makeRoller("2:4");
-		sheet.squareGroup.changeTacticsRoller3 = sheet.makeRoller("2:4");
+		sheet.squareGroup.repositionRoller = CombatSheet.makeRoller("2:4");
+		sheet.squareGroup.changeTacticsRoller1 = CombatSheet.makeRoller("2:4");
+		sheet.squareGroup.changeTacticsRoller2 = CombatSheet.makeRoller("2:4");
+		sheet.squareGroup.changeTacticsRoller3 = CombatSheet.makeRoller("2:4");
 		for (int i=0;i<16;i++) {
 			sheet.hotspotHash.put(new Integer(i),"test");
 		}
