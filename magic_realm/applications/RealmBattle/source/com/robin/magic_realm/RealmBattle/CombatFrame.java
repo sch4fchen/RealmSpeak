@@ -68,7 +68,7 @@ public class CombatFrame extends JFrame {
 	
 	private ArrayList<RealmComponent> allParticipants;
 	private boolean[] participantHasHotspots;
-	private JTable participantTable;
+	public JTable participantTable;
 	private BattleParticipantTableModel participantTableModel;
 	private JScrollPane participantTableSp;
 	private JPanel combatSheetPanel;

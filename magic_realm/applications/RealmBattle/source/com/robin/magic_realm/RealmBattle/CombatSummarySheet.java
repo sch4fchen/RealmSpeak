@@ -18,14 +18,15 @@
 package com.robin.magic_realm.RealmBattle;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JPanel;
 
 import com.robin.game.objects.GameObject;
 import com.robin.general.graphics.GraphicsUtil;
@@ -35,7 +36,7 @@ import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
 
-public class CombatSummarySheet extends JLabel {
+public class CombatSummarySheet extends JPanel {
 	private static final String[] COMBAT_STAGES  = {
 		"Prebattle",
 		"Luring",
@@ -55,7 +56,7 @@ public class CombatSummarySheet extends JLabel {
 	private CombatFrame combatFrame;
 	
 	public CombatSummarySheet(CombatFrame combatFrame) {
-		super("");
+		super();
 		this.battleModel = combatFrame.getBattleModel();
 		this.combatFrame = combatFrame;
 		ArrayList<CharacterWrapper> characters = new ArrayList<>();
@@ -70,15 +71,7 @@ public class CombatSummarySheet extends JLabel {
 				return ret;
 			}
 		});
-		int numberOfCharacters = characters.size();
-		int numberOfParticipants = battleModel.getAllBattleParticipants(true).size();
-		int totalHeight = 250 + numberOfCharacters*150 + (numberOfParticipants-numberOfCharacters)*50;
-		int width = 590;
-		BufferedImage bi = new BufferedImage(width,totalHeight,BufferedImage.TYPE_3BYTE_BGR);
-		Graphics g = bi.getGraphics();
-		g.setColor(Color.white);
-		g.fillRect(0,0,width,totalHeight);
-		setIcon(new ImageIcon(bi));
+		this.setLayout(null);
 	}
 	private Font STAGE_FONT = new Font("Dialog",Font.BOLD,12);
 	private Color STAGE_SECTION_COLOR = new Color(200,255,200,150);
@@ -198,19 +191,30 @@ public class CombatSummarySheet extends JLabel {
 		y += 40;
 		
 		// Battle overview
-		g.drawString("DEFENDER",x+10,y);
-		g.drawString("ATTACKERS",x+120,y);
+		g.drawString("DEFENDER",x+90,y);
+		g.drawString("ATTACKERS",x+200,y);
 		y -= 45;
+		int row=0;
 		for (RealmComponent battleParticipant : combatFrame.getAllParticipants()) {
-			CombatWrapper cr = new CombatWrapper(battleParticipant.getGameObject());			
+			CombatWrapper cr = new CombatWrapper(battleParticipant.getGameObject());
+			row+=1;
 			y += 90;
-			g.drawImage(battleParticipant.getImage(),x,y-40,80,80,null);
-			int xAttacker = x+30;
+			g.drawImage(battleParticipant.getImage(),x+80,y-40,80,80,null);		
+			JButton chartButton = new JButton("Chart");
+			final int rcRow = row;
+			chartButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					combatFrame.participantTable.setRowSelectionInterval(0,rcRow);
+				}
+			});
+			chartButton.setBounds(x,y-10,65,20);
+			add(chartButton);
+			int xAttacker = x+110;
 			int attackerCount = 0;
 			for (GameObject attacker : cr.getAttackers()) {
-				if (attackerCount != 0 && attackerCount % 5 == 0) {
+				if (attackerCount != 0 && attackerCount % 4 == 0) {
 					y += 90;
-					xAttacker = x+30;
+					xAttacker = x+110;
 				}
 				xAttacker += 90;
 				RealmComponent attackerRc = RealmComponent.getRealmComponent(attacker);
