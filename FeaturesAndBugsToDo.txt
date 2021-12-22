@@ -1,4 +1,11 @@
+GM: Fix map after placing a tile
+CombatSummary: Flip button (test summary sheet with hireling with horse)
+
+Scenario Editor (GM tool, scenario title, description, randomizing setup option)
 ---:::FEATURES:::---
+Combat Tips:
+	* (If hidden) "You are hidden: If you lure now, you will become unhidden and the enemy will attack you. Wait for phase 6: Assign targets to attack safely."
+	* (If hired natives) "Hired Natives won't change tactics as defenders, but they might as attackers." 
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): Option: no missile attacks, ?:Sharpness stars are ignored when comparing harm between attacks and parries? Alert?!
 Expansion 1: Parry + Ability: "ParryLikeShield":  Option: no missile attacks
 Expansion 1: More Ambushes/Throwing Weapons + Ability: Spear, Axe, Dagger?

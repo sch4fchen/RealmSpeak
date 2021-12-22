@@ -204,7 +204,7 @@ public class CombatSummarySheet extends JPanel {
 			final int rcRow = row;
 			chartButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
-					combatFrame.participantTable.setRowSelectionInterval(0,rcRow);
+					combatFrame.participantTable.setRowSelectionInterval(rcRow,rcRow);
 				}
 			});
 			chartButton.setBounds(x,y-10,65,20);
