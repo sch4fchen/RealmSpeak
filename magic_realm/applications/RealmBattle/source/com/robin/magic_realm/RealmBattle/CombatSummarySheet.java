@@ -31,6 +31,7 @@ import javax.swing.JPanel;
 import com.robin.game.objects.GameObject;
 import com.robin.general.graphics.GraphicsUtil;
 import com.robin.general.util.StringUtilities;
+import com.robin.magic_realm.components.BattleHorse;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -212,25 +213,48 @@ public class CombatSummarySheet extends JPanel {
 			
 			RealmComponent owner = battleParticipant.getOwner();
 			boolean isOwnedByActive = (owner!=null && owner.equals(combatFrame.getActiveParticipant()));
-			if (combatFrame.getActionState() == Constants.COMBAT_LURE && CombatFrame.isInteractiveFrame() && combatFrame.areDenizensToLure() && (combatFrame.getActiveParticipant() ==  battleParticipant || isOwnedByActive) && !battleParticipant.isMistLike() ) {
-				JButton lureButton = new JButton("Lure");
-				lureButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent ev) {
-						if (battleParticipant.isCharacter()) {
-							combatFrame.lureDenizens(battleParticipant,0,true);
-						} else {
-							DenizenCombatSheet denizenSheet = new DenizenCombatSheet(combatFrame,combatFrame.getBattleModel(),battleParticipant,false,null);
-							if (denizenSheet.canLureMoreDenizens()) {
-								DenizenCombatSheet.lureDenizens(combatFrame,battleParticipant);
-							}
-							else {
-								DenizenCombatSheet.showDialogOnlySingleDenizenCanBeLured(combatFrame);
+			if (combatFrame.getActionState() == Constants.COMBAT_LURE && CombatFrame.isInteractiveFrame()) {
+				if (combatFrame.areDenizensToLure() && (combatFrame.getActiveParticipant() ==  battleParticipant || isOwnedByActive) && !battleParticipant.isMistLike() ) {
+					JButton lureButton = new JButton("Lure");
+					lureButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent ev) {
+							if (battleParticipant.isCharacter()) {
+								combatFrame.lureDenizens(battleParticipant,0,true);
+							} else {
+								DenizenCombatSheet denizenSheet = new DenizenCombatSheet(combatFrame,combatFrame.getBattleModel(),battleParticipant,false,null);
+								if (denizenSheet.canLureMoreDenizens()) {
+									DenizenCombatSheet.lureDenizens(combatFrame,battleParticipant);
+								}
+								else {
+									DenizenCombatSheet.showDialogOnlySingleDenizenCanBeLured(combatFrame);
+								}
 							}
 						}
-					}
-				});
-				lureButton.setBounds(x,y+15,65,20);
-				add(lureButton);
+					});
+					lureButton.setBounds(x,y-35,65,20);
+					add(lureButton);
+				}
+				if (DenizenCombatSheet.denizenCanFlip(battleParticipant)) {
+					JButton flip = new JButton("Flip");
+					flip.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent ev) {
+							battleParticipant.flip();
+						}
+					});
+					flip.setBounds(x,y+12,65,12);
+					add(flip);	
+				}
+				if (battleParticipant.hasHorse()) {
+					JButton flipHorse = new JButton("Flip steed");
+					flipHorse.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent ev) {
+							BattleHorse horse = battleParticipant.getHorse();
+							horse.flip();
+						}
+					});
+					flipHorse.setBounds(x-5,y+25,88,12);
+					add(flipHorse);	
+				}
 			}
 			
 			int xAttacker = x+110;

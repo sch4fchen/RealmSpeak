@@ -879,11 +879,10 @@ public class CharacterActionControlManager {
 		if (getGameHandler().isOption(RealmSpeakOptions.UNASSIGNED_HIRELINGS_WARNING)) {
 			boolean unassignedHirelings = false;
 			
-			for (Iterator i=getCharacter().getAllHirelings().iterator();i.hasNext();) {
-				RealmComponent hireling = (RealmComponent)i.next();
+			for (RealmComponent hireling : getCharacter().getAllHirelings()) {
 				if (!hireling.isHiredLeader()) {
 					RealmComponent heldBy = hireling.getHeldBy();
-					if (heldBy.isTile()) {
+					if (heldBy != null && heldBy.isTile()) {
 						unassignedHirelings = true;
 						break;
 					}

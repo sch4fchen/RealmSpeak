@@ -1,5 +1,5 @@
 GM: Fix map after placing a tile
-CombatSummary: Flip button (test summary sheet with hireling with horse)
+Combat Summary: add functionality for RandomAssignment, Deploy/Charge, Assign
 
 Scenario Editor (GM tool, scenario title, description, randomizing setup option)
 ---:::FEATURES:::---

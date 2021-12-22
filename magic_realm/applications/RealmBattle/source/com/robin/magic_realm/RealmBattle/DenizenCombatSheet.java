@@ -167,15 +167,9 @@ public class DenizenCombatSheet extends CombatSheet {
 					if (canLureMoreDenizens() && combatFrame.areDenizensToLure()) {
 						hotspotHash.put(new Integer(POS_ATTACKERS_BOX1),"Lure");
 					}
-					
-					// Only add the Flip action if not a "pinning" type Monster
-					if (sheetOwner.isMonster()) {
-						MonsterChitComponent monster = (MonsterChitComponent)sheetOwner;
-						if (monster.canPinOpponent()) {
-							break;
-						}
+					if (denizenCanFlip(sheetOwner)) {
+						hotspotHash.put(new Integer(POS_DEFENDER_BOX1),"Flip");
 					}
-					hotspotHash.put(new Integer(POS_DEFENDER_BOX1),"Flip");
 					if (sheetOwner.hasHorse()) {
 						hotspotHash.put(new Integer(POS_DEFENDER_BOX2),"Flip");
 					}
@@ -693,6 +687,17 @@ public class DenizenCombatSheet extends CombatSheet {
 	
 	public static void showDialogOnlySingleDenizenCanBeLured(CombatFrame combatFrame) {
 		JOptionPane.showMessageDialog(combatFrame,"A hireling can only lure one denizen","Invalid Lure",JOptionPane.WARNING_MESSAGE);
+	}
+	
+	// Only add the Flip action if not a "pinning" type Monster
+	public static boolean denizenCanFlip(RealmComponent sheetOwner) {
+		if (sheetOwner.isMonster()) {
+			MonsterChitComponent monster = (MonsterChitComponent)sheetOwner;
+			if (!monster.canPinOpponent()) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	/**
