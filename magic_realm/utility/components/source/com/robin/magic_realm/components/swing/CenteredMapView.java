@@ -1335,6 +1335,8 @@ public class CenteredMapView extends JComponent {
 						TileComponent tileComponent = (TileComponent) RealmComponent.getRealmComponent(tile);
 						ChangeListener changeListener = new ChangeListener() {
 							public void stateChanged(ChangeEvent ev) {
+								rebuildFromScratch();
+								repaint();
 							}
 						};
 						setTileBeingPlaced(changeListener,tileComponent);

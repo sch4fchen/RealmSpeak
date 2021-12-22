@@ -70,7 +70,9 @@ public class PathDetail implements Comparable {
 				TileComponent connectedTile = parent.getAdjacentTile(edge);
 				if (connectedTile!=null) {
 					PathDetail connectedPath = connectedTile.getEdgePath(Tile.matchingEdge(edge));
-					return connectedPath.getEdgeClearing();
+					if (connectedPath!=null) {
+						return connectedPath.getEdgeClearing();
+					}
 				}
 			}
 			else {

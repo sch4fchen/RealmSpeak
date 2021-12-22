@@ -88,8 +88,8 @@ public class TileComponent extends ChitComponent {
 	protected HashMap<String,String>[] tileImagePath;
 //	protected String[] tileFolderName;
 //	protected String[] tileImageName;
-	protected ArrayList[] clearings;
-	protected ArrayList[] paths;
+	protected ArrayList<ClearingDetail>[] clearings;
+	protected ArrayList<PathDetail>[] paths;
 	protected Point[] offroadPos;
 
 	// if 0, then image is solid and drawing is not seen
@@ -308,7 +308,7 @@ public class TileComponent extends ChitComponent {
 		String ext = ".gif";
 		String folderPath = "images/"+folder;
 		String fullImage = imageName + imageEnd + ext;
-		tileImagePath[side] = new HashMap<String,String>();
+		tileImagePath[side] = new HashMap<>();
 		if (displayTilesStyle == DISPLAY_TILES_STYLE_LEGENDARY) {
 			String legendaryTilePath = folderPath+"_legendary"+"/"+fullImage;
 			if (ResourceFinder.exists(legendaryTilePath)) {
@@ -340,7 +340,7 @@ public class TileComponent extends ChitComponent {
 				
 		// Setup clearings
 		Hashtable clearingPositionHash = new Hashtable();
-		clearings[side] = new ArrayList();
+		clearings[side] = new ArrayList<>();
 		for (int i = 1; i <= 6; i++) {
 			String typeKey = "clearing_" + i + "_type";
 			String xyKey = "clearing_" + i + "_xy";
@@ -378,7 +378,7 @@ public class TileComponent extends ChitComponent {
 		}
 		// Setup paths
 		Hashtable edgePositionHash = getEdgePositionHash();
-		paths[side] = new ArrayList();
+		paths[side] = new ArrayList<>();
 		int i = 1;
 		String from;
 		while ((from = (String) hash.get("path_" + i + "_from")) != null) {
@@ -479,8 +479,7 @@ public class TileComponent extends ChitComponent {
 		Point2D rotatedPoint = GraphicsUtil.rotate(relativePoint, tileCenter, -rotation * radians_degrees60);
 		int tx = (int) rotatedPoint.getX();
 		int ty = (int) rotatedPoint.getY();
-		for (Iterator i = clearings[getFacingIndex()].iterator(); i.hasNext();) {
-			ClearingDetail clearing = (ClearingDetail) i.next();
+		for (ClearingDetail clearing : clearings[getFacingIndex()]) {
 			Point p = clearing.getPosition();
 			Shape s = getClearingShape(p, CLEARING_RADIUS);
 			if (s.contains(tx, ty)) {
@@ -488,8 +487,7 @@ public class TileComponent extends ChitComponent {
 			}
 		}
 		// Check map edges (if any)
-		for (Iterator i=getMapEdges().iterator();i.hasNext();) {
-			ClearingDetail clearing = (ClearingDetail) i.next();
+		for (ClearingDetail clearing : getMapEdges()) {
 			Point p = clearing.getPosition();
 			Shape s = getClearingShape(p, CLEARING_RADIUS);
 			if (s.contains(tx, ty)) {
@@ -512,8 +510,7 @@ public class TileComponent extends ChitComponent {
 	 */
 	public ArrayList<ClearingDetail> getClearings(String clearingType) {
 		ArrayList<ClearingDetail> list = new ArrayList<>();
-		for (Iterator i = clearings[getFacingIndex()].iterator(); i.hasNext();) {
-			ClearingDetail clearing = (ClearingDetail) i.next();
+		for (ClearingDetail clearing : clearings[getFacingIndex()]) {
 			if (clearingType == null || clearing.getType().equals(clearingType)) {
 				list.add(clearing);
 			}
@@ -522,8 +519,7 @@ public class TileComponent extends ChitComponent {
 	}
 	public ArrayList<ClearingDetail> getEnchantedClearings() {
 		ArrayList<ClearingDetail> list = new ArrayList<>();
-		for (Iterator i = clearings[ENCHANTED_INDEX].iterator(); i.hasNext();) {
-			ClearingDetail clearing = (ClearingDetail) i.next();
+		for (ClearingDetail clearing : clearings[ENCHANTED_INDEX]) {
 			list.add(clearing);
 		}
 		return list;
@@ -547,8 +543,7 @@ public class TileComponent extends ChitComponent {
 	}
 
 	public ClearingDetail getClearing(int clearingNum) {
-		for (Iterator i = clearings[getFacingIndex()].iterator(); i.hasNext();) {
-			ClearingDetail clearing = (ClearingDetail) i.next();
+		for (ClearingDetail clearing : clearings[getFacingIndex()]) {
 			if (clearing.getNum() == clearingNum) {
 				return clearing;
 			}
@@ -558,8 +553,7 @@ public class TileComponent extends ChitComponent {
 	
 	public ArrayList<ClearingDetail> getMapEdges() {
 		ArrayList<ClearingDetail> mapEdges = new ArrayList<>();
-		for (Iterator i = paths[getFacingIndex()].iterator(); i.hasNext();) {
-			PathDetail path = (PathDetail) i.next();
+		for (PathDetail path : paths[getFacingIndex()]) {
 			if (path.connectsToMapEdge()) {
 				mapEdges.add(path.getEdgeAsClearing());
 			}
@@ -572,7 +566,7 @@ public class TileComponent extends ChitComponent {
 	 */
 	public void resetClearingPositions() {
 		int facingIndex = getFacingIndex();
-		ArrayList allClearings = new ArrayList();
+		ArrayList<ClearingDetail> allClearings = new ArrayList<>();
 		
 		// Regular clearings
 		allClearings.addAll(clearings[facingIndex]);
@@ -580,8 +574,7 @@ public class TileComponent extends ChitComponent {
 		// Edge of the map clearings
 		allClearings.addAll(getMapEdges()); // Might not be any
 		
-		for (Iterator i = allClearings.iterator(); i.hasNext();) {
-			ClearingDetail detail = (ClearingDetail) i.next();
+		for (ClearingDetail detail : allClearings) {
 			detail.setAbsolutePosition(null);
 		}
 	}

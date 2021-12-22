@@ -1,4 +1,4 @@
-GM: Fix map after placing a tile
+GM: add and remove tiles from gameData, 
 Combat Summary: add functionality for RandomAssignment, Deploy/Charge, Assign
 
 Scenario Editor (GM tool, scenario title, description, randomizing setup option)

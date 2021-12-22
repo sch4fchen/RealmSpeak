@@ -399,7 +399,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			}
 		}
 	}
-	protected String getSubtitleForReposition(DieRoller roller) {
+	protected static String getSubtitleForReposition(DieRoller roller) {
 		if (roller!=null) {
 			switch(roller.getHighDieResult()) {
 				case 1:		return "Switch Box 2 & 3";
@@ -412,7 +412,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		}
 		return null;
 	}
-	protected String getSubtitleForTactics(DieRoller roller) {
+	protected static String getSubtitleForTactics(DieRoller roller) {
 		String ret = null;
 		if (roller!=null) {
 			ret = roller.getHighDieResult()==6?"Flipped!":null;
@@ -755,7 +755,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		circleGroup = buildRollerGroup(CombatWrapper.GROUP_CIRCLE,combat);
 		squareGroup = buildRollerGroup(CombatWrapper.GROUP_SQUARE,combat);
 	}
-	protected RollerGroup buildRollerGroup(String prefix,CombatWrapper combat) {
+	protected static RollerGroup buildRollerGroup(String prefix,CombatWrapper combat) {
 		RollerGroup rg = null;
 		int reposition = combat.getRepositionResult(prefix);
 		if (reposition>0) {

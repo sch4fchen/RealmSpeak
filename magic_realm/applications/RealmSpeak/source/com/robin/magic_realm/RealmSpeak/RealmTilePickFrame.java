@@ -68,7 +68,7 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 		this.game = game;
 		this.map = map;
 		
-		tilesToAdd = new ArrayList<GameObject>();
+		tilesToAdd = new ArrayList<>();
 		tilePickModel = new TilePickTableModel();
 		
 		refreshTiles();
