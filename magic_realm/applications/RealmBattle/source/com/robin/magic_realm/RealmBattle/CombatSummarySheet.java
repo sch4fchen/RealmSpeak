@@ -212,7 +212,7 @@ public class CombatSummarySheet extends JPanel {
 			
 			RealmComponent owner = battleParticipant.getOwner();
 			boolean isOwnedByActive = (owner!=null && owner.equals(combatFrame.getActiveParticipant()));
-			if (combatFrame.getActionState() == Constants.COMBAT_LURE && combatFrame.areDenizensToLure() && (combatFrame.getActiveParticipant() ==  battleParticipant || isOwnedByActive) && !battleParticipant.isMistLike() ) {
+			if (combatFrame.getActionState() == Constants.COMBAT_LURE && CombatFrame.isInteractiveFrame() && combatFrame.areDenizensToLure() && (combatFrame.getActiveParticipant() ==  battleParticipant || isOwnedByActive) && !battleParticipant.isMistLike() ) {
 				JButton lureButton = new JButton("Lure");
 				lureButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent ev) {

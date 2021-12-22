@@ -181,18 +181,21 @@ public class CombatFrame extends JFrame {
 	
 	protected static DieRoller runAwayRoll = null;
 	protected static int runAwayFatigue;
-	public void setRunAwayRoll(DieRoller roller) {
+	public static void setRunAwayRoll(DieRoller roller) {
 		runAwayRoll = roller;
 	}
-	public void setRunAwayFatigue(int val) {
+	public static void setRunAwayFatigue(int val) {
 		runAwayFatigue = val;
 	}
-	public void clearRunaway() {
+	public static void clearRunaway() {
 		runAwayRoll = null;
 		runAwayFatigue = 0;
 	}
 	public void madeChanges() {
 		changes = true;
+	}
+	public static boolean isInteractiveFrame() {
+		return interactiveFrame;
 	}
 	
 	protected static DieRoller ambushRoll = null;

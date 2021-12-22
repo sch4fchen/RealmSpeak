@@ -773,15 +773,15 @@ public class CharacterCombatSheet extends CombatSheet {
 		frame.getContentPane().setLayout(new BorderLayout());
 		CharacterCombatSheet sheet = new CharacterCombatSheet();
 		sheet.redGroup = new CombatSheet.RollerGroup();
-		sheet.redGroup.repositionRoller = sheet.makeRoller("2:4");
-		sheet.redGroup.changeTacticsRoller1 = sheet.makeRoller("2:4");
-		sheet.redGroup.changeTacticsRoller2 = sheet.makeRoller("2:4");
-		sheet.redGroup.changeTacticsRoller3 = sheet.makeRoller("2:4");
+		sheet.redGroup.repositionRoller = CombatSheet.makeRoller("2:4");
+		sheet.redGroup.changeTacticsRoller1 = CombatSheet.makeRoller("2:4");
+		sheet.redGroup.changeTacticsRoller2 = CombatSheet.makeRoller("2:4");
+		sheet.redGroup.changeTacticsRoller3 = CombatSheet.makeRoller("2:4");
 		sheet.circleGroup = new CombatSheet.RollerGroup();
-		sheet.circleGroup.repositionRoller = sheet.makeRoller("2:4");
-		sheet.circleGroup.changeTacticsRoller1 = sheet.makeRoller("2:4");
-		sheet.circleGroup.changeTacticsRoller2 = sheet.makeRoller("2:4");
-		sheet.circleGroup.changeTacticsRoller3 = sheet.makeRoller("2:4");
+		sheet.circleGroup.repositionRoller = CombatSheet.makeRoller("2:4");
+		sheet.circleGroup.changeTacticsRoller1 = CombatSheet.makeRoller("2:4");
+		sheet.circleGroup.changeTacticsRoller2 = CombatSheet.makeRoller("2:4");
+		sheet.circleGroup.changeTacticsRoller3 = CombatSheet.makeRoller("2:4");
 		for (int i=0;i<24;i++) {
 			sheet.hotspotHash.put(new Integer(i),"test");
 		}

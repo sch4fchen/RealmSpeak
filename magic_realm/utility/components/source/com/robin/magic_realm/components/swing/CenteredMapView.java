@@ -1336,7 +1336,7 @@ public class CenteredMapView extends JComponent {
 						ChangeListener changeListener = new ChangeListener() {
 							public void stateChanged(ChangeEvent ev) {
 							}
-						}; 
+						};
 						setTileBeingPlaced(changeListener,tileComponent);
 						tile.setThisAttribute(ClearingDetail.BL_CONNECT);
 					}
