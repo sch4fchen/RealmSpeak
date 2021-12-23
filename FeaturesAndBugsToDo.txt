@@ -1,10 +1,10 @@
-GM: add and remove tiles from/to MagicRealmData.xml
 Combat Summary: add functionality for RandomAssignment, Deploy/Charge, Assign
 
 Scenario Editor (GM tool, scenario title, description, randomizing setup option)
-	Shuffle components Flag in gameData when saving scenario: Shuffle when loading OR NO shuffling when loading
 	RealmSpeak + GM: save game as scenario (with scenario name and description), have a different file extension
 	RealSpeak: Load scenarios (overview with names and descriptions), list game options
+	RealmSpeak + GM: Shuffle components Flag in gameData when saving scenario: Shuffle when loading OR NO shuffling when loading
+	GM: add and remove tiles from/to MagicRealmData.xml
 ---:::FEATURES:::---
 Combat Tips:
 	* (If hidden) "You are hidden: If you lure now, you will become unhidden and the enemy will attack you. Wait for phase 6: Assign targets to attack safely."
