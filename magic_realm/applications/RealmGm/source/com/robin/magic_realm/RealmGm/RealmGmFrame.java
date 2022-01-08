@@ -243,7 +243,7 @@ public class RealmGmFrame extends JFrame {
 	private JPanel getTilesOptionsPanel() {
 		int selected = prefs.getInt(TilesDisplayStyle);
 		JPanel panel = new JPanel(new GridLayout(3,1));
-		panel.setBorder(BorderFactory.createTitledBorder("Standard Tiles Style"));
+		panel.setBorder(BorderFactory.createTitledBorder("Tiles Style"));
 		ButtonGroup group = new ButtonGroup();
 		JRadioButton classicTilesOption = new JRadioButton("Classic");
 		classicTilesOption.addActionListener(new ActionListener() {

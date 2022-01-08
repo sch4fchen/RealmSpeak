@@ -1,4 +1,6 @@
 Version 1.1.5.1 - Changes since 1.1.5.0
+QUEST UPDATE:
+#Fix teleport EV2->EV1 in quest "Find A Side Path"
 NEW FEATURES:
 # Combat Summary: Add overview with participants
 # Option to choose color scheme

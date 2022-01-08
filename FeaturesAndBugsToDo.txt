@@ -1,4 +1,5 @@
-Combat Summary: add functionality for RandomAssignment, Deploy/Charge, Assign
+Option to change font size
+Combat Summary: add functionality for RandomAssignment, Deploy/Charge (and charge character, Actions?, Assign
 
 Scenario Editor (GM tool, scenario title, description, randomizing setup option)
 	RealmSpeak + GM: save game as scenario (with scenario name and description), have a different file extension
