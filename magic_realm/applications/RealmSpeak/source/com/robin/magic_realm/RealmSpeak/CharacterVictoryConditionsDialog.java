@@ -80,7 +80,7 @@ public class CharacterVictoryConditionsDialog extends AggressiveDialog {
 		getContentPane().add(topPanel,"North");
 		Box box = Box.createVerticalBox();
 		if (hostPrefs.hasPref(Constants.QST_QUEST_CARDS)) {
-			setSize(200,130);
+			setSize(250,130);
 			line = group.createLabelLine("Quest Points");
 				questPoints = createSpinner();
 			line.add(questPoints);
@@ -89,18 +89,18 @@ public class CharacterVictoryConditionsDialog extends AggressiveDialog {
 			box.add(line);
 		}
 		else {
-			setSize(200,250);
+			setSize(250,250);
 			line = group.createLabelLine("Great Treasures");
 				greatTreasures = createSpinner();
 			line.add(greatTreasures);
-			line.add(new JLabel("  x 1"));
+			line.add(new JLabel("  x 1  "));
 			line.add(Box.createHorizontalGlue());
 			box.add(line);
 			
 			line = group.createLabelLine("Usable Spells");
 				usableSpells = createSpinner();
 			line.add(usableSpells);
-			line.add(new JLabel("  x 2"));
+			line.add(new JLabel("  x 2  "));
 			line.add(Box.createHorizontalGlue());
 			box.add(line);
 			

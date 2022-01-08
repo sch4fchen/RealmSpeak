@@ -5,6 +5,7 @@ NEW FEATURES:
 # Combat Summary: Add overview with participants
 # Option to choose color scheme
 BUGS/ISSUES:
+# Fix width in VP assigning dialog, now weight viewable
 # Realm GM: Fix map rendering after placing a tile
 
 Version 1.1.5.0 - Changes since 1.1.4.9
