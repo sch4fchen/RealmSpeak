@@ -45,7 +45,7 @@ import com.robin.magic_realm.components.GoldSpecialChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.swing.*;
 import com.robin.magic_realm.components.utility.*;
-import com.robin.magic_realm.components.utility.CustomColorUtility;
+import com.robin.magic_realm.components.utility.CustomUiUtility;
 import com.robin.magic_realm.components.wrapper.*;
 
 import edu.stanford.ejalbert.BrowserLauncher;
@@ -223,7 +223,7 @@ public class RealmSpeakFrame extends JFrame {
 	
 	public RealmSpeakFrame() {
 		initComponents();
-		CustomColorUtility.initColors();
+		CustomUiUtility.initColors();
 		gameControlFrames = new ArrayList<>();
 		characterFrames = new ArrayList<>();
 		addComponentListener(new ComponentAdapter() {

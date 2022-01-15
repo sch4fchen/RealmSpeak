@@ -58,7 +58,7 @@ public class CharacterOptionsDialog extends AggressiveDialog {
 	}
 
 	private void initComponents(boolean forceInnStart, boolean allowDevelopment, boolean developmentPastFour) {
-		setSize(425, 375);
+		setSize(475, 375);
 		getContentPane().setLayout(new BorderLayout());
 
 		JPanel sideBarPanel = new JPanel(new GridLayout(2,1));

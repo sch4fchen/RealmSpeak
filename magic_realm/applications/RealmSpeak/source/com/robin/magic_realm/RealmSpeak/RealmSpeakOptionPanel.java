@@ -31,7 +31,7 @@ import com.robin.magic_realm.components.CharacterChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.attribute.ChatLine.HeaderMode;
-import com.robin.magic_realm.components.utility.CustomColorUtility;
+import com.robin.magic_realm.components.utility.CustomUiUtility;
 
 public class RealmSpeakOptionPanel extends JDialog {
 
@@ -99,18 +99,18 @@ public class RealmSpeakOptionPanel extends JDialog {
 	private void updateControls() {
 		crossPlatformLookAndFeelOption.setSelected(options.getOptions().isPref(RealmSpeakOptions.METAL_LNF));
 		systemLookAndFeelOption.setSelected(!crossPlatformLookAndFeelOption.isSelected());
-		switch(options.getOptions().getInt(CustomColorUtility.BACKGROUND_COLOR)) {
+		switch(options.getOptions().getInt(CustomUiUtility.BACKGROUND_COLOR)) {
 			default:
-			case CustomColorUtility.BACKGROUND_COLOR_0:
+			case CustomUiUtility.BACKGROUND_COLOR_0:
 				backgroundColor0.setSelected(true);
 				break;
-			case CustomColorUtility.BACKGROUND_COLOR_1:
+			case CustomUiUtility.BACKGROUND_COLOR_1:
 				backgroundColor1.setSelected(true);
 				break;
-			case CustomColorUtility.BACKGROUND_COLOR_2:
+			case CustomUiUtility.BACKGROUND_COLOR_2:
 				backgroundColor2.setSelected(true);
 				break;
-			case CustomColorUtility.BACKGROUND_COLOR_3:
+			case CustomUiUtility.BACKGROUND_COLOR_3:
 				backgroundColor3.setSelected(true);
 				break;
 		}
@@ -229,7 +229,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		options.getOptions().set(RealmSpeakOptions.CHARACTER_CHIT_DISPLAY_STYLE,getCharacterChitDisplayStyle());
 		options.getOptions().set(RealmSpeakOptions.TILES_DISPLAY_STYLE,getTilesDisplayStyle());
 		options.getOptions().set(RealmSpeakOptions.METAL_LNF,crossPlatformLookAndFeelOption.isSelected());
-		options.getOptions().set(CustomColorUtility.BACKGROUND_COLOR,getSelectedBackgroundColor());
+		options.getOptions().set(CustomUiUtility.BACKGROUND_COLOR,getSelectedBackgroundColor());
 		options.getOptions().set(RealmSpeakOptions.MAP_SLIDER,mapSliderOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.HIGHLIGHT_CLEARING_NUMBERS,highlightClearingNumbersOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.SHOW_SEASON_ICON,showSeasonIconOption.isSelected());
@@ -255,19 +255,19 @@ public class RealmSpeakOptionPanel extends JDialog {
 	}
 	private int getSelectedBackgroundColor() {
 		if (backgroundColor0.isSelected()) {
-			return CustomColorUtility.BACKGROUND_COLOR_0;
+			return CustomUiUtility.BACKGROUND_COLOR_0;
 		}
 		else if (backgroundColor1.isSelected()) {
-			return CustomColorUtility.BACKGROUND_COLOR_1;
+			return CustomUiUtility.BACKGROUND_COLOR_1;
 		}
 		else if (backgroundColor2.isSelected()) {
-			return CustomColorUtility.BACKGROUND_COLOR_2;
+			return CustomUiUtility.BACKGROUND_COLOR_2;
 		}
 		else if (backgroundColor3.isSelected()) {
-			return CustomColorUtility.BACKGROUND_COLOR_3;
+			return CustomUiUtility.BACKGROUND_COLOR_3;
 		}
 		else {
-			return CustomColorUtility.BACKGROUND_COLOR_0;
+			return CustomUiUtility.BACKGROUND_COLOR_0;
 		}
 	}
 	private int getActionIconState() {

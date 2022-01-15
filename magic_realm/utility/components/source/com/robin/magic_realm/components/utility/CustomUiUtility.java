@@ -23,7 +23,7 @@ import javax.swing.UIManager;
 
 import com.robin.general.io.PreferenceManager;
 
-public class CustomColorUtility {
+public class CustomUiUtility {
 	public static final String BACKGROUND_COLOR = "backgroundColor";
 	public static final int BACKGROUND_COLOR_0 = 0;
 	public static final int BACKGROUND_COLOR_1 = 1;
@@ -55,24 +55,65 @@ public class CustomColorUtility {
 	
 	public static void initColors() {
 		Color color = getBackgroundColor();
-		UIManager.put("Panel.background", color);
-		UIManager.put("EditorPane.background", color);
-		UIManager.put("OptionPane.background", color);
-		UIManager.put("ScrollPane.background", color);
 		UIManager.put("Desktop.background", color);
 		UIManager.put("InternalFrame.background", color);
+		UIManager.put("Panel.background", color);
 		
 		UIManager.put("Button.background", color);
 		UIManager.put("CheckBox.background",color);
 		UIManager.put("CheckBoxMenuItem.background",color);
 		UIManager.put("ComboBox.background",color);
+		UIManager.put("EditorPane.background", color);
 		UIManager.put("List.background",color);
+		UIManager.put("OptionPane.background", color);
 		UIManager.put("RadioButton.background",color);
 		UIManager.put("RadioButtonMenuItem.background",color);
+		UIManager.put("ScrollPane.background", color);
 		UIManager.put("Slider.background",color);
 		UIManager.put("TabbedPane.background",color);
 		UIManager.put("Table.background",color);
 		UIManager.put("TableHeader.background",color);
 		UIManager.put("ToggleButton.background",color);
+		
+		/*Font font = UIManager.getFont("Button.font");
+		font = UIManager.getFont("Checkbox.font");
+		font = UIManager.getFont("CheckBoxMenuItem.font");
+		font = UIManager.getFont("ComboBox.font");
+		font = UIManager.getFont("EditorPane.font");
+		font = UIManager.getFont("FormattedTextField.font");
+		font = UIManager.getFont("IconButton.font");
+		font = UIManager.getFont("InternalFrame.optionDialogTitleFont");
+		font = UIManager.getFont("InternalFrame.paletteTitleFont");
+		font = UIManager.getFont("InternalFrame.titleFont");
+		font = UIManager.getFont("Label.font");
+		font = UIManager.getFont("List.font");
+		font = UIManager.getFont("Menu.font");
+		font = UIManager.getFont("Menubar.font");
+		font = UIManager.getFont("MenuItem.font");
+		font = UIManager.getFont("OptionPane.buttonFont");
+		font = UIManager.getFont("OptionPane.font");
+		font = UIManager.getFont("OptionPane.messageFont");
+		font = UIManager.getFont("Panel.font");
+		font = UIManager.getFont("PasswordField.font");
+		font = UIManager.getFont("PopupMenu.font");
+		font = UIManager.getFont("ProgressBar.font");
+		font = UIManager.getFont("RadioButton.font");
+		font = UIManager.getFont("RadioButtonMenuItem.font");
+		font = UIManager.getFont("ScrollPane.font");
+		font = UIManager.getFont("Slider.font");
+		font = UIManager.getFont("Spinner.font");
+		font = UIManager.getFont("TabbedPane.font");
+		font = UIManager.getFont("TabbedPane.smallFont");
+		font = UIManager.getFont("Table.font");
+		font = UIManager.getFont("TableHeader.font");
+		font = UIManager.getFont("TextArea.font");
+		font = UIManager.getFont("TextField.font");
+		font = UIManager.getFont("TextPane.font");
+		font = UIManager.getFont("TitledBorder.font");
+		font = UIManager.getFont("ToggleButton.font");
+		font = UIManager.getFont("ToolBar.font");
+		font = UIManager.getFont("ToolTip.font");
+		font = UIManager.getFont("Tree.font");
+		font = UIManager.getFont("Viewport.font");*/
 	}
 }
