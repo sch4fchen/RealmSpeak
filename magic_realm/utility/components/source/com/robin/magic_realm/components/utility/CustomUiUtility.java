@@ -29,6 +29,16 @@ public class CustomUiUtility {
 	public static final int BACKGROUND_COLOR_1 = 1;
 	public static final int BACKGROUND_COLOR_2 = 2;
 	public static final int BACKGROUND_COLOR_3 = 3;
+	public static final String RESPONSIVE = "responsive";
+	
+	public static boolean isResponsive() {
+		PreferenceManager gamePrefMan = RealmUtility.getRealmSpeakPrefs();
+		if (gamePrefMan.canLoad()) {
+			gamePrefMan.loadPreferences();
+		}
+		
+		return gamePrefMan.getBoolean(RESPONSIVE);
+	}
 	
 	public static Color getBackgroundColor() {
 		PreferenceManager gamePrefMan = RealmUtility.getRealmSpeakPrefs();

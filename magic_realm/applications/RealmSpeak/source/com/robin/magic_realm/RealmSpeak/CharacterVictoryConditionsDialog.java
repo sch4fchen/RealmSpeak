@@ -161,6 +161,7 @@ public class CharacterVictoryConditionsDialog extends AggressiveDialog {
 		
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		setResizable(false);
+		pack();
 		updateControls();
 	}
 	private JSpinner createSpinner() {

@@ -38,6 +38,8 @@ public class RealmSpeakOptionPanel extends JDialog {
 	protected JRadioButton systemLookAndFeelOption;
 	protected JRadioButton crossPlatformLookAndFeelOption;
 	
+	protected JCheckBox responsive;
+	
 	protected JRadioButton backgroundColor0;
 	protected JRadioButton backgroundColor1;
 	protected JRadioButton backgroundColor2;
@@ -99,6 +101,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 	private void updateControls() {
 		crossPlatformLookAndFeelOption.setSelected(options.getOptions().isPref(RealmSpeakOptions.METAL_LNF));
 		systemLookAndFeelOption.setSelected(!crossPlatformLookAndFeelOption.isSelected());
+		responsive.setSelected(options.getOptions().getBoolean(CustomUiUtility.RESPONSIVE));
 		switch(options.getOptions().getInt(CustomUiUtility.BACKGROUND_COLOR)) {
 			default:
 			case CustomUiUtility.BACKGROUND_COLOR_0:
@@ -229,6 +232,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		options.getOptions().set(RealmSpeakOptions.CHARACTER_CHIT_DISPLAY_STYLE,getCharacterChitDisplayStyle());
 		options.getOptions().set(RealmSpeakOptions.TILES_DISPLAY_STYLE,getTilesDisplayStyle());
 		options.getOptions().set(RealmSpeakOptions.METAL_LNF,crossPlatformLookAndFeelOption.isSelected());
+		options.getOptions().set(CustomUiUtility.RESPONSIVE,isResponsive());
 		options.getOptions().set(CustomUiUtility.BACKGROUND_COLOR,getSelectedBackgroundColor());
 		options.getOptions().set(RealmSpeakOptions.MAP_SLIDER,mapSliderOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.HIGHLIGHT_CLEARING_NUMBERS,highlightClearingNumbersOption.isSelected());
@@ -252,6 +256,12 @@ public class RealmSpeakOptionPanel extends JDialog {
 		options.getOptions().set(RealmSpeakOptions.TURN_END_RESULTS,showTurnEndResultsOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.ENABLE_SOUND,enableSoundItem.isSelected());
 		mainFrame.saveFramePreferences();
+	}
+	private boolean isResponsive() {
+		if (responsive.isSelected()) {
+			return true;
+		}
+		return false;
 	}
 	private int getSelectedBackgroundColor() {
 		if (backgroundColor0.isSelected()) {
@@ -343,6 +353,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		
 		Box left = Box.createVerticalBox();
 		left.add(getLookAndFeelOptions());
+		left.add(getResponsiveOption());
 		left.add(getBackgroundColorChooser());
 		left.add(getSoundOptionPanel());
 		left.add(getActionIconOptions());
@@ -417,6 +428,13 @@ public class RealmSpeakOptionPanel extends JDialog {
 		});
 		group.add(systemLookAndFeelOption);
 		panel.add(systemLookAndFeelOption);
+		return panel;
+	}
+	private JPanel getResponsiveOption() {
+		JPanel panel = new JPanel(new GridLayout(1,1));
+		panel.setBorder(BorderFactory.createTitledBorder("Responsive UI"));
+		responsive = new JCheckBox("Enabled");
+		panel.add(responsive);
 		return panel;
 	}
 	private JPanel getBackgroundColorChooser() {

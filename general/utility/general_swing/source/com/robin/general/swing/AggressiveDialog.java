@@ -21,6 +21,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import com.robin.magic_realm.components.utility.CustomUiUtility;
+
 /**
  * A JDialog that remains on top of its parent, regardless of window switching
  */
@@ -63,6 +65,7 @@ public class AggressiveDialog extends JDialog {
 				toFront();
 			}
 		};
+		if (CustomUiUtility.isResponsive()) pack();
 	}
 	public void setVisible(boolean val) {
 		super.setVisible(val);

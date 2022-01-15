@@ -27,6 +27,7 @@ import com.robin.game.objects.GameObject;
 import com.robin.general.swing.AggressiveDialog;
 import com.robin.general.swing.ComponentTools;
 import com.robin.magic_realm.components.MagicRealmColor;
+import com.robin.magic_realm.components.utility.CustomUiUtility;
 import com.robin.magic_realm.components.utility.RealmLoader;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -147,6 +148,7 @@ public class CharacterOptionsDialog extends AggressiveDialog {
 
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		setResizable(false);
+		if (CustomUiUtility.isResponsive()) pack();
 	}
 
 	public int getChosenBonusChits() {
