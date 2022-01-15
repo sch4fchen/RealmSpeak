@@ -58,10 +58,11 @@ public class CharacterOptionsDialog extends AggressiveDialog {
 	}
 
 	private void initComponents(boolean forceInnStart, boolean allowDevelopment, boolean developmentPastFour) {
-		setSize(400, 375);
+		setSize(425, 375);
 		getContentPane().setLayout(new BorderLayout());
 
 		JPanel sideBarPanel = new JPanel(new GridLayout(2,1));
+		sideBarPanel.setPreferredSize(new Dimension(150,200));
 		
 		Box locationPanel = Box.createVerticalBox();
 		locationPanel.setBorder(BorderFactory.createTitledBorder("Starting Location"));
@@ -74,7 +75,6 @@ public class CharacterOptionsDialog extends AggressiveDialog {
 			locationPanel.add(startChoose[i]);
 		}
 		startChoose[0].setSelected(true);
-		locationPanel.setPreferredSize(new Dimension(100,200));
 		locationPanel.add(Box.createVerticalGlue());
 		sideBarPanel.add(locationPanel);
 		
