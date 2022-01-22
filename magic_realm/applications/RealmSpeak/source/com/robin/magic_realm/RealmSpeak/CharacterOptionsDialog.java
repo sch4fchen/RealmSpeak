@@ -27,6 +27,7 @@ import com.robin.game.objects.GameObject;
 import com.robin.general.swing.AggressiveDialog;
 import com.robin.general.swing.ComponentTools;
 import com.robin.magic_realm.components.MagicRealmColor;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.CustomUiUtility;
 import com.robin.magic_realm.components.utility.RealmLoader;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -118,11 +119,12 @@ public class CharacterOptionsDialog extends AggressiveDialog {
 		
 		add(centerPanel, BorderLayout.CENTER);
 		add(sideBarPanel,BorderLayout.EAST);
-
 		
 		Box line = Box.createHorizontalBox();
 		randomInventorySources = new JCheckBox("Fetch inventory from random location(s)", false);
-		line.add(randomInventorySources);
+		if (!this.character.getGameObject().hasThisAttribute(Constants.CUSTOM_CHARACTER)) {
+			line.add(randomInventorySources);
+		}
 		line.add(Box.createHorizontalGlue());
 
 		cancelButton = new JButton("Cancel");
