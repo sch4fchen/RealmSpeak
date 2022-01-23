@@ -45,6 +45,7 @@ public class RealmCharacterBuilderPanel extends JPanel {
 	private JFrame parent;
 	private JLabel mainIcon;
 	private JLabel fairnessLabel;
+	private JLabel chitLabel;
 	private JLabel moveFairnessReasonLabel;
 	private JLabel fightFairnessReasonLabel;
 	
@@ -485,8 +486,11 @@ public class RealmCharacterBuilderPanel extends JPanel {
 				fairnessLabel = new JLabel("",JLabel.CENTER);
 				fairnessLabel.setFont(new Font("Dialog",Font.BOLD|Font.ITALIC,16));
 				fairnessLabel.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
-			fairnessPanel.add(fairnessLabel,BorderLayout.CENTER);
-				JPanel mfReasonPanel = new JPanel(new GridLayout());
+			fairnessPanel.add(fairnessLabel,BorderLayout.NORTH);
+				chitLabel = new JLabel("",JLabel.CENTER);
+				chitLabel.setFont(new Font("Dialog",Font.BOLD,14));
+			fairnessPanel.add(chitLabel,BorderLayout.CENTER);
+			JPanel mfReasonPanel = new JPanel(new GridLayout());
 				moveFairnessReasonLabel = new JLabel("",JLabel.CENTER);
 				moveFairnessReasonLabel.setFont(new Font("Dialog",Font.BOLD,14));
 				moveFairnessReasonLabel.setForeground(Color.blue);
@@ -711,6 +715,17 @@ public class RealmCharacterBuilderPanel extends JPanel {
 		sb.append(totalScore>0?"Advantage of ":"Disadvantage of ");
 		sb.append(Math.abs(totalScore));
 		fairnessLabel.setText(totalScore==0?"":sb.toString());
+		if (moveCount <=5 && fightCount <=7) {
+			chitLabel.setText("");
+		}
+		else {
+			if (moveCount>5) {
+				chitLabel.setText("Warning: More than 5 MOVE chits ("+moveCount+").");
+			}
+			if (fightCount>7) {
+				chitLabel.setText("Warning: More than 7 FIGHT chits ("+fightCount+").");
+			}
+		}
 	}
 	private void updateAllWeaponIcons() {
 		for (int i=0;i<levelPanel.length;i++) {
@@ -747,7 +762,7 @@ public class RealmCharacterBuilderPanel extends JPanel {
 		private JButton editWeaponButton;
 		
 		// Starting Spells
-		private JComboBox startingSpellCount;
+		private JComboBox<String> startingSpellCount;
 		
 		// Special Advantages
 		private AdvantagePanel advantagePanel0;
@@ -832,7 +847,7 @@ public class RealmCharacterBuilderPanel extends JPanel {
 				JPanel middleLeft = new JPanel(new BorderLayout());
 				middleLeft.add(getWeaponPanel(),"Center");
 					Box line = group.createLabelLine("# Spells");
-					startingSpellCount = new JComboBox(RealmCharacterConstants.SPELL_COUNT);
+					startingSpellCount = new JComboBox<>(RealmCharacterConstants.SPELL_COUNT);
 					startingSpellCount.setSelectedItem(String.valueOf(model.getCharacter().getGameObject().getInt(levelKey,"spellcount")));
 					startingSpellCount.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent ev) {

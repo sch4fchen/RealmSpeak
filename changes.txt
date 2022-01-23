@@ -4,6 +4,7 @@ QUEST UPDATE:
 NEW FEATURES:
 # Option for partly responsive UI
 # Hide "Fetch inventory from random location(s)" option for custom characters (has no influence for custom characters)
+# Character Editor: Warning if count of move/fight chits is more than 5/7
 BUGS/ISSUES:
 # Fix multiple starting weapons for custom characters
 
