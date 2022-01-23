@@ -4483,6 +4483,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	private GameObject fetchItemFromTemplate(String weapon) {
 		// Fetch from a template
 		GameObject item = null;
+		boolean weaponReceived = false;
 		ArrayList<GameObject> weapons = CustomCharacterLibrary.getSingleton().getCharacterWeapons(getGameObject());
 		if (!weapons.isEmpty()) {
 			String board = getGameObject().getThisAttribute(Constants.BOARD_NUMBER);
@@ -4493,10 +4494,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 					newWeapon.setName(newWeapon.getName()+" "+board);
 					newWeapon.setThisAttribute(Constants.BOARD_NUMBER,board);
 				}
-				if (go.getName().equals(weapon)) {
+				if (go.getName().equals(weapon) && !weaponReceived) {
 					// Found it - copy the attributes
 					item = newWeapon;
 					getGameObject().add(item);
+					weaponReceived = true;
 				}
 				else {
 					WeaponChitComponent wcc = (WeaponChitComponent)RealmComponent.getRealmComponent(newWeapon);

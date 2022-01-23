@@ -3,7 +3,7 @@ NEW FEATURES:
 # Option for partly responsive UI
 # Hide "Fetch inventory from random location(s)" option for custom characters (has no influence for custom characters)
 BUGS/ISSUES:
-# Fix multiple weapons for custom characters using the import function
+# Fix multiple starting weapons for custom characters
 
 Version 1.1.5.1 - Changes since 1.1.5.0
 QUEST UPDATE:
