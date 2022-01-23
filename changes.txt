@@ -1,4 +1,6 @@
 Version 1.1.5.2 - Changes since 1.1.5.1
+QUEST UPDATE:
+# Fix teleport PW5->PW2 in quest "Find A Hidden Trail"
 NEW FEATURES:
 # Option for partly responsive UI
 # Hide "Fetch inventory from random location(s)" option for custom characters (has no influence for custom characters)
@@ -7,7 +9,7 @@ BUGS/ISSUES:
 
 Version 1.1.5.1 - Changes since 1.1.5.0
 QUEST UPDATE:
-#Fix teleport EV2->EV1 in quest "Find A Side Path"
+# Fix teleport EV2->EV1 in quest "Find A Side Path"
 NEW FEATURES:
 # Combat Summary: Add overview with participants
 # Option to choose color scheme
