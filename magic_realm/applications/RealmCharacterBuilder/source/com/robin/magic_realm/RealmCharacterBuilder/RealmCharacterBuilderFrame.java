@@ -332,7 +332,7 @@ public class RealmCharacterBuilderFrame extends JFrame {
 		}
 		model.saveToFile(finalPath,true);
 	}
-	private void close() {
+	private static void close() {
 		System.exit(0);
 	}
 	private void startNewCharacter() {
@@ -372,7 +372,7 @@ public class RealmCharacterBuilderFrame extends JFrame {
 		frame.setLocationRelativeTo(null);
 		frame.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent ev) {
-				frame.close();
+				RealmCharacterBuilderFrame.close();
 			}
 		});
 		frame.setVisible(true);

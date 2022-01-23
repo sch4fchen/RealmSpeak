@@ -62,9 +62,8 @@ public class RealmCharacterBuilderModel {
 	public RealmCharacterBuilderModel(GameData data) {
 		chit = new GameObject[12];
 		int n=0;
-		ArrayList list = new ArrayList(data.getGameObjects());
-		for (Iterator i=list.iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		ArrayList<GameObject> list = new ArrayList<>(data.getGameObjects());
+		for (GameObject go : list) {
 			String opt = go.getThisAttribute("optional");
 			if ("add".equals(opt)) {
 				continue;
@@ -80,7 +79,7 @@ public class RealmCharacterBuilderModel {
 				}
 			}
 		}
-		weaponHash = new Hashtable<String,GameObject>();
+		weaponHash = new Hashtable<>();
 		GamePool pool = new GamePool(character.getGameObject().getGameData().getGameObjects());
 		ArrayList<GameObject> weapons = pool.find(TemplateLibrary.WEAPON_QUERY);
 		for (GameObject go:weapons) {
@@ -112,14 +111,14 @@ public class RealmCharacterBuilderModel {
 		return characterToken;
 	}
 	public ArrayList<GameObject> getAllChits() {
-		ArrayList<GameObject> list = new ArrayList<GameObject>();
+		ArrayList<GameObject> list = new ArrayList<>();
 		for (int i=1;i<=4;i++) {
 			list.addAll(getChits(i));
 		}
 		return list;
 	}
 	public ArrayList<GameObject> getChits(int level) {
-		ArrayList<GameObject> list = new ArrayList<GameObject>();
+		ArrayList<GameObject> list = new ArrayList<>();
 		int start = ((level-1)*3);
 		for (int i=start;i<start+3;i++) {
 			list.add(chit[i]);
@@ -150,7 +149,7 @@ public class RealmCharacterBuilderModel {
 			chit[i].setThisAttribute(Constants.ICON_FOLDER,iconFolder);
 		}
 	}
-	public void updateWeaponIcon(GameObject weapon,ImageIcon icon) {
+	public static void updateWeaponIcon(GameObject weapon,ImageIcon icon) {
 		String iconFolder = RealmCharacterConstants.CUSTOM_ICON_BASE_PATH+"weapons";
 		String iconName = weapon.getName().toLowerCase(); // this may change when the file is saved!
 		String iconPath = iconFolder+"/"+iconName;
@@ -183,7 +182,7 @@ public class RealmCharacterBuilderModel {
 			}
 		}
 		GamePool pool = new GamePool(character.getGameObject().getGameData().getGameObjects());
-		ArrayList<GameObject> toRemove = new ArrayList<GameObject>();
+		ArrayList<GameObject> toRemove = new ArrayList<>();
 		ArrayList<GameObject> currentWeapons = pool.find(TemplateLibrary.WEAPON_QUERY);
 		for (GameObject go:currentWeapons) {
 			if (!weapons.contains(go.getName())) {
@@ -224,7 +223,7 @@ public class RealmCharacterBuilderModel {
 				xmlFile.delete();
 			}
 			
-			ArrayList<File> fileList = new ArrayList<File>();
+			ArrayList<File> fileList = new ArrayList<>();
 			fileList.add(xmlFile);
 			
 			// Save the images
@@ -307,7 +306,7 @@ public class RealmCharacterBuilderModel {
 		this.pictureIcon = pictureIcon;
 	}
 	public ArrayList<GameObject> getAllUniqueArmor(GameData magicRealmData) {
-		ArrayList<String> armorNames = new ArrayList<String>();
+		ArrayList<String> armorNames = new ArrayList<>();
 		for (int i=1;i<=4;i++) {
 			String armor = character.getGameObject().getAttribute("level_"+i,"armor");
 			if (armor!=null) {
@@ -320,7 +319,7 @@ public class RealmCharacterBuilderModel {
 				}
 			}
 		}
-		ArrayList<GameObject> list = new ArrayList<GameObject>();
+		ArrayList<GameObject> list = new ArrayList<>();
 		GamePool pool = new GamePool(magicRealmData.getGameObjects());
 		for (String armorName:armorNames) {
 			GameObject template = pool.findFirst("!magic,Name="+armorName);
@@ -331,14 +330,14 @@ public class RealmCharacterBuilderModel {
 		return list;
 	}
 	public ArrayList<GameObject> getAllUniqueWeapons() {
-		ArrayList<String> weaponNames = new ArrayList<String>();
+		ArrayList<String> weaponNames = new ArrayList<>();
 		for (int i=1;i<=4;i++) {
 			String name = character.getGameObject().getAttribute("level_"+i,"weapon");
 			if (name!=null && !weaponNames.contains(name)) {
 				weaponNames.add(name);
 			}
 		}
-		ArrayList<GameObject> list = new ArrayList<GameObject>();
+		ArrayList<GameObject> list = new ArrayList<>();
 		for (String weaponName:weaponNames) {
 			GameObject go = getWeapon(weaponName);
 			list.add(go);
@@ -348,15 +347,14 @@ public class RealmCharacterBuilderModel {
 	public ArrayList<GameObject> getAllCompanions() {
 		ArrayList<String> companionNames = new ArrayList<>();
 		for (int i=1;i<=4;i++) {
-			ArrayList list = character.getGameObject().getAttributeList("level_"+i,Constants.COMPANION_NAME);
+			ArrayList<String> list = character.getGameObject().getAttributeList("level_"+i,Constants.COMPANION_NAME);
 			if (list!=null) {
 				companionNames.addAll(list);
 			}
 		}
 		ArrayList<GameObject> ret = new ArrayList<>();
 		for (String name:companionNames) {
-			for (Iterator i=character.getGameObject().getGameData().getGameObjects().iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
+			for (GameObject go : character.getGameObject().getGameData().getGameObjects()) {
 				if (name.equals(go.getName())) {
 					ret.add(go);
 					if (go.getHoldCount()>0) {
@@ -447,15 +445,14 @@ public class RealmCharacterBuilderModel {
 		character.setThisAttribute(Constants.CUSTOM_CHARACTER);
 		
 		// Create all the chits
-		for (Iterator i=template.getHold().iterator();i.hasNext();) {
-			GameObject chitTemplate = (GameObject)i.next();
+		for (GameObject chitTemplate : template.getHold()) {
 			GameObject chit = gameData.createNewObject();
 			chit.copyAttributesFrom(chitTemplate);
 			character.add(chit);
 		}
 		
 		// Create all the weapons
-		ArrayList<String> weaponNames = new ArrayList<String>();
+		ArrayList<String> weaponNames = new ArrayList<>();
 		for (int i=1;i<=4;i++) {
 			String name = template.getAttribute("level_"+i,"weapon");
 			if (!weaponNames.contains(name)) {
@@ -465,12 +462,16 @@ public class RealmCharacterBuilderModel {
 		if (!weaponNames.isEmpty()) {
 			GamePool pool = new GamePool(template.getGameData().getGameObjects());
 			ArrayList<GameObject> allWeapons = pool.find(TemplateLibrary.WEAPON_QUERY);
+			ArrayList<String> createdWeapons = new ArrayList<>();
 			for (GameObject go:allWeapons) {
 				if (weaponNames.contains(go.getName())) {
 					weaponNames.remove(go.getName());
 				}
-				GameObject weapon = gameData.createNewObject();
-				weapon.copyAttributesFrom(go);
+				if (!createdWeapons.contains(go.getName())) {
+					GameObject weapon = gameData.createNewObject();
+					weapon.copyAttributesFrom(go);
+					createdWeapons.add(go.getName());
+				}
 			}
 		}
 		
@@ -532,7 +533,7 @@ public class RealmCharacterBuilderModel {
 					String weaponName = cropName(CHARACTER_WEAPON_GIF_PREFIX,model.getCharacter().getGameObject().getName(),filename);
 					weaponName = weaponName.replace('_',' ');
 					GameObject weapon = model.getWeapon(weaponName);
-					model.updateWeaponIcon(weapon,icon);
+					RealmCharacterBuilderModel.updateWeaponIcon(weapon,icon);
 				}
 				else if (filename.indexOf(CHARACTER_BADGE_GIF_PREFIX)>0) {
 					ImageIcon icon = IconFactory.findIcon(files[i].getAbsolutePath());
@@ -563,7 +564,7 @@ public class RealmCharacterBuilderModel {
 		if (System.getProperty("customFolder")!=null) {
 			customFolderPath = System.getProperty("customFolder")+File.separator;
 		}
-		ArrayList<String> unknownChars = new ArrayList<String>();
+		ArrayList<String> unknownChars = new ArrayList<>();
 		File customFolder = new File(customFolderPath);
 		if (customFolder.isDirectory() && customFolder.exists()) {
 			File[] charFile = customFolder.listFiles();
@@ -616,8 +617,7 @@ public class RealmCharacterBuilderModel {
 			newChar.copyAttributesFrom(template);
 			newChar.setThisKeyVals(hostPrefs.getGameKeyVals());
 			RealmComponent.clearOwner(newChar);
-			for (Iterator i=template.getHold().iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
+			for (GameObject go : template.getHold()) {
 				if (go.hasThisAttribute("character_chit")) {
 					GameObject newChit = dataSource.createNewObject();
 					newChit.copyAttributesFrom(go);
