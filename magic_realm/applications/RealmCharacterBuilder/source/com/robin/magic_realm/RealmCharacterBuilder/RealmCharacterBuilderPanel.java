@@ -833,8 +833,11 @@ public class RealmCharacterBuilderPanel extends JPanel {
 				chitFairness[n].setBorder(BorderFactory.createLoweredBevelBorder());
 				JPanel panel = new JPanel(new BorderLayout());
 				panel.add(Box.createVerticalStrut(5),"North");
-				panel.add(chit[n],"Center");
-				panel.add(chitFairness[n],"South");
+				JPanel chitPanel = new JPanel(new BorderLayout());
+				chitPanel.add(chit[n],"North");
+				chitPanel.add(chitFairness[n],"Center");
+				chitPanel.add(Box.createVerticalStrut(50),"South");
+				panel.add(chitPanel);
 				box.add(panel);
 				n++;
 			}
