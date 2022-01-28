@@ -4483,8 +4483,18 @@ public class CharacterWrapper extends GameObjectWrapper {
 	private GameObject fetchItemFromTemplate(String weapon) {
 		// Fetch from a template
 		GameObject item = null;
-		boolean weaponReceived = false;
-		ArrayList<GameObject> weapons = CustomCharacterLibrary.getSingleton().getCharacterWeapons(getGameObject());
+		ArrayList<GameObject> unFilteredWeapons = CustomCharacterLibrary.getSingleton().getCharacterWeapons(getGameObject());
+		
+		//filter duplicates
+		ArrayList<GameObject> weapons = new ArrayList<>();
+		ArrayList<String> weaponNames = new ArrayList<>();
+		for (GameObject go:unFilteredWeapons) {
+			if (!weaponNames.contains(go.getName())) {
+				weapons.add(go);
+				weaponNames.add(go.getName());
+			}
+		}
+		
 		if (!weapons.isEmpty()) {
 			String board = getGameObject().getThisAttribute(Constants.BOARD_NUMBER);
 			for (GameObject go:weapons) {
@@ -4494,11 +4504,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 					newWeapon.setName(newWeapon.getName()+" "+board);
 					newWeapon.setThisAttribute(Constants.BOARD_NUMBER,board);
 				}
-				if (go.getName().equals(weapon) && !weaponReceived) {
+				if (go.getName().equals(weapon)) {
 					// Found it - copy the attributes
 					item = newWeapon;
 					getGameObject().add(item);
-					weaponReceived = true;
 				}
 				else {
 					WeaponChitComponent wcc = (WeaponChitComponent)RealmComponent.getRealmComponent(newWeapon);
