@@ -32,3 +32,19 @@ The folder contents should be:
      mail.jar
      activation.jar
 	 *.bat files for running the game
+
+
+Graphics glitches with RealmSpeak in Windows - a possible fix
+Edit the file "run.bat" in your realmspeak directory.
+Add the following line after the line "echo off"
+
+set J2D_D3D=false
+
+This change simply tells Java to not use D3D rendering for this 2D application.
+So, the entire "run.bat" file looks like (for the current version of realmspeak):
+
+echo off
+set J2D_D3D=false
+@start javaw -mx512m -cp mail.jar;activation.jar;RealmSpeakFull.jar com.robin.magic_realm.RealmSpeak.RealmSpeakFrame %1
+
+Hopefully this saves people some time as there are a lot of posts with suggestions which don't work reliably or being forced to run in a VM.
