@@ -7,6 +7,7 @@ NEW FEATURES:
 # Character Editor: Warning if count of move/fight chits is more than 5/7
 BUGS/ISSUES:
 # Fix multiple starting weapons for custom characters
+# Fix displaying quests after canceling discard
 
 Version 1.1.5.1 - Changes since 1.1.5.0
 QUEST UPDATE:

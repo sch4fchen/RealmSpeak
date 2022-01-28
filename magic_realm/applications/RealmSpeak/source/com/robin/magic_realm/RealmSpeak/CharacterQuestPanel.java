@@ -246,9 +246,9 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 				RealmLogging.logMessage(getCharacter().getName(),"Discarded Quest Card: "+quest.getName());
 			}
 			getCharacter().setDiscardedQuests(true);
-			updatePanel();
 			updateControls();
 		}
+		updatePanel();
 	}
 
 	private void doDrawQuests() {
