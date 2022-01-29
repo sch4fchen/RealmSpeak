@@ -1,3 +1,5 @@
+Version 1.1.5.3 - Changes since 1.1.5.2
+
 Version 1.1.5.2 - Changes since 1.1.5.1
 QUEST UPDATE:
 # Fix teleport PW5->PW2 in quest "Find A Hidden Trail"
