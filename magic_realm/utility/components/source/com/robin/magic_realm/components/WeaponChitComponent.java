@@ -33,7 +33,7 @@ public class WeaponChitComponent extends RoundChitComponent {
 	public static final String UNALERTED = LIGHT_SIDE_UP;
 	public static final String ALERTED = DARK_SIDE_UP;
 
-	protected WeaponChitComponent(GameObject obj) {
+	public WeaponChitComponent(GameObject obj) {
 		super(obj);
 		try {
 			lightColor = MagicRealmColor.getColor(getAttribute("unalerted","chit_color"));

@@ -40,6 +40,7 @@ public class StartingInventoryEditPanel extends AdvantageEditPanel {
 	private JButton treasureInventoryButton;
 	private JButton renameTreasureButton;
 	private JButton horsesInventoryButton;
+	private JButton weaponInventoryButton;
 	
 	private RealmComponent extraInventory;
 	
@@ -113,6 +114,20 @@ public class StartingInventoryEditPanel extends AdvantageEditPanel {
 			line.add(horsesInventoryButton);
 			line.add(Box.createHorizontalGlue());
 		main.add(line);
+		main.add(Box.createVerticalStrut(25));
+			line = Box.createHorizontalBox();
+			line.add(Box.createHorizontalGlue());
+			weaponInventoryButton = new JButton("Pick Weapon");
+			weaponInventoryButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					pickWeapon();
+					updateIcon();
+				}
+			});
+			ComponentTools.lockComponentSize(weaponInventoryButton,100,40);
+			line.add(weaponInventoryButton);
+			line.add(Box.createHorizontalGlue());
+		main.add(line);
 		main.add(Box.createVerticalGlue());
 		add(main,"Center");
 		
@@ -140,11 +155,19 @@ public class StartingInventoryEditPanel extends AdvantageEditPanel {
 	}
 	private void pickHorse() {
 		ArrayList<String> query = new ArrayList<>();
-		query.add("original_game"); // original game only for now
 		query.add("horse");
 		GameObject go = pickGameObject(query,"Choose a Horse:");
 		if (go!=null) {
 			extraInventory = new SteedChitComponent(go);
+		}
+	}
+	private void pickWeapon() {
+		ArrayList<String> query = new ArrayList<>();
+		query.add("weapon");
+		query.add("!treasure");
+		GameObject go = pickGameObject(query,"Choose a Weapon:");
+		if (go!=null) {
+			extraInventory = new WeaponChitComponent(go);
 		}
 	}
 	private GameObject pickGameObject(ArrayList<String> query,String title) {
@@ -156,17 +179,30 @@ public class StartingInventoryEditPanel extends AdvantageEditPanel {
 				remove.add(go);
 			}
 			else {
-				go.setThisAttribute(Constants.FACING_KEY,CardComponent.FACE_UP);
+				if (!go.hasThisAttribute("weapon")) {
+					go.setThisAttribute(Constants.FACING_KEY,CardComponent.FACE_UP);
+				}
 			}
 		}
 		list.removeAll(remove);
-		Collections.sort(list,new Comparator<GameObject>() {
+		
+		//filter duplicates
+		ArrayList<GameObject> listFiltered = new ArrayList<>();
+		ArrayList<String> names = new ArrayList<>();
+		for (GameObject go:list) {
+			if (!names.contains(go.getName())) {
+				listFiltered.add(go);
+				names.add(go.getName());
+			}
+		}
+		
+		Collections.sort(listFiltered,new Comparator<GameObject>() {
 			public int compare(GameObject g1,GameObject g2) {
 				return g1.getName().compareTo(g2.getName());
 			}
 		});
 		RealmObjectChooser chooser = new RealmObjectChooser(title,magicRealmData,true,true);
-		chooser.addObjectsToChoose(list);
+		chooser.addObjectsToChoose(listFiltered);
 		chooser.setVisible(true);
 		RealmComponent.reset(); // Don't keep a cache!
 		GameObject pick = chooser.getChosenObject();
@@ -179,7 +215,9 @@ public class StartingInventoryEditPanel extends AdvantageEditPanel {
 			go.removeThisAttribute("activated");
 			go.removeThisAttribute("native");
 			go.setThisAttribute(Constants.LEVEL_KEY_TAG,getLevelKey());
-			go.setThisAttribute(Constants.FACING_KEY,CardComponent.FACE_UP);
+			if (!go.hasThisAttribute("weapon")) {
+				go.setThisAttribute(Constants.FACING_KEY,CardComponent.FACE_UP);
+			}
 			pick = go;
 		}
 		return pick;
