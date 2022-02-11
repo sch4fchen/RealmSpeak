@@ -234,7 +234,7 @@ public class CombatSummarySheet extends JPanel {
 					lureButton.setBounds(x,y-35,65,20);
 					add(lureButton);
 				}
-				if (DenizenCombatSheet.denizenCanFlip(battleParticipant)) {
+				if (!battleParticipant.isCharacter() && DenizenCombatSheet.denizenCanFlip(battleParticipant)) {
 					JButton flip = new JButton("Flip");
 					flip.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent ev) {
@@ -244,7 +244,7 @@ public class CombatSummarySheet extends JPanel {
 					flip.setBounds(x,y+12,65,12);
 					add(flip);	
 				}
-				if (battleParticipant.hasHorse()) {
+				if (!battleParticipant.isCharacter() && battleParticipant.hasHorse()) {
 					JButton flipHorse = new JButton("Flip steed");
 					flipHorse.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent ev) {

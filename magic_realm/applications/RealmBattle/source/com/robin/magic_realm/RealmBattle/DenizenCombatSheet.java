@@ -693,11 +693,11 @@ public class DenizenCombatSheet extends CombatSheet {
 	public static boolean denizenCanFlip(RealmComponent sheetOwner) {
 		if (sheetOwner.isMonster()) {
 			MonsterChitComponent monster = (MonsterChitComponent)sheetOwner;
-			if (!monster.canPinOpponent()) {
-				return true;
+			if (monster.canPinOpponent()) {
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 	
 	/**
