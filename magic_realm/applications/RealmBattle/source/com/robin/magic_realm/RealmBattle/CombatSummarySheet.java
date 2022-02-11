@@ -239,20 +239,21 @@ public class CombatSummarySheet extends JPanel {
 					flip.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent ev) {
 							battleParticipant.flip();
+							combatFrame.repaintCombatSheetPanel();
 						}
 					});
 					flip.setBounds(x,y+12,65,12);
 					add(flip);	
 				}
 				if (!battleParticipant.isCharacter() && battleParticipant.hasHorse()) {
-					JButton flipHorse = new JButton("Flip steed");
+					JButton flipHorse = new JButton("FlipSteed");
 					flipHorse.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent ev) {
 							BattleHorse horse = battleParticipant.getHorse();
 							horse.flip();
 						}
 					});
-					flipHorse.setBounds(x-5,y+25,88,12);
+					flipHorse.setBounds(x-5,y+25,76,12);
 					add(flipHorse);	
 				}
 			}

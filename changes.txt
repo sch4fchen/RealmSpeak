@@ -1,6 +1,6 @@
 Version 1.1.5.3 - Changes since 1.1.5.2
 BUGS/ISSUES:
-# Fix possibility to flip hirelings and denizens  on combat sheet
+# Fix flipping hirelings and denizens on combat sheet
 
 Version 1.1.5.2 - Changes since 1.1.5.1
 QUEST UPDATE:

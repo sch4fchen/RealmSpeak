@@ -1345,6 +1345,9 @@ public class CombatFrame extends JFrame {
 			updateControls();
 		}
 	}
+	public void repaintCombatSheetPanel() {
+		combatSheetPanel.repaint();
+	}
 	private RealmComponent getSelectedParticipant() {
 		int row = participantTable.getSelectedRow();
 		if (row>0) {
