@@ -1,3 +1,5 @@
+Version 1.1.5.4 - Changes since 1.1.5.3
+
 Version 1.1.5.3 - Changes since 1.1.5.2
 BUGS/ISSUES:
 # Fix flipping hirelings and denizens on combat sheet
