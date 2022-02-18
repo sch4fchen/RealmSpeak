@@ -161,7 +161,7 @@ public class CharacterVictoryConditionsDialog extends AggressiveDialog {
 		
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		setResizable(false);
-		pack();
+		if (CustomUiUtility.isResponsive()) pack();
 		updateControls();
 	}
 	private JSpinner createSpinner() {
@@ -187,7 +187,7 @@ public class CharacterVictoryConditionsDialog extends AggressiveDialog {
 			okayButton.setEnabled(assigned==required.intValue());
 		}
 	}
-	private int getIntFromSpinner(JSpinner spinner) {
+	private static int getIntFromSpinner(JSpinner spinner) {
 		return spinner==null?0:(Integer)spinner.getValue();
 	}
 	
