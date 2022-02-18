@@ -2,6 +2,8 @@ Version 1.1.5.4 - Changes since 1.1.5.3
 QUEST UPDATE:
 # Fix discovery requirement of lost castle in quest "The Hidden Castle"
 # Fix path requirements for quest "Lure the Underworld"
+BUGS/ISSUES:
+# Fix size of Victory Requirements dialog with reponsive UI turned off
 
 Version 1.1.5.3 - Changes since 1.1.5.2
 BUGS/ISSUES:
