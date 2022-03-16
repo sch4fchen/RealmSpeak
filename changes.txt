@@ -4,6 +4,7 @@ QUEST UPDATE:
 # Fix path requirements for quest "Lure the Underworld"
 BUGS/ISSUES:
 # Fix size of Victory Requirements dialog with reponsive UI turned off
+# Fix next button in combat when fighting without an weapon
 
 Version 1.1.5.3 - Changes since 1.1.5.2
 BUGS/ISSUES:
