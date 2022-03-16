@@ -219,7 +219,7 @@ public class DenizenCombatSheet extends CombatSheet {
 				if (combatFrame.getActiveCharacter()!=null
 						&& combatFrame.getActiveCharacterIsHere()
 						&& (combatFrame.getActiveParticipant().getTarget()==null
-						|| (combatFrame.getActiveParticipant().get2ndTarget()==null && combatFrame.getActiveParticipant().isCharacter() &&  (new CharacterWrapper(combatFrame.getActiveParticipant().getGameObject())).getActiveWeapons().size() > 1)) 
+						|| (combatFrame.getActiveParticipant().get2ndTarget()==null && combatFrame.getActiveParticipant().isCharacter() && (new CharacterWrapper(combatFrame.getActiveParticipant().getGameObject())).getActiveWeapons() !=null && (new CharacterWrapper(combatFrame.getActiveParticipant().getGameObject())).getActiveWeapons().size() > 1)) 
 						&& spell==null) {
 					String title = combatFrame.getActiveCharacter().getGameObject().getName()+" Target";
 					if (containsEnemy(
