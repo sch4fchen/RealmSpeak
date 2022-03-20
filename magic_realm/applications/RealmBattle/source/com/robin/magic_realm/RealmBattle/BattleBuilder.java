@@ -50,7 +50,7 @@ public class BattleBuilder extends JFrame {
 	public static final String BATTLE_BUILDER_TILE = "bb_tile";
 	public static final String BATTLE_BUILDER_TILE_IS_ENCHANTED = "bb_tile_is_enchanted";
 	
-	private static final String testPlayerName = "test";
+	private static final String testPlayerName = "Player";
 	
 	private GameData gameData;
 	private GamePool pool;
