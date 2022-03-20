@@ -2,6 +2,8 @@ Version 1.1.5.4 - Changes since 1.1.5.3
 QUEST UPDATE:
 # Fix discovery requirement of lost castle in quest "The Hidden Castle"
 # Fix path requirements for quest "Lure the Underworld"
+NEW FEATURES:
+# BattleBuilder remembers last chosen clearing for new battles
 BUGS/ISSUES:
 # Fix size of Victory Requirements dialog with responsive UI turned off
 # Fix next button in combat when fighting without an weapon

@@ -28,6 +28,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import com.robin.game.objects.*;
+import com.robin.general.io.PreferenceManager;
 import com.robin.general.swing.IconFactory;
 import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderModel;
 import com.robin.magic_realm.components.*;
@@ -45,11 +46,16 @@ public class BattleBuilder extends JFrame {
 	public static final String BATTLE_CLEARING_KEY = "___BATTLE__Clearing_";
 	public static final String CHARACTER_PRESENT = "_CHAR_PRES_";
 	
+	public static final String BATTLE_BUILDER_CLEARING = "bb_clearing";
+	public static final String BATTLE_BUILDER_TILE = "bb_tile";
+	public static final String BATTLE_BUILDER_TILE_IS_ENCHANTED = "bb_tile_is_enchanted";
+	
 	private static final String testPlayerName = "test";
 	
 	private GameData gameData;
 	private GamePool pool;
 	private HostPrefWrapper hostPrefs;
+	private PreferenceManager prefs;
 	
 	private JTabbedPane tabbedPane;
 	
@@ -227,6 +233,15 @@ public class BattleBuilder extends JFrame {
 		getContentPane().add(box,"South");
 	}
 	public boolean initialize(GameData data) {
+		prefs = new PreferenceManager("BattleBuilder","BattleBuilder.cfg") {
+			protected void createDefaultPreferences(Properties props) {
+				props.put(BATTLE_BUILDER_CLEARING,2);
+				props.put(BATTLE_BUILDER_TILE,"Crag");
+				props.put(BATTLE_BUILDER_TILE_IS_ENCHANTED,true);
+			}
+		};
+		prefs.loadPreferences();
+		
 		if (data==null) {
 			// Building a new battle
 			System.out.print("Loading data...");
@@ -234,11 +249,21 @@ public class BattleBuilder extends JFrame {
 			System.out.println("Done.");
 			gameData = loader.getData();
 			
-			// Set default starting clearing
-			GameObject selectedTile = gameData.getGameObjectByName("Crag");
+			int clearing = prefs.getInt(BATTLE_BUILDER_CLEARING);
+			if (clearing == 0) clearing = 1;
+			String tileName = prefs.get(BATTLE_BUILDER_TILE);
+			boolean tileIsEnchanted = prefs.getBoolean(BATTLE_BUILDER_TILE_IS_ENCHANTED);
+			
+			// Set starting clearing
+			GameObject selectedTile = gameData.getGameObjectByName(tileName);
 			TileComponent tile = (TileComponent)RealmComponent.getRealmComponent(selectedTile);
-			tile.setDarkSideUp();
-			battleClearing = tile.getClearing(2);
+			if (tileIsEnchanted) {
+				tile.setLightSideUp();
+			}
+			else {
+				tile.setDarkSideUp();
+			}
+			battleClearing = tile.getClearing(clearing);
 			
 			// Select game prefs...
 			HostGameSetupDialog setup = new HostGameSetupDialog(new JFrame(),"Game Options for Battle",gameData);
@@ -392,8 +417,10 @@ public class BattleBuilder extends JFrame {
 		GameObject selectedTile = tileHash.get(tileName);
 		
 		TileComponent tile = (TileComponent)RealmComponent.getRealmComponent(selectedTile);
+		boolean enchanted = false;
 		if (saidYes("Do you want to use the Enchanted side of the "+selectedTile.getName()+"?")) {
 			tile.setDarkSideUp();
+			enchanted = true;
 		}
 		else {
 			tile.setLightSideUp();
@@ -420,6 +447,12 @@ public class BattleBuilder extends JFrame {
 			return;
 		}
 		battleClearing = clearingHash.get(clearingName);
+		
+		prefs.set(BATTLE_BUILDER_CLEARING,clearingHash.get(clearingName).getNum());
+		prefs.set(BATTLE_BUILDER_TILE,tileName);
+		prefs.set(BATTLE_BUILDER_TILE_IS_ENCHANTED,enchanted);
+		prefs.savePreferences();
+		
 		updateControls();
 	}
 	protected void checkHorses(Collection<GameObject> denizens) {
