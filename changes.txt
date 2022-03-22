@@ -1,3 +1,7 @@
+Version 1.1.5.5 - Changes since 1.1.5.4
+QUEST UPDATE:
+# Add quest Q60 King of the Realm by Reggie
+
 Version 1.1.5.4 - Changes since 1.1.5.3
 QUEST UPDATE:
 # Fix discovery requirement of lost castle in quest "The Hidden Castle"
