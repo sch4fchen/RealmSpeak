@@ -345,6 +345,16 @@ public class QuestTesterFrame extends JFrame {
 		currentLocation = new JLabel();
 		line.add(currentLocation);
 		line.add(Box.createHorizontalGlue());
+		box.add(line);
+		line = group.createLine();
+		line.add(Box.createHorizontalGlue());
+		JButton runAway = new JButton("Run Away");
+		runAway.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				runAway();
+			}
+		});
+		line.add(runAway);
 		JButton changeLocation = new JButton("Change");
 		changeLocation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
@@ -1536,7 +1546,7 @@ public class QuestTesterFrame extends JFrame {
 		updateClearingButtons();
 		updateHirelingsButtons();
 	}
-
+	
 	private void updateClearingButtons() {
 		RealmComponent rc = clearingComponents.getSelectedValue();
 		pickupFromClearingButton.setEnabled(rc != null);
@@ -1575,7 +1585,49 @@ public class QuestTesterFrame extends JFrame {
 		retestQuest();
 	}
 	
+	private void runAway() {
+		ClearingDetail clearing = chooseNewLocationDialog(true);
+		if (clearing == null) {
+			return;
+		}
+		
+		// All following hirelings need to remain behind
+		TileLocation oldLocation = character.getCurrentLocation();
+		if (oldLocation != null) {
+			for (RealmComponent hireling : character.getFollowingHirelings()) {
+				oldLocation.clearing.add(hireling.getGameObject(),null);
+				if (hireling.getGameObject().hasThisAttribute(Constants.CAPTURE)) {
+					character.removeHireling(hireling.getGameObject());
+				}
+			}
+		}
+		
+		ClearingUtility.moveToLocation(character.getGameObject(),clearing.getTileLocation(),true);
+		character.addMoveHistory(character.getCurrentLocation());
+		updateCharacterPanel();
+		
+		QuestRequirementParams params = new QuestRequirementParams();
+		params.actionType = CharacterActionType.Move;
+		character.testQuestRequirements(QuestTesterFrame.this, params);
+		
+		retestQuest();
+	}
+		
 	private void chooseNewLocation() {
+		ClearingDetail clearing = chooseNewLocationDialog(false);
+		if (clearing != null) {
+			character.moveToLocation(this, clearing.getTileLocation());
+			updateCharacterPanel();
+			
+			QuestRequirementParams params = new QuestRequirementParams();
+			params.actionType = CharacterActionType.Move;
+			character.testQuestRequirements(QuestTesterFrame.this, params);
+			
+			retestQuest();
+		}
+	}
+		
+	private ClearingDetail chooseNewLocationDialog(boolean runAway) {
 		GamePool pool = new GamePool(gameData.getGameObjects());
 		Hashtable<String, ClearingDetail> hash = new Hashtable<String, ClearingDetail>();
 		Vector<String> locationNames = new Vector<String>();
@@ -1588,23 +1640,23 @@ public class QuestTesterFrame extends JFrame {
 			}
 		}
 		Collections.sort(locationNames);
-
-		ButtonOptionDialog dialog = new ButtonOptionDialog(this, null, "Select new Location:", "Change Location", true, 6);
+		
+		String headline = "Change Location";
+		String text = "Select new Location:";
+		if (runAway) {
+			headline = "Run Away";
+			text = "Run towards which clearing?";
+		}
+		
+		ButtonOptionDialog dialog = new ButtonOptionDialog(this, null, text, headline, true, 6);
 		dialog.addSelectionObjects(locationNames);
 		dialog.setVisible(true);
 
 		String val = (String) dialog.getSelectedObject();
-		if (val != null) {
-			ClearingDetail clearing = hash.get(val);
-			character.moveToLocation(this, clearing.getTileLocation());
-			updateCharacterPanel();
-			
-			QuestRequirementParams params = new QuestRequirementParams();
-			params.actionType = CharacterActionType.Move;
-			character.testQuestRequirements(QuestTesterFrame.this, params);
-			
-			retestQuest();
+		if (val==null) {
+			return null;
 		}
+		return hash.get(val);
 	}
 
 	private void exitApp() {
