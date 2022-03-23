@@ -99,7 +99,7 @@ public class GameCommandDialog extends JDialog {
 		getContentPane().setLayout(new BorderLayout());
 			Box box = Box.createVerticalBox();
 				line = group.createLabelLine("Type");
-					type = new JComboBox();
+					type = new JComboBox<>();
 					type.addItem(GameCommandCreate.NAME);
 					if (poolNames.size()>1) {
 						type.addItem(GameCommandExtract.NAME);
@@ -119,14 +119,14 @@ public class GameCommandDialog extends JDialog {
 				newPoolBox.add(Box.createHorizontalGlue());
 			box.add(newPoolBox);
 				fromBox = group.createLabelLine("From");
-					from = new JComboBox(poolNames.toArray());
+					from = new JComboBox<>(poolNames.toArray());
 					from.setSelectedItem(modelCommand.getFrom());
 					ComponentTools.lockComponentSize(from,150,25);
 				fromBox.add(from);
 				fromBox.add(Box.createHorizontalGlue());
 			box.add(fromBox);
 				toBox = group.createLabelLine("To");
-					to = new JComboBox(poolNames.toArray());
+					to = new JComboBox<>(poolNames.toArray());
 					to.setSelectedItem(modelCommand.getTo());
 					ComponentTools.lockComponentSize(to,150,25);
 				toBox.add(to);
@@ -147,9 +147,9 @@ public class GameCommandDialog extends JDialog {
 							GameObjectChooser chooser = new GameObjectChooser(GameCommandDialog.this,null,modelCommand.getGameSetup().getGameData());
 							chooser.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 							chooser.setVisible(true);
-							ArrayList chosenObjects = chooser.getChosenObjects();
+							ArrayList<GameObject> chosenObjects = chooser.getChosenObjects();
 							if (chosenObjects!=null && chosenObjects.size()==1) {
-								GameObject go = (GameObject)chosenObjects.iterator().next();
+								GameObject go = chosenObjects.iterator().next();
 								modelCommand.setTargetObject(go);
 								targetObject.setText(go.toString());
 							}

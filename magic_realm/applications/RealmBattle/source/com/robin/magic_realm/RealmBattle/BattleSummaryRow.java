@@ -122,22 +122,22 @@ public class BattleSummaryRow implements Comparable<BattleSummaryRow> {
 		rollType = null;
 		
 		// Check fumble rolls
-		ArrayList fumbleRolls = combat.getFumbleRolls();
+		ArrayList<String> fumbleRolls = combat.getFumbleRolls();
 		if (fumbleRolls!=null && fumbleRolls.size()>0) {
-			Iterator r = fumbleRolls.iterator();
-			Iterator s = combat.getFumbleRollSubtitles().iterator();
-			Iterator t = combat.getFumbleRollTargetIds().iterator();
+			Iterator<String> r = fumbleRolls.iterator();
+			Iterator<String> s = combat.getFumbleRollSubtitles().iterator();
+			Iterator<String> t = combat.getFumbleRollTargetIds().iterator();
 			rollType = "fumble";
 			readLists(targetId,r,s,t);
 		}
 		
 		if (rollType==null) {
 			// Check missile rolls
-			ArrayList missileRolls = combat.getMissileRolls();
+			ArrayList<String> missileRolls = combat.getMissileRolls();
 			if (missileRolls!=null && missileRolls.size()>0) {
-				Iterator r = missileRolls.iterator();
-				Iterator s = combat.getMissileRollSubtitles().iterator();
-				Iterator t = combat.getMissileRollTargetIds().iterator();
+				Iterator<String> r = missileRolls.iterator();
+				Iterator<String> s = combat.getMissileRollSubtitles().iterator();
+				Iterator<String> t = combat.getMissileRollTargetIds().iterator();
 				rollType = "missile";
 				readLists(targetId,r,s,t);
 			}
@@ -175,11 +175,11 @@ public class BattleSummaryRow implements Comparable<BattleSummaryRow> {
 	public String getSubtitle() {
 		return subtitle;
 	}
-	private void readLists(String id,Iterator r,Iterator s,Iterator t) {
+	private void readLists(String id,Iterator<String> r,Iterator<String> s,Iterator<String> t) {
 		while(t.hasNext()) {
-			String rollString = (String)r.next();
-			String subtitleString = (String)s.next();
-			String targetId = (String)t.next();
+			String rollString = r.next();
+			String subtitleString = s.next();
+			String targetId = t.next();
 			if (id.equals(targetId)) {
 				roller = new DieRoller(rollString,25,6);
 				subtitle = subtitleString;

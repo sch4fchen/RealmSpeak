@@ -1145,6 +1145,9 @@ public class QuestTesterFrame extends JFrame {
 				RealmComponent rc = clearingComponents.getSelectedValue();
 				if (rc == null)
 					return;
+				if (rc.ownedBy(RealmComponent.getRealmComponent(character.getGameObject()))) {
+					character.removeHireling(rc.getGameObject());
+				}
 				rc.getGameObject().detach();
 				updateCharacterPanel();
 				retestQuest();

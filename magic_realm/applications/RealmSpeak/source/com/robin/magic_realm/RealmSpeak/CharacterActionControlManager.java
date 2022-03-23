@@ -731,13 +731,13 @@ public class CharacterActionControlManager {
 			actionTypeCode = actionTypeCode+actionLocation.clearing.getTypeCode(); // ie., MM for mt-to-mt
 		}
 		
-		Collection c = getCharacter().getCurrentActions();
+		Collection<String> c = getCharacter().getCurrentActions();
 		if (c==null || c.isEmpty()) {
 			// Recording the first action?  Reset the clearingPlot.
-			ArrayList plot = new ArrayList();
+			ArrayList<TileLocation> plot = new ArrayList<>();
 			plot.add(getCharacter().getCurrentLocation()); // start the plot off with the current location
 			getCharacter().setClearingPlot(plot);
-			c = new ArrayList();
+			c = new ArrayList<>();
 		}
 		if (action.equals(DayAction.SPELL_ACTION.getCode()) && !c.contains(DayAction.SPELL_PREP_ACTION.getCode())) {
 			boolean canSkipSpellPrep = getCharacter().getGameObject().hasAttribute(Constants.OPTIONAL_BLOCK,Constants.NO_SPX)
