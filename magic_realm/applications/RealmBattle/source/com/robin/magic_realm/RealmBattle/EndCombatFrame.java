@@ -35,7 +35,7 @@ public class EndCombatFrame extends JFrame {
 	private long id;
 	
 	private CombatFrame parent;
-	private ArrayList playersToRespond;
+	private ArrayList<String> playersToRespond;
 	
 	private JTextArea responseArea;
 	private Hashtable<String, String> responseHash;
@@ -43,7 +43,7 @@ public class EndCombatFrame extends JFrame {
 	private JButton closeButton;
 	private JButton cancelEndButton;
 	
-	public EndCombatFrame(CombatFrame parent,ArrayList playersToRespond) {
+	public EndCombatFrame(CombatFrame parent,ArrayList<String> playersToRespond) {
 		this.id = cum_id++;
 		this.parent = parent;
 		this.playersToRespond = playersToRespond;

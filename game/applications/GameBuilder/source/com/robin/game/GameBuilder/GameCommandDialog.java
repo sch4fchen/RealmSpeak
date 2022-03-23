@@ -79,7 +79,7 @@ public class GameCommandDialog extends JDialog {
 	private ArrayList<String> findAvailablePoolNames(ArrayList<GameCommand> allCommands) {
 		ArrayList<String> previousPoolNames = new ArrayList<>();
 		previousPoolNames.add("ALL");
-		for (Iterator i=allCommands.iterator();i.hasNext();) {
+		for (Iterator<GameCommand> i=allCommands.iterator();i.hasNext();) {
 			GameCommand prev = (GameCommand)i.next();
 			if (prev==originalCommand) {
 				// no longer previous!
@@ -91,7 +91,7 @@ public class GameCommandDialog extends JDialog {
 		}
 		return previousPoolNames;
 	}
-	private void initComponents(ArrayList poolNames) {
+	private void initComponents(ArrayList<String> poolNames) {
 		Box line;
 		UniformLabelGroup group = new UniformLabelGroup();
 		setSize(310,210);
