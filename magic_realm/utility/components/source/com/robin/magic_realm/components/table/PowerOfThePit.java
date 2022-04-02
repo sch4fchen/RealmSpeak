@@ -138,6 +138,10 @@ public class PowerOfThePit extends RealmTable {
 				+"The target is instantly killed.\n\n     "+character.getGameObject().getName()+" was killed.");
 		// The target is instantly killed.
 		kill(character.getGameObject());
+		if (!makeDeadWhenKilled) {
+			CombatWrapper tile = new CombatWrapper(character.getCurrentLocation().tile.getGameObject());
+			tile.addHitResult();
+		}
 		return RESULT[1];
 	}
 
@@ -147,6 +151,7 @@ public class PowerOfThePit extends RealmTable {
 		// All Light and Medium Monsters, Natives, and Horses in the clearing are killed.
 		ArrayList<RealmComponent> killed = killEverythingInClearing(character,new Strength("H"),false,true);
 		
+		boolean killedAtLeastOne = false;	
 		// Each character in the clearing must wound all Light and Medium MOVE/FIGHT chits.
 		TileLocation tl = character.getCurrentLocation();
 		if (tl.hasClearing() && !tl.isBetweenClearings()) {
@@ -171,9 +176,15 @@ public class PowerOfThePit extends RealmTable {
 					if (!hasAtLeastOneGoodChit) {
 						kill(rc.getGameObject());
 						killed.add(rc);
+						killedAtLeastOne = true;
 					}
 				}
 			}
+		}
+		
+		if(!makeDeadWhenKilled && killedAtLeastOne) {
+			CombatWrapper tile = new CombatWrapper(tl.tile.getGameObject());
+			tile.addHitResult();
 		}
 		
 		StringBuffer message = new StringBuffer();
@@ -211,6 +222,10 @@ public class PowerOfThePit extends RealmTable {
 			kill(character.getGameObject());
 			ArrayList<RealmComponent> killed = new ArrayList<RealmComponent>();
 			killed.add(RealmComponent.getRealmComponent(character.getGameObject()));
+			if (!makeDeadWhenKilled) {
+				CombatWrapper tile = new CombatWrapper(character.getCurrentLocation().tile.getGameObject());
+				tile.addHitResult();
+			}
 			message.append(getKilledString(killed));
 		}
 		sendMessage(character.getGameObject().getGameData(),
@@ -276,6 +291,7 @@ public class PowerOfThePit extends RealmTable {
 	private ArrayList<RealmComponent> killEverythingInClearing(CharacterWrapper character,Strength power,boolean hiddenAreSafe,boolean charactersAreSafe) {
 		ArrayList<RealmComponent> killed = new ArrayList<>();
 		TileLocation tl = character.getCurrentLocation();
+		boolean killedAtLeastOne = false;
 		if (tl.isInClearing()) {
 			HashSet<RealmComponent> livingThings = new HashSet<>();
 			for (RealmComponent rc:tl.clearing.getClearingComponents()) {
@@ -305,10 +321,16 @@ public class PowerOfThePit extends RealmTable {
 						if (power.strongerThan(strength)) {
 							kill(rc.getGameObject());
 							killed.add(rc);
+							killedAtLeastOne = true;	
 						}
 					}
 				}
 			}
+		}
+		
+		if (!makeDeadWhenKilled && killedAtLeastOne) {
+			CombatWrapper tile = new CombatWrapper(tl.tile.getGameObject());
+			tile.addHitResult();
 		}
 		return killed;
 	}
@@ -327,8 +349,6 @@ public class PowerOfThePit extends RealmTable {
 			combat.setKilledBy(caster);
 			combat.setKilledLength(17);
 			combat.setKilledSpeed(speed);
-			CombatWrapper tile = new CombatWrapper(victim.getCurrentLocation().tile.getGameObject());
-			tile.addHitResult();
 		}
 	}
 	public ArrayList<GameObject> getKills() {
