@@ -570,7 +570,7 @@ public class CombatFrame extends JFrame {
 		updateControls();
 		
 		// Check for ask demon questions
-		String myName = "test";
+		String myName = "Player";
 		if (GameClient.GetMostRecentClient()!=null) {
 			myName = GameClient.GetMostRecentClient().getClientName();
 		}
@@ -3663,7 +3663,7 @@ public class CombatFrame extends JFrame {
 			}
 		}
 	}
-	private static final String testPlayerName = "test";
+	private static final String testPlayerName = "Player";
 	private static final String LAST_SAVE_LOCATION = "lastSaveLocation";
 	public static void main(String[] args) {
 		closeableFrame = true;
