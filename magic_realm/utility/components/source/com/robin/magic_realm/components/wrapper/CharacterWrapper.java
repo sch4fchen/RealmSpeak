@@ -5773,18 +5773,20 @@ public class CharacterWrapper extends GameObjectWrapper {
 		rc.setHidden(false); // make sure they aren't hidden
 		
 		GameObject heldByGo = rc.getGameObject().getHeldBy();
-		RealmComponent heldBy = RealmComponent.getRealmComponent(heldByGo);
-		if (heldBy!=null) { // held might be null in the BattleBuilder
-			if (heldBy.isPlayerControlledLeader()) {
-				// If hireling is currently in a character inventory, then "drop" him in the current clearing.
-				CharacterWrapper holdingCharacter = new CharacterWrapper(heldByGo);
-				TileLocation tl = holdingCharacter.getCurrentLocation();
-//				if (tl.isFlying()) { // in case hire term ends while character is flying
-//					holdingCharacter.land(null);
-//					tl = holdingCharacter.getCurrentLocation();
-//				}
-				if (tl!=null && tl.hasClearing()) { // might not have a location if using the BattleBuilder
-					tl.clearing.add(hireling,null);
+		if (heldByGo!=null) { // heldByGo might be null in the BattleBuilder
+			RealmComponent heldBy = RealmComponent.getRealmComponent(heldByGo);
+			if (heldBy!=null) { // held might be null in the BattleBuilder
+				if (heldBy.isPlayerControlledLeader()) {
+					// If hireling is currently in a character inventory, then "drop" him in the current clearing.
+					CharacterWrapper holdingCharacter = new CharacterWrapper(heldByGo);
+					TileLocation tl = holdingCharacter.getCurrentLocation();
+	//				if (tl.isFlying()) { // in case hire term ends while character is flying
+	//					holdingCharacter.land(null);
+	//					tl = holdingCharacter.getCurrentLocation();
+	//				}
+					if (tl!=null && tl.hasClearing()) { // might not have a location if using the BattleBuilder
+						tl.clearing.add(hireling,null);
+					}
 				}
 			}
 		}
@@ -5799,7 +5801,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			CharacterWrapper leader = new CharacterWrapper(hireling);
 			TileLocation current = rc.getCurrentLocation();
 			
-			if (current.isFlying()) {
+			if (current != null && current.isFlying()) {
 				leader.land(null);
 				current = rc.getCurrentLocation();
 			}

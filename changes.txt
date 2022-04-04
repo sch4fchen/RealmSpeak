@@ -5,6 +5,7 @@ QUEST UPDATE:
 # Fix Q38 The Gifted Child quest when running away
 BUGS/ISSUES:
 # Fix combat round count after casting Power of the Pit
+# BattleBuilder: Fix removing hired HQs and (some certain) monsters
 
 Version 1.1.5.4 - Changes since 1.1.5.3
 QUEST UPDATE:

@@ -396,8 +396,14 @@ public class CharacterBattleBuilderPanel extends JPanel {
 					GameObject go = rc.getGameObject();
 					character.removeHireling(go);
 					go.removeThisAttribute(BattleBuilder.BATTLE_BUILDER_KEY);
-					NativeChitComponent hireling = (NativeChitComponent)RealmComponent.getRealmComponent(go);
-					hireling.setHidden(false);
+					if (rc.isNative()) {
+						NativeChitComponent hireling = (NativeChitComponent)RealmComponent.getRealmComponent(go);
+						hireling.setHidden(false);
+					}
+					if (rc.isMonster()) {
+						MonsterChitComponent hireling = (MonsterChitComponent)RealmComponent.getRealmComponent(go);
+						hireling.setHidden(false);
+					}
 				}
 				hirelingPanel.clearSelected();
 				updateHirelingPanel();
