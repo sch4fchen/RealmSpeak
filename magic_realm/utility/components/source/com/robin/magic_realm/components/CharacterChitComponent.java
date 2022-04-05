@@ -246,7 +246,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			}
 			if (!hasWeapon) {
 				GameObject tw = getTreasureWeaponObject();
-				if (tw!=null && combatChit.getWeaponId() == tw.getStringId()) {
+				if (tw!=null && combatChit.getWeaponId().equals(tw.getStringId())) {
 					length = tw.getThisInt("length");
 				}
 			}
@@ -872,7 +872,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				}
 			}
 			GameObject tw = getTreasureWeaponObject();
-			if (tw!=null && (attackChit == null || combatChit.getWeaponId() == tw.getStringId())) {
+			if (tw!=null && (attackChit == null || combatChit.getWeaponId().equals(tw.getStringId()))) {
 				return tw.hasThisAttribute("missile");
 			}
 		}
