@@ -2489,6 +2489,11 @@ public class CombatFrame extends JFrame {
 			if (weaponCard != null) {
 				weaponCard.getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
 			}
+			for (GameObject item: activeCharacter.getActiveInventory()) {
+				if (item.hasThisAttribute("gloves")) {
+					item.removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
+				}
+			}
 			
 			GameObject transmorph = activeCharacter.getTransmorph();
 			if (transmorph != null) {

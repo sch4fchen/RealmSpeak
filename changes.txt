@@ -4,6 +4,7 @@ QUEST UPDATE:
 # Add quest Q60 King of the Realm by Reggie
 # Fix Q38 The Gifted Child quest when running away
 BUGS/ISSUES:
+# Fix resetting for placed gloves as fight chit
 # Fix asking for deactivating primary weapon, when activating potion
 # Fix combat round count after casting Power of the Pit
 # BattleBuilder: Fix removing hired HQs and (some certain) monsters
