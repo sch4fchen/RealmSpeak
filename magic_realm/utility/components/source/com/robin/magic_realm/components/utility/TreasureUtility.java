@@ -477,7 +477,7 @@ public class TreasureUtility {
 		// some potion and phase chit effects are immediate
 		if (thing.hasThisAttribute("attack")) {
 			ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
-			if (weapons!=null) {
+			if (weapons!=null && !weapons.isEmpty()) {
 				int ret = JOptionPane.showConfirmDialog(parentFrame,"You are about to deactivate your primary weapon(s).  Are you sure?","",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 				if (ret==JOptionPane.NO_OPTION) {
 					return false;
