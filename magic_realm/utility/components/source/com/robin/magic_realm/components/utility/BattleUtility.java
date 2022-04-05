@@ -129,18 +129,6 @@ public class BattleUtility {
 		}
 		return fightChits;
 	}
-	
-	public static ArrayList<RealmComponent> findPlayedFightComponentsWithCombatBox(Collection<RealmComponent> list) {
-		ArrayList<RealmComponent> fightChits = new ArrayList<>();
-		for (RealmComponent rc : list) {
-			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-			if (combat.getCombatBox()>0 && (!rc.isActionChit() || combat.getPlacedAsFight())) {
-				// found it!
-				fightChits.add(rc);
-			}
-		}
-		return fightChits;
-	}
 
 	public static RealmComponent findMoveComponentWithCombatBox(Collection<RealmComponent> list,boolean includeHorse) {
 		RealmComponent ret = null;

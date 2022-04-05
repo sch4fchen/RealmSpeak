@@ -32,6 +32,7 @@ import com.robin.general.swing.DieRoller;
 import com.robin.general.util.StringUtilities;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.Harm;
+import com.robin.magic_realm.components.attribute.Speed;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.*;
 
@@ -226,8 +227,6 @@ public class BattleSummaryRow implements Comparable<BattleSummaryRow> {
 			else {
 				CharacterChitComponent charChit = (CharacterChitComponent)rc;
 				if (attacker) {
-					RealmComponent attackChit = charChit.getAttackChit();
-					
 					RealmComponent weapon = null;
 					ArrayList<GameObject> wgos = charChit.getActiveWeaponsObjects();
 					if (wgos!=null) {
@@ -238,6 +237,18 @@ public class BattleSummaryRow implements Comparable<BattleSummaryRow> {
 							g.drawImage(wicon.getImage(),x,y+yoff,null);
 						}
 					}
+					
+					RealmComponent attackChit = charChit.getAttackChit();
+					if (attackChit == null) {
+						GameObject transmorph = character.getTransmorph();
+						if (transmorph == null) {
+							ArrayList<RealmComponent> attackChits = BattleUtility.findFightComponentsWithCombatBox(character.getFightSpeedOptions(new Speed(), true));
+							if (attackChits != null && attackChits.size() == 1) {
+								attackChit = attackChits.get(0);
+							}
+						}
+					}
+					
 					if (attackChit!=null) {
 						if (attackChit.isCard()) {
 							g.drawImage(attackChit.getMediumImage(),x,y,null);

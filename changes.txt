@@ -6,6 +6,7 @@ QUEST UPDATE:
 BUGS/ISSUES:
 # Fix length and attack type missile when using Deft Gloves and Alchemist's Mixture
 # Fix resetting for placed gloves as fight chit
+# Show fight chit in round summary of combat (again)
 # Fix asking for deactivating primary weapon, when activating potion
 # Fix combat round count after casting Power of the Pit
 # BattleBuilder: Fix removing hired HQs and (some certain) monsters
