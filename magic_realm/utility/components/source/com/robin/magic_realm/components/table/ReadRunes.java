@@ -153,9 +153,8 @@ public class ReadRunes extends RealmTable {
 		return ret;
 	}
 	private GameObject selectFromAllAwakenedSpells(CharacterWrapper character) {
-		ArrayList list = new ArrayList();
-		for (Iterator i=spellLocation.getHold().iterator();i.hasNext();) {
-			GameObject spell = (GameObject)i.next();
+		ArrayList<GameObject> list = new ArrayList<>();
+		for (GameObject spell : spellLocation.getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(spell);
 			if (rc.isSpell() && character.canLearn(spell) && rc.getGameObject().hasThisAttribute(Constants.SPELL_AWAKENED)) {
 				list.add(spell);
@@ -171,8 +170,7 @@ public class ReadRunes extends RealmTable {
 			
 			// otherwise:
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(getParentFrame(),"Choose a spell:",false);
-			for (Iterator i=list.iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
+			for (GameObject go : list) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
 				if (go.hasThisAttribute(Constants.SPELL_AWAKENED)) {
 					chooser.addRealmComponent(rc);
