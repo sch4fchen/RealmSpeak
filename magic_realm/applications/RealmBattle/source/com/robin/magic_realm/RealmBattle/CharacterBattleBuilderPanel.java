@@ -109,6 +109,9 @@ public class CharacterBattleBuilderPanel extends JPanel {
 				}
 				builder.deleteTab(character.getGameObject().getName());
 				character.clearPlayerAttributes(); // puts it back in the player pool again
+				for (CharacterActionChitComponent chit : character.getAllChits()) {
+					chit.makeActive();
+				}
 				character.moveToLocation(dummyFrame, null);
 				character.getGameData().removeObject(character.getGameObject());
 			}

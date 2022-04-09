@@ -10,6 +10,7 @@ BUGS/ISSUES:
 # Fix asking for deactivating primary weapon, when activating potion
 # Fix combat round count after casting Power of the Pit
 # BattleBuilder: Fix removing hired HQs and (some certain) monsters
+# BattleBuilder: Reset chit states when readding character
 
 Version 1.1.5.4 - Changes since 1.1.5.3
 QUEST UPDATE:
