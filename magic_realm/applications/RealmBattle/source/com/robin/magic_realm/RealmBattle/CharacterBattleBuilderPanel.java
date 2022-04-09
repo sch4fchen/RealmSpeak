@@ -113,7 +113,9 @@ public class CharacterBattleBuilderPanel extends JPanel {
 					chit.makeActive();
 				}
 				character.moveToLocation(dummyFrame, null);
-				character.getGameData().removeObject(character.getGameObject());
+				if (character.getGameObject().hasThisAttribute(Constants.CUSTOM_CHARACTER)) {
+					character.getGameData().removeObject(character.getGameObject());
+				}
 			}
 		});
 		box.add(removeCharacterButton);

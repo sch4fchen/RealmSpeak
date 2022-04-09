@@ -537,7 +537,7 @@ public class BattleBuilder extends JFrame {
 			lastCharacter = panel.getCharacter();
 		}
 		
-		ArrayList<GameObject> characters = pool.find("character,!"+CharacterWrapper.NAME_KEY);
+		ArrayList<GameObject> characters = pool.find("character,!"+CharacterWrapper.NAME_KEY+",!"+Constants.CUSTOM_CHARACTER);
 		characters.addAll(CustomCharacterLibrary.getSingleton().getCharacterTemplateList());
 		Collections.sort(characters,new Comparator<GameObject>() {
 			public int compare(GameObject go1,GameObject go2) {
