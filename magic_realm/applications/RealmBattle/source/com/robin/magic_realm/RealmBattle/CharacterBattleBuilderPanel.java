@@ -117,6 +117,10 @@ public class CharacterBattleBuilderPanel extends JPanel {
 				for (CharacterActionChitComponent chit : character.getAllChits()) {
 					chit.makeActive();
 				}
+				for (GameObject item : character.getInventory()) {
+					GameObject inn = character.getGameData().getGameObjectByName("Inn");
+					inn.add(item);
+				}
 				character.moveToLocation(dummyFrame, null);
 				if (character.getGameObject().hasThisAttribute(Constants.CUSTOM_CHARACTER)) {
 					character.getGameData().removeObject(character.getGameObject());
