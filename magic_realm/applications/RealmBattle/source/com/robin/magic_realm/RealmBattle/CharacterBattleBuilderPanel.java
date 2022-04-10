@@ -107,7 +107,9 @@ public class CharacterBattleBuilderPanel extends JPanel {
 						rc.getGameObject().removeThisAttribute(BattleBuilder.BATTLE_BUILDER_KEY);
 					}
 				}
-				builder.deleteTab(character.getGameObject().getName());
+				for (RealmComponent hireling : character.getAllHirelings()) {
+					character.removeHireling(hireling.getGameObject());
+				}
 				character.clearPlayerAttributes(); // puts it back in the player pool again
 				for (CharacterActionChitComponent chit : character.getAllChits()) {
 					chit.makeActive();
@@ -116,6 +118,7 @@ public class CharacterBattleBuilderPanel extends JPanel {
 				if (character.getGameObject().hasThisAttribute(Constants.CUSTOM_CHARACTER)) {
 					character.getGameData().removeObject(character.getGameObject());
 				}
+				builder.deleteTab(character.getGameObject().getName());
 			}
 		});
 		box.add(removeCharacterButton);
@@ -349,6 +352,7 @@ public class CharacterBattleBuilderPanel extends JPanel {
 		box = Box.createHorizontalBox();
 		box.add(Box.createGlue());
 		addHirelingsButton = new JButton("Add Hirelings");
+		updateHirelingControls();
 		addHirelingsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				String keyVals = hostPrefs.getGameKeyVals();
