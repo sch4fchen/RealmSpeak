@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Hashtable;
-import java.util.Iterator;
 
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
@@ -132,8 +131,7 @@ public abstract class SpellTargetingSingle extends SpellTargeting {
 		return false;
 	}
 	private static void updateChooserWithContent(RealmComponentOptionChooser chooser,String option,RealmComponent rc) {
-		for (Iterator h=rc.getGameObject().getHold().iterator();h.hasNext();) {
-			GameObject hgo = (GameObject)h.next();
+		for (GameObject hgo : rc.getGameObject().getHold()) {
 			chooser.addGameObjectToOption(option,hgo);
 		}
 	}
