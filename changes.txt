@@ -9,8 +9,10 @@ BUGS/ISSUES:
 # Show fight chit in round summary of combat (again)
 # Fix asking for deactivating primary weapon, when activating potion
 # Fix combat round count after casting Power of the Pit
+# Fix native friendly house rule to affect allied natives
 # BattleBuilder: Fix removing hired HQs and (some certain) monsters
-# BattleBuilder: Reset chit states when readding character
+# BattleBuilder: Reset chit states when re-adding character
+# BattleBuilder: Fix custom characters duplicated in character chooser
 
 Version 1.1.5.4 - Changes since 1.1.5.3
 QUEST UPDATE:
