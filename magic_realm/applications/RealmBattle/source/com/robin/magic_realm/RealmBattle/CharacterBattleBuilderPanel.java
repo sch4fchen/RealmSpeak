@@ -103,12 +103,15 @@ public class CharacterBattleBuilderPanel extends JPanel {
 					}
 				}
 				if (hirelingPanel.getAllRealmComponents()!=null) {
-					for (RealmComponent rc : hirelingPanel.getAllRealmComponents()) {
-						rc.getGameObject().removeThisAttribute(BattleBuilder.BATTLE_BUILDER_KEY);
+					for (RealmComponent hireling : hirelingPanel.getAllRealmComponents()) {
+						hireling.getGameObject().removeThisAttribute(BattleBuilder.BATTLE_BUILDER_KEY);
+						hireling.setHidden(false);
+						NativeSteedChitComponent horse = (NativeSteedChitComponent)hireling.getHorseIncludeDead();
+						if (horse!=null) {
+							horse.getGameObject().removeThisAttribute(Constants.DEAD);
+						}
+						character.removeHireling(hireling.getGameObject());
 					}
-				}
-				for (RealmComponent hireling : character.getAllHirelings()) {
-					character.removeHireling(hireling.getGameObject());
 				}
 				character.clearPlayerAttributes(); // puts it back in the player pool again
 				for (CharacterActionChitComponent chit : character.getAllChits()) {
@@ -352,7 +355,6 @@ public class CharacterBattleBuilderPanel extends JPanel {
 		box = Box.createHorizontalBox();
 		box.add(Box.createGlue());
 		addHirelingsButton = new JButton("Add Hirelings");
-		updateHirelingControls();
 		addHirelingsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				String keyVals = hostPrefs.getGameKeyVals();
@@ -405,13 +407,10 @@ public class CharacterBattleBuilderPanel extends JPanel {
 					GameObject go = rc.getGameObject();
 					character.removeHireling(go);
 					go.removeThisAttribute(BattleBuilder.BATTLE_BUILDER_KEY);
-					if (rc.isNative()) {
-						NativeChitComponent hireling = (NativeChitComponent)RealmComponent.getRealmComponent(go);
-						hireling.setHidden(false);
-					}
-					if (rc.isMonster()) {
-						MonsterChitComponent hireling = (MonsterChitComponent)RealmComponent.getRealmComponent(go);
-						hireling.setHidden(false);
+					rc.setHidden(false);
+					NativeSteedChitComponent horse = (NativeSteedChitComponent)rc.getHorseIncludeDead();
+					if (horse!=null) {
+						horse.getGameObject().removeThisAttribute(Constants.DEAD);
 					}
 				}
 				hirelingPanel.clearSelected();
