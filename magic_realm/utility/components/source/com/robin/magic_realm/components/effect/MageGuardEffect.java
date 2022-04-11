@@ -22,8 +22,8 @@ public class MageGuardEffect implements ISpellEffect {
 		ArmorCreator creator = new ArmorCreator("mageguard"); 
 		GameObject guard = creator.createOrReuseArmor(context.Game.getGameData());
 		creator.setupGameObject(guard, "Mage Guard", "staff", "H", "", 1, ARMOR_CHOICE);
-		creator.setupSide(guard, "intact", 0, "gray");
-		creator.setupSide(guard, "damaged", 0, "white");
+		ArmorCreator.setupSide(guard, "intact", 0, "gray");
+		ArmorCreator.setupSide(guard, "damaged", 0, "white");
 		
 		ArmorChitComponent armor = new ArmorChitComponent(guard);
 		armor.setOwner(cc);

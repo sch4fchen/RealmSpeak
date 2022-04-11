@@ -23,7 +23,7 @@ public class ChangeToCompanionEffect implements ISpellEffect {
 				go.hasAttribute(Constants.CHANGE_TO_COMPANION,"armored"),
 				go.hasAttribute(Constants.CHANGE_TO_COMPANION,"flying"));
 		companion.setThisAttribute("icon_folder",go.getAttribute(Constants.CHANGE_TO_COMPANION,"icon_folder"));
-		monsterCreator.setupSide(
+		MonsterCreator.setupSide(
 				companion,
 				"light",
 				go.getAttribute(Constants.CHANGE_TO_COMPANION,"strength"),
@@ -32,7 +32,7 @@ public class ChangeToCompanionEffect implements ISpellEffect {
 				go.getAttributeInt(Constants.CHANGE_TO_COMPANION,"length"),
 				go.getAttributeInt(Constants.CHANGE_TO_COMPANION,"move_speed"),
 				go.getAttribute(Constants.CHANGE_TO_COMPANION,"chit_color"));
-		monsterCreator.setupSide(
+		MonsterCreator.setupSide(
 				companion,
 				"dark",
 				go.getAttribute(Constants.CHANGE_TO_COMPANION,"strength"),

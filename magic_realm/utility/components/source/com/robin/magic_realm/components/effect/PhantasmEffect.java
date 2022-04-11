@@ -48,12 +48,11 @@ public class PhantasmEffect implements ISpellEffect {
 		
 		if ("phantasm".equals(spawn)) {
 			// Simply remove ALL phantasms - they could only have been the result of previous days casting
-			Collection c = character.getMinions();
+			Collection<GameObject> c = character.getMinions();
 			if (c!=null) {
 				ArrayList<GameObject> toRemove = new ArrayList<GameObject>();
 							
-				for (Iterator i=c.iterator();i.hasNext();) {
-					GameObject minion = (GameObject)i.next();
+				for (GameObject minion : c) {
 					if (minion.hasThisAttribute("phantasm")) {
 						toRemove.add(minion);
 					}

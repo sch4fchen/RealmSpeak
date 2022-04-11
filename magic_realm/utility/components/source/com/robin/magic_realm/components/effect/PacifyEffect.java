@@ -55,7 +55,7 @@ public class PacifyEffect implements ISpellEffect {
 	public void unapply(SpellEffectContext context) {
 		String pacifyBlock = Constants.PACIFY+ context.Spell.getGameObject().getStringId();
 		
-		ArrayList inlist = context.Target.getGameObject().getAttributeList("this","pacifyBlocks");
+		ArrayList<String> inlist = context.Target.getGameObject().getAttributeList("this","pacifyBlocks");
 		
 		if (inlist!=null) { // might be null if the spell was cancelled partway through
 			ArrayList<String> list = new ArrayList<String>(inlist);

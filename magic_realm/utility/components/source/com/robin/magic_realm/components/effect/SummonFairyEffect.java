@@ -19,8 +19,8 @@ public class SummonFairyEffect implements ISpellEffect {
 		GameObject summon = creator.createOrReuseMonster(data);
 		
 		creator.setupGameObject(summon, "Fairy", "fairy", "L", false);
-		creator.setupSide(summon, "light", null, 0, 0, 0, 1, "lightgreen");
-		creator.setupSide(summon, "dark", null, 0, 0, 0, 1, "forestgreen");
+		MonsterCreator.setupSide(summon, "light", null, 0, 0, 0, 1, "lightgreen");
+		MonsterCreator.setupSide(summon, "dark", null, 0, 0, 0, 1, "forestgreen");
 		
 		SpellUtility.bringSummonToClearing(character, summon, context.Spell, creator.getMonstersCreated());
 	}

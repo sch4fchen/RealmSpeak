@@ -18,7 +18,6 @@
 package com.robin.magic_realm.components.table;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.swing.*;
 
@@ -51,8 +50,7 @@ public class ReadRunes extends RealmTable {
 		super(frame,null);
 		this.spellLocation = spellLocation;
 		
-		for (Iterator i=spellLocation.getHold().iterator();i.hasNext();) {
-			GameObject spell = (GameObject)i.next();
+		for (GameObject spell : spellLocation.getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(spell);
 			if (rc.isSpell()) {
 				if (!spell.hasThisAttribute(Constants.SPELL_AWAKENED)) { // select the first non-activated spell

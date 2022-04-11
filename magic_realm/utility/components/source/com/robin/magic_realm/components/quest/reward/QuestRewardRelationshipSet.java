@@ -18,7 +18,6 @@
 package com.robin.magic_realm.components.quest.reward;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.swing.JFrame;
 
@@ -70,8 +69,7 @@ public class QuestRewardRelationshipSet extends QuestReward {
 		
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 		if (hostPrefs.getMultiBoardEnabled()) {
-			for(Iterator i=tl.tile.getGameObject().getHold().iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
+			for(GameObject go : tl.tile.getGameObject().getHold()) {
 				if (go.hasThisAttribute("warning") && go.hasThisAttribute("chit")) {
 					String board = go.getThisAttribute(Constants.BOARD_NUMBER);
 					if (board!=null) {
