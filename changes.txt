@@ -3,13 +3,15 @@ QUEST UPDATE:
 # QuestTester: Add "Run Away" button
 # Add quest Q60 King of the Realm by Reggie
 # Fix Q38 The Gifted Child quest when running away
+# Update to quest Q36 Druids Adventure
 NEW FEATURES:
 # Native Friendly: Now only affecting allied and friendly natives (not neutral anymore)
 BUGS/ISSUES:
-# Fix length and attack type missile when using Deft Gloves and Alchemist's Mixture
-# Fix resetting for placed gloves as fight chit
+# Fix Enchant Artifact: Attached spell can now be casted even if original spell was already casted
 # Show fight chit in round summary of combat (again)
 # Fix asking for deactivating primary weapon, when activating potion
+# Fix length and attack type missile when using Deft Gloves and Alchemist's Mixture
+# Fix resetting for placed gloves as fight chit
 # Fix combat round count after casting Power of the Pit
 # Fix native friendly house rule to affect allied natives
 # BattleBuilder: Fix removing hired HQs and (some certain) monsters
