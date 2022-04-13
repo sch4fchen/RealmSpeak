@@ -13,6 +13,8 @@ public class EnchantEffect implements ISpellEffect {
 		if (!spellToAdd.getGameObject().hasThisAttribute(Constants.ARTIFACT_ENHANCED_MAGIC)) {
 			// First time this casting has energized, so make a copy of the requisite spell
 			spellToAdd = spellToAdd.makeCopy();
+			spellToAdd.clearSpellAttributes();
+			
 			context.Spell.setSecondaryTarget(spellToAdd.getGameObject());
 			spellToAdd.getGameObject().setThisAttribute(Constants.ARTIFACT_ENHANCED_MAGIC);
 			spellToAdd.getGameObject().setThisAttribute(Constants.SPELL_AWAKENED);

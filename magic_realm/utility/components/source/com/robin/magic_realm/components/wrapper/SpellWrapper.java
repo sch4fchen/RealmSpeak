@@ -303,6 +303,20 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		}
 	}
 	
+	public void clearSpellAttributes() {
+		clear(SPELL_INERT);
+		clear(SPELL_ALIVE);
+		clear(SPELL_AFFECTED);
+		clear(SPELL_NULLIFIED);
+		clear(SPELL_VIRTUAL);
+		clear(INCANTATION_TIE);
+		clear(TARGET_IDS);
+		clear(TARGET_EXTRA_IDENTIFIER);
+		clear(SECONDARY_TARGET);
+		clear(CASTER_ID);
+		clearRedDieLock();
+	}
+	
 	private void restoreAbsorbedMonster(GameObject go, TileLocation loc, boolean casterIsDead){
 		RealmComponent rc = RealmComponent.getRealmComponent(go);
 		if(rc.isMonster() && !go.hasThisAttribute("animal")){
