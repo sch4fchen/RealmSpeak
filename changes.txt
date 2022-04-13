@@ -1,5 +1,13 @@
 Version 1.1.5.5 - Changes since 1.1.5.4
 QUEST UPDATE:
+#
+NEW FEATURES:
+#
+BUGS/ISSUES:
+#
+
+Version 1.1.5.5 - Changes since 1.1.5.4
+QUEST UPDATE:
 # QuestTester: Add "Run Away" button
 # Add quest Q60 King of the Realm by Reggie
 # Fix Q38 The Gifted Child quest when running away
