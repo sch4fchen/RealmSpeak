@@ -3,24 +3,24 @@ QUEST UPDATE:
 # QuestTester: Add "Run Away" button
 # Add quest Q60 King of the Realm by Reggie
 # Fix Q38 The Gifted Child quest when running away
-# Update to quest Q36 Druids Adventure
 # Update to quest Q34 Return of Adventurers
+# Update to quest Q36 Druids Adventure
 NEW FEATURES:
 # Native Friendly: Now only affecting allied and friendly natives (not neutral anymore)
 BUGS/ISSUES:
-# Fix Enchant Artifact: Attached spell can now be casted even if original spell was already casted
 # Show fight chit in round summary of combat (again)
 # Fix asking for deactivating primary weapon, when activating potion
+# Fix Enchant Artifact: Attached spell can now be casted even if original spell was already casted
 # Fix length and attack type missile when using Deft Gloves and Alchemist's Mixture
 # Fix resetting for placed gloves as fight chit
 # Fix combat round count after casting Power of the Pit
 # Fix native friendly house rule to affect allied natives
 # BattleBuilder: Fix removing hired HQs and (some certain) monsters
-# BattleBuilder: Reset chit states when re-adding character
-# BattleBuilder: Reset inventory states when re-adding character
-# BattleBuilder: Reset natives' horses after removing hireling or character
 # BattleBuilder: Fix battle simulation ending after re-adding character
 # BattleBuilder: Fix custom characters duplicated in character chooser
+# BattleBuilder: Reset natives' horses after removing hireling or character
+# BattleBuilder: Reset chit states when re-adding character
+# BattleBuilder: Reset inventory states when re-adding character
 
 Version 1.1.5.4 - Changes since 1.1.5.3
 QUEST UPDATE:
