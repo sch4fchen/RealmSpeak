@@ -1,6 +1,5 @@
+BattleBuilder: CombatScreen: Show spells of items (like in inventory possible)
 Combat Summary: add functionality for RandomAssignment, Deploy/Charge (and charge character, Actions?, Assign
-Option to change font size
-
 Scenario Editor (GM tool, scenario title, description, randomizing setup option)
 	RealmSpeak + GM: save game as scenario (with scenario name and description), have a different file extension
 	RealSpeak: Load scenarios (overview with names and descriptions), list game options
@@ -28,6 +27,7 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 Guilds: Assassins, Nature
 Merlin's Use Horse Lot: http://www.nand.it/mr/mr15.html
+Option to change font size
 ---:::BUGS:::---
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 Wizard advancement - didn't get MOVE M5->MAGIC III
