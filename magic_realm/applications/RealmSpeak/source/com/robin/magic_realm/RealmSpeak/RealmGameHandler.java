@@ -1810,8 +1810,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		ArrayList<GameObject> counters = new ArrayList<>();
 		for (GameObject leader : leaders) {
 			GameObject dwelling = SetupCardUtility.getDenizenHolder(leader);
-			for (Iterator i = dwelling.getHold().iterator(); i.hasNext();) {
-				GameObject item = (GameObject) i.next();
+			for (GameObject item : dwelling.getHold()) {
 				if (!item.hasThisAttribute("treasure")) {
 					if (item.hasThisAttribute("weapon") || item.hasThisAttribute("armor")) {
 						counters.add(item);

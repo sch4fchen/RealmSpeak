@@ -53,11 +53,11 @@ public class SpellInfoDialog extends AggressiveDialog {
 	private JButton okayButton;
 	private JButton creditButton;
 	
-	private SpellInfoDialog(JDialog frame,SpellWrapper spell,boolean textOnly) {
+	public SpellInfoDialog(JDialog frame,SpellWrapper spell,boolean textOnly) {
 		super(frame,spell.getName(),true);
 		init(spell,textOnly);
 	}
-	private SpellInfoDialog(JFrame frame,SpellWrapper spell,boolean textOnly) {
+	public SpellInfoDialog(JFrame frame,SpellWrapper spell,boolean textOnly) {
 		super(frame,spell.getName(),true);
 		init(spell,textOnly);
 	}

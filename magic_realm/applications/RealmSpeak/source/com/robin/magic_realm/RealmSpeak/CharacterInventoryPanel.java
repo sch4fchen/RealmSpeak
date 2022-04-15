@@ -181,7 +181,7 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 	private static final Font queryFont = new Font("Dialog",Font.BOLD,14);
 	private void showAwakenedSpells(GameObject go) {
 		if (go!=null && go.hasThisAttribute("treasure") && (go.hasThisAttribute("magic") || go.hasThisAttribute("book"))) {
-			Collection c = SpellUtility.getSpells(go,Boolean.TRUE,false,true);
+			Collection<GameObject> c = SpellUtility.getSpells(go,Boolean.TRUE,false,true);
 			if (c.size()>0) {
 				JPanel panel = new JPanel(new BorderLayout());
 				queryPanel = new RealmObjectPanel();
@@ -250,7 +250,7 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 						// boots are a special case, because they can determine whether or not you score points for heavy items
 						if (item.hasThisAttribute("boots")) {
 							// Make sure character is not prohibited from wearing boots (only affects custom characters)
-							ArrayList list = character.getGameObject().getThisAttributeList(Constants.ITEM_RESTRICTIONS);
+							ArrayList<String> list = character.getGameObject().getThisAttributeList(Constants.ITEM_RESTRICTIONS);
 							if (list==null || !list.contains("Boots")) {
 								// Note:  shouldn't have to worry about boots that are too small for a character, because it wont affect them in any case!
 								item.setThisAttribute(Constants.ACTIVATED);
@@ -457,10 +457,9 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 
 	public void updatePanel() {
 		boolean hiredLeader = getCharacter().isHiredLeader();
-		ArrayList activeInv = new ArrayList();
-		ArrayList inactiveInv = new ArrayList();
-		for (Iterator i=getCharacter().getInventory().iterator();i.hasNext();) {
-			GameObject item = (GameObject)i.next();
+		ArrayList<GameObject> activeInv = new ArrayList<>();
+		ArrayList<GameObject> inactiveInv = new ArrayList<>();
+		for (GameObject item : getCharacter().getInventory()) {
 			if (!item.hasThisAttribute(Constants.DEAD)) { // Native horses!
 				RealmComponent rc = RealmComponent.getRealmComponent(item);
 				if (hiredLeader) {

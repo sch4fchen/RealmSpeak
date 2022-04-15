@@ -54,6 +54,7 @@ public class CombatFrame extends JFrame {
 	
 	private static final Font COMBAT_ROUND_FONT = new Font("Dialog",Font.BOLD|Font.ITALIC,20);
 	private static final Font INSTRUCTION_FONT = new Font("Dialog",Font.BOLD,16);
+	private static final Font INVENTORY_AWKENED_SPELLS_FONT = new Font("Dialog",Font.BOLD,14);
 	
 	private static final Border LOCK_OFF_BORDER = BorderFactory.createLineBorder(UIManager.getColor("Panel.background"),3);
 	private static final Border LOCK_ON_BORDER = BorderFactory.createLineBorder(Color.red,3);
@@ -95,6 +96,7 @@ public class CombatFrame extends JFrame {
 	private JPanel showPanel;
 	private JButton showChitsButton;
 	private JButton showInventoryButton;
+	private RealmObjectPanel inventoryObjectPanel;
 	private JButton exportButton;
 	private JButton combatSummaryButton;
 	private JToggleButton lockNextButton;
@@ -1097,7 +1099,49 @@ public class CombatFrame extends JFrame {
 		// Use the trade dialog to show detail
 		RealmTradeDialog viewer = new RealmTradeDialog(this,"Inventory for the "+activeCharacter.getCharacterName(),false,false,false);
 		viewer.setTradeObjects(activeCharacter.getInventory());
+		
+		viewer.tradeTable.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent ev) {
+				if (ev.getClickCount()==1 || MouseUtility.isRightOrControlClick(ev)) {
+					RealmComponent item = viewer.getMarkedRealmComponentFromTradeTable();
+					if (item!=null) {
+						GameObject go = item.getGameObject();
+						showAwakenedSpells(go);
+					}
+				}
+			}
+		});
 		viewer.setVisible(true);
+	}
+	private void showAwakenedSpells(GameObject go) {
+		if (go!=null && go.hasThisAttribute("treasure") && (go.hasThisAttribute("magic") || go.hasThisAttribute("book"))) {
+			Collection<GameObject> c = SpellUtility.getSpells(go,Boolean.TRUE,false,true);
+			if (c.size()>0) {
+				JPanel panel = new JPanel(new BorderLayout());
+				inventoryObjectPanel = new RealmObjectPanel();
+				inventoryObjectPanel.addObjects(c);
+				inventoryObjectPanel.addMouseListener(new MouseAdapter() {
+					public void mousePressed(MouseEvent ev) {
+						Component c = inventoryObjectPanel.getComponentAt(ev.getPoint());
+						if (c!=null && c instanceof SpellCardComponent) {
+							SpellCardComponent sc = (SpellCardComponent)c;
+							SpellWrapper spell = new SpellWrapper(sc.getGameObject());
+							SpellInfoDialog spellinfoDialog = new SpellInfoDialog(singleton, spell, false);
+							spellinfoDialog.setVisible(true);
+						}
+						
+					}
+				});
+				panel.add(inventoryObjectPanel,"Center");
+				
+				JLabel label = new JLabel("Click spell for more info",JLabel.CENTER);
+				label.setOpaque(true);
+				label.setBackground(MagicRealmColor.PALEYELLOW);
+				label.setFont(INVENTORY_AWKENED_SPELLS_FONT);
+				panel.add(label,"North");
+				JOptionPane.showMessageDialog(singleton,panel,go.getName()+" Awakened Spells",JOptionPane.PLAIN_MESSAGE);
+			}
+		}
 	}
 	private void initComponents() {
 		getContentPane().setLayout(new BorderLayout());

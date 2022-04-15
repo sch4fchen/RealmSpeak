@@ -38,7 +38,7 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 public class RealmTradeDialog extends AggressiveDialog {
 	private RealmComponent trader = null; // could be null
 	private ArrayList<TradeComponent> tradeComponents;
-	private JTable tradeTable;
+	public JTable tradeTable;
 	private int maxHeight;
 	
 	private Collection<TradeComponent> selectedTradeComponents = null;
@@ -72,6 +72,13 @@ public class RealmTradeDialog extends AggressiveDialog {
 	}
 	public void setDealingCharacter(CharacterWrapper character) {
 		dealingCharacter = character;
+	}
+	public RealmComponent getMarkedRealmComponentFromTradeTable() {
+		int selRow = tradeTable.getSelectedRow();
+		if (selRow>=0) {
+			return (tradeComponents.get(selRow)).realmComponent;
+		}
+		return null;
 	}
 	public RealmComponent getFirstSelectedRealmComponent() {
 		ArrayList<RealmComponent> sel = getSelectedRealmComponents();
