@@ -100,6 +100,7 @@ public class CharacterBattleBuilderPanel extends JPanel {
 				if (character.getInventory()!=null) {
 					for (GameObject item : character.getInventory()) {
 						item.removeThisAttribute(BattleBuilder.BATTLE_BUILDER_KEY);
+						character.getGameObject().remove(item);
 					}
 				}
 				if (hirelingPanel.getAllRealmComponents()!=null) {
@@ -114,11 +115,9 @@ public class CharacterBattleBuilderPanel extends JPanel {
 					}
 				}
 				character.clearPlayerAttributes(); // puts it back in the player pool again
+				character.setHidden(false);
 				for (CharacterActionChitComponent chit : character.getAllChits()) {
 					chit.makeActive();
-				}
-				for (GameObject item : character.getInventory()) {
-					character.getGameObject().remove(item);
 				}
 				character.moveToLocation(dummyFrame, null);
 				if (character.getGameObject().hasThisAttribute(Constants.CUSTOM_CHARACTER)) {
