@@ -5,6 +5,7 @@ NEW FEATURES:
 # CombatScreen inventory: Option to display awakened spells of items (like in character inventory panel)
 BUGS/ISSUES:
 # BattleBuilder: Reset hide status when re-adding character
+# BattleBuilder: Remove awakened spells from items when removing it from character
 
 Version 1.1.5.5 - Changes since 1.1.5.4
 QUEST UPDATE:

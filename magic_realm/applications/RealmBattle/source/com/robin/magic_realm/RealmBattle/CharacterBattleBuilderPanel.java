@@ -101,6 +101,9 @@ public class CharacterBattleBuilderPanel extends JPanel {
 					for (GameObject item : character.getInventory()) {
 						item.removeThisAttribute(BattleBuilder.BATTLE_BUILDER_KEY);
 						character.getGameObject().remove(item);
+						if (item.hasThisAttribute("artifact") || item.hasThisAttribute("book")) {
+							item.clearHold();
+						}
 					}
 				}
 				if (hirelingPanel.getAllRealmComponents()!=null) {
@@ -299,6 +302,9 @@ public class CharacterBattleBuilderPanel extends JPanel {
 					thing.removeThisAttribute(Constants.ACTIVATED);
 					thing.removeThisAttribute(BattleBuilder.BATTLE_BUILDER_KEY);
 					character.getGameObject().remove(thing);
+					if (thing.hasThisAttribute("artifact") || thing.hasThisAttribute("book")) {
+						thing.clearHold();
+					}
 				}
 				activeInventoryPanel.clearSelected();
 				inactiveInventoryPanel.clearSelected();
