@@ -18,6 +18,7 @@
 package com.robin.magic_realm.components;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.util.Collection;
 
@@ -34,6 +35,8 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
 
 public abstract class ChitComponent extends RealmComponent {
+	public static boolean killedByOption = false;
+	
 	public static final Color BACKING = new Color(255,255,255,220);
 	protected static Color TRANSPARENT_RED = new Color(255,0,0,120);
 	protected static Color TRANSPARENT_BLUE = new Color(0,0,255,120);
@@ -329,8 +332,27 @@ public abstract class ChitComponent extends RealmComponent {
 				g.drawLine(0,0,size,size);
 				g.drawLine(0,size,size,0);
 				
-				// TODO Could show who killed it...
-				// TODO Could show how much fame/notoriety was scored here... (if killed by character)
+				GameObject killedBy = combat.getKilledBy();
+				if (killedByOption && killedBy != null) {
+					g.setColor(Color.red);
+					Font killerFont = new Font("Dialog",Font.BOLD,size/9);
+					g.setFont(killerFont);
+					String killedByText = "";
+					RealmComponent rc = RealmComponent.getRealmComponent(getGameObject());
+					if (rc.isItem()) {
+						killedByText = "Destroyed by";
+					}
+					else {
+						killedByText = "Killed by";
+					}
+					AffineTransform at = new AffineTransform();
+					at.rotate(-Math.PI/4);
+					g.setTransform(at);
+					GraphicsUtil.drawCenteredString(g,0,size/2+6,0,12,killedByText);
+					GraphicsUtil.drawCenteredString(g,0,size/2+22,0,12,killedBy.getName());
+					at.rotate(+Math.PI/4);
+					g.setTransform(at);
+				}
 			}
 			else {
 				g.setColor(Color.red);

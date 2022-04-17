@@ -2,7 +2,8 @@ Version 1.1.5.6 - Changes since 1.1.5.5
 QUEST UPDATE:
 # Update to quest Q43 Physiologus
 NEW FEATURES:
-# CombatScreen inventory: Option to display awakened spells of items (like in character inventory panel)
+# Combat screen inventory: Option to display awakened spells of items (like in character inventory panel)
+# Option to show "killed by" on chits
 BUGS/ISSUES:
 # Slightly adjusted character chit symbols (for classic design)#
 # BattleBuilder: Reset potion effect when removing character or potion or inactivating potion

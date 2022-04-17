@@ -55,6 +55,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 	protected JRadioButton colorChitsOption;
 	protected JRadioButton frenzelChitsOption;
 	protected JRadioButton legendaryChitsOption;
+	protected JCheckBox killedByOption;
 	protected JCheckBox monsterNumbersOption;
 	
 	protected JRadioButton classicCharacterChitsOption;
@@ -215,6 +216,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		}
 		
 		monsterNumbersOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.MONSTER_NUMBERS,false));
+		killedByOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.CHIT_KILLED_BY,false));
 		
 		showHeavyInvWarningOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.HEAVY_INV_WARNING,true));
 		showIncompleteRecordWarningOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.INCOMPLETE_PHASE_WARNING,true));
@@ -249,6 +251,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 			options.getOptions().set(RealmSpeakOptions.DAILY_COMBAT,"ON_S");
 		}
 		options.getOptions().set(RealmSpeakOptions.MONSTER_NUMBERS,monsterNumbersOption.isSelected());
+		options.getOptions().set(RealmSpeakOptions.CHIT_KILLED_BY,killedByOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.HEAVY_INV_WARNING,showHeavyInvWarningOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.INCOMPLETE_PHASE_WARNING,showIncompleteRecordWarningOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.MOVE_AFTER_HIRE_WARNING,showMoveAfterHireWarningOption.isSelected());
@@ -477,7 +480,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		return panel;
 	}
 	private JPanel getChitsOptionsPanel() {
-		JPanel panel = new JPanel(new GridLayout(5,1));
+		JPanel panel = new JPanel(new GridLayout(6,1));
 		panel.setBorder(BorderFactory.createTitledBorder("Game Chits"));
 		ButtonGroup group = new ButtonGroup();
 		classicChitsOption = new JRadioButton("Classic Chits");
@@ -495,6 +498,8 @@ public class RealmSpeakOptionPanel extends JDialog {
 		panel.add(legendaryChitsOption);
 		monsterNumbersOption = new JCheckBox("Show Monster Numbers");
 		panel.add(monsterNumbersOption);
+		killedByOption = new JCheckBox("Show 'killed by'");
+		panel.add(killedByOption);
 		return panel;
 	}
 	private JPanel getCharacterChitsOptionPanel() {

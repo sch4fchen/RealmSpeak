@@ -1,11 +1,11 @@
-Character Chit Component: Could show who killed it..., Could show how much fame/notoriety was scored here... (if killed by character)
-Combat Summary: add functionality for RandomAssignment, Deploy/Charge (and charge character, Actions?, Assign
+"TODO" in code (found by search)
+Combat Summary: add functionality for RandomAssignment, Deploy/Charge (and charge character, Actions?, Assign)
+---:::FEATURES:::---
 Scenario Editor (GM tool, scenario title, description, randomizing setup option)
 	RealmSpeak + GM: save game as scenario (with scenario name and description), have a different file extension
 	RealSpeak: Load scenarios (overview with names and descriptions), list game options
 	RealmSpeak + GM: Shuffle components Flag in gameData when saving scenario: Shuffle when loading OR NO shuffling when loading
 	GM: add and remove tiles from/to MagicRealmData.xml
----:::FEATURES:::---
 Combat Tips:
 	* (If hidden) "You are hidden: If you lure now, you will become unhidden and the enemy will attack you. Wait for phase 6: Assign targets to attack safely."
 	* (If hired natives) "Hired Natives won't change tactics as defenders, but they might as attackers." 

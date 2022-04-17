@@ -22,7 +22,9 @@ import javax.swing.SwingUtilities;
 import com.robin.general.io.PreferenceManager;
 import com.robin.general.sound.SoundCache;
 import com.robin.general.swing.ComponentTools;
+import com.robin.magic_realm.components.CardComponent;
 import com.robin.magic_realm.components.CharacterChitComponent;
+import com.robin.magic_realm.components.ChitComponent;
 import com.robin.magic_realm.components.MonsterChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.TileComponent;
@@ -53,6 +55,7 @@ public class RealmSpeakOptions {
 	public static final String HEADER_CHAT_LINES = "hChatL";
 	public static final String DAILY_COMBAT = "dailyCombat";
 	public static final String MONSTER_NUMBERS = "monsterNumbers";
+	public static final String CHIT_KILLED_BY = "killedBy";
 	public static final String HEAVY_INV_WARNING = "heavyInvWarning";
 	public static final String INCOMPLETE_PHASE_WARNING = "incompletePhaseWarning";
 	public static final String MOVE_AFTER_HIRE_WARNING = "moveAfterHireWarning";
@@ -113,6 +116,8 @@ public class RealmSpeakOptions {
 				break;
 		}
 		MonsterChitComponent.showMonsterNumbers = options.getBoolean(MONSTER_NUMBERS);
+		ChitComponent.killedByOption = options.getBoolean(CHIT_KILLED_BY);
+		CardComponent.killedByOption = options.getBoolean(CHIT_KILLED_BY);
 		if (gameHandler!=null) {
 			gameHandler.updateToolbarOptions(getActionIconState());
 			gameHandler.getInspector().setZoomSlider(options.isPref(MAP_SLIDER));
