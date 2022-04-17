@@ -1,4 +1,4 @@
-Character Chits: Align image on chit
+Character Chit Component: Could show who killed it..., Could show how much fame/notoriety was scored here... (if killed by character)
 Combat Summary: add functionality for RandomAssignment, Deploy/Charge (and charge character, Actions?, Assign
 Scenario Editor (GM tool, scenario title, description, randomizing setup option)
 	RealmSpeak + GM: save game as scenario (with scenario name and description), have a different file extension
