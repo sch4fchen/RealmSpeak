@@ -99,7 +99,9 @@ public class CharacterBattleBuilderPanel extends JPanel {
 				character.getGameObject().removeThisAttribute(BattleBuilder.BATTLE_BUILDER_KEY);
 				if (character.getInventory()!=null) {
 					for (GameObject item : character.getInventory()) {
+						item.removeThisAttribute(Constants.ACTIVATED);
 						item.removeThisAttribute(BattleBuilder.BATTLE_BUILDER_KEY);
+						item.removeThisAttribute(Constants.ADD_SHARPNESS);
 						character.getGameObject().remove(item);
 						if (item.hasThisAttribute("artifact") || item.hasThisAttribute("book")) {
 							item.clearHold();
@@ -118,6 +120,7 @@ public class CharacterBattleBuilderPanel extends JPanel {
 					}
 				}
 				character.clearPlayerAttributes(); // puts it back in the player pool again
+				character.clearWishStrength();
 				character.setHidden(false);
 				for (CharacterActionChitComponent chit : character.getAllChits()) {
 					chit.makeActive();
@@ -301,6 +304,7 @@ public class CharacterBattleBuilderPanel extends JPanel {
 					GameObject thing = rc.getGameObject();
 					thing.removeThisAttribute(Constants.ACTIVATED);
 					thing.removeThisAttribute(BattleBuilder.BATTLE_BUILDER_KEY);
+					thing.removeThisAttribute(Constants.ADD_SHARPNESS);
 					character.getGameObject().remove(thing);
 					if (thing.hasThisAttribute("artifact") || thing.hasThisAttribute("book")) {
 						thing.clearHold();
