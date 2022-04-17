@@ -348,6 +348,9 @@ public class CharacterBattleBuilderPanel extends JPanel {
 				for (RealmComponent rc : c) {
 					GameObject thing = rc.getGameObject();
 					thing.removeThisAttribute(Constants.ACTIVATED);
+					if (thing.hasThisAttribute("potion")) {
+						TreasureUtility.handleExpiredPotion(thing);
+					}
 				}
 				activeInventoryPanel.clearSelected();
 				
