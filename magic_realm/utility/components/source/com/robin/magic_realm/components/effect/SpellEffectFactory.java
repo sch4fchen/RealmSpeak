@@ -10,13 +10,13 @@ public class SpellEffectFactory {
 			case "animate": return new ISpellEffect[]{new AnimateEffect()};
 			case "ask demon": return new ISpellEffect[]{new AskDemonEffect()};
 		
-			case "bewilder": return new ISpellEffect[]{new ApplyClearingEffect("bewildered")};
+			case "bewilder": return new ISpellEffect[]{new ApplyClearingEffect(Constants.BEWILDERED)};
 			case "blazing light": return new ISpellEffect[]{new ExtraCavePhaseEffect()};
 			case "blazing light x": return new ISpellEffect[]{new ApplyNamedEffect(Constants.TORCH_BEARER)};
 		
 			case "blend into background": return new ISpellEffect[]{new ExtraActionEffect("H")};
 			case "blend into background x": return new ISpellEffect[]{new ExtraActionEffect("H")};
-			case "blunting": return new ISpellEffect[]{new ApplyClearingEffect("blunted")};
+			case "blunting": return new ISpellEffect[]{new ApplyClearingEffect(Constants.BLUNTED)};
 			case "blur": return new ISpellEffect[]{new FinalChitSpeedEffect()};
 		
 			case "broomstick": return new ISpellEffect[]{new FlyChitEffect()};
@@ -29,7 +29,7 @@ public class SpellEffectFactory {
 		
 			case "deal with goblins": return new ISpellEffect[]{new PacifyEffect(0)};
 			case "disguise": return new ISpellEffect[]{new PacifyEffect(0)};
-			case "disjunction": return new ISpellEffect[]{new ApplyNamedEffect("no_w_fat"),new ApplyNamedEffect("no_ter_harm")};
+			case "disjunction": return new ISpellEffect[]{new ApplyNamedEffect(Constants.NO_WEATHER_FATIGUE),new ApplyNamedEffect(Constants.NO_TERRAIN_HARM)};
 		
 			case "dissolve spell": return new ISpellEffect[]{new CancelEffect()};
 			case "divine might": return new ISpellEffect[]{new ApplyNamedEffect(Constants.STRONG_MF)};
@@ -52,11 +52,11 @@ public class SpellEffectFactory {
 			
 			case "fog": return new ISpellEffect[]{new ApplyNamedEffect(Constants.SP_NO_PEER)};
 		
-			case "gravity": return new ISpellEffect[]{new ApplyClearingEffect("heavied")};
+			case "gravity": return new ISpellEffect[]{new ApplyClearingEffect(Constants.HEAVIED)};
 			case "guide spider or octopus": return new ISpellEffect[]{new ControlEffect()};
 		
 			case "heal": return new ISpellEffect[]{new HealChitEffect()};
-			case "hop": return new ISpellEffect[]{new TeleportEffect("RandomClearing")};
+			case "hop": return new ISpellEffect[]{new TeleportEffect(SpellUtility.TeleportType.RandomClearing)};
 			case "hurricane winds": return new ISpellEffect[]{new HurricaneWindsEffect()};
 			case "hypnotize": return new ISpellEffect[]{new ControlEffect()};
 		
@@ -67,7 +67,7 @@ public class SpellEffectFactory {
 			case "make whole": return new ISpellEffect[]{new MakeWholeEffect()};
 			case "melt into mist": return new ISpellEffect[]{new NullifyEffect(),new DisengageEffect(), new TransmorphEffect("mist")};
 			case "miracle": return new ISpellEffect[]{new MiracleEffect()};
-			case "open gate": return new ISpellEffect[]{new TeleportEffect("KnownGate")};
+			case "open gate": return new ISpellEffect[]{new TeleportEffect(SpellUtility.TeleportType.KnownGate)};
 		
 			case "peace": return new ISpellEffect[]{new PeaceEffect()};
 			//case "peace with nature": return new ISpellEffect[]{new ApplyNamedEffect(Constants.PEACE_WITH_NATURE)};
@@ -109,10 +109,10 @@ public class SpellEffectFactory {
 			case "summon aid": return new ISpellEffect[]{new SummonAidEffect()};
 			case "summon animal": return new ISpellEffect[]{new SummonEffect(SpellUtility.SummonType.animal.toString())};
 			case "summon elemental": return new ISpellEffect[]{new SummonEffect(SpellUtility.SummonType.elemental.toString())};
-			case "sword song": return new ISpellEffect[]{new ApplyNamedEffect("alerted_weapon"), new AlertWeaponEffect()};
+			case "sword song": return new ISpellEffect[]{new ApplyNamedEffect(Constants.ALERTED_WEAPON), new AlertWeaponEffect()};
 		
 			case "talk to wise bird": return new ISpellEffect[]{new InstantPeerEffect()};
-			case "teleport": return new ISpellEffect[]{new TeleportEffect("ChooseTileTwo")};
+			case "teleport": return new ISpellEffect[]{new TeleportEffect(SpellUtility.TeleportType.ChooseTileTwo)};
 		
 			case "transform": return new ISpellEffect[]{new TransmorphEffect("roll")};
 		
