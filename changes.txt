@@ -5,7 +5,7 @@ NEW FEATURES:
 # CombatScreen inventory: Option to display awakened spells of items (like in character inventory panel)
 BUGS/ISSUES:
 # Slightly adjusted character chit symbols (for classic design)#
-# BattleBuilder: Reset item sharpness when re-adding character or item
+# BattleBuilder: Reset potion effect when removing character or potion
 # BattleBuilder: Reset hide status when re-adding character
 # BattleBuilder: Remove awakened spells from items when removing it from character
 

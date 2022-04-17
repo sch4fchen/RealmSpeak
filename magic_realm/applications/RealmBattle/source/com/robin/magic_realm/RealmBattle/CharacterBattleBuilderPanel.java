@@ -101,10 +101,12 @@ public class CharacterBattleBuilderPanel extends JPanel {
 					for (GameObject item : character.getInventory()) {
 						item.removeThisAttribute(Constants.ACTIVATED);
 						item.removeThisAttribute(BattleBuilder.BATTLE_BUILDER_KEY);
-						item.removeThisAttribute(Constants.ADD_SHARPNESS);
 						character.getGameObject().remove(item);
 						if (item.hasThisAttribute("artifact") || item.hasThisAttribute("book")) {
 							item.clearHold();
+						}
+						if (item.hasThisAttribute("potion")) {
+							TreasureUtility.handleExpiredPotion(item);
 						}
 					}
 				}
@@ -304,11 +306,14 @@ public class CharacterBattleBuilderPanel extends JPanel {
 					GameObject thing = rc.getGameObject();
 					thing.removeThisAttribute(Constants.ACTIVATED);
 					thing.removeThisAttribute(BattleBuilder.BATTLE_BUILDER_KEY);
-					thing.removeThisAttribute(Constants.ADD_SHARPNESS);
 					character.getGameObject().remove(thing);
 					if (thing.hasThisAttribute("artifact") || thing.hasThisAttribute("book")) {
 						thing.clearHold();
 					}
+					if (thing.hasThisAttribute("potion")) {
+						TreasureUtility.handleExpiredPotion(thing);
+					}
+					
 				}
 				activeInventoryPanel.clearSelected();
 				inactiveInventoryPanel.clearSelected();
