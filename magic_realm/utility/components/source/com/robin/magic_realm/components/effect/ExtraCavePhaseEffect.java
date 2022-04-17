@@ -7,7 +7,6 @@ public class ExtraCavePhaseEffect implements ISpellEffect {
 
 	@Override
 	public void apply(SpellEffectContext context) {
-		// TODO Auto-generated method stub
 		ClearingDetail clearing = context.Spell.getTargetAsClearing(context.Target);
 		clearing.addFreeAction(Constants.EXTRA_CAVE_PHASE, context.Spell.getGameObject());
 	}

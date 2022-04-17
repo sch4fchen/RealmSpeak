@@ -7,7 +7,6 @@ public class NoWeightEffect implements ISpellEffect {
 
 	@Override
 	public void apply(SpellEffectContext context) {
-		// TODO Auto-generated method stub
 		//CJM -- this is checked during getWeight()
 	}
 

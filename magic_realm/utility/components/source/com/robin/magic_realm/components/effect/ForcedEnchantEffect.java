@@ -7,7 +7,6 @@ public class ForcedEnchantEffect implements ISpellEffect {
 
 	@Override
 	public void apply(SpellEffectContext context) {
-		// TODO Auto-generated method stub
 		CharacterActionChitComponent chit = (CharacterActionChitComponent)context.Target;
 		String change = context.Spell.getGameObject().getThisAttribute(chit.getMagicType());
 		if (change==null) {
@@ -18,7 +17,6 @@ public class ForcedEnchantEffect implements ISpellEffect {
 
 	@Override
 	public void unapply(SpellEffectContext context) {
-		// TODO Auto-generated method stub
 		CharacterActionChitComponent chit = (CharacterActionChitComponent)context.Target;
 		if (chit.isColor()) {
 			// Not sure this is what Deric Page wanted, but it's consistent

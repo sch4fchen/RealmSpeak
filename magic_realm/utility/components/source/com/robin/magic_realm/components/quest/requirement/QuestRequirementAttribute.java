@@ -247,7 +247,7 @@ public class QuestRequirementAttribute extends QuestRequirement {
 	 * init.
 	 */
 
-	private int getRealValue() { // TODO Still don't like this as a solution...  how can the player know this is happening?
+	private int getRealValue() {
 		int val = getValue();
 		TargetValueType targetValueType = getTargetValueType();
 		if (targetValueType == TargetValueType.Game) {

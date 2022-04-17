@@ -38,7 +38,7 @@ public class QuestBuilderModel {
 		quest.setDescription("This is a quest.");
 		quest.createQuestStep(false);
 	}
-	public void loadQuest() { // TODO from file? from quest class?  GameData?
+	public void loadQuest() {
 	}
 	public void saveQuest() {
 	}

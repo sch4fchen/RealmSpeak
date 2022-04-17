@@ -16,8 +16,6 @@ public class DiscoverRoadEffect implements ISpellEffect {
 
 	@Override
 	public void unapply(SpellEffectContext context) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

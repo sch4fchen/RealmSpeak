@@ -635,7 +635,6 @@ public class TileEditFrame extends JFrame {
 		}
 	}
 	public void addPath() {
-		// TODO Working here
 		if (activeTile!=null) {
 			ArrayList<Object> list = new ArrayList<>(activeTile.getClearingDetail());
 			ButtonOptionDialog chooser = new ButtonOptionDialog(this,null,"From which clearing?","");

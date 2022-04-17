@@ -18,7 +18,6 @@ public class ChitChangeEffect implements ISpellEffect {
 
 	@Override
 	public void unapply(SpellEffectContext context) {
-		// TODO Auto-generated method stub
 		CharacterActionChitComponent chit = (CharacterActionChitComponent)context.Target;
 		if (chit.isColor()) {
 			// If the converted chit was enchanted, it fatigues at the end of the spell (Rule 43.5)

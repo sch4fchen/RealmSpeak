@@ -6,7 +6,6 @@ public class UnassignEffect implements ISpellEffect {
 
 	@Override
 	public void apply(SpellEffectContext context) {
-		// TODO Auto-generated method stub
 		context.Target.clearTargets();
 		CombatWrapper aCombat = new CombatWrapper(context.Target.getGameObject());
 		aCombat.setSheetOwner(false);
@@ -14,8 +13,6 @@ public class UnassignEffect implements ISpellEffect {
 
 	@Override
 	public void unapply(SpellEffectContext context) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

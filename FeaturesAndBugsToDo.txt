@@ -1,4 +1,3 @@
-"TODO" in code (found by search)
 Combat Summary: add functionality for RandomAssignment, Deploy/Charge (and charge character, Actions?, Assign)
 ---:::FEATURES:::---
 Scenario Editor (GM tool, scenario title, description, randomizing setup option)
@@ -28,6 +27,7 @@ Would be nice to make weapon abilities too:
 Guilds: Assassins, Nature
 Merlin's Use Horse Lot: http://www.nand.it/mr/mr15.html
 Option to change font size
+"TODO" in code (found by search)
 ---:::BUGS:::---
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 Wizard advancement - didn't get MOVE M5->MAGIC III

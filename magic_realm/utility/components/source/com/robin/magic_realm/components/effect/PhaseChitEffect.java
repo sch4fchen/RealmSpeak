@@ -12,7 +12,6 @@ public class PhaseChitEffect implements ISpellEffect {
 
 	@Override
 	public void unapply(SpellEffectContext context) {
-		// TODO Auto-generated method stub
 		// A Phase spell.  Ditch the phase chit.
 		GameObject phaseChit = context.Spell
 				.getGameObject()

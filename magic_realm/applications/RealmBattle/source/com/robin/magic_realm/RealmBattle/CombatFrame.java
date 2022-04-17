@@ -2784,7 +2784,7 @@ public class CombatFrame extends JFrame {
 			String selKey = chooser.getSelectedOptionKey();
 			if (selKey!=null) {
 				RealmComponent rc = chooser.getFirstSelectedComponent();
-				if (rc.isChit()) { // TODO When the heck would it ever be anything BUT a chit?  It was a TreasureCardComponent once (see BUG #1374), but how?
+				if (rc.isChit()) {
 					ChitComponent chit = (ChitComponent)rc;
 	
 					if (!positionExtra(chit,box,true,horseSameBox)) {

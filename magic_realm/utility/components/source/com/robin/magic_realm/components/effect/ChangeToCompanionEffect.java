@@ -48,7 +48,6 @@ public class ChangeToCompanionEffect implements ISpellEffect {
 
 	@Override
 	public void unapply(SpellEffectContext context) {
-		// TODO Auto-generated method stub
 		boolean companionDied = false;
 		for (GameObject go:SpellUtility.getCreatedCompanions(context.Spell)) {
 			if (go.hasThisAttribute(Constants.DEAD)) {

@@ -29,7 +29,6 @@ public class PetrifyEffect implements ISpellEffect {
 
 	@Override
 	public void unapply(SpellEffectContext context) {
-		// TODO Auto-generated method stub
 		ISpellEffect transmorph = new TransmorphEffect("statue");
 		transmorph.unapply(context);
 	}

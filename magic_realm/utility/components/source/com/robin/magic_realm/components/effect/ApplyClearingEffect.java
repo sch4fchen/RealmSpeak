@@ -14,7 +14,6 @@ public class ApplyClearingEffect implements ISpellEffect {
 
 	@Override
 	public void unapply(SpellEffectContext context) {
-		// TODO Auto-generated method stub
 		context.getClearingTarget().removeSpellEffect(_effect);
 	}
 

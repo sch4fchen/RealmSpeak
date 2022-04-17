@@ -895,11 +895,11 @@ public class QuestBuilderFrame extends JFrame {
 			}
 
 			public void edit() {
-				// TODO Do my dirty work
+				JOptionPane.showMessageDialog(this, "Not implemented yet");
 			}
 
 			public void delete() {
-				// TODO Do my dirty work
+				JOptionPane.showMessageDialog(this, "Not implemented yet");
 			}
 		};
 		return questRulesPanel;

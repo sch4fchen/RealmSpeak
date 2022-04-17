@@ -10,7 +10,6 @@ public class FlyStrengthEffect implements ISpellEffect {
 
 	@Override
 	public void unapply(SpellEffectContext context) {
-		// TODO Auto-generated method stub
 		context.Target.getGameObject().removeThisAttribute("fly_strength");
 		context.Target.getGameObject().removeThisAttribute("fly_speed");
 	}

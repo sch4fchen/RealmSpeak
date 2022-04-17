@@ -147,7 +147,7 @@ public class RealmBattle {
 				}
 			}
 		}
-		// Assign random clearing order (TODO Need to check the rules here)
+		// Assign random clearing order
 		battles.clearBattles();
 		if (battleLocations.size()>0) {
 			while(battleLocations.size()>0) {
