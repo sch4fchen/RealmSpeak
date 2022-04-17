@@ -678,15 +678,16 @@ public class SetupCardUtility {
 	public static void summonMonsters(HostPrefWrapper hostPrefs,ArrayList<GameObject> summoned,CharacterWrapper character,int monsterDie, String boardNumber) {
 		if (!character.isMinion() && !character.isSleep()) { // Minions and sleeping characters do not summon monsters or prowling denizens
 			TileLocation current = character.getCurrentLocation();
-			boolean atPeaceWithNature = character.affectedByKey(Constants.PEACE_WITH_NATURE);
-			boolean warningSounds = !atPeaceWithNature;
 			if (!character.getNoSummon()) { // Only the "first" follower in the "group" summons monsters!
-				boolean lull = 
-					character.getGameObject().hasAttribute(Constants.OPTIONAL_BLOCK,Constants.DRUID_LULL)
-						|| character.getGameObject().hasThisAttribute(Constants.DRUID_LULL);
+				boolean atPeaceWithNature = character.affectedByKey(Constants.PEACE_WITH_NATURE);
+				boolean warningSounds = !atPeaceWithNature;
 				
+				boolean lull = character.getGameObject().hasAttribute(Constants.OPTIONAL_BLOCK,Constants.DRUID_LULL) || character.getGameObject().hasThisAttribute(Constants.DRUID_LULL);
 				boolean siteChits = !lull;
 				
+				if (atPeaceWithNature && hostPrefs.hasPref(Constants.HOUSE2_PEACE_WITH_NATURE_SITES)) {
+					siteChits = false;
+				}
 				if (character.isHidden() && hostPrefs.hasPref(Constants.OPT_QUIET_MONSTERS)) {
 					warningSounds = false;
 					siteChits = false;

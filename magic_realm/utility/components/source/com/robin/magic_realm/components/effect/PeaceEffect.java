@@ -46,8 +46,7 @@ public class PeaceEffect implements ISpellEffect {
 
 	@Override
 	public void unapply(SpellEffectContext context) {
-		// TODO Auto-generated method stub
-
+		//Rulebook: This 'peace' cannot be broken before it expires.
 	}
 
 }

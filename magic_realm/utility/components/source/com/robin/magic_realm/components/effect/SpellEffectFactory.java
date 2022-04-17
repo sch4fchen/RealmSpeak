@@ -70,7 +70,7 @@ public class SpellEffectFactory {
 			case "open gate": return new ISpellEffect[]{new TeleportEffect(SpellUtility.TeleportType.KnownGate)};
 		
 			case "peace": return new ISpellEffect[]{new PeaceEffect()};
-			//case "peace with nature": return new ISpellEffect[]{new ApplyNamedEffect(Constants.PEACE_WITH_NATURE)};
+			case "peace with nature": return new ISpellEffect[]{new ApplyNamedEffect(Constants.PEACE_WITH_NATURE)};
 		
 			case "pentangle": return new ISpellEffect[]{new NullifyEffect()};
 			case "persuade": return new ISpellEffect[]{new PacifyEffect(1)};

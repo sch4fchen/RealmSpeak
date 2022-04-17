@@ -6,7 +6,6 @@ public class AlertWeaponEffect implements ISpellEffect {
 
 	@Override
 	public void apply(SpellEffectContext context) {
-		// TODO Auto-generated method stub
 		WeaponChitComponent weapon = (WeaponChitComponent)context.Target;
 		if (!weapon.isAlerted()) {
 			weapon.setAlerted(true);
@@ -15,8 +14,6 @@ public class AlertWeaponEffect implements ISpellEffect {
 
 	@Override
 	public void unapply(SpellEffectContext context) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

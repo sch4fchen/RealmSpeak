@@ -527,6 +527,7 @@ public class Constants {
 	public static final String HOUSE2_DAY_END_TRADING_ON = "DayEndTradingOn";
 	public static final String HOUSE2_NO_NATIVES_BATTLING = "NoNativesBattling";
 	public static final String HOUSE2_NATIVES_FRIENDLY = "NativeFriendly";
+	public static final String HOUSE2_PEACE_WITH_NATURE_SITES = "PeaceWithNatureSites";
 	
 	// MORE House Rules
 	public static final String HOUSE3_DWELLING_ARMOR_REPAIR = "DwellingArmorRepair";
