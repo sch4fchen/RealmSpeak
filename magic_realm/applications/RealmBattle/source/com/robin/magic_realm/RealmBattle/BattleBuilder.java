@@ -253,6 +253,7 @@ public class BattleBuilder extends JFrame {
 			if (clearing == 0) clearing = 1;
 			String tileName = prefs.get(BATTLE_BUILDER_TILE);
 			boolean tileIsEnchanted = prefs.getBoolean(BATTLE_BUILDER_TILE_IS_ENCHANTED);
+			RealmUtility.prepMonsterNumbers(gameData);
 			
 			// Set starting clearing
 			GameObject selectedTile = gameData.getGameObjectByName(tileName);

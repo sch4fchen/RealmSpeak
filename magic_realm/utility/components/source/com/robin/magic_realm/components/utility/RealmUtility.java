@@ -989,4 +989,25 @@ public class RealmUtility {
 		}
 		return sb.toString();
 	}
+	public static void prepMonsterNumbers(GameData data) {
+		GamePool pool = new GamePool(data.getGameObjects());
+		ArrayList<GameObject> monsters = pool.find("monster");
+		
+		// First, count each type
+		HashLists<String, GameObject> hl = new HashLists<>();
+		for (GameObject go:monsters) {
+			hl.put(go.getName(),go);
+		}
+		
+		// Only number those where there is more than one
+		for (String name : hl.keySet()) {
+			ArrayList<GameObject> list = hl.getList(name);
+			if (list.size()>1) {
+				for (int n=0;n<list.size();n++) {
+					GameObject go = list.get(n);
+					go.setThisAttribute(Constants.NUMBER,n+1);
+				}
+			}
+		}
+	}
 }
