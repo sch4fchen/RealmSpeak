@@ -3733,6 +3733,8 @@ public class CombatFrame extends JFrame {
 		if (gamePrefMan.canLoad()) {
 			gamePrefMan.loadPreferences();
 		}
+		ChitComponent.killedByOption = gamePrefMan.getBoolean("killedBy",true);
+		CardComponent.killedByOption = gamePrefMan.getBoolean("killedBy",true);
 		switch(gamePrefMan.getInt("chitDisplayStyle")) {
 			case RealmComponent.DISPLAY_STYLE_CLASSIC:
 				RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_CLASSIC;
@@ -3744,10 +3746,20 @@ public class CombatFrame extends JFrame {
 				RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_FRENZEL;
 				break;
 			case RealmComponent.DISPLAY_STYLE_LEGENDARY:
+			default:
 				RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_LEGENDARY;
 				break;
+		}
+		switch(gamePrefMan.getInt("characterChitDisplayStyle")) {
+			case CharacterChitComponent.DISPLAY_STYLE_CLASSIC:
+				CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_CLASSIC;
+				break;
+			case CharacterChitComponent.DISPLAY_STYLE_LEGENDARY_CLASSIC:
+				CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_LEGENDARY_CLASSIC;
+				break;
+			case CharacterChitComponent.DISPLAY_STYLE_LEGENDARY:
 			default:
-				RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_CLASSIC;
+				CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_LEGENDARY;
 				break;
 		}
 		
