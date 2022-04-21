@@ -21,7 +21,6 @@ import java.util.*;
 
 import com.robin.game.objects.*;
 import com.robin.game.server.GameHost;
-import com.robin.general.util.HashLists;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.MRMap.*;
 import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderModel;
@@ -110,7 +109,7 @@ public class RealmSpeakInit {
 		loader.cleanupData(hostPrefs.getGameKeyVals());
 		
 		// Set numbers for the monsters
-		prepMonsterNumbers();
+		RealmUtility.prepMonsterNumbers(data);
 		
 		// Do the setup
 		StringBuffer sb = new StringBuffer();
@@ -299,27 +298,6 @@ public class RealmSpeakInit {
 		}	
 	}
 	
-	private void prepMonsterNumbers() {
-		GamePool pool = new GamePool(data.getGameObjects());
-		ArrayList<GameObject> monsters = pool.find("monster");
-		
-		// First, count each type
-		HashLists<String, GameObject> hl = new HashLists<>();
-		for (GameObject go:monsters) {
-			hl.put(go.getName(),go);
-		}
-		
-		// Only number those where there is more than one
-		for (String name : hl.keySet()) {
-			ArrayList<GameObject> list = hl.getList(name);
-			if (list.size()>1) {
-				for (int n=0;n<list.size();n++) {
-					GameObject go = list.get(n);
-					go.setThisAttribute(Constants.NUMBER,n+1);
-				}
-			}
-		}
-	}
 	private void markItemStartingLocations() {
 		GamePool pool = new GamePool(data.getGameObjects());
 		ArrayList<String> query = new ArrayList<>();
