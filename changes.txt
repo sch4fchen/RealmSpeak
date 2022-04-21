@@ -3,6 +3,7 @@ QUEST UPDATE:
 # Update to quest Q43 Physiologus
 NEW FEATURES:
 # Combat screen inventory: Option to display awakened spells of items (like in character inventory panel)
+# Combat logging: add numbering to duplicate monsters (if option "Show Monster Numbers" enabled)
 # Option to show "killed by" on chits
 # Option for Peace of Nature ability: Peace with Nature extends to site chits
 BUGS/ISSUES:
