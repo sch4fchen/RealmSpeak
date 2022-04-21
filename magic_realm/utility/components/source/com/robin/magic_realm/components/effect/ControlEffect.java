@@ -28,7 +28,7 @@ public class ControlEffect implements ISpellEffect {
 								caster.getName(),
 								spellObj.getName()+" was cancelled because the "
 								+caster.getName()+"'s hirelings are already attacking the "
-								+target.getGameObject().getName());
+								+target.getGameObject().getNameWithNumber());
 						
 						// Remove target manually
 						ArrayList<String> targetids = new ArrayList<>(context.Spell.getList("target_ids"));

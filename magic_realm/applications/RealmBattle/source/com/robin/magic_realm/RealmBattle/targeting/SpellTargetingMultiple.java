@@ -94,7 +94,7 @@ public abstract class SpellTargetingMultiple extends SpellTargeting {
 						append = " (aiming for rider)";
 					}
 				}
-				CombatFrame.broadcastMessage(activeCharacter.getGameObject().getName(),"Targets the "+theTarget.getName()+" with "+spell.getGameObject().getName()+append);
+				CombatFrame.broadcastMessage(activeCharacter.getGameObject().getName(),"Targets the "+theTarget.getNameWithNumber()+" with "+spell.getGameObject().getName()+append);
 			}
 			return true;
 		}

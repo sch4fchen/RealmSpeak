@@ -521,21 +521,21 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		Strength vulnerability = getVulnerability();
 		if (!harm.getIgnoresArmor() && isArmored()) {
 			harm.dampenSharpness();
-			RealmLogging.logMessage(attacker.getGameObject().getName(),"Hits armor, and reduces sharpness: "+harm.toString());
+			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor, and reduces sharpness: "+harm.toString());
 		}
 		if (!harm.getIgnoresArmor() && hasActiveShield()) {
 			MonsterPartChitComponent shield = getShield();
 			CombatWrapper shieldCombat = new CombatWrapper(getShield().getGameObject());
 			if (shieldCombat.getCombatBox() == box) {
 				harm.dampenSharpness();
-				RealmLogging.logMessage(attacker.getGameObject().getName(),"Hits shield, thus monster is not killed, and reduces sharpness: "+harm.toString());
+				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits shield, thus monster is not killed, and reduces sharpness: "+harm.toString());
 				if (harm.getAppliedStrength().strongerThan(shield.getStrength())) {
 					shield.setDestroyed(true);
 					shieldCombat.setKilledBy(attacker.getGameObject());
 					shieldCombat.setKilledLength(attacker.getLength());
 					shieldCombat.setKilledSpeed(attacker.getAttackSpeed());
 					shieldCombat.setHitByOrderNumber(attackOrderPos);
-					RealmLogging.logMessage(attacker.getGameObject().getName(),"Destroys "+this.getName()+"'s shield.");
+					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Destroys "+this.getName()+"'s shield.");
 				}
 				return false; // Any attack hitting the shield, does not harm the monster.
 			}

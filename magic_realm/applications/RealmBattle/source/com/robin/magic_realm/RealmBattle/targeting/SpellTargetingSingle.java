@@ -105,7 +105,7 @@ public abstract class SpellTargetingSingle extends SpellTargeting {
 			else {
 				spell.addTarget(hostPrefs,theTarget.getGameObject());
 				combatFrame.makeWatchfulNatives(theTarget,true);
-				CombatFrame.broadcastMessage(activeCharacter.getGameObject().getName(),"Targets the "+theTarget.getGameObject().getName()+" ("+selText+") with "+spell.getGameObject().getName());
+				CombatFrame.broadcastMessage(activeCharacter.getGameObject().getName(),"Targets the "+theTarget.getGameObject().getNameWithNumber()+" ("+selText+") with "+spell.getGameObject().getName());
 				if (selText.trim().length()>0) {
 					spell.setExtraIdentifier(selText);
 				}

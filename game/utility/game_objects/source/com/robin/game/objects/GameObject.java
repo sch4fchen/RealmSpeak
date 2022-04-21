@@ -27,6 +27,7 @@ import org.jdom.output.XMLOutputter;
 
 import com.robin.general.io.ModifyableObject;
 import com.robin.general.util.OrderedHashtable;
+import com.robin.magic_realm.components.utility.Constants;
 
 public class GameObject extends ModifyableObject implements Serializable {
 
@@ -656,6 +657,13 @@ public class GameObject extends ModifyableObject implements Serializable {
 		return null;
 	}
 
+	public String getNameWithNumber() {
+		if (this.hasThisAttribute(Constants.NUMBER)) {
+			return name + " (" + this.getThisAttribute(Constants.NUMBER) + ")";
+		}
+		return name;
+	}
+	
 	public String getName() {
 		return name;
 	}

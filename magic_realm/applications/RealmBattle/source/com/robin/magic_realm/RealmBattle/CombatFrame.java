@@ -1919,7 +1919,7 @@ public class CombatFrame extends JFrame {
 			return false;
 		}
 		if (!lurer.isImmuneTo(denizen)) {
-			CombatFrame.broadcastMessage(lurer.getGameObject().getName(),"Lures the "+denizen.getGameObject().getName());
+			CombatFrame.broadcastMessage(lurer.getGameObject().getNameWithNumber(),"Lures the "+denizen.getGameObject().getNameWithNumber());
 			
 			RealmComponent target = denizen.getTarget();
 			if (target!=null) {
@@ -2134,9 +2134,6 @@ public class CombatFrame extends JFrame {
 			if (chooser.getSelectedText()!=null) {
 				RealmComponent theTarget = chooser.getFirstSelectedComponent();
 				String append = "";
-				if (theTarget.getGameObject().hasThisAttribute(Constants.NUMBER)) {
-					append = " "+theTarget.getGameObject().getThisAttribute(Constants.NUMBER);
-				}
 				append = aimingForHorseOrRider(attacker, theTarget, append);
 				if (attacker.getTarget()==null) {
 					attacker.setTarget(theTarget);
@@ -2144,7 +2141,7 @@ public class CombatFrame extends JFrame {
 				else {
 					attacker.set2ndTarget(theTarget);
 				}
-				broadcastMessage(attacker.getGameObject().getName(),"Attacks the "+theTarget.getGameObject().getName()+append);
+				broadcastMessage(attacker.getGameObject().getName(),"Attacks the "+theTarget.getGameObject().getNameWithNumber()+append);
 				makeTarget(this,hostPrefs,attacker,theTarget);
 				handleNativeReaction(theTarget);
 				

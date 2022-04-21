@@ -190,7 +190,7 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		Strength vulnerability = new Strength(getAttribute("this","vulnerability"));
 		if (!harm.getIgnoresArmor() && getGameObject().hasThisAttribute(Constants.ARMORED)) {
 			harm.dampenSharpness();
-			RealmLogging.logMessage(attacker.getGameObject().getName(),"Hits armor, and reduces sharpness: "+harm.toString());
+			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor, and reduces sharpness: "+harm.toString());
 		}
 		Strength applied = harm.getAppliedStrength();
 		if (applied.strongerOrEqualTo(vulnerability)) {
@@ -200,7 +200,7 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 			combat.setKilledLength(attacker.getLength());
 			combat.setKilledSpeed(attacker.getAttackSpeed());
 			combat.setHitByOrderNumber(attackOrderPos);
-			RealmLogging.logMessage(attacker.getGameObject().getName(),"Kills the "+getGameObject().getName());			
+			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Kills the "+getGameObject().getNameWithNumber());			
 			return true;
 		}
 		return false;

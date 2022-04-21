@@ -386,9 +386,9 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		if (horse!=null) {
 			CombatWrapper horseCombat = new CombatWrapper(horse.getGameObject());
 			if (horseCombat.getKilledBy()==null || horseCombat.getHitByOrderNumber()==attackOrderPos) {
-				RealmLogging.logMessage(attacker.getGameObject().getName(),"Hits the "
-						+getGameObject().getName()+"'s "
-						+horse.getGameObject().getName());
+				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits the "
+						+getGameObject().getNameWithNumber()+"'s "
+						+horse.getGameObject().getNameWithNumber());
 						
 				horseHarmed = horse.applyHit(game,hostPrefs,attacker,box,attackerHarm,attackOrderPos);
 				if (!attackerHarm.getStrength().isRed()) {
@@ -401,7 +401,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		Strength vulnerability = new Strength(getAttribute("this", "vulnerability"));
 		if (!harm.getIgnoresArmor() && getGameObject().hasThisAttribute(Constants.ARMORED)) {
 			harm.dampenSharpness();
-			RealmLogging.logMessage(attacker.getGameObject().getName(),"Hits armor, and reduces sharpness: "+harm.toString());
+			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor, and reduces sharpness: "+harm.toString());
 		}
 		Strength applied = harm.getAppliedStrength();
 		if (applied.strongerOrEqualTo(vulnerability)) {

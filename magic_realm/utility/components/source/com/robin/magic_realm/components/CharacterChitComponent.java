@@ -608,9 +608,9 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			if (horse != null && !combat.isTargetingRider(attacker.getGameObject())) {
 				CombatWrapper horseCombat = new CombatWrapper(horse.getGameObject());
 				if (horseCombat.getCombatBox() > 0) {
-					RealmLogging.logMessage(attacker.getGameObject().getName(),"Hits the "
-							+getGameObject().getName()+"'s "
-							+horse.getGameObject().getName());
+					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits the "
+							+getGameObject().getNameWithNumber()+"'s "
+							+horse.getGameObject().getNameWithNumber());
 					// Horse was active and played - it takes the hit!
 					return horse.applyHit(game,hostPrefs, attacker, box, harm,attackOrderPos);// INSTEAD of the character!
 				}
@@ -624,8 +624,8 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			if (harm.getAppliedStrength().strongerThan(new Strength("T")) && attacker.isMissile()) {
 				// If harm exceeds T, armor is ignored, and target is killed, regardless of armor (damn!)
 				harm.setIgnoresArmor(true);
-				RealmLogging.logMessage(attacker.getGameObject().getName(),"Harm is greater than Tremendous ("+harm+")!");
-				RealmLogging.logMessage(attacker.getGameObject().getName(),"Missile attack hits a vital unarmored spot!");
+				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Harm is greater than Tremendous ("+harm+")!");
+				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Missile attack hits a vital unarmored spot!");
 			}
 			else if ((hostPrefs.hasPref(Constants.OPT_PENETRATING_ARMOR) || character.affectedByKey(Constants.SHARPSHOOTER)) && attacker.isMissile()) {
 				// When Penetrating Armor is in play, and the attack is a missile attack, then the armor is never actually "hit".
@@ -645,28 +645,28 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					ArrayList<RealmComponent> armors = getArmors(box,attackOrderPos);
 					if (armors!=null && !armors.isEmpty()) {
 						harm.dampenSharpness();
-						RealmLogging.logMessage(attacker.getGameObject().getName(),"Hits armor, and reduces sharpness: "+harm.toString());
+						RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor, and reduces sharpness: "+harm.toString());
 						
 						for (RealmComponent test:armors) {
 							if (isDragonBreath && test.getGameObject().hasThisAttribute(Constants.IMMUNE_BREATH)) {
 								harm = new Harm(new Strength(),0); // negate harm!
-								RealmLogging.logMessage(attacker.getGameObject().getName(),"Dragon breath attack is stopped by "+test.getGameObject().getName());
+								RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Dragon breath attack is stopped by "+test.getGameObject().getNameWithNumber());
 							}
 							else {
 								Strength armorVulnerability = new Strength(test.getGameObject().getThisAttribute("vulnerability"));
 								if (armorVulnerability.strongerThan(harm.getAppliedStrength())) {
 									harm = new Harm(new Strength(),0); // negate harm!
-									RealmLogging.logMessage(attacker.getGameObject().getName(),"Missile attack is stopped by "+test.getGameObject().getName());
+									RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Missile attack is stopped by "+test.getGameObject().getNameWithNumber());
 									break;
 								}
 								else if (armorVulnerability.equals(harm.getAppliedStrength())) {
 									harm.setWound(true);
-									RealmLogging.logMessage(attacker.getGameObject().getName(),"Missile attack is stopped by "+test.getGameObject().getName()+", but causes 1 wound.");
+									RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Missile attack is stopped by "+test.getGameObject().getNameWithNumber()+", but causes 1 wound.");
 									break;
 								}
 								else { // can assume harm is greater than armor now
 									harm.dropOneLevel();
-									RealmLogging.logMessage(attacker.getGameObject().getName(),"Missile attack penetrates "+test.getGameObject().getName()+"!  Drops one level: "+harm);
+									RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Missile attack penetrates "+test.getGameObject().getNameWithNumber()+"!  Drops one level: "+harm);
 								}
 							}
 						}
@@ -677,7 +677,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				armor = getArmor(box,attackOrderPos);
 				if (armor!=null && isDragonBreath && armor.getGameObject().hasThisAttribute(Constants.IMMUNE_BREATH)) {
 					harm = new Harm(new Strength(),0); // negate harm!
-					RealmLogging.logMessage(attacker.getGameObject().getName(),"Dragon breath attack is stopped by "+armor.getGameObject().getName());
+					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Dragon breath attack is stopped by "+armor.getGameObject().getNameWithNumber());
 				}
 			}
 
@@ -686,17 +686,17 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			
 			if (armor==null && hasNaturalArmor()) { // custom character possibility
 				harm.dampenSharpness();
-				RealmLogging.logMessage(attacker.getGameObject().getName(),getGameObject().getName() + " has natural armor, which reduces sharpness: "+harm.toString());
+				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),getGameObject().getNameWithNumber() + " has natural armor, which reduces sharpness: "+harm.toString());
 			}
 			
 			if (!harm.getIgnoresArmor() && armor != null) {
 				// If armor, reduce harm by one star, determine if armor is damaged/destroyed, apply wounds
 				harm.dampenSharpness();
 				if (armor.isCharacter()) {
-					RealmLogging.logMessage(attacker.getGameObject().getName(),"Hits characater fortification, and reduces sharpness: "+harm.toString());
+					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits characater fortification, and reduces sharpness: "+harm.toString());
 				}
 				else {
-					RealmLogging.logMessage(attacker.getGameObject().getName(),"Hits armor ("+armor.getGameObject().getName()+"), and reduces sharpness: "+harm.toString());
+					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor ("+armor.getGameObject().getNameWithNumber()+"), and reduces sharpness: "+harm.toString());
 				}
 				Strength armorVulnerability = new Strength(armor.getGameObject().getThisAttribute("vulnerability"));
 				if (harm.getAppliedStrength().strongerOrEqualTo(armorVulnerability)) {
@@ -706,14 +706,14 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 						// damaged
 						if (armor.isCharacter()) {
 							if (!character.isFortDamaged()) {
-								RealmLogging.logMessage(attacker.getGameObject().getName(),"Damages the character fortification.");
+								RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Damages the character fortification.");
 								character.setFortDamaged(true);
 							}
 						}
 						else {
 							ArmorChitComponent armorChit = (ArmorChitComponent) armor;
 							if (!armorChit.isDamaged()) {
-								RealmLogging.logMessage(attacker.getGameObject().getName(),"Damages the "
+								RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Damages the "
 										+getGameObject().getName()+"'s "
 										+armor.getGameObject().getName());
 								destroyed = false;
@@ -733,7 +733,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 							if (!combatArmor.isDead()) {
 								combatArmor.setKilledBy(attacker.getGameObject());
 								combatArmor.setHitByOrderNumber(attackOrderPos);
-								RealmLogging.logMessage(attacker.getGameObject().getName(),"Destroys the "
+								RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Destroys the "
 										+getGameObject().getName()+"'s "
 										+armor.getGameObject().getName());
 								

@@ -90,7 +90,7 @@ public class SpellTargetingClearing extends SpellTargetingSpecial {
 			if (!ignorebattle) {
 				combatFrame.makeWatchfulNatives(RealmComponent.getRealmComponent(theTarget),true);
 			}
-			CombatFrame.broadcastMessage(character.getGameObject().getName(),"Targets the "+theTarget.getName()+" with "+spell.getGameObject().getName());
+			CombatFrame.broadcastMessage(character.getGameObject().getName(),"Targets the "+theTarget.getNameWithNumber()+" with "+spell.getGameObject().getName());
 		}
 		if (!gameObjects.isEmpty()) {
 			JOptionPane.showMessageDialog(combatFrame,"All valid targets are selected.",spell.getName(),JOptionPane.INFORMATION_MESSAGE);

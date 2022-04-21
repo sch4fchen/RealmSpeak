@@ -155,7 +155,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	public abstract String getName();
 
 	public String toString() {
-		return gameObject.getName();
+		return gameObject.getNameWithNumber();
 	}
 
 	public void useShadow(boolean val) {

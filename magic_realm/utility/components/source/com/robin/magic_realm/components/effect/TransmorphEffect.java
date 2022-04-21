@@ -174,7 +174,7 @@ public class TransmorphEffect implements ISpellEffect {
 		IconGroup group = new IconGroup(RealmComponent.getRealmComponent(trans).getIcon(),IconGroup.VERTICAL,1);
 		
 		String pronoun = getPronoun(trans.getName());
-		String message = "The " + target.getGameObject().getName()+" was transformed into " + pronoun + trans.getName() + ".";
+		String message = "The " + target.getGameObject().getNameWithNumber()+" was transformed into " + pronoun + trans.getName() + ".";
 		RealmLogging.logMessage(RealmLogging.BATTLE, message);
 		FrameManager.showDefaultManagedFrame(frame, message, "Transform", group, true);
 		

@@ -512,7 +512,7 @@ public class BattleModel {
 								logBattleInfo(
 										spellToCancelGo.getName()
 										+", cast by the "
-										+target.getGameObject().getName()
+										+target.getGameObject().getNameWithNumber()
 										+" (speed "+spellToCancel.getAttackSpeed().getNum()+")"
 										+",\n   was cancelled by "
 										+spell.getGameObject().getName()
@@ -891,18 +891,18 @@ public class BattleModel {
 								+" gets "
 								+spoils.getFameNotorietyString()
 								+" for the death of the "
-								+kill.getName());
+								+kill.getNameWithNumber());
 					}
 
 					if (spoils.hasGold() && rc.isPlayerControlledLeader()) {
 						CharacterWrapper record = new CharacterWrapper(attacker);
 						record.addGold(spoils.getGoldBounty());
 						record.addGold(spoils.getGoldRecord());
-						logBattleInfo("The "+attacker.getName()
+						logBattleInfo("The "+attacker.getNameWithNumber()
 								+" gets "
 								+spoils.getGoldString()
 								+" from the "
-								+kill.getName());
+								+kill.getNameWithNumber());
 					}
 
 					CombatWrapper ownerCombat = new CombatWrapper(owner.getGameObject());
@@ -1081,7 +1081,7 @@ public class BattleModel {
 					// Undercut!
 					boolean stopsUndercut = ((RealmComponent)target).affectedByKey(Constants.STOP_UNDERCUT);
 					if (stopsUndercut) {
-						logBattleInfo("Miss! ("+attacker.getAttackSpeed()+" is faster than "+target.getMoveSpeed()+", but "+target.getName()+" cannot be undercut!)");
+						logBattleInfo("Miss! ("+attacker.getAttackSpeed()+" is faster than "+target.getMoveSpeed()+", but "+target.getGameObject().getNameWithNumber()+" cannot be undercut!)");
 					}
 					else {
 						hitType = UNDERCUT;
@@ -1098,7 +1098,7 @@ public class BattleModel {
 					logBattleInfo("Undercut (hits on tie)! ("+attacker.getAttackSpeed()+" is equal to "+target.getMoveSpeed()+")");
 				}
 				if (!undercuttingAllowed && hitType==MISS) {
-					logBattleInfo(attacker.getGameObject().getName()+" cannot be used to undercut the "+target.getGameObject().getName()+", and as such has missed.");
+					logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot be used to undercut the "+target.getGameObject().getNameWithNumber()+", and as such has missed.");
 				}
 			}
 			attackerCombat.addHitType(hitType,target.getGameObject());
@@ -1179,13 +1179,13 @@ public class BattleModel {
 				if (magicType!=null && magicType.trim().length()>0) {
 					if ("V".equals(magicType)) {
 						// Demon's Power of the Pit
-						logBattleInfo(target.getGameObject().getName()+" was hit with Power of the Pit along box "+attacker.getAttackCombatBox());
+						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with Power of the Pit along box "+attacker.getAttackCombatBox());
 						PowerOfThePit pop = PowerOfThePit.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject(),false,0,attacker.getAttackSpeed());
 						ArrayList<GameObject> kills = new ArrayList<>(pop.getKills());
 						kills.remove(targetCombat.getGameObject()); // Because targetCombat will be handled normally
 						
 						for (GameObject kill:kills) {
-							logBattleInfo(kill.getName()+" was killed!");
+							logBattleInfo(kill.getNameWithNumber()+" was killed!");
 							killedTallyHash.put(kill,attacker.getGameObject());
 							killTallyHash.put(attacker.getGameObject(),kill);
 							if (!killerOrder.contains(attacker.getGameObject())) killerOrder.add(attacker.getGameObject());
@@ -1196,7 +1196,7 @@ public class BattleModel {
 					}
 					else if ("VIII".equals(magicType)) {
 						// Imp's Curse
-						logBattleInfo(target.getGameObject().getName()+" was hit with a Curse along box "+attacker.getAttackCombatBox());
+						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with a Curse along box "+attacker.getAttackCombatBox());
 						Curse curse = Curse.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject());
 						hitCausedHarm = curse.harmWasApplied();
 						spellCasting = true;
@@ -1221,7 +1221,7 @@ public class BattleModel {
 					targetCombat.addHitBy(attacker.getGameObject());
 					currentNewWounds = targetCombat.getNewWounds();
 					
-					logBattleInfo(target.getGameObject().getName()+" is hit with "+attackerHarm+" harm along box "+attacker.getAttackCombatBox());
+					logBattleInfo(target.getGameObject().getNameWithNumber()+" is hit with "+attackerHarm+" harm along box "+attacker.getAttackCombatBox());
 					hitCausedHarm = target.applyHit(theGame,hostPrefs,attacker,attacker.getAttackCombatBox(),attackerHarm,attackOrderPos);
 				}
 				
@@ -1232,14 +1232,14 @@ public class BattleModel {
 					// Determine wounds (if any)
 					int woundsThisHit = targetCombat.getNewWounds() - currentNewWounds;
 					if (woundsThisHit>0) {
-						logBattleInfo(target.getGameObject().getName()+" takes "+woundsThisHit+" wound"+(woundsThisHit==1?"":"s"));
+						logBattleInfo(target.getGameObject().getNameWithNumber()+" takes "+woundsThisHit+" wound"+(woundsThisHit==1?"":"s"));
 					}
 				}
 				
 				// Check to see if the target was killed by this attacker,
 				// and if so, give the killing character some points!
 				if (targetCombat.getKilledBy()!=null && targetCombat.getKilledBy().equals(attacker.getGameObject())) {
-					logBattleInfo(target.getGameObject().getName()+" was killed!");
+					logBattleInfo(target.getGameObject().getNameWithNumber()+" was killed!");
 					RealmComponent rc;
 					if (attacker instanceof SpellWrapper) {
 						// Spells belong to characters
@@ -1254,7 +1254,7 @@ public class BattleModel {
 								RealmLogging.logMessage(
 										caster.getName(),
 										"Life force of the "
-											+target.getGameObject().getName()
+											+target.getGameObject().getNameWithNumber()
 											+" is worth "+amt+" asterisk"+(amt==1?"":"s"));
 							}
 						}
@@ -1287,7 +1287,7 @@ public class BattleModel {
 					BattleUtility.handleSpoilsOfWar(rc,targetRc);
 				}
 				else {
-					logBattleInfo(target.getGameObject().getName()+" was not killed.");
+					logBattleInfo(target.getGameObject().getNameWithNumber()+" was not killed.");
 				}
 			}
 			else {
@@ -1306,17 +1306,7 @@ public class BattleModel {
 	}
 	private static String getCombatantInformation(BattleChit chit,boolean attacker) {
 		StringBuffer sb = new StringBuffer();
-		sb.append(chit.getGameObject().getName());
-		if (chit instanceof RealmComponent) {
-			RealmComponent rc = (RealmComponent)chit;
-			if (rc.isMonster()) {
-				if (rc.getGameObject().hasThisAttribute(Constants.NUMBER)) {
-					sb.append("(");
-					sb.append(rc.getGameObject().getThisAttribute(Constants.NUMBER));
-					sb.append(")");
-				}
-			}
-		}
+		sb.append(chit.getGameObject().getNameWithNumber());
 		sb.append(" ");
 		if (attacker) {
 			Harm harm = chit.getHarm();
@@ -1346,7 +1336,7 @@ public class BattleModel {
 	}
 	private Harm getAdjustedHarm(BattleChit attacker,int fumbleModifier,String targetId) {
 		if (hostPrefs.hasPref(Constants.OPT_FUMBLE)) {
-			logBattleInfo("fumbleModifier for attacker ("+attacker.getGameObject().getName()+") is "+fumbleModifier);
+			logBattleInfo("fumbleModifier for attacker ("+attacker.getGameObject().getNameWithNumber()+") is "+fumbleModifier);
 		}
 		Harm totalHarm = attacker.getHarm();
 		if (!totalHarm.isAdjustable()) {
@@ -1687,7 +1677,7 @@ public class BattleModel {
 						}
 						chit.flip();
 						if (chit instanceof BattleChit) {
-							RealmLogging.logMessage(chit.getGameObject().getName(),"Changes tactics:  "+getCombatantInformation((BattleChit)chit,true));
+							RealmLogging.logMessage(chit.getGameObject().getNameWithNumber(),"Changes tactics:  "+getCombatantInformation((BattleChit)chit,true));
 						}
 					}
 				}
@@ -1831,7 +1821,7 @@ public class BattleModel {
 			}
 			if (combat.getKilledBy()!=null) {
 				// Dead - remove from wherever, and deal with whatever inventory
-				logBattleInfo(rc+" is dead.  Killed by "+combat.getKilledBy().getName());
+				logBattleInfo(rc+" is dead.  Killed by "+combat.getKilledBy().getNameWithNumber());
 				
 				// Test for Grudges/Gratitudes
 				if (rc.isNative() && rc.getOwner()==null && hostPrefs.hasPref(Constants.OPT_GRUDGES)) {
@@ -1916,7 +1906,7 @@ public class BattleModel {
 						rc.getGameObject().setThisAttribute(Constants.LAND_FIRST); // Forces a landing at the beginning of next turn
 					}
 					disengage = true;
-					logBattleInfo(rc+" is blown away to "+tile.getGameObject().getName()+"!");
+					logBattleInfo(rc+" is blown away to "+tile.getGameObject().getNameWithNumber()+"!");
 				}
 				else {
 					RealmComponent target1 = rc.getTarget();
@@ -2121,7 +2111,7 @@ public class BattleModel {
 		responsibleCharacter.changeRelationship(rc.getGameObject(),-penalty);
 		String newRelString = RealmUtility.getRelationshipNameFor(responsibleCharacter,rc);
 		
-		logBattleInfo(killer.getGameObject().getName()+" killed "+currentRelString+" "+rc.toString()+".");
+		logBattleInfo(killer.getGameObject().getNameWithNumber()+" killed "+currentRelString+" "+rc.toString()+".");
 		logBattleInfo(responsibleCharacter.getCharacterName()+" relationship is harmed by "+penalty+"! ("+ruleName+") --> "+newRelString);
 	}
 	/**

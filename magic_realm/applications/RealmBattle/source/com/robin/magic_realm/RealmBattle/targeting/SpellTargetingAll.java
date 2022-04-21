@@ -42,7 +42,7 @@ public abstract class SpellTargetingAll extends SpellTargeting {
 			if (!ignorebattle) {
 				combatFrame.makeWatchfulNatives(RealmComponent.getRealmComponent(theTarget),true);
 			}
-			CombatFrame.broadcastMessage(activeCharacter.getGameObject().getName(),"Targets the "+theTarget.getName()+" with "+spell.getGameObject().getName());
+			CombatFrame.broadcastMessage(activeCharacter.getGameObject().getName(),"Targets the "+theTarget.getNameWithNumber()+" with "+spell.getGameObject().getName());
 		}
 		JOptionPane.showMessageDialog(combatFrame,"All valid targets are selected.",spell.getName()+" Selects ALL",JOptionPane.INFORMATION_MESSAGE);
 		return true;

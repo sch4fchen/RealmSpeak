@@ -60,7 +60,7 @@ public class ChangeToCompanionEffect implements ISpellEffect {
 		GameObject caster = context.Spell.getCaster().getGameObject();
 		if (companionDied) {
 			// Target is destroyed
-			RealmLogging.logMessage(caster.getName(),"Lost the "+ context.Target.getGameObject().getName()+".");
+			RealmLogging.logMessage(caster.getName(),"Lost the "+ context.Target.getGameObject().getNameWithNumber()+".");
 			String targetForItem = context.Spell.getGameObject().getThisAttribute(Constants.CHANGE_TO_COMPANION);
 			GameObject dwelling = context.Spell.getGameData().getGameObjectByName(targetForItem);
 			dwelling.add(context.Target.getGameObject());
