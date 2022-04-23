@@ -350,6 +350,7 @@ public class CharacterBattleBuilderPanel extends JPanel {
 					thing.removeThisAttribute(Constants.ACTIVATED);
 					if (thing.hasThisAttribute("potion")) {
 						TreasureUtility.handleExpiredPotion(thing);
+						character.getGameObject().add(thing);
 					}
 				}
 				activeInventoryPanel.clearSelected();
