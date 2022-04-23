@@ -7,7 +7,8 @@ NEW FEATURES:
 # Option to show "killed by" on chits
 # Option for Peace of Nature ability: Peace with Nature extends to site chits
 BUGS/ISSUES:
-# Slightly adjusted character chit symbols (for classic design)#
+# Fix game freeze when faster spell cancels expired spell (e.g. spell without an target)
+# Slightly adjusted character chit symbols (for classic design)
 # BattleBuilder: Reset potion effect when removing character or potion or inactivating potion
 # BattleBuilder: Reset hide status when re-adding character
 # BattleBuilder: Remove awakened spells from items when removing it from character
