@@ -3730,6 +3730,7 @@ public class CombatFrame extends JFrame {
 		if (gamePrefMan.canLoad()) {
 			gamePrefMan.loadPreferences();
 		}
+		GameObject.showNumbers = gamePrefMan.getBoolean("monsterNumbers",true);
 		ChitComponent.killedByOption = gamePrefMan.getBoolean("killedBy",true);
 		CardComponent.killedByOption = gamePrefMan.getBoolean("killedBy",true);
 		switch(gamePrefMan.getInt("chitDisplayStyle")) {

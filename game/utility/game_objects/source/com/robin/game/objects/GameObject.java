@@ -32,6 +32,7 @@ import com.robin.magic_realm.components.utility.Constants;
 public class GameObject extends ModifyableObject implements Serializable {
 
 	public static final int NO_ID_ASSIGNED = -1;
+	public static boolean showNumbers = false;
 
 	protected static XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat());
 
@@ -658,7 +659,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 	}
 
 	public String getNameWithNumber() {
-		if (this.hasThisAttribute(Constants.NUMBER)) {
+		if (showNumbers && this.hasThisAttribute(Constants.NUMBER)) {
 			return name + " (" + this.getThisAttribute(Constants.NUMBER) + ")";
 		}
 		return name;

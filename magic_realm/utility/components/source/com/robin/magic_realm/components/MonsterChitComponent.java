@@ -38,8 +38,6 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	private MonsterFightChitComponent fightChit = null; // only used when a monster is absorbed!!
 	private MonsterMoveChitComponent moveChit = null; // only used when a monster is absorbed!!
 	
-	public static boolean showMonsterNumbers = false;
-	
 	public MonsterFightChitComponent getFightChit() {
 		if (fightChit==null) {
 			fightChit = new MonsterFightChitComponent(getGameObject());
@@ -334,7 +332,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 			}
 		}
 		
-		if (showMonsterNumbers && gameObject.hasThisAttribute(Constants.NUMBER)) {
+		if (GameObject.showNumbers && gameObject.hasThisAttribute(Constants.NUMBER)) {
 			g.setColor(Color.black);
 			g.setFont(new Font("Dialog",Font.BOLD,11));
 			int x = 5;

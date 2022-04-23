@@ -19,13 +19,13 @@ package com.robin.magic_realm.RealmSpeak;
 
 import javax.swing.SwingUtilities;
 
+import com.robin.game.objects.GameObject;
 import com.robin.general.io.PreferenceManager;
 import com.robin.general.sound.SoundCache;
 import com.robin.general.swing.ComponentTools;
 import com.robin.magic_realm.components.CardComponent;
 import com.robin.magic_realm.components.CharacterChitComponent;
 import com.robin.magic_realm.components.ChitComponent;
-import com.robin.magic_realm.components.MonsterChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.attribute.ChatLine;
@@ -115,7 +115,7 @@ public class RealmSpeakOptions {
 				TileComponent.displayTilesStyle = TileComponent.DISPLAY_TILES_STYLE_CLASSIC;
 				break;
 		}
-		MonsterChitComponent.showMonsterNumbers = options.getBoolean(MONSTER_NUMBERS);
+		GameObject.showNumbers = options.getBoolean(MONSTER_NUMBERS);
 		ChitComponent.killedByOption = options.getBoolean(CHIT_KILLED_BY);
 		CardComponent.killedByOption = options.getBoolean(CHIT_KILLED_BY);
 		if (gameHandler!=null) {
