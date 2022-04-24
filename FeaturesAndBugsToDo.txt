@@ -1,4 +1,8 @@
-Combat Summary: add functionality for RandomAssignment, Deploy/Charge (and charge character, Actions?, Assign)
+recompile, check bat file start
+Power of the Pit/Protection: check targeting allowed? add magic protection, when activated phase chit, phase chit needs nullify + magic protection, deactivate magic protection at end of combat round or end of character s turn
+
+Power of the Pit optional rule C.4: Power of the Pit attack to hit like an attack spell
+Combat Summary: add functionality for RandomAssignment, Deploy/Charge (and charge character, Actions? Attack/Maneuver, Assign)
 ---:::FEATURES:::---
 Scenario Editor (GM tool, scenario title, description, randomizing setup option)
 	RealmSpeak + GM: save game as scenario (with scenario name and description), have a different file extension
