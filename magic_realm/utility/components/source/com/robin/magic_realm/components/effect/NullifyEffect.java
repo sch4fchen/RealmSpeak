@@ -12,7 +12,6 @@ public class NullifyEffect implements ISpellEffect {
 		
 		SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(context.Spell.getGameObject().getGameData());
 		sm.nullifyBewitchingSpells(context.Target.getGameObject(),context.Spell);
-
 	}
 
 	@Override
