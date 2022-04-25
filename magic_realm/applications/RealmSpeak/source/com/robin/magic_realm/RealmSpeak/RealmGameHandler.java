@@ -920,7 +920,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				TileLocation before = spell.getCurrentLocation();
 				spell.affectTargets(CombatFrame.getSingleton(), game, true); // this is STILL happening in a thread...
 				TileLocation after = spell.getCurrentLocation();
-				if (!before.equals(after)) {
+				if (before != null && !before.equals(after)) {
 					// The spell transported its target, so update combat
 					RealmBattle.testCombatInClearing(before, client.getGameData());
 				}
