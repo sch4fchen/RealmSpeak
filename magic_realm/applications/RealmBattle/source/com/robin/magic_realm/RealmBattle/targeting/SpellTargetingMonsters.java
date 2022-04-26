@@ -33,7 +33,7 @@ public class SpellTargetingMonsters extends SpellTargetingMultiple {
 		BattleGroup bg = battleModel.getParticipantsBattleGroup(activeParticipant);
 		ArrayList<RealmComponent> otherOpponents = combatFrame.findCanBeSeen(battleModel.getAllOtherBattleParticipants(bg,true,combatFrame.allowsTreachery()),true);
 		for (RealmComponent rc : otherOpponents) {
-			if (rc.isMonster()) {
+			if (rc.isMonster() && !rc.hasMagicProtection()) {
 				gameObjects.add(rc.getGameObject());
 			}
 		}

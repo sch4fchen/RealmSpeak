@@ -29,7 +29,9 @@ public class SpellTargetingCaster extends SpellTargetingSingle {
 	}
 
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
-		gameObjects.add(combatFrame.getActiveCharacter().getGameObject());
+		if (!combatFrame.getActiveCharacter().hasMagicProtection()) {
+			gameObjects.add(combatFrame.getActiveCharacter().getGameObject());
+		}
 		return true;
 	}
 }

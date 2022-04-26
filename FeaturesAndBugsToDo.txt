@@ -1,5 +1,3 @@
-Power of the Pit/Protection: check targeting allowed?
-
 Power of the Pit optional rule C.4: Power of the Pit attack to hit like an attack spell
 Combat Summary: add functionality for RandomAssignment, Deploy/Charge (and charge character, Actions? Attack/Maneuver, Assign)
 ---:::FEATURES:::---

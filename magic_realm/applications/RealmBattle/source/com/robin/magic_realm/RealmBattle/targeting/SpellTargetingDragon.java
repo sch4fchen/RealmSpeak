@@ -35,7 +35,7 @@ public class SpellTargetingDragon extends SpellTargetingSingle {
 		ArrayList<RealmComponent> allParticipantsSansDenizens = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(false),true);
 		allDenizens.removeAll(allParticipantsSansDenizens);
 		for (RealmComponent rc : allDenizens) {
-			if (rc.isMonster() && !rc.isPlayerControlledLeader()) {
+			if (rc.isMonster() && !rc.isPlayerControlledLeader() && !rc.hasMagicProtection()) {
 				String icon = rc.getGameObject().getAttribute(rc.getThisBlock(),"icon_type");
 				if (icon!=null &&
 						(icon.indexOf("dragon")>=0

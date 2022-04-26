@@ -33,7 +33,7 @@ public class SpellTargetingMonster extends SpellTargetingSingle {
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
 		ArrayList<RealmComponent> allBattleParticipants = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true);
 		for (RealmComponent rc : allBattleParticipants) {
-			if (rc.isMonster()) {
+			if (rc.isMonster() && !rc.hasMagicProtection()) {
 				gameObjects.add(rc.getGameObject());
 			}
 		}

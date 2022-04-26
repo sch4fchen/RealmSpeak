@@ -38,7 +38,7 @@ public class SpellTargetingHumanGroup extends SpellTargetingSingle {
 		potentialTargets = CombatSheet.filterNativeFriendly(activeParticipant, potentialTargets);
 		String ownerId = activeParticipant.getGameObject().getStringId();
 		for (RealmComponent rc:potentialTargets) {
-			if (!rc.isCharacter() && (rc.getOwnerId()==null || rc.getOwnerId().equals(ownerId))) {
+			if (!rc.isCharacter() && !rc.hasMagicProtection() && (rc.getOwnerId()==null || rc.getOwnerId().equals(ownerId))) {
 				String groupName = null;
 				if (rc.isMonster() && !rc.isPlayerControlledLeader()) {
 					MonsterChitComponent monster = (MonsterChitComponent)rc;

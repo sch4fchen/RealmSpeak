@@ -39,7 +39,7 @@ public class SpellTargetingCharacter extends SpellTargetingSingle {
 		ArrayList<RealmComponent> allCharacters = combatFrame.findCanBeSeen(battleModel.getAllParticipatingCharactersAsRc(),true);
 		for (RealmComponent rc : allCharacters) {
 			CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
-			if (!lightOnly || !character.getVulnerability().strongerThan(new Strength("L"))) {
+			if (!character.hasMagicProtection() && (!lightOnly || !character.getVulnerability().strongerThan(new Strength("L")))) {
 				gameObjects.add(rc.getGameObject());
 			}
 		}

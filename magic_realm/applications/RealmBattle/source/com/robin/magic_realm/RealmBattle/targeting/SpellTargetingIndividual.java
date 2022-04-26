@@ -33,7 +33,9 @@ public class SpellTargetingIndividual extends SpellTargetingSingle {
 		ArrayList<RealmComponent> potentialTargets = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true);
 		potentialTargets = CombatSheet.filterNativeFriendly(activeParticipant, potentialTargets);
 		for (RealmComponent rc:potentialTargets) {
-			gameObjects.add(rc.getGameObject());
+			if (!rc.hasMagicProtection()) {
+				gameObjects.add(rc.getGameObject());
+			}
 		}
 		return true;
 	}

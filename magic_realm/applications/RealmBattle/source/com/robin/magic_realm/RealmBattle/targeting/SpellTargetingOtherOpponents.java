@@ -35,7 +35,9 @@ public class SpellTargetingOtherOpponents extends SpellTargetingMultiple {
 		potentialTargets = CombatSheet.filterNativeFriendly(activeParticipant, potentialTargets);
 		potentialTargets.remove(bg.getOwningCharacter()); // Never target yourself here
 		for (RealmComponent rc:potentialTargets) {
-			gameObjects.add(rc.getGameObject());
+			if (!rc.hasMagicProtection()) {
+				gameObjects.add(rc.getGameObject());
+			}
 		}
 		return true;
 	}

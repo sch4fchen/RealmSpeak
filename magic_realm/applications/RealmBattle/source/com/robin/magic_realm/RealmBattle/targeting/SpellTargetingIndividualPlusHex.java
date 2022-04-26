@@ -49,8 +49,10 @@ public class SpellTargetingIndividualPlusHex extends SpellTargetingIndividual {
 		}
 		
 		for (GameObject go : gameObjects) {
-			identifiers.add(go.getName());
-			secondaryTargets.put(go.getName(),adjTiles);
+			if (!RealmComponent.getRealmComponent(go).hasMagicProtection()) {
+				identifiers.add(go.getName());
+				secondaryTargets.put(go.getName(),adjTiles);
+			}
 		}
 		return true;
 	}

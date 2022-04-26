@@ -35,7 +35,7 @@ public class SpellTargetingUndead extends SpellTargetingMultiple {
 		ArrayList<RealmComponent> otherOpponents = combatFrame.findCanBeSeen(battleModel.getAllOtherBattleParticipants(bg,true,combatFrame.allowsTreachery()),true);
 		otherOpponents = CombatSheet.filterNativeFriendly(activeParticipant, otherOpponents);
 		for (RealmComponent rc : otherOpponents) {
-			if (rc.isMonster() && rc.getGameObject().hasThisAttribute(Constants.UNDEAD)) {
+			if (rc.isMonster() && rc.getGameObject().hasThisAttribute(Constants.UNDEAD) && !rc.hasMagicProtection()) {
 				gameObjects.add(rc.getGameObject());
 			}
 		}

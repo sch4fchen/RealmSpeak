@@ -35,7 +35,7 @@ public class SpellTargetingSpiderOctopus extends SpellTargetingSingle {
 		ArrayList<RealmComponent> allParticipantsSansDenizens = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(false),true);
 		allDenizens.removeAll(allParticipantsSansDenizens);
 		for (RealmComponent rc : allDenizens) {
-			if (rc.isMonster() && !rc.isPlayerControlledLeader()) {
+			if (rc.isMonster() && !rc.isPlayerControlledLeader() && !rc.hasMagicProtection()) {
 				String icon = rc.getGameObject().getAttribute(rc.getThisBlock(),"icon_type");
 				if ("spider".equals(icon) || "octopus".equals(icon)) {
 					gameObjects.add(rc.getGameObject());
