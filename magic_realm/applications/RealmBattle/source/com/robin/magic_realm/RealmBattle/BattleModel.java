@@ -509,14 +509,24 @@ public class BattleModel {
 								CombatWrapper combat = new CombatWrapper(target.getGameObject());
 								GameObject spellToCancelGo = combat.getCastSpell();
 								SpellWrapper spellToCancel = new SpellWrapper(spellToCancelGo);
-								String message = spellToCancelGo.getName()
-										+", cast by the "
-										+target.getGameObject().getNameWithNumber();
+								String targetingClearingOrTile = "";
+								String cancelledAttackSpeed = "";
+								if (spellToCancel.targetsTile()) {
+									targetingClearingOrTile = ", targeting the tile";
+								}
+								if (spellToCancel.targetsClearing()) {
+									targetingClearingOrTile = ", targeting the clearing";
+								}
 								//attackSpeed cannot be fetched anymore, if spell already expired (e.g. dissolve spell didn't have a target)
 								if (spellToCancel.getIncantationObject() != null) {
-										message = message +" (speed "+spellToCancel.getAttackSpeed().getNum()+")";
+									cancelledAttackSpeed =" (speed "+spellToCancel.getAttackSpeed().getNum()+")";
 								}
-								message = message
+								
+								String message = spellToCancelGo.getName()
+										+", cast by the "
+										+target.getGameObject().getNameWithNumber()
+										+targetingClearingOrTile
+										+cancelledAttackSpeed
 										+",\n   was cancelled by "
 										+spell.getGameObject().getName()
 										+" (speed "+spell.getAttackSpeed().getNum()+")"
