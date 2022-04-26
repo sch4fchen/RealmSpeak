@@ -385,8 +385,7 @@ public class RealmSpeakInit {
 		query.add(Constants.CAST_SPELL_ON_INIT);
 		Collection<GameObject> needsSpellInit = pool.find(query);
 		for (GameObject go : needsSpellInit) {
-			for (Iterator n=go.getHold().iterator();n.hasNext();) {
-				GameObject sgo = (GameObject)n.next();
+			for (GameObject sgo : go.getHold()) {
 				if (sgo.hasThisAttribute("spell")) {
 					SpellWrapper spell = new SpellWrapper(sgo);
 					spell.castSpellNoEnhancedMagic(go);

@@ -498,7 +498,7 @@ public class BattleModel {
 			for (Integer speed : allSpeeds) {
 				ArrayList<SpellWrapper> spellsAtSpeed = spells.getList(speed);
 				for (SpellWrapper spell : spellsAtSpeed) {
-					if (spell.isAlive() && !spell.targetsClearing()) { // might have already been cancelled!
+					if (spell.isAlive() && !spell.targetsClearing() && !spell.targetsTile()) { // might have already been cancelled!
 						ArrayList<CharacterChitComponent> unaffectedCasters = casters.getList(speed);
 						ArrayList<RealmComponent> targets = spell.getTargets();
 						targets.retainAll(spellCasters);
