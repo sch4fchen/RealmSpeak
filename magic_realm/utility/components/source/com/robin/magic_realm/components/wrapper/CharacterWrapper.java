@@ -31,6 +31,9 @@ import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.attribute.DayAction.ActionId;
 import com.robin.magic_realm.components.attribute.GuildLevelType.GuildLevel;
+import com.robin.magic_realm.components.effect.ISpellEffect;
+import com.robin.magic_realm.components.effect.PhaseChitEffectFactory;
+import com.robin.magic_realm.components.effect.SpellEffectContext;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
@@ -132,6 +135,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String RECORDED_SPELLS = "rSpells__";		// Spells you aquire
 	
 	public static final String KILL_BLOCK = "kills_b"; // record of all kills
+	
+	public static final String PHASE_CHITS = "phaseChits__";
 	
 	// Victory Requirements
 	public static final String VICTORY_REQ_BLOCK = "VR__";
@@ -1696,7 +1701,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		// Expire potions
 		for (GameObject item:getActivatedTreasureObjects()) {
-			if (item.hasThisAttribute("potion")) {
+			if (item.hasThisAttribute(Constants.POTION)) {
 				expirePotion(item);
 			}
 		}
@@ -6602,4 +6607,40 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 	}
+	public void applyPhaseChit(JFrame frame, GameObject phaseChit, SpellWrapper spell) {
+		getGameObject().addThisAttributeListItem(PHASE_CHITS,phaseChit.getStringId());
+		if (phaseChit.hasAttributeBlock(Constants.EFFECTS)) {
+			GameWrapper game = GameWrapper.findGame(getGameObject().getGameData());
+			SpellEffectContext context = new SpellEffectContext(frame, game, RealmComponent.getRealmComponent(getGameObject()), spell, getGameObject());
+			for (String effect : phaseChit.getAttributeBlock(Constants.EFFECTS).keySet()) {
+				ISpellEffect[] effects = PhaseChitEffectFactory.create(effect);
+				for (ISpellEffect spellEffect : effects) {
+					spellEffect.apply(context);
+				}
+			}
+		}
+	}
+	public void endActivePhaseChits() {
+		GameData gameData = getGameObject().getGameData();
+		if (getGameObject().hasThisAttribute(PHASE_CHITS)) {
+			for (String phaseChitId : getGameObject().getThisAttributeList(PHASE_CHITS)) {
+				GameObject phaseChit = gameData.getGameObject(Long.valueOf(phaseChitId));
+				if (phaseChit.hasAttributeBlock(Constants.EFFECTS)) {
+					String spellId = phaseChit.getThisAttribute(Constants.SPELL_ID);
+					GameObject spell = gameData.getGameObject(Long.valueOf(spellId));
+					SpellWrapper spellWrapper = new SpellWrapper(spell);
+					GameWrapper game = GameWrapper.findGame(getGameObject().getGameData());
+					SpellEffectContext context = new SpellEffectContext(null, game, RealmComponent.getRealmComponent(getGameObject()), spellWrapper, getGameObject());
+					for (String effect : phaseChit.getAttributeBlock(Constants.EFFECTS).keySet()) {
+						ISpellEffect[] effects = PhaseChitEffectFactory.create(effect);
+						for (ISpellEffect spellEffect : effects) {
+							spellEffect.unapply(context);
+						}
+					}
+				}
+			}
+			getGameObject().removeThisAttribute(PHASE_CHITS);
+		}
+	}
+
 }

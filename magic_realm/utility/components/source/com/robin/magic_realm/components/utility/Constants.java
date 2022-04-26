@@ -270,6 +270,7 @@ public class Constants {
 	public static final String PLAIN_SIGHT = "plainsight";
 	public static final String DROPPED_BY = "droppedby";
 	public static final String ENCHANTED_COLOR = "ench_clr";
+	public static final String POTION = "potion";
 	
 	// Native ThisAttributes
 	public static final String HIDDEN = "hidden";
@@ -374,6 +375,10 @@ public class Constants {
 	public static final String BEWILDERED = "bewildered";
 	public static final String HEAVIED = "heavied";
 	
+	public static final String PHASE_CHIT = "phase_chit";
+	public static final String PHASE_CHIT_ID = "phaseChitID";
+	public static final String EFFECTS = "effects";
+	
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";
 	public static final String EYEMIST = "Eyemist";
@@ -384,6 +389,7 @@ public class Constants {
 	public static final String DISGUST = "Disgust";
 	
 	// Spells
+	public static final String SPELL_ID = "spellID";
 	public static final String SPELL_AWAKENED = "Awakened"; // Identifies an original spell that is now awakened
 	public static final String SPELL_INSTANCE = "Instance"; // Identifies a spell that is recorded by a character
 	public static final String ARTIFACT_ENHANCED_MAGIC = "en_magic";

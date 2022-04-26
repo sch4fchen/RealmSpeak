@@ -1,6 +1,7 @@
 package com.robin.magic_realm.components.effect;
 
 import com.robin.game.objects.GameObject;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.SpellUtility;
 
 public class PhaseChitEffect implements ISpellEffect {
@@ -16,9 +17,8 @@ public class PhaseChitEffect implements ISpellEffect {
 		GameObject phaseChit = context.Spell
 				.getGameObject()
 				.getGameData()
-				.getGameObject(Long.valueOf(context.Spell.getGameObject().getThisAttribute("phaseChitID")));
+				.getGameObject(Long.valueOf(context.Spell.getGameObject().getThisAttribute(Constants.PHASE_CHIT_ID)));
 		context.getCharacterTarget().getGameObject().remove(phaseChit);
-		context.Spell.getGameObject().removeThisAttribute("phaseChitID");
+		context.Spell.getGameObject().removeThisAttribute(Constants.PHASE_CHIT_ID);
 	}
-
 }

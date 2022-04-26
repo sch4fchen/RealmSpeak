@@ -858,7 +858,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 						if (spellMaster.expirePhaseSpells()) {
 							getCharacterFrame().updateCharacter();
 						}
-//						getCharacter().doEndActivePhaseChits();
+						getCharacter().endActivePhaseChits();
 					}
 				}
 			}

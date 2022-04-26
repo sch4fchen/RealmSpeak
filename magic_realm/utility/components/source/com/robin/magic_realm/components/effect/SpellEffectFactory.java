@@ -82,7 +82,7 @@ public class SpellEffectFactory {
 			case "prayer": return new ISpellEffect[]{new ExtraActionEffect("R")};
 			case "premonition": return new ISpellEffect[]{new ApplyNamedEffect(Constants.CHOOSE_TURN)};
 			case "prophecy": return new ISpellEffect[]{new ApplyNamedEffect(Constants.DAYTIME_ACTIONS)};
-			case "protection from magic": return new ISpellEffect[]{new PhaseChitEffect(), new NullifyEffect()}; //also protection from magic
+			case "protection from magic": return new ISpellEffect[]{new PhaseChitEffect()};
 
 			case "raise dead": return new ISpellEffect[]{new SummonEffect(SpellUtility.SummonType.undead.toString())};
 			case "remedy": return new ISpellEffect[]{new CancelEffect()};

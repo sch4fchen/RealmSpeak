@@ -7590,6 +7590,10 @@
         <attribute phase_chit="" />
         <attribute text="Protection from Magic" />
       </AttributeBlock>
+      <AttributeBlock blockName="phase_chit_effects">
+        <attribute magic_protection="" />
+        <attribute nullify="" />
+      </AttributeBlock>
     </GameObject>
     <GameObject id="316" name="Peace with Nature">
       <AttributeBlock blockName="this">
@@ -17099,7 +17103,10 @@
       <AttributeBlock blockName="this">
         <attribute phase_chit="" />
         <attribute text="Protection from Magic" />
+      </AttributeBlock>
+      <AttributeBlock blockName="effects">
         <attribute magic_protection="" />
+		<attribute nullify="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="728" name="Firedrake">

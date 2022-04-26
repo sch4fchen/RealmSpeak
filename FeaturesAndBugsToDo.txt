@@ -1,4 +1,4 @@
-Power of the Pit/Protection: check targeting allowed? add magic protection, when activated phase chit, phase chit needs nullify + magic protection, deactivate magic protection at end of combat round or end of character s turn
+Power of the Pit/Protection: check targeting allowed?
 
 Power of the Pit optional rule C.4: Power of the Pit attack to hit like an attack spell
 Combat Summary: add functionality for RandomAssignment, Deploy/Charge (and charge character, Actions? Attack/Maneuver, Assign)

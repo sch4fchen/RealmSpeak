@@ -1782,7 +1782,7 @@ public class BattleModel {
 				}
 				
 				// Expire active phase chits
-//				character.doEndActivePhaseChits();
+				character.endActivePhaseChits();
 				
 				// Check for COMBAT_HIDE
 				if (character.affectedByKey(Constants.COMBAT_HIDE) && !character.isHidden() && combat.getAttackerCount()==0) {

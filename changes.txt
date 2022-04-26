@@ -2,6 +2,7 @@ Version 1.1.5.6 - Changes since 1.1.5.5
 QUEST UPDATE:
 # Update to quest Q43 Physiologus
 NEW FEATURES:
+# Protection from Magic spell: add missing functionality (including remaining logic for phase chits)
 # Combat screen inventory: Option to display awakened spells of items (like in character inventory panel)
 # Combat logging: add numbering to duplicate monsters (if option "Show Monster Numbers" enabled)
 # Option to show "killed by" on chits
