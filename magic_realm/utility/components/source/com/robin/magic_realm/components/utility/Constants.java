@@ -377,6 +377,7 @@ public class Constants {
 	
 	public static final String PHASE_CHIT = "phase_chit";
 	public static final String PHASE_CHIT_ID = "phaseChitID";
+	public static final String PHASE_CHIT_EFFECTS = "phase_chit_effects";
 	public static final String EFFECTS = "effects";
 	
 	// Curses

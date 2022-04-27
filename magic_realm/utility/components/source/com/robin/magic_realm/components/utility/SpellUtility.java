@@ -411,12 +411,12 @@ the Appearance Chart, he instantly becomes unhired.
 		GameObject phaseChit = spell.getGameData().createNewObject();
 		
 		phaseChit.setName(spell.getName()+" Phase Chit ("+character.getGameObject().getName()+")");
-		phaseChit.copyAttributeBlockFrom(spell,"phase_chit");
-		phaseChit.renameAttributeBlock("phase_chit","this");
-		phaseChit.copyAttributeBlockFrom(spell,"phase_chit_effects");
-		phaseChit.renameAttributeBlock("phase_chit_effects","effects");
-		phaseChit.setThisAttribute("spellID", spell.getStringId());
-		spell.setThisAttribute("phaseChitID",phaseChit.getStringId());
+		phaseChit.copyAttributeBlockFrom(spell,Constants.PHASE_CHIT);
+		phaseChit.renameAttributeBlock(Constants.PHASE_CHIT,"this");
+		phaseChit.copyAttributeBlockFrom(spell,Constants.PHASE_CHIT_EFFECTS);
+		phaseChit.renameAttributeBlock(Constants.PHASE_CHIT_EFFECTS,Constants.EFFECTS);
+		phaseChit.setThisAttribute(Constants.SPELL_ID, spell.getStringId());
+		spell.setThisAttribute(Constants.PHASE_CHIT_ID,phaseChit.getStringId());
 		character.getGameObject().add(phaseChit);
 	}
 
