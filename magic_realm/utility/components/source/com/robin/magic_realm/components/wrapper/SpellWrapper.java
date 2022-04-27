@@ -106,7 +106,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		return null;
 	}
 	public boolean targetsCharacterOrDenizen() {
-		if(targetsClearing() || targetsTile())return false;
+		if(targetsClearing()) return false;
 		return getTargets().stream().anyMatch(t -> t.isCharacter() || t.isMonster() || t.isNative());
 	}
 	/**
@@ -116,14 +116,6 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	public boolean targetsClearing() {
 		String att = getGameObject().getThisAttribute("target");
 		return "clearing".equals(att);
-	}
-	/**
-	 * This method is here to help differentiate spells that target individuals versus those that
-	 * target a tile
-	 */
-	public boolean targetsTile() {
-		String att = getGameObject().getThisAttribute("target");
-		return "tile".equals(att);
 	}
 	/**
 	 * Causes the spell to become alive.  Assumes the proper color was provided.

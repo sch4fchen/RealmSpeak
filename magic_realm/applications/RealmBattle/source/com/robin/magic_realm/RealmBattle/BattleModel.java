@@ -498,7 +498,7 @@ public class BattleModel {
 			for (Integer speed : allSpeeds) {
 				ArrayList<SpellWrapper> spellsAtSpeed = spells.getList(speed);
 				for (SpellWrapper spell : spellsAtSpeed) {
-					if (spell.isAlive() && !spell.targetsClearing() && !spell.targetsTile()) { // might have already been cancelled!
+					if (spell.isAlive() && !spell.targetsClearing()) { // might have already been cancelled!
 						ArrayList<CharacterChitComponent> unaffectedCasters = casters.getList(speed);
 						ArrayList<RealmComponent> targets = spell.getTargets();
 						targets.retainAll(spellCasters);
@@ -509,13 +509,10 @@ public class BattleModel {
 								CombatWrapper combat = new CombatWrapper(target.getGameObject());
 								GameObject spellToCancelGo = combat.getCastSpell();
 								SpellWrapper spellToCancel = new SpellWrapper(spellToCancelGo);
-								String targetingClearingOrTile = "";
+								String targetingClearing = "";
 								String cancelledAttackSpeed = "";
-								if (spellToCancel.targetsTile()) {
-									targetingClearingOrTile = ", targeting the tile";
-								}
 								if (spellToCancel.targetsClearing()) {
-									targetingClearingOrTile = ", targeting the clearing";
+									targetingClearing = ", targeting the clearing";
 								}
 								//attackSpeed cannot be fetched anymore, if spell already expired (e.g. dissolve spell didn't have a target)
 								if (spellToCancel.getIncantationObject() != null) {
@@ -525,7 +522,7 @@ public class BattleModel {
 								String message = spellToCancelGo.getName()
 										+", cast by the "
 										+target.getGameObject().getNameWithNumber()
-										+targetingClearingOrTile
+										+targetingClearing
 										+cancelledAttackSpeed
 										+",\n   was cancelled by "
 										+spell.getGameObject().getName()
