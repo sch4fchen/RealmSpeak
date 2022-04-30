@@ -66,7 +66,7 @@ public class TransmorphEffect implements ISpellEffect {
 				}
 				
 				transformAnimal = prepareTransformation(transformBlock, target, spell, context.Parent);
-			} 
+			}
 			
 			doActualTransformation(target, spell, transformAnimal);
 		}

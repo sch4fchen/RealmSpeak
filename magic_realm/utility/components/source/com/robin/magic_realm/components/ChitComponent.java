@@ -335,7 +335,7 @@ public abstract class ChitComponent extends RealmComponent {
 				GameObject killedBy = combat.getKilledBy();
 				if (killedByOption && killedBy != null) {
 					g.setColor(Color.red);
-					Font killerFont = new Font("Dialog",Font.BOLD,size/9);
+					Font killerFont = new Font("Dialog",Font.BOLD,size/7);
 					g.setFont(killerFont);
 					String killedByText = "";
 					RealmComponent rc = RealmComponent.getRealmComponent(getGameObject());
