@@ -64,9 +64,9 @@ public class QuestRewardKillDenizen extends QuestReward {
 			denizens.addAll(pool.find(query));
 		}
 		for (GameObject denizen : denizens) {
-			if (!denizen.hasThisAttribute("vulnerability") || !denizen.hasThisAttribute("denizen") || denizen.hasThisAttribute(Constants.DEAD)) continue;
+			if (!denizen.hasThisAttribute("vulnerability") || (!denizen.hasThisAttribute("denizen") && !isATransformation(denizen)) || denizen.hasThisAttribute(Constants.DEAD)) continue;
 			GameObject denizenHolder = SetupCardUtility.getDenizenHolder(denizen);
-			if (denizen.getHeldBy() == denizenHolder) continue;
+			if (denizenHolder != null && denizen.getHeldBy() == denizenHolder) continue;
 			if (!killHirelings() && denizen.hasThisAttribute(Constants.HIRELING)) {
 				continue;
 			}
@@ -111,6 +111,13 @@ public class QuestRewardKillDenizen extends QuestReward {
 				}
 			}
 		}
+	}
+	
+	private static boolean isATransformation(GameObject denizen) {
+		if (!denizen.hasThisAttribute("query")) {
+			return false;
+		};
+		return denizen.getThisAttribute("query").toLowerCase().matches("transform.*");
 	}
 	
 	private static void giveReward(CharacterWrapper character, GameObject denizen) {
