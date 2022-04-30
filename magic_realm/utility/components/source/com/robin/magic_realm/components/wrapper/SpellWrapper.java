@@ -29,6 +29,7 @@ import com.robin.game.server.*;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.effect.ISpellEffect;
+import com.robin.magic_realm.components.effect.NullifyEffect;
 import com.robin.magic_realm.components.effect.SpellEffectContext;
 import com.robin.magic_realm.components.effect.SpellEffectFactory;
 import com.robin.magic_realm.components.quest.CharacterActionType;
@@ -348,9 +349,9 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	}
 	public void restoreSpell() {
 		if (isNullified()) {
-			GameWrapper game = GameWrapper.findGame(getGameObject().getGameData());
-			if (!isInert()) { // Only reenergize, if not inert
-				affectTargets(null,game,false);
+			if (!isInert()) {
+				GameWrapper game = GameWrapper.findGame(getGameObject().getGameData());
+				affectTargets(null,game,false,false);
 			}
 			getGameObject().removeThisAttribute(SPELL_NULLIFIED);
 		}
@@ -705,6 +706,9 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		return io;
 	}
 	public void affectTargets(JFrame parent,GameWrapper theGame,boolean expireImmediately) {
+		affectTargets(parent,theGame,expireImmediately,true);
+	}
+	public void affectTargets(JFrame parent,GameWrapper theGame,boolean expireImmediately, boolean includeNullifyEffect) {
 		if (getBoolean(SPELL_AFFECTED)) {
 			// Don't affect twice in a row!!
 			return;
@@ -756,7 +760,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			throw new IllegalStateException("Parent should NOT be null here!!");
 		}
 		
-		AffectThread at = new AffectThread(parent,theGame,expireImmediately);
+		AffectThread at = new AffectThread(parent,theGame,expireImmediately,includeNullifyEffect);
 		if (SwingUtilities.isEventDispatchThread()) {
 //System.out.println("Already EDT");
 			// NON threaded
@@ -781,11 +785,13 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		private JFrame parent;
 		private GameWrapper theGame;
 		private boolean expireImmediately;
+		private boolean includeNullifyEffect;
 		
-		public AffectThread(JFrame parent,GameWrapper theGame,boolean expireImmediately) {
+		public AffectThread(JFrame parent,GameWrapper theGame,boolean expireImmediately,boolean includeNullifyEffect) {
 			this.parent = parent;
 			this.theGame = theGame;
 			this.expireImmediately = expireImmediately;
+			this.includeNullifyEffect = includeNullifyEffect;
 		}
 		
 		public void run() {
@@ -796,8 +802,23 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			// If we get here, then it's okay to proceed
 			energize();
 			
-			ISpellEffect[] effects = SpellEffectFactory.create(getName().toLowerCase());	
-			getTargets().forEach(t -> affect(effects, parent, theGame, t));	
+			ISpellEffect[] effects = SpellEffectFactory.create(getName().toLowerCase());
+			if (!includeNullifyEffect) {
+				ArrayList<ISpellEffect> effectsFiltered = new ArrayList<>();
+				for (ISpellEffect effect : effects) {
+					if (!(effect instanceof NullifyEffect)) {
+						effectsFiltered.add(effect);
+					}
+				}
+				ISpellEffect[] effects2 = new ISpellEffect[effectsFiltered.size()];
+				effects2 = effectsFiltered.toArray(effects2);
+				for (RealmComponent target : getTargets()) {
+					affect(effects2, parent, theGame, target);
+				}
+			}
+			else {
+				getTargets().forEach(t -> affect(effects, parent, theGame, t));
+			}
 			
 			if (!(isPhaseSpell() && hasPhaseChit())) { // ignore phase spells that still have a phase chit active!!
 				setBoolean(SPELL_AFFECTED,true);
@@ -826,7 +847,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			for(ISpellEffect effect:effects){
 				effect.apply(context);
 			}
-		} 
+		}
 
 		// Once the spell affects its target, the marker chit should be removed!
 		if (caster!=null) {
