@@ -340,8 +340,8 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	public boolean isAlwaysActive() {
 		return getGameObject().hasThisAttribute(ALWAYS_ACTIVE);
 	}
-	public void nullifySpell() {
-		unaffectTargets();
+	public void nullifySpell(boolean includeNullifyEffects) {
+		unaffectTargets(includeNullifyEffects);
 		getGameObject().setThisAttribute(SPELL_NULLIFIED);
 	}
 	public boolean isNullified() {
@@ -708,7 +708,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	public void affectTargets(JFrame parent,GameWrapper theGame,boolean expireImmediately) {
 		affectTargets(parent,theGame,expireImmediately,true);
 	}
-	public void affectTargets(JFrame parent,GameWrapper theGame,boolean expireImmediately, boolean includeNullifyEffect) {
+	public void affectTargets(JFrame parent,GameWrapper theGame,boolean expireImmediately, boolean includeNullifyEffects) {
 		if (getBoolean(SPELL_AFFECTED)) {
 			// Don't affect twice in a row!!
 			return;
@@ -760,7 +760,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			throw new IllegalStateException("Parent should NOT be null here!!");
 		}
 		
-		AffectThread at = new AffectThread(parent,theGame,expireImmediately,includeNullifyEffect);
+		AffectThread at = new AffectThread(parent,theGame,expireImmediately,includeNullifyEffects);
 		if (SwingUtilities.isEventDispatchThread()) {
 //System.out.println("Already EDT");
 			// NON threaded
@@ -785,13 +785,13 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		private JFrame parent;
 		private GameWrapper theGame;
 		private boolean expireImmediately;
-		private boolean includeNullifyEffect;
+		private boolean includeNullifyEffects;
 		
-		public AffectThread(JFrame parent,GameWrapper theGame,boolean expireImmediately,boolean includeNullifyEffect) {
+		public AffectThread(JFrame parent,GameWrapper theGame,boolean expireImmediately,boolean includeNullifyEffects) {
 			this.parent = parent;
 			this.theGame = theGame;
 			this.expireImmediately = expireImmediately;
-			this.includeNullifyEffect = includeNullifyEffect;
+			this.includeNullifyEffects = includeNullifyEffects;
 		}
 		
 		public void run() {
@@ -803,7 +803,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			energize();
 			
 			ISpellEffect[] effects = SpellEffectFactory.create(getName().toLowerCase());
-			if (!includeNullifyEffect) {
+			if (!includeNullifyEffects) {
 				ArrayList<ISpellEffect> effectsFiltered = new ArrayList<>();
 				for (ISpellEffect effect : effects) {
 					if (!(effect instanceof NullifyEffect)) {
@@ -859,12 +859,29 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		TileComponent tile = (TileComponent)target;
 		return tile.getClearing(Integer.valueOf(getExtraIdentifier()).intValue());
 	}
-	
 	public void unaffectTargets() {
+		unaffectTargets(true);
+	}
+	public void unaffectTargets(boolean includeNullifyEffects) {
 		ISpellEffect[] effects = SpellEffectFactory.create(getName().toLowerCase());
 		
 		GameWrapper theGame = GameWrapper.findGame(getCaster().getGameData());
-		getTargets().stream().forEach(t -> unaffect(effects, theGame, t));
+		if (!includeNullifyEffects) {
+			ArrayList<ISpellEffect> effectsFiltered = new ArrayList<>();
+			for (ISpellEffect effect : effects) {
+				if (!(effect instanceof NullifyEffect)) {
+					effectsFiltered.add(effect);
+				}
+			}
+			ISpellEffect[] effects2 = new ISpellEffect[effectsFiltered.size()];
+			effects2 = effectsFiltered.toArray(effects2);
+			for (RealmComponent target : getTargets()) {
+				unaffect(effects2, theGame, target);
+			}
+		}
+		else {
+			getTargets().stream().forEach(t -> unaffect(effects, theGame, t));
+		}
 		setBoolean(SPELL_AFFECTED,false);
 	}
 	

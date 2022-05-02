@@ -423,15 +423,15 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 		}
 	}
 	public void expireBewitchingSpells(GameObject target) {
-		expireBewitchingSpells(target,null,false);
+		expireBewitchingSpells(target,null,false,true);
 	}
 	public void expireBewitchingSpells(GameObject target,SpellWrapper exclude) {
-		expireBewitchingSpells(target,exclude,false);
+		expireBewitchingSpells(target,exclude,false,true);
 	}
 	public void nullifyBewitchingSpells(GameObject target,SpellWrapper exclude) {
-		expireBewitchingSpells(target,exclude,true);
+		expireBewitchingSpells(target,exclude,true,false);
 	}
-	private void expireBewitchingSpells(GameObject target,SpellWrapper exclude,boolean nullify) {
+	private void expireBewitchingSpells(GameObject target,SpellWrapper exclude,boolean nullify,boolean includeNullifyEffects) {
 		for (SpellWrapper spell:getAffectingSpells(target)) {
 			if (exclude!=null && exclude.getGameObject().equals(spell.getGameObject())) continue;
 			if (!nullify) {
@@ -442,7 +442,7 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 				}
 			}
 			else {
-				spell.nullifySpell();
+				spell.nullifySpell(includeNullifyEffects);
 //System.err.println(spell.getGameObject().getName()+" is nullified");
 			}
 		}
