@@ -3,6 +3,7 @@ QUEST UPDATE:
 # Update to quest Q20 Sundered Siblings
 # Update to quest Q38 Gifted CHild
 # Update to quest Q43 Physiologus
+# QuestRewardCompanion: Fix companion renaming
 NEW FEATURES:
 # Protection from Magic spell: add missing functionality (including remaining logic for phase chits)
 # Combat screen inventory: Option to display awakened spells of items (like in character inventory panel)
