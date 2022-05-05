@@ -559,26 +559,42 @@ public class TreasureUtility {
 			}
 			
 			// Select curse to cancel
-			Collection<String> curses = character.getAllCurses();
-			if (!curses.isEmpty()) {
-				chooser.addStrings(curses);
+			TileLocation loc = character.getCurrentLocation();
+			if (loc != null) {
+				for (RealmComponent rc : loc.clearing.getClearingComponents(false)) {
+					if (rc.isCharacter()) {
+						CharacterWrapper rcChar = new CharacterWrapper(rc.getGameObject());
+						ArrayList<String> rcCurses = rcChar.getAllCurses();
+						for (String rcCurse : rcCurses) {
+							chooser.addRealmComponent(rc, rcCurse);
+						}
+					}
+				}
+			}
+			else {
+				Collection<String> curses = character.getAllCurses();
+				for (String curse : curses) {
+					chooser.addRealmComponent(RealmComponent.getRealmComponent(character.getGameData()), curse);
+				}
 			}
 			
 			if (chooser.hasOptions()) {
 				chooser.setVisible(true);
 				
 				RealmComponent src = chooser.getFirstSelectedComponent();
-				if (src!=null) {
-					// Selected a spell
-					SpellWrapper spell = new SpellWrapper(src.getGameObject());
-					spell.expireSpell();
-					JOptionPane.showMessageDialog(parentFrame,src.getGameObject().getName()+" was cancelled.");
-				}
-				else {
-					// Selected a curse
-					String curseToCancel = chooser.getSelectedText();
-					character.removeCurse(curseToCancel);
-					JOptionPane.showMessageDialog(parentFrame,curseToCancel+" was removed.");
+				if (src != null) {
+					if (src.isCharacter()) {
+						CharacterWrapper rcChar = new CharacterWrapper(src.getGameObject());
+						String curseToCancel = chooser.getSelectedText();
+						rcChar.removeCurse(curseToCancel);
+						JOptionPane.showMessageDialog(parentFrame,curseToCancel+" was removed from "+rcChar.getName()+".");
+					}
+					else {
+						// Selected a spell
+						SpellWrapper spell = new SpellWrapper(src.getGameObject());
+						spell.expireSpell();
+						JOptionPane.showMessageDialog(parentFrame,src.getGameObject().getName()+" was cancelled.");
+					}
 				}
 			}
 		}
@@ -886,8 +902,7 @@ public class TreasureUtility {
 	
 	public static ArrayList<GameObject> getTreasures(GameObject treasureLocation,CharacterWrapper character) {
 		ArrayList<GameObject> list = new ArrayList<>();
-		for (Iterator i=treasureLocation.getHold().iterator();i.hasNext();) {
-			GameObject obj = (GameObject) i.next();
+		for (GameObject obj : treasureLocation.getHold()) {
 			if (character!=null && hasSeen(character,obj)) continue;
 			RealmComponent rc = RealmComponent.getRealmComponent(obj);
 			if (!rc.isMonster() && !rc.isSpell() && !rc.isNative()) {

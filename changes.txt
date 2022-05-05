@@ -6,6 +6,7 @@ QUEST UPDATE:
 # QuestRewardCompanion: Fix companion renaming
 NEW FEATURES:
 # Protection from Magic spell: add missing functionality (including remaining logic for phase chits)
+# Amulet: Option to remove another character's curse
 # Combat screen inventory: Option to display awakened spells of items (like in character inventory panel)
 # Combat logging: Add numbering to duplicate monsters (if option "Show Monster Numbers" enabled)
 # Combat logging: Add info if cancelled spell targets a clearing

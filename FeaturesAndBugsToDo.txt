@@ -1,6 +1,4 @@
 Duplicate spells at the same time: Stone Gaze, Absorb Essence, Melt into Mist and Transform
-NullpointException: CharacterChitComponent.getLength -> getAttackChit() = null
-Amulet: Should be able to select other character and curse to remove
 
 Power of the Pit optional rule C.4: Power of the Pit attack to hit like an attack spell
 Combat Summary: add functionality for RandomAssignment, Deploy/Charge (and charge character, Actions? Attack/Maneuver, Assign)
