@@ -122,6 +122,7 @@ public class CenteredMapView extends JComponent {
 	private TileComponent viewTile = null;
 	
 	private boolean enableShiftFlip;
+	private boolean gmFunctions;
 	private boolean showEmbellishments = true;
 	private boolean hostMap = false; // identifies whether this is the host or not
 	
@@ -154,7 +155,8 @@ public class CenteredMapView extends JComponent {
 		this(data,true,false);
 	}
 	public CenteredMapView(GameData data,boolean enableShiftFlip,boolean enableGmFunctions) {
-		mapRightClickMenu = new MapRightClickMenu(enableGmFunctions);
+		this.gmFunctions = enableGmFunctions;
+		mapRightClickMenu = new MapRightClickMenu();
 		this.enableShiftFlip = enableShiftFlip;
 		setDoubleBuffered(true);
 		this.gameData = data;
@@ -183,7 +185,17 @@ public class CenteredMapView extends JComponent {
 				
 				if (tileBeingPlaced==null) return;
 				
-				if (MouseUtility.isRightOrControlClick(ev)) { // right mouse click
+				if (MouseUtility.isRightOrControlClick(ev)) { // right or middle mouse click
+					if (gmFunctions && ev.getButton() == 2) {				
+						clearTileBeingPlaced();
+						currentTileLocation = null;
+						rebuildFromScratch();
+						updateGrid();
+						setReplot(true);
+						repaint();
+						return;
+					}
+					
 					int r = tileBeingPlaced.getRotation();
 					r = (r+1) % 6;
 					tileBeingPlaced.setRotation(r);
@@ -1307,9 +1319,9 @@ public class CenteredMapView extends JComponent {
 		private TileLocation tileLocation;
 		private ClearingDetail clearing;
 		
-		public MapRightClickMenu(boolean enableGmFunctions) {
+		public MapRightClickMenu() {
 			displayOption = new ChitDisplayOption();
-			initMenu(enableGmFunctions);
+			initMenu();
 		}
 		public void setTileLocation(TileLocation tl) {
 			tileLocation = tl;
@@ -1325,8 +1337,8 @@ public class CenteredMapView extends JComponent {
 			separator.setVisible(clearing!=null);
 			showClearingDetail.setVisible(clearing!=null);
 		}
-		private void initMenu(boolean enableGmFunctions) {
-			if (enableGmFunctions) {
+		private void initMenu() {
+			if (gmFunctions) {
 				addTile = new JMenuItem("Add Tile (GM)");
 				addTile.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent ev) {
@@ -1335,12 +1347,14 @@ public class CenteredMapView extends JComponent {
 						TileComponent tileComponent = (TileComponent) RealmComponent.getRealmComponent(tile);
 						ChangeListener changeListener = new ChangeListener() {
 							public void stateChanged(ChangeEvent ev) {
+								HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
+								ClearingUtility.markBorderlandConnectedClearings(hostPrefs,gameData);
 								rebuildFromScratch();
+								updateGrid();
 								repaint();
 							}
 						};
 						setTileBeingPlaced(changeListener,tileComponent);
-						tile.setThisAttribute(ClearingDetail.BL_CONNECT);
 					}
 				});
 				add(addTile);
@@ -1358,6 +1372,7 @@ public class CenteredMapView extends JComponent {
 						tileGo.removeAttribute("mapGrid","mapPosition");
 						currentTileLocation = null;
 						rebuildFromScratch();
+						updateGrid();
 					}
 				});
 				add(removeTile);

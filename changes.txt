@@ -1,7 +1,9 @@
 Version 1.1.5.7 - Changes since 1.1.5.6
 QUEST UPDATE:
 NEW FEATURES:
+# Realm GM: Option to cancel tile placement with middle mouse button
 BUGS/ISSUES:
+# Realm GM: Fix in-game errors after placing tiles in GM tool
 
 Version 1.1.5.6 - Changes since 1.1.5.5
 QUEST UPDATE:
