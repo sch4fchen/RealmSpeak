@@ -37,7 +37,6 @@ public class MapRating {
 		ArrayList<GameObject> tiles = RealmObjectMaster.getRealmObjectMaster(data).getTileObjects();
 		GamePool pool = new GamePool(tiles);
 		ArrayList<GameObject> valleyTiles = pool.find("tile,tile_type=V");
-		valleyTiles.addAll(pool.find("a_tile,tile_type=V"));
 		int rating = Integer.MAX_VALUE;
 		for (GameObject go:valleyTiles) {
 			rating = Math.min(rating,getTileRating(go));

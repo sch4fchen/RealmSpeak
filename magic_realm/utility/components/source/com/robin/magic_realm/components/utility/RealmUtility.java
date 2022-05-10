@@ -261,17 +261,6 @@ public class RealmUtility {
 		}
 		
 		GameObject tileObject = pool.find(keyVals).iterator().next(); // hacky!!
-		if (tileObject != null) {
-			return (TileComponent)RealmComponent.getRealmComponent(tileObject);
-		}
-		
-		keyVals = new ArrayList<>();
-		keyVals.add("a_tile");
-		keyVals.add("code="+code);
-		if (boardNumber!=null) {
-			keyVals.add(Constants.BOARD_NUMBER+"="+boardNumber);
-		}
-		tileObject = pool.find(keyVals).iterator().next(); // hacky!!
 		return (TileComponent)RealmComponent.getRealmComponent(tileObject);
 	}
 	public static String getLevelChangeString(int change) {

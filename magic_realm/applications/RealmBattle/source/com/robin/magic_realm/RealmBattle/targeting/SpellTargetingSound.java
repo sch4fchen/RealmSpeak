@@ -54,7 +54,7 @@ public class SpellTargetingSound extends SpellTargetingSingle {
 		Collection<GameObject> c = pool.find("sound,chit");
 		for (GameObject soundChitObject : c) {
 			GameObject tile = soundChitObject.getHeldBy();
-			if (tile!=null && !tile.hasThisAttribute("tile") && !tile.hasThisAttribute("a_tile")) {
+			if (tile!=null && !tile.hasThisAttribute("tile")) {
 				tile = tile.getHeldBy(); // this jumps up one from lost castle or city
 			}
 			if (tile!=null) {

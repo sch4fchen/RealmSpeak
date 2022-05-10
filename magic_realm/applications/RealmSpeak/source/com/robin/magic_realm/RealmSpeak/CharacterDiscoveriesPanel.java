@@ -53,9 +53,7 @@ public class CharacterDiscoveriesPanel extends CharacterFramePanel {
 		
 		ArrayList hiddenPathList = new ArrayList();
 		ArrayList secretPassageList =  new ArrayList();
-		Collection<GameObject> tiles = pool.find("tile");
-		tiles.addAll(pool.find("a_tile"));
-		for (GameObject go : tiles) {
+		for (GameObject go : pool.find("tile")) {
 			TileComponent tile = (TileComponent)RealmComponent.getRealmComponent(go);
 			hiddenPathList.addAll(tile.getHiddenPaths());
 			secretPassageList.addAll(tile.getSecretPassages());

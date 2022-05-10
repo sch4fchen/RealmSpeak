@@ -1393,6 +1393,7 @@ public class CenteredMapView extends JComponent {
 						GameObject tile = chooseTileToCopy();
 						if (tile == null) return;
 						gameData.createNewObject(tile);
+						tile.setThisAttribute("tile");
 					}
 				});
 				add(addTileToGame);
@@ -1750,9 +1751,7 @@ public class CenteredMapView extends JComponent {
 		GamePool pool = new GamePool(gameData.getGameObjects());
 		Hashtable<String, GameObject> hash = new Hashtable<>();
 		ArrayList<String> tileList = new ArrayList<>();
-		ArrayList<GameObject> tiles = pool.find("tile");
-		tiles.addAll(pool.find("a_tile"));
-		for (GameObject tile : tiles) {
+		for (GameObject tile : pool.find("tile")) {
 			if (!tile.hasAttribute(Tile.MAP_GRID, Tile.MAP_POSITION)) {
 				tileList.add(tile.getName());
 				hash.put(tile.getName(), tile);
@@ -1768,9 +1767,7 @@ public class CenteredMapView extends JComponent {
 		Hashtable<String, GameObject> hash = new Hashtable<>();
 		GamePool existingPool = new GamePool(gameData.getGameObjects());
 		ArrayList<String> existingTileNames = new ArrayList<>();
-		ArrayList<GameObject> existingTiles = existingPool.find("tile");
-		existingTiles.addAll(existingPool.find("a_tile"));
-		for (GameObject tile : existingTiles) {
+		for (GameObject tile : existingPool.find("tile")) {
 			existingTileNames.add(tile.getName());
 		}
 		
@@ -1792,9 +1789,7 @@ public class CenteredMapView extends JComponent {
 		GamePool pool = new GamePool(gameData.getGameObjects());
 		Hashtable<String, GameObject> hash = new Hashtable<>();
 		ArrayList<String> tileList = new ArrayList<>();
-		ArrayList<GameObject> tiles = pool.find("tile");
-		tiles.addAll(pool.find("a_tile"));
-		for (GameObject tile : tiles) {
+		for (GameObject tile : pool.find("tile")) {
 			if (!tile.hasAttribute(Tile.MAP_GRID,Tile.MAP_POSITION)) {
 				tileList.add(tile.getName());		
 				hash.put(tile.getName(), tile);

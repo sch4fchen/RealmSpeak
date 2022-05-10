@@ -82,9 +82,7 @@ public class QuestRewardMagicColor extends QuestReward {
 				break;
 			case ALL:
 				GamePool pool = new GamePool(character.getGameData().getGameObjects());
-				ArrayList<GameObject> tiles = pool.find("tile");
-				tiles.addAll(pool.find("a_tile"));
-				for (GameObject go : tiles) {
+				for (GameObject go : pool.find("tile")) {
 					RealmComponent rc = RealmComponent.getRealmComponent(go);
 					if (rc != null && rc.isTile()) {
 						TileComponent tc = (TileComponent) rc;

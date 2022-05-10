@@ -174,8 +174,6 @@ public class RealmSpeakInit {
 	}
 	private void enableAlternativeTilesInLoader(RealmLoader rl) {
 		GamePool tilePool = new GamePool(rl.getData().getGameObjects());
-		ArrayList<GameObject> tiles = tilePool.find("tile");
-		GameObject.stripListKeyVals("this",hostPrefs.getGameKeyVals(),tiles);
 		ArrayList<GameObject> atiles = tilePool.find("a_tile");
 		GameObject.setListKeyVals("this",hostPrefs.getGameKeyVals(),atiles);
 		for (GameObject go:atiles)
