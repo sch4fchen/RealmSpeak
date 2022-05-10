@@ -1392,8 +1392,10 @@ public class CenteredMapView extends JComponent {
 					public void actionPerformed(ActionEvent ev) {
 						GameObject tile = chooseTileToCopy();
 						if (tile == null) return;
-						gameData.createNewObject(tile);
 						tile.setThisAttribute("tile");
+						HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
+						tile.setThisAttribute(hostPrefs.getGameKeyVals());
+						gameData.createNewObject(tile);
 					}
 				});
 				add(addTileToGame);
