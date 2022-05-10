@@ -191,8 +191,6 @@ public class CenteredMapView extends JComponent {
 						currentTileLocation = null;
 						rebuildFromScratch();
 						updateGrid();
-						setReplot(true);
-						repaint();
 						return;
 					}
 					
@@ -1300,6 +1298,8 @@ public class CenteredMapView extends JComponent {
 		private JMenuItem addTile; // used by GM tool
 		private JMenuItem removeTile; // used by GM tool
 		private JMenuItem flipTile; // used by GM tool
+		private JMenuItem addTileToGame; // used by GM tool
+		private JMenuItem removeTileFromGame; // used by GM tool
 		
 		private JCheckBoxMenuItem showCharacters;
 		private JCheckBoxMenuItem showMonsters;
@@ -1347,9 +1347,9 @@ public class CenteredMapView extends JComponent {
 						TileComponent tileComponent = (TileComponent) RealmComponent.getRealmComponent(tile);
 						ChangeListener changeListener = new ChangeListener() {
 							public void stateChanged(ChangeEvent ev) {
-								HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
 								rebuildFromScratch();
 								updateGrid();
+								HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
 								ClearingUtility.markBorderlandConnectedClearings(hostPrefs,gameData);
 							}
 						};
@@ -1386,6 +1386,29 @@ public class CenteredMapView extends JComponent {
 					}
 				});
 				add(flipTile);				
+				add(new JSeparator());
+				addTileToGame = new JMenuItem("Add Tile to GameData (GM)");
+				addTileToGame.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent ev) {
+						GameObject tile = chooseTileToCopy();
+						if (tile == null) return;
+						gameData.createNewObject(tile);
+					}
+				});
+				add(addTileToGame);
+				removeTileFromGame = new JMenuItem("Remove Tile from GameData (GM)");
+				removeTileFromGame.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent ev) {
+						GameObject tile = chooseTileToRemove();
+						if (tile == null) return;
+						tile.removeThisAttribute(ClearingDetail.BL_CONNECT);
+						for (GameObject hold : tile.getHold()) {
+							tile.remove(hold);
+						}
+						gameData.removeObject(tile);
+					}
+				});
+				add(removeTileFromGame);
 				add(new JSeparator());
 			}
 			
@@ -1727,21 +1750,57 @@ public class CenteredMapView extends JComponent {
 		GamePool pool = new GamePool(gameData.getGameObjects());
 		Hashtable<String, GameObject> hash = new Hashtable<>();
 		ArrayList<String> tileList = new ArrayList<>();
-			for (GameObject tile : pool.find("tile")) {
-				if (!tile.hasAttribute(Tile.MAP_GRID, Tile.MAP_POSITION)) {
-					tileList.add(tile.getName());				
-					hash.put(tile.getName(), tile);
-				}
+		for (GameObject tile : pool.find("tile")) {
+			if (!tile.hasAttribute(Tile.MAP_GRID, Tile.MAP_POSITION)) {
+				tileList.add(tile.getName());
+				hash.put(tile.getName(), tile);
 			}
+		}
 		Collections.sort(tileList);
-		ListChooser chooser = new ListChooser(new JFrame(), "Select a tile:", tileList);
+		return tileChooser("Select a tile to place:", tileList,hash);
+	}
+	private GameObject chooseTileToCopy() {
+		RealmLoader rl = new RealmLoader();
+		GamePool pool = new GamePool(rl.getData().getGameObjects());
+		Hashtable<String, GameObject> hash = new Hashtable<>();
+		GamePool existingPool = new GamePool(gameData.getGameObjects());
+		ArrayList<String> existingTileNames = new ArrayList<>();
+		ArrayList<GameObject> existingTiles = existingPool.find("tile");
+		for (GameObject tile : existingTiles) {
+			existingTileNames.add(tile.getName());
+		}
+		
+		ArrayList<String> tileList = new ArrayList<>();
+		for (GameObject tile : pool.find("tile")) {
+			if (!existingTileNames.contains(tile.getName())) {
+				tileList.add(tile.getName());				
+				hash.put(tile.getName(), tile);
+			}
+		}
+		return tileChooser("Select a tile to add:", tileList,hash);
+	}
+	private GameObject chooseTileToRemove() {
+		GamePool pool = new GamePool(gameData.getGameObjects());
+		Hashtable<String, GameObject> hash = new Hashtable<>();
+		ArrayList<String> tileList = new ArrayList<>();
+		for (GameObject tile : pool.find("tile")) {
+			if (!tile.hasAttribute(Tile.MAP_GRID,Tile.MAP_POSITION)) {
+				tileList.add(tile.getName());				
+				hash.put(tile.getName(), tile);
+			}
+		}
+		return tileChooser("Select a tile to remove:", tileList,hash);
+	}
+	private GameObject tileChooser(String headline, ArrayList<String> tileList, Hashtable<String, GameObject> tileHash) {
+		Collections.sort(tileList);
+		ListChooser chooser = new ListChooser(new JFrame(), headline, tileList);
 		chooser.setDoubleClickEnabled(true);
 		chooser.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		chooser.setLocationRelativeTo(this);
 		chooser.setVisible(true);
 		Vector<String> v = chooser.getSelectedItems();
 		if (v != null && !v.isEmpty()) {
-			return hash.get(v.get(0));
+			return tileHash.get(v.get(0));
 		}
 		return null;
 	}
