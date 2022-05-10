@@ -115,6 +115,7 @@ public class RealmObjectMaster {
 		if (tileObjects==null) {
 			tileObjects = new ArrayList<>();
 			tileObjects.addAll(findObjects("tile"));
+			tileObjects.addAll(findObjects("a_tile"));
 		}
 		return tileObjects;
 	}

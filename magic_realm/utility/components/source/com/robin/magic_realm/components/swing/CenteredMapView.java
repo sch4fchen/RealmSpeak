@@ -1796,7 +1796,7 @@ public class CenteredMapView extends JComponent {
 		tiles.addAll(pool.find("a_tile"));
 		for (GameObject tile : tiles) {
 			if (!tile.hasAttribute(Tile.MAP_GRID,Tile.MAP_POSITION)) {
-				tileList.add(tile.getName());				
+				tileList.add(tile.getName());		
 				hash.put(tile.getName(), tile);
 			}
 		}
