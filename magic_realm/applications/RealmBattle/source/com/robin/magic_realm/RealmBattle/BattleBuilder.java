@@ -397,6 +397,7 @@ public class BattleBuilder extends JFrame {
 	private void changeClearing() {
 		// Choose a tile and clearing
 		Collection<GameObject> tiles = pool.find("tile,"+hostPrefs.getGameKeyVals());
+		tiles.addAll(pool.find("a_tile,"+hostPrefs.getGameKeyVals()));
 		Hashtable<String, GameObject> tileHash = new Hashtable<>();
 		for (GameObject tile : tiles) {
 			tileHash.put(tile.getName(),tile);

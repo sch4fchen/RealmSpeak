@@ -1750,7 +1750,9 @@ public class CenteredMapView extends JComponent {
 		GamePool pool = new GamePool(gameData.getGameObjects());
 		Hashtable<String, GameObject> hash = new Hashtable<>();
 		ArrayList<String> tileList = new ArrayList<>();
-		for (GameObject tile : pool.find("tile")) {
+		ArrayList<GameObject> tiles = pool.find("tile");
+		tiles.addAll(pool.find("a_tile"));
+		for (GameObject tile : tiles) {
 			if (!tile.hasAttribute(Tile.MAP_GRID, Tile.MAP_POSITION)) {
 				tileList.add(tile.getName());
 				hash.put(tile.getName(), tile);
@@ -1760,18 +1762,25 @@ public class CenteredMapView extends JComponent {
 		return tileChooser("Select a tile to place:", tileList,hash);
 	}
 	private GameObject chooseTileToCopy() {
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
 		RealmLoader rl = new RealmLoader();
 		GamePool pool = new GamePool(rl.getData().getGameObjects());
 		Hashtable<String, GameObject> hash = new Hashtable<>();
 		GamePool existingPool = new GamePool(gameData.getGameObjects());
 		ArrayList<String> existingTileNames = new ArrayList<>();
 		ArrayList<GameObject> existingTiles = existingPool.find("tile");
+		existingTiles.addAll(existingPool.find("a_tile"));
 		for (GameObject tile : existingTiles) {
 			existingTileNames.add(tile.getName());
 		}
 		
+		String searchKey = "tile";
+		if (hostPrefs.getAlternativeTilesEnabled()) {
+			searchKey = "a_tile";
+		}
+		
 		ArrayList<String> tileList = new ArrayList<>();
-		for (GameObject tile : pool.find("tile")) {
+		for (GameObject tile : pool.find(searchKey)) {
 			if (!existingTileNames.contains(tile.getName())) {
 				tileList.add(tile.getName());				
 				hash.put(tile.getName(), tile);
@@ -1783,7 +1792,9 @@ public class CenteredMapView extends JComponent {
 		GamePool pool = new GamePool(gameData.getGameObjects());
 		Hashtable<String, GameObject> hash = new Hashtable<>();
 		ArrayList<String> tileList = new ArrayList<>();
-		for (GameObject tile : pool.find("tile")) {
+		ArrayList<GameObject> tiles = pool.find("tile");
+		tiles.addAll(pool.find("a_tile"));
+		for (GameObject tile : tiles) {
 			if (!tile.hasAttribute(Tile.MAP_GRID,Tile.MAP_POSITION)) {
 				tileList.add(tile.getName());				
 				hash.put(tile.getName(), tile);
