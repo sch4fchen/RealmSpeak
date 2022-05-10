@@ -109,8 +109,10 @@ public class Tile {
 		for (GameObject obj : pool.extract(keyVals)) {
 			if (obj.hasKey("tile")) {
 				Tile tile = new Tile(obj);
-				tile.readFromGameObject();
-				mapGrid.put(tile.getMapPosition(),tile);
+				if (tile.getGameObject().hasAttribute(Tile.MAP_GRID, Tile.MAP_POSITION)) {
+					tile.readFromGameObject();
+					mapGrid.put(tile.getMapPosition(),tile);
+				}
 			}
 		}
 		return mapGrid;

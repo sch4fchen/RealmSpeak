@@ -386,8 +386,8 @@ public class CenteredMapView extends JComponent {
 			TileComponent tc = (TileComponent)RealmComponent.getRealmComponent(obj); // ClassCastException here when building triple boards?
 			tc.resetClearingPositions();
 			tc.doRepaint();
-			String pos = obj.getAttribute("mapGrid","mapPosition");
-			String rot = obj.getAttribute("mapGrid","mapRotation");
+			String pos = obj.getAttribute(Tile.MAP_GRID,Tile.MAP_POSITION);
+			String rot = obj.getAttribute(Tile.MAP_GRID,Tile.MAP_ROTATION);
 			
 			if (pos!=null && rot!=null) {
 				tc.setRotation(Integer.valueOf(rot).intValue());
@@ -1348,10 +1348,9 @@ public class CenteredMapView extends JComponent {
 						ChangeListener changeListener = new ChangeListener() {
 							public void stateChanged(ChangeEvent ev) {
 								HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
-								ClearingUtility.markBorderlandConnectedClearings(hostPrefs,gameData);
 								rebuildFromScratch();
 								updateGrid();
-								repaint();
+								ClearingUtility.markBorderlandConnectedClearings(hostPrefs,gameData);
 							}
 						};
 						setTileBeingPlaced(changeListener,tileComponent);
@@ -1363,16 +1362,18 @@ public class CenteredMapView extends JComponent {
 					public void actionPerformed(ActionEvent ev) {
 						if (tileLocation==null || tileLocation.tile instanceof EmptyTileComponent) return;
 						GameObject tileGo = tileLocation.tile.getGameObject();
-						String position = tileGo.getAttribute("mapGrid","mapPosition");
+						String position = tileGo.getAttribute(Tile.MAP_GRID,Tile.MAP_POSITION);
 						int x = Integer.parseInt(position.split(",")[0]);
 						int y = Integer.parseInt(position.split(",")[1]);
 						Point point = new Point(x,y);
 						mapGrid.remove(point);
 						tileGo.removeThisAttribute(ClearingDetail.BL_CONNECT);
-						tileGo.removeAttribute("mapGrid","mapPosition");
+						tileGo.removeAttribute(Tile.MAP_GRID,Tile.MAP_POSITION);
 						currentTileLocation = null;
 						rebuildFromScratch();
 						updateGrid();
+						HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
+						ClearingUtility.markBorderlandConnectedClearings(hostPrefs,gameData);
 					}
 				});
 				add(removeTile);
@@ -1609,8 +1610,8 @@ public class CenteredMapView extends JComponent {
 		ChangeEvent ev = new ChangeEvent(tileBeingPlaced);
 		ChangeListener listener = tilePlacementListener;
 		GameObject obj = tileBeingPlaced.getGameObject();
-		obj.setAttribute("mapGrid","mapPosition",gp.x+","+gp.y);
-		obj.setAttribute("mapGrid","mapRotation",tileBeingPlaced.getRotation());
+		obj.setAttribute(Tile.MAP_GRID,Tile.MAP_POSITION,gp.x+","+gp.y);
+		obj.setAttribute(Tile.MAP_GRID,Tile.MAP_ROTATION,tileBeingPlaced.getRotation());
 //		tileBeingPlaced.doRepaint();
 		
 		rebuildFromScratch();
@@ -1726,9 +1727,11 @@ public class CenteredMapView extends JComponent {
 		GamePool pool = new GamePool(gameData.getGameObjects());
 		Hashtable<String, GameObject> hash = new Hashtable<>();
 		ArrayList<String> tileList = new ArrayList<>();
-			for (GameObject tile : pool.find("tile,!"+ClearingDetail.BL_CONNECT)) {
-				tileList.add(tile.getName());				
-				hash.put(tile.getName(), tile);
+			for (GameObject tile : pool.find("tile")) {
+				if (!tile.hasAttribute(Tile.MAP_GRID, Tile.MAP_POSITION)) {
+					tileList.add(tile.getName());				
+					hash.put(tile.getName(), tile);
+				}
 			}
 		Collections.sort(tileList);
 		ListChooser chooser = new ListChooser(new JFrame(), "Select a tile:", tileList);

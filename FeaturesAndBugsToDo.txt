@@ -1,4 +1,7 @@
-Duplicate spells at the same time: Stone Gaze, Absorb Essence, Melt into Mist and Transform
+Duplicate spells (Combat spell, Day spell or Permanent spell):
+	same time: duplicate spells with mutually exclusive effects go into effect against the same target simultaneously, they cancel each other out
+		Stone Gaze, Absorb Essence, Melt into Mist and Transform: turn the target into the same creature, then the spells go into effect
+	after each other: cannot go into effect if it duplicates a spell that is already bewitching the target
 Power of the Pit optional rule C.4: Power of the Pit attack to hit like an attack spell
 Scenario Editor (GM tool, scenario title, description, randomizing setup option)
 	RealmSpeak + GM: save game as scenario (with scenario name and description), have a different file extension

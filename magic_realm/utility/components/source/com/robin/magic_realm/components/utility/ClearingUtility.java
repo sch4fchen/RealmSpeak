@@ -66,11 +66,16 @@ public class ClearingUtility {
 		for(GameObject tile:tiles) {
 			if (tile.getHoldCount()==0) continue;
 			TileComponent tileRc = (TileComponent)RealmComponent.getRealmComponent(tile);
-			Tile mapTile = mapGrid.get(Tile.getPositionFromGameObject(tile));
+			Tile mapTile = null;
+			
+			boolean tilePlaced = tile.hasAttribute(Tile.MAP_GRID, Tile.MAP_POSITION);
+			if (tilePlaced) {
+				mapTile = mapGrid.get(Tile.getPositionFromGameObject(tile));
+			}
 			for (int i=1;i<=6;i++) {
 				ClearingDetail clearing = tileRc.getClearing(i);
 				if (clearing==null) continue;
-				if (mapTile.connectsToTilename(mapGrid,"clearing_"+i,"Borderland")) {
+				if (!tilePlaced || mapTile.connectsToTilename(mapGrid,"clearing_"+i,"Borderland")) {
 					clearing.setConnectsToBorderland(true);
 				}
 				else {
