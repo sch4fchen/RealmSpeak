@@ -7,6 +7,7 @@ Scenario Editor (GM tool, scenario title, description, randomizing setup option)
 	RealmSpeak + GM: save game as scenario (with scenario name and description), have a different file extension
 	RealSpeak: Load scenarios (overview with names and descriptions), list game options
 	RealmSpeak + GM: Shuffle components Flag in gameData when saving scenario: Shuffle when loading OR NO shuffling when loading
+	Adding and remvoing quests
 Combat Summary: add functionality for RandomAssignment, Deploy/Charge (and charge character, Actions? Attack/Maneuver, Assign)
 ---:::FEATURES:::---
 Combat Tips:
