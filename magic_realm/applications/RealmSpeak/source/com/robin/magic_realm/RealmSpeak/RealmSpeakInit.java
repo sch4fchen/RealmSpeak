@@ -46,6 +46,9 @@ public class RealmSpeakInit {
 	public RealmSpeakInit(RealmSpeakFrame frame) {
 		this.frame = frame;
 	}
+	public RealmSpeakInit() {
+		this.frame = null;
+	}
 	public void loadData() {
 		loader = new RealmLoader();
 		data = loader.getData();
@@ -132,7 +135,9 @@ public class RealmSpeakInit {
 		if (hostPrefs.getBoardAutoSetup()) {
 			doBoardAutoSetup();
 		}
-		frame.resetStatus();
+		if (frame != null) {
+			frame.resetStatus();
+		}
 		
 		// Match up the gold specials
 		RealmUtility.doMatchGoldSpecials(data);
@@ -174,6 +179,8 @@ public class RealmSpeakInit {
 	}
 	private void enableAlternativeTilesInLoader(RealmLoader rl) {
 		GamePool tilePool = new GamePool(rl.getData().getGameObjects());
+		ArrayList<GameObject> tiles = tilePool.find("tile");
+		GameObject.stripListKeyVals("this",hostPrefs.getGameKeyVals(),tiles);
 		ArrayList<GameObject> atiles = tilePool.find("a_tile");
 		GameObject.setListKeyVals("this",hostPrefs.getGameKeyVals(),atiles);
 		for (GameObject go:atiles)
@@ -317,7 +324,9 @@ public class RealmSpeakInit {
 				if (lastRating>=0) {
 					lr = " (Last Map Rating = "+lastRating+")";
 				}
-				frame.showStatus("Attempt #"+mapAttempt+":  Building map ... "+current+" out of "+total+lr);
+				if (frame != null) {
+					frame.showStatus("Attempt #"+mapAttempt+":  Building map ... "+current+" out of "+total+lr);
+				}
 			}
 		};
 		int minRating = hostPrefs.getMinimumMapRating();
