@@ -15,7 +15,7 @@
  *
  * http://www.gnu.org/licenses/
  */
-package com.robin.magic_realm.RealmSpeak;
+package com.robin.magic_realm.RealmGm;
 
 import java.util.*;
 
@@ -32,7 +32,7 @@ import com.robin.magic_realm.components.wrapper.*;
 
 public class RealmSpeakInit {
 	
-	private RealmSpeakFrame frame;
+	private JFrameWithStatus frame;
 	
 	private RealmLoader loader;
 	private GameData data; // convenience
@@ -43,7 +43,7 @@ public class RealmSpeakInit {
 	private int lastRating;
 	private int mapAttempt;
 	
-	public RealmSpeakInit(RealmSpeakFrame frame) {
+	public RealmSpeakInit(JFrameWithStatus frame) {
 		this.frame = frame;
 	}
 	public RealmSpeakInit() {

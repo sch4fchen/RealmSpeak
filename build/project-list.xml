@@ -201,7 +201,9 @@
 		<depend type="project" name="general_graphics"/>
 		<depend type="project" name="general_swing"/>
 		<depend type="project" name="game_objects"/>
+		<depend type="project" name="game_server"/>
 		<depend type="project" name="realm_components"/>
+		<depend type="project" name="MRMap"/>
 		<depend type="project" name="RealmBattle"/>
 		<depend type="project" name="RealmCharacterBuilder"/>
 	</project>

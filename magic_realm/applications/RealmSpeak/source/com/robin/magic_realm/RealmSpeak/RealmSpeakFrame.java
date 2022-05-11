@@ -39,7 +39,9 @@ import com.robin.general.util.RandomNumberType;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
 import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderFrame;
 import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderModel;
+import com.robin.magic_realm.RealmGm.JFrameWithStatus;
 import com.robin.magic_realm.RealmGm.RealmGmFrame;
+import com.robin.magic_realm.RealmGm.RealmSpeakInit;
 import com.robin.magic_realm.RealmQuestBuilder.QuestBuilderFrame;
 import com.robin.magic_realm.components.GoldSpecialChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
@@ -50,7 +52,7 @@ import com.robin.magic_realm.components.wrapper.*;
 
 import edu.stanford.ejalbert.BrowserLauncher;
 
-public class RealmSpeakFrame extends JFrame {
+public class RealmSpeakFrame extends JFrameWithStatus {
 	
 	private static final String[][] CHARACTER_CARDS = {
 		{"Amazon","amazon"},

@@ -32,14 +32,20 @@ import com.robin.game.objects.GameData;
 import com.robin.general.io.FileUtilities;
 import com.robin.general.io.PreferenceManager;
 import com.robin.general.swing.ComponentTools;
+import com.robin.general.swing.DieRoller;
+import com.robin.general.swing.FlashingButton;
 import com.robin.general.swing.IconFactory;
+import com.robin.general.util.RandomNumber;
+import com.robin.general.util.RandomNumberType;
 import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderModel;
 import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.swing.HostGameSetupDialog;
 import com.robin.magic_realm.components.CharacterChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.GameFileFilters;
 import com.robin.magic_realm.components.utility.RealmUtility;
+import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class RealmGmFrame extends JFrame {
 	private static final String MetalLookAndFeel = "MLAF";
@@ -53,6 +59,7 @@ public class RealmGmFrame extends JFrame {
 	private JDesktopPane desktop;
 	private RealmGameEditor editor;
 	
+	private JMenuItem newGame;
 	private JMenuItem openGame;
 	private JMenuItem closeGame;
 	private JMenuItem saveGame;
@@ -170,6 +177,16 @@ public class RealmGmFrame extends JFrame {
 	private JMenuBar buildMenuBar() {
 		JMenuBar menu = new JMenuBar();
 		JMenu fileMenu = new JMenu("File");
+		newGame = new JMenuItem("New Game");
+		newGame.setMnemonic(KeyEvent.VK_N);
+		newGame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				if (closeGame()) {
+					newGame();
+				};
+			}
+		});
+		fileMenu.add(newGame);
 		openGame = new JMenuItem("Open Game");
 		openGame.setMnemonic(KeyEvent.VK_O);
 		openGame.addActionListener(new ActionListener() {
@@ -389,16 +406,19 @@ public class RealmGmFrame extends JFrame {
 		panel.add(legendaryCharacterChitsOption);
 		return panel;
 	}
-	private void closeGame() {
+	private boolean closeGame() {
+		if (editor == null) return true;
 		if (validateOkayToClose("Close Game")) {
 			editor.setVisible(false);
 			desktop.remove(editor);
 			editor = null;
 			updateControls();
+			return true;
 		}
+		return false;
 	}
 	private boolean validateOkayToClose(String title) {
-		if (editor.getGameData().isModified()) {
+		if (editor != null && editor.getGameData().isModified()) {
 			int ret = JOptionPane.showConfirmDialog(this,"The current game hasn't been saved.  Save now?",title,JOptionPane.YES_NO_CANCEL_OPTION);
 			if (ret==JOptionPane.YES_OPTION) {
 				saveGame(false);
@@ -504,5 +524,50 @@ public class RealmGmFrame extends JFrame {
 			}
 		});
 		frame.setVisible(true);
+	}
+	
+	public void newGame() {
+		RealmUtility.resetGame();
+		
+		FlashingButton.setFlashEnabled(false); // at the start, disable all flashing buttons
+		
+		RealmSpeakInit init = new RealmSpeakInit();
+		
+		// Load XML from resources
+		init.loadData();
+		
+		// Get the host prefs
+		HostGameSetupDialog prefChooser = new HostGameSetupDialog(this,"Host New Game",init.getGameData());
+		
+		// Setup the local prefs (if any)
+		prefChooser.loadPrefsFromLocalConfiguration();
+		
+		prefChooser.setVisible(true);
+		if (prefChooser.getDidStart()) {
+			prefChooser.savePrefsToLocalConfiguration();
+			
+			// Setup the random number generator
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(init.getGameData());
+			if (hostPrefs.hasPref(Constants.RANDOM_R250_521)) {
+				RandomNumber.setRandomNumberGenerator(RandomNumberType.R250_521);
+			}
+			else if (hostPrefs.hasPref(Constants.RANDOM_MERSENNE_TWISTER)) {
+				RandomNumber.setRandomNumberGenerator(RandomNumberType.MersenneTwister);
+			}
+			else if (hostPrefs.hasPref(Constants.RANDOM_ON_THE_FLY)) {
+				RandomNumber.setRandomNumberGenerator(RandomNumberType.RandomOnTheFly);
+			}
+			else {
+				RandomNumber.setRandomNumberGenerator(RandomNumberType.System);
+			}
+			
+			// Make sure there is a DieRoller logger
+			DieRoller.setDieRollerLog(RealmUtility.getDieRollerLog(init.getGameData()));
+			
+			// Do all the pregame work
+			init.buildGame();
+			
+			addGame("new game",init.getGameData());
+		}
 	}
 }
