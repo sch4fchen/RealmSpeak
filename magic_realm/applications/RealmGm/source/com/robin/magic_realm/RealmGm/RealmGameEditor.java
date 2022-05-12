@@ -318,7 +318,9 @@ public class RealmGameEditor extends JInternalFrame {
 				RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(parent,"Add Character",true);
 				GamePool pool = new GamePool(gameData.getGameObjects());
 				for (GameObject go:pool.find("character")) {
-					chooser.addRealmComponent(RealmComponent.getRealmComponent(go));
+					if (!CharacterWrapper.hasPlayerBlock(go)) {
+						chooser.addRealmComponent(RealmComponent.getRealmComponent(go));
+					}
 				}
 				chooser.setVisible(true);
 				RealmComponent rc = chooser.getFirstSelectedComponent();
@@ -356,13 +358,31 @@ public class RealmGameEditor extends JInternalFrame {
 				character.clearRelationships(hostPrefs);
 				character.initRelationships(hostPrefs);
 				character.setGold(50);	
-				characters.add(character);
 				RealmUtility.fetchStartingSpells(parent,character,gameData,false);
+				characters.add(character);
+				Collections.sort(characters,new Comparator<CharacterWrapper>() {
+					public int compare(CharacterWrapper c1,CharacterWrapper c2) {
+						return c1.getName().compareTo(c2.getName());
+					}
+				});
 				updateCharacterEditorTabs();
+				thingsWithLocations.add(rc);
+				updateFilter(null);
 			}
 		});
 		box.add(addCharacter);
-		JButton removeCharacter = new JButton("Remove Character");
+		JButton removeCharacter = new JButton("Kill Character");
+		removeCharacter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*
+				if (rc==null) return;
+				TileLocation tl = ClearingUtility.getTileLocation(rc.getGameObject());
+				if (tl!=null && tl.isInClearing()) {
+					RealmUtility.makeDead(rc);
+				}*/
+				updateCharacterEditorTabs();
+			}
+		});
 		box.add(removeCharacter);
 		box.add(Box.createHorizontalGlue());
 		panel.add(box,BorderLayout.SOUTH);
