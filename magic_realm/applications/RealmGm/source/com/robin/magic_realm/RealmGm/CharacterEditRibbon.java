@@ -321,7 +321,7 @@ public class CharacterEditRibbon extends JPanel {
 				BorderFactory.createLoweredBevelBorder(),
 				BorderFactory.createEmptyBorder(2,2,2,2)));
 		ComponentTools.lockComponentSize(label,50,25);
-		ComponentTools.lockComponentSize(adjusters,100,25);
+		ComponentTools.lockComponentSize(adjusters,80,25);
 		line.add(adjusters);
 		line.add(Box.createHorizontalGlue());
 		panel.add(line);
