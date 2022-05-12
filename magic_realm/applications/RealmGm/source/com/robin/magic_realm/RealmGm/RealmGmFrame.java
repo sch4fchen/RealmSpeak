@@ -58,6 +58,7 @@ public class RealmGmFrame extends JFrame {
 	private PreferenceManager prefs;
 	private JDesktopPane desktop;
 	private RealmGameEditor editor;
+	private boolean fileExists;
 	
 	private JMenuItem newGame;
 	private JMenuItem openGame;
@@ -99,12 +100,13 @@ public class RealmGmFrame extends JFrame {
 		desktop = new JDesktopPane();
 		add(desktop,BorderLayout.CENTER);
 		
+		fileExists = false;
 		updateControls();
 	}
 	public void updateControls() {
 		openGame.setEnabled(editor==null);
 		closeGame.setEnabled(editor!=null);
-		saveGame.setEnabled(editor!=null && editor.getGameData().isModified());
+		saveGame.setEnabled(editor!=null && editor.getGameData().isModified() && fileExists);
 		saveAsGame.setEnabled(editor!=null);
 		gameOptions.setEnabled(editor!=null);
 	}
@@ -449,6 +451,7 @@ public class RealmGmFrame extends JFrame {
 //			gameData.setTracksChanges(true);
 			addGame(FileUtilities.getFilename(file,true),gameData);
 		}
+		fileExists = true;
 		updateControls();
 	}
 	private File queryFileName() {
@@ -484,6 +487,7 @@ public class RealmGmFrame extends JFrame {
 			editor.setTitle(FileUtilities.getFilename(file,true));
 			editor.getGameData().zipToFile(file);
 			editor.getGameData().commit();
+			fileExists = true;
 			updateControls();
 		}
 	}
@@ -567,7 +571,9 @@ public class RealmGmFrame extends JFrame {
 			// Do all the pregame work
 			init.buildGame();
 			
-			addGame("new game",init.getGameData());
+			addGame("<empty>",init.getGameData());
+			fileExists = false;
+			updateControls();
 		}
 	}
 }
