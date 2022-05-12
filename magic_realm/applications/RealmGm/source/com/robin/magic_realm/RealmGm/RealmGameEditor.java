@@ -55,6 +55,7 @@ public class RealmGameEditor extends JInternalFrame {
 	
 	private ArrayList<CharacterWrapper> characters;
 	private ArrayList<CharacterEditRibbon> characterPage = new ArrayList<CharacterEditRibbon>();
+	private JTabbedPane characterTabs;
 	private ArrayList<RealmComponent> thingsWithLocations;
 	private ArrayList<RealmComponent> thingsWithLocationsFiltered;
 	private ArrayList<TileComponent> tiles;
@@ -131,8 +132,7 @@ public class RealmGameEditor extends JInternalFrame {
 		thingsWithLocationsFiltered = new ArrayList<RealmComponent>();
 		characters = new ArrayList<CharacterWrapper>();
 		tiles = new ArrayList<TileComponent>();
-		for (Iterator i=gameData.getGameObjects().iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		for (GameObject go : gameData.getGameObjects()) {
 			if (go.hasThisAttribute(RealmComponent.CHARACTER) && !go.hasAttribute(RealmComponent.REALMCOMPONENT_BLOCK,RealmComponent.OWNER_ID)) {
 				continue;
 			}
@@ -307,15 +307,75 @@ public class RealmGameEditor extends JInternalFrame {
 	}
 	private JPanel buildCharacterEditorTab() {
 		JPanel panel = new JPanel(new BorderLayout());
-		JTabbedPane tabs = new JTabbedPane(JTabbedPane.LEFT);
-		tabs.setFont(new Font("Dialog",Font.PLAIN,24));
+		characterTabs = new JTabbedPane(JTabbedPane.LEFT);
+		characterTabs.setFont(new Font("Dialog",Font.PLAIN,24));
+		updateCharacterEditorTabs();
+		panel.add(characterTabs,BorderLayout.CENTER);
+		Box box = Box.createHorizontalBox();
+		JButton addCharacter = new JButton("Add Character");
+		addCharacter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(parent,"Add Character",true);
+				GamePool pool = new GamePool(gameData.getGameObjects());
+				for (GameObject go:pool.find("character")) {
+					chooser.addRealmComponent(RealmComponent.getRealmComponent(go));
+				}
+				chooser.setVisible(true);
+				RealmComponent rc = chooser.getFirstSelectedComponent();
+				if (rc==null) return;
+				GameObject characterGo = rc.getGameObject();
+				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
+				
+				if (characterGo.hasThisAttribute(Constants.CUSTOM_CHARACTER)) {
+					GameObject newChar = gameData.createNewObject();
+					newChar.copyAttributesFrom(characterGo);
+					RealmComponent.clearOwner(newChar);
+					newChar.setThisKeyVals(hostPrefs.getGameKeyVals());
+					for (GameObject go : characterGo.getHold()) {
+						if (go.hasThisAttribute("character_chit")) {
+							GameObject newChit = gameData.createNewObject();
+							newChit.copyAttributesFrom(go);
+							newChit.setThisKeyVals(hostPrefs.getGameKeyVals());
+							newChar.add(newChit);
+						}
+					}
+					characterGo = newChar;
+				}
+				
+				CharacterWrapper character = new CharacterWrapper(characterGo);
+				GameObject borderland = gameData.getGameObjectByName("Borderland");
+				TileComponent borderlandTile = (TileComponent)RealmComponent.getRealmComponent(borderland);
+				borderlandTile.getClearing(1).add(character.getGameObject(),null);
+				character.setPlayerName("Player");
+				character.setPlayerPassword("");
+				character.setPlayerEmail("");
+				character.setCharacterLevel(4);
+				character.updateLevelAttributes(hostPrefs);
+				character.initChits();
+				character.fetchStartingInventory(parent,gameData,false);
+				character.clearRelationships(hostPrefs);
+				character.initRelationships(hostPrefs);
+				character.setGold(50);	
+				characters.add(character);
+				RealmUtility.fetchStartingSpells(parent,character,gameData,false);
+				updateCharacterEditorTabs();
+			}
+		});
+		box.add(addCharacter);
+		JButton removeCharacter = new JButton("Remove Character");
+		box.add(removeCharacter);
+		box.add(Box.createHorizontalGlue());
+		panel.add(box,BorderLayout.SOUTH);
+		return panel;
+	}
+	private void updateCharacterEditorTabs() {
+		characterPage.clear();
+		characterTabs.removeAll();
 		for(CharacterWrapper character:characters) {
 			CharacterEditRibbon ribbon = new CharacterEditRibbon(parent,character);
 			characterPage.add(ribbon);
-			tabs.add(character.getName(),ribbon);
+			characterTabs.add(character.getName(),ribbon);
 		}
-		panel.add(tabs,BorderLayout.CENTER);
-		return panel;
 	}
 	private JPanel buildLocationEditorTab() {
 		JPanel panel = new JPanel(new BorderLayout());

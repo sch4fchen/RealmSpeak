@@ -1404,6 +1404,10 @@ public class CenteredMapView extends JComponent {
 					public void actionPerformed(ActionEvent ev) {
 						GameObject tile = chooseTileToRemove();
 						if (tile == null) return;
+						if (tile.getName().matches("Borderland")) {
+							JOptionPane.showConfirmDialog(null, "Borderland cannot be removed!", "Removing Tile", JOptionPane.DEFAULT_OPTION);
+							return;
+						}
 						tile.removeThisAttribute(ClearingDetail.BL_CONNECT);
 						for (GameObject hold : tile.getHold()) {
 							tile.remove(hold);
