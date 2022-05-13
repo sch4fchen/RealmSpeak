@@ -58,6 +58,8 @@ public class RealmGameEditor extends JInternalFrame {
 	private JTabbedPane characterTabs;
 	private ArrayList<RealmComponent> thingsWithLocations;
 	private ArrayList<RealmComponent> thingsWithLocationsFiltered;
+	private Box filterToolbar;
+	private JPanel locationEditToolbar;
 	private ArrayList<TileComponent> tiles;
 	private ArrayList<Quest> quests;
 	
@@ -368,6 +370,9 @@ public class RealmGameEditor extends JInternalFrame {
 				updateCharacterEditorTabs();
 				thingsWithLocations.add(rc);
 				updateFilter(null);
+				locationEditToolbar.remove(filterToolbar);
+				filterToolbar = buildFilterToolbar();
+				locationEditToolbar.add(filterToolbar,BorderLayout.CENTER);
 			}
 		});
 		box.add(addCharacter);
@@ -406,17 +411,18 @@ public class RealmGameEditor extends JInternalFrame {
 			}
 		});
 		TableSorter.makeSortable(locationTable);
-		JPanel toolbar = new JPanel(new BorderLayout());
+		locationEditToolbar = new JPanel(new BorderLayout());
 		JPanel controls = new JPanel(new GridLayout(3,1));
 		controls.add(buildOtherToolbar());
 		controls.add(buildLocationEditorToolbar());
 		controls.add(buildTreasureLayToolbar());
-		toolbar.add(controls,BorderLayout.NORTH);
-		toolbar.add(buildFilterToolbar(),BorderLayout.CENTER);
+		locationEditToolbar.add(controls,BorderLayout.NORTH);
+		filterToolbar = buildFilterToolbar();
+		locationEditToolbar.add(filterToolbar,BorderLayout.CENTER);
 		JLabel sortMessage = new JLabel("Click any header to sort piece table:");
 		sortMessage.setForeground(Color.red);
-		toolbar.add(sortMessage,BorderLayout.SOUTH);
-		panel.add(toolbar,BorderLayout.NORTH);
+		locationEditToolbar.add(sortMessage,BorderLayout.SOUTH);
+		panel.add(locationEditToolbar,BorderLayout.NORTH);
 		panel.add(new JScrollPane(locationTable),BorderLayout.CENTER);
 		return panel;
 	}

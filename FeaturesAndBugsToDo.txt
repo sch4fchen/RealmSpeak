@@ -6,7 +6,6 @@ Power of the Pit optional rule C.4: Power of the Pit attack to hit like an attac
 GM Tool:
 	Add Description+Title to a save game, displayed when loaded the first time
 	RealmSpeak + GM: Shuffle components Flag in gameData when saving scenario: Shuffle when loading OR NO shuffling when loading
-	Add and remove characters
 Combat Summary: add functionality for RandomAssignment, Deploy/Charge (and charge character, Actions? Attack/Maneuver, Assign)
 ---:::FEATURES:::---
 Combat Tips:
