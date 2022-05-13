@@ -379,12 +379,13 @@ public class RealmGameEditor extends JInternalFrame {
 		JButton removeCharacter = new JButton("Kill Character");
 		removeCharacter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				/*
-				if (rc==null) return;
-				TileLocation tl = ClearingUtility.getTileLocation(rc.getGameObject());
+				int selectedRow = characterTabs.getSelectedIndex();
+				if (selectedRow < 0) return;
+				CharacterWrapper character = characters.get(selectedRow);
+				TileLocation tl = ClearingUtility.getTileLocation(character.getGameObject());
 				if (tl!=null && tl.isInClearing()) {
-					RealmUtility.makeDead(rc);
-				}*/
+					RealmUtility.makeDead(RealmComponent.getRealmComponent(character.getGameObject()));
+				}
 				updateCharacterEditorTabs();
 			}
 		});

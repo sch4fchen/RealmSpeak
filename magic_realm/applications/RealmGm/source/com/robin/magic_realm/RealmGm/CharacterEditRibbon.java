@@ -75,7 +75,11 @@ public class CharacterEditRibbon extends JPanel {
 	private void initComponents() {
 		setLayout(new BorderLayout());
 		Box box = Box.createVerticalBox();
-		setBorder(BorderFactory.createTitledBorder(character.getName()));
+		String title = character.getName();
+		if (character.isDead()) {
+			title = title + "- DEAD";
+		}
+		setBorder(BorderFactory.createTitledBorder(title));
 		if (character.hasCheated()) {
 			Box line = Box.createHorizontalBox();
 			JButton removeCheaterFlag = new JButton("Remove \"Cheater!\" flag from character.");
