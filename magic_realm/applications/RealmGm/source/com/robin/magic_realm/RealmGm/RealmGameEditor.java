@@ -56,6 +56,10 @@ public class RealmGameEditor extends JInternalFrame {
 	private ArrayList<CharacterWrapper> characters;
 	private ArrayList<CharacterEditRibbon> characterPage = new ArrayList<CharacterEditRibbon>();
 	private JTabbedPane characterTabs;
+	private JButton addCharacter;
+	private JButton removeCharacter;
+	private JButton killCharacter;
+	private JButton reviveCharacter;
 	private ArrayList<RealmComponent> thingsWithLocations;
 	private ArrayList<RealmComponent> thingsWithLocationsFiltered;
 	private Box filterToolbar;
@@ -311,10 +315,14 @@ public class RealmGameEditor extends JInternalFrame {
 		JPanel panel = new JPanel(new BorderLayout());
 		characterTabs = new JTabbedPane(JTabbedPane.LEFT);
 		characterTabs.setFont(new Font("Dialog",Font.PLAIN,24));
-		updateCharacterEditorTabs();
+		characterTabs.addChangeListener(new ChangeListener() {
+	        public void stateChanged(ChangeEvent e) {
+	        	updateCharacterButtons();
+	        }
+	    });
 		panel.add(characterTabs,BorderLayout.CENTER);
 		Box box = Box.createHorizontalBox();
-		JButton addCharacter = new JButton("Add Character");
+		addCharacter = new JButton("Add Character");
 		addCharacter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(parent,"Add Character",true);
@@ -376,7 +384,7 @@ public class RealmGameEditor extends JInternalFrame {
 			}
 		});
 		box.add(addCharacter);
-		JButton removeCharacter = new JButton("Remove Character");
+		removeCharacter = new JButton("Remove Character");
 		removeCharacter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int selectedRow = characterTabs.getSelectedIndex();
@@ -391,7 +399,7 @@ public class RealmGameEditor extends JInternalFrame {
 			}
 		});
 		box.add(removeCharacter);
-		JButton killCharacter = new JButton("Kill Character");
+		killCharacter = new JButton("Kill Character");
 		killCharacter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int selectedRow = characterTabs.getSelectedIndex();
@@ -406,7 +414,7 @@ public class RealmGameEditor extends JInternalFrame {
 			}
 		});
 		box.add(killCharacter);
-		JButton reviveCharacter = new JButton("Revive Character to Borderland");
+		reviveCharacter = new JButton("Revive Character to Borderland");
 		reviveCharacter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int selectedRow = characterTabs.getSelectedIndex();
@@ -423,7 +431,19 @@ public class RealmGameEditor extends JInternalFrame {
 		box.add(reviveCharacter);
 		box.add(Box.createHorizontalGlue());
 		panel.add(box,BorderLayout.SOUTH);
+		updateCharacterEditorTabs();
 		return panel;
+	}
+	private void updateCharacterButtons() {
+		int selectedRow = characterTabs.getSelectedIndex();
+		CharacterWrapper selectedCharacter = null;
+		if (selectedRow >= 0) {
+			selectedCharacter = characters.get(selectedRow);
+		}
+		addCharacter.setEnabled(true);
+		removeCharacter.setEnabled(selectedCharacter!=null);
+		killCharacter.setEnabled(selectedCharacter!=null && !selectedCharacter.isDead());
+		reviveCharacter.setEnabled(selectedCharacter!=null && selectedCharacter.isDead());
 	}
 	private void updateCharacterEditorTabs() {
 		characterPage.clear();
@@ -433,6 +453,7 @@ public class RealmGameEditor extends JInternalFrame {
 			characterPage.add(ribbon);
 			characterTabs.add(character.getName(),ribbon);
 		}
+		updateCharacterButtons();
 	}
 	private JPanel buildLocationEditorTab() {
 		JPanel panel = new JPanel(new BorderLayout());
