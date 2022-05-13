@@ -376,8 +376,23 @@ public class RealmGameEditor extends JInternalFrame {
 			}
 		});
 		box.add(addCharacter);
-		JButton removeCharacter = new JButton("Kill Character");
+		JButton removeCharacter = new JButton("Remove Character");
 		removeCharacter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedRow = characterTabs.getSelectedIndex();
+				if (selectedRow < 0) return;
+				CharacterWrapper character = characters.get(selectedRow);
+				character.clearPlayerAttributes();
+				character.getGameObject().removeThisAttribute(Constants.DEAD);
+				characters.remove(character);
+				updateCharacterEditorTabs();
+				thingsWithLocations.remove(RealmComponent.getRealmComponent(character.getGameObject()));
+				updateFilter(null);
+			}
+		});
+		box.add(removeCharacter);
+		JButton killCharacter = new JButton("Kill Character");
+		killCharacter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int selectedRow = characterTabs.getSelectedIndex();
 				if (selectedRow < 0) return;
@@ -387,9 +402,25 @@ public class RealmGameEditor extends JInternalFrame {
 					RealmUtility.makeDead(RealmComponent.getRealmComponent(character.getGameObject()));
 				}
 				updateCharacterEditorTabs();
+				updateFilter(null);
 			}
 		});
-		box.add(removeCharacter);
+		box.add(killCharacter);
+		JButton reviveCharacter = new JButton("Revive Character to Borderland");
+		reviveCharacter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedRow = characterTabs.getSelectedIndex();
+				if (selectedRow < 0) return;
+				CharacterWrapper character = characters.get(selectedRow);
+				character.getGameObject().removeThisAttribute(Constants.DEAD);
+				GameObject borderland = gameData.getGameObjectByName("Borderland");
+				TileComponent borderlandTile = (TileComponent)RealmComponent.getRealmComponent(borderland);
+				borderlandTile.getClearing(1).add(character.getGameObject(),null);
+				updateCharacterEditorTabs();
+				updateFilter(null);
+			}
+		});
+		box.add(reviveCharacter);
 		box.add(Box.createHorizontalGlue());
 		panel.add(box,BorderLayout.SOUTH);
 		return panel;
