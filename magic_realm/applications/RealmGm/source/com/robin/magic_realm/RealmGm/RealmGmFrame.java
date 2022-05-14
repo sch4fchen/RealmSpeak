@@ -31,6 +31,7 @@ import javax.swing.filechooser.FileFilter;
 import com.robin.game.objects.GameData;
 import com.robin.general.io.FileUtilities;
 import com.robin.general.io.PreferenceManager;
+import com.robin.general.swing.AggressiveDialog;
 import com.robin.general.swing.ComponentTools;
 import com.robin.general.swing.DieRoller;
 import com.robin.general.swing.FlashingButton;
@@ -114,10 +115,40 @@ public class RealmGmFrame extends JFrame {
 		gameOptions.setEnabled(editor!=null);
 	}
 	private void editDescription() {
-		String text = JOptionPane.showInputDialog("Scenario Description", editor.getGameData().getScenarioDescription()==null?"":editor.getGameData().getScenarioDescription());
-		if (text!= null) {
-			editor.getGameData().setScenarioDescription(text);
-		}
+		AggressiveDialog dialog = new AggressiveDialog(this,"Scenario Description",true);
+		dialog.setLayout(new BorderLayout());
+		dialog.setSize(500, 500);
+		dialog.setLocationRelativeTo(this);
+		
+		JPanel panel = new JPanel(new BorderLayout());
+		Box box = Box.createVerticalBox();
+		JTextArea input = new JTextArea();
+		input.setLineWrap(true);
+		input.setWrapStyleWord(true);
+		input.setText(editor.getGameData().getScenarioDescription()==null?"":editor.getGameData().getScenarioDescription());
+		box.add(new JScrollPane(input));
+		
+		Box buttons = Box.createHorizontalBox();
+		JButton ok = new JButton("Ok");
+		ok.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				editor.getGameData().setScenarioDescription(input.getText());
+				dialog.dispose();
+			}
+		});
+		JButton cancel = new JButton("Cancel");
+		cancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				dialog.dispose();
+			}
+		});
+		buttons.add(ok);
+		buttons.add(cancel);
+		box.add(buttons);
+		
+		panel.add(box);
+		dialog.add(panel);
+		dialog.setVisible(true);
 	}
 	private void updateLookAndFeel() {
 		if (prefs.getBoolean(MetalLookAndFeel)) {
