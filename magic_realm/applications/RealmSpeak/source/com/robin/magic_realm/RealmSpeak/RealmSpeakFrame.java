@@ -1672,6 +1672,11 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 			RealmLoader loader = new RealmLoader();
 			makeHost(loader.getMaster(),data,netConnect);
 			resetStatus();
+			
+			if (data.getScenarioDescription()!=null && data.getScenarioDescription()!="") {
+				JOptionPane.showMessageDialog(this, data.getScenarioDescription(), "Scenario Description", JOptionPane.PLAIN_MESSAGE, ImageCache.getIcon("badges/lore"));
+				data.removeScenarioDescription();
+			}
 		}
 		else {
 			JOptionPane.showMessageDialog(this,"File not found:  "+lastSaveGame.getPath());

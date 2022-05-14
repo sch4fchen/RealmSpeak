@@ -3,9 +3,7 @@ Duplicate spells (Combat spell, Day spell or Permanent spell):
 		Stone Gaze, Absorb Essence, Melt into Mist and Transform: turn the target into the same creature, then the spells go into effect
 	after each other: cannot go into effect if it duplicates a spell that is already bewitching the target
 Power of the Pit optional rule C.4: Power of the Pit attack to hit like an attack spell
-GM Tool:
-	Add Description+Title to a save game, displayed when loaded the first time
-	RealmSpeak + GM: Shuffle components Flag in gameData when saving scenario: Shuffle when loading OR NO shuffling when loading
+GM Tool: RealmSpeak + GM: Shuffle components Flag in gameData when saving scenario: Shuffle when loading OR NO shuffling when loading
 Combat Summary: add functionality for RandomAssignment, Deploy/Charge (and charge character, Actions? Attack/Maneuver, Assign)
 ---:::FEATURES:::---
 Combat Tips:
@@ -16,7 +14,7 @@ Expansion 1: Parry + Ability: "ParryLikeShield":  Option: no missile attacks
 Expansion 1: More Ambushes/Throwing Weapons + Ability: Spear, Axe, Dagger?
 Expansion 1: Items: Magic path, Hound, Magic meat, Needful thing
 Expansion 1: Travelers: Doppleganger, Necromancer, Soothsayer
-Expansion 1: Spells (to "New spells": new_spells_1): Magic Shield, Sleep, Wall of Force, Duel, Spider web, Rocks Glow, Mystic boots, Flame sword, Fighting hands, Magic mirror, Lucky blow, Fire trap
+Expansion 1: Spells (to "New spells": new_spells_1): Magic Shield, Sleep, Wall of Force, Duel, Spider web, Rocks Glow, Mystic boots, Flame sword, Fighting hands, Magic mirror, Lucky blow, Fire trap;;;; Body Double, Familiar, Temporal Vortex, Fear, Sword Song, Send, Miracle
 SuperRealm: Steel Against Magic: A character who is casting a spell and has no active armor counters may also use his active weapon and a second attention chit to target an individual and make a separate attack (or parry) if, and only if, the active weapon is the Staff.
 0001563: Showing flip sides of tiles and counters in HTML
 0001645: Automatic HTML export

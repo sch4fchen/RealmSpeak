@@ -58,6 +58,7 @@ public class GameData extends ModifyableObject implements Serializable {
 
 	protected String gameName;
 	protected String gameDesc;
+	protected String scenarioDesc;
 	protected String filterString;
 	protected ArrayList<GameObject> excludeList;
 	protected ArrayList<GameObject> gameObjects;
@@ -155,6 +156,16 @@ public class GameData extends ModifyableObject implements Serializable {
 	}
 	public String getGameDescription() {
 		return gameDesc;
+	}
+	public void setScenarioDescription(String val) {
+		scenarioDesc = val;
+		setModified(true);
+	}
+	public String getScenarioDescription() {
+		return scenarioDesc;
+	}
+	public void removeScenarioDescription() {
+		scenarioDesc = null;
 	}
 	public GameObject getGameObject(long id) {
 		return getGameObject(new Long(id));
@@ -429,6 +440,9 @@ public class GameData extends ModifyableObject implements Serializable {
 	public void setXML(Element game) {
 		gameName = game.getAttribute("name").getValue();
 		gameDesc = game.getAttribute("description").getValue();
+		if (game.getAttribute("descriptionScenario") != null) {
+			scenarioDesc = game.getAttribute("descriptionScenario").getValue();
+		}
 		String seedString = game.getAttributeValue("_rseed");
 		if (!ignoreRandomSeed && seedString!=null) {
 			String rt = game.getAttributeValue("_rgtype");
@@ -517,6 +531,7 @@ public class GameData extends ModifyableObject implements Serializable {
 		game.setAttribute(new Attribute("file_version","1.0"));
 		game.setAttribute(new Attribute("name",gameName));
 		game.setAttribute(new Attribute("description",gameDesc==null?"":gameDesc));
+		game.setAttribute(new Attribute("descriptionScenario",scenarioDesc==null?"":scenarioDesc));
 		if (!ignoreRandomSeed && RandomNumber.hasBeenInitialized()) {
 			game.setAttribute(new Attribute("_rseed",String.valueOf(RandomNumber.getSeed())));
 			game.setAttribute(new Attribute("_rcount",String.valueOf(RandomNumber.getCount())));

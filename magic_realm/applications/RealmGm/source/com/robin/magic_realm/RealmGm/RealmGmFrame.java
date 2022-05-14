@@ -66,6 +66,8 @@ public class RealmGmFrame extends JFrame {
 	private JMenuItem saveGame;
 	private JMenuItem saveAsGame;
 	
+	private JMenuItem scenarioDescription;
+	
 	private JRadioButton classicChitsOption;
 	private JRadioButton colorChitsOption;
 	private JRadioButton frenzelChitsOption;
@@ -108,7 +110,14 @@ public class RealmGmFrame extends JFrame {
 		closeGame.setEnabled(editor!=null);
 		saveGame.setEnabled(editor!=null && editor.getGameData().isModified() && fileExists);
 		saveAsGame.setEnabled(editor!=null);
+		scenarioDescription.setEnabled(editor!=null);
 		gameOptions.setEnabled(editor!=null);
+	}
+	private void editDescription() {
+		String text = JOptionPane.showInputDialog("Scenario Description", editor.getGameData().getScenarioDescription()==null?"":editor.getGameData().getScenarioDescription());
+		if (text!= null) {
+			editor.getGameData().setScenarioDescription(text);
+		}
 	}
 	private void updateLookAndFeel() {
 		if (prefs.getBoolean(MetalLookAndFeel)) {
@@ -181,6 +190,7 @@ public class RealmGmFrame extends JFrame {
 		JMenu fileMenu = new JMenu("File");
 		newGame = new JMenuItem("New Game");
 		newGame.setMnemonic(KeyEvent.VK_N);
+		newGame.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N,InputEvent.CTRL_MASK));
 		newGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				if (closeGame()) {
@@ -191,6 +201,7 @@ public class RealmGmFrame extends JFrame {
 		fileMenu.add(newGame);
 		openGame = new JMenuItem("Open Game");
 		openGame.setMnemonic(KeyEvent.VK_O);
+		openGame.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O,InputEvent.CTRL_MASK));
 		openGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				openGame();
@@ -199,6 +210,7 @@ public class RealmGmFrame extends JFrame {
 		fileMenu.add(openGame);
 		closeGame = new JMenuItem("Close Game");
 		closeGame.setMnemonic(KeyEvent.VK_C);
+		closeGame.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C,InputEvent.CTRL_MASK));
 		closeGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				closeGame();
@@ -216,6 +228,7 @@ public class RealmGmFrame extends JFrame {
 		fileMenu.add(saveGame);
 		saveAsGame = new JMenuItem("Save Game As...");
 		saveAsGame.setMnemonic(KeyEvent.VK_A);
+		saveAsGame.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A,InputEvent.CTRL_MASK));
 		saveAsGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				saveGame(true);
@@ -232,6 +245,15 @@ public class RealmGmFrame extends JFrame {
 		});
 		fileMenu.add(exit);
 		menu.add(fileMenu);
+		JMenu scenarioMenu = new JMenu("Scenario");
+		scenarioDescription = new JMenuItem("Description");
+		scenarioDescription.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				editDescription();
+			}
+		});
+		scenarioMenu.add(scenarioDescription);
+		menu.add(scenarioMenu);
 		JMenu optionMenu = new JMenu("Options");
 		final JCheckBoxMenuItem toggleLookAndFeel = new JCheckBoxMenuItem("Cross Platform Look and Feel",prefs.getBoolean(MetalLookAndFeel));
 		toggleLookAndFeel.addActionListener(new ActionListener() {
