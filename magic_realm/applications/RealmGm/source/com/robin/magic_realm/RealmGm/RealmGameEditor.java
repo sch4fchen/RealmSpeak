@@ -354,6 +354,7 @@ public class RealmGameEditor extends JInternalFrame {
 					characterGo = newChar;
 				}
 				
+				int level = 4;
 				CharacterWrapper character = new CharacterWrapper(characterGo);
 				GameObject borderland = gameData.getGameObjectByName("Borderland");
 				TileComponent borderlandTile = (TileComponent)RealmComponent.getRealmComponent(borderland);
@@ -361,13 +362,15 @@ public class RealmGameEditor extends JInternalFrame {
 				character.setPlayerName("Player");
 				character.setPlayerPassword("");
 				character.setPlayerEmail("");
-				character.setCharacterLevel(4);
+				character.setCharacterLevel(level);
 				character.updateLevelAttributes(hostPrefs);
 				character.initChits();
 				character.fetchStartingInventory(parent,gameData,false);
 				character.clearRelationships(hostPrefs);
 				character.initRelationships(hostPrefs);
-				character.setGold(50);	
+				character.setGold(character.getStartingGold());	
+				character.setHidden(true);
+				character.initializeVpsSetup(hostPrefs,level,RealmCalendar.getCalendar(gameData));
 				RealmUtility.fetchStartingSpells(parent,character,gameData,false);
 				characters.add(character);
 				Collections.sort(characters,new Comparator<CharacterWrapper>() {

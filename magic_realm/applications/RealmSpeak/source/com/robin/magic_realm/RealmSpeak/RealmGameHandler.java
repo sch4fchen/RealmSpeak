@@ -1525,39 +1525,8 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 					character.setWantsCombat(getMainFrame().getRealmSpeakOptions().dailyCombatOn(character));
 					character.clearRelationships(hostPrefs);
 					character.initRelationships(hostPrefs);
-
-					if (!hostPrefs.getRequiredVPsOff() && !hostPrefs.hasPref(Constants.QST_BOOK_OF_QUESTS)) {
-						RealmCalendar cal = RealmCalendar.getCalendar(getClient().getGameData());
-						int vps = 0;
-						if (hostPrefs.hasPref(Constants.EXP_SUDDEN_DEATH) || hostPrefs.isFixedVps()) {
-							vps = hostPrefs.getVpsToAchieve();
-						}
-						else {
-							int totalMonths = hostPrefs.getNumberMonthsToPlay();
-							for (int i = 0; i < totalMonths; i++) {
-								int vp = cal.getVictoryPoints(i + 1);
-								vps += vp;
-							}
-						}
-
-						// Lower level characters get to choose fewer VPs
-						vps -= (Constants.MAX_LEVEL - level);
-
-						if (vps < Constants.MINIMUM_VPS) {
-							vps = Constants.MINIMUM_VPS;
-						}
-
-						if (hostPrefs.hasPref(Constants.HOUSE2_ANY_VPS)) {
-							vps = -1;
-						}
-
-						if (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) && vps!=-1) {
-							character.addVictoryRequirements(vps,0,0,0,0,0);
-						}
-						else {
-							character.setNewVPRequirement(vps);
-						}
-					}
+					RealmCalendar cal = RealmCalendar.getCalendar(getClient().getGameData());
+					character.initializeVpsSetup(hostPrefs,level,cal);
 
 					// Figure out starting location
 					// 1) Find the dwelling or ghost gameObject
