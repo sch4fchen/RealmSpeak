@@ -317,6 +317,9 @@ public class RealmHostPanel extends JPanel {
 			
 			// Add a number of days equal to (8-DIW)
 			game.setDay(8-days);
+			
+			logger.fine("Exiting updateGameState");
+			return;
 		}
 
 		int currentGameState = game.getState();
