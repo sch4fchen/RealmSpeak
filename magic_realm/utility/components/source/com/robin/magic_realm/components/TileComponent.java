@@ -489,7 +489,7 @@ public class TileComponent extends ChitComponent {
 		// Check map edges (if any)
 		for (ClearingDetail clearing : getMapEdges()) {
 			Point p = clearing.getPosition();
-			Shape s = getClearingShape(p, CLEARING_RADIUS);
+			Shape s = getClearingShape(p, EDGE_RADIUS);
 			if (s.contains(tx, ty)) {
 				return clearing;
 			}
