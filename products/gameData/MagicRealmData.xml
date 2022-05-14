@@ -15988,6 +15988,7 @@
         <attribute magic_color="gray" />
         <attribute rw_expansion_1="" />
         <attribute strength="RED" />
+        <attribute length="18" />
         <attribute host_okay="" />
         <attribute author="Expansion 1" />
         <attribute learnable="" />
