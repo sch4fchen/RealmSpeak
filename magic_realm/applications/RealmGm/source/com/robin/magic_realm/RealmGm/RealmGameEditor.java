@@ -379,7 +379,7 @@ public class RealmGameEditor extends JInternalFrame {
 					}
 				});
 				updateCharacterEditorTabs();
-				thingsWithLocations.add(rc);
+				readData();
 				updateFilter(null);
 				locationEditToolbar.remove(filterToolbar);
 				filterToolbar = buildFilterToolbar();
@@ -397,7 +397,7 @@ public class RealmGameEditor extends JInternalFrame {
 				character.getGameObject().removeThisAttribute(Constants.DEAD);
 				characters.remove(character);
 				updateCharacterEditorTabs();
-				thingsWithLocations.remove(RealmComponent.getRealmComponent(character.getGameObject()));
+				readData();
 				updateFilter(null);
 			}
 		});
