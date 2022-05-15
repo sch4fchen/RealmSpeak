@@ -450,7 +450,7 @@ public class GameData extends ModifyableObject implements Serializable {
 		if (game.getAttribute("scenarioDescription") != null) {
 			scenarioDesc = game.getAttribute("scenarioDescription").getValue();
 		}
-		scenarioRandomGoldSpecialPlacement = (game.getAttribute("scenarioRandomGoldSpecialPlacement")!=null&&game.getAttribute("scenarioRandomGoldSpecialPlacement").getValue()=="true")?true:false;
+		scenarioRandomGoldSpecialPlacement = (game.getAttribute("scenarioRandomGoldSpecialPlacement")!=null&&game.getAttribute("scenarioRandomGoldSpecialPlacement").getValue().matches("true"))?true:false;
 		String seedString = game.getAttributeValue("_rseed");
 		if (!ignoreRandomSeed && seedString!=null) {
 			String rt = game.getAttributeValue("_rgtype");
