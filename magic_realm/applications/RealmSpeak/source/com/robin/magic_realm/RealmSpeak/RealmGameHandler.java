@@ -618,7 +618,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		}
 	}
 
-	private void randomGoldSpecialPlacement() {
+	public void randomGoldSpecialPlacement() {
 		broadcast("host", "Visitor/Mission/Campaign chits are placed at random.");
 		// Place the 6 gold specials randomly
 		GameData data = client.getGameData();

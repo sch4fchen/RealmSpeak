@@ -59,6 +59,7 @@ public class GameData extends ModifyableObject implements Serializable {
 	protected String gameName;
 	protected String gameDesc;
 	protected String scenarioDesc;
+	protected boolean scenarioRandomGoldSpecialPlacement;
 	protected String filterString;
 	protected ArrayList<GameObject> excludeList;
 	protected ArrayList<GameObject> gameObjects;
@@ -166,6 +167,12 @@ public class GameData extends ModifyableObject implements Serializable {
 	}
 	public void removeScenarioDescription() {
 		scenarioDesc = null;
+	}
+	public void setScenarioRandomGoldSpecialPlacement(boolean val) {
+		scenarioRandomGoldSpecialPlacement = val;
+	}
+	public boolean getScenarioRandomGoldSpecialPlacement() {
+		return scenarioRandomGoldSpecialPlacement;
 	}
 	public GameObject getGameObject(long id) {
 		return getGameObject(new Long(id));
@@ -440,9 +447,10 @@ public class GameData extends ModifyableObject implements Serializable {
 	public void setXML(Element game) {
 		gameName = game.getAttribute("name").getValue();
 		gameDesc = game.getAttribute("description").getValue();
-		if (game.getAttribute("descriptionScenario") != null) {
-			scenarioDesc = game.getAttribute("descriptionScenario").getValue();
+		if (game.getAttribute("scenarioDescription") != null) {
+			scenarioDesc = game.getAttribute("scenarioDescription").getValue();
 		}
+		scenarioRandomGoldSpecialPlacement = (game.getAttribute("scenarioRandomGoldSpecialPlacement")!=null&&game.getAttribute("scenarioRandomGoldSpecialPlacement").getValue()=="true")?true:false;
 		String seedString = game.getAttributeValue("_rseed");
 		if (!ignoreRandomSeed && seedString!=null) {
 			String rt = game.getAttributeValue("_rgtype");
@@ -531,7 +539,13 @@ public class GameData extends ModifyableObject implements Serializable {
 		game.setAttribute(new Attribute("file_version","1.0"));
 		game.setAttribute(new Attribute("name",gameName));
 		game.setAttribute(new Attribute("description",gameDesc==null?"":gameDesc));
-		game.setAttribute(new Attribute("descriptionScenario",scenarioDesc==null?"":scenarioDesc));
+		game.setAttribute(new Attribute("scenarioDescription",scenarioDesc==null?"":scenarioDesc));
+		if (scenarioRandomGoldSpecialPlacement) {
+			game.setAttribute(new Attribute("scenarioRandomGoldSpecialPlacement","true"));
+		}
+		else {
+			game.setAttribute(new Attribute("scenarioRandomGoldSpecialPlacement","false"));
+		}
 		if (!ignoreRandomSeed && RandomNumber.hasBeenInitialized()) {
 			game.setAttribute(new Attribute("_rseed",String.valueOf(RandomNumber.getSeed())));
 			game.setAttribute(new Attribute("_rcount",String.valueOf(RandomNumber.getCount())));

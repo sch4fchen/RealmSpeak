@@ -68,6 +68,7 @@ public class RealmGmFrame extends JFrame {
 	private JMenuItem saveAsGame;
 	
 	private JMenuItem scenarioDescription;
+	private JCheckBox scenarioRandomGoldSpecialPlacement;
 	
 	private JRadioButton classicChitsOption;
 	private JRadioButton colorChitsOption;
@@ -112,6 +113,8 @@ public class RealmGmFrame extends JFrame {
 		saveGame.setEnabled(editor!=null && editor.getGameData().isModified() && fileExists);
 		saveAsGame.setEnabled(editor!=null);
 		scenarioDescription.setEnabled(editor!=null);
+		scenarioRandomGoldSpecialPlacement.setEnabled(editor!=null);
+		scenarioRandomGoldSpecialPlacement.setSelected(editor!=null && editor.getGameData().getScenarioRandomGoldSpecialPlacement());
 		gameOptions.setEnabled(editor!=null);
 	}
 	private void editDescription() {
@@ -149,6 +152,9 @@ public class RealmGmFrame extends JFrame {
 		panel.add(box);
 		dialog.add(panel);
 		dialog.setVisible(true);
+	}
+	private void updateRandomGoldSpecialPlacement() {
+		editor.getGameData().setScenarioRandomGoldSpecialPlacement(scenarioRandomGoldSpecialPlacement.isSelected());
 	}
 	private void updateLookAndFeel() {
 		if (prefs.getBoolean(MetalLookAndFeel)) {
@@ -284,6 +290,13 @@ public class RealmGmFrame extends JFrame {
 			}
 		});
 		scenarioMenu.add(scenarioDescription);
+		scenarioRandomGoldSpecialPlacement = new JCheckBox("Random Gold Special Placement");
+		scenarioRandomGoldSpecialPlacement.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				updateRandomGoldSpecialPlacement();
+			}
+		});
+		scenarioMenu.add(scenarioRandomGoldSpecialPlacement);
 		menu.add(scenarioMenu);
 		JMenu optionMenu = new JMenu("Options");
 		final JCheckBoxMenuItem toggleLookAndFeel = new JCheckBoxMenuItem("Cross Platform Look and Feel",prefs.getBoolean(MetalLookAndFeel));
