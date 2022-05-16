@@ -6,6 +6,7 @@ NEW FEATURES:
 # Realm GM: Option to start new game
 # Realm GM: Option to add, remove, kill and revive characters
 # Realm GM: Option to add scenario description, shown when game is loaded for first time
+# Realm GM: Random visitor/mission chit placement, when game is loaded for first time
 BUGS/ISSUES:
 # Realm GM: Fix in-game errors after placing tiles in GM tool
 # Fix game freeze when using Turn Undead spell

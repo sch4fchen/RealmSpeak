@@ -236,6 +236,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				}
 				else if (ret == JOptionPane.NO_OPTION) {
 					randomGoldSpecialPlacement();
+					startGame();
 				}
 				RealmCalendar calendar = RealmCalendar.getCalendar(client.getGameData());
 				calendar.updateSeason(1, true);
@@ -611,6 +612,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		ArrayList<CharacterWrapper> chars = new ArrayList<>(characterList);
 		if (chars.isEmpty()) {
 			randomGoldSpecialPlacement();
+			startGame();
 		}
 		else {
 			incrementCharacterToPlace();
@@ -625,6 +627,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		RealmObjectMaster rom = RealmObjectMaster.getRealmObjectMaster(data);
 		ArrayList<String> query = new ArrayList<>();
 		query.add("!" + Constants.GOLD_SPECIAL_PLACED);
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		if (hostPrefs.hasPref(Constants.HOUSE2_IGNORE_CAMPAIGNS)) {
 			query.add("!campaign");
 		}
@@ -659,8 +662,6 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				}
 			}
 		}
-
-		startGame();
 	}
 
 	public void incrementCharacterToPlace() {

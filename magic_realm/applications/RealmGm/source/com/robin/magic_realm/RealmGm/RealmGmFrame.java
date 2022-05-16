@@ -290,7 +290,7 @@ public class RealmGmFrame extends JFrame {
 			}
 		});
 		scenarioMenu.add(scenarioDescription);
-		scenarioRandomGoldSpecialPlacement = new JCheckBox("Random Gold Special Placement");
+		scenarioRandomGoldSpecialPlacement = new JCheckBox("Random visitor/mission placement");
 		scenarioRandomGoldSpecialPlacement.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				updateRandomGoldSpecialPlacement();
