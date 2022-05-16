@@ -4,6 +4,10 @@ Duplicate spells (Combat spell, Day spell or Permanent spell):
 	after each other: cannot go into effect if it duplicates a spell that is already bewitching the target
 Power of the Pit optional rule C.4: Power of the Pit attack to hit like an attack spell
 GM Tool: RealmSpeak + GM: Shuffle components Flag in gameData when saving scenario: Shuffle when loading OR NO shuffling when loading
+	rebuild quest deck (remove quests from all characters) (then loader.cleanupData(hostPrefs.getGameKeyVals());)
+	shuffle quest deck
+	reshuffle unseen treasures (markItemStartingLocations(),doItemSpellCasting()), spells, Lost City and Lost Castle chits, sound and warning chits, treasure_locations (then loader.cleanupData(hostPrefs.getGameKeyVals()); + markItemStartingLocations();)
+	redo Setup??
 Combat Summary: add functionality for RandomAssignment, Deploy/Charge (and charge character, Actions? Attack/Maneuver, Assign)
 ---:::FEATURES:::---
 Combat Tips:

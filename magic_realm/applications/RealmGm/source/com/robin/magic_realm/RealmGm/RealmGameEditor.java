@@ -196,7 +196,7 @@ public class RealmGameEditor extends JInternalFrame {
 		Box box = Box.createHorizontalBox();
 		box.add(new JLabel("Show:"));
 		
-		int cols = 8;
+		int cols = 6;
 		int rows = (uniqueTypes.size()/cols)+1;
 		
 		JPanel grid = new JPanel(new GridLayout(rows,cols));

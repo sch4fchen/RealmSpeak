@@ -47,7 +47,6 @@ import com.robin.magic_realm.components.GoldSpecialChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.swing.*;
 import com.robin.magic_realm.components.utility.*;
-import com.robin.magic_realm.components.utility.CustomUiUtility;
 import com.robin.magic_realm.components.wrapper.*;
 
 import edu.stanford.ejalbert.BrowserLauncher;
@@ -1674,21 +1673,16 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 			resetStatus();
 			
 			if (data.getScenarioRegenerateRandomNumbers()) {
-				if (hostPrefs.hasPref(Constants.RANDOM_R250_521)) {
-					RandomNumber.setRandomNumberGenerator(RandomNumberType.R250_521);
-				}
-				else if (hostPrefs.hasPref(Constants.RANDOM_MERSENNE_TWISTER)) {
-					RandomNumber.setRandomNumberGenerator(RandomNumberType.MersenneTwister);
-				}
-				else if (hostPrefs.hasPref(Constants.RANDOM_ON_THE_FLY)) {
-					RandomNumber.setRandomNumberGenerator(RandomNumberType.RandomOnTheFly);
-				}
-				else {
-					RandomNumber.setRandomNumberGenerator(RandomNumberType.System);
-				}
+				RandomNumber.soleInstance = null;
+				RandomNumber.getSoleInstance();
 				data.setScenarioRegenerateRandomNumbers(false);
 			}
 			if (data.getScenarioRandomGoldSpecialPlacement()) {
+				RealmObjectMaster rom = RealmObjectMaster.getRealmObjectMaster(data);
+				ArrayList<GameObject> gs = rom.findObjects("gold_special,"+Constants.GOLD_SPECIAL_PLACED);
+				for (GameObject chit : gs) {
+					chit.removeThisAttribute(Constants.GOLD_SPECIAL_PLACED);
+				}
 				gameHandler.randomGoldSpecialPlacement();
 				data.setScenarioRandomGoldSpecialPlacement(false);
 			}
