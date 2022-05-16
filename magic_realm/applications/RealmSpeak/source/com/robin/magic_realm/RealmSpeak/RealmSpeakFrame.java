@@ -1673,6 +1673,20 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 			makeHost(loader.getMaster(),data,netConnect);
 			resetStatus();
 			
+			if (data.getScenarioRegenerateRandomNumbers()) {
+				if (hostPrefs.hasPref(Constants.RANDOM_R250_521)) {
+					RandomNumber.setRandomNumberGenerator(RandomNumberType.R250_521);
+				}
+				else if (hostPrefs.hasPref(Constants.RANDOM_MERSENNE_TWISTER)) {
+					RandomNumber.setRandomNumberGenerator(RandomNumberType.MersenneTwister);
+				}
+				else if (hostPrefs.hasPref(Constants.RANDOM_ON_THE_FLY)) {
+					RandomNumber.setRandomNumberGenerator(RandomNumberType.RandomOnTheFly);
+				}
+				else {
+					RandomNumber.setRandomNumberGenerator(RandomNumberType.System);
+				}
+			}
 			if (data.getScenarioRandomGoldSpecialPlacement()) {
 				gameHandler.randomGoldSpecialPlacement();
 				data.setScenarioRandomGoldSpecialPlacement(false);

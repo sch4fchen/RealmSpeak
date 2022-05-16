@@ -59,6 +59,7 @@ public class GameData extends ModifyableObject implements Serializable {
 	protected String gameName;
 	protected String gameDesc;
 	protected String scenarioDesc;
+	protected boolean scenarioRegenerateRandomNumbers;
 	protected boolean scenarioRandomGoldSpecialPlacement;
 	protected String filterString;
 	protected ArrayList<GameObject> excludeList;
@@ -167,6 +168,12 @@ public class GameData extends ModifyableObject implements Serializable {
 	}
 	public void removeScenarioDescription() {
 		scenarioDesc = null;
+	}
+	public void setScenarioRegenerateRandomNumbers(boolean val) {
+		scenarioRegenerateRandomNumbers = val;
+	}
+	public boolean getScenarioRegenerateRandomNumbers() {
+		return scenarioRegenerateRandomNumbers;
 	}
 	public void setScenarioRandomGoldSpecialPlacement(boolean val) {
 		scenarioRandomGoldSpecialPlacement = val;
@@ -450,6 +457,7 @@ public class GameData extends ModifyableObject implements Serializable {
 		if (game.getAttribute("scenarioDescription") != null) {
 			scenarioDesc = game.getAttribute("scenarioDescription").getValue();
 		}
+		scenarioRegenerateRandomNumbers = (game.getAttribute("scenarioRegenerateRandomNumbers")!=null&&game.getAttribute("scenarioRegenerateRandomNumbers").getValue().matches("true"))?true:false;
 		scenarioRandomGoldSpecialPlacement = (game.getAttribute("scenarioRandomGoldSpecialPlacement")!=null&&game.getAttribute("scenarioRandomGoldSpecialPlacement").getValue().matches("true"))?true:false;
 		String seedString = game.getAttributeValue("_rseed");
 		if (!ignoreRandomSeed && seedString!=null) {
@@ -545,6 +553,12 @@ public class GameData extends ModifyableObject implements Serializable {
 		}
 		else {
 			game.setAttribute(new Attribute("scenarioRandomGoldSpecialPlacement","false"));
+		}
+		if (scenarioRegenerateRandomNumbers) {
+			game.setAttribute(new Attribute("scenarioRegenerateRandomNumbers","true"));
+		}
+		else {
+			game.setAttribute(new Attribute("scenarioRegenerateRandomNumbers","false"));
 		}
 		if (!ignoreRandomSeed && RandomNumber.hasBeenInitialized()) {
 			game.setAttribute(new Attribute("_rseed",String.valueOf(RandomNumber.getSeed())));

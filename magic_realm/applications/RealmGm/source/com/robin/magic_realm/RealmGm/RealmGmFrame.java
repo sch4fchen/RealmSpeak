@@ -69,6 +69,7 @@ public class RealmGmFrame extends JFrame {
 	private JMenuItem saveAsGame;
 	
 	private JMenuItem scenarioDescription;
+	private JCheckBox scenarioRegenerateRandomNumbers;
 	private JCheckBox scenarioRandomGoldSpecialPlacement;
 	private JMenuItem startGame;
 	private JMenuItem undoStartGame;
@@ -116,6 +117,7 @@ public class RealmGmFrame extends JFrame {
 		saveGame.setEnabled(editor!=null && editor.getGameData().isModified() && fileExists);
 		saveAsGame.setEnabled(editor!=null);
 		scenarioDescription.setEnabled(editor!=null);
+		scenarioRegenerateRandomNumbers.setSelected(editor!=null && editor.getGameData().getScenarioRegenerateRandomNumbers());
 		scenarioRandomGoldSpecialPlacement.setSelected(editor!=null && editor.getGameData().getScenarioRandomGoldSpecialPlacement());
 		GameWrapper game = null;
 		if (editor != null) {
@@ -160,6 +162,9 @@ public class RealmGmFrame extends JFrame {
 		panel.add(box);
 		dialog.add(panel);
 		dialog.setVisible(true);
+	}
+	private void updateRegenerateRandomNumbers() {
+		editor.getGameData().setScenarioRegenerateRandomNumbers(scenarioRegenerateRandomNumbers.isSelected());
 	}
 	private void updateRandomGoldSpecialPlacement() {
 		editor.getGameData().setScenarioRandomGoldSpecialPlacement(scenarioRandomGoldSpecialPlacement.isSelected());
@@ -318,6 +323,13 @@ public class RealmGmFrame extends JFrame {
 			}
 		});
 		scenarioMenu.add(undoStartGame);
+		scenarioRegenerateRandomNumbers = new JCheckBox("Regenerate random numbers");
+		scenarioRegenerateRandomNumbers.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				updateRegenerateRandomNumbers();
+			}
+		});
+		scenarioMenu.add(scenarioRegenerateRandomNumbers);
 		scenarioRandomGoldSpecialPlacement = new JCheckBox("Random visitor/mission placement");
 		scenarioRandomGoldSpecialPlacement.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
