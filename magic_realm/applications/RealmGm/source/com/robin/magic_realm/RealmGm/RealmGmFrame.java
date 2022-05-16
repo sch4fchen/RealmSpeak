@@ -46,6 +46,7 @@ import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.GameFileFilters;
 import com.robin.magic_realm.components.utility.RealmUtility;
+import com.robin.magic_realm.components.wrapper.GameWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class RealmGmFrame extends JFrame {
@@ -69,6 +70,8 @@ public class RealmGmFrame extends JFrame {
 	
 	private JMenuItem scenarioDescription;
 	private JCheckBox scenarioRandomGoldSpecialPlacement;
+	private JMenuItem startGame;
+	private JMenuItem undoStartGame;
 	
 	private JRadioButton classicChitsOption;
 	private JRadioButton colorChitsOption;
@@ -113,8 +116,13 @@ public class RealmGmFrame extends JFrame {
 		saveGame.setEnabled(editor!=null && editor.getGameData().isModified() && fileExists);
 		saveAsGame.setEnabled(editor!=null);
 		scenarioDescription.setEnabled(editor!=null);
-		scenarioRandomGoldSpecialPlacement.setEnabled(editor!=null);
 		scenarioRandomGoldSpecialPlacement.setSelected(editor!=null && editor.getGameData().getScenarioRandomGoldSpecialPlacement());
+		GameWrapper game = null;
+		if (editor != null) {
+			game = GameWrapper.findGame(editor.getGameData());
+		}
+		startGame.setEnabled(editor!=null && !game.getGameStarted());
+		undoStartGame.setEnabled(editor!=null && game.getGameStarted());
 		gameOptions.setEnabled(editor!=null);
 	}
 	private void editDescription() {
@@ -290,6 +298,26 @@ public class RealmGmFrame extends JFrame {
 			}
 		});
 		scenarioMenu.add(scenarioDescription);
+		startGame = new JMenuItem("Start game");
+		startGame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				GameWrapper game = GameWrapper.findGame(editor.getGameData());
+				game.setPlaceGoldSpecials(false);
+				game.setGameStarted(true);
+				editor.getMap().setShowEmbellishments(true);
+			}
+		});
+		scenarioMenu.add(startGame);
+		undoStartGame = new JMenuItem("Undo start game");
+		undoStartGame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				GameWrapper game = GameWrapper.findGame(editor.getGameData());
+				game.setPlaceGoldSpecials(true);
+				game.setGameStarted(false);
+				editor.getMap().setShowEmbellishments(false);
+			}
+		});
+		scenarioMenu.add(undoStartGame);
 		scenarioRandomGoldSpecialPlacement = new JCheckBox("Random visitor/mission placement");
 		scenarioRandomGoldSpecialPlacement.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {

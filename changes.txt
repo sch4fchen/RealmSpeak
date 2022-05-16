@@ -3,7 +3,7 @@ QUEST UPDATE:
 NEW FEATURES:
 # Realm GM: Option to cancel tile placement with middle mouse button
 # Realm GM: Option to remove existing or add new tiles to the game data
-# Realm GM: Option to start new game
+# Realm GM: Option to create new game, start (and undo start) the game
 # Realm GM: Option to add, remove, kill and revive characters
 # Realm GM: Option to add scenario description, shown when game is loaded for first time
 # Realm GM: Random visitor/mission chit placement, when game is loaded for first time

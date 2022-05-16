@@ -244,6 +244,9 @@ public class RealmGameEditor extends JInternalFrame {
 		map.updateTilesStyle();
 		map.repaint();
 	}
+	public CenteredMapView getMap() {
+		return map;
+	}
 	
 	private void initComponents() {
 		updateTitle();
