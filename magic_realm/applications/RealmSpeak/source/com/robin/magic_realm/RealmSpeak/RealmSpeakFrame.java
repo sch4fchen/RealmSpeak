@@ -1686,6 +1686,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 				else {
 					RandomNumber.setRandomNumberGenerator(RandomNumberType.System);
 				}
+				data.setScenarioRegenerateRandomNumbers(false);
 			}
 			if (data.getScenarioRandomGoldSpecialPlacement()) {
 				gameHandler.randomGoldSpecialPlacement();
