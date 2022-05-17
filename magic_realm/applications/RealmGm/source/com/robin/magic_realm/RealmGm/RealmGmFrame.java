@@ -71,6 +71,9 @@ public class RealmGmFrame extends JFrame {
 	private JMenuItem scenarioDescription;
 	private JCheckBox scenarioRegenerateRandomNumbers;
 	private JCheckBox scenarioRandomGoldSpecialPlacement;
+	private JCheckBox scenarioAddNewQuests;
+	private JCheckBox scenarioRebuildQuestDeck;
+	private JCheckBox scenarioShuffleQuestDeck;
 	private JMenuItem startGame;
 	private JMenuItem undoStartGame;
 	
@@ -119,6 +122,9 @@ public class RealmGmFrame extends JFrame {
 		scenarioDescription.setEnabled(editor!=null);
 		scenarioRegenerateRandomNumbers.setSelected(editor!=null && editor.getGameData().getScenarioRegenerateRandomNumbers());
 		scenarioRandomGoldSpecialPlacement.setSelected(editor!=null && editor.getGameData().getScenarioRandomGoldSpecialPlacement());
+		scenarioAddNewQuests.setSelected(editor!=null && editor.getGameData().getScenarioAddNewQuests());
+		scenarioRebuildQuestDeck.setSelected(editor!=null && editor.getGameData().getScenarioRebuildQuestDeck());
+		scenarioShuffleQuestDeck.setSelected(editor!=null && editor.getGameData().getScenarioShuffleQuestDeck());
 		GameWrapper game = null;
 		if (editor != null) {
 			game = GameWrapper.findGame(editor.getGameData());
@@ -168,6 +174,15 @@ public class RealmGmFrame extends JFrame {
 	}
 	private void updateRandomGoldSpecialPlacement() {
 		editor.getGameData().setScenarioRandomGoldSpecialPlacement(scenarioRandomGoldSpecialPlacement.isSelected());
+	}
+	private void updateAddingNewQuests() {
+		editor.getGameData().setScenarioAddNewQuests(scenarioAddNewQuests.isSelected());
+	}
+	private void updateRebuildQuestDeck() {
+		editor.getGameData().setScenarioRebuildQuestDeck(scenarioRebuildQuestDeck.isSelected());
+	}
+	private void updateShuffleQuestDeck() {
+		editor.getGameData().setScenarioShuffleQuestDeck(scenarioShuffleQuestDeck.isSelected());
 	}
 	private void updateLookAndFeel() {
 		if (prefs.getBoolean(MetalLookAndFeel)) {
@@ -337,6 +352,27 @@ public class RealmGmFrame extends JFrame {
 			}
 		});
 		scenarioMenu.add(scenarioRandomGoldSpecialPlacement);
+		scenarioAddNewQuests = new JCheckBox("Add new quests from quest folder");
+		scenarioAddNewQuests.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				updateAddingNewQuests();
+			}
+		});
+		scenarioMenu.add(scenarioAddNewQuests);
+		scenarioRebuildQuestDeck = new JCheckBox("Rebuild quest deck");
+		scenarioRebuildQuestDeck.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				updateRebuildQuestDeck();
+			}
+		});
+		scenarioMenu.add(scenarioRebuildQuestDeck);
+		scenarioShuffleQuestDeck = new JCheckBox("Reshuffle quest deck");
+		scenarioShuffleQuestDeck.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				updateShuffleQuestDeck();
+			}
+		});
+		scenarioMenu.add(scenarioShuffleQuestDeck);
 		menu.add(scenarioMenu);
 		JMenu optionMenu = new JMenu("Options");
 		final JCheckBoxMenuItem toggleLookAndFeel = new JCheckBoxMenuItem("Cross Platform Look and Feel",prefs.getBoolean(MetalLookAndFeel));

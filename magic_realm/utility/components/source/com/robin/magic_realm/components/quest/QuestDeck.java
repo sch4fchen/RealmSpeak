@@ -119,6 +119,28 @@ public class QuestDeck extends GameObjectWrapper {
 		shuffle();
 	}
 	
+	public void reshuffleIncudingDiscard() {
+		for (String quest : getList(QUEST_DISCARDS)) {
+			addListItem(QUEST_CARD_LIST,quest);
+		}
+		clear(QUEST_DISCARDS);
+		shuffle();
+	}
+	
+	public ArrayList<String> getAllQuestNames() {
+		ArrayList<String> quests = getList(QUEST_CARD_LIST);
+		quests.addAll(getList(QUEST_DISCARDS));
+		ArrayList<String> names = new ArrayList<>();
+		GameData gameData = getGameData();
+		if (quests!=null && quests.size()>0) {
+			for (String questId : quests) {
+				GameObject go = gameData.getGameObject(Long.valueOf(questId));
+				names.add(go.getName());
+			}
+		}
+		return names;
+	}
+	
 	/**
 	 * This will select a random quest card, remove it from the "deck", and add it to the current GameData collection.
 	 */

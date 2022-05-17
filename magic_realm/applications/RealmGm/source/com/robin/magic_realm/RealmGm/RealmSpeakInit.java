@@ -347,9 +347,16 @@ public class RealmSpeakInit {
 		GameWrapper.findGame(data).setCurrentMapRating(rating);
 	}
 	private void prepQuestDeck() {
+		prepQuestDeck(data);
+	}
+	public static void prepQuestDeck(GameData data) {
+		prepQuestDeck(data, false);
+	}
+	public static void prepQuestDeck(GameData data, boolean checkForDuplicateQuests) {
 		QuestDeck deck = QuestDeck.findDeck(data);
 		for(Quest template:QuestLoader.loadAllQuestsFromQuestFolder()) {
 			if (template.getBoolean(QuestConstants.WORKS_WITH_QTR)) {
+				if (checkForDuplicateQuests && deck.getAllQuestNames().contains(template.getName())) continue;
 				int count = template.getInt(QuestConstants.CARD_COUNT);
 				if (count>0) {
 					// Add the template to the data object and init deck
@@ -366,9 +373,16 @@ public class RealmSpeakInit {
 		deck.shuffle();
 	}
 	private void prepBookOfQuests() {
+		prepQuestDeck(data);
+	}
+	public static void prepBookOfQuests(GameData data) {
+		prepBookOfQuests(data,false);
+	}
+	public static void prepBookOfQuests(GameData data, boolean checkForDuplicateQuests) {
 		QuestBookEvents book = QuestBookEvents.findBook(data);
 		for(Quest template:QuestLoader.loadAllQuestsFromQuestFolder()) {
 			if (template.getBoolean(QuestConstants.WORKS_WITH_BOQ)) {
+				if (checkForDuplicateQuests && book.getAllEventNames().contains(template.getName())) continue;
 				Quest quest = template.copyQuestToGameData(data);
 				if (quest.isEvent()) {
 					book.addEvent(quest);
@@ -377,13 +391,21 @@ public class RealmSpeakInit {
 		}
 	}
 	private void prepGuildQuests() {
+		prepGuildQuests(data);
+	}
+	public static void prepGuildQuests(GameData data) {
+		prepGuildQuests(data, false);
+	}
+	public static void prepGuildQuests(GameData data, boolean checkForDuplicateQuests) {
 		QuestDeck deck = QuestDeck.findDeck(data);
 		for(Quest template:QuestLoader.loadAllQuestsFromQuestFolder()) {
+			if (checkForDuplicateQuests && deck.getAllQuestNames().contains(template.getName())) continue;
 			if (template.getGuild()!=null) {
 				Quest quest = template.copyQuestToGameData(data);
 				deck.addCards(quest,1);
 			}
 		}
+		deck.shuffle();
 	}
 	private void doItemSpellCasting() {
 		GamePool pool = new GamePool(data.getGameObjects());

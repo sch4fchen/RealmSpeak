@@ -77,6 +77,14 @@ public class QuestBookEvents extends GameObjectWrapper {
 		return events;
 	}
 	
+	public ArrayList<String> getAllEventNames() {
+		ArrayList<String> events = new ArrayList<>();
+		for(GameObject go:getEventsAsObjects()) {
+			events.add(go.getName());
+		}
+		return events;
+	}
+	
 	public static Long BOOK_ID = null;
 	public static QuestBookEvents findBook(GameData data) {
 		if (BOOK_ID==null) {

@@ -45,6 +45,8 @@ import com.robin.magic_realm.RealmGm.RealmSpeakInit;
 import com.robin.magic_realm.RealmQuestBuilder.QuestBuilderFrame;
 import com.robin.magic_realm.components.GoldSpecialChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.quest.Quest;
+import com.robin.magic_realm.components.quest.QuestDeck;
 import com.robin.magic_realm.components.swing.*;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.*;
@@ -1685,6 +1687,40 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 				}
 				gameHandler.randomGoldSpecialPlacement();
 				data.setScenarioRandomGoldSpecialPlacement(false);
+			}
+			
+			if (data.getScenarioAddNewQuests()) {
+				if (hostPrefs.hasPref(Constants.QST_QUEST_CARDS)) {
+					RealmSpeakInit.prepBookOfQuests(data,true);
+				}
+				else if (hostPrefs.hasPref(Constants.QST_BOOK_OF_QUESTS)) {
+					RealmSpeakInit.prepBookOfQuests(data,true);
+				}
+				else if (hostPrefs.hasPref(Constants.QST_GUILD_QUESTS)) {
+					RealmSpeakInit.prepBookOfQuests(data,true);
+				}
+			}
+			if (data.getScenarioRebuildQuestDeck()) {
+				ArrayList<GameObject> quests = pool.find("quest");
+				for (GameObject go : quests) {
+					Quest quest = new Quest(go);
+					quest.unassign();
+					data.removeObject(quest.getGameObject());
+				}
+				
+				if (hostPrefs.hasPref(Constants.QST_QUEST_CARDS)) {
+					RealmSpeakInit.prepQuestDeck(data);
+				}
+				else if (hostPrefs.hasPref(Constants.QST_BOOK_OF_QUESTS)) {
+					RealmSpeakInit.prepBookOfQuests(data);
+				}
+				else if (hostPrefs.hasPref(Constants.QST_GUILD_QUESTS)) {
+					RealmSpeakInit.prepGuildQuests(data);
+				}
+			}
+			if (data.getScenarioShuffleQuestDeck()) {
+				QuestDeck deck = QuestDeck.findDeck(data);
+				if (deck!=null)	deck.reshuffleIncudingDiscard();
 			}
 			if (data.getScenarioDescription()!=null && data.getScenarioDescription()!="") {
 				JOptionPane.showMessageDialog(this, data.getScenarioDescription(), "Scenario Description", JOptionPane.PLAIN_MESSAGE, ImageCache.getIcon("badges/lore"));
