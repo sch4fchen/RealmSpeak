@@ -11,6 +11,7 @@ BUGS/ISSUES:
 # Realm GM: Fix in-game errors after placing tiles in GM tool
 # Fix game freeze when using Turn Undead spell
 # Improve edge selection when entering the game
+# Fix quest rewards hireling and companion placing hireling at a tile's edge
 
 Version 1.1.5.6 - Changes since 1.1.5.5
 QUEST UPDATE:

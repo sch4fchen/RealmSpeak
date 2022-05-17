@@ -27,6 +27,8 @@ import javax.swing.JFrame;
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.general.util.RandomNumber;
+import com.robin.magic_realm.components.ClearingDetail;
+import com.robin.magic_realm.components.PathDetail;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.GainType;
@@ -61,7 +63,13 @@ public class QuestRewardCompanion extends QuestReward {
 			}
 			character.addHireling(companion,Constants.TEN_YEARS);
 			character.getGameObject().add(companion);
-			character.getCurrentLocation().clearing.add(companion,null);
+			if(!character.getCurrentLocation().clearing.isEdge()) {
+				character.getCurrentLocation().clearing.add(companion,null);
+			} else {
+				ArrayList<PathDetail> path = character.getCurrentLocation().clearing.getConnectedPaths();
+				ClearingDetail connectedClearing = path.get(0).findConnection(character.getCurrentLocation().clearing);
+				connectedClearing.add(companion,null);
+			}
 			if (locationOnly()) {
 				QuestLocation loc = getQuestLocation();
 				if (loc == null) return;

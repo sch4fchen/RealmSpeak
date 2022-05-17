@@ -27,6 +27,8 @@ import javax.swing.JFrame;
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.general.util.RandomNumber;
+import com.robin.magic_realm.components.ClearingDetail;
+import com.robin.magic_realm.components.PathDetail;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.ChitAcquisitionType;
@@ -115,10 +117,22 @@ public class QuestRewardHireling extends QuestReward {
 					character.getGameObject().add(selected);
 				}
 				character.addHireling(selected, termofHire == TermOfHireType.Normal ? Constants.TERM_OF_HIRE : Constants.TEN_YEARS); // permanent enough? :-)
-				character.getCurrentLocation().clearing.add(selected,null);
+				if(!character.getCurrentLocation().clearing.isEdge()) {
+					character.getCurrentLocation().clearing.add(selected,null);
+				} else {
+					ArrayList<PathDetail> path = character.getCurrentLocation().clearing.getConnectedPaths();
+					ClearingDetail connectedClearing = path.get(0).findConnection(character.getCurrentLocation().clearing);
+					connectedClearing.add(selected,null);
+				}
 			}
 			else if (termofHire == TermOfHireType.PlaceInClearing) {
+				if(!character.getCurrentLocation().clearing.isEdge()) {
 					character.getCurrentLocation().clearing.add(selected,character);
+				} else {
+					ArrayList<PathDetail> path = character.getCurrentLocation().clearing.getConnectedPaths();
+					ClearingDetail connectedClearing = path.get(0).findConnection(character.getCurrentLocation().clearing);
+					connectedClearing.add(selected,character);
+				}
 			}
 			
 			if (renameHirelingTo() != null && !renameHirelingTo().isEmpty()) {

@@ -24,6 +24,8 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.general.util.RandomNumber;
+import com.robin.magic_realm.components.ClearingDetail;
+import com.robin.magic_realm.components.PathDetail;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.QuestLocation;
@@ -120,7 +122,13 @@ public class QuestRewardMoveDenizen extends QuestReward {
 	
 	private static void moveDenizens(TileLocation locationToMove, ArrayList<GameObject> denizensToMove) {
 		for (GameObject denizen : denizensToMove) {
-			locationToMove.clearing.add(denizen, null);
+			if(!locationToMove.clearing.isEdge()) {
+				locationToMove.clearing.add(denizen,null);
+			} else {
+				ArrayList<PathDetail> path = locationToMove.clearing.getConnectedPaths();
+				ClearingDetail connectedClearing = path.get(0).findConnection(locationToMove.clearing);
+				connectedClearing.add(denizen,null);
+			}
 		}
 	}
 	private static void moveDenizensToClearing(TileLocation locationToMove, int clearingNumber, ArrayList<GameObject> denizensToMove) {

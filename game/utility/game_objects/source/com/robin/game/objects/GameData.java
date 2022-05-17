@@ -61,6 +61,9 @@ public class GameData extends ModifyableObject implements Serializable {
 	protected String scenarioDesc;
 	protected boolean scenarioRegenerateRandomNumbers;
 	protected boolean scenarioRandomGoldSpecialPlacement;
+	protected boolean scenarioAddNewQuests;
+	protected boolean scenarioRebuildQuestDeck;
+	protected boolean scenarioShuffleQuestDeck;
 	protected String filterString;
 	protected ArrayList<GameObject> excludeList;
 	protected ArrayList<GameObject> gameObjects;
@@ -180,6 +183,24 @@ public class GameData extends ModifyableObject implements Serializable {
 	}
 	public boolean getScenarioRandomGoldSpecialPlacement() {
 		return scenarioRandomGoldSpecialPlacement;
+	}
+	public void setScenarioAddNewQuests(boolean val) {
+		scenarioAddNewQuests = val;
+	}
+	public boolean getScenarioAddNewQuests() {
+		return scenarioAddNewQuests;
+	}
+	public void setScenarioRebuildQuestDeck(boolean val) {
+		scenarioRebuildQuestDeck = val;
+	}
+	public boolean getScenarioRebuildQuestDeck() {
+		return scenarioRebuildQuestDeck;
+	}
+	public void setScenarioShuffleQuestDeck(boolean val) {
+		scenarioShuffleQuestDeck = val;
+	}
+	public boolean getScenarioShuffleQuestDeck() {
+		return scenarioShuffleQuestDeck;
 	}
 	public GameObject getGameObject(long id) {
 		return getGameObject(new Long(id));
@@ -459,6 +480,9 @@ public class GameData extends ModifyableObject implements Serializable {
 		}
 		scenarioRegenerateRandomNumbers = (game.getAttribute("scenarioRegenerateRandomNumbers")!=null&&game.getAttribute("scenarioRegenerateRandomNumbers").getValue().matches("true"))?true:false;
 		scenarioRandomGoldSpecialPlacement = (game.getAttribute("scenarioRandomGoldSpecialPlacement")!=null&&game.getAttribute("scenarioRandomGoldSpecialPlacement").getValue().matches("true"))?true:false;
+		scenarioAddNewQuests = (game.getAttribute("scenarioAddNewQuests")!=null&&game.getAttribute("scenarioAddNewQuests").getValue().matches("true"))?true:false;
+		scenarioRebuildQuestDeck = (game.getAttribute("scenarioRebuildQuestDeck")!=null&&game.getAttribute("scenarioRebuildQuestDeck").getValue().matches("true"))?true:false;
+		scenarioShuffleQuestDeck = (game.getAttribute("scenarioShuffleQuestDeck")!=null&&game.getAttribute("scenarioShuffleQuestDeck").getValue().matches("true"))?true:false;
 		String seedString = game.getAttributeValue("_rseed");
 		if (!ignoreRandomSeed && seedString!=null) {
 			String rt = game.getAttributeValue("_rgtype");
@@ -550,15 +574,28 @@ public class GameData extends ModifyableObject implements Serializable {
 		game.setAttribute(new Attribute("scenarioDescription",scenarioDesc==null?"":scenarioDesc));
 		if (scenarioRandomGoldSpecialPlacement) {
 			game.setAttribute(new Attribute("scenarioRandomGoldSpecialPlacement","true"));
-		}
-		else {
+		} else {
 			game.setAttribute(new Attribute("scenarioRandomGoldSpecialPlacement","false"));
 		}
 		if (scenarioRegenerateRandomNumbers) {
 			game.setAttribute(new Attribute("scenarioRegenerateRandomNumbers","true"));
-		}
-		else {
+		} else {
 			game.setAttribute(new Attribute("scenarioRegenerateRandomNumbers","false"));
+		}
+		if (scenarioAddNewQuests) {
+			game.setAttribute(new Attribute("scenarioAddNewQuests","true"));
+		} else {
+			game.setAttribute(new Attribute("scenarioAddNewQuests","false"));
+		}
+		if (scenarioRebuildQuestDeck) {
+			game.setAttribute(new Attribute("scenarioRebuildQuestDeck","true"));
+		} else {
+			game.setAttribute(new Attribute("scenarioRebuildQuestDeck","false"));
+		}
+		if (scenarioShuffleQuestDeck) {
+			game.setAttribute(new Attribute("scenarioShuffleQuestDeck","true"));
+		} else {
+			game.setAttribute(new Attribute("scenarioShuffleQuestDeck","false"));
 		}
 		if (!ignoreRandomSeed && RandomNumber.hasBeenInitialized()) {
 			game.setAttribute(new Attribute("_rseed",String.valueOf(RandomNumber.getSeed())));
