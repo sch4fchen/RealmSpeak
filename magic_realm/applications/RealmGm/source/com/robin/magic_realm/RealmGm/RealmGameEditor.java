@@ -396,8 +396,10 @@ public class RealmGameEditor extends JInternalFrame {
 				int selectedRow = characterTabs.getSelectedIndex();
 				if (selectedRow < 0) return;
 				CharacterWrapper character = characters.get(selectedRow);
-				character.clearPlayerAttributes();
 				character.getGameObject().removeThisAttribute(Constants.DEAD);
+				character.moveToLocation(null,null);
+				character.clearMoveHistory();
+				character.clearPlayerAttributes();
 				characters.remove(character);
 				updateCharacterEditorTabs();
 				readData();

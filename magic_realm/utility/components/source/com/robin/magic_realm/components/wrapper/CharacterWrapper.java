@@ -4511,12 +4511,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 			// Fetch from the main object pool
 			item = fetchItem(frame,pool,weapon,hostKeyVals,chooseSource);
 		}
+		if (item==null) return; // Might be null if someone strips a character, suicides, and respawns them
 		getGameObject().add(item);
-		if (item!=null) { // Might be null if someone strips a character, suicides, and respawns them
-			WeaponChitComponent wcc = (WeaponChitComponent)RealmComponent.getRealmComponent(item);
-			wcc.setAlerted(false);
-			wcc.setActivated(true);
-		}
+		WeaponChitComponent wcc = (WeaponChitComponent)RealmComponent.getRealmComponent(item);
+		wcc.setAlerted(false);
+		wcc.setActivated(true);
 	}
 	private GameObject fetchItemFromTemplate(String weapon) {
 		// Fetch from a template
@@ -5959,6 +5958,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public void bumpDayMoveHistory() {
 		addListItem(MOVE_HISTORY,MOVE_HISTORY_DAY);
 		addListItem(MOVE_HISTORY_DAY_KEY,getCurrentDayKey());
+	}
+	public void clearMoveHistory() {
+		removeAttribute(MOVE_HISTORY);
+		removeAttribute(MOVE_HISTORY_DAY_KEY);
 	}
 	public boolean hasMoveHistory() {
 		Collection<String> c = getList(MOVE_HISTORY);
