@@ -320,7 +320,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	
 	private void restoreAbsorbedMonster(GameObject go, TileLocation loc, boolean casterIsDead){
 		RealmComponent rc = RealmComponent.getRealmComponent(go);
-		if(rc.isMonster() && !go.hasThisAttribute("animal")){
+		if(rc.isMonster() && !go.hasThisAttribute("animal") && !go.hasThisAttribute("statue")){
 			if(affectsCaster() && casterIsDead){
 				RealmUtility.makeDead(rc);
 			} else {
@@ -910,12 +910,10 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		}
 		return getFirstTarget(); // Not real fond of this, but it will work in all cases where it matters
 	}
-	public GameObject getTransformAnimal() {
-		
+	public GameObject getTransformAnimalOrStatue() {
 		Optional<GameObject> animal = getGameObject().getHoldAsGameObjects().stream()
-										.filter(t -> t.hasThisAttribute("animal"))
-										.findFirst();
-												
+										.filter(t -> t.hasThisAttribute("animal") || t.hasThisAttribute("statue"))
+										.findFirst();						
 		return animal.isPresent() ? animal.get() : null;
 	}
 	

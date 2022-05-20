@@ -21,7 +21,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.swing.*;
 
@@ -164,12 +163,11 @@ public class SpellInfoDialog extends AggressiveDialog {
 			
 			castingInfo.add(topRow);
 			
-			ArrayList targets = spell.getTargets();
+			ArrayList<RealmComponent> targets = spell.getTargets();
 			JPanel bottomRow = getDisplayBox("Target"+(targets.size()==1?"":"s"),null,null);
 			RealmObjectPanel targetPanel = new RealmObjectPanel(false,false);
 			if (!targets.isEmpty()) {
-				for (Iterator i=spell.getTargets().iterator();i.hasNext();) {
-					RealmComponent rc = (RealmComponent)i.next();
+				for (RealmComponent rc : spell.getTargets()) {
 					ImageIcon icon;
 					if (rc.isTile()) {
 						TileComponent tile = (TileComponent)rc;
@@ -184,7 +182,7 @@ public class SpellInfoDialog extends AggressiveDialog {
 					label.setVerticalTextPosition(JLabel.BOTTOM);
 					targetPanel.add(label);
 				}
-				GameObject animal = spell.getTransformAnimal();
+				GameObject animal = spell.getTransformAnimalOrStatue();
 				if (animal!=null) {
 					RealmComponent rc = RealmComponent.getRealmComponent(animal);
 					JLabel label = new JLabel(rc.getGameObject().getName(),rc.getIcon(),JLabel.CENTER);

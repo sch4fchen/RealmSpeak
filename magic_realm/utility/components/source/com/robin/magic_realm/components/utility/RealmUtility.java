@@ -723,7 +723,7 @@ public class RealmUtility {
 					// TODO Would be nice to indicate there are other targets...
 				}
 			}
-			GameObject animal = spell.getTransformAnimal();
+			GameObject animal = spell.getTransformAnimalOrStatue();
 			if (animal!=null) {
 				chooser.addRealmComponentToOption(key,RealmComponent.getRealmComponent(animal));
 			}
