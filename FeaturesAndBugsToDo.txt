@@ -1,4 +1,3 @@
-Wish spell: Vision: possible to view expansion sites like Tomb, Web, Pond
 Duplicate spells (Combat spell, Day spell or Permanent spell):
 	same time: duplicate spells with mutually exclusive effects go into effect against the same target simultaneously, they cancel each other out
 		Stone Gaze, Absorb Essence, Melt into Mist and Transform: turn the target into the same creature, then the spells go into effect
