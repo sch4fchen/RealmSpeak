@@ -111,7 +111,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	}
 
 	public MonsterPartChitComponent getWeapon() {
-		if (!getGameObject().hasThisAttribute("animal")) { // as long as the monster isn't transformed!
+		if (!getGameObject().hasThisAttribute("animal") && !getGameObject().hasThisAttribute("statue")) { // as long as the monster isn't transformed!
 			ArrayList<GameObject> list = getGameObject().getHold();
 			if (list != null && list.size() > 0) {
 				for (GameObject weapon : list) {

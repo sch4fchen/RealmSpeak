@@ -142,7 +142,7 @@ public class RealmGameEditor extends JInternalFrame {
 			if (go.hasThisAttribute(RealmComponent.CHARACTER) && !go.hasAttribute(RealmComponent.REALMCOMPONENT_BLOCK,RealmComponent.OWNER_ID)) {
 				continue;
 			}
-			if (go.hasThisAttribute("animal")) {
+			if (go.hasThisAttribute("animal") || go.hasThisAttribute("statue")) {
 				continue;
 			}
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
