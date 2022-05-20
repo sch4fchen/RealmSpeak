@@ -32,13 +32,19 @@ public class TransmorphEffect implements ISpellEffect {
 	@Override
 	public void apply(SpellEffectContext context) {
 		RealmComponent target = context.Target;
+		CharacterWrapper targetCharacterWrapper = new CharacterWrapper(target.getGameObject());
 		SpellWrapper spell = context.Spell;
 		CombatWrapper combat = context.getCombatTarget();
 		
-		if ("target".equals(transmorph)) {
+		if ("target".equals(transmorph)) { //absorb essence
 			doTransmorphTarget(target, spell, combat);
 		}
 		else if ("statue".equals(transmorph)){
+			if (targetCharacterWrapper.isStatue()) {
+				spell.expireSpell();
+				RealmLogging.logMessage(RealmLogging.BATTLE, "Target is already a statue - spell effect cancelled.");
+				return;
+			}
 			GameObject transformStatue = prepareTransformation("statue", target, spell, context.Parent);
 			doActualTransformation(target, spell, transformStatue);
 		}
@@ -47,6 +53,12 @@ public class TransmorphEffect implements ISpellEffect {
 			
 			// In this case, the target is the one that gets transformed
 			if (transformAnimal==null) {
+				if (targetCharacterWrapper.isTransformed()) {
+					spell.expireSpell();
+					RealmLogging.logMessage(RealmLogging.BATTLE, "Target is already a transformed - spell effect cancelled.");
+					return;
+				}
+				
 				String transformBlock;
 				DieRoller roller = null;
 				if ("roll".equals(transmorph)) {
@@ -62,6 +74,11 @@ public class TransmorphEffect implements ISpellEffect {
 					RealmLogging.logMessage(spell.getCaster().getGameObject().getName(),"Transform roll: "+roller.getDescription());
 				}
 				else {
+					if (targetCharacterWrapper.isMistLike()) {
+						spell.expireSpell();
+						RealmLogging.logMessage(RealmLogging.BATTLE, "Target is already a mist - spell effect cancelled.");
+						return;
+					}
 					transformBlock = "mist";
 				}
 				

@@ -6040,6 +6040,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean isTransmorphed() {
 		return getBoolean(TRANSMORPH_ID);
 	}
+	public boolean isTransformed() {
+		return getBoolean(TRANSMORPH_ID) && getTransmorph() != null && getTransmorph().hasThisAttribute("animal");
+	}
+	public boolean isStatue() {
+		return getBoolean(TRANSMORPH_ID) && getTransmorph() != null && getTransmorph().hasThisAttribute("statue");
+	}
 	public boolean canChangeTactics() {
 		GameObject transmorph = getTransmorph();
 		if (transmorph!=null) {
