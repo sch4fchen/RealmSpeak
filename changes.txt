@@ -1,5 +1,6 @@
 Version 1.1.5.7 - Changes since 1.1.5.6
 QUEST UPDATE:
+# Fix infinite loop in quest A85 Frontier Healer
 NEW FEATURES:
 # Realm GM: Option to cancel tile placement with middle mouse button
 # Realm GM: Option to remove existing or add new tiles to the game data
