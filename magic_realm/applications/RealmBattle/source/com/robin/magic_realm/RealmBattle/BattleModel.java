@@ -503,7 +503,7 @@ public class BattleModel {
 						ArrayList<RealmComponent> targets = spell.getTargets();
 						targets.retainAll(spellCasters);
 						targets.removeAll(unaffectedCasters);
-					
+						
 						if (targets.size()>0) {
 							for (RealmComponent target : targets) {
 								CombatWrapper combat = new CombatWrapper(target.getGameObject());

@@ -49,7 +49,7 @@ public class TransmorphEffect implements ISpellEffect {
 			doActualTransformation(target, spell, transformStatue);
 		}
 		else if ("roll".equals(transmorph) || "mist".equals(transmorph)) {
-			GameObject transformAnimal = spell.getTransformAnimal();
+			GameObject transformAnimal = spell.getTransformAnimalOrStatue();
 			
 			// In this case, the target is the one that gets transformed
 			if (transformAnimal==null) {
