@@ -45,20 +45,35 @@ public class TransmorphEffect implements ISpellEffect {
 				RealmLogging.logMessage(RealmLogging.BATTLE, "Target is already a statue - spell effect cancelled.");
 				return;
 			}
+			if (targetCharacterWrapper.isTransformed()) {
+				spell.expireSpell();
+				RealmLogging.logMessage(RealmLogging.BATTLE, "Target is already a transformed - spell effect cancelled.");
+				return;
+			}
+			if (targetCharacterWrapper.isMistLike()) {
+				spell.expireSpell();
+				RealmLogging.logMessage(RealmLogging.BATTLE, "Target is already a mist - spell effect cancelled.");
+				return;
+			}
 			GameObject transformStatue = prepareTransformation("statue", target, spell, context.Parent);
 			doActualTransformation(target, spell, transformStatue);
 		}
 		else if ("roll".equals(transmorph) || "mist".equals(transmorph)) {
+			if (targetCharacterWrapper.isTransformed()) {
+				spell.expireSpell();
+				RealmLogging.logMessage(RealmLogging.BATTLE, "Target is already a transformed - spell effect cancelled.");
+				return;
+			}
+			if (targetCharacterWrapper.isMistLike()) {
+				spell.expireSpell();
+				RealmLogging.logMessage(RealmLogging.BATTLE, "Target is already a mist - spell effect cancelled.");
+				return;
+			}
+			
 			GameObject transformAnimal = spell.getTransformAnimalOrStatue();
 			
 			// In this case, the target is the one that gets transformed
 			if (transformAnimal==null) {
-				if (targetCharacterWrapper.isTransformed()) {
-					spell.expireSpell();
-					RealmLogging.logMessage(RealmLogging.BATTLE, "Target is already a transformed - spell effect cancelled.");
-					return;
-				}
-				
 				String transformBlock;
 				DieRoller roller = null;
 				if ("roll".equals(transmorph)) {
