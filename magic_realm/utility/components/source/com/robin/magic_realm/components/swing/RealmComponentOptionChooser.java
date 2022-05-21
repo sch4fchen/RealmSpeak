@@ -39,7 +39,7 @@ import com.robin.magic_realm.components.utility.RealmUtility;
  */
 public class RealmComponentOptionChooser extends AggressiveDialog {
 	private static final int MAX_GROUP_SIZE = 12;
-	private static final Font font = new Font("Ariel",Font.PLAIN,24);
+	private static final Font font = new Font("Ariel",Font.PLAIN,20);
 	
 	public static enum DisplayOption {
 		Normal,
