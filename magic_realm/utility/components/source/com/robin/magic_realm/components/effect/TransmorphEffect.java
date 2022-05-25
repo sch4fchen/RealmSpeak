@@ -47,7 +47,7 @@ public class TransmorphEffect implements ISpellEffect {
 			}
 			if (targetCharacterWrapper.isTransformed()) {
 				spell.expireSpell();
-				RealmLogging.logMessage(RealmLogging.BATTLE, "Target is already a transformed - spell effect cancelled.");
+				RealmLogging.logMessage(RealmLogging.BATTLE, "Target is already transformed - spell effect cancelled.");
 				return;
 			}
 			if (targetCharacterWrapper.isMistLike()) {
@@ -59,9 +59,9 @@ public class TransmorphEffect implements ISpellEffect {
 			doActualTransformation(target, spell, transformStatue);
 		}
 		else if ("roll".equals(transmorph) || "mist".equals(transmorph)) {
-			if (targetCharacterWrapper.isTransformed()) {
+			if ("roll".equals(transmorph) && targetCharacterWrapper.isTransformed()) {
 				spell.expireSpell();
-				RealmLogging.logMessage(RealmLogging.BATTLE, "Target is already a transformed - spell effect cancelled.");
+				RealmLogging.logMessage(RealmLogging.BATTLE, "Target is already transformed - spell effect cancelled.");
 				return;
 			}
 			if (targetCharacterWrapper.isMistLike()) {
