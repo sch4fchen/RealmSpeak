@@ -37,6 +37,11 @@ public class TransmorphEffect implements ISpellEffect {
 		CombatWrapper combat = context.getCombatTarget();
 		
 		if ("target".equals(transmorph)) { //absorb essence
+			if (targetCharacterWrapper.isMistLike()) {
+				spell.expireSpell();
+				RealmLogging.logMessage(RealmLogging.BATTLE, "Target is a mist - spell effect cancelled.");
+				return;
+			}
 			doTransmorphTarget(target, spell, combat);
 		}
 		else if ("statue".equals(transmorph)){
@@ -62,6 +67,11 @@ public class TransmorphEffect implements ISpellEffect {
 			if ("roll".equals(transmorph) && targetCharacterWrapper.isTransformed()) {
 				spell.expireSpell();
 				RealmLogging.logMessage(RealmLogging.BATTLE, "Target is already transformed - spell effect cancelled.");
+				return;
+			}
+			if ("roll".equals(transmorph) && targetCharacterWrapper.isStatue()) {
+				spell.expireSpell();
+				RealmLogging.logMessage(RealmLogging.BATTLE, "Target is already a statue - spell effect cancelled.");
 				return;
 			}
 			if (targetCharacterWrapper.isMistLike()) {
