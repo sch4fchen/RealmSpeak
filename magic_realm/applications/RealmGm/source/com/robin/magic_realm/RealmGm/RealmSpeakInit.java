@@ -373,7 +373,7 @@ public class RealmSpeakInit {
 		deck.shuffle();
 	}
 	private void prepBookOfQuests() {
-		prepQuestDeck(data);
+		prepBookOfQuests(data);
 	}
 	public static void prepBookOfQuests(GameData data) {
 		prepBookOfQuests(data,false);
