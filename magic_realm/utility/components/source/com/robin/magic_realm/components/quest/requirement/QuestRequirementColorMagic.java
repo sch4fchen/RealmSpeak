@@ -17,14 +17,13 @@
  */
 package com.robin.magic_realm.components.quest.requirement;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.logging.Logger;
 
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.attribute.ColorMagic;
-import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRequirementColorMagic extends QuestRequirement {
@@ -39,15 +38,7 @@ public class QuestRequirementColorMagic extends QuestRequirement {
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
 		ColorMagic test = getColorMagic();
 		if (reqParams.burnedColor!=null && reqParams.burnedColor.sameColorAs(test)) return true;
-		
-		ArrayList<ColorMagic> colors;
-		TileLocation tl = character.getCurrentLocation();
-		if (!tl.isInClearing()) {
-			colors = tl.tile.getAllSourcesOfColor();
-		}
-		else {
-			colors = tl.clearing.getAllSourcesOfColor(true);
-		}
+		Collection<ColorMagic> colors = character.getInfiniteColorSources();
 		
 		boolean found = false;
 		for(ColorMagic cm:colors) {
