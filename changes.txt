@@ -1,6 +1,7 @@
 Version 1.1.5.8 - Changes since 1.1.5.7
 QUEST UPDATE:
 NEW FEATURES:
+# Transmorph spells: Improve duplicate transmorph spells on same target at the same cast speed
 BUGS/ISSUES:
 
 Version 1.1.5.7 - Changes since 1.1.5.6

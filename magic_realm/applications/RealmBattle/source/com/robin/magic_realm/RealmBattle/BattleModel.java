@@ -497,6 +497,53 @@ public class BattleModel {
 			// Determine which spells cancel which spellcasters
 			for (Integer speed : allSpeeds) {
 				ArrayList<SpellWrapper> spellsAtSpeed = spells.getList(speed);
+				
+				// check for duplicate transmorph spells at same target
+				HashMap<RealmComponent,ArrayList<SpellWrapper>> transmorphSpells = new HashMap<>();
+				HashMap<RealmComponent,Integer> transmorphSpellsStrength = new HashMap<>();
+				for (SpellWrapper spell : spellsAtSpeed) {
+					if (!spell.isAlive()) continue; // might have already been cancelled!
+					ArrayList<RealmComponent> targets = spell.getTargets();
+					for (RealmComponent target : targets) {
+						if (spell.isTransmorphSpell()) {
+							ArrayList<SpellWrapper> targetedTransmorphSpells = new ArrayList<>();
+							targetedTransmorphSpells.add(spell);
+							int strongestSpell = 5;
+							if (transmorphSpells.containsKey(target)) {
+								targetedTransmorphSpells.addAll(transmorphSpells.get(target));
+								strongestSpell = transmorphSpellsStrength.get(target);
+							}
+							transmorphSpells.put(target, targetedTransmorphSpells);
+							if (spell.getTransmorphStrength() < strongestSpell) {
+								transmorphSpellsStrength.put(target, spell.getTransmorphStrength());
+							}
+						}
+					}
+				}
+				for (RealmComponent target : transmorphSpells.keySet()) {
+					ArrayList<SpellWrapper> transmorphSpellsAtTarget = transmorphSpells.get(target);
+					if (transmorphSpellsAtTarget.size() <= 1) continue;
+					int strongestSpell = transmorphSpellsStrength.get(target);
+					int numberOfStrongestSpells = 0;
+					for (SpellWrapper spell : transmorphSpellsAtTarget) {
+						if (spell.getTransmorphStrength() < strongestSpell) {
+							logBattleInfo(spell.getName() + " was cancelled as multiple transmorph sepells hit" + target.getName() + " at the same speed of " + speed +".");
+							spell.expireSpell();
+						}
+						if (spell.getTransmorphStrength() == strongestSpell) {
+							numberOfStrongestSpells = numberOfStrongestSpells+1;
+						}
+					}
+					if (numberOfStrongestSpells >= 2) {
+						for (SpellWrapper spell : transmorphSpellsAtTarget) {
+							if (spell.getTransmorphStrength() == strongestSpell) {
+								logBattleInfo(spell.getName() + " was cancelled as multiple transmorph sepells hit" + target.getName() + " at the same speed of " + speed +".");
+								spell.expireSpell();
+							}
+						}
+					}
+				}
+					
 				for (SpellWrapper spell : spellsAtSpeed) {
 					if (spell.isAlive() && !spell.targetsClearing()) { // might have already been cancelled!
 						ArrayList<CharacterChitComponent> unaffectedCasters = casters.getList(speed);

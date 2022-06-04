@@ -1,10 +1,8 @@
-Duplicate spells (Combat spell, Day spell or Permanent spell):
-	same time: duplicate spells with mutually exclusive effects go into effect against the same target simultaneously, they cancel each other out
-		Stone Gaze, Absorb Essence, Melt into Mist and Transform: turn the target into the same creature, then the spells go into effect
-	after each other: cannot go into effect if it duplicates a spell that is already bewitching the target
-Power of the Pit optional rule C.4: Power of the Pit attack to hit like an attack spell
+Duplicate spells: after each other: cannot go into effect if it duplicates a spell that is already bewitching the target
 Combat Summary: add functionality for RandomAssignment, Deploy/Charge (and charge character, Actions? Attack/Maneuver, Assign)
+Power of the Pit optional rule C.4: Power of the Pit attack to hit like an attack spell
 ---:::FEATURES:::---
+Duplicate spells (Combat spell, Day spell or Permanent spell): same time: duplicate spells with mutually exclusive effects go into effect against the same target simultaneously, they cancel each other out
 Combat Tips:
 	* (If hidden) "You are hidden: If you lure now, you will become unhidden and the enemy will attack you. Wait for phase 6: Assign targets to attack safely."
 	* (If hired natives) "Hired Natives won't change tactics as defenders, but they might as attackers." 

@@ -961,5 +961,28 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		dest.setAttribute("light","chit_color",source.getAttribute(blockName,"light_color"));
 		dest.setAttribute("dark","chit_color",source.getAttribute(blockName,"dark_color"));
 	}
-
+	public boolean isTransmorphSpell() {
+		return isAbsorbEssence() || isMeltIntoMist() || isTransform() || isStoneGaze();
+	}
+	public boolean isAbsorbEssence() {
+		return getName().toLowerCase().matches("absorb essence");
+	}
+	public boolean isMeltIntoMist() {
+		return getName().toLowerCase().matches("melt into mist");
+	}
+	public boolean isTransform() {
+		return getName().toLowerCase().matches("transform");
+	}
+	public boolean isStoneGaze() {
+		return getName().toLowerCase().matches("stone gaze");
+	}
+	public int getTransmorphStrength() {
+		switch(getName().toLowerCase()){
+			case "melt into mist": return 1;
+			case "transform": return 2;
+			case "stone gaze":return 3;
+			case "absorb essence":return 4;
+			default: return 0;
+		}
+	}
 }
