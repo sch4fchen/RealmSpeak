@@ -1,4 +1,3 @@
-Duplicate spells: after each other: cannot go into effect if it duplicates a spell that is already bewitching the target
 Combat Summary: add functionality for RandomAssignment, Deploy/Charge (and charge character, Actions? Attack/Maneuver, Assign)
 Power of the Pit optional rule C.4: Power of the Pit attack to hit like an attack spell
 ---:::FEATURES:::---
