@@ -839,6 +839,18 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			// If spell is not alive, it has NO effect
 			return;
 		}
+		
+		if (!this.isInstantSpell() && !this.isAttackSpell() && !this.isMoveSpell() && !this.isPhaseSpell()) {
+			for (SpellWrapper spell : SpellUtility.getBewitchingSpells(target.getGameObject())) {
+				if (spell.getName().toLowerCase().matches(this.getName().toLowerCase())) {
+					if (this.getTargets().size() == 1) {
+						this.expireSpell();
+					}
+					return;
+				}
+			}
+		}
+		
 		GameObject caster = getCaster().getGameObject();
 		CombatWrapper combat = new CombatWrapper(target.getGameObject());
 		SpellEffectContext context = new SpellEffectContext(parent, theGame, target, this, caster);
