@@ -38,7 +38,7 @@ public class TransmorphEffect implements ISpellEffect {
 		
 		if ("target".equals(transmorph)) { //absorb essence
 			if (targetCharacterWrapper.isMistLike()) {
-				spell.expireSpell();
+				spell.cancelSpell();
 				RealmLogging.logMessage(RealmLogging.BATTLE, "Target is a mist - spell effect cancelled.");
 				return;
 			}
@@ -46,17 +46,17 @@ public class TransmorphEffect implements ISpellEffect {
 		}
 		else if ("statue".equals(transmorph)){
 			if (targetCharacterWrapper.isStatue()) {
-				spell.expireSpell();
+				spell.cancelSpell();
 				RealmLogging.logMessage(RealmLogging.BATTLE, "Target is already a statue - spell effect cancelled.");
 				return;
 			}
 			if (targetCharacterWrapper.isTransformed()) {
-				spell.expireSpell();
+				spell.cancelSpell();
 				RealmLogging.logMessage(RealmLogging.BATTLE, "Target is already transformed - spell effect cancelled.");
 				return;
 			}
 			if (targetCharacterWrapper.isMistLike()) {
-				spell.expireSpell();
+				spell.cancelSpell();
 				RealmLogging.logMessage(RealmLogging.BATTLE, "Target is already a mist - spell effect cancelled.");
 				return;
 			}
@@ -65,17 +65,17 @@ public class TransmorphEffect implements ISpellEffect {
 		}
 		else if ("roll".equals(transmorph) || "mist".equals(transmorph)) {
 			if ("roll".equals(transmorph) && targetCharacterWrapper.isTransformed()) {
-				spell.expireSpell();
+				spell.cancelSpell();
 				RealmLogging.logMessage(RealmLogging.BATTLE, "Target is already transformed - spell effect cancelled.");
 				return;
 			}
 			if ("roll".equals(transmorph) && targetCharacterWrapper.isStatue()) {
-				spell.expireSpell();
+				spell.cancelSpell();
 				RealmLogging.logMessage(RealmLogging.BATTLE, "Target is already a statue - spell effect cancelled.");
 				return;
 			}
 			if (targetCharacterWrapper.isMistLike()) {
-				spell.expireSpell();
+				spell.cancelSpell();
 				RealmLogging.logMessage(RealmLogging.BATTLE, "Target is already a mist - spell effect cancelled.");
 				return;
 			}
@@ -100,7 +100,7 @@ public class TransmorphEffect implements ISpellEffect {
 				}
 				else {
 					if (targetCharacterWrapper.isMistLike()) {
-						spell.expireSpell();
+						spell.cancelSpell();
 						RealmLogging.logMessage(RealmLogging.BATTLE, "Target is already a mist - spell effect cancelled.");
 						return;
 					}

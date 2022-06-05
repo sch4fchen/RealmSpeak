@@ -527,7 +527,7 @@ public class BattleModel {
 					int numberOfStrongestSpells = 0;
 					for (SpellWrapper spell : transmorphSpellsAtTarget) {
 						if (spell.getTransmorphStrength() < strongestSpell) {
-							logBattleInfo(spell.getName() + " was cancelled as multiple transmorph sepells hit" + target.getName() + " at the same speed of " + speed +".");
+							logBattleInfo(spell.getName() + " was cancelled as multiple transmorph sepells hit " + target + " at the same speed of " + speed +".");
 							spell.expireSpell();
 						}
 						if (spell.getTransmorphStrength() == strongestSpell) {
@@ -537,7 +537,7 @@ public class BattleModel {
 					if (numberOfStrongestSpells >= 2) {
 						for (SpellWrapper spell : transmorphSpellsAtTarget) {
 							if (spell.getTransmorphStrength() == strongestSpell) {
-								logBattleInfo(spell.getName() + " was cancelled as multiple transmorph sepells hit" + target.getName() + " at the same speed of " + speed +".");
+								logBattleInfo(spell.getName() + " was cancelled as multiple transmorph sepells hit " + target + " at the same speed of " + speed +".");
 								spell.expireSpell();
 							}
 						}
@@ -589,11 +589,18 @@ public class BattleModel {
 			for (Integer speed : allSpeeds) {
 				ArrayList<SpellWrapper> spellsAtSpeed = spells.getList(speed);
 				for (SpellWrapper spell : spellsAtSpeed) {
+					ArrayList<String> logs = new ArrayList<String>();
 					if (spell.isInstantSpell()) {
-						spell.affectTargets(CombatFrame.getSingleton(),theGame,true);
+						logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,true);
+
 					}
 					else if (spell.isCombatSpell() || spell.isDaySpell() || spell.isPermanentSpell() || spell.isPhaseSpell() || spell.isMoveSpell()) {
-						spell.affectTargets(CombatFrame.getSingleton(),theGame,false);
+						logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,false);
+					}
+					if (logs != null && !logs.isEmpty()) {
+						for (String log : logs) {
+							logBattleInfo(log);
+						}
 					}
 				}
 				// Make sure PEACE didn't happen

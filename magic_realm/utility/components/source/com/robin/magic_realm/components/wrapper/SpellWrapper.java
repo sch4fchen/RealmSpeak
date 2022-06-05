@@ -304,6 +304,28 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		}
 	}
 	
+	public void cancelSpell() {
+		clearRedDieLock();
+		if (isAlive() && canExpire()) {
+			breakIncantation(true);
+				
+			// Remove all targets
+			setBoolean(TARGET_IDS,false);
+			setBoolean(TARGET_EXTRA_IDENTIFIER,false);
+			setBoolean(SECONDARY_TARGET,false);
+			
+			// Spell dies
+			//setBoolean(CASTER_ID,false); // I don't think there is any harm leaving the caster... It's needed for disengagement 5/29/2007
+			setBoolean(SPELL_INERT,false);
+			setBoolean(SPELL_ALIVE,false);
+			setBoolean(SPELL_AFFECTED,false); // Probably redundant
+			
+			// Remove it from the spell master, just in case
+			SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(getGameObject().getGameData());
+			sm.removeSpell(this);
+		}
+	}
+	
 	public void clearSpellAttributes() {
 		clear(SPELL_INERT);
 		clear(SPELL_ALIVE);
@@ -705,13 +727,13 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		InfoObject io = new InfoObject(destClientName,info.getInfo());
 		return io;
 	}
-	public void affectTargets(JFrame parent,GameWrapper theGame,boolean expireImmediately) {
-		affectTargets(parent,theGame,expireImmediately,true);
+	public ArrayList<String> affectTargets(JFrame parent,GameWrapper theGame,boolean expireImmediately) {
+		return affectTargets(parent,theGame,expireImmediately,true);
 	}
-	public void affectTargets(JFrame parent,GameWrapper theGame,boolean expireImmediately, boolean includeNullifyEffects) {
+	public ArrayList<String> affectTargets(JFrame parent,GameWrapper theGame,boolean expireImmediately, boolean includeNullifyEffects) {
 		if (getBoolean(SPELL_AFFECTED)) {
 			// Don't affect twice in a row!!
-			return;
+			return null;
 		}
 		if (parent==null) {
 			parent = dummyFrame;
@@ -732,7 +754,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 				// Should never "affectTargets" from the host.  Do it on the caster's client.
 				if (GameHost.mostRecentHost!=null) {
 					GameHost.mostRecentHost.distributeInfo(buildAnInfoObject(destClientName,data,command));
-					return;
+					return null;
 				}
 				throw new IllegalStateException("mostRecentHost is null?");
 			}
@@ -746,7 +768,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 							GameClient.GetMostRecentClient().sendInfoDirect(
 									destClientName,
 									buildAnInfoObject(destClientName,data,command).getInfo());
-							return;
+							return null;
 						}
 					}
 				}
@@ -764,7 +786,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		if (SwingUtilities.isEventDispatchThread()) {
 //System.out.println("Already EDT");
 			// NON threaded
-			at.doAffect();
+			return at.doAffect();
 		}
 		else {
 //System.out.println("Non EDT - invoke and wait");
@@ -780,6 +802,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 				e.printStackTrace();
 			}
 		}
+		return null;
 	}
 	private class AffectThread implements Runnable {
 		private JFrame parent;
@@ -798,10 +821,11 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			doAffect();
 		}
 		
-		public void doAffect() {
+		public ArrayList<String> doAffect() {
 			// If we get here, then it's okay to proceed
 			energize();
 			
+			ArrayList<String> logs = new ArrayList<>();
 			ISpellEffect[] effects = SpellEffectFactory.create(getName().toLowerCase());
 			if (!includeNullifyEffects) {
 				ArrayList<ISpellEffect> effectsFiltered = new ArrayList<>();
@@ -813,11 +837,19 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 				ISpellEffect[] effects2 = new ISpellEffect[effectsFiltered.size()];
 				effects2 = effectsFiltered.toArray(effects2);
 				for (RealmComponent target : getTargets()) {
-					affect(effects2, parent, theGame, target);
+					String log = affect(effects2, parent, theGame, target);
+					if (log != null && !log.isEmpty()) {
+						logs.add(log);
+					}
 				}
 			}
 			else {
-				getTargets().forEach(t -> affect(effects, parent, theGame, t));
+				for (RealmComponent target : getTargets()) {
+					String log = affect(effects, parent, theGame, target);
+					if (log != null && !log.isEmpty()) {
+						logs.add(log);
+					}
+				}
 			}
 			
 			if (!(isPhaseSpell() && hasPhaseChit())) { // ignore phase spells that still have a phase chit active!!
@@ -831,25 +863,28 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			reqParams.actionType = CharacterActionType.CastSpell;
 			reqParams.objectList.add(getGameObject());
 			getCaster().testQuestRequirements(parent, reqParams);
+			
+			return logs;
 		}
 	}
 	
-	private void affect(ISpellEffect[] effects, JFrame parent,GameWrapper theGame,RealmComponent target) {
+	private String affect(ISpellEffect[] effects, JFrame parent,GameWrapper theGame,RealmComponent target) {
 		if (!isAlive()) {
 			// If spell is not alive, it has NO effect
-			return;
+			return null;
 		}
 		
-		if (!this.isInstantSpell() && !this.isAttackSpell() && !this.isMoveSpell() && !this.isPhaseSpell()) {
+		/*if (!this.isInstantSpell() && !this.isAttackSpell() && !this.isMoveSpell() && !this.isPhaseSpell()) {
 			for (SpellWrapper spell : SpellUtility.getBewitchingSpells(target.getGameObject())) {
-				if (spell.getName().toLowerCase().matches(this.getName().toLowerCase())) {
+				if (spell.isActive() && !spell.isActive() && spell.getName().toLowerCase().matches(this.getName().toLowerCase())) {
 					if (this.getTargets().size() == 1) {
 						this.expireSpell();
+						return getName() + " cancelled, as " + target + " already affected by " + getName()+".";
 					}
-					return;
+					return getName() + " effect on " + target + " canceled, as target already affected by " + getName()+".";
 				}
 			}
-		}
+		}*/
 		
 		GameObject caster = getCaster().getGameObject();
 		CombatWrapper combat = new CombatWrapper(target.getGameObject());
@@ -865,6 +900,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		if (caster!=null) {
 			combat.removeAttacker(caster);
 		}
+		return null;
 	}
 	
 	public ClearingDetail getTargetAsClearing(RealmComponent target) {
