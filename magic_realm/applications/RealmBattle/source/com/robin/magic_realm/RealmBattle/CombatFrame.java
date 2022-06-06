@@ -3819,6 +3819,9 @@ public class CombatFrame extends JFrame {
 			
 			GameWrapper game = GameWrapper.findGame(realmBattleData);
 			
+			// Initialize map
+			CenteredMapView.initSingleton(loadedData);
+			
 			// Initialize combat
 			RealmBattle.resetCombat(realmBattleData);
 			RealmBattle.initCombatOrder(realmBattleData);

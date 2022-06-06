@@ -181,6 +181,15 @@ public class SpellUtility {
 		// Be sure to clear out combat...
 		character.clearCombat();
 		CombatWrapper.clearAllCombatInfo(character.getGameObject());
+		SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(character.getGameData());
+		for (SpellWrapper spell : sm.getAffectingSpells(character.getGameObject())) {
+			if (spell.isActive() && !spell.hasAffectedTargets()) {
+				spell.removeTarget(character.getGameObject());
+				if (spell.getTargetCount() == 0) {
+					spell.cancelSpell();
+				}
+			}
+		}
 	}
 	
 	private static ArrayList<GateChitComponent> findKnownGatesForCharacter(CharacterWrapper character) {

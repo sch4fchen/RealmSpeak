@@ -5,6 +5,7 @@ NEW FEATURES:
 # Target cannot be bewitched by the same spell twice
 BUGS/ISSUES:
 # Improve various effects and situations for cancelling (instead of expiring) spells
+# Cancel spells cast onto teleported character
 
 Version 1.1.5.7 - Changes since 1.1.5.6
 QUEST UPDATE:
