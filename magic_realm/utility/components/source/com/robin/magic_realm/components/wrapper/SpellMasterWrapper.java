@@ -221,8 +221,7 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 				else {
 					if (spellCanEnergize(game,loc,spell,true)) {
 						if (spell.canConflict()) {
-							// Before we can add this, need to make sure that the affected target isn't already
-							// afflicted with a STRONGER spell
+							// Before we can add this, need to make sure that the affected target isn't already afflicted with a STRONGER spell
 							boolean addSpell = true;
 							
 							int str = spell.getConflictStrength();

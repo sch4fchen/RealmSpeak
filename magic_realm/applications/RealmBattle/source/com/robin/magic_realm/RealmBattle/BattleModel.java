@@ -498,46 +498,46 @@ public class BattleModel {
 			for (Integer speed : allSpeeds) {
 				ArrayList<SpellWrapper> spellsAtSpeed = spells.getList(speed);
 				
-				// check for duplicate transmorph spells at same target
-				HashMap<RealmComponent,ArrayList<SpellWrapper>> transmorphSpells = new HashMap<>();
-				HashMap<RealmComponent,Integer> transmorphSpellsStrength = new HashMap<>();
+				// check for duplicate conflicting (transmorph) spells at same target
+				HashMap<RealmComponent,ArrayList<SpellWrapper>> conflictingSpells = new HashMap<>();
+				HashMap<RealmComponent,Integer> conflictingSpellsStrength = new HashMap<>();
 				for (SpellWrapper spell : spellsAtSpeed) {
 					if (!spell.isAlive()) continue; // might have already been cancelled!
 					ArrayList<RealmComponent> targets = spell.getTargets();
 					for (RealmComponent target : targets) {
-						if (spell.isTransmorphSpell()) {
-							ArrayList<SpellWrapper> targetedTransmorphSpells = new ArrayList<>();
-							targetedTransmorphSpells.add(spell);
-							int strongestSpell = 5;
-							if (transmorphSpells.containsKey(target)) {
-								targetedTransmorphSpells.addAll(transmorphSpells.get(target));
-								strongestSpell = transmorphSpellsStrength.get(target);
+						if (spell.canConflict()) {
+							ArrayList<SpellWrapper> targetedConflictingSpells = new ArrayList<>();
+							targetedConflictingSpells.add(spell);
+							int strongestSpell = 0;
+							if (conflictingSpells.containsKey(target)) {
+								targetedConflictingSpells.addAll(conflictingSpells.get(target));
+								strongestSpell = conflictingSpellsStrength.get(target);
 							}
-							transmorphSpells.put(target, targetedTransmorphSpells);
-							if (spell.getTransmorphStrength() < strongestSpell) {
-								transmorphSpellsStrength.put(target, spell.getTransmorphStrength());
+							conflictingSpells.put(target, targetedConflictingSpells);
+							if (spell.getConflictStrength() < strongestSpell) {
+								conflictingSpellsStrength.put(target, spell.getConflictStrength());
 							}
 						}
 					}
 				}
-				for (RealmComponent target : transmorphSpells.keySet()) {
-					ArrayList<SpellWrapper> transmorphSpellsAtTarget = transmorphSpells.get(target);
-					if (transmorphSpellsAtTarget.size() <= 1) continue;
-					int strongestSpell = transmorphSpellsStrength.get(target);
+				for (RealmComponent target : conflictingSpells.keySet()) {
+					ArrayList<SpellWrapper> conflictingSpellsAtTarget = conflictingSpells.get(target);
+					if (conflictingSpellsAtTarget.size() <= 1) continue;
+					int strongestSpell = conflictingSpellsStrength.get(target);
 					int numberOfStrongestSpells = 0;
-					for (SpellWrapper spell : transmorphSpellsAtTarget) {
-						if (spell.getTransmorphStrength() < strongestSpell) {
-							logBattleInfo(spell.getName() + " was cancelled as multiple transmorph sepells hit " + target + " at the same speed of " + speed +".");
+					for (SpellWrapper spell : conflictingSpellsAtTarget) {
+						if (spell.getConflictStrength() < strongestSpell) {
+							logBattleInfo(spell.getName() + " was cancelled as multiple conflicting spells hit " + target + " at the same speed of " + speed +".");
 							spell.cancelSpell();
 						}
-						if (spell.getTransmorphStrength() == strongestSpell) {
+						if (spell.getConflictStrength() == strongestSpell) {
 							numberOfStrongestSpells = numberOfStrongestSpells+1;
 						}
 					}
 					if (numberOfStrongestSpells >= 2) {
-						for (SpellWrapper spell : transmorphSpellsAtTarget) {
-							if (spell.getTransmorphStrength() == strongestSpell) {
-								logBattleInfo(spell.getName() + " was cancelled as multiple transmorph sepells hit " + target + " at the same speed of " + speed +".");
+						for (SpellWrapper spell : conflictingSpellsAtTarget) {
+							if (spell.getConflictStrength() == strongestSpell) {
+								logBattleInfo(spell.getName() + " was cancelled as multiple conflicting sepells hit " + target + " at the same speed of " + speed +".");
 								spell.cancelSpell();
 							}
 						}

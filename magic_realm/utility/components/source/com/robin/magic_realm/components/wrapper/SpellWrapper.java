@@ -92,6 +92,9 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	public boolean isBenevolent() {
 		return getGameObject().hasThisAttribute(Constants.BENEVOLENT);
 	}
+	public boolean hasAffectedTargets() {
+		return getBoolean(SPELL_AFFECTED);
+	}
 	/**
 	 * Based on the location of its target, this method will return the current locations of the spell.  This will only
 	 * matter to permanent spells, as all others expire before energizing is required.
@@ -1011,29 +1014,5 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		// Set the colors separately
 		dest.setAttribute("light","chit_color",source.getAttribute(blockName,"light_color"));
 		dest.setAttribute("dark","chit_color",source.getAttribute(blockName,"dark_color"));
-	}
-	public boolean isTransmorphSpell() {
-		return isAbsorbEssence() || isMeltIntoMist() || isTransform() || isStoneGaze();
-	}
-	public boolean isAbsorbEssence() {
-		return getName().toLowerCase().matches("absorb essence");
-	}
-	public boolean isMeltIntoMist() {
-		return getName().toLowerCase().matches("melt into mist");
-	}
-	public boolean isTransform() {
-		return getName().toLowerCase().matches("transform");
-	}
-	public boolean isStoneGaze() {
-		return getName().toLowerCase().matches("stone gaze");
-	}
-	public int getTransmorphStrength() {
-		switch(getName().toLowerCase()){
-			case "melt into mist": return 1;
-			case "transform": return 2;
-			case "stone gaze":return 3;
-			case "absorb essence":return 4;
-			default: return 0;
-		}
 	}
 }
