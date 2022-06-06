@@ -858,7 +858,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 				}
 			}
 			
-			if (getTargets().size() == ignoredTargets) {
+			if (ignoredTargets > 0 && getTargets().size() == ignoredTargets) {
 				cancelSpell();
 				logs.add(getName() + " cancelled, as all targets already affected by " + getName()+".");
 				
