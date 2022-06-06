@@ -827,6 +827,8 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			
 			ArrayList<String> logs = new ArrayList<>();
 			ISpellEffect[] effects = SpellEffectFactory.create(getName().toLowerCase());
+			int ignoredTargets = 0;
+			
 			if (!includeNullifyEffects) {
 				ArrayList<ISpellEffect> effectsFiltered = new ArrayList<>();
 				for (ISpellEffect effect : effects) {
@@ -834,22 +836,34 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 						effectsFiltered.add(effect);
 					}
 				}
-				ISpellEffect[] effects2 = new ISpellEffect[effectsFiltered.size()];
-				effects2 = effectsFiltered.toArray(effects2);
-				for (RealmComponent target : getTargets()) {
-					String log = affect(effects2, parent, theGame, target);
-					if (log != null && !log.isEmpty()) {
-						logs.add(log);
+				effects = new ISpellEffect[effectsFiltered.size()];
+				effects = effectsFiltered.toArray(effects);
+			}
+			for (RealmComponent target : getTargets()) {
+				boolean affectTarget = true;
+				if (!isInstantSpell() && !isAttackSpell() && !isMoveSpell() && !isPhaseSpell()) {
+					for (SpellWrapper spell : SpellUtility.getBewitchingSpells(target.getGameObject())) {
+						if (spell.isActive() && spell.getBoolean(SPELL_AFFECTED) && spell.getName().toLowerCase().matches(getName().toLowerCase())) {
+							ignoredTargets = ignoredTargets + 1;
+							logs.add(getName() + " effect on " + target + " canceled, as target already affected by " + getName()+".");
+							affectTarget = false;
+						}
 					}
+				}
+				if (affectTarget) {
+					affect(effects, parent, theGame, target);
 				}
 			}
-			else {
-				for (RealmComponent target : getTargets()) {
-					String log = affect(effects, parent, theGame, target);
-					if (log != null && !log.isEmpty()) {
-						logs.add(log);
-					}
-				}
+			
+			if (getTargets().size() == ignoredTargets) {
+				cancelSpell();
+				logs.add(getName() + " cancelled, as all targets already affected by " + getName()+".");
+				
+				QuestRequirementParams reqParams = new QuestRequirementParams();
+				reqParams.actionType = CharacterActionType.CastSpell;
+				reqParams.objectList.add(getGameObject());
+				getCaster().testQuestRequirements(parent, reqParams);
+				return logs;
 			}
 			
 			if (!(isPhaseSpell() && hasPhaseChit())) { // ignore phase spells that still have a phase chit active!!
@@ -868,22 +882,10 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		}
 	}
 	
-	private String affect(ISpellEffect[] effects, JFrame parent,GameWrapper theGame,RealmComponent target) {
+	private void affect(ISpellEffect[] effects, JFrame parent,GameWrapper theGame,RealmComponent target) {
 		if (!isAlive()) {
 			// If spell is not alive, it has NO effect
-			return null;
-		}
-		
-		if (!this.isInstantSpell() && !this.isAttackSpell() && !this.isMoveSpell() && !this.isPhaseSpell()) {
-			for (SpellWrapper spell : SpellUtility.getBewitchingSpells(target.getGameObject())) {
-				if (spell.isActive() && spell.getBoolean(SPELL_AFFECTED) && spell.getName().toLowerCase().matches(this.getName().toLowerCase())) {
-					if (this.getTargets().size() == 1) {
-						this.cancelSpell();
-						return getName() + " cancelled, as " + target + " already affected by " + getName()+".";
-					}
-					return getName() + " effect on " + target + " canceled, as target already affected by " + getName()+".";
-				}
-			}
+			return;
 		}
 		
 		GameObject caster = getCaster().getGameObject();
@@ -900,7 +902,6 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		if (caster!=null) {
 			combat.removeAttacker(caster);
 		}
-		return null;
 	}
 	
 	public ClearingDetail getTargetAsClearing(RealmComponent target) {
