@@ -915,18 +915,18 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		
 		GameWrapper theGame = GameWrapper.findGame(getCaster().getGameData());
 		if (!includeNullifyEffects) {
+			ArrayList<ISpellEffect> effectsFiltered = new ArrayList<>();
 			if (effects != null) {
-				ArrayList<ISpellEffect> effectsFiltered = new ArrayList<>();
 				for (ISpellEffect effect : effects) {
 					if (!(effect instanceof NullifyEffect)) {
 						effectsFiltered.add(effect);
 					}
 				}
-				ISpellEffect[] effects2 = new ISpellEffect[effectsFiltered.size()];
-				effects2 = effectsFiltered.toArray(effects2);
-				for (RealmComponent target : getTargets()) {
-					unaffect(effects2, theGame, target);
-				}
+			}
+			ISpellEffect[] effects2 = new ISpellEffect[effectsFiltered.size()];
+			effects2 = effectsFiltered.toArray(effects2);
+			for (RealmComponent target : getTargets()) {
+				unaffect(effects2, theGame, target);
 			}
 		}
 		else {
