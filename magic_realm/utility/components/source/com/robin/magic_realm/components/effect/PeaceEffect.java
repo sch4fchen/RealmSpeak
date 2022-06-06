@@ -35,7 +35,7 @@ public class PeaceEffect implements ISpellEffect {
 				GameObject go = combat.getCastSpell();
 				if (go!=null) {
 					SpellWrapper spell = new SpellWrapper(go);
-					spell.expireSpell();
+					spell.cancelSpell();
 					RealmLogging.logMessage(
 							spell.getCaster().getGameObject().getName(),
 							spell.getGameObject().getName()+" was cancelled because of PEACE spell!");

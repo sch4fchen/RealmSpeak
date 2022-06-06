@@ -528,7 +528,7 @@ public class BattleModel {
 					for (SpellWrapper spell : transmorphSpellsAtTarget) {
 						if (spell.getTransmorphStrength() < strongestSpell) {
 							logBattleInfo(spell.getName() + " was cancelled as multiple transmorph sepells hit " + target + " at the same speed of " + speed +".");
-							spell.expireSpell();
+							spell.cancelSpell();
 						}
 						if (spell.getTransmorphStrength() == strongestSpell) {
 							numberOfStrongestSpells = numberOfStrongestSpells+1;
@@ -538,7 +538,7 @@ public class BattleModel {
 						for (SpellWrapper spell : transmorphSpellsAtTarget) {
 							if (spell.getTransmorphStrength() == strongestSpell) {
 								logBattleInfo(spell.getName() + " was cancelled as multiple transmorph sepells hit " + target + " at the same speed of " + speed +".");
-								spell.expireSpell();
+								spell.cancelSpell();
 							}
 						}
 					}
@@ -577,7 +577,7 @@ public class BattleModel {
 										+", cast by the "
 										+spell.getCaster().getGameObject().getName()+".";
 								logBattleInfo(message);
-								spellToCancel.expireSpell();
+								spellToCancel.cancelSpell();
 							}
 						}
 					}

@@ -874,17 +874,17 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			return null;
 		}
 		
-		/*if (!this.isInstantSpell() && !this.isAttackSpell() && !this.isMoveSpell() && !this.isPhaseSpell()) {
+		if (!this.isInstantSpell() && !this.isAttackSpell() && !this.isMoveSpell() && !this.isPhaseSpell()) {
 			for (SpellWrapper spell : SpellUtility.getBewitchingSpells(target.getGameObject())) {
-				if (spell.isActive() && !spell.isActive() && spell.getName().toLowerCase().matches(this.getName().toLowerCase())) {
+				if (spell.isActive() && spell.getBoolean(SPELL_AFFECTED) && spell.getName().toLowerCase().matches(this.getName().toLowerCase())) {
 					if (this.getTargets().size() == 1) {
-						this.expireSpell();
+						this.cancelSpell();
 						return getName() + " cancelled, as " + target + " already affected by " + getName()+".";
 					}
 					return getName() + " effect on " + target + " canceled, as target already affected by " + getName()+".";
 				}
 			}
-		}*/
+		}
 		
 		GameObject caster = getCaster().getGameObject();
 		CombatWrapper combat = new CombatWrapper(target.getGameObject());
@@ -915,16 +915,18 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		
 		GameWrapper theGame = GameWrapper.findGame(getCaster().getGameData());
 		if (!includeNullifyEffects) {
-			ArrayList<ISpellEffect> effectsFiltered = new ArrayList<>();
-			for (ISpellEffect effect : effects) {
-				if (!(effect instanceof NullifyEffect)) {
-					effectsFiltered.add(effect);
+			if (effects != null) {
+				ArrayList<ISpellEffect> effectsFiltered = new ArrayList<>();
+				for (ISpellEffect effect : effects) {
+					if (!(effect instanceof NullifyEffect)) {
+						effectsFiltered.add(effect);
+					}
 				}
-			}
-			ISpellEffect[] effects2 = new ISpellEffect[effectsFiltered.size()];
-			effects2 = effectsFiltered.toArray(effects2);
-			for (RealmComponent target : getTargets()) {
-				unaffect(effects2, theGame, target);
+				ISpellEffect[] effects2 = new ISpellEffect[effectsFiltered.size()];
+				effects2 = effectsFiltered.toArray(effects2);
+				for (RealmComponent target : getTargets()) {
+					unaffect(effects2, theGame, target);
+				}
 			}
 		}
 		else {

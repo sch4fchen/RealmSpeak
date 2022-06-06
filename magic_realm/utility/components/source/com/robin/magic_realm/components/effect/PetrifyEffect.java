@@ -16,8 +16,8 @@ public class PetrifyEffect implements ISpellEffect {
 			//the target looks away and is unaffected
 			String msg = "The " + context.Target.getName() + " looks away.";
 			DieRollReporter.showMessageDialog(result.roller, context.Parent, "Petrify", msg, JOptionPane.INFORMATION_MESSAGE);
-			context.Spell.expireSpell();
-		} else {	
+			context.Spell.cancelSpell();
+		} else {
 			String msg = "The " + context.Target.getName() + " is turned into a statue.";
 			DieRollReporter.showMessageDialog(result.roller, context.Parent, "Petrify", msg, JOptionPane.INFORMATION_MESSAGE);
 			ISpellEffect transmorph = new TransmorphEffect("statue");

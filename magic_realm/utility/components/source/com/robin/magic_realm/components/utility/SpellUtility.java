@@ -388,14 +388,12 @@ the Appearance Chart, he instantly becomes unhired.
 	}
 
 	public static void ApplyNamedSpellEffectToTarget(String effect, GameObject target, SpellWrapper spellWrapper) {
-
 			if(!target.hasThisAttribute(effect)){
 				target.setThisAttribute(effect);
 			}
 			else{
-				spellWrapper.expireSpell();
-				target.setThisAttribute(effect);
-				RealmLogging.logMessage(spellWrapper.getCaster().getGameObject().getName(),"Spell expired, because the targeted character already has this ability.");
+				spellWrapper.cancelSpell();
+				RealmLogging.logMessage(spellWrapper.getCaster().getGameObject().getName(),"Spell cancelled, because the targeted character already has this ability.");
 			}
 		
 	}

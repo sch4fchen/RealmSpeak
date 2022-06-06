@@ -2030,7 +2030,7 @@ public class CombatFrame extends JFrame {
 		// Make sure that targeting can happen
 		if (!spellTargeting.hasTargets()) {
 			JOptionPane.showMessageDialog(this,"There are no valid targets for this spell!.","Unable to Select Targets for "+spell.getName(),JOptionPane.ERROR_MESSAGE);
-			spell.expireSpell();
+			spell.cancelSpell();
 			if (selectSpellTargetsButton!=null) {
 				selectSpellTargetsButton.setVisible(false);
 				cancelSpellButton.setVisible(false);
@@ -2081,7 +2081,7 @@ public class CombatFrame extends JFrame {
 		if (ret==JOptionPane.YES_OPTION) {
 			JOptionPane.showMessageDialog(this,"Spell was cancelled and will NOT be cast.","Cancel "+spell.getName(),JOptionPane.ERROR_MESSAGE);
 			RealmLogging.logMessage(activeCharacter.getGameObject().getName(),"Cancels "+spell.getName());
-			spell.expireSpell();
+			spell.cancelSpell();
 			if (selectSpellTargetsButton!=null) {
 				selectSpellTargetsButton.setVisible(false);
 				cancelSpellButton.setVisible(false);

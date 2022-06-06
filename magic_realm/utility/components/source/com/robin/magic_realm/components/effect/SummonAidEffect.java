@@ -41,7 +41,7 @@ public class SummonAidEffect implements ISpellEffect {
 		
 		if(!buddy.isPresent()){
 			//no one to summon
-			context.Spell.expireSpell();
+			context.Spell.cancelSpell();
 			return;
 		}
 		

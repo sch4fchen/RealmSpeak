@@ -21,7 +21,7 @@ public class PacifyEffect implements ISpellEffect {
 		RealmComponent target = context.Target;
 		
 		if(SpellUtility.targetsAreBeingAttackedByHirelings(combat.getAttackers(), context.Caster)){
-			context.Spell.expireSpell();
+			context.Spell.cancelSpell();
 			return;
 		}
 	

@@ -24,7 +24,7 @@ public class MiracleEffect implements ISpellEffect {
 		CombatWrapper combat = context.getCombatTarget();
 
 		if(SpellUtility.targetsAreBeingAttackedByHirelings(combat.getAttackers(), context.Caster)){
-			context.Spell.expireSpell();
+			context.Spell.cancelSpell();
 			return;
 		}
 		

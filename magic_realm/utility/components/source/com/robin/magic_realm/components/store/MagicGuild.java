@@ -96,12 +96,11 @@ public class MagicGuild extends GuildStore {
 		return (String)chooser.getSelectedObject();
 	}
 	private String cureSpellOrCurse(JFrame frame) {
-		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,"Cancel which spell/curse?",true);
+		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,"Break which spell/curse?",true);
 		for(SpellWrapper spell:bewitchingSpells) {
 			String optionKey = chooser.generateOption();
 			chooser.addGameObjectToOption(optionKey,spell.getGameObject());
-			for (Iterator h=spell.getGameObject().getHold().iterator();h.hasNext();) {
-				GameObject hgo = (GameObject)h.next();
+			for (GameObject hgo : spell.getGameObject().getHold()) {
 				chooser.addGameObjectToOption(optionKey,hgo);
 			}
 		}
@@ -120,7 +119,7 @@ public class MagicGuild extends GuildStore {
 				GameObject go = chooser.getFirstSelectedComponent().getGameObject();
 				SpellWrapper spell = new SpellWrapper(go);
 				spell.expireSpell();
-				return "Canceled "+go.getName()+" spell.";
+				return "Breaked "+go.getName()+" spell.";
 			}
 		}
 		return null;

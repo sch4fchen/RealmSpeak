@@ -543,7 +543,7 @@ public class TreasureUtility {
 			curse.apply(character,roller);
 		}
 		if (thing.hasThisAttribute(Constants.CANCEL_SPELL) || thing.hasThisAttribute(Constants.REMOVE_CURSE)) {
-			String title = thing.hasThisAttribute(Constants.CANCEL_SPELL) ? "Select spell or curse to cancel:" : "Select curse to remove:";
+			String title = thing.hasThisAttribute(Constants.CANCEL_SPELL) ? "Select spell or curse to break:" : "Select curse to remove:";
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(parentFrame,title,false);
 			if (thing.hasThisAttribute(Constants.CANCEL_SPELL)) {
 				// Select bewitching spells to cancel (spellcaster or target must be in clearing)
@@ -593,7 +593,7 @@ public class TreasureUtility {
 						// Selected a spell
 						SpellWrapper spell = new SpellWrapper(src.getGameObject());
 						spell.expireSpell();
-						JOptionPane.showMessageDialog(parentFrame,src.getGameObject().getName()+" was cancelled.");
+						JOptionPane.showMessageDialog(parentFrame,src.getGameObject().getName()+" was broken.");
 					}
 				}
 			}
