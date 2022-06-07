@@ -514,7 +514,7 @@ public class BattleModel {
 								strongestSpell = conflictingSpellsStrength.get(target);
 							}
 							conflictingSpells.put(target, targetedConflictingSpells);
-							if (spell.getConflictStrength() < strongestSpell) {
+							if (spell.getConflictStrength() > strongestSpell) {
 								conflictingSpellsStrength.put(target, spell.getConflictStrength());
 							}
 						}
