@@ -1,5 +1,6 @@
 Version 1.1.5.8 - Changes since 1.1.5.7
 QUEST UPDATE:
+# QuestRewardHireling: Fix removing cloned hireling from game
 NEW FEATURES:
 # Transmorph spells: Improve duplicate transmorph spells on same target at the same cast speed
 # Target cannot be bewitched by the same spell twice

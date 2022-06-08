@@ -3314,18 +3314,20 @@ public class CharacterWrapper extends GameObjectWrapper {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
 		if ((hostPrefs.hasPref(Constants.EXP_BOUNTY_POINTS_FOR_DISCOVERIES) || this.affectedByKey(Constants.ADVENTURER)) && this.isCharacter() && !discovery.hasThisAttribute(Constants.DISCOVERED)) {
 			RealmComponent rc = RealmComponent.getRealmComponent(gameData.getGameObjectByNameIgnoreCase(name));
-			if (rc.isTreasureLocation() && discovery.hasThisAttribute(Constants.DISCOVERY)) {
-				if (rc.isChit()) {
-					this.addFame(5);
+			if (rc!=null) { 
+				if (rc.isTreasureLocation() && discovery.hasThisAttribute(Constants.DISCOVERY)) {
+					if (rc.isChit()) {
+						this.addFame(5);
+					}
+					else {
+						this.addFame(10);
+						this.addNotoriety(5);
+					}
 				}
-				else {
+				else if (rc.isRedSpecial()) {
 					this.addFame(10);
-					this.addNotoriety(5);
+					this.addNotoriety(10);
 				}
-			}
-			else if (rc.isRedSpecial()) {
-				this.addFame(10);
-				this.addNotoriety(10);
 			}
 		}
 		discovery.setThisAttribute(Constants.DISCOVERED);
@@ -5880,9 +5882,13 @@ public class CharacterWrapper extends GameObjectWrapper {
 		hireling.removeThisAttribute(Constants.HIRELING);
 		// Finally, make sure any clones are expunged (stupid clones!!  kill them all!)
 		if (hireling.hasThisAttribute(Constants.CLONED)) {
-			getGameData().removeObject(hireling); // I'd like to simply delete the object...  but there are problems with this.
-			// Instead, lets erase the clone's memory so it has no effect!
-			// hireling.clearAllAttributes();
+			hireling.clearHold();
+			if (hireling.getHeldBy()!=null) {
+				hireling.getHeldBy().remove(hireling);
+			}
+			// I'd like to simply delete the object...  but there are problems with this. Instead, lets erase the clone's memory so it has no effect!
+			hireling.clearAllAttributes();
+			getGameData().removeObject(hireling); 
 		}
 	}
 	/**
