@@ -527,17 +527,17 @@ public class BattleModel {
 					int numberOfStrongestSpells = 0;
 					for (SpellWrapper spell : conflictingSpellsAtTarget) {
 						if (spell.getConflictStrength() < strongestSpell) {
-							logBattleInfo(spell.getName() + " was cancelled as multiple conflicting spells hit " + target + " at the same speed of " + speed +".");
-							spell.cancelSpell();
+							logBattleInfo(spell.getName() + " was nullified as a stronger spell hit the " + target + " at the same speed of " + speed +".");
+							spell.nullifySpell(true);
 						}
 						if (spell.getConflictStrength() == strongestSpell) {
-							numberOfStrongestSpells = numberOfStrongestSpells+1;
+							numberOfStrongestSpells = numberOfStrongestSpells + 1;
 						}
 					}
 					if (numberOfStrongestSpells >= 2) {
 						for (SpellWrapper spell : conflictingSpellsAtTarget) {
 							if (spell.getConflictStrength() == strongestSpell) {
-								logBattleInfo(spell.getName() + " was cancelled as multiple conflicting sepells hit " + target + " at the same speed of " + speed +".");
+								logBattleInfo(spell.getName() + " was cancelled as multiple conflicting spells hit the " + target + " at the same speed of " + speed +".");
 								spell.cancelSpell();
 							}
 						}

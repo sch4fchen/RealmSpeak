@@ -1544,8 +1544,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 			ArrayList<GameObject> nextLayer = new ArrayList<GameObject>();
 			for(GameObject go:layer) {
 				allQuestObjects.add(go);
-				for(Iterator i=go.getHold().iterator();i.hasNext();) {
-					GameObject held = (GameObject)i.next();
+				for(GameObject held : go.getHold()) {
 					if (!allQuestObjects.contains(held)) {
 						nextLayer.add(held);
 					}
