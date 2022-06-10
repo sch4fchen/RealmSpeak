@@ -36,7 +36,7 @@ public class SpellWrapper_DieModTest extends TestBaseWithLoader {
 		caster.getGameObject().add(spell.getGameObject());
 		spell.castSpell(findGameObject("Magician Magic IV3*")); // doesn't matter
 		spell.addTarget(hostPrefs,character.getGameObject());
-		spell.affectTargets(parentFrame,game,false);
+		spell.affectTargets(parentFrame,game,false,null);
 		return character;
 	}
 	

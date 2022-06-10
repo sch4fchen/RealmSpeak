@@ -909,7 +909,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		else if (RealmDirectInfoHolder.SPELL_AFFECT_TARGETS.equals(command)) {
 			for (GameObject spellObject : info.getGameObjects()) {
 				SpellWrapper spell = new SpellWrapper(spellObject);
-				spell.affectTargets(CombatFrame.getSingleton(), game, false);
+				spell.affectTargets(CombatFrame.getSingleton(), game, false, null);
 			}
 			// If a spell is being applied through direct info, then make sure
 			// the combat frame reflects the change!!
@@ -919,7 +919,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			for (GameObject spellObject : info.getGameObjects()) {
 				SpellWrapper spell = new SpellWrapper(spellObject);
 				TileLocation before = spell.getCurrentLocation();
-				spell.affectTargets(CombatFrame.getSingleton(), game, true); // this is STILL happening in a thread...
+				spell.affectTargets(CombatFrame.getSingleton(), game, true, null); // this is STILL happening in a thread...
 				TileLocation after = spell.getCurrentLocation();
 				if (before != null && !before.equals(after)) {
 					// The spell transported its target, so update combat

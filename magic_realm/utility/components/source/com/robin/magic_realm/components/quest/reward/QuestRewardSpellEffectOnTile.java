@@ -67,7 +67,7 @@ public class QuestRewardSpellEffectOnTile extends QuestReward {
 			spellWrapper.unaffectTargets();
 			return;
 		}
-		spellWrapper.affectTargets(frame, gameWrapper, false);
+		spellWrapper.affectTargets(frame, gameWrapper, false, null);
 	}
 	
 	private EffectOnTile getSpell() {

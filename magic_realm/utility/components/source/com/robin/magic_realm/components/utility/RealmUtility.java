@@ -653,7 +653,7 @@ public class RealmUtility {
 					}
 					
 					RealmLogging.logMessage(character.getGameObject().getName(),"Burns a "+chitColor.getColorName()+" chit to energize "+spellToEnergize.getName());
-					spellToEnergize.affectTargets(parent,game,false);
+					spellToEnergize.affectTargets(parent,game,false,null);
 				}
 				else {
 					RealmLogging.logMessage(character.getGameObject().getName(),"Burns a "+chitColor.getColorName()+" chit.");

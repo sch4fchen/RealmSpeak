@@ -81,7 +81,7 @@ public class SpellCast extends Store {
 				virtualSpell.getGameObject().setThisAttribute(Constants.SPELL_MOD,spellMod);
 				virtualSpell.castSpellNoEnhancedMagic(trader.getGameObject());
 				virtualSpell.addTarget(HostPrefWrapper.findHostPrefs(character.getGameData()),character.getGameObject());
-				virtualSpell.affectTargets(frame,GameWrapper.findGame(character.getGameData()),false);
+				virtualSpell.affectTargets(frame,GameWrapper.findGame(character.getGameData()),false,null);
 				
 				return getTraderName()+" cast "+spell.getGameObject().getName();
 			}

@@ -143,7 +143,7 @@ public class CharacterWrapper_WeightTest extends TestBaseWithLoader {
 		Strength before = witchKing.getMoveStrength(true,false);
 		absorbEssence.castSpell(witchKing.getGameObject());
 		absorbEssence.addTarget(hostPrefs,dragon);
-		absorbEssence.affectTargets(dummyFrame,game,false);
+		absorbEssence.affectTargets(dummyFrame,game,false,null);
 		
 		// Execute
 		Strength after = witchKing.getMoveStrength(true,false);
@@ -167,7 +167,7 @@ public class CharacterWrapper_WeightTest extends TestBaseWithLoader {
 		
 		broomstick.castSpell(witch.getGameObject());
 		broomstick.addTarget(hostPrefs,witch.getGameObject());
-		broomstick.affectTargets(dummyFrame,game,false);
+		broomstick.affectTargets(dummyFrame,game,false,null);
 		
 		ArrayList<StrengthChit> fly = witch.getFlyStrengthChits(false);
 		Assert.assertEquals(1,fly.size());
@@ -175,7 +175,7 @@ public class CharacterWrapper_WeightTest extends TestBaseWithLoader {
 		
 		absorbEssence.castSpell(witch.getGameObject());
 		absorbEssence.addTarget(hostPrefs,demon);
-		absorbEssence.affectTargets(dummyFrame,game,false);
+		absorbEssence.affectTargets(dummyFrame,game,false,null);
 		
 		fly = witch.getFlyStrengthChits(false);
 		Assert.assertEquals(1,fly.size());

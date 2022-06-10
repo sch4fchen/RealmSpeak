@@ -45,7 +45,7 @@ public class QuestRewardPhantasm extends QuestReward {
 			return;
 		}
 		
-		spell.affectTargets(frame, gameWrapper, false);
+		spell.affectTargets(frame, gameWrapper, false, null);
 		return;
 	}
 	

@@ -69,7 +69,7 @@ public class QuestRewardExorcise extends QuestReward {
 			}
 		}
 		
-		spell.affectTargets(frame, gameWrapper, true);
+		spell.affectTargets(frame, gameWrapper, true, null);
 	}
 	
 	public String getDescription() {

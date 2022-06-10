@@ -746,7 +746,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			SpellWrapper spell = (SpellWrapper)RealmUtility.chooseSpell(gameHandler.getMainFrame(),conflicts,false,false);
 			if (spell!=null) {
 				GameWrapper game = GameWrapper.findGame(character.getGameObject().getGameData());
-				spell.affectTargets(gameHandler.getMainFrame(),game,false);
+				spell.affectTargets(gameHandler.getMainFrame(),game,false,null);
 			}
 			character.clearSpellConflicts();
 			gameHandler.submitChanges();
