@@ -437,12 +437,11 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 				spell.removeTarget(target);
 				if (spell.getTargetCount()==0) {
 					spell.expireSpell();
-//System.err.println(spell.getGameObject().getName()+" is expired");
 				}
 			}
 			else {
 				spell.nullifySpell(includeNullifyEffects);
-//System.err.println(spell.getGameObject().getName()+" is nullified");
+				spell.restoreNullifiedSpells();
 			}
 		}
 	}
@@ -451,7 +450,6 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 			if (exclude==null || !exclude.getGameObject().equals(spell.getGameObject())) {
 				if (spell.isNullified()) {
 					spell.restoreSpell();
-//System.err.println(spell.getGameObject().getName()+" is restored after nullification");
 				}
 			}
 		}

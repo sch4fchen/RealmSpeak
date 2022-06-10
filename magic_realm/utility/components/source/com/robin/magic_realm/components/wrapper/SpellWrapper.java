@@ -51,6 +51,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	private static final String SPELL_INERT = "inert";		// Inert means that the spell is alive, but not functioning due to lack of color
 	private static final String SPELL_AFFECTED = "affected";	// indicates the spell has affected targets
 	private static final String SPELL_NULLIFIED = "nullified";	// A spell is nullified when the target is melted into mist, but will be restored when that condition ends
+	public static final String NULLIFIED_SPELLS = "nullified_spells"; // Other spells which have been nullified by this spell
 	private static final String SPELL_VIRTUAL = "virtual";		// A virtual spell is an instance of a real spell when cast using Enhanced Magic rules (i.e., the spell isn't tied up)
 	public static final String INCANTATION_TIE = "incantation_tie";
 	public static final String CASTER_ID = "caster_id";
@@ -88,6 +89,9 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	}
 	public int getConflictStrength() {
 		return getGameObject().getThisInt("spell_strength");
+	}
+	public boolean isTransform() {
+		return getName().toLowerCase().matches("transform");
 	}
 	public boolean isBenevolent() {
 		return getGameObject().hasThisAttribute(Constants.BENEVOLENT);
@@ -305,6 +309,19 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(getGameObject().getGameData());
 			sm.removeSpell(this);
 		}
+		restoreNullifiedSpells();
+	}
+	
+	public void restoreNullifiedSpells() {
+		ArrayList<String> spellsToRestore = getList(NULLIFIED_SPELLS);
+		if (spellsToRestore != null) {
+			GameData data = this.getGameData();
+			for (String spellId : spellsToRestore) {
+				SpellWrapper spell = new SpellWrapper(data.getGameObject(new Long(spellId)));
+				spell.restoreSpell();
+			}
+		}
+		removeAttribute(NULLIFIED_SPELLS);
 	}
 	
 	public void cancelSpell() {
@@ -334,6 +351,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		clear(SPELL_ALIVE);
 		clear(SPELL_AFFECTED);
 		clear(SPELL_NULLIFIED);
+		clear(NULLIFIED_SPELLS);
 		clear(SPELL_VIRTUAL);
 		clear(INCANTATION_TIE);
 		clear(TARGET_IDS);
@@ -583,8 +601,6 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		String duration = getGameObject().getThisAttribute("duration");
 		return ("instant".equals(duration));
 	}
-	
-
 	/**
 	 * @return		true if this spell is a move spell
 	 */
@@ -609,14 +625,12 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	public boolean hasPhaseChit() {
 		return getGameObject().hasThisAttribute("phaseChitID");
 	}
-	
 	/**
 	 * @return		true if this spell is a fly chit type of spell
 	 */
 	public boolean isFlySpell() {
 		return getGameObject().hasAttributeBlock(RealmComponent.FLY_CHIT);
 	}
-	
 	/**
 	 * @return	true if this is a "no cancel" spell, like the Flying Carpet spell
 	 */
@@ -844,12 +858,29 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			}
 			for (RealmComponent target : getTargets()) {
 				boolean affectTarget = true;
-				if (!isInstantSpell() && !isAttackSpell() && !isMoveSpell() && !isPhaseSpell()) {
+				if (isCombatSpell() || isDaySpell() || isPermanentSpell()) {
 					for (SpellWrapper spell : SpellUtility.getBewitchingSpells(target.getGameObject())) {
 						if (spell.isActive() && spell.getBoolean(SPELL_AFFECTED) && spell.getName().toLowerCase().matches(getName().toLowerCase())) {
+							affectTarget = false;
 							ignoredTargets = ignoredTargets + 1;
 							logs.add(getName() + " effect on " + target + " canceled, as target already affected by " + getName()+".");
-							affectTarget = false;
+						}
+					}
+				}
+				if (canConflict() && !isInstantSpell() && !isAttackSpell() && !isMoveSpell() && !isPhaseSpell()) {
+					int spellStrength = getConflictStrength();
+					for (SpellWrapper spell : SpellUtility.getBewitchingSpells(target.getGameObject())) {
+						if (spell.canConflict()) {
+							if (spell.getConflictStrength() < spellStrength) {
+								spell.nullifySpell(true);
+								addListItem(NULLIFIED_SPELLS, spell.getGameObject().getStringId());
+								logs.add(spell.getName() + " was nullified, as stronger spell (" + getName() + ") hit the " + target + ".");
+							}
+							if (spell.getConflictStrength() > spellStrength) {
+								affectTarget = false;
+								ignoredTargets = ignoredTargets + 1;
+								logs.add(getName() + " effect on " + target + " canceled, as target already affected by a stronger spell: " + spell.getName()+".");
+							}
 						}
 					}
 				}

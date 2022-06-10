@@ -508,13 +508,13 @@ public class BattleModel {
 						if (spell.canConflict()) {
 							ArrayList<SpellWrapper> targetedConflictingSpells = new ArrayList<>();
 							targetedConflictingSpells.add(spell);
-							int strongestSpell = 0;
+							int strongestSpellStrength = 0;
 							if (conflictingSpells.containsKey(target)) {
 								targetedConflictingSpells.addAll(conflictingSpells.get(target));
-								strongestSpell = conflictingSpellsStrength.get(target);
+								strongestSpellStrength = conflictingSpellsStrength.get(target);
 							}
 							conflictingSpells.put(target, targetedConflictingSpells);
-							if (spell.getConflictStrength() > strongestSpell) {
+							if (spell.getConflictStrength() > strongestSpellStrength) {
 								conflictingSpellsStrength.put(target, spell.getConflictStrength());
 							}
 						}
@@ -523,22 +523,23 @@ public class BattleModel {
 				for (RealmComponent target : conflictingSpells.keySet()) {
 					ArrayList<SpellWrapper> conflictingSpellsAtTarget = conflictingSpells.get(target);
 					if (conflictingSpellsAtTarget.size() <= 1) continue;
-					int strongestSpell = conflictingSpellsStrength.get(target);
+					int strongestSpellStrength = conflictingSpellsStrength.get(target);
 					int numberOfStrongestSpells = 0;
 					for (SpellWrapper spell : conflictingSpellsAtTarget) {
-						if (spell.getConflictStrength() < strongestSpell) {
-							logBattleInfo(spell.getName() + " was nullified as a stronger spell hit the " + target + " at the same speed of " + speed +".");
+						if (spell.getConflictStrength() < strongestSpellStrength) {
+							spell.addListItem(SpellWrapper.NULLIFIED_SPELLS, spell.getGameObject().getStringId());
 							spell.nullifySpell(true);
+							logBattleInfo(spell.getName() + " was nullified as a stronger spell hit the " + target + " at the same speed of " + speed +".");
 						}
-						if (spell.getConflictStrength() == strongestSpell) {
+						if (spell.getConflictStrength() == strongestSpellStrength) {
 							numberOfStrongestSpells = numberOfStrongestSpells + 1;
 						}
 					}
 					if (numberOfStrongestSpells >= 2) {
 						for (SpellWrapper spell : conflictingSpellsAtTarget) {
-							if (spell.getConflictStrength() == strongestSpell) {
-								logBattleInfo(spell.getName() + " was cancelled as multiple conflicting spells hit the " + target + " at the same speed of " + speed +".");
+							if (spell.getConflictStrength() == strongestSpellStrength && spell.isTransform()) {
 								spell.cancelSpell();
+								logBattleInfo(spell.getName() + " was cancelled as multiple transformed spells hit the " + target + " at the same speed of " + speed +".");
 							}
 						}
 					}
