@@ -211,6 +211,7 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 	 */
 	public void energizePermanentSpells(JFrame frame,GameWrapper game) {
 		HashLists<GameObject, SpellWrapper> conflicts = new HashLists<>();
+		ArrayList<SpellWrapper> affectingSpells = new ArrayList<>();
 		for (SpellWrapper spell:getSpells(PERMANENT_SPELLS)) {
 			if (spell.isInert()) { // no point energizing non-inert spells!
 				TileLocation loc = spell.getCurrentLocation();
@@ -243,11 +244,14 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 							}
 						}
 						else {
-							spell.affectTargets(frame,game,false);
+							affectingSpells.add(spell);
 						}
 					}
 				}
 			}
+		}
+		for (SpellWrapper energizedSpell : affectingSpells) {
+			energizedSpell.affectTargets(frame,game,false,affectingSpells);
 		}
 		
 		// Resolve conflicts per target (if any)
@@ -304,7 +308,7 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 				}
 			}
 			if (strongest!=null) {
-				strongest.affectTargets(frame,game,false);
+				strongest.affectTargets(frame,game,false,affectingSpells);
 			}
 		}
 	}

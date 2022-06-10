@@ -394,7 +394,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		if (isNullified()) {
 			if (!isInert()) {
 				GameWrapper game = GameWrapper.findGame(getGameObject().getGameData());
-				affectTargets(null,game,false,false);
+				affectTargets(null,game,false,false,null);
 			}
 			getGameObject().removeThisAttribute(SPELL_NULLIFIED);
 		}
@@ -744,10 +744,10 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		InfoObject io = new InfoObject(destClientName,info.getInfo());
 		return io;
 	}
-	public ArrayList<String> affectTargets(JFrame parent,GameWrapper theGame,boolean expireImmediately) {
-		return affectTargets(parent,theGame,expireImmediately,true);
+	public ArrayList<String> affectTargets(JFrame parent,GameWrapper theGame,boolean expireImmediately, ArrayList<SpellWrapper> simultaneousSpells) {
+		return affectTargets(parent,theGame,expireImmediately,true,simultaneousSpells);
 	}
-	public ArrayList<String> affectTargets(JFrame parent,GameWrapper theGame,boolean expireImmediately, boolean includeNullifyEffects) {
+	public ArrayList<String> affectTargets(JFrame parent,GameWrapper theGame,boolean expireImmediately, boolean includeNullifyEffects, ArrayList<SpellWrapper> simultaneousSpells) {
 		if (getBoolean(SPELL_AFFECTED)) {
 			// Don't affect twice in a row!!
 			return null;
@@ -803,7 +803,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		if (SwingUtilities.isEventDispatchThread()) {
 //System.out.println("Already EDT");
 			// NON threaded
-			return at.doAffect();
+			return at.doAffect(simultaneousSpells);
 		}
 		else {
 //System.out.println("Non EDT - invoke and wait");
@@ -835,10 +835,10 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		}
 		
 		public void run() {
-			doAffect();
+			doAffect(null);
 		}
 		
-		public ArrayList<String> doAffect() {
+		public ArrayList<String> doAffect(ArrayList<SpellWrapper> simultaneousSpells) {
 			// If we get here, then it's okay to proceed
 			energize();
 			
@@ -858,8 +858,14 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			}
 			for (RealmComponent target : getTargets()) {
 				boolean affectTarget = true;
-				if (isCombatSpell() || isDaySpell() || isPermanentSpell()) {
-					for (SpellWrapper spell : SpellUtility.getBewitchingSpells(target.getGameObject())) {
+				if (isCombatSpell() || isDaySpell() || isPermanentSpell() && simultaneousSpells!=null) {
+					ArrayList<SpellWrapper> bewichtedSpells = SpellUtility.getBewitchingSpells(target.getGameObject());
+					for (SpellWrapper simultaneousSpell : simultaneousSpells) {
+						if (bewichtedSpells.contains(simultaneousSpell)) {
+							bewichtedSpells.remove(simultaneousSpell);
+						}
+					}
+					for (SpellWrapper spell : bewichtedSpells) {
 						if (spell.isActive() && spell.getBoolean(SPELL_AFFECTED) && spell.getName().toLowerCase().matches(getName().toLowerCase())) {
 							affectTarget = false;
 							ignoredTargets = ignoredTargets + 1;

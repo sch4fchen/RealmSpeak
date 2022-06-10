@@ -592,11 +592,11 @@ public class BattleModel {
 				for (SpellWrapper spell : spellsAtSpeed) {
 					ArrayList<String> logs = new ArrayList<String>();
 					if (spell.isInstantSpell()) {
-						logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,true);
+						logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,true,spellsAtSpeed);
 
 					}
 					else if (spell.isCombatSpell() || spell.isDaySpell() || spell.isPermanentSpell() || spell.isPhaseSpell() || spell.isMoveSpell()) {
-						logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,false);
+						logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,false,spellsAtSpeed);
 					}
 					if (logs != null && !logs.isEmpty()) {
 						for (String log : logs) {
