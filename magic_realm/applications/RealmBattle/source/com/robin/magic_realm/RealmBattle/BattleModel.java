@@ -537,9 +537,15 @@ public class BattleModel {
 					}
 					if (numberOfStrongestSpells >= 2) {
 						for (SpellWrapper spell : conflictingSpellsAtTarget) {
-							if (spell.getConflictStrength() == strongestSpellStrength && spell.isTransform()) {
-								spell.cancelSpell();
-								logBattleInfo(spell.getName() + " was cancelled as multiple transformed spells hit the " + target + " at the same speed of " + speed +".");
+							if (spell.getConflictStrength() == strongestSpellStrength) {
+								if (spell.isTransform()) {
+									spell.cancelSpell();
+									logBattleInfo(spell.getName() + " was cancelled as multiple Transform spells hit the " + target + " at the same speed of " + speed +".");
+								}
+								if (spell.isAbsorbEssence()) {
+									spell.cancelSpell();
+									logBattleInfo(spell.getName() + " was cancelled as multiple Absorb Essence spells hit the " + target + " at the same speed of " + speed +".");
+								}
 							}
 						}
 					}
