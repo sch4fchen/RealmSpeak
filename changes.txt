@@ -2,11 +2,12 @@ Version 1.1.5.8 - Changes since 1.1.5.7
 QUEST UPDATE:
 # QuestRewardHireling: Fix removing cloned hireling from game
 NEW FEATURES:
-# Transmorph spells: Improve duplicate transmorph spells on same target at the same cast speed
-# Target cannot be bewitched by the same spell twice
+# Transmorph spells: Improve duplicate transmorph spells on same target
+# Spell casting: Target cannot be bewitched by the same spell twice
 BUGS/ISSUES:
 # Improve various effects and situations for cancelling (instead of expiring) spells
 # Cancel spells cast onto teleported character
+# Fix creating a new cache with optional rule "bounty points for discoveries"
 
 Version 1.1.5.7 - Changes since 1.1.5.6
 QUEST UPDATE:
