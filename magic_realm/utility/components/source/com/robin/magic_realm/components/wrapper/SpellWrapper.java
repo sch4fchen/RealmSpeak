@@ -900,7 +900,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 							if (spell.getConflictStrength() < spellStrength && !spell.isNullified()) {
 								spell.nullifySpell(true);
 								addListItem(NULLIFIED_SPELLS, spell.getGameObject().getStringId());
-								logs.add(spell.getName() + "(cast by "+getCaster().getName()+") was nullified, as stronger spell (" + getName() + ") hit the " + target + ".");
+								logs.add(spell.getName() + " (cast by "+spell.getCaster().getName()+") was nullified, as stronger spell (" + getName() + ") hit the " + target + ".");
 							}
 							if (spell.getConflictStrength() == spellStrength) {
 								affectTarget = false;
