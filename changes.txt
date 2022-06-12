@@ -6,7 +6,7 @@ NEW FEATURES:
 # Spell casting: Target cannot be bewitched by the same spell twice
 BUGS/ISSUES:
 # Improve various effects and situations for cancelling (instead of expiring) spells
-# Cancel spells cast onto teleported character
+# Cancel spells cast onto teleported, killed or absorbed characters or monsters
 # Fix creating a new cache with optional rule "bounty points for discoveries"
 
 Version 1.1.5.7 - Changes since 1.1.5.6

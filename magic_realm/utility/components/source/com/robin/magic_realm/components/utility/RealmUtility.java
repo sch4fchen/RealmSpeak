@@ -445,6 +445,16 @@ public class RealmUtility {
 		rc.clearTargets();
 		rc.clearOwner();
 		
+		// Clear attacking spells
+		for (SpellWrapper spell : smw.getAffectingSpells(rc.getGameObject())) {
+			if (spell.isActive() && !spell.hasAffectedTargets()) {
+				spell.removeTarget(rc.getGameObject());
+				if (spell.getTargetCount() == 0) {
+					spell.cancelSpell();
+				}
+			}
+		}
+		
 		// Make sure it is light side up for the next regeneration!
 		normalizeParticipant(rc);
 	}

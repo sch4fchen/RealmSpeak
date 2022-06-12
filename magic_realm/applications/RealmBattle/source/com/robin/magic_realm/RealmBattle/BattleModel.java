@@ -501,6 +501,7 @@ public class BattleModel {
 				// check for duplicate conflicting (transmorph) spells at same target
 				HashMap<RealmComponent,ArrayList<SpellWrapper>> conflictingSpells = new HashMap<>();
 				HashMap<RealmComponent,Integer> conflictingSpellsStrength = new HashMap<>();
+				HashMap<RealmComponent,SpellWrapper> strongestConflictingSpells = new HashMap<>();
 				for (SpellWrapper spell : spellsAtSpeed) {
 					if (!spell.isAlive()) continue; // might have already been cancelled!
 					ArrayList<RealmComponent> targets = spell.getTargets();
@@ -516,6 +517,7 @@ public class BattleModel {
 							conflictingSpells.put(target, targetedConflictingSpells);
 							if (spell.getConflictStrength() > strongestSpellStrength) {
 								conflictingSpellsStrength.put(target, spell.getConflictStrength());
+								strongestConflictingSpells.put(target, spell); 
 							}
 						}
 					}
@@ -527,7 +529,7 @@ public class BattleModel {
 					int numberOfStrongestSpells = 0;
 					for (SpellWrapper spell : conflictingSpellsAtTarget) {
 						if (spell.getConflictStrength() < strongestSpellStrength) {
-							spell.addListItem(SpellWrapper.NULLIFIED_SPELLS, spell.getGameObject().getStringId());
+							strongestConflictingSpells.get(target).addListItem(SpellWrapper.NULLIFIED_SPELLS, spell.getGameObject().getStringId());
 							spell.nullifySpell(true);
 							logBattleInfo(spell.getName() + " was nullified as a stronger spell hit the " + target + " at the same speed of " + speed +".");
 						}
@@ -538,9 +540,9 @@ public class BattleModel {
 					if (numberOfStrongestSpells >= 2) {
 						for (SpellWrapper spell : conflictingSpellsAtTarget) {
 							if (spell.getConflictStrength() == strongestSpellStrength) {
-								if (spell.isTransform()) {
+								if (spell.isTransform() || spell.isStoneGaze()) {
 									spell.cancelSpell();
-									logBattleInfo(spell.getName() + " was cancelled as multiple Transform spells hit the " + target + " at the same speed of " + speed +".");
+									logBattleInfo(spell.getName() + " was cancelled as multiple Transform or Stone Gaze spells hit the " + target + " at the same speed of " + speed +".");
 								}
 								if (spell.isAbsorbEssence()) {
 									spell.cancelSpell();
@@ -596,6 +598,7 @@ public class BattleModel {
 			for (Integer speed : allSpeeds) {
 				ArrayList<SpellWrapper> spellsAtSpeed = spells.getList(speed);
 				for (SpellWrapper spell : spellsAtSpeed) {
+					if (spell.isNullified() || !spell.isAlive()) continue;
 					ArrayList<String> logs = new ArrayList<String>();
 					if (spell.isInstantSpell()) {
 						logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,true,spellsAtSpeed);

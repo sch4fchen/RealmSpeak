@@ -93,6 +93,9 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	public boolean isTransform() {
 		return getName().toLowerCase().matches("transform");
 	}
+	public boolean isStoneGaze() {
+		return getName().toLowerCase().matches("stone gaze");
+	}
 	public boolean isAbsorbEssence() {
 		return getName().toLowerCase().matches("absorb essence");
 	}
@@ -331,6 +334,13 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		clearRedDieLock();
 		if (isAlive() && canExpire()) {
 			breakIncantation(true);
+			
+			// Restore any absorbed monsters
+			TileLocation loc = getCaster().getCurrentLocation(); // might be null if character is dead!
+			boolean casterIsDead = (new CombatWrapper(getCaster().getGameObject())).getKilledBy()!=null;
+				
+			getGameObject().getHoldAsGameObjects().stream()
+				.forEach(go -> restoreAbsorbedMonster(go, loc, casterIsDead));
 				
 			// Remove all targets
 			setBoolean(TARGET_IDS,false);
@@ -880,10 +890,15 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 					int spellStrength = getConflictStrength();
 					for (SpellWrapper spell : SpellUtility.getBewitchingSpells(target.getGameObject())) {
 						if (spell.canConflict()) {
-							if (spell.getConflictStrength() < spellStrength) {
+							if (spell.getConflictStrength() < spellStrength && !spell.isNullified()) {
 								spell.nullifySpell(true);
 								addListItem(NULLIFIED_SPELLS, spell.getGameObject().getStringId());
 								logs.add(spell.getName() + " was nullified, as stronger spell (" + getName() + ") hit the " + target + ".");
+							}
+							if (spell.getConflictStrength() == spellStrength) {
+								affectTarget = false;
+								ignoredTargets = ignoredTargets + 1;
+								logs.add(getName() + " effect on " + target + " canceled, as target already affected by a spell of same strength: " + spell.getName()+".");
 							}
 							if (spell.getConflictStrength() > spellStrength) {
 								affectTarget = false;
@@ -900,12 +915,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			
 			if (ignoredTargets > 0 && getTargets().size() == ignoredTargets) {
 				cancelSpell();
-				logs.add(getName() + " cancelled, as all targets already affected by " + getName()+".");
-				
-				QuestRequirementParams reqParams = new QuestRequirementParams();
-				reqParams.actionType = CharacterActionType.CastSpell;
-				reqParams.objectList.add(getGameObject());
-				getCaster().testQuestRequirements(parent, reqParams);
+				logs.add(getName() + " spell cancelled, as all targets already affected by " + getName()+" or a stronger spell.");
 				return logs;
 			}
 			
@@ -915,7 +925,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			if (expireImmediately) {
 				expireSpell();
 			}
-			
+						
 			QuestRequirementParams reqParams = new QuestRequirementParams();
 			reqParams.actionType = CharacterActionType.CastSpell;
 			reqParams.objectList.add(getGameObject());

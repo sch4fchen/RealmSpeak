@@ -20,6 +20,7 @@ import com.robin.magic_realm.components.utility.RealmLogging;
 import com.robin.magic_realm.components.utility.TreasureUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
+import com.robin.magic_realm.components.wrapper.SpellMasterWrapper;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class TransmorphEffect implements ISpellEffect {
@@ -330,6 +331,17 @@ public class TransmorphEffect implements ISpellEffect {
 			spell.getGameObject().add(target.getGameObject());
 			target.getGameObject().removeThisAttribute("clearing");
 			combat.removeAllAttackers();
+			
+			SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(target.getGameObject().getGameData());
+			for (SpellWrapper attackingSpell : sm.getAffectingSpells(target.getGameObject())) {
+				if (attackingSpell.isActive() && !attackingSpell.hasAffectedTargets()) {
+					attackingSpell.removeTarget(target.getGameObject());
+					if (attackingSpell.getTargetCount() == 0) {
+						attackingSpell.cancelSpell();
+					}
+				}
+			}
+			
 			RealmLogging.logMessage(spell.getCaster().getGameObject().getName(),"Absorbed the "+target.getGameObject().getName());
 		}
 		else {
