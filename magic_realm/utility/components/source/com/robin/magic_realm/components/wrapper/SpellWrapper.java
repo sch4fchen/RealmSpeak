@@ -81,6 +81,9 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	public String getBlockName() {
 		return SPELL_BLOCK_NAME;
 	}
+	public SpellWrapper getSpell() {
+		return this;
+	}
 	public ColorMagic getRequiredColorMagic() {
 		return ColorMagic.makeColorMagic(getGameObject().getThisAttribute("magic_color"),true);
 	}
@@ -871,8 +874,12 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			}
 			for (RealmComponent target : getTargets()) {
 				boolean affectTarget = true;
+				ArrayList<SpellWrapper> bewichtedSpells = SpellUtility.getBewitchingSpells(target.getGameObject());
+				if (bewichtedSpells.contains(getSpell())) {
+					bewichtedSpells.remove(getSpell());
+				}
+				
 				if (isCombatSpell() || isDaySpell() || isPermanentSpell() && simultaneousSpells!=null) {
-					ArrayList<SpellWrapper> bewichtedSpells = SpellUtility.getBewitchingSpells(target.getGameObject());
 					for (SpellWrapper simultaneousSpell : simultaneousSpells) {
 						if (bewichtedSpells.contains(simultaneousSpell)) {
 							bewichtedSpells.remove(simultaneousSpell);
@@ -882,28 +889,28 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 						if (spell.isActive() && spell.getBoolean(SPELL_AFFECTED) && spell.getName().toLowerCase().matches(getName().toLowerCase())) {
 							affectTarget = false;
 							ignoredTargets = ignoredTargets + 1;
-							logs.add(getName() + " effect on " + target + " canceled, as target already affected by " + getName()+".");
+							logs.add(getName() + " effect (cast by "+getCaster().getName()+") on" + target + " canceled, as target already affected by " + getName()+".");
 						}
 					}
 				}
 				if (canConflict() && !isInstantSpell() && !isAttackSpell() && !isMoveSpell() && !isPhaseSpell()) {
 					int spellStrength = getConflictStrength();
-					for (SpellWrapper spell : SpellUtility.getBewitchingSpells(target.getGameObject())) {
+					for (SpellWrapper spell : bewichtedSpells) {
 						if (spell.canConflict()) {
 							if (spell.getConflictStrength() < spellStrength && !spell.isNullified()) {
 								spell.nullifySpell(true);
 								addListItem(NULLIFIED_SPELLS, spell.getGameObject().getStringId());
-								logs.add(spell.getName() + " was nullified, as stronger spell (" + getName() + ") hit the " + target + ".");
+								logs.add(spell.getName() + "(cast by "+getCaster().getName()+") was nullified, as stronger spell (" + getName() + ") hit the " + target + ".");
 							}
 							if (spell.getConflictStrength() == spellStrength) {
 								affectTarget = false;
 								ignoredTargets = ignoredTargets + 1;
-								logs.add(getName() + " effect on " + target + " canceled, as target already affected by a spell of same strength: " + spell.getName()+".");
+								logs.add(getName() + " effect (cast by "+getCaster().getName()+") on " + target + " canceled, as target already affected by a spell of same strength: " + spell.getName()+".");
 							}
 							if (spell.getConflictStrength() > spellStrength) {
 								affectTarget = false;
 								ignoredTargets = ignoredTargets + 1;
-								logs.add(getName() + " effect on " + target + " canceled, as target already affected by a stronger spell: " + spell.getName()+".");
+								logs.add(getName() + " effect (cast by "+getCaster().getName()+") on " + target + " canceled, as target already affected by a stronger spell: " + spell.getName()+".");
 							}
 						}
 					}
@@ -915,7 +922,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			
 			if (ignoredTargets > 0 && getTargets().size() == ignoredTargets) {
 				cancelSpell();
-				logs.add(getName() + " spell cancelled, as all targets already affected by " + getName()+" or a stronger spell.");
+				logs.add(getName() + " spell (cast by "+getCaster().getName()+") cancelled, as all targets already affected by " + getName()+" or a stronger spell.");
 				return logs;
 			}
 			
