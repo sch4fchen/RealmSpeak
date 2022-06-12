@@ -498,6 +498,45 @@ public class BattleModel {
 			for (Integer speed : allSpeeds) {
 				ArrayList<SpellWrapper> spellsAtSpeed = spells.getList(speed);
 				
+				for (SpellWrapper spell : spellsAtSpeed) {
+					if (spell.isAlive() && !spell.targetsClearing()) { // might have already been cancelled!
+						ArrayList<CharacterChitComponent> unaffectedCasters = casters.getList(speed);
+						ArrayList<RealmComponent> targets = spell.getTargets();
+						targets.retainAll(spellCasters);
+						targets.removeAll(unaffectedCasters);
+						
+						if (targets.size()>0) {
+							for (RealmComponent target : targets) {
+								CombatWrapper combat = new CombatWrapper(target.getGameObject());
+								GameObject spellToCancelGo = combat.getCastSpell();
+								SpellWrapper spellToCancel = new SpellWrapper(spellToCancelGo);
+								
+								//attackSpeed cannot be fetched anymore, if spell already expired (e.g. dissolve spell didn't have a target)
+								if (spellToCancel.getIncantationObject() == null) continue;
+								if (spellToCancel.getAttackSpeed().getNum() <= speed) continue;
+																
+								String targetingClearing = "";
+								if (spellToCancel.targetsClearing()) {
+									targetingClearing = ", targeting the clearing";
+								}
+								
+								String message = spellToCancelGo.getName()
+										+", cast by the "
+										+target.getGameObject().getNameWithNumber()
+										+targetingClearing
+										+" (speed "+spellToCancel.getAttackSpeed().getNum()+")"
+										+",\n   was cancelled by "
+										+spell.getGameObject().getName()
+										+" (speed "+spell.getAttackSpeed().getNum()+")"
+										+", cast by the "
+										+spell.getCaster().getGameObject().getName()+".";
+								logBattleInfo(message);
+								spellToCancel.cancelSpell();
+							}
+						}
+					}
+				}
+				
 				// check for duplicate conflicting (transmorph) spells at same target
 				HashMap<RealmComponent,ArrayList<SpellWrapper>> conflictingSpells = new HashMap<>();
 				HashMap<RealmComponent,Integer> conflictingSpellsStrength = new HashMap<>();
@@ -548,45 +587,6 @@ public class BattleModel {
 									spell.cancelSpell();
 									logBattleInfo(spell.getName() + " was cancelled as multiple Absorb Essence spells hit the " + target + " at the same speed of " + speed +".");
 								}
-							}
-						}
-					}
-				}
-					
-				for (SpellWrapper spell : spellsAtSpeed) {
-					if (spell.isAlive() && !spell.targetsClearing()) { // might have already been cancelled!
-						ArrayList<CharacterChitComponent> unaffectedCasters = casters.getList(speed);
-						ArrayList<RealmComponent> targets = spell.getTargets();
-						targets.retainAll(spellCasters);
-						targets.removeAll(unaffectedCasters);
-						
-						if (targets.size()>0) {
-							for (RealmComponent target : targets) {
-								CombatWrapper combat = new CombatWrapper(target.getGameObject());
-								GameObject spellToCancelGo = combat.getCastSpell();
-								SpellWrapper spellToCancel = new SpellWrapper(spellToCancelGo);
-								
-								//attackSpeed cannot be fetched anymore, if spell already expired (e.g. dissolve spell didn't have a target)
-								if (spellToCancel.getIncantationObject() == null) continue;
-								if (spellToCancel.getAttackSpeed().getNum() <= speed) continue;
-																
-								String targetingClearing = "";
-								if (spellToCancel.targetsClearing()) {
-									targetingClearing = ", targeting the clearing";
-								}
-								
-								String message = spellToCancelGo.getName()
-										+", cast by the "
-										+target.getGameObject().getNameWithNumber()
-										+targetingClearing
-										+" (speed "+spellToCancel.getAttackSpeed().getNum()+")"
-										+",\n   was cancelled by "
-										+spell.getGameObject().getName()
-										+" (speed "+spell.getAttackSpeed().getNum()+")"
-										+", cast by the "
-										+spell.getCaster().getGameObject().getName()+".";
-								logBattleInfo(message);
-								spellToCancel.cancelSpell();
 							}
 						}
 					}
