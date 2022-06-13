@@ -34,7 +34,7 @@ public class QuestRewardTeleportChoose extends QuestReward {
 
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		if (frame.getTitle().matches("RealmSpeak Quest Tester")) return;
-		SpellUtility.doTeleport(frame, getReason(), character,getTeleportType());
+		SpellUtility.doTeleport(frame, getReason(), character,getTeleportType(),0);
 	}
 	
 	private SpellUtility.TeleportType getTeleportType() {
