@@ -1,6 +1,8 @@
 package com.robin.magic_realm.components.effect;
 
+import com.robin.magic_realm.components.utility.RealmLogging;
 import com.robin.magic_realm.components.wrapper.SpellMasterWrapper;
+import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class NullifyEffect implements ISpellEffect {
 
@@ -11,7 +13,17 @@ public class NullifyEffect implements ISpellEffect {
 		}
 		
 		SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(context.Spell.getGameObject().getGameData());
-		sm.nullifyBewitchingSpells(context.Target.getGameObject(),context.Spell);
+		for (SpellWrapper spell:sm.getAffectingSpells(context.Target.getGameObject())) {
+			if (context.Spell.getGameObject().equals(spell.getGameObject())) continue;
+			if (spell.isActive() && spell.hasAffectedTargets()) {
+				spell.nullifySpell(false);
+				RealmLogging.logMessage(context.getCharacterCaster().getName(),"Spell effect nullified "+spell.getName() + " bewitching "+context.Target+".");
+			}
+			else {
+				spell.cancelSpell();
+				RealmLogging.logMessage(context.getCharacterCaster().getName(),"Spell effect canceled "+spell.getName() + " (cast by "+spell.getCaster().getName()+", targeting " +context.Target+").");
+			}
+		}
 	}
 
 	@Override

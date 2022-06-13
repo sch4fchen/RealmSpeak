@@ -426,26 +426,14 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 		}
 	}
 	public void expireBewitchingSpells(GameObject target) {
-		expireBewitchingSpells(target,null,false,true);
+		expireBewitchingSpells(target,null);
 	}
 	public void expireBewitchingSpells(GameObject target,SpellWrapper exclude) {
-		expireBewitchingSpells(target,exclude,false,true);
-	}
-	public void nullifyBewitchingSpells(GameObject target,SpellWrapper exclude) {
-		expireBewitchingSpells(target,exclude,true,false);
-	}
-	private void expireBewitchingSpells(GameObject target,SpellWrapper exclude,boolean nullify,boolean includeNullifyEffects) {
 		for (SpellWrapper spell:getAffectingSpells(target)) {
 			if (exclude!=null && exclude.getGameObject().equals(spell.getGameObject())) continue;
-			if (!nullify) {
-				spell.removeTarget(target);
-				if (spell.getTargetCount()==0) {
-					spell.expireSpell();
-				}
-			}
-			else {
-				spell.nullifySpell(includeNullifyEffects);
-				spell.restoreNullifiedSpells();
+			spell.removeTarget(target);
+			if (spell.getTargetCount()==0) {
+				spell.expireSpell();
 			}
 		}
 	}
