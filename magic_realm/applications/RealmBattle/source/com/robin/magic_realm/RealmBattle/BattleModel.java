@@ -570,7 +570,7 @@ public class BattleModel {
 						if (spell.getConflictStrength() < strongestSpellStrength) {
 							strongestConflictingSpells.get(target).addListItem(SpellWrapper.NULLIFIED_SPELLS, spell.getGameObject().getStringId());
 							spell.nullifySpell(true);
-							logBattleInfo(spell.getName() + " was nullified as a stronger spell hit the " + target + " at the same speed of " + speed +".");
+							logBattleInfo(spell.getName() + " (cast by "+spell.getCaster().getName()+") was nullified as a stronger spell hit the " + target + " at the same speed of " + speed +".");
 						}
 						if (spell.getConflictStrength() == strongestSpellStrength) {
 							numberOfStrongestSpells = numberOfStrongestSpells + 1;
@@ -581,12 +581,11 @@ public class BattleModel {
 							if (spell.getConflictStrength() == strongestSpellStrength) {
 								if (spell.isTransform() || spell.isStoneGaze()) {
 									spell.cancelSpell();
-									logBattleInfo(spell.getName() + " was cancelled as multiple Transform or Stone Gaze spells hit the " + target + " at the same speed of " + speed +".");
+									logBattleInfo(spell.getName() + " (cast by "+spell.getCaster().getName()+") was cancelled as multiple Transform or Stone Gaze spells hit the " + target + " at the same speed of " + speed +".");
 								}
 								if (spell.isAbsorbEssence()) {
 									spell.cancelSpell();
-									logBattleInfo(spell.getName() + " was cancelled as multiple Absorb Essence spells hit the " + target + " at the same speed of " + speed +".");
-								}
+									logBattleInfo(spell.getName() + " (cast by "+spell.getCaster().getName()+") was cancelled as multiple Absorb Essence spells hit the " + target + " at the same speed of " + speed +".");								}
 							}
 						}
 					}

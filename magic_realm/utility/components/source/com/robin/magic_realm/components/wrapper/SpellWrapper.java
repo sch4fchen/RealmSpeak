@@ -900,17 +900,17 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 							if (spell.getConflictStrength() < spellStrength && !spell.isNullified()) {
 								spell.nullifySpell(true);
 								addListItem(NULLIFIED_SPELLS, spell.getGameObject().getStringId());
-								logs.add(spell.getName() + " (cast by "+spell.getCaster().getName()+") was nullified, as stronger spell (" + getName() + ") hit the " + target + ".");
+								logs.add(spell.getName() + " (cast by "+spell.getCaster().getName()+") was nullified, as stronger spell ("+getName()+", cast by "+getCaster()+") hit the " + target + ".");
 							}
 							if (spell.getConflictStrength() == spellStrength) {
 								affectTarget = false;
 								ignoredTargets = ignoredTargets + 1;
-								logs.add(getName() + " effect (cast by "+getCaster().getName()+") on " + target + " canceled, as target already affected by a spell of same strength: " + spell.getName()+".");
+								logs.add(getName() + " effect (cast by "+getCaster().getName()+") on " + target + " canceled, as target already affected by a spell of same strength: " + spell.getName()+" (cast by "+spell.getCaster().getName()+").");
 							}
 							if (spell.getConflictStrength() > spellStrength) {
 								affectTarget = false;
 								ignoredTargets = ignoredTargets + 1;
-								logs.add(getName() + " effect (cast by "+getCaster().getName()+") on " + target + " canceled, as target already affected by a stronger spell: " + spell.getName()+".");
+								logs.add(getName() + " effect (cast by "+getCaster().getName()+") on " + target + " canceled, as target already affected by a stronger spell: " + spell.getName()+" (cast by "+spell.getCaster().getName()+").");
 							}
 						}
 					}
