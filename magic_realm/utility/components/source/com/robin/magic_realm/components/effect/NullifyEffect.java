@@ -15,6 +15,7 @@ public class NullifyEffect implements ISpellEffect {
 		SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(context.Spell.getGameObject().getGameData());
 		for (SpellWrapper spell:sm.getAffectingSpells(context.Target.getGameObject())) {
 			if (context.Spell.getGameObject().equals(spell.getGameObject())) continue;
+			if (spell.isNullified()) continue;
 			if (spell.isActive() && spell.hasAffectedTargets()) {
 				spell.nullifySpell(false);
 				RealmLogging.logMessage(context.getCharacterCaster().getName(),"Spell effect nullified "+spell.getName() + " bewitching "+context.Target+".");
