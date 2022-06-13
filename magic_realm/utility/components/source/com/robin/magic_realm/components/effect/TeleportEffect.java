@@ -14,7 +14,8 @@ public class TeleportEffect implements ISpellEffect {
 		SpellUtility.doTeleport(context.Parent,
 				context.Spell.getGameObject().getName(),
 				context.getCharacterTarget(),
-				_teleportType);
+				_teleportType,
+				context.Spell.getAttackSpeed().getNum());
 	}
 
 	@Override

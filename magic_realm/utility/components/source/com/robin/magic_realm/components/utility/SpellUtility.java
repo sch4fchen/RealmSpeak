@@ -97,7 +97,7 @@ public class SpellUtility {
 		return false;
 	}
 	
-	public static void doTeleport(JFrame frame,String reason,CharacterWrapper character,TeleportType teleportType) {
+	public static void doTeleport(JFrame frame,String reason,CharacterWrapper character,TeleportType teleportType,int teleportSpeed) {
 		// Get the map to pop to the forefront, centered on the clearing, and the move possibilities marked
 		TileLocation chosen;
 		TileLocation planned = character.getPlannedLocation();
@@ -183,10 +183,11 @@ public class SpellUtility {
 		CombatWrapper.clearAllCombatInfo(character.getGameObject());
 		SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(character.getGameData());
 		for (SpellWrapper spell : sm.getAffectingSpells(character.getGameObject())) {
-			if (spell.isActive() && !spell.hasAffectedTargets()) {
+			if (spell.isActive() && !spell.hasAffectedTargets() && spell.getAttackSpeed().getNum() > teleportSpeed) {
 				spell.removeTarget(character.getGameObject());
 				if (spell.getTargetCount() == 0) {
 					spell.cancelSpell();
+					RealmLogging.logMessage(character.getName(), "Targeted spell "+spell.getName() + " canceled, as "+character.getName()+" teleported.");
 				}
 			}
 		}

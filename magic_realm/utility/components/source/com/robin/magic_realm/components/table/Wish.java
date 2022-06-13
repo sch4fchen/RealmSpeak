@@ -37,6 +37,7 @@ import com.robin.magic_realm.components.wrapper.*;
 public class Wish extends RealmTable {
 	
 	public static final String KEY = "Wish";
+	private int spellSpeed = 0;
 	private WindowAdapter visionListener = new WindowAdapter() {
 		public void windowClosed(WindowEvent ev) {
 			RealmComponentOptionChooser source = (RealmComponentOptionChooser)ev.getSource();
@@ -58,6 +59,11 @@ public class Wish extends RealmTable {
 	
 	public Wish(JFrame frame) {
 		super(frame,null);
+		this.spellSpeed = 0;
+	}
+	public Wish(JFrame frame,int spellSpeed) {
+		super(frame,null);
+		this.spellSpeed = spellSpeed;
 	}
 	public String getTableName(boolean longDescription) {
 		return "Wish";
@@ -95,7 +101,7 @@ public class Wish extends RealmTable {
 	public String applyOne(CharacterWrapper character) {
 		JOptionPane.showMessageDialog(getParentFrame(),"\"I wish I were elsewhere\"",getWishTitle(character),JOptionPane.INFORMATION_MESSAGE,getRollerImage());
 		// You teleport to any clearing of your choice.
-		SpellUtility.doTeleport(getParentFrame(),"\"I wish I were elsewhere\"",character,TeleportType.ChooseAny);
+		SpellUtility.doTeleport(getParentFrame(),"\"I wish I were elsewhere\"",character,TeleportType.ChooseAny,this.spellSpeed);
 		return RESULT[0];
 	}
 
@@ -147,7 +153,7 @@ public class Wish extends RealmTable {
 					// First, check and see if target character is owned by the current player
 //					if (character.getPlayerName().equals(victim.getPlayerName())) {
 					// For now, ignore letting other player do it.
-						SpellUtility.doTeleport(getParentFrame(),"\"I wish you were elsewhere\"",victim,TeleportType.ChooseAny);
+						SpellUtility.doTeleport(getParentFrame(),"\"I wish you were elsewhere\"",victim,TeleportType.ChooseAny,this.spellSpeed);
 //					}
 //					else {
 //						// This is harder!

@@ -334,10 +334,11 @@ public class TransmorphEffect implements ISpellEffect {
 			
 			SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(target.getGameObject().getGameData());
 			for (SpellWrapper attackingSpell : sm.getAffectingSpells(target.getGameObject())) {
-				if (attackingSpell.isActive() && !attackingSpell.hasAffectedTargets()) {
+				if (attackingSpell.isActive() && !attackingSpell.hasAffectedTargets() &&  attackingSpell.getGameObject() != spell.getGameObject()) {
 					attackingSpell.removeTarget(target.getGameObject());
 					if (attackingSpell.getTargetCount() == 0) {
 						attackingSpell.cancelSpell();
+						RealmLogging.logMessage(attackingSpell.getCaster().getGameObject().getName(),"Spell "+attackingSpell.getName() + " canceled, as "+target+" was absorbed.");
 					}
 				}
 			}
