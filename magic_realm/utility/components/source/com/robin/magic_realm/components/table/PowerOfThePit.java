@@ -137,7 +137,7 @@ public class PowerOfThePit extends RealmTable {
 				"Carried Away\n\n"
 				+"The target is instantly killed.\n\n     "+character.getGameObject().getName()+" was killed.");
 		// The target is instantly killed.
-		kill(character.getGameObject());
+		kill(character.getGameObject(),speed.getNum());
 		if (!makeDeadWhenKilled) {
 			CombatWrapper tile = new CombatWrapper(character.getCurrentLocation().tile.getGameObject());
 			tile.addHitResult();
@@ -174,7 +174,7 @@ public class PowerOfThePit extends RealmTable {
 						}
 					}
 					if (!hasAtLeastOneGoodChit) {
-						kill(rc.getGameObject());
+						kill(rc.getGameObject(),speed.getNum());
 						killed.add(rc);
 						killedAtLeastOne = true;
 					}
@@ -219,7 +219,7 @@ public class PowerOfThePit extends RealmTable {
 		message.append("All of the target's active chits that show effort asterisks become wounded.\n");
 		message.append("Chits that are already fatigued or that show no asterisks are not affected.");
 		if (hasChits && !hasAtLeastOneGoodChit) {
-			kill(character.getGameObject());
+			kill(character.getGameObject(),speed.getNum());
 			ArrayList<RealmComponent> killed = new ArrayList<RealmComponent>();
 			killed.add(RealmComponent.getRealmComponent(character.getGameObject()));
 			if (!makeDeadWhenKilled) {
@@ -319,7 +319,7 @@ public class PowerOfThePit extends RealmTable {
 							}
 						}
 						if (power.strongerThan(strength)) {
-							kill(rc.getGameObject());
+							kill(rc.getGameObject(),speed.getNum());
 							killed.add(rc);
 							killedAtLeastOne = true;	
 						}
@@ -334,7 +334,7 @@ public class PowerOfThePit extends RealmTable {
 		}
 		return killed;
 	}
-	private void kill(GameObject go) {
+	private void kill(GameObject go,int attackSpeed) {
 		RealmComponent attacker =RealmComponent.getRealmComponent(caster); 
 		RealmComponent victim = RealmComponent.getRealmComponent(go);
 		BattleUtility.handleSpoilsOfWar(attacker,victim);
@@ -342,7 +342,7 @@ public class PowerOfThePit extends RealmTable {
 		kills.add(go);
 		
 		if (makeDeadWhenKilled) {
-			RealmUtility.makeDead(RealmComponent.getRealmComponent(go));
+			RealmUtility.makeDead(RealmComponent.getRealmComponent(go),attackSpeed);
 		}
 		else {
 			CombatWrapper combat = new CombatWrapper(go);
