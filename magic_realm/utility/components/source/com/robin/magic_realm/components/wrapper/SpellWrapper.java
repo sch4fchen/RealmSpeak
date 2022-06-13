@@ -878,15 +878,15 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 				if (bewichtedSpells.contains(getSpell())) {
 					bewichtedSpells.remove(getSpell());
 				}
+				for (SpellWrapper simultaneousSpell : simultaneousSpells) {
+					if (bewichtedSpells.contains(simultaneousSpell)) {
+						bewichtedSpells.remove(simultaneousSpell);
+					}
+				}
 				
 				if (isCombatSpell() || isDaySpell() || isPermanentSpell() && simultaneousSpells!=null) {
-					for (SpellWrapper simultaneousSpell : simultaneousSpells) {
-						if (bewichtedSpells.contains(simultaneousSpell)) {
-							bewichtedSpells.remove(simultaneousSpell);
-						}
-					}
 					for (SpellWrapper spell : bewichtedSpells) {
-						if (spell.isActive() && spell.getBoolean(SPELL_AFFECTED) && spell.getName().toLowerCase().matches(getName().toLowerCase())) {
+						if (spell.isActive() && spell.hasAffectedTargets() && spell.getName().toLowerCase().matches(getName().toLowerCase())) {
 							affectTarget = false;
 							ignoredTargets = ignoredTargets + 1;
 							logs.add(getName() + " effect (cast by "+getCaster().getName()+") on" + target + " canceled, as target already affected by " + getName()+".");
@@ -896,7 +896,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 				if (canConflict() && !isInstantSpell() && !isAttackSpell() && !isMoveSpell() && !isPhaseSpell()) {
 					int spellStrength = getConflictStrength();
 					for (SpellWrapper spell : bewichtedSpells) {
-						if (spell.canConflict()) {
+						if (spell.canConflict() && spell.hasAffectedTargets()) {
 							if (spell.getConflictStrength() < spellStrength && !spell.isNullified()) {
 								spell.nullifySpell(true);
 								addListItem(NULLIFIED_SPELLS, spell.getGameObject().getStringId());
