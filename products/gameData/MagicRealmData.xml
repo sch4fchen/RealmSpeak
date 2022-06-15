@@ -30938,6 +30938,22 @@
         <attribute item="" />
       </AttributeBlock>
     </GameObject>
+	    <GameObject id="1163" name="Sleep">
+      <AttributeBlock blockName="this">
+        <attribute spell="III" />
+        <attribute duration="instant" />
+        <attribute target="clearing" />
+        <attribute text="End combat in clearing." />
+        <attribute magic_color="gold" />
+		<attribute cease_combat="" />
+        <attribute host_okay="" />
+        <attribute new_spells_2="" />
+        <attribute learnable="" />
+		<attributeList keyName="target_clearing">
+			<attributeVal N0="clearing" />
+        </attributeList>
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
