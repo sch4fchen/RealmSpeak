@@ -17104,10 +17104,7 @@
       <AttributeBlock blockName="this">
         <attribute phase_chit="" />
         <attribute text="Protection from Magic" />
-      </AttributeBlock>
-      <AttributeBlock blockName="effects">
         <attribute magic_protection="" />
-		<attribute nullify="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="728" name="Firedrake">
@@ -30915,6 +30912,30 @@
         <attribute path_7_to="clearing_5" />
         <attribute path_7_type="normal" />
         <attribute path_7_arc="54.6,63.8" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1162" name="Magic Shield">
+      <AttributeBlock blockName="this">
+        <attribute spell="IV" />
+        <attribute duration="combat" />
+        <attribute target="character" />
+        <attribute text="Functions like a shield with tremendous vulnerability and light weight." />
+        <attribute magic_color="purple" />
+        <attribute host_okay="" />
+        <attribute new_spells_2="" />
+        <attribute learnable="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="magic_shield">
+        <attribute vulnerability="T" />
+        <attribute weight="L" />
+        <attribute shield="" />
+        <attribute armor_choice="" />
+        <attribute armor="" />
+        <attribute icon_type="shield" />
+        <attribute facing="dark" />
+        <attribute armor_row="1" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
       </AttributeBlock>
     </GameObject>
   </objects>
