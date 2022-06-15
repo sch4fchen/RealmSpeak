@@ -99,6 +99,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	protected JCheckBox mixExpansionTilesEnabled;
 	protected JCheckBox includeExpansionSpells;
 	protected JCheckBox includeNewSpells;
+	protected JCheckBox includeNewSpells2;
 	protected JCheckBox switchDaySpells;
 	
 	protected JCheckBox multiBoardEnabled;
@@ -135,6 +136,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		mixExpansionTilesEnabled.setSelected(hostPrefs.getMixExpansionTilesEnabled());
 		includeExpansionSpells.setSelected(hostPrefs.getIncludeExpansionSpells());
 		includeNewSpells.setSelected(hostPrefs.getIncludeNewSpells());
+		includeNewSpells2.setSelected(hostPrefs.getIncludeNewSpells2());
 		switchDaySpells.setSelected(hostPrefs.getSwitchDaySpells());
 		multiBoardEnabled.setSelected(hostPrefs.getMultiBoardEnabled());
 		multiBoardCount.setValue(hostPrefs.getMultiBoardCount());
@@ -209,6 +211,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		
 		includeExpansionSpells.setSelected(prefMan.getBoolean("includeExpansionSpells"));
 		includeNewSpells.setSelected(prefMan.getBoolean("includeNewSpells"));
+		includeNewSpells2.setSelected(prefMan.getBoolean("includeNewSpells2"));
 		switchDaySpells.setSelected(prefMan.getBoolean("switchDaySpells"));
 		
 		multiBoardEnabled.setSelected(prefMan.getBoolean("multiBoardEnabled"));
@@ -265,6 +268,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		prefMan.set("mixExpansionTilesEnabled",mixExpansionTilesEnabled.isSelected());
 		prefMan.set("includeExpansionSpells",includeExpansionSpells.isSelected());
 		prefMan.set("includeNewSpells", includeNewSpells.isSelected());
+		prefMan.set("includeNewSpells2", includeNewSpells2.isSelected());
 		prefMan.set("switchDaySpells", switchDaySpells.isSelected());
 		prefMan.set("multiBoardEnabled",multiBoardEnabled.isSelected());
 		prefMan.set("multiBoardCount",multiBoardCount.getValue());
@@ -373,6 +377,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		mixExpansionTilesEnabled.setEnabled(editMode && variant.getAllowBoardVariants());
 		includeExpansionSpells.setEnabled(editMode && variant.getAllowBoardVariants());
 		includeNewSpells.setEnabled(editMode);
+		includeNewSpells2.setEnabled(editMode);
 		switchDaySpells.setEnabled(editMode);
 		multiBoardEnabled.setEnabled(editMode);
 		multiBoardCount.setEnabled(editMode);
@@ -768,7 +773,13 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			box = group.createLabelLine("New Spells");
 				includeNewSpells = notifier.getCheckBox("");
 			box.add(includeNewSpells);
-			box.add(Box.createHorizontalGlue());	
+			box.add(Box.createHorizontalGlue());
+			
+		boardSetupBox.add(box);
+			box = group.createLabelLine("New Spells 2");
+				includeNewSpells2 = notifier.getCheckBox("");
+			box.add(includeNewSpells2);
+			box.add(Box.createHorizontalGlue());
 			
 		boardSetupBox.add(box);
 			box = group.createLabelLine("Upgrade Day Spells");
@@ -1061,6 +1072,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		mixExpansionTilesEnabled.setSelected(false);
 		includeExpansionSpells.setSelected(false);
 		includeNewSpells.setSelected(false);
+		includeNewSpells2.setSelected(false);
 		switchDaySpells.setSelected(false);
 		multiBoardEnabled.setSelected(false);
 		multiBoardCount.setValue(2);
@@ -1140,6 +1152,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		hostPrefs.setMixExpansionTilesEnabled(mixExpansionTilesEnabled.isSelected() && getSelectedGameVariant().getAllowBoardVariants());
 		hostPrefs.setIncludeExpansionSpells(includeExpansionSpells.isSelected() && getSelectedGameVariant().getAllowBoardVariants());
 		hostPrefs.setIncludeNewSpells(includeNewSpells.isSelected());
+		hostPrefs.setIncludeNewSpells2(includeNewSpells2.isSelected());
 		hostPrefs.setSwitchDaySpells(switchDaySpells.isSelected());
 		hostPrefs.setMultiBoardEnabled(multiBoardEnabled.isSelected());
 		hostPrefs.setMultiBoardCount(multiBoardCount.getValue());

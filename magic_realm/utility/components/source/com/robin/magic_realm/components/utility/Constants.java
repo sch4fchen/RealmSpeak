@@ -379,6 +379,8 @@ public class Constants {
 	public static final String PHASE_CHIT_ID = "phaseChitID";
 	public static final String PHASE_CHIT_EFFECTS = "phase_chit_effects";
 	public static final String EFFECTS = "effects";
+	public static final String MAGIC_SHIELD = "magic_shield";
+	public static final String MAGIC_SHIELD_ID = "magicShieldId";
 	
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";

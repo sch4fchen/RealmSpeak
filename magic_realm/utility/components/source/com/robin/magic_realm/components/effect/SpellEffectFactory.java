@@ -125,6 +125,10 @@ public class SpellEffectFactory {
 			case "whistle for monsters": return new ISpellEffect[]{new MoveSoundEffect()};
 			case "witch's brew": return new ISpellEffect[]{new ChitChangeEffect()};
 			
+			// new spells
+			
+			case "magic shield": return new ISpellEffect[]{new MagicShieldEffect()}; 
+			
 			default: return null;
 		}
 	}

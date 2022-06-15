@@ -275,6 +275,22 @@ public class BattleBuilder extends JFrame {
 			if (setup.getDidStart()) {
 				setup.savePrefsToLocalConfiguration();
 				hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
+				
+				// load spells
+				if (hostPrefs.getIncludeExpansionSpells()) {
+					prepExpansionSpells("rw_expansion_1", gameData);
+				}
+				if(hostPrefs.getIncludeNewSpells()){
+					prepExpansionSpells("new_spells_1", gameData);
+				}
+				if(hostPrefs.getIncludeNewSpells2()){
+					prepExpansionSpells("new_spells_2", gameData);
+				}
+				if(hostPrefs.getSwitchDaySpells()){
+					prepExpansionSpells("upg_day_spells", gameData);
+					removeSpells("upg_swap_out", gameData);
+				}
+				
 				updatePool();
 				
 				// Add a custom character keylist
@@ -334,6 +350,20 @@ public class BattleBuilder extends JFrame {
 	private void updatePool() {
 		pool = new GamePool(gameData.getGameObjects());
 		pool = new GamePool(pool.find(hostPrefs.getGameKeyVals()));
+	}
+	private void prepExpansionSpells(String spellKey, GameData data) {
+		GamePool pool = new GamePool(data.getGameObjects());
+		ArrayList<GameObject> expansionSpells = pool.find("spell," + spellKey);
+		for (GameObject go:expansionSpells) {
+			go.setThisKeyVals(hostPrefs.getGameKeyVals());
+		}
+	}
+	private void removeSpells(String spellKey, GameData data){
+		GamePool pool = new GamePool(data.getGameObjects());
+		ArrayList<GameObject> toRemove = pool.find("spell," + spellKey);
+		for (GameObject go:toRemove) {
+			go.stripThisKeyVals(hostPrefs.getGameKeyVals());
+		}	
 	}
 	private boolean setupBuilderWithData() {
 		// Fetch battleClearing

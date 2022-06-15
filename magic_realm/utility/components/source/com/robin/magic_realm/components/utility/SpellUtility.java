@@ -413,20 +413,6 @@ the Appearance Chart, he instantly becomes unhired.
 		int newspeed = spellWrapper.getGameObject().getThisInt(attributeValue);
 		chit.getGameObject().setThisAttribute("move_speed_change", newspeed);
 	}
-	
-	public static void createPhaseChit(RealmComponent target, GameObject spell){
-		CharacterWrapper character = new CharacterWrapper(target.getGameObject());
-		GameObject phaseChit = spell.getGameData().createNewObject();
-		
-		phaseChit.setName(spell.getName()+" Phase Chit ("+character.getGameObject().getName()+")");
-		phaseChit.copyAttributeBlockFrom(spell,Constants.PHASE_CHIT);
-		phaseChit.renameAttributeBlock(Constants.PHASE_CHIT,"this");
-		phaseChit.copyAttributeBlockFrom(spell,Constants.PHASE_CHIT_EFFECTS);
-		phaseChit.renameAttributeBlock(Constants.PHASE_CHIT_EFFECTS,Constants.EFFECTS);
-		phaseChit.setThisAttribute(Constants.SPELL_ID, spell.getStringId());
-		spell.setThisAttribute(Constants.PHASE_CHIT_ID,phaseChit.getStringId());
-		character.getGameObject().add(phaseChit);
-	}
 
 	public static boolean targetsAreBeingAttackedByHirelings(ArrayList<GameObject>attackers, GameObject caster) {
 		boolean result = attackers.stream()
