@@ -618,6 +618,11 @@ public class BattleModel {
 					// it did - no other spells go into effect, and all targets are cleared
 					break;
 				}
+				
+				if (tile.isSleepClearing(battleLocation.clearing.getNum())) {
+					logBattleInfo("Clearing falls asleep. Combat ceases.");
+					break;
+				}
 			}
 		
 			// Need to check battle model - if nobody is left in the clearing to fight, things should get reset

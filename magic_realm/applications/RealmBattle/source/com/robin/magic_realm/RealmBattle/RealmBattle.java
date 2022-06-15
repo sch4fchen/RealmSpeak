@@ -207,9 +207,23 @@ public class RealmBattle {
 		logger.fine("-------");
 		TileLocation currentCombatLocation = getCurrentCombatLocation(data);
 		if (currentCombatLocation!=null && currentCombatLocation.hasClearing()) {
+						
+			CombatWrapper tileCombatInfos = new CombatWrapper (currentCombatLocation.tile.getGameObject());
+			if (tileCombatInfos.isSleepClearing(currentCombatLocation.clearing.getNum())) {
+				expireWishStrength(currentCombatLocation,data);
+				disengage(currentCombatLocation,data);
+				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
+				if (hostPrefs.hasPref(Constants.OPT_ENHANCED_MAGIC)) {
+					// For Enhanced Magic, incantations are broken every round to free up magic chits again!
+					SpellMasterWrapper.getSpellMaster(data).breakAllIncantations(false);
+				}
+				SpellMasterWrapper.getSpellMaster(data).expirePhaseSpells();
+				endCombatInClearing(currentCombatLocation,data);
+				updateClearingOrder(data);
+				return nextCombatAction(host,data); // recurses!
+			}
 			
 			HashLists<Integer,CharacterWrapper> lists = findCharacterStates(currentCombatLocation,data);
-			
 			ArrayList<Integer> states = new ArrayList<>(lists.keySet());
 			
 			if (states.isEmpty()) { // this can happen when a character runs!  (I think...)
@@ -696,7 +710,7 @@ public class RealmBattle {
 		}
 
 		TileLocation test = getCurrentCombatLocation(data); // if test is null, then all characters in the clearing are dead!
-		if (test==null || (model.getAllOwningCharacters().isEmpty()) || (tile.lastTwoAreMisses() && !model.arePinningMonsters())) {
+		if (test==null || (model.getAllOwningCharacters().isEmpty()) || (tile.lastTwoAreMisses() && !model.arePinningMonsters()) || tile.isSleepClearing(location.clearing.getNum())) {
 			// Combat is over.  Move to the next clearing.
 			endCombatInClearing(location,data);
 			updateClearingOrder(data);

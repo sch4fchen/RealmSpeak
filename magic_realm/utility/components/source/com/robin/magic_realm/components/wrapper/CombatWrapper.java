@@ -47,6 +47,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String SHEET_OWNER_ID = "CMB_SH_OWN_ID";
 	private static final String PEACE = "PEACE";
 	private static final String PEACE_CLEARING = "PEACE_CLEARING";
+	private static final String SLEEP_CLEARING = "SLEEP_CLEARING";
 	private static final String WATCHFUL = "WATCHFUL";
 	private static final String LOCK_NEXT = "LOCK_NEXT";
 	
@@ -193,6 +194,16 @@ public class CombatWrapper extends GameObjectWrapper {
 			return (list!=null && list.contains(String.valueOf(clearing)));
 		}
 		return false;
+	}
+	public void addSleepClearing(int clearing) {
+		addListItem(SLEEP_CLEARING,String.valueOf(clearing));
+	}
+	public ArrayList<String> getSleepClearings() {
+		return getList(SLEEP_CLEARING);
+	}
+	public boolean isSleepClearing(int clearing) {
+		ArrayList<String> list = getSleepClearings();
+		return (list!=null && list.contains(String.valueOf(clearing)));
 	}
 	private void addRandomizePrefix(String prefix) {
 		ArrayList<String> list = getRandomPrefices();
