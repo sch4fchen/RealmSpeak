@@ -542,7 +542,7 @@ public class BattleModel {
 				HashMap<RealmComponent,Integer> conflictingSpellsStrength = new HashMap<>();
 				HashMap<RealmComponent,SpellWrapper> strongestConflictingSpells = new HashMap<>();
 				for (SpellWrapper spell : spellsAtSpeed) {
-					if (!spell.isAlive()) continue; // might have already been cancelled!
+					if (!spell.isActive()) continue; // might have already been cancelled!
 					ArrayList<RealmComponent> targets = spell.getTargets();
 					for (RealmComponent target : targets) {
 						if (spell.canConflict()) {

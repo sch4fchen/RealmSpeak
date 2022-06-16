@@ -898,8 +898,8 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 				if (canConflict() && !isInstantSpell() && !isAttackSpell() && !isMoveSpell() && !isPhaseSpell()) {
 					int spellStrength = getConflictStrength();
 					for (SpellWrapper spell : bewichtedSpells) {
-						if (spell.canConflict() && spell.hasAffectedTargets()) {
-							if (spell.getConflictStrength() < spellStrength && spell.isActive()) {
+						if (spell.canConflict() && spell.hasAffectedTargets() && spell.isActive()) {
+							if (spell.getConflictStrength() < spellStrength) {
 								spell.nullifySpell(true);
 								addListItem(NULLIFIED_SPELLS, spell.getGameObject().getStringId());
 								logs.add(spell.getName() + " (cast by "+spell.getCaster().getName()+") was nullified, as stronger spell ("+getName()+", cast by "+getCaster()+") hit the " + target + ".");
