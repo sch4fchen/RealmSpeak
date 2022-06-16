@@ -1,6 +1,7 @@
 Version 1.1.5.8 - Changes since 1.1.5.7
 QUEST UPDATE:
 # QuestRewardHireling: Fix removing cloned hireling from game
+# Update to quest Q46 True Grit
 NEW FEATURES:
 # Transmorph spells (conflicting spells rules): Improve duplicate transmorph spells on same target
 # Spell casting: Target cannot be bewitched by the same spell twice

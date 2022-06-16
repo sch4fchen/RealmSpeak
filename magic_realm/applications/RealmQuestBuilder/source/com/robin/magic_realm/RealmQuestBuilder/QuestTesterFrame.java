@@ -1357,6 +1357,9 @@ public class QuestTesterFrame extends JFrame {
 			sb.append("[");
 			sb.append(req.getRequirementType());
 			sb.append("]: ");
+			if (req.isNot()) {
+				sb.append("NOT ");
+			}
 			sb.append(req.toString());
 			sb.append("\n");
 		}
