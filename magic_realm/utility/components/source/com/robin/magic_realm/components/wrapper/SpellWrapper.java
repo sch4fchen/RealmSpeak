@@ -878,9 +878,11 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 				if (bewichtedSpells.contains(getSpell())) {
 					bewichtedSpells.remove(getSpell());
 				}
-				for (SpellWrapper simultaneousSpell : simultaneousSpells) {
-					if (bewichtedSpells.contains(simultaneousSpell)) {
-						bewichtedSpells.remove(simultaneousSpell);
+				if (simultaneousSpells!=null) {
+					for (SpellWrapper simultaneousSpell : simultaneousSpells) {
+						if (bewichtedSpells.contains(simultaneousSpell)) {
+							bewichtedSpells.remove(simultaneousSpell);
+						}
 					}
 				}
 				
