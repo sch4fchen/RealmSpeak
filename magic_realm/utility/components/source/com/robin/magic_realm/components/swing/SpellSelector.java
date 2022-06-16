@@ -127,7 +127,7 @@ public class SpellSelector extends AggressiveDialog {
 		return label;
 	}
 	private void initComponents() {
-		setSize(840,600);
+		setSize(850,600);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		
