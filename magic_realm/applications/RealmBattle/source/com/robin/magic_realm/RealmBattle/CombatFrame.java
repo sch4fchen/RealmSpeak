@@ -1573,7 +1573,18 @@ public class CombatFrame extends JFrame {
 			if (sgo!=null) {
 				SpellWrapper spell = new SpellWrapper(sgo);
 				if (spell.isAlive() && spell.isAttackSpell() && spell.getAttackCombatBox()==0) {
-					return new RealmComponentError(null,"Missing spell attack","You must place your spell attack before continuing.");
+					for (RealmComponent target : spell.getTargets()) {
+						if (!target.isMistLike() && !target.hasMagicProtection()) {
+							return new RealmComponentError(null,"Missing spell attack","You must place your spell attack before continuing.");
+						} else {
+							spell.removeTarget(target.getGameObject());
+							RealmLogging.logMessage(RealmLogging.BATTLE,spell.getName()+" cannot target "+target+".");
+						}
+					}
+					if (spell.getTargets().isEmpty()) {
+						spell.cancelSpell();
+						RealmLogging.logMessage(RealmLogging.BATTLE,spell.getName()+" was canceled, as targets cannot be selected anymore.");
+					}
 				}
 			}
 			
