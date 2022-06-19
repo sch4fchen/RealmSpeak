@@ -2198,8 +2198,8 @@ public class ActionRow {
 	public boolean isInvalidPlannedPhase() {
 		return invalidPlanned;
 	}
-	public boolean willMoveToCave() {
-		return (action.startsWith("M") && location.isInClearing() && location.clearing.isCave());
+	public boolean willMoveToDarkCave() {
+		return action.startsWith("M") && location.isInClearing() && location.clearing.isCave() && !location.clearing.isLighted();
 	}
 	/**
 	 * @return Returns the isFollowing.

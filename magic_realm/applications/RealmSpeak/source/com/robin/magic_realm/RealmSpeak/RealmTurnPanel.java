@@ -633,6 +633,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			boolean valid = getCharacter().actionIsValid(ar.getAction(),getCharacter().getCurrentLocation());
 			TileLocation current = getCharacter().getCurrentLocation();
 			boolean isInCave = current.isInClearing() && current.clearing.isCave();
+			boolean enlighted = current.clearing.isLighted();
 			boolean isOutside = !current.isInside(hostPrefs.hasPref(Constants.HOUSE2_RED_SPECIAL_SHELTER) || getCharacter().affectedByKey(Constants.ADVANCED_SHELTERS));
 			boolean willBeOutside = false;
 			if (ar.getAction().startsWith("M")) {
@@ -643,7 +644,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			}
 			if (valid) {
 				// It's valid, let's just make sure you aren't trying to use a sunlight phase in a cave, or bonus phases outside after using sheltered phases
-				if ((isInCave || ar.willMoveToCave()) && (phaseManager.hasUsedSunlight() || phaseManager.willRequireSunlight(ar.getAction()))) {
+				if (((isInCave&&!enlighted) || ar.willMoveToDarkCave()) && (phaseManager.hasUsedSunlight() || phaseManager.willRequireSunlight(ar.getAction()))) {
 					if (fromPlayAll) {
 						JOptionPane.showMessageDialog(this,"The next action ("+ar.getAction()+") is currently invalid.  Press \"Play Next\" to continue when you are ready.","Invalid Phase",JOptionPane.WARNING_MESSAGE);
 						// Rather than make a BLANK phase automatically, return and let the player deal with the problem
