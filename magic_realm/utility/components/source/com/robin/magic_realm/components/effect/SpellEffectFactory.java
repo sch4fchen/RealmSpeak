@@ -127,6 +127,7 @@ public class SpellEffectFactory {
 			
 			// new spells
 			case "magic shield": return new ISpellEffect[]{new MagicShieldEffect()};
+			case "rocks glow": return new ISpellEffect[]{new LightEffect()};
 			case "sleep": return new ISpellEffect[]{new SleepEffect()};
 			
 			default: return null;

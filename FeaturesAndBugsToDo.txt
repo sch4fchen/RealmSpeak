@@ -7,7 +7,7 @@ Expansion 1: Parry + Ability: "ParryLikeShield":  Option: no missile attacks
 Expansion 1: More Ambushes/Throwing Weapons + Ability: Spear, Axe, Dagger?
 Expansion 1: Items: Magic path, Hound, Magic meat, Needful thing
 Expansion 1: Travelers: Doppleganger, Necromancer, Soothsayer
-Expansion 1: Spells: Wall of Force, Duel, Spider web, Rocks Glow, Mystic boots, Flame sword, Fighting hands, Magic mirror, Lucky blow, Fire trap;;;; Body Double, Familiar, Temporal Vortex, Fear, Sword Song, Send, Miracle
+Expansion 1: Spells: Wall of Force, Duel, Spider web, Mystic boots, Flame sword, Fighting hands, Magic mirror, Lucky blow, Fire trap;;;; Body Double, Familiar, Temporal Vortex, Fear, Sword Song, Send, Miracle
 SuperRealm: Steel Against Magic: A character who is casting a spell and has no active armor counters may also use his active weapon and a second attention chit to target an individual and make a separate attack (or parry) if, and only if, the active weapon is the Staff.
 Expansion 1: All remaining items, spells, travelers
 0001563: Showing flip sides of tiles and counters in HTML

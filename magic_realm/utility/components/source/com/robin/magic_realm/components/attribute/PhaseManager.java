@@ -219,7 +219,10 @@ public class PhaseManager {
 				}
 			}
 		}
-		if (tl.clearing.isCave()) {
+		if (tl.clearing.isCave() && tl.clearing.isLighted()) {
+			markInCave(true);
+		}
+		else if (tl.clearing.isCave()) {
 			markInCave();
 		}
 		else if (tl.clearing.holdsDwelling()) {
@@ -234,8 +237,7 @@ public class PhaseManager {
 		if (isCurrent) {
 			removeLocationSpecificFreeActions(tl);
 		}
-		for (Iterator i=tl.clearing.getClearingComponents().iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : tl.clearing.getClearingComponents()) {
 			String free = rc.getGameObject().getThisAttribute(Constants.EXTRA_ACTIONS_CLEARING);
 			if (free!=null) {
 				addFreeAction(free,rc.getGameObject(),tl,false);
@@ -243,6 +245,9 @@ public class PhaseManager {
 		}
 	}
 	public void markInCave() {
+		markInCave(false);
+	}
+	public void markInCave(boolean lighted) {
 		if (extraCavePhase>0) {
 			basic += extraCavePhase;
 			extraCavePhase = 0;
@@ -256,10 +261,12 @@ public class PhaseManager {
 				freeActions.remove(EXTRA_CAVE_PHASE);
 			}
 		}
-		sunlight=0;
-		if (usedSunlight) {
-			basic = 0;
-			sheltered = 0;
+		if (!lighted) {
+			sunlight=0;
+			if (usedSunlight) {
+				basic = 0;
+				sheltered = 0;
+			}
 		}
 		ponyObject = null;
 	}

@@ -159,6 +159,21 @@ public class ClearingDetail {
 	public boolean isCave() {
 		return type.equals("caves");
 	}
+	public boolean isLighted() {
+		if (!parent.getGameObject().hasThisAttribute(Constants.LIGHTED)) return false;
+		for (String clearing : parent.getGameObject().getThisAttributeList(Constants.LIGHTED)) {
+			if (clearing.matches(String.valueOf(num))) return true;
+		}
+		return false;
+	}
+	public void setLighted(boolean light) {
+		if (light && !isLighted()) {
+			parent.getGameObject().addThisAttributeListItem(Constants.LIGHTED, String.valueOf(num));
+		}
+		if (!light && isLighted()) {
+			parent.getGameObject().removeThisAttributeListItem(Constants.LIGHTED, String.valueOf(num));
+		}
+	}
 	public boolean isMountain() {
 		return type.equals("mountain");
 	}

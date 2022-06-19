@@ -1940,7 +1940,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 				testMove = testMove+",M";
 			}
 		}
-		if (clearing.isCave()) {
+		if (clearing.isCave() && clearing.isLighted()) {
+			pm.markInCave(true);
+		}
+		else if (clearing.isCave()) {
 			pm.markInCave();
 		}
 		else if (!clearing.holdsDwelling()) {

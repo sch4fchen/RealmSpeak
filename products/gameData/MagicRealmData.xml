@@ -30937,8 +30937,24 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
       </AttributeBlock>
+     </GameObject>
+	 <GameObject id="1163" name="Rocks Glow">
+      <AttributeBlock blockName="this">
+        <attribute spell="II" />
+        <attribute duration="day" />
+        <attribute target="clearing" />
+        <attribute text="May perform daylight phases in affected clearing." />
+        <attribute magic_color="gold" />
+		<attribute light_effect="" />
+        <attribute host_okay="" />
+        <attribute new_spells_2="" />
+        <attribute learnable="" />
+		<attributeList keyName="target_clearing">
+			<attributeVal N0="clearing" />
+        </attributeList>
+      </AttributeBlock>
     </GameObject>
-	    <GameObject id="1163" name="Sleep">
+	<GameObject id="1164" name="Sleep">
       <AttributeBlock blockName="this">
         <attribute spell="III" />
         <attribute duration="instant" />
