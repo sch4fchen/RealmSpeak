@@ -1574,7 +1574,7 @@ public class CombatFrame extends JFrame {
 				SpellWrapper spell = new SpellWrapper(sgo);
 				if (spell.isAlive() && spell.isAttackSpell() && spell.getAttackCombatBox()==0) {
 					for (RealmComponent target : spell.getTargets()) {
-						if (!target.isMistLike() && !target.hasMagicProtection()) {
+						if (!target.isMistLike() && !target.hasMagicProtection() && (!target.isMonster() || !((MonsterChitComponent)target).isAbsorbed())) {
 							return new RealmComponentError(null,"Missing spell attack","You must place your spell attack before continuing.");
 						} else {
 							spell.removeTarget(target.getGameObject());
