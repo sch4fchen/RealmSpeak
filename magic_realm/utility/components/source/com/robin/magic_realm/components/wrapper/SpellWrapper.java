@@ -891,7 +891,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 						if (spell.isActive() && spell.hasAffectedTargets() && spell.getName().toLowerCase().matches(getName().toLowerCase())) {
 							affectTarget = false;
 							ignoredTargets = ignoredTargets + 1;
-							logs.add(getName() + " effect (cast by "+getCaster().getName()+") on" + target + " canceled, as target already affected by " + getName()+".");
+							logs.add(getName() + " effect (cast by "+getCaster().getName()+") on " + target + " canceled, as target already affected by " + getName()+".");
 						}
 					}
 				}
@@ -902,7 +902,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 							if (spell.getConflictStrength() < spellStrength) {
 								spell.nullifySpell(true);
 								addListItem(NULLIFIED_SPELLS, spell.getGameObject().getStringId());
-								logs.add(spell.getName() + " (cast by "+spell.getCaster().getName()+") was nullified, as stronger spell ("+getName()+", cast by "+getCaster()+") hit the " + target + ".");
+								logs.add(spell.getName() + " (cast by "+spell.getCaster().getName()+") was nullified, as stronger spell ("+getName()+", cast by "+getCaster().getName()+") hit the " + target + ".");
 							}
 							if (spell.getConflictStrength() == spellStrength) {
 								affectTarget = false;
