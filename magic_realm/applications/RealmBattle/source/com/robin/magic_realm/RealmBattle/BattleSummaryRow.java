@@ -188,8 +188,7 @@ public class BattleSummaryRow implements Comparable<BattleSummaryRow> {
 		}
 	}
 	public int compareTo(BattleSummaryRow row) {
-		// TODO Sort by attacker?  then hitOrder?
-		return 0;
+		return row.hitOrder;
 	}
 	
 	private int draw(Graphics2D g,RealmComponent rc,int x,int y,boolean attacker) {

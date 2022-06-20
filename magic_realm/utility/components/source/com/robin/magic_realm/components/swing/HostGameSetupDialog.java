@@ -769,16 +769,16 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			box.add(includeExpansionSpells);
 			box.add(Box.createHorizontalGlue());
 			
-		boardSetupBox.add(box);
-			box = group.createLabelLine("New Spells 1");
-				includeNewSpells = notifier.getCheckBox("");
-			box.add(includeNewSpells);
+			boardSetupBox.add(box);
+			box = group.createLabelLine("More Expansion Spells");
+				includeNewSpells2 = notifier.getCheckBox("");
+			box.add(includeNewSpells2);
 			box.add(Box.createHorizontalGlue());
 			
 		boardSetupBox.add(box);
-			box = group.createLabelLine("New Spells 2");
-				includeNewSpells2 = notifier.getCheckBox("");
-			box.add(includeNewSpells2);
+			box = group.createLabelLine("New Spells");
+				includeNewSpells = notifier.getCheckBox("");
+			box.add(includeNewSpells);
 			box.add(Box.createHorizontalGlue());
 			
 		boardSetupBox.add(box);
