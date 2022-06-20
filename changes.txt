@@ -5,7 +5,7 @@ QUEST UPDATE:
 NEW FEATURES:
 # Transmorph spells (conflicting spells rules): Improve duplicate transmorph spells on same target
 # Spell casting: Target cannot be bewitched by the same spell twice
-# New spells (new spells 2"): Magic Shield, Rocks Glow, Sleep
+# New spells ("More Expansion Spells"): Magic Shield, Rocks Glow, Sleep
 BUGS/ISSUES:
 # Improve various effects and situations for cancelling (instead of expiring) spells
 # Cancel spells cast onto teleported, killed or absorbed characters or monsters
