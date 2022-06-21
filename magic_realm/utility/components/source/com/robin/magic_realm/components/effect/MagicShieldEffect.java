@@ -17,12 +17,16 @@ public class MagicShieldEffect implements ISpellEffect {
 		magicShield.copyAttributeBlockFrom(spell,Constants.MAGIC_SHIELD);
 		magicShield.renameAttributeBlock(Constants.MAGIC_SHIELD,"this");
 		magicShield.setThisAttribute(Constants.SPELL_ID, spell.getStringId());
+		magicShield.setThisAttribute(Constants.SPELL_ID, "item");
+		magicShield.setThisAttribute(Constants.SPELL_ID, "shield");
+		magicShield.setThisAttribute(Constants.SPELL_ID, "armor");
+		magicShield.setThisAttribute(Constants.SPELL_ID, "armor_choice");
 		magicShield.setAttribute("intact", "chit_color", "blue");
 		magicShield.setAttribute("intact", "base_price", "0");
 		magicShield.setAttribute("damaged", "chit_color", "lightblue");
 		magicShield.setAttribute("damaged", "base_price", "0");
 		
-		spell.setThisAttribute(Constants.PHASE_CHIT_ID,magicShield.getStringId());
+		spell.setThisAttribute(Constants.MAGIC_SHIELD_ID,magicShield.getStringId());
 		character.getGameObject().add(magicShield);
 		
 		TreasureUtility.doActivate(context.Parent, character, magicShield, null, false);

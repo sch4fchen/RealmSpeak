@@ -30928,14 +30928,10 @@
       <AttributeBlock blockName="magic_shield">
         <attribute vulnerability="T" />
         <attribute weight="L" />
-        <attribute shield="" />
-        <attribute armor_choice="" />
-        <attribute armor="" />
         <attribute icon_type="shield" />
         <attribute facing="dark" />
         <attribute armor_row="1" />
         <attribute icon_folder="armor" />
-        <attribute item="" />
       </AttributeBlock>
      </GameObject>
 	 <GameObject id="1163" name="Rocks Glow">

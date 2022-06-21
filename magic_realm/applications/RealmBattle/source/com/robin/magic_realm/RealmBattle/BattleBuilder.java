@@ -51,6 +51,8 @@ public class BattleBuilder extends JFrame {
 	public static final String BATTLE_BUILDER_TILE_IS_ENCHANTED = "bb_tile_is_enchanted";
 	
 	private static final String testPlayerName = "Player";
+	private static final String defaultTileName = "Borderland";
+	private static final int defaultClearingNumber = 1;
 	
 	private GameData gameData;
 	private GamePool pool;
@@ -235,8 +237,8 @@ public class BattleBuilder extends JFrame {
 	public boolean initialize(GameData data) {
 		prefs = new PreferenceManager("BattleBuilder","BattleBuilder.cfg") {
 			protected void createDefaultPreferences(Properties props) {
-				props.put(BATTLE_BUILDER_CLEARING,2);
-				props.put(BATTLE_BUILDER_TILE,"Crag");
+				props.put(BATTLE_BUILDER_CLEARING,defaultClearingNumber);
+				props.put(BATTLE_BUILDER_TILE,defaultTileName);
 				props.put(BATTLE_BUILDER_TILE_IS_ENCHANTED,true);
 			}
 		};
@@ -250,7 +252,7 @@ public class BattleBuilder extends JFrame {
 			gameData = loader.getData();
 			
 			int clearing = prefs.getInt(BATTLE_BUILDER_CLEARING);
-			if (clearing == 0) clearing = 1;
+			if (clearing == 0) clearing = defaultClearingNumber;
 			String tileName = prefs.get(BATTLE_BUILDER_TILE);
 			boolean tileIsEnchanted = prefs.getBoolean(BATTLE_BUILDER_TILE_IS_ENCHANTED);
 			RealmUtility.prepMonsterNumbers(gameData);
