@@ -30914,8 +30914,43 @@
         <attribute path_7_arc="54.6,63.8" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1162" name="Needful Thing">
+    <GameObject id="1162" name="Hound">
       <AttributeBlock blockName="this">
+      	<attribute treasure="small" />
+        <attribute text="Use to lure monsters to separate combat sheet." />
+        <attribute rw_expansion_1="" />
+        <attribute base_price="2" />
+        <attribute discard="warlock" />
+        <attribute potion="" />
+        <attribute notoriety="0" />
+        <attribute facing="face_dn" />
+        <attribute fame="0" />
+        <attribute companion="Hound" />
+        <attribute author="Expansion 1" />
+        <attribute item="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="companion">
+      	<attribute monster="" />
+        <attribute vulnerability="L" />
+        <attribute fame="0" />
+        <attribute notoriety="0" />
+        <attribute icon_type="wolf" />
+        <attribute icon_folder="monsters" />
+        <attribute rw_expansion_1="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="companion_light">
+        <attribute move_speed="1" />
+        <attribute chit_color="lightgreen" />
+      </AttributeBlock>
+      <AttributeBlock blockName="companion_dark">
+        <attribute move_speed="1" />
+        <attribute chit_color="lightgreen" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1163" name="Needful Thing">
+      <AttributeBlock blockName="this">
+      	<attribute treasure="small" />
         <attribute text="Use to trade for any item (not hire)." />
         <attribute rw_expansion_1="" />
         <attribute base_price="0" />
@@ -30928,7 +30963,7 @@
         <attribute item="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1163" name="Magic Shield">
+    <GameObject id="1164" name="Magic Shield">
       <AttributeBlock blockName="this">
         <attribute spell="IV" />
         <attribute duration="combat" />
@@ -30948,7 +30983,7 @@
         <attribute icon_folder="armor" />
       </AttributeBlock>
      </GameObject>
-	 <GameObject id="1164" name="Rocks Glow">
+	 <GameObject id="1165" name="Rocks Glow">
       <AttributeBlock blockName="this">
         <attribute spell="II" />
         <attribute duration="day" />
@@ -30964,7 +30999,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-	<GameObject id="1165" name="Sleep">
+	<GameObject id="1166" name="Sleep">
       <AttributeBlock blockName="this">
         <attribute spell="III" />
         <attribute duration="instant" />

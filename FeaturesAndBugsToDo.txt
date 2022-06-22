@@ -1,5 +1,5 @@
 Expansion 1: Spells: Wall of Force, Duel, Spider web, Mystic boots, Flame sword, Fighting hands, Magic mirror, Lucky blow, Fire trap, Miracle, Body Double, Familiar, Temporal Vortex, Fear, Send
-Expansion 1: Items: Magic path, Hound, Magic meat
+Expansion 1: Items: Magic path, Magic meat
 Expansion 1: Travelers: Doppleganger, Necromancer, Soothsayer, Gate Master
 SuperRealm: Steel Against Magic: A character who is casting a spell and has no active armor counters may also use his active weapon and a second attention chit to target an individual and make a separate attack (or parry) if, and only if, the active weapon is the Staff.
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): Option: no missile attacks, ?:Sharpness stars are ignored when comparing harm between attacks and parries? Alert?!

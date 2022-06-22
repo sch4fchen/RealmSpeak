@@ -608,6 +608,11 @@ public class TreasureUtility {
 			}
 		}
 		
+		if (thing.hasThisAttribute(Constants.COMPANION)) {
+			GameObject companion = getCompanionFromItem(thing);
+			character.addHireling(companion);
+		}
+		
 		GameObject weaponObject = null;
 		WeaponChitComponent weapon = character.getActivePrimaryWeapon();
 		if (weapon!=null) {
@@ -1157,5 +1162,17 @@ public class TreasureUtility {
 		// Reward character
 		character.addFame(20);
 		character.addNotoriety(20);
+	}
+	
+	private static GameObject getCompanionFromItem(GameObject item) {
+		GameObject companion = item.getGameData().createNewObject();
+		companion.setName(item.getThisAttribute(Constants.COMPANION));
+		companion.copyAttributeBlockFrom(item,Constants.COMPANION);
+		companion.renameAttributeBlock(Constants.COMPANION,"this");
+		companion.copyAttributeBlockFrom(item,Constants.COMPANION+"_light");
+		companion.renameAttributeBlock(Constants.COMPANION+"_light","light");
+		companion.copyAttributeBlockFrom(item,Constants.COMPANION+"_dark");
+		companion.renameAttributeBlock(Constants.COMPANION+"_dark","dark");
+		return companion;
 	}
 }
