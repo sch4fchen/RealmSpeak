@@ -224,11 +224,23 @@ public class RealmPaymentDialog extends AggressiveDialog {
 		if (askingPrice<0) {
 			bonusGold = -askingPrice;
 		}
-		askingPrice -= getTradeItemValue();
-		if (askingPrice<0) {
-			askingPrice = 0; // The seller does NOT give change for trade items!!
+		
+		boolean paidByItem = false;
+		for (GameObject item : onTheTable) {
+			if (item.hasThisAttribute(Constants.VALUABLE)) {
+				paidByItem = true;
+				break;
+			}
 		}
-		character.addGold(-askingPrice);
+		
+		if (!paidByItem) {
+			askingPrice -= getTradeItemValue();
+			if (askingPrice<0) {
+				askingPrice = 0; // The seller does NOT give change for trade items!!
+			}
+			character.addGold(-askingPrice);
+		}
+		
 		character.addGold(bonusGold); // This happens when a seller is paying you to take it off his hands!
 		loseTradeItems();
 		receiveItem();
@@ -443,6 +455,7 @@ public class RealmPaymentDialog extends AggressiveDialog {
 	private int getTradeItemValue() {
 		int invSale = 0;
 		for (GameObject go : onTheTable) {
+			if (go.hasThisAttribute(Constants.VALUABLE)) return askingPrice;
 			invSale += TreasureUtility.getBasePrice(tradeInfo.getTrader(),RealmComponent.getRealmComponent(go));
 		}
 		return invSale;

@@ -271,6 +271,7 @@ public class Constants {
 	public static final String DROPPED_BY = "droppedby";
 	public static final String ENCHANTED_COLOR = "ench_clr";
 	public static final String POTION = "potion";
+	public static final String VALUABLE = "valuable";
 	
 	// Native ThisAttributes
 	public static final String HIDDEN = "hidden";

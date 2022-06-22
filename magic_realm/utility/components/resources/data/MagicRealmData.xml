@@ -30914,7 +30914,21 @@
         <attribute path_7_arc="54.6,63.8" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1162" name="Magic Shield">
+    <GameObject id="1162" name="Needful Thing">
+      <AttributeBlock blockName="this">
+        <attribute text="Use to trade for any item (not hire)." />
+        <attribute rw_expansion_1="" />
+        <attribute base_price="0" />
+        <attribute notoriety="10" />
+        <attribute weight="L" />
+        <attribute facing="face_dn" />
+        <attribute fame="-20" />
+        <attribute valuable="" />
+        <attribute author="Expansion 1" />
+        <attribute item="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1163" name="Magic Shield">
       <AttributeBlock blockName="this">
         <attribute spell="IV" />
         <attribute duration="combat" />
@@ -30934,7 +30948,7 @@
         <attribute icon_folder="armor" />
       </AttributeBlock>
      </GameObject>
-	 <GameObject id="1163" name="Rocks Glow">
+	 <GameObject id="1164" name="Rocks Glow">
       <AttributeBlock blockName="this">
         <attribute spell="II" />
         <attribute duration="day" />
@@ -30950,7 +30964,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-	<GameObject id="1164" name="Sleep">
+	<GameObject id="1165" name="Sleep">
       <AttributeBlock blockName="this">
         <attribute spell="III" />
         <attribute duration="instant" />

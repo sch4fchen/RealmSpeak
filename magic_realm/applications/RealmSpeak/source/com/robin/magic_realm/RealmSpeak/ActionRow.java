@@ -1234,15 +1234,19 @@ public class ActionRow {
 			if (trader.isNative()) {
 				// Native Leader - trade with their dwelling's hold
 				GameObject holder = SetupCardUtility.getDenizenHolder(trader.getGameObject());
-				hold = new ArrayList<>(holder.getHold());
+				hold = new ArrayList<>();
+				for(GameObject go:holder.getHold()) {
+					if (!go.hasThisAttribute(Constants.VALUABLE)) {
+						hold.add(go);
+					}
+				}
 			}
 			else {
 				// Visitor or Guild - trade directly with their hold
 				hold = new ArrayList<>();
-				for(Object o:trader.getGameObject().getHold()) {
-					GameObject go = (GameObject)o;
+				for(GameObject go:trader.getGameObject().getHold()) {
 					RealmComponent rc = RealmComponent.getRealmComponent(go);
-					if (!rc.isSpell() || character.canLearn(go)) {
+					if (!go.hasThisAttribute(Constants.VALUABLE) && (!rc.isSpell() || character.canLearn(go))) {
 						hold.add(go);
 					}
 				}
