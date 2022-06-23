@@ -598,6 +598,14 @@ public class TreasureUtility {
 				}
 			}
 		}
+		if (thing.hasThisAttribute(Constants.MAGIC_PATH)) {
+			thing.setThisAttribute(Constants.MAGIC_PATH_AFFECTED_CHARACTER,character.getGameObject().getStringId());
+			character.getGameObject().setThisAttribute(Constants.MAGIC_PATH_EFFECT);
+		}
+		if (thing.hasThisAttribute(Constants.COMPANION)) {
+			GameObject companion = getCompanionFromItem(thing);
+			character.addHireling(companion);
+		}
 		
 		if (thing.hasThisAttribute(Constants.ALERTED_WEAPON)) {
 			WeaponChitComponent weapon = character.getActivePrimaryWeapon();
@@ -606,11 +614,6 @@ public class TreasureUtility {
 					weapon.setAlerted(true);
 				}
 			}
-		}
-		
-		if (thing.hasThisAttribute(Constants.COMPANION)) {
-			GameObject companion = getCompanionFromItem(thing);
-			character.addHireling(companion);
 		}
 		
 		GameObject weaponObject = null;
@@ -1005,6 +1008,17 @@ public class TreasureUtility {
 			decrementKey(potion,Constants.IGNORE_ARMOR);
 			decrementKey(potion,Constants.HIT_TIE);
 			potion.removeThisAttribute(Constants.AFFECTED_WEAPON_ID); // just in case
+			
+			if (potion.hasThisAttribute(Constants.MAGIC_PATH)) {
+				String id = potion.getThisAttribute(Constants.MAGIC_PATH_AFFECTED_CHARACTER);
+				if (id!=null) {
+					GameObject charGo = potion.getGameData().getGameObject(Long.valueOf(id));
+					if (charGo != null) {
+						charGo.removeThisAttribute(Constants.MAGIC_PATH_EFFECT);
+						potion.removeThisAttribute(Constants.MAGIC_PATH_AFFECTED_CHARACTER);
+					}
+				}
+			}
 		}
 		return discardTarget;
 	}

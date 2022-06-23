@@ -740,6 +740,11 @@ public class ActionRow {
 					: null;
 					
 			boolean overridePath = false;
+			boolean magicPath = false;
+			
+			if (character.affectedByKey(Constants.MAGIC_PATH_EFFECT)) {
+				magicPath = path == null && current.tile == location.tile?true:false;
+			}
 			
 			if (character.canWalkWoods(current.tile) || (current.isTileOnly() && !current.isFlying())) {
 				ArrayList<ClearingDetail> validClearings = new ArrayList<>();
@@ -766,8 +771,8 @@ public class ActionRow {
 				overridePath = ClearingUtility.canUseGates(character,location.clearing);
 			}
 			
-			if (validMove && (overridePath || current.isBetweenClearings() || path!=null)) {
-				if (overridePath || current.isBetweenClearings() || character.validPath(path)) {
+			if (validMove && (overridePath || magicPath|| current.isBetweenClearings() || path!=null)) {
+				if (overridePath || magicPath || current.isBetweenClearings() || character.validPath(path)) {
 					// Make sure that if the character is moving into a mountain clearing, check current clearing
 					// to make sure monsters don't block the first half of that move
 					if (location.clearing.moveCost(character)>1 && RealmUtility.willBeBlocked(character,isFollowing,true)) {
@@ -877,6 +882,10 @@ public class ActionRow {
 						character.updatePathKnowledge(reverse);
 					}
 					
+					if (magicPath) {
+						character.getGameObject().removeThisAttribute(Constants.MAGIC_PATH_EFFECT);
+					}
+					
 					HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
 					if (hostPrefs.hasPref(Constants.FE_KILLER_CAVES) && location.clearing.isCave()) {
 						for (GameObject item : character.getInventory()) {
@@ -918,6 +927,10 @@ public class ActionRow {
 					gameHandler.getInspector().getMap().centerOn(character.getCurrentLocation());
 					gameHandler.updateCharacterFrames();
 					result = result+"moved";
+					
+					if (magicPath) {
+						result = result+" (using Magic Path)";
+					}
 					
 					if (!overridePath && !current.isBetweenClearings() && (path.isNarrow() || (reverse!=null && reverse.isNarrow()))) {
 						// Other characters in the same clearing who have found hidden enemies

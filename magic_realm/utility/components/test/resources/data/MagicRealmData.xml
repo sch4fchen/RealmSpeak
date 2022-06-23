@@ -30963,7 +30963,23 @@
         <attribute item="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1164" name="Magic Shield">
+    <GameObject id="1165" name="Magic Path">
+      <AttributeBlock blockName="this">
+      	<attribute treasure="small" />
+        <attribute text="Can move between two clearings in same hex once." />
+        <attribute rw_expansion_1="" />
+        <attribute base_price="20" />
+        <attribute discard="warlock" />
+        <attribute potion="" />
+        <attribute notoriety="0" />
+        <attribute facing="face_dn" />
+        <attribute fame="0" />
+        <attribute magic_path="" />
+        <attribute author="Expansion 1" />
+        <attribute item="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1166" name="Magic Shield">
       <AttributeBlock blockName="this">
         <attribute spell="IV" />
         <attribute duration="combat" />
@@ -30983,7 +30999,7 @@
         <attribute icon_folder="armor" />
       </AttributeBlock>
      </GameObject>
-	 <GameObject id="1165" name="Rocks Glow">
+	 <GameObject id="1167" name="Rocks Glow">
       <AttributeBlock blockName="this">
         <attribute spell="II" />
         <attribute duration="day" />
@@ -30999,7 +31015,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-	<GameObject id="1166" name="Sleep">
+	<GameObject id="1168" name="Sleep">
       <AttributeBlock blockName="this">
         <attribute spell="III" />
         <attribute duration="instant" />

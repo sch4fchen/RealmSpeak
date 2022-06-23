@@ -272,6 +272,9 @@ public class Constants {
 	public static final String ENCHANTED_COLOR = "ench_clr";
 	public static final String POTION = "potion";
 	public static final String VALUABLE = "valuable";
+	public static final String MAGIC_PATH = "magic_path";
+	public static final String MAGIC_PATH_EFFECT = "magic_path_effect";
+	public static final String MAGIC_PATH_AFFECTED_CHARACTER = "magic_path_character";
 	
 	// Native ThisAttributes
 	public static final String HIDDEN = "hidden";
