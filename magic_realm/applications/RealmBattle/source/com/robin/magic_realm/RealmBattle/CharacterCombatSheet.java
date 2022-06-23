@@ -177,6 +177,17 @@ public class CharacterCombatSheet extends CombatSheet {
 		CombatWrapper combat = new CombatWrapper(combatFrame.getActiveParticipant().getGameObject());
 		GameObject go = combat.getCastSpell();
 		SpellWrapper spell = go==null?null:new SpellWrapper(go);
+		boolean battleMage = false;
+		if (combatFrame.getActiveParticipant().isCharacter()) {
+			GameObject chararacterGo = combatFrame.getActiveParticipant().getGameObject();
+			CharacterWrapper activeCharacter = new CharacterWrapper(chararacterGo);
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(chararacterGo.getGameData());
+			if (activeCharacter.affectedByKey(Constants.BATTLE_MAGE) || hostPrefs.hasPref(Constants.OPT_SR_STEEL_AGAINST_MAGIC)) {
+				if (activeCharacter.hasOnlyStaffAsActivatedWeapon() && !activeCharacter.hasActiveArmorChits()) {
+					battleMage = true;
+				}
+			}
+		}
 		ArrayList<RealmComponent> attackers = model.getAttackersFor(combatFrame.getActiveParticipant());
 		switch(combatFrame.getActionState()) {
 			case Constants.COMBAT_LURE:
@@ -190,7 +201,7 @@ public class CharacterCombatSheet extends CombatSheet {
 				break;
 			case Constants.COMBAT_ASSIGN:
 				ArrayList<WeaponChitComponent> weapons = (new CharacterWrapper(combatFrame.getActiveParticipant().getGameObject())).getActiveWeapons();
-				if (spell==null
+				if ((spell==null || battleMage)
 						&& (combatFrame.getActiveParticipant().getTarget()==null
 						|| (combatFrame.getActiveParticipant().get2ndTarget()==null && combatFrame.getActiveParticipant().isCharacter() && weapons!=null && weapons.size() > 1))) {
 					if (containsEnemy(combatFrame.getActiveParticipant(),layoutHash.getList(new Integer(POS_TARGET)))) {
@@ -245,19 +256,19 @@ public class CharacterCombatSheet extends CombatSheet {
 				allSheetParticipants.add(sheetOwner);
 				RealmComponent target = combatFrame.getActiveParticipant().getTarget();
 				RealmComponent target2 = combatFrame.getActiveParticipant().get2ndTarget();
-				boolean sheetHasTarget = (target==null && target2==null && spell==null && sheetOwner.equals(combatFrame.getActiveParticipant()))
+				boolean sheetHasTarget = (target==null && target2==null && (spell==null || battleMage) && sheetOwner.equals(combatFrame.getActiveParticipant()))
 									|| (target!=null && allSheetParticipants.contains(target))
 									|| (target2!=null && allSheetParticipants.contains(target2));
 				boolean sheetHasSpellTarget = spell!=null && spell.isAttackSpell() && spell.targetsRealmComponents(allSheetParticipants);
 				if (sheetHasTarget || sheetHasSpellTarget) {
 					int boxReq = spell==null?0:spell.getGameObject().getThisInt("box_req"); // most spells will be zero
-					if (spell==null || boxReq==0 || boxReq==1) {
+					if ((spell==null || battleMage) || boxReq==0 || boxReq==1) {
 						hotspotHash.put(new Integer(POS_ATTACK_WEAPON1),"Attack");
 					}
-					if (spell==null || boxReq==0 || boxReq==2) {
+					if ((spell==null || battleMage) || boxReq==0 || boxReq==2) {
 						hotspotHash.put(new Integer(POS_ATTACK_WEAPON2),"Attack");
 					}
-					if (spell==null || boxReq==0 || boxReq==3) {
+					if ((spell==null || battleMage) || boxReq==0 || boxReq==3) {
 						hotspotHash.put(new Integer(POS_ATTACK_WEAPON3),"Attack");
 					}
 				}

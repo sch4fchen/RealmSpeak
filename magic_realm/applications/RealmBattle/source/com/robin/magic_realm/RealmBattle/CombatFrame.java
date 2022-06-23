@@ -2440,23 +2440,31 @@ public class CombatFrame extends JFrame {
 		GameObject go = charCombat.getCastSpell();
 		SpellWrapper spell = go==null?null:new SpellWrapper(go);
 		if (spell!=null) {
-			CombatWrapper.clearRoundCombatInfo(spell.getIncantationObject());
-			
+			GameObject incantationObject = spell.getIncantationObject();
+			if (incantationObject != null) {
+				CombatWrapper.clearRoundCombatInfo(spell.getIncantationObject());
+			}
 			// Can't play a normal attack if a spell was cast this round!
+			
+			boolean battleMage = false;
+			if (activeCharacter.affectedByKey(Constants.BATTLE_MAGE) || hostPrefs.hasPref(Constants.OPT_SR_STEEL_AGAINST_MAGIC)) {
+				if (activeCharacter.hasOnlyStaffAsActivatedWeapon() && !activeCharacter.hasActiveArmorChits()) {
+					battleMage = true;
+				}
+			}
 			
 			// If the spell is an attack spell, then place it now
 			if (spell.isAttackSpell()) {
-				GameObject incantationObject = spell.getIncantationObject();
 				CombatWrapper combat = new CombatWrapper(incantationObject);
 				combat.setCombatBox(box);
 				charCombat.setPlayedAttack(true);
 				updateSelection();
 			}
 			else {
-				JOptionPane.showMessageDialog(this,"There are no fight options available to you.","Cannot Attack",JOptionPane.ERROR_MESSAGE);
+				if (!battleMage) JOptionPane.showMessageDialog(this,"There are no fight options available to you.","Cannot Attack",JOptionPane.ERROR_MESSAGE);
 			}
 			
-			return;
+			if (!battleMage) return;
 		}
 		
 		Collection<RealmComponent> fightOptions = getAvailableFightOptions(box);

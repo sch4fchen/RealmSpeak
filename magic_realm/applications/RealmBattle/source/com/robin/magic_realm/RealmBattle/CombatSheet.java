@@ -546,6 +546,18 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			// If targeting any of the sheetOwners targets, put them on the sheet in the attacker boxes
 			boolean isInactiveSheetOwner = target==null && target2==null && spell==null && sheetOwner.equals(rc);
 			boolean castingASpell = spell!=null;
+			boolean battleMage = false;
+			if (rc.isCharacter()) {
+				GameObject chararacterGo = rc.getGameObject();
+				CharacterWrapper activeCharacter = new CharacterWrapper(chararacterGo);
+				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(chararacterGo.getGameData());
+				if (activeCharacter.affectedByKey(Constants.BATTLE_MAGE) || hostPrefs.hasPref(Constants.OPT_SR_STEEL_AGAINST_MAGIC)) {
+					if (activeCharacter.hasOnlyStaffAsActivatedWeapon() && !activeCharacter.hasActiveArmorChits()) {
+						battleMage = true;
+					}
+				}
+			}
+					
 			boolean targetingSomeoneOnThisSheet = (target!=null && (sheetParticipants.contains(target) || sheetOwner.equals(target))) || (target2!=null && (sheetParticipants.contains(target2) || sheetOwner.equals(target2)));
 			if (!targetingSomeoneOnThisSheet && target!=null) {
 				RealmComponent targetsTarget = target.getTarget();
@@ -571,7 +583,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 					targetingSomeoneOnThisSheet = true;
 				}
 			}
-			if (isInactiveSheetOwner || targetingSomeoneOnThisSheet || castingASpell) {
+			if (isInactiveSheetOwner || targetingSomeoneOnThisSheet || (castingASpell && !battleMage)) {
 				if (excludeList==null || !excludeList.contains(rc)) {
 					if (!rc.isCharacter() && (sheetParticipants.contains(target) || sheetParticipants.contains(target2))) {
 						if (!addedToDead(rc)) {
@@ -583,7 +595,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 						updateBattleChitsWithRolls(rcCombat);
 						CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
 						CharacterChitComponent characterChit = (CharacterChitComponent)rc;
-						if (spell==null) {
+						if (spell==null || battleMage) {
 							// Only show attacks if attacking a non-owned target, OR the attacker is the activeParticipant
 							if (reveal 
 									|| (target==null && target2==null)

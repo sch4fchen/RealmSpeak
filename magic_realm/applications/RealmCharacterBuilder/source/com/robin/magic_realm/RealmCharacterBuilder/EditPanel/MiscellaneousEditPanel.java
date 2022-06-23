@@ -60,7 +60,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"Can activate a two-handed weapon and a shield.",Constants.STRONG,""},
 		{"Can use two weapons, one in each hand.",Constants.DUAL_WIELDING,""},
 		{"When dual wielding both weapons can be alerted.",Constants.DUAL_WIELDING_ALERT,""},
-		//{"Can attack with a staff additionally to casting a spell if having no active armor chits.",Constants.BATTLE_MAGE,""},
+		{"Can attack with a staff additionally to casting a spell if having no active armor chits.",Constants.BATTLE_MAGE,""},
 		{"Can penetrate targets armor with missile weapons.",Constants.SHARPSHOOTER,""},
 		{"Can boost MOVE chits with MAGIC chits.",Constants.MAGIC_MOVE,""},
 		{"Can cast multiple instances of a single spell.",Constants.ENHANCED_MAGIC,""},

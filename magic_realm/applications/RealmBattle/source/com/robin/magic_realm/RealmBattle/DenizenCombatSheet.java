@@ -154,6 +154,17 @@ public class DenizenCombatSheet extends CombatSheet {
 		CombatWrapper combat = new CombatWrapper(combatFrame.getActiveParticipant().getGameObject());
 		GameObject go = combat.getCastSpell();
 		SpellWrapper spell = go==null?null:new SpellWrapper(go);
+		boolean battleMage = false;
+		if (combatFrame.getActiveParticipant().isCharacter()) {
+			GameObject chararacterGo = combatFrame.getActiveParticipant().getGameObject();
+			CharacterWrapper activeCharacter = new CharacterWrapper(chararacterGo);
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(chararacterGo.getGameData());
+			if (activeCharacter.affectedByKey(Constants.BATTLE_MAGE) || hostPrefs.hasPref(Constants.OPT_SR_STEEL_AGAINST_MAGIC)) {
+				if (activeCharacter.hasOnlyStaffAsActivatedWeapon() && !activeCharacter.hasActiveArmorChits()) {
+					battleMage = true;
+				}
+			}
+		}
 		hotspotHash.clear();
 		Collection<RealmComponent> c;
 		
@@ -220,7 +231,7 @@ public class DenizenCombatSheet extends CombatSheet {
 						&& combatFrame.getActiveCharacterIsHere()
 						&& (combatFrame.getActiveParticipant().getTarget()==null
 						|| (combatFrame.getActiveParticipant().get2ndTarget()==null && combatFrame.getActiveParticipant().isCharacter() && (new CharacterWrapper(combatFrame.getActiveParticipant().getGameObject())).getActiveWeapons() !=null && (new CharacterWrapper(combatFrame.getActiveParticipant().getGameObject())).getActiveWeapons().size() > 1)) 
-						&& spell==null) {
+						&& (spell==null || battleMage)) {
 					String title = combatFrame.getActiveCharacter().getGameObject().getName()+" Target";
 					if (containsEnemy(
 							combatFrame.getActiveParticipant(),
@@ -304,13 +315,13 @@ public class DenizenCombatSheet extends CombatSheet {
 				boolean sheetHasSpellTarget = spell!=null && spell.isAttackSpell() && spell.targetsRealmComponents(allSheetParticipants);
 				if (sheetHasTarget || sheetHasTarget2 || sheetHasSpellTarget) {
 					int boxReq = spell==null?0:spell.getGameObject().getThisInt("box_req"); // most spells will be zero
-					if (spell==null || boxReq==0 || boxReq==1) {
+					if ((spell==null || battleMage) || boxReq==0 || boxReq==1) {
 						hotspotHash.put(new Integer(POS_ATTACKERS_WEAPON1),"Attack");
 					}
-					if (spell==null || boxReq==0 || boxReq==2) {
+					if ((spell==null || battleMage) || boxReq==0 || boxReq==2) {
 						hotspotHash.put(new Integer(POS_ATTACKERS_WEAPON2),"Attack");
 					}
-					if (spell==null || boxReq==0 || boxReq==3) {
+					if ((spell==null || battleMage) || boxReq==0 || boxReq==3) {
 						hotspotHash.put(new Integer(POS_ATTACKERS_WEAPON3),"Attack");
 					}
 				}
