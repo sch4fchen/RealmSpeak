@@ -145,8 +145,8 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 				g.setFont(Constants.ATTRIBUTE_FONT);
 				GraphicsUtil.drawCenteredString(g,x,y-2,rad,rad,String.valueOf(price));
 			}
-			else if (getGameObject().hasThisAttribute("capture")) {
-				int capture = getGameObject().getThisInt("capture");
+			else if (getGameObject().hasThisAttribute(Constants.CAPTURE)) {
+				int capture = getGameObject().getThisInt(Constants.CAPTURE);
 				String val = String.valueOf(capture);
 				if (capture>=0) {
 					val = "+"+val;
@@ -156,15 +156,19 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 				g.setColor(Color.white);
 				GraphicsUtil.drawCenteredString(g,x,y-2,rad,rad,val);
 			}
-			else if (getGameObject().hasThisAttribute("store")) {
+			else if (getGameObject().hasThisAttribute(Constants.STORE)) {
 				g.setColor(Color.green);
 				g.fillRect(x,y,rad-2,rad-2);
 				g.setColor(Color.black);
 				g.drawRect(x,y,rad-2,rad-2);
 				GraphicsUtil.drawCenteredString(g,x,y-2,rad,rad,"$$");
 			}
+			else if (getGameObject().hasThisAttribute(Constants.DOPPLEGANGER)) {
+				g.setColor(Color.black);
+				g.fillRect(x, y, rad, rad);
+				g.setColor(Color.white);
+			}
 			String vul = getGameObject().getThisAttribute("vulnerability");
-//vul = "T";
 			if (vul!=null) {
 				x = 53;
 				y = 16;
@@ -195,9 +199,6 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 		String strength = getGameObject().getThisAttribute("strength");
 		String attackSpeedString = getGameObject().getThisAttribute("attack_speed");
 		int sharpness = getGameObject().getThisInt("sharpness");
-//strength = "M";
-//attackSpeed = "2";
-//sharpness = 2;
 		if (attackSpeedString!=null) {
 			alteredAttackSpeed = false;
 			alteredMoveSpeed = false;
@@ -215,8 +216,7 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 				x += 10;
 			}
 			
-			String moveString = getGameObject().getThisAttribute("move_speed");//+(alteredMoveSpeed?"!":"");
-//moveString = "5";
+			String moveString = getGameObject().getThisAttribute("move_speed");
 			tt = new TextType(moveString, getChitSize(), alteredMoveSpeed?"YELLOW_BOLD":"WHITE_NOTE");
 			x = getChitSize() - 5 - tt.getWidth(g);
 			y = getChitSize() - 5 - tt.getHeight(g);

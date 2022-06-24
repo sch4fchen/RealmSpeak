@@ -30979,7 +30979,39 @@
         <attribute item="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1166" name="Magic Shield">
+    <GameObject id="1166" name="Doppleganger">
+      <AttributeBlock blockName="this">
+        <attribute icon_type="t1" />
+        <attribute icon_folder="traveler" />
+        <attribute rw_expansion_1="" />
+        <attribute traveler_template="" />
+        <attribute doppleganger="" />
+        <attribute text="Deal with all natives on friendly column" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1167" name="Necromancer">
+      <AttributeBlock blockName="this">
+      	<attribute base_price="25" />
+        <attribute icon_type="t1" />
+        <attribute icon_folder="traveler" />
+        <attribute rw_expansion_1="" />
+        <attribute traveler_template="" />
+        <attribute raise_dead="" />
+        <attribute text="Can raise dead once each evening" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1168" name="Soothsayer">
+      <AttributeBlock blockName="this">
+      	<attribute base_price="8" />
+        <attribute icon_type="t1" />
+        <attribute icon_folder="traveler" />
+        <attribute rw_expansion_1="" />
+        <attribute traveler_template="" />
+        <attribute change_recorded_action="" />
+        <attribute text="Change any 1 recorded action during your turn" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1169" name="Magic Shield">
       <AttributeBlock blockName="this">
         <attribute spell="IV" />
         <attribute duration="combat" />
@@ -30999,7 +31031,7 @@
         <attribute icon_folder="armor" />
       </AttributeBlock>
      </GameObject>
-	 <GameObject id="1167" name="Rocks Glow">
+	 <GameObject id="1170" name="Rocks Glow">
       <AttributeBlock blockName="this">
         <attribute spell="II" />
         <attribute duration="day" />
@@ -31015,7 +31047,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-	<GameObject id="1168" name="Sleep">
+	<GameObject id="1171" name="Sleep">
       <AttributeBlock blockName="this">
         <attribute spell="III" />
         <attribute duration="instant" />

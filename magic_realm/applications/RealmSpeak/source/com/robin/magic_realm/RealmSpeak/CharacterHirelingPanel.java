@@ -31,6 +31,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 import com.robin.game.objects.GameObject;
 import com.robin.general.swing.IconFactory;
+import com.robin.general.swing.ImageCache;
 import com.robin.general.util.HashLists;
 import com.robin.magic_realm.components.ChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
@@ -173,6 +174,12 @@ public class CharacterHirelingPanel extends CharacterFramePanel {
 	}
 	private void doUnassign() {
 		if (selectedUnderlings.isEmpty()) return;
+		for (RealmComponent underling : selectedUnderlings) {
+			if (underling.getGameObject().hasThisAttribute(Constants.DOPPLEGANGER)) {
+				JOptionPane.showMessageDialog(this, "Doppleganger cannot be unassigned", "Doppleganger selected", JOptionPane.PLAIN_MESSAGE, ImageCache.getIcon("interface/hiddenenemies"));
+				return;
+			}
+		}
 		
 		int ret = JOptionPane.showConfirmDialog(
 				getMainFrame(),

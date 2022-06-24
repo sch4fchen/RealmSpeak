@@ -5882,6 +5882,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 			leader.setJustUnhired(true);
 		}
 		
+		if (hireling.hasThisAttribute(Constants.DOPPLEGANGER)) {
+			ClearingUtility.moveToLocation(hireling,null);
+		}
+		
 		hireling.removeThisAttribute(Constants.HIRELING);
 		// Finally, make sure any clones are expunged (stupid clones!!  kill them all!)
 		if (hireling.hasThisAttribute(Constants.CLONED)) {
@@ -5891,7 +5895,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 			// I'd like to simply delete the object...  but there are problems with this. Instead, lets erase the clone's memory so it has no effect!
 			hireling.clearAllAttributes();
-			getGameData().removeObject(hireling); 
+			getGameData().removeObject(hireling);
 		}
 	}
 	/**
@@ -6072,6 +6076,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 */
 	public boolean canDoDaytimeRecord() {
 		return affectedByKey(Constants.DAYTIME_ACTIONS);
+	}
+	public boolean canChangeAction() {
+		return affectedByKey(Constants.CHANGE_RECORDED_ACTION);
 	}
 	public boolean hasMagicProtection() {
 		return affectedByKey(Constants.MAGIC_PROTECTION);

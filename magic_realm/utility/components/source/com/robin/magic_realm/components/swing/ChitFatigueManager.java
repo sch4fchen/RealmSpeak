@@ -387,15 +387,14 @@ public class ChitFatigueManager extends ChitManager {
 		wrapper.initChits();
 		
 		// artifically fatigue and wound some chits
-		ArrayList list = new ArrayList(wrapper.getAllChits());
+		ArrayList<CharacterActionChitComponent> list = new ArrayList<>(wrapper.getAllChits());
 		Collections.sort(list);
 		int n=0;
-		for (Iterator i=list.iterator();i.hasNext();) {
-			CharacterActionChitComponent aChit = (CharacterActionChitComponent)i.next();
+		for (CharacterActionChitComponent aChit : list) {
 			System.out.println((n++)+" "+aChit.getGameObject().getName());
 		}
 		
-		CharacterActionChitComponent aChit = (CharacterActionChitComponent)list.get(1);
+		CharacterActionChitComponent aChit = list.get(1);
 		aChit.getGameObject().setThisAttribute("action","FLY");
 		aChit.getGameObject().setThisAttribute("effort","1");
 		
@@ -404,7 +403,7 @@ public class ChitFatigueManager extends ChitManager {
 //			aChit = (CharacterActionChitComponent)list.get(i);
 //			aChit.makeWounded();
 //		}
-		aChit = (CharacterActionChitComponent)list.get(11);
+		aChit = list.get(11);
 		aChit.enchant();
 //		(new Curse(new JFrame())).applyThree(wrapper);
 		return wrapper;

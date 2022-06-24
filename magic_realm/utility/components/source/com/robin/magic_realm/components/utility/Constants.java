@@ -448,6 +448,9 @@ public class Constants {
 	public static final String DWELLING_GOLD = "dwelling_gold";
 	public static final String ATTACK_SPEED_TARGET = "attack_speed_target";
 	public static final String ATTACK_SPEED_NEW = "attack_speed_new";
+	public static final String DOPPLEGANGER = "doppleganger";
+	public static final String RAISE_DEAD = "raise_dead";
+	public static final String CHANGE_RECORDED_ACTION = "change_recorded_action";
 	
 	// Host Prefs
 	

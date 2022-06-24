@@ -33,6 +33,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 	private static String[][] MISC_ADVANTAGE_1 = {
 		{"Choose when to take your turn",Constants.CHOOSE_TURN,""},
 		{"No need to record your turn.",Constants.DAYTIME_ACTIONS,""},
+		{"You can change one action once a turn.",Constants.CHANGE_RECORDED_ACTION,""},
 		{"Magic sight",Constants.MAGIC_SIGHT,""},
 		{"No monster summoning for sound/warning chits",Constants.PEACE_WITH_NATURE,""},
 		{"No monster summoning for treasure locations",Constants.DRUID_LULL,""},
