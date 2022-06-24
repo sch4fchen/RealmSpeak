@@ -459,6 +459,10 @@ public class RealmUtility {
 			}
 		}
 		
+		if (rc.getGameObject().hasThisAttribute("hire_with_chit")) {
+			
+		}
+		
 		// Make sure it is light side up for the next regeneration!
 		normalizeParticipant(rc);
 	}

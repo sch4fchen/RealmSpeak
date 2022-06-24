@@ -1,5 +1,5 @@
-Missing functionality
-Doppleganger: chit costs + release chit if character is killed, ability
+Missing functionalites:
+Doppleganger: chit costs + release chit if character is killed or dopplegangner dies (make dead), ability
 Necromancer: ability
 Soothsayer: ability
 
