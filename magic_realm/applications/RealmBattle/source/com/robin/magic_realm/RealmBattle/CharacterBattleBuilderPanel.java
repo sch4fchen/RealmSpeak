@@ -433,6 +433,7 @@ public class CharacterBattleBuilderPanel extends JPanel {
 					if (horse!=null) {
 						horse.getGameObject().removeThisAttribute(Constants.DEAD);
 					}
+					ClearingUtility.moveToLocation(rc.getGameObject(),null);
 				}
 				hirelingPanel.clearSelected();
 				updateHirelingPanel();
