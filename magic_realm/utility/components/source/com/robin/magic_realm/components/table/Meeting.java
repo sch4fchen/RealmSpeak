@@ -17,6 +17,7 @@
  */
 package com.robin.magic_realm.components.table;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.swing.JFrame;
@@ -216,20 +217,30 @@ public abstract class Meeting extends Trade {
 			String amountString = last.getGameObject().getThisAttribute(Constants.HIRE_WITH_CHIT);
 			if (amountString.isEmpty()) amountString = "1";
 			int amount = Integer.valueOf(amountString);
-			Collection<CharacterActionChitComponent> chits = character.getActiveChits();
+			ArrayList<CharacterActionChitComponent> chits = character.getActiveChits();
 			if (chits == null || chits.size() == 0 || chits.size()<amount) {
 				JOptionPane.showMessageDialog(getParentFrame(),"You have not enough active character chits for hiring available.","Cannot hire "+last.getName(),JOptionPane.INFORMATION_MESSAGE,last.getIcon());
 				return;
 			}
-			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(getParentFrame(),"You want to hire the "+last.getName()+" for "+amount+" character chit(s)?",true);
-			for (CharacterActionChitComponent chit : chits) {
-				chooser.addRealmComponent(chit);
+			int amountLeft = amount;
+			int amountSelected = 0;
+			ArrayList<RealmComponent> allSelectedChits = new ArrayList<RealmComponent>();
+			
+			while (amountSelected < amountLeft) {
+				RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(getParentFrame(),"You want to hire the "+last.getName()+" for "+amount+" character chit(s)?",true);
+				for (CharacterActionChitComponent chit : chits) {
+					chooser.addRealmComponent(chit);
+				}
+				chooser.setVisible(true);
+							
+				Collection<RealmComponent> selectedChits = chooser.getSelectedComponents();
+				if (selectedChits == null) return;
+				amountSelected = amountSelected+1;
+				chits.removeAll(selectedChits);
+				allSelectedChits.addAll(selectedChits);
 			}
-			chooser.setVisible(true);
-						
-			Collection<RealmComponent> selectedChits = chooser.getSelectedComponents();
-			if (selectedChits == null) return;
-			for (RealmComponent chit : selectedChits) {
+			
+			for (RealmComponent chit : allSelectedChits) {
 				last.getGameObject().addThisAttributeListItem(Constants.ABSORBED_CHITS, chit.getGameObject().getStringId());
 				last.getGameObject().add(chit.getGameObject());
 			}
