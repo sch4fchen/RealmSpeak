@@ -30981,7 +30981,7 @@
     </GameObject>
     <GameObject id="1166" name="Doppleganger">
       <AttributeBlock blockName="this">
-      	<attribute hire_with_chit="" />
+      	<attribute hire_with_chit="1" />
         <attribute icon_type="t1" />
         <attribute icon_folder="traveler" />
         <attribute rw_expansion_1="" />

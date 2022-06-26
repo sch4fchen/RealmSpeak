@@ -25,8 +25,10 @@ import javax.swing.JOptionPane;
 import com.robin.game.objects.GameObject;
 import com.robin.general.util.StringUtilities;
 import com.robin.magic_realm.components.ArmorChitComponent;
+import com.robin.magic_realm.components.CharacterActionChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.*;
+import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.swing.RealmPaymentDialog;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -192,11 +194,50 @@ public abstract class Meeting extends Trade {
 	public void hiringNatives(CharacterWrapper character,int mult) {
 		int basePrice = 0;
 		RealmComponent last = null;
+		boolean hireWithChit = false;
 		for (RealmComponent hire : hireGroup) {
 			basePrice += hire.getGameObject().getThisInt("base_price");
+			if (hire.getGameObject().hasThisAttribute(Constants.HIRE_WITH_CHIT)) {
+				hireWithChit = true;
+			}
 			last = hire;
 		}
 		if (last == null) return;
+		
+		if (hireWithChit && hireGroup.size()>1) {
+			JOptionPane.showMessageDialog(getParentFrame(),"Cannot hire multiple natives, if costs include a character chit.","Cannot hire",JOptionPane.INFORMATION_MESSAGE,last.getIcon());
+			return;
+		}
+		if (hireWithChit) {
+			if (last.getOwner() != null) {
+				JOptionPane.showMessageDialog(getParentFrame(),"You cannot rehire this hireling.","Cannot rehire "+last.getName(),JOptionPane.INFORMATION_MESSAGE,last.getIcon());
+				return;
+			}
+			String amountString = last.getGameObject().getThisAttribute(Constants.HIRE_WITH_CHIT);
+			if (amountString.isEmpty()) amountString = "1";
+			int amount = Integer.valueOf(amountString);
+			Collection<CharacterActionChitComponent> chits = character.getActiveChits();
+			if (chits == null || chits.size() == 0 || chits.size()<amount) {
+				JOptionPane.showMessageDialog(getParentFrame(),"You have not enough active character chits for hiring available.","Cannot hire "+last.getName(),JOptionPane.INFORMATION_MESSAGE,last.getIcon());
+				return;
+			}
+			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(getParentFrame(),"You want to hire the "+last.getName()+" for "+amount+" character chit(s)?",true);
+			for (CharacterActionChitComponent chit : chits) {
+				chooser.addRealmComponent(chit);
+			}
+			chooser.setVisible(true);
+						
+			Collection<RealmComponent> selectedChits = chooser.getSelectedComponents();
+			if (selectedChits == null) return;
+			for (RealmComponent chit : selectedChits) {
+				last.getGameObject().addThisAttributeListItem(Constants.ABSORBED_CHITS, chit.getGameObject().getStringId());
+				last.getGameObject().add(chit.getGameObject());
+			}
+			character.updateChitEffects();
+			character.addHireling(last.getGameObject());
+			return;
+		}
+		
 		//if (basePrice>0) { // Was this necessary?
 		int askingPrice = basePrice * mult;
 		

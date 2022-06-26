@@ -459,8 +459,16 @@ public class RealmUtility {
 			}
 		}
 		
-		if (rc.getGameObject().hasThisAttribute("hire_with_chit")) {
-			
+		if (rc.getGameObject().hasThisAttribute(Constants.ABSORBED_CHITS)) {
+			Collection<String> chitIds = rc.getGameObject().getThisAttributeList(Constants.ABSORBED_CHITS);
+			CharacterWrapper character = new CharacterWrapper(rc.getOwner().getGameObject());
+			for (String chitId : chitIds) {
+				GameObject chit = rc.getGameObject().getGameData().getGameObject(chitId);
+				character.getGameObject().add(chit);
+			}
+			character.updateChitEffects();
+			rc.getGameObject().removeThisAttribute(Constants.ABSORBED_CHITS);
+			ClearingUtility.moveToLocation(rc.getGameObject(),null);
 		}
 		
 		// Make sure it is light side up for the next regeneration!

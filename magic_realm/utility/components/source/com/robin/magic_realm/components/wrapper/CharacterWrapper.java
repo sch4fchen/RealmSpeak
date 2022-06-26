@@ -5882,7 +5882,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 			leader.setJustUnhired(true);
 		}
 		
-		if (hireling.hasThisAttribute(Constants.DOPPLEGANGER)) {
+		if (hireling.hasThisAttribute(Constants.ABSORBED_CHITS)) {
+			Collection<String> chitIds = hireling.getThisAttributeList(Constants.ABSORBED_CHITS);
+			for (String chitId : chitIds) {
+				GameObject chit = hireling.getGameData().getGameObject(chitId);
+				this.getGameObject().add(chit);
+			}
+			updateChitEffects();
+			hireling.removeThisAttribute(Constants.ABSORBED_CHITS);
 			ClearingUtility.moveToLocation(hireling,null);
 		}
 		

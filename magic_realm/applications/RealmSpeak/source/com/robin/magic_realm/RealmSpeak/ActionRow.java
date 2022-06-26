@@ -1723,11 +1723,18 @@ public class ActionRow {
 						// New hire single
 						String option = chooser.generateOption(StringUtilities.capitalize(groupName));
 						chooser.addRealmComponentToOption(option,last);
-						basePrice = last.getGameObject().getThisInt("base_price");
-						if (character.hasActiveInventoryThisKeyAndValue(Constants.HALF_PRICE,groupName)) {
-							basePrice >>= 1;
+						if (last.getGameObject().hasThisAttribute(Constants.HIRE_WITH_CHIT)) {
+							String chitAmount = last.getGameObject().getThisAttribute(Constants.HIRE_WITH_CHIT);
+							if (chitAmount == "") chitAmount = "1";
+							chooser.addOption(option,"Hire "+StringUtilities.capitalize(groupName)+" (price: "+chitAmount+" chit(s))");
 						}
-						chooser.addOption(option,"Hire "+StringUtilities.capitalize(groupName)+" (base: "+basePrice+" gold)");
+						else {
+							basePrice = last.getGameObject().getThisInt("base_price");
+							if (character.hasActiveInventoryThisKeyAndValue(Constants.HALF_PRICE,groupName)) {
+								basePrice >>= 1;
+							}
+							chooser.addOption(option,"Hire "+StringUtilities.capitalize(groupName)+" (base: "+basePrice+" gold)");
+						}
 					}
 				}
 			}

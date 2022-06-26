@@ -164,9 +164,8 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 				GraphicsUtil.drawCenteredString(g,x,y-2,rad,rad,"$$");
 			}
 			else if (getGameObject().hasThisAttribute(Constants.DOPPLEGANGER)) {
-				g.setColor(Color.black);
-				g.fillRect(x, y, rad, rad);
 				g.setColor(Color.white);
+				g.fillRect(x, y, rad-4, rad-4);
 			}
 			String vul = getGameObject().getThisAttribute("vulnerability");
 			if (vul!=null) {
