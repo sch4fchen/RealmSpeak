@@ -50,6 +50,8 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String SLEEP_CLEARING = "SLEEP_CLEARING";
 	private static final String WATCHFUL = "WATCHFUL";
 	private static final String LOCK_NEXT = "LOCK_NEXT";
+	private static final String CASTED_RAISE_THE_DEAD = "CAST_RAISE_THE_DEAD";
+	private static final String RAISED_UNDEADS_IN_COMBAT = "RAISED_UNDEADS";
 	
 	// Round-only Information
 	private static final String COMBAT_BOX = "CMB_BOX";
@@ -82,6 +84,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String PLAYED_ATTACK = "PLAYED_ATTACK";
 	private static final String TARGETING_RIDER = "TARGETING_RIDER";
 	private static final String GALLOPED = "GALLOPED";
+	private static final String RAISE_THE_DEAD = "RAISE_THE_DEAD";
 	
 	private static final String HEALING = "HEALING";
 	
@@ -163,6 +166,18 @@ public class CombatWrapper extends GameObjectWrapper {
 			spell.expireSpell();
 			setBoolean(CAST_SPELL,false);
 		}
+	}
+	public void setRaiseTheDead() {
+		setBoolean(RAISE_THE_DEAD, true);
+	}
+	public boolean getRaiseTheDead() {
+		return getBoolean(RAISE_THE_DEAD);
+	}
+	public void setRaisedDead() {
+		setBoolean(CASTED_RAISE_THE_DEAD, true);
+	}
+	public boolean getRaisedDead() {
+		return getBoolean(CASTED_RAISE_THE_DEAD);
 	}
 	public void setSkipCombat(boolean val) {
 		setBoolean(SKIP_COMBAT,val);
@@ -634,6 +649,24 @@ public class CombatWrapper extends GameObjectWrapper {
 		}
 		return 0;
 	}
+	
+	public void addRaisedUndead(GameObject undead) {
+		addListItem(RAISED_UNDEADS_IN_COMBAT,undead.getStringId());
+	}
+	
+	public ArrayList<GameObject> getRaisedUndeads() {
+		GameData data = getGameObject().getGameData();
+		ArrayList<GameObject> list = new ArrayList<>();
+		ArrayList<String> ids = getList(RAISED_UNDEADS_IN_COMBAT);
+		if (ids!=null) {
+			for (String id : ids) {
+				GameObject go = data.getGameObject(Long.valueOf(id));
+				list.add(go);
+			}
+		}
+		return list;
+	}
+	
 	/**
 	 * Strips all round related information - leaves other combat info (like number of consecutive rounds without hits)
 	 */
@@ -675,6 +708,7 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,WEAPON_ID);
 			go.removeAttribute(COMBAT_BLOCK,HIT_WEAPON_ID);
 			go.removeAttribute(COMBAT_BLOCK,SHEET_OWNER_ID);
+			go.removeAttribute(COMBAT_BLOCK,RAISE_THE_DEAD);
 			
 			ArrayList<String> list = go.getAttributeList(COMBAT_BLOCK,RANDOMIZE_PREFICES);
 			if (list!=null) {

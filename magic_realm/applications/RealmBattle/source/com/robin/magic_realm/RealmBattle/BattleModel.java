@@ -30,6 +30,7 @@ import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.table.Curse;
 import com.robin.magic_realm.components.table.PowerOfThePit;
+import com.robin.magic_realm.components.table.RaiseDead;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.*;
 
@@ -467,6 +468,20 @@ public class BattleModel {
 		for(RealmComponent rc:randomOrder) {
 			CharacterWrapper owner = new CharacterWrapper(rc.getGameObject());
 			owner.setMeleePlayOrder(n++);
+		}
+	}
+	
+	public void doRaiseDeads() {
+		for (CharacterChitComponent rc : getAllParticipatingCharacters()) {
+			CombatWrapper character = new CombatWrapper(rc.getGameObject());
+			if (character.getRaiseTheDead()) {
+				CharacterWrapper characterCasting = new CharacterWrapper(rc.getGameObject());
+				RaiseDead raiseDead = new RaiseDead(CombatFrame.getSingleton());
+				DieRoller deadRoller = DieRollBuilder.getDieRollBuilder(CombatFrame.getSingleton(),characterCasting).createRoller(raiseDead);
+				raiseDead.apply(characterCasting,deadRoller);
+				character.setRaisedDead();
+				logBattleInfo(rc+" raised the Dead.");
+			}
 		}
 	}
 	

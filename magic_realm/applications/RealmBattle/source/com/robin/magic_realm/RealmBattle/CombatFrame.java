@@ -158,6 +158,7 @@ public class CombatFrame extends JFrame {
 	private JButton runAwayButton;
 	private JButton alertWeaponButton;
 	private JButton castSpellButton;
+	private JButton raiseDeadButton;
 	private JButton activateInactivateButton;
 	private JButton pickupItemButton;
 	private JButton dropBelongingsButton;
@@ -324,6 +325,7 @@ public class CombatFrame extends JFrame {
 		chargeButton = null;
 		runAwayButton = null;
 		castSpellButton = null;
+		raiseDeadButton = null;
 		selectSpellTargetsButton = null;
 		cancelSpellButton = null;
 		alertWeaponButton = null;
@@ -741,6 +743,17 @@ public class CombatFrame extends JFrame {
 		}
 		return castSpellButton;
 	}
+	private JButton getRaiseDeadButton() {
+		if (raiseDeadButton==null) {
+			raiseDeadButton = new JButton("Raise Dead (Necromancer)");
+			raiseDeadButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					raiseDead();
+				}
+			});
+		}
+		return raiseDeadButton;
+	}
 	private JButton getActivateInactivateButton() {
 		if (activateInactivateButton==null) {
 			activateInactivateButton = new JButton("Activate/Inactivate");
@@ -1022,6 +1035,9 @@ public class CombatFrame extends JFrame {
 					list.add(getRunAwayButton());
 					list.add(getAlertWeaponButton());
 					list.add(getCastSpellButton());
+					if (activeCharacter.affectedByKey(Constants.RAISE_DEAD)) {
+						list.add(getRaiseDeadButton());
+					}
 					list.add(getActivateInactivateButton());
 					if (hostPrefs.hasPref(Constants.ADV_DROPPING)) {
 						list.add(getPickupItemButton());
@@ -1463,6 +1479,9 @@ public class CombatFrame extends JFrame {
 				}
 				castSpellButton.setEnabled(endCombatFrame==null && !combat.isPeaceful() && activeCharacterIsHere && !combat.getHasCharged() && !activeCharacterIsTransmorphed && castableSpellSets != null && castableSpellSets.size()>0 && !changes);
 			}
+			if (raiseDeadButton!=null) {
+				raiseDeadButton.setEnabled(endCombatFrame==null && !combat.isPeaceful() && activeCharacterIsHere && activeCharacter.affectedByKey(Constants.RAISE_DEAD) && !combat.getRaisedDead() && !combat.getRaiseTheDead());
+			}
 			if (selectSpellTargetsButton!=null) {
 				GameObject go = combat.getCastSpell();
 				SpellWrapper spell = go==null?null:new SpellWrapper(go);
@@ -1505,6 +1524,9 @@ public class CombatFrame extends JFrame {
 				endButton.setEnabled(interactiveFrame);
 				if (castSpellButton!=null) {
 					castSpellButton.setEnabled(false);
+				}
+				if (raiseDeadButton!=null) {
+					raiseDeadButton.setEnabled(false);
 				}
 			}
 		}
@@ -3324,6 +3346,16 @@ public class CombatFrame extends JFrame {
 			else {
 				JOptionPane.showMessageDialog(this,"There are no spellcasting options available to you.","Cannot Cast Spell",JOptionPane.ERROR_MESSAGE);
 			}
+		}
+	}
+	private void raiseDead() {
+		int ret = JOptionPane.showConfirmDialog(null,"You want to raise the Dead?","Raise the Dead",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		if (ret==JOptionPane.YES_OPTION) {
+			CombatWrapper characterCombat = new CombatWrapper(activeCharacter.getGameObject());
+			characterCombat.setRaiseTheDead();
+			broadcastMessage(activeCharacter.getGameObject().getName(),"Casts Raise the Dead");
+			nonaffectingChanges = true;
+			updateControls();
 		}
 	}
 	public void activateInactivate() {

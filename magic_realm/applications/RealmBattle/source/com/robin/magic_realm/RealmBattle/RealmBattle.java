@@ -318,6 +318,7 @@ public class RealmBattle {
 						case Constants.COMBAT_RESOLVING:
 							// need to resolve attacks before informing players of the resolution
 							LogStage("Resolve Combat");
+							raiseDeads(currentCombatLocation,data);
 							resolveCombat(currentCombatLocation,data);
 							break;
 						case Constants.COMBAT_FATIGUE:
@@ -631,6 +632,11 @@ public class RealmBattle {
 		model.doMeleeSetup();
 	}
 	
+	public static void raiseDeads(TileLocation location,GameData data) {
+		BattleModel model = buildBattleModel(location,data);
+		model.doRaiseDeads();
+	}
+	
 	public static void energizeSpells(TileLocation location,GameData data) {
 		BattleModel model = buildBattleModel(location,data);
 		model.doEnergizeSpells();
@@ -748,6 +754,9 @@ public class RealmBattle {
 		CombatWrapper cw = new CombatWrapper(location.tile.getGameObject());
 		cw.clearHitResults();
 		cw.setWasFatigue(false);
+		for (GameObject undead : cw.getRaisedUndeads()) {
+			RealmUtility.makeDead(RealmComponent.getRealmComponent(undead));
+		}
 		
 		// Need to clear out all monster combat info here too!
 		for (RealmComponent rc : location.clearing.getClearingComponents()) {
