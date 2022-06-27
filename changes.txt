@@ -1,6 +1,4 @@
-Missing functionalites:
-Necromancer: ability
-Soothsayer: ability
+Missing functionalites: Soothsayer: ability
 
 Version 1.1.5.8 - Changes since 1.1.5.7
 QUEST UPDATE:

@@ -67,6 +67,7 @@ public class RaiseDead extends MonsterTable {
 		TileLocation tl = character.getCurrentLocation();
 		GameObject go = ClearingUtility.getItemInClearingWithKey(tl,Constants.NO_UNDEAD);
 		if (go==null) {
+			CombatWrapper characterCombat = new CombatWrapper(character.getGameObject());
 			GameData data = character.getGameObject().getGameData();
 			for (int i=0;i<count;i++) {
 				GameObject undead = createUndead(getMonsterCreator(),data);
@@ -78,6 +79,10 @@ public class RaiseDead extends MonsterTable {
 				}
 				if (tl!=null && tl.isInClearing()) {
 					tl.clearing.add(undead,null);
+					if (characterCombat.getRaiseTheDead() && !characterCombat.getRaisedDead()) {
+						CombatWrapper tlCombat = new CombatWrapper(tl.tile.getGameObject());
+						tlCombat.addRaisedUndead(undead);
+					}
 				}
 			}
 			return "Raised "+count+" "+(hire?"":"Enemy")+" Undead";
