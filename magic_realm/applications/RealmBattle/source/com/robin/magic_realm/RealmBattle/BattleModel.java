@@ -478,9 +478,9 @@ public class BattleModel {
 				CharacterWrapper characterCasting = new CharacterWrapper(rc.getGameObject());
 				RaiseDead raiseDead = new RaiseDead(CombatFrame.getSingleton());
 				DieRoller deadRoller = DieRollBuilder.getDieRollBuilder(CombatFrame.getSingleton(),characterCasting).createRoller(raiseDead);
-				raiseDead.apply(characterCasting,deadRoller);
+				String msg = raiseDead.apply(characterCasting,deadRoller);
 				character.setRaisedDead();
-				logBattleInfo(rc+" raised the Dead.");
+				logBattleInfo(rc+": "+msg);
 			}
 		}
 	}
