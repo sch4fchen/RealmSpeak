@@ -453,6 +453,7 @@ public class Constants {
 	public static final String ABSORBED_CHITS = "absorbed_chits";
 	public static final String RAISE_DEAD = "raise_dead";
 	public static final String CHANGE_RECORDED_ACTION = "change_recorded_action";
+	public static final String RECORDED_ACTION_CHANGED = "recorded_action_changed";
 	
 	// Host Prefs
 	
