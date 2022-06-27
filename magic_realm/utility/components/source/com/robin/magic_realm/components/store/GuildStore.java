@@ -93,12 +93,11 @@ public abstract class GuildStore extends Store {
 	}
 	
 	protected void chooseFriendlinessGain(JFrame frame) {
-		ArrayList list = trader.getGameObject().getThisAttributeList("allies");
+		ArrayList<String> list = trader.getGameObject().getThisAttributeList("allies");
 		
 		GamePool pool = new GamePool(trader.getGameObject().getGameData().getGameObjects());
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,"The guild advancement includes one friendliness level for one of the following groups:",false);
-		for (Iterator i=list.iterator();i.hasNext();) {
-			String groupName = i.next().toString();
+		for (String groupName : list) {
 			GameObject leader = pool.findFirst("rank=HQ,native="+groupName);
 			int rel = character.getRelationship(leader);
 			String oldR = RealmUtility.getRelationshipNameFor(rel);

@@ -201,6 +201,10 @@ public class RealmUtility {
 			else {
 				relationship = character.getRelationship(trader.getGameObject());
 			}
+			
+			if (character.affectedByKey(Constants.DOPPLEGANGER)) {
+				relationship = Math.max(relationship,RelationshipType.FRIENDLY);
+			}
 		}
 		return relationship;
 	}

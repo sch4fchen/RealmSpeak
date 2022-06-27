@@ -1,5 +1,4 @@
 Missing functionalites:
-Doppleganger: ability
 Necromancer: ability
 Soothsayer: ability
 
