@@ -452,8 +452,7 @@ public class Constants {
 	public static final String HIRE_WITH_CHIT = "hire_with_chit";
 	public static final String ABSORBED_CHITS = "absorbed_chits";
 	public static final String RAISE_DEAD = "raise_dead";
-	public static final String CHANGE_RECORDED_ACTION = "change_recorded_action";
-	public static final String RECORDED_ACTION_CHANGED = "recorded_action_changed";
+	public static final String CANCEL_RECORDED_ACTION = "change_recorded_action";
 	
 	// Host Prefs
 	

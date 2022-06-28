@@ -1,5 +1,3 @@
-Missing functionalites: Soothsayer: ability
-
 Version 1.1.5.8 - Changes since 1.1.5.7
 QUEST UPDATE:
 # QuestRewardHireling: Fix removing cloned hireling from game

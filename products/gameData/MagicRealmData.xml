@@ -31009,7 +31009,7 @@
         <attribute rw_expansion_1="" />
         <attribute traveler_template="" />
         <attribute change_recorded_action="" />
-        <attribute text="Change any 1 recorded action during your turn" />
+        <attribute text="Cancel any recorded actions during your turn" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1169" name="Magic Shield">

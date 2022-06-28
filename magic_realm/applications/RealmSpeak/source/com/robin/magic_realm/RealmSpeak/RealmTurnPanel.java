@@ -69,7 +69,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 	private FlashingButton playNextButton;
 	private JButton playAllButton;
 	private JButton postponeTurnButton ; // Swordsman's ability
-	private JButton changeActionButton;
+	private JButton cancelActionButton;
 	private JButton ditchFollowersButton;
 	private JButton landButton; // only when Timeless Jewel is in play, and you are flying
 	
@@ -340,7 +340,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 							&& !getCharacter().isLastPlayer()
 							&& !playedAnAction;
 		postponeTurnButton.setEnabled(!controlsLocked && canPostpone);
-		changeActionButton.setEnabled(getCharacter().affectedByKey(Constants.CHANGE_RECORDED_ACTION) && hasActionsLeft() && !getCharacter().affectedByKey(Constants.RECORDED_ACTION_CHANGED));
+		cancelActionButton.setEnabled(getCharacter().affectedByKey(Constants.CANCEL_RECORDED_ACTION) && hasActionsLeft());
 		
 		boolean objectsNeedOpen = !getCharacter().getAllOpenableSites().isEmpty();
 		openButton.setEnabled(objectsNeedOpen);
@@ -421,14 +421,14 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			}
 		});
 		specialButtons.add(postponeTurnButton);
-		changeActionButton = new JButton("Change");
-		changeActionButton.addActionListener(new ActionListener() {
+		cancelActionButton = new JButton("Cancel");
+		cancelActionButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				getGameHandler().broadcast(getCharacter().getGameObject().getName(),"Changes next action.");
-				changeAction();
+				cancelAction();
 			}
 		});
-		specialButtons.add(changeActionButton);
+		specialButtons.add(cancelActionButton);
 		panel.add(specialButtons);
 		DieRoller monsterDieRoller = game.getMonsterDie();
 		monsterDieRoller.setAllRed();
@@ -968,7 +968,6 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			dialog.setVisible(true);
 		}
 		
-		getCharacter().getGameObject().removeThisAttribute(Constants.RECORDED_ACTION_CHANGED);
 		getGameHandler().broadcast(getCharacter().getGameObject().getName(),"Ends turn: "+getCharacter().getCurrentLocation());
 		
 		// If the getCharacter() was blocked, be sure to note this in the action list
@@ -1257,17 +1256,25 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		updateControls();
 		model.fireTableDataChanged();
 	}
-	private void changeAction() {	
+	private void cancelAction() {	
 		if (isFollowing) return;
-		/*
-		Collection<String> atcc = getCharacter().getCurrentActionTypeCodes();
-		
-		ArrayList<String> c = getCharacter().getCurrentActions();
-		c.remove(0);
-		getCharacter().setCurrentActions(c);
-		updateControls();
-		*/
-		getCharacter().getGameObject().setThisAttribute(Constants.RECORDED_ACTION_CHANGED);
+				
+		ActionRow ar = actionRows.get(currentActionRow);
+		String removedAction = ar.getAction();
+		actionRows.remove(ar);
+		ArrayList<String> actions = new ArrayList<>(getCharacter().getCurrentActions());
+		actions.remove(currentActionRow);
+		getCharacter().setCurrentActions(actions);
+		if (removedAction.startsWith(DayAction.MOVE_ACTION.getCode()) || removedAction.startsWith(DayAction.FLY_ACTION.getCode())) {
+			getCharacter().rebuildClearingPlot();
+		}
+		ArrayList<String> actionTypeCodes = new ArrayList<>();
+		Collection<String> c = getCharacter().getCurrentActionTypeCodes();
+		if (c!=null && !c.isEmpty()) {
+			actionTypeCodes.addAll(c);
+			actionTypeCodes.remove(currentActionRow);
+		}
+		getCharacter().setCurrentActionTypeCodes(actionTypeCodes);
 		updateControls();
 	}
 	public void startDaytimeRecord() {

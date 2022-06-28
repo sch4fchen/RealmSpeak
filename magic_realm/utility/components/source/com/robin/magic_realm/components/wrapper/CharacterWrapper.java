@@ -6084,8 +6084,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean canDoDaytimeRecord() {
 		return affectedByKey(Constants.DAYTIME_ACTIONS);
 	}
-	public boolean canChangeAction() {
-		return affectedByKey(Constants.CHANGE_RECORDED_ACTION);
+	public boolean canCancelAction() {
+		return affectedByKey(Constants.CANCEL_RECORDED_ACTION);
 	}
 	public boolean hasMagicProtection() {
 		return affectedByKey(Constants.MAGIC_PROTECTION);
