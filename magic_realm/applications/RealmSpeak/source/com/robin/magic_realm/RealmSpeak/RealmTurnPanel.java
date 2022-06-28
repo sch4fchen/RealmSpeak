@@ -416,7 +416,8 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			}
 		});
 		panel.add(playAllButton);
-		postponeTurnButton = new JButton("Postpone Turn");
+		JPanel specialButtons = new JPanel(new GridLayout(1,2));
+		postponeTurnButton = new JButton("Postpone");
 		postponeTurnButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				getGameHandler().broadcast(getCharacter().getGameObject().getName(),"Postpones turn.");
@@ -426,15 +427,16 @@ public class RealmTurnPanel extends CharacterFramePanel {
 				getGameHandler().submitChanges();
 			}
 		});
-		panel.add(postponeTurnButton);
-		changeActionButton = new JButton("Change Action");
+		specialButtons.add(postponeTurnButton);
+		changeActionButton = new JButton("Change");
 		changeActionButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				getGameHandler().broadcast(getCharacter().getGameObject().getName(),"Changes next action.");
 				changeAction();
 			}
 		});
-		panel.add(changeActionButton);
+		specialButtons.add(changeActionButton);
+		panel.add(specialButtons);
 		DieRoller monsterDieRoller = game.getMonsterDie();
 		monsterDieRoller.setAllRed();
 		JLabel monsterDieLabel = new JLabel("Monster Die:",monsterDieRoller.getIcon(),SwingConstants.CENTER);
