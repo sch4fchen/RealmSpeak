@@ -335,14 +335,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			activatePlayNextTimer = new Timer(5000,activatePlayNextListener);
 			activatePlayNextTimer.start();
 		}
-		
-		/* canPostpone only if ALL of the following is true:
-		 * 
-		 * 	1)	Have this ability
-		 * 	2)	Haven't played an action yet
-		 * 	3)	Aren't already the last player (irrelevant otherwise!)
-		 */
-		
+			
 		boolean canPostpone = getCharacter().affectedByKey(Constants.CHOOSE_TURN)
 							&& !getCharacter().isLastPlayer()
 							&& !playedAnAction;
@@ -1275,6 +1268,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		updateControls();
 		*/
 		getCharacter().getGameObject().setThisAttribute(Constants.RECORDED_ACTION_CHANGED);
+		updateControls();
 	}
 	public void startDaytimeRecord() {
 		if (!isFollowing) {
