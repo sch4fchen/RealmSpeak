@@ -275,6 +275,7 @@ public class Constants {
 	public static final String MAGIC_PATH = "magic_path";
 	public static final String MAGIC_PATH_EFFECT = "magic_path_effect";
 	public static final String MAGIC_PATH_AFFECTED_CHARACTER = "magic_path_character";
+	public static final String SUMMON_COMPANION = "summon_companion";
 	
 	// Native ThisAttributes
 	public static final String HIDDEN = "hidden";

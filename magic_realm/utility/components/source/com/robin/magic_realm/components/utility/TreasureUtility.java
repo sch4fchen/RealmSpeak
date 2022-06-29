@@ -602,7 +602,7 @@ public class TreasureUtility {
 			thing.setThisAttribute(Constants.MAGIC_PATH_AFFECTED_CHARACTER,character.getGameObject().getStringId());
 			character.getGameObject().setThisAttribute(Constants.MAGIC_PATH_EFFECT);
 		}
-		if (thing.hasThisAttribute(Constants.COMPANION)) {
+		if (thing.hasThisAttribute(Constants.SUMMON_COMPANION)) {
 			GameObject companion = getCompanionFromItem(thing);
 			character.addHireling(companion);
 		}
@@ -1180,7 +1180,7 @@ public class TreasureUtility {
 	
 	private static GameObject getCompanionFromItem(GameObject item) {
 		GameObject companion = item.getGameData().createNewObject();
-		companion.setName(item.getThisAttribute(Constants.COMPANION));
+		companion.setName(item.getThisAttribute(Constants.SUMMON_COMPANION));
 		companion.copyAttributeBlockFrom(item,Constants.COMPANION);
 		companion.renameAttributeBlock(Constants.COMPANION,"this");
 		companion.copyAttributeBlockFrom(item,Constants.COMPANION+"_light");

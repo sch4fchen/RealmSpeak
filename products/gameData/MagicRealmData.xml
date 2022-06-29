@@ -30925,7 +30925,7 @@
         <attribute notoriety="0" />
         <attribute facing="face_dn" />
         <attribute fame="0" />
-        <attribute companion="Hound" />
+        <attribute summon_companion="Hound" />
         <attribute author="Expansion 1" />
         <attribute item="" />
       </AttributeBlock>
@@ -30934,8 +30934,8 @@
         <attribute vulnerability="L" />
         <attribute fame="0" />
         <attribute notoriety="0" />
-        <attribute icon_type="wolf" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="wardog" />
+        <attribute icon_folder="monsters2" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
       </AttributeBlock>
