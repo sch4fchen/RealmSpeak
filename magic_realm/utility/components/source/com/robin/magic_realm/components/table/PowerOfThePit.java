@@ -138,10 +138,6 @@ public class PowerOfThePit extends RealmTable {
 				+"The target is instantly killed.\n\n     "+character.getGameObject().getName()+" was killed.");
 		// The target is instantly killed.
 		kill(character.getGameObject(),speed.getNum());
-		if (!makeDeadWhenKilled) {
-			CombatWrapper tile = new CombatWrapper(character.getCurrentLocation().tile.getGameObject());
-			tile.addHitResult();
-		}
 		return RESULT[1];
 	}
 
@@ -182,11 +178,6 @@ public class PowerOfThePit extends RealmTable {
 			}
 		}
 		
-		if(!makeDeadWhenKilled && killedAtLeastOne) {
-			CombatWrapper tile = new CombatWrapper(tl.tile.getGameObject());
-			tile.addHitResult();
-		}
-		
 		StringBuffer message = new StringBuffer();
 		message.append("Terror\n\n");
 		message.append("Each character in the clearing must wound all Light and Medium MOVE/FIGHT chits.\n");
@@ -222,10 +213,6 @@ public class PowerOfThePit extends RealmTable {
 			kill(character.getGameObject(),speed.getNum());
 			ArrayList<RealmComponent> killed = new ArrayList<RealmComponent>();
 			killed.add(RealmComponent.getRealmComponent(character.getGameObject()));
-			if (!makeDeadWhenKilled) {
-				CombatWrapper tile = new CombatWrapper(character.getCurrentLocation().tile.getGameObject());
-				tile.addHitResult();
-			}
 			message.append(getKilledString(killed));
 		}
 		sendMessage(character.getGameObject().getGameData(),
@@ -328,10 +315,6 @@ public class PowerOfThePit extends RealmTable {
 			}
 		}
 		
-		if (!makeDeadWhenKilled && killedAtLeastOne) {
-			CombatWrapper tile = new CombatWrapper(tl.tile.getGameObject());
-			tile.addHitResult();
-		}
 		return killed;
 	}
 	private void kill(GameObject go,int attackSpeed) {

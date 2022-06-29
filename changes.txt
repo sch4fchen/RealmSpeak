@@ -14,6 +14,7 @@ BUGS/ISSUES:
 # Improve various effects and situations for cancelling (instead of expiring) spells
 # Cancel spells cast onto teleported, killed or absorbed characters or monsters
 # Fix creating a new cache with optional rule "bounty points for discoveries"
+# Fix combat round count after casting Power of the Pit
 
 Version 1.1.5.7 - Changes since 1.1.5.6
 QUEST UPDATE:
