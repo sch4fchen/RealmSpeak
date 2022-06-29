@@ -73,6 +73,10 @@ public class BattleSummaryRow implements Comparable<BattleSummaryRow> {
 		String targetId = target.getStringId();
 		CombatWrapper tCombat = new CombatWrapper(target);
 		GameObject killedBy = tCombat.getKilledBy();
+		BattleHorse horse = null;
+		if (RealmComponent.getRealmComponent(target).isNative()) {
+			horse = RealmComponent.getRealmComponent(target).getHorseIncludeDead();
+		}
 		
 		if (attacker.hasThisAttribute("spell")) {
 			SpellWrapper spell = new SpellWrapper(attacker);
@@ -106,6 +110,14 @@ public class BattleSummaryRow implements Comparable<BattleSummaryRow> {
 				resolution = RESOLUTION_HIT;
 				hitType = " undercut";
 				break;
+		}
+		
+		if (horse != null) {
+			CombatWrapper hCombat = new CombatWrapper(horse.getGameObject());
+			GameObject horseKilledBy = hCombat.getKilledBy();
+			if ((horseKilledBy!=null && horseKilledBy.equals(attacker))) {
+				hitType += ", killed "+target.getName()+"'s horse";
+			}
 		}
 		
 		//ArrayList<GameObject> kills = combat.getAllKills(); // TODO This isn't the right solution.  See #1606 and #1609

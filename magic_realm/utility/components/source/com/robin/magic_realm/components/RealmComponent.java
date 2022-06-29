@@ -697,8 +697,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	}
 	
 	public BattleHorse getHorseIncludeDead() { // gets the horse, even if it is dead
-		for (Iterator i = gameObject.getHold().iterator(); i.hasNext();) {
-			GameObject go = (GameObject) i.next();
+		for (GameObject go : gameObject.getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc instanceof BattleHorse) {
 				return (BattleHorse) rc;
@@ -717,8 +716,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		return getHorse(checkLocation,-1);
 	}
 	public BattleHorse getHorse(boolean checkLocation,int attackOrderPos) {
-		for (Iterator i = gameObject.getHold().iterator(); i.hasNext();) {
-			GameObject go = (GameObject) i.next();
+		for (GameObject go : gameObject.getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc instanceof BattleHorse) {
 				BattleHorse bh = (BattleHorse)rc;
