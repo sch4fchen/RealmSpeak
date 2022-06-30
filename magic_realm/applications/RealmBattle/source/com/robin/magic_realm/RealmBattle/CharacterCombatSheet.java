@@ -170,7 +170,7 @@ public class CharacterCombatSheet extends CombatSheet {
 	protected void updateHotSpots() {
 		hotspotHash.clear();
 		CombatWrapper tile = new CombatWrapper(getBattleLocation().tile.getGameObject());
-		if (tile.isPeaceClearing(getBattleLocation().clearing.getNum()) || !interactiveFrame) {
+		if (tile.isPeaceClearing(getBattleLocation().clearing.getNum()) || tile.isSleepClearing(getBattleLocation().clearing.getNum()) || !interactiveFrame) {
 			// No activities allowed!
 			return;
 		}

@@ -453,7 +453,7 @@ public class CombatFrame extends JFrame {
 			
 			// Test for a PEACE condition
 			CombatWrapper tile = new CombatWrapper(currentCombatLocation.tile.getGameObject());
-			if (tile.isPeaceClearing(currentCombatLocation.clearing.getNum())) {
+			if (tile.isPeaceClearing(currentCombatLocation.clearing.getNum()) || tile.isSleepClearing(currentCombatLocation.clearing.getNum())) {
 				currentBattleModel.makePeace();
 			}
 			
@@ -1519,7 +1519,7 @@ public class CombatFrame extends JFrame {
 		if (endCombatFrame==null && currentBattleModel!=null) {
 			TileLocation tl = currentBattleModel.getBattleLocation();
 			CombatWrapper tile = new CombatWrapper(tl.tile.getGameObject());
-			if (tile.isPeaceClearing(tl.clearing.getNum())) {
+			if (tile.isPeaceClearing(tl.clearing.getNum()) || tile.isSleepClearing(tl.clearing.getNum())) {
 				nextButton.setEnabled(interactiveFrame);
 				endButton.setEnabled(interactiveFrame);
 				if (castSpellButton!=null) {
@@ -1548,7 +1548,7 @@ public class CombatFrame extends JFrame {
 		if (currentBattleModel!=null) {
 			TileLocation tl = currentBattleModel.getBattleLocation();
 			CombatWrapper tile = new CombatWrapper(tl.tile.getGameObject());
-			if (tile.isPeaceClearing(tl.clearing.getNum())) {
+			if (tile.isPeaceClearing(tl.clearing.getNum()) || tile.isSleepClearing(tl.clearing.getNum())) {
 				return true;
 			}
 		}
