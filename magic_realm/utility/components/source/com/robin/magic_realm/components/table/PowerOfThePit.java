@@ -147,7 +147,6 @@ public class PowerOfThePit extends RealmTable {
 		// All Light and Medium Monsters, Natives, and Horses in the clearing are killed.
 		ArrayList<RealmComponent> killed = killEverythingInClearing(character,new Strength("H"),false,true);
 		
-		boolean killedAtLeastOne = false;	
 		// Each character in the clearing must wound all Light and Medium MOVE/FIGHT chits.
 		TileLocation tl = character.getCurrentLocation();
 		if (tl.hasClearing() && !tl.isBetweenClearings()) {
@@ -172,7 +171,6 @@ public class PowerOfThePit extends RealmTable {
 					if (!hasAtLeastOneGoodChit) {
 						kill(rc.getGameObject(),speed.getNum());
 						killed.add(rc);
-						killedAtLeastOne = true;
 					}
 				}
 			}
@@ -278,7 +276,6 @@ public class PowerOfThePit extends RealmTable {
 	private ArrayList<RealmComponent> killEverythingInClearing(CharacterWrapper character,Strength power,boolean hiddenAreSafe,boolean charactersAreSafe) {
 		ArrayList<RealmComponent> killed = new ArrayList<>();
 		TileLocation tl = character.getCurrentLocation();
-		boolean killedAtLeastOne = false;
 		if (tl.isInClearing()) {
 			HashSet<RealmComponent> livingThings = new HashSet<>();
 			for (RealmComponent rc:tl.clearing.getClearingComponents()) {
@@ -308,7 +305,6 @@ public class PowerOfThePit extends RealmTable {
 						if (power.strongerThan(strength)) {
 							kill(rc.getGameObject(),speed.getNum());
 							killed.add(rc);
-							killedAtLeastOne = true;	
 						}
 					}
 				}
