@@ -1598,10 +1598,9 @@ public class CombatFrame extends JFrame {
 					for (RealmComponent target : spell.getTargets()) {
 						if (!target.isMistLike() && !target.hasMagicProtection() && (!target.isMonster() || !((MonsterChitComponent)target).isAbsorbed())) {
 							return new RealmComponentError(null,"Missing spell attack","You must place your spell attack before continuing.");
-						} else {
-							spell.removeTarget(target.getGameObject());
-							RealmLogging.logMessage(RealmLogging.BATTLE,spell.getName()+" cannot target "+target+".");
 						}
+						spell.removeTarget(target.getGameObject());
+						RealmLogging.logMessage(RealmLogging.BATTLE,spell.getName()+" cannot target "+target+".");
 					}
 					if (spell.getTargets().isEmpty()) {
 						spell.cancelSpell();

@@ -493,6 +493,7 @@ public class Constants {
 	public static final String OPT_AUTOMATIC_ENCHANTING = "OptAutomaticEnchanting";
 	public static final String OPT_ENHANCED_MAGIC = "OptEnhancedMagic";
 	public static final String OPT_ENHANCED_ARTIFACTS = "OptEnhancedArtifacts";
+	public static final String OPT_POWER_OF_THE_PIT = "OptPowerOfThePit";
 	
 	// Revised Rules
 	public static final String REV_MISSILE = "RevisedMissileTable";

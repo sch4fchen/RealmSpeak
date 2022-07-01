@@ -723,6 +723,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		return new Harm(strength,sharpness);
 	}
 	public String getMagicType() {
+		if (getGameObject().hasThisAttribute("powerofthepit")) return getGameObject().getThisAttribute("spell");
 		return null;
 	}
 	public String getCastMagicType() {

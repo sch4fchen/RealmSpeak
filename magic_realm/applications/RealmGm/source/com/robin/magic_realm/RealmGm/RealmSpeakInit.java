@@ -110,6 +110,14 @@ public class RealmSpeakInit {
 			prepExpansionSpells("upg_day_spells");
 			removeSpells("upg_swap_out");
 		}
+		if (hostPrefs.hasPref(Constants.OPT_POWER_OF_THE_PIT)) {
+			GamePool pool = new GamePool(data.getGameObjects());
+			ArrayList<GameObject> popSpells = pool.find("name=Power of the Pit");
+			for (GameObject go:popSpells) {
+				go.setThisAttribute("duration","attack");
+				go.setThisAttribute("strength","");
+			}
+		}
 		
 		// Cleanup happens AFTER multiplications and mixes
 		loader.cleanupData(hostPrefs.getGameKeyVals());

@@ -1272,6 +1272,11 @@ public class BattleModel {
 				String magicType = attacker.getMagicType();
 				if (magicType!=null && magicType.trim().length()>0) {
 					if ("V".equals(magicType)) {
+						if (attacker instanceof SpellWrapper) {
+							// Spells belong to characters
+							SpellWrapper spell = (SpellWrapper)attacker;
+							attacker = new CharacterChitComponent(spell.getCaster().getGameObject());
+						}
 						// Demon's Power of the Pit
 						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with Power of the Pit along box "+attacker.getAttackCombatBox());
 						PowerOfThePit pop = PowerOfThePit.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject(),false,0,attacker.getAttackSpeed());
