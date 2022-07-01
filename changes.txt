@@ -8,6 +8,7 @@ NEW FEATURES:
 # New Expansion 1 items: Hound, Needful Thing, Magic Path
 # New Expansion 1 spells ("More Expansion Spells"): Magic Shield, Rocks Glow, Sleep
 # New Expansion 1 travelers: Doppleganger, Necromancer, Soothsayer
+# Optional Rule: Power of the Pit to hit like an attack spell
 # Optional Rule: Steel Against Magic (of the Super Realm Project)
 # Round summary: Note if native's horse is killed
 BUGS/ISSUES:
