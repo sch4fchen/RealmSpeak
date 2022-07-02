@@ -488,6 +488,7 @@ public class BattleModel {
 	public void doEnergizeSpells() {
 		// Find and hash all spells and casters cast this round by speed
 		HashLists<Integer,SpellWrapper> spells = new HashLists<>();
+		HashLists<Integer,MonsterChitComponent> monsterSpells = new HashLists<>();
 		HashLists<Integer,CharacterChitComponent> casters = new HashLists<>();
 		ArrayList<RealmComponent> spellCasters = new ArrayList<>();
 		for (CharacterChitComponent rc : getAllParticipatingCharacters()) {
@@ -510,7 +511,7 @@ public class BattleModel {
 					MonsterChitComponent monster = (MonsterChitComponent)battleParticipant;
 					if ("V".equals(monster.getMagicType())) {
 						spellCasters.add(monster);
-						//spells.put(new Integer(monster.getAttackSpeed().getNum()),null);
+						monsterSpells.put(new Integer(monster.getAttackSpeed().getNum()),monster);
 					}
 				}
 			}
@@ -518,67 +519,95 @@ public class BattleModel {
 		
 		if (spells.size()>0) {
 			ArrayList<Integer> allSpeeds = new ArrayList<>(spells.keySet());
+			allSpeeds.addAll(monsterSpells.keySet());
 			Collections.sort(allSpeeds);
 			
 			// Determine which spells cancel which spellcasters
 			for (Integer speed : allSpeeds) {
 				ArrayList<SpellWrapper> spellsAtSpeed = spells.getList(speed);
+				ArrayList<CharacterChitComponent> unaffectedCasters = casters.getList(speed);
 				
-				for (SpellWrapper spell : spellsAtSpeed) {
-					if (spell.isAlive() && !spell.targetsClearing()) { // might have already been cancelled!
-						ArrayList<CharacterChitComponent> unaffectedCasters = casters.getList(speed);
-						ArrayList<RealmComponent> targets = spell.getTargets();
-						targets.retainAll(spellCasters);
-						targets.removeAll(unaffectedCasters);
-						
-						if (targets.size()>0) {
-							for (RealmComponent target : targets) {
-								CombatWrapper combat = new CombatWrapper(target.getGameObject());
-								if (hostPrefs.hasPref(Constants.OPT_POWER_OF_THE_PIT_DEMON)) {
-									if (target.isMonster() && !target.isMonsterPart()) {
-										MonsterChitComponent monster = (MonsterChitComponent)target;
-										if ("V".equals(monster.getMagicType())) {
-											if (monster.getAttackSpeed().getNum() <= speed) continue;
-											combat.setCancelSpell();
-											String message = "Attack spell, cast by the "
-													+monster.getGameObject().getNameWithNumber()
-													+" (speed "+monster.getAttackSpeed().getNum()+")"
-													+",\n   was cancelled by "
-													+spell.getGameObject().getName()
-													+" (speed "+spell.getAttackSpeed().getNum()+")"
-													+", cast by the "
-													+spell.getCaster().getGameObject().getName()+".";
-											logBattleInfo(message);
-											continue;
+				if (spellsAtSpeed != null) {
+					for (SpellWrapper spell : spellsAtSpeed) {
+						if (spell.isAlive() && !spell.targetsClearing()) { // might have already been cancelled!
+							ArrayList<RealmComponent> targets = spell.getTargets();
+							targets.retainAll(spellCasters);
+							targets.removeAll(unaffectedCasters);
+							
+							if (targets.size()>0) {
+								for (RealmComponent target : targets) {
+									CombatWrapper combat = new CombatWrapper(target.getGameObject());
+									if (hostPrefs.hasPref(Constants.OPT_POWER_OF_THE_PIT_DEMON)) {
+										if (target.isMonster() && !target.isMonsterPart()) {
+											MonsterChitComponent monster = (MonsterChitComponent)target;
+											if ("V".equals(monster.getMagicType())) {
+												if (monster.getAttackSpeed().getNum() <= speed) continue;
+												combat.setCancelSpell();
+												String message = "Attack spell, cast by the "
+														+monster.getGameObject().getNameWithNumber()
+														+" (speed "+monster.getAttackSpeed().getNum()+")"
+														+",\n   was cancelled by "
+														+spell.getGameObject().getName()
+														+" (speed "+spell.getAttackSpeed().getNum()+")"
+														+", cast by the "
+														+spell.getCaster().getGameObject().getName()+".";
+												logBattleInfo(message);
+												continue;
+											}
 										}
 									}
+									
+									GameObject spellToCancelGo = combat.getCastSpell();
+									SpellWrapper spellToCancel = new SpellWrapper(spellToCancelGo);
+									
+									//attackSpeed cannot be fetched anymore, if spell already expired (e.g. dissolve spell didn't have a target)
+									if (spellToCancel.getIncantationObject() == null) continue;
+									if (spellToCancel.getAttackSpeed().getNum() <= speed) continue;
+																	
+									String targetingClearing = "";
+									if (spellToCancel.targetsClearing()) {
+										targetingClearing = ", targeting the clearing";
+									}
+									
+									String message = spellToCancelGo.getName()
+											+", cast by the "
+											+target.getGameObject().getNameWithNumber()
+											+targetingClearing
+											+" (speed "+spellToCancel.getAttackSpeed().getNum()+")"
+											+",\n   was cancelled by "
+											+spell.getGameObject().getName()
+											+" (speed "+spell.getAttackSpeed().getNum()+")"
+											+", cast by the "
+											+spell.getCaster().getGameObject().getName()+".";
+									logBattleInfo(message);
+									spellToCancel.cancelSpell();
 								}
-								
-								GameObject spellToCancelGo = combat.getCastSpell();
-								SpellWrapper spellToCancel = new SpellWrapper(spellToCancelGo);
-								
-								//attackSpeed cannot be fetched anymore, if spell already expired (e.g. dissolve spell didn't have a target)
-								if (spellToCancel.getIncantationObject() == null) continue;
-								if (spellToCancel.getAttackSpeed().getNum() <= speed) continue;
-																
-								String targetingClearing = "";
-								if (spellToCancel.targetsClearing()) {
-									targetingClearing = ", targeting the clearing";
-								}
-								
-								String message = spellToCancelGo.getName()
-										+", cast by the "
-										+target.getGameObject().getNameWithNumber()
-										+targetingClearing
-										+" (speed "+spellToCancel.getAttackSpeed().getNum()+")"
-										+",\n   was cancelled by "
-										+spell.getGameObject().getName()
-										+" (speed "+spell.getAttackSpeed().getNum()+")"
-										+", cast by the "
-										+spell.getCaster().getGameObject().getName()+".";
-								logBattleInfo(message);
-								spellToCancel.cancelSpell();
 							}
+						}
+					}
+				}
+				
+				if (hostPrefs.hasPref(Constants.OPT_POWER_OF_THE_PIT_DEMON)) {
+					ArrayList<MonsterChitComponent> monstersAtSpeed = monsterSpells.getList(speed);
+					if (monstersAtSpeed!=null) {
+						for (MonsterChitComponent monster : monstersAtSpeed) {
+							RealmComponent target = monster.getTarget();
+							if (target == null || (unaffectedCasters != null && unaffectedCasters.contains(target))) continue;
+							CombatWrapper combat = new CombatWrapper(target.getGameObject());
+							GameObject spellToCancelGo = combat.getCastSpell();
+							if (spellToCancelGo == null) continue;
+							SpellWrapper spellToCancel = new SpellWrapper(spellToCancelGo);	
+							//attackSpeed cannot be fetched anymore, if spell already expired (e.g. dissolve spell didn't have a target)
+							if (spellToCancel.getIncantationObject() == null) continue;
+							if (spellToCancel.getAttackSpeed().getNum() <= speed) continue;
+							String message = spellToCancelGo.getName()
+									+", cast by the "
+									+target.getGameObject().getNameWithNumber()
+									+" (speed "+spellToCancel.getAttackSpeed().getNum()+")"
+									+",\n   was cancelled by "
+									+monster.getGameObject().getName()+".";
+							logBattleInfo(message);
+							spellToCancel.cancelSpell();
 						}
 					}
 				}
@@ -587,22 +616,24 @@ public class BattleModel {
 				HashMap<RealmComponent,ArrayList<SpellWrapper>> conflictingSpells = new HashMap<>();
 				HashMap<RealmComponent,Integer> conflictingSpellsStrength = new HashMap<>();
 				HashMap<RealmComponent,SpellWrapper> strongestConflictingSpells = new HashMap<>();
-				for (SpellWrapper spell : spellsAtSpeed) {
-					if (!spell.isActive()) continue; // might have already been cancelled!
-					ArrayList<RealmComponent> targets = spell.getTargets();
-					for (RealmComponent target : targets) {
-						if (spell.canConflict()) {
-							ArrayList<SpellWrapper> targetedConflictingSpells = new ArrayList<>();
-							targetedConflictingSpells.add(spell);
-							int strongestSpellStrength = 0;
-							if (conflictingSpells.containsKey(target)) {
-								targetedConflictingSpells.addAll(conflictingSpells.get(target));
-								strongestSpellStrength = conflictingSpellsStrength.get(target);
-							}
-							conflictingSpells.put(target, targetedConflictingSpells);
-							if (spell.getConflictStrength() > strongestSpellStrength) {
-								conflictingSpellsStrength.put(target, spell.getConflictStrength());
-								strongestConflictingSpells.put(target, spell); 
+				if (spellsAtSpeed != null) {
+					for (SpellWrapper spell : spellsAtSpeed) {
+						if (!spell.isActive()) continue; // might have already been cancelled!
+						ArrayList<RealmComponent> targets = spell.getTargets();
+						for (RealmComponent target : targets) {
+							if (spell.canConflict()) {
+								ArrayList<SpellWrapper> targetedConflictingSpells = new ArrayList<>();
+								targetedConflictingSpells.add(spell);
+								int strongestSpellStrength = 0;
+								if (conflictingSpells.containsKey(target)) {
+									targetedConflictingSpells.addAll(conflictingSpells.get(target));
+									strongestSpellStrength = conflictingSpellsStrength.get(target);
+								}
+								conflictingSpells.put(target, targetedConflictingSpells);
+								if (spell.getConflictStrength() > strongestSpellStrength) {
+									conflictingSpellsStrength.put(target, spell.getConflictStrength());
+									strongestConflictingSpells.put(target, spell); 
+								}
 							}
 						}
 					}
@@ -642,6 +673,7 @@ public class BattleModel {
 			CombatWrapper tile = new CombatWrapper(battleLocation.tile.getGameObject());
 			for (Integer speed : allSpeeds) {
 				ArrayList<SpellWrapper> spellsAtSpeed = spells.getList(speed);
+				if (spellsAtSpeed == null) continue;
 				for (SpellWrapper spell : spellsAtSpeed) {
 					if (spell.isNullified() || !spell.isAlive()) continue;
 					ArrayList<String> logs = new ArrayList<String>();

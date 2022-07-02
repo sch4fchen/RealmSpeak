@@ -1,4 +1,3 @@
-Power of the Pit optional rule C.4: 4.2. Cancel spells of demon and characters
 Expansion 1 Spells: Body Double, Duel, Familiar, Fear, Fighting hands, Fire trap, Flame sword, Lucky blow, Magic mirror, Miracle, Mystic boots, Send, Spider web, Temporal Vortex, Wall of Force
 ---:::FEATURES:::---
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): Option: no missile attacks, ?:Sharpness stars are ignored when comparing harm between attacks and parries? Alert?!
