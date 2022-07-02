@@ -85,6 +85,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String TARGETING_RIDER = "TARGETING_RIDER";
 	private static final String GALLOPED = "GALLOPED";
 	private static final String RAISE_THE_DEAD = "RAISE_THE_DEAD";
+	private static final String SPELL_CANCELED = "SPELL_CANCELED";
 	
 	private static final String HEALING = "HEALING";
 	
@@ -166,6 +167,12 @@ public class CombatWrapper extends GameObjectWrapper {
 			spell.expireSpell();
 			setBoolean(CAST_SPELL,false);
 		}
+	}
+	public void setCancelSpell() {
+		setBoolean(SPELL_CANCELED, true);
+	}
+	public boolean getCancelSpell() {
+		return getBoolean(SPELL_CANCELED);
 	}
 	public void setRaiseTheDead() {
 		setBoolean(RAISE_THE_DEAD, true);
@@ -709,6 +716,7 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,HIT_WEAPON_ID);
 			go.removeAttribute(COMBAT_BLOCK,SHEET_OWNER_ID);
 			go.removeAttribute(COMBAT_BLOCK,RAISE_THE_DEAD);
+			go.removeAttribute(COMBAT_BLOCK,SPELL_CANCELED);
 			
 			ArrayList<String> list = go.getAttributeList(COMBAT_BLOCK,RANDOMIZE_PREFICES);
 			if (list!=null) {

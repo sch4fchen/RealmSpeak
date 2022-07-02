@@ -504,6 +504,17 @@ public class BattleModel {
 				}
 			}
 		}
+		if (hostPrefs.hasPref(Constants.OPT_POWER_OF_THE_PIT_DEMON)) {
+			for (RealmComponent battleParticipant : getAllBattleParticipants(true)) {
+				if (battleParticipant.isMonster() && !battleParticipant.isMonsterPart()) {
+					MonsterChitComponent monster = (MonsterChitComponent)battleParticipant;
+					if ("V".equals(monster.getMagicType())) {
+						spellCasters.add(monster);
+						//spells.put(new Integer(monster.getAttackSpeed().getNum()),null);
+					}
+				}
+			}
+		}
 		
 		if (spells.size()>0) {
 			ArrayList<Integer> allSpeeds = new ArrayList<>(spells.keySet());
@@ -523,6 +534,26 @@ public class BattleModel {
 						if (targets.size()>0) {
 							for (RealmComponent target : targets) {
 								CombatWrapper combat = new CombatWrapper(target.getGameObject());
+								if (hostPrefs.hasPref(Constants.OPT_POWER_OF_THE_PIT_DEMON)) {
+									if (target.isMonster() && !target.isMonsterPart()) {
+										MonsterChitComponent monster = (MonsterChitComponent)target;
+										if ("V".equals(monster.getMagicType())) {
+											if (monster.getAttackSpeed().getNum() <= speed) continue;
+											combat.setCancelSpell();
+											String message = "Attack spell, cast by the "
+													+monster.getGameObject().getNameWithNumber()
+													+" (speed "+monster.getAttackSpeed().getNum()+")"
+													+",\n   was cancelled by "
+													+spell.getGameObject().getName()
+													+" (speed "+spell.getAttackSpeed().getNum()+")"
+													+", cast by the "
+													+spell.getCaster().getGameObject().getName()+".";
+											logBattleInfo(message);
+											continue;
+										}
+									}
+								}
+								
 								GameObject spellToCancelGo = combat.getCastSpell();
 								SpellWrapper spellToCancel = new SpellWrapper(spellToCancelGo);
 								
@@ -1138,13 +1169,19 @@ public class BattleModel {
 			}
 		}
 		
+		if (attackCancelled == null && attacker instanceof MonsterChitComponent) {
+			if (attackerCombat.getCancelSpell()) {
+				attackCancelled = attacker.getGameObject().getName()+"'s spell was already canceled.";
+			}
+		}
+		
 		// Before anything else, check to see if character is immune to the attacker
-		if (target!=null && (attacker instanceof RealmComponent) && target.isImmuneTo((RealmComponent)attacker)) {
+		if (attackCancelled == null && target!=null && (attacker instanceof RealmComponent) && target.isImmuneTo((RealmComponent)attacker)) {
 			attackCancelled = target.getGameObject().getName()+" is immune to "+attacker.getGameObject().getName()+".";
 		}
 		
 		// Before anything else, check to see if character fears the target
-		if ((attacker instanceof RealmComponent) && (target instanceof RealmComponent)  && ((RealmComponent)attacker).fears((RealmComponent)target)) {
+		if (attackCancelled == null && (attacker instanceof RealmComponent) && (target instanceof RealmComponent) && ((RealmComponent)attacker).fears((RealmComponent)target)) {
 			attackCancelled = attacker.getGameObject().getName()+" fears "+target.getGameObject().getName()+" and cannot attack it.";
 		}
 		
