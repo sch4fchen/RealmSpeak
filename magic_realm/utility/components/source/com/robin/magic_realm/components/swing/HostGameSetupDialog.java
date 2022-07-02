@@ -953,7 +953,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(ADVANCED_MAGIC_RULES_TAB,new GameOption(Constants.OPT_ENHANCED_MAGIC,"ENHANCED MAGIC C.1 - Spells and Magic chits are not tied up by the casting of a spell, which allows the casting of multiple instances of a single spell.",false,exclusiveEnhancedMagicRules,null));
 		newOptionPane.addOption(ADVANCED_MAGIC_RULES_TAB,new GameOption(Constants.TE_BENEVOLENT_SPELLS,"BENEVOLENT SPELLS C.2 - With this rule, some spells can be cast on your hired natives without causing them to attack you.",false));
 		newOptionPane.addOption(ADVANCED_MAGIC_RULES_TAB,new GameOption(Constants.OPT_ENHANCED_ARTIFACTS,"ENHANCED ARTIFACTS AND SPELL BOOKS C.3 - This rule allows characters to use Artifacts and Spell Books as extra Magic chits.",false));
-		newOptionPane.addOption(ADVANCED_MAGIC_RULES_TAB,new GameOption(Constants.OPT_POWER_OF_THE_PIT,"POWER OF THE PIT OPTIONAL RULES - This rule requires the Power of the Pit attack to hit like an attack spell..",false));
+		newOptionPane.addOption(ADVANCED_MAGIC_RULES_TAB,new GameOption(Constants.OPT_POWER_OF_THE_PIT_ATTACK,"POWER OF THE PIT OPTIONAL RULES - This rule requires the Power of the Pit attack to hit like an attack spell.",false));
+		newOptionPane.addOption(ADVANCED_MAGIC_RULES_TAB,new GameOption(Constants.OPT_POWER_OF_THE_PIT_DEMON,"POWER OF THE PIT OPTIONAL RULES - Demon’s spell and characters' spells can cancel each other.",false));
 		newOptionPane.addOption(ADVANCED_MAGIC_RULES_TAB,new GameOption(Constants.OPT_AUTOMATIC_ENCHANTING,"AUTOMATIC ENCHANTING C.5 - Certain map tiles flip over automatically at the end of each week, changing many of the roadways and making more color magic available.",false));
 				
 		newOptionPane.setTabHtmlDescription(EXTENDING_GAME_SYSTEM_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Extended Game System</font></body></html>");

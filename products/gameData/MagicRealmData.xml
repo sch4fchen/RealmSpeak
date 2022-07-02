@@ -7352,6 +7352,7 @@
         <attribute text="Roll for Power of the Pit attack" />
         <attribute magic_color="black" />
         <attribute original_game="" />
+        <attribute length="17" />
         <attribute powerofthepit="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
