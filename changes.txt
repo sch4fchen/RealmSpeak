@@ -1,5 +1,6 @@
 Version 1.1.5.8 - Changes since 1.1.5.7
 QUEST UPDATE:
+# QuestRequirementKillInCombat
 # QuestRewardHireling: Fix removing cloned hireling from game
 # Update to quest Q46 True Grit
 # Add quest Q61 All the Pretty Colors by Reggie

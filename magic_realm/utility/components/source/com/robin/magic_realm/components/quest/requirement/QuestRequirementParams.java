@@ -31,14 +31,14 @@ public class QuestRequirementParams {
 	public String actionName;
 	public CharacterActionType actionType = CharacterActionType.Unknown; // default
 	public String dayKey;
-
+	public ArrayList<GameObject> objectList =  new ArrayList<>();
+	public ColorMagic burnedColor;
+	
 	// Search stuff
 	public int dieResult;
 	public SearchResultType searchType = SearchResultType.Any;
 	public GameObject targetOfSearch;
-	public ArrayList<GameObject> objectList =  new ArrayList<>();
 	public boolean searchHadAnEffect;
-	public ColorMagic burnedColor;
 	
 	public QuestRequirementParams copy(GameData gameData) {
 		return valueOf(asString(),gameData);

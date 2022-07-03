@@ -1,4 +1,3 @@
-Quest Requirement: CombatKill
 Expansion 1 Spells: Duel, Fear, Fighting hands, Fire trap, Flame sword, Lucky blow, Magic mirror, Mystic boots, Spider web, Wall of Force
 Expansion 1 item: Magic Meat
 ---:::FEATURES:::---

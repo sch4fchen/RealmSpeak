@@ -164,6 +164,14 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementKill.TARGET_VALUE_TYPE, "Only count points gained during the", FieldType.StringSelector, TargetValueType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementKill.REQUIRE_MARK, "Mark is required", FieldType.Boolean));
 				break;
+			case KillInCombat:
+				list.add(new QuestPropertyBlock(QuestRequirementKillInCombat.AMOUNT, "Amount of kills", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRequirementKillInCombat.REGEX_FILTER, "Denizen name filter (regex)", FieldType.Regex, null, new String[] { "denizen" }));
+				list.add(new QuestPropertyBlock(QuestRequirementKillInCombat.REQUIRE_MARK, "Mark is required", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementKillInCombat.VULNERABILITY, "Vulnerability", FieldType.StringSelector, VulnerabilityType.values()));
+				list.add(new QuestPropertyBlock(QuestRequirementKillInCombat.ARMORED, "Armor", FieldType.StringSelector, ArmoredType.values()));
+				list.add(new QuestPropertyBlock(QuestRequirementKillInCombat.SINGLE_ROUND, "Single combat round?", FieldType.Boolean));
+				break;
 			case LearnAwaken:
 				list.add(new QuestPropertyBlock(QuestRequirementLearnAwaken.REGEX_FILTER, "Spell filter (regex)", FieldType.Regex, null, new String[] { "spell,learnable" }));
 				list.add(new QuestPropertyBlock(QuestRequirementLearnAwaken.MUST_LEARN, "Must Learn Spell", FieldType.Boolean));
