@@ -638,7 +638,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			boolean valid = getCharacter().actionIsValid(ar.getAction(),getCharacter().getCurrentLocation());
 			TileLocation current = getCharacter().getCurrentLocation();
 			boolean isInCave = current.isInClearing() && current.clearing.isCave();
-			boolean enlighted = current.clearing.isLighted();
+			boolean enlighted = current.isInClearing() && current.clearing.isLighted();
 			boolean isOutside = !current.isInside(hostPrefs.hasPref(Constants.HOUSE2_RED_SPECIAL_SHELTER) || getCharacter().affectedByKey(Constants.ADVANCED_SHELTERS));
 			boolean willBeOutside = false;
 			if (ar.getAction().startsWith("M")) {

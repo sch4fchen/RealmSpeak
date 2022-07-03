@@ -4,6 +4,7 @@ QUEST UPDATE:
 # Update to quest Q44 Underworld
 NEW FEATURES:
 BUGS/ISSUES:
+# Fix crash when flying
 
 
 Version 1.1.5.8 - Changes since 1.1.5.7
