@@ -48,7 +48,7 @@ public class QuestRequirementKillInCombat extends QuestRequirement {
 	}
 
 	protected boolean testFulfillsRequirement(JFrame frame,CharacterWrapper character,QuestRequirementParams reqParams) {
-		if (reqParams==null || "KillInCombat".equals(reqParams.actionName)) {
+		if (reqParams==null || !"KillInCombat".equals(reqParams.actionName)) {
 			return false;
 		}
 		
