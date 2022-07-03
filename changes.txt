@@ -3,6 +3,7 @@ QUEST UPDATE:
 # QuestRequirementKillInCombat
 # QuestRewardHireling: Fix removing cloned hireling from game
 # Update to quest Q46 True Grit
+# Update to quest Q44 Underworld
 # Add quest Q61 All the Pretty Colors by Reggie
 # Add quest Q62 Because Its There by Reggie
 NEW FEATURES:
