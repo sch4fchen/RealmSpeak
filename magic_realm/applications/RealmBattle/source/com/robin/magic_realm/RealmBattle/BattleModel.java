@@ -27,9 +27,7 @@ import com.robin.general.util.HashLists;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.*;
-import com.robin.magic_realm.components.quest.CharacterActionType;
 import com.robin.magic_realm.components.quest.Quest;
-import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
 import com.robin.magic_realm.components.table.Curse;
 import com.robin.magic_realm.components.table.PowerOfThePit;
 import com.robin.magic_realm.components.table.RaiseDead;
@@ -1067,10 +1065,6 @@ public class BattleModel {
 					CombatWrapper ownerCombat = new CombatWrapper(owner.getGameObject());
 					ownerCombat.addSpoilsInfo(round,kill,spoils);
 				}
-				QuestRequirementParams qp = new QuestRequirementParams();
-				qp.actionName = "KillInCombat";
-				qp.objectList = kills;
-				character.testQuestRequirements(CombatFrame.getSingleton(),qp);
 			}
 		}
 	}

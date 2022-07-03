@@ -54,7 +54,6 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		Hirelings,
 		Inventory, // a requirement that tests what you have in inventory
 		Kill,
-		KillInCombat,
 		LearnAwaken,
 		LocationExists,
 		Loot, // (optional location designation)
@@ -120,8 +119,6 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests the contents of inventory.";
 				case Kill:
 					return "Tests for a specific kill or kills.";
-				case KillInCombat:
-					return "Tests for a specific kill or kills in a single combat or combat round.";
 				case LearnAwaken:
 					return "Tests whether a spell has just been awakened and/or learned.";
 				case LocationExists:
@@ -310,9 +307,6 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case Kill:
 				requirement = new QuestRequirementKill(go);
-				break;
-			case KillInCombat:
-				requirement = new QuestRequirementKillInCombat(go);
 				break;
 			case LearnAwaken:
 				requirement = new QuestRequirementLearnAwaken(go);
