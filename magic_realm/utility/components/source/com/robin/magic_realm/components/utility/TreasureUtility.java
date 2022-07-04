@@ -116,26 +116,7 @@ public class TreasureUtility {
 			Strength characterCarryWeight = character.getNeededSupportWeight();
 			ArrayList<GameObject> activeInventory = character.getActiveInventory();
 			ArmorType armorType = getArmorType(thing);
-			if (thing.hasThisAttribute("boots")) {
-				// Boots card
-				
-				// Check to see that boots are strong enough to carry character
-				Strength bootStrength = new Strength(thing.getThisAttribute("strength"));
-				if (bootStrength.strongerOrEqualTo(characterCarryWeight)) {
-					// If good, then inactivate any existing boots
-					for (GameObject otherThing : activeInventory) {
-						if (otherThing.hasThisAttribute("boots")) {
-							otherThing.removeThisAttribute(Constants.ACTIVATED);
-							break; // no need to keep searching as long as this code is in place
-						}
-					}
-				}
-				else {
-					JOptionPane.showMessageDialog(parentFrame,"Those boots are not strong enough to support your character.");
-					return false;
-				}
-			}
-			else if (rc.isHorse()) {
+			if (rc.isHorse()) {
 				// Horse
 				
 				// Horses cannot be activated in caves!
@@ -161,6 +142,25 @@ public class TreasureUtility {
 					return false;
 				}
 			}
+			else if (thing.hasThisAttribute("boots")) {
+				// Boots card
+				
+				// Check to see that boots are strong enough to carry character
+				Strength bootStrength = new Strength(thing.getThisAttribute("strength"));
+				if (bootStrength.strongerOrEqualTo(characterCarryWeight)) {
+					// If good, then inactivate any existing boots
+					for (GameObject otherThing : activeInventory) {
+						if (otherThing.hasThisAttribute("boots")) {
+							otherThing.removeThisAttribute(Constants.ACTIVATED);
+							break; // no need to keep searching as long as this code is in place
+						}
+					}
+				}
+				else {
+					JOptionPane.showMessageDialog(parentFrame,"Those boots are not strong enough to support your character.");
+					return false;
+				}
+			}
 			else if (thing.hasThisAttribute("gloves")) {
 				// Gloves
 				// Inactivate any existing gloves
@@ -170,20 +170,6 @@ public class TreasureUtility {
 						break; // no need to keep searching as long as this code is in place
 					}
 				}
-			}
-			else if (thing.hasThisAttribute(Constants.NEEDS_OPEN)) {
-				Collection<GameObject> openable = new ArrayList<>();
-				openable.add(thing);
-				
-				boolean success = TreasureUtility.openOneObject(parentFrame,character,openable,listener,false)!=null;
-				if (success) {
-					QuestRequirementParams qp = new QuestRequirementParams();
-					qp.actionType = CharacterActionType.ActivatingItem;
-					qp.objectList = new ArrayList<>();
-					qp.objectList.add(thing);
-					character.testQuestRequirements(parentFrame,qp);
-				}
-				return success;
 			}
 			else if (armorType!=ArmorType.None && armorType!=ArmorType.Special) {
 				// Inactivate any existing armor of the same ArmorType
@@ -271,39 +257,21 @@ public class TreasureUtility {
 					}
 				}
 			}
-			else if (thing.hasThisAttribute(Constants.ADD_CHIT)) {
-				character.getGameObject().addAll(thing.getHold());
-			}
-			else if (thing.hasThisAttribute(Constants.COMBINE_COUNT)) {
-				int count = thing.getThisInt(Constants.COMBINE_COUNT);
-				String target = thing.getThisAttribute(Constants.COMBINE);
-				ArrayList<GameObject> list = character.getAllActiveInventoryThisKeyAndValue(Constants.COMBINE,target);
-				list.add(thing);
+			else if (thing.hasThisAttribute(Constants.NEEDS_OPEN)) {
+				Collection<GameObject> openable = new ArrayList<>();
+				openable.add(thing);
 				
-				if (count==list.size()) {
-					// Combine achieved!  Create object
-					GameObject result = thing.getGameData().getGameObjectByName(target);
-					character.getGameObject().add(result);
-					for(GameObject go:list) {
-						go.removeThisAttribute(Constants.ACTIVATED);
-						character.getGameObject().remove(go);
-					}
+				boolean success = TreasureUtility.openOneObject(parentFrame,character,openable,listener,false)!=null;
+				if (success) {
+					QuestRequirementParams qp = new QuestRequirementParams();
+					qp.actionType = CharacterActionType.ActivatingItem;
+					qp.objectList = new ArrayList<>();
+					qp.objectList.add(thing);
+					character.testQuestRequirements(parentFrame,qp);
 				}
+				return success;
 			}
-			else if (thing.hasThisAttribute(Constants.MAJOR_WOUND)) {
-				character.setExtraWounds(4);
-			}
-			else if (thing.hasThisAttribute(Constants.CONVERT_CHITS)) {
-				if (!doConvertChitsToNew(character,thing)) {
-					return false;
-				}
-			}
-			else if (thing.hasThisAttribute(Constants.COLOR_CAPTURE)) {
-				if (!doColorCapture(parentFrame,character,thing)) {
-					return false;
-				}
-			}
-			else if (thing.hasThisAttribute(Constants.BEAST_AWAY)) {
+			if (thing.hasThisAttribute(Constants.BEAST_AWAY)) {
 				TileLocation current = character.getCurrentLocation();
 				if (current.isInClearing()) {
 					for (RealmComponent cc:current.clearing.getClearingComponents(false)) {
@@ -317,7 +285,7 @@ public class TreasureUtility {
 					return false;
 				}
 			}
-			else if (thing.hasThisAttribute(Constants.GENERATOR_FLAMED)) {
+			if (thing.hasThisAttribute(Constants.GENERATOR_FLAMED)) {
 				TileLocation current = character.getCurrentLocation();
 				if (current.isInClearing()) {
 					StringBufferedList sb = new StringBufferedList();
@@ -343,7 +311,29 @@ public class TreasureUtility {
 					return false;
 				}
 			}
-			else if (thing.hasThisAttribute(Constants.NOPIN)) {
+			if (thing.hasThisAttribute(Constants.COMBINE_COUNT)) {
+				int count = thing.getThisInt(Constants.COMBINE_COUNT);
+				String target = thing.getThisAttribute(Constants.COMBINE);
+				ArrayList<GameObject> list = character.getAllActiveInventoryThisKeyAndValue(Constants.COMBINE,target);
+				list.add(thing);
+				
+				if (count==list.size()) {
+					// Combine achieved!  Create object
+					GameObject result = thing.getGameData().getGameObjectByName(target);
+					character.getGameObject().add(result);
+					for(GameObject go:list) {
+						go.removeThisAttribute(Constants.ACTIVATED);
+						character.getGameObject().remove(go);
+					}
+				}
+			}
+			if (thing.hasThisAttribute(Constants.ADD_CHIT)) {
+				character.getGameObject().addAll(thing.getHold());
+			}
+			if (thing.hasThisAttribute(Constants.MAJOR_WOUND)) {
+				character.setExtraWounds(4);
+			}
+			if (thing.hasThisAttribute(Constants.NOPIN)) {
 				CombatWrapper combat = new CombatWrapper(character.getGameObject());
 				for (RealmComponent attacker:combat.getAttackersAsComponents()) {
 					if (attacker.isMonster()) {
@@ -354,7 +344,17 @@ public class TreasureUtility {
 					}
 				}
 			}
-			else if (thing.hasThisAttribute(Constants.COMPANION_FROM_HOLD)) {
+			if (thing.hasThisAttribute(Constants.CONVERT_CHITS)) {
+				if (!doConvertChitsToNew(character,thing)) {
+					return false;
+				}
+			}
+			if (thing.hasThisAttribute(Constants.COLOR_CAPTURE)) {
+				if (!doColorCapture(parentFrame,character,thing)) {
+					return false;
+				}
+			}
+			if (thing.hasThisAttribute(Constants.COMPANION_FROM_HOLD)) {
 				ArrayList<GameObject> companions = new ArrayList<>(thing.getHold());
 				StringBufferedList list = new StringBufferedList();
 				IconGroup group = new IconGroup(rc.getIcon(),IconGroup.VERTICAL,5);
