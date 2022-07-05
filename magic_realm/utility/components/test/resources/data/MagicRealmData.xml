@@ -7951,7 +7951,7 @@
     <GameObject id="336" name="Lost Keys">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
-        <attribute text="Opens Chest, Crypt, and Vault." />
+        <attribute text="Opens Chest, Crypt, and Vault" />
         <attribute base_price="5" />
         <attribute original_game="" />
         <attribute key="" />
@@ -15967,7 +15967,7 @@
         <attribute spell="VI" />
         <attribute duration="combat" />
         <attribute target="denizen" />
-        <attribute text="Vul, Attack, Move Strengths and Speeds (including Horse) decrease by one." />
+        <attribute text="Vul, Attack, Move Strengths and Speeds (including Horse) decrease by one" />
         <attribute magic_color="purple" />
         <attribute rw_expansion_1="" />
         <attribute author="Roberto Ullfig" />
@@ -15985,7 +15985,7 @@
         <attribute spell="I" />
         <attribute duration="attack" />
         <attribute target="undead" />
-        <attribute text="Any undead hit with the spell are instantly killed." />
+        <attribute text="Any undead hit with the spell are instantly killed" />
         <attribute magic_color="gray" />
         <attribute rw_expansion_1="" />
         <attribute strength="RED" />
@@ -16030,7 +16030,7 @@
         <attribute spell="I" />
         <attribute duration="instant" />
         <attribute target="character" />
-        <attribute text="Immediately discover every path and passage in current clearing." />
+        <attribute text="Immediately discover every path and passage in current clearing" />
         <attribute magic_color="white" />
         <attribute rw_expansion_1="" />
         <attribute discover_road="" />
@@ -30918,7 +30918,7 @@
     <GameObject id="1162" name="Hound">
       <AttributeBlock blockName="this">
       	<attribute treasure="small" />
-        <attribute text="Use to lure monsters to separate combat sheet." />
+        <attribute text="Use to lure monsters to separate combat sheet" />
         <attribute rw_expansion_1="" />
         <attribute base_price="2" />
         <attribute discard="warlock" />
@@ -30952,7 +30952,7 @@
     <GameObject id="1163" name="Needful Thing">
       <AttributeBlock blockName="this">
       	<attribute treasure="small" />
-        <attribute text="Use to trade for any item (not hire)." />
+        <attribute text="Use to trade for any item (not hire)" />
         <attribute rw_expansion_1="" />
         <attribute base_price="0" />
         <attribute notoriety="10" />
@@ -30967,7 +30967,7 @@
     <GameObject id="1165" name="Magic Path">
       <AttributeBlock blockName="this">
       	<attribute treasure="small" />
-        <attribute text="Can move between two clearings in same hex once." />
+        <attribute text="Can move between two clearings in same hex once" />
         <attribute rw_expansion_1="" />
         <attribute base_price="20" />
         <attribute discard="warlock" />
@@ -31013,12 +31013,27 @@
         <attribute text="Cancel any recorded actions during your turn" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1169" name="Magic Shield">
+    <GameObject id="1169" name="Duel">
+      <AttributeBlock blockName="this">
+        <attribute spell="VIII" />
+        <attribute duration="combat" />
+        <attribute target="multiple" />
+        <attribute text="Monsters fight only each other until one is victorious" />
+        <attribute magic_color="any" />
+		<attribute duel="" />
+		<attribute min_targets="2" />
+		<attribute max_targets="2" />
+        <attribute host_okay="" />
+        <attribute new_spells_2="" />
+        <attribute learnable="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1170" name="Magic Shield">
       <AttributeBlock blockName="this">
         <attribute spell="IV" />
         <attribute duration="combat" />
         <attribute target="character" />
-        <attribute text="Functions like a shield with tremendous vulnerability and light weight." />
+        <attribute text="Functions like a shield with tremendous vulnerability and light weight" />
         <attribute magic_color="purple" />
         <attribute host_okay="" />
         <attribute new_spells_2="" />
@@ -31033,12 +31048,12 @@
         <attribute icon_folder="armor" />
       </AttributeBlock>
      </GameObject>
-	 <GameObject id="1170" name="Rocks Glow">
+	 <GameObject id="1171" name="Rocks Glow">
       <AttributeBlock blockName="this">
         <attribute spell="II" />
         <attribute duration="day" />
         <attribute target="clearing" />
-        <attribute text="May perform daylight phases in affected clearing." />
+        <attribute text="May perform daylight phases in affected clearing" />
         <attribute magic_color="gold" />
 		<attribute light_effect="" />
         <attribute host_okay="" />
@@ -31049,12 +31064,12 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-	<GameObject id="1171" name="Sleep">
+	<GameObject id="1172" name="Sleep">
       <AttributeBlock blockName="this">
         <attribute spell="III" />
         <attribute duration="instant" />
         <attribute target="clearing" />
-        <attribute text="End combat in clearing." />
+        <attribute text="End combat in clearing" />
         <attribute magic_color="gold" />
 		<attribute cease_combat="" />
         <attribute host_okay="" />

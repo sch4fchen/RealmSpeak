@@ -126,6 +126,7 @@ public class SpellEffectFactory {
 			case "witch's brew": return new ISpellEffect[]{new ChitChangeEffect()};
 			
 			// new spells
+			case "duel": return new ISpellEffect[]{new DuelEffect()};
 			case "magic shield": return new ISpellEffect[]{new MagicShieldEffect()};
 			case "rocks glow": return new ISpellEffect[]{new LightEffect()};
 			case "sleep": return new ISpellEffect[]{new SleepEffect()};

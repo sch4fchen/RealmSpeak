@@ -1,6 +1,7 @@
 Version 1.1.6.0 - Changes since 1.1.5.9
 QUEST UPDATE:
 NEW FEATURES:
+# New Expansion 1 spells ("More Expansion Spells"): Duel
 BUGS/ISSUES:
 
 Version 1.1.5.9 - Changes since 1.1.5.8
