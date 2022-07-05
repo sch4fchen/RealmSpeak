@@ -392,6 +392,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		scroller.addLine(new ScrollLine("Quest Development and",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Questing the Realm",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Steve Schacher",listing,listingColor));
+		scroller.addLine(new ScrollLine("Reggie Kemp",listing,listingColor));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Book of Quests",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Jay Richardson",listing,listingColor));
@@ -468,6 +469,8 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		scroller.addLine(new ScrollLine("Silvestr",listing,listingColor));
 		scroller.addLine(new ScrollLine("Yxklyx",listing,listingColor));
 		scroller.addLine(new ScrollLine("Stephan Valkyser",listing,listingColor));
+		scroller.addLine(new ScrollLine("Reggie Kemp",listing,listingColor));
+		scroller.addLine(new ScrollLine("Jim",listing,listingColor));
 		scroller.addLine(new ScrollLine("(let me know if I missed anyone!)",listing,listingColor,null,0,SwingConstants.CENTER,"mailto:robin@dewkid.com"));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Game Expansions",header,headerColor,Color.black,2));
