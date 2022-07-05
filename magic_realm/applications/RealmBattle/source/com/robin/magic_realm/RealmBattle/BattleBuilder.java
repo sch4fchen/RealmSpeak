@@ -259,6 +259,7 @@ public class BattleBuilder extends JFrame {
 			
 			// Set starting clearing
 			GameObject selectedTile = gameData.getGameObjectByName(tileName);
+			if (selectedTile == null) selectedTile = gameData.getGameObjectByName(defaultTileName);
 			TileComponent tile = (TileComponent)RealmComponent.getRealmComponent(selectedTile);
 			if (tileIsEnchanted) {
 				tile.setLightSideUp();

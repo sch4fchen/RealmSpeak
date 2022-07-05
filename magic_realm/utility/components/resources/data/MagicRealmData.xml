@@ -31018,7 +31018,7 @@
         <attribute spell="VIII" />
         <attribute duration="combat" />
         <attribute target="multiple" />
-        <attribute text="Monsters fight only each other until one is victorious" />
+        <attribute text="Monsters fight each other in the current combat round" />
         <attribute magic_color="any" />
 		<attribute duel="" />
 		<attribute min_targets="2" />
