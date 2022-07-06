@@ -2525,10 +2525,12 @@ public class CombatFrame extends JFrame {
 			if(combat.getPlacedAsFight()) continue;
 					
 			if (weapons==null || weapons.isEmpty()) {
-				// Dagger
-				String key = "N"+(keyN++);
-				chooser.addOption(key,"");
-				chooser.addRealmComponentToOption(key,chit);
+				if (!charCombat.getPlayedAttack()) {
+					// Dagger
+					String key = "N"+(keyN++);
+					chooser.addOption(key,"");
+					chooser.addRealmComponentToOption(key,chit);
+				}
 			}
 			else {
 				for (WeaponChitComponent weapon : weapons) {
