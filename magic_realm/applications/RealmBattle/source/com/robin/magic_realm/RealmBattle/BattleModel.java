@@ -226,7 +226,9 @@ public class BattleModel {
 			for (RealmComponent rc : denizenBattleGroup.getBattleParticipants()) {
 				CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 				if (combat.isSheetOwner()) {
-					combat.setSheetOwner(false);
+					if(!rc.hasTarget() || (rc.isMonster() && ((MonsterChitComponent)rc).isTremendous() && rc.getTarget().isCharacter())) {
+						combat.setSheetOwner(false);
+					}
 				}
 			}
 		}
