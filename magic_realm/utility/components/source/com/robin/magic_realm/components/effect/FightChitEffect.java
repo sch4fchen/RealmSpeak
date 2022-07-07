@@ -5,7 +5,7 @@ import com.robin.magic_realm.components.CharacterActionChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.utility.Constants;
 
-public class FigthChitEffect implements ISpellEffect {
+public class FightChitEffect implements ISpellEffect {
 
 	@Override
 	public void apply(SpellEffectContext context) {
