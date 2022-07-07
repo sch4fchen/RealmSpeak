@@ -176,6 +176,9 @@ public abstract class SpellTargeting {
 		else if ("native".equals(targetType)) {
 			targeting = new SpellTargetingNative(combatFrame,spell);
 		}
+		else if ("combat_box".equals(targetType)) {
+			targeting = new SpellTargetingCombatBox(combatFrame,spell);
+		}
 		
 		return targeting;
 	}
