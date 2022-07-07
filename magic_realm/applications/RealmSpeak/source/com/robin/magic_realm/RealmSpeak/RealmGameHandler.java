@@ -1518,7 +1518,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 							if (chitChooser.getSelectedText() == null)
 								continue;
 							CharacterActionChitComponent chit = (CharacterActionChitComponent) chitChooser.getFirstSelectedComponent();
-							chit.getGameObject().setThisAttribute("chitEarned");
+							chit.getGameObject().setThisAttribute(Constants.CHIT_EARNED);
 							character.updateChitEffects();
 						}
 					}

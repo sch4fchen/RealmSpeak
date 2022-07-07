@@ -31028,7 +31028,23 @@
         <attribute learnable="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1170" name="Magic Shield">
+    <GameObject id="1170" name="Fighting Hands">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="combat" />
+        <attribute target="character" />
+        <attribute text="Can FIGHT H3 in combat" />
+        <attribute magic_color="gray" />
+        <attribute host_okay="" />
+        <attribute new_spells_2="" />
+        <attribute learnable="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="fight_chit">
+        <attribute strength="H" />
+        <attribute speed="3" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1171" name="Magic Shield">
       <AttributeBlock blockName="this">
         <attribute spell="IV" />
         <attribute duration="combat" />
@@ -31048,7 +31064,26 @@
         <attribute icon_folder="armor" />
       </AttributeBlock>
      </GameObject>
-	 <GameObject id="1171" name="Rocks Glow">
+     <GameObject id="1172" name="Mystic Boots">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="day" />
+        <attribute target="character" />
+        <attribute text="Can MOVE M3 in combat or movement" />
+        <attribute magic_color="gray" />
+        <attribute host_okay="" />
+        <attribute new_spells_2="" />
+        <attribute learnable="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="move_chit">
+      	<attribute action="MOVE" />
+      	<attribute chit_state="1" />
+        <attribute strength="M" />
+        <attribute speed="3" />
+        <attribute move_chit="" />
+      </AttributeBlock>
+    </GameObject>
+	 <GameObject id="1173" name="Rocks Glow">
       <AttributeBlock blockName="this">
         <attribute spell="II" />
         <attribute duration="day" />
@@ -31064,7 +31099,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-	<GameObject id="1172" name="Sleep">
+	<GameObject id="1174" name="Sleep">
       <AttributeBlock blockName="this">
         <attribute spell="III" />
         <attribute duration="instant" />
