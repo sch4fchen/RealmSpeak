@@ -12,7 +12,7 @@ public class MoveChitEffect implements ISpellEffect {
 		GameObject spellObj = context.Spell.getGameObject();
 		
 		GameObject moveChit = spellObj.getGameData().createNewObject();
-		moveChit.setName(spellObj.getName()+" Fly Chit ("+ context.Caster.getName()+")");
+		moveChit.setName(spellObj.getName()+" Move Chit ("+ context.Caster.getName()+")");
 		moveChit.copyAttributeBlockFrom(spellObj,"move_chit");
 		moveChit.renameAttributeBlock("move_chit","this");
 		moveChit.setThisAttribute("spellID",spellObj.getStringId());
@@ -25,14 +25,13 @@ public class MoveChitEffect implements ISpellEffect {
 		context.Target.getGameObject().add(moveChit);
 		
 		if (!context.Target.getGameObject().equals(context.Caster)) {
-			RealmComponent flyChitRC = RealmComponent.getRealmComponent(moveChit);
-			flyChitRC.setOwner(RealmComponent.getRealmComponent(context.Caster));
+			RealmComponent moveChitRc = RealmComponent.getRealmComponent(moveChit);
+			moveChitRc.setOwner(RealmComponent.getRealmComponent(context.Caster));
 		}
 	}
 
 	@Override
 	public void unapply(SpellEffectContext context) {
-		// A Fly spell.  Destroy the FLY Chit, and remove it from the target.
 		GameObject spellObj = context.Spell.getGameObject();
 		
 		String chitId = spellObj.getThisAttribute("moveChitID");
