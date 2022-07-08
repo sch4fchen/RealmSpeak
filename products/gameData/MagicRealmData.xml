@@ -31026,6 +31026,7 @@
         <attribute host_okay="" />
         <attribute new_spells_2="" />
         <attribute learnable="" />
+        <attribute author="Expansion 1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1170" name="Fighting Hands">
@@ -31038,13 +31039,30 @@
         <attribute host_okay="" />
         <attribute new_spells_2="" />
         <attribute learnable="" />
+        <attribute author="Expansion 1" />
       </AttributeBlock>
       <AttributeBlock blockName="fight_chit">
         <attribute strength="H" />
         <attribute speed="3" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1171" name="Magic Shield">
+        <GameObject id="1171" name="Fire Trap">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="attack" />
+        <attribute target="none" />
+        <attribute text="Hits everything in a single combat box" />
+        <attribute magic_color="purple" />
+        <attribute sharpness="3" />
+        <attribute strength="L" />
+        <attribute length="9" />
+        <attribute host_okay="" />
+        <attribute new_spells_2="" />
+        <attribute learnable="" />
+        <attribute author="Expansion 1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1172" name="Magic Shield">
       <AttributeBlock blockName="this">
         <attribute spell="IV" />
         <attribute duration="combat" />
@@ -31054,6 +31072,7 @@
         <attribute host_okay="" />
         <attribute new_spells_2="" />
         <attribute learnable="" />
+        <attribute author="Expansion 1" />
       </AttributeBlock>
       <AttributeBlock blockName="magic_shield">
         <attribute vulnerability="T" />
@@ -31064,7 +31083,7 @@
         <attribute icon_folder="armor" />
       </AttributeBlock>
      </GameObject>
-     <GameObject id="1172" name="Mystic Boots">
+     <GameObject id="1173" name="Mystic Boots">
       <AttributeBlock blockName="this">
         <attribute spell="VI" />
         <attribute duration="day" />
@@ -31074,6 +31093,7 @@
         <attribute host_okay="" />
         <attribute new_spells_2="" />
         <attribute learnable="" />
+        <attribute author="Expansion 1" />
       </AttributeBlock>
       <AttributeBlock blockName="move_chit">
       	<attribute action="MOVE" />
@@ -31083,7 +31103,7 @@
         <attribute move_chit="" />
       </AttributeBlock>
     </GameObject>
-	 <GameObject id="1173" name="Rocks Glow">
+	 <GameObject id="1174" name="Rocks Glow">
       <AttributeBlock blockName="this">
         <attribute spell="II" />
         <attribute duration="day" />
@@ -31094,12 +31114,13 @@
         <attribute host_okay="" />
         <attribute new_spells_2="" />
         <attribute learnable="" />
+        <attribute author="Expansion 1" />
 		<attributeList keyName="target_clearing">
 			<attributeVal N0="clearing" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
-	<GameObject id="1174" name="Sleep">
+	<GameObject id="1175" name="Sleep">
       <AttributeBlock blockName="this">
         <attribute spell="III" />
         <attribute duration="instant" />
@@ -31110,6 +31131,7 @@
         <attribute host_okay="" />
         <attribute new_spells_2="" />
         <attribute learnable="" />
+        <attribute author="Expansion 1" />
 		<attributeList keyName="target_clearing">
 			<attributeVal N0="clearing" />
         </attributeList>
