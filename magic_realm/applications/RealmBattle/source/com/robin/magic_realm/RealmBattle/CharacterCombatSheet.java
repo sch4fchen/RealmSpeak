@@ -259,7 +259,7 @@ public class CharacterCombatSheet extends CombatSheet {
 				boolean sheetHasTarget = (target==null && target2==null && (spell==null || battleMage) && sheetOwner.equals(combatFrame.getActiveParticipant()))
 									|| (target!=null && allSheetParticipants.contains(target))
 									|| (target2!=null && allSheetParticipants.contains(target2));
-				boolean sheetHasSpellTarget = spell!=null && spell.isAttackSpell() && spell.targetsRealmComponents(allSheetParticipants);
+				boolean sheetHasSpellTarget = spell!=null && spell.isAttackSpell() && (spell.targetsRealmComponents(allSheetParticipants) || spell.noTargeting());
 				if (sheetHasTarget || sheetHasSpellTarget) {
 					int boxReq = spell==null?0:spell.getGameObject().getThisInt("box_req"); // most spells will be zero
 					if ((spell==null || battleMage) || boxReq==0 || boxReq==1) {

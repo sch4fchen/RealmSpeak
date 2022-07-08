@@ -521,6 +521,11 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		return "None";
 	}
 	
+	public boolean noTargeting() {
+		String att = getGameObject().getThisAttribute("target");
+		return "none".matches(att);
+	}
+	
 	public ArrayList<RealmComponent> getTargets() {
 		ArrayList<?> targetids = getList(TARGET_IDS);
 		

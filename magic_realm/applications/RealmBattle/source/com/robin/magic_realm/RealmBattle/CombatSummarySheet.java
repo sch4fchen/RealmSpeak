@@ -201,7 +201,7 @@ public class CombatSummarySheet extends JPanel {
 			row+=1;
 			y += 90;
 			g.drawImage(battleParticipant.getImage(),x+80,y-40,80,80,null);		
-			JButton chartButton = new JButton("Chart");
+			JButton chartButton = new JButton("Sheet");
 			final int rcRow = row;
 			chartButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {

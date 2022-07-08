@@ -1486,7 +1486,8 @@ public class CombatFrame extends JFrame {
 				GameObject go = combat.getCastSpell();
 				SpellWrapper spell = go==null?null:new SpellWrapper(go);
 				boolean isSpell = endCombatFrame==null && activeCharacterIsHere && spell!=null && spell.getTargets().isEmpty();
-				selectSpellTargetsButton.setEnabled(isSpell);
+				boolean needsTargeting = isSpell && !spell.noTargeting();
+				selectSpellTargetsButton.setEnabled(needsTargeting);
 				cancelSpellButton.setEnabled(isSpell);
 			}
 			if (alertWeaponButton!=null) {
@@ -1602,7 +1603,7 @@ public class CombatFrame extends JFrame {
 						spell.removeTarget(target.getGameObject());
 						RealmLogging.logMessage(RealmLogging.BATTLE,spell.getName()+" cannot target "+target+".");
 					}
-					if (spell.getTargets().isEmpty()) {
+					if (spell.getTargets().isEmpty() && !spell.noTargeting()) {
 						spell.cancelSpell();
 						RealmLogging.logMessage(RealmLogging.BATTLE,spell.getName()+" was canceled, as targets cannot be selected anymore.");
 					}

@@ -672,7 +672,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 							SpellWrapper sw = new SpellWrapper(spell);
 							if (sw.isAttackSpell() && sw.isAlive()) {
 								ArrayList<RealmComponent> targeted = sw.getTargetedRealmComponents(targetTest);
-								boolean showAttack = targeted.size()>0;
+								boolean showAttack = targeted.size()>0 || sw.noTargeting();
 								
 								// If the attacker is NOT the active participant and...
 								if (!rc.equals(combatFrame.getActiveParticipant())) {
