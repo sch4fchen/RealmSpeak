@@ -970,6 +970,19 @@ public class BattleModel {
 			for (BattleChit attacker : attackBlocks.getList(key)) {
 				if (attacker instanceof SpellWrapper) {
 					SpellWrapper spell = (SpellWrapper)attacker;
+					if (spell.noTargeting()) {
+						CharacterWrapper character = spell.getCaster();
+						RealmComponent characterRc = RealmComponent.getRealmComponent(character.getGameObject());
+						CombatSheet sheet = CombatSheet.createCombatSheet(CombatFrame.getSingleton(),this,characterRc,false, hostPrefs);
+						Collection<RealmComponent> c = sheet.getAllParticipantsOnSheet();
+						int attackCombatBox = spell.getAttackCombatBox();
+						for (RealmComponent target : c) {
+							CombatWrapper combatTarget = new CombatWrapper(target.getGameObject());
+							if (combatTarget.getCombatBox() == attackCombatBox) {
+								spell.addTarget(hostPrefs, target.getGameObject());
+							}
+						}
+					}
 					for (RealmComponent rc : spell.getTargets()) {
 						BattleChit target = (BattleChit)rc;
 						doTargetAttack(attacker,target,round,attackOrderPos);
