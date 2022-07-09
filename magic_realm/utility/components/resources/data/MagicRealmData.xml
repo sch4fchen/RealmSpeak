@@ -31048,7 +31048,7 @@
     </GameObject>
         <GameObject id="1171" name="Fire Trap">
       <AttributeBlock blockName="this">
-        <attribute spell="VI" />
+        <attribute spell="VIII" />
         <attribute duration="attack" />
         <attribute target="none" />
         <attribute text="Hits everything in a single combat box" />
