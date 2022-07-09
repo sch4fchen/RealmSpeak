@@ -127,6 +127,7 @@ public class SpellEffectFactory {
 			
 			// new spells
 			case "duel": return new ISpellEffect[]{new DuelEffect()};
+			case "fear": return new ISpellEffect[]{new RunAwayEffect()};
 			case "fighting hands": return new ISpellEffect[]{new FightChitEffect()};
 			case "magic shield": return new ISpellEffect[]{new MagicShieldEffect()};
 			case "mystic boots": return new ISpellEffect[]{new MoveChitEffect()};
