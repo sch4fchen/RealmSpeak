@@ -31017,7 +31017,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="VIII" />
         <attribute duration="combat" />
-        <attribute target="multiple" />
+        <attribute target="monsters" />
         <attribute text="Monsters fight each other in the current combat round" />
         <attribute magic_color="any" />
 		<attribute duel="" />
@@ -31046,7 +31046,21 @@
         <attribute speed="3" />
       </AttributeBlock>
     </GameObject>
-        <GameObject id="1171" name="Fire Trap">
+    <GameObject id="1171" name="Fear">
+      <AttributeBlock blockName="this">
+        <attribute spell="VIII" />
+        <attribute duration="attack" />
+        <attribute target="characters" />
+        <attribute text="All affected will flee" />
+        <attribute magic_color="purple" />
+        <attribute run_away="" />
+        <attribute host_okay="" />
+        <attribute new_spells_2="" />
+        <attribute learnable="" />
+        <attribute author="Expansion 1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1172" name="Fire Trap">
       <AttributeBlock blockName="this">
         <attribute spell="VIII" />
         <attribute duration="attack" />
@@ -31062,7 +31076,7 @@
         <attribute author="Expansion 1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1172" name="Magic Shield">
+    <GameObject id="1173" name="Magic Shield">
       <AttributeBlock blockName="this">
         <attribute spell="IV" />
         <attribute duration="combat" />
@@ -31083,7 +31097,7 @@
         <attribute icon_folder="armor" />
       </AttributeBlock>
      </GameObject>
-     <GameObject id="1173" name="Mystic Boots">
+     <GameObject id="1174" name="Mystic Boots">
       <AttributeBlock blockName="this">
         <attribute spell="VI" />
         <attribute duration="day" />
@@ -31103,7 +31117,7 @@
         <attribute move_chit="" />
       </AttributeBlock>
     </GameObject>
-	 <GameObject id="1174" name="Rocks Glow">
+	 <GameObject id="1175" name="Rocks Glow">
       <AttributeBlock blockName="this">
         <attribute spell="II" />
         <attribute duration="day" />
@@ -31120,7 +31134,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-	<GameObject id="1175" name="Sleep">
+	<GameObject id="1176" name="Sleep">
       <AttributeBlock blockName="this">
         <attribute spell="III" />
         <attribute duration="instant" />

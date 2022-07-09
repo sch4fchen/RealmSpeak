@@ -70,6 +70,9 @@ public abstract class SpellTargeting {
 		else if ("character".equals(targetType)) {
 			targeting = new SpellTargetingCharacter(combatFrame,spell,spell.getGameObject().hasThisAttribute("targetLightOnly"));
 		}
+		else if ("characters".equals(targetType)) {
+			targeting = new SpellTargetingCharacters(combatFrame,spell,spell.getGameObject().hasThisAttribute("targetLightOnly"));
+		}
 		else if ("caster".equals(targetType)) {
 			targeting = new SpellTargetingCaster(combatFrame,spell);
 		}
