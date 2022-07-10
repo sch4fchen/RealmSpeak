@@ -31078,7 +31078,30 @@
         <attribute author="Expansion 1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1173" name="Magic Shield">
+    <GameObject id="1173" name="Flame Sword">
+      <AttributeBlock blockName="this">
+        <attribute spell="II" />
+        <attribute duration="combat" />
+        <attribute target="character" />
+        <attribute text="Use conjured flame sword in combat (L**)" />
+        <attribute magic_color="purple" />
+        <attribute host_okay="" />
+        <attribute new_spells_2="" />
+        <attribute learnable="" />
+        <attribute author="Expansion 1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="magic_weapon">
+        <attribute weight="L" />
+        <attribute length="7" />
+        <attribute magic="" />
+        <attribute icon_type="broadsword" />
+        <attribute icon_folder="weapons" />
+        <attribute name="Flame Sword" />
+        <attribute strength="L" />
+        <attribute sharpness="2" />
+      </AttributeBlock>
+     </GameObject>
+    <GameObject id="1174" name="Magic Shield">
       <AttributeBlock blockName="this">
         <attribute spell="IV" />
         <attribute duration="combat" />
@@ -31093,13 +31116,14 @@
       <AttributeBlock blockName="magic_shield">
         <attribute vulnerability="T" />
         <attribute weight="L" />
+        <attribute magic="" />
         <attribute icon_type="shield" />
         <attribute facing="dark" />
         <attribute armor_row="1" />
         <attribute icon_folder="armor" />
       </AttributeBlock>
      </GameObject>
-     <GameObject id="1174" name="Mystic Boots">
+     <GameObject id="1175" name="Mystic Boots">
       <AttributeBlock blockName="this">
         <attribute spell="VI" />
         <attribute duration="day" />
@@ -31119,7 +31143,7 @@
         <attribute move_chit="" />
       </AttributeBlock>
     </GameObject>
-	 <GameObject id="1175" name="Rocks Glow">
+	 <GameObject id="1176" name="Rocks Glow">
       <AttributeBlock blockName="this">
         <attribute spell="II" />
         <attribute duration="day" />
@@ -31136,7 +31160,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-	<GameObject id="1176" name="Sleep">
+	<GameObject id="1177" name="Sleep">
       <AttributeBlock blockName="this">
         <attribute spell="III" />
         <attribute duration="instant" />

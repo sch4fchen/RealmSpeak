@@ -13,9 +13,15 @@ public class MagicShieldEffect implements ISpellEffect {
 		GameObject spell = context.Spell.getGameObject();
 		
 		GameObject magicShield = spell.getGameData().createNewObject();
-		magicShield.setName("Magic Shield");
 		magicShield.copyAttributeBlockFrom(spell,Constants.MAGIC_SHIELD);
 		magicShield.renameAttributeBlock(Constants.MAGIC_SHIELD,"this");
+		String name = magicShield.getThisAttribute("name");
+		if (name!=null) {
+			magicShield.setName(name);
+		}
+		else {
+			magicShield.setName("Magic Shield");
+		}
 		magicShield.setThisAttribute(Constants.SPELL_ID, spell.getStringId());
 		magicShield.setThisAttribute("item");
 		magicShield.setThisAttribute("shield");

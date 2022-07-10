@@ -386,6 +386,8 @@ public class Constants {
 	public static final String EFFECTS = "effects";
 	public static final String MAGIC_SHIELD = "magic_shield";
 	public static final String MAGIC_SHIELD_ID = "magicShieldId";
+	public static final String MAGIC_WEAPON = "magic_weapon";
+	public static final String MAGIC_WEAPON_ID = "magicWeaponId";
 	
 	public static final String LIGHTED = "lighted";
 	

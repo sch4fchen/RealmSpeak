@@ -128,6 +128,7 @@ public class SpellEffectFactory {
 			// new spells
 			case "duel": return new ISpellEffect[]{new DuelEffect()};
 			case "fighting hands": return new ISpellEffect[]{new FightChitEffect()};
+			case "flame sword": return new ISpellEffect[]{new MagicWeaponEffect()};
 			case "magic shield": return new ISpellEffect[]{new MagicShieldEffect()};
 			case "mystic boots": return new ISpellEffect[]{new MoveChitEffect()};
 			case "rocks glow": return new ISpellEffect[]{new LightEffect()};

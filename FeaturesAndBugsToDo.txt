@@ -1,5 +1,5 @@
 Bugs: CharacterChitComponent: getLength sometimes NullpointException (getAttackChit()) + reset denizen not resetting all properties since 1.1.5.8
-Expansion 1 Spells: Flame sword, Lucky blow, Magic mirror, Spider web, Wall of Force
+Expansion 1 Spells: Lucky blow, Magic mirror, Spider web, Wall of Force
 Spelltargeting Combatbox: place character chit on target
 ---:::FEATURES:::---
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): Option: no missile attacks, ?:Sharpness stars are ignored when comparing harm between attacks and parries? Alert?!
