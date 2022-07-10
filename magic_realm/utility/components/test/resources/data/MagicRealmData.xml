@@ -31050,10 +31050,12 @@
       <AttributeBlock blockName="this">
         <attribute spell="VIII" />
         <attribute duration="attack" />
-        <attribute target="characters" />
+        <attribute target="multiple" />
         <attribute text="All affected will flee" />
         <attribute magic_color="purple" />
-        <attribute run_away="" />
+        <attribute fear="" />
+        <attribute strength="L" />
+        <attribute length="11" />
         <attribute host_okay="" />
         <attribute new_spells_2="" />
         <attribute learnable="" />

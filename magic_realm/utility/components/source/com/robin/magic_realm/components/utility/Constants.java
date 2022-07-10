@@ -407,6 +407,9 @@ public class Constants {
 	public static final String AFFECTS_CASTER = "affects_caster";
 	public static final String ATTRIBUTE_ADD = "attribute_add"; // Identifies that the spell will add attributes to the "this" block from the "attribute_add" block.
 	
+	public static final String POWER_OF_THE_PIT = "powerofthepit";
+	public static final String FEAR = "fear";
+	
 	// Magic
 	public static final String[] MAGIC_COLORS = new String[]{"White","Grey","Gold","Purple","Black"};
 	

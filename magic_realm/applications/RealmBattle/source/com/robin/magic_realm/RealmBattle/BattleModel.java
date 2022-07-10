@@ -29,6 +29,7 @@ import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.table.Curse;
+import com.robin.magic_realm.components.table.Fear;
 import com.robin.magic_realm.components.table.PowerOfThePit;
 import com.robin.magic_realm.components.table.RaiseDead;
 import com.robin.magic_realm.components.utility.*;
@@ -1355,7 +1356,7 @@ public class BattleModel {
 				boolean hitCausedHarm = false;
 				String magicType = attacker.getMagicType();
 				if (magicType!=null && magicType.trim().length()>0) {
-					if ("V".equals(magicType)) {
+					if ((attacker.isDenizen() &&  "V".equals(magicType)) || Constants.POWER_OF_THE_PIT.matches(magicType)) {
 						if (attacker instanceof SpellWrapper) {
 							// Spells belong to characters
 							SpellWrapper spell = (SpellWrapper)attacker;
@@ -1377,11 +1378,16 @@ public class BattleModel {
 						hitCausedHarm = pop.harmWasApplied();
 						spellCasting = true;
 					}
-					else if ("VIII".equals(magicType)) {
+					else if (attacker.isDenizen() && "VIII".equals(magicType)) {
 						// Imp's Curse
 						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with a Curse along box "+attacker.getAttackCombatBox());
 						Curse curse = Curse.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject());
 						hitCausedHarm = curse.harmWasApplied();
+						spellCasting = true;
+					}
+					else if (attacker instanceof SpellWrapper && Constants.FEAR.matches(magicType)) {
+						hitCausedHarm = Fear.apply(new SpellWrapper(attacker.getGameObject()),target.getGameObject(),battleLocation,getAllBattleParticipants(true));
+						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with by Fear along box "+attacker.getAttackCombatBox());
 						spellCasting = true;
 					}
 				}
