@@ -41,12 +41,7 @@ public class Fear {
 				return false;
 			}
 			
-			ArrayList<ClearingDetail> possibleClearings = new ArrayList<>();
-			ArrayList<PathDetail> paths = currentLocation.clearing.getConnectedPaths();
-			for (PathDetail path : paths) {
-				if (path.requiresDiscovery()) continue;
-				possibleClearings.add(path.getTo());
-			}
+			ArrayList<ClearingDetail> possibleClearings = new ArrayList<>(character.findAvailableClearingMoves(true));
 			ClearingDetail selectedClearing =  possibleClearings.get(RandomNumber.getRandom(possibleClearings.size()));
 			TileLocation runToClearing = new TileLocation(selectedClearing);						
 			ClearingUtility.moveToLocation(character.getGameObject(),runToClearing,true);
