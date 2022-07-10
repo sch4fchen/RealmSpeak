@@ -29,7 +29,7 @@ import com.robin.magic_realm.components.wrapper.CombatWrapper;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class Fear {
-	public static boolean apply(SpellWrapper spell, GameObject target, TileLocation currentLocation, Collection<RealmComponent> participants) {
+	public static boolean apply(SpellWrapper spell, GameObject target, TileLocation currentLocation) {
 		if (currentLocation == null || currentLocation.clearing == null) return false;
 				
 		RealmComponent targetRc = RealmComponent.getRealmComponent(target);
@@ -87,14 +87,15 @@ public class Fear {
 		targetRc.clearTargets();
 		
 		// Need to disengage any participants who are targeting the runner!
-		for (RealmComponent bp : participants) {
-			RealmComponent bpTarget = bp.getTarget();
-			if (bpTarget!=null && bpTarget.equals(target)) {
-				bp.clearTarget();
+		CombatWrapper targetCombat = new CombatWrapper(target);
+		for (RealmComponent attacker : targetCombat.getAttackersAsComponents()) {
+			RealmComponent bpTarget = attacker.getTarget();
+			if (bpTarget!=null && bpTarget.getGameObject() == target) {
+				attacker.clearTarget();
 			}
-			RealmComponent bpTarget2 = bp.get2ndTarget();
-			if (bpTarget2!=null && bpTarget2.equals(target)) {
-				bp.clear2ndTarget();
+			RealmComponent bpTarget2 = attacker.get2ndTarget();
+			if (bpTarget2!=null && bpTarget2.getGameObject() == target) {
+				attacker.clear2ndTarget();
 			}
 		}
 		

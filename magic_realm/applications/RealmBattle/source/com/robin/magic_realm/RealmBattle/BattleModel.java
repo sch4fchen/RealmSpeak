@@ -1169,6 +1169,10 @@ public class BattleModel {
 				}
 			}
 		}
+		if (targetCombat == null) {
+			logBattleInfo(attacker.getName() + " has no target anymore. Attack canelled.");
+			return;
+		}
 		GameObject targetKiller = targetCombat.getKilledBy();
 
 		String attackCancelled = null;
@@ -1386,7 +1390,7 @@ public class BattleModel {
 						spellCasting = true;
 					}
 					else if (attacker instanceof SpellWrapper && Constants.FEAR.matches(magicType)) {
-						hitCausedHarm = Fear.apply(new SpellWrapper(attacker.getGameObject()),target.getGameObject(),battleLocation,getAllBattleParticipants(true));
+						hitCausedHarm = Fear.apply(new SpellWrapper(attacker.getGameObject()),target.getGameObject(),battleLocation);
 						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with by Fear along box "+attacker.getAttackCombatBox());
 						spellCasting = true;
 					}
