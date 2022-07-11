@@ -5,6 +5,7 @@ NEW FEATURES:
 # New Expansion 1 spells ("More Expansion Spells"): Duel, Fighting Hands, Fear, Fire Trap, Flame Sword, Mystic Boots
 # Optional Rule: Multiple Summoning: Chits can summon multiple times in a single round
 # Game Option: No Summoning
+# RealmBattle: Option to skip repositioning and option to force flipping monsters
 BUGS/ISSUES:
 
 Version 1.1.5.9 - Changes since 1.1.5.8

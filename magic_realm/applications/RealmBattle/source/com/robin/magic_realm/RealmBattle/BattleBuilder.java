@@ -64,6 +64,8 @@ public class BattleBuilder extends JFrame {
 	private JButton changeClearingButton;
 	private JLabel clearingTitle;
 	private JCheckBox makeDuplicatesOption;
+	private JCheckBox skipRepositioningOption;
+	private JCheckBox forceMonsterFlipOption;
 	private JButton addCharacterButton;
 	private JButton castSpellButton;
 	
@@ -102,7 +104,7 @@ public class BattleBuilder extends JFrame {
 		return ret==JOptionPane.YES_OPTION;
 	}
 	private void initComponents() {
-		setSize(800,800);
+		setSize(1000,800);
 		setLocationRelativeTo(null);
 		setTitle("RealmSpeak Battle Builder");
 		setIconImage(IconFactory.findIcon("images/combat/combatsummary.gif").getImage());
@@ -127,6 +129,12 @@ public class BattleBuilder extends JFrame {
 		
 		makeDuplicatesOption = new JCheckBox("Make Duplicates",false);
 		box.add(makeDuplicatesOption);
+		
+		skipRepositioningOption = new JCheckBox("Skip repositioning",false);
+		box.add(skipRepositioningOption);
+		
+		forceMonsterFlipOption = new JCheckBox("Force flipping monsters",false);
+		box.add(forceMonsterFlipOption);
 		
 		box.add(Box.createHorizontalGlue());
 		addCharacterButton = new JButton("Add Character Tab");
@@ -216,6 +224,8 @@ public class BattleBuilder extends JFrame {
 				CombatFrame.saveBattle(new JFrame(),gameData);
 				cancelled = false;
 				setVisible(false);
+				if (skipRepositioningOption.isSelected()) BattleModel.SKIP_REPOSITIONING = true;
+				if (forceMonsterFlipOption.isSelected()) BattleModel.FORCE_MONSTER_FLIP = true;
 				CombatFrame.startCombat(gameData);
 			}
 		});
@@ -228,6 +238,8 @@ public class BattleBuilder extends JFrame {
 				doFinish();
 				cancelled = false;
 				setVisible(false);
+				if (skipRepositioningOption.isSelected()) BattleModel.SKIP_REPOSITIONING = true;
+				if (forceMonsterFlipOption.isSelected()) BattleModel.FORCE_MONSTER_FLIP = true;
 				CombatFrame.startCombat(gameData);
 			}
 		});

@@ -42,6 +42,8 @@ public class BattleModel {
 	public static final int INTERCEPT = 1;
 	public static final int UNDERCUT = 2;
 	public static final int ATTACK_CANCELLED = -2;
+	public static boolean SKIP_REPOSITIONING = false;
+	public static boolean FORCE_MONSTER_FLIP = false;
 	
 	private static Logger logger = Logger.getLogger(BattleModel.class.getName());
 	
@@ -1738,7 +1740,7 @@ public class BattleModel {
 		DieRoller roller = new DieRoller(); // Rule 22.5/2 specifies that modifiers do NOT affect this roll
 		roller.addRedDie();
 		roller.rollDice("Reposition");
-		if (DebugUtility.isMonsterLock()) {
+		if (SKIP_REPOSITIONING || DebugUtility.isMonsterLock()) {
 			// If this debug mode is enabled, don't allow monster repositioning to occur
 			roller.setValue(0,4);
 		}
@@ -1815,11 +1817,11 @@ public class BattleModel {
 	private static void changeTactics(String prefix,CombatWrapper combatTarget,HashLists<Integer, RealmComponent> boxHash,DieRoller roller,int boxNumber) {
 		roller.reset();
 		roller.rollDice("Change Tactics");
-		if (DebugUtility.isMonsterLock()) {
+		if (SKIP_REPOSITIONING || DebugUtility.isMonsterLock()) {
 			roller.setValue(0,2);
 			roller.setValue(1,2);
 		}
-		if (DebugUtility.isMonsterFlip()) {
+		if (FORCE_MONSTER_FLIP || DebugUtility.isMonsterFlip()) {
 			roller.setValue(0,6);
 		}
 		int result = roller.getHighDieResult();
