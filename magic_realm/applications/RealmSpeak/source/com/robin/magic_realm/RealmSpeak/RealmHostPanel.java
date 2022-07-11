@@ -728,6 +728,21 @@ public class RealmHostPanel extends JPanel {
 	private void updateGameStateResolving() {
 		logger.fine("EVENING");
 		autoSaveNow();
+		ArrayList<GameObject> activeCharacters = getLivingCharacters();
+		for (GameObject go:activeCharacters) {
+			CharacterWrapper character = new CharacterWrapper(go);
+			for (GameObject item : character.getActiveInventory()) {
+				if (item.hasThisAttribute(Constants.MAGIC_FOOD)) {
+					TileLocation loc = character.getCurrentLocation();
+					if (loc == null || loc.isFlying() || loc.clearing == null) continue;
+					for (RealmComponent rc : loc.tile.getAllClearingComponents()) {
+						if (rc.isMonster() && !rc.isHiredOrControlled()) {
+							loc.clearing.add(rc.getGameObject(),null);
+						}
+					}
+				}
+			}
+		}
 		if (RealmBattle.newClearingCombat) {
 			// Save at the beginning of every separate combat
 			RealmBattle.newClearingCombat = false;
@@ -736,7 +751,6 @@ public class RealmHostPanel extends JPanel {
 		}
 		if (!RealmBattle.nextCombatAction(host,host.getGameData())) {
 			// First, see if ANY character is day end trading
-			ArrayList<GameObject> activeCharacters = getLivingCharacters();
 			for (GameObject go:activeCharacters) {
 				CharacterWrapper character = new CharacterWrapper(go);
 				if (character.getWantsDayEndTrades()) {

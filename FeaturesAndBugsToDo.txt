@@ -2,7 +2,6 @@ Bugs: CharacterChitComponent: getLength sometimes NullpointException (getAttackC
 Expansion 1 Spells: Lucky blow, Spider web, Wall of Force
 BattleBuilder: checkbox to skip reposition roll (DebugUtility: MONSTER_REPO_LOCK, MONSTER_FLIP)
 RealmSpeakGameOption: SUMMON_MULTIPLE, NO_SUMMON
-Spelltargeting Combatbox: place character chit on target
 ---:::FEATURES:::---
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): Option: no missile attacks, ?:Sharpness stars are ignored when comparing harm between attacks and parries? Alert?!
 Expansion 1: Parry + Ability: "ParryLikeShield":  Option: no missile attacks
