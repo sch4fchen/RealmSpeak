@@ -30964,7 +30964,21 @@
         <attribute item="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1165" name="Magic Path">
+    <GameObject id="1165" name="Magic Meat">
+      <AttributeBlock blockName="this">
+      	<attribute treasure="small" />
+        <attribute text="All monsters in hex are lured to the clearing during evening" />
+        <attribute rw_expansion_1="" />
+        <attribute base_price="2" />
+        <attribute notoriety="0" />
+        <attribute facing="face_dn" />
+        <attribute fame="0" />
+        <attribute magic_food="" />
+        <attribute author="Expansion 1" />
+        <attribute item="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1166" name="Magic Path">
       <AttributeBlock blockName="this">
       	<attribute treasure="small" />
         <attribute text="Can move between two clearings in same hex once" />
@@ -30980,7 +30994,7 @@
         <attribute item="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1166" name="Doppleganger">
+    <GameObject id="1167" name="Doppleganger">
       <AttributeBlock blockName="this">
       	<attribute hire_with_chit="1" />
         <attribute icon_type="t1" />
@@ -30991,7 +31005,7 @@
         <attribute text="Deal with all natives on friendly column" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1167" name="Necromancer">
+    <GameObject id="1168" name="Necromancer">
       <AttributeBlock blockName="this">
       	<attribute base_price="25" />
         <attribute icon_type="t1" />
@@ -31002,7 +31016,7 @@
         <attribute text="Can raise dead once each evening" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1168" name="Soothsayer">
+    <GameObject id="1169" name="Soothsayer">
       <AttributeBlock blockName="this">
       	<attribute base_price="8" />
         <attribute icon_type="t1" />
@@ -31013,7 +31027,7 @@
         <attribute text="Cancel any recorded actions during your turn" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1169" name="Duel">
+    <GameObject id="1170" name="Duel">
       <AttributeBlock blockName="this">
         <attribute spell="VIII" />
         <attribute duration="combat" />
@@ -31029,7 +31043,7 @@
         <attribute author="Expansion 1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1170" name="Fighting Hands">
+    <GameObject id="1171" name="Fighting Hands">
       <AttributeBlock blockName="this">
         <attribute spell="VI" />
         <attribute duration="combat" />
@@ -31046,7 +31060,7 @@
         <attribute speed="3" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1171" name="Fear">
+    <GameObject id="1172" name="Fear">
       <AttributeBlock blockName="this">
         <attribute spell="VIII" />
         <attribute duration="attack" />
@@ -31062,7 +31076,7 @@
         <attribute author="Expansion 1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1172" name="Fire Trap">
+    <GameObject id="1173" name="Fire Trap">
       <AttributeBlock blockName="this">
         <attribute spell="VIII" />
         <attribute duration="attack" />
@@ -31078,7 +31092,7 @@
         <attribute author="Expansion 1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1173" name="Flame Sword">
+    <GameObject id="1174" name="Flame Sword">
       <AttributeBlock blockName="this">
         <attribute spell="II" />
         <attribute duration="combat" />
@@ -31101,7 +31115,7 @@
         <attribute sharpness="2" />
       </AttributeBlock>
      </GameObject>
-    <GameObject id="1174" name="Magic Shield">
+    <GameObject id="1175" name="Magic Shield">
       <AttributeBlock blockName="this">
         <attribute spell="IV" />
         <attribute duration="combat" />
@@ -31123,7 +31137,7 @@
         <attribute icon_folder="armor" />
       </AttributeBlock>
      </GameObject>
-     <GameObject id="1175" name="Mystic Boots">
+     <GameObject id="1176" name="Mystic Boots">
       <AttributeBlock blockName="this">
         <attribute spell="VI" />
         <attribute duration="day" />
@@ -31143,7 +31157,7 @@
         <attribute move_chit="" />
       </AttributeBlock>
     </GameObject>
-	 <GameObject id="1176" name="Rocks Glow">
+	 <GameObject id="1177" name="Rocks Glow">
       <AttributeBlock blockName="this">
         <attribute spell="II" />
         <attribute duration="day" />
@@ -31160,7 +31174,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-	<GameObject id="1177" name="Sleep">
+	<GameObject id="1178" name="Sleep">
       <AttributeBlock blockName="this">
         <attribute spell="III" />
         <attribute duration="instant" />
