@@ -42,6 +42,10 @@ public class Fear {
 			}
 			
 			ArrayList<ClearingDetail> possibleClearings = new ArrayList<>(character.findAvailableClearingMoves(true));
+			if (possibleClearings.isEmpty()) {
+				RealmLogging.logMessage(RealmLogging.BATTLE, target.getName() +" cannot run away, as way out exists.");
+				return false;
+			}
 			ClearingDetail selectedClearing =  possibleClearings.get(RandomNumber.getRandom(possibleClearings.size()));
 			TileLocation runToClearing = new TileLocation(selectedClearing);						
 			ClearingUtility.moveToLocation(character.getGameObject(),runToClearing,true);

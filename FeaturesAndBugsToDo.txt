@@ -1,5 +1,7 @@
 Bugs: CharacterChitComponent: getLength sometimes NullpointException (getAttackChit()) + reset denizen not resetting all properties since 1.1.5.8
 Expansion 1 Spells: Lucky blow, Spider web, Wall of Force
+BattleBuilder: checkbox to skip reposition roll (DebugUtility: MONSTER_REPO_LOCK, MONSTER_FLIP)
+RealmSpeakGameOption: SUMMON_MULTIPLE, NO_SUMMON
 Spelltargeting Combatbox: place character chit on target
 ---:::FEATURES:::---
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): Option: no missile attacks, ?:Sharpness stars are ignored when comparing harm between attacks and parries? Alert?!
