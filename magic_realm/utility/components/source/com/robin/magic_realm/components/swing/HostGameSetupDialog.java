@@ -1045,6 +1045,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_NO_NATIVES_BATTLING,"No natives battling - Unhired natives don't participate in combat.",false));
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_NATIVES_FRIENDLY,"No attacking of friendly natives (Book of Learning) - FRIENDLY and ALLIED natives cannot be lured or targeted.",false));
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_PEACE_WITH_NATURE_SITES,"Peace with Nature ability extends to site chits - When character with this ability ends his turn, the site chits in his tile do not summon monsters from the Chart of Appearances.",false));
+		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_MULTIPLE_SUMMONING,"Multiple Summoning - Allows chits to summon many times in a single round.",false));
 		
 		newOptionPane.setTabHtmlDescription(HOUSE3_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">More House Rules</font></body></html>");
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_DWELLING_ARMOR_REPAIR,"Armor Repair - Repair armor at any dwelling during a trade phase, for the difference between the intact price, and the damaged price.",false));

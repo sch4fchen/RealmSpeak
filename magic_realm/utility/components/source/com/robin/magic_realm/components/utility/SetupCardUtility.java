@@ -87,7 +87,7 @@ public class SetupCardUtility {
 					if (go.getHoldCount()>0) {
 						// and that it is face down (rule 12.5/3) - this is probably unnecessary (all tls only have 1 box of monsters anyway)
 						TreasureLocationChitComponent tlChit = (TreasureLocationChitComponent)RealmComponent.getRealmComponent(go);
-						if (!tlChit.hasSummonedToday(monsterDie)) {
+						if (!tlChit.hasSummonedToday(monsterDie) || hostPrefs.hasPref(Constants.HOUSE2_MULTIPLE_SUMMONING)) {
 							treasureLocations.add(go);
 						}
 					}
@@ -111,7 +111,7 @@ public class SetupCardUtility {
 		 * Warning chits summon monsters FIRST
 		 * THEN Sound chits (low numbers summon before higher numbers)
 		 */
-		ArrayList<GameObject> warningChits = SetupCardUtility.getWarnings(tl.tile.getGameObject().getHold(),monsterDie,includeWarningSounds); // this is done separately to capture treasures...
+		ArrayList<GameObject> warningChits = SetupCardUtility.getWarnings(tl.tile.getGameObject().getHold(),monsterDie,includeWarningSounds,hostPrefs); // this is done separately to capture treasures...
 		ArrayList<GameObject> soundChits = new ArrayList<>();
 		ArrayList<GameObject> prowlingMonsters = new ArrayList<>();
 		for (Object o : tl.tile.getGameObject().getHold()) {
@@ -557,7 +557,7 @@ public class SetupCardUtility {
 		return total;
 	}
 
-	private static ArrayList<GameObject> getWarnings(Collection<GameObject> gameObjects,int monsterDie,boolean includeWarningSounds) {
+	private static ArrayList<GameObject> getWarnings(Collection<GameObject> gameObjects,int monsterDie,boolean includeWarningSounds,HostPrefWrapper hostPrefs) {
 		ArrayList<GameObject> gos = new ArrayList<>(gameObjects);
 		
 		// Find all "seen" treasures
@@ -580,7 +580,7 @@ public class SetupCardUtility {
 				if (rc instanceof WarningChitComponent) {
 					if (includeWarningSounds) { // only add warning chits if allowed
 						WarningChitComponent warning = (WarningChitComponent)rc;
-						if (!warning.hasSummonedToday(monsterDie)) { // only summon once per day (rule 12.5/3)
+						if (!warning.hasSummonedToday(monsterDie) || hostPrefs.hasPref(Constants.HOUSE2_MULTIPLE_SUMMONING)) { // only summon once per day (rule 12.5/3)
 							warnings.add(go);
 						}
 					}
