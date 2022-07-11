@@ -42,6 +42,7 @@ public class HostPrefWrapper extends GameObjectWrapper {
 	public static final String VPS_FIXED = "vps_fixed";
 	public static final String VPS_TO_ACHIEVE = "vps_2_achv";
 	public static final String ENABLE_BATTLES = "en_batt";
+	public static final String ENABLE_SUMMONING = "en_summ";
 	public static final String ENABLE_AUTOSAVE = "en_autosave";
 	public static final String ENABLE_AUTO_SETUP = "en_autoset";
 	public static final String ENABLE_PLAYER_SETUP = "en_playset";
@@ -120,6 +121,9 @@ public class HostPrefWrapper extends GameObjectWrapper {
 	}
 	public boolean getEnableBattles() {
 		return getBoolean(ENABLE_BATTLES);
+	}
+	public boolean getEnableSummoning() {
+		return getBoolean(ENABLE_SUMMONING);
 	}
 	public boolean getAutosaveEnabled() {
 		return getBoolean(ENABLE_AUTOSAVE);

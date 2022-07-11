@@ -47,8 +47,8 @@ public class SetupCardUtility {
 	 * It will also relocate monsters that are prowling to the specified clearing.
 	 */
 	public static void summonMonsters(ArrayList<GameObject> summoned,TileLocation tl,GameData data,boolean includeWarningSounds,boolean includeSiteChits,int monsterDie,String boardNumber) {
-		if (DebugUtility.isNoSummon()) {
-			// If Debug NO_SUMMON mode is active, then return without doing anything
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
+		if (!hostPrefs.getEnableSummoning() || DebugUtility.isNoSummon()) {
 			return;
 		}
 		if (!tl.isInClearing()) { // Must be a clearing - can't summon monsters on non-clearings!
@@ -57,7 +57,6 @@ public class SetupCardUtility {
 		int clearingNum = tl.clearing.getNum();
 		
 		// Use a pool to locate all the possible summoning objects for the given monsterDie
-		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		GamePool pool = new GamePool(data.getGameObjects());
 		ArrayList<String> keyVals = new ArrayList<>();
 		keyVals.add(hostPrefs.getGameKeyVals());

@@ -94,6 +94,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	
 	protected JCheckBox disableBattles;
 	protected JLabel disableCombatWarning;
+	protected JCheckBox disableSummoning;
+	protected JLabel disableSummoningWarning;
 	protected JCheckBox autosaveEnabled;
 	protected JCheckBox alternativeTilesEnabled;
 	protected JCheckBox mixExpansionTilesEnabled;
@@ -129,6 +131,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		fixedVps.setSelected(hostPrefs.isFixedVps());
 		vpsToAchieve.setText(String.valueOf(hostPrefs.getVpsToAchieve()));
 		disableBattles.setSelected(!hostPrefs.getEnableBattles());
+		disableSummoning.setSelected(!hostPrefs.getEnableSummoning());
 		autosaveEnabled.setSelected(hostPrefs.getAutosaveEnabled());
 		boardAutoSetup.setSelected(hostPrefs.getBoardAutoSetup());
 		boardPlayerSetup.setSelected(hostPrefs.getBoardPlayerSetup());
@@ -203,6 +206,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		fixedVps.setSelected(prefMan.getBoolean("fixedVps"));
 		vpsToAchieve.setText(prefMan.get("vpsToAchieve"));
 		disableBattles.setSelected(!prefMan.getBoolean("battlesEnabled"));
+		disableSummoning.setSelected(!prefMan.getBoolean("summoningEnabled"));
 		autosaveEnabled.setSelected(prefMan.getBoolean("autosaveEnabled"));
 		boardAutoSetup.setSelected(prefMan.getBoolean("boardAutoSetup"));
 		boardPlayerSetup.setSelected(prefMan.getBoolean("boardPlayerSetup"));
@@ -261,6 +265,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		prefMan.set("fixedVps",fixedVps.isSelected());
 		prefMan.set("vpsToAchieve",vpsToAchieve.getText());
 		prefMan.set("battlesEnabled",!disableBattles.isSelected());
+		prefMan.set("summoningEnabled",!disableSummoning.isSelected());
 		prefMan.set("autosaveEnabled",autosaveEnabled.isSelected());
 		prefMan.set("boardAutoSetup",boardAutoSetup.isSelected());
 		prefMan.set("boardPlayerSetup",boardPlayerSetup.isSelected());
@@ -370,6 +375,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		}
 		
 		disableBattles.setEnabled(editMode);
+		disableSummoning.setEnabled(editMode);
 		autosaveEnabled.setEnabled(editMode);
 		boardAutoSetup.setEnabled(editMode);
 		boardPlayerSetup.setEnabled(editMode);
@@ -846,6 +852,20 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			box.add(disableCombatWarning);
 			box.add(Box.createHorizontalGlue());
 		gamePlayBox.add(box);
+			box = group.createLabelLine("Disable Summoning");
+				disableSummoning = notifier.getCheckBox("");
+				disableSummoning.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent ev) {
+						updateWarnings();
+					}
+				});
+			box.add(disableSummoning);
+				disableSummoningWarning = new JLabel("Summoning DISABLED!!");
+				disableSummoningWarning.setFont(new Font("Dialog",Font.BOLD,12));
+				disableSummoningWarning.setForeground(Color.red);
+			box.add(disableSummoningWarning);
+			box.add(Box.createHorizontalGlue());
+		gamePlayBox.add(box);
 			box = group.createLabelLine("Optional Season");
 				ArrayList seasons = new ArrayList<>(RealmCalendar.findSeasons(gameData));
 				seasons.add(1,RealmCalendar.RANDOM_SEASON);
@@ -1042,6 +1062,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	}
 	private void updateWarnings() {
 		disableCombatWarning.setVisible(disableBattles.isSelected());
+		disableSummoningWarning.setVisible(disableSummoning.isSelected());
 		optionalWeatherWarning.setVisible(!useWeather.isSelected() && startingSeason.getSelectedIndex()>0);
 		useWeather.setEnabled(startingSeason.getSelectedIndex()>0);
 		multiBoardCount.setEnabled(multiBoardEnabled.isSelected());
