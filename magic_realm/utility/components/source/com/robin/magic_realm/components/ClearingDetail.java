@@ -343,8 +343,7 @@ public class ClearingDetail {
 			for (RealmComponent rc : c) {
 				if (rc.isTreasureLocation() && !rc.isCacheChit()) {
 					// Check TLs for face up SITE CARDS, cuz those should be painted too
-					for (Iterator n=rc.getGameObject().getHold().iterator();n.hasNext();) {
-						GameObject thing = (GameObject)n.next();
+					for (GameObject thing : rc.getGameObject().getHold()) {
 						RealmComponent trc = RealmComponent.getRealmComponent(thing);
 						if (trc.isTreasure()) {
 							TreasureCardComponent treasure = (TreasureCardComponent)trc;

@@ -5814,7 +5814,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		rc.clearTargets(); // make sure they aren't targeting anyone
 		rc.setHidden(false); // make sure they aren't hidden
 		
-		GameObject heldByGo = rc.getGameObject().getHeldBy();
+		GameObject heldByGo = hireling.getHeldBy();
 		if (heldByGo!=null) { // heldByGo might be null in the BattleBuilder
 			RealmComponent heldBy = RealmComponent.getRealmComponent(heldByGo);
 			if (heldBy!=null) { // held might be null in the BattleBuilder
