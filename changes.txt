@@ -6,6 +6,7 @@ NEW FEATURES:
 # Optional Rule: Multiple Summoning: Chits can summon multiple times in a single round
 # Game Option: No Summoning
 # RealmBattle: Option to skip repositioning and option to force flipping monsters
+# Realm GM: Adding new character let you choose character level
 BUGS/ISSUES:
 
 Version 1.1.5.9 - Changes since 1.1.5.8

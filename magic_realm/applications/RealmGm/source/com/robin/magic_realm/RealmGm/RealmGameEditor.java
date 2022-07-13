@@ -338,8 +338,23 @@ public class RealmGameEditor extends JInternalFrame {
 				chooser.setVisible(true);
 				RealmComponent rc = chooser.getFirstSelectedComponent();
 				if (rc==null) return;
+				ListChooser levelChooser = new ListChooser(parent, "Select level for "+rc.toString(),  new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" });
+				levelChooser.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+				levelChooser.setDoubleClickEnabled(true);
+				levelChooser.setLocationRelativeTo(null);
+				levelChooser.setVisible(true);
+				Object selectedLevel = levelChooser.getSelectedItem();
+				if (selectedLevel == null) return;
+				
 				GameObject characterGo = rc.getGameObject();
+				CharacterWrapper character = new CharacterWrapper(characterGo);
 				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
+				int level = Integer.valueOf(selectedLevel.toString());
+				if (level >= 9) {
+					character.getGameObject().setThisAttribute("extra_phase");
+					String adv = "LEVEL 9 BONUS:  Gets bonus phase every day.";
+					character.getGameObject().addAttributeListItem("level_4", "advantages", adv);
+				}
 				
 				if (characterGo.hasThisAttribute(Constants.CUSTOM_CHARACTER)) {
 					GameObject newChar = gameData.createNewObject();
@@ -356,15 +371,13 @@ public class RealmGameEditor extends JInternalFrame {
 					}
 					characterGo = newChar;
 				}
-				
-				int level = 4;
-				CharacterWrapper character = new CharacterWrapper(characterGo);
 				GameObject borderland = gameData.getGameObjectByName("Borderland");
 				TileComponent borderlandTile = (TileComponent)RealmComponent.getRealmComponent(borderland);
 				borderlandTile.getClearing(1).add(character.getGameObject(),null);
 				character.setPlayerName("Player");
 				character.setPlayerPassword("");
 				character.setPlayerEmail("");
+				character.setStartingLevel(level);
 				character.setCharacterLevel(level);
 				character.updateLevelAttributes(hostPrefs);
 				character.initChits();
@@ -375,6 +388,10 @@ public class RealmGameEditor extends JInternalFrame {
 				character.setHidden(true);
 				character.initializeVpsSetup(hostPrefs,level,RealmCalendar.getCalendar(gameData));
 				RealmUtility.fetchStartingSpells(parent,character,gameData,false);
+				character.tagUnplayableChits(); // this need only happen once, because it examines ALL the chits
+				character.updateLevelAttributes(hostPrefs);
+				character.applyMidnight();
+				character.calculateStartingWorth();
 				characters.add(character);
 				Collections.sort(characters,new Comparator<CharacterWrapper>() {
 					public int compare(CharacterWrapper c1,CharacterWrapper c2) {

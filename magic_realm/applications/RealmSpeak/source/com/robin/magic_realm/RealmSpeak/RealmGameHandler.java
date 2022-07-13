@@ -1658,8 +1658,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		for (GameObject leader : leaders) {
 			GameObject dwelling = SetupCardUtility.getDenizenHolder(leader);
 			ArrayList<GameObject> treasures = new ArrayList<>();
-			for (Iterator i = dwelling.getHold().iterator(); i.hasNext();) {
-				GameObject item = (GameObject) i.next();
+			for (GameObject item : dwelling.getHold()) {
 				if (item.hasThisAttribute("treasure")) {
 					treasures.add(item);
 				}
@@ -1700,8 +1699,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		ArrayList<GameObject> horses = new ArrayList<>();
 		for (GameObject leader : leaders) {
 			GameObject dwelling = SetupCardUtility.getDenizenHolder(leader);
-			for (Iterator i = dwelling.getHold().iterator(); i.hasNext();) {
-				GameObject item = (GameObject) i.next();
+			for (GameObject item : dwelling.getHold()) {
 				if (item.hasThisAttribute("horse")) {
 					horses.add(item);
 				}
