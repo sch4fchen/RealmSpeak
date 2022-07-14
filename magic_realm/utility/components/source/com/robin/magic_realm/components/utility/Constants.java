@@ -373,6 +373,8 @@ public class Constants {
 	public static final String COLOR_MOD = "color_mod";
 	public static final String MOD_COLOR_SOURCE = "mod_color_source";
 	public static final String FINAL_CHIT_SPEED = "final_chit_speed";
+	public static final String FINAL_CHIT_STRENGTH = "final_chit_strength";
+	public static final String FINAL_CHIT_HARM = "final_chit_harm";
 	public static final String STOP_UNDERCUT = "stop_undercut";
 	public static final String NO_UNDERCUT = "no_undercut";
 	

@@ -5231,6 +5231,23 @@ public class CharacterWrapper extends GameObjectWrapper {
 				if (spell.getGameObject().hasThisAttribute(Constants.FINAL_CHIT_SPEED)) {
 					chit.setAlternateSpeed(new Speed(spell.getGameObject().getThisInt(Constants.FINAL_CHIT_SPEED)));
 				}
+				if (spell.getGameObject().hasThisAttribute(Constants.FINAL_CHIT_STRENGTH)) {
+					chit.setAlternateStrength(new Strength(spell.getGameObject().getThisAttribute(Constants.FINAL_CHIT_STRENGTH)));
+				}
+				if (spell.getGameObject().hasThisAttribute(Constants.FINAL_CHIT_HARM)) {
+					Strength newHarm = new Strength(spell.getGameObject().getThisAttribute(Constants.FINAL_CHIT_HARM));
+					if (chit.getGameObject().hasThisAttribute(Constants.FINAL_CHIT_HARM)) {
+						Strength chitHarm = new Strength(chit.getGameObject().getThisAttribute(Constants.FINAL_CHIT_HARM));
+						if (newHarm.strongerThan(chitHarm)) {
+							chit.getGameObject().setThisAttribute(Constants.FINAL_CHIT_HARM, newHarm.toString());
+							chit.setAlternateStrength(new Strength(spell.getGameObject().getThisAttribute(Constants.FINAL_CHIT_HARM)));
+						}
+					}
+					else {
+						chit.getGameObject().setThisAttribute(Constants.FINAL_CHIT_HARM, newHarm.toString());
+						chit.setAlternateStrength(new Strength(spell.getGameObject().getThisAttribute(Constants.FINAL_CHIT_HARM)));
+					}
+				}
 			}
 		}
 	}

@@ -176,6 +176,9 @@ public abstract class SpellTargeting {
 		else if ("MOVE chit".equals(targetType)) {
 			targeting = new SpellTargetingChit(combatFrame,spell,"MOVE");
 		}
+		else if ("FIGHT chit".equals(targetType)) {
+			targeting = new SpellTargetingChit(combatFrame,spell,"FIGHT");
+		}
 		else if ("native".equals(targetType)) {
 			targeting = new SpellTargetingNative(combatFrame,spell);
 		}

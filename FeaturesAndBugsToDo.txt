@@ -1,5 +1,5 @@
 Bugs: CharacterChitComponent: getLength sometimes NullpointException (getAttackChit()) + reset denizen not resetting all properties since 1.1.5.8
-Expansion 1 Spells: Lucky blow, Spider web, Wall of Force
+Expansion 1 Spells: Spider web, Wall of Force
 ---:::FEATURES:::---
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): Option: no missile attacks, ?:Sharpness stars are ignored when comparing harm between attacks and parries? Alert?!
 Expansion 1: Parry + Ability: "ParryLikeShield":  Option: no missile attacks

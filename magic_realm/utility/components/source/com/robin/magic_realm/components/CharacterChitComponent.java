@@ -454,6 +454,12 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			if (!missileWeapon && baseHarm.getStrength().strongerThan(weaponStrength)) {
 				weaponStrength.bumpUp();
 			}
+			if (combatChit.getGameObject().hasThisAttribute(Constants.FINAL_CHIT_HARM)) {
+				Strength chitStrength = new Strength(combatChit.getGameObject().getThisAttribute(Constants.FINAL_CHIT_HARM));
+				if (chitStrength.strongerThan(weaponStrength)) {
+					weaponStrength = chitStrength;
+				}
+			}
 		}
 
 		Harm totalHarm = new Harm(weaponStrength, sharpness, ignoreArmor);

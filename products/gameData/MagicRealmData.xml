@@ -31114,8 +31114,22 @@
         <attribute strength="L" />
         <attribute sharpness="2" />
       </AttributeBlock>
-     </GameObject>
-    <GameObject id="1175" name="Magic Shield">
+    </GameObject>
+    <GameObject id="1175" name="Lucky Blow">
+      <AttributeBlock blockName="this">
+        <attribute spell="VII" />
+        <attribute duration="move" />
+        <attribute target="FIGHT chit" />
+        <attribute text="One FIGHT chit inflicts T harm until use" />
+        <attribute magic_color="gray" />
+        <attribute host_okay="" />
+        <attribute final_chit_harm="T" />
+        <attribute new_spells_2="" />
+        <attribute learnable="" />
+        <attribute author="Expansion 1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1176" name="Magic Shield">
       <AttributeBlock blockName="this">
         <attribute spell="IV" />
         <attribute duration="combat" />
@@ -31137,7 +31151,7 @@
         <attribute icon_folder="armor" />
       </AttributeBlock>
      </GameObject>
-     <GameObject id="1176" name="Mystic Boots">
+     <GameObject id="1177" name="Mystic Boots">
       <AttributeBlock blockName="this">
         <attribute spell="VI" />
         <attribute duration="day" />
@@ -31157,7 +31171,7 @@
         <attribute move_chit="" />
       </AttributeBlock>
     </GameObject>
-	 <GameObject id="1177" name="Rocks Glow">
+	 <GameObject id="1178" name="Rocks Glow">
       <AttributeBlock blockName="this">
         <attribute spell="II" />
         <attribute duration="day" />
@@ -31174,7 +31188,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-	<GameObject id="1178" name="Sleep">
+	<GameObject id="1179" name="Sleep">
       <AttributeBlock blockName="this">
         <attribute spell="III" />
         <attribute duration="instant" />
