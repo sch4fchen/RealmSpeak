@@ -104,6 +104,9 @@ public class RealmGameEditor extends JInternalFrame {
 	private Action unassignQuest;
 	private Action resetQuest;
 	
+	// Character
+	private final String level_9_advantage = "LEVEL 9 BONUS:  Gets bonus phase every day.";
+	
 	public RealmGameEditor(RealmGmFrame frame,String title,GameData gameData) {
 		super(title,true,true,true,true);
 		
@@ -338,7 +341,11 @@ public class RealmGameEditor extends JInternalFrame {
 				chooser.setVisible(true);
 				RealmComponent rc = chooser.getFirstSelectedComponent();
 				if (rc==null) return;
-				ListChooser levelChooser = new ListChooser(parent, "Select level for "+rc.toString(),  new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" });
+				
+				GameObject characterGo = rc.getGameObject();
+				CharacterWrapper character = new CharacterWrapper(characterGo);
+				String[] levels = character.getCharacterLevels();
+				ListChooser levelChooser = new ListChooser(parent, "Select level for "+rc.toString(),  levels);
 				levelChooser.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 				levelChooser.setDoubleClickEnabled(true);
 				levelChooser.setLocationRelativeTo(null);
@@ -346,16 +353,13 @@ public class RealmGameEditor extends JInternalFrame {
 				Object selectedLevel = levelChooser.getSelectedItem();
 				if (selectedLevel == null) return;
 				
-				GameObject characterGo = rc.getGameObject();
-				CharacterWrapper character = new CharacterWrapper(characterGo);
+				String levelString = selectedLevel.toString().substring(0,2).trim();
 				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
-				int level = Integer.valueOf(selectedLevel.toString());
+				int level = Integer.valueOf(levelString.toString());
 				if (level >= 9) {
 					character.getGameObject().setThisAttribute("extra_phase");
-					String adv = "LEVEL 9 BONUS:  Gets bonus phase every day.";
-					character.getGameObject().addAttributeListItem("level_4", "advantages", adv);
+					character.getGameObject().addAttributeListItem("level_4", "advantages", level_9_advantage);
 				}
-				
 				if (characterGo.hasThisAttribute(Constants.CUSTOM_CHARACTER)) {
 					GameObject newChar = gameData.createNewObject();
 					newChar.copyAttributesFrom(characterGo);
@@ -414,6 +418,12 @@ public class RealmGameEditor extends JInternalFrame {
 				if (selectedRow < 0) return;
 				CharacterWrapper character = characters.get(selectedRow);
 				character.getGameObject().removeThisAttribute(Constants.DEAD);
+				
+				if (character.getGameObject().hasAttributeListItem("level_4", "advantages", level_9_advantage)) {
+					character.getGameObject().removeThisAttribute("extra_phase");
+					character.getGameObject().removeAttributeListItem("level_4", "advantages", level_9_advantage);
+				}
+				
 				character.moveToLocation(null,null);
 				character.clearMoveHistory();
 				character.clearPlayerAttributes();
