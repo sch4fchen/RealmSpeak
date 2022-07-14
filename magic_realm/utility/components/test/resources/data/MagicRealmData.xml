@@ -31081,7 +31081,7 @@
         <attribute spell="VIII" />
         <attribute duration="attack" />
         <attribute target="none" />
-        <attribute text="Hits everything in a single combat box" />
+        <attribute text="Hits everything in a single combat box of own sheet" />
         <attribute magic_color="purple" />
         <attribute sharpness="3" />
         <attribute strength="L" />
@@ -31210,7 +31210,7 @@
         <attribute spell="IV" />
         <attribute duration="attack" />
         <attribute target="none" />
-        <attribute text="All attacks of one combat box are defended" />
+        <attribute text="All attacks of one combat box of own sheet are defended" />
         <attribute magic_color="gray" />
         <attribute wall_of_force="" />
         <attribute strength="N" />
