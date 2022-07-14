@@ -31205,7 +31205,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1180" name="Wall of FOrce">
+    <GameObject id="1180" name="Wall of Force">
       <AttributeBlock blockName="this">
         <attribute spell="IV" />
         <attribute duration="attack" />
