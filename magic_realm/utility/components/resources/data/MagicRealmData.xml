@@ -31205,6 +31205,25 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
+    <GameObject id="1180" name="Wall of FOrce">
+      <AttributeBlock blockName="this">
+        <attribute spell="IV" />
+        <attribute duration="attack" />
+        <attribute target="none" />
+        <attribute text="All attacks of one combat box are defended" />
+        <attribute magic_color="gray" />
+        <attribute wall_of_force="" />
+        <attribute strength="N" />
+        <attribute length="17" />
+        <attribute host_okay="" />
+        <attribute new_spells_2="" />
+        <attribute learnable="" />
+        <attribute author="Expansion 1" />
+		<attributeList keyName="target_clearing">
+			<attributeVal N0="clearing" />
+        </attributeList>
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

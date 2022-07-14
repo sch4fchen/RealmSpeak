@@ -414,6 +414,7 @@ public class Constants {
 	
 	public static final String POWER_OF_THE_PIT = "powerofthepit";
 	public static final String FEAR = "fear";
+	public static final String WALL_OF_FORCE = "wall_of_force";
 	
 	// Magic
 	public static final String[] MAGIC_COLORS = new String[]{"White","Grey","Gold","Purple","Black"};

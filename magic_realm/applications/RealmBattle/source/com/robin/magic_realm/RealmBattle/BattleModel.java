@@ -32,6 +32,7 @@ import com.robin.magic_realm.components.table.Curse;
 import com.robin.magic_realm.components.table.Fear;
 import com.robin.magic_realm.components.table.PowerOfThePit;
 import com.robin.magic_realm.components.table.RaiseDead;
+import com.robin.magic_realm.components.table.WallOfForce;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.*;
 
@@ -1391,9 +1392,14 @@ public class BattleModel {
 						hitCausedHarm = curse.harmWasApplied();
 						spellCasting = true;
 					}
+					else if (attacker instanceof SpellWrapper && Constants.WALL_OF_FORCE.matches(magicType)) {
+						hitCausedHarm = WallOfForce.apply(new SpellWrapper(attacker.getGameObject()),target.getGameObject());
+						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with by "+attacker.getName()+" along box "+attacker.getAttackCombatBox());
+						spellCasting = true;
+					}
 					else if (attacker instanceof SpellWrapper && Constants.FEAR.matches(magicType)) {
 						hitCausedHarm = Fear.apply(new SpellWrapper(attacker.getGameObject()),target.getGameObject(),battleLocation);
-						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with by Fear along box "+attacker.getAttackCombatBox());
+						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with by "+attacker.getName()+" along box "+attacker.getAttackCombatBox());
 						spellCasting = true;
 					}
 				}
