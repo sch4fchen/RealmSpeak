@@ -5900,9 +5900,17 @@ public class CharacterWrapper extends GameObjectWrapper {
 			if (hireling.getHeldBy()!=null) {
 				hireling.getHeldBy().remove(hireling);
 			}
+			hireling.removeThisAttribute(RealmComponent.REALMCOMPONENT_BLOCK);
+			hireling.setName("Removed from Play");
+			hireling.removeThisAttribute("setup_start");
+			hireling.removeThisAttribute("denizen");
+			hireling.removeThisAttribute("monster");
+			hireling.removeThisAttribute("native");
+			hireling.removeThisAttribute("garrison");
+			hireling.removeThisAttribute("clearing");
 			// I'd like to simply delete the object...  but there are problems with this. Instead, lets erase the clone's memory so it has no effect!
-			hireling.clearAllAttributes();
-			getGameData().removeObject(hireling);
+			//hireling.clearAllAttributes();
+			//getGameData().removeObject(hireling);
 		}
 	}
 	/**
