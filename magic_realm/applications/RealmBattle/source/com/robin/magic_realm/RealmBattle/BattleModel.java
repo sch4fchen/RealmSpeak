@@ -986,6 +986,14 @@ public class BattleModel {
 								spell.addTarget(hostPrefs, target.getGameObject());
 							}
 						}
+						for (String key2 : attackBlockOrder) {
+							for (BattleChit casterAttacker : attackBlocks.getList(key2)) {
+								RealmComponent casterAttackerRc = RealmComponent.getRealmComponent(casterAttacker.getGameObject());
+								if(casterAttackerRc.isCharacter() && (casterAttackerRc.getTarget() == characterRc || casterAttackerRc.get2ndTarget() == characterRc)) {
+									spell.addTarget(hostPrefs, casterAttackerRc.getGameObject());
+								}
+							}
+						}
 					}
 					for (RealmComponent rc : spell.getTargets()) {
 						BattleChit target = (BattleChit)rc;
