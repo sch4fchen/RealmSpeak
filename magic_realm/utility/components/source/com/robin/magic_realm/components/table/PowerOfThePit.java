@@ -76,7 +76,10 @@ public class PowerOfThePit extends RealmTable {
 		if (destOwner==null) {
 			destOwner = targetRc.getOwner();
 		}
-		// destOwner should NOT be null at this point!  One or the other HAS to be owned
+		// destOwner should NOT be null at this point!  One or the other HAS to be owned // if monster attacks another monster it is null (e.g. duel spell)
+		if (destOwner==null) {
+			return attackerRc.getName();
+		}
 		CharacterWrapper destCharacter = new CharacterWrapper(destOwner.getGameObject());
 		return destCharacter.getPlayerName();
 	}
