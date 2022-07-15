@@ -990,7 +990,9 @@ public class BattleModel {
 							for (BattleChit casterAttacker : attackBlocks.getList(key2)) {
 								RealmComponent casterAttackerRc = RealmComponent.getRealmComponent(casterAttacker.getGameObject());
 								if(casterAttackerRc.isCharacter() && (casterAttackerRc.getTarget() == characterRc || casterAttackerRc.get2ndTarget() == characterRc)) {
-									spell.addTarget(hostPrefs, casterAttackerRc.getGameObject());
+									if (casterAttacker.getAttackCombatBox() == attackCombatBox) {
+										spell.addTarget(hostPrefs, casterAttackerRc.getGameObject());
+									}
 								}
 							}
 						}
