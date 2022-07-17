@@ -26,9 +26,9 @@ public class MagicWeaponEffect implements ISpellEffect {
 		magicWeapon.setThisAttribute(Constants.SPELL_ID, spell.getStringId());
 		magicWeapon.setThisAttribute("item");
 		magicWeapon.setThisAttribute("weapon");
-		magicWeapon.setAttribute("unalerted", "chit_color", "blue");
+		magicWeapon.setAttribute("unalerted", "chit_color", "lightblue");
 		magicWeapon.setAttribute("unalerted", "base_price", "0");
-		magicWeapon.setAttribute("alerted", "chit_color", "lightblue");
+		magicWeapon.setAttribute("alerted", "chit_color", "blue");
 		magicWeapon.setAttribute("alerted", "base_price", "0");
 		
 		String attackSpeed = magicWeapon.getThisAttribute("attack_speed");
