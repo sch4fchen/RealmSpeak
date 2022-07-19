@@ -48,7 +48,7 @@ public class SetupCardUtility {
 	 */
 	public static void summonMonsters(ArrayList<GameObject> summoned,TileLocation tl,GameData data,boolean includeWarningSounds,boolean includeSiteChits,int monsterDie,String boardNumber) {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
-		if (!hostPrefs.getEnableSummoning() || DebugUtility.isNoSummon()) {
+		if (hostPrefs.getDisableSummoning() || DebugUtility.isNoSummon()) {
 			return;
 		}
 		if (!tl.isInClearing()) { // Must be a clearing - can't summon monsters on non-clearings!

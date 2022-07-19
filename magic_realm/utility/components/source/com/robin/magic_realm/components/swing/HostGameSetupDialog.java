@@ -131,7 +131,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		fixedVps.setSelected(hostPrefs.isFixedVps());
 		vpsToAchieve.setText(String.valueOf(hostPrefs.getVpsToAchieve()));
 		disableBattles.setSelected(!hostPrefs.getEnableBattles());
-		disableSummoning.setSelected(!hostPrefs.getEnableSummoning());
+		disableSummoning.setSelected(hostPrefs.getDisableSummoning());
 		autosaveEnabled.setSelected(hostPrefs.getAutosaveEnabled());
 		boardAutoSetup.setSelected(hostPrefs.getBoardAutoSetup());
 		boardPlayerSetup.setSelected(hostPrefs.getBoardPlayerSetup());
@@ -206,7 +206,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		fixedVps.setSelected(prefMan.getBoolean("fixedVps"));
 		vpsToAchieve.setText(prefMan.get("vpsToAchieve"));
 		disableBattles.setSelected(!prefMan.getBoolean("battlesEnabled"));
-		disableSummoning.setSelected(!prefMan.getBoolean("summoningEnabled"));
+		disableSummoning.setSelected(prefMan.getBoolean("summoningDisabled"));
 		autosaveEnabled.setSelected(prefMan.getBoolean("autosaveEnabled"));
 		boardAutoSetup.setSelected(prefMan.getBoolean("boardAutoSetup"));
 		boardPlayerSetup.setSelected(prefMan.getBoolean("boardPlayerSetup"));
@@ -265,7 +265,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		prefMan.set("fixedVps",fixedVps.isSelected());
 		prefMan.set("vpsToAchieve",vpsToAchieve.getText());
 		prefMan.set("battlesEnabled",!disableBattles.isSelected());
-		prefMan.set("summoningEnabled",!disableSummoning.isSelected());
+		prefMan.set("summoningDisabled",disableSummoning.isSelected());
 		prefMan.set("autosaveEnabled",autosaveEnabled.isSelected());
 		prefMan.set("boardAutoSetup",boardAutoSetup.isSelected());
 		prefMan.set("boardPlayerSetup",boardPlayerSetup.isSelected());
@@ -1169,6 +1169,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		hostPrefs.setFixedVps(fixedVps.isSelected());
 		hostPrefs.setVpsToAchieveString(vpsToAchieve.getText());
 		hostPrefs.setEnableBattles(!disableBattles.isSelected());
+		hostPrefs.setDisableSummoning(disableSummoning.isSelected());
 		hostPrefs.setAutosaveEnabled(autosaveEnabled.isSelected());
 		hostPrefs.setBoardAutoSetup(boardAutoSetup.isSelected());
 		hostPrefs.setBoardPlayerSetup(boardPlayerSetup.isSelected());

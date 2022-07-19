@@ -2,6 +2,7 @@ Version 1.1.6.1 - Changes since 1.1.6.0
 QUEST UPDATE:
 NEW FEATURES:
 BUGS/ISSUES:
+# Fix disable summoning game option
 
 Version 1.1.6.0 - Changes since 1.1.5.9
 NEW FEATURES:
