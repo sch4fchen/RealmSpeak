@@ -360,7 +360,7 @@ public class RealmUtility {
 	 * A method for making dead any RealmComoponent that lives
 	 */
 	public static void makeDead(RealmComponent rc) {
-		makeDead(rc,0);
+		makeDead(rc,-1);
 	}
 	public static void makeDead(RealmComponent rc, int attackSpeed) {
 		if (rc==null || rc.getGameObject().hasThisAttribute(Constants.DEAD)) {
@@ -454,9 +454,9 @@ public class RealmUtility {
 		
 		// Clear attacking spells
 		for (SpellWrapper spell : smw.getAffectingSpells(rc.getGameObject())) {
-			if (spell.isActive() && !spell.hasAffectedTargets() && spell.getAttackSpeed().getNum() > attackSpeed) {
+			if (attackSpeed == -1 || (spell.isActive() && !spell.hasAffectedTargets() && spell.getAttackSpeed().getNum() > attackSpeed)) {
 				spell.removeTarget(rc.getGameObject());
-				if (spell.getTargetCount() == 0) {
+				if (spell.getTargetCount() == 0 && !spell.noTargeting()) {
 					spell.cancelSpell();
 					RealmLogging.logMessage(rc.getName(),"Targeting spell "+spell.getName() + " canceled, as "+rc.getName()+" was killed.");
 				}
