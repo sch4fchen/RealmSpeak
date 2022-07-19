@@ -427,6 +427,11 @@ public class RealmUtility {
 				CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
 				character.removeHireling(dead);
 			}
+			if (rc.isPlayerControlledLeader()) {
+				CharacterWrapper controlledDenizen = new CharacterWrapper(rc.getGameObject());
+				controlledDenizen.makeDead(null);
+			}
+			
 			ClearingUtility.moveToLocation(dead,null);
 			dead.setThisAttribute(Constants.DEAD);
 			
