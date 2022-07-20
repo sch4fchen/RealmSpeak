@@ -429,7 +429,26 @@ public class RealmUtility {
 			}
 			if (rc.isPlayerControlledLeader()) {
 				CharacterWrapper controlledDenizen = new CharacterWrapper(rc.getGameObject());
-				controlledDenizen.makeDead(null);
+			
+				for (GameObject minorCharacterGo : controlledDenizen.getMinorCharacters()) {
+					rc.getGameObject().remove(minorCharacterGo);
+				}
+				Collection<GameObject> minions = controlledDenizen.getMinions();
+				if (minions!=null) {
+					for (GameObject min : minions) {
+						ClearingUtility.moveToLocation(min,null);
+						CharacterWrapper minion = new CharacterWrapper(min);
+						minion.clearPlayerAttributes();
+					}
+				}
+				for (RealmComponent rcHireling : controlledDenizen.getAllHirelings()) {
+					GameObject hireling = rcHireling.getGameObject();
+					controlledDenizen.removeHireling(hireling);
+				}
+				if (rc.isNativeLeader()) {
+					HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(rc.getGameObject().getGameData());
+					controlledDenizen.clearPlayerAttributes(!rc.isMonster() && hostPrefs.hasPref(Constants.HOUSE2_NATIVES_REMEMBER_DISCOVERIES));
+				}
 			}
 			
 			ClearingUtility.moveToLocation(dead,null);
