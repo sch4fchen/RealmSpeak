@@ -225,34 +225,38 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	
 	public Integer getLength() {
 		MonsterChitComponent transmorph = getTransmorphedComponent();
-		if (transmorph==null) {
-			int length = 0; // default length (dagger)
-			// Derive this from the weapon used.
-			CharacterWrapper character = new CharacterWrapper(getGameObject());
-			boolean hasWeapon = false;
-			ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
-			RealmComponent rc = getAttackChit();
-			CombatWrapper combatChit = new CombatWrapper(rc.getGameObject());
-			if (weapons != null) {
-				for (WeaponChitComponent weapon : weapons) {
-					if (combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
-						CombatWrapper wCombat = new CombatWrapper(weapon.getGameObject());
-						if (wCombat.getCombatBox()>0) {
-							hasWeapon = true;
+		if (transmorph!=null) {
+			return transmorph.getLength();
+		}
+		int length = 0; // default length (dagger)
+		// Derive this from the weapon used.
+		CharacterWrapper character = new CharacterWrapper(getGameObject());
+		ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
+		RealmComponent rc = getAttackChit();
+		CombatWrapper combatChit = null;
+		if (rc!=null) {
+			combatChit = new CombatWrapper(rc.getGameObject());
+		}
+		if (weapons != null) {
+			for (WeaponChitComponent weapon : weapons) {
+				if (combatChit==null || combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
+					CombatWrapper wCombat = new CombatWrapper(weapon.getGameObject());
+					if (wCombat.getCombatBox()>0) {
+						if (length < weapon.getLength()) {
 							length = weapon.getLength();
 						}
 					}
 				}
 			}
-			if (!hasWeapon) {
-				GameObject tw = getTreasureWeaponObject();
-				if (tw!=null && combatChit.getWeaponId().equals(tw.getStringId())) {
+		}
+		for (GameObject tw : getTreasureWeaponObjects()) {
+			if (tw!=null && (combatChit==null || combatChit.getWeaponId().equals(tw.getStringId()))) {
+				if (length < tw.getThisInt("length")) {
 					length = tw.getThisInt("length");
 				}
 			}
-			return new Integer(length);
 		}
-		return transmorph.getLength();
+		return new Integer(length);
 	}
 
 	public String getLightSideStat() {
@@ -376,20 +380,23 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				weaponsGameObjects.add(weapon.getGameObject());
 			}
 		}
-		if (getTreasureWeaponObject() != null) {
-			weaponsGameObjects.add(getTreasureWeaponObject());
+		if (getTreasureWeaponObjects() != null) {
+			for (GameObject tw : getTreasureWeaponObjects()) {
+				weaponsGameObjects.add(tw);
+			}
 		}
 		return weaponsGameObjects;
 	}
 	
-	public GameObject getTreasureWeaponObject() {
+	public ArrayList<GameObject> getTreasureWeaponObjects() {
+		ArrayList<GameObject> items = new ArrayList<>();
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
 		for (GameObject item : character.getActiveInventory()) {
 			if (item.hasThisAttribute("attack")) {
-				return item;
+				items.add(item);
 			}
 		}
-		return null;
+		return items;
 	}
 
 	/**
@@ -435,16 +442,18 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			}
 			if (!hasWeapon) {
 				// Check for treasure weapons
-				GameObject tw = getTreasureWeaponObject();
-				if (tw!=null && combatChit.getWeaponId().equals(tw.getStringId())) {
-					if (tw.hasThisAttribute(Constants.IGNORE_ARMOR)) {
-						ignoreArmor = true;
+				for (GameObject tw : getTreasureWeaponObjects()) {
+					if (tw!=null && combatChit.getWeaponId().equals(tw.getStringId())) {
+						if (tw.hasThisAttribute(Constants.IGNORE_ARMOR)) {
+							ignoreArmor = true;
+						}
+						hasWeapon = true;
+						missileWeapon = tw.hasThisAttribute("missile");
+						weaponStrength = new Strength(tw.getThisAttribute("strength"));
+						sharpness = tw.getThisInt("sharpness");
+						sharpness += tw.getThisInt(Constants.ADD_SHARPNESS);
+						break;
 					}
-					hasWeapon = true;
-					missileWeapon = tw.hasThisAttribute("missile");
-					weaponStrength = new Strength(tw.getThisAttribute("strength"));
-					sharpness = tw.getThisInt("sharpness");
-					sharpness += tw.getThisInt(Constants.ADD_SHARPNESS);
 				}
 			}
 			if (!hasWeapon && getGameObject().hasThisAttribute(Constants.FIGHT_NO_WEAPON)) {
@@ -873,13 +882,14 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			if (weapons != null) {
 				for (WeaponChitComponent weapon : weapons) {
 					if (weapon != null && (attackChit == null || combatChit.getWeaponId().equals(weapon.getGameObject().getStringId()))) {
-						return weapon.isMissile();
+						if (weapon.isMissile()) return true;
 					}
 				}
 			}
-			GameObject tw = getTreasureWeaponObject();
-			if (tw!=null && (attackChit == null || combatChit.getWeaponId().equals(tw.getStringId()))) {
-				return tw.hasThisAttribute("missile");
+			for (GameObject tw : getTreasureWeaponObjects()) {
+				if (tw!=null && (attackChit == null || combatChit.getWeaponId().equals(tw.getStringId()))) {
+					if (tw.hasThisAttribute("missile")) return true;
+				}
 			}
 		}
 		return false;
@@ -897,9 +907,10 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					return weapon.getGameObject().getThisAttribute("missile");
 				}
 			}
-			GameObject tw = getTreasureWeaponObject();
-			if (tw!=null && combatChit.getWeaponId() == tw.getStringId()) {
-				return tw.getThisAttribute("missile");
+			for (GameObject tw : getTreasureWeaponObjects()) {
+				if (tw!=null && combatChit.getWeaponId().equals(tw.getStringId())) {
+					return tw.getThisAttribute("missile");
+				}
 			}
 		}
 		return "";
