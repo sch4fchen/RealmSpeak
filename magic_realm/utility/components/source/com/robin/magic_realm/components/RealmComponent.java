@@ -905,6 +905,12 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		else if (obj.hasThisAttribute(CHARACTER_CHIT)) {
 			comp = new CharacterActionChitComponent(obj);
 		}
+		else if (obj.hasThisAttribute(PHASE_CHIT)) {
+			comp = new PhaseChitComponent(obj);
+		}
+		else if (obj.hasThisAttribute(FLY_CHIT)) {
+			comp = new FlyChitComponent(obj);
+		}
 		else if (obj.hasThisAttribute(TILE)) {
 			comp = new TileComponent(obj);
 		}
