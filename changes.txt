@@ -3,6 +3,7 @@ QUEST UPDATE:
 NEW FEATURES:
 BUGS/ISSUES:
 # Fix resetting stats for killed controlled monsters
+# Fix Broomstick spell
 
 Version 1.1.6.1 - Changes since 1.1.6.0
 BUGS/ISSUES:
