@@ -445,10 +445,8 @@ public class RealmUtility {
 					GameObject hireling = rcHireling.getGameObject();
 					controlledDenizen.removeHireling(hireling);
 				}
-				if (rc.isNativeLeader()) {
-					HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(rc.getGameObject().getGameData());
-					controlledDenizen.clearPlayerAttributes(!rc.isMonster() && hostPrefs.hasPref(Constants.HOUSE2_NATIVES_REMEMBER_DISCOVERIES));
-				}
+				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(rc.getGameObject().getGameData());
+				controlledDenizen.clearPlayerAttributes(!rc.isMonster() && hostPrefs.hasPref(Constants.HOUSE2_NATIVES_REMEMBER_DISCOVERIES));
 			}
 			
 			ClearingUtility.moveToLocation(dead,null);
