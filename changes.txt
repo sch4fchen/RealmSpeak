@@ -1,18 +1,18 @@
-Version 1.1.6.3 - Changes since 1.1.6.2
+Version 1.1.6.3
 QUEST UPDATE:
 NEW FEATURES:
 BUGS/ISSUES:
 
-Version 1.1.6.2 - Changes since 1.1.6.1
+Version 1.1.6.2
 BUGS/ISSUES:
 # Fix resetting stats for killed controlled monsters
 # Fix Broomstick spell
 
-Version 1.1.6.1 - Changes since 1.1.6.0
+Version 1.1.6.1
 BUGS/ISSUES:
 # Fix disable summoning game option
 
-Version 1.1.6.0 - Changes since 1.1.5.9
+Version 1.1.6.0
 NEW FEATURES:
 # New Expansion 1 item: Magic Meat
 # New Expansion 1 spells ("More Expansion Spells"): Duel, Fighting Hands, Fear, Fire Trap, Flame Sword, Lucky Blow, Mystic Boots, Wall of Force
@@ -23,14 +23,14 @@ NEW FEATURES:
 BUGS/ISSUES:
 # Fix removing cloned hirelings
 
-Version 1.1.5.9 - Changes since 1.1.5.8
+Version 1.1.5.9
 QUEST UPDATE:
 # Removed QuestRequirementKillInCombat
 # Update to quest Q44 Underworld
 BUGS/ISSUES:
 # Fix crash when flying
 
-Version 1.1.5.8 - Changes since 1.1.5.7
+Version 1.1.5.8
 QUEST UPDATE:
 # QuestRequirementKillInCombat
 # QuestRewardHireling: Fix removing cloned hireling from game
@@ -54,7 +54,7 @@ BUGS/ISSUES:
 # Fix creating a new cache with optional rule "bounty points for discoveries"
 # Fix combat round count after casting Power of the Pit
 
-Version 1.1.5.7 - Changes since 1.1.5.6
+Version 1.1.5.7
 QUEST UPDATE:
 # Fix infinite loop in quest A85 Frontier Healer
 # QuestRequirementMagicColor: Fix check for global magic color
@@ -72,7 +72,7 @@ BUGS/ISSUES:
 # Improve edge selection when entering the game
 # Fix hireling and companion quest rewards placing hireling at a tile's edge
 
-Version 1.1.5.6 - Changes since 1.1.5.5
+Version 1.1.5.6
 QUEST UPDATE:
 # Update to quest Q20 Sundered Siblings
 # Update to quest Q38 Gifted CHild
@@ -95,7 +95,7 @@ BUGS/ISSUES:
 # BattleBuilder: Reset hide status when re-adding character
 # BattleBuilder: Remove awakened spells from items when removing it from character
 
-Version 1.1.5.5 - Changes since 1.1.5.4
+Version 1.1.5.5
 QUEST UPDATE:
 # QuestTester: Add "Run Away" button
 # Add quest Q60 King of the Realm by Reggie
@@ -119,7 +119,7 @@ BUGS/ISSUES:
 # BattleBuilder: Reset chit states when re-adding character
 # BattleBuilder: Reset inventory states when re-adding character
 
-Version 1.1.5.4 - Changes since 1.1.5.3
+Version 1.1.5.4
 QUEST UPDATE:
 # Fix discovery requirement of lost castle in quest "The Hidden Castle"
 # Fix path requirements for quest "Lure the Underworld"
@@ -129,11 +129,11 @@ BUGS/ISSUES:
 # Fix size of Victory Requirements dialog with responsive UI turned off
 # Fix next button in combat when fighting without an weapon
 
-Version 1.1.5.3 - Changes since 1.1.5.2
+Version 1.1.5.3
 BUGS/ISSUES:
 # Fix flipping hirelings and denizens on combat sheet
 
-Version 1.1.5.2 - Changes since 1.1.5.1
+Version 1.1.5.2
 QUEST UPDATE:
 # Fix teleport PW5->PW2 in quest "Find A Hidden Trail"
 NEW FEATURES:
@@ -145,7 +145,7 @@ BUGS/ISSUES:
 # Fix multiple starting weapons for custom characters
 # Fix displaying quest cards after canceling discard
 
-Version 1.1.5.1 - Changes since 1.1.5.0
+Version 1.1.5.1
 QUEST UPDATE:
 # Fix teleport EV2->EV1 in quest "Find A Side Path"
 NEW FEATURES:
@@ -155,7 +155,7 @@ BUGS/ISSUES:
 # Fix width in VP assigning dialog, now weight viewable
 # Realm GM: Fix map rendering after placing a tile
 
-Version 1.1.5.0 - Changes since 1.1.4.9
+Version 1.1.5.0
 NEW FEATURES:
 # Optional Rule: Native Friendly: Neutral, friendly or allied natives cannot be lured or targeted
 # New character ability: Native Friendly
@@ -163,11 +163,11 @@ NEW FEATURES:
 BUGS/ISSUES:
 # Fix re-hired native leaders, who died, not showing up in character list
 
-Version 1.1.4.9 - Changes since 1.1.4.8
+Version 1.1.4.9
 QUEST UPDATE:
 # Updates to James' quests and new quests
 
-Version 1.1.4.8 - Changes since 1.1.4.7
+Version 1.1.4.8
 QUEST UPDATE:
 # Remove option to disable "All-Play" (QtR) or "Event" (BoQ) quests
 # Quest Builder: Load correct quest when viewing Quest Cards Deck and double clicking on a quest
@@ -178,7 +178,7 @@ BUGS/ISSUES:
 # Fix generators not on the map trying to generate new monsters
 # Fix loading custom characters with custom items
 
-Version 1.1.4.7 - Changes since 1.1.4.6
+Version 1.1.4.7
 QUEST UPDATE:
 # Update on existing quests by Steve
 # Updates to James' quests and new quests
@@ -199,7 +199,7 @@ BUGS/ISSUES:
 # Fix granting all additional actions by minor characters
 # Fix QuestLocations for tiles not in play (when playing with expansion 1)
 
-Version 1.1.4.6 - Changes since 1.1.4.5
+Version 1.1.4.6
 QUEST UPDATE:
 # QuestReward: LocationExists
 # QuestReward: DamageChit
@@ -212,7 +212,7 @@ BUGS/ISSUES:
 # Fix enchant action to enchant active (instead of alerted) magic chits
 # Fix activating Timeless Jewel un-hiding character
 
-Version 1.1.4.5 - Changes since 1.1.4.4
+Version 1.1.4.5
 QUEST UPDATE:
 # Updates to James' quests
 # QuestRequirement: Chit
@@ -234,7 +234,7 @@ BUGS/ISSUES:
 # Fix game crash after dead hireling is reset (when playing with quests)
 # Fix Minotaur's buckler blocking behaviour
 
-Version 1.1.4.4 - Changes since 1.1.4.3
+Version 1.1.4.4
 QUEST UPDATE:
 # New BoQ Quest: Realm Wars
 # Update to a lot of quests (including performance improvements)
@@ -249,25 +249,25 @@ BUGS/ISSUES:
 # Fix NullPointException for generating monsters by a monster generator
 # QuestRewardTreasureFromSite: Handle special treasure effects when gaining treasure
 
-Version 1.1.4.3 - Changes since 1.1.4.2
+Version 1.1.4.3
 NEW FEATURES:
 # Hidden variant for transformed character chits in Legendary style
 # Super Realm tiles (Legendary style) for creating custom games
 BUGS/ISSUES:
 # QuestRequirementLocation: supports now non-clearing locations
 
-Version 1.1.4.2 - Changes since 1.1.4.1
+Version 1.1.4.2
 NEW FEATURES:
 # Option to launch Battle Builder from RealmSpeak (tool menu)
 BUGS/ISSUES:
 # Fix strength effect by a wish applying infinite long
 
-Version 1.1.4.1 - Changes since 1.1.4.0
+Version 1.1.4.1
 BUGS/ISSUES:
 # Fix casting power of the pit spell
 # Fix quest rewards Curse, PowerOfThePit and Wish using correct value for the die roller
 
-Version 1.1.4.0 - Changes since 1.1.3.9
+Version 1.1.4.0
 QUEST UPDATE:
 # QuestRequirementProbability: Option to limit number of checks per day
 NEW FEATURES:
@@ -304,7 +304,7 @@ BUGS/ISSUES:
 # Runlinux-questbuild file to run QuestBuilder
 # NewMacLaunchers.zip containing launchers for Mac
 
-Version 1.1.3.9 - Changes since 1.1.3.8
+Version 1.1.3.9
 QUEST UPDATE:
 # Support for Guild Quests Mode
 # Info when drawing from empty quest deck
@@ -324,13 +324,13 @@ BUGS/ISSUES:
 # Adapt clearings and paths for all alternative tiles
 # HTML export: hide characters caches 
 
-Version 1.1.3.8 - Changes since 1.1.3.7
+Version 1.1.3.8
 NEW FEATURES:
 # Optional Rule: Two-handed weapons (BoQ variant)
 # New character ability: Strong: Can activate two handed weapon and shield at the same time
 # New character ability: Sharpshooter: Works like optional "penetrating armor" rule
 
-Version 1.1.3.7 - Changes since 1.1.3.6
+Version 1.1.3.7
 QUEST UPDATE:
 # Update on existing quests and a new quests by Steve
 # Book of Quests: Support for "Events"
@@ -372,7 +372,7 @@ TOOLS:
 BUGS/ISSUES:
 # Fix companion Imp casting curse on monster
 
-Version 1.1.3.6 - Changes since 1.1.3.5
+Version 1.1.3.6
 QUEST UPDATE:
 # Update on existing quests and a new quests by Steve
 # Not resetting quest step, if a requirement fails
@@ -418,7 +418,7 @@ BUGS/ISSUES:
 # Fix Control Dragon spell not working
 # Fix sounds not working
 
-Version 1.1.3.5 - Changes since 1.1.3.4
+Version 1.1.3.5
 QUEST UPDATE:
 # Moved quests in testing to a separate folder
 # Update on existing quests and a new quests by Steve
@@ -452,7 +452,7 @@ BUGS/ISSUES:
 # Fix icon on legendary highpass tile
 # Fix QuestRewardTreasureFromHq for cloned HQ (not able to select cloned HQ)
 
-Version 1.1.3.4 - Changes since 1.1.3.3
+Version 1.1.3.4
 QUEST UPDATE:
 # QuestTester: "Fulfill requirements"-button for a quest step
 # QuestTester: Display fatigue and wounds
@@ -507,7 +507,7 @@ BUGS/ISSUES:
 # Fix Exorcise not fatigue color chits in clearing
 # Fix combat ending after 2 rounds even if hits were made
 
-Version 1.1.3.3 - Changes since 1.1.3.2
+Version 1.1.3.3
 QUEST UPDATE:
 # Update on existing quests (with files from http://realmspeak.dewkid.com/custom/quests)
 # New quests (https://boardgamegeek.com/filepage/139595/quests-realmspeaks-expansion-1-version-10)
