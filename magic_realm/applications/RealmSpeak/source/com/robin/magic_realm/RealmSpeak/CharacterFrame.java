@@ -180,7 +180,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		character.setActiveFamiliar(active);
 	}
 	private void updateAvailableColorMagic() {
-		Collection colors = character.getChitColorSources();
+		Collection<ColorMagic> colors = character.getChitColorSources();
 		if (hostPrefs.hasPref(Constants.OPT_ENHANCED_ARTIFACTS) || character.affectedByKey(Constants.ENHANCED_ARTIFACTS)) {
 			colors.addAll(character.getEnchantedArtifactColorSources());
 		}
@@ -188,8 +188,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 
 		// Update the GUI
 		availableColorMagicBox.removeAll();
-		for (Iterator i = colors.iterator(); i.hasNext();) {
-			ColorMagic cm = (ColorMagic) i.next();
+		for (ColorMagic cm : colors) {
 			JLabel label = new JLabel();
 			label.setIcon(cm.getIcon());
 			availableColorMagicBox.add(label);
@@ -209,7 +208,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	public static void updateActiveCurses(CharacterWrapper character,Box box) {
 		boolean nullified = character.isNullifiedCurses();
 		String postfix = nullified ? " (NULLIFIED)" : "";
-		Collection curses = character.getAllCurses();
+		Collection<String> curses = character.getAllCurses();
 		if (curses.contains(Constants.EYEMIST)) {
 			JLabel label = new JLabel(ImageCache.getIcon("curse/eyemist"));
 			label.setEnabled(!nullified);
@@ -1652,8 +1651,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					for (GameObject site : all) {
 						sb.append(site.getName());
 						sb.append(" ======================\n");
-						for (Iterator n = site.getHold().iterator(); n.hasNext();) {
-							GameObject item = (GameObject) n.next();
+						for (GameObject item : site.getHold()) {
 							sb.append("  - ");
 							sb.append(item.getName());
 							sb.append("\n");
@@ -1671,8 +1669,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					ArrayList<String> list = new ArrayList<>();
 					Collection<GameObject> all = gameHandler.getGamePool().find("print");
 					for (GameObject site : all) {
-						for (Iterator n = site.getHold().iterator(); n.hasNext();) {
-							GameObject item = (GameObject) n.next();
+						for (GameObject item : site.getHold()) {
 							String name = item.getName();
 							if (item.hasThisAttribute("traveler")) {
 								name = "Traveler -> "+name;
@@ -1804,8 +1801,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					sb.append("<treasurelocationname> - Bring the treasure location to the current clearing\n");
 					sb.append("\nOTHER CHEAT COMMANDS:\n");
 					sb.append("=================\n");
-					for (Iterator i = list.iterator(); i.hasNext();) {
-						String val = (String) i.next();
+					for (String val : list) {
 						sb.append(val + "\n");
 					}
 					JTextArea area = new JTextArea(sb.toString());
