@@ -94,19 +94,25 @@ public class FrameManager {
 		fm.refresh();
 	}
 	public static void showDefaultManagedFrame(JFrame parent,String message,String title,Icon icon,boolean modalLike) {
+		showDefaultManagedFrame(parent,message,title,icon,modalLike,null);
+	}
+	public static void showDefaultManagedFrame(JFrame parent,String message,String title,Icon icon,boolean modalLike,ImageIcon frameIcon) {
 		JTextArea cm = new JTextArea(message);
 		cm.setEditable(false);
 		cm.setOpaque(false);
 		cm.setFont(UIManager.getFont("Label.font"));
 //		cm.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
-		showDefaultManagedFrame(parent,cm,title,icon,modalLike);
+		showDefaultManagedFrame(parent,cm,title,icon,modalLike,frameIcon);
 	}
 	public static void showDefaultManagedFrame(JFrame parent,JComponent message,String title,Icon icon,boolean modalLike) {
-		ManagedFrame mf = getDefaultManagedFrame(parent,message,title,icon,modalLike);
+		showDefaultManagedFrame(parent,message,title,icon,modalLike,null);
+	}
+	public static void showDefaultManagedFrame(JFrame parent,JComponent message,String title,Icon icon,boolean modalLike,ImageIcon frameIcon) {
+		ManagedFrame mf = getDefaultManagedFrame(parent,message,title,icon,modalLike,frameIcon);
 		getFrameManager().addFrame(mf);
 	}
-	private static ManagedFrame getDefaultManagedFrame(JFrame parent,JComponent message,String title,Icon icon,boolean modalLike) {
-		DefaultManagedFrame mf = new DefaultManagedFrame(parent,message,title,icon,modalLike);
+	private static ManagedFrame getDefaultManagedFrame(JFrame parent,JComponent message,String title,Icon icon,boolean modalLike,ImageIcon frameIcon) {
+		DefaultManagedFrame mf = new DefaultManagedFrame(parent,message,title,icon,modalLike,frameIcon);
 		return mf;
 	}
 	/**
@@ -119,12 +125,15 @@ public class FrameManager {
 		private JFrame parent;
 		private JButton okButton;
 		
-		public DefaultManagedFrame(JFrame parent,JComponent message,String title,Icon icon,boolean modalLike) {
+		public DefaultManagedFrame(JFrame parent,JComponent message,String title,Icon icon,boolean modalLike,ImageIcon frameIcon) {
 			super(title);
 			if (parent!=null && modalLike) {
 				parent.addWindowListener(this);
 			}
 			this.parent = parent;
+			if (frameIcon != null) {
+				this.setIconImage(frameIcon.getImage());
+			}
 			setLayout(new BorderLayout());
 			JPanel panel = new JPanel(new BorderLayout(10,10));
 			panel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));

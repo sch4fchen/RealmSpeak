@@ -89,7 +89,7 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 		QuestView view = new QuestView(state==QuestState.Assigned && (!quest.isAllPlay() || quest.isActivateable())?activateQuestListener:null);
 		view.updatePanel(quest,getCharacter());
 		ComponentTools.lockComponentSize(view,640,480);
-		FrameManager.showDefaultManagedFrame(getMainFrame(), view, qc.getGameObject().getName(), qc.getFaceUpIcon(), true);
+		FrameManager.showDefaultManagedFrame(getMainFrame(), view, qc.getGameObject().getName(), qc.getFaceUpIcon(), true, ImageCache.getIcon("badges/lore"));
 	}
 	private JPanel createQuestCardPanel() {
 		JPanel panel = new JPanel(new BorderLayout());
@@ -182,7 +182,7 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 					ComponentTools.lockComponentSize(panel,640,480);
 					
 					if (added) {
-						FrameManager.showDefaultManagedFrame(getMainFrame(), new JScrollPane(panel), "Available All-Play Cards", ImageCache.getIcon("quests/token"), true);
+						FrameManager.showDefaultManagedFrame(getMainFrame(), new JScrollPane(panel), "Available All-Play Cards", ImageCache.getIcon("quests/token"), true, ImageCache.getIcon("badges/lore"));
 					}
 					else {
 						JOptionPane.showMessageDialog(getMainFrame(), "No All-Play cards left.", "None Left", JOptionPane.INFORMATION_MESSAGE);
