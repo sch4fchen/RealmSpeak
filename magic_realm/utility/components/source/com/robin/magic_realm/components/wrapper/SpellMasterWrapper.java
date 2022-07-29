@@ -315,21 +315,22 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 	private static boolean spellCanEnergize(GameWrapper game,TileLocation loc,SpellWrapper spell,boolean includeCalendar) {
 		RealmCalendar cal = RealmCalendar.getCalendar(game.getGameObject().getGameData());
 		ArrayList<ColorMagic> infiniteSources = new ArrayList<>();
-		if (loc.isInClearing()) {
-			infiniteSources.addAll(loc.clearing.getAllSourcesOfColor(true));
+		if (loc!=null) {
+			if (loc.isInClearing()) {
+				infiniteSources.addAll(loc.clearing.getAllSourcesOfColor(true));
+			}
+			else if (loc.isBetweenClearings()) {
+				infiniteSources.addAll(loc.clearing.getAllSourcesOfColor(true));
+				infiniteSources.addAll(loc.getOther().clearing.getAllSourcesOfColor(true));
+			}
+			else if (loc.isTileOnly()) {
+				infiniteSources.addAll(loc.tile.getAllSourcesOfColor());
+			}
+			else if (loc.isBetweenTiles()) {
+				infiniteSources.addAll(loc.tile.getAllSourcesOfColor());
+				infiniteSources.addAll(loc.getOther().tile.getAllSourcesOfColor());
+			}
 		}
-		else if (loc.isBetweenClearings()) {
-			infiniteSources.addAll(loc.clearing.getAllSourcesOfColor(true));
-			infiniteSources.addAll(loc.getOther().clearing.getAllSourcesOfColor(true));
-		}
-		else if (loc.isTileOnly()) {
-			infiniteSources.addAll(loc.tile.getAllSourcesOfColor());
-		}
-		else if (loc.isBetweenTiles()) {
-			infiniteSources.addAll(loc.tile.getAllSourcesOfColor());
-			infiniteSources.addAll(loc.getOther().tile.getAllSourcesOfColor());
-		}
-		
 		if (includeCalendar) {
 			// 7th day color magic!
 			infiniteSources.addAll(cal.getColorMagic(game.getMonth(),game.getDay()));
@@ -338,9 +339,7 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 		if (infiniteSources.size()>0) {
 			ColorMagic spellColor = spell.getRequiredColorMagic();
 			if (spellColor==null || infiniteSources.contains(spellColor)) {
-				// We got it!
 				return true;
-//				spell.affectTargets(frame,game,false);
 			}
 		}
 		return false;
