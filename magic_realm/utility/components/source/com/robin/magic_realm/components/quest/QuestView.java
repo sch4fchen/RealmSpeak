@@ -90,7 +90,7 @@ public class QuestView extends JPanel implements Scrollable {
 				panel.add(tree,BorderLayout.CENTER);
 				Dimension minSize = panel.getPreferredSize();
 				ComponentTools.lockComponentSize(panel,Math.max(minSize.width,640),Math.max(minSize.height,720));
-				JOptionPane.showMessageDialog(QuestView.this,panel,"Quest Steps Overview - "+quest.getName(),JOptionPane.INFORMATION_MESSAGE,null);
+				JOptionPane.showMessageDialog(QuestView.this,panel,"Quest Steps Overview - "+quest.getName(),JOptionPane.INFORMATION_MESSAGE,ImageCache.getIcon("quests/token"));
 			}
 		});
 		ComponentTools.lockComponentSize(showTreeButton,24,24);
