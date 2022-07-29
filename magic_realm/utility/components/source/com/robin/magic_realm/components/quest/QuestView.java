@@ -33,8 +33,8 @@ public class QuestView extends JPanel implements Scrollable {
 
 	private JLabel questName;
 	private JTextArea questDescription;
-	private JList questJournalList;
-	private DefaultListModel model;
+	private JList<QuestJournalEntry> questJournalList;
+	private DefaultListModel<QuestJournalEntry> model;
 	private Quest quest;
 
 	private JSplitPaneImproved splitPane;
@@ -88,8 +88,9 @@ public class QuestView extends JPanel implements Scrollable {
 				});
 				tree.setFirstSelectedStep();
 				panel.add(tree,BorderLayout.CENTER);
-				ComponentTools.lockComponentSize(panel,640,720);
-				JOptionPane.showMessageDialog(QuestView.this,panel,"Quest Steps Overview - "+quest.getName(),JOptionPane.INFORMATION_MESSAGE);
+				Dimension minSize = panel.getPreferredSize();
+				ComponentTools.lockComponentSize(panel,Math.max(minSize.width,640),Math.max(minSize.height,720));
+				JOptionPane.showMessageDialog(QuestView.this,panel,"Quest Steps Overview - "+quest.getName(),JOptionPane.INFORMATION_MESSAGE,null);
 			}
 		});
 		ComponentTools.lockComponentSize(showTreeButton,24,24);
@@ -103,8 +104,8 @@ public class QuestView extends JPanel implements Scrollable {
 		questDescription.setFont(QuestGuiConstants.QuestDescriptionFont);
 		questDescription.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-		model = new DefaultListModel();
-		questJournalList = new JList(model);
+		model = new DefaultListModel<>();
+		questJournalList = new JList<>(model);
 		questJournalList.setCellRenderer(new JournalLineRenderer());
 		splitPane = new JSplitPaneImproved(JSplitPane.VERTICAL_SPLIT, true, new JScrollPane(questDescription), new JScrollPane(questJournalList));
 		add(splitPane, BorderLayout.CENTER);
