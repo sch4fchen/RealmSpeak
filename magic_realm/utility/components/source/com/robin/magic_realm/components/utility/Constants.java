@@ -43,7 +43,7 @@ public class Constants {
 	public static final String DIE_ROLL_LOG = "_die_roll_log_";
 	
 	public static final String APPLICATION_NAME = "Realm Speak";
-	public static final String REALM_SPEAK_VERSION = "1.1.6.3";
+	public static final String REALM_SPEAK_VERSION = "1.1.6.4";
 	public static final String REALM_SPEAK_IMAGES_VERSION = "1.1.5.7";
 	
 	public static final String PLAYER_TO_PLACE = "p_2_p";
