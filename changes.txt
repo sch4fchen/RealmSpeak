@@ -2,6 +2,7 @@ Version 1.1.6.4
 QUEST UPDATE:
 NEW FEATURES:
 BUGS/ISSUES:
+# Fix using Timeless Juwel when affected by Violent Storm
 
 Version 1.1.6.3
 QUEST UPDATE:

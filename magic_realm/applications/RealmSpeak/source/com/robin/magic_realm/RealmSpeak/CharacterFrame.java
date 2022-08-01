@@ -992,7 +992,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		phaseManagerLabel.setToolTipText("Phases");
 		phaseManagerLabel.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent ev) {
-				if (character.isDoRecord() || (getTurnPanel()!=null && character.canDoDaytimeRecord())) {
+				if (character.isDoRecord() || (getTurnPanel()!=null && character.canDoDaytimeRecord() && !character.getStormed())) {
 					phaseManagerIcon.handleClick(getCharacter(),ev.getPoint());
 					updateControls();
 //						phaseManagerLabel.repaint();
