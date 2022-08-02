@@ -1290,7 +1290,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			if (topmostFrame.getCharacter().isDoRecord()) {
 				acm = topmostFrame.getActionPanel().getActionControlManager();
 			}
-			if (topmostFrame.getCharacter().canDoDaytimeRecord() && topmostFrame.showingTurn() && !topmostFrame.getCharacter().getStormed()) {
+			if (topmostFrame.getCharacter().canDoDaytimeRecord() && topmostFrame.showingTurn()) {
 				acm = topmostFrame.getTurnPanel().getActionControlManager();
 			}
 		}
@@ -1318,7 +1318,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			if (topmostFrame.getCharacter().isDoRecord()) {
 				topmostFrame.getActionPanel().getActionControlManager().recordExternalMoveAction(tl);
 			}
-			if (topmostFrame.getCharacter().canDoDaytimeRecord() && topmostFrame.showingTurn() && !topmostFrame.getCharacter().getStormed()) {
+			if (topmostFrame.getCharacter().canDoDaytimeRecord() && topmostFrame.showingTurn()) {
 				topmostFrame.getTurnPanel().getActionControlManager().recordExternalMoveAction(tl);
 			}
 		}

@@ -119,7 +119,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		
 		getsTurn = !getCharacter().isBlocked();
 		
-		if (getCharacter().canDoDaytimeRecord() && !getCharacter().getStormed()) {
+		if (getCharacter().canDoDaytimeRecord()) {
 			startDaytimeRecord();
 		}
 		
@@ -895,7 +895,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 	}
 	
 	public boolean hasActionsLeft() {
-		return (getCharacter().canDoDaytimeRecord() && phaseManager.hasActionsLeft() && !getCharacter().getStormed()) || isNextAction();
+		return (getCharacter().canDoDaytimeRecord() && phaseManager.hasActionsLeft()) || isNextAction();
 	}
 	private boolean isNextAction() {
 		for (ActionRow ar:actionRows) {

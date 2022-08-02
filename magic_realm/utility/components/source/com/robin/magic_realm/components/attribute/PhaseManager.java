@@ -62,8 +62,8 @@ public class PhaseManager {
 	private int extraCavePhase = 0; // These get added to basic when entering a cave
 	private int extraDwellingPhase = 0; // These get added to basic when entering a dwelling
 	private HashLists freeActions = new HashLists(false); // These key Strings to GameObjects, where the string is like "M" or "SP" or "H", etc.
-	private ArrayList allObjects = new ArrayList();
-	private ArrayList usedObjects = new ArrayList();
+	private ArrayList<GameObject> allObjects = new ArrayList<>();
+	private ArrayList<GameObject> usedObjects = new ArrayList<>();
 	
 	private boolean inactiveItemWarning = true;
 	
