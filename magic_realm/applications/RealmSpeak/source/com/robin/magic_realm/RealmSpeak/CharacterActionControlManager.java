@@ -789,14 +789,12 @@ public class CharacterActionControlManager {
 			cap.actionHistoryTable.repaint();
 			cap.getCharacterFrame().updateControls();
 		}
-//		else if (rtp!=null) {
-//			rtp.processNewAction(recordAction);
-//		}
+		
 		return true;
 	}
 	public void updateControls(PhaseManager pm,boolean recordingActions,boolean birdsong) {
 		TileLocation planned = getCharacter().getPlannedLocation();
-		finishAction.setEnabled(getCharacter().isActive() && recordingActions && planned != null && ((!planned.isBetweenClearings() && !planned.isBetweenTiles()) || getCharacter().canDoDaytimeRecord()));
+		finishAction.setEnabled(getCharacter().isActive() && recordingActions && planned != null && ((!planned.isBetweenClearings() && !planned.isBetweenTiles()) || (getCharacter().canDoDaytimeRecord() && pm.hasActionsLeft())));
 		boolean canBackspace = getCharacter().isActive() && recordingActions && getCharacter().getCurrentActionCount()>0;
 		boolean canUnsend = getCharacter().isActive() && birdsong && !getCharacter().isDoRecord();
 		backAction.setEnabled(canBackspace || canUnsend);
@@ -815,6 +813,9 @@ public class CharacterActionControlManager {
 			}
 		}
 		else if (character.isBlocked()) {
+			recordingActions = false;
+		}
+		else if (character.canDoDaytimeRecord() && !pm.hasActionsLeft()) {
 			recordingActions = false;
 		}
 		

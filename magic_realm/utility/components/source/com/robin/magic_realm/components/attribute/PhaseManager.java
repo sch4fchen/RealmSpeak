@@ -77,7 +77,7 @@ public class PhaseManager {
 		this.ponyObject = ponyObject;
 	}
 	public boolean hasActionsLeft() {
-		return getTotal()>0 || !freeActions.isEmpty();
+		return (getTotal()-character.getLostPhases())>0 || !freeActions.isEmpty();
 	}
 	public void setPonyLock(boolean val) {
 		ponyLock = val;
@@ -109,8 +109,7 @@ public class PhaseManager {
 		RealmComponent rc = RealmComponent.getRealmComponent(thing);
 		if (rc.isHorse()) {
 			// Make sure there isn't already a different horse used
-			for (Iterator i=usedObjects.iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
+			for (GameObject go : usedObjects) {
 				if (!go.equals(thing)) {
 					rc = RealmComponent.getRealmComponent(go);
 					if (rc.isHorse()) {
@@ -127,10 +126,9 @@ public class PhaseManager {
 	 */
 	public void updateNewActivatedTreasure(GameObject thing) {
 		if (!allObjects.contains(thing)) {
-			ArrayList free = thing.getThisAttributeList(Constants.EXTRA_ACTIONS);
+			ArrayList<String> free = thing.getThisAttributeList(Constants.EXTRA_ACTIONS);
 			if (free!=null) {
-				for (Iterator n=free.iterator();n.hasNext();) {
-					String freeAction = (String)n.next();
+				for (String freeAction : free) {
 					addFreeAction(freeAction,thing);
 				}
 			}
@@ -152,9 +150,8 @@ public class PhaseManager {
 	}
 	public void updateInactiveThings() {
 		// Check to see if anything became inactive that needs to be removed from free actions
-		ArrayList toRemove = new ArrayList();
-		for (Iterator i=allObjects.iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		ArrayList<Requirement> toRemove = new ArrayList<>();
+		for (GameObject go : allObjects) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc.isItem() && !go.hasThisAttribute(Constants.ACTIVATED)) {
 				if (!usedObjects.contains(go)) {
@@ -163,7 +160,7 @@ public class PhaseManager {
 			}
 		}
 		allObjects.removeAll(toRemove);
-		ArrayList freeToRemove = new ArrayList();
+		ArrayList<String> freeToRemove = new ArrayList<>();
 		for (Iterator i=freeActions.keySet().iterator();i.hasNext();) {
 			String val = (String)i.next();
 			ArrayList list = freeActions.getList(val);
@@ -173,8 +170,7 @@ public class PhaseManager {
 				}
 			}
 		}
-		for (Iterator i=freeToRemove.iterator();i.hasNext();) {
-			String val = (String)i.next();
+		for (String val : freeToRemove) {
 			freeActions.remove(val);
 		}
 	}
@@ -338,13 +334,10 @@ public class PhaseManager {
 			if (ponyLock && ponyObject!=null) {
 				list.remove(ponyObject);
 			}
-			Collections.sort(list,new Comparator() {
-				public int compare(Object o1,Object o2) {
+			Collections.sort(list,new Comparator<Requirement>() {
+				public int compare(Requirement r1,Requirement r2) {
 					int ret = 0;
-					
-					Requirement r1 = (Requirement)o1;
-					Requirement r2 = (Requirement)o2;
-					
+										
 					GameObject go1 = r1.getGameObject();
 					GameObject go2 = r2.getGameObject();
 					
@@ -360,7 +353,7 @@ public class PhaseManager {
 		int regularPhases = getTotal();
 		if (regularPhases>0 && !phaseRequiresObject(phase)) {
 			if (list==null) {
-				list = new ArrayList();
+				list = new ArrayList<>();
 			}
 			for (int i=0;i<regularPhases;i++) {
 				list.add(REGULAR_PHASE); // this is added to the end of the list, because it is lowest priority
@@ -380,10 +373,10 @@ public class PhaseManager {
 	public GameObject getNextRequiredObject(String phase,boolean ponyActive) {
 		// Convert detail action into plain action (M-CV3 becomes M)
 		phase = simplifyAction(phase);
-		Collection activeInventory = character.getActiveInventory();
-		Collection travelers = character.getFollowingTravelers();
-		Collection allSpells = character.getSpellExtraSources();
-		Collection clearingObjects = character.getCurrentClearingExtraActionObjects();
+		Collection<GameObject> activeInventory = character.getActiveInventory();
+		Collection<GameObject> travelers = character.getFollowingTravelers();
+		Collection<GameObject> allSpells = character.getSpellExtraSources();
+		Collection<GameObject> clearingObjects = character.getCurrentClearingExtraActionObjects();
 		
 		ArrayList list = getRequiredObjects(phase);
 		if (list!=null) {
@@ -561,12 +554,10 @@ public class PhaseManager {
 						if (character.getGameObject().equals(go) || active.contains(go) || clearingObjects.contains(go)) {
 							return true;
 						}
-						else {
-							needValidate.add(go);
-							if (validateRequirement(parent,strings,go,false)) {
-								toUse = go;
-								break;
-							}
+						needValidate.add(go);
+						if (validateRequirement(parent,strings,go,false)) {
+							toUse = go;
+							break;
 						}
 					}
 					if (toUse==null) { // just use the first one then
@@ -862,13 +853,11 @@ public class PhaseManager {
 						didit = true;
 						break;
 					}
-					else {
-						if (activatedObjects.contains(req)) {
-							System.out.println("Used "+req);
-							pm.addPerformedPhase(test[i],(GameObject)req,pony,null); // probably broken
-							didit = true;
-							break;
-						}
+					if (activatedObjects.contains(req)) {
+						System.out.println("Used "+req);
+						pm.addPerformedPhase(test[i],(GameObject)req,pony,null); // probably broken
+						didit = true;
+						break;
 					}
 				}
 				if (!didit) {

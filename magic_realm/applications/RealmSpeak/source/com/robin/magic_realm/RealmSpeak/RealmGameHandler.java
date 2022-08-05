@@ -1285,12 +1285,11 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		CharacterActionControlManager acm = null;
 		CharacterFrame topmostFrame = getTopmostFrame();
 		if (topmostFrame != null) {
-			// Okay, the topmost character frame is still recording, so now we
-			// can add a move
+			// Okay, the topmost character frame is still recording, so now we can add a move
 			if (topmostFrame.getCharacter().isDoRecord()) {
 				acm = topmostFrame.getActionPanel().getActionControlManager();
 			}
-			if (topmostFrame.getCharacter().canDoDaytimeRecord() && topmostFrame.showingTurn()) {
+			if (topmostFrame.getCharacter().canDoDaytimeRecord() && topmostFrame.showingTurn() && topmostFrame.getTurnPanel().hasActionsLeft()){
 				acm = topmostFrame.getTurnPanel().getActionControlManager();
 			}
 		}
@@ -1313,12 +1312,11 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		 */
 		CharacterFrame topmostFrame = getTopmostFrame();
 		if (topmostFrame != null) {
-			// Okay, the topmost character frame is still recording, so now we
-			// can add a move
+			// Okay, the topmost character frame is still recording, so now we can add a move
 			if (topmostFrame.getCharacter().isDoRecord()) {
 				topmostFrame.getActionPanel().getActionControlManager().recordExternalMoveAction(tl);
 			}
-			if (topmostFrame.getCharacter().canDoDaytimeRecord() && topmostFrame.showingTurn()) {
+			if (topmostFrame.getCharacter().canDoDaytimeRecord() && topmostFrame.showingTurn() && topmostFrame.getTurnPanel().hasActionsLeft()) {
 				topmostFrame.getTurnPanel().getActionControlManager().recordExternalMoveAction(tl);
 			}
 		}

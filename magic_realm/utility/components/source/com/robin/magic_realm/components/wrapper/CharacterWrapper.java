@@ -85,6 +85,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String WISH_STRENGTH = "_w_stren_"; // WISH result 6
 	public static final String PEER_ANY = "_peer_any_"; // Toadstool Circle Peer any clearing
 	public static final String STORMED = "_strmd_"; // Affected by Violent Storm today
+	public static final String LOST_PHASES = "_lost_phases_"; // Number of lost phases by Violent Storm today
 	public static final String CHEATER = "_CHEATER_"; // A flag that is added when the character uses the cheat commands
 	public static final String SPELL_EXTRA_ACTIONS = "_sxa_";
 	public static final String SPELL_EXTRA_ACTION_SOURCE = "_sxas_";
@@ -508,6 +509,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public boolean getStormed() {
 		return getBoolean(STORMED);
+	}
+	public int getLostPhases() {
+		return getInt(LOST_PHASES);
 	}
 	public boolean isFortified() {
 		return getBoolean(FORTIFIED);
@@ -1588,6 +1592,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		setNoSummon(false);
 		setPeerAny(false);
 		setStormed(false);
+		setLostPhases(0);
 		setFortified(false);
 		setFortDamaged(false);
 		setNeedsQuestCheck(true);
@@ -2962,6 +2967,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public void setStormed(boolean val) {
 		setBoolean(STORMED,val);
+	}
+	public void setLostPhases(int val) {
+		setInt(LOST_PHASES,val);
 	}
 	public void setFortified(boolean val) {
 		setBoolean(FORTIFIED,val);

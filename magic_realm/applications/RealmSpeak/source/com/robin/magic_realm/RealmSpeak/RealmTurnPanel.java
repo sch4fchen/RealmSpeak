@@ -1340,6 +1340,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		actionTable.repaint();
 	}
 	public void doLosePhases(int phases) {
+		getCharacter().setLostPhases(getCharacter().getLostPhases()+phases);
 		// Find pending phases
 		int pendingCount = 0;
 		ArrayList<ActionRow> pendingPhases = new ArrayList<>();
