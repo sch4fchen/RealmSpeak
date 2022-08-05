@@ -68,7 +68,8 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementAttribute.TARGET_VALUE_TYPE, "Only count points gained during the", FieldType.StringSelector, TargetValueType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementAttribute.VALUE, "How much should it be", FieldType.NumberAll));
 				list.add(new QuestPropertyBlock(QuestRequirementAttribute.REGEX_FILTER, "Filter points to what things (regex)", FieldType.Regex, null, new String[] { "item", "spell", "denizen" }));
-				list.add(new QuestPropertyBlock(QuestRequirementAttribute.AUTO_JOURNAL, "Auto Journal Entry", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementAttribute.INCLUDE_INVENTORY, "Do count fame/notoriety of inventory", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirement.AUTO_JOURNAL, "Auto Journal Entry", FieldType.Boolean));
 				break;
 			case CastMultipleSpells:
 				list.add(new QuestPropertyBlock(QuestRequirementCastMultipleSpells.NUMBER_OF_SPELLS, "Number of spells", FieldType.Number));
@@ -99,7 +100,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementCounter.TARGET_VALUE, "Target count", FieldType.NumberAll));
 				list.add(new QuestPropertyBlock(QuestRequirementCounter.EXCEED_TARGET_VALUE, "Exceed target value allowed", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementCounter.SUBCEED_TARGET_VALUE, "Subceed target value allowed", FieldType.Boolean));
-				list.add(new QuestPropertyBlock(QuestRequirementCounter.AUTO_JOURNAL, "Auto Journal Entry", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirement.AUTO_JOURNAL, "Auto Journal Entry", FieldType.Boolean));
 				break;
 			case Discovery:
 				list.add(new QuestPropertyBlock(QuestRequirementDiscovery.DISCOVERY_KEY, "Discovery", FieldType.StringSelector, getDiscoveryStrings().toArray()));
@@ -149,8 +150,8 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementHirelings.INCLUDE_WEAPONS, "Include monster weapons", FieldType.Boolean));
 				break;
 			case Inventory:
-				list.add(new QuestPropertyBlock(QuestRequirementInventory.TREASURE_TYPE, "Type of inventory", FieldType.StringSelector, TreasureType.values()));
-				list.add(new QuestPropertyBlock(QuestRequirementInventory.REGEX_FILTER, "Inventory name filter (regex)", FieldType.Regex, null, new String[] { "item","treasure_within_treasure" }));
+				list.add(new QuestPropertyBlock(QuestRequirementLoot.TREASURE_TYPE, "Type of inventory", FieldType.StringSelector, TreasureType.values()));
+				list.add(new QuestPropertyBlock(QuestRequirementLoot.REGEX_FILTER, "Inventory name filter (regex)", FieldType.Regex, null, new String[] { "item","treasure_within_treasure" }));
 				list.add(new QuestPropertyBlock(QuestRequirementInventory.NUMBER, "How many in inventory?", FieldType.Number));
 				list.add(new QuestPropertyBlock(QuestRequirementInventory.ITEM_ACTIVE, "Require activated?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementInventory.ITEM_DEACTIVE, "Require deactivated?", FieldType.Boolean));

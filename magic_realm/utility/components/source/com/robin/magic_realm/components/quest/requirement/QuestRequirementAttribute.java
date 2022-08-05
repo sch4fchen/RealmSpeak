@@ -38,6 +38,7 @@ public class QuestRequirementAttribute extends QuestRequirement {
 	public static final String VALUE = "_rq";
 	public static final String TARGET_VALUE_TYPE = "_tvt";
 	public static final String REGEX_FILTER = "_regex"; // to limit fame/notoriety gain to a particular type of monster or treasure type
+	public static final String INCLUDE_INVENTORY = "_inc_inv";
 
 	public static final String VALUE_OFFSET = "_vo";
 	private static final String VALUE_OFFSET_DAY = "_vod";
@@ -124,12 +125,12 @@ public class QuestRequirementAttribute extends QuestRequirement {
 		
 		int current = 0;
 		if (regexFilter) { // inventory and kills but no recorded points (because the regex disallows them by default)
-			current += getInventory(character, attribute, earliest);
+			if (getIncludeInventory()) current += getInventory(character, attribute, earliest);
 			current += getKillsValue(character, attribute, earliest);
 		}
 		else { // inventory and recorded points, but no kills BECAUSE kills are accounted for in the recorded points, and invalid kills will be included in the offset value!
 			current += (int) getRecorded(character, attribute);
-			current += getInventory(character, attribute, earliest);
+			if (getIncludeInventory()) current += getInventory(character, attribute, earliest);
 		}
 
 		return current;
@@ -146,8 +147,8 @@ public class QuestRequirementAttribute extends QuestRequirement {
 				return character.hasCurse(Constants.ASHES) ? -1 : character.getGold();
 			case RecordedSpells:
 				return character.getRecordedSpellCount();
+			default: return 0; // GreatTreasures is never recorded
 		}
-		return 0; // GreatTreasures is never recorded
 	}
 
 	private int getInventory(CharacterWrapper character, AttributeType attribute, DayKey earliest) {
@@ -175,10 +176,10 @@ public class QuestRequirementAttribute extends QuestRequirement {
 		return total;
 	}
 
-	private int getInventoryValue(GameObject go, AttributeType attribute) {
+	private static int getInventoryValue(GameObject go, AttributeType attribute) {
 		switch (attribute) {
 			case Fame:
-				return go.getThisInt("fame");
+				return !go.hasThisAttribute("native") ? go.getThisInt("fame") : 0;
 			case Notoriety:
 				return go.getThisInt("notoriety");
 			case GreatTreasures:
@@ -196,7 +197,7 @@ public class QuestRequirementAttribute extends QuestRequirement {
 		String regex = getRegExFilter();
 		Pattern pattern = regex == null || regex.trim().length() == 0 ? null : Pattern.compile(regex);
 		int good = 0;
-		ArrayList dayKeys = character.getAllDayKeys();
+		ArrayList<String> dayKeys = character.getAllDayKeys();
 		if (dayKeys == null)
 			return 0;
 		for (Object obj : dayKeys) {
@@ -320,6 +321,10 @@ public class QuestRequirementAttribute extends QuestRequirement {
 
 	public String getRegExFilter() {
 		return getString(REGEX_FILTER);
+	}
+	
+	public boolean getIncludeInventory() {
+		return getBoolean(INCLUDE_INVENTORY);
 	}
 
 	private void setValueOffset(int val) {
