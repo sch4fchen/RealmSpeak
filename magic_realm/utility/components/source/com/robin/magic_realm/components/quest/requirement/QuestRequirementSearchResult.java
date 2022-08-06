@@ -64,26 +64,27 @@ public class QuestRequirementSearchResult extends QuestRequirement {
 				logger.fine("Requires no search gain, but there was some.");
 				return false;
 			}
-			
 			// So far so good.  Now make sure the search target is accurate if a regex was specified
 			String regex = getTargetRegEx();
 			Pattern pattern = regex!=null && regex.trim().length()>0?Pattern.compile(regex):null;
 			boolean regexGood = pattern==null || (reqParams.targetOfSearch!=null && pattern.matcher(reqParams.targetOfSearch.getName()).find());
-			QuestLocation ql = getQuestLocation();
-			boolean qlGood = ql==null || ql.locationMatchAddress(frame,character);
-			QuestLocation tl = getTargetLocation();
-			boolean tlGood = tl==null || (reqParams.targetOfSearch!=null && tl.locationMatchAddress(frame,character,reqParams.targetOfSearch));
-			
 			if (!regexGood) {
 				logger.fine("The target of search ("+reqParams.targetOfSearch+") didn't match expected pattern: "+regex);
+				return false;
 			}
-			if (!qlGood) {
-				logger.fine("The character's location doesn't match the QuestLocation: "+ql.getName());
-			}
+			QuestLocation tl = getTargetLocation();
+			boolean tlGood = tl==null || (reqParams.targetOfSearch!=null && tl.locationMatchAddress(frame,character,reqParams.targetOfSearch));
 			if (!tlGood) {
 				logger.fine("The target of the character's search doesn't match the TargetLocation: "+tl.getName());
+				return false;
 			}
-			return regexGood && qlGood && tlGood;
+			QuestLocation ql = getQuestLocation();
+			boolean qlGood = ql==null || ql.locationMatchAddress(frame,character);
+			if (!qlGood) {
+				logger.fine("The character's location doesn't match the QuestLocation: "+ql.getName());
+				return false;
+			}
+			return true;
 		}
 		if (reqParams==null) {
 			logger.fine("No search was done.");

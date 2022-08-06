@@ -41,9 +41,8 @@ public class QuestRequirementNoDenizens extends QuestRequirement {
 
 	@Override
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
-
 		TileLocation tl = character.getCurrentLocation();
-		if (!tl.isInClearing()) {
+		if (tl==null || !tl.isInClearing()) {
 			logger.fine(character.getName() + " is not in a clearing.");
 			return false;
 		}

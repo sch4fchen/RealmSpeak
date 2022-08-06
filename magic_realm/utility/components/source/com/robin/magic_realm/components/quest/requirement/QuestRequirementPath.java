@@ -48,12 +48,12 @@ public class QuestRequirementPath extends QuestRequirement {
 		}
 		path = path.trim();
 		
-		ArrayList history = character.getMoveHistory();
+		ArrayList<String> history = character.getMoveHistory();
 		if (history==null || history.size()==0) {
 			logger.fine("Character hasn't gone anywhere yet.");
 			return false;
 		}
-		ArrayList historyDays = character.getMoveHistoryDayKeys();
+		ArrayList<String> historyDays = character.getMoveHistoryDayKeys();
 		if (history.size()!=historyDays.size()) {
 			logger.fine("QUEST ERROR:  history is different size than historyDays.");
 			return false;
@@ -68,6 +68,7 @@ public class QuestRequirementPath extends QuestRequirement {
 				startKey = getParentStep().getQuestStepStartTime();
 				break;
 			case Day:
+			default:
 				startKey = new DayKey(character.getCurrentDayKey());
 				break;
 		}
@@ -79,7 +80,7 @@ public class QuestRequirementPath extends QuestRequirement {
 				DayKey dayKey = new DayKey((String)historyDays.get(i));
 				if (dayKey.before(startKey)) continue;
 			}
-			String location = (String)history.get(i);
+			String location = history.get(i);
 			if (CharacterWrapper.MOVE_HISTORY_DAY.equals(location)) continue; // always ignore the days
 			if (ignoreJumps && CharacterWrapper.MOVE_HISTORY_JUMP.equals(location)) continue; // ignore the jumps only if transport is allowed
 			if (sb.length()>0) sb.append(" ");
@@ -140,6 +141,7 @@ public class QuestRequirementPath extends QuestRequirement {
 				sb.append(" during the step");
 				break;
 			case Day:
+			default:
 				sb.append(" during the current day");
 				break;
 		}

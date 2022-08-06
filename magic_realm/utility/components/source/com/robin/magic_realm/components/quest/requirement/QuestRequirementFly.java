@@ -34,7 +34,7 @@ public class QuestRequirementFly extends QuestRequirement {
 
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
 		if (mustFly() == true) {
-			return character.getCurrentLocation().isFlying();
+			return character.getCurrentLocation()!=null && character.getCurrentLocation().isFlying();
 		}
 		return character.canFly(character.getCurrentLocation());
 	}

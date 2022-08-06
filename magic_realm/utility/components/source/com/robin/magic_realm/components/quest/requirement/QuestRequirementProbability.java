@@ -46,7 +46,7 @@ public class QuestRequirementProbability extends QuestRequirement {
 		}
 		
 		if (getMaxNumberOfChecks() != 0 && getNumberOfChecks() >= getMaxNumberOfChecks()) {
-				return false;
+			return false;
 		}
 		setNumberOfChecks(getNumberOfChecks()+1);
 		

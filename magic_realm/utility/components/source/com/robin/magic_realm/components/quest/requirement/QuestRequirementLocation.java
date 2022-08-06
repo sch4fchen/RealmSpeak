@@ -23,7 +23,6 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
-import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.QuestLocation;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -40,7 +39,7 @@ public class QuestRequirementLocation extends QuestRequirement {
 	
 	protected boolean testFulfillsRequirement(JFrame frame,CharacterWrapper character,QuestRequirementParams reqParams) {
 		QuestLocation location = getQuestLocation();
-		if (!nonClearingAllowed() && !character.getCurrentLocation().isInClearing()) {
+		if (!nonClearingAllowed() && character.getCurrentLocation() != null && !character.getCurrentLocation().isInClearing()) {
 			logger.fine(character.getName()+" is not in a clearing.");
 			return false;
 		}		

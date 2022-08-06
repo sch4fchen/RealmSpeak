@@ -42,10 +42,10 @@ public class QuestRequirementCounter extends QuestRequirement {
 		if(counter.getCount() == getTargetValue()) {
 			success = true;
 		}
-		if (exceedAllowed() && counter.getCount() >= getTargetValue()) {
+		else if (exceedAllowed() && counter.getCount() >= getTargetValue()) {
 			success = true;
 		}
-		if (subceedAllowed() && counter.getCount() <= getTargetValue()) {
+		else if (subceedAllowed() && counter.getCount() <= getTargetValue()) {
 			success = true;
 		}
 		

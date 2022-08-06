@@ -56,9 +56,7 @@ public class QuestRequirementMissionCampaign extends QuestRequirement {
 			
 			return match;
 		}
-		else {
-			logger.fine(character.getName()+" did not do the correct action: "+actionType.toString());
-		}
+		logger.fine(character.getName()+" did not do the correct action: "+actionType.toString());
 		return false;
 	}
 

@@ -46,9 +46,7 @@ public class QuestRequirementHideResult extends QuestRequirement {
 		if (getString(DIE_ROLL)!=DieRollType.Random.toString()) {
 			return "Requires a successful hide roll below or equal to "+getDieRoll()+".";
 		}
-		else {
-			return "Requires a successful hide roll below or equal to a random value (1-6).";
-		}
+		return "Requires a successful hide roll below or equal to a random value (1-6).";
 	}
 
 	public RequirementType getRequirementType() {
