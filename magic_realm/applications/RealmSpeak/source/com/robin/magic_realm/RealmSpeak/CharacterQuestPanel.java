@@ -31,6 +31,7 @@ import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
 import com.robin.magic_realm.components.swing.*;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmLogging;
 
 public class CharacterQuestPanel extends CharacterFramePanel {
@@ -243,7 +244,12 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 				Quest quest = new Quest(go);
 				getCharacter().removeQuest(quest);
 				deck.discardCard(quest);
-				RealmLogging.logMessage(getCharacter().getName(),"Discarded Quest Card: "+quest.getName());
+				if (getHostPrefs().hasPref(Constants.HOUSE3_SHOW_DISCARED_QUEST)) {
+					RealmLogging.logMessage(getCharacter().getName(),"Discarded Quest Card: "+quest.getName());
+				}
+				else {
+					RealmLogging.logMessage(getCharacter().getName(),"Discarded a quest card.");
+				}
 			}
 			getCharacter().setDiscardedQuests(true);
 			updateControls();

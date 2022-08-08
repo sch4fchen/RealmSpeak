@@ -1052,6 +1052,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_SNOW_HIDE_EXCLUDE_CAVES,"Snow Hiding in Caves - Ignore special weather conditions that prevent hiding due to snow or soft ground, when you perform the HIDE activity in a cave.",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_VP_DEVELOPMENT_RAMP,"No VP Development Ramp - When playing with development rules, earn one chit for every VP gained, regardless of level",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_RESTRICT_VPS_FOR_DEV,"No VP Restrictions for Development - For purposes of development only, don't restrict VP gains to assigned VPs.",false));
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_SHOW_DISCARED_QUEST,"Show discarded quest cards - When discarding a quest card, the name of the quest is shown in the log.",false));
 		
 		newOptionPane.setTabHtmlDescription(RANDOM_GEN_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Random Number Generator Preference - For more details see:</font><br>http://www.qbrundage.com/michaelb/pubs/essays/random_number_generation.html</body></html>");
 		newOptionPane.addOption(RANDOM_GEN_TAB,new GameOption(Constants.RANDOM_R250_521,"Use R250/521 - A very fast shift-register sequence random number generator, invented by Kirkpatrick and Stoll in 1981.",false,exclusiveRandomGen,null));
