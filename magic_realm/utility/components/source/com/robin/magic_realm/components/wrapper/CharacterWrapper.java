@@ -1372,8 +1372,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 		int numberOfActionsTaken = actionList.size();
 		ArrayList<String> valids = getList(getCurrentDayKey()+"V");
 		ArrayList<String> typeCodes = getList(getCurrentDayKey()+"C");
-		valids.subList(numberOfActionsTaken, valids.size()).clear();
-		typeCodes.subList(numberOfActionsTaken, typeCodes.size()).clear();
+		if (numberOfActionsTaken <= valids.size()) { 
+			valids.subList(numberOfActionsTaken, valids.size()).clear();
+		}
+		if (numberOfActionsTaken <= typeCodes.size()) { 
+			typeCodes.subList(numberOfActionsTaken, typeCodes.size()).clear();
+		}
 	}
 	/**
 	 * @return		A Collection of Strings that represent the types of clearings "from" where you are doing it,

@@ -533,7 +533,7 @@ public class PhaseManager {
 				// Sort the strings from the gameobjects
 				ArrayList<String> strings = new ArrayList<String>();
 				ArrayList<GameObject> requiredObjects = new ArrayList<>();
-				Collection clearingObjects = character.getCurrentClearingExtraActionObjects();
+				Collection<GameObject> clearingObjects = character.getCurrentClearingExtraActionObjects();
 				refreshInventoryLists();
 				for (Iterator i=list.iterator();i.hasNext();) {
 					Object o = i.next();
