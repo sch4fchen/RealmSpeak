@@ -77,7 +77,7 @@ public class PhaseManager {
 		this.ponyObject = ponyObject;
 	}
 	public boolean hasActionsLeft() {
-		return (getTotal()-character.getLostPhases())>0 || !freeActions.isEmpty();
+		return getTotal() + freeActions.size() - character.getLostPhases() > 0;
 	}
 	public void setPonyLock(boolean val) {
 		ponyLock = val;
