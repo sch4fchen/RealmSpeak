@@ -444,6 +444,10 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		scroller.addLine(new ScrollLine("'Alternative' Map Graphics",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Fabio Patris",listing,listingColor));
 		scroller.addLine(new ScrollLine());
+		scroller.addLine(new ScrollLine("Custom Characters' Graphics",subheader,subheaderColor));
+		scroller.addLine(new ScrollLine("Casey Benn",listing,listingColor));
+		scroller.addLine(new ScrollLine("Jim",listing,listingColor));
+		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Websites",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Nand's Magic Realm",listing,listingColor,null,0,SwingConstants.CENTER,"http://www.nand.it/mr/"));
 		scroller.addLine(new ScrollLine("Magic Realm Wiki - Peter Morris",listing,listingColor,null,0,SwingConstants.CENTER,"http://homenowned.com/wiki-mr/pmwiki.php"));
