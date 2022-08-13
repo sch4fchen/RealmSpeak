@@ -424,7 +424,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		scroller.addLine(new ScrollLine("Daniel W. Farrow, IV",listing,listingColor));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Tile Scans & Color Icons",subheader,subheaderColor));
-		scroller.addLine(new ScrollLine("Dan Evans",listing,listingColor,null,0,SwingConstants.CENTER,"http://www.magicrealm.org/components"));
+		scroller.addLine(new ScrollLine("Dan Evans",listing,listingColor));
 		scroller.addLine(new ScrollLine("Brian Winter",listing,listingColor,null,0,SwingConstants.CENTER,"http://www.thewinternet.com/magicrealm/"));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Combat Flow Charts",subheader,subheaderColor));
@@ -446,11 +446,11 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Custom Characters' Graphics",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Casey Benn",listing,listingColor));
-		scroller.addLine(new ScrollLine("Jim",listing,listingColor));
+		scroller.addLine(new ScrollLine("Jim (East Paladin)",listing,listingColor));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Websites",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Nand's Magic Realm",listing,listingColor,null,0,SwingConstants.CENTER,"http://www.nand.it/mr/"));
-		scroller.addLine(new ScrollLine("Magic Realm Wiki - Peter Morris",listing,listingColor,null,0,SwingConstants.CENTER,"http://homenowned.com/wiki-mr/pmwiki.php"));
+		scroller.addLine(new ScrollLine("Magic Realm Wiki - Peter Morris",listing,listingColor));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("RealmSpeak Playtesters",header,headerColor,Color.black,2));
 		scroller.addLine(new ScrollLine("(no particular order)",subheader,subheaderColor));
@@ -474,7 +474,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		scroller.addLine(new ScrollLine("Yxklyx",listing,listingColor));
 		scroller.addLine(new ScrollLine("Stephan Valkyser",listing,listingColor));
 		scroller.addLine(new ScrollLine("Reggie Kemp",listing,listingColor));
-		scroller.addLine(new ScrollLine("Jim",listing,listingColor));
+		scroller.addLine(new ScrollLine("Jim (East Paladin)",listing,listingColor));
 		scroller.addLine(new ScrollLine("(let me know if I missed anyone!)",listing,listingColor));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Game Expansions",header,headerColor,Color.black,2));
@@ -486,7 +486,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		scroller.addLine(new ScrollLine("Robin Warren",listing,listingColor));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Expansion Monster Graphics",subheader,subheaderColor));
-		scroller.addLine(new ScrollLine("Vrin Thomas",listing,listingColor,null,0,SwingConstants.CENTER,"http://www.facebook.com/vrin.thomas"));
+		scroller.addLine(new ScrollLine("Vrin Thomas",listing,listingColor));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Network Testing",header,headerColor,Color.black,2));
 		scroller.addLine(new ScrollLine("David Stegemeyer",listing,listingColor));
