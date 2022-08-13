@@ -1,7 +1,8 @@
 Version 1.1.6.4
 QUEST UPDATE:
-QuestRequirementAttribute: exclude reward fame; exclude inventory by default (option for including inventory)
-Optional Rule: Show discard quest card name (default off)
+# QuestRequirementAttribute: exclude reward fame; exclude inventory by default (option for including inventory)
+# Optional Rule: Show discard quest card name (default off)
+# Update to quest Q13 Goblin Wars  
 NEW FEATURES:
 BUGS/ISSUES:
 # Fix using Timeless Juwel when affected by Violent Storm
