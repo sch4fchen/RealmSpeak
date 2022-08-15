@@ -1363,22 +1363,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 		removeAttribute(getCurrentDayKey()+"M");
 		removeAttribute(getCurrentDayKey()+"R");
 	}
-	public void clearNotCompletedActions() {
-		ArrayList<String> actionList = getList(getCurrentDayKey()+"P");
-		if (actionList == null) {
-			clearCurrentActions();
-			return;
-		}
-		int numberOfActionsTaken = actionList.size();
-		ArrayList<String> valids = getList(getCurrentDayKey()+"V");
-		ArrayList<String> typeCodes = getList(getCurrentDayKey()+"C");
-		if (numberOfActionsTaken <= valids.size()) { 
-			valids.subList(numberOfActionsTaken, valids.size()).clear();
-		}
-		if (numberOfActionsTaken <= typeCodes.size()) { 
-			typeCodes.subList(numberOfActionsTaken, typeCodes.size()).clear();
-		}
-	}
 	/**
 	 * @return		A Collection of Strings that represent the types of clearings "from" where you are doing it,
 	 * 				and "to" where you are doing it.  For example, MM means from Mt to Mt (Enh. Peer)

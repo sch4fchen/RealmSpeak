@@ -205,10 +205,9 @@ public class PhaseManager {
 		if (tl==null || !tl.isInClearing()) return;
 		
 		// Check the clearing itself!  (Blazing Light)
-		ArrayList clist = tl.clearing.getFreeActions();
+		ArrayList<String> clist = tl.clearing.getFreeActions();
 		if (clist!=null) {
-			for (Iterator n=clist.iterator();n.hasNext();) {
-				String free = (String)n.next();
+			for (String free  : clist) {
 				if (Constants.EXTRA_CAVE_PHASE.equals(free)) {
 					GameObject go = tl.clearing.getFreeActionObject(free);
 					addExtraCavePhase(go);
@@ -300,7 +299,7 @@ public class PhaseManager {
 	public int getTotal() {
 		return basic+sunlight+sheltered;
 	}
-	private String trimmedPhase(String phase) {
+	private static String trimmedPhase(String phase) {
 		if (phase.endsWith("!")) {
 			return phase.substring(0,phase.length()-1);
 		}
