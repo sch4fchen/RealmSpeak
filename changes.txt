@@ -3,6 +3,7 @@ QUEST UPDATE:
 # QuestRequirementAttribute: exclude reward fame; exclude inventory by default (option for including inventory)
 # Optional Rule: Show discard quest card name (default off)
 # Update to quest Q13 Goblin Wars  
+# Update to quest Q41 Rescue Poetess
 NEW FEATURES:
 # Community custom characters (with custom graphics)
 BUGS/ISSUES:
