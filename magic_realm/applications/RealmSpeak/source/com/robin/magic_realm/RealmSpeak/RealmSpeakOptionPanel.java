@@ -18,6 +18,7 @@
 package com.robin.magic_realm.RealmSpeak;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -352,22 +353,35 @@ public class RealmSpeakOptionPanel extends JDialog {
 	private void initComponents() {
 		setLayout(new BorderLayout());
 		
-		JPanel center = new JPanel(new GridLayout(1,2));
-		
+		JPanel center = new JPanel(new GridLayout(1,3));
+				
 		Box left = Box.createVerticalBox();
+		JLabel leftLabel = new JLabel("USER INTERFACE");
+		leftLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		left.add(leftLabel);
 		left.add(getLookAndFeelOptions());
 		left.add(getResponsiveOption());
 		left.add(getBackgroundColorChooser());
 		left.add(getSoundOptionPanel());
 		left.add(getActionIconOptions());
-		left.add(getChitsOptionsPanel());
-		left.add(getCharacterChitsOptionPanel());
-		left.add(getTilesOptionsPanel());
 		left.add(Box.createVerticalGlue());
 		center.add(left);
 		
+		Box middle = Box.createVerticalBox();
+		JLabel middleLabel = new JLabel("CHITS, TILES AND MAP");
+		middleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		middle.add(middleLabel);
+		middle.add(getChitsOptionsPanel());
+		middle.add(getCharacterChitsOptionPanel());
+		middle.add(getTilesOptionsPanel());
+		middle.add(getMapOptionsPanel());
+		middle.add(Box.createVerticalGlue());
+		center.add(middle);
+		
 		Box right = Box.createVerticalBox();
-		right.add(getMapOptionsPanel());
+		JLabel rightLabel = new JLabel("CHAT AND GAMEPLAY");
+		rightLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		right.add(rightLabel);
 		right.add(getChatDisplayOptionsPanel());
 		right.add(getChatLineOptionsPanel());
 		right.add(getPopupWindowOptions());

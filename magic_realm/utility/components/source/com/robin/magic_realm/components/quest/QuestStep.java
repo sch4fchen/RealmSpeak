@@ -64,8 +64,7 @@ public class QuestStep extends GameObjectWrapper {
 	public void refresh() {
 		requirements = new ArrayList<>();
 		rewards = new ArrayList<>();
-		for (Iterator i = getGameObject().getHold().iterator(); i.hasNext();) {
-			GameObject held = (GameObject) i.next();
+		for (GameObject held : getGameObject().getHold()) {
 			if (held.hasThisAttribute(Quest.QUEST_REQUIREMENT)) {
 				String val = held.getThisAttribute(Quest.QUEST_REQUIREMENT);
 				if (val.equals("Location"))
@@ -372,6 +371,7 @@ public class QuestStep extends GameObjectWrapper {
 		// OR - any requirement fulfilled is a success
 		boolean oneFulfilled = false;
 		for (QuestRequirement req : reqs) {
+			if (oneFulfilled && !(req instanceof QuestRequirementLocationExists) && !(req instanceof QuestRequirementLocation)) continue;
 			if (req.fulfillsRequirement(frame, character, reqParams)) {
 				logger.fine("Requirement " + req.getName() + " fulfilled.");
 				oneFulfilled = true;
