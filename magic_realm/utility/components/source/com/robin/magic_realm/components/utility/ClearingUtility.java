@@ -514,7 +514,7 @@ public class ClearingUtility {
 		for (RealmComponent rc : character.getAllHirelings()) {
 			if (rc.isCompanion() || rc.getGameObject().hasThisAttribute(Constants.HIRE_WITH_CHIT)) continue; // companions cannot be "rehired"
 			TileLocation tl = getTileLocation(rc);
-			if (tl.clearing.equals(clearing)) {
+			if (tl != null && tl.clearing != null && tl.clearing.equals(clearing)) {
 				hireables.add(rc);
 			}
 		}
