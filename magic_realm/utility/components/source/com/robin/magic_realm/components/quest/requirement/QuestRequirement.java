@@ -38,6 +38,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		CastMultipleSpells,
 		CastSpell,
 		CharacterClass,
+		CharacterType,
 		Chit,
 		ColorMagic,
 		Counter,
@@ -87,6 +88,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests whether a spell has just been cast.";
 				case CharacterClass:
 					return "Tests for the characters class.";
+				case CharacterType:
+					return "Tests for the characters name or transmorphed form.";
 				case Chit:
 					return "Tests for whether the characters has certain chits.";
 				case ColorMagic:
@@ -259,6 +262,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case CharacterClass:
 				requirement = new QuestRequirementCharacterClass(go);
+				break;
+			case CharacterType:
+				requirement = new QuestRequirementCharacterType(go);
 				break;
 			case Chit:
 				requirement = new QuestRequirementChit(go);

@@ -81,6 +81,10 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case CharacterClass:
 				list.add(new QuestPropertyBlock(QuestRequirementCharacterClass.REGEX_FILTER, "Character(s)", FieldType.Regex, null, new String[] {"character"}));
 				break;
+			case CharacterType:
+				list.add(new QuestPropertyBlock(QuestRequirementCharacterType.TYPE, "Type", FieldType.StringSelector, DenizenType.values()));
+				list.add(new QuestPropertyBlock(QuestRequirementCharacterType.REGEX_FILTER, "Characters name", FieldType.Regex, null, new String[] {"denizen", "character"}));
+				break;
 			case Chit:
 				list.add(new QuestPropertyBlock(QuestRequirementChit.TYPE, "Chit type", FieldType.StringSelector, QuestRequirementChit.ChitType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementChit.AMOUNT, "Number of chits", FieldType.Number));
