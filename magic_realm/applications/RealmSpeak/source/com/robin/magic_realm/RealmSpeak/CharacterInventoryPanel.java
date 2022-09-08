@@ -393,7 +393,7 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 			if (!daytimeRecord && getCharacter().canDoDaytimeRecord()) {
 				// Just gained the ability to do daytime activities, so kill all pending action rows, and add the toolbar
 				if (getCharacterFrame().showingTurn()) {
-					getCharacterFrame().getTurnPanel().startDaytimeRecord(true);
+					getCharacterFrame().getTurnPanel().startDaytimeRecord();
 				}
 			}
 			getCharacterFrame().updateCharacter();

@@ -1358,6 +1358,21 @@ public class CharacterWrapper extends GameObjectWrapper {
 		removeAttribute(getCurrentDayKey()+"C");
 		clearActionBuffer();
 	}
+	public void clearNotCompletedActions() {
+		ArrayList<String> actionList = getList(getCurrentDayKey()+"P");
+		if (actionList == null) {
+			clearCurrentActions();
+			return;
+		}
+		int numberOfActionsTaken = actionList.size();
+		ArrayList<String> valids = getList(getCurrentDayKey()+"V");
+		ArrayList<String> typeCodes = getList(getCurrentDayKey()+"C");
+		ArrayList<String> validList = new ArrayList<String>(valids.subList(0, numberOfActionsTaken));
+		ArrayList<String> typeCodesList = new ArrayList<String>(typeCodes.subList(0, numberOfActionsTaken));
+		setCurrentActionValids(validList);
+		setList(getCurrentDayKey()+"C",typeCodesList);
+		removeAttribute(getCurrentDayKey());
+	}
 	public void clearActionBuffer() {
 		removeAttribute(getCurrentDayKey()+"P");
 		removeAttribute(getCurrentDayKey()+"M");

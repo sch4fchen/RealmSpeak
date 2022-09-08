@@ -1278,9 +1278,6 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		updateControls();
 	}
 	public void startDaytimeRecord() {
-		startDaytimeRecord(false);
-	}
-	public void startDaytimeRecord(boolean clearActions) {
 		if (!isFollowing) {
 			// First, remove all pending actions
 			Collection<String> atcc = getCharacter().getCurrentActionTypeCodes();
@@ -1289,7 +1286,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 				atc.addAll(atcc);
 			}
 			Iterator<String> n=atc.iterator();
-			if (clearActions) getCharacter().clearCurrentActions();
+			getCharacter().clearNotCompletedActions();
 			ArrayList<ActionRow> toRemove = new ArrayList<>();
 			for (ActionRow ar:actionRows) {
 				if (ar.getAction()!=null) { // ignore null action rows
