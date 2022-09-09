@@ -22,5 +22,8 @@ public enum DenizenType {
 	Denizen,
 	Native,
 	Monster,
-	Character
+	Animal,
+	Character,
+	Mist,
+	Statue
 }

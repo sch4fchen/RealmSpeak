@@ -37,23 +37,40 @@ public class QuestRequirementCharacterType extends QuestRequirement {
 
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
 		RealmComponent rc = RealmComponent.getRealmComponent(character.getGameObject());
+		GameObject transmorph = character.getTransmorph();
+		RealmComponent transmorphRc = null;
+		if (transmorph != null) {
+			transmorphRc = RealmComponent.getRealmComponent(transmorph);
+		}
 		switch(getType()) {
 			case Denizen:
-				if (!rc.isDenizen()) return false;
+				if (!rc.isDenizen() && transmorph != null && !transmorphRc.isDenizen()) return false;
 				break;
 			case Native:
-				if (!rc.isNative()) return false;
+				if (!rc.isNative() && transmorph != null && !transmorphRc.isNative()) return false;
+				break;
 			case Monster:
-				if (!rc.isMonster()) return false;
+				if (!rc.isMonster() && transmorph != null && !transmorphRc.isMonster()) return false;
+				break;
+			case Animal:
+				if (transmorph != null && !transmorphRc.isTransformAnimal()) return false;
+				break;
 			case Character:
 				if (!rc.isCharacter()) return false;
+				break;
+			case Mist:
+				if (!character.isMistLike()) return false;
+				break;
+			case Statue:
+				if (!character.isStatue()) return false;
+				break;
 			case Any:
 			default:
 				break;
 		}
 		if (getRegExFilter() != null && !getRegExFilter().isEmpty()) {
 			Pattern pattern = Pattern.compile(getRegExFilter());
-			return pattern.matcher(character.getName()).find();
+			return pattern.matcher(character.getName()).find() || (transmorph != null && pattern.matcher(transmorph.getName()).find());
 		}
 		return true;
 	}
