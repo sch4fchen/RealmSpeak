@@ -1367,8 +1367,13 @@ public class CharacterWrapper extends GameObjectWrapper {
 		int numberOfActionsTaken = actionList.size();
 		ArrayList<String> valids = getList(getCurrentDayKey()+"V");
 		ArrayList<String> typeCodes = getList(getCurrentDayKey()+"C");
-		ArrayList<String> validList = new ArrayList<String>(valids.subList(0, numberOfActionsTaken));
-		ArrayList<String> typeCodesList = new ArrayList<String>(typeCodes.subList(0, numberOfActionsTaken));
+		ArrayList<String> messages = getList(getCurrentDayKey()+"M");
+		int NaCount = 0;
+		for (String message : messages) {
+			if (message.matches("N/A")) NaCount++;
+		}
+		ArrayList<String> validList = new ArrayList<String>(valids.subList(0, numberOfActionsTaken-NaCount));
+		ArrayList<String> typeCodesList = new ArrayList<String>(typeCodes.subList(0, numberOfActionsTaken-NaCount));
 		setCurrentActionValids(validList);
 		setList(getCurrentDayKey()+"C",typeCodesList);
 		removeAttribute(getCurrentDayKey());
