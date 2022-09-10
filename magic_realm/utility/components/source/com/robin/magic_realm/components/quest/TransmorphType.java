@@ -17,13 +17,12 @@
  */
 package com.robin.magic_realm.components.quest;
 
-public enum DenizenType {
+public enum TransmorphType {
 	Any,
 	Denizen,
 	Native,
 	Monster,
 	Animal,
-	Character,
 	Mist,
 	Statue
 }

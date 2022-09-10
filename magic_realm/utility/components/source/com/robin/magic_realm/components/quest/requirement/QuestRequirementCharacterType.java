@@ -23,13 +23,14 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.RealmComponent;
-import com.robin.magic_realm.components.quest.DenizenType;
+import com.robin.magic_realm.components.quest.TransmorphType;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRequirementCharacterType extends QuestRequirement {
 
-	public static final String REGEX_FILTER = "_regex";
+	public static final String REQUIRES_TRANSMORPHED = "_req_transmorphed";
 	public static final String TYPE = "_type";
+	public static final String REGEX_FILTER = "_regex";
 	
 	public QuestRequirementCharacterType(GameObject go) {
 		super(go);
@@ -41,6 +42,9 @@ public class QuestRequirementCharacterType extends QuestRequirement {
 		RealmComponent transmorphRc = null;
 		if (transmorph != null) {
 			transmorphRc = RealmComponent.getRealmComponent(transmorph);
+		}
+		if (mustBeTransmorphed() && transmorph == null) {
+			return false;
 		}
 		switch(getType()) {
 			case Denizen:
@@ -54,9 +58,6 @@ public class QuestRequirementCharacterType extends QuestRequirement {
 				break;
 			case Animal:
 				if (transmorph != null && !transmorphRc.isTransformAnimal()) return false;
-				break;
-			case Character:
-				if (!rc.isCharacter()) return false;
 				break;
 			case Mist:
 				if (!character.isMistLike()) return false;
@@ -78,11 +79,11 @@ public class QuestRequirementCharacterType extends QuestRequirement {
 	protected String buildDescription() {
 		StringBuffer sb = new StringBuffer();
 		sb.append("Character must be ");
-		if (getType() != DenizenType.Any) {
+		if (getType() != TransmorphType.Any) {
 			sb.append("a "+getType());
 		}
 		if (getRegExFilter() != null && !getRegExFilter().isEmpty()) {
-			if (getType() != DenizenType.Any) {
+			if (getType() != TransmorphType.Any) {
 				sb.append(" and ");
 			}
 			sb.append("match " +getRegExFilter());
@@ -95,8 +96,12 @@ public class QuestRequirementCharacterType extends QuestRequirement {
 		return RequirementType.CharacterType;
 	}
 	
-	private DenizenType getType() {
-		return DenizenType.valueOf(getString(TYPE));
+	private boolean mustBeTransmorphed() {
+		return getBoolean(REQUIRES_TRANSMORPHED);
+	}
+	
+	private TransmorphType getType() {
+		return TransmorphType.valueOf(getString(TYPE));
 	}
 	
 	public String getRegExFilter() {

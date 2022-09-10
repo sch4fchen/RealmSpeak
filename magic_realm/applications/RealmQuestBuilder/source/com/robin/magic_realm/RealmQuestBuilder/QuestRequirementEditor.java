@@ -82,8 +82,9 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementCharacterClass.REGEX_FILTER, "Character(s)", FieldType.Regex, null, new String[] {"character"}));
 				break;
 			case CharacterType:
-				list.add(new QuestPropertyBlock(QuestRequirementCharacterType.TYPE, "Type", FieldType.StringSelector, DenizenType.values()));
-				list.add(new QuestPropertyBlock(QuestRequirementCharacterType.REGEX_FILTER, "Characters name", FieldType.Regex, null, new String[] {"denizen", "character"}));
+				list.add(new QuestPropertyBlock(QuestRequirementCharacterType.REQUIRES_TRANSMORPHED, "Must be transmorphed", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementCharacterType.TYPE, "Type", FieldType.StringSelector, TransmorphType.values()));
+				list.add(new QuestPropertyBlock(QuestRequirementCharacterType.REGEX_FILTER, "Characters or transmorphed name", FieldType.Regex, null, new String[] {"denizen", "character"}));
 				break;
 			case Chit:
 				list.add(new QuestPropertyBlock(QuestRequirementChit.TYPE, "Chit type", FieldType.StringSelector, QuestRequirementChit.ChitType.values()));
