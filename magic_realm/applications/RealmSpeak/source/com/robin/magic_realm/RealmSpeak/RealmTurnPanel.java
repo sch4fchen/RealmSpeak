@@ -121,6 +121,11 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		
 		if (getCharacter().canDoDaytimeRecord()) {
 			startDaytimeRecord();
+			ArrayList<String> actionList = getCharacter().getList(getCharacter().getCurrentDayKey()+"P");
+			if (actionList != null) {
+				int numberOfActionsTaken = actionList.size();
+				getCharacter().addLostPhases(numberOfActionsTaken);
+			}
 		}
 		
 		if (getCharacter().isSleep()) {
@@ -1286,7 +1291,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 				atc.addAll(atcc);
 			}
 			Iterator<String> n=atc.iterator();
-			getCharacter().clearNotCompletedActions();
+			getCharacter().clearCurrentActions();
 			ArrayList<ActionRow> toRemove = new ArrayList<>();
 			for (ActionRow ar:actionRows) {
 				if (ar.getAction()!=null) { // ignore null action rows
@@ -1340,7 +1345,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		actionTable.repaint();
 	}
 	public void doLosePhases(int phases) {
-		getCharacter().setLostPhases(getCharacter().getLostPhases()+phases);
+		getCharacter().addLostPhases(getCharacter().getLostPhases()+phases);
 		// Find pending phases
 		int pendingCount = 0;
 		ArrayList<ActionRow> pendingPhases = new ArrayList<>();

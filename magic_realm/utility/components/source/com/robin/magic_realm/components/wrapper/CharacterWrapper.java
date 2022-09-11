@@ -1356,27 +1356,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		removeAttribute(getCurrentDayKey());
 		removeAttribute(getCurrentDayKey()+"V");
 		removeAttribute(getCurrentDayKey()+"C");
-		clearActionBuffer();
-	}
-	public void clearNotCompletedActions() {
-		ArrayList<String> actionList = getList(getCurrentDayKey()+"P");
-		if (actionList == null) {
-			clearCurrentActions();
-			return;
-		}
-		int numberOfActionsTaken = actionList.size();
-		ArrayList<String> valids = getList(getCurrentDayKey()+"V");
-		ArrayList<String> typeCodes = getList(getCurrentDayKey()+"C");
-		ArrayList<String> messages = getList(getCurrentDayKey()+"M");
-		int NaCount = 0;
-		for (String message : messages) {
-			if (message.matches("N/A")) NaCount++;
-		}
-		ArrayList<String> validList = new ArrayList<String>(valids.subList(0, numberOfActionsTaken-NaCount));
-		ArrayList<String> typeCodesList = new ArrayList<String>(typeCodes.subList(0, numberOfActionsTaken-NaCount));
-		setCurrentActionValids(validList);
-		setList(getCurrentDayKey()+"C",typeCodesList);
-		removeAttribute(getCurrentDayKey());
+		//clearActionBuffer();
 	}
 	public void clearActionBuffer() {
 		removeAttribute(getCurrentDayKey()+"P");
@@ -2978,6 +2958,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public void setLostPhases(int val) {
 		setInt(LOST_PHASES,val);
+	}
+	public void addLostPhases(int val) {
+		setInt(LOST_PHASES,getLostPhases()+val);
 	}
 	public void setFortified(boolean val) {
 		setBoolean(FORTIFIED,val);
