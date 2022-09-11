@@ -1290,22 +1290,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			if (atcOld!=null) {
 				atc.addAll(atcOld);
 			}
-			Collection<String> actionMessagesOld = getCharacter().getList(getCharacter().getCurrentDayKey()+"M");
-			ArrayList<String> actionMessages = new ArrayList<>();
-			if (actionMessagesOld!=null) {
-				actionMessages.addAll(actionMessagesOld);
-			}
-			Collection<String> actionRollersOld = getCharacter().getList(getCharacter().getCurrentDayKey()+"R");
-			ArrayList<String> actionRollers = new ArrayList<>();
-			if (actionRollersOld!=null) {
-				actionRollers.addAll(actionRollersOld);
-			}
-			Collection<String> actionStatesOld = getCharacter().getList(getCharacter().getCurrentDayKey()+"P");
-			ArrayList<String> actionStates = new ArrayList<>();
-			if (actionStatesOld!=null) {
-				actionStates.addAll(actionStatesOld);
-			}
-			
+			Iterator<String> n=atc.iterator();
 			getCharacter().clearCurrentActions();
 			ArrayList<ActionRow> toRemove = new ArrayList<>();
 			int i = 0;
@@ -1323,13 +1308,8 @@ public class RealmTurnPanel extends CharacterFramePanel {
 						// Add it back
 						getCharacter().addCurrentAction(ar.getAction());
 						getCharacter().addCurrentActionValid(true);
-						getCharacter().addCurrentActionTypeCode(atc.get(i));
-						String state = actionStates.get(i).substring(0,1);
-						getCharacter().addListItem(getCharacter().getCurrentDayKey()+"P",state+ar.getAction());
-						getCharacter().addListItem(getCharacter().getCurrentDayKey()+"M",actionMessages.get(i));
-						getCharacter().addListItem(getCharacter().getCurrentDayKey()+"R",actionRollers.get(i));
+						getCharacter().addCurrentActionTypeCode(n.next());
 					}
-					i++;
 				}
 			}
 			actionRows.removeAll(toRemove);

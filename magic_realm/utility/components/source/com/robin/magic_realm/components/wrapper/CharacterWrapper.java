@@ -1356,7 +1356,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		removeAttribute(getCurrentDayKey());
 		removeAttribute(getCurrentDayKey()+"V");
 		removeAttribute(getCurrentDayKey()+"C");
-		clearActionBuffer();
+		//clearActionBuffer();
 	}
 	public void clearActionBuffer() {
 		removeAttribute(getCurrentDayKey()+"P");
