@@ -1293,7 +1293,6 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			Iterator<String> n=atc.iterator();
 			getCharacter().clearCurrentActions();
 			ArrayList<ActionRow> toRemove = new ArrayList<>();
-			int i = 0;
 			for (ActionRow ar:actionRows) {
 				if (ar.getAction()!=null) { // ignore null action rows
 					if (ar.isPending()) {
