@@ -21,6 +21,7 @@ import java.util.Hashtable;
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
+import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.QuestCounter;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -28,6 +29,7 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 public class QuestRewardCounter extends QuestReward {
 	public static final String COUNTER = "_c";
 	public static final String SET_COUNT = "_sv";
+	public static final String RANDOM = "_rnd";
 	public static final String INCREASE_COUNT = "_iv";
 	public static final String DECREASE_COUNT = "_dv";
 	
@@ -37,14 +39,17 @@ public class QuestRewardCounter extends QuestReward {
 	
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		QuestCounter counter = getQuestCounter();
+		if (needToSetQuestCount()) {
+			counter.setCount(getValueToSet());
+		}
+		if (needToSetQuestCountToRandom()) {
+			counter.setCount(RandomNumber.getRandom(100)+1);
+		}
 		if (needToIncreaseQuestCount()) {
 			counter.increaseCountByValue(getValueToIncrease());
 		}
 		if (needToDecreaseQuestCount()) {
 			counter.decreaseCountByValue(getValueToDecrease());
-		}
-		if (needToSetQuestCount()) {
-			counter.setCount(getValueToSet());
 		}
 	}
 	
@@ -93,6 +98,9 @@ public class QuestRewardCounter extends QuestReward {
 	}
 	private boolean needToSetQuestCount() {
 		return getValueToSet() != QuestConstants.ALL_VALUE;
+	}
+	private boolean needToSetQuestCountToRandom() {
+		return getBoolean(RANDOM);
 	}
 	private boolean needToIncreaseQuestCount() {
 		return getValueToIncrease() != 0;

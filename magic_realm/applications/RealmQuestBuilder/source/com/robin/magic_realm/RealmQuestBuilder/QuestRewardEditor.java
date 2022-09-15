@@ -96,6 +96,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case Counter:
 				list.add(new QuestPropertyBlock(QuestRewardCounter.COUNTER, "Quest Counter", FieldType.GameObjectWrapperSelector, quest.getCounters().toArray()));
 				list.add(new QuestPropertyBlock(QuestRewardCounter.SET_COUNT, "Set current count ("+QuestConstants.ALL_VALUE+"=no change)", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRewardCounter.RANDOM, "Set current count to random number (1-100)", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardCounter.INCREASE_COUNT, "Increase count", FieldType.NumberAll));
 				list.add(new QuestPropertyBlock(QuestRewardCounter.DECREASE_COUNT, "Decrease count", FieldType.NumberAll));
 				break;
