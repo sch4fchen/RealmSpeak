@@ -111,8 +111,7 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 			int small = 0;
 			int large = 0;
 			ArrayList<String> spellTypes = new ArrayList<String>();
-			for (Iterator i=getGameObject().getHold().iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
+			for (GameObject go : getGameObject().getHold()) {
 				String treasure = go.getThisAttribute("treasure");
 				if (treasure!=null) {
 					if ("large".equals(treasure)) {
@@ -220,21 +219,20 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 			text.append(rowEnd);
 		}
 		// Partner
-		ArrayList partner = getPartners();
+		ArrayList<String> partner = getPartners();
 		if (!partner.isEmpty()) {
 			text.append("<tr><td valign=\"top\" align=\"right\" bgcolor=\"#33cc00\" rowspan=\"");
 			text.append(partner.size());
 			text.append("\"><b>");
 			text.append("Partner:");
 			text.append(rowContentStart);
-			for (Iterator i=partner.iterator();i.hasNext();) {
-				String group = (String)i.next();
+			for (String group : partner) {
 				text.append(StringUtilities.capitalize(group));
 				text.append(rowEnd);
 			}
 		}
 		// Foe
-		ArrayList foe = getFoes();
+		ArrayList<String> foe = getFoes();
 		if (!foe.isEmpty()) {
 			text.append("<tr><td valign=\"top\" align=\"right\" bgcolor=\"#33cc00\" rowspan=\"");
 			text.append(foe.size());
@@ -242,8 +240,7 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 			text.append("Foe:");
 			text.append(rowContentStart);
 			int total = 0;
-			for (Iterator i=foe.iterator();i.hasNext();) {
-				String group = (String)i.next();
+			for (String group : foe) {
 				text.append(group);
 				
 				if (hostPrefs!=null) {
@@ -284,14 +281,14 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 		
 		return text.toString();
 	}
-	public ArrayList getPartners() {
+	public ArrayList<String> getPartners() {
 		return getList("partner");
 	}
-	public ArrayList getFoes() {
+	public ArrayList<String> getFoes() {
 		return getList("foe");
 	}
-	private ArrayList getList(String key) {
-		ArrayList list = new ArrayList();
+	private ArrayList<String> getList(String key) {
+		ArrayList<String> list = new ArrayList<>();
 		String val = getGameObject().getThisAttribute(key);
 		if (val!=null) {
 			StringTokenizer tokens = new StringTokenizer(val,",");
@@ -381,10 +378,9 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 			GameData data = getGameObject().getGameData();
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 			GamePool pool = new GamePool(data.getGameObjects());
-			ArrayList foe = getFoes();
+			ArrayList<String> foe = getFoes();
 			if (!foe.isEmpty()) {
-				for (Iterator i=foe.iterator();i.hasNext();) {
-					String group = (String)i.next();
+				for (String group : foe) {
 					total += getFoeCount_OnMap(hostPrefs,group,pool);
 					total += getFoeCount_OnCard(hostPrefs,group,pool);
 				}
@@ -423,7 +419,7 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 		query.add("!"+Constants.DEAD);
 		return getFoeExistCount(pool.find(query));
 	}
-	private int getFoeExistCount(ArrayList<GameObject> foes) {
+	private static int getFoeExistCount(ArrayList<GameObject> foes) {
 		int count = 0;
 		for(GameObject foe:foes) {
 			if (foe.hasThisAttribute(Constants.SETUP_START_TILE_REQ)) {
@@ -455,15 +451,13 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 			String relBlock = RealmUtility.getRelationshipBlockFor(getGameObject());
 			
 			// Calculate change in friendliness, and apply (Partners ALL increase by 2)
-			for (Iterator i=getPartners().iterator();i.hasNext();) {
-				String group = (String)i.next();
+			for (String group : getPartners()) {
 				getGameObject().setAttribute("relationship",group.toLowerCase(),2);
 				character.changeRelationship(relBlock,group,2, false);
 			}
 			// (Foes move to ENEMY)
 			if (!"Quest".equals(getGameObject().getName())) {
-				for (Iterator i=getFoes().iterator();i.hasNext();) {
-					String group = (String)i.next();
+				for (String group : getFoes()) {
 					int current = character.getRelationship(relBlock,group);
 					int change = RelationshipType.ENEMY - current;
 					getGameObject().setAttribute("relationship",group.toLowerCase(),change);
@@ -484,15 +478,13 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 			
 			String relBlock = RealmUtility.getRelationshipBlockFor(getGameObject());
 			
-			for (Iterator i=getPartners().iterator();i.hasNext();) {
-				String group = (String)i.next();
+			for (String group : getPartners()) {
 				int val = getGameObject().getInt("relationship",group.toLowerCase());
 				character.changeRelationship(relBlock,group,-val, false);
 			}
 			// (Foes move to ENEMY)
 			if (!"Quest".equals(getGameObject().getName())) {
-				for (Iterator i=getFoes().iterator();i.hasNext();) {
-					String group = (String)i.next();
+				for (String group : getFoes()) {
 					int val = getGameObject().getInt("relationship",group.toLowerCase());
 					character.changeRelationship(relBlock,group,-val, false);
 				}

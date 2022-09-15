@@ -40,6 +40,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		CharacterClass,
 		CharacterType,
 		Chit,
+		Clearing,
 		ColorMagic,
 		Counter,
 		Discovery, // must have a specific discovery
@@ -92,6 +93,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests for the characters name or transmorphed form.";
 				case Chit:
 					return "Tests for whether the characters has certain chits.";
+				case Clearing:
+					return "Tests for chits at character's clearing or tile or that character is in specific clearing.";
 				case ColorMagic:
 					return "Tests whether the character is in the presence of a specific color of magic (either permanent or burning a chit).";
 				case Counter:
@@ -268,6 +271,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case Chit:
 				requirement = new QuestRequirementChit(go);
+				break;
+			case Clearing:
+				requirement = new QuestRequirementClearing(go);
 				break;
 			case ColorMagic:
 				requirement = new QuestRequirementColorMagic(go);

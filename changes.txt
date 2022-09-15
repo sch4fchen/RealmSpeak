@@ -1,6 +1,7 @@
 Version 1.1.6.4
 QUEST UPDATE:
 # QuestRequirementCharactersType
+# QuestRequirementClearing
 # QuestRequirementAttribute: Exclude reward fame; exclude inventory by default (option for including inventory)
 # QuestRewardCounter: Option to set counter to random number (1-100)
 # Optional Rule: Show discard quest card name (default off)
