@@ -226,7 +226,6 @@ products/RealmSpeak/OptionSets/test1.cfg
 products/RealmSpeak/frame.cfg
 products/RealmSpeak/host.cfg
 products/RealmSpeak/optionnames.cfg
-products/characters/
 magic_realm/utility/components/ant_build/depcache/
 magic_realm/applications/RealmSpeak/ant_build/depcache/
 game/utility/hexmap/ant_build/depcache/
