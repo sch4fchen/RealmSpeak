@@ -1978,6 +1978,18 @@ public class BattleModel {
 					if (thing.hasThisAttribute("oneshot") && thing.hasThisAttribute("potion")) {
 						character.expirePotion(thing);
 					}
+					
+					if (thingCombat.wasThrown() && battleLocation.isInClearing()) {
+						thing.removeThisAttribute(Constants.ACTIVATED);
+						RealmComponent thingRc = RealmComponent.getRealmComponent(thing);
+						if (thingRc instanceof ChitComponent) {
+							thingRc.setActivated(false);
+							if (thingRc.isWeapon()) {
+								((WeaponChitComponent)thingRc).setAlerted(false);
+							}
+						}
+						battleLocation.clearing.add(thing, character);
+					}
 				}
 				
 				// Cue up attack spells to expire (don't expire until AFTER Grudges are determined)

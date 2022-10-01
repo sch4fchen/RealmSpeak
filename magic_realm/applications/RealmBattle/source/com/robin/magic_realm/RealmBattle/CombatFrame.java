@@ -1040,7 +1040,7 @@ public class CombatFrame extends JFrame {
 						list.add(getRaiseDeadButton());
 					}
 					list.add(getActivateInactivateButton());
-					if (hostPrefs.hasPref(Constants.ADV_DROPPING)) {
+					if (hostPrefs.hasPref(Constants.ADV_DROPPING) || hostPrefs.hasPref(Constants.OPT_THROWING_WEAPONS)) {
 						list.add(getPickupItemButton());
 						list.add(getDropBelongingsButton());
 					}

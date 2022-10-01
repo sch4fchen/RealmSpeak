@@ -468,6 +468,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		
 		// Bottom
 		boolean allowDropping = hostPrefs.hasPref(Constants.ADV_DROPPING);
+		boolean allowPickup = allowDropping || hostPrefs.hasPref(Constants.OPT_THROWING_WEAPONS);
 		//panel = new JPanel(new GridLayout(1,allowDropping?6:5));
 		panel = new JPanel(new GridLayout(2,3));
 		openButton = new JButton("Open");
@@ -492,7 +493,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		}
 
 		JPanel swapPanel = new JPanel(new BorderLayout());
-			if (allowDropping) {
+			if (allowPickup) {
 				pickupItemButton = new JButton("Pickup Item");
 				pickupItemButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent ev) {
