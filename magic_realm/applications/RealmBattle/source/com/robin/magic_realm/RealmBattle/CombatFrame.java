@@ -142,6 +142,7 @@ public class CombatFrame extends JFrame {
 		Constants.COMBAT_FATIGUE,
 		Constants.COMBAT_DISENGAGE,
 	};
+	private static final String THROWING = "Throwing";
 	// other controls
 	
 	private JButton endSimulationButton;
@@ -2541,6 +2542,12 @@ public class CombatFrame extends JFrame {
 					chooser.addOption(key,"");
 					chooser.addRealmComponentToOption(key,chit);
 					chooser.addRealmComponentToOption(key,weapon);
+					if (weapon.isThrowable() && (hostPrefs.hasPref(Constants.OPT_THROWING_WEAPONS) || activeCharacter.affectedByKey(Constants.THROWING_WEAPONS))) {
+						key = "N"+(keyN++);
+						chooser.addOption(key,THROWING);
+						chooser.addRealmComponentToOption(key,chit);
+						chooser.addRealmComponentToOption(key,weapon);
+					}
 				}
 			}
 			if (weaponCard!=null) {
@@ -2550,6 +2557,12 @@ public class CombatFrame extends JFrame {
 				chooser.addOption(key,"");
 				chooser.addRealmComponentToOption(key,chit);
 				chooser.addRealmComponentToOption(key,weaponCard);
+				if (weaponCard.getGameObject().hasThisAttribute("throwable") && (hostPrefs.hasPref(Constants.OPT_THROWING_WEAPONS) || activeCharacter.affectedByKey(Constants.THROWING_WEAPONS))) {
+					key = "N"+(keyN++);
+					chooser.addOption(key,THROWING);
+					chooser.addRealmComponentToOption(key,chit);
+					chooser.addRealmComponentToOption(key,weaponCard);
+				}
 			}
 			
 		}
@@ -2616,6 +2629,9 @@ public class CombatFrame extends JFrame {
 				CombatWrapper combatWeapon = new CombatWrapper(weapon.getGameObject());
 				combatWeapon.setCombatBox(box);
 				combatWeapon.setSheetOwnerId(sheetOwner);
+				if (chooser.getSelectedText().matches(THROWING)) {
+					combatWeapon.setThrown(true);
+				}
 			}
 		}
 		updateSelection();

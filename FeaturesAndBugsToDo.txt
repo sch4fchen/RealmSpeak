@@ -1,19 +1,16 @@
 ---:::FEATURES:::---
 0001818: Feature Request: First Edition: Parry Optional Combat Rules (+Ability: "Parry"): Option: no missile attacks, ?:Sharpness stars are ignored when comparing harm between attacks and parries? Alert?!
 Expansion 1: Parry + Ability: "ParryLikeShield":  Option: no missile attacks
-Expansion 1: More Ambushes/Throwing Weapons + Ability: Spear, Axe, Dagger?
-Duplicate spells (Combat spell, Day spell or Permanent spell): same time: duplicate spells with mutually exclusive effects go into effect against the same target simultaneously, they cancel each other out
+Would be nice to make weapon abilities too:
+	Immobilizing - When it hits all attacks undercut
+	Stunning - Target cannot play an attack next round
 Combat Summary: add functionality for RandomAssignment, Deploy/Charge (and charge character, Actions? Attack/Maneuver, Assign)
 0001828: Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 0001827: Feature Request - First Edition Optional Rules - Hiring Characters (Solitaire): http://www.nand.it/mr/mr08.html
 0001825: Feature Request - First Edition Optional Rule - Buying on Credit
 0001820: Feature Request: First Edition Optional Rules - Dissolving Doors
-Would be nice to make weapon abilities too:
-	Immobilizing - When it hits all attacks undercut
-	Stunning - Target cannot play an attack next round
 Guilds: Assassins, Nature
-Merlin's Use Horse Lot: http://www.nand.it/mr/mr15.html
-Option to change font size
+Duplicate spells (Combat spell, Day spell or Permanent spell): same time: duplicate spells with mutually exclusive effects go into effect against the same target simultaneously, they cancel each other out
 "TODO" in code (found by search)
 ---:::BUGS:::---
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php

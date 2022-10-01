@@ -28,6 +28,7 @@ import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.utility.ClearingUtility;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.CombatWrapper;
 
 public class WeaponChitComponent extends RoundChitComponent {
 	public static final String UNALERTED = LIGHT_SIDE_UP;
@@ -71,6 +72,8 @@ public class WeaponChitComponent extends RoundChitComponent {
 	}
 	
 	public int getLength() {
+		CombatWrapper combatWeapon = new CombatWrapper(gameObject);
+		if (combatWeapon.wasThrown()) return 12;
 		return gameObject.getThisInt("length");
 	}
 	public String getLightSideStat() {
@@ -138,6 +141,9 @@ public class WeaponChitComponent extends RoundChitComponent {
 	}
 	public boolean isMissile() {
 		return gameObject.hasThisAttribute("missile");
+	}
+	public boolean isThrowable() {
+		return gameObject.hasThisAttribute("throwable");
 	}
 	public void paintComponent(Graphics g1) {
 		Graphics2D g = (Graphics2D)g1;

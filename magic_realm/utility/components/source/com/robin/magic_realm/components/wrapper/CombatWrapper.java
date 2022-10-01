@@ -82,6 +82,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String BURNED_COLOR = "BURNED_COLOR"; // indicates the player burned a color chit this combat round
 	private static final String SERIOUS_WOUND_ROLLS = "S_W_ROLLS";
 	private static final String PLAYED_ATTACK = "PLAYED_ATTACK";
+	private static final String THROWN = "THROWN";
 	private static final String TARGETING_RIDER = "TARGETING_RIDER";
 	private static final String GALLOPED = "GALLOPED";
 	private static final String RAISE_THE_DEAD = "RAISE_THE_DEAD";
@@ -256,7 +257,6 @@ public class CombatWrapper extends GameObjectWrapper {
 	public String getHitResult() {
 		return getString(HIT_RESULT);
 	}
-	
 	public void setHitByOrderNumber(int val) {
 		setInt(HIT_BY_ORDER_NUMBER,val);
 	}
@@ -352,6 +352,12 @@ public class CombatWrapper extends GameObjectWrapper {
 	}
 	public boolean getPlayedAttack() {
 		return getBoolean(PLAYED_ATTACK);
+	}
+	public void setThrown(boolean val) {
+		setBoolean(THROWN,val);
+	}
+	public boolean wasThrown() {
+		return getBoolean(THROWN);
 	}
 	public void setTargetingRider(GameObject attacker) {
 		addListItem(TARGETING_RIDER,attacker.getStringId());
@@ -706,6 +712,7 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,HIT_BY_ORDER_NUMBER);
 			go.removeAttribute(COMBAT_BLOCK,WAS_FATIGUE);
 			go.removeAttribute(COMBAT_BLOCK,PLAYED_ATTACK);
+			go.removeAttribute(COMBAT_BLOCK,THROWN);
 			go.removeAttribute(COMBAT_BLOCK,TARGETING_RIDER);
 			go.removeAttribute(COMBAT_BLOCK,GALLOPED);
 			go.removeAttribute(COMBAT_BLOCK,HARM_APPLIED);
