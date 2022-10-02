@@ -84,7 +84,7 @@ public class UniformLabelGroup {
 	}
 	
 	public JLabel createLabel(String label) {
-		JLabel jLabel = new JLabel(label,JLabel.RIGHT);
+		JLabel jLabel = new JLabel(label,SwingConstants.RIGHT);
 		if (labelFont!=null) jLabel.setFont(labelFont);
 		add(jLabel);
 		return jLabel;

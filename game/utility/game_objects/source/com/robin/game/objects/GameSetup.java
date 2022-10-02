@@ -170,20 +170,19 @@ public class GameSetup extends ModifyableObject implements Serializable {
 	public GamePool getPool(String poolName) {
 		return pools.get(poolName);
 	}
-	public void moveObjectsBefore(ArrayList objects,GameCommand indexObject) {
+	public void moveObjectsBefore(ArrayList<GameCommand> objects,GameCommand indexObject) {
 		moveObjects(objects,indexObject,true);
 	}
-	public void moveObjectsAfter(ArrayList objects,GameCommand indexObject) {
+	public void moveObjectsAfter(ArrayList<GameCommand> objects,GameCommand indexObject) {
 		moveObjects(objects,indexObject,false);
 	}
 	/**
 	 * Moves the objects to the position BEFORE the GameCommand with an id==idPosition
 	 */
-	private void moveObjects(ArrayList objects,GameCommand indexObject,boolean before) {
+	private void moveObjects(ArrayList<GameCommand> objects,GameCommand indexObject,boolean before) {
 		// First, verify ALL objects are in the list, and that the list is uniqued
-		ArrayList validCommands = new ArrayList();
-		for (Iterator i=objects.iterator();i.hasNext();) {
-			GameCommand command = (GameCommand)i.next();
+		ArrayList<GameCommand> validCommands = new ArrayList<>();
+		for (GameCommand command : objects) {
 			if (command.parent==this && gameCommands.contains(command) && !validCommands.contains(command)) {
 				validCommands.add(command);
 			}
@@ -207,10 +206,10 @@ public class GameSetup extends ModifyableObject implements Serializable {
 		gameCommands.addAll(index,validCommands);
 	}
 	// Serializable interface
-	private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+	private static void writeObject(java.io.ObjectOutputStream out) throws IOException {
 		out.defaultWriteObject();
 	}
-	private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+	private static void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
 		in.defaultReadObject();
 	}
 	

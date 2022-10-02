@@ -300,7 +300,7 @@ public class CombatFrame extends JFrame {
 		initComponents();
 		setSize(lastKnownLocation.width,lastKnownLocation.height);
 		setLocation(lastKnownLocation.x,lastKnownLocation.y);
-		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		
 		exportFileManager = new FileManager(this,"Export Destination",null);
 	}
@@ -991,7 +991,7 @@ public class CombatFrame extends JFrame {
 	
 	private ArrayList<JComponent> createControls() {
 		ArrayList<JComponent> list = new ArrayList<>();
-		roundLabel = new JLabel("Round "+getCurrentRound(),JLabel.CENTER);
+		roundLabel = new JLabel("Round "+getCurrentRound(),SwingConstants.CENTER);
 		roundLabel.setFont(COMBAT_ROUND_FONT);
 		roundLabel.setForeground(Color.blue);
 		roundLabel.setBackground(Color.yellow);
@@ -1010,7 +1010,7 @@ public class CombatFrame extends JFrame {
 			
 			switch(actionState) {
 				case Constants.COMBAT_LURE:
-					instructionLabel = new JLabel("Lure Denizens",IconFactory.findIcon("icons/arrow4.gif"),JLabel.LEADING);
+					instructionLabel = new JLabel("Lure Denizens",IconFactory.findIcon("icons/arrow4.gif"),SwingConstants.LEADING);
 					instructionLabel.setFont(INSTRUCTION_FONT);
 					list.add(instructionLabel);
 					if (hostPrefs.hasPref(Constants.TE_EXTENDED_TREACHERY)) {
@@ -1018,7 +1018,7 @@ public class CombatFrame extends JFrame {
 					}
 					break;
 				case Constants.COMBAT_DEPLOY:
-					instructionLabel = new JLabel("Deploy/Charge",IconFactory.findIcon("icons/arrow2.gif"),JLabel.LEADING);
+					instructionLabel = new JLabel("Deploy/Charge",IconFactory.findIcon("icons/arrow2.gif"),SwingConstants.LEADING);
 					instructionLabel.setFont(INSTRUCTION_FONT);
 					list.add(instructionLabel);
 					if (hostPrefs.hasPref(Constants.TE_EXTENDED_TREACHERY)) {
@@ -1027,7 +1027,7 @@ public class CombatFrame extends JFrame {
 					list.add(getChargeButton());
 					break;
 				case Constants.COMBAT_ACTIONS:
-					instructionLabel = new JLabel("Actions",IconFactory.findIcon("icons/arrow2.gif"),JLabel.LEADING);
+					instructionLabel = new JLabel("Actions",IconFactory.findIcon("icons/arrow2.gif"),SwingConstants.LEADING);
 					instructionLabel.setFont(INSTRUCTION_FONT);
 					list.add(instructionLabel);
 					if (activeCharacterIsHere && activeCharacter.canChangeTactics()) {
@@ -1054,7 +1054,7 @@ public class CombatFrame extends JFrame {
 					}
 					break;
 				case Constants.COMBAT_ASSIGN:
-					instructionLabel = new JLabel("Assign Targets",IconFactory.findIcon("icons/arrow4.gif"),JLabel.LEADING);
+					instructionLabel = new JLabel("Assign Targets",IconFactory.findIcon("icons/arrow4.gif"),SwingConstants.LEADING);
 					instructionLabel.setFont(INSTRUCTION_FONT);
 					list.add(instructionLabel);
 					list.add(getTreacheryButton());
@@ -1063,7 +1063,7 @@ public class CombatFrame extends JFrame {
 					}
 					CombatWrapper combat = new CombatWrapper(activeCharacter.getGameObject());
 					if (denizenPanel.getComponentCount()>0 && (!activeCharacterIsHere || combat.getCastSpell()==null)) {
-						instructionLabel = new JLabel("Unassigned Targets",IconFactory.findIcon("icons/arrow2.gif"),JLabel.LEADING);
+						instructionLabel = new JLabel("Unassigned Targets",IconFactory.findIcon("icons/arrow2.gif"),SwingConstants.LEADING);
 						instructionLabel.setFont(INSTRUCTION_FONT);
 						list.add(instructionLabel);
 						list.add(getSelectTargetFromUnassignedButton());
@@ -1074,7 +1074,7 @@ public class CombatFrame extends JFrame {
 					}
 					break;
 				case Constants.COMBAT_POSITIONING:
-					instructionLabel = new JLabel("Attack/Maneuver",IconFactory.findIcon("icons/arrow4.gif"),JLabel.LEADING);
+					instructionLabel = new JLabel("Attack/Maneuver",IconFactory.findIcon("icons/arrow4.gif"),SwingConstants.LEADING);
 					instructionLabel.setFont(INSTRUCTION_FONT);
 					list.add(instructionLabel);
 					if (activeCharacterIsHere && activeCharacter.canChangeTactics()) {
@@ -1083,7 +1083,7 @@ public class CombatFrame extends JFrame {
 					break;
 				case Constants.COMBAT_TACTICS:
 					// This stage can ONLY happen if the character has a special item (ie., Battle Bracelets)
-					instructionLabel = new JLabel("Change Tactics",IconFactory.findIcon("icons/arrow4.gif"),JLabel.LEADING);
+					instructionLabel = new JLabel("Change Tactics",IconFactory.findIcon("icons/arrow4.gif"),SwingConstants.LEADING);
 					instructionLabel.setFont(INSTRUCTION_FONT);
 					list.add(instructionLabel);
 					break;
