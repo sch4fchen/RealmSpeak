@@ -211,7 +211,7 @@ public class WeaponEditDialog extends AggressiveDialog {
 			});
 			ComponentTools.lockComponentSize(rangedOption,100,25);
 			line.add(rangedOption);
-			line.add(Box.createHorizontalStrut(10));
+			line.add(Box.createHorizontalStrut(68));
 			line.add(new JLabel("Throwing Weapon:"));
 			line.add(Box.createHorizontalStrut(5));
 			throwingOption = new ButtonPanel(RealmCharacterConstants.YESNO);
