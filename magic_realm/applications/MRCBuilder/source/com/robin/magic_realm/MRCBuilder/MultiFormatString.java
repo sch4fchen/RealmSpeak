@@ -82,7 +82,7 @@ public class MultiFormatString {
 	}
 
 	private void init(String s) {
-		formattedStrings = new Vector();
+		formattedStrings = new Vector<>();
 		addFormattedText(s);
 		initFonts();
 	}
@@ -153,10 +153,8 @@ public class MultiFormatString {
 			g.drawString(s, i, j);
 			return "";
 		}
-		else {
-			g.drawString(s.substring(0, l), i, j);
-			return s.substring(l);
-		}
+		g.drawString(s.substring(0, l), i, j);
+		return s.substring(l);
 	}
 
 	public Font getFont(FormattedString formattedstring) {
@@ -237,7 +235,7 @@ public class MultiFormatString {
 	}
 
 	public static String[] breakupString(String s) {
-		Vector vector = new Vector();
+		Vector<String> vector = new Vector<>();
 		String s1 = new String(s);
 		for (int i = s1.indexOf(" "); i >= 0; i = s1.indexOf(" ")) {
 			vector.addElement(s1.substring(0, i + 1));
@@ -271,5 +269,5 @@ public class MultiFormatString {
 	private Font italicFont;
 	private String fontName;
 	private int fontSize;
-	private Vector formattedStrings;
+	private Vector<FormattedString> formattedStrings;
 }

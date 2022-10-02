@@ -497,7 +497,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	public boolean hasActiveShield() {
 		ArrayList<GameObject> hold = getGameObject().getHold();
 		for (GameObject item : hold) {
-			if (item.hasThisAttribute("shield") && !item.hasThisAttribute(Constants.DESTROYED)) {
+			if (item.hasThisAttribute(Constants.SHIELD) && !item.hasThisAttribute(Constants.DESTROYED)) {
 				return true;
 			}
 		}
@@ -507,7 +507,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	public MonsterPartChitComponent getShield() {
 		ArrayList<GameObject> hold = getGameObject().getHold();
 		for (GameObject item : hold) {
-			if (item.hasThisAttribute("shield")) {
+			if (item.hasThisAttribute(Constants.SHIELD)) {
 				return (MonsterPartChitComponent) RealmComponent.getRealmComponent(item);
 			}
 		}

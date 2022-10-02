@@ -182,10 +182,10 @@ public class WeaponEditDialog extends AggressiveDialog {
 				public void actionPerformed(ActionEvent ev) {
 					boolean ranged = "YES".equals(twoHandedOption.getSelectedItem());
 					if (ranged) {
-						weapon.setThisAttribute("two_handed");
+						weapon.setThisAttribute(Constants.TWO_HANDED);
 					}
 					else {
-						weapon.removeThisAttribute("two_handed");
+						weapon.removeThisAttribute(Constants.TWO_HANDED);
 					}
 				}
 			});
@@ -219,10 +219,10 @@ public class WeaponEditDialog extends AggressiveDialog {
 				public void actionPerformed(ActionEvent ev) {
 					boolean ranged = "YES".equals(throwingOption.getSelectedItem());
 					if (ranged) {
-						weapon.setThisAttribute("throwable");
+						weapon.setThisAttribute(Constants.THROWABLE);
 					}
 					else {
-						weapon.removeThisAttribute("throwable");
+						weapon.removeThisAttribute(Constants.THROWABLE);
 					}
 				}
 			});
@@ -373,6 +373,7 @@ public class WeaponEditDialog extends AggressiveDialog {
 				weapon = model.getData().createNewObject();
 				weapon.setName(name);
 				weapon.setThisAttribute("weapon");
+				weapon.setThisAttribute("item");
 				weapon.setThisAttribute("icon_type","question");
 				weapon.setThisAttribute("icon_folder",RealmCharacterConstants.CUSTOM_ICON_BASE_PATH+"weapons");
 				weapon.setThisAttribute(Constants.WEIGHT,"L");

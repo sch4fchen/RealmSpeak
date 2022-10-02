@@ -49,11 +49,11 @@ public class HallOfFameView extends JPanel {
 	}
 	public void initComponents() {
 		ImageIcon icon = IconFactory.findIcon("images/logo/rs_logo.jpg");
-		JLabel title = new JLabel("Hall of Fame",icon,JLabel.CENTER);
+		JLabel title = new JLabel("Hall of Fame",icon,SwingConstants.CENTER);
 		title.setFont(TITLE_FONT);
 		title.setForeground(Color.blue);
-		title.setVerticalTextPosition(JLabel.BOTTOM);
-		title.setHorizontalTextPosition(JLabel.CENTER);
+		title.setVerticalTextPosition(SwingConstants.BOTTOM);
+		title.setHorizontalTextPosition(SwingConstants.CENTER);
 		add(title,"North");
 		
 		roll = new JEditorPane();
@@ -111,8 +111,7 @@ public class HallOfFameView extends JPanel {
 		sb.append(header);
 		sb.append("Score</th>\n<br>");
 		int n=1;
-		for (Iterator i=goList.getHold().iterator();i.hasNext();) { // should already be in order by score
-			GameObject go = (GameObject)i.next();
+		for (GameObject go : goList.getHold()) { // should already be in order by score
 			sb.append("<tr>");
 			sb.append("<td align=\"center\"><b>");
 			sb.append(n++);
@@ -142,11 +141,11 @@ public class HallOfFameView extends JPanel {
 		sb.append("</table>");
 		return sb.toString();
 	}
-	private String getNextRow(HallOfFame hof,OrderedHashtable hash) {
+	private String getNextRow(HallOfFame hof,OrderedHashtable<String, String> hash) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("<tr>");
 		
-		ArrayList list = new ArrayList(hash.orderedKeys());
+		ArrayList<String> list = new ArrayList<>(hash.orderedKeys());
 		int n = list.size();
 		
 		for (int i=0;i<Math.min(n,2);i++) {
@@ -178,7 +177,7 @@ public class HallOfFameView extends JPanel {
 		
 		sb.append("<table cellpadding=\"0\">");
 		
-		OrderedHashtable hash = new OrderedHashtable();
+		OrderedHashtable<String, String> hash = new OrderedHashtable<>();
 		
 		// Do this one separately, so it gets centered on top
 		hash.put(HallOfFame.CAT_OVERALL,"Overall");
@@ -187,10 +186,9 @@ public class HallOfFameView extends JPanel {
 		// The rest will work out
 		hash.put(HallOfFame.CAT_FIGHTERS,"Fighters");
 		hash.put(HallOfFame.CAT_MAGIC_USERS,"Magic Users");
-		ArrayList names = hof.getAllCharacterNames();
+		ArrayList<String> names = hof.getAllCharacterNames();
 		Collections.sort(names);
-		for (Iterator i=names.iterator();i.hasNext();) {
-			String name = (String)i.next();
+		for (String name : names) {
 			hash.put(name,name+" Top Ten");
 		}
 		while(!hash.isEmpty()) {

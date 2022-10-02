@@ -24,7 +24,7 @@ public class MagicShieldEffect implements ISpellEffect {
 		}
 		magicShield.setThisAttribute(Constants.SPELL_ID, spell.getStringId());
 		magicShield.setThisAttribute("item");
-		magicShield.setThisAttribute("shield");
+		magicShield.setThisAttribute(Constants.SHIELD);
 		magicShield.setThisAttribute("armor");
 		magicShield.setThisAttribute("armor_choice");
 		magicShield.setAttribute("intact", "chit_color", "blue");

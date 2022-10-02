@@ -1116,7 +1116,6 @@ public class RealmGameEditor extends JInternalFrame {
 		box.add(new JButton(removeQuest));
 		assignQuest = new AbstractAction("Assign") {
 			public void actionPerformed(ActionEvent ev) {
-				Hashtable<String, CharacterWrapper> hash = new Hashtable<String, CharacterWrapper>();
 				ListChooser chooser = new ListChooser(new JFrame(), "Select a character:", characters);
 				chooser.setDoubleClickEnabled(true);
 				chooser.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

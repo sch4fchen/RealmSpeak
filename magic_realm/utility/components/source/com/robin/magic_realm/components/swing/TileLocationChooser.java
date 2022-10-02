@@ -25,6 +25,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
 import com.robin.general.swing.AggressiveDialog;
 import com.robin.magic_realm.components.attribute.TileLocation;
@@ -70,7 +71,7 @@ public class TileLocationChooser extends AggressiveDialog {
 			setLocation(lastDisplayArea.x,lastDisplayArea.y);
 		}
 		initMapSize();
-		setDefaultCloseOperation(AggressiveDialog.DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		if (center!=null) {
 			viewer.centerOn(center);
 		}

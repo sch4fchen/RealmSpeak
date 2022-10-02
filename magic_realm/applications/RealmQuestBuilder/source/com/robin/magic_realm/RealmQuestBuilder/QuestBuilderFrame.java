@@ -1119,7 +1119,7 @@ public class QuestBuilderFrame extends JFrame {
 	private JPanel buildQuestStepPanel() {
 		JPanel questStepPanel = new JPanel(new BorderLayout());
 		questStepPanel.add(createHeaderLabelWithToolbar("Quest Steps:", buildStepToolBar()), BorderLayout.NORTH);
-		questSteps = new JTabbedPane(JTabbedPane.LEFT);
+		questSteps = new JTabbedPane(SwingConstants.LEFT);
 		questSteps.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
 				QuestStepPanel panel = (QuestStepPanel) questSteps.getSelectedComponent();
@@ -1194,7 +1194,7 @@ public class QuestBuilderFrame extends JFrame {
 		return stepToolbar;
 	}
 
-	private JPanel createHeaderLabelWithToolbar(String value, JToolBar toolBar) {
+	private static JPanel createHeaderLabelWithToolbar(String value, JToolBar toolBar) {
 		JPanel panel = new JPanel(new GridLayout(2, 1));
 		panel.add(createHeaderLabel(value));
 		panel.add(toolBar);

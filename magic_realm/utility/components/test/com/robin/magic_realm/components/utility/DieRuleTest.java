@@ -18,7 +18,6 @@
 package com.robin.magic_realm.components.utility;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import org.junit.Assert;
 import org.junit.Test;

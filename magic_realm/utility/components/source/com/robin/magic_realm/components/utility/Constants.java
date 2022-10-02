@@ -44,7 +44,7 @@ public class Constants {
 	
 	public static final String APPLICATION_NAME = "Realm Speak";
 	public static final String REALM_SPEAK_VERSION = "1.1.6.5";
-	public static final String REALM_SPEAK_IMAGES_VERSION = "1.1.5.7";
+	public static final String REALM_SPEAK_IMAGES_VERSION = "1.1.6.5";
 	
 	public static final String PLAYER_TO_PLACE = "p_2_p";
 	public static final String PLAYER_TO_PLACE_NEXT = "p_2_p_n";
@@ -145,7 +145,13 @@ public class Constants {
 	public static final String DISCOVERY = "discovery";
 	public static final String DISCOVERED = "discovered";
 	public static final String GLIMPSED_COUNTERS = "glimpsedCounters";
+	public static final String VULNERABILITY = "vulnerability";
 
+	// Used by items
+	public static final String TWO_HANDED = "two_handed";
+	public static final String SHIELD = "shield";
+	public static final String THROWABLE = "throwable";
+	
 	// ThisAttributes for DieRoller - The accompaning value lists tables that are affected
 	public static final String PLUS_ONE = "plus_one";
 	public static final String DIEMOD = "diemod";

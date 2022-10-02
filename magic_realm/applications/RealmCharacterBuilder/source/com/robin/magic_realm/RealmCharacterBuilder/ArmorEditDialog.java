@@ -182,10 +182,10 @@ public class ArmorEditDialog extends AggressiveDialog {
 				public void actionPerformed(ActionEvent ev) {
 					boolean ranged = "YES".equals(twoHandedOption.getSelectedItem());
 					if (ranged) {
-						armor.setThisAttribute("two_handed");
+						armor.setThisAttribute(Constants.TWO_HANDED);
 					}
 					else {
-						armor.removeThisAttribute("two_handed");
+						armor.removeThisAttribute(Constants.TWO_HANDED);
 					}
 				}
 			});
@@ -219,10 +219,10 @@ public class ArmorEditDialog extends AggressiveDialog {
 				public void actionPerformed(ActionEvent ev) {
 					boolean ranged = "YES".equals(throwingOption.getSelectedItem());
 					if (ranged) {
-						armor.setThisAttribute("throwable");
+						armor.setThisAttribute(Constants.THROWABLE);
 					}
 					else {
-						armor.removeThisAttribute("throwable");
+						armor.removeThisAttribute(Constants.THROWABLE);
 					}
 				}
 			});
@@ -256,7 +256,7 @@ public class ArmorEditDialog extends AggressiveDialog {
 		sideEditPanel = new SideEditPanel[2];
 		sideEditPanel[0] = new SideEditPanel(sideLabel[0],"unalerted");
 		sideEditPanels.add(sideEditPanel[0]);
-		sideEditPanel[1] = new SideEditPanel(sideLabel[1],"alerted");
+		sideEditPanel[1] = new SideEditPanel(sideLabel[1],"damaged");
 		sideEditPanels.add(sideEditPanel[1]);
 		mainPanel.add(sideEditPanels);
 		add(mainPanel,"Center");
@@ -373,15 +373,15 @@ public class ArmorEditDialog extends AggressiveDialog {
 				armor = model.getData().createNewObject();
 				armor.setName(name);
 				armor.setThisAttribute("armor");
+				armor.setThisAttribute("item");
 				armor.setThisAttribute("icon_type","question");
 				armor.setThisAttribute("icon_folder",RealmCharacterConstants.CUSTOM_ICON_BASE_PATH+"armor");
+				armor.setThisAttribute(Constants.VULNERABILITY,"L");
 				armor.setThisAttribute(Constants.WEIGHT,"L");
-				armor.setThisAttribute("length","0");
-				armor.setThisAttribute("base_price","1");
-				armor.setAttribute("unalerted","chit_color","white");
-				armor.setAttribute("unalerted","strength","L");
-				armor.setAttribute("alerted","chit_color","red");
-				armor.setAttribute("alerted","strength","L");
+				armor.setAttribute("intact","chit_color","tan");
+				armor.setAttribute("intact","base_price","1");
+				armor.setAttribute("damaged","chit_color","white");
+				armor.setAttribute("damaged","base_price","1");
 				armor.setThisAttribute(Constants.ARMOR_START_LOCATION,"Guard");
 			}
 			
@@ -435,7 +435,7 @@ public class ArmorEditDialog extends AggressiveDialog {
 		sideEditPanels.setVisible(armor!=null && !reservedArmor);
 		loadIconButton.setEnabled(armor!=null && !reservedArmor);
 		
-		newButton.setEnabled(false);
+		newButton.setEnabled(armor==null);
 		pickButton.setEnabled(armor==null);
 		clearButton.setEnabled(armor!=null);
 	}
@@ -526,7 +526,7 @@ public class ArmorEditDialog extends AggressiveDialog {
 			sharpChoice.setEnabled(val);
 		}
 		public void updateImage() {
-			if ("unalerted".equals(sideName)) {
+			if ("intact".equals(sideName)) {
 				iconLabel.setIcon(armorComponent.getIcon());
 			}
 			else {

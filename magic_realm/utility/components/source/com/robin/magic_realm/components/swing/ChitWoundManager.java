@@ -22,7 +22,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -55,8 +54,7 @@ public class ChitWoundManager extends ChitManager {
 			if (clickedChit!=null) {
 				if (clickedChit.isColor()) {
 					// Color chits can only be wounded if there are NO woundable non-color chits
-					for (Iterator i=activeChits.getAllChits().iterator();i.hasNext();) {
-						ChitComponent chit = (ChitComponent)i.next();
+					for (ChitComponent chit : activeChits.getAllChits()) {
 						if (chit.isActionChit()) {
 							CharacterActionChitComponent aChit = (CharacterActionChitComponent)chit;
 							if (!aChit.isColor()) {
@@ -130,11 +128,10 @@ public class ChitWoundManager extends ChitManager {
 		CharacterWrapper wrapper = new CharacterWrapper(character);
 		
 		// artifically fatigue and wound some chits
-		ArrayList list = new ArrayList(wrapper.getAllChits());
+		ArrayList<CharacterActionChitComponent> list = new ArrayList<>(wrapper.getAllChits());
 		Collections.sort(list);
 		int n=0;
-		for (Iterator i=list.iterator();i.hasNext();) {
-			CharacterActionChitComponent aChit = (CharacterActionChitComponent)i.next();
+		for (CharacterActionChitComponent aChit : list) {
 			System.out.println((n++)+" "+aChit.getGameObject().getName());
 		}
 		CharacterActionChitComponent aChit = (CharacterActionChitComponent)list.get(3);

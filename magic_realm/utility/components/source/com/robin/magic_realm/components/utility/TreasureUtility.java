@@ -186,13 +186,13 @@ public class TreasureUtility {
 				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(thing.getGameData());
 				boolean twoHandedWeaponResctriction = hostPrefs.hasPref(Constants.OPT_TWO_HANDED_WEAPONS) && !character.affectedByKey(Constants.STRONG);
 				boolean dualWielding = hostPrefs.hasPref(Constants.OPT_DUAL_WIELDING) || character.affectedByKey(Constants.DUAL_WIELDING);
-				if (thing.hasThisAttribute("shield") && (twoHandedWeaponResctriction || dualWielding)) {
+				if (thing.hasThisAttribute(Constants.SHIELD) && (twoHandedWeaponResctriction || dualWielding)) {
 					boolean secondWeaponActive = false;
 					for (GameObject otherThing : activeInventory) {
 						if (otherThing.hasThisAttribute("weapon") || (otherThing.hasThisAttribute(Constants.POTION) && otherThing.hasThisAttribute("attack"))) {
 							if (twoHandedWeaponResctriction) {
-								boolean twoHandedMissleWeaponWithFumbleRule = !hostPrefs.hasPref(Constants.OPT_FUMBLE) && otherThing.hasThisAttribute("two_handed");
-								boolean towHandedWeaponWithoutFumbleRule = hostPrefs.hasPref(Constants.OPT_FUMBLE) && otherThing.hasThisAttribute("two_handed") && otherThing.hasThisAttribute("missile");
+								boolean twoHandedMissleWeaponWithFumbleRule = !hostPrefs.hasPref(Constants.OPT_FUMBLE) && otherThing.hasThisAttribute(Constants.TWO_HANDED);
+								boolean towHandedWeaponWithoutFumbleRule = hostPrefs.hasPref(Constants.OPT_FUMBLE) && otherThing.hasThisAttribute(Constants.TWO_HANDED) && otherThing.hasThisAttribute("missile");
 								if (twoHandedMissleWeaponWithFumbleRule || towHandedWeaponWithoutFumbleRule) {
 									JOptionPane.showMessageDialog(parentFrame,"The "+thing.getName()+" can only be activated with a one-handed weapon at the same time.");
 									return false;
@@ -212,14 +212,14 @@ public class TreasureUtility {
 				for (GameObject otherThing : activeInventory) {
 					if (otherThing.hasThisAttribute("weapon") || (otherThing.hasThisAttribute(Constants.POTION) && otherThing.hasThisAttribute("attack"))) {
 						if ((hostPrefs.hasPref(Constants.OPT_DUAL_WIELDING) || character.affectedByKey(Constants.DUAL_WIELDING))
-							&& ((character.affectedByKey(Constants.STRONG) && (!thing.hasThisAttribute("two_handed") || !thing.hasThisAttribute("missile")) && (!otherThing.hasThisAttribute("two_handed") || !otherThing.hasThisAttribute("missile")))
+							&& ((character.affectedByKey(Constants.STRONG) && (!thing.hasThisAttribute(Constants.TWO_HANDED) || !thing.hasThisAttribute("missile")) && (!otherThing.hasThisAttribute(Constants.TWO_HANDED) || !otherThing.hasThisAttribute("missile")))
 							||
-							(!thing.hasThisAttribute("two_handed") && !otherThing.hasThisAttribute("two_handed")
+							(!thing.hasThisAttribute(Constants.TWO_HANDED) && !otherThing.hasThisAttribute(Constants.TWO_HANDED)
 							&& (character.getVulnerability().strongerThan((RealmComponent.getRealmComponent(thing)).getWeight())
 							&& character.getVulnerability().strongerThan((RealmComponent.getRealmComponent(otherThing)).getWeight()))))) {
 							boolean secondWeaponActive = false;
 							for (GameObject activeItem : activeInventory) {
-								if (activeItem.hasThisAttribute("shield")) {
+								if (activeItem.hasThisAttribute(Constants.SHIELD)) {
 									activeItem.removeThisAttribute(Constants.ACTIVATED);
 								}
 								if (activeItem.hasThisAttribute("weapon") || (otherThing.hasThisAttribute(Constants.POTION) && otherThing.hasThisAttribute("attack"))) {
@@ -248,9 +248,9 @@ public class TreasureUtility {
 						}
 					}
 					
-					if (hostPrefs.hasPref(Constants.OPT_TWO_HANDED_WEAPONS) && otherThing.hasThisAttribute("shield") && !character.affectedByKey(Constants.STRONG)) {
-						boolean twoHandedMissleWeaponWithFumbleRule = !hostPrefs.hasPref(Constants.OPT_FUMBLE) && thing.hasThisAttribute("two_handed");
-						boolean towHandedWeaponWithoutFumbleRule = hostPrefs.hasPref(Constants.OPT_FUMBLE) && thing.hasThisAttribute("two_handed") && thing.hasThisAttribute("missile");
+					if (hostPrefs.hasPref(Constants.OPT_TWO_HANDED_WEAPONS) && otherThing.hasThisAttribute(Constants.SHIELD) && !character.affectedByKey(Constants.STRONG)) {
+						boolean twoHandedMissleWeaponWithFumbleRule = !hostPrefs.hasPref(Constants.OPT_FUMBLE) && thing.hasThisAttribute(Constants.TWO_HANDED);
+						boolean towHandedWeaponWithoutFumbleRule = hostPrefs.hasPref(Constants.OPT_FUMBLE) && thing.hasThisAttribute(Constants.TWO_HANDED) && thing.hasThisAttribute("missile");
 						if (twoHandedMissleWeaponWithFumbleRule || towHandedWeaponWithoutFumbleRule) {
 							otherThing.removeThisAttribute(Constants.ACTIVATED);
 						}

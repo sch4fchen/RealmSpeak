@@ -210,9 +210,9 @@ public class HexMap extends JComponent implements Scrollable {
 		}
 	}
 	
-	public boolean addSet(Vector positionChoices,HexSet set,int placementStyle) {
-		Vector overlapping = new Vector();
-		Vector allGoodCenters = new Vector();
+	public boolean addSet(Vector<HexMapPoint> positionChoices,HexSet set,int placementStyle) {
+		Vector<HexMapPoint> overlapping = new Vector<>();
+		Vector<HexMapPoint> allGoodCenters = new Vector<>();
 		for (int i=0;i<positionChoices.size();i++) {
 			boolean isGood = false;
 			HexMapPoint pos = (HexMapPoint)positionChoices.elementAt(i);

@@ -132,8 +132,8 @@ public class SpellSelector extends AggressiveDialog {
 		getContentPane().setLayout(new BorderLayout());
 		
 		enchantPanel = new JPanel(new BorderLayout());
-			JLabel enchantLabel = new JLabel("Enchant",JLabel.CENTER);
-			enchantLabel.setVerticalAlignment(JLabel.CENTER);
+			JLabel enchantLabel = new JLabel("Enchant",SwingConstants.CENTER);
+			enchantLabel.setVerticalAlignment(SwingConstants.CENTER);
 			enchantLabel.setFont(INSTRUCTION_FONT);
 			ComponentTools.lockComponentSize(enchantLabel,LABEL_HEADER_WIDTH,100);
 		enchantPanel.add(enchantLabel,"West");
@@ -149,7 +149,7 @@ public class SpellSelector extends AggressiveDialog {
 				}
 				String seventhDayMagic = calendar.getColorMagicName(month,seventhDay);
 				if (seventhDayMagic!=null && seventhDayMagic.trim().length()>0) {
-					JLabel label = new JLabel("Next MAGIC day is "+seventhDayMagic,JLabel.CENTER);
+					JLabel label = new JLabel("Next MAGIC day is "+seventhDayMagic,SwingConstants.CENTER);
 					label.setFont(new Font("Dialog",Font.BOLD|Font.ITALIC,12));
 					label.setForeground(Color.blue);
 					enchantPanel.add(label,"North");
@@ -158,8 +158,8 @@ public class SpellSelector extends AggressiveDialog {
 		getContentPane().add(enchantPanel,"North");
 		
 		pickPanel = new JPanel(new BorderLayout());
-			JLabel pickLabel = new JLabel("Pick",JLabel.CENTER);
-			pickLabel.setVerticalAlignment(JLabel.CENTER);
+			JLabel pickLabel = new JLabel("Pick",SwingConstants.CENTER);
+			pickLabel.setVerticalAlignment(SwingConstants.CENTER);
 			pickLabel.setFont(INSTRUCTION_FONT);
 			ComponentTools.lockComponentSize(pickLabel,LABEL_HEADER_WIDTH,100);
 		pickPanel.add(pickLabel,"West");

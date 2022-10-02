@@ -25,6 +25,7 @@ import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
 import com.robin.general.swing.ButtonOptionDialog;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.utility.MonsterCreator;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
 
@@ -106,24 +107,24 @@ public class SummonElemental extends MonsterTable {
 		switch(type) {
 			case Earth:
 				getMonsterCreator().setupGameObject(elemental,"Earth Elemental","earth","T",true);
-				getMonsterCreator().setupSide(elemental,"light","T",0,4,0,6,"tan");
-				getMonsterCreator().setupSide(elemental,"dark","RED",0,4,0,6,"red");
+				MonsterCreator.setupSide(elemental,"light","T",0,4,0,6,"tan");
+				MonsterCreator.setupSide(elemental,"dark","RED",0,4,0,6,"red");
 				elemental.setAttribute("dark","pins");
 				break;
 			case Fire:
 				getMonsterCreator().setupGameObject(elemental,"Fire Elemental","fire","H",false);
-				getMonsterCreator().setupSide(elemental,"light","H",2,6,1,4,"lightorange");
-				getMonsterCreator().setupSide(elemental,"dark","H",1,2,1,6,"orange");
+				MonsterCreator.setupSide(elemental,"light","H",2,6,1,4,"lightorange");
+				MonsterCreator.setupSide(elemental,"dark","H",1,2,1,6,"orange");
 				break;
 			case Water:
 				getMonsterCreator().setupGameObject(elemental,"Water Elemental","water","H",false);
-				getMonsterCreator().setupSide(elemental,"light","H",0,4,0,2,"lightblue");
-				getMonsterCreator().setupSide(elemental,"dark","H",0,2,0,4,"blue");
+				MonsterCreator.setupSide(elemental,"light","H",0,4,0,2,"lightblue");
+				MonsterCreator.setupSide(elemental,"dark","H",0,2,0,4,"blue");
 				break;
 			case Air:
 				getMonsterCreator().setupGameObject(elemental,"Air Elemental","air","M",false,true);
-				getMonsterCreator().setupSide(elemental,"light","M",0,3,0,4,"white");
-				getMonsterCreator().setupSide(elemental,"dark","H",0,4,0,4,"gray");
+				MonsterCreator.setupSide(elemental,"light","M",0,3,0,4,"white");
+				MonsterCreator.setupSide(elemental,"dark","H",0,4,0,4,"gray");
 				break;
 		}
 		return elemental;

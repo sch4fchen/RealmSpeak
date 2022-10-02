@@ -22,6 +22,7 @@ import javax.swing.JFrame;
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.utility.MonsterCreator;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
 
@@ -79,34 +80,34 @@ public class SummonAnimal extends MonsterTable {
 		switch(type) {
 			case Basilisk:
 				getMonsterCreator().setupGameObject(animal,"Basilisk","basilisk","T",true);
-				getMonsterCreator().setupSide(animal,"light","T",0,5,0,6,"lightgreen");
-				getMonsterCreator().setupSide(animal,"dark","RED",0,5,0,6,"red");
+				MonsterCreator.setupSide(animal,"light","T",0,5,0,6,"lightgreen");
+				MonsterCreator.setupSide(animal,"dark","RED",0,5,0,6,"red");
 				animal.setAttribute("dark","pins");
 				break;
 			case Eagle:
 				getMonsterCreator().setupGameObject(animal,"Giant Eagle","eagle","H",false,true);
-				getMonsterCreator().setupSide(animal,"light","M",0,3,0,4,"lightgreen");
-				getMonsterCreator().setupSide(animal,"dark","M",0,3,0,4,"forestgreen");
+				MonsterCreator.setupSide(animal,"light","M",0,3,0,4,"lightgreen");
+				MonsterCreator.setupSide(animal,"dark","M",0,3,0,4,"forestgreen");
 				break;
 			case Bear:
 				getMonsterCreator().setupGameObject(animal,"Bear","bear","H",false);
-				getMonsterCreator().setupSide(animal,"light","H",0,3,0,4,"lightgreen");
-				getMonsterCreator().setupSide(animal,"dark","H",0,3,0,4,"forestgreen");
+				MonsterCreator.setupSide(animal,"light","H",0,3,0,4,"lightgreen");
+				MonsterCreator.setupSide(animal,"dark","H",0,3,0,4,"forestgreen");
 				break;
 			case Wolf:
 				getMonsterCreator().setupGameObject(animal,"Wolf","wolf","M",false);
-				getMonsterCreator().setupSide(animal,"light","M",0,4,0,4,"lightgreen");
-				getMonsterCreator().setupSide(animal,"dark","M",0,4,0,4,"forestgreen");
+				MonsterCreator.setupSide(animal,"light","M",0,4,0,4,"lightgreen");
+				MonsterCreator.setupSide(animal,"dark","M",0,4,0,4,"forestgreen");
 				break;
 			case Hawk:
 				getMonsterCreator().setupGameObject(animal,"Hawk","hawk","L",false,true);
-				getMonsterCreator().setupSide(animal,"light","L",0,2,0,2,"lightgreen");
-				getMonsterCreator().setupSide(animal,"dark","L",0,2,0,2,"forestgreen");
+				MonsterCreator.setupSide(animal,"light","L",0,2,0,2,"lightgreen");
+				MonsterCreator.setupSide(animal,"dark","L",0,2,0,2,"forestgreen");
 				break;
 			case Squirrel:
 				getMonsterCreator().setupGameObject(animal,"Squirrel","squirrel","L",false);
-				getMonsterCreator().setupSide(animal,"light",null,0,0,0,2,"lightgreen");
-				getMonsterCreator().setupSide(animal,"dark",null,0,0,0,2,"forestgreen");
+				MonsterCreator.setupSide(animal,"light",null,0,0,0,2,"lightgreen");
+				MonsterCreator.setupSide(animal,"dark",null,0,0,0,2,"forestgreen");
 				break;
 		}
 		return animal;

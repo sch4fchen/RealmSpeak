@@ -61,7 +61,7 @@ public class PhaseManager {
 	private int ponyMoves = 0;
 	private int extraCavePhase = 0; // These get added to basic when entering a cave
 	private int extraDwellingPhase = 0; // These get added to basic when entering a dwelling
-	private HashLists freeActions = new HashLists(false); // These key Strings to GameObjects, where the string is like "M" or "SP" or "H", etc.
+	private HashLists<String, GameObject> freeActions = new HashLists<>(false); // These key Strings to GameObjects, where the string is like "M" or "SP" or "H", etc.
 	private ArrayList<GameObject> allObjects = new ArrayList<>();
 	private ArrayList<GameObject> usedObjects = new ArrayList<>();
 	
@@ -459,12 +459,10 @@ public class PhaseManager {
 	public void removeLocationSpecificFreeActions(TileLocation tl) {
 		// Moved, so make sure that any free actions gained by location are removed
 		ArrayList<String> removeKeys = new ArrayList<>();
-		for (Iterator i=freeActions.keySet().iterator();i.hasNext();) {
-			String key = (String)i.next();
-			ArrayList remove = new ArrayList();
-			List list = freeActions.getList(key);
-			for (Iterator n=list.iterator();n.hasNext();) {
-				Object o = n.next();
+		for (String key : freeActions.keySet()) {
+			ArrayList<Requirement> remove = new ArrayList<>();
+			List<GameObject> list = freeActions.getList(key);
+			for (Object o : list) {
 				if (o instanceof Requirement) {
 					Requirement r = (Requirement)o;
 					if (!usedObjects.contains(r.getGameObject())) {

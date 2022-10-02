@@ -17,8 +17,6 @@
  */
 package com.robin.magic_realm.RealmBattle.targeting;
 
-import java.util.Iterator;
-
 import javax.swing.JOptionPane;
 
 import com.robin.game.objects.GameObject;

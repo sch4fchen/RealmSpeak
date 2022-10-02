@@ -143,7 +143,7 @@ public class WeaponChitComponent extends RoundChitComponent {
 		return gameObject.hasThisAttribute("missile");
 	}
 	public boolean isThrowable() {
-		return gameObject.hasThisAttribute("throwable");
+		return gameObject.hasThisAttribute(Constants.THROWABLE);
 	}
 	public void paintComponent(Graphics g1) {
 		Graphics2D g = (Graphics2D)g1;

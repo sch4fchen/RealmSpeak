@@ -43,7 +43,7 @@ public class VictoryConditionButton extends JPanel {
 	
 	public VictoryConditionButton(String title,String description) {
 		setLayout(new BorderLayout());
-		titleLabel = new JLabel(title,JLabel.CENTER);
+		titleLabel = new JLabel(title,SwingConstants.CENTER);
 		titleLabel.setFont(font);
 		add(titleLabel,BorderLayout.NORTH);
 		descriptionField = new JTextPane();

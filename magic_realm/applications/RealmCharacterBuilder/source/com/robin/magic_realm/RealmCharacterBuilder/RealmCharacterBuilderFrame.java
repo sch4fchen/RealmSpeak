@@ -290,7 +290,7 @@ public class RealmCharacterBuilderFrame extends JFrame {
 			Window window = new Window(this);
 			window.setSize(160,80);
 			window.setLayout(new BorderLayout());
-			JLabel label = new JLabel("Saved",JLabel.CENTER);
+			JLabel label = new JLabel("Saved",SwingConstants.CENTER);
 			label.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createRaisedBevelBorder(),BorderFactory.createLineBorder(Color.green,4)));
 			label.setFont(new Font("Dialog",Font.BOLD,18));
 			window.add(label,"Center");

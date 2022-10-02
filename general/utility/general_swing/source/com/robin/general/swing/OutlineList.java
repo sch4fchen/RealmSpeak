@@ -25,7 +25,7 @@ import javax.swing.table.*;
 import java.util.*;
 
 public class OutlineList extends JPanel implements ActionListener {
-	Vector data;
+	Vector<OutlineEntry> data;
 
 	JTable table;
 	JButton addButton;
@@ -39,15 +39,15 @@ public class OutlineList extends JPanel implements ActionListener {
 		super(new BorderLayout());
 		init();
 	}
-	public Vector getData() {
+	public Vector<OutlineEntry> getData() {
 		return data;
 	}
-	public void setData(Vector d) {
+	public void setData(Vector<OutlineEntry> d) {
 		data = d;
 		((AbstractTableModel)table.getModel()).fireTableDataChanged();
 	}
 	public void reset() {
-		setData(new Vector());
+		setData(new Vector<>());
 	}
 	public void init() {
 		table = new JTable();
