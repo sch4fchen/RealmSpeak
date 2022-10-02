@@ -1988,6 +1988,7 @@ public class BattleModel {
 								((WeaponChitComponent)thingRc).setAlerted(false);
 							}
 						}
+						CombatWrapper.clearAllCombatInfo(thing);
 						battleLocation.clearing.add(thing, character);
 					}
 				}
