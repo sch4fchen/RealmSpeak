@@ -56,6 +56,7 @@ public class WeaponEditDialog extends AggressiveDialog {
 	private IntegerField lengthField;
 	private IntegerField priceField;
 	private ButtonPanel rangedOption;
+	private ButtonPanel throwingOption;
 	
 	private static final String[] STARTING_LOCATION_OPTION = {		
 		"None",
@@ -172,8 +173,11 @@ public class WeaponEditDialog extends AggressiveDialog {
 			});
 			ComponentTools.lockComponentSize(priceField,40,25);
 			line.add(priceField);
-			line.add(Box.createHorizontalStrut(10));
-			line.add(new JLabel("Missile Weapon:"));
+			line.add(Box.createHorizontalGlue());
+		infoPanel.add(line);
+		infoPanel.add(Box.createVerticalStrut(5));
+		infoPanel.add(Box.createVerticalGlue());
+			line = group.createLabelLine("Missile Weapon");
 			line.add(Box.createHorizontalStrut(5));
 			rangedOption = new ButtonPanel(RealmCharacterConstants.YESNO);
 			rangedOption.addActionListener(new ActionListener() {
@@ -189,6 +193,23 @@ public class WeaponEditDialog extends AggressiveDialog {
 			});
 			ComponentTools.lockComponentSize(rangedOption,100,25);
 			line.add(rangedOption);
+			line.add(Box.createHorizontalStrut(10));
+			line.add(new JLabel("Throwing Weapon:"));
+			line.add(Box.createHorizontalStrut(5));
+			throwingOption = new ButtonPanel(RealmCharacterConstants.YESNO);
+			throwingOption.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					boolean ranged = "YES".equals(throwingOption.getSelectedItem());
+					if (ranged) {
+						weapon.setThisAttribute("throwable");
+					}
+					else {
+						weapon.removeThisAttribute("throwable");
+					}
+				}
+			});
+			ComponentTools.lockComponentSize(throwingOption,100,25);
+			line.add(throwingOption);
 			line.add(Box.createHorizontalGlue());
 		infoPanel.add(line);
 			ButtonGroup slGroup = new ButtonGroup();
