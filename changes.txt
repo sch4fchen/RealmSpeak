@@ -2,6 +2,7 @@ Version 1.1.6.5
 NEW FEATURES:
 # More community custom characters (with custom graphics)
 # Optional Rule and character ability: Throwing melee weapons
+# Character Editor: Option for throwing and two-handed weapons
 
 Version 1.1.6.4
 QUEST UPDATE:

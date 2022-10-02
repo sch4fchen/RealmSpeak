@@ -57,6 +57,7 @@ public class WeaponEditDialog extends AggressiveDialog {
 	private IntegerField priceField;
 	private ButtonPanel rangedOption;
 	private ButtonPanel throwingOption;
+	private ButtonPanel twoHandedOption;
 	
 	private static final String[] STARTING_LOCATION_OPTION = {		
 		"None",
@@ -173,6 +174,23 @@ public class WeaponEditDialog extends AggressiveDialog {
 			});
 			ComponentTools.lockComponentSize(priceField,40,25);
 			line.add(priceField);
+			line.add(Box.createHorizontalStrut(10));
+			line.add(new JLabel("Two-handed Weapon:"));
+			line.add(Box.createHorizontalStrut(5));
+			twoHandedOption = new ButtonPanel(RealmCharacterConstants.YESNO);
+			twoHandedOption.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					boolean ranged = "YES".equals(twoHandedOption.getSelectedItem());
+					if (ranged) {
+						weapon.setThisAttribute("two_handed");
+					}
+					else {
+						weapon.removeThisAttribute("two_handed");
+					}
+				}
+			});
+			ComponentTools.lockComponentSize(twoHandedOption,100,25);
+			line.add(twoHandedOption);			
 			line.add(Box.createHorizontalGlue());
 		infoPanel.add(line);
 		infoPanel.add(Box.createVerticalStrut(5));
