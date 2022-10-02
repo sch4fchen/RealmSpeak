@@ -361,7 +361,7 @@ public class GameWrapper extends GameObjectWrapper {
 			ArrayList<GameObject> list = pool.find(getKeyVals());
 			if (list.size()==1) {
 				GameObject gw = list.get(0);
-				GAME_ID = new Long(gw.getId());
+				GAME_ID = Long.valueOf(gw.getId());
 				return new GameWrapper(gw);
 			}
 		}
@@ -381,7 +381,7 @@ public class GameWrapper extends GameObjectWrapper {
 		
 		GameWrapper game = new GameWrapper(go);
 		game.setInitialValues();
-		GAME_ID = new Long(go.getId());
+		GAME_ID = Long.valueOf(go.getId());
 		
 		return game;
 	}

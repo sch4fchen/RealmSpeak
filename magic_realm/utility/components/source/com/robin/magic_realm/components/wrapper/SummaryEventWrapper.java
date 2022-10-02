@@ -60,7 +60,7 @@ public class SummaryEventWrapper extends GameObjectWrapper {
 				gm.setName(SUMMARY_EVENT_WRAPPER);
 				gm.setThisAttribute(SUMMARY_EVENT_WRAPPER);
 			}
-			SEW_ID = new Long(gm.getId());
+			SEW_ID = Long.valueOf(gm.getId());
 			return new SummaryEventWrapper(gm);
 		}
 		return new SummaryEventWrapper(data.getGameObject(SEW_ID));

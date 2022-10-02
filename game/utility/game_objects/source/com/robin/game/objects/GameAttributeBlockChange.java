@@ -45,7 +45,7 @@ public class GameAttributeBlockChange extends GameObjectChange {
 		this.to = inTo;
 	}
 	public void copyFrom(GameObject go,String blockName) {
-		sourceId = new Long(go.getId());
+		sourceId = Long.valueOf(go.getId());
 		from = blockName;
 		to = null;
 	}

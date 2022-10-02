@@ -141,7 +141,7 @@ public class RealmObjectMaster {
 		if (map==null) {
 			map = new HashMap<>();
 		}
-		Long id = new Long(data.getDataId());
+		Long id = Long.valueOf(data.getDataId());
 		RealmObjectMaster rom = map.get(id);
 		if (rom==null) {
 			rom = new RealmObjectMaster(data);

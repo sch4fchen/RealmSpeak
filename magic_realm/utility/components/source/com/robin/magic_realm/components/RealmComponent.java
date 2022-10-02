@@ -940,7 +940,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		}
 		if (comp != null && cache) {
 			Hashtable<Comparable, Serializable> componentHash = getComponentHash(obj);
-			componentHash.put(new Long(obj.getId()), comp);
+			componentHash.put(Long.valueOf(obj.getId()), comp);
 		}
 		return comp;
 	}
@@ -974,7 +974,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		if (dataComponentHash == null) {
 			dataComponentHash = new Hashtable<Long, Hashtable<Comparable<String>, Serializable>>();
 		}
-		Long dataid = new Long(data.getDataId());
+		Long dataid = Long.valueOf(data.getDataId());
 		Hashtable componentHash = (Hashtable) dataComponentHash.get(dataid);
 		if (componentHash == null) {
 			componentHash = new Hashtable<>();
@@ -1016,7 +1016,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		RealmComponent comp = null;
 		Hashtable componentHash = getComponentHash(obj);
 		if (componentHash != null) {
-			comp = (RealmComponent) componentHash.get(new Long(obj.getId()));
+			comp = (RealmComponent) componentHash.get(Long.valueOf(obj.getId()));
 		}
 		if (comp == null) {
 			comp = createRealmComponent(obj,true);

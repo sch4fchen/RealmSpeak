@@ -341,7 +341,7 @@ public class HostPrefWrapper extends GameObjectWrapper {
 			Collection<GameObject> c = pool.extract(HostPrefWrapper.getKeyVals());
 			if (c!=null && c.size()==1) {
 				GameObject hp = c.iterator().next();
-				HOST_PREF_ID = new Long(hp.getId());
+				HOST_PREF_ID = Long.valueOf(hp.getId());
 				return new HostPrefWrapper(hp);
 			}
 		}

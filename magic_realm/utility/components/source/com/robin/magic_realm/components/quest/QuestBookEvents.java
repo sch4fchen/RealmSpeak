@@ -105,7 +105,7 @@ public class QuestBookEvents extends GameObjectWrapper {
 		go.setThisAttribute(QUEST_BOOK_KEY);
 		
 		QuestBookEvents book = new QuestBookEvents(go);
-		BOOK_ID = new Long(go.getId());
+		BOOK_ID = Long.valueOf(go.getId());
 		
 		return book;
 	}

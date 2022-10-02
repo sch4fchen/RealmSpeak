@@ -64,7 +64,7 @@ public class GameObjectTableModel extends AbstractTableModel implements ColumnSi
 			GameObject obj = data.get(row);
 			switch(col) {
 				case 0:
-					return new Long(obj.getId());
+					return Long.valueOf(obj.getId());
 				case 1:
 					return obj.getName();
 				case 2:

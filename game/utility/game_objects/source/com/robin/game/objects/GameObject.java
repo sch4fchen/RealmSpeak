@@ -417,7 +417,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		copyAttributesFrom(obj);
 		needHoldResolved = true;
 		for (GameObject held : obj.getHold()) {
-			holdIds.add(new Long(held.getId()));
+			holdIds.add(Long.valueOf(held.getId()));
 		}
 	}
 

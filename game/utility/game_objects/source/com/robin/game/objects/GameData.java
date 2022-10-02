@@ -203,7 +203,7 @@ public class GameData extends ModifyableObject implements Serializable {
 		return scenarioShuffleQuestDeck;
 	}
 	public GameObject getGameObject(long id) {
-		return getGameObject(new Long(id));
+		return getGameObject(Long.valueOf(id));
 	}
 	public GameObject getGameObject(Long id) {
 		return gameObjectIDHash.get(id);
@@ -319,7 +319,7 @@ public class GameData extends ModifyableObject implements Serializable {
 		cumulative_id = 0;
 		for (GameObject go : gameObjects) {
 			go.setId(cumulative_id++);
-			gameObjectIDHash.put(new Long(go.getId()),go);
+			gameObjectIDHash.put(Long.valueOf(go.getId()),go);
 		}
 		
 		rebuildFilteredGameObjects();
@@ -340,7 +340,7 @@ public class GameData extends ModifyableObject implements Serializable {
 		cumulative_id = startId;
 		for (GameObject go : gameObjects) {
 			go.setId(cumulative_id++);
-			gameObjectIDHash.put(new Long(go.getId()),go);
+			gameObjectIDHash.put(Long.valueOf(go.getId()),go);
 		}
 		
 		rebuildFilteredGameObjects();
@@ -501,7 +501,7 @@ public class GameData extends ModifyableObject implements Serializable {
 			GameObject newObj = new GameObject(this);
 			newObj.setXML(obj);
 			gameObjects.add(newObj);
-			gameObjectIDHash.put(new Long(newObj.getId()),newObj);
+			gameObjectIDHash.put(Long.valueOf(newObj.getId()),newObj);
 			gameObjectNameHash.put(newObj.getName(),newObj);
 		}
 		
@@ -646,7 +646,7 @@ public class GameData extends ModifyableObject implements Serializable {
 //			}
 			
 			gameObjects.remove(index);
-			gameObjectIDHash.remove(new Long(obj.getId()));
+			gameObjectIDHash.remove(Long.valueOf(obj.getId()));
 			gameObjectNameHash.removeKeyValue(obj.getName(),obj);
 			rebuildFilteredGameObjects();
 			setModified(true);
@@ -669,7 +669,7 @@ public class GameData extends ModifyableObject implements Serializable {
 			}
 			GameObject obj = new GameObject(this,anId);
 			gameObjects.add(obj);
-			gameObjectIDHash.put(new Long(obj.getId()),obj);
+			gameObjectIDHash.put(Long.valueOf(obj.getId()),obj);
 			gameObjectNameHash.put(obj.getName(),obj);
 			rebuildFilteredGameObjects();
 			setModified(true);
@@ -699,7 +699,7 @@ public class GameData extends ModifyableObject implements Serializable {
 		if (old!=null) {
 			int oldIndex = gameObjects.indexOf(old);
 			gameObjects.set(oldIndex,obj);
-			gameObjectIDHash.put(new Long(obj.getId()),obj);
+			gameObjectIDHash.put(Long.valueOf(obj.getId()),obj);
 			gameObjectNameHash.removeKeyValue(old.getName(),old);
 			gameObjectNameHash.put(obj.getName(),obj);
 			return true;
@@ -897,7 +897,7 @@ public class GameData extends ModifyableObject implements Serializable {
 		// Add new objects first (do separately from attribute builds in case they reference each other!)
 		ArrayList<GameObject> newObjects = new ArrayList<>();
 		for (GameObject otherGo : other.gameObjects) {
-			if (!gameObjectIDHash.containsKey(new Long(otherGo.getId()))) {
+			if (!gameObjectIDHash.containsKey(Long.valueOf(otherGo.getId()))) {
 //				if (otherGo.getId()<maxid) {
 //					throw new IllegalStateException("This is not good");
 //				}

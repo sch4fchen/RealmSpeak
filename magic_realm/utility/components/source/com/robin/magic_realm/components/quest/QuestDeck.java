@@ -222,7 +222,7 @@ public class QuestDeck extends GameObjectWrapper {
 		go.setThisAttribute(QUEST_DECK_KEY);
 		
 		QuestDeck deck = new QuestDeck(go);
-		DECK_ID = new Long(go.getId());
+		DECK_ID = Long.valueOf(go.getId());
 		
 		return deck;
 	}

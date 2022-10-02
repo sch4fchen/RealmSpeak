@@ -79,7 +79,7 @@ public class TimeStat {
 				all = new ArrayList<>();
 				times.put(key,all);
 			}
-			all.add(new Long(diff));
+			all.add(Long.valueOf(diff));
 		}
 	}
 	

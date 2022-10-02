@@ -326,7 +326,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		if (spellsToRestore != null) {
 			GameData data = this.getGameData();
 			for (String spellId : spellsToRestore) {
-				SpellWrapper spell = new SpellWrapper(data.getGameObject(new Long(spellId)));
+				SpellWrapper spell = new SpellWrapper(data.getGameObject(Long.valueOf(spellId)));
 				spell.restoreSpell();
 			}
 		}

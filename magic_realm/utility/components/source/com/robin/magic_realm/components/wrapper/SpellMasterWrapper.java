@@ -461,7 +461,7 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 				gm.setName(SPELL_MASTER_KEY);
 				gm.setThisAttribute(SPELL_MASTER_KEY);
 			}
-			MASTER_ID = new Long(gm.getId());
+			MASTER_ID = Long.valueOf(gm.getId());
 			return new SpellMasterWrapper(gm);
 		}
 		return new SpellMasterWrapper(data.getGameObject(MASTER_ID));

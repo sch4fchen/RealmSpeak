@@ -114,9 +114,9 @@ public class TileEditComponent extends TileComponent {
 	}
 	
 	protected String encodePoint(Point p) {
-		String px = new Double((p.x*100.0)/TILE_WIDTH).toString()+". ";
+		String px = Double.valueOf((p.x*100.0)/TILE_WIDTH).toString()+". ";
 		px = px.substring(0,px.indexOf(".")+2);
-		String py = new Double((p.y*100.0)/TILE_HEIGHT).toString()+". ";
+		String py = Double.valueOf((p.y*100.0)/TILE_HEIGHT).toString()+". ";
 		py = py.substring(0,py.indexOf(".")+2);
 		return px+","+py;
 	}
