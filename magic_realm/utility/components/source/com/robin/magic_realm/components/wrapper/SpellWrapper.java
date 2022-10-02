@@ -684,7 +684,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	public Integer getLength() {
 		if (getGameObject().hasThisAttribute("length")) {
 			int len = getGameObject().getThisInt("length");
-			return new Integer(len);
+			return Integer.valueOf(len);
 		}
 		return null;
 	}

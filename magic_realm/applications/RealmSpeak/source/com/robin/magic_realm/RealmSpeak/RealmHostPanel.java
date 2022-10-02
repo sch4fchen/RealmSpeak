@@ -1065,7 +1065,7 @@ public class RealmHostPanel extends JPanel {
 							return email == null ? "NA" : email;
 						case 3:
 							ArrayList<GameObject> c = RealmObjectMaster.getRealmObjectMaster(host.getGameData()).getPlayerCharacterObjects();
-							return new Integer((new GamePool(c)).find(CharacterWrapper.NAME_KEY + "=" + server.getClientName()).size());
+							return Integer.valueOf((new GamePool(c)).find(CharacterWrapper.NAME_KEY + "=" + server.getClientName()).size());
 					}
 				}
 			}

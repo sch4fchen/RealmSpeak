@@ -29,16 +29,16 @@ public class ImageSplitter {
 	private ImageIcon icon;
 	private int imagesPerRow;
 	private int columnWidth;
-	private ArrayList rowHeights;
+	private ArrayList<Integer> rowHeights;
 	
 	public ImageSplitter(String path,int columnWidth) {
 		this.icon = IconFactory.findIcon(path);
 		this.columnWidth = columnWidth;
 		imagesPerRow = icon.getIconWidth()/columnWidth;
-		this.rowHeights = new ArrayList();
+		this.rowHeights = new ArrayList<>();
 	}
 	public void addRow(int rowHeight) {
-		rowHeights.add(new Integer(rowHeight));
+		rowHeights.add(Integer.valueOf(rowHeight));
 	}
 	public void addRows(int[] rowHeight) {
 		for (int i=0;i<rowHeight.length;i++) {

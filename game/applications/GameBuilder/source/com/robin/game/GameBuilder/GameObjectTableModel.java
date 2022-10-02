@@ -71,7 +71,7 @@ public class GameObjectTableModel extends AbstractTableModel implements ColumnSi
 					GameObject hb = obj.getHeldBy();
 					return hb==null?"":hb.toString();
 				case 3:
-					return new Integer(obj.getHoldCount());
+					return Integer.valueOf(obj.getHoldCount());
 				default:
 					throw new IllegalArgumentException("Invalid column index");
 			}

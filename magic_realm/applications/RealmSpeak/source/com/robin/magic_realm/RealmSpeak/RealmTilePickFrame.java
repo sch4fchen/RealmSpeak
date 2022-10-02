@@ -218,7 +218,7 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 					GameObject go = tilesToAdd.get(i);
 					Collection c = map.getPlaceables(go);
 					if (!c.isEmpty()) {
-						placeableIndices.add(new Integer(i));
+						placeableIndices.add(Integer.valueOf(i));
 						go.setThisAttribute(Constants.PLACEABLE);
 					}
 					else {

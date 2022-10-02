@@ -426,7 +426,7 @@ public class TreasureSetupCardView extends JComponent {
 		if (roller!=null) {
 			int n = roller.getNumberOfDice();
 			for (int i=0;i<n;i++) {
-				monsterDice.add(new Integer(roller.getValue(i)));
+				monsterDice.add(Integer.valueOf(roller.getValue(i)));
 			}
 		}
 		
@@ -444,7 +444,7 @@ public class TreasureSetupCardView extends JComponent {
 			int x = LEFT_BORDER;
 			int y = ((n-1)*h)+SPACING+TEXT_SPACING+5;
 			
-			boolean prowling = monsterDice.contains(new Integer(n));
+			boolean prowling = monsterDice.contains(Integer.valueOf(n));
 			
 			if (prowling) {
 				Dimension s = getSize();

@@ -285,7 +285,7 @@ public class MRCBuilder extends JFrame implements ActionListener {
 			for (int k = 0; k < j; k++) {
 				OutlineEntry outlineentry = (OutlineEntry) vector.elementAt(k);
 				g.setFont(font);
-				String s1 = (new Integer(k + 1)).toString() + ".)";
+				String s1 = (Integer.valueOf(k + 1)).toString() + ".)";
 				g.drawString(s1, 15, i);
 				int l = g.getFontMetrics().stringWidth(s1) + 10;
 				String s2 = "<b>" + outlineentry.getHeader().toUpperCase() + ":</b>  " + outlineentry.getContent();

@@ -26,7 +26,7 @@ public class TemplateLibrary {
 	
 	public static final String WEAPON_QUERY = "weapon,!character,!magic";
 	public static final String CHARACTER_QUERY = "character";
-//	public static final String ARMOR_QUERY = "armor,!character,!treasure,!magic"; // Don't think I'll worry about these after all
+	public static final String ARMOR_QUERY = "armor,!character,!treasure,!magic";
 	
 	private static TemplateLibrary singleton = null;
 	public static TemplateLibrary getSingleton() {
@@ -49,7 +49,7 @@ public class TemplateLibrary {
 		templateHash = new Hashtable<>();
 		addQuery(dataPool,WEAPON_QUERY);
 		addQuery(dataPool,CHARACTER_QUERY);
-//		addQuery(pool,ARMOR_QUERY);
+		addQuery(dataPool,ARMOR_QUERY);
 	}
 	private void addQuery(GamePool pool,String query) {
 		ArrayList<GameObject> items = pool.find(query);
@@ -70,6 +70,16 @@ public class TemplateLibrary {
 		}
 		return names;
 	}
+	public ArrayList<String> getAllArmorNames() {
+		ArrayList<String> names = new ArrayList<>();
+		for (String name:getAllNames()) {
+			GameObject go = getArmorTemplate(name);
+			if (go!=null) {
+				names.add(name);
+			}
+		}
+		return names;
+	}
 	public GameObject getWeaponTemplate(String name) {
 		GameObject go = templateHash.get(name);
 		if (go!=null && go.hasAllKeyVals(WEAPON_QUERY)) {
@@ -79,6 +89,16 @@ public class TemplateLibrary {
 	}
 	public boolean hasWeaponTemplate(String name) {
 		return getWeaponTemplate(name)!=null;
+	}
+	public GameObject getArmorTemplate(String name) {
+		GameObject go = templateHash.get(name);
+		if (go!=null && go.hasAllKeyVals(ARMOR_QUERY)) {
+			return go;
+		}
+		return null;
+	}
+	public boolean hasArmorTemplate(String name) {
+		return getArmorTemplate(name)!=null;
 	}
 	public GameObject getCharacterTemplate(String name) {
 		GameObject go = templateHash.get(name);

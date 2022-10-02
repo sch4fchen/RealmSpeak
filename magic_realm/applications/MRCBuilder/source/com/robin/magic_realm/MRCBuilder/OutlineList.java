@@ -183,7 +183,7 @@ public class OutlineList extends JPanel implements ActionListener {
 							break;
 
 						case 0: // '\0'
-							return new Integer(j + 1);
+							return Integer.valueOf(j + 1);
 
 						case 1: // '\001'
 							String s = outlineentry.getHeader();

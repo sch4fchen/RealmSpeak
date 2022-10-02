@@ -215,11 +215,11 @@ public class CharacterActionPanel extends CharacterFramePanel {
 				String dayKey = allDays.get(row);
 				switch(column) {
 					case TURN:
-						return new Integer(row+1); // FIXME this isn't exactly right - doesn't reflect the game turn, only the turn of this character
+						return Integer.valueOf(row+1); // FIXME this isn't exactly right - doesn't reflect the game turn, only the turn of this character
 					case MONTH:
-						return new Integer(DayKey.getMonth(dayKey));
+						return Integer.valueOf(DayKey.getMonth(dayKey));
 					case DAY:
-						return new Integer(DayKey.getDay(dayKey));
+						return Integer.valueOf(DayKey.getDay(dayKey));
 					case COLOR:
 						RealmCalendar cal = RealmCalendar.getCalendar(getGameHandler().getClient().getGameData());
 						return cal.getColorMagicName(DayKey.getMonth(dayKey),DayKey.getDay(dayKey));
@@ -239,7 +239,7 @@ public class CharacterActionPanel extends CharacterFramePanel {
 								for (int i=1;i<=6;i++) {
 									DieRoller dr = new DieRoller(String.valueOf(i),16,4);
 									dr.setAllRed();
-									dieIconHash.put(new Integer(i),dr.getIcon());
+									dieIconHash.put(Integer.valueOf(i),dr.getIcon());
 								}
 							}
 							if (roller.getNumberOfDice()==1) {

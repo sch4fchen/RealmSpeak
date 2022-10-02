@@ -346,7 +346,7 @@ public class CharacterHirelingPanel extends CharacterFramePanel {
 				}
 				termOfHire = null;
 				if (!rc.getGameObject().hasThisAttribute(Constants.COMPANION)) {
-					termOfHire = new Integer(rc.getTermOfHire());
+					termOfHire = Integer.valueOf(rc.getTermOfHire());
 				}
 			}
 			else {

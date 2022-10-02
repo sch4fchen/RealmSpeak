@@ -483,19 +483,19 @@ public class RealmCharacterBuilderPanel extends JPanel {
 			box.add(Box.createHorizontalGlue());
 			topPanel.add(box,"Center");
 			JPanel fairnessPanel = new JPanel(new BorderLayout());
-				fairnessLabel = new JLabel("",JLabel.CENTER);
+				fairnessLabel = new JLabel("",SwingConstants.CENTER);
 				fairnessLabel.setFont(new Font("Dialog",Font.BOLD|Font.ITALIC,16));
 				fairnessLabel.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
 			fairnessPanel.add(fairnessLabel,BorderLayout.NORTH);
-				chitLabel = new JLabel("",JLabel.CENTER);
+				chitLabel = new JLabel("",SwingConstants.CENTER);
 				chitLabel.setFont(new Font("Dialog",Font.BOLD,14));
 			fairnessPanel.add(chitLabel,BorderLayout.CENTER);
 			JPanel mfReasonPanel = new JPanel(new GridLayout());
-				moveFairnessReasonLabel = new JLabel("",JLabel.CENTER);
+				moveFairnessReasonLabel = new JLabel("",SwingConstants.CENTER);
 				moveFairnessReasonLabel.setFont(new Font("Dialog",Font.BOLD,14));
 				moveFairnessReasonLabel.setForeground(Color.blue);
 				mfReasonPanel.add(moveFairnessReasonLabel);
-				fightFairnessReasonLabel = new JLabel("",JLabel.CENTER);
+				fightFairnessReasonLabel = new JLabel("",SwingConstants.CENTER);
 				fightFairnessReasonLabel.setFont(new Font("Dialog",Font.BOLD,14));
 				fightFairnessReasonLabel.setForeground(Color.blue);
 				mfReasonPanel.add(fightFairnessReasonLabel);
@@ -760,6 +760,7 @@ public class RealmCharacterBuilderPanel extends JPanel {
 		private JLabel weaponNameLabel;
 		private JLabel weaponIcon;
 		private JButton editWeaponButton;
+		private JButton customArmorButton;
 		
 		// Starting Spells
 		private JComboBox<String> startingSpellCount;
@@ -828,7 +829,7 @@ public class RealmCharacterBuilderPanel extends JPanel {
 						updateAllLevels();
 					}
 				});
-				chitFairness[n] = new JLabel("0",JLabel.CENTER);
+				chitFairness[n] = new JLabel("0",SwingConstants.CENTER);
 				chitFairness[n].setFont(new Font("Dialog", Font.BOLD, 12));
 				chitFairness[n].setBorder(BorderFactory.createLoweredBevelBorder());
 				JPanel panel = new JPanel(new BorderLayout());
@@ -868,7 +869,7 @@ public class RealmCharacterBuilderPanel extends JPanel {
 		private JPanel getArmorPanel() {
 			String armorList = model.getCharacter().getGameObject().getAttribute(levelKey,"armor");
 			if (armorList==null) armorList = "";
-			JPanel armorPanel = new JPanel(new GridLayout(7,1));
+			JPanel armorPanel = new JPanel(new GridLayout(8,1));
 			cap = new JCheckBox("Cap",armorList.contains("Cap"));
 			cap.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
@@ -942,6 +943,23 @@ public class RealmCharacterBuilderPanel extends JPanel {
 				}
 			});
 			armorPanel.add(armor);
+			customArmorButton = new JButton("Custom");
+			customArmorButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					String armorName = model.getCharacter().getGameObject().getAttribute(levelKey,"armor");
+					ArmorEditDialog aed = new ArmorEditDialog(parent,model,graphicsManager,armorName);
+					aed.setVisible(true);
+					armorName = aed.getArmorName();
+					if (armorName==null) {
+						model.getCharacter().getGameObject().removeAttribute(levelKey,"armor");
+					}
+					else {
+						model.getCharacter().getGameObject().setAttribute(levelKey,"armor",aed.getArmorName());
+					}
+					model.updateArmorUsage();
+				}
+			});
+			armorPanel.add(customArmorButton);
 			armorPanel.setBorder(BorderFactory.createTitledBorder("Armor"));
 			return armorPanel;
 		}
@@ -966,9 +984,9 @@ public class RealmCharacterBuilderPanel extends JPanel {
 			});
 			weaponPanel.add(editWeaponButton,"South");
 			weaponNameLabel = new JLabel();
-			weaponNameLabel.setHorizontalAlignment(JLabel.CENTER);
+			weaponNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			weaponIcon = new JLabel();
-			weaponIcon.setHorizontalAlignment(JLabel.CENTER);
+			weaponIcon.setHorizontalAlignment(SwingConstants.CENTER);
 			weaponPanel.add(weaponNameLabel,"North");
 			weaponPanel.add(weaponIcon,"Center");
 			weaponPanel.setBorder(BorderFactory.createTitledBorder("Weapon"));

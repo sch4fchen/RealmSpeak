@@ -150,11 +150,11 @@ public class RealmCalendar {
 		if (currentMonth!=month || currentSeason==null || forceUpdate) {
 			currentMonth = month;
 			if (seasonOffset==-1) {
-				currentSeason = seasonsHash.get(new Integer(0));
+				currentSeason = seasonsHash.get(Integer.valueOf(0));
 			}
 			else {
 				int n = ((currentMonth+seasonOffset-1)%NUMBER_OF_SEASONS)+1;
-				currentSeason = seasonsHash.get(new Integer(n));
+				currentSeason = seasonsHash.get(Integer.valueOf(n));
 			}
 			changes = true;
 		}

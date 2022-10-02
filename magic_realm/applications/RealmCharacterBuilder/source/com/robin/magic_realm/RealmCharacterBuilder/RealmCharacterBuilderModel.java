@@ -47,6 +47,7 @@ public class RealmCharacterBuilderModel {
 	public static final String CHARACTER_PICTURE_GIF_FILENAME = "_RCB2212_picture";
 	public static final String CHARACTER_TOKEN_GIF_FILENAME = "_RCB2212_symbol";
 	public static final String CHARACTER_WEAPON_GIF_PREFIX = "_RCB2212_weapon_";
+	public static final String CHARACTER_ARMOR_GIF_PREFIX = "_RCB2212_armor_";
 	public static final String CHARACTER_BADGE_GIF_PREFIX = "_RCB2212_badge_";
 	
 	private CharacterWrapper character;
@@ -58,6 +59,7 @@ public class RealmCharacterBuilderModel {
 	private ImageIcon pictureIcon = null;
 	
 	private Hashtable<String,GameObject> weaponHash;
+	private Hashtable<String,GameObject> armorHash;
 	
 	public RealmCharacterBuilderModel(GameData data) {
 		chit = new GameObject[12];
@@ -84,6 +86,11 @@ public class RealmCharacterBuilderModel {
 		ArrayList<GameObject> weapons = pool.find(TemplateLibrary.WEAPON_QUERY);
 		for (GameObject go:weapons) {
 			weaponHash.put(go.getName(),go);
+		}
+		armorHash = new Hashtable<>();
+		ArrayList<GameObject> armors = pool.find(TemplateLibrary.ARMOR_QUERY);
+		for (GameObject go:armors) {
+			armorHash.put(go.getName(),go);
 		}
 	}
 	public CharacterInfoCard getCard() {
@@ -157,6 +164,14 @@ public class RealmCharacterBuilderModel {
 		weapon.setThisAttribute(Constants.ICON_FOLDER,iconFolder);
 		weapon.setThisAttribute(Constants.ICON_TYPE,iconName);
 	}
+	public static void updateArmorIcon(GameObject armor,ImageIcon icon) {
+		String iconFolder = RealmCharacterConstants.CUSTOM_ICON_BASE_PATH+"armors";
+		String iconName = armor.getName().toLowerCase(); // this may change when the file is saved!
+		String iconPath = iconFolder+"/"+iconName;
+		ImageCache._placeImage(iconPath,icon); // Trick the cache to use this icon
+		armor.setThisAttribute(Constants.ICON_FOLDER,iconFolder);
+		armor.setThisAttribute(Constants.ICON_TYPE,iconName);
+	}
 	public ImageIcon getCharacterSymbol() {
 		return characterSymbol;
 	}
@@ -169,33 +184,51 @@ public class RealmCharacterBuilderModel {
 	public boolean hasWeapon(String name) {
 		return weaponHash.containsKey(name);
 	}
-	/**
-	 * This will grab the weapon names from all four levels, and remove any GameObjects that are NOT used
-	 */
+	public void addArmor(String name,GameObject armor) {
+		armorHash.put(name,armor);
+	}
+	public GameObject getArmor(String name) {
+		return armorHash.get(name);
+	}
+	public boolean hasArmor(String name) {
+		return armorHash.containsKey(name);
+	}
 	public void updateWeaponUsage() {
-		ArrayList<String> weapons = new ArrayList<>();
+		updateItemUsage("weapon", TemplateLibrary.WEAPON_QUERY, weaponHash);
+	}
+	public void updateArmorUsage() {
+		updateItemUsage("armor", TemplateLibrary.ARMOR_QUERY, armorHash);
+	}
+	/**
+	 * This will grab the item names from all four levels, and remove any GameObjects that are NOT used
+	 */
+	private void updateItemUsage(String itemType, String query, Hashtable<String,GameObject> hashtable) {
+		ArrayList<String> items = new ArrayList<>();
 		for (int i=1;i<=4;i++) {
 			String levelKey = "level_"+i;
-			String weapon = character.getGameObject().getAttribute(levelKey,"weapon");
-			if (weapon!=null && !weapons.contains(weapon)) {
-				weapons.add(weapon);
+			String item = character.getGameObject().getAttribute(levelKey,itemType);
+			if (item!=null && !items.contains(item)) {
+				items.add(item);
 			}
 		}
 		GamePool pool = new GamePool(character.getGameObject().getGameData().getGameObjects());
 		ArrayList<GameObject> toRemove = new ArrayList<>();
-		ArrayList<GameObject> currentWeapons = pool.find(TemplateLibrary.WEAPON_QUERY);
-		for (GameObject go:currentWeapons) {
-			if (!weapons.contains(go.getName())) {
+		ArrayList<GameObject> currentItems = pool.find(query);
+		for (GameObject go:currentItems) {
+			if (!items.contains(go.getName())) {
 				toRemove.add(go);
 			}
 		}
 		for (GameObject go:toRemove) {
-			weaponHash.remove(go.getName());
+			hashtable.remove(go.getName());
 			character.getGameObject().getGameData().removeObject(go);
 		}
 	}
 	public ArrayList<String> getAllWeaponNames() {
 		return new ArrayList<>(weaponHash.keySet());
+	}
+	public ArrayList<String> getAllArmorNames() {
+		return new ArrayList<>(armorHash.keySet());
 	}
 	public boolean saveToFile(File file,boolean graphicsOnly) {
 		String name = character.getGameObject().getName().replace(' ','_');
@@ -476,9 +509,8 @@ public class RealmCharacterBuilderModel {
 		}
 		
 		// Copy the relationships so they show
-		OrderedHashtable hash = character.getAttributeBlock(Constants.BASE_RELATIONSHIP);
-		for (Iterator i=hash.keySet().iterator();i.hasNext();) {
-			String key = (String)i.next();
+		OrderedHashtable<String, Object> hash = character.getAttributeBlock(Constants.BASE_RELATIONSHIP);
+		for (String key : hash.keySet()) {
 			String val = (String)hash.get(key);
 			character.setAttribute(Constants.GAME_RELATIONSHIP,key,val);
 		}
@@ -534,6 +566,13 @@ public class RealmCharacterBuilderModel {
 					weaponName = weaponName.replace('_',' ');
 					GameObject weapon = model.getWeapon(weaponName);
 					RealmCharacterBuilderModel.updateWeaponIcon(weapon,icon);
+				}
+				else if (filename.indexOf(CHARACTER_ARMOR_GIF_PREFIX)>0) {
+					ImageIcon icon = IconFactory.findIcon(files[i].getAbsolutePath());
+					String armorName = cropName(CHARACTER_WEAPON_GIF_PREFIX,model.getCharacter().getGameObject().getName(),filename);
+					armorName = armorName.replace('_',' ');
+					GameObject armor = model.getArmor(armorName);
+					RealmCharacterBuilderModel.updateWeaponIcon(armor,icon);
 				}
 				else if (filename.indexOf(CHARACTER_BADGE_GIF_PREFIX)>0) {
 					ImageIcon icon = IconFactory.findIcon(files[i].getAbsolutePath());

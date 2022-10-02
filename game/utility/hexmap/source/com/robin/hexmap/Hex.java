@@ -56,7 +56,7 @@ public class Hex {
 	private int cwTurns = 0;
 	private Color idColor = Color.white;
 	
-	private ArrayList keywords;
+	private ArrayList<String> keywords;
 	
 	public Hex(String id,String name) {
 		this(id,name,false);
@@ -68,7 +68,7 @@ public class Hex {
 		this.icon = ImageCache.getIcon(name);
 		this.suppressID = suppressID;
 		this.label = null;
-		keywords = new ArrayList();
+		keywords = new ArrayList<>();
 		resetWalls();
 	}
 	private long _newHexId() {
@@ -158,11 +158,11 @@ public class Hex {
 	 * would indicate no walls.
 	 */
 	public int[] getWallPositions() {
-		ArrayList walls = new ArrayList();
+		ArrayList<Integer> walls = new ArrayList<>();
 		
 		for (int i=0;i<wallPosition.length;i++) {
 			if (wallPosition[i]==true) {
-				walls.add(new Integer(i));
+				walls.add(Integer.valueOf(i));
 			}
 		}
 		

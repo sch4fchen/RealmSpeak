@@ -70,7 +70,7 @@ public class OutlineList extends JPanel implements ActionListener {
 				if (data!=null && row<data.size() && column<6) {
 					OutlineEntry e = (OutlineEntry)data.elementAt(row);
 					switch(column) {
-						case 0:		return new Integer(row+1);
+						case 0:		return Integer.valueOf(row+1);
 						case 1:
 							String h = e.getHeader();
 							if (h!=null) {

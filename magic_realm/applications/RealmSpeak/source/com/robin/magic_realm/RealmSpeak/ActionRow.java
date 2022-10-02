@@ -1663,11 +1663,11 @@ public class ActionRow {
 					public int compare(RealmComponent o1,RealmComponent o2) {
 						String rs1 = o1.getGameObject().getThisAttribute("rank");
 						if (rs1==null) rs1 = "0";
-						Integer rank1 = "HQ".equals(rs1)?new Integer(0):Integer.valueOf(rs1);
+						Integer rank1 = "HQ".equals(rs1)?Integer.valueOf(0):Integer.valueOf(rs1);
 						
 						String rs2 = o2.getGameObject().getThisAttribute("rank");
 						if (rs2==null) rs2 = "0";
-						Integer rank2 = "HQ".equals(rs2)?new Integer(0):Integer.valueOf(rs2);
+						Integer rank2 = "HQ".equals(rs2)?Integer.valueOf(0):Integer.valueOf(rs2);
 						
 						return rank1.compareTo(rank2);
 					}

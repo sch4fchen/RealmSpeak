@@ -310,7 +310,7 @@ public class CharacterInfoCard {
 			int n = 0;
 			for (String advantage:advantages) {
 				g.setFont(boldFont);
-				String s1 = (new Integer(n + 1)).toString() + ".)";
+				String s1 = (Integer.valueOf(n + 1)).toString() + ".)";
 				g.drawString(s1, 15, i);
 				int l = g.getFontMetrics().stringWidth(s1) + 10;
 				String s2 = formatAdvantage(advantage);

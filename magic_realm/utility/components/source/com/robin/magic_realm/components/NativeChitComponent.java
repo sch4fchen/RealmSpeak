@@ -286,7 +286,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 	public Integer getLength() {
 		Integer length = getFaceAttributeInteger("length");
 		if (length == null)
-			length = new Integer(0);
+			length = Integer.valueOf(0);
 		return length;
 	}
 

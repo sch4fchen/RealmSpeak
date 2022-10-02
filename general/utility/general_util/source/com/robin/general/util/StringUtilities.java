@@ -138,7 +138,7 @@ public class StringUtilities {
 	public static String intArrayToString(int[] array,String delim) {
 		ArrayList<Integer> list = new ArrayList<>();
 		for (int i=0;i<array.length;i++) {
-			list.add(new Integer(array[i]));
+			list.add(Integer.valueOf(array[i]));
 		}
 		return collectionToString(list,delim);
 	}

@@ -57,6 +57,6 @@ public class IntegerField extends JTextField {
 		if (text.length()>0) {
 			return Integer.valueOf(text);
 		}
-		return new Integer(0);
+		return Integer.valueOf(0);
 	}
 }

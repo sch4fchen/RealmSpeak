@@ -54,7 +54,7 @@ public class GameBlockTableModel extends AbstractTableModel implements ColumnSiz
 				case 0:
 					return data.getKey(row);
 				case 1:
-					return new Integer(((OrderedHashtable)data.getValue(row)).size());
+					return Integer.valueOf(((OrderedHashtable)data.getValue(row)).size());
 				default:
 					throw new IllegalArgumentException("Invalid column index");
 			}

@@ -506,8 +506,8 @@ public class BattleModel {
 				}
 				SpellWrapper spell = new SpellWrapper(go);
 				if (spell.isAlive()) { // A spell might not be alive if it was already energized this round
-					spells.put(new Integer(spell.getAttackSpeed().getNum()),spell);
-					casters.put(new Integer(spell.getAttackSpeed().getNum()),rc);
+					spells.put(Integer.valueOf(spell.getAttackSpeed().getNum()),spell);
+					casters.put(Integer.valueOf(spell.getAttackSpeed().getNum()),rc);
 				}
 			}
 		}
@@ -517,7 +517,7 @@ public class BattleModel {
 					MonsterChitComponent monster = (MonsterChitComponent)battleParticipant;
 					if ("V".equals(monster.getMagicType())) {
 						spellCasters.add(monster);
-						monsterSpells.put(new Integer(monster.getAttackSpeed().getNum()),monster);
+						monsterSpells.put(Integer.valueOf(monster.getAttackSpeed().getNum()),monster);
 					}
 				}
 			}
@@ -1715,7 +1715,7 @@ public class BattleModel {
 				CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 				int box = combat.getCombatBox();
 				if (box>0) {
-					boxHash.put(new Integer(box),rc);
+					boxHash.put(Integer.valueOf(box),rc);
 					if (rc.isMonster()) {
 						// Make sure we get monster parts!
 						MonsterChitComponent monster = (MonsterChitComponent)rc;
@@ -1726,7 +1726,7 @@ public class BattleModel {
 							if (box==0) {
 								throw new IllegalStateException("box is zero for "+weapon.getGameObject().getName()+" during reposition!!");
 							}
-							boxHash.put(new Integer(box),weapon);
+							boxHash.put(Integer.valueOf(box),weapon);
 						}
 					}
 					else if (rc.isNative()) {
@@ -1738,7 +1738,7 @@ public class BattleModel {
 							if (box==0) {
 								throw new IllegalStateException("box is zero for "+horse.getGameObject().getName()+" during reposition!!");
 							}
-							boxHash.put(new Integer(box),horse);
+							boxHash.put(Integer.valueOf(box),horse);
 						}
 					}
 				}// box might be zero if targeting an unassigned monster with a spell
@@ -1771,47 +1771,47 @@ public class BattleModel {
 		// 6 shift up/left
 		switch(result) {
 			case 1:
-				box1 = boxHash.getList(new Integer(1));
-				box2 = boxHash.getList(new Integer(3));
-				box3 = boxHash.getList(new Integer(2));
+				box1 = boxHash.getList(Integer.valueOf(1));
+				box2 = boxHash.getList(Integer.valueOf(3));
+				box3 = boxHash.getList(Integer.valueOf(2));
 				break;
 			case 2:
-				box1 = boxHash.getList(new Integer(3));
-				box2 = boxHash.getList(new Integer(2));
-				box3 = boxHash.getList(new Integer(1));
+				box1 = boxHash.getList(Integer.valueOf(3));
+				box2 = boxHash.getList(Integer.valueOf(2));
+				box3 = boxHash.getList(Integer.valueOf(1));
 				break;
 			case 3:
-				box1 = boxHash.getList(new Integer(2));
-				box2 = boxHash.getList(new Integer(1));
-				box3 = boxHash.getList(new Integer(3));
+				box1 = boxHash.getList(Integer.valueOf(2));
+				box2 = boxHash.getList(Integer.valueOf(1));
+				box3 = boxHash.getList(Integer.valueOf(3));
 				break;
 			case 4:
-				box1 = boxHash.getList(new Integer(1));
-				box2 = boxHash.getList(new Integer(2));
-				box3 = boxHash.getList(new Integer(3));
+				box1 = boxHash.getList(Integer.valueOf(1));
+				box2 = boxHash.getList(Integer.valueOf(2));
+				box3 = boxHash.getList(Integer.valueOf(3));
 				break;
 			case 5:
-				box1 = boxHash.getList(new Integer(3));
-				box2 = boxHash.getList(new Integer(1));
-				box3 = boxHash.getList(new Integer(2));
+				box1 = boxHash.getList(Integer.valueOf(3));
+				box2 = boxHash.getList(Integer.valueOf(1));
+				box3 = boxHash.getList(Integer.valueOf(2));
 				break;
 			case 6:
-				box1 = boxHash.getList(new Integer(2));
-				box2 = boxHash.getList(new Integer(3));
-				box3 = boxHash.getList(new Integer(1));
+				box1 = boxHash.getList(Integer.valueOf(2));
+				box2 = boxHash.getList(Integer.valueOf(3));
+				box3 = boxHash.getList(Integer.valueOf(1));
 				break;
 		}
 		boxHash.clear();
 		if (box1!=null) {
-			boxHash.putList(new Integer(1),box1);
+			boxHash.putList(Integer.valueOf(1),box1);
 			repositionToBox(box1,1);
 		}
 		if (box2!=null) {
-			boxHash.putList(new Integer(2),box2);
+			boxHash.putList(Integer.valueOf(2),box2);
 			repositionToBox(box2,2);
 		}
 		if (box3!=null) {
-			boxHash.putList(new Integer(3),box3);
+			boxHash.putList(Integer.valueOf(3),box3);
 			repositionToBox(box3,3);
 		}
 	}
@@ -1841,7 +1841,7 @@ public class BattleModel {
 			roller.setValue(0,6);
 		}
 		int result = roller.getHighDieResult();
-		ArrayList<RealmComponent> list = boxHash.getList(new Integer(boxNumber));
+		ArrayList<RealmComponent> list = boxHash.getList(Integer.valueOf(boxNumber));
 		if (list!=null) {
 			// Make sure there is at least ONE chit to flip
 			boolean isOne = false;

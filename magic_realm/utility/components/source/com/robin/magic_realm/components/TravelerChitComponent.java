@@ -110,10 +110,10 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 			for (int i=1;i<=6;i++) {
 				DieRoller dr = new DieRoller(String.valueOf(i),16,4);
 				dr.setAllRed();
-				dieIconHash.put(new Integer(i),dr.getIcon());
+				dieIconHash.put(Integer.valueOf(i),dr.getIcon());
 			}
 		}
-		return dieIconHash.get(new Integer(val));
+		return dieIconHash.get(Integer.valueOf(val));
 	}
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -258,7 +258,7 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 			}
 		}
 		
-		return new Speed(new Integer(getGameObject().getThisInt("attack_speed")),speedModifier());
+		return new Speed(Integer.valueOf(getGameObject().getThisInt("attack_speed")),speedModifier());
 	}
 	public Speed getFlySpeed() {
 		return null; // For now, there are no flying travelers.
@@ -279,7 +279,7 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 		return false;
 	}
 	public Integer getLength() {
-		return new Integer(getThisInt("length"));
+		return Integer.valueOf(getThisInt("length"));
 	}
 	public String getMagicType() {
 		return null; // For now, there are no magic flinging travelers.
@@ -295,9 +295,9 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 		int otherSpeed = getGameObject().getThisInt("move_speed_change");
 		if (otherSpeed>0) {
 			alteredMoveSpeed = true;
-			return new Speed(new Integer(otherSpeed),speedModifier());
+			return new Speed(Integer.valueOf(otherSpeed),speedModifier());
 		}
-		return new Speed(new Integer(getThisInt("move_speed")),speedModifier());
+		return new Speed(Integer.valueOf(getThisInt("move_speed")),speedModifier());
 	}
 	public boolean hasAnAttack() {
 		return (getThisAttribute("strength")!=null && getThisAttribute("strength").length()>0)

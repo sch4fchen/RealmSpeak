@@ -87,7 +87,7 @@ public class PieProgressBar extends JComponent {
 		if (colorChange==null) {
 			colorChange = new Hashtable<>();
 		}
-		colorChange.put(new Integer(wedge),c);
+		colorChange.put(Integer.valueOf(wedge),c);
 	}
 	public void paintComponent(Graphics g1) {
 		Graphics2D g = (Graphics2D)g1;
@@ -110,7 +110,7 @@ public class PieProgressBar extends JComponent {
 		arc = new Arc2D.Double(0f,0f,size.width,size.height,start,change,Arc2D.PIE);
 		Color wedgeColor = Color.blue;
 		if (colorChange!=null) {
-			Color c = colorChange.get(new Integer(currentWedge));
+			Color c = colorChange.get(Integer.valueOf(currentWedge));
 			if (c!=null) {
 				wedgeColor = c;
 			}

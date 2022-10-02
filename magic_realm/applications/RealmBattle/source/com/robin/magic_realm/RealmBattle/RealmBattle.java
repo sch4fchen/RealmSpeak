@@ -174,7 +174,7 @@ public class RealmBattle {
 			CharacterWrapper aChar = new CharacterWrapper(rc.getGameObject());
 			int astate = aChar.getCombatStatus();
 			if (astate>0) {
-				lists.put(new Integer(astate),aChar);
+				lists.put(Integer.valueOf(astate),aChar);
 			}
 		}
 		return lists;

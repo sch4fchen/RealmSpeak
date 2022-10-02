@@ -374,7 +374,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	public Integer getLength() {
 		Integer length = getFaceAttributeInteger("length");
 		if (length == null) {
-			length = new Integer(0); // tooth and claw
+			length = Integer.valueOf(0); // tooth and claw
 		}
 		return length;
 	}

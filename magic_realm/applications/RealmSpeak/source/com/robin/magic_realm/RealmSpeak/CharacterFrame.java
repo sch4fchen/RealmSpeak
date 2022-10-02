@@ -510,7 +510,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 
 	private void setupVPs() {
 		int vps = character.getNewVPRequirement();
-		CharacterVictoryConditionsDialog vpDialog = new CharacterVictoryConditionsDialog(gameHandler.getMainFrame(), character, new Integer(vps));
+		CharacterVictoryConditionsDialog vpDialog = new CharacterVictoryConditionsDialog(gameHandler.getMainFrame(), character, Integer.valueOf(vps));
 		vpDialog.setLocationRelativeTo(this);
 		vpDialog.setVisible(true);
 		gameHandler.submitChanges();

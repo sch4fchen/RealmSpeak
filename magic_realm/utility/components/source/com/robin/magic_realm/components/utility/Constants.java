@@ -152,6 +152,7 @@ public class Constants {
 	
 	public static final String CUSTOM_CHARACTER = "custom_character";
 	public static final String WEAPON_START_LOCATION = "weapon_start";
+	public static final String ARMOR_START_LOCATION = "armor_start";
 	
 	// Other character advantages (ThisAttributes)
 	public static final String PEACE_WITH_NATURE = "peace_with_nature";
