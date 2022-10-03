@@ -59,27 +59,6 @@ public class WeaponEditDialog extends AggressiveDialog {
 	private ButtonPanel throwingOption;
 	private ButtonPanel twoHandedOption;
 	
-	private static final String[] STARTING_LOCATION_OPTION = {		
-		"None",
-		"Crone",
-		"Lancer Dwelling",
-		"Woodfolk Dwelling",
-		
-		"Inn",
-		"Guard",
-		"Bashkar Dwelling",
-		"Dragonmen Dwelling",
-		
-		"House",
-		"Company Dwelling",
-		"Murker Dwelling",
-		"Warlock",
-		
-		"Chapel",
-		"Patrol Dwelling",
-		"Scholar",
-		"Shaman",
-	};
 	private ArrayList<JRadioButton> slButtons;
 	
 	private FileManager graphicsManager;
@@ -239,8 +218,8 @@ public class WeaponEditDialog extends AggressiveDialog {
 				}
 			};
 			slButtons = new ArrayList<>();
-			for (int i=0;i<STARTING_LOCATION_OPTION.length;i++) {
-				JRadioButton button = new JRadioButton(STARTING_LOCATION_OPTION[i],i==0);
+			for (int i=0;i<RealmCharacterConstants.STARTING_LOCATION_OPTION.length;i++) {
+				JRadioButton button = new JRadioButton(RealmCharacterConstants.STARTING_LOCATION_OPTION[i],i==0);
 				startingLocationPanel.add(button);
 				slGroup.add(button);
 				button.addActionListener(al);

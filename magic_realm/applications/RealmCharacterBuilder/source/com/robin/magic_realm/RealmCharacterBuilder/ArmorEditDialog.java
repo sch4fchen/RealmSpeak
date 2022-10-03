@@ -53,33 +53,16 @@ public class ArmorEditDialog extends AggressiveDialog {
 	
 	private JLabel nameField;
 	private ButtonPanel weightChoice;
-	private IntegerField lengthField;
 	private IntegerField priceField;
-	private ButtonPanel rangedOption;
-	private ButtonPanel throwingOption;
-	private ButtonPanel twoHandedOption;
+	private JRadioButton shieldButton;
+	private JRadioButton helmetButton;
+	private JRadioButton breastplateButton;
+	private JRadioButton fullArmorButton;
+	private JRadioButton choiceButton;
+	private JRadioButton thrustButton;
+	private JRadioButton swingButton;
+	private JRadioButton smashButton;
 	
-	private static final String[] STARTING_LOCATION_OPTION = {		
-		"None",
-		"Crone",
-		"Lancer Dwelling",
-		"Woodfolk Dwelling",
-		
-		"Inn",
-		"Guard",
-		"Bashkar Dwelling",
-		"Dragonmen Dwelling",
-		
-		"House",
-		"Company Dwelling",
-		"Murker Dwelling",
-		"Warlock",
-		
-		"Chapel",
-		"Patrol Dwelling",
-		"Scholar",
-		"Shaman",
-	};
 	private ArrayList<JRadioButton> slButtons;
 	
 	private FileManager graphicsManager;
@@ -123,13 +106,13 @@ public class ArmorEditDialog extends AggressiveDialog {
 		UniformLabelGroup group = new UniformLabelGroup();
 		infoPanel = Box.createVerticalBox();
 		infoPanel.add(Box.createVerticalGlue());
-			line = group.createLabelLine("Weight");
-			weightChoice = new ButtonPanel(RealmCharacterConstants.STRENGTHS_PLUS_NEG);
+			line = group.createLabelLine("Weight and Vulnerability");
+			weightChoice = new ButtonPanel(RealmCharacterConstants.STRENGTHS);
 			weightChoice.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
+					armor.setThisAttribute(Constants.VULNERABILITY,ev.getActionCommand());
 					armor.setThisAttribute(Constants.WEIGHT,ev.getActionCommand());
-					sideEditPanel[0].updateWeight();
-					sideEditPanel[1].updateWeight();
+					updateImages();
 				}
 			});
 			ComponentTools.lockComponentSize(weightChoice,w,25);
@@ -138,30 +121,12 @@ public class ArmorEditDialog extends AggressiveDialog {
 		infoPanel.add(line);
 		infoPanel.add(Box.createVerticalStrut(5));
 		infoPanel.add(Box.createVerticalGlue());
-			line = group.createLabelLine("Length");
-			lengthField = new IntegerField();
-			lengthField.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent ev) {
-					armor.setThisAttribute("length",lengthField.getText());
-				}
-			});
-			lengthField.addFocusListener(new FocusAdapter() {
-				public void focusGained(FocusEvent ev) {
-					lengthField.selectAll();
-				}
-				public void focusLost(FocusEvent ev) {
-					armor.setThisAttribute("length",lengthField.getText());
-				}
-			});
-			ComponentTools.lockComponentSize(lengthField,40,25);
-			line.add(lengthField);
-			line.add(Box.createHorizontalStrut(10));
-			line.add(new JLabel("Base Price:"));
+			line = group.createLabelLine("Base Price (destroyed)");
 			line.add(Box.createHorizontalStrut(5));
 			priceField = new IntegerField();
 			priceField.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
-					armor.setThisAttribute("base_price",priceField.getText());
+					armor.setAttribute("destroyed","base_price",priceField.getText());
 				}
 			});
 			priceField.addFocusListener(new FocusAdapter() {
@@ -169,78 +134,107 @@ public class ArmorEditDialog extends AggressiveDialog {
 					priceField.selectAll();
 				}
 				public void focusLost(FocusEvent ev) {
-					armor.setThisAttribute("base_price",priceField.getText());
+					if (priceField.getText().matches("0")) {
+						armor.removeAttribute("destroyed","base_price");
+					}
+					else {
+						armor.setAttribute("destroyed","base_price",priceField.getText());
+					}
 				}
 			});
 			ComponentTools.lockComponentSize(priceField,40,25);
 			line.add(priceField);
-			line.add(Box.createHorizontalStrut(10));
-			line.add(new JLabel("Two-handed Weapon:"));
-			line.add(Box.createHorizontalStrut(5));
-			twoHandedOption = new ButtonPanel(RealmCharacterConstants.YESNO);
-			twoHandedOption.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent ev) {
-					boolean ranged = "YES".equals(twoHandedOption.getSelectedItem());
-					if (ranged) {
-						armor.setThisAttribute(Constants.TWO_HANDED);
-					}
-					else {
-						armor.removeThisAttribute(Constants.TWO_HANDED);
-					}
-				}
-			});
-			ComponentTools.lockComponentSize(twoHandedOption,100,25);
-			line.add(twoHandedOption);			
-			line.add(Box.createHorizontalGlue());
 		infoPanel.add(line);
 		infoPanel.add(Box.createVerticalStrut(5));
 		infoPanel.add(Box.createVerticalGlue());
-			line = group.createLabelLine("Missile Weapon");
-			line.add(Box.createHorizontalStrut(5));
-			rangedOption = new ButtonPanel(RealmCharacterConstants.YESNO);
-			rangedOption.addActionListener(new ActionListener() {
+			line = group.createLabelLine("Armor Type");
+			Box armorTypeBox = Box.createHorizontalBox();
+			ButtonGroup armorTypeGroup = new ButtonGroup();
+			shieldButton = new JRadioButton("Shield", false);
+			helmetButton = new JRadioButton("Helmet", false);
+			breastplateButton = new JRadioButton("Breastplate", false);
+			fullArmorButton = new JRadioButton("Full Armor", false);
+			
+			Box shieldBox = initShieldButtons();		
+			shieldButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
-					boolean ranged = "YES".equals(rangedOption.getSelectedItem());
-					if (ranged) {
-						armor.setThisAttribute("missile");
-					}
-					else {
-						armor.removeThisAttribute("missile");
-					}
+					armor.setThisAttribute(Constants.SHIELD);
+					armor.setThisAttribute("armor_row","1");
+					armor.setThisAttribute("armor_choice");
+					armor.removeThisAttribute("armor_smash");
+					armor.removeThisAttribute("armor_thrust");
+					armor.removeThisAttribute("armor_swing");
+					choiceButton.setEnabled(true);
+					thrustButton.setEnabled(true);
+					swingButton.setEnabled(true);
+					smashButton.setEnabled(true);
+					updateShieldButtons();
 				}
 			});
-			ComponentTools.lockComponentSize(rangedOption,100,25);
-			line.add(rangedOption);
-			line.add(Box.createHorizontalStrut(68));
-			line.add(new JLabel("Throwing Weapon:"));
-			line.add(Box.createHorizontalStrut(5));
-			throwingOption = new ButtonPanel(RealmCharacterConstants.YESNO);
-			throwingOption.addActionListener(new ActionListener() {
+			helmetButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
-					boolean ranged = "YES".equals(throwingOption.getSelectedItem());
-					if (ranged) {
-						armor.setThisAttribute(Constants.THROWABLE);
-					}
-					else {
-						armor.removeThisAttribute(Constants.THROWABLE);
-					}
+					armor.removeThisAttribute("shield");
+					armor.setThisAttribute("armor_row","2");
+					armor.removeThisAttribute("armor_choice");
+					armor.setThisAttribute("armor_smash");
+					armor.removeThisAttribute("armor_thrust");
+					armor.removeThisAttribute("armor_swing");
+					disableShieldButtons();
+					updateShieldButtons();
 				}
 			});
-			ComponentTools.lockComponentSize(throwingOption,100,25);
-			line.add(throwingOption);
-			line.add(Box.createHorizontalGlue());
+			breastplateButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					armor.removeThisAttribute("shield");
+					armor.setThisAttribute("armor_row","2");
+					armor.removeThisAttribute("armor_choice");
+					armor.removeThisAttribute("armor_smash");
+					armor.setThisAttribute("armor_thrust");
+					armor.setThisAttribute("armor_swing");
+					disableShieldButtons();
+					updateShieldButtons();
+				}
+			});
+			fullArmorButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					armor.removeThisAttribute("shield");
+					armor.setThisAttribute("armor_row","3");
+					armor.removeThisAttribute("armor_choice");
+					armor.removeThisAttribute("armor_smash");
+					armor.removeThisAttribute("armor_thrust");
+					armor.removeThisAttribute("armor_swing");
+					disableShieldButtons();
+					updateShieldButtons();
+				}
+			});
+			
+			armorTypeBox.add(shieldButton);
+			armorTypeGroup.add(shieldButton);
+			armorTypeBox.add(helmetButton);
+			armorTypeGroup.add(helmetButton);
+			armorTypeBox.add(breastplateButton);
+			armorTypeGroup.add(breastplateButton);
+			armorTypeBox.add(fullArmorButton);
+			armorTypeGroup.add(fullArmorButton);
+			line.add(armorTypeBox);
 		infoPanel.add(line);
+		infoPanel.add(Box.createVerticalStrut(5));
+		infoPanel.add(Box.createVerticalGlue());
+			line = group.createLabelLine("Shield Protection");
+			line.add(shieldBox);
+		infoPanel.add(line);
+		infoPanel.add(Box.createVerticalGlue());	
 			ButtonGroup slGroup = new ButtonGroup();
 			JPanel startingLocationPanel = new JPanel(new GridLayout(5,3));
 			ActionListener al = new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
 					JRadioButton button = (JRadioButton)ev.getSource();
-					armor.setThisAttribute(Constants.WEAPON_START_LOCATION,button.getText());
+					armor.setThisAttribute(Constants.ARMOR_START_LOCATION,button.getText());
 				}
 			};
 			slButtons = new ArrayList<>();
-			for (int i=0;i<STARTING_LOCATION_OPTION.length;i++) {
-				JRadioButton button = new JRadioButton(STARTING_LOCATION_OPTION[i],i==0);
+			for (int i=0;i<RealmCharacterConstants.STARTING_LOCATION_OPTION.length;i++) {
+				JRadioButton button = new JRadioButton(RealmCharacterConstants.STARTING_LOCATION_OPTION[i],i==0);
 				startingLocationPanel.add(button);
 				slGroup.add(button);
 				button.addActionListener(al);
@@ -254,7 +248,7 @@ public class ArmorEditDialog extends AggressiveDialog {
 		mainPanel.add(topPanel);
 		sideEditPanels = new JPanel(new GridLayout(1,2));
 		sideEditPanel = new SideEditPanel[2];
-		sideEditPanel[0] = new SideEditPanel(sideLabel[0],"unalerted");
+		sideEditPanel[0] = new SideEditPanel(sideLabel[0],"intact");
 		sideEditPanels.add(sideEditPanel[0]);
 		sideEditPanel[1] = new SideEditPanel(sideLabel[1],"damaged");
 		sideEditPanels.add(sideEditPanel[1]);
@@ -376,12 +370,14 @@ public class ArmorEditDialog extends AggressiveDialog {
 				armor.setThisAttribute("item");
 				armor.setThisAttribute("icon_type","question");
 				armor.setThisAttribute("icon_folder",RealmCharacterConstants.CUSTOM_ICON_BASE_PATH+"armor");
+				armor.setThisAttribute("facing", "dark");
 				armor.setThisAttribute(Constants.VULNERABILITY,"L");
 				armor.setThisAttribute(Constants.WEIGHT,"L");
 				armor.setAttribute("intact","chit_color","tan");
 				armor.setAttribute("intact","base_price","1");
 				armor.setAttribute("damaged","chit_color","white");
 				armor.setAttribute("damaged","base_price","1");
+				armor.setAttribute("destroyed","base_price","0");
 				armor.setThisAttribute(Constants.ARMOR_START_LOCATION,"Guard");
 			}
 			
@@ -398,9 +394,6 @@ public class ArmorEditDialog extends AggressiveDialog {
 	private void clearControls() {
 		nameField.setText("");
 		weightChoice.setSelectedItem("L");
-		lengthField.setText("");
-		priceField.setText("");
-		rangedOption.setSelectedItem("NO");
 		sideLabel[0].setIcon(null);
 		sideLabel[1].setIcon(null);
 	}
@@ -413,9 +406,18 @@ public class ArmorEditDialog extends AggressiveDialog {
 		armorComponent = (ArmorChitComponent)RealmComponent.getRealmComponent(armor);
 		nameField.setText(armor.getName());
 		weightChoice.setSelectedItem(armor.getThisAttribute(Constants.WEIGHT));
-		lengthField.setText(armor.getThisAttribute("length"));
-		priceField.setText(armor.getThisAttribute("base_price"));
-		rangedOption.setSelectedItem(armor.hasThisAttribute("missile")?"YES":"NO");
+		if (armor.hasAttribute("destroyed","base_price")) {
+			priceField.setText(armor.getAttribute("destroyed","base_price"));
+		}
+		else {
+			priceField.setText("0");
+		}
+		String armorRow = armor.getThisAttribute("armor_row");
+		shieldButton.setSelected(armor.hasThisAttribute(Constants.SHIELD));
+		helmetButton.setSelected(armorRow != null && armorRow.matches("2") && armor.hasThisAttribute("armor_smash"));
+		breastplateButton.setSelected(armorRow != null && armorRow.matches("2") && !armor.hasThisAttribute("armor_smash"));
+		fullArmorButton.setSelected(armorRow != null && armorRow.matches("3"));
+		updateShieldButtons();
 		for (int i=0;i<2;i++) {
 			sideEditPanel[i].updateImage();
 			sideEditPanel[i].initSideControls();
@@ -439,15 +441,74 @@ public class ArmorEditDialog extends AggressiveDialog {
 		pickButton.setEnabled(armor==null);
 		clearButton.setEnabled(armor!=null);
 	}
+	private void updateShieldButtons() {
+		choiceButton.setSelected(armor.hasThisAttribute("armor_choice") || (!armor.hasThisAttribute("armor_thrust") && !armor.hasThisAttribute("armor_swing") && !armor.hasThisAttribute("armor_smash")));
+		thrustButton.setSelected(armor.hasThisAttribute("armor_thrust"));
+		swingButton.setSelected(armor.hasThisAttribute("armor_swing"));
+		smashButton.setSelected(armor.hasThisAttribute("armor_smash"));
+	}
+	private Box initShieldButtons() {
+		Box shieldBox = Box.createHorizontalBox();
+		ButtonGroup shieldGroup = new ButtonGroup();
+		choiceButton = new JRadioButton("Choice", false);
+		thrustButton = new JRadioButton("Thrust", false);
+		swingButton = new JRadioButton("Swing", false);
+		smashButton = new JRadioButton("Smash", false);
+		choiceButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				armor.setThisAttribute("armor_choice");
+				armor.removeThisAttribute("armor_smash");
+				armor.removeThisAttribute("armor_thrust");
+				armor.removeThisAttribute("armor_swing");
+			}
+		});
+		thrustButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				armor.removeThisAttribute("armor_choice");
+				armor.removeThisAttribute("armor_smash");
+				armor.setThisAttribute("armor_thrust");
+				armor.removeThisAttribute("armor_swing");
+			}
+		});
+		swingButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				armor.removeThisAttribute("armor_choice");
+				armor.removeThisAttribute("armor_smash");
+				armor.removeThisAttribute("armor_thrust");
+				armor.setThisAttribute("armor_swing");
+			}
+		});
+		smashButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				armor.removeThisAttribute("armor_choice");
+				armor.setThisAttribute("armor_smash");
+				armor.removeThisAttribute("armor_thrust");
+				armor.removeThisAttribute("armor_swing");
+			}
+		});
+		
+		shieldGroup.add(choiceButton);
+		shieldBox.add(choiceButton);
+		shieldGroup.add(thrustButton);
+		shieldBox.add(thrustButton);
+		shieldGroup.add(swingButton);
+		shieldBox.add(swingButton);
+		shieldGroup.add(smashButton);
+		shieldBox.add(smashButton);
+		return shieldBox;
+	}
+	private void disableShieldButtons() {
+		choiceButton.setEnabled(false);
+		thrustButton.setEnabled(false);
+		swingButton.setEnabled(false);
+		smashButton.setEnabled(false);
+	}
 	
 	private class SideEditPanel extends JPanel {
 		
 		private JLabel iconLabel;
 		private String sideName;
-		
-		private ButtonPanel strengthChoice;
-		private ButtonPanel speedChoice;
-		private ButtonPanel sharpChoice;
+		private IntegerField priceField;
 		
 		public SideEditPanel(JLabel iconLabel,String sideNameIn) {
 			this.iconLabel = iconLabel;
@@ -458,72 +519,36 @@ public class ArmorEditDialog extends AggressiveDialog {
 			Box line;
 			Box box = Box.createVerticalBox();
 			box.add(Box.createVerticalGlue());
-				line = group.createLabelLine("Strength");
-				strengthChoice = new ButtonPanel(RealmCharacterConstants.ONOFF);
-				strengthChoice.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent ev) {
-						updateWeight();
-					}
-				});
-				line.add(strengthChoice);
-			box.add(line);
-			box.add(Box.createVerticalGlue());
-				line = group.createLabelLine("Speed");
-				speedChoice = new ButtonPanel(RealmCharacterConstants.SPEEDS_W_NEG);
-				speedChoice.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent ev) {
-						String val = ev.getActionCommand();
-						armor.setAttribute(sideName,"attack_speed",val);
-						updateImage();
-					}
-				});
-				line.add(speedChoice);
-			box.add(line);
-			box.add(Box.createVerticalGlue());
-				line = group.createLabelLine("Sharpness");
-				sharpChoice = new ButtonPanel(RealmCharacterConstants.SHARPNESS);
-				sharpChoice.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent ev) {
-						String val = ev.getActionCommand();
-						if (" ".equals(val)) {
-							armor.removeAttribute(sideName,"sharpness");
-						}
-						else {
-							armor.setAttribute(sideName,"sharpness",val);
-						}
-						updateImage();
-					}
-				});
-				line.add(sharpChoice);
-			box.add(line);
-			box.add(Box.createVerticalGlue());
 			
+			infoPanel.add(Box.createVerticalStrut(5));
+			infoPanel.add(Box.createVerticalGlue());
+				line = group.createLabelLine("Base Price");
+				line.add(Box.createHorizontalStrut(5));
+				priceField = new IntegerField();
+				priceField.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent ev) {
+						armor.setAttribute(sideName,"base_price",priceField.getText());
+					}
+				});
+				priceField.addFocusListener(new FocusAdapter() {
+					public void focusGained(FocusEvent ev) {
+						priceField.selectAll();
+					}
+					public void focusLost(FocusEvent ev) {
+						armor.setAttribute(sideName,"base_price",priceField.getText());
+					}
+				});
+				ComponentTools.lockComponentSize(priceField,40,25);
+				line.add(priceField);
+			box.add(line);
+			box.add(Box.createVerticalGlue());			
 			add(box,"Center");
 			
 			setBorder(BorderFactory.createTitledBorder(StringUtilities.capitalize(sideName)));
 		}
 		public void initSideControls() {
-			strengthChoice.setSelectedItem(armor.hasAttribute(sideName,"strength")?"ON":"OFF");
-			String speed = armor.getAttribute(sideName,"attack_speed");
-			speedChoice.setSelectedItem(speed==null?" ":speed);
-			String sharpness = armor.getAttribute(sideName,"sharpness");
-			sharpChoice.setSelectedItem(sharpness==null?" ":sharpness);
-		}
-		public void updateWeight() {
-			String weight = armor.getThisAttribute(Constants.WEIGHT);
-			String val = strengthChoice.getSelectedItem();
-			if ("ON".equals(val)) {
-				armor.setAttribute(sideName,"strength",weight);
-			}
-			else {
-				armor.removeAttribute(sideName,"strength");
-			}
-			updateImage();
-		}
-		public void setEnabled(boolean val) {
-			strengthChoice.setEnabled(val);
-			speedChoice.setEnabled(val);
-			sharpChoice.setEnabled(val);
+			String basePrice = armor.getAttribute(sideName,"base_price");
+			priceField.setText(basePrice);
 		}
 		public void updateImage() {
 			if ("intact".equals(sideName)) {
