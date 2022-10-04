@@ -126,7 +126,12 @@ public class ArmorEditDialog extends AggressiveDialog {
 			priceField = new IntegerField();
 			priceField.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
-					armor.setAttribute("destroyed","base_price",priceField.getText());
+					if (priceField.getText().matches("0")) {
+						armor.removeAttribute("destroyed","base_price");
+					}
+					else {
+						armor.setAttribute("destroyed","base_price",priceField.getText());
+					}
 				}
 			});
 			priceField.addFocusListener(new FocusAdapter() {
@@ -377,7 +382,6 @@ public class ArmorEditDialog extends AggressiveDialog {
 				armor.setAttribute("intact","base_price","1");
 				armor.setAttribute("damaged","chit_color","white");
 				armor.setAttribute("damaged","base_price","1");
-				armor.setAttribute("destroyed","base_price","0");
 				armor.setThisAttribute(Constants.ARMOR_START_LOCATION,"Guard");
 			}
 			

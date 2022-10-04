@@ -3934,6 +3934,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		"spelltypes",
 		"weapon",
 		"armor",
+		"custom_armor",
 		"optkey",
 		"badge_icon",
 	};
@@ -4509,7 +4510,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		GameObject item = null;
 		if (getGameObject().hasThisAttribute(Constants.CUSTOM_CHARACTER)) {
-			item = fetchItemFromTemplate(weapon);
+			item = fetchWeaponFromTemplate(weapon);
 		}
 		if (item == null) {
 			// Fetch from the main object pool
@@ -4520,70 +4521,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 		WeaponChitComponent wcc = (WeaponChitComponent)RealmComponent.getRealmComponent(item);
 		wcc.setAlerted(false);
 		wcc.setActivated(true);
-	}
-	private GameObject fetchItemFromTemplate(String weapon) {
-		// Fetch from a template
-		GameObject item = null;
-		ArrayList<GameObject> unFilteredWeapons = CustomCharacterLibrary.getSingleton().getCharacterWeapons(getGameObject());
-		
-		//filter duplicates
-		ArrayList<GameObject> weapons = new ArrayList<>();
-		ArrayList<String> weaponNames = new ArrayList<>();
-		for (GameObject go:unFilteredWeapons) {
-			if (!weaponNames.contains(go.getName())) {
-				weapons.add(go);
-				weaponNames.add(go.getName());
-			}
-		}
-		
-		if (!weapons.isEmpty()) {
-			String board = getGameObject().getThisAttribute(Constants.BOARD_NUMBER);
-			for (GameObject go:weapons) {
-				GameObject newWeapon = getGameObject().getGameData().createNewObject();
-				newWeapon.copyAttributesFrom(go);
-				if (board!=null) {
-					newWeapon.setName(newWeapon.getName()+" "+board);
-					newWeapon.setThisAttribute(Constants.BOARD_NUMBER,board);
-				}
-				if (go.getName().equals(weapon)) {
-					// Found it - copy the attributes
-					item = newWeapon;
-					getGameObject().add(item);
-				}
-				else {
-					WeaponChitComponent wcc = (WeaponChitComponent)RealmComponent.getRealmComponent(newWeapon);
-					wcc.setAlerted(false);
-					wcc.setActivated(false);
-					
-					// otherwise, the weapon should be added to an appropriate native group
-					String weaponLocation = newWeapon.getThisAttribute(Constants.WEAPON_START_LOCATION);
-					if (weaponLocation==null) {
-						// Use weight to determine
-						String weight = wcc.getWeight().toString();
-						weaponLocation = "Inn";
-						if ("L".equals(weight)) { // House - Soldiers
-							weaponLocation = "House";
-						}
-						else if ("M".equals(weight)) { // Guard - Guard
-							weaponLocation = "Guard";
-						}
-						else if ("H".equals(weight)) { // Chapel - Order
-							weaponLocation = "Chapel";
-						}
-						// There should never be a T here:  the weaponLocation would not be null in the case of a custom weapon 
-					}
-					if (!weaponLocation.equals("None")) { // should never BE null, but oh well
-						if (board!=null) {
-							weaponLocation = weaponLocation+" "+board;
-						}
-						
-						GameObject dwelling = getGameObject().getGameData().getGameObjectByName(weaponLocation);
-						dwelling.add(newWeapon);
-					}
-				}
-			}
-		}
-		return item;
 	}
 	private void fetchStartingArmor(JFrame frame,String levelKey,GamePool pool,String hostKeyVals,boolean chooseSource) {
 		boolean custom = getGameObject().hasThisAttribute(Constants.CUSTOM_CHARACTER);
@@ -4607,6 +4544,102 @@ public class CharacterWrapper extends GameObjectWrapper {
 				}
 			}
 		}
+		
+		if (custom) {
+			String custom_armor = getGameObject().getAttribute(levelKey,"custom_armor");
+			if (custom_armor == null) return;
+			GameObject customArmor = fetchArmorFromTemplate(custom_armor);
+			if (customArmor == null) {
+				// Fetch from the main object pool
+				customArmor = fetchItem(frame,pool,custom_armor,hostKeyVals,chooseSource);
+			}
+			if (customArmor==null) return; // Might be null if someone strips a character, suicides, and respawns them
+			getGameObject().add(customArmor);
+		}
+	}
+	private GameObject fetchWeaponFromTemplate(String weapon) {
+		return fetchItemFromTemplate(weapon, Constants.WEAPON_START_LOCATION);
+	}
+	private GameObject fetchArmorFromTemplate(String armorName) {
+		return fetchItemFromTemplate(armorName, Constants.ARMOR_START_LOCATION);
+	}
+	private GameObject fetchItemFromTemplate(String item_name, String startLocation) {
+		// Fetch from a template
+		ArrayList<GameObject> unFilteredItems = null;
+		if (startLocation.matches(Constants.WEAPON_START_LOCATION)) {
+			unFilteredItems = CustomCharacterLibrary.getSingleton().getCharacterWeapons(getGameObject());
+		}
+		else if (startLocation.matches(Constants.ARMOR_START_LOCATION)) {
+			unFilteredItems = CustomCharacterLibrary.getSingleton().getCharacterArmor(getGameObject());
+		}
+		else return null;
+		
+		//filter duplicates
+		ArrayList<GameObject> items = new ArrayList<>();
+		ArrayList<String> itemNames = new ArrayList<>();
+		for (GameObject go:unFilteredItems) {
+			if (!itemNames.contains(go.getName())) {
+				items.add(go);
+				itemNames.add(go.getName());
+			}
+		}
+		GameObject item = null;
+		if (!items.isEmpty()) {
+			String board = getGameObject().getThisAttribute(Constants.BOARD_NUMBER);
+			for (GameObject go:items) {
+				GameObject newItem = getGameObject().getGameData().createNewObject();
+				newItem.copyAttributesFrom(go);
+				if (board!=null) {
+					newItem.setName(newItem.getName()+" "+board);
+					newItem.setThisAttribute(Constants.BOARD_NUMBER,board);
+				}
+				if (go.getName().equals(item_name)) {
+					// Found it - copy the attributes
+					item = newItem;
+					getGameObject().add(item);
+				}
+				else {
+					String weight = "";
+					if (startLocation.matches(Constants.WEAPON_START_LOCATION)) {
+						WeaponChitComponent wcc = (WeaponChitComponent)RealmComponent.getRealmComponent(newItem);
+						wcc.setAlerted(false);
+						wcc.setActivated(false);
+						weight = wcc.getWeight().toString();
+					}
+					if (startLocation.matches(Constants.ARMOR_START_LOCATION)) {
+						ArmorChitComponent acc = (ArmorChitComponent)RealmComponent.getRealmComponent(newItem);
+						acc.setActivated(false);
+						weight = acc.getWeight().toString();
+					}
+					
+					// otherwise, the item should be added to an appropriate native group
+					String itemLocation = newItem.getThisAttribute(startLocation);
+					if (itemLocation==null) {
+						// Use weight to determine
+						itemLocation = "Inn";
+						if ("L".equals(weight)) { // House - Soldiers
+							itemLocation = "House";
+						}
+						else if ("M".equals(weight)) { // Guard - Guard
+							itemLocation = "Guard";
+						}
+						else if ("H".equals(weight)) { // Chapel - Order
+							itemLocation = "Chapel";
+						}
+						// There should never be a T here:  the weaponLocation would not be null in the case of a custom weapon 
+					}
+					if (!itemLocation.equals("None")) { // should never BE null, but oh well
+						if (board!=null) {
+							itemLocation = itemLocation+" "+board;
+						}
+						
+						GameObject dwelling = getGameObject().getGameData().getGameObjectByName(itemLocation);
+						dwelling.add(newItem);
+					}
+				}
+			}
+		}
+		return item;
 	}
 	private GameObject fetchItem(JFrame frame,GamePool pool,String itemName,String hostKeyVals,boolean chooseSource) {
 		GameObject item = null;

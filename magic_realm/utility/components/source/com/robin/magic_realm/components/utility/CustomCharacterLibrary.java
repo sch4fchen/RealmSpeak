@@ -76,6 +76,11 @@ public class CustomCharacterLibrary {
 		GamePool pool = new GamePool(character.getGameData().getGameObjects());
 		return pool.find("weapon,!character,!magic");
 	}
+	public ArrayList<GameObject> getCharacterArmor(GameObject go) {
+		GameObject character = getCharacterTemplate(getNameFor(go));
+		GamePool pool = new GamePool(character.getGameData().getGameObjects());
+		return pool.find("armor,!character,!magic");
+	}
 	public ArrayList<GameObject> getCharacterCompanions(GameObject go) {
 		GameObject character = getCharacterTemplate(getNameFor(go));
 		GamePool pool = new GamePool(character.getGameData().getGameObjects());

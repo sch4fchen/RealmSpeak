@@ -197,7 +197,7 @@ public class RealmCharacterBuilderModel {
 		updateItemUsage("weapon", TemplateLibrary.WEAPON_QUERY, weaponHash);
 	}
 	public void updateArmorUsage() {
-		updateItemUsage("armor", TemplateLibrary.ARMOR_QUERY, armorHash);
+		updateItemUsage("custom_armor", TemplateLibrary.ARMOR_QUERY, armorHash);
 	}
 	/**
 	 * This will grab the item names from all four levels, and remove any GameObjects that are NOT used
@@ -569,10 +569,10 @@ public class RealmCharacterBuilderModel {
 				}
 				else if (filename.indexOf(CHARACTER_ARMOR_GIF_PREFIX)>0) {
 					ImageIcon icon = IconFactory.findIcon(files[i].getAbsolutePath());
-					String armorName = cropName(CHARACTER_WEAPON_GIF_PREFIX,model.getCharacter().getGameObject().getName(),filename);
+					String armorName = cropName(CHARACTER_ARMOR_GIF_PREFIX,model.getCharacter().getGameObject().getName(),filename);
 					armorName = armorName.replace('_',' ');
 					GameObject armor = model.getArmor(armorName);
-					RealmCharacterBuilderModel.updateWeaponIcon(armor,icon);
+					RealmCharacterBuilderModel.updateArmorIcon(armor,icon);
 				}
 				else if (filename.indexOf(CHARACTER_BADGE_GIF_PREFIX)>0) {
 					ImageIcon icon = IconFactory.findIcon(files[i].getAbsolutePath());

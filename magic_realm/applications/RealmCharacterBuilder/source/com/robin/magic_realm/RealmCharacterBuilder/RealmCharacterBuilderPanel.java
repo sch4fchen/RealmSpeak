@@ -946,19 +946,29 @@ public class RealmCharacterBuilderPanel extends JPanel {
 			customArmorButton = new JButton("Custom");
 			customArmorButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
-					String armorName = model.getCharacter().getGameObject().getAttribute(levelKey,"armor");
+					String armorName = model.getCharacter().getGameObject().getAttribute(levelKey,"custom_armor");
 					ArmorEditDialog aed = new ArmorEditDialog(parent,model,graphicsManager,armorName);
 					aed.setVisible(true);
 					armorName = aed.getArmorName();
 					if (armorName==null) {
-						model.getCharacter().getGameObject().removeAttribute(levelKey,"armor");
+						model.getCharacter().getGameObject().removeAttribute(levelKey,"custom_armor");
+						customArmorButton.setText("NEW ");
 					}
 					else {
-						model.getCharacter().getGameObject().setAttribute(levelKey,"armor",aed.getArmorName());
+						model.getCharacter().getGameObject().setAttribute(levelKey,"custom_armor",aed.getArmorName());
+						customArmorButton.setText("EDIT");
 					}
 					model.updateArmorUsage();
 				}
 			});
+			
+			String armorName = model.getCharacter().getGameObject().getAttribute(levelKey,"custom_armor");
+			if (armorName==null) {
+				customArmorButton.setText("NEW ");
+			} else {
+				customArmorButton.setText("EDIT");
+			}
+			
 			armorPanel.add(customArmorButton);
 			armorPanel.setBorder(BorderFactory.createTitledBorder("Armor"));
 			return armorPanel;
