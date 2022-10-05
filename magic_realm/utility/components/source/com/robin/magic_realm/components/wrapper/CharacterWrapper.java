@@ -4448,12 +4448,12 @@ public class CharacterWrapper extends GameObjectWrapper {
         }
 		String levelKey = "level_"+startingInventoryLevel;
 		GamePool pool = new GamePool(data.getGameObjects());
-		fetchStartingWeapon(parentFrame,levelKey,pool,hostKeyVals,chooseSource);
-		fetchStartingArmor(parentFrame,levelKey,pool,hostKeyVals,chooseSource);
+		fetchStartingWeapon(parentFrame,levelKey,pool,hostKeyVals,chooseSource,hostPrefs);
+		fetchStartingArmor(parentFrame,levelKey,pool,hostKeyVals,chooseSource,hostPrefs);
 		for (int i = 1; i <= 2; i++) {
 			levelKey = "level_" + startingInventoryLevel + "_" + i;
-			fetchStartingWeapon(parentFrame, levelKey, pool, hostKeyVals, chooseSource);
-			fetchStartingArmor(parentFrame, levelKey, pool, hostKeyVals, chooseSource);
+			fetchStartingWeapon(parentFrame, levelKey, pool, hostKeyVals, chooseSource,hostPrefs);
+			fetchStartingArmor(parentFrame, levelKey, pool, hostKeyVals, chooseSource,hostPrefs);
 		}
 	}
 	private void fetchCompanions() { // custom characters only
@@ -4503,7 +4503,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 	}
-	private void fetchStartingWeapon(JFrame frame,String levelKey,GamePool pool,String hostKeyVals,boolean chooseSource) {
+	private void fetchStartingWeapon(JFrame frame,String levelKey,GamePool pool,String hostKeyVals,boolean chooseSource,HostPrefWrapper hostPrefs) {
 		String weapon = getGameObject().getAttribute(levelKey,"weapon");
 		if (weapon==null) { //e.g. levelKey = level_4_1
 			return;
@@ -4522,11 +4522,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 		wcc.setAlerted(false);
 		wcc.setActivated(true);
 	}
-	private void fetchStartingArmor(JFrame frame,String levelKey,GamePool pool,String hostKeyVals,boolean chooseSource) {
+	private void fetchStartingArmor(JFrame frame,String levelKey,GamePool pool,String hostKeyVals,boolean chooseSource,HostPrefWrapper hostPrefs) {
 		boolean custom = getGameObject().hasThisAttribute(Constants.CUSTOM_CHARACTER);
 		String armor = getGameObject().getAttribute(levelKey,"armor");
 		if (armor!=null) {
 			StringTokenizer st = new StringTokenizer(armor,",");
+			boolean twoHandedWeaponResctriction = hostPrefs.hasPref(Constants.OPT_TWO_HANDED_WEAPONS) && !this.affectedByKey(Constants.STRONG);
 			while(st.hasMoreTokens()) {
 				String token = st.nextToken();
 				GameObject item = fetchItem(frame,pool,token,hostKeyVals,!custom && chooseSource);
@@ -4540,7 +4541,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 					getGameObject().add(item);
 					ArmorChitComponent acc = (ArmorChitComponent)RealmComponent.getRealmComponent(item);
 					acc.setIntact(true);
-					acc.setActivated(true);
+					if (item.hasThisAttribute(Constants.SHIELD) && twoHandedWeaponResctriction) {
+						acc.setActivated(false);
+					} else {
+						acc.setActivated(true);
+					}
 				}
 			}
 		}
