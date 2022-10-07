@@ -178,6 +178,13 @@ public class RealmCharacterBuilderPanel extends JPanel {
 			g.drawImage(weapon.getFlipSideImage(),x,y+icon.getIconHeight()+b,null);
 			x += icon.getIconWidth()+b;
 		}
+		for (GameObject go:model.getAllUniqueArmor()) {
+			ArmorChitComponent armor = (ArmorChitComponent)RealmComponent.getRealmComponent(go);
+			ImageIcon icon = armor.getIcon();
+			g.drawImage(icon.getImage(),x,y,null);
+			g.drawImage(armor.getFlipSideImage(),x,y+icon.getIconHeight()+b,null);
+			x += icon.getIconWidth()+b;
+		}
 		for (GameObject go:model.getAllUniqueArmor(magicRealmData)) {
 			ArmorChitComponent armor = new ArmorChitComponent(go);
 			ImageIcon icon = armor.getIcon();

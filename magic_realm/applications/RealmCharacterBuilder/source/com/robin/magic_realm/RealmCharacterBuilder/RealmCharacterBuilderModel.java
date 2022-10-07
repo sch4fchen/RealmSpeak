@@ -165,7 +165,7 @@ public class RealmCharacterBuilderModel {
 		weapon.setThisAttribute(Constants.ICON_TYPE,iconName);
 	}
 	public static void updateArmorIcon(GameObject armor,ImageIcon icon) {
-		String iconFolder = RealmCharacterConstants.CUSTOM_ICON_BASE_PATH+"armors";
+		String iconFolder = RealmCharacterConstants.CUSTOM_ICON_BASE_PATH+"armor";
 		String iconName = armor.getName().toLowerCase(); // this may change when the file is saved!
 		String iconPath = iconFolder+"/"+iconName;
 		ImageCache._placeImage(iconPath,icon); // Trick the cache to use this icon
@@ -287,6 +287,21 @@ public class RealmCharacterBuilderModel {
 					fileList.add(weaponFile);
 				}
 			}
+			ArrayList<String> armorNames = getAllArmorNames();
+			for (String armorName:armorNames) {
+				GameObject go = getArmor(armorName);
+				String iconFolder = go.getThisAttribute(Constants.ICON_FOLDER);
+				if (iconFolder.startsWith(RealmCharacterConstants.CUSTOM_ICON_BASE_PATH)) {
+					// All custom icons require saving
+					String iconName = go.getThisAttribute(Constants.ICON_TYPE);
+					String filename = iconFolder+"/"+iconName;
+					ImageIcon icon = ImageCache.getIcon(filename);
+					File armorFile = new File(dir+name+CHARACTER_ARMOR_GIF_PREFIX+armorName.replace(' ','_')+IMAGE_EXTENSION);
+					if (!graphicsOnly) armorFile.deleteOnExit();
+					exportImage(armorFile,icon);
+					fileList.add(armorFile);
+				}
+			}
 			// Badge icons
 			for (int i=1;i<=4;i++) {
 				String levelKey = "level_"+i;
@@ -373,6 +388,21 @@ public class RealmCharacterBuilderModel {
 		ArrayList<GameObject> list = new ArrayList<>();
 		for (String weaponName:weaponNames) {
 			GameObject go = getWeapon(weaponName);
+			list.add(go);
+		}
+		return list;
+	}
+	public ArrayList<GameObject> getAllUniqueArmor() {
+		ArrayList<String> armorNames = new ArrayList<>();
+		for (int i=1;i<=4;i++) {
+			String name = character.getGameObject().getAttribute("level_"+i,"custom_armor");
+			if (name!=null && !armorNames.contains(name)) {
+				armorNames.add(name);
+			}
+		}
+		ArrayList<GameObject> list = new ArrayList<>();
+		for (String armorName:armorNames) {
+			GameObject go = getWeapon(armorName);
 			list.add(go);
 		}
 		return list;
