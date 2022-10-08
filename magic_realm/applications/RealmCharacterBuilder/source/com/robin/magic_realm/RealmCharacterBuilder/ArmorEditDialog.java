@@ -383,6 +383,7 @@ public class ArmorEditDialog extends AggressiveDialog {
 				armor.setAttribute("damaged","chit_color","white");
 				armor.setAttribute("damaged","base_price","1");
 				armor.setThisAttribute(Constants.ARMOR_START_LOCATION,"Guard");
+				armor.setThisAttribute("armor_row","3"); // default
 			}
 			
 			model.addArmor(name,armor);
