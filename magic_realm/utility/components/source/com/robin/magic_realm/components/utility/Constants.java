@@ -44,7 +44,7 @@ public class Constants {
 	
 	public static final String APPLICATION_NAME = "Realm Speak";
 	public static final String REALM_SPEAK_VERSION = "1.1.6.5";
-	public static final String REALM_SPEAK_IMAGES_VERSION = "1.1.6.5";
+	public static final String REALM_SPEAK_IMAGES_VERSION = "1.1.6.6";
 	
 	public static final String PLAYER_TO_PLACE = "p_2_p";
 	public static final String PLAYER_TO_PLACE_NEXT = "p_2_p_n";
