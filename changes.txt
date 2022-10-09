@@ -1,6 +1,8 @@
 Version 1.1.6.6
 NEW FEATURES:
 # More community custom characters (with custom graphics)
+BUGS/ISSUES:
+# Fix "Knows all roads/passages" ability of minor character
 
 Version 1.1.6.5
 NEW FEATURES:

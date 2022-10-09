@@ -66,8 +66,8 @@ public class QuestMinorCharacter extends GameObjectWrapper {
 				if (ignore.contains(key)) continue;
 				Object val = block.get(key);
 				if (val instanceof ArrayList) {
-					ArrayList list = new ArrayList((ArrayList)val);
-					ArrayList current = getGameObject().getThisAttributeList(key);
+					ArrayList<String> list = new ArrayList((ArrayList)val);
+					ArrayList<String> current = getGameObject().getThisAttributeList(key);
 					if (current!=null && !current.isEmpty()) {
 						list.addAll(current);
 					}

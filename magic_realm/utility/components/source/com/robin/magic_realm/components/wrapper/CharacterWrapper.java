@@ -3358,6 +3358,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 	}
 	public boolean hasHiddenPathDiscovery(String name) {
+		if (affectedByKey(Constants.KNOWS_ROADS)) {
+			return true;
+		}
 		if (isMinion()) {
 			return getHiringCharacter().hasHiddenPathDiscovery(name);
 		}
@@ -3375,6 +3378,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 	}
 	public boolean hasSecretPassageDiscovery(String name) {
+		if (affectedByKey(Constants.KNOWS_ROADS)) {
+			return true;
+		}
 		if (isMinion()) {
 			return getHiringCharacter().hasSecretPassageDiscovery(name);
 		}
