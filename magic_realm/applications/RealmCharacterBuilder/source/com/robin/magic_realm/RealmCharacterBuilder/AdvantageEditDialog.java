@@ -80,12 +80,12 @@ public class AdvantageEditDialog extends AggressiveDialog {
 	}
 	private void initComponents() {
 		setLayout(new BorderLayout());
-		setSize(900,680);
+		setSize(900,750);
 		
 		mainPanel = new JPanel(new BorderLayout());
 			Box box = Box.createHorizontalBox();
 			Box iconBox = Box.createVerticalBox();
-			iconLabel = new JLabel("",JLabel.CENTER);
+			iconLabel = new JLabel("",SwingConstants.CENTER);
 			ComponentTools.lockComponentSize(iconLabel,38,38);
 			iconLabel.setBorder(BorderFactory.createEtchedBorder());
 			iconBox.add(iconLabel);

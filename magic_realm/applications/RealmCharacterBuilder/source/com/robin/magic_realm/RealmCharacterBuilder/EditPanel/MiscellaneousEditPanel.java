@@ -30,47 +30,51 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 	private static int COL_NAME = 0;
 	private static int COL_KEY = 1;
 	private static int COL_VAL = 2;
-	private static String[][] MISC_ADVANTAGE_1 = {
+	private static String[][] MISC_ADVANTAGE_ACTION_RECORDING = {
 		{"Choose when to take your turn",Constants.CHOOSE_TURN,""},
 		{"No need to record your turn.",Constants.DAYTIME_ACTIONS,""},
 		{"You can cancel planned actions during your turn.",Constants.CANCEL_RECORDED_ACTION,""},
+		{"Extra Phase at Dwellings",Constants.EXTRA_DWELLING_PHASE,""},
+		{"Extra Phase in Caves",Constants.EXTRA_CAVE_PHASE,""},
+		{"Cannot use sunlight phases",Constants.NO_SUNLIGHT,""},
+		{"Rest Counts Double",Constants.REST_DOUBLE,""},
+		{"-1 Mountain MOVE Cost",Constants.MOUNTAIN_MOVE_ADJ,"-1"},
+		{"+1 Non-Cave MOVE Cost",Constants.NONCAVE_MOVE_DISADVANTAGE,""},
+		{"Can walk woods on the 7th day of every week.",Constants.WALK_WOODS,"7th"},
+	};
+	private static String[][] MISC_ADVANTAGE_DISCOVERIES = {
+		{"Knows all paths/passages",Constants.KNOWS_ROADS,""},
+		{"Can open CHEST, CRYPT, or VAULT without the Lost Keys.",Constants.PICKS_LOCKS,""},
+		{"Gains points for recording certain discoveries.",Constants.ADVENTURER,""},
+		{"The Lost City and Lost Castle chits count as shelters.",Constants.ADVANCED_SHELTERS,""},
+	};
+	private static String[][] MISC_ADVANTAGE_OTHER_ABILITIES = {
 		{"Magic sight",Constants.MAGIC_SIGHT,""},
 		{"No monster summoning for sound/warning chits",Constants.PEACE_WITH_NATURE,""},
 		{"No monster summoning for treasure locations",Constants.DRUID_LULL,""},
 		{"Immune to Curses",Constants.CURSE_IMMUNITY,""},
 		{"Familiar",Constants.USE_FAMILIAR,""},
-		{"Cannot use sunlight phases",Constants.NO_SUNLIGHT,""},
 		{"MAGIC chits don't fatigue when alerted and unused",Constants.NO_MAGIC_FATIGUE,""},
-		{"Knows all paths/passages",Constants.KNOWS_ROADS,""},
 		{"No SPX requirement",Constants.NO_SPX,""},
-		{"Extra Phase at Dwellings",Constants.EXTRA_DWELLING_PHASE,""},
-		{"Extra Phase in Caves",Constants.EXTRA_CAVE_PHASE,""},
-		{"Rest Counts Double",Constants.REST_DOUBLE,""},
-		{"-1 Mountain MOVE Cost",Constants.MOUNTAIN_MOVE_ADJ,"-1"},
-		{"+1 Non-Cave MOVE Cost",Constants.NONCAVE_MOVE_DISADVANTAGE,""},
-		{"Effort Limit of 3",Constants.EFFORT_LIMIT,"3"},
 	};
-	private static String[][] MISC_ADVANTAGE_2 = {
-		{"FIGHT chits without a weapon do full harm",Constants.FIGHT_NO_WEAPON,""},
-		{"Can open CHEST, CRYPT, or VAULT without the Lost Keys.",Constants.PICKS_LOCKS,""},
-		{"Can walk woods on the 7th day of every week.",Constants.WALK_WOODS,"7th"},
+	private static String[][] MISC_ADVANTAGE_COMBAT_AND_SPELLCASTING = {
+		{"Effort Limit of 3",Constants.EFFORT_LIMIT,"3"},
+		{"Become unhidden when attacking from an ambush.",Constants.NO_AMBUSH,""},
+		{"Cannot lure or target friendly and allied natives.",Constants.NATIVE_FRIENDLY,""},
 		{"Has natural armor (like armored monster).",Constants.ARMORED,""},
 		{"Suffer wounds instead of death when harm matches vulnerability.",Constants.TOUGHNESS,""},
-		{"A successful HIDE roll on missile attacks, allows to stay hidden.",Constants.SNEAKY,""},
-		{"Become unhidden when attacking from an ambush.",Constants.NO_AMBUSH,""},
+		{"FIGHT chits without a weapon do full harm",Constants.FIGHT_NO_WEAPON,""},	
 		{"Can activate a two-handed weapon and a shield.",Constants.STRONG,""},
 		{"Can use two weapons, one in each hand.",Constants.DUAL_WIELDING,""},
 		{"When dual wielding both weapons can be alerted.",Constants.DUAL_WIELDING_ALERT,""},
 		{"Can throw corresponding weapons.",Constants.THROWING_WEAPONS,""},
+		{"A successful HIDE roll on missile attacks, allows to stay hidden.",Constants.SNEAKY,""},
 		{"Can penetrate targets armor with missile weapons.",Constants.SHARPSHOOTER,""},
 		{"Can attack with a staff additionally to casting a spell if having no active armor chits.",Constants.BATTLE_MAGE,""},
+		{"Cannot play a MAGIC counter, if he has any weapon counter except a staff activated.",Constants.STAFF_RESTRICTED_SPELLCASTING,""},
 		{"Can boost MOVE chits with MAGIC chits.",Constants.MAGIC_MOVE,""},
 		{"Can cast multiple instances of a single spell.",Constants.ENHANCED_MAGIC,""},
 		{"Can use Artifacts and Spell Books as extra MAGIC chits.",Constants.ENHANCED_ARTIFACTS,""},
-		{"Cannot play a MAGIC counter, if he has any weapon counter except a staff activated.",Constants.STAFF_RESTRICTED_SPELLCASTING,""},
-		{"Gains points for recording certain discoveries.",Constants.ADVENTURER,""},
-		{"The Lost City and Lost Castle chits count as shelters.",Constants.ADVANCED_SHELTERS,""},
-		{"Cannot lure or target friendly and allied natives.",Constants.ADVANCED_SHELTERS,""},
 	};
 	private ButtonGroup group;
 	private ArrayList<JRadioButton> buttonList;
@@ -85,14 +89,26 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		
 		String[] advKey = getAdvantageKey();
 		Box box1 = Box.createVerticalBox();
-		for (int i=0;i<MISC_ADVANTAGE_1.length;i++) {
-			addChoice(box1,MISC_ADVANTAGE_1[i],MISC_ADVANTAGE_1[i]==advKey);
+		box1.add(new JLabel("RECODRING ACTIONS"));
+		for (int i=0;i<MISC_ADVANTAGE_ACTION_RECORDING.length;i++) {
+			addChoice(box1,MISC_ADVANTAGE_ACTION_RECORDING[i],MISC_ADVANTAGE_ACTION_RECORDING[i]==advKey);
+		}
+		box1.add(Box.createVerticalGlue());
+		box1.add(new JLabel("DISCOVERIES"));
+		for (int i=0;i<MISC_ADVANTAGE_DISCOVERIES.length;i++) {
+			addChoice(box1,MISC_ADVANTAGE_DISCOVERIES[i],MISC_ADVANTAGE_DISCOVERIES[i]==advKey);
+		}
+		box1.add(Box.createVerticalGlue());
+		box1.add(new JLabel("OTHER ABILITIES"));
+		for (int i=0;i<MISC_ADVANTAGE_OTHER_ABILITIES.length;i++) {
+			addChoice(box1,MISC_ADVANTAGE_OTHER_ABILITIES[i],MISC_ADVANTAGE_OTHER_ABILITIES[i]==advKey);
 		}
 		box1.add(Box.createVerticalGlue());
 		add(box1);
 		Box box2 = Box.createVerticalBox();
-		for (int i=0;i<MISC_ADVANTAGE_2.length;i++) {
-			addChoice(box2,MISC_ADVANTAGE_2[i],MISC_ADVANTAGE_2[i]==advKey);
+		box2.add(new JLabel("COMBAT & SPELLCASTING"));
+		for (int i=0;i<MISC_ADVANTAGE_COMBAT_AND_SPELLCASTING.length;i++) {
+			addChoice(box2,MISC_ADVANTAGE_COMBAT_AND_SPELLCASTING[i],MISC_ADVANTAGE_COMBAT_AND_SPELLCASTING[i]==advKey);
 		}
 		box2.add(Box.createVerticalGlue());
 		add(box2);
@@ -110,14 +126,26 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		box.add(button);
 	}
 	private String[] getAdvantageKey() {
-		for (int i=0;i<MISC_ADVANTAGE_1.length;i++) {
-			String[] adv = MISC_ADVANTAGE_1[i];
+		for (int i=0;i<MISC_ADVANTAGE_ACTION_RECORDING.length;i++) {
+			String[] adv = MISC_ADVANTAGE_ACTION_RECORDING[i];
 			if (hasAttribute(adv[COL_KEY])) {
 				return adv;
 			}
 		}
-		for (int i=0;i<MISC_ADVANTAGE_2.length;i++) {
-			String[] adv = MISC_ADVANTAGE_2[i];
+		for (int i=0;i<MISC_ADVANTAGE_DISCOVERIES.length;i++) {
+			String[] adv = MISC_ADVANTAGE_DISCOVERIES[i];
+			if (hasAttribute(adv[COL_KEY])) {
+				return adv;
+			}
+		}
+		for (int i=0;i<MISC_ADVANTAGE_OTHER_ABILITIES.length;i++) {
+			String[] adv = MISC_ADVANTAGE_OTHER_ABILITIES[i];
+			if (hasAttribute(adv[COL_KEY])) {
+				return adv;
+			}
+		}
+		for (int i=0;i<MISC_ADVANTAGE_COMBAT_AND_SPELLCASTING.length;i++) {
+			String[] adv = MISC_ADVANTAGE_COMBAT_AND_SPELLCASTING[i];
 			if (hasAttribute(adv[COL_KEY])) {
 				return adv;
 			}
@@ -128,30 +156,56 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		return getAdvantageKey()!=null;
 	}
 	protected void applyAdvantage() {
-		for (int i=0;i<MISC_ADVANTAGE_1.length;i++) {
+		for (int i=0;i<MISC_ADVANTAGE_ACTION_RECORDING.length;i++) {
 			JRadioButton button = buttonList.get(i);
 			if (button.isSelected()) {
-				setAttribute(MISC_ADVANTAGE_1[i][COL_KEY],MISC_ADVANTAGE_1[i][COL_VAL]);
+				setAttribute(MISC_ADVANTAGE_ACTION_RECORDING[i][COL_KEY],MISC_ADVANTAGE_ACTION_RECORDING[i][COL_VAL]);
 				return;
 			}
 		}
-		for (int i=0;i<MISC_ADVANTAGE_2.length;i++) {
-			JRadioButton button = buttonList.get(i+MISC_ADVANTAGE_1.length);
+		for (int i=0;i<MISC_ADVANTAGE_DISCOVERIES.length;i++) {
+			JRadioButton button = buttonList.get(i+MISC_ADVANTAGE_ACTION_RECORDING.length);
 			if (button.isSelected()) {
-				setAttribute(MISC_ADVANTAGE_2[i][COL_KEY],MISC_ADVANTAGE_2[i][COL_VAL]);
+				setAttribute(MISC_ADVANTAGE_DISCOVERIES[i][COL_KEY],MISC_ADVANTAGE_DISCOVERIES[i][COL_VAL]);
+				return;
+			}
+		}
+		for (int i=0;i<MISC_ADVANTAGE_OTHER_ABILITIES.length;i++) {
+			JRadioButton button = buttonList.get(i+MISC_ADVANTAGE_ACTION_RECORDING.length+MISC_ADVANTAGE_DISCOVERIES.length);
+			if (button.isSelected()) {
+				setAttribute(MISC_ADVANTAGE_OTHER_ABILITIES[i][COL_KEY],MISC_ADVANTAGE_OTHER_ABILITIES[i][COL_VAL]);
+				return;
+			}
+		}
+		for (int i=0;i<MISC_ADVANTAGE_COMBAT_AND_SPELLCASTING.length;i++) {
+			JRadioButton button = buttonList.get(i+MISC_ADVANTAGE_ACTION_RECORDING.length+MISC_ADVANTAGE_DISCOVERIES.length+MISC_ADVANTAGE_OTHER_ABILITIES.length);
+			if (button.isSelected()) {
+				setAttribute(MISC_ADVANTAGE_COMBAT_AND_SPELLCASTING[i][COL_KEY],MISC_ADVANTAGE_COMBAT_AND_SPELLCASTING[i][COL_VAL]);
 				return;
 			}
 		}
 	}
 	public String getSuggestedDescription() {
-		for (int i=0;i<MISC_ADVANTAGE_1.length;i++) {
+		for (int i=0;i<MISC_ADVANTAGE_ACTION_RECORDING.length;i++) {
 			JRadioButton button = buttonList.get(i);
 			if (button.isSelected()) {
 				return button.getText();
 			}
 		}
-		for (int i=0;i<MISC_ADVANTAGE_2.length;i++) {
-			JRadioButton button = buttonList.get(i+MISC_ADVANTAGE_1.length);
+		for (int i=0;i<MISC_ADVANTAGE_DISCOVERIES.length;i++) {
+			JRadioButton button = buttonList.get(i+MISC_ADVANTAGE_ACTION_RECORDING.length);
+			if (button.isSelected()) {
+				return button.getText();
+			}
+		}
+		for (int i=0;i<MISC_ADVANTAGE_OTHER_ABILITIES.length;i++) {
+			JRadioButton button = buttonList.get(i+MISC_ADVANTAGE_ACTION_RECORDING.length+MISC_ADVANTAGE_OTHER_ABILITIES.length);
+			if (button.isSelected()) {
+				return button.getText();
+			}
+		}
+		for (int i=0;i<MISC_ADVANTAGE_COMBAT_AND_SPELLCASTING.length;i++) {
+			JRadioButton button = buttonList.get(i+MISC_ADVANTAGE_ACTION_RECORDING.length+MISC_ADVANTAGE_OTHER_ABILITIES.length+MISC_ADVANTAGE_OTHER_ABILITIES.length);
 			if (button.isSelected()) {
 				return button.getText();
 			}
