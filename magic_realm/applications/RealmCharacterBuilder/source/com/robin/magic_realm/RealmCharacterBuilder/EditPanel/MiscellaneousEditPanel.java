@@ -201,13 +201,13 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 			}
 		}
 		for (int i=0;i<MISC_ADVANTAGE_OTHER_ABILITIES.length;i++) {
-			JRadioButton button = buttonList.get(i+MISC_ADVANTAGE_ACTION_RECORDING.length+MISC_ADVANTAGE_OTHER_ABILITIES.length);
+			JRadioButton button = buttonList.get(i+MISC_ADVANTAGE_ACTION_RECORDING.length+MISC_ADVANTAGE_DISCOVERIES.length);
 			if (button.isSelected()) {
 				return button.getText();
 			}
 		}
 		for (int i=0;i<MISC_ADVANTAGE_COMBAT_AND_SPELLCASTING.length;i++) {
-			JRadioButton button = buttonList.get(i+MISC_ADVANTAGE_ACTION_RECORDING.length+MISC_ADVANTAGE_OTHER_ABILITIES.length+MISC_ADVANTAGE_OTHER_ABILITIES.length);
+			JRadioButton button = buttonList.get(i+MISC_ADVANTAGE_ACTION_RECORDING.length+MISC_ADVANTAGE_DISCOVERIES.length+MISC_ADVANTAGE_OTHER_ABILITIES.length);
 			if (button.isSelected()) {
 				return button.getText();
 			}

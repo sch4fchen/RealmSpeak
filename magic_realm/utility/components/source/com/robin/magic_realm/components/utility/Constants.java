@@ -189,7 +189,7 @@ public class Constants {
 	public static final String MOUNTAIN_MOVE_ADJ = "mountain_move_adj";
 	public static final String NONCAVE_MOVE_DISADVANTAGE = "noncave_move_disadavantage";
 	public static final String FIGHT_NO_WEAPON = "fight_no_weapon"; // allows your FIGHT chits to affect harm at shown strength without a weapon (no sharpness)
-	public static final String BLOCK_NO_WEAPON = "fight_no_weapon"; // allows your FIGHT chits to block
+	public static final String BLOCK_NO_WEAPON = "block_no_weapon"; // allows your FIGHT chits to block
 	public static final String PICKS_LOCKS = "picks_locks";
 	public static final String STARTING_GOLD = "start_gold"; // if absent, assume the default of 10
 	public static final String MAXIMUM_GOLD = "max_gold"; // if absent, assume no limit to the amount of recorded gold
