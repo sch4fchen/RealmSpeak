@@ -507,6 +507,7 @@ public class Constants {
 	public static final String OPT_TWO_HANDED_WEAPONS = "OptTwoHandedWeapons";
 	public static final String OPT_DUAL_WIELDING = "OptDualWielding";
 	public static final String OPT_THROWING_WEAPONS = "OptThrowingWeapons";
+	public static final String OPT_PARRY = "OptParry";
 	public static final String OPT_SR_STEEL_AGAINST_MAGIC = "OptSrSteelAgainsMagic";
 	public static final String OPT_RIDING_HORSES = "OptRidingHorses";
 	public static final String OPT_AUTOMATIC_ENCHANTING = "OptAutomaticEnchanting";
@@ -544,7 +545,6 @@ public class Constants {
 	public static final String FE_DEADLY_REALM = "DeadlyRealm";
 	public static final String FE_STEEL_AGAINST_MAGIC = "SteelAgainstMagic";
 	public static final String FE_AMBUSH_END_OF_COMBATROUND = "AmbushRollEndOfCombatround";
-	public static final String FE_PARRY = "Parry";
 	
 	// My House Rules
 	public static final String HOUSE1_DWARF_ACTION = "DwarfActions";
