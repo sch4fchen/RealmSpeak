@@ -189,6 +189,7 @@ public class Constants {
 	public static final String MOUNTAIN_MOVE_ADJ = "mountain_move_adj";
 	public static final String NONCAVE_MOVE_DISADVANTAGE = "noncave_move_disadavantage";
 	public static final String FIGHT_NO_WEAPON = "fight_no_weapon"; // allows your FIGHT chits to affect harm at shown strength without a weapon (no sharpness)
+	public static final String BLOCK_NO_WEAPON = "fight_no_weapon"; // allows your FIGHT chits to block
 	public static final String PICKS_LOCKS = "picks_locks";
 	public static final String STARTING_GOLD = "start_gold"; // if absent, assume the default of 10
 	public static final String MAXIMUM_GOLD = "max_gold"; // if absent, assume no limit to the amount of recorded gold
@@ -213,6 +214,7 @@ public class Constants {
 	public static final String STRONG = "strong";
 	public static final String DUAL_WIELDING = "dual_wielding";
 	public static final String DUAL_WIELDING_ALERT = "dual_wielding_alert";
+	public static final String PARRY = "parry";
 	public static final String THROWING_WEAPONS = "throwing_weapons";
 	public static final String SHARPSHOOTER = "sharpshooter";
 	public static final String BATTLE_MAGE = "battle_mage";
@@ -542,6 +544,7 @@ public class Constants {
 	public static final String FE_DEADLY_REALM = "DeadlyRealm";
 	public static final String FE_STEEL_AGAINST_MAGIC = "SteelAgainstMagic";
 	public static final String FE_AMBUSH_END_OF_COMBATROUND = "AmbushRollEndOfCombatround";
+	public static final String FE_PARRY = "Parry";
 	
 	// My House Rules
 	public static final String HOUSE1_DWARF_ACTION = "DwarfActions";

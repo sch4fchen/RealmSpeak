@@ -550,14 +550,14 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		
 		Font font = new Font("Dialog",Font.BOLD,14);
 		JPanel headerPanel = new JPanel(new GridLayout(2,1));
-		JLabel vpLabel = new JLabel("VPs",JLabel.CENTER);
+		JLabel vpLabel = new JLabel("VPs",SwingConstants.CENTER);
 		vpLabel.setUI(new VerticalLabelUI(false));
 		vpLabel.setBorder(BorderFactory.createRaisedBevelBorder());
 		vpLabel.setFont(font);
 		vpLabel.setOpaque(true);
 		vpLabel.setBackground(new Color(100,255,100));
 		headerPanel.add(vpLabel);
-		JLabel qLabel = new JLabel("Quests",JLabel.CENTER);
+		JLabel qLabel = new JLabel("Quests",SwingConstants.CENTER);
 		qLabel.setUI(new VerticalLabelUI(false));
 		qLabel.setBorder(BorderFactory.createRaisedBevelBorder());
 		qLabel.setFont(font);
@@ -726,7 +726,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			minMapRating.setMajorTickSpacing(1);
 			minMapRating.setPaintTicks(true);
 			minMapRating.setPaintLabels(true);
-			minMapRating.setOrientation(JSlider.VERTICAL);
+			minMapRating.setOrientation(SwingConstants.VERTICAL);
 			Hashtable<Integer, JLabel> labelTable = new Hashtable<>();
 			labelTable.put( 0, new JLabel("0 - Any (Fast)  ") );
 			labelTable.put( 1, new JLabel("1") );
@@ -929,7 +929,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	}
 	private GameOptionPane createOptionPane(boolean editMode,JPanel mainPanel) {
 		// First tab is basic stuff
-		GameOptionPane newOptionPane = new GameOptionPane(JTabbedPane.LEFT,editMode);
+		GameOptionPane newOptionPane = new GameOptionPane(SwingConstants.LEFT,editMode);
 		newOptionPane.addTab(MAIN_TAB,mainPanel);
 		newOptionPane.addActionListener(notifier);
 		
@@ -987,7 +987,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_TWO_HANDED_WEAPONS,"TWO HANDED WEAPONS (Book of Quests variant) - The use of a two-handed weapon limits a character’s ability to use a shield for defense.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_DUAL_WIELDING,"DUAL WIELDING (Expansion 1 Variant) - Characters can use two weapons, one in each hand.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_THROWING_WEAPONS,"THROWING WEAPONS (Expansion 1) - A character can throw corresponding weapons.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC (Supr Realm Project rule) - A character with no active armor counters casting a spell may also use his staff to make a separate attack.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC (Super Realm Project rule) - A character with no active armor counters casting a spell may also use his staff to make a separate attack.",false));
 		
 		newOptionPane.setTabHtmlDescription(EXPANDING_REALM_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Expanding the Realm</font></body></html>");
 		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_CUSTOM_CHARS,"CUSTOM CHARACTERS - Allow players to choose from custom characters.",true,null,requiresDevelopmentRules));
@@ -1021,6 +1021,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_KILLER_CAVES,"KILLER CAVES - Horses are killed when they enter a cave clearing.", false));
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_DEADLY_REALM,"DEADLY REALM - Unhired natives, medium and heavy monsters are turned darker side up at the start of the game (and at the start of each month). Lost City and Lost Castle summon monsters like sound chits. Characters must assign attackers equally to the combat boxes.", false));
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC - A character cannot play a MAGIC counter, if he has any weapon counter except a staff activated.", false));
+		//newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_PARRY,"PARRYING (1st Ed. and Super Realm Project rule) - A character can parry other attacks with a weapon.",false));
 		
 		newOptionPane.setTabHtmlDescription(HOUSE1_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Robin's House Rules</font></body></html>");
 		newOptionPane.addOption(HOUSE1_RULES_TAB,new GameOption(Constants.HOUSE1_DWARF_ACTION,"Productive Dwarf - (This rule replaces section 1.1 of the advantage section for the Dwarf)  The Dwarf must spend one additional consecutive move phase to enter any non-cave clearing, but otherwise receives the normal number of phases.  (Special thanks to Daniel Farrow for this alternative rule which is much more workable than the one I was using!)",false));
