@@ -985,10 +985,11 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_MISSILE,"OPTIONAL MISSILE TABLE D.3.4 - Use the Optional Missile Table for missile attacks.",false,exclusiveMissileRules,null));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PENETRATING_ARMOR,"PENETRATING ARMOR D.3.5 - When a missile attack hits a character's armor, the harm is inflicted on the character but the armor reduces the harm.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_TWO_HANDED_WEAPONS,"TWO HANDED WEAPONS (Book of Quests variant) - The use of a two-handed weapon limits a character’s ability to use a shield for defense.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_DUAL_WIELDING,"DUAL WIELDING (Expansion 1 Variant) - Characters can use two weapons, one in each hand.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_DUAL_WIELDING,"DUAL WIELDING (Expansion 1) - Characters can use two weapons, one in each hand.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_THROWING_WEAPONS,"THROWING WEAPONS (Expansion 1) - A character can throw corresponding weapons.",false));
-		//newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY,"PARRYING (1st Ed., Expansion 1 and Super Realm Project rule) - A character can parry other attacks with a weapon.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC (Super Realm Project rule) - A character with no active armor counters casting a spell may also use his staff to make a separate attack.",false));
+		//newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY,"PARRYING (1st Ed. and Super Realm Project) - A character can parry target's attack with a weapon.",false));
+		//newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY_LIKE_SHIELD,"PARRYING LIKE A SHIELD (Expansion 1) - A character can parry like with a shield other attacks with a weapon.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC (Super Realm Project) - A character with no active armor counters casting a spell may also use his staff to make a separate attack.",false));
 		
 		newOptionPane.setTabHtmlDescription(EXPANDING_REALM_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Expanding the Realm</font></body></html>");
 		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_CUSTOM_CHARS,"CUSTOM CHARACTERS - Allow players to choose from custom characters.",true,null,requiresDevelopmentRules));
