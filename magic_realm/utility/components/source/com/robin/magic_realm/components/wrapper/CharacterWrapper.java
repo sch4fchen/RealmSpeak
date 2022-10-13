@@ -1758,6 +1758,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				String itemCondition = item.getThisAttribute(Constants.WALK_WOODS);
 				if (itemCondition != null && (condition==null || (condition.trim().length()!=0 && itemCondition.trim().length()==0))) {
 					condition = itemCondition;
+					break;
 				}
 			}
 		}

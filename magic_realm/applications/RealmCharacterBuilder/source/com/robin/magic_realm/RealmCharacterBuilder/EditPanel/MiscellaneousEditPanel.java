@@ -41,6 +41,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"-1 Mountain MOVE Cost",Constants.MOUNTAIN_MOVE_ADJ,"-1"},
 		{"+1 Non-Cave MOVE Cost",Constants.NONCAVE_MOVE_DISADVANTAGE,""},
 		{"Can walk woods on the 7th day of every week.",Constants.WALK_WOODS,"7th"},
+		{"Can walk woods on the every day of every week.",Constants.WALK_WOODS,""},
 	};
 	private static String[][] MISC_ADVANTAGE_DISCOVERIES = {
 		{"Knows all paths/passages",Constants.KNOWS_ROADS,""},
