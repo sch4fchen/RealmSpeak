@@ -1,4 +1,6 @@
 Version 1.1.6.6
+QUEST UPDATE:
+# Add quest Q63 Thanos
 NEW FEATURES:
 # More community custom characters (with custom graphics)
 BUGS/ISSUES:
