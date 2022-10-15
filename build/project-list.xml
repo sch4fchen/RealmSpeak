@@ -233,7 +233,7 @@
 	<project name="RealmSpeakFull"
 			directory="build/temp-build/RealmSpeakFull"
 			javadoc="false"
-			jar.main-class="none"
+			jar.main-class="com.robin.magic_realm.RealmSpeak.RealmSpeakFrame"
 			jar.bundle="true">
 		<depend type="library" name="jdom"/>
 		<depend type="library" name="xerces"/>
