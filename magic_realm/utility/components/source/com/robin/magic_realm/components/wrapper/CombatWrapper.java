@@ -57,6 +57,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String COMBAT_BOX = "CMB_BOX";
 	private static final String PLACED_AS_MOVE = "PAM"; // this is only important for the Unleash Power MOVE/FIGHT chits
 	private static final String PLACED_AS_FIGHT = "PAF"; // this is only important for the Unleash Power MOVE/FIGHT chits
+	private static final String PLACED_AS_PARRY_SHIELD = "PAPS";
 	private static final String HAS_CHARGED = "CHRG";
 	private static final String CHARGED_BY_IDS = "CHRG_IDS"; // List of game object ids of the MOVE chits used (
 	private static final String USED_IDS = "USED_IDS"; // List of chit ids used this round
@@ -82,6 +83,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String BURNED_COLOR = "BURNED_COLOR"; // indicates the player burned a color chit this combat round
 	private static final String SERIOUS_WOUND_ROLLS = "S_W_ROLLS";
 	private static final String PLAYED_ATTACK = "PLAYED_ATTACK";
+	private static final String PLAYED_BONUS_PARRY = "PLAYED_BONUS_PARRY";
 	private static final String THROWN = "THROWN";
 	private static final String TARGETING_RIDER = "TARGETING_RIDER";
 	private static final String GALLOPED = "GALLOPED";
@@ -353,6 +355,12 @@ public class CombatWrapper extends GameObjectWrapper {
 	public boolean getPlayedAttack() {
 		return getBoolean(PLAYED_ATTACK);
 	}
+	public void setPlayedBonusParry(boolean val) {
+		setBoolean(PLAYED_BONUS_PARRY,val);
+	}
+	public boolean getPlayedBonusParry() {
+		return getBoolean(PLAYED_BONUS_PARRY);
+	}
 	public void setThrown(boolean val) {
 		setBoolean(THROWN,val);
 	}
@@ -542,6 +550,9 @@ public class CombatWrapper extends GameObjectWrapper {
 	public void setPlacedAsFight(boolean val) {
 		setBoolean(PLACED_AS_FIGHT,val);
 	}
+	public void setPlacedAsParryShield(boolean val) {
+		setBoolean(PLACED_AS_PARRY_SHIELD,val);
+	}
 	public void setWeaponId(RealmComponent weapon) {
 		setString(WEAPON_ID,weapon.getGameObject().getStringId());
 	}
@@ -553,6 +564,12 @@ public class CombatWrapper extends GameObjectWrapper {
 	}
 	public boolean getPlacedAsFight() {
 		return getBoolean(PLACED_AS_FIGHT);
+	}
+	public boolean getPlacedAsParryShield() {
+		return getBoolean(PLACED_AS_PARRY_SHIELD);
+	}
+	public boolean getPlacedAsFightOrParry() {
+		return getPlacedAsFight() || getPlacedAsParryShield();
 	}
 	public String getWeaponId() {
 		return getString(WEAPON_ID);
@@ -691,6 +708,7 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,ATTACKER_IDS);
 			go.removeAttribute(COMBAT_BLOCK,COMBAT_BOX);
 			go.removeAttribute(COMBAT_BLOCK,PLACED_AS_FIGHT);
+			go.removeAttribute(COMBAT_BLOCK,PLACED_AS_PARRY_SHIELD);
 			go.removeAttribute(COMBAT_BLOCK,PLACED_AS_MOVE);
 			go.removeAttribute(COMBAT_BLOCK,HIT_RESULT);
 			go.removeAttribute(COMBAT_BLOCK,KILLED_BY_ID);
@@ -712,6 +730,7 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,HIT_BY_ORDER_NUMBER);
 			go.removeAttribute(COMBAT_BLOCK,WAS_FATIGUE);
 			go.removeAttribute(COMBAT_BLOCK,PLAYED_ATTACK);
+			go.removeAttribute(COMBAT_BLOCK,PLAYED_BONUS_PARRY);
 			go.removeAttribute(COMBAT_BLOCK,THROWN);
 			go.removeAttribute(COMBAT_BLOCK,TARGETING_RIDER);
 			go.removeAttribute(COMBAT_BLOCK,GALLOPED);

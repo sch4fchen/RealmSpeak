@@ -611,7 +611,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 										for (WeaponChitComponent weapon : weapons) {
 											CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
 											int box = combat.getCombatBox();
-											if (box>0 && this.sheetOwner.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
+											if (box>0 && !combat.getPlacedAsParryShield() && this.sheetOwner.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
 												layoutHash.put(Integer.valueOf(weaponBox1+box-1),weapon);
 											}
 										}

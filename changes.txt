@@ -4,6 +4,7 @@ QUEST UPDATE:
 # Update to quest Q38 Gifted Child
 NEW FEATURES:
 # More community custom characters (with custom graphics)
+# RealmSpeak can be started by double click
 BUGS/ISSUES:
 # Fix "Knows all roads/passages" ability of minor character
 

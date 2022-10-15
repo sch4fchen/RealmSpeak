@@ -42,6 +42,7 @@ import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.swing.*;
 import com.robin.magic_realm.components.table.*;
 import com.robin.magic_realm.components.utility.*;
+import com.robin.magic_realm.components.utility.TreasureUtility.ArmorType;
 import com.robin.magic_realm.components.wrapper.*;
 
 public class CombatFrame extends JFrame {
@@ -2501,7 +2502,7 @@ public class CombatFrame extends JFrame {
 			}
 		}
 		
-		if (!charCombat.getPlayedAttack()) {
+		if (!charCombat.getPlayedAttack() && !charCombat.getPlayedBonusParry()) {
 			// First, clear out any chits already in play for attack
 			for (CharacterActionChitComponent chit : activeCharacter.getActiveFightChits()) {
 				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
@@ -2524,7 +2525,7 @@ public class CombatFrame extends JFrame {
 		int keyN = 0;
 		for (RealmComponent chit : fightOptions) {
 			CombatWrapper combat = new CombatWrapper(chit.getGameObject());
-			if(combat.getPlacedAsFight()) continue;
+			if(combat.getPlacedAsFightOrParry()) continue;
 					
 			if (weapons==null || weapons.isEmpty()) {
 				if (!charCombat.getPlayedAttack()) {
@@ -2573,7 +2574,7 @@ public class CombatFrame extends JFrame {
 			// First, clear out any chits already in play for attack
 			for (CharacterActionChitComponent chit : activeCharacter.getActiveFightChits()) {
 				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
-				if (combat.getPlacedAsFight()) {
+				if (combat.getPlacedAsFightOrParry()) {
 					CombatWrapper.clearRoundCombatInfo(chit.getGameObject());
 				}
 			}
@@ -2602,6 +2603,7 @@ public class CombatFrame extends JFrame {
 			}
 			
 			charCombat.setPlayedAttack(false);
+			charCombat.setPlayedBonusParry(false);
 		}
 		else if (chooser.getSelectedText()!=null) {
 			charCombat.setPlayedAttack(true);
@@ -2633,6 +2635,114 @@ public class CombatFrame extends JFrame {
 					combatWeapon.setThrown(true);
 				}
 			}
+		}
+		updateSelection();
+	}
+	public void playParryLikeShield(int box) {
+		CombatWrapper charCombat = new CombatWrapper(activeCharacter.getGameObject());
+		GameObject go = charCombat.getCastSpell();
+		SpellWrapper spell = go==null?null:new SpellWrapper(go);
+		boolean mageCastedSpell = false;
+		if (spell!=null) {
+			// Can't play a normal attack if a spell was cast this round!
+			mageCastedSpell = true;
+			if (activeCharacter.affectedByKey(Constants.BATTLE_MAGE) || hostPrefs.hasPref(Constants.OPT_SR_STEEL_AGAINST_MAGIC)) {
+				if (activeCharacter.hasOnlyStaffAsActivatedWeapon() && !activeCharacter.hasActiveArmorChits()) {
+					mageCastedSpell = false;
+				}
+			}
+		}
+		
+		Collection<RealmComponent> fightOptions = getAvailableFightOptions(box);
+		ArrayList<WeaponChitComponent> weapons = activeCharacter.getActiveWeapons();		
+		if (!charCombat.getPlayedAttack() && !charCombat.getPlayedBonusParry()) {
+			// First, clear out any chits already in play for attack
+			for (CharacterActionChitComponent chit : activeCharacter.getActiveFightChits()) {
+				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
+				if (combat.getPlacedAsFightOrParry()) {
+					CombatWrapper.clearRoundCombatInfo(chit.getGameObject());
+				}
+			}
+			// Clear out weapon, if any played
+			if (weapons != null) {
+				for (WeaponChitComponent weapon : weapons) {
+					weapon.getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
+				}
+			}			
+		}
+		
+		RealmComponent characterRc= RealmComponent.getRealmComponent(activeCharacter.getGameObject());
+		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select parry:",true);
+		int keyN = 0;
+		String key = "N"+(keyN);
+		
+		for (GameObject itemGo : activeCharacter.getActiveInventory()) {
+			ArmorType armorType = TreasureUtility.getArmorType(itemGo);
+			RealmComponent item = RealmComponent.getRealmComponent(itemGo);
+			if (armorType!=ArmorType.None && armorType!=ArmorType.Special && armorType==ArmorType.Shield) {
+				key = "S"+(keyN++);
+				chooser.addOption(key,"");
+				chooser.addRealmComponentToOption(key,item);
+			}
+		}
+		for (RealmComponent chit : fightOptions) {
+			CombatWrapper combat = new CombatWrapper(chit.getGameObject());
+			if(combat.getPlacedAsFightOrParry()) continue;
+			
+			if (!charCombat.getPlayedBonusParry() && activeCharacter.affectedByKey(Constants.BLOCK_NO_WEAPON)) {
+				key = "C"+(keyN++);
+				chooser.addOption(key,"");
+				chooser.addRealmComponentToOption(key,chit);
+			}
+			if (!charCombat.getPlayedAttack() && !mageCastedSpell && hostPrefs.hasPref(Constants.OPT_PARRY_LIKE_SHIELD) || activeCharacter.affectedByKey(Constants.PARRY_LIKE_SHIELD)) {
+				for (WeaponChitComponent weapon : weapons) {
+					if (CombatWrapper.hasCombatInfo(weapon.getGameObject())) continue;
+					key = "W"+(keyN++);
+					chooser.addOption(key,"");
+					chooser.addRealmComponentToOption(key,chit);
+					chooser.addRealmComponentToOption(key,weapon);
+				}
+			}
+		}
+		
+		chooser.setVisible(true);
+		if (chooser.getSelectedText()!=null) {
+			String selection = chooser.getSelectedOptionKey();
+						
+			switch (selection.substring(0,1)) {
+			case "W":
+				RealmComponent chit = chooser.getFirstSelectedComponent();
+				CombatWrapper combatChit = new CombatWrapper(chit.getGameObject());
+				combatChit.setCombatBox(box);
+				combatChit.setPlacedAsParryShield(true);
+				combatChit.setSheetOwnerId(characterRc);
+				
+				RealmComponent weapon = chooser.getLastSelectedComponent();
+				if (weapon!=null) {
+					combatChit.setWeaponId(weapon);
+					CombatWrapper combatWeapon = new CombatWrapper(weapon.getGameObject());
+					combatWeapon.setCombatBox(box);
+					combatWeapon.setPlacedAsParryShield(true);
+					combatWeapon.setSheetOwnerId(characterRc);
+				}
+				charCombat.setPlayedAttack(true);
+				break;
+			case "C":
+				RealmComponent fightChit = chooser.getFirstSelectedComponent();
+				CombatWrapper combatFightChit = new CombatWrapper(fightChit.getGameObject());
+				combatFightChit.setCombatBox(box);
+				combatFightChit.setPlacedAsParryShield(true);
+				combatFightChit.setSheetOwnerId(characterRc);
+				charCombat.setPlayedBonusParry(true);
+				break;
+			case "S":
+			default:
+				RealmComponent shield = chooser.getFirstSelectedComponent();
+				CombatWrapper combat = new CombatWrapper(shield.getGameObject());
+				combat.setCombatBox(box);
+				break;
+			}
+
 		}
 		updateSelection();
 	}
