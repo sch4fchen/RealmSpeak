@@ -988,7 +988,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_DUAL_WIELDING,"DUAL WIELDING (Expansion 1) - Characters can use two weapons, one in each hand.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_THROWING_WEAPONS,"THROWING WEAPONS (Expansion 1) - A character can throw corresponding weapons.",false));
 		//newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY,"PARRYING (1st Ed. and Super Realm Project) - A character can parry target's attack with a weapon.",false));
-		//newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY_LIKE_SHIELD,"PARRYING LIKE A SHIELD (Expansion 1) - A character can parry like with a shield other attacks with a weapon.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY_LIKE_SHIELD,"PARRYING LIKE A SHIELD (Expansion 1) - A character can parry like with a shield other attacks with a weapon.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC (Super Realm Project) - A character with no active armor counters casting a spell may also use his staff to make a separate attack.",false));
 		
 		newOptionPane.setTabHtmlDescription(EXPANDING_REALM_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Expanding the Realm</font></body></html>");

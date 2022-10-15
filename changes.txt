@@ -4,6 +4,8 @@ QUEST UPDATE:
 # Update to quest Q38 Gifted Child
 NEW FEATURES:
 # More community custom characters (with custom graphics)
+# Optional Rule (and new ability): Parrying (like with a shield) (Expansion 1 variant)
+# Ability: Block (used by custom character Monk): Can use additional FIGHT chit without a weapon for blocking attacks.
 # RealmSpeak can be started by double click
 BUGS/ISSUES:
 # Fix "Knows all roads/passages" ability of minor character

@@ -1,9 +1,17 @@
-Ability: BLOCK_NO_WEAPON: Can use additional FIGHT chit without a weapon for blocking attacks
-Expansion 1: Parry + Ability: "ParryLikeShield"
 Super Realm Parry (and 1st Ed.): 8.10.7 p. 98
 -> Enable in HosteGameSetupDialog
 Super Realm Rules:
 	water clearings
+	item changes
+	spell changes
+	campaigns, visitors, missions chits  changes
+	Setup Chart
+	Combat Sheets?
+	Travelers (Nomads)
+	New characters
+	Native clans
+	New native groups (can cast spells and provide one-us-per-day color chit)
+	Roving Native (summoned like monsters)
 ---:::FEATURES:::---
 Combat Summary: add functionality for RandomAssignment, Deploy/Charge (and charge character, Actions? Attack/Maneuver, Assign)
 0001828: Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.

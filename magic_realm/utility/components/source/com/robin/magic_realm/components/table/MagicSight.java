@@ -56,8 +56,8 @@ public class MagicSight extends Search {
 		// 1)	Find hidden enemies, but only those that have weapon, armor, or horse counters
 		for (RealmComponent rc : character.getCurrentLocation().clearing.getClearingComponents()) {
 			if (rc.isCharacter() || rc.isNative()) {
-				for (Iterator n=rc.getGameObject().getHold().iterator();n.hasNext();) {
-					RealmComponent item = RealmComponent.getRealmComponent((GameObject)n.next());
+				for (GameObject itemGo : rc.getGameObject().getHold()) {
+					RealmComponent item = RealmComponent.getRealmComponent(itemGo);
 					if (item.isWeapon() || item.isArmor() || item.isHorse()) {
 						character.addFoundHiddenEnemy(rc.getGameObject());
 						foundEnemies = true;
@@ -141,8 +141,8 @@ public class MagicSight extends Search {
 		// 1)	Find hidden enemies, but only those that have treasure cards
 		for (RealmComponent rc : character.getCurrentLocation().clearing.getClearingComponents()) {
 			if (rc.isCharacter() || rc.isNative()) {
-				for (Iterator n=rc.getGameObject().getHold().iterator();n.hasNext();) {
-					RealmComponent item = RealmComponent.getRealmComponent((GameObject)n.next());
+				for (GameObject itemGo : rc.getGameObject().getHold()) {
+					RealmComponent item = RealmComponent.getRealmComponent(itemGo);
 					if (item.isTreasure()) {
 						character.addFoundHiddenEnemy(rc.getGameObject());
 						foundEnemies = true;
@@ -234,8 +234,7 @@ public class MagicSight extends Search {
 		
 		boolean foundEnemies = false;
 		// 1)	Find hidden enemies, but only those that have recorded spells
-		for (Iterator i=character.getCurrentLocation().clearing.getClearingComponents().iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : character.getCurrentLocation().clearing.getClearingComponents()) {
 			if (rc.isCharacter()) { // only characters will have recorded spells
 				CharacterWrapper enemyChar = new CharacterWrapper(rc.getGameObject());
 				if (enemyChar.hasSpells()) {
@@ -261,8 +260,7 @@ public class MagicSight extends Search {
 			}
 		}
 		// check player inventory
-		for (Iterator i=character.getInventory().iterator();i.hasNext();) {
-			GameObject item = (GameObject)i.next();
+		for (GameObject item : character.getInventory()) {
 			if (item.hasThisAttribute(Constants.ACTIVATED) && SpellUtility.getSpellCount(item,null,true)>0) {
 				components.add(RealmComponent.getRealmComponent(item));
 			}
@@ -336,8 +334,7 @@ public class MagicSight extends Search {
 
 	public static Collection<GameObject> getTreasureCounters(GameObject treasureLocation) {
 		ArrayList<GameObject> list = new ArrayList<>();
-		for (Iterator i=treasureLocation.getHold().iterator();i.hasNext();) {
-			GameObject obj = (GameObject)i.next();
+		for (GameObject obj : treasureLocation.getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(obj);
 			if (rc.isWeapon() || rc.isArmor() || rc.isHorse()) {
 				list.add(obj);

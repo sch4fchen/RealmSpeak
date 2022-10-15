@@ -498,16 +498,34 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	/**
 	 * @return The first piece of armor that would be hit by the specified box number. (chits before cards)
 	 */
-	private RealmComponent getArmor(int box,int attackOrderPos) {
-		ArrayList<RealmComponent> armors = getArmors(box,attackOrderPos);
+	private RealmComponent getArmor(Speed attackSpeed,int box,int attackOrderPos) {
+		ArrayList<RealmComponent> armors = getArmors(attackSpeed,box,attackOrderPos);
 		if (armors!=null && !armors.isEmpty()) {
 			return armors.get(0); // Simply return the first (its sorted)
 		}
 		return null;
 	}
-	private ArrayList<RealmComponent> getArmors(int box,int attackOrderPos) {
+	private ArrayList<RealmComponent> getArmors(Speed attackerSpeed,int box,int attackOrderPos) {
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
 		ArrayList<RealmComponent> armors = new ArrayList<>();
+		
+		ArrayList<WeaponChitComponent> activeWeapons = character.getActiveWeapons();
+		for (CharacterActionChitComponent chit : character.getActiveFightChits()) {
+			CombatWrapper combatChit = new CombatWrapper(chit.getGameObject());
+			if(!combatChit.getPlacedAsParryShield()) continue;
+			if (chit.getSpeed().fasterThanOrEqual(attackerSpeed) || combatChit.getCombatBox() == box) {
+				if (combatChit.getWeaponId() == null) {
+					armors.add(chit);
+					continue;
+				}
+				for (WeaponChitComponent weapon : activeWeapons) {
+					if (combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
+						armors.add(weapon);
+						break;
+					}
+				}
+			}
+		}
 		
 		ArrayList<GameObject> search = new ArrayList<>();
 		search.addAll(character.getActiveInventory());
@@ -556,9 +574,11 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					RealmComponent r1 = o1;
 					RealmComponent r2 = o2;
 
-					// Sort first by armor row (row 1 is the shield row)
+					// Sort first by armor row (row 1 is the shield row); parrying weapon is in shield row
 					int armorRow1 = r1.getGameObject().getThisInt("armor_row");
 					int armorRow2 = r2.getGameObject().getThisInt("armor_row");
+					if (r1.isWeapon()) armorRow1 = 1;
+					if (r2.isWeapon()) armorRow2 = 1;
 					ret = armorRow1 - armorRow2;
 					if (ret == 0) {
 						// handle Ointment of Steel + suit of armor cases (roundabout way to determine if r2 is ointment of steel) */
@@ -642,7 +662,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Harm is greater than Tremendous ("+harm+")!");
 				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Missile attack hits a vital unarmored spot!");
 			}
-			else if ((hostPrefs.hasPref(Constants.OPT_PENETRATING_ARMOR) || character.affectedByKey(Constants.SHARPSHOOTER)) && attacker.isMissile()) {
+			else if (attacker.isMissile() && (hostPrefs.hasPref(Constants.OPT_PENETRATING_ARMOR) || (attacker.isCharacter() && (new CharacterWrapper(attacker.getGameObject())).affectedByKey(Constants.SHARPSHOOTER)))) {
 				// When Penetrating Armor is in play, and the attack is a missile attack, then the armor is never actually "hit".
 				
 				/*
@@ -657,7 +677,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				if (harm.getAppliedStrength().strongerThan(new Strength("T"))) {
 				}
 				else {
-					ArrayList<RealmComponent> armors = getArmors(box,attackOrderPos);
+					ArrayList<RealmComponent> armors = getArmors(attacker.getAttackSpeed(),box,attackOrderPos);
 					if (armors!=null && !armors.isEmpty()) {
 						harm.dampenSharpness();
 						RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor, and reduces sharpness: "+harm.toString());
@@ -669,6 +689,10 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 							}
 							else {
 								Strength armorVulnerability = new Strength(test.getGameObject().getThisAttribute("vulnerability"));
+								if (!test.isArmor()) {
+									if (test.isWeapon()) armorVulnerability = new Strength(test.getGameObject().getThisAttribute("weight")); // parrying with weapon
+									if (test instanceof CharacterActionChitComponent) armorVulnerability = new Strength(test.getGameObject().getThisAttribute("strength")); // parrying with FIGHT chit
+								}
 								if (armorVulnerability.strongerThan(harm.getAppliedStrength())) {
 									harm = new Harm(new Strength(),0); // negate harm!
 									RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Missile attack is stopped by "+test.getGameObject().getNameWithNumber());
@@ -689,7 +713,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				}
 			}
 			else {
-				armor = getArmor(box,attackOrderPos);
+				armor = getArmor(attacker.getAttackSpeed(),box,attackOrderPos);
 				if (armor!=null && isDragonBreath && armor.getGameObject().hasThisAttribute(Constants.IMMUNE_BREATH)) {
 					harm = new Harm(new Strength(),0); // negate harm!
 					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Dragon breath attack is stopped by "+armor.getGameObject().getNameWithNumber());
@@ -703,17 +727,30 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				harm.dampenSharpness();
 				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),getGameObject().getNameWithNumber() + " has natural armor, which reduces sharpness: "+harm.toString());
 			}
-			
+						
 			if (!harm.getIgnoresArmor() && armor != null) {
+				// Wound minimum is increased to M if there is armor involved
+				minForWound = new Strength("M");
+				
 				// If armor, reduce harm by one star, determine if armor is damaged/destroyed, apply wounds
 				harm.dampenSharpness();
 				if (armor.isCharacter()) {
 					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits characater fortification, and reduces sharpness: "+harm.toString());
 				}
+				else if (armor.isWeapon() || armor instanceof CharacterActionChitComponent) {
+					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hit is parried ("+armor.getGameObject().getNameWithNumber()+"), and reduces sharpness: "+harm.toString());
+				}
 				else {
 					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor ("+armor.getGameObject().getNameWithNumber()+"), and reduces sharpness: "+harm.toString());
 				}
 				Strength armorVulnerability = new Strength(armor.getGameObject().getThisAttribute("vulnerability"));
+				if (!armor.isArmor()) {
+					if (armor.isWeapon()) armorVulnerability = new Strength(armor.getGameObject().getThisAttribute("weight")); // parrying with weapon
+					if (armor instanceof CharacterActionChitComponent) {
+						armorVulnerability = new Strength(armor.getGameObject().getThisAttribute("strength")); // parrying with FIGHT chit
+						minForWound = new Strength(armorVulnerability);
+					}
+				}
 				if (harm.getAppliedStrength().strongerOrEqualTo(armorVulnerability)) {
 					boolean destroyed = true;
 					damageTaken = true;
@@ -735,6 +772,8 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 								armorChit.setIntact(false); // NOW its damaged
 							}
 						}
+					} else if ((armor.isWeapon() && !harm.getAppliedStrength().strongerThan(armorVulnerability)) || armor instanceof CharacterActionChitComponent) {
+						destroyed = false;
 					}
 					if (destroyed) {
 						if (armor.isCharacter()) {
@@ -769,9 +808,6 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					}
 				}
 				// else armor is unharmed
-
-				// Wound minimum is increased to M if there is armor involved
-				minForWound = new Strength("M");
 			}
 			else if (harm.getAppliedStrength().strongerOrEqualTo(vulnerability)) {
 				// Direct hit (no armor)
