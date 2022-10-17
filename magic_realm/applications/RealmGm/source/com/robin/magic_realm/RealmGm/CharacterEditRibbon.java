@@ -443,7 +443,7 @@ public class CharacterEditRibbon extends JPanel {
 	}
 	private ArrayList<String[]> getRelationshipNames() {
 		ArrayList<String[]> relationshipNames;
-		ArrayList keyVals = new ArrayList();
+		ArrayList<String> keyVals = new ArrayList<>();
 		HostPrefWrapper	hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 		keyVals.add(hostPrefs.getGameKeyVals());
 		GamePool pool = new GamePool(character.getGameData().getGameObjects());
@@ -534,7 +534,7 @@ public class CharacterEditRibbon extends JPanel {
 		public boolean isAlive(SpellWrapper spell) {
 			boolean alive = spell.isAlive();
 			if (!alive) {
-				ArrayList<GameObject> vs = character.getAllVirtualSpellsFor(spell.getGameObject());
+				ArrayList<GameObject> vs = CharacterWrapper.getAllVirtualSpellsFor(spell.getGameObject());
 				for(GameObject go:vs) {
 					SpellWrapper virt = new SpellWrapper(go);
 					if (virt.isAlive()) {

@@ -45,13 +45,13 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 public class RealmComponentDisplayDialog extends AggressiveDialog {
 	private Font TITLE_FONT = new Font("Dialog", Font.BOLD, 14);
 
-	private ArrayList components;
+	private ArrayList<RealmComponent> components;
 	private JPanel displayPanel;
 	private JButton okayButton;
 
 	public RealmComponentDisplayDialog(JFrame parent, String title,String message) {
 		super(parent, title, true);
-		components = new ArrayList();
+		components = new ArrayList<>();
 		initComponents(message);
 //		updateLayout();
 	}
@@ -75,7 +75,7 @@ public class RealmComponentDisplayDialog extends AggressiveDialog {
 		titleLabel.setFont(TITLE_FONT);
 		getContentPane().add(titleLabel, "North");
 		setResizable(false);
-		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 	}
 	public void setVisible(boolean val) {
 		if (val) {
@@ -88,16 +88,12 @@ public class RealmComponentDisplayDialog extends AggressiveDialog {
 		components.add(rc);
 //		updateLayout();
 	}
-	public void addRealmComponents(Collection rcs) {
-		for (Iterator i=rcs.iterator();i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
-			components.add(rc);
-		}
+	public void addRealmComponents(Collection<RealmComponent> rcs) {
+		components.addAll(rcs);
 //		updateLayout();
 	}
-	public void addGameObjects(Collection gos) {
-		for (Iterator i=gos.iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+	public void addGameObjects(Collection<GameObject> gos) {
+		for (GameObject go : gos) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			components.add(rc);
 		}
@@ -119,8 +115,7 @@ public class RealmComponentDisplayDialog extends AggressiveDialog {
 		displayPanel.removeAll();
 		displayPanel.setLayout(new GridLayout(rows, columns));
 
-		for (Iterator i = components.iterator(); i.hasNext();) {
-			RealmComponent rc = (RealmComponent)i.next();
+		for (RealmComponent rc : components) {
 			displayPanel.add(rc);
 			cellCount--;
 		}
@@ -150,7 +145,7 @@ public class RealmComponentDisplayDialog extends AggressiveDialog {
 		// artifically fatigue and wound some chits
 		CharacterWrapper wrapper = new CharacterWrapper(character);
 		RealmComponentDisplayDialog display = new RealmComponentDisplayDialog(new JFrame(), "Hey!","Look at these:");
-		ArrayList list = new ArrayList(wrapper.getAllChits());
+		ArrayList<CharacterActionChitComponent> list = new ArrayList<>(wrapper.getAllChits());
 		for (int i = 0; i < 10; i += 2) {
 			CharacterActionChitComponent c1 = (CharacterActionChitComponent) list.get(i);
 			CharacterActionChitComponent c2 = (CharacterActionChitComponent) list.get(i + 1);

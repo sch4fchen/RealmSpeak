@@ -306,8 +306,7 @@ public class TreasureSetupCardView extends JComponent {
 		int y = vr.y + border + subBorder + title;
 		int maxH = 0;
 		ArrayList<RealmComponent> contents = new ArrayList<>();
-		for (Iterator i=clickViewObject.getHold().iterator();i.hasNext();) {
-			GameObject go = (GameObject)i.next();
+		for (GameObject go : clickViewObject.getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			contents.add(rc);
 			if (rc.isNative()) {

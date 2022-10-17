@@ -90,7 +90,7 @@ public class ActionRowChooser extends AggressiveDialog {
 		getContentPane().add(split,"Center");
 		
 		JPanel controlPanel = new JPanel(new BorderLayout());
-		JLabel label = new JLabel("Click rows to move actions between tables",JLabel.CENTER);
+		JLabel label = new JLabel("Click rows to move actions between tables",SwingConstants.CENTER);
 		controlPanel.add(label,"Center");
 		doneButton = new JButton("Done");
 		doneButton.addActionListener(new ActionListener() {
@@ -101,7 +101,7 @@ public class ActionRowChooser extends AggressiveDialog {
 		controlPanel.add(doneButton,"East");
 		getContentPane().add(controlPanel,"South");
 		
-		tally = new JLabel("",JLabel.CENTER);
+		tally = new JLabel("",SwingConstants.CENTER);
 		tally.setFont(new Font("Dialog",Font.BOLD,18));
 		getContentPane().add(tally,"North");
 		
@@ -146,7 +146,7 @@ public class ActionRowChooser extends AggressiveDialog {
 	private static JPanel createTablePanel(ActionRowTableModel model,String title,Color titleColor) {
 		JPanel panel = new JPanel(new BorderLayout());
 		panel.add(new JScrollPane(model.createTable()),"Center");
-		JLabel label = new JLabel(title,JLabel.CENTER);
+		JLabel label = new JLabel(title,SwingConstants.CENTER);
 		label.setFont(new Font("Dialog",Font.BOLD,18));
 		label.setForeground(titleColor);
 		panel.add(label,"North");

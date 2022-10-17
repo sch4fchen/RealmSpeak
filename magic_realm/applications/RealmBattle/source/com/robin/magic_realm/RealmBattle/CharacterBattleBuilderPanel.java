@@ -462,7 +462,7 @@ public class CharacterBattleBuilderPanel extends JPanel {
 		
 		updatePanels();
 	}
-	private Collection<GameObject> setFaceUp(Collection<GameObject> in) {
+	private static Collection<GameObject> setFaceUp(Collection<GameObject> in) {
 		for (GameObject go : in) {
 			go.setThisAttribute(Constants.FACING_KEY,CardComponent.FACE_UP);
 		}

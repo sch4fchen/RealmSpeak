@@ -47,8 +47,8 @@ public enum CharacterActionType {
 			case AbandonMissionCampaign:	return "Must abandon "; 
 			case FailMissionCampaign:		return "Must fail "; 
 			case CompleteMissionCampaign:	return "Must complete ";
+			default: 						return "?";
 		}
-		return "?";
 	}
 	public static CharacterActionType[] mcValues() {
 		CharacterActionType[] mc = new CharacterActionType[4];
