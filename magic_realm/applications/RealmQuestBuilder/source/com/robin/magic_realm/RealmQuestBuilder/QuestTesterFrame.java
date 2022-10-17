@@ -1402,8 +1402,11 @@ public class QuestTesterFrame extends JFrame {
 			variantChoices.add(GameVariant.PRUITTS_GAME_VARIANT);
 		if (quest.getBoolean(QuestConstants.VARIANT_EXP1))
 			variantChoices.add(GameVariant.EXP1_GAME_VARIANT);
-		if (variantChoices.isEmpty())
+		if (variantChoices.isEmpty()) {
 			variantChoices.add(GameVariant.ORIGINAL_GAME_VARIANT);
+			variantChoices.add(GameVariant.PRUITTS_GAME_VARIANT);
+			variantChoices.add(GameVariant.EXP1_GAME_VARIANT);
+		}
 
 		GameVariant useVariant;
 		if (variantChoices.size() == 1) {
