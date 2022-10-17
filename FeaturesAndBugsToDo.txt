@@ -1,10 +1,10 @@
 Super Realm Parry (and 1st Ed.): 8.10.7 p. 984
--> Enable in HosteGameSetupDialog
-"TODO" in code (found by search)
+initQuestTest (questTesterFrame), Quest: option add icon for minor character
 Super Realm Rules: water clearings
 0001828: Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
----:::FEATURES:::---
 0001820: Feature Request: First Edition Optional Rules - Dissolving Doors: https://magicrealm.ca/first-edition-optional-rules/
+---:::FEATURES:::---
+"TODO" in code (found by search)
 Would be nice to make weapon abilities too:
 	Immobilizing1 - When it hits all attacks undercut in current round
 	Immobilizing2 - When it hits all attacks undercut in next round
@@ -14,7 +14,6 @@ Guilds: Assassins, Nature
 --::--::MANTIS::--::-- http://mantis.dewkid.com/current/my_view_page.php
 Wizard advancement - didn't get MOVE M5->MAGIC III
 0001879: Color magic fatigue counted against character when used in encounter step to energize a spell
-0001869: blocking occurs on start of phase instead of end -> fixed?
 0001858: PotP Terror wounds Belt of Strength coverted chits
 0001875: state of multiple rest is not saved correctly
 0001874: notebook does not auto-note when PEACE OF NATURE is active
@@ -41,9 +40,7 @@ Wizard advancement - didn't get MOVE M5->MAGIC III
 0001760: reloading lets me use sunlight phases in caves
 0001757: Casting Wish causes funny result
 0001736: Dropped items after death should not be visible
-0001731: Transform and Absorb Essence problems
 0001730: Small Blessing, Wish for Peace does not take immediate effect
-0001729: Gameplay Slow with >6 characters
 0001728: Problem with Control Dragon
 0001692: Incorrect sheltered phase - flying and after running away
 0001684: Melt Into Mist prevented Absorb Essence

@@ -120,7 +120,7 @@ public class BattleSummaryRow implements Comparable<BattleSummaryRow> {
 			}
 		}
 		
-		//ArrayList<GameObject> kills = combat.getAllKills(); // TODO This isn't the right solution.  See #1606 and #1609
+		//ArrayList<GameObject> kills = combat.getAllKills(); // This isn't the right solution.  See #1606 and #1609
 		if ((killedBy!=null && killedBy.equals(attacker))) {
 				//|| (kills!=null && kills.size()>0 && kills.contains(target))) {
 			resolution = RESOLUTION_KILL;

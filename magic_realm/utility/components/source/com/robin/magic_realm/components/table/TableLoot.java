@@ -212,7 +212,6 @@ public class TableLoot extends Loot {
 			character.setExtraWounds(2);
 			treasureLocation.getHeldBy().remove(treasureLocation);
 			treasureLocation.removeThisAttribute("clearing"); // probably not necessary.
-			// TODO destroy the site!
 			ret = "Collapse - Take 2 Wounds and Site Destroyed";
 			qp.searchType = SearchResultType.Wound;
 			qp.searchHadAnEffect = true;

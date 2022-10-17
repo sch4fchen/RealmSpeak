@@ -706,13 +706,6 @@ public class QuestBuilderFrame extends JFrame {
 	}
 
 	private JPanel buildLimitationCheckOptions() {
-
-		/*
-		 * TODO Add the following:
-		 * 
-		 * Seasons and/or weather (specific season?)?
-		 */
-
 		JPanel panel = new JPanel(new GridLayout(1, 3));
 
 		JPanel reallyLeft = new JPanel(new GridLayout(11, 1));

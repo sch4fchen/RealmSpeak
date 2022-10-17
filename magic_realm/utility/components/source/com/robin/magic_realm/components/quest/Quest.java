@@ -574,7 +574,7 @@ public class Quest extends GameObjectWrapper {
 	}
 
 	public boolean isValid() {
-		return steps.size() > 0; // TODO Need some other logic to help decide if a quest is valid...
+		return steps.size() > 0;
 	}
 
 	public boolean canChooseQuest(CharacterWrapper character, HostPrefWrapper hostPrefs) {

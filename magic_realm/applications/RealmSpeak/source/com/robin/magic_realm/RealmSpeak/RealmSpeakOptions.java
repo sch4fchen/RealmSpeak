@@ -147,7 +147,7 @@ public class RealmSpeakOptions {
 			options.loadPreferences();
 		}
 		else {
-			// setup defaults TODO Might need more defaults here
+			// setup defaults. Might need more defaults here
 			options.set(METAL_LNF,true);
 			options.set(CustomUiUtility.BACKGROUND_COLOR, CustomUiUtility.BACKGROUND_COLOR_0);
 			options.set(ACTION_ICONS,ActionIcon.ACTION_ICON_NORMAL);

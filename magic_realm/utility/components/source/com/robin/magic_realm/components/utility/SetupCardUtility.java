@@ -605,7 +605,7 @@ public class SetupCardUtility {
 			String locBoardNum = loc.getThisAttribute(Constants.BOARD_NUMBER);
 			if ((boardNum==null && locBoardNum==null) || (boardNum!=null && boardNum.equals(locBoardNum))) {
 				if (loc.getHoldCount()>0) {
-					String summon = loc.getThisAttribute("summon"); // TODO Maybe this should be an AttributeList...
+					String summon = loc.getThisAttribute("summon"); // Maybe this should be an AttributeList...
 					if (summon!=null) {
 						StringTokenizer tokens = new StringTokenizer(summon,",");
 						while(tokens.hasMoreTokens()) {

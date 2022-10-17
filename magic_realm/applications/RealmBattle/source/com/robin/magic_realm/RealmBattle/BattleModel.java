@@ -292,7 +292,6 @@ public class BattleModel {
 				ArrayList<BattleGroup> markedRollers = new ArrayList<>();
 				for (BattleGroup bg : groups) {
 					DieRoller roller = bg.createDieRoller("Roll Off");
-					// TODO Add the roller to the character somehow...
 					int roll = roller.getHighDieResult();
 					if (roll == markRoll) {
 						// Tied

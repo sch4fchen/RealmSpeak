@@ -23,6 +23,7 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
+import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -87,20 +88,23 @@ public class QuestRewardMinorCharacter extends QuestReward {
 		query.add(Quest.QUEST_MINOR_CHARS);
 		query.add("name="+id);
 		
-		
+		ArrayList<GameObject> mcs = new ArrayList<>();
 		// Try the quest FIRST
 		GamePool pool = new GamePool(getParentQuest().getGameObject().getHold());
-		GameObject mc = pool.findFirst(query);
-		if (mc==null) {
+		mcs.addAll(pool.find(query));
+		if (mcs.isEmpty()) {
 			// Try the character inventory
 			pool = new GamePool(character.getInventory());
-			mc = pool.findFirst(query);
+			mcs.addAll(pool.find(query));
 		}
-		// TODO Test the entire game library or not?  Maybe only matches that aren't assigned?
-		
-		if (mc!=null) {
+		if (mcs.isEmpty()) {
+			// Try the entire game library
+			pool = new GamePool(getParentQuest().getGameData().getGameObjects());
+			mcs.addAll(pool.find(query));
+		}
+		if (!mcs.isEmpty()) {
 			//setString(MINOR_CHARACTER,mc.getStringId()); // save for future reference?
-			return new QuestMinorCharacter(mc);
+			return new QuestMinorCharacter(mcs.get(RandomNumber.getRandom(mcs.size())));
 		}
 		return null;
 	}	
