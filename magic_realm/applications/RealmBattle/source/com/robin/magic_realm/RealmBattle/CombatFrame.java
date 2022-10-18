@@ -1218,6 +1218,9 @@ public class CombatFrame extends JFrame {
 			public void actionPerformed(ActionEvent ev) {
 				gameData.rollback();
 				int selectedRow = participantTable == null?-1:participantTable.getSelectedRow();
+				if(actionState==Constants.COMBAT_RANDOM_ASSIGN) {
+					currentBattleModel.doRandomAssignment();
+				}
 				refresh();
 				if (selectedRow == 0) {
 					participantTable.setRowSelectionInterval(selectedRow,selectedRow);
