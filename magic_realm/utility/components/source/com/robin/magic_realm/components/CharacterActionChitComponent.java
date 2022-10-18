@@ -47,6 +47,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 	public static final String ACTION_CHIT_STATE_COLOR_GOLD = "CG";
 	public static final String ACTION_CHIT_STATE_COLOR_PURPLE = "CP";
 	public static final String ACTION_CHIT_STATE_OUT_OF_PLAY = "X";
+	public static final String ACTION_CHIT_STATE_BERSERK = "B";
 
 	// FACE UP
 	public static final int ALERT_ID = 0;
@@ -54,6 +55,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 	public static final int FATIGUED_ID = 2;
 	public static final int COMMITTED_ID = 3;
 	public static final int WOUNDED_ID = 4; // this goes against the rules to be face up, but makes more sense here
+	public static final int BERSERK_ID = 5;
 
 	// FACE DOWN
 	public static final int COLOR_WHITE_ID = 6;
@@ -371,6 +373,10 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 				g.setColor(Color.lightGray);
 				g.fill(shape);
 				break;
+			case BERSERK_ID:
+				g.setColor(MagicRealmColor.CHIT_BERSERK);
+				g.draw(shape);
+				break;
 		}
 
 		// Draw Information
@@ -637,9 +643,13 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 	public void makeAlerted() {
 		setState(ACTION_CHIT_STATE_ALERT);
 	}
+	
+	public void makeBerserk() {
+		setState(ACTION_CHIT_STATE_BERSERK);
+	}
 
 	public boolean isActive() {
-		return getStateId() == ACTIVE_ID;
+		return getStateId() == ACTIVE_ID || isBerserk();
 	}
 
 	public boolean isFatigued() {
@@ -652,6 +662,10 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 
 	public boolean isAlerted() {
 		return getStateId() == ALERT_ID;
+	}
+	
+	public boolean isBerserk() {
+		return getStateId() == BERSERK_ID;
 	}
 
 	private void setState(String stateName) {
@@ -689,6 +703,9 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		}
 		else if (ACTION_CHIT_STATE_OUT_OF_PLAY.equals(val)) {
 			return OUT_OF_PLAY_ID;
+		}
+		else if (ACTION_CHIT_STATE_BERSERK.equals(val)) {
+			return BERSERK_ID;
 		}
 		return ACTIVE_ID;
 	}

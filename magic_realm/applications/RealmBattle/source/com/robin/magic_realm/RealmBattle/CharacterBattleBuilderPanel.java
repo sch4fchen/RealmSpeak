@@ -195,6 +195,10 @@ public class CharacterBattleBuilderPanel extends JPanel {
 						else if (achit.isMagic()) {
 							achit.makeAlerted();
 						}
+						else if (achit.isFightAlert() && !achit.isBerserk()) {
+							achit.makeBerserk();
+							character.getGameObject().setThisAttribute(Constants.ENHANCED_VULNERABILITY,achit.getFightAlertVulnerability());
+						}
 						else {
 							achit.makeFatigued();
 							if (!achit.isFatigued()) { // some chits cannot be fatigued
@@ -217,6 +221,14 @@ public class CharacterBattleBuilderPanel extends JPanel {
 					else if (achit.isWounded()) {
 						achit.makeActive();
 					}
+					
+					boolean berserk = false;
+					for (CharacterActionChitComponent fightChit : character.getAllChits()) {
+						if (fightChit.isFightAlert() && fightChit.isBerserk()) {
+							berserk = true; break;					
+						}
+					}
+					if (!berserk) character.getGameObject().removeThisAttribute(Constants.ENHANCED_VULNERABILITY);
 				}
 				chitsPanel.repaint();
 			}

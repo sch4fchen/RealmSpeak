@@ -104,20 +104,18 @@ public abstract class ChitBinPanel extends JComponent {
 
 	public void paint(Graphics g1) {
 		Graphics2D g = (Graphics2D)g1;
-		ArrayList groups = layout.getGroups();
+		ArrayList<String> groups = layout.getGroups();
 		int left = PANEL_BORDER + LABEL_WIDTH;
 		int top = PANEL_BORDER;
 		int r=0;
 		int c=0;
-		for (Iterator i=groups.iterator();i.hasNext();) {
-			String group = (String)i.next();
+		for (String group : groups) {
 			boolean isMagic = "MAGIC".equals(group);
 			g.setColor(Color.black);
 			GraphicsUtil.drawCenteredString(g,PANEL_BORDER,r*cellSize,LABEL_WIDTH,cellSize,group);
-			ArrayList bins = layout.getBins(group);
+			ArrayList<ChitBin> bins = layout.getBins(group);
 			int rtop = (r*cellSize)+top;
-			for (Iterator b=bins.iterator();b.hasNext();) {
-				ChitBin bin = (ChitBin)b.next();
+			for (ChitBin bin : bins) {
 				Rectangle a = new Rectangle(c * cellSize, r * cellSize, cellSize, cellSize);
 				bin.setRectangle(a);
 				a.x += left;
@@ -169,8 +167,7 @@ public abstract class ChitBinPanel extends JComponent {
 	}
 
 	public void makeAllChitsFatigued() {
-		for (Iterator i=layout.getAllChits().iterator();i.hasNext();) {
-			ChitComponent chit = (ChitComponent)i.next();
+		for (ChitComponent chit : layout.getAllChits()) {
 			if (chit.isActionChit()) {
 				CharacterActionChitComponent achit = (CharacterActionChitComponent)chit;
 				achit.makeFatigued();
@@ -179,8 +176,7 @@ public abstract class ChitBinPanel extends JComponent {
 	}
 
 	public void makeAllChitsActive() {
-		for (Iterator i=layout.getAllChits().iterator();i.hasNext();) {
-			ChitComponent chit = (ChitComponent)i.next();
+		for (ChitComponent chit : layout.getAllChits()) {
 			if (chit.isActionChit()) {
 				CharacterActionChitComponent achit = (CharacterActionChitComponent)chit;
 				if (!achit.isAlerted() && !achit.isColor()) { // ignore alerted and color chits
@@ -191,8 +187,7 @@ public abstract class ChitBinPanel extends JComponent {
 	}
 
 	public void makeAllChitsWounded() {
-		for (Iterator i=layout.getAllChits().iterator();i.hasNext();) {
-			ChitComponent chit = (ChitComponent)i.next();
+		for (ChitComponent chit : layout.getAllChits()) {
 			if (chit.isActionChit()) {
 				CharacterActionChitComponent achit = (CharacterActionChitComponent)chit;
 				achit.makeWounded();
@@ -234,7 +229,7 @@ public abstract class ChitBinPanel extends JComponent {
 		CharacterWrapper character = new CharacterWrapper(go);
 		GameObject f1 = data.getGameObjectByName("Test Fly Chit 1");
 		go.add(f1);
-		ArrayList chits = new ArrayList(character.getCompleteChitList());
+		ArrayList<CharacterActionChitComponent> chits = new ArrayList<>(character.getCompleteChitList());
 		ChitBinLayout layout = new ChitBinLayout(chits);
 		ChitBinPanel panel = new ChitBinPanel(layout) {
 			public boolean canClickChit(ChitComponent aChit) {

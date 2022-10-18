@@ -48,6 +48,7 @@ public class MagicRealmColor {
 	public static final Color CHIT_ALERTED = Color.green;
 	public static final Color CHIT_FATIGUED = Color.orange;
 	public static final Color CHIT_WOUNDED = Color.red;
+	public static final Color CHIT_BERSERK = Color.darkGray;
 //	public static final Color CHIT_COMMITTED = new Color(0,0,255,100); //Color.blue;
 //	public static final Color CHIT_ALERTED = new Color(0,255,0,100); //Color.green;
 //	public static final Color CHIT_FATIGUED = new Color(255,255,0,100); //Color.orange;

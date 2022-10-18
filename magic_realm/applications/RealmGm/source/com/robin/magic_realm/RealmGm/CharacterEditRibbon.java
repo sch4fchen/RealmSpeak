@@ -316,11 +316,11 @@ public class CharacterEditRibbon extends JPanel {
 		
 		return panel;
 	}
-	private JLabel addStatAdjusters(JPanel panel,String title,UpDownButton adjusters) {
-		panel.add(new JLabel(title,JLabel.RIGHT));
+	private static JLabel addStatAdjusters(JPanel panel,String title,UpDownButton adjusters) {
+		panel.add(new JLabel(title,SwingConstants.RIGHT));
 		Box line = Box.createHorizontalBox();
 		JLabel label;
-		line.add(label = new JLabel("",JLabel.RIGHT));
+		line.add(label = new JLabel("",SwingConstants.RIGHT));
 		label.setBorder(BorderFactory.createCompoundBorder(
 				BorderFactory.createLoweredBevelBorder(),
 				BorderFactory.createEmptyBorder(2,2,2,2)));

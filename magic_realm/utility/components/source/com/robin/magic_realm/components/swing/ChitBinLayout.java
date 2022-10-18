@@ -37,7 +37,7 @@ public class ChitBinLayout {
 	
 	private ArrayList<String> groups;
 	private ArrayList<ChitBin> chitBins;
-	private HashLists hashLists;
+	private HashLists<String,ChitBin> hashLists;
 	
 	public ChitBinLayout(ArrayList<CharacterActionChitComponent> chits) {
 		Collections.sort(chits);
@@ -79,7 +79,7 @@ public class ChitBinLayout {
 	public ArrayList<String> getGroups() {
 		return groups;
 	}
-	public ArrayList getBins(String group) {
+	public ArrayList<ChitBin> getBins(String group) {
 		return hashLists.getList(group);
 	}
 	public ChitComponent getChit(int index) {
