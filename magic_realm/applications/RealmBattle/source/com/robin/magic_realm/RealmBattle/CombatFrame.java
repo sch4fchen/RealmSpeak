@@ -629,6 +629,7 @@ public class CombatFrame extends JFrame {
 	public void updateRandomAssignment() {
 		ArrayList<String> list = activeCharacter.getGameObject().getThisAttributeList(Constants.RANDOM_ASSIGNMENT_WINNER);
 		if (list!=null) {
+			list = new ArrayList<>(list);
 			if (list.size()>0) {
 				String denizenId = list.remove(0);
 				activeCharacter.getGameObject().setThisAttributeList(Constants.RANDOM_ASSIGNMENT_WINNER,list);
@@ -1218,9 +1219,6 @@ public class CombatFrame extends JFrame {
 			public void actionPerformed(ActionEvent ev) {
 				gameData.rollback();
 				int selectedRow = participantTable == null?-1:participantTable.getSelectedRow();
-				if(actionState==Constants.COMBAT_RANDOM_ASSIGN) {
-					currentBattleModel.doRandomAssignment();
-				}
 				refresh();
 				if (selectedRow == 0) {
 					participantTable.setRowSelectionInterval(selectedRow,selectedRow);

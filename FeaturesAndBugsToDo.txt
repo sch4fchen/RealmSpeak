@@ -1,4 +1,3 @@
-Proper fix "Reset" button when random assignment to hirelings 
 Super Realm Parry (and 1st Ed.): 8.10.7 p. 984
 Super Realm Rules: water clearings
 0001828: Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
