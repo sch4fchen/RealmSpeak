@@ -402,7 +402,7 @@ public class CharacterActionControlManager {
 							updateControls(rtp.getPhaseManager(),true,false);
 						}
 						if (cap!=null) {
-							getGameHandler().getInspector().getMap().setClearingPlot(new ArrayList(getCharacter().getClearingPlot()));
+							getGameHandler().getInspector().getMap().setClearingPlot(new ArrayList<TileLocation>(getCharacter().getClearingPlot()));
 						}
 					}
 				}
@@ -550,10 +550,9 @@ public class CharacterActionControlManager {
 	}
 	private void recordFollowAction() {
 		// Find all characters that are not this character in the clearing (no clearing validation needed here)
-		ArrayList list = new ArrayList();
+		ArrayList<RealmComponent> list = new ArrayList<>();
 		TileLocation current = getCharacter().getCurrentLocation(); // since FOLLOW must the first and only action, current is good
-		for (Iterator n=current.clearing.getClearingComponents().iterator();n.hasNext();) {
-			RealmComponent rc = (RealmComponent)n.next();
+		for (RealmComponent rc : current.clearing.getClearingComponents()) {
 			// Someone, that isn't yourself
 			if (rc.isPlayerControlledLeader() && !rc.getGameObject().equals(getCharacter().getGameObject())) {
 				list.add(rc);
@@ -629,15 +628,13 @@ public class CharacterActionControlManager {
 				PhaseManager pm = getCharacter().getPhaseManager(true);
 				getCharacter().updatePhaseManagerWithCurrentActions(pm);
 				if (pm.getTotal()==1) {
-					// Must be on "free action" time, which means we need to see if a mt-to-mt peer was
-					// ever performed (only need one!)
+					// Must be on "free action" time, which means we need to see if a mt-to-mt peer was ever performed (only need one!)
 					Iterator atci = getCharacter().getCurrentActionTypeCodes().iterator();
 					for (Iterator i=getCharacter().getCurrentActions().iterator();i.hasNext();) {
 						String detailAction = (String)i.next();
 						String actionTypeCode = (String)atci.next();
 						if (detailAction.startsWith(DayAction.ENH_PEER_ACTION.getCode()) && "MM".equals(actionTypeCode)) {
-							// Yes, a mountain to mountain peer was used, so mountainPeer isn't require
-							// for the extra phase!
+							// Yes, a mountain to mountain peer was used, so mountainPeer isn't require for the extra phase!
 							mtToMtPeer = false;
 							break;
 						}
@@ -687,7 +684,7 @@ public class CharacterActionControlManager {
 		}
 	}
 	private void recordRemoteSpellAction() {
-		Collection c = getCharacter().getCurrentActions();
+		Collection<String> c = getCharacter().getCurrentActions();
 		if (!c.contains(DayAction.SPELL_PREP_ACTION.getCode())) {
 			boolean canSkipSpellPrep = getCharacter().getGameObject().hasAttribute(Constants.OPTIONAL_BLOCK,Constants.NO_SPX)
 										|| getCharacter().affectedByKey(Constants.NO_SPX);

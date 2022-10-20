@@ -1,7 +1,6 @@
 Super Realm Parry (and 1st Ed.): 8.10.7 p. 984
 Super Realm Rules: water clearings: water must connect to water
-	horse cannot active in a water clearing (like cave) and becomes inactive; entering water clearing = 2 move actions or active pony; upstream: 2 move actions (transmorphed only 1 action), downstream: 1 move action;
-	fly activity (optional rule)/peer table: Peer Table to search any woods,mountain, or water clearing
+	entering water clearing = 2 move actions or active pony; upstream: 2 move actions (transmorphed only 1 action), downstream: 1 move action;
 	seasons: frozen water: treat water clearings as woods clearings; 8. Each time a character ends a phase in a water clearing as the result of a Move or landing, he must fatigue one asterisk.
 		seasons: set water movement cost in MagicRealm.xml
 	add tiles from Super Realm, available in GM tool only 

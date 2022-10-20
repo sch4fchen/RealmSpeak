@@ -31,7 +31,7 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class PeerClearingChooser {
 	
-	private static final String[] TYPES = {"woods","normal","mountain"};
+	private static final String[] TYPES = {"woods","normal","mountain","water"};
 	
 	public PeerClearingChooser() {
 	}
