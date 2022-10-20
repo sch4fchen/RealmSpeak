@@ -184,7 +184,7 @@ public class ClearingDetail {
 		return type.equals("mountain");
 	}
 	public boolean isWoods() {
-		return type.equals("woods");
+		return type.equals("woods") || type.equals("frozen_water"); //treat water clearings as woods clearings
 	}
 	public int moveCost(CharacterWrapper character) {
 		int val = 1;
