@@ -78,6 +78,7 @@ public class TileEditFrame extends JFrame {
 				protected JRadioButton woodsClearingType;
 				protected JRadioButton mountainClearingType;
 				protected JRadioButton caveClearingType;
+				protected JRadioButton waterClearingType;
 			
 				protected JCheckBox whiteClearingMagic;		// W
 				protected JCheckBox grayClearingMagic;		// Y
@@ -198,6 +199,14 @@ public class TileEditFrame extends JFrame {
 								});
 							clearingTypeGroup.add(caveClearingType);
 							clearingTypeButtons.add(caveClearingType);
+							waterClearingType = new JRadioButton("Water");
+							waterClearingType.addActionListener(new ActionListener() {
+								public void actionPerformed(ActionEvent ev) {
+									updateClearings();
+								}
+							});
+						clearingTypeGroup.add(waterClearingType);
+						clearingTypeButtons.add(waterClearingType);
 					clearingControls.add(clearingTypeButtons);
 					clearingControls.add(new JSeparator());
 						JPanel clearingColorButtons = new JPanel(new GridLayout(2,3));
@@ -503,6 +512,9 @@ public class TileEditFrame extends JFrame {
 				else if (type.equals("caves")) {
 					caveClearingType.setSelected(true);
 				}
+				else if (type.equals("water")) {
+					waterClearingType.setSelected(true);
+				}
 				
 				whiteClearingMagic.setSelected(selected.getMagic(ClearingDetail.MAGIC_WHITE));
 				grayClearingMagic.setSelected(selected.getMagic(ClearingDetail.MAGIC_GRAY));
@@ -516,6 +528,7 @@ public class TileEditFrame extends JFrame {
 		woodsClearingType.setEnabled(activeTile!=null && selected!=null);
 		mountainClearingType.setEnabled(activeTile!=null && selected!=null);
 		caveClearingType.setEnabled(activeTile!=null && selected!=null);
+		waterClearingType.setEnabled(activeTile!=null && selected!=null);
 		
 		whiteClearingMagic.setEnabled(activeTile!=null && selected!=null);
 		grayClearingMagic.setEnabled(activeTile!=null && selected!=null);
@@ -539,6 +552,9 @@ public class TileEditFrame extends JFrame {
 				}
 				else if (caveClearingType.isSelected()) {
 					selected.setType("caves");
+				}
+				else if (waterClearingType.isSelected()) {
+					selected.setType("water");
 				}
 				
 				selected.setMagic(ClearingDetail.MAGIC_WHITE,whiteClearingMagic.isSelected());
