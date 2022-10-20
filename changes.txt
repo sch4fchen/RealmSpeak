@@ -3,6 +3,7 @@ QUEST UPDATE:
 #Update to quest Q41 Rescue Poetess
 NEW FEATURES:
 # BattleBuilder: Option to toggle chit to berserk
+# Support for water clearings
 BUGS/ISSUES:
 # Fix "Reset" button when random assignment to hirelings
 
