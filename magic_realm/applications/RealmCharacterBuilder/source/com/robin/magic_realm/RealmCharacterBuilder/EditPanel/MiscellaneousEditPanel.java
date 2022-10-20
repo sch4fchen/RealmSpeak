@@ -39,7 +39,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"Cannot use sunlight phases",Constants.NO_SUNLIGHT,""},
 		{"Rest Counts Double",Constants.REST_DOUBLE,""},
 		{"-1 Mountain MOVE Cost",Constants.MOUNTAIN_MOVE_ADJ,"-1"},
-		{"-1 Water MOVE Cost",Constants.MOUNTAIN_MOVE_ADJ,"-1"},
+		{"-1 Water MOVE Cost",Constants.WATER_MOVE_ADJ,"-1"},
 		{"+1 Non-Cave MOVE Cost",Constants.NONCAVE_MOVE_DISADVANTAGE,""},
 		{"Can walk woods on the 7th day of every week.",Constants.WALK_WOODS,"7th"},
 		{"Can walk woods on the every day of every week.",Constants.WALK_WOODS,""},

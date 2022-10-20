@@ -314,7 +314,6 @@ if (debug) System.out.println(name+":"+clearingKey);
 		gameObject.setAttribute(MAP_GRID,MAP_ROTATION,String.valueOf(rotation));
 	}
 	
-//	private static final int[] REQ_CLEARINGS = {2,4,5,6};
 	/**
 	 * @param mapGrid	The map Hash of Point keys to Tile objects
 	 * @param tile		The Tile object to be tested
@@ -341,6 +340,9 @@ if (debug) System.out.println(name+":"+clearingKey);
 						System.out.println(adjTile.name+" path state for "+((edge+3)%6)+" is "+adjTile.getPathState((edge+3)%6));
 					}
 					return false; // if they don't line up, there is no need to continue here!!
+				}
+				if (tile.getClearingType(tile.side,edge) != null && tile.getClearingType(tile.side,edge).matches("water") && !tile.getClearingType(tile.side,edge).matches(adjTile.getClearingType(adjTile.side,(edge+3)%6))) {
+					return false;
 				}
 			}
 		}
@@ -377,6 +379,28 @@ if (debug) System.out.println(name+":"+clearingKey);
 		// (no need to check if adjacent to two tiles here)
 		return !joinError;
 	}
+	
+	public String getClearingType(int side,int edge) {
+		String type = null;
+		ArrayList<String> clearings = (ArrayList<String>)paths[side].get(getEdgeName(edge));
+		if (clearings == null || clearings.size() != 1) return null;
+		
+		String sideName; 
+		if (side == 0) {
+			sideName = "normal";
+		}
+		else {
+			sideName = "enchanted";
+		}
+		
+		String clearingName = clearings.get(0);
+		String clearingNumber = clearingName.substring(clearingName.length()-1, clearingName.length()); 
+		Hashtable attributes = gameObject.getAttributeBlock(sideName);
+		String typeKey = "clearing_" + clearingNumber + "_type";
+		type = (String)attributes.get(typeKey);
+		return type;
+	}
+	
 	/**
 	 * @return		A Collection of Point objects that reference possible map placements
 	 */
