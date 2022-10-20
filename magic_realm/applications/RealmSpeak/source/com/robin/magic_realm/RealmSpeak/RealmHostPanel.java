@@ -318,6 +318,9 @@ public class RealmHostPanel extends JPanel {
 			// Add a number of days equal to (8-DIW)
 			game.setDay(8-days);
 			
+			boolean freezing = cal.isFreezingWeather(game.getMonth());
+			RealmUtility.updateWaterClearings(game.getGameData(),freezing);
+			
 			logger.fine("Exiting updateGameState");
 			return;
 		}
@@ -815,6 +818,8 @@ public class RealmHostPanel extends JPanel {
 				host.broadcast("host", "The weather for the week is "+cal.getWeatherName(game.getMonth()));
 				game.updateWeatherChit();
 				host.broadcast("host","A new weather chit was chosen.");
+				boolean freezing = cal.isFreezingWeather(game.getMonth());
+				RealmUtility.updateWaterClearings(game.getGameData(),freezing);
 			}
 			
 			// When calculating days in the NEXT week, we may be referring to a new month

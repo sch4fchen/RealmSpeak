@@ -81,6 +81,7 @@ public class RealmCalendar {
 	private int sunlight;
 	private int sheltered;
 	private int mountainMoveCost;
+	private boolean frozenWater;
 	private int victoryPoints;
 	private int specialNotes; // 0 if none in play
 	private String seasonDescription;
@@ -121,7 +122,7 @@ public class RealmCalendar {
 	public boolean isUsingWeather() {
 		return usingWeather;
 	}
-	public void setSeason(HostPrefWrapper hostPrefs) {
+	private void setSeason(HostPrefWrapper hostPrefs) {
 		String val = hostPrefs.getStartingSeason();
 		if (val==null) { // This happens when loading an old savegame and IGNORE_VERSION is on
 			System.err.println("RealmCalendar: Loading old game");
@@ -185,6 +186,7 @@ public class RealmCalendar {
 		sunlight = currentSeason.getInt(currentWeather,"sunlight");
 		sheltered = currentSeason.getInt(currentWeather,"sheltered");
 		mountainMoveCost = currentSeason.getInt("this","mountain_cost");
+		frozenWater = currentSeason.hasThisAttribute("frozen_water");
 		weatherName = currentSeason.getAttribute(currentWeather,"name");
 		weatherTypeName = StringUtilities.capitalize(currentWeather);
 		specialNotes = 0;
@@ -334,6 +336,10 @@ public class RealmCalendar {
 	public int getMissionRewards(int month) {
 		updateSeason(month);
 		return missionRewards;
+	}
+	public boolean isFreezingWeather(int month) {
+		updateSeason(month);
+		return frozenWater;
 	}
 	public String getMissionPrimaryTarget(int month,String type) {
 		updateSeason(month);

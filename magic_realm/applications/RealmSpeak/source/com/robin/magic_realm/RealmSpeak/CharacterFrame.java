@@ -1702,6 +1702,8 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					int result = Integer.valueOf(thingName.substring(7)).intValue();
 					RealmCalendar cal = RealmCalendar.getCalendar(gameHandler.getClient().getGameData());
 					cal.setWeatherResult(result);
+					boolean freezing = cal.isFreezingWeather(character.getCurrentMonth());
+					RealmUtility.updateWaterClearings(gameHandler.getClient().getGameData(),freezing);
 					updateCharacter();
 				}
 				else if (thingName.startsWith("nice")) {

@@ -20926,18 +20926,21 @@
         <attribute basic="2" />
         <attribute sunlight="2" />
         <attribute name="Cold" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="showers">
         <attribute days="5" />
         <attribute basic="3" />
         <attribute sunlight="1" />
         <attribute name="Flurries" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="storm">
         <attribute days="4" />
         <attribute basic="3" />
         <attribute sheltered="1" />
         <attribute name="Snowstorm" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="special">
         <attribute days="5" />
@@ -20946,6 +20949,7 @@
         <attribute name="Icy Winds" />
         <attribute special="note1" />
         <attribute description="If not in cave or dwelling during Birdsong, you must immediately fatigue one asterisk." />
+		<attribute frozen_water="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="876" name="Ice">
@@ -20968,17 +20972,20 @@
         <attribute basic="2" />
         <attribute sunlight="1" />
         <attribute name="Cold" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="showers">
         <attribute days="4" />
         <attribute basic="4" />
         <attribute name="Ice Storm" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="storm">
         <attribute days="3" />
         <attribute basic="4" />
         <attribute sheltered="1" />
         <attribute name="Snowstorm" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="special">
         <attribute days="4" />
@@ -20987,6 +20994,7 @@
         <attribute name="Frigid Air" />
         <attribute special="note2" />
         <attribute description="Each time a character ends a phase of his turn outside, he must fatigue one asterisk." />
+		<attribute frozen_water="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="877" name="Snow">
@@ -21009,23 +21017,27 @@
         <attribute basic="3" />
         <attribute sunlight="1" />
         <attribute name="Snowdrifts" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="showers">
         <attribute days="4" />
         <attribute basic="4" />
         <attribute name="Sleet" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="storm">
         <attribute days="3" />
         <attribute basic="4" />
         <attribute sheltered="1" />
         <attribute name="Snowstorm" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="special">
         <attribute days="2" />
         <attribute basic="4" />
         <attribute sheltered="2" />
         <attribute name="Blizzard" />
+		<attribute frozen_water="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="878" name="Easter">
@@ -21060,6 +21072,7 @@
         <attribute basic="3" />
         <attribute sheltered="1" />
         <attribute name="Snowstorm" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="special">
         <attribute days="7" />
@@ -21374,6 +21387,7 @@
         <attribute basic="2" />
         <attribute sunlight="3" />
         <attribute name="Cold" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="showers">
         <attribute days="7" />
@@ -21416,18 +21430,21 @@
         <attribute basic="2" />
         <attribute sunlight="2" />
         <attribute name="Cold" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="showers">
         <attribute days="5" />
         <attribute basic="3" />
         <attribute sunlight="1" />
         <attribute name="Flurries" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="storm">
         <attribute days="7" />
         <attribute basic="2" />
         <attribute name="Freezing Rain" />
         <attribute sunlight="1" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="special">
         <attribute days="7" />
@@ -21436,6 +21453,7 @@
         <attribute name="Early Snow" />
         <attribute special="note3" />
         <attribute description="No one can use the HIDE table." />
+		<attribute frozen_water="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="888" name="Ambush">

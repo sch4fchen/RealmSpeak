@@ -162,6 +162,9 @@ public class ClearingDetail {
 	public boolean isWater() {
 		return type.equals("water");
 	}
+	public boolean isFrozenWater() {
+		return type.equals("frozen_water");
+	}
 	public boolean isLighted() {
 		if (!parent.getGameObject().hasThisAttribute(Constants.LIGHTED)) return false;
 		for (String clearing : parent.getGameObject().getThisAttributeList(Constants.LIGHTED)) {

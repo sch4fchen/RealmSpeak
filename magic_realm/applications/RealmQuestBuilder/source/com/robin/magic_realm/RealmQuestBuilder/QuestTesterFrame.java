@@ -393,7 +393,7 @@ public class QuestTesterFrame extends JFrame {
 				String weather = chooseWeather();
 				if (weather != null) {
 					RealmCalendar realmCalender = RealmCalendar.getCalendar(character.getGameData());
-					realmCalender.setWeatherResult(RealmCalendar.getWeatherInt(weather));	
+					realmCalender.setWeatherResult(RealmCalendar.getWeatherInt(weather));
 					updateCharacterPanel();
 					retestQuest();
 				}

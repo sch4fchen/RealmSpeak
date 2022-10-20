@@ -319,7 +319,7 @@ public class RealmGameEditor extends JInternalFrame {
 	}
 	private JPanel buildCharacterEditorTab() {
 		JPanel panel = new JPanel(new BorderLayout());
-		characterTabs = new JTabbedPane(JTabbedPane.LEFT);
+		characterTabs = new JTabbedPane(SwingConstants.LEFT);
 		characterTabs.setFont(new Font("Dialog",Font.PLAIN,24));
 		characterTabs.addChangeListener(new ChangeListener() {
 	        public void stateChanged(ChangeEvent e) {

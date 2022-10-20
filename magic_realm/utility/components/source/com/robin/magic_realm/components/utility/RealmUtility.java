@@ -944,6 +944,18 @@ public class RealmUtility {
 		}
 	}
 	
+	public static void updateWaterClearings(GameData data,boolean frozen) {
+		GamePool pool = new GamePool(data.getGameObjects());
+		for (GameObject go : pool.find("tile")) {
+			RealmComponent rc = RealmComponent.getRealmComponent(go);
+			if (rc instanceof TileComponent) {
+				TileComponent tile = (TileComponent) rc;
+				if (frozen) tile.freezeWaterClearings();
+				if (!frozen) tile.meltFrozenWaterClearings();
+			}
+		}
+	}
+	
 	public static boolean willBeBlocked(CharacterWrapper character,boolean isFollowing,boolean blockMonsters) {
 		// Player's current clearing is checked for monsters, and blocked if needed
 		boolean blocked = false;

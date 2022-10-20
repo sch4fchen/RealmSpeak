@@ -240,6 +240,9 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				}
 				RealmCalendar calendar = RealmCalendar.getCalendar(client.getGameData());
 				calendar.updateSeason(1, true);
+				boolean freezing = calendar.isFreezingWeather(game.getMonth());
+				RealmUtility.updateWaterClearings(game.getGameData(),freezing);
+				
 				broadcast("host", "========================================");
 				broadcast("host", "Month "+game.getMonth()+", Day "+game.getDay());
 				broadcast("host", "========================================");

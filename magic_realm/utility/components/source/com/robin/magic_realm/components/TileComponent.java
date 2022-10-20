@@ -1360,4 +1360,28 @@ public class TileComponent extends ChitComponent {
 		if( this.getGameObject().getThisAttribute("tile_type").equals("V")){return true;}
 		return false;
 	}
+	
+	public void freezeWaterClearings() {
+		changeTypeOfClearings(NORMAL_INDEX, gameObject.getAttributeBlock("normal"),"water","frozen_water");
+		changeTypeOfClearings(ENCHANTED_INDEX, gameObject.getAttributeBlock("enchanted"),"water","frozen_water");
+		initSide(NORMAL_INDEX, gameObject.getAttributeBlock("normal"));
+		initSide(ENCHANTED_INDEX, gameObject.getAttributeBlock("enchanted"));
+	}
+	
+	public void meltFrozenWaterClearings() {
+		changeTypeOfClearings(NORMAL_INDEX, gameObject.getAttributeBlock("normal"),"frozen_water","water");
+		changeTypeOfClearings(ENCHANTED_INDEX, gameObject.getAttributeBlock("enchanted"),"frozen_water","water");
+		initSide(NORMAL_INDEX, gameObject.getAttributeBlock("normal"));
+		initSide(ENCHANTED_INDEX, gameObject.getAttributeBlock("enchanted"));
+	}
+	
+	private void changeTypeOfClearings(int side, Hashtable hash,String from,String to) {
+		for (int i = 1; i <= 6; i++) {
+			String typeKey = "clearing_" + i + "_type";
+			String type = (String)hash.get(typeKey);
+			if (type != null && type.matches(from)) {
+				gameObject.setAttribute("normal", typeKey, to);
+			}
+		}
+	}
 }
