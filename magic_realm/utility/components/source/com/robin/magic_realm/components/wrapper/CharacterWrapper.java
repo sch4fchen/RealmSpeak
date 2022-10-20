@@ -5484,6 +5484,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 				getGameObject().removeThisAttribute(Constants.LAND_FIRST);
 			}
 			
+			if (current.clearing.isWater()) {
+				RealmCalendar cal = RealmCalendar.getCalendar(getGameData());
+				CharacterWrapper character = new CharacterWrapper(getGameObject());
+				if (cal.isFlood(character.getCurrentMonth())) {
+					character.setWeatherFatigue(character.getWeatherFatigue()+1);
+				}
+			}
+			
 			// Land all followers
 			for (CharacterWrapper follower : getActionFollowers()) {
 				follower.moveToLocation(frame, current);

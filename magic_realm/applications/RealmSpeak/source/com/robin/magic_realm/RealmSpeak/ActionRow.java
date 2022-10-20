@@ -887,12 +887,19 @@ public class ActionRow {
 					}
 					
 					HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
-					if (hostPrefs.hasPref(Constants.FE_KILLER_CAVES) && location.clearing.isCave()) {
+					if (hostPrefs.hasPref(Constants.FE_KILLER_CAVES) && location.hasClearing() && location.clearing.isCave()) {
 						for (GameObject item : character.getInventory()) {
 							if (RealmComponent.getRealmComponent(item).isHorse()) {
 								TreasureUtility.doDeactivate(gameHandler.getMainFrame(), character, item);
 								item.detach();
 							}
+						}
+					}
+					
+					if (location.hasClearing() && location.clearing.isWater()) {
+						RealmCalendar cal = RealmCalendar.getCalendar(gameHandler.getClient().getGameData());
+						if (cal.isFlood(gameHandler.getGame().getMonth())) {
+							character.setWeatherFatigue(character.getWeatherFatigue()+1);
 						}
 					}
 					
