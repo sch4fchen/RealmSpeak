@@ -4,7 +4,7 @@ QUEST UPDATE:
 NEW FEATURES:
 # BattleBuilder: Option to toggle chit to berserk
 BUGS/ISSUES:
-# Fix "Reset" button when random assignment to hirelings 
+# Fix "Reset" button when random assignment to hirelings
 
 Version 1.1.6.6
 QUEST UPDATE:

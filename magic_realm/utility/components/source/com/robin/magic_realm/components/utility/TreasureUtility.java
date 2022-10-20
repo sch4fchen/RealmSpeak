@@ -125,6 +125,10 @@ public class TreasureUtility {
 					JOptionPane.showMessageDialog(parentFrame,"You cannot activate a horse in a cave.");
 					return false;
 				}
+				if (tl!=null && tl.isInClearing() && tl.clearing.isWater()) {
+					JOptionPane.showMessageDialog(parentFrame,"You cannot activate a horse in a river.");
+					return false;
+				}
 				
 				// Check to see that horse is strong enough to carry character
 				Strength horseStrength = new Strength(thing.getAttribute("trot","strength"));

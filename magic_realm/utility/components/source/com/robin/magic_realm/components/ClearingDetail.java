@@ -159,6 +159,9 @@ public class ClearingDetail {
 	public boolean isCave() {
 		return type.equals("caves");
 	}
+	public boolean isWater() {
+		return type.equals("water");
+	}
 	public boolean isLighted() {
 		if (!parent.getGameObject().hasThisAttribute(Constants.LIGHTED)) return false;
 		for (String clearing : parent.getGameObject().getThisAttributeList(Constants.LIGHTED)) {

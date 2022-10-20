@@ -670,6 +670,10 @@ public class TileComponent extends ChitComponent {
 					for (ClearingDetail detail : clearings[facingIndex]) {
 						g.setColor(Color.black);
 						drawClearing(g, detail, CLEARING_RADIUS, false);
+						if (detail.isWater()) {
+							g.setColor(Color.blue);
+							drawClearing(g, detail, CLEARING_RADIUS, true);
+						}
 						if (detail.isCave()) {
 							g.setColor(Color.white);
 							drawClearing(g, detail, CLEARING_RADIUS, true);

@@ -1,5 +1,10 @@
 Super Realm Parry (and 1st Ed.): 8.10.7 p. 984
-Super Realm Rules: water clearings
+Super Realm Rules: water clearings: water must connect to water
+	horse cannot active in a water clearing (like cave) and becomes inactive; entering water clearing = 2 move actions or active pony; upstream: 2 move actions (transmorphed only 1 action), downstream: 1 move action;
+	fly activity (optional rule)/peer table: Peer Table to search any woods,mountain, or water clearing
+	seasons: frozen water: treat water clearings as woods clearings; 8. Each time a character ends a phase in a water clearing as the result of a Move or landing, he must fatigue one asterisk.
+		seasons: set water movement cost in MagicRealm.xml
+	add tiles from Super Realm, available in GM tool only 
 0001828: Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 0001820: Feature Request: First Edition Optional Rules - Dissolving Doors: https://magicrealm.ca/first-edition-optional-rules/
 ---:::FEATURES:::---

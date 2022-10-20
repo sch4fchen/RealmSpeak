@@ -801,8 +801,9 @@ public class CharacterActionControlManager {
 		timeToSend = finishAction.isEnabled();
 		
 		boolean inCave = getCharacter().isActive() && planned!=null && planned.isInClearing() && planned.clearing.isCave();
+		boolean inWater = getCharacter().isActive() && planned!=null && planned.isInClearing() && planned.clearing.isWater();
 		boolean pony = getCharacter().isActive() && getCharacter().isPonyActive();
-		boolean usingPony = pony&&!inCave;
+		boolean usingPony = pony&&!inCave&&!inWater;
 		boolean followOk = !backAction.isEnabled();
 		if (birdsong) {
 			if (getCharacter().hasCurrentAction(DayAction.FOLLOW_ACTION.getCode())) {

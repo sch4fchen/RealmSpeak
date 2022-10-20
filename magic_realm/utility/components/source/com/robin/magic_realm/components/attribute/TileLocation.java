@@ -138,13 +138,13 @@ public class TileLocation {
 		return isInClearing() && clearing.holdsGuild() && clearing.getGuild().getGameObject().hasThisAttribute("seen");
 	}
 	/**
-	 * @return		true if this location is in a cave or in the mountains.  Between caves or between mountains is considered the same as being in a cave or mountain clearing.
+	 * @return		true if this location is in a cave, water or in the mountains.  Between caves, waters or between mountains is considered the same as being in a cave, water or mountain clearing.
 	 */
 	public boolean isShaded() {
 		if (isBetweenClearings()) {
-			return (clearing.isCave() && other.clearing.isCave()) || (clearing.isMountain() && other.clearing.isMountain());
+			return (clearing.isCave() && other.clearing.isCave()) || (clearing.isMountain() && other.clearing.isMountain()) || (clearing.isWater() && other.clearing.isWater());
 		}
-		return isInClearing() && (clearing.isCave() || clearing.isMountain());
+		return isInClearing() && (clearing.isCave() || clearing.isMountain() || clearing.isWater());
 	}
 	public String toString() {
 		if (isBetweenClearings()) {

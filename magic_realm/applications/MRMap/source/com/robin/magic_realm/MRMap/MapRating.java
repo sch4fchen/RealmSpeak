@@ -58,7 +58,7 @@ public class MapRating {
 				for (PathDetail path:clearing.getAllConnectedPaths()) {
 					if (path.isHidden() || path.isSecret()) continue;
 					ClearingDetail otherEnd = path.findConnection(clearing);
-					if (otherEnd==null || otherEnd.isCave() || otherEnd.isEdge() || found.contains(otherEnd)) continue;
+					if (otherEnd==null || otherEnd.isCave() || otherEnd.isWater() || otherEnd.isEdge() || found.contains(otherEnd)) continue;
 					
 					found.add(otherEnd);
 					next.add(otherEnd);

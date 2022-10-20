@@ -25,6 +25,7 @@ public enum LocationClearingType {
 	Cave,
 	Mountain,
 	Woods,
+	Water,
 	;
 	
 	public boolean matches(ClearingDetail clearing) {
@@ -35,6 +36,7 @@ public enum LocationClearingType {
 			case Cave:		return clearing.isCave();
 			case Mountain:	return clearing.isMountain();
 			case Woods:		return clearing.isWoods();
+			case Water:		return clearing.isWater();
 		}
 		return false;
 	}

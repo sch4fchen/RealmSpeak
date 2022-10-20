@@ -1515,12 +1515,13 @@ public class CharacterWrapper extends GameObjectWrapper {
 		// Make sure history is updated
 		addMoveHistory(location);
 		
-		// Inactivate horses if entering a cave
+		// Inactivate horses if entering a cave or river
 		if (location!=null&&location.isInClearing()) {
 			boolean cave = location.clearing.isCave();
+			boolean water = location.clearing.isWater();
 			for (GameObject inv : getInventory()) {
 				RealmComponent rc = RealmComponent.getRealmComponent(inv);
-				if (cave && rc.isHorse() && rc.isActivated()) {
+				if ((cave || water) && rc.isHorse() && rc.isActivated()) {
 					if (frame!=null) {
 						JOptionPane.showMessageDialog(frame,"Your "+inv.getName()+" was inactivated on entering the cave.","",JOptionPane.WARNING_MESSAGE);
 					}
@@ -2090,6 +2091,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		TileLocation current = getCurrentLocation();
 		boolean cave = current!=null && current.isInClearing() && current.clearing.isCave();
+		boolean water = current!=null && current.isInClearing() && current.clearing.isWater();
 		
 		// search active treasures to determine if any items provide a free action
 		for (GameObject item:getEnhancingItems()) {
@@ -2110,7 +2112,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		// Does character have a horse active?
 		BattleHorse steed = getActiveSteed();
-		if (steed!=null && steed.extraMove() && !cave) {
+		if (steed!=null && steed.extraMove() && !cave && !water) {
 			pm.addFreeAction(DayAction.getDayAction(ActionId.Move).getCode(),steed.getGameObject());
 		}
 		
@@ -2138,12 +2140,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 			TileLocation loc = current;
 			for (String action : getCurrentActions()) {
 				boolean inCave = false;
+				boolean inWater = false;
 				loc = getClearingPlot().get(moveNumber);
 				if (action.startsWith("M") || action.startsWith("FLY")) {
 					inCave = loc!=null && loc.isInClearing() && loc.clearing.isCave();
+					inWater = loc!=null && loc.isInClearing() && loc.clearing.isWater();
 					moveNumber++;
 				}
-				pm.forcePerformedAction(action,pony&&!inCave,loc);
+				pm.forcePerformedAction(action,pony&&!inCave&&!inWater,loc);
 			}
 		}
 		pm.removeLocationSpecificFreeActions(getPlannedLocation());

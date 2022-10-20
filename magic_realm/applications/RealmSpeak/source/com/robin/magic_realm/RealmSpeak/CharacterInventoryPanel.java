@@ -465,7 +465,7 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 				if (hiredLeader) {
 					if (rc.isNativeHorse()) {
 						TileLocation loc = getCharacter().getCurrentLocation();
-						if (loc!=null && loc.isInClearing() && loc.clearing.isCave()) {
+						if (loc!=null && loc.isInClearing() && (loc.clearing.isCave() || loc.clearing.isWater())) {
 							inactiveInv.add(item);
 							item = null;
 						}

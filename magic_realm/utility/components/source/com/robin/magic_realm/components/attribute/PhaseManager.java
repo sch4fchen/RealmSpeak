@@ -416,7 +416,7 @@ public class PhaseManager {
 
 		if (ponyObject!=null && go!=ponyObject && ponyActive && movePhase && ponyMoves==0) {
 			TileLocation current = ClearingUtility.getTileLocation(ponyObject);
-			if (current!=null && (!current.isInClearing() || !current.clearing.isCave())) {
+			if (current!=null && (!current.isInClearing() || (!current.clearing.isCave() && !current.clearing.isWater()))) {
 				ponyMoves++;
 				freeActions.put("M",new Requirement(ponyObject));
 				allObjects.add(ponyObject);

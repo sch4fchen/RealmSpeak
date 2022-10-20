@@ -187,6 +187,7 @@ public class Constants {
 	// New character advantages
 	public static final String LEVEL_KEY_TAG = "_lkt_";
 	public static final String MOUNTAIN_MOVE_ADJ = "mountain_move_adj";
+	public static final String WATER_MOVE_ADJ = "water_move_adj";
 	public static final String NONCAVE_MOVE_DISADVANTAGE = "noncave_move_disadavantage";
 	public static final String FIGHT_NO_WEAPON = "fight_no_weapon"; // allows your FIGHT chits to affect harm at shown strength without a weapon (no sharpness)
 	public static final String BLOCK_NO_WEAPON = "block_no_weapon"; // allows your FIGHT chits to block

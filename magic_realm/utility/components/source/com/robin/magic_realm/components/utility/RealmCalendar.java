@@ -46,7 +46,7 @@ public class RealmCalendar {
 	 * FINISHED - note1 = Fatigue 1 asterisk if outside (!cave && !dwelling) during Birdsong
 	 * FINISHED - note2 = Fatigue 1 asterisk/phase outside (even if you are blocked!)
 	 * FINISHED - note3 = Hide table cannot be used
-	 * FINISHED - note4 = Fatigue 1 asterisk if in the heat (!cave && !mountain) during Birdsong
+	 * FINISHED - note4 = Fatigue 1 asterisk if in the heat (!cave && !mountain && !water) during Birdsong
 	 * FINISHED - note5 = Fatigue 1 asterisk/phase in mountains (even if you are blocked!)
 	 * FINISHED - note6 = Peer table cannot be used (enhanced peer is okay)
 	 */
