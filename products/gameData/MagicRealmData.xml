@@ -21109,6 +21109,7 @@
         <attribute basic="2" />
         <attribute sunlight="3" />
         <attribute name="Showers" />
+		<attribute name="flood" />
       </AttributeBlock>
       <AttributeBlock blockName="storm">
         <attribute days="4" />
@@ -21155,6 +21156,7 @@
         <attribute basic="2" />
         <attribute name="Rain" />
         <attribute sunlight="2" />
+		<attribute name="flood" />
       </AttributeBlock>
       <AttributeBlock blockName="special">
         <attribute days="7" />
@@ -21195,6 +21197,7 @@
         <attribute basic="2" />
         <attribute name="Soft Rain" />
         <attribute sunlight="2" />
+		<attribute name="flood" />
       </AttributeBlock>
       <AttributeBlock blockName="special">
         <attribute days="7" />
@@ -21229,6 +21232,7 @@
         <attribute basic="2" />
         <attribute sunlight="2" />
         <attribute name="Showers" />
+		<attribute name="flood" />
       </AttributeBlock>
       <AttributeBlock blockName="storm">
         <attribute days="5" />
@@ -21277,6 +21281,7 @@
         <attribute basic="2" />
         <attribute name="Thunderstorm" />
         <attribute sunlight="1" />
+		<attribute name="flood" />
       </AttributeBlock>
       <AttributeBlock blockName="special">
         <attribute days="4" />
@@ -21319,6 +21324,7 @@
         <attribute basic="2" />
         <attribute name="Rain" />
         <attribute sunlight="1" />
+		<attribute name="flood" />
       </AttributeBlock>
       <AttributeBlock blockName="special">
         <attribute days="7" />
@@ -21359,6 +21365,7 @@
         <attribute basic="2" />
         <attribute name="Cold Rain" />
         <attribute sunlight="1" />
+		<attribute name="flood" />
       </AttributeBlock>
       <AttributeBlock blockName="special">
         <attribute days="7" />
@@ -21400,6 +21407,7 @@
         <attribute basic="2" />
         <attribute name="Cold Rain" />
         <attribute sunlight="1" />
+		<attribute name="flood" />
       </AttributeBlock>
       <AttributeBlock blockName="special">
         <attribute days="7" />
