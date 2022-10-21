@@ -191,7 +191,7 @@ public class ClearingDetail {
 		if (isMountain()) {
 			val = character.getMountainMoveCost();
 		}
-		if (isWater() && character.affectedByKey(Constants.MOUNTAIN_MOVE_ADJ)) {
+		if (isWater() && character.affectedByKey(Constants.WATER_MOVE_ADJ)) {
 			val--;
 		}
 		if (!isCave() && character.addsOneToMoveExceptCaves()) {
