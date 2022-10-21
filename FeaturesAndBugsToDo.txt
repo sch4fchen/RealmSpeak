@@ -1,6 +1,5 @@
 Super Realm Parry (and 1st Ed.): 8.10.7 p. 984
 Super Realm Rules: water clearings: entering water clearing = 2 move actions or active pony; upstream 2 move actions (transmorphed only 1 action), downstream=away from falls:: 1 move action;
-	check WATER_MOVE_ADJ ability
 	add tiles from Super Realm, available in GM tool only 
 	---:::FEATURES:::---
 SuperRealm: Items, Artifacts, Spells
