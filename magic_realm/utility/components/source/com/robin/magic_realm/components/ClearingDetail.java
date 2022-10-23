@@ -294,10 +294,14 @@ public class ClearingDetail {
 		}
 		
 		boolean foundNewClearings = true;
+		ArrayList<ClearingDetail> newWaterClearings = new ArrayList<>();
+		ArrayList<ClearingDetail> waterClearingsToCheck = new ArrayList<>();
 		while (foundNewClearings) {
 			foundNewClearings = false;
 			distance++;
-			for (ClearingDetail clearing : touchedWaterClearings) {
+			waterClearingsToCheck.addAll(newWaterClearings);
+			newWaterClearings.clear();
+			for (ClearingDetail clearing : waterClearingsToCheck) {
 				Collection<PathDetail> c = clearing.getAllConnectedPaths();
 				for (PathDetail path : c) {
 					if (path.getTo().isWater() && !touchedWaterClearings.contains(path.getTo())) {
@@ -306,6 +310,7 @@ public class ClearingDetail {
 						}
 						foundNewClearings = true;
 						touchedWaterClearings.add(path.getTo());
+						newWaterClearings.add(path.getTo());
 					}
 				}
 			}
