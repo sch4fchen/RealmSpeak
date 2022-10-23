@@ -299,6 +299,7 @@ public class ClearingDetail {
 		while (foundNewClearings) {
 			foundNewClearings = false;
 			distance++;
+			waterClearingsToCheck.clear();
 			waterClearingsToCheck.addAll(newWaterClearings);
 			newWaterClearings.clear();
 			for (ClearingDetail clearing : waterClearingsToCheck) {
