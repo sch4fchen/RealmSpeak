@@ -22,6 +22,7 @@ import java.awt.Point;
 import java.util.*;
 
 import com.robin.game.objects.GameObject;
+import com.robin.game.objects.GamePool;
 import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -186,13 +187,21 @@ public class ClearingDetail {
 	public boolean isWoods() {
 		return type.equals("woods") || type.equals("frozen_water"); //treat water clearings as woods clearings
 	}
-	public int moveCost(CharacterWrapper character) {
+	public int moveCost(CharacterWrapper character,TileLocation currentLocation) {
 		int val = 1;
 		if (isMountain()) {
 			val = character.getMountainMoveCost();
 		}
-		if (isWater() && character.affectedByKey(Constants.WATER_MOVE_ADJ)) {
-			val--;
+		if (isWater()) {
+			if (!character.isTransmorphed()) val++;
+			if (character.affectedByKey(Constants.WATER_MOVE_ADJ)) val--;
+			if (!character.isTransmorphed() && currentLocation.clearing!=null && currentLocation.clearing.isWater()) {
+				GamePool pool = new GamePool(this.parent.getGameObject().getGameData().getGameObjects());
+				ArrayList<GameObject> waterSources = pool.find("tile,water_source");
+				if (this.distanceToWaterSource(waterSources)>currentLocation.clearing.distanceToWaterSource(waterSources)) {
+					val--;
+				}
+			}
 		}
 		if (!isCave() && character.addsOneToMoveExceptCaves()) {
 			val++;
@@ -274,6 +283,35 @@ public class ClearingDetail {
 			}
 		}
 		return sb.toString();
+	}
+	private int distanceToWaterSource(Collection<GameObject> waterSources) {
+		int distance = 0;
+		ArrayList<ClearingDetail> touchedWaterClearings = new ArrayList<>();
+		
+		touchedWaterClearings.add(this);
+		if (this.parent.getGameObject().getThisAttribute("water_source_clearing").matches(this.getNumString())) {
+			return distance;
+		}
+		
+		boolean foundNewClearings = true;
+		while (foundNewClearings) {
+			foundNewClearings = false;
+			distance++;
+			for (ClearingDetail clearing : touchedWaterClearings) {
+				Collection<PathDetail> c = clearing.getAllConnectedPaths();
+				for (PathDetail path : c) {
+					if (path.getTo().isWater() && !touchedWaterClearings.contains(path.getTo())) {
+						if (path.getTo().parent.getGameObject().getThisAttribute("water_source_clearing").matches(path.getTo().getNumString())) {
+							return distance;
+						}
+						foundNewClearings = true;
+						touchedWaterClearings.add(path.getTo());
+					}
+				}
+			}
+		}
+		
+		return -1;
 	}
 	/**
 	 * Returns a PathDetail that connects two clearings, or null if none.

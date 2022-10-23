@@ -347,11 +347,10 @@ public class CharacterActionControlManager {
 				if (DayAction.FLY_ACTION.getCode().equals(theAction)) {
 					tl.setFlying(true);
 				}
-				int cost = tl.hasClearing()?tl.clearing.moveCost(getCharacter()):1;
-				boolean continueWithRecord = true;
 				TileLocation current = getCharacter().getPlannedLocation();
+				int cost = tl.hasClearing()?tl.clearing.moveCost(getCharacter(),current):1;
+				boolean continueWithRecord = true;
 				if (current.isBetweenClearings() && tl.hasClearing() && !(current.contains(tl.clearing) && getCharacter().canMoveToClearing(tl.clearing))) {
-					
 					ArrayList<ClearingDetail> clearings = character.findAvailableClearingMoves();
 					if (clearings.size()!=1 || !clearings.get(0).equals(tl.clearing)) {
 						JOptionPane.showMessageDialog(

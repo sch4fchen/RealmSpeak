@@ -775,7 +775,7 @@ public class ActionRow {
 				if (overridePath || magicPath || current.isBetweenClearings() || character.validPath(path)) {
 					// Make sure that if the character is moving into a mountain clearing, check current clearing
 					// to make sure monsters don't block the first half of that move
-					if (location.clearing.moveCost(character)>1 && RealmUtility.willBeBlocked(character,isFollowing,true)) {
+					if (location.clearing.moveCost(character,current)>1 && RealmUtility.willBeBlocked(character,isFollowing,true)) {
 						character.setBlocked(true);
 						cancelled = true;
 						result = "BLOCKED";
