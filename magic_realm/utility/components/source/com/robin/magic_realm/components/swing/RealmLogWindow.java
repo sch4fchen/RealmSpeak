@@ -31,6 +31,7 @@ import javax.swing.*;
 import javax.swing.text.*;
 
 import com.robin.general.io.FileUtilities;
+import com.robin.general.swing.IconFactory;
 import com.robin.magic_realm.components.utility.RealmLogging;
 import com.robin.magic_realm.components.wrapper.DayKey;
 
@@ -243,6 +244,7 @@ public class RealmLogWindow extends JFrame {
 	}
 
 	private void initComponents() {
+		setIconImage(IconFactory.findIcon("icons/document.gif").getImage());
 		fileMenu = new JMenu("File");
 		clearFileMenu = new JMenuItem("Clear");
 		clearFileMenu.addActionListener(new ActionListener() {
