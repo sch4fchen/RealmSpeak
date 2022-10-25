@@ -36,16 +36,16 @@ public class TileEditComponent extends TileComponent {
 	public Collection<ClearingDetail> getClearingDetail() {
 		return clearings[getFacingIndex()];
 	}
-	public void setClearingDetail(Collection c) {
-		clearings[getFacingIndex()] = new ArrayList(c);
+	public void setClearingDetail(Collection<ClearingDetail> c) {
+		clearings[getFacingIndex()] = new ArrayList<ClearingDetail>(c);
 		changed = true;
 		repaint();
 	}
 	public Collection<PathDetail> getPathDetail() {
 		return paths[getFacingIndex()];
 	}
-	public void setPathDetail(Collection c) {
-		paths[getFacingIndex()] = new ArrayList(c);
+	public void setPathDetail(Collection<PathDetail> c) {
+		paths[getFacingIndex()] = new ArrayList<PathDetail>(c);
 		changed = true;
 		repaint();
 	}
@@ -76,8 +76,7 @@ public class TileEditComponent extends TileComponent {
 		}
 		
 		// Now add them back
-		for (Iterator i=clearings[getFacingIndex()].iterator();i.hasNext();) {
-			ClearingDetail detail = (ClearingDetail)i.next();
+		for (ClearingDetail detail : clearings[getFacingIndex()]) {
 			String baseKey = detail.toString();
 			gameObject.setAttribute(blockName,baseKey+"_type",detail.getType());
 			gameObject.setAttribute(blockName,baseKey+"_xy",encodePoint(detail.getPosition()));
@@ -94,8 +93,7 @@ public class TileEditComponent extends TileComponent {
 		}
 		
 		int n=1;
-		for (Iterator i=paths[getFacingIndex()].iterator();i.hasNext();) {
-			PathDetail detail = (PathDetail)i.next();
+		for (PathDetail detail : paths[getFacingIndex()]) {
 			String baseKey = "path_"+n;
 			gameObject.setAttribute(blockName,baseKey+"_from",detail.getFrom().toString());
 			gameObject.setAttribute(blockName,baseKey+"_to",detail.getTo().toString());

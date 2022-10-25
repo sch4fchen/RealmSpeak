@@ -3,8 +3,9 @@ QUEST UPDATE:
 #Update to quest A19 Mapmaker Deep Woods
 #Update to quest Q41 Rescue Poetess
 NEW FEATURES:
-# BattleBuilder: Option to toggle chit to berserk
 # Support for water clearings
+# BattleBuilder: Option to toggle chit to berserk
+# TileEditor: Buttons for adding and removing a clearing
 BUGS/ISSUES:
 # Fix "Reset" button when random assignment to hirelings
 

@@ -85,6 +85,9 @@ public class TileEditFrame extends JFrame {
 				protected JCheckBox goldClearingMagic;		// G
 				protected JCheckBox purpleClearingMagic;	// P
 				protected JCheckBox blackClearingMagic;		// B
+
+				protected JButton addClearingButton;
+				protected JButton removeClearingButton;
 				
 	protected JPanel pathView;
 		protected JList<PathDetail> pathList;
@@ -144,7 +147,7 @@ public class TileEditFrame extends JFrame {
 		
 			JPanel editPanel = new JPanel(new GridLayout(2,1));
 				JPanel clearingEditPanel = new JPanel(new BorderLayout());
-				clearingEditPanel.add(new JLabel("Clearings:"),"North");
+				clearingEditPanel.add(new JLabel("CLEARINGS:"),"North");
 					clearingList = new JList<>();
 					clearingList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 					clearingList.addListSelectionListener(new ListSelectionListener() {
@@ -247,10 +250,29 @@ public class TileEditFrame extends JFrame {
 						clearingColorButtons.add(blackClearingMagic);
 						clearingColorButtons.add(Box.createGlue());
 					clearingControls.add(clearingColorButtons);
+						JPanel clearingEditButtons = new JPanel(new GridLayout(1,2));
+							addClearingButton = new JButton("Add");
+							addClearingButton.addActionListener(new ActionListener() {
+								public void actionPerformed(ActionEvent ev) {
+									addClearing();
+								}
+							});
+						clearingEditButtons.add(addClearingButton);
+							removeClearingButton = new JButton("Remove");
+							removeClearingButton.addActionListener(new ActionListener() {
+								public void actionPerformed(ActionEvent ev) {
+									removeClearing();
+								}
+							});
+							clearingEditButtons.add(removeClearingButton);
+					clearingControls.add(clearingEditButtons);
+					clearingControls.add(new JSeparator());
+					clearingControls.add(new JSeparator());
+					clearingControls.add(new JSeparator());
 				clearingEditPanel.add(clearingControls,"South");
 			editPanel.add(clearingEditPanel);
 				JPanel pathEditPanel = new JPanel(new BorderLayout());
-				pathEditPanel.add(new JLabel("Paths:"),"North");
+				pathEditPanel.add(new JLabel("PATHS:"),"North");
 					pathList = new JList<>();
 					pathList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 					pathList.addListSelectionListener(new ListSelectionListener() {
@@ -580,6 +602,64 @@ public class TileEditFrame extends JFrame {
 				activeTile.repaint();
 			}
 		}
+	}
+	public void addClearing() {
+		if (activeTile==null) return;
+		
+		ArrayList<ClearingDetail> allClearings = (ArrayList<ClearingDetail>) activeTile.getClearingDetail();
+		if (allClearings.size()>=6) return;
+		
+		int side = 0;
+		if (activeTile.isDarkSideUp()) {
+			side = 1;
+		}
+		ArrayList<Integer> allClearingsNums = new ArrayList<>();
+		int num = 1;
+		for (ClearingDetail cl : allClearings) {
+			allClearingsNums.add(cl.getNum());
+		}
+		while (num<=6) {
+			if (!allClearingsNums.contains(num)) break;
+			num++;
+		}
+		
+		allClearings.add(new ClearingDetail(activeTile,num,"normal",new Point(50,50),side));
+		activeTile.setClearingDetail(allClearings);
+		
+		clearingList.clearSelection();
+		updateClearingList();
+		activeTile.repaint();
+		activeTile.didChange();
+		updateControls();
+	}
+	public void removeClearing() {
+		if (activeTile == null) return;
+		ClearingDetail selected = clearingList.getSelectedValue();
+		if (selected == null) return;
+		
+		ArrayList<ClearingDetail> allClearings = (ArrayList<ClearingDetail>) activeTile.getClearingDetail();
+		for (ClearingDetail cl : allClearings) {
+			if (cl.getNum()==selected.getNum()) {
+				allClearings.remove(cl);
+				break;
+			}
+		}
+		ArrayList<PathDetail> paths = new ArrayList<>(activeTile.getPathDetail());
+		ArrayList<PathDetail> validPaths = new ArrayList<>();
+		for (PathDetail path : paths) {
+			if (path.getTo().getNum()!=selected.getNum() && path.getFrom().getNum()!=selected.getNum()) {
+				validPaths.add(path);
+			}
+		}
+		
+		activeTile.setClearingDetail(allClearings);
+		activeTile.setPathDetail(validPaths);
+		clearingList.clearSelection();
+		updateClearingList();
+		updatePathList();
+		activeTile.repaint();
+		activeTile.didChange();
+		updateControls();
 	}
 	public void updatePathList() {
 		updatePathList(-1);
