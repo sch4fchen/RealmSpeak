@@ -571,31 +571,23 @@ public class GameData extends ModifyableObject implements Serializable {
 		game.setAttribute(new Attribute("file_version","1.0"));
 		game.setAttribute(new Attribute("name",gameName));
 		game.setAttribute(new Attribute("description",gameDesc==null?"":gameDesc));
-		game.setAttribute(new Attribute("scenarioDescription",scenarioDesc==null?"":scenarioDesc));
+		if (scenarioDesc!=null && !scenarioDesc.isEmpty()) {
+			game.setAttribute(new Attribute("scenarioDescription",scenarioDesc==null?"":scenarioDesc));
+		}
 		if (scenarioRandomGoldSpecialPlacement) {
 			game.setAttribute(new Attribute("scenarioRandomGoldSpecialPlacement","true"));
-		} else {
-			game.setAttribute(new Attribute("scenarioRandomGoldSpecialPlacement","false"));
 		}
 		if (scenarioRegenerateRandomNumbers) {
 			game.setAttribute(new Attribute("scenarioRegenerateRandomNumbers","true"));
-		} else {
-			game.setAttribute(new Attribute("scenarioRegenerateRandomNumbers","false"));
 		}
 		if (scenarioAddNewQuests) {
 			game.setAttribute(new Attribute("scenarioAddNewQuests","true"));
-		} else {
-			game.setAttribute(new Attribute("scenarioAddNewQuests","false"));
 		}
 		if (scenarioRebuildQuestDeck) {
 			game.setAttribute(new Attribute("scenarioRebuildQuestDeck","true"));
-		} else {
-			game.setAttribute(new Attribute("scenarioRebuildQuestDeck","false"));
 		}
 		if (scenarioShuffleQuestDeck) {
 			game.setAttribute(new Attribute("scenarioShuffleQuestDeck","true"));
-		} else {
-			game.setAttribute(new Attribute("scenarioShuffleQuestDeck","false"));
 		}
 		if (!ignoreRandomSeed && RandomNumber.hasBeenInitialized()) {
 			game.setAttribute(new Attribute("_rseed",String.valueOf(RandomNumber.getSeed())));

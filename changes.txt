@@ -1,6 +1,8 @@
 Version 1.1.6.7
 QUEST UPDATE:
 #Update to quest A19 Mapmaker Deep Woods
+#Update to quest A27 Quest Fountain Youth
+#Update to quest A37 Haunted Hero
 #Update to quest Q41 Rescue Poetess
 NEW FEATURES:
 # Support for water clearings
