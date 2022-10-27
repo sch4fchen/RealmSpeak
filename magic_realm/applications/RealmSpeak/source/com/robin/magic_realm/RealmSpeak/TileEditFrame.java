@@ -963,6 +963,7 @@ public class TileEditFrame extends JFrame {
 		return false;
 	}
 	private void updateGameData(GameData data) {
+		data.ignoreRandomSeed = true;
 		this.data = data;
 	}
 	
@@ -979,6 +980,7 @@ public class TileEditFrame extends JFrame {
 		else {
 			data.loadFromPath(dataFilename);
 		}
+		data.ignoreRandomSeed = true;
 	
 		new TileEditFrame(data).setVisible(true);
 	}
