@@ -64,10 +64,9 @@ public class QuestRewardSpellFromSite extends QuestReward {
 			selected = chooser.getFirstSelectedComponent().getGameObject();
 		}
 		
-		ArrayList hold = selected.getHold();
+		ArrayList<GameObject> hold = selected.getHold();
 		ArrayList<GameObject> learnable = new ArrayList<GameObject>();
-		for(Object o:hold) {
-			GameObject spell = (GameObject)o;
+		for(GameObject spell:hold) {
 			if (character.canLearn(spell)) {
 				learnable.add(spell);
 			}
@@ -91,7 +90,7 @@ public class QuestRewardSpellFromSite extends QuestReward {
 				RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,getTitleForDialog()+" Which spell?",false);
 				chooser.addGameObjects(learnable,true);
 				chooser.setVisible(true);
-				chooser.getFirstSelectedComponent().getGameObject();
+				spell = chooser.getFirstSelectedComponent().getGameObject();
 				break;
 		}		
 		if (spell!=null) { // shouldn't ever be null

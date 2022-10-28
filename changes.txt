@@ -12,6 +12,7 @@ NEW FEATURES:
 # TileEditor: Functionality for adding and removing a clearing
 BUGS/ISSUES:
 # Fix "Reset" button for random assignment to hirelings
+# Fix QuestRewardSpellFromSite when choosing a spell
 
 Version 1.1.6.6
 QUEST UPDATE:
