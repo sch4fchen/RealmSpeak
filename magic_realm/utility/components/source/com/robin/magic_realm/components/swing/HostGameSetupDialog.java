@@ -1136,6 +1136,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	private void setupDefaultCommunityRules() {
 		setupDefaults();
 		gameVariants[2].setSelected(true);
+		startingSeason.setSelectedIndex(1);		
 		includeNewSpells.setSelected(true);
 		includeNewSpells2.setSelected(true);
 		questQtrOption.setSelected(true,false);
