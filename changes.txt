@@ -5,6 +5,7 @@ QUEST UPDATE:
 #Update to quest A37 Haunted Hero
 #Update to quest A38 Mouldy Skeleton
 #Update to quest A39 Demons Devil
+#Update to quest A77 Sword Terror
 #Update to quest Q41 Rescue Poetess
 NEW FEATURES:
 # Support for water clearings
