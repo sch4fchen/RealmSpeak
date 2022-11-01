@@ -6721,7 +6721,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (current != null && current.clearing != null) {
 			ArrayList<RealmComponent> clearingComponents = current.clearing.getClearingComponents();
 			for (RealmComponent monster : clearingComponents) {
-				if (monster.isCharacter()||!monster.isMonster()) continue;
+				if (!monster.isMonster()) continue;
 				ArrayList<RealmComponent> characterCanControl = new ArrayList<>();
 				for (RealmComponent characterRc : clearingComponents) {
 					if (!characterRc.isCharacter()) continue;

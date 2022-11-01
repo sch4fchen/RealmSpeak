@@ -88,7 +88,7 @@ public class BattlesWrapper extends GameObjectWrapper {
 			
 			ArrayList<RealmComponent> combatants = tl.clearing.getClearingComponents();
 			for (RealmComponent monster : combatants) {
-				if (monster.isCharacter()||!monster.isMonster()) continue;
+				if (!monster.isMonster()) continue;
 				ArrayList<RealmComponent> characterCanControl = new ArrayList<>();
 				for (RealmComponent characterRc : combatants) {
 					if (!characterRc.isCharacter()) continue;
