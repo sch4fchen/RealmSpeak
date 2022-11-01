@@ -116,6 +116,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	protected JLabel optionalWeatherWarning;
 	
 	protected JButton defaultButton;
+	protected JButton defaultCommunityButton;
 	
 	public void loadPrefsFromData() {
 		loadingPrefs = true;
@@ -515,6 +516,14 @@ public class HostGameSetupDialog extends AggressiveDialog {
 					}
 				});
 			box.add(defaultButton);
+			defaultCommunityButton = new JButton("Community Defaults");
+			defaultCommunityButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					setupDefaultCommunityRules();
+					madeChanges();
+				}
+			});
+			box.add(defaultCommunityButton);
 			box.add(Box.createHorizontalGlue());
 			if (editMode) {
 					cancel = new JButton("Cancel");
@@ -580,7 +589,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		timeLimitLine.add(new JLabel("# of Months:"));
 		timeLimitLine.add(Box.createHorizontalStrut(5));
 		numberMonthsToPlay = notifier.getIntegerField();
-		ComponentTools.lockComponentSize(numberMonthsToPlay,50,20);
+		ComponentTools.lockComponentSize(numberMonthsToPlay,45,20);
 		timeLimitLine.add(numberMonthsToPlay);
 		timeLimitLine.add(Box.createHorizontalGlue());
 		fixedVps = notifier.getCheckBox("Custom amount of VPs ");
@@ -1094,6 +1103,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		gameVariants[0].setSelected(true);
 		numberMonthsToPlay.setText("1");
 		disableBattles.setSelected(false);
+		disableSummoning.setSelected(false);
 		autosaveEnabled.setSelected(true);
 		boardAutoSetup.setSelected(true);
 		alternativeTilesEnabled.setSelected(false);
@@ -1123,6 +1133,38 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		updateWarnings();
 		loadingPrefs = false;
 	}
+	private void setupDefaultCommunityRules() {
+		setupDefaults();
+		gameVariants[2].setSelected(true);
+		includeNewSpells.setSelected(true);
+		includeNewSpells2.setSelected(true);
+		questQtrOption.setSelected(true,false);
+		//enable optional rules
+		optionPane.setOption(Constants.ADV_SERIOUS_WOUNDS,true);
+		optionPane.setOption(Constants.ADV_AMBUSHES,true);
+		optionPane.setOption(Constants.ADV_FLYING_ACTIVITIES,true);
+		optionPane.setOption(Constants.ADV_CACHING,true);
+		optionPane.setOption(Constants.ADV_DROPPING,true);
+		optionPane.setOption(Constants.TE_WATCHFUL_NATIVES,true);
+		optionPane.setOption(Constants.TE_EXTENDED_TREACHERY,true);
+		optionPane.setOption(Constants.OPT_GRUDGES,true);
+		optionPane.setOption(Constants.TE_EXTENDED_GRUDGES,true);
+		optionPane.setOption(Constants.OPT_COMMERCE,true);
+		optionPane.setOption(Constants.OPT_FUMBLE,true);
+		optionPane.setOption(Constants.OPT_STUMBLE,true);
+		optionPane.setOption(Constants.OPT_PENETRATING_ARMOR,true);
+		optionPane.setOption(Constants.EXP_CUSTOM_CHARS,true);
+		
+		optionPane.setOption(Constants.HOUSE1_CHIT_REMAIN_FACE_UP,true);
+		optionPane.setOption(Constants.HOUSE2_NO_SPELL_LIMIT,true);
+		optionPane.setOption(Constants.HOUSE2_NATIVES_REMEMBER_DISCOVERIES,true);
+		optionPane.setOption(Constants.HOUSE2_NATIVES_FRIENDLY,true);
+		optionPane.setOption(Constants.HOUSE3_SNOW_HIDE_EXCLUDE_CAVES,true);
+		optionPane.setOption(Constants.RANDOM_ON_THE_FLY,true);
+		
+		updateWarnings();
+	}
+	
 	public static int readInt(String val) {
 		try {
 			Integer n = Integer.valueOf(val);

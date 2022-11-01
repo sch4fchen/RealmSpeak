@@ -12,6 +12,7 @@ NEW FEATURES:
 # BattleBuilder: Option to toggle chit to berserk
 # TileEditor: Functionality for adding and removing a clearing
 # Realm GM: Option for clearing owner of hired/controlled denizen
+# New Game Options menu: button for selecting "community default" rule set
 BUGS/ISSUES:
 # Charging a character now un-hides targeted character
 # Fix game crash when recording invalid rest phase
