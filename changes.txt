@@ -17,6 +17,7 @@ BUGS/ISSUES:
 # Fix game crash when recording invalid rest phase
 # Fix "Reset" button for random assignment to hirelings
 # Fix QuestRewardSpellFromSite when choosing a spell
+# Fix MonsterControl to apply for other monsters
 
 Version 1.1.6.6
 QUEST UPDATE:
