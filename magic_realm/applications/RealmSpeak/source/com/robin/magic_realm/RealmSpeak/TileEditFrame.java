@@ -68,6 +68,7 @@ public class TileEditFrame extends JFrame {
 	protected boolean editClearing = false;
 	protected boolean editPath = false;
 	
+	protected JLabel nameLabel;
 	protected JLabel changeWarningLabel;
 	
 	protected JPanel clearingView;
@@ -144,7 +145,6 @@ public class TileEditFrame extends JFrame {
 		sp = new JScrollPane(tileList);
 		ComponentTools.lockComponentSize(sp,200,100);
 		getContentPane().add(sp,"West");
-		
 			JPanel editPanel = new JPanel(new GridLayout(2,1));
 				JPanel clearingEditPanel = new JPanel(new BorderLayout());
 				clearingEditPanel.add(new JLabel("CLEARINGS:"),"North");
@@ -386,11 +386,15 @@ public class TileEditFrame extends JFrame {
 					});
 				box.add(flipButton);
 				box.add(Box.createHorizontalGlue());
-				changeWarningLabel = new JLabel("Tile has changes!");
+				nameLabel = new JLabel("",SwingConstants.CENTER);
+				changeWarningLabel = new JLabel("Tile has changes!",SwingConstants.CENTER);
 				changeWarningLabel.setFont(new Font("Dialog",Font.BOLD,18));
 				changeWarningLabel.setForeground(Color.red);
 				changeWarningLabel.setVisible(false);
-				box.add(changeWarningLabel);
+				JPanel namePanel = new JPanel(new GridLayout(2,1));
+				namePanel.add(nameLabel);
+				namePanel.add(changeWarningLabel);
+				box.add(namePanel);
 				box.add(Box.createHorizontalGlue());
 					toggleDetailButton = new JButton("Toggle Detail");
 					toggleDetailButton.addActionListener(new ActionListener() {
@@ -483,6 +487,9 @@ public class TileEditFrame extends JFrame {
 		updateClearingButtons();
 		updatePathButtons();
 		changeWarningLabel.setVisible(activeTile!=null && activeTile.isChanged());
+		if (activeTile!=null) {
+			nameLabel.setText(activeTile+" ("+activeTile.getGameObject().getThisAttribute("code")+")"+" - Type: "+activeTile.getGameObject().getThisAttribute("tile_type"));
+		}
 		
 		saveButton.setEnabled(changed);
 		applyButton.setEnabled(activeTile!=null && activeTile.isChanged());
