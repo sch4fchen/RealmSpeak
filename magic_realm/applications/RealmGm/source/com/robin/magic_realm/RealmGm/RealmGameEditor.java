@@ -77,6 +77,7 @@ public class RealmGameEditor extends JInternalFrame {
 	private Action toggleHiddenAction;
 	private Action toggleBlockedAction;
 	private Action hireAction;
+	private Action unhireAction;
 	private Action makePeaceAction;
 	
 	// Locations
@@ -592,6 +593,19 @@ public class RealmGameEditor extends JInternalFrame {
 			}
 		};
 		box.add(new JButton(hireAction));
+		unhireAction = new AbstractAction("Clear Owner") {
+			public void actionPerformed(ActionEvent ev) {
+				for (RealmComponent rc:getSelectedComponents()) {
+					RealmComponent owner = rc.getOwner();
+					if (owner.isCharacter()) {
+						(new CharacterWrapper(owner.getGameObject())).removeHireling(rc.getGameObject());
+					}
+				}
+				locationTable.revalidate();
+				locationTable.repaint();
+			};
+		};
+		box.add(new JButton(unhireAction));
 		makePeaceAction = new AbstractAction("Make Peace") {
 			public void actionPerformed(ActionEvent ev) {
 				for (RealmComponent rc:getSelectedComponents()) {
@@ -909,6 +923,7 @@ public class RealmGameEditor extends JInternalFrame {
 		toggleHiddenAction.setEnabled(faunaCount>0);
 		toggleBlockedAction.setEnabled(faunaCount>0);
 		hireAction.setEnabled(faunaCount>0);
+		unhireAction.setEnabled(faunaCount>0);
 		
 		setupCardAction.setEnabled(totalCount>0);
 		toClearingAction.setEnabled(totalCount>0);

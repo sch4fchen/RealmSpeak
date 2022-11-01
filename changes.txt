@@ -11,6 +11,7 @@ NEW FEATURES:
 # Support for water clearings
 # BattleBuilder: Option to toggle chit to berserk
 # TileEditor: Functionality for adding and removing a clearing
+# Realm GM: Option for clearing owner of hired/controlled denizen
 BUGS/ISSUES:
 # Charging a character now un-hides targeted character
 # Fix game crash when recording invalid rest phase

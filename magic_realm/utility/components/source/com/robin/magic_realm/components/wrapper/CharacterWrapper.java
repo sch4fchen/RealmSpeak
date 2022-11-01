@@ -6721,11 +6721,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (current != null && current.clearing != null) {
 			ArrayList<RealmComponent> clearingComponents = current.clearing.getClearingComponents();
 			for (RealmComponent monster : clearingComponents) {
-				if (monster.isCharacter()) continue;
+				if (monster.isCharacter() || !monster.isMonster()) continue;
 				ArrayList<RealmComponent> characterCanControl = new ArrayList<>();
 				for (RealmComponent characterRc : clearingComponents) {
 					if (!characterRc.isCharacter()) continue;
-						for (Object monsterType : characterRc.getControllableMonstersEnhanced() ) {
+						for (String monsterType : characterRc.getControllableMonstersEnhanced() ) {
 							if (monster.toString().matches(monsterType.toString()+".*")) {
 								if (!characterCanControl.contains(characterRc)) {
 									characterCanControl.add(characterRc);
