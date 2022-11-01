@@ -2031,6 +2031,10 @@ public class CombatFrame extends JFrame {
 				activeCharacter.setHidden(false);
 				CombatFrame.broadcastMessage(activeCharacter.getGameObject().getName(),"Is unhidden!");
 			}
+			if (charged.isCharacter() && charged.isHidden()) {
+				charged.setHidden(false);
+				CombatFrame.broadcastMessage(activeCharacter.getGameObject().getName(),"Is unhidden!");
+			}
 			RealmComponent rc = activator.getSelectedMoveChit();
 			CombatWrapper chargedWrap = new CombatWrapper(charged.getGameObject());
 			chargedWrap.addChargeChit(rc.getGameObject());
