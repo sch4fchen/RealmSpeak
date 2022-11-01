@@ -1,6 +1,5 @@
 Super Realm Parry (and 1st Ed.): 8.10.7 p. 984
 	---:::FEATURES:::---
-SuperRealm: Items, Artifacts, Spells
 Quest: option add icon for minor character
 "TODO" in code (found by search)
 0001828: Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.

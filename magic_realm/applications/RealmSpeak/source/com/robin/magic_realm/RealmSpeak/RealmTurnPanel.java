@@ -247,7 +247,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 				String action = actions.get(i);
 				String actionTypeCode = actionTypeCodes.get(i);
 				ActionRow ar = initActionRow(action,actionTypeCode);
-				if (actionTypeValids.get(i) == "F") {
+				if (actionTypeValids.get(i) == "F" && ar!=null) {
 					ar.setInvalidPlannedPhase();
 				}
 				if (ar!=null && !ar.isFollow()) {

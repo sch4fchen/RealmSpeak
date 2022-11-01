@@ -13,6 +13,7 @@ NEW FEATURES:
 # TileEditor: Functionality for adding and removing a clearing
 BUGS/ISSUES:
 # Charging a character now un-hides targeted character
+# Fix game crash when recording invalid rest phase
 # Fix "Reset" button for random assignment to hirelings
 # Fix QuestRewardSpellFromSite when choosing a spell
 
