@@ -32693,11 +32693,11 @@
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="48.5,84.3" />
-        <attribute clearing_1_type="normal" />
+        <attribute clearing_1_type="water" />
         <attribute clearing_1_xy="32.0,65.7" />
         <attribute clearing_2_type="normal" />
         <attribute clearing_2_xy="68.1,62.9" />
-        <attribute clearing_4_type="normal" />
+        <attribute clearing_4_type="water" />
         <attribute clearing_4_xy="53.0,21.2" />
         <attribute clearing_5_type="normal" />
         <attribute clearing_5_xy="25.0,32.8" />
