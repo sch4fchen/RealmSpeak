@@ -523,7 +523,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 					madeChanges();
 				}
 			});
-			box.add(defaultCommunityButton);
+			//box.add(defaultCommunityButton);
 			box.add(Box.createHorizontalGlue());
 			if (editMode) {
 					cancel = new JButton("Cancel");
