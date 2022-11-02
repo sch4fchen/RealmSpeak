@@ -9,7 +9,6 @@ QUEST UPDATE:
 #Update to quest Q41 Rescue Poetess
 NEW FEATURES:
 # Support for water clearings
-# New Game Options menu: button for selecting "community default" rule set
 # BattleBuilder: Option to toggle chit to berserk
 # Realm GM: Option for clearing owner of hired/controlled denizen
 # TileEditor: Functionality for adding and removing a clearing
