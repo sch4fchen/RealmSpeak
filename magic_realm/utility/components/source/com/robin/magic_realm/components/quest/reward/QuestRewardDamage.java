@@ -24,7 +24,8 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRewardDamage extends QuestReward {
 	public static final String DAMAGE_TYPE = "_dt";
-	public static final String AMOUNT = "_am";	
+	public static final String AMOUNT = "_am";
+	public static final String INCLUDE_FOLLOWERS = "_if";	
 	
 	public QuestRewardDamage(GameObject go) {
 		super(go);
@@ -34,10 +35,10 @@ public class QuestRewardDamage extends QuestReward {
 		DamageType type = getDamageType();
 		switch (type) {
 		case WeatherFatigue:
-			character.setWeatherFatigue(getAmount());
+			character.setWeatherFatigue(getAmount(),includeFollowers());
 			break;
 		case Wounds:
-			character.setExtraWounds(getAmount());
+			character.setExtraWounds(getAmount(),includeFollowers());
 			break;
 		}	
 		return;
@@ -57,5 +58,9 @@ public class QuestRewardDamage extends QuestReward {
 	
 	private int getAmount() {
 		return getInt(AMOUNT);
+	}
+	
+	private boolean includeFollowers() {
+		return getBoolean(INCLUDE_FOLLOWERS);
 	}
 }

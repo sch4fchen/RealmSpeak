@@ -2988,14 +2988,19 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 	}
 	public void setWeatherFatigue(int val) {
+		setWeatherFatigue(val,true);
+	}
+	public void setWeatherFatigue(int val,boolean includeFollowers) {
 		if (isCharacter() && !hasActiveInventoryThisKey(Constants.NO_FATIGUE) && !getGameObject().hasThisAttribute(Constants.NO_WEATHER_FATIGUE)) {
 			if (getTransmorph()==null) {
 				setInt(WEATHER_FATIGUE,val);
 			}
 		}
-		for (CharacterWrapper follower:getActionFollowers()) {
-			if (follower.isCharacter()) {
-				follower.setWeatherFatigue(follower.getWeatherFatigue()+1);
+		if(includeFollowers) {
+			for (CharacterWrapper follower:getActionFollowers()) {
+				if (follower.isCharacter()) {
+					follower.setWeatherFatigue(follower.getWeatherFatigue()+1);
+				}
 			}
 		}
 	}
@@ -3003,10 +3008,15 @@ public class CharacterWrapper extends GameObjectWrapper {
 		removeAttribute(WEATHER_FATIGUE);
 	}
 	public void setExtraWounds(int val) {
+		setWeatherFatigue(val,true);
+	}
+	public void setExtraWounds(int val,boolean includeFollowers) {
 		setInt(EXTRA_WOUNDS,val);
-		for (CharacterWrapper follower:getActionFollowers()) {
-			if (follower.isCharacter()) {
-				follower.setExtraWounds(val);
+		if(includeFollowers) {
+			for (CharacterWrapper follower:getActionFollowers()) {
+				if (follower.isCharacter()) {
+					follower.setExtraWounds(val);
+				}
 			}
 		}
 	}

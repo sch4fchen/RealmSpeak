@@ -119,6 +119,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case Damage:
 				list.add(new QuestPropertyBlock(QuestRewardDamage.DAMAGE_TYPE, "Damage Type", FieldType.StringSelector, DamageType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardDamage.AMOUNT, "Amount", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRewardDamage.INCLUDE_FOLLOWERS, "Include followers", FieldType.Boolean));
 				break;
 			case DamageChit:
 				list.add(new QuestPropertyBlock(QuestRewardDamageChit.DAMAGE_TYPE, "Damage Type", FieldType.StringSelector, DamageType.values()));
