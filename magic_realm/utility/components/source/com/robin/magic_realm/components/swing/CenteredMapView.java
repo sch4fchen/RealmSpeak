@@ -1361,6 +1361,10 @@ public class CenteredMapView extends JComponent {
 				removeTile.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent ev) {
 						if (tileLocation==null || tileLocation.tile instanceof EmptyTileComponent) return;
+						if (tileLocation.tile.toString().matches("Borderland")) {
+							JOptionPane.showConfirmDialog(null, "Borderland cannot be removed!", "Removing Tile", JOptionPane.DEFAULT_OPTION);
+							return;
+						}
 						GameObject tileGo = tileLocation.tile.getGameObject();
 						String position = tileGo.getAttribute(Tile.MAP_GRID,Tile.MAP_POSITION);
 						int x = Integer.parseInt(position.split(",")[0]);
@@ -1368,6 +1372,7 @@ public class CenteredMapView extends JComponent {
 						Point point = new Point(x,y);
 						mapGrid.remove(point);
 						tileGo.removeAttribute(Tile.MAP_GRID,Tile.MAP_POSITION);
+						tileGo.removeThisAttribute(ClearingDetail.BL_CONNECT);
 						currentTileLocation = null;
 						rebuildFromScratch();
 						updateGrid();
@@ -1391,10 +1396,10 @@ public class CenteredMapView extends JComponent {
 					public void actionPerformed(ActionEvent ev) {
 						GameObject tile = chooseTileToCopy();
 						if (tile == null) return;
-						tile.setThisAttribute("tile");
+						GameObject go = gameData.createNewObject(tile);
+						go.setThisAttribute("tile");
 						HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
-						tile.setThisAttribute(hostPrefs.getGameKeyVals());
-						gameData.createNewObject(tile);
+						go.setThisAttribute(hostPrefs.getGameKeyVals());
 					}
 				});
 				add(addTileToGame);
@@ -1407,6 +1412,7 @@ public class CenteredMapView extends JComponent {
 							JOptionPane.showConfirmDialog(null, "Borderland cannot be removed!", "Removing Tile", JOptionPane.DEFAULT_OPTION);
 							return;
 						}
+						tile.removeThisAttribute(ClearingDetail.BL_CONNECT);
 						for (GameObject hold : tile.getHold()) {
 							tile.remove(hold);
 						}
@@ -1653,21 +1659,6 @@ public class CenteredMapView extends JComponent {
 				Point gp = findGridPos(placement);
 				addPlacementToMap(gp);
 			}
-//			else {
-//				// Report why not
-//				Point gp = findGridPos(placement);
-//				Tile tile = new Tile(tileBeingPlaced.getGameObject());
-//				Tile.debug = true;
-//				boolean valid = Tile.isMappingPossibility(planningMapGrid,tile,gp,tileBeingPlaced.getRotation());
-//				Tile.debug = false;
-//				System.out.println("Final result = "+valid);
-//				
-//				System.out.println("gp = "+gp);
-//				
-//				System.out.println("gp adj 0 = "+Tile.getAdjacentPosition(gp,0));
-//				
-//				System.out.println(planningMapGrid);
-//			}
 		}
 	}
 	public ArrayList<ClearingDetail> getAllOccupiedClearings() {

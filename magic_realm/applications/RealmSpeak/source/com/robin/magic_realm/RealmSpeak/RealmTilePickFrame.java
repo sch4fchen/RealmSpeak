@@ -306,7 +306,6 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 	
 	private void doRandomPlace() {
 		tilePickTable.clearSelection();
-//		for (int i=0;i<10;i++) // FIXME Debugging
 		if (solePlayerIndex>=0) {
 			ArrayList<GameObject> list = new ArrayList<>();
 			list.add(tilesToAdd.get(solePlayerIndex));
