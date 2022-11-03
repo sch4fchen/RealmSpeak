@@ -206,6 +206,9 @@ public class PathDetail implements Comparable {
 	public boolean isHidden() {
 		return type.equals("hidden");
 	}
+	public boolean isRiver() {
+		return type.equals("river");
+	}
 	public Color getColor() {
 		if (type.equals("caves")) {
 			return Color.black;
@@ -215,6 +218,9 @@ public class PathDetail implements Comparable {
 		}
 		else if (type.equals("hidden")) {
 			return MagicRealmColor.BROWN;
+		}
+		else if (type.equals("river")) {
+			return MagicRealmColor.BLUE;
 		}
 		return MagicRealmColor.TAN;
 	}
