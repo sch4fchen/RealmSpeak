@@ -35,6 +35,7 @@ public class QuestRequirementInventory extends QuestRequirementLoot {
 	public static final String ITEM_ACTIVE = "_iact";
 	public static final String ITEM_DEACTIVE = "_idact";
 	public static final String REQ_MARK = "_req_mark";
+	public static final String EXACT_NUMBER = "_exact_num";
 
 	public QuestRequirementInventory(GameObject go) {
 		super(go);
@@ -71,8 +72,15 @@ public class QuestRequirementInventory extends QuestRequirementLoot {
 				}
 			}
 			
-			if (found>=n) {
-				return true;
+			if (mustBeExactTheNumber()) {
+				if (found==n) {
+					return true;
+				}
+			}
+			else {
+				if (found>=n) {
+					return true;
+				}
 			}
 		}
 		logger.fine("Only "+found+" items were found, when "+n+" was expected.");
@@ -117,5 +125,8 @@ public class QuestRequirementInventory extends QuestRequirementLoot {
 	}
 	public boolean mustBeDeactive() {
 		return getBoolean(ITEM_DEACTIVE);
+	}
+	public boolean mustBeExactTheNumber() {
+		return getBoolean(EXACT_NUMBER);
 	}
 }

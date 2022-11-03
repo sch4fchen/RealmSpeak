@@ -1,5 +1,6 @@
 Version 1.1.6.7
 QUEST UPDATE:
+# QuestRequirementInventory: Option to require the exact amount of items
 # QuestRewardDamage: Option to apply damage to followers (default: off)
 # Update to quest A19 Mapmaker Deep Woods
 # Update to quest A27 Quest Fountain Youth
