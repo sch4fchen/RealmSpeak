@@ -221,6 +221,9 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardMarkItem.ITEM_CHITTYPES, "Item Type Restriction", FieldType.ChitType));
 				list.add(new QuestPropertyBlock(QuestRewardMarkItem.ITEM_INVENTORY, "In character's inventory", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkItem.SINGLE_ITEM, "Character must choose single item", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkItem.REMOVE, "Remove mark", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkItem.ITEM_ACTIVE, "Must be activated?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkItem.ITEM_DEACTIVE, "Must be deactivated?", FieldType.Boolean));
 				break;
 			case MinorCharacter:
 				list.add(new QuestPropertyBlock(QuestRewardMinorCharacter.MINOR_CHARACTER, "Minor character ", FieldType.SmartTextLine, quest.getMinorCharacters().toArray()));
