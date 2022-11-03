@@ -305,7 +305,7 @@ public class ClearingDetail {
 			for (ClearingDetail clearing : waterClearingsToCheck) {
 				Collection<PathDetail> c = clearing.getAllConnectedPaths();
 				for (PathDetail path : c) {
-					if (path.getTo().isWater() && !touchedWaterClearings.contains(path.getTo())) {
+					if (path.getTo().isWater() && path.getType().matches("river") && !touchedWaterClearings.contains(path.getTo())) {
 						if (path.getTo().parent.getGameObject().getThisAttribute("water_source_clearing").matches(path.getTo().getNumString())) {
 							return distance;
 						}
