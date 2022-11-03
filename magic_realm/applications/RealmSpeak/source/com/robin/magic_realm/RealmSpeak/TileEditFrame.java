@@ -98,8 +98,9 @@ public class TileEditFrame extends JFrame {
 				protected JRadioButton hiddenPathType;
 				protected JRadioButton secretPathType;
 				protected JRadioButton cavePathType;
-				protected JButton addPathButton;
-				protected JButton removePathButton;
+				protected JRadioButton riverPathType;
+			protected JButton addPathButton;
+			protected JButton removePathButton;
 			protected JButton moveUp;
 			protected JButton moveDn;
 			protected JButton clearArc;
@@ -293,8 +294,8 @@ public class TileEditFrame extends JFrame {
 					ComponentTools.lockComponentSize(sp,220,100);
 				pathEditPanel.add(sp,"Center");
 					pathControls = new JPanel(new BorderLayout());
-						JPanel pathButtons = new JPanel(new GridLayout(3,2));
-							pathTypeGroup = new ButtonGroup();
+						JPanel pathTypeButtons = new JPanel(new GridLayout(2,3));
+						pathTypeGroup = new ButtonGroup();
 								normalPathType = new JRadioButton("Normal");
 								normalPathType.addActionListener(new ActionListener() {
 									public void actionPerformed(ActionEvent ev) {
@@ -302,7 +303,7 @@ public class TileEditFrame extends JFrame {
 									}
 								});
 							pathTypeGroup.add(normalPathType);
-							pathButtons.add(normalPathType);
+							pathTypeButtons.add(normalPathType);
 								hiddenPathType = new JRadioButton("Hidden");
 								hiddenPathType.addActionListener(new ActionListener() {
 									public void actionPerformed(ActionEvent ev) {
@@ -310,7 +311,7 @@ public class TileEditFrame extends JFrame {
 									}
 								});
 							pathTypeGroup.add(hiddenPathType);
-							pathButtons.add(hiddenPathType);
+							pathTypeButtons.add(hiddenPathType);
 								secretPathType = new JRadioButton("Secret");
 								secretPathType.addActionListener(new ActionListener() {
 									public void actionPerformed(ActionEvent ev) {
@@ -318,7 +319,7 @@ public class TileEditFrame extends JFrame {
 									}
 								});
 							pathTypeGroup.add(secretPathType);
-							pathButtons.add(secretPathType);
+							pathTypeButtons.add(secretPathType);
 								cavePathType = new JRadioButton("Caves");
 								cavePathType.addActionListener(new ActionListener() {
 									public void actionPerformed(ActionEvent ev) {
@@ -326,35 +327,27 @@ public class TileEditFrame extends JFrame {
 									}
 								});
 							pathTypeGroup.add(cavePathType);
-							pathButtons.add(cavePathType);
-								addPathButton = new JButton("Add");
-								addPathButton.addActionListener(new ActionListener() {
-									public void actionPerformed(ActionEvent ev) {
-										addPath();
-									}
-								});
-							pathTypeGroup.add(addPathButton);
-							pathButtons.add(addPathButton);
-								removePathButton = new JButton("Remove");
-								removePathButton.addActionListener(new ActionListener() {
-									public void actionPerformed(ActionEvent ev) {
-										removePath();
-									}
-								});
-							pathTypeGroup.add(removePathButton);
-							pathButtons.add(removePathButton);
-					pathControls.add(pathButtons,"Center");
-						box = Box.createHorizontalBox();
-							moveUp = new JButton("UP");
-							moveUp.addActionListener(new ActionListener() {
+							pathTypeButtons.add(cavePathType);
+							riverPathType = new JRadioButton("River");
+							riverPathType.addActionListener(new ActionListener() {
 								public void actionPerformed(ActionEvent ev) {
-									movePathUp();
+									updatePaths();
 								}
 							});
-							moveDn = new JButton("DOWN");
-							moveDn.addActionListener(new ActionListener() {
+							pathTypeGroup.add(riverPathType);
+							pathTypeButtons.add(riverPathType);
+					pathControls.add(pathTypeButtons,"Center");
+					JPanel pathEditButtons = new JPanel(new GridLayout(2,3));
+							addPathButton = new JButton("Add");
+							addPathButton.addActionListener(new ActionListener() {
 								public void actionPerformed(ActionEvent ev) {
-									movePathDown();
+									addPath();
+								}
+							});
+							removePathButton = new JButton("Remove");
+							removePathButton.addActionListener(new ActionListener() {
+								public void actionPerformed(ActionEvent ev) {
+									removePath();
 								}
 							});
 							clearArc = new JButton("ClearARC");
@@ -363,10 +356,24 @@ public class TileEditFrame extends JFrame {
 									addPathArcPoint(null);
 								}
 							});
-						box.add(moveUp);
-						box.add(moveDn);
-						box.add(clearArc);
-					pathControls.add(box,"South");
+							moveUp = new JButton("Up");
+							moveUp.addActionListener(new ActionListener() {
+								public void actionPerformed(ActionEvent ev) {
+									movePathUp();
+								}
+							});
+							moveDn = new JButton("Down");
+							moveDn.addActionListener(new ActionListener() {
+								public void actionPerformed(ActionEvent ev) {
+									movePathDown();
+								}
+							});
+						pathEditButtons.add(addPathButton);
+						pathEditButtons.add(removePathButton);
+						pathEditButtons.add(clearArc);
+						pathEditButtons.add(moveUp);
+						pathEditButtons.add(moveDn);
+					pathControls.add(pathEditButtons,"South");
 				pathEditPanel.add(pathControls,"South");
 			editPanel.add(pathEditPanel);
 		getContentPane().add(editPanel,"East");
@@ -702,6 +709,9 @@ public class TileEditFrame extends JFrame {
 				else if (type.equals("caves")) {
 					cavePathType.setSelected(true);
 				}
+				else if (type.equals("river")) {
+					riverPathType.setSelected(true);
+				}
 			}
 		}
 		
@@ -709,6 +719,7 @@ public class TileEditFrame extends JFrame {
 		hiddenPathType.setEnabled(activeTile!=null && selected!=null);
 		secretPathType.setEnabled(activeTile!=null && selected!=null);
 		cavePathType.setEnabled(activeTile!=null && selected!=null);
+		riverPathType.setEnabled(activeTile!=null && selected!=null);
 		
 		addPathButton.setEnabled(activeTile!=null);
 		removePathButton.setEnabled(activeTile!=null && selected!=null);
@@ -729,6 +740,9 @@ public class TileEditFrame extends JFrame {
 				}
 				else if (cavePathType.isSelected()) {
 					selected.setType("caves");
+				}
+				else if (riverPathType.isSelected()) {
+					selected.setType("river");
 				}
 				activeTile.repaint();
 				
