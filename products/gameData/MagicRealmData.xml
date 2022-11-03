@@ -32477,11 +32477,11 @@
         <attribute clearing_5_magic="R" />
         <attribute path_1_from="clearing_1" />
         <attribute path_1_to="NE" />
-        <attribute path_1_type="normal" />
+        <attribute path_1_type="river" />
         <attribute path_1_arc="83.2,28.4" />
         <attribute path_2_from="clearing_1" />
         <attribute path_2_to="clearing_4" />
-        <attribute path_2_type="normal" />
+        <attribute path_2_type="river" />
         <attribute path_2_arc="58.0,46.8" />
         <attribute path_3_from="clearing_2" />
         <attribute path_3_to="SE" />
@@ -32493,7 +32493,7 @@
         <attribute path_4_arc="54.2,42.6" />
         <attribute path_5_from="clearing_4" />
         <attribute path_5_to="NW" />
-        <attribute path_5_type="normal" />
+        <attribute path_5_type="river" />
         <attribute path_5_arc="22.5,27.5" />
         <attribute path_6_from="clearing_4" />
         <attribute path_6_to="SW" />
