@@ -334,16 +334,13 @@ if (debug) System.out.println(name+":"+clearingKey);
 			// Only need to test joins where there is a tile
 			if (adjTile!=null) {
 				if (tile.getPathState(edge)!=adjTile.getPathState((edge+3)%6)) {
-					if (debug) {
-						System.out.println(tile.name+" doesn't line up with "+adjTile.name);
-						System.out.println(tile.name+" path state for "+edge+" is "+tile.getPathState(edge));
-						System.out.println(adjTile.name+" path state for "+((edge+3)%6)+" is "+adjTile.getPathState((edge+3)%6));
-					}
-					return false; // if they don't line up, there is no need to continue here!!
-				}
-				if (tile.getClearingType(tile.side,edge) != null && tile.getClearingType(tile.side,edge).matches("water") && !tile.getClearingType(tile.side,edge).matches(adjTile.getClearingType(adjTile.side,(edge+3)%6))) {
 					return false;
 				}
+				ArrayList<String> pathsTypes = tile.getPathTypes(tile.side,(edge-rot+6)%6);
+				ArrayList<String> adjTilePathsTypes = adjTile.getPathTypes(adjTile.side,(edge+3-adjTile.getRotation()+6)%6);
+				if ((pathsTypes.contains("river") && !adjTilePathsTypes.contains("river")) || (adjTilePathsTypes.contains("river") && !pathsTypes.contains("river"))) {
+					return false;
+				}	
 			}
 		}
 		
@@ -380,11 +377,7 @@ if (debug) System.out.println(name+":"+clearingKey);
 		return !joinError;
 	}
 	
-	public String getClearingType(int side,int edge) {
-		String type = null;
-		ArrayList<String> clearings = (ArrayList<String>)paths[side].get(getEdgeName(edge));
-		if (clearings == null || clearings.size() != 1) return null;
-		
+	public ArrayList<String> getPathTypes(int side,int edge) {
 		String sideName; 
 		if (side == 0) {
 			sideName = "normal";
@@ -392,13 +385,24 @@ if (debug) System.out.println(name+":"+clearingKey);
 		else {
 			sideName = "enchanted";
 		}
-		
-		String clearingName = clearings.get(0);
-		String clearingNumber = clearingName.substring(clearingName.length()-1, clearingName.length()); 
+		String edgeName = getEdgeName(edge);
+		ArrayList<String> pathsTypes = new ArrayList<>();
+		int i=1;
 		Hashtable attributes = gameObject.getAttributeBlock(sideName);
-		String typeKey = "clearing_" + clearingNumber + "_type";
-		type = (String)attributes.get(typeKey);
-		return type;
+		while (true) {
+			if (attributes.get("path_"+i+"_type")!=null) {
+				String from = (String)attributes.get("path_"+i+"_from");
+				String to = (String)attributes.get("path_"+i+"_to");
+				if (from.matches(edgeName) || to.matches(edgeName)) {
+					pathsTypes.add((String)attributes.get("path_"+i+"_type"));
+				}
+				i++;
+			}
+			else {
+				break;
+			}
+		}
+		return pathsTypes;
 	}
 	
 	/**
