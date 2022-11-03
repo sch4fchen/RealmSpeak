@@ -516,14 +516,14 @@ public class HostGameSetupDialog extends AggressiveDialog {
 					}
 				});
 			box.add(defaultButton);
-			defaultCommunityButton = new JButton("Community Defaults");
+			defaultCommunityButton = new JButton("Advanced Questing the Realm");
 			defaultCommunityButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
 					setupDefaultCommunityRules();
 					madeChanges();
 				}
 			});
-			//box.add(defaultCommunityButton);
+			box.add(defaultCommunityButton);
 			box.add(Box.createHorizontalGlue());
 			if (editMode) {
 					cancel = new JButton("Cancel");
@@ -999,6 +999,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY,"PARRYING (1st Ed. and Super Realm Project) - A character can parry target's attack with a weapon.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY_LIKE_SHIELD,"PARRYING LIKE A SHIELD (Expansion 1) - A character can parry like with a shield other attacks with a weapon.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC (Super Realm Project) - A character with no active armor counters casting a spell may also use his staff to make a separate attack.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_NATIVES_FRIENDLY,"No attacking of friendly natives (Book of Learning) - FRIENDLY and ALLIED natives cannot be lured or targeted.",false));
 		
 		newOptionPane.setTabHtmlDescription(EXPANDING_REALM_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Expanding the Realm</font></body></html>");
 		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_CUSTOM_CHARS,"CUSTOM CHARACTERS - Allow players to choose from custom characters.",true,null,requiresDevelopmentRules));
@@ -1055,7 +1056,6 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_CAMPAIGN_DEBT,"Campaign Debt - Allows characters pick up campaign chit, even if it means they will have negative points.",false,overridesNoNegativePointsOrIgnoreCampaigns,null));
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_DAY_END_TRADING_ON,"Day End Trading ON - Day End Trading will be ON by default for all new characters.  This can still be turned off by individual characters, if desired.",false));
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_NO_NATIVES_BATTLING,"No natives battling - Unhired natives don't participate in combat.",false));
-		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_NATIVES_FRIENDLY,"No attacking of friendly natives (Book of Learning) - FRIENDLY and ALLIED natives cannot be lured or targeted.",false));
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_PEACE_WITH_NATURE_SITES,"Peace with Nature ability extends to site chits - When character with this ability ends his turn, the site chits in his tile do not summon monsters from the Chart of Appearances.",false));
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_MULTIPLE_SUMMONING,"Multiple Summoning - Allows chits to summon many times in a single round.",false));
 		
@@ -1085,6 +1085,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		smtpHost.setEnabled(emailNotification.isSelected());
 		testEmailButton.setEnabled(emailNotification.isSelected());
 		
+		vpEndlessOption.setEnabled(!questQtrOption.isSelected());
 		timeLimitLine.setVisible(vpTimedOption.isSelected());
 		vpAssignmentLine.setVisible((vpSuddenDeathOption.isSelected() || (vpTimedOption.isSelected() && fixedVps.isSelected() && !anyVpsAllowedOption.isSelected())) && !questBoqOption.isSelected());
 		anyVpsAllowedOption.setVisible((vpTimedOption.isSelected() || vpSuddenDeathOption.isSelected()) && !questBoqOption.isSelected());
@@ -1139,6 +1140,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		startingSeason.setSelectedIndex(1);		
 		includeNewSpells.setSelected(true);
 		includeNewSpells2.setSelected(true);
+		numberMonthsToPlay.setText("2");
 		questQtrOption.setSelected(true,false);
 		//enable optional rules
 		optionPane.setOption(Constants.ADV_SERIOUS_WOUNDS,true);
@@ -1150,16 +1152,28 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.TE_EXTENDED_TREACHERY,true);
 		optionPane.setOption(Constants.OPT_GRUDGES,true);
 		optionPane.setOption(Constants.TE_EXTENDED_GRUDGES,true);
+		optionPane.setOption(Constants.OPT_ENHANCED_MAGIC,true);
+		optionPane.setOption(Constants.TE_BENEVOLENT_SPELLS,true);
+		optionPane.setOption(Constants.OPT_ENHANCED_ARTIFACTS,true);
+		optionPane.setOption(Constants.OPT_POWER_OF_THE_PIT_ATTACK,true);
+		optionPane.setOption(Constants.OPT_POWER_OF_THE_PIT_DEMON,true);
+		optionPane.setOption(Constants.OPT_ENHANCED_ARTIFACTS,true);
+		optionPane.setOption(Constants.OPT_AUTOMATIC_ENCHANTING,true);
 		optionPane.setOption(Constants.OPT_COMMERCE,true);
 		optionPane.setOption(Constants.OPT_FUMBLE,true);
 		optionPane.setOption(Constants.OPT_STUMBLE,true);
+		optionPane.setOption(Constants.OPT_MISSILE,true);
 		optionPane.setOption(Constants.OPT_PENETRATING_ARMOR,true);
+		optionPane.setOption(Constants.OPT_NATIVES_FRIENDLY,true);
 		optionPane.setOption(Constants.EXP_CUSTOM_CHARS,true);
-		
+		optionPane.setOption(Constants.EXP_DEVELOPMENT,false);
+		optionPane.setOption(Constants.EXP_DEVELOPMENT_PLUS,true);
+		optionPane.setOption(Constants.EXP_MONSTER_DIE_PER_SET,true);
+		optionPane.setOption(Constants.EXP_BOUNTY_POINTS_FOR_DISCOVERIES,true);
+		optionPane.setOption(Constants.TE_KNIGHT_ADJUSTMENT,true);
 		optionPane.setOption(Constants.HOUSE1_CHIT_REMAIN_FACE_UP,true);
 		optionPane.setOption(Constants.HOUSE2_NO_SPELL_LIMIT,true);
 		optionPane.setOption(Constants.HOUSE2_NATIVES_REMEMBER_DISCOVERIES,true);
-		optionPane.setOption(Constants.HOUSE2_NATIVES_FRIENDLY,true);
 		optionPane.setOption(Constants.HOUSE3_SNOW_HIDE_EXCLUDE_CAVES,true);
 		optionPane.setOption(Constants.RANDOM_ON_THE_FLY,true);
 		

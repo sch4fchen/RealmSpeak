@@ -10,11 +10,12 @@ QUEST UPDATE:
 # Update to quest Q41 Rescue Poetess
 NEW FEATURES:
 # Support for water clearings
+# New preset (button) of game rules
 # BattleBuilder: Option to toggle chit to berserk
 # Realm GM: Option for clearing owner of hired/controlled denizen
 # TileEditor: Functionality for adding and removing a clearing
 # TileEditor: Show tile name incl. code and type
-# Add super realm tiles to game data
+# Add Super Realm tiles to game data
 BUGS/ISSUES:
 # Charging a character now un-hides targeted character
 # Fix game crash when recording invalid rest phase

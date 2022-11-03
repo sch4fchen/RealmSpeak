@@ -518,6 +518,7 @@ public class Constants {
 	public static final String OPT_ENHANCED_ARTIFACTS = "OptEnhancedArtifacts";
 	public static final String OPT_POWER_OF_THE_PIT_ATTACK = "OptPowerOfThePitAttack";
 	public static final String OPT_POWER_OF_THE_PIT_DEMON = "OptPowerOfThePitDemon";
+	public static final String OPT_NATIVES_FRIENDLY = "NativeFriendly";
 	
 	// Revised Rules
 	public static final String REV_MISSILE = "RevisedMissileTable";
@@ -572,7 +573,6 @@ public class Constants {
 	public static final String HOUSE2_CAMPAIGN_DEBT = "CampaignDebt";
 	public static final String HOUSE2_DAY_END_TRADING_ON = "DayEndTradingOn";
 	public static final String HOUSE2_NO_NATIVES_BATTLING = "NoNativesBattling";
-	public static final String HOUSE2_NATIVES_FRIENDLY = "NativeFriendly";
 	public static final String HOUSE2_PEACE_WITH_NATURE_SITES = "PeaceWithNatureSites";
 	public static final String HOUSE2_MULTIPLE_SUMMONING = "MultipleSummoning";
 	
