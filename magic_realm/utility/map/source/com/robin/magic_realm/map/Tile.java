@@ -177,11 +177,9 @@ public class Tile {
 	}
 	
 	public boolean connectsToTilename(Hashtable<Point,Tile> mapGrid,String clearingKey,String tilename) {
-if (debug) System.out.println("------------------");
 		return connectsToTilename(mapGrid,clearingKey,tilename,new ArrayList<String>());
 	} 
 	private boolean connectsToTilename(Hashtable<Point,Tile> mapGrid,String clearingKey,String tilename,ArrayList<String> touchedClearings) {
-if (debug) System.out.println(name+":"+clearingKey);
 		touchedClearings.add(name+":"+clearingKey);
 
 		// Check the obvious
@@ -337,7 +335,7 @@ if (debug) System.out.println(name+":"+clearingKey);
 					return false;
 				}
 				ArrayList<String> pathsTypes = tile.getPathTypes(tile.side,(edge-rot+6)%6);
-				ArrayList<String> adjTilePathsTypes = adjTile.getPathTypes(adjTile.side,(edge+3-adjTile.getRotation()+6)%6);
+				ArrayList<String> adjTilePathsTypes = adjTile.getPathTypes(adjTile.side,(edge+9-adjTile.getRotation())%6);
 				if ((pathsTypes.contains("river") && !adjTilePathsTypes.contains("river")) || (adjTilePathsTypes.contains("river") && !pathsTypes.contains("river"))) {
 					return false;
 				}	

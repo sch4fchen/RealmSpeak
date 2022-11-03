@@ -1367,7 +1367,6 @@ public class CenteredMapView extends JComponent {
 						int y = Integer.parseInt(position.split(",")[1]);
 						Point point = new Point(x,y);
 						mapGrid.remove(point);
-						tileGo.removeThisAttribute(ClearingDetail.BL_CONNECT);
 						tileGo.removeAttribute(Tile.MAP_GRID,Tile.MAP_POSITION);
 						currentTileLocation = null;
 						rebuildFromScratch();
@@ -1408,7 +1407,6 @@ public class CenteredMapView extends JComponent {
 							JOptionPane.showConfirmDialog(null, "Borderland cannot be removed!", "Removing Tile", JOptionPane.DEFAULT_OPTION);
 							return;
 						}
-						tile.removeThisAttribute(ClearingDetail.BL_CONNECT);
 						for (GameObject hold : tile.getHold()) {
 							tile.remove(hold);
 						}
