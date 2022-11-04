@@ -311,7 +311,7 @@ public class ClearingDetail {
 					for (PathDetail path : c) {
 						if (!path.connectsToAnEdge()) {
 							if (path.getTo().isWater() && path.getType().matches("river") && !touchedWaterClearings.contains(path.getTo())) {
-								if (path.getTo().parent.getGameObject().getThisAttribute("water_source_clearing").matches(path.getTo().getNumString())) {
+								if (path.getTo().parent.getGameObject().hasThisAttribute("water_source_clearing") && path.getTo().parent.getGameObject().getThisAttribute("water_source_clearing").matches(path.getTo().getNumString())) {
 									return distance;
 								}
 								foundNewClearings = true;
@@ -321,7 +321,7 @@ public class ClearingDetail {
 						} else {
 							ClearingDetail connectedClearing = path.findConnection(path.getFrom());
 							if (connectedClearing.isWater() && path.getType().matches("river") && !touchedWaterClearings.contains(connectedClearing)) {
-								if (connectedClearing.parent.getGameObject().getThisAttribute("water_source_clearing").matches(connectedClearing.getNumString())) {
+								if (connectedClearing.parent.getGameObject().hasThisAttribute("water_source_clearing") && connectedClearing.parent.getGameObject().getThisAttribute("water_source_clearing").matches(connectedClearing.getNumString())) {
 									return distance;
 								}
 								foundNewClearings = true;
