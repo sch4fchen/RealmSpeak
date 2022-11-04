@@ -1778,7 +1778,7 @@ public class CenteredMapView extends JComponent {
 				hash.put(tile.getName(), tile);
 			}
 		}
-		return tileChooser("Select a tile to add:", tileList,hash);
+		return tileChooser("Select a tile to add", tileList,hash);
 	}
 	private GameObject chooseTileToRemove() {
 		GamePool pool = new GamePool(gameData.getGameObjects());
@@ -1790,7 +1790,7 @@ public class CenteredMapView extends JComponent {
 				hash.put(tile.getName(), tile);
 			}
 		}
-		return tileChooser("Select a tile to remove:", tileList,hash);
+		return tileChooser("Select a tile to remove", tileList,hash);
 	}
 	private GameObject tileChooser(String headline, ArrayList<String> tileList, Hashtable<String, GameObject> tileHash) {
 		Collections.sort(tileList);
