@@ -26,6 +26,7 @@ import javax.swing.JOptionPane;
 
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
+import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.ArmorChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
@@ -49,6 +50,7 @@ public class QuestRewardItem extends QuestReward {
 	public static final String FORCE_DEACTIVATION = "_fd";
 	public static final String MARK_ITEM = "_mi";
 	public static final String REQ_MARK = "_rm";
+	public static final String RANDOM = "_random";
 	
 	public QuestRewardItem(GameObject go) {
 		super(go);
@@ -84,6 +86,9 @@ public class QuestRewardItem extends QuestReward {
 		}
 		else if(objects.size()==0) {
 			return;
+		}
+		else if (selectRandom()) {
+			selected = objects.get(RandomNumber.getRandom(objects.size()));
 		}
 		else {
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,getTitleForDialog()+actionDescription,false);
@@ -179,6 +184,10 @@ public class QuestRewardItem extends QuestReward {
 	
 	public String getItemRegex() {
 		return getString(ITEM_REGEX);
+	}
+	
+	public boolean selectRandom() {
+		return getBoolean(RANDOM);
 	}
 	
 	public ArrayList<ChitItemType> getChitTypes() {
