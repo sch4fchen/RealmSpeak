@@ -1413,8 +1413,8 @@ public class CenteredMapView extends JComponent {
 							return;
 						}
 						tile.removeThisAttribute(ClearingDetail.BL_CONNECT);
-						for (GameObject hold : tile.getHold()) {
-							tile.remove(hold);
+						while (tile.getHold().size()>0) {
+							tile.remove(tile.getHold().get(0));
 						}
 						gameData.removeObject(tile);
 					}
