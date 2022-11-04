@@ -197,9 +197,11 @@ public class ClearingDetail {
 			if (character.affectedByKey(Constants.WATER_MOVE_ADJ)) val--;
 			if (!character.isTransmorphed() && currentLocation.clearing!=null && currentLocation.clearing.isWater()) {
 				GamePool pool = new GamePool(this.parent.getGameObject().getGameData().getGameObjects());
-				ArrayList<GameObject> waterSources = pool.find("tile,water_source");
-				if (this.distanceToWaterSource(waterSources)>currentLocation.clearing.distanceToWaterSource(waterSources)) {
-					val--;
+				ArrayList<GameObject> waterSources = pool.find("tile,water_source_clearing");
+				if (!waterSources.isEmpty()) {
+					if (this.distanceToWaterSource(waterSources)>currentLocation.clearing.distanceToWaterSource(waterSources)) {
+						val--;
+					}
 				}
 			}
 		}
@@ -289,12 +291,13 @@ public class ClearingDetail {
 		ArrayList<ClearingDetail> touchedWaterClearings = new ArrayList<>();
 		
 		touchedWaterClearings.add(this);
-		if (this.parent.getGameObject().getThisAttribute("water_source_clearing").matches(this.getNumString())) {
+		if (this.parent.getGameObject().hasThisAttribute("water_source_clearing") && this.parent.getGameObject().getThisAttribute("water_source_clearing").matches(this.getNumString())) {
 			return distance;
 		}
 		
 		boolean foundNewClearings = true;
 		ArrayList<ClearingDetail> newWaterClearings = new ArrayList<>();
+		newWaterClearings.add(this);
 		ArrayList<ClearingDetail> waterClearingsToCheck = new ArrayList<>();
 		while (foundNewClearings) {
 			foundNewClearings = false;
@@ -303,15 +306,29 @@ public class ClearingDetail {
 			waterClearingsToCheck.addAll(newWaterClearings);
 			newWaterClearings.clear();
 			for (ClearingDetail clearing : waterClearingsToCheck) {
-				Collection<PathDetail> c = clearing.getAllConnectedPaths();
-				for (PathDetail path : c) {
-					if (path.getTo().isWater() && path.getType().matches("river") && !touchedWaterClearings.contains(path.getTo())) {
-						if (path.getTo().parent.getGameObject().getThisAttribute("water_source_clearing").matches(path.getTo().getNumString())) {
-							return distance;
+				Collection<PathDetail> c = clearing.getConnectedPaths();
+				if (c!=null) {
+					for (PathDetail path : c) {
+						if (!path.connectsToAnEdge()) {
+							if (path.getTo().isWater() && path.getType().matches("river") && !touchedWaterClearings.contains(path.getTo())) {
+								if (path.getTo().parent.getGameObject().getThisAttribute("water_source_clearing").matches(path.getTo().getNumString())) {
+									return distance;
+								}
+								foundNewClearings = true;
+								touchedWaterClearings.add(path.getTo());
+								newWaterClearings.add(path.getTo());
+							}
+						} else {
+							ClearingDetail connectedClearing = path.findConnection(path.getFrom());
+							if (connectedClearing.isWater() && path.getType().matches("river") && !touchedWaterClearings.contains(connectedClearing)) {
+								if (connectedClearing.parent.getGameObject().getThisAttribute("water_source_clearing").matches(connectedClearing.getNumString())) {
+									return distance;
+								}
+								foundNewClearings = true;
+								touchedWaterClearings.add(connectedClearing);
+								newWaterClearings.add(connectedClearing);
+							}
 						}
-						foundNewClearings = true;
-						touchedWaterClearings.add(path.getTo());
-						newWaterClearings.add(path.getTo());
 					}
 				}
 			}
