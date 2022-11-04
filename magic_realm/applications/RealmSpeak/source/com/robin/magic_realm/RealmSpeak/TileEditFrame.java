@@ -86,6 +86,7 @@ public class TileEditFrame extends JFrame {
 				protected JCheckBox goldClearingMagic;		// G
 				protected JCheckBox purpleClearingMagic;	// P
 				protected JCheckBox blackClearingMagic;		// B
+				protected JCheckBox randomClearingMagic;	// R
 
 				protected JButton addClearingButton;
 				protected JButton removeClearingButton;
@@ -249,7 +250,13 @@ public class TileEditFrame extends JFrame {
 								}
 							});
 						clearingColorButtons.add(blackClearingMagic);
-						clearingColorButtons.add(Box.createGlue());
+						randomClearingMagic = new JCheckBox("Random");
+						randomClearingMagic.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent ev) {
+								updateClearings();
+							}
+						});
+						clearingColorButtons.add(randomClearingMagic);
 					clearingControls.add(clearingColorButtons);
 						JPanel clearingEditButtons = new JPanel(new GridLayout(1,2));
 							addClearingButton = new JButton("Add");
@@ -557,6 +564,7 @@ public class TileEditFrame extends JFrame {
 				goldClearingMagic.setSelected(selected.getMagic(ClearingDetail.MAGIC_GOLD));
 				purpleClearingMagic.setSelected(selected.getMagic(ClearingDetail.MAGIC_PURPLE));
 				blackClearingMagic.setSelected(selected.getMagic(ClearingDetail.MAGIC_BLACK));
+				randomClearingMagic.setSelected(selected.getMagic(ClearingDetail.MAGIC_RANDOM));
 			}
 		}
 		
@@ -571,6 +579,7 @@ public class TileEditFrame extends JFrame {
 		goldClearingMagic.setEnabled(activeTile!=null && selected!=null);
 		purpleClearingMagic.setEnabled(activeTile!=null && selected!=null);
 		blackClearingMagic.setEnabled(activeTile!=null && selected!=null);
+		randomClearingMagic.setEnabled(activeTile!=null && selected!=null);
 	}
 	public void updateClearings() {
 		ClearingDetail selected = null;
@@ -598,6 +607,7 @@ public class TileEditFrame extends JFrame {
 				selected.setMagic(ClearingDetail.MAGIC_GOLD,goldClearingMagic.isSelected());
 				selected.setMagic(ClearingDetail.MAGIC_PURPLE,purpleClearingMagic.isSelected());
 				selected.setMagic(ClearingDetail.MAGIC_BLACK,blackClearingMagic.isSelected());
+				selected.setMagic(ClearingDetail.MAGIC_RANDOM,randomClearingMagic.isSelected());
 				
 				activeTile.repaint();
 				

@@ -37,10 +37,11 @@ public class ClearingDetail {
 	public static final int MAGIC_GOLD		= 2;
 	public static final int MAGIC_PURPLE	= 3;
 	public static final int MAGIC_BLACK		= 4;
+	public static final int MAGIC_RANDOM	= 5;
 	
 	private static Color DEFAULT_MARK_COLOR = Color.green;
 	
-	public static final char[] MAGIC_CHAR = {'W','R','G','P','B'};
+	public static final char[] MAGIC_CHAR = {'W','R','G','P','B','R'};
 
 	protected TileComponent parent;
 	protected int num;
@@ -66,7 +67,7 @@ public class ClearingDetail {
 		this.num = num;
 		this.type = type;
 		this.position = position;
-		this.magic = new boolean[5];
+		this.magic = new boolean[6];
 		this.side = side;
 		Arrays.fill(magic,false);
 		extras = new ArrayList<>();
@@ -151,6 +152,9 @@ public class ClearingDetail {
 		}
 		else if (magic[MAGIC_BLACK]) {
 			return Color.black;
+		}
+		else if (magic[MAGIC_RANDOM]) {
+			return MagicRealmColor.LIGHTGREEN;
 		}
 		return null;
 	}
@@ -471,6 +475,9 @@ public class ClearingDetail {
 		}
 		if (magic[MAGIC_BLACK]) {
 			list.add(new ColorMagic(ColorMagic.BLACK,true));
+		}
+		if (magic[MAGIC_RANDOM]) {
+			
 		}
 		if (parent.getGameObject().hasThisAttribute(Constants.MOD_COLOR_SOURCE)) {
 			ColorMod colorMod = ColorMod.createColorMod(parent.getGameObject().getThisAttribute(Constants.MOD_COLOR_SOURCE));

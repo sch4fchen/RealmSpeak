@@ -350,7 +350,7 @@ public class TileComponent extends ChitComponent {
 				// Read magic
 				String magic = (String) hash.get(magicKey);
 				if (magic != null && magic.length() > 0) {
-					for (int m = ClearingDetail.MAGIC_WHITE; m <= ClearingDetail.MAGIC_BLACK; m++) {
+					for (int m = ClearingDetail.MAGIC_WHITE; m <= ClearingDetail.MAGIC_RANDOM; m++) {
 						if (magic.indexOf(ClearingDetail.MAGIC_CHAR[m]) >= 0) {
 							detail.setMagic(m, true);
 							darkColor = detail.getColor();
