@@ -1,8 +1,5 @@
 After adding tile to gameData in GM: 	Moves are recored twice! 	Cannot move onto new placed tiles // Test water movement and freezing tiles
-Is it possible to create a new step reward called UnmarkItem? unmark inventory items based on regex, and also choose whether the items to unmark are activated or inactivated.
-	add an activated and inactivated option to the MarkItem step reward to limit the scope of the marking
-Reward drop item (option: item type and number of items), muste be active, muste be not active, option to location or clreaing or random clearing of tile
-RewardItemToNativeHQ, option: muste be in inventory, item types
+RewardItemToNativeHQ, option: must be in inventory, item types
 Rules for random magic (hills)
 Super Realm Parry (and 1st Ed.): 8.10.7 p. 984
 	---:::FEATURES:::---
