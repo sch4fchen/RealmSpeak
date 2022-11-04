@@ -1504,6 +1504,9 @@ public class QuestTesterFrame extends JFrame {
 			}
 		}
 		questStepView.repaint();
+		
+		character.distributeMonsterControlInCurrentClearing(false);
+		
 		updateCharacterPanel();
 		debugOutput.setCaretPosition(0); // why doesn't this work?
 	}

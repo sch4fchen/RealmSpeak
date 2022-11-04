@@ -6727,6 +6727,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return reward;
 	}
 	public void distributeMonsterControlInCurrentClearing() {
+		distributeMonsterControlInCurrentClearing(true);
+	}
+	public void distributeMonsterControlInCurrentClearing(boolean onlyEnhancedMonsterControl) {
 		TileLocation current = this.getCurrentLocation();
 		if (current != null && current.clearing != null) {
 			ArrayList<RealmComponent> clearingComponents = current.clearing.getClearingComponents();
@@ -6735,14 +6738,20 @@ public class CharacterWrapper extends GameObjectWrapper {
 				ArrayList<RealmComponent> characterCanControl = new ArrayList<>();
 				for (RealmComponent characterRc : clearingComponents) {
 					if (!characterRc.isCharacter()) continue;
-						for (String monsterType : characterRc.getControllableMonstersEnhanced()) {
-							if (monster.getGameObject().getName().matches(monsterType.toString())) {
-								if (!characterCanControl.contains(characterRc)) {
-									characterCanControl.add(characterRc);
-								}
+					ArrayList<String> controllableMonsters = null;
+					if (onlyEnhancedMonsterControl) {
+						controllableMonsters = characterRc.getControllableMonstersEnhanced();
+					}
+					else {
+						controllableMonsters = characterRc.getControllableMonsters();
+					}
+					for (String monsterType : controllableMonsters) {
+						if (monster.getGameObject().getName().matches(monsterType.toString())) {
+							if (!characterCanControl.contains(characterRc)) {
+								characterCanControl.add(characterRc);
 							}
 						}
-
+					}
 				}
 				if (characterCanControl.toArray().length == 1) { // only if exactly one character can control this monster
 					CharacterWrapper characterWrapper = new CharacterWrapper(characterCanControl.get(0).getGameObject());

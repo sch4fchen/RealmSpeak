@@ -1,5 +1,6 @@
 Version 1.1.6.7
 QUEST UPDATE:
+# QuestTester: check for monster control after checking for quest step
 # QuestRequirementInventory: Option to require the exact amount of items
 # QuestRewardDamage: Option to apply damage to followers (default: off)
 # QuestRewardItem: Option to select item randomly (instead of player choose)
