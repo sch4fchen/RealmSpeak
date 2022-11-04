@@ -1,5 +1,4 @@
 After adding tile to gameData in GM: 	Moves are recored twice! 	Cannot move onto new placed tiles // Test water movement and freezing tiles
-RewardItemToNativeHQ, option: must be in inventory, item types
 Rules for random magic (hills)
 Super Realm Parry (and 1st Ed.): 8.10.7 p. 984
 	---:::FEATURES:::---
