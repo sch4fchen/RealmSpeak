@@ -47,6 +47,7 @@ public class QuestRewardItem extends QuestReward {
 	public static final String ITEM_DESC = "_idsc";
 	public static final String ITEM_CHITTYPES = "_ict";
 	public static final String ITEM_REGEX = "_irx";
+	public static final String NATIVE_REGEX = "_nrx";
 	public static final String FORCE_DEACTIVATION = "_fd";
 	public static final String MARK_ITEM = "_mi";
 	public static final String REQ_MARK = "_rm";
@@ -61,7 +62,17 @@ public class QuestRewardItem extends QuestReward {
 		ArrayList<GameObject> objects;
 		if (isGain()) {
 			actionDescription = ": Select ONE item to gain.";
-			objects = getObjectList(getGameData().getGameObjects(),getChitTypes(),getItemRegex());
+			if (getGainType()==ItemGainType.GainFromNativeHq || getGainType()==ItemGainType.GainClonedFromNativeHq) {
+				ArrayList<GameObject> filteredHq = getNativeHqs();
+				ArrayList<GameObject> sourceObjects = new ArrayList<>();
+				for (GameObject hq : filteredHq) {
+					sourceObjects.addAll(hq.getHold());
+				}
+				objects = getObjectList(sourceObjects,getChitTypes(),getItemRegex());
+			}
+			else {
+				objects = getObjectList(getGameData().getGameObjects(),getChitTypes(),getItemRegex());
+			}
 		}
 		else {
 			actionDescription = ": Select ONE item from your inventory to lose.";
@@ -97,7 +108,7 @@ public class QuestRewardItem extends QuestReward {
 			selected = chooser.getFirstSelectedComponent().getGameObject();
 		}
 		
-		if (getGainType()==ItemGainType.GainCloned) {
+		if (getGainType()==ItemGainType.GainCloned || getGainType()==ItemGainType.GainClonedFromNativeHq) {
 			GameObject newItem = selected.copy();
 			newItem.setThisAttribute(Constants.CLONED);
 			selected = newItem;
@@ -129,6 +140,15 @@ public class QuestRewardItem extends QuestReward {
 					break;
 				case LoseToLocation:
 					lostItem(selected);
+					break;
+				case LoseToNativeHq:
+					ArrayList<GameObject> filteredHq = getNativeHqs();
+					if (filteredHq.isEmpty()) {
+						JOptionPane.showMessageDialog(frame,"The "+selected.getName()+" could not be removed from your inventory (no matching NativeHQ found).","Quest Error",JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+					GameObject nativeHq = filteredHq.get(RandomNumber.getRandom(filteredHq.size()));
+					nativeHq.add(selected);
 					break;
 				default:
 				case LoseToChartOfAppearance:
@@ -186,6 +206,10 @@ public class QuestRewardItem extends QuestReward {
 		return getString(ITEM_REGEX);
 	}
 	
+	public String getNativeRegex() {
+		return getString(NATIVE_REGEX);
+	}
+	
 	public boolean selectRandom() {
 		return getBoolean(RANDOM);
 	}
@@ -206,5 +230,19 @@ public class QuestRewardItem extends QuestReward {
 			}
 		}
 		return objects;
+	}
+	
+	private ArrayList<GameObject> getNativeHqs() {
+		GamePool pool = new GamePool(getGameData().getGameObjects());
+		ArrayList<GameObject> allHq = pool.find("rank=HQ");
+		ArrayList<GameObject> filteredHq = new ArrayList<>();
+		String regEx = getNativeRegex();
+		Pattern pattern = (regEx==null || regEx.length()==0)?null:Pattern.compile(regEx);
+		for(GameObject hq:allHq) {
+			if (pattern==null || pattern.matcher(hq.getName()).find()) {
+				filteredHq.add(hq);
+			}
+		}
+		return filteredHq;
 	}
 }

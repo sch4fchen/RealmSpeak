@@ -3,6 +3,7 @@ QUEST UPDATE:
 # QuestRequirementInventory: Option to require the exact amount of items
 # QuestRewardDamage: Option to apply damage to followers (default: off)
 # QuestRewardItem: Option to select item randomly (instead of player choose)
+# QuestRewardItem: Option to gain/loose item from/to native HQ
 # QuestRewardMark: Option to remove marks
 # Update to quest A19 Mapmaker Deep Woods
 # Update to quest A27 Quest Fountain Youth
