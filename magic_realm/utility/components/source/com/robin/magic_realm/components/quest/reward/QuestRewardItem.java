@@ -234,7 +234,7 @@ public class QuestRewardItem extends QuestReward {
 	
 	private ArrayList<GameObject> getNativeHqs() {
 		GamePool pool = new GamePool(getGameData().getGameObjects());
-		ArrayList<GameObject> allHq = pool.find("rank=HQ");
+		ArrayList<GameObject> allHq = pool.find("native,rank=HQ");
 		ArrayList<GameObject> filteredHq = new ArrayList<>();
 		String regEx = getNativeRegex();
 		Pattern pattern = (regEx==null || regEx.length()==0)?null:Pattern.compile(regEx);
