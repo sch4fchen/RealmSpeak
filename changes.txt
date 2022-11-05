@@ -15,6 +15,7 @@ QUEST UPDATE:
 # Update to quest Q41 Rescue Poetess
 NEW FEATURES:
 # Support for water clearings
+# Support for random magic color (e.g. hills)
 # New preset (button) of game rules
 # BattleBuilder: Option to toggle chit to berserk
 # Realm GM: Option for clearing owner of hired/controlled denizen

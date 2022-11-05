@@ -23,9 +23,11 @@ import java.util.*;
 
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
+import com.robin.general.swing.DieRoller;
 import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.GameWrapper;
 import com.robin.magic_realm.map.Tile;
 
 public class ClearingDetail {
@@ -189,7 +191,7 @@ public class ClearingDetail {
 		return type.equals("mountain");
 	}
 	public boolean isWoods() {
-		return type.equals("woods") || type.equals("frozen_water"); //treat water clearings as woods clearings
+		return type.equals("woods") || type.equals("frozen_water"); //treat frozen water clearings as woods clearings
 	}
 	public int moveCost(CharacterWrapper character,TileLocation currentLocation) {
 		int val = 1;
@@ -477,7 +479,25 @@ public class ClearingDetail {
 			list.add(new ColorMagic(ColorMagic.BLACK,true));
 		}
 		if (magic[MAGIC_RANDOM]) {
-			
+			GameWrapper gameWrapper = GameWrapper.findGame(this.parent.getGameObject().getGameData());
+			DieRoller monsterDie = gameWrapper.getMonsterDie();
+			int number = monsterDie.getValue(0);
+			switch (number) {
+			case 1:
+			case 4:
+				list.add(new ColorMagic(ColorMagic.GRAY,true));
+				break;
+			case 2:
+			case 5:
+				list.add(new ColorMagic(ColorMagic.GOLD,true));
+				break;
+			case 3:
+			case 6:
+				list.add(new ColorMagic(ColorMagic.PURPLE,true));
+				break;
+			default:
+				break;
+			}
 		}
 		if (parent.getGameObject().hasThisAttribute(Constants.MOD_COLOR_SOURCE)) {
 			ColorMod colorMod = ColorMod.createColorMod(parent.getGameObject().getThisAttribute(Constants.MOD_COLOR_SOURCE));

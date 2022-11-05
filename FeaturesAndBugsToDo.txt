@@ -1,4 +1,3 @@
-Rules for random magic (hills)
 Super Realm Parry (and 1st Ed.): 8.10.7 p. 984
 	---:::FEATURES:::---
 Quest: option add icon for minor character
