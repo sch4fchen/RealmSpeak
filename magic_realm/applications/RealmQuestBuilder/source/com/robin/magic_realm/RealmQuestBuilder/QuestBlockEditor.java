@@ -88,6 +88,7 @@ public abstract class QuestBlockEditor extends GenericEditor {
 				case NoSpacesTextLine:
 				case SmartTextLine:
 				case Regex:
+				case RegexIgnoreChitTypes:
 					go.setString(block.getKeyName(),((JTextField)block.getComponent()).getText().trim());
 					break;
 				case SmartTextArea:
@@ -221,6 +222,21 @@ public abstract class QuestBlockEditor extends GenericEditor {
 						}
 					});
 					break;
+				case RegexIgnoreChitTypes:
+					component = new JTextField(go.getString(block.getKeyName()));
+					ComponentTools.lockComponentSize(component,150,25);
+					button = new PropertyButton("...",component,block);
+					button.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent ev) {
+							PropertyButton me = (PropertyButton)ev.getSource();
+							JTextField field = (JTextField)me.getMyComponent();
+							String text = launchRegexHelper(field.getText(),me.getBlock(),true);
+							if (text!=null) {
+								field.setText(text);
+							}
+						}
+					});
+					break;
 				case ChitType:
 					chitTypePanel = new ChitTypePanel(go.getList(block.getKeyName()));
 					component = chitTypePanel;
@@ -291,8 +307,11 @@ public abstract class QuestBlockEditor extends GenericEditor {
 		return go==null?null:(ChitComponent)RealmComponent.getRealmComponent(go);
 	}
 	private String launchRegexHelper(String text,QuestPropertyBlock block) {
+		return launchRegexHelper(text,block,false);
+	}
+	private String launchRegexHelper(String text,QuestPropertyBlock block,boolean ignoreChitTypePanel) {
 		ArrayList<String> objectNames = new ArrayList<>();
-		if (chitTypePanel!=null) {
+		if (chitTypePanel!=null&&!ignoreChitTypePanel) {
 			ArrayList<GameObject> objects = QuestRewardItem.getObjectList(realmSpeakData.getGameObjects(),chitTypePanel.getChitItemTypes(),null); 
 			for(GameObject go:objects) {
 				if (!objectNames.contains(go.getName())) {

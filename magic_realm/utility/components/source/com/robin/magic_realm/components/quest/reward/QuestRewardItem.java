@@ -124,46 +124,45 @@ public class QuestRewardItem extends QuestReward {
 				selectedItem.setLightSideUp();
 			}
 			Loot.addItemToCharacter(frame,null,character,selected);
+			return;
+		}
+		if (TreasureUtility.doDeactivate(null,character,selected,forceDeactivation())) { // null JFrame so that character isn't hit with any popups
+			switch (getGainType()) {
+			case RemoveFromGame:
+				selected.getHeldBy().remove(selected);
+				break;
+			case LoseToClearing:
+				TileLocation location = character.getCurrentLocation();
+				if (location.clearing == null) {
+					location.setRandomClearing();
+				}
+				ClearingUtility.moveToLocation(selected,location);
+				break;
+			case LoseToLocation:
+				lostItem(selected);
+				break;
+			case LoseToNativeHq:
+				ArrayList<GameObject> filteredHq = getNativeHqs();
+				if (filteredHq.isEmpty()) {
+					JOptionPane.showMessageDialog(frame,"The "+selected.getName()+" could not be removed from your inventory (no matching NativeHQ found).","Quest Error",JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				GameObject nativeHq = filteredHq.get(RandomNumber.getRandom(filteredHq.size()));
+				nativeHq.add(selected);
+				break;
+			default:
+			case LoseToChartOfAppearance:
+				lostItemToDefault(selected);
+				break;
+			}
 		}
 		else {
-			if (TreasureUtility.doDeactivate(null,character,selected,forceDeactivation())) { // null JFrame so that character isn't hit with any popups
-				switch (getGainType()) {
-				case RemoveFromGame:
-					selected.getHeldBy().remove(selected);
-					break;
-				case LoseToClearing:
-					TileLocation location = character.getCurrentLocation();
-					if (location.clearing == null) {
-						location.setRandomClearing();
-					}
-					ClearingUtility.moveToLocation(selected,location);
-					break;
-				case LoseToLocation:
-					lostItem(selected);
-					break;
-				case LoseToNativeHq:
-					ArrayList<GameObject> filteredHq = getNativeHqs();
-					if (filteredHq.isEmpty()) {
-						JOptionPane.showMessageDialog(frame,"The "+selected.getName()+" could not be removed from your inventory (no matching NativeHQ found).","Quest Error",JOptionPane.ERROR_MESSAGE);
-						return;
-					}
-					GameObject nativeHq = filteredHq.get(RandomNumber.getRandom(filteredHq.size()));
-					nativeHq.add(selected);
-					break;
-				default:
-				case LoseToChartOfAppearance:
-					lostItemToDefault(selected);
-					break;
-				}
-			}
-			else {
-				JOptionPane.showMessageDialog(frame,"The "+selected.getName()+" could not be removed from your inventory.","Quest Error",JOptionPane.ERROR_MESSAGE);
-			}
+			JOptionPane.showMessageDialog(frame,"The "+selected.getName()+" could not be removed from your inventory.","Quest Error",JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	
 	private boolean isGain() {
-		return getGainType()==ItemGainType.Gain || getGainType()==ItemGainType.GainCloned;
+		return getGainType()==ItemGainType.Gain || getGainType()==ItemGainType.GainCloned || getGainType()==ItemGainType.GainFromNativeHq || getGainType()==ItemGainType.GainClonedFromNativeHq;
 	}
 	
 	private boolean damagedItem() {

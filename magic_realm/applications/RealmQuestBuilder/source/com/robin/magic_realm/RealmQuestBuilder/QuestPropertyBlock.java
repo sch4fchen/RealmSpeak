@@ -31,6 +31,7 @@ public class QuestPropertyBlock {
 		Number,
 		NumberAll,
 		Regex,
+		RegexIgnoreChitTypes,
 		SmartTextLine,
 		SmartTextArea,
 		StringSelector, 
