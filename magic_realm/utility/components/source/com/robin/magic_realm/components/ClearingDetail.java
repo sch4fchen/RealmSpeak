@@ -481,22 +481,24 @@ public class ClearingDetail {
 		if (magic[MAGIC_RANDOM]) {
 			GameWrapper gameWrapper = GameWrapper.findGame(this.parent.getGameObject().getGameData());
 			DieRoller monsterDie = gameWrapper.getMonsterDie();
-			int number = monsterDie.getValue(0);
-			switch (number) {
-			case 1:
-			case 4:
-				list.add(new ColorMagic(ColorMagic.GRAY,true));
-				break;
-			case 2:
-			case 5:
-				list.add(new ColorMagic(ColorMagic.GOLD,true));
-				break;
-			case 3:
-			case 6:
-				list.add(new ColorMagic(ColorMagic.PURPLE,true));
-				break;
-			default:
-				break;
+			if (monsterDie != null) {
+				int number = monsterDie.getValue(0);
+				switch (number) {
+				case 1:
+				case 4:
+					list.add(new ColorMagic(ColorMagic.GRAY,true));
+					break;
+				case 2:
+				case 5:
+					list.add(new ColorMagic(ColorMagic.GOLD,true));
+					break;
+				case 3:
+				case 6:
+					list.add(new ColorMagic(ColorMagic.PURPLE,true));
+					break;
+				default:
+					break;
+				}
 			}
 		}
 		if (parent.getGameObject().hasThisAttribute(Constants.MOD_COLOR_SOURCE)) {
