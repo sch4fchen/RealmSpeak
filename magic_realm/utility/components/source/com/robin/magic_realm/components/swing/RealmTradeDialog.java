@@ -30,8 +30,11 @@ import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.general.swing.AggressiveDialog;
 import com.robin.general.swing.ComponentTools;
+import com.robin.general.util.OrderedHashtable;
 import com.robin.general.util.StringUtilities;
 import com.robin.magic_realm.components.*;
+import com.robin.magic_realm.components.quest.Quest;
+import com.robin.magic_realm.components.quest.QuestMinorCharacter;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -317,6 +320,15 @@ public class RealmTradeDialog extends AggressiveDialog {
 				if (realmComponent.getGameObject().hasAttribute("destroyed","base_price")) {
 					int bp = realmComponent.getGameObject().getAttributeInt("destroyed","base_price");
 					sb.append("DestroyedValue="+bp);
+				}
+			}
+			else if (realmComponent.isMinorCharacter()) {
+				if (realmComponent.getGameObject().hasAttributeBlock(Quest.QUEST_BLOCK)) {
+					OrderedHashtable<String, Object> questAttributes = realmComponent.getGameObject().getAttributeBlock(Quest.QUEST_BLOCK);
+					Object description = questAttributes.get(QuestMinorCharacter.DESCRIPTION);
+					if (description!=null) {
+						sb.append(description.toString());
+					}
 				}
 			}
 			int fame = realmComponent.getGameObject().getThisInt("fame");

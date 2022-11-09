@@ -3,6 +3,7 @@ QUEST UPDATE:
 # Update to quest A44 Quest Valiant Dragonfang Necklace
 # Update to quest A54 Quest Valiant Golden Arm Band
 NEW FEATURES:
+# Minor Characters: show description in inventory
 
 Version 1.1.6.7
 QUEST UPDATE:
