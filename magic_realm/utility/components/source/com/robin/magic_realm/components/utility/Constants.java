@@ -508,6 +508,7 @@ public class Constants {
 	public static final String OPT_PENETRATING_ARMOR = "OptPenArmor";
 	public static final String OPT_TWO_HANDED_WEAPONS = "OptTwoHandedWeapons";
 	public static final String OPT_DUAL_WIELDING = "OptDualWielding";
+	public static final String OPT_DUAL_WIELDING_STRONG = "OptDualWieldingStrong";
 	public static final String OPT_THROWING_WEAPONS = "OptThrowingWeapons";
 	public static final String OPT_PARRY = "OptParry";
 	public static final String OPT_PARRY_LIKE_SHIELD = "OptParryLikeShield";

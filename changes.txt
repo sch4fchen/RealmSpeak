@@ -2,6 +2,7 @@ Version 1.1.6.8
 QUEST UPDATE:
 # Update to quest A44 Quest Valiant Dragonfang Necklace
 # Update to quest A54 Quest Valiant Golden Arm Band
+NEW FEATURES:
 
 Version 1.1.6.7
 QUEST UPDATE:

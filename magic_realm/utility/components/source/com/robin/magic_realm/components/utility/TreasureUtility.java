@@ -216,7 +216,7 @@ public class TreasureUtility {
 				for (GameObject otherThing : activeInventory) {
 					if (otherThing.hasThisAttribute("weapon") || (otherThing.hasThisAttribute(Constants.POTION) && otherThing.hasThisAttribute("attack"))) {
 						if ((hostPrefs.hasPref(Constants.OPT_DUAL_WIELDING) || character.affectedByKey(Constants.DUAL_WIELDING))
-							&& ((character.affectedByKey(Constants.STRONG) && (!thing.hasThisAttribute(Constants.TWO_HANDED) || !thing.hasThisAttribute("missile")) && (!otherThing.hasThisAttribute(Constants.TWO_HANDED) || !otherThing.hasThisAttribute("missile")))
+							&& (((character.affectedByKey(Constants.STRONG) || hostPrefs.hasPref(Constants.OPT_DUAL_WIELDING_STRONG)) && (!thing.hasThisAttribute(Constants.TWO_HANDED) || !thing.hasThisAttribute("missile")) && (!otherThing.hasThisAttribute(Constants.TWO_HANDED) || !otherThing.hasThisAttribute("missile")))
 							||
 							(!thing.hasThisAttribute(Constants.TWO_HANDED) && !otherThing.hasThisAttribute(Constants.TWO_HANDED)
 							&& (character.getVulnerability().strongerThan((RealmComponent.getRealmComponent(thing)).getWeight())
