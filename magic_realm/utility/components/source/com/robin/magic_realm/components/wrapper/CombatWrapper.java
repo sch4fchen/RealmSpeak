@@ -68,6 +68,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String CHANGE_TACTICS_RESULT = "CHTC_BX";
 	private static final String HIT_RESULT = "HIT_RSLT";
 	private static final String HIT_BY_IDS = "HIT_BY_IDS"; // A list of all ids of killers, in the order they hit
+	private static final String PARRIED = "PARRIED";
 	private static final String KILLED_BY_ID = "KILLED_BY_ID"; // The fastest or longest killer (sounds silly, but I know what I mean here!)
 	private static final String KILLED_LENGTH = "KILLED_LENGTH";
 	private static final String KILLED_SPEED = "KILLED_SPEED";
@@ -259,6 +260,12 @@ public class CombatWrapper extends GameObjectWrapper {
 	}
 	public String getHitResult() {
 		return getString(HIT_RESULT);
+	}
+	public void setWasParried(boolean val) {
+		setBoolean(PARRIED,val);
+	}
+	public boolean wasParried() {
+		return getBoolean(PARRIED);
 	}
 	public void setHitByOrderNumber(int val) {
 		setInt(HIT_BY_ORDER_NUMBER,val);
@@ -719,6 +726,7 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,PLACED_AS_PARRY_SHIELD);
 			go.removeAttribute(COMBAT_BLOCK,PLACED_AS_MOVE);
 			go.removeAttribute(COMBAT_BLOCK,HIT_RESULT);
+			go.removeAttribute(COMBAT_BLOCK,PARRIED);
 			go.removeAttribute(COMBAT_BLOCK,KILLED_BY_ID);
 			go.removeAttribute(COMBAT_BLOCK,KILLED_LENGTH);
 			go.removeAttribute(COMBAT_BLOCK,KILLED_SPEED);

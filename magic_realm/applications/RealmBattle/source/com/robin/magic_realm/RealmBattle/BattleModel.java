@@ -1099,7 +1099,7 @@ public class BattleModel {
 	private void doTargetAttack(BattleChit attacker,BattleChit target,int round,int attackOrderPos) {
 		CombatWrapper attackerCombat = new CombatWrapper(attacker.getGameObject());
 		CombatWrapper targetCombat = target==null?null:(new CombatWrapper(target.getGameObject()));
-		String attackerName = attacker.getGameObject().getName();
+		String attackerName = attacker.getGameObject().getNameWithNumber();
 		GameObject killer = attackerCombat.getKilledBy();
 		int killLength = attackerCombat.getKilledLength();
 		int killSpeed = attackerCombat.getKilledSpeed();
@@ -1216,7 +1216,7 @@ public class BattleModel {
 			*/
 			if (!simultaneous) {
 				// nope - attack is cancelled
-				attackCancelled = target.getGameObject().getName()+" was already killed by "+targetKiller.getName()+".";
+				attackCancelled = target.getGameObject().getNameWithNumber()+" was already killed by "+targetKiller.getNameWithNumber()+".";
 			}
 		}
 		
@@ -1232,24 +1232,28 @@ public class BattleModel {
 			*/
 			if (!simultaneous) {
 				// nope - attack is cancelled
-				attackCancelled = attackerName+" was already killed by "+killer.getName()+".";
+				attackCancelled = attackerName+" was already killed by "+killer.getNameWithNumber()+".";
 			}
 		}
 		
 		if (attackCancelled == null && attacker instanceof MonsterChitComponent) {
 			if (attackerCombat.getCancelSpell()) {
-				attackCancelled = attacker.getGameObject().getName()+"'s spell was already canceled.";
+				attackCancelled = attacker.getGameObject().getNameWithNumber()+"'s spell was already canceled.";
 			}
 		}
 		
 		// Before anything else, check to see if character is immune to the attacker
 		if (attackCancelled == null && target!=null && (attacker instanceof RealmComponent) && target.isImmuneTo((RealmComponent)attacker)) {
-			attackCancelled = target.getGameObject().getName()+" is immune to "+attacker.getGameObject().getName()+".";
+			attackCancelled = target.getGameObject().getNameWithNumber()+" is immune to "+attacker.getGameObject().getNameWithNumber()+".";
 		}
 		
 		// Before anything else, check to see if character fears the target
 		if (attackCancelled == null && !parry && (attacker instanceof RealmComponent) && (target instanceof RealmComponent) && ((RealmComponent)attacker).fears((RealmComponent)target)) {
-			attackCancelled = attacker.getGameObject().getName()+" fears "+target.getGameObject().getName()+" and cannot attack it.";
+			attackCancelled = attacker.getGameObject().getNameWithNumber()+" fears "+target.getGameObject().getNameWithNumber()+" and cannot attack it.";
+		}
+		
+		if (attackCancelled == null && attackerCombat.wasParried()) {
+			attackCancelled = attacker.getGameObject().getNameWithNumber()+" was already parried and cannot attack it.";
 		}
 		
 		logBattleInfo(">");
@@ -1265,7 +1269,9 @@ public class BattleModel {
 			logBattleInfo(attackOrParry+" Speed="+attacker.getAttackSpeed().getNum()+", Length="+attacker.getLength());
 		}
 		RealmLogging.incrementIndent();
-		logBattleInfo(getCombatantInformation(attacker,true)+" vs. "+getCombatantInformation(target,false));
+		if (!parry) {
+			logBattleInfo(getCombatantInformation(attacker,true)+" vs. "+getCombatantInformation(target,false));
+		}
 		if (attackCancelled!=null) {
 			if (!parry) {
 				logBattleInfo("Attack Cancelled:  "+attackCancelled);
@@ -1317,30 +1323,7 @@ public class BattleModel {
 			if (hitType>MISS) {
 				int fumbleModifier = 0;
 				if (hostPrefs.hasPref(Constants.OPT_FUMBLE)) {
-					fumbleModifier = attacker.getAttackSpeed().getNum() - target.getMoveSpeed().getNum();
-					if (hostPrefs.hasPref(Constants.OPT_TWO_HANDED_WEAPONS) && RealmComponent.getRealmComponent(attackerCombat.getGameObject()).isCharacter()) {
-						CharacterWrapper attackerCharacter = new CharacterWrapper(attackerCombat.getGameObject());
-						ArrayList<GameObject> activeInventory = attackerCharacter.getActiveInventory();
-						boolean shield = false;
-						boolean twoHandedWeapon = false;
-						if (!attackerCharacter.affectedByKey(Constants.STRONG)) {
-							for (GameObject item : activeInventory) {
-								if (item.hasThisAttribute(Constants.SHIELD) && item.getThisAttribute("weight") != "L") shield = true;
-								if (item.hasThisAttribute(Constants.TWO_HANDED)) twoHandedWeapon = true;
-							}
-						}
-						if (twoHandedWeapon && shield) {
-							fumbleModifier = fumbleModifier+2;
-							logBattleInfo("fumble = "+attacker.getAttackSpeed().getNum()+" - "+target.getMoveSpeed().getNum()+" = "+fumbleModifier+" (base speed difference and two-handed weapon malus)");
-						}
-					}
-					else {
-						logBattleInfo("fumble = "+attacker.getAttackSpeed().getNum()+" - "+target.getMoveSpeed().getNum()+" = "+fumbleModifier+" (base speed difference)");
-					}
-					if (hitType==UNDERCUT) {
-						fumbleModifier += 4;
-						logBattleInfo("fumble + 4 = "+fumbleModifier+" (for undercut)");
-					}
+					fumbleModifier = calculateBaseFumbleModifier(attacker, target, hitType, hostPrefs);
 					/*
 					 * Possibilities:
 					 * 		No OPT_SEPARATE_RIDER
@@ -1521,13 +1504,72 @@ public class BattleModel {
 					logBattleInfo("Missed! ("+attacker.getAttackSpeed()+" is not faster than "+target.getMoveSpeed()+")");
 				}
 				else {
-					logBattleInfo(attacker.getGameObject().getName()+" didn't attack, and thus does not harm the target.");
+					logBattleInfo(attacker.getGameObject().getNameWithNumber()+" didn't attack, and thus does not harm the target.");
 				}
 			}
-		return;
+			return;
 		}
 		if (parry) {
+			if (!attacker.hasAnAttack()) {
+				logBattleInfo(attacker.getGameObject().getNameWithNumber()+" didn't parry, and thus does not prevent an attack.");
+				return;
+			}
 			
+			Speed targetAttackSpeed = target.getAttackSpeed();
+			int targetAttackBox = target.getAttackCombatBox();
+			RealmComponent targetRc = RealmComponent.getRealmComponent(target.getGameObject());
+			RealmComponent attackerRc = RealmComponent.getRealmComponent(attacker.getGameObject());
+			if(targetRc.getTarget() != null && targetRc.getTarget().getGameObject() != attacker.getGameObject() && targetRc.get2ndTarget() != null && targetRc.get2ndTarget().getGameObject() != attacker.getGameObject()) {
+				logBattleInfo(attacker.getGameObject().getNameWithNumber()+" didn't parry, as target ("+target.getGameObject().getNameWithNumber()+") didn't aim at "+attacker.getGameObject().getNameWithNumber()+".");
+				return;
+			}
+			
+			int hitType = MISS;
+			boolean undercuttingAllowed = !attacker.getGameObject().hasThisAttribute(Constants.NO_UNDERCUT);
+			if (attacker.getAttackCombatBox()==targetAttackBox) {
+				// Intercepted!
+				hitType = INTERCEPT;
+				attackerCombat.setHitResult("Intercepted");
+				setWeaponHitForCharacter(attacker);
+				logBattleInfo("Intercepted! (box "+attacker.getAttackCombatBox()+" matches box "+targetAttackBox+")");
+			}
+			else if (undercuttingAllowed && attacker.getAttackSpeed().fasterThan(targetAttackSpeed)) {
+				// Undercut!
+				boolean stopsUndercut = ((RealmComponent)target).affectedByKey(Constants.STOP_UNDERCUT);
+				if (stopsUndercut) {
+					logBattleInfo("Miss! ("+attacker.getAttackSpeed()+" is faster than "+targetAttackSpeed+", but "+target.getGameObject().getNameWithNumber()+" cannot be undercut!)");
+				}
+				else {
+					hitType = UNDERCUT;
+					attackerCombat.setHitResult("Undercut");
+					setWeaponHitForCharacter(attacker);
+					logBattleInfo("Undercut! ("+attacker.getAttackSpeed()+" is faster than "+targetAttackSpeed+")");
+				}
+			}
+			else if (undercuttingAllowed && attacker.getAttackSpeed().equalTo(targetAttackSpeed) && attacker.hitsOnTie()) {
+				// Check for the special case where a character has a HIT_TIE treasure alerted
+				hitType = UNDERCUT;
+				attackerCombat.setHitResult("Undercut");
+				setWeaponHitForCharacter(attacker);
+				logBattleInfo("Undercut (hits on tie)! ("+attacker.getAttackSpeed()+" is equal to "+targetAttackSpeed+")");
+			}
+			if (!undercuttingAllowed && hitType==MISS) {
+				logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot be used to undercut the "+target.getGameObject().getNameWithNumber()+", and as such has missed.");
+			}
+			
+			if (hitType>MISS) {
+				//check for weapon weight vs base attack harm (weapon weight)
+				targetCombat.setWasParried(true);
+				logBattleInfo("Parried! ("+attacker.getAttackSpeed()+" parried "+attacker.getGameObject().getNameWithNumber()+".");
+			}
+			else  {
+				if (hitType==MISS) {
+					logBattleInfo("Missed! ("+attacker.getAttackSpeed()+" is not faster than "+targetAttackSpeed+")");
+				}
+				else {
+					logBattleInfo(attacker.getGameObject().getNameWithNumber()+" didn't parry, and thus does not prevent an attack.");
+				}
+			}
 		}
 	}
 	private static String getCombatantInformation(BattleChit chit,boolean attacker) {
@@ -1547,6 +1589,34 @@ public class BattleModel {
 		}
 		sb.append(" ");
 		return sb.toString();
+	}
+	private static int calculateBaseFumbleModifier(BattleChit attacker, BattleChit target, int hitType, HostPrefWrapper hostPrefs) {
+		int fumbleModifier = attacker.getAttackSpeed().getNum() - target.getMoveSpeed().getNum();
+		CombatWrapper attackerCombat = new CombatWrapper(attacker.getGameObject());
+		if (hostPrefs.hasPref(Constants.OPT_TWO_HANDED_WEAPONS) && RealmComponent.getRealmComponent(attackerCombat.getGameObject()).isCharacter()) {
+			CharacterWrapper attackerCharacter = new CharacterWrapper(attackerCombat.getGameObject());
+			ArrayList<GameObject> activeInventory = attackerCharacter.getActiveInventory();
+			boolean shield = false;
+			boolean twoHandedWeapon = false;
+			if (!attackerCharacter.affectedByKey(Constants.STRONG)) {
+				for (GameObject item : activeInventory) {
+					if (item.hasThisAttribute(Constants.SHIELD) && item.getThisAttribute("weight") != "L") shield = true;
+					if (item.hasThisAttribute(Constants.TWO_HANDED)) twoHandedWeapon = true;
+				}
+			}
+			if (twoHandedWeapon && shield) {
+				fumbleModifier = fumbleModifier+2;
+				logBattleInfo("fumble = "+attacker.getAttackSpeed().getNum()+" - "+target.getMoveSpeed().getNum()+" = "+fumbleModifier+" (base speed difference and two-handed weapon malus)");
+			}
+		}
+		else {
+			logBattleInfo("fumble = "+attacker.getAttackSpeed().getNum()+" - "+target.getMoveSpeed().getNum()+" = "+fumbleModifier+" (base speed difference)");
+		}
+		if (hitType==UNDERCUT) {
+			fumbleModifier += 4;
+			logBattleInfo("fumble + 4 = "+fumbleModifier+" (for undercut)");
+		}
+		return fumbleModifier;
 	}
 	private static void setWeaponHitForCharacter(BattleChit attacker) {
 		if (attacker.isCharacter() && !(new CharacterWrapper(attacker.getGameObject()).isTransmorphed())) {
