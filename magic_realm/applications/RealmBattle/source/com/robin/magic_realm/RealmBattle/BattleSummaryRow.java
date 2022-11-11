@@ -50,6 +50,7 @@ public class BattleSummaryRow implements Comparable<BattleSummaryRow> {
 	private static final int RESOLUTION_HIT = 1;
 	private static final int RESOLUTION_KILL = 2;
 	private static final int RESOLUTION_NOATTACK = 3;
+	private static final int RESOLUTION_NOPARRY = 4;
 	
 	private int hitOrder;
 	private GameObject attacker;
@@ -110,6 +111,10 @@ public class BattleSummaryRow implements Comparable<BattleSummaryRow> {
 				resolution = RESOLUTION_HIT;
 				hitType = " undercut";
 				break;
+			case BattleModel.PARRY_CANCELLED:
+				resolution = RESOLUTION_NOPARRY;
+				hitType = "'s parry was cancelled";
+				break;
 		}
 		
 		if (horse != null) {
@@ -164,7 +169,7 @@ public class BattleSummaryRow implements Comparable<BattleSummaryRow> {
 		}
 		title.append(attacker.getName());
 		title.append(getResolutionString());
-		if (resolution!=RESOLUTION_NOATTACK) {
+		if (resolution!=RESOLUTION_NOATTACK && resolution!=RESOLUTION_NOPARRY) {
 			title.append(" ");
 			if (target.hasThisAttribute(RealmComponent.CHARACTER)) {
 				title.append("the ");
@@ -363,6 +368,7 @@ public class BattleSummaryRow implements Comparable<BattleSummaryRow> {
 				g.fill(poly);
 				break;
 			case RESOLUTION_NOATTACK:
+			case RESOLUTION_NOPARRY:
 				break;
 		}
 		

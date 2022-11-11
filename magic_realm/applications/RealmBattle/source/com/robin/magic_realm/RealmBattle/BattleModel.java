@@ -43,6 +43,7 @@ public class BattleModel {
 	public static final int INTERCEPT = 1;
 	public static final int UNDERCUT = 2;
 	public static final int ATTACK_CANCELLED = -2;
+	public static final int PARRY_CANCELLED = -3;
 	public static boolean SKIP_REPOSITIONING = false;
 	public static boolean FORCE_MONSTER_FLIP = false;
 	
@@ -1266,8 +1267,13 @@ public class BattleModel {
 		RealmLogging.incrementIndent();
 		logBattleInfo(getCombatantInformation(attacker,true)+" vs. "+getCombatantInformation(target,false));
 		if (attackCancelled!=null) {
-			logBattleInfo("Attack Cancelled:  "+attackCancelled);
-			attackerCombat.addHitType(ATTACK_CANCELLED,target.getGameObject());
+			if (!parry) {
+				logBattleInfo("Attack Cancelled:  "+attackCancelled);
+				attackerCombat.addHitType(ATTACK_CANCELLED,target.getGameObject());
+				return;
+			}
+			logBattleInfo("Parry Cancelled:  "+attackCancelled);
+			attackerCombat.addHitType(PARRY_CANCELLED,target.getGameObject());
 			return;
 		}
 		if (!parry) {

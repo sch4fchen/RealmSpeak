@@ -1,4 +1,4 @@
-Super Realm Parry (and 1st Ed.): 8.10.7 p. 984
+Super Realm Parry (and 1st Ed.): 8.10.7 p. 984, check BattleSummaryRow
 ---:::FEATURES:::---
 Quest: option add icon for minor character
 Combat Help System
