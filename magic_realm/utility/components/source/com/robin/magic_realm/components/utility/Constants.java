@@ -214,6 +214,8 @@ public class Constants {
 	public static final String NO_AMBUSH = "no_ambush";
 	public static final String STRONG = "strong";
 	public static final String DUAL_WIELDING = "dual_wielding";
+	public static final String DUAL_WIELDING_HEAVY = "dual_wielding_heavy";
+	public static final String DUAL_WIELDING_TWO_HANDED = "dual_wielding_two_handed";
 	public static final String DUAL_WIELDING_ALERT = "dual_wielding_alert";
 	public static final String THROWING_WEAPONS = "throwing_weapons";
 	public static final String PARRY = "parry";
@@ -509,6 +511,8 @@ public class Constants {
 	public static final String OPT_TWO_HANDED_WEAPONS = "OptTwoHandedWeapons";
 	public static final String OPT_DUAL_WIELDING = "OptDualWielding";
 	public static final String OPT_DUAL_WIELDING_STRONG = "OptDualWieldingStrong";
+	public static final String OPT_DUAL_WIELDING_HEAVY = "OptDualWieldingHeavy";
+	public static final String OPT_DUAL_WIELDING_TWO_HANDED = "OptDualWieldingTwoHanded";
 	public static final String OPT_THROWING_WEAPONS = "OptThrowingWeapons";
 	public static final String OPT_PARRY = "OptParry";
 	public static final String OPT_PARRY_LIKE_SHIELD = "OptParryLikeShield";
