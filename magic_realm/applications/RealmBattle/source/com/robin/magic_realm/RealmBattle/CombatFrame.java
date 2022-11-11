@@ -2366,6 +2366,16 @@ public class CombatFrame extends JFrame {
 		}
 		updateSelection();
 	}
+	public void playManeuverOrParry(int box) {
+		String[] options = {"Maneuver","Parry","Cancel"};
+        int choice = JOptionPane.showOptionDialog(null, "Maneuver or Parry?", "Maneuver or Parry", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        if (choice == 0) {
+        	playManeuver(box);
+        }
+        else if (choice == 1) {
+        	playParry(box);
+        }
+	}
 	public void playManeuver(int box) {
 		// First, clear out any chits already in play for maneuver
 		Collection<RealmComponent> c = activeCharacter.getActiveMoveChitsAsRealmComponents();
@@ -2436,6 +2446,73 @@ public class CombatFrame extends JFrame {
 			return chit;
 		}
 		return null;
+	}
+	public void playParry(int box) {		
+		CombatWrapper charCombat = new CombatWrapper(activeCharacter.getGameObject());
+		GameObject go = charCombat.getCastSpell();
+		SpellWrapper spell = go==null?null:new SpellWrapper(go);
+		boolean mageCastedSpell = false;
+		if (spell!=null) {
+			// Can't play a normal attack if a spell was cast this round!
+			mageCastedSpell = true;
+			if (activeCharacter.affectedByKey(Constants.BATTLE_MAGE) || hostPrefs.hasPref(Constants.OPT_SR_STEEL_AGAINST_MAGIC)) {
+				if (activeCharacter.hasOnlyStaffAsActivatedWeapon() && !activeCharacter.hasActiveArmorChits()) {
+					mageCastedSpell = false;
+				}
+			}
+		}
+		
+		Collection<RealmComponent> fightOptions = getAvailableFightOptions(box);
+		ArrayList<WeaponChitComponent> weapons = activeCharacter.getActiveWeapons();		
+		if (!charCombat.getPlayedAttack() && !charCombat.getPlayedBonusParry()) {
+			// First, clear out any chits already in play for attack
+			for (CharacterActionChitComponent chit : activeCharacter.getActiveFightChits()) {
+				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
+				if (combat.getPlacedAsFightOrParry()) {
+					CombatWrapper.clearRoundCombatInfo(chit.getGameObject());
+				}
+			}
+			// Clear out weapon, if any played
+			if (weapons != null) {
+				for (WeaponChitComponent weapon : weapons) {
+					weapon.getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
+				}
+			}			
+		}
+		
+		RealmComponent characterRc= RealmComponent.getRealmComponent(activeCharacter.getGameObject());
+		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select Parry:",true);
+		int keyN = 0;
+		String key = "P"+(keyN);
+		for (RealmComponent chit : fightOptions) {
+			CombatWrapper combat = new CombatWrapper(chit.getGameObject());
+			if(combat.getPlacedAsFightOrParry()) continue;
+			if (!charCombat.getPlayedAttack() && !mageCastedSpell) {
+				for (WeaponChitComponent weapon : weapons) {
+					if (CombatWrapper.hasCombatInfo(weapon.getGameObject())) continue;
+					key = "P"+(keyN++);
+					chooser.addOption(key,"");
+					chooser.addRealmComponentToOption(key,chit);
+					chooser.addRealmComponentToOption(key,weapon);
+				}
+			}
+		}
+		chooser.setVisible(true);
+		if (chooser.getFirstSelectedComponent()!=null) {
+			RealmComponent chit = chooser.getFirstSelectedComponent();
+			RealmComponent weapon = chooser.getLastSelectedComponent();
+			CombatWrapper combatChit = new CombatWrapper(chit.getGameObject());
+			combatChit.setCombatBox(box);
+			combatChit.setPlacedAsParry(true);
+			combatChit.setSheetOwnerId(characterRc);
+			combatChit.setWeaponId(weapon);
+			CombatWrapper combatWeapon = new CombatWrapper(weapon.getGameObject());
+			combatWeapon.setCombatBox(box);
+			combatWeapon.setPlacedAsParry(true);
+			combatWeapon.setSheetOwnerId(characterRc);
+			charCombat.setPlayedAttack(true);
+		}
+		updateSelection();
 	}
 	public void replaceAttack(int box) {
 		WeaponChitComponent weapon = activeCharacter.getActivePrimaryWeapon();
@@ -2677,7 +2754,7 @@ public class CombatFrame extends JFrame {
 		}
 		
 		RealmComponent characterRc= RealmComponent.getRealmComponent(activeCharacter.getGameObject());
-		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select parry:",true);
+		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select Parry:",true);
 		int keyN = 0;
 		String key = "N"+(keyN);
 		

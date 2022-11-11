@@ -1,6 +1,7 @@
-Monster Control bug?
+ParryLikeShield+Parry when dual wielding!
 Super Realm Parry (and 1st Ed.): 8.10.7 p. 984
-Minor character: show hint with abilities in characters inventory; make ability description configurable nOR show existing description
+Test: QuestReward Cointrol
+Test: Minor Char: text in combat inventory?
 ---:::FEATURES:::---
 Quest: option add icon for minor character
 0001828: Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.

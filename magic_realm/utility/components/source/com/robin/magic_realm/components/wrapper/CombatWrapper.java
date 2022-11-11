@@ -57,6 +57,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String COMBAT_BOX = "CMB_BOX";
 	private static final String PLACED_AS_MOVE = "PAM"; // this is only important for the Unleash Power MOVE/FIGHT chits
 	private static final String PLACED_AS_FIGHT = "PAF"; // this is only important for the Unleash Power MOVE/FIGHT chits
+	private static final String PLACED_AS_PARRY = "PAP";
 	private static final String PLACED_AS_PARRY_SHIELD = "PAPS";
 	private static final String HAS_CHARGED = "CHRG";
 	private static final String CHARGED_BY_IDS = "CHRG_IDS"; // List of game object ids of the MOVE chits used (
@@ -550,6 +551,9 @@ public class CombatWrapper extends GameObjectWrapper {
 	public void setPlacedAsFight(boolean val) {
 		setBoolean(PLACED_AS_FIGHT,val);
 	}
+	public void setPlacedAsParry(boolean val) {
+		setBoolean(PLACED_AS_PARRY,val);
+	}
 	public void setPlacedAsParryShield(boolean val) {
 		setBoolean(PLACED_AS_PARRY_SHIELD,val);
 	}
@@ -565,11 +569,14 @@ public class CombatWrapper extends GameObjectWrapper {
 	public boolean getPlacedAsFight() {
 		return getBoolean(PLACED_AS_FIGHT);
 	}
+	public boolean getPlacedAsParry() {
+		return getBoolean(PLACED_AS_PARRY);
+	}
 	public boolean getPlacedAsParryShield() {
 		return getBoolean(PLACED_AS_PARRY_SHIELD);
 	}
 	public boolean getPlacedAsFightOrParry() {
-		return getPlacedAsFight() || getPlacedAsParryShield();
+		return getPlacedAsFight() || getPlacedAsParry() || getPlacedAsParryShield();
 	}
 	public String getWeaponId() {
 		return getString(WEAPON_ID);
@@ -708,6 +715,7 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,ATTACKER_IDS);
 			go.removeAttribute(COMBAT_BLOCK,COMBAT_BOX);
 			go.removeAttribute(COMBAT_BLOCK,PLACED_AS_FIGHT);
+			go.removeAttribute(COMBAT_BLOCK,PLACED_AS_PARRY);
 			go.removeAttribute(COMBAT_BLOCK,PLACED_AS_PARRY_SHIELD);
 			go.removeAttribute(COMBAT_BLOCK,PLACED_AS_MOVE);
 			go.removeAttribute(COMBAT_BLOCK,HIT_RESULT);

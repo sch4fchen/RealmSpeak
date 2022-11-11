@@ -3,7 +3,9 @@ QUEST UPDATE:
 # Update to quest A44 Quest Valiant Dragonfang Necklace
 # Update to quest A54 Quest Valiant Golden Arm Band
 NEW FEATURES:
+# Optional Rule (and new ability): Parrying (Super Realm variant)
 # Minor Characters: show description in inventory
+# Optional Rules (and new abilities) for removing some dual wielding restrictions
 
 Version 1.1.6.7
 QUEST UPDATE:

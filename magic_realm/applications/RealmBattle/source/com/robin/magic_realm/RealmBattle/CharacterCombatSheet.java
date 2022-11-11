@@ -423,8 +423,12 @@ public class CharacterCombatSheet extends CombatSheet {
 						for (RealmComponent chit : character.getActiveFightChits()) {
 							CombatWrapper combat = new CombatWrapper(chit.getGameObject());
 							int box = combat.getCombatBox();
-							if (box>0 && combat.getPlacedAsParryShield() && this.sheetOwner.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
-								layoutHash.put(Integer.valueOf(POS_SHIELD1+box-1),chit);
+							if (box>0 && this.sheetOwner.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
+								if (combat.getPlacedAsParry()) {
+									layoutHash.put(Integer.valueOf(POS_MOVE_BOX1+box-1),chit);
+								} else if (combat.getPlacedAsParryShield()) {
+									layoutHash.put(Integer.valueOf(POS_SHIELD1+box-1),chit);
+								}
 							}
 						}
 						ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
@@ -432,8 +436,12 @@ public class CharacterCombatSheet extends CombatSheet {
 							for (WeaponChitComponent weapon : weapons) {
 								CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
 								int box = combat.getCombatBox();
-								if (box>0 && combat.getPlacedAsParryShield() && this.sheetOwner.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
-									layoutHash.put(Integer.valueOf(POS_SHIELD1+box-1),weapon);
+								if (box>0 && this.sheetOwner.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
+									if (combat.getPlacedAsParry()) {
+										layoutHash.put(Integer.valueOf(POS_MOVE_BOX1+box-1),weapon);
+									} else if (combat.getPlacedAsParryShield()) {
+										layoutHash.put(Integer.valueOf(POS_SHIELD1+box-1),weapon);
+									}
 								}
 							}
 						}
@@ -638,8 +646,12 @@ public class CharacterCombatSheet extends CombatSheet {
 					combatFrame.replaceManeuver(index-POS_MOVE_BOX1+1);
 				}
 				else {
-					// Play maneuver
-					combatFrame.playManeuver(index-POS_MOVE_BOX1+1);
+					if (this.getSheetOwner() == RealmComponent.getRealmComponent(chararacterGo) && !activeCharacter.isTransformed() && (hostPrefs.hasPref(Constants.OPT_PARRY) || activeCharacter.affectedByKey(Constants.PARRY))){
+						combatFrame.playManeuverOrParry(index-POS_MOVE_BOX1+1);
+					} else {
+						// Play maneuver
+						combatFrame.playManeuver(index-POS_MOVE_BOX1+1);
+					}
 				}
 				break;
 			case POS_SHIELD1:
