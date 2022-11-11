@@ -2468,7 +2468,7 @@ public class CombatFrame extends JFrame {
 			// First, clear out any chits already in play for attack
 			for (CharacterActionChitComponent chit : activeCharacter.getActiveFightChits()) {
 				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
-				if (combat.getPlacedAsFightOrParry()) {
+				if (combat.getPlacedAsFightOrParryOrParryShield()) {
 					CombatWrapper.clearRoundCombatInfo(chit.getGameObject());
 				}
 			}
@@ -2487,7 +2487,7 @@ public class CombatFrame extends JFrame {
 		if (!mageCastedSpell) {
 			for (RealmComponent chit : fightOptions) {
 				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
-				if(combat.getPlacedAsFightOrParry()) continue;
+				if(combat.getPlacedAsFightOrParryOrParryShield()) continue;
 				for (WeaponChitComponent weapon : weapons) {
 					if (CombatWrapper.hasCombatInfo(weapon.getGameObject())) continue;
 					key = "P"+(keyN++);
@@ -2607,7 +2607,7 @@ public class CombatFrame extends JFrame {
 		int keyN = 0;
 		for (RealmComponent chit : fightOptions) {
 			CombatWrapper combat = new CombatWrapper(chit.getGameObject());
-			if(combat.getPlacedAsFightOrParry()) continue;
+			if(combat.getPlacedAsFightOrParryOrParryShield()) continue;
 					
 			if (weapons==null || weapons.isEmpty()) {
 				if (!charCombat.getPlayedAttack()) {
@@ -2656,7 +2656,7 @@ public class CombatFrame extends JFrame {
 			// First, clear out any chits already in play for attack
 			for (CharacterActionChitComponent chit : activeCharacter.getActiveFightChits()) {
 				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
-				if (combat.getPlacedAsFightOrParry()) {
+				if (combat.getPlacedAsFightOrParryOrParryShield()) {
 					CombatWrapper.clearRoundCombatInfo(chit.getGameObject());
 				}
 			}
@@ -2741,7 +2741,7 @@ public class CombatFrame extends JFrame {
 			// First, clear out any chits already in play for attack
 			for (CharacterActionChitComponent chit : activeCharacter.getActiveFightChits()) {
 				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
-				if (combat.getPlacedAsFightOrParry()) {
+				if (combat.getPlacedAsFightOrParryOrParryShield()) {
 					CombatWrapper.clearRoundCombatInfo(chit.getGameObject());
 				}
 			}
@@ -2769,7 +2769,7 @@ public class CombatFrame extends JFrame {
 		}
 		for (RealmComponent chit : fightOptions) {
 			CombatWrapper combat = new CombatWrapper(chit.getGameObject());
-			if(combat.getPlacedAsFightOrParry()) continue;
+			if(combat.getPlacedAsFightOrParryOrParryShield()) continue;
 			
 			if (!charCombat.getPlayedBonusParry() && activeCharacter.affectedByKey(Constants.BLOCK_NO_WEAPON)) {
 				key = "C"+(keyN++);

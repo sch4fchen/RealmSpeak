@@ -575,7 +575,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	public boolean getPlacedAsParryShield() {
 		return getBoolean(PLACED_AS_PARRY_SHIELD);
 	}
-	public boolean getPlacedAsFightOrParry() {
+	public boolean getPlacedAsFightOrParryOrParryShield() {
 		return getPlacedAsFight() || getPlacedAsParry() || getPlacedAsParryShield();
 	}
 	public String getWeaponId() {

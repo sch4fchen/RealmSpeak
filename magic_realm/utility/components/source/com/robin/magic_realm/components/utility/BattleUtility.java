@@ -122,8 +122,7 @@ public class BattleUtility {
 		ArrayList<RealmComponent> fightChits = new ArrayList<>();
 		for (RealmComponent rc : list) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-			if (combat.getCombatBox()>0 && (!rc.isActionChit() || combat.getPlacedAsFight())) {
-				// found it!
+			if (combat.getCombatBox()>0 && (!rc.isActionChit() || combat.getPlacedAsFight() || combat.getPlacedAsParry())) {
 				fightChits.add(rc);
 			}
 		}
