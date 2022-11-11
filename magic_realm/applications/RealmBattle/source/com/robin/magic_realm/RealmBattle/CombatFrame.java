@@ -2484,10 +2484,10 @@ public class CombatFrame extends JFrame {
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select Parry:",true);
 		int keyN = 0;
 		String key = "P"+(keyN);
-		for (RealmComponent chit : fightOptions) {
-			CombatWrapper combat = new CombatWrapper(chit.getGameObject());
-			if(combat.getPlacedAsFightOrParry()) continue;
-			if (!charCombat.getPlayedAttack() && !mageCastedSpell) {
+		if (!mageCastedSpell) {
+			for (RealmComponent chit : fightOptions) {
+				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
+				if(combat.getPlacedAsFightOrParry()) continue;
 				for (WeaponChitComponent weapon : weapons) {
 					if (CombatWrapper.hasCombatInfo(weapon.getGameObject())) continue;
 					key = "P"+(keyN++);
@@ -2776,7 +2776,7 @@ public class CombatFrame extends JFrame {
 				chooser.addOption(key,"");
 				chooser.addRealmComponentToOption(key,chit);
 			}
-			if (!charCombat.getPlayedAttack() && !mageCastedSpell && hostPrefs.hasPref(Constants.OPT_PARRY_LIKE_SHIELD) || activeCharacter.affectedByKey(Constants.PARRY_LIKE_SHIELD)) {
+			if (!mageCastedSpell && (hostPrefs.hasPref(Constants.OPT_PARRY_LIKE_SHIELD) || activeCharacter.affectedByKey(Constants.PARRY_LIKE_SHIELD))) {
 				for (WeaponChitComponent weapon : weapons) {
 					if (CombatWrapper.hasCombatInfo(weapon.getGameObject())) continue;
 					key = "W"+(keyN++);
