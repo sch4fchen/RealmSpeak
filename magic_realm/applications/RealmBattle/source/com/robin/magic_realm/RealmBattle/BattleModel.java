@@ -1270,256 +1270,258 @@ public class BattleModel {
 			attackerCombat.addHitType(ATTACK_CANCELLED,target.getGameObject());
 			return;
 		}
-		if (parry) {
-			return;
-		}
-		
-		int hitType = NO_ATTACK;
-		if (attacker.hasAnAttack()) {
-			hitType = MISS;
-			boolean undercuttingAllowed = !attacker.getGameObject().hasThisAttribute(Constants.NO_UNDERCUT);
-			if (attacker.getAttackCombatBox()==target.getManeuverCombatBox() || target.getManeuverCombatBox()==0) {
-				// Intercepted!
-				hitType = INTERCEPT;
-				attackerCombat.setHitResult("Intercepted");
-				setWeaponHitForCharacter(attacker);
-				logBattleInfo("Intercepted! (box "+attacker.getAttackCombatBox()+" matches box "+target.getManeuverCombatBox()+")");
-			}
-			else if (undercuttingAllowed && attacker.getAttackSpeed().fasterThan(target.getMoveSpeed())) {
-				// Undercut!
-				boolean stopsUndercut = ((RealmComponent)target).affectedByKey(Constants.STOP_UNDERCUT);
-				if (stopsUndercut) {
-					logBattleInfo("Miss! ("+attacker.getAttackSpeed()+" is faster than "+target.getMoveSpeed()+", but "+target.getGameObject().getNameWithNumber()+" cannot be undercut!)");
+		if (!parry) {
+			int hitType = NO_ATTACK;
+			if (attacker.hasAnAttack()) {
+				hitType = MISS;
+				boolean undercuttingAllowed = !attacker.getGameObject().hasThisAttribute(Constants.NO_UNDERCUT);
+				if (attacker.getAttackCombatBox()==target.getManeuverCombatBox() || target.getManeuverCombatBox()==0) {
+					// Intercepted!
+					hitType = INTERCEPT;
+					attackerCombat.setHitResult("Intercepted");
+					setWeaponHitForCharacter(attacker);
+					logBattleInfo("Intercepted! (box "+attacker.getAttackCombatBox()+" matches box "+target.getManeuverCombatBox()+")");
 				}
-				else {
+				else if (undercuttingAllowed && attacker.getAttackSpeed().fasterThan(target.getMoveSpeed())) {
+					// Undercut!
+					boolean stopsUndercut = ((RealmComponent)target).affectedByKey(Constants.STOP_UNDERCUT);
+					if (stopsUndercut) {
+						logBattleInfo("Miss! ("+attacker.getAttackSpeed()+" is faster than "+target.getMoveSpeed()+", but "+target.getGameObject().getNameWithNumber()+" cannot be undercut!)");
+					}
+					else {
+						hitType = UNDERCUT;
+						attackerCombat.setHitResult("Undercut");
+						setWeaponHitForCharacter(attacker);
+						logBattleInfo("Undercut! ("+attacker.getAttackSpeed()+" is faster than "+target.getMoveSpeed()+")");
+					}
+				}
+				else if (undercuttingAllowed && attacker.getAttackSpeed().equalTo(target.getMoveSpeed()) && attacker.hitsOnTie()) {
+					// Check for the special case where a character has a HIT_TIE treasure alerted
 					hitType = UNDERCUT;
 					attackerCombat.setHitResult("Undercut");
 					setWeaponHitForCharacter(attacker);
-					logBattleInfo("Undercut! ("+attacker.getAttackSpeed()+" is faster than "+target.getMoveSpeed()+")");
+					logBattleInfo("Undercut (hits on tie)! ("+attacker.getAttackSpeed()+" is equal to "+target.getMoveSpeed()+")");
+				}
+				if (!undercuttingAllowed && hitType==MISS) {
+					logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot be used to undercut the "+target.getGameObject().getNameWithNumber()+", and as such has missed.");
 				}
 			}
-			else if (undercuttingAllowed && attacker.getAttackSpeed().equalTo(target.getMoveSpeed()) && attacker.hitsOnTie()) {
-				// Check for the special case where a character has a HIT_TIE treasure alerted
-				hitType = UNDERCUT;
-				attackerCombat.setHitResult("Undercut");
-				setWeaponHitForCharacter(attacker);
-				logBattleInfo("Undercut (hits on tie)! ("+attacker.getAttackSpeed()+" is equal to "+target.getMoveSpeed()+")");
-			}
-			if (!undercuttingAllowed && hitType==MISS) {
-				logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot be used to undercut the "+target.getGameObject().getNameWithNumber()+", and as such has missed.");
-			}
-		}
-		attackerCombat.addHitType(hitType,target.getGameObject());
-		
-		if (hitType>MISS) {
-			int fumbleModifier = 0;
-			if (hostPrefs.hasPref(Constants.OPT_FUMBLE)) {
-				fumbleModifier = attacker.getAttackSpeed().getNum() - target.getMoveSpeed().getNum();
-				if (hostPrefs.hasPref(Constants.OPT_TWO_HANDED_WEAPONS) && RealmComponent.getRealmComponent(attackerCombat.getGameObject()).isCharacter()) {
-					CharacterWrapper attackerCharacter = new CharacterWrapper(attackerCombat.getGameObject());
-					ArrayList<GameObject> activeInventory = attackerCharacter.getActiveInventory();
-					boolean shield = false;
-					boolean twoHandedWeapon = false;
-					if (!attackerCharacter.affectedByKey(Constants.STRONG)) {
-						for (GameObject item : activeInventory) {
-							if (item.hasThisAttribute(Constants.SHIELD) && item.getThisAttribute("weight") != "L") shield = true;
-							if (item.hasThisAttribute(Constants.TWO_HANDED)) twoHandedWeapon = true;
+			attackerCombat.addHitType(hitType,target.getGameObject());
+			
+			if (hitType>MISS) {
+				int fumbleModifier = 0;
+				if (hostPrefs.hasPref(Constants.OPT_FUMBLE)) {
+					fumbleModifier = attacker.getAttackSpeed().getNum() - target.getMoveSpeed().getNum();
+					if (hostPrefs.hasPref(Constants.OPT_TWO_HANDED_WEAPONS) && RealmComponent.getRealmComponent(attackerCombat.getGameObject()).isCharacter()) {
+						CharacterWrapper attackerCharacter = new CharacterWrapper(attackerCombat.getGameObject());
+						ArrayList<GameObject> activeInventory = attackerCharacter.getActiveInventory();
+						boolean shield = false;
+						boolean twoHandedWeapon = false;
+						if (!attackerCharacter.affectedByKey(Constants.STRONG)) {
+							for (GameObject item : activeInventory) {
+								if (item.hasThisAttribute(Constants.SHIELD) && item.getThisAttribute("weight") != "L") shield = true;
+								if (item.hasThisAttribute(Constants.TWO_HANDED)) twoHandedWeapon = true;
+							}
+						}
+						if (twoHandedWeapon && shield) {
+							fumbleModifier = fumbleModifier+2;
+							logBattleInfo("fumble = "+attacker.getAttackSpeed().getNum()+" - "+target.getMoveSpeed().getNum()+" = "+fumbleModifier+" (base speed difference and two-handed weapon malus)");
 						}
 					}
-					if (twoHandedWeapon && shield) {
-						fumbleModifier = fumbleModifier+2;
-						logBattleInfo("fumble = "+attacker.getAttackSpeed().getNum()+" - "+target.getMoveSpeed().getNum()+" = "+fumbleModifier+" (base speed difference and two-handed weapon malus)");
+					else {
+						logBattleInfo("fumble = "+attacker.getAttackSpeed().getNum()+" - "+target.getMoveSpeed().getNum()+" = "+fumbleModifier+" (base speed difference)");
 					}
-				}
-				else {
-					logBattleInfo("fumble = "+attacker.getAttackSpeed().getNum()+" - "+target.getMoveSpeed().getNum()+" = "+fumbleModifier+" (base speed difference)");
-				}
-				if (hitType==UNDERCUT) {
-					fumbleModifier += 4;
-					logBattleInfo("fumble + 4 = "+fumbleModifier+" (for undercut)");
-				}
-				/*
-				 * Possibilities:
-				 * 		No OPT_SEPARATE_RIDER
-				 * 			Targeting non-horseback rider - DONE
-				 * 			Targeting horseback rider - DONE
-				 * 		OPT_SEPARATE_RIDER
-				 * 			Targeting non-horseback rider - DONE
-				 * 			Targeting horseback rider
-				 * 			Targeting rider's horse - DONE
-				 */
-				if (hostPrefs.hasPref(Constants.OPT_RIDING_HORSES)) {
-					// Determine if we need to do rider maneuver adjustment
-					RealmComponent targetRc = (RealmComponent)target;
-					if (targetRc.getHorse()!=null && targetCombat.isTargetingRider(attacker.getGameObject())) {
-						// This is the new situation that we need to handle
-						//		- Get the rider's maneuver (if any) separate from the horse
-						//		- Need the box, and the speed...
-						int mBox = 0;
-						Speed mSpeed = null;
-						if (targetRc instanceof Horsebackable) {
-							Horsebackable hb = (Horsebackable)targetRc;
-							mBox = hb.getManeuverCombatBox(false);
-							mSpeed = hb.getMoveSpeed(false);
-							if (mBox>0 && mSpeed!=null) {
-								logBattleInfo("Applying special horse/rider maneuver rules:");
-								
-								// Apply the extra fumbleModifier here
-								fumbleModifier += (attacker.getAttackSpeed().getNum() - mSpeed.getNum());
-								logBattleInfo("fumble + "+attacker.getAttackSpeed().getNum()+" - "+mSpeed.getNum()+" = "+fumbleModifier+" (base attack speed versus rider)");
-								
-								if (attacker.getAttackCombatBox()==mBox) {
-									logBattleInfo("Intercepted Rider! (box "+attacker.getAttackCombatBox()+" matches box "+mBox+")");
-								}
-								else {
-									logBattleInfo("Did not Intercept Rider! (box "+attacker.getAttackCombatBox()+" does not match box "+mBox+")");
-									fumbleModifier += 4;
-									logBattleInfo("fumble + 4 = "+fumbleModifier+" (for failing to intercept rider)");
+					if (hitType==UNDERCUT) {
+						fumbleModifier += 4;
+						logBattleInfo("fumble + 4 = "+fumbleModifier+" (for undercut)");
+					}
+					/*
+					 * Possibilities:
+					 * 		No OPT_SEPARATE_RIDER
+					 * 			Targeting non-horseback rider - DONE
+					 * 			Targeting horseback rider - DONE
+					 * 		OPT_SEPARATE_RIDER
+					 * 			Targeting non-horseback rider - DONE
+					 * 			Targeting horseback rider
+					 * 			Targeting rider's horse - DONE
+					 */
+					if (hostPrefs.hasPref(Constants.OPT_RIDING_HORSES)) {
+						// Determine if we need to do rider maneuver adjustment
+						RealmComponent targetRc = (RealmComponent)target;
+						if (targetRc.getHorse()!=null && targetCombat.isTargetingRider(attacker.getGameObject())) {
+							// This is the new situation that we need to handle
+							//		- Get the rider's maneuver (if any) separate from the horse
+							//		- Need the box, and the speed...
+							int mBox = 0;
+							Speed mSpeed = null;
+							if (targetRc instanceof Horsebackable) {
+								Horsebackable hb = (Horsebackable)targetRc;
+								mBox = hb.getManeuverCombatBox(false);
+								mSpeed = hb.getMoveSpeed(false);
+								if (mBox>0 && mSpeed!=null) {
+									logBattleInfo("Applying special horse/rider maneuver rules:");
+									
+									// Apply the extra fumbleModifier here
+									fumbleModifier += (attacker.getAttackSpeed().getNum() - mSpeed.getNum());
+									logBattleInfo("fumble + "+attacker.getAttackSpeed().getNum()+" - "+mSpeed.getNum()+" = "+fumbleModifier+" (base attack speed versus rider)");
+									
+									if (attacker.getAttackCombatBox()==mBox) {
+										logBattleInfo("Intercepted Rider! (box "+attacker.getAttackCombatBox()+" matches box "+mBox+")");
+									}
+									else {
+										logBattleInfo("Did not Intercept Rider! (box "+attacker.getAttackCombatBox()+" does not match box "+mBox+")");
+										fumbleModifier += 4;
+										logBattleInfo("fumble + 4 = "+fumbleModifier+" (for failing to intercept rider)");
+									}
 								}
 							}
 						}
 					}
 				}
-			}
-			int currentNewWounds = 0;
-			boolean hitCausedHarm = false;
-			String magicType = attacker.getMagicType();
-			if (magicType!=null && magicType.trim().length()>0) {
-				if ((attacker.isDenizen() &&  "V".equals(magicType)) || Constants.POWER_OF_THE_PIT.matches(magicType)) {
+				int currentNewWounds = 0;
+				boolean hitCausedHarm = false;
+				String magicType = attacker.getMagicType();
+				if (magicType!=null && magicType.trim().length()>0) {
+					if ((attacker.isDenizen() &&  "V".equals(magicType)) || Constants.POWER_OF_THE_PIT.matches(magicType)) {
+						if (attacker instanceof SpellWrapper) {
+							// Spells belong to characters
+							SpellWrapper spell = (SpellWrapper)attacker;
+							attacker = new CharacterChitComponent(spell.getCaster().getGameObject());
+						}
+						// Demon's Power of the Pit
+						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with Power of the Pit along box "+attacker.getAttackCombatBox());
+						PowerOfThePit pop = PowerOfThePit.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject(),false,0,attacker.getAttackSpeed());
+						ArrayList<GameObject> kills = new ArrayList<>(pop.getKills());
+						kills.remove(targetCombat.getGameObject()); // Because targetCombat will be handled normally
+						
+						for (GameObject kill:kills) {
+							logBattleInfo(kill.getNameWithNumber()+" was killed!");
+							killedTallyHash.put(kill,attacker.getGameObject());
+							killTallyHash.put(attacker.getGameObject(),kill);
+							if (!killerOrder.contains(attacker.getGameObject())) killerOrder.add(attacker.getGameObject());
+							BattleUtility.handleSpoilsOfWar((RealmComponent)attacker,RealmComponent.getRealmComponent(kill));
+						}
+						hitCausedHarm = pop.harmWasApplied();
+						spellCasting = true;
+					}
+					else if (attacker.isDenizen() && "VIII".equals(magicType)) {
+						// Imp's Curse
+						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with a Curse along box "+attacker.getAttackCombatBox());
+						Curse curse = Curse.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject());
+						hitCausedHarm = curse.harmWasApplied();
+						spellCasting = true;
+					}
+					else if (attacker instanceof SpellWrapper && Constants.WALL_OF_FORCE.matches(magicType)) {
+						hitCausedHarm = WallOfForce.apply(new SpellWrapper(attacker.getGameObject()),target.getGameObject());
+						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with by "+attacker.getName()+" along box "+attacker.getAttackCombatBox());
+						spellCasting = true;
+					}
+					else if (attacker instanceof SpellWrapper && Constants.FEAR.matches(magicType)) {
+						hitCausedHarm = Fear.apply(new SpellWrapper(attacker.getGameObject()),target.getGameObject(),battleLocation);
+						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with by "+attacker.getName()+" along box "+attacker.getAttackCombatBox());
+						spellCasting = true;
+					}
+				}
+				else {
+					// Get the adjusted Attacker Harm (fumble, missile applied)
+					Harm attackerHarm = getAdjustedHarm(attacker,fumbleModifier,targetCombat.getGameObject().getStringId());
+					
+					if (attacker instanceof SpellWrapper) {
+						// Spells should ref back to caster
+						SpellWrapper spell = (SpellWrapper)attacker;
+						CombatWrapper spellCaster = new CombatWrapper(spell.getCaster().getGameObject());
+						spellCaster.addHarmApplied(attackerHarm,targetCombat.getGameObject());
+						spellCasting = true;
+					}
+					else {
+						attackerCombat.addHarmApplied(attackerHarm,targetCombat.getGameObject());
+					}
+							
+					// Apply the hit
+					targetCombat.addHitBy(attacker.getGameObject());
+					currentNewWounds = targetCombat.getNewWounds();
+					
+					logBattleInfo(target.getGameObject().getNameWithNumber()+" is hit with "+attackerHarm+" harm along box "+attacker.getAttackCombatBox());
+					hitCausedHarm = target.applyHit(theGame,hostPrefs,attacker,attacker.getAttackCombatBox(),attackerHarm,attackOrderPos);
+				}
+				
+				if (hitCausedHarm) {
+					// Only add to totalHits, when some sort of harm is caused
+					totalHits++;
+					
+					// Determine wounds (if any)
+					int woundsThisHit = targetCombat.getNewWounds() - currentNewWounds;
+					if (woundsThisHit>0) {
+						logBattleInfo(target.getGameObject().getNameWithNumber()+" takes "+woundsThisHit+" wound"+(woundsThisHit==1?"":"s"));
+					}
+				}
+				
+				// Check to see if the target was killed by this attacker,
+				// and if so, give the killing character some points!
+				if (targetCombat.getKilledBy()!=null && targetCombat.getKilledBy().equals(attacker.getGameObject())) {
+					logBattleInfo(target.getGameObject().getNameWithNumber()+" was killed!");
+					RealmComponent rc;
 					if (attacker instanceof SpellWrapper) {
 						// Spells belong to characters
 						SpellWrapper spell = (SpellWrapper)attacker;
-						attacker = new CharacterChitComponent(spell.getCaster().getGameObject());
-					}
-					// Demon's Power of the Pit
-					logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with Power of the Pit along box "+attacker.getAttackCombatBox());
-					PowerOfThePit pop = PowerOfThePit.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject(),false,0,attacker.getAttackSpeed());
-					ArrayList<GameObject> kills = new ArrayList<>(pop.getKills());
-					kills.remove(targetCombat.getGameObject()); // Because targetCombat will be handled normally
-					
-					for (GameObject kill:kills) {
-						logBattleInfo(kill.getNameWithNumber()+" was killed!");
-						killedTallyHash.put(kill,attacker.getGameObject());
-						killTallyHash.put(attacker.getGameObject(),kill);
-						if (!killerOrder.contains(attacker.getGameObject())) killerOrder.add(attacker.getGameObject());
-						BattleUtility.handleSpoilsOfWar((RealmComponent)attacker,RealmComponent.getRealmComponent(kill));
-					}
-					hitCausedHarm = pop.harmWasApplied();
-					spellCasting = true;
-				}
-				else if (attacker.isDenizen() && "VIII".equals(magicType)) {
-					// Imp's Curse
-					logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with a Curse along box "+attacker.getAttackCombatBox());
-					Curse curse = Curse.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject());
-					hitCausedHarm = curse.harmWasApplied();
-					spellCasting = true;
-				}
-				else if (attacker instanceof SpellWrapper && Constants.WALL_OF_FORCE.matches(magicType)) {
-					hitCausedHarm = WallOfForce.apply(new SpellWrapper(attacker.getGameObject()),target.getGameObject());
-					logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with by "+attacker.getName()+" along box "+attacker.getAttackCombatBox());
-					spellCasting = true;
-				}
-				else if (attacker instanceof SpellWrapper && Constants.FEAR.matches(magicType)) {
-					hitCausedHarm = Fear.apply(new SpellWrapper(attacker.getGameObject()),target.getGameObject(),battleLocation);
-					logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with by "+attacker.getName()+" along box "+attacker.getAttackCombatBox());
-					spellCasting = true;
-				}
-			}
-			else {
-				// Get the adjusted Attacker Harm (fumble, missile applied)
-				Harm attackerHarm = getAdjustedHarm(attacker,fumbleModifier,targetCombat.getGameObject().getStringId());
-				
-				if (attacker instanceof SpellWrapper) {
-					// Spells should ref back to caster
-					SpellWrapper spell = (SpellWrapper)attacker;
-					CombatWrapper spellCaster = new CombatWrapper(spell.getCaster().getGameObject());
-					spellCaster.addHarmApplied(attackerHarm,targetCombat.getGameObject());
-					spellCasting = true;
-				}
-				else {
-					attackerCombat.addHarmApplied(attackerHarm,targetCombat.getGameObject());
-				}
-						
-				// Apply the hit
-				targetCombat.addHitBy(attacker.getGameObject());
-				currentNewWounds = targetCombat.getNewWounds();
-				
-				logBattleInfo(target.getGameObject().getNameWithNumber()+" is hit with "+attackerHarm+" harm along box "+attacker.getAttackCombatBox());
-				hitCausedHarm = target.applyHit(theGame,hostPrefs,attacker,attacker.getAttackCombatBox(),attackerHarm,attackOrderPos);
-			}
-			
-			if (hitCausedHarm) {
-				// Only add to totalHits, when some sort of harm is caused
-				totalHits++;
-				
-				// Determine wounds (if any)
-				int woundsThisHit = targetCombat.getNewWounds() - currentNewWounds;
-				if (woundsThisHit>0) {
-					logBattleInfo(target.getGameObject().getNameWithNumber()+" takes "+woundsThisHit+" wound"+(woundsThisHit==1?"":"s"));
-				}
-			}
-			
-			// Check to see if the target was killed by this attacker,
-			// and if so, give the killing character some points!
-			if (targetCombat.getKilledBy()!=null && targetCombat.getKilledBy().equals(attacker.getGameObject())) {
-				logBattleInfo(target.getGameObject().getNameWithNumber()+" was killed!");
-				RealmComponent rc;
-				if (attacker instanceof SpellWrapper) {
-					// Spells belong to characters
-					SpellWrapper spell = (SpellWrapper)attacker;
-					GameObject caster = spell.getCaster().getGameObject();
-					if (attacker.getGameObject().hasThisAttribute(Constants.DRAIN)) {
-						String vul = target.getGameObject().getThisAttribute("vulnerability");
-						if (vul!=null) {
-							CombatWrapper casterCombat = new CombatWrapper(caster);
-							int amt = Strength.valueOf(vul).getLevels();
-							casterCombat.addHealing(amt);
-							RealmLogging.logMessage(
-									caster.getName(),
-									"Life force of the "
-										+target.getGameObject().getNameWithNumber()
-										+" is worth "+amt+" asterisk"+(amt==1?"":"s"));
+						GameObject caster = spell.getCaster().getGameObject();
+						if (attacker.getGameObject().hasThisAttribute(Constants.DRAIN)) {
+							String vul = target.getGameObject().getThisAttribute("vulnerability");
+							if (vul!=null) {
+								CombatWrapper casterCombat = new CombatWrapper(caster);
+								int amt = Strength.valueOf(vul).getLevels();
+								casterCombat.addHealing(amt);
+								RealmLogging.logMessage(
+										caster.getName(),
+										"Life force of the "
+											+target.getGameObject().getNameWithNumber()
+											+" is worth "+amt+" asterisk"+(amt==1?"":"s"));
+							}
 						}
-					}
-					rc = RealmComponent.getRealmComponent(caster);
-					attacker = RealmComponent.getBattleChit(rc.getGameObject());
-				}
-				else if (attacker instanceof MonsterPartChitComponent) {
-					// Might be a transformed character or controlled monster part
-					rc = (RealmComponent)attacker;
-					GameObject monster = attacker.getGameObject().getHeldBy();
-					GameObject spellOrTile = monster.getHeldBy();
-					RealmComponent test = RealmComponent.getRealmComponent(spellOrTile);
-					if (test.isSpell()) {
-						SpellWrapper spell = new SpellWrapper(spellOrTile);
-						CharacterWrapper character = spell.getCaster();
-						rc = RealmComponent.getRealmComponent(character.getGameObject());
+						rc = RealmComponent.getRealmComponent(caster);
 						attacker = RealmComponent.getBattleChit(rc.getGameObject());
 					}
+					else if (attacker instanceof MonsterPartChitComponent) {
+						// Might be a transformed character or controlled monster part
+						rc = (RealmComponent)attacker;
+						GameObject monster = attacker.getGameObject().getHeldBy();
+						GameObject spellOrTile = monster.getHeldBy();
+						RealmComponent test = RealmComponent.getRealmComponent(spellOrTile);
+						if (test.isSpell()) {
+							SpellWrapper spell = new SpellWrapper(spellOrTile);
+							CharacterWrapper character = spell.getCaster();
+							rc = RealmComponent.getRealmComponent(character.getGameObject());
+							attacker = RealmComponent.getBattleChit(rc.getGameObject());
+						}
+					}
+					else {
+						rc = (RealmComponent)attacker;
+					}
+					RealmComponent targetRc = (RealmComponent)target;
+					
+					GameObject attackerGo = ((RealmComponent)attacker).isMonsterPart()?attacker.getGameObject().getHeldBy():attacker.getGameObject();
+					
+					killedTallyHash.put(target.getGameObject(),attackerGo);
+					killTallyHash.put(attackerGo,target.getGameObject());
+					if (!killerOrder.contains(attackerGo)) killerOrder.add(attackerGo);
+					BattleUtility.handleSpoilsOfWar(rc,targetRc);
 				}
 				else {
-					rc = (RealmComponent)attacker;
+					logBattleInfo(target.getGameObject().getNameWithNumber()+" was not killed.");
 				}
-				RealmComponent targetRc = (RealmComponent)target;
-				
-				GameObject attackerGo = ((RealmComponent)attacker).isMonsterPart()?attacker.getGameObject().getHeldBy():attacker.getGameObject();
-				
-				killedTallyHash.put(target.getGameObject(),attackerGo);
-				killTallyHash.put(attackerGo,target.getGameObject());
-				if (!killerOrder.contains(attackerGo)) killerOrder.add(attackerGo);
-				BattleUtility.handleSpoilsOfWar(rc,targetRc);
 			}
 			else {
-				logBattleInfo(target.getGameObject().getNameWithNumber()+" was not killed.");
+				if (hitType==MISS) {
+					logBattleInfo("Missed! ("+attacker.getAttackSpeed()+" is not faster than "+target.getMoveSpeed()+")");
+				}
+				else {
+					logBattleInfo(attacker.getGameObject().getName()+" didn't attack, and thus does not harm the target.");
+				}
 			}
+		return;
 		}
-		else {
-			if (hitType==MISS) {
-				logBattleInfo("Missed! ("+attacker.getAttackSpeed()+" is not faster than "+target.getMoveSpeed()+")");
-			}
-			else {
-				logBattleInfo(attacker.getGameObject().getName()+" didn't attack, and thus does not harm the target.");
-			}
+		if (parry) {
+			
 		}
 	}
 	private static String getCombatantInformation(BattleChit chit,boolean attacker) {
