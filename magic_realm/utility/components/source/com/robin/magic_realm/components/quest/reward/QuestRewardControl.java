@@ -29,8 +29,8 @@ import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.QuestLocation;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
-import com.robin.magic_realm.components.wrapper.CombatWrapper;
 
 public class QuestRewardControl extends QuestReward {
 	
@@ -81,13 +81,7 @@ public class QuestRewardControl extends QuestReward {
 					chit.setLightSideUp();
 				}
 			}
-			CharacterWrapper controlledMonster = new CharacterWrapper(target.getGameObject());
-			controlledMonster.setPlayerName(character.getPlayerName());
-			controlledMonster.setWantsCombat(character.getWantsCombat());
-			target.setOwner(RealmComponent.getRealmComponent(character.getGameObject()));
-			CombatWrapper combat = new CombatWrapper(controlledMonster.getGameObject());
-			combat.setSheetOwner(true);
-			combat.setWatchful(false);
+			character.addHireling(target.getGameObject(),Constants.TEN_YEARS);
 		}
 	}
 	
