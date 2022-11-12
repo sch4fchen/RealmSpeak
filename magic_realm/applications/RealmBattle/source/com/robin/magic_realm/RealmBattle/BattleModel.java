@@ -42,6 +42,8 @@ public class BattleModel {
 	public static final int MISS = 0;
 	public static final int INTERCEPT = 1;
 	public static final int UNDERCUT = 2;
+	public static final int INTERCEPT_PARRY = 3;
+	public static final int UNDERCUT_PARRY = 4;
 	public static final int ATTACK_CANCELLED = -2;
 	public static final int PARRY_CANCELLED = -3;
 	public static boolean SKIP_REPOSITIONING = false;
@@ -1528,7 +1530,7 @@ public class BattleModel {
 			boolean undercuttingAllowed = !attacker.getGameObject().hasThisAttribute(Constants.NO_UNDERCUT);
 			if (attacker.getAttackCombatBox()==targetAttackBox) {
 				// Intercepted!
-				hitType = INTERCEPT;
+				hitType = INTERCEPT_PARRY;
 				attackerCombat.setHitResult("Intercepted");
 				setWeaponHitForCharacter(attacker);
 				logBattleInfo("Intercepted! (box "+attacker.getAttackCombatBox()+" matches box "+targetAttackBox+")");
@@ -1540,7 +1542,7 @@ public class BattleModel {
 					logBattleInfo("Miss! ("+attacker.getAttackSpeed()+" is faster than "+targetAttackSpeed+", but "+target.getGameObject().getNameWithNumber()+" cannot be undercut!)");
 				}
 				else {
-					hitType = UNDERCUT;
+					hitType = UNDERCUT_PARRY;
 					attackerCombat.setHitResult("Undercut");
 					setWeaponHitForCharacter(attacker);
 					logBattleInfo("Undercut! ("+attacker.getAttackSpeed()+" is faster than "+targetAttackSpeed+")");
@@ -1548,7 +1550,7 @@ public class BattleModel {
 			}
 			else if (undercuttingAllowed && attacker.getAttackSpeed().equalTo(targetAttackSpeed) && attacker.hitsOnTie()) {
 				// Check for the special case where a character has a HIT_TIE treasure alerted
-				hitType = UNDERCUT;
+				hitType = UNDERCUT_PARRY;
 				attackerCombat.setHitResult("Undercut");
 				setWeaponHitForCharacter(attacker);
 				logBattleInfo("Undercut (hits on tie)! ("+attacker.getAttackSpeed()+" is equal to "+targetAttackSpeed+")");
@@ -1557,10 +1559,12 @@ public class BattleModel {
 				logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot be used to undercut the "+target.getGameObject().getNameWithNumber()+", and as such has missed.");
 			}
 			
+			attackerCombat.addHitType(hitType,target.getGameObject());
+			
 			if (hitType>MISS) {
 				//check for weapon weight vs base attack harm (weapon weight)
 				targetCombat.setWasParried(true);
-				logBattleInfo("Parried! ("+attacker.getAttackSpeed()+" parried "+attacker.getGameObject().getNameWithNumber()+".");
+				logBattleInfo("Parried! "+attacker.getGameObject().getNameWithNumber()+" parried "+target.getGameObject().getNameWithNumber()+".");
 			}
 			else  {
 				if (hitType==MISS) {
