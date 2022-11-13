@@ -1567,7 +1567,7 @@ public class BattleModel {
 					hitType = CANNOT_PARRY;
 					logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot parry spells.");
 				}
-				else if (targetBc.isMonster() && ((MonsterChitComponent)attacker).isRedSideUp()) {
+				else if (targetBc.isMonster() && ((MonsterChitComponent)targetBc).isRedSideUp()) {
 					hitType = CANNOT_PARRY;
 					logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot parry red side up tremendous monsters.");
 				}

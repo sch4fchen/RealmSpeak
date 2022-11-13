@@ -100,7 +100,6 @@ public class BattleSummaryRow implements Comparable<BattleSummaryRow> {
 				resolution = RESOLUTION_NOATTACK;
 				hitType = " didn't attack";
 				break;
-			case BattleModel.CANNOT_PARRY:	
 			case BattleModel.MISS:
 				resolution = RESOLUTION_MISS;
 				hitType = " missed";
@@ -124,6 +123,10 @@ public class BattleSummaryRow implements Comparable<BattleSummaryRow> {
 			case BattleModel.UNDERCUT_PARRY:
 				resolution = RESOLUTION_PARRY;
 				hitType = " parried (undercut)";
+				break;
+			case BattleModel.CANNOT_PARRY:
+				resolution = RESOLUTION_NOPARRY;
+				hitType = " could not parry";
 				break;
 		}
 		
