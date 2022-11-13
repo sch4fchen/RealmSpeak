@@ -2447,7 +2447,22 @@ public class CombatFrame extends JFrame {
 		}
 		return null;
 	}
-	public void playParry(int box) {		
+	public void playParry(int box) {
+		ArrayList<WeaponChitComponent> weapons = activeCharacter.getActiveWeapons();
+		if (weapons == null || weapons.isEmpty()) {
+			boolean weaponAvailable = false;
+			for (WeaponChitComponent weapon : weapons) {
+				if (!weapon.isMissile()) {
+					weaponAvailable = true;
+					break;
+				}
+			}
+			if (!weaponAvailable) {
+				JOptionPane.showMessageDialog(this,"There are no weapons for parrying available to you.\n(Check your inventory!)","Cannot Parry",JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+		}
+		
 		CombatWrapper charCombat = new CombatWrapper(activeCharacter.getGameObject());
 		GameObject go = charCombat.getCastSpell();
 		SpellWrapper spell = go==null?null:new SpellWrapper(go);
@@ -2461,9 +2476,6 @@ public class CombatFrame extends JFrame {
 				}
 			}
 		}
-		
-		Collection<RealmComponent> fightOptions = getAvailableFightOptions(box);
-		ArrayList<WeaponChitComponent> weapons = activeCharacter.getActiveWeapons();		
 		if (!charCombat.getPlayedAttack() && !charCombat.getPlayedBonusParry()) {
 			// First, clear out any chits already in play for attack
 			for (CharacterActionChitComponent chit : activeCharacter.getActiveFightChits()) {
@@ -2480,16 +2492,18 @@ public class CombatFrame extends JFrame {
 			}			
 		}
 		
+		Collection<RealmComponent> fightOptions = getAvailableFightOptions(box);
 		RealmComponent characterRc= RealmComponent.getRealmComponent(activeCharacter.getGameObject());
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select Parry:",true);
 		int keyN = 0;
 		String key = "P"+(keyN);
-		if (!mageCastedSpell) {
+		if (!mageCastedSpell && weapons != null) {
 			for (RealmComponent chit : fightOptions) {
 				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
 				if(combat.getPlacedAsFightOrParryOrParryShield()) continue;
 				for (WeaponChitComponent weapon : weapons) {
 					if (CombatWrapper.hasCombatInfo(weapon.getGameObject())) continue;
+					if (weapon.isMissile()) continue;
 					key = "P"+(keyN++);
 					chooser.addOption(key,"");
 					chooser.addRealmComponentToOption(key,chit);
