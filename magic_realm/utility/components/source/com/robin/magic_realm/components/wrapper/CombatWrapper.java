@@ -261,11 +261,14 @@ public class CombatWrapper extends GameObjectWrapper {
 	public String getHitResult() {
 		return getString(HIT_RESULT);
 	}
-	public void setWasParried(boolean val) {
-		setBoolean(PARRIED,val);
+	public void setWasParried(String val) {
+		addListItem(PARRIED,val);
 	}
 	public boolean wasParried() {
 		return getBoolean(PARRIED);
+	}
+	public ArrayList<String> getParriedBy() {
+		return getList(PARRIED);
 	}
 	public void setHitByOrderNumber(int val) {
 		setInt(HIT_BY_ORDER_NUMBER,val);
