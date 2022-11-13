@@ -1256,7 +1256,7 @@ public class BattleModel {
 		}
 		
 		if (attackCancelled == null && attackerCombat.wasParried() && attackerCombat.getParriedBy().contains(target.getGameObject().getStringId())) {
-			attackCancelled = attacker.getGameObject().getNameWithNumber()+" was already parried and cannot attack it.";
+			attackCancelled = attacker.getGameObject().getNameWithNumber()+" was already parried and cannot attack "+target.getGameObject().getNameWithNumber()+".";
 		}
 		
 		logBattleInfo(">");
