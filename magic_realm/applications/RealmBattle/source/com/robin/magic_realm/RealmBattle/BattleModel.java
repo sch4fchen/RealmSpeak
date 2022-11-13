@@ -46,6 +46,7 @@ public class BattleModel {
 	public static final int UNDERCUT_PARRY = 4;
 	public static final int ATTACK_CANCELLED = -2;
 	public static final int PARRY_CANCELLED = -3;
+	public static final int CANNOT_PARRY = -4;
 	public static boolean SKIP_REPOSITIONING = false;
 	public static boolean FORCE_MONSTER_FLIP = false;
 	
@@ -1528,7 +1529,23 @@ public class BattleModel {
 			
 			int hitType = MISS;
 			boolean undercuttingAllowed = !attacker.getGameObject().hasThisAttribute(Constants.NO_UNDERCUT);
-			if (attacker.getAttackCombatBox()==targetAttackBox) {
+			if (!attacker.isMissile()) {
+				hitType = CANNOT_PARRY;
+				logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot parry missile attacks.");
+			}
+			else if (attacker instanceof SpellWrapper) {
+				hitType = CANNOT_PARRY;
+				logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot parry spells.");
+			}
+			else if (attacker.isMonster() && ((MonsterChitComponent)attacker).isRedSideUp()) {
+				hitType = CANNOT_PARRY;
+				logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot parry red side up tremendous monsters.");
+			}
+			else if (attacker.getHarm().getStrength().equals(new Strength("X"))) {
+				hitType = CANNOT_PARRY;
+				logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot parry attacks of maximum strength.");
+			}
+			else if (attacker.getAttackCombatBox()==targetAttackBox) {
 				// Intercepted!
 				hitType = INTERCEPT_PARRY;
 				attackerCombat.setHitResult("Intercepted");

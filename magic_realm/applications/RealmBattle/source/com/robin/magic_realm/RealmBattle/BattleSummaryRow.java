@@ -51,6 +51,7 @@ public class BattleSummaryRow implements Comparable<BattleSummaryRow> {
 	private static final int RESOLUTION_KILL = 2;
 	private static final int RESOLUTION_NOATTACK = 3;
 	private static final int RESOLUTION_NOPARRY = 4;
+	private static final int RESOLUTION_PARRY = 5;
 	
 	private int hitOrder;
 	private GameObject attacker;
@@ -99,6 +100,7 @@ public class BattleSummaryRow implements Comparable<BattleSummaryRow> {
 				resolution = RESOLUTION_NOATTACK;
 				hitType = " didn't attack";
 				break;
+			case BattleModel.CANNOT_PARRY:	
 			case BattleModel.MISS:
 				resolution = RESOLUTION_MISS;
 				hitType = " missed";
@@ -114,6 +116,14 @@ public class BattleSummaryRow implements Comparable<BattleSummaryRow> {
 			case BattleModel.PARRY_CANCELLED:
 				resolution = RESOLUTION_NOPARRY;
 				hitType = "'s parry was cancelled";
+				break;
+			case BattleModel.INTERCEPT_PARRY:
+				resolution = RESOLUTION_PARRY;
+				hitType = " parried (intercepted)";
+				break;
+			case BattleModel.UNDERCUT_PARRY:
+				resolution = RESOLUTION_PARRY;
+				hitType = " parried (undercut)";
 				break;
 		}
 		
@@ -210,7 +220,7 @@ public class BattleSummaryRow implements Comparable<BattleSummaryRow> {
 	
 	private int draw(Graphics2D g,RealmComponent rc,int x,int y,boolean attacker) {
 		ChitComponent chit = null;
-		if ((resolution==RESOLUTION_HIT || resolution==RESOLUTION_MISS) && rc.isChit()) {
+		if ((resolution==RESOLUTION_HIT || resolution==RESOLUTION_PARRY || resolution==RESOLUTION_MISS) && rc.isChit()) {
 			chit = (ChitComponent)rc;
 			chit.setIgnoreDamage(true);
 		}
@@ -362,6 +372,13 @@ public class BattleSummaryRow implements Comparable<BattleSummaryRow> {
 				g.setColor(Color.red);
 				g.setStroke(Constants.THICK_STROKE);
 				g.draw(poly);
+				break;
+			case RESOLUTION_PARRY:
+				g.setColor(Color.orange);
+				g.setStroke(Constants.THICK_STROKE);
+				g.draw(poly);
+				g.setFont(HARM_FONT);
+				g.drawString("PARRY",x+10,y+58);
 				break;
 			case RESOLUTION_KILL:
 				g.setColor(Color.red);

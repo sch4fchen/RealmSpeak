@@ -1,6 +1,8 @@
 Super Realm Parry (and 1st Ed.): 8.10.7 p. 100, check BattleSummaryRow
 If the damage equals or exceeds the weight of the target's weapon, the attack is parried and cancelled and both weapons are turned non-asterisk side up.
 Missile attacks, spells, red side up tremendous monsters, and ‘X’ harm cannot parry or be parried.
+Logic for two attacks by another character
+Logic for parrying monster weapons
 ---:::FEATURES:::---
 Quest: option add icon for minor character
 Combat Help System
