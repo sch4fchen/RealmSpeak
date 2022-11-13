@@ -1575,6 +1575,10 @@ public class BattleModel {
 					hitType = CANNOT_PARRY;
 					logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot parry attacks of maximum strength.");
 				}
+				else if (!attacker.getHarm().getStrength().strongerOrEqualTo(targetBc.getHarm().getStrength())) {
+					hitType=CANNOT_PARRY;
+					logBattleInfo("Cannot parry! ("+attacker.getGameObject().getNameWithNumber()+" cannot parry as strength of "+attacker.getHarm().getStrength()+" is not greater or equal as "+targetBc.getHarm().getStrength()+".)");
+				}
 				else if (attacker.getAttackCombatBox()==targetAttackBox) {
 					// Intercepted!
 					hitType = INTERCEPT_PARRY;
@@ -1609,15 +1613,9 @@ public class BattleModel {
 				attackerCombat.addHitType(hitType,targetBc.getGameObject());
 				
 				if (hitType>MISS) {
-					if (!attacker.getHarm().getStrength().strongerOrEqualTo(targetBc.getHarm().getStrength())) {
-						hitType=CANNOT_PARRY;
-						logBattleInfo("Cannot parry! ("+attacker.getGameObject().getNameWithNumber()+" cannot parry as strength of "+attacker.getHarm().getStrength()+" is not greater or equal as "+targetBc.getHarm().getStrength()+".)");
-					}
-					else {
-						CombatWrapper targetCombatWrapper = new CombatWrapper(targetBc.getGameObject());
-						targetCombatWrapper.setWasParried(true);
-						logBattleInfo("Parried! "+attacker.getGameObject().getNameWithNumber()+" parried "+targetBc.getGameObject().getNameWithNumber()+".");
-					}
+					CombatWrapper targetCombatWrapper = new CombatWrapper(targetBc.getGameObject());
+					targetCombatWrapper.setWasParried(true);
+					logBattleInfo("Parried! "+attacker.getGameObject().getNameWithNumber()+" parried "+targetBc.getGameObject().getNameWithNumber()+".");
 				}
 				else  {
 					if (hitType==MISS) {
