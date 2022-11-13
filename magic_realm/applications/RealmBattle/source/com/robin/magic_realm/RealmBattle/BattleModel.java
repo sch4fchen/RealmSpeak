@@ -1518,77 +1518,114 @@ public class BattleModel {
 				return;
 			}
 			
-			Speed targetAttackSpeed = target.getAttackSpeed();
-			int targetAttackBox = target.getAttackCombatBox();
-			RealmComponent targetRc = RealmComponent.getRealmComponent(target.getGameObject());
-			RealmComponent attackerRc = RealmComponent.getRealmComponent(attacker.getGameObject());
-			if(targetRc.getTarget() != null && targetRc.getTarget().getGameObject() != attacker.getGameObject() && targetRc.get2ndTarget() != null && targetRc.get2ndTarget().getGameObject() != attacker.getGameObject()) {
-				logBattleInfo(attacker.getGameObject().getNameWithNumber()+" didn't parry, as target ("+target.getGameObject().getNameWithNumber()+") didn't aim at "+attacker.getGameObject().getNameWithNumber()+".");
-				return;
-			}
-			
-			int hitType = MISS;
-			boolean undercuttingAllowed = !attacker.getGameObject().hasThisAttribute(Constants.NO_UNDERCUT);
-			if (!attacker.isMissile()) {
-				hitType = CANNOT_PARRY;
-				logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot parry missile attacks.");
-			}
-			else if (attacker instanceof SpellWrapper) {
-				hitType = CANNOT_PARRY;
-				logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot parry spells.");
-			}
-			else if (attacker.isMonster() && ((MonsterChitComponent)attacker).isRedSideUp()) {
-				hitType = CANNOT_PARRY;
-				logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot parry red side up tremendous monsters.");
-			}
-			else if (attacker.getHarm().getStrength().equals(new Strength("X"))) {
-				hitType = CANNOT_PARRY;
-				logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot parry attacks of maximum strength.");
-			}
-			else if (attacker.getAttackCombatBox()==targetAttackBox) {
-				// Intercepted!
-				hitType = INTERCEPT_PARRY;
-				attackerCombat.setHitResult("Intercepted");
-				setWeaponHitForCharacter(attacker);
-				logBattleInfo("Intercepted! (box "+attacker.getAttackCombatBox()+" matches box "+targetAttackBox+")");
-			}
-			else if (undercuttingAllowed && attacker.getAttackSpeed().fasterThan(targetAttackSpeed)) {
-				// Undercut!
-				boolean stopsUndercut = ((RealmComponent)target).affectedByKey(Constants.STOP_UNDERCUT);
-				if (stopsUndercut) {
-					logBattleInfo("Miss! ("+attacker.getAttackSpeed()+" is faster than "+targetAttackSpeed+", but "+target.getGameObject().getNameWithNumber()+" cannot be undercut!)");
+			ArrayList<BattleChit> targets = new ArrayList<>();
+			if (!target.isCharacter()) {
+				targets.add(target);
+				if (target.isMonster()) {
+					MonsterChitComponent monster = (MonsterChitComponent)target;
+					RealmComponent weapon = monster.getWeapon();
+					if (weapon!=null) {
+						targets.add((BattleChit)weapon);
+					}
 				}
-				else {
+			}
+			else {
+				CharacterChitComponent chit = (CharacterChitComponent)target;
+				MonsterChitComponent transmorph = chit.getTransmorphedComponent();
+				if (transmorph!=null) {
+					targets.add(chit);
+					RealmComponent weapon = transmorph.getWeapon();
+					if (weapon!=null) {
+						targets.add((BattleChit)weapon);
+					}
+				}
+				CharacterWrapper character = new CharacterWrapper(target.getGameObject());
+				for (RealmComponent fightChit : BattleUtility.findFightComponentsWithCombatBox(character.getFightSpeedOptions(new Speed(), true))) {
+					CharacterChitComponent charChit = new CharacterChitComponent(chit.getGameObject());
+					charChit.setAttackChit(fightChit);
+					targets.add(charChit);
+				}
+			}
+
+			for (BattleChit targetBc : targets) {
+				Speed targetAttackSpeed = targetBc.getAttackSpeed();
+				int targetAttackBox = targetBc.getAttackCombatBox();
+				RealmComponent targetRc = RealmComponent.getRealmComponent(targetBc.getGameObject());
+				int hitType = MISS;
+				boolean undercuttingAllowed = !attacker.getGameObject().hasThisAttribute(Constants.NO_UNDERCUT);
+				logBattleInfo(attacker.getGameObject().getNameWithNumber()+" vs. target "+targetBc.getGameObject().getNameWithNumber()+" (Speed: "+targetBc.getAttackSpeed()+" Strength: "+targetBc.getHarm().getStrength()+")");
+				
+				if(targetRc.getTarget() != null && targetRc.getTarget().getGameObject() != attacker.getGameObject() && targetRc.get2ndTarget() != null && targetRc.get2ndTarget().getGameObject() != attacker.getGameObject()) {
+					hitType = CANNOT_PARRY;
+					logBattleInfo(attacker.getGameObject().getNameWithNumber()+" didn't parry, as target ("+targetBc.getGameObject().getNameWithNumber()+") didn't aim at "+attacker.getGameObject().getNameWithNumber()+".");
+				}
+				else if (targetBc.isMissile()) {
+					hitType = CANNOT_PARRY;
+					logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot parry missile attacks.");
+				}
+				else if (targetBc instanceof SpellWrapper) {
+					hitType = CANNOT_PARRY;
+					logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot parry spells.");
+				}
+				else if (targetBc.isMonster() && ((MonsterChitComponent)attacker).isRedSideUp()) {
+					hitType = CANNOT_PARRY;
+					logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot parry red side up tremendous monsters.");
+				}
+				else if (targetBc.getHarm().getStrength().equals(new Strength("X"))) {
+					hitType = CANNOT_PARRY;
+					logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot parry attacks of maximum strength.");
+				}
+				else if (attacker.getAttackCombatBox()==targetAttackBox) {
+					// Intercepted!
+					hitType = INTERCEPT_PARRY;
+					attackerCombat.setHitResult("Intercepted");
+					setWeaponHitForCharacter(attacker);
+					logBattleInfo("Intercepted! (box "+attacker.getAttackCombatBox()+" matches box "+targetAttackBox+")");
+				}
+				else if (undercuttingAllowed && attacker.getAttackSpeed().fasterThan(targetAttackSpeed)) {
+					// Undercut!
+					boolean stopsUndercut = ((RealmComponent)targetBc).affectedByKey(Constants.STOP_UNDERCUT);
+					if (stopsUndercut) {
+						logBattleInfo("Miss! ("+attacker.getAttackSpeed()+" is faster than "+targetAttackSpeed+", but "+targetBc.getGameObject().getNameWithNumber()+" cannot be undercut!)");
+					}
+					else {
+						hitType = UNDERCUT_PARRY;
+						attackerCombat.setHitResult("Undercut");
+						setWeaponHitForCharacter(attacker);
+						logBattleInfo("Undercut! ("+attacker.getAttackSpeed()+" is faster than "+targetAttackSpeed+")");
+					}
+				}
+				else if (undercuttingAllowed && attacker.getAttackSpeed().equalTo(targetAttackSpeed) && attacker.hitsOnTie()) {
+					// Check for the special case where a character has a HIT_TIE treasure alerted
 					hitType = UNDERCUT_PARRY;
 					attackerCombat.setHitResult("Undercut");
 					setWeaponHitForCharacter(attacker);
-					logBattleInfo("Undercut! ("+attacker.getAttackSpeed()+" is faster than "+targetAttackSpeed+")");
+					logBattleInfo("Undercut (hits on tie)! ("+attacker.getAttackSpeed()+" is equal to "+targetAttackSpeed+")");
 				}
-			}
-			else if (undercuttingAllowed && attacker.getAttackSpeed().equalTo(targetAttackSpeed) && attacker.hitsOnTie()) {
-				// Check for the special case where a character has a HIT_TIE treasure alerted
-				hitType = UNDERCUT_PARRY;
-				attackerCombat.setHitResult("Undercut");
-				setWeaponHitForCharacter(attacker);
-				logBattleInfo("Undercut (hits on tie)! ("+attacker.getAttackSpeed()+" is equal to "+targetAttackSpeed+")");
-			}
-			if (!undercuttingAllowed && hitType==MISS) {
-				logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot be used to undercut the "+target.getGameObject().getNameWithNumber()+", and as such has missed.");
-			}
-			
-			attackerCombat.addHitType(hitType,target.getGameObject());
-			
-			if (hitType>MISS) {
-				//check for weapon weight vs base attack harm (weapon weight)
-				targetCombat.setWasParried(true);
-				logBattleInfo("Parried! "+attacker.getGameObject().getNameWithNumber()+" parried "+target.getGameObject().getNameWithNumber()+".");
-			}
-			else  {
-				if (hitType==MISS) {
-					logBattleInfo("Missed! ("+attacker.getAttackSpeed()+" is not faster than "+targetAttackSpeed+")");
+				if (!undercuttingAllowed && hitType==MISS) {
+					logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot be used to undercut the "+targetBc.getGameObject().getNameWithNumber()+", and as such has missed.");
 				}
-				else {
-					logBattleInfo(attacker.getGameObject().getNameWithNumber()+" didn't parry, and thus does not prevent an attack.");
+				
+				attackerCombat.addHitType(hitType,targetBc.getGameObject());
+				
+				if (hitType>MISS) {
+					if (!attacker.getHarm().getStrength().strongerOrEqualTo(targetBc.getHarm().getStrength())) {
+						hitType=CANNOT_PARRY;
+						logBattleInfo("Cannot parry! ("+attacker.getGameObject().getNameWithNumber()+" cannot parry as strength of "+attacker.getHarm().getStrength()+" is not greater or equal as "+targetBc.getHarm().getStrength()+".)");
+					}
+					else {
+						CombatWrapper targetCombatWrapper = new CombatWrapper(targetBc.getGameObject());
+						targetCombatWrapper.setWasParried(true);
+						logBattleInfo("Parried! "+attacker.getGameObject().getNameWithNumber()+" parried "+targetBc.getGameObject().getNameWithNumber()+".");
+					}
+				}
+				else  {
+					if (hitType==MISS) {
+						logBattleInfo("Missed! ("+attacker.getAttackSpeed()+" is not faster than "+targetAttackSpeed+")");
+					}
+					else {
+						logBattleInfo(attacker.getGameObject().getNameWithNumber()+" didn't parry, and thus does not prevent the attack.");
+					}
 				}
 			}
 		}
