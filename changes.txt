@@ -1,5 +1,6 @@
 Version 1.1.6.8
 QUEST UPDATE:
+# Update to quest A88 Winged Steed
 # Update to quest A44 Quest Valiant Dragonfang Necklace
 # Update to quest A54 Quest Valiant Golden Arm Band
 # QuestRewardControl: change logic, now like adding a hireling
