@@ -1255,8 +1255,10 @@ public class BattleModel {
 			attackCancelled = attacker.getGameObject().getNameWithNumber()+" fears "+target.getGameObject().getNameWithNumber()+" and cannot attack it.";
 		}
 		
-		if (attackCancelled == null && attackerCombat.wasParried() && attackerCombat.getParriedBy().contains(target.getGameObject().getStringId())) {
-			attackCancelled = attacker.getGameObject().getNameWithNumber()+" was already parried and cannot attack "+target.getGameObject().getNameWithNumber()+".";
+		if (attackCancelled == null && attackerCombat.wasParried()) {
+			if (attackerCombat.getParriedBy().contains(target.getGameObject().getStringId()+":"+attacker.getLength()+":"+attacker.getAttackSpeed()+":"+attacker.getAttackCombatBox()+":"+attacker.getHarm().getStrength())) {
+				attackCancelled = attacker.getGameObject().getNameWithNumber()+" was already parried and cannot attack "+target.getGameObject().getNameWithNumber()+".";
+			}
 		}
 		
 		logBattleInfo(">");
@@ -1614,7 +1616,7 @@ public class BattleModel {
 				
 				if (hitType>MISS) {
 					CombatWrapper targetCombatWrapper = new CombatWrapper(targetBc.getGameObject());
-					targetCombatWrapper.setWasParried(attacker.getGameObject().getStringId());
+					targetCombatWrapper.setWasParried(attacker.getGameObject().getStringId()+":"+targetBc.getLength()+":"+targetBc.getAttackSpeed()+":"+targetBc.getAttackCombatBox()+":"+targetBc.getHarm().getStrength());
 					logBattleInfo("Parried! "+attacker.getGameObject().getNameWithNumber()+" parried "+targetBc.getGameObject().getNameWithNumber()+".");
 				}
 				else  {
