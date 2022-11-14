@@ -999,8 +999,10 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_DUAL_WIELDING_HEAVY,"DUAL WIELDING HEAVY WEAPONS - Heavier can be dual wielded without an additional ability.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_DUAL_WIELDING_TWO_HANDED,"DUAL WIELDING TWO-HANDED WEAPONS - Two-handed weapons can be dual wielded without an additional ability.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_THROWING_WEAPONS,"THROWING WEAPONS (Expansion 1) - A character can throw corresponding weapons.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY,"PARRYING (1st Ed. and Super Realm Project) - A character can parry target's attack with a weapon.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY_LIKE_SHIELD,"PARRYING LIKE A SHIELD (Expansion 1) - A character can parry like with a shield other attacks with a weapon.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY,"PARRYING (1st Ed. and Super Realm Project) - A character can parry target's attack with a weapon.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY_MISSILE,"PARRYING MISSILE ATTACKS - Parrying missile attacks is possible (requires parrying rule or ability of 1st Ed./Super Realm).",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY_WITH_MISSILE,"PARRYING WITH MISSILE WEAPONS - Parrying with missile weapons is possible (requires one of the parrying rules or abilities).",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC (Super Realm Project) - A character with no active armor counters casting a spell may also use his staff to make a separate attack.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_NATIVES_FRIENDLY,"No attacking of friendly natives (Book of Learning) - FRIENDLY and ALLIED natives cannot be lured or targeted.",false));
 		

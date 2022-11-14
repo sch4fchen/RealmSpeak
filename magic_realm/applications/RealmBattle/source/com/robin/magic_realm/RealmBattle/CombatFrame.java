@@ -2448,22 +2448,8 @@ public class CombatFrame extends JFrame {
 		return null;
 	}
 	public void playParry(int box) {
-		ArrayList<WeaponChitComponent> weapons = activeCharacter.getActiveWeapons();
-		if (weapons == null || weapons.isEmpty()) {
-			boolean weaponAvailable = false;
-			for (WeaponChitComponent weapon : weapons) {
-				if (!weapon.isMissile()) {
-					weaponAvailable = true;
-					break;
-				}
-			}
-			if (!weaponAvailable) {
-				JOptionPane.showMessageDialog(this,"There are no weapons for parrying available to you.\n(Check your inventory!)","Cannot Parry",JOptionPane.ERROR_MESSAGE);
-				return;
-			}
-		}
-		
 		CombatWrapper charCombat = new CombatWrapper(activeCharacter.getGameObject());
+		ArrayList<WeaponChitComponent> weapons = activeCharacter.getActiveWeapons();
 		GameObject go = charCombat.getCastSpell();
 		SpellWrapper spell = go==null?null:new SpellWrapper(go);
 		boolean mageCastedSpell = false;
@@ -2492,6 +2478,21 @@ public class CombatFrame extends JFrame {
 			}			
 		}
 		
+		if (weapons == null || weapons.isEmpty()) {
+			boolean weaponAvailable = false;
+			for (WeaponChitComponent weapon : weapons) {
+				if (CombatWrapper.hasCombatInfo(weapon.getGameObject())) continue;
+				if (!weapon.isMissile() || activeCharacter.affectedByKey(Constants.PARRY_WITH_MISSILE) || hostPrefs.hasPref(Constants.PARRY_WITH_MISSILE)) {
+					weaponAvailable = true;
+					break;
+				}
+			}
+			if (!weaponAvailable) {
+				JOptionPane.showMessageDialog(this,"There are no weapons for parrying available to you.\n(Check your inventory!)","Cannot Parry",JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+		}
+		
 		Collection<RealmComponent> fightOptions = getAvailableFightOptions(box);
 		RealmComponent characterRc= RealmComponent.getRealmComponent(activeCharacter.getGameObject());
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select Parry:",true);
@@ -2503,7 +2504,7 @@ public class CombatFrame extends JFrame {
 				if(combat.getPlacedAsFightOrParryOrParryShield()) continue;
 				for (WeaponChitComponent weapon : weapons) {
 					if (CombatWrapper.hasCombatInfo(weapon.getGameObject())) continue;
-					if (weapon.isMissile()) continue;
+					if (weapon.isMissile() && !activeCharacter.affectedByKey(Constants.PARRY_WITH_MISSILE) && !hostPrefs.hasPref(Constants.PARRY_WITH_MISSILE)) continue;
 					key = "P"+(keyN++);
 					chooser.addOption(key,"");
 					chooser.addRealmComponentToOption(key,chit);
@@ -2793,6 +2794,7 @@ public class CombatFrame extends JFrame {
 			if (!mageCastedSpell && (hostPrefs.hasPref(Constants.OPT_PARRY_LIKE_SHIELD) || activeCharacter.affectedByKey(Constants.PARRY_LIKE_SHIELD))) {
 				for (WeaponChitComponent weapon : weapons) {
 					if (CombatWrapper.hasCombatInfo(weapon.getGameObject())) continue;
+					if (weapon.isMissile() && !activeCharacter.affectedByKey(Constants.PARRY_WITH_MISSILE) && !hostPrefs.hasPref(Constants.PARRY_WITH_MISSILE)) continue;
 					key = "W"+(keyN++);
 					chooser.addOption(key,"");
 					chooser.addRealmComponentToOption(key,chit);

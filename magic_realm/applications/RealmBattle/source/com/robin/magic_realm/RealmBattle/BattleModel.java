@@ -1559,7 +1559,7 @@ public class BattleModel {
 					hitType = CANNOT_PARRY;
 					logBattleInfo(attacker.getGameObject().getNameWithNumber()+" didn't parry, as target ("+targetBc.getGameObject().getNameWithNumber()+") didn't aim at "+attacker.getGameObject().getNameWithNumber()+".");
 				}
-				else if (targetBc.isMissile()) {
+				else if (targetBc.isMissile() && !hostPrefs.hasPref(Constants.OPT_PARRY_MISSILE) && (!attacker.isCharacter() || !(new CharacterWrapper(attacker.getGameObject()).affectedByKey(Constants.PARRY_MISSILE)))) {
 					hitType = CANNOT_PARRY;
 					logBattleInfo(attacker.getGameObject().getNameWithNumber()+" cannot parry missile attacks.");
 				}

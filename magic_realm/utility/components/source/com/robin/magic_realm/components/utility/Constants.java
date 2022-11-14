@@ -220,6 +220,8 @@ public class Constants {
 	public static final String THROWING_WEAPONS = "throwing_weapons";
 	public static final String PARRY = "parry";
 	public static final String PARRY_LIKE_SHIELD = "parry_like_shield";
+	public static final String PARRY_MISSILE = "parry_missile";
+	public static final String PARRY_WITH_MISSILE = "parry_with_missile";
 	public static final String SHARPSHOOTER = "sharpshooter";
 	public static final String BATTLE_MAGE = "battle_mage";
 	public static final String MAGIC_MOVE = "magic_move";
@@ -514,8 +516,10 @@ public class Constants {
 	public static final String OPT_DUAL_WIELDING_HEAVY = "OptDualWieldingHeavy";
 	public static final String OPT_DUAL_WIELDING_TWO_HANDED = "OptDualWieldingTwoHanded";
 	public static final String OPT_THROWING_WEAPONS = "OptThrowingWeapons";
-	public static final String OPT_PARRY = "OptParry";
 	public static final String OPT_PARRY_LIKE_SHIELD = "OptParryLikeShield";
+	public static final String OPT_PARRY = "OptParry";
+	public static final String OPT_PARRY_MISSILE = "OptParryMissile";
+	public static final String OPT_PARRY_WITH_MISSILE = "OptParryWithMissileWeapons";
 	public static final String OPT_SR_STEEL_AGAINST_MAGIC = "OptSrSteelAgainsMagic";
 	public static final String OPT_RIDING_HORSES = "OptRidingHorses";
 	public static final String OPT_AUTOMATIC_ENCHANTING = "OptAutomaticEnchanting";
