@@ -352,6 +352,7 @@ public class RealmTradeDialog extends AggressiveDialog {
 			setEditable(false);
 			setFont(new Font("Dialog",Font.PLAIN,20));
 			setWrapStyleWord(true);
+			setLineWrap(true);
 		}
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 			setBackground(isSelected?selBackground:background);
@@ -365,7 +366,7 @@ public class RealmTradeDialog extends AggressiveDialog {
 	
 	private class TradeTableIntegerRenderer extends DefaultTableCellRenderer {
 		public TradeTableIntegerRenderer() {
-			setHorizontalAlignment(JLabel.CENTER);
+			setHorizontalAlignment(SwingConstants.CENTER);
 		}
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 			Component cell = super.getTableCellRendererComponent(table,value,isSelected,hasFocus,row,column);
@@ -428,7 +429,11 @@ public class RealmTradeDialog extends AggressiveDialog {
 					case 3:
 						return dsc.getSide2();
 					case 4:
-						return showAll?wrapString(dsc.getOtherInformation()):null;
+						String desc = dsc.getOtherInformation();
+						if (!rc.isMinorCharacter()) {
+							desc = wrapString(desc);
+						}
+						return showAll?desc:null;
 				}
 			}
 			return null;
