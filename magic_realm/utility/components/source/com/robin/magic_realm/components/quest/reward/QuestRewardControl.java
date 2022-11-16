@@ -36,6 +36,7 @@ public class QuestRewardControl extends QuestReward {
 	
 	public static final String DENIZEN_REGEX = "_regex";
 	public static final String REMOVE_CONTROL = "_remove";
+	public static final String AMOUNT = "_amount";
 	public static final String LOCATION_ONLY = "_location_only";
 	public static final String LOCATION = "_location";
 	
@@ -46,12 +47,14 @@ public class QuestRewardControl extends QuestReward {
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		ArrayList<RealmComponent> targets = new ArrayList<RealmComponent>();
 		Pattern pattern = Pattern.compile(getTargetRegex());
-		
+		int affectedDenizens = 0;
 		if (remove()) {
 			targets.addAll(character.getAllHirelings());
 			for (RealmComponent target : targets) {
 				if (!pattern.matcher(target.toString()).find()) continue;
 				character.removeHireling(target.getGameObject());
+				affectedDenizens++;
+				if (affectedDenizens>=numberOfDenizens()) return;
 			}
 			return;
 		}
@@ -82,6 +85,8 @@ public class QuestRewardControl extends QuestReward {
 				}
 			}
 			character.addHireling(target.getGameObject(),Constants.TEN_YEARS);
+			affectedDenizens++;
+			if (affectedDenizens>=numberOfDenizens()) return;
 		}
 	}
 	
@@ -105,6 +110,9 @@ public class QuestRewardControl extends QuestReward {
 	}
 	private boolean remove() {
 		return getBoolean(REMOVE_CONTROL);
+	}
+	private int numberOfDenizens() {
+		return getInt(AMOUNT);
 	}
 	private boolean location() {
 		return getBoolean(LOCATION_ONLY);

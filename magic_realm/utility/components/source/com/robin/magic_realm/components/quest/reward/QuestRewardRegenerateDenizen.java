@@ -29,8 +29,9 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 public class QuestRewardRegenerateDenizen extends QuestReward {
 	
 	public static final String DENIZEN_REGEX = "_drx";
+	public static final String DENIZEN_AMOUNT = "_damnt";
 	public static final String CHARACTERS_CLEARING = "_ch_cl";
-	public static final String CHARACTERS_TILE = "_ch_cl";
+	public static final String CHARACTERS_TILE = "_ch_tile";
 	
 	public QuestRewardRegenerateDenizen(GameObject go) {
 		super(go);
@@ -38,6 +39,7 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		ArrayList<GameObject> denizens = character.getGameData().getGameObjectsByNameRegex(getDenizenNameRegex());
+		int regeneratedDenizens = 0;
 		for (GameObject denizen : denizens) {
 			if (denizen != null && denizen.hasThisAttribute("denizen") && !denizen.hasThisAttribute(Constants.CLONED) && !denizen.hasThisAttribute(Constants.COMPANION) && !denizen.hasThisAttribute(Constants.SUMMONED)) {				
 				RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
@@ -52,13 +54,18 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 					}
 				}
 				SetupCardUtility.resetDenizen(denizen);
+				regeneratedDenizens++;
+				if (regeneratedDenizens>=numberOfDenizens()) return;
 			}
 		}
 	}
 	
 	public String getDescription() {
 		StringBuffer sb = new StringBuffer();
-		sb.append(getDenizenNameRegex() +" is/are regenerated");
+		sb.append(getDenizenNameRegex() +" are regenerated");
+		if (numberOfDenizens()!=0) {
+			sb.append(" (max. "+numberOfDenizens()+")");
+		}
 		if (charactersClearingOnly()) {
 			sb.append(" in the characters clearing");
 		}
@@ -72,7 +79,9 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 	private String getDenizenNameRegex() {
 		return getString(DENIZEN_REGEX);
 	}
-
+	private int numberOfDenizens() {
+		return getInt(DENIZEN_AMOUNT);
+	}
 	private Boolean charactersClearingOnly() {
 		return getBoolean(CHARACTERS_CLEARING);
 	}

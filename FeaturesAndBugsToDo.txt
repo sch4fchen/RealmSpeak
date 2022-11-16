@@ -1,4 +1,3 @@
-Amount for quest rewards: control monsters, regenerate denizen
 ---:::FEATURES:::---
 Quest: option add icon for minor character
 Combat Help System
