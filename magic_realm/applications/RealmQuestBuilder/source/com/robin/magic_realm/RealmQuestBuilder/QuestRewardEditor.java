@@ -239,6 +239,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_OPTION, "Move to", FieldType.StringSelector, QuestRewardMoveDenizen.MoveOption.values()));
 				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.CLEARING, "Clearing", FieldType.StringSelector, QuestRewardMoveDenizen.ClearingSelection.values()));
 				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
+				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.AMOUNT, "Number of denizens (0: unlimited)", FieldType.NumberAll));
 				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_HIRELINGS, "Move hirelings", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_COMPANIONS, "Move companions", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_SUMMONED, "Move summoned monsters", FieldType.Boolean));

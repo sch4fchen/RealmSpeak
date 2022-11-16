@@ -18,6 +18,7 @@
 package com.robin.magic_realm.components.quest.reward;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Hashtable;
 
 import javax.swing.JFrame;
@@ -62,6 +63,7 @@ public class QuestRewardMoveDenizen extends QuestReward {
 	public static final String MOVE_OPTION = "_mo";
 	public static final String CLEARING = "_cl";
 	public static final String LOCATION = "_loc";
+	public static final String AMOUNT = "_amnt";
 	public static final String MOVE_HIRELINGS = "_mh";
 	public static final String MOVE_COMPANIONS = "_mc";
 	public static final String MOVE_SUMMONED = "_ms";
@@ -102,16 +104,20 @@ public class QuestRewardMoveDenizen extends QuestReward {
 			denizensToMove.add(denizen);
 		}
 		
+		if (numberOfDenizens()!=0) {
+			Collections.shuffle(denizensToMove);
+		}
+		
 		switch (getMoveOption()) {
 			case CharactersClearing:
 				if(character.getCurrentLocation() == null || character.getCurrentLocation().clearing == null) return;
 				TileLocation charactersClearing = character.getCurrentLocation();
-				moveDenizens(charactersClearing, denizensToMove);
+				moveDenizens(charactersClearing, denizensToMove, numberOfDenizens());
 				return;
 			case CharactersTile:
 				if(character.getCurrentLocation() == null) return;
 				TileLocation charactersTile = character.getCurrentLocation();
-				moveDenizensToTile(charactersTile, denizensToMove);
+				moveDenizensToTile(charactersTile, denizensToMove, numberOfDenizens());
 				return;
 			case Location:
 				ArrayList<TileLocation> locations = loc.fetchAllLocations(frame, character, character.getGameData());
@@ -120,7 +126,8 @@ public class QuestRewardMoveDenizen extends QuestReward {
 		}
 	}
 	
-	private static void moveDenizens(TileLocation locationToMove, ArrayList<GameObject> denizensToMove) {
+	private static void moveDenizens(TileLocation locationToMove, ArrayList<GameObject> denizensToMove, int numberOfDenizensToMove) {
+		int movedDenizens = 0;
 		for (GameObject denizen : denizensToMove) {
 			if(!locationToMove.clearing.isEdge()) {
 				locationToMove.clearing.add(denizen,null);
@@ -129,84 +136,103 @@ public class QuestRewardMoveDenizen extends QuestReward {
 				ClearingDetail connectedClearing = path.get(0).findConnection(locationToMove.clearing);
 				connectedClearing.add(denizen,null);
 			}
+			movedDenizens++;
+			if (movedDenizens>=numberOfDenizensToMove) {
+				return;
+			}
 		}
 	}
-	private static void moveDenizensToClearing(TileLocation locationToMove, int clearingNumber, ArrayList<GameObject> denizensToMove) {
+	private static void moveDenizensToClearing(TileLocation locationToMove, int clearingNumber, ArrayList<GameObject> denizensToMove, int numberOfDenizensToMove) {
 		locationToMove.clearing = locationToMove.tile.getClearing(clearingNumber);
 		if (locationToMove.clearing != null) {
-			moveDenizens(locationToMove, denizensToMove);
+			moveDenizens(locationToMove, denizensToMove, numberOfDenizensToMove);
 		}
 	}
-	private void moveDenizensToTile(TileLocation tileToMove, ArrayList<GameObject> denizensToMove) {
+	private void moveDenizensToTile(TileLocation tileToMove, ArrayList<GameObject> denizensToMove, int numberOfDenizensToMove) {
 		switch (getClearing()) {
 			case Random:
 				int random = RandomNumber.getRandom(tileToMove.tile.getClearingCount());
 				tileToMove.clearing = tileToMove.tile.getClearings().get(random);
-				moveDenizens(tileToMove, denizensToMove);
+				moveDenizens(tileToMove, denizensToMove, numberOfDenizensToMove);
 				return;
 			case One:
-				moveDenizensToClearing(tileToMove, 1, denizensToMove);
+				moveDenizensToClearing(tileToMove, 1, denizensToMove, numberOfDenizensToMove);
 				break;
 			case Two:
-				moveDenizensToClearing(tileToMove, 2, denizensToMove);
+				moveDenizensToClearing(tileToMove, 2, denizensToMove, numberOfDenizensToMove);
 				break;
 			case Three:
-				moveDenizensToClearing(tileToMove, 3, denizensToMove);
+				moveDenizensToClearing(tileToMove, 3, denizensToMove, numberOfDenizensToMove);
 				break;
 			case Four:
-				moveDenizensToClearing(tileToMove, 4, denizensToMove);
+				moveDenizensToClearing(tileToMove, 4, denizensToMove, numberOfDenizensToMove);
 				break;
 			case Five:
-				moveDenizensToClearing(tileToMove, 5, denizensToMove);
+				moveDenizensToClearing(tileToMove, 5, denizensToMove, numberOfDenizensToMove);
 				break;
 			case Six:
-				moveDenizensToClearing(tileToMove, 6, denizensToMove);
+				moveDenizensToClearing(tileToMove, 6, denizensToMove, numberOfDenizensToMove);
 				break;
 			case RandomForEachDenizen:
+				int movedDenizens = 0;
 				for (GameObject denizen : denizensToMove) {
 					int randomForDenizen = RandomNumber.getRandom(tileToMove.tile.getClearingCount());
 					tileToMove.clearing = tileToMove.tile.getClearings().get(randomForDenizen);
 					tileToMove.clearing.add(denizen, null);
+					movedDenizens++;
+					if (movedDenizens>=numberOfDenizens()) {
+						break;
+					}
 				}
 			}
 	}
 	private void moveDenizensToLocation(ArrayList<TileLocation> locations, ArrayList<GameObject> denizensToMove) {
+		int movedDenizens = 0;
+		int numberOfDenizensToMove = numberOfDenizens();
 		switch (getClearing()) {
 			case Random:
 				int random = RandomNumber.getRandom(locations.size());
 				TileLocation locationToMove = locations.get(random);
 				for (GameObject denizen : denizensToMove) {
 					locationToMove.clearing.add(denizen, null);
+					movedDenizens++;
+					if (movedDenizens>=numberOfDenizensToMove) {
+						break;
+					}
 				}
 				break;
 			case One:
-				moveDenizensToLocationToClearing(locations, 1, denizensToMove);
+				moveDenizensToLocationToClearing(locations, 1, denizensToMove, numberOfDenizensToMove);
 				break;
 			case Two:
-				moveDenizensToLocationToClearing(locations, 2, denizensToMove);
+				moveDenizensToLocationToClearing(locations, 2, denizensToMove, numberOfDenizensToMove);
 				break;
 			case Three:
-				moveDenizensToLocationToClearing(locations, 3, denizensToMove);
+				moveDenizensToLocationToClearing(locations, 3, denizensToMove, numberOfDenizensToMove);
 				break;
 			case Four:
-				moveDenizensToLocationToClearing(locations, 4, denizensToMove);
+				moveDenizensToLocationToClearing(locations, 4, denizensToMove, numberOfDenizensToMove);
 				break;
 			case Five:
-				moveDenizensToLocationToClearing(locations, 5, denizensToMove);
+				moveDenizensToLocationToClearing(locations, 5, denizensToMove, numberOfDenizensToMove);
 				break;
 			case Six:
-				moveDenizensToLocationToClearing(locations, 6, denizensToMove);
+				moveDenizensToLocationToClearing(locations, 6, denizensToMove, numberOfDenizensToMove);
 				break;
 			case RandomForEachDenizen:
 				for (GameObject denizen : denizensToMove) {
 					int randomForDenizen = RandomNumber.getRandom(locations.size());
 					TileLocation locationToMoveForDenizen = locations.get(randomForDenizen);
 					locationToMoveForDenizen.clearing.add(denizen, null);
+					movedDenizens++;
+					if (movedDenizens>=numberOfDenizensToMove) {
+						break;
+					}
 				}
 				break;
 			}
 	}
-	private static void moveDenizensToLocationToClearing(ArrayList<TileLocation> locations, int clearingNumber, ArrayList<GameObject> denizensToMove) {
+	private static void moveDenizensToLocationToClearing(ArrayList<TileLocation> locations, int clearingNumber, ArrayList<GameObject> denizensToMove, int numberOfDenizensToMove) {
 		ArrayList<TileLocation> validLocations = new ArrayList<>();
 		for (TileLocation loc : locations) {
 			if (loc.clearing.getNum() == clearingNumber) {
@@ -216,7 +242,7 @@ public class QuestRewardMoveDenizen extends QuestReward {
 		if (!validLocations.isEmpty()) {
 			int random = RandomNumber.getRandom(validLocations.size());
 			TileLocation selectedLocation = validLocations.get(random);
-			moveDenizens(selectedLocation, denizensToMove);
+			moveDenizens(selectedLocation, denizensToMove, numberOfDenizensToMove);
 		}
 	}
 	
@@ -245,6 +271,9 @@ public class QuestRewardMoveDenizen extends QuestReward {
 	}
 	private ClearingSelection getClearing() {
 		return ClearingSelection.valueOf(getString(CLEARING));
+	}
+	private int numberOfDenizens() {
+		return getInt(AMOUNT);
 	}
 	private Boolean moveHirelings() {
 		return getBoolean(MOVE_HIRELINGS);

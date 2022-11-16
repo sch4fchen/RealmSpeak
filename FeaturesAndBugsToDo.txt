@@ -1,4 +1,4 @@
-Amount for quest rewards: move denizen, kill denizen, control monsters, regenerate denizen
+Amount for quest rewards: kill denizen, control monsters, regenerate denizen
 ---:::FEATURES:::---
 Quest: option add icon for minor character
 Combat Help System
