@@ -33,6 +33,7 @@ import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.utility.SetupCardUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.CombatWrapper;
 
 public class QuestRewardKillDenizen extends QuestReward {
 	
@@ -110,6 +111,7 @@ public class QuestRewardKillDenizen extends QuestReward {
 					if (rewardCharacter()) {
 						giveReward(character, denizen);
 					}
+					CombatWrapper.clearRoundCombatInfo(denizen);
 				}
 			}
 			else {
@@ -117,6 +119,7 @@ public class QuestRewardKillDenizen extends QuestReward {
 				if (rewardCharacter()) {
 					giveReward(character, denizen);
 				}
+				CombatWrapper.clearRoundCombatInfo(denizen);
 			}
 		}
 	}
