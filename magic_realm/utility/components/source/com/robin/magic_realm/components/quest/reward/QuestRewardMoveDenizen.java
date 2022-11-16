@@ -248,7 +248,10 @@ public class QuestRewardMoveDenizen extends QuestReward {
 	
 	public String getDescription() {
 		StringBuffer sb = new StringBuffer();
-		sb.append(getDenizenNameRegex() +" is/are moved to ");
+		if (numberOfDenizens()!=0) {
+			sb.append("Up to "+numberOfDenizens()+" ");
+		}
+		sb.append(getDenizenNameRegex() +" are moved to ");
 		if (getMoveOption() == MoveOption.Location && getQuestLocation() != null) {
 			sb.append(getQuestLocation().getName());
 		}

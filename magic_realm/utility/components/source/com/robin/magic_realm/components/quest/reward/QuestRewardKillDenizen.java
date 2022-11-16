@@ -39,6 +39,7 @@ public class QuestRewardKillDenizen extends QuestReward {
 	
 	public static final String DENIZEN_REGEX = "_drx";
 	public static final String REWARD_CHARACTER = "_rc";
+	public static final String AMOUNT = "_amnt";
 	public static final String KILL_MARKED = "_km";
 	public static final String KILL_HIRELINGS = "_kh";
 	public static final String KILL_COMPANIONS = "_kc";
@@ -68,6 +69,7 @@ public class QuestRewardKillDenizen extends QuestReward {
 		}
 		
 		String questId = getParentQuest().getGameObject().getStringId();
+		int killedDenizens = 0;
 		for (GameObject denizen : denizens) {
 			if (!denizen.hasThisAttribute("vulnerability") || (!denizen.hasThisAttribute("denizen") && !isATransformation(denizen)) || denizen.hasThisAttribute(Constants.DEAD)) continue;
 			GameObject denizenHolder = SetupCardUtility.getDenizenHolder(denizen);
@@ -121,6 +123,8 @@ public class QuestRewardKillDenizen extends QuestReward {
 				}
 				CombatWrapper.clearRoundCombatInfo(denizen);
 			}
+			killedDenizens++;
+			if (killedDenizens>=numberOfDenizens()) return;
 		}
 	}
 	
@@ -150,7 +154,10 @@ public class QuestRewardKillDenizen extends QuestReward {
 			sb.append("All denizens are killed");
 		}
 		else {
-			sb.append(getDenizenNameRegex() +" is/are killed");
+			sb.append(getDenizenNameRegex() +" are killed");
+		}
+		if (numberOfDenizens()!=0) {
+			sb.append(" (max. "+numberOfDenizens()+")");
 		}
 		if (requiresMark()) {
 			sb.append(" which have a quest mark");
@@ -166,6 +173,9 @@ public class QuestRewardKillDenizen extends QuestReward {
 	}
 	private boolean rewardCharacter() {
 		return getBoolean(REWARD_CHARACTER);
+	}
+	private int numberOfDenizens() {
+		return getInt(AMOUNT);
 	}
 	private Boolean requiresMark() {
 		return getBoolean(KILL_MARKED);
