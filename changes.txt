@@ -1,6 +1,7 @@
 Version 1.1.6.8
 QUEST UPDATE:
 # QuestRewardKillDenizen: option to kill only marked denizens
+# QuestRewardMarkDenizen: option to mark only certain number of denizens
 # Update to quest A88 Winged Steed
 # Update to quest A44 Quest Valiant Dragonfang Necklace
 # Update to quest A54 Quest Valiant Golden Arm Band

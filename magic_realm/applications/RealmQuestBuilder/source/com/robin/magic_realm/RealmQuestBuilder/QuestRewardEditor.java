@@ -218,6 +218,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case MarkDenizen:
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.DENIZEN_REGEX, "Denizen name filter (regex)", FieldType.Regex, null, new String[] { "denizen" }));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.DENIZEN_AMOUNT, "Number of denizens (0: unlimited)", FieldType.NumberAll));
 				break;
 			case MarkItem:
 				list.add(new QuestPropertyBlock(QuestRewardMarkItem.ITEM_REGEX, "Item RegEx", FieldType.Regex));

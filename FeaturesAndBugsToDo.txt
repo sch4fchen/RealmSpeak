@@ -1,5 +1,4 @@
-Amount for quest rewards: mark denizen, move denizen, kill denizen, control monsters, regenerate denizen
-KilledBy not unset by: summon 4x ?
+Amount for quest rewards: move denizen, kill denizen, control monsters, regenerate denizen
 ---:::FEATURES:::---
 Quest: option add icon for minor character
 Combat Help System

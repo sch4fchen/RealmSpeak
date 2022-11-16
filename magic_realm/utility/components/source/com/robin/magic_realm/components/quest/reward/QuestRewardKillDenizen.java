@@ -152,6 +152,9 @@ public class QuestRewardKillDenizen extends QuestReward {
 		else {
 			sb.append(getDenizenNameRegex() +" is/are killed");
 		}
+		if (requiresMark()) {
+			sb.append(" which have a quest mark");
+		}
 		if (locationOnly() && getQuestLocation() != null) {
 			sb.append(" in "+getQuestLocation().getName());
 		}
