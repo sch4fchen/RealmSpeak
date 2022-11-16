@@ -18,6 +18,7 @@
 package com.robin.magic_realm.components.quest.reward;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Hashtable;
 
 import javax.swing.JFrame;
@@ -70,6 +71,9 @@ public class QuestRewardKillDenizen extends QuestReward {
 		
 		String questId = getParentQuest().getGameObject().getStringId();
 		int killedDenizens = 0;
+		if (numberOfDenizens() != 0) {
+			Collections.shuffle(denizens);
+		}
 		for (GameObject denizen : denizens) {
 			if (!denizen.hasThisAttribute("vulnerability") || (!denizen.hasThisAttribute("denizen") && !isATransformation(denizen)) || denizen.hasThisAttribute(Constants.DEAD)) continue;
 			GameObject denizenHolder = SetupCardUtility.getDenizenHolder(denizen);
@@ -124,7 +128,7 @@ public class QuestRewardKillDenizen extends QuestReward {
 				CombatWrapper.clearRoundCombatInfo(denizen);
 			}
 			killedDenizens++;
-			if (killedDenizens>=numberOfDenizens()) return;
+			if (numberOfDenizens() != 0 && killedDenizens>=numberOfDenizens()) return;
 		}
 	}
 	

@@ -18,6 +18,7 @@
 package com.robin.magic_realm.components.quest.reward;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Hashtable;
 import java.util.regex.Pattern;
 
@@ -75,6 +76,9 @@ public class QuestRewardControl extends QuestReward {
 			}
 		}
 		
+		if (numberOfDenizens()!=0) {
+			Collections.shuffle(targets);
+		}
 		for (RealmComponent target : targets) {
 			if (!pattern.matcher(target.toString()).find()) continue;
 			
@@ -86,7 +90,7 @@ public class QuestRewardControl extends QuestReward {
 			}
 			character.addHireling(target.getGameObject(),Constants.TEN_YEARS);
 			affectedDenizens++;
-			if (affectedDenizens>=numberOfDenizens()) return;
+			if (numberOfDenizens()!=0 && affectedDenizens>=numberOfDenizens()) return;
 		}
 	}
 	

@@ -18,6 +18,8 @@
 package com.robin.magic_realm.components.quest.reward;
 
 import java.util.ArrayList;
+import java.util.Collections;
+
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
@@ -40,6 +42,9 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		ArrayList<GameObject> denizens = character.getGameData().getGameObjectsByNameRegex(getDenizenNameRegex());
 		int regeneratedDenizens = 0;
+		if (numberOfDenizens()!=0) {
+			Collections.shuffle(denizens);
+		}
 		for (GameObject denizen : denizens) {
 			if (denizen != null && denizen.hasThisAttribute("denizen") && !denizen.hasThisAttribute(Constants.CLONED) && !denizen.hasThisAttribute(Constants.COMPANION) && !denizen.hasThisAttribute(Constants.SUMMONED)) {				
 				RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
@@ -55,7 +60,7 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 				}
 				SetupCardUtility.resetDenizen(denizen);
 				regeneratedDenizens++;
-				if (regeneratedDenizens>=numberOfDenizens()) return;
+				if (numberOfDenizens() != 0 && regeneratedDenizens>=numberOfDenizens()) return;
 			}
 		}
 	}

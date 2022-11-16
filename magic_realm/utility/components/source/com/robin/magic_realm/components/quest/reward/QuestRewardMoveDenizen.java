@@ -137,7 +137,7 @@ public class QuestRewardMoveDenizen extends QuestReward {
 				connectedClearing.add(denizen,null);
 			}
 			movedDenizens++;
-			if (movedDenizens>=numberOfDenizensToMove) {
+			if (numberOfDenizensToMove!=0 && movedDenizens>=numberOfDenizensToMove) {
 				return;
 			}
 		}
@@ -180,7 +180,7 @@ public class QuestRewardMoveDenizen extends QuestReward {
 					tileToMove.clearing = tileToMove.tile.getClearings().get(randomForDenizen);
 					tileToMove.clearing.add(denizen, null);
 					movedDenizens++;
-					if (movedDenizens>=numberOfDenizens()) {
+					if (numberOfDenizens() != 0 && movedDenizens>=numberOfDenizens()) {
 						break;
 					}
 				}
@@ -196,7 +196,7 @@ public class QuestRewardMoveDenizen extends QuestReward {
 				for (GameObject denizen : denizensToMove) {
 					locationToMove.clearing.add(denizen, null);
 					movedDenizens++;
-					if (movedDenizens>=numberOfDenizensToMove) {
+					if (numberOfDenizensToMove != 0 && movedDenizens>=numberOfDenizensToMove) {
 						break;
 					}
 				}
@@ -225,7 +225,7 @@ public class QuestRewardMoveDenizen extends QuestReward {
 					TileLocation locationToMoveForDenizen = locations.get(randomForDenizen);
 					locationToMoveForDenizen.clearing.add(denizen, null);
 					movedDenizens++;
-					if (movedDenizens>=numberOfDenizensToMove) {
+					if (numberOfDenizensToMove != 0 && movedDenizens>=numberOfDenizensToMove) {
 						break;
 					}
 				}
