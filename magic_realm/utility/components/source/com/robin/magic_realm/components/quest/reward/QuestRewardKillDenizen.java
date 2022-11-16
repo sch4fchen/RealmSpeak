@@ -27,6 +27,7 @@ import com.robin.game.objects.GamePool;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.Spoils;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.QuestLocation;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmUtility;
@@ -37,6 +38,7 @@ public class QuestRewardKillDenizen extends QuestReward {
 	
 	public static final String DENIZEN_REGEX = "_drx";
 	public static final String REWARD_CHARACTER = "_rc";
+	public static final String KILL_MARKED = "_km";
 	public static final String KILL_HIRELINGS = "_kh";
 	public static final String KILL_COMPANIONS = "_kc";
 	public static final String KILL_SUMMONED = "_ks";
@@ -63,10 +65,16 @@ public class QuestRewardKillDenizen extends QuestReward {
 			query.add("denizen");
 			denizens.addAll(pool.find(query));
 		}
+		
+		String questId = getParentQuest().getGameObject().getStringId();
 		for (GameObject denizen : denizens) {
 			if (!denizen.hasThisAttribute("vulnerability") || (!denizen.hasThisAttribute("denizen") && !isATransformation(denizen)) || denizen.hasThisAttribute(Constants.DEAD)) continue;
 			GameObject denizenHolder = SetupCardUtility.getDenizenHolder(denizen);
 			if (denizenHolder != null && denizen.getHeldBy() == denizenHolder) continue;
+			if (requiresMark()) {
+				String mark = denizen.getThisAttribute(QuestConstants.QUEST_MARK);
+				if (mark==null || !mark.equals(questId)) continue;
+			}
 			if (!killHirelings() && denizen.hasThisAttribute(Constants.HIRELING)) {
 				continue;
 			}
@@ -152,6 +160,9 @@ public class QuestRewardKillDenizen extends QuestReward {
 	}
 	private boolean rewardCharacter() {
 		return getBoolean(REWARD_CHARACTER);
+	}
+	private Boolean requiresMark() {
+		return getBoolean(KILL_MARKED);
 	}
 	private Boolean killHirelings() {
 		return getBoolean(KILL_HIRELINGS);
