@@ -1,4 +1,6 @@
-SHUFFLE!!
+Version 1.1.6.8
+QUEST UPDATE:
+
 Version 1.1.6.8
 QUEST UPDATE:
 # QuestRewardKillDenizen: option to kill only marked denizens
