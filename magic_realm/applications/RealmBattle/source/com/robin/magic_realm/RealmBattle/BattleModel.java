@@ -2440,7 +2440,6 @@ public class BattleModel {
 				CombatWrapper.clearAllCombatInfo(held);
 			}
 			
-			
 			if (dead) {
 				// Dead?  Then clear out everything!!
 				CombatWrapper.clearAllCombatInfo(rc.getGameObject());

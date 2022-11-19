@@ -5884,8 +5884,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 	}
 	/**
-	 * Unhires the hireling, by removing its owner, and dropping it in the clearing (assuming it is following the
-	 * character)
+	 * Unhires the hireling, by removing its owner, and dropping it in the clearing (assuming it is following the character)
 	 */
 	public void removeHireling(GameObject hireling) {
 		RealmComponent characterRc = RealmComponent.getRealmComponent(getGameObject());
@@ -5983,7 +5982,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 			if (hireling.getHeldBy()!=null) {
 				hireling.getHeldBy().remove(hireling);
 			}
+			RealmUtility.makeDead(RealmComponent.getRealmComponent(hireling));
 			hireling.removeThisAttribute(RealmComponent.REALMCOMPONENT_BLOCK);
+			hireling.setThisAttribute(Constants.OUT_OF_GAME);
 			hireling.setName("Removed from Play");
 			hireling.removeThisAttribute("setup_start");
 			hireling.removeThisAttribute("denizen");

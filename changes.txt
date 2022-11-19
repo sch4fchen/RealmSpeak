@@ -1,5 +1,6 @@
 Version 1.1.6.9
-QUEST UPDATE:
+BUGS/ISSUES:
+# Fix removing cloned hirelings during combat
 
 Version 1.1.6.8
 QUEST UPDATE:

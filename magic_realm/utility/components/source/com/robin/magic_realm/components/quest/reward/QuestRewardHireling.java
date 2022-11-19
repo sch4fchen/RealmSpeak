@@ -70,8 +70,7 @@ public class QuestRewardHireling extends QuestReward {
 			objects = getGameData().getGameObjects();
 		}
 		ArrayList<GameObject> selectionObjects = getObjectList(objects, at, getHirelingRegex(), excludeCloned());
-		if (selectionObjects.size() == 0)
-			return; // no real reward!
+		if (selectionObjects.size() == 0) return; // no real reward!
 		GameObject selected = null;
 		if (selectionObjects.size() == 1) {
 			selected = selectionObjects.get(0);

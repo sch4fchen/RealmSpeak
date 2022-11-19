@@ -218,6 +218,7 @@ public abstract class ChitComponent extends RealmComponent {
 	}
 	
 	public void paintComponent(Graphics g1, boolean includeChitBacking) {
+		if (this.getGameObject().hasThisAttribute(Constants.OUT_OF_GAME)) return;
 		Graphics2D g = (Graphics2D)g1;
 		int chitSize = getChitSize();
 		

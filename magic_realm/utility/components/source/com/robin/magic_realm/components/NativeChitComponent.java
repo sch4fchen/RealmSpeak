@@ -151,6 +151,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		}
 	}
 	public void paintComponent(Graphics g1) {
+		if (this.getGameObject().hasThisAttribute(Constants.OUT_OF_GAME)) return;
 		super.paintComponent(g1);
 		Graphics2D g = (Graphics2D) g1;
 		
