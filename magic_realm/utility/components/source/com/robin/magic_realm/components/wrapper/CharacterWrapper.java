@@ -5985,7 +5985,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			RealmUtility.makeDead(RealmComponent.getRealmComponent(hireling));
 			hireling.removeThisAttribute(RealmComponent.REALMCOMPONENT_BLOCK);
 			hireling.setThisAttribute(Constants.OUT_OF_GAME);
-			hireling.setName("Removed from Play");
+			hireling.setName("Hireling (cloned, removed from play)");
 			hireling.removeThisAttribute("setup_start");
 			hireling.removeThisAttribute("denizen");
 			hireling.removeThisAttribute("monster");
