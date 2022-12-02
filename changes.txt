@@ -1,6 +1,7 @@
 Version 1.1.6.9
 BUGS/ISSUES:
 # Fix removing cloned hirelings during combat
+# Cat and phantasm can now only peer in current location 
 
 Version 1.1.6.8
 QUEST UPDATE:

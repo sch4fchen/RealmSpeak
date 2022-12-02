@@ -1971,6 +1971,9 @@ public class ActionRow {
 		}
 	}
 	private void doEnhancedPeerAction() {
+		if (character.isMinion()) {
+			location = character.getCurrentLocation();
+		}
 		// Player peers into clearing
 		if (location.clearing != null) {
 			// clearing might NOT be on the same side, if a tile flipped somewhere, so update it here
