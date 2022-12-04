@@ -161,6 +161,8 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		protected JMenu viewMenu;
 			protected JMenu characterMenuView;
 				protected JMenuItem[] characterCardView;
+			protected JMenu customCharacterMenuView;
+				protected JMenuItem[] customCharacterCardView;
 			protected JMenu missionMenuView;
 				protected JMenuItem[] missionChitView;
 			protected JMenuItem remodeledCounterKeyView;
@@ -1089,6 +1091,14 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 					characterMenuView.add(characterCardView[i]);
 				}
 			viewMenu.add(characterMenuView);
+				ArrayList<ArrayList<String>> customCharacterCards = RealmCharacterBuilderModel.loadAllCustomCharacterCards();
+				customCharacterMenuView = new JMenu("Custom Characters");
+				customCharacterCardView = new JMenuItem[customCharacterCards.size()];
+				for (int i=0;i<customCharacterCards.size();i++) {
+					customCharacterCardView[i] = new ShowCustomCharCardViewAction(customCharacterCards.get(i));
+					customCharacterMenuView.add(customCharacterCardView[i]);
+				}
+			viewMenu.add(customCharacterMenuView);
 				viewSpellList = new JMenuItem("Game Spells");
 				viewSpellList.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent ev) {
@@ -2153,6 +2163,20 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		}
 		public void actionPerformed(ActionEvent ev) {
 			showImage(getText(),iconPath);
+		}
+	}
+	private class ShowCustomCharCardViewAction extends JMenuItem implements ActionListener {
+		private String name;
+		private String iconPath;
+		public ShowCustomCharCardViewAction(ArrayList<String> input) {
+			super(input.get(0));
+			name = input.get(0);
+			iconPath = input.get(1);
+			setIcon(null);
+			addActionListener(this);
+		}
+		public void actionPerformed(ActionEvent ev) {
+			FrameManager.showDefaultManagedFrame(RealmSpeakFrame.this,new JLabel(CustomCharacterLibrary.getSingleton().getCharacterImage(iconPath)),name,null,false);
 		}
 	}
 	private class ShowGoldSpecialViewAction extends JMenuItem implements ActionListener {

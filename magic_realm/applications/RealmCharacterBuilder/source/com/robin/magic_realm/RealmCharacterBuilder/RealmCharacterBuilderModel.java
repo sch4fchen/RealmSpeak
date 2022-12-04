@@ -674,6 +674,33 @@ public class RealmCharacterBuilderModel {
 			JOptionPane.showMessageDialog(null,sb.toString(),"Invalid Custom Characters",JOptionPane.WARNING_MESSAGE);
 		}
 	}
+	public static ArrayList<ArrayList<String>> loadAllCustomCharacterCards() {
+		String customFolderPath = "./characters/"; // default
+		if (System.getProperty("customFolder")!=null) {
+			customFolderPath = System.getProperty("customFolder")+File.separator;
+		}
+		ArrayList<ArrayList<String>> customCards = new ArrayList<ArrayList<String>>();
+		File customFolder = new File(customFolderPath);
+		if (customFolder.isDirectory() && customFolder.exists()) {
+			File[] charFile = customFolder.listFiles();
+			for (int i=0;i<charFile.length;i++) {
+				if (charFile[i].getAbsolutePath().endsWith(".rschar")) {
+					try {
+						RealmCharacterBuilderModel model = RealmCharacterBuilderModel.createFromFile(charFile[i]);
+						if (model!=null) {
+							ArrayList<String> temp = new ArrayList<>();
+							temp.add(model.getCharacter().getGameObject().getName());
+							temp.add(model.getCharacter().getGameObject().getAttribute("level_4","name"));
+							customCards.add(temp);
+						}
+					}
+					catch(Exception ex) {
+					}
+				}
+			}
+		}
+		return customCards;
+	}
 	public static void addCustomCharacters(HostPrefWrapper hostPrefs,GameData dataSource) {
 		// Add all custom characters
 		hostPrefs.clearCharacterKeys();

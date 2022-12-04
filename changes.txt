@@ -1,6 +1,7 @@
 Version 1.1.6.9
 NEW FEATURES:
 # Add runWithGraphicFix.bat for resolving graphic glitches in rare cases
+# Add option to view custom character cards ("View"->"Custom Characters")
 BUGS/ISSUES:
 # Fix removing cloned hirelings during combat
 # Cat and phantasm can now only peer in current location 
