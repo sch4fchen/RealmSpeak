@@ -163,6 +163,8 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 				protected JMenuItem[] characterCardView;
 			protected JMenu customCharacterMenuView;
 				protected JMenuItem[] customCharacterCardView;
+			protected JMenu customCharacterMenuView2;
+				protected JMenuItem[] customCharacterCardView2;
 			protected JMenu missionMenuView;
 				protected JMenuItem[] missionChitView;
 			protected JMenuItem remodeledCounterKeyView;
@@ -1098,13 +1100,22 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 				}
 			viewMenu.add(characterMenuView);
 				ArrayList<ArrayList<String>> customCharacterCards = RealmCharacterBuilderModel.loadAllCustomCharacterCards();
-				customCharacterMenuView = new JMenu("Custom Characters");
-				customCharacterCardView = new JMenuItem[customCharacterCards.size()];
-				for (int i=0;i<customCharacterCards.size();i++) {
+				customCharacterMenuView = new JMenu("Custom Characters (1-48)");
+				int maxSize = Math.min(customCharacterCards.size(), 48);
+				customCharacterCardView = new JMenuItem[maxSize];
+				for (int i=0;i<maxSize;i++) {
 					customCharacterCardView[i] = new ShowCustomCharCardViewAction(customCharacterCards.get(i));
 					customCharacterMenuView.add(customCharacterCardView[i]);
 				}
 			viewMenu.add(customCharacterMenuView);
+				customCharacterMenuView2 = new JMenu("Custom Characters (49-96)");
+				int maxSize2 = Math.min(customCharacterCards.size(), 96);
+				customCharacterCardView2 = new JMenuItem[maxSize2];
+				for (int i=48;i<maxSize2;i++) {
+					customCharacterCardView2[i] = new ShowCustomCharCardViewAction(customCharacterCards.get(i));
+					customCharacterMenuView2.add(customCharacterCardView2[i]);
+				}
+			viewMenu.add(customCharacterMenuView2);
 				viewSpellList = new JMenuItem("Game Spells");
 				viewSpellList.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent ev) {
@@ -2181,7 +2192,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 			name = input.get(0);
 			picturePath = input.get(1);
 			symbolPath = input.get(2);
-			setIcon(ImageCache.getIcon(symbolPath));
+			setIcon(ImageCache.getIcon(symbolPath,20));
 			addActionListener(this);
 		}
 		public void actionPerformed(ActionEvent ev) {
