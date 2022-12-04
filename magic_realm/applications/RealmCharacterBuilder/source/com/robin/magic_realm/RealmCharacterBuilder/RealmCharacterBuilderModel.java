@@ -688,9 +688,13 @@ public class RealmCharacterBuilderModel {
 					try {
 						RealmCharacterBuilderModel model = RealmCharacterBuilderModel.createFromFile(charFile[i]);
 						if (model!=null) {
+							GameObject go = model.getCharacter().getGameObject();
 							ArrayList<String> temp = new ArrayList<>();
-							temp.add(model.getCharacter().getGameObject().getName());
-							temp.add(model.getCharacter().getGameObject().getAttribute("level_4","name"));
+							temp.add(go.getName());
+							temp.add(go.getAttribute("level_4","name"));
+							String iconFolder = go.getThisAttribute(Constants.ICON_FOLDER);
+							String iconType = go.getThisAttribute(Constants.ICON_TYPE);
+							temp.add(iconFolder+"/"+iconType);
 							customCards.add(temp);
 						}
 					}

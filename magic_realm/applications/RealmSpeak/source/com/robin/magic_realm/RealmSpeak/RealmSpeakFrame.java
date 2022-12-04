@@ -309,7 +309,13 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 	}
 	private void showImage(String title,String path) {
 		ImageIcon icon = IconFactory.findIcon(path);
-		FrameManager.showDefaultManagedFrame(RealmSpeakFrame.this,new JLabel(icon),title,null,false);
+		ImageIcon frameIcon = IconFactory.findIcon("images/logo/icon.gif");
+		FrameManager.showDefaultManagedFrame(RealmSpeakFrame.this,new JLabel(icon),title,null,false,frameIcon);
+	}
+	private void showImage(String title,String path, String iconPath) {
+		ImageIcon icon = IconFactory.findIcon(path);
+		ImageIcon frameIcon = ImageCache.getIcon(iconPath);
+		FrameManager.showDefaultManagedFrame(RealmSpeakFrame.this,new JLabel(icon),title,null,false,frameIcon);
 	}
 	private void showRtf(String path) {
 		StringBuffer sb = new StringBuffer();
@@ -2154,29 +2160,33 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 	}
 	private class ShowCharCardViewAction extends JMenuItem implements ActionListener {
 		private String iconPath;
+		private String symbolPath;
 		public ShowCharCardViewAction(String[] input) {
 			super(input[0]);
-			String symbolPath = "characters/"+input[1];
+			symbolPath = "characters/"+input[1];
 			setIcon(ImageCache.getIcon(symbolPath,16,16));
 			iconPath = "images/characterdetail/"+input[1]+".jpg";
 			addActionListener(this);
 		}
 		public void actionPerformed(ActionEvent ev) {
-			showImage(getText(),iconPath);
+			showImage(getText(),iconPath,symbolPath);
 		}
 	}
 	private class ShowCustomCharCardViewAction extends JMenuItem implements ActionListener {
 		private String name;
-		private String iconPath;
+		private String picturePath;
+		private String symbolPath;
 		public ShowCustomCharCardViewAction(ArrayList<String> input) {
 			super(input.get(0));
 			name = input.get(0);
-			iconPath = input.get(1);
-			setIcon(null);
+			picturePath = input.get(1);
+			symbolPath = input.get(2);
+			setIcon(ImageCache.getIcon(symbolPath));
 			addActionListener(this);
 		}
 		public void actionPerformed(ActionEvent ev) {
-			FrameManager.showDefaultManagedFrame(RealmSpeakFrame.this,new JLabel(CustomCharacterLibrary.getSingleton().getCharacterImage(iconPath)),name,null,false);
+			ImageIcon frameIcon = ImageCache.getIcon(symbolPath);
+			FrameManager.showDefaultManagedFrame(RealmSpeakFrame.this,new JLabel(CustomCharacterLibrary.getSingleton().getCharacterImage(picturePath)),name,null,false,frameIcon);
 		}
 	}
 	private class ShowGoldSpecialViewAction extends JMenuItem implements ActionListener {
