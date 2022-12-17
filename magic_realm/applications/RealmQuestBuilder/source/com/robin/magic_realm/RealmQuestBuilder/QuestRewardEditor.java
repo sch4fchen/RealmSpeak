@@ -264,6 +264,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.DENIZEN_AMOUNT, "Number of denizens (0: unlimited)", FieldType.NumberAll));
 				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.CHARACTERS_CLEARING, "In characters clearing only", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.CHARACTERS_TILE, "In characters tile only", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.REGENERATE_HIRELINGS, "Regenerate hirelings as well", FieldType.Boolean));
 				break;	
 			case RelationshipChange:
 				list.add(new QuestPropertyBlock(QuestRewardRelationshipSet.NATIVE_GROUP, "Native group", FieldType.StringSelector, getRelationshipNames()));

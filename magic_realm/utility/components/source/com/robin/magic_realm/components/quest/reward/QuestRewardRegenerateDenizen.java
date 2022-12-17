@@ -34,6 +34,7 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 	public static final String DENIZEN_AMOUNT = "_damnt";
 	public static final String CHARACTERS_CLEARING = "_ch_cl";
 	public static final String CHARACTERS_TILE = "_ch_tile";
+	public static final String REGENERATE_HIRELINGS = "_reg_hirelings";
 	
 	public QuestRewardRegenerateDenizen(GameObject go) {
 		super(go);
@@ -48,6 +49,7 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 		for (GameObject denizen : denizens) {
 			if (denizen != null && denizen.hasThisAttribute("denizen") && !denizen.hasThisAttribute(Constants.CLONED) && !denizen.hasThisAttribute(Constants.COMPANION) && !denizen.hasThisAttribute(Constants.SUMMONED)) {				
 				RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
+				if (denizenRc.getOwner()!=null && !regenerateHirelings()) continue;
 				if (charactersClearingOnly()) {
 					if(denizenRc.getCurrentLocation() == null || character.getCurrentLocation() == null || denizenRc.getCurrentLocation().tile != character.getCurrentLocation().tile || denizenRc.getCurrentLocation().clearing != character.getCurrentLocation().clearing) {
 						continue;
@@ -92,6 +94,9 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 	}
 	private Boolean charactersTileOnly() {
 		return getBoolean(CHARACTERS_CLEARING);
+	}
+	private Boolean regenerateHirelings() {
+		return getBoolean(REGENERATE_HIRELINGS);
 	}
 	
 	public RewardType getRewardType() {
