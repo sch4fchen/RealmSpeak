@@ -814,6 +814,7 @@ public class QuestTesterFrame extends JFrame {
 				updateCharacterPanel();
 								
 				GameObject castedSpell = spells.get(0);
+				character.addCastedSpell(castedSpell);
 				String spellName = (castedSpell.getName().replaceAll("(\\s)\\[([0-9]+)\\]",""));
 				castedSpell.setName(spellName);
 				QuestRequirementParams reqParams = new QuestRequirementParams();

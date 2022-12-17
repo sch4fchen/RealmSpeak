@@ -940,7 +940,8 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			if (expireImmediately) {
 				expireSpell();
 			}
-						
+			
+			getCaster().addCastedSpell(getGameObject());
 			QuestRequirementParams reqParams = new QuestRequirementParams();
 			reqParams.actionType = CharacterActionType.CastSpell;
 			reqParams.objectList.add(getGameObject());

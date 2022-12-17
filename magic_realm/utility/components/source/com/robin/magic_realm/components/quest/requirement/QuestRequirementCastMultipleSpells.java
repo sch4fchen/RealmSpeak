@@ -23,14 +23,11 @@ import java.util.List;
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
-import com.robin.magic_realm.components.quest.CharacterActionType;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRequirementCastMultipleSpells extends QuestRequirement {
 	public static final String NUMBER_OF_SPELLS = "_nos";
 	public static String UNIQUE = "_unique";
-	private int numberOfSpellsToBeCasted = 0;
-	private List<String> spellsCasted = new ArrayList<>();
 
 	public QuestRequirementCastMultipleSpells(GameObject go) {
 		super(go);
@@ -38,22 +35,14 @@ public class QuestRequirementCastMultipleSpells extends QuestRequirement {
 
 	@Override
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
-		if (reqParams.actionType != CharacterActionType.CastSpell) {
-			return numberOfSpellsToBeCasted == getAmount();
+		List<String> spellsCasted = new ArrayList<>();
+		for (GameObject spell : character.getCastedSpells()) {
+			if (!getUnique() || !spellsCasted.contains(spell.getName())) {
+				spellsCasted.add(spell.getName());
+			}
 		}
-		
-		if (getUnique()) {
-			String spell = reqParams.objectList.get(0).getName();
-			if (!spellsCasted.contains(spell)) {
-				spellsCasted.add(spell);
-				numberOfSpellsToBeCasted = numberOfSpellsToBeCasted+1;
-			}	
-		}
-		else {
-			numberOfSpellsToBeCasted = numberOfSpellsToBeCasted+1;
-		}
-		
-		return numberOfSpellsToBeCasted == getAmount();
+
+		return spellsCasted.size() >= getAmount();
 	}
 
 	@Override

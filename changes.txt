@@ -1,4 +1,7 @@
 Version 1.1.7.0
+BUGS/ISSUES:
+# Fix QuestRequirementCastMultipleSpells
+
 
 Version 1.1.6.9
 NEW FEATURES:

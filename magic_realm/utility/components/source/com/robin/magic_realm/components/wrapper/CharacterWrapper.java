@@ -136,6 +136,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String RECORDED_SPELLS = "rSpells__";		// Spells you aquire
 	
 	public static final String KILL_BLOCK = "kills_b"; // record of all kills
+	public static final String SPELL_BLOCK = "spells_b"; // record of all casted spells
 	
 	public static final String PHASE_CHITS = "phaseChits__";
 	
@@ -1256,6 +1257,39 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 		return killSpoils;
+	}
+	/**
+	 * When the character casts a spell, add it here (based on current day)
+	 */
+	public void addCastedSpell(GameObject spell) {
+		String dayKey = getCurrentDayKey();
+		getGameObject().addAttributeListItem(SPELL_BLOCK,dayKey,spell.getStringId());
+	}
+	/**
+	 * Returns a collection of game objects for all day keys
+	 */
+	public ArrayList<GameObject> getCastedSpells() {
+		ArrayList<GameObject> spells = new ArrayList<>();
+		OrderedHashtable<String, Object> spellBlock = getGameObject().getAttributeBlock(SPELL_BLOCK);
+		for (String dayKey : spellBlock.orderedKeys()) {
+			spells.addAll(getCastedSpells(dayKey));
+		}
+		return spells;
+	}
+	/**
+	 * Returns a collection of game objects for the specified day key
+	 */
+	public ArrayList<GameObject> getCastedSpells(String dayKey) {
+		ArrayList<GameObject> spells = new ArrayList<>();
+		Collection<String> ids = getGameObject().getAttributeList(SPELL_BLOCK,dayKey);
+		if (ids!=null) {
+			GameData data = getGameObject().getGameData();
+			for (String id : ids) {
+				GameObject spell = data.getGameObject(Long.valueOf(id));
+				spells.add(spell);
+			}
+		}
+		return spells;
 	}
 	
 	/**
