@@ -74,6 +74,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case CastMultipleSpells:
 				list.add(new QuestPropertyBlock(QuestRequirementCastMultipleSpells.NUMBER_OF_SPELLS, "Number of spells", FieldType.Number));
 				list.add(new QuestPropertyBlock(QuestRequirementCastMultipleSpells.UNIQUE, "Unique spells", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementCastMultipleSpells.TARGET_VALUE_TYPE, "Only count points gained during the", FieldType.StringSelector, TargetValueType.values()));
 				break;
 			case CastSpell:
 				list.add(new QuestPropertyBlock(QuestRequirementCastSpell.REGEX_FILTER, "Spell to be casted (regex)", FieldType.Regex, null, new String[] {"spell"}));
