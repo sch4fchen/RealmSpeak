@@ -1,3 +1,5 @@
+Version 1.1.7.1
+
 Version 1.1.7.0
 QUEST UPDATE:
 # QuestRequirementCastMultipleSpells: Option to count only spells since certain time
