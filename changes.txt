@@ -3,8 +3,8 @@ QUEST UPDATE:
 # QuestRequirementCastMultipleSpells: Option to count only spells since certain time
 # QuestRewardRegenerateDenizen: Option to regenerate hirelings (default off)
 BUGS/ISSUES:
+# Fix attacks happening multiple times
 # Fix QuestRequirementCastMultipleSpells
-
 
 Version 1.1.6.9
 NEW FEATURES:

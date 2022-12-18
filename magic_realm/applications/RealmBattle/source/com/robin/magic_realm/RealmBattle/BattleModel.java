@@ -962,7 +962,9 @@ public class BattleModel {
 		for (BattleChit battleChit : battleChits) {
 			String key = null;
 			key = battleChit.getLength()+":"+battleChit.getAttackSpeed().getNum();
-			attackBlockOrder.add(key);
+			if (!attackBlockOrder.contains(key)) {
+				attackBlockOrder.add(key);
+			}
 			attackBlocks.put(key,battleChit);
 		}
 	}
