@@ -1,4 +1,6 @@
 Version 1.1.7.1
+BUGS/ISSUES:
+# BattleBuilder: disallow teleport spell
 
 Version 1.1.7.0
 QUEST UPDATE:

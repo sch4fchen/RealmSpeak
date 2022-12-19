@@ -4090,7 +4090,7 @@ public class CombatFrame extends JFrame {
 				prefMan.set(LAST_SAVE_LOCATION,lastSaveGame.getAbsolutePath());
 				prefMan.savePreferences();
 			}
-			loadedData.setDataName(DATA_NAME);
+			loadedData.setDataName(Constants.DATA_NAME_COMBAT_FRAME);
 			loadedData.setTracksChanges(true);
 			realmBattleData = loadedData;
 			

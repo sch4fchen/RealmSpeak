@@ -98,6 +98,10 @@ public class SpellUtility {
 	}
 	
 	public static void doTeleport(JFrame frame,String reason,CharacterWrapper character,TeleportType teleportType,int teleportSpeed) {
+		if (character.getGameData().getDataName().matches(Constants.DATA_NAME_COMBAT_FRAME)) {
+			JOptionPane.showMessageDialog(frame,"There is no way to escape this combat!",reason,JOptionPane.INFORMATION_MESSAGE);
+			return;
+		}
 		// Get the map to pop to the forefront, centered on the clearing, and the move possibilities marked
 		TileLocation chosen;
 		TileLocation planned = character.getPlannedLocation();
