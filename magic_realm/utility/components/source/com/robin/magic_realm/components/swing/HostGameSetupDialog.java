@@ -46,7 +46,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	private static final String OPTIONAL_CHAR_RULES_TAB = "Characters";
 	private static final String FIRST_EDITION_RULES_TAB = "First Edition";
 	private static final String HOUSE1_RULES_TAB = "Robin's House";
-	private static final String HOUSE2_RULES_TAB = "Other House";
+	private static final String HOUSE2_RULES_TAB = "House Rules";
 	private static final String HOUSE3_RULES_TAB = "More House";
 	private static final String RANDOM_GEN_TAB = "# Generators";
 	
@@ -395,7 +395,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	}
 	private void initComponents() {
 		setIconImage(IconFactory.findIcon("images/interface/options.gif").getImage());
-		setSize(1048,750);
+		setSize(1048,800);
 		setLocationRelativeTo(null);
 		setModal(true);
 		
@@ -1004,7 +1004,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY_MISSILE,"PARRYING MISSILE ATTACKS - Parrying missile attacks is possible (requires parrying rule or ability of 1st Ed./Super Realm).",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY_WITH_MISSILE,"PARRYING WITH MISSILE WEAPONS - Parrying with missile weapons is possible (requires one of the parrying rules or abilities).",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC (Super Realm Project) - A character with no active armor counters casting a spell may also use his staff to make a separate attack.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_NATIVES_FRIENDLY,"No attacking of friendly natives (Book of Learning) - FRIENDLY and ALLIED natives cannot be lured or targeted.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_NATIVES_FRIENDLY,"NO ATTACKING OF FRIENDLY NATIVES (Book of Learning) - FRIENDLY and ALLIED natives cannot be lured or targeted.",false));
 		
 		newOptionPane.setTabHtmlDescription(EXPANDING_REALM_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Expanding the Realm</font></body></html>");
 		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_CUSTOM_CHARS,"CUSTOM CHARACTERS - Allow players to choose from custom characters.",true,null,requiresDevelopmentRules));
@@ -1029,53 +1029,51 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_ELF,"1.7 - ELF must choose between Light Elf, or Great Elf.  Affects which chits can be played during the game.",false));
 		
 		newOptionPane.setTabHtmlDescription(REVISED_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Revised Rules</font></body></html>");
-		newOptionPane.addOption(REVISED_RULES_TAB,new GameOption(Constants.REV_MISSILE,"Revised Missile Table - Use the Revised Optional Missile Table for all missile attacks.",false,exclusiveMissileRules,null));
-		newOptionPane.addOption(REVISED_RULES_TAB,new GameOption(Constants.REV_DAMPEN_FAST_SPELLS,"Hamblen's Kludge Adjustment - Drop one sharpness star from Attack spells (ie., Fiery Blast) cast at speed zero.",false));
+		newOptionPane.addOption(REVISED_RULES_TAB,new GameOption(Constants.REV_MISSILE,"REVISED MISSILE TABLE - Use the Revised Optional Missile Table for all missile attacks.",false,exclusiveMissileRules,null));
+		newOptionPane.addOption(REVISED_RULES_TAB,new GameOption(Constants.REV_DAMPEN_FAST_SPELLS,"HAMBLEN'S KLUDGE ADJUSTMENT - Drop one sharpness star from Attack spells (ie., Fiery Blast) cast at speed zero.",false));
 		
 		newOptionPane.setTabHtmlDescription(FIRST_EDITION_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">First Edition Rules</font></body></html>");
-		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_AMBUSH_END_OF_COMBATROUND,"AMBUSH ROLL AT THE END OF COMBAT ROUND - The ambush roll is made at the end of a combat round.", false));
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_SEARCH_TABLES,"FIRST EDITION SEARCH TABLES - Search tables of first edition for Search, Peer and Locate.", false));
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_KILLER_CAVES,"KILLER CAVES - Horses are killed when they enter a cave clearing.", false));
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_DEADLY_REALM,"DEADLY REALM - Unhired natives, medium and heavy monsters are turned darker side up at the start of the game (and at the start of each month). Lost City and Lost Castle summon monsters like sound chits. Characters must assign attackers equally to the combat boxes.", false));
+		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_AMBUSH_END_OF_COMBATROUND,"AMBUSH ROLL AT THE END OF COMBAT ROUND - The ambush roll is made at the end of a combat round.", false));
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC - A character cannot play a MAGIC counter, if he has any weapon counter except a staff activated.", false));
 		
-		newOptionPane.setTabHtmlDescription(HOUSE1_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Robin's House Rules</font></body></html>");
-		newOptionPane.addOption(HOUSE1_RULES_TAB,new GameOption(Constants.HOUSE1_DWARF_ACTION,"Productive Dwarf - (This rule replaces section 1.1 of the advantage section for the Dwarf)  The Dwarf must spend one additional consecutive move phase to enter any non-cave clearing, but otherwise receives the normal number of phases.  (Special thanks to Daniel Farrow for this alternative rule which is much more workable than the one I was using!)",false));
-		newOptionPane.addOption(HOUSE1_RULES_TAB,new GameOption(Constants.HOUSE1_CHIT_REMAIN_FACE_UP,"Persistent Chits - Once sound/warning chits have been discovered, they remain face up for the remainder of the game.",false));
-		newOptionPane.addOption(HOUSE1_RULES_TAB,new GameOption(Constants.HOUSE1_NO_NEGATIVE_POINTS,"Positive Only Points - Fame and Notoriety are not allowed to go negative.  Any meeting result that requires more Fame/Notoriety than you have is considered Block/Battle.",false,cannotIncludeCampaignDebt,null));
-		newOptionPane.addOption(HOUSE1_RULES_TAB,new GameOption(Constants.HOUSE1_DONT_RECYCLE_CHARACTERS,"No Character Recycle - Once a character dies, they cannot be played again for the remainder of the game.",false));
-		newOptionPane.addOption(HOUSE1_RULES_TAB,new GameOption(Constants.HOUSE1_ALLOW_BIRDSONG_REARRANGE,"Birdsong Rearrangment - The rules for Magic Realm specify that you cannot rearrange your belongings during Birdsong.  This house rule relaxes that restriction (good for new players).",false));
-		newOptionPane.addOption(HOUSE1_RULES_TAB,new GameOption(Constants.HOUSE1_FORCE_INN_AFTER_GAMESTART,"Force Inn After Start - Characters joining AFTER the start of the game, MUST start at the Inn, regardless of their normal options.",false));
-		newOptionPane.addOption(HOUSE1_RULES_TAB,new GameOption(Constants.HOUSE1_NO_SECRETS,"No Secrets - When you are looting, or searching, the results of your finds are reported in the log for everyone to see.",false));
-		newOptionPane.addOption(HOUSE1_RULES_TAB,new GameOption(Constants.HOUSE1_ALLOW_LEVEL_GAINS_PAST_FOUR,"Level Rewards Past Four - When playing extended development rules, you will get rewards past level four if you advance during the game.",false));
-		
 		newOptionPane.setTabHtmlDescription(HOUSE2_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Other House Rules</font></body></html>");
-		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_NO_SPELL_LIMIT,"No Spell Limit - Magic Realm limits you to 14 spells per character.  This option removes that limit.",false));
-		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_MONSTER_WEAPON_NOFLIP,"No Flip with Monster Weapon Hit - Tremendous monsters with a weapon (Head or Club) will only flip when their body hits.",false));
-		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_DECLINE_OPPORTUNITY,"Decline Opportunity - When you roll an OPPORTUNITY on a meeting table, you will be presented with an option to reroll on the next friendlier table OR take the next result down on the existing table (a two).",false));
-		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_RED_SPECIAL_SHELTER,"Extra Shelters - The Lost City and Lost Castle chits count as shelters, for purposes of sheltered phases and weather.",false));
-		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_REVISED_ENHANCED_MAGIC,"Revised Enhanced Magic - Spells are not tied up by the casting of a spell, which allows the casting of multiple instances of a single spell.  Unlike normal Enhanced Magic, MAGIC chits ARE tied up by each spell.",false,exclusiveEnhancedMagicRules,null));
-		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_NATIVES_REMEMBER_DISCOVERIES,"Natives Remember Discoveries - When native leaders become unhired, they do not lose their recorded discoveries.  Of course, if they are killed, they are lost regardless.",false));
-		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE,"No Mission/Visitor Flip - Has the effect of making all sides of these chits behave like individual chits, so you can use both sides of the chit at the same time.  This also prevents the chits from flipping when a 6 is rolled on day 7.",false,null,null,cannotIncludeIgnoreMissions));
-		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_IGNORE_CAMPAIGNS,"No Campaigns - Exclude campaign chits when doing initial setup.  This rule requires the previous rule.",false,cannotIncludeCampaignDebt,requiresNoVisitorMissionFlip));
-		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_CAMPAIGN_DEBT,"Campaign Debt - Allows characters pick up campaign chit, even if it means they will have negative points.",false,overridesNoNegativePointsOrIgnoreCampaigns,null));
-		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_DAY_END_TRADING_ON,"Day End Trading ON - Day End Trading will be ON by default for all new characters.  This can still be turned off by individual characters, if desired.",false));
-		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_NO_NATIVES_BATTLING,"No natives battling - Unhired natives don't participate in combat.",false));
-		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_PEACE_WITH_NATURE_SITES,"Peace with Nature ability extends to site chits - When character with this ability ends his turn, the site chits in his tile do not summon monsters from the Chart of Appearances.",false));
-		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_MULTIPLE_SUMMONING,"Multiple Summoning - Allows chits to summon many times in a single round.",false));
+		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_NO_SPELL_LIMIT,"NO SPELL LIMIT - Magic Realm limits you to 14 spells per character.  This option removes that limit.",false));
+		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_REVISED_ENHANCED_MAGIC,"REVISED ENHANCED MAGIC - Spells are not tied up by the casting of a spell, which allows the casting of multiple instances of a single spell.  Unlike normal Enhanced Magic, MAGIC chits ARE tied up by each spell.",false,exclusiveEnhancedMagicRules,null));
+		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_PEACE_WITH_NATURE_SITES,"PEACE WITH NATURE ABILITY EXTENDED (to site chits) - When character with this ability ends his turn, the site chits in his tile do not summon monsters from the Chart of Appearances.",false));	
+		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE3_DWELLING_ARMOR_REPAIR,"ARMOR REPAIR - Repair armor at any dwelling during a trade phase, for the difference between the intact price, and the damaged price.",false));
+		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_DECLINE_OPPORTUNITY,"DECLINE OPPERTUNITY - When you roll an OPPORTUNITY on a meeting table, you will be presented with an option to reroll on the next friendlier table OR take the next result down on the existing table (a two).",false));
+		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_NATIVES_REMEMBER_DISCOVERIES,"NATVIES REMEMBERING DISCOVERIES - When native leaders become unhired, they do not lose their recorded discoveries.  Of course, if they are killed, they are lost regardless.",false));
+		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_NO_NATIVES_BATTLING,"NO NATIVES BATTLING - Unhired natives don't participate in combat.",false));
+		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_MONSTER_WEAPON_NOFLIP,"NO FLIP WITH MONSTER WEAPON HIT - Tremendous monsters with a weapon (Head or Club) will only flip when their body hits.",false));
+		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE,"NO MISSION/VISITOR FLIP - Has the effect of making all sides of these chits behave like individual chits, so you can use both sides of the chit at the same time.  This also prevents the chits from flipping when a 6 is rolled on day 7.",false,null,null,cannotIncludeIgnoreMissions));
+		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_IGNORE_CAMPAIGNS,"NO CAPMAIGNS - Exclude campaign chits when doing initial setup.  This rule requires the previous rule.",false,cannotIncludeCampaignDebt,requiresNoVisitorMissionFlip));
+		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_CAMPAIGN_DEBT,"CAMPAIGN DEBT - Allows characters pick up campaign chit, even if it means they will have negative points.",false,overridesNoNegativePointsOrIgnoreCampaigns,null));
+		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE3_NO_VP_DEVELOPMENT_RAMP,"NO VP DEVELOPMENT RAMP - When playing with development rules, earn one chit for every VP gained, regardless of level",false));
+		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE3_NO_RESTRICT_VPS_FOR_DEV,"NO VP RESTRICTIONS FOR DEVELOPMENT - For purposes of development only, don't restrict VP gains to assigned VPs.",false));
+		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_DAY_END_TRADING_ON,"DAY END TRADING ON - Day End Trading will be ON by default for all new characters.  This can still be turned off by individual characters, if desired.",false));
+		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_MULTIPLE_SUMMONING,"MULTIPLE SUMMONING - Allows chits to summon many times in a single round.",false));
+		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE3_SMALL_MONSTERS,"SMALL MONSTERS - Small monsters (Frog, Squirrel, Bird) don t block characters.",false));
+		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_RED_SPECIAL_SHELTER,"EXTRA SHELTERS - The Lost City and Lost Castle chits count as shelters, for purposes of sheltered phases and weather.",false));
+		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE3_SNOW_HIDE_EXCLUDE_CAVES,"SNOW HIDING IN CAVES - Ignore special weather conditions that prevent hiding due to snow or soft ground, when you perform the HIDE activity in a cave.",false));
+		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE3_SHOW_DISCARED_QUEST,"OPEN DISCARDED QUEST CARDS - When discarding a quest card, the name of the quest is shown in the log.",false));
 		
-		newOptionPane.setTabHtmlDescription(HOUSE3_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">More House Rules</font></body></html>");
-		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_DWELLING_ARMOR_REPAIR,"Armor Repair - Repair armor at any dwelling during a trade phase, for the difference between the intact price, and the damaged price.",false));
-		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_SNOW_HIDE_EXCLUDE_CAVES,"Snow Hiding in Caves - Ignore special weather conditions that prevent hiding due to snow or soft ground, when you perform the HIDE activity in a cave.",false));
-		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_VP_DEVELOPMENT_RAMP,"No VP Development Ramp - When playing with development rules, earn one chit for every VP gained, regardless of level",false));
-		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_RESTRICT_VPS_FOR_DEV,"No VP Restrictions for Development - For purposes of development only, don't restrict VP gains to assigned VPs.",false));
-		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_SHOW_DISCARED_QUEST,"Show discarded quest cards - When discarding a quest card, the name of the quest is shown in the log.",false));
+		newOptionPane.setTabHtmlDescription(HOUSE1_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Robin's House Rules</font></body></html>");
+		newOptionPane.addOption(HOUSE1_RULES_TAB,new GameOption(Constants.HOUSE1_DWARF_ACTION,"PRODUCTIVE DWARF - (This rule replaces section 1.1 of the advantage section for the Dwarf)  The Dwarf must spend one additional consecutive move phase to enter any non-cave clearing, but otherwise receives the normal number of phases.  (Special thanks to Daniel Farrow for this alternative rule which is much more workable than the one I was using!)",false));
+		newOptionPane.addOption(HOUSE1_RULES_TAB,new GameOption(Constants.HOUSE1_CHIT_REMAIN_FACE_UP,"PERSISTENT CHITS - Once sound/warning chits have been discovered, they remain face up for the remainder of the game.",false));
+		newOptionPane.addOption(HOUSE1_RULES_TAB,new GameOption(Constants.HOUSE1_NO_SECRETS,"NO SECRETS - When you are looting, or searching, the results of your finds are reported in the log for everyone to see.",false));
+		newOptionPane.addOption(HOUSE1_RULES_TAB,new GameOption(Constants.HOUSE1_ALLOW_BIRDSONG_REARRANGE,"BIRDSONG REARRANGMENT - The rules for Magic Realm specify that you cannot rearrange your belongings during Birdsong.  This house rule relaxes that restriction (good for new players).",false));
+		newOptionPane.addOption(HOUSE1_RULES_TAB,new GameOption(Constants.HOUSE1_NO_NEGATIVE_POINTS,"POSITIVE ONLY POINTS - Fame and Notoriety are not allowed to go negative.  Any meeting result that requires more Fame/Notoriety than you have is considered Block/Battle.",false,cannotIncludeCampaignDebt,null));
+		newOptionPane.addOption(HOUSE1_RULES_TAB,new GameOption(Constants.HOUSE1_DONT_RECYCLE_CHARACTERS,"NO CHARACTER RECYCLE - Once a character dies, they cannot be played again for the remainder of the game.",false));
+		newOptionPane.addOption(HOUSE1_RULES_TAB,new GameOption(Constants.HOUSE1_FORCE_INN_AFTER_GAMESTART,"FORCE INN AFTER START - Characters joining AFTER the start of the game, MUST start at the Inn, regardless of their normal options.",false));
+		newOptionPane.addOption(HOUSE1_RULES_TAB,new GameOption(Constants.HOUSE1_ALLOW_LEVEL_GAINS_PAST_FOUR,"LEVEL REWARDS PAST FOUR - When playing extended development rules, you will get rewards past level four if you advance during the game.",false));		
 		
 		newOptionPane.setTabHtmlDescription(RANDOM_GEN_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Random Number Generator Preference - For more details see:</font><br>http://www.qbrundage.com/michaelb/pubs/essays/random_number_generation.html</body></html>");
 		newOptionPane.addOption(RANDOM_GEN_TAB,new GameOption(Constants.RANDOM_R250_521,"Use R250/521 - A very fast shift-register sequence random number generator, invented by Kirkpatrick and Stoll in 1981.",false,exclusiveRandomGen,null));
 		newOptionPane.addOption(RANDOM_GEN_TAB,new GameOption(Constants.RANDOM_MERSENNE_TWISTER,"Use Mersenne Twister - A twisted GFSR(624,397) invented by Matsumora and Nishimura in 1996.",false,exclusiveRandomGen,null));
 		newOptionPane.addOption(RANDOM_GEN_TAB,new GameOption(Constants.RANDOM_ON_THE_FLY,"Use Java Generator - Generating different results, even when loading same game and doing identical actions.",false,exclusiveRandomGen,null));
-		
 		
 		return newOptionPane;
 	}
