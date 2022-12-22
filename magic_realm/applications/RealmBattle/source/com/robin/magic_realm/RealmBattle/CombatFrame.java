@@ -46,9 +46,6 @@ import com.robin.magic_realm.components.utility.TreasureUtility.ArmorType;
 import com.robin.magic_realm.components.wrapper.*;
 
 public class CombatFrame extends JFrame {
-	
-	private static final String DATA_NAME = "CombatFrame";
-	
 	public static final int PARTICIPANT_ROW_HEIGHT = 60;
 
 	private static Logger logger = Logger.getLogger(CombatFrame.class.getName());

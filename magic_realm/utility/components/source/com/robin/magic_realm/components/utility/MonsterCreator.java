@@ -67,6 +67,9 @@ public class MonsterCreator {
 		setupGameObject(go,name,iconType,vulnerability,armored,false);
 	}
 	public void setupGameObject(GameObject go,String name,String iconType,String vulnerability,boolean armored,boolean flies) {
+		setupGameObject(go,name,iconType,vulnerability,armored,flies,false);
+	}
+	public void setupGameObject(GameObject go,String name,String iconType,String vulnerability,boolean armored,boolean flies,boolean small) {
 		go.setName(name);
 		go.setThisAttribute("monster");
 		go.setThisAttribute(monsterKey);
@@ -80,6 +83,9 @@ public class MonsterCreator {
 		}
 		if (flies) {
 			go.setThisAttribute("flying");
+		}
+		if (small) {
+			go.setThisAttribute(Constants.SMALL);
 		}
 	}
 }

@@ -105,7 +105,7 @@ public class SummonAnimal extends MonsterTable {
 				MonsterCreator.setupSide(animal,"dark","L",0,2,0,2,"forestgreen");
 				break;
 			case Squirrel:
-				getMonsterCreator().setupGameObject(animal,"Squirrel","squirrel","L",false);
+				getMonsterCreator().setupGameObject(animal,"Squirrel","squirrel","L",false,false,true);
 				MonsterCreator.setupSide(animal,"light",null,0,0,0,2,"lightgreen");
 				MonsterCreator.setupSide(animal,"dark",null,0,0,0,2,"forestgreen");
 				break;

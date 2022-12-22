@@ -370,6 +370,7 @@ public class Constants {
 	public static final String REDUCED_VULNERABILITY = "red_vul";
 	public static final String INCREASE_SHARP = "inc_sharp";
 	public static final String LOCKPICK = "lockpick";
+	public static final String SMALL = "small";
 	
 	// New Spells
 	public static final String SUMMONING = "summoning";
