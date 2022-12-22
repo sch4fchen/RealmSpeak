@@ -463,7 +463,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		return "";
 	}
 	public boolean isMistLike() {
-		return getGameObject().hasThisAttribute("mist_like");
+		return getGameObject().hasThisAttribute(Constants.MIST_LIKE);
 	}
 	protected int speedModifier() {
 		int mod = 0;

@@ -371,6 +371,7 @@ public class Constants {
 	public static final String INCREASE_SHARP = "inc_sharp";
 	public static final String LOCKPICK = "lockpick";
 	public static final String SMALL = "small";
+	public static final String MIST_LIKE = "mist_like";
 	
 	// New Spells
 	public static final String SUMMONING = "summoning";

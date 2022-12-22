@@ -964,6 +964,7 @@ public class RealmUtility {
 			if (tl!=null && tl.hasClearing() && !tl.isBetweenClearings()) {
 				ClearingDetail currentClearing = tl.clearing;
 				Collection<RealmComponent> components = currentClearing.getClearingComponents();
+				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 				for (RealmComponent rc : components) {
 					if (rc instanceof MonsterChitComponent) {
 						MonsterChitComponent monster = (MonsterChitComponent)rc;
@@ -971,14 +972,16 @@ public class RealmUtility {
 						if (monster.getOwner()==null) {
 							// Monsters with Melt-into-Mist affecting them don't block
 							if (!monster.isMistLike()) {
-								// pacified monsters don't block
-								if (!monster.isPacifiedBy(character)) {
-									// don't block character if they have immunity to this monster
-									RealmComponent charRc = RealmComponent.getRealmComponent(character.getGameObject());
-									if (!charRc.isImmuneTo(monster)) {
-										blocked = true;
-										if (blockMonsters) {
-											monster.setBlocked(true); // so monster will stop prowling
+								// pacified and small monsters don't block
+								if (!monster.isSmall() || !hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS)) {
+									if (!monster.isPacifiedBy(character)) {
+										// don't block character if they have immunity to this monster
+										RealmComponent charRc = RealmComponent.getRealmComponent(character.getGameObject());
+										if (!charRc.isImmuneTo(monster)) {
+											blocked = true;
+											if (blockMonsters) {
+												monster.setBlocked(true); // so monster will stop prowling
+											}
 										}
 									}
 								}

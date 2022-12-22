@@ -1,4 +1,6 @@
 Version 1.1.7.1
+NEW FEATURES:
+# Optional Rule: Small monsters (Frog, Squirrel, Bird) don't block
 BUGS/ISSUES:
 # BattleBuilder: disallow teleport spell
 
@@ -20,7 +22,7 @@ BUGS/ISSUES:
 
 Version 1.1.6.8
 QUEST UPDATE:
-# QuestRewardKillDenizen: option to kill only marked denizens
+# QuestRewardKillDenizen: Option to kill only marked denizens
 # QuestRewards: Control, KillDenizen, MarkDenizen, MoveDenizen, RegenerateDenizen: option to affect only certain number of denizens
 # Update to quest A88 Winged Steed
 # Update to quest A44 Quest Valiant Dragonfang Necklace
@@ -33,7 +35,7 @@ NEW FEATURES:
 
 Version 1.1.6.7
 QUEST UPDATE:
-# QuestTester: check for monster control after checking for quest step
+# QuestTester: Check for monster control after checking for quest step
 # QuestRequirementInventory: Option to require the exact amount of items
 # QuestRewardDamage: Option to apply damage to followers (default: off)
 # QuestRewardItem: Option to select item randomly (instead of player choose)

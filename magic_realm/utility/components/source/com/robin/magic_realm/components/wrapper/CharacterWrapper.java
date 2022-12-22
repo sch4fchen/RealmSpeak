@@ -1818,9 +1818,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean isMistLike() {
 		GameObject transmorph = getTransmorph();
 		if (transmorph!=null) {
-			return transmorph.hasThisAttribute("mist_like");
+			return transmorph.hasThisAttribute(Constants.MIST_LIKE);
 		}
-		return getGameObject().hasThisAttribute("mist_like");
+		return getGameObject().hasThisAttribute(Constants.MIST_LIKE);
 	}
 	
 	//can walk woods in valley tiles

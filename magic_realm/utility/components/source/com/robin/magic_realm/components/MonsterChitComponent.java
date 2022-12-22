@@ -132,6 +132,10 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		return getVulnerability().isTremendous();
 	}
 	
+	public boolean isSmall() {
+		return getGameObject().hasThisAttribute(Constants.SMALL);
+	}
+	
 	public boolean canPinOpponent() {
 		return getGameObject().hasAttribute("dark","pins");
 	}
@@ -580,7 +584,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	}
 	
 	public boolean isMistLike() {
-		return getGameObject().hasThisAttribute("mist_like");
+		return getGameObject().hasThisAttribute(Constants.MIST_LIKE);
 	}
 	public boolean isAbsorbed() {
 		GameObject heldBy = getGameObject().getHeldBy();

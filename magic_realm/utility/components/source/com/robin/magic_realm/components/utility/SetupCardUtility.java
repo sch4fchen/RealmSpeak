@@ -763,8 +763,11 @@ public class SetupCardUtility {
 							CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
 							if (!character.isSleep()) {
 								monster.setBlocked(true);
-								character.setBlocked(true);
-								GameClient.broadcastClient("host",monster.getGameObject().getName()+" blocks the "+character.getGameObject().getName());
+								HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(monster.getGameObject().getGameData());
+								if (!monster.isSmall() || !hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS)) {
+									character.setBlocked(true);
+									GameClient.broadcastClient("host",monster.getGameObject().getName()+" blocks the "+character.getGameObject().getName());
+								}
 							}
 						}
 					}
