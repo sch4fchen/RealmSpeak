@@ -1378,7 +1378,13 @@ public class BattleModel {
 				boolean hitCausedHarm = false;
 				String magicType = attacker.getMagicType();
 				if (magicType!=null && magicType.trim().length()>0) {
-					if ((attacker.isDenizen() &&  "V".equals(magicType)) || Constants.POWER_OF_THE_PIT.matches(magicType)) {
+					boolean transmorphed = false;
+					if (attacker.isCharacter()) {
+						if ((new CharacterWrapper(attacker.getGameObject())).isTransmorphed()) {
+							transmorphed = true;
+						}
+					}
+					if (((attacker.isDenizen() || transmorphed ) &&  "V".equals(magicType)) || Constants.POWER_OF_THE_PIT.matches(magicType)) {
 						if (attacker instanceof SpellWrapper) {
 							// Spells belong to characters
 							SpellWrapper spell = (SpellWrapper)attacker;
@@ -1400,7 +1406,7 @@ public class BattleModel {
 						hitCausedHarm = pop.harmWasApplied();
 						spellCasting = true;
 					}
-					else if (attacker.isDenizen() && "VIII".equals(magicType)) {
+					else if ((attacker.isDenizen() || transmorphed) && "VIII".equals(magicType)) {
 						// Imp's Curse
 						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with a Curse along box "+attacker.getAttackCombatBox());
 						Curse curse = Curse.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject());

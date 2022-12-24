@@ -2,6 +2,7 @@ Version 1.1.7.1
 NEW FEATURES:
 # Optional Rule: Small monsters (Frog, Squirrel, Bird) don't block
 BUGS/ISSUES:
+# Absorbed demons and imps now cast spells like denizens
 # BattleBuilder: disallow teleport spell
 
 Version 1.1.7.0

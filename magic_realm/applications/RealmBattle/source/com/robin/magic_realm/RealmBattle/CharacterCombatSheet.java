@@ -646,7 +646,7 @@ public class CharacterCombatSheet extends CombatSheet {
 					combatFrame.replaceManeuver(index-POS_MOVE_BOX1+1);
 				}
 				else {
-					if (this.getSheetOwner() == RealmComponent.getRealmComponent(chararacterGo) && !activeCharacter.isTransformed() && (hostPrefs.hasPref(Constants.OPT_PARRY) || activeCharacter.affectedByKey(Constants.PARRY))){
+					if (this.getSheetOwner() == RealmComponent.getRealmComponent(chararacterGo) && !activeCharacter.isTransmorphed() && (hostPrefs.hasPref(Constants.OPT_PARRY) || activeCharacter.affectedByKey(Constants.PARRY))){
 						combatFrame.playManeuverOrParry(index-POS_MOVE_BOX1+1);
 					} else {
 						// Play maneuver
@@ -657,7 +657,7 @@ public class CharacterCombatSheet extends CombatSheet {
 			case POS_SHIELD1:
 			case POS_SHIELD2:
 			case POS_SHIELD3:
-				if (this.getSheetOwner() == RealmComponent.getRealmComponent(chararacterGo) && !activeCharacter.isTransformed() && (hostPrefs.hasPref(Constants.OPT_PARRY_LIKE_SHIELD) || activeCharacter.affectedByKey(Constants.PARRY_LIKE_SHIELD) || activeCharacter.affectedByKey(Constants.BLOCK_NO_WEAPON))){
+				if (this.getSheetOwner() == RealmComponent.getRealmComponent(chararacterGo) && !activeCharacter.isTransmorphed() && (hostPrefs.hasPref(Constants.OPT_PARRY_LIKE_SHIELD) || activeCharacter.affectedByKey(Constants.PARRY_LIKE_SHIELD) || activeCharacter.affectedByKey(Constants.BLOCK_NO_WEAPON))){
 					combatFrame.playParryLikeShield(index-POS_SHIELD1+1);
 				}
 				else {
