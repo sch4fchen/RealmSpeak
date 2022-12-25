@@ -497,9 +497,9 @@ public class BattleModel {
 	public void doEnergizeSpells() {
 		// Find and hash all spells and casters cast this round by speed
 		HashLists<Integer,SpellWrapper> spells = new HashLists<>();
-		HashLists<Integer,MonsterChitComponent> monsterSpells = new HashLists<>();
+		HashLists<Integer,BattleChit> monsterSpells = new HashLists<>();
 		HashLists<Integer,CharacterChitComponent> casters = new HashLists<>();
-		ArrayList<RealmComponent> spellCasters = new ArrayList<>();
+		ArrayList<BattleChit> spellCasters = new ArrayList<>();
 		for (CharacterChitComponent rc : getAllParticipatingCharacters()) {
 			CombatWrapper character = new CombatWrapper(rc.getGameObject());
 			GameObject go = character.getCastSpell();
@@ -516,8 +516,14 @@ public class BattleModel {
 		}
 		if (hostPrefs.hasPref(Constants.OPT_POWER_OF_THE_PIT_DEMON)) {
 			for (RealmComponent battleParticipant : getAllBattleParticipants(true)) {
-				if (battleParticipant.isMonster() && !battleParticipant.isMonsterPart()) {
-					MonsterChitComponent monster = (MonsterChitComponent)battleParticipant;
+				boolean transmorphed = false;
+				if (battleParticipant.isCharacter()) {
+					if ((new CharacterWrapper(battleParticipant.getGameObject())).isTransmorphed()) {
+						transmorphed = true;
+					}
+				}
+				if ((battleParticipant.isMonster() || transmorphed) && !battleParticipant.isMonsterPart()) {
+					BattleChit monster = (BattleChit)battleParticipant;
 					if ("V".equals(monster.getMagicType())) {
 						spellCasters.add(monster);
 						monsterSpells.put(Integer.valueOf(monster.getAttackSpeed().getNum()),monster);
@@ -547,8 +553,14 @@ public class BattleModel {
 								for (RealmComponent target : targets) {
 									CombatWrapper combat = new CombatWrapper(target.getGameObject());
 									if (hostPrefs.hasPref(Constants.OPT_POWER_OF_THE_PIT_DEMON)) {
-										if (target.isMonster() && !target.isMonsterPart()) {
-											MonsterChitComponent monster = (MonsterChitComponent)target;
+										boolean targetTransmorphed = false;
+										if (target.isCharacter()) {
+											if ((new CharacterWrapper(target.getGameObject())).isTransmorphed()) {
+												targetTransmorphed = true;
+											}
+										}
+										if ((target.isMonster() || targetTransmorphed) && !target.isMonsterPart()) {
+											BattleChit monster = (BattleChit)target;
 											if ("V".equals(monster.getMagicType())) {
 												if (monster.getAttackSpeed().getNum() <= speed) continue;
 												combat.setCancelSpell();
@@ -597,9 +609,9 @@ public class BattleModel {
 				}
 				
 				if (hostPrefs.hasPref(Constants.OPT_POWER_OF_THE_PIT_DEMON)) {
-					ArrayList<MonsterChitComponent> monstersAtSpeed = monsterSpells.getList(speed);
+					ArrayList<BattleChit> monstersAtSpeed = monsterSpells.getList(speed);
 					if (monstersAtSpeed!=null) {
-						for (MonsterChitComponent monster : monstersAtSpeed) {
+						for (BattleChit monster : monstersAtSpeed) {
 							RealmComponent target = monster.getTarget();
 							if (target == null || (unaffectedCasters != null && unaffectedCasters.contains(target))) continue;
 							CombatWrapper combat = new CombatWrapper(target.getGameObject());
