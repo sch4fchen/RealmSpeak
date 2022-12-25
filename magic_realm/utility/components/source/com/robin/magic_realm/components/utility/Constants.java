@@ -594,6 +594,9 @@ public class Constants {
 	public static final String HOUSE3_NO_VP_DEVELOPMENT_RAMP = "NoVpDevRamp";
 	public static final String HOUSE3_NO_RESTRICT_VPS_FOR_DEV = "NoRestrictVpsForDev";
 	public static final String HOUSE3_SHOW_DISCARED_QUEST = "ShowDiscardedQuestCardName";
+	public static final String HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS = "NoEventsAndAllPlayQuests";
+	public static final String HOUSE3_NO_SECRET_QUESTS = "NoSecretQuests";
+	public static final String HOUSE3_ONLY_EVENTS_AND_ALL_PLAY_QUESTS_WITH_ACTIVATION = "OnlyEventsAndAllPlayQuestsWithActivation";
 	public static final String HOUSE3_SMALL_MONSTERS = "SmallMonsters";
 	
 	// Random Number Generators
