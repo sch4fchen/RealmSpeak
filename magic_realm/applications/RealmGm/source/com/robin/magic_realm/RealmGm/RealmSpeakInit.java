@@ -371,19 +371,20 @@ public class RealmSpeakInit {
 		for(Quest template:QuestLoader.loadAllQuestsFromQuestFolder()) {
 			if (template.getBoolean(QuestConstants.WORKS_WITH_QTR)) {
 				if (hostPrefs.hasPref(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS) && template.isAllPlay()) continue;
+				if (hostPrefs.hasPref(Constants.HOUSE3_NO_CHARACTER_QUEST_CARDS) && !template.isAllPlay()) continue;
 				if (hostPrefs.hasPref(Constants.HOUSE3_NO_SECRET_QUESTS) && template.isSecretQuest()) continue;
-				boolean doesNotRequireActivation = false;
-				if (hostPrefs.hasPref(Constants.HOUSE3_ONLY_EVENTS_AND_ALL_PLAY_QUESTS_WITH_ACTIVATION) && template.isAllPlay()) {
+				boolean doesRequireActivation = false;
+				if ((hostPrefs.hasPref(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITHOUT_ACTIVATION) || hostPrefs.hasPref(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITH_ACTIVATION)) && template.isAllPlay()) {
 					QuestStep step = template.getSteps().get(0);
 					if (step == null) continue;
-					doesNotRequireActivation = true;
 					for (QuestRequirement req : step.getRequirements()) {
 						if (req.getRequirementType() == RequirementType.Active) {
-							doesNotRequireActivation = false;
+							doesRequireActivation = true;
 						}
 					}
 				}
-				if (doesNotRequireActivation) continue;
+				if (!doesRequireActivation && hostPrefs.hasPref(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITHOUT_ACTIVATION)) continue;
+				if (doesRequireActivation && hostPrefs.hasPref(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITH_ACTIVATION)) continue;
 				if (checkForDuplicateQuests && deck.getAllQuestNames().contains(template.getName())) continue;
 				int count = template.getInt(QuestConstants.CARD_COUNT);
 				if (count>0) {
@@ -411,18 +412,18 @@ public class RealmSpeakInit {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		for(Quest template:QuestLoader.loadAllQuestsFromQuestFolder()) {
 			if (hostPrefs.hasPref(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS) && template.isEvent()) continue;
-			boolean doesNotRequireActivation = false;
-			if (hostPrefs.hasPref(Constants.HOUSE3_ONLY_EVENTS_AND_ALL_PLAY_QUESTS_WITH_ACTIVATION) && template.isEvent()) {
+			boolean doesRequireActivation = false;
+			if ((hostPrefs.hasPref(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITHOUT_ACTIVATION) || hostPrefs.hasPref(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITH_ACTIVATION)) && template.isEvent()) {
 				QuestStep step = template.getSteps().get(0);
 				if (step == null) continue;
-				doesNotRequireActivation = true;
 				for (QuestRequirement req : step.getRequirements()) {
 					if (req.getRequirementType() == RequirementType.Active) {
-						doesNotRequireActivation = false;
+						doesRequireActivation = true;
 					}
 				}
 			}
-			if (doesNotRequireActivation) continue;
+			if (!doesRequireActivation && hostPrefs.hasPref(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITHOUT_ACTIVATION)) continue;
+			if (doesRequireActivation && hostPrefs.hasPref(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITH_ACTIVATION)) continue;
 			if (template.getBoolean(QuestConstants.WORKS_WITH_BOQ)) {
 				if (checkForDuplicateQuests && book.getAllEventNames().contains(template.getName())) continue;
 				Quest quest = template.copyQuestToGameData(data);

@@ -47,7 +47,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	private static final String FIRST_EDITION_RULES_TAB = "First Edition";
 	private static final String HOUSE1_RULES_TAB = "Robin's House";
 	private static final String HOUSE2_RULES_TAB = "House Rules";
-	private static final String HOUSE3_RULES_TAB = "More House";
+	private static final String HOUSE3_RULES_TAB = "Quests and VPs";
 	private static final String RANDOM_GEN_TAB = "# Generators";
 	
 	private static final Border TOP_LINE = BorderFactory.createMatteBorder(2,0,0,0,Color.blue);
@@ -1039,7 +1039,15 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_AMBUSH_END_OF_COMBATROUND,"AMBUSH ROLL AT THE END OF COMBAT ROUND - The ambush roll is made at the end of a combat round.", false));
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC - A character cannot play a MAGIC counter, if he has any weapon counter except a staff activated.", false));
 		
-		newOptionPane.setTabHtmlDescription(HOUSE2_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Other House Rules</font></body></html>");
+		newOptionPane.setTabHtmlDescription(HOUSE3_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Quests and VPs</font></body></html>");
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_SHOW_DISCARED_QUEST,"OPEN DISCARDED QUEST CARDS - When discarding a quest card, the name of the quest is shown in the log.",false));
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS,"NO EVENTS AND ALL PLAY QUESTS (Questing the Realm and Book of Quests) - No events and all play quests are added to the game.",false));
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITHOUT_ACTIVATION,"NO EVENTS AND ALL PLAY QUEST WITHOUT ACTIVATION (Questing the Realm and Book of Quests) - Events and all play quests which do not require an activation (= triggered by the game) are not added to the game.",false));
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITH_ACTIVATION,"NO EVENTS AND ALL PLAY QUEST WITH ACTIVATION (Questing the Realm and Book of Quests) - Events and all play quests which do require an activation (= triggered manually by the character) are not added to the game.",false));
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_SECRET_QUESTS,"NO SECRET QUESTS (Questing the Realm) - Secret quests are not added to the game.",false));
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_CHARACTER_QUEST_CARDS,"NO CHARACTER QUEST CARDS (Questing the Realm) - Characters cannot draw any quest cards (these quests are not added to the game).",false));
+		
+		newOptionPane.setTabHtmlDescription(HOUSE2_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">House Rules</font></body></html>");
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_NO_SPELL_LIMIT,"NO SPELL LIMIT - Magic Realm limits you to 14 spells per character.  This option removes that limit.",false));
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_REVISED_ENHANCED_MAGIC,"REVISED ENHANCED MAGIC - Spells are not tied up by the casting of a spell, which allows the casting of multiple instances of a single spell.  Unlike normal Enhanced Magic, MAGIC chits ARE tied up by each spell.",false,exclusiveEnhancedMagicRules,null));
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_PEACE_WITH_NATURE_SITES,"PEACE WITH NATURE ABILITY EXTENDED (to site chits) - When character with this ability ends his turn, the site chits in his tile do not summon monsters from the Chart of Appearances.",false));	
@@ -1058,10 +1066,6 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE3_SMALL_MONSTERS,"SMALL MONSTERS - Small monsters (Frog, Squirrel, Bird) don t block characters.",false));
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_RED_SPECIAL_SHELTER,"EXTRA SHELTERS - The Lost City and Lost Castle chits count as shelters, for purposes of sheltered phases and weather.",false));
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE3_SNOW_HIDE_EXCLUDE_CAVES,"SNOW HIDING IN CAVES - Ignore special weather conditions that prevent hiding due to snow or soft ground, when you perform the HIDE activity in a cave.",false));
-		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE3_SHOW_DISCARED_QUEST,"OPEN DISCARDED QUEST CARDS - When discarding a quest card, the name of the quest is shown in the log.",false));
-		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS,"NO EVENTS AND ALL PLAY QUESTS (Questing the Realm and Book of Quests) - No events and all play quests are added to the game.",false));
-		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE3_NO_SECRET_QUESTS,"NO SECRET QUESTS (Questing the Realm) - Secret quests are not added to the game.",false));
-		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE3_ONLY_EVENTS_AND_ALL_PLAY_QUESTS_WITH_ACTIVATION,"NO EVENTS AND ALL PLAY QUEST WITHOUT ACTIVATION (Questing the Realm and Book of Quests) - Events and all play quests which do not require an activation (= triggered by the game) are not added to the game.",false));
 		
 		newOptionPane.setTabHtmlDescription(HOUSE1_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Robin's House Rules</font></body></html>");
 		newOptionPane.addOption(HOUSE1_RULES_TAB,new GameOption(Constants.HOUSE1_DWARF_ACTION,"PRODUCTIVE DWARF - (This rule replaces section 1.1 of the advantage section for the Dwarf)  The Dwarf must spend one additional consecutive move phase to enter any non-cave clearing, but otherwise receives the normal number of phases.  (Special thanks to Daniel Farrow for this alternative rule which is much more workable than the one I was using!)",false));

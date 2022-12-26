@@ -1,9 +1,7 @@
 Version 1.1.7.1
 NEW FEATURES:
 # Optional Rule: Small monsters (Frog, Squirrel, Bird) don't block
-# Optional Rule: No events or all-play quests
-# Optional Rule: No secret quests
-# Optional Rule: Remove events and all play quests triggered by the game (not by activation)
+# Optional Rules: Limit quest cards (no events, all-play, secret quests...)
 BUGS/ISSUES:
 # Absorbed demons and imps now cast spells like denizens
 # BattleBuilder: disallow teleport spell

@@ -596,7 +596,9 @@ public class Constants {
 	public static final String HOUSE3_SHOW_DISCARED_QUEST = "ShowDiscardedQuestCardName";
 	public static final String HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS = "NoEventsAndAllPlayQuests";
 	public static final String HOUSE3_NO_SECRET_QUESTS = "NoSecretQuests";
-	public static final String HOUSE3_ONLY_EVENTS_AND_ALL_PLAY_QUESTS_WITH_ACTIVATION = "OnlyEventsAndAllPlayQuestsWithActivation";
+	public static final String HOUSE3_NO_CHARACTER_QUEST_CARDS = "NoCharacterQuestCards";
+	public static final String HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITHOUT_ACTIVATION = "NoEventsAndAllPlayQuestsWithoutActivation";
+	public static final String HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITH_ACTIVATION = "NoEventsAndAllPlayQuestsWithActivation";
 	public static final String HOUSE3_SMALL_MONSTERS = "SmallMonsters";
 	
 	// Random Number Generators
