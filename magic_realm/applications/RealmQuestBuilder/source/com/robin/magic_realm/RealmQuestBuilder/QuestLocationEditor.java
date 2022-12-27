@@ -44,6 +44,7 @@ public class QuestLocationEditor extends GenericEditor {
 	
 	private JTextField name;
 	private JComboBox<LocationType> type;
+	private JCheckBox hideNotifcation;
 	private JComboBox<LocationClearingType> clearingType;
 	private JComboBox<LocationTileSideType> tileSideType;
 	private JRadioButton sameClearing;
@@ -114,6 +115,7 @@ public class QuestLocationEditor extends GenericEditor {
 	private void readLocation() {
 		name.setText(location.getName());
 		type.setSelectedItem(location.getLocationType());
+		hideNotifcation.setSelected(location.hideNotification());
 		clearingType.setSelectedItem(location.getLocationClearingType());
 		tileSideType.setSelectedItem(location.getLocationTileSideType());
 		sameClearing.setSelected(!location.isSameTile());
@@ -139,6 +141,7 @@ public class QuestLocationEditor extends GenericEditor {
 	private void saveLocation() {
 		location.setName(name.getText());
 		location.setLocationType((LocationType)type.getSelectedItem());
+		location.setHideNotification(hideNotifcation.isSelected());
 		location.setLocationClearingType((LocationClearingType)clearingType.getSelectedItem());
 		location.setLocationTileSideType((LocationTileSideType)tileSideType.getSelectedItem());
 		location.setSameTile(sameTile.isSelected());
@@ -191,7 +194,7 @@ public class QuestLocationEditor extends GenericEditor {
 	}
 	private void initComponents() {
 		setTitle("Quest Location");
-		setSize(640,480);
+		setSize(800,480);
 		setLayout(new BorderLayout());
 		add(buildForm(),BorderLayout.CENTER);
 		add(buildOkCancelLine(),BorderLayout.SOUTH);
@@ -297,6 +300,19 @@ public class QuestLocationEditor extends GenericEditor {
 		line.add(Box.createHorizontalStrut(10));
 		descriptionLabel = new JLabel("");
 		line.add(descriptionLabel);
+		line.add(Box.createHorizontalGlue());
+		form.add(line);
+		form.add(Box.createVerticalStrut(10));
+		
+		line = group.createLabelLine("Hide notifcation when selecting location");
+		hideNotifcation = new JCheckBox();
+		ComponentTools.lockComponentSize(hideNotifcation,100,25);
+		hideNotifcation.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				updateControls();
+			}
+		});
+		line.add(hideNotifcation);
 		line.add(Box.createHorizontalGlue());
 		form.add(line);
 		form.add(Box.createVerticalStrut(10));

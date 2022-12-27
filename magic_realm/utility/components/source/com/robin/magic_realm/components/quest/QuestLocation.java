@@ -40,6 +40,7 @@ public class QuestLocation extends GameObjectWrapper {
 	private static final String TYPE = "_t";
 	private static final String LOCK_ADDRESS = "_la";
 	private static final String CHOICE_ADDRESSES = "_ca";
+	private static final String HIDE_NOTIFICATION = "_hn";
 	
 	private static final String SAME_TILE = "_st";
 	private static final String LOC_CLEARING_TYPE = "_ct";
@@ -298,7 +299,9 @@ public class QuestLocation extends GameObjectWrapper {
 			setLockAddress(choices.get(r));
 			String message = getTagName()+" is at the "+getLockAddress().toUpperCase();
 			character.addNote(getGameObject(),getQuestName(),message);
-			Quest.showQuestMessage(frame,getParentQuest(),message,getGameObject().getHeldBy().getName());
+			if (!hideNotification()) {
+				Quest.showQuestMessage(frame,getParentQuest(),message,getGameObject().getHeldBy().getName());
+			}
 			return;
 		}
 		if (type==LocationType.QuestChoice) {
@@ -318,7 +321,9 @@ public class QuestLocation extends GameObjectWrapper {
 			setLockAddress(choices.get(r));
 			String message = getTagName()+" is at the "+getLockAddress().toUpperCase();
 			character.addNote(getGameObject(),getQuestName(),message);
-			Quest.showQuestMessage(frame,getParentQuest(),message,getGameObject().getHeldBy().getName());
+			if (!hideNotification()) {
+				Quest.showQuestMessage(frame,getParentQuest(),message,getGameObject().getHeldBy().getName());
+			}
 			return;
 		}
 		if (type==LocationType.StepChoice) {
@@ -383,6 +388,14 @@ public class QuestLocation extends GameObjectWrapper {
 	
 	public void clearChoiceAddresses() {
 		clear(CHOICE_ADDRESSES);
+	}
+	
+	public boolean hideNotification() {
+		return getBoolean(HIDE_NOTIFICATION);
+	}
+	
+	public void setHideNotification(boolean val) {
+		setBoolean(HIDE_NOTIFICATION,val);
 	}
 	
 	public ArrayList<String> getChoiceAddresses() {

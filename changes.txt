@@ -1,4 +1,6 @@
 Version 1.1.7.1
+QUEST UPDATE:
+# QuestLocation: option for not displaying info about quest location
 NEW FEATURES:
 # Optional Rule: Small monsters (Frog, Squirrel, Bird) don't block
 # Optional Rules: Limit quest cards (no events, all-play, secret quests...)
