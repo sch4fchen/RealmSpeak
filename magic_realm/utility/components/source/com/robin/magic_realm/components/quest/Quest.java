@@ -81,8 +81,7 @@ public class Quest extends GameObjectWrapper {
 		counters = new ArrayList<>();
 		
 
-		for (Iterator i = go.getHold().iterator(); i.hasNext();) {
-			GameObject held = (GameObject) i.next();
+		for (GameObject held : go.getHold()) {
 			if (held.hasThisAttribute(Quest.QUEST_STEP)) {
 				steps.add(new QuestStep(held));
 			}

@@ -17,6 +17,8 @@
  */
 package com.robin.magic_realm.components.attribute;
 
+import java.util.Collection;
+
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
@@ -130,5 +132,23 @@ public class DevelopmentProgress {
 	}
 	public int getVpsToNextLevel() {
 		return vpsToNextLevel;
+	}
+	public int getNumberOfDiscoveredTreasures() {
+		if (character.getTreasureLocationDiscoveries() == null) return 0;
+		int amount = 0;
+		for(String discovery : character.getTreasureLocationDiscoveries()) {
+			if (!discovery.matches(".*"+Constants.CACHE_NAME+".*")) {
+				amount++;
+			}
+		}
+		return amount;
+	}
+	public int getNumberOfCompletedMissionsAndCampaigns() {
+		Collection<String> completed = character.getCompletedMissionsAndCampaigns();
+		if (completed == null) return 0;
+		return completed.size();
+	}
+	public int getVpsOfCompletedQuests() {
+		return character.getQuestPointScore().getOwnedPoints();
 	}
 }

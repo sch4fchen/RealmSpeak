@@ -356,6 +356,7 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 		if (reward>0) {
 			GameClient.broadcastClient(character.getGameObject().getName(),"Received "+reward+" gold as a reward.");
 		}
+		character.addMissionOrCampaignCompleted(getGameObject().getName());
 		QuestRequirementParams qp = new QuestRequirementParams();
 		qp.actionType = CharacterActionType.CompleteMissionCampaign;
 		qp.actionName = getGameObject().getName();

@@ -625,4 +625,6 @@ public class Constants {
 	
 	public static final String CHARACTERS_NAME_PLACEHOLDER = "CHARACTERS_NAME";
 	public static final String OUT_OF_GAME = "OUT_OF_GAME";
+	
+	public static final String CACHE_NAME = "'s Cache #";
 }

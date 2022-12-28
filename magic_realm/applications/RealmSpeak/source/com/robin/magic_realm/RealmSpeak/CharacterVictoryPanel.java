@@ -55,10 +55,8 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 	protected JLabel nextStageLabel;
 	protected JLabel nextLevelLabel;
 	
-	protected JLabel siteChitsVpsLabel;
-	protected JLabel twtVpsLabel;
-	protected JLabel missionsVpsLabel;
-	protected JLabel campaignsVpsLabel;
+	protected JLabel treasuresVpsLabel;
+	protected JLabel missionsAndCampaignsVpsLabel;
 	protected JLabel questsVpsLabel;
 	
 	public CharacterVictoryPanel(CharacterFrame parent) {
@@ -92,24 +90,20 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 		add(sp2,"Center");
 		
 		earnedVpsLabel = null;
+		
+		JPanel optionalPanel = new JPanel(new BorderLayout());
 		if (getGameHandler().getHostPrefs().hasPref(Constants.HOUSE3_SUPER_REALM_VPS)) {
 			JPanel vpDeductionPanel = new JPanel(new GridLayout(1,10));
-			vpDeductionPanel.add(getTitleLabel("<html><center>Site chits:</center></html>",MagicRealmColor.PALEYELLOW));
-			siteChitsVpsLabel = getTitleLabel("",MagicRealmColor.PALEYELLOW);
-			vpDeductionPanel.add(siteChitsVpsLabel);
-			vpDeductionPanel.add(getTitleLabel("<html><center>Treasures within Treasures:</center></html>",MagicRealmColor.PALEYELLOW));
-			twtVpsLabel = getTitleLabel("",MagicRealmColor.PALEYELLOW);
-			vpDeductionPanel.add(twtVpsLabel);
-			vpDeductionPanel.add(getTitleLabel("<html><center>Missions:</center></html>",MagicRealmColor.LIGHTBLUE));
-			missionsVpsLabel = getTitleLabel("",MagicRealmColor.LIGHTBLUE);
-			vpDeductionPanel.add(missionsVpsLabel);
-			vpDeductionPanel.add(getTitleLabel("<html><center>Campaigns:</center></html>",MagicRealmColor.LIGHTBLUE));
-			campaignsVpsLabel = getTitleLabel("",MagicRealmColor.LIGHTBLUE);
-			vpDeductionPanel.add(campaignsVpsLabel);
+			vpDeductionPanel.add(getTitleLabel("<html><center>Treasures (sites and TWT):</center></html>",MagicRealmColor.PALEYELLOW));
+			treasuresVpsLabel = getTitleLabel("",MagicRealmColor.PALEYELLOW);
+			vpDeductionPanel.add(treasuresVpsLabel);
+			vpDeductionPanel.add(getTitleLabel("<html><center>Missions and Campaigns:</center></html>",MagicRealmColor.LIGHTBLUE));
+			missionsAndCampaignsVpsLabel = getTitleLabel("",MagicRealmColor.LIGHTBLUE);
+			vpDeductionPanel.add(missionsAndCampaignsVpsLabel);
 			vpDeductionPanel.add(getTitleLabel("<html><center>Quests:</center></html>",MagicRealmColor.LIGHTGREEN));
 			questsVpsLabel = getTitleLabel("",MagicRealmColor.LIGHTGREEN);
 			vpDeductionPanel.add(questsVpsLabel);
-			topPanel.add(vpDeductionPanel,"South");
+			optionalPanel.add(vpDeductionPanel,"North");
 		}
 		if (getGameHandler().getHostPrefs().hasPref(Constants.EXP_DEVELOPMENT)) {
 			JPanel vpProgressPanel = new JPanel(new GridLayout(1,6));
@@ -122,8 +116,9 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 			vpProgressPanel.add(getTitleLabel("<html><center>VPs to next level:</center></html>",MagicRealmColor.LIGHTGREEN));
 			nextLevelLabel = getTitleLabel("",MagicRealmColor.LIGHTGREEN);
 			vpProgressPanel.add(nextLevelLabel);
-			topPanel.add(vpProgressPanel,"South");
+			optionalPanel.add(vpProgressPanel,"South");
 		}
+		topPanel.add(optionalPanel,"South");
 	}
 	protected JLabel getTitleLabel(String title,Color background) {
 		JLabel label = new JLabel(title,SwingConstants.CENTER);
@@ -148,6 +143,10 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 			DevelopmentProgress dp = DevelopmentProgress.createDevelopmentProgress(getGameHandler().getHostPrefs(),getCharacter());
 			earnedVpsLabel.setText(String.valueOf(dp.getCurrentVps()));
 			dp.updateStage();
+			
+			treasuresVpsLabel.setText(String.valueOf(dp.getNumberOfDiscoveredTreasures()));
+			missionsAndCampaignsVpsLabel.setText(String.valueOf(dp.getNumberOfCompletedMissionsAndCampaigns()));
+			questsVpsLabel.setText(String.valueOf(dp.getVpsOfCompletedQuests()));
 			
 			nextStageLabel.setText(String.valueOf(dp.getVpsToNextStage()));
 			nextLevelLabel.setText(String.valueOf(dp.getVpsToNextLevel()));

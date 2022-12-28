@@ -132,6 +132,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String DISC_OTHER = "dOther__";				// an AttributeList of Gates and Guilds
 	public static final String STARTING_GOLD_VALUE = "stGold__";	// an indicator of the character's starting value - needed to calculate gold victory requirements
 	
+	public static final String COMPLETED_MISSIONS_AND_CAMPAIGNS = "cMissions__";	// an AttributeList of completed missions and campaigns
+	
 	public static final String STARTING_SPELLS = "sSpells__";		// The spells you start the game with
 	public static final String RECORDED_SPELLS = "rSpells__";		// Spells you aquire
 	
@@ -3394,6 +3396,28 @@ public class CharacterWrapper extends GameObjectWrapper {
 			return getHiringCharacter().hasTreasureLocationDiscovery(name);
 		}
 		return hasListItem(DISC_TREASURE_LOCATIONS,name);
+	}
+	public void addMissionOrCampaignCompleted(String name) {
+		if (hasMissionOrCampaignCompleted(name)) {
+			return;
+		}
+		if (isMinion()) {
+			getHiringCharacter().addMissionOrCampaignCompleted(name);
+			return;
+		}
+		addListItem(COMPLETED_MISSIONS_AND_CAMPAIGNS,name);
+	}
+	public boolean hasMissionOrCampaignCompleted(String name) {
+		if (isMinion()) {
+			return getHiringCharacter().hasMissionOrCampaignCompleted(name);
+		}
+		return hasListItem(COMPLETED_MISSIONS_AND_CAMPAIGNS,name);
+	}
+	public ArrayList<String> getCompletedMissionsAndCampaigns() {
+		if (isMinion()) {
+			return getHiringCharacter().getCompletedMissionsAndCampaigns();
+		}
+		return getList(COMPLETED_MISSIONS_AND_CAMPAIGNS);
 	}
 	public void addHiddenPathDiscovery(String name) {
 		if (isMinion()) {
