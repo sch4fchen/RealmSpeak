@@ -1046,6 +1046,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITH_ACTIVATION,"NO EVENTS AND ALL PLAY QUEST WITH ACTIVATION (Questing the Realm and Book of Quests) - Events and all play quests which do require an activation (= triggered manually by the character) are not added to the game.",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_SECRET_QUESTS,"NO SECRET QUESTS (Questing the Realm) - Secret quests are not added to the game.",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_CHARACTER_QUEST_CARDS,"NO CHARACTER QUEST CARDS (Questing the Realm) - Characters cannot draw any quest cards (these quests are not added to the game).",false));
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_SUPER_REALM_VPS,"VPs DEDUCTION (Super Realm) - VPs are decuted for completing quests, discoviring treasure sites or TWT and for completeting missions and campaigns (defualt VPs should be 12).",false));
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_VPS_WITH_QUEST_CARDS,"QUEST CARDS WITH OTHER VPs (Super Realm) - Quest cards are added to the game, even when not playing Questing the Realm.",false));
 		
 		newOptionPane.setTabHtmlDescription(HOUSE2_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">House Rules</font></body></html>");
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_NO_SPELL_LIMIT,"NO SPELL LIMIT - Magic Realm limits you to 14 spells per character.  This option removes that limit.",false));

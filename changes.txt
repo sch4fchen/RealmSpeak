@@ -1,7 +1,9 @@
 Version 1.1.7.1
 QUEST UPDATE:
 # QuestLocation: option for not displaying info about quest location
+ToDo: trigger VPs deduction for site chits, twt, mission, campaign, quests; calculating VPs correctly (including minus fame, minus notoriety, curse "Ashes"); Character victory panel (combined with EXP_DEVELOPMENT)
 NEW FEATURES:
+# Optional Rule: Super Realm VP System
 # Optional Rule: Small monsters (Frog, Squirrel, Bird) don't block
 # Optional Rules: Limit quest cards (no events, all-play, secret quests...)
 BUGS/ISSUES:

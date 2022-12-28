@@ -55,6 +55,12 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 	protected JLabel nextStageLabel;
 	protected JLabel nextLevelLabel;
 	
+	protected JLabel siteChitsVpsLabel;
+	protected JLabel twtVpsLabel;
+	protected JLabel missionsVpsLabel;
+	protected JLabel campaignsVpsLabel;
+	protected JLabel questsVpsLabel;
+	
 	public CharacterVictoryPanel(CharacterFrame parent) {
 		super(parent);
 		calcColumns = new ArrayList<>();
@@ -86,6 +92,25 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 		add(sp2,"Center");
 		
 		earnedVpsLabel = null;
+		if (getGameHandler().getHostPrefs().hasPref(Constants.HOUSE3_SUPER_REALM_VPS)) {
+			JPanel vpDeductionPanel = new JPanel(new GridLayout(1,10));
+			vpDeductionPanel.add(getTitleLabel("<html><center>Site chits:</center></html>",MagicRealmColor.PALEYELLOW));
+			siteChitsVpsLabel = getTitleLabel("",MagicRealmColor.PALEYELLOW);
+			vpDeductionPanel.add(siteChitsVpsLabel);
+			vpDeductionPanel.add(getTitleLabel("<html><center>Treasures within Treasures:</center></html>",MagicRealmColor.LIGHTBLUE));
+			twtVpsLabel = getTitleLabel("",MagicRealmColor.LIGHTBLUE);
+			vpDeductionPanel.add(twtVpsLabel);
+			vpDeductionPanel.add(getTitleLabel("<html><center>Missions:</center></html>",MagicRealmColor.LIGHTGREEN));
+			missionsVpsLabel = getTitleLabel("",MagicRealmColor.LIGHTGREEN);
+			vpDeductionPanel.add(missionsVpsLabel);
+			vpDeductionPanel.add(getTitleLabel("<html><center>Campaigns:</center></html>",MagicRealmColor.PALEYELLOW));
+			campaignsVpsLabel = getTitleLabel("",MagicRealmColor.PALEYELLOW);
+			vpDeductionPanel.add(campaignsVpsLabel);
+			vpDeductionPanel.add(getTitleLabel("<html><center>Quests:</center></html>",MagicRealmColor.LIGHTBLUE));
+			questsVpsLabel = getTitleLabel("",MagicRealmColor.LIGHTBLUE);
+			vpDeductionPanel.add(questsVpsLabel);
+			topPanel.add(vpDeductionPanel,"South");
+		}
 		if (getGameHandler().getHostPrefs().hasPref(Constants.EXP_DEVELOPMENT)) {
 			JPanel vpProgressPanel = new JPanel(new GridLayout(1,6));
 			vpProgressPanel.add(getTitleLabel("<html><center>Current VPs:</center></html>",MagicRealmColor.PALEYELLOW));
@@ -101,7 +126,7 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 		}
 	}
 	protected JLabel getTitleLabel(String title,Color background) {
-		JLabel label = new JLabel(title,JLabel.CENTER);
+		JLabel label = new JLabel(title,SwingConstants.CENTER);
 		label.setFont(TITLE_FONT);
 		label.setOpaque(true);
 		label.setBackground(background);
@@ -252,7 +277,7 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 			viewPanel.add(Box.createHorizontalGlue());
 		}
 	}
-	private int getValueFromInventory(VictoryRowType rowType,GameObject go) {
+	private static int getValueFromInventory(VictoryRowType rowType,GameObject go) {
 		switch(rowType) {
 			case GreatTreasures:	return 1;
 			case Fame:				return go.getThisInt("fame");
@@ -261,25 +286,25 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 		}
 		return 0;
 	}
-	private JPanel getDescriptorBlock(String text,int val) {
+	private static JPanel getDescriptorBlock(String text,int val) {
 		return getDescriptorBlock(text,String.valueOf(val));
 	}
-	private JPanel getDescriptorBlock(String text,String val) {
+	private static JPanel getDescriptorBlock(String text,String val) {
 		JPanel panel = getDescriptorBlock(text.length()>0);
 		panel.add(getDescriptorLabel(text,TITLE_FONT));
 		panel.add(getDescriptorLabel(val,VALUE_FONT));
 		return panel;
 	}
-	private JPanel getDescriptorBlockLongText(String text,int val) {
+	private static JPanel getDescriptorBlockLongText(String text,int val) {
 		JPanel panel = getDescriptorBlock(text.length()>0);
 		panel.add(getDescriptorArea(text,TITLE_FONT));
 		panel.add(getDescriptorLabel(String.valueOf(val),VALUE_FONT));
 		return panel;
 	}
-	private JPanel getDescriptorBlock(ImageIcon icon,int val) {
+	private static JPanel getDescriptorBlock(ImageIcon icon,int val) {
 		return getDescriptorBlock(icon,String.valueOf(val));
 	}
-	private JPanel getDescriptorBlock(ImageIcon icon,String val) {
+	private static JPanel getDescriptorBlock(ImageIcon icon,String val) {
 		JPanel panel = getDescriptorBlock(true);
 		panel.add(new JLabel(icon));
 		panel.add(getDescriptorLabel(val,VALUE_FONT));
@@ -291,7 +316,7 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 		return panel;
 	}
 	private static JLabel getDescriptorLabel(String text,Font font) {
-		JLabel label = new JLabel(text,JLabel.CENTER);
+		JLabel label = new JLabel(text,SwingConstants.CENTER);
 		label.setFont(font);
 		return label;
 	}

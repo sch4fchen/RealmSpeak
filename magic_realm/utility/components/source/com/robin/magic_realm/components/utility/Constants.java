@@ -600,6 +600,8 @@ public class Constants {
 	public static final String HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITHOUT_ACTIVATION = "NoEventsAndAllPlayQuestsWithoutActivation";
 	public static final String HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITH_ACTIVATION = "NoEventsAndAllPlayQuestsWithActivation";
 	public static final String HOUSE3_SMALL_MONSTERS = "SmallMonsters";
+	public static final String HOUSE3_SUPER_REALM_VPS = "SuperRealmVPs";
+	public static final String HOUSE3_VPS_WITH_QUEST_CARDS = "VPsWithQuestCards";
 	
 	// Random Number Generators
 	public static final String RANDOM_R250_521 = "RndR250_521";
