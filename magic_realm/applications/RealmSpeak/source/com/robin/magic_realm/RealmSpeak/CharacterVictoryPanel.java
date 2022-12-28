@@ -97,17 +97,17 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 			vpDeductionPanel.add(getTitleLabel("<html><center>Site chits:</center></html>",MagicRealmColor.PALEYELLOW));
 			siteChitsVpsLabel = getTitleLabel("",MagicRealmColor.PALEYELLOW);
 			vpDeductionPanel.add(siteChitsVpsLabel);
-			vpDeductionPanel.add(getTitleLabel("<html><center>Treasures within Treasures:</center></html>",MagicRealmColor.LIGHTBLUE));
-			twtVpsLabel = getTitleLabel("",MagicRealmColor.LIGHTBLUE);
+			vpDeductionPanel.add(getTitleLabel("<html><center>Treasures within Treasures:</center></html>",MagicRealmColor.PALEYELLOW));
+			twtVpsLabel = getTitleLabel("",MagicRealmColor.PALEYELLOW);
 			vpDeductionPanel.add(twtVpsLabel);
-			vpDeductionPanel.add(getTitleLabel("<html><center>Missions:</center></html>",MagicRealmColor.LIGHTGREEN));
-			missionsVpsLabel = getTitleLabel("",MagicRealmColor.LIGHTGREEN);
+			vpDeductionPanel.add(getTitleLabel("<html><center>Missions:</center></html>",MagicRealmColor.LIGHTBLUE));
+			missionsVpsLabel = getTitleLabel("",MagicRealmColor.LIGHTBLUE);
 			vpDeductionPanel.add(missionsVpsLabel);
-			vpDeductionPanel.add(getTitleLabel("<html><center>Campaigns:</center></html>",MagicRealmColor.PALEYELLOW));
-			campaignsVpsLabel = getTitleLabel("",MagicRealmColor.PALEYELLOW);
+			vpDeductionPanel.add(getTitleLabel("<html><center>Campaigns:</center></html>",MagicRealmColor.LIGHTBLUE));
+			campaignsVpsLabel = getTitleLabel("",MagicRealmColor.LIGHTBLUE);
 			vpDeductionPanel.add(campaignsVpsLabel);
-			vpDeductionPanel.add(getTitleLabel("<html><center>Quests:</center></html>",MagicRealmColor.LIGHTBLUE));
-			questsVpsLabel = getTitleLabel("",MagicRealmColor.LIGHTBLUE);
+			vpDeductionPanel.add(getTitleLabel("<html><center>Quests:</center></html>",MagicRealmColor.LIGHTGREEN));
+			questsVpsLabel = getTitleLabel("",MagicRealmColor.LIGHTGREEN);
 			vpDeductionPanel.add(questsVpsLabel);
 			topPanel.add(vpDeductionPanel,"South");
 		}
