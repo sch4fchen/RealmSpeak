@@ -47,7 +47,7 @@ public class CharacterDiscoveriesPanel extends CharacterFramePanel {
 		treasureLocations.addAll(pool.find("treasure_location,discovery"));
 		
 		// If questing is turn on, show lost city and castle?
-		if (getHostPrefs().hasPref(Constants.QST_BOOK_OF_QUESTS) || getHostPrefs().hasPref(Constants.QST_QUEST_CARDS)) {
+		if (getHostPrefs().hasPref(Constants.QST_BOOK_OF_QUESTS) || getHostPrefs().hasPref(Constants.QST_QUEST_CARDS) || getHostPrefs().hasPref(Constants.HOUSE3_VPS_WITH_QUEST_CARDS)) {
 			treasureLocations.addAll(pool.find("red_special"));
 		}
 		
