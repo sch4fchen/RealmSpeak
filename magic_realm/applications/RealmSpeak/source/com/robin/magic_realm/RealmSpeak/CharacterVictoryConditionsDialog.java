@@ -79,7 +79,7 @@ public class CharacterVictoryConditionsDialog extends AggressiveDialog {
 		
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 		
-		JPanel topPanel = new JPanel(new GridLayout(3,1));
+		JPanel topPanel = new JPanel(new GridLayout(4,1));
 			requiredPoints = new JLabel("");
 			requiredPoints.setFont(INFO_FONT);
 			if (required!=null) {
