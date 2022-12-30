@@ -647,7 +647,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		questPanel.add(questGuildsOption=new VictoryConditionButton("Guild Quests","Quests are given at guilds (expansion)\nQuests do not earn VPs\n\nENDLESS, TIMED or SUDDEN DEATH"));
 		questPanel.add(questQtrOption=new VictoryConditionButton("Questing the Realm","Hand of Quest Cards\nFinish quests to earn VPs\n\nTIMED or SUDDEN DEATH"));
 		questPanel.add(questBoqOption=new VictoryConditionButton("Book of Quests","Each character picks ONE quest\nFirst to finish quest wins\n\nSUDDEN DEATH only"));
-		questPanel.add(questSrOption=new VictoryConditionButton("Super Realm","Hand of Quest Cards\nFinish quests to deduct VPs\n\nTIMED only"));
+		questPanel.add(questSrOption=new VictoryConditionButton("Super Realm","Hand of Quest Cards\n(best combined with deducting VPs)\n\nTIMED only"));
 		
 		buttonPanel.add(vpPanel,BorderLayout.NORTH);
 		buttonPanel.add(questPanel,BorderLayout.SOUTH);
@@ -1099,7 +1099,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_CHARACTER_QUEST_CARDS,"NO CHARACTER QUEST CARDS (Questing the Realm/Super Realm) - Characters cannot draw any quest cards (these quests are not added to the game).",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_QTR_AND_SR_QUEST_CARDS,"ADD ALL QUEST CARDS (Questing the Realm/Super Realm) - Add both, Questing the Realm and Super Realm quest cards, if playing Questing the Realm or Super Realm.",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_EXCHANGE_QTR_AND_SR_QUEST_CARDS,"EXCHANGE QtR and SR QUEST CARDS (Questing the Realm/Super Realm) - Add only the other quest card deck to the game (SR quest cards for QtR game, and QtR quest cards for SR game).",false));
-		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_DEDUCT_VPS,"(Super Realm rules) - Deduct VPs for discovering site chits and TWT or for completing tasks, missions and campaigns. Calculating score as in Super Realm.",false));
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_DEDUCT_VPS,"DEDUCTING VPS (Super Realm rules) - Deduct VPs for discovering site chits and TWT or for completing tasks, missions, campaigns and quests. Calculating score as in Super Realm.",false));
 		
 		newOptionPane.setTabHtmlDescription(HOUSE2_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">House Rules</font></body></html>");
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_NO_SPELL_LIMIT,"NO SPELL LIMIT - Magic Realm limits you to 14 spells per character.  This option removes that limit.",false));
