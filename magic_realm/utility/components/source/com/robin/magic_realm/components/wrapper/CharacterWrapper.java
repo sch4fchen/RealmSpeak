@@ -3385,6 +3385,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 				}
 			}
 		}
+		if (hostPrefs.hasPref(Constants.HOUSE3_DEDUCT_VPS)) {
+			setDeductVPs(1);
+		}
 		discovery.setThisAttribute(Constants.DISCOVERED);
 		
 		for (CharacterWrapper actionFollower : getActionFollowers()) {

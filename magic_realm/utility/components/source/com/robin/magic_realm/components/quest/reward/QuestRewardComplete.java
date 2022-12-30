@@ -20,8 +20,11 @@ package com.robin.magic_realm.components.quest.reward;
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
+import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.QuestState;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class QuestRewardComplete extends QuestReward {
 
@@ -35,6 +38,10 @@ public class QuestRewardComplete extends QuestReward {
 		getParentQuest().setState(QuestState.Complete,character.getCurrentDayKey(), character);
 		if (winBookOfQuestGame()) {
 			getParentQuest().setEvent(false);
+		}
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameData());
+		if (hostPrefs.hasPref(Constants.HOUSE3_DEDUCT_VPS)) {
+			character.setDeductVPs(getParentQuest().getInt(QuestConstants.VP_REWARD));
 		}
 	}
 	

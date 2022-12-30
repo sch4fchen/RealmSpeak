@@ -1,5 +1,3 @@
-ToDo: optional rule: trigger VPs deduction for site chits, twt, quests and calculate VPs correctly (including minus fame, minus notoriety)
-
 Version 1.1.7.1
 QUEST UPDATE:
 # QuestRewardDeductVps
