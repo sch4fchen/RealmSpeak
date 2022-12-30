@@ -1,8 +1,8 @@
 ToDo: optional rule: trigger VPs deduction for site chits, twt, quests and calculate VPs correctly (including minus fame, minus notoriety)
-Super Realm Quests: support of max. VPs (add VP for partly completed quests)
 
 Version 1.1.7.1
 QUEST UPDATE:
+# QuestRewardDeductVps
 # QuestLocation: option for not displaying info about quest location
 NEW FEATURES:
 # New Quest Mode: Super Realm Quests

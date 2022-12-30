@@ -133,6 +133,10 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case DeactivateQuest:
 				break;
+			case DeductVps:
+				list.add(new QuestPropertyBlock(QuestRewardDeductVps.AMOUNT, "Amount", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRewardDeductVps.ADD_VPS, "Add VPs", FieldType.Boolean));
+				break;
 			case DiscardQuest:
 				break;
 			case DiscoverTreasureSite:
