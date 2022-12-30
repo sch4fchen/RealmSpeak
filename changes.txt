@@ -1,7 +1,7 @@
 Version 1.1.7.1
 QUEST UPDATE:
 # QuestRewardDeductVps
-# QuestLocation: option for not displaying info about quest location
+# QuestLocation: Option for not displaying info about quest location
 NEW FEATURES:
 # New Quest Mode: Super Realm Quests
 # Optional Rule: Deduct VPs (Super Realm rules)
