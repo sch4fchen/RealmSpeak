@@ -587,7 +587,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		
 		JPanel optionSpecifics = new JPanel(new BorderLayout());
 		JPanel generalSpecifics = new JPanel(new GridLayout(1,3));
-		JPanel questSpecifics = new JPanel(new BorderLayout());
+		JPanel questSpecifics = new JPanel(new GridLayout(1,1));
 		anyVpsAllowedOption = notifier.getCheckBox("Allow players to choose any number of VPs ");
 		anyVpsAllowedOption.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
@@ -1149,7 +1149,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		smtpHost.setEnabled(emailNotification.isSelected());
 		testEmailButton.setEnabled(emailNotification.isSelected());
 		
-		vpEndlessOption.setEnabled(!questQtrOption.isSelected());
+		vpEndlessOption.setEnabled(!questQtrOption.isSelected() && !questSrOption.isSelected());
 		timeLimitLine.setVisible(vpTimedOption.isSelected());
 		vpAssignmentLine.setVisible((vpSuddenDeathOption.isSelected() || (vpTimedOption.isSelected() && fixedVps.isSelected() && !anyVpsAllowedOption.isSelected())) && !questBoqOption.isSelected());
 		anyVpsAllowedOption.setVisible((vpTimedOption.isSelected() || vpSuddenDeathOption.isSelected()) && !questBoqOption.isSelected());
