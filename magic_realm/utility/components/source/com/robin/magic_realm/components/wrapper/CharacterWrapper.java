@@ -6765,8 +6765,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return count;
 	}
-	public int getQuestSlotCount() {
-		return getCharacterLevel() + 1;
+	public int getQuestSlotCount(HostPrefWrapper hostPrefs) {
+		if (hostPrefs.getQuestCardsHandSize() == 0) {
+			return getCharacterLevel() + 1;
+		}
+		return hostPrefs.getQuestCardsHandSize();
 	}
 	public void addPostQuestParams(QuestRequirementParams qp) {
 		qp.dayKey = getCurrentDayKey();

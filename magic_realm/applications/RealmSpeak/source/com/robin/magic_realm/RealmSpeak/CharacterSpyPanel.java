@@ -30,6 +30,7 @@ import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.QuestState;
 import com.robin.magic_realm.components.swing.*;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class CharacterSpyPanel extends JPanel {
 	
@@ -48,7 +49,7 @@ public class CharacterSpyPanel extends JPanel {
 	private void initComponents() {
 		setLayout(new BorderLayout());
 		
-		tabPane = new JTabbedPane(JTabbedPane.BOTTOM);
+		tabPane = new JTabbedPane(SwingConstants.BOTTOM);
 			
 		// Character Card
 		ImageIcon icon = CharacterChooser.getCharacterImage(character.getGameObject());
@@ -172,7 +173,8 @@ public class CharacterSpyPanel extends JPanel {
 		if (character.getQuestCount()>0) {
 			JPanel questsPanel = new JPanel(new FlowLayout());
 			JPanel finishedQuestsPanel = new JPanel(new FlowLayout());
-			int slots = character.getQuestSlotCount();
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
+			int slots = character.getQuestSlotCount(hostPrefs);
 			for (Quest quest:character.getAllQuests()) {
 				QuestCardComponent card = (QuestCardComponent)RealmComponent.getRealmComponent(quest.getGameObject());
 				

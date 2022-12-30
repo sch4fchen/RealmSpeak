@@ -41,6 +41,7 @@ public class HostPrefWrapper extends GameObjectWrapper {
 	public static final String NUMBER_OF_MONTHS_TO_PLAY = "n_mon_play";
 	public static final String VPS_FIXED = "vps_fixed";
 	public static final String VPS_TO_ACHIEVE = "vps_2_achv";
+	public static final String QUEST_CARDS_HAND_SIZE = "quest_card_hand_size";
 	public static final String ENABLE_BATTLES = "en_batt";
 	public static final String DISABLE_SUMMONING = "dis_summ";
 	public static final String ENABLE_AUTOSAVE = "en_autosave";
@@ -118,6 +119,9 @@ public class HostPrefWrapper extends GameObjectWrapper {
 	}
 	public int getVpsToAchieve() {
 		return getInt(VPS_TO_ACHIEVE);
+	}
+	public int getQuestCardsHandSize() {
+		return getInt(QUEST_CARDS_HAND_SIZE);
 	}
 	public boolean getEnableBattles() {
 		return getBoolean(ENABLE_BATTLES);
@@ -247,6 +251,9 @@ public class HostPrefWrapper extends GameObjectWrapper {
 	}
 	public void setVpsToAchieve(int val) {
 		setInt(VPS_TO_ACHIEVE,val);
+	}
+	public void setQuestCardsHandSize(String val) {
+		setString(QUEST_CARDS_HAND_SIZE,val);
 	}
 	public void setEnableBattles(boolean val) {
 		setBoolean(ENABLE_BATTLES,val);

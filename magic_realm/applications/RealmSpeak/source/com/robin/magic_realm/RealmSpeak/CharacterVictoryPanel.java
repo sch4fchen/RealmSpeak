@@ -139,17 +139,22 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 	}
 	
 	private void updateProgress() {
+		if (earnedVpsLabel==null && treasuresVpsLabel==null && missionsAndCampaignsVpsLabel==null && questsVpsLabel==null) return;
+		DevelopmentProgress dp = DevelopmentProgress.createDevelopmentProgress(getGameHandler().getHostPrefs(),getCharacter());
 		if (earnedVpsLabel!=null) {
-			DevelopmentProgress dp = DevelopmentProgress.createDevelopmentProgress(getGameHandler().getHostPrefs(),getCharacter());
 			earnedVpsLabel.setText(String.valueOf(dp.getCurrentVps()));
 			dp.updateStage();
-			
-			treasuresVpsLabel.setText(String.valueOf(dp.getNumberOfDiscoveredTreasures()));
-			missionsAndCampaignsVpsLabel.setText(String.valueOf(dp.getNumberOfCompletedMissionsAndCampaigns()));
-			questsVpsLabel.setText(String.valueOf(dp.getVpsOfCompletedQuests()));
-			
 			nextStageLabel.setText(String.valueOf(dp.getVpsToNextStage()));
 			nextLevelLabel.setText(String.valueOf(dp.getVpsToNextLevel()));
+		}
+		if (treasuresVpsLabel!=null) {	
+			treasuresVpsLabel.setText(String.valueOf(dp.getNumberOfDiscoveredTreasures()));
+		}
+		if (missionsAndCampaignsVpsLabel!=null) {	
+			missionsAndCampaignsVpsLabel.setText(String.valueOf(dp.getNumberOfCompletedMissionsAndCampaigns()));
+		}
+		if (questsVpsLabel!=null) {	
+			questsVpsLabel.setText(String.valueOf(dp.getVpsOfCompletedQuests()));
 		}
 	}
 	private void updateView() {

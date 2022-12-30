@@ -33,6 +33,7 @@ import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams
 import com.robin.magic_realm.components.swing.*;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmLogging;
+import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class CharacterQuestPanel extends CharacterFramePanel {
 
@@ -282,7 +283,8 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 	}
 
 	private void updateControls() {
-		if (getHostPrefs().isUsingQuestCards() || getHostPrefs().isUsingGuildQuests()) {
+		HostPrefWrapper hostPrefs = getHostPrefs();
+		if (hostPrefs.isUsingQuestCards() || hostPrefs.isUsingGuildQuests()) {
 			Quest selQuest = getSelectedQuest();
 			boolean gameStarted = getGame().getGameStarted();
 			activateQuestButton.setEnabled(gameStarted && selQuest != null && selQuest.getState() == QuestState.Assigned && !selQuest.isAllPlay());
@@ -293,28 +295,28 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 			boolean characterIsAtGuild = characterIsAtLocation && getCharacter().getCurrentLocation().isAtGuild();
 			boolean isBirdsong = getGameHandler().getGame().isRecording();
 			discardQuestButton.setEnabled(canDiscardQuests && isBirdsong && selQuest!=null && selQuest.getState() == QuestState.Assigned &&
-					((getHostPrefs().isUsingQuestCards() && characterIsAtDwelling && !selQuest.isAllPlay()) || (getHostPrefs().isUsingGuildQuests() && characterIsAtGuild)));
+					((hostPrefs.isUsingQuestCards() && characterIsAtDwelling && !selQuest.isAllPlay()) || (hostPrefs.isUsingGuildQuests() && characterIsAtGuild)));
 
-			boolean hasAvailableSlots = (getCharacter().getQuestSlotCount() - getCharacter().getUnfinishedNotAllPlayQuestCount()) > 0;
+			boolean hasAvailableSlots = (getCharacter().getQuestSlotCount(hostPrefs) - getCharacter().getUnfinishedNotAllPlayQuestCount()) > 0;
 			drawQuestsButton.setEnabled(isBirdsong && hasAvailableSlots && getCharacter().isCharacter() &&
-					((getHostPrefs().isUsingQuestCards() && characterIsAtDwelling) || (getHostPrefs().isUsingGuildQuests() && characterIsAtGuild)));
+					((hostPrefs.isUsingQuestCards() && characterIsAtDwelling) || (hostPrefs.isUsingGuildQuests() && characterIsAtGuild)));
 		}
 	}
 
 	public void updatePanel() {
 		characterQuests = getCharacter().getAllQuests();
-		
-		if (getHostPrefs().isUsingQuestCards() || getHostPrefs().isUsingGuildQuests()) {
-			int slots = getCharacter().getQuestSlotCount();
+		HostPrefWrapper hostPrefs = getHostPrefs();
+		if (hostPrefs.isUsingQuestCards() || hostPrefs.isUsingGuildQuests()) {
+			int slots = getCharacter().getQuestSlotCount(hostPrefs);
 			questHandPanel.removeAll();
 			completedQuestsPanel.removeAll();
 			for(Quest quest:characterQuests) {
 				if (quest.getState().isFinished()) {
-					if  (quest.getInt(QuestConstants.VP_REWARD)>0 || getHostPrefs().isUsingGuildQuests()) {
+					if  (quest.getInt(QuestConstants.VP_REWARD)>0 || hostPrefs.isUsingGuildQuests()) {
 						completedQuestsPanel.addObject(quest.getGameObject());
 					}
 				}
-				else if (!quest.isAllPlay() || getHostPrefs().isUsingGuildQuests()) {
+				else if (!quest.isAllPlay() || hostPrefs.isUsingGuildQuests()) {
 					questHandPanel.addObject(quest.getGameObject());
 					slots--;
 				}
