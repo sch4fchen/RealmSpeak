@@ -369,7 +369,11 @@ public class RealmSpeakInit {
 		QuestDeck deck = QuestDeck.findDeck(data);
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		for(Quest template:QuestLoader.loadAllQuestsFromQuestFolder()) {
-			if (template.getBoolean(QuestConstants.WORKS_WITH_QTR)) {
+			if (hostPrefs.hasPref(Constants.HOUSE3_QTR_AND_SR_QUEST_CARDS)
+					|| (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) && !hostPrefs.hasPref(Constants.HOUSE3_EXCHANGE_QTR_AND_SR_QUEST_CARDS) && template.getBoolean(QuestConstants.WORKS_WITH_QTR))
+					|| (hostPrefs.hasPref(Constants.QST_SR_QUESTS) && !hostPrefs.hasPref(Constants.HOUSE3_EXCHANGE_QTR_AND_SR_QUEST_CARDS) && template.getBoolean(QuestConstants.WORKS_WITH_SR))
+					|| (hostPrefs.hasPref(Constants.QST_SR_QUESTS) && hostPrefs.hasPref(Constants.HOUSE3_EXCHANGE_QTR_AND_SR_QUEST_CARDS) && template.getBoolean(QuestConstants.WORKS_WITH_QTR))
+					|| (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) && hostPrefs.hasPref(Constants.HOUSE3_EXCHANGE_QTR_AND_SR_QUEST_CARDS) && template.getBoolean(QuestConstants.WORKS_WITH_SR))) {
 				if (hostPrefs.hasPref(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS) && template.isAllPlay()) continue;
 				if (hostPrefs.hasPref(Constants.HOUSE3_NO_CHARACTER_QUEST_CARDS) && !template.isAllPlay()) continue;
 				if (hostPrefs.hasPref(Constants.HOUSE3_NO_SECRET_QUESTS) && template.isSecretQuest()) continue;

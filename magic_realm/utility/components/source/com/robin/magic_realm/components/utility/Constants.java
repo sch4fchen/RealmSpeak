@@ -599,6 +599,8 @@ public class Constants {
 	public static final String HOUSE3_NO_CHARACTER_QUEST_CARDS = "NoCharacterQuestCards";
 	public static final String HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITHOUT_ACTIVATION = "NoEventsAndAllPlayQuestsWithoutActivation";
 	public static final String HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITH_ACTIVATION = "NoEventsAndAllPlayQuestsWithActivation";
+	public static final String HOUSE3_QTR_AND_SR_QUEST_CARDS = "QuestingTheRealmAndSuperRealmQuestCards";
+	public static final String HOUSE3_EXCHANGE_QTR_AND_SR_QUEST_CARDS = "ExchangeQuestingTheRealmAndSuperRealmQuestCards";
 	public static final String HOUSE3_DEDUCT_VPS = "DeductVps";
 	public static final String HOUSE3_SMALL_MONSTERS = "SmallMonsters";
 	
