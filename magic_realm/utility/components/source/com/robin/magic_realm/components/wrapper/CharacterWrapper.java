@@ -155,6 +155,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	
 	public static final String V_MONTHLY_VPS = "MVP";
 	public static final String V_NEW_VPS = "nVP";
+	public static final String V_DEDUCT_VPS = "dVP";
 	
 	// Quests
 	public static final String QUEST_ID = "QSTID";
@@ -577,7 +578,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		else if (isGone()) {
 			result = "Left the Map";
 		}
-		else if (needsToSetVps()) {
+		else if (needsToSetVps() || needsToDeductVps()) {
 			result = "Assigning VPs";
 		}
 		else if (getNeedsChooseGoldSpecial()) {
@@ -3652,6 +3653,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public void setNewVPRequirement(int vps) {
 		getGameObject().setAttribute(VICTORY_REQ_BLOCK,V_NEW_VPS,vps);
 	}
+	public void setDeductVPs(int amount) {
+		int oldAmount = 0;
+		if (getGameObject().hasAttribute(VICTORY_REQ_BLOCK,V_DEDUCT_VPS)) {
+			getGameObject().getAttributeInt(VICTORY_REQ_BLOCK,V_DEDUCT_VPS);
+		}
+		amount = oldAmount + amount;
+		getGameObject().setAttribute(VICTORY_REQ_BLOCK,V_DEDUCT_VPS,amount);
+	}
 //	public void updateNewVPRequirement(int currentDay) {
 //		if (getGameObject().hasAttribute(VICTORY_REQ_BLOCK,V_MONTHLY_VPS)) {
 //			int vps = getGameObject().getAttributeInt(VICTORY_REQ_BLOCK,V_MONTHLY_VPS);
@@ -3667,11 +3676,20 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public void clearNewVPRequirement() {
 		getGameObject().removeAttribute(VICTORY_REQ_BLOCK,V_NEW_VPS);
 	}
+	public void clearDeductVPs() {
+		getGameObject().removeAttribute(VICTORY_REQ_BLOCK,V_DEDUCT_VPS);
+	}
 	public int getNewVPRequirement() {
 		return getGameObject().getAttributeInt(VICTORY_REQ_BLOCK,V_NEW_VPS);
 	}
+	public int getVPsToDeduct() {
+		return getGameObject().getAttributeInt(VICTORY_REQ_BLOCK,V_DEDUCT_VPS);
+	}
 	public boolean needsToSetVps() {
 		return getGameObject().hasAttribute(VICTORY_REQ_BLOCK,V_NEW_VPS);
+	}
+	public boolean needsToDeductVps() {
+		return getGameObject().hasAttribute(VICTORY_REQ_BLOCK,V_DEDUCT_VPS);
 	}
 	public void initializeVpsSetup(HostPrefWrapper hostPrefs,int level, RealmCalendar cal) {
 		if (!hostPrefs.getRequiredVPsOff() && !hostPrefs.hasPref(Constants.QST_BOOK_OF_QUESTS)) {
@@ -3717,6 +3735,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 		addVictoryRequirement(V_NOTORIETY,notoriety);
 		addVictoryRequirement(V_GOLD,gold);
 	}
+	public void setVictoryRequirements(int questPoints,int greatTreasures,int usableSpells,int fame,int notoriety,int gold) {
+		setVictoryRequirement(V_QUEST_POINTS,questPoints);
+		setVictoryRequirement(V_GREAT_TREASURES,greatTreasures);
+		setVictoryRequirement(V_USABLE_SPELLS,usableSpells);
+		setVictoryRequirement(V_FAME,fame);
+		setVictoryRequirement(V_NOTORIETY,notoriety);
+		setVictoryRequirement(V_GOLD,gold);
+	}
 	public int getCurrentVictoryRequirement(String key) {
 		int current = 0;
 		if (getGameObject().hasAttribute(VICTORY_REQ_BLOCK,key)) {
@@ -3727,6 +3753,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	private void addVictoryRequirement(String key,int val) {
 		int current = getCurrentVictoryRequirement(key);
 		getGameObject().setAttribute(VICTORY_REQ_BLOCK,key,current+val);
+	}
+	private void setVictoryRequirement(String key,int val) {
+		getGameObject().setAttribute(VICTORY_REQ_BLOCK,key,val);
 	}
 	public boolean immuneToCurses() {
 		return getGameObject().hasAttribute(Constants.OPTIONAL_BLOCK,Constants.CURSE_IMMUNITY)

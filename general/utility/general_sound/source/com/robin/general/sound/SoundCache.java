@@ -20,14 +20,13 @@ package com.robin.general.sound;
 import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.util.Hashtable;
-import java.util.Iterator;
 
 import javax.sound.sampled.*;
 
 import com.robin.general.io.ResourceFinder;
 
 public class SoundCache {
-	private static Hashtable cache = new Hashtable();
+	private static Hashtable<String,Clip> cache = new Hashtable<>();
 	
 	private static double currentGain = 0.5;
 	
@@ -42,7 +41,7 @@ public class SoundCache {
 	
 	public static Clip getClip(String name) {
 		String soundPath = "sounds/"+name;
-		Clip clip = (Clip)cache.get(soundPath);
+		Clip clip = cache.get(soundPath);
 		if (clip==null) {
 			clip = loadClip(soundPath);
 			cache.put(soundPath,clip);
@@ -144,8 +143,7 @@ public class SoundCache {
 				throw new IllegalArgumentException("gain must be from 0 to 1");
 			}
 			currentGain = gain;
-			for (Iterator i=cache.values().iterator();i.hasNext();) {
-				Clip clip = (Clip)i.next();
+			for (Clip clip : cache.values()) {
 				adjustVolume(clip,currentGain);
 			}
 		}

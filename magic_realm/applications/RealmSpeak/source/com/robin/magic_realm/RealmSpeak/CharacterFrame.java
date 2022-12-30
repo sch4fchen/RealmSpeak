@@ -59,6 +59,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	
 	// These buttons are lit, and only displayed one at a time
 	protected SingleButton vpSetupButton;
+	protected SingleButton vpDeductButton;
 	protected SingleButton chooseQuestButton;
 	protected SingleButton advancementButton;
 	protected SingleButton gsPlacementButton;
@@ -511,6 +512,15 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	private void setupVPs() {
 		int vps = character.getNewVPRequirement();
 		CharacterVictoryConditionsDialog vpDialog = new CharacterVictoryConditionsDialog(gameHandler.getMainFrame(), character, Integer.valueOf(vps));
+		vpDialog.setLocationRelativeTo(this);
+		vpDialog.setVisible(true);
+		gameHandler.submitChanges();
+		updateControls();
+	}
+	private void deductVPs() {
+		int vps = character.getTotalAssignedVPs();
+		int deduct = character.getVPsToDeduct();
+		CharacterVictoryConditionsDialog vpDialog = new CharacterVictoryConditionsDialog(gameHandler.getMainFrame(), character, Integer.valueOf(vps), deduct);
 		vpDialog.setLocationRelativeTo(this);
 		vpDialog.setVisible(true);
 		gameHandler.submitChanges();
@@ -1024,6 +1034,23 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		ComponentTools.lockComponentSize(vpSetupButton, new Dimension(100, 25));
 		singleButtonManager.addButton(vpSetupButton);
 		box.add(vpSetupButton);
+		
+		// VP Deduct Button
+		vpDeductButton = new SingleButton("Deduct VPs",true) {
+			public boolean needsShow() {
+				return character.isActive() && character.needsToDeductVps();
+			}
+		};
+		vpDeductButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				deductVPs();
+			}
+		});
+		vpDeductButton.setBorder(BorderFactory.createLineBorder(Color.yellow, 2));
+		vpDeductButton.setVisible(false);
+		ComponentTools.lockComponentSize(vpDeductButton, new Dimension(100, 25));
+		singleButtonManager.addButton(vpDeductButton);
+		box.add(vpDeductButton);
 
 		// Quest Button
 		chooseQuestButton = new SingleButton("Choose Quest",true) {

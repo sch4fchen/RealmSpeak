@@ -46,7 +46,7 @@ public class SendMail {
 	private String subject;
 	private String message;
 	
-	private ArrayList bodyParts;
+	private ArrayList<MimeBodyPart> bodyParts;
 	
 	private String SMTP_Host;
 	
@@ -62,7 +62,7 @@ public class SendMail {
 		config.put(TO_KEY,inTo);
 		parseProperties(config);
 	}
-	public SendMail(String host,String from,Collection to,Collection cc,Collection bcc) {
+	public SendMail(String host,String from,Collection<String> to,Collection<String> cc,Collection<String> bcc) {
 		Properties config = new Properties();
 		config.put(SMTP_KEY,host);
 		config.put(FROM_KEY,from);
@@ -71,11 +71,10 @@ public class SendMail {
 		config.put(BCC_KEY,makeCommaList(bcc));
 		parseProperties(config);
 	}
-	private String makeCommaList(Collection list) {
+	private static String makeCommaList(Collection<String> list) {
 		StringBuffer sb = new StringBuffer();
 		if (list!=null) {
-			for (Iterator i=list.iterator();i.hasNext();) {
-				String val = i.next().toString();
+			for (String val : list) {
 				if (sb.length()>0) {
 					sb.append(",");
 				}
@@ -165,8 +164,8 @@ public class SendMail {
 			addError("Configuration file "+file.getPath()+" cannot be found");
 		}
 	}
-	private String[] addRecipient(String[] recipients,String newRecipient) {
-		ArrayList list = new ArrayList();
+	private static String[] addRecipient(String[] recipients,String newRecipient) {
+		ArrayList<String> list = new ArrayList<>();
 		if (recipients!=null && recipients.length>0) {
 			list.addAll(Arrays.asList(recipients));
 		}
@@ -191,7 +190,7 @@ public class SendMail {
 			recipientsBCC = parseRecipients(config,BCC_KEY);
 		}
 	}
-	private String[] parseRecipients(Properties config,String key) {
+	private static String[] parseRecipients(Properties config,String key) {
 		String list = (String)config.get(key);
 		if (list!=null && list.length()>0) {
 			StringTokenizer st = new StringTokenizer(list,",");
@@ -221,8 +220,8 @@ public class SendMail {
 			messageBodyPart.setContent(message, htmlEnabled?"text/html":"text/plain");
 			multipart.addBodyPart(messageBodyPart);
 			// add attachments
-			for (Iterator i = bodyParts.iterator(); i.hasNext(); ) {
-				multipart.addBodyPart((MimeBodyPart)i.next());
+			for (MimeBodyPart bodyPart : bodyParts) {
+				multipart.addBodyPart(bodyPart);
 			}
 			msg.setContent(multipart);
 		}
@@ -256,7 +255,7 @@ public class SendMail {
 			attachmentBodyPart.setFileName(attachmentFilePath.substring(lastSeparator + 1));
 		}
 		if (bodyParts == null) {
-			bodyParts = new ArrayList();
+			bodyParts = new ArrayList<>();
 		}
 		bodyParts.add(attachmentBodyPart);
 		return true;
@@ -280,7 +279,7 @@ public class SendMail {
 		attachmentBodyPart.setDisposition("attachment");
 		attachmentBodyPart.setFileName(attachmentFileName);
 		if (bodyParts == null) {
-			bodyParts = new ArrayList();
+			bodyParts = new ArrayList<>();
 		}
 		bodyParts.add(attachmentBodyPart);
 		return true;
@@ -342,7 +341,7 @@ public class SendMail {
 		
 		return msg;
 	}
-	private InternetAddress[] getAddresses(String[] recipients) throws AddressException {
+	private static InternetAddress[] getAddresses(String[] recipients) throws AddressException {
 		if (recipients!=null) {
 			InternetAddress[] addressTo = new InternetAddress[recipients.length]; 
 			for (int i = 0; i < recipients.length; i++) {

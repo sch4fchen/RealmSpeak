@@ -65,17 +65,17 @@ public class SpellInfoDialog extends AggressiveDialog {
 		initComponents(textOnly);
 		setLocationRelativeTo(parent);
 	}
-	private JPanel getDisplayBox(String title,String message,RealmComponent rc) {
+	private static JPanel getDisplayBox(String title,String message,RealmComponent rc) {
 		JPanel box = new JPanel(new BorderLayout());
 		box.setBorder(BorderFactory.createEtchedBorder());
-		JLabel titleL = new JLabel(title,JLabel.CENTER);
+		JLabel titleL = new JLabel(title,SwingConstants.CENTER);
 		titleL.setFont(TITLE_FONT);
 		box.add(titleL,"North");
 		if (rc!=null) {
 			box.add(new JLabel(rc.getIcon()));
 		}
 		if (message!=null) {
-			JLabel messageL = new JLabel(message,JLabel.CENTER);
+			JLabel messageL = new JLabel(message,SwingConstants.CENTER);
 			messageL.setFont(MESSAGE_FONT);
 			messageL.setForeground(Color.blue);
 			box.add(messageL,"South");
@@ -95,7 +95,7 @@ public class SpellInfoDialog extends AggressiveDialog {
 		JLabel cardIcon = new JLabel(sc.getUnembellishedIcon());
 		Box left = Box.createVerticalBox();
 		if (spell.isVirtual()) {
-			JLabel virtualLabel = new JLabel(" Virtual Instance ",JLabel.CENTER);
+			JLabel virtualLabel = new JLabel(" Virtual Instance ",SwingConstants.CENTER);
 			virtualLabel.setFont(new Font("Dialog",Font.BOLD,11));
 			virtualLabel.setOpaque(true);
 			virtualLabel.setBackground(new Color(150,150,255));
@@ -177,17 +177,17 @@ public class SpellInfoDialog extends AggressiveDialog {
 						icon = rc.getIcon();
 					}
 					
-					JLabel label = new JLabel(rc.getGameObject().getName(),icon,JLabel.CENTER);
-					label.setHorizontalTextPosition(JLabel.CENTER);
-					label.setVerticalTextPosition(JLabel.BOTTOM);
+					JLabel label = new JLabel(rc.getGameObject().getName(),icon,SwingConstants.CENTER);
+					label.setHorizontalTextPosition(SwingConstants.CENTER);
+					label.setVerticalTextPosition(SwingConstants.BOTTOM);
 					targetPanel.add(label);
 				}
 				GameObject animal = spell.getTransformAnimalOrStatue();
 				if (animal!=null) {
 					RealmComponent rc = RealmComponent.getRealmComponent(animal);
-					JLabel label = new JLabel(rc.getGameObject().getName(),rc.getIcon(),JLabel.CENTER);
-					label.setHorizontalTextPosition(JLabel.CENTER);
-					label.setVerticalTextPosition(JLabel.BOTTOM);
+					JLabel label = new JLabel(rc.getGameObject().getName(),rc.getIcon(),SwingConstants.CENTER);
+					label.setHorizontalTextPosition(SwingConstants.CENTER);
+					label.setVerticalTextPosition(SwingConstants.BOTTOM);
 					targetPanel.add(label);
 				}
 			}

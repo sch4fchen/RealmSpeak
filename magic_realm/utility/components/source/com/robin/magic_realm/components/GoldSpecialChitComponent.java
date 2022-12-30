@@ -356,11 +356,18 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 		if (reward>0) {
 			GameClient.broadcastClient(character.getGameObject().getName(),"Received "+reward+" gold as a reward.");
 		}
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 		if (getGameObject().hasThisAttribute("mission")) {
 			character.addCompletedMission(getGameObject().getName());
+			if (hostPrefs.hasPref(Constants.HOUSE3_DEDUCT_VPS)) {
+				character.setDeductVPs(1);
+			}
 		}
 		if (getGameObject().hasThisAttribute("campaign")) {
 			character.addCompletedCampaign(getGameObject().getName());
+			if (hostPrefs.hasPref(Constants.HOUSE3_DEDUCT_VPS)) {
+				character.setDeductVPs(2);
+			}
 		}
 		
 		QuestRequirementParams qp = new QuestRequirementParams();
