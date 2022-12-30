@@ -1,7 +1,8 @@
+ToDo: optional rule: trigger VPs deduction for site chits, twt, mission, campaign, sr quests: deduct Vps for quests; optional rule: calculating VPs correctly (including minus fame, minus notoriety, curse "Ashes")
+
 Version 1.1.7.1
 QUEST UPDATE:
 # QuestLocation: option for not displaying info about quest location
-ToDo: optional rule: trigger VPs deduction for site chits, twt, mission, campaign, sr quests: deduct Vps for quests; optional rule: calculating VPs correctly (including minus fame, minus notoriety, curse "Ashes"); new optional rule: use sr and/or qtr quests, SR Quests support
 NEW FEATURES:
 # New Quest Mode: Super Realm Quests
 # Optional Rule: Deduct VPs (Super Realm rules)

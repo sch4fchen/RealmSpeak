@@ -88,6 +88,7 @@ public class QuestBuilderFrame extends JFrame {
 
 	private JCheckBox bookOfQuests;
 	private JCheckBox bookOfQuestsEvent;
+	private JCheckBox superRealm;
 	private JCheckBox questingTheRealm;
 	private JCheckBox allPlayQuestOption;
 	private JCheckBox secretQuestOption;
@@ -221,6 +222,7 @@ public class QuestBuilderFrame extends JFrame {
 		bookOfQuests.setSelected(quest.getBoolean(QuestConstants.WORKS_WITH_BOQ));
 		bookOfQuestsEvent.setSelected(quest.getBoolean(QuestConstants.BOQ_EVENT));
 		questingTheRealm.setSelected(quest.getBoolean(QuestConstants.WORKS_WITH_QTR));
+		superRealm.setSelected(quest.getBoolean(QuestConstants.WORKS_WITH_SR));
 		cardCount.setText(quest.getString(QuestConstants.CARD_COUNT));
 		vpReward.setText(quest.getString(QuestConstants.VP_REWARD));
 		allPlayQuestOption.setSelected(quest.getBoolean(QuestConstants.QTR_ALL_PLAY));
@@ -256,6 +258,7 @@ public class QuestBuilderFrame extends JFrame {
 
 		quest.setBoolean(QuestConstants.WORKS_WITH_BOQ, bookOfQuests.isSelected());
 		quest.setBoolean(QuestConstants.WORKS_WITH_QTR, questingTheRealm.isSelected());
+		quest.setBoolean(QuestConstants.WORKS_WITH_SR, superRealm.isSelected());
 		quest.setBoolean(QuestConstants.BOQ_EVENT, bookOfQuestsEvent.isSelected());
 		quest.setBoolean(QuestConstants.QTR_ALL_PLAY, allPlayQuestOption.isSelected());
 		quest.setBoolean(QuestConstants.QTR_SECRET_QUEST, secretQuestOption.isSelected());
@@ -413,7 +416,7 @@ public class QuestBuilderFrame extends JFrame {
 
 	public void updateCard() {
 		saveOtherOptions();
-		cardPanel.setVisible(quest.getBoolean(QuestConstants.WORKS_WITH_QTR));
+		cardPanel.setVisible(quest.getBoolean(QuestConstants.WORKS_WITH_QTR) || quest.getBoolean(QuestConstants.WORKS_WITH_SR));
 		cardPanel.repaint();
 	}
 
@@ -575,7 +578,7 @@ public class QuestBuilderFrame extends JFrame {
 		switch (mode) {
 		case QtR:
 			for (Quest quest : quests) {
-				if (quest.getBoolean(QuestConstants.WORKS_WITH_QTR)) {
+				if (quest.getBoolean(QuestConstants.WORKS_WITH_QTR) || quest.getBoolean(QuestConstants.WORKS_WITH_SR)) {
 					questCards.add(quest);
 				}
 			}
@@ -717,7 +720,7 @@ public class QuestBuilderFrame extends JFrame {
 	private JPanel buildLimitationCheckOptions() {
 		JPanel panel = new JPanel(new GridLayout(1, 3));
 
-		JPanel reallyLeft = new JPanel(new GridLayout(11, 1));
+		JPanel reallyLeft = new JPanel(new GridLayout(12, 1));
 		reallyLeft.setBorder(BorderFactory.createTitledBorder("Quest Type"));
 		bookOfQuests = new JCheckBox("Book of Quests");
 		bookOfQuests.addActionListener(cardUpdateListener);
@@ -729,6 +732,9 @@ public class QuestBuilderFrame extends JFrame {
 		lineBoQ.add(bookOfQuestsEvent);
 		reallyLeft.add(lineBoQ);
 		
+		superRealm = new JCheckBox("Super Realm");
+		superRealm.addActionListener(cardUpdateListener);
+		reallyLeft.add(superRealm);
 		questingTheRealm = new JCheckBox("Questing the Realm");
 		questingTheRealm.addActionListener(cardUpdateListener);
 		reallyLeft.add(questingTheRealm);
