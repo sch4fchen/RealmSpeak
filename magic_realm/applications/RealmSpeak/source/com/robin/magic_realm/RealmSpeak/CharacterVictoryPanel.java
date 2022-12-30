@@ -56,7 +56,8 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 	protected JLabel nextLevelLabel;
 	
 	protected JLabel treasuresVpsLabel;
-	protected JLabel missionsAndCampaignsVpsLabel;
+	protected JLabel missionsVpsLabel;
+	protected JLabel campaignsVpsLabel;
 	protected JLabel questsVpsLabel;
 	
 	public CharacterVictoryPanel(CharacterFrame parent) {
@@ -80,7 +81,7 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 		victoryTable.setCellSelectionEnabled(true);
 		victoryTable.getTableHeader().setDefaultRenderer(new ScoreHeaderRenderer());
 		JScrollPane sp1 = new JScrollPane(victoryTable);
-		ComponentTools.lockComponentSize(sp1,100,130);
+		ComponentTools.lockComponentSize(sp1,100,150);
 		topPanel.add(sp1,"Center");
 		add(topPanel,"North");
 		
@@ -92,21 +93,26 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 		earnedVpsLabel = null;
 		
 		JPanel optionalPanel = new JPanel(new BorderLayout());
-		if (getGameHandler().getHostPrefs().hasPref(Constants.QST_SR_QUESTS)) {
-			JPanel vpDeductionPanel = new JPanel(new GridLayout(1,10));
+		if (getGameHandler().getHostPrefs().hasPref(Constants.HOUSE3_DEDUCT_VPS)) {
+			JPanel vpDeductionPanel = new JPanel(new GridLayout(2,4));
+			vpDeductionPanel.setBorder(BorderFactory.createTitledBorder("Deducting Victory Points"));
 			vpDeductionPanel.add(getTitleLabel("<html><center>Treasures (sites and TWT) (1VP):</center></html>",MagicRealmColor.PALEYELLOW));
 			treasuresVpsLabel = getTitleLabel("",MagicRealmColor.PALEYELLOW);
 			vpDeductionPanel.add(treasuresVpsLabel);
-			vpDeductionPanel.add(getTitleLabel("<html><center>Missions (1VP) and Campaigns (2VP):</center></html>",MagicRealmColor.LIGHTBLUE));
-			missionsAndCampaignsVpsLabel = getTitleLabel("",MagicRealmColor.LIGHTBLUE);
-			vpDeductionPanel.add(missionsAndCampaignsVpsLabel);
 			vpDeductionPanel.add(getTitleLabel("<html><center>Quests:</center></html>",MagicRealmColor.LIGHTGREEN));
 			questsVpsLabel = getTitleLabel("",MagicRealmColor.LIGHTGREEN);
 			vpDeductionPanel.add(questsVpsLabel);
+			vpDeductionPanel.add(getTitleLabel("<html><center>Missions (1VP):</center></html>",MagicRealmColor.LIGHTBLUE));
+			missionsVpsLabel = getTitleLabel("",MagicRealmColor.LIGHTBLUE);
+			vpDeductionPanel.add(missionsVpsLabel);
+			vpDeductionPanel.add(getTitleLabel("<html><center>Campaigns (2VP):</center></html>",MagicRealmColor.LIGHTBLUE));
+			campaignsVpsLabel = getTitleLabel("",MagicRealmColor.LIGHTBLUE);
+			vpDeductionPanel.add(campaignsVpsLabel);
 			optionalPanel.add(vpDeductionPanel,"North");
 		}
 		if (getGameHandler().getHostPrefs().hasPref(Constants.EXP_DEVELOPMENT)) {
 			JPanel vpProgressPanel = new JPanel(new GridLayout(1,6));
+			vpProgressPanel.setBorder(BorderFactory.createTitledBorder("Character Development"));
 			vpProgressPanel.add(getTitleLabel("<html><center>Current VPs:</center></html>",MagicRealmColor.PALEYELLOW));
 			earnedVpsLabel = getTitleLabel("",MagicRealmColor.PALEYELLOW);
 			vpProgressPanel.add(earnedVpsLabel);
@@ -135,11 +141,11 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 		}
 	}
 	private boolean isRestrictAssigned() {
-		return !getHostPrefs().getRequiredVPsOff() && !getHostPrefs().hasPref(Constants.QST_QUEST_CARDS);
+		return !getHostPrefs().getRequiredVPsOff() && !getHostPrefs().hasPref(Constants.QST_QUEST_CARDS) && !getHostPrefs().hasPref(Constants.QST_SR_QUESTS);
 	}
 	
 	private void updateProgress() {
-		if (earnedVpsLabel==null && treasuresVpsLabel==null && missionsAndCampaignsVpsLabel==null && questsVpsLabel==null) return;
+		if (earnedVpsLabel==null && treasuresVpsLabel==null && missionsVpsLabel==null && campaignsVpsLabel==null && questsVpsLabel==null) return;
 		DevelopmentProgress dp = DevelopmentProgress.createDevelopmentProgress(getGameHandler().getHostPrefs(),getCharacter());
 		if (earnedVpsLabel!=null) {
 			earnedVpsLabel.setText(String.valueOf(dp.getCurrentVps()));
@@ -150,11 +156,14 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 		if (treasuresVpsLabel!=null) {	
 			treasuresVpsLabel.setText(String.valueOf(dp.getNumberOfDiscoveredTreasures()));
 		}
-		if (missionsAndCampaignsVpsLabel!=null) {	
-			missionsAndCampaignsVpsLabel.setText(String.valueOf(dp.getNumberOfCompletedMissionsAndCampaigns()));
+		if (missionsVpsLabel!=null) {	
+			missionsVpsLabel.setText(String.valueOf(dp.getNumberOfCompletedMissions()));
+		}
+		if (campaignsVpsLabel!=null) {	
+			campaignsVpsLabel.setText(String.valueOf(dp.getNumberOfCompletedCampaigns()));
 		}
 		if (questsVpsLabel!=null) {	
-			questsVpsLabel.setText(String.valueOf(dp.getVpsOfCompletedQuests()));
+			questsVpsLabel.setText(String.valueOf(dp.getVpsOfQuests()));
 		}
 	}
 	private void updateView() {

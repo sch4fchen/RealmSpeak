@@ -143,12 +143,17 @@ public class DevelopmentProgress {
 		}
 		return amount;
 	}
-	public int getNumberOfCompletedMissionsAndCampaigns() {
-		Collection<String> completed = character.getCompletedMissionsAndCampaigns();
+	public int getNumberOfCompletedMissions() {
+		Collection<String> completed = character.getCompletedMissions();
 		if (completed == null) return 0;
 		return completed.size();
 	}
-	public int getVpsOfCompletedQuests() {
+	public int getNumberOfCompletedCampaigns() {
+		Collection<String> completed = character.getCompletedCampaigns();
+		if (completed == null) return 0;
+		return completed.size();
+	}
+	public int getVpsOfQuests() {
 		return character.getQuestPointScore().getOwnedPoints();
 	}
 }

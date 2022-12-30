@@ -132,7 +132,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String DISC_OTHER = "dOther__";				// an AttributeList of Gates and Guilds
 	public static final String STARTING_GOLD_VALUE = "stGold__";	// an indicator of the character's starting value - needed to calculate gold victory requirements
 	
-	public static final String COMPLETED_MISSIONS_AND_CAMPAIGNS = "cMissions__";	// an AttributeList of completed missions and campaigns
+	public static final String COMPLETED_MISSIONS = "cMissions__";	// an AttributeList of completed missions
+	public static final String COMPLETED_CAMPAIGNS = "cCampaigns__";// an AttributeList of completed campaigns
 	
 	public static final String STARTING_SPELLS = "sSpells__";		// The spells you start the game with
 	public static final String RECORDED_SPELLS = "rSpells__";		// Spells you aquire
@@ -3397,27 +3398,49 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return hasListItem(DISC_TREASURE_LOCATIONS,name);
 	}
-	public void addMissionOrCampaignCompleted(String name) {
-		if (hasMissionOrCampaignCompleted(name)) {
+	public void addCompletedMission(String name) {
+		if (hasMissionCompleted(name)) {
 			return;
 		}
 		if (isMinion()) {
-			getHiringCharacter().addMissionOrCampaignCompleted(name);
+			getHiringCharacter().addCompletedMission(name);
 			return;
 		}
-		addListItem(COMPLETED_MISSIONS_AND_CAMPAIGNS,name);
+		addListItem(COMPLETED_MISSIONS,name);
 	}
-	public boolean hasMissionOrCampaignCompleted(String name) {
+	public boolean hasMissionCompleted(String name) {
 		if (isMinion()) {
-			return getHiringCharacter().hasMissionOrCampaignCompleted(name);
+			return getHiringCharacter().hasMissionCompleted(name);
 		}
-		return hasListItem(COMPLETED_MISSIONS_AND_CAMPAIGNS,name);
+		return hasListItem(COMPLETED_MISSIONS,name);
 	}
-	public ArrayList<String> getCompletedMissionsAndCampaigns() {
+	public ArrayList<String> getCompletedMissions() {
 		if (isMinion()) {
-			return getHiringCharacter().getCompletedMissionsAndCampaigns();
+			return getHiringCharacter().getCompletedMissions();
 		}
-		return getList(COMPLETED_MISSIONS_AND_CAMPAIGNS);
+		return getList(COMPLETED_MISSIONS);
+	}
+	public void addCompletedCampaign(String name) {
+		if (hasCampaignCompleted(name)) {
+			return;
+		}
+		if (isMinion()) {
+			getHiringCharacter().addCompletedCampaign(name);
+			return;
+		}
+		addListItem(COMPLETED_CAMPAIGNS,name);
+	}
+	public boolean hasCampaignCompleted(String name) {
+		if (isMinion()) {
+			return getHiringCharacter().hasCampaignCompleted(name);
+		}
+		return hasListItem(COMPLETED_CAMPAIGNS,name);
+	}
+	public ArrayList<String> getCompletedCampaigns() {
+		if (isMinion()) {
+			return getHiringCharacter().getCompletedCampaigns();
+		}
+		return getList(COMPLETED_CAMPAIGNS);
 	}
 	public void addHiddenPathDiscovery(String name) {
 		if (isMinion()) {
