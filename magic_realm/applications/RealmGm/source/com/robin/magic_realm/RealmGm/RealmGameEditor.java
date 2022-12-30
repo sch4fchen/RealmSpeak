@@ -1231,6 +1231,7 @@ public class RealmGameEditor extends JInternalFrame {
 			switch (mode) {
 				default:
 				case QtR:
+				case SR:
 					return HEADER_QtR.length;
 				case GQ:
 				case BoQ:
@@ -1244,6 +1245,7 @@ public class RealmGameEditor extends JInternalFrame {
 			switch (mode) {
 				default:
 				case QtR:
+				case SR:
 					return HEADER_QtR[col];
 				case GQ:
 				case BoQ:
@@ -1262,6 +1264,7 @@ public class RealmGameEditor extends JInternalFrame {
 					case 2:			
 						switch (mode) {
 							case QtR:
+							case SR:
 								return quest.isAllPlay()?check:null;
 							case GQ:
 							case BoQ:

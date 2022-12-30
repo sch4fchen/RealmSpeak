@@ -91,6 +91,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	protected VictoryConditionButton questBoqOption;
 	protected VictoryConditionButton questQtrOption;
 	protected VictoryConditionButton questGuildsOption;
+	protected VictoryConditionButton questSrOption;
 	
 	protected JCheckBox disableBattles;
 	protected JLabel disableCombatWarning;
@@ -150,6 +151,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		questBoqOption.setSelected(hostPrefs.hasPref(Constants.QST_BOOK_OF_QUESTS));
 		questQtrOption.setSelected(hostPrefs.hasPref(Constants.QST_QUEST_CARDS));
 		questGuildsOption.setSelected(hostPrefs.hasPref(Constants.QST_GUILD_QUESTS));
+		questSrOption.setSelected(hostPrefs.hasPref(Constants.QST_SR_QUESTS));
 		for (String key : optionPane.getGameOptionKeys()) {
 			optionPane.setOption(key,hostPrefs.hasPref(key));
 		}
@@ -373,6 +375,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			questBoqOption.setEnabled(false);
 			questQtrOption.setEnabled(false);
 			questGuildsOption.setEnabled(false);
+			questSrOption.setEnabled(false);
 		}
 		
 		disableBattles.setEnabled(editMode);
@@ -614,19 +617,26 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		
 		panel.add(optionSpecifics,BorderLayout.NORTH);
 	
-		JPanel buttonPanel = new JPanel(new GridLayout(2,3));
+		JPanel buttonPanel = new JPanel(new GridLayout(2,1));
+		JPanel vpPanel = new JPanel(new GridLayout(1,3));
+		JPanel questPanel = new JPanel(new GridLayout(1,4));
 		
-		buttonPanel.add(vpEndlessOption=new VictoryConditionButton("Endless","No time limit or VPs\nNo Hall of Fame\nGame ends when you decide to quit"));
-		buttonPanel.add(vpTimedOption=new VictoryConditionButton("Timed","Defined time limit\nStandard: Assign one VP per week plus one\nHighest score at game end wins"));
-		buttonPanel.add(vpSuddenDeathOption=new VictoryConditionButton("Sudden Death","Predefined # of VPs\nNo Time Limit\nFirst to achieve VPs wins"));
-		buttonPanel.add(questGuildsOption=new VictoryConditionButton("Guild Quests","Quests are given at guilds (expansion)\nQuests do not earn VPs\n\nENDLESS, TIMED or SUDDEN DEATH"));
-		buttonPanel.add(questQtrOption=new VictoryConditionButton("Questing the Realm","Hand of Quest Cards\nFinish quests to earn VPs\n\nTIMED or SUDDEN DEATH"));
-		buttonPanel.add(questBoqOption=new VictoryConditionButton("Book of Quests","Each character picks ONE quest\nFirst to finish quest wins\n\nSUDDEN DEATH only"));
+		vpPanel.add(vpEndlessOption=new VictoryConditionButton("Endless","No time limit or VPs\nNo Hall of Fame\nGame ends when you decide to quit"));
+		vpPanel.add(vpTimedOption=new VictoryConditionButton("Timed","Defined time limit\nStandard: Assign one VP per week plus one\nHighest score at game end wins"));
+		vpPanel.add(vpSuddenDeathOption=new VictoryConditionButton("Sudden Death","Predefined # of VPs\nNo Time Limit\nFirst to achieve VPs wins"));
+		questPanel.add(questGuildsOption=new VictoryConditionButton("Guild Quests","Quests are given at guilds (expansion)\nQuests do not earn VPs\n\nENDLESS, TIMED or SUDDEN DEATH"));
+		questPanel.add(questQtrOption=new VictoryConditionButton("Questing the Realm","Hand of Quest Cards\nFinish quests to earn VPs\n\nTIMED or SUDDEN DEATH"));
+		questPanel.add(questBoqOption=new VictoryConditionButton("Book of Quests","Each character picks ONE quest\nFirst to finish quest wins\n\nSUDDEN DEATH only"));
+		questPanel.add(questSrOption=new VictoryConditionButton("Super Realm","Hand of Quest Cards\nFinish quests to deduct VPs\n\nTIMED"));
+		
+		buttonPanel.add(vpPanel,BorderLayout.NORTH);
+		buttonPanel.add(questPanel,BorderLayout.SOUTH);
 		
 		questGuildsOption.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent ev) {
 				questQtrOption.setSelected(false,false);
 				questBoqOption.setSelected(false,false);
+				questSrOption.setSelected(false,false);
 				
 				vpEndlessOption.setEnabled(true);
 				vpTimedOption.setEnabled(true);
@@ -643,6 +653,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			public void stateChanged(ChangeEvent ev) {
 				questGuildsOption.setSelected(false,false);
 				questBoqOption.setSelected(false,false);
+				questSrOption.setSelected(false,false);
 				
 				vpEndlessOption.setEnabled(!questQtrOption.isSelected());
 				vpTimedOption.setEnabled(true);
@@ -659,10 +670,28 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			public void stateChanged(ChangeEvent ev) {
 				questGuildsOption.setSelected(false,false);
 				questQtrOption.setSelected(false,false);
+				questSrOption.setSelected(false,false);
 				
 				vpEndlessOption.setEnabled(!questBoqOption.isSelected());
 				vpTimedOption.setEnabled(!questBoqOption.isSelected());
 				vpSuddenDeathOption.setEnabled(true);
+				
+				updateWarnings();
+				
+				if (!loadingPrefs) {
+					madeChanges();
+				}
+			}
+		});
+		questSrOption.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent ev) {
+				questGuildsOption.setSelected(false,false);
+				questQtrOption.setSelected(false,false);
+				questBoqOption.setSelected(false,false);
+				
+				vpEndlessOption.setEnabled(false);
+				vpTimedOption.setEnabled(true);
+				vpSuddenDeathOption.setEnabled(!questSrOption.isSelected());
 				
 				updateWarnings();
 				
@@ -681,6 +710,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 				
 				questBoqOption.setEnabled(false);
 				questQtrOption.setEnabled(false);
+				questSrOption.setEnabled(false);
 				
 				updateWarnings();
 				
@@ -697,6 +727,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 				
 				questBoqOption.setEnabled(false);
 				questQtrOption.setEnabled(true);
+				questSrOption.setEnabled(true);
 				
 				updateWarnings();
 				
@@ -713,6 +744,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 				
 				questBoqOption.setEnabled(true);
 				questQtrOption.setEnabled(true);
+				questSrOption.setEnabled(false);
 				
 				updateWarnings();
 				
@@ -721,7 +753,6 @@ public class HostGameSetupDialog extends AggressiveDialog {
 				}
 			}
 		});
-		
 		
 		panel.add(buttonPanel,BorderLayout.CENTER);
 		
@@ -1041,13 +1072,12 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		
 		newOptionPane.setTabHtmlDescription(HOUSE3_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Quests and VPs</font></body></html>");
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_SHOW_DISCARED_QUEST,"OPEN DISCARDED QUEST CARDS - When discarding a quest card, the name of the quest is shown in the log.",false));
-		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS,"NO EVENTS AND ALL PLAY QUESTS (Questing the Realm and Book of Quests) - No events and all play quests are added to the game.",false));
-		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITHOUT_ACTIVATION,"NO EVENTS AND ALL PLAY QUEST WITHOUT ACTIVATION (Questing the Realm and Book of Quests) - Events and all play quests which do not require an activation (= triggered by the game) are not added to the game.",false));
-		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITH_ACTIVATION,"NO EVENTS AND ALL PLAY QUEST WITH ACTIVATION (Questing the Realm and Book of Quests) - Events and all play quests which do require an activation (= triggered manually by the character) are not added to the game.",false));
-		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_SECRET_QUESTS,"NO SECRET QUESTS (Questing the Realm) - Secret quests are not added to the game.",false));
-		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_CHARACTER_QUEST_CARDS,"NO CHARACTER QUEST CARDS (Questing the Realm) - Characters cannot draw any quest cards (these quests are not added to the game).",false));
-		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_SUPER_REALM_VPS,"VPs DEDUCTION (Super Realm) - VPs are decuted for completing quests, discoviring treasure sites or TWT and for completeting missions and campaigns (recommended default are 12 VPs).",false));
-		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_VPS_WITH_QUEST_CARDS,"QUEST CARDS WITH OTHER VPs (Super Realm) - Quest cards are added to the game, even when not playing Questing the Realm.",false));
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS,"NO EVENTS AND ALL PLAY QUESTS (Questing the Realm/Super Realm and Book of Quests) - No events and all play quests are added to the game.",false));
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITHOUT_ACTIVATION,"NO EVENTS AND ALL PLAY QUEST WITHOUT ACTIVATION (Questing the Realm/Super Realm and Book of Quests) - Events and all play quests which do not require an activation (= triggered by the game) are not added to the game.",false));
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITH_ACTIVATION,"NO EVENTS AND ALL PLAY QUEST WITH ACTIVATION (Questing the Realm/Super Realm and Book of Quests) - Events and all play quests which do require an activation (= triggered manually by the character) are not added to the game.",false));
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_SECRET_QUESTS,"NO SECRET QUESTS (Questing the Realm/Super Realm) - Secret quests are not added to the game.",false));
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_CHARACTER_QUEST_CARDS,"NO CHARACTER QUEST CARDS (Questing the Realm/Super Realm) - Characters cannot draw any quest cards (these quests are not added to the game).",false));
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_DEDUCT_VPS,"(Super Realm rules) - Deduct VPs for discovering site chits and TWT or for completing tasks, missions and campaigns. Calculating score as in Super Realm.",false));
 		
 		newOptionPane.setTabHtmlDescription(HOUSE2_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">House Rules</font></body></html>");
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_NO_SPELL_LIMIT,"NO SPELL LIMIT - Magic Realm limits you to 14 spells per character.  This option removes that limit.",false));

@@ -92,12 +92,12 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 		earnedVpsLabel = null;
 		
 		JPanel optionalPanel = new JPanel(new BorderLayout());
-		if (getGameHandler().getHostPrefs().hasPref(Constants.HOUSE3_SUPER_REALM_VPS)) {
+		if (getGameHandler().getHostPrefs().hasPref(Constants.QST_SR_QUESTS)) {
 			JPanel vpDeductionPanel = new JPanel(new GridLayout(1,10));
-			vpDeductionPanel.add(getTitleLabel("<html><center>Treasures (sites and TWT):</center></html>",MagicRealmColor.PALEYELLOW));
+			vpDeductionPanel.add(getTitleLabel("<html><center>Treasures (sites and TWT) (1VP):</center></html>",MagicRealmColor.PALEYELLOW));
 			treasuresVpsLabel = getTitleLabel("",MagicRealmColor.PALEYELLOW);
 			vpDeductionPanel.add(treasuresVpsLabel);
-			vpDeductionPanel.add(getTitleLabel("<html><center>Missions and Campaigns:</center></html>",MagicRealmColor.LIGHTBLUE));
+			vpDeductionPanel.add(getTitleLabel("<html><center>Missions (1VP) and Campaigns (2VP):</center></html>",MagicRealmColor.LIGHTBLUE));
 			missionsAndCampaignsVpsLabel = getTitleLabel("",MagicRealmColor.LIGHTBLUE);
 			vpDeductionPanel.add(missionsAndCampaignsVpsLabel);
 			vpDeductionPanel.add(getTitleLabel("<html><center>Quests:</center></html>",MagicRealmColor.LIGHTGREEN));

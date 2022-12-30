@@ -48,6 +48,7 @@ public class QuestDeckViewer extends AggressiveDialog {
 		deckCards=0;
 		switch (mode) {
 			case QtR:
+			case SR:
 			case GQ:
 				for(Quest quest:quests) {
 					int count = quest.getInt(QuestConstants.CARD_COUNT);
@@ -97,7 +98,7 @@ public class QuestDeckViewer extends AggressiveDialog {
 		ComponentTools.lockColumnWidth(table,2,50);
 		ComponentTools.lockColumnWidth(table,3,40);
 		ComponentTools.lockColumnWidth(table,5,200);
-		if (mode == Constants.QuestDeckMode.QtR) {
+		if (mode == Constants.QuestDeckMode.QtR || mode == Constants.QuestDeckMode.SR) {
 			ComponentTools.lockColumnWidth(table,6,50);
 			ComponentTools.lockColumnWidth(table,7,40);
 			ComponentTools.lockColumnWidth(table,8,60);
@@ -110,6 +111,7 @@ public class QuestDeckViewer extends AggressiveDialog {
 		box.add(Box.createHorizontalGlue());
 		switch (mode) {
 			case QtR:
+			case SR:
 				box.add(new JLabel("All Play Cards: "+allPlayCount));
 				box.add(Box.createHorizontalGlue());
 				box.add(new JLabel("Total VPs: "+totalVPs));

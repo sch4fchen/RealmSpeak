@@ -529,6 +529,15 @@ public class QuestBuilderFrame extends JFrame {
 		viewDeckItemGQ.setMnemonic(KeyEvent.VK_G);
 		viewDeckItemGQ.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_MASK | InputEvent.SHIFT_MASK));
 		toolsMenu.add(viewDeckItemGQ);
+		JMenuItem viewDeckItemSR = new JMenuItem("View Quest Cards Deck for Super Realm Quests");
+		viewDeckItemSR.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				viewDeck(Constants.QuestDeckMode.SR);
+			}
+		});
+		viewDeckItemSR.setMnemonic(KeyEvent.VK_R);
+		viewDeckItemSR.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_MASK | InputEvent.SHIFT_MASK));
+		toolsMenu.add(viewDeckItemSR);
 		
 		toolsMenu.add(new JSeparator());
 		JMenuItem launchQuestTesterItem = new JMenuItem("Test Quest");

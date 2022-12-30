@@ -360,7 +360,7 @@ public class Quest extends GameObjectWrapper {
 	public void revertAllPlay(String dayKey, CharacterWrapper character) {
 		if (!isAllPlay()) return;
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameData());
-		if (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) || hostPrefs.hasPref(Constants.HOUSE3_VPS_WITH_QUEST_CARDS)) {
+		if (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) || hostPrefs.hasPref(Constants.QST_SR_QUESTS)) {
 			// Get rid of all the clones of this quest by removing from the owning character
 			for (GameObject go : findClones(getGameData().getGameObjects())) {
 				Quest clone = new Quest(go);

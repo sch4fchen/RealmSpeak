@@ -1724,14 +1724,14 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 			}
 			
 			if (data.getScenarioAddNewQuests()) {
-				if (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) || hostPrefs.hasPref(Constants.HOUSE3_VPS_WITH_QUEST_CARDS)) {
-					RealmSpeakInit.prepBookOfQuests(data,true);
+				if (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) || hostPrefs.hasPref(Constants.QST_SR_QUESTS)) {
+					RealmSpeakInit.prepQuestDeck(data,true);
 				}
 				else if (hostPrefs.hasPref(Constants.QST_BOOK_OF_QUESTS)) {
 					RealmSpeakInit.prepBookOfQuests(data,true);
 				}
 				else if (hostPrefs.hasPref(Constants.QST_GUILD_QUESTS)) {
-					RealmSpeakInit.prepBookOfQuests(data,true);
+					RealmSpeakInit.prepGuildQuests(data,true);
 				}
 			}
 			if (data.getScenarioRebuildQuestDeck()) {
@@ -1742,7 +1742,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 					data.removeObject(quest.getGameObject());
 				}
 				
-				if (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) || hostPrefs.hasPref(Constants.HOUSE3_VPS_WITH_QUEST_CARDS)) {
+				if (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) || hostPrefs.hasPref(Constants.QST_SR_QUESTS)) {
 					RealmSpeakInit.prepQuestDeck(data);
 				}
 				else if (hostPrefs.hasPref(Constants.QST_BOOK_OF_QUESTS)) {

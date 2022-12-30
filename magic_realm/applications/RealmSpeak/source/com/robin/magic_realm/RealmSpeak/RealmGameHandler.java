@@ -1604,7 +1604,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 					// equipment
 					character.calculateStartingWorth();
 					
-					if (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) || hostPrefs.hasPref(Constants.HOUSE3_VPS_WITH_QUEST_CARDS)) {
+					if (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) || hostPrefs.hasPref(Constants.QST_SR_QUESTS)) {
 						QuestDeck deck = QuestDeck.findDeck(client.getGameData());
 						deck.setupAllPlayCards(getMainFrame(),character);
 						deck.drawCards(getMainFrame(),character);

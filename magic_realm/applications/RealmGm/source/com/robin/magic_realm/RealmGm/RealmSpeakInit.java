@@ -75,7 +75,7 @@ public class RealmSpeakInit {
 		RealmCharacterBuilderModel.addCustomCharacters(hostPrefs,data);
 		
 		// Construct quest "deck" if any
-		if (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) || hostPrefs.hasPref(Constants.HOUSE3_VPS_WITH_QUEST_CARDS)) {
+		if (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) || hostPrefs.hasPref(Constants.QST_SR_QUESTS)) {
 			prepQuestDeck();
 		}
 		else if (hostPrefs.hasPref(Constants.QST_BOOK_OF_QUESTS)) {

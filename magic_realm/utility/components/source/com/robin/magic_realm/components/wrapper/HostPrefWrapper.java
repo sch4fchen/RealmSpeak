@@ -175,10 +175,10 @@ public class HostPrefWrapper extends GameObjectWrapper {
 		return getString(START_SEASON);
 	}
 	public boolean isUsingQuests() {
-		return getBoolean(Constants.QST_QUEST_CARDS) || getBoolean(Constants.QST_GUILD_QUESTS) || getBoolean(Constants.QST_BOOK_OF_QUESTS) || getBoolean(Constants.HOUSE3_VPS_WITH_QUEST_CARDS);
+		return getBoolean(Constants.QST_QUEST_CARDS) || getBoolean(Constants.QST_GUILD_QUESTS) || getBoolean(Constants.QST_BOOK_OF_QUESTS) || getBoolean(Constants.QST_SR_QUESTS);
 	}
 	public boolean isUsingQuestCards() {
-		return getBoolean(Constants.QST_QUEST_CARDS) || getBoolean(Constants.HOUSE3_VPS_WITH_QUEST_CARDS);
+		return getBoolean(Constants.QST_QUEST_CARDS) || getBoolean(Constants.QST_SR_QUESTS);
 	}
 	public boolean isUsingBookOfQuests() {
 		return getBoolean(Constants.QST_BOOK_OF_QUESTS);
@@ -187,7 +187,7 @@ public class HostPrefWrapper extends GameObjectWrapper {
 		return getBoolean(Constants.QST_GUILD_QUESTS);
 	}
 	public Constants.QuestDeckMode getQuestMode() {
-		if (getBoolean(Constants.QST_QUEST_CARDS) || getBoolean((Constants.HOUSE3_VPS_WITH_QUEST_CARDS))) {
+		if (getBoolean(Constants.QST_QUEST_CARDS)) {
 			return Constants.QuestDeckMode.QtR;
 		}
 		if (getBoolean(Constants.QST_BOOK_OF_QUESTS)) {
@@ -195,6 +195,9 @@ public class HostPrefWrapper extends GameObjectWrapper {
 		}
 		if (getBoolean(Constants.QST_GUILD_QUESTS)) {
 			return Constants.QuestDeckMode.GQ;
+		}
+		if (getBoolean(Constants.QST_SR_QUESTS)) {
+			return Constants.QuestDeckMode.SR;
 		}
 		return null;
 	}
