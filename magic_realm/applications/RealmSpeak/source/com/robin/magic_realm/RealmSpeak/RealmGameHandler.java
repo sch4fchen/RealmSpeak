@@ -542,6 +542,9 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		for (GameObject character : characters) {
 			CharacterWrapper ch = new CharacterWrapper(character);
 			ch.setGameOver(true);
+			if (hostPrefs.hasPref(Constants.HOUSE3_DEDUCT_VPS)) {
+				ch.addPenaltyVps();
+			}
 		}
 		
 		submitChanges();
@@ -588,6 +591,9 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 					CharacterWrapper character = new CharacterWrapper(go);
 					if (character.isActive()) {
 						character.setGameOver(false);
+						if (hostPrefs.hasPref(Constants.HOUSE3_DEDUCT_VPS)) {
+							character.removePenaltyVps();
+						}
 						if (!hostPrefs.getRequiredVPsOff() && character.isCharacter()) {
 							if (hostPrefs.hasPref(Constants.HOUSE2_ANY_VPS)) {
 								character.setNewVPRequirement(-1);

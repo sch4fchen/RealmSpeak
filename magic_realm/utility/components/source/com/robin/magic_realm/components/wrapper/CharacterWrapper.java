@@ -2971,6 +2971,30 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public void setGameOver(boolean val) {
 		setBoolean(GAME_OVER,val);
 	}
+	public void addPenaltyVps() {
+		calculatePenaltyVps(false);
+	}
+	public void removePenaltyVps() {
+		calculatePenaltyVps(true);
+	}
+	public void calculatePenaltyVps(boolean revert) {
+		double fame = getFameScore().getRecordedPoints();
+		if (fame<0) {
+			int penaltyFame = (int)Math.ceil(Math.abs(fame)/10);
+			if (revert) {
+				penaltyFame = -penaltyFame;
+			}
+			addDeductVPs(-penaltyFame);
+		}
+		int notoriety = getNotorietyScore().getRecordedPoints();
+		if (notoriety<0) {
+			int penaltyNotoriety = (int)Math.ceil(Math.abs(notoriety)/20);
+			if (revert) {
+				penaltyNotoriety = -penaltyNotoriety;
+			}
+			addDeductVPs(-penaltyNotoriety);
+		}
+	}
 	public void setCombatStatus(int val) {
 		setInt(COMBAT_STATUS,val);
 	}

@@ -234,6 +234,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		questBoqOption.setSelected(prefMan.getBoolean(Constants.QST_BOOK_OF_QUESTS));
 		questQtrOption.setSelected(prefMan.getBoolean(Constants.QST_QUEST_CARDS));
 		questGuildsOption.setSelected(prefMan.getBoolean(Constants.QST_GUILD_QUESTS));
+		questSrOption.setSelected(prefMan.getBoolean(Constants.QST_SR_QUESTS));
 		for (String key : optionPane.getGameOptionKeys()) {
 			optionPane.setOption(key,prefMan.getBoolean(key));
 		}
@@ -291,6 +292,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		prefMan.set(Constants.QST_BOOK_OF_QUESTS,questBoqOption.isSelected());
 		prefMan.set(Constants.QST_QUEST_CARDS,questQtrOption.isSelected());
 		prefMan.set(Constants.QST_GUILD_QUESTS,questGuildsOption.isSelected());
+		prefMan.set(Constants.QST_SR_QUESTS,questSrOption.isSelected());
 		
 		for (String key : optionPane.getGameOptionKeys()) {
 			prefMan.set(key,optionPane.getOption(key));
