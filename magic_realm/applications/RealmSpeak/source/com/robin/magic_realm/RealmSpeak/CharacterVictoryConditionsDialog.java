@@ -102,7 +102,11 @@ public class CharacterVictoryConditionsDialog extends AggressiveDialog {
 			setSize(250,130);
 			line = group.createLabelLine("Quest Points");
 				if (deduct!=null) {
-					questPoints = createSpinner(character.getQuestPointScore().getAssignedVictoryPoints());
+					if (deduct < 0) {
+						questPoints = createSpinnerPlus(character.getQuestPointScore().getAssignedVictoryPoints());
+					} else {
+						questPoints = createSpinnerMinus(character.getQuestPointScore().getAssignedVictoryPoints());
+					}
 				} else {
 					questPoints = createSpinner();
 				}
@@ -115,7 +119,11 @@ public class CharacterVictoryConditionsDialog extends AggressiveDialog {
 			setSize(250,250);
 			line = group.createLabelLine("Great Treasures");
 				if (deduct!=null) {
-					greatTreasures = createSpinner(character.getGreatTreasureScore().getAssignedVictoryPoints());
+					if (deduct < 0) {
+						greatTreasures = createSpinnerPlus(character.getGreatTreasureScore().getAssignedVictoryPoints());
+					} else {
+						greatTreasures = createSpinnerMinus(character.getGreatTreasureScore().getAssignedVictoryPoints());
+					}
 				} else {
 					greatTreasures = createSpinner();
 				}
@@ -126,7 +134,11 @@ public class CharacterVictoryConditionsDialog extends AggressiveDialog {
 			
 			line = group.createLabelLine("Usable Spells");
 				if (deduct!=null) {
-					usableSpells = createSpinner(character.getUsableSpellScore().getAssignedVictoryPoints());
+					if (deduct < 0) {
+						usableSpells = createSpinnerPlus(character.getUsableSpellScore().getAssignedVictoryPoints());
+					} else {
+						usableSpells = createSpinnerMinus(character.getUsableSpellScore().getAssignedVictoryPoints());
+					}
 				} else {
 					usableSpells = createSpinner();
 				}
@@ -137,7 +149,11 @@ public class CharacterVictoryConditionsDialog extends AggressiveDialog {
 			
 			line = group.createLabelLine("Fame");
 				if (deduct!=null) {
-					famePoints = createSpinner(character.getFameScore().getAssignedVictoryPoints());
+					if (deduct < 0) {
+						famePoints = createSpinnerPlus(character.getFameScore().getAssignedVictoryPoints());
+					} else {
+						famePoints = createSpinnerMinus(character.getFameScore().getAssignedVictoryPoints());
+					}
 				} else {
 					famePoints = createSpinner();
 				}
@@ -148,7 +164,11 @@ public class CharacterVictoryConditionsDialog extends AggressiveDialog {
 
 			line = group.createLabelLine("Notoriety");
 				if (deduct!=null) {
-					notorietyPoints = createSpinner(character.getNotorietyScore().getAssignedVictoryPoints());
+					if (deduct < 0) {
+						notorietyPoints = createSpinnerPlus(character.getNotorietyScore().getAssignedVictoryPoints());
+					} else {
+						notorietyPoints = createSpinnerMinus(character.getNotorietyScore().getAssignedVictoryPoints());
+					}
 				} else {
 					notorietyPoints = createSpinner();
 				}
@@ -160,7 +180,11 @@ public class CharacterVictoryConditionsDialog extends AggressiveDialog {
 
 			line = group.createLabelLine("Gold");
 				if (deduct!=null) {
-					usableGold = createSpinner(character.getGoldScore().getAssignedVictoryPoints());
+					if (deduct < 0) {
+						usableGold = createSpinnerPlus(character.getGoldScore().getAssignedVictoryPoints());
+					} else {
+						usableGold = createSpinnerMinus(character.getGoldScore().getAssignedVictoryPoints());
+					}
 				} else {
 					usableGold = createSpinner();
 				}
@@ -228,8 +252,17 @@ public class CharacterVictoryConditionsDialog extends AggressiveDialog {
 		});
 		return spinner;
 	}
-	private JSpinner createSpinner(int current) {
+	private JSpinner createSpinnerMinus(int current) {
 		JSpinner spinner = new JSpinner(new SpinnerNumberModel(current,0,current,1));
+		spinner.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent ev) {
+				updateControls();
+			}
+		});
+		return spinner;
+	}
+	private JSpinner createSpinnerPlus(int current) {
+		JSpinner spinner = new JSpinner(new SpinnerNumberModel(current,current,1000,1));
 		spinner.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent ev) {
 				updateControls();
