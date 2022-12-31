@@ -3386,7 +3386,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 		if (hostPrefs.hasPref(Constants.HOUSE3_DEDUCT_VPS)) {
-			setDeductVPs(1);
+			addDeductVPs(1);
 		}
 		discovery.setThisAttribute(Constants.DISCOVERED);
 		
@@ -3656,7 +3656,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public void setNewVPRequirement(int vps) {
 		getGameObject().setAttribute(VICTORY_REQ_BLOCK,V_NEW_VPS,vps);
 	}
-	public void setDeductVPs(int amount) {
+	public void addDeductVPs(int amount) {
 		int oldAmount = 0;
 		if (getGameObject().hasAttribute(VICTORY_REQ_BLOCK,V_DEDUCT_VPS)) {
 			getGameObject().getAttributeInt(VICTORY_REQ_BLOCK,V_DEDUCT_VPS);
