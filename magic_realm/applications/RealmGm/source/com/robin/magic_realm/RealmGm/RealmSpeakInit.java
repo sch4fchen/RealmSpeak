@@ -369,7 +369,7 @@ public class RealmSpeakInit {
 		QuestDeck deck = QuestDeck.findDeck(data);
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		for(Quest template:QuestLoader.loadAllQuestsFromQuestFolder()) {
-			if (hostPrefs.hasPref(Constants.HOUSE3_QTR_AND_SR_QUEST_CARDS)
+			if ((hostPrefs.hasPref(Constants.HOUSE3_QTR_AND_SR_QUEST_CARDS) && (template.getBoolean(QuestConstants.WORKS_WITH_QTR) || template.getBoolean(QuestConstants.WORKS_WITH_SR)))
 					|| (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) && !hostPrefs.hasPref(Constants.HOUSE3_EXCHANGE_QTR_AND_SR_QUEST_CARDS) && template.getBoolean(QuestConstants.WORKS_WITH_QTR))
 					|| (hostPrefs.hasPref(Constants.QST_SR_QUESTS) && !hostPrefs.hasPref(Constants.HOUSE3_EXCHANGE_QTR_AND_SR_QUEST_CARDS) && template.getBoolean(QuestConstants.WORKS_WITH_SR))
 					|| (hostPrefs.hasPref(Constants.QST_SR_QUESTS) && hostPrefs.hasPref(Constants.HOUSE3_EXCHANGE_QTR_AND_SR_QUEST_CARDS) && template.getBoolean(QuestConstants.WORKS_WITH_QTR))
