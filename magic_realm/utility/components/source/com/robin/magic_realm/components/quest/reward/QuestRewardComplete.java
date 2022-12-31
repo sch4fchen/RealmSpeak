@@ -41,7 +41,7 @@ public class QuestRewardComplete extends QuestReward {
 		}
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameData());
 		if (hostPrefs.hasPref(Constants.HOUSE3_DEDUCT_VPS)) {
-			character.setDeductVPs(getParentQuest().getInt(QuestConstants.VP_REWARD));
+			character.addDeductVPs(getParentQuest().getInt(QuestConstants.VP_REWARD));
 		}
 	}
 	

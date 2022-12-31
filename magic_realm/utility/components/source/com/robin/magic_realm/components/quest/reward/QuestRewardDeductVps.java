@@ -32,10 +32,10 @@ public class QuestRewardDeductVps extends QuestReward {
 
 	public void processReward(JFrame frame, CharacterWrapper character) {
 		if (addVps()) {
-			character.setDeductVPs(-getAmount());
+			character.addDeductVPs(-getAmount());
 			return;
 		}
-		character.setDeductVPs(getAmount());
+		character.addDeductVPs(getAmount());
 	}
 	
 	public String getDescription() {

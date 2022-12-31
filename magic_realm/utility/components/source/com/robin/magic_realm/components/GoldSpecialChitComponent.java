@@ -360,13 +360,13 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 		if (getGameObject().hasThisAttribute("mission")) {
 			character.addCompletedMission(getGameObject().getName());
 			if (hostPrefs.hasPref(Constants.HOUSE3_DEDUCT_VPS)) {
-				character.setDeductVPs(1);
+				character.addDeductVPs(1);
 			}
 		}
 		if (getGameObject().hasThisAttribute("campaign")) {
 			character.addCompletedCampaign(getGameObject().getName());
 			if (hostPrefs.hasPref(Constants.HOUSE3_DEDUCT_VPS)) {
-				character.setDeductVPs(2);
+				character.addDeductVPs(2);
 			}
 		}
 		

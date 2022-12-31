@@ -911,6 +911,24 @@ public class RealmHostPanel extends JPanel {
 			if (rc.isCharacter()) {
 				CharacterWrapper character = new CharacterWrapper(go);
 				character.setGameOver(true);
+				if (hostPrefs.hasPref(Constants.HOUSE3_DEDUCT_VPS)) {
+					double fame = character.getRoundedFame();
+					if (fame<0) {
+						int penaltyFame = -(int)Math.floor(fame/10);
+						character.addDeductVPs(penaltyFame);
+					}
+					int notoriety = character.getRoundedNotoriety();
+					if (notoriety<0) {
+						int penaltyNotoriety = -(int)Math.floor(notoriety/20);
+						character.addDeductVPs(penaltyNotoriety);
+					}
+					if (character.hasCurse(Constants.ASHES)) {
+						character.addDeductVPs(-1);
+					}
+					if (character.hasCurse(Constants.DISGUST)) {
+						character.addDeductVPs(-1);
+					}
+				}
 			}
 		}
 		SpellMasterWrapper spellMaster = SpellMasterWrapper.getSpellMaster(host.getGameData());
