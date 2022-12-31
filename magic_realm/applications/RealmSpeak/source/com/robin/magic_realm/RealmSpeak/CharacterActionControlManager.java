@@ -369,6 +369,18 @@ public class CharacterActionControlManager {
 							JOptionPane.WARNING_MESSAGE);
 					continueWithRecord = false;
 				}
+				else if (getGameHandler().isOption(RealmSpeakOptions.INVALID_PHASE_WARNING) && DayAction.MOVE_ACTION.getCode().equals(theAction)
+						&& current.hasClearing() && tl.hasClearing() && current.clearing.getConnectingPath(tl.clearing)==null) {
+					int ret = JOptionPane.showConfirmDialog(
+							getGameHandler().getMainFrame(),
+							"You are planning an invalid move action.  Continue?",
+							"Invalid Record Warning!",
+							JOptionPane.YES_NO_OPTION,
+							JOptionPane.WARNING_MESSAGE);
+					if (ret==JOptionPane.NO_OPTION) {
+						continueWithRecord = false;
+					}
+				}
 				else if (tl.hasClearing() && tl.clearing.isEdge()) {
 					if (character.isCharacter()) {
 						int ret = JOptionPane.showConfirmDialog(

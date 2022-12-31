@@ -1,4 +1,6 @@
 Version 1.1.7.2
+NEW FEATURES:
+# Option: Warning for invalid planned moves
 
 Version 1.1.7.1
 QUEST UPDATE:

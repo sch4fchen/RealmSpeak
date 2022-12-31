@@ -78,6 +78,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 	
 	protected JCheckBox showHeavyInvWarningOption;
 	protected JCheckBox showIncompleteRecordWarningOption;
+	protected JCheckBox showInvalidRecordWarningOption;
 	protected JCheckBox showMoveAfterHireWarningOption;
 	protected JCheckBox showUnassignedHirelingsWarningOption;
 	protected JCheckBox showTurnEndResultsOption;
@@ -221,6 +222,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		
 		showHeavyInvWarningOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.HEAVY_INV_WARNING,true));
 		showIncompleteRecordWarningOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.INCOMPLETE_PHASE_WARNING,true));
+		showInvalidRecordWarningOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.INVALID_PHASE_WARNING,true));
 		showMoveAfterHireWarningOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.MOVE_AFTER_HIRE_WARNING,true));
 		showUnassignedHirelingsWarningOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.UNASSIGNED_HIRELINGS_WARNING,true));
 		showTurnEndResultsOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.TURN_END_RESULTS,false));
@@ -255,6 +257,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		options.getOptions().set(RealmSpeakOptions.CHIT_KILLED_BY,killedByOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.HEAVY_INV_WARNING,showHeavyInvWarningOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.INCOMPLETE_PHASE_WARNING,showIncompleteRecordWarningOption.isSelected());
+		options.getOptions().set(RealmSpeakOptions.INVALID_PHASE_WARNING,showInvalidRecordWarningOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.MOVE_AFTER_HIRE_WARNING,showMoveAfterHireWarningOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.UNASSIGNED_HIRELINGS_WARNING,showUnassignedHirelingsWarningOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.TURN_END_RESULTS,showTurnEndResultsOption.isSelected());
@@ -586,12 +589,14 @@ public class RealmSpeakOptionPanel extends JDialog {
 		return panel;
 	}
 	private JPanel getPopupWindowOptions() {
-		JPanel panel = new JPanel(new GridLayout(5,1));
+		JPanel panel = new JPanel(new GridLayout(6,1));
 		panel.setBorder(BorderFactory.createTitledBorder("Notifications"));
 		showHeavyInvWarningOption = new JCheckBox("Show Heavy Inventory Warning");
 		panel.add(showHeavyInvWarningOption);
 		showIncompleteRecordWarningOption = new JCheckBox("Show Incomplete Recording Warning");
 		panel.add(showIncompleteRecordWarningOption);
+		showInvalidRecordWarningOption = new JCheckBox("Show Invalid Move Recording Warning");
+		panel.add(showInvalidRecordWarningOption);
 		showMoveAfterHireWarningOption = new JCheckBox("Show Move-After-Hire Warning");
 		panel.add(showMoveAfterHireWarningOption);
 		showUnassignedHirelingsWarningOption = new JCheckBox("Show Unassigned Hirelings Warning");

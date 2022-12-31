@@ -58,6 +58,7 @@ public class RealmSpeakOptions {
 	public static final String CHIT_KILLED_BY = "killedBy";
 	public static final String HEAVY_INV_WARNING = "heavyInvWarning";
 	public static final String INCOMPLETE_PHASE_WARNING = "incompletePhaseWarning";
+	public static final String INVALID_PHASE_WARNING = "invalidPhaseWarning";
 	public static final String MOVE_AFTER_HIRE_WARNING = "moveAfterHireWarning";
 	public static final String UNASSIGNED_HIRELINGS_WARNING = "unassignedHirelingsWarning";
 	public static final String TURN_END_RESULTS = "turnEndResultsOption";
@@ -155,6 +156,7 @@ public class RealmSpeakOptions {
 			options.set(DAILY_COMBAT,"ON");
 			options.set(HEAVY_INV_WARNING,true);
 			options.set(INCOMPLETE_PHASE_WARNING,true);
+			options.set(INVALID_PHASE_WARNING,true);
 			options.set(MOVE_AFTER_HIRE_WARNING,true);
 		}
 	}
