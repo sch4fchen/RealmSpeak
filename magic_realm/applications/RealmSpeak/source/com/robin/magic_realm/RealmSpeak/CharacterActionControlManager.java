@@ -25,11 +25,13 @@ import java.util.*;
 import javax.swing.*;
 
 import com.robin.magic_realm.components.ClearingDetail;
+import com.robin.magic_realm.components.PathDetail;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.attribute.DayAction.ActionId;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
+import com.robin.magic_realm.components.utility.ClearingUtility;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
@@ -369,18 +371,6 @@ public class CharacterActionControlManager {
 							JOptionPane.WARNING_MESSAGE);
 					continueWithRecord = false;
 				}
-				else if (getGameHandler().isOption(RealmSpeakOptions.INVALID_PHASE_WARNING) && DayAction.MOVE_ACTION.getCode().equals(theAction)
-						&& current.hasClearing() && tl.hasClearing() && current.clearing.getConnectingPath(tl.clearing)==null) {
-					int ret = JOptionPane.showConfirmDialog(
-							getGameHandler().getMainFrame(),
-							"You are planning an invalid move action.  Continue?",
-							"Invalid Record Warning!",
-							JOptionPane.YES_NO_OPTION,
-							JOptionPane.WARNING_MESSAGE);
-					if (ret==JOptionPane.NO_OPTION) {
-						continueWithRecord = false;
-					}
-				}
 				else if (tl.hasClearing() && tl.clearing.isEdge()) {
 					if (character.isCharacter()) {
 						int ret = JOptionPane.showConfirmDialog(
@@ -401,6 +391,33 @@ public class CharacterActionControlManager {
 								character.getGameObject().getName()+" Leaving the Map",
 								JOptionPane.WARNING_MESSAGE);
 						continueWithRecord = false;
+					}
+				}
+				if (getGameHandler().isOption(RealmSpeakOptions.INVALID_PHASE_WARNING) && DayAction.MOVE_ACTION.getCode().equals(theAction)) {
+					PathDetail path = current.hasClearing()
+							? current.clearing.getConnectingPath(tl.clearing)
+							: null;
+					boolean overridePath = false;
+					if ((character.canWalkWoods(current.tile) || character.affectedByKey(Constants.MAGIC_PATH_EFFECT) || (current.isTileOnly() && !current.isFlying()))
+							&& current.tile == tl.tile) {
+						overridePath = true;
+					}
+					if (current.isBetweenClearings() && character.canWalkWoods(current.tile) && current.getOther().tile == tl.tile) {
+							overridePath = true;
+					}
+					if (ClearingUtility.canUseGates(character,tl.clearing)) {
+						overridePath = true;
+					}
+					if (path==null && !overridePath) {
+						int ret = JOptionPane.showConfirmDialog(
+								getGameHandler().getMainFrame(),
+								"You are planning an invalid move action.  Continue?",
+								"Invalid Record Warning!",
+								JOptionPane.YES_NO_OPTION,
+								JOptionPane.WARNING_MESSAGE);
+						if (ret==JOptionPane.NO_OPTION) {
+							continueWithRecord = false;
+						}
 					}
 				}
 				if (continueWithRecord) {
