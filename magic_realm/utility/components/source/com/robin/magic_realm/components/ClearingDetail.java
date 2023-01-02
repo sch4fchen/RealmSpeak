@@ -39,11 +39,11 @@ public class ClearingDetail {
 	public static final int MAGIC_GOLD		= 2;
 	public static final int MAGIC_PURPLE	= 3;
 	public static final int MAGIC_BLACK		= 4;
-	public static final int MAGIC_RANDOM	= 5;
+	public static final int MAGIC_VARIED	= 5;
 	
 	private static Color DEFAULT_MARK_COLOR = Color.green;
 	
-	public static final char[] MAGIC_CHAR = {'W','R','G','P','B','R'};
+	public static final char[] MAGIC_CHAR = {'W','R','G','P','B','V'};
 
 	protected TileComponent parent;
 	protected int num;
@@ -155,7 +155,7 @@ public class ClearingDetail {
 		else if (magic[MAGIC_BLACK]) {
 			return Color.black;
 		}
-		else if (magic[MAGIC_RANDOM]) {
+		else if (magic[MAGIC_VARIED]) {
 			return MagicRealmColor.LIGHTGREEN;
 		}
 		return null;
@@ -478,7 +478,7 @@ public class ClearingDetail {
 		if (magic[MAGIC_BLACK]) {
 			list.add(new ColorMagic(ColorMagic.BLACK,true));
 		}
-		if (magic[MAGIC_RANDOM]) {
+		if (magic[MAGIC_VARIED]) {
 			GameWrapper gameWrapper = GameWrapper.findGame(this.parent.getGameObject().getGameData());
 			DieRoller monsterDie = gameWrapper.getMonsterDie();
 			if (monsterDie != null) {

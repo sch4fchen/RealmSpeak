@@ -981,7 +981,7 @@ public class QuestTesterFrame extends JFrame {
 		locationButtonsWithTitlePanel.add(locationButtonsPanel, BorderLayout.NORTH);
 		clearingChitsPanel.add(locationButtonsWithTitlePanel, BorderLayout.NORTH);
 		
-		clearingComponents = new JList();
+		clearingComponents = new JList<>();
 		clearingComponents.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		clearingComponents.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {

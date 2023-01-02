@@ -81,12 +81,12 @@ public class TileEditFrame extends JFrame {
 				protected JRadioButton caveClearingType;
 				protected JRadioButton waterClearingType;
 			
-				protected JCheckBox whiteClearingMagic;		// W
-				protected JCheckBox grayClearingMagic;		// Y
-				protected JCheckBox goldClearingMagic;		// G
-				protected JCheckBox purpleClearingMagic;	// P
-				protected JCheckBox blackClearingMagic;		// B
-				protected JCheckBox randomClearingMagic;	// R
+				protected JCheckBox whiteClearingMagic;
+				protected JCheckBox grayClearingMagic;
+				protected JCheckBox goldClearingMagic;
+				protected JCheckBox purpleClearingMagic;
+				protected JCheckBox blackClearingMagic;
+				protected JCheckBox variedClearingMagic;
 
 				protected JButton addClearingButton;
 				protected JButton removeClearingButton;
@@ -250,13 +250,13 @@ public class TileEditFrame extends JFrame {
 								}
 							});
 						clearingColorButtons.add(blackClearingMagic);
-						randomClearingMagic = new JCheckBox("Random");
-						randomClearingMagic.addActionListener(new ActionListener() {
+						variedClearingMagic = new JCheckBox("Varied");
+						variedClearingMagic.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent ev) {
 								updateClearings();
 							}
 						});
-						clearingColorButtons.add(randomClearingMagic);
+						clearingColorButtons.add(variedClearingMagic);
 					clearingControls.add(clearingColorButtons);
 						JPanel clearingEditButtons = new JPanel(new GridLayout(1,2));
 							addClearingButton = new JButton("Add");
@@ -564,7 +564,7 @@ public class TileEditFrame extends JFrame {
 				goldClearingMagic.setSelected(selected.getMagic(ClearingDetail.MAGIC_GOLD));
 				purpleClearingMagic.setSelected(selected.getMagic(ClearingDetail.MAGIC_PURPLE));
 				blackClearingMagic.setSelected(selected.getMagic(ClearingDetail.MAGIC_BLACK));
-				randomClearingMagic.setSelected(selected.getMagic(ClearingDetail.MAGIC_RANDOM));
+				variedClearingMagic.setSelected(selected.getMagic(ClearingDetail.MAGIC_VARIED));
 			}
 		}
 		
@@ -579,7 +579,7 @@ public class TileEditFrame extends JFrame {
 		goldClearingMagic.setEnabled(activeTile!=null && selected!=null);
 		purpleClearingMagic.setEnabled(activeTile!=null && selected!=null);
 		blackClearingMagic.setEnabled(activeTile!=null && selected!=null);
-		randomClearingMagic.setEnabled(activeTile!=null && selected!=null);
+		variedClearingMagic.setEnabled(activeTile!=null && selected!=null);
 	}
 	public void updateClearings() {
 		ClearingDetail selected = null;
@@ -607,7 +607,7 @@ public class TileEditFrame extends JFrame {
 				selected.setMagic(ClearingDetail.MAGIC_GOLD,goldClearingMagic.isSelected());
 				selected.setMagic(ClearingDetail.MAGIC_PURPLE,purpleClearingMagic.isSelected());
 				selected.setMagic(ClearingDetail.MAGIC_BLACK,blackClearingMagic.isSelected());
-				selected.setMagic(ClearingDetail.MAGIC_RANDOM,randomClearingMagic.isSelected());
+				selected.setMagic(ClearingDetail.MAGIC_VARIED,variedClearingMagic.isSelected());
 				
 				activeTile.repaint();
 				

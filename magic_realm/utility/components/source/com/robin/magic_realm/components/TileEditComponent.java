@@ -82,7 +82,7 @@ public class TileEditComponent extends TileComponent {
 			gameObject.setAttribute(blockName,baseKey+"_xy",encodePoint(detail.getPosition()));
 			
 			StringBuffer magic = new StringBuffer();
-			for (int m=ClearingDetail.MAGIC_WHITE;m<=ClearingDetail.MAGIC_RANDOM;m++) {
+			for (int m=ClearingDetail.MAGIC_WHITE;m<=ClearingDetail.MAGIC_VARIED;m++) {
 				if (detail.getMagic(m)) {
 					magic.append(ClearingDetail.MAGIC_CHAR[m]);
 				}

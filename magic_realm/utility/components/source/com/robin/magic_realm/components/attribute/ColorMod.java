@@ -77,7 +77,6 @@ public class ColorMod {
 				}
 			}
 		}
-		
 		return modColors;
 	}
 
