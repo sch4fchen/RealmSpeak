@@ -91,7 +91,9 @@ public class DieRollBuilder {
 				objectsToTest.add(spell.getGameObject());
 			}
 			for (SpellWrapper spell:SpellUtility.getBewitchingSpells(current.tile.getGameObject())) {
-				objectsToTest.add(spell.getGameObject());
+				if (!spell.isInert()) {
+					objectsToTest.add(spell.getGameObject());
+				}
 			}
 		}
 		else {
