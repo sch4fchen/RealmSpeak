@@ -20898,6 +20898,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -20938,6 +20939,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -20984,6 +20986,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21029,6 +21032,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="5" />
@@ -21072,6 +21076,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21115,6 +21120,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21156,6 +21162,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21197,6 +21204,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21238,6 +21246,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21281,6 +21290,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="5" />
@@ -21324,6 +21334,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21365,6 +21376,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21406,6 +21418,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21450,6 +21463,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
