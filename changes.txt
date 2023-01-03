@@ -1,3 +1,6 @@
+Version 1.1.7.3
+
+
 Version 1.1.7.2
 NEW FEATURES:
 # Option: Warning for invalid planned moves
