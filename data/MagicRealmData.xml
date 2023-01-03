@@ -8915,6 +8915,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="46.9,81.5" />
@@ -9001,6 +9002,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="48.7,80.6" />
@@ -9089,6 +9091,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="50.4,87.1" />
@@ -9177,6 +9180,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="49.1,80.8" />
@@ -9263,6 +9267,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="49.7,80.1" />
@@ -9754,6 +9759,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="58.6,28.9" />
@@ -9892,6 +9898,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="19.9,51.7" />
@@ -10004,6 +10011,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="82.6,53.8" />
@@ -10103,6 +10111,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="51.0,43.1" />
@@ -10214,6 +10223,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="70.3,88.1" />
@@ -10326,6 +10336,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="71.5,89.2" />
@@ -10464,6 +10475,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="13.5,50.3" />
@@ -10564,6 +10576,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="19.9,52.9" />
@@ -10693,6 +10706,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="43.7,17.9" />
@@ -10791,6 +10805,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="22.9,68.9" />
