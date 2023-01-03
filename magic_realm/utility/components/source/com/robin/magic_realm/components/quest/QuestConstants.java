@@ -56,6 +56,7 @@ public class QuestConstants {
 	public static final String VARIANT_ORIGINAL = "_vorg";
 	public static final String VARIANT_PRUITTS = "_vprt";
 	public static final String VARIANT_EXP1 = "_vexp1";
+	public static final String VARIANT_SUPER_REALM = "_vsr";
 	
 	public static final String SINGLE_BOARD = "_b1x";
 	public static final String DOUBLE_BOARD = "_b2x";

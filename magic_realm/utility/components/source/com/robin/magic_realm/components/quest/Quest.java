@@ -626,6 +626,7 @@ public class Quest extends GameObjectWrapper {
 		boolean forOriginal = getBoolean(QuestConstants.VARIANT_ORIGINAL);
 		boolean forPruitts = getBoolean(QuestConstants.VARIANT_PRUITTS);
 		boolean forExpansion = getBoolean(QuestConstants.VARIANT_EXP1);
+		boolean forSuperRealm = getBoolean(QuestConstants.VARIANT_SUPER_REALM);
 		boolean forAny = (forOriginal && forPruitts && forExpansion) || (!forOriginal && !forPruitts && !forExpansion);
 		if (forAny) return true;
 		
@@ -633,7 +634,8 @@ public class Quest extends GameObjectWrapper {
 		boolean original = GameVariant.ORIGINAL_GAME_VARIANT.getKeyVals().equals(keyVals);
 		boolean pruitts = GameVariant.PRUITTS_GAME_VARIANT.getKeyVals().equals(keyVals);
 		boolean expansion = GameVariant.EXP1_GAME_VARIANT.getKeyVals().equals(keyVals);
-		if ((!forOriginal && original) || (!forPruitts && pruitts) || (!forExpansion && expansion)) return false;
+		boolean superRealm = GameVariant.SUPER_REALM.getKeyVals().equals(keyVals);
+		if ((!forOriginal && original) || (!forPruitts && pruitts) || (!forExpansion && expansion) || (!forSuperRealm && superRealm)) return false;
 		
 		return true;
 	}

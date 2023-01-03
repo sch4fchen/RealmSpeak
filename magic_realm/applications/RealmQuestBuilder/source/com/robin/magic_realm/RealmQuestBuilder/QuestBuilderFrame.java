@@ -102,6 +102,7 @@ public class QuestBuilderFrame extends JFrame {
 	private JCheckBox originalVariant;
 	private JCheckBox pruittsMonstersVariant;
 	private JCheckBox expansionOneVariant;
+	private JCheckBox superRealmVariant;
 
 	private JCheckBox singleBoard;
 	private JCheckBox doubleBoard;
@@ -807,6 +808,8 @@ public class QuestBuilderFrame extends JFrame {
 		variantBox.add(pruittsMonstersVariant);
 		expansionOneVariant = new JCheckBox("Expansion One");
 		variantBox.add(expansionOneVariant);
+		superRealmVariant = new JCheckBox("Super Realm");
+		variantBox.add(superRealmVariant);
 		left.add(variantBox);
 
 		Box boardSize = Box.createVerticalBox();

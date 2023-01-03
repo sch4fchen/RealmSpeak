@@ -1403,10 +1403,13 @@ public class QuestTesterFrame extends JFrame {
 			variantChoices.add(GameVariant.PRUITTS_GAME_VARIANT);
 		if (quest.getBoolean(QuestConstants.VARIANT_EXP1))
 			variantChoices.add(GameVariant.EXP1_GAME_VARIANT);
+		if (quest.getBoolean(QuestConstants.VARIANT_SUPER_REALM))
+			variantChoices.add(GameVariant.SUPER_REALM);
 		if (variantChoices.isEmpty()) {
 			variantChoices.add(GameVariant.ORIGINAL_GAME_VARIANT);
 			variantChoices.add(GameVariant.PRUITTS_GAME_VARIANT);
 			variantChoices.add(GameVariant.EXP1_GAME_VARIANT);
+			variantChoices.add(GameVariant.SUPER_REALM);
 		}
 
 		GameVariant useVariant;

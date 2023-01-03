@@ -56,6 +56,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		GameVariant.ORIGINAL_GAME_VARIANT,
 		GameVariant.PRUITTS_GAME_VARIANT,
 		GameVariant.EXP1_GAME_VARIANT,
+		GameVariant.SUPER_REALM,
 	};
 	
 	private boolean loadingPrefs = false;
@@ -392,14 +393,14 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		autosaveEnabled.setEnabled(editMode);
 		boardAutoSetup.setEnabled(editMode);
 		boardPlayerSetup.setEnabled(editMode);
-		alternativeTilesEnabled.setEnabled(editMode);
-		mixExpansionTilesEnabled.setEnabled(editMode && variant.getAllowBoardVariants());
-		includeExpansionSpells.setEnabled(editMode && variant.getAllowBoardVariants());
-		includeNewSpells.setEnabled(editMode);
-		includeNewSpells2.setEnabled(editMode);
-		switchDaySpells.setEnabled(editMode);
-		multiBoardEnabled.setEnabled(editMode);
-		multiBoardCount.setEnabled(editMode);
+		alternativeTilesEnabled.setEnabled(editMode && variant.getAllowAdditionalContent());
+		mixExpansionTilesEnabled.setEnabled(editMode && variant.getAllowExp1Content());
+		includeExpansionSpells.setEnabled(editMode && variant.getAllowExp1Content());
+		includeNewSpells.setEnabled(editMode && variant.getAllowAdditionalContent());
+		includeNewSpells2.setEnabled(editMode && variant.getAllowAdditionalContent());
+		switchDaySpells.setEnabled(editMode && variant.getAllowAdditionalContent());
+		multiBoardEnabled.setEnabled(editMode && variant.getAllowAdditionalContent());
+		multiBoardCount.setEnabled(editMode && variant.getAllowAdditionalContent());
 		minMapRating.setEnabled(editMode && boardAutoSetup.isSelected());
 		defaultButton.setEnabled(editMode);
 		startingSeason.setEnabled(editMode);
@@ -407,7 +408,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	}
 	private void initComponents() {
 		setIconImage(IconFactory.findIcon("images/interface/options.gif").getImage());
-		setSize(1080,800);
+		setSize(1080,820);
 		setLocationRelativeTo(null);
 		setModal(true);
 		
@@ -1308,14 +1309,16 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		hostPrefs.setAutosaveEnabled(autosaveEnabled.isSelected());
 		hostPrefs.setBoardAutoSetup(boardAutoSetup.isSelected());
 		hostPrefs.setBoardPlayerSetup(boardPlayerSetup.isSelected());
-		hostPrefs.setAlternativeTilesEnabled(alternativeTilesEnabled.isSelected());
-		hostPrefs.setMixExpansionTilesEnabled(mixExpansionTilesEnabled.isSelected() && getSelectedGameVariant().getAllowBoardVariants());
-		hostPrefs.setIncludeExpansionSpells(includeExpansionSpells.isSelected() && getSelectedGameVariant().getAllowBoardVariants());
-		hostPrefs.setIncludeNewSpells(includeNewSpells.isSelected());
-		hostPrefs.setIncludeNewSpells2(includeNewSpells2.isSelected());
-		hostPrefs.setSwitchDaySpells(switchDaySpells.isSelected());
-		hostPrefs.setMultiBoardEnabled(multiBoardEnabled.isSelected());
-		hostPrefs.setMultiBoardCount(multiBoardCount.getValue());
+		hostPrefs.setAlternativeTilesEnabled(alternativeTilesEnabled.isSelected() && getSelectedGameVariant().getAllowAdditionalContent());
+		hostPrefs.setMixExpansionTilesEnabled(mixExpansionTilesEnabled.isSelected() && getSelectedGameVariant().getAllowExp1Content());
+		hostPrefs.setIncludeExpansionSpells(includeExpansionSpells.isSelected() && getSelectedGameVariant().getAllowExp1Content());
+		hostPrefs.setIncludeNewSpells(includeNewSpells.isSelected() && getSelectedGameVariant().getAllowAdditionalContent());
+		hostPrefs.setIncludeNewSpells2(includeNewSpells2.isSelected() && getSelectedGameVariant().getAllowAdditionalContent());
+		hostPrefs.setSwitchDaySpells(switchDaySpells.isSelected() && getSelectedGameVariant().getAllowAdditionalContent());
+		hostPrefs.setMultiBoardEnabled(multiBoardEnabled.isSelected() && getSelectedGameVariant().getAllowAdditionalContent());
+		if (getSelectedGameVariant().getAllowAdditionalContent()) {
+			hostPrefs.setMultiBoardCount(multiBoardCount.getValue());
+		}
 		hostPrefs.setMinimumMapRating(boardAutoSetup.isSelected()?minMapRating.getValue():0);
 		hostPrefs.setRequiredVPsOff(vpEndlessOption.isSelected());
 		hostPrefs.setPref(Constants.QST_BOOK_OF_QUESTS,questBoqOption.isSelected());

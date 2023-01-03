@@ -18,20 +18,23 @@
 package com.robin.magic_realm.components.utility;
 
 public class GameVariant {
-	public static GameVariant ORIGINAL_GAME_VARIANT = new GameVariant("Original Game","original_game","standard_game",true); 
-	public static GameVariant PRUITTS_GAME_VARIANT = new GameVariant("Pruitt's Monsters","alt_monsters1_game","standard_game",true); 
-	public static GameVariant EXP1_GAME_VARIANT = new GameVariant("Expansion One","rw_expansion_1","rw_expansion_1_setup",false); 
+	public static GameVariant ORIGINAL_GAME_VARIANT = new GameVariant("Original Game","original_game","standard_game",true,true);
+	public static GameVariant PRUITTS_GAME_VARIANT = new GameVariant("Pruitt's Monsters","alt_monsters1_game","standard_game",true,true);
+	public static GameVariant EXP1_GAME_VARIANT = new GameVariant("Expansion One","rw_expansion_1","rw_expansion_1_setup",false,true);
+	public static GameVariant SUPER_REALM = new GameVariant("Super Realm","super_realm","super_realm_setup",false,false);
 	
 	private String title;
 	private String keyVals;
 	private String setup;
-	private boolean allowBoardVariants;
+	private boolean allowExp1Content;
+	private boolean allowAdditionalContent;
 
-	public GameVariant(String title, String keyVals, String setup, boolean allowAddExpansionMix) {
+	public GameVariant(String title, String keyVals, String setup, boolean allowExpContent, boolean allowAdditionalContent) {
 		this.title = title;
 		this.keyVals = keyVals;
 		this.setup = setup;
-		this.allowBoardVariants = allowAddExpansionMix;
+		this.allowExp1Content = allowExpContent;
+		this.allowAdditionalContent = allowAdditionalContent;
 	}
 
 	public String toString() {
@@ -50,7 +53,11 @@ public class GameVariant {
 		return setup;
 	}
 
-	public boolean getAllowBoardVariants() {
-		return allowBoardVariants;
+	public boolean getAllowExp1Content() {
+		return allowExp1Content;
+	}
+	
+	public boolean getAllowAdditionalContent() {
+		return allowAdditionalContent;
 	}
 }
