@@ -407,7 +407,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	}
 	private void initComponents() {
 		setIconImage(IconFactory.findIcon("images/interface/options.gif").getImage());
-		setSize(1048,800);
+		setSize(1080,800);
 		setLocationRelativeTo(null);
 		setModal(true);
 		
@@ -646,7 +646,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		vpPanel.add(vpEndlessOption=new VictoryConditionButton("Endless","No time limit or VPs\nNo Hall of Fame\nGame ends when you decide to quit"));
 		vpPanel.add(vpTimedOption=new VictoryConditionButton("Timed","Defined time limit\nStandard: Assign one VP per week plus one\nHighest score at game end wins"));
 		vpPanel.add(vpSuddenDeathOption=new VictoryConditionButton("Sudden Death","Predefined # of VPs\nNo Time Limit\nFirst to achieve VPs wins"));
-		questPanel.add(questGuildsOption=new VictoryConditionButton("Guild Quests","Quests are given at guilds (expansion)\nQuests do not earn VPs\n\nENDLESS, TIMED or SUDDEN DEATH"));
+		questPanel.add(questGuildsOption=new VictoryConditionButton("Guild Quests","Quests are given at guilds\nQuests do not earn VPs\n\nENDLESS, TIMED or\nSUDDEN DEATH"));
 		questPanel.add(questQtrOption=new VictoryConditionButton("Questing the Realm","Hand of Quest Cards\nFinish quests to earn VPs\n\nTIMED or SUDDEN DEATH"));
 		questPanel.add(questBoqOption=new VictoryConditionButton("Book of Quests","Each character picks ONE quest\nFirst to finish quest wins\n\nSUDDEN DEATH only"));
 		questPanel.add(questSrOption=new VictoryConditionButton("Super Realm","Hand of Quest Cards\n(best combined with deducting VPs)\n\nTIMED only"));
