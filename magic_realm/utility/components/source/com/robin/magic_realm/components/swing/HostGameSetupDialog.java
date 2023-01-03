@@ -895,7 +895,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			box.add(gameVariants[0]);
 			box.add(Box.createHorizontalGlue());
 		gamePlayBox.add(box);
-			for (int i=1;i<gameVariants.length;i++) {
+			for (int i=1;i<gameVariants.length-1;i++) {
 				box = group.createLine();
 				box.add(gameVariants[i]);
 				box.add(Box.createHorizontalGlue());
