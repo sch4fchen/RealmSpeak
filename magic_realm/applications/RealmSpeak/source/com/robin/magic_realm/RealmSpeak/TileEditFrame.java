@@ -502,9 +502,12 @@ public class TileEditFrame extends JFrame {
 		updatePathButtons();
 		changeWarningLabel.setVisible(activeTile!=null && activeTile.isChanged());
 		if (activeTile!=null) {
-			nameLabel.setText(activeTile+" ("+activeTile.getGameObject().getThisAttribute("code")+")"+" - Type: "+activeTile.getGameObject().getThisAttribute("tile_type"));
+			String text = activeTile+" ("+activeTile.getGameObject().getThisAttribute("code")+")"+" - Type: "+activeTile.getGameObject().getThisAttribute("tile_type");
+			if (activeTile.getGameObject().hasThisAttribute("sr_tile_type")) {
+				text = text+" (SR: "+activeTile.getGameObject().getThisAttribute("sr_tile_type")+")";
+			}
+			nameLabel.setText(text);
 		}
-		
 		saveButton.setEnabled(changed);
 		applyButton.setEnabled(activeTile!=null && activeTile.isChanged());
 	}
