@@ -33544,7 +33544,7 @@
         <attribute discovery="" />
         <attribute ts_section="treasure" />
         <attribute ts_size="HCARD" />
-        <attribute ts_color="gold" />
+        <attribute ts_color="red" />
         <attribute icon_type="dragon_flying" />
         <attribute icon_folder="monsters" />
       </AttributeBlock>
@@ -33560,7 +33560,7 @@
         <attribute discovery="" />
         <attribute ts_section="treasure" />
         <attribute ts_size="HCARD" />
-        <attribute ts_color="gold" />
+        <attribute ts_color="red" />
         <attribute icon_type="dragon" />
         <attribute icon_folder="monsters" />
       </AttributeBlock>
@@ -33576,7 +33576,7 @@
         <attribute discovery="" />
         <attribute ts_section="treasure" />
         <attribute ts_size="HCARD" />
-        <attribute ts_color="gold" />
+        <attribute ts_color="green" />
         <attribute icon_type="demon" />
         <attribute icon_folder="monsters" />
         <attribute spell_site="" />
@@ -33593,7 +33593,7 @@
         <attribute discovery="" />
         <attribute ts_section="treasure" />
         <attribute ts_size="HCARD" />
-        <attribute ts_color="gold" />
+        <attribute ts_color="green" />
         <attribute icon_type="demon_flying" />
         <attribute icon_folder="monsters" />
         <attribute spell_site="" />
@@ -33611,7 +33611,7 @@
         <attribute draw="fatigue_asterisk" />
         <attribute ts_section="treasure" />
         <attribute ts_size="HCARD" />
-        <attribute ts_color="gold" />
+        <attribute ts_color="blue" />
         <attribute icon_type="octopus" />
         <attribute icon_folder="monsters" />
       </AttributeBlock>
@@ -33628,7 +33628,7 @@
         <attribute needs_open="fatigue_t,key" />
         <attribute ts_section="treasure" />
         <attribute ts_size="HCARD" />
-        <attribute ts_color="gold" />
+        <attribute ts_color="darkgray" />
         <attribute icon_type="troll" />
         <attribute icon_folder="monsters" />
       </AttributeBlock>
@@ -33645,7 +33645,7 @@
         <attribute search="fatigue_asterisk" />
         <attribute ts_section="treasure" />
         <attribute ts_size="HCARD" />
-        <attribute ts_color="gold" />
+        <attribute ts_color="purple" />
         <attribute icon_type="spider" />
         <attribute icon_folder="monsters" />
       </AttributeBlock>
@@ -33661,7 +33661,7 @@
         <attribute discovery="" />
         <attribute ts_section="treasure" />
         <attribute ts_size="HCARD" />
-        <attribute ts_color="gold" />
+        <attribute ts_color="purple" />
         <attribute icon_type="imp" />
         <attribute icon_folder="monsters" />
         <attribute spell_site="" />
@@ -33680,6 +33680,159 @@
       <AttributeBlock blockName="this">
         <attribute clearing="3" />
         <attribute red_special="lost_city" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute print="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1231" name="Den">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="den" />
+        <attribute clearing="2" />
+        <attribute super_realm="" />
+        <attribute monster_die="2" />
+        <attribute print="" />
+        <attribute chit="" />
+        <attribute discovery="" />
+        <attribute ts_section="treasure" />
+        <attribute ts_size="HCARD" />
+        <attribute ts_color="green" />
+        <attribute icon_type="swampthing" />
+        <attribute icon_folder="monsters2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1232" name="Temple">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="temple" />
+        <attribute clearing="5" />
+		<attribute super_realm="" />
+        <attribute monster_die="6" />
+        <attribute print="" />
+        <attribute chit="" />
+        <attribute discovery="" />
+        <attribute ts_section="treasure" />
+        <attribute ts_size="HCARD" />
+        <attribute ts_color="brown" />
+        <attribute icon_type="zombie1" />
+        <attribute icon_folder="monsters2" />
+		<attribute spell_site="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1233" name="Tower">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="tower" />
+        <attribute clearing="5" />
+        <attribute super_realm="" />
+        <attribute monster_die="3" />
+        <attribute print="" />
+        <attribute chit="" />
+        <attribute discovery="" />
+        <attribute ts_section="treasure" />
+        <attribute ts_size="HCARD" />
+        <attribute ts_color="blue" />
+        <attribute icon_type="troll" />
+        <attribute icon_folder="monsters" />
+		<attribute spell_site="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1234" name="Spire">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="spire" />
+        <attribute clearing="6" />
+        <attribute super_realm="" />
+        <attribute monster_die="5" />
+        <attribute print="" />
+        <attribute chit="" />
+        <attribute discovery="" />
+        <attribute ts_section="treasure" />
+        <attribute ts_size="HCARD" />
+        <attribute ts_color="purple" />
+        <attribute icon_type="troll" />
+        <attribute icon_folder="monsters" />
+        <attribute spell_site="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1235" name="Pit">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="pit" />
+        <attribute clearing="1" />
+        <attribute super_realm="" />
+        <attribute monster_die="1" />
+        <attribute print="" />
+        <attribute chit="" />
+        <attribute discovery="" />
+        <attribute draw="fatigue_asterisk" />
+        <attribute ts_section="treasure" />
+        <attribute ts_size="HCARD" />
+        <attribute ts_color="red" />
+        <attribute icon_type="octopus" />
+        <attribute icon_folder="monsters" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1236" name="Garden">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="garden" />
+        <attribute clearing="1" />
+        <attribute super_realm="" />
+        <attribute monster_die="6" />
+        <attribute print="" />
+        <attribute chit="" />
+        <attribute discovery="" />
+        <attribute needs_open="fatigue_t,key" />
+        <attribute ts_section="treasure" />
+        <attribute ts_size="HCARD" />
+        <attribute ts_color="brown" />
+        <attribute icon_type="carnoplant" />
+        <attribute icon_folder="monsters2" />
+		<attribute spell_site="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1237" name="Tomb">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="tomb" />
+        <attribute clearing="4" />
+        <attribute super_realm="" />
+        <attribute monster_die="4" />
+        <attribute print="" />
+        <attribute chit="" />
+        <attribute discovery="" />
+        <attribute search="fatigue_asterisk" />
+        <attribute ts_section="treasure" />
+        <attribute ts_size="HCARD" />
+        <attribute ts_color="darkgray" />
+        <attribute icon_type="skullsword" />
+        <attribute icon_folder="monsters2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1238" name="Maze">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="maze" />
+        <attribute clearing="3" />
+        <attribute super_realm="" />
+        <attribute monster_die="6" />
+        <attribute print="" />
+        <attribute chit="" />
+        <attribute discovery="" />
+        <attribute ts_section="treasure" />
+        <attribute ts_size="HCARD" />
+        <attribute ts_color="brown" />
+        <attribute icon_type="minotaur" />
+        <attribute icon_folder="monsters2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1239" name="Lost Palace">
+      <AttributeBlock blockName="this">
+        <attribute clearing="2" />
+        <attribute red_special="lost_palace" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute print="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1240" name="Lost Fortress">
+      <AttributeBlock blockName="this">
+        <attribute clearing="4" />
+        <attribute red_special="lost_fortress" />
         <attribute super_realm="" />
         <attribute chit="" />
         <attribute print="" />
