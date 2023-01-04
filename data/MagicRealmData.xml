@@ -33373,6 +33373,166 @@
         <attribute clearing_6_magic="R" />
       </AttributeBlock>
     </GameObject>
+	<GameObject id="1201" name="Flutter 1">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute sound="flutter" />
+        <attribute clearing="1" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1202" name="Flutter 2">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute sound="flutter" />
+        <attribute clearing="2" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1203" name="Flutter 4">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute sound="flutter" />
+        <attribute clearing="4" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1204" name="Flutter 6">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute sound="flutter" />
+        <attribute clearing="6" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1205" name="Howl 2">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute sound="flutter" />
+        <attribute clearing="2" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1206" name="Howl 3">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute sound="howl" />
+        <attribute clearing="3" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1207" name="Howl 4">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute sound="howl" />
+        <attribute clearing="4" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1208" name="Howl 5">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute sound="howl" />
+        <attribute clearing="5" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1209" name="Patter 1">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute sound="patter" />
+        <attribute clearing="1" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1210" name="Patter 2">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute sound="patter" />
+        <attribute clearing="2" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1211" name="Patter 4">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute sound="patter" />
+        <attribute clearing="4" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1212" name="Patter 5">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute sound="patter" />
+        <attribute clearing="5" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1213" name="Roar 3">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute sound="roar" />
+        <attribute clearing="3" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1214" name="Roar 4">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute sound="roar" />
+        <attribute clearing="4" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1215" name="Roar 5">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute sound="roar" />
+        <attribute clearing="5" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1216" name="Roar 6">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute sound="roar" />
+        <attribute clearing="6" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1217" name="Slither 1">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute sound="slither" />
+        <attribute clearing="1" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1218" name="Slither 3">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute sound="slither" />
+        <attribute clearing="3" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1219" name="Slither 5">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute sound="slither" />
+        <attribute clearing="5" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1220" name="Slither 6">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute sound="slither" />
+        <attribute clearing="6" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
@@ -33675,20 +33835,35 @@
       <Extract from="ALL" to="CHITS" keyVals="tile_type=X,chit" />
       <Distribute from="CHITS" to="X_TILES" count="5" transferType="Random" />
     </GameSetup>
-	<GameSetup name="super_realm">
+	<GameSetup name="super_realm_setup">
 	  <Alter targetObjectID="401" attribute="tile_type" value="F" />
       <Alter targetObjectID="408" attribute="tile_type" value="R" />
-      <Create newPool="V_TILES" />
-      <Create newPool="W_TILES" />
-      <Create newPool="M_TILES" />
       <Create newPool="C_TILES" />
-      <Create newPool="S_TILES" />
-      <Create newPool="X_TILES" />
-      <Extract from="ALL" to="V_TILES" keyVals="tile_type=V,tile" />
-      <Extract from="ALL" to="W_TILES" keyVals="tile_type=W,tile" />
-      <Extract from="ALL" to="M_TILES" keyVals="tile_type=M,tile" />
+	  <Create newPool="F_TILES" />
+	  <Create newPool="H_TILES" />
+	  <Create newPool="M_TILES" />
+	  <Create newPool="R_TILES" />
+      <Create newPool="ST_TILES" />
+	  <Create newPool="V_TILES" />
+	  <Create newPool="W_TILES" />
       <Extract from="ALL" to="C_TILES" keyVals="tile_type=C,tile" />
-      <Extract from="ALL" to="S_TILES" keyVals="tile_type=S,tile" />
+	  <Extract from="ALL" to="F_TILES" keyVals="tile_type=H,tile" />
+	  <Extract from="ALL" to="H_TILES" keyVals="tile_type=H,tile" />
+	  <Extract from="ALL" to="M_TILES" keyVals="tile_type=M,tile" />
+	  <Extract from="ALL" to="R_TILES" keyVals="tile_type=R,tile" />
+      <Extract from="ALL" to="ST_TILES" keyVals="tile_type=ST,tile" />
+	  <Extract from="ALL" to="V_TILES" keyVals="tile_type=V,tile" />
+	  <Extract from="ALL" to="W_TILES" keyVals="tile_type=W,tile" />
+	  <Create newPool="CHITS" />
+      <Extract from="ALL" to="CHITS" keyVals="sound,chit" />
+      <Distribute from="CHITS" to="C_TILES" count="5" transferType="Random" />
+      <Distribute from="CHITS" to="F_TILES" count="5" transferType="Random" />
+      <Distribute from="CHITS" to="H_TILES" count="5" transferType="Random" />
+      <Distribute from="CHITS" to="M_TILES" count="5" transferType="Random" />
+      <Distribute from="CHITS" to="R_TILES" count="5" transferType="Random" />
+      <Distribute from="CHITS" to="ST_TILES" count="5" transferType="Random" />
+      <Distribute from="CHITS" to="V_TILES" count="5" transferType="Random" />
+      <Distribute from="CHITS" to="W_TILES" count="5" transferType="Random" />
     </GameSetup>
   </setups>
 </game>

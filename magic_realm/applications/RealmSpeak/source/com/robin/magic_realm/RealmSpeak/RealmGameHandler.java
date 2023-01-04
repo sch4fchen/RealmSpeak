@@ -643,6 +643,10 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		ArrayList<GameObject> gs = new ArrayList<>(rom.findObjects("gold_special", query));
 		ArrayList<GameObject> gt = new ArrayList<>(rom.findObjects("gold_special_target", query));
 		GameObject[] chit = new GameObject[2];
+		if (gs.isEmpty()) {
+			broadcast("host", "No Visitor/Mission/Campaign chits to place.");
+			return;
+		}
 		while (SetupCardUtility.stillChitsToPlace(hostPrefs)) {
 			int r = RandomNumber.getRandom(gs.size());
 			int s = hostPrefs.hasPref(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE) ? 0 : RandomNumber.getRandom(2);
