@@ -33533,6 +33533,158 @@
         <attribute clearing="6" />
       </AttributeBlock>
     </GameObject>
+	<GameObject id="1221" name="Hoard">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="hoard" />
+        <attribute clearing="6" />
+        <attribute super_realm="" />
+        <attribute monster_die="1" />
+        <attribute print="" />
+        <attribute chit="" />
+        <attribute discovery="" />
+        <attribute ts_section="treasure" />
+        <attribute ts_size="HCARD" />
+        <attribute ts_color="gold" />
+        <attribute icon_type="dragon_flying" />
+        <attribute icon_folder="monsters" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1222" name="Lair">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="lair" />
+        <attribute clearing="3" />
+		<attribute super_realm="" />
+        <attribute monster_die="1" />
+        <attribute print="" />
+        <attribute chit="" />
+        <attribute discovery="" />
+        <attribute ts_section="treasure" />
+        <attribute ts_size="HCARD" />
+        <attribute ts_color="gold" />
+        <attribute icon_type="dragon" />
+        <attribute icon_folder="monsters" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1223" name="Altar">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="altar" />
+        <attribute clearing="1" />
+        <attribute super_realm="" />
+        <attribute monster_die="2" />
+        <attribute print="" />
+        <attribute chit="" />
+        <attribute discovery="" />
+        <attribute ts_section="treasure" />
+        <attribute ts_size="HCARD" />
+        <attribute ts_color="gold" />
+        <attribute icon_type="demon" />
+        <attribute icon_folder="monsters" />
+        <attribute spell_site="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1224" name="Shrine">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="shrine" />
+        <attribute clearing="4" />
+        <attribute super_realm="" />
+        <attribute monster_die="2" />
+        <attribute print="" />
+        <attribute chit="" />
+        <attribute discovery="" />
+        <attribute ts_section="treasure" />
+        <attribute ts_size="HCARD" />
+        <attribute ts_color="gold" />
+        <attribute icon_type="demon_flying" />
+        <attribute icon_folder="monsters" />
+        <attribute spell_site="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1225" name="Pool">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="pool" />
+        <attribute clearing="6" />
+        <attribute super_realm="" />
+        <attribute monster_die="3" />
+        <attribute print="" />
+        <attribute chit="" />
+        <attribute discovery="" />
+        <attribute draw="fatigue_asterisk" />
+        <attribute ts_section="treasure" />
+        <attribute ts_size="HCARD" />
+        <attribute ts_color="gold" />
+        <attribute icon_type="octopus" />
+        <attribute icon_folder="monsters" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1226" name="Vault">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="vault" />
+        <attribute clearing="3" />
+        <attribute super_realm="" />
+        <attribute monster_die="4" />
+        <attribute print="" />
+        <attribute chit="" />
+        <attribute discovery="" />
+        <attribute needs_open="fatigue_t,key" />
+        <attribute ts_section="treasure" />
+        <attribute ts_size="HCARD" />
+        <attribute ts_color="gold" />
+        <attribute icon_type="troll" />
+        <attribute icon_folder="monsters" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1227" name="Cairns">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="cairns" />
+        <attribute clearing="5" />
+        <attribute super_realm="" />
+        <attribute monster_die="5" />
+        <attribute print="" />
+        <attribute chit="" />
+        <attribute discovery="" />
+        <attribute search="fatigue_asterisk" />
+        <attribute ts_section="treasure" />
+        <attribute ts_size="HCARD" />
+        <attribute ts_color="gold" />
+        <attribute icon_type="spider" />
+        <attribute icon_folder="monsters" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1228" name="Statue">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="statue" />
+        <attribute clearing="2" />
+        <attribute super_realm="" />
+        <attribute monster_die="5" />
+        <attribute print="" />
+        <attribute chit="" />
+        <attribute discovery="" />
+        <attribute ts_section="treasure" />
+        <attribute ts_size="HCARD" />
+        <attribute ts_color="gold" />
+        <attribute icon_type="imp" />
+        <attribute icon_folder="monsters" />
+        <attribute spell_site="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1229" name="Lost Castle">
+      <AttributeBlock blockName="this">
+        <attribute clearing="1" />
+        <attribute red_special="lost_castle" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute print="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1230" name="Lost City">
+      <AttributeBlock blockName="this">
+        <attribute clearing="3" />
+        <attribute red_special="lost_city" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute print="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
@@ -33854,8 +34006,15 @@
       <Extract from="ALL" to="ST_TILES" keyVals="tile_type=ST,tile" />
 	  <Extract from="ALL" to="V_TILES" keyVals="tile_type=V,tile" />
 	  <Extract from="ALL" to="W_TILES" keyVals="tile_type=W,tile" />
+	  <Create newPool="TWT" />
+      <Extract from="ALL" to="TWT" keyVals="treasure_within_treasure" />
+      <Create newPool="LARGE_TREASURES" />
+      <Extract from="ALL" to="LARGE_TREASURES" keyVals="treasure=large" />
+      <Create newPool="SMALL_TREASURES" />
+      <Extract from="ALL" to="SMALL_TREASURES" keyVals="treasure=small" />
 	  <Create newPool="CHITS" />
       <Extract from="ALL" to="CHITS" keyVals="sound,chit" />
+      <Extract from="ALL" to="CHITS" keyVals="treasure_location" />
       <Distribute from="CHITS" to="C_TILES" count="5" transferType="Random" />
       <Distribute from="CHITS" to="F_TILES" count="5" transferType="Random" />
       <Distribute from="CHITS" to="H_TILES" count="5" transferType="Random" />
