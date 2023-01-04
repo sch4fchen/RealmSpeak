@@ -33836,6 +33836,186 @@
         <attribute print="" />
       </AttributeBlock>
     </GameObject>
+	<GameObject id="1241" name="Bones H">
+      <AttributeBlock blockName="this">
+        <attribute warning="bones" />
+        <attribute tile_type="H" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute ts_section="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1242" name="Dank H">
+      <AttributeBlock blockName="this">
+        <attribute warning="dank" />
+        <attribute tile_type="H" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute ts_section="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1243" name="Ruins H">
+      <AttributeBlock blockName="this">
+        <attribute warning="ruins" />
+        <attribute tile_type="H" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute ts_section="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1244" name="Stink H">
+      <AttributeBlock blockName="this">
+        <attribute warning="stink" />
+        <attribute tile_type="H" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute ts_section="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1245" name="Smoke H">
+      <AttributeBlock blockName="this">
+        <attribute warning="smoke" />
+        <attribute tile_type="H" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute ts_section="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1246" name="Bones ST">
+      <AttributeBlock blockName="this">
+        <attribute warning="bones" />
+        <attribute tile_type="ST" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute ts_section="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1247" name="Dank ST">
+      <AttributeBlock blockName="this">
+        <attribute warning="dank" />
+        <attribute tile_type="ST" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute ts_section="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1248" name="Ruins ST">
+      <AttributeBlock blockName="this">
+        <attribute warning="ruins" />
+        <attribute tile_type="ST" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute ts_section="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1249" name="Stink ST">
+      <AttributeBlock blockName="this">
+        <attribute warning="stink" />
+        <attribute tile_type="ST" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute ts_section="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1250" name="Smoke ST">
+      <AttributeBlock blockName="this">
+        <attribute warning="smoke" />
+        <attribute tile_type="ST" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute ts_section="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1251" name="Bones W">
+      <AttributeBlock blockName="this">
+        <attribute warning="bones" />
+        <attribute tile_type="W" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute ts_section="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1252" name="Dank W">
+      <AttributeBlock blockName="this">
+        <attribute warning="dank" />
+        <attribute tile_type="W" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute ts_section="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1253" name="Ruins W">
+      <AttributeBlock blockName="this">
+        <attribute warning="ruins" />
+        <attribute tile_type="W" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute ts_section="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1254" name="Stink W">
+      <AttributeBlock blockName="this">
+        <attribute warning="stink" />
+        <attribute tile_type="W" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute ts_section="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1255" name="Smoke W">
+      <AttributeBlock blockName="this">
+        <attribute warning="smoke" />
+        <attribute tile_type="W" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute ts_section="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1256" name="Bones R">
+      <AttributeBlock blockName="this">
+        <attribute warning="bones" />
+        <attribute tile_type="R" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute ts_section="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1257" name="Dank R">
+      <AttributeBlock blockName="this">
+        <attribute warning="dank" />
+        <attribute tile_type="R" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute ts_section="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1258" name="Ruins R">
+      <AttributeBlock blockName="this">
+        <attribute warning="ruins" />
+        <attribute tile_type="R" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute ts_section="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1259" name="Stink R">
+      <AttributeBlock blockName="this">
+        <attribute warning="stink" />
+        <attribute tile_type="R" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute ts_section="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1260" name="Smoke R">
+      <AttributeBlock blockName="this">
+        <attribute warning="smoke" />
+        <attribute tile_type="R" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute ts_section="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
