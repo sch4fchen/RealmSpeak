@@ -40,6 +40,8 @@ public class GameCommandDialog extends JDialog {
 	protected JComboBox from;
 	protected JComboBox to;
 	protected JLabel targetObject;
+	protected JTextField attribute;
+	protected JTextField value;
 	protected IntegerField count;
 	protected JComboBox<String> transferType;
 	protected JTextField keyVals;
@@ -48,6 +50,8 @@ public class GameCommandDialog extends JDialog {
 	protected Box toBox;
 	protected Box fromBox;
 	protected Box targetObjectBox;
+	protected Box attributeBox;
+	protected Box valueBox;
 	protected Box countBox;
 	protected Box transferTypeBox;
 	protected Box keyValsBox;
@@ -69,6 +73,8 @@ public class GameCommandDialog extends JDialog {
 		toBox.setVisible(modelCommand.usesTo());
 		fromBox.setVisible(modelCommand.usesFrom());
 		targetObjectBox.setVisible(modelCommand.usesTargetObject());
+		attributeBox.setVisible(modelCommand.usesAttribute());
+		valueBox.setVisible(modelCommand.usesValue());
 		countBox.setVisible(modelCommand.usesCount());
 		transferTypeBox.setVisible(modelCommand.usesTransferType());
 		keyValsBox.setVisible(modelCommand.usesKeyVals());
@@ -101,6 +107,7 @@ public class GameCommandDialog extends JDialog {
 				line = group.createLabelLine("Type");
 					type = new JComboBox<>();
 					type.addItem(GameCommandCreate.NAME);
+					type.addItem(GameCommandAlter.NAME);
 					if (poolNames.size()>1) {
 						type.addItem(GameCommandExtract.NAME);
 						type.addItem(GameCommandMove.NAME);
@@ -158,6 +165,18 @@ public class GameCommandDialog extends JDialog {
 				targetObjectBox.add(button);
 				targetObjectBox.add(Box.createHorizontalGlue());
 			box.add(targetObjectBox);
+				attributeBox = group.createLabelLine("Attribute");
+					attribute = new JTextField(modelCommand.getAttribute());
+					ComponentTools.lockComponentSize(attribute,150,25);
+				attributeBox.add(attribute);
+				attributeBox.add(Box.createHorizontalGlue());
+			box.add(attributeBox);
+				valueBox = group.createLabelLine("Value");
+					value = new JTextField(modelCommand.getValue());
+					ComponentTools.lockComponentSize(value,150,25);
+				valueBox.add(value);
+				valueBox.add(Box.createHorizontalGlue());
+			box.add(valueBox);
 				countBox = group.createLabelLine("Count");
 					count = new IntegerField(modelCommand.getCount());
 					ComponentTools.lockComponentSize(count,150,25);
@@ -225,6 +244,8 @@ public class GameCommandDialog extends JDialog {
 		catch(NumberFormatException ex) {
 		}
 		newCommand.setTargetObject(modelCommand.getTargetObject());
+		newCommand.setAttribute(attribute.getText());
+		newCommand.setValue(value.getText());
 		newCommand.setTransferType(GamePool.getTransferType((String)transferType.getSelectedItem()));
 		newCommand.setKeyValString(keyVals.getText());
 		newCommand.setModified(true);

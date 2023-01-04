@@ -29,6 +29,8 @@ public abstract class GameCommand extends ModifyableObject implements Serializab
 	protected String from=GameSetup.ALL;
 	protected String to=GameSetup.ALL;
 	protected GameObject targetObject;
+	protected String attribute;
+	protected String value;
 	protected int count=0;
 	protected int transferType=GamePool.RANDOM;
 	protected ArrayList<String> keyVals = new ArrayList<String>();
@@ -55,6 +57,12 @@ public abstract class GameCommand extends ModifyableObject implements Serializab
 		return false;
 	}
 	public boolean usesTargetObject() {
+		return false;
+	}
+	public boolean usesAttribute() {
+		return false;
+	}
+	public boolean usesValue() {
 		return false;
 	}
 	public boolean usesCount() {
@@ -89,6 +97,9 @@ public abstract class GameCommand extends ModifyableObject implements Serializab
 		else if (GameCommandMove.NAME.equals(val)) {
 			command = new GameCommandMove(gameSetup);
 		}
+		else if (GameCommandAlter.NAME.equals(val)) {
+			command = new GameCommandAlter(gameSetup);
+		}
 		else {
 			throw new IllegalArgumentException("Invalid command type");
 		}
@@ -117,6 +128,18 @@ public abstract class GameCommand extends ModifyableObject implements Serializab
 	}
 	public GameObject getTargetObject() {
 		return targetObject;
+	}
+	public void setAttribute(String att) {
+		attribute = att;
+	}
+	public String getAttribute() {
+		return attribute;
+	}
+	public void setValue(String val) {
+		value = val;
+	}
+	public String getValue() {
+		return value;
 	}
 	public void setCount(int val) {
 		count = val;
@@ -178,6 +201,8 @@ public abstract class GameCommand extends ModifyableObject implements Serializab
 		setFrom(command.getFrom());
 		setTo(command.getTo());
 		setTargetObject(command.getTargetObject());
+		setAttribute(command.getAttribute());
+		setValue(command.getValue());
 		setCount(command.getCount());
 		setTransferType(command.getTransferType());
 		setKeyVals(new ArrayList<String>(command.getKeyVals()));
@@ -191,6 +216,12 @@ public abstract class GameCommand extends ModifyableObject implements Serializab
 			if (targetObject!=null) {
 				element.setAttribute(new Attribute("targetObjectID",""+targetObject.getId()));
 			}
+		}
+		if (usesAttribute()) {
+			element.setAttribute(new Attribute("attribute",""+attribute));
+		}
+		if (usesValue()) {
+			element.setAttribute(new Attribute("value",""+value));
 		}
 		if (usesCount()) {
 			element.setAttribute(new Attribute("count",""+count));
@@ -223,6 +254,14 @@ public abstract class GameCommand extends ModifyableObject implements Serializab
 				catch(NumberFormatException ex) {
 				}
 			}
+		}
+		if (usesAttribute()) {
+			String string = element.getAttribute("attribute").getValue();
+			attribute = string;
+		}
+		if (usesValue()) {
+			String string = element.getAttribute("value").getValue();
+			value = string;
 		}
 		if (usesKeyVals()) {
 			String keyValsString = element.getAttribute("keyVals").getValue();
@@ -258,7 +297,9 @@ public abstract class GameCommand extends ModifyableObject implements Serializab
 		if (usesNewPool()) sb.append(newPool);
 		if (usesFrom()) sb.append("from "+from+" ");
 		if (usesTo()) sb.append("to "+to+" ");
+		if (usesAttribute()) sb.append("Sets "+(attribute==null?"NULL":attribute));
 		if (usesTargetObject()) sb.append("to "+(targetObject==null?"NULL":targetObject.toString()));
+		if (usesValue()) sb.append("with value "+(value==null?"NULL":value));
 		if (usesCount()) sb.append(", "+count+" ");
 		if (usesTransferType()) sb.append(GamePool.getTransferName(transferType));
 		if (usesKeyVals()) sb.append("using ["+getKeyValString()+"]");

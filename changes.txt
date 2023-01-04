@@ -1,5 +1,6 @@
 Version 1.1.7.3
-
+NEW FEATURES:
+# GameBuilder: New Setup Command: Alter
 
 Version 1.1.7.2
 NEW FEATURES:
