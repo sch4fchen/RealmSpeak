@@ -206,7 +206,7 @@ public class TreasureSetupCardView extends JComponent {
 		}
 		
 		// Now we have the sectionRowHash keyed on subsection, and hashing HashLists objects which divide summon groups
-		int height = SPACING+((ChitComponent.T_CHIT_SIZE+SPACING+TEXT_SPACING+SPACING)*6);
+		int height = SPACING+((ChitComponent.T_CHIT_SIZE+SPACING+TEXT_SPACING+SPACING)*6)+20;
 		
 		int maxwidth = 0;
 		for (int n=1;n<=6;n++) {
@@ -441,7 +441,7 @@ public class TreasureSetupCardView extends JComponent {
 		ArrayList<Rectangle> allDrawableRects = new ArrayList<>();
 		for (int n=1;n<=6;n++) {
 			int x = LEFT_BORDER;
-			int y = ((n-1)*h)+SPACING+TEXT_SPACING+5;
+			int y = ((n-1)*h)+SPACING+TEXT_SPACING+25;
 			
 			boolean prowling = monsterDice.contains(Integer.valueOf(n));
 			
@@ -460,6 +460,10 @@ public class TreasureSetupCardView extends JComponent {
 			for (String section : sections) {
 				String key = section+n;
 				HashLists<String, GameObject> groups = sectionRowHash.get(key);
+				if (n==1 && groups!=null) {
+					g.setFont(LABEL_FONT);
+					g.drawString(section.toUpperCase(),x,y-20);
+				}
 				if (groups!=null) {
 					x += SPACING;
 					ArrayList<SummonGroup> summons = new ArrayList<>();

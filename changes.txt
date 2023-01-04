@@ -8,6 +8,7 @@ Super Realm: Spells, Quests
 Version 1.1.7.3
 NEW FEATURES:
 # GameBuilder: New Setup Command: Alter
+# Treasure Setup Card: Add Headlines
 
 Version 1.1.7.2
 NEW FEATURES:
