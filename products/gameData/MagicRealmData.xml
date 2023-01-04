@@ -33761,7 +33761,6 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute draw="fatigue_asterisk" />
         <attribute ts_section="treasure" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="red" />
@@ -33778,7 +33777,6 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute needs_open="fatigue_t,key" />
         <attribute ts_section="treasure" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="brown" />
