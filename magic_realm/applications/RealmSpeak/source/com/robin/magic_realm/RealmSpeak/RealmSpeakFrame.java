@@ -497,6 +497,9 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Super Realm",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Anomalous Host",listing,listingColor));
+		scroller.addLine(new ScrollLine("Super Realm Graphics",subheader,subheaderColor));
+		scroller.addLine(new ScrollLine("Casey Benn",listing,listingColor));
+		scroller.addLine(new ScrollLine("Psyrek",listing,listingColor));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Expansion Monster Graphics",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Vrin Thomas",listing,listingColor));
