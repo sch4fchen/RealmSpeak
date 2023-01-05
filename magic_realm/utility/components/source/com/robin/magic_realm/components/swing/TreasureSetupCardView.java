@@ -460,9 +460,13 @@ public class TreasureSetupCardView extends JComponent {
 			for (String section : sections) {
 				String key = section+n;
 				HashLists<String, GameObject> groups = sectionRowHash.get(key);
-				if (n==1 && groups!=null) {
-					g.setFont(LABEL_FONT);
-					g.drawString(section.toUpperCase(),x,y-20);
+				if (n==1) {
+					if (groups!=null || sectionRowHash.get(section+2)!=null
+							|| sectionRowHash.get(section+3)!=null || sectionRowHash.get(section+4)!=null
+							|| sectionRowHash.get(section+5)!=null || sectionRowHash.get(section+6)!=null) {
+						g.setFont(LABEL_FONT);
+						g.drawString(section.toUpperCase(),x,y-20);
+					}
 				}
 				if (groups!=null) {
 					x += SPACING;
