@@ -159,6 +159,12 @@ public class RealmSpeakOptions {
 			options.set(INCOMPLETE_PHASE_WARNING,true);
 			options.set(INVALID_PHASE_WARNING,true);
 			options.set(MOVE_AFTER_HIRE_WARNING,true);
+			options.set(UNASSIGNED_HIRELINGS_WARNING,true);
+			options.set(CHIT_DISPLAY_STYLE,RealmComponent.DISPLAY_STYLE_LEGENDARY);
+			options.set(CHARACTER_CHIT_DISPLAY_STYLE,CharacterChitComponent.DISPLAY_STYLE_LEGENDARY);
+			options.set(TILES_DISPLAY_STYLE,TileComponent.DISPLAY_TILES_STYLE_LEGENDARY_WITH_ICONS);
+			options.set(CHIT_KILLED_BY,true);
+			options.set(SETUP_CARD_LAYOUT,true);
 		}
 	}
 	public void save() {
