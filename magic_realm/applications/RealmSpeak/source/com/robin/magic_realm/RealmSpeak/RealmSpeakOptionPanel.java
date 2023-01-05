@@ -56,8 +56,9 @@ public class RealmSpeakOptionPanel extends JDialog {
 	protected JRadioButton colorChitsOption;
 	protected JRadioButton frenzelChitsOption;
 	protected JRadioButton legendaryChitsOption;
-	protected JCheckBox killedByOption;
 	protected JCheckBox monsterNumbersOption;
+	protected JCheckBox killedByOption;
+	protected JCheckBox setupCardLayoutOption;
 	
 	protected JRadioButton classicCharacterChitsOption;
 	protected JRadioButton legendaryClassicCharacterChitsOption;
@@ -219,6 +220,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		
 		monsterNumbersOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.MONSTER_NUMBERS,false));
 		killedByOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.CHIT_KILLED_BY,false));
+		setupCardLayoutOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.SETUP_CARD_LAYOUT,false));
 		
 		showHeavyInvWarningOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.HEAVY_INV_WARNING,true));
 		showIncompleteRecordWarningOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.INCOMPLETE_PHASE_WARNING,true));
@@ -255,6 +257,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		}
 		options.getOptions().set(RealmSpeakOptions.MONSTER_NUMBERS,monsterNumbersOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.CHIT_KILLED_BY,killedByOption.isSelected());
+		options.getOptions().set(RealmSpeakOptions.SETUP_CARD_LAYOUT,setupCardLayoutOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.HEAVY_INV_WARNING,showHeavyInvWarningOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.INCOMPLETE_PHASE_WARNING,showIncompleteRecordWarningOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.INVALID_PHASE_WARNING,showInvalidRecordWarningOption.isSelected());
@@ -497,7 +500,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		return panel;
 	}
 	private JPanel getChitsOptionsPanel() {
-		JPanel panel = new JPanel(new GridLayout(6,1));
+		JPanel panel = new JPanel(new GridLayout(7,1));
 		panel.setBorder(BorderFactory.createTitledBorder("Game Chits"));
 		ButtonGroup group = new ButtonGroup();
 		classicChitsOption = new JRadioButton("Classic Chits");
@@ -517,6 +520,8 @@ public class RealmSpeakOptionPanel extends JDialog {
 		panel.add(monsterNumbersOption);
 		killedByOption = new JCheckBox("Show 'killed by'");
 		panel.add(killedByOption);
+		setupCardLayoutOption = new JCheckBox("Structured Setup Card Layout (requires restart)");
+		panel.add(setupCardLayoutOption);
 		return panel;
 	}
 	private JPanel getCharacterChitsOptionPanel() {

@@ -63,6 +63,7 @@ public class TreasureSetupCardView extends JComponent {
 	private GameData data;
 	private GameWrapper game;
 	private ArrayList<String> sections;
+	ArrayList<Integer> spacingPerSection;
 	private Dimension cardSize;
 	private Hashtable<String, HashLists<String, GameObject>> sectionRowHash;
 	private ArrayList<GameObject> nonMdList;
@@ -81,14 +82,16 @@ public class TreasureSetupCardView extends JComponent {
 	private String title = "Treasure Setup Card";
 	private String boardKey;
 	private String playerName;
+	boolean structuredLayout;
 	
-	public TreasureSetupCardView(GameData data,String playerName) {
-		this(data,playerName,null);
+	public TreasureSetupCardView(GameData data,String playerName,boolean setupCardLayout) {
+		this(data,playerName,null,setupCardLayout);
 	}
-	public TreasureSetupCardView(GameData data,String playerName,String boardKey) {
+	public TreasureSetupCardView(GameData data,String playerName,String boardKey,boolean setupCardLayout) {
 		this.data = data;
 		this.boardKey = boardKey;
 		this.playerName = playerName;
+		this.structuredLayout = setupCardLayout;
 		game = GameWrapper.findGame(data);
 		hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		if (boardKey!=null && !boardKey.endsWith(Constants.BOARD_NUMBER)) {
@@ -209,22 +212,48 @@ public class TreasureSetupCardView extends JComponent {
 		int height = SPACING+((ChitComponent.T_CHIT_SIZE+SPACING+TEXT_SPACING+SPACING)*6)+20;
 		
 		int maxwidth = 0;
-		for (int n=1;n<=6;n++) {
-			int width = 0;
+		if(structuredLayout) {
+			spacingPerSection = new ArrayList<>();
 			for (String section : sections) {
-				String key = section+n;
-				HashLists<String, GameObject> groups = sectionRowHash.get(key);
-				if (groups!=null) {
-					for (ArrayList<GameObject> group : groups.values()) {
-						width += (SPACING<<1);
-						for (GameObject go : group) {
-							String size = getChitSizeAttribute(go);
-							width += ChitComponent.getDimensionForSize(size).width;
+				int xMax = 0;
+				for (int n=1;n<=6;n++) {
+					String key = section+n;
+					HashLists<String, GameObject> group = sectionRowHash.get(key);
+					if (group!=null) {
+						int sectionWidth = 0;
+						for (String summons : group.keySet()) {
+							sectionWidth += (SPACING<<1);
+							ArrayList<GameObject> goArray = (ArrayList<GameObject>)group.get(summons);
+							for (GameObject go : goArray) {
+								String size = getChitSizeAttribute(go);
+								sectionWidth += ChitComponent.getDimensionForSize(size).width;
+							}
+						}
+						xMax = Math.max(xMax,sectionWidth);
+					}
+				}
+				spacingPerSection.add(xMax);
+				maxwidth += xMax;
+			}
+		}
+		else {
+			for (int n=1;n<=6;n++) {
+				int width = 0;
+				for (String section : sections) {
+					String key = section+n;
+					HashLists<String, GameObject> groups = sectionRowHash.get(key);
+					if (groups!=null) {
+						for (ArrayList<GameObject> group : groups.values()) {
+							width += (SPACING<<1);
+							for (GameObject go : group) {
+								String size = getChitSizeAttribute(go);
+								width += ChitComponent.getDimensionForSize(size).width;
+							}
 						}
 					}
 				}
+				maxwidth = Math.max(width,maxwidth);
 			}
-			maxwidth = Math.max(width,maxwidth);
 		}
 		
 		int nonMdListColumns = ((nonMdList.size()-1)/NON_MD_LIST_COLUMN_LENGTH)+1;
@@ -456,8 +485,18 @@ public class TreasureSetupCardView extends JComponent {
 			}
 			die.setFace(n);
 			die.paintIcon(this,g,10,y-TEXT_SPACING-SPACING+((h-die.getIconHeight())>>1));
-			
+			int sectionNumber = 0;
 			for (String section : sections) {
+				if (structuredLayout) {
+					int xSectionMax = LEFT_BORDER;
+					for (int i=0;i<=sectionNumber-1;i++) {
+						int xSection = spacingPerSection.get(i);
+						xSectionMax+=xSection;
+					}
+					x = Math.max(x, xSectionMax);
+					sectionNumber++;
+				}
+
 				String key = section+n;
 				HashLists<String, GameObject> groups = sectionRowHash.get(key);
 				if (n==1) {
@@ -756,7 +795,7 @@ public class TreasureSetupCardView extends JComponent {
 		ArrayList<String> query = new ArrayList<>();
 		query.add("original_game");
 		loader.getData().doSetup("standard_game",query);
-		TreasureSetupCardView view = new TreasureSetupCardView(loader.getData(),"Bob");
+		TreasureSetupCardView view = new TreasureSetupCardView(loader.getData(),"Bob",true);
 		displayView(new JFrame(),view);
 //		System.exit(0);
 	}

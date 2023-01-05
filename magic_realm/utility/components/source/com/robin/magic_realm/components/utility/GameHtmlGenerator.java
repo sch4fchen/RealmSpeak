@@ -370,17 +370,17 @@ public class GameHtmlGenerator extends HtmlGenerator {
 		if (hostPrefs.getMultiBoardEnabled()) {
 			int count = hostPrefs.getMultiBoardCount();
 			treasureSetupCardView = new TreasureSetupCardView[count];
-			treasureSetupCardView[0] = new TreasureSetupCardView(data,"","!"+Constants.BOARD_NUMBER);
+			treasureSetupCardView[0] = new TreasureSetupCardView(data,"","!"+Constants.BOARD_NUMBER,true);
 			setupCardNames.add("Treasure Setup Card A");
 			for (int n=1;n<count;n++) {
 				String boardNumber = Constants.MULTI_BOARD_APPENDS.substring(n-1,n);
-				treasureSetupCardView[n] = new TreasureSetupCardView(data,"",Constants.BOARD_NUMBER+"="+boardNumber);
+				treasureSetupCardView[n] = new TreasureSetupCardView(data,"",Constants.BOARD_NUMBER+"="+boardNumber,true);
 				setupCardNames.add("Treasure Setup Card "+boardNumber);
 			}
 		}
 		else {
 			treasureSetupCardView = new TreasureSetupCardView[1];
-			treasureSetupCardView[0] = new TreasureSetupCardView(data,"");
+			treasureSetupCardView[0] = new TreasureSetupCardView(data,"",true);
 			setupCardNames.add("Treasure Setup Card");
 		}
 		for (int i=0;i<treasureSetupCardView.length;i++) {

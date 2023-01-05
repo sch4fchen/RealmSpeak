@@ -1394,18 +1394,19 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	public TreasureSetupCardView getTreasureSetupCardView() {
 		TreasureSetupCardView ret = null;
 		if (treasureSetupCardView == null) {
+			boolean setupCardLayout = getMainFrame().getRealmSpeakOptions().getOptions().getBoolean(RealmSpeakOptions.SETUP_CARD_LAYOUT);
 			if (hostPrefs.getMultiBoardEnabled()) {
 				int count = hostPrefs.getMultiBoardCount();
 				treasureSetupCardView = new TreasureSetupCardView[count];
-				treasureSetupCardView[0] = new TreasureSetupCardView(client.getGameData(), client.getClientName(), "!" + Constants.BOARD_NUMBER);
+				treasureSetupCardView[0] = new TreasureSetupCardView(client.getGameData(), client.getClientName(), "!" + Constants.BOARD_NUMBER,setupCardLayout);
 				for (int n = 1; n < count; n++) {
 					String boardNumber = Constants.MULTI_BOARD_APPENDS.substring(n - 1, n);
-					treasureSetupCardView[n] = new TreasureSetupCardView(client.getGameData(), client.getClientName(), Constants.BOARD_NUMBER + "=" + boardNumber);
+					treasureSetupCardView[n] = new TreasureSetupCardView(client.getGameData(), client.getClientName(), Constants.BOARD_NUMBER + "=" + boardNumber,setupCardLayout);
 				}
 			}
 			else {
 				treasureSetupCardView = new TreasureSetupCardView[1];
-				treasureSetupCardView[0] = new TreasureSetupCardView(client.getGameData(), client.getClientName());
+				treasureSetupCardView[0] = new TreasureSetupCardView(client.getGameData(), client.getClientName(),setupCardLayout);
 			}
 		}
 		if (treasureSetupCardView.length > 1) {
