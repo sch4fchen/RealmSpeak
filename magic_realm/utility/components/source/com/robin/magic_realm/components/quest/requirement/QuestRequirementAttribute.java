@@ -130,7 +130,7 @@ public class QuestRequirementAttribute extends QuestRequirement {
 		}
 		else { // inventory and recorded points, but no kills BECAUSE kills are accounted for in the recorded points, and invalid kills will be included in the offset value!
 			current += (int) getRecorded(character, attribute);
-			if (getIncludeInventory()) current += getInventory(character, attribute, earliest);
+			if (getIncludeInventory() || attribute == AttributeType.GreatTreasures) current += getInventory(character, attribute, earliest);
 		}
 
 		return current;
