@@ -33926,46 +33926,46 @@
         <attribute ts_section="" />
       </AttributeBlock>
     </GameObject>
-	<GameObject id="1251" name="Bones W">
+	<GameObject id="1251" name="Bones F">
       <AttributeBlock blockName="this">
         <attribute warning="bones" />
-        <attribute tile_type="W" />
+        <attribute tile_type="F" />
         <attribute super_realm="" />
         <attribute chit="" />
         <attribute ts_section="" />
       </AttributeBlock>
     </GameObject>
-	<GameObject id="1252" name="Dank W">
+	<GameObject id="1252" name="Dank F">
       <AttributeBlock blockName="this">
         <attribute warning="dank" />
-        <attribute tile_type="W" />
+        <attribute tile_type="F" />
         <attribute super_realm="" />
         <attribute chit="" />
         <attribute ts_section="" />
       </AttributeBlock>
     </GameObject>
-	<GameObject id="1253" name="Ruins W">
+	<GameObject id="1253" name="Ruins F">
       <AttributeBlock blockName="this">
         <attribute warning="ruins" />
-        <attribute tile_type="W" />
+        <attribute tile_type="F" />
         <attribute super_realm="" />
         <attribute chit="" />
         <attribute ts_section="" />
       </AttributeBlock>
     </GameObject>
-	<GameObject id="1254" name="Stink W">
+	<GameObject id="1254" name="Stink F">
       <AttributeBlock blockName="this">
         <attribute warning="stink" />
-        <attribute tile_type="W" />
+        <attribute tile_type="F" />
         <attribute super_realm="" />
         <attribute chit="" />
         <attribute ts_section="" />
       </AttributeBlock>
     </GameObject>
-	<GameObject id="1255" name="Smoke W">
+	<GameObject id="1255" name="Smoke F">
       <AttributeBlock blockName="this">
         <attribute warning="smoke" />
-        <attribute tile_type="W" />
+        <attribute tile_type="F" />
         <attribute super_realm="" />
         <attribute chit="" />
         <attribute ts_section="" />
@@ -34494,7 +34494,7 @@
       <Create newPool="ST_TILES" />
       <Extract from="ALL" to="M_TILES" keyVals="tile_type=M,tile" />
 	  <Extract from="ALL" to="C_TILES" keyVals="tile_type=C,tile" />
-	  <Extract from="ALL" to="F_TILES" keyVals="tile_type=H,tile" />
+	  <Extract from="ALL" to="F_TILES" keyVals="tile_type=F,tile" />
 	  <Extract from="ALL" to="R_TILES" keyVals="tile_type=R,tile" />
 	  <Extract from="ALL" to="V_TILES" keyVals="tile_type=V,tile" />
 	  <Extract from="ALL" to="H_TILES" keyVals="tile_type=H,tile" />
@@ -34519,7 +34519,7 @@
 	  <Extract from="ALL" to="CHITS" keyVals="red_special=lost_castle" />
       <Move from="TREASURE_POOL" to="CHITS" count="4" transferType="Random" />
       <Distribute from="CHITS" to="M_TILES" count="5" transferType="Random" />
-	  <Extract from="ALL" to="CHITS" keyVals="warnin,tile_type=C,chit" />
+	  <Extract from="ALL" to="CHITS" keyVals="tile_type=C,chit" />
       <Distribute from="CHITS" to="C_TILES" count="5" transferType="Random" />
 	  <Extract from="ALL" to="CHITS" keyVals="red_special=lost_city" />
       <Move from="TREASURE_POOL" to="CHITS" count="4" transferType="Random" />
