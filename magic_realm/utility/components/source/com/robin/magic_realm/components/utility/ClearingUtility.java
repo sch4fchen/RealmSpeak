@@ -405,7 +405,7 @@ public class ClearingUtility {
 		TileLocation tl = null;
 		if (tile!=null && parent!=null) {
 			String numString = parent.getGameObject().getThisAttribute("clearing");
-			if (numString==null || "0".equals(numString)) {
+			if (numString==null || "0".equals(numString) || tile.getClearing(numString)==null) {
 				tl = new TileLocation(tile);
 			}
 			else {
