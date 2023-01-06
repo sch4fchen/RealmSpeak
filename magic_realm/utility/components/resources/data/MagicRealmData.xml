@@ -34056,7 +34056,6 @@
         <attribute super_realm="" />
         <attribute chit="" />
       </AttributeBlock>
-      <contains id="229" />
     </GameObject>
     <GameObject id="1266" name="Dank C">
       <AttributeBlock blockName="this">
@@ -34121,7 +34120,6 @@
         <attribute super_realm="" />
         <attribute chit="" />
       </AttributeBlock>
-      <contains id="227" />
     </GameObject>
     <GameObject id="1274" name="Smoke C">
       <AttributeBlock blockName="this">
@@ -34156,7 +34154,6 @@
         <attribute super_realm="" />
         <attribute chit="" />
       </AttributeBlock>
-      <contains id="228" />
     </GameObject>
     <GameObject id="1278" name="Stink C">
       <AttributeBlock blockName="this">
