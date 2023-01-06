@@ -34016,6 +34016,172 @@
         <attribute ts_section="" />
       </AttributeBlock>
     </GameObject>
+	<GameObject id="1261" name="Bones V">
+      <AttributeBlock blockName="this">
+        <attribute warning="bones" />
+        <attribute tile_type="V" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+        <attribute ts_section="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1262" name="Bones C">
+      <AttributeBlock blockName="this">
+        <attribute warning="bones" />
+        <attribute tile_type="C" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1263" name="Bones W">
+      <AttributeBlock blockName="this">
+        <attribute warning="bones" />
+        <attribute tile_type="W" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1264" name="Bones M">
+      <AttributeBlock blockName="this">
+        <attribute warning="bones" />
+        <attribute tile_type="M" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1265" name="Dank V">
+      <AttributeBlock blockName="this">
+        <attribute warning="dank" />
+        <attribute tile_type="V" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+      </AttributeBlock>
+      <contains id="229" />
+    </GameObject>
+    <GameObject id="1266" name="Dank C">
+      <AttributeBlock blockName="this">
+        <attribute warning="dank" />
+        <attribute tile_type="C" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1267" name="Dank W">
+      <AttributeBlock blockName="this">
+        <attribute warning="dank" />
+        <attribute tile_type="W" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1268" name="Dank M">
+      <AttributeBlock blockName="this">
+        <attribute warning="dank" />
+        <attribute tile_type="M" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1269" name="Ruins V">
+      <AttributeBlock blockName="this">
+        <attribute warning="ruins" />
+        <attribute tile_type="V" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1270" name="Ruins C">
+      <AttributeBlock blockName="this">
+        <attribute warning="ruins" />
+        <attribute tile_type="C" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1271" name="Ruins W">
+      <AttributeBlock blockName="this">
+        <attribute warning="ruins" />
+        <attribute tile_type="W" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1272" name="Ruins M">
+      <AttributeBlock blockName="this">
+        <attribute warning="ruins" />
+        <attribute tile_type="M" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1273" name="Smoke V">
+      <AttributeBlock blockName="this">
+        <attribute warning="smoke" />
+        <attribute tile_type="V" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+      </AttributeBlock>
+      <contains id="227" />
+    </GameObject>
+    <GameObject id="1274" name="Smoke C">
+      <AttributeBlock blockName="this">
+        <attribute warning="smoke" />
+        <attribute tile_type="C" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1275" name="Smoke W">
+      <AttributeBlock blockName="this">
+        <attribute warning="smoke" />
+        <attribute tile_type="W" />
+        <attribute original_game="" />
+        <attribute chit="" />
+        <attribute alt_monsters1_game="" />
+        <attribute rw_expansion_1="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1276" name="Smoke M">
+      <AttributeBlock blockName="this">
+        <attribute warning="smoke" />
+        <attribute tile_type="M" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1277" name="Stink V">
+      <AttributeBlock blockName="this">
+        <attribute warning="stink" />
+        <attribute tile_type="V" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+      </AttributeBlock>
+      <contains id="228" />
+    </GameObject>
+    <GameObject id="1278" name="Stink C">
+      <AttributeBlock blockName="this">
+        <attribute warning="stink" />
+        <attribute tile_type="C" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1279" name="Stink W">
+      <AttributeBlock blockName="this">
+        <attribute warning="stink" />
+        <attribute tile_type="W" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1280" name="Stink M">
+      <AttributeBlock blockName="this">
+        <attribute warning="stink" />
+        <attribute tile_type="M" />
+        <attribute super_realm="" />
+        <attribute chit="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
@@ -34321,39 +34487,64 @@
 	<GameSetup name="super_realm_setup">
 	  <Alter targetObjectID="401" attribute="tile_type" value="F" />
       <Alter targetObjectID="408" attribute="tile_type" value="R" />
+	  <Create newPool="M_TILES" />
       <Create newPool="C_TILES" />
 	  <Create newPool="F_TILES" />
-	  <Create newPool="H_TILES" />
-	  <Create newPool="M_TILES" />
 	  <Create newPool="R_TILES" />
-      <Create newPool="ST_TILES" />
 	  <Create newPool="V_TILES" />
+	  <Create newPool="H_TILES" />
 	  <Create newPool="W_TILES" />
-      <Extract from="ALL" to="C_TILES" keyVals="tile_type=C,tile" />
+      <Create newPool="ST_TILES" />
+      <Extract from="ALL" to="M_TILES" keyVals="tile_type=M,tile" />
+	  <Extract from="ALL" to="C_TILES" keyVals="tile_type=C,tile" />
 	  <Extract from="ALL" to="F_TILES" keyVals="tile_type=H,tile" />
-	  <Extract from="ALL" to="H_TILES" keyVals="tile_type=H,tile" />
-	  <Extract from="ALL" to="M_TILES" keyVals="tile_type=M,tile" />
 	  <Extract from="ALL" to="R_TILES" keyVals="tile_type=R,tile" />
-      <Extract from="ALL" to="ST_TILES" keyVals="tile_type=ST,tile" />
 	  <Extract from="ALL" to="V_TILES" keyVals="tile_type=V,tile" />
-	  <Extract from="ALL" to="W_TILES" keyVals="tile_type=W,tile" />
+	  <Extract from="ALL" to="H_TILES" keyVals="tile_type=H,tile" />
+	  <Extract from="ALL" to="W_TILES" keyVals="tile_type=W,tile" />	  
+      <Extract from="ALL" to="ST_TILES" keyVals="tile_type=ST,tile" /> 
 	  <Create newPool="TWT" />
       <Extract from="ALL" to="TWT" keyVals="treasure_within_treasure" />
       <Create newPool="LARGE_TREASURES" />
       <Extract from="ALL" to="LARGE_TREASURES" keyVals="treasure=large" />
       <Create newPool="SMALL_TREASURES" />
       <Extract from="ALL" to="SMALL_TREASURES" keyVals="treasure=small" />
+	  <Create newPool="TREASURE_POOL" />
+      <Extract from="ALL" to="TREASURE_POOL" keyVals="sound,chit" />
+      <Extract from="ALL" to="TREASURE_POOL" keyVals="treasure_location" />
+      <Add from="TREASURE_POOL" targetObjectID="1229" count="5" transferType="Random" />
+      <Add from="TREASURE_POOL" targetObjectID="1230" count="5" transferType="Random" />
+	  <Add from="TREASURE_POOL" targetObjectID="1239" count="5" transferType="Random" />
+      <Add from="TREASURE_POOL" targetObjectID="1240" count="5" transferType="Random" />
 	  <Create newPool="CHITS" />
-      <Extract from="ALL" to="CHITS" keyVals="sound,chit" />
-      <Extract from="ALL" to="CHITS" keyVals="treasure_location" />
-      <Distribute from="CHITS" to="C_TILES" count="5" transferType="Random" />
-      <Distribute from="CHITS" to="F_TILES" count="5" transferType="Random" />
-      <Distribute from="CHITS" to="H_TILES" count="5" transferType="Random" />
+	  <Extract from="ALL" to="CHITS" keyVals="tile_type=M,chit" />
       <Distribute from="CHITS" to="M_TILES" count="5" transferType="Random" />
+	  <Extract from="ALL" to="CHITS" keyVals="red_special=lost_castle" />
+      <Move from="TREASURE_POOL" to="CHITS" count="4" transferType="Random" />
+      <Distribute from="CHITS" to="M_TILES" count="5" transferType="Random" />
+	  <Extract from="ALL" to="CHITS" keyVals="warnin,tile_type=C,chit" />
+      <Distribute from="CHITS" to="C_TILES" count="5" transferType="Random" />
+	  <Extract from="ALL" to="CHITS" keyVals="red_special=lost_city" />
+      <Move from="TREASURE_POOL" to="CHITS" count="4" transferType="Random" />
+      <Distribute from="CHITS" to="C_TILES" count="5" transferType="Random" />
+	  <Extract from="ALL" to="CHITS" keyVals="tile_type=F,chit" />
+      <Distribute from="CHITS" to="F_TILES" count="5" transferType="Random" />
+	  <Extract from="ALL" to="CHITS" keyVals="red_special=lost_palace" />
+      <Move from="TREASURE_POOL" to="CHITS" count="4" transferType="Random" />
+      <Distribute from="CHITS" to="F_TILES" count="5" transferType="Random" />
+	  <Extract from="ALL" to="CHITS" keyVals="tile_type=R,chit" />
       <Distribute from="CHITS" to="R_TILES" count="5" transferType="Random" />
-      <Distribute from="CHITS" to="ST_TILES" count="5" transferType="Random" />
+	  <Extract from="ALL" to="CHITS" keyVals="red_special=lost_fortress" />
+      <Move from="TREASURE_POOL" to="CHITS" count="4" transferType="Random" />
+      <Distribute from="CHITS" to="R_TILES" count="5" transferType="Random" />
+	  <Extract from="ALL" to="CHITS" keyVals="tile_type=V,chit" />
       <Distribute from="CHITS" to="V_TILES" count="5" transferType="Random" />
+	  <Extract from="ALL" to="CHITS" keyVals="tile_type=H,chit" />
+      <Distribute from="CHITS" to="H_TILES" count="5" transferType="Random" />
+	  <Extract from="ALL" to="CHITS" keyVals="tile_type=W,chit" />
       <Distribute from="CHITS" to="W_TILES" count="5" transferType="Random" />
+	  <Extract from="ALL" to="CHITS" keyVals="tile_type=ST,chit" />
+      <Distribute from="CHITS" to="ST_TILES" count="5" transferType="Random" />
     </GameSetup>
   </setups>
 </game>

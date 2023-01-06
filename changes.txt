@@ -1,6 +1,5 @@
 ::ROADMAP::
 Super Realm: Setup map: start with falls and build river first
-Super Realm: Place chits according to rules
 Super Realm: Travelers/Missions/Campaigns (incl. for seasons)
 Super Realm (missing graphics): Items incl. Horses, Denizens: Monsters/Natives, Dwellings, Treasures
 Super Realm: Spells, Quests
