@@ -5715,7 +5715,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="gold" />
         <attribute icon_type="dragon_flying" />
@@ -5733,7 +5733,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="gold" />
         <attribute icon_type="dragon" />
@@ -5751,7 +5751,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="gold" />
         <attribute icon_type="demon" />
@@ -5770,7 +5770,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="gold" />
         <attribute icon_type="demon_flying" />
@@ -5790,7 +5790,7 @@
         <attribute chit="" />
         <attribute discovery="" />
         <attribute draw="fatigue_asterisk" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="gold" />
         <attribute icon_type="octopus" />
@@ -5809,7 +5809,7 @@
         <attribute chit="" />
         <attribute discovery="" />
         <attribute needs_open="fatigue_t,key" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="gold" />
         <attribute icon_type="troll" />
@@ -5828,7 +5828,7 @@
         <attribute chit="" />
         <attribute discovery="" />
         <attribute search="fatigue_asterisk" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="gold" />
         <attribute icon_type="spider" />
@@ -5846,7 +5846,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="gold" />
         <attribute icon_type="imp" />
@@ -6026,7 +6026,7 @@
         <attribute dwelling="inn,l_fire" />
         <attribute monster_die="1" />
         <attribute print="" />
-        <attribute ts_section="xnatives" />
+        <attribute ts_section="natives" />
         <attribute ts_size="T" />
         <attribute ts_color="gray" />
         <attribute ts_count="7" />
@@ -6054,7 +6054,7 @@
         <attribute dwelling="house,s_fire" />
         <attribute monster_die="2" />
         <attribute print="" />
-        <attribute ts_section="xnatives" />
+        <attribute ts_section="natives" />
         <attribute ts_size="T" />
         <attribute ts_color="gray" />
         <attribute ts_count="3" />
@@ -6078,7 +6078,7 @@
         <attribute dwelling="inn,chapel,house,guard" />
         <attribute monster_die="3" />
         <attribute print="" />
-        <attribute ts_section="xnatives" />
+        <attribute ts_section="natives" />
         <attribute ts_size="T" />
         <attribute ts_color="gray" />
         <attribute ts_count="3" />
@@ -6102,7 +6102,7 @@
         <attribute dwelling="chapel,l_fire,s_fire" />
         <attribute monster_die="4" />
         <attribute print="" />
-        <attribute ts_section="xnatives" />
+        <attribute ts_section="natives" />
         <attribute ts_size="T" />
         <attribute ts_color="gray" />
         <attribute ts_count="4" />
@@ -6128,7 +6128,7 @@
         <attribute dwelling="l_fire,s_fire" />
         <attribute monster_die="5" />
         <attribute print="" />
-        <attribute ts_section="xnatives" />
+        <attribute ts_section="natives" />
         <attribute ts_size="T" />
         <attribute ts_color="gray" />
         <attribute ts_count="6" />
@@ -6302,7 +6302,7 @@
         <attribute summon="flutter,smoke M" />
         <attribute monster_die="1" />
         <attribute original_game="" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_count="2" />
         <attribute ts_size="H" />
         <attribute ts_color="paleyellow" />
@@ -6319,7 +6319,7 @@
         <attribute monster_die="1" />
         <attribute box_num="1" />
         <attribute original_game="" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_size="H" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="dragon" />
@@ -6334,7 +6334,7 @@
         <attribute monster_die="1" />
         <attribute box_num="2" />
         <attribute original_game="" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_size="T" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="dragon" />
@@ -6348,7 +6348,7 @@
         <attribute summon="dank W" />
         <attribute monster_die="2" />
         <attribute original_game="" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_count="2" />
         <attribute ts_size="M" />
         <attribute ts_color="paleyellow" />
@@ -6365,7 +6365,7 @@
         <attribute monster_die="2" />
         <attribute original_game="" />
         <attribute box_num="1" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_count="2" />
         <attribute ts_size="H" />
         <attribute ts_color="darkgray" />
@@ -6382,7 +6382,7 @@
         <attribute monster_die="2" />
         <attribute original_game="" />
         <attribute box_num="2" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_size="T" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="serpent" />
@@ -6396,7 +6396,7 @@
         <attribute summon="ruins W" />
         <attribute monster_die="3" />
         <attribute original_game="" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_count="6" />
         <attribute ts_size="M" />
         <attribute ts_color="paleyellow" />
@@ -6417,7 +6417,7 @@
         <attribute summon="bones W" />
         <attribute monster_die="3" />
         <attribute original_game="" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_count="2" />
         <attribute ts_size="M" />
         <attribute ts_color="paleyellow" />
@@ -6435,7 +6435,7 @@
         <attribute monster_die="3" />
         <attribute original_game="" />
         <attribute box_num="1" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_count="6" />
         <attribute ts_size="M" />
         <attribute ts_color="darkgray" />
@@ -6456,7 +6456,7 @@
         <attribute monster_die="3" />
         <attribute original_game="" />
         <attribute box_num="2" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_count="6" />
         <attribute ts_size="M" />
         <attribute ts_color="darkgray" />
@@ -6477,7 +6477,7 @@
         <attribute monster_die="3" />
         <attribute original_game="" />
         <attribute box_num="3" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_count="6" />
         <attribute ts_size="M" />
         <attribute ts_color="darkgray" />
@@ -6498,7 +6498,7 @@
         <attribute monster_die="4" />
         <attribute original_game="" />
         <attribute box_num="1" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_size="T" />
         <attribute ts_color="paleyellow" />
         <attribute icon_type="giant" />
@@ -6513,7 +6513,7 @@
         <attribute monster_die="4" />
         <attribute original_game="" />
         <attribute box_num="2" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_size="T" />
         <attribute ts_color="paleyellow" />
         <attribute icon_type="giant" />
@@ -6528,7 +6528,7 @@
         <attribute monster_die="4" />
         <attribute original_game="" />
         <attribute box_num="1" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_count="2" />
         <attribute ts_size="H" />
         <attribute ts_color="darkgray" />
@@ -6545,7 +6545,7 @@
         <attribute monster_die="4" />
         <attribute original_game="" />
         <attribute box_num="2" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_size="T" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="troll" />
@@ -6560,7 +6560,7 @@
         <attribute monster_die="5" />
         <attribute original_game="" />
         <attribute box_num="1" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_size="H" />
         <attribute ts_color="paleyellow" />
         <attribute icon_type="spider" />
@@ -6575,7 +6575,7 @@
         <attribute monster_die="5" />
         <attribute original_game="" />
         <attribute box_num="2" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_size="H" />
         <attribute ts_color="paleyellow" />
         <attribute icon_type="spider" />
@@ -6590,7 +6590,7 @@
         <attribute monster_die="5" />
         <attribute original_game="" />
         <attribute box_num="3" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_size="H" />
         <attribute ts_color="paleyellow" />
         <attribute icon_type="spider" />
@@ -6605,7 +6605,7 @@
         <attribute monster_die="6" />
         <attribute original_game="" />
         <attribute box_num="1" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_size="H" />
         <attribute ts_color="paleyellow" />
         <attribute icon_type="bat" />
@@ -6620,7 +6620,7 @@
         <attribute monster_die="6" />
         <attribute original_game="" />
         <attribute box_num="2" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_count="2" />
         <attribute ts_size="H" />
         <attribute ts_color="paleyellow" />
@@ -6637,7 +6637,7 @@
         <attribute monster_die="6" />
         <attribute original_game="" />
         <attribute box_num="3" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_count="3" />
         <attribute ts_size="H" />
         <attribute ts_color="paleyellow" />
@@ -6653,7 +6653,7 @@
       <AttributeBlock blockName="this">
         <attribute original_game="" />
         <attribute monster_die="6" />
-        <attribute ts_section="xnatives" />
+        <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_draw_below="" />
@@ -6669,7 +6669,7 @@
       <AttributeBlock blockName="this">
         <attribute original_game="" />
         <attribute monster_die="6" />
-        <attribute ts_section="xnatives" />
+        <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_draw_below="" />
@@ -6685,7 +6685,7 @@
       <AttributeBlock blockName="this">
         <attribute original_game="" />
         <attribute monster_die="6" />
-        <attribute ts_section="xnatives" />
+        <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_draw_below="" />
@@ -6701,7 +6701,7 @@
       <AttributeBlock blockName="this">
         <attribute original_game="" />
         <attribute monster_die="6" />
-        <attribute ts_section="xnatives" />
+        <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_draw_below="" />
@@ -6717,7 +6717,7 @@
       <AttributeBlock blockName="this">
         <attribute original_game="" />
         <attribute monster_die="6" />
-        <attribute ts_section="xnatives" />
+        <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_draw_below="" />
@@ -6733,7 +6733,7 @@
       <AttributeBlock blockName="this">
         <attribute original_game="" />
         <attribute monster_die="6" />
-        <attribute ts_section="xnatives" />
+        <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_draw_below="" />
@@ -6750,7 +6750,7 @@
       <AttributeBlock blockName="this">
         <attribute original_game="" />
         <attribute monster_die="6" />
-        <attribute ts_section="xnatives" />
+        <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_draw_below="" />
@@ -20336,7 +20336,7 @@
       <AttributeBlock blockName="this">
         <attribute summon="dank W" />
         <attribute monster_die="1" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_count="2" />
         <attribute ts_size="M" />
         <attribute ts_color="paleyellow" />
@@ -20351,7 +20351,7 @@
       <AttributeBlock blockName="this">
         <attribute summon="smoke M,flutter M" />
         <attribute monster_die="1" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_count="2" />
         <attribute ts_size="H" />
         <attribute ts_color="paleyellow" />
@@ -20367,7 +20367,7 @@
         <attribute summon="smoke C,slither" />
         <attribute monster_die="1" />
         <attribute box_num="1" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_size="H" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="dragon" />
@@ -20381,7 +20381,7 @@
         <attribute summon="smoke C,slither" />
         <attribute monster_die="1" />
         <attribute box_num="2" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_size="T" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="dragon" />
@@ -20395,7 +20395,7 @@
         <attribute summon="smoke C,slither" />
         <attribute monster_die="1" />
         <attribute box_num="3" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_size="T" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="wyrm" />
@@ -20408,7 +20408,7 @@
       <AttributeBlock blockName="this">
         <attribute summon="ruins W,flutter M" />
         <attribute monster_die="2" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_count="2" />
         <attribute ts_size="H" />
         <attribute ts_color="paleyellow" />
@@ -20423,7 +20423,7 @@
       <AttributeBlock blockName="this">
         <attribute summon="stink M,patter M" />
         <attribute monster_die="2" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_count="5" />
         <attribute ts_size="L" />
         <attribute ts_color="paleyellow" />
@@ -20441,7 +20441,7 @@
       <AttributeBlock blockName="this">
         <attribute summon="howl C" />
         <attribute monster_die="2" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_size="T" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="behemoth" />
@@ -20455,7 +20455,7 @@
         <attribute summon="dank C,slither C" />
         <attribute monster_die="2" />
         <attribute box_num="1" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_count="2" />
         <attribute ts_size="H" />
         <attribute ts_color="darkgray" />
@@ -20471,7 +20471,7 @@
         <attribute summon="dank C,slither C" />
         <attribute monster_die="2" />
         <attribute box_num="2" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_size="T" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="serpent" />
@@ -20484,7 +20484,7 @@
       <AttributeBlock blockName="this">
         <attribute summon="ruins W,howl M" />
         <attribute monster_die="3" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_count="6" />
         <attribute ts_size="M" />
         <attribute ts_color="paleyellow" />
@@ -20504,7 +20504,7 @@
       <AttributeBlock blockName="this">
         <attribute summon="roar M" />
         <attribute monster_die="3" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_count="2" />
         <attribute ts_size="H" />
         <attribute ts_color="paleyellow" />
@@ -20520,7 +20520,7 @@
         <attribute summon="ruins C,patter C" />
         <attribute monster_die="3" />
         <attribute box_num="1" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_count="6" />
         <attribute ts_size="M" />
         <attribute ts_color="darkgray" />
@@ -20540,7 +20540,7 @@
         <attribute summon="ruins C,patter C" />
         <attribute monster_die="3" />
         <attribute box_num="2" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_count="6" />
         <attribute ts_size="M" />
         <attribute ts_color="darkgray" />
@@ -20560,7 +20560,7 @@
         <attribute summon="ruins C,patter C" />
         <attribute monster_die="3" />
         <attribute box_num="3" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_count="6" />
         <attribute ts_size="M" />
         <attribute ts_color="darkgray" />
@@ -20579,7 +20579,7 @@
       <AttributeBlock blockName="this">
         <attribute summon="bones W" />
         <attribute monster_die="4" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_count="2" />
         <attribute ts_size="M" />
         <attribute ts_color="paleyellow" />
@@ -20596,7 +20596,7 @@
         <attribute summon="bones M,roar M" />
         <attribute monster_die="4" />
         <attribute box_num="1" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_size="T" />
         <attribute ts_color="paleyellow" />
         <attribute icon_type="giant" />
@@ -20610,7 +20610,7 @@
         <attribute summon="bones M,roar M" />
         <attribute monster_die="4" />
         <attribute box_num="2" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_size="T" />
         <attribute ts_color="paleyellow" />
         <attribute icon_type="giant" />
@@ -20624,7 +20624,7 @@
         <attribute summon="bones M,roar M" />
         <attribute monster_die="4" />
         <attribute box_num="3" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_size="T" />
         <attribute ts_color="paleyellow" />
         <attribute icon_type="frostgiant" />
@@ -20638,7 +20638,7 @@
         <attribute summon="stink C,roar C" />
         <attribute monster_die="4" />
         <attribute box_num="1" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_count="2" />
         <attribute ts_size="H" />
         <attribute ts_color="darkgray" />
@@ -20654,7 +20654,7 @@
         <attribute summon="stink C,roar C" />
         <attribute monster_die="4" />
         <attribute box_num="2" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_size="T" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="troll" />
@@ -20667,7 +20667,7 @@
       <AttributeBlock blockName="this">
         <attribute summon="dank W,flutter C" />
         <attribute monster_die="5" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_count="4" />
         <attribute ts_size="M" />
         <attribute ts_color="paleyellow" />
@@ -20686,7 +20686,7 @@
         <attribute summon="dank M,patter M" />
         <attribute monster_die="5" />
         <attribute box_num="1" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_size="H" />
         <attribute ts_color="paleyellow" />
         <attribute icon_type="spider" />
@@ -20700,7 +20700,7 @@
         <attribute summon="dank M,patter M" />
         <attribute monster_die="5" />
         <attribute box_num="2" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_size="H" />
         <attribute ts_color="paleyellow" />
         <attribute icon_type="spider" />
@@ -20715,7 +20715,7 @@
       <AttributeBlock blockName="this">
         <attribute summon="slither M,patter C" />
         <attribute monster_die="5" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_count="3" />
         <attribute ts_size="M" />
         <attribute ts_color="paleyellow" />
@@ -20733,7 +20733,7 @@
         <attribute summon="bones C,howl C" />
         <attribute monster_die="5" />
         <attribute box_num="1" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_count="4" />
         <attribute ts_size="M" />
         <attribute ts_color="darkgray" />
@@ -20751,7 +20751,7 @@
         <attribute summon="bones C,howl C" />
         <attribute monster_die="5" />
         <attribute box_num="2" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_count="4" />
         <attribute ts_size="M" />
         <attribute ts_color="darkgray" />
@@ -20768,7 +20768,7 @@
       <AttributeBlock blockName="this">
         <attribute summon="bones W,howl M" />
         <attribute monster_die="6" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_count="6" />
         <attribute ts_size="L" />
         <attribute ts_color="paleyellow" />
@@ -20788,7 +20788,7 @@
         <attribute summon="ruins M,flutter C" />
         <attribute monster_die="6" />
         <attribute box_num="1" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_size="H" />
         <attribute ts_color="paleyellow" />
         <attribute icon_type="bat" />
@@ -20802,7 +20802,7 @@
         <attribute summon="ruins M,flutter C" />
         <attribute monster_die="6" />
         <attribute box_num="2" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_count="2" />
         <attribute ts_size="H" />
         <attribute ts_color="paleyellow" />
@@ -20818,7 +20818,7 @@
         <attribute summon="ruins M,flutter C" />
         <attribute monster_die="6" />
         <attribute box_num="3" />
-        <attribute ts_section="castle" />
+        <attribute ts_section="lost castle" />
         <attribute ts_count="3" />
         <attribute ts_size="H" />
         <attribute ts_color="paleyellow" />
@@ -20835,7 +20835,7 @@
         <attribute summon="roar C" />
         <attribute monster_die="6" />
         <attribute box_num="1" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_size="H" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="minotaur" />
@@ -20849,7 +20849,7 @@
         <attribute summon="roar C" />
         <attribute monster_die="6" />
         <attribute box_num="2" />
-        <attribute ts_section="city" />
+        <attribute ts_section="lost city" />
         <attribute ts_size="H" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="minotaur" />
@@ -24614,7 +24614,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="gold" />
         <attribute icon_type="basilisk" />
@@ -24630,7 +24630,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="gold" />
         <attribute icon_type="minotaur" />
@@ -24647,7 +24647,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="gold" />
         <attribute icon_type="harpy" />
@@ -24663,7 +24663,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="gold" />
         <attribute icon_type="spider" />
@@ -24679,7 +24679,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="gold" />
         <attribute icon_type="wasp" />
@@ -24697,7 +24697,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="gold" />
         <attribute icon_type="zombie1" />
@@ -24715,7 +24715,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="gold" />
         <attribute icon_type="blob" />
@@ -25010,7 +25010,7 @@
         <attribute chit="" />
         <attribute print="" />
         <attribute minor_tl="rune" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="orange" />
       </AttributeBlock>
@@ -25021,7 +25021,7 @@
         <attribute chit="" />
         <attribute print="" />
         <attribute minor_tl="box" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="orange" />
       </AttributeBlock>
@@ -25032,7 +25032,7 @@
         <attribute chit="" />
         <attribute print="" />
         <attribute minor_tl="bag" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="orange" />
       </AttributeBlock>
@@ -25043,7 +25043,7 @@
         <attribute chit="" />
         <attribute print="" />
         <attribute minor_tl="stump" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="orange" />
       </AttributeBlock>
@@ -25054,7 +25054,7 @@
         <attribute chit="" />
         <attribute print="" />
         <attribute minor_tl="pouch" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="orange" />
       </AttributeBlock>
@@ -25730,7 +25730,7 @@
         <attribute dwelling="hut,s_fire" />
         <attribute monster_die="1" />
         <attribute print="" />
-        <attribute ts_section="xnatives" />
+        <attribute ts_section="natives" />
         <attribute ts_size="T" />
         <attribute ts_color="gray" />
         <attribute ts_count="6" />
@@ -25758,7 +25758,7 @@
         <attribute dwelling="hut,inn" />
         <attribute monster_die="5" />
         <attribute print="" />
-        <attribute ts_section="xnatives" />
+        <attribute ts_section="natives" />
         <attribute ts_size="T" />
         <attribute ts_color="gray" />
         <attribute ts_count="6" />
@@ -33542,7 +33542,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="red" />
         <attribute icon_type="dragon_flying" />
@@ -33558,7 +33558,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="red" />
         <attribute icon_type="dragon" />
@@ -33574,7 +33574,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="green" />
         <attribute icon_type="demon" />
@@ -33591,7 +33591,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="green" />
         <attribute icon_type="demon_flying" />
@@ -33609,7 +33609,7 @@
         <attribute chit="" />
         <attribute discovery="" />
         <attribute draw="fatigue_asterisk" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="blue" />
         <attribute icon_type="octopus" />
@@ -33626,7 +33626,7 @@
         <attribute chit="" />
         <attribute discovery="" />
         <attribute needs_open="fatigue_t,key" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="troll" />
@@ -33643,7 +33643,7 @@
         <attribute chit="" />
         <attribute discovery="" />
         <attribute search="fatigue_asterisk" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="purple" />
         <attribute icon_type="spider" />
@@ -33659,7 +33659,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="purple" />
         <attribute icon_type="imp" />
@@ -33694,7 +33694,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="green" />
         <attribute icon_type="swampthing" />
@@ -33710,7 +33710,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="brown" />
         <attribute icon_type="zombie1" />
@@ -33727,7 +33727,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="blue" />
         <attribute icon_type="troll" />
@@ -33744,7 +33744,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="purple" />
         <attribute icon_type="troll" />
@@ -33761,7 +33761,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="red" />
         <attribute icon_type="octopus" />
@@ -33777,7 +33777,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="brown" />
         <attribute icon_type="carnoplant" />
@@ -33795,7 +33795,7 @@
         <attribute chit="" />
         <attribute discovery="" />
         <attribute search="fatigue_asterisk" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="skullsword" />
@@ -33811,7 +33811,7 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute ts_section="treasure" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="brown" />
         <attribute icon_type="minotaur" />
