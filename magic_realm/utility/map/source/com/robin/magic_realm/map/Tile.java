@@ -326,7 +326,6 @@ public class Tile {
 		// Setup the position
 		tile.setMapPosition(pos);
 		tile.setRotation(rot);
-		
 		// First test the join
 		boolean joinError = false;
 		boolean riverConnected = false;
