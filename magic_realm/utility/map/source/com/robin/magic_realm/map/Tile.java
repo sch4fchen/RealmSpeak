@@ -386,14 +386,19 @@ public class Tile {
 		}
 		String edgeName = getEdgeName(edge);
 		ArrayList<String> pathsTypes = new ArrayList<>();
+		int i=1;
 		Hashtable attributes = gameObject.getAttributeBlock(sideName);
-		for (int i=0;i<=9;i++) {
+		while (true) {
 			if (attributes.get("path_"+i+"_type")!=null) {
 				String from = (String)attributes.get("path_"+i+"_from");
 				String to = (String)attributes.get("path_"+i+"_to");
 				if (from.matches(edgeName) || to.matches(edgeName)) {
 					pathsTypes.add((String)attributes.get("path_"+i+"_type"));
 				}
+				i++;
+			}
+			else {
+				break;
 			}
 		}
 		return pathsTypes;
@@ -409,7 +414,7 @@ public class Tile {
 		}
 		ArrayList<String> clearingTypes = new ArrayList<>();
 		Hashtable attributes = gameObject.getAttributeBlock(sideName);
-		for (int i=0;i<=9;i++) {
+		for (int i=1;i<=9;i++) {
 			if (attributes.get("clearing_"+i+"_type")!=null) {
 				clearingTypes.add((String)attributes.get("clearing_"+i+"_type"));
 			}
