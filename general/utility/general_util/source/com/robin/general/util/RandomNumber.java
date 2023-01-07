@@ -50,8 +50,8 @@ public class RandomNumber {
 		switch(currentRandomNumberType) {
 			case R250_521:			return new R250_521(seed);
 			case MersenneTwister:	return new MersenneTwister(seed);
+			default: 				return new JavaRandom(seed);
 		}
-		return new JavaRandom(seed);
 	}
 	
 	// STATIC METHODS

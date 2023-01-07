@@ -34133,10 +34133,8 @@
       <AttributeBlock blockName="this">
         <attribute warning="smoke" />
         <attribute tile_type="W" />
-        <attribute original_game="" />
+        <attribute super_realm="" />
         <attribute chit="" />
-        <attribute alt_monsters1_game="" />
-        <attribute rw_expansion_1="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1276" name="Smoke M">

@@ -886,6 +886,11 @@ public class SetupCardUtility {
 			keyVals.add("chit");
 			GamePool pool = new GamePool(data.getGameObjects());
 			Collection<GameObject> warningChits = pool.find(keyVals);
+			keyVals.clear();
+			keyVals.add("warning");
+			keyVals.add("tile_type=H");
+			keyVals.add("chit");
+			warningChits.addAll(pool.find(keyVals));
 			for (GameObject warningChit : warningChits) {
 				WarningChitComponent wc = (WarningChitComponent)RealmComponent.getRealmComponent(warningChit);
 				wc.setFaceUp();

@@ -1,8 +1,8 @@
 ::ROADMAP::
-Super Realm: Setup map: start with falls and build river first
+Super Realm: Dwellings, Denizens: Monsters/Natives, Items incl. Horses, Treasures
 Super Realm: Travelers/Missions/Campaigns (incl. for seasons)
-Super Realm (missing graphics): Items incl. Horses, Denizens: Monsters/Natives, Dwellings, Treasures
 Super Realm: Spells, Quests
+Super Realm: Setup map: start with falls and build river first
 
 Version 1.1.7.3
 NEW FEATURES:
