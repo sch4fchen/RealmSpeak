@@ -32415,6 +32415,9 @@
         <attribute path_10_from="clearing_1" />
         <attribute path_10_to="S" />
         <attribute path_10_type="river" />
+		<attribute path_11_from="clearing_1" />
+        <attribute path_11_to="clearing_6" />
+        <attribute path_11_type="normal" />
       </AttributeBlock>
       <AttributeBlock blockName="enchanted">
         <attribute offroad_xy="70.7,85.5" />

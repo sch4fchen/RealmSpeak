@@ -79,12 +79,10 @@ public class MapBuilder {
 			ArrayList<ArrayList<TileMappingPossibility>> allTileResults = new ArrayList<>();
 			ArrayList<ArrayList<TileMappingPossibility>> tileResultsPrio1 = new ArrayList<>();
 			ArrayList<ArrayList<TileMappingPossibility>> tileResultsPrio2 = new ArrayList<>();
-			for (Tile tile : tiles) {		
+			for (Tile tile : tiles) {
 				// Only use unmapped tiles
 				if (!mapGrid.contains(tile)) {
-					ArrayList<TileMappingPossibility> tileResults = new ArrayList<>();
-
-					
+					ArrayList<TileMappingPossibility> tileResults = new ArrayList<>();					
 					// Try the tile in every available position
 					for (Point pos : availableMapPositions) {						
 						// Try every rotation
@@ -109,7 +107,6 @@ public class MapBuilder {
 					}
 				}
 			}
-			
 			if (allTileResults.size()>0 || tileResultsPrio1.size()>0 || tileResultsPrio2.size()>0) {
 				// First, pick a random tile result set
 				ArrayList<TileMappingPossibility> tileResults = null;

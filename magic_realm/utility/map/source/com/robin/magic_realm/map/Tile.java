@@ -329,6 +329,7 @@ public class Tile {
 		
 		// First test the join
 		boolean joinError = false;
+		boolean riverConnected = false;
 		for (int edge=0;edge<6;edge++) {
 			Tile adjTile = (Tile)mapGrid.get(Tile.getAdjacentPosition(pos,edge));
 			// Only need to test joins where there is a tile
@@ -341,10 +342,14 @@ public class Tile {
 				if ((pathsTypes.contains("river") && !adjTilePathsTypes.contains("river")) || (adjTilePathsTypes.contains("river") && !pathsTypes.contains("river"))) {
 					return false;
 				}
-				if (autoBuildRiver & pathsTypes.contains("river") && !adjTilePathsTypes.contains("river")) return false;
+				if (autoBuildRiver && pathsTypes.contains("river") && adjTilePathsTypes.contains("river")) {
+					riverConnected = true;
+				}
 			}
 		}
-		
+		if (autoBuildRiver && !riverConnected && tile.hasRiverPaths(tile.side)) {
+			return false;
+		}
 		boolean allConnect = true;
 		boolean anyConnect = false;
 		for (int i=0;i<6;i++) {
@@ -420,6 +425,31 @@ public class Tile {
 			}
 		}
 		return clearingTypes;
+	}
+	
+	public boolean hasRiverPaths(int side) {
+		String sideName; 
+		if (side == 0) {
+			sideName = "normal";
+		}
+		else {
+			sideName = "enchanted";
+		}
+		int i=1;
+		Hashtable attributes = gameObject.getAttributeBlock(sideName);
+		while (true) {
+			if (attributes.get("path_"+i+"_type")!=null) {
+				String path = (String)attributes.get("path_"+i+"_type");
+				i++;
+				if (path.matches("river")) {
+					return true;
+				}
+			}
+			else {
+				break;
+			}
+		}
+		return false;
 	}
 	
 	/**
