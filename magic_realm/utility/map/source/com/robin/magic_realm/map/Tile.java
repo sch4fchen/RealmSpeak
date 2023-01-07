@@ -23,6 +23,7 @@ import java.util.*;
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
+import com.robin.magic_realm.components.utility.Constants;
 
 public class Tile {
 	public static boolean debug = false;
@@ -319,6 +320,9 @@ public class Tile {
 	 * @return		true if the Tile object will fit at the specified location and rotation.
 	 */
 	public static boolean isMappingPossibility(Hashtable mapGrid,Tile tile,Point pos,int rot,String anchorTilename) {
+		return isMappingPossibility(mapGrid,tile,pos,rot,anchorTilename,false);
+	}
+	public static boolean isMappingPossibility(Hashtable mapGrid,Tile tile,Point pos,int rot,String anchorTilename,boolean autoBuildRiver) {
 		// Setup the position
 		tile.setMapPosition(pos);
 		tile.setRotation(rot);
@@ -336,13 +340,13 @@ public class Tile {
 				ArrayList<String> adjTilePathsTypes = adjTile.getPathTypes(adjTile.side,(edge+9-adjTile.getRotation())%6);
 				if ((pathsTypes.contains("river") && !adjTilePathsTypes.contains("river")) || (adjTilePathsTypes.contains("river") && !pathsTypes.contains("river"))) {
 					return false;
-				}	
+				}
+				if (autoBuildRiver & pathsTypes.contains("river") && !adjTilePathsTypes.contains("river")) return false;
 			}
 		}
 		
 		boolean allConnect = true;
 		boolean anyConnect = false;
-		
 		for (int i=0;i<6;i++) {
 			if (tile.connectsToTilename(mapGrid,"clearing_"+(i+1),anchorTilename)) {
 				anyConnect = true;
@@ -382,28 +386,44 @@ public class Tile {
 		}
 		String edgeName = getEdgeName(edge);
 		ArrayList<String> pathsTypes = new ArrayList<>();
-		int i=1;
 		Hashtable attributes = gameObject.getAttributeBlock(sideName);
-		while (true) {
+		for (int i=0;i<=9;i++) {
 			if (attributes.get("path_"+i+"_type")!=null) {
 				String from = (String)attributes.get("path_"+i+"_from");
 				String to = (String)attributes.get("path_"+i+"_to");
 				if (from.matches(edgeName) || to.matches(edgeName)) {
 					pathsTypes.add((String)attributes.get("path_"+i+"_type"));
 				}
-				i++;
-			}
-			else {
-				break;
 			}
 		}
 		return pathsTypes;
+	}
+	
+	public ArrayList<String> getClearingTypes(int side) {
+		String sideName; 
+		if (side == 0) {
+			sideName = "normal";
+		}
+		else {
+			sideName = "enchanted";
+		}
+		ArrayList<String> clearingTypes = new ArrayList<>();
+		Hashtable attributes = gameObject.getAttributeBlock(sideName);
+		for (int i=0;i<=9;i++) {
+			if (attributes.get("clearing_"+i+"_type")!=null) {
+				clearingTypes.add((String)attributes.get("clearing_"+i+"_type"));
+			}
+		}
+		return clearingTypes;
 	}
 	
 	/**
 	 * @return		A Collection of Point objects that reference possible map placements
 	 */
 	public static ArrayList<Point> findAvailableMapPositions(Hashtable<Point, Tile> mapGrid) {
+		return findAvailableMapPositions(mapGrid,false);
+	}
+	public static ArrayList<Point> findAvailableMapPositions(Hashtable<Point, Tile> mapGrid, boolean autoBuildRiver) {
 		ArrayList<Point> availableMapPositions = new ArrayList<>();
 		for (Tile tile : mapGrid.values()) {
 			Point pos = tile.getMapPosition();
@@ -426,7 +446,7 @@ public class Tile {
 								}
 							}
 							// only places adjacent to two tiles (unless only one tile on map)
-							if (mapGrid.size()==1 || adjCount>1) {
+							if (mapGrid.size()==1 || adjCount>1 || (autoBuildRiver && tile.getGameObject().hasThisAttribute(Constants.MAP_BUILDING_PRIO))) {
 								availableMapPositions.add(adjPos);
 							}
 						}

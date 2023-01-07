@@ -51,6 +51,7 @@ public class MapBuilder {
 		return autoBuildMap(data,keyVals,null);
 	}
 	public static boolean autoBuildMap(GameData data,Collection keyVals,MapProgressReportable reporter) {
+		boolean autoBuildRiver = true;
 		ArrayList<Tile> tiles = startTileList(data,keyVals);
 		
 		// Find the Borderland tile, and start it at position 0,0 with a random rotation
@@ -72,35 +73,53 @@ public class MapBuilder {
 			// First, identify all connectable map placement locations
 			//		- Have paths leading to them
 			//		- Adjacent to at least two tiles (unless only one tile on map)
-			ArrayList<Point> availableMapPositions = Tile.findAvailableMapPositions(mapGrid);
+			ArrayList<Point> availableMapPositions = Tile.findAvailableMapPositions(mapGrid,autoBuildRiver);
 			
 			// Cycle through every available (unplaced) tile
 			ArrayList<ArrayList<TileMappingPossibility>> allTileResults = new ArrayList<>();
+			ArrayList<ArrayList<TileMappingPossibility>> tileResultsPrio1 = new ArrayList<>();
+			ArrayList<ArrayList<TileMappingPossibility>> tileResultsPrio2 = new ArrayList<>();
 			for (Tile tile : tiles) {		
 				// Only use unmapped tiles
 				if (!mapGrid.contains(tile)) {
 					ArrayList<TileMappingPossibility> tileResults = new ArrayList<>();
+
 					
 					// Try the tile in every available position
 					for (Point pos : availableMapPositions) {						
 						// Try every rotation
 						for (int rot=0;rot<6;rot++) {
 							// Test the tile at pos, with rotation rot
-							if (Tile.isMappingPossibility(mapGrid,tile,pos,rot,anchor.getGameObject().getName())) {
+							if (Tile.isMappingPossibility(mapGrid,tile,pos,rot,anchor.getGameObject().getName(),autoBuildRiver)) {
 								tileResults.add(new TileMappingPossibility(tile,pos,rot));
 							}
 						}
 					}
 					if (tileResults.size()>0) {
 						// Adding the tile results in by tile prevents unfair weighting per tile
-						allTileResults.add(tileResults);
+						if (tile.getGameObject().hasThisAttribute(Constants.MAP_BUILDING_PRIO)) {
+							if (tile.getGameObject().getThisAttribute(Constants.MAP_BUILDING_PRIO).matches("1")) {
+								tileResultsPrio1.add(tileResults);
+							} else {
+								tileResultsPrio2.add(tileResults);
+							}
+						} else {
+							allTileResults.add(tileResults);
+						}
 					}
 				}
 			}
 			
-			if (allTileResults.size()>0) {
+			if (allTileResults.size()>0 || tileResultsPrio1.size()>0 || tileResultsPrio2.size()>0) {
 				// First, pick a random tile result set
-				ArrayList<TileMappingPossibility> tileResults = allTileResults.get(RandomNumber.getRandom(allTileResults.size()));
+				ArrayList<TileMappingPossibility> tileResults = null;
+				if (tileResultsPrio1.size()>0) {
+					tileResults = tileResultsPrio1.get(RandomNumber.getRandom(tileResultsPrio1.size()));
+				} else if (tileResultsPrio2.size()>0) {
+					tileResults = tileResultsPrio2.get(RandomNumber.getRandom(tileResultsPrio2.size()));
+				} else {
+					tileResults = allTileResults.get(RandomNumber.getRandom(allTileResults.size()));
+				}
 				
 				// Then pick a random MappingResult from the set for this tile
 				TileMappingPossibility tmp = tileResults.get(RandomNumber.getRandom(tileResults.size()));

@@ -33700,8 +33700,8 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="green" />
-        <attribute icon_type="swampthing" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="serpent" />
+        <attribute icon_folder="monsters" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1232" name="Temple">
@@ -33767,8 +33767,8 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="red" />
-        <attribute icon_type="octopus" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="scorpion" />
+        <attribute icon_folder="monsters1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1236" name="Garden">
@@ -34486,6 +34486,14 @@
 	  <Alter targetObjectID="401" attribute="tile_type" value="F" />
       <Alter targetObjectID="408" attribute="tile_type" value="R" />
 	  <Alter targetObjectID="406" attribute="anchor_tile" value="REMOVE" />
+	  <Alter targetObjectID="1183" attribute="map_building_prio" value="1" />
+	  <Alter targetObjectID="1198" attribute="map_building_prio" value="1" />
+	  <Alter targetObjectID="1192" attribute="map_building_prio" value="1" />
+	  <Alter targetObjectID="1193" attribute="map_building_prio" value="1" />
+	  <Alter targetObjectID="1194" attribute="map_building_prio" value="1" />
+	  <Alter targetObjectID="1195" attribute="map_building_prio" value="1" />
+	  <Alter targetObjectID="1196" attribute="map_building_prio" value="1" />
+	  <Alter targetObjectID="1181" attribute="map_building_prio" value="2" />
 	  <Create newPool="M_TILES" />
       <Create newPool="C_TILES" />
 	  <Create newPool="F_TILES" />

@@ -2,7 +2,6 @@
 Super Realm: Dwellings, Denizens: Monsters/Natives, Items incl. Horses, Treasures
 Super Realm: Travelers/Missions/Campaigns (incl. for seasons)
 Super Realm: Spells, Quests
-Super Realm: Setup map: build river first
 
 Version 1.1.7.3
 NEW FEATURES:

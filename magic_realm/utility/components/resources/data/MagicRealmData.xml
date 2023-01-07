@@ -10342,6 +10342,7 @@
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
 		<attribute super_realm="" />
+		<attribute anchor_tile="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="71.5,89.2" />
@@ -28853,6 +28854,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles_alternative" />
         <attribute rw_expansion_1="" />
+		<attribute anchor_tile="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="10.8,48.9" />
@@ -32362,6 +32364,7 @@
         <attribute folder="sr_tiles_legendary" />
         <attribute stile="" />
 		<attribute water_source_clearing="1" />
+		<attribute anchor_tile="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="69.5,88.3" />
@@ -33697,8 +33700,8 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="green" />
-        <attribute icon_type="swampthing" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="serpent" />
+        <attribute icon_folder="monsters" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1232" name="Temple">
@@ -33764,8 +33767,8 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="red" />
-        <attribute icon_type="octopus" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="scorpion" />
+        <attribute icon_folder="monsters1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1236" name="Garden">
@@ -34482,6 +34485,15 @@
 	<GameSetup name="super_realm_setup">
 	  <Alter targetObjectID="401" attribute="tile_type" value="F" />
       <Alter targetObjectID="408" attribute="tile_type" value="R" />
+	  <Alter targetObjectID="406" attribute="anchor_tile" value="REMOVE" />
+	  <Alter targetObjectID="1183" attribute="map_building_prio" value="1" />
+	  <Alter targetObjectID="1198" attribute="map_building_prio" value="1" />
+	  <Alter targetObjectID="1192" attribute="map_building_prio" value="1" />
+	  <Alter targetObjectID="1193" attribute="map_building_prio" value="1" />
+	  <Alter targetObjectID="1194" attribute="map_building_prio" value="1" />
+	  <Alter targetObjectID="1195" attribute="map_building_prio" value="1" />
+	  <Alter targetObjectID="1196" attribute="map_building_prio" value="1" />
+	  <Alter targetObjectID="1181" attribute="map_building_prio" value="2" />
 	  <Create newPool="M_TILES" />
       <Create newPool="C_TILES" />
 	  <Create newPool="F_TILES" />
