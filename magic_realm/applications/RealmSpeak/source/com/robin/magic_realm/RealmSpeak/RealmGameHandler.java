@@ -735,7 +735,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				tile.removeAttribute("mapGrid", "mapPosition");
 				tile.removeAttribute("mapGrid", "mapRotation");
 
-				if (tile.getName().equals("Borderland") && !tile.hasThisAttribute(Constants.BOARD_NUMBER)) {
+				if (tile.hasThisAttribute(Constants.ANCHOR_TILE) && !tile.hasThisAttribute(Constants.BOARD_NUMBER)) {
 					game.setGameMapBuilder(playerName);
 				}
 				tile.setThisAttribute(Constants.PLAYER_TO_PLACE, playerName);

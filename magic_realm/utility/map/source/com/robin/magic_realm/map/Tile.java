@@ -25,8 +25,6 @@ import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 
 public class Tile {
-	public static final String ANCHOR_TILENAME = "Borderland";
-	
 	public static boolean debug = false;
 	
 	//										0  1  2  3  4  5  
@@ -320,7 +318,7 @@ public class Tile {
 	 * 
 	 * @return		true if the Tile object will fit at the specified location and rotation.
 	 */
-	public static boolean isMappingPossibility(Hashtable mapGrid,Tile tile,Point pos,int rot) {
+	public static boolean isMappingPossibility(Hashtable mapGrid,Tile tile,Point pos,int rot,String anchorTilename) {
 		// Setup the position
 		tile.setMapPosition(pos);
 		tile.setRotation(rot);
@@ -346,7 +344,7 @@ public class Tile {
 		boolean anyConnect = false;
 		
 		for (int i=0;i<6;i++) {
-			if (tile.connectsToTilename(mapGrid,"clearing_"+(i+1),ANCHOR_TILENAME)) {
+			if (tile.connectsToTilename(mapGrid,"clearing_"+(i+1),anchorTilename)) {
 				anyConnect = true;
 			}
 			else {
@@ -354,8 +352,7 @@ public class Tile {
 			}
 		}
 		
-		// Now, if the tile has 6-clearings, check to be sure the paths
-		// lead back to the borderland tile.
+		// Now, if the tile has 6-clearings, check to be sure the paths lead back to the borderland tile.
 		if (tile.getClearingCount()==6) {
 			// I think I only need to check clearings 2 and 6 (or something like that)
 			if (!allConnect) {

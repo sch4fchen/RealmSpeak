@@ -60,9 +60,16 @@ public class ClearingUtility {
 	}
 	
 	public static void markBorderlandConnectedClearings(HostPrefWrapper hostPrefs,GameData gameData) {
+		String anchorTileName = "Borderland";
 		ArrayList<GameObject> tiles = RealmObjectMaster.getRealmObjectMaster(gameData).getTileObjects();
 		Collection<String> keyVals = GamePool.makeKeyVals(hostPrefs.getGameKeyVals());
 		Hashtable<Point, Tile> mapGrid = Tile.readMap(gameData,keyVals);
+		for(GameObject tile:tiles) {
+			if (tile.hasThisAttribute(Constants.ANCHOR_TILE)) {
+				anchorTileName = tile.getName();
+				break;
+			}
+		}
 		for(GameObject tile:tiles) {
 			if (tile.getHoldCount()==0) continue;
 			TileComponent tileRc = (TileComponent)RealmComponent.getRealmComponent(tile);
@@ -75,7 +82,7 @@ public class ClearingUtility {
 			for (int i=1;i<=6;i++) {
 				ClearingDetail clearing = tileRc.getClearing(i);
 				if (clearing==null) continue;
-				if (!tilePlaced || mapTile.connectsToTilename(mapGrid,"clearing_"+i,"Borderland")) {
+				if (!tilePlaced || mapTile.connectsToTilename(mapGrid,"clearing_"+i,anchorTileName)) {
 					clearing.setConnectsToBorderland(true);
 				}
 				else {

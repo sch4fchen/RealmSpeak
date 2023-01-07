@@ -297,9 +297,6 @@ public class TileComponent extends ChitComponent {
 	protected void initFilepath(int side) {
 		String folder = gameObject.getThisAttribute("folder");
 		String imageName = gameObject.getThisAttribute("image");
-		// if (imageName.equals("borderland")) {
-		// imageName = "ambush"; // XXX Just to see it ...
-		// }
 		String imageEnd = side == NORMAL_INDEX ? "1" : "-e1";
 		String ext = ".gif";
 		String folderPath = "images/"+folder;

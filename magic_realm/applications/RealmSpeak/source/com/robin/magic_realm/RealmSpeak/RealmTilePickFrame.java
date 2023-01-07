@@ -201,7 +201,7 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 	private int getBorderLandIndex() {
 		for (int i=0;i<tilesToAdd.size();i++) {
 			GameObject go = tilesToAdd.get(i);
-			if ("Borderland".equals(go.getName()) && !go.hasThisAttribute(Constants.BOARD_NUMBER)) {
+			if (go.hasThisAttribute(Constants.ANCHOR_TILE) && !go.hasThisAttribute(Constants.BOARD_NUMBER)) {
 				return i;
 			}
 		}
@@ -285,7 +285,7 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 					map.setTileBeingPlaced(this,getSelectedTile());
 				}
 				else {
-					instruction.setText("You must select the Borderland tile");
+					instruction.setText("You must select the starting tile (Borderland or Falls)");
 				}
 			}
 		}

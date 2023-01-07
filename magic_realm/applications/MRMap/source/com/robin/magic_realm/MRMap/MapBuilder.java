@@ -22,6 +22,7 @@ import java.util.*;
 
 import com.robin.game.objects.*;
 import com.robin.general.util.RandomNumber;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmLoader;
 import com.robin.magic_realm.components.utility.RealmObjectMaster;
 import com.robin.magic_realm.map.Tile;
@@ -36,14 +37,14 @@ public class MapBuilder {
 		}
 		return tiles;
 	}
-	public static Tile findBorderland(Collection<Tile> tiles) {
+	public static Tile findAnchorTile(Collection<Tile> tiles) {
 		// Find the Borderland tile, and start it at position 0,0 with a random rotation
 		for (Tile tile : tiles) {
-			if (tile.getGameObject().getName().equals("Borderland")) {
+			if (tile.getGameObject().hasThisAttribute(Constants.ANCHOR_TILE)) {
 				return tile;
 			}
 		}
-		throw new IllegalStateException("Borderland is missing from tiles!!");
+		throw new IllegalStateException("Borderland or other staring tile is missing from tiles!!");
 	}
 
 	public static boolean autoBuildMap(GameData data,Collection keyVals) {
@@ -54,10 +55,10 @@ public class MapBuilder {
 		
 		// Find the Borderland tile, and start it at position 0,0 with a random rotation
 		Hashtable<Point, Tile> mapGrid = new Hashtable<>();
-		Tile borderland = findBorderland(tiles);
-		mapGrid.put(new Point(0,0),borderland);
-		borderland.setMapPosition(new Point(0,0));
-		borderland.setRotation(RandomNumber.getRandom(6));
+		Tile anchor = findAnchorTile(tiles);
+		mapGrid.put(new Point(0,0),anchor);
+		anchor.setMapPosition(new Point(0,0));
+		anchor.setRotation(RandomNumber.getRandom(6));
 		
 		if (reporter!=null) {
 			reporter.setProgress(1,tiles.size());
@@ -85,7 +86,7 @@ public class MapBuilder {
 						// Try every rotation
 						for (int rot=0;rot<6;rot++) {
 							// Test the tile at pos, with rotation rot
-							if (Tile.isMappingPossibility(mapGrid,tile,pos,rot)) {
+							if (Tile.isMappingPossibility(mapGrid,tile,pos,rot,anchor.getGameObject().getName())) {
 								tileResults.add(new TileMappingPossibility(tile,pos,rot));
 							}
 						}
@@ -118,7 +119,7 @@ public class MapBuilder {
 					 * confusing if someone were to try to debug this code (How many friggen Borderlands are there!!) but
 					 * I'm guessing that will never happen.  Famous last words....?
 					 */
-					tile.changeName(Tile.ANCHOR_TILENAME);
+					tile.changeName(anchor.getGameObject().getName());
 				}
 				Point pos = tmp.getPosition();
 				int rot = tmp.getRotation();

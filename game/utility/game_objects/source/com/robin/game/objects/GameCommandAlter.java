@@ -42,6 +42,10 @@ public class GameCommandAlter extends GameCommand {
 			}
 		}
 		if (targetObjectToAlter==null) return "Alter: Object not found!";
+		if (getValue().matches("REMOVE")) {
+			targetObjectToAlter.removeThisAttribute(getAttribute());
+			return "Altered:  "+targetObjectToAlter+":  "+getAttribute()+" was removed";
+		}
 		targetObjectToAlter.setThisAttribute(getAttribute(),getValue());
 		return "Altered:  "+targetObjectToAlter+":  "+getAttribute()+": "+getValue();
 	}

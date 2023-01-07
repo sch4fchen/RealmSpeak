@@ -24,6 +24,7 @@ public class Constants {
 	public static final String ALT_MONSTERS1_GAME = "alt_monsters1_game";
 	public static final String MULTI_BOARD_APPENDS = "BCDEFGHIJKLMNOP"; // WAY more than enough
 	public static final String SETUP = "setup"; // identifies the original object that contained this item at the beginning of the game.
+	public static final String ANCHOR_TILE = "anchor_tile";
 	public static final String DATA_NAME_COMBAT_FRAME = "CombatFrame";
 	
 	public static final Font HOTSPOT_FONT = new Font("Dialog",Font.BOLD|Font.ITALIC,12);

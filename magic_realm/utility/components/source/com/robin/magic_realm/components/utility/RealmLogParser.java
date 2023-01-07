@@ -30,9 +30,6 @@ public class RealmLogParser {
 		lines = StringUtilities.stringToCollection(detailLog,"\n");
 	}
 	public String getLogFor(int month,int day) {
-//<br><b>RealmSpeak</b> - ========================================
-//<br><b>RealmSpeak</b> - Month 1, Day 5
-//<br><b>RealmSpeak</b> - ========================================
 		return "";
 	}
 	public String getBattleLogFor(int month,int day) {
@@ -52,16 +49,6 @@ public class RealmLogParser {
 			return StringUtilities.collectionToString(lines.subList(roundStart,lines.size()-1),"\n");
 		}
 		return StringUtilities.collectionToString(lines.subList(logStart,lines.size()-1),"\n");
-//<br><font color="red"><b>RealmBattle</b></font> - =======================
-//<br><font color="red"><b>RealmBattle</b></font> - Evening of month 1, day 5, in clearing Borderland 3
-//<br><font color="red"><b>RealmBattle</b></font> - -----------------------
-//<br><font color="red"><b>RealmBattle</b></font> - --  Combat Round 1
-//<br><font color="red"><b>RealmBattle</b></font> - -----------------------
-//...........
-//<br><font color="red"><b>RealmBattle</b></font> - -----------------------
-//<br><font color="red"><b>RealmBattle</b></font> - --  Combat Round 2
-//<br><font color="red"><b>RealmBattle</b></font> - -----------------------
-//		throw new NotImplementedException();
 	}
 	private int getLineNumberFor(String pattern) {
 		return getLineNumberFor(pattern,0);

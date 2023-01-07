@@ -1809,7 +1809,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					list.add("block       - Block yourself");
 					list.add("doom        - Two enemy undead are raised");
 					list.add("path        - Show the entire character path (can be long)");
-					list.add("remark      - Remark all clearing connections to the Borderland");
+					list.add("remark      - Remark all clearing connections to the starting tile, default: Borderland");
 					list.add("pinkslip    - Force all your hirelings to have only 1 day left on their term");
 					list.add("niceXXXX    - Increase friendliness by one level with stated native group (lowercase)");
 					list.add("meanXXXX    - Decrease friendliness by one level with stated native group (lowercase)");

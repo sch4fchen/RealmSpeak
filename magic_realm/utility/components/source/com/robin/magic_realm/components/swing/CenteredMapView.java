@@ -134,6 +134,7 @@ public class CenteredMapView extends JComponent {
 	private ArrayList<ActionListener> actionListeners = null;
 	
 	private boolean mapReady = false;
+	private String anchorTileName = "Borderland";
 	
 	private TileComponent tileBeingPlaced = null;
 	private ChangeListener tilePlacementListener = null;
@@ -170,6 +171,7 @@ public class CenteredMapView extends JComponent {
 		for (ChatStyle style:ChatStyle.styles) {
 			chatStyles.put(style.getStyleName(),style);
 		}
+		anchorTileName = findAnchorTileName();
 		
 		positionColors = new Hashtable<>();
 		
@@ -274,6 +276,15 @@ public class CenteredMapView extends JComponent {
 		});
 		doLayout();
 		centerMap();
+	}
+	private String findAnchorTileName() {
+		GamePool pool = new GamePool(gameData.getGameObjects());
+		for (GameObject obj : pool.find("tile")) {
+			if (obj.hasThisAttribute(Constants.ANCHOR_TILE)) {
+				return obj.getName();
+			}
+		}
+		throw new IllegalStateException("Borderland or other staring tile is missing from tiles!!");
 	}
 	public Rectangle getNormalMapRectangle() {
 		return normalMapRect;
@@ -641,9 +652,13 @@ public class CenteredMapView extends JComponent {
 		repaint();
 	}
 	public void markAllMapEdges(boolean setMark) {
+		String anchorTileName = "Borderland";
 		ArrayList<ClearingDetail> allMapEdges = new ArrayList<>();
 		for (TileComponent tile : mapGrid.values()) {
 			allMapEdges.addAll(tile.getMapEdges());
+			if (tile.getGameObject().hasThisAttribute(Constants.ANCHOR_TILE)) {
+				anchorTileName = tile.toString();
+			}
 		}
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
 		Collection<String> keyVals = GamePool.makeKeyVals(hostPrefs.getGameKeyVals());
@@ -655,7 +670,7 @@ public class CenteredMapView extends JComponent {
 			if (paths!=null) {
 				for (PathDetail path:paths) {
 					ClearingDetail other = path.findConnection(detail);
-					if (mapTile.connectsToTilename(mapGrid,"clearing_"+other.getNum(),"Borderland")) {
+					if (mapTile.connectsToTilename(mapGrid,"clearing_"+other.getNum(),anchorTileName)) {
 						detail.setMarked(setMark);
 						break;
 					}
@@ -1361,8 +1376,8 @@ public class CenteredMapView extends JComponent {
 				removeTile.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent ev) {
 						if (tileLocation==null || tileLocation.tile instanceof EmptyTileComponent) return;
-						if (tileLocation.tile.toString().matches("Borderland")) {
-							JOptionPane.showConfirmDialog(null, "Borderland cannot be removed!", "Removing Tile", JOptionPane.DEFAULT_OPTION);
+						if (tileLocation.tile.getGameObject().hasThisAttribute(Constants.ANCHOR_TILE)) {
+							JOptionPane.showConfirmDialog(null, "Starting tile (e.g. Borderland) cannot be removed!", "Removing Tile", JOptionPane.DEFAULT_OPTION);
 							return;
 						}
 						GameObject tileGo = tileLocation.tile.getGameObject();
@@ -1408,8 +1423,8 @@ public class CenteredMapView extends JComponent {
 					public void actionPerformed(ActionEvent ev) {
 						GameObject tile = chooseTileToRemove();
 						if (tile == null) return;
-						if (tile.getName().matches("Borderland")) {
-							JOptionPane.showConfirmDialog(null, "Borderland cannot be removed!", "Removing Tile", JOptionPane.DEFAULT_OPTION);
+						if (tile.hasThisAttribute(Constants.ANCHOR_TILE)) {
+							JOptionPane.showConfirmDialog(null, "Starting tile (e.g. Borderland) cannot be removed!", "Removing Tile", JOptionPane.DEFAULT_OPTION);
 							return;
 						}
 						tile.removeThisAttribute(ClearingDetail.BL_CONNECT);
@@ -1552,7 +1567,7 @@ public class CenteredMapView extends JComponent {
 //			availableMapPositions.add(new Point(0,0));
 //		}
 		for (Point gp : availablePositions) {
-			boolean valid = Tile.isMappingPossibility(planningMapGrid,tile,gp,tileBeingPlaced.getRotation());
+			boolean valid = Tile.isMappingPossibility(planningMapGrid,tile,gp,tileBeingPlaced.getRotation(),anchorTileName);
 			EmptyTileComponent empty = (EmptyTileComponent)mapGrid.get(gp);
 			empty.setValidPosition(valid);
 		}
@@ -1569,7 +1584,7 @@ public class CenteredMapView extends JComponent {
 		for (Point gp : availablePositions) {
 			for (int r=0;r<6;r++) {
 				Tile t = new Tile(tile);
-				if (Tile.isMappingPossibility(planningMapGrid,t,gp,r)) {
+				if (Tile.isMappingPossibility(planningMapGrid,t,gp,r,anchorTileName)) {
 					placeables.add(t);
 				}
 			}
@@ -1587,7 +1602,7 @@ public class CenteredMapView extends JComponent {
 		Hashtable<String, Integer> hashPlaceableCount = new Hashtable<>();
 		for (GameObject go : tiles) {
 			earlyExit = false;
-			if (go.getName().equals("Borderland") && !go.hasThisAttribute(Constants.BOARD_NUMBER)) {
+			if (go.hasThisAttribute(Constants.ANCHOR_TILE) && !go.hasThisAttribute(Constants.BOARD_NUMBER)) {
 				placeables.clear();
 				earlyExit = true;
 			}

@@ -10342,6 +10342,7 @@
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
 		<attribute super_realm="" />
+		<attribute anchor_tile="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="71.5,89.2" />
@@ -28853,6 +28854,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles_alternative" />
         <attribute rw_expansion_1="" />
+		<attribute anchor_tile="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="10.8,48.9" />
@@ -32362,6 +32364,7 @@
         <attribute folder="sr_tiles_legendary" />
         <attribute stile="" />
 		<attribute water_source_clearing="1" />
+		<attribute anchor_tile="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="69.5,88.3" />
@@ -34482,6 +34485,7 @@
 	<GameSetup name="super_realm_setup">
 	  <Alter targetObjectID="401" attribute="tile_type" value="F" />
       <Alter targetObjectID="408" attribute="tile_type" value="R" />
+	  <Alter targetObjectID="406" attribute="anchor_tile" value="REMOVE" />
 	  <Create newPool="M_TILES" />
       <Create newPool="C_TILES" />
 	  <Create newPool="F_TILES" />
