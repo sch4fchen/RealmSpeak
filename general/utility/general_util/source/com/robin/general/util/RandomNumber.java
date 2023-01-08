@@ -66,6 +66,18 @@ public class RandomNumber {
 	public static RandomNumberType getRandomNumberGenerator() {
 		return currentRandomNumberType;
 	}
+	private static boolean useRandomNumberGeneratorForSetup = false;
+	public static void setUseRandomNumberGeneratorForSetup(boolean val) {
+		if (val) {
+			useRandomNumberGeneratorForSetup = true;
+		}
+		else {
+			useRandomNumberGeneratorForSetup = false;
+		}
+	}
+	public static boolean getUseRandomNumberGeneratorForSetup() {
+		return useRandomNumberGeneratorForSetup;
+	}
 	
 	public static RandomNumber soleInstance = null;
 	public static RandomNumber getSoleInstance() {

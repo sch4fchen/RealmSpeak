@@ -19,6 +19,8 @@ package com.robin.game.objects;
 
 import java.util.*;
 
+import com.robin.general.util.RandomNumber;
+
 public class GamePool extends ArrayList<GameObject> {
 
 	public static final int RANDOM = 0;
@@ -160,7 +162,11 @@ public class GamePool extends ArrayList<GameObject> {
 			int n;
 			switch(type) {
 				case RANDOM:
-					n = random.nextInt(size());
+					if (RandomNumber.getUseRandomNumberGeneratorForSetup()) {
+						n = RandomNumber.getRandom(size());
+					} else {
+						n = random.nextInt(size());
+					}
 					break;
 				case FROM_BEGINNING:
 					n = 0;
@@ -218,7 +224,11 @@ public class GamePool extends ArrayList<GameObject> {
 			int n;
 			switch(type) {
 				case RANDOM:
-					n = random.nextInt(size());
+					if (RandomNumber.getUseRandomNumberGeneratorForSetup()) {
+						n = RandomNumber.getRandom(size());
+					} else {
+						n = random.nextInt(size());
+					}
 					break;
 				case FROM_BEGINNING:
 					n = 0;
@@ -246,17 +256,30 @@ public class GamePool extends ArrayList<GameObject> {
 	public void shuffle() {
 		if (size()>1) {
 			// There needs to be at least 2 objects for this to even make sense!
-			int iterations = size() + random.nextInt(size());
-			for (int i=0;i<iterations;i++) {
-				int n1 = random.nextInt(size());
-				int n2;
-				while((n2=random.nextInt(size()))==n1); // find a DIFFERENT index
-				
-				// Swap
-				GameObject o1 = getGameObject(n1);
-				GameObject o2 = getGameObject(n2);
-				set(n1,o2);
-				set(n2,o1);
+			if (RandomNumber.getUseRandomNumberGeneratorForSetup()) {
+				int iterations = size() + RandomNumber.getRandom(size());
+				for (int i=0;i<iterations;i++) {
+					int n1 = RandomNumber.getRandom(size());
+					int n2;
+					while((n2=RandomNumber.getRandom(size()))==n1); // find a DIFFERENT index					
+					// Swap
+					GameObject o1 = getGameObject(n1);
+					GameObject o2 = getGameObject(n2);
+					set(n1,o2);
+					set(n2,o1);
+				}
+			} else {
+				int iterations = size() + random.nextInt(size());
+				for (int i=0;i<iterations;i++) {
+					int n1 = random.nextInt(size());
+					int n2;
+					while((n2=random.nextInt(size()))==n1); // find a DIFFERENT index
+					// Swap
+					GameObject o1 = getGameObject(n1);
+					GameObject o2 = getGameObject(n2);
+					set(n1,o2);
+					set(n2,o1);
+				}
 			}
 		}
 	}

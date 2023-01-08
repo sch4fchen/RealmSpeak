@@ -490,6 +490,7 @@ public class GameData extends ModifyableObject implements Serializable {
 			String countString = game.getAttributeValue("_rcount");
 			RandomNumber.init(Long.valueOf(seedString),Long.valueOf(countString));
 		}
+		game.setAttribute(new Attribute("_rndSetup",String.valueOf(RandomNumber.getUseRandomNumberGeneratorForSetup())));
 		
 		// Read objects
 		Collection objects = game.getChild("objects").getChildren();
@@ -593,6 +594,9 @@ public class GameData extends ModifyableObject implements Serializable {
 			game.setAttribute(new Attribute("_rseed",String.valueOf(RandomNumber.getSeed())));
 			game.setAttribute(new Attribute("_rcount",String.valueOf(RandomNumber.getCount())));
 			game.setAttribute(new Attribute("_rgtype",RandomNumber.getRandomNumberGenerator().toString()));
+		}
+		if (RandomNumber.hasBeenInitialized()) {
+			game.setAttribute(new Attribute("_rndSetup",String.valueOf(RandomNumber.getUseRandomNumberGeneratorForSetup())));
 		}
 		
 		// Build objects
