@@ -23,7 +23,6 @@ import java.util.*;
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
-import com.robin.magic_realm.components.utility.Constants;
 
 public class Tile {
 	public static boolean debug = false;
@@ -482,7 +481,7 @@ public class Tile {
 								}
 							}
 							// only places adjacent to two tiles (unless only one tile on map)
-							if (mapGrid.size()==1 || adjCount>1 || (autoBuildRiver && tile.getGameObject().hasThisAttribute(Constants.MAP_BUILDING_PRIO))) {
+							if (mapGrid.size()==1 || adjCount>1 || (autoBuildRiver && tile.getGameObject().hasThisAttribute("map_building_prio"))) {
 								availableMapPositions.add(adjPos);
 							}
 						}
