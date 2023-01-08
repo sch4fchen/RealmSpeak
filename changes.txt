@@ -8,6 +8,7 @@ NEW FEATURES:
 # GameBuilder: New Setup Command: Alter
 # Treasure Setup Card: Add Headlines
 # Option for structured Treasure Setup Card
+# Option for using Random Number Generator for game setup
 BUGS/ISSUES:
 # QuestRequirementAttribute: Fix GreatTreasure not counting inventory by default 
 
