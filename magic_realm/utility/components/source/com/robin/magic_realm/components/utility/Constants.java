@@ -609,6 +609,7 @@ public class Constants {
 	public static final String RANDOM_R250_521 = "RndR250_521";
 	public static final String RANDOM_MERSENNE_TWISTER = "RndMt";
 	public static final String RANDOM_ON_THE_FLY = "RndOnTheFly";
+	public static final String RANDOM_GEN_FOR_SETUP = "RndGenForSetup";
 	
 	// Quests
 	public static final String QST_BOOK_OF_QUESTS = "BookOfQuests";

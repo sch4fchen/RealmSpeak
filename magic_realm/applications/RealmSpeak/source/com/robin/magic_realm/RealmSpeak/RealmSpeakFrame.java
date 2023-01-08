@@ -1954,6 +1954,11 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 			else {
 				RandomNumber.setRandomNumberGenerator(RandomNumberType.System);
 			}
+			if (hostPrefs.hasPref(Constants.RANDOM_GEN_FOR_SETUP)) {
+				RandomNumber.setUseRandomNumberGeneratorForSetup(true);
+			} else {
+				RandomNumber.setUseRandomNumberGeneratorForSetup(false);
+			}
 			
 			// Make sure there is a DieRoller logger
 			DieRoller.setDieRollerLog(RealmUtility.getDieRollerLog(init.getGameData()));

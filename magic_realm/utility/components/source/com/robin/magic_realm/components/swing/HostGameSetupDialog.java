@@ -1138,6 +1138,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(RANDOM_GEN_TAB,new GameOption(Constants.RANDOM_R250_521,"Use R250/521 - A very fast shift-register sequence random number generator, invented by Kirkpatrick and Stoll in 1981.",false,exclusiveRandomGen,null));
 		newOptionPane.addOption(RANDOM_GEN_TAB,new GameOption(Constants.RANDOM_MERSENNE_TWISTER,"Use Mersenne Twister - A twisted GFSR(624,397) invented by Matsumora and Nishimura in 1996.",false,exclusiveRandomGen,null));
 		newOptionPane.addOption(RANDOM_GEN_TAB,new GameOption(Constants.RANDOM_ON_THE_FLY,"Use Java Generator - Generating different results, even when loading same game and doing identical actions.",false,exclusiveRandomGen,null));
+		newOptionPane.addOption(RANDOM_GEN_TAB,new GameOption(Constants.RANDOM_GEN_FOR_SETUP,"Random number generator for map setup - Use above defined random number generator for game setup as well, not default Java generator.",false));
 		
 		return newOptionPane;
 	}
