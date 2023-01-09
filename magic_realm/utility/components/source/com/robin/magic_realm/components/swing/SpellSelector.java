@@ -211,10 +211,12 @@ public class SpellSelector extends AggressiveDialog {
 				public void actionPerformed(ActionEvent ev) {
 					if (!isReady()) return;
 					spellSelection = new ArrayList<GameObject>();
-					Collection all = new ArrayList(Arrays.asList(toPanel.getComponents()));
-					for (Iterator i=all.iterator();i.hasNext();) {
-						SpellCardComponent sc = (SpellCardComponent)i.next();
-						spellSelection.add(sc.getGameObject());
+					if (!spellChoices.isEmpty()) {
+						Collection all = new ArrayList(Arrays.asList(toPanel.getComponents()));
+						for (Iterator i=all.iterator();i.hasNext();) {
+							SpellCardComponent sc = (SpellCardComponent)i.next();
+							spellSelection.add(sc.getGameObject());
+						}
 					}
 					setVisible(false);
 					dispose();
@@ -383,7 +385,7 @@ public class SpellSelector extends AggressiveDialog {
 		}
 		
 		resetButton.setEnabled(currentPicks>0);
-		doneButton.setEnabled(currentPicks==totalPicks);
+		doneButton.setEnabled(currentPicks==totalPicks || spellChoices.isEmpty());
 	}
 	
 	public static void main(String[] args) {
