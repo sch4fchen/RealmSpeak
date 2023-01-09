@@ -33929,7 +33929,7 @@
         <attribute chit="" />
         <attribute ts_section="" />
       </AttributeBlock>
-	  <contains id="1285" />
+	  <contains id="1291" />
     </GameObject>
 	<GameObject id="1250" name="Smoke ST">
       <AttributeBlock blockName="this">
@@ -33939,7 +33939,7 @@
         <attribute chit="" />
         <attribute ts_section="" />
       </AttributeBlock>
-	  <contains id="1286" />
+	  <contains id="1292" />
     </GameObject>
 	<GameObject id="1251" name="Bones F">
       <AttributeBlock blockName="this">
