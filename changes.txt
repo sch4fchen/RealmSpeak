@@ -2,6 +2,7 @@
 Super Realm: Dwellings, Denizens: Monsters/Natives, Items incl. Horses, Treasures
 Super Realm: Travelers/Missions/Campaigns (incl. for seasons)
 Super Realm: Spells, Quests
+Book of Quests: quests of the book
 
 Version 1.1.7.3
 NEW FEATURES:
