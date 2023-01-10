@@ -2027,7 +2027,7 @@ public class BattleModel {
 		boolean flip = true;
 		if (chit.isMonster()) {
 			MonsterChitComponent monster = (MonsterChitComponent)chit;
-			if (monster.canPinOpponent()) {
+			if (monster.canPinOpponent() || monster.cannotChangeTactics()) {
 				// Tremendous monsters don't change tactics
 				flip = false;
 			}

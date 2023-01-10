@@ -34667,6 +34667,64 @@
 		<attribute pins="" />
       </AttributeBlock>
     </GameObject>
+	<GameObject id="1306" name="Octopus">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="T" />
+        <attribute fame="8" />
+        <attribute notoriety="8" />
+        <attribute super_realm="" />
+        <attribute icon_type="octopus" />
+        <attribute setup_start="Pool" />
+        <attribute monster_die="3" />
+        <attribute base_price="8" />
+        <attribute icon_folder="monsters" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="2" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="RED" />
+        <attribute chit_color="red" />
+        <attribute pins="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1307" name="Colossus">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="X" />
+        <attribute fame="15" />
+        <attribute notoriety="15" />
+		<attribute super_realm="" />
+        <attribute icon_type="giant" />
+        <attribute setup_start="Tower" />
+        <attribute monster_die="3" />
+        <attribute base_price="15" />
+        <attribute icon_folder="monsters" />
+		<attribute needs_init="" />
+        <attribute denizen="" />
+		<attribute no_change_tactics="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="0" />
+        <attribute attack_speed="5" />
+        <attribute strength="X" />
+        <attribute chit_color="lightblue" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="0" />
+        <attribute attack_speed="5" />
+        <attribute strength="X" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

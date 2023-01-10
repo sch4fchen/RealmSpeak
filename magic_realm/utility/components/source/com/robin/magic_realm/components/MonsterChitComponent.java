@@ -142,6 +142,10 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	public boolean canPinOpponent() {
 		return getGameObject().hasAttribute("dark","pins");
 	}
+	
+	public boolean cannotChangeTactics() {
+		return getGameObject().hasThisAttribute("no_change_tactics");
+	}
 
 	public void changeTactics() {
 		flip();

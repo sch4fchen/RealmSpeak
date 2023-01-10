@@ -12,6 +12,7 @@ Super Realm: Characters
 3rdEdition / RealmSpeak: Optional Character Rules (A.6, p. 186): Captain, Druid, Magician, WIZARD ignores SPX, Woods Girl, Elf
 Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.121)
 Book of Quests: quests of the book
+Super Realm: Missing logic for rule changes compared to Magic Realm
 Super Realm: Optional Rules: Bounty campaign (SR: 10.2, p.114)
 Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
 Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
