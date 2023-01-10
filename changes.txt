@@ -37,8 +37,8 @@ Super Realm: Optional Rules: Easier Spell Learning (SR: 11.9, p.126)
 Super Realm: Optional Rules: Range Setup (SR: 11.0, p.126)
 Super Realm: Optional Rules: Commerce (SR: 11.12, p.126) - adapt e.g. rules for new native groups
 Super Realm: Optional Rules: Cornered (SR: 11.13, p.128)
-Super Realm: remaining rules and logic (chapter 3.3 p.20ff. -> chapter 9.1 p.110)
-Super Realm: Player building map: distribute tiles equally (including river tiles), distribute river tiles first, then grotto, then rest, each player has 3 tiles in the hand and draws after placing, skipp player if he cannot place any tile (and he has no river tile), if all players are skipped or player would be skipped but has river tile, undo last placement
+SUPER REALM: remaining RULES and LOGIC (chapter 3.3 p.20ff. -> chapter 9.1 p.110)
+Super Realm: Player building map: distribute tiles equally (including river tiles), distribute river tiles first, then grotto, then rest, each player has 3 tiles in the hand and draws after placing, skipp player if he cannot place any tile (and he has no river tile), if all players are skipped or player would be skipped but has river tile, undo last placement, do not allow placing grotto before all other river tiles have been placed
 Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 
 
