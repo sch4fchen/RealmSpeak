@@ -128,7 +128,7 @@ public class SetupCardUtility {
 			else if (rc.isMonster() && !rc.isPlayerControlledLeader()) {
 				int die = go.getThisInt("monster_die");
 				if (die==monsterDie || die==99) { // ghosts are ALWAYS prowling
-					if (!go.hasThisAttribute("blocked")) { // Exclude blocked monsters
+					if (!go.hasThisAttribute("blocked") && go.getThisAttribute("vulnerability")!="X") { // Exclude blocked and X monsters
 						// Finally, make sure there isn't a monster lure in the monster's clearing.
 						if (ClearingUtility.getItemInClearingWithKey(rc.getCurrentLocation(),Constants.NO_PROWLING)==null) {
 							prowlingMonsters.add(go);
