@@ -1,12 +1,33 @@
 ::ROADMAP::
 Super Realm: Denizens: Monsters/Natives, Items incl. Horses, Treasures
-Super Realm: Visitor/Travelers=Nomads/Missions/Campaigns/Tasks (incl. for seasons)
-Super Realm: Spells, Quests
-Super Realm: Chart of Clans (clans, die roll for natives)
-Super Realm: rules for new native attacks and spells
+Super Realm: Chart of Clans (clans, die roll for natives): 4.7 (p. 41)
+Super Realm: Visitor/Travelers=Nomads/Missions/Campaigns/Tasks (incl. for seasons); Travelers: 4.8 (p.41)
+Super Realm: Spells, Quests + Events
 Super Realm: rules for max. strength attack
+Super Realm: Regeneration: start of a new month (not 7th day), all un-hired denizens (4.10, p. 42)
+Super Realm: natives: rules for new native attacks and spells
+Super Realm: Adapt Commerce optional rules for new natives
 Super Realm: rules for minotaur shield (if different compared to exp1)
+Super Realm: Characters
+3rdEdition / RealmSpeak: Optional Character Rules (A.6, p. 186): Captain, Druid, Magician, WIZARD ignores SPX, Woods Girl, Elf
+Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.121)
 Book of Quests: quests of the book
+Super Realm: Optional Rules: Bounty campaign (SR: 10.2, p.114)
+Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
+Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
+Super Realm: Optional Rules: Thematic Roving Natives (SR: 10.5, p.114)
+Super Realm: Optional Rules: Sentimental Value (SR: 10.6, p.115)
+Super Realm: Optional Rules: Credit (SR: 10.7, p.115)
+Super Realm: Optional Rules: Grounded Missions and Tasks (SR: 10.8, p.115)
+Super Realm: Optional Rules: Horse Riding (SR: 10.9, p.115), partly different to 3rd edition
+Super Realm: Optional Rules: Regrouping (SR: 10.10, p.115)
+Super Realm: Optional Rules: Selling (SR: 10.11, p.116)
+Super Realm: Optional Rules: Stealing (SR: 11.3, p.121)
+Super Realm: Optional Rules: Easier Spell Learning (SR: 11.9, p.126)
+Super Realm: Optional Rules: Range Setup (SR: 11.11, p.126)
+Super Realm: Optional Rules: Cornered (SR: 11.13, p.128)
+Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
+
 
 Version 1.1.7.3
 NEW FEATURES:
