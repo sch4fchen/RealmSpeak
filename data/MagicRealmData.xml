@@ -34650,6 +34650,7 @@
         <attribute monster_die="2" />
         <attribute base_price="7" />
         <attribute icon_folder="monsters" />
+		<attribute needs_init="" />
         <attribute denizen="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
