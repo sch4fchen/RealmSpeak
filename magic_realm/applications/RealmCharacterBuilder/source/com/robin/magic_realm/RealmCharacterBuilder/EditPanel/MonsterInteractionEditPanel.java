@@ -32,17 +32,17 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 	
 	private static final String[][] MONSTERS = {
-		{"Animals","Giant Bat","Wolf","T Serpent","H Serpent","H Spider","T Spider","Viper","Octopus","Crow","Scorpion","Carnoplant","Sabertooth","Wasp Queen"},
+		{"Animals","Giant Bat","Wolf","T Serpent","H Serpent","H Spider","T Spider","Viper","Octopus","Crow","Scorpion","Carnoplant","Sabertooth","Wasp Queen","Rat","Bear","Alligator","T Scorpion","H Scorpion"},
 		
 		{"Dragons","T Flying Dragon","T Dragon","H Flying Dragon","H Dragon","Firedrake","Wyrm","Basilisk"},
-		{"Fantastic","Minotaur","Griffon","Behemoth","Cockatrice","Harpy","Gargrath","Swamp Thing"},
+		{"Fantastic","Minotaur","Griffon","Behemoth","Cockatrice","Harpy","Gargrath","Swamp Thing","Giant Pod"},
 		
-		{"Humanoids","Giant","Ogre","Spear Goblin","Axe Goblin","Sword Goblin","T Troll","H Troll","Lizardman","Rat Man","Sword Orc","Orc Archer","Kobold","Frost Giant"},
+		{"Humanoids","Giant","Ogre","Spear Goblin","Axe Goblin","Sword Goblin","T Troll","H Troll","Lizardman","Rat Man","Sword Orc","Orc Archer","Kobold","Frost Giant","Bow Goblin","Orc"},
 		
-		{"Spirits/Undead","Ghost","Shade","Skeleton","Skeletal Archer","Skeletal Swordsman","Swamp Haunt","Tomb Guard","Wraith","Zombie"},
+		{"Spirits/Undead","Ghost","Shade","Skeleton","Skeletal Archer","Skeletal Swordsman","Swamp Haunt","Tomb Guard","Wraith","Zombie","Sword Skeleton","Spear Skeleton","Axe Skeleton","Bow Skeleton","Vampire","Skeleton Knight"},
 		
-		{"Demons","Winged Demon","Demon","Imp","Balrog"},
-		{"Elementals","Earth Elemental","Air Elemental","Fire Elemental","Water Elemental"},
+		{"Demons","Winged Demon","Demon","Imp","Balrog","Gargoyle","T Gargoyle","H Gargoyle","Succubus"},
+		{"Elementals","Earth Elemental","Air Elemental","Fire Elemental","Water Elemental","Prism Anomaly","Purple Anomaly","Gold Anomaly","Grey Anomaly","Golem","Titan","Colossus"},
 	};
 
 	private Hashtable<String,JCheckBox> hash;

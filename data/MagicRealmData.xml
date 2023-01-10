@@ -34716,13 +34716,13 @@
         <attribute move_speed="0" />
         <attribute attack_speed="5" />
         <attribute strength="X" />
-        <attribute chit_color="lightblue" />
+        <attribute chit_color="blue" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="0" />
         <attribute attack_speed="5" />
         <attribute strength="X" />
-        <attribute chit_color="red" />
+        <attribute chit_color="blue" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1308" name="T Troll">
@@ -34806,6 +34806,210 @@
         <attribute move_speed="4" />
         <attribute strength="M" />
         <attribute chit_color="darkgray" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1311" name="T Spider">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="T" />
+        <attribute fame="6" />
+        <attribute notoriety="6" />
+        <attribute super_realm="" />
+        <attribute icon_type="spider" />
+        <attribute setup_start="Cairns" />
+        <attribute monster_die="5" />
+        <attribute base_price="8" />
+        <attribute icon_folder="monsters" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="5" />
+        <attribute strength="RED" />
+        <attribute chit_color="red" />
+        <attribute pins="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1312" name="Imp">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="2" />
+        <attribute notoriety="1" />
+        <attribute demon="" />
+        <attribute super_realm="" />
+        <attribute icon_type="imp" />
+        <attribute setup_start="Statue" />
+        <attribute monster_die="5" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="2" />
+        <attribute attack_speed="2" />
+        <attribute magic_type="VIII" />
+        <attribute length="17" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1313" name="Titan">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="X" />
+        <attribute fame="15" />
+        <attribute notoriety="15" />
+		<attribute super_realm="" />
+        <attribute icon_type="giant" />
+        <attribute setup_start="Spire" />
+        <attribute monster_die="3" />
+        <attribute base_price="15" />
+        <attribute icon_folder="monsters" />
+		<attribute needs_init="" />
+        <attribute denizen="" />
+		<attribute no_change_tactics="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="0" />
+        <attribute attack_speed="4" />
+        <attribute strength="X" />
+		<attribute length="18" />
+		<attribute sharpness="3" />
+        <attribute chit_color="blue" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="0" />
+        <attribute attack_speed="5" />
+        <attribute strength="X" />
+		<attribute length="18" />
+		<attribute sharpness="3" />
+        <attribute chit_color="blue" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1314" name="Succubus">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="2" />
+        <attribute notoriety="1" />
+		<attribute super_realm="" />
+        <attribute icon_type="carnoplant" />
+        <attribute setup_start="Garden" />
+        <attribute monster_die="6" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+		<attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="2" />
+        <attribute attack_speed="2" />
+        <attribute strength="T" />
+        <attribute chit_color="white" />
+        <attribute length="17" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1315" name="Minotaur">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="5" />
+        <attribute notoriety="5" />
+		<attribute super_realm="" />
+        <attribute icon_type="minotaur" />
+        <attribute setup_start="Maze" />
+        <attribute monster_die="6" />
+        <attribute base_price="5" />
+        <attribute icon_folder="monsters1" />
+		<attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="6" />
+        <attribute strength="T" />
+        <attribute chit_color="white" />
+        <attribute length="5" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="4" />
+        <attribute strength="T" />
+        <attribute chit_color="gray" />
+        <attribute sharpness="1" />
+        <attribute length="5" />
+      </AttributeBlock>
+	  <contains id="1316" />
+    </GameObject>
+	<GameObject id="1316" name="Minotaur Shield">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute part="" />
+        <attribute shield="" />
+		<attribute vulnerability="T" />
+        <attribute icon_type="minotaur_buckler" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute strength="T" />
+        <attribute chit_color="lightgreen" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute strength="T" />
+        <attribute chit_color="forestgreen" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1317" name="Vampire">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="4" />
+        <attribute notoriety="4" />
+		<attribute super_realm="" />
+        <attribute icon_type="zombie1" />
+        <attribute setup_start="Temple" />
+        <attribute monster_die="6" />
+        <attribute base_price="4" />
+        <attribute icon_folder="monsters2" />
+		<attribute needs_init="" />
+        <attribute armored="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="2" />
+        <attribute strength="T" />
+        <attribute chit_color="white" />
+        <attribute length="17" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="gray" />
+        <attribute length="17" />
       </AttributeBlock>
     </GameObject>
   </objects>

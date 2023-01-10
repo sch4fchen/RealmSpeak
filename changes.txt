@@ -1,5 +1,7 @@
 ::ROADMAP::
 Super Realm: Denizens: Monsters/Natives, Items incl. Horses, Treasures
+Super Realm: rules for minotaur shield
+Super Realm: rules for Vampire and Succubus attack
 Super Realm: Chart of Clans (clans, die roll for natives): 4.7 (p. 41)
 Super Realm: Visitor/Travelers=Nomads/Missions/Campaigns/Tasks (incl. for seasons); Travelers: 4.8 (p.41)
 Super Realm: Spells, Quests + Events
@@ -7,7 +9,6 @@ Super Realm: rules for max. strength attack
 Super Realm: Regeneration: start of a new month (not 7th day), all un-hired denizens (4.10, p. 42)
 Super Realm: natives: rules for new native attacks and spells
 Super Realm: Adapt Commerce optional rules for new natives
-Super Realm: rules for minotaur shield (if different compared to exp1)
 Super Realm: Characters
 3rdEdition / RealmSpeak: Optional Character Rules (A.6, p. 186): Captain, Druid, Magician, WIZARD ignores SPX, Woods Girl, Elf
 Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.121)
