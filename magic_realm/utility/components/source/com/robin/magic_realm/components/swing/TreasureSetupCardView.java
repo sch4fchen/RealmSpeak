@@ -338,18 +338,16 @@ public class TreasureSetupCardView extends JComponent {
 		for (GameObject go : clickViewObject.getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			contents.add(rc);
-			if (rc.isNative()) {
-				RealmComponent horse = (RealmComponent)rc.getHorse();
-				if (horse!=null) {
-					contents.add(horse);
-				}
-			}
-			else if (rc.isMonster()) {
+			if (rc.isMonster()) {
 				MonsterChitComponent monster = (MonsterChitComponent)rc;
 				RealmComponent part = monster.getWeapon();
 				if (part!=null) {
 					contents.add(part);
 				}
+			}
+			RealmComponent horse = (RealmComponent)rc.getHorse();
+			if (horse!=null) {
+				contents.add(horse);
 			}
 		}
 		boolean showAlways = game.hasBeenRevealed() || playerName.equals(clickViewObject.getThisAttribute("ts_cansee"));

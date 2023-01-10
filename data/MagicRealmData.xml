@@ -34725,6 +34725,89 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="1308" name="T Troll">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="T" />
+        <attribute fame="8" />
+        <attribute notoriety="8" />
+        <attribute super_realm="" />
+        <attribute icon_type="troll" />
+        <attribute setup_start="Vault" />
+        <attribute monster_die="4" />
+        <attribute base_price="8" />
+        <attribute icon_folder="monsters" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="6" />
+        <attribute attack_speed="2" />
+        <attribute strength="RED" />
+        <attribute chit_color="red" />
+        <attribute pins="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1309" name="Skeleton Knight">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="5" />
+        <attribute notoriety="5" />
+        <attribute icon_type="skull" />
+        <attribute setup_start="Tomb" />
+        <attribute monster_die="4" />
+        <attribute base_price="5" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+		<attribute needs_init="" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+		<attribute length="8" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="6" />
+        <attribute attack_speed="5" />
+        <attribute strength="T" />
+		<attribute length="8" />
+        <attribute chit_color="gray" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+	  <contains id="1310" />
+    </GameObject>
+	<GameObject id="1310" name="Bone Horse">
+      <AttributeBlock blockName="this">
+		<attribute monster_steed="" />
+		<attribute horse="warhorse" />
+        <attribute vulnerability="T" />
+        <attribute armored="" />
+        <attribute super_realm="" />
+        <attribute activated="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="6" />
+        <attribute strength="M" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="darkgray" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

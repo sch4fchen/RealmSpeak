@@ -78,12 +78,13 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		return "gallop";
 	}
 	public String[] getFolderAndType() {
-		String name = gameObject.getName();
-		String letterCode = name.substring(0,1).toUpperCase();
-		String horse_type = gameObject.getAttribute("this","horse");
+		String horse_type = gameObject.getThisAttribute("horse");
 		if (horse_type!=null) {
 			String folder = useColorIcons()?"steed_c":"steed";
-			horse_type = horse_type + (useColorIcons()?("_"+letterCode.toLowerCase()):"");
+			if (!gameObject.hasThisAttribute("monster_steed")) {
+				String letterCode = gameObject.getName().substring(0,1).toUpperCase();
+				horse_type = horse_type + (useColorIcons()?("_"+letterCode.toLowerCase()):"");
+			}
 			String[] ret = new String[2];
 			ret[0] = folder;
 			ret[1] = horse_type;
@@ -101,14 +102,16 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		String horse_type = gameObject.getAttribute("this","horse");
 		if (horse_type!=null) {
 			String folder = useColorIcons()?"steed_c":"steed";
-			horse_type = horse_type + (useColorIcons()?("_"+letterCode.toLowerCase()):"");
+			if (!gameObject.hasThisAttribute("monster_steed")) {
+				horse_type = horse_type + (useColorIcons()?("_"+letterCode.toLowerCase()):"");
+			}
 			drawIcon(g,folder,horse_type,0.5);
 		}
 		
 		TextType tt;
 		
 		// Draw Owner
-		if (!getGameObject().hasThisAttribute("companion")) {
+		if (!getGameObject().hasThisAttribute("companion") && !getGameObject().hasThisAttribute("monster_steed")) {
 			String id;
 			if (getGameObject().hasThisAttribute(Constants.BOARD_NUMBER)) {
 				id = name.substring(name.length() - 4,name.length()-2).trim();
@@ -117,8 +120,11 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 				id = name.substring(name.length() - 2).trim();
 			}
 			tt = new TextType(letterCode+id,getChitSize(),"WHITE_NOTE");
-			tt.draw(g,getChitSize()-10-tt.getWidth(g),7,Alignment.Left);
 		}
+		else {
+			tt = new TextType(name,getChitSize(),"WHITE_NOTE");
+		}
+		tt.draw(g,getChitSize()-10-tt.getWidth(g),7,Alignment.Left);
 		
 		// Draw Stats
 		String asterisk = isTrotting()?"":"*";

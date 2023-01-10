@@ -90,6 +90,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	public static final String FLY_CHIT = "fly_chit";
 	public static final String NATIVE = "native";
 	public static final String HORSE = "horse";
+	public static final String MONSTER_STEED = "monster_steed";
 	public static final String DWELLING = "dwelling";
 	public static final String TREASURE = "treasure";
 	public static final String BOON = "boon";
@@ -846,7 +847,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 			comp = new BoonChitComponent(obj);
 		}
 		else if (obj.hasThisAttribute(HORSE)) {
-			if (obj.hasThisAttribute(NATIVE)) {
+			if (obj.hasThisAttribute(NATIVE) || obj.hasThisAttribute(MONSTER_STEED)) {
 				comp = new NativeSteedChitComponent(obj);
 			}
 			else {
