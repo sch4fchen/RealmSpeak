@@ -362,7 +362,7 @@ public class Tile {
 		
 		String tileType = tile.getGameObject().getThisAttribute("tile_type");
 		// Now, if the tile has 6-clearings, check to be sure the paths lead back to the borderland tile.
-		if (tile.getClearingCount()==6 && tileType!="V" && tileType!="W" && (!autoBuildRiver || !tile.hasRiverPaths(tile.side))) {
+		if (tile.getClearingCount()==6 && tileType!="V" && tileType!="W" && tileType!="H" && (!autoBuildRiver || !tile.hasRiverPaths(tile.side))) {
 			// I think I only need to check clearings 2 and 6 (or something like that)
 			if (!allConnect) {
 				if (debug) System.out.println(tile.name+" doesn't have all 6 clearings connecting");

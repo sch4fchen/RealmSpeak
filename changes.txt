@@ -1,7 +1,11 @@
 ::ROADMAP::
-Super Realm: Dwellings, Denizens: Monsters/Natives, Items incl. Horses, Treasures
-Super Realm: Travelers/Missions/Campaigns (incl. for seasons)
+Super Realm: Denizens: Monsters/Natives, Items incl. Horses, Treasures
+Super Realm: Visitor/Travelers=Nomads/Missions/Campaigns/Tasks (incl. for seasons)
 Super Realm: Spells, Quests
+Super Realm: Chart of Clans (clans, die roll for natives)
+Super Realm: rules for new native attacks and spells
+Super Realm: rules for max. strength attack
+Super Realm: rules for minotaur shield (if different compared to exp1)
 Book of Quests: quests of the book
 
 Version 1.1.7.3
