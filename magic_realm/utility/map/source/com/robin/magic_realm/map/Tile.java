@@ -481,7 +481,7 @@ public class Tile {
 								}
 							}
 							// only places adjacent to two tiles (unless only one tile on map)
-							if (mapGrid.size()==1 || adjCount>1 || (autoBuildRiver && tile.getGameObject().hasThisAttribute("map_building_prio"))) {
+							if (mapGrid.size()==1 || adjCount>1 || tile.getGameObject().hasThisAttribute("map_building_prio")) {
 								availableMapPositions.add(adjPos);
 							}
 						}
