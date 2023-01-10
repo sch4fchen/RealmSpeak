@@ -32,7 +32,8 @@ public class TreasureLocationEditPanel extends AdvantageEditPanel {
 	private static final String[] TREASURES =
 		{"Hoard","Lair","Altar","Shrine","Pool","Vault","Cairns","Statue","Chest",
 				"Remains of Thief:thief","Mouldy Skeleton:skeleton","Crypt of the Knight:crypt","Enchanted Meadow:meadow","Toadstool Circle:toadstool_circle",
-				"Fountain of Health:fountain","Adventurer's Cache:adventurer_cache","Archeological Dig:dig","Stones","Maze","Tree","Web","Hive","Tomb","Pond"};
+				"Fountain of Health:fountain","Adventurer's Cache:adventurer_cache","Archeological Dig:dig","Stones","Maze","Tree","Web","Hive","Tomb","Pond",
+				"Pit","Den","Tower","Spire","Garden","Temple"};
 
 	private Hashtable<String,JCheckBox> hash;
 	
