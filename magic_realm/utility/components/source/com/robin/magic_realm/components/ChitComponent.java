@@ -47,6 +47,7 @@ public abstract class ChitComponent extends RealmComponent {
 	public static final String LIGHT_SIDE_UP = "light";
 	public static final String DARK_SIDE_UP = "dark";
 
+	public static final int X_CHIT_SIZE = 112;
 	public static final int T_CHIT_SIZE = 100;	// 1"
 	public static final int H_CHIT_SIZE = 88;	// 7/8"
 	public static final int M_CHIT_SIZE = 75;	// 3/4"
@@ -66,7 +67,10 @@ public abstract class ChitComponent extends RealmComponent {
 		updateChit();
 	}
 	public static Dimension getDimensionForSize(String size) {
-		if ("T".equals(size)) {
+		if ("X".equals(size)) {
+			return new Dimension(X_CHIT_SIZE,X_CHIT_SIZE);
+		}
+		else if ("T".equals(size)) {
 			return new Dimension(T_CHIT_SIZE,T_CHIT_SIZE);
 		}
 		else if ("H".equals(size)) {

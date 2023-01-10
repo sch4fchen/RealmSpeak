@@ -149,6 +149,9 @@ public class Strength {
 	public boolean isTremendous() {
 		return strengthId==TREMENDOUS;
 	}
+	public boolean isMaximum() {
+		return strengthId==MAXIMUM;
+	}
 	private static int readString(String val) {
 		int num = 0;
 		if (val!=null) {

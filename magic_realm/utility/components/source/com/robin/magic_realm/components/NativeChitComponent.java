@@ -50,7 +50,10 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		else {
 			if (getGameObject().hasThisAttribute("animal") || getGameObject().hasThisAttribute("statue")) {
 				String vul = getAttribute("this", "vulnerability");
-				if (vul.equals("T")) {
+				if (vul.equals("X")) {
+					chitSize = X_CHIT_SIZE;
+				}
+				else if (vul.equals("T")) {
 					chitSize = T_CHIT_SIZE;
 				}
 				else if (vul.equals("H")) {

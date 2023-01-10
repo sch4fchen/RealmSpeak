@@ -62,7 +62,10 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		}
 		else {
 			String vul = getVulnerability().getChar();
-			if (vul.equals("T") || vul.equals("!")) {
+			if (vul.equals("X")) {
+				chitSize = X_CHIT_SIZE;
+			}
+			else if (vul.equals("T") || vul.equals("!")) {
 				chitSize = T_CHIT_SIZE;
 			}
 			else if (vul.equals("H")) {
