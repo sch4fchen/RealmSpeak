@@ -720,7 +720,8 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		ArrayList<String> playerNames = parent.realmHostFrame.getPlayerNames();
 
 		if (playerNames.size() > 0) { // FIXME for now
-			// Randomize playerNames here?
+			// Randomize playerNames here
+			Collections.shuffle(playerNames);
 
 			// If more than one player, then assign tiles randomly to each player
 			// Find player with borderland, and activate (how?) for placing tiles
