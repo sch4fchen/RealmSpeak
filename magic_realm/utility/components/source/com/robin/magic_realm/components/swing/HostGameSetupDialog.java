@@ -122,6 +122,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	
 	protected JButton defaultButton;
 	protected JButton defaultCommunityButton;
+	protected JButton defaultSuperRealmRuleset;
 	
 	public void loadPrefsFromData() {
 		loadingPrefs = true;
@@ -537,6 +538,14 @@ public class HostGameSetupDialog extends AggressiveDialog {
 				}
 			});
 			box.add(defaultCommunityButton);
+			defaultSuperRealmRuleset = new JButton("Super Realm ruleset");
+			defaultSuperRealmRuleset.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					setupSuperRealmRules();
+					madeChanges();
+				}
+			});
+			box.add(defaultSuperRealmRuleset);
 			box.add(Box.createHorizontalGlue());
 			if (editMode) {
 					cancel = new JButton("Cancel");
@@ -1054,10 +1063,10 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_DUAL_WIELDING_TWO_HANDED,"DUAL WIELDING TWO-HANDED WEAPONS - Two-handed weapons can be dual wielded without an additional ability.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_THROWING_WEAPONS,"THROWING WEAPONS (Expansion 1) - A character can throw corresponding weapons.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY_LIKE_SHIELD,"PARRYING LIKE A SHIELD (Expansion 1) - A character can parry like with a shield other attacks with a weapon.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY,"PARRYING (1st Ed. and Super Realm Project) - A character can parry target's attack with a weapon.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY,"PARRYING (1st Ed. and Super Realm) - A character can parry target's attack with a weapon.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY_MISSILE,"PARRYING MISSILE ATTACKS - Parrying missile attacks is possible (requires parrying rule or ability of 1st Ed./Super Realm).",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY_WITH_MISSILE,"PARRYING WITH MISSILE WEAPONS - Parrying with missile weapons is possible (requires one of the parrying rules or abilities).",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC (Super Realm Project) - A character with no active armor counters casting a spell may also use his staff to make a separate attack.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC (Super Realm) - A character with no active armor counters casting a spell may also use his staff to make a separate attack.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_NATIVES_FRIENDLY,"NO ATTACKING OF FRIENDLY NATIVES (Book of Learning) - FRIENDLY and ALLIED natives cannot be lured or targeted.",false));
 		
 		newOptionPane.setTabHtmlDescription(EXPANDING_REALM_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Expanding the Realm</font></body></html>");
@@ -1120,7 +1129,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE3_NO_RESTRICT_VPS_FOR_DEV,"NO VP RESTRICTIONS FOR DEVELOPMENT - For purposes of development only, don't restrict VP gains to assigned VPs.",false));
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_DAY_END_TRADING_ON,"DAY END TRADING ON - Day End Trading will be ON by default for all new characters.  This can still be turned off by individual characters, if desired.",false));
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_MULTIPLE_SUMMONING,"MULTIPLE SUMMONING - Allows chits to summon many times in a single round.",false));
-		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE3_SMALL_MONSTERS,"SMALL MONSTERS - Small monsters (Frog, Squirrel, Bird) don t block characters.",false));
+		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE3_SMALL_MONSTERS,"SMALL MONSTERS - Small monsters (Frog, Squirrel, Bird) don't block characters.",false));
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_RED_SPECIAL_SHELTER,"EXTRA SHELTERS - The Lost City and Lost Castle chits count as shelters, for purposes of sheltered phases and weather.",false));
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE3_SNOW_HIDE_EXCLUDE_CAVES,"SNOW HIDING IN CAVES - Ignore special weather conditions that prevent hiding due to snow or soft ground, when you perform the HIDE activity in a cave.",false));
 		
@@ -1208,7 +1217,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	private void setupDefaultCommunityRules() {
 		setupDefaults();
 		gameVariants[2].setSelected(true);
-		startingSeason.setSelectedIndex(1);		
+		startingSeason.setSelectedIndex(1);
 		includeNewSpells.setSelected(true);
 		includeNewSpells2.setSelected(true);
 		numberMonthsToPlay.setText("2");
@@ -1248,6 +1257,30 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.HOUSE3_SNOW_HIDE_EXCLUDE_CAVES,true);
 		optionPane.setOption(Constants.RANDOM_ON_THE_FLY,true);
 		
+		updateWarnings();
+	}
+	private void setupSuperRealmRules() {
+		setupDefaults();
+		gameVariants[3].setSelected(true);
+		startingSeason.setSelectedIndex(1);
+		numberMonthsToPlay.setText("2");
+		questSrOption.setSelected(true,false);
+		//enable optional rules
+		optionPane.setOption(Constants.ADV_SERIOUS_WOUNDS,true);
+		optionPane.setOption(Constants.ADV_AMBUSHES,true);
+		optionPane.setOption(Constants.ADV_FLYING_ACTIVITIES,true);
+		optionPane.setOption(Constants.ADV_CACHING,true);
+		optionPane.setOption(Constants.ADV_DROPPING,true);
+		optionPane.setOption(Constants.TE_WATCHFUL_NATIVES,true);
+		optionPane.setOption(Constants.TE_EXTENDED_TREACHERY,true);
+		optionPane.setOption(Constants.OPT_GRUDGES,true);
+		optionPane.setOption(Constants.TE_EXTENDED_GRUDGES,true);
+		optionPane.setOption(Constants.OPT_PARRY,true);
+		optionPane.setOption(Constants.OPT_SR_STEEL_AGAINST_MAGIC,true);
+		optionPane.setOption(Constants.EXP_CUSTOM_CHARS,true);
+		optionPane.setOption(Constants.HOUSE3_DEDUCT_VPS,true);
+		optionPane.setOption(Constants.HOUSE1_CHIT_REMAIN_FACE_UP,true);
+		optionPane.setOption(Constants.RANDOM_ON_THE_FLY,true);
 		updateWarnings();
 	}
 	
