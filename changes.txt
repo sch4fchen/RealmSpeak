@@ -1,5 +1,8 @@
 ::ROADMAP::
-Super Realm: Denizens: Monsters/Natives, Items incl. Horses, Treasures, Tavellers
+Update: CompanionEditPanel: all denizens
+Update: RealmCharacterConstants: natives, dwellings, travelers?
+Update: RealmCharacterBuilderPanel: start locations
+Super Realm: Denizens: Monsters/Natives, Items incl. Horses, Treasures, Travelers
 Super Realm: rules for minotaur shield
 Super Realm: rules for special monster attacks and change tactics (Spear and Bow Goblins, Bow Skeletons, Demon, Winged Demon, Imp, Vampire, Succubus, and Devil): p.98
 Super Realm: Chart of Clans (clans, die roll for natives): 4.7 (p. 41)

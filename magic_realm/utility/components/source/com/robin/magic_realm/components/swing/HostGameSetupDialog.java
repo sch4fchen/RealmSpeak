@@ -1263,7 +1263,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	private void setupSuperRealmRules() {
 		setupDefaults();
 		gameVariants[3].setSelected(true);
-		startingSeason.setSelectedIndex(1);
+		startingSeason.setSelectedIndex(0);
 		numberMonthsToPlay.setText("2");
 		questSrOption.setSelected(true,false);
 		//enable optional rules
