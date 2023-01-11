@@ -20,10 +20,13 @@ package com.robin.magic_realm.RealmSpeak;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.swing.*;
 
 import com.robin.game.objects.GameObject;
+import com.robin.game.objects.GamePool;
 import com.robin.general.swing.AggressiveDialog;
 import com.robin.general.swing.ComponentTools;
 import com.robin.magic_realm.components.MagicRealmColor;
@@ -60,7 +63,7 @@ public class CharacterOptionsDialog extends AggressiveDialog {
 	}
 
 	private void initComponents(boolean forceInnStart, boolean allowDevelopment, boolean developmentPastFour) {
-		setSize(475, 375);
+		setSize(520, 520);
 		getContentPane().setLayout(new BorderLayout());
 
 		JPanel sideBarPanel = new JPanel(new GridLayout(2,1));
@@ -71,10 +74,20 @@ public class CharacterOptionsDialog extends AggressiveDialog {
 		buttonGroup1 = new ButtonGroup();
 		String[] locs = character.getStartingLocations(forceInnStart);
 		startChoose = new JRadioButton[locs.length];
+		GamePool pool = new GamePool(character.getGameData().getGameObjects());
+		Collection<GameObject> startDwellings = pool.find("dwelling,!general_dwelling");
+		ArrayList<String> startDwellingNames = new ArrayList<>();
+		for (GameObject go:startDwellings) {
+			startDwellingNames.add(go.getName());
+		}
+		int j=0;
 		for (int i = 0; i < locs.length; i++) {
-			startChoose[i] = new JRadioButton(locs[i]);
-			buttonGroup1.add(startChoose[i]);
-			locationPanel.add(startChoose[i]);
+			if (startDwellingNames.contains(locs[i])) {
+				startChoose[j] = new JRadioButton(locs[i]);
+				buttonGroup1.add(startChoose[j]);
+				locationPanel.add(startChoose[j]);
+				j++;
+			}
 		}
 		startChoose[0].setSelected(true);
 		locationPanel.add(Box.createVerticalGlue());

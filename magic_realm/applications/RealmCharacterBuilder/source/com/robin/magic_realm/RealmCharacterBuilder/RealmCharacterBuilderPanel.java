@@ -76,6 +76,10 @@ public class RealmCharacterBuilderPanel extends JPanel {
 	private JCheckBox startGuardChoice;
 	private JCheckBox startChapelChoice;
 	private JCheckBox startHouseChoice;
+	private JCheckBox startHutChoice;
+	private JCheckBox startSettlementChoice;
+	private JCheckBox startCottageChoice;
+	private JCheckBox startHamletChoice;
 	private JCheckBox startGhostsChoice;
 	
 	// Vulnerability
@@ -293,10 +297,9 @@ public class RealmCharacterBuilderPanel extends JPanel {
 			box = Box.createHorizontalBox();
 				String[] startingLoc = model.getCharacter().getStartingLocations(false);
 				ArrayList<String> list = new ArrayList<>(Arrays.asList(startingLoc));
-				JPanel locationControls = new JPanel(new GridLayout(5,1));
-				startInnChoice = new JCheckBox("Inn (ALWAYS)",true); // ALWAYS true
+				JPanel locationControls = new JPanel(new GridLayout(5,2));
+				startInnChoice = new JCheckBox("Inn",true); // ALWAYS true
 				startInnChoice.setEnabled(false); // ALWAYS disabled (MUST have INN as a choice)
-				locationControls.add(startInnChoice);
 				
 				startGuardChoice = new JCheckBox("Guard",list.contains("Guard"));
 				startGuardChoice.addActionListener(new ActionListener() {
@@ -304,30 +307,60 @@ public class RealmCharacterBuilderPanel extends JPanel {
 						updateStartingLocation("Guard",startGuardChoice.isSelected());
 					}
 				});
-				locationControls.add(startGuardChoice);
 				startChapelChoice = new JCheckBox("Chapel",list.contains("Chapel"));
 				startChapelChoice.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent ev) {
 						updateStartingLocation("Chapel",startChapelChoice.isSelected());
 					}
 				});
-				locationControls.add(startChapelChoice);
 				startHouseChoice = new JCheckBox("House",list.contains("House"));
 				startHouseChoice.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent ev) {
 						updateStartingLocation("House",startHouseChoice.isSelected());
 					}
 				});
-				locationControls.add(startHouseChoice);
 				startGhostsChoice = new JCheckBox("Ghosts",list.contains("Ghost"));
 				startGhostsChoice.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent ev) {
 						updateStartingLocation("Ghost",startGhostsChoice.isSelected());
 					}
 				});
+				startHutChoice = new JCheckBox("Hut",list.contains("Hut"));
+				startHutChoice.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent ev) {
+						updateStartingLocation("Hut",startHutChoice.isSelected());
+					}
+				});
+				startSettlementChoice = new JCheckBox("Settlement",list.contains("Settlement"));
+				startSettlementChoice.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent ev) {
+						updateStartingLocation("Settlement",startSettlementChoice.isSelected());
+					}
+				});
+				startCottageChoice = new JCheckBox("Cottage",list.contains("Cottage"));
+				startCottageChoice.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent ev) {
+						updateStartingLocation("Cottage",startCottageChoice.isSelected());
+					}
+				});
+				startHamletChoice = new JCheckBox("Hamlet",list.contains("Hamlet"));
+				startHamletChoice.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent ev) {
+						updateStartingLocation("Hamlet",startHamletChoice.isSelected());
+					}
+				});
+				
+				locationControls.add(startInnChoice);
+				locationControls.add(startHutChoice);
+				locationControls.add(startGuardChoice);
+				locationControls.add(startSettlementChoice);
+				locationControls.add(startChapelChoice);
+				locationControls.add(startCottageChoice);
+				locationControls.add(startHouseChoice);
+				locationControls.add(startHamletChoice);
 				locationControls.add(startGhostsChoice);
 				locationControls.setBorder(BorderFactory.createTitledBorder("Starting Locations"));
-				ComponentTools.lockComponentSize(locationControls,120,boxHeight);
+				ComponentTools.lockComponentSize(locationControls,180,boxHeight);
 			box.add(locationControls);
 				Box vulAndType = Box.createVerticalBox();
 					ButtonGroup vulGroup = new ButtonGroup();
@@ -371,7 +404,7 @@ public class RealmCharacterBuilderPanel extends JPanel {
 					vulnerabilityControls.add(vulnerabilityTremendous);
 		
 					vulnerabilityControls.setBorder(BorderFactory.createTitledBorder("Vulnerability"));
-					ComponentTools.lockComponentSize(vulnerabilityControls,120,boxHeight-80);
+					ComponentTools.lockComponentSize(vulnerabilityControls,100,boxHeight-80);
 				vulAndType.add(vulnerabilityControls);
 					ButtonGroup classGroup = new ButtonGroup();
 					JPanel classControls = new JPanel(new GridLayout(2,1));
@@ -395,7 +428,7 @@ public class RealmCharacterBuilderPanel extends JPanel {
 					classControls.add(mageClassOption);
 					
 					classControls.setBorder(BorderFactory.createTitledBorder("Class"));
-					ComponentTools.lockComponentSize(classControls,120,80);
+					ComponentTools.lockComponentSize(classControls,100,80);
 				vulAndType.add(classControls);
 			box.add(vulAndType);
 				Box extraInfo = Box.createVerticalBox();
