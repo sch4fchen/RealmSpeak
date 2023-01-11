@@ -69,6 +69,21 @@ public class RealmCharacterConstants {
 		{Constants.GAME_RELATIONSHIP,"VWarlock"},
 		{Constants.GAME_RELATIONSHIP,"NDragonmen"},
 		{Constants.GAME_RELATIONSHIP,"NMurker"},
+		{Constants.GAME_RELATIONSHIP,"NAborigines"},
+		{Constants.GAME_RELATIONSHIP,"NBandits"},
+		{Constants.GAME_RELATIONSHIP,"NConjurors"},
+		{Constants.GAME_RELATIONSHIP,"NCoven"},
+		{Constants.GAME_RELATIONSHIP,"NCultists"},
+		{Constants.GAME_RELATIONSHIP,"NDwarves"},
+		{Constants.GAME_RELATIONSHIP,"NElves"},
+		{Constants.GAME_RELATIONSHIP,"NEnchanters"},
+		{Constants.GAME_RELATIONSHIP,"NHunters"},
+		{Constants.GAME_RELATIONSHIP,"NMages"},
+		{Constants.GAME_RELATIONSHIP,"NMercenaries"},
+		{Constants.GAME_RELATIONSHIP,"NPagans"},
+		{Constants.GAME_RELATIONSHIP,"NPeasants"},
+		{Constants.GAME_RELATIONSHIP,"NSummoners"},
+		{Constants.GAME_RELATIONSHIP,"NZealots"},
 	};
 	
 	public static String[] SPELL_COUNT = {

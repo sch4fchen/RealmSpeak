@@ -79,7 +79,7 @@ public class RealmCharacterBuilderFrame extends JFrame {
 	private void initComponents() {
 		setTitle("Realm Character Builder");
 		setIconImage(IconFactory.findIcon("images/actions/hire.gif").getImage());
-		setSize(1440,750);
+		setSize(1440,920);
 		
 		JMenuBar menuBar = new JMenuBar();
 		fileMenu = new JMenu("File");
