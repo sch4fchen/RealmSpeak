@@ -35331,6 +35331,854 @@
 		<attribute pins="" />
       </AttributeBlock>
     </GameObject>
+	<GameObject id="1330" name="Sword Skeleton Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Bones R, Dank R, Patter R" />
+        <attribute monster_die="4" />
+        <attribute super_realm="" />
+        <attribute box_num="1" />
+        <attribute ts_section="lost fortress" />
+        <attribute ts_count="6" />
+        <attribute ts_size="M" />
+        <attribute ts_color="darkgray" />
+        <attribute icon_type="skullsword" />
+        <attribute icon_folder="monsters2" />
+      </AttributeBlock>
+	  <contains id="1334" />
+	  <contains id="1335" />
+	  <contains id="1336" />
+	  <contains id="1337" />
+	  <contains id="1338" />
+	  <contains id="1339" />
+    </GameObject>
+	<GameObject id="1331" name="Spear Skeleton Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Bones R, Dank R, Patter R" />
+        <attribute monster_die="4" />
+        <attribute super_realm="" />
+        <attribute box_num="2" />
+        <attribute ts_section="lost fortress" />
+        <attribute ts_count="6" />
+        <attribute ts_size="M" />
+        <attribute ts_color="darkgray" />
+        <attribute icon_type="skullsword" />
+        <attribute icon_folder="monsters2" />
+      </AttributeBlock>
+	  <contains id="1340" />
+	  <contains id="1341" />
+	  <contains id="1342" />
+	  <contains id="1343" />
+	  <contains id="1344" />
+	  <contains id="1345" />
+    </GameObject>
+	<GameObject id="1332" name="Axe Skeleton Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Bones R, Dank R, Patter R" />
+        <attribute monster_die="4" />
+        <attribute super_realm="" />
+        <attribute box_num="3" />
+        <attribute ts_section="lost fortress" />
+        <attribute ts_count="6" />
+        <attribute ts_size="M" />
+        <attribute ts_color="darkgray" />
+        <attribute icon_type="skullsword" />
+        <attribute icon_folder="monsters2" />
+      </AttributeBlock>
+	  <contains id="1346" />
+	  <contains id="1347" />
+	  <contains id="1348" />
+	  <contains id="1349" />
+	  <contains id="1350" />
+	  <contains id="1351" />
+    </GameObject>
+	<GameObject id="1333" name="Bow Skeleton Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Bones R, Dank R, Patter R" />
+        <attribute monster_die="4" />
+        <attribute super_realm="" />
+        <attribute box_num="4" />
+        <attribute ts_section="lost fortress" />
+        <attribute ts_count="6" />
+        <attribute ts_size="M" />
+        <attribute ts_color="darkgray" />
+        <attribute icon_type="skullbow" />
+        <attribute icon_folder="monsters2" />
+      </AttributeBlock>
+	  <contains id="1352" />
+	  <contains id="1353" />
+	  <contains id="1354" />
+	  <contains id="1355" />
+	  <contains id="1356" />
+	  <contains id="1357" />
+    </GameObject>
+	<GameObject id="1334" name="Sword Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullsword" />
+        <attribute setup_start="Sword Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="1" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="white" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="gray" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1335" name="Sword Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullsword" />
+        <attribute setup_start="Sword Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="1" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="white" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="gray" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1336" name="Sword Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullsword" />
+        <attribute setup_start="Sword Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="1" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="white" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="gray" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1337" name="Sword Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullsword" />
+        <attribute setup_start="Sword Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="1" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="white" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="gray" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1338" name="Sword Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullsword" />
+        <attribute setup_start="Sword Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="1" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="white" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="gray" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1339" name="Sword Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullsword" />
+        <attribute setup_start="Sword Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="1" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="white" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="gray" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1340" name="Spear Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullsword" />
+        <attribute setup_start="Spear Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="2" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="white" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="gray" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1341" name="Spear Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullsword" />
+        <attribute setup_start="Spear Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="2" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="white" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="gray" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1342" name="Spear Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullsword" />
+        <attribute setup_start="Spear Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="2" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="white" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="gray" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1343" name="Spear Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullsword" />
+        <attribute setup_start="Spear Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="2" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="white" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="gray" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1344" name="Spear Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullsword" />
+        <attribute setup_start="Spear Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="2" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="white" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="gray" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1345" name="Spear Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullsword" />
+        <attribute setup_start="Spear Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="2" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="white" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="gray" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1346" name="Axe Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullsword" />
+        <attribute setup_start="Axe Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="3" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="6" />
+        <attribute strength="M" />
+        <attribute chit_color="white" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute chit_color="gray" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1347" name="Axe Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullsword" />
+        <attribute setup_start="Axe Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="3" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="6" />
+        <attribute strength="M" />
+        <attribute chit_color="white" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute chit_color="gray" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1348" name="Axe Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullsword" />
+        <attribute setup_start="Axe Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="3" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="6" />
+        <attribute strength="M" />
+        <attribute chit_color="white" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute chit_color="gray" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1349" name="Axe Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullsword" />
+        <attribute setup_start="Axe Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="3" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="6" />
+        <attribute strength="M" />
+        <attribute chit_color="white" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute chit_color="gray" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1350" name="Axe Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullsword" />
+        <attribute setup_start="Axe Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="3" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="6" />
+        <attribute strength="M" />
+        <attribute chit_color="white" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute chit_color="gray" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1351" name="Axe Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullsword" />
+        <attribute setup_start="Axe Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="3" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="6" />
+        <attribute strength="M" />
+        <attribute chit_color="white" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute chit_color="gray" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1352" name="Bow Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullbow" />
+        <attribute setup_start="Bow Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="4" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="1" />
+        <attribute strength="L" />
+        <attribute chit_color="gray" />
+		<attribute length="14" />
+		<attribute sharpness="2" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1353" name="Bow Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullbow" />
+        <attribute setup_start="Bow Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="4" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="1" />
+        <attribute strength="L" />
+        <attribute chit_color="gray" />
+		<attribute length="14" />
+		<attribute sharpness="2" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1354" name="Bow Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullbow" />
+        <attribute setup_start="Bow Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="4" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="1" />
+        <attribute strength="L" />
+        <attribute chit_color="gray" />
+		<attribute length="14" />
+		<attribute sharpness="2" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1355" name="Bow Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullbow" />
+        <attribute setup_start="Bow Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="4" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="1" />
+        <attribute strength="L" />
+        <attribute chit_color="gray" />
+		<attribute length="14" />
+		<attribute sharpness="2" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1356" name="Bow Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullbow" />
+        <attribute setup_start="Bow Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="4" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="1" />
+        <attribute strength="L" />
+        <attribute chit_color="gray" />
+		<attribute length="14" />
+		<attribute sharpness="2" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1357" name="Bow Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute icon_type="skullbow" />
+        <attribute setup_start="Bow Skeleton Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute super_realm="" />
+        <attribute box_num="4" />
+        <attribute undead="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="1" />
+        <attribute strength="L" />
+        <attribute chit_color="gray" />
+		<attribute length="14" />
+		<attribute sharpness="2" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
