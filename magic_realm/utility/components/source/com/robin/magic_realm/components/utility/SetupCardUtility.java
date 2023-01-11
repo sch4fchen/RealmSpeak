@@ -60,7 +60,6 @@ public class SetupCardUtility {
 		GamePool pool = new GamePool(data.getGameObjects());
 		ArrayList<String> keyVals = new ArrayList<>();
 		keyVals.add(hostPrefs.getGameKeyVals());
-		keyVals.add("monster_die="+monsterDie);
 		keyVals.add("!monster"); // no monsters (just their summon boxes)
 		keyVals.add("!rank"); // no natives (just their summon boxes)
 		ArrayList<GameObject> summons = pool.find(keyVals);
@@ -71,6 +70,7 @@ public class SetupCardUtility {
 		ArrayList<GameObject> treasureLocations = new ArrayList<>(); // Specific Monsters
 		ArrayList<GameObject> otherLocations = new ArrayList<>(); // summoned in a specific order
 		for (GameObject go:summons) {
+			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie) continue;
 			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
 			
 			if (go.hasKey("gold_special_target")) {
@@ -127,7 +127,8 @@ public class SetupCardUtility {
 			}
 			else if (rc.isMonster() && !rc.isPlayerControlledLeader()) {
 				int die = go.getThisInt("monster_die");
-				if (die==monsterDie || die==99) { // ghosts are ALWAYS prowling
+				int die2 = go.getThisInt("monster_die2");
+				if (die==monsterDie || die2==monsterDie || die==99) { // ghosts are ALWAYS prowling
 					if (!go.hasThisAttribute("blocked") && go.getThisAttribute("vulnerability")!="X") { // Exclude blocked and X monsters
 						// Finally, make sure there isn't a monster lure in the monster's clearing.
 						if (ClearingUtility.getItemInClearingWithKey(rc.getCurrentLocation(),Constants.NO_PROWLING)==null) {
@@ -149,9 +150,9 @@ public class SetupCardUtility {
 		ArrayList<GameObject> nonCurrentTileProwlers = new ArrayList<>();
 		ArrayList<String> generatedQuery = new ArrayList<>();
 		generatedQuery.add(Constants.GENERATED);
-		generatedQuery.add("monster_die="+monsterDie);
 		generatedQuery.add("!"+Constants.DEAD);
 		for (GameObject go:pool.find(generatedQuery)) {
+			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie) continue;
 			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
 			
 			if (!prowlingMonsters.contains(go)) {
@@ -165,8 +166,8 @@ public class SetupCardUtility {
 		travelerQuery.add(RealmComponent.TRAVELER);
 		travelerQuery.add(Constants.SPAWNED);
 		travelerQuery.add("!"+RealmComponent.OWNER_ID);
-		travelerQuery.add("monster_die="+monsterDie);
 		for (GameObject go:pool.find(travelerQuery)) {
+			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie) continue;
 			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
 			travelers.add(go);
 		}
@@ -264,7 +265,8 @@ public class SetupCardUtility {
 		ArrayList<GameObject> newMonsters = new ArrayList<>();
 		
 		// Expansion: Generate monsters from SEEN generators 
-		for (GameObject go:pool.find("seen,generator,!destroyed,monster_die="+monsterDie)) {
+		for (GameObject go:pool.find("seen,generator,!destroyed")) {
+			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie) continue;
 			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
 			
 			StateChitComponent rc = (StateChitComponent)RealmComponent.getRealmComponent(go);
@@ -437,6 +439,9 @@ public class SetupCardUtility {
 				go.setThisAttribute("clearing",String.valueOf(clearing));
 				clearing.add(go,null);
 				go.setThisAttribute("monster_die",generator.getThisAttribute("monster_die"));
+				if (generator.hasThisAttribute("monster_die2")) {
+					go.setThisAttribute("monster_die2",generator.getThisAttribute("monster_die2"));
+				}
 				go.setThisAttribute(Constants.GENERATOR_ID,generator.getStringId());
 				if (generator.getThisAttribute(Constants.BOARD_NUMBER) != null) {
 					go.setThisAttribute((Constants.BOARD_NUMBER), generator.getThisAttribute(Constants.BOARD_NUMBER));
@@ -791,6 +796,13 @@ public class SetupCardUtility {
 		keyVals.add("clearing"); // this identifies those that are on tiles
 		keyVals.add("!"+RealmComponent.OWNER_ID); // this identifies unhired natives
 		Collection<GameObject> returning = pool.extract(keyVals);
+		keyVals = new ArrayList<>();
+		keyVals.add(hostPrefs.getGameKeyVals());
+		keyVals.add("monster_die2="+monsterDie);
+		keyVals.add("setup_start");
+		keyVals.add("clearing");
+		keyVals.add("!"+RealmComponent.OWNER_ID);
+		returning.addAll(pool.extract(keyVals));
 		
 		keyVals = new ArrayList<>();
 		keyVals.add(hostPrefs.getGameKeyVals());
@@ -798,12 +810,24 @@ public class SetupCardUtility {
 		keyVals.add("setup_start"); // this should get all monsters and natives
 		keyVals.add("needs_init"); // this identifies those that need to initialized (start of game)
 		returning.addAll(pool.extract(keyVals));
+		keyVals = new ArrayList<>();
+		keyVals.add(hostPrefs.getGameKeyVals());
+		keyVals.add("monster_die2="+monsterDie);
+		keyVals.add("setup_start");
+		keyVals.add("needs_init");
+		returning.addAll(pool.extract(keyVals));
 		
 		keyVals = new ArrayList<>();
 		keyVals.add(hostPrefs.getGameKeyVals());
 		keyVals.add("monster_die="+monsterDie);
 		keyVals.add("setup_start"); // this should get all monsters and natives
 		keyVals.add(Constants.DEAD); // this identifies those that are DEAD
+		returning.addAll(pool.extract(keyVals));
+		keyVals = new ArrayList<>();
+		keyVals.add(hostPrefs.getGameKeyVals());
+		keyVals.add("monster_die2="+monsterDie);
+		keyVals.add("setup_start");
+		keyVals.add(Constants.DEAD);
 		returning.addAll(pool.extract(keyVals));
 		
 		keyVals = new ArrayList<>();
@@ -833,11 +857,11 @@ public class SetupCardUtility {
 	private static void flipGoldSpecialChits(HostPrefWrapper hostPrefs,GamePool pool,int monsterDie) {
 		ArrayList<String> keyVals = new ArrayList<>();
 		keyVals.add(hostPrefs.getGameKeyVals());
-		keyVals.add("monster_die="+monsterDie);
 		keyVals.add("gold_special");
 		ArrayList<GameObject> allGoldSpecial = pool.extract(keyVals);
 		ArrayList<GameObject> toFlip = new ArrayList<>();
 		for (GameObject side1 : allGoldSpecial) {
+			if (side1.getThisInt("monster_die")!=monsterDie && side1.getThisInt("monster_die2")!=monsterDie) continue;
 			GameObject holder = side1.getHeldBy();
 			if (holder!=null) {
 				RealmComponent rc = RealmComponent.getRealmComponent(holder);

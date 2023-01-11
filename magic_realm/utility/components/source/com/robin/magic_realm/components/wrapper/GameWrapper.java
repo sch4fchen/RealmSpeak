@@ -34,6 +34,7 @@ public class GameWrapper extends GameObjectWrapper {
 	public static final String GAME_VERSION_IGNORE_CHANGE = "_vic_";
 	public static final String GAME_DAY = "_d__";
 	public static final String GAME_MONSTER_DIE = "_md__";
+	public static final String GAME_NATIVE_DIE = "_nd__";
 	public static final String GAME_MONTH = "_m__";
 	public static final String GAME_STATE = "_gs__";
 	public static final String GAME_TURN_COUNT = "_turn__";
@@ -134,6 +135,13 @@ public class GameWrapper extends GameObjectWrapper {
 		}
 		return null;
 	}
+	public DieRoller getNativeDie() {
+		String string = getString(GAME_NATIVE_DIE);
+		if (string!=null) {
+			return new DieRoller(string,25,5);
+		}
+		return null;
+	}
 	public int getTurnCount() {
 		return getInt(GAME_TURN_COUNT);
 	}
@@ -192,6 +200,9 @@ public class GameWrapper extends GameObjectWrapper {
 	}
 	public void setMonsterDie(DieRoller roller) {
 		setString(GAME_MONSTER_DIE,roller.getStringResult());
+	}
+	public void setNativeDie(DieRoller roller) {
+		setString(GAME_NATIVE_DIE,roller.getStringResult());
 	}
 	private void setTurnCount(int val) { // private so that this isn't set manually!
 		setInt(GAME_TURN_COUNT,val);

@@ -162,6 +162,7 @@ public class TemplateLibrary {
 					// update some specific attributes
 					template.removeThisAttribute("setup_start");
 					template.removeThisAttribute("monster_die");
+					template.removeThisAttribute("monster_die2");
 					template.removeThisAttribute("hire_type");
 				}
 			}

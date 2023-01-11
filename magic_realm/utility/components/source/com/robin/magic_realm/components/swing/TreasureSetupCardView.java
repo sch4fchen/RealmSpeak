@@ -131,15 +131,20 @@ public class TreasureSetupCardView extends JComponent {
 					int md2 = go2.getThisInt("monster_die");
 					ret = md1-md2;
 					if (ret==0) {
-						String sm1 = go1.getThisAttribute("summon");
-						if (sm1==null) sm1 = go1.getName();
-						String sm2 = go2.getThisAttribute("summon");
-						if (sm2==null) sm2 = go2.getName();
-						ret = sm2.compareTo(sm1);
+						int md12 = go1.getThisInt("monster_die2");
+						int md22 = go2.getThisInt("monster_die2");
+						ret = md12-md22;
 						if (ret==0) {
-							int bn1 = go1.getThisInt("box_num");
-							int bn2 = go2.getThisInt("box_num");
-							ret = bn1-bn2;
+							String sm1 = go1.getThisAttribute("summon");
+							if (sm1==null) sm1 = go1.getName();
+							String sm2 = go2.getThisAttribute("summon");
+							if (sm2==null) sm2 = go2.getName();
+							ret = sm2.compareTo(sm1);
+							if (ret==0) {
+								int bn1 = go1.getThisInt("box_num");
+								int bn2 = go2.getThisInt("box_num");
+								ret = bn1-bn2;
+							}
 						}
 					}
 				}
@@ -158,6 +163,9 @@ public class TreasureSetupCardView extends JComponent {
 			String key;
 			if (go.hasThisAttribute("monster_die") && !go.hasThisAttribute("ts_sidebar")) {
 				key = section+go.getThisAttribute("monster_die");
+				if (go.hasThisAttribute("monster_die2")) {
+					key = key+go.getThisAttribute("monster_die2");
+				}
 			}
 			else {
 				// Non-monster die entries (like TWT and Valley Dwellings)

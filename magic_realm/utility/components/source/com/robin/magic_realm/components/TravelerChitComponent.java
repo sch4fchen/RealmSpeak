@@ -131,6 +131,10 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 			
 			ImageIcon die = getDieIcon(getGameObject().getThisInt("monster_die"));
 			g.drawImage(die.getImage(),50,31,null);
+			if (getGameObject().hasThisAttribute("monster_die2")) {
+				ImageIcon die2 = getDieIcon(getGameObject().getThisInt("monster_die2"));
+				g.drawImage(die2.getImage(),50,0,null);
+			}
 			
 			int x = 5;
 			int y = 35; 
