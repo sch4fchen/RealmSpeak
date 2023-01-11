@@ -164,7 +164,7 @@ public class TreasureSetupCardView extends JComponent {
 			if (go.hasThisAttribute("monster_die") && !go.hasThisAttribute("ts_sidebar")) {
 				key = section+go.getThisAttribute("monster_die");
 				if (go.hasThisAttribute("monster_die2")) {
-					key = key+go.getThisAttribute("monster_die2");
+					hash.put(section+go.getThisAttribute("monster_die2"),go);
 				}
 			}
 			else {
