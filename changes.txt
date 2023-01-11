@@ -53,6 +53,8 @@ NEW FEATURES:
 # Treasure Setup Card: Add Headlines
 # Option for structured Treasure Setup Card
 # Option for using Random Number Generator for game setup
+# Support for denizens with multiple monster dies for prowling
+# Support for different anchor tile (e.g. Borderland or Falls)
 BUGS/ISSUES:
 # QuestRequirementAttribute: Fix GreatTreasure not counting inventory by default
 SUPER REALM:
@@ -61,8 +63,6 @@ SUPER REALM:
 # Map chits (warning and sound chits)
 # Dwellings and Ghosts
 # Treasure locations
-# Support for denizens with multiple monster dies for prowling
-# Support for different anchor tile (e.g. Borderland or Falls)
 
 Version 1.1.7.2
 NEW FEATURES:

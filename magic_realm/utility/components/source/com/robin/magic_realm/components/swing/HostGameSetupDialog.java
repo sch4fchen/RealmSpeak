@@ -1162,6 +1162,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		smtpHost.setEnabled(emailNotification.isSelected());
 		testEmailButton.setEnabled(emailNotification.isSelected());
 		
+		vpSuddenDeathOption.setEnabled(!questSrOption.isSelected());
 		vpEndlessOption.setEnabled(!questQtrOption.isSelected() && !questSrOption.isSelected());
 		timeLimitLine.setVisible(vpTimedOption.isSelected());
 		vpAssignmentLine.setVisible((vpSuddenDeathOption.isSelected() || (vpTimedOption.isSelected() && fixedVps.isSelected() && !anyVpsAllowedOption.isSelected())) && !questBoqOption.isSelected());
