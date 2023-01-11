@@ -5952,6 +5952,7 @@
         <attribute ts_color="tan" />
         <attribute icon_folder="dwellings" />
         <attribute rw_expansion_1="" />
+		<attribute remove_curses="" />
       </AttributeBlock>
       <contains id="84" />
       <contains id="85" />
@@ -34237,6 +34238,7 @@
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
         <attribute icon_folder="dwellings" />
+		<attribute remove_curses="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1284" name="Guard">
@@ -35010,6 +35012,156 @@
         <attribute strength="M" />
         <attribute chit_color="gray" />
         <attribute length="17" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1318" name="Cultists Dwelling">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute native="Cultists" />
+        <attribute dwelling="Cultists" />
+        <attribute monster_die="1" />
+		<attribute monster_die2="2" />
+        <attribute print="" />
+        <attribute ts_section="lost fortress" />
+        <attribute ts_size="T" />
+        <attribute ts_color="yellow" />
+        <attribute ts_count="4" />
+        <attribute icon_type="pikeman" />
+        <attribute icon_folder="natives" />
+        <attribute virtual_dwelling="" />	
+      </AttributeBlock>
+      <contains id="1319" />
+      <contains id="1320" />
+      <contains id="1321" />
+      <contains id="1322" />
+    </GameObject>
+    <GameObject id="1319" name="Cultist 1">
+      <AttributeBlock blockName="this">
+        <attribute native="Cultist" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="1" />
+        <attribute super_realm="" />
+        <attribute icon_type="pikeman" />
+        <attribute monster_die="1" />
+		<attribute monster_die2="2" />
+        <attribute setup_start="Cultist Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives" />
+        <attribute denizen="" />
+		<attribute needs_init="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="paleyellow" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="yellow" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1320" name="Cultist 2">
+      <AttributeBlock blockName="this">
+        <attribute native="Cultist" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="2" />
+        <attribute super_realm="" />
+        <attribute icon_type="pikeman" />
+        <attribute monster_die="1" />
+		<attribute monster_die2="2" />
+        <attribute setup_start="Cultist Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="paleyellow" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="yellow" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1321" name="Cultist 3">
+      <AttributeBlock blockName="this">
+        <attribute native="Cultist" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="3" />
+        <attribute super_realm="" />
+        <attribute icon_type="pikeman" />
+        <attribute monster_die="1" />
+		<attribute monster_die2="2" />
+        <attribute setup_start="Cultist Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="paleyellow" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="yellow" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1322" name="Cultist HQ">
+      <AttributeBlock blockName="this">
+        <attribute native="Cultist" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="HQ" />
+        <attribute super_realm="" />
+        <attribute icon_type="pikeman" />
+        <attribute monster_die="1" />
+		<attribute monster_die2="2" />
+        <attribute setup_start="Cultist Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="paleyellow" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="yellow" />
       </AttributeBlock>
     </GameObject>
   </objects>
