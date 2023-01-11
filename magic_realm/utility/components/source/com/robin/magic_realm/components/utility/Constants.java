@@ -373,6 +373,7 @@ public class Constants {
 	public static final String LOCKPICK = "lockpick";
 	public static final String SMALL = "small";
 	public static final String MIST_LIKE = "mist_like";
+	public static final String REMOVE_CURSES = "remove_curses";
 	
 	// New Spells
 	public static final String SUMMONING = "summoning";

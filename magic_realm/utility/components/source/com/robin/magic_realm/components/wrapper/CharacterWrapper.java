@@ -1710,7 +1710,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (current.hasClearing() && !current.isBetweenClearings()) {
 			for (RealmComponent rc : current.clearing.getClearingComponents()) {
 				if (rc.isDwelling()) {
-					if (rc.getGameObject().getName().startsWith("Chapel")) { // In case there is a Chapel B
+					if (rc.getGameObject().getName().startsWith("Chapel") || rc.getGameObject().hasThisAttribute(Constants.REMOVE_CURSES)) { // In case there is a Chapel B
 						RealmLogging.logMessage(getGameObject().getName(),"Spent the night at the Chapel.");
 						removeAllCurses();
 						deactivateAllEvilObjects();
