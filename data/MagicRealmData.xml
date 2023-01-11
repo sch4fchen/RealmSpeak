@@ -34715,16 +34715,15 @@
 		<attribute no_change_tactics="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
-        <attribute move_speed="0" />
         <attribute attack_speed="5" />
         <attribute strength="X" />
         <attribute chit_color="blue" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
-        <attribute move_speed="0" />
         <attribute attack_speed="5" />
         <attribute strength="X" />
         <attribute chit_color="blue" />
+		<attribute pins="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1308" name="T Troll">
@@ -34886,20 +34885,20 @@
 		<attribute no_change_tactics="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
-        <attribute move_speed="0" />
         <attribute attack_speed="4" />
         <attribute strength="X" />
 		<attribute length="18" />
 		<attribute sharpness="3" />
         <attribute chit_color="blue" />
+		<attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
-        <attribute move_speed="0" />
         <attribute attack_speed="5" />
         <attribute strength="X" />
 		<attribute length="18" />
 		<attribute sharpness="3" />
         <attribute chit_color="blue" />
+		<attribute missile="" />
       </AttributeBlock>
     </GameObject>
 	<GameObject id="1314" name="Succubus">
@@ -34993,6 +34992,7 @@
         <attribute icon_type="zombie1" />
         <attribute setup_start="Temple" />
         <attribute monster_die="6" />
+		<attribute flying="" />
         <attribute base_price="4" />
         <attribute icon_folder="monsters2" />
 		<attribute needs_init="" />
@@ -35162,6 +35162,173 @@
         <attribute strength="M" />
         <attribute length="9" />
         <attribute chit_color="yellow" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1323" name="H Gargyle Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Stink R,Flutter R,Slither R" />
+        <attribute monster_die="3" />
+        <attribute super_realm="" />
+        <attribute box_num="1" />
+        <attribute ts_section="lost fortress" />
+        <attribute ts_count="1" />
+        <attribute ts_size="H" />
+        <attribute ts_color="blue" />
+        <attribute icon_type="demon_flying" />
+        <attribute icon_folder="monsters" />
+      </AttributeBlock>
+      <contains id="1326" />
+    </GameObject>
+    <GameObject id="1324" name="H Gargyle Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Stink R,Flutter R,Slither R" />
+        <attribute monster_die="3" />
+        <attribute super_realm="" />
+        <attribute box_num="2" />
+        <attribute ts_section="lost fortress" />
+        <attribute ts_count="2" />
+        <attribute ts_size="H" />
+        <attribute ts_color="blue" />
+        <attribute icon_type="demon_flying" />
+        <attribute icon_folder="monsters" />
+      </AttributeBlock>
+      <contains id="1327" />
+	  <contains id="1328" />
+    </GameObject>
+    <GameObject id="1325" name="T Gargyle Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Stink R,Flutter R,Slither R" />
+        <attribute monster_die="3" />
+        <attribute super_realm="" />
+        <attribute box_num="3" />
+        <attribute ts_section="lost fortress" />
+        <attribute ts_count="1" />
+        <attribute ts_size="T" />
+        <attribute ts_color="blue" />
+        <attribute icon_type="demon_flying" />
+        <attribute icon_folder="monsters" />
+      </AttributeBlock>
+	  <contains id="1329" />
+    </GameObject>
+	<GameObject id="1326" name="H Gargyle">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="4" />
+        <attribute notoriety="4" />
+        <attribute demon="" />
+        <attribute super_realm="" />
+        <attribute icon_type="demon_flying" />
+        <attribute setup_start="H Gargyle Box" />
+        <attribute monster_die="3" />
+        <attribute flying="" />
+        <attribute base_price="4" />
+        <attribute icon_folder="monsters" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute magic_type="M" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1327" name="H Gargyle">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="4" />
+        <attribute notoriety="4" />
+        <attribute demon="" />
+        <attribute super_realm="" />
+        <attribute icon_type="demon_flying" />
+        <attribute setup_start="H Gargyle Box" />
+        <attribute monster_die="3" />
+        <attribute flying="" />
+        <attribute base_price="4" />
+        <attribute icon_folder="monsters" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute magic_type="M" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1328" name="H Gargyle">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="4" />
+        <attribute notoriety="4" />
+        <attribute demon="" />
+        <attribute super_realm="" />
+        <attribute icon_type="demon_flying" />
+        <attribute setup_start="H Gargyle Box" />
+        <attribute monster_die="3" />
+        <attribute flying="" />
+        <attribute base_price="4" />
+        <attribute icon_folder="monsters" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute magic_type="M" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1329" name="T Gargyle">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="T" />
+        <attribute fame="8" />
+        <attribute notoriety="8" />
+        <attribute demon="" />
+        <attribute super_realm="" />
+        <attribute icon_type="demon_flying" />
+        <attribute setup_start="T Gargyle Box" />
+        <attribute monster_die="3" />
+        <attribute flying="" />
+        <attribute base_price="8" />
+        <attribute icon_folder="monsters" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="5" />
+        <attribute magic_type="H" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="RED" />
+        <attribute chit_color="red" />
+		<attribute pins="" />
       </AttributeBlock>
     </GameObject>
   </objects>

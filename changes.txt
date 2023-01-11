@@ -1,6 +1,4 @@
 ::ROADMAP::
-Update: CompanionEditPanel: all denizens
-Update: RealmCharacterConstants: natives, dwellings, travelers?
 Super Realm: Denizens: Monsters/Natives, Items incl. Horses, Treasures, Travelers
 Super Realm: rules for minotaur shield
 Super Realm: rules for special monster attacks and change tactics (Spear and Bow Goblins, Bow Skeletons, Demon, Winged Demon, Imp, Vampire, Succubus, and Devil): p.98
@@ -14,6 +12,8 @@ Super Realm: Regeneration: start of a new month (not 7th day), all un-hired deni
 Super Realm: natives: rules for new native attacks and spells
 Super Realm: Adapt Commerce optional rules for new natives
 Super Realm: Characters (incl. overview in the Menu like for basic MR and custom characters)
+Super Realm: CompanionEditPanel: add all denizens
+Super Realm: RealmCharacterConstants (adapt ArmorEditDialog and WeaponEditDialog): dwellings, visitors
 Super Realm: Seasons + Weather 10.12 (p.117)
 Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
 3rdEdition / RealmSpeak: Optional Character Rules (A.6, p. 186): Captain, Druid, Magician, WIZARD ignores SPX, Woods Girl, Elf
