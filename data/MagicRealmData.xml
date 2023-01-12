@@ -34356,6 +34356,18 @@
         <attribute monster_die="99" />
         <attribute denizen="" />
       </AttributeBlock>
+	  <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute chit_color="lightgreen" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="2" />
+        <attribute attack_speed="2" />
+        <attribute strength="L" />
+        <attribute chit_color="forestgreen" />
+      </AttributeBlock>
     </GameObject>
     <GameObject id="1293" name="Ghost">
       <AttributeBlock blockName="this">
@@ -34370,6 +34382,18 @@
         <attribute icon_folder="monsters" />
         <attribute monster_die="99" />
         <attribute denizen="" />
+      </AttributeBlock>
+	  <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute chit_color="lightgreen" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="2" />
+        <attribute attack_speed="2" />
+        <attribute strength="L" />
+        <attribute chit_color="forestgreen" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1294" name="Ghost">
@@ -34386,6 +34410,18 @@
         <attribute monster_die="99" />
         <attribute denizen="" />
       </AttributeBlock>
+	  <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute chit_color="lightgreen" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="2" />
+        <attribute attack_speed="2" />
+        <attribute strength="L" />
+        <attribute chit_color="forestgreen" />
+      </AttributeBlock>
     </GameObject>
     <GameObject id="1295" name="Ghost">
       <AttributeBlock blockName="this">
@@ -34400,6 +34436,18 @@
         <attribute icon_folder="monsters" />
         <attribute monster_die="99" />
         <attribute denizen="" />
+      </AttributeBlock>
+	  <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute chit_color="lightgreen" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="2" />
+        <attribute attack_speed="2" />
+        <attribute strength="L" />
+        <attribute chit_color="forestgreen" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1296" name="T Flying Dragon">
