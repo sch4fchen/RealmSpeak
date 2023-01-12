@@ -163,9 +163,6 @@ public class TreasureSetupCardView extends JComponent {
 			String key;
 			if (go.hasThisAttribute("monster_die") && !go.hasThisAttribute("ts_sidebar")) {
 				key = section+go.getThisAttribute("monster_die");
-				if (go.hasThisAttribute("monster_die2")) {
-					hash.put(section+go.getThisAttribute("monster_die2"),go);
-				}
 			}
 			else {
 				// Non-monster die entries (like TWT and Valley Dwellings)
@@ -529,6 +526,7 @@ public class TreasureSetupCardView extends JComponent {
 						ArrayList<GameObject> gos = new ArrayList<>();
 						int startX = x-SPACING;
 						int yoffset = 0;
+						boolean doubleBox = false;
 						for (GameObject go : group) {
 							String size = getChitSizeAttribute(go);
 							Dimension d = ChitComponent.getDimensionForSize(size);
@@ -544,9 +542,17 @@ public class TreasureSetupCardView extends JComponent {
 							rects.add(new Rectangle(x,y+yoffset,d.width-1,d.height));
 							gos.add(go);
 							x += d.width;
+							if (!doubleBox && go.hasThisAttribute("monster_die2")
+									&& go.getThisInt("monster_die2")==n+1 && go.getThisInt("monster_die")==n) {
+								doubleBox = true;
+							}
 						}
 						x += SPACING;
-						g.fillRect(startX,y-SPACING-TEXT_SPACING,x-startX,h);
+						if (doubleBox) {
+							g.fillRect(startX,y-SPACING-TEXT_SPACING,x-startX,h*2);
+						} else {
+							g.fillRect(startX,y-SPACING-TEXT_SPACING,x-startX,h);
+						}
 						g.setColor(Color.black);
 						g.setFont(SUMMON_FONT);
 						String drawSummon = summon.toUpperCase().replace('_',' ');
@@ -572,6 +578,13 @@ public class TreasureSetupCardView extends JComponent {
 							drawContainerList.add(go);
 
 							g.setComposite(TRANSPARENT);
+							doubleBox = false;
+							if (go.hasThisAttribute("monster_die2")
+									&& go.getThisInt("monster_die2")==n+1 && go.getThisInt("monster_die")==n) {
+								rect.height = rect.height*2+SPACING*2+TEXT_SPACING*2;
+								doubleBox = true;
+							}
+							
 							g.draw(rect);
 							String iconType = go.getThisAttribute(Constants.ICON_TYPE);
 							
@@ -592,6 +605,9 @@ public class TreasureSetupCardView extends JComponent {
 								g.drawImage(icon.getImage(),rect.x+dx,rect.y+dy,null);
 							}
 							
+							if (doubleBox) {
+								rect.y = rect.y+rect.height/4;
+							}
 							// Draw the count (if any)
 							String count = go.getThisAttribute("ts_count");
 							if (count!=null) {
@@ -621,7 +637,6 @@ public class TreasureSetupCardView extends JComponent {
 								// what is the difference in size of the box and the topmost chit?
 								RealmComponent topChit = drawable.get(drawable.size()-1);
 								int diff = rect.height - topChit.getHeight();
-								
 								int yoff = ((drawable.size()-1)*3)-(diff>>1);
 								
 								if (drawable.size()>5) yoff -= 4;
@@ -631,6 +646,9 @@ public class TreasureSetupCardView extends JComponent {
 									allDrawables.add(rc);
 									allDrawableRects.add(new Rectangle(dx,dy,rect.width+10,rect.height+10));
 									offset+=3;
+								}
+								if (doubleBox) {
+									rect.y = rect.y-rect.height/4;
 								}
 							}
 						}
