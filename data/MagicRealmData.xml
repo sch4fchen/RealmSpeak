@@ -36179,6 +36179,318 @@
 		<attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
+	<GameObject id="1358" name="Orc Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Smoke R, Roar, Patter R" />
+        <attribute monster_die="5" />
+        <attribute super_realm="" />
+        <attribute box_num="1" />
+        <attribute ts_section="lost fortress" />
+        <attribute ts_count="1" />
+        <attribute ts_size="M" />
+        <attribute ts_color="purple" />
+        <attribute icon_type="orc_sword" />
+        <attribute icon_folder="monsters1" />
+      </AttributeBlock>
+	  <contains id="1362" />
+    </GameObject>
+	<GameObject id="1359" name="Orc Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Smoke R, Roar, Patter R" />
+        <attribute monster_die="5" />
+        <attribute super_realm="" />
+        <attribute box_num="2" />
+        <attribute ts_section="lost fortress" />
+        <attribute ts_count="2" />
+        <attribute ts_size="M" />
+        <attribute ts_color="purple" />
+        <attribute icon_type="orc_sword" />
+        <attribute icon_folder="monsters1" />
+      </AttributeBlock>
+	  <contains id="1363" />
+	  <contains id="1364" />
+    </GameObject>
+	<GameObject id="1360" name="Orc Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Smoke R, Roar, Patter R" />
+        <attribute monster_die="5" />
+        <attribute super_realm="" />
+        <attribute box_num="3" />
+        <attribute ts_section="lost fortress" />
+        <attribute ts_count="2" />
+        <attribute ts_size="M" />
+        <attribute ts_color="purple" />
+        <attribute icon_type="orc_sword" />
+        <attribute icon_folder="monsters1" />
+      </AttributeBlock>
+	  <contains id="1365" />
+	  <contains id="1366" />
+    </GameObject>
+	<GameObject id="1361" name="Orc Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Smoke R, Roar, Patter R" />
+        <attribute monster_die="5" />
+        <attribute super_realm="" />
+        <attribute box_num="4" />
+        <attribute ts_section="lost fortress" />
+        <attribute ts_count="3" />
+        <attribute ts_size="M" />
+        <attribute ts_color="purple" />
+        <attribute icon_type="orc_sword" />
+        <attribute icon_folder="monsters1" />
+      </AttributeBlock>
+	  <contains id="1367" />
+	  <contains id="1368" />
+	  <contains id="1369" />
+    </GameObject>
+	<GameObject id="1362" name="Orc">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute super_realm="" />
+        <attribute icon_type="orc_sword" />
+        <attribute setup_start="Orc Box" />
+        <attribute monster_die="5" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters1" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1363" name="Orc">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute super_realm="" />
+        <attribute icon_type="orc_sword" />
+        <attribute setup_start="Orc Box" />
+        <attribute monster_die="5" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters1" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1364" name="Orc">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute super_realm="" />
+        <attribute icon_type="orc_sword" />
+        <attribute setup_start="Orc Box" />
+        <attribute monster_die="5" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters1" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1365" name="Orc">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute super_realm="" />
+        <attribute icon_type="orc_sword" />
+        <attribute setup_start="Orc Box" />
+        <attribute monster_die="5" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters1" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1366" name="Orc">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute super_realm="" />
+        <attribute icon_type="orc_sword" />
+        <attribute setup_start="Orc Box" />
+        <attribute monster_die="5" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters1" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1367" name="Orc">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute super_realm="" />
+        <attribute icon_type="orc_sword" />
+        <attribute setup_start="Orc Box" />
+        <attribute monster_die="5" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters1" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1368" name="Orc">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute super_realm="" />
+        <attribute icon_type="orc_sword" />
+        <attribute setup_start="Orc Box" />
+        <attribute monster_die="5" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters1" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1369" name="Orc">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute super_realm="" />
+        <attribute icon_type="orc_sword" />
+        <attribute setup_start="Orc Box" />
+        <attribute monster_die="5" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters1" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
