@@ -68,6 +68,7 @@ SUPER REALM:
 # Map chits (warning and sound chits)
 # Dwellings and Ghosts
 # Treasure locations
+# Monsters for treasure locations and lost fortress
 
 Version 1.1.7.2
 NEW FEATURES:
