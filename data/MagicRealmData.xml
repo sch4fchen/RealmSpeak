@@ -12036,6 +12036,7 @@
         <attribute creator="Richard Hamblen" />
         <attribute artcredit="Ralph King" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Scout" />
@@ -12074,6 +12075,8 @@
         <attribute shaman="1" />
         <attribute company="-1" />
         <attribute bashkars="-1" />
+		<attribute merchant="1" />
+		<attribute peasants="-1" />
       </AttributeBlock>
       <contains id="451" />
       <contains id="452" />
@@ -12563,6 +12566,7 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="452" name="Amazon Move M3*">
@@ -12580,6 +12584,7 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="453" name="Amazon Fight L4">
@@ -12596,6 +12601,7 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="454" name="Amazon Move M4">
@@ -12612,6 +12618,7 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="455" name="Amazon Fight M5">
@@ -12628,6 +12635,7 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="456" name="Amazon Fight M4*">
@@ -12645,6 +12653,7 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="457" name="Amazon Move M3*">
@@ -12662,6 +12671,7 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="458" name="Amazon Fight M3**">
@@ -12679,6 +12689,7 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="459" name="Amazon Fight H4**">
@@ -12696,6 +12707,7 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="460" name="Amazon Fight M4*">
@@ -12713,6 +12725,7 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="461" name="Amazon Fight M3**">
@@ -12730,6 +12743,7 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="462" name="Amazon Move M3*">
@@ -12747,6 +12761,7 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
+		<attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="463" name="Captain Move M4*">
