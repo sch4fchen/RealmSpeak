@@ -38260,6 +38260,782 @@
         <attribute pins="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="1441" name="Axe Goblins Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Ruins C, Patter C, Howl C" />
+        <attribute monster_die="3" />
+        <attribute box_num="1" />
+        <attribute ts_section="lost city" />
+        <attribute ts_count="6" />
+        <attribute ts_size="M" />
+        <attribute ts_color="blue" />
+        <attribute icon_type="goblin_axe" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1445" />
+      <contains id="1446" />
+      <contains id="1447" />
+      <contains id="1448" />
+      <contains id="1449" />
+      <contains id="1450" />
+    </GameObject>
+    <GameObject id="1442" name="Spear Goblins Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Ruins C, Patter C, Howl C" />
+        <attribute monster_die="3" />
+        <attribute box_num="2" />
+        <attribute ts_section="lost city" />
+        <attribute ts_count="6" />
+        <attribute ts_size="M" />
+        <attribute ts_color="blue" />
+        <attribute icon_type="goblin_spear" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1451" />
+      <contains id="1452" />
+      <contains id="1453" />
+      <contains id="1454" />
+      <contains id="1455" />
+      <contains id="1456" />
+    </GameObject>
+    <GameObject id="1443" name="Sword Goblins Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Ruins C, Patter C, Howl C" />
+        <attribute monster_die="3" />
+        <attribute box_num="3" />
+        <attribute ts_section="lost city" />
+        <attribute ts_count="6" />
+        <attribute ts_size="M" />
+        <attribute ts_color="blue" />
+        <attribute icon_type="goblin_sword" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1457" />
+      <contains id="1458" />
+      <contains id="1459" />
+      <contains id="1460" />
+      <contains id="1461" />
+      <contains id="1462" />
+    </GameObject>
+    <GameObject id="1444" name="Bow Goblins Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Ruins C, Patter C, Howl C" />
+        <attribute monster_die="3" />
+        <attribute box_num="4" />
+        <attribute ts_section="lost city" />
+        <attribute ts_count="6" />
+        <attribute ts_size="M" />
+        <attribute ts_color="blue" />
+        <attribute icon_type="imp" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1463" />
+      <contains id="1464" />
+      <contains id="1465" />
+      <contains id="1466" />
+      <contains id="1467" />
+      <contains id="1468" />
+    </GameObject>
+    <GameObject id="1445" name="Axe Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="goblin_axe" />
+        <attribute setup_start="Axe Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute sharpness="1" />
+        <attribute length="2" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute length="2" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1446" name="Axe Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="goblin_axe" />
+        <attribute setup_start="Axe Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute sharpness="1" />
+        <attribute length="2" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute length="2" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1447" name="Axe Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="goblin_axe" />
+        <attribute setup_start="Axe Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute sharpness="1" />
+        <attribute length="2" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute length="2" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1448" name="Axe Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="goblin_axe" />
+        <attribute setup_start="Axe Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute sharpness="1" />
+        <attribute length="2" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute length="2" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1449" name="Axe Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="goblin_axe" />
+        <attribute setup_start="Axe Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute sharpness="1" />
+        <attribute length="2" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute length="2" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1450" name="Axe Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="goblin_axe" />
+        <attribute setup_start="Axe Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute sharpness="1" />
+        <attribute length="2" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute length="2" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1451" name="Spear Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="goblin_spear" />
+        <attribute setup_start="Spear Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute length="10" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1452" name="Spear Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="goblin_spear" />
+        <attribute setup_start="Spear Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute length="10" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1453" name="Spear Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="goblin_spear" />
+        <attribute setup_start="Spear Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute length="10" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1454" name="Spear Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="goblin_spear" />
+        <attribute setup_start="Spear Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute length="10" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1455" name="Spear Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="goblin_spear" />
+        <attribute setup_start="Spear Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute length="10" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1456" name="Spear Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="goblin_spear" />
+        <attribute setup_start="Spear Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute length="10" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1457" name="Sword Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="goblin_sword" />
+        <attribute setup_start="Sword Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="T" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1458" name="Sword Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="goblin_sword" />
+        <attribute setup_start="Sword Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="T" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1459" name="Sword Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="goblin_sword" />
+        <attribute setup_start="Sword Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="T" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1460" name="Sword Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="goblin_sword" />
+        <attribute setup_start="Sword Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="T" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1461" name="Sword Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="goblin_sword" />
+        <attribute setup_start="Sword Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="T" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1462" name="Sword Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="goblin_sword" />
+        <attribute setup_start="Sword Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="T" />
+        <attribute sharpness="1" />
+        <attribute length="8" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1463" name="Bow Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="imp" />
+        <attribute setup_start="Sword Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="1" />
+        <attribute strength="L" />
+        <attribute sharpness="2" />
+        <attribute length="14" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1464" name="Bow Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="imp" />
+        <attribute setup_start="Sword Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="1" />
+        <attribute strength="L" />
+        <attribute sharpness="2" />
+        <attribute length="14" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1465" name="Bow Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="imp" />
+        <attribute setup_start="Sword Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="1" />
+        <attribute strength="L" />
+        <attribute sharpness="2" />
+        <attribute length="14" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1466" name="Bow Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="imp" />
+        <attribute setup_start="Sword Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="1" />
+        <attribute strength="L" />
+        <attribute sharpness="2" />
+        <attribute length="14" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1467" name="Bow Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="imp" />
+        <attribute setup_start="Sword Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="1" />
+        <attribute strength="L" />
+        <attribute sharpness="2" />
+        <attribute length="14" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1468" name="Bow Goblin">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="1" />
+        <attribute icon_type="imp" />
+        <attribute setup_start="Sword Goblins Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="1" />
+        <attribute strength="L" />
+        <attribute sharpness="2" />
+        <attribute length="14" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
