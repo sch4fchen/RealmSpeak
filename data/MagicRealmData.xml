@@ -36491,6 +36491,141 @@
         <attribute chit_color="purple" />
       </AttributeBlock>
     </GameObject>
+	<GameObject id="1370" name="Golem Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Ruins R, Roar" />
+        <attribute monster_die="6" />
+        <attribute super_realm="" />
+        <attribute box_num="1" />
+        <attribute ts_section="lost fortress" />
+        <attribute ts_count="1" />
+        <attribute ts_size="T" />
+        <attribute ts_color="brown" />
+        <attribute icon_type="troll" />
+        <attribute icon_folder="monsters" />
+      </AttributeBlock>
+	  <contains id="1373" />
+    </GameObject>
+	<GameObject id="1371" name="Golem Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Ruins R, Roar" />
+        <attribute monster_die="6" />
+        <attribute super_realm="" />
+        <attribute box_num="2" />
+        <attribute ts_section="lost fortress" />
+        <attribute ts_count="1" />
+        <attribute ts_size="T" />
+        <attribute ts_color="brown" />
+        <attribute icon_type="troll" />
+        <attribute icon_folder="monsters" />
+      </AttributeBlock>
+	  <contains id="1374" />
+    </GameObject>
+	<GameObject id="1372" name="Golem Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Ruins R, Roar" />
+        <attribute monster_die="6" />
+        <attribute super_realm="" />
+        <attribute box_num="3" />
+        <attribute ts_section="lost fortress" />
+        <attribute ts_count="1" />
+        <attribute ts_size="T" />
+        <attribute ts_color="brown" />
+        <attribute icon_type="troll" />
+        <attribute icon_folder="monsters" />
+      </AttributeBlock>
+	  <contains id="1375" />
+    </GameObject>
+	<GameObject id="1373" name="Golem">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="T" />
+        <attribute fame="8" />
+        <attribute notoriety="8" />
+        <attribute super_realm="" />
+        <attribute icon_type="troll" />
+        <attribute setup_start="Golem Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="8" />
+        <attribute icon_folder="monsters" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="RED" />
+        <attribute chit_color="red" />
+        <attribute pins="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1374" name="Golem">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="T" />
+        <attribute fame="8" />
+        <attribute notoriety="8" />
+        <attribute super_realm="" />
+        <attribute icon_type="troll" />
+        <attribute setup_start="Golem Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="8" />
+        <attribute icon_folder="monsters" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="RED" />
+        <attribute chit_color="red" />
+        <attribute pins="" />
+      </AttributeBlock>
+    </GameObject>
+	<GameObject id="1375" name="Golem">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="T" />
+        <attribute fame="8" />
+        <attribute notoriety="8" />
+        <attribute super_realm="" />
+        <attribute icon_type="troll" />
+        <attribute setup_start="Golem Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="8" />
+        <attribute icon_folder="monsters" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="RED" />
+        <attribute chit_color="red" />
+        <attribute pins="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
