@@ -81,7 +81,7 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		String horse_type = gameObject.getThisAttribute("horse");
 		if (horse_type!=null) {
 			String folder = useColorIcons()?"steed_c":"steed";
-			if (!gameObject.hasThisAttribute("monster_steed")) {
+			if (!gameObject.hasThisAttribute("super_realm") && !gameObject.hasThisAttribute("monster_steed")) {
 				String letterCode = gameObject.getName().substring(0,1).toUpperCase();
 				horse_type = horse_type + (useColorIcons()?("_"+letterCode.toLowerCase()):"");
 			}
@@ -102,7 +102,7 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		String horse_type = gameObject.getAttribute("this","horse");
 		if (horse_type!=null) {
 			String folder = useColorIcons()?"steed_c":"steed";
-			if (!gameObject.hasThisAttribute("monster_steed")) {
+			if (!gameObject.hasThisAttribute("super_realm") && !gameObject.hasThisAttribute("monster_steed")) {
 				horse_type = horse_type + (useColorIcons()?("_"+letterCode.toLowerCase()):"");
 			}
 			drawIcon(g,folder,horse_type,0.5);

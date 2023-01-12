@@ -35026,7 +35026,7 @@
         <attribute ts_size="T" />
         <attribute ts_color="yellow" />
         <attribute ts_count="4" />
-        <attribute icon_type="pikeman" />
+        <attribute icon_type="swordsman" />
         <attribute icon_folder="natives" />
         <attribute virtual_dwelling="" />	
       </AttributeBlock>
@@ -35044,12 +35044,12 @@
         <attribute vulnerability="M" />
         <attribute rank="1" />
         <attribute super_realm="" />
-        <attribute icon_type="pikeman" />
+        <attribute icon_type="swordsman_r" />
         <attribute monster_die="1" />
 		<attribute monster_die2="2" />
         <attribute setup_start="Cultist Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives" />
+        <attribute icon_folder="natives_c" />
         <attribute denizen="" />
 		<attribute needs_init="" />
       </AttributeBlock>
@@ -35077,12 +35077,12 @@
         <attribute vulnerability="M" />
         <attribute rank="2" />
         <attribute super_realm="" />
-        <attribute icon_type="pikeman" />
+        <attribute icon_type="swordsman_r" />
         <attribute monster_die="1" />
 		<attribute monster_die2="2" />
         <attribute setup_start="Cultist Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives" />
+        <attribute icon_folder="natives_c" />
         <attribute denizen="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -35109,12 +35109,12 @@
         <attribute vulnerability="M" />
         <attribute rank="3" />
         <attribute super_realm="" />
-        <attribute icon_type="pikeman" />
+        <attribute icon_type="swordsman_r" />
         <attribute monster_die="1" />
 		<attribute monster_die2="2" />
         <attribute setup_start="Cultist Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives" />
+        <attribute icon_folder="natives_c" />
         <attribute denizen="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -35141,12 +35141,12 @@
         <attribute vulnerability="M" />
         <attribute rank="HQ" />
         <attribute super_realm="" />
-        <attribute icon_type="pikeman" />
+        <attribute icon_type="swordsman_r" />
         <attribute monster_die="1" />
 		<attribute monster_die2="2" />
         <attribute setup_start="Cultist Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives" />
+        <attribute icon_folder="natives_c" />
         <attribute denizen="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
