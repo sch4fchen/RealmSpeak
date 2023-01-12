@@ -37046,13 +37046,69 @@
         <attribute ts_sort="1" />
       </AttributeBlock>
       <contains id="1392" />
+      <contains id="1393" />
+      <contains id="1394" />
       <contains id="1395" />
       <contains id="1396" />
       <contains id="1397" />
-      <contains id="1398" />
-      <contains id="1399" />
     </GameObject>
     <GameObject id="1392" name="Rat">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="0" />
+        <attribute notoriety="1" />
+        <attribute super_realm="" />
+        <attribute icon_type="bat" />
+        <attribute setup_start="Rat Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1393" name="Rat">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="0" />
+        <attribute notoriety="1" />
+        <attribute super_realm="" />
+        <attribute icon_type="bat" />
+        <attribute setup_start="Rat Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1394" name="Rat">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -37164,63 +37220,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1398" name="Rat">
-      <AttributeBlock blockName="this">
-        <attribute monster="" />
-        <attribute vulnerability="M" />
-        <attribute fame="0" />
-        <attribute notoriety="1" />
-        <attribute super_realm="" />
-        <attribute icon_type="bat" />
-        <attribute setup_start="Rat Box" />
-        <attribute monster_die="3" />
-        <attribute base_price="1" />
-        <attribute icon_folder="monsters" />
-        <attribute needs_init="" />
-        <attribute denizen="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="light">
-        <attribute move_speed="4" />
-        <attribute attack_speed="4" />
-        <attribute strength="M" />
-        <attribute chit_color="purple" />
-      </AttributeBlock>
-      <AttributeBlock blockName="dark">
-        <attribute move_speed="3" />
-        <attribute attack_speed="4" />
-        <attribute strength="L" />
-        <attribute chit_color="red" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="1399" name="Rat">
-      <AttributeBlock blockName="this">
-        <attribute monster="" />
-        <attribute vulnerability="M" />
-        <attribute fame="0" />
-        <attribute notoriety="1" />
-        <attribute super_realm="" />
-        <attribute icon_type="bat" />
-        <attribute setup_start="Rat Box" />
-        <attribute monster_die="3" />
-        <attribute base_price="1" />
-        <attribute icon_folder="monsters" />
-        <attribute needs_init="" />
-        <attribute denizen="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="light">
-        <attribute move_speed="4" />
-        <attribute attack_speed="4" />
-        <attribute strength="M" />
-        <attribute chit_color="purple" />
-      </AttributeBlock>
-      <AttributeBlock blockName="dark">
-        <attribute move_speed="3" />
-        <attribute attack_speed="4" />
-        <attribute strength="L" />
-        <attribute chit_color="red" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="1400" name="Bear Box">
+    <GameObject id="1398" name="Bear Box">
       <AttributeBlock blockName="this">
         <attribute summon="Bones ST" />
         <attribute monster_die="3" />
@@ -37234,9 +37234,9 @@
         <attribute icon_folder="monsters2" />
         <attribute ts_sort="2" />
       </AttributeBlock>
-      <contains id="1401" />
+      <contains id="1399" />
     </GameObject>
-    <GameObject id="1401" name="Bear">
+    <GameObject id="1399" name="Bear">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="H" />
@@ -37264,7 +37264,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1402" name="Alligator Box">
+    <GameObject id="1400" name="Alligator Box">
       <AttributeBlock blockName="this">
         <attribute summon="Dank ST" />
         <attribute monster_die="4" />
@@ -37278,9 +37278,9 @@
         <attribute icon_folder="monsters2" />
         <attribute ts_sort="2" />
       </AttributeBlock>
-      <contains id="1403" />
+      <contains id="1401" />
     </GameObject>
-    <GameObject id="1403" name="Alligator">
+    <GameObject id="1401" name="Alligator">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="H" />
@@ -37309,7 +37309,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1404" name="Elves Dwelling">
+    <GameObject id="1402" name="Elves Dwelling">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute native="Elves" />
@@ -37327,14 +37327,14 @@
         <attribute box_num="3" />
         <attribute ts_sort="3" />
       </AttributeBlock>
+      <contains id="1403" />
+      <contains id="1404" />
       <contains id="1405" />
       <contains id="1406" />
       <contains id="1407" />
       <contains id="1408" />
-      <contains id="1409" />
-      <contains id="1410" />
     </GameObject>
-    <GameObject id="1405" name="Elf 1">
+    <GameObject id="1403" name="Elf 1">
       <AttributeBlock blockName="this">
         <attribute native="Cultist" />
         <attribute fame="0" />
@@ -37368,7 +37368,7 @@
         <attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1406" name="Elf 2">
+    <GameObject id="1404" name="Elf 2">
       <AttributeBlock blockName="this">
         <attribute native="Cultist" />
         <attribute fame="0" />
@@ -37401,7 +37401,7 @@
         <attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1407" name="Elf 3">
+    <GameObject id="1405" name="Elf 3">
       <AttributeBlock blockName="this">
         <attribute native="Cultist" />
         <attribute fame="0" />
@@ -37434,7 +37434,7 @@
         <attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1408" name="Elf 4">
+    <GameObject id="1406" name="Elf 4">
       <AttributeBlock blockName="this">
         <attribute native="Cultist" />
         <attribute fame="0" />
@@ -37467,7 +37467,7 @@
         <attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1409" name="Elf 5">
+    <GameObject id="1407" name="Elf 5">
       <AttributeBlock blockName="this">
         <attribute native="Cultist" />
         <attribute fame="0" />
@@ -37500,7 +37500,7 @@
         <attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1410" name="Elf HQ">
+    <GameObject id="1408" name="Elf HQ">
       <AttributeBlock blockName="this">
         <attribute native="Cultist" />
         <attribute fame="0" />
@@ -37533,7 +37533,7 @@
         <attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1412" name="Grey Anomaly Box">
+    <GameObject id="1409" name="Grey Anomaly Box">
       <AttributeBlock blockName="this">
         <attribute summon="Smoke F, Howl" />
         <attribute monster_die="5" />
@@ -37546,9 +37546,9 @@
         <attribute icon_type="blob" />
         <attribute icon_folder="monsters2" />
       </AttributeBlock>
-      <contains id="1417" />
+      <contains id="1413" />
     </GameObject>
-    <GameObject id="1413" name="Gold Anomaly Box">
+    <GameObject id="1410" name="Gold Anomaly Box">
       <AttributeBlock blockName="this">
         <attribute summon="Smoke F, Howl" />
         <attribute monster_die="5" />
@@ -37561,9 +37561,9 @@
         <attribute icon_type="blob" />
         <attribute icon_folder="monsters2" />
       </AttributeBlock>
-      <contains id="1418" />
+      <contains id="1414" />
     </GameObject>
-    <GameObject id="1414" name="Purple Anomaly Box">
+    <GameObject id="1411" name="Purple Anomaly Box">
       <AttributeBlock blockName="this">
         <attribute summon="Smoke F, Howl" />
         <attribute monster_die="5" />
@@ -37576,9 +37576,9 @@
         <attribute icon_type="blob" />
         <attribute icon_folder="monsters2" />
       </AttributeBlock>
-      <contains id="1419" />
+      <contains id="1415" />
     </GameObject>
-    <GameObject id="1415" name="Prism Anomaly Box">
+    <GameObject id="1412" name="Prism Anomaly Box">
       <AttributeBlock blockName="this">
         <attribute summon="Smoke F, Howl" />
         <attribute monster_die="5" />
@@ -37591,9 +37591,9 @@
         <attribute icon_type="blob" />
         <attribute icon_folder="monsters2" />
       </AttributeBlock>
-      <contains id="1420" />
+      <contains id="1416" />
     </GameObject>
-    <GameObject id="1417" name="Grey Anomaly">
+    <GameObject id="1413" name="Grey Anomaly">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="H" />
@@ -37624,7 +37624,7 @@
         <attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1418" name="Gold Anomaly">
+    <GameObject id="1414" name="Gold Anomaly">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="H" />
@@ -37655,7 +37655,7 @@
         <attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1419" name="Purple Anomaly">
+    <GameObject id="1415" name="Purple Anomaly">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="H" />
@@ -37686,7 +37686,7 @@
         <attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1420" name="Prism Anomaly">
+    <GameObject id="1416" name="Prism Anomaly">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="H" />
@@ -37717,7 +37717,7 @@
         <attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1421" name="Giant Pod Box">
+    <GameObject id="1417" name="Giant Pod Box">
       <AttributeBlock blockName="this">
         <attribute summon="Dank F, Bones F, Slither F" />
         <attribute monster_die="6" />
@@ -37730,9 +37730,9 @@
         <attribute icon_type="carnoplant" />
         <attribute icon_folder="monsters2" />
       </AttributeBlock>
-      <contains id="1425" />
+      <contains id="1420" />
     </GameObject>
-    <GameObject id="1422" name="Giant Pod Box">
+    <GameObject id="1418" name="Giant Pod Box">
       <AttributeBlock blockName="this">
         <attribute summon="Dank F, Bones F, Slither F" />
         <attribute monster_die="6" />
@@ -37745,9 +37745,9 @@
         <attribute icon_type="carnoplant" />
         <attribute icon_folder="monsters2" />
       </AttributeBlock>
-      <contains id="1427" />
+      <contains id="1422" />
     </GameObject>
-    <GameObject id="1423" name="Giant Pod Box">
+    <GameObject id="1419" name="Giant Pod Box">
       <AttributeBlock blockName="this">
         <attribute summon="Dank F, Bones F, Slither F" />
         <attribute monster_die="6" />
@@ -37760,9 +37760,9 @@
         <attribute icon_type="carnoplant" />
         <attribute icon_folder="monsters2" />
       </AttributeBlock>
-      <contains id="1429" />
+      <contains id="1424" />
     </GameObject>
-    <GameObject id="1425" name="Giant Pod">
+    <GameObject id="1420" name="Giant Pod">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="T" />
@@ -37790,9 +37790,9 @@
         <attribute chit_color="red" />
         <attribute pins="" />
       </AttributeBlock>
-      <contains id="1426" />
+      <contains id="1421" />
     </GameObject>
-    <GameObject id="1426" name="Giant Pod Vine">
+    <GameObject id="1421" name="Giant Pod Vine">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute part="" />
@@ -37815,7 +37815,7 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1427" name="Giant Pod">
+    <GameObject id="1422" name="Giant Pod">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="T" />
@@ -37843,9 +37843,9 @@
         <attribute chit_color="red" />
         <attribute pins="" />
       </AttributeBlock>
-      <contains id="1428" />
+      <contains id="1423" />
     </GameObject>
-    <GameObject id="1428" name="Giant Pod Vine">
+    <GameObject id="1423" name="Giant Pod Vine">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute part="" />
@@ -37868,7 +37868,7 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1429" name="Giant Pod">
+    <GameObject id="1424" name="Giant Pod">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="T" />
@@ -37896,9 +37896,9 @@
         <attribute chit_color="red" />
         <attribute pins="" />
       </AttributeBlock>
-      <contains id="1430" />
+      <contains id="1425" />
     </GameObject>
-    <GameObject id="1430" name="Giant Pod Vine">
+    <GameObject id="1425" name="Giant Pod Vine">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute part="" />
@@ -37919,6 +37919,345 @@
         <attribute length="6" />
         <attribute chit_color="red" />
         <attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1426" name="H Dragon Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Smoke C, Slither, Roar C" />
+        <attribute monster_die="1" />
+        <attribute box_num="1" />
+        <attribute ts_section="lost city" />
+        <attribute ts_size="H" />
+        <attribute ts_color="red" />
+        <attribute icon_type="dragon" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1432" />
+    </GameObject>
+    <GameObject id="1427" name="H Dragon Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Smoke C, Slither, Roar C" />
+        <attribute monster_die="1" />
+        <attribute box_num="2" />
+        <attribute ts_section="lost city" />
+        <attribute ts_size="H" />
+        <attribute ts_color="red" />
+        <attribute icon_type="dragon" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1433" />
+      <contains id="1434" />
+    </GameObject>
+    <GameObject id="1428" name="T Dragon Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Smoke C, Slither, Roar C" />
+        <attribute monster_die="1" />
+        <attribute box_num="3" />
+        <attribute ts_section="lost city" />
+        <attribute ts_size="T" />
+        <attribute ts_color="red" />
+        <attribute icon_type="dragon" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1435" />
+    </GameObject>
+    <GameObject id="1429" name="H Serpent Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Dank C, Slither" />
+        <attribute monster_die="2" />
+        <attribute box_num="1" />
+        <attribute ts_section="lost city" />
+        <attribute ts_count="1" />
+        <attribute ts_size="H" />
+        <attribute ts_color="green" />
+        <attribute icon_type="serpent" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1437" />
+    </GameObject>
+    <GameObject id="1430" name="H Serpent Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Dank C, Slither" />
+        <attribute monster_die="2" />
+        <attribute box_num="2" />
+        <attribute ts_section="lost city" />
+        <attribute ts_count="2" />
+        <attribute ts_size="H" />
+        <attribute ts_color="green" />
+        <attribute icon_type="serpent" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1438" />
+      <contains id="1439" />
+    </GameObject>
+    <GameObject id="1431" name="T Serpent Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Dank C, Slither" />
+        <attribute monster_die="2" />
+        <attribute box_num="3" />
+        <attribute ts_section="lost city" />
+        <attribute ts_size="T" />
+        <attribute ts_color="green" />
+        <attribute icon_type="serpent" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1440" />
+    </GameObject>
+    <GameObject id="1432" name="H Dragon">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="H" />
+        <attribute fame="5" />
+        <attribute notoriety="5" />
+        <attribute icon_type="dragon" />
+        <attribute setup_start="H Dragon Box" />
+        <attribute monster_die="1" />
+        <attribute base_price="5" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="darkgray" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1433" name="H Dragon">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="H" />
+        <attribute fame="5" />
+        <attribute notoriety="5" />
+        <attribute icon_type="dragon" />
+        <attribute setup_start="H Dragon Box" />
+        <attribute monster_die="1" />
+        <attribute base_price="5" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="darkgray" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1434" name="H Dragon">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="H" />
+        <attribute fame="5" />
+        <attribute notoriety="5" />
+        <attribute icon_type="dragon" />
+        <attribute setup_start="H Dragon Box" />
+        <attribute monster_die="1" />
+        <attribute base_price="5" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="darkgray" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1435" name="T Dragon">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="T" />
+        <attribute fame="10" />
+        <attribute notoriety="10" />
+        <attribute icon_type="dragon" />
+        <attribute setup_start="T Dragon Box" />
+        <attribute monster_die="1" />
+        <attribute base_price="10" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="6" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="6" />
+        <attribute attack_speed="3" />
+        <attribute strength="RED" />
+        <attribute chit_color="red" />
+        <attribute pins="" />
+      </AttributeBlock>
+      <contains id="1436" />
+    </GameObject>
+    <GameObject id="1436" name="Dragon Head">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute part="" />
+        <attribute icon_type="dragon_head" />
+        <attribute dragon_missile="" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute length="9" />
+        <attribute chit_color="pink" />
+        <attribute dragon_length="15" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute attack_speed="4" />
+        <attribute strength="T" />
+        <attribute length="9" />
+        <attribute chit_color="red" />
+        <attribute dragon_length="15" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1437" name="H Serpent">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="H" />
+        <attribute fame="4" />
+        <attribute notoriety="4" />
+        <attribute icon_type="serpent" />
+        <attribute setup_start="H Serpent Box" />
+        <attribute monster_die="2" />
+        <attribute base_price="4" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute chit_color="darkgray" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1438" name="H Serpent">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="H" />
+        <attribute fame="4" />
+        <attribute notoriety="4" />
+        <attribute icon_type="serpent" />
+        <attribute setup_start="H Serpent Box" />
+        <attribute monster_die="2" />
+        <attribute base_price="4" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute chit_color="darkgray" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1439" name="H Serpent">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="H" />
+        <attribute fame="4" />
+        <attribute notoriety="4" />
+        <attribute icon_type="serpent" />
+        <attribute setup_start="H Serpent Box" />
+        <attribute monster_die="2" />
+        <attribute base_price="4" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute chit_color="darkgray" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1440" name="T Serpent">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="T" />
+        <attribute fame="7" />
+        <attribute notoriety="7" />
+        <attribute icon_type="serpent" />
+        <attribute setup_start="T Serpent Box" />
+        <attribute monster_die="2" />
+        <attribute armored="" />
+        <attribute base_price="7" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="4" />
+        <attribute strength="RED" />
+        <attribute chit_color="red" />
+        <attribute pins="" />
       </AttributeBlock>
     </GameObject>
   </objects>
