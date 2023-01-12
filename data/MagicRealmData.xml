@@ -39458,6 +39458,1179 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="1483" name="H Flying Dragon Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Smoke M, Flutter" />
+        <attribute monster_die="1" />
+        <attribute ts_section="lost castle" />
+        <attribute ts_count="1" />
+        <attribute ts_size="H" />
+        <attribute ts_color="red" />
+        <attribute icon_type="dragon_flying" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1486" />
+    </GameObject>
+    <GameObject id="1484" name="H Flying Dragons Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Smoke M, Flutter" />
+        <attribute monster_die="1" />
+        <attribute ts_section="lost castle" />
+        <attribute ts_count="2" />
+        <attribute ts_size="H" />
+        <attribute ts_color="red" />
+        <attribute icon_type="dragon_flying" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1487" />
+      <contains id="1488" />
+    </GameObject>
+    <GameObject id="1485" name="T Flying Dragon Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Smoke M, Flutter" />
+        <attribute monster_die="1" />
+        <attribute ts_section="lost castle" />
+        <attribute ts_count="1" />
+        <attribute ts_size="T" />
+        <attribute ts_color="red" />
+        <attribute icon_type="dragon_flying" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1489" />
+    </GameObject>
+    <GameObject id="1486" name="H Flying Dragon">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="H" />
+        <attribute fame="5" />
+        <attribute notoriety="5" />
+        <attribute icon_type="dragon_flying" />
+        <attribute setup_start="Flying Dragons Box" />
+        <attribute monster_die="1" />
+        <attribute flying="" />
+        <attribute base_price="5" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute chit_color="lightblue" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="blue" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1487" name="H Flying Dragon">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="H" />
+        <attribute fame="5" />
+        <attribute notoriety="5" />
+        <attribute icon_type="dragon_flying" />
+        <attribute setup_start="Flying Dragons Box" />
+        <attribute monster_die="1" />
+        <attribute flying="" />
+        <attribute base_price="5" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute chit_color="lightblue" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="blue" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1488" name="H Flying Dragon">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="H" />
+        <attribute fame="5" />
+        <attribute notoriety="5" />
+        <attribute icon_type="dragon_flying" />
+        <attribute setup_start="Flying Dragons Box" />
+        <attribute monster_die="1" />
+        <attribute flying="" />
+        <attribute base_price="5" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute chit_color="lightblue" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="blue" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1489" name="T Flying Dragon">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="T" />
+        <attribute fame="12" />
+        <attribute notoriety="12" />
+        <attribute icon_type="dragon_flying" />
+        <attribute setup_start="Hoard" />
+        <attribute monster_die="1" />
+        <attribute flying="" />
+        <attribute base_price="12" />
+        <attribute icon_folder="monsters" />
+        <attribute alt_monsters1_game="" />
+        <attribute setup_start_tilereq="M" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute chit_color="lightblue" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="6" />
+        <attribute strength="RED" />
+        <attribute chit_color="red" />
+        <attribute pins="" />
+      </AttributeBlock>
+      <contains id="1490" />
+    </GameObject>
+    <GameObject id="1490" name="Flying Dragon Head">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute part="" />
+        <attribute icon_type="dragon_head_flying" />
+        <attribute dragon_missile="" />
+        <attribute icon_folder="monsters" />
+        <attribute alt_monsters1_game="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute length="7" />
+        <attribute chit_color="pink" />
+        <attribute dragon_length="13" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute attack_speed="3" />
+        <attribute strength="T" />
+        <attribute length="7" />
+        <attribute chit_color="red" />
+        <attribute dragon_length="13" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1491" name="Vipers Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Dank W" />
+        <attribute monster_die="2" />
+        <attribute ts_section="lost castle" />
+        <attribute ts_count="2" />
+        <attribute ts_size="M" />
+        <attribute ts_color="green" />
+        <attribute icon_type="serpent" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1492" />
+      <contains id="1493" />
+    </GameObject>
+    <GameObject id="1492" name="Viper">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute armored="" />
+        <attribute icon_type="serpent" />
+        <attribute setup_start="Vipers Box" />
+        <attribute monster_die="2" />
+        <attribute base_price="2" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute sharpness="2" />
+        <attribute chit_color="lightgreen" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="2" />
+        <attribute attack_speed="2" />
+        <attribute strength="L" />
+        <attribute chit_color="forestgreen" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1493" name="Viper">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute armored="" />
+        <attribute icon_type="serpent" />
+        <attribute setup_start="Vipers Box" />
+        <attribute monster_die="2" />
+        <attribute base_price="2" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute sharpness="2" />
+        <attribute chit_color="lightgreen" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="2" />
+        <attribute attack_speed="2" />
+        <attribute strength="L" />
+        <attribute chit_color="forestgreen" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1494" name="Wolves Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Ruins W" />
+        <attribute monster_die="3" />
+        <attribute ts_section="lost castle" />
+        <attribute ts_count="6" />
+        <attribute ts_size="M" />
+        <attribute ts_color="blue" />
+        <attribute icon_type="wolf" />
+        <attribute icon_folder="monsters" />
+        <attribute ts_sort="1" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1495" />
+      <contains id="1496" />
+      <contains id="1497" />
+      <contains id="1498" />
+      <contains id="1499" />
+      <contains id="1500" />
+    </GameObject>
+    <GameObject id="1495" name="Wolf">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="0" />
+        <attribute notoriety="1" />
+        <attribute icon_type="wolf" />
+        <attribute setup_start="Wolves Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="lightgreen" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="forestgreen" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1496" name="Wolf">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="0" />
+        <attribute notoriety="1" />
+        <attribute icon_type="wolf" />
+        <attribute setup_start="Wolves Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="lightgreen" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="forestgreen" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1497" name="Wolf">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="0" />
+        <attribute notoriety="1" />
+        <attribute icon_type="wolf" />
+        <attribute setup_start="Wolves Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="lightgreen" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="forestgreen" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1498" name="Wolf">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="0" />
+        <attribute notoriety="1" />
+        <attribute icon_type="wolf" />
+        <attribute setup_start="Wolves Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="lightgreen" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="3" />
+        <attribute strength="L" />
+        <attribute chit_color="forestgreen" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1499" name="Wolf">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="0" />
+        <attribute notoriety="1" />
+        <attribute icon_type="wolf" />
+        <attribute setup_start="Wolves Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="lightgreen" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="3" />
+        <attribute strength="L" />
+        <attribute chit_color="forestgreen" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1500" name="Wolf">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="0" />
+        <attribute notoriety="1" />
+        <attribute icon_type="wolf" />
+        <attribute setup_start="Wolves Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="lightgreen" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="3" />
+        <attribute strength="L" />
+        <attribute chit_color="forestgreen" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1501" name="Ogres Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Bones W" />
+        <attribute monster_die="3" />
+        <attribute ts_section="lost castle" />
+        <attribute ts_count="2" />
+        <attribute ts_size="M" />
+        <attribute ts_color="blue" />
+        <attribute icon_type="giant" />
+        <attribute icon_folder="monsters" />
+        <attribute ts_sort="2" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1502" />
+      <contains id="1503" />
+    </GameObject>
+    <GameObject id="1502" name="Ogre">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="0" />
+        <attribute notoriety="2" />
+        <attribute icon_type="giant" />
+        <attribute setup_start="Ogres Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="2" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="T" />
+        <attribute chit_color="lightgreen" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute chit_color="forestgreen" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1503" name="Ogre">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="0" />
+        <attribute notoriety="2" />
+        <attribute icon_type="giant" />
+        <attribute setup_start="Ogres Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="2" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="T" />
+        <attribute chit_color="lightgreen" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute chit_color="forestgreen" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1504" name="Giant Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Bones M, Stink M, Roar M" />
+        <attribute monster_die="4" />
+        <attribute box_num="1" />
+        <attribute ts_section="lost castle" />
+        <attribute ts_size="T" />
+        <attribute ts_color="darkgray" />
+        <attribute icon_type="giant" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1507" />
+    </GameObject>
+    <GameObject id="1505" name="Giant Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Bones M, Stink M, Roar M" />
+        <attribute monster_die="4" />
+        <attribute box_num="2" />
+        <attribute ts_section="lost castle" />
+        <attribute ts_size="T" />
+        <attribute ts_color="darkgray" />
+        <attribute icon_type="giant" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1509" />
+    </GameObject>
+    <GameObject id="1506" name="Giant Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Bones M, Stink M, Roar M" />
+        <attribute monster_die="4" />
+        <attribute box_num="3" />
+        <attribute ts_section="lost castle" />
+        <attribute ts_size="T" />
+        <attribute ts_color="darkgray" />
+        <attribute icon_type="giant" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1511" />
+    </GameObject>
+    <GameObject id="1507" name="Giant">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="T" />
+        <attribute fame="8" />
+        <attribute notoriety="8" />
+        <attribute icon_type="giant" />
+        <attribute setup_start="Giant Box" />
+        <attribute box_num="1" />
+        <attribute monster_die="4" />
+        <attribute base_price="8" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute chit_color="lightblue" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="6" />
+        <attribute attack_speed="4" />
+        <attribute strength="RED" />
+        <attribute chit_color="red" />
+        <attribute pins="" />
+      </AttributeBlock>
+      <contains id="1508" />
+    </GameObject>
+    <GameObject id="1508" name="Giant Club">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute part="" />
+        <attribute icon_type="club" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute length="8" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute attack_speed="4" />
+        <attribute strength="T" />
+        <attribute length="8" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1509" name="Giant">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="T" />
+        <attribute fame="8" />
+        <attribute notoriety="8" />
+        <attribute icon_type="giant" />
+        <attribute setup_start="Giant Box" />
+        <attribute box_num="2" />
+        <attribute monster_die="4" />
+        <attribute base_price="8" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute chit_color="lightblue" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="6" />
+        <attribute attack_speed="4" />
+        <attribute strength="RED" />
+        <attribute chit_color="red" />
+        <attribute pins="" />
+      </AttributeBlock>
+      <contains id="1510" />
+    </GameObject>
+    <GameObject id="1510" name="Giant Club">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute part="" />
+        <attribute icon_type="club" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute length="8" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute attack_speed="4" />
+        <attribute strength="T" />
+        <attribute length="8" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1511" name="Giant">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="T" />
+        <attribute fame="8" />
+        <attribute notoriety="8" />
+        <attribute icon_type="giant" />
+        <attribute setup_start="Giant Box" />
+        <attribute box_num="1" />
+        <attribute monster_die="4" />
+        <attribute base_price="8" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute chit_color="lightblue" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="6" />
+        <attribute attack_speed="4" />
+        <attribute strength="RED" />
+        <attribute chit_color="red" />
+        <attribute pins="" />
+      </AttributeBlock>
+      <contains id="1512" />
+    </GameObject>
+    <GameObject id="1512" name="Giant Club">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute part="" />
+        <attribute icon_type="club" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute length="8" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute attack_speed="4" />
+        <attribute strength="T" />
+        <attribute length="8" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1513" name="H Spider Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Stink M, Dank M, Patter M" />
+        <attribute monster_die="5" />
+        <attribute box_num="1" />
+        <attribute ts_section="lost castle" />
+        <attribute ts_size="H" />
+        <attribute ts_color="purple" />
+        <attribute icon_type="spider" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1517" />
+    </GameObject>
+    <GameObject id="1514" name="H Spider Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Stink M, Dank M, Patter M" />
+        <attribute monster_die="5" />
+        <attribute box_num="2" />
+        <attribute ts_section="lost castle" />
+        <attribute ts_size="H" />
+        <attribute ts_color="purple" />
+        <attribute icon_type="spider" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1518" />
+    </GameObject>
+    <GameObject id="1515" name="H Spider Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Stink M, Dank M, Patter M" />
+        <attribute monster_die="5" />
+        <attribute box_num="3" />
+        <attribute ts_section="lost castle" />
+        <attribute ts_size="H" />
+        <attribute ts_color="purple" />
+        <attribute icon_type="spider" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1519" />
+    </GameObject>
+    <GameObject id="1516" name="H Spider Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Stink M, Dank M, Patter M" />
+        <attribute monster_die="5" />
+        <attribute box_num="4" />
+        <attribute ts_section="lost castle" />
+        <attribute ts_size="H" />
+        <attribute ts_color="purple" />
+        <attribute icon_type="spider" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1520" />
+    </GameObject>
+    <GameObject id="1517" name="H Spider">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute icon_type="spider" />
+        <attribute setup_start="H Spider Box" />
+        <attribute box_num="3" />
+        <attribute monster_die="5" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="6" />
+        <attribute strength="T" />
+        <attribute chit_color="darkgray" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1518" name="H Spider">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute icon_type="spider" />
+        <attribute setup_start="H Spider Box" />
+        <attribute box_num="1" />
+        <attribute monster_die="5" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="6" />
+        <attribute strength="T" />
+        <attribute chit_color="darkgray" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1519" name="H Spider">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute icon_type="spider" />
+        <attribute setup_start="H Spider Box" />
+        <attribute box_num="2" />
+        <attribute monster_die="5" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="6" />
+        <attribute strength="T" />
+        <attribute chit_color="darkgray" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1520" name="H Spider">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute icon_type="spider" />
+        <attribute setup_start="H Spider Box" />
+        <attribute box_num="3" />
+        <attribute monster_die="5" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="6" />
+        <attribute strength="T" />
+        <attribute chit_color="darkgray" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1521" name="Bat Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Ruins M, Bones M, Flutter, Howl M" />
+        <attribute monster_die="6" />
+        <attribute box_num="1" />
+        <attribute ts_section="lost castle" />
+        <attribute ts_size="H" />
+        <attribute ts_color="brown" />
+        <attribute icon_type="bat" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+        <attribute ts_count="1" />
+      </AttributeBlock>
+      <contains id="1525" />
+    </GameObject>
+    <GameObject id="1522" name="Bat Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Ruins M, Bones M, Flutter, Howl M" />
+        <attribute monster_die="6" />
+        <attribute box_num="2" />
+        <attribute ts_section="lost castle" />
+        <attribute ts_count="2" />
+        <attribute ts_size="H" />
+        <attribute ts_color="brown" />
+        <attribute icon_type="bat" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1526" />
+      <contains id="1527" />
+    </GameObject>
+    <GameObject id="1523" name="Bat Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Ruins M, Bones M, Flutter, Howl M" />
+        <attribute monster_die="6" />
+        <attribute box_num="3" />
+        <attribute ts_section="lost castle" />
+        <attribute ts_count="2" />
+        <attribute ts_size="H" />
+        <attribute ts_color="brown" />
+        <attribute icon_type="bat" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1528" />
+      <contains id="1529" />
+    </GameObject>
+    <GameObject id="1524" name="Bat Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Ruins M, Bones M, Flutter, Howl M" />
+        <attribute monster_die="6" />
+        <attribute box_num="4" />
+        <attribute ts_section="lost castle" />
+        <attribute ts_count="3" />
+        <attribute ts_size="H" />
+        <attribute ts_color="brown" />
+        <attribute icon_type="bat" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1530" />
+      <contains id="1531" />
+      <contains id="1532" />
+    </GameObject>
+    <GameObject id="1525" name="Giant Bat">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute icon_type="bat" />
+        <attribute setup_start="Bat Box" />
+        <attribute box_num="1" />
+        <attribute monster_die="6" />
+        <attribute flying="" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="2" />
+        <attribute strength="M" />
+        <attribute chit_color="lightblue" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="2" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute chit_color="blue" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1526" name="Giant Bat">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute icon_type="bat" />
+        <attribute setup_start="Bat Box" />
+        <attribute box_num="2" />
+        <attribute monster_die="6" />
+        <attribute flying="" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="2" />
+        <attribute strength="M" />
+        <attribute chit_color="lightblue" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="2" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute chit_color="blue" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1527" name="Giant Bat">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute icon_type="bat" />
+        <attribute setup_start="Bat Box" />
+        <attribute box_num="2" />
+        <attribute monster_die="6" />
+        <attribute flying="" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="2" />
+        <attribute strength="M" />
+        <attribute chit_color="lightblue" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="2" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute chit_color="blue" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1528" name="Giant Bat">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute icon_type="bat" />
+        <attribute setup_start="Bat Box" />
+        <attribute box_num="3" />
+        <attribute monster_die="6" />
+        <attribute flying="" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="2" />
+        <attribute strength="M" />
+        <attribute chit_color="lightblue" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="2" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute chit_color="blue" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1529" name="Giant Bat">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute icon_type="bat" />
+        <attribute setup_start="Bat Box" />
+        <attribute box_num="3" />
+        <attribute monster_die="6" />
+        <attribute flying="" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="2" />
+        <attribute strength="M" />
+        <attribute chit_color="lightblue" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="2" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute chit_color="blue" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1530" name="Giant Bat">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute icon_type="bat" />
+        <attribute setup_start="Bat Box" />
+        <attribute box_num="3" />
+        <attribute monster_die="6" />
+        <attribute flying="" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="2" />
+        <attribute strength="M" />
+        <attribute chit_color="lightblue" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="2" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute chit_color="blue" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1531" name="Giant Bat">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute icon_type="bat" />
+        <attribute setup_start="Bat Box" />
+        <attribute box_num="1" />
+        <attribute monster_die="6" />
+        <attribute flying="" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="2" />
+        <attribute strength="M" />
+        <attribute chit_color="lightblue" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="2" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute chit_color="blue" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1532" name="Giant Bat">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute icon_type="bat" />
+        <attribute setup_start="Bat Box" />
+        <attribute box_num="1" />
+        <attribute monster_die="6" />
+        <attribute flying="" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="2" />
+        <attribute strength="M" />
+        <attribute chit_color="lightblue" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="2" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute chit_color="blue" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
