@@ -4692,7 +4692,7 @@
         <attribute notoriety="3" />
         <attribute base_price="20" />
         <attribute magic="" />
-        <attribute two_handed="" />
+		<attribute two_handed="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="great_sword" />
@@ -5204,7 +5204,7 @@
         <attribute weight="M" />
         <attribute length="2" />
         <attribute base_price="4" />
-        <attribute throwable="" />
+		<attribute throwable="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="axe" />
@@ -5230,7 +5230,7 @@
         <attribute weight="M" />
         <attribute length="2" />
         <attribute base_price="4" />
-        <attribute throwable="" />
+		<attribute throwable="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="axe" />
@@ -5303,7 +5303,7 @@
         <attribute length="10" />
         <attribute base_price="6" />
         <attribute two_handed="" />
-        <attribute throwable="" />
+		<attribute throwable="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="spear" />
@@ -5328,7 +5328,7 @@
         <attribute length="10" />
         <attribute base_price="6" />
         <attribute two_handed="" />
-        <attribute throwable="" />
+		<attribute throwable="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="spear" />
@@ -5353,7 +5353,7 @@
         <attribute length="10" />
         <attribute base_price="6" />
         <attribute two_handed="" />
-        <attribute throwable="" />
+		<attribute throwable="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="spear" />
@@ -5378,7 +5378,7 @@
         <attribute length="10" />
         <attribute base_price="6" />
         <attribute two_handed="" />
-        <attribute throwable="" />
+		<attribute throwable="" />
         <attribute weapon="" />
         <attribute original_game="" />
         <attribute icon_type="spear" />
@@ -5952,7 +5952,7 @@
         <attribute ts_color="tan" />
         <attribute icon_folder="dwellings" />
         <attribute rw_expansion_1="" />
-        <attribute remove_curses="" />
+		<attribute remove_curses="" />
       </AttributeBlock>
       <contains id="84" />
       <contains id="85" />
@@ -7259,7 +7259,7 @@
         <attribute dark_color="blue" />
         <attribute name="Bird" />
         <attribute icon_folder="monsters" />
-        <attribute small="" />
+		<attribute small="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll5">
         <attribute vulnerability="L" />
@@ -7270,7 +7270,7 @@
         <attribute dark_color="brown" />
         <attribute name="Squirrel" />
         <attribute icon_folder="monsters" />
-        <attribute small="" />
+		<attribute small="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll6">
         <attribute vulnerability="L" />
@@ -7281,7 +7281,7 @@
         <attribute dark_color="forestgreen" />
         <attribute name="Frog" />
         <attribute icon_folder="monsters" />
-        <attribute small="" />
+		<attribute small="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="298" name="Sense Danger">
@@ -8916,7 +8916,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="46.9,81.5" />
@@ -9003,7 +9003,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="48.7,80.6" />
@@ -9092,7 +9092,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="50.4,87.1" />
@@ -9181,7 +9181,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="49.1,80.8" />
@@ -9268,7 +9268,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="49.7,80.1" />
@@ -9357,7 +9357,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="50.4,85.7" />
@@ -9438,7 +9438,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="45.3,78.5" />
@@ -9520,7 +9520,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="24.5,48.4" />
@@ -9602,7 +9602,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="50.8,78.7" />
@@ -9684,7 +9684,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="47.5,72.7" />
@@ -9765,7 +9765,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="58.6,28.9" />
@@ -9904,7 +9904,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="19.9,51.7" />
@@ -10017,7 +10017,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="82.6,53.8" />
@@ -10117,7 +10117,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="51.0,43.1" />
@@ -10229,7 +10229,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="70.3,88.1" />
@@ -10342,8 +10342,8 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
-        <attribute anchor_tile="" />
+		<attribute super_realm="" />
+		<attribute anchor_tile="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="71.5,89.2" />
@@ -10482,7 +10482,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="13.5,50.3" />
@@ -10583,7 +10583,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="19.9,52.9" />
@@ -10713,7 +10713,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="43.7,17.9" />
@@ -10812,7 +10812,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="22.9,68.9" />
@@ -10932,7 +10932,6 @@
         <attribute artcredit="Ralph King" />
         <attribute meaning="Erosia: Love and Earth" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Maid" />
@@ -11019,7 +11018,6 @@
         <attribute artcredit="Michael Brown" />
         <attribute meaning="Chaotic Intellect" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Wraith" />
@@ -11103,7 +11101,6 @@
         <attribute artcredit="Chris White" />
         <attribute meaning="Letophoro: Death and Destruction" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Youth" />
@@ -11171,7 +11168,6 @@
         <attribute artcredit="Kim Gromoll" />
         <attribute meaning="Cross Pommee: Potent Cross" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Squire" />
@@ -11249,7 +11245,6 @@
         <attribute artcredit="Steve Bickel" />
         <attribute meaning="wood" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Herbalist" />
@@ -11333,7 +11328,6 @@
         <attribute artcredit="Kim Gromoll" />
         <attribute meaning="Crozier: Shepherd's staff" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Acolyte" />
@@ -11409,7 +11403,6 @@
         <attribute artcredit="Kelly Glancy" />
         <attribute meaning="Vitriole: Poison" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Old Woman" />
@@ -11488,7 +11481,6 @@
         <attribute artcredit="Chris White" />
         <attribute meaning="Opposition" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Youngster" />
@@ -11558,7 +11550,6 @@
         <attribute artcredit="Steve Bickel" />
         <attribute meaning="Sextile: Half-human" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Stripling" />
@@ -11642,7 +11633,6 @@
         <attribute artcredit="Steve Bickel" />
         <attribute meaning="Controlled Intellect" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Apprentice" />
@@ -11721,7 +11711,6 @@
         <attribute artcredit="Kim Gromoll" />
         <attribute meaning="Mars: God of War" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Spearman" />
@@ -11791,7 +11780,6 @@
         <attribute artcredit="Chris White" />
         <attribute meaning="Ginner: Divine and Demonic" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Student" />
@@ -11881,7 +11869,6 @@
         <attribute artcredit="Chris White" />
         <attribute meaning="Celestial Power" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Apprentice" />
@@ -11972,7 +11959,6 @@
         <attribute artcredit="Chris White" />
         <attribute meaning="Chevron: Military Leadership" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Spearman" />
@@ -12050,7 +12036,6 @@
         <attribute creator="Richard Hamblen" />
         <attribute artcredit="Ralph King" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Scout" />
@@ -12089,8 +12074,6 @@
         <attribute shaman="1" />
         <attribute company="-1" />
         <attribute bashkars="-1" />
-        <attribute merchant="1" />
-        <attribute peasants="-1" />
       </AttributeBlock>
       <contains id="451" />
       <contains id="452" />
@@ -12121,7 +12104,6 @@
         <attribute artcredit="Kim Gromoll" />
         <attribute meaning="Wolf's Hook" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Wanderer" />
@@ -12181,7 +12163,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="woodsgirl" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="428" name="Woodsgirl Move L4">
@@ -12198,7 +12179,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="woodsgirl" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="429" name="Woodsgirl Move L2**">
@@ -12216,7 +12196,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="woodsgirl" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="430" name="Woodsgirl Fight L4">
@@ -12233,7 +12212,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="woodsgirl" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="431" name="Woodsgirl Move L2**">
@@ -12251,7 +12229,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="woodsgirl" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="432" name="Woodsgirl Magic VII6**">
@@ -12269,7 +12246,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="woodsgirl" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="433" name="Woodsgirl Fight L3*">
@@ -12287,7 +12263,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="woodsgirl" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="434" name="Woodsgirl Fight M5">
@@ -12304,7 +12279,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="woodsgirl" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="435" name="Woodsgirl Fight L4">
@@ -12321,7 +12295,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="woodsgirl" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="436" name="Woodsgirl Move L3*">
@@ -12339,7 +12312,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="woodsgirl" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="437" name="Woodsgirl Fight M4*">
@@ -12357,7 +12329,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="woodsgirl" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="438" name="Woodsgirl Fight L3*">
@@ -12375,7 +12346,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="woodsgirl" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="439" name="Swordsman Move L4">
@@ -12392,7 +12362,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="swordsman" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="440" name="Swordsman Move L3*">
@@ -12410,7 +12379,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="swordsman" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="441" name="Swordsman Fight L3*">
@@ -12428,7 +12396,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="swordsman" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="442" name="Swordsman Move L3*">
@@ -12446,7 +12413,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="swordsman" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="443" name="Swordsman Fight L2**">
@@ -12464,7 +12430,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="swordsman" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="444" name="Swordsman Move L2**">
@@ -12482,7 +12447,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="swordsman" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="445" name="Swordsman Move M4*">
@@ -12500,7 +12464,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="swordsman" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="446" name="Swordsman Fight M4*">
@@ -12518,7 +12481,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="swordsman" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="447" name="Swordsman Fight M3**">
@@ -12536,7 +12498,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="swordsman" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="448" name="Swordsman Fight L4">
@@ -12553,7 +12514,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="swordsman" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="449" name="Swordsman Fight M5">
@@ -12570,7 +12530,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="swordsman" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="450" name="Swordsman Fight L2**">
@@ -12588,7 +12547,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="swordsman" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="451" name="Amazon Move M4">
@@ -12605,7 +12563,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="452" name="Amazon Move M3*">
@@ -12623,7 +12580,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="453" name="Amazon Fight L4">
@@ -12640,7 +12596,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="454" name="Amazon Move M4">
@@ -12657,7 +12612,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="455" name="Amazon Fight M5">
@@ -12674,7 +12628,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="456" name="Amazon Fight M4*">
@@ -12692,7 +12645,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="457" name="Amazon Move M3*">
@@ -12710,7 +12662,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="458" name="Amazon Fight M3**">
@@ -12728,7 +12679,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="459" name="Amazon Fight H4**">
@@ -12746,7 +12696,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="460" name="Amazon Fight M4*">
@@ -12764,7 +12713,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="461" name="Amazon Fight M3**">
@@ -12782,7 +12730,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="462" name="Amazon Move M3*">
@@ -12800,7 +12747,6 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="amazon" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="463" name="Captain Move M4*">
@@ -20959,7 +20905,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21000,28 +20946,28 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
         <attribute basic="2" />
         <attribute sunlight="2" />
         <attribute name="Cold" />
-        <attribute frozen_water="" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="showers">
         <attribute days="5" />
         <attribute basic="3" />
         <attribute sunlight="1" />
         <attribute name="Flurries" />
-        <attribute frozen_water="" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="storm">
         <attribute days="4" />
         <attribute basic="3" />
         <attribute sheltered="1" />
         <attribute name="Snowstorm" />
-        <attribute frozen_water="" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="special">
         <attribute days="5" />
@@ -21030,7 +20976,7 @@
         <attribute name="Icy Winds" />
         <attribute special="note1" />
         <attribute description="If not in cave or dwelling during Birdsong, you must immediately fatigue one asterisk." />
-        <attribute frozen_water="" />
+		<attribute frozen_water="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="876" name="Ice">
@@ -21047,27 +20993,27 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
         <attribute basic="2" />
         <attribute sunlight="1" />
         <attribute name="Cold" />
-        <attribute frozen_water="" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="showers">
         <attribute days="4" />
         <attribute basic="4" />
         <attribute name="Ice Storm" />
-        <attribute frozen_water="" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="storm">
         <attribute days="3" />
         <attribute basic="4" />
         <attribute sheltered="1" />
         <attribute name="Snowstorm" />
-        <attribute frozen_water="" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="special">
         <attribute days="4" />
@@ -21076,7 +21022,7 @@
         <attribute name="Frigid Air" />
         <attribute special="note2" />
         <attribute description="Each time a character ends a phase of his turn outside, he must fatigue one asterisk." />
-        <attribute frozen_water="" />
+		<attribute frozen_water="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="877" name="Snow">
@@ -21093,34 +21039,34 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="5" />
         <attribute basic="3" />
         <attribute sunlight="1" />
         <attribute name="Snowdrifts" />
-        <attribute frozen_water="" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="showers">
         <attribute days="4" />
         <attribute basic="4" />
         <attribute name="Sleet" />
-        <attribute frozen_water="" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="storm">
         <attribute days="3" />
         <attribute basic="4" />
         <attribute sheltered="1" />
         <attribute name="Snowstorm" />
-        <attribute frozen_water="" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="special">
         <attribute days="2" />
         <attribute basic="4" />
         <attribute sheltered="2" />
         <attribute name="Blizzard" />
-        <attribute frozen_water="" />
+		<attribute frozen_water="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="878" name="Easter">
@@ -21137,7 +21083,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21156,7 +21102,7 @@
         <attribute basic="3" />
         <attribute sheltered="1" />
         <attribute name="Snowstorm" />
-        <attribute frozen_water="" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="special">
         <attribute days="7" />
@@ -21181,7 +21127,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21193,7 +21139,8 @@
         <attribute days="5" />
         <attribute basic="2" />
         <attribute sunlight="3" />
-        <attribute name="flood" />
+        <attribute name="Showers" />
+		<attribute name="flood" />
       </AttributeBlock>
       <AttributeBlock blockName="storm">
         <attribute days="4" />
@@ -21222,7 +21169,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21239,8 +21186,9 @@
       <AttributeBlock blockName="storm">
         <attribute days="6" />
         <attribute basic="2" />
-        <attribute name="flood" />
+        <attribute name="Rain" />
         <attribute sunlight="2" />
+		<attribute name="flood" />
       </AttributeBlock>
       <AttributeBlock blockName="special">
         <attribute days="7" />
@@ -21263,7 +21211,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21280,8 +21228,9 @@
       <AttributeBlock blockName="storm">
         <attribute days="7" />
         <attribute basic="2" />
-        <attribute name="flood" />
+        <attribute name="Soft Rain" />
         <attribute sunlight="2" />
+		<attribute name="flood" />
       </AttributeBlock>
       <AttributeBlock blockName="special">
         <attribute days="7" />
@@ -21304,7 +21253,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21316,7 +21265,8 @@
         <attribute days="7" />
         <attribute basic="2" />
         <attribute sunlight="2" />
-        <attribute name="flood" />
+        <attribute name="Showers" />
+		<attribute name="flood" />
       </AttributeBlock>
       <AttributeBlock blockName="storm">
         <attribute days="5" />
@@ -21347,7 +21297,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="5" />
@@ -21364,8 +21314,9 @@
       <AttributeBlock blockName="storm">
         <attribute days="7" />
         <attribute basic="2" />
-        <attribute name="flood" />
+        <attribute name="Thunderstorm" />
         <attribute sunlight="1" />
+		<attribute name="flood" />
       </AttributeBlock>
       <AttributeBlock blockName="special">
         <attribute days="4" />
@@ -21390,7 +21341,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21407,8 +21358,9 @@
       <AttributeBlock blockName="storm">
         <attribute days="7" />
         <attribute basic="2" />
-        <attribute name="flood" />
+        <attribute name="Rain" />
         <attribute sunlight="1" />
+		<attribute name="flood" />
       </AttributeBlock>
       <AttributeBlock blockName="special">
         <attribute days="7" />
@@ -21431,7 +21383,7 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21448,8 +21400,9 @@
       <AttributeBlock blockName="storm">
         <attribute days="7" />
         <attribute basic="2" />
-        <attribute name="flood" />
+        <attribute name="Cold Rain" />
         <attribute sunlight="1" />
+		<attribute name="flood" />
       </AttributeBlock>
       <AttributeBlock blockName="special">
         <attribute days="7" />
@@ -21472,14 +21425,14 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
         <attribute basic="2" />
         <attribute sunlight="3" />
         <attribute name="Cold" />
-        <attribute frozen_water="" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="showers">
         <attribute days="7" />
@@ -21490,8 +21443,9 @@
       <AttributeBlock blockName="storm">
         <attribute days="7" />
         <attribute basic="2" />
-        <attribute name="flood" />
+        <attribute name="Cold Rain" />
         <attribute sunlight="1" />
+		<attribute name="flood" />
       </AttributeBlock>
       <AttributeBlock blockName="special">
         <attribute days="7" />
@@ -21516,28 +21470,28 @@
         <attribute original_game="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
         <attribute basic="2" />
         <attribute sunlight="2" />
         <attribute name="Cold" />
-        <attribute frozen_water="" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="showers">
         <attribute days="5" />
         <attribute basic="3" />
         <attribute sunlight="1" />
         <attribute name="Flurries" />
-        <attribute frozen_water="" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="storm">
         <attribute days="7" />
         <attribute basic="2" />
         <attribute name="Freezing Rain" />
         <attribute sunlight="1" />
-        <attribute frozen_water="" />
+		<attribute frozen_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="special">
         <attribute days="7" />
@@ -21546,7 +21500,7 @@
         <attribute name="Early Snow" />
         <attribute special="note3" />
         <attribute description="No one can use the HIDE table." />
-        <attribute frozen_water="" />
+		<attribute frozen_water="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="888" name="Ambush">
@@ -26712,7 +26666,7 @@
         <attribute weight="M" />
         <attribute length="2" />
         <attribute base_price="4" />
-        <attribute throwable="" />
+		<attribute throwable="" />
         <attribute weapon="" />
         <attribute icon_type="axe" />
         <attribute icon_folder="weapons" />
@@ -26736,7 +26690,7 @@
         <attribute weight="M" />
         <attribute length="2" />
         <attribute base_price="4" />
-        <attribute throwable="" />
+		<attribute throwable="" />
         <attribute weapon="" />
         <attribute icon_type="axe" />
         <attribute icon_folder="weapons" />
@@ -28901,7 +28855,7 @@
         <attribute alt_monsters1_game="" />
         <attribute folder="tiles_alternative" />
         <attribute rw_expansion_1="" />
-        <attribute anchor_tile="" />
+		<attribute anchor_tile="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="10.8,48.9" />
@@ -31029,7 +30983,7 @@
     </GameObject>
     <GameObject id="1162" name="Hound">
       <AttributeBlock blockName="this">
-        <attribute treasure="small" />
+      	<attribute treasure="small" />
         <attribute text="Use to lure monsters to separate combat sheet" />
         <attribute rw_expansion_1="" />
         <attribute base_price="2" />
@@ -31043,7 +30997,7 @@
         <attribute item="" />
       </AttributeBlock>
       <AttributeBlock blockName="companion">
-        <attribute monster="" />
+      	<attribute monster="" />
         <attribute vulnerability="L" />
         <attribute fame="0" />
         <attribute notoriety="0" />
@@ -31063,7 +31017,7 @@
     </GameObject>
     <GameObject id="1163" name="Needful Thing">
       <AttributeBlock blockName="this">
-        <attribute treasure="small" />
+      	<attribute treasure="small" />
         <attribute text="Use to trade for any item (not hire)" />
         <attribute rw_expansion_1="" />
         <attribute base_price="0" />
@@ -31078,7 +31032,7 @@
     </GameObject>
     <GameObject id="1165" name="Magic Meat">
       <AttributeBlock blockName="this">
-        <attribute treasure="small" />
+      	<attribute treasure="small" />
         <attribute text="All monsters in hex are lured to the clearing during evening" />
         <attribute rw_expansion_1="" />
         <attribute base_price="2" />
@@ -31092,7 +31046,7 @@
     </GameObject>
     <GameObject id="1166" name="Magic Path">
       <AttributeBlock blockName="this">
-        <attribute treasure="small" />
+      	<attribute treasure="small" />
         <attribute text="Can move between two clearings in same hex once" />
         <attribute rw_expansion_1="" />
         <attribute base_price="20" />
@@ -31108,7 +31062,7 @@
     </GameObject>
     <GameObject id="1167" name="Doppleganger">
       <AttributeBlock blockName="this">
-        <attribute hire_with_chit="1" />
+      	<attribute hire_with_chit="1" />
         <attribute icon_type="t1" />
         <attribute icon_folder="traveler" />
         <attribute rw_expansion_1="" />
@@ -31119,7 +31073,7 @@
     </GameObject>
     <GameObject id="1168" name="Necromancer">
       <AttributeBlock blockName="this">
-        <attribute base_price="25" />
+      	<attribute base_price="25" />
         <attribute icon_type="t1" />
         <attribute icon_folder="traveler" />
         <attribute rw_expansion_1="" />
@@ -31130,7 +31084,7 @@
     </GameObject>
     <GameObject id="1169" name="Soothsayer">
       <AttributeBlock blockName="this">
-        <attribute base_price="8" />
+      	<attribute base_price="8" />
         <attribute icon_type="t1" />
         <attribute icon_folder="traveler" />
         <attribute rw_expansion_1="" />
@@ -31146,9 +31100,9 @@
         <attribute target="monsters" />
         <attribute text="Monsters fight each other in the current combat round" />
         <attribute magic_color="any" />
-        <attribute duel="" />
-        <attribute min_targets="2" />
-        <attribute max_targets="2" />
+		<attribute duel="" />
+		<attribute min_targets="2" />
+		<attribute max_targets="2" />
         <attribute host_okay="" />
         <attribute new_spells_2="" />
         <attribute learnable="" />
@@ -31262,8 +31216,8 @@
         <attribute armor_row="1" />
         <attribute icon_folder="armor" />
       </AttributeBlock>
-    </GameObject>
-    <GameObject id="1177" name="Mystic Boots">
+     </GameObject>
+     <GameObject id="1177" name="Mystic Boots">
       <AttributeBlock blockName="this">
         <attribute spell="VI" />
         <attribute duration="day" />
@@ -31276,44 +31230,44 @@
         <attribute author="Expansion 1" />
       </AttributeBlock>
       <AttributeBlock blockName="move_chit">
-        <attribute action="MOVE" />
-        <attribute chit_state="1" />
+      	<attribute action="MOVE" />
+      	<attribute chit_state="1" />
         <attribute strength="M" />
         <attribute speed="3" />
         <attribute move_chit="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1178" name="Rocks Glow">
+	 <GameObject id="1178" name="Rocks Glow">
       <AttributeBlock blockName="this">
         <attribute spell="II" />
         <attribute duration="day" />
         <attribute target="clearing" />
         <attribute text="May perform daylight phases in affected clearing" />
         <attribute magic_color="gold" />
-        <attribute light_effect="" />
+		<attribute light_effect="" />
         <attribute host_okay="" />
         <attribute new_spells_2="" />
         <attribute learnable="" />
         <attribute author="Expansion 1" />
-        <attributeList keyName="target_clearing">
-          <attributeVal N0="clearing" />
+		<attributeList keyName="target_clearing">
+			<attributeVal N0="clearing" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1179" name="Sleep">
+	<GameObject id="1179" name="Sleep">
       <AttributeBlock blockName="this">
         <attribute spell="III" />
         <attribute duration="instant" />
         <attribute target="clearing" />
         <attribute text="End combat in clearing" />
         <attribute magic_color="gold" />
-        <attribute cease_combat="" />
+		<attribute cease_combat="" />
         <attribute host_okay="" />
         <attribute new_spells_2="" />
         <attribute learnable="" />
         <attribute author="Expansion 1" />
-        <attributeList keyName="target_clearing">
-          <attributeVal N0="clearing" />
+		<attributeList keyName="target_clearing">
+			<attributeVal N0="clearing" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
@@ -31331,12 +31285,12 @@
         <attribute new_spells_2="" />
         <attribute learnable="" />
         <attribute author="Expansion 1" />
-        <attributeList keyName="target_clearing">
-          <attributeVal N0="clearing" />
+		<attributeList keyName="target_clearing">
+			<attributeVal N0="clearing" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1181" name="Grotto">
+	<GameObject id="1181" name="Grotto">
       <AttributeBlock blockName="this">
         <attribute tile_type="C" />
         <attribute tile="" />
@@ -31997,16 +31951,16 @@
         <attribute offroad_xy="31.4,10.0" />
         <attribute clearing_1_type="normal" />
         <attribute clearing_1_xy="60.2,26.8" />
-        <attribute clearing_1_magic="R" />
+		<attribute clearing_1_magic="R" />
         <attribute clearing_2_type="normal" />
         <attribute clearing_2_xy="30.4,67.1" />
-        <attribute clearing_2_magic="R" />
+		<attribute clearing_2_magic="R" />
         <attribute clearing_4_type="normal" />
         <attribute clearing_4_xy="70.7,64.8" />
-        <attribute clearing_4_magic="R" />
+		<attribute clearing_4_magic="R" />
         <attribute clearing_5_type="normal" />
         <attribute clearing_5_xy="28.6,34.2" />
-        <attribute clearing_5_magic="R" />
+		<attribute clearing_5_magic="R" />
         <attribute path_1_from="clearing_1" />
         <attribute path_1_to="N" />
         <attribute path_1_type="normal" />
@@ -32087,16 +32041,16 @@
         <attribute offroad_xy="55.0,86.7" />
         <attribute clearing_1_type="normal" />
         <attribute clearing_1_xy="40.1,27.2" />
-        <attribute clearing_1_magic="R" />
+		<attribute clearing_1_magic="R" />
         <attribute clearing_2_type="normal" />
         <attribute clearing_2_xy="63.7,69.6" />
-        <attribute clearing_2_magic="R" />
+		<attribute clearing_2_magic="R" />
         <attribute clearing_4_type="normal" />
         <attribute clearing_4_xy="71.9,37.0" />
-        <attribute clearing_4_magic="R" />
+		<attribute clearing_4_magic="R" />
         <attribute clearing_5_type="normal" />
         <attribute clearing_5_xy="30.4,61.7" />
-        <attribute clearing_5_magic="R" />
+		<attribute clearing_5_magic="R" />
         <attribute path_1_from="clearing_1" />
         <attribute path_1_to="N" />
         <attribute path_1_type="normal" />
@@ -32178,16 +32132,16 @@
         <attribute offroad_xy="46.1,83.4" />
         <attribute clearing_1_type="normal" />
         <attribute clearing_1_xy="39.5,26.1" />
-        <attribute clearing_1_magic="R" />
+		<attribute clearing_1_magic="R" />
         <attribute clearing_2_type="normal" />
         <attribute clearing_2_xy="67.7,67.3" />
-        <attribute clearing_2_magic="R" />
+		<attribute clearing_2_magic="R" />
         <attribute clearing_4_type="normal" />
         <attribute clearing_4_xy="27.8,64.5" />
-        <attribute clearing_4_magic="R" />
+		<attribute clearing_4_magic="R" />
         <attribute clearing_5_type="normal" />
         <attribute clearing_5_xy="70.9,35.4" />
-        <attribute clearing_5_magic="R" />
+		<attribute clearing_5_magic="R" />
         <attribute path_1_from="clearing_1" />
         <attribute path_1_to="N" />
         <attribute path_1_type="normal" />
@@ -32271,16 +32225,16 @@
         <attribute offroad_xy="58.4,80.4" />
         <attribute clearing_1_type="normal" />
         <attribute clearing_1_xy="72.5,50.8" />
-        <attribute clearing_1_magic="R" />
+		<attribute clearing_1_magic="R" />
         <attribute clearing_2_type="normal" />
         <attribute clearing_2_xy="29.2,37.7" />
-        <attribute clearing_2_magic="R" />
+		<attribute clearing_2_magic="R" />
         <attribute clearing_4_type="normal" />
         <attribute clearing_4_xy="53.2,21.4" />
-        <attribute clearing_4_magic="R" />
+		<attribute clearing_4_magic="R" />
         <attribute clearing_5_type="normal" />
         <attribute clearing_5_xy="33.6,69.6" />
-        <attribute clearing_5_magic="R" />
+		<attribute clearing_5_magic="R" />
         <attribute path_1_from="clearing_1" />
         <attribute path_1_to="clearing_4" />
         <attribute path_1_type="normal" />
@@ -32360,16 +32314,16 @@
         <attribute offroad_xy="38.7,83.4" />
         <attribute clearing_1_type="normal" />
         <attribute clearing_1_xy="25.0,48.4" />
-        <attribute clearing_1_magic="R" />
+		<attribute clearing_1_magic="R" />
         <attribute clearing_2_type="normal" />
         <attribute clearing_2_xy="74.1,42.1" />
-        <attribute clearing_2_magic="R" />
+		<attribute clearing_2_magic="R" />
         <attribute clearing_4_type="normal" />
         <attribute clearing_4_xy="50.6,23.3" />
-        <attribute clearing_4_magic="R" />
+		<attribute clearing_4_magic="R" />
         <attribute clearing_5_type="normal" />
         <attribute clearing_5_xy="62.5,71.3" />
-        <attribute clearing_5_magic="R" />
+		<attribute clearing_5_magic="R" />
         <attribute path_1_from="clearing_1" />
         <attribute path_1_to="NW" />
         <attribute path_1_type="normal" />
@@ -32410,8 +32364,8 @@
         <attribute code="FL" />
         <attribute folder="sr_tiles_legendary" />
         <attribute stile="" />
-        <attribute water_source_clearing="1" />
-        <attribute anchor_tile="" />
+		<attribute water_source_clearing="1" />
+		<attribute anchor_tile="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="69.5,88.3" />
@@ -32462,7 +32416,7 @@
         <attribute path_10_from="clearing_1" />
         <attribute path_10_to="S" />
         <attribute path_10_type="river" />
-        <attribute path_11_from="clearing_1" />
+		<attribute path_11_from="clearing_1" />
         <attribute path_11_to="clearing_6" />
         <attribute path_11_type="normal" />
       </AttributeBlock>
@@ -33426,7 +33380,7 @@
         <attribute clearing_6_magic="R" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1201" name="Flutter 1">
+	<GameObject id="1201" name="Flutter 1">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute chit="" />
@@ -33434,7 +33388,7 @@
         <attribute clearing="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1202" name="Flutter 2">
+	<GameObject id="1202" name="Flutter 2">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute chit="" />
@@ -33442,7 +33396,7 @@
         <attribute clearing="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1203" name="Flutter 4">
+	<GameObject id="1203" name="Flutter 4">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute chit="" />
@@ -33450,7 +33404,7 @@
         <attribute clearing="4" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1204" name="Flutter 6">
+	<GameObject id="1204" name="Flutter 6">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute chit="" />
@@ -33458,7 +33412,7 @@
         <attribute clearing="6" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1205" name="Howl 2">
+	<GameObject id="1205" name="Howl 2">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute chit="" />
@@ -33466,7 +33420,7 @@
         <attribute clearing="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1206" name="Howl 3">
+	<GameObject id="1206" name="Howl 3">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute chit="" />
@@ -33474,7 +33428,7 @@
         <attribute clearing="3" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1207" name="Howl 4">
+	<GameObject id="1207" name="Howl 4">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute chit="" />
@@ -33482,7 +33436,7 @@
         <attribute clearing="4" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1208" name="Howl 5">
+	<GameObject id="1208" name="Howl 5">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute chit="" />
@@ -33490,7 +33444,7 @@
         <attribute clearing="5" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1209" name="Patter 1">
+	<GameObject id="1209" name="Patter 1">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute chit="" />
@@ -33498,7 +33452,7 @@
         <attribute clearing="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1210" name="Patter 2">
+	<GameObject id="1210" name="Patter 2">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute chit="" />
@@ -33506,7 +33460,7 @@
         <attribute clearing="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1211" name="Patter 4">
+	<GameObject id="1211" name="Patter 4">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute chit="" />
@@ -33514,7 +33468,7 @@
         <attribute clearing="4" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1212" name="Patter 5">
+	<GameObject id="1212" name="Patter 5">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute chit="" />
@@ -33522,7 +33476,7 @@
         <attribute clearing="5" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1213" name="Roar 3">
+	<GameObject id="1213" name="Roar 3">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute chit="" />
@@ -33530,7 +33484,7 @@
         <attribute clearing="3" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1214" name="Roar 4">
+	<GameObject id="1214" name="Roar 4">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute chit="" />
@@ -33538,7 +33492,7 @@
         <attribute clearing="4" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1215" name="Roar 5">
+	<GameObject id="1215" name="Roar 5">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute chit="" />
@@ -33546,7 +33500,7 @@
         <attribute clearing="5" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1216" name="Roar 6">
+	<GameObject id="1216" name="Roar 6">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute chit="" />
@@ -33554,7 +33508,7 @@
         <attribute clearing="6" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1217" name="Slither 1">
+	<GameObject id="1217" name="Slither 1">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute chit="" />
@@ -33562,7 +33516,7 @@
         <attribute clearing="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1218" name="Slither 3">
+	<GameObject id="1218" name="Slither 3">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute chit="" />
@@ -33570,7 +33524,7 @@
         <attribute clearing="3" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1219" name="Slither 5">
+	<GameObject id="1219" name="Slither 5">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute chit="" />
@@ -33578,7 +33532,7 @@
         <attribute clearing="5" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1220" name="Slither 6">
+	<GameObject id="1220" name="Slither 6">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute chit="" />
@@ -33586,7 +33540,7 @@
         <attribute clearing="6" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1221" name="Hoard">
+	<GameObject id="1221" name="Hoard">
       <AttributeBlock blockName="this">
         <attribute treasure_location="hoard" />
         <attribute clearing="6" />
@@ -33606,7 +33560,7 @@
       <AttributeBlock blockName="this">
         <attribute treasure_location="lair" />
         <attribute clearing="3" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
         <attribute monster_die="1" />
         <attribute print="" />
         <attribute chit="" />
@@ -33738,7 +33692,7 @@
         <attribute print="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1231" name="Den">
+	<GameObject id="1231" name="Den">
       <AttributeBlock blockName="this">
         <attribute treasure_location="den" />
         <attribute clearing="2" />
@@ -33758,7 +33712,7 @@
       <AttributeBlock blockName="this">
         <attribute treasure_location="temple" />
         <attribute clearing="5" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
         <attribute monster_die="6" />
         <attribute print="" />
         <attribute chit="" />
@@ -33768,7 +33722,7 @@
         <attribute ts_color="brown" />
         <attribute icon_type="zombie1" />
         <attribute icon_folder="monsters2" />
-        <attribute spell_site="" />
+		<attribute spell_site="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1233" name="Tower">
@@ -33785,7 +33739,7 @@
         <attribute ts_color="blue" />
         <attribute icon_type="troll" />
         <attribute icon_folder="monsters" />
-        <attribute spell_site="" />
+		<attribute spell_site="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1234" name="Spire">
@@ -33835,7 +33789,7 @@
         <attribute ts_color="brown" />
         <attribute icon_type="carnoplant" />
         <attribute icon_folder="monsters2" />
-        <attribute spell_site="" />
+		<attribute spell_site="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1237" name="Tomb">
@@ -33889,7 +33843,7 @@
         <attribute print="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1241" name="Bones H">
+	<GameObject id="1241" name="Bones H">
       <AttributeBlock blockName="this">
         <attribute warning="bones" />
         <attribute tile_type="H" />
@@ -33897,10 +33851,10 @@
         <attribute chit="" />
         <attribute ts_section="" />
       </AttributeBlock>
-      <contains id="1293" />
+	  <contains id="1293" />
       <contains id="1294" />
     </GameObject>
-    <GameObject id="1242" name="Dank H">
+	<GameObject id="1242" name="Dank H">
       <AttributeBlock blockName="this">
         <attribute warning="dank" />
         <attribute tile_type="H" />
@@ -33908,9 +33862,9 @@
         <attribute chit="" />
         <attribute ts_section="" />
       </AttributeBlock>
-      <contains id="1287" />
+	  <contains id="1287" />
     </GameObject>
-    <GameObject id="1243" name="Ruins H">
+	<GameObject id="1243" name="Ruins H">
       <AttributeBlock blockName="this">
         <attribute warning="ruins" />
         <attribute tile_type="H" />
@@ -33918,10 +33872,10 @@
         <attribute chit="" />
         <attribute ts_section="" />
       </AttributeBlock>
-      <contains id="1295" />
+	  <contains id="1295" />
       <contains id="1296" />
     </GameObject>
-    <GameObject id="1244" name="Stink H">
+	<GameObject id="1244" name="Stink H">
       <AttributeBlock blockName="this">
         <attribute warning="stink" />
         <attribute tile_type="H" />
@@ -33929,9 +33883,9 @@
         <attribute chit="" />
         <attribute ts_section="" />
       </AttributeBlock>
-      <contains id="1289" />
+	  <contains id="1289" />
     </GameObject>
-    <GameObject id="1245" name="Smoke H">
+	<GameObject id="1245" name="Smoke H">
       <AttributeBlock blockName="this">
         <attribute warning="smoke" />
         <attribute tile_type="H" />
@@ -33939,9 +33893,9 @@
         <attribute chit="" />
         <attribute ts_section="" />
       </AttributeBlock>
-      <contains id="1288" />
+	  <contains id="1288" />
     </GameObject>
-    <GameObject id="1246" name="Bones ST">
+	<GameObject id="1246" name="Bones ST">
       <AttributeBlock blockName="this">
         <attribute warning="bones" />
         <attribute tile_type="ST" />
@@ -33950,7 +33904,7 @@
         <attribute ts_section="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1247" name="Dank ST">
+	<GameObject id="1247" name="Dank ST">
       <AttributeBlock blockName="this">
         <attribute warning="dank" />
         <attribute tile_type="ST" />
@@ -33959,7 +33913,7 @@
         <attribute ts_section="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1248" name="Ruins ST">
+	<GameObject id="1248" name="Ruins ST">
       <AttributeBlock blockName="this">
         <attribute warning="ruins" />
         <attribute tile_type="ST" />
@@ -33968,7 +33922,7 @@
         <attribute ts_section="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1249" name="Stink ST">
+	<GameObject id="1249" name="Stink ST">
       <AttributeBlock blockName="this">
         <attribute warning="stink" />
         <attribute tile_type="ST" />
@@ -33976,9 +33930,9 @@
         <attribute chit="" />
         <attribute ts_section="" />
       </AttributeBlock>
-      <contains id="1291" />
+	  <contains id="1291" />
     </GameObject>
-    <GameObject id="1250" name="Smoke ST">
+	<GameObject id="1250" name="Smoke ST">
       <AttributeBlock blockName="this">
         <attribute warning="smoke" />
         <attribute tile_type="ST" />
@@ -33986,9 +33940,9 @@
         <attribute chit="" />
         <attribute ts_section="" />
       </AttributeBlock>
-      <contains id="1292" />
+	  <contains id="1292" />
     </GameObject>
-    <GameObject id="1251" name="Bones F">
+	<GameObject id="1251" name="Bones F">
       <AttributeBlock blockName="this">
         <attribute warning="bones" />
         <attribute tile_type="F" />
@@ -33997,7 +33951,7 @@
         <attribute ts_section="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1252" name="Dank F">
+	<GameObject id="1252" name="Dank F">
       <AttributeBlock blockName="this">
         <attribute warning="dank" />
         <attribute tile_type="F" />
@@ -34006,7 +33960,7 @@
         <attribute ts_section="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1253" name="Ruins F">
+	<GameObject id="1253" name="Ruins F">
       <AttributeBlock blockName="this">
         <attribute warning="ruins" />
         <attribute tile_type="F" />
@@ -34015,7 +33969,7 @@
         <attribute ts_section="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1254" name="Stink F">
+	<GameObject id="1254" name="Stink F">
       <AttributeBlock blockName="this">
         <attribute warning="stink" />
         <attribute tile_type="F" />
@@ -34024,7 +33978,7 @@
         <attribute ts_section="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1255" name="Smoke F">
+	<GameObject id="1255" name="Smoke F">
       <AttributeBlock blockName="this">
         <attribute warning="smoke" />
         <attribute tile_type="F" />
@@ -34033,7 +33987,7 @@
         <attribute ts_section="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1256" name="Bones R">
+	<GameObject id="1256" name="Bones R">
       <AttributeBlock blockName="this">
         <attribute warning="bones" />
         <attribute tile_type="R" />
@@ -34042,7 +33996,7 @@
         <attribute ts_section="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1257" name="Dank R">
+	<GameObject id="1257" name="Dank R">
       <AttributeBlock blockName="this">
         <attribute warning="dank" />
         <attribute tile_type="R" />
@@ -34051,7 +34005,7 @@
         <attribute ts_section="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1258" name="Ruins R">
+	<GameObject id="1258" name="Ruins R">
       <AttributeBlock blockName="this">
         <attribute warning="ruins" />
         <attribute tile_type="R" />
@@ -34060,7 +34014,7 @@
         <attribute ts_section="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1259" name="Stink R">
+	<GameObject id="1259" name="Stink R">
       <AttributeBlock blockName="this">
         <attribute warning="stink" />
         <attribute tile_type="R" />
@@ -34069,7 +34023,7 @@
         <attribute ts_section="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1260" name="Smoke R">
+	<GameObject id="1260" name="Smoke R">
       <AttributeBlock blockName="this">
         <attribute warning="smoke" />
         <attribute tile_type="R" />
@@ -34078,7 +34032,7 @@
         <attribute ts_section="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1261" name="Bones V">
+	<GameObject id="1261" name="Bones V">
       <AttributeBlock blockName="this">
         <attribute warning="bones" />
         <attribute tile_type="V" />
@@ -34086,7 +34040,7 @@
         <attribute chit="" />
         <attribute ts_section="" />
       </AttributeBlock>
-      <contains id="1290" />
+	  <contains id="1290" />
     </GameObject>
     <GameObject id="1262" name="Bones C">
       <AttributeBlock blockName="this">
@@ -34119,7 +34073,7 @@
         <attribute super_realm="" />
         <attribute chit="" />
       </AttributeBlock>
-      <contains id="1283" />
+	  <contains id="1283" />
     </GameObject>
     <GameObject id="1266" name="Dank C">
       <AttributeBlock blockName="this">
@@ -34152,7 +34106,7 @@
         <attribute super_realm="" />
         <attribute chit="" />
       </AttributeBlock>
-      <contains id="1284" />
+	  <contains id="1284" />
     </GameObject>
     <GameObject id="1270" name="Ruins C">
       <AttributeBlock blockName="this">
@@ -34185,7 +34139,7 @@
         <attribute super_realm="" />
         <attribute chit="" />
       </AttributeBlock>
-      <contains id="1281" />
+	  <contains id="1281" />
     </GameObject>
     <GameObject id="1274" name="Smoke C">
       <AttributeBlock blockName="this">
@@ -34202,7 +34156,7 @@
         <attribute super_realm="" />
         <attribute chit="" />
       </AttributeBlock>
-      <contains id="1286" />
+	  <contains id="1286" />
     </GameObject>
     <GameObject id="1276" name="Smoke M">
       <AttributeBlock blockName="this">
@@ -34219,7 +34173,7 @@
         <attribute super_realm="" />
         <attribute chit="" />
       </AttributeBlock>
-      <contains id="1282" />
+	  <contains id="1282" />
     </GameObject>
     <GameObject id="1278" name="Stink C">
       <AttributeBlock blockName="this">
@@ -34236,7 +34190,7 @@
         <attribute super_realm="" />
         <attribute chit="" />
       </AttributeBlock>
-      <contains id="1285" />
+	  <contains id="1285" />
     </GameObject>
     <GameObject id="1280" name="Stink M">
       <AttributeBlock blockName="this">
@@ -34246,7 +34200,7 @@
         <attribute chit="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1281" name="House">
+	<GameObject id="1281" name="House">
       <AttributeBlock blockName="this">
         <attribute dwelling="house" />
         <attribute warning="smoke" />
@@ -34284,7 +34238,7 @@
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
         <attribute icon_folder="dwellings" />
-        <attribute remove_curses="" />
+		<attribute remove_curses="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1284" name="Guard">
@@ -34322,7 +34276,7 @@
         <attribute general_dwelling="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1287" name="Hut">
+	<GameObject id="1287" name="Hut">
       <AttributeBlock blockName="this">
         <attribute dwelling="hut" />
         <attribute warning="dank" />
@@ -34396,7 +34350,7 @@
         <attribute general_dwelling="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1293" name="Ghost">
+	<GameObject id="1293" name="Ghost">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -34410,8 +34364,8 @@
         <attribute monster_die="99" />
         <attribute denizen="" />
       </AttributeBlock>
-    </GameObject>
-    <GameObject id="1294" name="Ghost">
+	</GameObject>
+	<GameObject id="1294" name="Ghost">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -34425,8 +34379,8 @@
         <attribute monster_die="99" />
         <attribute denizen="" />
       </AttributeBlock>
-    </GameObject>
-    <GameObject id="1295" name="Ghost">
+	</GameObject>
+	<GameObject id="1295" name="Ghost">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -34440,8 +34394,8 @@
         <attribute monster_die="99" />
         <attribute denizen="" />
       </AttributeBlock>
-    </GameObject>
-    <GameObject id="1296" name="Ghost">
+	</GameObject>
+	<GameObject id="1296" name="Ghost">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -34455,8 +34409,8 @@
         <attribute monster_die="99" />
         <attribute denizen="" />
       </AttributeBlock>
-    </GameObject>
-    <GameObject id="1297" name="T Flying Dragon">
+	</GameObject>
+	<GameObject id="1297" name="T Flying Dragon">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute armored="" />
@@ -34567,7 +34521,7 @@
         <attribute dragon_length="15" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1301" name="T Scorpion">
+	<GameObject id="1301" name="T Scorpion">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute armored="" />
@@ -34588,7 +34542,7 @@
         <attribute attack_speed="5" />
         <attribute strength="M" />
         <attribute chit_color="purple" />
-        <attribute pins="" />
+		<attribute pins="" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
@@ -34612,17 +34566,17 @@
         <attribute strength="L" />
         <attribute length="6" />
         <attribute chit_color="pink" />
-        <attribute sharpness="2" />
+		<attribute sharpness="2" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="6" />
         <attribute chit_color="red" />
-        <attribute sharpness="2" />
+		<attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1303" name="Demon">
+	<GameObject id="1303" name="Demon">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="T" />
@@ -34653,7 +34607,7 @@
         <attribute pins="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1304" name="Winged Demon">
+	<GameObject id="1304" name="Winged Demon">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="T" />
@@ -34685,7 +34639,7 @@
         <attribute pins="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1305" name="T Serpent">
+	<GameObject id="1305" name="T Serpent">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -34698,7 +34652,7 @@
         <attribute monster_die="2" />
         <attribute base_price="7" />
         <attribute icon_folder="monsters" />
-        <attribute needs_init="" />
+		<attribute needs_init="" />
         <attribute denizen="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -34712,10 +34666,10 @@
         <attribute attack_speed="4" />
         <attribute strength="X" />
         <attribute chit_color="red" />
-        <attribute pins="" />
+		<attribute pins="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1306" name="Octopus">
+	<GameObject id="1306" name="Octopus">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="T" />
@@ -34744,21 +34698,21 @@
         <attribute pins="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1307" name="Colossus">
+	<GameObject id="1307" name="Colossus">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="X" />
         <attribute fame="15" />
         <attribute notoriety="15" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
         <attribute icon_type="giant" />
         <attribute setup_start="Tower" />
         <attribute monster_die="3" />
         <attribute base_price="15" />
         <attribute icon_folder="monsters" />
-        <attribute needs_init="" />
+		<attribute needs_init="" />
         <attribute denizen="" />
-        <attribute no_change_tactics="" />
+		<attribute no_change_tactics="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="5" />
@@ -34769,7 +34723,7 @@
         <attribute attack_speed="5" />
         <attribute strength="X" />
         <attribute chit_color="blue" />
-        <attribute pins="" />
+		<attribute pins="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1308" name="T Troll">
@@ -34802,7 +34756,7 @@
         <attribute pins="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1309" name="Skeleton Knight">
+	<GameObject id="1309" name="Skeleton Knight">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="H" />
@@ -34814,7 +34768,7 @@
         <attribute base_price="5" />
         <attribute icon_folder="monsters2" />
         <attribute super_realm="" />
-        <attribute needs_init="" />
+		<attribute needs_init="" />
         <attribute undead="" />
         <attribute denizen="" />
       </AttributeBlock>
@@ -34822,23 +34776,23 @@
         <attribute move_speed="5" />
         <attribute attack_speed="4" />
         <attribute strength="H" />
-        <attribute length="8" />
+		<attribute length="8" />
         <attribute chit_color="white" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="6" />
         <attribute attack_speed="5" />
         <attribute strength="T" />
-        <attribute length="8" />
+		<attribute length="8" />
         <attribute chit_color="gray" />
-        <attribute sharpness="1" />
+		<attribute sharpness="1" />
       </AttributeBlock>
-      <contains id="1310" />
+	  <contains id="1310" />
     </GameObject>
-    <GameObject id="1310" name="Bone Horse">
+	<GameObject id="1310" name="Bone Horse">
       <AttributeBlock blockName="this">
-        <attribute monster_steed="" />
-        <attribute horse="warhorse" />
+		<attribute monster_steed="" />
+		<attribute horse="warhorse" />
         <attribute vulnerability="T" />
         <attribute armored="" />
         <attribute super_realm="" />
@@ -34855,7 +34809,7 @@
         <attribute chit_color="darkgray" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1311" name="T Spider">
+	<GameObject id="1311" name="T Spider">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="T" />
@@ -34884,7 +34838,7 @@
         <attribute pins="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1312" name="Imp">
+	<GameObject id="1312" name="Imp">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -34914,52 +34868,52 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1313" name="Titan">
+	<GameObject id="1313" name="Titan">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="X" />
         <attribute fame="15" />
         <attribute notoriety="15" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
         <attribute icon_type="giant" />
         <attribute setup_start="Spire" />
         <attribute monster_die="3" />
         <attribute base_price="15" />
         <attribute icon_folder="monsters" />
-        <attribute needs_init="" />
+		<attribute needs_init="" />
         <attribute denizen="" />
-        <attribute no_change_tactics="" />
+		<attribute no_change_tactics="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="4" />
         <attribute strength="X" />
-        <attribute length="18" />
-        <attribute sharpness="3" />
+		<attribute length="18" />
+		<attribute sharpness="3" />
         <attribute chit_color="blue" />
-        <attribute missile="" />
+		<attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute attack_speed="5" />
         <attribute strength="X" />
-        <attribute length="18" />
-        <attribute sharpness="3" />
+		<attribute length="18" />
+		<attribute sharpness="3" />
         <attribute chit_color="blue" />
-        <attribute missile="" />
+		<attribute missile="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1314" name="Succubus">
+	<GameObject id="1314" name="Succubus">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
         <attribute fame="2" />
         <attribute notoriety="1" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
         <attribute icon_type="carnoplant" />
         <attribute setup_start="Garden" />
         <attribute monster_die="6" />
         <attribute base_price="1" />
         <attribute icon_folder="monsters2" />
-        <attribute needs_init="" />
+		<attribute needs_init="" />
         <attribute denizen="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -34976,19 +34930,19 @@
         <attribute chit_color="gray" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1315" name="Minotaur">
+	<GameObject id="1315" name="Minotaur">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="H" />
         <attribute fame="5" />
         <attribute notoriety="5" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
         <attribute icon_type="minotaur" />
         <attribute setup_start="Maze" />
         <attribute monster_die="6" />
         <attribute base_price="5" />
         <attribute icon_folder="monsters1" />
-        <attribute needs_init="" />
+		<attribute needs_init="" />
         <attribute denizen="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -35007,14 +34961,14 @@
         <attribute sharpness="1" />
         <attribute length="5" />
       </AttributeBlock>
-      <contains id="1316" />
+	  <contains id="1316" />
     </GameObject>
-    <GameObject id="1316" name="Minotaur Shield">
+	<GameObject id="1316" name="Minotaur Shield">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute part="" />
         <attribute shield="" />
-        <attribute vulnerability="T" />
+		<attribute vulnerability="T" />
         <attribute icon_type="minotaur_buckler" />
         <attribute icon_folder="monsters2" />
         <attribute super_realm="" />
@@ -35028,20 +34982,20 @@
         <attribute chit_color="forestgreen" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1317" name="Vampire">
+	<GameObject id="1317" name="Vampire">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="H" />
         <attribute fame="4" />
         <attribute notoriety="4" />
-        <attribute super_realm="" />
+		<attribute super_realm="" />
         <attribute icon_type="zombie1" />
         <attribute setup_start="Temple" />
         <attribute monster_die="6" />
-        <attribute flying="" />
+		<attribute flying="" />
         <attribute base_price="4" />
         <attribute icon_folder="monsters2" />
-        <attribute needs_init="" />
+		<attribute needs_init="" />
         <attribute armored="" />
         <attribute denizen="" />
       </AttributeBlock>
@@ -35066,7 +35020,7 @@
         <attribute native="Cultists" />
         <attribute dwelling="Cultists" />
         <attribute monster_die="1" />
-        <attribute monster_die2="2" />
+		<attribute monster_die2="2" />
         <attribute print="" />
         <attribute ts_section="lost fortress" />
         <attribute ts_size="T" />
@@ -35074,7 +35028,7 @@
         <attribute ts_count="4" />
         <attribute icon_type="swordsman" />
         <attribute icon_folder="natives" />
-        <attribute virtual_dwelling="" />
+        <attribute virtual_dwelling="" />	
       </AttributeBlock>
       <contains id="1319" />
       <contains id="1320" />
@@ -35092,12 +35046,12 @@
         <attribute super_realm="" />
         <attribute icon_type="swordsman_r" />
         <attribute monster_die="1" />
-        <attribute monster_die2="2" />
+		<attribute monster_die2="2" />
         <attribute setup_start="Cultist Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
-        <attribute needs_init="" />
+		<attribute needs_init="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -35125,7 +35079,7 @@
         <attribute super_realm="" />
         <attribute icon_type="swordsman_r" />
         <attribute monster_die="1" />
-        <attribute monster_die2="2" />
+		<attribute monster_die2="2" />
         <attribute setup_start="Cultist Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
@@ -35157,7 +35111,7 @@
         <attribute super_realm="" />
         <attribute icon_type="swordsman_r" />
         <attribute monster_die="1" />
-        <attribute monster_die2="2" />
+		<attribute monster_die2="2" />
         <attribute setup_start="Cultist Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
@@ -35189,7 +35143,7 @@
         <attribute super_realm="" />
         <attribute icon_type="swordsman_r" />
         <attribute monster_die="1" />
-        <attribute monster_die2="2" />
+		<attribute monster_die2="2" />
         <attribute setup_start="Cultist Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
@@ -35210,7 +35164,7 @@
         <attribute chit_color="yellow" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1323" name="H Gargyle Box">
+	<GameObject id="1323" name="H Gargyle Box">
       <AttributeBlock blockName="this">
         <attribute summon="Stink R,Flutter R,Slither R" />
         <attribute monster_die="3" />
@@ -35239,7 +35193,7 @@
         <attribute icon_folder="monsters" />
       </AttributeBlock>
       <contains id="1327" />
-      <contains id="1328" />
+	  <contains id="1328" />
     </GameObject>
     <GameObject id="1325" name="T Gargyle Box">
       <AttributeBlock blockName="this">
@@ -35254,9 +35208,9 @@
         <attribute icon_type="demon_flying" />
         <attribute icon_folder="monsters" />
       </AttributeBlock>
-      <contains id="1329" />
+	  <contains id="1329" />
     </GameObject>
-    <GameObject id="1326" name="H Gargyle">
+	<GameObject id="1326" name="H Gargyle">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="H" />
@@ -35286,7 +35240,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1327" name="H Gargyle">
+	<GameObject id="1327" name="H Gargyle">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="H" />
@@ -35316,7 +35270,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1328" name="H Gargyle">
+	<GameObject id="1328" name="H Gargyle">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="H" />
@@ -35346,7 +35300,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1329" name="T Gargyle">
+	<GameObject id="1329" name="T Gargyle">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="T" />
@@ -35374,10 +35328,10 @@
         <attribute attack_speed="4" />
         <attribute strength="RED" />
         <attribute chit_color="red" />
-        <attribute pins="" />
+		<attribute pins="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1330" name="Sword Skeleton Box">
+	<GameObject id="1330" name="Sword Skeleton Box">
       <AttributeBlock blockName="this">
         <attribute summon="Bones R, Dank R, Patter R" />
         <attribute monster_die="4" />
@@ -35390,14 +35344,14 @@
         <attribute icon_type="skullsword" />
         <attribute icon_folder="monsters2" />
       </AttributeBlock>
-      <contains id="1334" />
-      <contains id="1335" />
-      <contains id="1336" />
-      <contains id="1337" />
-      <contains id="1338" />
-      <contains id="1339" />
+	  <contains id="1334" />
+	  <contains id="1335" />
+	  <contains id="1336" />
+	  <contains id="1337" />
+	  <contains id="1338" />
+	  <contains id="1339" />
     </GameObject>
-    <GameObject id="1331" name="Spear Skeleton Box">
+	<GameObject id="1331" name="Spear Skeleton Box">
       <AttributeBlock blockName="this">
         <attribute summon="Bones R, Dank R, Patter R" />
         <attribute monster_die="4" />
@@ -35410,14 +35364,14 @@
         <attribute icon_type="skullsword" />
         <attribute icon_folder="monsters2" />
       </AttributeBlock>
-      <contains id="1340" />
-      <contains id="1341" />
-      <contains id="1342" />
-      <contains id="1343" />
-      <contains id="1344" />
-      <contains id="1345" />
+	  <contains id="1340" />
+	  <contains id="1341" />
+	  <contains id="1342" />
+	  <contains id="1343" />
+	  <contains id="1344" />
+	  <contains id="1345" />
     </GameObject>
-    <GameObject id="1332" name="Axe Skeleton Box">
+	<GameObject id="1332" name="Axe Skeleton Box">
       <AttributeBlock blockName="this">
         <attribute summon="Bones R, Dank R, Patter R" />
         <attribute monster_die="4" />
@@ -35430,14 +35384,14 @@
         <attribute icon_type="skullsword" />
         <attribute icon_folder="monsters2" />
       </AttributeBlock>
-      <contains id="1346" />
-      <contains id="1347" />
-      <contains id="1348" />
-      <contains id="1349" />
-      <contains id="1350" />
-      <contains id="1351" />
+	  <contains id="1346" />
+	  <contains id="1347" />
+	  <contains id="1348" />
+	  <contains id="1349" />
+	  <contains id="1350" />
+	  <contains id="1351" />
     </GameObject>
-    <GameObject id="1333" name="Bow Skeleton Box">
+	<GameObject id="1333" name="Bow Skeleton Box">
       <AttributeBlock blockName="this">
         <attribute summon="Bones R, Dank R, Patter R" />
         <attribute monster_die="4" />
@@ -35450,14 +35404,14 @@
         <attribute icon_type="skullbow" />
         <attribute icon_folder="monsters2" />
       </AttributeBlock>
-      <contains id="1352" />
-      <contains id="1353" />
-      <contains id="1354" />
-      <contains id="1355" />
-      <contains id="1356" />
-      <contains id="1357" />
+	  <contains id="1352" />
+	  <contains id="1353" />
+	  <contains id="1354" />
+	  <contains id="1355" />
+	  <contains id="1356" />
+	  <contains id="1357" />
     </GameObject>
-    <GameObject id="1334" name="Sword Skeleton">
+	<GameObject id="1334" name="Sword Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -35478,19 +35432,19 @@
         <attribute attack_speed="4" />
         <attribute strength="L" />
         <attribute chit_color="white" />
-        <attribute length="4" />
-        <attribute sharpness="1" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute chit_color="gray" />
-        <attribute length="4" />
-        <attribute sharpness="1" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1335" name="Sword Skeleton">
+	<GameObject id="1335" name="Sword Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -35511,19 +35465,19 @@
         <attribute attack_speed="4" />
         <attribute strength="L" />
         <attribute chit_color="white" />
-        <attribute length="4" />
-        <attribute sharpness="1" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute chit_color="gray" />
-        <attribute length="4" />
-        <attribute sharpness="1" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1336" name="Sword Skeleton">
+	<GameObject id="1336" name="Sword Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -35544,19 +35498,19 @@
         <attribute attack_speed="4" />
         <attribute strength="L" />
         <attribute chit_color="white" />
-        <attribute length="4" />
-        <attribute sharpness="1" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute chit_color="gray" />
-        <attribute length="4" />
-        <attribute sharpness="1" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1337" name="Sword Skeleton">
+	<GameObject id="1337" name="Sword Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -35577,19 +35531,19 @@
         <attribute attack_speed="4" />
         <attribute strength="L" />
         <attribute chit_color="white" />
-        <attribute length="4" />
-        <attribute sharpness="1" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute chit_color="gray" />
-        <attribute length="4" />
-        <attribute sharpness="1" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1338" name="Sword Skeleton">
+	<GameObject id="1338" name="Sword Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -35610,19 +35564,19 @@
         <attribute attack_speed="4" />
         <attribute strength="L" />
         <attribute chit_color="white" />
-        <attribute length="4" />
-        <attribute sharpness="1" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute chit_color="gray" />
-        <attribute length="4" />
-        <attribute sharpness="1" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1339" name="Sword Skeleton">
+	<GameObject id="1339" name="Sword Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -35643,19 +35597,19 @@
         <attribute attack_speed="4" />
         <attribute strength="L" />
         <attribute chit_color="white" />
-        <attribute length="4" />
-        <attribute sharpness="1" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute chit_color="gray" />
-        <attribute length="4" />
-        <attribute sharpness="1" />
+		<attribute length="4" />
+		<attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1340" name="Spear Skeleton">
+	<GameObject id="1340" name="Spear Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -35676,19 +35630,19 @@
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute chit_color="white" />
-        <attribute length="10" />
-        <attribute sharpness="1" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
         <attribute attack_speed="6" />
         <attribute strength="H" />
         <attribute chit_color="gray" />
-        <attribute length="10" />
-        <attribute sharpness="1" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1341" name="Spear Skeleton">
+	<GameObject id="1341" name="Spear Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -35709,19 +35663,19 @@
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute chit_color="white" />
-        <attribute length="10" />
-        <attribute sharpness="1" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
         <attribute attack_speed="6" />
         <attribute strength="H" />
         <attribute chit_color="gray" />
-        <attribute length="10" />
-        <attribute sharpness="1" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1342" name="Spear Skeleton">
+	<GameObject id="1342" name="Spear Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -35742,19 +35696,19 @@
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute chit_color="white" />
-        <attribute length="10" />
-        <attribute sharpness="1" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
         <attribute attack_speed="6" />
         <attribute strength="H" />
         <attribute chit_color="gray" />
-        <attribute length="10" />
-        <attribute sharpness="1" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1343" name="Spear Skeleton">
+	<GameObject id="1343" name="Spear Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -35775,19 +35729,19 @@
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute chit_color="white" />
-        <attribute length="10" />
-        <attribute sharpness="1" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
         <attribute attack_speed="6" />
         <attribute strength="H" />
         <attribute chit_color="gray" />
-        <attribute length="10" />
-        <attribute sharpness="1" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1344" name="Spear Skeleton">
+	<GameObject id="1344" name="Spear Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -35808,19 +35762,19 @@
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute chit_color="white" />
-        <attribute length="10" />
-        <attribute sharpness="1" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
         <attribute attack_speed="6" />
         <attribute strength="H" />
         <attribute chit_color="gray" />
-        <attribute length="10" />
-        <attribute sharpness="1" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1345" name="Spear Skeleton">
+	<GameObject id="1345" name="Spear Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -35841,19 +35795,19 @@
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute chit_color="white" />
-        <attribute length="10" />
-        <attribute sharpness="1" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
         <attribute attack_speed="6" />
         <attribute strength="H" />
         <attribute chit_color="gray" />
-        <attribute length="10" />
-        <attribute sharpness="1" />
+		<attribute length="10" />
+		<attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1346" name="Axe Skeleton">
+	<GameObject id="1346" name="Axe Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -35874,19 +35828,19 @@
         <attribute attack_speed="6" />
         <attribute strength="M" />
         <attribute chit_color="white" />
-        <attribute length="5" />
-        <attribute sharpness="1" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
         <attribute attack_speed="5" />
         <attribute strength="H" />
         <attribute chit_color="gray" />
-        <attribute length="5" />
-        <attribute sharpness="1" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1347" name="Axe Skeleton">
+	<GameObject id="1347" name="Axe Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -35907,19 +35861,19 @@
         <attribute attack_speed="6" />
         <attribute strength="M" />
         <attribute chit_color="white" />
-        <attribute length="5" />
-        <attribute sharpness="1" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
         <attribute attack_speed="5" />
         <attribute strength="H" />
         <attribute chit_color="gray" />
-        <attribute length="5" />
-        <attribute sharpness="1" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1348" name="Axe Skeleton">
+	<GameObject id="1348" name="Axe Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -35940,19 +35894,19 @@
         <attribute attack_speed="6" />
         <attribute strength="M" />
         <attribute chit_color="white" />
-        <attribute length="5" />
-        <attribute sharpness="1" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
         <attribute attack_speed="5" />
         <attribute strength="H" />
         <attribute chit_color="gray" />
-        <attribute length="5" />
-        <attribute sharpness="1" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1349" name="Axe Skeleton">
+	<GameObject id="1349" name="Axe Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -35973,19 +35927,19 @@
         <attribute attack_speed="6" />
         <attribute strength="M" />
         <attribute chit_color="white" />
-        <attribute length="5" />
-        <attribute sharpness="1" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
         <attribute attack_speed="5" />
         <attribute strength="H" />
         <attribute chit_color="gray" />
-        <attribute length="5" />
-        <attribute sharpness="1" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1350" name="Axe Skeleton">
+	<GameObject id="1350" name="Axe Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -36006,19 +35960,19 @@
         <attribute attack_speed="6" />
         <attribute strength="M" />
         <attribute chit_color="white" />
-        <attribute length="5" />
-        <attribute sharpness="1" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
         <attribute attack_speed="5" />
         <attribute strength="H" />
         <attribute chit_color="gray" />
-        <attribute length="5" />
-        <attribute sharpness="1" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1351" name="Axe Skeleton">
+	<GameObject id="1351" name="Axe Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -36039,19 +35993,19 @@
         <attribute attack_speed="6" />
         <attribute strength="M" />
         <attribute chit_color="white" />
-        <attribute length="5" />
-        <attribute sharpness="1" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
         <attribute attack_speed="5" />
         <attribute strength="H" />
         <attribute chit_color="gray" />
-        <attribute length="5" />
-        <attribute sharpness="1" />
+		<attribute length="5" />
+		<attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1352" name="Bow Skeleton">
+	<GameObject id="1352" name="Bow Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -36076,11 +36030,11 @@
         <attribute attack_speed="1" />
         <attribute strength="L" />
         <attribute chit_color="gray" />
-        <attribute length="14" />
-        <attribute sharpness="2" />
+		<attribute length="14" />
+		<attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1353" name="Bow Skeleton">
+	<GameObject id="1353" name="Bow Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -36105,11 +36059,11 @@
         <attribute attack_speed="1" />
         <attribute strength="L" />
         <attribute chit_color="gray" />
-        <attribute length="14" />
-        <attribute sharpness="2" />
+		<attribute length="14" />
+		<attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1354" name="Bow Skeleton">
+	<GameObject id="1354" name="Bow Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -36134,11 +36088,11 @@
         <attribute attack_speed="1" />
         <attribute strength="L" />
         <attribute chit_color="gray" />
-        <attribute length="14" />
-        <attribute sharpness="2" />
+		<attribute length="14" />
+		<attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1355" name="Bow Skeleton">
+	<GameObject id="1355" name="Bow Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -36163,11 +36117,11 @@
         <attribute attack_speed="1" />
         <attribute strength="L" />
         <attribute chit_color="gray" />
-        <attribute length="14" />
-        <attribute sharpness="2" />
+		<attribute length="14" />
+		<attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1356" name="Bow Skeleton">
+	<GameObject id="1356" name="Bow Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -36192,11 +36146,11 @@
         <attribute attack_speed="1" />
         <attribute strength="L" />
         <attribute chit_color="gray" />
-        <attribute length="14" />
-        <attribute sharpness="2" />
+		<attribute length="14" />
+		<attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1357" name="Bow Skeleton">
+	<GameObject id="1357" name="Bow Skeleton">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -36221,11 +36175,11 @@
         <attribute attack_speed="1" />
         <attribute strength="L" />
         <attribute chit_color="gray" />
-        <attribute length="14" />
-        <attribute sharpness="2" />
+		<attribute length="14" />
+		<attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1358" name="Orc Box">
+	<GameObject id="1358" name="Orc Box">
       <AttributeBlock blockName="this">
         <attribute summon="Smoke R, Roar, Patter R" />
         <attribute monster_die="5" />
@@ -36238,9 +36192,9 @@
         <attribute icon_type="orc_sword" />
         <attribute icon_folder="monsters1" />
       </AttributeBlock>
-      <contains id="1362" />
+	  <contains id="1362" />
     </GameObject>
-    <GameObject id="1359" name="Orc Box">
+	<GameObject id="1359" name="Orc Box">
       <AttributeBlock blockName="this">
         <attribute summon="Smoke R, Roar, Patter R" />
         <attribute monster_die="5" />
@@ -36253,10 +36207,10 @@
         <attribute icon_type="orc_sword" />
         <attribute icon_folder="monsters1" />
       </AttributeBlock>
-      <contains id="1363" />
-      <contains id="1364" />
+	  <contains id="1363" />
+	  <contains id="1364" />
     </GameObject>
-    <GameObject id="1360" name="Orc Box">
+	<GameObject id="1360" name="Orc Box">
       <AttributeBlock blockName="this">
         <attribute summon="Smoke R, Roar, Patter R" />
         <attribute monster_die="5" />
@@ -36269,10 +36223,10 @@
         <attribute icon_type="orc_sword" />
         <attribute icon_folder="monsters1" />
       </AttributeBlock>
-      <contains id="1365" />
-      <contains id="1366" />
+	  <contains id="1365" />
+	  <contains id="1366" />
     </GameObject>
-    <GameObject id="1361" name="Orc Box">
+	<GameObject id="1361" name="Orc Box">
       <AttributeBlock blockName="this">
         <attribute summon="Smoke R, Roar, Patter R" />
         <attribute monster_die="5" />
@@ -36285,11 +36239,11 @@
         <attribute icon_type="orc_sword" />
         <attribute icon_folder="monsters1" />
       </AttributeBlock>
-      <contains id="1367" />
-      <contains id="1368" />
-      <contains id="1369" />
+	  <contains id="1367" />
+	  <contains id="1368" />
+	  <contains id="1369" />
     </GameObject>
-    <GameObject id="1362" name="Orc">
+	<GameObject id="1362" name="Orc">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -36320,7 +36274,7 @@
         <attribute chit_color="purple" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1363" name="Orc">
+	<GameObject id="1363" name="Orc">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -36351,7 +36305,7 @@
         <attribute chit_color="purple" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1364" name="Orc">
+	<GameObject id="1364" name="Orc">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -36382,7 +36336,7 @@
         <attribute chit_color="purple" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1365" name="Orc">
+	<GameObject id="1365" name="Orc">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -36413,7 +36367,7 @@
         <attribute chit_color="purple" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1366" name="Orc">
+	<GameObject id="1366" name="Orc">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -36444,7 +36398,7 @@
         <attribute chit_color="purple" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1367" name="Orc">
+	<GameObject id="1367" name="Orc">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -36475,7 +36429,7 @@
         <attribute chit_color="purple" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1368" name="Orc">
+	<GameObject id="1368" name="Orc">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -36506,7 +36460,7 @@
         <attribute chit_color="purple" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1369" name="Orc">
+	<GameObject id="1369" name="Orc">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute vulnerability="M" />
@@ -36537,7 +36491,7 @@
         <attribute chit_color="purple" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1370" name="Golem Box">
+	<GameObject id="1370" name="Golem Box">
       <AttributeBlock blockName="this">
         <attribute summon="Ruins R, Roar" />
         <attribute monster_die="6" />
@@ -36550,9 +36504,9 @@
         <attribute icon_type="troll" />
         <attribute icon_folder="monsters" />
       </AttributeBlock>
-      <contains id="1373" />
+	  <contains id="1373" />
     </GameObject>
-    <GameObject id="1371" name="Golem Box">
+	<GameObject id="1371" name="Golem Box">
       <AttributeBlock blockName="this">
         <attribute summon="Ruins R, Roar" />
         <attribute monster_die="6" />
@@ -36565,9 +36519,9 @@
         <attribute icon_type="troll" />
         <attribute icon_folder="monsters" />
       </AttributeBlock>
-      <contains id="1374" />
+	  <contains id="1374" />
     </GameObject>
-    <GameObject id="1372" name="Golem Box">
+	<GameObject id="1372" name="Golem Box">
       <AttributeBlock blockName="this">
         <attribute summon="Ruins R, Roar" />
         <attribute monster_die="6" />
@@ -36580,9 +36534,9 @@
         <attribute icon_type="troll" />
         <attribute icon_folder="monsters" />
       </AttributeBlock>
-      <contains id="1375" />
+	  <contains id="1375" />
     </GameObject>
-    <GameObject id="1373" name="Golem">
+	<GameObject id="1373" name="Golem">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute armored="" />
@@ -36612,7 +36566,7 @@
         <attribute pins="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1374" name="Golem">
+	<GameObject id="1374" name="Golem">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute armored="" />
@@ -36642,7 +36596,7 @@
         <attribute pins="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1375" name="Golem">
+	<GameObject id="1375" name="Golem">
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute armored="" />
@@ -36974,75 +36928,75 @@
       <Extract from="ALL" to="CHITS" keyVals="tile_type=X,chit" />
       <Distribute from="CHITS" to="X_TILES" count="5" transferType="Random" />
     </GameSetup>
-    <GameSetup name="super_realm_setup">
-      <Alter targetObjectID="401" attribute="tile_type" value="F" />
+	<GameSetup name="super_realm_setup">
+	  <Alter targetObjectID="401" attribute="tile_type" value="F" />
       <Alter targetObjectID="408" attribute="tile_type" value="R" />
-      <Alter targetObjectID="406" attribute="anchor_tile" value="REMOVE" />
-      <Alter targetObjectID="1183" attribute="map_building_prio" value="1" />
-      <Alter targetObjectID="1198" attribute="map_building_prio" value="1" />
-      <Alter targetObjectID="1192" attribute="map_building_prio" value="1" />
-      <Alter targetObjectID="1193" attribute="map_building_prio" value="1" />
-      <Alter targetObjectID="1194" attribute="map_building_prio" value="1" />
-      <Alter targetObjectID="1195" attribute="map_building_prio" value="1" />
-      <Alter targetObjectID="1196" attribute="map_building_prio" value="1" />
-      <Alter targetObjectID="1181" attribute="map_building_prio" value="2" />
-      <Create newPool="M_TILES" />
+	  <Alter targetObjectID="406" attribute="anchor_tile" value="REMOVE" />
+	  <Alter targetObjectID="1183" attribute="map_building_prio" value="1" />
+	  <Alter targetObjectID="1198" attribute="map_building_prio" value="1" />
+	  <Alter targetObjectID="1192" attribute="map_building_prio" value="1" />
+	  <Alter targetObjectID="1193" attribute="map_building_prio" value="1" />
+	  <Alter targetObjectID="1194" attribute="map_building_prio" value="1" />
+	  <Alter targetObjectID="1195" attribute="map_building_prio" value="1" />
+	  <Alter targetObjectID="1196" attribute="map_building_prio" value="1" />
+	  <Alter targetObjectID="1181" attribute="map_building_prio" value="2" />
+	  <Create newPool="M_TILES" />
       <Create newPool="C_TILES" />
-      <Create newPool="F_TILES" />
-      <Create newPool="R_TILES" />
-      <Create newPool="V_TILES" />
-      <Create newPool="H_TILES" />
-      <Create newPool="W_TILES" />
+	  <Create newPool="F_TILES" />
+	  <Create newPool="R_TILES" />
+	  <Create newPool="V_TILES" />
+	  <Create newPool="H_TILES" />
+	  <Create newPool="W_TILES" />
       <Create newPool="ST_TILES" />
       <Extract from="ALL" to="M_TILES" keyVals="tile_type=M,tile" />
-      <Extract from="ALL" to="C_TILES" keyVals="tile_type=C,tile" />
-      <Extract from="ALL" to="F_TILES" keyVals="tile_type=F,tile" />
-      <Extract from="ALL" to="R_TILES" keyVals="tile_type=R,tile" />
-      <Extract from="ALL" to="V_TILES" keyVals="tile_type=V,tile" />
-      <Extract from="ALL" to="H_TILES" keyVals="tile_type=H,tile" />
-      <Extract from="ALL" to="W_TILES" keyVals="tile_type=W,tile" />
-      <Extract from="ALL" to="ST_TILES" keyVals="tile_type=ST,tile" />
-      <Create newPool="TWT" />
+	  <Extract from="ALL" to="C_TILES" keyVals="tile_type=C,tile" />
+	  <Extract from="ALL" to="F_TILES" keyVals="tile_type=F,tile" />
+	  <Extract from="ALL" to="R_TILES" keyVals="tile_type=R,tile" />
+	  <Extract from="ALL" to="V_TILES" keyVals="tile_type=V,tile" />
+	  <Extract from="ALL" to="H_TILES" keyVals="tile_type=H,tile" />
+	  <Extract from="ALL" to="W_TILES" keyVals="tile_type=W,tile" />	  
+      <Extract from="ALL" to="ST_TILES" keyVals="tile_type=ST,tile" /> 
+	  <Create newPool="TWT" />
       <Extract from="ALL" to="TWT" keyVals="treasure_within_treasure" />
       <Create newPool="LARGE_TREASURES" />
       <Extract from="ALL" to="LARGE_TREASURES" keyVals="treasure=large" />
       <Create newPool="SMALL_TREASURES" />
       <Extract from="ALL" to="SMALL_TREASURES" keyVals="treasure=small" />
-      <Create newPool="TREASURE_POOL" />
+	  <Create newPool="TREASURE_POOL" />
       <Extract from="ALL" to="TREASURE_POOL" keyVals="sound,chit" />
       <Extract from="ALL" to="TREASURE_POOL" keyVals="treasure_location" />
       <Add from="TREASURE_POOL" targetObjectID="1229" count="5" transferType="Random" />
       <Add from="TREASURE_POOL" targetObjectID="1230" count="5" transferType="Random" />
-      <Add from="TREASURE_POOL" targetObjectID="1239" count="5" transferType="Random" />
+	  <Add from="TREASURE_POOL" targetObjectID="1239" count="5" transferType="Random" />
       <Add from="TREASURE_POOL" targetObjectID="1240" count="5" transferType="Random" />
-      <Create newPool="CHITS" />
-      <Extract from="ALL" to="CHITS" keyVals="tile_type=M,chit" />
+	  <Create newPool="CHITS" />
+	  <Extract from="ALL" to="CHITS" keyVals="tile_type=M,chit" />
       <Distribute from="CHITS" to="M_TILES" count="5" transferType="Random" />
-      <Extract from="ALL" to="CHITS" keyVals="red_special=lost_castle" />
+	  <Extract from="ALL" to="CHITS" keyVals="red_special=lost_castle" />
       <Move from="TREASURE_POOL" to="CHITS" count="4" transferType="Random" />
       <Distribute from="CHITS" to="M_TILES" count="5" transferType="Random" />
-      <Extract from="ALL" to="CHITS" keyVals="tile_type=C,chit" />
+	  <Extract from="ALL" to="CHITS" keyVals="tile_type=C,chit" />
       <Distribute from="CHITS" to="C_TILES" count="5" transferType="Random" />
-      <Extract from="ALL" to="CHITS" keyVals="red_special=lost_city" />
+	  <Extract from="ALL" to="CHITS" keyVals="red_special=lost_city" />
       <Move from="TREASURE_POOL" to="CHITS" count="4" transferType="Random" />
       <Distribute from="CHITS" to="C_TILES" count="5" transferType="Random" />
-      <Extract from="ALL" to="CHITS" keyVals="tile_type=F,chit" />
+	  <Extract from="ALL" to="CHITS" keyVals="tile_type=F,chit" />
       <Distribute from="CHITS" to="F_TILES" count="5" transferType="Random" />
-      <Extract from="ALL" to="CHITS" keyVals="red_special=lost_palace" />
+	  <Extract from="ALL" to="CHITS" keyVals="red_special=lost_palace" />
       <Move from="TREASURE_POOL" to="CHITS" count="4" transferType="Random" />
       <Distribute from="CHITS" to="F_TILES" count="5" transferType="Random" />
-      <Extract from="ALL" to="CHITS" keyVals="tile_type=R,chit" />
+	  <Extract from="ALL" to="CHITS" keyVals="tile_type=R,chit" />
       <Distribute from="CHITS" to="R_TILES" count="5" transferType="Random" />
-      <Extract from="ALL" to="CHITS" keyVals="red_special=lost_fortress" />
+	  <Extract from="ALL" to="CHITS" keyVals="red_special=lost_fortress" />
       <Move from="TREASURE_POOL" to="CHITS" count="4" transferType="Random" />
       <Distribute from="CHITS" to="R_TILES" count="5" transferType="Random" />
-      <Extract from="ALL" to="CHITS" keyVals="tile_type=V,chit" />
+	  <Extract from="ALL" to="CHITS" keyVals="tile_type=V,chit" />
       <Distribute from="CHITS" to="V_TILES" count="5" transferType="Random" />
-      <Extract from="ALL" to="CHITS" keyVals="tile_type=H,chit" />
+	  <Extract from="ALL" to="CHITS" keyVals="tile_type=H,chit" />
       <Distribute from="CHITS" to="H_TILES" count="5" transferType="Random" />
-      <Extract from="ALL" to="CHITS" keyVals="tile_type=W,chit" />
+	  <Extract from="ALL" to="CHITS" keyVals="tile_type=W,chit" />
       <Distribute from="CHITS" to="W_TILES" count="5" transferType="Random" />
-      <Extract from="ALL" to="CHITS" keyVals="tile_type=ST,chit" />
+	  <Extract from="ALL" to="CHITS" keyVals="tile_type=ST,chit" />
       <Distribute from="CHITS" to="ST_TILES" count="5" transferType="Random" />
     </GameSetup>
   </setups>
