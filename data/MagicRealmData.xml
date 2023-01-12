@@ -34810,6 +34810,7 @@
         <attribute needs_init="" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -35465,6 +35466,7 @@
         <attribute box_num="1" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35498,6 +35500,7 @@
         <attribute box_num="1" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35531,6 +35534,7 @@
         <attribute box_num="1" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35564,6 +35568,7 @@
         <attribute box_num="1" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35597,6 +35602,7 @@
         <attribute box_num="1" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35630,6 +35636,7 @@
         <attribute box_num="1" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35663,6 +35670,7 @@
         <attribute box_num="2" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35696,6 +35704,7 @@
         <attribute box_num="2" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35729,6 +35738,7 @@
         <attribute box_num="2" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35762,6 +35772,7 @@
         <attribute box_num="2" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35795,6 +35806,7 @@
         <attribute box_num="2" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35828,6 +35840,7 @@
         <attribute box_num="2" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35861,6 +35874,7 @@
         <attribute box_num="3" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35894,6 +35908,7 @@
         <attribute box_num="3" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35927,6 +35942,7 @@
         <attribute box_num="3" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35960,6 +35976,7 @@
         <attribute box_num="3" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35993,6 +36010,7 @@
         <attribute box_num="3" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36026,6 +36044,7 @@
         <attribute box_num="3" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36059,6 +36078,7 @@
         <attribute box_num="4" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36088,6 +36108,7 @@
         <attribute box_num="4" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36117,6 +36138,7 @@
         <attribute box_num="4" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36146,6 +36168,7 @@
         <attribute box_num="4" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36175,6 +36198,7 @@
         <attribute box_num="4" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36204,6 +36228,7 @@
         <attribute box_num="4" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />

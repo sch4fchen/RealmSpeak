@@ -1,5 +1,8 @@
 ::ROADMAP::
-Super Realm: Denizens: Monsters/Natives, Items incl. Horses, Treasures, Travelers
+Super Realm: Monsters
+Super Realm: Vanilla Characters
+Super Realm: Natives, Items incl. Horses, Treasures, Travelers
+Super Realm: adapt chits colors for "Color chits" option (or disable it for Super Realm) for monsters and natives
 Super Realm: Chart of Clans (clans, die roll for natives): 4.7 (p. 41)
 Super Realm: rules for minotaur shield
 Super Realm: rules for special monster attacks and change tactics (Spear and Bow Goblins, Bow Skeletons, Demon, Winged Demon, Imp, Vampire, Succubus, and Devil): p.98
@@ -16,7 +19,6 @@ Super Realm: Characters (incl. overview in the Menu like for basic MR and custom
 Super Realm: CompanionEditPanel: add all denizens
 Super Realm: RealmCharacterConstants (adapt ArmorEditDialog and WeaponEditDialog): dwellings, visitors
 Super Realm: update graphics (wesnoth? -> licence?)
-Super Realm: adapt all chits colors for "Color chits" option (or disable it for Super Realm)
 Super Realm: Seasons + Weather 10.12 (p.117)
 Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
 3rdEdition / RealmSpeak: Optional Character Rules (A.6, p. 186): Captain, Druid, Magician, WIZARD ignores SPX, Woods Girl, Elf
@@ -48,7 +50,7 @@ Super Realm: Optional Rules: Range Setup (SR: 11.0, p.126)
 Super Realm: Optional Rules: Commerce (SR: 11.12, p.126) - adapt e.g. rules for new native groups
 Super Realm: Optional Rules: Cornered (SR: 11.13, p.128)
 SUPER REALM: remaining RULES and LOGIC (chapter 4.2 p.27ff. -> chapter 9.1 p.110)
-Super Realm: Player building map: distribute tiles equally (including river tiles), distribute river tiles first, then grotto, then rest, each player has 3 tiles in the hand and draws after placing, skipp player if he cannot place any tile (and he has no river tile), if all players are skipped or player would be skipped but has river tile, undo last placement, do not allow placing grotto before all other river tiles have been placed
+Super Realm: Player building map: distribute tiles equally (including river tiles), distribute river tiles first, then grotto, then rest, each player has 3 tiles in the hand and draws after placing, skip player if he cannot place any tile (and he has no river tile), if all players are skipped or player would be skipped but has river tile, undo last placement, do not allow placing grotto before all other river tiles have been placed
 Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 
 
@@ -68,7 +70,7 @@ SUPER REALM:
 # Map chits (warning and sound chits)
 # Dwellings and Ghosts
 # Treasure locations
-# Monsters for treasure locations and lost fortress
+# Monsters
 
 Version 1.1.7.2
 NEW FEATURES:
