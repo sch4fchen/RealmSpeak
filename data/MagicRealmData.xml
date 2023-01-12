@@ -34534,12 +34534,11 @@
         <attribute attack_speed="5" />
         <attribute strength="M" />
         <attribute chit_color="purple" />
-        <attribute pins="" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
         <attribute attack_speed="4" />
-        <attribute strength="X" />
+        <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
       </AttributeBlock>
@@ -34656,7 +34655,7 @@
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
         <attribute attack_speed="4" />
-        <attribute strength="X" />
+        <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
       </AttributeBlock>
@@ -36616,6 +36615,196 @@
         <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1375" name="H Scorpion Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="DankF, Stink F, Patter F" />
+        <attribute monster_die="1" />
+        <attribute super_realm="" />
+        <attribute box_num="1" />
+        <attribute ts_section="lost palace" />
+        <attribute ts_count="1" />
+        <attribute ts_size="H" />
+        <attribute ts_color="red" />
+        <attribute icon_type="scorpion" />
+        <attribute icon_folder="monsters1" />
+      </AttributeBlock>
+      <contains id="1378" />
+    </GameObject>
+    <GameObject id="1376" name="H Scorpion Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="DankF, Stink F, Patter F" />
+        <attribute monster_die="1" />
+        <attribute super_realm="" />
+        <attribute box_num="2" />
+        <attribute ts_section="lost palace" />
+        <attribute ts_count="2" />
+        <attribute ts_size="H" />
+        <attribute ts_color="red" />
+        <attribute icon_type="scorpion" />
+        <attribute icon_folder="monsters1" />
+      </AttributeBlock>
+      <contains id="1379" />
+      <contains id="1380" />
+    </GameObject>
+    <GameObject id="1377" name="T Scorpion Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="DankF, Stink F, Patter F" />
+        <attribute monster_die="1" />
+        <attribute super_realm="" />
+        <attribute box_num="3" />
+        <attribute ts_section="lost palace" />
+        <attribute ts_count="1" />
+        <attribute ts_size="T" />
+        <attribute ts_color="red" />
+        <attribute icon_type="scorpion" />
+        <attribute icon_folder="monsters1" />
+      </AttributeBlock>
+      <contains id="1381" />
+    </GameObject>
+    <GameObject id="1378" name="H Scorpion">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="H" />
+        <attribute fame="10" />
+        <attribute notoriety="10" />
+        <attribute super_realm="" />
+        <attribute icon_type="scorpion" />
+        <attribute setup_start="H Scorpion Box" />
+        <attribute monster_die="1" />
+        <attribute base_price="10" />
+        <attribute icon_folder="monsters1" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute chit_color="red" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1379" name="H Scorpion">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="H" />
+        <attribute fame="10" />
+        <attribute notoriety="10" />
+        <attribute super_realm="" />
+        <attribute icon_type="scorpion" />
+        <attribute setup_start="H Scorpion Box" />
+        <attribute monster_die="1" />
+        <attribute base_price="10" />
+        <attribute icon_folder="monsters1" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute chit_color="red" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1380" name="H Scorpion">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="H" />
+        <attribute fame="10" />
+        <attribute notoriety="10" />
+        <attribute super_realm="" />
+        <attribute icon_type="scorpion" />
+        <attribute setup_start="H Scorpion Box" />
+        <attribute monster_die="1" />
+        <attribute base_price="10" />
+        <attribute icon_folder="monsters1" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute chit_color="red" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1381" name="T Scorpion">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="T" />
+        <attribute fame="10" />
+        <attribute notoriety="10" />
+        <attribute super_realm="" />
+        <attribute icon_type="scorpion" />
+        <attribute setup_start="T Scorpion Box" />
+        <attribute monster_die="1" />
+        <attribute base_price="10" />
+        <attribute icon_folder="monsters1" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="4" />
+        <attribute strength="RED" />
+        <attribute chit_color="red" />
+        <attribute pins="" />
+      </AttributeBlock>
+      <contains id="1382" />
+    </GameObject>
+    <GameObject id="1382" name="Scorpion Stinger">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute part="" />
+        <attribute super_realm="" />
+        <attribute icon_type="club" />
+        <attribute icon_folder="monsters" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute length="6" />
+        <attribute chit_color="pink" />
+        <attribute sharpness="2" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="6" />
+        <attribute chit_color="red" />
+        <attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
   </objects>
