@@ -36807,6 +36807,370 @@
         <attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="1383" name="Wraith Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Ruins F, Bones F, Howl, Flutter F" />
+        <attribute monster_die="2" />
+        <attribute super_realm="" />
+        <attribute box_num="1" />
+        <attribute ts_section="lost palace" />
+        <attribute ts_count="1" />
+        <attribute ts_size="H" />
+        <attribute ts_color="green" />
+        <attribute icon_type="wraith" />
+        <attribute icon_folder="monsters1" />
+      </AttributeBlock>
+      <contains id="1387" />
+    </GameObject>
+    <GameObject id="1384" name="Wraith Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Ruins F, Bones F, Howl, Flutter F" />
+        <attribute monster_die="2" />
+        <attribute super_realm="" />
+        <attribute box_num="2" />
+        <attribute ts_section="lost palace" />
+        <attribute ts_count="1" />
+        <attribute ts_size="H" />
+        <attribute ts_color="green" />
+        <attribute icon_type="wraith" />
+        <attribute icon_folder="monsters1" />
+      </AttributeBlock>
+      <contains id="1388" />
+    </GameObject>
+    <GameObject id="1385" name="Wraith Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Ruins F, Bones F, Howl, Flutter F" />
+        <attribute monster_die="2" />
+        <attribute super_realm="" />
+        <attribute box_num="3" />
+        <attribute ts_section="lost palace" />
+        <attribute ts_count="1" />
+        <attribute ts_size="H" />
+        <attribute ts_color="green" />
+        <attribute icon_type="wraith" />
+        <attribute icon_folder="monsters1" />
+      </AttributeBlock>
+      <contains id="1389" />
+    </GameObject>
+    <GameObject id="1386" name="Wraith Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Ruins F, Bones F, Howl, Flutter F" />
+        <attribute monster_die="2" />
+        <attribute super_realm="" />
+        <attribute box_num="4" />
+        <attribute ts_section="lost palace" />
+        <attribute ts_count="1" />
+        <attribute ts_size="H" />
+        <attribute ts_color="green" />
+        <attribute icon_type="wraith" />
+        <attribute icon_folder="monsters1" />
+      </AttributeBlock>
+      <contains id="1390" />
+    </GameObject>
+    <GameObject id="1387" name="Wraith">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute super_realm="" />
+        <attribute icon_type="wraith" />
+        <attribute setup_start="Wraith Box" />
+        <attribute monster_die="2" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters1" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="3" />
+        <attribute strength="L" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="T" />
+        <attribute chit_color="red" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1388" name="Wraith">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute super_realm="" />
+        <attribute icon_type="wraith" />
+        <attribute setup_start="Wraith Box" />
+        <attribute monster_die="2" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters1" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="3" />
+        <attribute strength="L" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="T" />
+        <attribute chit_color="red" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1389" name="Wraith">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute super_realm="" />
+        <attribute icon_type="wraith" />
+        <attribute setup_start="Wraith Box" />
+        <attribute monster_die="2" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters1" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="3" />
+        <attribute strength="L" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="T" />
+        <attribute chit_color="red" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1390" name="Wraith">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute super_realm="" />
+        <attribute icon_type="wraith" />
+        <attribute setup_start="Wraith Box" />
+        <attribute monster_die="2" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters1" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="3" />
+        <attribute strength="L" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="T" />
+        <attribute chit_color="red" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1391" name="Rat Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Ruins ST" />
+        <attribute monster_die="3" />
+        <attribute super_realm="" />
+        <attribute box_num="1" />
+        <attribute ts_section="lost palace" />
+        <attribute ts_count="1" />
+        <attribute ts_size="M" />
+        <attribute ts_color="blue" />
+        <attribute icon_type="wraith" />
+        <attribute icon_folder="monsters1" />
+      </AttributeBlock>
+      <contains id="1392" />
+      <contains id="1395" />
+      <contains id="1396" />
+      <contains id="1397" />
+      <contains id="1398" />
+      <contains id="1399" />
+    </GameObject>
+    <GameObject id="1392" name="Rat">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="0" />
+        <attribute notoriety="1" />
+        <attribute super_realm="" />
+        <attribute icon_type="bat" />
+        <attribute setup_start="Rat Box" />
+        <attribute monster_die="2" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1395" name="Rat">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="0" />
+        <attribute notoriety="1" />
+        <attribute super_realm="" />
+        <attribute icon_type="bat" />
+        <attribute setup_start="Rat Box" />
+        <attribute monster_die="2" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1396" name="Rat">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="0" />
+        <attribute notoriety="1" />
+        <attribute super_realm="" />
+        <attribute icon_type="bat" />
+        <attribute setup_start="Rat Box" />
+        <attribute monster_die="2" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1397" name="Rat">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="0" />
+        <attribute notoriety="1" />
+        <attribute super_realm="" />
+        <attribute icon_type="bat" />
+        <attribute setup_start="Rat Box" />
+        <attribute monster_die="2" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1398" name="Rat">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="0" />
+        <attribute notoriety="1" />
+        <attribute super_realm="" />
+        <attribute icon_type="bat" />
+        <attribute setup_start="Rat Box" />
+        <attribute monster_die="2" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1399" name="Rat">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="0" />
+        <attribute notoriety="1" />
+        <attribute super_realm="" />
+        <attribute icon_type="bat" />
+        <attribute setup_start="Rat Box" />
+        <attribute monster_die="2" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
