@@ -37336,7 +37336,7 @@
     </GameObject>
     <GameObject id="1403" name="Elf 1">
       <AttributeBlock blockName="this">
-        <attribute native="Cultist" />
+        <attribute native="Elves" />
         <attribute fame="0" />
         <attribute notoriety="4" />
         <attribute base_price="2" />
@@ -37370,7 +37370,7 @@
     </GameObject>
     <GameObject id="1404" name="Elf 2">
       <AttributeBlock blockName="this">
-        <attribute native="Cultist" />
+        <attribute native="Elves" />
         <attribute fame="0" />
         <attribute notoriety="4" />
         <attribute base_price="2" />
@@ -37403,7 +37403,7 @@
     </GameObject>
     <GameObject id="1405" name="Elf 3">
       <AttributeBlock blockName="this">
-        <attribute native="Cultist" />
+        <attribute native="Elves" />
         <attribute fame="0" />
         <attribute notoriety="4" />
         <attribute base_price="2" />
@@ -37436,7 +37436,7 @@
     </GameObject>
     <GameObject id="1406" name="Elf 4">
       <AttributeBlock blockName="this">
-        <attribute native="Cultist" />
+        <attribute native="Elves" />
         <attribute fame="0" />
         <attribute notoriety="4" />
         <attribute base_price="2" />
@@ -37469,7 +37469,7 @@
     </GameObject>
     <GameObject id="1407" name="Elf 5">
       <AttributeBlock blockName="this">
-        <attribute native="Cultist" />
+        <attribute native="Elves" />
         <attribute fame="0" />
         <attribute notoriety="4" />
         <attribute base_price="2" />
@@ -37502,7 +37502,7 @@
     </GameObject>
     <GameObject id="1408" name="Elf HQ">
       <AttributeBlock blockName="this">
-        <attribute native="Cultist" />
+        <attribute native="Elves" />
         <attribute fame="0" />
         <attribute notoriety="4" />
         <attribute base_price="2" />
@@ -37527,8 +37527,8 @@
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
         <attribute attack_speed="1" />
-        <attribute strength="L" />
-        <attribute length="14" />
+        <attribute strength="M" />
+        <attribute length="16" />
         <attribute chit_color="yellow" />
         <attribute sharpness="2" />
       </AttributeBlock>
@@ -39034,6 +39034,403 @@
         <attribute sharpness="2" />
         <attribute length="14" />
         <attribute chit_color="purple" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1469" name="H Trolls Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Stink C, Bones C, Roar C" />
+        <attribute monster_die="4" />
+        <attribute box_num="1" />
+        <attribute ts_section="lost city" />
+        <attribute ts_count="2" />
+        <attribute ts_size="H" />
+        <attribute ts_color="darkgray" />
+        <attribute icon_type="troll" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1472" />
+    </GameObject>
+    <GameObject id="1470" name="H Trolls Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Stink C, Bones C, Roar C" />
+        <attribute monster_die="4" />
+        <attribute box_num="2" />
+        <attribute ts_section="lost city" />
+        <attribute ts_count="2" />
+        <attribute ts_size="H" />
+        <attribute ts_color="darkgray" />
+        <attribute icon_type="troll" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1473" />
+      <contains id="1474" />
+    </GameObject>
+    <GameObject id="1471" name="T Troll Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Stink C, Bones C, Roar C" />
+        <attribute monster_die="4" />
+        <attribute box_num="3" />
+        <attribute ts_section="lost city" />
+        <attribute ts_size="T" />
+        <attribute ts_color="darkgray" />
+        <attribute icon_type="troll" />
+        <attribute icon_folder="monsters" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <contains id="1475" />
+    </GameObject>
+    <GameObject id="1472" name="H Troll">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="H" />
+        <attribute fame="5" />
+        <attribute notoriety="5" />
+        <attribute icon_type="troll" />
+        <attribute setup_start="H Trolls Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="5" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute chit_color="darkgray" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1473" name="H Troll">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="H" />
+        <attribute fame="5" />
+        <attribute notoriety="5" />
+        <attribute icon_type="troll" />
+        <attribute setup_start="H Trolls Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="5" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute chit_color="darkgray" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1474" name="H Troll">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="H" />
+        <attribute fame="5" />
+        <attribute notoriety="5" />
+        <attribute icon_type="troll" />
+        <attribute setup_start="H Trolls Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="5" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute chit_color="darkgray" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1475" name="T Troll">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute armored="" />
+        <attribute vulnerability="T" />
+        <attribute fame="8" />
+        <attribute notoriety="8" />
+        <attribute icon_type="troll" />
+        <attribute setup_start="T Troll Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="8" />
+        <attribute icon_folder="monsters" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="6" />
+        <attribute attack_speed="2" />
+        <attribute strength="RED" />
+        <attribute chit_color="red" />
+        <attribute pins="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1476" name="Dwarves Dwelling">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute native="Dwarves" />
+        <attribute dwelling="Dwarves" />
+        <attribute monster_die="5" />
+        <attribute monster_die2="6" />
+        <attribute print="" />
+        <attribute ts_section="lost city" />
+        <attribute ts_size="M" />
+        <attribute ts_color="yellow" />
+        <attribute ts_count="6" />
+        <attribute icon_type="great_axeman_r" />
+        <attribute icon_folder="natives_c" />
+        <attribute virtual_dwelling="" />
+      </AttributeBlock>
+      <contains id="1477" />
+      <contains id="1478" />
+      <contains id="1479" />
+      <contains id="1480" />
+      <contains id="1481" />
+      <contains id="1482" />
+    </GameObject>
+    <GameObject id="1477" name="Dwarf 1">
+      <AttributeBlock blockName="this">
+        <attribute native="Dwarves" />
+        <attribute fame="0" />
+        <attribute notoriety="6" />
+        <attribute base_price="4" />
+        <attribute vulnerability="M" />
+        <attribute rank="1" />
+        <attribute super_realm="" />
+        <attribute icon_type="great_axeman_r" />
+        <attribute monster_die="5" />
+        <attribute monster_die2="6" />
+        <attribute setup_start="Dwarves Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute needs_init="" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="6" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute chit_color="paleyellow" />
+        <attribute sharpness="1" />
+        <attribute length="5" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="6" />
+        <attribute strength="T" />
+        <attribute length="5" />
+        <attribute chit_color="yellow" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1478" name="Dwarf 2">
+      <AttributeBlock blockName="this">
+        <attribute native="Dwarves" />
+        <attribute fame="0" />
+        <attribute notoriety="6" />
+        <attribute base_price="4" />
+        <attribute vulnerability="M" />
+        <attribute rank="2" />
+        <attribute super_realm="" />
+        <attribute icon_type="great_axeman_r" />
+        <attribute monster_die="5" />
+        <attribute monster_die2="6" />
+        <attribute setup_start="Dwarves Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute needs_init="" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="6" />
+        <attribute strength="T" />
+        <attribute chit_color="paleyellow" />
+        <attribute sharpness="1" />
+        <attribute length="5" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute length="5" />
+        <attribute chit_color="yellow" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1479" name="Dwarf 3">
+      <AttributeBlock blockName="this">
+        <attribute native="Dwarves" />
+        <attribute fame="0" />
+        <attribute notoriety="6" />
+        <attribute base_price="4" />
+        <attribute vulnerability="M" />
+        <attribute rank="3" />
+        <attribute super_realm="" />
+        <attribute icon_type="great_axeman_r" />
+        <attribute monster_die="5" />
+        <attribute monster_die2="6" />
+        <attribute setup_start="Dwarves Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute needs_init="" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="6" />
+        <attribute attack_speed="5" />
+        <attribute strength="T" />
+        <attribute chit_color="paleyellow" />
+        <attribute sharpness="1" />
+        <attribute length="5" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute length="5" />
+        <attribute chit_color="yellow" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1480" name="Dwarf 4">
+      <AttributeBlock blockName="this">
+        <attribute native="Dwarves" />
+        <attribute fame="0" />
+        <attribute notoriety="6" />
+        <attribute base_price="4" />
+        <attribute vulnerability="M" />
+        <attribute rank="4" />
+        <attribute super_realm="" />
+        <attribute icon_type="great_axeman_r" />
+        <attribute monster_die="5" />
+        <attribute monster_die2="6" />
+        <attribute setup_start="Dwarves Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute needs_init="" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="paleyellow" />
+        <attribute sharpness="1" />
+        <attribute length="5" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="6" />
+        <attribute strength="T" />
+        <attribute length="5" />
+        <attribute chit_color="yellow" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1481" name="Dwarf 5">
+      <AttributeBlock blockName="this">
+        <attribute native="Dwarves" />
+        <attribute fame="0" />
+        <attribute notoriety="6" />
+        <attribute base_price="4" />
+        <attribute vulnerability="M" />
+        <attribute rank="5" />
+        <attribute super_realm="" />
+        <attribute icon_type="great_axeman_r" />
+        <attribute monster_die="5" />
+        <attribute monster_die2="6" />
+        <attribute setup_start="Dwarves Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute needs_init="" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="6" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute chit_color="paleyellow" />
+        <attribute sharpness="1" />
+        <attribute length="5" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute length="5" />
+        <attribute chit_color="yellow" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1482" name="Dwarf HQ">
+      <AttributeBlock blockName="this">
+        <attribute native="Dwarves" />
+        <attribute fame="0" />
+        <attribute notoriety="6" />
+        <attribute base_price="4" />
+        <attribute vulnerability="M" />
+        <attribute rank="HQ" />
+        <attribute super_realm="" />
+        <attribute icon_type="great_axeman_r" />
+        <attribute monster_die="5" />
+        <attribute monster_die2="6" />
+        <attribute setup_start="Dwarves Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute needs_init="" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="6" />
+        <attribute strength="T" />
+        <attribute chit_color="paleyellow" />
+        <attribute sharpness="1" />
+        <attribute length="5" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="6" />
+        <attribute strength="T" />
+        <attribute length="5" />
+        <attribute chit_color="yellow" />
+        <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
   </objects>
