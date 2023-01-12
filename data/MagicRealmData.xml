@@ -36540,8 +36540,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="T" />
         <attribute ts_color="brown" />
-        <attribute icon_type="troll" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="firegolem" />
+        <attribute icon_folder="monsters2" />
       </AttributeBlock>
       <contains id="1372" />
     </GameObject>
@@ -36555,8 +36555,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="T" />
         <attribute ts_color="brown" />
-        <attribute icon_type="troll" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="firegolem" />
+        <attribute icon_folder="monsters2" />
       </AttributeBlock>
       <contains id="1373" />
     </GameObject>
@@ -36570,8 +36570,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="T" />
         <attribute ts_color="brown" />
-        <attribute icon_type="troll" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="firegolem" />
+        <attribute icon_folder="monsters2" />
       </AttributeBlock>
       <contains id="1374" />
     </GameObject>
@@ -36583,11 +36583,11 @@
         <attribute fame="8" />
         <attribute notoriety="8" />
         <attribute super_realm="" />
-        <attribute icon_type="troll" />
+        <attribute icon_type="firegolem" />
         <attribute setup_start="Golem Box" />
         <attribute monster_die="4" />
         <attribute base_price="8" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="monsters2" />
         <attribute needs_init="" />
         <attribute denizen="" />
       </AttributeBlock>
@@ -36613,11 +36613,11 @@
         <attribute fame="8" />
         <attribute notoriety="8" />
         <attribute super_realm="" />
-        <attribute icon_type="troll" />
+        <attribute icon_type="firegolem" />
         <attribute setup_start="Golem Box" />
         <attribute monster_die="4" />
         <attribute base_price="8" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="monsters2" />
         <attribute needs_init="" />
         <attribute denizen="" />
       </AttributeBlock>
@@ -36643,11 +36643,11 @@
         <attribute fame="8" />
         <attribute notoriety="8" />
         <attribute super_realm="" />
-        <attribute icon_type="troll" />
+        <attribute icon_type="firegolem" />
         <attribute setup_start="Golem Box" />
         <attribute monster_die="4" />
         <attribute base_price="8" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="monsters2" />
         <attribute needs_init="" />
         <attribute denizen="" />
       </AttributeBlock>
@@ -37530,6 +37530,190 @@
         <attribute strength="L" />
         <attribute length="14" />
         <attribute chit_color="yellow" />
+        <attribute sharpness="2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1412" name="Grey Anomaly Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Smoke F, Howl" />
+        <attribute monster_die="5" />
+        <attribute super_realm="" />
+        <attribute box_num="1" />
+        <attribute ts_section="lost palace" />
+        <attribute ts_count="1" />
+        <attribute ts_size="H" />
+        <attribute ts_color="purple" />
+        <attribute icon_type="blob" />
+        <attribute icon_folder="monsters2" />
+      </AttributeBlock>
+      <contains id="1417" />
+    </GameObject>
+    <GameObject id="1413" name="Gold Anomaly Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Smoke F, Howl" />
+        <attribute monster_die="5" />
+        <attribute super_realm="" />
+        <attribute box_num="2" />
+        <attribute ts_section="lost palace" />
+        <attribute ts_count="1" />
+        <attribute ts_size="H" />
+        <attribute ts_color="purple" />
+        <attribute icon_type="blob" />
+        <attribute icon_folder="monsters2" />
+      </AttributeBlock>
+      <contains id="1418" />
+    </GameObject>
+    <GameObject id="1414" name="Purple Anomaly Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Smoke F, Howl" />
+        <attribute monster_die="5" />
+        <attribute super_realm="" />
+        <attribute box_num="3" />
+        <attribute ts_section="lost palace" />
+        <attribute ts_count="1" />
+        <attribute ts_size="H" />
+        <attribute ts_color="purple" />
+        <attribute icon_type="blob" />
+        <attribute icon_folder="monsters2" />
+      </AttributeBlock>
+      <contains id="1419" />
+    </GameObject>
+    <GameObject id="1415" name="Prism Anomaly Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Smoke F, Howl" />
+        <attribute monster_die="5" />
+        <attribute super_realm="" />
+        <attribute box_num="4" />
+        <attribute ts_section="lost palace" />
+        <attribute ts_count="1" />
+        <attribute ts_size="H" />
+        <attribute ts_color="purple" />
+        <attribute icon_type="blob" />
+        <attribute icon_folder="monsters2" />
+      </AttributeBlock>
+      <contains id="1420" />
+    </GameObject>
+    <GameObject id="1417" name="Grey Anomaly">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="4" />
+        <attribute notoriety="4" />
+        <attribute super_realm="" />
+        <attribute icon_type="blob" />
+        <attribute setup_start="Grey Anomaly Box" />
+        <attribute monster_die="5" />
+        <attribute base_price="4" />
+        <attribute icon_folder="monsters2" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="3" />
+        <attribute strength="L" />
+        <attribute chit_color="red" />
+        <attribute length="14" />
+        <attribute sharpness="2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1418" name="Gold Anomaly">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="4" />
+        <attribute notoriety="4" />
+        <attribute super_realm="" />
+        <attribute icon_type="blob" />
+        <attribute setup_start="Gold Anomaly Box" />
+        <attribute monster_die="5" />
+        <attribute base_price="4" />
+        <attribute icon_folder="monsters2" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="3" />
+        <attribute strength="L" />
+        <attribute chit_color="red" />
+        <attribute length="14" />
+        <attribute sharpness="2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1419" name="Purple Anomaly">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="4" />
+        <attribute notoriety="4" />
+        <attribute super_realm="" />
+        <attribute icon_type="blob" />
+        <attribute setup_start="Purple Anomaly Box" />
+        <attribute monster_die="5" />
+        <attribute base_price="4" />
+        <attribute icon_folder="monsters2" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="3" />
+        <attribute strength="L" />
+        <attribute chit_color="red" />
+        <attribute length="14" />
+        <attribute sharpness="2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1420" name="Prism Anomaly">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="4" />
+        <attribute notoriety="4" />
+        <attribute super_realm="" />
+        <attribute icon_type="blob" />
+        <attribute setup_start="Prism Anomaly Box" />
+        <attribute monster_die="5" />
+        <attribute base_price="4" />
+        <attribute icon_folder="monsters2" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="3" />
+        <attribute strength="L" />
+        <attribute chit_color="red" />
+        <attribute length="14" />
         <attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
