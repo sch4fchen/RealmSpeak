@@ -37717,6 +37717,210 @@
         <attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="1421" name="Giant Pod Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Dank F, Bones F, Slither F" />
+        <attribute monster_die="6" />
+        <attribute super_realm="" />
+        <attribute box_num="1" />
+        <attribute ts_section="lost palace" />
+        <attribute ts_count="1" />
+        <attribute ts_size="T" />
+        <attribute ts_color="brown" />
+        <attribute icon_type="carnoplant" />
+        <attribute icon_folder="monsters2" />
+      </AttributeBlock>
+      <contains id="1425" />
+    </GameObject>
+    <GameObject id="1422" name="Giant Pod Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Dank F, Bones F, Slither F" />
+        <attribute monster_die="6" />
+        <attribute super_realm="" />
+        <attribute box_num="2" />
+        <attribute ts_section="lost palace" />
+        <attribute ts_count="1" />
+        <attribute ts_size="T" />
+        <attribute ts_color="brown" />
+        <attribute icon_type="carnoplant" />
+        <attribute icon_folder="monsters2" />
+      </AttributeBlock>
+      <contains id="1427" />
+    </GameObject>
+    <GameObject id="1423" name="Giant Pod Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Dank F, Bones F, Slither F" />
+        <attribute monster_die="6" />
+        <attribute super_realm="" />
+        <attribute box_num="3" />
+        <attribute ts_section="lost palace" />
+        <attribute ts_count="1" />
+        <attribute ts_size="T" />
+        <attribute ts_color="brown" />
+        <attribute icon_type="carnoplant" />
+        <attribute icon_folder="monsters2" />
+      </AttributeBlock>
+      <contains id="1429" />
+    </GameObject>
+    <GameObject id="1425" name="Giant Pod">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="T" />
+        <attribute fame="8" />
+        <attribute notoriety="8" />
+        <attribute super_realm="" />
+        <attribute icon_type="carnoplant" />
+        <attribute setup_start="Giant Pod Box" />
+        <attribute monster_die="6" />
+        <attribute base_price="8" />
+        <attribute icon_folder="monsters2" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="6" />
+        <attribute attack_speed="3" />
+        <attribute strength="RED" />
+        <attribute chit_color="red" />
+        <attribute pins="" />
+      </AttributeBlock>
+      <contains id="1426" />
+    </GameObject>
+    <GameObject id="1426" name="Giant Pod Vine">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute part="" />
+        <attribute super_realm="" />
+        <attribute icon_type="carnoplant" />
+        <attribute icon_folder="monsters2" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="6" />
+        <attribute chit_color="pink" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute length="6" />
+        <attribute chit_color="red" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1427" name="Giant Pod">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="T" />
+        <attribute fame="8" />
+        <attribute notoriety="8" />
+        <attribute super_realm="" />
+        <attribute icon_type="carnoplant" />
+        <attribute setup_start="Giant Pod Box" />
+        <attribute monster_die="6" />
+        <attribute base_price="8" />
+        <attribute icon_folder="monsters2" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="6" />
+        <attribute attack_speed="3" />
+        <attribute strength="RED" />
+        <attribute chit_color="red" />
+        <attribute pins="" />
+      </AttributeBlock>
+      <contains id="1428" />
+    </GameObject>
+    <GameObject id="1428" name="Giant Pod Vine">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute part="" />
+        <attribute super_realm="" />
+        <attribute icon_type="carnoplant" />
+        <attribute icon_folder="monsters2" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="6" />
+        <attribute chit_color="pink" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute length="6" />
+        <attribute chit_color="red" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1429" name="Giant Pod">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="T" />
+        <attribute fame="8" />
+        <attribute notoriety="8" />
+        <attribute super_realm="" />
+        <attribute icon_type="carnoplant" />
+        <attribute setup_start="Giant Pod Box" />
+        <attribute monster_die="6" />
+        <attribute base_price="8" />
+        <attribute icon_folder="monsters2" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="6" />
+        <attribute attack_speed="3" />
+        <attribute strength="RED" />
+        <attribute chit_color="red" />
+        <attribute pins="" />
+      </AttributeBlock>
+      <contains id="1430" />
+    </GameObject>
+    <GameObject id="1430" name="Giant Pod Vine">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute part="" />
+        <attribute super_realm="" />
+        <attribute icon_type="carnoplant" />
+        <attribute icon_folder="monsters2" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="6" />
+        <attribute chit_color="pink" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute length="6" />
+        <attribute chit_color="red" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
