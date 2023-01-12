@@ -34356,7 +34356,7 @@
         <attribute monster_die="99" />
         <attribute denizen="" />
       </AttributeBlock>
-	  <AttributeBlock blockName="light">
+      <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="H" />
@@ -34383,7 +34383,7 @@
         <attribute monster_die="99" />
         <attribute denizen="" />
       </AttributeBlock>
-	  <AttributeBlock blockName="light">
+      <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="H" />
@@ -34410,7 +34410,7 @@
         <attribute monster_die="99" />
         <attribute denizen="" />
       </AttributeBlock>
-	  <AttributeBlock blockName="light">
+      <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="H" />
@@ -34437,7 +34437,7 @@
         <attribute monster_die="99" />
         <attribute denizen="" />
       </AttributeBlock>
-	  <AttributeBlock blockName="light">
+      <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="H" />
@@ -35062,7 +35062,7 @@
         <attribute monster_die2="2" />
         <attribute print="" />
         <attribute ts_section="lost fortress" />
-        <attribute ts_size="T" />
+        <attribute ts_size="M" />
         <attribute ts_color="yellow" />
         <attribute ts_count="4" />
         <attribute icon_type="swordsman" />
@@ -37043,6 +37043,7 @@
         <attribute ts_color="blue" />
         <attribute icon_type="wraith" />
         <attribute icon_folder="monsters1" />
+        <attribute ts_sort="1" />
       </AttributeBlock>
       <contains id="1392" />
       <contains id="1395" />
@@ -37060,8 +37061,8 @@
         <attribute super_realm="" />
         <attribute icon_type="bat" />
         <attribute setup_start="Rat Box" />
-        <attribute monster_die="2" />
-        <attribute base_price="3" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
         <attribute icon_folder="monsters" />
         <attribute needs_init="" />
         <attribute denizen="" />
@@ -37088,8 +37089,8 @@
         <attribute super_realm="" />
         <attribute icon_type="bat" />
         <attribute setup_start="Rat Box" />
-        <attribute monster_die="2" />
-        <attribute base_price="3" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
         <attribute icon_folder="monsters" />
         <attribute needs_init="" />
         <attribute denizen="" />
@@ -37116,8 +37117,8 @@
         <attribute super_realm="" />
         <attribute icon_type="bat" />
         <attribute setup_start="Rat Box" />
-        <attribute monster_die="2" />
-        <attribute base_price="3" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
         <attribute icon_folder="monsters" />
         <attribute needs_init="" />
         <attribute denizen="" />
@@ -37144,8 +37145,8 @@
         <attribute super_realm="" />
         <attribute icon_type="bat" />
         <attribute setup_start="Rat Box" />
-        <attribute monster_die="2" />
-        <attribute base_price="3" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
         <attribute icon_folder="monsters" />
         <attribute needs_init="" />
         <attribute denizen="" />
@@ -37172,8 +37173,8 @@
         <attribute super_realm="" />
         <attribute icon_type="bat" />
         <attribute setup_start="Rat Box" />
-        <attribute monster_die="2" />
-        <attribute base_price="3" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
         <attribute icon_folder="monsters" />
         <attribute needs_init="" />
         <attribute denizen="" />
@@ -37200,8 +37201,8 @@
         <attribute super_realm="" />
         <attribute icon_type="bat" />
         <attribute setup_start="Rat Box" />
-        <attribute monster_die="2" />
-        <attribute base_price="3" />
+        <attribute monster_die="3" />
+        <attribute base_price="1" />
         <attribute icon_folder="monsters" />
         <attribute needs_init="" />
         <attribute denizen="" />
@@ -37217,6 +37218,319 @@
         <attribute attack_speed="4" />
         <attribute strength="L" />
         <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1400" name="Bear Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Bones ST" />
+        <attribute monster_die="3" />
+        <attribute super_realm="" />
+        <attribute box_num="2" />
+        <attribute ts_section="lost palace" />
+        <attribute ts_count="1" />
+        <attribute ts_size="H" />
+        <attribute ts_color="blue" />
+        <attribute icon_type="bear" />
+        <attribute icon_folder="monsters2" />
+        <attribute ts_sort="2" />
+      </AttributeBlock>
+      <contains id="1401" />
+    </GameObject>
+    <GameObject id="1401" name="Bear">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="3" />
+        <attribute notoriety="3" />
+        <attribute super_realm="" />
+        <attribute icon_type="bear" />
+        <attribute setup_start="Bear Box" />
+        <attribute monster_die="3" />
+        <attribute base_price="3" />
+        <attribute icon_folder="monsters2" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1402" name="Alligator Box">
+      <AttributeBlock blockName="this">
+        <attribute summon="Dank ST" />
+        <attribute monster_die="4" />
+        <attribute super_realm="" />
+        <attribute box_num="1" />
+        <attribute ts_section="lost palace" />
+        <attribute ts_count="1" />
+        <attribute ts_size="H" />
+        <attribute ts_color="darkgray" />
+        <attribute icon_type="gator" />
+        <attribute icon_folder="monsters2" />
+        <attribute ts_sort="2" />
+      </AttributeBlock>
+      <contains id="1403" />
+    </GameObject>
+    <GameObject id="1403" name="Alligator">
+      <AttributeBlock blockName="this">
+        <attribute monster="" />
+        <attribute vulnerability="H" />
+        <attribute fame="4" />
+        <attribute notoriety="4" />
+        <attribute super_realm="" />
+        <attribute icon_type="gator" />
+        <attribute setup_start="Alligator Box" />
+        <attribute monster_die="4" />
+        <attribute base_price="4" />
+        <attribute icon_folder="monsters2" />
+        <attribute needs_init="" />
+        <attribute denizen="" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="purple" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1404" name="Elves Dwelling">
+      <AttributeBlock blockName="this">
+        <attribute super_realm="" />
+        <attribute native="Elves" />
+        <attribute dwelling="Elves" />
+        <attribute monster_die="3" />
+        <attribute monster_die2="4" />
+        <attribute print="" />
+        <attribute ts_section="lost palace" />
+        <attribute ts_size="M" />
+        <attribute ts_color="yellow" />
+        <attribute ts_count="6" />
+        <attribute icon_type="archer_w" />
+        <attribute icon_folder="natives_c" />
+        <attribute virtual_dwelling="" />
+        <attribute box_num="3" />
+        <attribute ts_sort="3" />
+      </AttributeBlock>
+      <contains id="1405" />
+      <contains id="1406" />
+      <contains id="1407" />
+      <contains id="1408" />
+      <contains id="1409" />
+      <contains id="1410" />
+    </GameObject>
+    <GameObject id="1405" name="Elf 1">
+      <AttributeBlock blockName="this">
+        <attribute native="Cultist" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="1" />
+        <attribute super_realm="" />
+        <attribute icon_type="archer_w" />
+        <attribute monster_die="3" />
+        <attribute monster_die2="4" />
+        <attribute setup_start="Elves Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute needs_init="" />
+        <attribute magic_protection="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="2" />
+        <attribute attack_speed="1" />
+        <attribute strength="M" />
+        <attribute chit_color="paleyellow" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="1" />
+        <attribute strength="L" />
+        <attribute length="14" />
+        <attribute chit_color="yellow" />
+        <attribute sharpness="2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1406" name="Elf 2">
+      <AttributeBlock blockName="this">
+        <attribute native="Cultist" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="2" />
+        <attribute super_realm="" />
+        <attribute icon_type="archer_w" />
+        <attribute monster_die="3" />
+        <attribute monster_die2="4" />
+        <attribute setup_start="Elves Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute magic_protection="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="2" />
+        <attribute attack_speed="1" />
+        <attribute strength="M" />
+        <attribute chit_color="paleyellow" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="1" />
+        <attribute strength="L" />
+        <attribute length="14" />
+        <attribute chit_color="yellow" />
+        <attribute sharpness="2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1407" name="Elf 3">
+      <AttributeBlock blockName="this">
+        <attribute native="Cultist" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="3" />
+        <attribute super_realm="" />
+        <attribute icon_type="archer_w" />
+        <attribute monster_die="3" />
+        <attribute monster_die2="4" />
+        <attribute setup_start="Elves Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute magic_protection="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="2" />
+        <attribute attack_speed="1" />
+        <attribute strength="M" />
+        <attribute chit_color="paleyellow" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="1" />
+        <attribute strength="L" />
+        <attribute length="14" />
+        <attribute chit_color="yellow" />
+        <attribute sharpness="2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1408" name="Elf 4">
+      <AttributeBlock blockName="this">
+        <attribute native="Cultist" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="4" />
+        <attribute super_realm="" />
+        <attribute icon_type="archer_w" />
+        <attribute monster_die="3" />
+        <attribute monster_die2="4" />
+        <attribute setup_start="Elves Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute magic_protection="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="2" />
+        <attribute attack_speed="1" />
+        <attribute strength="M" />
+        <attribute chit_color="paleyellow" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="1" />
+        <attribute strength="L" />
+        <attribute length="14" />
+        <attribute chit_color="yellow" />
+        <attribute sharpness="2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1409" name="Elf 5">
+      <AttributeBlock blockName="this">
+        <attribute native="Cultist" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="5" />
+        <attribute super_realm="" />
+        <attribute icon_type="archer_w" />
+        <attribute monster_die="3" />
+        <attribute monster_die2="4" />
+        <attribute setup_start="Elves Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute magic_protection="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="2" />
+        <attribute attack_speed="1" />
+        <attribute strength="M" />
+        <attribute chit_color="paleyellow" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="1" />
+        <attribute strength="L" />
+        <attribute length="14" />
+        <attribute chit_color="yellow" />
+        <attribute sharpness="2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1410" name="Elf HQ">
+      <AttributeBlock blockName="this">
+        <attribute native="Cultist" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="HQ" />
+        <attribute super_realm="" />
+        <attribute icon_type="archer_w" />
+        <attribute monster_die="3" />
+        <attribute monster_die2="4" />
+        <attribute setup_start="Elves Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute magic_protection="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="2" />
+        <attribute attack_speed="1" />
+        <attribute strength="M" />
+        <attribute chit_color="paleyellow" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="1" />
+        <attribute strength="L" />
+        <attribute length="14" />
+        <attribute chit_color="yellow" />
+        <attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
   </objects>
