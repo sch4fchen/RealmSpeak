@@ -474,12 +474,22 @@ public class TreasureSetupCardView extends JComponent {
 		Graphics2D g = (Graphics2D)g1;
 		Composite defaultComposite = g.getComposite();
 		
-		ArrayList<Integer> monsterDice = new ArrayList<>();
-		DieRoller roller = game.getMonsterDie();
-		if (roller!=null) {
-			int n = roller.getNumberOfDice();
-			for (int i=0;i<n;i++) {
-				monsterDice.add(Integer.valueOf(roller.getValue(i)));
+		ArrayList<Integer> dice = new ArrayList<>();
+		if (nativeSetup) {
+			DieRoller roller = game.getNativeDie();
+			if (roller!=null) {
+				int n = roller.getNumberOfDice();
+				for (int i=0;i<n;i++) {
+					dice.add(Integer.valueOf(roller.getValue(i)));
+				}
+			}
+		} else {
+			DieRoller roller = game.getMonsterDie();
+			if (roller!=null) {
+				int n = roller.getNumberOfDice();
+				for (int i=0;i<n;i++) {
+					dice.add(Integer.valueOf(roller.getValue(i)));
+				}
 			}
 		}
 		
@@ -497,7 +507,7 @@ public class TreasureSetupCardView extends JComponent {
 			int x = LEFT_BORDER;
 			int y = ((n-1)*h)+SPACING+TEXT_SPACING+25;
 			
-			boolean prowling = monsterDice.contains(Integer.valueOf(n));
+			boolean prowling = dice.contains(Integer.valueOf(n));
 			
 			if (prowling) {
 				Dimension s = getSize();

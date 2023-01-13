@@ -3158,7 +3158,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * @param monsterDie		The current monsterDie.  This is needed to summon monsters
 	 * 							appropriately for the abandoned follower.
 	 */
-	public void removeActionFollower(CharacterWrapper follower,DieRoller monsterDieRoller) {
+	public void removeActionFollower(CharacterWrapper follower,DieRoller monsterDieRoller,DieRoller nativeDieRoller) {
 		ArrayList<String> list = getList(ACTION_FOLLOWER);
 		if (list!=null && !list.isEmpty()) {
 			ArrayList<String> newlist = new ArrayList<>(list);
@@ -3178,7 +3178,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 					
 					// Summon monsters now.
 					if (monsterDieRoller!=null) { // Might be null if sleep was the cause for stopping following
-						SetupCardUtility.summonMonsters(hostPrefs,new ArrayList<GameObject>(),follower,monsterDieRoller);
+						SetupCardUtility.summonMonsters(hostPrefs,new ArrayList<GameObject>(),follower,monsterDieRoller,nativeDieRoller);
 					}
 				}
 				setList(ACTION_FOLLOWER,newlist);

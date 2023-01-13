@@ -293,7 +293,7 @@ public class TableLoot extends Loot {
 		
 		// Followers should stay behind!
 		for (CharacterWrapper follower:transportVictim.getActionFollowers()) {
-			transportVictim.removeActionFollower(follower,null);
+			transportVictim.removeActionFollower(follower,null,null);
 		}
 		for (RealmComponent hireling:transportVictim.getFollowingHirelings()) {
 			ClearingUtility.moveToLocation(hireling.getGameObject(),planned);

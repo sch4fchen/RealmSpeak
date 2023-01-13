@@ -557,7 +557,7 @@ public class ActionRow {
 				}
 				testCharacter.setSleep(true);
 				if (testCharacter.isFollowingCharacterPlayingTurn()) {
-					character.removeActionFollower(testCharacter,null);
+					character.removeActionFollower(testCharacter,null,null);
 					JOptionPane.showMessageDialog(
 							gameHandler.getMainFrame(),
 							"The "+testCharacter.getGameObject().getName()+" has fallen asleep.",
@@ -918,12 +918,12 @@ public class ActionRow {
 							}
 							else {
 								// Oops, follower was likely encumbered!  Take 'em off the list!
-								character.removeActionFollower(follower,gameHandler.getGame().getMonsterDie());
+								character.removeActionFollower(follower,gameHandler.getGame().getMonsterDie(),gameHandler.getGame().getNativeDie());
 							}
 						}
 						else {
 							// Oops, follower can't follow character because he is walking woods
-							character.removeActionFollower(follower,gameHandler.getGame().getMonsterDie());
+							character.removeActionFollower(follower,gameHandler.getGame().getMonsterDie(),gameHandler.getGame().getNativeDie());
 						}
 					}
 					
@@ -2096,7 +2096,7 @@ public class ActionRow {
 					}
 				}
 				else {
-					character.removeActionFollower(follower,gameHandler.getGame().getMonsterDie());
+					character.removeActionFollower(follower,gameHandler.getGame().getMonsterDie(),gameHandler.getGame().getNativeDie());
 				}
 			}
 		}

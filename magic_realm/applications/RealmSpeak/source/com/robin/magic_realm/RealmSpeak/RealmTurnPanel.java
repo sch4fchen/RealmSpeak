@@ -440,6 +440,13 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		JLabel monsterDieLabel = new JLabel("Monster Die:",monsterDieRoller.getIcon(),SwingConstants.CENTER);
 		monsterDieLabel.setHorizontalTextPosition(SwingConstants.LEFT);
 		panel.add(monsterDieLabel);
+		if (hostPrefs.usesSuperRealm()) {
+			DieRoller nativeDieRoller = game.getNativeDie();
+			nativeDieRoller.setAllRed();
+			JLabel nativeDieLabel = new JLabel("Native Die:",nativeDieRoller.getIcon(),SwingConstants.CENTER);
+			nativeDieLabel.setHorizontalTextPosition(SwingConstants.LEFT);
+			panel.add(nativeDieLabel);
+		}
 		top.add(panel,"Center");
 		
 		Box box = Box.createHorizontalBox();
@@ -778,8 +785,9 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		if (!ar.isPending()) {
 			// Summon monsters for any action followers who stopped following!
 			DieRoller monsterDieRoller = game.getMonsterDie();
+			DieRoller nativeDieRoller = game.getNativeDie();
 			for (CharacterWrapper follower:getCharacter().getStoppedActionFollowers()) {
-				getCharacter().removeActionFollower(follower,monsterDieRoller);
+				getCharacter().removeActionFollower(follower,monsterDieRoller,nativeDieRoller);
 			}
 		
 			// Collect any newActions that may have spawned (ie., Curse as the result of a search)
@@ -853,7 +861,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 								BattleHorse horse = follower.getActiveSteed();
 								if (horse==null || horse.isDead() || !horse.doublesMove()) {
 									ClearingUtility.moveToLocation(follower.getGameObject(), locationBeforeAction);
-									getCharacter().removeActionFollower(follower, game.getMonsterDie());
+									getCharacter().removeActionFollower(follower, game.getMonsterDie(),game.getNativeDie());
 									getGameHandler().broadcast(follower.getGameObject().getName(),"Unable to follow Guide:  Guide is on a Pony");
 								}
 							}
@@ -1058,8 +1066,9 @@ public class RealmTurnPanel extends CharacterFramePanel {
 				}
 			}
 			DieRoller monsterDieRoller = game.getMonsterDie();
+			DieRoller nativeDieRoller = game.getNativeDie();
 			ArrayList<GameObject> summoned = new ArrayList<>();
-			SetupCardUtility.summonMonsters(hostPrefs,summoned,getCharacter(),monsterDieRoller);
+			SetupCardUtility.summonMonsters(hostPrefs,summoned,getCharacter(),monsterDieRoller,nativeDieRoller);
 			
 			if (getMainFrame().getGameHandler().isOption(RealmSpeakOptions.TURN_END_RESULTS)) {
 				if (!summoned.isEmpty()) {
@@ -1215,8 +1224,9 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			}
 		}
 		DieRoller monsterDieRoller = game.getMonsterDie();
+		DieRoller nativeDieRoller = game.getNativeDie();
 		for (CharacterWrapper aFollower : toRemove) {
-			getCharacter().removeActionFollower(aFollower,monsterDieRoller);
+			getCharacter().removeActionFollower(aFollower,monsterDieRoller,nativeDieRoller);
 		}
 		
 		// Reset the list
