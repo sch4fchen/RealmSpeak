@@ -94,6 +94,7 @@ public class TreasureSetupCardView extends JComponent {
 		this.structuredLayout = setupCardLayout;
 		game = GameWrapper.findGame(data);
 		hostPrefs = HostPrefWrapper.findHostPrefs(data);
+		if (hostPrefs.getGameKeyVals().contains("super_realm")) this.structuredLayout=true;
 		if (boardKey!=null && !boardKey.endsWith(Constants.BOARD_NUMBER)) {
 			title = title + " - " + boardKey.substring(boardKey.length()-1);
 		}
