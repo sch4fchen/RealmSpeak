@@ -1,5 +1,4 @@
 ::ROADMAP::
-Super Realm: Chart of Clans (die roll for natives)
 Super Realm: Natives, Items incl. Horses, Treasures
 Super Realm: adapt chits colors for "Color chits" option (or disable it for Super Realm) for monsters and natives
 Super Realm: rules for minotaur shield
@@ -64,6 +63,7 @@ NEW FEATURES:
 # Option for using Random Number Generator for game setup
 # Support for denizens with multiple monster dies for prowling
 # Support for different anchor tile (e.g. Borderland or Falls)
+# Support for Chart of Natives, including separate native roll
 BUGS/ISSUES:
 # QuestRequirementAttribute: Fix GreatTreasure not counting inventory by default
 SUPER REALM:

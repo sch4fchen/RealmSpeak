@@ -46,7 +46,7 @@ public class SetupCardUtility {
 	 * 
 	 * It will also relocate monsters that are prowling to the specified clearing.
 	 */
-	public static void summonMonsters(ArrayList<GameObject> summoned,TileLocation tl,GameData data,boolean includeWarningSounds,boolean includeSiteChits,int monsterDie,String boardNumber) {
+	public static void summonMonsters(ArrayList<GameObject> summoned,TileLocation tl,GameData data,boolean includeWarningSounds,boolean includeSiteChits,int monsterDie,String boardNumber,int nativeDie) {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		if (hostPrefs.getDisableSummoning() || DebugUtility.isNoSummon()) {
 			return;
@@ -70,7 +70,7 @@ public class SetupCardUtility {
 		ArrayList<GameObject> treasureLocations = new ArrayList<>(); // Specific Monsters
 		ArrayList<GameObject> otherLocations = new ArrayList<>(); // summoned in a specific order
 		for (GameObject go:summons) {
-			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie) continue;
+			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie && go.getThisInt("native_die")!=nativeDie && go.getThisInt("native_die2")!=nativeDie) continue;
 			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
 			
 			if (go.hasKey("gold_special_target")) {
@@ -128,7 +128,9 @@ public class SetupCardUtility {
 			else if (rc.isMonster() && !rc.isPlayerControlledLeader()) {
 				int die = go.getThisInt("monster_die");
 				int die2 = go.getThisInt("monster_die2");
-				if (die==monsterDie || die2==monsterDie || die==99) { // ghosts are ALWAYS prowling
+				int die3 = go.getThisInt("native_die");
+				int die4 = go.getThisInt("native_die2");
+				if (die==monsterDie || die2==monsterDie || die==99 || die3==nativeDie || die4==nativeDie) { // ghosts are ALWAYS prowling
 					if (!go.hasThisAttribute("blocked") && go.getThisAttribute("vulnerability")!="X") { // Exclude blocked and X monsters
 						// Finally, make sure there isn't a monster lure in the monster's clearing.
 						if (ClearingUtility.getItemInClearingWithKey(rc.getCurrentLocation(),Constants.NO_PROWLING)==null) {
@@ -152,7 +154,7 @@ public class SetupCardUtility {
 		generatedQuery.add(Constants.GENERATED);
 		generatedQuery.add("!"+Constants.DEAD);
 		for (GameObject go:pool.find(generatedQuery)) {
-			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie) continue;
+			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie && go.getThisInt("native_die")!=nativeDie && go.getThisInt("native_die2")!=nativeDie) continue;
 			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
 			
 			if (!prowlingMonsters.contains(go)) {
@@ -167,7 +169,7 @@ public class SetupCardUtility {
 		travelerQuery.add(Constants.SPAWNED);
 		travelerQuery.add("!"+RealmComponent.OWNER_ID);
 		for (GameObject go:pool.find(travelerQuery)) {
-			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie) continue;
+			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie && go.getThisInt("native_die")!=nativeDie && go.getThisInt("native_die2")!=nativeDie) continue;
 			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
 			travelers.add(go);
 		}
@@ -266,7 +268,7 @@ public class SetupCardUtility {
 		
 		// Expansion: Generate monsters from SEEN generators 
 		for (GameObject go:pool.find("seen,generator,!destroyed")) {
-			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie) continue;
+			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie && go.getThisInt("native_die")!=nativeDie && go.getThisInt("native_die2")!=nativeDie) continue;
 			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
 			
 			StateChitComponent rc = (StateChitComponent)RealmComponent.getRealmComponent(go);
@@ -644,9 +646,9 @@ public class SetupCardUtility {
 
 	public static void summonMonsters(HostPrefWrapper hostPrefs,ArrayList<GameObject> summoned,CharacterWrapper character,DieRoller monsterDieRoller,DieRoller nativeDieRoller) {
 		if (!hostPrefs.getMultiBoardEnabled() || !hostPrefs.hasPref(Constants.EXP_MONSTER_DIE_PER_SET)) {
-			SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(0),null);
-			if (hostPrefs.hasPref(Constants.EXP_DOUBLE_MONSTER_DIE) && monsterDieRoller.getValue(0)!=monsterDieRoller.getValue(1)) {
-				SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(1),null);
+			SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(0),null,nativeDieRoller==null?0:nativeDieRoller.getValue(0));
+			if (hostPrefs.hasPref(Constants.EXP_DOUBLE_MONSTER_DIE) && (monsterDieRoller.getValue(0)!=monsterDieRoller.getValue(1) || (nativeDieRoller!=null && nativeDieRoller.getValue(0)!=nativeDieRoller.getValue(1)))) {
+				SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(1),null,nativeDieRoller==null?0:monsterDieRoller.getValue(1));
 			}
 		}
 		else {
@@ -657,9 +659,9 @@ public class SetupCardUtility {
 					if (i>0) {
 						boardNumber = Constants.MULTI_BOARD_APPENDS.substring(i-1, i);
 					}
-					SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(2*i),boardNumber);
-					if (monsterDieRoller.getValue(2*i)!=monsterDieRoller.getValue(2*i+1)) {
-						SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(2*i+1),boardNumber);
+					SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(2*i),boardNumber,nativeDieRoller==null?0:nativeDieRoller.getValue(2*i));
+					if (monsterDieRoller.getValue(2*i)!=monsterDieRoller.getValue(2*i+1) || (nativeDieRoller!=null && nativeDieRoller.getValue(2*i)!=nativeDieRoller.getValue(2*i+1))) {
+						SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(2*i+1),boardNumber,nativeDieRoller==null?0:nativeDieRoller.getValue(2*i+1));
 					}
 				}
 			}
@@ -669,17 +671,17 @@ public class SetupCardUtility {
 					if (i>0) {
 						boardNumber = Constants.MULTI_BOARD_APPENDS.substring(i-1, i);
 					}
-					SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(i), boardNumber);
+					SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(i),boardNumber,nativeDieRoller==null?0:nativeDieRoller.getValue(i));
 				}
 			}
 		}
 	}
 	
-	public static void summonMonsters(HostPrefWrapper hostPrefs,ArrayList<GameObject> summoned,CharacterWrapper character,int monsterDie) {
-		summonMonsters(hostPrefs, summoned, character, monsterDie, null);
+	public static void summonMonsters(HostPrefWrapper hostPrefs,ArrayList<GameObject> summoned,CharacterWrapper character,int monsterDie, int nativeDie) {
+		summonMonsters(hostPrefs, summoned, character, monsterDie, null, nativeDie);
 	}
 	
-	public static void summonMonsters(HostPrefWrapper hostPrefs,ArrayList<GameObject> summoned,CharacterWrapper character,int monsterDie, String boardNumber) {
+	public static void summonMonsters(HostPrefWrapper hostPrefs,ArrayList<GameObject> summoned,CharacterWrapper character,int monsterDie, String boardNumber,int nativeDie) {
 		if (!character.isMinion() && !character.isSleep()) { // Minions and sleeping characters do not summon monsters or prowling denizens
 			TileLocation current = character.getCurrentLocation();
 			if (!character.getNoSummon()) { // Only the "first" follower in the "group" summons monsters!
@@ -697,7 +699,7 @@ public class SetupCardUtility {
 					siteChits = false;
 				}
 				
-				summonMonsters(summoned,current,character.getGameObject().getGameData(),warningSounds,siteChits,monsterDie, boardNumber);
+				summonMonsters(summoned,current,character.getGameObject().getGameData(),warningSounds,siteChits,monsterDie,boardNumber,nativeDie);
 			}
 		}
 	}

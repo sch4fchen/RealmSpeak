@@ -38,7 +38,7 @@ public class QuestRewardSummonRoll extends QuestReward {
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 		ArrayList<GameObject> summoned = new ArrayList<GameObject>();
-		SetupCardUtility.summonMonsters(hostPrefs, summoned, character, getDieRoll());
+		SetupCardUtility.summonMonsters(hostPrefs, summoned, character, getDieRoll(),0);
 	}
 	
 	public String getDescription() {

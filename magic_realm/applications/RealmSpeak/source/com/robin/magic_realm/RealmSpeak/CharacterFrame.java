@@ -1634,7 +1634,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					int monsterdie = Integer.valueOf(thingName.substring(6)).intValue();
 					boolean ns = DebugUtility.isNoSummon();
 					DebugUtility.NO_SUMMON = false;
-					SetupCardUtility.summonMonsters(hostPrefs,new ArrayList<GameObject>(),character, monsterdie);
+					SetupCardUtility.summonMonsters(hostPrefs,new ArrayList<GameObject>(),character, monsterdie,0);
 					DebugUtility.NO_SUMMON = ns;
 				}
 				else if (thingName.startsWith("reset")) {
