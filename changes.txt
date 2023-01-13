@@ -1,5 +1,4 @@
 ::ROADMAP::
-Super Realm: Vanilla Characters (only change might be Witch)
 Super Realm: Natives, Items incl. Horses, Treasures, Travelers
 Super Realm: adapt chits colors for "Color chits" option (or disable it for Super Realm) for monsters and natives
 Super Realm: Chart of Clans (clans, die roll for natives): 4.7 (p. 41)
