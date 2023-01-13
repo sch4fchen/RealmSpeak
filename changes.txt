@@ -54,6 +54,8 @@ Feature Request - First Edition Optional Rule - Glory: When a character or his h
 
 
 Version 1.1.7.3
+QUEST UPDATE:
+# Update to quest E13 Squire Joins You
 NEW FEATURES:
 # GameBuilder: New Setup Command: Alter
 # Treasure Setup Card: Add Headlines
