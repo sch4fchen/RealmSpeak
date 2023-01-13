@@ -69,12 +69,7 @@ public class ImageCache {
 				return ii;
 			}
 			System.err.println("Unable to locate image: "+name);
-			JOptionPane.showMessageDialog(null,"Unable to locate an image: "
-					+name
-					+"\n\nYou may need to redownload the program, or get the latest resource pack from the download site.",
-					"Image Not Found",
-					JOptionPane.ERROR_MESSAGE);
-			
+			JOptionPane.showMessageDialog(null,"Unable to locate an image: "+name,"Image Not Found",JOptionPane.ERROR_MESSAGE);
 			throw new ImageCacheException("No image found for: "+name);
 		}
 		return ii;

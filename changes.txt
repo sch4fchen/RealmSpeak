@@ -54,6 +54,7 @@ Feature Request - First Edition Optional Rule - Glory: When a character or his h
 
 Version 1.1.7.4
 SUPER REALM:
+# Natives
 
 Version 1.1.7.3
 QUEST UPDATE:
