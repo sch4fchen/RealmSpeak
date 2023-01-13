@@ -52,6 +52,8 @@ SUPER REALM: remaining RULES and LOGIC (chapter 4.2 p.27ff. -> chapter 9.1 p.110
 Super Realm: Player building map: distribute tiles equally (including river tiles), distribute river tiles first, then grotto, then rest, each player has 3 tiles in the hand and draws after placing, skip player if he cannot place any tile (and he has no river tile), if all players are skipped or player would be skipped but has river tile, undo last placement, do not allow placing grotto before all other river tiles have been placed
 Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 
+Version 1.1.7.4
+SUPER REALM:
 
 Version 1.1.7.3
 QUEST UPDATE:
