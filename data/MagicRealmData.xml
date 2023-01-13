@@ -39596,13 +39596,11 @@
         <attribute fame="12" />
         <attribute notoriety="12" />
         <attribute icon_type="dragon_flying" />
-        <attribute setup_start="Hoard" />
+        <attribute setup_start="T Flying Dragon Box" />
         <attribute monster_die="1" />
         <attribute flying="" />
         <attribute base_price="12" />
         <attribute icon_folder="monsters" />
-        <attribute alt_monsters1_game="" />
-        <attribute setup_start_tilereq="M" />
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute super_realm="" />
@@ -39629,7 +39627,6 @@
         <attribute icon_type="dragon_head_flying" />
         <attribute dragon_missile="" />
         <attribute icon_folder="monsters" />
-        <attribute alt_monsters1_game="" />
         <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">

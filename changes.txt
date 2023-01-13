@@ -1,6 +1,5 @@
 ::ROADMAP::
-Super Realm: Monsters
-Super Realm: Vanilla Characters
+Super Realm: Vanilla Characters (only change might be Witch)
 Super Realm: Natives, Items incl. Horses, Treasures, Travelers
 Super Realm: adapt chits colors for "Color chits" option (or disable it for Super Realm) for monsters and natives
 Super Realm: Chart of Clans (clans, die roll for natives): 4.7 (p. 41)
@@ -8,7 +7,8 @@ Super Realm: rules for minotaur shield
 Super Realm: rules for special monster attacks and change tactics (Spear and Bow Goblins, Bow Skeletons, Demon, Winged Demon, Imp, Vampire, Succubus, and Devil): p.98
 Super Realm: rules for special native attacks
 Super Realm: Visitor/Travelers=Nomads/Missions/Campaigns/Tasks (incl. for seasons); Travelers: 4.8 (p.41)
-Super Realm: Spells, Quests + Events
+Super Realm: Spells (option for including exp1 spells and vice versa)
+Super Realm: Quests + Events
 Super Realm: Setup Charts, in order: small, large treasures, spells, monsters; dwellings: spells, horses, armor, weapons, helmets, shields, breastplates (large counters below small counters); spells: higher numbers below lower numbers; travellers go to nattive boxes
 Super Realm: rules for max. strength attack
 Super Realm: rules for items/treasures: purple (or other) magic color provided: additional sharpness/vulnerability until midnight
