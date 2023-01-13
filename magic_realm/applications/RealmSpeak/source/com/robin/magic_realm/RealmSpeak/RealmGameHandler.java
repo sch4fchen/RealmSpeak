@@ -1398,20 +1398,39 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			boolean setupCardLayout = getMainFrame().getRealmSpeakOptions().getOptions().getBoolean(RealmSpeakOptions.SETUP_CARD_LAYOUT);
 			if (hostPrefs.getMultiBoardEnabled()) {
 				int count = hostPrefs.getMultiBoardCount();
-				treasureSetupCardView = new TreasureSetupCardView[count];
-				treasureSetupCardView[0] = new TreasureSetupCardView(client.getGameData(), client.getClientName(), "!" + Constants.BOARD_NUMBER,setupCardLayout);
-				for (int n = 1; n < count; n++) {
-					String boardNumber = Constants.MULTI_BOARD_APPENDS.substring(n - 1, n);
-					treasureSetupCardView[n] = new TreasureSetupCardView(client.getGameData(), client.getClientName(), Constants.BOARD_NUMBER + "=" + boardNumber,setupCardLayout);
+				if (hostPrefs.getGameKeyVals().contains("super_realm")) {
+					treasureSetupCardView = new TreasureSetupCardView[count*2];
+					treasureSetupCardView[0] = new TreasureSetupCardView(client.getGameData(), client.getClientName(), "!" + Constants.BOARD_NUMBER,setupCardLayout);
+					treasureSetupCardView[1] = new TreasureSetupCardView(client.getGameData(), client.getClientName(), "!" + Constants.BOARD_NUMBER,setupCardLayout,true);
+					int j = 2;
+					for (int n = 1; n < count; n++) {
+						String boardNumber = Constants.MULTI_BOARD_APPENDS.substring(n - 1, n);
+						treasureSetupCardView[j] = new TreasureSetupCardView(client.getGameData(), client.getClientName(), Constants.BOARD_NUMBER + "=" + boardNumber,setupCardLayout);
+						treasureSetupCardView[j+1] = new TreasureSetupCardView(client.getGameData(), client.getClientName(), Constants.BOARD_NUMBER + "=" + boardNumber,setupCardLayout,true);
+						j=j+2;
+					}	
+				} else {
+					treasureSetupCardView = new TreasureSetupCardView[count];
+					treasureSetupCardView[0] = new TreasureSetupCardView(client.getGameData(), client.getClientName(), "!" + Constants.BOARD_NUMBER,setupCardLayout);
+					for (int n = 1; n < count; n++) {
+						String boardNumber = Constants.MULTI_BOARD_APPENDS.substring(n - 1, n);
+						treasureSetupCardView[n] = new TreasureSetupCardView(client.getGameData(), client.getClientName(), Constants.BOARD_NUMBER + "=" + boardNumber,setupCardLayout);
+					}
 				}
 			}
 			else {
-				treasureSetupCardView = new TreasureSetupCardView[1];
-				treasureSetupCardView[0] = new TreasureSetupCardView(client.getGameData(), client.getClientName(),setupCardLayout);
+				if (hostPrefs.getGameKeyVals().contains("super_realm")) {
+					treasureSetupCardView = new TreasureSetupCardView[2];
+					treasureSetupCardView[0] = new TreasureSetupCardView(client.getGameData(), client.getClientName(),setupCardLayout);
+					treasureSetupCardView[1] = new TreasureSetupCardView(client.getGameData(), client.getClientName(),setupCardLayout,true);
+				} else {
+					treasureSetupCardView = new TreasureSetupCardView[1];
+					treasureSetupCardView[0] = new TreasureSetupCardView(client.getGameData(), client.getClientName(),setupCardLayout);
+				}
 			}
 		}
 		if (treasureSetupCardView.length > 1) {
-			ButtonOptionDialog chooser = new ButtonOptionDialog(getMainFrame(), null, "View setup for which board?", "Setup Card", true);
+			ButtonOptionDialog chooser = new ButtonOptionDialog(getMainFrame(), null, "View which setup?", "Setup Card", true);
 			for (int i = 0; i < treasureSetupCardView.length; i++) {
 				chooser.addSelectionObject(treasureSetupCardView[i]);
 			}

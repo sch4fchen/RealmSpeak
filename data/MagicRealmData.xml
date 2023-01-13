@@ -41117,6 +41117,260 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="1540" name="Patrol Dwelling">
+      <AttributeBlock blockName="this">
+        <attribute native="Patrol" />
+        <attribute dwelling="inn,chapel,house,guard" />
+        <attribute print="" />
+        <attribute ts_section="clan 1" />
+        <attribute ts_size="T" />
+        <attribute ts_color="gray" />
+        <attribute ts_count="3" />
+        <attribute icon_type="short_swordsman_p" />
+        <attribute icon_folder="natives_c" />
+        <attribute virtual_dwelling="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="3" />
+      </AttributeBlock>
+      <contains id="1541" />
+      <contains id="1542" />
+      <contains id="1543" />
+      <contains id="1544" />
+    </GameObject>
+    <GameObject id="1541" name="Patrol 1">
+      <AttributeBlock blockName="this">
+        <attribute native="Patrol" />
+        <attribute fame="0" />
+        <attribute notoriety="3" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="1" />
+        <attribute armored="" />
+        <attribute icon_type="short_swordsman_p" />
+        <attribute setup_start="Patrol Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="3" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute length="3" />
+        <attribute sharpness="1" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="3" />
+        <attribute sharpness="1" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1545" />
+    </GameObject>
+    <GameObject id="1542" name="Patrol 2">
+      <AttributeBlock blockName="this">
+        <attribute native="Patrol" />
+        <attribute fame="0" />
+        <attribute notoriety="3" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="2" />
+        <attribute armored="" />
+        <attribute icon_type="short_swordsman_p" />
+        <attribute setup_start="Patrol Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="3" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute length="3" />
+        <attribute sharpness="1" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute length="3" />
+        <attribute sharpness="1" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1546" />
+    </GameObject>
+    <GameObject id="1543" name="Patrol 3">
+      <AttributeBlock blockName="this">
+        <attribute native="Patrol" />
+        <attribute fame="0" />
+        <attribute notoriety="3" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="3" />
+        <attribute armored="" />
+        <attribute icon_type="short_swordsman_p" />
+        <attribute setup_start="Patrol Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="3" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="3" />
+        <attribute strength="L" />
+        <attribute length="3" />
+        <attribute sharpness="1" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="3" />
+        <attribute sharpness="1" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1547" />
+    </GameObject>
+    <GameObject id="1544" name="Patrol HQ">
+      <AttributeBlock blockName="this">
+        <attribute native="Patrol" />
+        <attribute fame="0" />
+        <attribute notoriety="3" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="HQ" />
+        <attribute armored="" />
+        <attribute icon_type="short_swordsman_p" />
+        <attribute setup_start="Patrol Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute commerce="F,N" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="3" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="3" />
+        <attribute sharpness="1" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="2" />
+        <attribute strength="L" />
+        <attribute length="3" />
+        <attribute sharpness="1" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1548" />
+    </GameObject>
+    <GameObject id="1545" name="Patrol Horse 1">
+      <AttributeBlock blockName="this">
+        <attribute native="Patrol" />
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="3" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="7" />
+        <attribute strength="H" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1546" name="Patrol Horse 2">
+      <AttributeBlock blockName="this">
+        <attribute native="Patrol" />
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="3" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="6" />
+        <attribute strength="M" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1547" name="Patrol Horse 3">
+      <AttributeBlock blockName="this">
+        <attribute native="Patrol" />
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="3" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="6" />
+        <attribute strength="M" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1548" name="Patrol Horse HQ">
+      <AttributeBlock blockName="this">
+        <attribute native="Patrol" />
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="3" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="7" />
+        <attribute strength="H" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

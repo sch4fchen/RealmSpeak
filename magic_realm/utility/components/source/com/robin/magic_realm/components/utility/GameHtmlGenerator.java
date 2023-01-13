@@ -369,19 +369,43 @@ public class GameHtmlGenerator extends HtmlGenerator {
 		TreasureSetupCardView[] treasureSetupCardView;
 		if (hostPrefs.getMultiBoardEnabled()) {
 			int count = hostPrefs.getMultiBoardCount();
-			treasureSetupCardView = new TreasureSetupCardView[count];
-			treasureSetupCardView[0] = new TreasureSetupCardView(data,"","!"+Constants.BOARD_NUMBER,true);
-			setupCardNames.add("Treasure Setup Card A");
-			for (int n=1;n<count;n++) {
-				String boardNumber = Constants.MULTI_BOARD_APPENDS.substring(n-1,n);
-				treasureSetupCardView[n] = new TreasureSetupCardView(data,"",Constants.BOARD_NUMBER+"="+boardNumber,true);
-				setupCardNames.add("Treasure Setup Card "+boardNumber);
+			if (hostPrefs.getGameKeyVals().contains("super_realm")) {
+				treasureSetupCardView = new TreasureSetupCardView[count*2];
+				treasureSetupCardView[0] = new TreasureSetupCardView(data,"","!"+Constants.BOARD_NUMBER,true);
+				treasureSetupCardView[1] = new TreasureSetupCardView(data,"","!"+Constants.BOARD_NUMBER,true,true);
+				setupCardNames.add("Treasure Setup Card A");
+				setupCardNames.add("Chart of Clans A");
+				int j = 2;
+				for (int n=1;n<count;n++) {
+					String boardNumber = Constants.MULTI_BOARD_APPENDS.substring(n-1,n);
+					treasureSetupCardView[n] = new TreasureSetupCardView(data,"",Constants.BOARD_NUMBER+"="+boardNumber,true);
+					treasureSetupCardView[n] = new TreasureSetupCardView(data,"",Constants.BOARD_NUMBER+"="+boardNumber,true, true);
+					setupCardNames.add("Treasure Setup Card "+boardNumber);
+					setupCardNames.add("Chart of Clans "+boardNumber);
+				}
+			} else {
+				treasureSetupCardView = new TreasureSetupCardView[count];
+				treasureSetupCardView[0] = new TreasureSetupCardView(data,"","!"+Constants.BOARD_NUMBER,true);
+				setupCardNames.add("Treasure Setup Card A");
+				for (int n=1;n<count;n++) {
+					String boardNumber = Constants.MULTI_BOARD_APPENDS.substring(n-1,n);
+					treasureSetupCardView[n] = new TreasureSetupCardView(data,"",Constants.BOARD_NUMBER+"="+boardNumber,true);
+					setupCardNames.add("Treasure Setup Card "+boardNumber);
+				}
 			}
 		}
 		else {
-			treasureSetupCardView = new TreasureSetupCardView[1];
-			treasureSetupCardView[0] = new TreasureSetupCardView(data,"",true);
-			setupCardNames.add("Treasure Setup Card");
+			if (hostPrefs.getGameKeyVals().contains("super_realm")) {
+				treasureSetupCardView = new TreasureSetupCardView[2];
+				treasureSetupCardView[0] = new TreasureSetupCardView(data,"",true);
+				treasureSetupCardView[1] = new TreasureSetupCardView(data,"",true,true);
+				setupCardNames.add("Treasure Setup Card");
+				setupCardNames.add("Chart of Clans");
+			} else {
+				treasureSetupCardView = new TreasureSetupCardView[1];
+				treasureSetupCardView[0] = new TreasureSetupCardView(data,"",true);
+				setupCardNames.add("Treasure Setup Card");
+			}
 		}
 		for (int i=0;i<treasureSetupCardView.length;i++) {
 			treasureSetupCardView[i].reset();
@@ -389,8 +413,6 @@ public class GameHtmlGenerator extends HtmlGenerator {
 			//saveComponentImage(setupCardPath,treasureSetupCardView[i]);
 			generateSetupCard(treasureSetupCardView[i],setupCardPath,setupCardNames.get(i));
 		}
-		
-		// Other?
 	}
 	private String getTitle() {
 		return "RealmSpeak - Month "+game.getMonth()+", Day "+game.getDay();

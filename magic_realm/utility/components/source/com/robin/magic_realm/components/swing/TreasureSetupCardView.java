@@ -83,11 +83,20 @@ public class TreasureSetupCardView extends JComponent {
 	private String boardKey;
 	private String playerName;
 	boolean structuredLayout;
+	boolean nativeSetup = false;
+	private String dieString1;
+	private String dieString2;
 	
 	public TreasureSetupCardView(GameData data,String playerName,boolean setupCardLayout) {
-		this(data,playerName,null,setupCardLayout);
+		this(data,playerName,null,setupCardLayout,false);
+	}
+	public TreasureSetupCardView(GameData data,String playerName,boolean setupCardLayout,boolean nativeSetup) {
+		this(data,playerName,null,setupCardLayout,nativeSetup);
 	}
 	public TreasureSetupCardView(GameData data,String playerName,String boardKey,boolean setupCardLayout) {
+		this(data,playerName,boardKey,setupCardLayout,false);
+	}
+	public TreasureSetupCardView(GameData data,String playerName,String boardKey,boolean setupCardLayout, boolean nativeSetup) {
 		this.data = data;
 		this.boardKey = boardKey;
 		this.playerName = playerName;
@@ -95,9 +104,19 @@ public class TreasureSetupCardView extends JComponent {
 		game = GameWrapper.findGame(data);
 		hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		if (hostPrefs.getGameKeyVals().contains("super_realm")) this.structuredLayout=true;
+		if (nativeSetup) {
+			dieString1 = "native_die";
+			dieString2 = "native_die2";
+			title = "The Cart of Clans";
+		} else {
+			dieString1 = "monster_die";
+			dieString2 = "monster_die2";
+		}
 		if (boardKey!=null && !boardKey.endsWith(Constants.BOARD_NUMBER)) {
 			title = title + " - " + boardKey.substring(boardKey.length()-1);
 		}
+		this.nativeSetup = nativeSetup;
+
 		initView();
 	}
 	public ArrayList<Rectangle> getDrawRectList() {
@@ -128,12 +147,12 @@ public class TreasureSetupCardView extends JComponent {
 				String s2 = go2.getThisAttribute("ts_section");
 				ret = s1.compareTo(s2);
 				if (ret==0) {
-					int md1 = go1.getThisInt("monster_die");
-					int md2 = go2.getThisInt("monster_die");
+					int md1 = go1.getThisInt(dieString1);
+					int md2 = go2.getThisInt(dieString1);
 					ret = md1-md2;
 					if (ret==0) {
-						int md12 = go1.getThisInt("monster_die2");
-						int md22 = go2.getThisInt("monster_die2");
+						int md12 = go1.getThisInt(dieString2);
+						int md22 = go2.getThisInt(dieString2);
 						ret = md12-md22;
 						if (ret==0) {
 							String sm1 = go1.getThisAttribute("summon");
@@ -162,8 +181,8 @@ public class TreasureSetupCardView extends JComponent {
 				sections.add(section);
 			}
 			String key;
-			if (go.hasThisAttribute("monster_die") && !go.hasThisAttribute("ts_sidebar")) {
-				key = section+go.getThisAttribute("monster_die");
+			if (go.hasThisAttribute(dieString1) && !go.hasThisAttribute("ts_sidebar")) {
+				key = section+go.getThisAttribute(dieString1);
 			}
 			else {
 				// Non-monster die entries (like TWT and Valley Dwellings)
@@ -197,18 +216,20 @@ public class TreasureSetupCardView extends JComponent {
 		}
 		
 		nonMdList = new ArrayList<>();
-		for (String section : sections) {
-			String key = section;
-			ArrayList<GameObject> l = hash.getList(key);
-			if (l!=null) {
-				Collections.sort(l,new Comparator<GameObject>() {
-					public int compare(GameObject go1,GameObject go2) {
-						return go1.getName().compareTo(go2.getName());
-					}
-				});
-				for(GameObject go : l) {
-					if (!go.hasThisAttribute(CacheChitComponent.DEPLETED_CACHE) && go.hasThisAttribute("ts_color")) {
-						nonMdList.add(go);
+		if (!nativeSetup) {
+			for (String section : sections) {
+				String key = section;
+				ArrayList<GameObject> l = hash.getList(key);
+				if (l!=null) {
+					Collections.sort(l,new Comparator<GameObject>() {
+						public int compare(GameObject go1,GameObject go2) {
+							return go1.getName().compareTo(go2.getName());
+						}
+					});
+					for(GameObject go : l) {
+						if (!go.hasThisAttribute(CacheChitComponent.DEPLETED_CACHE) && go.hasThisAttribute("ts_color")) {
+							nonMdList.add(go);
+						}
 					}
 				}
 			}
@@ -548,8 +569,8 @@ public class TreasureSetupCardView extends JComponent {
 							rects.add(new Rectangle(x,y+yoffset,d.width-1,d.height));
 							gos.add(go);
 							x += d.width;
-							if (!doubleBox && go.hasThisAttribute("monster_die2")
-									&& go.getThisInt("monster_die2")==n+1 && go.getThisInt("monster_die")==n) {
+							if (!doubleBox && go.hasThisAttribute(dieString2)
+									&& go.getThisInt(dieString2)==n+1 && go.getThisInt(dieString1)==n) {
 								doubleBox = true;
 							}
 						}
@@ -585,8 +606,8 @@ public class TreasureSetupCardView extends JComponent {
 
 							g.setComposite(TRANSPARENT);
 							doubleBox = false;
-							if (go.hasThisAttribute("monster_die2")
-									&& go.getThisInt("monster_die2")==n+1 && go.getThisInt("monster_die")==n) {
+							if (go.hasThisAttribute(dieString2)
+									&& go.getThisInt(dieString2)==n+1 && go.getThisInt(dieString1)==n) {
 								rect.height = rect.height*2+SPACING*2+TEXT_SPACING*2;
 								doubleBox = true;
 							}
