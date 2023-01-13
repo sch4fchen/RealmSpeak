@@ -40898,6 +40898,7 @@
         <attribute icon_folder="natives_c" />
         <attribute virtual_dwelling="" />
         <attribute ts_sort="3" />
+        <attribute ts_offset="1" />
       </AttributeBlock>
       <contains id="1534" />
       <contains id="1535" />
