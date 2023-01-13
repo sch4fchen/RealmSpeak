@@ -36945,7 +36945,7 @@
     </GameObject>
     <GameObject id="1375" name="H Scorpion Box">
       <AttributeBlock blockName="this">
-        <attribute summon="DankF, Stink F, Patter F" />
+        <attribute summon="Dank F, Stink F, Patter F" />
         <attribute monster_die="1" />
         <attribute super_realm="" />
         <attribute box_num="1" />
@@ -36960,7 +36960,7 @@
     </GameObject>
     <GameObject id="1376" name="H Scorpion Box">
       <AttributeBlock blockName="this">
-        <attribute summon="DankF, Stink F, Patter F" />
+        <attribute summon="Dank F, Stink F, Patter F" />
         <attribute monster_die="1" />
         <attribute super_realm="" />
         <attribute box_num="2" />
@@ -36976,7 +36976,7 @@
     </GameObject>
     <GameObject id="1377" name="T Scorpion Box">
       <AttributeBlock blockName="this">
-        <attribute summon="DankF, Stink F, Patter F" />
+        <attribute summon="Dank F, Stink F, Patter F" />
         <attribute monster_die="1" />
         <attribute super_realm="" />
         <attribute box_num="3" />
@@ -39316,7 +39316,7 @@
     </GameObject>
     <GameObject id="1469" name="H Trolls Box">
       <AttributeBlock blockName="this">
-        <attribute summon="Stink C, Bones C, Roar C" />
+        <attribute summon="Bones C, Stink C, Roar C" />
         <attribute monster_die="4" />
         <attribute box_num="1" />
         <attribute ts_section="lost city" />
@@ -39331,7 +39331,7 @@
     </GameObject>
     <GameObject id="1470" name="H Trolls Box">
       <AttributeBlock blockName="this">
-        <attribute summon="Stink C, Bones C, Roar C" />
+        <attribute summon="Bones C, Stink C, Roar C" />
         <attribute monster_die="4" />
         <attribute box_num="2" />
         <attribute ts_section="lost city" />
@@ -39347,7 +39347,7 @@
     </GameObject>
     <GameObject id="1471" name="T Troll Box">
       <AttributeBlock blockName="this">
-        <attribute summon="Stink C, Bones C, Roar C" />
+        <attribute summon="Bones C, Stink C, Roar C" />
         <attribute monster_die="4" />
         <attribute box_num="3" />
         <attribute ts_section="lost city" />
