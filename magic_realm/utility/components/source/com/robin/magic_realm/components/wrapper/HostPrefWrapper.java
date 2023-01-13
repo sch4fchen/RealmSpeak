@@ -108,6 +108,9 @@ public class HostPrefWrapper extends GameObjectWrapper {
 	public String getGameKeyVals() {
 		return getString(GAME_KEYVALS_TAG);
 	}
+	public boolean usesSuperRealm() {
+		return getString(GAME_KEYVALS_TAG).contains("super_realm");
+	}
 	public String getGameSetupName() {
 		return getString(GAME_SETUP_NAME_TAG);
 	}

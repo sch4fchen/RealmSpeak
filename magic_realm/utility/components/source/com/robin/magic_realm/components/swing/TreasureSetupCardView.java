@@ -103,7 +103,7 @@ public class TreasureSetupCardView extends JComponent {
 		this.structuredLayout = setupCardLayout;
 		game = GameWrapper.findGame(data);
 		hostPrefs = HostPrefWrapper.findHostPrefs(data);
-		if (hostPrefs.getGameKeyVals().contains("super_realm")) this.structuredLayout=true;
+		if (hostPrefs.usesSuperRealm()) this.structuredLayout=true;
 		if (nativeSetup) {
 			dieString1 = "native_die";
 			dieString2 = "native_die2";

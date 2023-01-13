@@ -369,7 +369,7 @@ public class GameHtmlGenerator extends HtmlGenerator {
 		TreasureSetupCardView[] treasureSetupCardView;
 		if (hostPrefs.getMultiBoardEnabled()) {
 			int count = hostPrefs.getMultiBoardCount();
-			if (hostPrefs.getGameKeyVals().contains("super_realm")) {
+			if (hostPrefs.usesSuperRealm()) {
 				treasureSetupCardView = new TreasureSetupCardView[count*2];
 				treasureSetupCardView[0] = new TreasureSetupCardView(data,"","!"+Constants.BOARD_NUMBER,true);
 				treasureSetupCardView[1] = new TreasureSetupCardView(data,"","!"+Constants.BOARD_NUMBER,true,true);
@@ -395,7 +395,7 @@ public class GameHtmlGenerator extends HtmlGenerator {
 			}
 		}
 		else {
-			if (hostPrefs.getGameKeyVals().contains("super_realm")) {
+			if (hostPrefs.usesSuperRealm()) {
 				treasureSetupCardView = new TreasureSetupCardView[2];
 				treasureSetupCardView[0] = new TreasureSetupCardView(data,"",true);
 				treasureSetupCardView[1] = new TreasureSetupCardView(data,"",true,true);

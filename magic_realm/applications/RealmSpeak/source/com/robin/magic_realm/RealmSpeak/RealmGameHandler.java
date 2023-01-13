@@ -1398,7 +1398,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			boolean setupCardLayout = getMainFrame().getRealmSpeakOptions().getOptions().getBoolean(RealmSpeakOptions.SETUP_CARD_LAYOUT);
 			if (hostPrefs.getMultiBoardEnabled()) {
 				int count = hostPrefs.getMultiBoardCount();
-				if (hostPrefs.getGameKeyVals().contains("super_realm")) {
+				if (hostPrefs.usesSuperRealm()) {
 					treasureSetupCardView = new TreasureSetupCardView[count*2];
 					treasureSetupCardView[0] = new TreasureSetupCardView(client.getGameData(), client.getClientName(), "!" + Constants.BOARD_NUMBER,setupCardLayout);
 					treasureSetupCardView[1] = new TreasureSetupCardView(client.getGameData(), client.getClientName(), "!" + Constants.BOARD_NUMBER,setupCardLayout,true);
@@ -1419,7 +1419,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				}
 			}
 			else {
-				if (hostPrefs.getGameKeyVals().contains("super_realm")) {
+				if (hostPrefs.usesSuperRealm()) {
 					treasureSetupCardView = new TreasureSetupCardView[2];
 					treasureSetupCardView[0] = new TreasureSetupCardView(client.getGameData(), client.getClientName(),setupCardLayout);
 					treasureSetupCardView[1] = new TreasureSetupCardView(client.getGameData(), client.getClientName(),setupCardLayout,true);

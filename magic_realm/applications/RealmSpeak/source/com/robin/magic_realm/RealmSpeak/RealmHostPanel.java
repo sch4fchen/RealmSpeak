@@ -437,6 +437,7 @@ public class RealmHostPanel extends JPanel {
 
 			// Roll monster die (or dice)
 			DieRoller monsterDieRoller = new DieRoller();
+			DieRoller nativeDieRoller = new DieRoller();
 			int numberOfDice = 1;
 			if (hostPrefs.hasPref(Constants.EXP_MONSTER_DIE_PER_SET) && hostPrefs.getMultiBoardEnabled()) {
 				numberOfDice = hostPrefs.getMultiBoardCount();
@@ -447,11 +448,19 @@ public class RealmHostPanel extends JPanel {
 			
 			for (int i=0; i<numberOfDice; i++) {
 				monsterDieRoller.addRedDie();
+				if (hostPrefs.usesSuperRealm()) {
+					nativeDieRoller.addRedDie();
+				}
 			}
 			
 			monsterDieRoller.rollDice("Monster Roll");
 			game.setMonsterDie(monsterDieRoller);
 			host.broadcast("host","Monster Die roll is "+monsterDieRoller.getDescription(false));
+			if (hostPrefs.usesSuperRealm()) {
+				nativeDieRoller.rollDice("Native Roll");
+				game.setNativeDie(nativeDieRoller);
+				host.broadcast("host","Native Die roll is "+nativeDieRoller.getDescription(false));
+			}
 
 			game.clearRegeneratedDenizens();
 			if (RealmCalendar.isSeventhDay(game.getDay())) {
