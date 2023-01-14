@@ -319,9 +319,6 @@ public class Tile {
 	 * @return		true if the Tile object will fit at the specified location and rotation.
 	 */
 	public static boolean isMappingPossibility(Hashtable mapGrid,Tile tile,Point pos,int rot,String anchorTilename) {
-		return isMappingPossibility(mapGrid,tile,pos,rot,anchorTilename,false);
-	}
-	public static boolean isMappingPossibility(Hashtable mapGrid,Tile tile,Point pos,int rot,String anchorTilename,boolean autoBuildRiver) {
 		// Setup the position
 		tile.setMapPosition(pos);
 		tile.setRotation(rot);
@@ -340,12 +337,12 @@ public class Tile {
 				if ((pathsTypes.contains("river") && !adjTilePathsTypes.contains("river")) || (adjTilePathsTypes.contains("river") && !pathsTypes.contains("river"))) {
 					return false;
 				}
-				if (autoBuildRiver && pathsTypes.contains("river") && adjTilePathsTypes.contains("river")) {
+				if (pathsTypes.contains("river") && adjTilePathsTypes.contains("river")) {
 					riverConnected = true;
 				}
 			}
 		}
-		if (autoBuildRiver && !riverConnected && tile.hasRiverPaths(tile.side)) {
+		if (!riverConnected && tile.hasRiverPaths(tile.side) && !tile.name.matches(anchorTilename)) {
 			return false;
 		}
 		boolean allConnect = true;
@@ -362,7 +359,7 @@ public class Tile {
 		
 		String tileType = tile.getGameObject().getThisAttribute("tile_type");
 		// Now, if the tile has 6-clearings, check to be sure the paths lead back to the borderland tile.
-		if (tile.getClearingCount()==6 && tileType!="V" && tileType!="W" && tileType!="H" && (!autoBuildRiver || !tile.hasRiverPaths(tile.side))) {
+		if (tile.getClearingCount()==6 && tileType!="V" && tileType!="W" && tileType!="H" && !tile.hasRiverPaths(tile.side)) {
 			// I think I only need to check clearings 2 and 6 (or something like that)
 			if (!allConnect) {
 				if (debug) System.out.println(tile.name+" doesn't have all 6 clearings connecting");

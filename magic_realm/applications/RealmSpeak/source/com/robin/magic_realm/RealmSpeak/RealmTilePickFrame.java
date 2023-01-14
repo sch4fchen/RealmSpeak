@@ -212,6 +212,8 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 		if (solePlayerIndex==-1 && !tilesToAdd.isEmpty()) {
 			solePlayerIndex = getBorderLandIndex();
 			if (solePlayerIndex == -1) {
+				boolean placePrioOneFirst = false;
+				boolean placePrioTwoFirst = false;
 				// No borderland?  Choose a random tile that CAN be placed.
 				ArrayList<Integer> placeableIndices = new ArrayList<>();
 				for (int i=0;i<tilesToAdd.size();i++) {
@@ -220,6 +222,13 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 					if (!c.isEmpty()) {
 						placeableIndices.add(Integer.valueOf(i));
 						go.setThisAttribute(Constants.PLACEABLE);
+						if (go.hasThisAttribute(Constants.MAP_BUILDING_PRIO)) {
+							if (go.getThisAttribute(Constants.MAP_BUILDING_PRIO).matches("1")) {
+								placePrioOneFirst = true;
+							} else {
+								placePrioTwoFirst = true;
+							}
+						}
 					}
 					else {
 						go.removeThisAttribute(Constants.PLACEABLE);
@@ -234,8 +243,20 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 						gameHandler.broadcast(Constants.BROADCAST_SPECIAL_ACTION,Constants.MESSAGE_RESTART_MAP_BUILDER);
 						return;
 					}
-					int r = RandomNumber.getRandom(placeableIndices.size());
-					Integer n = placeableIndices.get(r);
+					int r = -1;
+					Integer n = -1;
+					while (true) {
+						r = RandomNumber.getRandom(placeableIndices.size());
+						n = placeableIndices.get(r);
+						if (placePrioOneFirst || placePrioTwoFirst) {
+							GameObject go = tilesToAdd.get(n);
+							if (!go.hasThisAttribute(Constants.MAP_BUILDING_PRIO)) continue;
+							if (placePrioOneFirst && go.getThisAttribute(Constants.MAP_BUILDING_PRIO).matches("1")) break;
+							if (!placePrioOneFirst && placePrioTwoFirst) break;
+						} else {
+							break;
+						}
+					}
 					solePlayerIndex = n.intValue();
 				}
 			}

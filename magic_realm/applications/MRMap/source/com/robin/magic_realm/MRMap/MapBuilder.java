@@ -88,7 +88,7 @@ public class MapBuilder {
 						// Try every rotation
 						for (int rot=0;rot<6;rot++) {
 							// Test the tile at pos, with rotation rot
-							if (Tile.isMappingPossibility(mapGrid,tile,pos,rot,anchor.getGameObject().getName(),autoBuildRiver)) {
+							if (Tile.isMappingPossibility(mapGrid,tile,pos,rot,anchor.getGameObject().getName())) {
 								tileResults.add(new TileMappingPossibility(tile,pos,rot));
 							}
 						}
