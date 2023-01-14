@@ -70,7 +70,7 @@ public class SetupCardUtility {
 		ArrayList<GameObject> treasureLocations = new ArrayList<>(); // Specific Monsters
 		ArrayList<GameObject> otherLocations = new ArrayList<>(); // summoned in a specific order
 		for (GameObject go:summons) {
-			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie && go.getThisInt("native_die")!=nativeDie && go.getThisInt("native_die2")!=nativeDie) continue;
+			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie && (nativeDie==0 || (nativeDie!=0 && go.getThisInt("native_die")!=nativeDie && go.getThisInt("native_die2")!=nativeDie))) continue;
 			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
 			
 			if (go.hasKey("gold_special_target")) {
@@ -154,7 +154,7 @@ public class SetupCardUtility {
 		generatedQuery.add(Constants.GENERATED);
 		generatedQuery.add("!"+Constants.DEAD);
 		for (GameObject go:pool.find(generatedQuery)) {
-			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie && go.getThisInt("native_die")!=nativeDie && go.getThisInt("native_die2")!=nativeDie) continue;
+			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie && (nativeDie==0 || (nativeDie!=0 && go.getThisInt("native_die")!=nativeDie && go.getThisInt("native_die2")!=nativeDie))) continue;
 			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
 			
 			if (!prowlingMonsters.contains(go)) {
@@ -169,7 +169,7 @@ public class SetupCardUtility {
 		travelerQuery.add(Constants.SPAWNED);
 		travelerQuery.add("!"+RealmComponent.OWNER_ID);
 		for (GameObject go:pool.find(travelerQuery)) {
-			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie && go.getThisInt("native_die")!=nativeDie && go.getThisInt("native_die2")!=nativeDie) continue;
+			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie && (nativeDie==0 || (nativeDie!=0 && go.getThisInt("native_die")!=nativeDie && go.getThisInt("native_die2")!=nativeDie))) continue;
 			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
 			travelers.add(go);
 		}
@@ -268,7 +268,7 @@ public class SetupCardUtility {
 		
 		// Expansion: Generate monsters from SEEN generators 
 		for (GameObject go:pool.find("seen,generator,!destroyed")) {
-			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie && go.getThisInt("native_die")!=nativeDie && go.getThisInt("native_die2")!=nativeDie) continue;
+			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie && (nativeDie==0 || (nativeDie!=0 && go.getThisInt("native_die")!=nativeDie && go.getThisInt("native_die2")!=nativeDie))) continue;
 			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
 			
 			StateChitComponent rc = (StateChitComponent)RealmComponent.getRealmComponent(go);

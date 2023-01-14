@@ -1,4 +1,5 @@
 ::ROADMAP::
+SetupCardUtility: flipGoldSpecialChits, resetDenizens
 Super Realm: Natives, Items incl. Horses, Treasures
 Super Realm: adapt chits colors for "Color chits" option (or disable it for Super Realm) for monsters and natives
 Super Realm: rules for minotaur shield
