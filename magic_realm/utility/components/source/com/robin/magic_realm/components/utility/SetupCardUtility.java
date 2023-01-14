@@ -70,7 +70,7 @@ public class SetupCardUtility {
 		ArrayList<GameObject> treasureLocations = new ArrayList<>(); // Specific Monsters
 		ArrayList<GameObject> otherLocations = new ArrayList<>(); // summoned in a specific order
 		for (GameObject go:summons) {
-			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie && (nativeDie==0 || (nativeDie!=0 && go.getThisInt("native_die")!=nativeDie && go.getThisInt("native_die2")!=nativeDie))) continue;
+			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie && (nativeDie==-1 || (nativeDie!=-1 && go.getThisInt("native_die")!=nativeDie && go.getThisInt("native_die2")!=nativeDie))) continue;
 			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
 			
 			if (go.hasKey("gold_special_target")) {
@@ -154,7 +154,7 @@ public class SetupCardUtility {
 		generatedQuery.add(Constants.GENERATED);
 		generatedQuery.add("!"+Constants.DEAD);
 		for (GameObject go:pool.find(generatedQuery)) {
-			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie && (nativeDie==0 || (nativeDie!=0 && go.getThisInt("native_die")!=nativeDie && go.getThisInt("native_die2")!=nativeDie))) continue;
+			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie && (nativeDie==-1 || (nativeDie!=-1 && go.getThisInt("native_die")!=nativeDie && go.getThisInt("native_die2")!=nativeDie))) continue;
 			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
 			
 			if (!prowlingMonsters.contains(go)) {
@@ -169,7 +169,7 @@ public class SetupCardUtility {
 		travelerQuery.add(Constants.SPAWNED);
 		travelerQuery.add("!"+RealmComponent.OWNER_ID);
 		for (GameObject go:pool.find(travelerQuery)) {
-			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie && (nativeDie==0 || (nativeDie!=0 && go.getThisInt("native_die")!=nativeDie && go.getThisInt("native_die2")!=nativeDie))) continue;
+			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie && (nativeDie==-1 || (nativeDie!=-1 && go.getThisInt("native_die")!=nativeDie && go.getThisInt("native_die2")!=nativeDie))) continue;
 			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
 			travelers.add(go);
 		}
@@ -268,7 +268,7 @@ public class SetupCardUtility {
 		
 		// Expansion: Generate monsters from SEEN generators 
 		for (GameObject go:pool.find("seen,generator,!destroyed")) {
-			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie && (nativeDie==0 || (nativeDie!=0 && go.getThisInt("native_die")!=nativeDie && go.getThisInt("native_die2")!=nativeDie))) continue;
+			if (go.getThisInt("monster_die")!=monsterDie && go.getThisInt("monster_die2")!=monsterDie && (nativeDie==-1 || (nativeDie!=-1 && go.getThisInt("native_die")!=nativeDie && go.getThisInt("native_die2")!=nativeDie))) continue;
 			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
 			
 			StateChitComponent rc = (StateChitComponent)RealmComponent.getRealmComponent(go);
@@ -646,9 +646,9 @@ public class SetupCardUtility {
 
 	public static void summonMonsters(HostPrefWrapper hostPrefs,ArrayList<GameObject> summoned,CharacterWrapper character,DieRoller monsterDieRoller,DieRoller nativeDieRoller) {
 		if (!hostPrefs.getMultiBoardEnabled() || !hostPrefs.hasPref(Constants.EXP_MONSTER_DIE_PER_SET)) {
-			SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(0),null,nativeDieRoller==null?0:nativeDieRoller.getValue(0));
+			SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(0),null,nativeDieRoller==null?-1:nativeDieRoller.getValue(0));
 			if (hostPrefs.hasPref(Constants.EXP_DOUBLE_MONSTER_DIE) && (monsterDieRoller.getValue(0)!=monsterDieRoller.getValue(1) || (nativeDieRoller!=null && nativeDieRoller.getValue(0)!=nativeDieRoller.getValue(1)))) {
-				SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(1),null,nativeDieRoller==null?0:monsterDieRoller.getValue(1));
+				SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(1),null,nativeDieRoller==null?-1:monsterDieRoller.getValue(1));
 			}
 		}
 		else {
@@ -659,9 +659,9 @@ public class SetupCardUtility {
 					if (i>0) {
 						boardNumber = Constants.MULTI_BOARD_APPENDS.substring(i-1, i);
 					}
-					SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(2*i),boardNumber,nativeDieRoller==null?0:nativeDieRoller.getValue(2*i));
+					SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(2*i),boardNumber,nativeDieRoller==null?-1:nativeDieRoller.getValue(2*i));
 					if (monsterDieRoller.getValue(2*i)!=monsterDieRoller.getValue(2*i+1) || (nativeDieRoller!=null && nativeDieRoller.getValue(2*i)!=nativeDieRoller.getValue(2*i+1))) {
-						SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(2*i+1),boardNumber,nativeDieRoller==null?0:nativeDieRoller.getValue(2*i+1));
+						SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(2*i+1),boardNumber,nativeDieRoller==null?-1:nativeDieRoller.getValue(2*i+1));
 					}
 				}
 			}
@@ -671,7 +671,7 @@ public class SetupCardUtility {
 					if (i>0) {
 						boardNumber = Constants.MULTI_BOARD_APPENDS.substring(i-1, i);
 					}
-					SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(i),boardNumber,nativeDieRoller==null?0:nativeDieRoller.getValue(i));
+					SetupCardUtility.summonMonsters(hostPrefs,summoned,character,monsterDieRoller.getValue(i),boardNumber,nativeDieRoller==null?-1:nativeDieRoller.getValue(i));
 				}
 			}
 		}
