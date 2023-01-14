@@ -42114,7 +42114,7 @@
         <attribute setup_start="Woodfolk Dwelling" />
         <attribute missile="" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives" />
+        <attribute icon_folder="natives_c" />
         <attribute commerce="F,N" />
         <attribute denizen="" />
         <attribute super_realm="" />
@@ -42157,7 +42157,7 @@
         <attribute print="" />
         <attribute ts_section="clan 2" />
         <attribute ts_size="T" />
-        <attribute ts_color="gray" />
+        <attribute ts_color="green" />
         <attribute ts_count="4" />
         <attribute icon_type="lancer_l" />
         <attribute icon_folder="natives_c" />
