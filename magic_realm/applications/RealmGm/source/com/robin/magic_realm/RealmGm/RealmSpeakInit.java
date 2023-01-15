@@ -108,6 +108,9 @@ public class RealmSpeakInit {
 		if(hostPrefs.getIncludeNewSpells2()){
 			prepExpansionSpells("new_spells_2");
 		}
+		if(hostPrefs.getIncludeSrSpells()){
+			prepExpansionSpells("super_realm");
+		}
 		if(hostPrefs.getSwitchDaySpells()){
 			prepExpansionSpells("upg_day_spells");
 			removeSpells("upg_swap_out");

@@ -107,6 +107,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	protected JCheckBox includeExpansionSpells;
 	protected JCheckBox includeNewSpells;
 	protected JCheckBox includeNewSpells2;
+	protected JCheckBox includeSrSpells;
 	protected JCheckBox switchDaySpells;
 	
 	protected JCheckBox multiBoardEnabled;
@@ -148,6 +149,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		includeExpansionSpells.setSelected(hostPrefs.getIncludeExpansionSpells());
 		includeNewSpells.setSelected(hostPrefs.getIncludeNewSpells());
 		includeNewSpells2.setSelected(hostPrefs.getIncludeNewSpells2());
+		includeSrSpells.setSelected(hostPrefs.getIncludeSrSpells());
 		switchDaySpells.setSelected(hostPrefs.getSwitchDaySpells());
 		multiBoardEnabled.setSelected(hostPrefs.getMultiBoardEnabled());
 		multiBoardCount.setValue(hostPrefs.getMultiBoardCount());
@@ -226,6 +228,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		includeExpansionSpells.setSelected(prefMan.getBoolean("includeExpansionSpells"));
 		includeNewSpells.setSelected(prefMan.getBoolean("includeNewSpells"));
 		includeNewSpells2.setSelected(prefMan.getBoolean("includeNewSpells2"));
+		includeSrSpells.setSelected(prefMan.getBoolean("includeSrSpells"));
 		switchDaySpells.setSelected(prefMan.getBoolean("switchDaySpells"));
 		
 		multiBoardEnabled.setSelected(prefMan.getBoolean("multiBoardEnabled"));
@@ -286,6 +289,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		prefMan.set("includeExpansionSpells",includeExpansionSpells.isSelected());
 		prefMan.set("includeNewSpells", includeNewSpells.isSelected());
 		prefMan.set("includeNewSpells2", includeNewSpells2.isSelected());
+		prefMan.set("includeSrSpells", includeSrSpells.isSelected());
 		prefMan.set("switchDaySpells", switchDaySpells.isSelected());
 		prefMan.set("multiBoardEnabled",multiBoardEnabled.isSelected());
 		prefMan.set("multiBoardCount",multiBoardCount.getValue());
@@ -399,6 +403,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		includeExpansionSpells.setEnabled(editMode && variant.getAllowExp1Content());
 		includeNewSpells.setEnabled(editMode && variant.getAllowAdditionalContent());
 		includeNewSpells2.setEnabled(editMode && variant.getAllowAdditionalContent());
+		includeSrSpells.setEnabled(editMode && variant.getAllowSrContent());
 		switchDaySpells.setEnabled(editMode && variant.getAllowAdditionalContent());
 		multiBoardEnabled.setEnabled(editMode && variant.getAllowMultiBoardAndAlternativeTiles());
 		multiBoardCount.setEnabled(editMode && variant.getAllowMultiBoardAndAlternativeTiles());
@@ -859,6 +864,12 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			box.add(includeNewSpells);
 			box.add(Box.createHorizontalGlue());
 			
+			boardSetupBox.add(box);
+			box = group.createLabelLine("Super Realm Spells");
+				includeSrSpells = notifier.getCheckBox("");
+			box.add(includeSrSpells);
+			box.add(Box.createHorizontalGlue());
+			
 		boardSetupBox.add(box);
 			box = group.createLabelLine("Upgrade Day Spells");
 				switchDaySpells = notifier.getCheckBox("");
@@ -1191,6 +1202,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		includeExpansionSpells.setSelected(false);
 		includeNewSpells.setSelected(false);
 		includeNewSpells2.setSelected(false);
+		includeSrSpells.setSelected(false);
 		switchDaySpells.setSelected(false);
 		multiBoardEnabled.setSelected(false);
 		multiBoardCount.setValue(2);
@@ -1349,6 +1361,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		hostPrefs.setIncludeExpansionSpells(includeExpansionSpells.isSelected() && getSelectedGameVariant().getAllowExp1Content());
 		hostPrefs.setIncludeNewSpells(includeNewSpells.isSelected() && getSelectedGameVariant().getAllowAdditionalContent());
 		hostPrefs.setIncludeNewSpells2(includeNewSpells2.isSelected() && getSelectedGameVariant().getAllowAdditionalContent());
+		hostPrefs.setIncludeSrSpells(includeSrSpells.isSelected() && getSelectedGameVariant().getAllowSrContent());
 		hostPrefs.setSwitchDaySpells(switchDaySpells.isSelected() && getSelectedGameVariant().getAllowAdditionalContent());
 		hostPrefs.setMultiBoardEnabled(multiBoardEnabled.isSelected() && getSelectedGameVariant().getAllowMultiBoardAndAlternativeTiles());
 		if (getSelectedGameVariant().getAllowMultiBoardAndAlternativeTiles()) {

@@ -55,6 +55,7 @@ public class HostPrefWrapper extends GameObjectWrapper {
 	public static final String MINIMUM_MAP_RATING = "min_mr";
 	public static final String INCLUDE_NEW_SPELLS = "inc_new_spells";
 	public static final String INCLUDE_NEW_SPELLS_2 = "inc_new_spells2";
+	public static final String INCLUDE_SR_SPELLS = "inc_sr_spells";
 	public static final String SWITCH_DAY_SPELLS = "upg_day_spells";
 //	public static final String REQ_VPS_PER_PLAYER = "rq_vps";
 	public static final String REQ_VPS_DISABLED = "rq_vps_off";
@@ -155,6 +156,9 @@ public class HostPrefWrapper extends GameObjectWrapper {
 	}
 	public boolean getIncludeNewSpells2() {
 		return getBoolean(INCLUDE_NEW_SPELLS_2);
+	}
+	public boolean getIncludeSrSpells() {
+		return getBoolean(INCLUDE_SR_SPELLS);
 	}
 	public boolean getSwitchDaySpells() {
 		return getBoolean(SWITCH_DAY_SPELLS);
@@ -287,6 +291,9 @@ public class HostPrefWrapper extends GameObjectWrapper {
 	}
 	public void setIncludeNewSpells2(boolean val) {
 		setBoolean(INCLUDE_NEW_SPELLS_2, val);
+	}
+	public void setIncludeSrSpells(boolean val) {
+		setBoolean(INCLUDE_SR_SPELLS, val);
 	}
 	public void setSwitchDaySpells(boolean val) {
 		setBoolean(SWITCH_DAY_SPELLS, val);

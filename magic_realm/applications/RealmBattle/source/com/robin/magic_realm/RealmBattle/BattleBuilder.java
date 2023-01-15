@@ -301,6 +301,9 @@ public class BattleBuilder extends JFrame {
 				if(hostPrefs.getIncludeNewSpells2()){
 					prepExpansionSpells("new_spells_2", gameData);
 				}
+				if(hostPrefs.getIncludeSrSpells()){
+					prepExpansionSpells("super_realm", gameData);
+				}
 				if(hostPrefs.getSwitchDaySpells()){
 					prepExpansionSpells("upg_day_spells", gameData);
 					removeSpells("upg_swap_out", gameData);
