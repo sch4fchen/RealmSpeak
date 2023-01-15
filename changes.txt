@@ -1,8 +1,8 @@
 ::ROADMAP::
 Super Realm: Natives
 Super Realm: Items incl. Horses
-Super Realm: Spells
-Super Realm: Treasures (tweaked treasures of vanilla: see 1.1a)
+Super Realm: Spells (modified base game spells: Excorcise, Fog, Elven Grace, Violent Storm, Ligthning Bolt, Hurricane Winds, Pentangle, Broomstick, Ask Demon, Absorb Essence, Transform, Phantasm, Melt into Mist, Dissolve Spell, Protection from Magic, Peace with Nature, Control Bats, Whistle for Monsters, Remedy, Poison, ?Guide Beast, ?Deal with Orcs and Goblins
+Super Realm: Treasures (modified base game treasures, see 1.1a: Seven League Boots, Power Gauntles, Phantom Glass, Map of Ruins, Lost Keys, Dragon Essence, Crystal Ball, Chest, Book of Nature, Book of Alchemy, Ancient Telescope, Amulet
 Super Realm: adapt chits colors for "Color chits" option (or disable it for Super Realm) for monsters and natives
 Super Realm: adapt setup with spells and treasures
 
