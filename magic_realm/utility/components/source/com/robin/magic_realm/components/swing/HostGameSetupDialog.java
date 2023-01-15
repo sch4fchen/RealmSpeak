@@ -1279,6 +1279,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.OPT_PARRY,true);
 		optionPane.setOption(Constants.OPT_SR_STEEL_AGAINST_MAGIC,true);
 		optionPane.setOption(Constants.EXP_CUSTOM_CHARS,true);
+		optionPane.setOption(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE,true);
 		optionPane.setOption(Constants.HOUSE3_DEDUCT_VPS,true);
 		optionPane.setOption(Constants.HOUSE1_CHIT_REMAIN_FACE_UP,true);
 		optionPane.setOption(Constants.RANDOM_ON_THE_FLY,true);

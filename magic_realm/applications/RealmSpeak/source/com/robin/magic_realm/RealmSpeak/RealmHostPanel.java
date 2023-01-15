@@ -469,6 +469,12 @@ public class RealmHostPanel extends JPanel {
 				if (monsterDieRoller.getNumberOfDice()>1) {
 					SetupCardUtility.resetDenizens(host.getGameData(), monsterDieRoller.getValue(1));
 				}
+				if (hostPrefs.usesSuperRealm()) {
+					SetupCardUtility.resetNatives(host.getGameData(), nativeDieRoller.getValue(0));
+					if (nativeDieRoller.getNumberOfDice()>1) {
+						SetupCardUtility.resetNatives(host.getGameData(), nativeDieRoller.getValue(1));
+					}
+				}
 			}
 
 			// Figure out who is following who, and determine which characters actually get to move here

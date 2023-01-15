@@ -856,6 +856,66 @@ public class SetupCardUtility {
 		}
 	}
 	
+	/**
+	 * All natives for the given native die are returned to the Chart of Clans
+	 */
+	public static void resetNatives(GameData data,int nativeDie) {
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
+		GameWrapper game = GameWrapper.findGame(data);
+		GamePool pool = new GamePool(data.getGameObjects());
+		
+		ArrayList<String> keyVals = new ArrayList<>();
+		keyVals.add(hostPrefs.getGameKeyVals());
+		keyVals.add("native_die="+nativeDie);
+		keyVals.add("setup_start"); // this should get all monsters and natives
+		keyVals.add("clearing"); // this identifies those that are on tiles
+		keyVals.add("!"+RealmComponent.OWNER_ID); // this identifies unhired natives
+		Collection<GameObject> returning = pool.extract(keyVals);
+		keyVals = new ArrayList<>();
+		keyVals.add(hostPrefs.getGameKeyVals());
+		keyVals.add("native_die2="+nativeDie);
+		keyVals.add("setup_start");
+		keyVals.add("clearing");
+		keyVals.add("!"+RealmComponent.OWNER_ID);
+		returning.addAll(pool.extract(keyVals));
+		
+		keyVals = new ArrayList<>();
+		keyVals.add(hostPrefs.getGameKeyVals());
+		keyVals.add("native_die="+nativeDie);
+		keyVals.add("setup_start"); // this should get all monsters and natives
+		keyVals.add("needs_init"); // this identifies those that need to initialized (start of game)
+		returning.addAll(pool.extract(keyVals));
+		keyVals = new ArrayList<>();
+		keyVals.add(hostPrefs.getGameKeyVals());
+		keyVals.add("native_die2="+nativeDie);
+		keyVals.add("setup_start");
+		keyVals.add("needs_init");
+		returning.addAll(pool.extract(keyVals));
+		
+		keyVals = new ArrayList<>();
+		keyVals.add(hostPrefs.getGameKeyVals());
+		keyVals.add("native_die="+nativeDie);
+		keyVals.add("setup_start"); // this should get all monsters and natives
+		keyVals.add(Constants.DEAD); // this identifies those that are DEAD
+		returning.addAll(pool.extract(keyVals));
+		keyVals = new ArrayList<>();
+		keyVals.add(hostPrefs.getGameKeyVals());
+		keyVals.add("native_die2="+nativeDie);
+		keyVals.add("setup_start");
+		keyVals.add(Constants.DEAD);
+		returning.addAll(pool.extract(keyVals));
+				
+		if (!returning.isEmpty()) {
+			GameClient.broadcastClient("host","7th day - natives return to the Chart of Clans:");
+		}
+		
+		for (GameObject denizen : returning) {
+			GameClient.broadcastClient("host"," - "+denizen.getName());
+			game.addRegeneratedDenizen(denizen);
+			resetDenizen(denizen);
+		}
+	}
+	
 	private static void flipGoldSpecialChits(HostPrefWrapper hostPrefs,GamePool pool,int monsterDie) {
 		ArrayList<String> keyVals = new ArrayList<>();
 		keyVals.add(hostPrefs.getGameKeyVals());
@@ -941,6 +1001,9 @@ public class SetupCardUtility {
 	public static void resetAllTreasureLocationDenizens(GameData data) {
 		for (int i=1;i<=6;i++) {
 			resetDenizens(data,i);
+		}
+		for (int i=1;i<=6;i++) {
+			resetNatives(data,i);
 		}
 	}
 
