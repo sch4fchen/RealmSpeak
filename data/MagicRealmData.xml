@@ -42503,7 +42503,6 @@
     </GameObject>
     <GameObject id="1594" name="Company Box">
       <AttributeBlock blockName="this">
-        <attribute original_game="" />
         <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
@@ -42512,8 +42511,7 @@
         <attribute gold_special_target="" />
         <attribute summon_n="company" />
         <attribute summon="company" />
-        <attribute alt_monsters1_game="" />
-        <attribute rw_expansion_1="" />
+        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1595" name="Company Dwelling">
@@ -42763,7 +42761,7 @@
         <attribute icon_type="short_swordsman_c" />
         <attribute setup_start="Company Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives" />
+        <attribute icon_folder="natives_c" />
         <attribute commerce="N" />
         <attribute denizen="" />
         <attribute super_realm="" />
@@ -43108,11 +43106,11 @@
         <attribute base_price="1" />
         <attribute vulnerability="M" />
         <attribute rank="HQ" />
-        <attribute icon_type="assassin" />
+        <attribute icon_type="assassin_r" />
         <attribute setup_start="Inn" />
         <attribute hire_type="single" />
         <attribute garrison="" />
-        <attribute icon_folder="natives" />
+        <attribute icon_folder="natives_c" />
         <attribute commerce="N" />
         <attribute denizen="" />
         <attribute super_realm="" />
