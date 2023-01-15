@@ -42086,6 +42086,12 @@
         <attribute native_die="3" />
         <attribute clan="3" />
       </AttributeBlock>
+      <contains id="1582" />
+      <contains id="1583" />
+      <contains id="1584" />
+      <contains id="1585" />
+      <contains id="1586" />
+      <contains id="1587" />
     </GameObject>
     <GameObject id="1582" name="Bashkar 1">
       <AttributeBlock blockName="this">
@@ -42321,6 +42327,13 @@
         <attribute virtual_dwelling="" />
         <attribute super_realm="" />
       </AttributeBlock>
+      <contains id="1590" />
+      <contains id="1591" />
+      <contains id="1592" />
+      <contains id="1593" />
+      <contains id="1594" />
+      <contains id="1595" />
+      <contains id="1596" />
     </GameObject>
     <GameObject id="1590" name="Company 1">
       <AttributeBlock blockName="this">

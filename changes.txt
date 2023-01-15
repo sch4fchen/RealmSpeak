@@ -1,5 +1,5 @@
 ::ROADMAP::
-Super Realm: Natives
+Super Realm: Natives: Guard, Order, Woodfolk, Lancers, Baschkars, Company, Rouges
 Super Realm: option for including exp1 spells and vice versa, (tweaked treasures of vanilla: see 1.1a)
 Super Realm: Items incl. Horses
 Super Realm: Spells
