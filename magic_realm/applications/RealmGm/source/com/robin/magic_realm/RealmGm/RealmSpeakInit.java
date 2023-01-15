@@ -115,6 +115,12 @@ public class RealmSpeakInit {
 			prepExpansionSpells("upg_day_spells");
 			removeSpells("upg_swap_out");
 		}
+		if(hostPrefs.getIncludeExpansionTreasures()){
+			prepExpansionTreasures("rw_expansion_1");
+		}
+		if(hostPrefs.getIncludeSrTreasures()){
+			prepExpansionTreasures("super_realm");
+		}
 		if (hostPrefs.hasPref(Constants.OPT_POWER_OF_THE_PIT_ATTACK)) {
 			GamePool pool = new GamePool(data.getGameObjects());
 			ArrayList<GameObject> popSpells = pool.find("powerofthepit");
@@ -306,6 +312,13 @@ public class RealmSpeakInit {
 	private void prepExpansionSpells(String spellKey) {
 		GamePool pool = new GamePool(data.getGameObjects());
 		ArrayList<GameObject> expansionSpells = pool.find("spell," + spellKey);
+		for (GameObject go:expansionSpells) {
+			go.setThisKeyVals(hostPrefs.getGameKeyVals());
+		}
+	}
+	private void prepExpansionTreasures(String gameKey) {
+		GamePool pool = new GamePool(data.getGameObjects());
+		ArrayList<GameObject> expansionSpells = pool.find("!original_game,treasure," + gameKey);
 		for (GameObject go:expansionSpells) {
 			go.setThisKeyVals(hostPrefs.getGameKeyVals());
 		}

@@ -57,6 +57,8 @@ public class HostPrefWrapper extends GameObjectWrapper {
 	public static final String INCLUDE_NEW_SPELLS_2 = "inc_new_spells2";
 	public static final String INCLUDE_SR_SPELLS = "inc_sr_spells";
 	public static final String SWITCH_DAY_SPELLS = "upg_day_spells";
+	public static final String INCLUDE_EXPANSION_TREASURES = "inc_ex_treasures";
+	public static final String INCLUDE_SR_TREASURES = "inc_sr_treasures";
 //	public static final String REQ_VPS_PER_PLAYER = "rq_vps";
 	public static final String REQ_VPS_DISABLED = "rq_vps_off";
 	
@@ -162,6 +164,12 @@ public class HostPrefWrapper extends GameObjectWrapper {
 	}
 	public boolean getSwitchDaySpells() {
 		return getBoolean(SWITCH_DAY_SPELLS);
+	}
+	public boolean getIncludeExpansionTreasures() {
+		return getBoolean(INCLUDE_EXPANSION_TREASURES);
+	}
+	public boolean getIncludeSrTreasures() {
+		return getBoolean(INCLUDE_SR_TREASURES);
 	}
 	public boolean getMultiBoardEnabled() {
 		return getBoolean(ENABLE_MULTI_BOARD);
@@ -297,6 +305,12 @@ public class HostPrefWrapper extends GameObjectWrapper {
 	}
 	public void setSwitchDaySpells(boolean val) {
 		setBoolean(SWITCH_DAY_SPELLS, val);
+	}
+	public void setIncludeExpansionTreasures(boolean val) {
+		setBoolean(INCLUDE_EXPANSION_TREASURES, val);
+	}
+	public void setIncludeSrTreasures(boolean val) {
+		setBoolean(INCLUDE_SR_TREASURES, val);
 	}
 	public void setMultiBoardEnabled(boolean val) {
 		setBoolean(ENABLE_MULTI_BOARD,val);

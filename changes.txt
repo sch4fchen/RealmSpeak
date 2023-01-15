@@ -1,6 +1,5 @@
 ::ROADMAP::
 Super Realm: Natives
-Super Realm: option for including exp1 spells and vice versa, (tweaked treasures of vanilla: see 1.1a)
 Super Realm: Items incl. Horses
 Super Realm: Spells
 Super Realm: Treasures (tweaked treasures of vanilla: see 1.1a)
@@ -60,6 +59,7 @@ Feature Request - First Edition Optional Rule - Glory: When a character or his h
 Version 1.1.7.5
 NEW FEATURES:
 # Option to include spells of Super Realm
+# Option to include treasures of Expansion 1 and Super Realm
 
 Version 1.1.7.4
 BUGS/ISSUES:

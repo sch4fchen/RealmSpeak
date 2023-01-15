@@ -308,6 +308,12 @@ public class BattleBuilder extends JFrame {
 					prepExpansionSpells("upg_day_spells", gameData);
 					removeSpells("upg_swap_out", gameData);
 				}
+				if(hostPrefs.getIncludeExpansionTreasures()){
+					prepExpansionTreasures("rw_expansion_1", gameData);
+				}
+				if(hostPrefs.getIncludeSrTreasures()){
+					prepExpansionTreasures("super_realm", gameData);
+				}
 				if (hostPrefs.hasPref(Constants.OPT_POWER_OF_THE_PIT_ATTACK)) {
 					GamePool pool = new GamePool(gameData.getGameObjects());
 					ArrayList<GameObject> popSpells = pool.find("powerofthepit");
@@ -390,6 +396,13 @@ public class BattleBuilder extends JFrame {
 		for (GameObject go:toRemove) {
 			go.stripThisKeyVals(hostPrefs.getGameKeyVals());
 		}	
+	}
+	private void prepExpansionTreasures(String gameKey, GameData data) {
+		GamePool pool = new GamePool(data.getGameObjects());
+		ArrayList<GameObject> expansionSpells = pool.find("!original_game,treasure," + gameKey);
+		for (GameObject go:expansionSpells) {
+			go.setThisKeyVals(hostPrefs.getGameKeyVals());
+		}
 	}
 	private boolean setupBuilderWithData() {
 		// Fetch battleClearing

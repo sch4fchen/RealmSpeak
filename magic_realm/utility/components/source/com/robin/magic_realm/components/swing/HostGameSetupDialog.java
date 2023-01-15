@@ -109,6 +109,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	protected JCheckBox includeNewSpells2;
 	protected JCheckBox includeSrSpells;
 	protected JCheckBox switchDaySpells;
+	protected JCheckBox includeExpansionTreasures;
+	protected JCheckBox includeSrTreasures;
 	
 	protected JCheckBox multiBoardEnabled;
 	protected JSlider multiBoardCount;
@@ -151,6 +153,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		includeNewSpells2.setSelected(hostPrefs.getIncludeNewSpells2());
 		includeSrSpells.setSelected(hostPrefs.getIncludeSrSpells());
 		switchDaySpells.setSelected(hostPrefs.getSwitchDaySpells());
+		includeExpansionTreasures.setSelected(hostPrefs.getIncludeExpansionTreasures());
+		includeSrTreasures.setSelected(hostPrefs.getIncludeSrTreasures());
 		multiBoardEnabled.setSelected(hostPrefs.getMultiBoardEnabled());
 		multiBoardCount.setValue(hostPrefs.getMultiBoardCount());
 		minMapRating.setValue(hostPrefs.getMinimumMapRating());
@@ -230,6 +234,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		includeNewSpells2.setSelected(prefMan.getBoolean("includeNewSpells2"));
 		includeSrSpells.setSelected(prefMan.getBoolean("includeSrSpells"));
 		switchDaySpells.setSelected(prefMan.getBoolean("switchDaySpells"));
+		includeExpansionTreasures.setSelected(prefMan.getBoolean("includeExpansionTreasures"));
+		includeSrTreasures.setSelected(prefMan.getBoolean("includeSrTreasures"));
 		
 		multiBoardEnabled.setSelected(prefMan.getBoolean("multiBoardEnabled"));
 		multiBoardCount.setValue(prefMan.getInt("multiBoardCount"));
@@ -291,6 +297,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		prefMan.set("includeNewSpells2", includeNewSpells2.isSelected());
 		prefMan.set("includeSrSpells", includeSrSpells.isSelected());
 		prefMan.set("switchDaySpells", switchDaySpells.isSelected());
+		prefMan.set("includeExpansionTreasures", includeExpansionTreasures.isSelected());
+		prefMan.set("includeSrTreasures", includeSrTreasures.isSelected());
 		prefMan.set("multiBoardEnabled",multiBoardEnabled.isSelected());
 		prefMan.set("multiBoardCount",multiBoardCount.getValue());
 		prefMan.set("minMapRating",minMapRating.getValue());
@@ -405,6 +413,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		includeNewSpells2.setEnabled(editMode && variant.getAllowAdditionalContent());
 		includeSrSpells.setEnabled(editMode && variant.getAllowSrContent());
 		switchDaySpells.setEnabled(editMode && variant.getAllowAdditionalContent());
+		includeExpansionTreasures.setEnabled(editMode && variant.getAllowExp1Content());
+		includeSrTreasures.setEnabled(editMode && variant.getAllowSrContent());
 		multiBoardEnabled.setEnabled(editMode && variant.getAllowMultiBoardAndAlternativeTiles());
 		multiBoardCount.setEnabled(editMode && variant.getAllowMultiBoardAndAlternativeTiles());
 		minMapRating.setEnabled(editMode && boardAutoSetup.isSelected());
@@ -414,7 +424,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	}
 	private void initComponents() {
 		setIconImage(IconFactory.findIcon("images/interface/options.gif").getImage());
-		setSize(1080,820);
+		setSize(1080,900);
 		setLocationRelativeTo(null);
 		setModal(true);
 		
@@ -826,56 +836,57 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			box.add(boardAutoSetup);
 				minMapRating = notifier.getSlider(0,5,0);
 			box.add(Box.createHorizontalGlue());
-			
 		boardSetupBox.add(box);
 			box = group.createLabelLine("Player Pick");
 				boardPlayerSetup = notifier.getRadioButton("(Players build map)");
 				boardSetupOptions.add(boardPlayerSetup);
 			box.add(boardPlayerSetup);
 			box.add(Box.createHorizontalGlue());
-			
 		boardSetupBox.add(box);
 			box = group.createLabelLine("Alternative Tiles");
 				alternativeTilesEnabled = notifier.getCheckBox("");
 			box.add(alternativeTilesEnabled);
 			box.add(Box.createHorizontalGlue());
-			
 		boardSetupBox.add(box);
 			box = group.createLabelLine("Expansion Tiles");
 				mixExpansionTilesEnabled = notifier.getCheckBox("(randomly mixed)");
 			box.add(mixExpansionTilesEnabled);
 			box.add(Box.createHorizontalGlue());
-			
 		boardSetupBox.add(box);
 			box = group.createLabelLine("Expansion Spells");
 				includeExpansionSpells = notifier.getCheckBox("");
 			box.add(includeExpansionSpells);
 			box.add(Box.createHorizontalGlue());
-			
-			boardSetupBox.add(box);
+		boardSetupBox.add(box);
 			box = group.createLabelLine("More Expansion Spells");
 				includeNewSpells2 = notifier.getCheckBox("");
 			box.add(includeNewSpells2);
 			box.add(Box.createHorizontalGlue());
-			
 		boardSetupBox.add(box);
 			box = group.createLabelLine("New Spells");
 				includeNewSpells = notifier.getCheckBox("");
 			box.add(includeNewSpells);
 			box.add(Box.createHorizontalGlue());
-			
-			boardSetupBox.add(box);
+		boardSetupBox.add(box);
 			box = group.createLabelLine("Super Realm Spells");
 				includeSrSpells = notifier.getCheckBox("");
 			box.add(includeSrSpells);
 			box.add(Box.createHorizontalGlue());
-			
 		boardSetupBox.add(box);
 			box = group.createLabelLine("Upgrade Day Spells");
 				switchDaySpells = notifier.getCheckBox("");
 			box.add(switchDaySpells);
-			box.add(Box.createHorizontalGlue());				
-			
+			box.add(Box.createHorizontalGlue());
+		boardSetupBox.add(box);
+			box = group.createLabelLine("Expansion Treasures");
+				includeExpansionTreasures = notifier.getCheckBox("");
+			box.add(includeExpansionTreasures);
+			box.add(Box.createHorizontalGlue());
+		boardSetupBox.add(box);
+			box = group.createLabelLine("Super Realm Treasures");
+				includeSrTreasures = notifier.getCheckBox("");
+			box.add(includeSrTreasures);
+			box.add(Box.createHorizontalGlue());
 		boardSetupBox.add(box);
 			box = group.createLabelLine("Multiple Boards");
 				multiBoardEnabled = notifier.getCheckBox("");
@@ -895,7 +906,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			box.add(multiBoardCount);
 			box.add(Box.createHorizontalGlue());
 		boardSetupBox.add(box);
-		boardSetupBox.setBorder(BorderFactory.createTitledBorder("Board Setup Options"));
+		boardSetupBox.setBorder(BorderFactory.createTitledBorder("Board and Content Options"));
 		return boardSetupBox;
 	}
 	private Box buildGamePlayBox(UniformLabelGroup group) {
@@ -1204,6 +1215,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		includeNewSpells2.setSelected(false);
 		includeSrSpells.setSelected(false);
 		switchDaySpells.setSelected(false);
+		includeExpansionTreasures.setSelected(false);
+		includeSrTreasures.setSelected(false);
 		multiBoardEnabled.setSelected(false);
 		multiBoardCount.setValue(2);
 		minMapRating.setValue(0);
@@ -1363,6 +1376,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		hostPrefs.setIncludeNewSpells2(includeNewSpells2.isSelected() && getSelectedGameVariant().getAllowAdditionalContent());
 		hostPrefs.setIncludeSrSpells(includeSrSpells.isSelected() && getSelectedGameVariant().getAllowSrContent());
 		hostPrefs.setSwitchDaySpells(switchDaySpells.isSelected() && getSelectedGameVariant().getAllowAdditionalContent());
+		hostPrefs.setIncludeExpansionTreasures(includeExpansionTreasures.isSelected() && getSelectedGameVariant().getAllowExp1Content());
+		hostPrefs.setIncludeSrTreasures(includeSrTreasures.isSelected() && getSelectedGameVariant().getAllowSrContent());
 		hostPrefs.setMultiBoardEnabled(multiBoardEnabled.isSelected() && getSelectedGameVariant().getAllowMultiBoardAndAlternativeTiles());
 		if (getSelectedGameVariant().getAllowMultiBoardAndAlternativeTiles()) {
 			hostPrefs.setMultiBoardCount(multiBoardCount.getValue());
