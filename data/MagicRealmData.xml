@@ -42894,6 +42894,18 @@
         <attribute aborigines="-1" />
         <attribute summoners="-1" />
       </AttributeBlock>
+      <contains id="1621" />
+      <contains id="1622" />
+      <contains id="1623" />
+      <contains id="1624" />
+      <contains id="1625" />
+      <contains id="1626" />
+      <contains id="1627" />
+      <contains id="1628" />
+      <contains id="1629" />
+      <contains id="1630" />
+      <contains id="1631" />
+      <contains id="1632" />
     </GameObject>
     <GameObject id="1606" name="Witch King">
       <AttributeBlock blockName="this">
@@ -42967,6 +42979,18 @@
         <attribute mages="-1" />
         <attribute zealots="-1" />
       </AttributeBlock>
+      <contains id="1801" />
+      <contains id="1802" />
+      <contains id="1803" />
+      <contains id="1804" />
+      <contains id="1805" />
+      <contains id="1806" />
+      <contains id="1807" />
+      <contains id="1808" />
+      <contains id="1809" />
+      <contains id="1810" />
+      <contains id="1811" />
+      <contains id="1812" />
     </GameObject>
     <GameObject id="1607" name="Berserker">
       <AttributeBlock blockName="this">
@@ -43021,6 +43045,18 @@
         <attribute bandits="1" />
         <attribute peasants="-1" />
       </AttributeBlock>
+      <contains id="1789" />
+      <contains id="1790" />
+      <contains id="1791" />
+      <contains id="1792" />
+      <contains id="1793" />
+      <contains id="1794" />
+      <contains id="1795" />
+      <contains id="1796" />
+      <contains id="1797" />
+      <contains id="1798" />
+      <contains id="1799" />
+      <contains id="1800" />
     </GameObject>
     <GameObject id="1608" name="White Knight">
       <AttributeBlock blockName="this">
@@ -43082,12 +43118,23 @@
         <attribute order="2" />
         <attribute lancers="1" />
         <attribute bashkars="-1" />
-        <attribute crone="-1" />
         <attribute company="-2" />
         <attribute zealots="1" />
         <attribute priest="1" />
         <attribute coven="-1" />
       </AttributeBlock>
+      <contains id="1777" />
+      <contains id="1778" />
+      <contains id="1779" />
+      <contains id="1780" />
+      <contains id="1781" />
+      <contains id="1782" />
+      <contains id="1783" />
+      <contains id="1784" />
+      <contains id="1785" />
+      <contains id="1786" />
+      <contains id="1787" />
+      <contains id="1788" />
     </GameObject>
     <GameObject id="1609" name="Druid">
       <AttributeBlock blockName="this">
@@ -43159,6 +43206,18 @@
         <attribute pagans="1" />
         <attribute hunters="-1" />
       </AttributeBlock>
+      <contains id="1765" />
+      <contains id="1766" />
+      <contains id="1767" />
+      <contains id="1768" />
+      <contains id="1769" />
+      <contains id="1770" />
+      <contains id="1771" />
+      <contains id="1772" />
+      <contains id="1773" />
+      <contains id="1774" />
+      <contains id="1775" />
+      <contains id="1776" />
     </GameObject>
     <GameObject id="1610" name="Pilgrim">
       <AttributeBlock blockName="this">
@@ -43222,6 +43281,18 @@
         <attribute zealots="1" />
         <attribute coven="-1" />
       </AttributeBlock>
+      <contains id="1753" />
+      <contains id="1754" />
+      <contains id="1755" />
+      <contains id="1756" />
+      <contains id="1757" />
+      <contains id="1758" />
+      <contains id="1759" />
+      <contains id="1760" />
+      <contains id="1761" />
+      <contains id="1762" />
+      <contains id="1763" />
+      <contains id="1764" />
     </GameObject>
     <GameObject id="1611" name="Witch">
       <AttributeBlock blockName="this">
@@ -43289,6 +43360,18 @@
         <attribute pagans="1" />
         <attribute zealots="-2" />
       </AttributeBlock>
+      <contains id="1741" />
+      <contains id="1742" />
+      <contains id="1743" />
+      <contains id="1744" />
+      <contains id="1745" />
+      <contains id="1746" />
+      <contains id="1747" />
+      <contains id="1748" />
+      <contains id="1749" />
+      <contains id="1750" />
+      <contains id="1751" />
+      <contains id="1752" />
     </GameObject>
     <GameObject id="1612" name="Dwarf">
       <AttributeBlock blockName="this">
@@ -43339,13 +43422,24 @@
       <AttributeBlock blockName="relationship">
         <attribute company="1" />
         <attribute guard="1" />
-        <attribute scholar="1" />
         <attribute woodfolk="-1" />
         <attribute bashkars="-1" />
         <attribute dwarves="1" />
         <attribute aborigines="-1" />
         <attribute priest="-1" />
       </AttributeBlock>
+      <contains id="1729" />
+      <contains id="1730" />
+      <contains id="1731" />
+      <contains id="1732" />
+      <contains id="1733" />
+      <contains id="1734" />
+      <contains id="1735" />
+      <contains id="1736" />
+      <contains id="1737" />
+      <contains id="1738" />
+      <contains id="1739" />
+      <contains id="1740" />
     </GameObject>
     <GameObject id="1613" name="Elf">
       <AttributeBlock blockName="this">
@@ -43420,6 +43514,18 @@
         <attribute hunters="-1" />
         <attribute pagans="-1" />
       </AttributeBlock>
+      <contains id="1717" />
+      <contains id="1718" />
+      <contains id="1719" />
+      <contains id="1720" />
+      <contains id="1721" />
+      <contains id="1722" />
+      <contains id="1723" />
+      <contains id="1724" />
+      <contains id="1725" />
+      <contains id="1726" />
+      <contains id="1727" />
+      <contains id="1728" />
     </GameObject>
     <GameObject id="1614" name="Sorceror">
       <AttributeBlock blockName="this">
@@ -43485,6 +43591,18 @@
         <attribute mages="1" />
         <attribute conjurors="-1" />
       </AttributeBlock>
+      <contains id="1705" />
+      <contains id="1706" />
+      <contains id="1707" />
+      <contains id="1708" />
+      <contains id="1709" />
+      <contains id="1710" />
+      <contains id="1711" />
+      <contains id="1712" />
+      <contains id="1713" />
+      <contains id="1714" />
+      <contains id="1715" />
+      <contains id="1716" />
     </GameObject>
     <GameObject id="1615" name="Black Knight">
       <AttributeBlock blockName="this">
@@ -43537,13 +43655,24 @@
       <AttributeBlock blockName="relationship">
         <attribute company="2" />
         <attribute soldiers="1" />
-        <attribute crone="1" />
         <attribute lancers="-1" />
         <attribute guard="-2" />
         <attribute dwarves="1" />
         <attribute hunters="-1" />
         <attribute merchant="-1" />
       </AttributeBlock>
+      <contains id="1693" />
+      <contains id="1694" />
+      <contains id="1695" />
+      <contains id="1696" />
+      <contains id="1697" />
+      <contains id="1698" />
+      <contains id="1699" />
+      <contains id="1700" />
+      <contains id="1701" />
+      <contains id="1702" />
+      <contains id="1703" />
+      <contains id="1704" />
     </GameObject>
     <GameObject id="1616" name="Magician">
       <AttributeBlock blockName="this">
@@ -43621,6 +43750,18 @@
         <attribute enchanters="2" />
         <attribute pagans="-2" />
       </AttributeBlock>
+      <contains id="1681" />
+      <contains id="1682" />
+      <contains id="1683" />
+      <contains id="1684" />
+      <contains id="1685" />
+      <contains id="1686" />
+      <contains id="1687" />
+      <contains id="1688" />
+      <contains id="1689" />
+      <contains id="1690" />
+      <contains id="1691" />
+      <contains id="1692" />
     </GameObject>
     <GameObject id="1617" name="Wizard">
       <AttributeBlock blockName="this">
@@ -43698,6 +43839,19 @@
         <attribute enchanters="2" />
         <attribute aborigines="-2" />
       </AttributeBlock>
+      <contains id="1669" />
+      <contains id="1670" />
+      <contains id="1671" />
+      <contains id="1672" />
+      <contains id="1673" />
+      <contains id="1674" />
+      <contains id="1675" />
+      <contains id="1676" />
+      <contains id="1677" />
+      <contains id="1678" />
+      <contains id="1679" />
+      <contains id="1680" />
+      <contains id="1813" />
     </GameObject>
     <GameObject id="1618" name="Captain">
       <AttributeBlock blockName="this">
@@ -43757,13 +43911,24 @@
         <attribute patrol="1" />
         <attribute soldiers="1" />
         <attribute guard="1" />
-        <attribute scholar="1" />
         <attribute woodfolk="-1" />
         <attribute bashkars="-2" />
         <attribute enchanters="1" />
         <attribute aborigines="-1" />
         <attribute merchant="-1" />
       </AttributeBlock>
+      <contains id="1657" />
+      <contains id="1658" />
+      <contains id="1659" />
+      <contains id="1660" />
+      <contains id="1661" />
+      <contains id="1662" />
+      <contains id="1663" />
+      <contains id="1664" />
+      <contains id="1665" />
+      <contains id="1666" />
+      <contains id="1667" />
+      <contains id="1668" />
     </GameObject>
     <GameObject id="1619" name="Amazon">
       <AttributeBlock blockName="this">
@@ -43814,13 +43979,24 @@
       <AttributeBlock blockName="relationship">
         <attribute lancers="1" />
         <attribute patrol="1" />
-        <attribute shaman="1" />
         <attribute company="-1" />
         <attribute bashkars="-1" />
         <attribute mages="1" />
         <attribute merchant="1" />
         <attribute peasants="-1" />
       </AttributeBlock>
+      <contains id="1645" />
+      <contains id="1646" />
+      <contains id="1647" />
+      <contains id="1648" />
+      <contains id="1649" />
+      <contains id="1650" />
+      <contains id="1651" />
+      <contains id="1652" />
+      <contains id="1653" />
+      <contains id="1654" />
+      <contains id="1655" />
+      <contains id="1656" />
     </GameObject>
     <GameObject id="1620" name="Swordsman">
       <AttributeBlock blockName="this">
@@ -43869,6 +44045,18 @@
         <attribute aborigines="1" />
         <attribute hunters="-1" />
       </AttributeBlock>
+      <contains id="1633" />
+      <contains id="1634" />
+      <contains id="1635" />
+      <contains id="1636" />
+      <contains id="1637" />
+      <contains id="1638" />
+      <contains id="1639" />
+      <contains id="1640" />
+      <contains id="1641" />
+      <contains id="1642" />
+      <contains id="1643" />
+      <contains id="1644" />
     </GameObject>
     <GameObject id="1621" name="Woodsgirl Move L3*">
       <AttributeBlock blockName="this">
