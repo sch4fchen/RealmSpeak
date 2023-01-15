@@ -394,14 +394,14 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		autosaveEnabled.setEnabled(editMode);
 		boardAutoSetup.setEnabled(editMode);
 		boardPlayerSetup.setEnabled(editMode);
-		alternativeTilesEnabled.setEnabled(editMode && variant.getAllowAdditionalContent());
-		mixExpansionTilesEnabled.setEnabled(editMode && variant.getAllowExp1Content());
+		alternativeTilesEnabled.setEnabled(editMode && variant.getAllowMultiBoardAndAlternativeTiles());
+		mixExpansionTilesEnabled.setEnabled(editMode && variant.getAllowExp1Tiles());
 		includeExpansionSpells.setEnabled(editMode && variant.getAllowExp1Content());
 		includeNewSpells.setEnabled(editMode && variant.getAllowAdditionalContent());
 		includeNewSpells2.setEnabled(editMode && variant.getAllowAdditionalContent());
 		switchDaySpells.setEnabled(editMode && variant.getAllowAdditionalContent());
-		multiBoardEnabled.setEnabled(editMode && variant.getAllowAdditionalContent());
-		multiBoardCount.setEnabled(editMode && variant.getAllowAdditionalContent());
+		multiBoardEnabled.setEnabled(editMode && variant.getAllowMultiBoardAndAlternativeTiles());
+		multiBoardCount.setEnabled(editMode && variant.getAllowMultiBoardAndAlternativeTiles());
 		minMapRating.setEnabled(editMode && boardAutoSetup.isSelected());
 		defaultButton.setEnabled(editMode);
 		startingSeason.setEnabled(editMode);
@@ -1344,14 +1344,14 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		hostPrefs.setAutosaveEnabled(autosaveEnabled.isSelected());
 		hostPrefs.setBoardAutoSetup(boardAutoSetup.isSelected());
 		hostPrefs.setBoardPlayerSetup(boardPlayerSetup.isSelected());
-		hostPrefs.setAlternativeTilesEnabled(alternativeTilesEnabled.isSelected() && getSelectedGameVariant().getAllowAdditionalContent());
-		hostPrefs.setMixExpansionTilesEnabled(mixExpansionTilesEnabled.isSelected() && getSelectedGameVariant().getAllowExp1Content());
+		hostPrefs.setAlternativeTilesEnabled(alternativeTilesEnabled.isSelected() && getSelectedGameVariant().getAllowMultiBoardAndAlternativeTiles());
+		hostPrefs.setMixExpansionTilesEnabled(mixExpansionTilesEnabled.isSelected() && getSelectedGameVariant().getAllowExp1Tiles());
 		hostPrefs.setIncludeExpansionSpells(includeExpansionSpells.isSelected() && getSelectedGameVariant().getAllowExp1Content());
 		hostPrefs.setIncludeNewSpells(includeNewSpells.isSelected() && getSelectedGameVariant().getAllowAdditionalContent());
 		hostPrefs.setIncludeNewSpells2(includeNewSpells2.isSelected() && getSelectedGameVariant().getAllowAdditionalContent());
 		hostPrefs.setSwitchDaySpells(switchDaySpells.isSelected() && getSelectedGameVariant().getAllowAdditionalContent());
-		hostPrefs.setMultiBoardEnabled(multiBoardEnabled.isSelected() && getSelectedGameVariant().getAllowAdditionalContent());
-		if (getSelectedGameVariant().getAllowAdditionalContent()) {
+		hostPrefs.setMultiBoardEnabled(multiBoardEnabled.isSelected() && getSelectedGameVariant().getAllowMultiBoardAndAlternativeTiles());
+		if (getSelectedGameVariant().getAllowMultiBoardAndAlternativeTiles()) {
 			hostPrefs.setMultiBoardCount(multiBoardCount.getValue());
 		}
 		hostPrefs.setMinimumMapRating(boardAutoSetup.isSelected()?minMapRating.getValue():0);
