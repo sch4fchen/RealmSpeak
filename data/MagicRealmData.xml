@@ -34223,6 +34223,16 @@
         <attribute ts_color="tan" />
         <attribute icon_folder="dwellings" />
       </AttributeBlock>
+      <contains id="1603" />
+      <contains id="1604" />
+      <contains id="1605" />
+      <contains id="1606" />
+      <contains id="1607" />
+      <contains id="1608" />
+      <contains id="1609" />
+      <contains id="1610" />
+      <contains id="1611" />
+      <contains id="1612" />
     </GameObject>
     <GameObject id="1282" name="Chapel">
       <AttributeBlock blockName="this">
