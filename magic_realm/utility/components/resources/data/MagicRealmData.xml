@@ -47567,12 +47567,12 @@
       <Extract from="ALL" to="H_TILES" keyVals="tile_type=H,tile" />
       <Extract from="ALL" to="W_TILES" keyVals="tile_type=W,tile" />
       <Extract from="ALL" to="ST_TILES" keyVals="tile_type=ST,tile" />
-      <Create newPool="TWT" />
-      <Extract from="ALL" to="TWT" keyVals="treasure_within_treasure" />
+	  <Create newPool="TWT" />
+      <Extract from="ALL" to="TWT" keyVals="treasure_within_treasure,!traveler_item" />
       <Create newPool="LARGE_TREASURES" />
-      <Extract from="ALL" to="LARGE_TREASURES" keyVals="treasure=large" />
+      <Extract from="ALL" to="LARGE_TREASURES" keyVals="treasure=large,!traveler_item" />
       <Create newPool="SMALL_TREASURES" />
-      <Extract from="ALL" to="SMALL_TREASURES" keyVals="treasure=small" />
+      <Extract from="ALL" to="SMALL_TREASURES" keyVals="treasure=small,!traveler_item" />
       <Create newPool="TREASURE_POOL" />
       <Extract from="ALL" to="TREASURE_POOL" keyVals="sound,chit" />
       <Extract from="ALL" to="TREASURE_POOL" keyVals="treasure_location" />
