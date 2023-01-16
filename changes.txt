@@ -5,18 +5,18 @@ Super Realm: Items incl. Horses
 Super Realm: Spells (modified base game spells: Exorcise, Fog, Elven Grace, Violent Storm, Ligthning Bolt, Hurricane Winds, Pentangle, Broomstick, Ask Demon, Absorb Essence, Transform, Phantasm, Melt into Mist, Dissolve Spell, Protection from Magic, Peace with Nature, Control Bats, Whistle for Monsters, Remedy, Poison, ?Guide Beast, ?Deal with Orcs and Goblins
 Super Realm: Treasures (modified base game treasures, see 1.1a: Seven League Boots, Power Gauntles, Phantom Glass, Map of Ruins, Lost Keys, Dragon Essence, Crystal Ball, Chest, Book of Nature, Book of Alchemy, Ancient Telescope, Amulet
 Super Realm: adapt setup with spells and treasures
+Super Realm: Setup Charts, in order: small, large treasures, spells, monsters; dwellings: spells, horses, armor, weapons, helmets, shields, breastplates (large counters below small counters); spells: higher numbers below lower numbers; travellers go to nattive boxes
 
 Super Realm: rules for minotaur shield
 Super Realm: rules for special monster attacks and change tactics (Spear and Bow Goblins, Bow Skeletons, Demon, Winged Demon, Imp, Vampire, Succubus, and Devil): p.98
 Super Realm: rules for special native attacks and native casters: Natives Casters (p. 89)
 Super Realm: rules for clans 4.7 (p. 41)
+
 Super Realm: Visitor/Travelers=Nomads/Missions/Campaigns/Tasks (incl. for seasons); Travelers: 4.8 (p.41)
 Super Realm: Quests + Events
-Super Realm: Setup Charts, in order: small, large treasures, spells, monsters; dwellings: spells, horses, armor, weapons, helmets, shields, breastplates (large counters below small counters); spells: higher numbers below lower numbers; travellers go to nattive boxes
 Super Realm: rules for max. strength attack
 Super Realm: rules for items/treasures: purple (or other) magic color provided: additional sharpness/vulnerability until midnight
 Super Realm: Regeneration: start of a new month (not 7th day), all un-hired denizens (4.10, p. 42)
-Super Realm: natives: rules for new native attacks and spells
 Super Realm: alternative image if native has an horse
 Super Realm: Adapt Commerce optional rules for new natives
 Super Realm: Characters (incl. overview in the Menu like for basic MR and custom characters)

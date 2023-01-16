@@ -167,6 +167,15 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		// Draw image
 		String icon_type = gameObject.getThisAttribute(Constants.ICON_TYPE);
 		if (icon_type != null) {
+			if (gameObject.hasThisAttribute("super_realm")) {
+				NativeSteedChitComponent horse = (NativeSteedChitComponent)getHorse(false);
+				if (horse!=null) {
+					String icon_rider = gameObject.getThisAttribute(Constants.ICON_TYPE_RIDER);
+					if (icon_rider!=null) {
+						icon_type = icon_rider;
+					}
+				}
+			}
 			String iconDir = gameObject.getThisAttribute(Constants.ICON_FOLDER);
 			if (iconDir==null) {
 				iconDir = "natives";
@@ -177,6 +186,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 				}
 				iconDir = iconDir+"_c";
 			}
+
 			if (chitSize == T_CHIT_SIZE) {
 				drawIcon(g, iconDir, icon_type, 0.9);
 			}

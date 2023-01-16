@@ -135,6 +135,7 @@ public class Constants {
 	
 	// Used by RealmComponent ThisAttributes
 	public static final String ICON_TYPE = "icon_type";
+	public static final String ICON_TYPE_RIDER = "icon_type_rider";
 	public static final String ICON_FOLDER = "icon_folder";
 	public static final String SUMMONED_TODAY = "stdy_";// a flag to indicate a chit has summoned for today
 	public static final String ALWAYS_VISIBLE = "alwaysVisible";
