@@ -47237,6 +47237,36 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="1822" name="Altar Meadow Box">
+      <AttributeBlock blockName="this">
+        <attribute ts_section="natives" />
+        <attribute ts_size="S+" />
+        <attribute ts_color="gray" />
+        <attribute ts_draw_below="" />
+        <attribute ts_sort="6" />
+        <attribute gold_special_target="" />
+        <attribute summon_t="Enchanted Meadow" />
+        <attribute summon_tl="Altar" />
+        <attribute summon="enchanted_meadow,altar" />
+        <attribute super_realm="" />
+        <attribute native_die="6" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1823" name="Shrine Circle Box">
+      <AttributeBlock blockName="this">
+        <attribute ts_section="natives" />
+        <attribute ts_size="S+" />
+        <attribute ts_color="gray" />
+        <attribute ts_draw_below="" />
+        <attribute ts_sort="7" />
+        <attribute gold_special_target="" />
+        <attribute summon_t="Toadstool Circle" />
+        <attribute summon_tl="Shrine" />
+        <attribute summon="toadstool_circle,shrine" />
+        <attribute super_realm="" />
+        <attribute native_die="6" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
