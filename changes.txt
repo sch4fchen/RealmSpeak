@@ -1,4 +1,5 @@
 ::ROADMAP::
+---Content---
 Super Realm: Natives
 Super Realm: adapt chit colors for monsters and natives
 Super Realm: Items incl. Horses
@@ -6,14 +7,15 @@ Super Realm: Spells (modified base game spells: Exorcise, Fog, Elven Grace, Viol
 Super Realm: Treasures (modified base game treasures, see 1.1a: Seven League Boots, Power Gauntles, Phantom Glass, Map of Ruins, Lost Keys, Dragon Essence, Crystal Ball, Chest, Book of Nature, Book of Alchemy, Ancient Telescope, Amulet
 Super Realm: adapt setup with spells and treasures
 Super Realm: Setup Charts, in order: small, large treasures, spells, monsters; dwellings: spells, horses, armor, weapons, helmets, shields, breastplates (large counters below small counters); spells: higher numbers below lower numbers; travellers go to nattive boxes
-
+---Basic Functionalities for current content---
 Super Realm: rules for minotaur shield
 Super Realm: rules for special monster attacks and change tactics (Spear and Bow Goblins, Bow Skeletons, Demon, Winged Demon, Imp, Vampire, Succubus, and Devil): p.98
 Super Realm: rules for special native attacks and native casters: Natives Casters (p. 89)
 Super Realm: rules for clans 4.7 (p. 41)
-
+---More content incl. functionalities; graphics---
 Super Realm: Visitor/Travelers=Nomads/Missions/Campaigns/Tasks (incl. for seasons); Travelers: 4.8 (p.41)
 Super Realm: Quests + Events
+Super Realm: add optional icons (background) to treasures and spells?
 Super Realm: rules for max. strength attack
 Super Realm: rules for items/treasures: purple (or other) magic color provided: additional sharpness/vulnerability until midnight
 Super Realm: Regeneration: start of a new month (not 7th day), all un-hired denizens (4.10, p. 42)
@@ -22,6 +24,8 @@ Super Realm: Characters (incl. overview in the Menu like for basic MR and custom
 Super Realm: CompanionEditPanel: add all denizens
 Super Realm: RealmCharacterConstants (adapt ArmorEditDialog and WeaponEditDialog): dwellings, visitors
 Super Realm: update graphics (wesnoth? -> licence?) or opengameart.org
+---Rules---
+SUPER REALM: remaining RULES and LOGIC (chapter 4.2 p.27ff. -> chapter 9.1 p.110)
 Super Realm: Seasons + Weather 10.12 (p.117)
 Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
 3rdEdition / RealmSpeak: Optional Character Rules (A.6, p. 186): Captain, Druid, Magician, WIZARD ignores SPX, Woods Girl, Elf
@@ -31,6 +35,7 @@ Super Realm: Optional Rules: No discarding or drawing new quest cards
 Super Realm: Optional Rules: No duplicate spell recording at start of the game
 Super Realm: Optional Rules: Starting location always the Inn
 Super Realm: Public quests on setup chart (+flag on quests if it can go on setup chart)
+---Optional Rules---
 Book of Quests: quests of the book
 Super Realm: Missing logic for rule changes compared to Magic Realm
 Super Realm: Optional Rules: Severe wounds (SR: 10.1, p.114) = Serious Wounds, but wounds *2
@@ -52,7 +57,6 @@ Super Realm: Optional Rules: Easier Spell Learning (SR: 11.9, p.126)
 Super Realm: Optional Rules: Range Setup (SR: 11.0, p.126)
 Super Realm: Optional Rules: Commerce (SR: 11.12, p.126) - adapt e.g. rules for new native groups
 Super Realm: Optional Rules: Cornered (SR: 11.13, p.128)
-SUPER REALM: remaining RULES and LOGIC (chapter 4.2 p.27ff. -> chapter 9.1 p.110)
 Super Realm: Player building map: distribute tiles equally (including river tiles), distribute river tiles first, then grotto, then rest, each player has 3 tiles in the hand and draws after placing, skip player if he cannot place any tile (and he has no river tile), if all players are skipped or player would be skipped but has river tile, undo last placement, do not allow placing grotto before all other river tiles have been placed
 Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 
