@@ -34322,6 +34322,10 @@
         <attribute ts_color="tan" />
         <attribute icon_folder="dwellings" />
       </AttributeBlock>
+      <contains id="1839" />
+      <contains id="1840" />
+      <contains id="1841" />
+      <contains id="1842" />
     </GameObject>
     <GameObject id="1288" name="Cottage">
       <AttributeBlock blockName="this">
@@ -47776,6 +47780,226 @@
         <attribute strength="M" />
         <attribute length="9" />
         <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1839" name="Mage 1">
+      <AttributeBlock blockName="this">
+        <attribute native="Mages" />
+        <attribute fame="0" />
+        <attribute notoriety="5" />
+        <attribute base_price="4" />
+        <attribute vulnerability="M" />
+        <attribute rank="1" />
+        <attribute icon_type="assassin_r" />
+        <attribute setup_start="Settlement" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="3" />
+        <attribute clan="4" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="2" />
+        <attribute strength="M" />
+        <attribute length="13" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1843" />
+    </GameObject>
+    <GameObject id="1840" name="Mage 2">
+      <AttributeBlock blockName="this">
+        <attribute native="Mages" />
+        <attribute fame="0" />
+        <attribute notoriety="5" />
+        <attribute base_price="4" />
+        <attribute vulnerability="M" />
+        <attribute rank="2" />
+        <attribute icon_type="assassin_r" />
+        <attribute setup_start="Settlement" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="3" />
+        <attribute clan="4" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="2" />
+        <attribute strength="M" />
+        <attribute length="13" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1844" />
+    </GameObject>
+    <GameObject id="1841" name="Mage 3">
+      <AttributeBlock blockName="this">
+        <attribute native="Mages" />
+        <attribute fame="0" />
+        <attribute notoriety="5" />
+        <attribute base_price="4" />
+        <attribute vulnerability="M" />
+        <attribute rank="3" />
+        <attribute icon_type="assassin_r" />
+        <attribute setup_start="Settlement" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="3" />
+        <attribute clan="4" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="2" />
+        <attribute strength="M" />
+        <attribute length="13" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1845" />
+    </GameObject>
+    <GameObject id="1842" name="Mage HQ">
+      <AttributeBlock blockName="this">
+        <attribute native="Mages" />
+        <attribute fame="0" />
+        <attribute notoriety="5" />
+        <attribute base_price="4" />
+        <attribute vulnerability="M" />
+        <attribute rank="HQ" />
+        <attribute icon_type="assassin_r" />
+        <attribute setup_start="Settlement" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="3" />
+        <attribute clan="4" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="2" />
+        <attribute strength="M" />
+        <attribute length="13" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1846" />
+    </GameObject>
+    <GameObject id="1843" name="Mage Pony 1">
+      <AttributeBlock blockName="this">
+        <attribute native="Mages" />
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1844" name="Mage Pony 2">
+      <AttributeBlock blockName="this">
+        <attribute native="Mages" />
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="3" />
+        <attribute strength="M" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1845" name="Mage Pony 3">
+      <AttributeBlock blockName="this">
+        <attribute native="Mages" />
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1846" name="Mage Pony HQ">
+      <AttributeBlock blockName="this">
+        <attribute native="Mages" />
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="3" />
+        <attribute strength="M" />
+        <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
   </objects>
