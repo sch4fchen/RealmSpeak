@@ -223,7 +223,19 @@ public class TreasureSetupCardView extends JComponent {
 				if (l!=null) {
 					Collections.sort(l,new Comparator<GameObject>() {
 						public int compare(GameObject go1,GameObject go2) {
-							return go1.getName().compareTo(go2.getName());
+							int ret = 0;	
+							int md1 = go1.getThisInt("monster_die");
+							int md2 = go2.getThisInt("monster_die");
+							ret = md1-md2;
+							if (ret==0) {
+								int md12 = go1.getThisInt("native_die");
+								int md22 = go2.getThisInt("native_die");
+								ret = md12-md22;
+								if (ret==0) {
+									return go1.getName().compareTo(go2.getName());
+								}
+							}
+							return ret;
 						}
 					});
 					for(GameObject go : l) {
