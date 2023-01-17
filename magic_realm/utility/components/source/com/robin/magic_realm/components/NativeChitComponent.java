@@ -17,10 +17,12 @@
  */
 package com.robin.magic_realm.components;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Stroke;
 
 import javax.swing.ImageIcon;
 
@@ -114,6 +116,10 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		
 		TextType tt = new TextType(getGameObject().getName(),(cs>>1)+20, "ITALIC");
 		tt.draw(g,5,5,Alignment.Left);
+		if (RealmComponent.displaySubline) {
+			tt = new TextType(getGameObject().getThisAttribute("native"),(cs>>1)+20, "ITALIC");
+			tt.draw(g,5,13,Alignment.Left);
+		}
 		
 		int not = getGameObject().getThisInt("notoriety");
 		int hire = getGameObject().getThisInt("base_price");
@@ -271,6 +277,14 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		
 		if (isDisplayStyleFrenzel()) {
 			paintFrenzelValues(g);
+		}
+		
+		if (RealmComponent.displayArmor && getGameObject().hasThisAttribute(Constants.ARMORED)) {
+			Stroke stroke = g.getStroke();
+			g.setStroke(new BasicStroke(2));
+			g.setColor(Color.black);
+			g.drawRect(1,1,cs-1,cs-1);
+			g.setStroke(stroke);
 		}
 		
 		drawHorse(g);

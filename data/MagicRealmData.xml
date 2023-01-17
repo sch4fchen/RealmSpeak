@@ -48002,6 +48002,274 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="1847" name="Zealots Box">
+      <AttributeBlock blockName="this">
+        <attribute ts_section="clan 1" />
+        <attribute ts_size="S+" />
+        <attribute ts_color="blue" />
+        <attribute ts_draw_below="" />
+        <attribute ts_sort="3" />
+        <attribute gold_special_target="" />
+        <attribute summon_n="zealots" />
+        <attribute summon="zealots" />
+        <attribute super_realm="" />
+        <attribute native_die="1" />
+        <attribute clan="1" />
+        <attribute native="Zealots" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1848" name="Zealot Dwelling">
+      <AttributeBlock blockName="this">
+        <attribute native="Zealots" />
+        <attribute dwelling="chapel,guard,hamlet,l_camp" />
+        <attribute print="" />
+        <attribute ts_section="clan 1" />
+        <attribute ts_size="T" />
+        <attribute ts_color="blue" />
+        <attribute ts_count="3" />
+        <attribute icon_type="knight_o" />
+        <attribute icon_folder="natives_c" />
+        <attribute virtual_dwelling="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="1" />
+      </AttributeBlock>
+      <contains id="1849" />
+      <contains id="1850" />
+      <contains id="1851" />
+      <contains id="1852" />
+    </GameObject>
+    <GameObject id="1849" name="Zealot 1">
+      <AttributeBlock blockName="this">
+        <attribute native="Zealots" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="1" />
+        <attribute icon_type="short_swordsman_p" />
+        <attribute setup_start="Zealot Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1853" />
+    </GameObject>
+    <GameObject id="1850" name="Zealot 2">
+      <AttributeBlock blockName="this">
+        <attribute native="Zealots" />
+        <attribute fame="0" />
+        <attribute notoriety="12" />
+        <attribute base_price="8" />
+        <attribute vulnerability="T" />
+        <attribute rank="2" />
+        <attribute armored="" />
+        <attribute icon_type="short_swordsman_p" />
+        <attribute setup_start="Zealot Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute length="7" />
+        <attribute sharpness="1" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="6" />
+        <attribute attack_speed="4" />
+        <attribute strength="T" />
+        <attribute length="7" />
+        <attribute sharpness="1" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1854" />
+    </GameObject>
+    <GameObject id="1851" name="Zealot 3">
+      <AttributeBlock blockName="this">
+        <attribute native="Zealots" />
+        <attribute fame="0" />
+        <attribute notoriety="12" />
+        <attribute base_price="8" />
+        <attribute vulnerability="T" />
+        <attribute rank="3" />
+        <attribute armored="" />
+        <attribute icon_type="short_swordsman_p" />
+        <attribute setup_start="Zealot Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="6" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute length="7" />
+        <attribute sharpness="1" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="T" />
+        <attribute length="7" />
+        <attribute sharpness="1" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1855" />
+    </GameObject>
+    <GameObject id="1852" name="Zealot HQ">
+      <AttributeBlock blockName="this">
+        <attribute native="Zealots" />
+        <attribute fame="0" />
+        <attribute notoriety="3" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="HQ" />
+        <attribute icon_type="short_swordsman_p" />
+        <attribute setup_start="Zealot Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute commerce="F,N" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1856" />
+    </GameObject>
+    <GameObject id="1853" name="Zealot Warhorse 1">
+      <AttributeBlock blockName="this">
+        <attribute native="Zealots" />
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="3" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="7" />
+        <attribute strength="H" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1854" name="Zealot Warhorse 2">
+      <AttributeBlock blockName="this">
+        <attribute native="Zealots" />
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="3" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="6" />
+        <attribute strength="M" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1855" name="Zealot Warhorse 3">
+      <AttributeBlock blockName="this">
+        <attribute native="Zealots" />
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="3" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="6" />
+        <attribute strength="M" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1856" name="Zealot Warhorse HQ">
+      <AttributeBlock blockName="this">
+        <attribute native="Zealots" />
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="3" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="7" />
+        <attribute strength="H" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

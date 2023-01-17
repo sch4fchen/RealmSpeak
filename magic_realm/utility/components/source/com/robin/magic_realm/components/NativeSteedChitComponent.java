@@ -17,6 +17,7 @@
  */
 package com.robin.magic_realm.components;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 import com.robin.game.objects.GameObject;
@@ -137,6 +138,12 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		
 		tt = new TextType(speed+asterisk,getChitSize(),"BIG_BOLD");
 		tt.draw(g,getChitSize()>>1,getChitSize()-(getChitSize()>>2)-(getChitSize()>>3),Alignment.Left);
+		
+		if (RealmComponent.displayArmor && getGameObject().hasThisAttribute(Constants.ARMORED)) {
+			g.setColor(Color.black);
+			g.drawRect(0,0,getChitSize(),getChitSize());
+			g.drawRect(1,1,getChitSize()-2,getChitSize()-2);
+		}
 		
 		drawDamageAssessment(g);
 	}

@@ -17,7 +17,10 @@
  */
 package com.robin.magic_realm.components;
 
+import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import com.robin.game.objects.GameObject;
@@ -44,16 +47,7 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 			System.out.println("problem with "+obj.getName()+": "+ex);
 		}
 	}
-//public void setFacing(String val) {
-//(new Exception()).printStackTrace();
-//	System.out.println("Setting facing on horse to: "+val);
-//	super.setFacing(val);
-//}
-//public void flip() {
-//	System.out.println("Before flip:  isTrotting="+isTrotting());
-//	super.flip();
-//	System.out.println("After flip:  isTrotting="+isTrotting());
-//}
+
 	public String getLightSideStat() {
 		return "trot";
 	}
@@ -104,6 +98,13 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		
 		tt = new TextType(speed.getSpeedString()+asterisk,getChitSize(),alteredMoveSpeed?"BIG_BOLD_BLUE":"BIG_BOLD");
 		tt.draw(g,getChitSize()>>1,getChitSize()-(getChitSize()>>2)-(getChitSize()>>3),Alignment.Left);
+		
+		if (RealmComponent.displayArmor && getGameObject().hasThisAttribute(Constants.ARMORED)) {
+			Graphics2D g2 = (Graphics2D) g;
+			g2.setColor(Color.black);
+			g2.setStroke(new BasicStroke(2));
+			g2.draw(this.getShape(0,0,getChitSize()));
+		}
 		
 		drawDamageAssessment(g);
 	}

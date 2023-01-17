@@ -56,6 +56,8 @@ public class RealmSpeakOptionPanel extends JDialog {
 	protected JRadioButton colorChitsOption;
 	protected JRadioButton frenzelChitsOption;
 	protected JRadioButton legendaryChitsOption;
+	protected JCheckBox chitArmorOption;
+	protected JCheckBox chitSublineOption;
 	protected JCheckBox monsterNumbersOption;
 	protected JCheckBox killedByOption;
 	protected JCheckBox setupCardLayoutOption;
@@ -158,6 +160,8 @@ public class RealmSpeakOptionPanel extends JDialog {
 				classicChitsOption.setSelected(true);
 				break;
 		}
+		RealmComponent.displayArmor = options.getOptions().getBoolean(RealmSpeakOptions.CHIT_DISPLAY_ARMOR);
+		RealmComponent.displaySubline = options.getOptions().getBoolean(RealmSpeakOptions.CHIT_DISPLAY_SUBLINE);
 		
 		switch(options.getOptions().getInt(RealmSpeakOptions.CHARACTER_CHIT_DISPLAY_STYLE)) {
 			case CharacterChitComponent.DISPLAY_STYLE_CLASSIC:
@@ -218,6 +222,8 @@ public class RealmSpeakOptionPanel extends JDialog {
 			dailyCombatOnSpellcastersOption.setSelected(true);
 		}
 		
+		chitArmorOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.CHIT_DISPLAY_ARMOR,false));
+		chitSublineOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.CHIT_DISPLAY_SUBLINE,false));
 		monsterNumbersOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.MONSTER_NUMBERS,false));
 		killedByOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.CHIT_KILLED_BY,false));
 		setupCardLayoutOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.SETUP_CARD_LAYOUT,false));
@@ -236,6 +242,8 @@ public class RealmSpeakOptionPanel extends JDialog {
 	private void saveOptions() {
 		options.getOptions().set(RealmSpeakOptions.ACTION_ICONS,getActionIconState());
 		options.getOptions().set(RealmSpeakOptions.CHIT_DISPLAY_STYLE,getChitDisplayStyle());
+		options.getOptions().set(RealmSpeakOptions.CHIT_DISPLAY_ARMOR,chitArmorOption.isSelected());
+		options.getOptions().set(RealmSpeakOptions.CHIT_DISPLAY_SUBLINE,chitSublineOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.CHARACTER_CHIT_DISPLAY_STYLE,getCharacterChitDisplayStyle());
 		options.getOptions().set(RealmSpeakOptions.TILES_DISPLAY_STYLE,getTilesDisplayStyle());
 		options.getOptions().set(RealmSpeakOptions.METAL_LNF,crossPlatformLookAndFeelOption.isSelected());
@@ -500,7 +508,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		return panel;
 	}
 	private JPanel getChitsOptionsPanel() {
-		JPanel panel = new JPanel(new GridLayout(7,1));
+		JPanel panel = new JPanel(new GridLayout(9,1));
 		panel.setBorder(BorderFactory.createTitledBorder("Game Chits"));
 		ButtonGroup group = new ButtonGroup();
 		classicChitsOption = new JRadioButton("Classic Chits");
@@ -516,6 +524,10 @@ public class RealmSpeakOptionPanel extends JDialog {
 		legendaryChitsOption.setEnabled(false);
 		group.add(legendaryChitsOption);
 		panel.add(legendaryChitsOption);
+		chitArmorOption = new JCheckBox("Display Armor Border");
+		panel.add(chitArmorOption);
+		chitSublineOption = new JCheckBox("Show Native Group subline");
+		panel.add(chitSublineOption);
 		monsterNumbersOption = new JCheckBox("Show Monster Numbers");
 		panel.add(monsterNumbersOption);
 		killedByOption = new JCheckBox("Show 'killed by'");

@@ -46,6 +46,8 @@ public class RealmSpeakOptions {
 	public static final String METAL_LNF = "metalLnf";
 	public static final String ACTION_ICONS = "actionIcons";
 	public static final String CHIT_DISPLAY_STYLE = "chitDisplayStyle";
+	public static final String CHIT_DISPLAY_ARMOR = "chitDisplayArmor";
+	public static final String CHIT_DISPLAY_SUBLINE = "chitDisplaySubline";
 	public static final String CHARACTER_CHIT_DISPLAY_STYLE = "characterChitDisplayStyle";
 	public static final String TILES_DISPLAY_STYLE = "tilesDisplayStyle";
 	public static final String MAP_SLIDER = "mapSlider";
@@ -92,6 +94,9 @@ public class RealmSpeakOptions {
 				RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_CLASSIC;
 				break;
 		}
+		RealmComponent.displayArmor = options.getBoolean(RealmSpeakOptions.CHIT_DISPLAY_ARMOR);
+		RealmComponent.displaySubline = options.getBoolean(RealmSpeakOptions.CHIT_DISPLAY_SUBLINE);
+		
 		switch(options.getInt(RealmSpeakOptions.CHARACTER_CHIT_DISPLAY_STYLE)) {
 			case CharacterChitComponent.DISPLAY_STYLE_CLASSIC:
 				CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_CLASSIC;

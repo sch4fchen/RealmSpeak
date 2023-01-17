@@ -369,6 +369,14 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		if (isDisplayStyleFrenzel()) {
 			paintFrenzelValues(g);
 		}
+		
+		if (RealmComponent.displayArmor && getGameObject().hasThisAttribute(Constants.ARMORED)) {
+			Stroke stroke = g.getStroke();
+			g.setStroke(new BasicStroke(2));
+			g.setColor(Color.black);
+			g.drawRect(1,1,cs-1,cs-1);
+			g.setStroke(stroke);
+		}
 
 		drawEmployer(g);
 		drawHiddenStatus(g);
