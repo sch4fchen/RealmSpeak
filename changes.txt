@@ -15,7 +15,6 @@ Super Realm: rules for clans 4.7 (p. 41)
 ---More content incl. functionalities; graphics---
 Super Realm: Visitor/Travelers=Nomads/Missions/Campaigns/Tasks (incl. for seasons); Travelers: 4.8 (p.41)
 Super Realm: Quests + Events
-Super Realm: add optional icons (background) to treasures and spells?
 Super Realm: rules for max. strength attack
 Super Realm: rules for items/treasures: purple (or other) magic color provided: additional sharpness/vulnerability until midnight
 Super Realm: Regeneration: start of a new month (not 7th day), all un-hired denizens (4.10, p. 42)

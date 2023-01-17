@@ -59,9 +59,7 @@ public class Coding extends Properties {
 		pool = new GamePool(c);
 		pool.shuffle();
 		int n=1;
-		for (Iterator i=pool.iterator();i.hasNext();) {
-			GameObject object = (GameObject)i.next();
-			
+		for (GameObject object : pool) {
 			String paddedNum = ""+n;
 			while(paddedNum.length()<numLength) {
 				paddedNum = "0"+paddedNum;

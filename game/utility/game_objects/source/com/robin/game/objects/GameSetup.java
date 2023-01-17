@@ -88,10 +88,9 @@ public class GameSetup extends ModifyableObject implements Serializable {
 		}
 		
 		// Read all commands
-		Collection commands = element.getChildren();
+		Collection<Element> commands = element.getChildren();
 		gameCommands.clear();
-		for (Iterator i=commands.iterator();i.hasNext();) {
-			Element command = (Element)i.next();
+		for (Element command : commands) {
 			GameCommand newCommand = GameCommand.createFromXML(this,command);
 //			GameCommand newCommand = new GameCommand(this);
 //			newCommand.setXML(command);

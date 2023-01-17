@@ -21,7 +21,6 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.swing.*;
 
@@ -85,8 +84,7 @@ public class GameCommandDialog extends JDialog {
 	private ArrayList<String> findAvailablePoolNames(ArrayList<GameCommand> allCommands) {
 		ArrayList<String> previousPoolNames = new ArrayList<>();
 		previousPoolNames.add("ALL");
-		for (Iterator<GameCommand> i=allCommands.iterator();i.hasNext();) {
-			GameCommand prev = (GameCommand)i.next();
+		for (GameCommand prev : allCommands) {
 			if (prev==originalCommand) {
 				// no longer previous!
 				break;

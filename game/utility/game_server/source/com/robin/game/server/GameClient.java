@@ -74,7 +74,7 @@ public abstract class GameClient extends GameNet {
 	
 	protected boolean hosting = false;
 	
-	protected ArrayList changeListeners = null;
+	protected ArrayList<ChangeListener> changeListeners = null;
 	
 	public GameClient(String dataPath,String ipAddress,String clientName,String clientPass) {
 		this(dataPath,ipAddress,clientName,clientPass,GameHost.DEFAULT_PORT);
@@ -182,8 +182,7 @@ public abstract class GameClient extends GameNet {
 		if (changeListeners!=null) {
 			logger.finer("listenerCount="+changeListeners.size());
 			ChangeEvent event = new ChangeEvent(this);
-			for (Iterator i=changeListeners.iterator();i.hasNext();) {
-				ChangeListener listener = (ChangeListener)i.next();
+			for (ChangeListener listener : changeListeners) {
 				StateFireThread thread = new StateFireThread(listener,event);
 				thread.start();
 			}

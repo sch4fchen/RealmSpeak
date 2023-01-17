@@ -255,8 +255,7 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 				}
 				
 				if (gameObject.hasThisAttribute(Constants.CAST_SPELL_ON_INIT)) {
-					for (Iterator i=gameObject.getHold().iterator();i.hasNext();) {
-						GameObject sgo = (GameObject)i.next();
+					for (GameObject sgo : gameObject.getHold()) {
 						if (sgo.hasThisAttribute("spell")) {
 							SpellWrapper spell = new SpellWrapper(sgo);
 							if (spell.isInert()) {

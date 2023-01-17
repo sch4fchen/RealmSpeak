@@ -32,8 +32,8 @@ public class PrintGrouping extends Properties {
 	public String getName() {
 		return groupName;
 	}
-	public Collection getKeyVals() {
-		ArrayList keyVals = new ArrayList();
+	public Collection<String> getKeyVals() {
+		ArrayList<String> keyVals = new ArrayList<>();
 		for (Enumeration e=keys();e.hasMoreElements();) {
 			String key = (String)e.nextElement();
 			String val = getProperty(key);
@@ -53,16 +53,12 @@ public class PrintGrouping extends Properties {
 		sb.append(StringUtilities.getRepeatString("-",79));
 		sb.append(Encoder.LINE_END);
 		
-		ArrayList toPrint = pool.find(getKeyVals());
-//		System.out.println(toPrint.size()+" objects to print.");
-		
+		ArrayList<GameObject> toPrint = pool.find(getKeyVals());
 		// Print objects
-		for (Iterator i=toPrint.iterator();i.hasNext();) {
-			GameObject obj = (GameObject)i.next();
+		for (GameObject obj : toPrint) {
 			sb.append(obj+":  ");
 			// Print hold codes
-			for (Iterator c=obj.getHold().iterator();c.hasNext();) {
-				GameObject held = (GameObject)c.next();
+			for (GameObject held : obj.getHold()) {
 				sb.append(Coding.getCode(held));
 			}
 			sb.append(Encoder.LINE_END);

@@ -411,10 +411,9 @@ public class GameData extends ModifyableObject implements Serializable {
 	public ArrayList<GameSetup> getGameSetups() {
 		return gameSetups;
 	}
-	public void resetIdToMax(Collection c) {
+	public void resetIdToMax(Collection<GameObject> c) {
 		cumulative_id = 0;
-		for (Iterator i=c.iterator();i.hasNext();) {
-			GameObject obj = (GameObject)i.next();
+		for (GameObject obj : c) {
 			if (obj.getId()>cumulative_id) {
 				cumulative_id = obj.getId();
 			}
@@ -493,12 +492,11 @@ public class GameData extends ModifyableObject implements Serializable {
 		game.setAttribute(new Attribute("_rndSetup",String.valueOf(RandomNumber.getUseRandomNumberGeneratorForSetup())));
 		
 		// Read objects
-		Collection objects = game.getChild("objects").getChildren();
+		Collection<Element> objects = game.getChild("objects").getChildren();
 		gameObjects.clear();
 		gameObjectIDHash.clear();
 		gameObjectNameHash.clear();
-		for (Iterator i=objects.iterator();i.hasNext();) {
-			Element obj = (Element)i.next();
+		for (Element obj : objects) {
 			GameObject newObj = new GameObject(this);
 			newObj.setXML(obj);
 			gameObjects.add(newObj);
@@ -517,10 +515,9 @@ public class GameData extends ModifyableObject implements Serializable {
 		resetIdToMax(gameObjects);
 		
 		// Read setups
-		Collection setups = game.getChild("setups").getChildren();
+		Collection<Element> setups = game.getChild("setups").getChildren();
 		gameSetups.clear();
-		for (Iterator i=setups.iterator();i.hasNext();) {
-			Element setup = (Element)i.next();
+		for (Element setup : setups) {
 			GameSetup newSetup = new GameSetup(this);
 			newSetup.setXML(setup);
 			gameSetups.add(newSetup);
