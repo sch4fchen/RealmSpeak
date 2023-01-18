@@ -34305,6 +34305,10 @@
         <attribute ts_color="tan" />
         <attribute icon_folder="dwellings" />
       </AttributeBlock>
+      <contains id="1835" />
+      <contains id="1836" />
+      <contains id="1837" />
+      <contains id="1838" />
     </GameObject>
     <GameObject id="1287" name="Settlement">
       <AttributeBlock blockName="this">
@@ -34318,6 +34322,10 @@
         <attribute ts_color="tan" />
         <attribute icon_folder="dwellings" />
       </AttributeBlock>
+      <contains id="1839" />
+      <contains id="1840" />
+      <contains id="1841" />
+      <contains id="1842" />
     </GameObject>
     <GameObject id="1288" name="Cottage">
       <AttributeBlock blockName="this">
@@ -34331,6 +34339,10 @@
         <attribute ts_color="tan" />
         <attribute icon_folder="dwellings" />
       </AttributeBlock>
+      <contains id="1831" />
+      <contains id="1832" />
+      <contains id="1833" />
+      <contains id="1834" />
     </GameObject>
     <GameObject id="1289" name="Hamlet">
       <AttributeBlock blockName="this">
@@ -34344,6 +34356,13 @@
         <attribute ts_color="tan" />
         <attribute icon_folder="dwellings" />
       </AttributeBlock>
+      <contains id="1824" />
+      <contains id="1825" />
+      <contains id="1826" />
+      <contains id="1827" />
+      <contains id="1828" />
+      <contains id="1829" />
+      <contains id="1830" />
     </GameObject>
     <GameObject id="1290" name="Small Camp">
       <AttributeBlock blockName="this">
@@ -41559,11 +41578,11 @@
         <attribute vulnerability="T" />
         <attribute rank="1" />
         <attribute armored="" />
-        <attribute icon_type="knight" />
+        <attribute icon_type="knight_o" />
         <attribute setup_start="Chapel" />
         <attribute hire_type="single" />
         <attribute garrison="" />
-        <attribute icon_folder="natives" />
+        <attribute icon_folder="natives_c" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute clan="1" />
@@ -41596,11 +41615,11 @@
         <attribute vulnerability="T" />
         <attribute rank="2" />
         <attribute armored="" />
-        <attribute icon_type="knight" />
+        <attribute icon_type="knight_o" />
         <attribute setup_start="Chapel" />
         <attribute hire_type="single" />
         <attribute garrison="" />
-        <attribute icon_folder="natives" />
+        <attribute icon_folder="natives_c" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute clan="1" />
@@ -41633,11 +41652,11 @@
         <attribute vulnerability="T" />
         <attribute rank="3" />
         <attribute armored="" />
-        <attribute icon_type="knight" />
+        <attribute icon_type="knight_o" />
         <attribute setup_start="Chapel" />
         <attribute hire_type="single" />
         <attribute garrison="" />
-        <attribute icon_folder="natives" />
+        <attribute icon_folder="natives_c" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute clan="1" />
@@ -41670,11 +41689,11 @@
         <attribute vulnerability="T" />
         <attribute rank="3" />
         <attribute armored="" />
-        <attribute icon_type="knight" />
+        <attribute icon_type="knight_o" />
         <attribute setup_start="Chapel" />
         <attribute hire_type="single" />
         <attribute garrison="" />
-        <attribute icon_folder="natives" />
+        <attribute icon_folder="natives_c" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute clan="1" />
@@ -41707,11 +41726,11 @@
         <attribute vulnerability="T" />
         <attribute rank="HQ" />
         <attribute armored="" />
-        <attribute icon_type="knight" />
+        <attribute icon_type="knight_o" />
         <attribute setup_start="Chapel" />
         <attribute hire_type="single" />
         <attribute garrison="" />
-        <attribute icon_folder="natives" />
+        <attribute icon_folder="natives_c" />
         <attribute commerce="F" />
         <attribute denizen="" />
         <attribute super_realm="" />
@@ -42503,15 +42522,16 @@
     </GameObject>
     <GameObject id="1594" name="Company Box">
       <AttributeBlock blockName="this">
-        <attribute ts_section="natives" />
+        <attribute ts_section="clan 3" />
         <attribute ts_size="S+" />
-        <attribute ts_color="gray" />
+        <attribute ts_color="red" />
         <attribute ts_draw_below="" />
         <attribute ts_sort="1" />
         <attribute gold_special_target="" />
         <attribute summon_n="company" />
         <attribute summon="company" />
         <attribute super_realm="" />
+        <attribute native_die="5" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1595" name="Company Dwelling">
@@ -42519,9 +42539,9 @@
         <attribute native="Company" />
         <attribute dwelling="inn,l_fire" />
         <attribute print="" />
-        <attribute ts_section="natives" />
+        <attribute ts_section="clan 3" />
         <attribute ts_size="T" />
-        <attribute ts_color="gray" />
+        <attribute ts_color="red" />
         <attribute ts_count="7" />
         <attribute icon_type="pikeman_c" />
         <attribute icon_folder="natives_c" />
@@ -47235,6 +47255,1019 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="wizard" />
         <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1822" name="Altar Meadow Box">
+      <AttributeBlock blockName="this">
+        <attribute ts_section="natives" />
+        <attribute ts_size="S+" />
+        <attribute ts_color="gray" />
+        <attribute ts_draw_below="" />
+        <attribute ts_sort="6" />
+        <attribute gold_special_target="" />
+        <attribute summon_t="Enchanted Meadow" />
+        <attribute summon_tl="Altar" />
+        <attribute summon="enchanted_meadow,altar" />
+        <attribute super_realm="" />
+        <attribute native_die="6" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1823" name="Shrine Circle Box">
+      <AttributeBlock blockName="this">
+        <attribute ts_section="natives" />
+        <attribute ts_size="S+" />
+        <attribute ts_color="gray" />
+        <attribute ts_draw_below="" />
+        <attribute ts_sort="7" />
+        <attribute gold_special_target="" />
+        <attribute summon_t="Toadstool Circle" />
+        <attribute summon_tl="Shrine" />
+        <attribute summon="toadstool_circle,shrine" />
+        <attribute super_realm="" />
+        <attribute native_die="6" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1824" name="Peasant 1">
+      <AttributeBlock blockName="this">
+        <attribute native="Peasants" />
+        <attribute fame="0" />
+        <attribute notoriety="1" />
+        <attribute base_price="1" />
+        <attribute vulnerability="M" />
+        <attribute rank="1" />
+        <attribute icon_type="lancer_l" />
+        <attribute setup_start="Hamlet" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="2" />
+        <attribute clan="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="3" />
+        <attribute strength="L" />
+        <attribute length="9" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1825" name="Peasant 2">
+      <AttributeBlock blockName="this">
+        <attribute native="Peasants" />
+        <attribute fame="0" />
+        <attribute notoriety="1" />
+        <attribute base_price="1" />
+        <attribute vulnerability="M" />
+        <attribute rank="2" />
+        <attribute icon_type="lancer_l" />
+        <attribute setup_start="Hamlet" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="2" />
+        <attribute clan="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1826" name="Peasant 3">
+      <AttributeBlock blockName="this">
+        <attribute native="Peasants" />
+        <attribute fame="0" />
+        <attribute notoriety="1" />
+        <attribute base_price="1" />
+        <attribute vulnerability="M" />
+        <attribute rank="3" />
+        <attribute icon_type="lancer_l" />
+        <attribute setup_start="Hamlet" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="2" />
+        <attribute clan="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="3" />
+        <attribute strength="L" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1827" name="Peasant 4">
+      <AttributeBlock blockName="this">
+        <attribute native="Peasants" />
+        <attribute fame="0" />
+        <attribute notoriety="1" />
+        <attribute base_price="1" />
+        <attribute vulnerability="M" />
+        <attribute rank="4" />
+        <attribute icon_type="lancer_l" />
+        <attribute setup_start="Hamlet" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="2" />
+        <attribute clan="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="3" />
+        <attribute strength="L" />
+        <attribute length="9" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1828" name="Peasant 5">
+      <AttributeBlock blockName="this">
+        <attribute native="Peasants" />
+        <attribute fame="0" />
+        <attribute notoriety="1" />
+        <attribute base_price="1" />
+        <attribute vulnerability="M" />
+        <attribute rank="5" />
+        <attribute icon_type="lancer_l" />
+        <attribute setup_start="Hamlet" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="2" />
+        <attribute clan="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="3" />
+        <attribute strength="L" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1829" name="Peasant 6">
+      <AttributeBlock blockName="this">
+        <attribute native="Peasants" />
+        <attribute fame="0" />
+        <attribute notoriety="1" />
+        <attribute base_price="1" />
+        <attribute vulnerability="M" />
+        <attribute rank="6" />
+        <attribute icon_type="lancer_l" />
+        <attribute setup_start="Hamlet" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="2" />
+        <attribute clan="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1830" name="Peasant HQ">
+      <AttributeBlock blockName="this">
+        <attribute native="Peasants" />
+        <attribute fame="0" />
+        <attribute notoriety="1" />
+        <attribute base_price="1" />
+        <attribute vulnerability="M" />
+        <attribute rank="HQ" />
+        <attribute icon_type="lancer_l" />
+        <attribute setup_start="Hamlet" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="2" />
+        <attribute clan="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="3" />
+        <attribute strength="L" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1831" name="Summoner 1">
+      <AttributeBlock blockName="this">
+        <attribute native="Summoners" />
+        <attribute fame="0" />
+        <attribute notoriety="3" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="1" />
+        <attribute icon_type="swordsman_r" />
+        <attribute setup_start="Cottage" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="1" />
+        <attribute clan="2" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="2" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="2" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1832" name="Summoner 2">
+      <AttributeBlock blockName="this">
+        <attribute native="Summoners" />
+        <attribute fame="0" />
+        <attribute notoriety="3" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="2" />
+        <attribute icon_type="swordsman_r" />
+        <attribute setup_start="Cottage" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="1" />
+        <attribute clan="2" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="2" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="2" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1833" name="Summoner 3">
+      <AttributeBlock blockName="this">
+        <attribute native="Summoners" />
+        <attribute fame="0" />
+        <attribute notoriety="3" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="3" />
+        <attribute icon_type="swordsman_r" />
+        <attribute setup_start="Cottage" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="1" />
+        <attribute clan="2" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="2" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="2" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1834" name="Summoner HQ">
+      <AttributeBlock blockName="this">
+        <attribute native="Summoners" />
+        <attribute fame="0" />
+        <attribute notoriety="3" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="HQ" />
+        <attribute icon_type="swordsman_r" />
+        <attribute setup_start="Cottage" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="1" />
+        <attribute clan="2" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="2" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="2" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1835" name="Pagan 1">
+      <AttributeBlock blockName="this">
+        <attribute native="Summoners" />
+        <attribute fame="0" />
+        <attribute notoriety="3" />
+        <attribute base_price="2" />
+        <attribute vulnerability="L" />
+        <attribute rank="1" />
+        <attribute icon_type="assassin_r" />
+        <attribute setup_start="Hut" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="4" />
+        <attribute clan="2" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="2" />
+        <attribute strength="M" />
+        <attribute length="15" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1836" name="Pagan 2">
+      <AttributeBlock blockName="this">
+        <attribute native="Summoners" />
+        <attribute fame="0" />
+        <attribute notoriety="3" />
+        <attribute base_price="2" />
+        <attribute vulnerability="L" />
+        <attribute rank="2" />
+        <attribute icon_type="assassin_r" />
+        <attribute setup_start="Hut" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="4" />
+        <attribute clan="2" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="2" />
+        <attribute strength="M" />
+        <attribute length="15" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1837" name="Pagan 3">
+      <AttributeBlock blockName="this">
+        <attribute native="Summoners" />
+        <attribute fame="0" />
+        <attribute notoriety="3" />
+        <attribute base_price="2" />
+        <attribute vulnerability="L" />
+        <attribute rank="3" />
+        <attribute icon_type="assassin_r" />
+        <attribute setup_start="Hut" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="4" />
+        <attribute clan="2" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="2" />
+        <attribute strength="M" />
+        <attribute length="15" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1838" name="Pagan HQ">
+      <AttributeBlock blockName="this">
+        <attribute native="Summoners" />
+        <attribute fame="0" />
+        <attribute notoriety="3" />
+        <attribute base_price="2" />
+        <attribute vulnerability="L" />
+        <attribute rank="HQ" />
+        <attribute icon_type="assassin_r" />
+        <attribute setup_start="Hut" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="4" />
+        <attribute clan="2" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="2" />
+        <attribute strength="M" />
+        <attribute length="15" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1839" name="Mage 1">
+      <AttributeBlock blockName="this">
+        <attribute native="Mages" />
+        <attribute fame="0" />
+        <attribute notoriety="5" />
+        <attribute base_price="4" />
+        <attribute vulnerability="M" />
+        <attribute rank="1" />
+        <attribute icon_type="assassin_r" />
+        <attribute setup_start="Settlement" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="3" />
+        <attribute clan="4" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="2" />
+        <attribute strength="M" />
+        <attribute length="13" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1843" />
+    </GameObject>
+    <GameObject id="1840" name="Mage 2">
+      <AttributeBlock blockName="this">
+        <attribute native="Mages" />
+        <attribute fame="0" />
+        <attribute notoriety="5" />
+        <attribute base_price="4" />
+        <attribute vulnerability="M" />
+        <attribute rank="2" />
+        <attribute icon_type="assassin_r" />
+        <attribute setup_start="Settlement" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="3" />
+        <attribute clan="4" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="2" />
+        <attribute strength="M" />
+        <attribute length="13" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1844" />
+    </GameObject>
+    <GameObject id="1841" name="Mage 3">
+      <AttributeBlock blockName="this">
+        <attribute native="Mages" />
+        <attribute fame="0" />
+        <attribute notoriety="5" />
+        <attribute base_price="4" />
+        <attribute vulnerability="M" />
+        <attribute rank="3" />
+        <attribute icon_type="assassin_r" />
+        <attribute setup_start="Settlement" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="3" />
+        <attribute clan="4" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="2" />
+        <attribute strength="M" />
+        <attribute length="13" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1845" />
+    </GameObject>
+    <GameObject id="1842" name="Mage HQ">
+      <AttributeBlock blockName="this">
+        <attribute native="Mages" />
+        <attribute fame="0" />
+        <attribute notoriety="5" />
+        <attribute base_price="4" />
+        <attribute vulnerability="M" />
+        <attribute rank="HQ" />
+        <attribute icon_type="assassin_r" />
+        <attribute setup_start="Settlement" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="3" />
+        <attribute clan="4" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="2" />
+        <attribute strength="M" />
+        <attribute length="13" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1846" />
+    </GameObject>
+    <GameObject id="1843" name="Mage Pony 1">
+      <AttributeBlock blockName="this">
+        <attribute native="Mages" />
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1844" name="Mage Pony 2">
+      <AttributeBlock blockName="this">
+        <attribute native="Mages" />
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="3" />
+        <attribute strength="M" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1845" name="Mage Pony 3">
+      <AttributeBlock blockName="this">
+        <attribute native="Mages" />
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1846" name="Mage Pony HQ">
+      <AttributeBlock blockName="this">
+        <attribute native="Mages" />
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="pink" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="3" />
+        <attribute strength="M" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1847" name="Zealots Box">
+      <AttributeBlock blockName="this">
+        <attribute ts_section="clan 1" />
+        <attribute ts_size="S+" />
+        <attribute ts_color="blue" />
+        <attribute ts_draw_below="" />
+        <attribute ts_sort="3" />
+        <attribute gold_special_target="" />
+        <attribute summon_n="zealots" />
+        <attribute summon="zealots" />
+        <attribute super_realm="" />
+        <attribute native_die="1" />
+        <attribute clan="1" />
+        <attribute native="Zealots" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1848" name="Zealot Dwelling">
+      <AttributeBlock blockName="this">
+        <attribute native="Zealots" />
+        <attribute dwelling="chapel,guard,hamlet,l_camp" />
+        <attribute print="" />
+        <attribute ts_section="clan 1" />
+        <attribute ts_size="T" />
+        <attribute ts_color="blue" />
+        <attribute ts_count="3" />
+        <attribute icon_type="knight_o" />
+        <attribute icon_folder="natives_c" />
+        <attribute virtual_dwelling="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="1" />
+      </AttributeBlock>
+      <contains id="1849" />
+      <contains id="1850" />
+      <contains id="1851" />
+      <contains id="1852" />
+    </GameObject>
+    <GameObject id="1849" name="Zealot 1">
+      <AttributeBlock blockName="this">
+        <attribute native="Zealots" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="1" />
+        <attribute icon_type="short_swordsman_p" />
+        <attribute setup_start="Zealot Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1853" />
+    </GameObject>
+    <GameObject id="1850" name="Zealot 2">
+      <AttributeBlock blockName="this">
+        <attribute native="Zealots" />
+        <attribute fame="0" />
+        <attribute notoriety="12" />
+        <attribute base_price="8" />
+        <attribute vulnerability="T" />
+        <attribute rank="2" />
+        <attribute armored="" />
+        <attribute icon_type="short_swordsman_p" />
+        <attribute setup_start="Zealot Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute length="7" />
+        <attribute sharpness="1" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="6" />
+        <attribute attack_speed="4" />
+        <attribute strength="T" />
+        <attribute length="7" />
+        <attribute sharpness="1" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1854" />
+    </GameObject>
+    <GameObject id="1851" name="Zealot 3">
+      <AttributeBlock blockName="this">
+        <attribute native="Zealots" />
+        <attribute fame="0" />
+        <attribute notoriety="12" />
+        <attribute base_price="8" />
+        <attribute vulnerability="T" />
+        <attribute rank="3" />
+        <attribute armored="" />
+        <attribute icon_type="short_swordsman_p" />
+        <attribute setup_start="Zealot Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="6" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute length="7" />
+        <attribute sharpness="1" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="T" />
+        <attribute length="7" />
+        <attribute sharpness="1" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1855" />
+    </GameObject>
+    <GameObject id="1852" name="Zealot HQ">
+      <AttributeBlock blockName="this">
+        <attribute native="Zealots" />
+        <attribute fame="0" />
+        <attribute notoriety="3" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="HQ" />
+        <attribute icon_type="short_swordsman_p" />
+        <attribute setup_start="Zealot Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute commerce="F,N" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1856" />
+    </GameObject>
+    <GameObject id="1853" name="Zealot Warhorse 1">
+      <AttributeBlock blockName="this">
+        <attribute native="Zealots" />
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="3" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="7" />
+        <attribute strength="H" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1854" name="Zealot Warhorse 2">
+      <AttributeBlock blockName="this">
+        <attribute native="Zealots" />
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="3" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="6" />
+        <attribute strength="M" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1855" name="Zealot Warhorse 3">
+      <AttributeBlock blockName="this">
+        <attribute native="Zealots" />
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="3" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="6" />
+        <attribute strength="M" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1856" name="Zealot Warhorse HQ">
+      <AttributeBlock blockName="this">
+        <attribute native="Zealots" />
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+        <attribute clan="1" />
+        <attribute native_die="3" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="7" />
+        <attribute strength="H" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
   </objects>

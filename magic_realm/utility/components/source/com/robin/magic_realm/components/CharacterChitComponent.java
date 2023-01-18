@@ -166,25 +166,32 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		}
 		else {
 			// Draw image
-			String iconName = gameObject.getThisAttribute(Constants.ICON_TYPE);
-			String iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER);
-			if (iconName!=null && iconFolder!=null) {
-				if (displayStyle == DISPLAY_STYLE_LEGENDARY && legendaryImageExists()) {
-					iconFolder = iconFolder+"_legendary";
-					if (isHidden()) {
-						iconName=iconName+"_h";
+			if (gameObject.hasThisAttribute("super_realm") && gameObject.hasThisAttribute(Constants.ICON_TYPE+"_sr") && gameObject.hasThisAttribute(Constants.ICON_TYPE+"_sr")) {
+				String iconName = gameObject.getThisAttribute(Constants.ICON_TYPE+"_sr");
+				String iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER+"_sr");
+				drawIcon(g,iconFolder,iconName,1.2);
+			}
+			else {
+				String iconName = gameObject.getThisAttribute(Constants.ICON_TYPE);
+				String iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER);
+				if (iconName!=null && iconFolder!=null) {
+					if (displayStyle == DISPLAY_STYLE_LEGENDARY && legendaryImageExists()) {
+						iconFolder = iconFolder+"_legendary";
+						if (isHidden()) {
+							iconName=iconName+"_h";
+						}
+						drawIcon(g,iconFolder,iconName,0.26);
 					}
-					drawIcon(g,iconFolder,iconName,0.26);
-				}
-				else if (displayStyle == DISPLAY_STYLE_LEGENDARY_CLASSIC && legendaryClassicImageExists()) {
-					iconFolder = iconFolder+"_legendary_classic";
-					if (isHidden()) {
-						iconName=iconName+"_h";
+					else if (displayStyle == DISPLAY_STYLE_LEGENDARY_CLASSIC && legendaryClassicImageExists()) {
+						iconFolder = iconFolder+"_legendary_classic";
+						if (isHidden()) {
+							iconName=iconName+"_h";
+						}
+						drawIcon(g,iconFolder,iconName,0.26);
 					}
-					drawIcon(g,iconFolder,iconName,0.26);
-				}
-				else {
-					drawIcon(g,iconFolder,iconName,0.75);
+					else {
+						drawIcon(g,iconFolder,iconName,0.75);
+					}
 				}
 			}
 		}
