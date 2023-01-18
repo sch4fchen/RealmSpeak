@@ -460,7 +460,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Other Graphics",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Battle for Wesnoth",listing,listingColor,null,0,SwingConstants.CENTER,"https://www.wesnoth.org/"));
-		scroller.addLine(new ScrollLine("Wesnoth Copyright",listing,listingColor,null,0,SwingConstants.CENTER,"https://wiki.wesnoth.org/Wesnoth:Copyrights"));
+		scroller.addLine(new ScrollLine("Wesnoth Copyrights",listing,listingColor,null,0,SwingConstants.CENTER,"https://wiki.wesnoth.org/Wesnoth:Copyrights"));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Websites",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Nand's Magic Realm",listing,listingColor,null,0,SwingConstants.CENTER,"http://www.nand.it/mr/"));
