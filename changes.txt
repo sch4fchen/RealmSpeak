@@ -64,7 +64,7 @@ QUEST UPDATE:
 # Add Return Home quests Q58 - Q63
 NEW FEATURES:
 # Option to draw black border around armored chits
-# Option to display native group in subline for native chits
+# Option to display native group in subline for native chits (always for Super Realm)
 # Option to include spells of Super Realm
 # Option to include treasures of Expansion 1 and Super Realm
 
