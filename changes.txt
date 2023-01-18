@@ -60,6 +60,8 @@ Super Realm: Player building map: distribute tiles equally (including river tile
 Feature Request - First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 
 Version 1.1.7.5
+QUEST UPDATE:
+# Add Return Home quests Q58 - Q63
 NEW FEATURES:
 # Option to draw black border around armored chits
 # Option to display native group in subline for native chits

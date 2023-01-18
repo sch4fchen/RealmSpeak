@@ -115,8 +115,7 @@ public class HashLists<K,T> implements Map {
 		}
 	}
 	public void removeValue(Object val) {
-	    for (Iterator i=hash.values().iterator();i.hasNext();) {
-	        ArrayList list = (ArrayList)i.next();
+	    for (ArrayList<T> list : hash.values()) {
 	        if (list.contains(val)) {
 	            list.remove(val);
 	        }
