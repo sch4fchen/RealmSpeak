@@ -116,7 +116,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		
 		TextType tt = new TextType(getGameObject().getName(),(cs>>1)+20, "ITALIC");
 		tt.draw(g,5,5,Alignment.Left);
-		if (RealmComponent.displaySubline) {
+		if (RealmComponent.displaySubline || getGameObject().hasThisAttribute("super_realm")) {
 			tt = new TextType(getGameObject().getThisAttribute("native"),(cs>>1)+20, "ITALIC");
 			tt.draw(g,5,13,Alignment.Left);
 		}
