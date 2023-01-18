@@ -458,9 +458,12 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		scroller.addLine(new ScrollLine("Casey Benn",listing,listingColor));
 		scroller.addLine(new ScrollLine("Jim (East Paladin)",listing,listingColor));
 		scroller.addLine(new ScrollLine());
+		scroller.addLine(new ScrollLine("Other Graphics",subheader,subheaderColor));
+		scroller.addLine(new ScrollLine("Battle for Wesnoth",listing,listingColor,null,0,SwingConstants.CENTER,"https://www.wesnoth.org/"));
+		scroller.addLine(new ScrollLine("Wesnoth Copyright",listing,listingColor,null,0,SwingConstants.CENTER,"https://wiki.wesnoth.org/Wesnoth:Copyrights"));
+		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Websites",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Nand's Magic Realm",listing,listingColor,null,0,SwingConstants.CENTER,"http://www.nand.it/mr/"));
-		scroller.addLine(new ScrollLine("Magic Realm Wiki - Peter Morris",listing,listingColor));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("RealmSpeak Playtesters",header,headerColor,Color.black,2));
 		scroller.addLine(new ScrollLine("(no particular order)",subheader,subheaderColor));
@@ -499,7 +502,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		scroller.addLine(new ScrollLine("Anomalous Host",listing,listingColor));
 		scroller.addLine(new ScrollLine("Super Realm Graphics",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Casey Benn",listing,listingColor));
-		scroller.addLine(new ScrollLine("Psyrek",listing,listingColor));
+		scroller.addLine(new ScrollLine("Battle for Wesnoth",listing,listingColor,null,0,SwingConstants.CENTER,"https://www.wesnoth.org/"));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Expansion Monster Graphics",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Vrin Thomas",listing,listingColor));
