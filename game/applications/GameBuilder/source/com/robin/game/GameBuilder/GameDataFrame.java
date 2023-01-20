@@ -458,7 +458,7 @@ public class GameDataFrame extends JInternalFrame implements Modifyable,Saveable
 		getContentPane().add(pane,"Center");
 			statusField = new JLabel(" ");
 		getContentPane().add(statusField,"South");
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		addInternalFrameListener(new InternalFrameAdapter() {
 			public void internalFrameClosing(InternalFrameEvent ev) {
 				close(parent);

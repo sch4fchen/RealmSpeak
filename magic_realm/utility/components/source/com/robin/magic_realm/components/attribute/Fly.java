@@ -42,7 +42,7 @@ public class Fly {
 	public Speed getSpeed() {
 		return speed;
 	}
-	private Strength _getStrength(RealmComponent rc) {
+	private static Strength _getStrength(RealmComponent rc) {
 		if (rc instanceof CharacterActionChitComponent) {
 			CharacterActionChitComponent chit = (CharacterActionChitComponent)rc;
 			return chit.getStrength();
@@ -64,7 +64,7 @@ public class Fly {
 		}
 		return new Strength(rc.getGameObject().getThisAttribute("strength"));
 	}
-	private Speed _getSpeed(RealmComponent rc) {
+	private static Speed _getSpeed(RealmComponent rc) {
 		if (rc instanceof MonsterMoveChitComponent) {
 			MonsterMoveChitComponent chit = (MonsterMoveChitComponent)rc;
 			return chit.getFlySpeed();

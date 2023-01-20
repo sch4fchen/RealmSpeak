@@ -230,7 +230,7 @@ public abstract class GameClient extends GameNet {
 	 * Handles
 	 */
 	private void handleResponse(RequestObject ro) throws SocketTimeoutException,Exception {
-		ArrayList list;
+		ArrayList<GameObjectChange> list;
 		if (!ro.isIdle()) logger.fine("handleResponse "+ro);
 		int response;
 		try {
@@ -247,8 +247,7 @@ public abstract class GameClient extends GameNet {
 							// Instead of loading all the objects, just load changes
 							list = readCollection();
 							logger.fine("Client received update: "+list.size()+" changes.");
-							for (Iterator i=list.iterator();i.hasNext();) {
-								GameObjectChange action = (GameObjectChange)i.next();
+							for (GameObjectChange action : list) {
 								logger.finer("   "+action);
 								action.applyChange(gameData);
 							}

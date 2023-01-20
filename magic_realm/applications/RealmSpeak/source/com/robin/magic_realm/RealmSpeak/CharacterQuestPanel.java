@@ -64,7 +64,7 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 	
 	private void initComponents() {
 		setLayout(new BorderLayout(10, 10));
-		JLabel ins = new JLabel("Right-click quest for more info",JLabel.CENTER);
+		JLabel ins = new JLabel("Right-click quest for more info",SwingConstants.CENTER);
 		ins.setOpaque(true);
 		ins.setBackground(MagicRealmColor.PALEYELLOW);
 		ins.setFont(new Font("Dialog",Font.BOLD,14));

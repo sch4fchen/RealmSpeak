@@ -226,7 +226,7 @@ public class GameBuilderFrame extends JFrame {
 		desktopWindowCount = 0;
 		setContentPane(desktop);
 		setJMenuBar(createMenu());
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent ev) {
 				exitApp();

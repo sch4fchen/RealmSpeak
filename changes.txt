@@ -1,5 +1,6 @@
 ::ROADMAP::
 ---Content---
+Fix background for SR characters with alternative art
 Super Realm: Natives
 Super Realm: adapt chit colors for monsters and natives
 Super Realm: Items incl. Horses

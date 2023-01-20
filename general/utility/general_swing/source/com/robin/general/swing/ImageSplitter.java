@@ -48,12 +48,12 @@ public class ImageSplitter {
 	private int getY(int row) {
 		int y = 0;
 		for (int i=0;i<(row-1);i++) {
-			y += ((Integer)rowHeights.get(i)).intValue();
+			y += rowHeights.get(i).intValue();
 		}
 		return y;
 	}
 	private int getH(int row) {
-		int h = ((Integer)rowHeights.get(row-1)).intValue();
+		int h = rowHeights.get(row-1).intValue();
 		return h;
 	}
 	public ImageIcon[] getImageIcons(int row) {

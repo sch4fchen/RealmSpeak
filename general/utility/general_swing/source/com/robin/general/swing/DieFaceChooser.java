@@ -46,7 +46,7 @@ public class DieFaceChooser extends AggressiveDialog {
 		JPanel mainPane = new JPanel(new BorderLayout());
 		mainPane.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
 		
-		JLabel text = new JLabel(title,JLabel.CENTER);
+		JLabel text = new JLabel(title,SwingConstants.CENTER);
 		text.setFont(FONT);
 		text.setOpaque(true);
 		text.setBackground(Color.orange);

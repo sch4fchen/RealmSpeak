@@ -1583,7 +1583,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		
 		setJMenuBar(menu);
 		
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent ev) {

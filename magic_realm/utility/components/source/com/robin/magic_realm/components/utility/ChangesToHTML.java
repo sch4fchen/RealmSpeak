@@ -129,7 +129,7 @@ public class ChangesToHTML extends JFrame {
 		closeListTags(sb,0,currentLevel);
 		return sb.toString().substring(1); // get rid of first linefeed
 	}
-	private String addLinks(String in) {
+	private static String addLinks(String in) {
 		int front = in.indexOf(BUG_TAG_FRONT);
 		if (front>=0) {
 			int tail = in.indexOf(BUG_TAG_TAIL,front);
@@ -175,7 +175,7 @@ public class ChangesToHTML extends JFrame {
 			sb.append("\n");
 		}
 	}
-	private int getBulletLevel(String front) {
+	private static int getBulletLevel(String front) {
 		for (int i=0;i<BULLET.length;i++) {
 			if (BULLET[i].equals(front)) {
 				return i+1;

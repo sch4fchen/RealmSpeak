@@ -118,7 +118,7 @@ public class SpellSelector extends AggressiveDialog {
 		}
 		updateControls();
 	}
-	private JLabel getTitle(String title) {
+	private static JLabel getTitle(String title) {
 		JLabel label = new JLabel(title);
 		label.setFont(new Font("Dialog",Font.BOLD,18));
 		label.setOpaque(true);
@@ -165,7 +165,7 @@ public class SpellSelector extends AggressiveDialog {
 		pickPanel.add(pickLabel,"West");
 			spellPickGridPanel = new JPanel(new GridLayout(1,2));
 				availSpellPanel = new JPanel(new BorderLayout());
-					fromTabPanel = new JTabbedPane(JTabbedPane.LEFT);
+					fromTabPanel = new JTabbedPane(SwingConstants.LEFT);
 					fromTabPanel.setFont(Constants.FORTRESS_FONT);
 				availSpellPanel.add(fromTabPanel,"Center");
 				availSpellPanel.add(getTitle("Available Spells"),"North");

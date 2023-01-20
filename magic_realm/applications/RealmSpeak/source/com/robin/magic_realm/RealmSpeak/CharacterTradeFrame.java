@@ -340,8 +340,8 @@ public class CharacterTradeFrame extends JFrame {
 			JPanel goldPanel = new JPanel(new BorderLayout());
 			goldPanel.setOpaque(true);
 			goldPanel.setBackground(MagicRealmColor.GOLD);
-			goldPanel.add(new JLabel("Gold",JLabel.CENTER),"North");
-			goldLabel = new JLabel("0",JLabel.CENTER);
+			goldPanel.add(new JLabel("Gold",SwingConstants.CENTER),"North");
+			goldLabel = new JLabel("0",SwingConstants.CENTER);
 			ComponentTools.lockComponentSize(goldLabel,50,25);
 			goldLabel.setBorder(BorderFactory.createLoweredBevelBorder());
 			goldPanel.add(goldLabel,"South");

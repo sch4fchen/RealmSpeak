@@ -19,7 +19,6 @@ package com.robin.magic_realm.RealmSpeak;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -81,14 +80,13 @@ public class CharacterExpansionOnePanel extends CharacterFramePanel {
 	}
 	private class ChitDiscoveryModel extends AbstractTableModel {
 		private String name;
-		private ArrayList list;
-		private ArrayList discoveryNamesList;
-		public ChitDiscoveryModel(String name,ArrayList list) {
+		private ArrayList<GameObject> list;
+		private ArrayList<String> discoveryNamesList;
+		public ChitDiscoveryModel(String name,ArrayList<GameObject> list) {
 			this.name = name;
 			this.list = list;
-			discoveryNamesList = new ArrayList();
-			for (Iterator i=list.iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
+			discoveryNamesList = new ArrayList<>();
+			for (GameObject go : list) {
 				discoveryNamesList.add(go.getName());
 			}
 		}
@@ -112,7 +110,7 @@ public class CharacterExpansionOnePanel extends CharacterFramePanel {
 		}
 		public Object getValueAt(int row, int column) {
 			if (row<list.size()) {
-				GameObject go = (GameObject)list.get(row);
+				GameObject go = list.get(row);
 				switch(column) {
 					case 0:
 						String name = go.getName();
@@ -143,8 +141,8 @@ public class CharacterExpansionOnePanel extends CharacterFramePanel {
 					setBackground(MagicRealmColor.DISCOVERY_HIGHLIGHT_COLOR);
 				}
 			}
-			if (column==0) setHorizontalAlignment(JLabel.LEFT);
-			else setHorizontalAlignment(JLabel.CENTER);
+			if (column==0) setHorizontalAlignment(SwingConstants.LEFT);
+			else setHorizontalAlignment(SwingConstants.CENTER);
 			return this;
 		}
 	}

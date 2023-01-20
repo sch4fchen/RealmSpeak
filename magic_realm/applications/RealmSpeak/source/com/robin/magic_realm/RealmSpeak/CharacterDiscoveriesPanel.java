@@ -129,7 +129,7 @@ public class CharacterDiscoveriesPanel extends CharacterFramePanel {
 		}
 		public Object getValueAt(int row, int column) {
 			if (row<list.size()) {
-				GameObject tl = (GameObject)list.get(row);
+				GameObject tl = list.get(row);
 				switch(column) {
 					case 0:
 						String name = tl.getName();
@@ -155,7 +155,7 @@ public class CharacterDiscoveriesPanel extends CharacterFramePanel {
 			setBackground(Color.white);
 			setText((String)value);
 			if (row<list.size()) {
-				GameObject tl = (GameObject)list.get(row);
+				GameObject tl = list.get(row);
 				if (tl.hasThisAttribute(RealmComponent.RED_SPECIAL) && getCharacter().hasOtherChitDiscovery(tl.getName())) {
 					setBackground(MagicRealmColor.DISCOVERY_HIGHLIGHT_COLOR);
 				}

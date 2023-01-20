@@ -37,8 +37,7 @@ public class GameObjectBlockManager {
 	}
 	public void storeGameObjectInBlocks(GameObject go,String baseBlockKey) {
 		gameObject.setAttribute(baseBlockKey,prefix+"Name",go.getName());
-		for (Iterator i=go.getAttributeBlockNames().iterator();i.hasNext();) {
-			String blockName = (String)i.next();
+		for (String blockName : go.getAttributeBlockNames()) {
 			String newBlockName = baseBlockKey+blockName;
 			OrderedHashtable block = go.getAttributeBlock(blockName);
 			for (Iterator n=block.keySet().iterator();n.hasNext();) {
@@ -61,8 +60,7 @@ public class GameObjectBlockManager {
 		GameObject go = freeStandingGameObject?GameObject.createEmptyGameObject():gameObject.getGameData().createNewObject();
 		go.setName(gameObject.getAttribute(baseBlockKey,prefix+"Name"));
 		boolean foundAttributes = false;
-		for (Iterator i=gameObject.getAttributeBlockNames().iterator();i.hasNext();) {
-			String blockName = (String)i.next();
+		for (String blockName : gameObject.getAttributeBlockNames()) {
 			if (!blockName.equals(baseBlockKey) && blockName.startsWith(baseBlockKey)) {
 				foundAttributes = true;
 				String originalBlockName = blockName.substring(baseBlockKey.length());
@@ -85,8 +83,7 @@ public class GameObjectBlockManager {
 	}
 	public void clearBlocks(String baseBlockKey) {
 		ArrayList<String> remove = new ArrayList<String>();
-		for (Iterator i=gameObject.getAttributeBlockNames().iterator();i.hasNext();) {
-			String blockName = (String)i.next();
+		for (String blockName : gameObject.getAttributeBlockNames()) {
 			if (blockName.startsWith(baseBlockKey)) {
 				remove.add(blockName);
 			}

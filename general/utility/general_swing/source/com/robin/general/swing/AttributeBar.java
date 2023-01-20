@@ -225,13 +225,11 @@ public class AttributeBar extends JComponent {
 		if (valueState==ABSOLUTE) {
 			return ""+val;
 		}
-		else {
-			int rel = val - goalVal;
-			if (rel==0) {
-				return "0";
-			}
-			return rel<0?("-"+(-rel)):("+"+rel);
+		int rel = val - goalVal;
+		if (rel==0) {
+			return "0";
 		}
+		return rel<0?("-"+(-rel)):("+"+rel);
 	}
 	/**
 	 * For testing only

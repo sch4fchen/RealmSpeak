@@ -46,10 +46,10 @@ public class RecordParser {
 	}
 
 	public String getField(int i) {
-		if (i > 0 && i < field.length)
+		if (i > 0 && i < field.length) {
 			return stripEndQuotes(field[i]);
-		else
-			return "";
+		}
+		return "";
 	}
 
 	public static String stripEndQuotes(String s) {

@@ -86,7 +86,7 @@ public abstract class ChitManager extends AggressiveDialog {
 		setSize(670,500);
 		setLocationRelativeTo(parent);
 		initComponents(includeCancelButton);
-		setDefaultCloseOperation(AggressiveDialog.DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		modifiedChits = new ArrayList<ChitComponent>();
 	}
 	protected void initialize() {
@@ -178,7 +178,7 @@ public abstract class ChitManager extends AggressiveDialog {
 					}
 				};
 				activeChits.addMouseListener(mouse);
-				label = new JLabel("Active",JLabel.CENTER);
+				label = new JLabel("Active",SwingConstants.CENTER);
 				label.setFont(LABEL_FONT);
 			activePanel.add(label,"North");
 			activePanel.add(activeChits,"Center");
@@ -203,7 +203,7 @@ public abstract class ChitManager extends AggressiveDialog {
 					}
 				};
 				fatiguedChits.addMouseListener(mouse);
-				label = new JLabel("Fatigued",JLabel.CENTER);
+				label = new JLabel("Fatigued",SwingConstants.CENTER);
 				label.setFont(LABEL_FONT);
 			fatiguedPanel.add(label,"North");
 			fatiguedPanel.add(fatiguedChits,"Center");
@@ -228,7 +228,7 @@ public abstract class ChitManager extends AggressiveDialog {
 					}
 				};
 				woundedChits.addMouseListener(mouse);
-				label = new JLabel("Wounded",JLabel.CENTER);
+				label = new JLabel("Wounded",SwingConstants.CENTER);
 				label.setFont(LABEL_FONT);
 			woundedPanel.add(label,"North");
 			woundedPanel.add(woundedChits,"Center");
@@ -244,7 +244,7 @@ public abstract class ChitManager extends AggressiveDialog {
 					}
 				});
 			southDisplay.add(resetButton,"West");
-				statusLabel = new JLabel("",JLabel.CENTER);
+				statusLabel = new JLabel("",SwingConstants.CENTER);
 				statusLabel.setFont(LABEL_FONT);
 			southDisplay.add(statusLabel,"Center");
 				Box controls = Box.createHorizontalBox();

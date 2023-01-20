@@ -103,7 +103,7 @@ public class SoundCache {
 	public static void playSound(String name) {
 		if (useSound && name!=null) {
 			String soundPath = "sounds/"+name;
-			Clip clip = (Clip)cache.get(name);
+			Clip clip = cache.get(name);
 			if (clip==null) {
 				try {
 					InputStream stream = ResourceFinder.getInputStream(soundPath);

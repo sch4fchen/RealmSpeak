@@ -156,11 +156,9 @@ public class CharacterInfoCard {
 			String s = "Notes:";
 			g.drawString(s, 15, i);
 			int l = g.getFontMetrics().stringWidth(s) + 10;
-			int n = 0;
 			MultiFormatString multiformatstring = new MultiFormatString(extraNotes);
 			multiformatstring.setFontSize(12);
 			i += multiformatstring.draw(g, 15 + l, i, getCardPrintableWidth() - l);
-			n++;
 		}
 		i += 5;
 		
@@ -323,7 +321,7 @@ public class CharacterInfoCard {
 		}
 		return i;
 	}
-	private String formatAdvantage(String adv) {
+	private static String formatAdvantage(String adv) {
 		StringTokenizer tokens = new StringTokenizer(adv,":");
 		if (tokens.countTokens()==2) {
 			String name = tokens.nextToken();

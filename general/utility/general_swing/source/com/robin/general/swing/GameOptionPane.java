@@ -31,17 +31,17 @@ public class GameOptionPane extends JPanel implements ActionListener {
 	private OrderedHashtable tabHash; // String tabKey:OrderedHashtable options or String tabKey:Component c
 	private Hashtable<String, String> tabDescriptionHash;
 	private boolean editMode;
-	private int tabPlacement = JTabbedPane.TOP;
+	private int tabPlacement = SwingConstants.TOP;
 	private ArrayList<ActionListener> actionListeners;
 	
 	public GameOptionPane() {
-		this(JTabbedPane.TOP,true);
+		this(SwingConstants.TOP,true);
 	}
 	public GameOptionPane(int tabPlacement) {
 		this(tabPlacement,true);
 	}
 	public GameOptionPane(boolean editMode) {
-		this(JTabbedPane.TOP,editMode);
+		this(SwingConstants.TOP,editMode);
 	}
 	public GameOptionPane(int tabPlacement,boolean editMode) {
 		super(new BorderLayout());
@@ -74,10 +74,9 @@ public class GameOptionPane extends JPanel implements ActionListener {
 		Object obj = tabHash.get(tabKey);
 		if (obj instanceof OrderedHashtable) {
 			ArrayList<String> rules = new ArrayList<>();
-			OrderedHashtable options = (OrderedHashtable)obj;
-			for (Iterator i=options.orderedKeys().iterator();i.hasNext();) {
-				String key = (String)i.next();
-				GameOption option = (GameOption)options.get(key);
+			OrderedHashtable<String,GameOption> options = (OrderedHashtable)obj;
+			for (String key : options.orderedKeys()) {
+				GameOption option = options.get(key);
 				if (active == option.isActive()) {
 					rules.add(option.getDescription());
 				}

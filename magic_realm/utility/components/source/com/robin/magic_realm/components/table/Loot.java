@@ -182,8 +182,7 @@ public class Loot extends RealmTable {
 		qp.actionType = CharacterActionType.SearchTable;
 		qp.targetOfSearch = treasureLocation;
 		qp.searchType = SearchResultType.getLootSearchResultType(treasureNumber);
-		for (Iterator n = treasures.iterator(); n.hasNext();) {
-			GameObject thing = (GameObject) n.next();
+		for (GameObject thing : treasures) {
 			treasureNumber--;
 			if (treasureNumber == 0) {
 				ret = characterFindsItem(character, thing);
@@ -201,8 +200,7 @@ public class Loot extends RealmTable {
 
 	protected String takeWeapon(CharacterWrapper character) {
 		if (tileLocation!=null) return null;
-		for (Iterator n = treasureLocation.getHold().iterator(); n.hasNext();) {
-			GameObject thing = (GameObject) n.next();
+		for (GameObject thing : treasureLocation.getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(thing);
 			if (rc.isWeapon()) {
 				return characterFindsItem(character, thing);
@@ -213,8 +211,7 @@ public class Loot extends RealmTable {
 
 	protected String takeArmor(CharacterWrapper character) {
 		if (tileLocation!=null) return null;
-		for (Iterator n = treasureLocation.getHold().iterator(); n.hasNext();) {
-			GameObject thing = (GameObject) n.next();
+		for (GameObject thing : treasureLocation.getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(thing);
 			if (rc.isArmor()) {
 				return characterFindsItem(character, thing);
@@ -225,8 +222,7 @@ public class Loot extends RealmTable {
 
 	protected String takeHorse(CharacterWrapper character) {
 		if (tileLocation!=null) return null;
-		for (Iterator n = treasureLocation.getHold().iterator(); n.hasNext();) {
-			GameObject thing = (GameObject) n.next();
+		for (GameObject thing : treasureLocation.getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(thing);
 			if (rc.isHorse()) {
 				return characterFindsItem(character, thing);
@@ -237,8 +233,7 @@ public class Loot extends RealmTable {
 
 	protected String takeTreasure(CharacterWrapper character) {
 		if (tileLocation!=null) return null;
-		for (Iterator n = treasureLocation.getHold().iterator(); n.hasNext();) {
-			GameObject thing = (GameObject) n.next();
+		for (GameObject thing : treasureLocation.getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(thing);
 			if (rc.isTreasure()) {
 				return characterFindsItem(character, thing);
@@ -297,8 +292,7 @@ public class Loot extends RealmTable {
 		if (source!=null && source.hasThisAttribute(Constants.MIN_LARGE_T) && !source.hasThisAttribute(Constants.DESTROYED)) {
 			int minLarge = source.getThisInt(Constants.MIN_LARGE_T);
 			int totalLarge = 0;
-			for (Iterator i=source.getHold().iterator();i.hasNext();) {
-				GameObject go = (GameObject)i.next();
+			for (GameObject go : source.getHold()) {
 				String treasureSize = go.getThisAttribute(RealmComponent.TREASURE);
 				if (treasureSize!=null && "large".equals(treasureSize) && !go.hasThisAttribute(Constants.TREASURE_SEEN)) {
 					totalLarge++;

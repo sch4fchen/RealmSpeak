@@ -51,8 +51,8 @@ public enum QuestState {
 		switch(this) {
 			case Failed:		return smallFailedIcon;
 			case Complete:		return smallCompleteIcon;
+			default: 			return null;
 		}
-		return null;
 	}
 	public boolean isFinished() {
 		return this==Failed || this==Complete;

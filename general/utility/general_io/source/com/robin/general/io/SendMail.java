@@ -170,7 +170,7 @@ public class SendMail {
 			list.addAll(Arrays.asList(recipients));
 		}
 		list.add(newRecipient);
-		return (String[])list.toArray(new String[list.size()]);
+		return list.toArray(new String[list.size()]);
 	}
 	public void addTO(String newRecipient) {
 		recipientsTO = addRecipient(recipientsTO,newRecipient);

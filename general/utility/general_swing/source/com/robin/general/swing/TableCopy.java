@@ -182,7 +182,7 @@ public class TableCopy {
 	 *
 	 * @exception NullPointerException	If viewColumns is null.
 	 */
-	private int[] convertColumnIndicesToModel(JTable table, int[] viewColumns) {
+	private static int[] convertColumnIndicesToModel(JTable table, int[] viewColumns) {
 		int[] modelColumns = new int[viewColumns.length];
 
 		for (int i = 0; i < viewColumns.length; i++) {
@@ -210,7 +210,7 @@ public class TableCopy {
 	 * @exception NullPointerException
 	 *		If either <code>rows</code> or <code>cols</code> is null.
 	 */
-	private Object[][] getValuesAt(TableModel tableModel, int[] rows, int[] cols) {
+	private static Object[][] getValuesAt(TableModel tableModel, int[] rows, int[] cols) {
 		Object[][] values = new Object[rows.length][cols.length];
 		for (int i = 0; i < rows.length; i++) {
 			for (int j = 0; j < cols.length; j++) {

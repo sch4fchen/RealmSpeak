@@ -21,7 +21,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.*;
 
@@ -442,9 +441,9 @@ public class DieRoller extends JComponent {
 		sb.append(", but does that work?");
 		
 		System.out.println(sb.toString());
-		ArrayList list = DieRoller.breakOutRollers(sb.toString(),10,2);
-		for (Iterator i=list.iterator();i.hasNext();) {
-			System.out.println(i.next());
+		ArrayList<Serializable> list = DieRoller.breakOutRollers(sb.toString(),10,2);
+		for (Serializable i : list) {
+			System.out.println(i);
 		}
 	}
 	/**
@@ -476,7 +475,7 @@ public class DieRoller extends JComponent {
 		roller.addWhiteDie();
 		int total = 0;
 		int[] bin = new int[6];
-		NumberFormat format = DecimalFormat.getPercentInstance();
+		NumberFormat format = NumberFormat.getPercentInstance();
 		while(true) {
 			roller.reset();
 			roller.rollDice();

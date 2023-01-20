@@ -20,7 +20,6 @@ package com.robin.hexmap;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.StringTokenizer;
 
 public class HexMapPoint {
@@ -153,18 +152,16 @@ public class HexMapPoint {
 		return "HexMapPoint("+x+","+y+")";
 	}
 	
-	public static ArrayList getKeyCollection(Collection hexMapPoints) {
-		ArrayList keys = new ArrayList();
-		for (Iterator i=hexMapPoints.iterator();i.hasNext();) {
-			HexMapPoint pos = (HexMapPoint)i.next();
+	public static ArrayList<String> getKeyCollection(Collection<HexMapPoint> hexMapPoints) {
+		ArrayList<String> keys = new ArrayList<>();
+		for (HexMapPoint pos : hexMapPoints) {
 			keys.add(pos.getKey());
 		}
 		return keys;
 	}
-	public static Collection getHexMapPoints(Collection keys) {
-		ArrayList hexMapPoints = new ArrayList();
-		for (Iterator i=keys.iterator();i.hasNext();) {
-			String key = (String)i.next();
+	public static Collection<HexMapPoint> getHexMapPoints(Collection<String> keys) {
+		ArrayList<HexMapPoint> hexMapPoints = new ArrayList<>();
+		for (String key : keys) {
 			hexMapPoints.add(readKey(key));
 		}
 		return hexMapPoints;

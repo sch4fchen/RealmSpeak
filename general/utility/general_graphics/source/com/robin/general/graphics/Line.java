@@ -44,7 +44,7 @@ public class Line {
 		}
 		return false;
 	}
-	private boolean between(int n,int n1,int n2) {
+	private static boolean between(int n,int n1,int n2) {
 		return (n1<n2?(n>=n1 && n<=n2):(n>=n2 && n<=n1));
 	}
 }

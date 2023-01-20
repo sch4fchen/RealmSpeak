@@ -49,7 +49,7 @@ public class ImageZip {
 	}
 	private static Image string2Image(String string) {
 		try {
-			ArrayList integers = new ArrayList();
+			ArrayList<Integer> integers = new ArrayList<>();
 			StringTokenizer st = new StringTokenizer(string,",");
 			while(st.hasMoreTokens()) {
 				String val = st.nextToken();
@@ -57,12 +57,12 @@ public class ImageZip {
 				integers.add(n);
 			}
 			
-			int w = ((Integer)integers.remove(0)).intValue();
-			int h = ((Integer)integers.remove(0)).intValue();
+			int w = integers.remove(0).intValue();
+			int h = integers.remove(0).intValue();
 			BufferedImage bi = new BufferedImage(w,h,BufferedImage.TYPE_4BYTE_ABGR);
 			for (int x=0;x<w;x++) {
 				for (int y=0;y<h;y++) {
-					int rgb = ((Integer)integers.remove(0)).intValue();
+					int rgb = integers.remove(0).intValue();
 					bi.setRGB(x,y,rgb);
 				}
 			}
@@ -100,13 +100,13 @@ public class ImageZip {
 		return unzipImages(new FileInputStream(filename));
 	}
 	public static Image[] unzipImages(InputStream inputStream) {
-		ArrayList images = new ArrayList();
+		ArrayList<Image> images = new ArrayList<>();
 		try {
 			ZipInputStream zi = new ZipInputStream(inputStream);
 //			ZipEntry ze;
 			while ((zi.getNextEntry())!=null) {
 				byte[]data = new byte[BUFFER];
-				ArrayList allBytes = new ArrayList();
+				ArrayList<Byte> allBytes = new ArrayList<>();
 				int size;
 				while((size=zi.read(data,0,BUFFER))!=-1) {
 					for (int i=0;i<size;i++) {
@@ -115,8 +115,7 @@ public class ImageZip {
 				}
 				data = new byte[allBytes.size()];
 				int n=0;
-				for (Iterator i=allBytes.iterator();i.hasNext();) {
-					Byte b = (Byte)i.next();
+				for (Byte b : allBytes) {
 					data[n++] = b.byteValue();
 				}
 				
@@ -127,7 +126,7 @@ public class ImageZip {
 			}
 			zi.close();
 			
-			return (Image[])images.toArray(new Image[images.size()]);
+			return images.toArray(new Image[images.size()]);
 		}
 		catch(Exception ex) {
 			ex.printStackTrace();

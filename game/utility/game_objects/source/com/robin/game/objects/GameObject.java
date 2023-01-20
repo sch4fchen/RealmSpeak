@@ -1217,7 +1217,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 	public void setAttributeList(String blockName, String key, ArrayList val) {
 		if (parent != null && parent.isTracksChanges()) {
 			GameAttributeListChange change = new GameAttributeListChange(this);
-			change.setAttributeList(blockName, key, (ArrayList) getAttributeList(blockName, key), val);
+			change.setAttributeList(blockName, key, getAttributeList(blockName, key), val);
 			parent.addChange(change);
 			if (uncommitted == null) {
 				startUncommitted();

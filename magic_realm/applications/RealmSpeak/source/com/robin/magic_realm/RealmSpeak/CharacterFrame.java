@@ -774,7 +774,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 
 		// Build GUI		
 		layoutPanel.add(getCharacterDetailPanel(), "North");
-		tabs = new JTabbedPane(JTabbedPane.BOTTOM);
+		tabs = new JTabbedPane(SwingConstants.BOTTOM);
 		tabs.addTab(null, ImageCache.getIcon("tab/record"), getActionPanel(), "Record Actions");
 		if (character.isCharacter())
 			tabs.addTab(null, ImageCache.getIcon("tab/chits"), getChitPanel(), "Chits");
@@ -916,7 +916,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		box.add(Box.createHorizontalGlue());
 		attributesPanel.add(box);
 		box = group.createLabelLine("Vulnerability");
-		characterVulnerability = new JLabel("", JLabel.CENTER);
+		characterVulnerability = new JLabel("", SwingConstants.CENTER);
 		box.add(characterVulnerability);
 		box.add(Box.createHorizontalGlue());
 		attributesPanel.add(box);

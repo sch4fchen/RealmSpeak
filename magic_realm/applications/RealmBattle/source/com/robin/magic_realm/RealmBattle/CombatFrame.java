@@ -1150,7 +1150,7 @@ public class CombatFrame extends JFrame {
 				});
 				panel.add(inventoryObjectPanel,"Center");
 				
-				JLabel label = new JLabel("Click spell for more info",JLabel.CENTER);
+				JLabel label = new JLabel("Click spell for more info",SwingConstants.CENTER);
 				label.setOpaque(true);
 				label.setBackground(MagicRealmColor.PALEYELLOW);
 				label.setFont(INVENTORY_AWKENED_SPELLS_FONT);

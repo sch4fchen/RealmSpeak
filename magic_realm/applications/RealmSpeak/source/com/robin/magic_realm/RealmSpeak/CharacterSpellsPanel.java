@@ -31,6 +31,7 @@ import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.swing.RealmObjectPanel;
 import com.robin.magic_realm.components.swing.SpellInfoDialog;
 import com.robin.magic_realm.components.utility.Constants;
+import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.SpellMasterWrapper;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
@@ -39,7 +40,7 @@ public class CharacterSpellsPanel extends CharacterFramePanel {
 	private RealmObjectPanel recordedSpellsObjectPanel;
 	
 	private JPanel bottom;
-	private ArrayList bewitchingSpells;
+	private ArrayList<SpellWrapper> bewitchingSpells;
 	private SpellListModel listModel;
 	private JList bewitchingSpellsList;
 	private SpellMasterWrapper spellMaster;
@@ -52,7 +53,7 @@ public class CharacterSpellsPanel extends CharacterFramePanel {
 	private void init() {
 		setLayout(new BorderLayout());
 		
-		JLabel ins = new JLabel("Right-click spell for more info",JLabel.CENTER);
+		JLabel ins = new JLabel("Right-click spell for more info",SwingConstants.CENTER);
 		ins.setOpaque(true);
 		ins.setBackground(MagicRealmColor.PALEYELLOW);
 		ins.setFont(new Font("Dialog",Font.BOLD,14));
@@ -94,7 +95,7 @@ public class CharacterSpellsPanel extends CharacterFramePanel {
 				if (ev.getClickCount()==2 || MouseUtility.isRightOrControlClick(ev)) {
 					int index = bewitchingSpellsList.getSelectedIndex();
 					if (index>=0 && index<listModel.getSize()) {
-						SpellWrapper spell = (SpellWrapper)bewitchingSpells.get(index);
+						SpellWrapper spell = bewitchingSpells.get(index);
 						SpellInfoDialog.showSpellInfo(getGameHandler().getMainFrame(),spell);
 					}
 				}
@@ -103,7 +104,7 @@ public class CharacterSpellsPanel extends CharacterFramePanel {
 				if ( MouseUtility.isRightOrControlClick(ev)) {
 					int index = bewitchingSpellsList.locationToIndex(ev.getPoint());
 					if (index>=0 && index<listModel.getSize()) {
-						SpellWrapper spell = (SpellWrapper)bewitchingSpells.get(index);
+						SpellWrapper spell = bewitchingSpells.get(index);
 						SpellInfoDialog.showSpellInfo(getGameHandler().getMainFrame(),spell);
 					}
 				}
@@ -112,7 +113,7 @@ public class CharacterSpellsPanel extends CharacterFramePanel {
 		JScrollPane sp = new JScrollPane(bewitchingSpellsList);
 		ComponentTools.lockComponentSize(sp,70,70);
 		bottom.add(sp,"Center");
-		JLabel instruction = new JLabel("Double-click bewitching spells for more info",JLabel.CENTER);
+		JLabel instruction = new JLabel("Double-click bewitching spells for more info",SwingConstants.CENTER);
 		instruction.setForeground(Color.red);
 		bottom.add(instruction,"South");
 		add(bottom,"South");
@@ -129,16 +130,16 @@ public class CharacterSpellsPanel extends CharacterFramePanel {
 		}
 		
 		// Add the virtual spell cards (enhanced magic) here
-		recordedSpellsObjectPanel.addObjects(getCharacter().getAllVirtualSpellsFor(spells));
+		recordedSpellsObjectPanel.addObjects(CharacterWrapper.getAllVirtualSpellsFor(spells));
 		
 		bewitchingSpells = spellMaster.getAffectingSpells(getCharacter().getGameObject());
 		listModel.update();
 		bottom.setVisible(!bewitchingSpells.isEmpty());
 	}
-	private class SpellListModel extends AbstractListModel {
-		public Object getElementAt(int index) {
+	private class SpellListModel extends AbstractListModel<String> {
+		public String getElementAt(int index) {
 			if (index<getSize()) {
-				SpellWrapper spell = (SpellWrapper)bewitchingSpells.get(index);
+				SpellWrapper spell = bewitchingSpells.get(index);
 				String caster = spell.getCaster().getGameObject().getName();
 				String spellName = spell.getName();
 				String duration = spell.getGameObject().getThisAttribute("duration");

@@ -161,7 +161,7 @@ public class CharacterOptionsDialog extends AggressiveDialog {
 		line.add(okayButton);
 		getContentPane().add(line, "South");
 
-		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		setResizable(false);
 		if (CustomUiUtility.isResponsive()) pack();
 	}

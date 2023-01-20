@@ -19,7 +19,6 @@ package com.robin.magic_realm.components.swing;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -82,9 +81,9 @@ public abstract class ChitBinPanel extends JComponent {
 		return layout.getChitAt(p);
 	}
 
-	public void addChits(ArrayList list) {
+	public void addChits(ArrayList<ChitComponent> list) {
 		for (int i=0;i<list.size();i++) {
-			ChitComponent chit = (ChitComponent)list.get(i);
+			ChitComponent chit = list.get(i);
 			addChit(chit, i);
 		}
 	}
@@ -239,7 +238,7 @@ public abstract class ChitBinPanel extends JComponent {
 			}
 		};
 		for (int i=0;i<chits.size();i++) {
-			ChitComponent chit = (ChitComponent)chits.get(i);
+			ChitComponent chit = chits.get(i);
 			panel.addChit(chit, i);
 		}
 		JOptionPane.showMessageDialog(null, panel,name,JOptionPane.PLAIN_MESSAGE);
