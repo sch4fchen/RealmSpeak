@@ -74,6 +74,25 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		{"Woods Girl","woodsgirl"},
 	};
 	
+	private static final String[][] SUPER_REALM_CHARACTER_CARDS = {
+			{"Amazon","amazon"},
+			{"Berserker","berserker"},
+			{"Black Knight","black_knight"},
+			{"Captain","captain"},
+			{"Druid","druid"},
+			{"Dwarf","dwarf"},
+			{"Elf","elf"},
+			{"Magician","magician"},
+			{"Pilgrim","pilgrim"},
+			{"Sorceror","sorceror"},
+			{"Swordsman","swordsman"},
+			{"White Knight","white_knight"},
+			{"Witch King","witch_king"},
+			{"Witch","witch"},
+			{"Wizard","wizard"},
+			{"Woods Girl","woodsgirl"},
+		};
+	
 	private static final String[] MISSIONS = {
 		"Escort Party",
 		"Food Ale",
@@ -161,6 +180,8 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		protected JMenu viewMenu;
 			protected JMenu characterMenuView;
 				protected JMenuItem[] characterCardView;
+			protected JMenu superRealmCharacterMenuView;
+				protected JMenuItem[] superRealmCharacterCardView;
 			protected JMenu customCharacterMenuView;
 				protected JMenuItem[] customCharacterCardView;
 			protected JMenu customCharacterMenuView2;
@@ -1108,6 +1129,13 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 					characterMenuView.add(characterCardView[i]);
 				}
 			viewMenu.add(characterMenuView);
+				superRealmCharacterMenuView = new JMenu("Super Realm Characters");
+				superRealmCharacterCardView = new JMenuItem[SUPER_REALM_CHARACTER_CARDS.length];
+				for (int i=0;i<SUPER_REALM_CHARACTER_CARDS.length;i++) {
+					superRealmCharacterCardView[i] = new ShowCharCardViewAction(SUPER_REALM_CHARACTER_CARDS[i]);
+					superRealmCharacterMenuView.add(superRealmCharacterCardView[i]);
+				}
+			viewMenu.add(superRealmCharacterMenuView);
 				ArrayList<ArrayList<String>> customCharacterCards = RealmCharacterBuilderModel.loadAllCustomCharacterCards();
 				customCharacterMenuView = new JMenu("Custom Characters (1-48)");
 				int maxSize = Math.min(customCharacterCards.size(), 48);
