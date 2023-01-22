@@ -39326,7 +39326,7 @@
         <attribute icon_type="great_axeman_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Dwarves Dwelling" />
+        <attribute setup_start="Dwarf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -48902,7 +48902,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1881" name="Mercenaries  Box">
+    <GameObject id="1880" name="Mercenaries  Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="clan 4" />
         <attribute ts_size="S+" />
@@ -48917,7 +48917,7 @@
         <attribute clan="4" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1882" name="Mercenary Dwelling">
+    <GameObject id="1881" name="Mercenary Dwelling">
       <AttributeBlock blockName="this">
         <attribute native="Mercenaries" />
         <attribute dwelling="cottage,settlement,hut" />
@@ -48932,6 +48932,618 @@
         <attribute super_realm="" />
         <attribute native_die="1" />
         <attribute clan="4" />
+      </AttributeBlock>
+      <contains id="1882" />
+      <contains id="1883" />
+      <contains id="1884" />
+      <contains id="1885" />
+      <contains id="1886" />
+      <contains id="1887" />
+    </GameObject>
+    <GameObject id="1882" name="Mercenary 1">
+      <AttributeBlock blockName="this">
+        <attribute native="Mercenary" />
+        <attribute fame="0" />
+        <attribute notoriety="6" />
+        <attribute base_price="4" />
+        <attribute vulnerability="H" />
+        <attribute rank="1" />
+        <attribute icon_type="lancer_l" />
+        <attribute setup_start="Mercenary Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="1" />
+        <attribute clan="4" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="6" />
+        <attribute chit_color="peach" />
+        <attribute attack_speed="4" />
+        <attribute length="8" />
+        <attribute strength="T" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute length="8" />
+        <attribute chit_color="brown" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1883" name="Mercenary 2">
+      <AttributeBlock blockName="this">
+        <attribute native="Mercenary" />
+        <attribute fame="0" />
+        <attribute notoriety="6" />
+        <attribute base_price="4" />
+        <attribute vulnerability="H" />
+        <attribute rank="2" />
+        <attribute icon_type="lancer_l" />
+        <attribute setup_start="Mercenary Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="1" />
+        <attribute clan="4" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute chit_color="peach" />
+        <attribute attack_speed="5" />
+        <attribute length="5" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="3" />
+        <attribute strength="T" />
+        <attribute length="5" />
+        <attribute chit_color="brown" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1884" name="Mercenary 3">
+      <AttributeBlock blockName="this">
+        <attribute native="Mercenary" />
+        <attribute fame="0" />
+        <attribute notoriety="6" />
+        <attribute base_price="4" />
+        <attribute vulnerability="H" />
+        <attribute rank="3" />
+        <attribute icon_type="lancer_l" />
+        <attribute setup_start="Mercenary Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="1" />
+        <attribute clan="4" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute chit_color="peach" />
+        <attribute attack_speed="5" />
+        <attribute length="5" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="3" />
+        <attribute strength="T" />
+        <attribute length="5" />
+        <attribute chit_color="brown" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1885" name="Mercenary 4">
+      <AttributeBlock blockName="this">
+        <attribute native="Mercenary" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="4" />
+        <attribute icon_type="lancer_l" />
+        <attribute setup_start="Mercenary Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="1" />
+        <attribute clan="4" />
+        <attribute armored="" />
+        <attribute missile="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute chit_color="peach" />
+        <attribute attack_speed="6" />
+        <attribute length="12" />
+        <attribute strength="H" />
+        <attribute missile="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="1" />
+        <attribute strength="H" />
+        <attribute length="12" />
+        <attribute chit_color="brown" />
+        <attribute missile="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1886" name="Mercenary 5">
+      <AttributeBlock blockName="this">
+        <attribute native="Mercenary" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="5" />
+        <attribute icon_type="lancer_l" />
+        <attribute setup_start="Mercenary Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="1" />
+        <attribute clan="4" />
+        <attribute armored="" />
+        <attribute missile="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute chit_color="peach" />
+        <attribute attack_speed="6" />
+        <attribute length="12" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute missile="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="1" />
+        <attribute strength="H" />
+        <attribute length="12" />
+        <attribute chit_color="brown" />
+        <attribute sharpness="1" />
+        <attribute missile="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1887" name="Mercenary HQ">
+      <AttributeBlock blockName="this">
+        <attribute native="Mercenary" />
+        <attribute fame="0" />
+        <attribute notoriety="6" />
+        <attribute base_price="4" />
+        <attribute vulnerability="H" />
+        <attribute rank="HQ" />
+        <attribute icon_type="lancer_l" />
+        <attribute setup_start="Mercenary Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="1" />
+        <attribute clan="4" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="6" />
+        <attribute chit_color="peach" />
+        <attribute attack_speed="4" />
+        <attribute length="8" />
+        <attribute strength="T" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="5" />
+        <attribute attack_speed="5" />
+        <attribute strength="H" />
+        <attribute length="8" />
+        <attribute chit_color="brown" />
+        <attribute sharpness="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1888" name="Conjurors Box">
+      <AttributeBlock blockName="this">
+        <attribute ts_section="clan 4" />
+        <attribute ts_size="S+" />
+        <attribute ts_color="purple" />
+        <attribute ts_draw_below="" />
+        <attribute ts_sort="2" />
+        <attribute gold_special_target="" />
+        <attribute summon_n="conjurors" />
+        <attribute summon="conjurors" />
+        <attribute super_realm="" />
+        <attribute native_die="5" />
+        <attribute clan="4" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1889" name="Conjuror Dwelling">
+      <AttributeBlock blockName="this">
+        <attribute native="Conjurors" />
+        <attribute dwelling="hamlet,settlement,s_camp" />
+        <attribute print="" />
+        <attribute ts_section="clan 4" />
+        <attribute ts_size="T" />
+        <attribute ts_color="purple" />
+        <attribute ts_count="4" />
+        <attribute icon_type="archer_w" />
+        <attribute icon_folder="natives_c" />
+        <attribute virtual_dwelling="" />
+        <attribute super_realm="" />
+        <attribute native_die="5" />
+        <attribute clan="4" />
+      </AttributeBlock>
+      <contains id="1890" />
+      <contains id="1891" />
+      <contains id="1892" />
+      <contains id="1893" />
+    </GameObject>
+    <GameObject id="1890" name="Conjuror 1">
+      <AttributeBlock blockName="this">
+        <attribute native="Conjurors" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="3" />
+        <attribute vulnerability="M" />
+        <attribute rank="1" />
+        <attribute icon_type="lancer_l" />
+        <attribute setup_start="Conjuror Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="5" />
+        <attribute clan="4" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute chit_color="peach" />
+        <attribute attack_speed="4" />
+        <attribute length="9" />
+        <attribute strength="M" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1894" />
+    </GameObject>
+    <GameObject id="1891" name="Conjuror 2">
+      <AttributeBlock blockName="this">
+        <attribute native="Conjurors" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="3" />
+        <attribute vulnerability="M" />
+        <attribute rank="2" />
+        <attribute icon_type="lancer_l" />
+        <attribute setup_start="Conjuror Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="5" />
+        <attribute clan="4" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute chit_color="peach" />
+        <attribute attack_speed="4" />
+        <attribute length="9" />
+        <attribute strength="M" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1895" />
+    </GameObject>
+    <GameObject id="1892" name="Conjuror 3">
+      <AttributeBlock blockName="this">
+        <attribute native="Conjurors" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="3" />
+        <attribute vulnerability="M" />
+        <attribute rank="3" />
+        <attribute icon_type="lancer_l" />
+        <attribute setup_start="Conjuror Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="5" />
+        <attribute clan="4" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute chit_color="peach" />
+        <attribute attack_speed="4" />
+        <attribute length="9" />
+        <attribute strength="M" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1896" />
+    </GameObject>
+    <GameObject id="1893" name="Conjuror HQ">
+      <AttributeBlock blockName="this">
+        <attribute native="Conjurors" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="3" />
+        <attribute vulnerability="M" />
+        <attribute rank="HQ" />
+        <attribute icon_type="lancer_l" />
+        <attribute setup_start="Conjuror Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="5" />
+        <attribute clan="4" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute chit_color="peach" />
+        <attribute attack_speed="4" />
+        <attribute length="9" />
+        <attribute strength="M" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1897" />
+    </GameObject>
+    <GameObject id="1894" name="Enchanter Horse 1">
+      <AttributeBlock blockName="this">
+        <attribute native="Conjurors" />
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+        <attribute clan="4" />
+        <attribute native_die="6" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="7" />
+        <attribute strength="H" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1895" name="Enchanter Horse 2">
+      <AttributeBlock blockName="this">
+        <attribute native="Conjurors" />
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+        <attribute clan="4" />
+        <attribute native_die="6" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="6" />
+        <attribute strength="M" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1896" name="Enchanter Horse 3">
+      <AttributeBlock blockName="this">
+        <attribute native="Conjurors" />
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+        <attribute clan="4" />
+        <attribute native_die="6" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="6" />
+        <attribute strength="M" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1897" name="Enchanter Horse HQ">
+      <AttributeBlock blockName="this">
+        <attribute native="Conjurors" />
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+        <attribute clan="4" />
+        <attribute native_die="6" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1898" name="Enchanters  Box">
+      <AttributeBlock blockName="this">
+        <attribute ts_section="clan 4" />
+        <attribute ts_size="S+" />
+        <attribute ts_color="purple" />
+        <attribute ts_draw_below="" />
+        <attribute ts_sort="2" />
+        <attribute gold_special_target="" />
+        <attribute summon_n="enchanters" />
+        <attribute summon="enchanters" />
+        <attribute super_realm="" />
+        <attribute native_die="6" />
+        <attribute clan="4" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1899" name="Enchanter Dwelling">
+      <AttributeBlock blockName="this">
+        <attribute native="Enchanters" />
+        <attribute dwelling="guard,house,settlement" />
+        <attribute print="" />
+        <attribute ts_section="clan 4" />
+        <attribute ts_size="T" />
+        <attribute ts_color="purple" />
+        <attribute ts_count="3" />
+        <attribute icon_type="archer_w" />
+        <attribute icon_folder="natives_c" />
+        <attribute virtual_dwelling="" />
+        <attribute super_realm="" />
+        <attribute native_die="6" />
+        <attribute clan="4" />
+      </AttributeBlock>
+      <contains id="1900" />
+      <contains id="1901" />
+      <contains id="1902" />
+    </GameObject>
+    <GameObject id="1900" name="Enchanter 1">
+      <AttributeBlock blockName="this">
+        <attribute native="Enchanters" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="3" />
+        <attribute vulnerability="L" />
+        <attribute rank="1" />
+        <attribute icon_type="lancer_l" />
+        <attribute setup_start="Enchanter Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="6" />
+        <attribute clan="4" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute chit_color="peach" />
+        <attribute attack_speed="4" />
+        <attribute length="9" />
+        <attribute strength="M" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1901" name="Enchanter 2">
+      <AttributeBlock blockName="this">
+        <attribute native="Enchanters" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="3" />
+        <attribute vulnerability="L" />
+        <attribute rank="2" />
+        <attribute icon_type="lancer_l" />
+        <attribute setup_start="Enchanter Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="6" />
+        <attribute clan="4" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute chit_color="peach" />
+        <attribute attack_speed="4" />
+        <attribute length="9" />
+        <attribute strength="M" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1902" name="Enchanter HQ">
+      <AttributeBlock blockName="this">
+        <attribute native="Enchanters" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="3" />
+        <attribute vulnerability="L" />
+        <attribute rank="HQ" />
+        <attribute icon_type="lancer_l" />
+        <attribute setup_start="Enchanter Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="6" />
+        <attribute clan="4" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="4" />
+        <attribute chit_color="peach" />
+        <attribute attack_speed="4" />
+        <attribute length="9" />
+        <attribute strength="M" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="3" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
   </objects>
