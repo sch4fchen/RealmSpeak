@@ -42,8 +42,9 @@ public class TreasureSetupCardView extends JComponent {
 	private static final Color HIGHLIGHT_COLOR = Color.white;
 	private static final int HIGHLIGHT_INTENSITY = 60; // percent
 	
-	private static final int SPACING = 5;
-	private static final int TEXT_SPACING = 10;
+	private int SPACING = 5;
+	private int TEXT_SPACING = 10;
+	private int HEADLINE_SPACING = 20;
 	private static final int LEFT_BORDER = 60;
 	private static final int RIGHT_BORDER = 20;
 	
@@ -107,7 +108,10 @@ public class TreasureSetupCardView extends JComponent {
 		if (nativeSetup) {
 			dieString1 = "native_die";
 			dieString2 = "native_die2";
-			title = "The Cart of Clans";
+			title = "The Chart of Clans";
+			SPACING = 10;
+			TEXT_SPACING = 22;
+			HEADLINE_SPACING = 37;
 		} else {
 			dieString1 = "monster_die";
 			dieString2 = "monster_die2";
@@ -551,7 +555,7 @@ public class TreasureSetupCardView extends JComponent {
 							|| sectionRowHash.get(section+3)!=null || sectionRowHash.get(section+4)!=null
 							|| sectionRowHash.get(section+5)!=null || sectionRowHash.get(section+6)!=null) {
 						g.setFont(LABEL_FONT);
-						g.drawString(section.toUpperCase(),x,y-20);
+						g.drawString(section.toUpperCase(),x,y-HEADLINE_SPACING);
 					}
 				}
 				if (groups!=null) {
