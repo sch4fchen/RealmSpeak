@@ -1,6 +1,5 @@
 ::ROADMAP::
 ---Content---
-Super Realm: Natives
 Super Realm: Items incl. Horses
 Super Realm: adapt chit colors for monsters and natives
 Super Realm: names for natives, icons for natives and monsters

@@ -47269,7 +47269,7 @@
         <attribute summon_tl="Altar" />
         <attribute summon="enchanted_meadow,altar" />
         <attribute super_realm="" />
-        <attribute native_die="6" />
+        <attribute monster_die="6" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1823" name="Shrine Circle Box">
@@ -47284,7 +47284,7 @@
         <attribute summon_tl="Shrine" />
         <attribute summon="toadstool_circle,shrine" />
         <attribute super_realm="" />
-        <attribute native_die="6" />
+        <attribute monster_die="6" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1824" name="Peasant 1">

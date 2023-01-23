@@ -220,30 +220,32 @@ public class TreasureSetupCardView extends JComponent {
 		}
 		
 		nonMdList = new ArrayList<>();
-		if (!nativeSetup) {
-			for (String section : sections) {
-				String key = section;
-				ArrayList<GameObject> l = hash.getList(key);
-				if (l!=null) {
-					Collections.sort(l,new Comparator<GameObject>() {
-						public int compare(GameObject go1,GameObject go2) {
-							int ret = 0;	
-							int md1 = go1.getThisInt("monster_die");
-							int md2 = go2.getThisInt("monster_die");
-							ret = md1-md2;
+		for (String section : sections) {
+			String key = section;
+			ArrayList<GameObject> l = hash.getList(key);
+			if (l!=null) {
+				Collections.sort(l,new Comparator<GameObject>() {
+					public int compare(GameObject go1,GameObject go2) {
+						int ret = 0;
+						int md1 = go1.getThisInt("monster_die");
+						int md2 = go2.getThisInt("monster_die");
+						ret = md1-md2;
+						if (ret==0) {
+							int md12 = go1.getThisInt("native_die");
+							int md22 = go2.getThisInt("native_die");
+							ret = md12-md22;
 							if (ret==0) {
-								int md12 = go1.getThisInt("native_die");
-								int md22 = go2.getThisInt("native_die");
-								ret = md12-md22;
-								if (ret==0) {
-									return go1.getName().compareTo(go2.getName());
-								}
+								return go1.getName().compareTo(go2.getName());
 							}
-							return ret;
 						}
-					});
-					for(GameObject go : l) {
-						if (!go.hasThisAttribute(CacheChitComponent.DEPLETED_CACHE) && go.hasThisAttribute("ts_color")) {
+						return ret;
+					}
+				});
+				for(GameObject go : l) {
+					if (!go.hasThisAttribute(CacheChitComponent.DEPLETED_CACHE) && go.hasThisAttribute("ts_color")) {
+						if (nativeSetup) {
+							if (go.hasThisAttribute("native") || go.hasThisAttribute("native_die") || go.hasThisAttribute("gold_special_target")) nonMdList.add(go);
+						} else {
 							nonMdList.add(go);
 						}
 					}
