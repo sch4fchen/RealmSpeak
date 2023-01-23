@@ -170,7 +170,11 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				String iconName = gameObject.getThisAttribute(Constants.ICON_TYPE+"_sr");
 				String iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER+"_sr");
 				Shape shape = getShape(SHADOW_BORDER,SHADOW_BORDER,getChitSize()-SHADOW_BORDER);
-				g.setColor(Color.white);
+				if (isHidden()) {
+					g.setColor(Color.green);
+				} else {
+					g.setColor(Color.white);
+				}
 				g.fill(shape);
 				drawIcon(g,iconFolder,iconName,1.2);
 			}
