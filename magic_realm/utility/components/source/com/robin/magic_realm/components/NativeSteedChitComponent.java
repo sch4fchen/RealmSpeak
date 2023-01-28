@@ -127,7 +127,11 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		}
 		tt.draw(g,getChitSize()-10-tt.getWidth(g),7,Alignment.Left);
 		if ((RealmComponent.displaySubline || getGameObject().hasThisAttribute("super_realm")) && getGameObject().hasThisAttribute("native")) {
-			tt = new TextType(getGameObject().getThisAttribute("native"),(getChitSize()>>1)+20, "ITALIC");
+			String text = getGameObject().getThisAttribute("native");
+			if (getGameObject().hasThisAttribute("rank")) {
+				text = text + " " + getGameObject().getThisAttribute("rank");
+			}
+			tt = new TextType(text,(getChitSize()>>1)+20, "ITALIC");
 			if (getGameObject().hasThisAttribute("clan")) {
 				Color color = g.getColor();
 				Color clanColor = MagicRealmColor.getClanColor(getGameObject().getThisAttribute("clan"));
@@ -136,7 +140,6 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 			} else {
 				tt.draw(g,5,13,Alignment.Left);
 			}
-			
 		}
 		
 		// Draw Stats
