@@ -34199,10 +34199,10 @@
         <attribute tile_type="V" />
         <attribute super_realm="" />
         <attribute print="" />
-        <attribute icon_type="house" />
+        <attribute icon_type="log-cabin4" />
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
-        <attribute icon_folder="dwellings" />
+        <attribute icon_folder="wesnoth/buildings" />
       </AttributeBlock>
       <contains id="1759" />
       <contains id="1760" />
@@ -34218,10 +34218,10 @@
         <attribute tile_type="V" />
         <attribute super_realm="" />
         <attribute print="" />
-        <attribute icon_type="inn" />
+        <attribute icon_type="log-cabin3" />
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
-        <attribute icon_folder="dwellings" />
+        <attribute icon_folder="wesnoth/buildings" />
       </AttributeBlock>
       <contains id="1812" />
       <contains id="1813" />
@@ -34241,11 +34241,11 @@
         <attribute tile_type="V" />
         <attribute super_realm="" />
         <attribute print="" />
-        <attribute icon_type="chapel" />
+        <attribute icon_type="elven2" />
         <attribute color_source="white" />
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
-        <attribute icon_folder="dwellings" />
+        <attribute icon_folder="wesnoth/buildings" />
         <attribute remove_curses="" />
       </AttributeBlock>
       <contains id="1769" />
@@ -34261,10 +34261,10 @@
         <attribute tile_type="V" />
         <attribute super_realm="" />
         <attribute print="" />
-        <attribute icon_type="guard" />
+        <attribute icon_type="drake5" />
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
-        <attribute icon_folder="dwellings" />
+        <attribute icon_folder="wesnoth/buildings" />
       </AttributeBlock>
       <contains id="1765" />
       <contains id="1766" />
@@ -34277,8 +34277,8 @@
         <attribute warning="smoke" />
         <attribute tile_type="W" />
         <attribute super_realm="" />
-        <attribute icon_type="small_fire" />
-        <attribute icon_folder="dwellings" />
+        <attribute icon_type="fire3" />
+        <attribute icon_folder="wesnoth/buildings" />
         <attribute general_dwelling="" />
       </AttributeBlock>
     </GameObject>
@@ -34288,8 +34288,8 @@
         <attribute warning="stink" />
         <attribute tile_type="W" />
         <attribute super_realm="" />
-        <attribute icon_type="large_fire" />
-        <attribute icon_folder="dwellings" />
+        <attribute icon_type="fire1" />
+        <attribute icon_folder="wesnoth/buildings" />
         <attribute general_dwelling="" />
       </AttributeBlock>
     </GameObject>
@@ -34303,7 +34303,7 @@
         <attribute icon_type="hut" />
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
-        <attribute icon_folder="dwellings" />
+        <attribute icon_folder="wesnoth/buildings" />
       </AttributeBlock>
       <contains id="1835" />
       <contains id="1836" />
@@ -34317,10 +34317,10 @@
         <attribute tile_type="H" />
         <attribute super_realm="" />
         <attribute print="" />
-        <attribute icon_type="house" />
+        <attribute icon_type="human-city4" />
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
-        <attribute icon_folder="dwellings" />
+        <attribute icon_folder="wesnoth/buildings" />
       </AttributeBlock>
       <contains id="1839" />
       <contains id="1840" />
@@ -34334,10 +34334,10 @@
         <attribute tile_type="H" />
         <attribute super_realm="" />
         <attribute print="" />
-        <attribute icon_type="inn" />
+        <attribute icon_type="human" />
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
-        <attribute icon_folder="dwellings" />
+        <attribute icon_folder="wesnoth/buildings" />
       </AttributeBlock>
       <contains id="1831" />
       <contains id="1832" />
@@ -34351,10 +34351,10 @@
         <attribute tile_type="V" />
         <attribute super_realm="" />
         <attribute print="" />
-        <attribute icon_type="house" />
+        <attribute icon_type="human-city" />
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
-        <attribute icon_folder="dwellings" />
+        <attribute icon_folder="wesnoth/buildings" />
       </AttributeBlock>
       <contains id="1824" />
       <contains id="1825" />
@@ -34370,8 +34370,8 @@
         <attribute warning="smoke" />
         <attribute tile_type="ST" />
         <attribute super_realm="" />
-        <attribute icon_type="small_fire" />
-        <attribute icon_folder="dwellings" />
+        <attribute icon_type="camp2" />
+        <attribute icon_folder="wesnoth/buildings" />
         <attribute general_dwelling="" />
       </AttributeBlock>
     </GameObject>
@@ -34381,8 +34381,8 @@
         <attribute warning="stink" />
         <attribute tile_type="ST" />
         <attribute super_realm="" />
-        <attribute icon_type="large_fire" />
-        <attribute icon_folder="dwellings" />
+        <attribute icon_type="camp3" />
+        <attribute icon_folder="wesnoth/buildings" />
         <attribute general_dwelling="" />
       </AttributeBlock>
     </GameObject>
