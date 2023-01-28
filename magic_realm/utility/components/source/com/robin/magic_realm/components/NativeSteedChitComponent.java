@@ -126,6 +126,18 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 			tt = new TextType(name,getChitSize(),"WHITE_NOTE");
 		}
 		tt.draw(g,getChitSize()-10-tt.getWidth(g),7,Alignment.Left);
+		if ((RealmComponent.displaySubline || getGameObject().hasThisAttribute("super_realm")) && getGameObject().hasThisAttribute("native")) {
+			tt = new TextType(getGameObject().getThisAttribute("native"),(getChitSize()>>1)+20, "ITALIC");
+			if (getGameObject().hasThisAttribute("clan")) {
+				Color color = g.getColor();
+				Color clanColor = MagicRealmColor.getClanColor(getGameObject().getThisAttribute("clan"));
+				tt.draw(g,5,13,Alignment.Left,clanColor);
+				g.setColor(color);
+			} else {
+				tt.draw(g,5,13,Alignment.Left);
+			}
+			
+		}
 		
 		// Draw Stats
 		String asterisk = isTrotting()?"":"*";

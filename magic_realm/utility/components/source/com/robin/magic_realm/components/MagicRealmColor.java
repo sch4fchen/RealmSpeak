@@ -121,4 +121,22 @@ public class MagicRealmColor {
 		}
 		throw new IllegalArgumentException("Invalid color: "+string);
 	}
+	
+	public static Color getClanColor(String clan) {
+		switch(clan) {
+		case "1":
+			return BLUE;
+		case "2":
+			return GREEN; 
+		case "3":
+			return RED;
+		case "4":
+			return PURPLE;
+		case "5":
+			return ORANGE;
+		case "0":
+		default:
+			return YELLOW;
+		}
+	}
 }
