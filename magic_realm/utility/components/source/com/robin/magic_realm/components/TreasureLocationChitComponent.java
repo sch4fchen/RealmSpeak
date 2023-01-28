@@ -42,16 +42,24 @@ public class TreasureLocationChitComponent extends StateChitComponent {
 		
 		if (getGameObject().hasThisAttribute(Constants.ALWAYS_VISIBLE) || isFaceUp()) {
 			if (!isCacheChit()) {
+				int y = 12;
+				String iconName = gameObject.getThisAttribute(Constants.ICON_TYPE+"_sr");
+				String iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER+"_sr");
+				if (iconName!=null && iconFolder!=null) {
+					drawIcon(g,iconFolder,iconName,0.4,0,-20,null);
+					y = 20;
+				}
+				
 				String tl = getAttribute("this","treasure_location");
 				if (tl.length()==0) {
 					tl = getAttribute("this","minor_tl");
 				}
 				tt = new TextType(StringUtilities.capitalize(tl),getChitSize(),"BOLD");
-				tt.draw(g,0,12,Alignment.Center);
+				tt.draw(g,0,y,Alignment.Center);
 			
 				String clearing = getAttribute("this","clearing");
 				tt = new TextType(clearing,getChitSize(),"BOLD");
-				tt.draw(g,0,12+tt.getHeight(g),Alignment.Center);
+				tt.draw(g,0,y+tt.getHeight(g),Alignment.Center);
 			}
 			
 			if (gameObject.hasThisAttribute(Constants.NEEDS_OPEN)) {

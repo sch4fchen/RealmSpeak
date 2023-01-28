@@ -29,7 +29,9 @@ import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.general.swing.*;
 import com.robin.general.util.RandomNumber;
+import com.robin.magic_realm.components.CharacterInfoCard;
 import com.robin.magic_realm.components.utility.*;
+import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class CharacterChooser extends AggressiveDialog {
@@ -265,6 +267,21 @@ public class CharacterChooser extends AggressiveDialog {
 	public static ImageIcon getCharacterImage(GameObject go) {
 		if (go.hasThisAttribute(Constants.CUSTOM_CHARACTER)) {
 			return CustomCharacterLibrary.getSingleton().getCharacterImage(go.getAttribute("level_4","name"));
+		}
+		if (go.hasThisAttribute("super_realm")) {
+			ArrayList<GameObject> collection = new ArrayList<GameObject>();
+			collection.add(go);
+			collection.addAll(go.getHold());
+			CharacterWrapper character = new CharacterWrapper(go);
+			CharacterInfoCard card = new CharacterInfoCard(character);
+			String iconName = go.getThisAttribute(Constants.CHARACTER_POTRAIT_FILE);
+			String iconFolder = go.getThisAttribute(Constants.CHARACTER_POTRAIT_FOLDER);
+			if (iconName!=null & iconFolder!=null) {
+				ImageIcon icon = IconFactory.findIcon(iconFolder+iconName+".png");
+				card.setPicture(icon);
+			}
+			return card.getImageIcon(true);
+			
 		}
 		String iconType = go.getThisAttribute("icon_type");
 		return IconFactory.findIcon("images/characterdetail/"+iconType+".jpg");

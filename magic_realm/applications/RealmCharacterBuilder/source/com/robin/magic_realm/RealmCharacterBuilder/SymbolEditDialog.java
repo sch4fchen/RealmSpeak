@@ -30,6 +30,7 @@ import com.robin.general.graphics.GraphicsUtil;
 import com.robin.general.io.FileManager;
 import com.robin.general.swing.AggressiveDialog;
 import com.robin.general.swing.IconFactory;
+import com.robin.magic_realm.components.CharacterInfoCard;
 
 public class SymbolEditDialog extends AggressiveDialog {
 	

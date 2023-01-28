@@ -49,13 +49,21 @@ public class WarningChitComponent extends StateChitComponent {
 		TextType tt;
 		
 		if (getGameObject().hasThisAttribute(Constants.ALWAYS_VISIBLE) || isFaceUp()) {
+			int y = 12;
+			String iconName = gameObject.getThisAttribute(Constants.ICON_TYPE+"_sr");
+			String iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER+"_sr");
+			if (iconName!=null && iconFolder!=null) {
+				drawIcon(g,iconFolder,iconName,0.4,0,-20,null);
+				y = 20;
+			}
+			
 			String warning = getAttribute("this","warning");
 			tt = new TextType(warning,getChitSize(),"BOLD");
-			tt.draw(g,0,12,Alignment.Center);
+			tt.draw(g,0,y,Alignment.Center);
 			
 			String type = getAttribute("this","tile_type");
 			tt = new TextType(type,getChitSize(),"BOLD");
-			tt.draw(g,0,12+tt.getHeight(g),Alignment.Center);
+			tt.draw(g,0,y+tt.getHeight(g),Alignment.Center);
 		}
 	}
 }

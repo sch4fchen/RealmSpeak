@@ -33,6 +33,7 @@ import com.robin.general.swing.*;
 import com.robin.general.util.StringBufferedList;
 import com.robin.general.util.StringUtilities;
 import com.robin.magic_realm.components.*;
+import com.robin.magic_realm.components.CharacterInfoCard;
 import com.robin.magic_realm.components.attribute.Strength;
 import com.robin.magic_realm.components.swing.RelationshipTable;
 import com.robin.magic_realm.components.utility.BattleUtility;

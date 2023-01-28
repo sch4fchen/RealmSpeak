@@ -31,6 +31,7 @@ import com.robin.general.io.FileManager;
 import com.robin.general.swing.ComponentTools;
 import com.robin.general.swing.IconFactory;
 import com.robin.general.swing.ImageCache;
+import com.robin.magic_realm.components.CharacterInfoCard;
 import com.robin.magic_realm.components.utility.*;
 
 public class RealmCharacterBuilderFrame extends JFrame {

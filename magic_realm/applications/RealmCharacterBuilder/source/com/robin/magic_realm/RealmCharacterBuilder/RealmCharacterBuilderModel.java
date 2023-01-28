@@ -31,6 +31,7 @@ import com.robin.general.io.ZipUtilities;
 import com.robin.general.swing.*;
 import com.robin.general.util.OrderedHashtable;
 import com.robin.magic_realm.components.CharacterChitComponent;
+import com.robin.magic_realm.components.CharacterInfoCard;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -62,10 +63,18 @@ public class RealmCharacterBuilderModel {
 	private Hashtable<String,GameObject> armorHash;
 	
 	public RealmCharacterBuilderModel(GameData data) {
+		ArrayList<GameObject> list = new ArrayList<>(data.getGameObjects());
+		init(list);
+	}
+	
+	public RealmCharacterBuilderModel(Collection<GameObject> collection) {
+		init(collection);
+	}
+	
+	private void init(Collection<GameObject> collection) {
 		chit = new GameObject[12];
 		int n=0;
-		ArrayList<GameObject> list = new ArrayList<>(data.getGameObjects());
-		for (GameObject go : list) {
+		for (GameObject go : collection) {
 			String opt = go.getThisAttribute("optional");
 			if ("add".equals(opt)) {
 				continue;

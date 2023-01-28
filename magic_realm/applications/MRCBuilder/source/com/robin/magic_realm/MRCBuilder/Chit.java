@@ -69,9 +69,7 @@ public class Chit {
 			as[1] = s.substring(i + 1);
 			return as;
 		}
-		else {
-			return null;
-		}
+		return null;
 	}
 
 	public static void draw(Graphics g, Chit chit) {

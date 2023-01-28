@@ -20,9 +20,9 @@ package com.robin.magic_realm.RealmCharacterWeb.build;
 import java.io.*;
 
 import com.robin.general.io.ZipUtilities;
-import com.robin.magic_realm.RealmCharacterBuilder.CharacterInfoCard;
 import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderModel;
 import com.robin.magic_realm.RealmCharacterWeb.RscharLayout;
+import com.robin.magic_realm.components.CharacterInfoCard;
 
 public class Page extends Builder {
 	

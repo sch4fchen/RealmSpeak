@@ -15,7 +15,7 @@
  *
  * http://www.gnu.org/licenses/
  */
-package com.robin.magic_realm.RealmCharacterBuilder;
+package com.robin.magic_realm.components;
 
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
@@ -27,7 +27,6 @@ import javax.swing.ImageIcon;
 import com.robin.general.swing.MultiFormatString;
 import com.robin.general.util.StringBufferedList;
 import com.robin.general.util.StringUtilities;
-import com.robin.magic_realm.components.CharacterActionChitComponent;
 import com.robin.magic_realm.components.attribute.RelationshipType;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmUtility;
@@ -46,6 +45,16 @@ public class CharacterInfoCard {
 	
 	public static final Font chitFont = new Font(fontName, 1, 12);
 	public static final Color darkGreen = new Color(0, 130, 0);
+	
+	public static String[] SPELL_COUNT_STRING = {
+			"zero",
+			"one",
+			"two",
+			"three",
+			"four",
+			"five",
+			"six",
+		};
 	
 	private CharacterWrapper character;
 	private ImageIcon picture = null;
@@ -195,7 +204,7 @@ public class CharacterInfoCard {
 				StringBufferedList sbl = new StringBufferedList(", ","and/or ");
 				sbl.appendAll(list);
 				StringBuffer sb = new StringBuffer();
-				sb.append(RealmCharacterConstants.SPELL_COUNT_STRING[spellCount]);
+				sb.append(SPELL_COUNT_STRING[spellCount]);
 				sb.append(" <i>Spell");
 				sb.append(spellCount==1?"":"s");
 				sb.append("</i> (type");

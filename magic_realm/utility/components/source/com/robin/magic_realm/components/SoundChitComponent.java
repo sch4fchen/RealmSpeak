@@ -39,13 +39,21 @@ public class SoundChitComponent extends StateChitComponent {
 		TextType tt;
 		
 		if (getGameObject().hasThisAttribute(Constants.ALWAYS_VISIBLE) || isFaceUp()) {
+			int y = 12;
+			String iconName = gameObject.getThisAttribute(Constants.ICON_TYPE+"_sr");
+			String iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER+"_sr");
+			if (iconName!=null && iconFolder!=null) {
+				drawIcon(g,iconFolder,iconName,0.4,0,-20,null);
+				y = 20;
+			}
+			
 			String sound = getAttribute("this","sound");
 			tt = new TextType(sound,getChitSize(),"BOLD");
-			tt.draw(g,0,12,Alignment.Center);
+			tt.draw(g,0,y,Alignment.Center);
 			
 			String clearing = getAttribute("this","clearing");
 			tt = new TextType(clearing,getChitSize(),"BOLD");
-			tt.draw(g,0,12+tt.getHeight(g),Alignment.Center);
+			tt.draw(g,0,y+tt.getHeight(g),Alignment.Center);
 		}
 	}
 }

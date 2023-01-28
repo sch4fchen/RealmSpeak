@@ -95,15 +95,6 @@ public class RealmCharacterConstants {
 		"5",
 		"6",
 	};
-	public static String[] SPELL_COUNT_STRING = {
-		"zero",
-		"one",
-		"two",
-		"three",
-		"four",
-		"five",
-		"six",
-	};
 	
 	public static String[] SPEEDS = {
 		"1",

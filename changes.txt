@@ -23,6 +23,7 @@ Super Realm: Characters
 Super Realm: CompanionEditPanel: add all denizens
 Super Realm: RealmCharacterConstants (adapt ArmorEditDialog and WeaponEditDialog): dwellings, visitors
 Super Realm: update graphics (wesnoth? -> licence?) or opengameart.org
+Super Realm: icons for site chits, sound and warning chits and characters (potraits)
 Super Realm: option to use Super Realm search tables etc., add search tables etc. to menu; add first edition search tables to menu
 ---Rules---
 SUPER REALM: remaining RULES and LOGIC (chapter 4.2 p.27ff. -> chapter 9.1 p.110)
@@ -68,6 +69,8 @@ NEW FEATURES:
 # Option to display native group in subline for native chits (always for Super Realm)
 # Option to include spells of Super Realm
 # Option to include treasures of Expansion 1 and Super Realm
+SUPER REALM:
+# Natives
 
 Version 1.1.7.4
 BUGS/ISSUES:

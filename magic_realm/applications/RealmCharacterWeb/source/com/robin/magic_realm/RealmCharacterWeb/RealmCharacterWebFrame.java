@@ -34,8 +34,8 @@ import org.jdom.output.XMLOutputter;
 import com.robin.general.io.ArgumentParser;
 import com.robin.general.io.FileManager;
 import com.robin.general.swing.ComponentTools;
-import com.robin.magic_realm.RealmCharacterBuilder.CharacterInfoCard;
 import com.robin.magic_realm.RealmCharacterWeb.build.*;
+import com.robin.magic_realm.components.CharacterInfoCard;
 
 public class RealmCharacterWebFrame extends JFrame {
 	private static final String WEB_LAYOUT_FILE = "webLayout.xml";
