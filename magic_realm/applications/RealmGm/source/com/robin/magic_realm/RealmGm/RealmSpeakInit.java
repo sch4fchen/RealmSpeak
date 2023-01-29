@@ -119,7 +119,7 @@ public class RealmSpeakInit {
 			prepExpansionTreasures("rw_expansion_1");
 		}
 		if(hostPrefs.getIncludeSrTreasures()){
-			prepExpansionTreasures("super_realm");
+			prepExpansionTreasures("super_realm_treasure");
 		}
 		if (hostPrefs.hasPref(Constants.OPT_POWER_OF_THE_PIT_ATTACK)) {
 			GamePool pool = new GamePool(data.getGameObjects());

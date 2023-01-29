@@ -312,7 +312,7 @@ public class BattleBuilder extends JFrame {
 					prepExpansionTreasures("rw_expansion_1", gameData);
 				}
 				if(hostPrefs.getIncludeSrTreasures()){
-					prepExpansionTreasures("super_realm", gameData);
+					prepExpansionTreasures("super_realm_treasure", gameData);
 				}
 				if (hostPrefs.hasPref(Constants.OPT_POWER_OF_THE_PIT_ATTACK)) {
 					GamePool pool = new GamePool(gameData.getGameObjects());
