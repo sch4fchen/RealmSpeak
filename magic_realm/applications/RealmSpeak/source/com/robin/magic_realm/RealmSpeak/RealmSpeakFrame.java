@@ -74,6 +74,29 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		{"Woods Girl","woodsgirl"},
 	};
 	
+	private static final String[] POEMS = {
+			"Magic Realm",
+			"Secrets of Magic Realm",
+			"Amazon",
+			"Berserker",
+			"Black Knight",
+			"Black Knight2",
+			"Captain",
+			"Druid",
+			"Dwarf",
+			"Elf",
+			"Magician",
+			"Magician2",
+			"Pilgrim",
+			"Pilgrim2",
+			"Sorceror",
+			"Sorceror2",
+			"Swordsman",
+			"Witch",
+			"White Knight",
+			"Woodsgirl"
+	};
+	
 	private static final String[] MISSIONS = {
 		"Escort Party",
 		"Food Ale",
@@ -175,6 +198,8 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 				protected JMenuItem viewDieRollSummary;
 				protected JMenuItem viewAllDieRolls;
 			protected JMenuItem viewSpellList;
+			protected JMenu poems;
+				protected JMenuItem[] poemsList;
 		protected JMenu tablesMenuView;
 			protected JMenuItem searchTables;
 			protected JMenuItem meetingTable;
@@ -520,6 +545,14 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		scroller.addLine(new ScrollLine("Free Game Icons",header,headerColor,Color.black,2));
 		scroller.addLine(new ScrollLine("molotov.nu",listing,listingColor));
 		scroller.addLine(new ScrollLine("(sadly, no longer online)",listing,listingColor));
+		scroller.addLine(new ScrollLine());
+		scroller.addLine(new ScrollLine("Poems",header,headerColor,Color.black,2));
+		scroller.addLine(new ScrollLine("Quantum Jack",listing,listingColor));
+		scroller.addLine(new ScrollLine("Psyrek",listing,listingColor));
+		scroller.addLine(new ScrollLine("Aashiana",listing,listingColor));
+		scroller.addLine(new ScrollLine("CthulhuKid",listing,listingColor));
+		scroller.addLine(new ScrollLine("Casey Benn",listing,listingColor));
+		scroller.addLine(new ScrollLine("Moistyclams",listing,listingColor));
 		scroller.addHyperlinkListener(new HyperlinkListener() {
 			public void hyperlinkUpdate(HyperlinkEvent ev) {
 				if (ev.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
@@ -590,7 +623,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		box.add(creditsButton);
 		panel.add(box,BorderLayout.SOUTH);
 		
-		FrameManager.showDefaultManagedFrame(this,panel,title,IconFactory.findIcon("images/logo/realmbox.jpg"),true);
+		FrameManager.showDefaultManagedFrame(this,panel,title,IconFactory.findIcon("images/logo/realmbox.jpg"),true,IconFactory.findIcon("images/logo/icon.gif"));
 	}
 	private void updateControls() {
 		boolean gameInProgress = realmHostFrame!=null;
@@ -1452,6 +1485,13 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 					});
 				viewDieRollStatistics.add(viewAllDieRolls);
 			viewMenu.add(viewDieRollStatistics);
+				poems = new JMenu("Poems");
+				poemsList = new JMenuItem[POEMS.length];
+				for (int i=0;i<POEMS.length;i++) {
+					poemsList[i] = new ShowPoem(POEMS[i]);
+					poems.add(poemsList[i]);
+				}
+			viewMenu.add(poems);
 //				generateGameSummary = new JMenuItem("Generate Game Summary");
 //				generateGameSummary.addActionListener(new ActionListener() {
 //						public void actionPerformed(ActionEvent ev) {
@@ -2212,6 +2252,17 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		public void actionPerformed(ActionEvent ev) {
 			ImageIcon frameIcon = ImageCache.getIcon(symbolPath);
 			FrameManager.showDefaultManagedFrame(RealmSpeakFrame.this,new JLabel(CustomCharacterLibrary.getSingleton().getCharacterImage(picturePath)),name,null,false,frameIcon);
+		}
+	}
+	private class ShowPoem extends JMenuItem implements ActionListener {
+		private String name;
+		public ShowPoem(String input) {
+			super(input);
+			name = input;
+			addActionListener(this);
+		}
+		public void actionPerformed(ActionEvent ev) {		
+			showHtmlWindow(name,RealmPoems.getPoem(name.toLowerCase()).toString());
 		}
 	}
 	private class ShowGoldSpecialViewAction extends JMenuItem implements ActionListener {
