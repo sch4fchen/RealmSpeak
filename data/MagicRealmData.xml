@@ -45509,7 +45509,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1764" name="G. Swordsman">
+    <GameObject id="1764" name="Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Soldiers" />
         <attribute fame="0" />
@@ -45546,7 +45546,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1765" name="G. Swordsman">
+    <GameObject id="1765" name="Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Guard" />
         <attribute fame="0" />
@@ -45582,7 +45582,7 @@
         <attribute chit_color="orange" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1766" name="G. Swordsman">
+    <GameObject id="1766" name="Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Guard" />
         <attribute fame="0" />
@@ -45618,7 +45618,7 @@
         <attribute chit_color="orange" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1767" name="G. Swordsman">
+    <GameObject id="1767" name="Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Guard" />
         <attribute fame="0" />
@@ -45654,7 +45654,7 @@
         <attribute chit_color="orange" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1768" name="G. Swordsman">
+    <GameObject id="1768" name="Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Guard" />
         <attribute fame="0" />
@@ -46826,7 +46826,7 @@
         <attribute chit_color="blue" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1809" name="G. Swordsman">
+    <GameObject id="1809" name="Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Company" />
         <attribute fame="0" />
@@ -49002,7 +49002,7 @@
       <contains id="1887" />
       <contains id="1888" />
     </GameObject>
-    <GameObject id="1883" name="G. Swordsman">
+    <GameObject id="1883" name="Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Mercenary" />
         <attribute fame="0" />
@@ -49179,7 +49179,7 @@
         <attribute missile="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1888" name="G. Swordsman">
+    <GameObject id="1888" name="Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Mercenary" />
         <attribute fame="0" />
