@@ -2,19 +2,19 @@
 ---Content---
 Super Realm: Items
 Super Realm: adapt chit colors for monsters and natives and dwellings
-Super Realm: names for natives, icons for natives and monsters
+Super Realm: icons for natives and monsters
 Super Realm: Character potraits with credits, different chit icon
 Super Realm: Spells (modified base game spells: Exorcise, Fog, Elven Grace, Violent Storm, Ligthning Bolt, Hurricane Winds, Pentangle, Broomstick, Ask Demon, Absorb Essence, Transform, Phantasm, Melt into Mist, Dissolve Spell, Protection from Magic, Peace with Nature, Control Bats, Whistle for Monsters, Remedy, Poison, ?Guide Beast, ?Deal with Orcs and Goblins
 Super Realm: Treasures (modified base game treasures, see 1.1a: Seven League Boots, Power Gauntles, Phantom Glass, Map of Ruins, Lost Keys, Dragon Essence, Crystal Ball, Chest, Book of Nature, Book of Alchemy, Ancient Telescope, Amulet
 Super Realm: adapt setup with spells and treasures
 Super Realm: Setup Charts, in order: small, large treasures, spells, monsters; dwellings: spells, horses, armor, weapons, helmets, shields, breastplates (large counters below small counters); spells: higher numbers below lower numbers; travellers go to nattive boxes
-Super Realm: Horses: When regenerated (after being killed or abandoned), normal ponies are returned to the Bashkars, workhorses to the Rogues, and war
-horses to the Order.
 ---Basic Functionalities for current content---
 Super Realm: rules for minotaur shield
 Super Realm: rules for special monster attacks and change tactics (Spear and Bow Goblins, Bow Skeletons, Demon, Winged Demon, Imp, Vampire, Succubus, and Devil): p.98
 Super Realm: rules for special native attacks and native casters: Natives Casters (p. 89)
 Super Realm: rules for clans 4.7 (p. 41)
+Super Realm: Horses: When regenerated (after being killed or abandoned), normal ponies are returned to the Bashkars, workhorses to the Rogues, and war
+horses to the Order.
 ---More content incl. functionalities; graphics---
 Super Realm: Visitor/Travelers=Nomads/Missions/Campaigns/Tasks (incl. for seasons); Travelers: 4.8 (p.41)
 Super Realm: Quests + Events
@@ -25,11 +25,11 @@ Super Realm: Adapt Commerce optional rules for new natives
 Super Realm: Characters
 Super Realm: CompanionEditPanel: add all denizens
 Super Realm: RealmCharacterConstants (adapt ArmorEditDialog and WeaponEditDialog): dwellings, visitors
-Super Realm: update graphics (wesnoth? -> licence?) or opengameart.org
-Super Realm: icons for site chits, sound and warning chits and characters (potraits)
+Super Realm: update graphics
+Super Realm: icons for site chits, sound and warning chits
 Super Realm: option to use Super Realm search tables etc., add search tables etc. to menu; add first edition search tables to menu
 ---Rules---
-SUPER REALM: remaining RULES and LOGIC (chapter 4.2 p.27ff. -> chapter 9.1 p.110)
+SUPER REALM: remaining RULES and LOGIC (rule changes compared to Magic Realm)
 Super Realm: Seasons + Weather 10.12 (p.117)
 Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
 3rdEdition / RealmSpeak: Optional Character Rules (A.6, p. 186): Captain, Druid, Magician, WIZARD ignores SPX, Woods Girl, Elf
@@ -41,7 +41,6 @@ Super Realm: Optional Rules: Starting location always the Inn
 Super Realm: Public quests on setup chart (+flag on quests if it can go on setup chart)
 ---Optional Rules---
 Book of Quests: quests of the book
-Super Realm: Missing logic for rule changes compared to Magic Realm
 Super Realm: Optional Rules: Severe wounds (SR: 10.1, p.114) = Serious Wounds, but wounds *2
 Super Realm: Optional Rules: Bounty campaign (SR: 10.2, p.114)
 Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
@@ -75,6 +74,7 @@ NEW FEATURES:
 # Poems (main menu - view - poems)
 SUPER REALM:
 # Natives
+# Horses
 
 Version 1.1.7.4
 BUGS/ISSUES:
