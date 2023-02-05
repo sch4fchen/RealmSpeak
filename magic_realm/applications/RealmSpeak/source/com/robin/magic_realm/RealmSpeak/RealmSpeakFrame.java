@@ -93,6 +93,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 			"Sorceror2",
 			"Swordsman",
 			"Witch",
+			"Witch2",
 			"White Knight",
 			"Woodsgirl"
 	};

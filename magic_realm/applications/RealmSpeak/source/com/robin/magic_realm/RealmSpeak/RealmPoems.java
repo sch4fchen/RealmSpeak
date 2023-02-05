@@ -225,7 +225,16 @@ public class RealmPoems {
 			text.append("<br>");
 			text.append("by: Quantum Jack");
 			break;
-		case "witch":
+		case "which":
+			text.append("Our little old lady, the Witch<br>");
+			text.append("Kind until she gets that itch<br>");
+			text.append("Absorbs a T Troll<br>");
+			text.append("She's on a roll<br>");
+			text.append("Before you know it, she's Rich.<br>");
+			text.append("<br>");
+			text.append("by: Quantum Jack");
+			break;
+		case "witch2":
 			text.append("There once was a powerful Witch<br>");
 			text.append("Who had a familiar named Stich<br>");
 			text.append("It went to each clearing<br>");
