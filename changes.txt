@@ -1,13 +1,15 @@
 ::ROADMAP::
 ---Content---
-Super Realm: Items incl. Horses
+Super Realm: Items
 Super Realm: adapt chit colors for monsters and natives and dwellings
 Super Realm: names for natives, icons for natives and monsters
-Super Realm: Character potraits with credits, redme/licence/copyright file for wesnoths graphics
+Super Realm: Character potraits with credits, different chit icon
 Super Realm: Spells (modified base game spells: Exorcise, Fog, Elven Grace, Violent Storm, Ligthning Bolt, Hurricane Winds, Pentangle, Broomstick, Ask Demon, Absorb Essence, Transform, Phantasm, Melt into Mist, Dissolve Spell, Protection from Magic, Peace with Nature, Control Bats, Whistle for Monsters, Remedy, Poison, ?Guide Beast, ?Deal with Orcs and Goblins
 Super Realm: Treasures (modified base game treasures, see 1.1a: Seven League Boots, Power Gauntles, Phantom Glass, Map of Ruins, Lost Keys, Dragon Essence, Crystal Ball, Chest, Book of Nature, Book of Alchemy, Ancient Telescope, Amulet
 Super Realm: adapt setup with spells and treasures
 Super Realm: Setup Charts, in order: small, large treasures, spells, monsters; dwellings: spells, horses, armor, weapons, helmets, shields, breastplates (large counters below small counters); spells: higher numbers below lower numbers; travellers go to nattive boxes
+Super Realm: Horses: When regenerated (after being killed or abandoned), normal ponies are returned to the Bashkars, workhorses to the Rogues, and war
+horses to the Order.
 ---Basic Functionalities for current content---
 Super Realm: rules for minotaur shield
 Super Realm: rules for special monster attacks and change tactics (Spear and Bow Goblins, Bow Skeletons, Demon, Winged Demon, Imp, Vampire, Succubus, and Devil): p.98
@@ -70,6 +72,7 @@ NEW FEATURES:
 # Option to display native group in subline for native chits (always for Super Realm)
 # Option to include spells of Super Realm
 # Option to include treasures of Expansion 1 and Super Realm
+# Poems (main menu - view - poems)
 SUPER REALM:
 # Natives
 

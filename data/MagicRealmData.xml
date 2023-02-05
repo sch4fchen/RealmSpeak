@@ -34223,7 +34223,6 @@
         <attribute ts_color="tan" />
         <attribute icon_folder="wesnoth/buildings" />
       </AttributeBlock>
-      <contains id="1812" />
       <contains id="1813" />
       <contains id="1814" />
       <contains id="1815" />
@@ -34233,6 +34232,13 @@
       <contains id="1819" />
       <contains id="1820" />
       <contains id="1821" />
+      <contains id="1822" />
+      <contains id="1915" />
+      <contains id="1916" />
+      <contains id="1917" />
+      <contains id="1918" />
+      <contains id="1919" />
+      <contains id="1920" />
     </GameObject>
     <GameObject id="1282" name="Chapel">
       <AttributeBlock blockName="this">
@@ -34253,6 +34259,9 @@
       <contains id="1771" />
       <contains id="1772" />
       <contains id="1773" />
+      <contains id="1911" />
+      <contains id="1912" />
+      <contains id="1913" />
     </GameObject>
     <GameObject id="1283" name="Guard">
       <AttributeBlock blockName="this">
@@ -34305,10 +34314,12 @@
         <attribute ts_color="tan" />
         <attribute icon_folder="wesnoth/buildings" />
       </AttributeBlock>
-      <contains id="1835" />
       <contains id="1836" />
       <contains id="1837" />
       <contains id="1838" />
+      <contains id="1839" />
+      <contains id="1929" />
+      <contains id="1930" />
     </GameObject>
     <GameObject id="1287" name="Settlement">
       <AttributeBlock blockName="this">
@@ -34322,10 +34333,10 @@
         <attribute ts_color="tan" />
         <attribute icon_folder="wesnoth/buildings" />
       </AttributeBlock>
-      <contains id="1839" />
       <contains id="1840" />
       <contains id="1841" />
       <contains id="1842" />
+      <contains id="1843" />
     </GameObject>
     <GameObject id="1288" name="Cottage">
       <AttributeBlock blockName="this">
@@ -34339,10 +34350,12 @@
         <attribute ts_color="tan" />
         <attribute icon_folder="wesnoth/buildings" />
       </AttributeBlock>
-      <contains id="1831" />
       <contains id="1832" />
       <contains id="1833" />
       <contains id="1834" />
+      <contains id="1835" />
+      <contains id="1927" />
+      <contains id="1928" />
     </GameObject>
     <GameObject id="1289" name="Hamlet">
       <AttributeBlock blockName="this">
@@ -34356,13 +34369,19 @@
         <attribute ts_color="tan" />
         <attribute icon_folder="wesnoth/buildings" />
       </AttributeBlock>
-      <contains id="1824" />
       <contains id="1825" />
       <contains id="1826" />
       <contains id="1827" />
       <contains id="1828" />
       <contains id="1829" />
       <contains id="1830" />
+      <contains id="1831" />
+      <contains id="1921" />
+      <contains id="1922" />
+      <contains id="1923" />
+      <contains id="1924" />
+      <contains id="1925" />
+      <contains id="1926" />
     </GameObject>
     <GameObject id="1290" name="Small Camp">
       <AttributeBlock blockName="this">
@@ -35119,7 +35138,7 @@
       <contains id="1320" />
       <contains id="1321" />
     </GameObject>
-    <GameObject id="1318" name="Cultist 1">
+    <GameObject id="1318" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Cultist" />
         <attribute fame="0" />
@@ -35152,7 +35171,7 @@
         <attribute chit_color="yellow" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1319" name="Cultist 2">
+    <GameObject id="1319" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Cultist" />
         <attribute fame="0" />
@@ -35184,7 +35203,7 @@
         <attribute chit_color="yellow" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1320" name="Cultist 3">
+    <GameObject id="1320" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Cultist" />
         <attribute fame="0" />
@@ -35216,7 +35235,7 @@
         <attribute chit_color="yellow" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1321" name="Cultist HQ">
+    <GameObject id="1321" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Cultist" />
         <attribute fame="0" />
@@ -37409,7 +37428,7 @@
       <contains id="1407" />
       <contains id="1408" />
     </GameObject>
-    <GameObject id="1403" name="Elf 1">
+    <GameObject id="1403" name="Archer">
       <AttributeBlock blockName="this">
         <attribute native="Elves" />
         <attribute fame="0" />
@@ -37445,7 +37464,7 @@
         <attribute missile="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1404" name="Elf 2">
+    <GameObject id="1404" name="Archer">
       <AttributeBlock blockName="this">
         <attribute native="Elves" />
         <attribute fame="0" />
@@ -37480,7 +37499,7 @@
         <attribute missile="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1405" name="Elf 3">
+    <GameObject id="1405" name="Archer">
       <AttributeBlock blockName="this">
         <attribute native="Elves" />
         <attribute fame="0" />
@@ -37515,7 +37534,7 @@
         <attribute missile="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1406" name="Elf 4">
+    <GameObject id="1406" name="Archer">
       <AttributeBlock blockName="this">
         <attribute native="Elves" />
         <attribute fame="0" />
@@ -37550,7 +37569,7 @@
         <attribute missile="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1407" name="Elf 5">
+    <GameObject id="1407" name="Archer">
       <AttributeBlock blockName="this">
         <attribute native="Elves" />
         <attribute fame="0" />
@@ -37585,7 +37604,7 @@
         <attribute missile="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1408" name="Elf HQ">
+    <GameObject id="1408" name="Archer">
       <AttributeBlock blockName="this">
         <attribute native="Elves" />
         <attribute fame="0" />
@@ -39314,7 +39333,7 @@
       <contains id="1481" />
       <contains id="1482" />
     </GameObject>
-    <GameObject id="1477" name="Dwarf 1">
+    <GameObject id="1477" name="Dwarf">
       <AttributeBlock blockName="this">
         <attribute native="Dwarves" />
         <attribute fame="0" />
@@ -39350,7 +39369,7 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1478" name="Dwarf 2">
+    <GameObject id="1478" name="Dwarf">
       <AttributeBlock blockName="this">
         <attribute native="Dwarves" />
         <attribute fame="0" />
@@ -39386,7 +39405,7 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1479" name="Dwarf 3">
+    <GameObject id="1479" name="Dwarf">
       <AttributeBlock blockName="this">
         <attribute native="Dwarves" />
         <attribute fame="0" />
@@ -39422,7 +39441,7 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1480" name="Dwarf 4">
+    <GameObject id="1480" name="Dwarf">
       <AttributeBlock blockName="this">
         <attribute native="Dwarves" />
         <attribute fame="0" />
@@ -39458,7 +39477,7 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1481" name="Dwarf 5">
+    <GameObject id="1481" name="Dwarf">
       <AttributeBlock blockName="this">
         <attribute native="Dwarves" />
         <attribute fame="0" />
@@ -39494,7 +39513,7 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1482" name="Dwarf HQ">
+    <GameObject id="1482" name="Dwarf">
       <AttributeBlock blockName="this">
         <attribute native="Dwarves" />
         <attribute fame="0" />
@@ -44829,7 +44848,7 @@
       <contains id="1747" />
       <contains id="1748" />
     </GameObject>
-    <GameObject id="1743" name="Bandit 1">
+    <GameObject id="1743" name="Assassin">
       <AttributeBlock blockName="this">
         <attribute native="Bandits" />
         <attribute fame="0" />
@@ -44864,7 +44883,7 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1744" name="Bandit 2">
+    <GameObject id="1744" name="Assassin">
       <AttributeBlock blockName="this">
         <attribute native="Bandits" />
         <attribute fame="0" />
@@ -44899,7 +44918,7 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1745" name="Bandit 3">
+    <GameObject id="1745" name="Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Bandits" />
         <attribute fame="0" />
@@ -44934,7 +44953,7 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1746" name="Bandit 4">
+    <GameObject id="1746" name="Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Bandits" />
         <attribute fame="0" />
@@ -44969,7 +44988,7 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1747" name="Bandit 5">
+    <GameObject id="1747" name="Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Bandits" />
         <attribute fame="0" />
@@ -45004,7 +45023,7 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1748" name="Bandit HQ">
+    <GameObject id="1748" name="Assassin">
       <AttributeBlock blockName="this">
         <attribute native="Bandits" />
         <attribute fame="0" />
@@ -45075,7 +45094,7 @@
       <contains id="1753" />
       <contains id="1754" />
     </GameObject>
-    <GameObject id="1751" name="Patrol 1">
+    <GameObject id="1751" name="S. Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Patrol" />
         <attribute fame="0" />
@@ -45111,7 +45130,7 @@
       </AttributeBlock>
       <contains id="1755" />
     </GameObject>
-    <GameObject id="1752" name="Patrol 2">
+    <GameObject id="1752" name="S. Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Patrol" />
         <attribute fame="0" />
@@ -45147,7 +45166,7 @@
       </AttributeBlock>
       <contains id="1756" />
     </GameObject>
-    <GameObject id="1753" name="Patrol 3">
+    <GameObject id="1753" name="S. Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Patrol" />
         <attribute fame="0" />
@@ -45183,7 +45202,7 @@
       </AttributeBlock>
       <contains id="1757" />
     </GameObject>
-    <GameObject id="1754" name="Patrol HQ">
+    <GameObject id="1754" name="S. Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Patrol" />
         <attribute fame="0" />
@@ -45220,7 +45239,7 @@
       </AttributeBlock>
       <contains id="1758" />
     </GameObject>
-    <GameObject id="1755" name="Patrol Horse 1">
+    <GameObject id="1755" name="Workhorse 1">
       <AttributeBlock blockName="this">
         <attribute native="Patrol" />
         <attribute horse="horse" />
@@ -45242,7 +45261,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1756" name="Patrol Horse 2">
+    <GameObject id="1756" name="Workhorse 2">
       <AttributeBlock blockName="this">
         <attribute native="Patrol" />
         <attribute horse="horse" />
@@ -45264,7 +45283,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1757" name="Patrol Horse 3">
+    <GameObject id="1757" name="Workhorse 3">
       <AttributeBlock blockName="this">
         <attribute native="Patrol" />
         <attribute horse="horse" />
@@ -45286,7 +45305,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1758" name="Patrol Horse HQ">
+    <GameObject id="1758" name="Workhorse HQ">
       <AttributeBlock blockName="this">
         <attribute native="Patrol" />
         <attribute horse="horse" />
@@ -45308,7 +45327,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1759" name="Soldier 1">
+    <GameObject id="1759" name="Pikeman">
       <AttributeBlock blockName="this">
         <attribute native="Soldiers" />
         <attribute fame="0" />
@@ -45344,7 +45363,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1760" name="Soldier 2">
+    <GameObject id="1760" name="Pikeman">
       <AttributeBlock blockName="this">
         <attribute native="Soldiers" />
         <attribute fame="0" />
@@ -45380,7 +45399,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1761" name="Soldier 3">
+    <GameObject id="1761" name="Pikeman">
       <AttributeBlock blockName="this">
         <attribute native="Soldiers" />
         <attribute fame="0" />
@@ -45416,7 +45435,7 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1762" name="Soldier 4">
+    <GameObject id="1762" name="Crossbowman">
       <AttributeBlock blockName="this">
         <attribute native="Soldiers" />
         <attribute fame="0" />
@@ -45453,7 +45472,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1763" name="Soldier 5">
+    <GameObject id="1763" name="Crossbowman">
       <AttributeBlock blockName="this">
         <attribute native="Soldiers" />
         <attribute fame="0" />
@@ -45490,7 +45509,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1764" name="Soldier HQ">
+    <GameObject id="1764" name="G. Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Soldiers" />
         <attribute fame="0" />
@@ -45527,7 +45546,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1765" name="Guard 1">
+    <GameObject id="1765" name="G. Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Guard" />
         <attribute fame="0" />
@@ -45563,7 +45582,7 @@
         <attribute chit_color="orange" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1766" name="Guard 2">
+    <GameObject id="1766" name="G. Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Guard" />
         <attribute fame="0" />
@@ -45599,7 +45618,7 @@
         <attribute chit_color="orange" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1767" name="Guard 3">
+    <GameObject id="1767" name="G. Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Guard" />
         <attribute fame="0" />
@@ -45635,7 +45654,7 @@
         <attribute chit_color="orange" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1768" name="Guard HQ">
+    <GameObject id="1768" name="G. Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Guard" />
         <attribute fame="0" />
@@ -45672,7 +45691,7 @@
         <attribute chit_color="orange" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1769" name="Order 1">
+    <GameObject id="1769" name="Knight">
       <AttributeBlock blockName="this">
         <attribute native="Order" />
         <attribute fame="0" />
@@ -45709,7 +45728,7 @@
       </AttributeBlock>
       <contains id="1774" />
     </GameObject>
-    <GameObject id="1770" name="Order 2">
+    <GameObject id="1770" name="Knight">
       <AttributeBlock blockName="this">
         <attribute native="Order" />
         <attribute fame="0" />
@@ -45746,7 +45765,7 @@
       </AttributeBlock>
       <contains id="1775" />
     </GameObject>
-    <GameObject id="1771" name="Order 3">
+    <GameObject id="1771" name="Knight">
       <AttributeBlock blockName="this">
         <attribute native="Order" />
         <attribute fame="0" />
@@ -45783,7 +45802,7 @@
       </AttributeBlock>
       <contains id="1776" />
     </GameObject>
-    <GameObject id="1772" name="Order 4">
+    <GameObject id="1772" name="Knight">
       <AttributeBlock blockName="this">
         <attribute native="Order" />
         <attribute fame="0" />
@@ -45820,7 +45839,7 @@
       </AttributeBlock>
       <contains id="1777" />
     </GameObject>
-    <GameObject id="1773" name="Order HQ">
+    <GameObject id="1773" name="Knight">
       <AttributeBlock blockName="this">
         <attribute native="Order" />
         <attribute fame="0" />
@@ -45878,7 +45897,7 @@
         <attribute chit_color="orange" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1775" name="Order Warhorse 2">
+    <GameObject id="1775" name="Warhorse 2">
       <AttributeBlock blockName="this">
         <attribute native="Order" />
         <attribute horse="warhorse" />
@@ -45898,7 +45917,7 @@
         <attribute chit_color="orange" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1776" name="Order Warhorse 3">
+    <GameObject id="1776" name="Warhorse 3">
       <AttributeBlock blockName="this">
         <attribute native="Order" />
         <attribute horse="warhorse" />
@@ -45918,7 +45937,7 @@
         <attribute chit_color="orange" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1777" name="Order Warhorse 4">
+    <GameObject id="1777" name="Warhorse 4">
       <AttributeBlock blockName="this">
         <attribute native="Order" />
         <attribute horse="warhorse" />
@@ -45938,7 +45957,7 @@
         <attribute chit_color="orange" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1778" name="Order Warhorse HQ">
+    <GameObject id="1778" name="Warhorse HQ">
       <AttributeBlock blockName="this">
         <attribute native="Order" />
         <attribute horse="warhorse" />
@@ -45994,7 +46013,7 @@
       <contains id="1783" />
       <contains id="1784" />
     </GameObject>
-    <GameObject id="1781" name="Woodsfolk 1">
+    <GameObject id="1781" name="Archer">
       <AttributeBlock blockName="this">
         <attribute native="Woodfolk" />
         <attribute fame="0" />
@@ -46026,7 +46045,7 @@
         <attribute chit_color="forestgreen" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1782" name="Woodsfolk 2">
+    <GameObject id="1782" name="Archer">
       <AttributeBlock blockName="this">
         <attribute native="Woodfolk" />
         <attribute fame="0" />
@@ -46058,7 +46077,7 @@
         <attribute chit_color="forestgreen" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1783" name="Woodsfolk 3">
+    <GameObject id="1783" name="Archer">
       <AttributeBlock blockName="this">
         <attribute native="Woodfolk" />
         <attribute fame="0" />
@@ -46090,7 +46109,7 @@
         <attribute chit_color="forestgreen" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1784" name="Woodsfolk HQ">
+    <GameObject id="1784" name="Archer">
       <AttributeBlock blockName="this">
         <attribute native="Woodfolk" />
         <attribute fame="0" />
@@ -46159,7 +46178,7 @@
       <contains id="1789" />
       <contains id="1790" />
     </GameObject>
-    <GameObject id="1787" name="Lancer 1">
+    <GameObject id="1787" name="Spearman">
       <AttributeBlock blockName="this">
         <attribute native="Lancers" />
         <attribute fame="0" />
@@ -46194,7 +46213,7 @@
       </AttributeBlock>
       <contains id="1792" />
     </GameObject>
-    <GameObject id="1788" name="Lancer 2">
+    <GameObject id="1788" name="Spearman">
       <AttributeBlock blockName="this">
         <attribute native="Lancers" />
         <attribute fame="0" />
@@ -46229,7 +46248,7 @@
       </AttributeBlock>
       <contains id="1793" />
     </GameObject>
-    <GameObject id="1789" name="Lancer 3">
+    <GameObject id="1789" name="Spearman">
       <AttributeBlock blockName="this">
         <attribute native="Lancers" />
         <attribute fame="0" />
@@ -46264,7 +46283,7 @@
       </AttributeBlock>
       <contains id="1794" />
     </GameObject>
-    <GameObject id="1790" name="Lancer HQ">
+    <GameObject id="1790" name="Spearman">
       <AttributeBlock blockName="this">
         <attribute native="Lancers" />
         <attribute fame="0" />
@@ -46315,7 +46334,7 @@
         <attribute clan="3" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1792" name="Lancer Pony 1">
+    <GameObject id="1792" name="Pony 1">
       <AttributeBlock blockName="this">
         <attribute native="Lancers" />
         <attribute horse="pony" />
@@ -46335,7 +46354,7 @@
         <attribute chit_color="limegreen" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1793" name="Lancer Pony 2">
+    <GameObject id="1793" name="Pony 2">
       <AttributeBlock blockName="this">
         <attribute native="Lancers" />
         <attribute horse="pony" />
@@ -46355,7 +46374,7 @@
         <attribute chit_color="limegreen" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1794" name="Lancer Pony 3">
+    <GameObject id="1794" name="Pony 3">
       <AttributeBlock blockName="this">
         <attribute native="Lancers" />
         <attribute horse="pony" />
@@ -46375,7 +46394,7 @@
         <attribute chit_color="limegreen" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1795" name="Lancer Pony HQ">
+    <GameObject id="1795" name="Pony HQ">
       <AttributeBlock blockName="this">
         <attribute native="Lancers" />
         <attribute horse="pony" />
@@ -46417,8 +46436,14 @@
       <contains id="1800" />
       <contains id="1801" />
       <contains id="1802" />
+      <contains id="1904" />
+      <contains id="1905" />
+      <contains id="1906" />
+      <contains id="1907" />
+      <contains id="1908" />
+      <contains id="1909" />
     </GameObject>
-    <GameObject id="1797" name="Bashkar 1">
+    <GameObject id="1797" name="Raider">
       <AttributeBlock blockName="this">
         <attribute native="Bashkars" />
         <attribute fame="0" />
@@ -46452,7 +46477,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1798" name="Bashkar 2">
+    <GameObject id="1798" name="Raider">
       <AttributeBlock blockName="this">
         <attribute native="Bashkars" />
         <attribute fame="0" />
@@ -46486,7 +46511,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1799" name="Bashkar 3">
+    <GameObject id="1799" name="Raider">
       <AttributeBlock blockName="this">
         <attribute native="Bashkars" />
         <attribute fame="0" />
@@ -46520,7 +46545,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1800" name="Bashkar 4">
+    <GameObject id="1800" name="Raider">
       <AttributeBlock blockName="this">
         <attribute native="Bashkars" />
         <attribute fame="0" />
@@ -46554,7 +46579,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1801" name="Bashkar 5">
+    <GameObject id="1801" name="Raider">
       <AttributeBlock blockName="this">
         <attribute native="Bashkars" />
         <attribute fame="0" />
@@ -46588,7 +46613,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1802" name="Bashkar HQ">
+    <GameObject id="1802" name="Raider">
       <AttributeBlock blockName="this">
         <attribute native="Bashkars" />
         <attribute fame="0" />
@@ -46659,9 +46684,9 @@
       <contains id="1808" />
       <contains id="1809" />
       <contains id="1810" />
-      <contains id="1811" />
+      <contains id="1812" />
     </GameObject>
-    <GameObject id="1805" name="Company 1">
+    <GameObject id="1805" name="S. Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Company" />
         <attribute fame="0" />
@@ -46696,7 +46721,7 @@
         <attribute chit_color="blue" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1806" name="Company 2">
+    <GameObject id="1806" name="Pikeman">
       <AttributeBlock blockName="this">
         <attribute native="Company" />
         <attribute fame="0" />
@@ -46731,7 +46756,7 @@
         <attribute chit_color="blue" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1807" name="Company 3">
+    <GameObject id="1807" name="Pikeman">
       <AttributeBlock blockName="this">
         <attribute native="Company" />
         <attribute fame="0" />
@@ -46766,7 +46791,7 @@
         <attribute chit_color="blue" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1808" name="Company 4">
+    <GameObject id="1808" name="Pikeman">
       <AttributeBlock blockName="this">
         <attribute native="Company" />
         <attribute fame="0" />
@@ -46801,7 +46826,7 @@
         <attribute chit_color="blue" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1809" name="Company 5">
+    <GameObject id="1809" name="G. Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Company" />
         <attribute fame="0" />
@@ -46836,7 +46861,7 @@
         <attribute chit_color="blue" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1810" name="Company 6">
+    <GameObject id="1810" name="Crossbowman">
       <AttributeBlock blockName="this">
         <attribute native="Company" />
         <attribute fame="0" />
@@ -46872,7 +46897,43 @@
         <attribute chit_color="blue" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1811" name="Company HQ">
+    <GameObject id="1811" name="Crossbowman">
+      <AttributeBlock blockName="this">
+        <attribute native="Company" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="2" />
+        <attribute vulnerability="M" />
+        <attribute rank="7" />
+        <attribute armored="" />
+        <attribute icon_type="crossbowman_c" />
+        <attribute setup_start="Company Dwelling" />
+        <attribute missile="" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="7" />
+        <attribute clan="3" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute length="12" />
+        <attribute missile="" />
+        <attribute chit_color="lightblue" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="1" />
+        <attribute strength="H" />
+        <attribute length="12" />
+        <attribute missile="" />
+        <attribute chit_color="blue" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1812" name="S. Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Company" />
         <attribute fame="0" />
@@ -46908,7 +46969,7 @@
         <attribute chit_color="blue" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1812" name="Rogue 1">
+    <GameObject id="1813" name="G. Axeman">
       <AttributeBlock blockName="this">
         <attribute native="Rogues" />
         <attribute fame="0" />
@@ -46943,7 +47004,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1813" name="Rogue 2">
+    <GameObject id="1814" name="G. Axeman">
       <AttributeBlock blockName="this">
         <attribute native="Rogues" />
         <attribute fame="0" />
@@ -46978,7 +47039,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1814" name="Rogue 3">
+    <GameObject id="1815" name="S. Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Rogues" />
         <attribute fame="0" />
@@ -47014,7 +47075,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1815" name="Rogue 4">
+    <GameObject id="1816" name="S. Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Rogues" />
         <attribute fame="0" />
@@ -47050,7 +47111,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1816" name="Rogue 5">
+    <GameObject id="1817" name="Archer">
       <AttributeBlock blockName="this">
         <attribute native="Rogues" />
         <attribute fame="0" />
@@ -47083,7 +47144,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1817" name="Rogue 6">
+    <GameObject id="1818" name="Archer">
       <AttributeBlock blockName="this">
         <attribute native="Rogues" />
         <attribute fame="0" />
@@ -47116,7 +47177,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1818" name="Rogue 7">
+    <GameObject id="1819" name="Assassin">
       <AttributeBlock blockName="this">
         <attribute native="Rogues" />
         <attribute fame="0" />
@@ -47151,7 +47212,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1819" name="Rogue 8">
+    <GameObject id="1820" name="Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Rogues" />
         <attribute fame="0" />
@@ -47186,7 +47247,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1820" name="Rogue 9">
+    <GameObject id="1821" name="Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Rogues" />
         <attribute fame="0" />
@@ -47221,7 +47282,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1821" name="Rogue HQ">
+    <GameObject id="1822" name="Assassin">
       <AttributeBlock blockName="this">
         <attribute native="Rogues" />
         <attribute fame="0" />
@@ -47257,7 +47318,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1822" name="Altar Meadow Box">
+    <GameObject id="1823" name="Altar Meadow Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="natives" />
         <attribute ts_size="S+" />
@@ -47272,7 +47333,7 @@
         <attribute monster_die="6" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1823" name="Shrine Circle Box">
+    <GameObject id="1824" name="Shrine Circle Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="natives" />
         <attribute ts_size="S+" />
@@ -47287,7 +47348,7 @@
         <attribute monster_die="6" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1824" name="Peasant 1">
+    <GameObject id="1825" name="Peasant">
       <AttributeBlock blockName="this">
         <attribute native="Peasants" />
         <attribute fame="0" />
@@ -47320,7 +47381,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1825" name="Peasant 2">
+    <GameObject id="1826" name="Peasant">
       <AttributeBlock blockName="this">
         <attribute native="Peasants" />
         <attribute fame="0" />
@@ -47353,7 +47414,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1826" name="Peasant 3">
+    <GameObject id="1827" name="Peasant">
       <AttributeBlock blockName="this">
         <attribute native="Peasants" />
         <attribute fame="0" />
@@ -47386,7 +47447,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1827" name="Peasant 4">
+    <GameObject id="1828" name="Peasant">
       <AttributeBlock blockName="this">
         <attribute native="Peasants" />
         <attribute fame="0" />
@@ -47419,7 +47480,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1828" name="Peasant 5">
+    <GameObject id="1829" name="Peasant">
       <AttributeBlock blockName="this">
         <attribute native="Peasants" />
         <attribute fame="0" />
@@ -47452,7 +47513,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1829" name="Peasant 6">
+    <GameObject id="1830" name="Peasant">
       <AttributeBlock blockName="this">
         <attribute native="Peasants" />
         <attribute fame="0" />
@@ -47485,7 +47546,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1830" name="Peasant HQ">
+    <GameObject id="1831" name="Peasant">
       <AttributeBlock blockName="this">
         <attribute native="Peasants" />
         <attribute fame="0" />
@@ -47518,7 +47579,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1831" name="Summoner 1">
+    <GameObject id="1832" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Summoners" />
         <attribute fame="0" />
@@ -47551,7 +47612,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1832" name="Summoner 2">
+    <GameObject id="1833" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Summoners" />
         <attribute fame="0" />
@@ -47584,7 +47645,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1833" name="Summoner 3">
+    <GameObject id="1834" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Summoners" />
         <attribute fame="0" />
@@ -47617,7 +47678,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1834" name="Summoner HQ">
+    <GameObject id="1835" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Summoners" />
         <attribute fame="0" />
@@ -47650,7 +47711,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1835" name="Pagan 1">
+    <GameObject id="1836" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Summoners" />
         <attribute fame="0" />
@@ -47683,7 +47744,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1836" name="Pagan 2">
+    <GameObject id="1837" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Summoners" />
         <attribute fame="0" />
@@ -47716,7 +47777,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1837" name="Pagan 3">
+    <GameObject id="1838" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Summoners" />
         <attribute fame="0" />
@@ -47749,7 +47810,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1838" name="Pagan HQ">
+    <GameObject id="1839" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Summoners" />
         <attribute fame="0" />
@@ -47782,7 +47843,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1839" name="Mage 1">
+    <GameObject id="1840" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Mages" />
         <attribute fame="0" />
@@ -47790,41 +47851,6 @@
         <attribute base_price="4" />
         <attribute vulnerability="M" />
         <attribute rank="1" />
-        <attribute icon_type="assassin_r" />
-        <attribute setup_start="Settlement" />
-        <attribute hire_type="group" />
-        <attribute garrison="" />
-        <attribute icon_folder="natives_c" />
-        <attribute denizen="" />
-        <attribute super_realm="" />
-        <attribute native_die="3" />
-        <attribute clan="4" />
-        <attribute armored="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="light">
-        <attribute move_speed="5" />
-        <attribute attack_speed="2" />
-        <attribute strength="M" />
-        <attribute length="13" />
-        <attribute chit_color="peach" />
-      </AttributeBlock>
-      <AttributeBlock blockName="dark">
-        <attribute move_speed="4" />
-        <attribute attack_speed="3" />
-        <attribute strength="M" />
-        <attribute length="9" />
-        <attribute chit_color="brown" />
-      </AttributeBlock>
-      <contains id="1843" />
-    </GameObject>
-    <GameObject id="1840" name="Mage 2">
-      <AttributeBlock blockName="this">
-        <attribute native="Mages" />
-        <attribute fame="0" />
-        <attribute notoriety="5" />
-        <attribute base_price="4" />
-        <attribute vulnerability="M" />
-        <attribute rank="2" />
         <attribute icon_type="assassin_r" />
         <attribute setup_start="Settlement" />
         <attribute hire_type="group" />
@@ -47852,7 +47878,42 @@
       </AttributeBlock>
       <contains id="1844" />
     </GameObject>
-    <GameObject id="1841" name="Mage 3">
+    <GameObject id="1841" name="Caster">
+      <AttributeBlock blockName="this">
+        <attribute native="Mages" />
+        <attribute fame="0" />
+        <attribute notoriety="5" />
+        <attribute base_price="4" />
+        <attribute vulnerability="M" />
+        <attribute rank="2" />
+        <attribute icon_type="assassin_r" />
+        <attribute setup_start="Settlement" />
+        <attribute hire_type="group" />
+        <attribute garrison="" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="3" />
+        <attribute clan="4" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute attack_speed="2" />
+        <attribute strength="M" />
+        <attribute length="13" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1845" />
+    </GameObject>
+    <GameObject id="1842" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Mages" />
         <attribute fame="0" />
@@ -47885,9 +47946,9 @@
         <attribute length="9" />
         <attribute chit_color="brown" />
       </AttributeBlock>
-      <contains id="1845" />
+      <contains id="1846" />
     </GameObject>
-    <GameObject id="1842" name="Mage HQ">
+    <GameObject id="1843" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Mages" />
         <attribute fame="0" />
@@ -47920,9 +47981,9 @@
         <attribute length="9" />
         <attribute chit_color="brown" />
       </AttributeBlock>
-      <contains id="1846" />
+      <contains id="1847" />
     </GameObject>
-    <GameObject id="1843" name="Mage Pony 1">
+    <GameObject id="1844" name="Pony 1">
       <AttributeBlock blockName="this">
         <attribute native="Mages" />
         <attribute horse="pony" />
@@ -47942,7 +48003,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1844" name="Mage Pony 2">
+    <GameObject id="1845" name="Pony 2">
       <AttributeBlock blockName="this">
         <attribute native="Mages" />
         <attribute horse="pony" />
@@ -47962,7 +48023,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1845" name="Mage Pony 3">
+    <GameObject id="1846" name="Pony 3">
       <AttributeBlock blockName="this">
         <attribute native="Mages" />
         <attribute horse="pony" />
@@ -47982,7 +48043,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1846" name="Mage Pony HQ">
+    <GameObject id="1847" name="Pony HQ">
       <AttributeBlock blockName="this">
         <attribute native="Mages" />
         <attribute horse="pony" />
@@ -48002,7 +48063,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1847" name="Zealots Box">
+    <GameObject id="1848" name="Zealots Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="clan 1" />
         <attribute ts_size="S+" />
@@ -48017,7 +48078,7 @@
         <attribute clan="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1848" name="Zealot Dwelling">
+    <GameObject id="1849" name="Zealot Dwelling">
       <AttributeBlock blockName="this">
         <attribute native="Zealots" />
         <attribute dwelling="chapel,guard,hamlet,l_camp" />
@@ -48033,12 +48094,13 @@
         <attribute clan="1" />
         <attribute native_die="1" />
       </AttributeBlock>
-      <contains id="1849" />
       <contains id="1850" />
       <contains id="1851" />
       <contains id="1852" />
+      <contains id="1853" />
+      <contains id="1931" />
     </GameObject>
-    <GameObject id="1849" name="Zealot 1">
+    <GameObject id="1850" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Zealots" />
         <attribute fame="0" />
@@ -48069,9 +48131,9 @@
         <attribute length="9" />
         <attribute chit_color="brown" />
       </AttributeBlock>
-      <contains id="1853" />
+      <contains id="1854" />
     </GameObject>
-    <GameObject id="1850" name="Zealot 2">
+    <GameObject id="1851" name="Knight">
       <AttributeBlock blockName="this">
         <attribute native="Zealots" />
         <attribute fame="0" />
@@ -48105,9 +48167,9 @@
         <attribute sharpness="1" />
         <attribute chit_color="brown" />
       </AttributeBlock>
-      <contains id="1854" />
+      <contains id="1855" />
     </GameObject>
-    <GameObject id="1851" name="Zealot 3">
+    <GameObject id="1852" name="Knight">
       <AttributeBlock blockName="this">
         <attribute native="Zealots" />
         <attribute fame="0" />
@@ -48141,9 +48203,9 @@
         <attribute sharpness="1" />
         <attribute chit_color="brown" />
       </AttributeBlock>
-      <contains id="1855" />
+      <contains id="1856" />
     </GameObject>
-    <GameObject id="1852" name="Zealot HQ">
+    <GameObject id="1853" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Zealots" />
         <attribute fame="0" />
@@ -48175,9 +48237,9 @@
         <attribute length="9" />
         <attribute chit_color="brown" />
       </AttributeBlock>
-      <contains id="1856" />
+      <contains id="1857" />
     </GameObject>
-    <GameObject id="1853" name="Zealot Warhorse 1">
+    <GameObject id="1854" name="Warhorse 1">
       <AttributeBlock blockName="this">
         <attribute native="Zealots" />
         <attribute horse="horse" />
@@ -48200,7 +48262,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1854" name="Zealot Warhorse 2">
+    <GameObject id="1855" name="Warhorse 2">
       <AttributeBlock blockName="this">
         <attribute native="Zealots" />
         <attribute horse="horse" />
@@ -48223,7 +48285,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1855" name="Zealot Warhorse 3">
+    <GameObject id="1856" name="Warhorse 3">
       <AttributeBlock blockName="this">
         <attribute native="Zealots" />
         <attribute horse="horse" />
@@ -48246,7 +48308,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1856" name="Zealot Warhorse HQ">
+    <GameObject id="1857" name="Warhorse HQ">
       <AttributeBlock blockName="this">
         <attribute native="Zealots" />
         <attribute horse="horse" />
@@ -48269,7 +48331,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1857" name="Aborigines Box">
+    <GameObject id="1858" name="Aborigines Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="clan 2" />
         <attribute ts_size="S+" />
@@ -48284,7 +48346,7 @@
         <attribute clan="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1858" name="Aborigine Dwelling">
+    <GameObject id="1859" name="Aborigine Dwelling">
       <AttributeBlock blockName="this">
         <attribute native="Aborigines" />
         <attribute dwelling="l_camp,s_camp,s_fire" />
@@ -48300,14 +48362,14 @@
         <attribute native_die="2" />
         <attribute clan="2" />
       </AttributeBlock>
-      <contains id="1859" />
       <contains id="1860" />
       <contains id="1861" />
       <contains id="1862" />
       <contains id="1863" />
       <contains id="1864" />
+      <contains id="1865" />
     </GameObject>
-    <GameObject id="1859" name="Aborigine 1">
+    <GameObject id="1860" name="Archer">
       <AttributeBlock blockName="this">
         <attribute native="Aborigines" />
         <attribute fame="0" />
@@ -48340,7 +48402,7 @@
         <attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1860" name="Aborigine 2">
+    <GameObject id="1861" name="Archer">
       <AttributeBlock blockName="this">
         <attribute native="Aborigines" />
         <attribute fame="0" />
@@ -48373,7 +48435,7 @@
         <attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1861" name="Aborigine 3">
+    <GameObject id="1862" name="Axeman">
       <AttributeBlock blockName="this">
         <attribute native="Aborigines" />
         <attribute fame="0" />
@@ -48407,7 +48469,7 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1862" name="Aborigine 4">
+    <GameObject id="1863" name="Axeman">
       <AttributeBlock blockName="this">
         <attribute native="Aborigines" />
         <attribute fame="0" />
@@ -48441,7 +48503,7 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1863" name="Aborigine 5">
+    <GameObject id="1864" name="Axeman">
       <AttributeBlock blockName="this">
         <attribute native="Aborigines" />
         <attribute fame="0" />
@@ -48475,7 +48537,7 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1864" name="Aborigine HQ">
+    <GameObject id="1865" name="Archer">
       <AttributeBlock blockName="this">
         <attribute native="Aborigines" />
         <attribute fame="0" />
@@ -48508,7 +48570,7 @@
         <attribute sharpness="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1865" name="Coven Box">
+    <GameObject id="1866" name="Coven Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="clan 3" />
         <attribute ts_size="S+" />
@@ -48523,7 +48585,7 @@
         <attribute clan="3" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1866" name="Coven Dwelling">
+    <GameObject id="1867" name="Coven Dwelling">
       <AttributeBlock blockName="this">
         <attribute native="Coven" />
         <attribute dwelling="cottage,hamlet,hut,l_fire" />
@@ -48539,11 +48601,11 @@
         <attribute native_die="2" />
         <attribute clan="3" />
       </AttributeBlock>
-      <contains id="1867" />
       <contains id="1868" />
       <contains id="1869" />
+      <contains id="1870" />
     </GameObject>
-    <GameObject id="1867" name="Coven 1">
+    <GameObject id="1868" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Coven" />
         <attribute fame="0" />
@@ -48575,7 +48637,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1868" name="Coven 2">
+    <GameObject id="1869" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Coven" />
         <attribute fame="0" />
@@ -48607,7 +48669,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1869" name="Coven HQ">
+    <GameObject id="1870" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Coven" />
         <attribute fame="0" />
@@ -48639,7 +48701,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1870" name="Hunters Box">
+    <GameObject id="1871" name="Hunters Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="clan 3" />
         <attribute ts_size="S+" />
@@ -48654,7 +48716,7 @@
         <attribute clan="3" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1871" name="Hunter Dwelling">
+    <GameObject id="1872" name="Hunter Dwelling">
       <AttributeBlock blockName="this">
         <attribute native="Hunters" />
         <attribute dwelling="inn,l_camp,s_fire" />
@@ -48670,12 +48732,12 @@
         <attribute native_die="4" />
         <attribute clan="3" />
       </AttributeBlock>
-      <contains id="1872" />
       <contains id="1873" />
       <contains id="1874" />
       <contains id="1875" />
+      <contains id="1876" />
     </GameObject>
-    <GameObject id="1872" name="Hunter 1">
+    <GameObject id="1873" name="G. Axeman">
       <AttributeBlock blockName="this">
         <attribute native="Hunters" />
         <attribute fame="0" />
@@ -48708,9 +48770,9 @@
         <attribute chit_color="brown" />
         <attribute sharpness="1" />
       </AttributeBlock>
-      <contains id="1876" />
+      <contains id="1877" />
     </GameObject>
-    <GameObject id="1873" name="Hunter 2">
+    <GameObject id="1874" name="Spearman">
       <AttributeBlock blockName="this">
         <attribute native="Hunters" />
         <attribute fame="0" />
@@ -48743,9 +48805,9 @@
         <attribute chit_color="brown" />
         <attribute sharpness="1" />
       </AttributeBlock>
-      <contains id="1877" />
+      <contains id="1878" />
     </GameObject>
-    <GameObject id="1874" name="Hunter 3">
+    <GameObject id="1875" name="Axeman">
       <AttributeBlock blockName="this">
         <attribute native="Hunters" />
         <attribute fame="0" />
@@ -48778,9 +48840,9 @@
         <attribute chit_color="brown" />
         <attribute sharpness="1" />
       </AttributeBlock>
-      <contains id="1878" />
+      <contains id="1879" />
     </GameObject>
-    <GameObject id="1875" name="Hunter HQ">
+    <GameObject id="1876" name="Archer">
       <AttributeBlock blockName="this">
         <attribute native="Hunters" />
         <attribute fame="0" />
@@ -48812,9 +48874,9 @@
         <attribute missile="" />
         <attribute sharpness="2" />
       </AttributeBlock>
-      <contains id="1879" />
+      <contains id="1880" />
     </GameObject>
-    <GameObject id="1876" name="Hunter Horse 1">
+    <GameObject id="1877" name="Workhorse 1">
       <AttributeBlock blockName="this">
         <attribute native="Hunters" />
         <attribute horse="horse" />
@@ -48836,7 +48898,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1877" name="Hunter Horse 2">
+    <GameObject id="1878" name="Workhorse 2">
       <AttributeBlock blockName="this">
         <attribute native="Hunters" />
         <attribute horse="horse" />
@@ -48858,7 +48920,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1878" name="Hunter Horse 3">
+    <GameObject id="1879" name="Workhorse 3">
       <AttributeBlock blockName="this">
         <attribute native="Hunters" />
         <attribute horse="horse" />
@@ -48880,7 +48942,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1879" name="Hunter Horse HQ">
+    <GameObject id="1880" name="Workhorse HQ">
       <AttributeBlock blockName="this">
         <attribute native="Hunters" />
         <attribute horse="horse" />
@@ -48902,7 +48964,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1880" name="Mercenaries  Box">
+    <GameObject id="1881" name="Mercenaries  Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="clan 4" />
         <attribute ts_size="S+" />
@@ -48917,7 +48979,7 @@
         <attribute clan="4" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1881" name="Mercenary Dwelling">
+    <GameObject id="1882" name="Mercenary Dwelling">
       <AttributeBlock blockName="this">
         <attribute native="Mercenaries" />
         <attribute dwelling="cottage,settlement,hut" />
@@ -48933,14 +48995,14 @@
         <attribute native_die="1" />
         <attribute clan="4" />
       </AttributeBlock>
-      <contains id="1882" />
       <contains id="1883" />
       <contains id="1884" />
       <contains id="1885" />
       <contains id="1886" />
       <contains id="1887" />
+      <contains id="1888" />
     </GameObject>
-    <GameObject id="1882" name="Mercenary 1">
+    <GameObject id="1883" name="G. Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Mercenary" />
         <attribute fame="0" />
@@ -48975,7 +49037,7 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1883" name="Mercenary 2">
+    <GameObject id="1884" name="G. Axeman">
       <AttributeBlock blockName="this">
         <attribute native="Mercenary" />
         <attribute fame="0" />
@@ -49009,7 +49071,7 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1884" name="Mercenary 3">
+    <GameObject id="1885" name="G. Axeman">
       <AttributeBlock blockName="this">
         <attribute native="Mercenary" />
         <attribute fame="0" />
@@ -49043,7 +49105,7 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1885" name="Mercenary 4">
+    <GameObject id="1886" name="Crossbowman">
       <AttributeBlock blockName="this">
         <attribute native="Mercenary" />
         <attribute fame="0" />
@@ -49079,7 +49141,7 @@
         <attribute missile="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1886" name="Mercenary 5">
+    <GameObject id="1887" name="Crossbowman">
       <AttributeBlock blockName="this">
         <attribute native="Mercenary" />
         <attribute fame="0" />
@@ -49117,7 +49179,7 @@
         <attribute missile="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1887" name="Mercenary HQ">
+    <GameObject id="1888" name="G. Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Mercenary" />
         <attribute fame="0" />
@@ -49152,7 +49214,7 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1888" name="Conjurors Box">
+    <GameObject id="1889" name="Conjurors Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="clan 4" />
         <attribute ts_size="S+" />
@@ -49167,7 +49229,7 @@
         <attribute clan="4" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1889" name="Conjuror Dwelling">
+    <GameObject id="1890" name="Conjuror Dwelling">
       <AttributeBlock blockName="this">
         <attribute native="Conjurors" />
         <attribute dwelling="hamlet,settlement,s_camp" />
@@ -49183,12 +49245,12 @@
         <attribute native_die="5" />
         <attribute clan="4" />
       </AttributeBlock>
-      <contains id="1890" />
       <contains id="1891" />
       <contains id="1892" />
       <contains id="1893" />
+      <contains id="1894" />
     </GameObject>
-    <GameObject id="1890" name="Conjuror 1">
+    <GameObject id="1891" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Conjurors" />
         <attribute fame="0" />
@@ -49196,40 +49258,6 @@
         <attribute base_price="3" />
         <attribute vulnerability="M" />
         <attribute rank="1" />
-        <attribute icon_type="lancer_l" />
-        <attribute setup_start="Conjuror Dwelling" />
-        <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
-        <attribute denizen="" />
-        <attribute super_realm="" />
-        <attribute native_die="5" />
-        <attribute clan="4" />
-        <attribute armored="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="light">
-        <attribute move_speed="5" />
-        <attribute chit_color="peach" />
-        <attribute attack_speed="4" />
-        <attribute length="9" />
-        <attribute strength="M" />
-      </AttributeBlock>
-      <AttributeBlock blockName="dark">
-        <attribute move_speed="4" />
-        <attribute attack_speed="4" />
-        <attribute strength="M" />
-        <attribute length="9" />
-        <attribute chit_color="brown" />
-      </AttributeBlock>
-      <contains id="1894" />
-    </GameObject>
-    <GameObject id="1891" name="Conjuror 2">
-      <AttributeBlock blockName="this">
-        <attribute native="Conjurors" />
-        <attribute fame="0" />
-        <attribute notoriety="4" />
-        <attribute base_price="3" />
-        <attribute vulnerability="M" />
-        <attribute rank="2" />
         <attribute icon_type="lancer_l" />
         <attribute setup_start="Conjuror Dwelling" />
         <attribute hire_type="group" />
@@ -49256,7 +49284,41 @@
       </AttributeBlock>
       <contains id="1895" />
     </GameObject>
-    <GameObject id="1892" name="Conjuror 3">
+    <GameObject id="1892" name="Caster">
+      <AttributeBlock blockName="this">
+        <attribute native="Conjurors" />
+        <attribute fame="0" />
+        <attribute notoriety="4" />
+        <attribute base_price="3" />
+        <attribute vulnerability="M" />
+        <attribute rank="2" />
+        <attribute icon_type="lancer_l" />
+        <attribute setup_start="Conjuror Dwelling" />
+        <attribute hire_type="group" />
+        <attribute icon_folder="natives_c" />
+        <attribute denizen="" />
+        <attribute super_realm="" />
+        <attribute native_die="5" />
+        <attribute clan="4" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="light">
+        <attribute move_speed="5" />
+        <attribute chit_color="peach" />
+        <attribute attack_speed="4" />
+        <attribute length="9" />
+        <attribute strength="M" />
+      </AttributeBlock>
+      <AttributeBlock blockName="dark">
+        <attribute move_speed="4" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
+        <attribute length="9" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+      <contains id="1896" />
+    </GameObject>
+    <GameObject id="1893" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Conjurors" />
         <attribute fame="0" />
@@ -49288,9 +49350,9 @@
         <attribute length="9" />
         <attribute chit_color="brown" />
       </AttributeBlock>
-      <contains id="1896" />
+      <contains id="1897" />
     </GameObject>
-    <GameObject id="1893" name="Conjuror HQ">
+    <GameObject id="1894" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Conjurors" />
         <attribute fame="0" />
@@ -49322,9 +49384,9 @@
         <attribute length="9" />
         <attribute chit_color="brown" />
       </AttributeBlock>
-      <contains id="1897" />
+      <contains id="1898" />
     </GameObject>
-    <GameObject id="1894" name="Enchanter Horse 1">
+    <GameObject id="1895" name="Workhorse 1">
       <AttributeBlock blockName="this">
         <attribute native="Conjurors" />
         <attribute horse="horse" />
@@ -49346,7 +49408,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1895" name="Enchanter Horse 2">
+    <GameObject id="1896" name="Workhorse 2">
       <AttributeBlock blockName="this">
         <attribute native="Conjurors" />
         <attribute horse="horse" />
@@ -49368,7 +49430,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1896" name="Enchanter Horse 3">
+    <GameObject id="1897" name="Workhorse 3">
       <AttributeBlock blockName="this">
         <attribute native="Conjurors" />
         <attribute horse="horse" />
@@ -49390,7 +49452,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1897" name="Enchanter Horse HQ">
+    <GameObject id="1898" name="Enchanter Horse HQ">
       <AttributeBlock blockName="this">
         <attribute native="Conjurors" />
         <attribute horse="horse" />
@@ -49412,7 +49474,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1898" name="Enchanters  Box">
+    <GameObject id="1899" name="Enchanters  Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="clan 4" />
         <attribute ts_size="S+" />
@@ -49427,7 +49489,7 @@
         <attribute clan="4" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1899" name="Enchanter Dwelling">
+    <GameObject id="1900" name="Enchanter Dwelling">
       <AttributeBlock blockName="this">
         <attribute native="Enchanters" />
         <attribute dwelling="guard,house,settlement" />
@@ -49443,11 +49505,11 @@
         <attribute native_die="6" />
         <attribute clan="4" />
       </AttributeBlock>
-      <contains id="1900" />
       <contains id="1901" />
       <contains id="1902" />
+      <contains id="1903" />
     </GameObject>
-    <GameObject id="1900" name="Enchanter 1">
+    <GameObject id="1901" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Enchanters" />
         <attribute fame="0" />
@@ -49480,7 +49542,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1901" name="Enchanter 2">
+    <GameObject id="1902" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Enchanters" />
         <attribute fame="0" />
@@ -49513,7 +49575,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1902" name="Enchanter HQ">
+    <GameObject id="1903" name="Caster">
       <AttributeBlock blockName="this">
         <attribute native="Enchanters" />
         <attribute fame="0" />
@@ -49544,6 +49606,588 @@
         <attribute strength="M" />
         <attribute length="9" />
         <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1904" name="Pony">
+      <AttributeBlock blockName="this">
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute base_price="12" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1905" name="Pony">
+      <AttributeBlock blockName="this">
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute base_price="14" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="3" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1906" name="Pony">
+      <AttributeBlock blockName="this">
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute base_price="12" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="3" />
+        <attribute strength="L" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1907" name="Pony">
+      <AttributeBlock blockName="this">
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute base_price="16" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="2" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1908" name="Pony">
+      <AttributeBlock blockName="this">
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute base_price="15" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="3" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1909" name="Pony">
+      <AttributeBlock blockName="this">
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute base_price="14" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="3" />
+        <attribute strength="L" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1910" name="Pony">
+      <AttributeBlock blockName="this">
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute base_price="16" />
+        <attribute magic="" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="2" />
+        <attribute strength="L" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1911" name="Warhorse">
+      <AttributeBlock blockName="this">
+        <attribute horse="warhorse" />
+        <attribute vulnerability="T" />
+        <attribute armored="" />
+        <attribute base_price="22" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="7" />
+        <attribute strength="T" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="5" />
+        <attribute strength="T" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1912" name="Warhorse">
+      <AttributeBlock blockName="this">
+        <attribute horse="warhorse" />
+        <attribute vulnerability="T" />
+        <attribute armored="" />
+        <attribute base_price="20" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="7" />
+        <attribute strength="T" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="4" />
+        <attribute strength="H" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1913" name="Warhorse">
+      <AttributeBlock blockName="this">
+        <attribute horse="warhorse" />
+        <attribute vulnerability="T" />
+        <attribute armored="" />
+        <attribute base_price="18" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="4" />
+        <attribute strength="H" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1914" name="Warhorse">
+      <AttributeBlock blockName="this">
+        <attribute horse="warhorse" />
+        <attribute vulnerability="T" />
+        <attribute armored="" />
+        <attribute base_price="25" />
+        <attribute magic="" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="5" />
+        <attribute strength="T" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="3" />
+        <attribute strength="T" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1915" name="Workhorse">
+      <AttributeBlock blockName="this">
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute base_price="12" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="8" />
+        <attribute strength="T" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1916" name="Workhorse">
+      <AttributeBlock blockName="this">
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute base_price="11" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="7" />
+        <attribute strength="H" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1917" name="Workhorse">
+      <AttributeBlock blockName="this">
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute base_price="11" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="7" />
+        <attribute strength="H" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1918" name="Workhorse">
+      <AttributeBlock blockName="this">
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute base_price="10" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="6" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1919" name="Workhorse">
+      <AttributeBlock blockName="this">
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute base_price="9" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="6" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1920" name="Workhorse">
+      <AttributeBlock blockName="this">
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute base_price="8" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="5" />
+        <attribute strength="L" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="4" />
+        <attribute strength="L" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1921" name="Pony">
+      <AttributeBlock blockName="this">
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute base_price="12" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="3" />
+        <attribute strength="L" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1922" name="Pony">
+      <AttributeBlock blockName="this">
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute base_price="14" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="3" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1923" name="Pony">
+      <AttributeBlock blockName="this">
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute base_price="14" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="3" />
+        <attribute strength="L" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1924" name="Workhorse">
+      <AttributeBlock blockName="this">
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute base_price="8" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="5" />
+        <attribute strength="L" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="L" />
+        <attribute strength="4" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1925" name="Workhorse">
+      <AttributeBlock blockName="this">
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute base_price="10" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="6" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1926" name="Workhorse">
+      <AttributeBlock blockName="this">
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute base_price="11" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="7" />
+        <attribute strength="H" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1927" name="Pony">
+      <AttributeBlock blockName="this">
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute base_price="12" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1928" name="Pony">
+      <AttributeBlock blockName="this">
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute base_price="15" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="3" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1929" name="Workhorse">
+      <AttributeBlock blockName="this">
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute base_price="11" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="7" />
+        <attribute strength="H" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1930" name="Workhorse">
+      <AttributeBlock blockName="this">
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute base_price="12" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="8" />
+        <attribute strength="T" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="6" />
+        <attribute strength="H" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1931" name="Warhorse">
+      <AttributeBlock blockName="this">
+        <attribute horse="warhorse" />
+        <attribute vulnerability="T" />
+        <attribute armored="" />
+        <attribute base_price="20" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="7" />
+        <attribute strength="T" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="4" />
+        <attribute strength="H" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1932" name="Workhorse">
+      <AttributeBlock blockName="this">
+        <attribute horse="horse" />
+        <attribute move_bonus="extra" />
+        <attribute vulnerability="H" />
+        <attribute base_price="14" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="6" />
+        <attribute strength="T" />
+        <attribute chit_color="tan" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="4" />
+        <attribute strength="H" />
+        <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
   </objects>
