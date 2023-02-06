@@ -225,7 +225,7 @@ public class RealmPoems {
 			text.append("<br>");
 			text.append("by: Quantum Jack");
 			break;
-		case "which":
+		case "witch":
 			text.append("Our little old lady, the Witch<br>");
 			text.append("Kind until she gets that itch<br>");
 			text.append("Absorbs a T Troll<br>");
@@ -242,6 +242,15 @@ public class RealmPoems {
 			text.append("And made them all both quite rich.<br>");
 			text.append("<br>");
 			text.append("by: CthulhuKid");
+			break;
+		case "witch king":
+			text.append("Which way the Witch King<br>");
+			text.append("How to make the spells sing<br>");
+			text.append("The Book of Lore<br>");
+			text.append("Like days of yore<br>");
+			text.append("Delivers the ultimate zing.<br>");
+			text.append("<br>");
+			text.append("by: Quantum Jack");
 			break;
 		case "woodsgirl":
 			text.append("The Woodsgirl leaves home as a child<br>");
