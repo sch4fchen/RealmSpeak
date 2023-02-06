@@ -38,7 +38,7 @@ public class QuestRewardAttribute extends QuestReward {
 		val = getGainType()==GainType.Gain?val:-val;
 		switch(getAttributeType()) {
 			case Fame:
-				character.addFame(val);
+				character.addFame(val,false);
 				break;
 			case Notoriety:
 				character.addNotoriety(val);

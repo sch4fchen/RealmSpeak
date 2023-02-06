@@ -3133,11 +3133,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 	}
 	public void addFame(double val) {
+		addFame(val,true);
+	}
+	public void addFame(double val, boolean checkCurse) {
 		if (!isCharacter()) {
 			getHiringCharacter().addFame(val);
 			return;
 		}
-		if (hasCurse(Constants.DISGUST) && val<0) {
+		if (checkCurse && hasCurse(Constants.DISGUST) && val<0) {
 			throw new IllegalStateException("Cannot subtract fame from character with DISGUST curse");
 		}
 		if (val!=0) { // no point adding zero!
