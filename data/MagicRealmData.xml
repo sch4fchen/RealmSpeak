@@ -34215,6 +34215,15 @@
       <contains id="1938" />
       <contains id="1942" />
       <contains id="1943" />
+      <contains id="1969" />
+      <contains id="1970" />
+      <contains id="1971" />
+      <contains id="2014" />
+      <contains id="2015" />
+      <contains id="2016" />
+      <contains id="2017" />
+      <contains id="1967" />
+      <contains id="1968" />
     </GameObject>
     <GameObject id="1281" name="Inn">
       <AttributeBlock blockName="this">
@@ -34269,6 +34278,12 @@
       <contains id="1913" />
       <contains id="1934" />
       <contains id="1935" />
+      <contains id="1962" />
+      <contains id="1964" />
+      <contains id="1965" />
+      <contains id="1966" />
+      <contains id="1995" />
+      <contains id="1959" />
     </GameObject>
     <GameObject id="1283" name="Guard">
       <AttributeBlock blockName="this">
@@ -34288,6 +34303,13 @@
       <contains id="1768" />
       <contains id="1939" />
       <contains id="1946" />
+      <contains id="1963" />
+      <contains id="1972" />
+      <contains id="1973" />
+      <contains id="1974" />
+      <contains id="1975" />
+      <contains id="2001" />
+      <contains id="2010" />
     </GameObject>
     <GameObject id="1284" name="Small Campfire">
       <AttributeBlock blockName="this">
@@ -34346,6 +34368,12 @@
       <contains id="1841" />
       <contains id="1842" />
       <contains id="1843" />
+      <contains id="1981" />
+      <contains id="1982" />
+      <contains id="1984" />
+      <contains id="1985" />
+      <contains id="1988" />
+      <contains id="1989" />
     </GameObject>
     <GameObject id="1288" name="Cottage">
       <AttributeBlock blockName="this">
@@ -35146,6 +35174,8 @@
       <contains id="1319" />
       <contains id="1320" />
       <contains id="1321" />
+      <contains id="1960" />
+      <contains id="1961" />
     </GameObject>
     <GameObject id="1318" name="Caster">
       <AttributeBlock blockName="this">
@@ -37436,6 +37466,8 @@
       <contains id="1406" />
       <contains id="1407" />
       <contains id="1408" />
+      <contains id="1996" />
+      <contains id="1998" />
     </GameObject>
     <GameObject id="1403" name="Archer">
       <AttributeBlock blockName="this">
@@ -39341,6 +39373,9 @@
       <contains id="1480" />
       <contains id="1481" />
       <contains id="1482" />
+      <contains id="1990" />
+      <contains id="1991" />
+      <contains id="2006" />
     </GameObject>
     <GameObject id="1477" name="Dwarf">
       <AttributeBlock blockName="this">
@@ -44856,6 +44891,9 @@
       <contains id="1746" />
       <contains id="1747" />
       <contains id="1748" />
+      <contains id="2002" />
+      <contains id="2003" />
+      <contains id="2004" />
     </GameObject>
     <GameObject id="1743" name="Assassin">
       <AttributeBlock blockName="this">
@@ -48121,6 +48159,7 @@
       <contains id="1852" />
       <contains id="1853" />
       <contains id="1931" />
+      <contains id="1980" />
     </GameObject>
     <GameObject id="1850" name="Caster">
       <AttributeBlock blockName="this">
@@ -48390,6 +48429,9 @@
       <contains id="1863" />
       <contains id="1864" />
       <contains id="1865" />
+      <contains id="1999" />
+      <contains id="2007" />
+      <contains id="2008" />
     </GameObject>
     <GameObject id="1860" name="Archer">
       <AttributeBlock blockName="this">
@@ -48626,6 +48668,8 @@
       <contains id="1868" />
       <contains id="1869" />
       <contains id="1870" />
+      <contains id="2012" />
+      <contains id="2013" />
     </GameObject>
     <GameObject id="1868" name="Caster">
       <AttributeBlock blockName="this">
@@ -48758,6 +48802,9 @@
       <contains id="1874" />
       <contains id="1875" />
       <contains id="1876" />
+      <contains id="1997" />
+      <contains id="2009" />
+      <contains id="2011" />
     </GameObject>
     <GameObject id="1873" name="G. Axeman">
       <AttributeBlock blockName="this">
@@ -49023,6 +49070,9 @@
       <contains id="1886" />
       <contains id="1887" />
       <contains id="1888" />
+      <contains id="1994" />
+      <contains id="2000" />
+      <contains id="2005" />
     </GameObject>
     <GameObject id="1883" name="Swordsman">
       <AttributeBlock blockName="this">
@@ -49271,6 +49321,8 @@
       <contains id="1892" />
       <contains id="1893" />
       <contains id="1894" />
+      <contains id="1986" />
+      <contains id="1992" />
     </GameObject>
     <GameObject id="1891" name="Caster">
       <AttributeBlock blockName="this">
@@ -49530,6 +49582,8 @@
       <contains id="1901" />
       <contains id="1902" />
       <contains id="1903" />
+      <contains id="1983" />
+      <contains id="1987" />
     </GameObject>
     <GameObject id="1901" name="Caster">
       <AttributeBlock blockName="this">
@@ -51652,29 +51706,6 @@
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1993" name="Helmet">
-      <AttributeBlock blockName="this">
-        <attribute vulnerability="M" />
-        <attribute weight="M" />
-        <attribute armor_smash="" />
-        <attribute armor="" />
-        <attribute icon_type="helmet" />
-        <attribute facing="dark" />
-        <attribute armor_row="2" />
-        <attribute ret_dw="House" />
-        <attribute icon_folder="armor" />
-        <attribute item="" />
-        <attribute super_realm="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="intact">
-        <attribute base_price="5" />
-        <attribute chit_color="gray" />
-      </AttributeBlock>
-      <AttributeBlock blockName="damaged">
-        <attribute base_price="3" />
-        <attribute chit_color="white" />
-      </AttributeBlock>
-    </GameObject>
     <GameObject id="1994" name="Crossbow">
       <AttributeBlock blockName="this">
         <attribute weight="H" />
@@ -52205,7 +52236,28 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2017" name="Lilac Helmet">
+    <GameObject id="2017" name="Staff">
+      <AttributeBlock blockName="this">
+        <attribute weight="L" />
+        <attribute length="9" />
+        <attribute base_price="1" />
+        <attribute two_handed="" />
+        <attribute weapon="" />
+        <attribute icon_type="staff" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute strength="L" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute strength="L" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2018" name="Lilac Helmet">
       <AttributeBlock blockName="this">
         <attribute vulnerability="L" />
         <attribute weight="L" />
@@ -52233,7 +52285,7 @@
         <attribute base_price="3" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2018" name="Violet Breastplate">
+    <GameObject id="2019" name="Violet Breastplate">
       <AttributeBlock blockName="this">
         <attribute vulnerability="L" />
         <attribute weight="L" />
@@ -52262,7 +52314,7 @@
         <attribute base_price="6" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2019" name="Regal Shield">
+    <GameObject id="2020" name="Regal Shield">
       <AttributeBlock blockName="this">
         <attribute vulnerability="L" />
         <attribute weight="L" />
@@ -52291,7 +52343,7 @@
         <attribute base_price="5" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2020" name="Onyx Breastplate">
+    <GameObject id="2021" name="Onyx Breastplate">
       <AttributeBlock blockName="this">
         <attribute vulnerability="T" />
         <attribute weight="T" />
@@ -52320,7 +52372,7 @@
         <attribute base_price="24" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2021" name="Opal Helmet">
+    <GameObject id="2022" name="Opal Helmet">
       <AttributeBlock blockName="this">
         <attribute vulnerability="T" />
         <attribute weight="T" />
@@ -52348,7 +52400,7 @@
         <attribute base_price="12" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2022" name="Quartz Shield">
+    <GameObject id="2023" name="Quartz Shield">
       <AttributeBlock blockName="this">
         <attribute vulnerability="T" />
         <attribute weight="T" />
@@ -52377,7 +52429,7 @@
         <attribute base_price="18" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2023" name="Moon Bow">
+    <GameObject id="2024" name="Moon Bow">
       <AttributeBlock blockName="this">
         <attribute weight="L" />
         <attribute length="16" />
@@ -52403,7 +52455,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2024" name="Crystal Bow">
+    <GameObject id="2025" name="Crystal Bow">
       <AttributeBlock blockName="this">
         <attribute weight="M" />
         <attribute length="18" />
@@ -52429,7 +52481,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2025" name="Sun Sword">
+    <GameObject id="2026" name="Sun Sword">
       <AttributeBlock blockName="this">
         <attribute weight="L" />
         <attribute length="4" />
@@ -52454,7 +52506,7 @@
         <attribute chit_color="gold" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2026" name="Golden Axe">
+    <GameObject id="2027" name="Golden Axe">
       <AttributeBlock blockName="this">
         <attribute weight="T" />
         <attribute length="6" />
