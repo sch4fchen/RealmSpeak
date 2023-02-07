@@ -74,31 +74,6 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		{"Woods Girl","woodsgirl"},
 	};
 	
-	private static final String[] POEMS = {
-			"Magic Realm",
-			"Secrets of Magic Realm",
-			"Amazon",
-			"Berserker",
-			"Black Knight",
-			"Black Knight2",
-			"Captain",
-			"Druid",
-			"Dwarf",
-			"Elf",
-			"Magician",
-			"Magician2",
-			"Pilgrim",
-			"Pilgrim2",
-			"Sorceror",
-			"Sorceror2",
-			"Swordsman",
-			"Witch",
-			"Witch2",
-			"Witch King",
-			"White Knight",
-			"Woodsgirl"
-	};
-	
 	private static final String[] MISSIONS = {
 		"Escort Party",
 		"Food Ale",
@@ -1488,9 +1463,9 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 				viewDieRollStatistics.add(viewAllDieRolls);
 			viewMenu.add(viewDieRollStatistics);
 				poems = new JMenu("Poems");
-				poemsList = new JMenuItem[POEMS.length];
-				for (int i=0;i<POEMS.length;i++) {
-					poemsList[i] = new ShowPoem(POEMS[i]);
+				poemsList = new JMenuItem[RealmPoems.POEMS.length];
+				for (int i=0;i<RealmPoems.POEMS.length;i++) {
+					poemsList[i] = new ShowPoem(RealmPoems.POEMS[i]);
 					poems.add(poemsList[i]);
 				}
 			viewMenu.add(poems);

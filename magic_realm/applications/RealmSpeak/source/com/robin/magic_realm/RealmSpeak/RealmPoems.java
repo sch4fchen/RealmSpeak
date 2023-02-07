@@ -18,6 +18,32 @@
 package com.robin.magic_realm.RealmSpeak;
 
 public class RealmPoems {
+	public static final String[] POEMS = {
+			"Magic Realm",
+			"Secrets of Magic Realm",
+			"Amazon",
+			"Berserker",
+			"Black Knight",
+			"Black Knight2",
+			"Captain",
+			"Druid",
+			"Dwarf",
+			"Elf",
+			"Magician",
+			"Magician2",
+			"Pilgrim",
+			"Pilgrim2",
+			"Sorceror",
+			"Sorceror2",
+			"Swordsman",
+			"White Knight",
+			"Witch",
+			"Witch2",
+			"Witch King",
+			"Wizard",
+			"Woodsgirl"
+	};
+	
 	public static StringBuffer getPoem(String name) {
 		StringBuffer text = new StringBuffer();
 		text.append("<html><body><font size=\"-1\" face=\"Helvetical, Arial, sans-serif\">");
@@ -249,6 +275,15 @@ public class RealmPoems {
 			text.append("The Book of Lore<br>");
 			text.append("Like days of yore<br>");
 			text.append("Delivers the ultimate zing.<br>");
+			text.append("<br>");
+			text.append("by: Quantum Jack");
+			break;
+		case "wizard":
+			text.append("A Wizard who knows every path<br>");
+			text.append("Unleashing his mighty wrath<br>");
+			text.append("All round the Realm<br>");
+			text.append("Friends to overwhelm<br>");
+			text.append("This hiker surely needs a bath.<br>");
 			text.append("<br>");
 			text.append("by: Quantum Jack");
 			break;
