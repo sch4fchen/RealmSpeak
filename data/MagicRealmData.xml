@@ -51730,30 +51730,6 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1995" name="Crossbow">
-      <AttributeBlock blockName="this">
-        <attribute weight="H" />
-        <attribute length="12" />
-        <attribute base_price="10" />
-        <attribute missile="" />
-        <attribute two_handed="" />
-        <attribute weapon="" />
-        <attribute icon_type="crossbow" />
-        <attribute icon_folder="weapons" />
-        <attribute item="" />
-        <attribute super_realm="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="unalerted">
-        <attribute strength="H" />
-        <attribute chit_color="white" />
-      </AttributeBlock>
-      <AttributeBlock blockName="alerted">
-        <attribute attack_speed="1" />
-        <attribute strength="H" />
-        <attribute sharpness="1" />
-        <attribute chit_color="red" />
-      </AttributeBlock>
-    </GameObject>
     <GameObject id="1996" name="Medium Bow">
       <AttributeBlock blockName="this">
         <attribute weight="M" />
@@ -52272,6 +52248,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute magic="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="12" />
@@ -52301,6 +52278,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute magic="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="16" />
@@ -52330,6 +52308,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute magic="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="14" />
@@ -52359,6 +52338,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute magic="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="35" />
@@ -52387,6 +52367,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute magic="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="25" />
@@ -52416,6 +52397,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute magic="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="30" />
@@ -52443,6 +52425,7 @@
         <attribute super_realm="" />
         <attribute notoriety="10" />
         <attribute fame="3" />
+        <attribute magic="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -52469,6 +52452,7 @@
         <attribute super_realm="" />
         <attribute notoriety="15" />
         <attribute fame="0" />
+        <attribute magic="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="M" />
@@ -52493,6 +52477,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute magic="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="4" />
@@ -52519,6 +52504,7 @@
         <attribute super_realm="" />
         <attribute notoriety="3" />
         <attribute fame="6" />
+        <attribute magic="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="T" />

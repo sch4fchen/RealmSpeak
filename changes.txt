@@ -3,18 +3,18 @@
 Super Realm: Items
 Super Realm: adapt chit colors for monsters and natives
 Super Realm: icons for natives and monsters
-Super Realm: Character potraits with credits, different chit icon
+Super Realm: Character potraits with credits (including credits), different chit icon
 Super Realm: Spells (modified base game spells: Exorcise, Fog, Elven Grace, Violent Storm, Ligthning Bolt, Hurricane Winds, Pentangle, Broomstick, Ask Demon, Absorb Essence, Transform, Phantasm, Melt into Mist, Dissolve Spell, Protection from Magic, Peace with Nature, Control Bats, Whistle for Monsters, Remedy, Poison, ?Guide Beast, ?Deal with Orcs and Goblins
 Super Realm: Treasures (modified base game treasures, see 1.1a: Seven League Boots, Power Gauntles, Phantom Glass, Map of Ruins, Lost Keys, Dragon Essence, Crystal Ball, Chest, Book of Nature, Book of Alchemy, Ancient Telescope, Amulet
 Super Realm: adapt setup with spells and treasures
-Super Realm: Setup Charts, in order: small, large treasures, spells, monsters; dwellings: spells, horses, armor, weapons, helmets, shields, breastplates (large counters below small counters); spells: higher numbers below lower numbers; travellers go to nattive boxes
+Super Realm: Setup Charts, in order: small, large treasures, spells, monsters; dwellings: spells, horses, armor, weapons, helmets, shields, breastplates (large counters below small counters); spells: higher numbers below lower numbers; travelers go to native boxes
 ---Basic Functionalities for current content---
+Super Realm: rules for lila items
 Super Realm: rules for minotaur shield
 Super Realm: rules for special monster attacks and change tactics (Spear and Bow Goblins, Bow Skeletons, Demon, Winged Demon, Imp, Vampire, Succubus, and Devil): p.98
 Super Realm: rules for special native attacks and native casters: Natives Casters (p. 89)
 Super Realm: rules for clans 4.7 (p. 41)
-Super Realm: Horses: When regenerated (after being killed or abandoned), normal ponies are returned to the Bashkars, workhorses to the Rogues, and war
-horses to the Order.
+Super Realm: Horses: When regenerated (after being killed or abandoned), normal ponies are returned to the Bashkars, workhorses to the Rogues, and war horses to the Order.
 ---More content incl. functionalities; graphics---
 Super Realm: Visitor/Travelers=Nomads/Missions/Campaigns/Tasks (incl. for seasons); Travelers: 4.8 (p.41)
 Super Realm: Quests + Events
@@ -25,7 +25,7 @@ Super Realm: Adapt Commerce optional rules for new natives
 Super Realm: Characters
 Super Realm: CompanionEditPanel: add all denizens
 Super Realm: RealmCharacterConstants (adapt ArmorEditDialog and WeaponEditDialog): dwellings, visitors
-Super Realm: update graphics
+Super Realm: update graphics, including for riding natives
 Super Realm: icons for site chits, sound and warning chits
 Super Realm: option to use Super Realm search tables etc., add search tables etc. to menu; add first edition search tables to menu
 ---Rules---
@@ -75,6 +75,7 @@ NEW FEATURES:
 SUPER REALM:
 # Natives
 # Horses
+# Items
 BUGS/ISSUES:
 # Quest reward can subtract fame (even with disgust curse)
 

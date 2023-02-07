@@ -199,7 +199,7 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 				});
 				panel.add(queryPanel,"Center");
 				
-				JLabel label = new JLabel("Click spell for more info",JLabel.CENTER);
+				JLabel label = new JLabel("Click spell for more info",SwingConstants.CENTER);
 				label.setOpaque(true);
 				label.setBackground(MagicRealmColor.PALEYELLOW);
 				label.setFont(queryFont);
@@ -208,7 +208,7 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 			}
 		}
 	}
-	private boolean actionLocked(GameObject thing) {
+	private static boolean actionLocked(GameObject thing) {
 		// FIXME This isn't exactly right.  Just because an item is in the PhaseManager, doesn't mean it was
 		// necessarily used...
 //		RealmTurnPanel turnPanel = getCharacterFrame().getTurnPanel();
