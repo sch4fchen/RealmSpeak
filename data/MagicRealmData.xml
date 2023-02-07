@@ -51344,6 +51344,1142 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="1980" name="Armor">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="H" />
+        <attribute weight="H" />
+        <attribute armor_thrust="" />
+        <attribute armor_swing="" />
+        <attribute armor_smash="" />
+        <attribute armor="" />
+        <attribute icon_type="suitofarmor" />
+        <attribute facing="dark" />
+        <attribute armor_row="3" />
+        <attribute ret_dw="Chapel" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="17" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="12" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1981" name="Shield">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="M" />
+        <attribute weight="M" />
+        <attribute shield="" />
+        <attribute armor_choice="" />
+        <attribute armor="" />
+        <attribute icon_type="shield" />
+        <attribute facing="dark" />
+        <attribute armor_row="1" />
+        <attribute ret_dw="House" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="7" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="5" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1982" name="Shield">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="M" />
+        <attribute weight="M" />
+        <attribute shield="" />
+        <attribute armor_choice="" />
+        <attribute armor="" />
+        <attribute icon_type="shield" />
+        <attribute facing="dark" />
+        <attribute armor_row="1" />
+        <attribute ret_dw="House" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="7" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="5" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1983" name="Shield">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="M" />
+        <attribute weight="M" />
+        <attribute shield="" />
+        <attribute armor_choice="" />
+        <attribute armor="" />
+        <attribute icon_type="shield" />
+        <attribute facing="dark" />
+        <attribute armor_row="1" />
+        <attribute ret_dw="House" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="7" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="5" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1984" name="Breastplate">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="M" />
+        <attribute weight="M" />
+        <attribute armor_swing="" />
+        <attribute armor_thrust="" />
+        <attribute armor="" />
+        <attribute icon_type="breastplate" />
+        <attribute facing="dark" />
+        <attribute armor_row="2" />
+        <attribute ret_dw="Guard" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="9" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="6" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1985" name="Breastplate">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="M" />
+        <attribute weight="M" />
+        <attribute armor_swing="" />
+        <attribute armor_thrust="" />
+        <attribute armor="" />
+        <attribute icon_type="breastplate" />
+        <attribute facing="dark" />
+        <attribute armor_row="2" />
+        <attribute ret_dw="Guard" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="9" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="6" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1986" name="Breastplate">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="M" />
+        <attribute weight="M" />
+        <attribute armor_swing="" />
+        <attribute armor_thrust="" />
+        <attribute armor="" />
+        <attribute icon_type="breastplate" />
+        <attribute facing="dark" />
+        <attribute armor_row="2" />
+        <attribute ret_dw="Guard" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="9" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="6" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1987" name="Breastplate">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="M" />
+        <attribute weight="M" />
+        <attribute armor_swing="" />
+        <attribute armor_thrust="" />
+        <attribute armor="" />
+        <attribute icon_type="breastplate" />
+        <attribute facing="dark" />
+        <attribute armor_row="2" />
+        <attribute ret_dw="Guard" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="9" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="6" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1988" name="Helmet">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="M" />
+        <attribute weight="M" />
+        <attribute armor_smash="" />
+        <attribute armor="" />
+        <attribute icon_type="helmet" />
+        <attribute facing="dark" />
+        <attribute armor_row="2" />
+        <attribute ret_dw="House" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="5" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="3" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1989" name="Helmet">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="M" />
+        <attribute weight="M" />
+        <attribute armor_smash="" />
+        <attribute armor="" />
+        <attribute icon_type="helmet" />
+        <attribute facing="dark" />
+        <attribute armor_row="2" />
+        <attribute ret_dw="House" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="5" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="3" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1990" name="Helmet">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="M" />
+        <attribute weight="M" />
+        <attribute armor_smash="" />
+        <attribute armor="" />
+        <attribute icon_type="helmet" />
+        <attribute facing="dark" />
+        <attribute armor_row="2" />
+        <attribute ret_dw="House" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="5" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="3" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1991" name="Helmet">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="M" />
+        <attribute weight="M" />
+        <attribute armor_smash="" />
+        <attribute armor="" />
+        <attribute icon_type="helmet" />
+        <attribute facing="dark" />
+        <attribute armor_row="2" />
+        <attribute ret_dw="House" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="5" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="3" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1992" name="Helmet">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="M" />
+        <attribute weight="M" />
+        <attribute armor_smash="" />
+        <attribute armor="" />
+        <attribute icon_type="helmet" />
+        <attribute facing="dark" />
+        <attribute armor_row="2" />
+        <attribute ret_dw="House" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="5" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="3" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1993" name="Helmet">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="M" />
+        <attribute weight="M" />
+        <attribute armor_smash="" />
+        <attribute armor="" />
+        <attribute icon_type="helmet" />
+        <attribute facing="dark" />
+        <attribute armor_row="2" />
+        <attribute ret_dw="House" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="5" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="3" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1994" name="Crossbow">
+      <AttributeBlock blockName="this">
+        <attribute weight="H" />
+        <attribute length="12" />
+        <attribute base_price="10" />
+        <attribute missile="" />
+        <attribute two_handed="" />
+        <attribute weapon="" />
+        <attribute icon_type="crossbow" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute strength="H" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute attack_speed="1" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1995" name="Crossbow">
+      <AttributeBlock blockName="this">
+        <attribute weight="H" />
+        <attribute length="12" />
+        <attribute base_price="10" />
+        <attribute missile="" />
+        <attribute two_handed="" />
+        <attribute weapon="" />
+        <attribute icon_type="crossbow" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute strength="H" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute attack_speed="1" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1996" name="Medium Bow">
+      <AttributeBlock blockName="this">
+        <attribute weight="M" />
+        <attribute length="16" />
+        <attribute base_price="8" />
+        <attribute missile="" />
+        <attribute two_handed="" />
+        <attribute weapon="" />
+        <attribute icon_type="medium_bow" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute strength="M" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute attack_speed="1" />
+        <attribute strength="M" />
+        <attribute sharpness="2" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1997" name="Medium Bow">
+      <AttributeBlock blockName="this">
+        <attribute weight="M" />
+        <attribute length="16" />
+        <attribute base_price="8" />
+        <attribute missile="" />
+        <attribute two_handed="" />
+        <attribute weapon="" />
+        <attribute icon_type="medium_bow" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute strength="M" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute attack_speed="1" />
+        <attribute strength="M" />
+        <attribute sharpness="2" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1998" name="Light Bow">
+      <AttributeBlock blockName="this">
+        <attribute weight="L" />
+        <attribute length="14" />
+        <attribute base_price="6" />
+        <attribute missile="" />
+        <attribute two_handed="" />
+        <attribute weapon="" />
+        <attribute icon_type="light_bow" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute strength="L" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute attack_speed="1" />
+        <attribute strength="L" />
+        <attribute sharpness="2" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1999" name="Light Bow">
+      <AttributeBlock blockName="this">
+        <attribute weight="L" />
+        <attribute length="14" />
+        <attribute base_price="6" />
+        <attribute missile="" />
+        <attribute two_handed="" />
+        <attribute weapon="" />
+        <attribute icon_type="light_bow" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute strength="L" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute attack_speed="1" />
+        <attribute strength="L" />
+        <attribute sharpness="2" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2000" name="Great Sword">
+      <AttributeBlock blockName="this">
+        <attribute weight="H" />
+        <attribute length="8" />
+        <attribute base_price="10" />
+        <attribute two_handed="" />
+        <attribute weapon="" />
+        <attribute icon_type="great_sword" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute attack_speed="6" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2001" name="Broadsword">
+      <AttributeBlock blockName="this">
+        <attribute weight="M" />
+        <attribute length="7" />
+        <attribute base_price="8" />
+        <attribute weapon="" />
+        <attribute icon_type="broadsword" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2002" name="Thrusting Sword">
+      <AttributeBlock blockName="this">
+        <attribute weight="L" />
+        <attribute length="4" />
+        <attribute base_price="6" />
+        <attribute weapon="" />
+        <attribute icon_type="thrusting_sword" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute sharpness="1" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute strength="L" />
+        <attribute sharpness="1" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2003" name="Thrusting Sword">
+      <AttributeBlock blockName="this">
+        <attribute weight="L" />
+        <attribute length="4" />
+        <attribute base_price="6" />
+        <attribute weapon="" />
+        <attribute icon_type="thrusting_sword" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute sharpness="1" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute strength="L" />
+        <attribute sharpness="1" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2004" name="Short Sword">
+      <AttributeBlock blockName="this">
+        <attribute weight="L" />
+        <attribute length="3" />
+        <attribute base_price="4" />
+        <attribute weapon="" />
+        <attribute icon_type="short_sword" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute strength="L" />
+        <attribute sharpness="1" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute strength="L" />
+        <attribute sharpness="1" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2005" name="Morning Star">
+      <AttributeBlock blockName="this">
+        <attribute weight="H" />
+        <attribute length="6" />
+        <attribute base_price="8" />
+        <attribute two_handed="" />
+        <attribute weapon="" />
+        <attribute icon_type="morning_star" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute strength="H" />
+        <attribute chit_color="white" />
+        <attribute attack_speed="6" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute attack_speed="3" />
+        <attribute strength="H" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2006" name="Great Axe">
+      <AttributeBlock blockName="this">
+        <attribute weight="H" />
+        <attribute length="5" />
+        <attribute base_price="8" />
+        <attribute two_handed="" />
+        <attribute weapon="" />
+        <attribute icon_type="great_axe" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2007" name="Axe">
+      <AttributeBlock blockName="this">
+        <attribute weight="M" />
+        <attribute length="2" />
+        <attribute base_price="4" />
+        <attribute throwable="" />
+        <attribute weapon="" />
+        <attribute icon_type="axe" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2008" name="Axe">
+      <AttributeBlock blockName="this">
+        <attribute weight="M" />
+        <attribute length="2" />
+        <attribute base_price="4" />
+        <attribute throwable="" />
+        <attribute weapon="" />
+        <attribute icon_type="axe" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2009" name="Axe">
+      <AttributeBlock blockName="this">
+        <attribute weight="M" />
+        <attribute length="2" />
+        <attribute base_price="4" />
+        <attribute throwable="" />
+        <attribute weapon="" />
+        <attribute icon_type="axe" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2010" name="Axe">
+      <AttributeBlock blockName="this">
+        <attribute weight="M" />
+        <attribute length="2" />
+        <attribute base_price="4" />
+        <attribute throwable="" />
+        <attribute weapon="" />
+        <attribute icon_type="axe" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2011" name="Spear">
+      <AttributeBlock blockName="this">
+        <attribute weight="M" />
+        <attribute length="10" />
+        <attribute base_price="6" />
+        <attribute two_handed="" />
+        <attribute throwable="" />
+        <attribute weapon="" />
+        <attribute icon_type="spear" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute attack_speed="6" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2012" name="Staff">
+      <AttributeBlock blockName="this">
+        <attribute weight="L" />
+        <attribute length="9" />
+        <attribute base_price="1" />
+        <attribute two_handed="" />
+        <attribute weapon="" />
+        <attribute icon_type="staff" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute strength="L" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute strength="L" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2013" name="Staff">
+      <AttributeBlock blockName="this">
+        <attribute weight="L" />
+        <attribute length="9" />
+        <attribute base_price="1" />
+        <attribute two_handed="" />
+        <attribute weapon="" />
+        <attribute icon_type="staff" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute strength="L" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute strength="L" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2014" name="Staff">
+      <AttributeBlock blockName="this">
+        <attribute weight="L" />
+        <attribute length="9" />
+        <attribute base_price="1" />
+        <attribute two_handed="" />
+        <attribute weapon="" />
+        <attribute icon_type="staff" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute strength="L" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute strength="L" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2015" name="Staff">
+      <AttributeBlock blockName="this">
+        <attribute weight="L" />
+        <attribute length="9" />
+        <attribute base_price="1" />
+        <attribute two_handed="" />
+        <attribute weapon="" />
+        <attribute icon_type="staff" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute strength="L" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute strength="L" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2016" name="Staff">
+      <AttributeBlock blockName="this">
+        <attribute weight="L" />
+        <attribute length="9" />
+        <attribute base_price="1" />
+        <attribute two_handed="" />
+        <attribute weapon="" />
+        <attribute icon_type="staff" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute strength="L" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute strength="L" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2017" name="Lilac Helmet">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="L" />
+        <attribute weight="L" />
+        <attribute armor_smash="" />
+        <attribute fame="2" />
+        <attribute notoriety="2" />
+        <attribute armor="" />
+        <attribute icon_type="helmet" />
+        <attribute facing="dark" />
+        <attribute pile_position="1" />
+        <attribute armor_row="2" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="12" />
+        <attribute chit_color="gold" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="5" />
+        <attribute chit_color="yellow" />
+      </AttributeBlock>
+      <AttributeBlock blockName="destroyed">
+        <attribute base_price="3" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2018" name="Violet Breastplate">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="L" />
+        <attribute weight="L" />
+        <attribute armor_swing="" />
+        <attribute armor_thrust="" />
+        <attribute fame="2" />
+        <attribute notoriety="2" />
+        <attribute armor="" />
+        <attribute icon_type="breastplate" />
+        <attribute facing="dark" />
+        <attribute pile_position="2" />
+        <attribute armor_row="2" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="16" />
+        <attribute chit_color="gold" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="9" />
+        <attribute chit_color="yellow" />
+      </AttributeBlock>
+      <AttributeBlock blockName="destroyed">
+        <attribute base_price="6" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2019" name="Regal Shield">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="L" />
+        <attribute weight="L" />
+        <attribute shield="" />
+        <attribute armor_choice="" />
+        <attribute fame="2" />
+        <attribute notoriety="2" />
+        <attribute armor="" />
+        <attribute icon_type="shield" />
+        <attribute facing="dark" />
+        <attribute pile_position="3" />
+        <attribute armor_row="1" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="14" />
+        <attribute chit_color="gold" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="7" />
+        <attribute chit_color="yellow" />
+      </AttributeBlock>
+      <AttributeBlock blockName="destroyed">
+        <attribute base_price="5" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2020" name="Onyx Breastplate">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="T" />
+        <attribute weight="T" />
+        <attribute armor_swing="" />
+        <attribute armor_thrust="" />
+        <attribute fame="5" />
+        <attribute notoriety="5" />
+        <attribute armor="" />
+        <attribute icon_type="breastplate" />
+        <attribute facing="dark" />
+        <attribute pile_position="2" />
+        <attribute armor_row="2" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="35" />
+        <attribute chit_color="gold" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="32" />
+        <attribute chit_color="yellow" />
+      </AttributeBlock>
+      <AttributeBlock blockName="destroyed">
+        <attribute base_price="24" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2021" name="Opal Helmet">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="T" />
+        <attribute weight="T" />
+        <attribute armor_smash="" />
+        <attribute fame="5" />
+        <attribute notoriety="5" />
+        <attribute armor="" />
+        <attribute icon_type="helmet" />
+        <attribute facing="dark" />
+        <attribute pile_position="1" />
+        <attribute armor_row="2" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="25" />
+        <attribute chit_color="gold" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="20" />
+        <attribute chit_color="yellow" />
+      </AttributeBlock>
+      <AttributeBlock blockName="destroyed">
+        <attribute base_price="12" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2022" name="Quartz Shield">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="T" />
+        <attribute weight="T" />
+        <attribute shield="" />
+        <attribute armor_choice="" />
+        <attribute fame="5" />
+        <attribute notoriety="5" />
+        <attribute armor="" />
+        <attribute icon_type="shield" />
+        <attribute facing="dark" />
+        <attribute pile_position="3" />
+        <attribute armor_row="1" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="30" />
+        <attribute chit_color="gold" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="26" />
+        <attribute chit_color="yellow" />
+      </AttributeBlock>
+      <AttributeBlock blockName="destroyed">
+        <attribute base_price="18" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2023" name="Moon Bow">
+      <AttributeBlock blockName="this">
+        <attribute weight="L" />
+        <attribute length="16" />
+        <attribute base_price="25" />
+        <attribute missile="" />
+        <attribute two_handed="" />
+        <attribute weapon="" />
+        <attribute icon_type="medium_bow" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute notoriety="10" />
+        <attribute fame="3" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute strength="L" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute attack_speed="1" />
+        <attribute strength="L" />
+        <attribute sharpness="2" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2024" name="Crystal Bow">
+      <AttributeBlock blockName="this">
+        <attribute weight="M" />
+        <attribute length="18" />
+        <attribute base_price="30" />
+        <attribute missile="" />
+        <attribute two_handed="" />
+        <attribute weapon="" />
+        <attribute icon_type="medium_bow" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute notoriety="15" />
+        <attribute fame="0" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute strength="M" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute attack_speed="1" />
+        <attribute strength="M" />
+        <attribute sharpness="2" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2025" name="Sun Sword">
+      <AttributeBlock blockName="this">
+        <attribute weight="L" />
+        <attribute length="4" />
+        <attribute fame="3" />
+        <attribute notoriety="9" />
+        <attribute base_price="20" />
+        <attribute weapon="" />
+        <attribute icon_type="great_sword" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute sharpness="1" />
+        <attribute chit_color="yellow" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute strength="L" />
+        <attribute sharpness="1" />
+        <attribute chit_color="gold" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2026" name="Golden Axe">
+      <AttributeBlock blockName="this">
+        <attribute weight="T" />
+        <attribute length="6" />
+        <attribute base_price="20" />
+        <attribute two_handed="" />
+        <attribute weapon="" />
+        <attribute icon_type="great_axe" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute notoriety="3" />
+        <attribute fame="6" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute strength="T" />
+        <attribute sharpness="1" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute attack_speed="3" />
+        <attribute strength="T" />
+        <attribute sharpness="1" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
