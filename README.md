@@ -66,7 +66,7 @@ from that to figure out how to setup projects in your favorite IDE.
 sch4fchen
 
 
-# Licence
+# License
 
 RealmSpeak is the Java application for playing the board game Magic Realm.
 Copyright (c) 2005-2015 Robin Warren
