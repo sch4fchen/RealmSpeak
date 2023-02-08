@@ -554,6 +554,9 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		showHtmlWindow("About RealmSpeak",text.toString());
 	}
 	private void showHtmlWindow(String title,String text) {
+		showHtmlWindow(title,text,false);
+	}
+	private void showHtmlWindow(String title,String text,boolean scrollable) {
 		JPanel panel = new JPanel(new BorderLayout());
 		JEditorPane pane = new JEditorPane("text/html",text) {
 			public boolean isFocusTraversable() {
@@ -575,7 +578,13 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		});
 		pane.setEditable(false);
 		pane.setOpaque(false);
-		panel.add(pane,BorderLayout.CENTER);
+		if (scrollable) {
+			JScrollPane scrollPane = new JScrollPane(pane);
+			panel.add(scrollPane,BorderLayout.CENTER);
+		}
+		else {
+			panel.add(pane,BorderLayout.CENTER);
+		}
 		Box box = Box.createHorizontalBox();
 		box.add(Box.createHorizontalGlue());
 		JButton creditsButton = new JButton("RealmSpeak Credits...");
@@ -2226,7 +2235,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 			addActionListener(this);
 		}
 		public void actionPerformed(ActionEvent ev) {
-			showHtmlWindow(name,RealmPoems.getPoem(name.toLowerCase()).toString());
+			showHtmlWindow(name,RealmPoems.getPoem(name.toLowerCase()).toString(),true);
 		}
 	}
 	private class ShowGoldSpecialViewAction extends JMenuItem implements ActionListener {
