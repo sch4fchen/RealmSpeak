@@ -34779,7 +34779,7 @@
     <GameObject id="1304" name="T Serpent">
       <AttributeBlock blockName="this">
         <attribute monster="" />
-        <attribute vulnerability="M" />
+        <attribute vulnerability="T" />
         <attribute fame="7" />
         <attribute notoriety="7" />
         <attribute armored="" />
@@ -34796,7 +34796,7 @@
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="L" />
-        <attribute chit_color="grey" />
+        <attribute chit_color="gray" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
@@ -35058,14 +35058,14 @@
         <attribute move_speed="2" />
         <attribute attack_speed="2" />
         <attribute strength="T" />
-        <attribute chit_color="white" />
+        <attribute chit_color="gray" />
         <attribute length="17" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
         <attribute attack_speed="3" />
         <attribute strength="M" />
-        <attribute chit_color="gray" />
+        <attribute chit_color="darkgray" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1314" name="Minotaur">
@@ -35087,7 +35087,7 @@
         <attribute move_speed="4" />
         <attribute attack_speed="6" />
         <attribute strength="T" />
-        <attribute chit_color="white" />
+        <attribute chit_color="tan" />
         <attribute length="5" />
         <attribute sharpness="1" />
       </AttributeBlock>
@@ -35095,7 +35095,7 @@
         <attribute move_speed="5" />
         <attribute attack_speed="4" />
         <attribute strength="T" />
-        <attribute chit_color="gray" />
+        <attribute chit_color="brown" />
         <attribute sharpness="1" />
         <attribute length="5" />
       </AttributeBlock>
@@ -35113,11 +35113,11 @@
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute strength="T" />
-        <attribute chit_color="lightgreen" />
+        <attribute chit_color="tan" />
       </AttributeBlock>
       <AttributeBlock blockName="damaged">
         <attribute strength="T" />
-        <attribute chit_color="forestgreen" />
+        <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1316" name="Vampire">
@@ -35141,14 +35141,14 @@
         <attribute move_speed="4" />
         <attribute attack_speed="2" />
         <attribute strength="T" />
-        <attribute chit_color="white" />
+        <attribute chit_color="gray" />
         <attribute length="17" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
-        <attribute chit_color="gray" />
+        <attribute chit_color="darkgray" />
         <attribute length="17" />
       </AttributeBlock>
     </GameObject>
@@ -35371,13 +35371,13 @@
         <attribute move_speed="3" />
         <attribute attack_speed="4" />
         <attribute magic_type="M" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="gray" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
         <attribute attack_speed="3" />
         <attribute strength="M" />
-        <attribute chit_color="red" />
+        <attribute chit_color="darkgray" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1326" name="H Gargyle">
@@ -35401,13 +35401,13 @@
         <attribute move_speed="3" />
         <attribute attack_speed="4" />
         <attribute magic_type="M" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="gray" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
         <attribute attack_speed="3" />
         <attribute strength="M" />
-        <attribute chit_color="red" />
+        <attribute chit_color="darkgray" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1327" name="H Gargyle">
@@ -35431,13 +35431,13 @@
         <attribute move_speed="3" />
         <attribute attack_speed="4" />
         <attribute magic_type="M" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="gray" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
         <attribute attack_speed="3" />
         <attribute strength="M" />
-        <attribute chit_color="red" />
+        <attribute chit_color="darkgray" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1328" name="T Gargyle">
@@ -36862,13 +36862,13 @@
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="gray" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
         <attribute attack_speed="5" />
         <attribute strength="H" />
-        <attribute chit_color="red" />
+        <attribute chit_color="darkgray" />
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
@@ -36892,13 +36892,13 @@
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="gray" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
         <attribute attack_speed="5" />
         <attribute strength="H" />
-        <attribute chit_color="red" />
+        <attribute chit_color="darkgray" />
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
@@ -36922,13 +36922,13 @@
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="gray" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
         <attribute attack_speed="5" />
         <attribute strength="H" />
-        <attribute chit_color="red" />
+        <attribute chit_color="darkgray" />
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
@@ -37071,8 +37071,11 @@
         <attribute move_speed="5" />
         <attribute attack_speed="5" />
         <attribute strength="T" />
-        <attribute chit_color="red" />
+        <attribute chit_color="darkgray" />
         <attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="lilght">
+        <attribute chit_color="gray" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1388" name="Wraith">
@@ -37100,8 +37103,11 @@
         <attribute move_speed="5" />
         <attribute attack_speed="5" />
         <attribute strength="T" />
-        <attribute chit_color="red" />
+        <attribute chit_color="darkgray" />
         <attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="lilght">
+        <attribute chit_color="gray" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1389" name="Wraith">
@@ -37129,8 +37135,11 @@
         <attribute move_speed="5" />
         <attribute attack_speed="5" />
         <attribute strength="T" />
-        <attribute chit_color="red" />
+        <attribute chit_color="darkgray" />
         <attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="lilght">
+        <attribute chit_color="gray" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1390" name="Wraith">
@@ -37158,8 +37167,11 @@
         <attribute move_speed="5" />
         <attribute attack_speed="5" />
         <attribute strength="T" />
-        <attribute chit_color="red" />
+        <attribute chit_color="darkgray" />
         <attribute sharpness="1" />
+      </AttributeBlock>
+      <AttributeBlock blockName="lilght">
+        <attribute chit_color="gray" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1391" name="Rat Box">
@@ -37202,13 +37214,13 @@
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="lightblue" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
         <attribute attack_speed="4" />
         <attribute strength="L" />
-        <attribute chit_color="red" />
+        <attribute chit_color="blue" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1393" name="Rat">
@@ -37230,13 +37242,13 @@
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="lightblue" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
         <attribute attack_speed="4" />
         <attribute strength="L" />
-        <attribute chit_color="red" />
+        <attribute chit_color="blue" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1394" name="Rat">
@@ -37258,13 +37270,13 @@
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="lightblue" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
         <attribute attack_speed="4" />
         <attribute strength="L" />
-        <attribute chit_color="red" />
+        <attribute chit_color="blue" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1395" name="Rat">
@@ -37286,13 +37298,13 @@
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="lightblue" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
         <attribute attack_speed="4" />
         <attribute strength="L" />
-        <attribute chit_color="red" />
+        <attribute chit_color="blue" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1396" name="Rat">
@@ -37314,13 +37326,13 @@
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="lightblue" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
         <attribute attack_speed="4" />
         <attribute strength="L" />
-        <attribute chit_color="red" />
+        <attribute chit_color="blue" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1397" name="Rat">
@@ -37342,13 +37354,13 @@
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="lightblue" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
         <attribute attack_speed="4" />
         <attribute strength="L" />
-        <attribute chit_color="red" />
+        <attribute chit_color="blue" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1398" name="Bear Box">
@@ -37386,13 +37398,13 @@
         <attribute move_speed="4" />
         <attribute attack_speed="5" />
         <attribute strength="H" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="lightgreen" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
-        <attribute chit_color="red" />
+        <attribute chit_color="forestgreen" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1400" name="Alligator Box">
@@ -37431,13 +37443,13 @@
         <attribute move_speed="3" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="lightgreen" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="H" />
-        <attribute chit_color="red" />
+        <attribute chit_color="forestgreen" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1402" name="Elves Dwelling">
@@ -37758,7 +37770,7 @@
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="gray" />
         <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
@@ -37790,7 +37802,7 @@
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="gray" />
         <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
@@ -37822,7 +37834,7 @@
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="gray" />
         <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
@@ -37854,7 +37866,7 @@
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="gray" />
         <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
@@ -37930,13 +37942,13 @@
         <attribute move_speed="5" />
         <attribute attack_speed="6" />
         <attribute strength="H" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="lightgreen" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="6" />
         <attribute attack_speed="3" />
         <attribute strength="RED" />
-        <attribute chit_color="red" />
+        <attribute chit_color="forestgreen" />
         <attribute pins="" />
       </AttributeBlock>
       <contains id="1421" />
@@ -37953,14 +37965,14 @@
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="6" />
-        <attribute chit_color="pink" />
+        <attribute chit_color="lightgreen" />
         <attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute attack_speed="4" />
         <attribute strength="H" />
         <attribute length="6" />
-        <attribute chit_color="red" />
+        <attribute chit_color="forestgreen" />
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
@@ -37983,13 +37995,13 @@
         <attribute move_speed="5" />
         <attribute attack_speed="6" />
         <attribute strength="H" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="lightgreen" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="6" />
         <attribute attack_speed="3" />
         <attribute strength="RED" />
-        <attribute chit_color="red" />
+        <attribute chit_color="forestgreen" />
         <attribute pins="" />
       </AttributeBlock>
       <contains id="1423" />
@@ -38006,14 +38018,14 @@
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="6" />
-        <attribute chit_color="pink" />
+        <attribute chit_color="lightgreen" />
         <attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute attack_speed="4" />
         <attribute strength="H" />
         <attribute length="6" />
-        <attribute chit_color="red" />
+        <attribute chit_color="forestgreen" />
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
@@ -38036,13 +38048,13 @@
         <attribute move_speed="5" />
         <attribute attack_speed="6" />
         <attribute strength="H" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="lightgreen" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="6" />
         <attribute attack_speed="3" />
         <attribute strength="RED" />
-        <attribute chit_color="red" />
+        <attribute chit_color="forestgreen" />
         <attribute pins="" />
       </AttributeBlock>
       <contains id="1425" />
@@ -38059,14 +38071,14 @@
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="6" />
-        <attribute chit_color="pink" />
+        <attribute chit_color="lightgreen" />
         <attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute attack_speed="4" />
         <attribute strength="H" />
         <attribute length="6" />
-        <attribute chit_color="red" />
+        <attribute chit_color="forestgreen" />
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
@@ -47660,14 +47672,14 @@
         <attribute attack_speed="5" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightgreen" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="2" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="forestgreen" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1833" name="Caster">
@@ -47693,14 +47705,14 @@
         <attribute attack_speed="5" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightgreen" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="2" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="forestgreen" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1834" name="Caster">
@@ -47726,14 +47738,14 @@
         <attribute attack_speed="5" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightgreen" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="2" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="forestgreen" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1835" name="Caster">
@@ -47759,14 +47771,14 @@
         <attribute attack_speed="5" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightgreen" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="2" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="forestgreen" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1836" name="Caster">
@@ -47792,14 +47804,14 @@
         <attribute attack_speed="2" />
         <attribute strength="M" />
         <attribute length="15" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightgreen" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
         <attribute attack_speed="5" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="forestgreen" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1837" name="Caster">
@@ -47825,14 +47837,14 @@
         <attribute attack_speed="2" />
         <attribute strength="M" />
         <attribute length="15" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightgreen" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
         <attribute attack_speed="5" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="forestgreen" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1838" name="Caster">
@@ -47858,14 +47870,14 @@
         <attribute attack_speed="2" />
         <attribute strength="M" />
         <attribute length="15" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightgreen" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
         <attribute attack_speed="5" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="forestgreen" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1839" name="Caster">
@@ -47891,14 +47903,14 @@
         <attribute attack_speed="2" />
         <attribute strength="M" />
         <attribute length="15" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightgreen" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
         <attribute attack_speed="5" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="forestgreen" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1840" name="Caster">
@@ -47925,14 +47937,14 @@
         <attribute attack_speed="2" />
         <attribute strength="M" />
         <attribute length="13" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightorange" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
         <attribute attack_speed="3" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="red" />
       </AttributeBlock>
       <contains id="1844" />
     </GameObject>
@@ -47960,14 +47972,14 @@
         <attribute attack_speed="2" />
         <attribute strength="M" />
         <attribute length="13" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightorange" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
         <attribute attack_speed="3" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="red" />
       </AttributeBlock>
       <contains id="1845" />
     </GameObject>
@@ -47995,14 +48007,14 @@
         <attribute attack_speed="2" />
         <attribute strength="M" />
         <attribute length="13" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightorange" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
         <attribute attack_speed="3" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="red" />
       </AttributeBlock>
       <contains id="1846" />
     </GameObject>
@@ -48030,14 +48042,14 @@
         <attribute attack_speed="2" />
         <attribute strength="M" />
         <attribute length="13" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightorange" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
         <attribute attack_speed="3" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="red" />
       </AttributeBlock>
       <contains id="1847" />
     </GameObject>
@@ -48451,7 +48463,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightgreen" />
         <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
@@ -48459,7 +48471,7 @@
         <attribute attack_speed="1" />
         <attribute strength="L" />
         <attribute length="14" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="forestgreen" />
         <attribute missile="" />
         <attribute sharpness="2" />
       </AttributeBlock>
@@ -48484,7 +48496,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightgreen" />
         <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
@@ -48492,7 +48504,7 @@
         <attribute attack_speed="1" />
         <attribute strength="L" />
         <attribute length="14" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="forestgreen" />
         <attribute missile="" />
         <attribute sharpness="2" />
       </AttributeBlock>
@@ -48519,7 +48531,7 @@
         <attribute attack_speed="5" />
         <attribute strength="M" />
         <attribute length="2" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightgreen" />
         <attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
@@ -48527,7 +48539,7 @@
         <attribute attack_speed="3" />
         <attribute strength="M" />
         <attribute length="2" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="forestgreen" />
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
@@ -48553,7 +48565,7 @@
         <attribute attack_speed="5" />
         <attribute strength="M" />
         <attribute length="2" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightgreen" />
         <attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
@@ -48561,7 +48573,7 @@
         <attribute attack_speed="3" />
         <attribute strength="M" />
         <attribute length="2" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="forestgreen" />
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
@@ -48587,7 +48599,7 @@
         <attribute attack_speed="5" />
         <attribute strength="M" />
         <attribute length="2" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightgreen" />
         <attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
@@ -48595,7 +48607,7 @@
         <attribute attack_speed="3" />
         <attribute strength="M" />
         <attribute length="2" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="forestgreen" />
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
@@ -48619,7 +48631,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightgreen" />
         <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
@@ -48627,7 +48639,7 @@
         <attribute attack_speed="1" />
         <attribute strength="M" />
         <attribute length="16" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="forestgreen" />
         <attribute missile="" />
         <attribute sharpness="2" />
       </AttributeBlock>
@@ -49092,7 +49104,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightblue" />
         <attribute attack_speed="4" />
         <attribute length="8" />
         <attribute strength="T" />
@@ -49103,7 +49115,7 @@
         <attribute attack_speed="5" />
         <attribute strength="H" />
         <attribute length="8" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="blue" />
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
@@ -49126,7 +49138,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightblue" />
         <attribute attack_speed="5" />
         <attribute length="5" />
         <attribute strength="H" />
@@ -49137,7 +49149,7 @@
         <attribute attack_speed="3" />
         <attribute strength="T" />
         <attribute length="5" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="blue" />
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
@@ -49160,7 +49172,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightblue" />
         <attribute attack_speed="5" />
         <attribute length="5" />
         <attribute strength="H" />
@@ -49171,7 +49183,7 @@
         <attribute attack_speed="3" />
         <attribute strength="T" />
         <attribute length="5" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="blue" />
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
@@ -49196,7 +49208,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightblue" />
         <attribute attack_speed="6" />
         <attribute length="12" />
         <attribute strength="H" />
@@ -49207,7 +49219,7 @@
         <attribute attack_speed="1" />
         <attribute strength="H" />
         <attribute length="12" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="blue" />
         <attribute missile="" />
       </AttributeBlock>
     </GameObject>
@@ -49232,7 +49244,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightblue" />
         <attribute attack_speed="6" />
         <attribute length="12" />
         <attribute strength="H" />
@@ -49244,7 +49256,7 @@
         <attribute attack_speed="1" />
         <attribute strength="H" />
         <attribute length="12" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="blue" />
         <attribute sharpness="1" />
         <attribute missile="" />
       </AttributeBlock>
@@ -49269,7 +49281,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightblue" />
         <attribute attack_speed="4" />
         <attribute length="8" />
         <attribute strength="T" />
@@ -49280,7 +49292,7 @@
         <attribute attack_speed="5" />
         <attribute strength="H" />
         <attribute length="8" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="blue" />
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
@@ -49342,7 +49354,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightorange" />
         <attribute attack_speed="4" />
         <attribute length="9" />
         <attribute strength="M" />
@@ -49352,7 +49364,7 @@
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="red" />
       </AttributeBlock>
       <contains id="1895" />
     </GameObject>
@@ -49376,7 +49388,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightorange" />
         <attribute attack_speed="4" />
         <attribute length="9" />
         <attribute strength="M" />
@@ -49386,7 +49398,7 @@
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="red" />
       </AttributeBlock>
       <contains id="1896" />
     </GameObject>
@@ -49410,7 +49422,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightorange" />
         <attribute attack_speed="4" />
         <attribute length="9" />
         <attribute strength="M" />
@@ -49420,7 +49432,7 @@
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="red" />
       </AttributeBlock>
       <contains id="1897" />
     </GameObject>
@@ -49444,7 +49456,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="lightorange" />
         <attribute attack_speed="4" />
         <attribute length="9" />
         <attribute strength="M" />
@@ -49454,7 +49466,7 @@
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="red" />
       </AttributeBlock>
       <contains id="1898" />
     </GameObject>
@@ -49603,7 +49615,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="gold" />
         <attribute attack_speed="4" />
         <attribute length="9" />
         <attribute strength="M" />
@@ -49613,7 +49625,7 @@
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="orange" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1902" name="Caster">
@@ -49636,7 +49648,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="gold" />
         <attribute attack_speed="4" />
         <attribute length="9" />
         <attribute strength="M" />
@@ -49646,7 +49658,7 @@
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="orange" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1903" name="Caster">
@@ -49669,7 +49681,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
-        <attribute chit_color="peach" />
+        <attribute chit_color="gold" />
         <attribute attack_speed="4" />
         <attribute length="9" />
         <attribute strength="M" />
@@ -49679,7 +49691,7 @@
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="brown" />
+        <attribute chit_color="orange" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1904" name="Pony">

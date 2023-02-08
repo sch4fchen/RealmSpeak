@@ -1,6 +1,5 @@
 ::ROADMAP::
 ---Content---
-Super Realm: adapt chit colors for monsters and natives
 Super Realm: icons for natives and monsters
 Super Realm: Character potraits with credits (including credits), different chit icon
 Super Realm: Spells (modified base game spells: Exorcise, Fog, Elven Grace, Violent Storm, Ligthning Bolt, Hurricane Winds, Pentangle, Broomstick, Ask Demon, Absorb Essence, Transform, Phantasm, Melt into Mist, Dissolve Spell, Protection from Magic, Peace with Nature, Control Bats, Whistle for Monsters, Remedy, Poison, ?Guide Beast, ?Deal with Orcs and Goblins
