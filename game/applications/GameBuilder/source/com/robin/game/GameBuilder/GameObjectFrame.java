@@ -81,7 +81,7 @@ public class GameObjectFrame extends JInternalFrame implements Modifyable,Saveab
 		getContentPane().setLayout(new BorderLayout(5,5));
 			JPanel top = new JPanel(new GridLayout(2,1));
 			box = Box.createHorizontalBox();
-			currentIdLabel = new JLabel("",JLabel.CENTER);
+			currentIdLabel = new JLabel("",SwingConstants.CENTER);
 			currentIdLabel.setFont(ID_FONT);
 			currentIdLabel.setBackground(Color.white);
 			currentIdLabel.setOpaque(true);
@@ -228,16 +228,17 @@ public class GameObjectFrame extends JInternalFrame implements Modifyable,Saveab
 						}
 					}
 					public void delete() {
-						ArrayList hold = object.getHold();
+						ArrayList<GameObject> hold = object.getHold();
 						
 						int[] rows = containsPane.getSelectedRows();
-						ArrayList holdToDelete = new ArrayList();
+						ArrayList<GameObject> holdToDelete = new ArrayList<>();
 						for (int i=0;i<rows.length;i++) {
 							holdToDelete.add(hold.get(rows[i]));
 						}
-						for (Iterator i=holdToDelete.iterator();i.hasNext();) {
-							object.remove((GameObject)i.next());
+						for (GameObject i : holdToDelete) {
+							object.remove(i);
 						}
+
 						setModified(true);
 					}
 				};

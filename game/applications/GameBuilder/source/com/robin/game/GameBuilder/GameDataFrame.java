@@ -319,6 +319,15 @@ public class GameDataFrame extends JInternalFrame implements Modifyable,Saveable
 								delObjects.add(obj);
 							}
 							
+							// Delete references
+							for (GameObject obj : data.getGameObjects()) {
+								for (GameObject del : delObjects) {
+									if (obj.getHold().contains(del)) {
+										obj.remove(del);
+									}
+								}
+							}
+							
 							// Now delete them
 							for (GameObject obj : delObjects) {
 								data.removeObject(obj);
