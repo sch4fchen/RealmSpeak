@@ -41,7 +41,8 @@ public class RealmPoems {
 			"Witch2",
 			"Witch King",
 			"Wizard",
-			"Woodsgirl"
+			"Woodsgirl",
+			"Woodsgirl2"
 	};
 	
 	public static StringBuffer getPoem(String name) {
@@ -288,6 +289,15 @@ public class RealmPoems {
 			text.append("by: Quantum Jack");
 			break;
 		case "woodsgirl":
+			text.append("The Woods Girl deadly and quick<br>");
+			text.append("Seeking a Monster to stick<br>");
+			text.append("An arrow let fly<br>");
+			text.append("A six on her die<br>");
+			text.append("Running away is her trick.<br>");
+			text.append("<br>");
+			text.append("by: Quantum Jack");
+			break;
+		case "woodsgirl2":
 			text.append("The Woodsgirl leaves home as a child<br>");
 			text.append("Journeys through the forests so wild<br>");
 			text.append("Her aim is quite deadly<br>");

@@ -9,7 +9,6 @@ Super Realm: Treasures (modified base game treasures, see 1.1a: Seven League Boo
 Super Realm: adapt setup with spells and treasures
 Super Realm: Setup Charts, in order: small, large treasures, spells, monsters; dwellings: spells, horses, armor, weapons, helmets, shields, breastplates (large counters below small counters); spells: higher numbers below lower numbers; travelers go to native boxes
 ---Basic Functionalities for current content---
-Super Realm: rules for lila items
 Super Realm: rules for minotaur shield
 Super Realm: rules for special monster attacks and change tactics (Spear and Bow Goblins, Bow Skeletons, Demon, Winged Demon, Imp, Vampire, Succubus, and Devil): p.98
 Super Realm: rules for special native attacks and native casters: Natives Casters (p. 89)
