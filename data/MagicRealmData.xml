@@ -34220,8 +34220,6 @@
       <contains id="1971" />
       <contains id="2014" />
       <contains id="2015" />
-      <contains id="2016" />
-      <contains id="2017" />
       <contains id="1967" />
       <contains id="1968" />
     </GameObject>
@@ -34350,6 +34348,8 @@
       <contains id="1839" />
       <contains id="1929" />
       <contains id="1930" />
+      <contains id="2016" />
+      <contains id="2017" />
     </GameObject>
     <GameObject id="1287" name="Settlement">
       <AttributeBlock blockName="this">
@@ -47772,7 +47772,7 @@
     </GameObject>
     <GameObject id="1836" name="Caster">
       <AttributeBlock blockName="this">
-        <attribute native="Summoners" />
+        <attribute native="Pagans" />
         <attribute fame="0" />
         <attribute notoriety="3" />
         <attribute base_price="2" />
@@ -47805,7 +47805,7 @@
     </GameObject>
     <GameObject id="1837" name="Caster">
       <AttributeBlock blockName="this">
-        <attribute native="Summoners" />
+        <attribute native="Pagans" />
         <attribute fame="0" />
         <attribute notoriety="3" />
         <attribute base_price="2" />
@@ -47838,7 +47838,7 @@
     </GameObject>
     <GameObject id="1838" name="Caster">
       <AttributeBlock blockName="this">
-        <attribute native="Summoners" />
+        <attribute native="Pagans" />
         <attribute fame="0" />
         <attribute notoriety="3" />
         <attribute base_price="2" />
@@ -47871,7 +47871,7 @@
     </GameObject>
     <GameObject id="1839" name="Caster">
       <AttributeBlock blockName="this">
-        <attribute native="Summoners" />
+        <attribute native="Pagans" />
         <attribute fame="0" />
         <attribute notoriety="3" />
         <attribute base_price="2" />
@@ -52036,30 +52036,6 @@
       </AttributeBlock>
     </GameObject>
     <GameObject id="2009" name="Axe">
-      <AttributeBlock blockName="this">
-        <attribute weight="M" />
-        <attribute length="2" />
-        <attribute base_price="4" />
-        <attribute throwable="" />
-        <attribute weapon="" />
-        <attribute icon_type="axe" />
-        <attribute icon_folder="weapons" />
-        <attribute item="" />
-        <attribute super_realm="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="unalerted">
-        <attribute attack_speed="5" />
-        <attribute strength="M" />
-        <attribute sharpness="1" />
-        <attribute chit_color="white" />
-      </AttributeBlock>
-      <AttributeBlock blockName="alerted">
-        <attribute strength="M" />
-        <attribute sharpness="1" />
-        <attribute chit_color="red" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="2010" name="Axe">
       <AttributeBlock blockName="this">
         <attribute weight="M" />
         <attribute length="2" />

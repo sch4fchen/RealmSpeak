@@ -125,7 +125,7 @@ public class GameOptionPane extends JPanel implements ActionListener {
 	}
 	public void buildPane() {
 		JTabbedPane tabPane = new JTabbedPane(tabPlacement);
-		if (tabPlacement==JTabbedPane.LEFT) {
+		if (tabPlacement==SwingConstants.LEFT) {
 			tabPane.setFont(new Font("Dialog",Font.BOLD,14));
 		}
 		for (Iterator i=tabHash.orderedKeys().iterator();i.hasNext();) {
