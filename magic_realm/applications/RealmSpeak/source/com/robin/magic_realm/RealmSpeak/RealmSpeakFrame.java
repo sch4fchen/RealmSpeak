@@ -352,6 +352,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		text.append("<html><body><font size=\"-1\" face=\"Helvetical, Arial, sans-serif\">");
 		text.append("RealmSpeak is the Java implementation of Avalon Hill's Magic Realm boardgame<br>");
 		text.append("Copyright (C) 2010  Robin Warren<br>");
+		text.append("Further development since 2020-08-20: Richard<br>");
 		text.append("<br>");
 		text.append("Permission to use, copy, and distribute this software and its<br>");
 		text.append("documentation for any purpose and without fee is hereby granted, provided<br>");
@@ -359,9 +360,12 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		text.append("copyright notice and this permission notice appear in supporting<br>");
 		text.append("documentation, and that the same name not be used in advertising or<br>");
 		text.append("publicity pertaining to distribution of the software without specific,<br>");
-		text.append("written prior permission. We make no representations about the<br>");
-		text.append("suitability this software for any purpose. It is provided \"as is\"<br>");
-		text.append("without express or implied warranty.<br>");
+		text.append("written prior permission, and that copryright and credits of used content<br>");
+		text.append("(e.g. graphics) are listed and corresponding copyrights are taken into account.<br>");
+		text.append("We make no representations about the suitability this software for any purpose.<br>");
+		text.append("It is provided as is without express or implied warranty.<br>");
+		text.append("<br>");
+		text.append("For graphics taken from Battle for Wesnoth: https://wiki.wesnoth.org/Wesnoth:Copyrights.<br>");
 		text.append("</font></body></html>");
 		
 		showHtmlWindow("RealmSpeak License",text.toString());
@@ -2221,7 +2225,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 			name = input;
 			addActionListener(this);
 		}
-		public void actionPerformed(ActionEvent ev) {		
+		public void actionPerformed(ActionEvent ev) {
 			showHtmlWindow(name,RealmPoems.getPoem(name.toLowerCase()).toString());
 		}
 	}

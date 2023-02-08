@@ -166,6 +166,7 @@ public class RealmPoems {
 			text.append("A six on her die<br>");
 			text.append("Running away is her trick.<br>");
 			text.append("<br>");
+			text.append("<br>");
 			text.append("by: Quantum Jack");
 			break;
 		case "black knight":
