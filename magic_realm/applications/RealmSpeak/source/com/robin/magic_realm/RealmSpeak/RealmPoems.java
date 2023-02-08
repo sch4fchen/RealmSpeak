@@ -21,28 +21,13 @@ public class RealmPoems {
 	public static final String[] POEMS = {
 			"Magic Realm",
 			"Secrets of Magic Realm",
-			"Amazon",
-			"Berserker",
+			"The Characters of Magic Realm",
 			"Black Knight",
-			"Black Knight2",
-			"Captain",
-			"Druid",
-			"Dwarf",
-			"Elf",
 			"Magician",
-			"Magician2",
 			"Pilgrim",
-			"Pilgrim2",
 			"Sorceror",
-			"Sorceror2",
-			"Swordsman",
-			"White Knight",
-			"Witch",
-			"Witch2",
-			"Witch King",
-			"Wizard",
-			"Woodsgirl",
-			"Woodsgirl2"
+			"Whitch",
+			"Woodsgirl"
 	};
 	
 	public static StringBuffer getPoem(String name) {
@@ -101,34 +86,106 @@ public class RealmPoems {
 			text.append("<br>");
 			text.append("by: Psyrek");
 			break;
-		case "amazon":
+		case "the characters of magic realm":
 			text.append("The Amazon on the run<br>");
 			text.append("Seeking Goblins and fun<br>");
 			text.append("Instead met Trolls<br>");
 			text.append("And bad hide rolls<br>");
 			text.append("She was too early done.<br>");
 			text.append("<br>");
-			text.append("by: Quantum Jack");
-			break;
-		case "berserker":
 			text.append("Now our friendly Berserker<br>");
 			text.append("Who calls Rogues his workers<br>");
 			text.append("Monsters to whack<br>");
 			text.append("With his big ole Axe<br>");
 			text.append("Always needs one more murder.<br>");
 			text.append("<br>");
-			text.append("by: Quantum Jack");
-			break;
-		case "black knight":
 			text.append("Black Knight comes swinging<br>");
 			text.append("With the Company singing<br>");
 			text.append("A short term of hire<br>");
 			text.append("Will set a great fire<br>");
 			text.append("Once they show up Drinking.<br>");
 			text.append("<br>");
+			text.append("As our Captain begins fighting<br>");
+			text.append("The Soldiers start writing<br>");
+			text.append("Adventures are near<br>");
+			text.append("But with great fear<br>");
+			text.append("Our leader is prone to inciting.<br>");
+			text.append("<br>");
+			text.append("The Druid alone discovers<br>");
+			text.append("How quiet peace recovers<br>");
+			text.append("The Dragon arrived<br>");
+			text.append("The Druid surprised<br>");
+			text.append("Treasures forever uncovered.<br>");
+			text.append("<br>");
+			text.append("Then the Dwarf a mighty lad<br>");
+			text.append("A Cave to make him glad<br>");
+			text.append("Our short little hero<br>");
+			text.append("Who is never a zero<br>");
+			text.append("Unless you check the score pad.<br>");
+			text.append("<br>");
+			text.append("That sneaky old trickster Elf<br>");
+			text.append("Always in league with himself<br>");
+			text.append("A well timed Persuade<br>");
+			text.append("His game will be made<br>");
+			text.append("'Till the Octopus puts him on the shelf.<br>");
+			text.append("<br>");
+			text.append("Our own resident Magician<br>");
+			text.append("Who left his job as beautician<br>");
+			text.append("Spells wear off<br>");
+			text.append("Onlookers scoff<br>");
+			text.append("So he's here to find a new Mission.<br>");
+			text.append("<br>");
+			text.append("The Pilgrim, ever so devout<br>");
+			text.append("Hear him scream hear him shout<br>");
+			text.append("In search of a blessing<br>");
+			text.append("Strength he was guessing<br>");
+			text.append("Peace for the fourth time broke out.<br>");
+			text.append("<br>");
+			text.append("A Sorceror mighty and fair<br>");
+			text.append("Melting into Mist in the air<br>");
+			text.append("A Firey Blast<br>");
+			text.append("Lands square at last<br>");
+			text.append("Anything to forget that hair.<br>");
+			text.append("<br>");
+			text.append("Nimble and lithe this rascal<br>");
+			text.append("the Swordsman, ever the jackal<br>");
+			text.append("He'll get in your wayt<br>");
+			text.append("And then run away<br>");
+			text.append("To fight the Bats in the Castle.<br>");
+			text.append("<br>");
+			text.append("Next our mighty White Knight<br>");
+			text.append("Whom you do not want to fight<br>");
+			text.append("Oh! What is that?<br>");
+			text.append("Here comes a Bat<br>");
+			text.append("Our warrior goes toward the light.<br>");
+			text.append("<br>");
+			text.append("Our little old lady, the Witch<br>");
+			text.append("Kind until she gets that itch<br>");
+			text.append("Absorbs a T Troll<br>");
+			text.append("She's on a roll<br>");
+			text.append("Before you know it, she's Rich.<br>");
+			text.append("<br>");
+			text.append("Which way the Witch King<br>");
+			text.append("How to make the spells sing<br>");
+			text.append("The Book of Lore<br>");
+			text.append("Like days of yore<br>");
+			text.append("Delivers the ultimate zing.<br>");
+			text.append("<br>");
+			text.append("A Wizard who knows every path<br>");
+			text.append("Unleashing his mighty wrath<br>");
+			text.append("All round the Realm<br>");
+			text.append("Friends to overwhelm<br>");
+			text.append("This hiker surely needs a bath.<br>");
+			text.append("<br>");
+			text.append("The Woods Girl deadly and quick<br>");
+			text.append("Seeking a Monster to stick<br>");
+			text.append("An arrow let fly<br>");
+			text.append("A six on her die<br>");
+			text.append("Running away is her trick.<br>");
+			text.append("<br>");
 			text.append("by: Quantum Jack");
 			break;
-		case "black knight2":
+		case "black knight":
 			text.append("The Black Knight's reputation,<br>");
 			text.append("a tale of Infamy upon denizen breath.<br>");
 			text.append("The mace and crossbow his weapons<br>");
@@ -141,52 +198,7 @@ public class RealmPoems {
 			text.append("<br>");
 			text.append("by: Caesy Benn");
 			break;
-		case "captain":
-			text.append("As our Captain begins fighting<br>");
-			text.append("The Soldiers start writing<br>");
-			text.append("Adventures are near<br>");
-			text.append("But with great fear<br>");
-			text.append("Our leader is prone to inciting.<br>");
-			text.append("<br>");
-			text.append("by: Quantum Jack");
-			break;
-		case "druid":
-			text.append("The Druid alone discovers<br>");
-			text.append("How quiet peace recovers<br>");
-			text.append("The Dragon arrived<br>");
-			text.append("The Druid surprised<br>");
-			text.append("Treasures forever uncovered.<br>");
-			text.append("<br>");
-			text.append("by: Quantum Jack");
-			break;
-		case "dwarf":
-			text.append("Then the Dwarf a mighty lad<br>");
-			text.append("A Cave to make him glad<br>");
-			text.append("Our short little hero<br>");
-			text.append("Who is never a zero<br>");
-			text.append("Unless you check the score pad.<br>");
-			text.append("<br>");
-			text.append("by: Quantum Jack");
-			break;
-		case "elf":
-			text.append("That sneaky old trickster Elf<br>");
-			text.append("Always in league with himself<br>");
-			text.append("A well timed Persuade<br>");
-			text.append("His game will be made<br>");
-			text.append("'Till the Octopus puts him on the shelf.<br>");
-			text.append("<br>");
-			text.append("by: Quantum Jack");
-			break;
 		case "magician":
-			text.append("Our own resident Magician<br>");
-			text.append("Who left his job as beautician<br>");
-			text.append("Spells wear off<br>");
-			text.append("Onlookers scoff<br>");
-			text.append("So he's here to find a new Mission.<br>");
-			text.append("<br>");
-			text.append("by: Quantum Jack");
-			break;
-		case "magician2":
 			text.append("The Magician loves a good spell<br>");
 			text.append("But the monsters that secretly dwell<br>");
 			text.append("in each treasure site hiding<br>");
@@ -196,15 +208,6 @@ public class RealmPoems {
 			text.append("by: Aashiana");
 			break;
 		case "pilgrim":
-			text.append("The Pilgrim, ever so devout<br>");
-			text.append("Hear him scream hear him shout<br>");
-			text.append("In search of a blessing<br>");
-			text.append("Strength he was guessing<br>");
-			text.append("Peace for the fourth time broke out.<br>");
-			text.append("<br>");
-			text.append("by: Quantum Jack");
-			break;
-		case "pilgrim2":
 			text.append("The pilgrim casts a spell<br>");
 			text.append("\"Give me strength!\" he yell<br>");
 			text.append("\"I'll give you health\"  a voice shouts<br>");
@@ -214,15 +217,6 @@ public class RealmPoems {
 			text.append("by: Moistyclams");
 			break;
 		case "sorceror":
-			text.append("A Sorceror mighty and fair<br>");
-			text.append("Melting into Mist in the air<br>");
-			text.append("A Firey Blast<br>");
-			text.append("Lands square at last<br>");
-			text.append("Anything to forget that hair.<br>");
-			text.append("<br>");
-			text.append("by: Quantum Jack");
-			break;
-		case "sorceror2":
 			text.append("The Sorceror does not have a single care<br>");
 			text.append("because he can just Melt to Mist.<br>");
 			text.append("Transforming Tremendous armored monsters into frogs, <br>");
@@ -234,34 +228,7 @@ public class RealmPoems {
 			text.append("<br>");
 			text.append("by: Caesy Benn");
 			break;
-		case "swordsman":
-			text.append("Nimble and lithe this rascal<br>");
-			text.append("the Swordsman, ever the jackal<br>");
-			text.append("He'll get in your wayt<br>");
-			text.append("And then run away<br>");
-			text.append("To fight the Bats in the Castle.<br>");
-			text.append("<br>");
-			text.append("by: Quantum Jack");
-			break;
-		case "white knight":
-			text.append("Next our mighty White Knight<br>");
-			text.append("Whom you do not want to fight<br>");
-			text.append("Oh! What is that?<br>");
-			text.append("Here comes a Bat<br>");
-			text.append("Our warrior goes toward the light.<br>");
-			text.append("<br>");
-			text.append("by: Quantum Jack");
-			break;
 		case "witch":
-			text.append("Our little old lady, the Witch<br>");
-			text.append("Kind until she gets that itch<br>");
-			text.append("Absorbs a T Troll<br>");
-			text.append("She's on a roll<br>");
-			text.append("Before you know it, she's Rich.<br>");
-			text.append("<br>");
-			text.append("by: Quantum Jack");
-			break;
-		case "witch2":
 			text.append("There once was a powerful Witch<br>");
 			text.append("Who had a familiar named Stich<br>");
 			text.append("It went to each clearing<br>");
@@ -270,34 +237,7 @@ public class RealmPoems {
 			text.append("<br>");
 			text.append("by: CthulhuKid");
 			break;
-		case "witch king":
-			text.append("Which way the Witch King<br>");
-			text.append("How to make the spells sing<br>");
-			text.append("The Book of Lore<br>");
-			text.append("Like days of yore<br>");
-			text.append("Delivers the ultimate zing.<br>");
-			text.append("<br>");
-			text.append("by: Quantum Jack");
-			break;
-		case "wizard":
-			text.append("A Wizard who knows every path<br>");
-			text.append("Unleashing his mighty wrath<br>");
-			text.append("All round the Realm<br>");
-			text.append("Friends to overwhelm<br>");
-			text.append("This hiker surely needs a bath.<br>");
-			text.append("<br>");
-			text.append("by: Quantum Jack");
-			break;
 		case "woodsgirl":
-			text.append("The Woods Girl deadly and quick<br>");
-			text.append("Seeking a Monster to stick<br>");
-			text.append("An arrow let fly<br>");
-			text.append("A six on her die<br>");
-			text.append("Running away is her trick.<br>");
-			text.append("<br>");
-			text.append("by: Quantum Jack");
-			break;
-		case "woodsgirl2":
 			text.append("The Woodsgirl leaves home as a child<br>");
 			text.append("Journeys through the forests so wild<br>");
 			text.append("Her aim is quite deadly<br>");
