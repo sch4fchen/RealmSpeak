@@ -1,6 +1,5 @@
 ::ROADMAP::
 ---Content---
-Super Realm: Items
 Super Realm: adapt chit colors for monsters and natives
 Super Realm: icons for natives and monsters
 Super Realm: Character potraits with credits (including credits), different chit icon

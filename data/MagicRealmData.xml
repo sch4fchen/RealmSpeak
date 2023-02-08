@@ -34306,7 +34306,6 @@
       <contains id="1974" />
       <contains id="1975" />
       <contains id="2001" />
-      <contains id="2010" />
     </GameObject>
     <GameObject id="1284" name="Small Campfire">
       <AttributeBlock blockName="this">
