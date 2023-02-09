@@ -52882,7 +52882,7 @@
 	  <Add from="SMALL_TREASURES" targetObjectID="1882" count="2" transferType="Random" />
 	  <Add from="SMALL_TREASURES" targetObjectID="1890" count="2" transferType="Random" />
 	  <Add from="SMALL_TREASURES" targetObjectID="1900" count="2" transferType="Random" />
-	  	  <Create newPool="SPELL_I" />
+	  <Create newPool="SPELL_I" />
       <Extract from="ALL" to="SPELL_I" keyVals="spell=I" />
       <Create newPool="SPELL_II" />
       <Extract from="ALL" to="SPELL_II" keyVals="spell=II" />
@@ -52898,6 +52898,33 @@
       <Extract from="ALL" to="SPELL_VII" keyVals="spell=VII" />
       <Create newPool="SPELL_VIII" />
       <Extract from="ALL" to="SPELL_VIII" keyVals="spell=VIII" />
+	  <Add from="SPELL_III" targetObjectID="1222" count="1" transferType="Random" />
+	  <Add from="SPELL_II" targetObjectID="1222" count="1" transferType="Random" />
+	  <Add from="SPELL_V" targetObjectID="1223" count="1" transferType="Random" />
+	  <Add from="SPELL_I" targetObjectID="1223" count="1" transferType="Random" />
+	  <Add from="SPELL_VIII" targetObjectID="1227" count="1" transferType="Random" />
+	  <Add from="SPELL_VII" targetObjectID="1227" count="2" transferType="Random" />
+	  <Add from="SPELL_V" targetObjectID="1231" count="1" transferType="Random" />
+	  <Add from="SPELL_I" targetObjectID="1231" count="1" transferType="Random" />
+	  <Add from="SPELL_VI" targetObjectID="1232" count="1" transferType="Random" />
+	  <Add from="SPELL_IV" targetObjectID="1232" count="1" transferType="Random" />
+	  <Add from="SPELL_VI" targetObjectID="1233" count="1" transferType="Random" />
+	  <Add from="SPELL_IV" targetObjectID="1233" count="1" transferType="Random" />
+	  <Add from="SPELL_VIII" targetObjectID="1235" count="1" transferType="Random" />
+	  <Add from="SPELL_III" targetObjectID="1235" count="1" transferType="Random" />
+	  <Add from="SPELL_II" targetObjectID="1235" count="1" transferType="Random" />
+	  <Add from="SPELL_V" targetObjectID="1317" count="1" transferType="Random" />
+	  <Add from="SPELL_III" targetObjectID="1402" count="1" transferType="Random" />
+	  <Add from="SPELL_VIII" targetObjectID="1286" count="1" transferType="Random" />
+	  <Add from="SPELL_III" targetObjectID="1286" count="2" transferType="Random" />
+	  <Add from="SPELL_VI" targetObjectID="1287" count="1" transferType="Random" />
+	  <Add from="SPELL_IV" targetObjectID="1287" count="2" transferType="Random" />
+	  <Add from="SPELL_VII" targetObjectID="1288" count="2" transferType="Random" />
+	  <Add from="SPELL_II" targetObjectID="1288" count="2" transferType="Random" />
+	  <Add from="SPELL_I" targetObjectID="1849" count="1" transferType="Random" />
+	  <Add from="SPELL_V" targetObjectID="1867" count="1" transferType="Random" />
+	  <Add from="SPELL_VI" targetObjectID="1890" count="1" transferType="Random" />
+	  <Add from="SPELL_VII" targetObjectID="1900" count="1" transferType="Random" /> 
 	  <Create newPool="LEFTOVER_SPELLS" />
       <Extract from="SPELL_I" to="LEFTOVER_SPELLS" keyVals="spell" />
       <Extract from="SPELL_II" to="LEFTOVER_SPELLS" keyVals="spell" />
