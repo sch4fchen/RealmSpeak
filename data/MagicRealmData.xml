@@ -37065,7 +37065,7 @@
         <attribute move_speed="3" />
         <attribute attack_speed="3" />
         <attribute strength="L" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="gray" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
@@ -37073,9 +37073,6 @@
         <attribute strength="T" />
         <attribute chit_color="darkgray" />
         <attribute sharpness="1" />
-      </AttributeBlock>
-      <AttributeBlock blockName="lilght">
-        <attribute chit_color="gray" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1388" name="Wraith">
@@ -37097,7 +37094,7 @@
         <attribute move_speed="3" />
         <attribute attack_speed="3" />
         <attribute strength="L" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="gray" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
@@ -37105,9 +37102,6 @@
         <attribute strength="T" />
         <attribute chit_color="darkgray" />
         <attribute sharpness="1" />
-      </AttributeBlock>
-      <AttributeBlock blockName="lilght">
-        <attribute chit_color="gray" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1389" name="Wraith">
@@ -37129,7 +37123,7 @@
         <attribute move_speed="3" />
         <attribute attack_speed="3" />
         <attribute strength="L" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="gray" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
@@ -37137,9 +37131,6 @@
         <attribute strength="T" />
         <attribute chit_color="darkgray" />
         <attribute sharpness="1" />
-      </AttributeBlock>
-      <AttributeBlock blockName="lilght">
-        <attribute chit_color="gray" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1390" name="Wraith">
@@ -37161,7 +37152,7 @@
         <attribute move_speed="3" />
         <attribute attack_speed="3" />
         <attribute strength="L" />
-        <attribute chit_color="purple" />
+        <attribute chit_color="gray" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
@@ -37169,9 +37160,6 @@
         <attribute strength="T" />
         <attribute chit_color="darkgray" />
         <attribute sharpness="1" />
-      </AttributeBlock>
-      <AttributeBlock blockName="lilght">
-        <attribute chit_color="gray" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1391" name="Rat Box">
