@@ -3,7 +3,7 @@
 Super Realm: icons for natives and monsters
 Super Realm: Character potraits with credits (including credits), different chit icon
 Super Realm: Spells (modified base game spells: Exorcise, Fog, Elven Grace, Violent Storm, Ligthning Bolt, Hurricane Winds, Pentangle, Broomstick, Ask Demon, Absorb Essence, Transform, Phantasm, Melt into Mist, Dissolve Spell, Protection from Magic, Peace with Nature, Control Bats, Whistle for Monsters, Remedy, Poison, ?Guide Beast, ?Deal with Orcs and Goblins
-Super Realm: Treasures (modified base game treasures, see 1.1a: Seven League Boots, Power Gauntles, Phantom Glass, Map of Ruins, Lost Keys, Dragon Essence, Crystal Ball, Chest, Book of Nature, Book of Alchemy, Ancient Telescope, Amulet
+Super Realm: Treasures (modified base game treasures: Seven League Boots, Power Gauntles, Phantom Glass, Map of Ruins, Lost Keys, Dragon Essence, Crystal Ball, Chest, Book of Nature, Book of Alchemy, Ancient Telescope, Amulet
 Super Realm: Setup Charts, in order: small, large treasures, spells, monsters; dwellings: spells, horses, armor, weapons, helmets, shields, breastplates (large counters below small counters); spells: higher numbers below lower numbers; travelers go to native boxes
 ---Basic Functionalities for current content---
 Super Realm: rules for minotaur shield

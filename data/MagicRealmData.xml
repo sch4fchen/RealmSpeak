@@ -52751,7 +52751,7 @@
         <attribute treasure="small" />
         <attribute notoriety="2" />
         <attribute text="MOVE T5, plus extra MOVE" />
-        <attribute base_price="5" />
+        <attribute base_price="10" />
         <attribute strength="T" />
         <attribute move_speed="5" />
         <attribute boots="" />
@@ -52889,7 +52889,7 @@
     <GameObject id="2125" name="Lost Keys">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
-        <attribute text="Opens Chest, Crypt, and Vault" />
+        <attribute text="Opens Chest, Crypt, Library, Tomb, Vault and Conjuror’s Remains," />
         <attribute base_price="5" />
         <attribute key="" />
         <attribute facing="face_dn" />
@@ -53432,6 +53432,8 @@
           <attributeVal N1="REMOTE_SPELL" />
         </attributeList>
         <attribute super_realm="" />
+        <attribute fame="12" />
+        <attribute native="Enchanters" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2161" name="Girtle of Energy">
