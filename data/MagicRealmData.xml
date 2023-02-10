@@ -52498,7 +52498,7 @@
         <attribute gold_reward="50" />
         <attribute treasure="large" />
         <attribute weight="T" />
-        <attribute text="Must have LOST KEYS to open" />
+        <attribute text="Use LOST KEYS or Contorting Key to open" />
         <attribute treasure_within_treasure="1" />
         <attribute print="" />
         <attribute no_loot="" />
@@ -52802,7 +52802,7 @@
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="Extra PEER (mountain only)" />
-        <attribute base_price="5" />
+        <attribute base_price="10" />
         <attribute facing="face_dn" />
         <attribute mountain_peer="" />
         <attribute item="" />
@@ -53213,7 +53213,7 @@
     <GameObject id="2146" name="Amulet">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
-        <attribute text="Cancels one spell or curse (discard to shaman)" />
+        <attribute text="Cancels one spell or curse or mesmerize effect (discard to shaman)" />
         <attribute base_price="5" />
         <attribute discard="shaman" />
         <attribute potion="" />
@@ -54011,7 +54011,11 @@
       <Extract from="ALL" to="LARGE_TREASURES" keyVals="treasure=large" />
       <Create newPool="SMALL_TREASURES" />
       <Extract from="ALL" to="SMALL_TREASURES" keyVals="treasure=small" />
-      <Move from="TWT" to="LARGE_TREASURES" count="0" transferType="Random" />
+	  <Add from="LARGE_TREASURES" targetObjectID="2102" count="2" transferType="Random" />
+      <Add from="LARGE_TREASURES" targetObjectID="2103" count="1" transferType="Random" />
+      <Add from="LARGE_TREASURES" targetObjectID="2105" count="1" transferType="Random" />
+      <Add from="LARGE_TREASURES" targetObjectID="2107" count="1" transferType="Random" />
+      <Move from="TWT" to="LARGE_TREASURES" count="6" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="1220" count="5" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="1221" count="3" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="1222" count="4" transferType="Random" />
