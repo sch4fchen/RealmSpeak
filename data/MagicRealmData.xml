@@ -52492,6 +52492,1187 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2102" name="Chest">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="chest" />
+        <attribute gold_reward="50" />
+        <attribute treasure="large" />
+        <attribute weight="T" />
+        <attribute text="Must have LOST KEYS to open" />
+        <attribute treasure_within_treasure="1" />
+        <attribute print="" />
+        <attribute no_loot="" />
+        <attribute needs_open="key" />
+        <attribute remove_from_play="" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="twt" />
+        <attribute ts_color="lightblue" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2103" name="Remains of Thief">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="thief" />
+        <attribute gold_reward="20" />
+        <attribute treasure="large" />
+        <attribute text="Get CURSE, treasures" />
+        <attribute treasure_within_treasure="2" />
+        <attribute print="" />
+        <attribute no_loot="" />
+        <attribute curse="" />
+        <attribute remove_from_play="" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="twt" />
+        <attribute ts_color="lightblue" />
+        <attribute nosecret="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2104" name="Mouldy Skeleton">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="skeleton" />
+        <attribute treasure="large" />
+        <attribute text="Get CURSE" />
+        <attribute treasure_within_treasure="3" />
+        <attribute curse="" />
+        <attribute add_to_pile="" />
+        <attribute remove_from_play="" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="twt" />
+        <attribute ts_color="lightblue" />
+        <attribute nosecret="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2105" name="Crypt of the Knight">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="crypt" />
+        <attribute treasure="large" />
+        <attribute cannot_move="" />
+        <attribute treasure_within_treasure="5" />
+        <attribute print="" />
+        <attribute discovery="" />
+        <attribute search="fatigue_t,key" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="twt" />
+        <attribute ts_color="lightblue" />
+        <attribute nosecret="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="table">
+        <attribute roll_1="horse" />
+        <attribute roll_2="armor" />
+        <attribute roll_3="weapon" />
+        <attribute roll_4="treasure" />
+        <attribute roll_5="gold" />
+        <attribute roll_6="curse" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2106" name="Enchanted Meadow">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="meadow" />
+        <attribute treasure="large" />
+        <attribute cannot_move="" />
+        <attribute treasure_within_treasure="6" />
+        <attribute discovery="" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="twt" />
+        <attribute ts_color="lightblue" />
+        <attribute nosecret="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="table">
+        <attribute roll_1="horse" />
+        <attribute roll_2="weapon" />
+        <attribute roll_3="wish" />
+        <attribute roll_4="heal" />
+        <attribute roll_5="curse" />
+        <attribute roll_6="nothing" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2107" name="Toadstool Circle">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="toadstool_circle" />
+        <attribute treasure="large" />
+        <attribute text="Extra SPELL" />
+        <attribute cannot_move="" />
+        <attribute treasure_within_treasure="4" />
+        <attribute print="" />
+        <attribute discovery="" />
+        <attribute color_source="black" />
+        <attribute extra_actions_clearing="SP" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="twt" />
+        <attribute ts_color="lightblue" />
+        <attribute nosecret="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="table">
+        <attribute roll_1="weapon" />
+        <attribute roll_2="treasure" />
+        <attribute roll_3="teleport_cave" />
+        <attribute roll_4="peer_any" />
+        <attribute roll_5="power_pit" />
+        <attribute roll_6="curse" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2108" name="Sacred Statue">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute magic="I" />
+        <attribute native="Order" />
+        <attribute fame="10" />
+        <attribute weight="L" />
+        <attribute notoriety="-5" />
+        <attribute great="" />
+        <attribute base_price="10" />
+        <attribute artifact="" />
+        <attribute print="" />
+        <attribute scholar_price="20" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="magic" />
+        <attribute ts_color="lightgreen" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2109" name="Eye of the Idol">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute magic="II" />
+        <attribute fame="-5" />
+        <attribute weight="M" />
+        <attribute notoriety="10" />
+        <attribute base_price="34" />
+        <attribute artifact="" />
+        <attribute print="" />
+        <attribute scholar_price="20" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="magic" />
+        <attribute ts_color="lightgreen" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2110" name="Dragon Essence">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute fame="-10" />
+        <attribute notoriety="20" />
+        <attribute great="" />
+        <attribute text="Treat like SMOKE chit" />
+        <attribute warning="smoke" />
+        <attribute base_price="3" />
+        <attribute color_source="purple" />
+        <attribute facing="face_dn" />
+        <attribute nosecret="" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2111" name="Cloven Hoof">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute fame="-20" />
+        <attribute notoriety="40" />
+        <attribute great="" />
+        <attribute text="Add one to all rolls" />
+        <attribute base_price="4" />
+        <attribute plus_one="Clearing" />
+        <attribute color_source="black" />
+        <attribute facing="face_dn" />
+        <attribute nosecret="" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2112" name="Gloves of Strength">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute fame="5" />
+        <attribute notoriety="6" />
+        <attribute text="FIGHT T5" />
+        <attribute base_price="8" />
+        <attribute native="Order" />
+        <attribute attack_speed="5" />
+        <attribute strength="T" />
+        <attribute gloves="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2113" name="Power Gauntlets">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute fame="3" />
+        <attribute notoriety="4" />
+        <attribute text="FIGHT H4" />
+        <attribute base_price="7" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute gloves="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2114" name="Handy Gloves">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute fame="1" />
+        <attribute notoriety="2" />
+        <attribute text="FIGHT M3" />
+        <attribute base_price="6" />
+        <attribute attack_speed="3" />
+        <attribute strength="M" />
+        <attribute gloves="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2115" name="Power Boots">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute notoriety="3" />
+        <attribute text="MOVE H4" />
+        <attribute base_price="8" />
+        <attribute strength="H" />
+        <attribute move_speed="4" />
+        <attribute boots="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2116" name="Seven League Boots">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute notoriety="2" />
+        <attribute text="MOVE T5, plus extra MOVE" />
+        <attribute base_price="5" />
+        <attribute strength="T" />
+        <attribute move_speed="5" />
+        <attribute boots="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attributeList keyName="extra_actions">
+          <attributeVal N0="M" />
+        </attributeList>
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2117" name="Deft Gloves">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute notoriety="6" />
+        <attribute text="FIGHT L2, LOOT 1 die" />
+        <attribute base_price="10" />
+        <attribute strength="L" />
+        <attribute attack_speed="2" />
+        <attribute fame="5" />
+        <attribute native="Order" />
+        <attribute gloves="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attributeList keyName="diemod">
+          <attributeVal N0="1d:loot:all" />
+        </attributeList>
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2118" name="Timeless Jewel">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute notoriety="7" />
+        <attribute text="Don't write move" />
+        <attribute base_price="34" />
+        <attribute fame="5" />
+        <attribute native="Soldiers" />
+        <attribute weight="L" />
+        <attribute daytime_actions="" />
+        <attribute facing="face_dn" />
+        <attribute must_deactivate="" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2119" name="Ancient Telescope">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="Extra PEER (mountain only)" />
+        <attribute base_price="5" />
+        <attribute facing="face_dn" />
+        <attribute mountain_peer="" />
+        <attribute item="" />
+        <attributeList keyName="extra_actions">
+          <attributeVal N0="P" />
+        </attributeList>
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2120" name="Cloak of Mist">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="Extra HIDE" />
+        <attribute base_price="4" />
+        <attribute notoriety="2" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attributeList keyName="extra_actions">
+          <attributeVal N0="H" />
+        </attributeList>
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2121" name="Toadstool Ring">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="Extra SPELL" />
+        <attribute base_price="9" />
+        <attribute notoriety="3" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attributeList keyName="extra_actions">
+          <attributeVal N0="SP" />
+        </attributeList>
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2122" name="Quick Boots">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="MOVE M3" />
+        <attribute base_price="8" />
+        <attribute notoriety="2" />
+        <attribute fame="1" />
+        <attribute move_speed="3" />
+        <attribute strength="M" />
+        <attribute boots="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2123" name="Elven Slippers">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="MOVE L2" />
+        <attribute base_price="5" />
+        <attribute notoriety="2" />
+        <attribute move_speed="2" />
+        <attribute strength="L" />
+        <attribute boots="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2124" name="Shoes of Stealth">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="MOVE L3, plus HIDE 1 die" />
+        <attribute base_price="7" />
+        <attribute notoriety="2" />
+        <attribute move_speed="3" />
+        <attribute strength="L" />
+        <attribute boots="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attributeList keyName="diemod">
+          <attributeVal N0="1d:hide:all" />
+        </attributeList>
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2125" name="Lost Keys">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="Opens Chest, Crypt, and Vault" />
+        <attribute base_price="5" />
+        <attribute key="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2126" name="Alchemist's Mixture">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="One MISSILE attack (discard to WARLOCK)" />
+        <attribute base_price="4" />
+        <attribute discard="warlock" />
+        <attribute strength="M" />
+        <attribute sharpness="3" />
+        <attribute potion="" />
+        <attribute length="11" />
+        <attribute missile="thrown" />
+        <attribute attack="" />
+        <attribute transferable="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2127" name="Potion of Energy">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="No combat limit to effort * (discard to warlock)" />
+        <attribute base_price="5" />
+        <attribute discard="warlock" />
+        <attribute potion="" />
+        <attribute effort_limit="1000" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2128" name="Draught of Speed">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="*'s set speed:  **=2, *=3,  =4 (discard to warlock)" />
+        <attribute base_price="6" />
+        <attribute discard="warlock" />
+        <attribute potion="" />
+        <attribute chit_speed="4,3,2" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2129" name="Gripping Dust">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="Weapon stays alerted (discard to warlock)" />
+        <attribute base_price="5" />
+        <attribute discard="warlock" />
+        <attribute potion="" />
+        <attribute alerted_weapon="" />
+        <attribute sticks_weapon="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2130" name="Vial of Healing">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="Move all wounds to fatigue (discard to order)" />
+        <attribute base_price="2" />
+        <attribute discard="chapel" />
+        <attribute potion="" />
+        <attribute wounds_to_fatigue="" />
+        <attribute transferable="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2131" name="Book of Lore">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="10" />
+        <attribute fame="-5" />
+        <attribute notoriety="10" />
+        <attribute weight="L" />
+        <attribute magic="IV" />
+        <attribute book="" />
+        <attribute print="" />
+        <attribute scholar_price="50" />
+        <attribute warlock_price="50" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="magic" />
+        <attribute ts_color="lightgreen" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2132" name="Book of Nature">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="10" />
+        <attribute notoriety="5" />
+        <attribute weight="L" />
+        <attribute magic="II" />
+        <attribute book="" />
+        <attribute print="" />
+        <attribute scholar_price="50" />
+        <attribute shaman_price="50" />
+        <attribute magic_other="III" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="magic" />
+        <attribute ts_color="lightgreen" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2133" name="Good Book">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="10" />
+        <attribute notoriety="5" />
+        <attribute weight="L" />
+        <attribute magic="I" />
+        <attribute fame="5" />
+        <attribute book="" />
+        <attribute print="" />
+        <attribute scholar_price="50" />
+        <attribute magic_other="VII" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="magic" />
+        <attribute ts_color="lightgreen" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2134" name="Black Book">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="10" />
+        <attribute notoriety="15" />
+        <attribute weight="L" />
+        <attribute magic="V" />
+        <attribute fame="-15" />
+        <attribute great="" />
+        <attribute book="" />
+        <attribute print="" />
+        <attribute scholar_price="50" />
+        <attribute crone_price="50" />
+        <attribute magic_other="VIII" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="magic" />
+        <attribute ts_color="lightgreen" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2135" name="Ointment of Bite">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="FIGHT hits on tie speed (discard to crone)" />
+        <attribute base_price="5" />
+        <attribute discard="crone" />
+        <attribute potion="" />
+        <attribute hit_tie="" />
+        <attribute sticks_weapon="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2136" name="Reflecting Grease">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="Any armor stops wounds (discard to crone)" />
+        <attribute base_price="3" />
+        <attribute discard="crone" />
+        <attribute potion="" />
+        <attribute stop_wounds="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2137" name="Oil of Poison">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="Add sharpness to weapon (discard to crone)" />
+        <attribute base_price="3" />
+        <attribute discard="crone" />
+        <attribute potion="" />
+        <attribute add_sharpness="1" />
+        <attribute sticks_weapon="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2138" name="Penetrating Grease">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="Weapon ignores all armor (discard to crone)" />
+        <attribute base_price="4" />
+        <attribute discard="crone" />
+        <attribute potion="" />
+        <attribute ignore_armor="" />
+        <attribute sticks_weapon="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2139" name="Imperial Tabard">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="17" />
+        <attribute great="" />
+        <attribute fame="20" />
+        <attribute notoriety="-10" />
+        <attribute weight="M" />
+        <attribute native="Guard" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2140" name="Shielded Lantern">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="8" />
+        <attribute weight="L" />
+        <attribute text="Extra phase in caves" />
+        <attribute extra_cave_phase="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2141" name="Royal Sceptre">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="8" />
+        <attribute weight="L" />
+        <attribute text="Extra HIRE" />
+        <attribute great="" />
+        <attribute fame="20" />
+        <attribute notoriety="-15" />
+        <attribute native="Guard" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attributeList keyName="extra_actions">
+          <attributeVal N0="HR" />
+        </attributeList>
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2142" name="Regent of Jewels">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="67" />
+        <attribute weight="L" />
+        <attribute text="Extra TRADE" />
+        <attribute great="" />
+        <attribute fame="10" />
+        <attribute notoriety="10" />
+        <attribute native="Soldiers" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attributeList keyName="extra_actions">
+          <attributeVal N0="T" />
+        </attributeList>
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2143" name="Enchanter's Skull">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="17" />
+        <attribute weight="L" />
+        <attribute great="" />
+        <attribute fame="-10" />
+        <attribute notoriety="10" />
+        <attribute magic="IV" />
+        <attribute artifact="" />
+        <attribute print="" />
+        <attribute scholar_price="20" />
+        <attribute warlock_price="20" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="magic" />
+        <attribute ts_color="lightgreen" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2144" name="Poultice of Health">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="REST counts double (discard to shaman)" />
+        <attribute base_price="2" />
+        <attribute discard="shaman" />
+        <attribute potion="" />
+        <attribute rest_double="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2145" name="Withered Claw">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="Roll to get WISH and CURSE" />
+        <attribute base_price="3" />
+        <attribute discard="shaman" />
+        <attribute potion="" />
+        <attribute wish_and_curse="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2146" name="Amulet">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="Cancels one spell or curse (discard to shaman)" />
+        <attribute base_price="5" />
+        <attribute discard="shaman" />
+        <attribute potion="" />
+        <attribute cancel_spell="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2147" name="Ointment of Steel">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="Counts like T armor, any blow (discard to shaman)" />
+        <attribute base_price="4" />
+        <attribute discard="shaman" />
+        <attribute potion="" />
+        <attribute armor_row="3" />
+        <attribute vulnerability="T" />
+        <attribute armor="special" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2148" name="Blasted Jewel">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="30" />
+        <attribute weight="H" />
+        <attribute great="" />
+        <attribute fame="-15" />
+        <attribute notoriety="15" />
+        <attribute magic="V" />
+        <attribute artifact="" />
+        <attribute print="" />
+        <attribute scholar_price="20" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="magic" />
+        <attribute ts_color="lightgreen" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2149" name="Hidden Ring">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="20" />
+        <attribute great="" />
+        <attribute fame="-10" />
+        <attribute notoriety="10" />
+        <attribute magic="VI" />
+        <attribute artifact="" />
+        <attribute print="" />
+        <attribute scholar_price="20" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="magic" />
+        <attribute ts_color="lightgreen" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2150" name="Lucky Charm">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="14" />
+        <attribute text="Roll 1 die all rolls" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attributeList keyName="diemod">
+          <attributeVal N0="1d:all:all" />
+        </attributeList>
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2151" name="Flying Carpet">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="17" />
+        <attribute notoriety="12" />
+        <attribute weight="M" />
+        <attribute magic_color="purple" />
+        <attribute text="FLY M2 (in purple)" />
+        <attribute cast_spell_on_init="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2152" name="Dragonfang Necklace">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="8" />
+        <attribute notoriety="12" />
+        <attribute magic_color="purple" />
+        <attribute text="Control one dragon (in purple)" />
+        <attribute great="" />
+        <attribute fame="12" />
+        <attribute native="Lancers" />
+        <attribute target="dragon" />
+        <attribute magic="*" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2153" name="Phantom Glass">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="8" />
+        <attribute notoriety="2" />
+        <attribute text="Use MAGIC SIGHT" />
+        <attribute weight="L" />
+        <attribute magic_sight="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2154" name="Beast Pipes">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="8" />
+        <attribute notoriety="5" />
+        <attribute fame="-5" />
+        <attribute magic="VIII" />
+        <attribute artifact="" />
+        <attribute print="" />
+        <attribute scholar_price="20" />
+        <attribute crone_price="20" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="magic" />
+        <attribute ts_color="lightgreen" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2155" name="Sacred Grail">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="12" />
+        <attribute notoriety="-25" />
+        <attribute great="" />
+        <attribute fame="50" />
+        <attribute native="Order" />
+        <attribute weight="M" />
+        <attribute color_source="white" />
+        <attribute facing="face_dn" />
+        <attribute nosecret="" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2156" name="Flowers of Rest">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="2" />
+        <attribute text="Lose turn - rest fatigue" />
+        <attribute color_source="gold" />
+        <attribute sleep="" />
+        <attribute facing="face_dn" />
+        <attribute nosecret="" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2157" name="Map of Lost City">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="3" />
+        <attribute text="-1 to LOCATE rolls in LOST CITY" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attributeList keyName="diemod">
+          <attributeVal N0="-1:locate:lost city#bn#" />
+        </attributeList>
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2158" name="Map of Lost Castle">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="3" />
+        <attribute text="-1 to LOCATE rolls in LOST CASTLE" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attributeList keyName="diemod">
+          <attributeVal N0="-1:locate:lost castle#bn#" />
+        </attributeList>
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2159" name="Map of Ruins">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="3" />
+        <attribute text="-1 to LOCATE rolls in any RUINS clearing" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attributeList keyName="diemod">
+          <attributeVal N0="-1:locate:%ruins%" />
+        </attributeList>
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2160" name="Crystal Ball">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="20" />
+        <attribute text="PEER or SPELL in any hex" />
+        <attribute notoriety="5" />
+        <attribute weight="M" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attributeList keyName="special_action">
+          <attributeVal N0="ENHANCED_PEER" />
+          <attributeVal N1="REMOTE_SPELL" />
+        </attributeList>
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2161" name="Girtle of Energy">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="13" />
+        <attribute text="Effort limit is 3*/round" />
+        <attribute notoriety="4" />
+        <attribute fame="2" />
+        <attribute effort_limit="1" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2162" name="Eye of the Moon">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="13" />
+        <attribute text="See/change next weather in gray" />
+        <attribute notoriety="13" />
+        <attribute weight="M" />
+        <attribute facing="face_dn" />
+        <attribute magic="*" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2163" name="Magic Wand">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="17" />
+        <attribute text="Control red die on spell rolls" />
+        <attribute notoriety="10" />
+        <attribute fame="-10" />
+        <attribute great="" />
+        <attribute red_die="wish,curse,powerofthepit,transform,lost,violentstorm,magicmissil,attackspell" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2164" name="Glimmering Ring">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="15" />
+        <attribute notoriety="10" />
+        <attribute magic="III" />
+        <attribute artifact="" />
+        <attribute print="" />
+        <attribute scholar_price="20" />
+        <attribute shaman_price="20" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="magic" />
+        <attribute ts_color="lightgreen" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2165" name="Glowing Gem">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="15" />
+        <attribute notoriety="10" />
+        <attribute magic="VII" />
+        <attribute fame="5" />
+        <attribute native="Soldiers" />
+        <attribute artifact="" />
+        <attribute print="" />
+        <attribute scholar_price="20" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="magic" />
+        <attribute ts_color="lightgreen" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2166" name="Golden Icon">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="100" />
+        <attribute notoriety="20" />
+        <attribute fame="-10" />
+        <attribute great="" />
+        <attribute weight="T" />
+        <attribute color_source="gray" />
+        <attribute facing="face_dn" />
+        <attribute nosecret="" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2167" name="Garb of Speed">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="16" />
+        <attribute notoriety="6" />
+        <attribute fame="2" />
+        <attribute text="*'s determine speed, **=3, *=4, zero=5" />
+        <attribute chit_speed="5,4,3" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2168" name="Belt of Strength">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="16" />
+        <attribute notoriety="6" />
+        <attribute fame="3" />
+        <attribute text="*'s determine force, **=T, *=H, zero=M" />
+        <attribute chit_strength="M,H,T" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2169" name="Elusive Cloak">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="10" />
+        <attribute notoriety="2" />
+        <attribute text="Replace MOVE (enemy over 4)" />
+        <attribute replace_move="4" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2170" name="Battle Bracelets">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="12" />
+        <attribute notoriety="4" />
+        <attribute text="Replace FIGHT (enemy over 4)" />
+        <attribute fame="2" />
+        <attribute replace_fight="4" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2171" name="Magic Spectacles">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="6" />
+        <attribute notoriety="2" />
+        <attribute text="extra SEARCH" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attributeList keyName="extra_actions">
+          <attributeVal N0="S" />
+        </attributeList>
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2172" name="Bejeweled Dwarf Vest">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="27" />
+        <attribute notoriety="5" />
+        <attribute weight="M" />
+        <attribute fame="10" />
+        <attribute native="Soldiers" />
+        <attribute great="" />
+        <attribute text="H armor versus THRUST" />
+        <attribute armor="special" />
+        <attribute armor_box="1" />
+        <attribute vulnerability="H" />
+        <attribute armor_row="1" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="destroyed">
+        <attribute base_price="23" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2173" name="Golden Crown">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="50" />
+        <attribute notoriety="-15" />
+        <attribute weight="H" />
+        <attribute fame="20" />
+        <attribute native="Guard" />
+        <attribute great="" />
+        <attribute text="M armor versus SMASH" />
+        <attribute armor="special" />
+        <attribute armor_box="3" />
+        <attribute vulnerability="M" />
+        <attribute armor_row="1" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="destroyed">
+        <attribute base_price="46" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2174" name="Golden Arm Band">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="15" />
+        <attribute weight="L" />
+        <attribute fame="3" />
+        <attribute native="Lancers" />
+        <attribute text="M armor versus SWING" />
+        <attribute armor="special" />
+        <attribute armor_box="2" />
+        <attribute vulnerability="M" />
+        <attribute armor_row="1" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="destroyed">
+        <attribute base_price="11" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2175" name="Book of Alchemy">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="10" />
+        <attribute weight="L" />
+        <attribute fame="-10" />
+        <attribute notoriety="15" />
+        <attribute magic="VI" />
+        <attribute great="" />
+        <attribute book="" />
+        <attribute print="" />
+        <attribute scholar_price="50" />
+        <attribute warlock_price="50" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="magic" />
+        <attribute ts_color="lightgreen" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
