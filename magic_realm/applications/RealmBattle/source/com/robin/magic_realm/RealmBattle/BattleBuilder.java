@@ -382,7 +382,7 @@ public class BattleBuilder extends JFrame {
 	}
 	private void prepExpansionTreasures(String gameKey, GameData data) {
 		GamePool pool = new GamePool(data.getGameObjects());
-		ArrayList<GameObject> expansionSpells = pool.find("!original_game,treasure," + gameKey);
+		ArrayList<GameObject> expansionSpells = pool.find("!original_game,treasure,!treasure_within_treasure,!ts_section," + gameKey);
 		for (GameObject go:expansionSpells) {
 			go.setThisKeyVals(hostPrefs.getGameKeyVals());
 		}

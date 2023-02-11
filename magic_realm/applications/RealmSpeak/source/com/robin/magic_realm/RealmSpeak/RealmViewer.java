@@ -179,7 +179,7 @@ public class RealmViewer extends JFrame {
 			HostPrefWrapper hostPrefs = new HostPrefWrapper(data.createNewObject());
 			hostPrefs.setHostName("Test");
 			hostPrefs.setGameKeyVals(Constants.ORIGINAL_GAME);
-			ArrayList keyVals = new ArrayList();
+			ArrayList<String> keyVals = new ArrayList<>();
 			keyVals.add(Constants.ORIGINAL_GAME);
 			while(!MapBuilder.autoBuildMap(data,keyVals));
 			
