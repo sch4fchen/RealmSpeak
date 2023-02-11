@@ -227,7 +227,7 @@ public class TreasureSetupCardView extends JComponent {
 				for(GameObject go : l) {
 					if (!go.hasThisAttribute(CacheChitComponent.DEPLETED_CACHE) && go.hasThisAttribute("ts_color")) {
 						if (nativeSetup) {
-							if (go.hasThisAttribute("native") || go.hasThisAttribute("native_die") || go.hasThisAttribute("gold_special_target")) nonMdList.add(go);
+							if ((go.hasThisAttribute("native") || go.hasThisAttribute("native_die") || go.hasThisAttribute("gold_special_target")) && !go.hasThisAttribute("treasure")) nonMdList.add(go);
 						} else {
 							nonMdList.add(go);
 						}
