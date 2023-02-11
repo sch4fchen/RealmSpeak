@@ -52757,10 +52757,10 @@
         <attribute boots="" />
         <attribute facing="face_dn" />
         <attribute item="" />
+        <attribute super_realm="" />
         <attributeList keyName="extra_actions">
           <attributeVal N0="M" />
         </attributeList>
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2117" name="Deft Gloves">
@@ -52776,10 +52776,10 @@
         <attribute gloves="" />
         <attribute facing="face_dn" />
         <attribute item="" />
+        <attribute super_realm="" />
         <attributeList keyName="diemod">
           <attributeVal N0="1d:loot:all" />
         </attributeList>
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2118" name="Timeless Jewel">
@@ -52806,10 +52806,10 @@
         <attribute facing="face_dn" />
         <attribute mountain_peer="" />
         <attribute item="" />
+        <attribute super_realm="" />
         <attributeList keyName="extra_actions">
           <attributeVal N0="P" />
         </attributeList>
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2120" name="Cloak of Mist">
@@ -52820,10 +52820,10 @@
         <attribute notoriety="2" />
         <attribute facing="face_dn" />
         <attribute item="" />
+        <attribute super_realm="" />
         <attributeList keyName="extra_actions">
           <attributeVal N0="H" />
         </attributeList>
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2121" name="Toadstool Ring">
@@ -52834,10 +52834,10 @@
         <attribute notoriety="3" />
         <attribute facing="face_dn" />
         <attribute item="" />
+        <attribute super_realm="" />
         <attributeList keyName="extra_actions">
           <attributeVal N0="SP" />
         </attributeList>
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2122" name="Quick Boots">
@@ -52880,10 +52880,10 @@
         <attribute boots="" />
         <attribute facing="face_dn" />
         <attribute item="" />
+        <attribute super_realm="" />
         <attributeList keyName="diemod">
           <attributeVal N0="1d:hide:all" />
         </attributeList>
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2125" name="Lost Keys">
@@ -53140,10 +53140,10 @@
         <attribute native="Guard" />
         <attribute facing="face_dn" />
         <attribute item="" />
+        <attribute super_realm="" />
         <attributeList keyName="extra_actions">
           <attributeVal N0="HR" />
         </attributeList>
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2142" name="Regent of Jewels">
@@ -53158,10 +53158,10 @@
         <attribute native="Soldiers" />
         <attribute facing="face_dn" />
         <attribute item="" />
+        <attribute super_realm="" />
         <attributeList keyName="extra_actions">
           <attributeVal N0="T" />
         </attributeList>
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2143" name="Enchanter's Skull">
@@ -53213,7 +53213,7 @@
     <GameObject id="2146" name="Amulet">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
-        <attribute text="Cancels one spell or curse or mesmerize effect (discard to shaman)" />
+        <attribute text="Cancels one spell or curse or mesmerize effect in same clearing (discard to shaman)" />
         <attribute base_price="5" />
         <attribute discard="shaman" />
         <attribute potion="" />
@@ -53282,10 +53282,10 @@
         <attribute text="Roll 1 die all rolls" />
         <attribute facing="face_dn" />
         <attribute item="" />
+        <attribute super_realm="" />
         <attributeList keyName="diemod">
           <attributeVal N0="1d:all:all" />
         </attributeList>
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2151" name="Flying Carpet">
@@ -53301,6 +53301,7 @@
         <attribute item="" />
         <attribute super_realm="" />
       </AttributeBlock>
+      <contains id="2223" />
     </GameObject>
     <GameObject id="2152" name="Dragonfang Necklace">
       <AttributeBlock blockName="this">
@@ -53318,6 +53319,7 @@
         <attribute item="" />
         <attribute super_realm="" />
       </AttributeBlock>
+      <contains id="2224" />
     </GameObject>
     <GameObject id="2153" name="Phantom Glass">
       <AttributeBlock blockName="this">
@@ -53386,10 +53388,10 @@
         <attribute text="-1 to LOCATE rolls in LOST CITY" />
         <attribute facing="face_dn" />
         <attribute item="" />
+        <attribute super_realm="" />
         <attributeList keyName="diemod">
           <attributeVal N0="-1:locate:lost city#bn#" />
         </attributeList>
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2158" name="Map of Lost Castle">
@@ -53399,10 +53401,10 @@
         <attribute text="-1 to LOCATE rolls in LOST CASTLE" />
         <attribute facing="face_dn" />
         <attribute item="" />
+        <attribute super_realm="" />
         <attributeList keyName="diemod">
           <attributeVal N0="-1:locate:lost castle#bn#" />
         </attributeList>
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2159" name="Map of Ruins">
@@ -53412,10 +53414,10 @@
         <attribute text="-1 to LOCATE rolls in any RUINS clearing" />
         <attribute facing="face_dn" />
         <attribute item="" />
+        <attribute super_realm="" />
         <attributeList keyName="diemod">
           <attributeVal N0="-1:locate:%ruins%" />
         </attributeList>
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2160" name="Crystal Ball">
@@ -53427,13 +53429,13 @@
         <attribute weight="M" />
         <attribute facing="face_dn" />
         <attribute item="" />
+        <attribute super_realm="" />
+        <attribute fame="12" />
+        <attribute native="Enchanters" />
         <attributeList keyName="special_action">
           <attributeVal N0="ENHANCED_PEER" />
           <attributeVal N1="REMOTE_SPELL" />
         </attributeList>
-        <attribute super_realm="" />
-        <attribute fame="12" />
-        <attribute native="Enchanters" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2161" name="Girtle of Energy">
@@ -53461,6 +53463,7 @@
         <attribute item="" />
         <attribute super_realm="" />
       </AttributeBlock>
+      <contains id="2225" />
     </GameObject>
     <GameObject id="2163" name="Magic Wand">
       <AttributeBlock blockName="this">
@@ -53585,10 +53588,10 @@
         <attribute text="extra SEARCH" />
         <attribute facing="face_dn" />
         <attribute item="" />
+        <attribute super_realm="" />
         <attributeList keyName="extra_actions">
           <attributeVal N0="S" />
         </attributeList>
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2172" name="Bejeweled Dwarf Vest">
@@ -53672,6 +53675,47 @@
         <attribute ts_section="magic" />
         <attribute ts_color="lightgreen" />
         <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2223" name="Flying Carpet Spell">
+      <AttributeBlock blockName="this">
+        <attribute spell="" />
+        <attribute duration="permanent" />
+        <attribute target="Flying Carpet" />
+        <attribute text="FLY M2 (in purple)" />
+        <attribute magic_color="purple" />
+        <attribute fly_strength="M" />
+        <attribute fly_speed="2" />
+        <attribute no_expire="" />
+        <attribute no_cancel="" />
+        <attribute host_okay="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2224" name="Control Dragon">
+      <AttributeBlock blockName="this">
+        <attribute duration="day" />
+        <attribute target="dragon" />
+        <attribute text="Control ONE Dragon" />
+        <attribute magic_color="purple" />
+        <attribute control="" />
+        <attribute host_okay="" />
+        <attribute spell="*" />
+        <attribute awakened="" />
+        <attribute no_cancel="" />
+        <attribute benevolent="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2225" name="See/Change Weather">
+      <AttributeBlock blockName="this">
+        <attribute duration="instant" />
+        <attribute target="weather" />
+        <attribute text="See or change the coming weather" />
+        <attribute magic_color="gray" />
+        <attribute spell="*" />
+        <attribute awakened="" />
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
@@ -54011,7 +54055,7 @@
       <Extract from="ALL" to="LARGE_TREASURES" keyVals="treasure=large" />
       <Create newPool="SMALL_TREASURES" />
       <Extract from="ALL" to="SMALL_TREASURES" keyVals="treasure=small" />
-	  <Add from="LARGE_TREASURES" targetObjectID="2102" count="2" transferType="Random" />
+      <Add from="LARGE_TREASURES" targetObjectID="2102" count="2" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="2103" count="1" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="2105" count="1" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="2107" count="1" transferType="Random" />
