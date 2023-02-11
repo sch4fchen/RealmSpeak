@@ -50264,7 +50264,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1933" name="Tremendous Armor">
+    <GameObject id="1933" name="T Armor">
       <AttributeBlock blockName="this">
         <attribute vulnerability="T" />
         <attribute weight="T" />
@@ -52527,6 +52527,7 @@
         <attribute nosecret="" />
         <attribute super_realm="" />
       </AttributeBlock>
+      <contains id="1955" />
     </GameObject>
     <GameObject id="2104" name="Mouldy Skeleton">
       <AttributeBlock blockName="this">
@@ -52543,6 +52544,9 @@
         <attribute nosecret="" />
         <attribute super_realm="" />
       </AttributeBlock>
+      <contains id="1949" />
+      <contains id="1950" />
+      <contains id="1951" />
     </GameObject>
     <GameObject id="2105" name="Crypt of the Knight">
       <AttributeBlock blockName="this">
@@ -52567,6 +52571,9 @@
         <attribute roll_5="gold" />
         <attribute roll_6="curse" />
       </AttributeBlock>
+      <contains id="1914" />
+      <contains id="1933" />
+      <contains id="1952" />
     </GameObject>
     <GameObject id="2106" name="Enchanted Meadow">
       <AttributeBlock blockName="this">
@@ -52589,6 +52596,8 @@
         <attribute roll_5="curse" />
         <attribute roll_6="nothing" />
       </AttributeBlock>
+      <contains id="1910" />
+      <contains id="1953" />
     </GameObject>
     <GameObject id="2107" name="Toadstool Circle">
       <AttributeBlock blockName="this">
@@ -52615,6 +52624,7 @@
         <attribute roll_5="power_pit" />
         <attribute roll_6="curse" />
       </AttributeBlock>
+      <contains id="1954" />
     </GameObject>
     <GameObject id="2108" name="Sacred Statue">
       <AttributeBlock blockName="this">
@@ -53719,6 +53729,158 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2226" name="Alchemist's Mixture">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="One MISSILE attack (discard to WARLOCK)" />
+        <attribute base_price="4" />
+        <attribute discard="warlock" />
+        <attribute strength="M" />
+        <attribute sharpness="3" />
+        <attribute potion="" />
+        <attribute length="11" />
+        <attribute missile="thrown" />
+        <attribute attack="" />
+        <attribute transferable="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2227" name="Amulet">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="Cancels one spell or curse or mesmerize effect in same clearing (discard to shaman)" />
+        <attribute base_price="5" />
+        <attribute discard="shaman" />
+        <attribute potion="" />
+        <attribute cancel_spell="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2228" name="Oil of Poison">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="Add sharpness to weapon (discard to crone)" />
+        <attribute base_price="3" />
+        <attribute discard="crone" />
+        <attribute potion="" />
+        <attribute add_sharpness="1" />
+        <attribute sticks_weapon="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2229" name="Ointment of Bite">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="FIGHT hits on tie speed (discard to crone)" />
+        <attribute base_price="5" />
+        <attribute discard="crone" />
+        <attribute potion="" />
+        <attribute hit_tie="" />
+        <attribute sticks_weapon="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2230" name="Penetrating Grease">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="Weapon ignores all armor (discard to crone)" />
+        <attribute base_price="4" />
+        <attribute discard="crone" />
+        <attribute potion="" />
+        <attribute ignore_armor="" />
+        <attribute sticks_weapon="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2231" name="Potion of Energy">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="No combat limit to effort * (discard to warlock)" />
+        <attribute base_price="5" />
+        <attribute discard="warlock" />
+        <attribute potion="" />
+        <attribute effort_limit="1000" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2232" name="Reflecting Grease">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="Any armor stops wounds (discard to crone)" />
+        <attribute base_price="3" />
+        <attribute discard="crone" />
+        <attribute potion="" />
+        <attribute stop_wounds="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2233" name="Vial of Healing">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="Move all wounds to fatigue (discard to order)" />
+        <attribute base_price="2" />
+        <attribute discard="chapel" />
+        <attribute potion="" />
+        <attribute wounds_to_fatigue="" />
+        <attribute transferable="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2234" name="Withered Claw">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="Roll to get WISH and CURSE" />
+        <attribute base_price="3" />
+        <attribute discard="shaman" />
+        <attribute potion="" />
+        <attribute wish_and_curse="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2235" name="Scroll of Alchemy">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="5" />
+        <attribute fame="7" />
+        <attribute notoriety="10" />
+        <attribute magic="VI" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="magic" />
+        <attribute ts_color="lightgreen" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute native="Enchanters" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
@@ -54156,6 +54318,20 @@
       <Add from="SPELL_V" targetObjectID="1867" count="1" transferType="Random" />
       <Add from="SPELL_VI" targetObjectID="1890" count="1" transferType="Random" />
       <Add from="SPELL_VII" targetObjectID="1900" count="1" transferType="Random" />
+      <Add from="SPELL_II" targetObjectID="2109" count="1" transferType="Random" />
+      <Add from="SPELL_IV" targetObjectID="2131" count="4" transferType="Random" />
+      <Add from="SPELL_III" targetObjectID="2132" count="2" transferType="Random" />
+      <Add from="SPELL_II" targetObjectID="2132" count="2" transferType="Random" />
+      <Add from="SPELL_VII" targetObjectID="2133" count="2" transferType="Random" />
+      <Add from="SPELL_I" targetObjectID="2133" count="2" transferType="Random" />
+      <Add from="SPELL_VIII" targetObjectID="2134" count="2" transferType="Random" />
+      <Add from="SPELL_V" targetObjectID="2134" count="2" transferType="Random" />
+      <Add from="SPELL_IV" targetObjectID="2143" count="1" transferType="Random" />
+      <Add from="SPELL_VI" targetObjectID="2149" count="1" transferType="Random" />
+      <Add from="SPELL_III" targetObjectID="2164" count="1" transferType="Random" />
+      <Add from="SPELL_VII" targetObjectID="2165" count="1" transferType="Random" />
+      <Add from="SPELL_VI" targetObjectID="2175" count="4" transferType="Random" />
+	  <Add from="SPELL_VI" targetObjectID="2235" count="2" transferType="Random" />
       <Create newPool="LEFTOVER_SPELLS" />
       <Extract from="SPELL_I" to="LEFTOVER_SPELLS" keyVals="spell" />
       <Extract from="SPELL_II" to="LEFTOVER_SPELLS" keyVals="spell" />
