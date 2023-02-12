@@ -50264,7 +50264,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1933" name="T Armor">
+    <GameObject id="1933" name="Tremen. Armor">
       <AttributeBlock blockName="this">
         <attribute vulnerability="T" />
         <attribute weight="T" />
