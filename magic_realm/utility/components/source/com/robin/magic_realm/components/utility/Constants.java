@@ -409,6 +409,13 @@ public class Constants {
 	public static final String ILL_HEALTH = "Ill_Health";
 	public static final String ASHES = "Ashes";
 	public static final String DISGUST = "Disgust";
+	public static final String MESMERIZE = "Mesmerize";
+	public static final String WEAKENED = "weakened";
+	public static final String INTOXICATED = "intoxicated";
+	public static final String CALMED = "calmed";
+	public static final String DISTRACTED = "distracted";
+	public static final String SAPPED = "sapped";
+	public static final String TIRED = "tired";
 	
 	// Spells
 	public static final String SPELL_ID = "spellID";

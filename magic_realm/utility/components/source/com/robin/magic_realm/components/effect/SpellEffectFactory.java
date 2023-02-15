@@ -66,7 +66,7 @@ public class SpellEffectFactory {
 
 			case "make whole": return new ISpellEffect[]{new MakeWholeEffect()};
 			case "melt into mist": return new ISpellEffect[]{new NullifyEffect(),new DisengageEffect(), new TransmorphEffect("mist")};
-			case "mesmerize": return new ISpellEffect[]{new PowerPitEffect()};
+			case "mesmerize": return new ISpellEffect[]{new MesmerizeEffect()};
 			case "miracle": return new ISpellEffect[]{new MiracleEffect()};
 			case "open gate": return new ISpellEffect[]{new TeleportEffect(SpellUtility.TeleportType.KnownGate)};
 		

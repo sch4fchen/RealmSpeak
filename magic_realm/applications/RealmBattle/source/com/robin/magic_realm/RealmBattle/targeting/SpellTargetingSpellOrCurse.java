@@ -6,6 +6,7 @@ import com.robin.game.objects.GameData;
 import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.SpellMasterWrapper;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
@@ -34,6 +35,7 @@ public class SpellTargetingSpellOrCurse extends SpellTargetingSingle {
 				Collection<String> curses = character.getAllCurses();
 				if (curses.size()>0) {
 					for (String curse : curses) {
+						if (curse.toLowerCase().matches(Constants.MESMERIZE.toLowerCase())) continue;
 						identifiers.add(curse);
 						gameObjects.add(rc.getGameObject());
 					}

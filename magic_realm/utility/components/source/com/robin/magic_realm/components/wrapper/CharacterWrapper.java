@@ -3779,6 +3779,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 			getGameObject().setAttribute(CURSES_BLOCK,curse);
 		}
 	}
+	public void applyMesmerize(String effect) {
+		if (isCharacter() && !isMistLike() && !hasMagicProtection()) { // only true characters can be cursed!
+			getGameObject().setAttribute(CURSES_BLOCK,Constants.MESMERIZE);
+			getGameObject().addThisAttributeListItem(Constants.MESMERIZE, effect);
+		}
+	}
 	public boolean hasCurses() {
 		Hashtable hash = getGameObject().getAttributeBlock(CURSES_BLOCK);
 		return hash!=null && hash.size()>0;
@@ -3786,8 +3792,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean hasCurse(String curse) {
 		return !isNullifiedCurses() && getGameObject().hasAttribute(CURSES_BLOCK,curse);
 	}
+	public boolean hasMesmerizeEffect(String curse) {
+		return getGameObject().hasThisAttribute(Constants.MESMERIZE) && getGameObject().getThisAttributeList(Constants.MESMERIZE).contains(curse);
+	}
 	public void removeCurse(String curse) {
 		getGameObject().removeAttribute(CURSES_BLOCK,curse);
+		if (curse.matches(Constants.MESMERIZE)) {
+			getGameObject().removeThisAttribute(Constants.MESMERIZE);
+		}
 	}
 	public ArrayList<String> getAllCurses() {
 		ArrayList<String> list = new ArrayList<>();
@@ -3797,6 +3809,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (getGameObject().hasAttribute(CURSES_BLOCK,Constants.ILL_HEALTH)) list.add(Constants.ILL_HEALTH);
 		if (getGameObject().hasAttribute(CURSES_BLOCK,Constants.SQUEAK)) list.add(Constants.SQUEAK);
 		if (getGameObject().hasAttribute(CURSES_BLOCK,Constants.WITHER)) list.add(Constants.WITHER);
+		if (getGameObject().hasAttribute(CURSES_BLOCK,Constants.MESMERIZE)) list.add(Constants.MESMERIZE);
 		return list;
 	}
 	public void removeAllCurses() {
@@ -3824,6 +3837,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (go.hasAttribute(CURSES_BLOCK,Constants.WITHER)) {
 			getGameObject().removeAttribute(CURSES_BLOCK,Constants.WITHER);
 			RealmLogging.logMessage(go.getName(),"WITHER curse is removed.");
+		}
+		if (go.hasAttribute(CURSES_BLOCK,Constants.MESMERIZE)) {
+			getGameObject().removeAttribute(CURSES_BLOCK,Constants.MESMERIZE);
+			getGameObject().removeThisAttribute(Constants.MESMERIZE);
+			RealmLogging.logMessage(go.getName(),"MESMERIZE is removed.");
 		}
 	}
 	public void nullifyCurses() {

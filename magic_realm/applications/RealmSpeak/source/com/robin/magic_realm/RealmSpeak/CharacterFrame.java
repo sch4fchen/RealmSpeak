@@ -229,6 +229,14 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			label.setToolTipText("Disgust - FAME is worthless" + postfix);
 			box.add(label);
 		}
+		if (curses.contains(Constants.MESMERIZE)) {
+			JLabel label = new JLabel(ImageCache.getIcon("curse/illhealth"));
+			label.setEnabled(!nullified);
+			Collection<String> list = character.getGameObject().getThisAttributeList(Constants.MESMERIZE);
+			String effects = String.join(", ", list);
+			label.setToolTipText("Mesmerize - "+effects + postfix);
+			box.add(label);
+		}
 	}
 	
 	public ArrayList<RealmComponent> getPossibleBlockees() {

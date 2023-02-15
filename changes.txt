@@ -11,7 +11,6 @@ Super Realm: rules for clans 4.7 (p. 41)
 Super Realm: Horses: When regenerated (after being killed or abandoned), normal ponies are returned to the Bashkars, workhorses to the Rogues, and war horses to the Order.
 ---Detail Rules---
 Exorcise: All native casters in the clearing cannot supply color magic, and they cannot cast spells for the rest of combat (including the current round), unless they are in a clearing with a magic source matching the color required to cast their spell.
-Mesmerize: broken my amulet, exorcise, chapel, dissolve spell cannot break it
 ---More content incl. functionalities; graphics---
 Super Realm: Treasures
 Super Realm: Visitor/Travelers=Nomads/Missions/Campaigns/Tasks (incl. for seasons); Travelers: 4.8 (p.41)
