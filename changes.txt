@@ -1,7 +1,7 @@
 ::ROADMAP::
 ---Content---
 Super Realm: icons for natives and monsters
-Super Realm: Spells (modified base game spells: Elven Grace, Violent Storm, Ligthning Bolt, Hurricane Winds, Broomstick, Ask Demon, Absorb Essence, Transform, Phantasm, Melt into Mist, Dissolve Spell, Protection from Magic, Peace with Nature, Control Bats, Whistle for Monsters, Remedy, Poison, ?Guide Beast, ?Deal with Orcs and Goblins, Guide Spiders or Octopus
+Super Realm: modified base game spells: Elven Grace, Violent Storm, Ligthning Bolt, Hurricane Winds, Broomstick, Ask Demon, Absorb Essence, Transform, Phantasm, Melt into Mist, Dissolve Spell, Protection from Magic, Peace with Nature, Control Bats, Whistle for Monsters, Remedy, Poison, ?Guide Beast, ?Deal with Orcs and Goblins, Guide Spiders or Octopus
 Super Realm: Setup Charts, in order: small, large treasures, spells, monsters; dwellings: spells, horses, armor, weapons, helmets, shields, breastplates (large counters below small counters); spells: higher numbers below lower numbers; travelers go to native boxes
 ---Basic Functionalities for current content---
 Super Realm: rules for minotaur shield
@@ -12,7 +12,8 @@ Super Realm: Horses: When regenerated (after being killed or abandoned), normal 
 ---Detail Rules---
 Exorcise: All native casters in the clearing cannot supply color magic, and they cannot cast spells for the rest of combat (including the current round), unless they are in a clearing with a magic source matching the color required to cast their spell.
 ---More content incl. functionalities; graphics---
-Super Realm: Treasures
+Super Realm: new treasures
+Super Realm: new spells
 Super Realm: Visitor/Travelers=Nomads/Missions/Campaigns/Tasks (incl. for seasons); Travelers: 4.8 (p.41)
 Super Realm: Quests + Events
 Super Realm: rules for max. strength attack
@@ -73,6 +74,7 @@ SUPER REALM:
 # Natives
 # Horses
 # Items
+# Treasures and Spells of base game
 BUGS/ISSUES:
 # Quest reward can subtract fame (even with disgust curse)
 
