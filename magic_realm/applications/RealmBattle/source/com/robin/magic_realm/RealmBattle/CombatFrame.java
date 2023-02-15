@@ -3115,6 +3115,12 @@ public class CombatFrame extends JFrame {
 					"Trapped!",JOptionPane.PLAIN_MESSAGE,discoverToLeave.getFaceUpIcon());
 			return;
 		}
+		if (activeCharacter.hasMesmerizeEffect(Constants.DISTRACTED)) {
+			JOptionPane.showMessageDialog(
+					this,"You are distracted by a mesmerize spell and cannot RUN AWAY.",
+					"Distracted!",JOptionPane.PLAIN_MESSAGE,activeCharacter.getIcon());
+			return;
+		}
 		
 		MoveActivator activator = new MoveActivator(this);
 		MoveActionResult result = activator.playedValidMoveChit("Run Away","You cannot run away, because you do not have a fast enough move to play.\n(Check your inventory!)");
