@@ -35053,6 +35053,7 @@
         <attribute icon_folder="monsters2" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute demon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -35136,6 +35137,7 @@
         <attribute needs_init="" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute demon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -41187,6 +41189,9 @@
           <attributeVal N0="Winged Demon" />
           <attributeVal N1="Demon" />
           <attributeVal N2="Imp" />
+          <attributeVal N3="Vampire" />
+          <attributeVal N4="Succubus" />
+          <attributeVal N5="Devil" />
         </attributeList>
         <attributeList keyName="advantages">
           <attributeVal N0="HEAVENLY PROTECTION:  Demons and the Imp cannot attack you." />
@@ -53425,11 +53430,11 @@
         <attribute facing="face_dn" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute fame="5" />
+        <attribute native="Peasants" />
         <attributeList keyName="diemod">
           <attributeVal N0="-1:locate:%ruins%" />
         </attributeList>
-        <attribute fame="5" />
-        <attribute native="Peasants" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2160" name="Crystal Ball">
@@ -53881,6 +53886,808 @@
         <attribute super_realm="" />
         <attribute super_realm_treasure="" />
         <attribute native="Enchanters" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2283" name="Make Whole">
+      <AttributeBlock blockName="this">
+        <attribute spell="I" />
+        <attribute duration="instant" />
+        <attribute target="character" />
+        <attribute text="repair damage, wounds, and fatigue" />
+        <attribute magic_color="white" />
+        <attribute heal="" />
+        <attribute repair="" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2284" name="Small Blessing">
+      <AttributeBlock blockName="this">
+        <attribute spell="I" />
+        <attribute duration="instant" />
+        <attribute target="character" />
+        <attribute text="Gets one WISH (roll)" />
+        <attribute magic_color="white" />
+        <attribute wish="" />
+        <attribute table="wish" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2285" name="Witch's Brew">
+      <AttributeBlock blockName="this">
+        <attribute spell="II" />
+        <attribute duration="day" />
+        <attribute target="magic(II,VIII)" />
+        <attribute text="Change MAGIC II to IV and VIII to III" />
+        <attribute magic_color="gray" />
+        <attribute ii="IV" />
+        <attribute viii="III" />
+        <attribute magic_change="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2286" name="Talk to Wise Bird">
+      <AttributeBlock blockName="this">
+        <attribute spell="II" />
+        <attribute duration="instant" />
+        <attribute target="character" />
+        <attribute text="Immediate PEER in any hex" />
+        <attribute magic_color="gold" />
+        <attribute instant_peer="" />
+        <attribute target_client="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2287" name="Peace">
+      <AttributeBlock blockName="this">
+        <attribute spell="I" />
+        <attribute duration="combat" />
+        <attribute target="attacker" />
+        <attribute text="Cannot attack until attacked" />
+        <attribute magic_color="white" />
+        <attribute sp_peace="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2288" name="Exorcise">
+      <AttributeBlock blockName="this">
+        <attribute spell="I" />
+        <attribute duration="instant" />
+        <attribute target="clearing" />
+        <attribute text="Remove all magic demons and imps" />
+        <attribute magic_color="white" />
+        <attribute exorcise="" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attributeList keyName="target_clearing">
+          <attributeVal N0="characters" />
+          <attributeVal N1="demons" />
+          <attributeVal N2="spells" />
+          <attributeVal N3="curses" />
+        </attributeList>
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2289" name="Prophecy">
+      <AttributeBlock blockName="this">
+        <attribute spell="II" />
+        <attribute duration="day" />
+        <attribute target="character" />
+        <attribute text="Do not write move in advance" />
+        <attribute magic_color="purple" />
+        <attribute daytime_actions="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2290" name="Fog">
+      <AttributeBlock blockName="this">
+        <attribute spell="II" />
+        <attribute duration="day" />
+        <attribute target="tile" />
+        <attribute text="Cannot PEER normally in hex" />
+        <attribute magic_color="gray" />
+        <attribute sp_no_peer="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2291" name="Enchant Artifact">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="permanent" />
+        <attribute target="artifact" />
+        <attribute text="Add spell and MAGIC chit to artifact" />
+        <attribute magic_color="purple" />
+        <attribute enchant="" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2292" name="Elven Grace">
+      <AttributeBlock blockName="this">
+        <attribute spell="III" />
+        <attribute duration="combat" />
+        <attribute target="individual" />
+        <attribute text="Change MOVE L=1,M=2,H=3,T=4" />
+        <attribute magic_color="gold" />
+        <attribute l="1" />
+        <attribute m="2" />
+        <attribute h="3" />
+        <attribute t="4" />
+        <attribute move_speed_change="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2293" name="Faerie Lights">
+      <AttributeBlock blockName="this">
+        <attribute spell="III" />
+        <attribute duration="day" />
+        <attribute target="magic(III,VII)" />
+        <attribute text="Change MAGIC III to II and VII to VI" />
+        <attribute magic_color="gold" />
+        <attribute iii="II" />
+        <attribute vii="VI" />
+        <attribute magic_change="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2294" name="See Hidden Signs">
+      <AttributeBlock blockName="this">
+        <attribute spell="III" />
+        <attribute duration="day" />
+        <attribute target="character" />
+        <attribute text="Extra SEARCH phase" />
+        <attribute magic_color="gold" />
+        <attribute spell_extra_action="S" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute upg_swap_out="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2295" name="Elemental Spirit">
+      <AttributeBlock blockName="this">
+        <attribute spell="IV" />
+        <attribute duration="day" />
+        <attribute target="magic(IV,VI)" />
+        <attribute text="Change MAGIC IV to VIII and VI to V" />
+        <attribute magic_color="purple" />
+        <attribute iv="VIII" />
+        <attribute vi="V" />
+        <attribute magic_change="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2296" name="Lost">
+      <AttributeBlock blockName="this">
+        <attribute spell="III" />
+        <attribute duration="permanent" />
+        <attribute target="character,tile" />
+        <attribute text="MOVE randomly (roll for clearing)" />
+        <attribute magic_color="gold" />
+        <attribute sp_mv_random="" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2297" name="Illusion">
+      <AttributeBlock blockName="this">
+        <attribute spell="III" />
+        <attribute duration="permanent" />
+        <attribute target="character,tile" />
+        <attribute text="Add one to all SEARCH die rolls" />
+        <attribute magic_color="gold" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attributeList keyName="diemod">
+          <attributeVal N0="+1:locate,loot,peer,readrunes,magicsight:all" />
+        </attributeList>
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2298" name="Stones Fly">
+      <AttributeBlock blockName="this">
+        <attribute spell="II" />
+        <attribute duration="attack" />
+        <attribute target="multiple" />
+        <attribute text="MISSILE attack on each target (specify)" />
+        <attribute magic_color="gray" />
+        <attribute sharpness="1" />
+        <attribute strength="L" />
+        <attribute length="15" />
+        <attribute missile="magic" />
+        <attribute min_targets="4" />
+        <attribute host_okay="" />
+        <attribute table="magicmissil" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2299" name="Ask Demon">
+      <AttributeBlock blockName="this">
+        <attribute spell="V" />
+        <attribute duration="instant" />
+        <attribute target="demon" />
+        <attribute text="Ask question with yes/no or number answer" />
+        <attribute magic_color="black" />
+        <attribute askdemon="" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2300" name="Control Bats">
+      <AttributeBlock blockName="this">
+        <attribute spell="VII" />
+        <attribute duration="day" />
+        <attribute target="bats" />
+        <attribute text="MOVE and FIGHT with bats" />
+        <attribute magic_color="any" />
+        <attribute control="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2301" name="Lightning Bolt">
+      <AttributeBlock blockName="this">
+        <attribute spell="IV" />
+        <attribute duration="attack" />
+        <attribute target="attacker" />
+        <attribute text="MISSILE attack mountain only" />
+        <attribute magic_color="purple" />
+        <attribute sharpness="3" />
+        <attribute strength="M" />
+        <attribute length="18" />
+        <attribute clearing_req="M" />
+        <attribute missile="magic" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2302" name="Fiery Blast">
+      <AttributeBlock blockName="this">
+        <attribute spell="IV" />
+        <attribute duration="attack" />
+        <attribute target="multiple" />
+        <attribute text="MISSILE attack on each target" />
+        <attribute magic_color="purple" />
+        <attribute sharpness="3" />
+        <attribute strength="L" />
+        <attribute length="13" />
+        <attribute missile="magic" />
+        <attribute host_okay="" />
+        <attribute table="magicmissil" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2303" name="Blazing Light">
+      <AttributeBlock blockName="this">
+        <attribute spell="IV" />
+        <attribute duration="day" />
+        <attribute target="clearing" />
+        <attribute text="Extra phase (cave only)" />
+        <attribute magic_color="purple" />
+        <attribute clearing_req="C" />
+        <attribute extra_cave_phase="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute upg_swap_out="" />
+        <attribute learnable="" />
+        <attributeList keyName="target_clearing">
+          <attributeVal N0="clearing" />
+        </attributeList>
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2304" name="Roof Collapses">
+      <AttributeBlock blockName="this">
+        <attribute spell="IV" />
+        <attribute duration="attack" />
+        <attribute target="clearing" />
+        <attribute text="All attacked SMASH H4 (cave only)" />
+        <attribute magic_color="purple" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute length="18" />
+        <attribute clearing_req="C" />
+        <attribute box_req="3" />
+        <attribute host_okay="" />
+        <attribute nobattle="" />
+        <attribute learnable="" />
+        <attributeList keyName="target_clearing">
+          <attributeVal N0="combatants" />
+        </attributeList>
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2305" name="Pentangle">
+      <AttributeBlock blockName="this">
+        <attribute spell="V" />
+        <attribute duration="combat" />
+        <attribute target="individual" />
+        <attribute text="Not affected by spells, curses, demons, or imp" />
+        <attribute magic_color="black" />
+        <attribute magic_protection="" />
+        <attribute nullify="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2306" name="Curse">
+      <AttributeBlock blockName="this">
+        <attribute spell="V" />
+        <attribute duration="instant" />
+        <attribute target="character" />
+        <attribute text="Gets one CURSE (roll)" />
+        <attribute magic_color="gray" />
+        <attribute curse="" />
+        <attribute table="curse" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2307" name="Phantasm">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="day" />
+        <attribute target="character" />
+        <attribute text="Move unseen searcher (PEER only), can SPELL" />
+        <attribute magic_color="purple" />
+        <attribute spawn="phantasm" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2308" name="Transform">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="permanent" />
+        <attribute target="individual" />
+        <attribute text="Become beast (roll for TRANSFORM)" />
+        <attribute magic_color="purple" />
+        <attribute transmorph="roll" />
+        <attribute spell_strength="2" />
+        <attribute table="transform" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll1">
+        <attribute vulnerability="T" />
+        <attribute strength="T" />
+        <attribute attack_speed="4" />
+        <attribute move_speed="4" />
+        <attribute icon_type="dragon_transform" />
+        <attribute flying="" />
+        <attribute light_color="lightblue" />
+        <attribute dark_color="red" />
+        <attribute name="Tremendous Dragon" />
+        <attribute icon_folder="monsters" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll2">
+        <attribute vulnerability="H" />
+        <attribute strength="H" />
+        <attribute attack_speed="3" />
+        <attribute move_speed="4" />
+        <attribute icon_type="lion" />
+        <attribute walk_woods="" />
+        <attribute light_color="gold" />
+        <attribute dark_color="orange" />
+        <attribute name="Lion" />
+        <attribute icon_folder="monsters" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll3">
+        <attribute vulnerability="M" />
+        <attribute strength="M" />
+        <attribute attack_speed="2" />
+        <attribute move_speed="2" />
+        <attribute icon_type="eagle" />
+        <attribute flying="" />
+        <attribute light_color="gray" />
+        <attribute dark_color="darkgray" />
+        <attribute name="Eagle" />
+        <attribute icon_folder="monsters" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll4">
+        <attribute vulnerability="L" />
+        <attribute move_speed="1" />
+        <attribute icon_type="bird" />
+        <attribute flying="" />
+        <attribute light_color="lightblue" />
+        <attribute dark_color="blue" />
+        <attribute name="Bird" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll5">
+        <attribute vulnerability="L" />
+        <attribute move_speed="2" />
+        <attribute icon_type="squirrel" />
+        <attribute walk_woods="" />
+        <attribute light_color="peach" />
+        <attribute dark_color="brown" />
+        <attribute name="Squirrel" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll6">
+        <attribute vulnerability="L" />
+        <attribute move_speed="3" />
+        <attribute walk_woods="" />
+        <attribute icon_type="frog" />
+        <attribute light_color="lightgreen" />
+        <attribute dark_color="forestgreen" />
+        <attribute name="Frog" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2309" name="Sense Danger">
+      <AttributeBlock blockName="this">
+        <attribute spell="VII" />
+        <attribute duration="permanent" />
+        <attribute target="character" />
+        <attribute text="Extra ALERT phase/turn" />
+        <attribute magic_color="purple" />
+        <attribute spell_extra_action="A" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2310" name="Violent Storm">
+      <AttributeBlock blockName="this">
+        <attribute spell="IV" />
+        <attribute duration="day" />
+        <attribute target="tile" />
+        <attribute text="Roll to see number of phases lost" />
+        <attribute magic_color="purple" />
+        <attribute sp_stormy="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2311" name="Hurricane Winds">
+      <AttributeBlock blockName="this">
+        <attribute spell="IV" />
+        <attribute duration="move" />
+        <attribute target="individual + hex" />
+        <attribute text="Must FLY T1 one hex (mountain only)" />
+        <attribute magic_color="purple" />
+        <attribute clearing_req="M" />
+        <attribute blows_target="" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2312" name="Absorb Essence">
+      <AttributeBlock blockName="this">
+        <attribute spell="V" />
+        <attribute duration="permanent" />
+        <attribute target="monster" />
+        <attribute text="Become monster" />
+        <attribute magic_color="black" />
+        <attribute transmorph="target" />
+        <attribute host_okay="" />
+        <attribute spell_strength="1" />
+        <attribute affects_caster="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2313" name="Power of the Pit">
+      <AttributeBlock blockName="this">
+        <attribute spell="V" />
+        <attribute duration="instant" />
+        <attribute target="individual" />
+        <attribute text="Roll for Power of the Pit attack" />
+        <attribute magic_color="black" />
+        <attribute length="17" />
+        <attribute powerofthepit="" />
+        <attribute table="powerofthepit" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2314" name="Bad Luck">
+      <AttributeBlock blockName="this">
+        <attribute spell="VIII" />
+        <attribute duration="permanent" />
+        <attribute target="character" />
+        <attribute text="Add one to all die rolls" />
+        <attribute magic_color="any" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attributeList keyName="diemod">
+          <attributeVal N0="+1:all:all" />
+        </attributeList>
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2315" name="Poison">
+      <AttributeBlock blockName="this">
+        <attribute spell="VIII" />
+        <attribute duration="combat" />
+        <attribute target="weapon" />
+        <attribute text="Add one sharpness to damage caused by weapon" />
+        <attribute magic_color="gray" />
+        <attribute add_sharpness="1" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2316" name="Remedy">
+      <AttributeBlock blockName="this">
+        <attribute spell="VIII" />
+        <attribute duration="instant" />
+        <attribute target="spell,curse" />
+        <attribute text="Cancels one spell or curse" />
+        <attribute magic_color="gray" />
+        <attribute cancel="" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2317" name="Persuade">
+      <AttributeBlock blockName="this">
+        <attribute spell="III" />
+        <attribute duration="day" />
+        <attribute target="human group" />
+        <attribute text="Group becomes FRIENDLY (works on giants and ogres too)" />
+        <attribute magic_color="gold" />
+        <attribute pacify="1" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2318" name="Deal with Goblins">
+      <AttributeBlock blockName="this">
+        <attribute spell="VIII" />
+        <attribute duration="day" />
+        <attribute target="goblins" />
+        <attribute text="Group becomes NEUTRAL (can TRADE/HIRE)" />
+        <attribute magic_color="black" />
+        <attribute pacify="0" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2319" name="Unleash Power">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="day" />
+        <attribute target="magic(all)" />
+        <attribute text="MOVE/FIGHT 2,3=L, 4=M, 5=H, 6=T" />
+        <attribute magic_color="purple" />
+        <attribute action_change="" />
+        <attribute s2="L" />
+        <attribute s3="L" />
+        <attribute s4="M" />
+        <attribute s5="H" />
+        <attribute s6="T" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2320" name="Dissolve Spell">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="instant" />
+        <attribute target="spell" />
+        <attribute text="Cancel spell" />
+        <attribute magic_color="purple" />
+        <attribute cancel="" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2321" name="Melt Into Mist">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="permanent" />
+        <attribute target="individual" />
+        <attribute text="Can only MOVE T4 (no fight)" />
+        <attribute magic_color="purple" />
+        <attribute transmorph="mist" />
+        <attribute disengage="ALL" />
+        <attribute host_okay="" />
+        <attribute nullify="" />
+        <attribute spell_strength="3" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="mist">
+        <attribute vulnerability="T" />
+        <attribute move_speed="4" />
+        <attribute light_color="gray" />
+        <attribute dark_color="darkgray" />
+        <attribute icon_type="mist" />
+        <attribute mist_like="" />
+        <attribute name="Mist" />
+        <attribute icon_folder="monsters" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2322" name="World Fades">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="permanent" />
+        <attribute target="character" />
+        <attribute text="Roll HIDE each round - Use MAGIC SIGHT" />
+        <attribute magic_color="black" />
+        <attribute combat_hide="" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2323" name="Blend Into Background">
+      <AttributeBlock blockName="this">
+        <attribute spell="II" />
+        <attribute duration="day" />
+        <attribute target="leader" />
+        <attribute text="Extra HIDE phase" />
+        <attribute magic_color="gray" />
+        <attribute spell_extra_action="H" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute upg_swap_out="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2324" name="Broomstick">
+      <AttributeBlock blockName="this">
+        <attribute spell="V" />
+        <attribute duration="move" />
+        <attribute target="character" />
+        <attribute text="Can FLY L1 in encounter combat and movement" />
+        <attribute magic_color="black" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute targetlightonly="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="fly_chit">
+        <attribute strength="L" />
+        <attribute speed="1" />
+        <attribute fly_chit="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2325" name="Premonition">
+      <AttributeBlock blockName="this">
+        <attribute spell="VII" />
+        <attribute duration="day" />
+        <attribute target="character" />
+        <attribute text="Choose when your written move is executed" />
+        <attribute magic_color="gray" />
+        <attribute choose_turn="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2326" name="Protection from Magic">
+      <AttributeBlock blockName="this">
+        <attribute spell="VII" />
+        <attribute duration="phase" />
+        <attribute target="character" />
+        <attribute text="Immune to spells for one phase" />
+        <attribute magic_color="gold" />
+        <attribute host_okay="" />
+        <attribute magic_protection="" />
+        <attribute nullify="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="phase_chit">
+        <attribute phase_chit="" />
+        <attribute text="Protection from Magic" />
+      </AttributeBlock>
+      <AttributeBlock blockName="phase_chit_effects">
+        <attribute magic_protection="" />
+        <attribute nullify="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2327" name="Peace with Nature">
+      <AttributeBlock blockName="this">
+        <attribute spell="VII" />
+        <attribute duration="permanent" />
+        <attribute target="leader" />
+        <attribute text="Not attacked by warning or sound chits" />
+        <attribute magic_color="gold" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute peace_with_nature="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2328" name="Guide Spider or Octopus">
+      <AttributeBlock blockName="this">
+        <attribute spell="VIII" />
+        <attribute duration="day" />
+        <attribute target="spider, octopus" />
+        <attribute text="MOVE and FIGHT with one monster" />
+        <attribute magic_color="gray" />
+        <attribute control="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2329" name="Whistle for Monsters">
+      <AttributeBlock blockName="this">
+        <attribute spell="VIII" />
+        <attribute duration="instant" />
+        <attribute target="sound" />
+        <attribute text="Move sound chit to or from your hex" />
+        <attribute magic_color="purple" />
+        <attribute tile_req="6" />
+        <attribute move_sound="" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2330" name="Mesmerize">
+      <AttributeBlock blockName="this">
+        <attribute spell="VIII" />
+        <attribute target="character" />
+        <attribute text="Spellcaster rolls for Mesmerize, applies result to target." />
+        <attribute magic_color="black" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute duration="instant" />
       </AttributeBlock>
     </GameObject>
   </objects>

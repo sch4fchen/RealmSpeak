@@ -1,24 +1,26 @@
 ::ROADMAP::
 ---Content---
 Super Realm: icons for natives and monsters
-Super Realm: Character potraits with credits (including credits), different chit icon
-Super Realm: Spells (modified base game spells: Exorcise, Fog, Elven Grace, Violent Storm, Ligthning Bolt, Hurricane Winds, Pentangle, Broomstick, Ask Demon, Absorb Essence, Transform, Phantasm, Melt into Mist, Dissolve Spell, Protection from Magic, Peace with Nature, Control Bats, Whistle for Monsters, Remedy, Poison, ?Guide Beast, ?Deal with Orcs and Goblins
+Super Realm: Spells (modified base game spells: Elven Grace, Violent Storm, Ligthning Bolt, Hurricane Winds, Broomstick, Ask Demon, Absorb Essence, Transform, Phantasm, Melt into Mist, Dissolve Spell, Protection from Magic, Peace with Nature, Control Bats, Whistle for Monsters, Remedy, Poison, ?Guide Beast, ?Deal with Orcs and Goblins, Guide Spiders or Octopus
 Super Realm: Setup Charts, in order: small, large treasures, spells, monsters; dwellings: spells, horses, armor, weapons, helmets, shields, breastplates (large counters below small counters); spells: higher numbers below lower numbers; travelers go to native boxes
-Super Realm: Treasures
 ---Basic Functionalities for current content---
 Super Realm: rules for minotaur shield
-Super Realm: rules for special monster attacks and change tactics (Spear and Bow Goblins, Bow Skeletons, Demon, Winged Demon, Imp, Vampire, Succubus, and Devil): p.98
+Super Realm: rules for special monster attacks and change tactics (Spear and Bow Goblins, Bow Skeletons, Demon, Winged Demon, Imp, Vampire, Succubus, and Devil): p.98, Vampire, Succubus, and Devil cannot attack Magic Protection
 Super Realm: rules for special native attacks and native casters: Natives Casters (p. 89)
 Super Realm: rules for clans 4.7 (p. 41)
 Super Realm: Horses: When regenerated (after being killed or abandoned), normal ponies are returned to the Bashkars, workhorses to the Rogues, and war horses to the Order.
+---Detail Rules---
+Exorcise: All native casters in the clearing cannot supply color magic, and they cannot cast spells for the rest of combat (including the current round), unless they are in a clearing with a magic source matching the color required to cast their spell.
+Mesmerize: broken my amulet, exorcise, chapel, dissolve spell cannot break it
 ---More content incl. functionalities; graphics---
+Super Realm: Treasures
 Super Realm: Visitor/Travelers=Nomads/Missions/Campaigns/Tasks (incl. for seasons); Travelers: 4.8 (p.41)
 Super Realm: Quests + Events
 Super Realm: rules for max. strength attack
 Super Realm: rules for items/treasures: purple (or other) magic color provided: additional sharpness/vulnerability until midnight
 Super Realm: Regeneration: start of a new month (not 7th day), all un-hired denizens (4.10, p. 42)
 Super Realm: Adapt Commerce optional rules for new natives
-Super Realm: Characters
+Super Realm: Characters, including potraits with credits, different chit icon
 Super Realm: CompanionEditPanel: add all denizens
 Super Realm: RealmCharacterConstants (adapt ArmorEditDialog and WeaponEditDialog): dwellings, visitors
 Super Realm: update graphics, including for riding natives
@@ -30,11 +32,11 @@ Super Realm: Seasons + Weather 10.12 (p.117)
 Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
 3rdEdition / RealmSpeak: Optional Character Rules (A.6, p. 186): Captain, Druid, Magician, WIZARD ignores SPX, Woods Girl, Elf
 Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.121)
-Super Realm: Optional Rules: Initial quest card draw size
-Super Realm: Optional Rules: No discarding or drawing new quest cards
+Super Realm: Optional Rules: Initial quest card draw size (BGG variant: 3 quests)
+Super Realm: Optional Rules: No discarding or drawing new quest cards (but perhaps exchanging?)
 Super Realm: Optional Rules: No duplicate spell recording at start of the game
 Super Realm: Optional Rules: Starting location always the Inn
-Super Realm: Public quests on setup chart (+flag on quests if it can go on setup chart)
+Super Realm: Public quests on setup chart (+flag on quests if it can go on setup chart) (BGG variant: 2 quest cards per native)
 ---Optional Rules---
 Book of Quests: quests of the book
 Super Realm: Optional Rules: Severe wounds (SR: 10.1, p.114) = Serious Wounds, but wounds *2
