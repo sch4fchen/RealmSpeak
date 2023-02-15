@@ -5109,8 +5109,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 		ArrayList<CharacterActionChitComponent> activeFightAlertChits = new ArrayList<>();
 		Collection<CharacterActionChitComponent> c = getActiveChits();
 		for (CharacterActionChitComponent chit : c) {
-			if (chit.isFightAlert() && chit.getSpeed().fasterThan(fastestAttacker)) {
-				activeFightAlertChits.add(chit);
+			if (chit.isFightAlert()) {
+				Speed chitSpeed = chit.getSpeed();
+				if (hasMesmerizeEffect(Constants.WEAKENED)) {
+					chitSpeed = new Speed(chitSpeed.getNum()+1);
+				}
+				if (chitSpeed.fasterThan(fastestAttacker)) {
+					activeFightAlertChits.add(chit);
+				}
 			}
 		}
 		return activeFightAlertChits;
