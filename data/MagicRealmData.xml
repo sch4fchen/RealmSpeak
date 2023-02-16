@@ -53968,13 +53968,13 @@
         <attribute exorcise="" />
         <attribute host_okay="" />
         <attribute learnable="" />
+        <attribute super_realm="" />
         <attributeList keyName="target_clearing">
           <attributeVal N0="characters" />
           <attributeVal N1="demons" />
           <attributeVal N2="spells" />
           <attributeVal N3="curses" />
         </attributeList>
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2289" name="Prophecy">
@@ -54105,10 +54105,10 @@
         <attribute magic_color="gold" />
         <attribute host_okay="" />
         <attribute learnable="" />
+        <attribute super_realm="" />
         <attributeList keyName="diemod">
           <attributeVal N0="+1:locate,loot,peer,readrunes,magicsight:all" />
         </attributeList>
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2298" name="Stones Fly">
@@ -54203,10 +54203,10 @@
         <attribute benevolent="" />
         <attribute upg_swap_out="" />
         <attribute learnable="" />
+        <attribute super_realm="" />
         <attributeList keyName="target_clearing">
           <attributeVal N0="clearing" />
         </attributeList>
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2304" name="Roof Collapses">
@@ -54224,10 +54224,10 @@
         <attribute host_okay="" />
         <attribute nobattle="" />
         <attribute learnable="" />
+        <attribute super_realm="" />
         <attributeList keyName="target_clearing">
           <attributeVal N0="combatants" />
         </attributeList>
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2305" name="Pentangle">
@@ -54435,10 +54435,10 @@
         <attribute magic_color="any" />
         <attribute host_okay="" />
         <attribute learnable="" />
+        <attribute super_realm="" />
         <attributeList keyName="diemod">
           <attributeVal N0="+1:all:all" />
         </attributeList>
-        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2315" name="Poison">
@@ -54688,6 +54688,8 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute duration="instant" />
+        <attribute mesmerize="" />
+        <attribute super_realm_spell="" />
       </AttributeBlock>
     </GameObject>
   </objects>

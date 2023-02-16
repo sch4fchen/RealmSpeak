@@ -64,6 +64,7 @@ Feature Request - First Edition Optional Rule - Glory: When a character or his h
 Version 1.1.7.5
 QUEST UPDATE:
 # Add Return Home quests Q58 - Q63
+# QuestRewardMesmerize
 NEW FEATURES:
 # Option to draw black border around armored chits
 # Option to display native group in subline for native chits (always for Super Realm)
@@ -75,6 +76,7 @@ SUPER REALM:
 # Horses
 # Items
 # Treasures and Spells of base game
+# New spell: Mesmerize
 BUGS/ISSUES:
 # Quest reward can subtract fame (even with disgust curse)
 

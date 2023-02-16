@@ -56,6 +56,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		MakeWhole,
 		MarkDenizen,
 		MarkItem,
+		Mesmerize,
 		MinorCharacter,
 		MoveDenizen,
 		PathsPassages,
