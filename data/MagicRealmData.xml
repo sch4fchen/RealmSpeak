@@ -6924,6 +6924,7 @@
         <attribute m="2" />
         <attribute h="3" />
         <attribute t="4" />
+		<attribute x="5" />
         <attribute move_speed_change="" />
         <attribute alt_monsters1_game="" />
         <attribute host_okay="" />
@@ -54023,12 +54024,13 @@
         <attribute spell="III" />
         <attribute duration="combat" />
         <attribute target="individual" />
-        <attribute text="Change MOVE L=1,M=2,H=3,T=4" />
+        <attribute text="Change MOVE L=1,M=2,H=3,T=4,X=5" />
         <attribute magic_color="gold" />
         <attribute l="1" />
         <attribute m="2" />
         <attribute h="3" />
         <attribute t="4" />
+		<attribute x="5" />
         <attribute move_speed_change="" />
         <attribute host_okay="" />
         <attribute benevolent="" />
