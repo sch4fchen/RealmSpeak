@@ -20,28 +20,15 @@ public class BattleUtility {
 			BattleChit bc = (BattleChit)rc;
 			speed = bc.getAttackSpeed();
 		}
-		if (rc.isCharacter() && rc.isActionChit()) {
-			CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
-			if (character.hasMesmerizeEffect(Constants.CALMED)) {
-				speed = new Speed(speed.getNum()+1);
-			}
-		}
 		return speed;
 	}
 
 	public static Speed getMagicSpeed(RealmComponent rc) {
 		Speed speed = null;
-		
 		if (rc.isActionChit()) {
 			CharacterActionChitComponent chit = (CharacterActionChitComponent)rc;
 			if (chit.isMagic()) {
 				speed = chit.getMagicSpeed();
-				if (rc.isCharacter()) {
-					CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
-					if (character.hasMesmerizeEffect(Constants.CALMED)) {
-						speed = new Speed(speed.getNum()+1);
-					}
-				}
 			}
 		}
 		else {
@@ -157,12 +144,6 @@ public class BattleUtility {
 		else if (rc.isFlyChit()) {
 			FlyChitComponent flyChit = (FlyChitComponent)rc;
 			speed = flyChit.getSpeed();
-		}
-		if (rc.isCharacter() && rc.isActionChit()) {
-			CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
-			if (character.hasMesmerizeEffect(Constants.WEAKENED)) {
-				speed = new Speed(speed.getNum()+1);
-			}
 		}
 		return speed;
 	}

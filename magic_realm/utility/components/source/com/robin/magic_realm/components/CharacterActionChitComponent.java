@@ -489,13 +489,24 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 	public Speed getMoveSpeed() {
 		if (isMove()) {
 			if (this.isMagicMove()) return new Speed(0);
+			GameObject owner = getGameObject().getHeldBy();
+			CharacterWrapper character = null;
+			if (owner!=null) {
+				character = new CharacterWrapper(getGameObject().getHeldBy());
+			}
 			if (!gameObject.hasAttribute(ALTERNATE_ATTRIBUTES, "speed")) {
 				// speedChange is ignored if speed is already altered by a treasure
 				int speedChange = getGameObject().getThisInt("move_speed_change");
 				if (speedChange>0) {
 					usingAlteredAttributes = true;
+					if (character!=null && character.hasMesmerizeEffect(Constants.WEAKENED)) {
+						speedChange=speedChange+1;
+					}
 					return new Speed(speedChange);
 				}
+			}
+			if (character!=null && character.hasMesmerizeEffect(Constants.WEAKENED)) {
+				return new Speed(Integer.valueOf(getChitAttribute("speed"))+1);
 			}
 			return new Speed(getChitAttribute("speed"));
 		}
@@ -515,7 +526,15 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 	}
 	
 	public Speed getAttackSpeed() {
+		GameObject owner = getGameObject().getHeldBy();
+		CharacterWrapper character = null;
+		if (owner!=null) {
+			character = new CharacterWrapper(getGameObject().getHeldBy());
+		}
 		if (isFight()) {
+			if (character!=null && character.hasMesmerizeEffect(Constants.CALMED)) {
+				return new Speed(Integer.valueOf(getChitAttribute("speed"))+1);
+			}
 			return new Speed(getChitAttribute("speed"));
 		}
 		return null;
@@ -523,10 +542,18 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 
 	public Speed getMagicSpeed() {
 		String action = getChitAttribute("action").toUpperCase();
+		GameObject owner = getGameObject().getHeldBy();
+		CharacterWrapper character = null;
+		if (owner!=null) {
+			character = new CharacterWrapper(getGameObject().getHeldBy());
+		}
 		if ("MAGIC".equals(action)) {
 			// alerted magic is always speed zero
 			if (isAlerted()) {
 				return new Speed(0); // wheee!
+			}
+			if (character!=null && character.isCharacter() && character.hasMesmerizeEffect(Constants.INTOXICATED)) {
+				return new Speed(Integer.valueOf(getChitAttribute("speed"))+1);
 			}
 			return new Speed(getChitAttribute("speed"));
 		}

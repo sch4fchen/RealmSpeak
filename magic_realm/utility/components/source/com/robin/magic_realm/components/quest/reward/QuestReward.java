@@ -384,6 +384,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 			case MarkItem:
 				reward = new QuestRewardMarkItem(go);
 				break;
+			case Mesmerize:
+				reward = new QuestRewardMesmerize(go);
+				break;
 			case MinorCharacter:
 				reward = new QuestRewardMinorCharacter(go);
 				break;
