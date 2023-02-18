@@ -28,6 +28,7 @@ public class SpellEffectFactory {
 			case "exorcise": return new ISpellEffect[]{new ExorciseEffect()};
 		
 			case "deal with goblins": return new ISpellEffect[]{new PacifyEffect(0)};
+			case "deal with orcs and goblins": return new ISpellEffect[]{new PacifyEffect(0)};
 			case "disguise": return new ISpellEffect[]{new PacifyEffect(0)};
 			case "disjunction": return new ISpellEffect[]{new ApplyNamedEffect(Constants.NO_WEATHER_FATIGUE),new ApplyNamedEffect(Constants.NO_TERRAIN_HARM)};
 		

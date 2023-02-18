@@ -54490,11 +54490,11 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2318" name="Deal with Goblins">
+    <GameObject id="2318" name="Deal with Orcs and Goblins">
       <AttributeBlock blockName="this">
         <attribute spell="VIII" />
         <attribute duration="day" />
-        <attribute target="goblins" />
+        <attribute target="orcs, goblins" />
         <attribute text="Group becomes NEUTRAL (can TRADE/HIRE)" />
         <attribute magic_color="black" />
         <attribute pacify="0" />

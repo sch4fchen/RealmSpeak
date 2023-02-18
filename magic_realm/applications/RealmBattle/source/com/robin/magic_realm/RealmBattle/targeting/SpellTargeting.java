@@ -92,6 +92,9 @@ public abstract class SpellTargeting {
 		else if ("goblins".equals(targetType)) {
 			targeting = new SpellTargetingGoblins(combatFrame,spell);
 		}
+		else if ("orcs, goblins".equals(targetType)) {
+			targeting = new SpellTargetingOrcsGoblins(combatFrame,spell);
+		}
 		else if ("human group".equals(targetType)) {
 			targeting = new SpellTargetingHumanGroup(combatFrame,spell);
 		}
