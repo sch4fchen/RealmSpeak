@@ -54599,7 +54599,6 @@
         <attribute magic_color="black" />
         <attribute host_okay="" />
         <attribute learnable="" />
-        <attribute targetlightonly="" />
         <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="fly_chit">

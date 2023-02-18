@@ -247,7 +247,7 @@ public class MoveActivator {
 					
 					DieRoller runAwayRoll = DieRollBuilder.getDieRollBuilder(combatFrame,activeCharacter).createRoller("stumble");
 					runAwayRoll.addModifier(stumbleModifier);
-					combatFrame.setRunAwayRoll(runAwayRoll);
+					CombatFrame.setRunAwayRoll(runAwayRoll);
 					combatFrame.madeChanges();
 					boolean success = runAwayRoll.getHighDieResult()<7;
 					if (!success) {
@@ -267,7 +267,7 @@ public class MoveActivator {
 		Effort effortUsed = BattleUtility.getEffortUsed(activeCharacter);
 		int free = activeCharacter.getEffortFreeAsterisks();
 		int runAwayFatigue = effortUsed.getNeedToFatigue(free);
-		combatFrame.setRunAwayFatigue(runAwayFatigue);
+		CombatFrame.setRunAwayFatigue(runAwayFatigue);
 		if (runAwayFatigue>0) {
 			// Make sure that the tile is marked, so that combat can be extended if necessary
 			CombatWrapper tileCombat = new CombatWrapper(battleModel.getBattleLocation().tile.getGameObject());
