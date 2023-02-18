@@ -79,6 +79,7 @@ SUPER REALM:
 # New spell: Mesmerize
 BUGS/ISSUES:
 # Quest reward can subtract fame (even with disgust curse)
+# ViolentStorm now affects clearings with campfires (and camps)
 
 Version 1.1.7.4
 BUGS/ISSUES:

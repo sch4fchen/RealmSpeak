@@ -6005,6 +6005,7 @@
         <attribute icon_folder="dwellings" />
         <attribute rw_expansion_1="" />
         <attribute general_dwelling="" />
+		<attribute no_shelter="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="232" name="Large Campfire">
@@ -6018,6 +6019,7 @@
         <attribute icon_folder="dwellings" />
         <attribute rw_expansion_1="" />
         <attribute general_dwelling="" />
+		<attribute no_shelter="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="233" name="Company Dwelling">
@@ -34317,6 +34319,7 @@
         <attribute icon_type="fire3" />
         <attribute icon_folder="wesnoth/buildings" />
         <attribute general_dwelling="" />
+		<attribute no_shelter="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1285" name="Large Campfire">
@@ -34328,6 +34331,7 @@
         <attribute icon_type="fire1" />
         <attribute icon_folder="wesnoth/buildings" />
         <attribute general_dwelling="" />
+		<attribute no_shelter="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1286" name="Hut">
@@ -34428,6 +34432,7 @@
         <attribute icon_type="camp2" />
         <attribute icon_folder="wesnoth/buildings" />
         <attribute general_dwelling="" />
+		<attribute no_shelter="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1291" name="Large Camp">
@@ -34439,6 +34444,7 @@
         <attribute icon_type="camp3" />
         <attribute icon_folder="wesnoth/buildings" />
         <attribute general_dwelling="" />
+		<attribute no_shelter="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1292" name="Ghost">

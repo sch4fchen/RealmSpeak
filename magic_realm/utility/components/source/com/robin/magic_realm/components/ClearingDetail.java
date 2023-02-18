@@ -556,6 +556,14 @@ public class ClearingDetail {
 	public void setAbsolutePosition(Point absolutePosition) {
 		this.absolutePosition = absolutePosition;
 	}
+	public RealmComponent getDwellingWitShelter() {
+		for (RealmComponent rc : getClearingComponents()) {
+			if (rc.isDwelling() && !rc.getGameObject().hasThisAttribute(Constants.NO_SHELTER)) {
+				return rc;
+			}
+		}
+		return null;
+	}
 	public RealmComponent getDwelling() {
 		for (RealmComponent rc : getClearingComponents()) {
 			if (rc.isDwelling()) {
@@ -583,6 +591,9 @@ public class ClearingDetail {
 	}
 	public boolean holdsDwelling() {
 		return getDwelling()!=null;
+	}
+	public boolean holdsDwellingWithShelter() {
+		return getDwellingWitShelter()!=null;
 	}
 	public boolean holdsGuild() {
 		return getGuild()!=null;

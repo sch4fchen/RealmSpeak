@@ -456,7 +456,7 @@ public class ActionRow {
 			if (current.isInClearing()
 					&& current.tile.getGameObject().hasThisAttribute(Constants.SP_STORMY)
 					&& !current.clearing.isCave()
-					&& !current.clearing.holdsDwelling()) {
+					&& !current.clearing.holdsDwellingWithShelter()) {
 				// Ended a phase in a stormy clearing, and haven't been affected yet, so...
 				return true;
 			}

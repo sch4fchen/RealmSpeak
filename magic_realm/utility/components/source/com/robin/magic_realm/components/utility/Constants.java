@@ -132,7 +132,10 @@ public class Constants {
 	public static final String DISCOVERED = "discovered";
 	public static final String GLIMPSED_COUNTERS = "glimpsedCounters";
 	public static final String VULNERABILITY = "vulnerability";
-
+	
+	// Used by dwellings
+	public static final String NO_SHELTER = "no_shelter";
+	
 	// Used by items
 	public static final String TWO_HANDED = "two_handed";
 	public static final String SHIELD = "shield";
