@@ -54,6 +54,7 @@ public class SpellEffectFactory {
 		
 			case "gravity": return new ISpellEffect[]{new ApplyClearingEffect(Constants.HEAVIED)};
 			case "guide spider or octopus": return new ISpellEffect[]{new ControlEffect()};
+			case "guide beast": return new ISpellEffect[]{new ControlEffect()};
 		
 			case "heal": return new ISpellEffect[]{new HealChitEffect()};
 			case "hop": return new ISpellEffect[]{new TeleportEffect(SpellUtility.TeleportType.RandomClearing)};

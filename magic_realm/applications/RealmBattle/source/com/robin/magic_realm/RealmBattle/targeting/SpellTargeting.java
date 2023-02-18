@@ -80,6 +80,9 @@ public abstract class SpellTargeting {
 		else if ("spider, octopus".equals(targetType)) {
 			targeting = new SpellTargetingSpiderOctopus(combatFrame,spell);
 		}
+		else if ("spider, octopus, scorpion".equals(targetType)) {
+			targeting = new SpellTargetingSpiderOctopusScorpion(combatFrame,spell);
+		}
 		else if ("bats".equals(targetType)) {
 			targeting = new SpellTargetingBats(combatFrame,spell);
 		}

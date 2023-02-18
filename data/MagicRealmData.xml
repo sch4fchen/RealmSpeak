@@ -54657,11 +54657,11 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2328" name="Guide Spider or Octopus">
+    <GameObject id="2328" name="Guide Beast">
       <AttributeBlock blockName="this">
         <attribute spell="VIII" />
         <attribute duration="day" />
-        <attribute target="spider, octopus" />
+        <attribute target="spider, octopus, scorpion" />
         <attribute text="MOVE and FIGHT with one monster" />
         <attribute magic_color="gray" />
         <attribute control="" />
