@@ -54678,7 +54678,6 @@
         <attribute target="sound" />
         <attribute text="Move sound chit to or from your hex" />
         <attribute magic_color="purple" />
-        <attribute tile_req="6" />
         <attribute move_sound="" />
         <attribute host_okay="" />
         <attribute learnable="" />

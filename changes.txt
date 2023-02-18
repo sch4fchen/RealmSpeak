@@ -1,7 +1,7 @@
 ::ROADMAP::
 ---Content---
 Super Realm: icons for natives and monsters
-Super Realm: modified base game spells: Ask Demon, Absorb Essence, Transform, Phantasm, Melt into Mist, Dissolve Spell, Protection from Magic, Peace with Nature, Control Bats, Whistle for Monsters, Remedy, Poison, ?Guide Beast, ?Deal with Orcs and Goblins, Guide Spiders or Octopus
+Super Realm: modified base game spells: Ask Demon, Absorb Essence, Transform, Phantasm, Melt into Mist, Dissolve Spell, Protection from Magic, Peace with Nature, Remedy, Poison, ?Guide Beast, ?Deal with Orcs and Goblins, Guide Spiders or Octopus
 Super Realm: Setup Charts, in order: small, large treasures, spells, monsters; dwellings: spells, horses, armor, weapons, helmets, shields, breastplates (large counters below small counters); spells: higher numbers below lower numbers; travelers go to native boxes
 ---Basic Functionalities for current content---
 Super Realm: rules for minotaur shield

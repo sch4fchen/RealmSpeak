@@ -27,11 +27,12 @@ public class SpellTargetingSound extends SpellTargetingSingle {
 		GameData gameData = spell.getGameObject().getGameData();
 		GamePool pool = new GamePool(gameData.getGameObjects());
 		Collection<GameObject> tiles = RealmObjectMaster.getRealmObjectMaster(gameData).getTileObjects();
-		ArrayList<GameObject> sixClearingTiles = new ArrayList<>();
+		ArrayList<GameObject> clearingTiles = new ArrayList<>();
 		for (GameObject tile : tiles) {
 			TileComponent tc = (TileComponent)RealmComponent.getRealmComponent(tile);
-			if (tc.getClearingCount()==6) {
-				sixClearingTiles.add(tile);
+			int clearingReq = spell.getGameObject().getThisInt("tile_req");
+			if (tc.getClearingCount()>=clearingReq || clearingReq==0) {
+				clearingTiles.add(tile);
 			}
 		}
 		Collection<GameObject> c = pool.find("sound,chit");
@@ -47,13 +48,20 @@ public class SpellTargetingSound extends SpellTargetingSingle {
 					identifiers.add(tile.getName());
 					ArrayList<GameObject> tileChoices = new ArrayList<>();
 					if (here.tile.getGameObject().equals(tile)) {
-						// Moving sound from here to somewhere else
-						tileChoices.addAll(sixClearingTiles);
+						for (GameObject t : clearingTiles) {
+							TileComponent tc = new TileComponent(t);
+							if (tc.getClearing(soundChitObject.getThisInt("clearing"))!=null) {
+								// Moving sound from here to somewhere else
+								tileChoices.addAll(clearingTiles);
+							}
+						}
 						tileChoices.remove(here.tile.getGameObject());
 					}
 					else {
-						// Moving sound from somewhere else to here
-						tileChoices.add(here.tile.getGameObject());
+						if (here.tile.getClearing(soundChitObject.getThisInt("clearing"))!=null) {
+							// Moving sound from somewhere else to here
+							tileChoices.add(here.tile.getGameObject());
+						}
 					}
 					secondaryTargets.put(tile.getName(),tileChoices);
 				}
