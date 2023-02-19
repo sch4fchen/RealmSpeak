@@ -65,6 +65,9 @@ public abstract class SpellTargeting {
 		else if ("monster".equals(targetType)) {
 			targeting = new SpellTargetingMonster(combatFrame,spell);
 		}
+		else if ("monster_alive".equals(targetType)) {
+			targeting = new SpellTargetingAliveMonster(combatFrame,spell);
+		}
 		else if ("sound".equals(targetType)) {
 			targeting = new SpellTargetingSound(combatFrame,spell);
 		}
@@ -76,6 +79,9 @@ public abstract class SpellTargeting {
 		}
 		else if (targetType.startsWith("magic")) {
 			targeting = new SpellTargetingMagic(combatFrame,spell);
+		}
+		else if ("monsters_uncontrolled".equals(targetType)) {
+			targeting = new SpellTargetingUncontrolledMonsters(combatFrame,spell);
 		}
 		else if ("spider, octopus".equals(targetType)) {
 			targeting = new SpellTargetingSpiderOctopus(combatFrame,spell);

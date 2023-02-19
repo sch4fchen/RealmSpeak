@@ -1,8 +1,7 @@
 ::ROADMAP::
-SpellTargeting: refactor for specific monsters: check for name not for icon_type, general targeting: monsters: monstername, monstername...
 ---Content---
 Super Realm: icons for natives and monsters
-Super Realm: modified base game spells: Ask Demon, Absorb Essence, Transform, Phantasm, Melt into Mist, Dissolve Spell, Protection from Magic, Peace with Nature, Remedy, Poison
+Super Realm: modified base game spells: Transform, Phantasm, Melt into Mist
 Super Realm: Setup Charts, in order: small, large treasures, spells, monsters; dwellings: spells, horses, armor, weapons, helmets, shields, breastplates (large counters below small counters); spells: higher numbers below lower numbers; travelers go to native boxes
 ---Basic Functionalities for current content---
 Super Realm: rules for minotaur shield
@@ -11,8 +10,12 @@ Super Realm: rules for special native attacks and native casters: Natives Caster
 Super Realm: rules for clans 4.7 (p. 41)
 Super Realm: Horses: When regenerated (after being killed or abandoned), normal ponies are returned to the Bashkars, workhorses to the Rogues, and war horses to the Order.
 ---Detail Rules---
+Protection from Magic: The target is also immune to spell-breaking spells, such as Exorcise, Remedy, and Dissolve Spell, while this spell is in effect (ie activated). Any transmorphization spells affecting the target would also be nullified when this spell is activated, which can be done during a phase even when the target is transmorphized.
 Exorcise: All native casters in the clearing cannot supply color magic, and they cannot cast spells for the rest of combat (including the current round), unless they are in a clearing with a magic source matching the color required to cast their spell.
 Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells) or with Hurricane Winds
+Ask Demon: 4 options, instead of just asking a question
+Absorb Essence: any denizens and Attention chits assigned to it become assigned to the spellcaster; absorbs steed when absorbing a monster
+	The spellcaster cannot be affected by multiple Absorb Essence spells. Any Absorb Essence spell he casts while he is already bewitched by Absorb Essence is cancelled.
 ---More content incl. functionalities; graphics---
 Super Realm: new treasures
 Super Realm: new spells

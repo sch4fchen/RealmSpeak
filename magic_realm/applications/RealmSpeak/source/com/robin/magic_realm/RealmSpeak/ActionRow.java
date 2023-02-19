@@ -872,7 +872,7 @@ public class ActionRow {
 					HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
 					if (hostPrefs.hasPref(Constants.FE_KILLER_CAVES) && location.hasClearing() && location.clearing.isCave()) {
 						for (GameObject item : character.getInventory()) {
-							if (RealmComponent.getRealmComponent(item).isHorse()) {
+							if (RealmComponent.getRealmComponent(item).isHorse() && !item.hasThisAttribute(Constants.STEED_IN_CAVES_AND_WATER)) {
 								TreasureUtility.doDeactivate(gameHandler.getMainFrame(), character, item);
 								item.detach();
 							}

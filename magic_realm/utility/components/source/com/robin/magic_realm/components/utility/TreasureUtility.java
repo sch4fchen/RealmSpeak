@@ -104,11 +104,11 @@ public class TreasureUtility {
 				
 				// Horses cannot be activated in caves!
 				TileLocation tl = character.getCurrentLocation();
-				if (tl!=null && tl.isInClearing() && tl.clearing.isCave()) {
+				if (tl!=null && tl.isInClearing() && tl.clearing.isCave() && !rc.getGameObject().hasThisAttribute(Constants.STEED_IN_CAVES_AND_WATER)) {
 					JOptionPane.showMessageDialog(parentFrame,"You cannot activate a horse in a cave.");
 					return false;
 				}
-				if (tl!=null && tl.isInClearing() && tl.clearing.isWater()) {
+				if (tl!=null && tl.isInClearing() && tl.clearing.isWater() && !rc.getGameObject().hasThisAttribute(Constants.STEED_IN_CAVES_AND_WATER)) {
 					JOptionPane.showMessageDialog(parentFrame,"You cannot activate a horse in a river.");
 					return false;
 				}

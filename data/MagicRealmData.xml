@@ -34942,6 +34942,7 @@
         <attribute armored="" />
         <attribute super_realm="" />
         <attribute activated="" />
+		<attribute steed_in_caves_and_water="" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -53335,7 +53336,8 @@
         <attribute great="" />
         <attribute fame="12" />
         <attribute native="Lancers" />
-        <attribute target="dragon" />
+		<attribute target="monsters_uncontrolled" />
+        <attribute targeted_monsters="dragon, drake, wyrm" />
         <attribute magic="*" />
         <attribute facing="face_dn" />
         <attribute item="" />
@@ -53720,7 +53722,8 @@
     <GameObject id="2224" name="Control Dragon">
       <AttributeBlock blockName="this">
         <attribute duration="day" />
-        <attribute target="dragon" />
+        <attribute target="monsters_uncontrolled" />
+        <attribute targeted_monsters="dragon, drake, wyrm" />
         <attribute text="Control ONE Dragon" />
         <attribute magic_color="purple" />
         <attribute control="" />
@@ -54141,7 +54144,8 @@
       <AttributeBlock blockName="this">
         <attribute spell="V" />
         <attribute duration="instant" />
-        <attribute target="demon" />
+        <attribute target="monsters_uncontrolled" />
+        <attribute targeted_monsters="demon, devil" />
         <attribute text="Ask question with yes/no or number answer" />
         <attribute magic_color="black" />
         <attribute askdemon="" />
@@ -54154,7 +54158,8 @@
       <AttributeBlock blockName="this">
         <attribute spell="VII" />
         <attribute duration="day" />
-        <attribute target="bats" />
+		<attribute target="monsters_uncontrolled" />
+        <attribute targeted_monsters="bat" />
         <attribute text="MOVE and FIGHT with bats" />
         <attribute magic_color="any" />
         <attribute control="" />
@@ -54409,7 +54414,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="V" />
         <attribute duration="permanent" />
-        <attribute target="monster" />
+        <attribute target="monster_alive" />
         <attribute text="Become monster" />
         <attribute magic_color="black" />
         <attribute transmorph="target" />
@@ -54494,7 +54499,8 @@
       <AttributeBlock blockName="this">
         <attribute spell="VIII" />
         <attribute duration="day" />
-        <attribute target="orcs, goblins" />
+		<attribute target="monsters_uncontrolled" />
+        <attribute targeted_monsters="orc, goblin" />
         <attribute text="Group becomes NEUTRAL (can TRADE/HIRE)" />
         <attribute magic_color="black" />
         <attribute pacify="0" />
@@ -54661,7 +54667,8 @@
       <AttributeBlock blockName="this">
         <attribute spell="VIII" />
         <attribute duration="day" />
-        <attribute target="spider, octopus, scorpion" />
+		<attribute target="monsters_uncontrolled" />
+        <attribute targeted_monsters="spider, octopus, scorpion" />
         <attribute text="MOVE and FIGHT with one monster" />
         <attribute magic_color="gray" />
         <attribute control="" />

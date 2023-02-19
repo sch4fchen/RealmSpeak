@@ -446,7 +446,7 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 			if (!item.hasThisAttribute(Constants.DEAD)) { // Native horses!
 				RealmComponent rc = RealmComponent.getRealmComponent(item);
 				if (hiredLeader) {
-					if (rc.isNativeHorse()) {
+					if (rc.isNativeHorse() && !rc.getGameObject().hasThisAttribute(Constants.STEED_IN_CAVES_AND_WATER)) {
 						TileLocation loc = getCharacter().getCurrentLocation();
 						if (loc!=null && loc.isInClearing() && (loc.clearing.isCave() || loc.clearing.isWater())) {
 							inactiveInv.add(item);
