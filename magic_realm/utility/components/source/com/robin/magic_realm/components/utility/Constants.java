@@ -364,6 +364,7 @@ public class Constants {
 	public static final String MIST_LIKE = "mist_like";
 	public static final String REMOVE_CURSES = "remove_curses";
 	public static final String STEED_IN_CAVES_AND_WATER = "steed_in_caves_and_water";
+	public static final String IMMUNE_MELT_INTO_MIST = "immune_to_melt_into_mist";
 	
 	// New Spells
 	public static final String SUMMONING = "summoning";

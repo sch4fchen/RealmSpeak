@@ -90,6 +90,11 @@ public class TransmorphEffect implements ISpellEffect {
 					RealmLogging.logMessage(spell.getCaster().getGameObject().getName(),"Transform roll: "+roller.getDescription());
 				}
 				else {
+					if (target.getGameObject().hasThisAttribute(Constants.IMMUNE_MELT_INTO_MIST)) {
+						spell.cancelSpell();
+						RealmLogging.logMessage(RealmLogging.BATTLE, "Target is immune to Melt into Mist.");
+						return;
+					}
 					transformBlock = "mist";
 				}
 				

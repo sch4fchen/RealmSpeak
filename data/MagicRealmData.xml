@@ -34943,6 +34943,7 @@
         <attribute super_realm="" />
         <attribute activated="" />
 		<attribute steed_in_caves_and_water="" />
+		<attribute immune_to_melt_into_mist="" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
