@@ -28,7 +28,6 @@ Super Realm: rules for items/treasures: purple (or other) magic color provided: 
 Super Realm: Regeneration: start of a new month (not 7th day), all un-hired denizens (4.10, p. 42)
 Super Realm: Adapt Commerce optional rules for new natives
 Super Realm: Characters, including potraits with credits, different chit icon
-Super Realm: RealmCharacterConstants (adapt ArmorEditDialog and WeaponEditDialog): dwellings, visitors
 Super Realm: update graphics, including for riding natives
 Super Realm: icons for site chits, sound and warning chits
 Super Realm: option to use Super Realm search tables etc., add search tables etc. to menu; add first edition search tables to menu
