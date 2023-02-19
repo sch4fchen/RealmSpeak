@@ -6005,7 +6005,7 @@
         <attribute icon_folder="dwellings" />
         <attribute rw_expansion_1="" />
         <attribute general_dwelling="" />
-		<attribute no_shelter="" />
+        <attribute no_shelter="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="232" name="Large Campfire">
@@ -6019,7 +6019,7 @@
         <attribute icon_folder="dwellings" />
         <attribute rw_expansion_1="" />
         <attribute general_dwelling="" />
-		<attribute no_shelter="" />
+        <attribute no_shelter="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="233" name="Company Dwelling">
@@ -6926,7 +6926,7 @@
         <attribute m="2" />
         <attribute h="3" />
         <attribute t="4" />
-		<attribute x="5" />
+        <attribute x="5" />
         <attribute move_speed_change="" />
         <attribute alt_monsters1_game="" />
         <attribute host_okay="" />
@@ -34319,7 +34319,7 @@
         <attribute icon_type="fire3" />
         <attribute icon_folder="wesnoth/buildings" />
         <attribute general_dwelling="" />
-		<attribute no_shelter="" />
+        <attribute no_shelter="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1285" name="Large Campfire">
@@ -34331,7 +34331,7 @@
         <attribute icon_type="fire1" />
         <attribute icon_folder="wesnoth/buildings" />
         <attribute general_dwelling="" />
-		<attribute no_shelter="" />
+        <attribute no_shelter="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1286" name="Hut">
@@ -34432,7 +34432,7 @@
         <attribute icon_type="camp2" />
         <attribute icon_folder="wesnoth/buildings" />
         <attribute general_dwelling="" />
-		<attribute no_shelter="" />
+        <attribute no_shelter="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1291" name="Large Camp">
@@ -34444,7 +34444,7 @@
         <attribute icon_type="camp3" />
         <attribute icon_folder="wesnoth/buildings" />
         <attribute general_dwelling="" />
-		<attribute no_shelter="" />
+        <attribute no_shelter="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1292" name="Ghost">
@@ -34942,8 +34942,8 @@
         <attribute armored="" />
         <attribute super_realm="" />
         <attribute activated="" />
-		<attribute steed_in_caves_and_water="" />
-		<attribute transmorph_immunity="" />
+        <attribute steed_in_caves_and_water="" />
+        <attribute transmorph_immunity="" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -35163,7 +35163,7 @@
         <attribute length="17" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1317" name="Cultists Dwelling">
+    <GameObject id="1317" name="Cultist Dwelling">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute native="Cultists" />
@@ -37451,7 +37451,7 @@
         <attribute chit_color="forestgreen" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1402" name="Elves Dwelling">
+    <GameObject id="1402" name="Elf Dwelling">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute native="Elves" />
@@ -37490,7 +37490,7 @@
         <attribute icon_type="archer_w" />
         <attribute monster_die="3" />
         <attribute monster_die2="4" />
-        <attribute setup_start="Elves Dwelling" />
+        <attribute setup_start="Elf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -37526,7 +37526,7 @@
         <attribute icon_type="archer_w" />
         <attribute monster_die="3" />
         <attribute monster_die2="4" />
-        <attribute setup_start="Elves Dwelling" />
+        <attribute setup_start="Elf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -37561,7 +37561,7 @@
         <attribute icon_type="archer_w" />
         <attribute monster_die="3" />
         <attribute monster_die2="4" />
-        <attribute setup_start="Elves Dwelling" />
+        <attribute setup_start="Elf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -37596,7 +37596,7 @@
         <attribute icon_type="archer_w" />
         <attribute monster_die="3" />
         <attribute monster_die2="4" />
-        <attribute setup_start="Elves Dwelling" />
+        <attribute setup_start="Elf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -37631,7 +37631,7 @@
         <attribute icon_type="archer_w" />
         <attribute monster_die="3" />
         <attribute monster_die2="4" />
-        <attribute setup_start="Elves Dwelling" />
+        <attribute setup_start="Elf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -37666,7 +37666,7 @@
         <attribute icon_type="archer_w" />
         <attribute monster_die="3" />
         <attribute monster_die2="4" />
-        <attribute setup_start="Elves Dwelling" />
+        <attribute setup_start="Elf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -39360,7 +39360,7 @@
         <attribute pins="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1476" name="Dwarves Dwelling">
+    <GameObject id="1476" name="Dwarf Dwelling">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute native="Dwarves" />
@@ -39434,7 +39434,7 @@
         <attribute icon_type="great_axeman_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Dwarves Dwelling" />
+        <attribute setup_start="Dwarf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -39470,7 +39470,7 @@
         <attribute icon_type="great_axeman_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Dwarves Dwelling" />
+        <attribute setup_start="Dwarf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -39506,7 +39506,7 @@
         <attribute icon_type="great_axeman_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Dwarves Dwelling" />
+        <attribute setup_start="Dwarf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -39542,7 +39542,7 @@
         <attribute icon_type="great_axeman_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Dwarves Dwelling" />
+        <attribute setup_start="Dwarf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -39578,7 +39578,7 @@
         <attribute icon_type="great_axeman_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Dwarves Dwelling" />
+        <attribute setup_start="Dwarf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -44879,7 +44879,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1742" name="Bandits Dwelling">
+    <GameObject id="1742" name="Bandit Dwelling">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute native="Bandits" />
@@ -44919,7 +44919,7 @@
         <attribute icon_type="assassin_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Bandits Dwelling" />
+        <attribute setup_start="Bandit Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -44954,7 +44954,7 @@
         <attribute icon_type="assassin_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Bandits Dwelling" />
+        <attribute setup_start="Bandit Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -44989,7 +44989,7 @@
         <attribute icon_type="swordsman_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Bandits Dwelling" />
+        <attribute setup_start="Bandit Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -45024,7 +45024,7 @@
         <attribute icon_type="swordsman_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Bandits Dwelling" />
+        <attribute setup_start="Bandit Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -45059,7 +45059,7 @@
         <attribute icon_type="swordsman_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Bandits Dwelling" />
+        <attribute setup_start="Bandit Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -45094,7 +45094,7 @@
         <attribute icon_type="assassin_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Bandits Dwelling" />
+        <attribute setup_start="Bandit Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -53337,7 +53337,7 @@
         <attribute great="" />
         <attribute fame="12" />
         <attribute native="Lancers" />
-		<attribute target="monsters_uncontrolled" />
+        <attribute target="monsters_uncontrolled" />
         <attribute targeted_monsters="dragon, drake, wyrm" />
         <attribute magic="*" />
         <attribute facing="face_dn" />
@@ -54040,7 +54040,7 @@
         <attribute m="2" />
         <attribute h="3" />
         <attribute t="4" />
-		<attribute x="5" />
+        <attribute x="5" />
         <attribute move_speed_change="" />
         <attribute host_okay="" />
         <attribute benevolent="" />
@@ -54159,7 +54159,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="VII" />
         <attribute duration="day" />
-		<attribute target="monsters_uncontrolled" />
+        <attribute target="monsters_uncontrolled" />
         <attribute targeted_monsters="bat" />
         <attribute text="MOVE and FIGHT with bats" />
         <attribute magic_color="any" />
@@ -54500,7 +54500,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="VIII" />
         <attribute duration="day" />
-		<attribute target="monsters_uncontrolled" />
+        <attribute target="monsters_uncontrolled" />
         <attribute targeted_monsters="orc, goblin" />
         <attribute text="Group becomes NEUTRAL (can TRADE/HIRE)" />
         <attribute magic_color="black" />
@@ -54668,7 +54668,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="VIII" />
         <attribute duration="day" />
-		<attribute target="monsters_uncontrolled" />
+        <attribute target="monsters_uncontrolled" />
         <attribute targeted_monsters="spider, octopus, scorpion" />
         <attribute text="MOVE and FIGHT with one monster" />
         <attribute magic_color="gray" />
