@@ -28,7 +28,6 @@ public class SpellEffectFactory {
 			case "exorcise": return new ISpellEffect[]{new ExorciseEffect()};
 		
 			case "deal with goblins": return new ISpellEffect[]{new PacifyEffect(0)};
-			case "deal with orcs and goblins": return new ISpellEffect[]{new PacifyEffect(0)};
 			case "disguise": return new ISpellEffect[]{new PacifyEffect(0)};
 			case "disjunction": return new ISpellEffect[]{new ApplyNamedEffect(Constants.NO_WEATHER_FATIGUE),new ApplyNamedEffect(Constants.NO_TERRAIN_HARM)};
 		
@@ -55,7 +54,6 @@ public class SpellEffectFactory {
 		
 			case "gravity": return new ISpellEffect[]{new ApplyClearingEffect(Constants.HEAVIED)};
 			case "guide spider or octopus": return new ISpellEffect[]{new ControlEffect()};
-			case "guide beast": return new ISpellEffect[]{new ControlEffect()};
 		
 			case "heal": return new ISpellEffect[]{new HealChitEffect()};
 			case "hop": return new ISpellEffect[]{new TeleportEffect(SpellUtility.TeleportType.RandomClearing)};
@@ -65,10 +63,8 @@ public class SpellEffectFactory {
 			case "levitate": return new ISpellEffect[]{new NoWeightEffect()};
 			case "lost": return new ISpellEffect[]{new ApplyNamedEffect(Constants.SP_MOVE_IS_RANDOM)};
 			case "mage guard": return new ISpellEffect[]{new MageGuardEffect()};
-
 			case "make whole": return new ISpellEffect[]{new MakeWholeEffect()};
 			case "melt into mist": return new ISpellEffect[]{new NullifyEffect(),new DisengageEffect(), new TransmorphEffect("mist")};
-			case "mesmerize": return new ISpellEffect[]{new MesmerizeEffect()};
 			case "miracle": return new ISpellEffect[]{new MiracleEffect()};
 			case "open gate": return new ISpellEffect[]{new TeleportEffect(SpellUtility.TeleportType.KnownGate)};
 		
@@ -137,6 +133,11 @@ public class SpellEffectFactory {
 			case "mystic boots": return new ISpellEffect[]{new MoveChitEffect()};
 			case "rocks glow": return new ISpellEffect[]{new LightEffect()};
 			case "sleep": return new ISpellEffect[]{new SleepEffect()};
+			
+			// super realm
+			case "deal with orcs and goblins": return new ISpellEffect[]{new PacifyEffect(0)};
+			case "guide beast": return new ISpellEffect[]{new ControlEffect()};
+			case "mesmerize": return new ISpellEffect[]{new MesmerizeEffect()};
 			
 			default: return null;
 		}

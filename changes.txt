@@ -1,4 +1,5 @@
 ::ROADMAP::
+SpellTargeting: refactor for specific monsters: check for name not for icon_type, general targeting: monsters: monstername, monstername...
 ---Content---
 Super Realm: icons for natives and monsters
 Super Realm: modified base game spells: Ask Demon, Absorb Essence, Transform, Phantasm, Melt into Mist, Dissolve Spell, Protection from Magic, Peace with Nature, Remedy, Poison
