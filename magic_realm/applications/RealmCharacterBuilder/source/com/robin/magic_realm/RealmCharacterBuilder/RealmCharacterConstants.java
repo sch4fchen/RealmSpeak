@@ -139,25 +139,43 @@ public class RealmCharacterConstants {
 		"2",
 		"3",
 	};
-	public static final String[] STARTING_LOCATION_OPTION = {		
+	public static final String[] STARTING_LOCATION_OPTION = {
 			"None",
-			"Crone",
-			"Lancer Dwelling",
-			"Woodfolk Dwelling",
+			"Shaman",
+			"Murker Dwelling",
+			"Hamlet",
+			"Cultist Dwelling",
 			
 			"Inn",
-			"Guard",
-			"Bashkar Dwelling",
-			"Dragonmen Dwelling",
+			"Warlock",
+			"Bashkar Dwelling",	
+			"Elf Dwelling",
+			"Mercenary Dwelling",
 			
 			"House",
 			"Company Dwelling",
-			"Murker Dwelling",
-			"Warlock",
+			"Dragonmen Dwelling",
+			"Dwarf Dwelling",
+			"Conjuror Dwelling",
 			
 			"Chapel",
 			"Patrol Dwelling",
-			"Scholar",
-			"Shaman",
+			"Hut",
+			"Bandit Dwelling",
+			"Enchanter Dwelling",
+			
+			"Guard",
+			"Lancer Dwelling",
+			"Settlement",
+			"Hunter Dwelling",
+			"Zealot Dwelling",
+			
+			"Crone",
+			"Woodfolk Dwelling",
+			"Cottage",
+			"Aborigine Dwelling",
+			"Coven Dwelling",
+			
+			"Scholar",		
 	};
 }

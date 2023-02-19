@@ -55,7 +55,7 @@ public class WeaponEditDialog extends AggressiveDialog {
 		setWeapon(weaponName);
 	}
 	private void initComponents() {
-		setSize(640,480);
+		setSize(800,640);
 		setLayout(new BorderLayout());
 		
 		JPanel mainPanel = new JPanel(new GridLayout(2,1));
@@ -193,7 +193,7 @@ public class WeaponEditDialog extends AggressiveDialog {
 			line.add(Box.createHorizontalGlue());
 		infoPanel.add(line);
 			ButtonGroup slGroup = new ButtonGroup();
-			JPanel startingLocationPanel = new JPanel(new GridLayout(5,3));
+			JPanel startingLocationPanel = new JPanel(new GridLayout(7,5));
 			ActionListener al = new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
 					JRadioButton button = (JRadioButton)ev.getSource();

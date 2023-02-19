@@ -59,7 +59,7 @@ public class ArmorEditDialog extends AggressiveDialog {
 		setArmor(weaponName);
 	}
 	private void initComponents() {
-		setSize(640,480);
+		setSize(800,680);
 		setLayout(new BorderLayout());
 		
 		JPanel mainPanel = new JPanel(new GridLayout(2,1));
@@ -213,7 +213,7 @@ public class ArmorEditDialog extends AggressiveDialog {
 		infoPanel.add(line);
 		infoPanel.add(Box.createVerticalGlue());	
 			ButtonGroup slGroup = new ButtonGroup();
-			JPanel startingLocationPanel = new JPanel(new GridLayout(5,3));
+			JPanel startingLocationPanel = new JPanel(new GridLayout(7,5));
 			ActionListener al = new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
 					JRadioButton button = (JRadioButton)ev.getSource();
