@@ -38,7 +38,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"No monster summoning for sound/warning chits",Constants.PEACE_WITH_NATURE,""},
 		{"No monster summoning for treasure locations",Constants.DRUID_LULL,""},
 		{"Immune to Curses",Constants.CURSE_IMMUNITY,""},
-		{"Immunity to Melt into Mist",Constants.IMMUNE_MELT_INTO_MIST,""},
+		{"Immunity to Transmorph spells (transform, melt into mist)",Constants.TRANSMORPH_IMMUNITY,""},
 		{"Familiar",Constants.USE_FAMILIAR,""},
 		{"MAGIC chits don't fatigue when alerted and unused",Constants.NO_MAGIC_FATIGUE,""},
 		{"No SPX requirement",Constants.NO_SPX,""},

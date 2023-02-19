@@ -1,7 +1,6 @@
 ::ROADMAP::
 ---Content---
 Super Realm: icons for natives and monsters
-Super Realm: modified base game spells: Transform, Phantasm, Melt into Mist
 Super Realm: Setup Charts, in order: small, large treasures, spells, monsters; dwellings: spells, horses, armor, weapons, helmets, shields, breastplates (large counters below small counters); spells: higher numbers below lower numbers; travelers go to native boxes
 ---Basic Functionalities for current content---
 Super Realm: rules for minotaur shield
@@ -10,6 +9,9 @@ Super Realm: rules for special native attacks and native casters: Natives Caster
 Super Realm: rules for clans 4.7 (p. 41)
 Super Realm: Horses: When regenerated (after being killed or abandoned), normal ponies are returned to the Bashkars, workhorses to the Rogues, and war horses to the Order.
 ---Detail Rules---
+Phantasm: If the phantasm discovers Hidden Enemies, the controlling character also discovers Hidden Enemies.;; it cannot take part in combat;; can now spy and be spied
+Melt into Mist: only move actions; canot follow or be followed; can be charged (difference), The target cannot attack or be attacked, except by individuals affected by the Enchant Weapon spell, If attacked, Mist’s vulnerability is Tremendous and non-armored; targeted monster stills prowls (like in base MR) even if ‘X’ weight
+Melt into Mist: This spell is benevolent if, and only if, the spellcaster casts it on one of his hired leaders or controlled monsters.
 Protection from Magic: The target is also immune to spell-breaking spells, such as Exorcise, Remedy, and Dissolve Spell, while this spell is in effect (ie activated). Any transmorphization spells affecting the target would also be nullified when this spell is activated, which can be done during a phase even when the target is transmorphized.
 Exorcise: All native casters in the clearing cannot supply color magic, and they cannot cast spells for the rest of combat (including the current round), unless they are in a clearing with a magic source matching the color required to cast their spell.
 Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells) or with Hurricane Winds

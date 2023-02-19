@@ -37,6 +37,12 @@ public class TransmorphEffect implements ISpellEffect {
 		SpellWrapper spell = context.Spell;
 		CombatWrapper combat = context.getCombatTarget();
 		
+		if (target.getGameObject().hasThisAttribute(Constants.TRANSMORPH_IMMUNITY)) {
+			spell.cancelSpell();
+			RealmLogging.logMessage(RealmLogging.BATTLE, "Target is immune to Transmorph spells.");
+			return;
+		}
+		
 		if ("target".equals(transmorph)) { //absorb essence
 			if (targetCharacterWrapper.isStatue()) {
 				spell.cancelSpell();
@@ -90,11 +96,6 @@ public class TransmorphEffect implements ISpellEffect {
 					RealmLogging.logMessage(spell.getCaster().getGameObject().getName(),"Transform roll: "+roller.getDescription());
 				}
 				else {
-					if (target.getGameObject().hasThisAttribute(Constants.IMMUNE_MELT_INTO_MIST)) {
-						spell.cancelSpell();
-						RealmLogging.logMessage(RealmLogging.BATTLE, "Target is immune to Melt into Mist.");
-						return;
-					}
 					transformBlock = "mist";
 				}
 				
