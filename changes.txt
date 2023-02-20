@@ -6,7 +6,7 @@ Super Realm: Setup Charts, in order: small, large treasures, spells, monsters; d
 Super Realm: rules for minotaur shield
 Super Realm: rules for special monster attacks and change tactics (Spear and Bow Goblins, Bow Skeletons, Demon, Winged Demon, Imp, Vampire, Succubus, and Devil): p.98, Vampire, Succubus, and Devil cannot attack Magic Protection
 Super Realm: rules for special native attacks and native casters: Natives Casters (p. 89)
-Super Realm: rules for clans 4.7 (p. 41)
+Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Horses: When regenerated (after being killed or abandoned), normal ponies are returned to the Bashkars, workhorses to the Rogues, and war horses to the Order.
 ---Detail Rules---
 Phantasm: If the phantasm discovers Hidden Enemies, the controlling character also discovers Hidden Enemies.;; it cannot take part in combat;; can now spy and be spied
@@ -101,8 +101,6 @@ NEW FEATURES:
 # Support for denizens with multiple monster dies for prowling
 # Support for different anchor tile (e.g. Borderland or Falls)
 # Support for Chart of Natives, including separate native roll
-BUGS/ISSUES:
-# QuestRequirementAttribute: Fix GreatTreasure not counting inventory by default
 SUPER REALM:
 # Support for super realm game variant in setup menu
 # Map generation and setup
@@ -110,6 +108,8 @@ SUPER REALM:
 # Dwellings and Ghosts
 # Treasure locations
 # Monsters
+BUGS/ISSUES:
+# QuestRequirementAttribute: Fix GreatTreasure not counting inventory by default
 
 Version 1.1.7.2
 NEW FEATURES:
