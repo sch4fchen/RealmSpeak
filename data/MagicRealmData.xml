@@ -33352,6 +33352,10 @@
         <attribute path_9_to="NE" />
         <attribute path_9_type="normal" />
         <attribute path_9_arc="76.4,29.3" />
+		<attribute path_10_from="clearing_4" />
+        <attribute path_10_to="clearing_5" />
+        <attribute path_10_type="hidden" />
+        <attribute path_10_arc="64.1,92.3" />
       </AttributeBlock>
       <AttributeBlock blockName="enchanted">
         <attribute offroad_xy="70.7,87.6" />

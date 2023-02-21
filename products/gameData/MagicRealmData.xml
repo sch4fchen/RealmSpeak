@@ -6005,6 +6005,7 @@
         <attribute icon_folder="dwellings" />
         <attribute rw_expansion_1="" />
         <attribute general_dwelling="" />
+        <attribute no_shelter="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="232" name="Large Campfire">
@@ -6018,6 +6019,7 @@
         <attribute icon_folder="dwellings" />
         <attribute rw_expansion_1="" />
         <attribute general_dwelling="" />
+        <attribute no_shelter="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="233" name="Company Dwelling">
@@ -6924,6 +6926,7 @@
         <attribute m="2" />
         <attribute h="3" />
         <attribute t="4" />
+        <attribute x="5" />
         <attribute move_speed_change="" />
         <attribute alt_monsters1_game="" />
         <attribute host_okay="" />
@@ -33349,6 +33352,10 @@
         <attribute path_9_to="NE" />
         <attribute path_9_type="normal" />
         <attribute path_9_arc="76.4,29.3" />
+		<attribute path_10_from="clearing_4" />
+        <attribute path_10_to="clearing_5" />
+        <attribute path_10_type="hidden" />
+        <attribute path_10_arc="64.1,92.3" />
       </AttributeBlock>
       <AttributeBlock blockName="enchanted">
         <attribute offroad_xy="70.7,87.6" />
@@ -34210,18 +34217,18 @@
       <contains id="1762" />
       <contains id="1763" />
       <contains id="1764" />
-      <contains id="1936" />
-      <contains id="1937" />
-      <contains id="1938" />
-      <contains id="1942" />
-      <contains id="1943" />
-      <contains id="1969" />
-      <contains id="1970" />
-      <contains id="1971" />
+      <contains id="1939" />
+      <contains id="1940" />
+      <contains id="1941" />
+      <contains id="1945" />
+      <contains id="1946" />
+      <contains id="1972" />
+      <contains id="1973" />
+      <contains id="1974" />
       <contains id="2014" />
       <contains id="2015" />
-      <contains id="1967" />
-      <contains id="1968" />
+      <contains id="1970" />
+      <contains id="1971" />
     </GameObject>
     <GameObject id="1281" name="Inn">
       <AttributeBlock blockName="this">
@@ -34245,12 +34252,12 @@
       <contains id="1820" />
       <contains id="1821" />
       <contains id="1822" />
-      <contains id="1915" />
-      <contains id="1916" />
-      <contains id="1917" />
       <contains id="1918" />
       <contains id="1919" />
       <contains id="1920" />
+      <contains id="1921" />
+      <contains id="1922" />
+      <contains id="1923" />
     </GameObject>
     <GameObject id="1282" name="Chapel">
       <AttributeBlock blockName="this">
@@ -34271,16 +34278,16 @@
       <contains id="1771" />
       <contains id="1772" />
       <contains id="1773" />
-      <contains id="1911" />
-      <contains id="1912" />
-      <contains id="1913" />
-      <contains id="1934" />
-      <contains id="1935" />
-      <contains id="1962" />
-      <contains id="1964" />
+      <contains id="1914" />
+      <contains id="1915" />
+      <contains id="1916" />
+      <contains id="1937" />
+      <contains id="1938" />
       <contains id="1965" />
-      <contains id="1966" />
-      <contains id="1959" />
+      <contains id="1967" />
+      <contains id="1968" />
+      <contains id="1969" />
+      <contains id="1962" />
     </GameObject>
     <GameObject id="1283" name="Guard">
       <AttributeBlock blockName="this">
@@ -34298,14 +34305,14 @@
       <contains id="1766" />
       <contains id="1767" />
       <contains id="1768" />
-      <contains id="1939" />
-      <contains id="1946" />
-      <contains id="1963" />
-      <contains id="1972" />
-      <contains id="1973" />
-      <contains id="1974" />
+      <contains id="1942" />
+      <contains id="1949" />
+      <contains id="1966" />
       <contains id="1975" />
-      <contains id="2001" />
+      <contains id="1976" />
+      <contains id="1977" />
+      <contains id="1978" />
+      <contains id="2002" />
     </GameObject>
     <GameObject id="1284" name="Small Campfire">
       <AttributeBlock blockName="this">
@@ -34316,6 +34323,7 @@
         <attribute icon_type="fire3" />
         <attribute icon_folder="wesnoth/buildings" />
         <attribute general_dwelling="" />
+        <attribute no_shelter="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1285" name="Large Campfire">
@@ -34327,6 +34335,7 @@
         <attribute icon_type="fire1" />
         <attribute icon_folder="wesnoth/buildings" />
         <attribute general_dwelling="" />
+        <attribute no_shelter="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1286" name="Hut">
@@ -34345,8 +34354,8 @@
       <contains id="1837" />
       <contains id="1838" />
       <contains id="1839" />
-      <contains id="1929" />
-      <contains id="1930" />
+      <contains id="1932" />
+      <contains id="1933" />
       <contains id="2016" />
       <contains id="2017" />
     </GameObject>
@@ -34366,12 +34375,12 @@
       <contains id="1841" />
       <contains id="1842" />
       <contains id="1843" />
-      <contains id="1981" />
-      <contains id="1982" />
       <contains id="1984" />
       <contains id="1985" />
+      <contains id="1987" />
       <contains id="1988" />
-      <contains id="1989" />
+      <contains id="1991" />
+      <contains id="1992" />
     </GameObject>
     <GameObject id="1288" name="Cottage">
       <AttributeBlock blockName="this">
@@ -34389,8 +34398,8 @@
       <contains id="1833" />
       <contains id="1834" />
       <contains id="1835" />
-      <contains id="1927" />
-      <contains id="1928" />
+      <contains id="1930" />
+      <contains id="1931" />
     </GameObject>
     <GameObject id="1289" name="Hamlet">
       <AttributeBlock blockName="this">
@@ -34411,12 +34420,12 @@
       <contains id="1829" />
       <contains id="1830" />
       <contains id="1831" />
-      <contains id="1921" />
-      <contains id="1922" />
-      <contains id="1923" />
       <contains id="1924" />
       <contains id="1925" />
       <contains id="1926" />
+      <contains id="1927" />
+      <contains id="1928" />
+      <contains id="1929" />
     </GameObject>
     <GameObject id="1290" name="Small Camp">
       <AttributeBlock blockName="this">
@@ -34427,6 +34436,7 @@
         <attribute icon_type="camp2" />
         <attribute icon_folder="wesnoth/buildings" />
         <attribute general_dwelling="" />
+        <attribute no_shelter="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1291" name="Large Camp">
@@ -34438,6 +34448,7 @@
         <attribute icon_type="camp3" />
         <attribute icon_folder="wesnoth/buildings" />
         <attribute general_dwelling="" />
+        <attribute no_shelter="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1292" name="Ghost">
@@ -34935,6 +34946,8 @@
         <attribute armored="" />
         <attribute super_realm="" />
         <attribute activated="" />
+        <attribute steed_in_caves_and_water="" />
+        <attribute transmorph_immunity="" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -35053,6 +35066,7 @@
         <attribute icon_folder="monsters2" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute demon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -35136,6 +35150,7 @@
         <attribute needs_init="" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute demon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35152,7 +35167,7 @@
         <attribute length="17" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1317" name="Cultists Dwelling">
+    <GameObject id="1317" name="Cultist Dwelling">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute native="Cultists" />
@@ -35172,8 +35187,8 @@
       <contains id="1319" />
       <contains id="1320" />
       <contains id="1321" />
-      <contains id="1960" />
-      <contains id="1961" />
+      <contains id="1963" />
+      <contains id="1964" />
     </GameObject>
     <GameObject id="1318" name="Caster">
       <AttributeBlock blockName="this">
@@ -37440,7 +37455,7 @@
         <attribute chit_color="forestgreen" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1402" name="Elves Dwelling">
+    <GameObject id="1402" name="Elf Dwelling">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute native="Elves" />
@@ -37464,8 +37479,8 @@
       <contains id="1406" />
       <contains id="1407" />
       <contains id="1408" />
-      <contains id="1996" />
-      <contains id="1998" />
+      <contains id="1997" />
+      <contains id="1999" />
     </GameObject>
     <GameObject id="1403" name="Archer">
       <AttributeBlock blockName="this">
@@ -37479,7 +37494,7 @@
         <attribute icon_type="archer_w" />
         <attribute monster_die="3" />
         <attribute monster_die2="4" />
-        <attribute setup_start="Elves Dwelling" />
+        <attribute setup_start="Elf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -37515,7 +37530,7 @@
         <attribute icon_type="archer_w" />
         <attribute monster_die="3" />
         <attribute monster_die2="4" />
-        <attribute setup_start="Elves Dwelling" />
+        <attribute setup_start="Elf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -37550,7 +37565,7 @@
         <attribute icon_type="archer_w" />
         <attribute monster_die="3" />
         <attribute monster_die2="4" />
-        <attribute setup_start="Elves Dwelling" />
+        <attribute setup_start="Elf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -37585,7 +37600,7 @@
         <attribute icon_type="archer_w" />
         <attribute monster_die="3" />
         <attribute monster_die2="4" />
-        <attribute setup_start="Elves Dwelling" />
+        <attribute setup_start="Elf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -37620,7 +37635,7 @@
         <attribute icon_type="archer_w" />
         <attribute monster_die="3" />
         <attribute monster_die2="4" />
-        <attribute setup_start="Elves Dwelling" />
+        <attribute setup_start="Elf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -37655,7 +37670,7 @@
         <attribute icon_type="archer_w" />
         <attribute monster_die="3" />
         <attribute monster_die2="4" />
-        <attribute setup_start="Elves Dwelling" />
+        <attribute setup_start="Elf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -39349,7 +39364,7 @@
         <attribute pins="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1476" name="Dwarves Dwelling">
+    <GameObject id="1476" name="Dwarf Dwelling">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute native="Dwarves" />
@@ -39371,9 +39386,9 @@
       <contains id="1480" />
       <contains id="1481" />
       <contains id="1482" />
-      <contains id="1990" />
-      <contains id="1991" />
-      <contains id="2006" />
+      <contains id="1993" />
+      <contains id="1994" />
+      <contains id="2007" />
     </GameObject>
     <GameObject id="1477" name="Dwarf">
       <AttributeBlock blockName="this">
@@ -39423,7 +39438,7 @@
         <attribute icon_type="great_axeman_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Dwarves Dwelling" />
+        <attribute setup_start="Dwarf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -39459,7 +39474,7 @@
         <attribute icon_type="great_axeman_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Dwarves Dwelling" />
+        <attribute setup_start="Dwarf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -39495,7 +39510,7 @@
         <attribute icon_type="great_axeman_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Dwarves Dwelling" />
+        <attribute setup_start="Dwarf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -39531,7 +39546,7 @@
         <attribute icon_type="great_axeman_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Dwarves Dwelling" />
+        <attribute setup_start="Dwarf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -39567,7 +39582,7 @@
         <attribute icon_type="great_axeman_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Dwarves Dwelling" />
+        <attribute setup_start="Dwarf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -41187,6 +41202,9 @@
           <attributeVal N0="Winged Demon" />
           <attributeVal N1="Demon" />
           <attributeVal N2="Imp" />
+          <attributeVal N3="Vampire" />
+          <attributeVal N4="Succubus" />
+          <attributeVal N5="Devil" />
         </attributeList>
         <attributeList keyName="advantages">
           <attributeVal N0="HEAVENLY PROTECTION:  Demons and the Imp cannot attack you." />
@@ -44865,7 +44883,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1742" name="Bandits Dwelling">
+    <GameObject id="1742" name="Bandit Dwelling">
       <AttributeBlock blockName="this">
         <attribute super_realm="" />
         <attribute native="Bandits" />
@@ -44889,9 +44907,9 @@
       <contains id="1746" />
       <contains id="1747" />
       <contains id="1748" />
-      <contains id="2002" />
       <contains id="2003" />
       <contains id="2004" />
+      <contains id="2005" />
     </GameObject>
     <GameObject id="1743" name="Assassin">
       <AttributeBlock blockName="this">
@@ -44905,7 +44923,7 @@
         <attribute icon_type="assassin_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Bandits Dwelling" />
+        <attribute setup_start="Bandit Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -44940,7 +44958,7 @@
         <attribute icon_type="assassin_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Bandits Dwelling" />
+        <attribute setup_start="Bandit Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -44975,7 +44993,7 @@
         <attribute icon_type="swordsman_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Bandits Dwelling" />
+        <attribute setup_start="Bandit Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -45010,7 +45028,7 @@
         <attribute icon_type="swordsman_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Bandits Dwelling" />
+        <attribute setup_start="Bandit Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -45045,7 +45063,7 @@
         <attribute icon_type="swordsman_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Bandits Dwelling" />
+        <attribute setup_start="Bandit Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -45080,7 +45098,7 @@
         <attribute icon_type="assassin_r" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
-        <attribute setup_start="Bandits Dwelling" />
+        <attribute setup_start="Bandit Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -45138,9 +45156,9 @@
       <contains id="1752" />
       <contains id="1753" />
       <contains id="1754" />
-      <contains id="1940" />
-      <contains id="1944" />
+      <contains id="1943" />
       <contains id="1947" />
+      <contains id="1950" />
     </GameObject>
     <GameObject id="1751" name="S. Swordsman">
       <AttributeBlock blockName="this">
@@ -46060,9 +46078,9 @@
       <contains id="1782" />
       <contains id="1783" />
       <contains id="1784" />
-      <contains id="1956" />
-      <contains id="1957" />
-      <contains id="1958" />
+      <contains id="1959" />
+      <contains id="1960" />
+      <contains id="1961" />
     </GameObject>
     <GameObject id="1781" name="Archer">
       <AttributeBlock blockName="this">
@@ -46228,10 +46246,10 @@
       <contains id="1788" />
       <contains id="1789" />
       <contains id="1790" />
-      <contains id="1976" />
-      <contains id="1977" />
-      <contains id="1978" />
       <contains id="1979" />
+      <contains id="1980" />
+      <contains id="1981" />
+      <contains id="1982" />
     </GameObject>
     <GameObject id="1787" name="Spearman">
       <AttributeBlock blockName="this">
@@ -46491,12 +46509,12 @@
       <contains id="1800" />
       <contains id="1801" />
       <contains id="1802" />
-      <contains id="1904" />
-      <contains id="1905" />
-      <contains id="1906" />
       <contains id="1907" />
       <contains id="1908" />
       <contains id="1909" />
+      <contains id="1910" />
+      <contains id="1911" />
+      <contains id="1912" />
     </GameObject>
     <GameObject id="1797" name="Raider">
       <AttributeBlock blockName="this">
@@ -46740,9 +46758,10 @@
       <contains id="1809" />
       <contains id="1810" />
       <contains id="1812" />
-      <contains id="1941" />
-      <contains id="1945" />
+      <contains id="1944" />
       <contains id="1948" />
+      <contains id="1951" />
+      <contains id="1811" />
     </GameObject>
     <GameObject id="1805" name="S. Swordsman">
       <AttributeBlock blockName="this">
@@ -47416,7 +47435,7 @@
         <attribute rank="1" />
         <attribute icon_type="lancer_l" />
         <attribute setup_start="Hamlet" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -47449,7 +47468,7 @@
         <attribute rank="2" />
         <attribute icon_type="lancer_l" />
         <attribute setup_start="Hamlet" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -47482,7 +47501,7 @@
         <attribute rank="3" />
         <attribute icon_type="lancer_l" />
         <attribute setup_start="Hamlet" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -47515,7 +47534,7 @@
         <attribute rank="4" />
         <attribute icon_type="lancer_l" />
         <attribute setup_start="Hamlet" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -47548,7 +47567,7 @@
         <attribute rank="5" />
         <attribute icon_type="lancer_l" />
         <attribute setup_start="Hamlet" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -47581,7 +47600,7 @@
         <attribute rank="6" />
         <attribute icon_type="lancer_l" />
         <attribute setup_start="Hamlet" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -47614,7 +47633,7 @@
         <attribute rank="HQ" />
         <attribute icon_type="lancer_l" />
         <attribute setup_start="Hamlet" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -47647,7 +47666,7 @@
         <attribute rank="1" />
         <attribute icon_type="swordsman_r" />
         <attribute setup_start="Cottage" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -47680,7 +47699,7 @@
         <attribute rank="2" />
         <attribute icon_type="swordsman_r" />
         <attribute setup_start="Cottage" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -47713,7 +47732,7 @@
         <attribute rank="3" />
         <attribute icon_type="swordsman_r" />
         <attribute setup_start="Cottage" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -47746,7 +47765,7 @@
         <attribute rank="HQ" />
         <attribute icon_type="swordsman_r" />
         <attribute setup_start="Cottage" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -47779,7 +47798,7 @@
         <attribute rank="1" />
         <attribute icon_type="assassin_r" />
         <attribute setup_start="Hut" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -47812,7 +47831,7 @@
         <attribute rank="2" />
         <attribute icon_type="assassin_r" />
         <attribute setup_start="Hut" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -47845,7 +47864,7 @@
         <attribute rank="3" />
         <attribute icon_type="assassin_r" />
         <attribute setup_start="Hut" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -47878,7 +47897,7 @@
         <attribute rank="HQ" />
         <attribute icon_type="assassin_r" />
         <attribute setup_start="Hut" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -47911,7 +47930,7 @@
         <attribute rank="1" />
         <attribute icon_type="assassin_r" />
         <attribute setup_start="Settlement" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -47946,7 +47965,7 @@
         <attribute rank="2" />
         <attribute icon_type="assassin_r" />
         <attribute setup_start="Settlement" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -47981,7 +48000,7 @@
         <attribute rank="3" />
         <attribute icon_type="assassin_r" />
         <attribute setup_start="Settlement" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -48016,7 +48035,7 @@
         <attribute rank="HQ" />
         <attribute icon_type="assassin_r" />
         <attribute setup_start="Settlement" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
@@ -48156,8 +48175,8 @@
       <contains id="1851" />
       <contains id="1852" />
       <contains id="1853" />
-      <contains id="1931" />
-      <contains id="1980" />
+      <contains id="1934" />
+      <contains id="1983" />
     </GameObject>
     <GameObject id="1850" name="Caster">
       <AttributeBlock blockName="this">
@@ -48427,9 +48446,9 @@
       <contains id="1863" />
       <contains id="1864" />
       <contains id="1865" />
-      <contains id="1999" />
-      <contains id="2007" />
+      <contains id="2000" />
       <contains id="2008" />
+      <contains id="2009" />
     </GameObject>
     <GameObject id="1860" name="Archer">
       <AttributeBlock blockName="this">
@@ -48679,7 +48698,7 @@
         <attribute rank="1" />
         <attribute icon_type="lancer_l" />
         <attribute setup_start="Coven Dwelling" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
         <attribute super_realm="" />
@@ -48711,7 +48730,7 @@
         <attribute rank="2" />
         <attribute icon_type="lancer_l" />
         <attribute setup_start="Coven Dwelling" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
         <attribute super_realm="" />
@@ -48743,7 +48762,7 @@
         <attribute rank="HQ" />
         <attribute icon_type="lancer_l" />
         <attribute setup_start="Coven Dwelling" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
         <attribute super_realm="" />
@@ -48800,8 +48819,8 @@
       <contains id="1874" />
       <contains id="1875" />
       <contains id="1876" />
-      <contains id="1997" />
-      <contains id="2009" />
+      <contains id="1998" />
+      <contains id="2010" />
       <contains id="2011" />
     </GameObject>
     <GameObject id="1873" name="G. Axeman">
@@ -49031,7 +49050,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1881" name="Mercenaries  Box">
+    <GameObject id="1881" name="Mercenaries Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="clan 4" />
         <attribute ts_size="S+" />
@@ -49068,9 +49087,9 @@
       <contains id="1886" />
       <contains id="1887" />
       <contains id="1888" />
-      <contains id="1994" />
-      <contains id="2000" />
-      <contains id="2005" />
+      <contains id="1996" />
+      <contains id="2001" />
+      <contains id="2006" />
     </GameObject>
     <GameObject id="1883" name="Swordsman">
       <AttributeBlock blockName="this">
@@ -49319,8 +49338,8 @@
       <contains id="1892" />
       <contains id="1893" />
       <contains id="1894" />
-      <contains id="1986" />
-      <contains id="1992" />
+      <contains id="1989" />
+      <contains id="1995" />
     </GameObject>
     <GameObject id="1891" name="Caster">
       <AttributeBlock blockName="this">
@@ -49332,7 +49351,7 @@
         <attribute rank="1" />
         <attribute icon_type="lancer_l" />
         <attribute setup_start="Conjuror Dwelling" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
         <attribute super_realm="" />
@@ -49366,7 +49385,7 @@
         <attribute rank="2" />
         <attribute icon_type="lancer_l" />
         <attribute setup_start="Conjuror Dwelling" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
         <attribute super_realm="" />
@@ -49400,7 +49419,7 @@
         <attribute rank="3" />
         <attribute icon_type="lancer_l" />
         <attribute setup_start="Conjuror Dwelling" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
         <attribute super_realm="" />
@@ -49434,7 +49453,7 @@
         <attribute rank="HQ" />
         <attribute icon_type="lancer_l" />
         <attribute setup_start="Conjuror Dwelling" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute icon_folder="natives_c" />
         <attribute denizen="" />
         <attribute super_realm="" />
@@ -49467,7 +49486,7 @@
         <attribute activated="" />
         <attribute super_realm="" />
         <attribute clan="4" />
-        <attribute native_die="6" />
+        <attribute native_die="5" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -49489,7 +49508,7 @@
         <attribute activated="" />
         <attribute super_realm="" />
         <attribute clan="4" />
-        <attribute native_die="6" />
+        <attribute native_die="5" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -49511,7 +49530,7 @@
         <attribute activated="" />
         <attribute super_realm="" />
         <attribute clan="4" />
-        <attribute native_die="6" />
+        <attribute native_die="5" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -49524,7 +49543,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1898" name="Enchanter Horse HQ">
+    <GameObject id="1898" name="Workhorse HQ">
       <AttributeBlock blockName="this">
         <attribute native="Conjurors" />
         <attribute horse="horse" />
@@ -49533,11 +49552,11 @@
         <attribute activated="" />
         <attribute super_realm="" />
         <attribute clan="4" />
-        <attribute native_die="6" />
+        <attribute native_die="5" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
-        <attribute strength="M" />
+        <attribute strength="H" />
         <attribute chit_color="peach" />
       </AttributeBlock>
       <AttributeBlock blockName="gallop">
@@ -49546,7 +49565,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1899" name="Enchanters  Box">
+    <GameObject id="1899" name="Enchanters Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="clan 4" />
         <attribute ts_size="S+" />
@@ -49580,8 +49599,8 @@
       <contains id="1901" />
       <contains id="1902" />
       <contains id="1903" />
-      <contains id="1983" />
-      <contains id="1987" />
+      <contains id="1986" />
+      <contains id="1990" />
     </GameObject>
     <GameObject id="1901" name="Caster">
       <AttributeBlock blockName="this">
@@ -49615,6 +49634,7 @@
         <attribute length="9" />
         <attribute chit_color="orange" />
       </AttributeBlock>
+      <contains id="1904" />
     </GameObject>
     <GameObject id="1902" name="Caster">
       <AttributeBlock blockName="this">
@@ -49648,6 +49668,7 @@
         <attribute length="9" />
         <attribute chit_color="orange" />
       </AttributeBlock>
+      <contains id="1905" />
     </GameObject>
     <GameObject id="1903" name="Caster">
       <AttributeBlock blockName="this">
@@ -49681,8 +49702,75 @@
         <attribute length="9" />
         <attribute chit_color="orange" />
       </AttributeBlock>
+      <contains id="1906" />
     </GameObject>
-    <GameObject id="1904" name="Pony">
+    <GameObject id="1904" name="Pony 1">
+      <AttributeBlock blockName="this">
+        <attribute native="Enchanters" />
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+        <attribute clan="4" />
+        <attribute native_die="6" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="5" />
+        <attribute strength="L" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="2" />
+        <attribute strength="L" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1905" name="Pony 2">
+      <AttributeBlock blockName="this">
+        <attribute native="Enchanters" />
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+        <attribute clan="4" />
+        <attribute native_die="6" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="5" />
+        <attribute strength="M" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="3" />
+        <attribute strength="L" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1906" name="Pony HQ">
+      <AttributeBlock blockName="this">
+        <attribute native="Enchanters" />
+        <attribute horse="pony" />
+        <attribute move_bonus="double" />
+        <attribute vulnerability="M" />
+        <attribute activated="" />
+        <attribute super_realm="" />
+        <attribute clan="4" />
+        <attribute native_die="6" />
+      </AttributeBlock>
+      <AttributeBlock blockName="trot">
+        <attribute move_speed="4" />
+        <attribute strength="M" />
+        <attribute chit_color="peach" />
+      </AttributeBlock>
+      <AttributeBlock blockName="gallop">
+        <attribute move_speed="3" />
+        <attribute strength="M" />
+        <attribute chit_color="brown" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1907" name="Pony">
       <AttributeBlock blockName="this">
         <attribute horse="pony" />
         <attribute move_bonus="double" />
@@ -49702,7 +49790,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1905" name="Pony">
+    <GameObject id="1908" name="Pony">
       <AttributeBlock blockName="this">
         <attribute horse="pony" />
         <attribute move_bonus="double" />
@@ -49722,7 +49810,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1906" name="Pony">
+    <GameObject id="1909" name="Pony">
       <AttributeBlock blockName="this">
         <attribute horse="pony" />
         <attribute move_bonus="double" />
@@ -49742,7 +49830,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1907" name="Pony">
+    <GameObject id="1910" name="Pony">
       <AttributeBlock blockName="this">
         <attribute horse="pony" />
         <attribute move_bonus="double" />
@@ -49762,7 +49850,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1908" name="Pony">
+    <GameObject id="1911" name="Pony">
       <AttributeBlock blockName="this">
         <attribute horse="pony" />
         <attribute move_bonus="double" />
@@ -49782,7 +49870,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1909" name="Pony">
+    <GameObject id="1912" name="Pony">
       <AttributeBlock blockName="this">
         <attribute horse="pony" />
         <attribute move_bonus="double" />
@@ -49802,7 +49890,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1910" name="Pony">
+    <GameObject id="1913" name="Pony">
       <AttributeBlock blockName="this">
         <attribute horse="pony" />
         <attribute move_bonus="double" />
@@ -49823,7 +49911,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1911" name="Warhorse">
+    <GameObject id="1914" name="Warhorse">
       <AttributeBlock blockName="this">
         <attribute horse="warhorse" />
         <attribute vulnerability="T" />
@@ -49843,7 +49931,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1912" name="Warhorse">
+    <GameObject id="1915" name="Warhorse">
       <AttributeBlock blockName="this">
         <attribute horse="warhorse" />
         <attribute vulnerability="T" />
@@ -49863,7 +49951,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1913" name="Warhorse">
+    <GameObject id="1916" name="Warhorse">
       <AttributeBlock blockName="this">
         <attribute horse="warhorse" />
         <attribute vulnerability="T" />
@@ -49883,7 +49971,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1914" name="Warhorse">
+    <GameObject id="1917" name="Warhorse">
       <AttributeBlock blockName="this">
         <attribute horse="warhorse" />
         <attribute vulnerability="T" />
@@ -49904,7 +49992,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1915" name="Workhorse">
+    <GameObject id="1918" name="Workhorse">
       <AttributeBlock blockName="this">
         <attribute horse="horse" />
         <attribute move_bonus="extra" />
@@ -49924,7 +50012,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1916" name="Workhorse">
+    <GameObject id="1919" name="Workhorse">
       <AttributeBlock blockName="this">
         <attribute horse="horse" />
         <attribute move_bonus="extra" />
@@ -49944,7 +50032,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1917" name="Workhorse">
+    <GameObject id="1920" name="Workhorse">
       <AttributeBlock blockName="this">
         <attribute horse="horse" />
         <attribute move_bonus="extra" />
@@ -49964,7 +50052,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1918" name="Workhorse">
+    <GameObject id="1921" name="Workhorse">
       <AttributeBlock blockName="this">
         <attribute horse="horse" />
         <attribute move_bonus="extra" />
@@ -49984,7 +50072,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1919" name="Workhorse">
+    <GameObject id="1922" name="Workhorse">
       <AttributeBlock blockName="this">
         <attribute horse="horse" />
         <attribute move_bonus="extra" />
@@ -50004,7 +50092,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1920" name="Workhorse">
+    <GameObject id="1923" name="Workhorse">
       <AttributeBlock blockName="this">
         <attribute horse="horse" />
         <attribute move_bonus="extra" />
@@ -50024,7 +50112,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1921" name="Pony">
+    <GameObject id="1924" name="Pony">
       <AttributeBlock blockName="this">
         <attribute horse="pony" />
         <attribute move_bonus="double" />
@@ -50044,7 +50132,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1922" name="Pony">
+    <GameObject id="1925" name="Pony">
       <AttributeBlock blockName="this">
         <attribute horse="pony" />
         <attribute move_bonus="double" />
@@ -50064,7 +50152,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1923" name="Pony">
+    <GameObject id="1926" name="Pony">
       <AttributeBlock blockName="this">
         <attribute horse="pony" />
         <attribute move_bonus="double" />
@@ -50084,7 +50172,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1924" name="Workhorse">
+    <GameObject id="1927" name="Workhorse">
       <AttributeBlock blockName="this">
         <attribute horse="horse" />
         <attribute move_bonus="extra" />
@@ -50104,7 +50192,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1925" name="Workhorse">
+    <GameObject id="1928" name="Workhorse">
       <AttributeBlock blockName="this">
         <attribute horse="horse" />
         <attribute move_bonus="extra" />
@@ -50124,7 +50212,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1926" name="Workhorse">
+    <GameObject id="1929" name="Workhorse">
       <AttributeBlock blockName="this">
         <attribute horse="horse" />
         <attribute move_bonus="extra" />
@@ -50144,7 +50232,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1927" name="Pony">
+    <GameObject id="1930" name="Pony">
       <AttributeBlock blockName="this">
         <attribute horse="pony" />
         <attribute move_bonus="double" />
@@ -50164,7 +50252,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1928" name="Pony">
+    <GameObject id="1931" name="Pony">
       <AttributeBlock blockName="this">
         <attribute horse="pony" />
         <attribute move_bonus="double" />
@@ -50184,7 +50272,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1929" name="Workhorse">
+    <GameObject id="1932" name="Workhorse">
       <AttributeBlock blockName="this">
         <attribute horse="horse" />
         <attribute move_bonus="extra" />
@@ -50204,7 +50292,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1930" name="Workhorse">
+    <GameObject id="1933" name="Workhorse">
       <AttributeBlock blockName="this">
         <attribute horse="horse" />
         <attribute move_bonus="extra" />
@@ -50224,7 +50312,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1931" name="Warhorse">
+    <GameObject id="1934" name="Warhorse">
       <AttributeBlock blockName="this">
         <attribute horse="warhorse" />
         <attribute vulnerability="T" />
@@ -50244,7 +50332,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1932" name="Workhorse">
+    <GameObject id="1935" name="Workhorse">
       <AttributeBlock blockName="this">
         <attribute horse="horse" />
         <attribute move_bonus="extra" />
@@ -50264,7 +50352,7 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1933" name="Tremendous Armor">
+    <GameObject id="1936" name="Tremen. Armor">
       <AttributeBlock blockName="this">
         <attribute vulnerability="T" />
         <attribute weight="T" />
@@ -50294,7 +50382,7 @@
         <attribute base_price="5" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1934" name="Armor">
+    <GameObject id="1937" name="Armor">
       <AttributeBlock blockName="this">
         <attribute vulnerability="H" />
         <attribute weight="H" />
@@ -50319,7 +50407,7 @@
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1935" name="Armor">
+    <GameObject id="1938" name="Armor">
       <AttributeBlock blockName="this">
         <attribute vulnerability="H" />
         <attribute weight="H" />
@@ -50341,75 +50429,6 @@
       </AttributeBlock>
       <AttributeBlock blockName="damaged">
         <attribute base_price="12" />
-        <attribute chit_color="white" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="1936" name="Helmet">
-      <AttributeBlock blockName="this">
-        <attribute vulnerability="M" />
-        <attribute weight="M" />
-        <attribute armor_smash="" />
-        <attribute armor="" />
-        <attribute icon_type="helmet" />
-        <attribute facing="dark" />
-        <attribute armor_row="2" />
-        <attribute ret_dw="House" />
-        <attribute icon_folder="armor" />
-        <attribute item="" />
-        <attribute super_realm="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="intact">
-        <attribute base_price="5" />
-        <attribute chit_color="gray" />
-      </AttributeBlock>
-      <AttributeBlock blockName="damaged">
-        <attribute base_price="3" />
-        <attribute chit_color="white" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="1937" name="Helmet">
-      <AttributeBlock blockName="this">
-        <attribute vulnerability="M" />
-        <attribute weight="M" />
-        <attribute armor_smash="" />
-        <attribute armor="" />
-        <attribute icon_type="helmet" />
-        <attribute facing="dark" />
-        <attribute armor_row="2" />
-        <attribute ret_dw="House" />
-        <attribute icon_folder="armor" />
-        <attribute item="" />
-        <attribute super_realm="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="intact">
-        <attribute base_price="5" />
-        <attribute chit_color="gray" />
-      </AttributeBlock>
-      <AttributeBlock blockName="damaged">
-        <attribute base_price="3" />
-        <attribute chit_color="white" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="1938" name="Helmet">
-      <AttributeBlock blockName="this">
-        <attribute vulnerability="M" />
-        <attribute weight="M" />
-        <attribute armor_smash="" />
-        <attribute armor="" />
-        <attribute icon_type="helmet" />
-        <attribute facing="dark" />
-        <attribute armor_row="2" />
-        <attribute ret_dw="House" />
-        <attribute icon_folder="armor" />
-        <attribute item="" />
-        <attribute super_realm="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="intact">
-        <attribute base_price="5" />
-        <attribute chit_color="gray" />
-      </AttributeBlock>
-      <AttributeBlock blockName="damaged">
-        <attribute base_price="3" />
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
@@ -50482,75 +50501,72 @@
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1942" name="Shield">
+    <GameObject id="1942" name="Helmet">
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
-        <attribute shield="" />
-        <attribute armor_choice="" />
+        <attribute armor_smash="" />
         <attribute armor="" />
-        <attribute icon_type="shield" />
+        <attribute icon_type="helmet" />
         <attribute facing="dark" />
-        <attribute armor_row="1" />
+        <attribute armor_row="2" />
         <attribute ret_dw="House" />
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
-        <attribute base_price="7" />
+        <attribute base_price="5" />
         <attribute chit_color="gray" />
       </AttributeBlock>
       <AttributeBlock blockName="damaged">
-        <attribute base_price="5" />
+        <attribute base_price="3" />
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1943" name="Shield">
+    <GameObject id="1943" name="Helmet">
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
-        <attribute shield="" />
-        <attribute armor_choice="" />
+        <attribute armor_smash="" />
         <attribute armor="" />
-        <attribute icon_type="shield" />
+        <attribute icon_type="helmet" />
         <attribute facing="dark" />
-        <attribute armor_row="1" />
+        <attribute armor_row="2" />
         <attribute ret_dw="House" />
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
-        <attribute base_price="7" />
+        <attribute base_price="5" />
         <attribute chit_color="gray" />
       </AttributeBlock>
       <AttributeBlock blockName="damaged">
-        <attribute base_price="5" />
+        <attribute base_price="3" />
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1944" name="Shield">
+    <GameObject id="1944" name="Helmet">
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
-        <attribute shield="" />
-        <attribute armor_choice="" />
+        <attribute armor_smash="" />
         <attribute armor="" />
-        <attribute icon_type="shield" />
+        <attribute icon_type="helmet" />
         <attribute facing="dark" />
-        <attribute armor_row="1" />
+        <attribute armor_row="2" />
         <attribute ret_dw="House" />
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
-        <attribute base_price="7" />
+        <attribute base_price="5" />
         <attribute chit_color="gray" />
       </AttributeBlock>
       <AttributeBlock blockName="damaged">
-        <attribute base_price="5" />
+        <attribute base_price="3" />
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
@@ -50578,7 +50594,79 @@
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1946" name="Breastplate">
+    <GameObject id="1946" name="Shield">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="M" />
+        <attribute weight="M" />
+        <attribute shield="" />
+        <attribute armor_choice="" />
+        <attribute armor="" />
+        <attribute icon_type="shield" />
+        <attribute facing="dark" />
+        <attribute armor_row="1" />
+        <attribute ret_dw="House" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="7" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="5" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1947" name="Shield">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="M" />
+        <attribute weight="M" />
+        <attribute shield="" />
+        <attribute armor_choice="" />
+        <attribute armor="" />
+        <attribute icon_type="shield" />
+        <attribute facing="dark" />
+        <attribute armor_row="1" />
+        <attribute ret_dw="House" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="7" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="5" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1948" name="Shield">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="M" />
+        <attribute weight="M" />
+        <attribute shield="" />
+        <attribute armor_choice="" />
+        <attribute armor="" />
+        <attribute icon_type="shield" />
+        <attribute facing="dark" />
+        <attribute armor_row="1" />
+        <attribute ret_dw="House" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="7" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="5" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1949" name="Breastplate">
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
@@ -50602,7 +50690,7 @@
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1947" name="Breastplate">
+    <GameObject id="1950" name="Breastplate">
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
@@ -50626,7 +50714,7 @@
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1948" name="Breastplate">
+    <GameObject id="1951" name="Breastplate">
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
@@ -50650,7 +50738,7 @@
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1949" name="Gold Helmet">
+    <GameObject id="1952" name="Gold Helmet">
       <AttributeBlock blockName="this">
         <attribute vulnerability="H" />
         <attribute weight="H" />
@@ -50679,7 +50767,7 @@
         <attribute base_price="20" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1950" name="Jade Shield">
+    <GameObject id="1953" name="Jade Shield">
       <AttributeBlock blockName="this">
         <attribute vulnerability="H" />
         <attribute weight="H" />
@@ -50709,7 +50797,7 @@
         <attribute base_price="10" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1951" name="Silver Breastplate">
+    <GameObject id="1954" name="Silver Breastplate">
       <AttributeBlock blockName="this">
         <attribute vulnerability="H" />
         <attribute weight="H" />
@@ -50739,7 +50827,7 @@
         <attribute base_price="15" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1952" name="Bane Sword">
+    <GameObject id="1955" name="Bane Sword">
       <AttributeBlock blockName="this">
         <attribute weight="T" />
         <attribute length="8" />
@@ -50767,7 +50855,7 @@
         <attribute chit_color="gold" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1953" name="Truesteel Sword">
+    <GameObject id="1956" name="Truesteel Sword">
       <AttributeBlock blockName="this">
         <attribute weight="M" />
         <attribute length="7" />
@@ -50792,7 +50880,7 @@
         <attribute chit_color="gold" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1954" name="Devil Sword">
+    <GameObject id="1957" name="Devil Sword">
       <AttributeBlock blockName="this">
         <attribute weight="H" />
         <attribute length="7" />
@@ -50819,7 +50907,7 @@
         <attribute chit_color="gold" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1955" name="Living Sword">
+    <GameObject id="1958" name="Living Sword">
       <AttributeBlock blockName="this">
         <attribute weight="L" />
         <attribute length="4" />
@@ -50846,7 +50934,7 @@
         <attribute chit_color="gold" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1956" name="Medium Bow">
+    <GameObject id="1959" name="Medium Bow">
       <AttributeBlock blockName="this">
         <attribute weight="M" />
         <attribute length="16" />
@@ -50870,7 +50958,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1957" name="Light Bow">
+    <GameObject id="1960" name="Light Bow">
       <AttributeBlock blockName="this">
         <attribute weight="L" />
         <attribute length="14" />
@@ -50894,7 +50982,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1958" name="Light Bow">
+    <GameObject id="1961" name="Light Bow">
       <AttributeBlock blockName="this">
         <attribute weight="L" />
         <attribute length="14" />
@@ -50918,7 +51006,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1959" name="Crossbow">
+    <GameObject id="1962" name="Crossbow">
       <AttributeBlock blockName="this">
         <attribute weight="H" />
         <attribute length="12" />
@@ -50942,7 +51030,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1960" name="Staff">
+    <GameObject id="1963" name="Staff">
       <AttributeBlock blockName="this">
         <attribute weight="L" />
         <attribute length="9" />
@@ -50963,7 +51051,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1961" name="Staff">
+    <GameObject id="1964" name="Staff">
       <AttributeBlock blockName="this">
         <attribute weight="L" />
         <attribute length="9" />
@@ -50984,7 +51072,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1962" name="Great Sword">
+    <GameObject id="1965" name="Great Sword">
       <AttributeBlock blockName="this">
         <attribute weight="H" />
         <attribute length="8" />
@@ -51008,7 +51096,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1963" name="Broadsword">
+    <GameObject id="1966" name="Broadsword">
       <AttributeBlock blockName="this">
         <attribute weight="M" />
         <attribute length="7" />
@@ -51031,7 +51119,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1964" name="Morning Star">
+    <GameObject id="1967" name="Morning Star">
       <AttributeBlock blockName="this">
         <attribute weight="H" />
         <attribute length="6" />
@@ -51054,7 +51142,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1965" name="Great Axe">
+    <GameObject id="1968" name="Great Axe">
       <AttributeBlock blockName="this">
         <attribute weight="H" />
         <attribute length="5" />
@@ -51078,7 +51166,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1966" name="Great Axe">
+    <GameObject id="1969" name="Great Axe">
       <AttributeBlock blockName="this">
         <attribute weight="H" />
         <attribute length="5" />
@@ -51102,7 +51190,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1967" name="Thrusting Sword">
+    <GameObject id="1970" name="Thrusting Sword">
       <AttributeBlock blockName="this">
         <attribute weight="L" />
         <attribute length="4" />
@@ -51125,7 +51213,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1968" name="Thrusting Sword">
+    <GameObject id="1971" name="Thrusting Sword">
       <AttributeBlock blockName="this">
         <attribute weight="L" />
         <attribute length="4" />
@@ -51148,7 +51236,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1969" name="Short Sword">
+    <GameObject id="1972" name="Short Sword">
       <AttributeBlock blockName="this">
         <attribute weight="L" />
         <attribute length="3" />
@@ -51170,7 +51258,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1970" name="Short Sword">
+    <GameObject id="1973" name="Short Sword">
       <AttributeBlock blockName="this">
         <attribute weight="L" />
         <attribute length="3" />
@@ -51192,7 +51280,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1971" name="Short Sword">
+    <GameObject id="1974" name="Short Sword">
       <AttributeBlock blockName="this">
         <attribute weight="L" />
         <attribute length="3" />
@@ -51214,7 +51302,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1972" name="Axe">
+    <GameObject id="1975" name="Axe">
       <AttributeBlock blockName="this">
         <attribute weight="M" />
         <attribute length="2" />
@@ -51238,7 +51326,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1973" name="Axe">
+    <GameObject id="1976" name="Axe">
       <AttributeBlock blockName="this">
         <attribute weight="M" />
         <attribute length="2" />
@@ -51262,7 +51350,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1974" name="Mace">
+    <GameObject id="1977" name="Mace">
       <AttributeBlock blockName="this">
         <attribute weight="M" />
         <attribute length="1" />
@@ -51283,7 +51371,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1975" name="Mace">
+    <GameObject id="1978" name="Mace">
       <AttributeBlock blockName="this">
         <attribute weight="M" />
         <attribute length="1" />
@@ -51301,75 +51389,6 @@
       <AttributeBlock blockName="alerted">
         <attribute attack_speed="3" />
         <attribute strength="M" />
-        <attribute chit_color="red" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="1976" name="Spear">
-      <AttributeBlock blockName="this">
-        <attribute weight="M" />
-        <attribute length="10" />
-        <attribute base_price="6" />
-        <attribute two_handed="" />
-        <attribute throwable="" />
-        <attribute weapon="" />
-        <attribute icon_type="spear" />
-        <attribute icon_folder="weapons" />
-        <attribute item="" />
-        <attribute super_realm="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="unalerted">
-        <attribute attack_speed="6" />
-        <attribute chit_color="white" />
-      </AttributeBlock>
-      <AttributeBlock blockName="alerted">
-        <attribute strength="M" />
-        <attribute sharpness="1" />
-        <attribute chit_color="red" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="1977" name="Spear">
-      <AttributeBlock blockName="this">
-        <attribute weight="M" />
-        <attribute length="10" />
-        <attribute base_price="6" />
-        <attribute two_handed="" />
-        <attribute throwable="" />
-        <attribute weapon="" />
-        <attribute icon_type="spear" />
-        <attribute icon_folder="weapons" />
-        <attribute item="" />
-        <attribute super_realm="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="unalerted">
-        <attribute attack_speed="6" />
-        <attribute chit_color="white" />
-      </AttributeBlock>
-      <AttributeBlock blockName="alerted">
-        <attribute strength="M" />
-        <attribute sharpness="1" />
-        <attribute chit_color="red" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="1978" name="Spear">
-      <AttributeBlock blockName="this">
-        <attribute weight="M" />
-        <attribute length="10" />
-        <attribute base_price="6" />
-        <attribute two_handed="" />
-        <attribute throwable="" />
-        <attribute weapon="" />
-        <attribute icon_type="spear" />
-        <attribute icon_folder="weapons" />
-        <attribute item="" />
-        <attribute super_realm="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="unalerted">
-        <attribute attack_speed="6" />
-        <attribute chit_color="white" />
-      </AttributeBlock>
-      <AttributeBlock blockName="alerted">
-        <attribute strength="M" />
-        <attribute sharpness="1" />
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
@@ -51396,7 +51415,76 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1980" name="Armor">
+    <GameObject id="1980" name="Spear">
+      <AttributeBlock blockName="this">
+        <attribute weight="M" />
+        <attribute length="10" />
+        <attribute base_price="6" />
+        <attribute two_handed="" />
+        <attribute throwable="" />
+        <attribute weapon="" />
+        <attribute icon_type="spear" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute attack_speed="6" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1981" name="Spear">
+      <AttributeBlock blockName="this">
+        <attribute weight="M" />
+        <attribute length="10" />
+        <attribute base_price="6" />
+        <attribute two_handed="" />
+        <attribute throwable="" />
+        <attribute weapon="" />
+        <attribute icon_type="spear" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute attack_speed="6" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1982" name="Spear">
+      <AttributeBlock blockName="this">
+        <attribute weight="M" />
+        <attribute length="10" />
+        <attribute base_price="6" />
+        <attribute two_handed="" />
+        <attribute throwable="" />
+        <attribute weapon="" />
+        <attribute icon_type="spear" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute attack_speed="6" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1983" name="Armor">
       <AttributeBlock blockName="this">
         <attribute vulnerability="H" />
         <attribute weight="H" />
@@ -51421,7 +51509,7 @@
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1981" name="Shield">
+    <GameObject id="1984" name="Shield">
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
@@ -51445,7 +51533,7 @@
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1982" name="Shield">
+    <GameObject id="1985" name="Shield">
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
@@ -51469,7 +51557,7 @@
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1983" name="Shield">
+    <GameObject id="1986" name="Shield">
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
@@ -51490,78 +51578,6 @@
       </AttributeBlock>
       <AttributeBlock blockName="damaged">
         <attribute base_price="5" />
-        <attribute chit_color="white" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="1984" name="Breastplate">
-      <AttributeBlock blockName="this">
-        <attribute vulnerability="M" />
-        <attribute weight="M" />
-        <attribute armor_swing="" />
-        <attribute armor_thrust="" />
-        <attribute armor="" />
-        <attribute icon_type="breastplate" />
-        <attribute facing="dark" />
-        <attribute armor_row="2" />
-        <attribute ret_dw="Guard" />
-        <attribute icon_folder="armor" />
-        <attribute item="" />
-        <attribute super_realm="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="intact">
-        <attribute base_price="9" />
-        <attribute chit_color="gray" />
-      </AttributeBlock>
-      <AttributeBlock blockName="damaged">
-        <attribute base_price="6" />
-        <attribute chit_color="white" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="1985" name="Breastplate">
-      <AttributeBlock blockName="this">
-        <attribute vulnerability="M" />
-        <attribute weight="M" />
-        <attribute armor_swing="" />
-        <attribute armor_thrust="" />
-        <attribute armor="" />
-        <attribute icon_type="breastplate" />
-        <attribute facing="dark" />
-        <attribute armor_row="2" />
-        <attribute ret_dw="Guard" />
-        <attribute icon_folder="armor" />
-        <attribute item="" />
-        <attribute super_realm="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="intact">
-        <attribute base_price="9" />
-        <attribute chit_color="gray" />
-      </AttributeBlock>
-      <AttributeBlock blockName="damaged">
-        <attribute base_price="6" />
-        <attribute chit_color="white" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="1986" name="Breastplate">
-      <AttributeBlock blockName="this">
-        <attribute vulnerability="M" />
-        <attribute weight="M" />
-        <attribute armor_swing="" />
-        <attribute armor_thrust="" />
-        <attribute armor="" />
-        <attribute icon_type="breastplate" />
-        <attribute facing="dark" />
-        <attribute armor_row="2" />
-        <attribute ret_dw="Guard" />
-        <attribute icon_folder="armor" />
-        <attribute item="" />
-        <attribute super_realm="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="intact">
-        <attribute base_price="9" />
-        <attribute chit_color="gray" />
-      </AttributeBlock>
-      <AttributeBlock blockName="damaged">
-        <attribute base_price="6" />
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
@@ -51589,72 +51605,75 @@
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1988" name="Helmet">
+    <GameObject id="1988" name="Breastplate">
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
-        <attribute armor_smash="" />
+        <attribute armor_swing="" />
+        <attribute armor_thrust="" />
         <attribute armor="" />
-        <attribute icon_type="helmet" />
+        <attribute icon_type="breastplate" />
         <attribute facing="dark" />
         <attribute armor_row="2" />
-        <attribute ret_dw="House" />
+        <attribute ret_dw="Guard" />
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
-        <attribute base_price="5" />
+        <attribute base_price="9" />
         <attribute chit_color="gray" />
       </AttributeBlock>
       <AttributeBlock blockName="damaged">
-        <attribute base_price="3" />
+        <attribute base_price="6" />
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1989" name="Helmet">
+    <GameObject id="1989" name="Breastplate">
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
-        <attribute armor_smash="" />
+        <attribute armor_swing="" />
+        <attribute armor_thrust="" />
         <attribute armor="" />
-        <attribute icon_type="helmet" />
+        <attribute icon_type="breastplate" />
         <attribute facing="dark" />
         <attribute armor_row="2" />
-        <attribute ret_dw="House" />
+        <attribute ret_dw="Guard" />
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
-        <attribute base_price="5" />
+        <attribute base_price="9" />
         <attribute chit_color="gray" />
       </AttributeBlock>
       <AttributeBlock blockName="damaged">
-        <attribute base_price="3" />
+        <attribute base_price="6" />
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1990" name="Helmet">
+    <GameObject id="1990" name="Breastplate">
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
-        <attribute armor_smash="" />
+        <attribute armor_swing="" />
+        <attribute armor_thrust="" />
         <attribute armor="" />
-        <attribute icon_type="helmet" />
+        <attribute icon_type="breastplate" />
         <attribute facing="dark" />
         <attribute armor_row="2" />
-        <attribute ret_dw="House" />
+        <attribute ret_dw="Guard" />
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
-        <attribute base_price="5" />
+        <attribute base_price="9" />
         <attribute chit_color="gray" />
       </AttributeBlock>
       <AttributeBlock blockName="damaged">
-        <attribute base_price="3" />
+        <attribute base_price="6" />
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
@@ -51704,7 +51723,76 @@
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1994" name="Crossbow">
+    <GameObject id="1993" name="Helmet">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="M" />
+        <attribute weight="M" />
+        <attribute armor_smash="" />
+        <attribute armor="" />
+        <attribute icon_type="helmet" />
+        <attribute facing="dark" />
+        <attribute armor_row="2" />
+        <attribute ret_dw="House" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="5" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="3" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1994" name="Helmet">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="M" />
+        <attribute weight="M" />
+        <attribute armor_smash="" />
+        <attribute armor="" />
+        <attribute icon_type="helmet" />
+        <attribute facing="dark" />
+        <attribute armor_row="2" />
+        <attribute ret_dw="House" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="5" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="3" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1995" name="Helmet">
+      <AttributeBlock blockName="this">
+        <attribute vulnerability="M" />
+        <attribute weight="M" />
+        <attribute armor_smash="" />
+        <attribute armor="" />
+        <attribute icon_type="helmet" />
+        <attribute facing="dark" />
+        <attribute armor_row="2" />
+        <attribute ret_dw="House" />
+        <attribute icon_folder="armor" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="intact">
+        <attribute base_price="5" />
+        <attribute chit_color="gray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="damaged">
+        <attribute base_price="3" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="1996" name="Crossbow">
       <AttributeBlock blockName="this">
         <attribute weight="H" />
         <attribute length="12" />
@@ -51725,30 +51813,6 @@
         <attribute attack_speed="1" />
         <attribute strength="H" />
         <attribute sharpness="1" />
-        <attribute chit_color="red" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="1996" name="Medium Bow">
-      <AttributeBlock blockName="this">
-        <attribute weight="M" />
-        <attribute length="16" />
-        <attribute base_price="8" />
-        <attribute missile="" />
-        <attribute two_handed="" />
-        <attribute weapon="" />
-        <attribute icon_type="medium_bow" />
-        <attribute icon_folder="weapons" />
-        <attribute item="" />
-        <attribute super_realm="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="unalerted">
-        <attribute strength="M" />
-        <attribute chit_color="white" />
-      </AttributeBlock>
-      <AttributeBlock blockName="alerted">
-        <attribute attack_speed="1" />
-        <attribute strength="M" />
-        <attribute sharpness="2" />
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
@@ -51776,26 +51840,26 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1998" name="Light Bow">
+    <GameObject id="1998" name="Medium Bow">
       <AttributeBlock blockName="this">
-        <attribute weight="L" />
-        <attribute length="14" />
-        <attribute base_price="6" />
+        <attribute weight="M" />
+        <attribute length="16" />
+        <attribute base_price="8" />
         <attribute missile="" />
         <attribute two_handed="" />
         <attribute weapon="" />
-        <attribute icon_type="light_bow" />
+        <attribute icon_type="medium_bow" />
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
-        <attribute strength="L" />
+        <attribute strength="M" />
         <attribute chit_color="white" />
       </AttributeBlock>
       <AttributeBlock blockName="alerted">
         <attribute attack_speed="1" />
-        <attribute strength="L" />
+        <attribute strength="M" />
         <attribute sharpness="2" />
         <attribute chit_color="red" />
       </AttributeBlock>
@@ -51824,7 +51888,31 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2000" name="Great Sword">
+    <GameObject id="2000" name="Light Bow">
+      <AttributeBlock blockName="this">
+        <attribute weight="L" />
+        <attribute length="14" />
+        <attribute base_price="6" />
+        <attribute missile="" />
+        <attribute two_handed="" />
+        <attribute weapon="" />
+        <attribute icon_type="light_bow" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute strength="L" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute attack_speed="1" />
+        <attribute strength="L" />
+        <attribute sharpness="2" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2001" name="Great Sword">
       <AttributeBlock blockName="this">
         <attribute weight="H" />
         <attribute length="8" />
@@ -51848,7 +51936,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2001" name="Broadsword">
+    <GameObject id="2002" name="Broadsword">
       <AttributeBlock blockName="this">
         <attribute weight="M" />
         <attribute length="7" />
@@ -51867,29 +51955,6 @@
       </AttributeBlock>
       <AttributeBlock blockName="alerted">
         <attribute strength="M" />
-        <attribute sharpness="1" />
-        <attribute chit_color="red" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="2002" name="Thrusting Sword">
-      <AttributeBlock blockName="this">
-        <attribute weight="L" />
-        <attribute length="4" />
-        <attribute base_price="6" />
-        <attribute weapon="" />
-        <attribute icon_type="thrusting_sword" />
-        <attribute icon_folder="weapons" />
-        <attribute item="" />
-        <attribute super_realm="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="unalerted">
-        <attribute attack_speed="4" />
-        <attribute strength="L" />
-        <attribute sharpness="1" />
-        <attribute chit_color="white" />
-      </AttributeBlock>
-      <AttributeBlock blockName="alerted">
-        <attribute strength="L" />
         <attribute sharpness="1" />
         <attribute chit_color="red" />
       </AttributeBlock>
@@ -51917,7 +51982,30 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2004" name="Short Sword">
+    <GameObject id="2004" name="Thrusting Sword">
+      <AttributeBlock blockName="this">
+        <attribute weight="L" />
+        <attribute length="4" />
+        <attribute base_price="6" />
+        <attribute weapon="" />
+        <attribute icon_type="thrusting_sword" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute attack_speed="4" />
+        <attribute strength="L" />
+        <attribute sharpness="1" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute strength="L" />
+        <attribute sharpness="1" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2005" name="Short Sword">
       <AttributeBlock blockName="this">
         <attribute weight="L" />
         <attribute length="3" />
@@ -51939,7 +52027,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2005" name="Morning Star">
+    <GameObject id="2006" name="Morning Star">
       <AttributeBlock blockName="this">
         <attribute weight="H" />
         <attribute length="6" />
@@ -51962,7 +52050,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2006" name="Great Axe">
+    <GameObject id="2007" name="Great Axe">
       <AttributeBlock blockName="this">
         <attribute weight="H" />
         <attribute length="5" />
@@ -51982,30 +52070,6 @@
       <AttributeBlock blockName="alerted">
         <attribute attack_speed="4" />
         <attribute strength="H" />
-        <attribute sharpness="1" />
-        <attribute chit_color="red" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="2007" name="Axe">
-      <AttributeBlock blockName="this">
-        <attribute weight="M" />
-        <attribute length="2" />
-        <attribute base_price="4" />
-        <attribute throwable="" />
-        <attribute weapon="" />
-        <attribute icon_type="axe" />
-        <attribute icon_folder="weapons" />
-        <attribute item="" />
-        <attribute super_realm="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="unalerted">
-        <attribute attack_speed="5" />
-        <attribute strength="M" />
-        <attribute sharpness="1" />
-        <attribute chit_color="white" />
-      </AttributeBlock>
-      <AttributeBlock blockName="alerted">
-        <attribute strength="M" />
         <attribute sharpness="1" />
         <attribute chit_color="red" />
       </AttributeBlock>
@@ -52035,6 +52099,30 @@
       </AttributeBlock>
     </GameObject>
     <GameObject id="2009" name="Axe">
+      <AttributeBlock blockName="this">
+        <attribute weight="M" />
+        <attribute length="2" />
+        <attribute base_price="4" />
+        <attribute throwable="" />
+        <attribute weapon="" />
+        <attribute icon_type="axe" />
+        <attribute icon_folder="weapons" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="unalerted">
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute chit_color="white" />
+      </AttributeBlock>
+      <AttributeBlock blockName="alerted">
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute chit_color="red" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2010" name="Axe">
       <AttributeBlock blockName="this">
         <attribute weight="M" />
         <attribute length="2" />
@@ -52492,7 +52580,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2102" name="Chest">
+    <GameObject id="2028" name="Chest">
       <AttributeBlock blockName="this">
         <attribute treasure_location="chest" />
         <attribute gold_reward="50" />
@@ -52510,7 +52598,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2103" name="Remains of Thief">
+    <GameObject id="2029" name="Remains of Thief">
       <AttributeBlock blockName="this">
         <attribute treasure_location="thief" />
         <attribute gold_reward="20" />
@@ -52527,9 +52615,9 @@
         <attribute nosecret="" />
         <attribute super_realm="" />
       </AttributeBlock>
-      <contains id="1955" />
+      <contains id="1958" />
     </GameObject>
-    <GameObject id="2104" name="Mouldy Skeleton">
+    <GameObject id="2030" name="Mouldy Skeleton">
       <AttributeBlock blockName="this">
         <attribute treasure_location="skeleton" />
         <attribute treasure="large" />
@@ -52544,11 +52632,11 @@
         <attribute nosecret="" />
         <attribute super_realm="" />
       </AttributeBlock>
-      <contains id="1949" />
-      <contains id="1950" />
-      <contains id="1951" />
+      <contains id="1952" />
+      <contains id="1953" />
+      <contains id="1954" />
     </GameObject>
-    <GameObject id="2105" name="Crypt of the Knight">
+    <GameObject id="2031" name="Crypt of the Knight">
       <AttributeBlock blockName="this">
         <attribute treasure_location="crypt" />
         <attribute treasure="large" />
@@ -52571,11 +52659,11 @@
         <attribute roll_5="gold" />
         <attribute roll_6="curse" />
       </AttributeBlock>
-      <contains id="1914" />
-      <contains id="1933" />
-      <contains id="1952" />
+      <contains id="1917" />
+      <contains id="1936" />
+      <contains id="1955" />
     </GameObject>
-    <GameObject id="2106" name="Enchanted Meadow">
+    <GameObject id="2032" name="Enchanted Meadow">
       <AttributeBlock blockName="this">
         <attribute treasure_location="meadow" />
         <attribute treasure="large" />
@@ -52596,10 +52684,10 @@
         <attribute roll_5="curse" />
         <attribute roll_6="nothing" />
       </AttributeBlock>
-      <contains id="1910" />
-      <contains id="1953" />
+      <contains id="1913" />
+      <contains id="1956" />
     </GameObject>
-    <GameObject id="2107" name="Toadstool Circle">
+    <GameObject id="2033" name="Toadstool Circle">
       <AttributeBlock blockName="this">
         <attribute treasure_location="toadstool_circle" />
         <attribute treasure="large" />
@@ -52624,9 +52712,9 @@
         <attribute roll_5="power_pit" />
         <attribute roll_6="curse" />
       </AttributeBlock>
-      <contains id="1954" />
+      <contains id="1957" />
     </GameObject>
-    <GameObject id="2108" name="Sacred Statue">
+    <GameObject id="2034" name="Sacred Statue">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute magic="I" />
@@ -52646,7 +52734,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2109" name="Eye of the Idol">
+    <GameObject id="2035" name="Eye of the Idol">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute magic="II" />
@@ -52664,7 +52752,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2110" name="Dragon Essence">
+    <GameObject id="2036" name="Dragon Essence">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute fame="-10" />
@@ -52680,7 +52768,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2111" name="Cloven Hoof">
+    <GameObject id="2037" name="Cloven Hoof">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute fame="-20" />
@@ -52696,7 +52784,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2112" name="Gloves of Strength">
+    <GameObject id="2038" name="Gloves of Strength">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute fame="5" />
@@ -52712,7 +52800,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2113" name="Power Gauntlets">
+    <GameObject id="2039" name="Power Gauntlets">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute fame="3" />
@@ -52727,7 +52815,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2114" name="Handy Gloves">
+    <GameObject id="2040" name="Handy Gloves">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute fame="1" />
@@ -52742,7 +52830,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2115" name="Power Boots">
+    <GameObject id="2041" name="Power Boots">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute notoriety="3" />
@@ -52756,7 +52844,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2116" name="Seven League Boots">
+    <GameObject id="2042" name="Seven League Boots">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute notoriety="2" />
@@ -52773,7 +52861,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2117" name="Deft Gloves">
+    <GameObject id="2043" name="Deft Gloves">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute notoriety="6" />
@@ -52792,7 +52880,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2118" name="Timeless Jewel">
+    <GameObject id="2044" name="Timeless Jewel">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute notoriety="7" />
@@ -52808,7 +52896,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2119" name="Ancient Telescope">
+    <GameObject id="2045" name="Ancient Telescope">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="Extra PEER (mountain only)" />
@@ -52822,7 +52910,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2120" name="Cloak of Mist">
+    <GameObject id="2046" name="Cloak of Mist">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="Extra HIDE" />
@@ -52836,7 +52924,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2121" name="Toadstool Ring">
+    <GameObject id="2047" name="Toadstool Ring">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="Extra SPELL" />
@@ -52850,7 +52938,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2122" name="Quick Boots">
+    <GameObject id="2048" name="Quick Boots">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="MOVE M3" />
@@ -52865,7 +52953,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2123" name="Elven Slippers">
+    <GameObject id="2049" name="Elven Slippers">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="MOVE L2" />
@@ -52879,7 +52967,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2124" name="Shoes of Stealth">
+    <GameObject id="2050" name="Shoes of Stealth">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="MOVE L3, plus HIDE 1 die" />
@@ -52896,7 +52984,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2125" name="Lost Keys">
+    <GameObject id="2051" name="Lost Keys">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="Opens Chest, Crypt, Library, Tomb, Vault and Conjuror’s Remains," />
@@ -52907,7 +52995,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2126" name="Alchemist's Mixture">
+    <GameObject id="2052" name="Alchemist's Mixture">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="One MISSILE attack (discard to WARLOCK)" />
@@ -52925,7 +53013,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2127" name="Potion of Energy">
+    <GameObject id="2053" name="Potion of Energy">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="No combat limit to effort * (discard to warlock)" />
@@ -52938,7 +53026,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2128" name="Draught of Speed">
+    <GameObject id="2054" name="Draught of Speed">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="*'s set speed:  **=2, *=3,  =4 (discard to warlock)" />
@@ -52951,7 +53039,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2129" name="Gripping Dust">
+    <GameObject id="2055" name="Gripping Dust">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="Weapon stays alerted (discard to warlock)" />
@@ -52965,7 +53053,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2130" name="Vial of Healing">
+    <GameObject id="2056" name="Vial of Healing">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="Move all wounds to fatigue (discard to order)" />
@@ -52979,7 +53067,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2131" name="Book of Lore">
+    <GameObject id="2057" name="Book of Lore">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="10" />
@@ -52998,7 +53086,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2132" name="Book of Nature">
+    <GameObject id="2058" name="Book of Nature">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="10" />
@@ -53017,7 +53105,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2133" name="Good Book">
+    <GameObject id="2059" name="Good Book">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="10" />
@@ -53036,7 +53124,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2134" name="Black Book">
+    <GameObject id="2060" name="Black Book">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="10" />
@@ -53057,7 +53145,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2135" name="Ointment of Bite">
+    <GameObject id="2061" name="Ointment of Bite">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="FIGHT hits on tie speed (discard to crone)" />
@@ -53071,7 +53159,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2136" name="Reflecting Grease">
+    <GameObject id="2062" name="Reflecting Grease">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="Any armor stops wounds (discard to crone)" />
@@ -53084,7 +53172,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2137" name="Oil of Poison">
+    <GameObject id="2063" name="Oil of Poison">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="Add sharpness to weapon (discard to crone)" />
@@ -53098,7 +53186,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2138" name="Penetrating Grease">
+    <GameObject id="2064" name="Penetrating Grease">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="Weapon ignores all armor (discard to crone)" />
@@ -53112,7 +53200,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2139" name="Imperial Tabard">
+    <GameObject id="2065" name="Imperial Tabard">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="17" />
@@ -53126,7 +53214,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2140" name="Shielded Lantern">
+    <GameObject id="2066" name="Shielded Lantern">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="8" />
@@ -53138,7 +53226,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2141" name="Royal Sceptre">
+    <GameObject id="2067" name="Royal Sceptre">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="8" />
@@ -53156,7 +53244,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2142" name="Regent of Jewels">
+    <GameObject id="2068" name="Regent of Jewels">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="67" />
@@ -53174,7 +53262,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2143" name="Enchanter's Skull">
+    <GameObject id="2069" name="Enchanter's Skull">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="17" />
@@ -53194,7 +53282,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2144" name="Poultice of Health">
+    <GameObject id="2070" name="Poultice of Health">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="REST counts double (discard to shaman)" />
@@ -53207,7 +53295,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2145" name="Withered Claw">
+    <GameObject id="2071" name="Withered Claw">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="Roll to get WISH and CURSE" />
@@ -53220,7 +53308,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2146" name="Amulet">
+    <GameObject id="2072" name="Amulet">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="Cancels one spell or curse or mesmerize effect in same clearing (discard to shaman)" />
@@ -53233,7 +53321,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2147" name="Ointment of Steel">
+    <GameObject id="2073" name="Ointment of Steel">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="Counts like T armor, any blow (discard to shaman)" />
@@ -53248,7 +53336,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2148" name="Blasted Jewel">
+    <GameObject id="2074" name="Blasted Jewel">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="30" />
@@ -53267,7 +53355,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2149" name="Hidden Ring">
+    <GameObject id="2075" name="Hidden Ring">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="20" />
@@ -53285,7 +53373,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2150" name="Lucky Charm">
+    <GameObject id="2076" name="Lucky Charm">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="14" />
@@ -53298,7 +53386,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2151" name="Flying Carpet">
+    <GameObject id="2077" name="Flying Carpet">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="17" />
@@ -53311,9 +53399,9 @@
         <attribute item="" />
         <attribute super_realm="" />
       </AttributeBlock>
-      <contains id="2223" />
+      <contains id="2102" />
     </GameObject>
-    <GameObject id="2152" name="Dragonfang Necklace">
+    <GameObject id="2078" name="Dragonfang Necklace">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="8" />
@@ -53323,15 +53411,16 @@
         <attribute great="" />
         <attribute fame="12" />
         <attribute native="Lancers" />
-        <attribute target="dragon" />
+        <attribute target="monsters_uncontrolled" />
+        <attribute targeted_monsters="dragon, drake, wyrm" />
         <attribute magic="*" />
         <attribute facing="face_dn" />
         <attribute item="" />
         <attribute super_realm="" />
       </AttributeBlock>
-      <contains id="2224" />
+      <contains id="2103" />
     </GameObject>
-    <GameObject id="2153" name="Phantom Glass">
+    <GameObject id="2079" name="Phantom Glass">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="8" />
@@ -53344,7 +53433,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2154" name="Beast Pipes">
+    <GameObject id="2080" name="Beast Pipes">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="8" />
@@ -53362,7 +53451,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2155" name="Sacred Grail">
+    <GameObject id="2081" name="Sacred Grail">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="12" />
@@ -53378,7 +53467,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2156" name="Flowers of Rest">
+    <GameObject id="2082" name="Flowers of Rest">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="2" />
@@ -53391,7 +53480,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2157" name="Map of Lost City">
+    <GameObject id="2083" name="Map of Lost City">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="3" />
@@ -53404,7 +53493,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2158" name="Map of Lost Castle">
+    <GameObject id="2084" name="Map of Lost Castle">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="3" />
@@ -53417,7 +53506,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2159" name="Map of Ruins">
+    <GameObject id="2085" name="Map of Ruins">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="3" />
@@ -53425,12 +53514,14 @@
         <attribute facing="face_dn" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute fame="5" />
+        <attribute native="Peasants" />
         <attributeList keyName="diemod">
           <attributeVal N0="-1:locate:%ruins%" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2160" name="Crystal Ball">
+    <GameObject id="2086" name="Crystal Ball">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="20" />
@@ -53448,7 +53539,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2161" name="Girtle of Energy">
+    <GameObject id="2087" name="Girtle of Energy">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="13" />
@@ -53461,7 +53552,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2162" name="Eye of the Moon">
+    <GameObject id="2088" name="Eye of the Moon">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="13" />
@@ -53473,9 +53564,9 @@
         <attribute item="" />
         <attribute super_realm="" />
       </AttributeBlock>
-      <contains id="2225" />
+      <contains id="2104" />
     </GameObject>
-    <GameObject id="2163" name="Magic Wand">
+    <GameObject id="2089" name="Magic Wand">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="17" />
@@ -53489,7 +53580,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2164" name="Glimmering Ring">
+    <GameObject id="2090" name="Glimmering Ring">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="15" />
@@ -53506,7 +53597,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2165" name="Glowing Gem">
+    <GameObject id="2091" name="Glowing Gem">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="15" />
@@ -53524,7 +53615,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2166" name="Golden Icon">
+    <GameObject id="2092" name="Golden Icon">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="100" />
@@ -53539,7 +53630,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2167" name="Garb of Speed">
+    <GameObject id="2093" name="Garb of Speed">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="16" />
@@ -53552,7 +53643,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2168" name="Belt of Strength">
+    <GameObject id="2094" name="Belt of Strength">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="16" />
@@ -53565,7 +53656,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2169" name="Elusive Cloak">
+    <GameObject id="2095" name="Elusive Cloak">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="10" />
@@ -53577,7 +53668,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2170" name="Battle Bracelets">
+    <GameObject id="2096" name="Battle Bracelets">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="12" />
@@ -53590,7 +53681,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2171" name="Magic Spectacles">
+    <GameObject id="2097" name="Magic Spectacles">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="6" />
@@ -53604,7 +53695,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2172" name="Bejeweled Dwarf Vest">
+    <GameObject id="2098" name="Bejeweled Dwarf Vest">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="27" />
@@ -53626,7 +53717,7 @@
         <attribute base_price="23" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2173" name="Golden Crown">
+    <GameObject id="2099" name="Golden Crown">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="50" />
@@ -53648,7 +53739,7 @@
         <attribute base_price="46" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2174" name="Golden Arm Band">
+    <GameObject id="2100" name="Golden Arm Band">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="15" />
@@ -53668,7 +53759,7 @@
         <attribute base_price="11" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2175" name="Book of Alchemy">
+    <GameObject id="2101" name="Book of Alchemy">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="10" />
@@ -53688,7 +53779,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2223" name="Flying Carpet Spell">
+    <GameObject id="2102" name="Flying Carpet Spell">
       <AttributeBlock blockName="this">
         <attribute spell="" />
         <attribute duration="permanent" />
@@ -53703,10 +53794,11 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2224" name="Control Dragon">
+    <GameObject id="2103" name="Control Dragon">
       <AttributeBlock blockName="this">
         <attribute duration="day" />
-        <attribute target="dragon" />
+        <attribute target="monsters_uncontrolled" />
+        <attribute targeted_monsters="dragon, drake, wyrm" />
         <attribute text="Control ONE Dragon" />
         <attribute magic_color="purple" />
         <attribute control="" />
@@ -53718,7 +53810,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2225" name="See/Change Weather">
+    <GameObject id="2104" name="See/Change Weather">
       <AttributeBlock blockName="this">
         <attribute duration="instant" />
         <attribute target="weather" />
@@ -53729,7 +53821,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2226" name="Alchemist's Mixture">
+    <GameObject id="2105" name="Alchemist's Mixture">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="One MISSILE attack (discard to WARLOCK)" />
@@ -53748,7 +53840,7 @@
         <attribute super_realm_treasure="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2227" name="Amulet">
+    <GameObject id="2106" name="Amulet">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="Cancels one spell or curse or mesmerize effect in same clearing (discard to shaman)" />
@@ -53762,7 +53854,7 @@
         <attribute super_realm_treasure="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2228" name="Oil of Poison">
+    <GameObject id="2107" name="Oil of Poison">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="Add sharpness to weapon (discard to crone)" />
@@ -53777,7 +53869,7 @@
         <attribute super_realm_treasure="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2229" name="Ointment of Bite">
+    <GameObject id="2108" name="Ointment of Bite">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="FIGHT hits on tie speed (discard to crone)" />
@@ -53792,7 +53884,7 @@
         <attribute super_realm_treasure="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2230" name="Penetrating Grease">
+    <GameObject id="2109" name="Penetrating Grease">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="Weapon ignores all armor (discard to crone)" />
@@ -53807,7 +53899,7 @@
         <attribute super_realm_treasure="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2231" name="Potion of Energy">
+    <GameObject id="2110" name="Potion of Energy">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="No combat limit to effort * (discard to warlock)" />
@@ -53821,7 +53913,7 @@
         <attribute super_realm_treasure="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2232" name="Reflecting Grease">
+    <GameObject id="2111" name="Reflecting Grease">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="Any armor stops wounds (discard to crone)" />
@@ -53835,7 +53927,7 @@
         <attribute super_realm_treasure="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2233" name="Vial of Healing">
+    <GameObject id="2112" name="Vial of Healing">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="Move all wounds to fatigue (discard to order)" />
@@ -53850,7 +53942,7 @@
         <attribute super_realm_treasure="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2234" name="Withered Claw">
+    <GameObject id="2113" name="Withered Claw">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="Roll to get WISH and CURSE" />
@@ -53864,7 +53956,7 @@
         <attribute super_realm_treasure="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2235" name="Scroll of Alchemy">
+    <GameObject id="2114" name="Scroll of Alchemy">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="5" />
@@ -53879,6 +53971,813 @@
         <attribute super_realm="" />
         <attribute super_realm_treasure="" />
         <attribute native="Enchanters" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2115" name="Make Whole">
+      <AttributeBlock blockName="this">
+        <attribute spell="I" />
+        <attribute duration="instant" />
+        <attribute target="character" />
+        <attribute text="repair damage, wounds, and fatigue" />
+        <attribute magic_color="white" />
+        <attribute heal="" />
+        <attribute repair="" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2116" name="Small Blessing">
+      <AttributeBlock blockName="this">
+        <attribute spell="I" />
+        <attribute duration="instant" />
+        <attribute target="character" />
+        <attribute text="Gets one WISH (roll)" />
+        <attribute magic_color="white" />
+        <attribute wish="" />
+        <attribute table="wish" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2117" name="Witch's Brew">
+      <AttributeBlock blockName="this">
+        <attribute spell="II" />
+        <attribute duration="day" />
+        <attribute target="magic(II,VIII)" />
+        <attribute text="Change MAGIC II to IV and VIII to III" />
+        <attribute magic_color="gray" />
+        <attribute ii="IV" />
+        <attribute viii="III" />
+        <attribute magic_change="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2118" name="Talk to Wise Bird">
+      <AttributeBlock blockName="this">
+        <attribute spell="II" />
+        <attribute duration="instant" />
+        <attribute target="character" />
+        <attribute text="Immediate PEER in any hex" />
+        <attribute magic_color="gold" />
+        <attribute instant_peer="" />
+        <attribute target_client="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2119" name="Peace">
+      <AttributeBlock blockName="this">
+        <attribute spell="I" />
+        <attribute duration="combat" />
+        <attribute target="attacker" />
+        <attribute text="Cannot attack until attacked" />
+        <attribute magic_color="white" />
+        <attribute sp_peace="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2120" name="Exorcise">
+      <AttributeBlock blockName="this">
+        <attribute spell="I" />
+        <attribute duration="instant" />
+        <attribute target="clearing" />
+        <attribute text="Remove all magic demons and imps" />
+        <attribute magic_color="white" />
+        <attribute exorcise="" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attributeList keyName="target_clearing">
+          <attributeVal N0="characters" />
+          <attributeVal N1="demons" />
+          <attributeVal N2="spells" />
+          <attributeVal N3="curses" />
+        </attributeList>
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2121" name="Prophecy">
+      <AttributeBlock blockName="this">
+        <attribute spell="II" />
+        <attribute duration="day" />
+        <attribute target="character" />
+        <attribute text="Do not write move in advance" />
+        <attribute magic_color="purple" />
+        <attribute daytime_actions="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2122" name="Fog">
+      <AttributeBlock blockName="this">
+        <attribute spell="II" />
+        <attribute duration="day" />
+        <attribute target="tile" />
+        <attribute text="Cannot PEER normally in hex" />
+        <attribute magic_color="gray" />
+        <attribute sp_no_peer="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2123" name="Enchant Artifact">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="permanent" />
+        <attribute target="artifact" />
+        <attribute text="Add spell and MAGIC chit to artifact" />
+        <attribute magic_color="purple" />
+        <attribute enchant="" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2124" name="Elven Grace">
+      <AttributeBlock blockName="this">
+        <attribute spell="III" />
+        <attribute duration="combat" />
+        <attribute target="individual" />
+        <attribute text="Change MOVE L=1,M=2,H=3,T=4,X=5" />
+        <attribute magic_color="gold" />
+        <attribute l="1" />
+        <attribute m="2" />
+        <attribute h="3" />
+        <attribute t="4" />
+        <attribute x="5" />
+        <attribute move_speed_change="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2125" name="Faerie Lights">
+      <AttributeBlock blockName="this">
+        <attribute spell="III" />
+        <attribute duration="day" />
+        <attribute target="magic(III,VII)" />
+        <attribute text="Change MAGIC III to II and VII to VI" />
+        <attribute magic_color="gold" />
+        <attribute iii="II" />
+        <attribute vii="VI" />
+        <attribute magic_change="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2126" name="See Hidden Signs">
+      <AttributeBlock blockName="this">
+        <attribute spell="III" />
+        <attribute duration="day" />
+        <attribute target="character" />
+        <attribute text="Extra SEARCH phase" />
+        <attribute magic_color="gold" />
+        <attribute spell_extra_action="S" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute upg_swap_out="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2127" name="Elemental Spirit">
+      <AttributeBlock blockName="this">
+        <attribute spell="IV" />
+        <attribute duration="day" />
+        <attribute target="magic(IV,VI)" />
+        <attribute text="Change MAGIC IV to VIII and VI to V" />
+        <attribute magic_color="purple" />
+        <attribute iv="VIII" />
+        <attribute vi="V" />
+        <attribute magic_change="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2128" name="Lost">
+      <AttributeBlock blockName="this">
+        <attribute spell="III" />
+        <attribute duration="permanent" />
+        <attribute target="character,tile" />
+        <attribute text="MOVE randomly (roll for clearing)" />
+        <attribute magic_color="gold" />
+        <attribute sp_mv_random="" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2129" name="Illusion">
+      <AttributeBlock blockName="this">
+        <attribute spell="III" />
+        <attribute duration="permanent" />
+        <attribute target="character,tile" />
+        <attribute text="Add one to all SEARCH die rolls" />
+        <attribute magic_color="gold" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attributeList keyName="diemod">
+          <attributeVal N0="+1:locate,loot,peer,readrunes,magicsight:all" />
+        </attributeList>
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2130" name="Stones Fly">
+      <AttributeBlock blockName="this">
+        <attribute spell="II" />
+        <attribute duration="attack" />
+        <attribute target="multiple" />
+        <attribute text="MISSILE attack on each target (specify)" />
+        <attribute magic_color="gray" />
+        <attribute sharpness="1" />
+        <attribute strength="L" />
+        <attribute length="15" />
+        <attribute missile="magic" />
+        <attribute min_targets="4" />
+        <attribute host_okay="" />
+        <attribute table="magicmissil" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2131" name="Ask Demon">
+      <AttributeBlock blockName="this">
+        <attribute spell="V" />
+        <attribute duration="instant" />
+        <attribute target="monsters_uncontrolled" />
+        <attribute targeted_monsters="demon, devil" />
+        <attribute text="Ask question with yes/no or number answer" />
+        <attribute magic_color="black" />
+        <attribute askdemon="" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2132" name="Control Bats">
+      <AttributeBlock blockName="this">
+        <attribute spell="VII" />
+        <attribute duration="day" />
+        <attribute target="monsters_uncontrolled" />
+        <attribute targeted_monsters="bat" />
+        <attribute text="MOVE and FIGHT with bats" />
+        <attribute magic_color="any" />
+        <attribute control="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2133" name="Lightning Bolt">
+      <AttributeBlock blockName="this">
+        <attribute spell="IV" />
+        <attribute duration="attack" />
+        <attribute target="attacker" />
+        <attribute text="MISSILE attack mountain only" />
+        <attribute magic_color="purple" />
+        <attribute sharpness="3" />
+        <attribute strength="M" />
+        <attribute length="18" />
+        <attribute clearing_req="M" />
+        <attribute missile="magic" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2134" name="Fiery Blast">
+      <AttributeBlock blockName="this">
+        <attribute spell="IV" />
+        <attribute duration="attack" />
+        <attribute target="multiple" />
+        <attribute text="MISSILE attack on each target" />
+        <attribute magic_color="purple" />
+        <attribute sharpness="3" />
+        <attribute strength="L" />
+        <attribute length="13" />
+        <attribute missile="magic" />
+        <attribute host_okay="" />
+        <attribute table="magicmissil" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2135" name="Blazing Light">
+      <AttributeBlock blockName="this">
+        <attribute spell="IV" />
+        <attribute duration="day" />
+        <attribute target="clearing" />
+        <attribute text="Extra phase (cave only)" />
+        <attribute magic_color="purple" />
+        <attribute clearing_req="C" />
+        <attribute extra_cave_phase="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute upg_swap_out="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attributeList keyName="target_clearing">
+          <attributeVal N0="clearing" />
+        </attributeList>
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2136" name="Roof Collapses">
+      <AttributeBlock blockName="this">
+        <attribute spell="IV" />
+        <attribute duration="attack" />
+        <attribute target="clearing" />
+        <attribute text="All attacked SMASH H4 (cave only)" />
+        <attribute magic_color="purple" />
+        <attribute attack_speed="4" />
+        <attribute strength="H" />
+        <attribute length="18" />
+        <attribute clearing_req="C" />
+        <attribute box_req="3" />
+        <attribute host_okay="" />
+        <attribute nobattle="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attributeList keyName="target_clearing">
+          <attributeVal N0="combatants" />
+        </attributeList>
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2137" name="Pentangle">
+      <AttributeBlock blockName="this">
+        <attribute spell="V" />
+        <attribute duration="combat" />
+        <attribute target="individual" />
+        <attribute text="Not affected by spells, curses, demons, or imp" />
+        <attribute magic_color="black" />
+        <attribute magic_protection="" />
+        <attribute nullify="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2138" name="Curse">
+      <AttributeBlock blockName="this">
+        <attribute spell="V" />
+        <attribute duration="instant" />
+        <attribute target="character" />
+        <attribute text="Gets one CURSE (roll)" />
+        <attribute magic_color="gray" />
+        <attribute curse="" />
+        <attribute table="curse" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2139" name="Phantasm">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="day" />
+        <attribute target="character" />
+        <attribute text="Move unseen searcher (PEER only), can SPELL" />
+        <attribute magic_color="purple" />
+        <attribute spawn="phantasm" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2140" name="Transform">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="permanent" />
+        <attribute target="individual" />
+        <attribute text="Become beast (roll for TRANSFORM)" />
+        <attribute magic_color="purple" />
+        <attribute transmorph="roll" />
+        <attribute spell_strength="2" />
+        <attribute table="transform" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll1">
+        <attribute vulnerability="T" />
+        <attribute strength="T" />
+        <attribute attack_speed="4" />
+        <attribute move_speed="4" />
+        <attribute icon_type="dragon_transform" />
+        <attribute flying="" />
+        <attribute light_color="lightblue" />
+        <attribute dark_color="red" />
+        <attribute name="Tremendous Dragon" />
+        <attribute icon_folder="monsters" />
+        <attribute armored="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll2">
+        <attribute vulnerability="H" />
+        <attribute strength="H" />
+        <attribute attack_speed="3" />
+        <attribute move_speed="4" />
+        <attribute icon_type="lion" />
+        <attribute walk_woods="" />
+        <attribute light_color="gold" />
+        <attribute dark_color="orange" />
+        <attribute name="Lion" />
+        <attribute icon_folder="monsters" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll3">
+        <attribute vulnerability="M" />
+        <attribute strength="M" />
+        <attribute attack_speed="2" />
+        <attribute move_speed="2" />
+        <attribute icon_type="eagle" />
+        <attribute flying="" />
+        <attribute light_color="gray" />
+        <attribute dark_color="darkgray" />
+        <attribute name="Eagle" />
+        <attribute icon_folder="monsters" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll4">
+        <attribute vulnerability="L" />
+        <attribute move_speed="1" />
+        <attribute icon_type="bird" />
+        <attribute flying="" />
+        <attribute light_color="lightblue" />
+        <attribute dark_color="blue" />
+        <attribute name="Bird" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll5">
+        <attribute vulnerability="L" />
+        <attribute move_speed="2" />
+        <attribute icon_type="squirrel" />
+        <attribute walk_woods="" />
+        <attribute light_color="peach" />
+        <attribute dark_color="brown" />
+        <attribute name="Squirrel" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll6">
+        <attribute vulnerability="L" />
+        <attribute move_speed="3" />
+        <attribute walk_woods="" />
+        <attribute icon_type="frog" />
+        <attribute light_color="lightgreen" />
+        <attribute dark_color="forestgreen" />
+        <attribute name="Frog" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2141" name="Sense Danger">
+      <AttributeBlock blockName="this">
+        <attribute spell="VII" />
+        <attribute duration="permanent" />
+        <attribute target="character" />
+        <attribute text="Extra ALERT phase/turn" />
+        <attribute magic_color="purple" />
+        <attribute spell_extra_action="A" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2142" name="Violent Storm">
+      <AttributeBlock blockName="this">
+        <attribute spell="IV" />
+        <attribute duration="day" />
+        <attribute target="tile" />
+        <attribute text="Roll to see number of phases lost" />
+        <attribute magic_color="purple" />
+        <attribute sp_stormy="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2143" name="Hurricane Winds">
+      <AttributeBlock blockName="this">
+        <attribute spell="IV" />
+        <attribute duration="move" />
+        <attribute target="individual + hex" />
+        <attribute text="Must FLY T1 one hex (mountain only)" />
+        <attribute magic_color="purple" />
+        <attribute clearing_req="M" />
+        <attribute blows_target="" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2144" name="Absorb Essence">
+      <AttributeBlock blockName="this">
+        <attribute spell="V" />
+        <attribute duration="permanent" />
+        <attribute target="monster_alive" />
+        <attribute text="Become monster" />
+        <attribute magic_color="black" />
+        <attribute transmorph="target" />
+        <attribute host_okay="" />
+        <attribute spell_strength="1" />
+        <attribute affects_caster="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2145" name="Power of the Pit">
+      <AttributeBlock blockName="this">
+        <attribute spell="V" />
+        <attribute duration="instant" />
+        <attribute target="individual" />
+        <attribute text="Roll for Power of the Pit attack" />
+        <attribute magic_color="black" />
+        <attribute length="17" />
+        <attribute powerofthepit="" />
+        <attribute table="powerofthepit" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2146" name="Bad Luck">
+      <AttributeBlock blockName="this">
+        <attribute spell="VIII" />
+        <attribute duration="permanent" />
+        <attribute target="character" />
+        <attribute text="Add one to all die rolls" />
+        <attribute magic_color="any" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attributeList keyName="diemod">
+          <attributeVal N0="+1:all:all" />
+        </attributeList>
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2147" name="Poison">
+      <AttributeBlock blockName="this">
+        <attribute spell="VIII" />
+        <attribute duration="combat" />
+        <attribute target="weapon" />
+        <attribute text="Add one sharpness to damage caused by weapon" />
+        <attribute magic_color="gray" />
+        <attribute add_sharpness="1" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2148" name="Remedy">
+      <AttributeBlock blockName="this">
+        <attribute spell="VIII" />
+        <attribute duration="instant" />
+        <attribute target="spell,curse" />
+        <attribute text="Cancels one spell or curse" />
+        <attribute magic_color="gray" />
+        <attribute cancel="" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2149" name="Persuade">
+      <AttributeBlock blockName="this">
+        <attribute spell="III" />
+        <attribute duration="day" />
+        <attribute target="human group" />
+        <attribute text="Group becomes FRIENDLY (works on giants and ogres too)" />
+        <attribute magic_color="gold" />
+        <attribute pacify="1" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2150" name="Deal with Orcs and Goblins">
+      <AttributeBlock blockName="this">
+        <attribute spell="VIII" />
+        <attribute duration="day" />
+        <attribute target="monsters_uncontrolled" />
+        <attribute targeted_monsters="orc, goblin" />
+        <attribute text="Group becomes NEUTRAL (can TRADE/HIRE)" />
+        <attribute magic_color="black" />
+        <attribute pacify="0" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2151" name="Unleash Power">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="day" />
+        <attribute target="magic(all)" />
+        <attribute text="MOVE/FIGHT 2,3=L, 4=M, 5=H, 6=T" />
+        <attribute magic_color="purple" />
+        <attribute action_change="" />
+        <attribute s2="L" />
+        <attribute s3="L" />
+        <attribute s4="M" />
+        <attribute s5="H" />
+        <attribute s6="T" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2152" name="Dissolve Spell">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="instant" />
+        <attribute target="spell" />
+        <attribute text="Cancel spell" />
+        <attribute magic_color="purple" />
+        <attribute cancel="" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2153" name="Melt Into Mist">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="permanent" />
+        <attribute target="individual" />
+        <attribute text="Can only MOVE T4 (no fight)" />
+        <attribute magic_color="purple" />
+        <attribute transmorph="mist" />
+        <attribute disengage="ALL" />
+        <attribute host_okay="" />
+        <attribute nullify="" />
+        <attribute spell_strength="3" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="mist">
+        <attribute vulnerability="T" />
+        <attribute move_speed="4" />
+        <attribute light_color="gray" />
+        <attribute dark_color="darkgray" />
+        <attribute icon_type="mist" />
+        <attribute mist_like="" />
+        <attribute name="Mist" />
+        <attribute icon_folder="monsters" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2154" name="World Fades">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="permanent" />
+        <attribute target="character" />
+        <attribute text="Roll HIDE each round - Use MAGIC SIGHT" />
+        <attribute magic_color="black" />
+        <attribute combat_hide="" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2155" name="Blend Into Background">
+      <AttributeBlock blockName="this">
+        <attribute spell="II" />
+        <attribute duration="day" />
+        <attribute target="leader" />
+        <attribute text="Extra HIDE phase" />
+        <attribute magic_color="gray" />
+        <attribute spell_extra_action="H" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute upg_swap_out="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2156" name="Broomstick">
+      <AttributeBlock blockName="this">
+        <attribute spell="V" />
+        <attribute duration="move" />
+        <attribute target="character" />
+        <attribute text="Can FLY L1 in encounter combat and movement" />
+        <attribute magic_color="black" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="fly_chit">
+        <attribute strength="L" />
+        <attribute speed="1" />
+        <attribute fly_chit="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2157" name="Premonition">
+      <AttributeBlock blockName="this">
+        <attribute spell="VII" />
+        <attribute duration="day" />
+        <attribute target="character" />
+        <attribute text="Choose when your written move is executed" />
+        <attribute magic_color="gray" />
+        <attribute choose_turn="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2158" name="Protection from Magic">
+      <AttributeBlock blockName="this">
+        <attribute spell="VII" />
+        <attribute duration="phase" />
+        <attribute target="character" />
+        <attribute text="Immune to spells for one phase" />
+        <attribute magic_color="gold" />
+        <attribute host_okay="" />
+        <attribute magic_protection="" />
+        <attribute nullify="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="phase_chit">
+        <attribute phase_chit="" />
+        <attribute text="Protection from Magic" />
+      </AttributeBlock>
+      <AttributeBlock blockName="phase_chit_effects">
+        <attribute magic_protection="" />
+        <attribute nullify="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2159" name="Peace with Nature">
+      <AttributeBlock blockName="this">
+        <attribute spell="VII" />
+        <attribute duration="permanent" />
+        <attribute target="leader" />
+        <attribute text="Not attacked by warning or sound chits" />
+        <attribute magic_color="gold" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute peace_with_nature="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2160" name="Guide Beast">
+      <AttributeBlock blockName="this">
+        <attribute spell="VIII" />
+        <attribute duration="day" />
+        <attribute target="monsters_uncontrolled" />
+        <attribute targeted_monsters="spider, octopus, scorpion" />
+        <attribute text="MOVE and FIGHT with one monster" />
+        <attribute magic_color="gray" />
+        <attribute control="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2161" name="Whistle for Monsters">
+      <AttributeBlock blockName="this">
+        <attribute spell="VIII" />
+        <attribute duration="instant" />
+        <attribute target="sound" />
+        <attribute text="Move sound chit to or from your hex" />
+        <attribute magic_color="purple" />
+        <attribute move_sound="" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2162" name="Mesmerize">
+      <AttributeBlock blockName="this">
+        <attribute spell="VIII" />
+        <attribute target="character" />
+        <attribute text="Spellcaster rolls for Mesmerize, applies result to target." />
+        <attribute magic_color="black" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute duration="instant" />
+        <attribute mesmerize="" />
+        <attribute super_realm_spell="" />
       </AttributeBlock>
     </GameObject>
   </objects>
@@ -54217,10 +55116,10 @@
       <Extract from="ALL" to="LARGE_TREASURES" keyVals="treasure=large" />
       <Create newPool="SMALL_TREASURES" />
       <Extract from="ALL" to="SMALL_TREASURES" keyVals="treasure=small" />
-      <Add from="LARGE_TREASURES" targetObjectID="2102" count="2" transferType="Random" />
-      <Add from="LARGE_TREASURES" targetObjectID="2103" count="1" transferType="Random" />
-      <Add from="LARGE_TREASURES" targetObjectID="2105" count="1" transferType="Random" />
-      <Add from="LARGE_TREASURES" targetObjectID="2107" count="1" transferType="Random" />
+      <Add from="LARGE_TREASURES" targetObjectID="2028" count="2" transferType="Random" />
+      <Add from="LARGE_TREASURES" targetObjectID="2029" count="1" transferType="Random" />
+      <Add from="LARGE_TREASURES" targetObjectID="2031" count="1" transferType="Random" />
+      <Add from="LARGE_TREASURES" targetObjectID="2033" count="1" transferType="Random" />
       <Move from="TWT" to="LARGE_TREASURES" count="6" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="1220" count="5" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="1221" count="3" transferType="Random" />
@@ -54318,20 +55217,20 @@
       <Add from="SPELL_V" targetObjectID="1867" count="1" transferType="Random" />
       <Add from="SPELL_VI" targetObjectID="1890" count="1" transferType="Random" />
       <Add from="SPELL_VII" targetObjectID="1900" count="1" transferType="Random" />
-      <Add from="SPELL_II" targetObjectID="2109" count="1" transferType="Random" />
-      <Add from="SPELL_IV" targetObjectID="2131" count="4" transferType="Random" />
-      <Add from="SPELL_III" targetObjectID="2132" count="2" transferType="Random" />
-      <Add from="SPELL_II" targetObjectID="2132" count="2" transferType="Random" />
-      <Add from="SPELL_VII" targetObjectID="2133" count="2" transferType="Random" />
-      <Add from="SPELL_I" targetObjectID="2133" count="2" transferType="Random" />
-      <Add from="SPELL_VIII" targetObjectID="2134" count="2" transferType="Random" />
-      <Add from="SPELL_V" targetObjectID="2134" count="2" transferType="Random" />
-      <Add from="SPELL_IV" targetObjectID="2143" count="1" transferType="Random" />
-      <Add from="SPELL_VI" targetObjectID="2149" count="1" transferType="Random" />
-      <Add from="SPELL_III" targetObjectID="2164" count="1" transferType="Random" />
-      <Add from="SPELL_VII" targetObjectID="2165" count="1" transferType="Random" />
-      <Add from="SPELL_VI" targetObjectID="2175" count="4" transferType="Random" />
-	  <Add from="SPELL_VI" targetObjectID="2235" count="2" transferType="Random" />
+      <Add from="SPELL_II" targetObjectID="2035" count="1" transferType="Random" />
+      <Add from="SPELL_IV" targetObjectID="2057" count="4" transferType="Random" />
+      <Add from="SPELL_III" targetObjectID="2058" count="2" transferType="Random" />
+      <Add from="SPELL_II" targetObjectID="2058" count="2" transferType="Random" />
+      <Add from="SPELL_VII" targetObjectID="2059" count="2" transferType="Random" />
+      <Add from="SPELL_I" targetObjectID="2059" count="2" transferType="Random" />
+      <Add from="SPELL_VIII" targetObjectID="2060" count="2" transferType="Random" />
+      <Add from="SPELL_V" targetObjectID="2060" count="2" transferType="Random" />
+      <Add from="SPELL_IV" targetObjectID="2069" count="1" transferType="Random" />
+      <Add from="SPELL_VI" targetObjectID="2075" count="1" transferType="Random" />
+      <Add from="SPELL_III" targetObjectID="2090" count="1" transferType="Random" />
+      <Add from="SPELL_VII" targetObjectID="2091" count="1" transferType="Random" />
+      <Add from="SPELL_VI" targetObjectID="2101" count="4" transferType="Random" />
+      <Add from="SPELL_VI" targetObjectID="2114" count="2" transferType="Random" />
       <Create newPool="LEFTOVER_SPELLS" />
       <Extract from="SPELL_I" to="LEFTOVER_SPELLS" keyVals="spell" />
       <Extract from="SPELL_II" to="LEFTOVER_SPELLS" keyVals="spell" />
