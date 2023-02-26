@@ -21,6 +21,10 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		try {
 			lightColor = MagicRealmColor.getColor(getAttribute("trot","chit_color"));
 			darkColor = MagicRealmColor.getColor(getAttribute("gallop","chit_color"));
+			if (gameObject.hasThisAttribute("super_realm")) {
+				lightColor = Color.white;
+				darkColor = Color.white;
+			}
 		}
 		catch(Exception ex) {
 			System.out.println("problem with "+obj.getName()+": "+ex);
