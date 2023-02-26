@@ -291,7 +291,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	}
 	protected String getIconFolder() {
 		String iconDir = getGameObject().getThisAttribute(Constants.ICON_FOLDER);
-		if (useColorIcons()) {
+		if (useColorIcons() && !gameObject.hasThisAttribute("super_realm")) {
 			iconDir = iconDir+"_c";
 		}
 		return iconDir;
@@ -312,7 +312,15 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		String icon_type = gameObject.getThisAttribute(Constants.ICON_TYPE);
 		if (icon_type != null) {
 			if (isDisplayStyleFrenzel()) {
-				drawIcon(g, getIconFolder(), icon_type, 0.6,-5,1,null);
+				double size = 0.6;
+				int yOffset = 1;
+				if (gameObject.hasThisAttribute(Constants.ICON_SIZE)) {
+					size = Double.parseDouble(gameObject.getThisAttribute(Constants.ICON_SIZE));
+				}
+				if (gameObject.hasThisAttribute(Constants.ICON_Y_OFFSET)) {
+					yOffset = getThisInt(Constants.ICON_Y_OFFSET);
+				}
+				drawIcon(g, getIconFolder(), icon_type, size,-5,yOffset,null);
 			}
 			else {
 				if (chitSize == T_CHIT_SIZE) {
