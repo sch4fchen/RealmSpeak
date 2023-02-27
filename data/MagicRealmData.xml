@@ -34584,6 +34584,7 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="0.4" />
+        <attribute icon_y_offset="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -34810,13 +34811,14 @@
         <attribute notoriety="7" />
         <attribute armored="" />
         <attribute super_realm="" />
-        <attribute icon_type="serpent" />
+        <attribute icon_type="waterSerpent" />
         <attribute setup_start="Den" />
         <attribute monster_die="2" />
         <attribute base_price="7" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -34901,9 +34903,11 @@
         <attribute setup_start="Vault" />
         <attribute monster_die="4" />
         <attribute base_price="8" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="5" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -34925,16 +34929,18 @@
         <attribute vulnerability="H" />
         <attribute fame="5" />
         <attribute notoriety="5" />
-        <attribute icon_type="skull" />
+        <attribute icon_type="draug" />
         <attribute setup_start="Tomb" />
         <attribute monster_die="4" />
         <attribute base_price="5" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute needs_init="" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="0.9" />
+        <attribute icon_y_offset="6" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -35075,14 +35081,15 @@
         <attribute fame="2" />
         <attribute notoriety="1" />
         <attribute super_realm="" />
-        <attribute icon_type="carnoplant" />
+        <attribute icon_type="succubus" />
         <attribute setup_start="Garden" />
         <attribute monster_die="6" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute demon="" />
+        <attribute icon_size="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -36745,13 +36752,14 @@
         <attribute fame="8" />
         <attribute notoriety="8" />
         <attribute super_realm="" />
-        <attribute icon_type="firegolem" />
+        <attribute icon_type="golem" />
         <attribute setup_start="Golem Box" />
         <attribute monster_die="4" />
         <attribute base_price="8" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute icon_size="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36775,13 +36783,14 @@
         <attribute fame="8" />
         <attribute notoriety="8" />
         <attribute super_realm="" />
-        <attribute icon_type="firegolem" />
+        <attribute icon_type="golem" />
         <attribute setup_start="Golem Box" />
         <attribute monster_die="4" />
         <attribute base_price="8" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute icon_size="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36805,13 +36814,14 @@
         <attribute fame="8" />
         <attribute notoriety="8" />
         <attribute super_realm="" />
-        <attribute icon_type="firegolem" />
+        <attribute icon_type="golem" />
         <attribute setup_start="Golem Box" />
         <attribute monster_die="4" />
         <attribute base_price="8" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute icon_size="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -37097,9 +37107,10 @@
         <attribute setup_start="Wraith Box" />
         <attribute monster_die="2" />
         <attribute base_price="3" />
-        <attribute icon_folder="monsters1" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute icon_size="1.1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -37126,9 +37137,10 @@
         <attribute setup_start="Wraith Box" />
         <attribute monster_die="2" />
         <attribute base_price="3" />
-        <attribute icon_folder="monsters1" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute icon_size="1.1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -37155,9 +37167,10 @@
         <attribute setup_start="Wraith Box" />
         <attribute monster_die="2" />
         <attribute base_price="3" />
-        <attribute icon_folder="monsters1" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute icon_size="1.1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -37184,9 +37197,10 @@
         <attribute setup_start="Wraith Box" />
         <attribute monster_die="2" />
         <attribute base_price="3" />
-        <attribute icon_folder="monsters1" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute icon_size="1.1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39687,14 +39701,16 @@
         <attribute vulnerability="H" />
         <attribute fame="5" />
         <attribute notoriety="5" />
-        <attribute icon_type="dragon_flying" />
+        <attribute icon_type="fireDragon" />
         <attribute setup_start="Flying Dragons Box" />
         <attribute monster_die="1" />
         <attribute flying="" />
         <attribute base_price="5" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute super_realm="" />
+        <attribute icon_size="0.4" />
+        <attribute icon_y_offset="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39716,14 +39732,16 @@
         <attribute vulnerability="H" />
         <attribute fame="5" />
         <attribute notoriety="5" />
-        <attribute icon_type="dragon_flying" />
+        <attribute icon_type="fireDragon" />
         <attribute setup_start="Flying Dragons Box" />
         <attribute monster_die="1" />
         <attribute flying="" />
         <attribute base_price="5" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute super_realm="" />
+        <attribute icon_size="0.4" />
+        <attribute icon_y_offset="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39745,14 +39763,16 @@
         <attribute vulnerability="H" />
         <attribute fame="5" />
         <attribute notoriety="5" />
-        <attribute icon_type="dragon_flying" />
+        <attribute icon_type="fireDragon" />
         <attribute setup_start="Flying Dragons Box" />
         <attribute monster_die="1" />
         <attribute flying="" />
         <attribute base_price="5" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute super_realm="" />
+        <attribute icon_size="0.4" />
+        <attribute icon_y_offset="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39774,15 +39794,17 @@
         <attribute vulnerability="T" />
         <attribute fame="12" />
         <attribute notoriety="12" />
-        <attribute icon_type="dragon_flying" />
+        <attribute icon_type="fireDragon" />
         <attribute setup_start="T Flying Dragon Box" />
         <attribute monster_die="1" />
         <attribute flying="" />
         <attribute base_price="12" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute super_realm="" />
+        <attribute icon_size="0.4" />
+        <attribute icon_y_offset="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39803,9 +39825,9 @@
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute part="" />
-        <attribute icon_type="dragon_head_flying" />
+        <attribute icon_type="fireBreath" />
         <attribute dragon_missile="" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -39923,13 +39945,14 @@
         <attribute vulnerability="M" />
         <attribute fame="0" />
         <attribute notoriety="1" />
-        <attribute icon_type="wolf" />
+        <attribute icon_type="direWolf" />
         <attribute setup_start="Wolves Box" />
         <attribute monster_die="3" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute super_realm="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39950,13 +39973,14 @@
         <attribute vulnerability="M" />
         <attribute fame="0" />
         <attribute notoriety="1" />
-        <attribute icon_type="wolf" />
+        <attribute icon_type="direWolf" />
         <attribute setup_start="Wolves Box" />
         <attribute monster_die="3" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute super_realm="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39977,13 +40001,14 @@
         <attribute vulnerability="M" />
         <attribute fame="0" />
         <attribute notoriety="1" />
-        <attribute icon_type="wolf" />
+        <attribute icon_type="direWolf" />
         <attribute setup_start="Wolves Box" />
         <attribute monster_die="3" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute super_realm="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40004,13 +40029,14 @@
         <attribute vulnerability="M" />
         <attribute fame="0" />
         <attribute notoriety="1" />
-        <attribute icon_type="wolf" />
+        <attribute icon_type="direWolf" />
         <attribute setup_start="Wolves Box" />
         <attribute monster_die="3" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute super_realm="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40031,13 +40057,14 @@
         <attribute vulnerability="M" />
         <attribute fame="0" />
         <attribute notoriety="1" />
-        <attribute icon_type="wolf" />
+        <attribute icon_type="direWolf" />
         <attribute setup_start="Wolves Box" />
         <attribute monster_die="3" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute super_realm="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40058,13 +40085,14 @@
         <attribute vulnerability="M" />
         <attribute fame="0" />
         <attribute notoriety="1" />
-        <attribute icon_type="wolf" />
+        <attribute icon_type="direWolf" />
         <attribute setup_start="Wolves Box" />
         <attribute monster_die="3" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute super_realm="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
