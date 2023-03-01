@@ -24,7 +24,7 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 		
 		{"Spirits/Undead","Ghost","Shade","Skeleton","Skeletal Archer","Skeletal Swordsman","Swamp Haunt","Tomb Guard","Wraith","Zombie","Sword Skeleton","Spear Skeleton","Axe Skeleton","Bow Skeleton","Vampire","Skeleton Knight"},
 		
-		{"Demons","Winged Demon","Demon","Imp","Balrog","Gargyle","T Gargyle","H Gargyle","Succubus"},
+		{"Demons","Winged Demon","Demon","Imp","Balrog","Gargoyle","T Gargoyle","H Gargoyle","Succubus"},
 		{"Elementals","Earth Elemental","Air Elemental","Fire Elemental","Water Elemental","Prism Anomaly","Purple Anomaly","Gold Anomaly","Grey Anomaly","Golem","Titan","Colossus"},
 	};
 
