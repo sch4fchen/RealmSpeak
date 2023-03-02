@@ -34873,14 +34873,15 @@
         <attribute fame="15" />
         <attribute notoriety="15" />
         <attribute super_realm="" />
-        <attribute icon_type="giant" />
+        <attribute icon_type="stoneTitan" />
         <attribute setup_start="Tower" />
         <attribute monster_die="3" />
         <attribute base_price="15" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute no_change_tactics="" />
+        <attribute icon_size="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="5" />
@@ -35053,14 +35054,15 @@
         <attribute fame="15" />
         <attribute notoriety="15" />
         <attribute super_realm="" />
-        <attribute icon_type="giant" />
+        <attribute icon_type="stoneTitan2" />
         <attribute setup_start="Spire" />
         <attribute monster_die="3" />
         <attribute base_price="15" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute no_change_tactics="" />
+        <attribute icon_size="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="4" />
@@ -35117,13 +35119,14 @@
         <attribute fame="5" />
         <attribute notoriety="5" />
         <attribute super_realm="" />
-        <attribute icon_type="minotaur" />
+        <attribute icon_type="minotaurKing" />
         <attribute setup_start="Maze" />
         <attribute monster_die="6" />
         <attribute base_price="5" />
-        <attribute icon_folder="monsters1" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute icon_size="0.8" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35149,9 +35152,10 @@
         <attribute part="" />
         <attribute shield="" />
         <attribute vulnerability="T" />
-        <attribute icon_type="minotaur_buckler" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="shield_polished" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
+        <attribute icon_size="0.6" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute strength="T" />
@@ -35169,16 +35173,17 @@
         <attribute fame="4" />
         <attribute notoriety="4" />
         <attribute super_realm="" />
-        <attribute icon_type="zombie1" />
+        <attribute icon_type="vampireDuke" />
         <attribute setup_start="Temple" />
         <attribute monster_die="6" />
         <attribute flying="" />
         <attribute base_price="4" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute armored="" />
         <attribute denizen="" />
         <attribute demon="" />
+        <attribute icon_size="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35410,6 +35415,7 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute icon_y_offset="5" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -35441,6 +35447,7 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute icon_y_offset="5" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -35472,6 +35479,7 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute icon_y_offset="5" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -35503,6 +35511,7 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute icon_y_offset="5" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -35604,16 +35613,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullsword" />
+        <attribute icon_type="deathblade" />
         <attribute setup_start="Sword Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="1" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="6" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35638,16 +35649,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullsword" />
+        <attribute icon_type="deathblade" />
         <attribute setup_start="Sword Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="1" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="6" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35672,16 +35685,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullsword" />
+        <attribute icon_type="deathblade" />
         <attribute setup_start="Sword Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="1" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="6" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35706,16 +35721,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullsword" />
+        <attribute icon_type="deathblade" />
         <attribute setup_start="Sword Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="1" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="6" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35740,16 +35757,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullsword" />
+        <attribute icon_type="deathblade" />
         <attribute setup_start="Sword Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="1" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="6" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35774,16 +35793,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullsword" />
+        <attribute icon_type="deathblade" />
         <attribute setup_start="Sword Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="1" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="6" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35808,16 +35829,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullsword" />
+        <attribute icon_type="skeletonSpearman" />
         <attribute setup_start="Spear Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="2" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35842,16 +35865,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullsword" />
+        <attribute icon_type="skeletonSpearman" />
         <attribute setup_start="Spear Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="2" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35876,16 +35901,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullsword" />
+        <attribute icon_type="skeletonSpearman" />
         <attribute setup_start="Spear Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="2" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35910,16 +35937,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullsword" />
+        <attribute icon_type="skeletonSpearman" />
         <attribute setup_start="Spear Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="2" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35944,16 +35973,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullsword" />
+        <attribute icon_type="skeletonSpearman" />
         <attribute setup_start="Spear Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="2" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35978,16 +36009,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullsword" />
+        <attribute icon_type="skeletonSpearman" />
         <attribute setup_start="Spear Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="2" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36012,16 +36045,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullsword" />
+        <attribute icon_type="skeleton" />
         <attribute setup_start="Axe Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="3" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36046,16 +36081,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullsword" />
+        <attribute icon_type="skeleton" />
         <attribute setup_start="Axe Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="3" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36080,16 +36117,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullsword" />
+        <attribute icon_type="skeleton" />
         <attribute setup_start="Axe Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="3" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36114,16 +36153,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullsword" />
+        <attribute icon_type="skeleton" />
         <attribute setup_start="Axe Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="3" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36148,16 +36189,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullsword" />
+        <attribute icon_type="skeleton" />
         <attribute setup_start="Axe Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="3" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36182,16 +36225,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullsword" />
+        <attribute icon_type="skeleton" />
         <attribute setup_start="Axe Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="3" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36216,16 +36261,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullbow" />
+        <attribute icon_type="skeletonArcher" />
         <attribute setup_start="Bow Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="4" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="5" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36247,16 +36294,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullbow" />
+        <attribute icon_type="skeletonArcher" />
         <attribute setup_start="Bow Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="4" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="5" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36278,16 +36327,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullbow" />
+        <attribute icon_type="skeletonArcher" />
         <attribute setup_start="Bow Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="4" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="5" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36309,16 +36360,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullbow" />
+        <attribute icon_type="skeletonArcher" />
         <attribute setup_start="Bow Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="4" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="5" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36340,16 +36393,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullbow" />
+        <attribute icon_type="skeletonArcher" />
         <attribute setup_start="Bow Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="4" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="5" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36371,16 +36426,18 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skullbow" />
+        <attribute icon_type="skeletonArcher" />
         <attribute setup_start="Bow Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="4" />
         <attribute undead="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="5" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -37998,13 +38055,14 @@
         <attribute fame="8" />
         <attribute notoriety="8" />
         <attribute super_realm="" />
-        <attribute icon_type="carnoplant" />
+        <attribute icon_type="banebush" />
         <attribute setup_start="Giant Pod Box" />
         <attribute monster_die="6" />
         <attribute base_price="8" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute icon_size="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -38026,8 +38084,9 @@
         <attribute monster="" />
         <attribute part="" />
         <attribute super_realm="" />
-        <attribute icon_type="carnoplant" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="crush" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="0.6" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="4" />
@@ -38051,13 +38110,14 @@
         <attribute fame="8" />
         <attribute notoriety="8" />
         <attribute super_realm="" />
-        <attribute icon_type="carnoplant" />
+        <attribute icon_type="banebush" />
         <attribute setup_start="Giant Pod Box" />
         <attribute monster_die="6" />
         <attribute base_price="8" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute icon_size="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -38079,8 +38139,9 @@
         <attribute monster="" />
         <attribute part="" />
         <attribute super_realm="" />
-        <attribute icon_type="carnoplant" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="crush" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="0.6" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="4" />
@@ -38104,13 +38165,14 @@
         <attribute fame="8" />
         <attribute notoriety="8" />
         <attribute super_realm="" />
-        <attribute icon_type="carnoplant" />
+        <attribute icon_type="banebush" />
         <attribute setup_start="Giant Pod Box" />
         <attribute monster_die="6" />
         <attribute base_price="8" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute icon_size="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -38132,8 +38194,9 @@
         <attribute monster="" />
         <attribute part="" />
         <attribute super_realm="" />
-        <attribute icon_type="carnoplant" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="crush" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="0.6" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="4" />
