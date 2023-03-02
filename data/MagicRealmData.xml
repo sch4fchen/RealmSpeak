@@ -33551,8 +33551,8 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="red" />
-        <attribute icon_type="dragon_flying" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="fireDragon" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1221" name="Lair">
@@ -33567,8 +33567,8 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="red" />
-        <attribute icon_type="dragon" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="wildWyvern" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1222" name="Altar">
@@ -33583,8 +33583,8 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="green" />
-        <attribute icon_type="demon" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="yuureDreamweaver" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute spell_site="" />
       </AttributeBlock>
     </GameObject>
@@ -33600,8 +33600,8 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="green" />
-        <attribute icon_type="demon_flying" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="galerunner" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute spell_site="" />
       </AttributeBlock>
     </GameObject>
@@ -33618,8 +33618,8 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="blue" />
-        <attribute icon_type="octopus" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="kraken" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1225" name="Vault">
@@ -33635,8 +33635,8 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="darkgray" />
-        <attribute icon_type="troll" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="trollWarrior" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1226" name="Cairns">
@@ -33652,8 +33652,8 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="purple" />
-        <attribute icon_type="spider" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="spiderQueen" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1227" name="Statue">
@@ -33668,8 +33668,8 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="purple" />
-        <attribute icon_type="imp" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="brazierImp" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute spell_site="" />
       </AttributeBlock>
     </GameObject>
@@ -33703,8 +33703,8 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="green" />
-        <attribute icon_type="serpent" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="seaSerpent" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1231" name="Temple">
@@ -33719,8 +33719,8 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="brown" />
-        <attribute icon_type="zombie1" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="vampireDuke" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute spell_site="" />
       </AttributeBlock>
     </GameObject>
@@ -33736,8 +33736,8 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="blue" />
-        <attribute icon_type="troll" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="stoneTitan" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute spell_site="" />
       </AttributeBlock>
     </GameObject>
@@ -33753,8 +33753,8 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="purple" />
-        <attribute icon_type="troll" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="stoneTitan2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute spell_site="" />
       </AttributeBlock>
     </GameObject>
@@ -33770,8 +33770,8 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="red" />
-        <attribute icon_type="scorpion" />
-        <attribute icon_folder="monsters1" />
+        <attribute icon_type="giantScorpion" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1235" name="Garden">
@@ -33786,8 +33786,8 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="brown" />
-        <attribute icon_type="carnoplant" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="succubus" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute spell_site="" />
       </AttributeBlock>
     </GameObject>
@@ -33804,8 +33804,8 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="darkgray" />
-        <attribute icon_type="skullsword" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="draug" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1237" name="Maze">
@@ -33820,8 +33820,8 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="brown" />
-        <attribute icon_type="minotaur" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="minotaurKing" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1238" name="Lost Palace">
