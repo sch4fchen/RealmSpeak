@@ -632,12 +632,18 @@ public class TreasureSetupCardView extends JComponent {
 								String filename = folder+"/"+iconType;
 								ImageIcon icon = null;
 								String size = getChitSizeAttribute(go);
+								int sizePercentage = 0;
 								if (size.equals("T") || size.equals("HCARD")) {
-									icon = ImageCache.getIcon(filename,90);
+									sizePercentage=90;
 								}
 								else {
-									icon = ImageCache.getIcon(filename,70);
+									sizePercentage=70;
 								}
+								if (go.hasThisAttribute(Constants.ICON_SIZE)) {
+									sizePercentage = (int) (100*Double.parseDouble(go.getThisAttribute(Constants.ICON_SIZE)));
+								}
+								
+								icon = ImageCache.getIcon(filename,sizePercentage);
 								int dx = ((rect.width-icon.getIconWidth())>>1);
 								int dy = ((rect.height-icon.getIconHeight())>>1);
 								g.drawImage(icon.getImage(),rect.x+dx,rect.y+dy,null);

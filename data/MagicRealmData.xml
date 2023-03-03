@@ -33553,6 +33553,7 @@
         <attribute ts_color="red" />
         <attribute icon_type="fireDragon" />
         <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="0.4" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1221" name="Lair">
@@ -39826,6 +39827,7 @@
         <attribute icon_type="fireDragon" />
         <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
+        <attribute icon_size="0.4" />
       </AttributeBlock>
       <contains id="1489" />
     </GameObject>
