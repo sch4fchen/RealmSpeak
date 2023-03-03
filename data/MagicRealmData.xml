@@ -35362,8 +35362,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="blue" />
-        <attribute icon_type="demon_flying" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="gargoyle" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1325" />
     </GameObject>
@@ -35377,8 +35377,8 @@
         <attribute ts_count="2" />
         <attribute ts_size="H" />
         <attribute ts_color="blue" />
-        <attribute icon_type="demon_flying" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="gargoyle" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1326" />
       <contains id="1327" />
@@ -35393,8 +35393,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="T" />
         <attribute ts_color="blue" />
-        <attribute icon_type="demon_flying" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="marlgoyle" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1328" />
     </GameObject>
@@ -35537,8 +35537,8 @@
         <attribute ts_count="6" />
         <attribute ts_size="M" />
         <attribute ts_color="darkgray" />
-        <attribute icon_type="skullsword" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="deathblade" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1333" />
       <contains id="1334" />
@@ -35557,8 +35557,8 @@
         <attribute ts_count="6" />
         <attribute ts_size="M" />
         <attribute ts_color="darkgray" />
-        <attribute icon_type="skullsword" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="skeletonSpearman" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1339" />
       <contains id="1340" />
@@ -35577,8 +35577,8 @@
         <attribute ts_count="6" />
         <attribute ts_size="M" />
         <attribute ts_color="darkgray" />
-        <attribute icon_type="skullsword" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="skeleton" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1345" />
       <contains id="1346" />
@@ -35597,8 +35597,8 @@
         <attribute ts_count="6" />
         <attribute ts_size="M" />
         <attribute ts_color="darkgray" />
-        <attribute icon_type="skullbow" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="skeletonArcher" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1351" />
       <contains id="1352" />
@@ -36463,8 +36463,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="M" />
         <attribute ts_color="purple" />
-        <attribute icon_type="orc_sword" />
-        <attribute icon_folder="monsters1" />
+        <attribute icon_type="orcishGrunt" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1361" />
     </GameObject>
@@ -36478,8 +36478,8 @@
         <attribute ts_count="2" />
         <attribute ts_size="M" />
         <attribute ts_color="purple" />
-        <attribute icon_type="orc_sword" />
-        <attribute icon_folder="monsters1" />
+        <attribute icon_type="orcishGrunt" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1362" />
       <contains id="1363" />
@@ -36494,8 +36494,8 @@
         <attribute ts_count="2" />
         <attribute ts_size="M" />
         <attribute ts_color="purple" />
-        <attribute icon_type="orc_sword" />
-        <attribute icon_folder="monsters1" />
+        <attribute icon_type="orcishGrunt" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1364" />
       <contains id="1365" />
@@ -36510,8 +36510,8 @@
         <attribute ts_count="3" />
         <attribute ts_size="M" />
         <attribute ts_color="purple" />
-        <attribute icon_type="orc_sword" />
-        <attribute icon_folder="monsters1" />
+        <attribute icon_type="orcishGrunt" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1366" />
       <contains id="1367" />
@@ -36783,8 +36783,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="T" />
         <attribute ts_color="brown" />
-        <attribute icon_type="firegolem" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="golem" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1372" />
     </GameObject>
@@ -36798,8 +36798,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="T" />
         <attribute ts_color="brown" />
-        <attribute icon_type="firegolem" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="golem" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1373" />
     </GameObject>
@@ -36813,8 +36813,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="T" />
         <attribute ts_color="brown" />
-        <attribute icon_type="firegolem" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="golem" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1374" />
     </GameObject>
@@ -36921,8 +36921,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="red" />
-        <attribute icon_type="scorpion" />
-        <attribute icon_folder="monsters1" />
+        <attribute icon_type="giantScorpling" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1378" />
     </GameObject>
@@ -36936,8 +36936,8 @@
         <attribute ts_count="2" />
         <attribute ts_size="H" />
         <attribute ts_color="red" />
-        <attribute icon_type="scorpion" />
-        <attribute icon_folder="monsters1" />
+        <attribute icon_type="giantScorpling" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1379" />
       <contains id="1380" />
@@ -36952,8 +36952,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="T" />
         <attribute ts_color="red" />
-        <attribute icon_type="scorpion" />
-        <attribute icon_folder="monsters1" />
+        <attribute icon_type="giantScorpion" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1381" />
     </GameObject>
@@ -37121,7 +37121,7 @@
         <attribute ts_size="H" />
         <attribute ts_color="green" />
         <attribute icon_type="wraith" />
-        <attribute icon_folder="monsters1" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1387" />
     </GameObject>
@@ -37136,7 +37136,7 @@
         <attribute ts_size="H" />
         <attribute ts_color="green" />
         <attribute icon_type="wraith" />
-        <attribute icon_folder="monsters1" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1388" />
     </GameObject>
@@ -37151,7 +37151,7 @@
         <attribute ts_size="H" />
         <attribute ts_color="green" />
         <attribute icon_type="wraith" />
-        <attribute icon_folder="monsters1" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1389" />
     </GameObject>
@@ -37166,7 +37166,7 @@
         <attribute ts_size="H" />
         <attribute ts_color="green" />
         <attribute icon_type="wraith" />
-        <attribute icon_folder="monsters1" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1390" />
     </GameObject>
@@ -37300,8 +37300,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="M" />
         <attribute ts_color="blue" />
-        <attribute icon_type="wraith" />
-        <attribute icon_folder="monsters1" />
+        <attribute icon_type="giantRat" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute ts_sort="1" />
       </AttributeBlock>
       <contains id="1392" />
@@ -37495,8 +37495,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="blue" />
-        <attribute icon_type="bear" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="caveBear" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute ts_sort="2" />
       </AttributeBlock>
       <contains id="1399" />
@@ -37540,8 +37540,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="darkgray" />
-        <attribute icon_type="gator" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="swampLizard" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute ts_sort="2" />
       </AttributeBlock>
       <contains id="1401" />
@@ -37825,8 +37825,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="purple" />
-        <attribute icon_type="blob" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="wisp" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1413" />
     </GameObject>
@@ -37840,8 +37840,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="purple" />
-        <attribute icon_type="blob" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="fireGod" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1414" />
     </GameObject>
@@ -37855,8 +37855,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="purple" />
-        <attribute icon_type="blob" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="darkObserver" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1415" />
     </GameObject>
@@ -37870,8 +37870,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="purple" />
-        <attribute icon_type="blob" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="battleEye" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1416" />
     </GameObject>
@@ -37882,14 +37882,16 @@
         <attribute fame="4" />
         <attribute notoriety="4" />
         <attribute super_realm="" />
-        <attribute icon_type="blob" />
+        <attribute icon_type="wisp" />
         <attribute setup_start="Grey Anomaly Box" />
         <attribute monster_die="5" />
         <attribute base_price="4" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="1" />
+        <attribute icon_y_offset="5" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -37914,14 +37916,16 @@
         <attribute fame="4" />
         <attribute notoriety="4" />
         <attribute super_realm="" />
-        <attribute icon_type="blob" />
+        <attribute icon_type="fireGod" />
         <attribute setup_start="Gold Anomaly Box" />
         <attribute monster_die="5" />
         <attribute base_price="4" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="0.3" />
+        <attribute icon_y_offset="10" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -37946,14 +37950,16 @@
         <attribute fame="4" />
         <attribute notoriety="4" />
         <attribute super_realm="" />
-        <attribute icon_type="blob" />
+        <attribute icon_type="darkObserver" />
         <attribute setup_start="Purple Anomaly Box" />
         <attribute monster_die="5" />
         <attribute base_price="4" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="0.9" />
+        <attribute icon_y_offset="7" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -37978,14 +37984,16 @@
         <attribute fame="4" />
         <attribute notoriety="4" />
         <attribute super_realm="" />
-        <attribute icon_type="blob" />
+        <attribute icon_type="battleEye" />
         <attribute setup_start="Prism Anomaly Box" />
         <attribute monster_die="5" />
         <attribute base_price="4" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute armored="" />
+        <attribute icon_size="0.9" />
+        <attribute icon_y_offset="5" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -38013,8 +38021,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="T" />
         <attribute ts_color="brown" />
-        <attribute icon_type="carnoplant" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="banebush" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1420" />
     </GameObject>
@@ -38028,8 +38036,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="T" />
         <attribute ts_color="brown" />
-        <attribute icon_type="carnoplant" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="banebush" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1422" />
     </GameObject>
@@ -38043,8 +38051,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="T" />
         <attribute ts_color="brown" />
-        <attribute icon_type="carnoplant" />
-        <attribute icon_folder="monsters2" />
+        <attribute icon_type="banebush" />
+        <attribute icon_folder="wesnoth/units" />
       </AttributeBlock>
       <contains id="1424" />
     </GameObject>
@@ -38221,8 +38229,8 @@
         <attribute ts_section="lost city" />
         <attribute ts_size="H" />
         <attribute ts_color="red" />
-        <attribute icon_type="dragon" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="winglessDragon" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1432" />
@@ -38235,8 +38243,8 @@
         <attribute ts_section="lost city" />
         <attribute ts_size="H" />
         <attribute ts_color="red" />
-        <attribute icon_type="dragon" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="winglessDragon" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1433" />
@@ -38250,8 +38258,8 @@
         <attribute ts_section="lost city" />
         <attribute ts_size="T" />
         <attribute ts_color="red" />
-        <attribute icon_type="dragon" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="wildWyvern" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1435" />
@@ -38265,8 +38273,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="green" />
-        <attribute icon_type="serpent" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="waterSerpent" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1437" />
@@ -38280,8 +38288,8 @@
         <attribute ts_count="2" />
         <attribute ts_size="H" />
         <attribute ts_color="green" />
-        <attribute icon_type="serpent" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="waterSerpent" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1438" />
@@ -38295,8 +38303,8 @@
         <attribute ts_section="lost city" />
         <attribute ts_size="T" />
         <attribute ts_color="green" />
-        <attribute icon_type="serpent" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="seaSerpent" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1440" />
@@ -38570,8 +38578,8 @@
         <attribute ts_count="6" />
         <attribute ts_size="M" />
         <attribute ts_color="blue" />
-        <attribute icon_type="goblin_axe" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="bloodGoblinLord" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1445" />
@@ -38590,8 +38598,8 @@
         <attribute ts_count="6" />
         <attribute ts_size="M" />
         <attribute ts_color="blue" />
-        <attribute icon_type="goblin_spear" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="goblinImpaler" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1451" />
@@ -38610,8 +38618,8 @@
         <attribute ts_count="6" />
         <attribute ts_size="M" />
         <attribute ts_color="blue" />
-        <attribute icon_type="goblin_sword" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="goblinSwordsman" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1457" />
@@ -38630,8 +38638,8 @@
         <attribute ts_count="6" />
         <attribute ts_size="M" />
         <attribute ts_color="blue" />
-        <attribute icon_type="imp" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="goblinArcher" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1463" />
@@ -39377,7 +39385,7 @@
         <attribute ts_size="H" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="troll" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1472" />
@@ -39392,7 +39400,7 @@
         <attribute ts_size="H" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="troll" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1473" />
@@ -39406,8 +39414,8 @@
         <attribute ts_section="lost city" />
         <attribute ts_size="T" />
         <attribute ts_color="darkgray" />
-        <attribute icon_type="troll" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="trollWarrior" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1475" />
@@ -39783,8 +39791,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="red" />
-        <attribute icon_type="dragon_flying" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="redDragon" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1486" />
@@ -39797,8 +39805,8 @@
         <attribute ts_count="2" />
         <attribute ts_size="H" />
         <attribute ts_color="red" />
-        <attribute icon_type="dragon_flying" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="redDragon" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1487" />
@@ -39812,8 +39820,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="T" />
         <attribute ts_color="red" />
-        <attribute icon_type="dragon_flying" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="fireDragon" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1489" />
@@ -39978,8 +39986,8 @@
         <attribute ts_count="2" />
         <attribute ts_size="M" />
         <attribute ts_color="green" />
-        <attribute icon_type="serpent" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="viper" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute ts_sort="1" />
       </AttributeBlock>
@@ -40056,8 +40064,8 @@
         <attribute ts_count="6" />
         <attribute ts_size="M" />
         <attribute ts_color="blue" />
-        <attribute icon_type="wolf" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="direWolf" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute ts_sort="1" />
         <attribute super_realm="" />
       </AttributeBlock>
@@ -40244,8 +40252,8 @@
         <attribute ts_count="2" />
         <attribute ts_size="M" />
         <attribute ts_color="blue" />
-        <attribute icon_type="giant" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="ogre" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute ts_sort="2" />
         <attribute super_realm="" />
       </AttributeBlock>
@@ -40317,7 +40325,7 @@
         <attribute ts_size="T" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="giant" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1507" />
@@ -40331,7 +40339,7 @@
         <attribute ts_size="T" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="giant" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1509" />
@@ -40345,7 +40353,7 @@
         <attribute ts_size="T" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="giant" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1511" />
@@ -40517,8 +40525,8 @@
         <attribute ts_section="lost castle" />
         <attribute ts_size="H" />
         <attribute ts_color="purple" />
-        <attribute icon_type="spider" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="giantSpider" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1517" />
@@ -40531,8 +40539,8 @@
         <attribute ts_section="lost castle" />
         <attribute ts_size="H" />
         <attribute ts_color="purple" />
-        <attribute icon_type="spider" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="giantSpider" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1518" />
@@ -40545,8 +40553,8 @@
         <attribute ts_section="lost castle" />
         <attribute ts_size="H" />
         <attribute ts_color="purple" />
-        <attribute icon_type="spider" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="giantSpider" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1519" />
@@ -40559,8 +40567,8 @@
         <attribute ts_section="lost castle" />
         <attribute ts_size="H" />
         <attribute ts_color="purple" />
-        <attribute icon_type="spider" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="giantSpider" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1520" />
@@ -40689,8 +40697,8 @@
         <attribute ts_section="lost castle" />
         <attribute ts_size="H" />
         <attribute ts_color="brown" />
-        <attribute icon_type="bat" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="bloodBat" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute ts_count="1" />
       </AttributeBlock>
@@ -40705,8 +40713,8 @@
         <attribute ts_count="2" />
         <attribute ts_size="H" />
         <attribute ts_color="brown" />
-        <attribute icon_type="bat" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="vampireBat" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1526" />
@@ -40721,8 +40729,8 @@
         <attribute ts_count="2" />
         <attribute ts_size="H" />
         <attribute ts_color="brown" />
-        <attribute icon_type="bat" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="dreadBat" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1528" />
@@ -40737,8 +40745,8 @@
         <attribute ts_count="3" />
         <attribute ts_size="H" />
         <attribute ts_color="brown" />
-        <attribute icon_type="bat" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_type="dreadBat" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
       </AttributeBlock>
       <contains id="1530" />
