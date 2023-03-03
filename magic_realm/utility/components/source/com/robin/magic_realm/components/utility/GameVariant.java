@@ -4,7 +4,7 @@ public class GameVariant {
 	public static GameVariant ORIGINAL_GAME_VARIANT = new GameVariant("Original Game","original_game","standard_game",true,true,true,true,true);
 	public static GameVariant PRUITTS_GAME_VARIANT = new GameVariant("Pruitt's Monsters","alt_monsters1_game","standard_game",true,true,true,true,true);
 	public static GameVariant EXP1_GAME_VARIANT = new GameVariant("Expansion One","rw_expansion_1","rw_expansion_1_setup",false,false,true,true,true);
-	public static GameVariant SUPER_REALM = new GameVariant("Super Realm (in DEVELOPMENT)","super_realm","super_realm_setup",false,true,false,true,false);
+	public static GameVariant SUPER_REALM = new GameVariant("Super Realm","super_realm","super_realm_setup",false,true,false,true,false);
 	
 	private String title;
 	private String keyVals;

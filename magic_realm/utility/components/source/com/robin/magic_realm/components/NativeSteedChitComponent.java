@@ -66,14 +66,18 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		return "gallop";
 	}
 	public String[] getFolderAndType() {
+		String[] ret = new String[2];
+		if (gameObject.hasThisAttribute("super_realm")) {
+			ret[0] = gameObject.getThisAttribute(Constants.ICON_FOLDER);
+			ret[1] = gameObject.getThisAttribute(Constants.ICON_TYPE);
+			return ret;
+		}
 		String horse_type = gameObject.getThisAttribute("horse");
 		if (horse_type!=null) {
 			String folder = useColorIcons()?"steed_c":"steed";
-			if (!gameObject.hasThisAttribute("super_realm") && !gameObject.hasThisAttribute("monster_steed")) {
-				String letterCode = gameObject.getName().substring(0,1).toUpperCase();
-				horse_type = horse_type + (useColorIcons()?("_"+letterCode.toLowerCase()):"");
-			}
-			String[] ret = new String[2];
+			String letterCode = gameObject.getName().substring(0,1).toUpperCase();
+			horse_type = horse_type + (useColorIcons()?("_"+letterCode.toLowerCase()):"");
+			
 			ret[0] = folder;
 			ret[1] = horse_type;
 			return ret;
@@ -87,13 +91,26 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		String letterCode = name.substring(0,1).toUpperCase();
 		
 		// Draw image
-		String horse_type = gameObject.getAttribute("this","horse");
-		if (horse_type!=null) {
-			String folder = useColorIcons()?"steed_c":"steed";
-			if (!gameObject.hasThisAttribute("super_realm") && !gameObject.hasThisAttribute("monster_steed")) {
-				horse_type = horse_type + (useColorIcons()?("_"+letterCode.toLowerCase()):"");
+		if (gameObject.hasThisAttribute("super_realm")) {
+			double size = 0.5;
+			int yOffset = 0;
+			String folder = gameObject.getThisAttribute(Constants.ICON_FOLDER);
+			String icon = gameObject.getThisAttribute(Constants.ICON_TYPE);
+			if (gameObject.hasThisAttribute(Constants.ICON_SIZE)) {
+				size = Double.parseDouble(gameObject.getThisAttribute(Constants.ICON_SIZE));
 			}
-			drawIcon(g,folder,horse_type,0.5);
+			if (gameObject.hasThisAttribute(Constants.ICON_Y_OFFSET)) {
+				yOffset = getThisInt(Constants.ICON_Y_OFFSET);
+			}
+			drawIcon(g,folder,icon,size,0,yOffset,null);
+		}
+		else {
+			String horse_type = gameObject.getAttribute("this","horse");
+			if (horse_type!=null) {
+				String folder = useColorIcons()?"steed_c":"steed";
+				horse_type = horse_type + (useColorIcons()?("_"+letterCode.toLowerCase()):"");
+				drawIcon(g,folder,horse_type,0.5);
+			}
 		}
 		
 		TextType tt;

@@ -34973,6 +34973,9 @@
         <attribute activated="" />
         <attribute steed_in_caves_and_water="" />
         <attribute transmorph_immunity="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="ipoten" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -45531,6 +45534,9 @@
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="3" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -45553,6 +45559,9 @@
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="3" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -45575,6 +45584,9 @@
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="3" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -45597,6 +45609,9 @@
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="3" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -46159,7 +46174,7 @@
       </AttributeBlock>
       <contains id="1778" />
     </GameObject>
-    <GameObject id="1774" name="Order Warhorse 1">
+    <GameObject id="1774" name="Warhorse 1">
       <AttributeBlock blockName="this">
         <attribute native="Order" />
         <attribute horse="warhorse" />
@@ -46167,6 +46182,9 @@
         <attribute armored="" />
         <attribute activated="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="royalBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -46187,6 +46205,9 @@
         <attribute armored="" />
         <attribute activated="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="royalBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -46207,6 +46228,9 @@
         <attribute armored="" />
         <attribute activated="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="royalBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -46227,6 +46251,9 @@
         <attribute armored="" />
         <attribute activated="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="royalBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -46247,6 +46274,9 @@
         <attribute armored="" />
         <attribute activated="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="royalBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -46631,6 +46661,9 @@
         <attribute vulnerability="M" />
         <attribute activated="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -46651,6 +46684,9 @@
         <attribute vulnerability="M" />
         <attribute activated="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -46671,6 +46707,9 @@
         <attribute vulnerability="M" />
         <attribute activated="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -46691,6 +46730,9 @@
         <attribute vulnerability="M" />
         <attribute activated="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -48284,6 +48326,9 @@
         <attribute vulnerability="M" />
         <attribute activated="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -48304,6 +48349,9 @@
         <attribute vulnerability="M" />
         <attribute activated="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -48324,6 +48372,9 @@
         <attribute vulnerability="M" />
         <attribute activated="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -48344,6 +48395,9 @@
         <attribute vulnerability="M" />
         <attribute activated="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -48544,6 +48598,9 @@
         <attribute clan="1" />
         <attribute native_die="3" />
         <attribute armored="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="royalBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -48567,6 +48624,9 @@
         <attribute clan="1" />
         <attribute native_die="3" />
         <attribute armored="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="royalBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -48590,6 +48650,9 @@
         <attribute clan="1" />
         <attribute native_die="3" />
         <attribute armored="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="royalBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -48613,6 +48676,9 @@
         <attribute clan="1" />
         <attribute native_die="3" />
         <attribute armored="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="royalBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -49188,6 +49254,9 @@
         <attribute super_realm="" />
         <attribute clan="3" />
         <attribute native_die="4" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -49210,6 +49279,9 @@
         <attribute super_realm="" />
         <attribute clan="3" />
         <attribute native_die="4" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -49232,6 +49304,9 @@
         <attribute super_realm="" />
         <attribute clan="3" />
         <attribute native_die="4" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -49254,6 +49329,9 @@
         <attribute super_realm="" />
         <attribute clan="3" />
         <attribute native_die="4" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -49703,6 +49781,9 @@
         <attribute super_realm="" />
         <attribute clan="4" />
         <attribute native_die="5" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -49725,6 +49806,9 @@
         <attribute super_realm="" />
         <attribute clan="4" />
         <attribute native_die="5" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -49747,6 +49831,9 @@
         <attribute super_realm="" />
         <attribute clan="4" />
         <attribute native_die="5" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -49769,6 +49856,9 @@
         <attribute super_realm="" />
         <attribute clan="4" />
         <attribute native_die="5" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -49930,6 +50020,9 @@
         <attribute super_realm="" />
         <attribute clan="4" />
         <attribute native_die="6" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -49952,6 +50045,9 @@
         <attribute super_realm="" />
         <attribute clan="4" />
         <attribute native_die="6" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -49974,6 +50070,9 @@
         <attribute super_realm="" />
         <attribute clan="4" />
         <attribute native_die="6" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -49994,6 +50093,9 @@
         <attribute base_price="12" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50014,6 +50116,9 @@
         <attribute base_price="14" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50034,6 +50139,9 @@
         <attribute base_price="12" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50054,6 +50162,9 @@
         <attribute base_price="16" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50074,6 +50185,9 @@
         <attribute base_price="15" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -50094,6 +50208,9 @@
         <attribute base_price="14" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -50115,6 +50232,9 @@
         <attribute magic="" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -50135,6 +50255,9 @@
         <attribute base_price="22" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="royalBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -50155,6 +50278,9 @@
         <attribute base_price="20" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="royalBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -50175,6 +50301,9 @@
         <attribute base_price="18" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="royalBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -50196,6 +50325,9 @@
         <attribute magic="" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="royalBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50216,6 +50348,9 @@
         <attribute base_price="12" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="8" />
@@ -50236,6 +50371,9 @@
         <attribute base_price="11" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -50256,6 +50394,9 @@
         <attribute base_price="11" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -50276,6 +50417,9 @@
         <attribute base_price="10" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -50296,6 +50440,9 @@
         <attribute base_price="9" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -50316,6 +50463,9 @@
         <attribute base_price="8" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50336,6 +50486,9 @@
         <attribute base_price="12" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50356,6 +50509,9 @@
         <attribute base_price="14" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50376,6 +50532,9 @@
         <attribute base_price="14" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -50396,6 +50555,9 @@
         <attribute base_price="8" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50416,6 +50578,9 @@
         <attribute base_price="10" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -50436,6 +50601,9 @@
         <attribute base_price="11" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -50456,6 +50624,9 @@
         <attribute base_price="12" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50476,6 +50647,9 @@
         <attribute base_price="15" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="horse" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -50496,6 +50670,9 @@
         <attribute base_price="11" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -50516,6 +50693,9 @@
         <attribute base_price="12" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="8" />
@@ -50536,6 +50716,9 @@
         <attribute base_price="20" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="royalBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -50556,6 +50739,9 @@
         <attribute base_price="14" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_size="1" />
+        <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
