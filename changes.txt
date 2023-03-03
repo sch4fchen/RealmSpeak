@@ -1,6 +1,6 @@
 ::ROADMAP::
 ---Content---
-Super Realm: icons for natives and icon boxes (setup chart)
+Super Realm: icons for natives
 Super Realm: Setup Charts, in order: small, large treasures, spells, monsters; dwellings: spells, horses, armor, weapons, helmets, shields, breastplates (large counters below small counters); spells: higher numbers below lower numbers; travelers go to native boxes
 ---Basic Functionalities for current content---
 Super Realm: rules for minotaur shield

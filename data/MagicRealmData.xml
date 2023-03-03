@@ -33771,8 +33771,8 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="red" />
-        <attribute icon_type="giantScorpion" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_type="scorpion" />
+        <attribute icon_folder="wesnoth/units/monsters" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1235" name="Garden">
@@ -33806,7 +33806,7 @@
         <attribute ts_size="HCARD" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="draug" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1237" name="Maze">
@@ -34607,9 +34607,9 @@
         <attribute monster="" />
         <attribute part="" />
         <attribute super_realm="" />
-        <attribute icon_type="fireBreath" />
+        <attribute icon_type="fire-breath-drake" />
         <attribute dragon_missile="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/icons/attacks" />
         <attribute icon_size="0.6" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -34664,9 +34664,9 @@
         <attribute monster="" />
         <attribute part="" />
         <attribute super_realm="" />
-        <attribute icon_type="fireBreath" />
+        <attribute icon_type="fire-breath-drake" />
         <attribute dragon_missile="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/icons/attacks" />
         <attribute icon_size="0.6" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -34692,11 +34692,11 @@
         <attribute fame="10" />
         <attribute notoriety="10" />
         <attribute super_realm="" />
-        <attribute icon_type="giantScorpion" />
+        <attribute icon_type="scorpion" />
         <attribute setup_start="Pit" />
         <attribute monster_die="1" />
         <attribute base_price="10" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
@@ -34938,7 +34938,7 @@
         <attribute setup_start="Tomb" />
         <attribute monster_die="4" />
         <attribute base_price="5" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute needs_init="" />
         <attribute undead="" />
@@ -35157,7 +35157,7 @@
         <attribute shield="" />
         <attribute vulnerability="T" />
         <attribute icon_type="shield_polished" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/icons" />
         <attribute super_realm="" />
         <attribute icon_size="0.6" />
       </AttributeBlock>
@@ -35216,9 +35216,10 @@
         <attribute ts_size="M" />
         <attribute ts_color="yellow" />
         <attribute ts_count="4" />
-        <attribute icon_type="swordsman" />
-        <attribute icon_folder="natives" />
+        <attribute icon_type="arch-mage" />
+        <attribute icon_folder="wesnoth/units/human-magi" />
         <attribute virtual_dwelling="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <contains id="1318" />
       <contains id="1319" />
@@ -35236,14 +35237,15 @@
         <attribute vulnerability="M" />
         <attribute rank="1" />
         <attribute super_realm="" />
-        <attribute icon_type="swordsman_r" />
+        <attribute icon_type="red-mage" />
         <attribute monster_die="1" />
         <attribute monster_die2="2" />
         <attribute setup_start="Cultist Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-magi" />
         <attribute denizen="" />
         <attribute needs_init="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -35269,13 +35271,14 @@
         <attribute vulnerability="M" />
         <attribute rank="2" />
         <attribute super_realm="" />
-        <attribute icon_type="swordsman_r" />
+        <attribute icon_type="red-mage+female" />
         <attribute monster_die="1" />
         <attribute monster_die2="2" />
         <attribute setup_start="Cultist Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-magi" />
         <attribute denizen="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -35301,13 +35304,14 @@
         <attribute vulnerability="M" />
         <attribute rank="3" />
         <attribute super_realm="" />
-        <attribute icon_type="swordsman_r" />
+        <attribute icon_type="red-mage" />
         <attribute monster_die="1" />
         <attribute monster_die2="2" />
         <attribute setup_start="Cultist Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-magi" />
         <attribute denizen="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -35333,13 +35337,14 @@
         <attribute vulnerability="M" />
         <attribute rank="HQ" />
         <attribute super_realm="" />
-        <attribute icon_type="swordsman_r" />
+        <attribute icon_type="arch-mage" />
         <attribute monster_die="1" />
         <attribute monster_die2="2" />
         <attribute setup_start="Cultist Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-magi" />
         <attribute denizen="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -35542,7 +35547,7 @@
         <attribute ts_size="M" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="deathblade" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
       </AttributeBlock>
       <contains id="1333" />
       <contains id="1334" />
@@ -35582,7 +35587,7 @@
         <attribute ts_size="M" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="skeleton" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
       </AttributeBlock>
       <contains id="1345" />
       <contains id="1346" />
@@ -35602,7 +35607,7 @@
         <attribute ts_size="M" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="skeletonArcher" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
       </AttributeBlock>
       <contains id="1351" />
       <contains id="1352" />
@@ -35617,11 +35622,11 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="deathblade" />
+        <attribute icon_type="archer" />
         <attribute setup_start="Sword Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="1" />
         <attribute undead="" />
@@ -35657,7 +35662,7 @@
         <attribute setup_start="Sword Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="1" />
         <attribute undead="" />
@@ -35693,7 +35698,7 @@
         <attribute setup_start="Sword Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="1" />
         <attribute undead="" />
@@ -35729,7 +35734,7 @@
         <attribute setup_start="Sword Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="1" />
         <attribute undead="" />
@@ -35765,7 +35770,7 @@
         <attribute setup_start="Sword Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="1" />
         <attribute undead="" />
@@ -35801,7 +35806,7 @@
         <attribute setup_start="Sword Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="1" />
         <attribute undead="" />
@@ -36053,7 +36058,7 @@
         <attribute setup_start="Axe Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="3" />
         <attribute undead="" />
@@ -36089,7 +36094,7 @@
         <attribute setup_start="Axe Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="3" />
         <attribute undead="" />
@@ -36125,7 +36130,7 @@
         <attribute setup_start="Axe Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="3" />
         <attribute undead="" />
@@ -36161,7 +36166,7 @@
         <attribute setup_start="Axe Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="3" />
         <attribute undead="" />
@@ -36197,7 +36202,7 @@
         <attribute setup_start="Axe Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="3" />
         <attribute undead="" />
@@ -36233,7 +36238,7 @@
         <attribute setup_start="Axe Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="3" />
         <attribute undead="" />
@@ -36265,11 +36270,11 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skeletonArcher" />
+        <attribute icon_type="archer" />
         <attribute setup_start="Bow Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="4" />
         <attribute undead="" />
@@ -36298,11 +36303,11 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skeletonArcher" />
+        <attribute icon_type="archer" />
         <attribute setup_start="Bow Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="4" />
         <attribute undead="" />
@@ -36331,11 +36336,11 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skeletonArcher" />
+        <attribute icon_type="archer" />
         <attribute setup_start="Bow Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="4" />
         <attribute undead="" />
@@ -36364,11 +36369,11 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skeletonArcher" />
+        <attribute icon_type="archer" />
         <attribute setup_start="Bow Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="4" />
         <attribute undead="" />
@@ -36397,11 +36402,11 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skeletonArcher" />
+        <attribute icon_type="archer" />
         <attribute setup_start="Bow Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="4" />
         <attribute undead="" />
@@ -36430,11 +36435,11 @@
         <attribute vulnerability="M" />
         <attribute fame="1" />
         <attribute notoriety="2" />
-        <attribute icon_type="skeletonArcher" />
+        <attribute icon_type="archer" />
         <attribute setup_start="Bow Skeleton Box" />
         <attribute monster_die="4" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="4" />
         <attribute undead="" />
@@ -36925,8 +36930,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="red" />
-        <attribute icon_type="giantScorpling" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_type="sand-scuttler" />
+        <attribute icon_folder="wesnoth/units/monsters" />
       </AttributeBlock>
       <contains id="1378" />
     </GameObject>
@@ -36940,8 +36945,8 @@
         <attribute ts_count="2" />
         <attribute ts_size="H" />
         <attribute ts_color="red" />
-        <attribute icon_type="giantScorpling" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_type="sand-scuttler" />
+        <attribute icon_folder="wesnoth/units/monsters" />
       </AttributeBlock>
       <contains id="1379" />
       <contains id="1380" />
@@ -36956,8 +36961,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="T" />
         <attribute ts_color="red" />
-        <attribute icon_type="giantScorpion" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_type="scorpion" />
+        <attribute icon_folder="wesnoth/units/monsters" />
       </AttributeBlock>
       <contains id="1381" />
     </GameObject>
@@ -36969,11 +36974,11 @@
         <attribute fame="10" />
         <attribute notoriety="10" />
         <attribute super_realm="" />
-        <attribute icon_type="giantScorpling" />
+        <attribute icon_type="sand-scuttler" />
         <attribute setup_start="H Scorpion Box" />
         <attribute monster_die="1" />
         <attribute base_price="10" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
@@ -37001,11 +37006,11 @@
         <attribute fame="10" />
         <attribute notoriety="10" />
         <attribute super_realm="" />
-        <attribute icon_type="giantScorpling" />
+        <attribute icon_type="sand-scuttler" />
         <attribute setup_start="H Scorpion Box" />
         <attribute monster_die="1" />
         <attribute base_price="10" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
@@ -37033,11 +37038,11 @@
         <attribute fame="10" />
         <attribute notoriety="10" />
         <attribute super_realm="" />
-        <attribute icon_type="giantScorpling" />
+        <attribute icon_type="sand-scuttler" />
         <attribute setup_start="H Scorpion Box" />
         <attribute monster_die="1" />
         <attribute base_price="10" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
@@ -37065,11 +37070,11 @@
         <attribute fame="10" />
         <attribute notoriety="10" />
         <attribute super_realm="" />
-        <attribute icon_type="giantScorpion" />
+        <attribute icon_type="scorpion" />
         <attribute setup_start="T Scorpion Box" />
         <attribute monster_die="1" />
         <attribute base_price="10" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
@@ -37304,8 +37309,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="M" />
         <attribute ts_color="blue" />
-        <attribute icon_type="giantRat" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_type="giant-rat" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute ts_sort="1" />
       </AttributeBlock>
       <contains id="1392" />
@@ -37322,11 +37327,11 @@
         <attribute fame="0" />
         <attribute notoriety="1" />
         <attribute super_realm="" />
-        <attribute icon_type="giantRat" />
+        <attribute icon_type="giant-rat" />
         <attribute setup_start="Rat Box" />
         <attribute monster_die="3" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
@@ -37351,11 +37356,11 @@
         <attribute fame="0" />
         <attribute notoriety="1" />
         <attribute super_realm="" />
-        <attribute icon_type="giantRat" />
+        <attribute icon_type="giant-rat" />
         <attribute setup_start="Rat Box" />
         <attribute monster_die="3" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
@@ -37380,11 +37385,11 @@
         <attribute fame="0" />
         <attribute notoriety="1" />
         <attribute super_realm="" />
-        <attribute icon_type="giantRat" />
+        <attribute icon_type="giant-rat" />
         <attribute setup_start="Rat Box" />
         <attribute monster_die="3" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
@@ -37409,11 +37414,11 @@
         <attribute fame="0" />
         <attribute notoriety="1" />
         <attribute super_realm="" />
-        <attribute icon_type="giantRat" />
+        <attribute icon_type="giant-rat" />
         <attribute setup_start="Rat Box" />
         <attribute monster_die="3" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
@@ -37438,11 +37443,11 @@
         <attribute fame="0" />
         <attribute notoriety="1" />
         <attribute super_realm="" />
-        <attribute icon_type="giantRat" />
+        <attribute icon_type="giant-rat" />
         <attribute setup_start="Rat Box" />
         <attribute monster_die="3" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
@@ -37467,11 +37472,11 @@
         <attribute fame="0" />
         <attribute notoriety="1" />
         <attribute super_realm="" />
-        <attribute icon_type="giantRat" />
+        <attribute icon_type="giant-rat" />
         <attribute setup_start="Rat Box" />
         <attribute monster_die="3" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
@@ -37499,8 +37504,8 @@
         <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="blue" />
-        <attribute icon_type="caveBear" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_type="bear" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute ts_sort="2" />
       </AttributeBlock>
       <contains id="1399" />
@@ -37512,11 +37517,11 @@
         <attribute fame="3" />
         <attribute notoriety="3" />
         <attribute super_realm="" />
-        <attribute icon_type="caveBear" />
+        <attribute icon_type="bear" />
         <attribute setup_start="Bear Box" />
         <attribute monster_die="3" />
         <attribute base_price="3" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="0.8" />
@@ -37593,11 +37598,12 @@
         <attribute ts_size="M" />
         <attribute ts_color="yellow" />
         <attribute ts_count="6" />
-        <attribute icon_type="archer_w" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_type="archer" />
+        <attribute icon_folder="wesnoth/units/elves-wood" />
         <attribute virtual_dwelling="" />
         <attribute box_num="3" />
         <attribute ts_sort="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <contains id="1403" />
       <contains id="1404" />
@@ -37617,16 +37623,17 @@
         <attribute vulnerability="M" />
         <attribute rank="1" />
         <attribute super_realm="" />
-        <attribute icon_type="archer_w" />
+        <attribute icon_type="archer" />
         <attribute monster_die="3" />
         <attribute monster_die2="4" />
         <attribute setup_start="Elf Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/elves-wood" />
         <attribute denizen="" />
         <attribute needs_init="" />
         <attribute magic_protection="" />
         <attribute missile="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -37653,15 +37660,16 @@
         <attribute vulnerability="M" />
         <attribute rank="2" />
         <attribute super_realm="" />
-        <attribute icon_type="archer_w" />
+        <attribute icon_type="archer+female" />
         <attribute monster_die="3" />
         <attribute monster_die2="4" />
         <attribute setup_start="Elf Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/elves-wood" />
         <attribute denizen="" />
         <attribute magic_protection="" />
         <attribute missile="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -37688,15 +37696,16 @@
         <attribute vulnerability="M" />
         <attribute rank="3" />
         <attribute super_realm="" />
-        <attribute icon_type="archer_w" />
+        <attribute icon_type="archer" />
         <attribute monster_die="3" />
         <attribute monster_die2="4" />
         <attribute setup_start="Elf Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/elves-wood" />
         <attribute denizen="" />
         <attribute magic_protection="" />
         <attribute missile="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -37723,15 +37732,16 @@
         <attribute vulnerability="M" />
         <attribute rank="4" />
         <attribute super_realm="" />
-        <attribute icon_type="archer_w" />
+        <attribute icon_type="archer+female" />
         <attribute monster_die="3" />
         <attribute monster_die2="4" />
         <attribute setup_start="Elf Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/elves-wood" />
         <attribute denizen="" />
         <attribute magic_protection="" />
         <attribute missile="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -37758,15 +37768,16 @@
         <attribute vulnerability="M" />
         <attribute rank="5" />
         <attribute super_realm="" />
-        <attribute icon_type="archer_w" />
+        <attribute icon_type="archer" />
         <attribute monster_die="3" />
         <attribute monster_die2="4" />
         <attribute setup_start="Elf Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/elves-wood" />
         <attribute denizen="" />
         <attribute magic_protection="" />
         <attribute missile="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -37793,15 +37804,16 @@
         <attribute vulnerability="M" />
         <attribute rank="HQ" />
         <attribute super_realm="" />
-        <attribute icon_type="archer_w" />
+        <attribute icon_type="marksman" />
         <attribute monster_die="3" />
         <attribute monster_die2="4" />
         <attribute setup_start="Elf Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/elves-wood" />
         <attribute denizen="" />
         <attribute magic_protection="" />
         <attribute missile="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -38096,8 +38108,8 @@
         <attribute monster="" />
         <attribute part="" />
         <attribute super_realm="" />
-        <attribute icon_type="crush" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_type="crush-wose" />
+        <attribute icon_folder="wesnoth/icons/attacks" />
         <attribute icon_size="0.6" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -38151,8 +38163,8 @@
         <attribute monster="" />
         <attribute part="" />
         <attribute super_realm="" />
-        <attribute icon_type="crush" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_type="crush-wose" />
+        <attribute icon_folder="wesnoth/icons/attacks" />
         <attribute icon_size="0.6" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -38206,8 +38218,8 @@
         <attribute monster="" />
         <attribute part="" />
         <attribute super_realm="" />
-        <attribute icon_type="crush" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_type="crush-wose" />
+        <attribute icon_folder="wesnoth/icons/attacks" />
         <attribute icon_size="0.6" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -38435,9 +38447,9 @@
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute part="" />
-        <attribute icon_type="fireBreath" />
+        <attribute icon_type="fire-breath-drake" />
         <attribute dragon_missile="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/icons/attacks" />
         <attribute super_realm="" />
         <attribute icon_size="0.6" />
       </AttributeBlock>
@@ -39557,9 +39569,10 @@
         <attribute ts_size="M" />
         <attribute ts_color="yellow" />
         <attribute ts_count="6" />
-        <attribute icon_type="great_axeman_r" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_type="steelclad" />
+        <attribute icon_folder="wesnoth/units/dwarves" />
         <attribute virtual_dwelling="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <contains id="1477" />
       <contains id="1478" />
@@ -39580,15 +39593,16 @@
         <attribute vulnerability="M" />
         <attribute rank="1" />
         <attribute super_realm="" />
-        <attribute icon_type="great_axeman_r" />
+        <attribute icon_type="steelclad" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
         <attribute setup_start="Dwarf Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/dwarves" />
         <attribute denizen="" />
         <attribute needs_init="" />
         <attribute armored="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -39616,15 +39630,16 @@
         <attribute vulnerability="M" />
         <attribute rank="2" />
         <attribute super_realm="" />
-        <attribute icon_type="great_axeman_r" />
+        <attribute icon_type="steelclad" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
         <attribute setup_start="Dwarf Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/dwarves" />
         <attribute denizen="" />
         <attribute needs_init="" />
         <attribute armored="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -39652,15 +39667,16 @@
         <attribute vulnerability="M" />
         <attribute rank="3" />
         <attribute super_realm="" />
-        <attribute icon_type="great_axeman_r" />
+        <attribute icon_type="steelclad" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
         <attribute setup_start="Dwarf Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/dwarves" />
         <attribute denizen="" />
         <attribute needs_init="" />
         <attribute armored="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -39688,15 +39704,16 @@
         <attribute vulnerability="M" />
         <attribute rank="4" />
         <attribute super_realm="" />
-        <attribute icon_type="great_axeman_r" />
+        <attribute icon_type="steelclad" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
         <attribute setup_start="Dwarf Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/dwarves" />
         <attribute denizen="" />
         <attribute needs_init="" />
         <attribute armored="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -39724,15 +39741,16 @@
         <attribute vulnerability="M" />
         <attribute rank="5" />
         <attribute super_realm="" />
-        <attribute icon_type="great_axeman_r" />
+        <attribute icon_type="steelclad" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
         <attribute setup_start="Dwarf Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/dwarves" />
         <attribute denizen="" />
         <attribute needs_init="" />
         <attribute armored="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -39760,15 +39778,16 @@
         <attribute vulnerability="M" />
         <attribute rank="HQ" />
         <attribute super_realm="" />
-        <attribute icon_type="great_axeman_r" />
+        <attribute icon_type="lord" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
         <attribute setup_start="Dwarf Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/dwarves" />
         <attribute denizen="" />
         <attribute needs_init="" />
         <attribute armored="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -39962,9 +39981,9 @@
       <AttributeBlock blockName="this">
         <attribute monster="" />
         <attribute part="" />
-        <attribute icon_type="fireBreath" />
+        <attribute icon_type="fire-breath-drake" />
         <attribute dragon_missile="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/icons/attacks" />
         <attribute super_realm="" />
         <attribute icon_size="0.6" />
       </AttributeBlock>
@@ -40069,8 +40088,8 @@
         <attribute ts_count="6" />
         <attribute ts_size="M" />
         <attribute ts_color="blue" />
-        <attribute icon_type="direWolf" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_type="direwolf" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute ts_sort="1" />
         <attribute super_realm="" />
       </AttributeBlock>
@@ -40087,11 +40106,11 @@
         <attribute vulnerability="M" />
         <attribute fame="0" />
         <attribute notoriety="1" />
-        <attribute icon_type="direWolf" />
+        <attribute icon_type="direwolf" />
         <attribute setup_start="Wolves Box" />
         <attribute monster_die="3" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
@@ -40115,11 +40134,11 @@
         <attribute vulnerability="M" />
         <attribute fame="0" />
         <attribute notoriety="1" />
-        <attribute icon_type="direWolf" />
+        <attribute icon_type="direwolf" />
         <attribute setup_start="Wolves Box" />
         <attribute monster_die="3" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
@@ -40143,11 +40162,11 @@
         <attribute vulnerability="M" />
         <attribute fame="0" />
         <attribute notoriety="1" />
-        <attribute icon_type="direWolf" />
+        <attribute icon_type="direwolf" />
         <attribute setup_start="Wolves Box" />
         <attribute monster_die="3" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
@@ -40171,11 +40190,11 @@
         <attribute vulnerability="M" />
         <attribute fame="0" />
         <attribute notoriety="1" />
-        <attribute icon_type="direWolf" />
+        <attribute icon_type="direwolf" />
         <attribute setup_start="Wolves Box" />
         <attribute monster_die="3" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
@@ -40199,11 +40218,11 @@
         <attribute vulnerability="M" />
         <attribute fame="0" />
         <attribute notoriety="1" />
-        <attribute icon_type="direWolf" />
+        <attribute icon_type="direwolf" />
         <attribute setup_start="Wolves Box" />
         <attribute monster_die="3" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
@@ -40227,11 +40246,11 @@
         <attribute vulnerability="M" />
         <attribute fame="0" />
         <attribute notoriety="1" />
-        <attribute icon_type="direWolf" />
+        <attribute icon_type="direwolf" />
         <attribute setup_start="Wolves Box" />
         <attribute monster_die="3" />
         <attribute base_price="1" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
@@ -40258,7 +40277,7 @@
         <attribute ts_size="M" />
         <attribute ts_color="blue" />
         <attribute icon_type="ogre" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/ogres" />
         <attribute ts_sort="2" />
         <attribute super_realm="" />
       </AttributeBlock>
@@ -40275,7 +40294,7 @@
         <attribute setup_start="Ogres Box" />
         <attribute monster_die="3" />
         <attribute base_price="2" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/ogres" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1.1" />
@@ -40303,7 +40322,7 @@
         <attribute setup_start="Ogres Box" />
         <attribute monster_die="3" />
         <attribute base_price="2" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/ogres" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1.1" />
@@ -40399,7 +40418,7 @@
         <attribute monster="" />
         <attribute part="" />
         <attribute icon_type="club" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/icons/attacks" />
         <attribute super_realm="" />
         <attribute icon_scale="0.8" />
       </AttributeBlock>
@@ -40452,7 +40471,7 @@
         <attribute monster="" />
         <attribute part="" />
         <attribute icon_type="club" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/icons/attacks" />
         <attribute super_realm="" />
         <attribute icon_scale="0.8" />
       </AttributeBlock>
@@ -40505,7 +40524,7 @@
         <attribute monster="" />
         <attribute part="" />
         <attribute icon_type="club" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/icons/attacks" />
         <attribute super_realm="" />
         <attribute icon_scale="0.8" />
       </AttributeBlock>
@@ -45116,11 +45135,12 @@
         <attribute ts_size="M" />
         <attribute ts_color="yellow" />
         <attribute ts_count="6" />
-        <attribute icon_type="swordsman_r" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_type="outlaw" />
+        <attribute icon_folder="wesnoth/units/human-outlaws" />
         <attribute virtual_dwelling="" />
         <attribute ts_sort="3" />
         <attribute ts_offset="1" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <contains id="1743" />
       <contains id="1744" />
@@ -45141,14 +45161,15 @@
         <attribute vulnerability="M" />
         <attribute rank="1" />
         <attribute super_realm="" />
-        <attribute icon_type="assassin_r" />
+        <attribute icon_type="assassin" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
         <attribute setup_start="Bandit Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-outlaws" />
         <attribute denizen="" />
         <attribute needs_init="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -45176,14 +45197,15 @@
         <attribute vulnerability="M" />
         <attribute rank="2" />
         <attribute super_realm="" />
-        <attribute icon_type="assassin_r" />
+        <attribute icon_type="assassin+female" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
         <attribute setup_start="Bandit Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-outlaws" />
         <attribute denizen="" />
         <attribute needs_init="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -45211,14 +45233,15 @@
         <attribute vulnerability="M" />
         <attribute rank="3" />
         <attribute super_realm="" />
-        <attribute icon_type="swordsman_r" />
+        <attribute icon_type="rogue" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
         <attribute setup_start="Bandit Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-outlaws" />
         <attribute denizen="" />
         <attribute needs_init="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -45246,14 +45269,15 @@
         <attribute vulnerability="M" />
         <attribute rank="4" />
         <attribute super_realm="" />
-        <attribute icon_type="swordsman_r" />
+        <attribute icon_type="rogue+female" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
         <attribute setup_start="Bandit Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-outlaws" />
         <attribute denizen="" />
         <attribute needs_init="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -45281,14 +45305,15 @@
         <attribute vulnerability="M" />
         <attribute rank="5" />
         <attribute super_realm="" />
-        <attribute icon_type="swordsman_r" />
+        <attribute icon_type="thief" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
         <attribute setup_start="Bandit Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-outlaws" />
         <attribute denizen="" />
         <attribute needs_init="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -45316,14 +45341,15 @@
         <attribute vulnerability="M" />
         <attribute rank="HQ" />
         <attribute super_realm="" />
-        <attribute icon_type="assassin_r" />
+        <attribute icon_type="fugitive" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
         <attribute setup_start="Bandit Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-outlaws" />
         <attribute denizen="" />
         <attribute needs_init="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -45366,12 +45392,13 @@
         <attribute ts_size="T" />
         <attribute ts_color="blue" />
         <attribute ts_count="4" />
-        <attribute icon_type="short_swordsman_p" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_type="cavalryman" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute virtual_dwelling="" />
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <contains id="1751" />
       <contains id="1752" />
@@ -45390,14 +45417,16 @@
         <attribute vulnerability="M" />
         <attribute rank="1" />
         <attribute armored="" />
-        <attribute icon_type="short_swordsman_p" />
+        <attribute icon_type="swordsman" />
         <attribute setup_start="Patrol Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="3" />
+        <attribute icon_size="0.9" />
+        <attribute icon_type_rider="cavalryman" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -45426,14 +45455,16 @@
         <attribute vulnerability="M" />
         <attribute rank="2" />
         <attribute armored="" />
-        <attribute icon_type="short_swordsman_p" />
+        <attribute icon_type="swordsman" />
         <attribute setup_start="Patrol Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="3" />
+        <attribute icon_size="0.9" />
+        <attribute icon_type_rider="cavalryman" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -45462,14 +45493,16 @@
         <attribute vulnerability="M" />
         <attribute rank="3" />
         <attribute armored="" />
-        <attribute icon_type="short_swordsman_p" />
+        <attribute icon_type="swordsman" />
         <attribute setup_start="Patrol Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="3" />
+        <attribute icon_size="0.9" />
+        <attribute icon_type_rider="cavalryman" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -45498,15 +45531,17 @@
         <attribute vulnerability="M" />
         <attribute rank="HQ" />
         <attribute armored="" />
-        <attribute icon_type="short_swordsman_p" />
+        <attribute icon_type="lieutnant" />
         <attribute setup_start="Patrol Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute commerce="F,N" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="3" />
+        <attribute icon_size="0.9" />
+        <attribute icon_type_rider="cavalier" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -45635,15 +45670,16 @@
         <attribute vulnerability="M" />
         <attribute rank="1" />
         <attribute armored="" />
-        <attribute icon_type="pikeman_s" />
+        <attribute icon_type="pikeman" />
         <attribute setup_start="House" />
         <attribute hire_type="group" />
         <attribute garrison="" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="4" />
         <attribute clan="1" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -45671,15 +45707,16 @@
         <attribute vulnerability="M" />
         <attribute rank="2" />
         <attribute armored="" />
-        <attribute icon_type="pikeman_s" />
+        <attribute icon_type="pikeman" />
         <attribute setup_start="House" />
         <attribute hire_type="group" />
         <attribute garrison="" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="4" />
         <attribute clan="1" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -45707,15 +45744,16 @@
         <attribute vulnerability="M" />
         <attribute rank="3" />
         <attribute armored="" />
-        <attribute icon_type="pikeman_s" />
+        <attribute icon_type="pikeman" />
         <attribute setup_start="House" />
         <attribute hire_type="group" />
         <attribute garrison="" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="4" />
         <attribute clan="1" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -45743,16 +45781,17 @@
         <attribute vulnerability="M" />
         <attribute rank="4" />
         <attribute armored="" />
-        <attribute icon_type="crossbowman_s" />
+        <attribute icon_type="sergeant-crossbow" />
         <attribute setup_start="House" />
         <attribute missile="" />
         <attribute hire_type="group" />
         <attribute garrison="" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="4" />
         <attribute clan="1" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -45780,16 +45819,17 @@
         <attribute vulnerability="M" />
         <attribute rank="5" />
         <attribute armored="" />
-        <attribute icon_type="crossbowman_s" />
+        <attribute icon_type="sergeant-crossbow" />
         <attribute setup_start="House" />
         <attribute missile="" />
         <attribute hire_type="group" />
         <attribute garrison="" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="4" />
         <attribute clan="1" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -45817,16 +45857,17 @@
         <attribute vulnerability="H" />
         <attribute rank="HQ" />
         <attribute armored="" />
-        <attribute icon_type="great_swordsman_s" />
+        <attribute icon_type="royalguard" />
         <attribute setup_start="House" />
         <attribute hire_type="group" />
         <attribute garrison="" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute commerce="F,N" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="4" />
         <attribute clan="1" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -45854,15 +45895,16 @@
         <attribute vulnerability="H" />
         <attribute rank="1" />
         <attribute armored="" />
-        <attribute icon_type="great_swordsman_g" />
+        <attribute icon_type="royalguard" />
         <attribute setup_start="Guard" />
         <attribute hire_type="group" />
         <attribute garrison="" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="5" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -45890,15 +45932,16 @@
         <attribute vulnerability="H" />
         <attribute rank="2" />
         <attribute armored="" />
-        <attribute icon_type="great_swordsman_g" />
+        <attribute icon_type="royalguard" />
         <attribute setup_start="Guard" />
         <attribute hire_type="group" />
         <attribute garrison="" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="5" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -45926,15 +45969,16 @@
         <attribute vulnerability="H" />
         <attribute rank="3" />
         <attribute armored="" />
-        <attribute icon_type="great_swordsman_g" />
+        <attribute icon_type="royalguard" />
         <attribute setup_start="Guard" />
         <attribute hire_type="group" />
         <attribute garrison="" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="5" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -45962,16 +46006,17 @@
         <attribute vulnerability="H" />
         <attribute rank="HQ" />
         <attribute armored="" />
-        <attribute icon_type="great_swordsman_g" />
+        <attribute icon_type="royal-warrior" />
         <attribute setup_start="Guard" />
         <attribute hire_type="group" />
         <attribute garrison="" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute commerce="F" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="5" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -45999,15 +46044,17 @@
         <attribute vulnerability="T" />
         <attribute rank="1" />
         <attribute armored="" />
-        <attribute icon_type="knight_o" />
+        <attribute icon_type="general" />
         <attribute setup_start="Chapel" />
         <attribute hire_type="single" />
         <attribute garrison="" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="6" />
+        <attribute icon_size="0.9" />
+        <attribute icon_type_rider="knight" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -46036,15 +46083,17 @@
         <attribute vulnerability="T" />
         <attribute rank="2" />
         <attribute armored="" />
-        <attribute icon_type="knight_o" />
+        <attribute icon_type="general" />
         <attribute setup_start="Chapel" />
         <attribute hire_type="single" />
         <attribute garrison="" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="6" />
+        <attribute icon_size="0.9" />
+        <attribute icon_type_rider="knight" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -46073,15 +46122,17 @@
         <attribute vulnerability="T" />
         <attribute rank="3" />
         <attribute armored="" />
-        <attribute icon_type="knight_o" />
+        <attribute icon_type="general" />
         <attribute setup_start="Chapel" />
         <attribute hire_type="single" />
         <attribute garrison="" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="6" />
+        <attribute icon_size="0.9" />
+        <attribute icon_type_rider="knight" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -46110,15 +46161,17 @@
         <attribute vulnerability="T" />
         <attribute rank="3" />
         <attribute armored="" />
-        <attribute icon_type="knight_o" />
+        <attribute icon_type="general" />
         <attribute setup_start="Chapel" />
         <attribute hire_type="single" />
         <attribute garrison="" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="6" />
+        <attribute icon_size="0.9" />
+        <attribute icon_type_rider="knight" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -46147,16 +46200,18 @@
         <attribute vulnerability="T" />
         <attribute rank="HQ" />
         <attribute armored="" />
-        <attribute icon_type="knight_o" />
+        <attribute icon_type="general-leading" />
         <attribute setup_start="Chapel" />
         <attribute hire_type="single" />
         <attribute garrison="" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute commerce="F" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="6" />
+        <attribute icon_size="0.9" />
+        <attribute icon_type_rider="grand-knight" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -46321,6 +46376,7 @@
         <attribute super_realm="" />
         <attribute native_die="5" />
         <attribute clan="2" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <contains id="1781" />
       <contains id="1782" />
@@ -46347,6 +46403,7 @@
         <attribute super_realm="" />
         <attribute native_die="5" />
         <attribute clan="2" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -46379,6 +46436,7 @@
         <attribute super_realm="" />
         <attribute native_die="5" />
         <attribute clan="2" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -46411,6 +46469,7 @@
         <attribute super_realm="" />
         <attribute native_die="5" />
         <attribute clan="2" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -46444,6 +46503,7 @@
         <attribute super_realm="" />
         <attribute native_die="5" />
         <attribute clan="2" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -46489,6 +46549,7 @@
         <attribute super_realm="" />
         <attribute clan="2" />
         <attribute native_die="6" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <contains id="1787" />
       <contains id="1788" />
@@ -46515,6 +46576,7 @@
         <attribute super_realm="" />
         <attribute clan="2" />
         <attribute native_die="6" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -46550,6 +46612,7 @@
         <attribute super_realm="" />
         <attribute clan="2" />
         <attribute native_die="6" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -46585,6 +46648,7 @@
         <attribute super_realm="" />
         <attribute clan="2" />
         <attribute native_die="6" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -46621,6 +46685,7 @@
         <attribute super_realm="" />
         <attribute clan="2" />
         <attribute native_die="6" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -46663,7 +46728,7 @@
         <attribute vulnerability="M" />
         <attribute activated="" />
         <attribute super_realm="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
@@ -46686,7 +46751,7 @@
         <attribute vulnerability="M" />
         <attribute activated="" />
         <attribute super_realm="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
@@ -46709,7 +46774,7 @@
         <attribute vulnerability="M" />
         <attribute activated="" />
         <attribute super_realm="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
@@ -46732,7 +46797,7 @@
         <attribute vulnerability="M" />
         <attribute activated="" />
         <attribute super_realm="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
@@ -46762,6 +46827,7 @@
         <attribute super_realm="" />
         <attribute native_die="3" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <contains id="1797" />
       <contains id="1798" />
@@ -46792,6 +46858,7 @@
         <attribute super_realm="" />
         <attribute native_die="3" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -46826,6 +46893,7 @@
         <attribute super_realm="" />
         <attribute native_die="3" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -46860,6 +46928,7 @@
         <attribute super_realm="" />
         <attribute native_die="3" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -46894,6 +46963,7 @@
         <attribute super_realm="" />
         <attribute native_die="3" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -46928,6 +46998,7 @@
         <attribute super_realm="" />
         <attribute native_die="3" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -46963,6 +47034,7 @@
         <attribute super_realm="" />
         <attribute native_die="3" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -47010,6 +47082,7 @@
         <attribute super_realm="" />
         <attribute clan="3" />
         <attribute native_die="5" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <contains id="1805" />
       <contains id="1806" />
@@ -47040,6 +47113,7 @@
         <attribute super_realm="" />
         <attribute native_die="7" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -47075,6 +47149,7 @@
         <attribute super_realm="" />
         <attribute native_die="7" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -47110,6 +47185,7 @@
         <attribute super_realm="" />
         <attribute native_die="7" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -47145,6 +47221,7 @@
         <attribute super_realm="" />
         <attribute native_die="7" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -47180,6 +47257,7 @@
         <attribute super_realm="" />
         <attribute native_die="7" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -47216,6 +47294,7 @@
         <attribute super_realm="" />
         <attribute native_die="7" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -47252,6 +47331,7 @@
         <attribute super_realm="" />
         <attribute native_die="7" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -47288,6 +47368,7 @@
         <attribute super_realm="" />
         <attribute native_die="7" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -47323,6 +47404,7 @@
         <attribute super_realm="" />
         <attribute clan="3" />
         <attribute native_die="6" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -47358,6 +47440,7 @@
         <attribute super_realm="" />
         <attribute clan="3" />
         <attribute native_die="6" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -47394,6 +47477,7 @@
         <attribute super_realm="" />
         <attribute clan="3" />
         <attribute native_die="6" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -47430,6 +47514,7 @@
         <attribute super_realm="" />
         <attribute clan="3" />
         <attribute native_die="6" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -47466,6 +47551,7 @@
         <attribute super_realm="" />
         <attribute clan="3" />
         <attribute native_die="6" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -47499,6 +47585,7 @@
         <attribute super_realm="" />
         <attribute clan="3" />
         <attribute native_die="6" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -47531,6 +47618,7 @@
         <attribute super_realm="" />
         <attribute clan="3" />
         <attribute native_die="6" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -47566,6 +47654,7 @@
         <attribute super_realm="" />
         <attribute clan="3" />
         <attribute native_die="6" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -47601,6 +47690,7 @@
         <attribute super_realm="" />
         <attribute clan="3" />
         <attribute native_die="6" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -47637,6 +47727,7 @@
         <attribute super_realm="" />
         <attribute clan="3" />
         <attribute native_die="6" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -47702,6 +47793,7 @@
         <attribute super_realm="" />
         <attribute native_die="2" />
         <attribute clan="1" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -47735,6 +47827,7 @@
         <attribute super_realm="" />
         <attribute native_die="2" />
         <attribute clan="1" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -47768,6 +47861,7 @@
         <attribute super_realm="" />
         <attribute native_die="2" />
         <attribute clan="1" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -47801,6 +47895,7 @@
         <attribute super_realm="" />
         <attribute native_die="2" />
         <attribute clan="1" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -47834,6 +47929,7 @@
         <attribute super_realm="" />
         <attribute native_die="2" />
         <attribute clan="1" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -47867,6 +47963,7 @@
         <attribute super_realm="" />
         <attribute native_die="2" />
         <attribute clan="1" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -47900,6 +47997,7 @@
         <attribute super_realm="" />
         <attribute native_die="2" />
         <attribute clan="1" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -47933,6 +48031,7 @@
         <attribute super_realm="" />
         <attribute native_die="1" />
         <attribute clan="2" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -47966,6 +48065,7 @@
         <attribute super_realm="" />
         <attribute native_die="1" />
         <attribute clan="2" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -47999,6 +48099,7 @@
         <attribute super_realm="" />
         <attribute native_die="1" />
         <attribute clan="2" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -48032,6 +48133,7 @@
         <attribute super_realm="" />
         <attribute native_die="1" />
         <attribute clan="2" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -48065,6 +48167,7 @@
         <attribute super_realm="" />
         <attribute native_die="4" />
         <attribute clan="2" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -48098,6 +48201,7 @@
         <attribute super_realm="" />
         <attribute native_die="4" />
         <attribute clan="2" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -48131,6 +48235,7 @@
         <attribute super_realm="" />
         <attribute native_die="4" />
         <attribute clan="2" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -48164,6 +48269,7 @@
         <attribute super_realm="" />
         <attribute native_die="4" />
         <attribute clan="2" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -48198,6 +48304,7 @@
         <attribute native_die="3" />
         <attribute clan="4" />
         <attribute armored="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -48233,6 +48340,7 @@
         <attribute native_die="3" />
         <attribute clan="4" />
         <attribute armored="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -48268,6 +48376,7 @@
         <attribute native_die="3" />
         <attribute clan="4" />
         <attribute armored="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -48303,6 +48412,7 @@
         <attribute native_die="3" />
         <attribute clan="4" />
         <attribute armored="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -48328,7 +48438,7 @@
         <attribute vulnerability="M" />
         <attribute activated="" />
         <attribute super_realm="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
@@ -48351,7 +48461,7 @@
         <attribute vulnerability="M" />
         <attribute activated="" />
         <attribute super_realm="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
@@ -48374,7 +48484,7 @@
         <attribute vulnerability="M" />
         <attribute activated="" />
         <attribute super_realm="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
@@ -48397,7 +48507,7 @@
         <attribute vulnerability="M" />
         <attribute activated="" />
         <attribute super_realm="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
@@ -48442,6 +48552,7 @@
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="1" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <contains id="1850" />
       <contains id="1851" />
@@ -48466,6 +48577,7 @@
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="1" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -48500,6 +48612,7 @@
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="1" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -48536,6 +48649,7 @@
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="1" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -48572,6 +48686,7 @@
         <attribute super_realm="" />
         <attribute clan="1" />
         <attribute native_die="1" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -48723,6 +48838,7 @@
         <attribute super_realm="" />
         <attribute native_die="2" />
         <attribute clan="2" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <contains id="1860" />
       <contains id="1861" />
@@ -48751,6 +48867,7 @@
         <attribute native_die="2" />
         <attribute clan="2" />
         <attribute missile="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -48784,6 +48901,7 @@
         <attribute native_die="2" />
         <attribute clan="2" />
         <attribute missile="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -48816,6 +48934,7 @@
         <attribute super_realm="" />
         <attribute native_die="2" />
         <attribute clan="2" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -48850,6 +48969,7 @@
         <attribute super_realm="" />
         <attribute native_die="2" />
         <attribute clan="2" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -48884,6 +49004,7 @@
         <attribute super_realm="" />
         <attribute native_die="2" />
         <attribute clan="2" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -48919,6 +49040,7 @@
         <attribute native_die="2" />
         <attribute clan="2" />
         <attribute missile="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -48965,6 +49087,7 @@
         <attribute super_realm="" />
         <attribute native_die="2" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <contains id="1868" />
       <contains id="1869" />
@@ -48988,6 +49111,7 @@
         <attribute super_realm="" />
         <attribute native_die="2" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="1" />
@@ -49020,6 +49144,7 @@
         <attribute super_realm="" />
         <attribute native_die="2" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="1" />
@@ -49052,6 +49177,7 @@
         <attribute super_realm="" />
         <attribute native_die="2" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="1" />
@@ -49098,6 +49224,7 @@
         <attribute super_realm="" />
         <attribute native_die="4" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <contains id="1873" />
       <contains id="1874" />
@@ -49123,6 +49250,7 @@
         <attribute super_realm="" />
         <attribute native_die="4" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -49158,6 +49286,7 @@
         <attribute super_realm="" />
         <attribute native_die="4" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -49193,6 +49322,7 @@
         <attribute super_realm="" />
         <attribute native_die="4" />
         <attribute clan="3" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -49229,6 +49359,7 @@
         <attribute native_die="4" />
         <attribute clan="3" />
         <attribute missile="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -49376,6 +49507,7 @@
         <attribute super_realm="" />
         <attribute native_die="1" />
         <attribute clan="4" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <contains id="1883" />
       <contains id="1884" />
@@ -49404,6 +49536,7 @@
         <attribute native_die="1" />
         <attribute clan="4" />
         <attribute armored="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -49438,6 +49571,7 @@
         <attribute super_realm="" />
         <attribute native_die="1" />
         <attribute clan="4" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -49472,6 +49606,7 @@
         <attribute super_realm="" />
         <attribute native_die="1" />
         <attribute clan="4" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -49508,6 +49643,7 @@
         <attribute clan="4" />
         <attribute armored="" />
         <attribute missile="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -49544,6 +49680,7 @@
         <attribute clan="4" />
         <attribute armored="" />
         <attribute missile="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -49581,6 +49718,7 @@
         <attribute native_die="1" />
         <attribute clan="4" />
         <attribute armored="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -49629,6 +49767,7 @@
         <attribute super_realm="" />
         <attribute native_die="5" />
         <attribute clan="4" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <contains id="1891" />
       <contains id="1892" />
@@ -49654,6 +49793,7 @@
         <attribute native_die="5" />
         <attribute clan="4" />
         <attribute armored="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -49688,6 +49828,7 @@
         <attribute native_die="5" />
         <attribute clan="4" />
         <attribute armored="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -49722,6 +49863,7 @@
         <attribute native_die="5" />
         <attribute clan="4" />
         <attribute armored="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -49756,6 +49898,7 @@
         <attribute native_die="5" />
         <attribute clan="4" />
         <attribute armored="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -49903,6 +50046,7 @@
         <attribute super_realm="" />
         <attribute native_die="6" />
         <attribute clan="4" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <contains id="1901" />
       <contains id="1902" />
@@ -49927,6 +50071,7 @@
         <attribute native_die="6" />
         <attribute clan="4" />
         <attribute armored="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -49961,6 +50106,7 @@
         <attribute native_die="6" />
         <attribute clan="4" />
         <attribute armored="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -49995,6 +50141,7 @@
         <attribute native_die="6" />
         <attribute clan="4" />
         <attribute armored="" />
+        <attribute icon_size="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -50022,7 +50169,7 @@
         <attribute super_realm="" />
         <attribute clan="4" />
         <attribute native_die="6" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
@@ -50047,7 +50194,7 @@
         <attribute super_realm="" />
         <attribute clan="4" />
         <attribute native_die="6" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
@@ -50072,7 +50219,7 @@
         <attribute super_realm="" />
         <attribute clan="4" />
         <attribute native_die="6" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
@@ -50095,7 +50242,7 @@
         <attribute base_price="12" />
         <attribute item="" />
         <attribute super_realm="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
@@ -50118,7 +50265,7 @@
         <attribute base_price="14" />
         <attribute item="" />
         <attribute super_realm="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
@@ -50141,7 +50288,7 @@
         <attribute base_price="12" />
         <attribute item="" />
         <attribute super_realm="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
@@ -50164,7 +50311,7 @@
         <attribute base_price="16" />
         <attribute item="" />
         <attribute super_realm="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
@@ -50187,7 +50334,7 @@
         <attribute base_price="15" />
         <attribute item="" />
         <attribute super_realm="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
@@ -50210,7 +50357,7 @@
         <attribute base_price="14" />
         <attribute item="" />
         <attribute super_realm="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
@@ -50234,7 +50381,7 @@
         <attribute magic="" />
         <attribute item="" />
         <attribute super_realm="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
@@ -50488,7 +50635,7 @@
         <attribute base_price="12" />
         <attribute item="" />
         <attribute super_realm="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
@@ -50511,7 +50658,7 @@
         <attribute base_price="14" />
         <attribute item="" />
         <attribute super_realm="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
@@ -50534,7 +50681,7 @@
         <attribute base_price="14" />
         <attribute item="" />
         <attribute super_realm="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
@@ -50626,7 +50773,7 @@
         <attribute base_price="12" />
         <attribute item="" />
         <attribute super_realm="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
@@ -50649,7 +50796,7 @@
         <attribute base_price="15" />
         <attribute item="" />
         <attribute super_realm="" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
       </AttributeBlock>
