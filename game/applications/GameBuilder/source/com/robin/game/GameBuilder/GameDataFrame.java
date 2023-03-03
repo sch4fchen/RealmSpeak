@@ -218,7 +218,7 @@ public class GameDataFrame extends JInternalFrame implements Modifyable,Saveable
 		Box box;
 		JPanel panel;
 		JButton button;
-		setSize(500,500);
+		setSize(800,800);
 		setContentPane(new JPanel());
 		getContentPane().setLayout(new BorderLayout(5,5));
 			Box top = Box.createVerticalBox();

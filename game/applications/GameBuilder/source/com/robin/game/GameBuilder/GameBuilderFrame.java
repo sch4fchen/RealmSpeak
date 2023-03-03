@@ -203,8 +203,8 @@ public class GameBuilderFrame extends JFrame {
 	public void initComponents() {
 		setTitle("GBuilder");
 		setIconImage(IconFactory.findIcon("images/tab/disc.gif").getImage());
-		ComponentTools.maximize(this);
-		setLocation(0,0);
+		setSize(1600,900);
+		setLocationRelativeTo(null);
 		desktop = new JDesktopPane();
 		desktopWindowCount = 0;
 		setContentPane(desktop);
