@@ -34375,12 +34375,12 @@
       <contains id="1841" />
       <contains id="1842" />
       <contains id="1843" />
-      <contains id="1984" />
       <contains id="1985" />
-      <contains id="1987" />
+      <contains id="1986" />
       <contains id="1988" />
-      <contains id="1991" />
+      <contains id="1989" />
       <contains id="1992" />
+      <contains id="1993" />
     </GameObject>
     <GameObject id="1288" name="Cottage">
       <AttributeBlock blockName="this">
@@ -39563,9 +39563,9 @@
       <contains id="1480" />
       <contains id="1481" />
       <contains id="1482" />
-      <contains id="1993" />
       <contains id="1994" />
       <contains id="2007" />
+      <contains id="1984" />
     </GameObject>
     <GameObject id="1477" name="Dwarf">
       <AttributeBlock blockName="this">
@@ -49554,7 +49554,7 @@
       <contains id="1892" />
       <contains id="1893" />
       <contains id="1894" />
-      <contains id="1989" />
+      <contains id="1990" />
       <contains id="1995" />
     </GameObject>
     <GameObject id="1891" name="Caster">
@@ -49815,8 +49815,8 @@
       <contains id="1901" />
       <contains id="1902" />
       <contains id="1903" />
-      <contains id="1986" />
-      <contains id="1990" />
+      <contains id="1987" />
+      <contains id="1991" />
     </GameObject>
     <GameObject id="1901" name="Caster">
       <AttributeBlock blockName="this">
@@ -51725,27 +51725,28 @@
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1984" name="Shield">
+    <GameObject id="1984" name="Armor">
       <AttributeBlock blockName="this">
-        <attribute vulnerability="M" />
-        <attribute weight="M" />
-        <attribute shield="" />
-        <attribute armor_choice="" />
+        <attribute vulnerability="H" />
+        <attribute weight="H" />
+        <attribute armor_thrust="" />
+        <attribute armor_swing="" />
+        <attribute armor_smash="" />
         <attribute armor="" />
-        <attribute icon_type="shield" />
+        <attribute icon_type="suitofarmor" />
         <attribute facing="dark" />
-        <attribute armor_row="1" />
-        <attribute ret_dw="House" />
+        <attribute armor_row="3" />
+        <attribute ret_dw="Chapel" />
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
-        <attribute base_price="7" />
+        <attribute base_price="17" />
         <attribute chit_color="gray" />
       </AttributeBlock>
       <AttributeBlock blockName="damaged">
-        <attribute base_price="5" />
+        <attribute base_price="12" />
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
@@ -51797,27 +51798,27 @@
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1987" name="Breastplate">
+    <GameObject id="1987" name="Shield">
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
-        <attribute armor_swing="" />
-        <attribute armor_thrust="" />
+        <attribute shield="" />
+        <attribute armor_choice="" />
         <attribute armor="" />
-        <attribute icon_type="breastplate" />
+        <attribute icon_type="shield" />
         <attribute facing="dark" />
-        <attribute armor_row="2" />
-        <attribute ret_dw="Guard" />
+        <attribute armor_row="1" />
+        <attribute ret_dw="House" />
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
-        <attribute base_price="9" />
+        <attribute base_price="7" />
         <attribute chit_color="gray" />
       </AttributeBlock>
       <AttributeBlock blockName="damaged">
-        <attribute base_price="6" />
+        <attribute base_price="5" />
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
@@ -51893,26 +51894,27 @@
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1991" name="Helmet">
+    <GameObject id="1991" name="Breastplate">
       <AttributeBlock blockName="this">
         <attribute vulnerability="M" />
         <attribute weight="M" />
-        <attribute armor_smash="" />
+        <attribute armor_swing="" />
+        <attribute armor_thrust="" />
         <attribute armor="" />
-        <attribute icon_type="helmet" />
+        <attribute icon_type="breastplate" />
         <attribute facing="dark" />
         <attribute armor_row="2" />
-        <attribute ret_dw="House" />
+        <attribute ret_dw="Guard" />
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
-        <attribute base_price="5" />
+        <attribute base_price="9" />
         <attribute chit_color="gray" />
       </AttributeBlock>
       <AttributeBlock blockName="damaged">
-        <attribute base_price="3" />
+        <attribute base_price="6" />
         <attribute chit_color="white" />
       </AttributeBlock>
     </GameObject>
@@ -52743,30 +52745,30 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2026" name="Sun Sword">
+    <GameObject id="2026" name="Mage's Staff">
       <AttributeBlock blockName="this">
         <attribute weight="L" />
-        <attribute length="4" />
-        <attribute fame="3" />
+        <attribute length="9" />
+        <attribute fame="0" />
         <attribute notoriety="9" />
-        <attribute base_price="20" />
+        <attribute base_price="15" />
         <attribute weapon="" />
-        <attribute icon_type="great_sword" />
+        <attribute icon_type="staff" />
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
         <attribute magic="" />
+        <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="4" />
         <attribute strength="L" />
-        <attribute sharpness="1" />
         <attribute chit_color="yellow" />
       </AttributeBlock>
       <AttributeBlock blockName="alerted">
         <attribute strength="L" />
-        <attribute sharpness="1" />
         <attribute chit_color="gold" />
+        <attribute attack_speed="2" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2027" name="Golden Axe">
