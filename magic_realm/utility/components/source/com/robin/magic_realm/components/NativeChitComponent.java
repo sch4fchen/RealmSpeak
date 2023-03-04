@@ -303,7 +303,8 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		NativeSteedChitComponent horse = (NativeSteedChitComponent)getHorse(false);
 		if (horse!=null) {
 			String[] ret = horse.getFolderAndType();
-			ImageIcon icon = ImageCache.getIcon(ret[0]+"/"+ret[1],20);
+			int horseSize = ret[2]==null?20:40*Integer.valueOf(ret[2]);
+			ImageIcon icon = ImageCache.getIcon(ret[0]+"/"+ret[1],horseSize);
 			g.drawImage(icon.getImage(),size-icon.getIconWidth()-2,(size>>1),null);
 		}
 	}

@@ -66,10 +66,11 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		return "gallop";
 	}
 	public String[] getFolderAndType() {
-		String[] ret = new String[2];
+		String[] ret = new String[3];
 		if (gameObject.hasThisAttribute("super_realm")) {
 			ret[0] = gameObject.getThisAttribute(Constants.ICON_FOLDER);
 			ret[1] = gameObject.getThisAttribute(Constants.ICON_TYPE);
+			ret[2] = gameObject.getThisAttribute(Constants.ICON_SIZE);
 			return ret;
 		}
 		String horse_type = gameObject.getThisAttribute("horse");
