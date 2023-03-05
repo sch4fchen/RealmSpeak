@@ -34723,7 +34723,7 @@
         <attribute part="" />
         <attribute super_realm="" />
         <attribute icon_type="sting" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/icons/attacks" />
         <attribute icon_scale="0.8" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -37101,7 +37101,7 @@
         <attribute part="" />
         <attribute super_realm="" />
         <attribute icon_type="sting" />
-        <attribute icon_folder="wesnoth/units" />
+        <attribute icon_folder="wesnoth/icons/attacks" />
         <attribute icon_scale="0.8" />
       </AttributeBlock>
       <AttributeBlock blockName="light">

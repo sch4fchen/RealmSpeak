@@ -136,7 +136,11 @@ public class WeaponChitComponent extends RoundChitComponent {
 		String icon_type = gameObject.getThisAttribute(Constants.ICON_TYPE);
 		String icon_folder = gameObject.getThisAttribute(Constants.ICON_FOLDER);
 		if (icon_type!=null) {
-			drawIcon(g,icon_folder,icon_type,0.5);
+			double size = 0.5;
+			if(gameObject.hasThisAttribute(Constants.ICON_SIZE)) {
+				size = Double.parseDouble(gameObject.getThisAttribute(Constants.ICON_SIZE));
+			}
+			drawIcon(g,icon_folder,icon_type,size);
 		}
 		
 		// Draw Stats
