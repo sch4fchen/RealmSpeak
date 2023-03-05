@@ -366,7 +366,6 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		text.append("It is provided as is without express or implied warranty.<br>");
 		text.append("<br>");
 		text.append("For graphics taken from Battle for Wesnoth: https://wiki.wesnoth.org/Wesnoth:Copyrights<br>");
-		text.append("For graphics taken from Dungeon Crawl Stone Soup: https://github.com/crawl/tiles/tree/master/releases or entries on https://opengameart.org<br>");
 		text.append("</font></body></html>");
 		
 		showHtmlWindow("RealmSpeak License",text.toString());
@@ -451,7 +450,6 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		scroller.addLine(new ScrollLine("Other Graphics",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Battle for Wesnoth",listing,listingColor,null,0,SwingConstants.CENTER,"https://www.wesnoth.org/"));
 		scroller.addLine(new ScrollLine("Wesnoth Copyrights",listing,listingColor,null,0,SwingConstants.CENTER,"https://wiki.wesnoth.org/Wesnoth:Copyrights"));
-		scroller.addLine(new ScrollLine("Dungeon Crawl Stone Soup",listing,listingColor,null,0,SwingConstants.CENTER,"https://github.com/crawl/tiles/tree/master/releases"));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Websites",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Nand's Magic Realm",listing,listingColor,null,0,SwingConstants.CENTER,"http://www.nand.it/mr/"));
@@ -494,7 +492,6 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		scroller.addLine(new ScrollLine("Super Realm Graphics",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Casey Benn",listing,listingColor));
 		scroller.addLine(new ScrollLine("Battle for Wesnoth",listing,listingColor,null,0,SwingConstants.CENTER,"https://www.wesnoth.org/"));
-		scroller.addLine(new ScrollLine("Dungeon Crawl Stone Soup",listing,listingColor,null,0,SwingConstants.CENTER,"https://crawl.develz.org/"));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Expansion Monster Graphics",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Vrin Thomas",listing,listingColor));
