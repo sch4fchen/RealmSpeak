@@ -35237,7 +35237,7 @@
         <attribute vulnerability="M" />
         <attribute rank="1" />
         <attribute super_realm="" />
-        <attribute icon_type="red-mage" />
+        <attribute icon_type="silver-mage" />
         <attribute monster_die="1" />
         <attribute monster_die2="2" />
         <attribute setup_start="Cultist Dwelling" />
@@ -37696,7 +37696,7 @@
         <attribute vulnerability="M" />
         <attribute rank="3" />
         <attribute super_realm="" />
-        <attribute icon_type="archer" />
+        <attribute icon_type="archer-bow" />
         <attribute monster_die="3" />
         <attribute monster_die2="4" />
         <attribute setup_start="Elf Dwelling" />
@@ -37732,7 +37732,7 @@
         <attribute vulnerability="M" />
         <attribute rank="4" />
         <attribute super_realm="" />
-        <attribute icon_type="archer+female" />
+        <attribute icon_type="archer+female-bow" />
         <attribute monster_die="3" />
         <attribute monster_die2="4" />
         <attribute setup_start="Elf Dwelling" />
@@ -45455,7 +45455,7 @@
         <attribute vulnerability="M" />
         <attribute rank="2" />
         <attribute armored="" />
-        <attribute icon_type="swordsman" />
+        <attribute icon_type="swordsman-idle-4" />
         <attribute setup_start="Patrol Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="wesnoth/units/human-loyalists" />
@@ -45670,7 +45670,7 @@
         <attribute vulnerability="M" />
         <attribute rank="1" />
         <attribute armored="" />
-        <attribute icon_type="pikeman" />
+        <attribute icon_type="halberdier" />
         <attribute setup_start="House" />
         <attribute hire_type="group" />
         <attribute garrison="" />
@@ -45707,7 +45707,7 @@
         <attribute vulnerability="M" />
         <attribute rank="2" />
         <attribute armored="" />
-        <attribute icon_type="pikeman" />
+        <attribute icon_type="halberdier" />
         <attribute setup_start="House" />
         <attribute hire_type="group" />
         <attribute garrison="" />
@@ -45744,7 +45744,7 @@
         <attribute vulnerability="M" />
         <attribute rank="3" />
         <attribute armored="" />
-        <attribute icon_type="pikeman" />
+        <attribute icon_type="halberdier" />
         <attribute setup_start="House" />
         <attribute hire_type="group" />
         <attribute garrison="" />
@@ -45781,7 +45781,7 @@
         <attribute vulnerability="M" />
         <attribute rank="4" />
         <attribute armored="" />
-        <attribute icon_type="sergeant-crossbow" />
+        <attribute icon_type="marshal-crossbow" />
         <attribute setup_start="House" />
         <attribute missile="" />
         <attribute hire_type="group" />
@@ -45819,7 +45819,7 @@
         <attribute vulnerability="M" />
         <attribute rank="5" />
         <attribute armored="" />
-        <attribute icon_type="sergeant-crossbow" />
+        <attribute icon_type="marshal-crossbow" />
         <attribute setup_start="House" />
         <attribute missile="" />
         <attribute hire_type="group" />
@@ -46044,7 +46044,7 @@
         <attribute vulnerability="T" />
         <attribute rank="1" />
         <attribute armored="" />
-        <attribute icon_type="general" />
+        <attribute icon_type="marshal" />
         <attribute setup_start="Chapel" />
         <attribute hire_type="single" />
         <attribute garrison="" />
@@ -46083,7 +46083,7 @@
         <attribute vulnerability="T" />
         <attribute rank="2" />
         <attribute armored="" />
-        <attribute icon_type="general" />
+        <attribute icon_type="marshal" />
         <attribute setup_start="Chapel" />
         <attribute hire_type="single" />
         <attribute garrison="" />
@@ -46122,7 +46122,7 @@
         <attribute vulnerability="T" />
         <attribute rank="3" />
         <attribute armored="" />
-        <attribute icon_type="general" />
+        <attribute icon_type="marshal" />
         <attribute setup_start="Chapel" />
         <attribute hire_type="single" />
         <attribute garrison="" />
@@ -46161,7 +46161,7 @@
         <attribute vulnerability="T" />
         <attribute rank="3" />
         <attribute armored="" />
-        <attribute icon_type="general" />
+        <attribute icon_type="marshal" />
         <attribute setup_start="Chapel" />
         <attribute hire_type="single" />
         <attribute garrison="" />
@@ -46200,7 +46200,7 @@
         <attribute vulnerability="T" />
         <attribute rank="HQ" />
         <attribute armored="" />
-        <attribute icon_type="general-leading" />
+        <attribute icon_type="marshal-leading" />
         <attribute setup_start="Chapel" />
         <attribute hire_type="single" />
         <attribute garrison="" />
@@ -46370,8 +46370,8 @@
         <attribute ts_size="T" />
         <attribute ts_color="green" />
         <attribute ts_count="4" />
-        <attribute icon_type="archer_w" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_type="bowman" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute virtual_dwelling="" />
         <attribute super_realm="" />
         <attribute native_die="5" />
@@ -46394,11 +46394,11 @@
         <attribute base_price="2" />
         <attribute vulnerability="M" />
         <attribute rank="1" />
-        <attribute icon_type="archer_w" />
+        <attribute icon_type="bowman" />
         <attribute setup_start="Woodfolk Dwelling" />
         <attribute missile="" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="5" />
@@ -46427,11 +46427,11 @@
         <attribute base_price="2" />
         <attribute vulnerability="M" />
         <attribute rank="2" />
-        <attribute icon_type="archer_w" />
+        <attribute icon_type="bowman-bow" />
         <attribute setup_start="Woodfolk Dwelling" />
         <attribute missile="" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="5" />
@@ -46460,11 +46460,11 @@
         <attribute base_price="2" />
         <attribute vulnerability="M" />
         <attribute rank="3" />
-        <attribute icon_type="archer_w" />
+        <attribute icon_type="bowman" />
         <attribute setup_start="Woodfolk Dwelling" />
         <attribute missile="" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="5" />
@@ -46493,11 +46493,11 @@
         <attribute base_price="2" />
         <attribute vulnerability="M" />
         <attribute rank="HQ" />
-        <attribute icon_type="archer_w" />
+        <attribute icon_type="duelist" />
         <attribute setup_start="Woodfolk Dwelling" />
         <attribute missile="" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute commerce="F,N" />
         <attribute denizen="" />
         <attribute super_realm="" />
@@ -46543,8 +46543,8 @@
         <attribute ts_size="T" />
         <attribute ts_color="green" />
         <attribute ts_count="4" />
-        <attribute icon_type="lancer_l" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_type="horseman" />
+        <attribute icon_folder="wesnoth/units/human-loayalists" />
         <attribute virtual_dwelling="" />
         <attribute super_realm="" />
         <attribute clan="2" />
@@ -46568,15 +46568,16 @@
         <attribute base_price="2" />
         <attribute vulnerability="L" />
         <attribute rank="1" />
-        <attribute icon_type="lancer_l" />
+        <attribute icon_type="spearman" />
         <attribute setup_start="Lancer Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute clan="2" />
         <attribute native_die="6" />
         <attribute icon_size="0.9" />
+        <attribute icon_type_rider="horseman" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -46604,15 +46605,16 @@
         <attribute base_price="2" />
         <attribute vulnerability="L" />
         <attribute rank="2" />
-        <attribute icon_type="lancer_l" />
+        <attribute icon_type="spearman" />
         <attribute setup_start="Lancer Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute clan="2" />
         <attribute native_die="6" />
         <attribute icon_size="0.9" />
+        <attribute icon_type_rider="horseman" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -46640,15 +46642,16 @@
         <attribute base_price="2" />
         <attribute vulnerability="L" />
         <attribute rank="3" />
-        <attribute icon_type="lancer_l" />
+        <attribute icon_type="spearman" />
         <attribute setup_start="Lancer Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute clan="2" />
         <attribute native_die="6" />
         <attribute icon_size="0.9" />
+        <attribute icon_type_rider="horseman" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -46676,16 +46679,17 @@
         <attribute base_price="2" />
         <attribute vulnerability="L" />
         <attribute rank="HQ" />
-        <attribute icon_type="lancer_l" />
+        <attribute icon_type="javelineer" />
         <attribute setup_start="Lancer Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute commerce="F,N" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute clan="2" />
         <attribute native_die="6" />
         <attribute icon_size="0.9" />
+        <attribute icon_type_rider="lancer" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -46821,8 +46825,8 @@
         <attribute ts_size="T" />
         <attribute ts_color="red" />
         <attribute ts_count="6" />
-        <attribute icon_type="raider_b" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_type="bandit" />
+        <attribute icon_folder="wesnoth/units/human-outlaws" />
         <attribute virtual_dwelling="" />
         <attribute super_realm="" />
         <attribute native_die="3" />
@@ -46850,10 +46854,10 @@
         <attribute base_price="2" />
         <attribute vulnerability="L" />
         <attribute rank="1" />
-        <attribute icon_type="raider_b" />
+        <attribute icon_type="bandit" />
         <attribute setup_start="Bashkar Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-outlaws" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="3" />
@@ -46885,10 +46889,10 @@
         <attribute base_price="2" />
         <attribute vulnerability="L" />
         <attribute rank="2" />
-        <attribute icon_type="raider_b" />
+        <attribute icon_type="delinquent" />
         <attribute setup_start="Bashkar Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-outlaws" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="3" />
@@ -46920,10 +46924,10 @@
         <attribute base_price="2" />
         <attribute vulnerability="L" />
         <attribute rank="3" />
-        <attribute icon_type="raider_b" />
+        <attribute icon_type="footpad" />
         <attribute setup_start="Bashkar Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-outlaws" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="3" />
@@ -46955,10 +46959,10 @@
         <attribute base_price="2" />
         <attribute vulnerability="L" />
         <attribute rank="4" />
-        <attribute icon_type="raider_b" />
+        <attribute icon_type="thug" />
         <attribute setup_start="Bashkar Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-outlaws" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="3" />
@@ -46990,10 +46994,10 @@
         <attribute base_price="2" />
         <attribute vulnerability="L" />
         <attribute rank="5" />
-        <attribute icon_type="raider_b" />
+        <attribute icon_type="footpad+female" />
         <attribute setup_start="Bashkar Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-outlaws" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="3" />
@@ -47025,10 +47029,10 @@
         <attribute base_price="2" />
         <attribute vulnerability="L" />
         <attribute rank="HQ" />
-        <attribute icon_type="raider_b" />
+        <attribute icon_type="neutral-outlaw-princess" />
         <attribute setup_start="Bashkar Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-outlaws" />
         <attribute commerce="N" />
         <attribute denizen="" />
         <attribute super_realm="" />
@@ -47076,8 +47080,8 @@
         <attribute ts_size="T" />
         <attribute ts_color="red" />
         <attribute ts_count="7" />
-        <attribute icon_type="pikeman_c" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_type="sergeant" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute virtual_dwelling="" />
         <attribute super_realm="" />
         <attribute clan="3" />
@@ -47096,7 +47100,7 @@
       <contains id="1951" />
       <contains id="1811" />
     </GameObject>
-    <GameObject id="1805" name="S. Swordsman">
+    <GameObject id="1805" name="S.Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Company" />
         <attribute fame="0" />
@@ -47105,10 +47109,10 @@
         <attribute vulnerability="M" />
         <attribute rank="1" />
         <attribute armored="" />
-        <attribute icon_type="short_swordsman_c" />
+        <attribute icon_type="sergeant-idle-10" />
         <attribute setup_start="Company Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="7" />
@@ -47141,10 +47145,10 @@
         <attribute vulnerability="M" />
         <attribute rank="2" />
         <attribute armored="" />
-        <attribute icon_type="pikeman_c" />
+        <attribute icon_type="pikeman" />
         <attribute setup_start="Company Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="7" />
@@ -47177,10 +47181,10 @@
         <attribute vulnerability="M" />
         <attribute rank="3" />
         <attribute armored="" />
-        <attribute icon_type="pikeman_c" />
+        <attribute icon_type="pikeman" />
         <attribute setup_start="Company Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="7" />
@@ -47213,10 +47217,10 @@
         <attribute vulnerability="M" />
         <attribute rank="4" />
         <attribute armored="" />
-        <attribute icon_type="pikeman_c" />
+        <attribute icon_type="pikeman" />
         <attribute setup_start="Company Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="7" />
@@ -47249,10 +47253,10 @@
         <attribute vulnerability="H" />
         <attribute rank="5" />
         <attribute armored="" />
-        <attribute icon_type="great_swordsman_c" />
+        <attribute icon_type="sergeant-idle-4" />
         <attribute setup_start="Company Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="7" />
@@ -47285,11 +47289,11 @@
         <attribute vulnerability="M" />
         <attribute rank="6" />
         <attribute armored="" />
-        <attribute icon_type="crossbowman_c" />
+        <attribute icon_type="sergeant-crossbow" />
         <attribute setup_start="Company Dwelling" />
         <attribute missile="" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="7" />
@@ -47322,11 +47326,11 @@
         <attribute vulnerability="M" />
         <attribute rank="7" />
         <attribute armored="" />
-        <attribute icon_type="crossbowman_c" />
+        <attribute icon_type="sergeant-crossbow" />
         <attribute setup_start="Company Dwelling" />
         <attribute missile="" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="7" />
@@ -47350,7 +47354,7 @@
         <attribute chit_color="blue" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1812" name="S. Swordsman">
+    <GameObject id="1812" name="S.Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Company" />
         <attribute fame="0" />
@@ -47359,10 +47363,10 @@
         <attribute vulnerability="M" />
         <attribute rank="HQ" />
         <attribute armored="" />
-        <attribute icon_type="short_swordsman_c" />
+        <attribute icon_type="general" />
         <attribute setup_start="Company Dwelling" />
         <attribute hire_type="group" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute commerce="N" />
         <attribute denizen="" />
         <attribute super_realm="" />
@@ -47387,7 +47391,7 @@
         <attribute chit_color="blue" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1813" name="G. Axeman">
+    <GameObject id="1813" name="G.Axeman">
       <AttributeBlock blockName="this">
         <attribute native="Rogues" />
         <attribute fame="0" />
@@ -47423,7 +47427,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1814" name="G. Axeman">
+    <GameObject id="1814" name="G.Axeman">
       <AttributeBlock blockName="this">
         <attribute native="Rogues" />
         <attribute fame="0" />
@@ -47459,7 +47463,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1815" name="S. Swordsman">
+    <GameObject id="1815" name="S.Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Rogues" />
         <attribute fame="0" />
@@ -47496,7 +47500,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1816" name="S. Swordsman">
+    <GameObject id="1816" name="S.Swordsman">
       <AttributeBlock blockName="this">
         <attribute native="Rogues" />
         <attribute fame="0" />
