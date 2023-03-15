@@ -1581,13 +1581,25 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					character.addNotoriety(500);
 				}
 				else if (thingName.startsWith("fame")) {
-					character.setFame(Integer.valueOf(thingName.substring(4)));
+					try {
+						character.setFame(Integer.valueOf(thingName.substring(4)));
+					}
+					catch (Exception ex) {
+					}
 				}
 				else if (thingName.startsWith("notoriety")) {
-					character.setNotoriety(Integer.valueOf(thingName.substring(9)));
+					try {
+						character.setNotoriety(Integer.valueOf(thingName.substring(9)));
+					}
+					catch (Exception ex) {
+					}
 				}
 				else if (thingName.startsWith("gold")) {
-					character.setGold(Integer.valueOf(thingName.substring(4)));
+					try {
+						character.setGold(Integer.valueOf(thingName.substring(4)));
+					}
+					catch (Exception ex) {
+					}
 				}
 				else if ("oof".equals(thingName)) {
 					for (CharacterActionChitComponent chit : character.getActiveChits()) {
@@ -1622,34 +1634,62 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					}
 				}
 				else if (thingName.startsWith("summon")) {
-					int monsterdie = Integer.valueOf(thingName.substring(6)).intValue();
-					boolean ns = DebugUtility.isNoSummon();
-					DebugUtility.NO_SUMMON = false;
-					SetupCardUtility.summonMonsters(hostPrefs,new ArrayList<GameObject>(),character, monsterdie,0);
-					DebugUtility.NO_SUMMON = ns;
+					int monsterdie = -1;
+					try {
+						monsterdie = Integer.valueOf(thingName.substring(6)).intValue();
+					}
+					catch (Exception ex) {
+					}
+					if (monsterdie!=-1) {
+						boolean ns = DebugUtility.isNoSummon();
+						DebugUtility.NO_SUMMON = false;
+						SetupCardUtility.summonMonsters(hostPrefs,new ArrayList<GameObject>(),character, monsterdie,0);
+						DebugUtility.NO_SUMMON = ns;
+					}
 				}
 				else if (thingName.startsWith("reset")) {
-					int monsterdie = Integer.valueOf(thingName.substring(5)).intValue();
-					boolean ns = DebugUtility.isNoSummon();
-					DebugUtility.NO_SUMMON = false;
-					SetupCardUtility.resetDenizens(character.getGameObject().getGameData(), monsterdie);
-					DebugUtility.NO_SUMMON = ns;
+					int monsterdie = -1;
+					try {
+						monsterdie = Integer.valueOf(thingName.substring(5)).intValue();
+					}
+					catch (Exception ex) {
+					}
+					if (monsterdie!=-1) {
+						boolean ns = DebugUtility.isNoSummon();
+						DebugUtility.NO_SUMMON = false;
+						SetupCardUtility.resetDenizens(character.getGameObject().getGameData(), monsterdie);
+						DebugUtility.NO_SUMMON = ns;
+					}
 				}
 				else if (thingName.startsWith("roads")) {
 					character.getGameObject().setThisAttribute(Constants.KNOWS_ROADS);
 					character.generalInitialization();
 				}
 				else if (thingName.startsWith("pop")) {
-					int roll = Integer.valueOf(thingName.substring(3)).intValue();
-					PowerOfThePit pop = new PowerOfThePit(gameHandler.getMainFrame(), character.getGameObject(), new Speed(0));
-					roller.setValue(0, roll);
-					pop.apply(character, roller);
+					int roll = -1;
+					try {
+						roll = Integer.valueOf(thingName.substring(3)).intValue();
+					}
+					catch (Exception ex) {
+					}
+					if (roll!=-1) {
+						PowerOfThePit pop = new PowerOfThePit(gameHandler.getMainFrame(), character.getGameObject(), new Speed(0));
+						roller.setValue(0, roll);
+						pop.apply(character, roller);
+					}
 				}
 				else if (thingName.startsWith("magicsight")) {
-					int roll = Integer.valueOf(thingName.substring(10)).intValue();
-					MagicSight ms = new MagicSight(gameHandler.getMainFrame());
-					roller.setValue(0, roll);
-					ms.apply(character, roller);
+					int roll = -1;
+					try {
+						roll = Integer.valueOf(thingName.substring(10)).intValue();
+					}
+					catch (Exception ex) {
+					}
+					if (roll!=-1) {
+						MagicSight ms = new MagicSight(gameHandler.getMainFrame());
+						roller.setValue(0, roll);
+						ms.apply(character, roller);
+					}
 				}
 				else if (thingName.equals("discoverall")) {
 					Collection<RealmComponent> c = character.getCurrentLocation().clearing.getClearingComponents();
@@ -1712,17 +1752,28 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					JOptionPane.showMessageDialog(gameHandler.getMainFrame(), pane);
 				}
 				else if (thingName.startsWith("setday")) {
-					int day = Integer.valueOf(thingName.substring(6)).intValue();
-					GameWrapper game = gameHandler.getGame();
-					game.setDay(day);
+					try {
+						int day = Integer.valueOf(thingName.substring(6)).intValue();
+						GameWrapper game = gameHandler.getGame();
+						game.setDay(day);
+					}
+					catch (Exception ex){
+					}
 				}
 				else if (thingName.startsWith("weather")) {
-					int result = Integer.valueOf(thingName.substring(7)).intValue();
-					RealmCalendar cal = RealmCalendar.getCalendar(gameHandler.getClient().getGameData());
-					cal.setWeatherResult(result);
-					boolean freezing = cal.isFreezingWeather(character.getCurrentMonth());
-					RealmUtility.updateWaterClearings(gameHandler.getClient().getGameData(),freezing);
-					updateCharacter();
+					int result = -1;
+					try {
+						result = Integer.valueOf(thingName.substring(7)).intValue();
+					}
+					catch (Exception ex) {
+					}
+					if (result!=-1) {
+						RealmCalendar cal = RealmCalendar.getCalendar(gameHandler.getClient().getGameData());
+						cal.setWeatherResult(result);
+						boolean freezing = cal.isFreezingWeather(character.getCurrentMonth());
+						RealmUtility.updateWaterClearings(gameHandler.getClient().getGameData(),freezing);
+						updateCharacter();
+					}
 				}
 				else if (thingName.startsWith("nice")) {
 					String group = thingName.substring(4);
