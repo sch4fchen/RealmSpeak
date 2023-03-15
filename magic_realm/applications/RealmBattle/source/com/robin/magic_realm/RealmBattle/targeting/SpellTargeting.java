@@ -183,6 +183,12 @@ public abstract class SpellTargeting {
 		else if ("none".equals(targetType)) {
 			targeting = new SpellTargetingNone(combatFrame,spell);
 		}
+		else if ("beast".equals(targetType)) {
+			targeting = new SpellTargetingBeast(combatFrame,spell);
+		}
+		else if ("animal".equals(targetType)) {
+			targeting = new SpellTargetingAnimal(combatFrame,spell);
+		}
 		
 		return targeting;
 	}
