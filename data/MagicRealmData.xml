@@ -48554,8 +48554,8 @@
         <attribute ts_size="T" />
         <attribute ts_color="blue" />
         <attribute ts_count="4" />
-        <attribute icon_type="knight_o" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_type="architect" />
+        <attribute icon_folder="wesnoth/units/skykingdom-magi" />
         <attribute virtual_dwelling="" />
         <attribute super_realm="" />
         <attribute clan="1" />
@@ -55837,6 +55837,7 @@
       <Distribute from="CHITS" to="W_TILES" count="5" transferType="Random" />
       <Extract from="ALL" to="CHITS" keyVals="tile_type=ST,chit" />
       <Distribute from="CHITS" to="ST_TILES" count="5" transferType="Random" />
+      <OrderSetup />
     </GameSetup>
   </setups>
 </game>

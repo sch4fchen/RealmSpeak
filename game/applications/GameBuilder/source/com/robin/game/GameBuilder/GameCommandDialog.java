@@ -94,6 +94,7 @@ public class GameCommandDialog extends JDialog {
 						type.addItem(GameCommandMove.NAME);
 						type.addItem(GameCommandDistribute.NAME);
 						type.addItem(GameCommandAddTo.NAME);
+						type.addItem(GameCommandOrderSetup.NAME);
 					}
 					type.setSelectedItem(modelCommand.getTypeName());
 					ComponentTools.lockComponentSize(type,150,25);

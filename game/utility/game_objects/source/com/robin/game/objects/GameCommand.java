@@ -83,6 +83,9 @@ public abstract class GameCommand extends ModifyableObject implements Serializab
 		else if (GameCommandAlter.NAME.equals(val)) {
 			command = new GameCommandAlter(gameSetup);
 		}
+		else if (GameCommandOrderSetup.NAME.equals(val)) {
+			command = new GameCommandOrderSetup(gameSetup);
+		}
 		else {
 			throw new IllegalArgumentException("Invalid command type");
 		}

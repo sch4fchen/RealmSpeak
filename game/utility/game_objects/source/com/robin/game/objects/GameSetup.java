@@ -135,7 +135,9 @@ public class GameSetup extends ModifyableObject implements Serializable {
 		for (GameCommand command:gameCommands) {
 			result.append(command.doCommand(gameObjects));
 		}
+		result.append("\n");
 		result.append("---DONE---");
+		result.append("\n");
 		ArrayList<String> keys = new ArrayList<>(pools.keySet());
 		Collections.sort(keys);
 		for (String key : keys) {
