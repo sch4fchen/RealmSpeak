@@ -68,6 +68,8 @@ First Edition Optional Rule - Glory: When a character or his hired natives kill 
 Version 1.1.7.6
 SUPER REALM:
 # Sort content of dwellings and treasure locations at setup
+# Anomalies emit magic colors
+# Anomalies cannot be targeted by spells with corresponding color
 NEW FEATURES:
 # New game command: sort setup
 

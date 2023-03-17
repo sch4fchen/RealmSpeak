@@ -131,4 +131,8 @@ public class ColorMagic implements Comparable {
 		}
 		return colorName; // no conversion
 	}
+	
+	public boolean isPrismColor() {
+		return color == GRAY || color == GOLD || color == PURPLE;
+	}
 }

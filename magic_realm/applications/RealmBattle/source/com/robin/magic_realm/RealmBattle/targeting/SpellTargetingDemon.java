@@ -31,7 +31,7 @@ public class SpellTargetingDemon extends SpellTargetingSpecial {
 		ArrayList<RealmComponent> allParticipantsSansDenizens = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(false),true);
 		allDenizens.removeAll(allParticipantsSansDenizens);
 		for (RealmComponent rc : allDenizens) {
-			if (rc.isMonster() && !rc.hasMagicProtection()) {
+			if (rc.isMonster() && !rc.hasMagicProtection() && !rc.hasMagicColorImmunity(spell.getRequiredColorMagic())) {
 				String icon = rc.getGameObject().getAttribute(rc.getThisBlock(),"icon_type");
 				if (icon.startsWith("demon")) {
 					gameObjects.add(rc.getGameObject());

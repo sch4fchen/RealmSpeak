@@ -15,7 +15,7 @@ public class SpellTargetingBats extends SpellTargetingAll {
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
 		ArrayList<RealmComponent> allBattleParticipants = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true);
 		for (RealmComponent rc : allBattleParticipants) {
-			if (rc.isMonster() && !rc.isPlayerControlledLeader() && !rc.hasMagicProtection()) {
+			if (rc.isMonster() && !rc.isPlayerControlledLeader() && !rc.hasMagicProtection() && !rc.hasMagicColorImmunity(spell.getRequiredColorMagic())) {
 				String icon = rc.getGameObject().getAttribute(rc.getThisBlock(),"icon_type");
 				if ("bat".equals(icon)) {
 					gameObjects.add(rc.getGameObject());

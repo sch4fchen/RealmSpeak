@@ -20,7 +20,7 @@ public class SpellTargetingAttacker extends SpellTargetingSingle {
 		ArrayList<RealmComponent> otherOpponents = combatFrame.findCanBeSeen(battleModel.getAllOtherBattleParticipants(bg,true,combatFrame.allowsTreachery()),true);
 		otherOpponents = CombatSheet.filterNativeFriendly(activeParticipant, otherOpponents);
 		for (RealmComponent rc : otherOpponents) {
-			if (!rc.hasMagicProtection()) {
+			if (!rc.hasMagicProtection() && !rc.hasMagicColorImmunity(spell.getRequiredColorMagic())) {
 				gameObjects.add(rc.getGameObject());
 			}
 		}

@@ -16,7 +16,7 @@ public class SpellTargetingLeader extends SpellTargetingSingle {
 		ArrayList<RealmComponent> potentialTargets = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(false),true);
 		potentialTargets = CombatSheet.filterNativeFriendly(activeParticipant, potentialTargets);
 		for (RealmComponent rc:potentialTargets) {
-			if (rc.isAnyLeader() && !rc.hasMagicProtection()) {
+			if (rc.isAnyLeader() && !rc.hasMagicProtection() && !rc.hasMagicColorImmunity(spell.getRequiredColorMagic())) {
 				gameObjects.add(rc.getGameObject());
 			}
 		}

@@ -11,6 +11,7 @@ import javax.swing.JComponent;
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
 import com.robin.general.graphics.GraphicsUtil;
+import com.robin.magic_realm.components.attribute.ColorMagic;
 import com.robin.magic_realm.components.attribute.Strength;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.Quest;
@@ -358,6 +359,16 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	public boolean hasMagicProtection() {
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
 		return character.hasMagicProtection();
+	}
+	
+	public boolean hasMagicColorImmunity(ColorMagic spellColor) {
+		if (getGameObject().hasThisAttribute(Constants.MAGIC_IMMUNITY)) {
+			String protection = getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY);
+			ColorMagic cm = ColorMagic.makeColorMagic(protection,true);
+			if (cm!=null && cm.sameColorAs(spellColor)) return true;
+			if (protection.matches("prism") && spellColor.isPrismColor()) return true;
+		}
+		return false;
 	}
 	
 	public boolean isTransformAnimal() {

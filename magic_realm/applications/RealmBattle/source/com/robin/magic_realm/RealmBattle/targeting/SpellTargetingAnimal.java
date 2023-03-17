@@ -18,7 +18,7 @@ public class SpellTargetingAnimal extends SpellTargetingSingle {
 		ArrayList<RealmComponent> potentialTargets = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true);
 		potentialTargets = CombatSheet.filterNativeFriendly(activeParticipant, potentialTargets);
 		for (RealmComponent rc : potentialTargets) {
-			if (!rc.hasMagicProtection() && rc.getGameObject().hasThisAttribute("animal")) {
+			if (!rc.hasMagicProtection() && rc.getGameObject().hasThisAttribute("animal") && !rc.hasMagicColorImmunity(spell.getRequiredColorMagic())) {
 				gameObjects.add(rc.getGameObject());
 			}
 		}
