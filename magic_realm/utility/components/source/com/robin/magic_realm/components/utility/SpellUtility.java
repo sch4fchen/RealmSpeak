@@ -323,6 +323,11 @@ the Appearance Chart, he instantly becomes unhired.
 			if (cm!=null) {
 				colors.add(cm);
 			}
+			if (colorName!=null && colorName.matches("prism")) {
+				colors.add(new ColorMagic(ColorMagic.GRAY,true));
+				colors.add(new ColorMagic(ColorMagic.PURPLE,true));
+				colors.add(new ColorMagic(ColorMagic.GOLD,true));
+			}
 		}
 		return colors;
 	}

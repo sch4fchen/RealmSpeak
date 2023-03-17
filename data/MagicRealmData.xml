@@ -37908,6 +37908,8 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="5" />
+        <attribute color_source="gray" />
+        <attribute magic_immunity="gray" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -37942,6 +37944,8 @@
         <attribute armored="" />
         <attribute icon_size="0.3" />
         <attribute icon_y_offset="10" />
+        <attribute color_source="gold" />
+        <attribute magic_immunity="gold" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -37976,6 +37980,8 @@
         <attribute armored="" />
         <attribute icon_size="0.9" />
         <attribute icon_y_offset="7" />
+        <attribute color_source="purple" />
+        <attribute magic_immunity="purple" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -38010,6 +38016,8 @@
         <attribute armored="" />
         <attribute icon_size="0.9" />
         <attribute icon_y_offset="5" />
+        <attribute color_source="prism" />
+        <attribute magic_immunity="prism" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
