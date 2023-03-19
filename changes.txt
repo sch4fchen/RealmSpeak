@@ -70,6 +70,7 @@ SUPER REALM:
 # Anomalies emit magic colors
 # Anomalies cannot be targeted by spells with corresponding color
 # Add missions
+# Add campaigns
 NEW FEATURES:
 # New game command: sort setup
 
