@@ -20909,6 +20909,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Settlement,Hamlet" />
+        <attribute tour_guide="Hut,Cottage" />
+        <attribute food_ale_sr="Inn,House" />
+        <attribute escort_party_sr="Chapel,Guard" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -20950,6 +20954,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Chapel,Hamlet" />
+        <attribute tour_guide="Large Campfire,House" />
+        <attribute food_ale_sr="Chapel,Hamlet" />
+        <attribute escort_party_sr="Hamlet,Chapel" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -20997,6 +21005,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Inn,Settlement" />
+        <attribute tour_guide="Large Campfire,Inn" />
+        <attribute food_ale_sr="Guard,Settlement" />
+        <attribute escort_party_sr="Guard,House" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21043,6 +21055,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Settlement,Large Camp" />
+        <attribute tour_guide="Chapel,Inn" />
+        <attribute food_ale_sr="Guard,House" />
+        <attribute escort_party_sr="Settlement,Large Campfire" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="5" />
@@ -21087,6 +21103,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Chapel,Guard" />
+        <attribute tour_guide="Inn,Small Campfire" />
+        <attribute food_ale_sr="Chapel,Large Camp" />
+        <attribute escort_party_sr="Chapel,Hamlet" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21131,6 +21151,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Guard,Hut" />
+        <attribute tour_guide="Small Campfire,Chapel" />
+        <attribute food_ale_sr="Inn,Guard" />
+        <attribute escort_party_sr="Inn,Guard" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21172,6 +21196,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Inn,Large Campfire" />
+        <attribute tour_guide="Guard,Settlement" />
+        <attribute food_ale_sr="Large Camp,Inn" />
+        <attribute escort_party_sr="Small Camp,Small Campfire" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21213,6 +21241,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Cottage,Guard" />
+        <attribute tour_guide="House,Hamlet" />
+        <attribute food_ale_sr="Large Campfire,Inn" />
+        <attribute escort_party_sr="Small Campfire,Hut" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21254,6 +21286,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Chapel,House" />
+        <attribute tour_guide="Cottage,Guard" />
+        <attribute food_ale_sr="Settlement,Small Camp" />
+        <attribute escort_party_sr="Inn,Small Camp" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21297,6 +21333,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Hamlet,Small Camp" />
+        <attribute tour_guide="Inn,Large Camp" />
+        <attribute food_ale_sr="Settlement,Hut" />
+        <attribute escort_party_sr="Small Camp,Cottage" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="5" />
@@ -21340,6 +21380,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Inn,Chapel" />
+        <attribute tour_guide="Small Camp,Hut" />
+        <attribute food_ale_sr="Hamlet,Small Campfire" />
+        <attribute escort_party_sr="Large Camp,Settlement" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21381,6 +21425,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Settlement,Cottage" />
+        <attribute tour_guide="Hamlet,Small Camp" />
+        <attribute food_ale_sr="Inn,Cottage" />
+        <attribute escort_party_sr="Small Campfire,Large Camp" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21422,6 +21470,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Settlement,Small Campfire" />
+        <attribute tour_guide="Hut,Cottage" />
+        <attribute food_ale_sr="Hamlet,Large Campfire" />
+        <attribute escort_party_sr="Large Campfire,Settlement" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21466,6 +21518,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Inn,Chapel" />
+        <attribute tour_guide="Settlement,Large Campfire" />
+        <attribute food_ale_sr="Inn,Chapel" />
+        <attribute escort_party_sr="Inn,Guard" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -55347,6 +55403,54 @@
         <attribute duration="instant" />
         <attribute mesmerize="" />
         <attribute super_realm_spell="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2163" name="Escort Party">
+      <AttributeBlock blockName="this">
+        <attribute mission="escort_party_sr" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute time_limit="14" />
+        <attribute notoriety_cost="10" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute pair="escort_foodale" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2164" name="Food Ale">
+      <AttributeBlock blockName="this">
+        <attribute mission="food_ale_sr" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute time_limit="14" />
+        <attribute notoriety_cost="10" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute pair="escort_foodale" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2165" name="Books Art">
+      <AttributeBlock blockName="this">
+        <attribute mission="books_art" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute time_limit="14" />
+        <attribute notoriety_cost="10" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute pair="books_tour" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2166" name="Tour Guide">
+      <AttributeBlock blockName="this">
+        <attribute mission="tour_guide" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute time_limit="14" />
+        <attribute notoriety_cost="10" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute pair="books_tour" />
       </AttributeBlock>
     </GameObject>
   </objects>

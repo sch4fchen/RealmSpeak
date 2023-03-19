@@ -77,6 +77,10 @@ public class RealmCalendar {
 	private String foodAleSecondaryTarget;
 	private String escortPartyPrimaryTarget;
 	private String escortPartySecondaryTarget;
+	private String booksArtPrimaryTarget;
+	private String booksArtSecondaryTarget;
+	private String tourGuidePrimaryTarget;
+	private String tourGuideSecondaryTarget;
 	private ImageIcon seasonIcon;
 	private ImageIcon fullSeasonIcon;
 	private ArrayList<ColorMagic> seventhDayColors;
@@ -183,21 +187,45 @@ public class RealmCalendar {
 		}
 		
 		// Mission targets and rewards
-		String foodAle = currentSeason.getThisAttribute("food_ale");
-		StringTokenizer tokens = new StringTokenizer(foodAle,",");
-		foodAlePrimaryTarget = tokens.nextToken();
-		foodAleSecondaryTarget = tokens.nextToken();
-		
-		String escortParty = currentSeason.getThisAttribute("escort_party");
-		tokens = new StringTokenizer(escortParty,",");
-		escortPartyPrimaryTarget = tokens.nextToken();
-		escortPartySecondaryTarget = tokens.nextToken();
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
+		if (!hostPrefs.usesSuperRealm()) {
+			String foodAle = currentSeason.getThisAttribute("food_ale");
+			StringTokenizer tokens = new StringTokenizer(foodAle,",");
+			foodAlePrimaryTarget = tokens.nextToken();
+			foodAleSecondaryTarget = tokens.nextToken();
+			
+			String escortParty = currentSeason.getThisAttribute("escort_party");
+			tokens = new StringTokenizer(escortParty,",");
+			escortPartyPrimaryTarget = tokens.nextToken();
+			escortPartySecondaryTarget = tokens.nextToken();
+		}
+		else {
+			String foodAle = currentSeason.getThisAttribute("food_ale_sr");
+			StringTokenizer tokens = new StringTokenizer(foodAle,",");
+			foodAlePrimaryTarget = tokens.nextToken();
+			foodAleSecondaryTarget = tokens.nextToken();
+			
+			String escortParty = currentSeason.getThisAttribute("escort_party_sr");
+			tokens = new StringTokenizer(escortParty,",");
+			escortPartyPrimaryTarget = tokens.nextToken();
+			escortPartySecondaryTarget = tokens.nextToken();
+			
+			String booksArt = currentSeason.getThisAttribute("books_art");
+			tokens = new StringTokenizer(booksArt,",");
+			booksArtPrimaryTarget = tokens.nextToken();
+			booksArtSecondaryTarget = tokens.nextToken();
+			
+			String tourGuide = currentSeason.getThisAttribute("tour_guide");
+			tokens = new StringTokenizer(tourGuide,",");
+			tourGuidePrimaryTarget = tokens.nextToken();
+			tourGuideSecondaryTarget = tokens.nextToken();
+		}
 		
 		missionRewards = currentSeason.getThisInt("reward");
 		
 		// Magic is a bit more involved
 		String magic = currentSeason.getThisAttribute("magic");
-		tokens = new StringTokenizer(magic,",");
+		StringTokenizer tokens = new StringTokenizer(magic,",");
 		seventhDayColors = new ArrayList<>();
 		while(tokens.hasMoreTokens()) {
 			String val = tokens.nextToken();
@@ -332,17 +360,27 @@ public class RealmCalendar {
 	}
 	public String getMissionPrimaryTarget(int month,String type) {
 		updateSeason(month);
-		if ("food_ale".equals(type)) {
-			return foodAlePrimaryTarget;
+		switch(type) {
+			case "food_ale": return foodAlePrimaryTarget;
+			case "escort_party": return escortPartyPrimaryTarget;
+			case "food_ale_sr": return foodAlePrimaryTarget;
+			case "escort_party_sr": return escortPartyPrimaryTarget;
+			case "books_art": return booksArtPrimaryTarget;
+			case "tour_guide": return tourGuidePrimaryTarget;
 		}
-		return escortPartyPrimaryTarget;
+		return "";
 	}
 	public String getMissionSecondaryTarget(int month,String type) {
 		updateSeason(month);
-		if ("food_ale".equals(type)) {
-			return foodAleSecondaryTarget;
-		}
-		return escortPartySecondaryTarget;
+		switch(type) {
+		case "food_ale": return foodAleSecondaryTarget;
+		case "escort_party": return escortPartySecondaryTarget;
+		case "food_ale_sr": return foodAleSecondaryTarget;
+		case "escort_party_sr": return escortPartySecondaryTarget;
+		case "books_art": return booksArtSecondaryTarget;
+		case "tour_guide": return tourGuideSecondaryTarget;
+	}
+	return "";
 	}
 	public String getWeatherAttribute(int month,String key) {
 		updateSeason(month);

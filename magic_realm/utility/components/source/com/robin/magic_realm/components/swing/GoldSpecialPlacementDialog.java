@@ -374,7 +374,7 @@ public class GoldSpecialPlacementDialog extends AggressiveDialog {
 			destination.add(chit.getGameObject());
 			destination.setThisAttribute(Constants.GOLD_SPECIAL_PLACED);
 			chit.getGameObject().setThisAttribute(Constants.GOLD_SPECIAL_PLACED);
-			if (!hostPrefs.hasPref(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE)) {
+			if (!hostPrefs.hasPref(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE)&&!hostPrefs.usesSuperRealm()) {
 				chit.getOtherSide().getGameObject().setThisAttribute(Constants.GOLD_SPECIAL_PLACED);
 			}
 		

@@ -632,10 +632,10 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		}
 		while (SetupCardUtility.stillChitsToPlace(hostPrefs)) {
 			int r = RandomNumber.getRandom(gs.size());
-			int s = hostPrefs.hasPref(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE) ? 0 : RandomNumber.getRandom(2);
+			int s = hostPrefs.hasPref(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE)||hostPrefs.usesSuperRealm() ? 0 : RandomNumber.getRandom(2);
 			chit[0] = gs.remove(r);
 			chit[1] = chit[0].getGameObjectFromThisAttribute("pairid");
-			if (!hostPrefs.hasPref(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE)) {
+			if (!hostPrefs.hasPref(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE)&&!hostPrefs.usesSuperRealm()) {
 				gs.remove(chit[1]);
 			}
 
@@ -643,7 +643,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			GameObject target = gt.remove(t);
 			target.add(chit[s]);
 			chit[s].setThisAttribute(Constants.GOLD_SPECIAL_PLACED);
-			if (!hostPrefs.hasPref(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE)) {
+			if (!hostPrefs.hasPref(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE)&&!hostPrefs.usesSuperRealm()) {
 				chit[1 - s].setThisAttribute(Constants.GOLD_SPECIAL_PLACED);
 			}
 			target.setThisAttribute(Constants.GOLD_SPECIAL_PLACED);

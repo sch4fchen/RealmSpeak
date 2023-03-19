@@ -834,7 +834,7 @@ public class SetupCardUtility {
 		}
 		
 		// Flip all visitor/mission chits
-		if (!hostPrefs.hasPref(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE)) {
+		if (!hostPrefs.hasPref(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE)&&!hostPrefs.usesSuperRealm()) {
 			flipGoldSpecialChits(hostPrefs,pool,monsterDie);
 		}
 	}
@@ -1054,7 +1054,7 @@ public class SetupCardUtility {
 		RealmObjectMaster rom = RealmObjectMaster.getRealmObjectMaster(hostPrefs.getGameData());
 		ArrayList<GameObject> gs = new ArrayList<>(rom.findObjects("gold_special,"+Constants.GOLD_SPECIAL_PLACED));
 		int placedChits = gs.size();
-		if (!hostPrefs.hasPref(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE)) {
+		if (!hostPrefs.hasPref(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE)&&!hostPrefs.usesSuperRealm()) {
 			placedChits >>= 1; // divide by 2
 		}
 		return placedChits<totalChitsToPlace;

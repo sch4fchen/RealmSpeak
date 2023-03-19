@@ -71,14 +71,14 @@ public class RealmCalendarViewer extends JFrame implements ManagedFrame {
 		
 		Box midHeader = Box.createVerticalBox();
 		midHeader.add(Box.createVerticalGlue());
-		seasonNameLabel = new JLabel("",JLabel.CENTER);
+		seasonNameLabel = new JLabel("",SwingConstants.CENTER);
 		seasonNameLabel.setFont(new Font("Dialog",Font.BOLD,36));
 		JPanel p1 = new JPanel();
 		p1.add(seasonNameLabel);
 		midHeader.add(p1);
 		midHeader.add(Box.createVerticalGlue());
 		JPanel p2 = new JPanel();
-		weatherNameLabel = new JLabel("",JLabel.CENTER);
+		weatherNameLabel = new JLabel("",SwingConstants.CENTER);
 		weatherNameLabel.setFont(new Font("Dialog",Font.BOLD,16));
 		p2.add(weatherNameLabel);
 		midHeader.add(p2);
@@ -229,15 +229,14 @@ public class RealmCalendarViewer extends JFrame implements ManagedFrame {
 		text.append(season.getThisAttribute("vps"));
 		text.append(rowEnd);
 		
-		Collection c = realmCalendar.getColorMagic(month,7);
+		Collection<ColorMagic> c = realmCalendar.getColorMagic(month,7);
 		text.append(rowHeaderStart);
 		text.append("7th Day Color");
 		text.append(c.size()==1?"s":"");
 		text.append(":");
 		text.append(rowContentStart);
 		StringBuffer colors = new StringBuffer();
-		for (Iterator i=c.iterator();i.hasNext();) {
-			ColorMagic cm = (ColorMagic)i.next();
+		for (ColorMagic cm : c) {
 			if (colors.length()>0) {
 				colors.append(", ");
 			}
@@ -258,17 +257,44 @@ public class RealmCalendarViewer extends JFrame implements ManagedFrame {
 		text.append(season.getThisAttribute("reward"));
 		text.append(rowEnd);
 		
-		text.append(rowHeaderStart);
-		text.append("Food/Ale Targets:");
-		text.append(rowContentStart);
-		text.append(season.getThisAttribute("food_ale"));
-		text.append(rowEnd);
-		
-		text.append(rowHeaderStart);
-		text.append("Escort Party Targets:");
-		text.append(rowContentStart);
-		text.append(season.getThisAttribute("escort_party"));
-		text.append(rowEnd);
+		if(!hostPrefs.usesSuperRealm()) {
+			text.append(rowHeaderStart);
+			text.append("Food/Ale Targets:");
+			text.append(rowContentStart);
+			text.append(season.getThisAttribute("food_ale"));
+			text.append(rowEnd);
+			
+			text.append(rowHeaderStart);
+			text.append("Escort Party Targets:");
+			text.append(rowContentStart);
+			text.append(season.getThisAttribute("escort_party"));
+			text.append(rowEnd);
+		}
+		else {
+			text.append(rowHeaderStart);
+			text.append("Food/Ale Targets:");
+			text.append(rowContentStart);
+			text.append(season.getThisAttribute("food_ale_sr"));
+			text.append(rowEnd);
+			
+			text.append(rowHeaderStart);
+			text.append("Escort Party Targets:");
+			text.append(rowContentStart);
+			text.append(season.getThisAttribute("escort_party_sr"));
+			text.append(rowEnd);
+			
+			text.append(rowHeaderStart);
+			text.append("Books Art Targets:");
+			text.append(rowContentStart);
+			text.append(season.getThisAttribute("books_art"));
+			text.append(rowEnd);
+			
+			text.append(rowHeaderStart);
+			text.append("Tour Guide Targets:");
+			text.append(rowContentStart);
+			text.append(season.getThisAttribute("tour_guide"));
+			text.append(rowEnd);
+		}
 		
 		text.append("</table>");
 		
