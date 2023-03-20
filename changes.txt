@@ -73,6 +73,7 @@ SUPER REALM:
 # Add campaigns
 NEW FEATURES:
 # New game command: sort setup
+# Support for campaigns to end at the end of the current month
 
 Version 1.1.7.5
 QUEST UPDATE:

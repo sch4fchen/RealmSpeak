@@ -153,8 +153,13 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 			text.append(rowHeaderStart);
 			text.append("Time Limit:");
 			text.append(rowContentStart);
-			text.append(getGameObject().getThisInt("time_limit"));
-			text.append(" days");
+			if (getGameObject().getThisAttribute("time_limit").matches("month")) {
+				text.append("end of month");
+			}
+			else {
+				text.append(getGameObject().getThisInt("time_limit"));
+				text.append(" days");
+			}
 			text.append(rowEnd);
 		}
 		// Days left
@@ -310,7 +315,15 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 		return ClearingUtility.getTileLocation(go);
 	}
 	public void makePayment(CharacterWrapper character) {
-		getGameObject().setThisAttribute("daysLeft",getGameObject().getThisAttribute("time_limit"));
+		if (getGameObject().getThisAttribute("time_limit").matches("month")) {
+			GameWrapper game = GameWrapper.findGame(getGameObject().getGameData());
+			RealmCalendar cal = RealmCalendar.getCalendar(getGameObject().getGameData());
+			int days = cal.getDays(game.getMonth());
+			getGameObject().setThisAttribute("daysLeft",days-game.getDay()+1);
+		}
+		else {
+			getGameObject().setThisAttribute("daysLeft",getGameObject().getThisAttribute("time_limit"));
+		}
 		int fame = getGameObject().getThisInt("fame_cost");
 		int not = getGameObject().getThisInt("notoriety_cost");
 		character.addFame(-fame);

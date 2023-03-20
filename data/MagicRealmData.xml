@@ -55667,7 +55667,7 @@
         <attribute gold_special="" />
         <attribute campaign="pillage" />
         <attribute monster_die="6" />
-        <attribute time_limit="14" />
+        <attribute time_limit="month" />
         <attribute notoriety_cost="10" />
         <attribute partner="bashkars" />
         <attribute foe="patrol,soldiers" />
@@ -55681,7 +55681,7 @@
         <attribute gold_special="" />
         <attribute campaign="raid" />
         <attribute monster_die="6" />
-        <attribute time_limit="14" />
+        <attribute time_limit="month" />
         <attribute fame_cost="8" />
         <attribute partner="lancers,woodfolk" />
         <attribute foe="bashkars,rogues" />
@@ -55695,7 +55695,7 @@
         <attribute campaign="conquer" />
         <attribute gold_special="" />
         <attribute monster_die="6" />
-        <attribute time_limit="28" />
+        <attribute time_limit="month" />
         <attribute notoriety_cost="40" />
         <attribute partner="soldiers,guard,patrol,company" />
         <attribute foe="lancers,woodfolk,bashkars,rogues" />
@@ -55709,7 +55709,7 @@
         <attribute campaign="war" />
         <attribute gold_special="" />
         <attribute monster_die="6" />
-        <attribute time_limit="28" />
+        <attribute time_limit="month" />
         <attribute notoriety_cost="15" />
         <attribute fame_cost="10" />
         <attribute partner="soldiers,guard,patrol" />
@@ -55724,7 +55724,7 @@
         <attribute campaign="revolt" />
         <attribute gold_special="" />
         <attribute monster_die="6" />
-        <attribute time_limit="28" />
+        <attribute time_limit="month" />
         <attribute notoriety_cost="35" />
         <attribute partner="lancers,woodfolk,bashkars,rogues" />
         <attribute foe="soldiers,guard,patrol,company" />
@@ -55738,7 +55738,7 @@
         <attribute campaign="quest" />
         <attribute gold_special="" />
         <attribute monster_die="6" />
-        <attribute time_limit="28" />
+        <attribute time_limit="month" />
         <attribute notoriety_cost="20" />
         <attribute foe="dragon,dragon_flying,wyrm,firedrake" />
         <attribute partner="order" />
@@ -55753,7 +55753,7 @@
         <attribute gold_special="" />
         <attribute campaign="challenge" />
         <attribute monster_die="6" />
-        <attribute time_limit="28" />
+        <attribute time_limit="month" />
         <attribute notoriety_cost="30" />
         <attribute partner="aborigines,lancers,woodfolk" />
         <attribute foe="bashkars,company,hunters" />
@@ -55767,7 +55767,7 @@
         <attribute gold_special="" />
         <attribute campaign="confront" />
         <attribute monster_die="6" />
-        <attribute time_limit="28" />
+        <attribute time_limit="month" />
         <attribute partner="bashkars,company,hunters" />
         <attribute foe="aborigines,lancers,woodfolk" />
         <attribute item="" />
@@ -55781,10 +55781,10 @@
         <attribute campaign="dominate" />
         <attribute gold_special="" />
         <attribute monster_die="6" />
-        <attribute time_limit="28" />
+        <attribute time_limit="month" />
         <attribute notoriety_cost="15" />
         <attribute partner="company,woodfolk" />
-        <attribute foe="company,hunters" />
+        <attribute foe="dwarves,hunters" />
         <attribute item="" />
         <attribute super_realm="" />
       </AttributeBlock>
@@ -55795,7 +55795,7 @@
         <attribute campaign="hunt" />
         <attribute gold_special="" />
         <attribute monster_die="6" />
-        <attribute time_limit="14" />
+        <attribute time_limit="month" />
         <attribute partner="mages" />
         <attribute foe="colossus,titan" />
         <attribute item="" />
@@ -55810,7 +55810,7 @@
         <attribute campaign="skirmish" />
         <attribute gold_special="" />
         <attribute monster_die="6" />
-        <attribute time_limit="28" />
+        <attribute time_limit="month" />
         <attribute notoriety_cost="20" />
         <attribute partner="guard,hunters,patrol,soldiers" />
         <attribute foe="bandits,bashkars,company,elves" />
@@ -55825,7 +55825,7 @@
         <attribute campaign="liberate" />
         <attribute gold_special="" />
         <attribute monster_die="6" />
-        <attribute time_limit="14" />
+        <attribute time_limit="month" />
         <attribute foe="coven,cultists" />
         <attribute partner="zealots" />
         <attribute item="" />
