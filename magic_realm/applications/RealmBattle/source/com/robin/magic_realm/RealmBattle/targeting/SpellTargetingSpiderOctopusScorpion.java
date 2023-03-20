@@ -19,8 +19,7 @@ public class SpellTargetingSpiderOctopusScorpion extends SpellTargetingSingle {
 		allDenizens.removeAll(allParticipantsSansDenizens);
 		for (RealmComponent rc : allDenizens) {
 			if (rc.isMonster() && !rc.isPlayerControlledLeader() && !rc.hasMagicProtection() && !rc.hasMagicColorImmunity(spell.getRequiredColorMagic())) {
-				String name = rc.getGameObject().getName().toLowerCase();
-				if (name.contains("spider") || name.contains("octopus") || name.contains("scorpion")) {
+				if (rc.getGameObject().hasThisAttribute("spider") || rc.getGameObject().hasThisAttribute("octopus") || rc.getGameObject().hasThisAttribute("scorpion")) {
 					gameObjects.add(rc.getGameObject());
 				}
 			}

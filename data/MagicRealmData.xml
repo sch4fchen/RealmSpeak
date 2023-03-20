@@ -189,6 +189,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute giant="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -242,6 +243,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute giant="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -361,6 +363,7 @@
         <attribute needs_init="" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -391,6 +394,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -421,6 +425,7 @@
         <attribute needs_init="" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute octopus="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -481,6 +486,7 @@
         <attribute needs_init="" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -603,6 +609,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -632,6 +639,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -720,6 +728,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -750,6 +759,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -780,6 +790,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -810,6 +821,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -840,6 +852,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -870,6 +883,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -899,6 +913,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -928,6 +943,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -957,6 +973,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -987,6 +1004,7 @@
         <attribute needs_init="" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute imp="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -1134,6 +1152,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute ogre="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -1162,6 +1181,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute ogre="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -1190,6 +1210,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1218,6 +1239,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1246,6 +1268,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1274,6 +1297,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1302,6 +1326,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1330,6 +1355,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1358,6 +1384,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1390,6 +1417,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1422,6 +1450,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1454,6 +1483,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1486,6 +1516,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1518,6 +1549,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1550,6 +1582,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1582,6 +1615,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1614,6 +1648,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1646,6 +1681,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1678,6 +1714,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1710,6 +1747,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1742,6 +1780,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1770,6 +1809,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1798,6 +1838,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1826,6 +1867,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1854,6 +1896,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1882,6 +1925,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -17334,6 +17378,7 @@
         <attribute alt_monsters1_game="" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute orc="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17366,6 +17411,7 @@
         <attribute alt_monsters1_game="" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute orc="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17398,6 +17444,7 @@
         <attribute alt_monsters1_game="" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute orc="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17430,6 +17477,7 @@
         <attribute alt_monsters1_game="" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute orc="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17464,6 +17512,7 @@
         <attribute missile="" />
         <attribute sensitive_tactics="" />
         <attribute denizen="" />
+        <attribute orc="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17495,6 +17544,7 @@
         <attribute missile="" />
         <attribute sensitive_tactics="" />
         <attribute denizen="" />
+        <attribute orc="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17526,6 +17576,7 @@
         <attribute missile="" />
         <attribute sensitive_tactics="" />
         <attribute denizen="" />
+        <attribute orc="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17557,6 +17608,7 @@
         <attribute missile="" />
         <attribute sensitive_tactics="" />
         <attribute denizen="" />
+        <attribute orc="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17585,6 +17637,7 @@
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute kobold="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17616,6 +17669,7 @@
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute kobold="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17647,6 +17701,7 @@
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute kobold="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17678,6 +17733,7 @@
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute kobold="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17709,6 +17765,7 @@
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute kobold="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17740,6 +17797,7 @@
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute kobold="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17980,6 +18038,7 @@
         <attribute alt_monsters1_game="" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute scorpion="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -18009,6 +18068,7 @@
         <attribute alt_monsters1_game="" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute scorpion="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -18038,6 +18098,7 @@
         <attribute alt_monsters1_game="" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute scorpion="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -18760,6 +18821,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute giant="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -18811,6 +18873,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute giant="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -18929,6 +18992,7 @@
         <attribute setup_start_tilereq="C" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -18958,6 +19022,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -18988,6 +19053,7 @@
         <attribute setup_start_tilereq="C" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute octopus="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -19047,6 +19113,7 @@
         <attribute setup_start_tilereq="M" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19165,6 +19232,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -19193,6 +19261,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -19278,6 +19347,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19307,6 +19377,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19336,6 +19407,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19365,6 +19437,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19394,6 +19467,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19423,6 +19497,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19451,6 +19526,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19479,6 +19555,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19507,6 +19584,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19537,6 +19615,7 @@
         <attribute setup_start_tilereq="C" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute imp="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -19623,6 +19702,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute ogre="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -19650,6 +19730,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute ogre="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -19677,6 +19758,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19704,6 +19786,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19731,6 +19814,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19758,6 +19842,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19785,6 +19870,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19812,6 +19898,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19839,6 +19926,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19870,6 +19958,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19901,6 +19990,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19932,6 +20022,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19963,6 +20054,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19994,6 +20086,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20025,6 +20118,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20056,6 +20150,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20087,6 +20182,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20118,6 +20214,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20149,6 +20246,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20180,6 +20278,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20211,6 +20310,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20238,6 +20338,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20265,6 +20366,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20292,6 +20394,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20319,6 +20422,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20346,6 +20450,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -34788,6 +34893,7 @@
         <attribute denizen="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="-5" />
+        <attribute scorpion="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -34939,6 +35045,7 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute octopus="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -35001,6 +35108,7 @@
         <attribute denizen="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="5" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35093,6 +35201,7 @@
         <attribute denizen="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -35124,6 +35233,7 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute imp="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -35188,7 +35298,6 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
-        <attribute demon="" />
         <attribute icon_size="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -35275,7 +35384,6 @@
         <attribute needs_init="" />
         <attribute armored="" />
         <attribute denizen="" />
-        <attribute demon="" />
         <attribute icon_size="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -35502,7 +35610,6 @@
         <attribute vulnerability="H" />
         <attribute fame="4" />
         <attribute notoriety="4" />
-        <attribute demon="" />
         <attribute super_realm="" />
         <attribute icon_type="gargoyle" />
         <attribute setup_start="H Gargoyle Box" />
@@ -35534,7 +35641,6 @@
         <attribute vulnerability="H" />
         <attribute fame="4" />
         <attribute notoriety="4" />
-        <attribute demon="" />
         <attribute super_realm="" />
         <attribute icon_type="gargoyle" />
         <attribute setup_start="H Gargoyle Box" />
@@ -35566,7 +35672,6 @@
         <attribute vulnerability="H" />
         <attribute fame="4" />
         <attribute notoriety="4" />
-        <attribute demon="" />
         <attribute super_realm="" />
         <attribute icon_type="gargoyle" />
         <attribute setup_start="H Gargoyle Box" />
@@ -35598,7 +35703,6 @@
         <attribute vulnerability="T" />
         <attribute fame="8" />
         <attribute notoriety="8" />
-        <attribute demon="" />
         <attribute super_realm="" />
         <attribute icon_type="marlgoyle" />
         <attribute setup_start="T Gargoyle Box" />
@@ -36629,6 +36733,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute orc="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36661,6 +36766,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute orc="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36693,6 +36799,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute orc="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36725,6 +36832,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute orc="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36757,6 +36865,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute orc="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36789,6 +36898,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute orc="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36821,6 +36931,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute orc="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36853,6 +36964,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute orc="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -37072,6 +37184,7 @@
         <attribute denizen="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="-10" />
+        <attribute scorpion="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -37104,6 +37217,7 @@
         <attribute denizen="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="-10" />
+        <attribute scorpion="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -37136,6 +37250,7 @@
         <attribute denizen="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="-10" />
+        <attribute scorpion="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -37168,6 +37283,7 @@
         <attribute denizen="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="-5" />
+        <attribute scorpion="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -38780,6 +38896,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.8" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -38812,6 +38929,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.8" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -38844,6 +38962,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.8" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -38876,6 +38995,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.8" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -38908,6 +39028,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.8" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -38940,6 +39061,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.8" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -38972,6 +39094,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39000,6 +39123,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39028,6 +39152,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39056,6 +39181,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39084,6 +39210,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39112,6 +39239,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39140,6 +39268,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39172,6 +39301,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39204,6 +39334,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39236,6 +39367,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39268,6 +39400,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39300,6 +39433,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39332,6 +39466,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39361,6 +39496,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39390,6 +39526,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39419,6 +39556,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39448,6 +39586,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39477,6 +39616,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39553,6 +39693,7 @@
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
         <attribute icon_y_offset="5" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39583,6 +39724,7 @@
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
         <attribute icon_y_offset="5" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39613,6 +39755,7 @@
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
         <attribute icon_y_offset="5" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39643,6 +39786,7 @@
         <attribute super_realm="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="5" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -40403,6 +40547,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1.1" />
+        <attribute ogre="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -40431,6 +40576,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1.1" />
+        <attribute ogre="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -40502,6 +40648,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute giant="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -40555,6 +40702,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute giant="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -40608,6 +40756,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute giant="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -40717,6 +40866,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40746,6 +40896,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40775,6 +40926,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40804,6 +40956,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40898,6 +41051,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1.2" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40928,6 +41082,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1.2" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40958,6 +41113,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1.2" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40988,6 +41144,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1.2" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -41018,6 +41175,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1.2" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -41048,6 +41206,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1.2" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -41078,6 +41237,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1.2" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -41108,6 +41268,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1.2" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />

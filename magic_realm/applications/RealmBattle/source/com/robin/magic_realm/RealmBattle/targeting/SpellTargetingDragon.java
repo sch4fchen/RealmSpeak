@@ -19,11 +19,7 @@ public class SpellTargetingDragon extends SpellTargetingSingle {
 		allDenizens.removeAll(allParticipantsSansDenizens);
 		for (RealmComponent rc : allDenizens) {
 			if (rc.isMonster() && !rc.isPlayerControlledLeader() && !rc.hasMagicProtection() && !rc.hasMagicColorImmunity(spell.getRequiredColorMagic())) {
-				String icon = rc.getGameObject().getAttribute(rc.getThisBlock(),"icon_type");
-				if (icon!=null &&
-						(icon.indexOf("dragon")>=0
-							|| icon.indexOf("drake")>=0
-							|| icon.indexOf("wyrm")>=0)) {
+				if (rc.getGameObject().hasThisAttribute("dragon") || rc.getGameObject().hasThisAttribute("drake") || rc.getGameObject().hasThisAttribute("wyrm")) {
 					gameObjects.add(rc.getGameObject());
 				}
 			}

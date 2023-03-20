@@ -24,10 +24,11 @@ public class SpellTargetingHumanGroup extends SpellTargetingSingle {
 			if (!rc.isCharacter() && !rc.hasMagicProtection() && !rc.hasMagicColorImmunity(spell.getRequiredColorMagic()) && (rc.getOwnerId()==null || rc.getOwnerId().equals(ownerId))) {
 				String groupName = null;
 				if (rc.isMonster() && !rc.isPlayerControlledLeader()) {
-					MonsterChitComponent monster = (MonsterChitComponent)rc;
-					String icon = rc.getGameObject().getAttribute(rc.getThisBlock(),"icon_type");
-					if ("giant".equals(icon) || "frostgiant".equals(icon)) {
-						groupName = monster.isTremendous()?"Giants":"Ogres";
+					if (rc.getGameObject().hasThisAttribute("ogre")) {
+						groupName="Ogres";
+					}
+					if (rc.getGameObject().hasThisAttribute("giant")) {
+						groupName="Giants";
 					}
 				}
 				else if (rc.isNative()) {

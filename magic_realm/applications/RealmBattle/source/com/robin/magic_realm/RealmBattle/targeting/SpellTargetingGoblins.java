@@ -16,8 +16,7 @@ public class SpellTargetingGoblins extends SpellTargetingAll {
 		ArrayList<RealmComponent> allBattleParticipants = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true);
 		for (RealmComponent rc : allBattleParticipants) {
 			if (rc.isMonster() && !rc.isPlayerControlledLeader() && !rc.hasMagicProtection() && !rc.hasMagicColorImmunity(spell.getRequiredColorMagic())) {
-				String icon = rc.getGameObject().getAttribute(rc.getThisBlock(),"icon_type");
-				if (icon.startsWith("goblin_")) {
+				if (rc.getGameObject().hasThisAttribute("goblin")) {
 					gameObjects.add(rc.getGameObject());
 				}
 			}

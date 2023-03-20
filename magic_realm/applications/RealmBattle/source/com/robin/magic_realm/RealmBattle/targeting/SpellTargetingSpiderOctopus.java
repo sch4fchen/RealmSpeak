@@ -19,8 +19,7 @@ public class SpellTargetingSpiderOctopus extends SpellTargetingSingle {
 		allDenizens.removeAll(allParticipantsSansDenizens);
 		for (RealmComponent rc : allDenizens) {
 			if (rc.isMonster() && !rc.isPlayerControlledLeader() && !rc.hasMagicProtection() && !rc.hasMagicColorImmunity(spell.getRequiredColorMagic())) {
-				String icon = rc.getGameObject().getAttribute(rc.getThisBlock(),"icon_type");
-				if ("spider".equals(icon) || "octopus".equals(icon)) {
+				if (rc.getGameObject().hasThisAttribute("spider") || rc.getGameObject().hasThisAttribute("octopus")) {
 					gameObjects.add(rc.getGameObject());
 				}
 			}
