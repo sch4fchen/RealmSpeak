@@ -110,6 +110,9 @@ public abstract class SpellTargeting {
 		else if ("demon".equals(targetType)) {
 			targeting = new SpellTargetingDemon(combatFrame,spell);
 		}
+		else if ("ask_demon".equals(targetType)) {
+			targeting = new SpellTargetingAskDemon(combatFrame,spell);
+		}
 		else if ("weather".equals(targetType)) {
 			targeting = new SpellTargetingWeather(combatFrame,spell);
 		}

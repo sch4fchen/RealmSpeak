@@ -7094,7 +7094,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="V" />
         <attribute duration="instant" />
-        <attribute target="demon" />
+        <attribute target="ask_demon" />
         <attribute text="Ask question with yes/no or number answer" />
         <attribute magic_color="black" />
         <attribute original_game="" />
