@@ -3063,6 +3063,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -3391,6 +3392,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -3424,6 +3426,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -3458,6 +3461,7 @@
         <attribute commerce="F,N" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -17529,6 +17533,7 @@
         <attribute sensitive_tactics="" />
         <attribute denizen="" />
         <attribute orc="" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17561,6 +17566,7 @@
         <attribute sensitive_tactics="" />
         <attribute denizen="" />
         <attribute orc="" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17593,6 +17599,7 @@
         <attribute sensitive_tactics="" />
         <attribute denizen="" />
         <attribute orc="" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17625,6 +17632,7 @@
         <attribute sensitive_tactics="" />
         <attribute denizen="" />
         <attribute orc="" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -23739,6 +23747,8 @@
         <attribute box_num="1" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute archer="" />
+        <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36502,6 +36512,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="5" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36535,6 +36546,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="5" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36568,6 +36580,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="5" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36601,6 +36614,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="5" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36634,6 +36648,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="5" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36667,6 +36682,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="5" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -37866,6 +37882,7 @@
         <attribute magic_protection="" />
         <attribute missile="" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -37902,6 +37919,7 @@
         <attribute magic_protection="" />
         <attribute missile="" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -37938,6 +37956,7 @@
         <attribute magic_protection="" />
         <attribute missile="" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -37974,6 +37993,7 @@
         <attribute magic_protection="" />
         <attribute missile="" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -38010,6 +38030,7 @@
         <attribute magic_protection="" />
         <attribute missile="" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -38046,6 +38067,7 @@
         <attribute magic_protection="" />
         <attribute missile="" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -39494,6 +39516,7 @@
         <attribute super_realm="" />
         <attribute icon_size="1" />
         <attribute goblin="" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39524,6 +39547,7 @@
         <attribute super_realm="" />
         <attribute icon_size="1" />
         <attribute goblin="" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39554,6 +39578,7 @@
         <attribute super_realm="" />
         <attribute icon_size="1" />
         <attribute goblin="" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39584,6 +39609,7 @@
         <attribute super_realm="" />
         <attribute icon_size="1" />
         <attribute goblin="" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39614,6 +39640,7 @@
         <attribute super_realm="" />
         <attribute icon_size="1" />
         <attribute goblin="" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39644,6 +39671,7 @@
         <attribute super_realm="" />
         <attribute icon_size="1" />
         <attribute goblin="" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -46697,6 +46725,7 @@
         <attribute native_die="5" />
         <attribute clan="2" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -46730,6 +46759,7 @@
         <attribute native_die="5" />
         <attribute clan="2" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -46763,6 +46793,7 @@
         <attribute native_die="5" />
         <attribute clan="2" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -46797,6 +46828,7 @@
         <attribute native_die="5" />
         <attribute clan="2" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -47849,6 +47881,7 @@
         <attribute clan="3" />
         <attribute native_die="6" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -47883,6 +47916,7 @@
         <attribute clan="3" />
         <attribute native_die="6" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -49169,6 +49203,7 @@
         <attribute clan="2" />
         <attribute missile="" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -49203,6 +49238,7 @@
         <attribute clan="2" />
         <attribute missile="" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -49342,6 +49378,7 @@
         <attribute clan="2" />
         <attribute missile="" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -49661,6 +49698,7 @@
         <attribute clan="3" />
         <attribute missile="" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />

@@ -1734,9 +1734,8 @@ public class BattleModel {
 				}
 				else {
 					// Monsters and Natives just get two dice, unless they are an archer
-					String icon = combat.getGameObject().getThisAttribute(Constants.ICON_TYPE);
 					int dice = 2;
-					if (icon!=null && "archer".equalsIgnoreCase(icon)) {
+					if (combat.getGameObject().hasThisAttribute("archer")) {
 						// If the native is an archer, they only roll one die
 						dice = 1;
 					}
