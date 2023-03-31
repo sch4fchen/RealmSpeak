@@ -368,6 +368,12 @@ public class Constants {
 	public static final String STEED_IN_CAVES_AND_WATER = "steed_in_caves_and_water";
 	public static final String TRANSMORPH_IMMUNITY = "transmorph_immunity";
 	public static final String MAGIC_IMMUNITY = "magic_immunity";
+	public static final String MAGIC_COLOR_BONUS = "magic_color_bonus";
+	public static final String MAGIC_COLOR_BONUS_ACTIVE = "magic_color_bonus_active";
+	public static final String MAGIC_COLOR_BONUS_ARMOR = "magic_color_bonus_armor";
+	public static final String MAGIC_COLOR_BONUS_LENGTH = "magic_color_bonus_length";
+	public static final String MAGIC_COLOR_BONUS_SHARPNESS = "magic_color_bonus_sharpness";
+	public static final String MAGIC_COLOR_BONUS_SPEED = "magic_color_bonus_speed";
 	
 	// New Spells
 	public static final String SUMMONING = "summoning";

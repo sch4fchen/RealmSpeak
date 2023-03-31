@@ -686,6 +686,14 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 							}
 							else {
 								Strength armorVulnerability = new Strength(test.getGameObject().getThisAttribute("vulnerability"));
+								if (test.getGameObject().hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE) && test.getGameObject().hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ARMOR)) {
+									String immunity = attacker.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY);
+									ColorMagic attackerImmunityColor = ColorMagic.makeColorMagic(immunity,true);
+									ColorMagic itemMagicColorBonus = ColorMagic.makeColorMagic(test.getGameObject().getThisAttribute(Constants.MAGIC_COLOR_BONUS),true);
+									if (immunity==null || (!immunity.matches("prism") && (attackerImmunityColor==null || !attackerImmunityColor.sameColorAs(itemMagicColorBonus)))) {
+										armorVulnerability = new Strength(test.getGameObject().getThisAttribute(Constants.MAGIC_COLOR_BONUS_ARMOR));
+									}
+								}
 								if (!test.isArmor()) {
 									if (test.isWeapon()) armorVulnerability = new Strength(test.getGameObject().getThisAttribute("weight")); // parrying with weapon
 									if (test instanceof CharacterActionChitComponent) armorVulnerability = new Strength(test.getGameObject().getThisAttribute("strength")); // parrying with FIGHT chit
@@ -741,6 +749,14 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor ("+armor.getGameObject().getNameWithNumber()+"), and reduces sharpness: "+harm.toString());
 				}
 				Strength armorVulnerability = new Strength(armor.getGameObject().getThisAttribute("vulnerability"));
+				if (armor.getGameObject().hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE) && armor.getGameObject().hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ARMOR)) {
+					String immunity = attacker.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY);
+					ColorMagic attackerImmunityColor = ColorMagic.makeColorMagic(immunity,true);
+					ColorMagic itemMagicColorBonus = ColorMagic.makeColorMagic(armor.getGameObject().getThisAttribute(Constants.MAGIC_COLOR_BONUS),true);
+					if (immunity==null || (!immunity.matches("prism") && (attackerImmunityColor==null || !attackerImmunityColor.sameColorAs(itemMagicColorBonus)))) {
+						armorVulnerability = new Strength(armor.getGameObject().getThisAttribute(Constants.MAGIC_COLOR_BONUS_ARMOR));
+					}
+				}
 				if (!armor.isArmor()) {
 					if (armor.isWeapon()) armorVulnerability = new Strength(armor.getGameObject().getThisAttribute("weight")); // parrying with weapon
 					if (armor instanceof CharacterActionChitComponent) {

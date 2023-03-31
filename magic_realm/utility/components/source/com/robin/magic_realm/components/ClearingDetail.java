@@ -720,4 +720,17 @@ public class ClearingDetail {
 	public boolean isConnectsToBorderland() {
 		return parent.getGameObject().hasThisAttributeListItem(BL_CONNECT,getNumString());
 	}
+	
+	public void energizeItems() {
+		ArrayList<ColorMagic> colors = getClearingColorMagic();
+		for (RealmComponent rc : getClearingComponents()) {
+			if (rc.isItem() && rc.getGameObject().hasThisAttribute(Constants.MAGIC_COLOR_BONUS)) {
+				ColorMagic requiredColor = ColorMagic.makeColorMagic(rc.getGameObject().getThisAttribute(Constants.MAGIC_COLOR_BONUS),true);
+				for (ColorMagic c : colors) {
+					if (c.sameColorAs(requiredColor)) rc.getGameObject().setThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE);
+					break;
+				}
+			}
+		}
+	}
 }

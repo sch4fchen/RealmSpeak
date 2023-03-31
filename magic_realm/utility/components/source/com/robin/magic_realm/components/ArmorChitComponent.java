@@ -79,9 +79,15 @@ public class ArmorChitComponent extends RoundChitComponent {
 		
 		// Draw Stats
 		String vulnerability = getAttribute("this","vulnerability");
-		
 		TextType tt = new TextType(vulnerability,getChitSize(),"BIG_BOLD");
-		tt.draw(g,0,getChitSize()-(getChitSize()>>3)-tt.getHeight(g),Alignment.Center);
+		
+		if (getGameObject().hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE) && getGameObject().hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ARMOR)) {
+			vulnerability = getGameObject().getThisAttribute(Constants.MAGIC_COLOR_BONUS_ARMOR);
+			tt.draw(g,0,getChitSize()-(getChitSize()>>3)-tt.getHeight(g),Alignment.Center,MagicRealmColor.PURPLE);
+		}
+		else {
+			tt.draw(g,0,getChitSize()-(getChitSize()>>3)-tt.getHeight(g),Alignment.Center);
+		}
 		
 		if (isDamaged()) {
 			tt = new TextType("DAMAGED",getChitSize(),"TITLE_GRAY");

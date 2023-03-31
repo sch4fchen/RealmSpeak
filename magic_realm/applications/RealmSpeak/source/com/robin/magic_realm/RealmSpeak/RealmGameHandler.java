@@ -1551,7 +1551,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 						ArrayList<String> dwellingKeyVals = new ArrayList<>();
 						if (starting.equals("ghost")) {
 							dwellingKeyVals.add("monster");
-							dwellingKeyVals.add("icon_type=ghost");
+							dwellingKeyVals.add("ghost");
 						}
 						else {
 							dwellingKeyVals.add("dwelling=" + starting);
@@ -2026,6 +2026,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 						}
 						if (!frame.showingTurn()) {
 							broadcast(character.getGameObject().getName(), "Starts turn: " + character.getCurrentLocation());
+							character.getCurrentLocation().energizeItems();
 							RealmTurnPanel turn = new RealmTurnPanel(frame, game, hostPrefs);
 							needSubmit = true;
 							frame.showYourTurn(turn);

@@ -53,10 +53,10 @@ public class Blacksmith extends Store {
 			reasonStoreNotAvailable = cannotAfford?"You cannot afford to repair any armor!":"You have no armor to repair!";
 		}
 	}
-	private static String HELMET_QUERY = "armor,icon_type=helmet";
-	private static String SHIELD_QUERY = "armor,icon_type=shield";
-	private static String BREASTPLATE_QUERY = "armor,icon_type=breastplate";
-	private static String ARMOR_QUERY = "armor,icon_type=suitofarmor";
+	private static String HELMET_QUERY = "armor,helmet";
+	private static String SHIELD_QUERY = "armor,shield,!buckler,!treasure";
+	private static String BREASTPLATE_QUERY = "armor,breastplate";
+	private static String ARMOR_QUERY = "armor,suitofarmor";
 	public String doService(JFrame frame) {
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,"Which Service?",true);
 		for(ArmorChitComponent armor:repairableArmor) {
@@ -74,7 +74,7 @@ public class Blacksmith extends Store {
 		}
 		return null;
 	}
-	private int getCost(GameObject go) {
+	private static int getCost(GameObject go) {
 		int cost = 4;
 		String iconType = go.getThisAttribute(Constants.ICON_TYPE);
 		if ("breastplate".equals(iconType)) {

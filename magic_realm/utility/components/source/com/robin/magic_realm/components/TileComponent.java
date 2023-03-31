@@ -1137,6 +1137,7 @@ public class TileComponent extends ChitComponent {
 		super.flip();
 		gameObject.bumpVersion(); // Still having issues where other players aren't seeing a tile flip. This should solve that.
 		needsRepaint = true;
+		energizeItems();
 	}
 
 	/**
@@ -1362,6 +1363,12 @@ public class TileComponent extends ChitComponent {
 			if (type != null && type.matches(from)) {
 				gameObject.setAttribute("normal", typeKey, to);
 			}
+		}
+	}
+	
+	private void energizeItems() {
+		for (ClearingDetail cl : getClearings()) {
+			cl.energizeItems();
 		}
 	}
 }

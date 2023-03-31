@@ -268,4 +268,9 @@ public class TileLocation {
 			int random = RandomNumber.getRandom(clearings.size());
 			clearing = clearings.get(random);
 	}
+	
+	public void energizeItems() {
+		if (clearing==null) return;
+		clearing.energizeItems();
+	}
 }

@@ -1,7 +1,6 @@
 package com.robin.magic_realm.RealmCharacterBuilder;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GameObjectBlockManager;
@@ -79,8 +78,7 @@ public class VersionManager {
 			character.setThisAttribute("start",start);
 			
 			// - fix character_chit to icon_type
-			for (Iterator i=character.getHold().iterator();i.hasNext();) {
-				GameObject item = (GameObject)i.next();
+			for (GameObject item : character.getHold()) {
 				if (item.hasThisAttribute("character_chit")) {
 					String iconType = item.getThisAttribute("character_chit");
 					item.setThisAttribute("icon_type",iconType);

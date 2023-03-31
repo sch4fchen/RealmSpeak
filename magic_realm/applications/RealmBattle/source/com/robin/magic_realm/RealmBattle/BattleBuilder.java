@@ -328,6 +328,8 @@ public class BattleBuilder extends JFrame {
 					}
 				}
 				
+				battleClearing.energizeItems();
+				
 				// Convert all traveler templates to travelers, so they can be tested here
 				ArrayList<GameObject> travelerChits = pool.find("traveler");
 				if (travelerChits.size()>0) {

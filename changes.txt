@@ -5,6 +5,8 @@ Super Realm: rules for special monster attacks and change tactics (Spear and Bow
 Super Realm: rules for special native attacks and native casters: Natives Casters (p. 89)
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Horses: When regenerated (after being killed or abandoned), normal ponies are returned to the Bashkars, workhorses to the Rogues, and war horses to the Order.
+
+Weapon: magic bonus: sharpness stars, length, attack speed
 ---Detail Rules---
 Phantasm: If the phantasm discovers Hidden Enemies, the controlling character also discovers Hidden Enemies.;; it cannot take part in combat;; can now spy and be spied
 Melt into Mist: only move actions; canot follow or be followed; can be charged (difference), The target cannot attack or be attacked, except by individuals affected by the Enchant Weapon spell, If attacked, Mist’s vulnerability is Tremendous and non-armored; targeted monster stills prowls (like in base MR) even if ‘X’ weight
@@ -16,7 +18,7 @@ Vault and Tomb (if discovered): can be opened with a missile attack, if after ro
 Ask Demon: 4 options, instead of just asking a question
 Absorb Essence: any denizens and Attention chits assigned to it become assigned to the spellcaster; absorbs steed when absorbing a monster
 	The spellcaster cannot be affected by multiple Absorb Essence spells. Any Absorb Essence spell he casts while he is already bewitched by Absorb Essence is cancelled.
----More content incl. functionalities; graphics---
+---More content incl. functionalities---
 Super Realm: new treasures
 Super Realm: new spells
 Super Realm: Visitor/Travelers=Nomads/Missions/Campaigns/Tasks (incl. for seasons); Travelers: 4.8 (p.41)
@@ -65,15 +67,18 @@ First Edition Optional Rule - https://boardgamegeek.com/thread/2503528/1st-editi
 First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 
 Version 1.1.7.6
+HINT: older save games are not fully compatible with this version (e.g. spell targeting)
 SUPER REALM:
 # Sort content of dwellings and treasure locations at setup
 # Anomalies emit magic colors
 # Anomalies cannot be targeted by spells with corresponding color
 # Add missions
 # Add campaigns
+# Add bonus vulnerability for lilac items
 NEW FEATURES:
 # New game command: sort setup
 # Support for campaigns to end at the end of the current month
+# Support for armor bonus vulnerability when supplied with corresponding magic 
 
 Version 1.1.7.5
 QUEST UPDATE:
