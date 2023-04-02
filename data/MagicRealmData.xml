@@ -3883,6 +3883,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -3905,6 +3906,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -3927,6 +3929,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -3949,6 +3952,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -3971,6 +3975,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -3993,6 +3998,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -4016,6 +4022,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -4038,6 +4045,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Chapel" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -4060,6 +4068,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Chapel" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -4082,6 +4091,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Chapel" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -4105,6 +4115,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Chapel" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -4127,6 +4138,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="8" />
@@ -4149,6 +4161,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -4171,6 +4184,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -4193,6 +4207,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -4215,6 +4230,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -4237,6 +4253,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50716,6 +50733,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50739,6 +50757,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50762,6 +50781,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50785,6 +50805,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50808,6 +50829,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -50831,6 +50853,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -50855,6 +50878,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -50878,6 +50902,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="royalBeast" />
+        <attribute horse_holder="Chapel" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -50901,6 +50926,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="royalBeast" />
+        <attribute horse_holder="Chapel" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -50924,6 +50950,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="royalBeast" />
+        <attribute horse_holder="Chapel" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -50948,6 +50975,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="royalBeast" />
+        <attribute horse_holder="Chapel" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50971,6 +50999,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="8" />
@@ -50994,6 +51023,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -51017,6 +51047,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -51040,6 +51071,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -51063,6 +51095,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -51086,6 +51119,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -51109,6 +51143,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -51132,6 +51167,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -51155,6 +51191,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -51178,6 +51215,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -51201,6 +51239,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -51224,6 +51263,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -51247,6 +51287,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -51270,6 +51311,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -51293,6 +51335,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -51316,6 +51359,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="8" />
@@ -51339,6 +51383,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="royalBeast" />
+        <attribute horse_holder="Chapel" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -51362,6 +51407,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />

@@ -449,7 +449,7 @@ public class RealmHostPanel extends JPanel {
 			
 			if (hostPrefs.hasPref(Constants.SR_END_OF_MONTH_REGENERATION) && game.getMonth()!=1 && RealmCalendar.isFirstDayOfMonth(game.getDay())) {
 				for (int i = 1; i<=6; i++) {
-					SetupCardUtility.resetDenizens(host.getGameData(), i);
+					SetupCardUtility.resetDenizens(host.getGameData(), i, hostPrefs.hasPref(Constants.SR_HORSES_REGENERATION));
 					if (hostPrefs.usesSuperRealm()) {
 						SetupCardUtility.resetNatives(host.getGameData(), i);
 					}
@@ -457,9 +457,9 @@ public class RealmHostPanel extends JPanel {
 			}
 			if (RealmCalendar.isSeventhDay(game.getDay()) && !hostPrefs.hasPref(Constants.SR_NO_7TH_DAY_REGENERATION)) {
 				// Reset Denizens on 7th day
-				SetupCardUtility.resetDenizens(host.getGameData(), monsterDieRoller.getValue(0));
+				SetupCardUtility.resetDenizens(host.getGameData(), monsterDieRoller.getValue(0), hostPrefs.hasPref(Constants.SR_HORSES_REGENERATION));
 				if (monsterDieRoller.getNumberOfDice()>1) {
-					SetupCardUtility.resetDenizens(host.getGameData(), monsterDieRoller.getValue(1));
+					SetupCardUtility.resetDenizens(host.getGameData(), monsterDieRoller.getValue(1), hostPrefs.hasPref(Constants.SR_HORSES_REGENERATION));
 				}
 				if (hostPrefs.usesSuperRealm()) {
 					SetupCardUtility.resetNatives(host.getGameData(), nativeDieRoller.getValue(0));

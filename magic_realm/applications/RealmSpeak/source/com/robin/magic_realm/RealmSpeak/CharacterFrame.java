@@ -1657,7 +1657,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					if (monsterdie!=-1) {
 						boolean ns = DebugUtility.isNoSummon();
 						DebugUtility.NO_SUMMON = false;
-						SetupCardUtility.resetDenizens(character.getGameObject().getGameData(), monsterdie);
+						SetupCardUtility.resetDenizens(character.getGameObject().getGameData(), monsterdie, hostPrefs.hasPref(Constants.SR_HORSES_REGENERATION));
 						DebugUtility.NO_SUMMON = ns;
 					}
 				}

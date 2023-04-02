@@ -4,7 +4,6 @@ Super Realm: rules for minotaur shield
 Super Realm: rules for special monster attacks and change tactics (Spear and Bow Goblins, Bow Skeletons, Demon, Winged Demon, Imp, Vampire, Succubus, and Devil): p.98, Vampire, Succubus, and Devil cannot attack Magic Protection
 Super Realm: rules for special native attacks and native casters: Natives Casters (p. 89)
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
-Super Realm: Horses: When regenerated (after being killed or abandoned), normal ponies are returned to the Bashkars, workhorses to the Rogues, and war horses to the Order.
 ---Detail Rules---
 Phantasm: If the phantasm discovers Hidden Enemies, the controlling character also discovers Hidden Enemies.;; it cannot take part in combat;; can now spy and be spied
 Melt into Mist: only move actions; canot follow or be followed; can be charged (difference), The target cannot attack or be attacked, except by individuals affected by the Enchant Weapon spell, If attacked, Mist’s vulnerability is Tremendous and non-armored; targeted monster stills prowls (like in base MR) even if ‘X’ weight
@@ -75,6 +74,7 @@ SUPER REALM:
 # Add magic bonus for lilac items
 # Mesmerize Weakened effect applies to FlySpeed (change of Super Realm 0.997)
 # Optional rules for SR: Regenerating all denizen at the end of the month (no regenerating at 7th day of the week)
+# Optional rule for SR: Regenerating horses
 NEW FEATURES:
 # New game command: sort setup
 # Support for campaigns to end at the end of the current month

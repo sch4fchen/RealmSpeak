@@ -734,7 +734,7 @@ public class CenteredMapView extends JComponent {
 				SetupCardUtility.summonMonsters(new ArrayList<GameObject>(),tl,gameData,true,true,monsterDie,null,-1);
 			}
 			else {
-				SetupCardUtility.resetDenizens(gameData,monsterDie);
+				SetupCardUtility.resetDenizens(gameData,monsterDie,false);
 			}
 			replot = true;
 			repaint();

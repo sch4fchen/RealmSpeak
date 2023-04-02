@@ -719,7 +719,7 @@ public class SetupCardUtility {
 		}
 		
 		GameObject denizenHolder = SetupCardUtility.getDenizenHolder(denizen);
-		if (denizen.hasThisAttribute("garrison")) {
+		if (denizenHolder!=null&&denizen.hasThisAttribute("garrison")) {
 			// Garrison natives return to the board immediately
 			TileLocation tl = ClearingUtility.getTileLocation(denizenHolder);
 			tl.clearing.add(denizen,null);
@@ -740,6 +740,12 @@ public class SetupCardUtility {
 				WarningChitComponent warning = (WarningChitComponent)dh;
 				warning.setFaceUp();
 			}
+		}
+		
+		if (rc.isHorse() && !rc.isNative() && !rc.getGameObject().hasThisAttribute("monster_steed")) {
+			SpellMasterWrapper smw = SpellMasterWrapper.getSpellMaster(denizen.getGameData());
+			smw.expireBewitchingSpells(rc.getGameObject(),null);
+			SetupCardUtility.getHorseHolder(rc.getGameObject()).add(rc.getGameObject());
 		}
 	}
 
@@ -769,7 +775,7 @@ public class SetupCardUtility {
 	/**
 	 * All monsters and natives for the given monster die are returned to the treasure setup card
 	 */
-	public static void resetDenizens(GameData data,int monsterDie) {
+	public static void resetDenizens(GameData data,int monsterDie, boolean regenerateHorses) {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		GameWrapper game = GameWrapper.findGame(data);
 		GamePool pool = new GamePool(data.getGameObjects());
@@ -831,6 +837,18 @@ public class SetupCardUtility {
 			GameClient.broadcastClient("host"," - "+denizen.getName());
 			game.addRegeneratedDenizen(denizen);
 			resetDenizen(denizen);
+		}
+		
+		if (regenerateHorses) {
+			keyVals = new ArrayList<>();
+			keyVals.add(hostPrefs.getGameKeyVals());
+			keyVals.add("horse");
+			keyVals.add("!native");
+			keyVals.add("!monster_steed");
+			keyVals.add(Constants.DEAD);
+			for (GameObject horse : pool.extract(keyVals)) {
+				resetDenizen(horse);
+			}
 		}
 		
 		// Flip all visitor/mission chits
@@ -983,7 +1001,7 @@ public class SetupCardUtility {
 	 */
 	public static void resetAllTreasureLocationDenizens(GameData data) {
 		for (int i=1;i<=6;i++) {
-			resetDenizens(data,i);
+			resetDenizens(data,i,false);
 		}
 		for (int i=1;i<=6;i++) {
 			resetNatives(data,i);
@@ -1032,6 +1050,28 @@ public class SetupCardUtility {
 				}
 			}
 			return denizenHolder;
+		}
+		return null;
+	}
+	
+	public static GameObject getHorseHolder(GameObject horse) {
+		GameData data = horse.getGameData();
+		String holderName = horse.getThisAttribute("horse_holder");
+		if (holderName!=null) {
+			ArrayList<String> keys = new ArrayList<>();
+			String boardNum = horse.getThisAttribute(Constants.BOARD_NUMBER);
+			if (boardNum!=null) {
+				holderName = holderName + " " + boardNum;
+				keys.add(Constants.BOARD_NUMBER+"="+boardNum);
+			}
+			else {
+				keys.add("!"+Constants.BOARD_NUMBER);
+			}
+			keys.add("name="+holderName);
+			keys.add("!character");
+			keys.add("ts_section");
+			GamePool pool = new GamePool(data.getGameObjects());
+			return pool.findFirst(keys);
 		}
 		return null;
 	}
