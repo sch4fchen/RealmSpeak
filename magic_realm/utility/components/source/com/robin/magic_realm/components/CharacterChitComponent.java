@@ -335,6 +335,26 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		return getAttackCombatBox()>0;
 	}
 	
+	public WeaponChitComponent getAttackingWeapon() {
+		CharacterWrapper character = new CharacterWrapper(getGameObject());
+		RealmComponent rc = getAttackChit();
+		if (rc != null) {
+			ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
+			if (weapons != null) {
+				CombatWrapper combatChit = new CombatWrapper(rc.getGameObject());
+				for (WeaponChitComponent weapon : weapons) {
+					if (combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
+						CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
+						if (combat.getCombatBox() > 0) { // only if it was played!
+							return weapon;
+						}
+					}
+				}
+			}
+		}
+		return null;
+	}
+	
 	/**
 	 * @return The speed of the character's attack, which might be "stopped" if none was played
 	 */
@@ -693,6 +713,9 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 									if (immunity==null || (!immunity.matches("prism") && (attackerImmunityColor==null || !attackerImmunityColor.sameColorAs(itemMagicColorBonus)))) {
 										armorVulnerability = new Strength(test.getGameObject().getThisAttribute(Constants.MAGIC_COLOR_BONUS_ARMOR));
 									}
+									else {
+										RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Ignores magic vulnerability of armor.");
+									}
 								}
 								if (!test.isArmor()) {
 									if (test.isWeapon()) armorVulnerability = new Strength(test.getGameObject().getThisAttribute("weight")); // parrying with weapon
@@ -755,6 +778,9 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					ColorMagic itemMagicColorBonus = ColorMagic.makeColorMagic(armor.getGameObject().getThisAttribute(Constants.MAGIC_COLOR_BONUS),true);
 					if (immunity==null || (!immunity.matches("prism") && (attackerImmunityColor==null || !attackerImmunityColor.sameColorAs(itemMagicColorBonus)))) {
 						armorVulnerability = new Strength(armor.getGameObject().getThisAttribute(Constants.MAGIC_COLOR_BONUS_ARMOR));
+					}
+					else {
+						RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Ignores magic vulnerability of armor.");
 					}
 				}
 				if (!armor.isArmor()) {

@@ -528,6 +528,25 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	public boolean applyHit(GameWrapper game,HostPrefWrapper hostPrefs, BattleChit attacker, int box, Harm attackerHarm,int attackOrderPos) {
 		Harm harm = new Harm(attackerHarm);
 		Strength vulnerability = getVulnerability();
+		
+		if (getGameObject().hasThisAttribute(Constants.MAGIC_IMMUNITY)) {
+			if (attacker.isCharacter()) {
+				WeaponChitComponent weapon = ((CharacterChitComponent)attacker).getAttackingWeapon();
+				if (weapon!=null && weapon.getGameObject().hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE) && weapon.getFaceAttributeInt(Constants.MAGIC_COLOR_BONUS_SHARPNESS)!=0) {
+					String immunity = getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY);
+					ColorMagic monsterImmunityColor = ColorMagic.makeColorMagic(immunity,true);
+					ColorMagic weaponMagicColorBonus = ColorMagic.makeColorMagic(weapon.getGameObject().getThisAttribute(Constants.MAGIC_COLOR_BONUS),true);
+					if (immunity.matches("prism") || monsterImmunityColor.sameColorAs(weaponMagicColorBonus)) {	
+						int weaponBonus = weapon.getFaceAttributeInt(Constants.MAGIC_COLOR_BONUS_SHARPNESS);
+						for (int i = 0; i<weaponBonus ; i++) {
+							harm.dampenSharpness();
+						}
+						RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Monster has magic immunity and additional sharpness is ignored: "+harm.toString());
+					}
+				}
+			}
+		}
+		
 		if (!harm.getIgnoresArmor() && isArmored()) {
 			harm.dampenSharpness();
 			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor, and reduces sharpness: "+harm.toString());
@@ -549,6 +568,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 				return false; // Any attack hitting the shield, does not harm the monster.
 			}
 		}
+	
 		Strength applied = harm.getAppliedStrength();
 		if (applied.strongerOrEqualTo(vulnerability)) {
 			// Dead monster!

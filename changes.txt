@@ -70,6 +70,7 @@ SUPER REALM:
 # Sort content of dwellings and treasure locations at setup
 # Anomalies emit magic colors
 # Anomalies cannot be targeted by spells with corresponding color
+# Anomalies ignore magic bonus of corresponding color
 # Add missions
 # Add campaigns
 # Add magic bonus for lilac items
