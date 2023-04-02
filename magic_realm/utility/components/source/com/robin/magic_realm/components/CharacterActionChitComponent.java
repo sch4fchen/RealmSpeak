@@ -518,6 +518,16 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 	
 	public Speed getFlySpeed() {
 		if (this.isMagicMove()) return new Speed(0);
+		
+		GameObject owner = getGameObject().getHeldBy();
+		CharacterWrapper character = null;
+		if (owner!=null) {
+			character = new CharacterWrapper(getGameObject().getHeldBy());
+		}
+		if (character!=null && character.hasMesmerizeEffect(Constants.WEAKENED)) {
+			return new Speed(getChitAttribute("speed")+1);
+		}
+		
 		return new Speed(getChitAttribute("speed"));
 	}
 
