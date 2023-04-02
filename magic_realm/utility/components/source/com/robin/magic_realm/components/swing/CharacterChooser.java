@@ -251,7 +251,7 @@ public class CharacterChooser extends AggressiveDialog {
 		if (go.hasThisAttribute(Constants.CUSTOM_CHARACTER)) {
 			return CustomCharacterLibrary.getSingleton().getCharacterImage(go.getAttribute("level_4","name"));
 		}
-		if (go.hasThisAttribute("super_realm")) {
+		if (go.hasThisAttribute(Constants.SUPER_REALM)) {
 			ArrayList<GameObject> collection = new ArrayList<GameObject>();
 			collection.add(go);
 			collection.addAll(go.getHold());

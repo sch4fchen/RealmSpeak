@@ -21,7 +21,7 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		try {
 			lightColor = MagicRealmColor.getColor(getAttribute("trot","chit_color"));
 			darkColor = MagicRealmColor.getColor(getAttribute("gallop","chit_color"));
-			if (gameObject.hasThisAttribute("super_realm")) {
+			if (gameObject.hasThisAttribute(Constants.SUPER_REALM)) {
 				lightColor = Color.white;
 				darkColor = Color.white;
 			}
@@ -67,7 +67,7 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 	}
 	public String[] getFolderAndType() {
 		String[] ret = new String[3];
-		if (gameObject.hasThisAttribute("super_realm")) {
+		if (gameObject.hasThisAttribute(Constants.SUPER_REALM)) {
 			ret[0] = gameObject.getThisAttribute(Constants.ICON_FOLDER);
 			ret[1] = gameObject.getThisAttribute(Constants.ICON_TYPE);
 			ret[2] = gameObject.getThisAttribute(Constants.ICON_SIZE);
@@ -92,7 +92,7 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		String letterCode = name.substring(0,1).toUpperCase();
 		
 		// Draw image
-		if (gameObject.hasThisAttribute("super_realm")) {
+		if (gameObject.hasThisAttribute(Constants.SUPER_REALM)) {
 			double size = 0.5;
 			int yOffset = 0;
 			String folder = gameObject.getThisAttribute(Constants.ICON_FOLDER);
@@ -131,7 +131,7 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 			tt = new TextType(name,getChitSize(),"WHITE_NOTE");
 		}
 		tt.draw(g,getChitSize()-10-tt.getWidth(g),7,Alignment.Left);
-		if ((RealmComponent.displaySubline || getGameObject().hasThisAttribute("super_realm")) && getGameObject().hasThisAttribute("native")) {
+		if ((RealmComponent.displaySubline || getGameObject().hasThisAttribute(Constants.SUPER_REALM)) && getGameObject().hasThisAttribute("native")) {
 			String text = getGameObject().getThisAttribute("native");
 			if (getGameObject().hasThisAttribute("rank")) {
 				text = text + " " + getGameObject().getThisAttribute("rank");

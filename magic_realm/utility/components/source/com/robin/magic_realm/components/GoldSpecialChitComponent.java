@@ -407,7 +407,7 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 			query.add("monster");
 			query.add("icon_type="+group.toLowerCase());
 		}
-		else if (getGameObject().hasThisAttribute("super_realm") && getGameObject().hasThisAttribute("foe_monsters")) {
+		else if (getGameObject().hasThisAttribute(Constants.SUPER_REALM) && getGameObject().hasThisAttribute("foe_monsters")) {
 			query.add("monster");
 			query.add(group.toLowerCase());
 		}

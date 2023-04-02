@@ -291,7 +291,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	}
 	protected String getIconFolder() {
 		String iconDir = getGameObject().getThisAttribute(Constants.ICON_FOLDER);
-		if (useColorIcons() && !gameObject.hasThisAttribute("super_realm")) {
+		if (useColorIcons() && !gameObject.hasThisAttribute(Constants.SUPER_REALM)) {
 			iconDir = iconDir+"_c";
 		}
 		return iconDir;

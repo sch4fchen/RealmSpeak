@@ -5,6 +5,7 @@ import java.awt.*;
 public class Constants {
 	public static final String ORIGINAL_GAME = "original_game";
 	public static final String ALT_MONSTERS1_GAME = "alt_monsters1_game";
+	public static final String SUPER_REALM = "super_realm";
 	public static final String MULTI_BOARD_APPENDS = "BCDEFGHIJKLMNOP"; // WAY more than enough
 	public static final String SETUP = "setup"; // identifies the original object that contained this item at the beginning of the game.
 	public static final String ANCHOR_TILE = "anchor_tile";
@@ -293,6 +294,8 @@ public class Constants {
 	// Monster
 	public static final String NUMBER = "number";
 	public static final String SETUP_START_TILE_REQ = "setup_start_tilereq";
+	public static final String WEAPON_USE = "weapon_use";
+	public static final String WEAPON_USE_CHIT = "weapon_use_chit";
 	
 	// Other effects
 	public static final String BENEVOLENT = "benevolent"; // for spells

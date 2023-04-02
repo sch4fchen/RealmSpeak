@@ -149,7 +149,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		}
 		else {
 			// Draw image
-			if (gameObject.hasThisAttribute("super_realm") && gameObject.hasThisAttribute(Constants.ICON_TYPE+"_sr") && gameObject.hasThisAttribute(Constants.ICON_TYPE+"_sr")) {
+			if (gameObject.hasThisAttribute(Constants.SUPER_REALM) && gameObject.hasThisAttribute(Constants.ICON_TYPE+"_sr") && gameObject.hasThisAttribute(Constants.ICON_TYPE+"_sr")) {
 				String iconName = gameObject.getThisAttribute(Constants.ICON_TYPE+"_sr");
 				String iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER+"_sr");
 				Shape shape = getShape(SHADOW_BORDER,SHADOW_BORDER,getChitSize()-SHADOW_BORDER);

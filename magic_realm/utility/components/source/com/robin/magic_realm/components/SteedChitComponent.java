@@ -63,7 +63,7 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		super.paintComponent(g);
 		
 		// Draw image
-		if (gameObject.hasThisAttribute("super_realm")) {
+		if (gameObject.hasThisAttribute(Constants.SUPER_REALM)) {
 			double size = 0.5;
 			int yOffset = 0;
 			String folder = gameObject.getThisAttribute(Constants.ICON_FOLDER);
