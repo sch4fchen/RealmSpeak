@@ -455,6 +455,9 @@ public class RealmCalendar {
 	public static boolean isSeventhDay(int day) {
 		return day==7 || day==14 || day==21 || day==28;
 	}
+	public static boolean isFirstDayOfMonth(int day) {
+		return day==1;
+	}
 	public static RealmCalendar getCalendar(GameData data) {
 		GameWrapper game = GameWrapper.findGame(data);
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);

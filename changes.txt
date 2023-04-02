@@ -23,7 +23,6 @@ Super Realm: new spells
 Super Realm: Nomads, Tasks, Travelers: 4.8 (p.41)
 Super Realm: Quests + Events
 Super Realm: rules for max. strength attack
-Super Realm: Regeneration: start of a new month (not 7th day), all un-hired denizens (4.10, p. 42)
 Super Realm: Adapt Commerce optional rules for new natives
 Super Realm: Characters, including potraits with credits, different chit icon
 Super Realm: icons for site chits, sound and warning chits, characters
@@ -75,11 +74,12 @@ SUPER REALM:
 # Add campaigns
 # Add magic bonus for lilac items
 # Mesmerize Weakened effect applies to FlySpeed (change of Super Realm 0.997)
+# Optional rules for SR: Regenerating all denizen at the end of the month (no regenerating at 7th day of the week)
 NEW FEATURES:
 # New game command: sort setup
 # Support for campaigns to end at the end of the current month
 # Support for armor bonus vulnerability when supplied with corresponding magic
-# Support for weapon bonus attack speed, length and sharpness when supplied with corresponding magic 
+# Support for weapon bonus attack speed, length and sharpness when supplied with corresponding magic
 
 Version 1.1.7.5
 QUEST UPDATE:

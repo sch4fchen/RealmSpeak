@@ -616,6 +616,10 @@ public class Constants {
 	public static final String HOUSE3_DEDUCT_VPS = "DeductVps";
 	public static final String HOUSE3_SMALL_MONSTERS = "SmallMonsters";
 	
+	// Super Realm
+	public static final String SR_END_OF_MONTH_REGENERATION = "EndOfMonthRegeneration";
+	public static final String SR_NO_7TH_DAY_REGENERATION = "No7thDayRegeneration";
+	
 	// Random Number Generators
 	public static final String RANDOM_R250_521 = "RndR250_521";
 	public static final String RANDOM_MERSENNE_TWISTER = "RndMt";
