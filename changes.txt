@@ -16,13 +16,13 @@ Vault and Tomb (if discovered): can be opened with a missile attack, if after ro
 Ask Demon: 4 options, instead of just asking a question
 Absorb Essence: any denizens and Attention chits assigned to it become assigned to the spellcaster; absorbs steed when absorbing a monster
 	The spellcaster cannot be affected by multiple Absorb Essence spells. Any Absorb Essence spell he casts while he is already bewitched by Absorb Essence is cancelled.
+Hurricane Winds: check rule changes of newer Super Realm versions
 ---More content incl. functionalities---
 Super Realm: new treasures
 Super Realm: new spells
-Super Realm: Visitor/Travelers=Nomads/Missions/Campaigns/Tasks (incl. for seasons); Travelers: 4.8 (p.41)
+Super Realm: Nomads, Tasks, Travelers: 4.8 (p.41)
 Super Realm: Quests + Events
 Super Realm: rules for max. strength attack
-Super Realm: rules for items/treasures: purple (or other) magic color provided: additional sharpness/vulnerability until midnight
 Super Realm: Regeneration: start of a new month (not 7th day), all un-hired denizens (4.10, p. 42)
 Super Realm: Adapt Commerce optional rules for new natives
 Super Realm: Characters, including potraits with credits, different chit icon
