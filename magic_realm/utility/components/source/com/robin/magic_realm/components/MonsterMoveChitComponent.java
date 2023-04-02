@@ -48,6 +48,10 @@ public class MonsterMoveChitComponent extends MonsterActionChitComponent {
 	public String getMagicType() {
 		return null; // Not a FIGHT chit!
 	}
+	
+	public String getAttackSpell() {
+		return null; // Not a FIGHT chit!
+	}
 
 	public int getManeuverCombatBox() {
 		return monster.getManeuverCombatBox(); // oops.... can't separate these, can I!!

@@ -444,6 +444,7 @@ public class Constants {
 	public static final String ATTRIBUTE_ADD = "attribute_add"; // Identifies that the spell will add attributes to the "this" block from the "attribute_add" block.
 	
 	public static final String POWER_OF_THE_PIT = "powerofthepit";
+	public static final String CURSE = "curse";
 	public static final String FEAR = "fear";
 	public static final String WALL_OF_FORCE = "wall_of_force";
 	

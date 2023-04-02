@@ -271,6 +271,9 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 	public String getMagicType() {
 		return null; // For now, there are no magic flinging travelers.
 	}
+	public String getAttackSpell() {
+		return null; // For now, there are no magic flinging travelers.
+	}
 	public int getManeuverCombatBox() {
 		CombatWrapper combat = new CombatWrapper(getGameObject());
 		return combat.getCombatBox();

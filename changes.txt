@@ -1,7 +1,7 @@
 ::ROADMAP::
 ---Basic Functionalities for current content---
 Super Realm: rules for minotaur shield
-Super Realm: rules for special monster attacks and change tactics (Spear and Bow Goblins, Bow Skeletons, Demon, Winged Demon, Imp, Vampire, Succubus, and Devil): p.98, Vampire, Succubus, and Devil cannot attack Magic Protection
+Super Realm: rules for special monster attacks and change tactics (Devil): p.98, Devil
 Super Realm: rules for special native attacks and native casters: Natives Casters (p. 89)
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 ---Detail Rules---
@@ -75,6 +75,7 @@ SUPER REALM:
 # Mesmerize Weakened effect applies to FlySpeed (change of Super Realm 0.997)
 # Optional rules for SR: Regenerating all denizen at the end of the month (no regenerating at 7th day of the week)
 # Optional rule for SR: Regenerating horses
+# Add spell attacks for Succubus and Vampire
 NEW FEATURES:
 # New game command: sort setup
 # Support for campaigns to end at the end of the current month

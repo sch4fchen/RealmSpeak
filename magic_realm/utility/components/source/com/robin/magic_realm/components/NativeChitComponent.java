@@ -386,9 +386,12 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 	}
 
 	public String getMagicType() {
-		return null; // Native's never have magic
+		return null;
 	}
-
+	public String getAttackSpell() {
+		return null;
+	}
+	
 	public int getManeuverCombatBox() {
 		return getManeuverCombatBox(true);
 	}

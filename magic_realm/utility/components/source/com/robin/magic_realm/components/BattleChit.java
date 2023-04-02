@@ -28,6 +28,7 @@ public interface BattleChit {
 	public Speed getAttackSpeed();
 	public Harm getHarm();
 	public String getMagicType();
+	public String getAttackSpell();
 	public int getManeuverCombatBox();
 	public int getAttackCombatBox();
 	public boolean isMissile();

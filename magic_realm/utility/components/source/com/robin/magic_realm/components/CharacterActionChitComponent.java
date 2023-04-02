@@ -579,6 +579,10 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		return changeType;
 	}
 	
+	public String getAttackSpell() {
+		return null;
+	}
+	
 	public boolean compatibleWith(ColorMagic cm) {
 		return getMagicNumber()==cm.getColorNumber();
 	}

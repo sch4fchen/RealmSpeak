@@ -159,6 +159,9 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 	public String getMagicType() {
 	    return null; // horses don't have magic
 	}
+	public String getAttackSpell() {
+	    return null; // horses don't have magic
+	}
 	// BattleHorse Interface
 	public void setGallop() {
 	    setFacing(GALLOP_SIDE_UP);

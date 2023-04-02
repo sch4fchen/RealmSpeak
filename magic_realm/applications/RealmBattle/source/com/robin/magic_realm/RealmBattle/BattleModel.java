@@ -13,6 +13,7 @@ import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.table.Curse;
 import com.robin.magic_realm.components.table.Fear;
+import com.robin.magic_realm.components.table.Mesmerize;
 import com.robin.magic_realm.components.table.PowerOfThePit;
 import com.robin.magic_realm.components.table.RaiseDead;
 import com.robin.magic_realm.components.table.WallOfForce;
@@ -507,7 +508,7 @@ public class BattleModel {
 				}
 				if ((battleParticipant.isMonster() || transmorphed) && !battleParticipant.isMonsterPart()) {
 					BattleChit monster = (BattleChit)battleParticipant;
-					if ("V".equals(monster.getMagicType())) {
+					if ("V".equals(monster.getMagicType()) && Constants.POWER_OF_THE_PIT.matches(monster.getAttackSpell())) {
 						spellCasters.add(monster);
 						monsterSpells.put(Integer.valueOf(monster.getAttackSpeed().getNum()),monster);
 					}
@@ -544,7 +545,7 @@ public class BattleModel {
 										}
 										if ((target.isMonster() || targetTransmorphed) && !target.isMonsterPart()) {
 											BattleChit monster = (BattleChit)target;
-											if ("V".equals(monster.getMagicType())) {
+											if ("V".equals(monster.getMagicType()) && Constants.POWER_OF_THE_PIT.matches(monster.getAttackSpell())) {
 												if (monster.getAttackSpeed().getNum() <= speed) continue;
 												combat.setCancelSpell();
 												String message = "Attack spell, cast by the "
@@ -1379,7 +1380,7 @@ public class BattleModel {
 							transmorphed = true;
 						}
 					}
-					if (((attacker.isDenizen() || transmorphed ) &&  "V".equals(magicType)) || Constants.POWER_OF_THE_PIT.matches(magicType)) {
+					if ((attacker.isDenizen() || transmorphed) && "V".equals(magicType) && Constants.POWER_OF_THE_PIT.matches(attacker.getAttackSpell())) {
 						if (attacker instanceof SpellWrapper) {
 							// Spells belong to characters
 							SpellWrapper spell = (SpellWrapper)attacker;
@@ -1401,21 +1402,27 @@ public class BattleModel {
 						hitCausedHarm = pop.harmWasApplied();
 						spellCasting = true;
 					}
-					else if ((attacker.isDenizen() || transmorphed) && "VIII".equals(magicType)) {
+					else if ((attacker.isDenizen() || transmorphed) && "V".equals(magicType) && Constants.CURSE.equals(attacker.getAttackSpell())) {
 						// Imp's Curse
 						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with a Curse along box "+attacker.getAttackCombatBox());
 						Curse curse = Curse.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject());
 						hitCausedHarm = curse.harmWasApplied();
 						spellCasting = true;
 					}
+					else if ((attacker.isDenizen() || transmorphed) && "VIII".equals(magicType) && Constants.MESMERIZE.equals(attacker.getAttackSpell())) {
+						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with a Curse along box "+attacker.getAttackCombatBox());
+						Mesmerize mesmerize = Mesmerize.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject(),false,0);
+						hitCausedHarm = mesmerize.harmWasApplied();
+						spellCasting = true;
+					}
 					else if (attacker instanceof SpellWrapper && Constants.WALL_OF_FORCE.matches(magicType)) {
 						hitCausedHarm = WallOfForce.apply(new SpellWrapper(attacker.getGameObject()),target.getGameObject());
-						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with by "+attacker.getName()+" along box "+attacker.getAttackCombatBox());
+						logBattleInfo(target.getGameObject().getNameWithNumber()+" was shielded by 'wall of force' by "+attacker.getName()+" along box "+attacker.getAttackCombatBox());
 						spellCasting = true;
 					}
 					else if (attacker instanceof SpellWrapper && Constants.FEAR.matches(magicType)) {
 						hitCausedHarm = Fear.apply(new SpellWrapper(attacker.getGameObject()),target.getGameObject(),battleLocation);
-						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with by "+attacker.getName()+" along box "+attacker.getAttackCombatBox());
+						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with Fear by "+attacker.getName()+" along box "+attacker.getAttackCombatBox());
 						spellCasting = true;
 					}
 				}

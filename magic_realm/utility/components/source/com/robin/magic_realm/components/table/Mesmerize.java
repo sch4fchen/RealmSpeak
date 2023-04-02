@@ -19,9 +19,13 @@ public class Mesmerize extends RealmTable {
 		"Sapped",
 		"Tired",
 	};
+	private boolean harm;
 		
 	public Mesmerize(JFrame frame,GameObject caster) {
 		super(frame,null);
+	}
+	public boolean harmWasApplied() {
+		return harm;
 	}
 	public String getTableName(boolean longDescription) {
 		return "Mesmerize";
@@ -45,12 +49,17 @@ public class Mesmerize extends RealmTable {
 		return destCharacter.getPlayerName();
 	}
 	public String apply(CharacterWrapper character,DieRoller roller) {
+		harm = false;
 		if (character.isMistLike()) {
 			return "Unaffected - Mist";
 		}
 		else if (character.hasMagicProtection()) {
 			return "Unaffected - Magic Protection";
 		}
+		else if (!character.isCharacter()) {
+			return "Unaffected (denizen)";
+		}
+		harm = true;
 		return super.apply(character,roller);
 	}
 	public String applyOne(CharacterWrapper character) {

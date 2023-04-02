@@ -45,6 +45,10 @@ public class MonsterFightChitComponent extends MonsterActionChitComponent {
 	public String getMagicType() {
 		return monster.getMagicType();
 	}
+	
+	public String getAttackSpell() {
+		return monster.getAttackSpell();
+	}
 
 	public int getManeuverCombatBox() {
 		return 0; // Not a MOVE chit!

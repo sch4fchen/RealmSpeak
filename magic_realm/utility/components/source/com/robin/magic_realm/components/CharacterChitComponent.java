@@ -922,6 +922,14 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		}
 		return null;
 	}
+	
+	public String getAttackSpell() {
+		RealmComponent rc = getAttackChit();
+		if (rc.isMonster()) {
+			return ((MonsterChitComponent)rc).getAttackSpell();
+		}
+		return null;
+	}
 
 	public int getManeuverCombatBox() {
 		return getManeuverCombatBox(true);

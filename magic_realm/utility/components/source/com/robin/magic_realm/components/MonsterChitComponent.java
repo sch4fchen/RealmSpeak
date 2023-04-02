@@ -479,6 +479,10 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	public String getMagicType() {
 		return getFaceAttributeString("magic_type");
 	}
+	
+	public String getAttackSpell() {
+		return getFaceAttributeString("attack_spell");
+	}
 
 	public int getManeuverCombatBox() {
 		CombatWrapper combat = new CombatWrapper(getGameObject());
