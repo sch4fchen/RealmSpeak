@@ -57,6 +57,7 @@ public class WeaponChitComponent extends RoundChitComponent {
 	public int getLength() {
 		CombatWrapper combatWeapon = new CombatWrapper(gameObject);
 		if (combatWeapon.wasThrown()) return 12;
+		if (gameObject.hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE) && gameObject.hasThisAttribute(Constants.MAGIC_COLOR_BONUS_LENGTH)) return gameObject.getThisInt(Constants.MAGIC_COLOR_BONUS_LENGTH);
 		return gameObject.getThisInt("length");
 	}
 	public String getLightSideStat() {
@@ -67,6 +68,10 @@ public class WeaponChitComponent extends RoundChitComponent {
 	}
 	public Speed getSpeed() {
 		String val = getFaceAttributeString("attack_speed");
+		if (gameObject.hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE)) {
+			String magicSpeed = getFaceAttributeString(Constants.MAGIC_COLOR_BONUS_SPEED);
+			if (magicSpeed!=null && magicSpeed.trim().length()>0) return new Speed(magicSpeed);
+		}
 		if (val!=null && val.trim().length()>0) {
 			return new Speed(val);
 		}
@@ -97,6 +102,10 @@ public class WeaponChitComponent extends RoundChitComponent {
 	public int getSharpness() {
 		int sharpness = getFaceAttributeInt("sharpness");
 		sharpness += getGameObject().getThisInt(Constants.ADD_SHARPNESS);
+		
+		if (gameObject.hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE)) {
+			sharpness += getFaceAttributeInt(Constants.MAGIC_COLOR_BONUS_SHARPNESS);
+		}
 		
 		CharacterWrapper wielder = getWielder();
 		if (wielder!=null && wielder.hasActiveInventoryThisKey(Constants.INCREASE_SHARP)) {

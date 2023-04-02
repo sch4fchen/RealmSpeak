@@ -5,8 +5,6 @@ Super Realm: rules for special monster attacks and change tactics (Spear and Bow
 Super Realm: rules for special native attacks and native casters: Natives Casters (p. 89)
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Horses: When regenerated (after being killed or abandoned), normal ponies are returned to the Bashkars, workhorses to the Rogues, and war horses to the Order.
-
-Weapon: magic bonus: sharpness stars, length, attack speed
 ---Detail Rules---
 Phantasm: If the phantasm discovers Hidden Enemies, the controlling character also discovers Hidden Enemies.;; it cannot take part in combat;; can now spy and be spied
 Melt into Mist: only move actions; canot follow or be followed; can be charged (difference), The target cannot attack or be attacked, except by individuals affected by the Enchant Weapon spell, If attacked, Mist’s vulnerability is Tremendous and non-armored; targeted monster stills prowls (like in base MR) even if ‘X’ weight
@@ -74,11 +72,12 @@ SUPER REALM:
 # Anomalies cannot be targeted by spells with corresponding color
 # Add missions
 # Add campaigns
-# Add bonus vulnerability for lilac items
+# Add magic bonus for lilac items
 NEW FEATURES:
 # New game command: sort setup
 # Support for campaigns to end at the end of the current month
-# Support for armor bonus vulnerability when supplied with corresponding magic 
+# Support for armor bonus vulnerability when supplied with corresponding magic
+# Support for weapon bonus attack speed, length and sharpness when supplied with corresponding magic 
 
 Version 1.1.7.5
 QUEST UPDATE:

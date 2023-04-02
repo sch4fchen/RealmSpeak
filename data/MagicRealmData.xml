@@ -53417,7 +53417,6 @@
         <attribute fame="3" />
         <attribute magic="" />
         <attribute magic_color_bonus="purple" />
-        <attribute magic_color_bonus_sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -53428,6 +53427,7 @@
         <attribute strength="L" />
         <attribute sharpness="2" />
         <attribute chit_color="red" />
+        <attribute magic_color_bonus_sharpness="1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2025" name="Crystal Bow">
@@ -53446,7 +53446,6 @@
         <attribute fame="0" />
         <attribute magic="" />
         <attribute magic_color_bonus="purple" />
-        <attribute magic_color_bonus_sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="M" />
@@ -53457,6 +53456,7 @@
         <attribute strength="M" />
         <attribute sharpness="2" />
         <attribute chit_color="red" />
+        <attribute magic_color_bonus_sharpness="1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2026" name="Mage's Staff">
