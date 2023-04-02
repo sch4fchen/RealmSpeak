@@ -722,12 +722,12 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 					if (checkLocation) {
 						// Make sure not in a cave!
 						TileLocation tl = getCurrentLocation();
-						if (tl!=null && tl.hasClearing() && (tl.clearing.isCave() || tl.clearing.isWater())) {
+						if (tl!=null && tl.hasClearing() && (tl.clearing.isCave() || tl.clearing.isWater()) && !bh.getGameObject().hasThisAttribute(Constants.STEED_IN_CAVES_AND_WATER)) {
 							// No horse can be played in a cave, so they are "non-existant"
 							return null;
 						}
 					}
-					if (isNative()) {
+					if (isNative() || rc.isMonster()) {
 						// Make sure native is NOT transformed
 						if (getGameObject().hasAttributeBlock("this_h")) {
 							return null;

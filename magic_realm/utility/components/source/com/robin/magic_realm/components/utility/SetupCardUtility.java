@@ -716,6 +716,12 @@ public class SetupCardUtility {
 			if (shield != null) {
 				shield.setDestroyed(false);
 			}
+			NativeSteedChitComponent horse = (NativeSteedChitComponent)rc.getHorseIncludeDead();
+			if (horse!=null) {
+				horse.setLightSideUp();
+				CombatWrapper.clearAllCombatInfo(horse.getGameObject());
+				horse.getGameObject().removeThisAttribute(Constants.DEAD);
+			}
 		}
 		
 		GameObject denizenHolder = SetupCardUtility.getDenizenHolder(denizen);
