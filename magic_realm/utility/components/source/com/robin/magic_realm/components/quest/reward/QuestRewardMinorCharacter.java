@@ -46,6 +46,7 @@ public class QuestRewardMinorCharacter extends QuestReward {
 		else {
 			character.getGameObject().remove(minorCharacter.getGameObject());
 		}
+		character.setNeedsActionPanelUpdate(true);
 	}
 
 	public String getDescription() {
