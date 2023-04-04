@@ -239,7 +239,7 @@ public class DataSheetGenerator {
 		String[] line = new String[TREASURE_INFO.length];
 		for (GameObject treasure:treasures) {
 			TreasureCardComponent rc = (TreasureCardComponent)RealmComponent.getRealmComponent(treasure);
-			String newTreasure = rc.getGameObject().hasThisAttribute("rw_expansion_1")
+			String newTreasure = (rc.getGameObject().hasThisAttribute("rw_expansion_1") || rc.getGameObject().hasThisAttribute("super_realm"))
 								&&!rc.getGameObject().hasThisAttribute("original_game")?"X1":"";
 			line[0] = newTreasure;
 			line[1] = treasure.getName();

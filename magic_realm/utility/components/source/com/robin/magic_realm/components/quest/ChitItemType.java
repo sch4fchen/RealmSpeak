@@ -13,8 +13,8 @@ public enum ChitItemType {
 	
 	static String[] ItemKeyVals = {"item"};
 	static String[] TreasureKeyVals = {"item","treasure"};
-	static String[] WeaponKeyVals = {"item","weapon","!character","!treasure","original_game","!magic"};
-	static String[] ArmorKeyVals = {"item","armor","!character","!treasure","original_game","!magic"};
+	static String[] WeaponKeyVals = {"item","weapon","!character","!treasure","!magic"};
+	static String[] ArmorKeyVals = {"item","armor","!character","!treasure","!magic"};
 	static String[] GreatKeyVals = {"item","great"};
 	static String[] HorseKeyVals = {"item","horse"};
 	public String[] getKeyVals() {
