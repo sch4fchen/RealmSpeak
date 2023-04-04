@@ -3,6 +3,7 @@ package com.robin.magic_realm.components.quest;
 public enum CharacterActionType {
 	Unknown,
 	ActivatingItem,
+	DeactivatingItem,
 	Alert,
 	Cache,
 	CastSpell,

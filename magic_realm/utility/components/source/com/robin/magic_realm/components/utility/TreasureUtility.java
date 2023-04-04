@@ -711,6 +711,13 @@ public class TreasureUtility {
 		if (character!=null) {
 			character.updateChitEffects();
 		}
+		
+		QuestRequirementParams qp = new QuestRequirementParams();
+		qp.actionType = CharacterActionType.DeactivatingItem;
+		qp.objectList = new ArrayList<>();
+		qp.objectList.add(thing);
+		character.testQuestRequirements(frame,qp);
+		
 		return true;
 	}
 
