@@ -50319,7 +50319,6 @@
         <attribute chit_color="lightorange" />
         <attribute attack_speed="4" />
         <attribute length="9" />
-        <attribute strength="M" />
         <attribute magic_type="VI" />
         <attribute attack_spell="transform" />
       </AttributeBlock>
@@ -50362,7 +50361,6 @@
         <attribute chit_color="lightorange" />
         <attribute attack_speed="4" />
         <attribute length="9" />
-        <attribute strength="M" />
         <attribute magic_type="VI" />
         <attribute attack_spell="transform" />
       </AttributeBlock>
@@ -50405,7 +50403,6 @@
         <attribute chit_color="lightorange" />
         <attribute attack_speed="4" />
         <attribute length="9" />
-        <attribute strength="M" />
         <attribute magic_type="VI" />
         <attribute attack_spell="transform" />
       </AttributeBlock>
@@ -50448,7 +50445,6 @@
         <attribute chit_color="lightorange" />
         <attribute attack_speed="4" />
         <attribute length="9" />
-        <attribute strength="M" />
         <attribute magic_type="VI" />
         <attribute attack_spell="transform" />
       </AttributeBlock>
@@ -56546,7 +56542,7 @@
         <attribute animal="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2185" name="Melt Into Mist">
+    <GameObject id="2185" name="MeltIntoMist">
       <AttributeBlock blockName="this">
         <attribute spell="VI" />
         <attribute duration="permanent" />
@@ -56572,7 +56568,7 @@
         <attribute icon_folder="monsters" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2186" name="Melt Into Mist">
+    <GameObject id="2186" name="MeltIntoMist">
       <AttributeBlock blockName="this">
         <attribute spell="VI" />
         <attribute duration="permanent" />
@@ -56598,7 +56594,7 @@
         <attribute icon_folder="monsters" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2187" name="Melt Into Mist">
+    <GameObject id="2187" name="MeltIntoMist">
       <AttributeBlock blockName="this">
         <attribute spell="VI" />
         <attribute duration="permanent" />

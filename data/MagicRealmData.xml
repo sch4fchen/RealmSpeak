@@ -56542,7 +56542,7 @@
         <attribute animal="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2185" name="Melt Into Mist">
+    <GameObject id="2185" name="MeltIntoMist">
       <AttributeBlock blockName="this">
         <attribute spell="VI" />
         <attribute duration="permanent" />
@@ -56568,7 +56568,7 @@
         <attribute icon_folder="monsters" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2186" name="Melt Into Mist">
+    <GameObject id="2186" name="MeltIntoMist">
       <AttributeBlock blockName="this">
         <attribute spell="VI" />
         <attribute duration="permanent" />
@@ -56594,7 +56594,7 @@
         <attribute icon_folder="monsters" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2187" name="Melt Into Mist">
+    <GameObject id="2187" name="MeltIntoMist">
       <AttributeBlock blockName="this">
         <attribute spell="VI" />
         <attribute duration="permanent" />
