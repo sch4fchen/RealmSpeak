@@ -183,6 +183,14 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 
 		return this;
 	}
+	public SpellWrapper castSpellByDenizen(GameObject denizen) {
+		setBoolean(SPELL_AFFECTED,false); // make sure this is cleared out
+		setBoolean(SPELL_ALIVE,true);
+		SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(getGameObject().getGameData());
+		sm.addSpell(this);
+		setString(CASTER_ID, String.valueOf(denizen.getId()));
+		return this;
+	}
 	public CharacterWrapper getCaster() {
 		String id = getString(CASTER_ID);
 		if (id!=null) {
@@ -454,8 +462,9 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		
 		// Be sure to tag the target
 		CombatWrapper combat = new CombatWrapper(target);
-		GameObject caster = getCaster().getGameObject();
-		if (caster!=null && hostPrefs!=null) { // caster might be null if the spell is cast by a treasure (Flying Carpet)
+		CharacterWrapper casterCharacterWrapper = getCaster();
+		if (casterCharacterWrapper!=null && hostPrefs!=null) { // caster might be null if the spell is cast by a treasure (Flying Carpet)
+			GameObject caster = casterCharacterWrapper.getGameObject();
 			combat.addAttacker(caster);
 			
 			CharacterWrapper character = new CharacterWrapper(caster);

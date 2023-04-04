@@ -17,6 +17,7 @@
         <attribute needs_init="" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -74,6 +75,7 @@
         <attribute needs_init="" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -130,6 +132,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -186,6 +189,8 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute giant="" />
+        <attribute weapon_use_chit="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -239,6 +244,8 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute giant="" />
+        <attribute weapon_use_chit="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -301,6 +308,7 @@
         <attribute magic_type="V" />
         <attribute length="17" />
         <attribute chit_color="purple" />
+        <attribute attack_spell="powerofthepit" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="2" />
@@ -333,6 +341,7 @@
         <attribute magic_type="V" />
         <attribute length="17" />
         <attribute chit_color="gray" />
+        <attribute attack_spell="powerofthepit" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -358,6 +367,7 @@
         <attribute needs_init="" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -388,6 +398,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -418,6 +429,7 @@
         <attribute needs_init="" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute octopus="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -478,6 +490,7 @@
         <attribute needs_init="" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -509,6 +522,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -539,6 +553,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -568,6 +583,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -597,6 +613,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -626,6 +643,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -714,6 +732,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -744,6 +763,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -774,6 +794,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -804,6 +825,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -834,6 +856,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -864,6 +887,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -893,6 +917,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -922,6 +947,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -951,6 +977,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -981,6 +1008,7 @@
         <attribute needs_init="" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute imp="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -988,6 +1016,7 @@
         <attribute magic_type="VIII" />
         <attribute length="17" />
         <attribute chit_color="pink" />
+        <attribute attack_spell="powerofthepit" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
@@ -1071,6 +1100,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute ghost="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -1100,6 +1130,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute ghost="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -1128,6 +1159,8 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute ogre="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -1156,6 +1189,8 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute ogre="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -1184,6 +1219,8 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1212,6 +1249,8 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1240,6 +1279,8 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1268,6 +1309,8 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1296,6 +1339,8 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1324,6 +1369,8 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1352,6 +1399,8 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1384,6 +1433,8 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1416,6 +1467,8 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1448,6 +1501,8 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1480,6 +1535,8 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1512,6 +1569,8 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1544,6 +1603,8 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1576,6 +1637,8 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1608,6 +1671,8 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1640,6 +1705,8 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1672,6 +1739,8 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1704,6 +1773,8 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1736,6 +1807,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1764,6 +1836,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1792,6 +1865,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1820,6 +1894,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1848,6 +1923,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1876,6 +1952,7 @@
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -3011,6 +3088,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -3339,6 +3417,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -3372,6 +3451,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -3406,6 +3486,7 @@
         <attribute commerce="F,N" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -3805,6 +3886,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -3827,6 +3909,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -3849,6 +3932,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -3871,6 +3955,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -3893,6 +3978,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -3915,6 +4001,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -3938,6 +4025,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -3960,6 +4048,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Chapel" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -3982,6 +4071,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Chapel" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -4004,6 +4094,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Chapel" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -4027,6 +4118,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Chapel" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -4049,6 +4141,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="8" />
@@ -4071,6 +4164,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -4093,6 +4187,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -4115,6 +4210,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -4137,6 +4233,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -4159,6 +4256,7 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -4190,6 +4288,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute suitofarmor="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="25" />
@@ -4220,6 +4319,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute suitofarmor="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="17" />
@@ -4247,6 +4347,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute suitofarmor="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="17" />
@@ -4272,6 +4373,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="5" />
@@ -4297,6 +4399,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="5" />
@@ -4322,6 +4425,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="5" />
@@ -4347,6 +4451,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="5" />
@@ -4372,6 +4477,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="5" />
@@ -4397,6 +4503,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="5" />
@@ -4527,6 +4634,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute breastplate="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="9" />
@@ -4553,6 +4661,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute breastplate="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="9" />
@@ -4579,6 +4688,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute breastplate="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="9" />
@@ -4607,6 +4717,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="30" />
@@ -4671,6 +4782,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute breastplate="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="25" />
@@ -7044,7 +7156,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="V" />
         <attribute duration="instant" />
-        <attribute target="demon" />
+        <attribute target="ask_demon" />
         <attribute text="Ask question with yes/no or number answer" />
         <attribute magic_color="black" />
         <attribute original_game="" />
@@ -7228,6 +7340,7 @@
         <attribute name="Tremendous Dragon" />
         <attribute icon_folder="monsters" />
         <attribute armored="" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll2">
         <attribute vulnerability="H" />
@@ -7240,6 +7353,7 @@
         <attribute dark_color="orange" />
         <attribute name="Lion" />
         <attribute icon_folder="monsters" />
+        <attribute animal="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll3">
         <attribute vulnerability="M" />
@@ -7252,6 +7366,7 @@
         <attribute dark_color="darkgray" />
         <attribute name="Eagle" />
         <attribute icon_folder="monsters" />
+        <attribute animal="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll4">
         <attribute vulnerability="L" />
@@ -7263,6 +7378,7 @@
         <attribute name="Bird" />
         <attribute icon_folder="monsters" />
         <attribute small="" />
+        <attribute animal="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll5">
         <attribute vulnerability="L" />
@@ -7274,6 +7390,7 @@
         <attribute name="Squirrel" />
         <attribute icon_folder="monsters" />
         <attribute small="" />
+        <attribute animal="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll6">
         <attribute vulnerability="L" />
@@ -7285,6 +7402,7 @@
         <attribute name="Frog" />
         <attribute icon_folder="monsters" />
         <attribute small="" />
+        <attribute animal="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="298" name="Sense Danger">
@@ -15571,6 +15689,7 @@
         <attribute partner="order" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute foe_monsters="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="631" name="Drain Life">
@@ -17153,6 +17272,8 @@
         <attribute setup_start_tilereq="C" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute firedrake="" />
+        <attribute drake="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -17209,6 +17330,7 @@
         <attribute setup_start_tilereq="M" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute wyrm="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -17263,6 +17385,7 @@
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute wyrm="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -17317,6 +17440,8 @@
         <attribute alt_monsters1_game="" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute orc="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17349,6 +17474,8 @@
         <attribute alt_monsters1_game="" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute orc="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17381,6 +17508,8 @@
         <attribute alt_monsters1_game="" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute orc="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17413,6 +17542,8 @@
         <attribute alt_monsters1_game="" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute orc="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17447,6 +17578,9 @@
         <attribute missile="" />
         <attribute sensitive_tactics="" />
         <attribute denizen="" />
+        <attribute orc="" />
+        <attribute archer="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17478,6 +17612,9 @@
         <attribute missile="" />
         <attribute sensitive_tactics="" />
         <attribute denizen="" />
+        <attribute orc="" />
+        <attribute archer="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17509,6 +17646,9 @@
         <attribute missile="" />
         <attribute sensitive_tactics="" />
         <attribute denizen="" />
+        <attribute orc="" />
+        <attribute archer="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17540,6 +17680,9 @@
         <attribute missile="" />
         <attribute sensitive_tactics="" />
         <attribute denizen="" />
+        <attribute orc="" />
+        <attribute archer="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17568,6 +17711,7 @@
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute kobold="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17599,6 +17743,7 @@
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute kobold="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17630,6 +17775,7 @@
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute kobold="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17661,6 +17807,7 @@
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute kobold="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17692,6 +17839,7 @@
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute kobold="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17723,6 +17871,7 @@
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute kobold="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17898,6 +18047,7 @@
         <attribute armored="" />
         <attribute box_num="1" />
         <attribute denizen="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17931,6 +18081,7 @@
         <attribute armored="" />
         <attribute box_num="2" />
         <attribute denizen="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17963,6 +18114,7 @@
         <attribute alt_monsters1_game="" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute scorpion="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17992,6 +18144,7 @@
         <attribute alt_monsters1_game="" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute scorpion="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -18021,6 +18174,7 @@
         <attribute alt_monsters1_game="" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute scorpion="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -18050,6 +18204,7 @@
         <attribute alt_monsters1_game="" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -18081,6 +18236,7 @@
         <attribute alt_monsters1_game="" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -18112,6 +18268,7 @@
         <attribute alt_monsters1_game="" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -18143,6 +18300,7 @@
         <attribute alt_monsters1_game="" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -18174,6 +18332,7 @@
         <attribute alt_monsters1_game="" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -18213,6 +18372,7 @@
         <attribute chit_color="white" />
         <attribute length="17" />
         <attribute magic_type="V" />
+        <attribute attack_spell="powerofthepit" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -18237,6 +18397,7 @@
         <attribute setup_start_tilereq="M" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute weapon_use_chit="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -18289,6 +18450,7 @@
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute weapon_use_chit="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -18491,6 +18653,7 @@
         <attribute chit_color="white" />
         <attribute magic_type="V" />
         <attribute length="17" />
+        <attribute attack_spell="powerofthepit" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
@@ -18576,6 +18739,7 @@
         <attribute setup_start_tilereq="M" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -18632,6 +18796,7 @@
         <attribute setup_start_tilereq="C" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -18686,6 +18851,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -18740,6 +18906,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute giant="" />
+        <attribute weapon_use_chit="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -18791,6 +18959,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute giant="" />
+        <attribute weapon_use_chit="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -18852,6 +19022,7 @@
         <attribute magic_type="V" />
         <attribute length="17" />
         <attribute chit_color="purple" />
+        <attribute attack_spell="powerofthepit" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="2" />
@@ -18884,6 +19055,7 @@
         <attribute magic_type="V" />
         <attribute length="17" />
         <attribute chit_color="gray" />
+        <attribute attack_spell="powerofthepit" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -18909,6 +19081,7 @@
         <attribute setup_start_tilereq="C" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -18938,6 +19111,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -18968,6 +19142,7 @@
         <attribute setup_start_tilereq="C" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute octopus="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -19027,6 +19202,7 @@
         <attribute setup_start_tilereq="M" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19057,6 +19233,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -19086,6 +19263,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -19114,6 +19292,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -19142,6 +19321,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -19170,6 +19350,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -19255,6 +19436,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19284,6 +19466,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19313,6 +19496,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19342,6 +19526,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19371,6 +19556,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19400,6 +19586,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19428,6 +19615,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19456,6 +19644,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19484,6 +19673,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19514,13 +19704,15 @@
         <attribute setup_start_tilereq="C" />
         <attribute needs_init="" />
         <attribute denizen="" />
+        <attribute imp="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
         <attribute attack_speed="2" />
-        <attribute magic_type="VIII" />
+        <attribute magic_type="V" />
         <attribute length="17" />
         <attribute chit_color="pink" />
+        <attribute attack_spell="curse" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
@@ -19600,6 +19792,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute ogre="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -19627,6 +19820,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute ogre="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -19654,6 +19848,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19681,6 +19877,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19708,6 +19906,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19735,6 +19935,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19762,6 +19964,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19789,6 +19993,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19816,6 +20022,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19847,6 +20055,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19878,6 +20088,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19909,6 +20121,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19940,6 +20154,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19971,6 +20187,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20002,6 +20220,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20033,6 +20253,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20064,6 +20286,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20095,6 +20319,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20126,6 +20352,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20157,6 +20385,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20188,6 +20418,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20215,6 +20446,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20242,6 +20474,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20269,6 +20502,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20296,6 +20530,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20323,6 +20558,7 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute wolf="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20909,6 +21145,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Settlement,Hamlet" />
+        <attribute tour_guide="Hut,Cottage" />
+        <attribute food_ale_sr="Inn,House" />
+        <attribute escort_party_sr="Chapel,Guard" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -20950,6 +21190,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Chapel,Hamlet" />
+        <attribute tour_guide="Large Campfire,House" />
+        <attribute food_ale_sr="Chapel,Hamlet" />
+        <attribute escort_party_sr="Hamlet,Chapel" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -20997,6 +21241,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Inn,Settlement" />
+        <attribute tour_guide="Large Campfire,Inn" />
+        <attribute food_ale_sr="Guard,Settlement" />
+        <attribute escort_party_sr="Guard,House" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21043,6 +21291,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Settlement,Large Camp" />
+        <attribute tour_guide="Chapel,Inn" />
+        <attribute food_ale_sr="Guard,House" />
+        <attribute escort_party_sr="Settlement,Large Campfire" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="5" />
@@ -21087,6 +21339,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Chapel,Guard" />
+        <attribute tour_guide="Inn,Small Campfire" />
+        <attribute food_ale_sr="Chapel,Large Camp" />
+        <attribute escort_party_sr="Chapel,Hamlet" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21131,6 +21387,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Guard,Hut" />
+        <attribute tour_guide="Small Campfire,Chapel" />
+        <attribute food_ale_sr="Inn,Guard" />
+        <attribute escort_party_sr="Inn,Guard" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21172,6 +21432,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Inn,Large Campfire" />
+        <attribute tour_guide="Guard,Settlement" />
+        <attribute food_ale_sr="Large Camp,Inn" />
+        <attribute escort_party_sr="Small Camp,Small Campfire" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21213,6 +21477,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Cottage,Guard" />
+        <attribute tour_guide="House,Hamlet" />
+        <attribute food_ale_sr="Large Campfire,Inn" />
+        <attribute escort_party_sr="Small Campfire,Hut" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21254,6 +21522,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Chapel,House" />
+        <attribute tour_guide="Cottage,Guard" />
+        <attribute food_ale_sr="Settlement,Small Camp" />
+        <attribute escort_party_sr="Inn,Small Camp" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21297,6 +21569,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Hamlet,Small Camp" />
+        <attribute tour_guide="Inn,Large Camp" />
+        <attribute food_ale_sr="Settlement,Hut" />
+        <attribute escort_party_sr="Small Camp,Cottage" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="5" />
@@ -21340,6 +21616,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Inn,Chapel" />
+        <attribute tour_guide="Small Camp,Hut" />
+        <attribute food_ale_sr="Hamlet,Small Campfire" />
+        <attribute escort_party_sr="Large Camp,Settlement" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21381,6 +21661,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Settlement,Cottage" />
+        <attribute tour_guide="Hamlet,Small Camp" />
+        <attribute food_ale_sr="Inn,Cottage" />
+        <attribute escort_party_sr="Small Campfire,Large Camp" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21422,6 +21706,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Settlement,Small Campfire" />
+        <attribute tour_guide="Hut,Cottage" />
+        <attribute food_ale_sr="Hamlet,Large Campfire" />
+        <attribute escort_party_sr="Large Campfire,Settlement" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -21466,6 +21754,10 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute super_realm="" />
+        <attribute books_art="Inn,Chapel" />
+        <attribute tour_guide="Settlement,Large Campfire" />
+        <attribute food_ale_sr="Inn,Chapel" />
+        <attribute escort_party_sr="Inn,Guard" />
       </AttributeBlock>
       <AttributeBlock blockName="clear">
         <attribute days="7" />
@@ -23110,6 +23402,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute buckler="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="3" />
@@ -23158,6 +23451,7 @@
         <attribute needs_init="" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -23451,6 +23745,7 @@
         <attribute box_num="1" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -23480,6 +23775,7 @@
         <attribute box_num="1" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -23509,6 +23805,7 @@
         <attribute box_num="1" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -23538,6 +23835,9 @@
         <attribute box_num="1" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute archer="" />
+        <attribute missile="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -23567,6 +23867,7 @@
         <attribute box_num="1" />
         <attribute undead="" />
         <attribute denizen="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -24121,6 +24422,7 @@
         <attribute rw_expansion_1="" />
         <attribute box_num="1" />
         <attribute denizen="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -24150,6 +24452,7 @@
         <attribute rw_expansion_1="" />
         <attribute box_num="1" />
         <attribute denizen="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -24179,6 +24482,7 @@
         <attribute rw_expansion_1="" />
         <attribute box_num="2" />
         <attribute denizen="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -24208,6 +24512,7 @@
         <attribute rw_expansion_1="" />
         <attribute box_num="2" />
         <attribute denizen="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -25517,6 +25822,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute buckler="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="3" />
@@ -26291,6 +26597,7 @@
         <attribute name="Tremendous Dragon" />
         <attribute icon_folder="monsters" />
         <attribute armored="" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll2">
         <attribute vulnerability="H" />
@@ -26303,6 +26610,7 @@
         <attribute dark_color="orange" />
         <attribute name="Lion" />
         <attribute icon_folder="monsters" />
+        <attribute animal="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll3">
         <attribute vulnerability="M" />
@@ -26315,6 +26623,7 @@
         <attribute dark_color="darkgray" />
         <attribute name="Eagle" />
         <attribute icon_folder="monsters" />
+        <attribute animal="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll4">
         <attribute vulnerability="L" />
@@ -26325,6 +26634,7 @@
         <attribute dark_color="blue" />
         <attribute name="Bird" />
         <attribute icon_folder="monsters" />
+        <attribute animal="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll5">
         <attribute vulnerability="L" />
@@ -26335,6 +26645,7 @@
         <attribute dark_color="brown" />
         <attribute name="Squirrel" />
         <attribute icon_folder="monsters" />
+        <attribute animal="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll6">
         <attribute vulnerability="L" />
@@ -26345,6 +26656,7 @@
         <attribute dark_color="forestgreen" />
         <attribute name="Frog" />
         <attribute icon_folder="monsters" />
+        <attribute animal="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1077" name="Rock Golem">
@@ -26889,6 +27201,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="5" />
@@ -26937,6 +27250,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute breastplate="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="9" />
@@ -26984,6 +27298,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute buckler="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="3" />
@@ -27067,6 +27382,7 @@
         <attribute rw_expansion_1="" />
         <attribute original_game="" />
         <attribute item="" />
+        <attribute buckler="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="3" />
@@ -31210,6 +31526,7 @@
         <attribute facing="dark" />
         <attribute armor_row="1" />
         <attribute icon_folder="armor" />
+        <attribute shield="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1176" name="Mystic Boots">
@@ -34467,6 +34784,7 @@
         <attribute denizen="" />
         <attribute icon_scale="1.3" />
         <attribute icon_size="1.2" />
+        <attribute ghost="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -34496,6 +34814,7 @@
         <attribute denizen="" />
         <attribute icon_scale="1.3" />
         <attribute icon_size="1.2" />
+        <attribute ghost="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -34525,6 +34844,7 @@
         <attribute denizen="" />
         <attribute icon_scale="1.3" />
         <attribute icon_size="1.2" />
+        <attribute ghost="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -34554,6 +34874,7 @@
         <attribute denizen="" />
         <attribute icon_scale="1.3" />
         <attribute icon_size="1.2" />
+        <attribute ghost="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -34586,6 +34907,7 @@
         <attribute denizen="" />
         <attribute icon_size="0.4" />
         <attribute icon_y_offset="4" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -34643,6 +34965,7 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="0.7" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -34701,6 +35024,7 @@
         <attribute denizen="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="-5" />
+        <attribute scorpion="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -34764,6 +35088,7 @@
         <attribute magic_type="V" />
         <attribute length="17" />
         <attribute chit_color="gray" />
+        <attribute attack_spell="powerofthepit" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -34797,6 +35122,7 @@
         <attribute magic_type="V" />
         <attribute length="17" />
         <attribute chit_color="purple" />
+        <attribute attack_spell="powerofthepit" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="2" />
@@ -34852,6 +35178,7 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute octopus="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -34883,6 +35210,7 @@
         <attribute denizen="" />
         <attribute no_change_tactics="" />
         <attribute icon_size="1" />
+        <attribute colossus="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="5" />
@@ -34913,6 +35241,7 @@
         <attribute denizen="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="5" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -34946,6 +35275,7 @@
         <attribute armored="" />
         <attribute icon_size="0.9" />
         <attribute icon_y_offset="6" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -35005,6 +35335,7 @@
         <attribute denizen="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -35036,13 +35367,15 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute imp="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
         <attribute attack_speed="2" />
-        <attribute magic_type="VIII" />
+        <attribute magic_type="V" />
         <attribute length="17" />
         <attribute chit_color="pink" />
+        <attribute attack_spell="curse" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
@@ -35067,6 +35400,7 @@
         <attribute denizen="" />
         <attribute no_change_tactics="" />
         <attribute icon_size="1" />
+        <attribute titan="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="4" />
@@ -35099,15 +35433,15 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
-        <attribute demon="" />
         <attribute icon_size="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
         <attribute attack_speed="2" />
-        <attribute strength="T" />
         <attribute chit_color="gray" />
         <attribute length="17" />
+        <attribute magic_type="VIII" />
+        <attribute attack_spell="mesmerize" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
@@ -35131,6 +35465,7 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="0.8" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35186,15 +35521,15 @@
         <attribute needs_init="" />
         <attribute armored="" />
         <attribute denizen="" />
-        <attribute demon="" />
         <attribute icon_size="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute attack_speed="2" />
-        <attribute strength="T" />
         <attribute chit_color="gray" />
         <attribute length="17" />
+        <attribute magic_type="VIII" />
+        <attribute attack_spell="mesmerize" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
@@ -35246,6 +35581,7 @@
         <attribute denizen="" />
         <attribute needs_init="" />
         <attribute icon_size="0.9" />
+        <attribute no_change_tactics="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -35279,6 +35615,7 @@
         <attribute icon_folder="wesnoth/units/tharis-magi" />
         <attribute denizen="" />
         <attribute icon_size="0.9" />
+        <attribute no_change_tactics="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -35312,6 +35649,7 @@
         <attribute icon_folder="wesnoth/units/tharis-magi" />
         <attribute denizen="" />
         <attribute icon_size="0.9" />
+        <attribute no_change_tactics="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -35345,6 +35683,7 @@
         <attribute icon_folder="wesnoth/units/tharis-magi" />
         <attribute denizen="" />
         <attribute icon_size="0.9" />
+        <attribute no_change_tactics="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -35413,7 +35752,6 @@
         <attribute vulnerability="H" />
         <attribute fame="4" />
         <attribute notoriety="4" />
-        <attribute demon="" />
         <attribute super_realm="" />
         <attribute icon_type="gargoyle" />
         <attribute setup_start="H Gargoyle Box" />
@@ -35445,7 +35783,6 @@
         <attribute vulnerability="H" />
         <attribute fame="4" />
         <attribute notoriety="4" />
-        <attribute demon="" />
         <attribute super_realm="" />
         <attribute icon_type="gargoyle" />
         <attribute setup_start="H Gargoyle Box" />
@@ -35477,7 +35814,6 @@
         <attribute vulnerability="H" />
         <attribute fame="4" />
         <attribute notoriety="4" />
-        <attribute demon="" />
         <attribute super_realm="" />
         <attribute icon_type="gargoyle" />
         <attribute setup_start="H Gargoyle Box" />
@@ -35509,7 +35845,6 @@
         <attribute vulnerability="T" />
         <attribute fame="8" />
         <attribute notoriety="8" />
-        <attribute demon="" />
         <attribute super_realm="" />
         <attribute icon_type="marlgoyle" />
         <attribute setup_start="T Gargoyle Box" />
@@ -35634,6 +35969,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="6" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35670,6 +36006,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="6" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35706,6 +36043,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="6" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35742,6 +36080,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="6" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35778,6 +36117,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="6" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35814,6 +36154,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="6" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35850,6 +36191,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35886,6 +36228,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35922,6 +36265,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35958,6 +36302,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35994,6 +36339,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36030,6 +36376,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36066,6 +36413,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36102,6 +36450,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36138,6 +36487,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36174,6 +36524,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36210,6 +36561,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36246,6 +36598,7 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36282,6 +36635,8 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="5" />
+        <attribute archer="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36315,6 +36670,8 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="5" />
+        <attribute archer="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36348,6 +36705,8 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="5" />
+        <attribute archer="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36381,6 +36740,8 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="5" />
+        <attribute archer="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36414,6 +36775,8 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="5" />
+        <attribute archer="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36447,6 +36810,8 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="5" />
+        <attribute archer="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36540,6 +36905,8 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute orc="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36572,6 +36939,8 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute orc="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36604,6 +36973,8 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute orc="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36636,6 +37007,8 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute orc="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36668,6 +37041,8 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute orc="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36700,6 +37075,8 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute orc="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36732,6 +37109,8 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute orc="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36764,6 +37143,8 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute orc="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36983,6 +37364,7 @@
         <attribute denizen="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="-10" />
+        <attribute scorpion="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -37015,6 +37397,7 @@
         <attribute denizen="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="-10" />
+        <attribute scorpion="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -37047,6 +37430,7 @@
         <attribute denizen="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="-10" />
+        <attribute scorpion="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -37079,6 +37463,7 @@
         <attribute denizen="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="-5" />
+        <attribute scorpion="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -37634,6 +38019,7 @@
         <attribute magic_protection="" />
         <attribute missile="" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -37670,6 +38056,7 @@
         <attribute magic_protection="" />
         <attribute missile="" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -37706,6 +38093,7 @@
         <attribute magic_protection="" />
         <attribute missile="" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -37742,6 +38130,7 @@
         <attribute magic_protection="" />
         <attribute missile="" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -37778,6 +38167,7 @@
         <attribute magic_protection="" />
         <attribute missile="" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -37814,6 +38204,7 @@
         <attribute magic_protection="" />
         <attribute missile="" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -37908,6 +38299,8 @@
         <attribute armored="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="5" />
+        <attribute color_source="gray" />
+        <attribute magic_immunity="gray" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -37942,6 +38335,8 @@
         <attribute armored="" />
         <attribute icon_size="0.3" />
         <attribute icon_y_offset="10" />
+        <attribute color_source="gold" />
+        <attribute magic_immunity="gold" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -37976,6 +38371,8 @@
         <attribute armored="" />
         <attribute icon_size="0.9" />
         <attribute icon_y_offset="7" />
+        <attribute color_source="purple" />
+        <attribute magic_immunity="purple" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -38010,6 +38407,8 @@
         <attribute armored="" />
         <attribute icon_size="0.9" />
         <attribute icon_y_offset="5" />
+        <attribute color_source="prism" />
+        <attribute magic_immunity="prism" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -38340,6 +38739,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.7" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -38369,6 +38769,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.7" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -38398,6 +38799,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.7" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -38427,6 +38829,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.7" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -38679,6 +39082,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.8" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -38711,6 +39116,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.8" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -38743,6 +39150,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.8" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -38775,6 +39184,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.8" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -38807,6 +39218,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.8" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -38839,6 +39252,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.8" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -38871,6 +39286,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -38899,6 +39316,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -38927,6 +39346,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -38955,6 +39376,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -38983,6 +39406,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39011,6 +39436,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39039,6 +39466,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39071,6 +39500,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39103,6 +39534,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39135,6 +39568,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39167,6 +39602,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39199,6 +39636,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39231,6 +39670,9 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
+        <attribute archer="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39260,6 +39702,9 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
+        <attribute archer="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39289,6 +39734,9 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
+        <attribute archer="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39318,6 +39766,9 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
+        <attribute archer="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39347,6 +39798,9 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
+        <attribute archer="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39376,6 +39830,9 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute goblin="" />
+        <attribute archer="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39452,6 +39909,7 @@
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
         <attribute icon_y_offset="5" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39482,6 +39940,7 @@
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
         <attribute icon_y_offset="5" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39512,6 +39971,7 @@
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
         <attribute icon_y_offset="5" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39542,6 +40002,7 @@
         <attribute super_realm="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="5" />
+        <attribute troll="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39867,6 +40328,7 @@
         <attribute super_realm="" />
         <attribute icon_size="0.7" />
         <attribute icon_y_offset="4" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39898,6 +40360,7 @@
         <attribute super_realm="" />
         <attribute icon_size="0.7" />
         <attribute icon_y_offset="4" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39929,6 +40392,7 @@
         <attribute super_realm="" />
         <attribute icon_size="0.7" />
         <attribute icon_y_offset="4" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39961,6 +40425,7 @@
         <attribute super_realm="" />
         <attribute icon_size="0.4" />
         <attribute icon_y_offset="4" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -40298,6 +40763,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1.1" />
+        <attribute ogre="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -40326,6 +40793,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1.1" />
+        <attribute ogre="" />
+        <attribute weapon_use="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -40397,6 +40866,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute giant="" />
+        <attribute weapon_use_chit="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -40450,6 +40921,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute giant="" />
+        <attribute weapon_use_chit="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -40503,6 +40976,8 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1" />
+        <attribute giant="" />
+        <attribute weapon_use_chit="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -40612,6 +41087,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40641,6 +41117,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40670,6 +41147,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40699,6 +41177,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
+        <attribute spider="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40793,6 +41272,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1.2" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40823,6 +41303,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1.2" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40853,6 +41334,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1.2" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40883,6 +41365,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1.2" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40913,6 +41396,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1.2" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40943,6 +41427,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1.2" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40973,6 +41458,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1.2" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -41003,6 +41489,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="1.2" />
+        <attribute bat="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -46404,6 +46891,7 @@
         <attribute native_die="5" />
         <attribute clan="2" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -46437,6 +46925,7 @@
         <attribute native_die="5" />
         <attribute clan="2" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -46470,6 +46959,7 @@
         <attribute native_die="5" />
         <attribute clan="2" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -46504,6 +46994,7 @@
         <attribute native_die="5" />
         <attribute clan="2" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -47556,6 +48047,7 @@
         <attribute clan="3" />
         <attribute native_die="6" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -47590,6 +48082,7 @@
         <attribute clan="3" />
         <attribute native_die="6" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -48554,8 +49047,8 @@
         <attribute ts_size="T" />
         <attribute ts_color="blue" />
         <attribute ts_count="4" />
-        <attribute icon_type="knight_o" />
-        <attribute icon_folder="natives_c" />
+        <attribute icon_type="architect" />
+        <attribute icon_folder="wesnoth/units/skykingdom-magi" />
         <attribute virtual_dwelling="" />
         <attribute super_realm="" />
         <attribute clan="1" />
@@ -48876,6 +49369,7 @@
         <attribute clan="2" />
         <attribute missile="" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -48910,6 +49404,7 @@
         <attribute clan="2" />
         <attribute missile="" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -49049,6 +49544,7 @@
         <attribute clan="2" />
         <attribute missile="" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -49120,20 +49616,23 @@
         <attribute native_die="2" />
         <attribute clan="3" />
         <attribute icon_size="0.9" />
+        <attribute flying="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="1" />
         <attribute chit_color="peach" />
         <attribute attack_speed="3" />
         <attribute length="9" />
-        <attribute strength="L" />
+        <attribute magic_type="V" />
+        <attribute attack_spell="curse" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="1" />
         <attribute attack_speed="4" />
-        <attribute strength="L" />
         <attribute length="9" />
         <attribute chit_color="brown" />
+        <attribute magic_type="VIII" />
+        <attribute attack_spell="mesmerize" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1869" name="Caster">
@@ -49153,20 +49652,23 @@
         <attribute native_die="2" />
         <attribute clan="3" />
         <attribute icon_size="0.9" />
+        <attribute flying="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="1" />
         <attribute chit_color="peach" />
         <attribute attack_speed="3" />
         <attribute length="9" />
-        <attribute strength="L" />
+        <attribute magic_type="V" />
+        <attribute attack_spell="curse" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="1" />
         <attribute attack_speed="4" />
-        <attribute strength="L" />
         <attribute length="9" />
         <attribute chit_color="brown" />
+        <attribute magic_type="VIII" />
+        <attribute attack_spell="mesmerize" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1870" name="Caster">
@@ -49186,20 +49688,23 @@
         <attribute native_die="2" />
         <attribute clan="3" />
         <attribute icon_size="0.9" />
+        <attribute flying="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="1" />
         <attribute chit_color="peach" />
         <attribute attack_speed="3" />
         <attribute length="9" />
-        <attribute strength="L" />
+        <attribute magic_type="V" />
+        <attribute attack_spell="curse" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="1" />
         <attribute attack_speed="4" />
-        <attribute strength="L" />
         <attribute length="9" />
         <attribute chit_color="brown" />
+        <attribute magic_type="VIII" />
+        <attribute attack_spell="mesmerize" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1871" name="Hunters Box">
@@ -49368,6 +49873,7 @@
         <attribute clan="3" />
         <attribute missile="" />
         <attribute icon_size="0.9" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -49802,6 +50308,11 @@
         <attribute clan="4" />
         <attribute armored="" />
         <attribute icon_size="0.9" />
+        <attribute no_change_tactics="" />
+        <attribute transmorph_immunity="" />
+        <attribute change_tactics_after_casting="" />
+        <attribute attack_after_casting="" />
+        <attribute spell_targets_self="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -49809,6 +50320,8 @@
         <attribute attack_speed="4" />
         <attribute length="9" />
         <attribute strength="M" />
+        <attribute magic_type="VI" />
+        <attribute attack_spell="transform" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -49818,6 +50331,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
       <contains id="1895" />
+      <contains id="2181" />
     </GameObject>
     <GameObject id="1892" name="Caster">
       <AttributeBlock blockName="this">
@@ -49837,6 +50351,11 @@
         <attribute clan="4" />
         <attribute armored="" />
         <attribute icon_size="0.9" />
+        <attribute no_change_tactics="" />
+        <attribute transmorph_immunity="" />
+        <attribute change_tactics_after_casting="" />
+        <attribute attack_after_casting="" />
+        <attribute spell_targets_self="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -49844,6 +50363,8 @@
         <attribute attack_speed="4" />
         <attribute length="9" />
         <attribute strength="M" />
+        <attribute magic_type="VI" />
+        <attribute attack_spell="transform" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -49853,6 +50374,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
       <contains id="1896" />
+      <contains id="2182" />
     </GameObject>
     <GameObject id="1893" name="Caster">
       <AttributeBlock blockName="this">
@@ -49872,6 +50394,11 @@
         <attribute clan="4" />
         <attribute armored="" />
         <attribute icon_size="0.9" />
+        <attribute no_change_tactics="" />
+        <attribute transmorph_immunity="" />
+        <attribute change_tactics_after_casting="" />
+        <attribute attack_after_casting="" />
+        <attribute spell_targets_self="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -49879,6 +50406,8 @@
         <attribute attack_speed="4" />
         <attribute length="9" />
         <attribute strength="M" />
+        <attribute magic_type="VI" />
+        <attribute attack_spell="transform" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -49888,6 +50417,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
       <contains id="1897" />
+      <contains id="2183" />
     </GameObject>
     <GameObject id="1894" name="Caster">
       <AttributeBlock blockName="this">
@@ -49907,6 +50437,11 @@
         <attribute clan="4" />
         <attribute armored="" />
         <attribute icon_size="0.9" />
+        <attribute no_change_tactics="" />
+        <attribute transmorph_immunity="" />
+        <attribute change_tactics_after_casting="" />
+        <attribute attack_after_casting="" />
+        <attribute spell_targets_self="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -49914,6 +50449,8 @@
         <attribute attack_speed="4" />
         <attribute length="9" />
         <attribute strength="M" />
+        <attribute magic_type="VI" />
+        <attribute attack_spell="transform" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -49923,6 +50460,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
       <contains id="1898" />
+      <contains id="2184" />
     </GameObject>
     <GameObject id="1895" name="Workhorse 1">
       <AttributeBlock blockName="this">
@@ -50080,13 +50618,16 @@
         <attribute clan="4" />
         <attribute armored="" />
         <attribute icon_size="0.9" />
+        <attribute no_change_tactics="" />
+        <attribute spell_targets_self="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute chit_color="gold" />
         <attribute attack_speed="4" />
         <attribute length="9" />
-        <attribute strength="M" />
+        <attribute magic_type="VI" />
+        <attribute attack_spell="meltintomist" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
@@ -50096,6 +50637,7 @@
         <attribute chit_color="orange" />
       </AttributeBlock>
       <contains id="1904" />
+      <contains id="2185" />
     </GameObject>
     <GameObject id="1902" name="Caster">
       <AttributeBlock blockName="this">
@@ -50115,13 +50657,16 @@
         <attribute clan="4" />
         <attribute armored="" />
         <attribute icon_size="0.9" />
+        <attribute no_change_tactics="" />
+        <attribute spell_targets_self="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute chit_color="gold" />
         <attribute attack_speed="4" />
         <attribute length="9" />
-        <attribute strength="M" />
+        <attribute magic_type="VI" />
+        <attribute attack_spell="meltintomist" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
@@ -50131,6 +50676,7 @@
         <attribute chit_color="orange" />
       </AttributeBlock>
       <contains id="1905" />
+      <contains id="2186" />
     </GameObject>
     <GameObject id="1903" name="Caster">
       <AttributeBlock blockName="this">
@@ -50150,13 +50696,16 @@
         <attribute clan="4" />
         <attribute armored="" />
         <attribute icon_size="0.9" />
+        <attribute no_change_tactics="" />
+        <attribute spell_targets_self="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute chit_color="gold" />
         <attribute attack_speed="4" />
         <attribute length="9" />
-        <attribute strength="M" />
+        <attribute magic_type="VI" />
+        <attribute attack_spell="meltintomist" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
@@ -50166,6 +50715,7 @@
         <attribute chit_color="orange" />
       </AttributeBlock>
       <contains id="1906" />
+      <contains id="2187" />
     </GameObject>
     <GameObject id="1904" name="Pony 1">
       <AttributeBlock blockName="this">
@@ -50253,6 +50803,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50276,6 +50827,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50299,6 +50851,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50322,6 +50875,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50345,6 +50899,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -50368,6 +50923,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -50392,6 +50948,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -50415,6 +50972,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="royalBeast" />
+        <attribute horse_holder="Chapel" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -50438,6 +50996,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="royalBeast" />
+        <attribute horse_holder="Chapel" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -50461,6 +51020,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="royalBeast" />
+        <attribute horse_holder="Chapel" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -50485,6 +51045,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="royalBeast" />
+        <attribute horse_holder="Chapel" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50508,6 +51069,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="8" />
@@ -50531,6 +51093,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -50554,6 +51117,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -50577,6 +51141,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -50600,6 +51165,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -50623,6 +51189,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50646,6 +51213,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50669,6 +51237,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50692,6 +51261,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -50715,6 +51285,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50738,6 +51309,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -50761,6 +51333,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -50784,6 +51357,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -50807,6 +51381,7 @@
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
+        <attribute horse_holder="Bashkar Dwelling" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -50830,6 +51405,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -50853,6 +51429,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="8" />
@@ -50876,6 +51453,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="royalBeast" />
+        <attribute horse_holder="Chapel" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="7" />
@@ -50899,6 +51477,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
+        <attribute horse_holder="Inn" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -50928,6 +51507,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute suitofarmor="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="25" />
@@ -50956,6 +51536,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute suitofarmor="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="17" />
@@ -50981,6 +51562,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute suitofarmor="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="17" />
@@ -51004,6 +51586,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="5" />
@@ -51027,6 +51610,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="5" />
@@ -51050,6 +51634,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="5" />
@@ -51073,6 +51658,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="5" />
@@ -51096,6 +51682,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="5" />
@@ -51119,6 +51706,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="5" />
@@ -51239,6 +51827,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute breastplate="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="9" />
@@ -51263,6 +51852,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute breastplate="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="9" />
@@ -51287,6 +51877,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute breastplate="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="9" />
@@ -51313,6 +51904,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="30" />
@@ -51373,6 +51965,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute breastplate="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="25" />
@@ -52058,6 +52651,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute suitofarmor="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="17" />
@@ -52083,6 +52677,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute suitofarmor="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="17" />
@@ -52179,6 +52774,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute breastplate="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="9" />
@@ -52203,6 +52799,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute breastplate="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="9" />
@@ -52227,6 +52824,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute breastplate="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="9" />
@@ -52251,6 +52849,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute breastplate="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="9" />
@@ -52274,6 +52873,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="5" />
@@ -52297,6 +52897,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="5" />
@@ -52320,6 +52921,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="5" />
@@ -52343,6 +52945,7 @@
         <attribute icon_folder="armor" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="5" />
@@ -52872,6 +53475,9 @@
         <attribute item="" />
         <attribute super_realm="" />
         <attribute magic="" />
+        <attribute helmet="" />
+        <attribute magic_color_bonus="purple" />
+        <attribute magic_color_bonus_armor="H" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="12" />
@@ -52902,6 +53508,9 @@
         <attribute item="" />
         <attribute super_realm="" />
         <attribute magic="" />
+        <attribute breastplate="" />
+        <attribute magic_color_bonus="purple" />
+        <attribute magic_color_bonus_armor="H" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="16" />
@@ -52932,6 +53541,8 @@
         <attribute item="" />
         <attribute super_realm="" />
         <attribute magic="" />
+        <attribute magic_color_bonus="purple" />
+        <attribute magic_color_bonus_armor="H" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="14" />
@@ -52962,6 +53573,9 @@
         <attribute item="" />
         <attribute super_realm="" />
         <attribute magic="" />
+        <attribute breastplate="" />
+        <attribute magic_color_bonus="purple" />
+        <attribute magic_color_bonus_armor="H" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="35" />
@@ -52991,6 +53605,7 @@
         <attribute item="" />
         <attribute super_realm="" />
         <attribute magic="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="25" />
@@ -53049,6 +53664,7 @@
         <attribute notoriety="10" />
         <attribute fame="3" />
         <attribute magic="" />
+        <attribute magic_color_bonus="purple" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -53059,6 +53675,7 @@
         <attribute strength="L" />
         <attribute sharpness="2" />
         <attribute chit_color="red" />
+        <attribute magic_color_bonus_sharpness="1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2025" name="Crystal Bow">
@@ -53076,6 +53693,7 @@
         <attribute notoriety="15" />
         <attribute fame="0" />
         <attribute magic="" />
+        <attribute magic_color_bonus="purple" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="M" />
@@ -53086,6 +53704,7 @@
         <attribute strength="M" />
         <attribute sharpness="2" />
         <attribute chit_color="red" />
+        <attribute magic_color_bonus_sharpness="1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2026" name="Mage's Staff">
@@ -54946,6 +55565,7 @@
         <attribute name="Tremendous Dragon" />
         <attribute icon_folder="monsters" />
         <attribute armored="" />
+        <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll2">
         <attribute vulnerability="H" />
@@ -54958,6 +55578,7 @@
         <attribute dark_color="orange" />
         <attribute name="Lion" />
         <attribute icon_folder="monsters" />
+        <attribute animal="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll3">
         <attribute vulnerability="M" />
@@ -54970,6 +55591,7 @@
         <attribute dark_color="darkgray" />
         <attribute name="Eagle" />
         <attribute icon_folder="monsters" />
+        <attribute animal="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll4">
         <attribute vulnerability="L" />
@@ -54981,6 +55603,7 @@
         <attribute name="Bird" />
         <attribute icon_folder="monsters" />
         <attribute small="" />
+        <attribute animal="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll5">
         <attribute vulnerability="L" />
@@ -54992,6 +55615,7 @@
         <attribute name="Squirrel" />
         <attribute icon_folder="monsters" />
         <attribute small="" />
+        <attribute animal="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll6">
         <attribute vulnerability="L" />
@@ -55003,6 +55627,7 @@
         <attribute name="Frog" />
         <attribute icon_folder="monsters" />
         <attribute small="" />
+        <attribute animal="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2141" name="Sense Danger">
@@ -55339,6 +55964,664 @@
         <attribute duration="instant" />
         <attribute mesmerize="" />
         <attribute super_realm_spell="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2163" name="Escort Party">
+      <AttributeBlock blockName="this">
+        <attribute mission="escort_party_sr" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute time_limit="14" />
+        <attribute notoriety_cost="10" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute pair="escort_foodale" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2164" name="Food Ale">
+      <AttributeBlock blockName="this">
+        <attribute mission="food_ale_sr" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute time_limit="14" />
+        <attribute notoriety_cost="10" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute pair="escort_foodale" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2165" name="Books Art">
+      <AttributeBlock blockName="this">
+        <attribute mission="books_art" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute time_limit="14" />
+        <attribute notoriety_cost="10" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute pair="books_tour" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2166" name="Tour Guide">
+      <AttributeBlock blockName="this">
+        <attribute mission="tour_guide" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute time_limit="14" />
+        <attribute notoriety_cost="10" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute pair="books_tour" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2167" name="Pillage">
+      <AttributeBlock blockName="this">
+        <attribute pair="pillage_raid" />
+        <attribute gold_special="" />
+        <attribute campaign="pillage" />
+        <attribute monster_die="6" />
+        <attribute time_limit="month" />
+        <attribute notoriety_cost="10" />
+        <attribute partner="bashkars" />
+        <attribute foe="patrol,soldiers" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2168" name="Raid">
+      <AttributeBlock blockName="this">
+        <attribute pair="pillage_raid" />
+        <attribute gold_special="" />
+        <attribute campaign="raid" />
+        <attribute monster_die="6" />
+        <attribute time_limit="month" />
+        <attribute fame_cost="8" />
+        <attribute partner="lancers,woodfolk" />
+        <attribute foe="bashkars,rogues" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2169" name="Conquer">
+      <AttributeBlock blockName="this">
+        <attribute pair="conquer_war" />
+        <attribute campaign="conquer" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute time_limit="month" />
+        <attribute notoriety_cost="40" />
+        <attribute partner="soldiers,guard,patrol,company" />
+        <attribute foe="lancers,woodfolk,bashkars,rogues" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2170" name="War">
+      <AttributeBlock blockName="this">
+        <attribute pair="conquer_war" />
+        <attribute campaign="war" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute time_limit="month" />
+        <attribute notoriety_cost="15" />
+        <attribute fame_cost="10" />
+        <attribute partner="soldiers,guard,patrol" />
+        <attribute foe="company,bashkars,rogues" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2171" name="Revolt">
+      <AttributeBlock blockName="this">
+        <attribute pair="revolt_quest" />
+        <attribute campaign="revolt" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute time_limit="month" />
+        <attribute notoriety_cost="35" />
+        <attribute partner="lancers,woodfolk,bashkars,rogues" />
+        <attribute foe="soldiers,guard,patrol,company" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2172" name="Quest">
+      <AttributeBlock blockName="this">
+        <attribute pair="revolt_quest" />
+        <attribute campaign="quest" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute time_limit="month" />
+        <attribute notoriety_cost="20" />
+        <attribute foe="dragon,dragon_flying,wyrm,firedrake" />
+        <attribute partner="order" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute foe_monsters="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2173" name="Challenge">
+      <AttributeBlock blockName="this">
+        <attribute pair="challenge_confront" />
+        <attribute gold_special="" />
+        <attribute campaign="challenge" />
+        <attribute monster_die="6" />
+        <attribute time_limit="month" />
+        <attribute notoriety_cost="30" />
+        <attribute partner="aborigines,lancers,woodfolk" />
+        <attribute foe="bashkars,company,hunters" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2174" name="Confront">
+      <AttributeBlock blockName="this">
+        <attribute pair="challenge_confront" />
+        <attribute gold_special="" />
+        <attribute campaign="confront" />
+        <attribute monster_die="6" />
+        <attribute time_limit="month" />
+        <attribute partner="bashkars,company,hunters" />
+        <attribute foe="aborigines,lancers,woodfolk" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute notoriety_cost="25" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2175" name="Dominate">
+      <AttributeBlock blockName="this">
+        <attribute pair="dominate_skirmish" />
+        <attribute campaign="dominate" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute time_limit="month" />
+        <attribute notoriety_cost="15" />
+        <attribute partner="company,woodfolk" />
+        <attribute foe="dwarves,hunters" />
+        <attribute item="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2176" name="Hunt">
+      <AttributeBlock blockName="this">
+        <attribute pair="hunt_liberate" />
+        <attribute campaign="hunt" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute time_limit="month" />
+        <attribute partner="mages" />
+        <attribute foe="colossus,titan" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute notoriety_cost="20" />
+        <attribute foe_monsters="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2177" name="Skirmish">
+      <AttributeBlock blockName="this">
+        <attribute pair="dominate_skirmish" />
+        <attribute campaign="skirmish" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute time_limit="month" />
+        <attribute notoriety_cost="20" />
+        <attribute partner="guard,hunters,patrol,soldiers" />
+        <attribute foe="bandits,bashkars,company,elves" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute fame_cost="8" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2178" name="Liberate">
+      <AttributeBlock blockName="this">
+        <attribute pair="hunt_liberate" />
+        <attribute campaign="liberate" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute time_limit="month" />
+        <attribute foe="coven,cultists" />
+        <attribute partner="zealots" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute fame_cost="8" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2181" name="Transform">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="permanent" />
+        <attribute target="individual" />
+        <attribute text="Become beast (roll for TRANSFORM)" />
+        <attribute magic_color="purple" />
+        <attribute transmorph="roll" />
+        <attribute spell_strength="2" />
+        <attribute table="transform" />
+        <attribute super_realm="" />
+        <attribute virtual="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll1">
+        <attribute vulnerability="T" />
+        <attribute strength="T" />
+        <attribute attack_speed="4" />
+        <attribute move_speed="4" />
+        <attribute icon_type="dragon_transform" />
+        <attribute flying="" />
+        <attribute light_color="lightblue" />
+        <attribute dark_color="red" />
+        <attribute name="Tremendous Dragon" />
+        <attribute icon_folder="monsters" />
+        <attribute armored="" />
+        <attribute dragon="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll2">
+        <attribute vulnerability="H" />
+        <attribute strength="H" />
+        <attribute attack_speed="3" />
+        <attribute move_speed="4" />
+        <attribute icon_type="lion" />
+        <attribute walk_woods="" />
+        <attribute light_color="gold" />
+        <attribute dark_color="orange" />
+        <attribute name="Lion" />
+        <attribute icon_folder="monsters" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll3">
+        <attribute vulnerability="M" />
+        <attribute strength="M" />
+        <attribute attack_speed="2" />
+        <attribute move_speed="2" />
+        <attribute icon_type="eagle" />
+        <attribute flying="" />
+        <attribute light_color="gray" />
+        <attribute dark_color="darkgray" />
+        <attribute name="Eagle" />
+        <attribute icon_folder="monsters" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll4">
+        <attribute vulnerability="L" />
+        <attribute move_speed="1" />
+        <attribute icon_type="bird" />
+        <attribute flying="" />
+        <attribute light_color="lightblue" />
+        <attribute dark_color="blue" />
+        <attribute name="Bird" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll5">
+        <attribute vulnerability="L" />
+        <attribute move_speed="2" />
+        <attribute icon_type="squirrel" />
+        <attribute walk_woods="" />
+        <attribute light_color="peach" />
+        <attribute dark_color="brown" />
+        <attribute name="Squirrel" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll6">
+        <attribute vulnerability="L" />
+        <attribute move_speed="3" />
+        <attribute walk_woods="" />
+        <attribute icon_type="frog" />
+        <attribute light_color="lightgreen" />
+        <attribute dark_color="forestgreen" />
+        <attribute name="Frog" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+        <attribute animal="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2182" name="Transform">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="permanent" />
+        <attribute target="individual" />
+        <attribute text="Become beast (roll for TRANSFORM)" />
+        <attribute magic_color="purple" />
+        <attribute transmorph="roll" />
+        <attribute spell_strength="2" />
+        <attribute table="transform" />
+        <attribute super_realm="" />
+        <attribute virtual="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll1">
+        <attribute vulnerability="T" />
+        <attribute strength="T" />
+        <attribute attack_speed="4" />
+        <attribute move_speed="4" />
+        <attribute icon_type="dragon_transform" />
+        <attribute flying="" />
+        <attribute light_color="lightblue" />
+        <attribute dark_color="red" />
+        <attribute name="Tremendous Dragon" />
+        <attribute icon_folder="monsters" />
+        <attribute armored="" />
+        <attribute dragon="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll2">
+        <attribute vulnerability="H" />
+        <attribute strength="H" />
+        <attribute attack_speed="3" />
+        <attribute move_speed="4" />
+        <attribute icon_type="lion" />
+        <attribute walk_woods="" />
+        <attribute light_color="gold" />
+        <attribute dark_color="orange" />
+        <attribute name="Lion" />
+        <attribute icon_folder="monsters" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll3">
+        <attribute vulnerability="M" />
+        <attribute strength="M" />
+        <attribute attack_speed="2" />
+        <attribute move_speed="2" />
+        <attribute icon_type="eagle" />
+        <attribute flying="" />
+        <attribute light_color="gray" />
+        <attribute dark_color="darkgray" />
+        <attribute name="Eagle" />
+        <attribute icon_folder="monsters" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll4">
+        <attribute vulnerability="L" />
+        <attribute move_speed="1" />
+        <attribute icon_type="bird" />
+        <attribute flying="" />
+        <attribute light_color="lightblue" />
+        <attribute dark_color="blue" />
+        <attribute name="Bird" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll5">
+        <attribute vulnerability="L" />
+        <attribute move_speed="2" />
+        <attribute icon_type="squirrel" />
+        <attribute walk_woods="" />
+        <attribute light_color="peach" />
+        <attribute dark_color="brown" />
+        <attribute name="Squirrel" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll6">
+        <attribute vulnerability="L" />
+        <attribute move_speed="3" />
+        <attribute walk_woods="" />
+        <attribute icon_type="frog" />
+        <attribute light_color="lightgreen" />
+        <attribute dark_color="forestgreen" />
+        <attribute name="Frog" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+        <attribute animal="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2183" name="Transform">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="permanent" />
+        <attribute target="individual" />
+        <attribute text="Become beast (roll for TRANSFORM)" />
+        <attribute magic_color="purple" />
+        <attribute transmorph="roll" />
+        <attribute spell_strength="2" />
+        <attribute table="transform" />
+        <attribute super_realm="" />
+        <attribute virtual="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll1">
+        <attribute vulnerability="T" />
+        <attribute strength="T" />
+        <attribute attack_speed="4" />
+        <attribute move_speed="4" />
+        <attribute icon_type="dragon_transform" />
+        <attribute flying="" />
+        <attribute light_color="lightblue" />
+        <attribute dark_color="red" />
+        <attribute name="Tremendous Dragon" />
+        <attribute icon_folder="monsters" />
+        <attribute armored="" />
+        <attribute dragon="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll2">
+        <attribute vulnerability="H" />
+        <attribute strength="H" />
+        <attribute attack_speed="3" />
+        <attribute move_speed="4" />
+        <attribute icon_type="lion" />
+        <attribute walk_woods="" />
+        <attribute light_color="gold" />
+        <attribute dark_color="orange" />
+        <attribute name="Lion" />
+        <attribute icon_folder="monsters" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll3">
+        <attribute vulnerability="M" />
+        <attribute strength="M" />
+        <attribute attack_speed="2" />
+        <attribute move_speed="2" />
+        <attribute icon_type="eagle" />
+        <attribute flying="" />
+        <attribute light_color="gray" />
+        <attribute dark_color="darkgray" />
+        <attribute name="Eagle" />
+        <attribute icon_folder="monsters" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll4">
+        <attribute vulnerability="L" />
+        <attribute move_speed="1" />
+        <attribute icon_type="bird" />
+        <attribute flying="" />
+        <attribute light_color="lightblue" />
+        <attribute dark_color="blue" />
+        <attribute name="Bird" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll5">
+        <attribute vulnerability="L" />
+        <attribute move_speed="2" />
+        <attribute icon_type="squirrel" />
+        <attribute walk_woods="" />
+        <attribute light_color="peach" />
+        <attribute dark_color="brown" />
+        <attribute name="Squirrel" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll6">
+        <attribute vulnerability="L" />
+        <attribute move_speed="3" />
+        <attribute walk_woods="" />
+        <attribute icon_type="frog" />
+        <attribute light_color="lightgreen" />
+        <attribute dark_color="forestgreen" />
+        <attribute name="Frog" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+        <attribute animal="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2184" name="Transform">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="permanent" />
+        <attribute target="individual" />
+        <attribute text="Become beast (roll for TRANSFORM)" />
+        <attribute magic_color="purple" />
+        <attribute transmorph="roll" />
+        <attribute spell_strength="2" />
+        <attribute table="transform" />
+        <attribute super_realm="" />
+        <attribute virtual="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll1">
+        <attribute vulnerability="T" />
+        <attribute strength="T" />
+        <attribute attack_speed="4" />
+        <attribute move_speed="4" />
+        <attribute icon_type="dragon_transform" />
+        <attribute flying="" />
+        <attribute light_color="lightblue" />
+        <attribute dark_color="red" />
+        <attribute name="Tremendous Dragon" />
+        <attribute icon_folder="monsters" />
+        <attribute armored="" />
+        <attribute dragon="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll2">
+        <attribute vulnerability="H" />
+        <attribute strength="H" />
+        <attribute attack_speed="3" />
+        <attribute move_speed="4" />
+        <attribute icon_type="lion" />
+        <attribute walk_woods="" />
+        <attribute light_color="gold" />
+        <attribute dark_color="orange" />
+        <attribute name="Lion" />
+        <attribute icon_folder="monsters" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll3">
+        <attribute vulnerability="M" />
+        <attribute strength="M" />
+        <attribute attack_speed="2" />
+        <attribute move_speed="2" />
+        <attribute icon_type="eagle" />
+        <attribute flying="" />
+        <attribute light_color="gray" />
+        <attribute dark_color="darkgray" />
+        <attribute name="Eagle" />
+        <attribute icon_folder="monsters" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll4">
+        <attribute vulnerability="L" />
+        <attribute move_speed="1" />
+        <attribute icon_type="bird" />
+        <attribute flying="" />
+        <attribute light_color="lightblue" />
+        <attribute dark_color="blue" />
+        <attribute name="Bird" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll5">
+        <attribute vulnerability="L" />
+        <attribute move_speed="2" />
+        <attribute icon_type="squirrel" />
+        <attribute walk_woods="" />
+        <attribute light_color="peach" />
+        <attribute dark_color="brown" />
+        <attribute name="Squirrel" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll6">
+        <attribute vulnerability="L" />
+        <attribute move_speed="3" />
+        <attribute walk_woods="" />
+        <attribute icon_type="frog" />
+        <attribute light_color="lightgreen" />
+        <attribute dark_color="forestgreen" />
+        <attribute name="Frog" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+        <attribute animal="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2185" name="Melt Into Mist">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="permanent" />
+        <attribute target="individual" />
+        <attribute text="Can only MOVE T4 (no fight)" />
+        <attribute magic_color="purple" />
+        <attribute transmorph="mist" />
+        <attribute disengage="ALL" />
+        <attribute host_okay="" />
+        <attribute nullify="" />
+        <attribute spell_strength="3" />
+        <attribute super_realm="" />
+        <attribute virtual="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="mist">
+        <attribute vulnerability="T" />
+        <attribute move_speed="4" />
+        <attribute light_color="gray" />
+        <attribute dark_color="darkgray" />
+        <attribute icon_type="mist" />
+        <attribute mist_like="" />
+        <attribute name="Mist" />
+        <attribute icon_folder="monsters" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2186" name="Melt Into Mist">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="permanent" />
+        <attribute target="individual" />
+        <attribute text="Can only MOVE T4 (no fight)" />
+        <attribute magic_color="purple" />
+        <attribute transmorph="mist" />
+        <attribute disengage="ALL" />
+        <attribute host_okay="" />
+        <attribute nullify="" />
+        <attribute spell_strength="3" />
+        <attribute super_realm="" />
+        <attribute virtual="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="mist">
+        <attribute vulnerability="T" />
+        <attribute move_speed="4" />
+        <attribute light_color="gray" />
+        <attribute dark_color="darkgray" />
+        <attribute icon_type="mist" />
+        <attribute mist_like="" />
+        <attribute name="Mist" />
+        <attribute icon_folder="monsters" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2187" name="Melt Into Mist">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="permanent" />
+        <attribute target="individual" />
+        <attribute text="Can only MOVE T4 (no fight)" />
+        <attribute magic_color="purple" />
+        <attribute transmorph="mist" />
+        <attribute disengage="ALL" />
+        <attribute host_okay="" />
+        <attribute nullify="" />
+        <attribute spell_strength="3" />
+        <attribute super_realm="" />
+        <attribute virtual="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="mist">
+        <attribute vulnerability="T" />
+        <attribute move_speed="4" />
+        <attribute light_color="gray" />
+        <attribute dark_color="darkgray" />
+        <attribute icon_type="mist" />
+        <attribute mist_like="" />
+        <attribute name="Mist" />
+        <attribute icon_folder="monsters" />
       </AttributeBlock>
     </GameObject>
   </objects>
@@ -55837,6 +57120,7 @@
       <Distribute from="CHITS" to="W_TILES" count="5" transferType="Random" />
       <Extract from="ALL" to="CHITS" keyVals="tile_type=ST,chit" />
       <Distribute from="CHITS" to="ST_TILES" count="5" transferType="Random" />
+      <OrderSetup />
     </GameSetup>
   </setups>
 </game>

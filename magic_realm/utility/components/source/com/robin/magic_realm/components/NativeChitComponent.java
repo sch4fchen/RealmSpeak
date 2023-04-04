@@ -242,6 +242,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		String move_speed = String.valueOf(getMoveSpeed(false).getNum());
 		String attack_speed = getAttackSpeed().getSpeedString();
 		String strength = getStrength().getChitString();
+		String magic_type = getFaceAttributeString("magic_type");
 		int sharpness = getSharpness();
 		int x;
 		int y;
@@ -258,8 +259,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 			tt.draw(g,cs>>1,cs - tt.getHeight(g) - 5,Alignment.Left);
 		}
 		
-
-		tt = new TextType(strength + attack_speed, getChitSize(), statColor);
+		tt = new TextType(strength + magic_type + attack_speed, getChitSize(), statColor);
 		x = 5;
 		y = cs - 5 - tt.getHeight(g);
 		tt.draw(g, x, y, Alignment.Left);
@@ -395,10 +395,10 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 	}
 
 	public String getMagicType() {
-		return null;
+		return getFaceAttributeString("magic_type");
 	}
 	public String getAttackSpell() {
-		return null;
+		return getFaceAttributeString("attack_spell");
 	}
 	
 	public int getManeuverCombatBox() {
@@ -495,6 +495,10 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		return getGameObject().hasThisAttribute(Constants.ARMORED);
 	}
 	public String getAttackString() {
+		String magicType = getMagicType();
+		if (magicType!=null && magicType.trim().length()>0) {
+			return magicType+getAttackSpeed().getNum();
+		}
 		Strength str = getStrength();
 		if (!str.isNegligible()) {
 			StringBuffer sb = new StringBuffer(str.toString());

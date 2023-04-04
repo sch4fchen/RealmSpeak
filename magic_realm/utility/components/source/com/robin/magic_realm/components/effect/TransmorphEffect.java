@@ -37,7 +37,7 @@ public class TransmorphEffect implements ISpellEffect {
 		SpellWrapper spell = context.Spell;
 		CombatWrapper combat = context.getCombatTarget();
 		
-		if (target.getGameObject().hasThisAttribute(Constants.TRANSMORPH_IMMUNITY)) {
+		if (spell.getCaster().getGameObject()!=target.getGameObject() && target.getGameObject().hasThisAttribute(Constants.TRANSMORPH_IMMUNITY)) {
 			spell.cancelSpell();
 			RealmLogging.logMessage(RealmLogging.BATTLE, "Target is immune to Transmorph spells.");
 			return;
