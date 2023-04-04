@@ -1045,6 +1045,14 @@ public class BattleModel {
 				}
 			}
 			if (spell!=null) {
+				if ((attacker.isMonster() && ((MonsterChitComponent)attacker).attackAfterCasting())
+						|| (attacker.isNative() && ((NativeChitComponent)attacker).attackAfterCasting())) {
+					castedSpell = false;
+				}
+				else {
+					castedSpell = true;
+				}
+				
 				spell.addTarget(hostPrefs, attacker.getGameObject());
 				spell.castSpellByDenizen(attacker.getGameObject());
 				spell.affectTargets(SpellWrapper.dummyFrame,theGame,false, null);
@@ -1053,13 +1061,6 @@ public class BattleModel {
 				if ((attacker.isMonster() && ((MonsterChitComponent)attacker).changeTacticsAfterCasting())
 						|| (attacker.isNative() && ((NativeChitComponent)attacker).changeTacticsAfterCasting())) {
 					attacker.flip();
-				}
-				if ((attacker.isMonster() && ((MonsterChitComponent)attacker).attackAfterCasting())
-						|| (attacker.isNative() && ((NativeChitComponent)attacker).attackAfterCasting())) {
-					castedSpell = false;
-				}
-				else {
-					castedSpell = true;
 				}
 			}
 		}
