@@ -60,7 +60,7 @@ public class QuestRequirementPath extends QuestRequirement {
 		StringBuilder sb = new StringBuilder();
 		for (int i=0;i<history.size();i++) {
 			if (startKey!=null) {
-				DayKey dayKey = new DayKey((String)historyDays.get(i));
+				DayKey dayKey = new DayKey(historyDays.get(i));
 				if (dayKey.before(startKey)) continue;
 			}
 			String location = history.get(i);
