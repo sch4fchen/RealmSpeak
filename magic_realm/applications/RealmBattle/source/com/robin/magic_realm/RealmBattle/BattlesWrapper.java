@@ -90,7 +90,9 @@ public class BattlesWrapper extends GameObjectWrapper {
 					RealmComponent monsterOwner = monster.getOwner();
 					
 					if(monsterOwner!=null && monsterOwner.isCharacter() && monsterOwner.getGameObject() == characterWrapper.getGameObject()) {
-						monster.setTermOfHire(duration);
+						if(monster.getTermOfHire()<duration) {
+							monster.setTermOfHire(duration);
+						}
 					}
 					else {
 						if(monsterOwner!=null && monsterOwner.isCharacter()) {
