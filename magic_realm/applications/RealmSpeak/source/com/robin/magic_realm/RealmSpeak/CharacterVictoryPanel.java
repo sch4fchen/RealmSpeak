@@ -76,7 +76,7 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 		earnedVpsLabel = null;
 		
 		JPanel optionalPanel = new JPanel(new BorderLayout());
-		if (getGameHandler().getHostPrefs().hasPref(Constants.HOUSE3_DEDUCT_VPS)) {
+		if (getGameHandler().getHostPrefs().hasPref(Constants.SR_DEDUCT_VPS)) {
 			JPanel vpDeductionPanel = new JPanel(new GridLayout(2,4));
 			vpDeductionPanel.setBorder(BorderFactory.createTitledBorder("Deducting Victory Points"));
 			vpDeductionPanel.add(getTitleLabel("<html><center>Treasures (sites and TWT) (1VP):</center></html>",MagicRealmColor.PALEYELLOW));

@@ -3395,7 +3395,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				}
 			}
 		}
-		if (hostPrefs.hasPref(Constants.HOUSE3_DEDUCT_VPS)) {
+		if (hostPrefs.hasPref(Constants.SR_DEDUCT_VPS)) {
 			addDeductVPs(1);
 		}
 		discovery.setThisAttribute(Constants.DISCOVERED);
@@ -3729,7 +3729,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				vps = -1;
 			}
 
-			if (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) && vps!=-1) {
+			if (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) && vps!=-1 && !hostPrefs.hasPref(Constants.SR_DEDUCT_VPS)) {
 				addVictoryRequirements(vps,0,0,0,0,0);
 			}
 			else {

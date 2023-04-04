@@ -370,7 +370,7 @@ public class RealmHostPanel extends JPanel {
 					// Mark game over
 					character.applyMidnight();
 					character.setGameOver(true);
-					if (hostPrefs.hasPref(Constants.HOUSE3_DEDUCT_VPS)) {
+					if (hostPrefs.hasPref(Constants.SR_DEDUCT_VPS)) {
 						character.addPenaltyVps();
 					}
 				}
@@ -924,7 +924,7 @@ public class RealmHostPanel extends JPanel {
 			if (rc.isCharacter()) {
 				CharacterWrapper character = new CharacterWrapper(go);
 				character.setGameOver(true);
-				if (hostPrefs.hasPref(Constants.HOUSE3_DEDUCT_VPS)) {
+				if (hostPrefs.hasPref(Constants.SR_DEDUCT_VPS)) {
 					character.addPenaltyVps();
 				}
 			}
