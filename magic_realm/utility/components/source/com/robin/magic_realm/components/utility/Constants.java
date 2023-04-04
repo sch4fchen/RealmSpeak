@@ -377,6 +377,10 @@ public class Constants {
 	public static final String MAGIC_COLOR_BONUS_LENGTH = "magic_color_bonus_length";
 	public static final String MAGIC_COLOR_BONUS_SHARPNESS = "magic_color_bonus_sharpness";
 	public static final String MAGIC_COLOR_BONUS_SPEED = "magic_color_bonus_speed";
+	public static final String NO_CHANGE_TACTICS = "no_change_tactics";
+	public static final String CHANGE_TACTICS_AFTER_CASTING = "change_tactics_after_casting";
+	public static final String ATTACK_AFTER_CASTING = "attack_after_casting";
+	public static final String SPELL_TARGETS_SELF = "spell_targets_self";
 	
 	// New Spells
 	public static final String SUMMONING = "summoning";
@@ -447,6 +451,8 @@ public class Constants {
 	public static final String CURSE = "curse";
 	public static final String FEAR = "fear";
 	public static final String WALL_OF_FORCE = "wall_of_force";
+	public static final String TRANSFORM = "transform";
+	public static final String MELT_INTO_MIST = "meltintomist";
 	
 	// Magic
 	public static final String[] MAGIC_COLORS = new String[]{"White","Grey","Gold","Purple","Black"};

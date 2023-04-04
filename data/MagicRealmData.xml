@@ -35581,6 +35581,7 @@
         <attribute denizen="" />
         <attribute needs_init="" />
         <attribute icon_size="0.9" />
+        <attribute no_change_tactics="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -35614,6 +35615,7 @@
         <attribute icon_folder="wesnoth/units/tharis-magi" />
         <attribute denizen="" />
         <attribute icon_size="0.9" />
+        <attribute no_change_tactics="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -35647,6 +35649,7 @@
         <attribute icon_folder="wesnoth/units/tharis-magi" />
         <attribute denizen="" />
         <attribute icon_size="0.9" />
+        <attribute no_change_tactics="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -35680,6 +35683,7 @@
         <attribute icon_folder="wesnoth/units/tharis-magi" />
         <attribute denizen="" />
         <attribute icon_size="0.9" />
+        <attribute no_change_tactics="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -49612,20 +49616,23 @@
         <attribute native_die="2" />
         <attribute clan="3" />
         <attribute icon_size="0.9" />
+        <attribute flying="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="1" />
         <attribute chit_color="peach" />
         <attribute attack_speed="3" />
         <attribute length="9" />
-        <attribute strength="L" />
+        <attribute magic_type="V" />
+        <attribute attack_spell="curse" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="1" />
         <attribute attack_speed="4" />
-        <attribute strength="L" />
         <attribute length="9" />
         <attribute chit_color="brown" />
+        <attribute magic_type="VIII" />
+        <attribute attack_spell="mesmerize" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1869" name="Caster">
@@ -49645,20 +49652,23 @@
         <attribute native_die="2" />
         <attribute clan="3" />
         <attribute icon_size="0.9" />
+        <attribute flying="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="1" />
         <attribute chit_color="peach" />
         <attribute attack_speed="3" />
         <attribute length="9" />
-        <attribute strength="L" />
+        <attribute magic_type="V" />
+        <attribute attack_spell="curse" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="1" />
         <attribute attack_speed="4" />
-        <attribute strength="L" />
         <attribute length="9" />
         <attribute chit_color="brown" />
+        <attribute magic_type="VIII" />
+        <attribute attack_spell="mesmerize" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1870" name="Caster">
@@ -49678,20 +49688,23 @@
         <attribute native_die="2" />
         <attribute clan="3" />
         <attribute icon_size="0.9" />
+        <attribute flying="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="1" />
         <attribute chit_color="peach" />
         <attribute attack_speed="3" />
         <attribute length="9" />
-        <attribute strength="L" />
+        <attribute magic_type="V" />
+        <attribute attack_spell="curse" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="1" />
         <attribute attack_speed="4" />
-        <attribute strength="L" />
         <attribute length="9" />
         <attribute chit_color="brown" />
+        <attribute magic_type="VIII" />
+        <attribute attack_spell="mesmerize" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1871" name="Hunters Box">
@@ -50295,6 +50308,10 @@
         <attribute clan="4" />
         <attribute armored="" />
         <attribute icon_size="0.9" />
+        <attribute no_change_tactics="" />
+        <attribute transmorph_immunity="" />
+        <attribute change_tactics_after_casting="" />
+        <attribute attack_after_casting="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -50302,6 +50319,8 @@
         <attribute attack_speed="4" />
         <attribute length="9" />
         <attribute strength="M" />
+        <attribute magic_type="VI" />
+        <attribute attack_spell="transform" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -50330,6 +50349,10 @@
         <attribute clan="4" />
         <attribute armored="" />
         <attribute icon_size="0.9" />
+        <attribute no_change_tactics="" />
+        <attribute transmorph_immunity="" />
+        <attribute change_tactics_after_casting="" />
+        <attribute attack_after_casting="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -50337,6 +50360,8 @@
         <attribute attack_speed="4" />
         <attribute length="9" />
         <attribute strength="M" />
+        <attribute magic_type="VI" />
+        <attribute attack_spell="transform" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -50365,6 +50390,10 @@
         <attribute clan="4" />
         <attribute armored="" />
         <attribute icon_size="0.9" />
+        <attribute no_change_tactics="" />
+        <attribute transmorph_immunity="" />
+        <attribute change_tactics_after_casting="" />
+        <attribute attack_after_casting="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -50372,6 +50401,8 @@
         <attribute attack_speed="4" />
         <attribute length="9" />
         <attribute strength="M" />
+        <attribute magic_type="VI" />
+        <attribute attack_spell="transform" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -50400,6 +50431,10 @@
         <attribute clan="4" />
         <attribute armored="" />
         <attribute icon_size="0.9" />
+        <attribute no_change_tactics="" />
+        <attribute transmorph_immunity="" />
+        <attribute change_tactics_after_casting="" />
+        <attribute attack_after_casting="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -50407,6 +50442,8 @@
         <attribute attack_speed="4" />
         <attribute length="9" />
         <attribute strength="M" />
+        <attribute magic_type="VI" />
+        <attribute attack_spell="transform" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -50573,13 +50610,16 @@
         <attribute clan="4" />
         <attribute armored="" />
         <attribute icon_size="0.9" />
+        <attribute no_change_tactics="" />
+        <attribute spell_targets_self="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute chit_color="gold" />
         <attribute attack_speed="4" />
         <attribute length="9" />
-        <attribute strength="M" />
+        <attribute magic_type="VI" />
+        <attribute attack_spell="meltintomist" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
@@ -50608,13 +50648,16 @@
         <attribute clan="4" />
         <attribute armored="" />
         <attribute icon_size="0.9" />
+        <attribute no_change_tactics="" />
+        <attribute spell_targets_self="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute chit_color="gold" />
         <attribute attack_speed="4" />
         <attribute length="9" />
-        <attribute strength="M" />
+        <attribute magic_type="VI" />
+        <attribute attack_spell="meltintomist" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
@@ -50643,13 +50686,16 @@
         <attribute clan="4" />
         <attribute armored="" />
         <attribute icon_size="0.9" />
+        <attribute no_change_tactics="" />
+        <attribute spell_targets_self="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute chit_color="gold" />
         <attribute attack_speed="4" />
         <attribute length="9" />
-        <attribute strength="M" />
+        <attribute magic_type="VI" />
+        <attribute attack_spell="meltintomist" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />

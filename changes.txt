@@ -76,11 +76,13 @@ SUPER REALM:
 # Mesmerize Weakened effect applies to FlySpeed (change of Super Realm 0.997)
 # Optional rules for SR: Regenerating all denizen at the end of the month (no regenerating at 7th day of the week)
 # Optional rule for SR: Regenerating horses
+# Native spell caster: Conjurors, Coven, Enchanters
 NEW FEATURES:
 # New game command: sort setup
 # Support for campaigns to end at the end of the current month
 # Support for armor bonus vulnerability when supplied with corresponding magic
 # Support for weapon bonus attack speed, length and sharpness when supplied with corresponding magic
+# Support for denizens to cast spells
 
 Version 1.1.7.5
 QUEST UPDATE:

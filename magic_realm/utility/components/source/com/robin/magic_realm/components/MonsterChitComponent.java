@@ -127,7 +127,15 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	}
 	
 	public boolean cannotChangeTactics() {
-		return getGameObject().hasThisAttribute("no_change_tactics");
+		return getGameObject().hasThisAttribute(Constants.NO_CHANGE_TACTICS);
+	}
+	
+	public boolean changeTacticsAfterCasting() {
+		return getGameObject().hasThisAttribute(Constants.CHANGE_TACTICS_AFTER_CASTING);
+	}
+	
+	public boolean attackAfterCasting() {
+		return getGameObject().hasThisAttribute(Constants.ATTACK_AFTER_CASTING);
 	}
 
 	public void changeTactics() {

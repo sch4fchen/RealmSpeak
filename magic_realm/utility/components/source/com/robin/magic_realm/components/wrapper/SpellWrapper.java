@@ -1072,4 +1072,8 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		dest.setAttribute("light","chit_color",source.getAttribute(blockName,"light_color"));
 		dest.setAttribute("dark","chit_color",source.getAttribute(blockName,"dark_color"));
 	}
+
+	public boolean isNative() {
+		return false;
+	}
 }

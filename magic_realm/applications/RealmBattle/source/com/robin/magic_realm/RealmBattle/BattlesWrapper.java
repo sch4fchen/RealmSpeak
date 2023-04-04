@@ -122,10 +122,10 @@ public class BattlesWrapper extends GameObjectWrapper {
 
 							if ((hostPrefs.hasPref(Constants.OPT_ALERTED_MONSTERS) || hostPrefs.hasPref(Constants.OPT_ALERTED_MONSTERS_VARIANT)) && !rc.isHiredOrControlled() && !rc.isCompanion()) {
 								Strength vulnerability = null;
-								if (rc.isMonster()) {
+								if (rc.isMonster() && !((MonsterChitComponent)rc).cannotChangeTactics()) {
 									vulnerability = ((MonsterChitComponent)rc).getVulnerability();
 								}
-								else if (rc.isNative()) {
+								else if (rc.isNative() && !((NativeChitComponent)rc).cannotChangeTactics()) {
 									vulnerability = ((NativeChitComponent)rc).getVulnerability();
 								}
 								if (vulnerability != null && vulnerability.weakerOrEqualTo(Strength.valueOf("H"))) {

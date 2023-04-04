@@ -198,7 +198,7 @@ public class TransmorphEffect implements ISpellEffect {
 		}
 	}
 	
-	public GameObject prepareTransformation(String transformName, RealmComponent target, SpellWrapper spell, JFrame frame){
+	public static GameObject prepareTransformation(String transformName, RealmComponent target, SpellWrapper spell, JFrame frame){
 		GameData data = spell.getGameObject().getGameData();
 		GameObject trans = data.createNewObject();
 		
@@ -288,11 +288,10 @@ public class TransmorphEffect implements ISpellEffect {
 		if (target.isMistLike()) {
 			// Mists cannot have a target!
 			target.clearTargets();
-		
 		}
 	}
 			
-	private void doTransmorphTarget(RealmComponent target, SpellWrapper spell, CombatWrapper combat){
+	private static void doTransmorphTarget(RealmComponent target, SpellWrapper spell, CombatWrapper combat){
 		if (target.isMonster()) {
 			MonsterChitComponent monster = (MonsterChitComponent)target;
 			if (monster.isDarkSideUp()) { // Always flip to light side on absorb!

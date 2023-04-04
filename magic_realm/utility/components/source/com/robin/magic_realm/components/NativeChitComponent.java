@@ -73,6 +73,15 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		updateChit();
 		return super.getSize();
 	}
+	public boolean cannotChangeTactics() {
+		return getGameObject().hasThisAttribute(Constants.NO_CHANGE_TACTICS);
+	}
+	public boolean changeTacticsAfterCasting() {
+		return getGameObject().hasThisAttribute(Constants.CHANGE_TACTICS_AFTER_CASTING);
+	}
+	public boolean attackAfterCasting() {
+		return getGameObject().hasThisAttribute(Constants.ATTACK_AFTER_CASTING);
+	}
 	public void changeTactics() {
 		flip();
 	}
