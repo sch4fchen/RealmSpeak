@@ -56219,7 +56219,6 @@
     </GameObject>
     <GameObject id="2181" name="Transform">
       <AttributeBlock blockName="this">
-        <attribute spell="VI" />
         <attribute duration="permanent" />
         <attribute target="individual" />
         <attribute text="Become beast (roll for TRANSFORM)" />
@@ -56229,6 +56228,7 @@
         <attribute table="transform" />
         <attribute super_realm="" />
         <attribute virtual="" />
+        <attribute spell_denizen="VI" />
       </AttributeBlock>
       <AttributeBlock blockName="roll1">
         <attribute vulnerability="T" />
@@ -56309,7 +56309,6 @@
     </GameObject>
     <GameObject id="2182" name="Transform">
       <AttributeBlock blockName="this">
-        <attribute spell="VI" />
         <attribute duration="permanent" />
         <attribute target="individual" />
         <attribute text="Become beast (roll for TRANSFORM)" />
@@ -56319,6 +56318,7 @@
         <attribute table="transform" />
         <attribute super_realm="" />
         <attribute virtual="" />
+        <attribute spell_denizen="VI" />
       </AttributeBlock>
       <AttributeBlock blockName="roll1">
         <attribute vulnerability="T" />
@@ -56399,7 +56399,6 @@
     </GameObject>
     <GameObject id="2183" name="Transform">
       <AttributeBlock blockName="this">
-        <attribute spell="VI" />
         <attribute duration="permanent" />
         <attribute target="individual" />
         <attribute text="Become beast (roll for TRANSFORM)" />
@@ -56409,6 +56408,7 @@
         <attribute table="transform" />
         <attribute super_realm="" />
         <attribute virtual="" />
+        <attribute spell_denizen="VI" />
       </AttributeBlock>
       <AttributeBlock blockName="roll1">
         <attribute vulnerability="T" />
@@ -56489,7 +56489,6 @@
     </GameObject>
     <GameObject id="2184" name="Transform">
       <AttributeBlock blockName="this">
-        <attribute spell="VI" />
         <attribute duration="permanent" />
         <attribute target="individual" />
         <attribute text="Become beast (roll for TRANSFORM)" />
@@ -56499,6 +56498,7 @@
         <attribute table="transform" />
         <attribute super_realm="" />
         <attribute virtual="" />
+        <attribute spell_denizen="VI" />
       </AttributeBlock>
       <AttributeBlock blockName="roll1">
         <attribute vulnerability="T" />
@@ -56579,7 +56579,6 @@
     </GameObject>
     <GameObject id="2185" name="MeltIntoMist">
       <AttributeBlock blockName="this">
-        <attribute spell="VI" />
         <attribute duration="permanent" />
         <attribute target="individual" />
         <attribute text="Can only MOVE T4 (no fight)" />
@@ -56591,6 +56590,7 @@
         <attribute spell_strength="3" />
         <attribute super_realm="" />
         <attribute virtual="" />
+        <attribute spell_denizen="VI" />
       </AttributeBlock>
       <AttributeBlock blockName="mist">
         <attribute vulnerability="T" />
@@ -56605,7 +56605,6 @@
     </GameObject>
     <GameObject id="2186" name="MeltIntoMist">
       <AttributeBlock blockName="this">
-        <attribute spell="VI" />
         <attribute duration="permanent" />
         <attribute target="individual" />
         <attribute text="Can only MOVE T4 (no fight)" />
@@ -56617,6 +56616,7 @@
         <attribute spell_strength="3" />
         <attribute super_realm="" />
         <attribute virtual="" />
+        <attribute spell_denizen="VI" />
       </AttributeBlock>
       <AttributeBlock blockName="mist">
         <attribute vulnerability="T" />
@@ -56631,7 +56631,6 @@
     </GameObject>
     <GameObject id="2187" name="MeltIntoMist">
       <AttributeBlock blockName="this">
-        <attribute spell="VI" />
         <attribute duration="permanent" />
         <attribute target="individual" />
         <attribute text="Can only MOVE T4 (no fight)" />
@@ -56643,6 +56642,7 @@
         <attribute spell_strength="3" />
         <attribute super_realm="" />
         <attribute virtual="" />
+        <attribute spell_denizen="VI" />
       </AttributeBlock>
       <AttributeBlock blockName="mist">
         <attribute vulnerability="T" />

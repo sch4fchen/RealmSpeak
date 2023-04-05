@@ -1039,7 +1039,7 @@ public class BattleModel {
 			String spellName = attacker.getAttackSpell();
 			SpellWrapper spell = null;
 			for (GameObject held : attacker.getGameObject().getHold()) {
-				if (held.getName().toLowerCase().matches(spellName.toLowerCase()) && held.hasThisAttribute("spell")) {
+				if (held.getName().toLowerCase().matches(spellName.toLowerCase()) && held.hasThisAttribute("spell_native")) {
 					spell = new SpellWrapper(held);
 					break;
 				}
@@ -1468,7 +1468,7 @@ public class BattleModel {
 						SpellWrapper spell = null;
 						BattleChit spellTarget = target;
 						for (GameObject held : attacker.getGameObject().getHold()) {
-							if (held.getName().toLowerCase().matches(spellName.toLowerCase()) && held.hasThisAttribute("spell")) {
+							if (held.getName().toLowerCase().matches(spellName.toLowerCase()) && held.hasThisAttribute("spell_denizen")) {
 								spell = new SpellWrapper(held);
 								break;
 							}
