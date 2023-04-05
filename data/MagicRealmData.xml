@@ -50348,6 +50348,7 @@
         <attribute change_tactics_after_casting="" />
         <attribute attack_after_casting="" />
         <attribute spell_targets_self="" />
+        <attribute fast_caster="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -50390,6 +50391,7 @@
         <attribute change_tactics_after_casting="" />
         <attribute attack_after_casting="" />
         <attribute spell_targets_self="" />
+        <attribute fast_caster="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -50432,6 +50434,7 @@
         <attribute change_tactics_after_casting="" />
         <attribute attack_after_casting="" />
         <attribute spell_targets_self="" />
+        <attribute fast_caster="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -50474,6 +50477,7 @@
         <attribute change_tactics_after_casting="" />
         <attribute attack_after_casting="" />
         <attribute spell_targets_self="" />
+        <attribute fast_caster="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -50651,6 +50655,7 @@
         <attribute icon_size="0.9" />
         <attribute no_change_tactics="" />
         <attribute spell_targets_self="" />
+        <attribute fast_caster="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -50690,6 +50695,7 @@
         <attribute icon_size="0.9" />
         <attribute no_change_tactics="" />
         <attribute spell_targets_self="" />
+        <attribute fast_caster="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -50729,6 +50735,7 @@
         <attribute icon_size="0.9" />
         <attribute no_change_tactics="" />
         <attribute spell_targets_self="" />
+        <attribute fast_caster="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />

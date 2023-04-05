@@ -74,6 +74,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String GALLOPED = "GALLOPED";
 	private static final String RAISE_THE_DEAD = "RAISE_THE_DEAD";
 	private static final String SPELL_CANCELED = "SPELL_CANCELED";
+	private static final String ATTACKED_AFTER_CASTING = "ATTACKED_AFTER_CASTING";
 	
 	private static final String HEALING = "HEALING";
 	
@@ -148,6 +149,10 @@ public class CombatWrapper extends GameObjectWrapper {
 		}
 		return null;
 	}
+	public boolean hasCastSpell() {
+		String id = getString(CAST_SPELL);
+		return id!=null && !id.isEmpty();
+	}
 	public void clearCastSpell() {
 		GameObject go = getCastSpell();
 		if (go!=null) {
@@ -161,6 +166,12 @@ public class CombatWrapper extends GameObjectWrapper {
 	}
 	public boolean getCancelSpell() {
 		return getBoolean(SPELL_CANCELED);
+	}
+	public void setAttackedAfterCasting() {
+		setBoolean(ATTACKED_AFTER_CASTING, true);
+	}
+	public boolean getAttackedAfterCasting() {
+		return getBoolean(ATTACKED_AFTER_CASTING);
 	}
 	public void setRaiseTheDead() {
 		setBoolean(RAISE_THE_DEAD, true);
@@ -745,6 +756,7 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,SHEET_OWNER_ID);
 			go.removeAttribute(COMBAT_BLOCK,RAISE_THE_DEAD);
 			go.removeAttribute(COMBAT_BLOCK,SPELL_CANCELED);
+			go.removeAttribute(COMBAT_BLOCK,ATTACKED_AFTER_CASTING);
 			
 			ArrayList<String> list = go.getAttributeList(COMBAT_BLOCK,RANDOMIZE_PREFICES);
 			if (list!=null) {

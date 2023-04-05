@@ -66,7 +66,7 @@ public class DieRollBuilder {
 		
 		// Cycle through all activated treasures, bewitching spells, and character to determine modifiers
 		ArrayList<GameObject> objectsToTest = new ArrayList<>();
-		if (character!=null) {
+		if (character!=null&&character.isCharacter()) {
 			objectsToTest.add(character.getGameObject()); // the character
 			objectsToTest.addAll(character.getEnhancingItems()); // active treasures and travelers
 			TileLocation current = character.getCurrentLocation();

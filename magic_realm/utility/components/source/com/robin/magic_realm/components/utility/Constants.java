@@ -381,6 +381,8 @@ public class Constants {
 	public static final String CHANGE_TACTICS_AFTER_CASTING = "change_tactics_after_casting";
 	public static final String ATTACK_AFTER_CASTING = "attack_after_casting";
 	public static final String SPELL_TARGETS_SELF = "spell_targets_self";
+	public static final String FAST_CASTER = "fast_caster";
+	public static final String SPELL_DENIZEN = "spell_denizen";
 	
 	// New Spells
 	public static final String SUMMONING = "summoning";

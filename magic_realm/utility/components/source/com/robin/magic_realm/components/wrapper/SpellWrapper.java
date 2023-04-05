@@ -88,6 +88,9 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	public boolean isBenevolent() {
 		return getGameObject().hasThisAttribute(Constants.BENEVOLENT);
 	}
+	public boolean isDenizenSpell() {
+		return getGameObject().hasThisAttribute(Constants.SPELL_DENIZEN);
+	}
 	public boolean hasAffectedTargets() {
 		return getBoolean(SPELL_AFFECTED);
 	}
@@ -189,6 +192,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(getGameObject().getGameData());
 		sm.addSpell(this);
 		setString(CASTER_ID, String.valueOf(denizen.getId()));
+		(new CombatWrapper(denizen)).setCastSpell(getGameObject());
 		return this;
 	}
 	public CharacterWrapper getCaster() {
