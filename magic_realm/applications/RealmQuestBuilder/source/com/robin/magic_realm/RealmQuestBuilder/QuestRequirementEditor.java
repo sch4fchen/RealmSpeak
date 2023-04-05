@@ -268,10 +268,10 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 		// Build the discovery lists
 		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
 		for(GameObject go:pool.find("treasure_location,discovery")) {
-			list.add(go.getName());
+			if(!list.contains(go.getName())) list.add(go.getName());
 		}
 		for(GameObject go:pool.find("red_special")) {
-			list.add(go.getName());
+			if(!list.contains(go.getName())) list.add(go.getName());
 		}
 		Collections.sort(list);
 		
@@ -279,10 +279,10 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 		for(GameObject go:pool.find("tile")) {
 			TileComponent tile = (TileComponent)RealmComponent.getRealmComponent(go);
 			for(PathDetail path:tile.getHiddenPaths()) {
-				sublist.add(path.getFullPathKey());
+				if(!sublist.contains(path.getFullPathKey())) sublist.add(path.getFullPathKey());
 			}
 			for(PathDetail path:tile.getSecretPassages()) {
-				sublist.add(path.getFullPathKey());
+				if(!sublist.contains(path.getFullPathKey())) sublist.add(path.getFullPathKey());
 			}
 		}
 		Collections.sort(sublist);
