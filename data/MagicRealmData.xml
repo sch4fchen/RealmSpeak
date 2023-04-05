@@ -50349,6 +50349,9 @@
         <attribute attack_after_casting="" />
         <attribute spell_targets_self="" />
         <attribute fast_caster="" />
+        <attributeList keyName="diemod">
+          <attributeVal N0="1d:transform:all" />
+        </attributeList>
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -50392,6 +50395,9 @@
         <attribute attack_after_casting="" />
         <attribute spell_targets_self="" />
         <attribute fast_caster="" />
+        <attributeList keyName="diemod">
+          <attributeVal N0="1d:transform:all" />
+        </attributeList>
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -50435,6 +50441,9 @@
         <attribute attack_after_casting="" />
         <attribute spell_targets_self="" />
         <attribute fast_caster="" />
+        <attributeList keyName="diemod">
+          <attributeVal N0="1d:transform:all" />
+        </attributeList>
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -50478,6 +50487,9 @@
         <attribute attack_after_casting="" />
         <attribute spell_targets_self="" />
         <attribute fast_caster="" />
+        <attributeList keyName="diemod">
+          <attributeVal N0="1d:transform:all" />
+        </attributeList>
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
