@@ -50675,7 +50675,7 @@
         <attribute attack_speed="4" />
         <attribute length="9" />
         <attribute magic_type="VI" />
-        <attribute attack_spell="meltintomist" />
+        <attribute attack_spell="melt into mist" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
@@ -50715,7 +50715,7 @@
         <attribute attack_speed="4" />
         <attribute length="9" />
         <attribute magic_type="VI" />
-        <attribute attack_spell="meltintomist" />
+        <attribute attack_spell="melt into mist" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
@@ -50755,7 +50755,7 @@
         <attribute attack_speed="4" />
         <attribute length="9" />
         <attribute magic_type="VI" />
-        <attribute attack_spell="meltintomist" />
+        <attribute attack_spell="melt into mist" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
@@ -56596,7 +56596,7 @@
         <attribute animal="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2185" name="MeltIntoMist">
+    <GameObject id="2185" name="Melt Into Mist">
       <AttributeBlock blockName="this">
         <attribute duration="combat" />
         <attribute target="individual" />
@@ -56622,7 +56622,7 @@
         <attribute icon_folder="monsters" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2186" name="MeltIntoMist">
+    <GameObject id="2186" name="Melt Into Mist">
       <AttributeBlock blockName="this">
         <attribute duration="combat" />
         <attribute target="individual" />
@@ -56648,7 +56648,7 @@
         <attribute icon_folder="monsters" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2187" name="MeltIntoMist">
+    <GameObject id="2187" name="Melt Into Mist">
       <AttributeBlock blockName="this">
         <attribute duration="combat" />
         <attribute target="individual" />
