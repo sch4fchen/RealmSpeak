@@ -1,5 +1,5 @@
 ::ROADMAP::
-Fix quest: I captured the T Troll, found my way back to the S Campfire, and when I got there I released the Troll and got the reward... but the Troll did not leave. He is still under my control. I saved the game just before the turn where I got to the campfire so you can see it happen for yourself.
+Fix quest: Q57 Zoological Specimen: I captured the T Troll, found my way back to the S Campfire, and when I got there I released the Troll and got the reward... but the Troll did not leave. He is still under my control. I saved the game just before the turn where I got to the campfire so you can see it happen for yourself.
 Fix Quests: https://boardgamegeek.com/thread/2959560/2022-realmspeak-questing-realm-playing-testing-jou
 ---Basic Functionalities for current content---
 Super Realm: rules for minotaur shield
