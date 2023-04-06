@@ -531,6 +531,7 @@ public class ClearingUtility {
 			for (RealmComponent rc:location.clearing.getClearingComponents()) {
 				if (rc.isCharacter() || rc.isMonster() || rc.isNative() || rc.isCombativeTraveler() || rc.isCompanion()) {
 					if (rc.isNative() && !rc.isHiredOrControlled() && HostPrefWrapper.findHostPrefs(data).hasPref(Constants.HOUSE2_NO_NATIVES_BATTLING)) continue;
+					if (rc.getGameObject().hasThisAttribute(Constants.NO_COMBAT)) continue;
 					list.add(rc);
 				}
 			}

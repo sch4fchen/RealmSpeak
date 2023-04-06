@@ -59,6 +59,8 @@ public abstract class QuestReward extends AbstractQuestObject {
 		Mesmerize,
 		MinorCharacter,
 		MoveDenizen,
+		NoCombat,
+		NoSummoning,
 		PathsPassages,
 		Phantasm,
 		PowerOfThePit,
@@ -141,6 +143,8 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case MarkItem:					return "Marks particular item(s) for later reference.  This is useful if you want to make sure a character owns (for example) a particular item.";
 				case MinorCharacter:			return "Add or remove a Minor Character.  Must create Minor Characters BEFORE creating this reward.";
 				case MoveDenizen:				return "Move one or several denizen to a location.";
+				case NoCombat:					return "Character does not participate in combat this round.";
+				case NoSummoning:				return "Character does not summon monsters this round.";
 				case PathsPassages:				return "Discover Paths and/or Passages in the current clearing or tile.";
 				case Phantasm:					return "Give or remove a phantasm to the character.";
 				case PowerOfThePit:				return "Grants the character a Power of the Pit.";
@@ -392,6 +396,12 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case MoveDenizen:
 				reward = new QuestRewardMoveDenizen(go);
+				break;
+			case NoCombat:
+				reward = new QuestRewardNoCombat(go);
+				break;
+			case NoSummoning:
+				reward = new QuestRewardNoSummoning(go);
 				break;
 			case PathsPassages:
 				reward = new QuestRewardPathsPassages(go);

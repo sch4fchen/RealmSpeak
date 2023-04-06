@@ -384,6 +384,8 @@ public class Constants {
 	public static final String SPELL_TARGETS_SELF = "spell_targets_self";
 	public static final String FAST_CASTER = "fast_caster";
 	public static final String SPELL_DENIZEN = "spell_denizen";
+	public static final String NO_COMBAT = "no_combat";
+	public static final String NO_SUMMONING = "no_summoning";
 	
 	// New Spells
 	public static final String SUMMONING = "summoning";

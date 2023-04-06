@@ -783,6 +783,8 @@ public class RealmHostPanel extends JPanel {
 		ArrayList<GameObject> activeCharacters = getLivingCharacters();
 		for (GameObject go:activeCharacters) {
 			CharacterWrapper character = new CharacterWrapper(go);
+			character.getGameObject().removeThisAttribute(Constants.NO_COMBAT);
+			character.getGameObject().removeThisAttribute(Constants.NO_SUMMONING);
 			if (character.isDayEndTradingActive()) {
 				doneTrading = false;
 			}

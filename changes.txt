@@ -69,6 +69,8 @@ Version 1.1.7.6
 HINT: older save games are not fully compatible with this version (e.g. spell targeting)
 QUEST UPDATE:
 # Updates to quests: A42-A54, A75-A77, E28, QE1020
+# QuestRewardNoCombat
+# QuestRewardNoSummoning
 SUPER REALM:
 # Sort content of dwellings and treasure locations at setup
 # Add missions
