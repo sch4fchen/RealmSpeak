@@ -1,6 +1,4 @@
 ::ROADMAP::
-Fix quest: Q57 Zoological Specimen: I captured the T Troll, found my way back to the S Campfire, and when I got there I released the Troll and got the reward... but the Troll did not leave. He is still under my control. I saved the game just before the turn where I got to the campfire so you can see it happen for yourself.
-Fix Quests: https://boardgamegeek.com/thread/2959560/2022-realmspeak-questing-realm-playing-testing-jou
 Character Potraits
 ---Basic Functionalities for current content---
 Super Realm: rules for minotaur shield
@@ -68,7 +66,7 @@ First Edition Optional Rule - Glory: When a character or his hired natives kill 
 Version 1.1.7.6
 HINT: older save games are not fully compatible with this version (e.g. spell targeting)
 QUEST UPDATE:
-# Updates to quests: A42-A54, A75-A77, A87, E28, E43-E44, QE1006, QE1020
+# Updates to quests: A42-A54, A75-A77, A87, E28, E43-E44, Q57, QE1006, QE1020
 # QuestRewardNoCombat
 # QuestRewardNoSummoning
 SUPER REALM:
