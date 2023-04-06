@@ -1450,6 +1450,10 @@ public class QuestTesterFrame extends JFrame {
 		character.setCurrentMonth(game.getMonth());
 		character.setCurrentDay(game.getDay());
 		TileComponent tile = (TileComponent) RealmComponent.getRealmComponent(gameData.getGameObjectByName("Awful Valley"));
+		GamePool pool = new GamePool(gameData.getGameObjects());
+		for (GameObject go : pool.find("tile")) {
+			go.setAttribute("mapGrid","mapPosition",0);
+		}
 		ClearingDetail clearing = tile.getClearing(1);
 		clearing.add(character.getGameObject(), character);
 		character.startNewDay(RealmCalendar.getCalendar(gameData), hostPrefs);
