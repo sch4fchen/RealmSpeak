@@ -43,7 +43,7 @@ public class ActionPrerequisite {
 		return failReason.toString();
 	}
 	private boolean hasLostKeys(CharacterWrapper character) {
-		if (character.getGameObject().hasThisAttribute(Constants.PICKS_LOCKS)) {
+		if (character.affectedByKey(Constants.PICKS_LOCKS)) {
 			// this new custom ability can unlock anything
 			return true;
 		}
