@@ -795,7 +795,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			}
 			String command = expireImmediately?RealmDirectInfoHolder.SPELL_AFFECT_TARGETS_EXPIRE_IMMEDIATE:RealmDirectInfoHolder.SPELL_AFFECT_TARGETS;
 			GameData data = getGameObject().getGameData();
-			if (GameHost.DATA_NAME.equals(data.getDataName())) {
+			if (GameHost.DATA_NAME.equals(data.getDataName()) && !this.getGameObject().hasThisAttribute(Constants.SPELL_DENIZEN)) {
 				// Should never "affectTargets" from the host.  Do it on the caster's client.
 				if (GameHost.mostRecentHost!=null) {
 					GameHost.mostRecentHost.distributeInfo(buildAnInfoObject(destClientName,data,command));
@@ -828,7 +828,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		}
 		
 		AffectThread at = new AffectThread(parent,theGame,expireImmediately,includeNullifyEffects);
-		if (SwingUtilities.isEventDispatchThread()) {
+		if (SwingUtilities.isEventDispatchThread() || this.getGameObject().hasThisAttribute(Constants.SPELL_DENIZEN)) {
 //System.out.println("Already EDT");
 			// NON threaded
 			return at.doAffect(simultaneousSpells);
