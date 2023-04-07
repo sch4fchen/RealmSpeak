@@ -516,18 +516,13 @@ public class BattleModel {
 					String spellName = denizen.getAttackSpell();
 					SpellWrapper spell = null;
 					for (GameObject held : denizen.getGameObject().getHold()) {
-						if (held.getName().toLowerCase().matches(spellName.toLowerCase()) && held.hasThisAttribute("spell_denizen")) {
+						if (held.getName().toLowerCase().matches(spellName.toLowerCase()) && held.hasThisAttribute(Constants.SPELL_DENIZEN)) {
 							spell = new SpellWrapper(held);
 							break;
 						}
 					}
-					if (spell!=null) {
-						if (denizen.getGameObject().hasThisAttribute(Constants.SPELL_TARGETS_SELF)) {
-							spell.addTarget(hostPrefs, denizen.getGameObject());
-						}
-						else {
-							spell.addTarget(hostPrefs, denizen.getTarget().getGameObject());
-						}
+					if (spell!=null) {						
+						spell.selectTargetForDenizen(hostPrefs, battleLocation, denizen.getGameObject(),denizen.getTarget().getGameObject());
 						spell.castSpellByDenizen(denizen.getGameObject());
 						spells.put(Integer.valueOf(denizen.getAttackSpeed().getNum()),spell);
 					}
@@ -1085,7 +1080,7 @@ public class BattleModel {
 					attackAfterCasting = true;
 				}
 				
-				spell.addTarget(hostPrefs, attacker.getGameObject());
+				spell.selectTargetForDenizen(hostPrefs, battleLocation, attacker.getGameObject(),null);
 				spell.castSpellByDenizen(attacker.getGameObject());
 				spell.affectTargets(SpellWrapper.dummyFrame,theGame,false, null);
 				spellCasting = true;
@@ -1497,15 +1492,14 @@ public class BattleModel {
 					else if ((attacker.isDenizen() || transmorphed) && !magicType.isEmpty() && !attacker.getGameObject().hasThisAttribute(Constants.SPELL_TARGETS_SELF)) {
 						String spellName = attacker.getAttackSpell();
 						SpellWrapper spell = null;
-						BattleChit spellTarget = target;
 						for (GameObject held : attacker.getGameObject().getHold()) {
-							if (held.getName().toLowerCase().matches(spellName.toLowerCase()) && held.hasThisAttribute("spell_denizen")) {
+							if (held.getName().toLowerCase().matches(spellName.toLowerCase()) && held.hasThisAttribute(Constants.SPELL_DENIZEN)) {
 								spell = new SpellWrapper(held);
 								break;
 							}
 						}
 						if (spell!=null) {
-							spell.addTarget(hostPrefs, spellTarget.getGameObject());
+							spell.selectTargetForDenizen(hostPrefs, battleLocation, attacker.getGameObject(),target.getGameObject());
 							spell.castSpellByDenizen(attacker.getGameObject());
 							spell.affectTargets(SpellWrapper.dummyFrame,theGame,false, null);
 							spellCasting = true;

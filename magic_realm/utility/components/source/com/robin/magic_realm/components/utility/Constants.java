@@ -458,6 +458,7 @@ public class Constants {
 	public static final String WALL_OF_FORCE = "wall_of_force";
 	public static final String TRANSFORM = "transform";
 	public static final String MELT_INTO_MIST = "meltintomist";
+	public static final String SUMMON_DEMON = "summondemon";
 	
 	// Magic
 	public static final String[] MAGIC_COLORS = new String[]{"White","Grey","Gold","Purple","Black"};

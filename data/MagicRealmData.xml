@@ -35617,13 +35617,15 @@
         <attribute needs_init="" />
         <attribute icon_size="0.9" />
         <attribute no_change_tactics="" />
+        <attribute change_tactics_after_casting="" />
+        <attribute fast_caster="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
         <attribute attack_speed="4" />
-        <attribute strength="M" />
-        <attribute length="9" />
+        <attribute length="17" />
         <attribute chit_color="paleyellow" />
+        <attribute magic_type="V" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -35632,6 +35634,7 @@
         <attribute length="9" />
         <attribute chit_color="yellow" />
       </AttributeBlock>
+      <contains id="2189" />
     </GameObject>
     <GameObject id="1319" name="Caster">
       <AttributeBlock blockName="this">
@@ -35651,13 +35654,15 @@
         <attribute denizen="" />
         <attribute icon_size="0.9" />
         <attribute no_change_tactics="" />
+        <attribute change_tactics_after_casting="" />
+        <attribute fast_caster="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
         <attribute attack_speed="4" />
-        <attribute strength="M" />
-        <attribute length="9" />
+        <attribute length="17" />
         <attribute chit_color="paleyellow" />
+        <attribute magic_type="V" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -35666,6 +35671,7 @@
         <attribute length="9" />
         <attribute chit_color="yellow" />
       </AttributeBlock>
+      <contains id="2190" />
     </GameObject>
     <GameObject id="1320" name="Caster">
       <AttributeBlock blockName="this">
@@ -35685,13 +35691,15 @@
         <attribute denizen="" />
         <attribute icon_size="0.9" />
         <attribute no_change_tactics="" />
+        <attribute change_tactics_after_casting="" />
+        <attribute fast_caster="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
         <attribute attack_speed="4" />
-        <attribute strength="M" />
-        <attribute length="9" />
+        <attribute length="17" />
         <attribute chit_color="paleyellow" />
+        <attribute magic_type="V" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -35700,6 +35708,7 @@
         <attribute length="9" />
         <attribute chit_color="yellow" />
       </AttributeBlock>
+      <contains id="2191" />
     </GameObject>
     <GameObject id="1321" name="Caster">
       <AttributeBlock blockName="this">
@@ -35719,13 +35728,15 @@
         <attribute denizen="" />
         <attribute icon_size="0.9" />
         <attribute no_change_tactics="" />
+        <attribute change_tactics_after_casting="" />
+        <attribute fast_caster="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
         <attribute attack_speed="4" />
-        <attribute strength="M" />
-        <attribute length="9" />
+        <attribute length="17" />
         <attribute chit_color="paleyellow" />
+        <attribute magic_type="V" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -35734,6 +35745,7 @@
         <attribute length="9" />
         <attribute chit_color="yellow" />
       </AttributeBlock>
+      <contains id="2192" />
     </GameObject>
     <GameObject id="1322" name="H Gargoyle Box">
       <AttributeBlock blockName="this">
@@ -56238,7 +56250,7 @@
     </GameObject>
     <GameObject id="2181" name="Transform">
       <AttributeBlock blockName="this">
-        <attribute duration="combat" />
+        <attribute duration="permanent" />
         <attribute target="individual" />
         <attribute text="Become beast (roll for TRANSFORM)" />
         <attribute magic_color="purple" />
@@ -56328,7 +56340,7 @@
     </GameObject>
     <GameObject id="2182" name="Transform">
       <AttributeBlock blockName="this">
-        <attribute duration="combat" />
+        <attribute duration="permanent" />
         <attribute target="individual" />
         <attribute text="Become beast (roll for TRANSFORM)" />
         <attribute magic_color="purple" />
@@ -56418,7 +56430,7 @@
     </GameObject>
     <GameObject id="2183" name="Transform">
       <AttributeBlock blockName="this">
-        <attribute duration="combat" />
+        <attribute duration="permanent" />
         <attribute target="individual" />
         <attribute text="Become beast (roll for TRANSFORM)" />
         <attribute magic_color="purple" />
@@ -56508,7 +56520,7 @@
     </GameObject>
     <GameObject id="2184" name="Transform">
       <AttributeBlock blockName="this">
-        <attribute duration="combat" />
+        <attribute duration="permanent" />
         <attribute target="individual" />
         <attribute text="Become beast (roll for TRANSFORM)" />
         <attribute magic_color="purple" />
@@ -56598,7 +56610,7 @@
     </GameObject>
     <GameObject id="2185" name="Melt Into Mist">
       <AttributeBlock blockName="this">
-        <attribute duration="combat" />
+        <attribute duration="permanent" />
         <attribute target="individual" />
         <attribute text="Can only MOVE T4 (no fight)" />
         <attribute magic_color="purple" />
@@ -56624,7 +56636,7 @@
     </GameObject>
     <GameObject id="2186" name="Melt Into Mist">
       <AttributeBlock blockName="this">
-        <attribute duration="combat" />
+        <attribute duration="permanent" />
         <attribute target="individual" />
         <attribute text="Can only MOVE T4 (no fight)" />
         <attribute magic_color="purple" />
@@ -56650,7 +56662,7 @@
     </GameObject>
     <GameObject id="2187" name="Melt Into Mist">
       <AttributeBlock blockName="this">
-        <attribute duration="combat" />
+        <attribute duration="permanent" />
         <attribute target="individual" />
         <attribute text="Can only MOVE T4 (no fight)" />
         <attribute magic_color="purple" />
@@ -56672,6 +56684,71 @@
         <attribute mist_like="" />
         <attribute name="Mist" />
         <attribute icon_folder="monsters" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2188" name="Summon Demon">
+      <AttributeBlock blockName="this">
+        <attribute spell="V" />
+        <attribute duration="instant" />
+        <attribute target="clearing" />
+        <attribute text="Roll on Summon Demon table." />
+        <attribute magic_color="black" />
+        <attribute table="summondemon" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute summondemon="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2189" name="Summon Demon">
+      <AttributeBlock blockName="this">
+        <attribute duration="instant" />
+        <attribute target="clearing" />
+        <attribute text="Roll on Summon Demon table." />
+        <attribute magic_color="black" />
+        <attribute table="summondemon" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute summondemon="" />
+        <attribute spell_denizen="V" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2190" name="Summon Demon">
+      <AttributeBlock blockName="this">
+        <attribute duration="instant" />
+        <attribute target="clearing" />
+        <attribute text="Roll on Summon Demon table." />
+        <attribute magic_color="black" />
+        <attribute table="summondemon" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute summondemon="" />
+        <attribute spell_denizen="V" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2191" name="Summon Demon">
+      <AttributeBlock blockName="this">
+        <attribute duration="instant" />
+        <attribute target="clearing" />
+        <attribute text="Roll on Summon Demon table." />
+        <attribute magic_color="black" />
+        <attribute table="summondemon" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute summondemon="" />
+        <attribute spell_denizen="V" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2192" name="Summon Demon">
+      <AttributeBlock blockName="this">
+        <attribute duration="instant" />
+        <attribute target="clearing" />
+        <attribute text="Roll on Summon Demon table." />
+        <attribute magic_color="black" />
+        <attribute table="summondemon" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute summondemon="" />
+        <attribute spell_denizen="V" />
       </AttributeBlock>
     </GameObject>
   </objects>
