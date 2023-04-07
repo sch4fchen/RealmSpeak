@@ -8,6 +8,7 @@ import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.MonsterCreator;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.CombatWrapper;
 
 public class SummonDemon extends MonsterTable {
 
@@ -67,8 +68,9 @@ public class SummonDemon extends MonsterTable {
 				MonsterCreator.setupSide(demon,"dark","RED",0,0,18,-1,"darkgray");
 				demon.setAttribute("light", "magic_type", "V");
 				demon.setAttribute("light", "attack_spell", Constants.DEVILS_SPELL);
-				demon.setAttribute("light", "attack_spell", Constants.NO_CHANGE_TACTICS);
+				demon.setThisAttribute(Constants.NO_CHANGE_TACTICS);
 				demon.setThisAttribute("devil");
+				demon.setThisAttribute(Constants.ICON_SIZE,"0.9");
 				break;
 			case WingedDemon:
 				getMonsterCreator().setupGameObject(demon,"Winged Demon","galerunner","T",false,true,false,"wesnoth/units");
@@ -106,8 +108,8 @@ public class SummonDemon extends MonsterTable {
 				getMonsterCreator().setupGameObject(demon,"Ghost","ghost","M",true,false,false,"wesnoth/units");
 				MonsterCreator.setupSide(demon,"light","M",0,4,0,4,"gray");
 				MonsterCreator.setupSide(demon,"dark","M",0,4,0,4,"darkgray");
-				demon.setThisAttribute(Constants.UNDEAD);
 				demon.setThisAttribute("ghost");
+				demon.setThisAttribute(Constants.UNDEAD);
 				demon.setThisAttribute(Constants.ICON_SIZE,"0.9");
 				break;
 		}
@@ -117,6 +119,8 @@ public class SummonDemon extends MonsterTable {
 	private void summon(CharacterWrapper character, DemonType type) {
 		GameData data = character.getGameObject().getGameData();
 		GameObject demon = createDemon(data, type);
+		CombatWrapper combat = new CombatWrapper(demon);
+		combat.setSheetOwner(false);
 		TileLocation tl = character.getCurrentLocation();
 		if (tl!=null && tl.isInClearing()) {
 			tl.clearing.add(demon,null);
