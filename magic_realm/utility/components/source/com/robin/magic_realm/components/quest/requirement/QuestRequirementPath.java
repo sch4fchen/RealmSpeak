@@ -50,6 +50,9 @@ public class QuestRequirementPath extends QuestRequirement {
 			case Step:
 				startKey = getParentStep().getQuestStepStartTime();
 				break;
+			case Game:
+				startKey = new DayKey(1,1);
+				break;
 			case Day:
 			default:
 				startKey = new DayKey(character.getCurrentDayKey());

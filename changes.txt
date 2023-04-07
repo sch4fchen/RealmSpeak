@@ -69,6 +69,7 @@ QUEST UPDATE:
 # Updates to quests: A42-A54, A75-A77, A87, E28, E43-E44, Q57, QE1006, QE1020
 # QuestRewardNoCombat
 # QuestRewardNoSummoning
+# QuestRequirementPath: Fix counting paths of "Game"
 SUPER REALM:
 # Sort content of dwellings and treasure locations at setup
 # Add missions
