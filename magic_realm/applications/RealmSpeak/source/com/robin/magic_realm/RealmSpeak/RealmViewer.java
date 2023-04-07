@@ -63,6 +63,7 @@ public class RealmViewer extends JFrame {
 		list.addAll((new RaiseDead(dummy)).getOneOfEach(character));
 		list.addAll((new SummonAnimal(dummy)).getOneOfEach(character));
 		list.addAll((new SummonElemental(dummy)).getOneOfEach(character));
+		list.addAll((new SummonDemon(dummy)).getOneOfEach(character));
 		
 		MonsterCreator mc = new MonsterCreator("test");
 		list.add(SetupCardUtility.createBlob(mc,data));

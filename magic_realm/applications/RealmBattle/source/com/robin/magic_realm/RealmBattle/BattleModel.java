@@ -521,8 +521,8 @@ public class BattleModel {
 							break;
 						}
 					}
-					if (spell!=null) {						
-						spell.selectTargetForDenizen(hostPrefs, battleLocation, denizen.getGameObject(),denizen.getTarget().getGameObject());
+					if (spell!=null) {
+						spell.selectTargetForDenizen(hostPrefs, battleLocation, denizen,denizen.getTarget());
 						spell.castSpellByDenizen(denizen.getGameObject());
 						spells.put(Integer.valueOf(denizen.getAttackSpeed().getNum()),spell);
 					}
@@ -1080,7 +1080,7 @@ public class BattleModel {
 					attackAfterCasting = true;
 				}
 				
-				spell.selectTargetForDenizen(hostPrefs, battleLocation, attacker.getGameObject(),null);
+				spell.selectTargetForDenizen(hostPrefs, battleLocation, attacker,null);
 				spell.castSpellByDenizen(attacker.getGameObject());
 				spell.affectTargets(SpellWrapper.dummyFrame,theGame,false, null);
 				spellCasting = true;
@@ -1499,7 +1499,7 @@ public class BattleModel {
 							}
 						}
 						if (spell!=null) {
-							spell.selectTargetForDenizen(hostPrefs, battleLocation, attacker.getGameObject(),target.getGameObject());
+							spell.selectTargetForDenizen(hostPrefs, battleLocation, attacker, (RealmComponent)target);
 							spell.castSpellByDenizen(attacker.getGameObject());
 							spell.affectTargets(SpellWrapper.dummyFrame,theGame,false, null);
 							spellCasting = true;

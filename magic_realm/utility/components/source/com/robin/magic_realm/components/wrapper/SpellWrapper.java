@@ -186,16 +186,16 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 
 		return this;
 	}
-	public void selectTargetForDenizen(HostPrefWrapper hostPrefs, TileLocation battleLocation, GameObject denizen, GameObject target) {
-		if (denizen.hasThisAttribute(Constants.SPELL_TARGETS_SELF)) {
-			addTarget(hostPrefs, denizen);
+	public void selectTargetForDenizen(HostPrefWrapper hostPrefs, TileLocation battleLocation, BattleChit denizen, RealmComponent target) {
+		if (denizen.getGameObject().hasThisAttribute(Constants.SPELL_TARGETS_SELF)) {
+			addTarget(hostPrefs, denizen.getGameObject());
 		}
 		else if (this.getGameObject().getThisAttribute("target").matches("clearing")) {
 			addTarget(hostPrefs, battleLocation.tile.getGameObject(),true);
 			setExtraIdentifier(String.valueOf(battleLocation.clearing.getNum()));
 		}
 		else {
-			addTarget(hostPrefs, target);
+			if (target!=null) addTarget(hostPrefs, target.getGameObject());
 		}
 	}
 	public SpellWrapper castSpellByDenizen(GameObject denizen) {

@@ -43,7 +43,9 @@ public class MonsterCreator {
 				go.setAttribute(side,"sharpness",sharpness);
 			}
 		}
-		go.setAttribute(side,"move_speed",moveSpeed);
+		if (moveSpeed!=-1) {
+			go.setAttribute(side,"move_speed",moveSpeed);
+		}
 		go.setAttribute(side,"chit_color",color);
 	}
 	public void setupGameObject(GameObject go,String name,String iconType,String vulnerability,boolean armored) {
@@ -53,12 +55,15 @@ public class MonsterCreator {
 		setupGameObject(go,name,iconType,vulnerability,armored,flies,false);
 	}
 	public void setupGameObject(GameObject go,String name,String iconType,String vulnerability,boolean armored,boolean flies,boolean small) {
+		setupGameObject(go,name,iconType,vulnerability,armored,flies,small,"monsters2");
+	}
+	public void setupGameObject(GameObject go,String name,String iconType,String vulnerability,boolean armored,boolean flies,boolean small,String iconFolder) {
 		go.setName(name);
 		go.setThisAttribute("monster");
 		go.setThisAttribute(monsterKey);
 		go.setThisAttribute("vulnerability",vulnerability);
 		go.setThisAttribute("icon_type",iconType);
-		go.setThisAttribute("icon_folder","monsters2");
+		go.setThisAttribute("icon_folder",iconFolder);
 		go.removeThisAttribute(Constants.ARMORED);
 		go.removeThisAttribute("flying");
 		if (armored) {

@@ -220,6 +220,7 @@ the Appearance Chart, he instantly becomes unhired.
 		undead,
 		animal,
 		elemental,
+		demon,
 	}
 	private static MonsterTable getMonsterTableFor(JFrame parent,String summonType) {
 		MonsterTable monsterTable = null;
@@ -233,11 +234,17 @@ the Appearance Chart, he instantly becomes unhired.
 			case animal:
 				monsterTable = new SummonAnimal(parent);
 				break;
+			case demon:
+				monsterTable = new SummonDemon(parent);
+				break;
 		}
 		return monsterTable;
 	}
-	public static void summonRandomCompanions(JFrame parent,GameObject caster,CharacterWrapper character,SpellWrapper spell,String summonType) {
+	public static void summonRandomCompanion(JFrame parent,GameObject caster,CharacterWrapper character,SpellWrapper spell,String summonType) {
 		MonsterTable monsterTable = getMonsterTableFor(parent,summonType);
+		if (summonType.matches(SummonType.demon.toString())) {
+			character = new CharacterWrapper(caster);
+		}
 		DieRoller roller = DieRollBuilder.getDieRollBuilder(parent,character).createRoller(monsterTable);
 		roller.rollDice(summonType);
 		String result = monsterTable.apply(character,roller);

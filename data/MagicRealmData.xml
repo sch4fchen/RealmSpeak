@@ -34820,6 +34820,7 @@
         <attribute icon_scale="1.3" />
         <attribute icon_size="1.2" />
         <attribute ghost="" />
+        <attribute undead="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -34850,6 +34851,7 @@
         <attribute icon_scale="1.3" />
         <attribute icon_size="1.2" />
         <attribute ghost="" />
+        <attribute undead="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -34880,6 +34882,7 @@
         <attribute icon_scale="1.3" />
         <attribute icon_size="1.2" />
         <attribute ghost="" />
+        <attribute undead="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -34910,6 +34913,7 @@
         <attribute icon_scale="1.3" />
         <attribute icon_size="1.2" />
         <attribute ghost="" />
+        <attribute undead="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35626,6 +35630,7 @@
         <attribute length="17" />
         <attribute chit_color="paleyellow" />
         <attribute magic_type="V" />
+        <attribute attack_spell="Summon Demon" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -35663,6 +35668,7 @@
         <attribute length="17" />
         <attribute chit_color="paleyellow" />
         <attribute magic_type="V" />
+        <attribute attack_spell="Summon Demon" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -35700,6 +35706,7 @@
         <attribute length="17" />
         <attribute chit_color="paleyellow" />
         <attribute magic_type="V" />
+        <attribute attack_spell="Summon Demon" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -35737,6 +35744,7 @@
         <attribute length="17" />
         <attribute chit_color="paleyellow" />
         <attribute magic_type="V" />
+        <attribute attack_spell="Summon Demon" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -56689,7 +56697,7 @@
     <GameObject id="2188" name="Summon Demon">
       <AttributeBlock blockName="this">
         <attribute spell="V" />
-        <attribute duration="instant" />
+        <attribute duration="combat" />
         <attribute target="clearing" />
         <attribute text="Roll on Summon Demon table." />
         <attribute magic_color="black" />
@@ -56701,7 +56709,7 @@
     </GameObject>
     <GameObject id="2189" name="Summon Demon">
       <AttributeBlock blockName="this">
-        <attribute duration="instant" />
+        <attribute duration="combat" />
         <attribute target="clearing" />
         <attribute text="Roll on Summon Demon table." />
         <attribute magic_color="black" />
@@ -56714,7 +56722,7 @@
     </GameObject>
     <GameObject id="2190" name="Summon Demon">
       <AttributeBlock blockName="this">
-        <attribute duration="instant" />
+        <attribute duration="combat" />
         <attribute target="clearing" />
         <attribute text="Roll on Summon Demon table." />
         <attribute magic_color="black" />
@@ -56727,7 +56735,7 @@
     </GameObject>
     <GameObject id="2191" name="Summon Demon">
       <AttributeBlock blockName="this">
-        <attribute duration="instant" />
+        <attribute duration="combat" />
         <attribute target="clearing" />
         <attribute text="Roll on Summon Demon table." />
         <attribute magic_color="black" />
@@ -56740,7 +56748,7 @@
     </GameObject>
     <GameObject id="2192" name="Summon Demon">
       <AttributeBlock blockName="this">
-        <attribute duration="instant" />
+        <attribute duration="combat" />
         <attribute target="clearing" />
         <attribute text="Roll on Summon Demon table." />
         <attribute magic_color="black" />

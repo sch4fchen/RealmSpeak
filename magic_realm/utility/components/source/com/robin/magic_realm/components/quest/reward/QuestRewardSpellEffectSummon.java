@@ -29,6 +29,9 @@ public class QuestRewardSpellEffectSummon extends QuestReward {
 		case undead:
 			spell = "Raise Dead";
 			break;
+		case demon:
+			spell = "Summon Demon";
+			break;
 		default:
 			return;
 		}
@@ -39,7 +42,7 @@ public class QuestRewardSpellEffectSummon extends QuestReward {
 			SpellUtility.unsummonCompanions(spellWrapper);
 			return;
 		}
-		SpellUtility.summonRandomCompanions(frame,  character.getGameObject(),  character, spellWrapper,  getSummonType().toString());
+		SpellUtility.summonRandomCompanion(frame, character.getGameObject(), character, spellWrapper, getSummonType().toString());
 	}
 	
 	private SpellUtility.SummonType getSummonType() {
@@ -53,7 +56,7 @@ public class QuestRewardSpellEffectSummon extends QuestReward {
 		if (remove()) {
 			return "Removes the creatures from the character.";
 		}
-		return "Summons creatures for the character";
+		return "Summons creatures for the character (demons are evil).";
 	}
 
 	public RewardType getRewardType() {

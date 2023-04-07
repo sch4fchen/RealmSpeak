@@ -11,7 +11,7 @@ public class SummonEffect implements ISpellEffect {
 	
 	@Override
 	public void apply(SpellEffectContext context) {
-		SpellUtility.summonRandomCompanions(
+		SpellUtility.summonRandomCompanion(
 				context.Parent,
 				context.Caster,
 				context.getCharacterTarget(),
