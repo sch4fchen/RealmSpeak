@@ -817,6 +817,7 @@ public class TileComponent extends ChitComponent {
 			SpellMasterWrapper spellMaster = SpellMasterWrapper.getSpellMaster(getGameObject().getGameData());
 			ArrayList<SpellWrapper> spells = spellMaster.getAffectingSpells(getGameObject());
 			for (SpellWrapper spell:spells) {
+				if (spell.isDenizenSpell()) continue;
 				RealmComponent rc = RealmComponent.getRealmComponent(spell.getGameObject());
 				componentsToDraw.add(rc);
 			}
@@ -869,6 +870,9 @@ public class TileComponent extends ChitComponent {
 		Collections.sort(componentsToDraw);
 
 		for (RealmComponent rc : componentsToDraw) {
+			if (rc == null || rc.getSize() == null) {
+				int sdf = 0;
+			}
 			int w = rc.getSize().width;
 			int h = rc.getSize().height;
 
