@@ -131,7 +131,7 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 			tt = new TextType(name,getChitSize(),"WHITE_NOTE");
 		}
 		tt.draw(g,getChitSize()-10-tt.getWidth(g),7,Alignment.Left);
-		if ((RealmComponent.displaySubline || getGameObject().hasThisAttribute(Constants.SUPER_REALM)) && getGameObject().hasThisAttribute("native")) {
+		if (RealmComponent.displaySubline && getGameObject().hasThisAttribute("native")) {
 			String text = getGameObject().getThisAttribute("native");
 			if (getGameObject().hasThisAttribute("rank")) {
 				text = text + " " + getGameObject().getThisAttribute("rank");

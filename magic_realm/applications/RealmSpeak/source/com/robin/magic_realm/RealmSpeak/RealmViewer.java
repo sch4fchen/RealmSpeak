@@ -83,7 +83,7 @@ public class RealmViewer extends JFrame {
 						treasureList.add(obj);
 					}
 				}
-				else if (rc.isSpell()) {
+				else if (rc.isSpell() && !obj.hasThisAttribute(Constants.SPELL_DENIZEN)) {
 					if (notready || !SHOW_ONLY_NOTREADY) {
 						//spellViewPanel.addObject(obj);
 						spellList.add(obj);

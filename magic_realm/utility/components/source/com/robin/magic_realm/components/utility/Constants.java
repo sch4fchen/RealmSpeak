@@ -291,11 +291,12 @@ public class Constants {
 	// Native ThisAttributes
 	public static final String HIDDEN = "hidden";
 	
-	// Monster
+	// Denizen
 	public static final String NUMBER = "number";
 	public static final String SETUP_START_TILE_REQ = "setup_start_tilereq";
 	public static final String WEAPON_USE = "weapon_use";
 	public static final String WEAPON_USE_CHIT = "weapon_use_chit";
+	public static final String NATIVE_NAME = "native_name";
 	
 	// Other effects
 	public static final String BENEVOLENT = "benevolent"; // for spells

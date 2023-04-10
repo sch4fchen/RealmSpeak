@@ -509,7 +509,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		panel.add(legendaryChitsOption);
 		chitArmorOption = new JCheckBox("Display Armor Border");
 		panel.add(chitArmorOption);
-		chitSublineOption = new JCheckBox("Show Native Group subline");
+		chitSublineOption = new JCheckBox("Show Native subline");
 		panel.add(chitSublineOption);
 		monsterNumbersOption = new JCheckBox("Show Monster Numbers");
 		panel.add(monsterNumbersOption);

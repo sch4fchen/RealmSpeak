@@ -817,7 +817,6 @@ public class TileComponent extends ChitComponent {
 			SpellMasterWrapper spellMaster = SpellMasterWrapper.getSpellMaster(getGameObject().getGameData());
 			ArrayList<SpellWrapper> spells = spellMaster.getAffectingSpells(getGameObject());
 			for (SpellWrapper spell:spells) {
-				if (spell.isDenizenSpell()) continue;
 				RealmComponent rc = RealmComponent.getRealmComponent(spell.getGameObject());
 				componentsToDraw.add(rc);
 			}
