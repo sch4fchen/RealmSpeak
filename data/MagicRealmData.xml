@@ -50496,10 +50496,10 @@
         <attribute attack_after_casting="" />
         <attribute spell_targets_self="" />
         <attribute fast_caster="" />
+        <attribute native_name="Caster" />
         <attributeList keyName="diemod">
           <attributeVal N0="1d:transform:all" />
         </attributeList>
-        <attribute native_name="Caster" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -50543,10 +50543,10 @@
         <attribute attack_after_casting="" />
         <attribute spell_targets_self="" />
         <attribute fast_caster="" />
+        <attribute native_name="Caster" />
         <attributeList keyName="diemod">
           <attributeVal N0="1d:transform:all" />
         </attributeList>
-        <attribute native_name="Caster" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -50590,10 +50590,10 @@
         <attribute attack_after_casting="" />
         <attribute spell_targets_self="" />
         <attribute fast_caster="" />
+        <attribute native_name="Caster" />
         <attributeList keyName="diemod">
           <attributeVal N0="1d:transform:all" />
         </attributeList>
-        <attribute native_name="Caster" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -50637,10 +50637,10 @@
         <attribute attack_after_casting="" />
         <attribute spell_targets_self="" />
         <attribute fast_caster="" />
+        <attribute native_name="Caster" />
         <attributeList keyName="diemod">
           <attributeVal N0="1d:transform:all" />
         </attributeList>
-        <attribute native_name="Caster" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -56831,7 +56831,7 @@
     <GameObject id="2188" name="Summon Demon">
       <AttributeBlock blockName="this">
         <attribute spell="V" />
-        <attribute duration="combat" />
+        <attribute duration="instant" />
         <attribute target="clearing" />
         <attribute text="Roll on Summon Demon table." />
         <attribute magic_color="black" />
@@ -56843,7 +56843,7 @@
     </GameObject>
     <GameObject id="2189" name="Summon Demon">
       <AttributeBlock blockName="this">
-        <attribute duration="combat" />
+        <attribute duration="instant" />
         <attribute target="clearing" />
         <attribute text="Roll on Summon Demon table." />
         <attribute magic_color="black" />
@@ -56856,7 +56856,7 @@
     </GameObject>
     <GameObject id="2190" name="Summon Demon">
       <AttributeBlock blockName="this">
-        <attribute duration="combat" />
+        <attribute duration="instant" />
         <attribute target="clearing" />
         <attribute text="Roll on Summon Demon table." />
         <attribute magic_color="black" />
@@ -56869,7 +56869,7 @@
     </GameObject>
     <GameObject id="2191" name="Summon Demon">
       <AttributeBlock blockName="this">
-        <attribute duration="combat" />
+        <attribute duration="instant" />
         <attribute target="clearing" />
         <attribute text="Roll on Summon Demon table." />
         <attribute magic_color="black" />
@@ -56882,7 +56882,7 @@
     </GameObject>
     <GameObject id="2192" name="Summon Demon">
       <AttributeBlock blockName="this">
-        <attribute duration="combat" />
+        <attribute duration="instant" />
         <attribute target="clearing" />
         <attribute text="Roll on Summon Demon table." />
         <attribute magic_color="black" />
