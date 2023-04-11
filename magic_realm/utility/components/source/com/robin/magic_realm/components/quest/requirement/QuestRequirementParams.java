@@ -48,7 +48,7 @@ public class QuestRequirementParams {
 		list.add(targetOfSearch==null?"null":targetOfSearch.getStringId());
 		if (objectList!=null) {
 			for(GameObject res:objectList) {
-				list.add(res.getStringId());
+				if (res!=null) list.add(res.getStringId());
 			}
 		}
 		return StringUtilities.collectionToString(list,"@");
