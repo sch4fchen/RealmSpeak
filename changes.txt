@@ -1,5 +1,5 @@
 ::ROADMAP::
-Quest fixes: A73, A77, Q57
+Quest fixes: A77, Q57
 Unsummon demon (for summon demon spell) at midnight, Devil Attack
 Character Potraits for Super Realm
 ---Basic Functionalities for current content---
