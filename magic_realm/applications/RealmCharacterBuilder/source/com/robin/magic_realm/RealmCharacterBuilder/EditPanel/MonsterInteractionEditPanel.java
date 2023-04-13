@@ -58,7 +58,7 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 			}
 			box.add(Box.createHorizontalStrut(40));
 			box.add(enhancedControl);
-			validateControl = new JCheckBox("Loose control when loosing ability");
+			validateControl = new JCheckBox("Loose control when loosing minor character");
 			if (hasAttribute(Constants.MONSTER_CONTROL_VALIDATE_CONTROL)) {
 				validateControl.setSelected(true);
 			}
