@@ -32,6 +32,7 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 	private String selection;
 	private String duration;
 	private JCheckBox enhancedControl;
+	private JCheckBox validateControl;
 	JTextField durationComponent = new JTextField("Duration");
 	
 	public MonsterInteractionEditPanel(CharacterWrapper pChar, String levelKey, String selected) {
@@ -57,6 +58,12 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 			}
 			box.add(Box.createHorizontalStrut(40));
 			box.add(enhancedControl);
+			validateControl = new JCheckBox("Loose control when loosing ability");
+			if (hasAttribute(Constants.MONSTER_CONTROL_VALIDATE_CONTROL)) {
+				validateControl.setSelected(true);
+			}
+			box.add(Box.createHorizontalStrut(40));
+			box.add(validateControl);
 			add(box,"North");
 		}
 		
@@ -159,6 +166,12 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 			}
 			else {
 				removeAttribute(Constants.MONSTER_CONTROL_ENHANCED);
+			}
+			if (validateControl.isSelected()) {
+				setAttribute(Constants.MONSTER_CONTROL_VALIDATE_CONTROL);
+			}
+			else {
+				removeAttribute(Constants.MONSTER_CONTROL_VALIDATE_CONTROL);
 			}
 		}
 		else if (fearSelected()) {

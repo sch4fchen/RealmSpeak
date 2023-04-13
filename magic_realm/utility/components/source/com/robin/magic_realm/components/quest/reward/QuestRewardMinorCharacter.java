@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.general.util.RandomNumber;
+import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -44,7 +46,34 @@ public class QuestRewardMinorCharacter extends QuestReward {
 			character.getGameObject().add(minorCharacter.getGameObject());
 		}
 		else {
+			if (minorCharacter.getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL_VALIDATE_CONTROL)) {
+				ArrayList<String> controls = new ArrayList<>();
+				if (minorCharacter.getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL)) {
+					controls.addAll(minorCharacter.getGameObject().getThisAttributeList(Constants.MONSTER_CONTROL));
+				}
+				if (minorCharacter.getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL_ENHANCED)) {
+					controls.addAll(minorCharacter.getGameObject().getThisAttributeList(Constants.MONSTER_CONTROL_ENHANCED));
+				}
+				TileLocation loc = character.getCurrentLocation();
+				if (loc != null && loc.clearing != null) {
+					ArrayList<RealmComponent> clearingComponents = loc.clearing.getClearingComponents();
+					for (RealmComponent monster : clearingComponents) {
+						if (!monster.isMonster() || monster.getOwner()==null || monster.getOwner().getGameObject()!=character.getGameObject()) continue;
+						for (String monsterType : controls) {
+							if (monster.getGameObject().getName().matches(monsterType.toString())) {
+								character.removeHireling(monster.getGameObject());
+							}
+						}
+						
+					}
+				}
+			}
+			
 			character.getGameObject().remove(minorCharacter.getGameObject());
+			
+			if (minorCharacter.getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL_VALIDATE_CONTROL)) {
+				character.distributeMonsterControlInCurrentClearing(false);
+			}
 		}
 		character.setNeedsActionPanelUpdate(true);
 	}

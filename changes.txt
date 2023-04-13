@@ -70,6 +70,7 @@ QUEST UPDATE:
 # QuestRewardNoCombat
 # QuestRewardNoSummoning
 # QuestRequirementPath: Fix counting paths of "Game"
+# Minor Character ability Monster Control: option for loosing corresponding monster control when loosing minor character
 SUPER REALM:
 # Sort content of dwellings and treasure locations at setup
 # Add missions
