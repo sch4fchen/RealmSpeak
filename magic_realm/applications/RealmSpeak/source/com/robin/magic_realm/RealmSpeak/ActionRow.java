@@ -482,6 +482,7 @@ public class ActionRow {
 	 */
 	private static String[] breakOutKeys(String in) {
 		String[] ret = null;
+		if (in==null) return null;
 		int start = in.indexOf("##");
 		if (start>=0) {
 			int end = in.indexOf("##",start+1);

@@ -94,6 +94,8 @@ BUGS/ISSUES:
 # Control monster (multiple times with different durations) does not reduce term of hire
 # Update available special actions after gaining or loosing a minor character
 # Check for quest requirements after deactivating an item
+# Fix crash after completing a quest for certain circumstances
+# Fix crash (and log) if canceling a trade
 
 Version 1.1.7.5
 QUEST UPDATE:
