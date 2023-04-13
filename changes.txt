@@ -1,5 +1,7 @@
 ::ROADMAP::
-Character Potraits
+Quest fixes: A73, A77, Q57
+Unsummon demon (for summon demon spell) at midnight, Devil Attack
+Character Potraits for Super Realm
 ---Basic Functionalities for current content---
 Super Realm: rules for minotaur shield
 Super Realm: rules for special native attacks and native casters: Natives Casters (p. 89)
