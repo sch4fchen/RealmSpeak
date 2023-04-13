@@ -99,7 +99,7 @@ public class QuestTesterFrame extends JFrame {
 
 	private void initComponents() {
 		setTitle("RealmSpeak Quest Tester");
-		setSize(1400, 960);
+		setSize(1400, 1080);
 
 		setLayout(new BorderLayout());
 
