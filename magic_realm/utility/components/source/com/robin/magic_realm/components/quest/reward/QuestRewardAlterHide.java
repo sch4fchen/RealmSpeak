@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.quest.GainType;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRewardAlterHide extends QuestReward {
@@ -17,6 +18,12 @@ public class QuestRewardAlterHide extends QuestReward {
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		boolean hidden = getGainType()==GainType.Gain;
 		character.setHidden(hidden);
+		if (hidden) {
+			character.getGameObject().setThisAttribute(Constants.NO_UNHIDE);
+		}
+		else {
+			character.getGameObject().removeThisAttribute(Constants.NO_UNHIDE);
+		}
 	}
 	
 	public String getDescription() {

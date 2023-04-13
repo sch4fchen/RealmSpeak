@@ -354,6 +354,7 @@ public class Constants {
 	public static final String AUTO_FLEE = "auto_flee";
 	public static final String COMBAT_ONLY = "combat_only";
 	public static final String NO_HIDE = "no_hide";
+	public static final String NO_UNHIDE = "no_unhide";
 	public static final String NO_PROWLING = "no_prowling";
 	public static final String NO_GATE = "no_gate";
 	public static final String COMPANION_FROM_HOLD = "companion_from_hold";
