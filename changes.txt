@@ -1,5 +1,4 @@
 ::ROADMAP::
-Quest fix Q57
 Test lilac items
 Unsummon demon (for summon demon spell) at midnight, Devil Attack
 Character Potraits for Super Realm
