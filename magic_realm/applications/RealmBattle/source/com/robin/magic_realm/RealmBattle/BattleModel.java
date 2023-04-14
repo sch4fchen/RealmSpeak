@@ -1127,7 +1127,7 @@ public class BattleModel {
 					int divides = killedTallyHash.getList(kill).size(); // how many ways to split?
 
 					RealmComponent rcKill = RealmComponent.getRealmComponent(kill);
-					if (!rcKill.isHorse() && !rcKill.isNativeHorse()) {
+					if (!rcKill.isHorse() && !rcKill.isNativeHorse() && !rcKill.getGameObject().hasThisAttribute(Constants.SPOILS_NONE)) {
 						attackerCombat.addKillResult();
 					}
 

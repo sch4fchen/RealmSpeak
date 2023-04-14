@@ -256,6 +256,7 @@ public class Constants {
 	public static final String SPOILS_INVENTORY_SETUP = "spoils_inv_setup";		// inventory is put in killers setup box
 	public static final String SPOILS_INVENTORY_TAKEN = "spoils_inv_taken";		// inventory is taken by the killer
 	public static final String SPOILS_GROUP_INV_DROP = "spoils_group_inv_drop";	// native group's inventory is abandoned in clearing
+	public static final String SPOILS_NONE = "spoils_none";
 	
 	// Treasure ThisAttributes
 	public static final String WEIGHT = "weight";

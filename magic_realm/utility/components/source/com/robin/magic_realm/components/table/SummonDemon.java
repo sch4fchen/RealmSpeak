@@ -113,6 +113,7 @@ public class SummonDemon extends MonsterTable {
 				demon.setThisAttribute(Constants.ICON_SIZE,"0.9");
 				break;
 		}
+		demon.setThisAttribute(Constants.SPOILS_NONE);
 		demon.setThisAttribute("super_realm");
 		return demon;
 	}
