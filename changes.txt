@@ -1,5 +1,4 @@
 ::ROADMAP::
-Test lilac items
 Unsummon demon (for summon demon spell) at midnight, Devil Attack
 Character Potraits for Super Realm
 ---Basic Functionalities for current content---

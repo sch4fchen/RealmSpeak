@@ -724,13 +724,22 @@ public class ClearingDetail {
 	public void energizeItems() {
 		ArrayList<ColorMagic> colors = getClearingColorMagic();
 		for (RealmComponent rc : getClearingComponents()) {
-			if (rc.isItem() && rc.getGameObject().hasThisAttribute(Constants.MAGIC_COLOR_BONUS)) {
-				ColorMagic requiredColor = ColorMagic.makeColorMagic(rc.getGameObject().getThisAttribute(Constants.MAGIC_COLOR_BONUS),true);
-				for (ColorMagic c : colors) {
-					if (c.sameColorAs(requiredColor)) rc.getGameObject().setThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE);
-					break;
+			if (rc.isItem()) {
+				energizeItem(rc.getGameObject(),colors);
+			}
+			if (rc.isCharacter()) {
+				for (GameObject go : (new CharacterWrapper(rc.getGameObject()).getInventory())) {
+					energizeItem(go,colors);
 				}
 			}
+		}
+	}
+	private static void energizeItem(GameObject item, Collection<ColorMagic> colors) {
+		if (!item.hasThisAttribute(Constants.MAGIC_COLOR_BONUS)) return;
+		ColorMagic requiredColor = ColorMagic.makeColorMagic(item.getThisAttribute(Constants.MAGIC_COLOR_BONUS),true);
+		for (ColorMagic c : colors) {
+			if (c.sameColorAs(requiredColor)) item.setThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE);
+			break;
 		}
 	}
 }
