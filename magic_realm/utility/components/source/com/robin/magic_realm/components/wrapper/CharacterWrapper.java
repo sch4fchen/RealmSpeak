@@ -1426,7 +1426,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				break;
 		}
 		addListItem(getCurrentDayKey()+"P",prefix+action);
-		addListItem(getCurrentDayKey()+"M",message);
+		addListItem(getCurrentDayKey()+"M",message==null?"":message);
 		addListItem(getCurrentDayKey()+"R",roller==null?"":roller.getStringResult());
 	}
 	public boolean hasDoneActionsToday() {
