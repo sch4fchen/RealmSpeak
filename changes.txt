@@ -1,5 +1,5 @@
 ::ROADMAP::
-Unsummon demon (for summon demon spell) at midnight, Devil Attack
+Devil Attack
 Character Potraits for Super Realm
 ---Basic Functionalities for current content---
 Super Realm: rules for minotaur shield

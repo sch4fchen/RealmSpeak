@@ -431,6 +431,8 @@ public class Constants {
 	
 	public static final String LIGHTED = "lighted";
 	
+	public static final String UNEFFECT_AT_MIDNIGHT = "uneffect_at_midnight";
+	
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";
 	public static final String EYEMIST = "Eyemist";

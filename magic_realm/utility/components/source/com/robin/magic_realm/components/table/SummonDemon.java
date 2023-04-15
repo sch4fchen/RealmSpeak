@@ -64,7 +64,7 @@ public class SummonDemon extends MonsterTable {
 		switch(type) {
 			case Devil:
 				getMonsterCreator().setupGameObject(demon,"Devil","demon","X",true,false,false,"wesnoth/units");
-				MonsterCreator.setupSide(demon,"light","T",0,0,18,-1,"gray");
+				MonsterCreator.setupSide(demon,"light","",0,0,18,-1,"gray");
 				MonsterCreator.setupSide(demon,"dark","RED",0,0,18,-1,"darkgray");
 				demon.setAttribute("light", "magic_type", "V");
 				demon.setAttribute("light", "attack_spell", Constants.DEVILS_SPELL);
@@ -74,7 +74,7 @@ public class SummonDemon extends MonsterTable {
 				break;
 			case WingedDemon:
 				getMonsterCreator().setupGameObject(demon,"Winged Demon","galerunner","T",false,true,false,"wesnoth/units");
-				MonsterCreator.setupSide(demon,"light","M",0,3,17,3,"gray");
+				MonsterCreator.setupSide(demon,"light","",0,3,17,3,"gray");
 				MonsterCreator.setupSide(demon,"dark","M",0,3,17,3,"darkgray");
 				demon.setAttribute("light", "magic_type", "V");
 				demon.setAttribute("light", "attack_spell", Constants.POWER_OF_THE_PIT);
@@ -83,7 +83,7 @@ public class SummonDemon extends MonsterTable {
 				break;
 			case Demon:
 				getMonsterCreator().setupGameObject(demon,"Demon","yuureNightmare","T",false,false,false,"wesnoth/units");
-				MonsterCreator.setupSide(demon,"light","H",0,2,17,4,"gray");
+				MonsterCreator.setupSide(demon,"light","",0,2,17,4,"gray");
 				MonsterCreator.setupSide(demon,"dark","H",0,2,17,4,"darkgray");
 				demon.setAttribute("light", "magic_type", "V");
 				demon.setAttribute("light", "attack_spell", Constants.POWER_OF_THE_PIT);

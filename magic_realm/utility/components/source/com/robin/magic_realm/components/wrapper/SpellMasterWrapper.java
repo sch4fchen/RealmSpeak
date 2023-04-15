@@ -10,6 +10,7 @@ import com.robin.general.util.HashLists;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.attribute.ColorMagic;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmCalendar;
 
 /**
@@ -42,6 +43,7 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 	private static final String COMBAT_SPELLS = "combat";
 	private static final String PHASE_SPELLS = "phase";
 	private static final String MOVE_SPELLS = "move";
+	private static final String MIDNIGHT_SPELLS = "midnight";
 	
 	public SpellMasterWrapper(GameObject gm) {
 		super(gm);
@@ -141,11 +143,11 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 		}
 		
 		// Clear all spell lists
-		setBoolean(DAY_SPELLS,false);
-		setBoolean(COMBAT_SPELLS,false);
-		setBoolean(PERMANENT_SPELLS,false);
-		setBoolean(PHASE_SPELLS,false);
-		setBoolean(MOVE_SPELLS,false);
+		removeAttribute(DAY_SPELLS);
+		removeAttribute(COMBAT_SPELLS);
+		removeAttribute(PERMANENT_SPELLS);
+		removeAttribute(PHASE_SPELLS);
+		removeAttribute(MOVE_SPELLS);
 	}
 	/**
 	 * Causes all day spells to expire
@@ -157,7 +159,7 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 		}
 		
 		// Clear the day spell list
-		setBoolean(DAY_SPELLS,false);
+		removeAttribute(DAY_SPELLS);
 	}
 	
 	/**
@@ -170,7 +172,7 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 		}
 
 		// Clear the combat spell list
-		setBoolean(COMBAT_SPELLS,false);
+		removeAttribute(COMBAT_SPELLS);
 	}
 	/**
 	 * Causes all phase spells to expire
@@ -186,7 +188,7 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 		}
 
 		// Clear the phase spell list
-		setBoolean(PHASE_SPELLS,false);
+		removeAttribute(PHASE_SPELLS);
 		return ret;
 	}
 	/**
@@ -350,6 +352,14 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 			deenergizePermanentSpells();
 		}
 	}
+	public void uneffectTargetsForMidnightSpells(GameWrapper game) {
+		for (SpellWrapper spell:getSpells(MIDNIGHT_SPELLS)) {
+			spell.expireSpell();
+			removeSpell(spell);
+		}
+		this.removeAttribute(MIDNIGHT_SPELLS);
+	}
+	
 	/**
 	 * Adds a spell to the master list.  Organizes into three bins:  permanent, day, combat.  All other spell
 	 * duration types (instant,attack,phase,move) are ignored here.
@@ -371,6 +381,9 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 		else if (MOVE_SPELLS.equals(duration)) {
 			addMoveSpell(spell);
 		}
+		if (spell.getGameObject().hasThisAttribute(Constants.UNEFFECT_AT_MIDNIGHT)) {
+			addMidnightSpell(spell);
+		}
 	}
 	private void addPermanentSpell(SpellWrapper spell) {
 		addListItem(PERMANENT_SPELLS,spell.getGameObject().getStringId());
@@ -390,6 +403,9 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 			addListItem(PHASE_SPELLS,spell.getGameObject().getStringId());
 		}
 	}
+	private void addMidnightSpell(SpellWrapper spell) {
+		addListItem(MIDNIGHT_SPELLS,spell.getGameObject().getStringId());
+	}
 	
 
 	public void removeSpell(SpellWrapper spell) {
@@ -399,6 +415,12 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 			list = new ArrayList<>(list);
 			list.remove(spell.getGameObject().getStringId());
 			setList(duration,list);
+		}
+		list = getList(MIDNIGHT_SPELLS);
+		if (list!=null && list.contains(spell.getGameObject().getStringId())) {
+			list = new ArrayList<>(list);
+			list.remove(spell.getGameObject().getStringId());
+			setList(MIDNIGHT_SPELLS,list);
 		}
 	}
 	public void expireIncantationSpell(GameObject incantation) {

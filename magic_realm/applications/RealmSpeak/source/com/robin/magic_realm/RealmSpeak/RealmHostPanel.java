@@ -889,6 +889,7 @@ public class RealmHostPanel extends JPanel {
 		host.broadcast(Constants.BROADCAST_ATTENTION,"");
 		sendEmailAll("New day started:  "+"Month "+game.getMonth()+", Day "+game.getDay());
 		
+		spellMaster.uneffectTargetsForMidnightSpells(game);
 		// Re-energize permanent spells (FIXME this doesn't seem to be sufficient for Flying Carpet??)
 		spellMaster.energizePermanentSpells(null,game);
 		
