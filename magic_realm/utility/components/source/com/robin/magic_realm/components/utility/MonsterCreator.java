@@ -30,6 +30,12 @@ public class MonsterCreator {
 		SetupCardUtility.updateGeneratedMonsterInt(go);
 		return go;
 	}
+	public GameObject createMonster(GameData data) {
+		GameObject go = data.createNewObject();
+		monstersCreated.add(go);
+		SetupCardUtility.updateGeneratedMonsterInt(go);
+		return go;
+	}
 	public static void setupSide(GameObject go,String side,String strength,int sharpness,int attackSpeed,int attackLength,int moveSpeed,String color) {
 		go.removeAttribute(side,"strength");
 		go.removeAttribute(side,"attack_speed");

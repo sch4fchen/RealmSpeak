@@ -355,7 +355,6 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 	public void uneffectTargetsForMidnightSpells(GameWrapper game) {
 		for (SpellWrapper spell:getSpells(MIDNIGHT_SPELLS)) {
 			spell.expireSpell();
-			removeSpell(spell);
 		}
 		this.removeAttribute(MIDNIGHT_SPELLS);
 	}

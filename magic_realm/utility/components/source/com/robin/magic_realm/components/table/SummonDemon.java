@@ -60,7 +60,7 @@ public class SummonDemon extends MonsterTable {
 		return "Ghost Summoned";
 	}
 	public GameObject createDemon(GameData data, DemonType type) {
-		GameObject demon = getMonsterCreator().createOrReuseMonster(data);
+		GameObject demon = getMonsterCreator().createMonster(data);
 		switch(type) {
 			case Devil:
 				getMonsterCreator().setupGameObject(demon,"Devil","demon","X",true,false,false,"wesnoth/units");

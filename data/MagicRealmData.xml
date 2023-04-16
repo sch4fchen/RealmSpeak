@@ -56840,6 +56840,7 @@
         <attribute super_realm="" />
         <attribute summondemon="" />
         <attribute uneffect_at_midnight="" />
+        <attribute super_realm_spell="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2189" name="Summon Demon">

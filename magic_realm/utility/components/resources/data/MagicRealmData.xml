@@ -56839,6 +56839,8 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute summondemon="" />
+        <attribute uneffect_at_midnight="" />
+        <attribute super_realm_spell="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2189" name="Summon Demon">
@@ -56852,6 +56854,7 @@
         <attribute super_realm="" />
         <attribute summondemon="" />
         <attribute spell_denizen="V" />
+        <attribute uneffect_at_midnight="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2190" name="Summon Demon">
@@ -56865,6 +56868,7 @@
         <attribute super_realm="" />
         <attribute summondemon="" />
         <attribute spell_denizen="V" />
+        <attribute uneffect_at_midnight="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2191" name="Summon Demon">
@@ -56878,6 +56882,7 @@
         <attribute super_realm="" />
         <attribute summondemon="" />
         <attribute spell_denizen="V" />
+        <attribute uneffect_at_midnight="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2192" name="Summon Demon">
@@ -56891,6 +56896,7 @@
         <attribute super_realm="" />
         <attribute summondemon="" />
         <attribute spell_denizen="V" />
+        <attribute uneffect_at_midnight="" />
       </AttributeBlock>
     </GameObject>
   </objects>
