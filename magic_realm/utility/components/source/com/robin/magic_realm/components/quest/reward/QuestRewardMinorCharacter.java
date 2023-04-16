@@ -51,9 +51,6 @@ public class QuestRewardMinorCharacter extends QuestReward {
 				if (minorCharacter.getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL)) {
 					controls.addAll(minorCharacter.getGameObject().getThisAttributeList(Constants.MONSTER_CONTROL));
 				}
-				if (minorCharacter.getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL_ENHANCED)) {
-					controls.addAll(minorCharacter.getGameObject().getThisAttributeList(Constants.MONSTER_CONTROL_ENHANCED));
-				}
 				TileLocation loc = character.getCurrentLocation();
 				if (loc != null && loc.clearing != null) {
 					ArrayList<RealmComponent> clearingComponents = loc.clearing.getClearingComponents();
