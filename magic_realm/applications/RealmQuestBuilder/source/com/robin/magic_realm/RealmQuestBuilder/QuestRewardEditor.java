@@ -240,6 +240,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case NoCombat:
 				break;
+			case NoProwling:
+				break;
 			case NoSummoning:
 				break;
 			case PathsPassages:

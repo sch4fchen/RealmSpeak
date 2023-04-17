@@ -1,4 +1,5 @@
 ::ROADMAP::
+Looting the Sword of Terror from a TWT location
 Devil Attack
 Character Potraits for Super Realm
 ---Basic Functionalities for current content---
@@ -70,6 +71,7 @@ QUEST UPDATE:
 # Updates to quests: A41-A54, A75-A77, A87, A89, E28, E43-E44, Q11-Q14, Q24, Q57, QE1006, QE1020
 # Remove obsolete quests: Q58-Q63
 # QuestRewardNoCombat
+# QuestRewardNoProwling
 # QuestRewardNoSummoning
 # QuestRequirementPath: Fix counting paths of "Game"
 # Minor Character ability Monster Control: option for loosing corresponding monster control when loosing minor character

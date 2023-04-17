@@ -30,6 +30,9 @@ public class SetupCardUtility {
 	 * It will also relocate monsters that are prowling to the specified clearing.
 	 */
 	public static void summonMonsters(ArrayList<GameObject> summoned,TileLocation tl,GameData data,boolean includeWarningSounds,boolean includeSiteChits,int monsterDie,String boardNumber,int nativeDie) {
+		summonMonsters(summoned,tl,data,includeWarningSounds,includeSiteChits,monsterDie,boardNumber,nativeDie,true);
+	}
+	public static void summonMonsters(ArrayList<GameObject> summoned,TileLocation tl,GameData data,boolean includeWarningSounds,boolean includeSiteChits,int monsterDie,String boardNumber,int nativeDie,boolean prowling) {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		if (hostPrefs.getDisableSummoning() || DebugUtility.isNoSummon()) {
 			return;
@@ -116,7 +119,7 @@ public class SetupCardUtility {
 				if (die==monsterDie || die2==monsterDie || die==99 || die3==nativeDie || die4==nativeDie) { // ghosts are ALWAYS prowling
 					if (!go.hasThisAttribute("blocked") && go.getThisAttribute("vulnerability")!="X") { // Exclude blocked and X monsters
 						// Finally, make sure there isn't a monster lure in the monster's clearing.
-						if (ClearingUtility.getItemInClearingWithKey(rc.getCurrentLocation(),Constants.NO_PROWLING)==null) {
+						if (prowling && ClearingUtility.getItemInClearingWithKey(rc.getCurrentLocation(),Constants.NO_PROWLING)==null) {
 							prowlingMonsters.add(go);
 						}
 					}
@@ -670,6 +673,7 @@ public class SetupCardUtility {
 			if (!character.getNoSummon() && !character.getGameObject().hasThisAttribute(Constants.NO_SUMMONING)) { // Only the "first" follower in the "group" summons monsters!
 				boolean atPeaceWithNature = character.affectedByKey(Constants.PEACE_WITH_NATURE);
 				boolean warningSounds = !atPeaceWithNature;
+				boolean prowling = true;
 				
 				boolean lull = character.getGameObject().hasAttribute(Constants.OPTIONAL_BLOCK,Constants.DRUID_LULL) || character.getGameObject().hasThisAttribute(Constants.DRUID_LULL);
 				boolean siteChits = !lull;
@@ -681,8 +685,11 @@ public class SetupCardUtility {
 					warningSounds = false;
 					siteChits = false;
 				}
+				if (character.getGameObject().hasThisAttribute(Constants.NO_PROWLING)) {
+					prowling = false;
+				}
 				
-				summonMonsters(summoned,current,character.getGameObject().getGameData(),warningSounds,siteChits,monsterDie,boardNumber,nativeDie);
+				summonMonsters(summoned,current,character.getGameObject().getGameData(),warningSounds,siteChits,monsterDie,boardNumber,nativeDie,prowling);
 			}
 		}
 	}

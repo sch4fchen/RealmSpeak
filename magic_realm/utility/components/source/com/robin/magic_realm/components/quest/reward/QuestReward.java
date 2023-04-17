@@ -60,6 +60,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		MinorCharacter,
 		MoveDenizen,
 		NoCombat,
+		NoProwling,
 		NoSummoning,
 		PathsPassages,
 		Phantasm,
@@ -144,6 +145,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case MinorCharacter:			return "Add or remove a Minor Character.  Must create Minor Characters BEFORE creating this reward.";
 				case MoveDenizen:				return "Move one or several denizen to a location.";
 				case NoCombat:					return "Character does not participate in combat this round.";
+				case NoProwling:				return "Character does not make denizens prowling this round.";
 				case NoSummoning:				return "Character does not summon monsters this round.";
 				case PathsPassages:				return "Discover Paths and/or Passages in the current clearing or tile.";
 				case Phantasm:					return "Give or remove a phantasm to the character.";
@@ -400,6 +402,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 			case NoCombat:
 				reward = new QuestRewardNoCombat(go);
 				break;
+			case NoProwling:
+				reward = new QuestRewardNoProwling(go);
+				break;	
 			case NoSummoning:
 				reward = new QuestRewardNoSummoning(go);
 				break;
