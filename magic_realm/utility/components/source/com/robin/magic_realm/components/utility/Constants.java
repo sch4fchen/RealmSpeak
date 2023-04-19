@@ -448,6 +448,7 @@ public class Constants {
 	public static final String DISTRACTED = "distracted";
 	public static final String SAPPED = "sapped";
 	public static final String TIRED = "tired";
+	public static final String WEAKENED_VULNERABILITY = "weakened_vulnerability";
 	
 	// Spells
 	public static final String SPELL_ID = "spellID";
