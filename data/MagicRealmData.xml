@@ -35473,6 +35473,7 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute succubus="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -35561,6 +35562,7 @@
         <attribute armored="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute vampire="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
