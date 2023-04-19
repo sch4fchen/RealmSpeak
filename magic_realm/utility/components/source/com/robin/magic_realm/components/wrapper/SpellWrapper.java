@@ -884,7 +884,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			ISpellEffect[] effects = SpellEffectFactory.create(getName().toLowerCase());
 			int ignoredTargets = 0;
 			
-			if (!includeNullifyEffects) {
+			if (!includeNullifyEffects && effects!=null) {
 				ArrayList<ISpellEffect> effectsFiltered = new ArrayList<>();
 				for (ISpellEffect effect : effects) {
 					if (!(effect instanceof NullifyEffect)) {
