@@ -51,6 +51,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementAttribute.TARGET_VALUE_TYPE, "Only count points gained during the", FieldType.StringSelector, TargetValueType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementAttribute.VALUE, "How much should it be", FieldType.NumberAll));
 				list.add(new QuestPropertyBlock(QuestRequirementAttribute.REGEX_FILTER, "Filter points to what things (regex)", FieldType.Regex, null, new String[] { "item", "spell", "denizen" }));
+				list.add(new QuestPropertyBlock(QuestRequirementAttribute.REGEX_DESCRIPTION, "Optional description for regex", FieldType.TextLine));
 				list.add(new QuestPropertyBlock(QuestRequirementAttribute.INCLUDE_INVENTORY, "Do count fame/notoriety of inventory", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirement.AUTO_JOURNAL, "Auto Journal Entry", FieldType.Boolean));
 				break;
@@ -159,6 +160,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				break;
 			case Kill:
 				list.add(new QuestPropertyBlock(QuestRequirementKill.REGEX_FILTER, "Denizen name filter (regex)", FieldType.Regex, null, new String[] { "denizen" }));
+				list.add(new QuestPropertyBlock(QuestRequirementKill.REGEX_DESCRIPTION, "Optional description for regex", FieldType.TextLine));
 				list.add(new QuestPropertyBlock(QuestRequirementKill.VALUE, "How many (" + QuestConstants.ALL_VALUE + " means ALL)", FieldType.Number));
 				list.add(new QuestPropertyBlock(QuestRequirementKill.VULNERABILITY, "Vulnerability", FieldType.StringSelector, VulnerabilityType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementKill.ARMORED, "Armor", FieldType.StringSelector, ArmoredType.values()));

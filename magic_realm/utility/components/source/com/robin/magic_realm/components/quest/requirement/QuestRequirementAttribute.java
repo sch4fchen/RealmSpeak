@@ -22,6 +22,7 @@ public class QuestRequirementAttribute extends QuestRequirement {
 	public static final String TARGET_VALUE_TYPE = "_tvt";
 	public static final String REGEX_FILTER = "_regex"; // to limit fame/notoriety gain to a particular type of monster or treasure type
 	public static final String INCLUDE_INVENTORY = "_inc_inv";
+	public static final String REGEX_DESCRIPTION = "_regex_description";
 
 	public static final String VALUE_OFFSET = "_vo";
 	private static final String VALUE_OFFSET_DAY = "_vod";
@@ -270,7 +271,11 @@ public class QuestRequirementAttribute extends QuestRequirement {
 		sb.append(getAttributeType().getDescription(realValue != 1));
 		if(hasRegExFilter()) {
 			sb.append(" from ");
-			sb.append(getRegExFilter());
+			if (!getRegExDescription().isEmpty()) {
+				sb.append(getRegExDescription());
+			} else {
+				sb.append(getRegExFilter());
+			}
 		}
 		TargetValueType tvt = getTargetValueType();
 		if (tvt != TargetValueType.Game) {
@@ -328,5 +333,12 @@ public class QuestRequirementAttribute extends QuestRequirement {
 
 	private int getValueOffset() {
 		return getInt(VALUE_OFFSET);
+	}
+	
+	public String getRegExDescription() {
+		if (getGameObject().hasAttribute(getBlockName(),REGEX_DESCRIPTION)) {
+			return getString(REGEX_DESCRIPTION);
+		}
+		return "";
 	}
 }

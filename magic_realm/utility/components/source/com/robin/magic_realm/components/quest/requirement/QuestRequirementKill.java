@@ -28,6 +28,7 @@ public class QuestRequirementKill extends QuestRequirement {
 	public static final String VULNERABILITY = "_vy";
 	public static final String ARMORED = "_arm";
 	private static final String STEP_ONLY_KILLS = "_sok"; // compatibility for old quests
+	public static final String REGEX_DESCRIPTION = "_regex_description";
 	
 	public QuestRequirementKill(GameObject go) {
 		super(go);
@@ -123,8 +124,12 @@ public class QuestRequirementKill extends QuestRequirement {
 		sb.append(val==1?"":"s");
 		if(!getRegExFilter().isEmpty()) {
 			sb.append(" that match");
-			sb.append(val==1?"es":"");
-			sb.append(" regex: /"+getRegExFilter()+"/");
+			sb.append(val==1?"es":""+" regex: /");
+			if (!getRegExDescription().isEmpty()) {
+				sb.append(getRegExDescription()+"/");
+			} else {
+				sb.append(getRegExFilter()+"/");
+			}
 		}
 		sb.append(getVulnerability()!=VulnerabilityType.Any?" with vulnerability "+getVulnerability():"");
 		sb.append(".");
@@ -166,5 +171,12 @@ public class QuestRequirementKill extends QuestRequirement {
 			return ArmoredType.Any;
 		}
 		return ArmoredType.valueOf(getString(ARMORED));
+	}
+	
+	public String getRegExDescription() {
+		if (getGameObject().hasAttribute(getBlockName(),REGEX_DESCRIPTION)) {
+			return getString(REGEX_DESCRIPTION);
+		}
+		return "";
 	}
 }
