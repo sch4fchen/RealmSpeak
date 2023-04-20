@@ -124,11 +124,11 @@ public class QuestRequirementKill extends QuestRequirement {
 		sb.append(val==1?"":"s");
 		if(!getRegExFilter().isEmpty()) {
 			sb.append(" that match");
-			sb.append(val==1?"es":""+" regex: /");
+			sb.append(val==1?"es ":" ");
 			if (!getRegExDescription().isEmpty()) {
-				sb.append(getRegExDescription()+"/");
+				sb.append(getRegExDescription());
 			} else {
-				sb.append(getRegExFilter()+"/");
+				sb.append(getRegExFilter());
 			}
 		}
 		sb.append(getVulnerability()!=VulnerabilityType.Any?" with vulnerability "+getVulnerability():"");
