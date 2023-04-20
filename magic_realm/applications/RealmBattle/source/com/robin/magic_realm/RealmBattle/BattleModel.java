@@ -699,7 +699,6 @@ public class BattleModel {
 					
 					if (spell.isDenizenSpell()) {
 						spell.affectTargets(CombatFrame.getSingleton(),theGame,false,null);
-						spellCasting = true;
 						
 						RealmComponent denizenRc = RealmComponent.getRealmComponent(spell.getCaster().getGameObject());
 						if ((denizenRc.isMonster() && ((MonsterChitComponent)denizenRc).changeTacticsAfterCasting())
