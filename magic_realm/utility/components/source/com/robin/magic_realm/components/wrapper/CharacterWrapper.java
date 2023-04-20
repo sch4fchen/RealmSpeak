@@ -637,7 +637,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (hasActiveInventoryThisKey(Constants.REDUCED_VULNERABILITY)) {
 			vul.modify(-1);
 		}
-		if (affectedByKey(Constants.WEAKENED_VULNERABILITY)) {
+		if (getGameObject().hasThisAttribute(Constants.WEAKENED_VULNERABILITY)) {
 			vul.modify(-1);
 		}
 		return vul;

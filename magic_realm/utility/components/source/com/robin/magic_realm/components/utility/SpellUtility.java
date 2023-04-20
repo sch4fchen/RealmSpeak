@@ -70,7 +70,7 @@ public class SpellUtility {
 	public static boolean affectedByBewitchingSpellKey(GameObject go,String key) {
 		GameData gameData = go.getGameData();
 		if (gameData!=null) { // can be null in the character builder tool
-			SpellMasterWrapper spellMaster = SpellMasterWrapper.getSpellMaster(go.getGameData());
+			SpellMasterWrapper spellMaster = SpellMasterWrapper.getSpellMaster(gameData);
 			for (SpellWrapper spell:spellMaster.getAffectingSpells(go)) {
 				if (spell.isActive() && spell.getGameObject().hasThisAttribute(key)) {
 					return true;
