@@ -56901,6 +56901,19 @@
         <attribute uneffect_at_midnight="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2193" name="Negative Aura">
+      <AttributeBlock blockName="this">
+        <attribute spell="V" />
+        <attribute duration="day" />
+        <attribute target="character" />
+        <attribute text="All individuals in target's clearing are one level less friendly." />
+        <attribute magic_color="black" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+        <attribute negative_aura="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

@@ -7,7 +7,6 @@ QE1010 - Through the Chaos Gate
 Q25 - Revenge Assassin
 A22 & Q40 quests
 QE1019 - Mercy for the Dead
-Devil Attack: test weakened, test negative aura
 Character Potraits for Super Realm
 ---Basic Functionalities for current content---
 Super Realm: rules for minotaur shield
