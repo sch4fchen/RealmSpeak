@@ -428,10 +428,9 @@ public class Constants {
 	public static final String MAGIC_SHIELD_ID = "magicShieldId";
 	public static final String MAGIC_WEAPON = "magic_weapon";
 	public static final String MAGIC_WEAPON_ID = "magicWeaponId";
-	
 	public static final String LIGHTED = "lighted";
-	
 	public static final String UNEFFECT_AT_MIDNIGHT = "uneffect_at_midnight";
+	public static final String ALTERNATIVE_SPELL_EFFECT = "spell_effect";
 	
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";

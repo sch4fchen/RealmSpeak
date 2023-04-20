@@ -448,7 +448,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	public boolean removeTarget(GameObject target) {
 		if (isAlive() && !isInert()) {
 			// If the spell is alive and non-inert, then we'd better disable it's affect on the target (if any)
-			ISpellEffect[] effects = SpellEffectFactory.create(getName().toLowerCase());
+			ISpellEffect[] effects = SpellEffectFactory.create(getName().toLowerCase(),getAlternativeSpellEffect());
 			unaffect(effects, GameWrapper.findGame(getCaster().getGameData()), RealmComponent.getRealmComponent(target));
 		}
 		
@@ -881,7 +881,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			energize();
 			
 			ArrayList<String> logs = new ArrayList<>();
-			ISpellEffect[] effects = SpellEffectFactory.create(getName().toLowerCase());
+			ISpellEffect[] effects = SpellEffectFactory.create(getName().toLowerCase(),getAlternativeSpellEffect());
 			int ignoredTargets = 0;
 			
 			if (!includeNullifyEffects && effects!=null) {
@@ -997,7 +997,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		unaffectTargets(true);
 	}
 	public void unaffectTargets(boolean includeNullifyEffects) {
-		ISpellEffect[] effects = SpellEffectFactory.create(getName().toLowerCase());
+		ISpellEffect[] effects = SpellEffectFactory.create(getName().toLowerCase(),getAlternativeSpellEffect());
 		
 		GameWrapper theGame = GameWrapper.findGame(getCaster().getGameData());
 		if (!includeNullifyEffects) {
@@ -1100,5 +1100,9 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 
 	public boolean isNative() {
 		return false;
+	}
+	
+	private String getAlternativeSpellEffect() {
+		return getGameObject().getThisAttribute(Constants.ALTERNATIVE_SPELL_EFFECT);
 	}
 }

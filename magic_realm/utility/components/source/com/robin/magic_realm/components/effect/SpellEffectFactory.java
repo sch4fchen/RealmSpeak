@@ -4,7 +4,7 @@ import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.SpellUtility;
 
 public class SpellEffectFactory {	
-	public static ISpellEffect[] create(String spellName){
+	public static ISpellEffect[] create(String spellName,String alternativeSpellEffect){
 		switch(spellName.toLowerCase()){
 			case "absorb essence":return new ISpellEffect[]{new TransmorphEffect("target")};
 			case "animate": return new ISpellEffect[]{new AnimateEffect()};
@@ -141,7 +141,11 @@ public class SpellEffectFactory {
 			case "negative aura": return new ISpellEffect[]{new ApplyNamedEffect(Constants.NEGATIVE_AURA)};
 			case "summon demon": return new ISpellEffect[]{new SummonEffect(SpellUtility.SummonType.demon.toString())};
 			
-			default: return null;
+			default: break;
 		}
+		if (alternativeSpellEffect!=null) {
+			return create(alternativeSpellEffect,null);
+		}
+		return null;
 	}
 }

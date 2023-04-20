@@ -85,11 +85,11 @@ public class DevilsSpell extends RealmTable {
 		GameObject spellGo = character.getGameObject().getGameData().createNewObject();
 		spellGo.setThisAttribute("name", "Devils Spell - Summon Winged Demon");
 		spellGo.setThisAttribute("spell", "V");
-		spellGo.setThisAttribute("spell_denizen", "V");
+		spellGo.setThisAttribute(Constants.SPELL_DENIZEN, "V");
 		spellGo.setThisAttribute("duration", "instant");
 		spellGo.setThisAttribute("target", "clearing");
 		spellGo.setThisAttribute("magic_color", "black");
-		spellGo.setThisAttribute("uneffect_at_midnight");
+		spellGo.setThisAttribute(Constants.UNEFFECT_AT_MIDNIGHT);
 		caster.add(spellGo);
 		SpellWrapper spell = new SpellWrapper(spellGo);
 		spell.castSpellByDenizen(caster);
@@ -118,10 +118,12 @@ public class DevilsSpell extends RealmTable {
 		GameObject spellGo = character.getGameObject().getGameData().createNewObject();
 		spellGo.setThisAttribute("name", "Devils Spell - Negative Aura");
 		spellGo.setThisAttribute("spell", "V");
-		spellGo.setThisAttribute("spell_denizen", "V");
+		spellGo.setThisAttribute(Constants.SPELL_DENIZEN, "V");
 		spellGo.setThisAttribute("duration", "day");
 		spellGo.setThisAttribute("target", "character");
 		spellGo.setThisAttribute("magic_color", "black");
+		spellGo.setThisAttribute(Constants.NEGATIVE_AURA);
+		spellGo.setThisAttribute(Constants.ALTERNATIVE_SPELL_EFFECT, "negative aura");
 		
 		caster.add(spellGo);
 		SpellWrapper spell = new SpellWrapper(spellGo);
@@ -142,7 +144,7 @@ public class DevilsSpell extends RealmTable {
 		GameObject spellGo = character.getGameObject().getGameData().createNewObject();
 		spellGo.setThisAttribute("name", "Devils Spell - Bad Luck");
 		spellGo.setThisAttribute("spell", "VIII");
-		spellGo.setThisAttribute("spell_denizen", "VIII");
+		spellGo.setThisAttribute(Constants.SPELL_DENIZEN, "VIII");
 		spellGo.setThisAttribute("duration", "permanent");
 		spellGo.setThisAttribute("target", "character");
 		spellGo.setThisAttribute("magic_color", "any");
