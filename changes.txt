@@ -75,7 +75,7 @@ First Edition Optional Rule - Glory: When a character or his hired natives kill 
 Version 1.1.7.6
 HINT: older save games are not fully compatible with this version (e.g. spell targeting)
 QUEST UPDATE:
-# Updates to quests: A26, A41-A54, A75-A77, A87, A89, E28, E43-E44, Q11-Q14, Q24, Q57, QE1006, QE1020
+# Updates to quests: A23-A26, A41-A54, A75-A77, A87, A89, E28, E43-E44, Q11-Q14, Q24, Q57, QE1006, QE1020
 # Remove obsolete quests: Q58-Q63
 # QuestRewardNoCombat
 # QuestRewardNoProwling
