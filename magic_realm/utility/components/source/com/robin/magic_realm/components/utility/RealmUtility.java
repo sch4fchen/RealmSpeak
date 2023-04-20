@@ -180,6 +180,9 @@ public class RealmUtility {
 			Integer pacifyType = trader.getPacifyTypeFor(character);
 			if (pacifyType!=null) {
 				relationship = pacifyType.intValue();
+				if (character.isNegativeAuraInClearing()) {
+					relationship--;
+				}
 			}
 			else {
 				relationship = character.getRelationship(trader.getGameObject());

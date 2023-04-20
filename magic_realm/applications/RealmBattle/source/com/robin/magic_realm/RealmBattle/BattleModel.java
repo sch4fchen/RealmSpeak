@@ -712,7 +712,6 @@ public class BattleModel {
 					ArrayList<String> logs = new ArrayList<String>();
 					if (spell.isInstantSpell()) {
 						logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,true,spellsAtSpeed);
-
 					}
 					else if (spell.isCombatSpell() || spell.isDaySpell() || spell.isPermanentSpell() || spell.isPhaseSpell() || spell.isMoveSpell()) {
 						logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,false,spellsAtSpeed);

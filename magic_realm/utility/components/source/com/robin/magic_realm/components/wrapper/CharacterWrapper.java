@@ -1028,7 +1028,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public void setMissingInAction(boolean val) {
 		setBoolean(MISSING_IN_ACTION,val);
 	}
-	public static ArrayList<String> getAllRelationshipBlocks(HostPrefWrapper hostPrefs) {
+	private static ArrayList<String> getAllRelationshipBlocks(HostPrefWrapper hostPrefs) {
 		ArrayList<String> list = new ArrayList<>();
 		int boards = hostPrefs.getMultiBoardEnabled()?hostPrefs.getMultiBoardCount():1;
 		for (int i=0;i<boards;i++) {
@@ -1109,7 +1109,21 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return list;
 	}
 	public int getRelationship(GameObject denizen) {
-		return getRelationship(RealmUtility.getRelationshipBlockFor(denizen),RealmUtility.getRelationshipGroupName(denizen));
+		int relationship = getRelationship(RealmUtility.getRelationshipBlockFor(denizen),RealmUtility.getRelationshipGroupName(denizen));
+		if (isNegativeAuraInClearing()) {
+			relationship--;
+		}
+		return relationship;
+	}
+	public boolean isNegativeAuraInClearing() {
+		if (getCurrentLocation()!=null && getCurrentLocation().clearing!=null) {
+			for (RealmComponent rc : getCurrentLocation().clearing.getDeepClearingComponents()) {
+				if (rc.getGameObject().hasThisAttribute(Constants.NEGATIVE_AURA)) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	/**
 	 * @param groupName		The name of the group you are testing the relationship for.  Might be a native group, or a visitor.

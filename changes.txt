@@ -7,7 +7,7 @@ QE1010 - Through the Chaos Gate
 Q25 - Revenge Assassin
 A22 & Q40 quests
 QE1019 - Mercy for the Dead
-Devil Attack
+Devil Attack: test weakened, test negative aura
 Character Potraits for Super Realm
 ---Basic Functionalities for current content---
 Super Realm: rules for minotaur shield
@@ -95,7 +95,8 @@ SUPER REALM:
 # Optional rules for SR: Regenerating all denizen at the end of the month (no regenerating at 7th day of the week)
 # Optional rule for SR: Regenerating horses
 # Native spell caster: Conjurors, Coven, Cultists, Enchanters
-# New spell: Summon Demon 
+# New spell: Summon Demon
+# New spell: Negative Aura
 NEW FEATURES:
 # New game command: sort setup
 # Support for campaigns to end at the end of the current month

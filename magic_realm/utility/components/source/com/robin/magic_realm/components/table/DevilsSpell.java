@@ -112,23 +112,23 @@ public class DevilsSpell extends RealmTable {
 		sendMessage(character.getGameObject().getGameData(),
 				DemonsEffects.getDestClientName(caster,character.getGameObject()),
 				"Devil's Spell",
-				"The "+character.getCharacterName()+" is cursed with Bad Luck.");
+				"The "+character.getCharacterName()+" is cursed with Negative Aura.");
 		
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameObject().getGameData());
 		GameObject spellGo = character.getGameObject().getGameData().createNewObject();
-		spellGo.setThisAttribute("name", "Devils Spell - Bad Luck");
-		spellGo.setThisAttribute("spell", "VIII");
-		spellGo.setThisAttribute("spell_denizen", "VIII");
-		spellGo.setThisAttribute("duration", "permanent");
+		spellGo.setThisAttribute("name", "Devils Spell - Negative Aura");
+		spellGo.setThisAttribute("spell", "V");
+		spellGo.setThisAttribute("spell_denizen", "V");
+		spellGo.setThisAttribute("duration", "day");
 		spellGo.setThisAttribute("target", "character");
-		spellGo.setThisAttribute("magic_color", "any");
-		spellGo.addThisAttributeListItem("diemod","+1:all:all");
+		spellGo.setThisAttribute("magic_color", "black");
+		
 		caster.add(spellGo);
 		SpellWrapper spell = new SpellWrapper(spellGo);
 		spell.castSpellByDenizen(caster);
 		spell.addTarget(hostPrefs, character.getGameObject());
 		spell.affectTargets(getParentFrame(), GameWrapper.findGame(character.getGameObject().getGameData()), false, null);
-		
+
 		return RESULT[3];
 	}
 
