@@ -12,6 +12,7 @@ import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.table.Curse;
+import com.robin.magic_realm.components.table.DevilsSpell;
 import com.robin.magic_realm.components.table.Fear;
 import com.robin.magic_realm.components.table.Mesmerize;
 import com.robin.magic_realm.components.table.PowerOfThePit;
@@ -1471,6 +1472,29 @@ public class BattleModel {
 							BattleUtility.handleSpoilsOfWar((RealmComponent)attacker,RealmComponent.getRealmComponent(kill));
 						}
 						hitCausedHarm = pop.harmWasApplied();
+						spellCasting = true;
+						spellCasted = true;
+					}
+					else if ((attacker.isDenizen() || transmorphed) && "V".equals(magicType) && Constants.DEVILS_SPELL.matches(attacker.getAttackSpell())) {
+						if (attacker instanceof SpellWrapper) {
+							// Spells belong to characters
+							SpellWrapper spell = (SpellWrapper)attacker;
+							attacker = new CharacterChitComponent(spell.getCaster().getGameObject());
+						}
+						// Devils Spell
+						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with Devil's Spell along box "+attacker.getAttackCombatBox());
+						DevilsSpell ds = DevilsSpell.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject(),false,0,attacker.getAttackSpeed());
+						ArrayList<GameObject> kills = new ArrayList<>(ds.getKills());
+						kills.remove(targetCombat.getGameObject()); // Because targetCombat will be handled normally
+						
+						for (GameObject kill:kills) {
+							logBattleInfo(kill.getNameWithNumber()+" was killed!");
+							killedTallyHash.put(kill,attacker.getGameObject());
+							killTallyHash.put(attacker.getGameObject(),kill);
+							if (!killerOrder.contains(attacker.getGameObject())) killerOrder.add(attacker.getGameObject());
+							BattleUtility.handleSpoilsOfWar((RealmComponent)attacker,RealmComponent.getRealmComponent(kill));
+						}
+						hitCausedHarm = ds.harmWasApplied();
 						spellCasting = true;
 						spellCasted = true;
 					}

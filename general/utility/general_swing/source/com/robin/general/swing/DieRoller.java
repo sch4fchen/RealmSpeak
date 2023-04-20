@@ -178,6 +178,17 @@ public class DieRoller extends JComponent {
 			repaint();
 		}
 	}
+	public void setDice(int number) {
+		for (Die die:dice) {
+				die.setFace(number);
+		}
+		hasRolled = true;
+		if (rollLogger!=null) {
+				rollLogger.addDieRoll(this,null);
+		}
+		fireActionPerformed();
+		repaint();
+	}
 	public void addWhiteDie() {
 		addDie(Color.white,Color.black,Die.WHITE);
 	}

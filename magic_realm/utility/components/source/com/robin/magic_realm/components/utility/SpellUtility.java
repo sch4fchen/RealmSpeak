@@ -241,12 +241,21 @@ the Appearance Chart, he instantly becomes unhired.
 		return monsterTable;
 	}
 	public static void summonRandomCompanion(JFrame parent,GameObject caster,CharacterWrapper character,SpellWrapper spell,String summonType) {
+		summonCompanion(parent,caster,character,spell,summonType,0);
+	}
+	
+	public static void summonCompanion(JFrame parent,GameObject caster,CharacterWrapper character,SpellWrapper spell,String summonType,int dieRoll) {
 		MonsterTable monsterTable = getMonsterTableFor(parent,summonType);
 		if (summonType.matches(SummonType.demon.toString())) {
 			character = new CharacterWrapper(caster);
 		}
 		DieRoller roller = DieRollBuilder.getDieRollBuilder(parent,character).createRoller(monsterTable);
-		roller.rollDice(summonType);
+		if (dieRoll>0&&dieRoll<7) {
+			roller.setDice(dieRoll);
+		}
+		else {
+			roller.rollDice(summonType);
+		}
 		String result = monsterTable.apply(character,roller);
 		RealmLogging.logMessage(caster.getName(),monsterTable.getTableName(true)+" roll: "+roller.getDescription());
 		RealmLogging.logMessage(caster.getName(),monsterTable.getTableName(true)+" result: "+result);
