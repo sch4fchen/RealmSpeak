@@ -7,15 +7,17 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.quest.CharacterActionType;
+import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.TradeType;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRequirementTrade extends QuestRequirement {
 	private static Logger logger = Logger.getLogger(QuestRequirementTrade.class.getName());
 	
-	public static String TRADE_TYPE = "_tt";
-	public static String TRADE_WITH_REGEX = "_trx";
-	public static String TRADE_ITEM_REGEX = "_irx";
+	public static final String TRADE_TYPE = "_tt";
+	public static final String TRADE_WITH_REGEX = "_trx";
+	public static final String TRADE_ITEM_REGEX = "_irx";
+	public static final String ADD_MARK = "_add_mark";
 
 	public QuestRequirementTrade(GameObject go) {
 		super(go);
@@ -41,6 +43,9 @@ public class QuestRequirementTrade extends QuestRequirement {
 				Pattern itemPattern = itemRegex!=null && itemRegex.trim().length()>0?Pattern.compile(itemRegex):null;
 				for (GameObject go:reqParams.objectList) {
 					if (itemPattern==null || itemPattern.matcher(go.getName()).find()) {
+						if (markItem()) {
+							go.setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+						}
 						return true;
 					}
 				}
@@ -84,5 +89,8 @@ public class QuestRequirementTrade extends QuestRequirement {
 	}
 	public String getTradeItemRegEx() {
 		return getString(TRADE_ITEM_REGEX);
+	}
+	public boolean markItem() {
+		return getBoolean(ADD_MARK);
 	}
 }

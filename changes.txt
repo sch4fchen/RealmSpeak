@@ -76,7 +76,7 @@ QUEST UPDATE:
 # QuestRequirementPath: Fix counting paths of "Game"
 # Minor Character ability Monster Control: option for loosing corresponding monster control when loosing minor character
 # QuestRequirement Attribute and Kill: Optional description for regex
-# QuestRequirement Loot and Inventory: Option to add marks to items if requirement fulfilled
+# QuestRequirement Loot, Inventory and Trade: Option to add marks to items if requirement fulfilled
 SUPER REALM:
 # Sort content of dwellings and treasure locations at setup
 # Add missions
