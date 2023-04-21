@@ -18,6 +18,7 @@ public class QuestRequirementLoot extends QuestRequirement {
 	public static final String TREASURE_TYPE = "_tt";
 	public static final String REGEX_FILTER = "_regex";
 	public static final String REQ_MARK = "_req_mark";
+	public static final String ADD_MARK = "_add_mark";
 	
 	public QuestRequirementLoot(GameObject go) {
 		super(go);
@@ -26,6 +27,11 @@ public class QuestRequirementLoot extends QuestRequirement {
 	protected boolean testFulfillsRequirement(JFrame frame,CharacterWrapper character,QuestRequirementParams reqParams) {
 		if (reqParams!=null && "Loot".equals(reqParams.actionName)) {
 			ArrayList<GameObject> matches = filterObjectsForRequirement(character,reqParams.objectList,logger);
+			if (markItems() && !matches.isEmpty() ) {
+				for (GameObject item : matches) {
+					item.setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+				}
+			}
 			return !matches.isEmpty();
 		}
 		logger.fine(character.getName()+" did not Loot.");
@@ -129,5 +135,8 @@ public class QuestRequirementLoot extends QuestRequirement {
 	}
 	public boolean requiresMark() {
 		return getBoolean(REQ_MARK);
+	}
+	public boolean markItems() {
+		return getBoolean(ADD_MARK);
 	}
 }

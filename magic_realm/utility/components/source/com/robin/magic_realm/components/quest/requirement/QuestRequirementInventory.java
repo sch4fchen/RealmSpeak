@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.quest.CharacterActionType;
+import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.TreasureType;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -37,31 +38,38 @@ public class QuestRequirementInventory extends QuestRequirementLoot {
 		}
 		int n = getNumber();
 		int found = matches.size();
+		ArrayList<GameObject> validMatches = new ArrayList<>();
 		if (found>=n) {
-			if (reqActive) {
-				for(GameObject match:matches) {
-					if (!match.hasThisAttribute(Constants.ACTIVATED)) {
+			for(GameObject match:matches) {
+					if (reqActive && !match.hasThisAttribute(Constants.ACTIVATED)) {
 						logger.fine(match.getName()+" must be activated.");
 						found--;
+						continue;
 					}
-				}
-			}
-			if (reqDeactive) {
-				for(GameObject match:matches) {
-					if (match.hasThisAttribute(Constants.ACTIVATED)) {
+					if (reqDeactive && match.hasThisAttribute(Constants.ACTIVATED)) {
 						logger.fine(match.getName()+" must be deactivated.");
 						found--;
+						continue;
 					}
-				}
-			}
-			
+					validMatches.add(match);
+			}			
 			if (mustBeExactTheNumber()) {
 				if (found==n) {
+					if (markItems()) {
+						for (GameObject validItem : validMatches) {
+							validItem.setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+						}
+					}
 					return true;
 				}
 			}
 			else {
 				if (found>=n) {
+					if (markItems()) {
+						for (GameObject validItem : validMatches) {
+							validItem.setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+						}
+					}
 					return true;
 				}
 			}
