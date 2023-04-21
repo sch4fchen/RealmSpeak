@@ -1,9 +1,8 @@
 ::ROADMAP::
-Q57
 A77: Looting the Sword of Terror from a TWT location
 Q26
+Q57
 QE1007
-QE1010 - Through the Chaos Gate
 A22 & Q40 quests
 Character Potraits for Super Realm
 ---Basic Functionalities for current content---
@@ -72,7 +71,7 @@ First Edition Optional Rule - Glory: When a character or his hired natives kill 
 Version 1.1.7.6
 HINT: older save games are not fully compatible with this version (e.g. spell targeting)
 QUEST UPDATE:
-# Updates to quests: A22-A26, A41-A54, A75-A77, A87, A89, E28, E43-E44, Q11-Q14, Q24-Q25, Q57, QE1006, QE1019-QE1020
+# Updates to quests: A22-A26, A41-A54, A75-A77, A87, A89, E28, E43-E44, Q11-Q14, Q24-Q25, Q57, QE1006, QE1010, QE1019-QE1020
 # Remove obsolete quests: Q58-Q63
 # QuestRewardNoCombat
 # QuestRewardNoProwling
