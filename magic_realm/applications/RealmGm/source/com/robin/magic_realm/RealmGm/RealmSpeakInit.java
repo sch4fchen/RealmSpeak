@@ -368,6 +368,7 @@ public class RealmSpeakInit {
 		QuestDeck deck = QuestDeck.findDeck(data);
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		for(Quest template:QuestLoader.loadAllQuestsFromQuestFolder()) {
+			if (!template.verifyGameVariant(hostPrefs)) continue;
 			if ((hostPrefs.hasPref(Constants.HOUSE3_QTR_AND_SR_QUEST_CARDS) && (template.getBoolean(QuestConstants.WORKS_WITH_QTR) || template.getBoolean(QuestConstants.WORKS_WITH_SR)))
 					|| (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) && !hostPrefs.hasPref(Constants.HOUSE3_EXCHANGE_QTR_AND_SR_QUEST_CARDS) && template.getBoolean(QuestConstants.WORKS_WITH_QTR))
 					|| (hostPrefs.hasPref(Constants.QST_SR_QUESTS) && !hostPrefs.hasPref(Constants.HOUSE3_EXCHANGE_QTR_AND_SR_QUEST_CARDS) && template.getBoolean(QuestConstants.WORKS_WITH_SR))
@@ -414,6 +415,7 @@ public class RealmSpeakInit {
 		QuestBookEvents book = QuestBookEvents.findBook(data);
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		for(Quest template:QuestLoader.loadAllQuestsFromQuestFolder()) {
+			if (!template.verifyGameVariant(hostPrefs)) continue;
 			if (hostPrefs.hasPref(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS) && template.isEvent()) continue;
 			boolean doesRequireActivation = false;
 			if ((hostPrefs.hasPref(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITHOUT_ACTIVATION) || hostPrefs.hasPref(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITH_ACTIVATION)) && template.isEvent()) {
@@ -444,7 +446,9 @@ public class RealmSpeakInit {
 	}
 	public static void prepGuildQuests(GameData data, boolean checkForDuplicateQuests) {
 		QuestDeck deck = QuestDeck.findDeck(data);
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		for(Quest template:QuestLoader.loadAllQuestsFromQuestFolder()) {
+			if (!template.verifyGameVariant(hostPrefs)) continue;
 			if (checkForDuplicateQuests && deck.getAllQuestNames().contains(template.getName())) continue;
 			if (template.getGuild()!=null) {
 				Quest quest = template.copyQuestToGameData(data);

@@ -605,12 +605,12 @@ public class Quest extends GameObjectWrapper {
 		return true;
 	}
 	
-	private boolean verifyGameVariant(HostPrefWrapper hostPrefs) {
+	public boolean verifyGameVariant(HostPrefWrapper hostPrefs) {
 		boolean forOriginal = getBoolean(QuestConstants.VARIANT_ORIGINAL);
 		boolean forPruitts = getBoolean(QuestConstants.VARIANT_PRUITTS);
 		boolean forExpansion = getBoolean(QuestConstants.VARIANT_EXP1);
 		boolean forSuperRealm = getBoolean(QuestConstants.VARIANT_SUPER_REALM);
-		boolean forAny = (forOriginal && forPruitts && forExpansion) || (!forOriginal && !forPruitts && !forExpansion);
+		boolean forAny = (forOriginal && forPruitts && forExpansion && forSuperRealm) || (!forOriginal && !forPruitts && !forExpansion && !forSuperRealm);
 		if (forAny) return true;
 		
 		String keyVals = hostPrefs.getGameKeyVals();
