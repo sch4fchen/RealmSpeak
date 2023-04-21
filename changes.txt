@@ -1,5 +1,4 @@
 ::ROADMAP::
-A77: Looting the Sword of Terror from a TWT location
 Q57
 Character Potraits for Super Realm
 ---Basic Functionalities for current content---
