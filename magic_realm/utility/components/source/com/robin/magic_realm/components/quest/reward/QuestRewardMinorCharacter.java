@@ -46,29 +46,27 @@ public class QuestRewardMinorCharacter extends QuestReward {
 			character.getGameObject().add(minorCharacter.getGameObject());
 		}
 		else {
+			ArrayList<String> controls = new ArrayList<>();
 			if (minorCharacter.getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL_VALIDATE_CONTROL)) {
-				ArrayList<String> controls = new ArrayList<>();
 				if (minorCharacter.getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL)) {
 					controls.addAll(minorCharacter.getGameObject().getThisAttributeList(Constants.MONSTER_CONTROL));
-				}
-				TileLocation loc = character.getCurrentLocation();
-				if (loc != null && loc.clearing != null) {
-					ArrayList<RealmComponent> clearingComponents = loc.clearing.getClearingComponents();
-					for (RealmComponent monster : clearingComponents) {
-						if (!monster.isMonster() || monster.getOwner()==null || monster.getOwner().getGameObject()!=character.getGameObject()) continue;
-						for (String monsterType : controls) {
-							if (monster.getGameObject().getName().matches(monsterType.toString())) {
-								character.removeHireling(monster.getGameObject());
-							}
-						}
-						
-					}
 				}
 			}
 			
 			character.getGameObject().remove(minorCharacter.getGameObject());
 			
 			if (minorCharacter.getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL_VALIDATE_CONTROL)) {
+				RealmComponent characterRC = RealmComponent.getRealmComponent(character.getGameObject());
+				ArrayList<String> canControl = characterRC.getControllableMonsters();
+				for (RealmComponent monster : character.getAllHirelings()) {
+					if (!monster.isMonster()) continue;
+					for (String monsterType : controls) {
+						if (canControl.contains(monsterType)) continue;
+						if (monster.getGameObject().getName().matches(monsterType.toString())) {
+							character.removeHireling(monster.getGameObject());
+						}
+					}
+				}
 				character.distributeMonsterControlInCurrentClearing(false);
 			}
 		}
