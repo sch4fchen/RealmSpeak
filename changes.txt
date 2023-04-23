@@ -69,6 +69,8 @@ First Edition Optional Rule - https://boardgamegeek.com/thread/2503528/1st-editi
 First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 
 Version 1.1.7.7
+BUGS/ISSUES:
+# Add quest check when looting treasures inside a TWT
 
 Version 1.1.7.6
 HINT: older save games are not fully compatible with this version (e.g. spell targeting)

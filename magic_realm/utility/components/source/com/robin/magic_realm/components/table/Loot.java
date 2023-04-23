@@ -256,7 +256,7 @@ public class Loot extends RealmTable {
 
 		if (!thing.hasThisAttribute(Constants.NEEDS_OPEN)) {
 			// If doesn't need to be opened, or is already opened, then handle special attributes before adding
-			handleSpecial(character,thing,true);
+			handleSpecial(character,thing,true,true);
 		}
 		else {
 			// If the treasure is not "open", then just add the treasure directly
@@ -382,6 +382,9 @@ public class Loot extends RealmTable {
 	 * This should be called upon receiving an item, or opening an item (like the chest) for the first time.
 	 */
 	public void handleSpecial(CharacterWrapper character, GameObject thing,boolean addByDefault) {
+		handleSpecial(character,thing,addByDefault,false);
+	}
+	public void handleSpecial(CharacterWrapper character, GameObject thing,boolean addByDefault,boolean testQuestRequirementsForLooting) {
 		if (thing.hasThisAttribute("curse")) {
 			setNewTable(new Curse(getParentFrame(), character.getGameObject()));
 		}
@@ -431,6 +434,14 @@ public class Loot extends RealmTable {
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(thing.getGameData());
 			for (GameObject go:gain) {
 				addItemToCharacter(getParentFrame(),getListener(),character,go,hostPrefs);
+				if (testQuestRequirementsForLooting) {
+					QuestRequirementParams qp = new QuestRequirementParams();
+					qp.actionName = "Loot";
+					qp.actionType = CharacterActionType.SearchTable;
+					qp.searchHadAnEffect = true;
+					qp.objectList.add(go);
+					character.testQuestRequirements(getParentFrame(),qp);
+				}
 			}
 		}
 		if (thing.hasThisAttribute(Constants.CANNOT_MOVE) && treasureLocation != null) {
