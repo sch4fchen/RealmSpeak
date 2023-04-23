@@ -62,6 +62,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		NoCombat,
 		NoProwling,
 		NoSummoning,
+		Note,
 		PathsPassages,
 		Phantasm,
 		PowerOfThePit,
@@ -147,6 +148,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case NoCombat:					return "Character does not participate in combat this round.";
 				case NoProwling:				return "Character does not make denizens prowling this round.";
 				case NoSummoning:				return "Character does not summon monsters this round.";
+				case Note:						return "Add a note to characters journal.";
 				case PathsPassages:				return "Discover Paths and/or Passages in the current clearing or tile.";
 				case Phantasm:					return "Give or remove a phantasm to the character.";
 				case PowerOfThePit:				return "Grants the character a Power of the Pit.";
@@ -407,6 +409,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;	
 			case NoSummoning:
 				reward = new QuestRewardNoSummoning(go);
+				break;
+			case Note:
+				reward = new QuestRewardNote(go);
 				break;
 			case PathsPassages:
 				reward = new QuestRewardPathsPassages(go);

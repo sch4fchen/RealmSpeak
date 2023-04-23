@@ -244,6 +244,12 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case NoSummoning:
 				break;
+			case Note:
+				list.add(new QuestPropertyBlock(QuestRewardNote.SOURCE, "Source", FieldType.SmartTextLine));
+				list.add(new QuestPropertyBlock(QuestRewardNote.EVENT, "Event", FieldType.SmartTextLine));
+				list.add(new QuestPropertyBlock(QuestRewardNote.NOTE, "Text", FieldType.SmartTextArea));
+				list.add(new QuestPropertyBlock(QuestRewardNote.DELTE_OLD, "Delete old note?", FieldType.Boolean));
+				break;
 			case PathsPassages:
 				list.add(new QuestPropertyBlock(QuestRewardPathsPassages.DISCOVERY_TYPE, "Road type to discover", FieldType.StringSelector, RoadDiscoveryType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardPathsPassages.DISCOVERY_SCOPE, "Scope of discovery", FieldType.StringSelector, MapScopeType.values()));

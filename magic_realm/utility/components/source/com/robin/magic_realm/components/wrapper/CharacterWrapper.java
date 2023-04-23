@@ -6513,7 +6513,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public void addNote(String playerName,String event,String note) {
 		addNote("PLAYER"+playerName,event,note,false);
 	}
-	private void addNote(String source,String event,String note,boolean deleteOld) {
+	public void addNote(String source,String event,String note,boolean deleteOld) {
 		if (source==null || event==null || note==null) return;
 		if (!isCharacter()) {
 			// Forward notes on to hiring character

@@ -71,7 +71,7 @@ QUEST UPDATE:
 # QuestRewardNoCombat
 # QuestRewardNoProwling
 # QuestRewardNoSummoning
-# QuestRequirementPath: Fix counting paths of "Game"
+# QuestRewardNote
 # Minor Character ability Monster Control: option for loosing corresponding monster control when loosing minor character
 # QuestRequirement Attribute and Kill: Optional description for regex
 # QuestRequirement Loot, Inventory and Trade: Option to add marks to items if requirement fulfilled
@@ -97,11 +97,12 @@ NEW FEATURES:
 # Support for weapon bonus attack speed, length and sharpness when supplied with corresponding magic
 # Support for denizens to cast spells
 BUGS/ISSUES:
+# Fix crash after completing a quest for certain circumstances
+# Fix crash (and log) if canceling a trade
 # Control monster (multiple times with different durations) does not reduce term of hire
 # Update available special actions after gaining or loosing a minor character
 # Check for quest requirements after deactivating an item
-# Fix crash after completing a quest for certain circumstances
-# Fix crash (and log) if canceling a trade
+# QuestRequirementPath: Fix counting paths of "Game"
 # QuestRewardAlterHide: fix character unhiding at start of a turn
 # Quests: Fix validation of game variant when loading quests
 
