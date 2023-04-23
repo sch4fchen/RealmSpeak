@@ -48820,13 +48820,16 @@
         <attribute icon_size="0.9" />
         <attribute icon_rider="marksman" />
         <attribute native_name="Caster" />
+        <attribute no_change_tactics="" />
+        <attribute change_tactics_after_casting="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute attack_speed="2" />
-        <attribute strength="M" />
         <attribute length="15" />
         <attribute chit_color="lightgreen" />
+        <attribute magic_type="II" />
+        <attribute attack_spell="Stones Fly" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
@@ -48835,6 +48838,7 @@
         <attribute length="9" />
         <attribute chit_color="forestgreen" />
       </AttributeBlock>
+      <contains id="2194" />
     </GameObject>
     <GameObject id="1837" name="Pagan 2">
       <AttributeBlock blockName="this">
@@ -48856,13 +48860,16 @@
         <attribute icon_size="0.9" />
         <attribute icon_rider="marksman" />
         <attribute native_name="Caster" />
+        <attribute no_change_tactics="" />
+        <attribute change_tactics_after_casting="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute attack_speed="2" />
-        <attribute strength="M" />
         <attribute length="15" />
         <attribute chit_color="lightgreen" />
+        <attribute magic_type="II" />
+        <attribute attack_spell="Stones Fly" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
@@ -48871,6 +48878,7 @@
         <attribute length="9" />
         <attribute chit_color="forestgreen" />
       </AttributeBlock>
+      <contains id="2195" />
     </GameObject>
     <GameObject id="1838" name="Pagan 3">
       <AttributeBlock blockName="this">
@@ -48892,13 +48900,16 @@
         <attribute icon_size="0.9" />
         <attribute icon_rider="marksman" />
         <attribute native_name="Caster" />
+        <attribute no_change_tactics="" />
+        <attribute change_tactics_after_casting="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute attack_speed="2" />
-        <attribute strength="M" />
         <attribute length="15" />
         <attribute chit_color="lightgreen" />
+        <attribute magic_type="II" />
+        <attribute attack_spell="Stones Fly" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
@@ -48907,6 +48918,7 @@
         <attribute length="9" />
         <attribute chit_color="forestgreen" />
       </AttributeBlock>
+      <contains id="2196" />
     </GameObject>
     <GameObject id="1839" name="Pagan HQ">
       <AttributeBlock blockName="this">
@@ -48928,13 +48940,16 @@
         <attribute icon_size="0.9" />
         <attribute icon_rider="marksman" />
         <attribute native_name="Caster" />
+        <attribute no_change_tactics="" />
+        <attribute change_tactics_after_casting="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute attack_speed="2" />
-        <attribute strength="M" />
         <attribute length="15" />
         <attribute chit_color="lightgreen" />
+        <attribute magic_type="II" />
+        <attribute attack_spell="Stones Fly" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
@@ -48943,6 +48958,7 @@
         <attribute length="9" />
         <attribute chit_color="forestgreen" />
       </AttributeBlock>
+      <contains id="2197" />
     </GameObject>
     <GameObject id="1840" name="Mage 1">
       <AttributeBlock blockName="this">
@@ -56912,6 +56928,74 @@
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
         <attribute negative_aura="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2194" name="Stones Fly">
+      <AttributeBlock blockName="this">
+        <attribute duration="attack" />
+        <attribute target="multiple" />
+        <attribute text="MISSILE attack on each target (specify)" />
+        <attribute magic_color="gray" />
+        <attribute sharpness="1" />
+        <attribute strength="L" />
+        <attribute length="15" />
+        <attribute missile="magic" />
+        <attribute min_targets="4" />
+        <attribute host_okay="" />
+        <attribute table="magicmissil" />
+        <attribute super_realm="" />
+        <attribute spell_denizen="II" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2195" name="Stones Fly">
+      <AttributeBlock blockName="this">
+        <attribute duration="attack" />
+        <attribute target="multiple" />
+        <attribute text="MISSILE attack on each target (specify)" />
+        <attribute magic_color="gray" />
+        <attribute sharpness="1" />
+        <attribute strength="L" />
+        <attribute length="15" />
+        <attribute missile="magic" />
+        <attribute min_targets="4" />
+        <attribute host_okay="" />
+        <attribute table="magicmissil" />
+        <attribute super_realm="" />
+        <attribute spell_denizen="II" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2196" name="Stones Fly">
+      <AttributeBlock blockName="this">
+        <attribute duration="attack" />
+        <attribute target="multiple" />
+        <attribute text="MISSILE attack on each target (specify)" />
+        <attribute magic_color="gray" />
+        <attribute sharpness="1" />
+        <attribute strength="L" />
+        <attribute length="15" />
+        <attribute missile="magic" />
+        <attribute min_targets="4" />
+        <attribute host_okay="" />
+        <attribute table="magicmissil" />
+        <attribute super_realm="" />
+        <attribute spell_denizen="II" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2197" name="Stones Fly">
+      <AttributeBlock blockName="this">
+        <attribute duration="attack" />
+        <attribute target="multiple" />
+        <attribute text="MISSILE attack on each target (specify)" />
+        <attribute magic_color="gray" />
+        <attribute sharpness="1" />
+        <attribute strength="L" />
+        <attribute length="15" />
+        <attribute missile="magic" />
+        <attribute min_targets="4" />
+        <attribute host_okay="" />
+        <attribute table="magicmissil" />
+        <attribute super_realm="" />
+        <attribute spell_denizen="II" />
       </AttributeBlock>
     </GameObject>
   </objects>

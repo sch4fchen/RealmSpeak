@@ -522,10 +522,12 @@ public class BattleModel {
 							break;
 						}
 					}
-					if (spell!=null) {
-						spell.selectTargetForDenizen(hostPrefs, battleLocation, denizen,denizen.getTarget());
-						spell.castSpellByDenizen(denizen.getGameObject());
-						spells.put(Integer.valueOf(denizen.getAttackSpeed().getNum()),spell);
+					if (spell!=null && !spell.isAttackSpell()) {
+						boolean validTarget = spell.selectTargetForDenizen(hostPrefs, battleLocation, denizen,denizen.getTarget());
+						if (validTarget) {
+							spell.castSpellByDenizen(denizen.getGameObject());
+							spells.put(Integer.valueOf(denizen.getAttackSpeed().getNum()),spell);
+						}
 					}
 				}
 			}
@@ -696,20 +698,28 @@ public class BattleModel {
 				if (spellsAtSpeed == null) continue;
 				for (SpellWrapper spell : spellsAtSpeed) {
 					if (spell.isNullified() || !spell.isAlive()) continue;
+					ArrayList<String> logs = new ArrayList<String>();
 					
 					if (spell.isDenizenSpell()) {
-						spell.affectTargets(CombatFrame.getSingleton(),theGame,false,null);
-						
+						if (spell.isInstantSpell()) {
+							spell.affectTargets(CombatFrame.getSingleton(),theGame,false,null);
+						}
+						else if (spell.isCombatSpell() || spell.isDaySpell() || spell.isPermanentSpell() || spell.isPhaseSpell() || spell.isMoveSpell()) {
+							spell.affectTargets(CombatFrame.getSingleton(),theGame,true,null);
+						}
+						if (logs != null && !logs.isEmpty()) {
+							for (String log : logs) {
+								logBattleInfo(log);
+							}
+						}						
 						RealmComponent denizenRc = RealmComponent.getRealmComponent(spell.getCaster().getGameObject());
 						if ((denizenRc.isMonster() && ((MonsterChitComponent)denizenRc).changeTacticsAfterCasting())
 								|| (denizenRc.isNative() && ((NativeChitComponent)denizenRc).changeTacticsAfterCasting())) {
 							denizenRc.flip();
 						}
-						
 						continue;
 					}
 					
-					ArrayList<String> logs = new ArrayList<String>();
 					if (spell.isInstantSpell()) {
 						logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,true,spellsAtSpeed);
 					}
@@ -1523,7 +1533,27 @@ public class BattleModel {
 						if (spell!=null) {
 							spell.selectTargetForDenizen(hostPrefs, battleLocation, attacker, (RealmComponent)target);
 							spell.castSpellByDenizen(attacker.getGameObject());
-							spell.affectTargets(SpellWrapper.dummyFrame,theGame,false, null);
+							if (spell.isAttackSpell()) {
+								int attacks = spell.getGameObject().getThisInt("min_targets");
+								if(attacks == 0) {
+									attacks = 1;
+								}
+								int i=1;
+								while (i<=attacks) {
+									Harm spellHarm = getAdjustedHarm(spell,fumbleModifier,targetCombat.getGameObject().getStringId());
+									CombatWrapper spellCaster = new CombatWrapper(spell.getCaster().getGameObject());
+									spellCaster.addHarmApplied(spellHarm,targetCombat.getGameObject());
+									// Apply the hit
+									targetCombat.addHitBy(attacker.getGameObject());
+									currentNewWounds = targetCombat.getNewWounds();
+									logBattleInfo(target.getGameObject().getNameWithNumber()+" is hit with "+spellHarm+" harm along box "+attacker.getAttackCombatBox());
+									hitCausedHarm = target.applyHit(theGame,hostPrefs,attacker,attacker.getAttackCombatBox(),spellHarm,attackOrderPos);
+									i++;
+								}
+							}
+							else {
+								spell.affectTargets(SpellWrapper.dummyFrame,theGame,false, null);
+							}
 							spellCasting = true;
 							spellCasted = true;
 						}

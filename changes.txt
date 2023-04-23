@@ -87,7 +87,7 @@ SUPER REALM:
 # Mesmerize Weakened effect applies to FlySpeed (change of Super Realm 0.997)
 # Optional rules for SR: Regenerating all denizen at the end of the month (no regenerating at 7th day of the week)
 # Optional rule for SR: Regenerating horses
-# Native spell caster: Conjurors, Coven, Cultists, Enchanters
+# Native spell caster: Conjurors, Coven, Cultists, Enchanters, Pagans
 # New spell: Summon Demon
 # New spell: Negative Aura
 NEW FEATURES:
