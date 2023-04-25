@@ -100,24 +100,24 @@ public class RaiseDead extends MonsterTable {
 		// L4/4 and L2/6
 		GameObject go = monsterCreator.createOrReuseMonster(data);
 		monsterCreator.setupGameObject(go,"Skeleton","skull","M",false);
-		monsterCreator.setupSide(go,"light","L",0,4,0,4,"white");
-		monsterCreator.setupSide(go,"dark","L",0,2,0,6,"gray");
+		MonsterCreator.setupSide(go,"light","L",0,4,0,4,"white");
+		MonsterCreator.setupSide(go,"dark","L",0,2,0,6,"gray");
 		return go;
 	}
 	public static GameObject createSkeletonArcher(MonsterCreator monsterCreator,GameData data) {
 		// -/3 and M*3/5
 		GameObject go = monsterCreator.createOrReuseMonster(data);
 		monsterCreator.setupGameObject(go,"Skeletal Archer","skullbow","M",false);
-		monsterCreator.setupSide(go,"light",null,0,0,0,3,"white");
-		monsterCreator.setupSide(go,"dark","M",1,3,14,5,"gray");
+		MonsterCreator.setupSide(go,"light",null,0,0,0,3,"white");
+		MonsterCreator.setupSide(go,"dark","M",1,3,14,5,"gray");
 		return go;
 	}
 	public static GameObject createSkeletonSwordsman(MonsterCreator monsterCreator,GameData data) {
 		// L*4/4 and L*2/6
 		GameObject go = monsterCreator.createOrReuseMonster(data);
 		monsterCreator.setupGameObject(go,"Skeletal Swordsman","skullsword","M",false);
-		monsterCreator.setupSide(go,"light","L",1,4,3,4,"white");
-		monsterCreator.setupSide(go,"dark","L",1,2,3,6,"gray");
+		MonsterCreator.setupSide(go,"light","L",1,4,3,4,"white");
+		MonsterCreator.setupSide(go,"dark","L",1,2,3,6,"gray");
 		return go;
 	}
 	public static GameObject createZombie(MonsterCreator monsterCreator,GameData data,int r) {
@@ -127,18 +127,18 @@ public class RaiseDead extends MonsterTable {
 		switch(r) {
 			case 0:
 				// M5/5 and H6/5
-				monsterCreator.setupSide(go,"light","M",0,5,0,5,"peach");
-				monsterCreator.setupSide(go,"dark","H",0,6,0,5,"purple");
+				MonsterCreator.setupSide(go,"light","M",0,5,0,5,"peach");
+				MonsterCreator.setupSide(go,"dark","H",0,6,0,5,"purple");
 				break;
 			case 1:
 				// M5/4 and T5/5
-				monsterCreator.setupSide(go,"light","M",0,5,0,4,"peach");
-				monsterCreator.setupSide(go,"dark","T",0,5,0,5,"purple");
+				MonsterCreator.setupSide(go,"light","M",0,5,0,4,"peach");
+				MonsterCreator.setupSide(go,"dark","T",0,5,0,5,"purple");
 				break;
 			case 2:
 				// L4/5 and M6/4
-				monsterCreator.setupSide(go,"light","L",0,4,0,5,"peach");
-				monsterCreator.setupSide(go,"dark","M",0,6,0,4,"purple");
+				MonsterCreator.setupSide(go,"light","L",0,4,0,5,"peach");
+				MonsterCreator.setupSide(go,"dark","M",0,6,0,4,"purple");
 				break;
 		}
 		return go;

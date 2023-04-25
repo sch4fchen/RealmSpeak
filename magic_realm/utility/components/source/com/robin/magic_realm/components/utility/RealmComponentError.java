@@ -41,9 +41,7 @@ public class RealmComponentError {
 			int ret = JOptionPane.showConfirmDialog(frame,error,title,JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 			return ret==JOptionPane.YES_OPTION;
 		}
-		else {
-			JOptionPane.showMessageDialog(frame,error,title,JOptionPane.ERROR_MESSAGE);
-			return false;
-		}
+		JOptionPane.showMessageDialog(frame,error,title,JOptionPane.ERROR_MESSAGE);
+		return false;
 	}
 }

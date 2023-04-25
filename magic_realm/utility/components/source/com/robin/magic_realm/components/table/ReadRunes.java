@@ -146,7 +146,7 @@ public class ReadRunes extends RealmTable {
 		}
 		if (list.size()>0) {
 			if (list.size()==1) { // the choice is obvious
-				return (GameObject)list.get(0);
+				return list.get(0);
 			}
 			
 			// otherwise:

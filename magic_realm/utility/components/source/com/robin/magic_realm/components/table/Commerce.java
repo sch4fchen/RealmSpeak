@@ -17,10 +17,10 @@ import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 public abstract class Commerce extends Trade {
 	
 	protected HostPrefWrapper hostPrefs;
-	protected Collection merchandise;
+	protected Collection<RealmComponent> merchandise;
 	private boolean blockBattle = false;
 	
-	public Commerce(JFrame frame,TradeInfo tradeInfo,Collection merchandise,HostPrefWrapper hostPrefs) {
+	public Commerce(JFrame frame,TradeInfo tradeInfo,Collection<RealmComponent> merchandise,HostPrefWrapper hostPrefs) {
 		super(frame,tradeInfo);
 		this.merchandise = merchandise;
 		this.hostPrefs = hostPrefs;
@@ -80,8 +80,7 @@ public abstract class Commerce extends Trade {
 	}
 	protected int getTotalBasePrice() {
 		int totalPrice = 0;
-		for (Iterator i=merchandise.iterator();i.hasNext();) {
-			RealmComponent merchandise = (RealmComponent)i.next();
+		for (RealmComponent merchandise : merchandise) {
 			totalPrice += TreasureUtility.getBasePrice(tradeInfo.getTrader(),merchandise);
 		}
 		return totalPrice;
@@ -118,8 +117,7 @@ public abstract class Commerce extends Trade {
 		int totalGoldReceieved = bonus;
 		StringBuffer sb = new StringBuffer();
 		ArrayList<GameObject> itemList = new ArrayList<GameObject>();
-		for (Iterator i=merchandise.iterator();i.hasNext();) {
-			RealmComponent merchandise = (RealmComponent)i.next();
+		for (RealmComponent merchandise : merchandise) {
 			itemList.add(merchandise.getGameObject());
 			int basePrice = TreasureUtility.getBasePrice(tradeInfo.getTrader(),merchandise); // Without commerce rules, the basePrice is the selling price (already figured in by the getBasePrice method)
 			sb.append("You sold the "+merchandise.getGameObject().getName()+" for "+basePrice+" gold.\n");
@@ -141,7 +139,7 @@ public abstract class Commerce extends Trade {
 			character.addGold(bonus,true); // ignore curses here, because its a NET amount which involves some subtraction
 		}
 		if (merchandise.size()==1) {
-			RealmComponent item = (RealmComponent)merchandise.iterator().next();
+			RealmComponent item = merchandise.iterator().next();
 			result = "Total received for the "+item.getGameObject().getName()+" was "+totalGoldReceieved+" gold.";
 		}
 		else {
@@ -166,7 +164,7 @@ public abstract class Commerce extends Trade {
 				JOptionPane.INFORMATION_MESSAGE);
 		return result;
 	}
-	public static Commerce createCommerceTable(JFrame frame,CharacterWrapper character,TileLocation currentLocation,RealmComponent trader,Collection merchandise,int ignoreBuyDrinksLimit,HostPrefWrapper hostPrefs) {
+	public static Commerce createCommerceTable(JFrame frame,CharacterWrapper character,TileLocation currentLocation,RealmComponent trader,Collection<RealmComponent> merchandise,int ignoreBuyDrinksLimit,HostPrefWrapper hostPrefs) {
 		if (!hostPrefs.hasPref(Constants.OPT_COMMERCE)) {
 			return new CommerceNone(frame,new TradeInfo(trader),merchandise,hostPrefs);
 		}

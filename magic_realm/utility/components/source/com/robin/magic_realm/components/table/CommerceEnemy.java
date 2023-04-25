@@ -4,12 +4,13 @@ import java.util.Collection;
 
 import javax.swing.JFrame;
 
+import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TradeInfo;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class CommerceEnemy extends Commerce {
-	public CommerceEnemy(JFrame frame,TradeInfo tradeInfo,Collection merchandise,HostPrefWrapper hostPrefs) {
+	public CommerceEnemy(JFrame frame,TradeInfo tradeInfo,Collection<RealmComponent> merchandise,HostPrefWrapper hostPrefs) {
 		super(frame,tradeInfo,merchandise,hostPrefs);
 	}
 	public String getCommerceTableName() {

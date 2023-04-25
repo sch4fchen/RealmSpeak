@@ -358,7 +358,6 @@ public class GameHtmlGenerator extends HtmlGenerator {
 				treasureSetupCardView[1] = new TreasureSetupCardView(data,"","!"+Constants.BOARD_NUMBER,true,true);
 				setupCardNames.add("Treasure Setup Card A");
 				setupCardNames.add("Chart of Clans A");
-				int j = 2;
 				for (int n=1;n<count;n++) {
 					String boardNumber = Constants.MULTI_BOARD_APPENDS.substring(n-1,n);
 					treasureSetupCardView[n] = new TreasureSetupCardView(data,"",Constants.BOARD_NUMBER+"="+boardNumber,true);
