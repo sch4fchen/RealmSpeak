@@ -129,9 +129,8 @@ public class SpellSet {
 			validTypeObjects.add(obj);
 		}
 	}
-	public void addColorChits(Collection in) {
-		for (Iterator i=in.iterator();i.hasNext();) {
-			MagicChit chit = (MagicChit)i.next();
+	public void addColorChits(Collection<MagicChit> in) {
+		for (MagicChit chit : in) {
 			addColorChit(chit);
 		}
 	}

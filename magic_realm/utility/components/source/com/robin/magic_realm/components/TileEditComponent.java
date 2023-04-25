@@ -46,10 +46,10 @@ public class TileEditComponent extends TileComponent {
 		String blockName = isEnchanted()?"enchanted":"normal";
 		
 		// First, rip out all clearing/path keys from the side
-		OrderedHashtable hash = gameObject.getAttributeBlock(blockName);
+		OrderedHashtable<String, Object> hash = gameObject.getAttributeBlock(blockName);
 		ArrayList<String> keysToRemove = new ArrayList<>();
-		for (Enumeration e=hash.keys();e.hasMoreElements();) {
-			String key = (String)e.nextElement();
+		for (Enumeration<String> e=hash.keys();e.hasMoreElements();) {
+			String key = e.nextElement();
 			if (key.startsWith("path") || key.startsWith("clearing")) {
 				keysToRemove.add(key);
 			}

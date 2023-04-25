@@ -28,11 +28,11 @@ public class CharacterEditRibbon extends JPanel {
 	
 	private ArrayList<GameObject> spellChoices;
 		
-	private JList ownedSpellsList;
+	private JList<OwnedSpellsListModel> ownedSpellsList;
 	private OwnedSpellsListModel ownedSpellsListModel;
 	private ArrayList<SpellWrapper> ownedSpells;
 	
-	private JList breakableSpellsList;
+	private JList<BreakableSpellsListModel> breakableSpellsList;
 	private BreakableSpellsListModel breakableSpellsListModel;
 	private ArrayList<SpellWrapper> breakableSpells;
 	private ArrayList<StateChooser> stateChoosers = new ArrayList<StateChooser>();
@@ -338,7 +338,7 @@ public class CharacterEditRibbon extends JPanel {
 	}
 	private JComponent buildSpellEditor() {
 		JPanel panel = new JPanel(new BorderLayout());
-		ownedSpellsList = new JList();
+		ownedSpellsList = new JList<>();
 		updateOwnedSpells();
 		panel.add(new JScrollPane(ownedSpellsList));
 		JButton addStartSpell = new JButton("Add Starting");
@@ -385,7 +385,7 @@ public class CharacterEditRibbon extends JPanel {
 		return selector.getSpellSelection().get(0);
 	}
 	private JComponent buildBreakableSpellsList() {
-		breakableSpellsList = new JList();
+		breakableSpellsList = new JList<>();
 		updateBreakableSpells();
 		JPanel panel = new JPanel(new BorderLayout());
 		panel.add(new JScrollPane(breakableSpellsList),BorderLayout.CENTER);

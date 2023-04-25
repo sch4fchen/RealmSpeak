@@ -27,7 +27,7 @@ public class StringBufferedList {
 		}
 	}
 	public void countIdenticalItems() {
-		HashLists hash = new HashLists();
+		HashLists<String,String> hash = new HashLists<>();
 		ArrayList<String> keys = new ArrayList<>();
 		int n=0;
 		for (String string:list) {

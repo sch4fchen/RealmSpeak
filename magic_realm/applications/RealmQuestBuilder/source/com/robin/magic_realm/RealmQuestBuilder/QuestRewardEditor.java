@@ -1,7 +1,6 @@
 package com.robin.magic_realm.RealmQuestBuilder;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 import javax.swing.JFrame;
 

@@ -186,7 +186,7 @@ public class CharacterSpyPanel extends JPanel {
 		
 		add(tabPane,"Center");
 	}
-	private Box getTitle(String text) {
+	private static Box getTitle(String text) {
 		Box line = Box.createHorizontalBox();
 		JLabel label = new JLabel(text);
 		label.setFont(font);
@@ -194,7 +194,7 @@ public class CharacterSpyPanel extends JPanel {
 		line.add(Box.createHorizontalGlue());
 		return line;
 	}
-	private Box getTextLine(String text) {
+	private static Box getTextLine(String text) {
 		Box line = Box.createHorizontalBox();
 		JLabel label = new JLabel(text);
 		label.setFont(font2);

@@ -131,8 +131,7 @@ public class TemplateLibrary {
 					
 					// Get steeds
 					if(includeHorse) {
-						for (Iterator i=go.getHold().iterator();i.hasNext();) {
-							GameObject held = (GameObject)i.next();
+						for (GameObject held : go.getHold()) {
 							GameObject heldTemplate = GameObject.createEmptyGameObject();
 							heldTemplate.copyAttributesFrom(held);
 							heldTemplate.setAttribute("trot","chit_color","paleyellow");
@@ -165,8 +164,7 @@ public class TemplateLibrary {
 		GameObject companion = gameData.createNewObject();
 		companion.copyAttributesFrom(go);
 		// Get steeds
-		for (Iterator i=go.getHold().iterator();i.hasNext();) {
-			GameObject held = (GameObject)i.next();
+		for (GameObject held : go.getHold()) {
 			GameObject heldTemplate = gameData.createNewObject();
 			heldTemplate.copyAttributesFrom(held);
 			companion.add(heldTemplate);

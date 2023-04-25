@@ -184,6 +184,8 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
  							boolean ashes = getCharacter().hasCurse(Constants.ASHES);
  							viewPanel.add(getDescriptorBlock(ashes?"ASHES":"GOLD",score.getRecordedPoints()));
  							break;
+ 						default:
+ 							break;
 					}
 					break;
 				case COL_OWNED:
@@ -279,8 +281,8 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 			case Fame:				return go.getThisInt("fame");
 			case Notoriety:			return go.getThisInt("notoriety");
 			case QuestPoints:		return go.getInt(Quest.QUEST_BLOCK,QuestConstants.VP_REWARD);
+			default:				return 0;
 		}
-		return 0;
 	}
 	private static JPanel getDescriptorBlock(String text,int val) {
 		return getDescriptorBlock(text,String.valueOf(val));
@@ -568,8 +570,9 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 					return col!=COL_RECORDED;
 				case Spells:
 					return col!=COL_OWNED;
+				default:
+					return true;
 			}
-			return true;
 		}
 		public Object getValue(int column) {
 			Score score = getScore();

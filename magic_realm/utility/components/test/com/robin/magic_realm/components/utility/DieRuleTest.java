@@ -8,7 +8,6 @@ import org.junit.Test;
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.*;
 
-@SuppressWarnings("static-method")
 public class DieRuleTest extends TestBaseWithLoader {
 	
 	@Test

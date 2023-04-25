@@ -57,7 +57,7 @@ public class RealmDirectInfoHolder {
 	private ArrayList<String> list;
 	public RealmDirectInfoHolder(GameData data) {
 		this.data = data;
-		list = new ArrayList();
+		list = new ArrayList<>();
 		// Three required placeholders
 		list.add("");
 		list.add("");
@@ -148,7 +148,7 @@ public class RealmDirectInfoHolder {
 		}
 		return ret;
 	}
-	public ArrayList getInfo() {
+	public ArrayList<String> getInfo() {
 		return list;
 	}
 }

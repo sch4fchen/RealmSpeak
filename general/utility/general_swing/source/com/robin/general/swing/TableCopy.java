@@ -45,7 +45,7 @@ public class TableCopy {
 		}
 		table.getActionMap().put(COPY,soleInstance.new TableCopyAction(COPY, table, copyEntireRow, copyEntireCol, copyHeaders) {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
-				soleInstance.copy(actionTable,actionCopyEntireRow,actionCopyEntireCol,actionCopyHeaders);
+				TableCopy.copy(actionTable,actionCopyEntireRow,actionCopyEntireCol,actionCopyHeaders);
 			}
 		});
 	}
@@ -93,7 +93,7 @@ public class TableCopy {
 	 * @param copyEntireCol		if true, the contents of entire cols containing selected cells are copied
 	* @param copyHeaders   if true, the column headers will be copied as well as the data selected in the table
 	 */
-	private void copy(JTable table, boolean copyEntireRow, boolean copyEntireCol, boolean copyHeaders) {
+	private static void copy(JTable table, boolean copyEntireRow, boolean copyEntireCol, boolean copyHeaders) {
 		if (table == null || table.getModel() == null) { return; }
 		TableModel model = table.getModel();
 		if (table.isEditing()) {

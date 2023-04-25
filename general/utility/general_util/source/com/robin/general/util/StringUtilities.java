@@ -132,7 +132,7 @@ public class StringUtilities {
 		}
 		return val;
 	}
-	private static void printCollectionDebug(Collection c) {
+	private static void printCollectionDebug(Collection<String> c) {
 		System.out.println(c.size()+":  "+c);
 	}
 	public static void main(String[] args) {

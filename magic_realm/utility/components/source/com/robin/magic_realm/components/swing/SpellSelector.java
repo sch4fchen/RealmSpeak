@@ -70,17 +70,16 @@ public class SpellSelector extends AggressiveDialog {
 	private void refreshFromPanel() {
 		fromTabPanel.removeAll();
 		
-		HashLists hashList = new HashLists();
+		HashLists<String,GameObject> hashList = new HashLists<>();
 		for (GameObject go:spellChoices) {
 			hashList.put(go.getThisAttribute("spell"),go);
 		}
 		
-		ArrayList types = new ArrayList(hashList.keySet());
+		ArrayList<String> types = new ArrayList<>(hashList.keySet());
 		Collections.sort(types); // not QUITE right, I think...
 		fromPanel = new RealmObjectPanel[types.size()];
 		int n=0;
-		for (Iterator i=types.iterator();i.hasNext();){
-			String type = (String)i.next();
+		for (String type : types){
 			fromPanel[n] = new RealmObjectPanel(false,false);
 			fromPanel[n].addMouseListener(selectSpellListener);
 			ArrayList<GameObject> spells = hashList.getList(type);

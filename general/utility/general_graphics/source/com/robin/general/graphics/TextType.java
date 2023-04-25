@@ -196,6 +196,8 @@ public class TextType {
 			case Right:
 				offset = width - screen.getFontMetrics().stringWidth(text);
 				break;
+			default:
+				break;
 		}
 		g.drawString(text,x+offset,y);
 		if (orig!=null) {

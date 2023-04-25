@@ -1442,6 +1442,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 			case Invalid:
 				prefix="I";
 				break;
+			default:
+				break;
 		}
 		addListItem(getCurrentDayKey()+"P",prefix+action);
 		addListItem(getCurrentDayKey()+"M",message==null?"":message);
