@@ -50,7 +50,6 @@ public class QuestConstants {
 	public static final String CHARACTER_MALE = "_cmal";
 	public static final String CHARACTER_FEMALE = "_cfem";
 	public static final String CHARACTER_SPEC_REGEX = "_crgx";
-	
 	//-------------------------------
 	
 	public static String [] wolfs = new String [] {"Wolf 1","Wolf 2"};

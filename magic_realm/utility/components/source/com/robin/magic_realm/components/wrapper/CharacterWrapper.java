@@ -143,6 +143,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	// Quests
 	public static final String QUEST_ID = "QSTID";
 	public static final String POST_QUEST_PARAMS = "QSTPQP";
+	public static final String QUEST_BONUS_VPS = "QSTBONUS";
 	
 	// Curses
 	public static final String CURSES_BLOCK = "CRS__";
@@ -2676,6 +2677,15 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return travelers;
 	}
+	public void setQuestBonusVps(int val) {
+		getGameObject().setAttribute(CharacterWrapper.VICTORY_REQ_BLOCK,CharacterWrapper.QUEST_BONUS_VPS,val);
+	}
+	public void addQuestBonusVps(int val) {
+		getGameObject().setAttribute(CharacterWrapper.VICTORY_REQ_BLOCK,CharacterWrapper.QUEST_BONUS_VPS,getQuestBonusVps()+val);
+	}
+	public int getQuestBonusVps() {
+		return getGameObject().getInt(CharacterWrapper.VICTORY_REQ_BLOCK,CharacterWrapper.QUEST_BONUS_VPS);
+	}
 	public Score getQuestPointScore() {
 		int count = 0;
 		ArrayList<GameObject> list = new ArrayList<>();
@@ -2685,6 +2695,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				list.add(quest.getGameObject());
 			}
 		}
+		count=count+getQuestBonusVps();
 		return new Score(0,count,1,getGameObject().getInt(CharacterWrapper.VICTORY_REQ_BLOCK,CharacterWrapper.V_QUEST_POINTS),list);
 	}
 	public Score getGreatTreasureScore() {
