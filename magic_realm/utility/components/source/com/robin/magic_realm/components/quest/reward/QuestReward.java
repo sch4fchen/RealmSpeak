@@ -68,6 +68,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		PowerOfThePit,
 		QuestComplete,
 		QuestFailed,
+		QuestPoints,
 		RegenerateDenizen,
 		RelationshipChange,
 		RelationshipSet,
@@ -154,6 +155,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case PowerOfThePit:				return "Grants the character a Power of the Pit.";
 				case QuestComplete:				return "Tells RealmSpeak that the character has completed this quest.";
 				case QuestFailed:				return "Tells RealmSpeak that the character has failed this quest.";
+				case QuestPoints:				return "Changes the VP reward of the quest.";
 				case RegenerateDenizen:			return "Regenerates denizen back to the chart of appearance.";
 				case RelationshipChange:		return "Modify the relationship of the character with a particular native group, or all natives in the clearing.";
 				case RelationshipSet:			return "Set the relationship of the character with a particular native group, or all natives in the clearing.";
@@ -427,6 +429,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case QuestFailed:
 				reward = new QuestRewardFailed(go);
+				break;
+			case QuestPoints:
+				reward = new QuestRewardQuestPoints(go);
 				break;
 			case RegenerateDenizen:
 				reward = new QuestRewardRegenerateDenizen(go);

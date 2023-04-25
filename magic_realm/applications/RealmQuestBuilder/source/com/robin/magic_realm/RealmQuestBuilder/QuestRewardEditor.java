@@ -379,6 +379,10 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case QuestFailed:
 				break;
+			case QuestPoints:
+				list.add(new QuestPropertyBlock(QuestRewardQuestPoints.AMOUNT, "Amount", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRewardQuestPoints.SUBSTRACT, "Substract points?", FieldType.Boolean));
+				break;
 			case Visitor:
 				list.add(new QuestPropertyBlock(QuestRewardVisitor.VISITOR_REGEX, "Visitor RegEx", FieldType.Regex, null, new String[] { "visitor" }));
 				list.add(new QuestPropertyBlock(QuestRewardVisitor.ACQUISITION_TYPE, "Method to acquire hireling", FieldType.StringSelector, ChitAcquisitionType.values()));
