@@ -1,9 +1,4 @@
 ::ROADMAP::
-A77 Sword of Terror.rsqst
-ISSUE: can't loot a sword of terror from "Remains of Thief" location.
-Current we can loot a sword of terror from TWT location (Enchanted Meadow, Toadstool circle, and Crypt of the knight).
-Please check quest code about how one can loot the sword from Remains of Thief; I don't think this location can be discovered?
-
 Character Potraits for Super Realm
 ---Basic Functionalities for current content---
 Super Realm: rules for minotaur shield
@@ -69,6 +64,8 @@ First Edition Optional Rule - https://boardgamegeek.com/thread/2503528/1st-editi
 First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 
 Version 1.1.7.7
+QUEST UPDATE:
+# Updates to quests: E17
 BUGS/ISSUES:
 # Add quest check when looting treasures inside a TWT
 
