@@ -1872,8 +1872,8 @@ public class ActionRow {
 			
 			RealmComponentOptionChooser compChooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Enchant which?",true);
 			int keyN = 0;
-			for (Iterator i=enchantable.iterator();i.hasNext();) {
-				RealmComponent chit = (RealmComponent)i.next();
+			for (MagicChit magicChit : enchantable) {
+				RealmComponent chit = (RealmComponent)magicChit;
 				String key = "k"+(keyN++);
 				if (chit.isActionChit()) {
 					compChooser.addOption(key,"MAGIC Chit");

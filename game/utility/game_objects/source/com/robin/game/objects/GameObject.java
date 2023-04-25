@@ -101,9 +101,8 @@ public class GameObject extends ModifyableObject implements Serializable {
 		uncommitted.setName(name); // so that keyval searches with name actually work!!
 		uncommitted._setVersion(version);
 		for (String blockName : attributeBlocks.keySet()) {
-			OrderedHashtable attributes = attributeBlocks.get(blockName);
-			for (Iterator j = attributes.keySet().iterator(); j.hasNext();) {
-				String attributeKey = (String) j.next();
+			OrderedHashtable<String,OrderedHashtable> attributes = attributeBlocks.get(blockName);
+			for (String attributeKey : attributes.keySet()) {
 				Object value = attributes.get(attributeKey);
 				if (value instanceof String) {
 					uncommitted.getAttributeBlock(blockName).put(attributeKey, value);

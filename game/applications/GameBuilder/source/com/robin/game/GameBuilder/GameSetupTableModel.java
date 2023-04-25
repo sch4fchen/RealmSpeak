@@ -14,9 +14,9 @@ public class GameSetupTableModel extends AbstractTableModel implements ColumnSiz
 		"Cmds"
 	};
 	
-	protected ArrayList data;
+	protected ArrayList<GameSetup> data;
 
-	public GameSetupTableModel(ArrayList data) {
+	public GameSetupTableModel(ArrayList<GameSetup> data) {
 		this.data = data;
 	}
 	public int getRowCount() {
@@ -33,7 +33,7 @@ public class GameSetupTableModel extends AbstractTableModel implements ColumnSiz
 	}
 	public Object getValueAt(int row,int col) {
 		if (row<data.size()) {
-			GameSetup setup = (GameSetup)data.get(row);
+			GameSetup setup = data.get(row);
 			switch(col) {
 				case 0:
 					return setup.getName();

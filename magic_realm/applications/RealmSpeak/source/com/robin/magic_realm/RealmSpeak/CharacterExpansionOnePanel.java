@@ -110,8 +110,8 @@ public class CharacterExpansionOnePanel extends CharacterFramePanel {
 		}
 	}
 	private class ChitDiscoveryRenderer extends DefaultTableCellRenderer {
-		private ArrayList list;
-		public ChitDiscoveryRenderer(ArrayList list) {
+		private ArrayList<GameObject> list;
+		public ChitDiscoveryRenderer(ArrayList<GameObject> list) {
 			this.list = list;
 		}
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSel, boolean hasFocus, int row, int column) {
@@ -119,7 +119,7 @@ public class CharacterExpansionOnePanel extends CharacterFramePanel {
 			setBackground(Color.white);
 			setText((String)value);
 			if (row<list.size()) {
-				GameObject go = (GameObject)list.get(row);
+				GameObject go = list.get(row);
 				if (getCharacter().hasOtherChitDiscovery(go.getName())) {
 					setBackground(MagicRealmColor.DISCOVERY_HIGHLIGHT_COLOR);
 				}
