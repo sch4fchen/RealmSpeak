@@ -66,7 +66,7 @@ First Edition Optional Rule - Glory: When a character or his hired natives kill 
 Version 1.1.7.7
 QUEST UPDATE:
 # Updates to quests: E17-E18, Q1019
-# QuestRewardQuestPoints
+# QuestRewardQuestVps
 BUGS/ISSUES:
 # Add quest check when looting treasures inside a TWT
 

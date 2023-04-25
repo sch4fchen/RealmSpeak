@@ -431,7 +431,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				reward = new QuestRewardFailed(go);
 				break;
 			case QuestVps:
-				reward = new QuestRewardQuestVp(go);
+				reward = new QuestRewardQuestVps(go);
 				break;
 			case RegenerateDenizen:
 				reward = new QuestRewardRegenerateDenizen(go);

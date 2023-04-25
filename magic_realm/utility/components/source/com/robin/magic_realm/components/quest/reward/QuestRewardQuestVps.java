@@ -7,12 +7,12 @@ import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
-public class QuestRewardQuestVp extends QuestReward {	
+public class QuestRewardQuestVps extends QuestReward {	
 	public static final String AMOUNT = "_amount";
 	public static final String SUBSTRACT = "_substract";
 	public static final String BONUS_VP = "_bonus_vp";
 		
-	public QuestRewardQuestVp(GameObject go) {
+	public QuestRewardQuestVps(GameObject go) {
 		super(go);
 	}
 

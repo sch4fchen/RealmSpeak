@@ -380,9 +380,9 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case QuestFailed:
 				break;
 			case QuestVps:
-				list.add(new QuestPropertyBlock(QuestRewardQuestVp.AMOUNT, "Amount", FieldType.Number));
-				list.add(new QuestPropertyBlock(QuestRewardQuestVp.SUBSTRACT, "Substract points?", FieldType.Boolean));
-				list.add(new QuestPropertyBlock(QuestRewardQuestVp.BONUS_VP, "Set Bonus Quest Vps?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardQuestVps.AMOUNT, "Amount", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRewardQuestVps.SUBSTRACT, "Substract points?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardQuestVps.BONUS_VP, "Set Bonus Quest Vps?", FieldType.Boolean));
 				break;
 			case Visitor:
 				list.add(new QuestPropertyBlock(QuestRewardVisitor.VISITOR_REGEX, "Visitor RegEx", FieldType.Regex, null, new String[] { "visitor" }));
