@@ -6,6 +6,7 @@ import java.util.*;
 import com.robin.general.util.HashLists;
 import com.robin.magic_realm.components.CharacterActionChitComponent;
 import com.robin.magic_realm.components.ChitComponent;
+import com.robin.magic_realm.components.StateChitComponent;
 
 public class ChitBinLayout {
 	public static final int INNER_CELL_SPACE = 3;
@@ -22,7 +23,7 @@ public class ChitBinLayout {
 	private ArrayList<ChitBin> chitBins;
 	private HashLists<String,ChitBin> hashLists;
 	
-	public ChitBinLayout(ArrayList<CharacterActionChitComponent> chits) {
+	public ChitBinLayout(ArrayList<StateChitComponent> chits) {
 		Collections.sort(chits);
 		groups = new ArrayList<>();
 		chitBins = new ArrayList<>();

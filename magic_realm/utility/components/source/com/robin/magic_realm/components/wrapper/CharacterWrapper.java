@@ -5067,6 +5067,15 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return ret;
 	}
+	public ArrayList<StateChitComponent> getAllMagicStateChits() {
+		ArrayList<StateChitComponent> ret = new ArrayList<>();
+		for (CharacterActionChitComponent chit : getAllChits()) {
+			if ("MAGIC".equals(chit.getAction())) {
+				ret.add(chit);
+			}
+		}
+		return ret;
+	}
 	public ArrayList<CharacterActionChitComponent> getActiveMagicChits() {
 		ArrayList<CharacterActionChitComponent> ret = new ArrayList<>();
 		ArrayList<CharacterActionChitComponent> pool = new ArrayList<>();
@@ -5152,20 +5161,20 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return activeFightAlertChits;
 		
 	}
-	public Collection<RealmComponent> getFlyChits() {
+	public Collection<StateChitComponent> getFlyChits() {
 		return getFlyChits(false);
 	}
-	public Collection<RealmComponent> getFlyChits(boolean excludeActionChits) {
-		ArrayList<RealmComponent> flyChits = new ArrayList<>();
+	public Collection<StateChitComponent> getFlyChits(boolean excludeActionChits) {
+		ArrayList<StateChitComponent> flyChits = new ArrayList<>();
 		for (GameObject go : getGameObject().getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc.isFlyChit()) {
-				flyChits.add(rc);
+				flyChits.add((StateChitComponent)rc);
 			}
 			else if (!excludeActionChits && rc.isActionChit()) {
 				CharacterActionChitComponent chit  = (CharacterActionChitComponent)rc;
 				if (chit.isFly() && chit.isActive() && chit.getGameObject().hasThisAttribute(Constants.CHIT_EARNED)) {
-					flyChits.add(rc);
+					flyChits.add(chit);
 				}
 			}
 			else if (go.hasThisAttribute(Quest.QUEST_MINOR_CHARS) && go.hasThisAttribute("activated")) {
@@ -5221,8 +5230,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	/**
 	 * Returns a sorted list of ALL chits (action and FLY)
 	 */
-	public ArrayList getCompleteChitList() {
-		ArrayList list = new ArrayList();
+	public ArrayList<StateChitComponent> getCompleteChitList() {
+		ArrayList<StateChitComponent> list = new ArrayList<>();
 		list.addAll(getAllChits());
 		Collections.sort(list);
 		list.addAll(0,getFlyChits(true));

@@ -117,13 +117,13 @@ public class ChitWoundManager extends ChitManager {
 		for (CharacterActionChitComponent aChit : list) {
 			System.out.println((n++)+" "+aChit.getGameObject().getName());
 		}
-		CharacterActionChitComponent aChit = (CharacterActionChitComponent)list.get(3);
+		CharacterActionChitComponent aChit = list.get(3);
 		aChit.makeFatigued();
 		for (int i=4;i<9;i++) {
-			aChit = (CharacterActionChitComponent)list.get(i);
+			aChit = list.get(i);
 			aChit.makeWounded();
 		}
-		aChit = (CharacterActionChitComponent)list.get(11);
+		aChit = list.get(11);
 		aChit.enchant();
 //		(new Curse(new JFrame())).applyThree(wrapper);
 		

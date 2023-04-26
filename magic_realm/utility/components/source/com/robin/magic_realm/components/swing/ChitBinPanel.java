@@ -12,6 +12,7 @@ import com.robin.general.graphics.GraphicsUtil;
 import com.robin.general.swing.ComponentTools;
 import com.robin.magic_realm.components.CharacterActionChitComponent;
 import com.robin.magic_realm.components.ChitComponent;
+import com.robin.magic_realm.components.StateChitComponent;
 import com.robin.magic_realm.components.utility.RealmLoader;
 import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -48,7 +49,7 @@ public abstract class ChitBinPanel extends JComponent {
 		reset();
 	}
 	public void updateSize() {
-		cellSize = ChitComponent.S_CHIT_SIZE + (INNER_CELL_SPACE << 1);
+		cellSize = StateChitComponent.S_CHIT_SIZE + (INNER_CELL_SPACE << 1);
 		int w = cellSize * maxCols + (PANEL_BORDER << 1) + LABEL_WIDTH;
 		int h = cellSize * maxRows + (PANEL_BORDER << 1);
 		ComponentTools.lockComponentSize(this, w, h);
@@ -64,18 +65,18 @@ public abstract class ChitBinPanel extends JComponent {
 		return layout.getChitAt(p);
 	}
 
-	public void addChits(ArrayList<ChitComponent> list) {
+	public void addChits(ArrayList<StateChitComponent> list) {
 		for (int i=0;i<list.size();i++) {
-			ChitComponent chit = list.get(i);
+			StateChitComponent chit = list.get(i);
 			addChit(chit, i);
 		}
 	}
-	public void addChit(ChitComponent newChit, int position) {
+	public void addChit(StateChitComponent newChit, int position) {
 		layout.setChit(position, newChit);
 		repaint();
 	}
 
-	public int getPosition(ChitComponent aChit) {
+	public int getPosition(StateChitComponent aChit) {
 		return layout.getChitIndex(aChit);
 	}
 
@@ -211,7 +212,7 @@ public abstract class ChitBinPanel extends JComponent {
 		CharacterWrapper character = new CharacterWrapper(go);
 		GameObject f1 = data.getGameObjectByName("Test Fly Chit 1");
 		go.add(f1);
-		ArrayList<CharacterActionChitComponent> chits = new ArrayList<>(character.getCompleteChitList());
+		ArrayList<StateChitComponent> chits = new ArrayList<>(character.getCompleteChitList());
 		ChitBinLayout layout = new ChitBinLayout(chits);
 		ChitBinPanel panel = new ChitBinPanel(layout) {
 			public boolean canClickChit(ChitComponent aChit) {
@@ -221,7 +222,7 @@ public abstract class ChitBinPanel extends JComponent {
 			}
 		};
 		for (int i=0;i<chits.size();i++) {
-			ChitComponent chit = chits.get(i);
+			StateChitComponent chit = chits.get(i);
 			panel.addChit(chit, i);
 		}
 		JOptionPane.showMessageDialog(null, panel,name,JOptionPane.PLAIN_MESSAGE);

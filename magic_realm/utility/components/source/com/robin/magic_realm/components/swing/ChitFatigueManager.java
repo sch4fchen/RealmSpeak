@@ -400,9 +400,9 @@ public class ChitFatigueManager extends ChitManager {
 		ArrayList<CharacterActionChitComponent> list = new ArrayList<>(wrapper.getAllChits());
 		Collections.sort(list);
 		if (preFatigue) {
-			CharacterActionChitComponent aChit = (CharacterActionChitComponent)list.get(3);
+			CharacterActionChitComponent aChit = list.get(3);
 			aChit.makeFatigued();
-			aChit = (CharacterActionChitComponent)list.get(7);
+			aChit = list.get(7);
 			aChit.makeFatigued();
 		}
 //		//for (int i=4;i<11;i++) {

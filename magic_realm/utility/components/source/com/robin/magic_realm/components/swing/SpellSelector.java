@@ -324,7 +324,7 @@ public class SpellSelector extends AggressiveDialog {
 		}
 	}
 	public void setChits(CharacterWrapper character) {
-		ArrayList<CharacterActionChitComponent> chits = character.getAllMagicChits();
+		ArrayList<StateChitComponent> chits = character.getAllMagicStateChits();
 		ChitBinLayout layout = new ChitBinLayout(chits);
 		chitBinPanel = new ChitBinPanel(layout,12,1) {
 			public boolean canClickChit(ChitComponent aChit) {
@@ -352,7 +352,7 @@ public class SpellSelector extends AggressiveDialog {
 			}
 		});
 		for (int i=0;i<chits.size();i++) {
-			ChitComponent chit = chits.get(i);
+			StateChitComponent chit = chits.get(i);
 			chitBinPanel.addChit(chit, i);
 		}
 		enchantPanel.add(chitBinPanel,"Center");
