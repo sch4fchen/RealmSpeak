@@ -98,14 +98,14 @@ public class MRCharacter {
 			printstream.println(vulnerability);
 			printstream.println(specialAdvantages.size());
 			for (int i = 0; i < specialAdvantages.size(); i++) {
-				OutlineEntry outlineentry = (OutlineEntry) specialAdvantages.elementAt(i);
+				OutlineEntry outlineentry = specialAdvantages.elementAt(i);
 				printstream.println(outlineentry.getHeader());
 				printstream.println(outlineentry.getContent());
 			}
 
 			printstream.println(optionalAdvantages.size());
 			for (int j = 0; j < optionalAdvantages.size(); j++) {
-				OutlineEntry outlineentry1 = (OutlineEntry) optionalAdvantages.elementAt(j);
+				OutlineEntry outlineentry1 = optionalAdvantages.elementAt(j);
 				printstream.println(outlineentry1.getHeader());
 				printstream.println(outlineentry1.getContent());
 			}
@@ -218,7 +218,7 @@ public class MRCharacter {
 
 	public OutlineEntry getSpecialAdvantage(int i) {
 		if (specialAdvantages != null && i < specialAdvantages.size())
-			return (OutlineEntry) specialAdvantages.elementAt(i);
+			return specialAdvantages.elementAt(i);
 		else
 			return null;
 	}
@@ -236,7 +236,7 @@ public class MRCharacter {
 
 	public OutlineEntry getOptionalAdvantage(int i) {
 		if (optionalAdvantages != null && i < optionalAdvantages.size())
-			return (OutlineEntry) optionalAdvantages.elementAt(i);
+			return optionalAdvantages.elementAt(i);
 		else
 			return null;
 	}

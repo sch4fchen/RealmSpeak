@@ -68,7 +68,7 @@ public class Menu extends Builder {
 		"</div></div>",
 	};
 
-	private HashLists hash = new HashLists();
+	private HashLists<String,Page> hash = new HashLists<>();
 	
 	public Menu() {
 	}
@@ -76,7 +76,7 @@ public class Menu extends Builder {
 		String folder = page.getLayout().getWebFolder();
 		hash.put(folder,page);
 	}
-	private String createPersonKey(String folderName) {
+	private static String createPersonKey(String folderName) {
 		String strip = StringUtilities.findAndReplace(folderName," ",""); // strip spaces
 		return strip.toLowerCase();
 	}
@@ -86,10 +86,9 @@ public class Menu extends Builder {
 			sb.append(HTML_HEAD[i]);
 			sb.append("\n");
 		}
-		ArrayList folders = new ArrayList(hash.keySet());
+		ArrayList<String> folders = new ArrayList<>(hash.keySet());
 		Collections.sort(folders);
-		for (Iterator i=folders.iterator();i.hasNext();) {
-			String folder = (String)i.next();
+		for (String folder : folders) {
 			String personKey = createPersonKey(folder);
 			String iconKey = personKey+"icon";
 			for (int p=0;p<HTML_PERSON.length;p++) {
@@ -104,9 +103,8 @@ public class Menu extends Builder {
 					append = folder;
 				}
 				else if (ENTRIES.equals(HTML_PERSON[p])) {
-					ArrayList list = hash.getList(folder);
-					for (Iterator n=list.iterator();n.hasNext();) {
-						Page page = (Page)n.next();
+					ArrayList<Page> list = hash.getList(folder);
+					for (Page page : list) {
 						String html = FileUtilities.getFilename(page.getHtml(),true);
 						String href = "images/"+folder+"/"+html;
 						sb.append("<b><font size=-1><a href=\"");

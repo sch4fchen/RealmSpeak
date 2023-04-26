@@ -54,8 +54,8 @@ public class QuestRewardTreasureFromHq extends QuestReward {
 		}
 		
 		GameObject holder = SetupCardUtility.getDenizenHolder(selected);
-		ArrayList<GameObject> hold = new ArrayList(holder.getHold());
-		ArrayList<GameObject> treasures = new ArrayList<GameObject>();
+		ArrayList<GameObject> hold = new ArrayList<>(holder.getHold());
+		ArrayList<GameObject> treasures = new ArrayList<>();
 		for(Object o:hold) {
 			RealmComponent rc = RealmComponent.getRealmComponent((GameObject)o);
 			if (rc.isTreasure()) {

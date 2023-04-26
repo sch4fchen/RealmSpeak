@@ -125,7 +125,7 @@ public class CharacterActionPanel extends CharacterFramePanel {
 	private void showKills(int row) {
 		Collection<String> allDays = getCharacter().getGameObject().getAttributeList(getCharacter().getBlockName(),CharacterWrapper.ALL_DAYS);
 		if (allDays!=null && row<allDays.size()) {
-			String dayKey = (String)(new ArrayList(allDays)).get(row);
+			String dayKey = (new ArrayList<String>(allDays)).get(row);
 			ArrayList<GameObject> kills = getCharacter().getKills(dayKey);
 			RealmObjectPanel panel = new RealmObjectPanel();
 			panel.addObjects(kills);

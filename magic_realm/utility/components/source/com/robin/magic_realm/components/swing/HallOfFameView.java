@@ -142,8 +142,8 @@ public class HallOfFameView extends JPanel {
 //					|| (n==2 && i!=1)
 //					|| (n==1 && i==1)) {
 //			if (n>=2) {
-				String listName = (String)list.get(0);
-				String title = (String)hash.remove(listName);
+				String listName = list.get(0);
+				String title = hash.remove(listName);
 				sb.append(getTable(title,hof.getHolderFor(listName)));
 				list.remove(listName);
 //			}

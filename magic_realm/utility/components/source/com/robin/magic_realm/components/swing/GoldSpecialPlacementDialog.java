@@ -98,12 +98,12 @@ public class GoldSpecialPlacementDialog extends AggressiveDialog {
 		setSize(800,600);
 		getContentPane().removeAll();
 		getContentPane().setLayout(new BorderLayout());
-		JLabel titleBar = new JLabel("Choose a chit face on the left, and select a destination at the bottom",JLabel.CENTER);
+		JLabel titleBar = new JLabel("Choose a chit face on the left, and select a destination at the bottom",SwingConstants.CENTER);
 		titleBar.setOpaque(true);
 		titleBar.setBackground(MagicRealmColor.PALEYELLOW);
 		titleBar.setFont(HEADER_FONT);
 		getContentPane().add(titleBar,"North");
-		JTabbedPane chitTabs = new JTabbedPane(JTabbedPane.LEFT);
+		JTabbedPane chitTabs = new JTabbedPane(SwingConstants.LEFT);
 		chitTabs.setFont(BIG_FONT);
 		chitTabs.setBorder(BorderFactory.createEtchedBorder());
 		JPanel buttonGrid = null;
@@ -152,9 +152,9 @@ public class GoldSpecialPlacementDialog extends AggressiveDialog {
 		
 		JPanel infoPanel = new JPanel(new GridLayout(2,1));
 		chitIcon = new JLabel();
-		chitIcon.setHorizontalAlignment(JLabel.CENTER);
+		chitIcon.setHorizontalAlignment(SwingConstants.CENTER);
 		infoPanel.add(chitIcon);
-		JLabel infoLabel = new JLabel(getCharacterInfo(),JLabel.CENTER);
+		JLabel infoLabel = new JLabel(getCharacterInfo(),SwingConstants.CENTER);
 		infoLabel.setFont(HEADER_FONT);
 		infoLabel.setOpaque(true);
 		infoLabel.setBorder(BorderFactory.createEtchedBorder());
@@ -170,7 +170,7 @@ public class GoldSpecialPlacementDialog extends AggressiveDialog {
 		mainPanel.add(topPanel);
 		
 		// Build destination panel
-		JTabbedPane destTabs = new JTabbedPane(JTabbedPane.LEFT);
+		JTabbedPane destTabs = new JTabbedPane(SwingConstants.LEFT);
 		destTabs.setFont(BIG_FONT);
 		DestinationPanel dPanel = null;
 		count = 0;
@@ -186,13 +186,13 @@ public class GoldSpecialPlacementDialog extends AggressiveDialog {
 			JPanel destRow = new JPanel(new GridLayout(1,DEST_HEADER.length));
 			destRow.setBorder(BorderFactory.createEtchedBorder());
 			
-			destRow.add(new JLabel(go.getName(),JLabel.CENTER));
+			destRow.add(new JLabel(go.getName(),SwingConstants.CENTER));
 			String summon = go.getThisAttribute("summon");
 			if (summon.indexOf(',')<0) {
 				String relBlock = RealmUtility.getRelationshipBlockFor(go);
 				int rel = character.getRelationship(relBlock,summon);
 				String relationship = RealmUtility.getRelationshipNameFor(rel);
-				destRow.add(new JLabel(relationship,JLabel.CENTER));
+				destRow.add(new JLabel(relationship,SwingConstants.CENTER));
 			}
 			else {
 				destRow.add(new JLabel(""));
@@ -200,7 +200,7 @@ public class GoldSpecialPlacementDialog extends AggressiveDialog {
 			
 			if (go.getHoldCount()>0) {
 				GameObject hold = go.getHold().get(0);
-				destRow.add(new JLabel(hold.getName(),JLabel.CENTER));
+				destRow.add(new JLabel(hold.getName(),SwingConstants.CENTER));
 			}
 			else {
 				PlaceButton button = new PlaceButton(go);
@@ -298,7 +298,7 @@ public class GoldSpecialPlacementDialog extends AggressiveDialog {
 			super(new BorderLayout());
 			destHeader = new JPanel(new GridLayout(1,DEST_HEADER.length));
 			for (int i=0;i<DEST_HEADER.length;i++) {
-				JLabel label = new JLabel(DEST_HEADER[i],JLabel.CENTER);
+				JLabel label = new JLabel(DEST_HEADER[i],SwingConstants.CENTER);
 				label.setFont(HEADER_FONT);
 				label.setBorder(BorderFactory.createEtchedBorder());
 				destHeader.add(label);

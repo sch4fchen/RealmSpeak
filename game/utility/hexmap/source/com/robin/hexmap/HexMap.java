@@ -198,7 +198,7 @@ public class HexMap extends JComponent implements Scrollable {
 		Vector<HexMapPoint> allGoodCenters = new Vector<>();
 		for (int i=0;i<positionChoices.size();i++) {
 			boolean isGood = false;
-			HexMapPoint pos = (HexMapPoint)positionChoices.elementAt(i);
+			HexMapPoint pos = positionChoices.elementAt(i);
 			if (!set.overlaps(this,pos)) {
 				switch(placementStyle) {
 					case RANDOM:
@@ -241,7 +241,7 @@ public class HexMap extends JComponent implements Scrollable {
 		}
 		if (allGoodCenters.size()>0) {
 			int r = RandomNumber.getRandom(allGoodCenters.size());
-			HexMapPoint pos = (HexMapPoint)allGoodCenters.elementAt(r);
+			HexMapPoint pos = allGoodCenters.elementAt(r);
 			addSet(set,pos);
 			return true;
 		}
@@ -531,7 +531,7 @@ public class HexMap extends JComponent implements Scrollable {
 		Point actualPoint = new Point((int)(p.x/scale),(int)(p.y/scale));
 		for (Enumeration e=hexDrawCoordinates.keys();e.hasMoreElements();) {
 			HexMapPoint pos = (HexMapPoint)e.nextElement();
-			Rectangle r = (Rectangle)hexDrawCoordinates.get(pos);
+			Rectangle r = hexDrawCoordinates.get(pos);
 			if (r.contains(actualPoint)) {
 				// next I need to create a Polygon to represent this hex
 				// and see if the point is still contained
@@ -544,10 +544,10 @@ public class HexMap extends JComponent implements Scrollable {
 		return null;
 	}
 	public Rectangle getHexMapPointRectangle(HexMapPoint pos) {
-		return (Rectangle)hexDrawCoordinates.get(pos);
+		return hexDrawCoordinates.get(pos);
 	}
 	public Point getHexMapPointCenter(HexMapPoint pos) {
-		Rectangle r = (Rectangle)hexDrawCoordinates.get(pos);
+		Rectangle r = hexDrawCoordinates.get(pos);
 		return new Point(r.x+(r.width>>1),r.y+(r.height>>1));
 	}
 	/**
@@ -577,7 +577,7 @@ public class HexMap extends JComponent implements Scrollable {
 		if (viewport!=null) {
 			Dimension size = getSize();
 			// centering on the position is only meaningful if you are in a JViewport
-			Rectangle r = (Rectangle)hexDrawCoordinates.get(pos);
+			Rectangle r = hexDrawCoordinates.get(pos);
 			if (r!=null) { // only center on coordinates on the map!
 				Rectangle view = viewport.getViewRect();
 				int x = r.x - ((view.width - r.width)>>1);
@@ -621,7 +621,7 @@ public class HexMap extends JComponent implements Scrollable {
 		ArrayList<Rectangle> moveRuleRects = new ArrayList<>();
 		for (Enumeration e=hexDrawCoordinates.keys();e.hasMoreElements();) {
 			HexMapPoint pos = (HexMapPoint)e.nextElement();
-			Rectangle r = (Rectangle)hexDrawCoordinates.get(pos);
+			Rectangle r = hexDrawCoordinates.get(pos);
 			if (view.intersects(r)) {
 				HexTag tag = hexTags.get(pos);
 				if (tag==null) {
@@ -714,9 +714,9 @@ public class HexMap extends JComponent implements Scrollable {
 		Stroke thickStroke = new BasicStroke(5);
 		for (HexGuide guide : hexGuides) {
 			HexMapPoint from = guide.getFrom();
-			Rectangle fromR = (Rectangle)hexDrawCoordinates.get(from);
+			Rectangle fromR = hexDrawCoordinates.get(from);
 			HexMapPoint to = guide.getTo();
-			Rectangle toR = (Rectangle)hexDrawCoordinates.get(to);
+			Rectangle toR = hexDrawCoordinates.get(to);
 			if (toR!=null) {
 				g.setColor(guide.getColor());
 				
@@ -774,7 +774,7 @@ public class HexMap extends JComponent implements Scrollable {
 			HexTokenDistribution dist = tokenCountHash.get(pos);
 			if (dist==null) {
 				try {
-					Rectangle rect = (Rectangle)hexDrawCoordinates.get(pos);
+					Rectangle rect = hexDrawCoordinates.get(pos);
 					if (rect==null) {
 						JOptionPane.showMessageDialog(this,"For some reason, "+pos+" has no draw rectangle in the hexDrawCoordinates hashtable!","Failed to draw Token:  "+token.getClass().getName(),JOptionPane.ERROR_MESSAGE);
 						badTokens.add(token);
@@ -814,8 +814,8 @@ public class HexMap extends JComponent implements Scrollable {
 	protected void drawMoveRules(Graphics2D g,ArrayList<HexMapPoint> moveRulePos,ArrayList<MoveRule> moveRules,ArrayList<Rectangle> moveRuleRects) {
 		if (showMoveCalculation || showMoveRuleText) {
 			for (int i=0;i<moveRules.size();i++) {
-				MoveRule rule = (MoveRule)moveRules.get(i);
-				Rectangle r = (Rectangle)moveRuleRects.get(i);
+				MoveRule rule = moveRules.get(i);
+				Rectangle r = moveRuleRects.get(i);
 				int half = r.height>>1;
 				g.setFont(labelFont);
 				g.setColor(Color.blue);
@@ -833,7 +833,7 @@ public class HexMap extends JComponent implements Scrollable {
 	}
 	public void drawTokenOnMap(Graphics g,Token token) {
 		HexMapPoint pos = token.getPosition();
-		Rectangle r = (Rectangle)hexDrawCoordinates.get(pos);
+		Rectangle r = hexDrawCoordinates.get(pos);
 		token.drawToken(g,r.x,r.y,r.width,r.height);
 	}
 	public boolean isBoatless(HexMapPoint pos) {
@@ -844,7 +844,7 @@ public class HexMap extends JComponent implements Scrollable {
 		return selectionRules.keySet();
 	}
 	public void setSelectedPositions(Collection<HexMapPoint> list) {
-		setSelectedPositions((HexMapPoint[])list.toArray(new HexMapPoint[list.size()]));
+		setSelectedPositions(list.toArray(new HexMapPoint[list.size()]));
 	}
 	public void setSelectedPositions(Hashtable<HexMapPoint,MoveRule> moveRules) {
 		setSelectedPositions(moveRules.keySet());

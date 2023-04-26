@@ -144,9 +144,8 @@ public class PhaseManager {
 		}
 		allObjects.removeAll(toRemove);
 		ArrayList<String> freeToRemove = new ArrayList<>();
-		for (Iterator i=freeActions.keySet().iterator();i.hasNext();) {
-			String val = (String)i.next();
-			ArrayList list = freeActions.getList(val);
+		for (String val : freeActions.keySet()) {
+			ArrayList<GameObject> list = freeActions.getList(val);
 			if (list.removeAll(toRemove)) {
 				if (list.isEmpty()) {
 					freeToRemove.add(val);

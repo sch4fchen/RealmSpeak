@@ -88,7 +88,7 @@ public class GameData extends ModifyableObject implements Serializable {
 				ArrayList<String> blocks = new ArrayList<>(hash.keySet());
 				Collections.sort(blocks);
 				for (String blockName : blocks) {
-					OrderedHashtable block = (OrderedHashtable)hash.get(blockName);
+					OrderedHashtable block = hash.get(blockName);
 					ArrayList<String> keys = new ArrayList(block.keySet());
 					Collections.sort(keys);
 					for (String key : keys) {

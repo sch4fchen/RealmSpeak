@@ -129,8 +129,8 @@ public class RealmComponentDisplayDialog extends AggressiveDialog {
 		RealmComponentDisplayDialog display = new RealmComponentDisplayDialog(new JFrame(), "Hey!","Look at these:");
 		ArrayList<CharacterActionChitComponent> list = new ArrayList<>(wrapper.getAllChits());
 		for (int i = 0; i < 10; i += 2) {
-			CharacterActionChitComponent c1 = (CharacterActionChitComponent) list.get(i);
-			CharacterActionChitComponent c2 = (CharacterActionChitComponent) list.get(i + 1);
+			CharacterActionChitComponent c1 = list.get(i);
+			CharacterActionChitComponent c2 = list.get(i + 1);
 			display.addRealmComponent(c1);
 			display.addRealmComponent(c2);
 		}

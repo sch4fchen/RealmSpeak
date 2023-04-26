@@ -95,7 +95,7 @@ public class Hex {
 	public boolean hasKeyword(String val) {
 		String check = val.toUpperCase();
 		for (int i=0;i<keywords.size();i++) {
-			String keyword = (String)keywords.get(i);
+			String keyword = keywords.get(i);
 			if (keyword.equals(check)) {
 				return true;
 			}
@@ -105,7 +105,7 @@ public class Hex {
 	public boolean hasKeywordStartWith(String val) {
 		String check = val.toUpperCase();
 		for (int i=0;i<keywords.size();i++) {
-			String keyword = (String)keywords.get(i);
+			String keyword = keywords.get(i);
 			if (keyword.toUpperCase().startsWith(check)) {
 				return true;
 			}
@@ -115,7 +115,7 @@ public class Hex {
 	public boolean hasKeywordContains(String val) {
 		String check = val.toUpperCase();
 		for (int i=0;i<keywords.size();i++) {
-			String keyword = (String)keywords.get(i);
+			String keyword = keywords.get(i);
 			if (keyword.toUpperCase().indexOf(check)>=0) {
 				return true;
 			}
@@ -151,7 +151,7 @@ public class Hex {
 		
 		int[] ret = new int[walls.size()];
 		for (int i=0;i<ret.length;i++) {
-			Integer index = (Integer)walls.get(i);
+			Integer index = walls.get(i);
 			ret[i] = index.intValue();
 		}
 		return ret;

@@ -87,9 +87,8 @@ public class CharacterChitPanel extends CharacterFramePanel {
 	public void updatePanel() {
 		// Refresh the chit panel
 		chitHolderPanel.removeAll();
-		ArrayList allChits = new ArrayList(getCharacter().getCompleteChitList());
-		for (Iterator i=allChits.iterator();i.hasNext();) {
-			RealmComponent chit = (RealmComponent)i.next();
+		ArrayList<StateChitComponent> allChits = getCharacter().getCompleteChitList();
+		for (RealmComponent chit : allChits) {
 			chitHolderPanel.add(chit);
 		}
 		for (GameObject go:getCharacter().getInventory()) {
@@ -109,7 +108,7 @@ public class CharacterChitPanel extends CharacterFramePanel {
 		MagicChit chit = (MagicChit)chitHolderPanel.getSelectedComponent();
 		// because of button disabling, we know this is a color chit
 		
-		ArrayList se = getCharacter().getSpellExtras();
+		ArrayList<String> se = getCharacter().getSpellExtras();
 		int seBefore = se==null?0:se.size();
 		
 		RealmUtility.burnColorChit(getGameHandler().getMainFrame(),getGameHandler().getGame(),getCharacter(),chit);
@@ -119,10 +118,10 @@ public class CharacterChitPanel extends CharacterFramePanel {
 			int seAfter = se==null?0:se.size();
 			if (seAfter>seBefore) {
 				// A spell (or spells) were energized manually during the turn.  Make sure these make it into the PhaseManager
-				ArrayList ses = getCharacter().getSpellExtraSources();
+				ArrayList<GameObject> ses = getCharacter().getSpellExtraSources();
 				for (int i=seBefore;i<seAfter;i++) {
-					String seAction = (String)se.get(i);
-					GameObject seGo = (GameObject)ses.get(i);
+					String seAction = se.get(i);
+					GameObject seGo = ses.get(i);
 					getCharacterFrame().getTurnPanel().getPhaseManager().addFreeAction(seAction,seGo);
 				}
 			}

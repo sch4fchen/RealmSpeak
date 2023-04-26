@@ -293,7 +293,7 @@ public class RealmComponentOptionChooser extends AggressiveDialog {
 		buttonPanel.removeAll();
 		JTabbedPane tabs = null;
 		if (send.size()>1) {
-			tabs = new JTabbedPane(JTabbedPane.LEFT);
+			tabs = new JTabbedPane(SwingConstants.LEFT);
 			tabs.setFont(font);
 			buttonPanel.add(tabs,"Center");
 		}

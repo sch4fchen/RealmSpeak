@@ -412,7 +412,7 @@ public class QuestStepPanel extends JPanel {
 				if (rowIndex >= skip)
 					rowIndex++;
 				QuestStep rowStep = quest.getSteps().get(rowIndex);
-				ArrayList steps;
+				ArrayList<String> steps;
 				switch (columnIndex) {
 					case 0:
 						steps = step.getRequiredSteps();

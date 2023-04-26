@@ -2390,7 +2390,7 @@ public class CombatFrame extends JFrame {
 						moveOptions.clear();
 					}
 					separateRider = true;
-					moveOptions.remove(horse);
+					moveOptions.remove((RealmComponent)horse);
 				}
 			}
 			

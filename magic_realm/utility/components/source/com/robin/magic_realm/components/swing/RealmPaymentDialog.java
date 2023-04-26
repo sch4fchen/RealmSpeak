@@ -79,7 +79,7 @@ public class RealmPaymentDialog extends AggressiveDialog {
 		return createNumberLabel(0);
 	}
 	private static JLabel createNumberLabel(int num) {
-		JLabel label = new JLabel(String.valueOf(num),JLabel.CENTER);
+		JLabel label = new JLabel(String.valueOf(num),SwingConstants.CENTER);
 		ComponentTools.lockComponentSize(label,40,25);
 		label.setBorder(getLabelBorder());
 		return label;

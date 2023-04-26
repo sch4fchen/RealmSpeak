@@ -20,6 +20,7 @@ import com.robin.magic_realm.components.swing.CenteredMapView;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.GameWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
+import com.robin.magic_realm.map.Tile;
 
 public class RealmTilePickFrame extends RealmSpeakInternalFrame implements ChangeListener {
 	
@@ -130,7 +131,7 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 		});
 		getContentPane().add(new JScrollPane(tilePickTable),"Center");
 		
-		instruction = new JLabel("",JLabel.CENTER);
+		instruction = new JLabel("",SwingConstants.CENTER);
 		instruction.setFont(BIG_FONT);
 		instruction.setOpaque(true);
 		instruction.setBackground(MagicRealmColor.PALEYELLOW);
@@ -173,9 +174,9 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 	}
 	private TileComponent getSelectedTile() {
 		int selRow = tilePickTable.getSelectedRow();
-		ArrayList list = tilePickModel.getData();
+		ArrayList<GameObject> list = tilePickModel.getData();
 		if (selRow>=0 && selRow<list.size()) {
-			GameObject go = (GameObject)list.get(selRow);
+			GameObject go = list.get(selRow);
 			return (TileComponent)RealmComponent.getRealmComponent(go);
 		}
 		return null;
@@ -201,7 +202,7 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 				ArrayList<Integer> placeableIndices = new ArrayList<>();
 				for (int i=0;i<tilesToAdd.size();i++) {
 					GameObject go = tilesToAdd.get(i);
-					Collection c = map.getPlaceables(go);
+					Collection<Tile> c = map.getPlaceables(go);
 					if (!c.isEmpty()) {
 						placeableIndices.add(Integer.valueOf(i));
 						go.setThisAttribute(Constants.PLACEABLE);
@@ -271,7 +272,7 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 				// This is sloppy, but...
 				for (int i=0;i<tilesToAdd.size();i++) {
 					GameObject go = tilesToAdd.get(i);
-					Collection c = map.getPlaceables(go);
+					Collection<Tile> c = map.getPlaceables(go);
 					if (!c.isEmpty()) {
 						go.setThisAttribute(Constants.PLACEABLE);
 					}

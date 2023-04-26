@@ -136,7 +136,7 @@ public class GameObjectFrame extends JInternalFrame implements Modifyable,Saveab
 						public void edit() {
 							String newBlockName = (String)JOptionPane.showInputDialog(this,"Block Name?","Input",JOptionPane.QUESTION_MESSAGE,null,null,currentBlockName);
 							if (newBlockName!=null && newBlockName.length()>0 && !currentBlockName.equals(newBlockName)) {
-								OrderedHashtable block = (OrderedHashtable)object.getAttributeBlocks().get(currentBlockName);
+								OrderedHashtable block = object.getAttributeBlocks().get(currentBlockName);
 								int index = object.getAttributeBlocks().indexOf(block);
 								object.getAttributeBlocks().remove(currentBlockName);
 								object.getAttributeBlocks().replace(index,newBlockName,block);
@@ -151,7 +151,7 @@ public class GameObjectFrame extends JInternalFrame implements Modifyable,Saveab
 				panel.add(blocksPane,"West");
 					attributesPane = new ListManagerPane("Attributes",new DefaultTableModel(),true,false,true,true,false,false) {
 						public void add() {
-							OrderedHashtable block = (OrderedHashtable)object.getAttributeBlocks().get(currentBlockName);
+							OrderedHashtable block = object.getAttributeBlocks().get(currentBlockName);
 							String key = JOptionPane.showInputDialog(this,"Key");
 							if (key!=null) {
 								if (AttributeEditor.editBlock(parent.parent,this,"Value",block,key)) {
@@ -160,7 +160,7 @@ public class GameObjectFrame extends JInternalFrame implements Modifyable,Saveab
 							}
 						}
 						public void delete() {
-							OrderedHashtable block = (OrderedHashtable)object.getAttributeBlocks().get(currentBlockName);
+							OrderedHashtable block = object.getAttributeBlocks().get(currentBlockName);
 							
 							int[] rows = attributesPane.getSelectedRows();
 							ArrayList blocksToDelete = new ArrayList();
@@ -173,7 +173,7 @@ public class GameObjectFrame extends JInternalFrame implements Modifyable,Saveab
 							setModified(true);
 						}
 						public void edit() {
-							OrderedHashtable block = (OrderedHashtable)object.getAttributeBlocks().get(currentBlockName);
+							OrderedHashtable block = object.getAttributeBlocks().get(currentBlockName);
 							int row = attributesPane.getSelectedRow();
 							String key = (String)block.getKey(row);
 							if (AttributeEditor.editBlock(parent.parent,this,"New Value",block,key)) {

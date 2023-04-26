@@ -97,7 +97,7 @@ public class MultiFormatString {
 		int i1 = 0;
 		int j1 = 0;
 		for (int k1 = 0; k1 < formattedStrings.size(); k1++) {
-			FormattedString formattedstring = (FormattedString) formattedStrings.elementAt(k1);
+			FormattedString formattedstring = formattedStrings.elementAt(k1);
 			g.setFont(getFont(formattedstring));
 			j1 = g.getFontMetrics().getAscent();
 			String s1;
@@ -210,7 +210,7 @@ public class MultiFormatString {
 	private void add(String s, int i) {
 		FormattedString formattedstring = null;
 		if (formattedStrings.size() > 0)
-			formattedstring = (FormattedString) formattedStrings.lastElement();
+			formattedstring = formattedStrings.lastElement();
 		if (formattedstring != null && formattedstring.sameType(i))
 			formattedstring.append(s);
 		else
@@ -240,7 +240,7 @@ public class MultiFormatString {
 	public String toString() {
 		StringBuffer stringbuffer = new StringBuffer("MultiFormatString:");
 		for (int i = 0; i < formattedStrings.size(); i++) {
-			FormattedString formattedstring = (FormattedString) formattedStrings.elementAt(i);
+			FormattedString formattedstring = formattedStrings.elementAt(i);
 			stringbuffer.append("  " + formattedstring.toString() + "\n");
 		}
 
