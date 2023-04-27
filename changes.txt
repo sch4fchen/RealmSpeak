@@ -8,6 +8,8 @@ Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Phantasm: If the phantasm discovers Hidden Enemies, the controlling character also discovers Hidden Enemies.;; it cannot take part in combat;; can now spy and be spied
 Melt into Mist: only move actions; canot follow or be followed; can be charged (difference), The target cannot attack or be attacked, except by individuals affected by the Enchant Weapon spell, If attacked, Mist’s vulnerability is Tremendous and non-armored; targeted monster stills prowls (like in base MR) even if ‘X’ weight
 Melt into Mist: This spell is benevolent if, and only if, the spellcaster casts it on one of his hired leaders or controlled monsters.
+only the Melt into Mist transmorphization spell can be cast to affect carrying capacity.  Transform and Absorb Essence are no longer options for end-game scoring.
+Purple/Prism Anomalies can block/battle any individual transmorphized into mist.
 Protection from Magic: The target is also immune to spell-breaking spells, such as Exorcise, Remedy, and Dissolve Spell, while this spell is in effect (ie activated). Any transmorphization spells affecting the target would also be nullified when this spell is activated, which can be done during a phase even when the target is transmorphized.
 Exorcise: All native casters in the clearing cannot supply color magic, and they cannot cast spells for the rest of combat (including the current round), unless they are in a clearing with a magic source matching the color required to cast their spell.
 	Update 995: Tweaked description of the I Exorcise spell.  It does cause Phase spells to break, as the revised definition of Phase spells means they are continually in effect (even if they're not affecting the target with the spell ability due to not having been activated/used yet) until used, in which case the spell ends at the end of the phase/round it was activated.  For example, if someone had Broomstick cast earlier, but hadn't used it and was in the clearing when Exorcise is cast, he loses the phase chit reserved for Broomstick (the broomstick spell breaks).
@@ -65,8 +67,10 @@ First Edition Optional Rule - Glory: When a character or his hired natives kill 
 
 Version 1.1.7.7
 QUEST UPDATE:
-# Updates to quests: E17-E18, Q1019
+# Updates to quests: A04, E15, E17-E18, Q1019
 # QuestRewardQuestVps
+# SUPER REALM:
+# Transform can now be cast on the Skeleton Horse (change of Super Realm 0.997)
 BUGS/ISSUES:
 # Add quest check when looting treasures inside a TWT
 

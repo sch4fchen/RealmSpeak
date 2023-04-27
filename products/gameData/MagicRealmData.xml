@@ -35342,10 +35342,10 @@
         <attribute super_realm="" />
         <attribute activated="" />
         <attribute steed_in_caves_and_water="" />
-        <attribute transmorph_immunity="" />
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="1" />
         <attribute icon_type="ipoten" />
+        <attribute undead="" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
