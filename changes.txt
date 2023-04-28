@@ -1,5 +1,4 @@
 ::ROADMAP::
-QE1019, A77
 Character Potraits for Super Realm
 ---Basic Functionalities for current content---
 Super Realm: rules for minotaur shield
@@ -75,6 +74,7 @@ QUEST UPDATE:
 # Transform can now be cast on the Skeleton Horse (change of Super Realm 0.997)
 BUGS/ISSUES:
 # Add quest check when looting treasures inside a TWT
+# Fix QuestRequirementInventory not checking for already activated items, when activating another item
 
 Version 1.1.7.6
 HINT: older save games are not fully compatible with this version (e.g. spell targeting)

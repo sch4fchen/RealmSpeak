@@ -32,6 +32,15 @@ public class QuestRequirementInventory extends QuestRequirementLoot {
 		if (reqActive && reqParams.actionType==CharacterActionType.ActivatingItem) {
 			reqActive = false; // since we already know we are activating the item, don't test for it later (actually causes a problem with the Chest which is opened instead of activated!)
 			matches = filterObjectsForRequirement(character,reqParams.objectList,logger);
+			ArrayList<GameObject> inventory = filterObjectsForRequirement(character,character.getInventory(),logger);
+			for (GameObject item : inventory) {
+				if (!item.hasThisAttribute(Constants.ACTIVATED)) {
+					logger.fine(item.getName()+" must be activated.");
+				}
+				else {
+					matches.add(item);
+				}
+			}
 		}
 		else {
 			matches = filterObjectsForRequirement(character,character.getInventory(),logger);
