@@ -85,7 +85,7 @@ public class QuestRequirementInventory extends QuestRequirementLoot {
 		int num = getNumber();
 		sb.append(num);
 		if(mustBeDeactive()) {
-			sb.append(" deactivated ");
+			sb.append(" deactivated");
 		}
 		TreasureType tt = getTreasureType();
 		if (tt!=TreasureType.Any) {

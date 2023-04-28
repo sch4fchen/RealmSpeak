@@ -1,4 +1,5 @@
 ::ROADMAP::
+QE1019, A77
 Character Potraits for Super Realm
 ---Basic Functionalities for current content---
 Super Realm: rules for minotaur shield
@@ -69,6 +70,7 @@ Version 1.1.7.7
 QUEST UPDATE:
 # Updates to quests: A04, E13, E15, E17-E18, Q1019
 # QuestRewardQuestVps
+# SummonGeneratedMonster: Option to set notoriety and fame
 # SUPER REALM:
 # Transform can now be cast on the Skeleton Horse (change of Super Realm 0.997)
 BUGS/ISSUES:

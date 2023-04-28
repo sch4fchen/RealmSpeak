@@ -327,6 +327,9 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardSummonGeneratedMonster.SUMMON_TO_LOCATION, "Summon to location", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardSummonGeneratedMonster.RANDOM_LOCATION, "Random clearing of location", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardSummonGeneratedMonster.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
+				list.add(new QuestPropertyBlock(QuestRewardSummonGeneratedMonster.CUSTOM_STATS, "Custom Stats", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardSummonGeneratedMonster.NOTORIETY, "Notoriety", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRewardSummonGeneratedMonster.FAME, "Fame", FieldType.NumberAll));
 				break;
 			case SummonGuardian:
 				list.add(new QuestPropertyBlock(QuestRewardSummonGuardian.LOCATION, "Summon Guardian for ", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));

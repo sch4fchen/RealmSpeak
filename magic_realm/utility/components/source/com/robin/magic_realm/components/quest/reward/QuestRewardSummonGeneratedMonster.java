@@ -27,6 +27,9 @@ public class QuestRewardSummonGeneratedMonster extends QuestReward {
 	public static final String SUMMON_TO_LOCATION = "_summon_loc";
 	public static final String RANDOM_LOCATION = "_rnd_loc";
 	public static final String LOCATION = "_loc";
+	public static final String CUSTOM_STATS = "__custom_stats";
+	public static final String FAME = "_fame";
+	public static final String NOTORIETY = "_not";
 		
 	public static enum MonsterType {
 		Basilisk,
@@ -128,6 +131,13 @@ public class QuestRewardSummonGeneratedMonster extends QuestReward {
 			case WaterElemental:
 				monsters.add((new SummonElemental(frame)).createElemental(getGameData(), SummonElemental.ElementalType.Water));
 				break;
+			}
+		}
+		
+		if (customStats()) {
+			for (GameObject monster:monsters) {
+				monster.setThisAttribute("notoriety",getNotoriety());
+				monster.setThisAttribute("fame",getFame());
 			}
 		}
 		
@@ -244,5 +254,15 @@ public class QuestRewardSummonGeneratedMonster extends QuestReward {
 	
 	public void updateIds(Hashtable<Long, GameObject> lookup) {
 		updateIdsForKey(lookup,LOCATION);
+	}
+	
+	private boolean customStats() {
+		return getBoolean(CUSTOM_STATS);
+	}
+	private int getFame() {
+		return getInt(FAME);
+	}
+	private int getNotoriety() {
+		return getInt(FAME);
 	}
 }
