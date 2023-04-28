@@ -129,6 +129,15 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 				mod += item.getThisInt(Constants.HORSE_MOD); // cumulative... though there's really only the Horse Trainer (Traveler) at this time
 			}
 		}
+		if (getGameObject().hasThisAttribute(Constants.SLOWED)) {
+			mod++;
+		}
+		if (getGameObject().hasThisAttribute(Constants.SHRINK)) {
+			mod--;
+		}
+		if (new CombatWrapper(getGameObject()).isFreezed()) {
+			mod++;
+		}
 		alteredMoveSpeed = mod!=0;
 		return mod;
 	}

@@ -437,6 +437,9 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		if (getGameObject().hasThisAttribute(Constants.SHRINK)) {
 			mod--;
 		}
+		if (new CombatWrapper(getGameObject()).isFreezed()) {
+			mod++;
+		}
 		return mod;
 	}
 	protected int sizeModifier() {

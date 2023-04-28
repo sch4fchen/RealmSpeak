@@ -301,8 +301,14 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 	}
 	protected int speedModifier() {
 		int mod = 0;
+		if (getGameObject().hasThisAttribute(Constants.SLOWED)) {
+			mod++;
+		}
 		if (getGameObject().hasThisAttribute(Constants.SHRINK)) {
 			mod--;
+		}
+		if (new CombatWrapper(getGameObject()).isFreezed()) {
+			mod++;
 		}
 		return mod;
 	}

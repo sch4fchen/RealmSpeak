@@ -57,7 +57,17 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		if (getRider()!=null ) {
 			getRider().speedModifier();
 		}
-		return 0;
+		int mod = 0;
+		if (getGameObject().hasThisAttribute(Constants.SLOWED)) {
+			mod++;
+		}
+		if (getGameObject().hasThisAttribute(Constants.SHRINK)) {
+			mod--;
+		}
+		if (new CombatWrapper(getGameObject()).isFreezed()) {
+			mod++;
+		}
+		return mod;
 	}
 	public String getLightSideStat() {
 		return "trot";

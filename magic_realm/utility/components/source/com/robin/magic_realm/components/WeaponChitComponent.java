@@ -68,12 +68,16 @@ public class WeaponChitComponent extends RoundChitComponent {
 	}
 	public Speed getSpeed() {
 		String val = getFaceAttributeString("attack_speed");
+		int mod = 0;
+		if (new CombatWrapper(getWielder().getGameObject()).isFreezed()) {
+			mod = 1;
+		}
 		if (gameObject.hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE)) {
 			String magicSpeed = getFaceAttributeString(Constants.MAGIC_COLOR_BONUS_SPEED);
-			if (magicSpeed!=null && magicSpeed.trim().length()>0) return new Speed(magicSpeed);
+			if (magicSpeed!=null && magicSpeed.trim().length()>0) return new Speed(magicSpeed,mod);
 		}
 		if (val!=null && val.trim().length()>0) {
-			return new Speed(val);
+			return new Speed(val,mod);
 		}
 		return null;
 	}

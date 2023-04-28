@@ -14,7 +14,11 @@ public class BattleUtility {
 		Speed speed = null;
 		if (rc.isTreasure() && rc.getGameObject().hasThisAttribute("attack_speed")) {
 			// This wont work for weapons, but that's what I want here!  Weapons are in ADDITION to fight speed.
-			speed = new Speed(rc.getGameObject().getThisAttribute("attack_speed"));
+			int mod = 0;
+			if (rc.getGameObject().getHeldBy()!=null && new CombatWrapper(rc.getGameObject().getHeldBy()).isFreezed()) {
+				mod = 1;
+			}
+			speed = new Speed(rc.getGameObject().getThisAttribute("attack_speed"),mod);
 		}
 		if (rc.isBattleChit()) { // this handles character action chits, natives, and horses
 			BattleChit bc = (BattleChit)rc;
@@ -131,11 +135,16 @@ public class BattleUtility {
 
 	public static Speed getMoveSpeed(RealmComponent rc) {
 		Speed speed = null;
+		int mod = 0;
+		if (rc.getGameObject().getHeldBy()!=null && new CombatWrapper(rc.getGameObject().getHeldBy()).isFreezed()) {
+			mod = 1;
+		}
+		
 		if (rc.isTreasure() && rc.getGameObject().hasThisAttribute("fly_speed")) {
-			speed = new Speed(rc.getGameObject().getThisAttribute("fly_speed"));
+			speed = new Speed(rc.getGameObject().getThisAttribute("fly_speed"),mod);
 		}
 		else if (rc.isTreasure() && rc.getGameObject().hasThisAttribute("move_speed")) {
-			speed = new Speed(rc.getGameObject().getThisAttribute("move_speed"));
+			speed = new Speed(rc.getGameObject().getThisAttribute("move_speed"),mod);
 		}
 		else if (rc.isBattleChit()) { // this handles character action chits, natives, and horses
 			BattleChit bc = (BattleChit)rc;
@@ -143,7 +152,7 @@ public class BattleUtility {
 		}
 		else if (rc.isFlyChit()) {
 			FlyChitComponent flyChit = (FlyChitComponent)rc;
-			speed = flyChit.getSpeed();
+			speed = new Speed(flyChit.getSpeed().getNum(),mod);
 		}
 		return speed;
 	}

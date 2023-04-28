@@ -75,6 +75,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String RAISE_THE_DEAD = "RAISE_THE_DEAD";
 	private static final String SPELL_CANCELED = "SPELL_CANCELED";
 	private static final String ATTACKED_AFTER_CASTING = "ATTACKED_AFTER_CASTING";
+	private static final String FREEZED = "FREEZED";
 	
 	private static final String HEALING = "HEALING";
 	
@@ -184,6 +185,12 @@ public class CombatWrapper extends GameObjectWrapper {
 	}
 	public boolean getRaisedDead() {
 		return getBoolean(CASTED_RAISE_THE_DEAD);
+	}
+	public void freeze() {
+		setBoolean(FREEZED, true);
+	}
+	public boolean isFreezed() {
+		return getBoolean(FREEZED);
 	}
 	public void setSkipCombat(boolean val) {
 		setBoolean(SKIP_COMBAT,val);
@@ -757,6 +764,7 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,RAISE_THE_DEAD);
 			go.removeAttribute(COMBAT_BLOCK,SPELL_CANCELED);
 			go.removeAttribute(COMBAT_BLOCK,ATTACKED_AFTER_CASTING);
+			go.removeAttribute(COMBAT_BLOCK,FREEZED);
 			
 			ArrayList<String> list = go.getAttributeList(COMBAT_BLOCK,RANDOMIZE_PREFICES);
 			if (list!=null) {

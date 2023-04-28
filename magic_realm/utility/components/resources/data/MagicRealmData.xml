@@ -35645,7 +35645,7 @@
       <AttributeBlock blockName=" this">
         <attribute native_name="Caster" />
       </AttributeBlock>
-      <contains id="2189" />
+      <contains id="2187" />
     </GameObject>
     <GameObject id="1319" name="Cultist 2">
       <AttributeBlock blockName="this">
@@ -35687,7 +35687,7 @@
       <AttributeBlock blockName=" this">
         <attribute native_name="Caster" />
       </AttributeBlock>
-      <contains id="2190" />
+      <contains id="2188" />
     </GameObject>
     <GameObject id="1320" name="Cultist 3">
       <AttributeBlock blockName="this">
@@ -35729,7 +35729,7 @@
       <AttributeBlock blockName=" this">
         <attribute native_name="Caster" />
       </AttributeBlock>
-      <contains id="2191" />
+      <contains id="2189" />
     </GameObject>
     <GameObject id="1321" name="Cultist HQ">
       <AttributeBlock blockName="this">
@@ -35771,7 +35771,7 @@
       <AttributeBlock blockName=" this">
         <attribute native_name="Caster" />
       </AttributeBlock>
-      <contains id="2192" />
+      <contains id="2190" />
     </GameObject>
     <GameObject id="1322" name="H Gargoyle Box">
       <AttributeBlock blockName="this">
@@ -48838,7 +48838,7 @@
         <attribute length="9" />
         <attribute chit_color="forestgreen" />
       </AttributeBlock>
-      <contains id="2194" />
+      <contains id="2192" />
     </GameObject>
     <GameObject id="1837" name="Pagan 2">
       <AttributeBlock blockName="this">
@@ -48878,7 +48878,7 @@
         <attribute length="9" />
         <attribute chit_color="forestgreen" />
       </AttributeBlock>
-      <contains id="2195" />
+      <contains id="2193" />
     </GameObject>
     <GameObject id="1838" name="Pagan 3">
       <AttributeBlock blockName="this">
@@ -48918,7 +48918,7 @@
         <attribute length="9" />
         <attribute chit_color="forestgreen" />
       </AttributeBlock>
-      <contains id="2196" />
+      <contains id="2194" />
     </GameObject>
     <GameObject id="1839" name="Pagan HQ">
       <AttributeBlock blockName="this">
@@ -48958,7 +48958,7 @@
         <attribute length="9" />
         <attribute chit_color="forestgreen" />
       </AttributeBlock>
-      <contains id="2197" />
+      <contains id="2195" />
     </GameObject>
     <GameObject id="1840" name="Mage 1">
       <AttributeBlock blockName="this">
@@ -48984,9 +48984,10 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
         <attribute attack_speed="2" />
-        <attribute strength="M" />
         <attribute length="13" />
         <attribute chit_color="lightorange" />
+        <attribute magic_type="IV" />
+        <attribute attack_spell="Ice Bolt" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -48996,6 +48997,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
       <contains id="1844" />
+      <contains id="2197" />
     </GameObject>
     <GameObject id="1841" name="Mage 2">
       <AttributeBlock blockName="this">
@@ -49021,9 +49023,10 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
         <attribute attack_speed="2" />
-        <attribute strength="M" />
         <attribute length="13" />
         <attribute chit_color="lightorange" />
+        <attribute magic_type="IV" />
+        <attribute attack_spell="Ice Bolt" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -49033,6 +49036,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
       <contains id="1845" />
+      <contains id="2198" />
     </GameObject>
     <GameObject id="1842" name="Mage 3">
       <AttributeBlock blockName="this">
@@ -49058,9 +49062,10 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
         <attribute attack_speed="2" />
-        <attribute strength="M" />
         <attribute length="13" />
         <attribute chit_color="lightorange" />
+        <attribute magic_type="IV" />
+        <attribute attack_spell="Ice Bolt" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -49070,6 +49075,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
       <contains id="1846" />
+      <contains id="2199" />
     </GameObject>
     <GameObject id="1843" name="Mage HQ">
       <AttributeBlock blockName="this">
@@ -49095,9 +49101,10 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
         <attribute attack_speed="2" />
-        <attribute strength="M" />
         <attribute length="13" />
         <attribute chit_color="lightorange" />
+        <attribute magic_type="IV" />
+        <attribute attack_spell="Ice Bolt" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -49107,6 +49114,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
       <contains id="1847" />
+      <contains id="2200" />
     </GameObject>
     <GameObject id="1844" name="Pony 1">
       <AttributeBlock blockName="this">
@@ -50535,7 +50543,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
       <contains id="1895" />
-      <contains id="2181" />
+      <contains id="2179" />
     </GameObject>
     <GameObject id="1892" name="Conjuror 2">
       <AttributeBlock blockName="this">
@@ -50582,7 +50590,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
       <contains id="1896" />
-      <contains id="2182" />
+      <contains id="2180" />
     </GameObject>
     <GameObject id="1893" name="Conjuror 3">
       <AttributeBlock blockName="this">
@@ -50629,7 +50637,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
       <contains id="1897" />
-      <contains id="2183" />
+      <contains id="2181" />
     </GameObject>
     <GameObject id="1894" name="Conjuror HQ">
       <AttributeBlock blockName="this">
@@ -50676,7 +50684,7 @@
         <attribute chit_color="red" />
       </AttributeBlock>
       <contains id="1898" />
-      <contains id="2184" />
+      <contains id="2182" />
     </GameObject>
     <GameObject id="1895" name="Workhorse 1">
       <AttributeBlock blockName="this">
@@ -50855,7 +50863,7 @@
         <attribute chit_color="orange" />
       </AttributeBlock>
       <contains id="1904" />
-      <contains id="2185" />
+      <contains id="2183" />
     </GameObject>
     <GameObject id="1902" name="Enchanter 2">
       <AttributeBlock blockName="this">
@@ -50896,7 +50904,7 @@
         <attribute chit_color="orange" />
       </AttributeBlock>
       <contains id="1905" />
-      <contains id="2186" />
+      <contains id="2184" />
     </GameObject>
     <GameObject id="1903" name="Enchanter HQ">
       <AttributeBlock blockName="this">
@@ -50937,7 +50945,7 @@
         <attribute chit_color="orange" />
       </AttributeBlock>
       <contains id="1906" />
-      <contains id="2187" />
+      <contains id="2185" />
     </GameObject>
     <GameObject id="1904" name="Pony 1">
       <AttributeBlock blockName="this">
@@ -56408,6 +56416,186 @@
         <attribute fame_cost="8" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2179" name="Transform">
+      <AttributeBlock blockName="this">
+        <attribute duration="permanent" />
+        <attribute target="individual" />
+        <attribute text="Become beast (roll for TRANSFORM)" />
+        <attribute magic_color="purple" />
+        <attribute transmorph="roll" />
+        <attribute spell_strength="2" />
+        <attribute table="transform" />
+        <attribute super_realm="" />
+        <attribute virtual="" />
+        <attribute spell_denizen="VI" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll1">
+        <attribute vulnerability="T" />
+        <attribute strength="T" />
+        <attribute attack_speed="4" />
+        <attribute move_speed="4" />
+        <attribute icon_type="dragon_transform" />
+        <attribute flying="" />
+        <attribute light_color="lightblue" />
+        <attribute dark_color="red" />
+        <attribute name="Tremendous Dragon" />
+        <attribute icon_folder="monsters" />
+        <attribute armored="" />
+        <attribute dragon="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll2">
+        <attribute vulnerability="H" />
+        <attribute strength="H" />
+        <attribute attack_speed="3" />
+        <attribute move_speed="4" />
+        <attribute icon_type="lion" />
+        <attribute walk_woods="" />
+        <attribute light_color="gold" />
+        <attribute dark_color="orange" />
+        <attribute name="Lion" />
+        <attribute icon_folder="monsters" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll3">
+        <attribute vulnerability="M" />
+        <attribute strength="M" />
+        <attribute attack_speed="2" />
+        <attribute move_speed="2" />
+        <attribute icon_type="eagle" />
+        <attribute flying="" />
+        <attribute light_color="gray" />
+        <attribute dark_color="darkgray" />
+        <attribute name="Eagle" />
+        <attribute icon_folder="monsters" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll4">
+        <attribute vulnerability="L" />
+        <attribute move_speed="1" />
+        <attribute icon_type="bird" />
+        <attribute flying="" />
+        <attribute light_color="lightblue" />
+        <attribute dark_color="blue" />
+        <attribute name="Bird" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll5">
+        <attribute vulnerability="L" />
+        <attribute move_speed="2" />
+        <attribute icon_type="squirrel" />
+        <attribute walk_woods="" />
+        <attribute light_color="peach" />
+        <attribute dark_color="brown" />
+        <attribute name="Squirrel" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll6">
+        <attribute vulnerability="L" />
+        <attribute move_speed="3" />
+        <attribute walk_woods="" />
+        <attribute icon_type="frog" />
+        <attribute light_color="lightgreen" />
+        <attribute dark_color="forestgreen" />
+        <attribute name="Frog" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+        <attribute animal="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2180" name="Transform">
+      <AttributeBlock blockName="this">
+        <attribute duration="permanent" />
+        <attribute target="individual" />
+        <attribute text="Become beast (roll for TRANSFORM)" />
+        <attribute magic_color="purple" />
+        <attribute transmorph="roll" />
+        <attribute spell_strength="2" />
+        <attribute table="transform" />
+        <attribute super_realm="" />
+        <attribute virtual="" />
+        <attribute spell_denizen="VI" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll1">
+        <attribute vulnerability="T" />
+        <attribute strength="T" />
+        <attribute attack_speed="4" />
+        <attribute move_speed="4" />
+        <attribute icon_type="dragon_transform" />
+        <attribute flying="" />
+        <attribute light_color="lightblue" />
+        <attribute dark_color="red" />
+        <attribute name="Tremendous Dragon" />
+        <attribute icon_folder="monsters" />
+        <attribute armored="" />
+        <attribute dragon="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll2">
+        <attribute vulnerability="H" />
+        <attribute strength="H" />
+        <attribute attack_speed="3" />
+        <attribute move_speed="4" />
+        <attribute icon_type="lion" />
+        <attribute walk_woods="" />
+        <attribute light_color="gold" />
+        <attribute dark_color="orange" />
+        <attribute name="Lion" />
+        <attribute icon_folder="monsters" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll3">
+        <attribute vulnerability="M" />
+        <attribute strength="M" />
+        <attribute attack_speed="2" />
+        <attribute move_speed="2" />
+        <attribute icon_type="eagle" />
+        <attribute flying="" />
+        <attribute light_color="gray" />
+        <attribute dark_color="darkgray" />
+        <attribute name="Eagle" />
+        <attribute icon_folder="monsters" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll4">
+        <attribute vulnerability="L" />
+        <attribute move_speed="1" />
+        <attribute icon_type="bird" />
+        <attribute flying="" />
+        <attribute light_color="lightblue" />
+        <attribute dark_color="blue" />
+        <attribute name="Bird" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll5">
+        <attribute vulnerability="L" />
+        <attribute move_speed="2" />
+        <attribute icon_type="squirrel" />
+        <attribute walk_woods="" />
+        <attribute light_color="peach" />
+        <attribute dark_color="brown" />
+        <attribute name="Squirrel" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+        <attribute animal="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="roll6">
+        <attribute vulnerability="L" />
+        <attribute move_speed="3" />
+        <attribute walk_woods="" />
+        <attribute icon_type="frog" />
+        <attribute light_color="lightgreen" />
+        <attribute dark_color="forestgreen" />
+        <attribute name="Frog" />
+        <attribute icon_folder="monsters" />
+        <attribute small="" />
+        <attribute animal="" />
+      </AttributeBlock>
+    </GameObject>
     <GameObject id="2181" name="Transform">
       <AttributeBlock blockName="this">
         <attribute duration="permanent" />
@@ -56588,184 +56776,56 @@
         <attribute animal="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2183" name="Transform">
+    <GameObject id="2183" name="Melt Into Mist">
       <AttributeBlock blockName="this">
         <attribute duration="permanent" />
         <attribute target="individual" />
-        <attribute text="Become beast (roll for TRANSFORM)" />
+        <attribute text="Can only MOVE T4 (no fight)" />
         <attribute magic_color="purple" />
-        <attribute transmorph="roll" />
-        <attribute spell_strength="2" />
-        <attribute table="transform" />
+        <attribute transmorph="mist" />
+        <attribute disengage="ALL" />
+        <attribute host_okay="" />
+        <attribute nullify="" />
+        <attribute spell_strength="3" />
         <attribute super_realm="" />
         <attribute virtual="" />
         <attribute spell_denizen="VI" />
       </AttributeBlock>
-      <AttributeBlock blockName="roll1">
+      <AttributeBlock blockName="mist">
         <attribute vulnerability="T" />
-        <attribute strength="T" />
-        <attribute attack_speed="4" />
         <attribute move_speed="4" />
-        <attribute icon_type="dragon_transform" />
-        <attribute flying="" />
-        <attribute light_color="lightblue" />
-        <attribute dark_color="red" />
-        <attribute name="Tremendous Dragon" />
-        <attribute icon_folder="monsters" />
-        <attribute armored="" />
-        <attribute dragon="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="roll2">
-        <attribute vulnerability="H" />
-        <attribute strength="H" />
-        <attribute attack_speed="3" />
-        <attribute move_speed="4" />
-        <attribute icon_type="lion" />
-        <attribute walk_woods="" />
-        <attribute light_color="gold" />
-        <attribute dark_color="orange" />
-        <attribute name="Lion" />
-        <attribute icon_folder="monsters" />
-        <attribute animal="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="roll3">
-        <attribute vulnerability="M" />
-        <attribute strength="M" />
-        <attribute attack_speed="2" />
-        <attribute move_speed="2" />
-        <attribute icon_type="eagle" />
-        <attribute flying="" />
         <attribute light_color="gray" />
         <attribute dark_color="darkgray" />
-        <attribute name="Eagle" />
+        <attribute icon_type="mist" />
+        <attribute mist_like="" />
+        <attribute name="Mist" />
         <attribute icon_folder="monsters" />
-        <attribute animal="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="roll4">
-        <attribute vulnerability="L" />
-        <attribute move_speed="1" />
-        <attribute icon_type="bird" />
-        <attribute flying="" />
-        <attribute light_color="lightblue" />
-        <attribute dark_color="blue" />
-        <attribute name="Bird" />
-        <attribute icon_folder="monsters" />
-        <attribute small="" />
-        <attribute animal="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="roll5">
-        <attribute vulnerability="L" />
-        <attribute move_speed="2" />
-        <attribute icon_type="squirrel" />
-        <attribute walk_woods="" />
-        <attribute light_color="peach" />
-        <attribute dark_color="brown" />
-        <attribute name="Squirrel" />
-        <attribute icon_folder="monsters" />
-        <attribute small="" />
-        <attribute animal="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="roll6">
-        <attribute vulnerability="L" />
-        <attribute move_speed="3" />
-        <attribute walk_woods="" />
-        <attribute icon_type="frog" />
-        <attribute light_color="lightgreen" />
-        <attribute dark_color="forestgreen" />
-        <attribute name="Frog" />
-        <attribute icon_folder="monsters" />
-        <attribute small="" />
-        <attribute animal="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2184" name="Transform">
+    <GameObject id="2184" name="Melt Into Mist">
       <AttributeBlock blockName="this">
         <attribute duration="permanent" />
         <attribute target="individual" />
-        <attribute text="Become beast (roll for TRANSFORM)" />
+        <attribute text="Can only MOVE T4 (no fight)" />
         <attribute magic_color="purple" />
-        <attribute transmorph="roll" />
-        <attribute spell_strength="2" />
-        <attribute table="transform" />
+        <attribute transmorph="mist" />
+        <attribute disengage="ALL" />
+        <attribute host_okay="" />
+        <attribute nullify="" />
+        <attribute spell_strength="3" />
         <attribute super_realm="" />
         <attribute virtual="" />
         <attribute spell_denizen="VI" />
       </AttributeBlock>
-      <AttributeBlock blockName="roll1">
+      <AttributeBlock blockName="mist">
         <attribute vulnerability="T" />
-        <attribute strength="T" />
-        <attribute attack_speed="4" />
         <attribute move_speed="4" />
-        <attribute icon_type="dragon_transform" />
-        <attribute flying="" />
-        <attribute light_color="lightblue" />
-        <attribute dark_color="red" />
-        <attribute name="Tremendous Dragon" />
-        <attribute icon_folder="monsters" />
-        <attribute armored="" />
-        <attribute dragon="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="roll2">
-        <attribute vulnerability="H" />
-        <attribute strength="H" />
-        <attribute attack_speed="3" />
-        <attribute move_speed="4" />
-        <attribute icon_type="lion" />
-        <attribute walk_woods="" />
-        <attribute light_color="gold" />
-        <attribute dark_color="orange" />
-        <attribute name="Lion" />
-        <attribute icon_folder="monsters" />
-        <attribute animal="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="roll3">
-        <attribute vulnerability="M" />
-        <attribute strength="M" />
-        <attribute attack_speed="2" />
-        <attribute move_speed="2" />
-        <attribute icon_type="eagle" />
-        <attribute flying="" />
         <attribute light_color="gray" />
         <attribute dark_color="darkgray" />
-        <attribute name="Eagle" />
+        <attribute icon_type="mist" />
+        <attribute mist_like="" />
+        <attribute name="Mist" />
         <attribute icon_folder="monsters" />
-        <attribute animal="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="roll4">
-        <attribute vulnerability="L" />
-        <attribute move_speed="1" />
-        <attribute icon_type="bird" />
-        <attribute flying="" />
-        <attribute light_color="lightblue" />
-        <attribute dark_color="blue" />
-        <attribute name="Bird" />
-        <attribute icon_folder="monsters" />
-        <attribute small="" />
-        <attribute animal="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="roll5">
-        <attribute vulnerability="L" />
-        <attribute move_speed="2" />
-        <attribute icon_type="squirrel" />
-        <attribute walk_woods="" />
-        <attribute light_color="peach" />
-        <attribute dark_color="brown" />
-        <attribute name="Squirrel" />
-        <attribute icon_folder="monsters" />
-        <attribute small="" />
-        <attribute animal="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="roll6">
-        <attribute vulnerability="L" />
-        <attribute move_speed="3" />
-        <attribute walk_woods="" />
-        <attribute icon_type="frog" />
-        <attribute light_color="lightgreen" />
-        <attribute dark_color="forestgreen" />
-        <attribute name="Frog" />
-        <attribute icon_folder="monsters" />
-        <attribute small="" />
-        <attribute animal="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2185" name="Melt Into Mist">
@@ -56794,59 +56854,7 @@
         <attribute icon_folder="monsters" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2186" name="Melt Into Mist">
-      <AttributeBlock blockName="this">
-        <attribute duration="permanent" />
-        <attribute target="individual" />
-        <attribute text="Can only MOVE T4 (no fight)" />
-        <attribute magic_color="purple" />
-        <attribute transmorph="mist" />
-        <attribute disengage="ALL" />
-        <attribute host_okay="" />
-        <attribute nullify="" />
-        <attribute spell_strength="3" />
-        <attribute super_realm="" />
-        <attribute virtual="" />
-        <attribute spell_denizen="VI" />
-      </AttributeBlock>
-      <AttributeBlock blockName="mist">
-        <attribute vulnerability="T" />
-        <attribute move_speed="4" />
-        <attribute light_color="gray" />
-        <attribute dark_color="darkgray" />
-        <attribute icon_type="mist" />
-        <attribute mist_like="" />
-        <attribute name="Mist" />
-        <attribute icon_folder="monsters" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="2187" name="Melt Into Mist">
-      <AttributeBlock blockName="this">
-        <attribute duration="permanent" />
-        <attribute target="individual" />
-        <attribute text="Can only MOVE T4 (no fight)" />
-        <attribute magic_color="purple" />
-        <attribute transmorph="mist" />
-        <attribute disengage="ALL" />
-        <attribute host_okay="" />
-        <attribute nullify="" />
-        <attribute spell_strength="3" />
-        <attribute super_realm="" />
-        <attribute virtual="" />
-        <attribute spell_denizen="VI" />
-      </AttributeBlock>
-      <AttributeBlock blockName="mist">
-        <attribute vulnerability="T" />
-        <attribute move_speed="4" />
-        <attribute light_color="gray" />
-        <attribute dark_color="darkgray" />
-        <attribute icon_type="mist" />
-        <attribute mist_like="" />
-        <attribute name="Mist" />
-        <attribute icon_folder="monsters" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="2188" name="Summon Demon">
+    <GameObject id="2186" name="Summon Demon">
       <AttributeBlock blockName="this">
         <attribute spell="V" />
         <attribute duration="instant" />
@@ -56859,6 +56867,34 @@
         <attribute summondemon="" />
         <attribute uneffect_at_midnight="" />
         <attribute super_realm_spell="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2187" name="Summon Demon">
+      <AttributeBlock blockName="this">
+        <attribute duration="instant" />
+        <attribute target="clearing" />
+        <attribute text="Roll on Summon Demon table." />
+        <attribute magic_color="black" />
+        <attribute table="summondemon" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute summondemon="" />
+        <attribute spell_denizen="V" />
+        <attribute uneffect_at_midnight="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2188" name="Summon Demon">
+      <AttributeBlock blockName="this">
+        <attribute duration="instant" />
+        <attribute target="clearing" />
+        <attribute text="Roll on Summon Demon table." />
+        <attribute magic_color="black" />
+        <attribute table="summondemon" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute summondemon="" />
+        <attribute spell_denizen="V" />
+        <attribute uneffect_at_midnight="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2189" name="Summon Demon">
@@ -56889,35 +56925,7 @@
         <attribute uneffect_at_midnight="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2191" name="Summon Demon">
-      <AttributeBlock blockName="this">
-        <attribute duration="instant" />
-        <attribute target="clearing" />
-        <attribute text="Roll on Summon Demon table." />
-        <attribute magic_color="black" />
-        <attribute table="summondemon" />
-        <attribute learnable="" />
-        <attribute super_realm="" />
-        <attribute summondemon="" />
-        <attribute spell_denizen="V" />
-        <attribute uneffect_at_midnight="" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="2192" name="Summon Demon">
-      <AttributeBlock blockName="this">
-        <attribute duration="instant" />
-        <attribute target="clearing" />
-        <attribute text="Roll on Summon Demon table." />
-        <attribute magic_color="black" />
-        <attribute table="summondemon" />
-        <attribute learnable="" />
-        <attribute super_realm="" />
-        <attribute summondemon="" />
-        <attribute spell_denizen="V" />
-        <attribute uneffect_at_midnight="" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="2193" name="Negative Aura">
+    <GameObject id="2191" name="Negative Aura">
       <AttributeBlock blockName="this">
         <attribute spell="V" />
         <attribute duration="day" />
@@ -56928,6 +56936,40 @@
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
         <attribute negative_aura="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2192" name="Stones Fly">
+      <AttributeBlock blockName="this">
+        <attribute duration="attack" />
+        <attribute target="multiple" />
+        <attribute text="MISSILE attack on each target (specify)" />
+        <attribute magic_color="gray" />
+        <attribute sharpness="1" />
+        <attribute strength="L" />
+        <attribute length="15" />
+        <attribute missile="magic" />
+        <attribute min_targets="4" />
+        <attribute host_okay="" />
+        <attribute table="magicmissil" />
+        <attribute super_realm="" />
+        <attribute spell_denizen="II" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2193" name="Stones Fly">
+      <AttributeBlock blockName="this">
+        <attribute duration="attack" />
+        <attribute target="multiple" />
+        <attribute text="MISSILE attack on each target (specify)" />
+        <attribute magic_color="gray" />
+        <attribute sharpness="1" />
+        <attribute strength="L" />
+        <attribute length="15" />
+        <attribute missile="magic" />
+        <attribute min_targets="4" />
+        <attribute host_okay="" />
+        <attribute table="magicmissil" />
+        <attribute super_realm="" />
+        <attribute spell_denizen="II" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2194" name="Stones Fly">
@@ -56964,38 +57006,91 @@
         <attribute spell_denizen="II" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2196" name="Stones Fly">
+    <GameObject id="2196" name="Ice Bolt">
       <AttributeBlock blockName="this">
         <attribute duration="attack" />
-        <attribute target="multiple" />
-        <attribute text="MISSILE attack on each target (specify)" />
-        <attribute magic_color="gray" />
-        <attribute sharpness="1" />
+        <attribute target="individual" />
+        <attribute text="MISSILE attack against a target" />
+        <attribute magic_color="purple" />
+        <attribute sharpness="3" />
         <attribute strength="L" />
-        <attribute length="15" />
+        <attribute length="13" />
         <attribute missile="magic" />
-        <attribute min_targets="4" />
         <attribute host_okay="" />
         <attribute table="magicmissil" />
         <attribute super_realm="" />
-        <attribute spell_denizen="II" />
+        <attribute spell="IV" />
+        <attribute super_realm_spell="" />
+        <attribute freezing="" />
+        <attribute learnable="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2197" name="Stones Fly">
+    <GameObject id="2197" name="Ice Bolt">
       <AttributeBlock blockName="this">
         <attribute duration="attack" />
-        <attribute target="multiple" />
-        <attribute text="MISSILE attack on each target (specify)" />
-        <attribute magic_color="gray" />
-        <attribute sharpness="1" />
+        <attribute target="individual" />
+        <attribute text="MISSILE attack against a target" />
+        <attribute magic_color="purple" />
+        <attribute sharpness="3" />
         <attribute strength="L" />
-        <attribute length="15" />
+        <attribute length="13" />
         <attribute missile="magic" />
-        <attribute min_targets="4" />
         <attribute host_okay="" />
         <attribute table="magicmissil" />
         <attribute super_realm="" />
-        <attribute spell_denizen="II" />
+        <attribute spell_denizen="IV" />
+        <attribute freezing="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2198" name="Ice Bolt">
+      <AttributeBlock blockName="this">
+        <attribute duration="attack" />
+        <attribute target="individual" />
+        <attribute text="MISSILE attack against a target" />
+        <attribute magic_color="purple" />
+        <attribute sharpness="3" />
+        <attribute strength="L" />
+        <attribute length="13" />
+        <attribute missile="magic" />
+        <attribute host_okay="" />
+        <attribute table="magicmissil" />
+        <attribute super_realm="" />
+        <attribute spell_denizen="IV" />
+        <attribute freezing="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2199" name="Ice Bolt">
+      <AttributeBlock blockName="this">
+        <attribute duration="attack" />
+        <attribute target="individual" />
+        <attribute text="MISSILE attack against a target" />
+        <attribute magic_color="purple" />
+        <attribute sharpness="3" />
+        <attribute strength="L" />
+        <attribute length="13" />
+        <attribute missile="magic" />
+        <attribute host_okay="" />
+        <attribute table="magicmissil" />
+        <attribute super_realm="" />
+        <attribute spell_denizen="IV" />
+        <attribute freezing="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2200" name="Ice Bolt">
+      <AttributeBlock blockName="this">
+        <attribute duration="attack" />
+        <attribute target="individual" />
+        <attribute text="MISSILE attack against a target" />
+        <attribute magic_color="purple" />
+        <attribute sharpness="3" />
+        <attribute strength="L" />
+        <attribute length="13" />
+        <attribute missile="magic" />
+        <attribute host_okay="" />
+        <attribute table="magicmissil" />
+        <attribute super_realm="" />
+        <attribute spell_denizen="IV" />
+        <attribute freezing="" />
       </AttributeBlock>
     </GameObject>
   </objects>

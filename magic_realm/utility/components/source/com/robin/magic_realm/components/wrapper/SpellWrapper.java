@@ -1109,4 +1109,8 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	private String getAlternativeSpellEffect() {
 		return getGameObject().getThisAttribute(Constants.ALTERNATIVE_SPELL_EFFECT);
 	}
+	
+	public boolean freezingTarget() {
+		return getGameObject().hasThisAttribute(Constants.FREEZING);
+	}
 }

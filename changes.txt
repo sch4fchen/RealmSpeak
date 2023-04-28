@@ -28,7 +28,6 @@ Super Realm: Adapt Commerce optional rules for new natives
 Super Realm: Characters, including potraits with credits, different chit icon
 Super Realm: icons for site chits, sound and warning chits, characters
 Super Realm: option to use Super Realm search tables etc., add search tables etc. to menu; add first edition search tables to menu
-Super Realm: rule for special Devil attack: p.98
 ---Rules---
 SUPER REALM: remaining RULES and LOGIC (rule changes compared to Magic Realm)
 Super Realm: Seasons + Weather 10.12 (p.117)
@@ -72,6 +71,8 @@ QUEST UPDATE:
 # SummonGeneratedMonster: Option to set notoriety and fame
 # SUPER REALM:
 # Transform can now be cast on the Skeleton Horse (change of Super Realm 0.997)
+# Native spell caster: Mages
+# New spell: Ice Bolt
 BUGS/ISSUES:
 # Add quest check when looting treasures inside a TWT
 # Fix QuestRequirementInventory not checking for already activated items, when activating another item

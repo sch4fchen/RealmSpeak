@@ -36,6 +36,12 @@ public class Speed implements Comparable {
 			num += modifier;
 		}
 	}
+	public Speed(String val,int modifier) {
+		this(val);
+		if (!infinitelySlow) {
+			num += modifier;
+		}
+	}
 	public boolean isInfinitelySlow() {
 		return infinitelySlow;
 	}

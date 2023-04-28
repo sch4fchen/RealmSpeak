@@ -1542,6 +1542,9 @@ public class BattleModel {
 								while (i<=attacks) {
 									Harm spellHarm = getAdjustedHarm(spell,fumbleModifier,targetCombat.getGameObject().getStringId());
 									CombatWrapper spellCaster = new CombatWrapper(spell.getCaster().getGameObject());
+									if (spell.freezingTarget()) {
+										targetCombat.freeze();
+									}
 									spellCaster.addHarmApplied(spellHarm,targetCombat.getGameObject());
 									// Apply the hit
 									targetCombat.addHitBy(attacker.getGameObject());
@@ -1577,6 +1580,9 @@ public class BattleModel {
 						// Spells should ref back to caster
 						SpellWrapper spell = (SpellWrapper)attacker;
 						CombatWrapper spellCaster = new CombatWrapper(spell.getCaster().getGameObject());
+						if (spell.freezingTarget()) {
+							targetCombat.freeze();;
+						}
 						spellCaster.addHarmApplied(attackerHarm,targetCombat.getGameObject());
 						spellCasting = true;
 					}
