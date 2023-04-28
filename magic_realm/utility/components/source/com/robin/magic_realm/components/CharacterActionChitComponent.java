@@ -488,27 +488,32 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 
 	public Speed getMoveSpeed() {
 		if (isMove()) {
-			if (this.isMagicMove()) return new Speed(0);
 			GameObject owner = getGameObject().getHeldBy();
 			CharacterWrapper character = null;
 			if (owner!=null) {
 				character = new CharacterWrapper(getGameObject().getHeldBy());
 			}
+			int mod = 0;
+			if (character!=null) {
+				if (character.hasMesmerizeEffect(Constants.WEAKENED)) {
+					mod++;
+				}
+				if (new CombatWrapper(character.getGameObject()).isFreezed()) {
+					mod++;
+				}
+			}
+			
+			if (this.isMagicMove()) return new Speed(0,mod);
+
 			if (!gameObject.hasAttribute(ALTERNATE_ATTRIBUTES, "speed")) {
 				// speedChange is ignored if speed is already altered by a treasure
 				int speedChange = getGameObject().getThisInt("move_speed_change");
 				if (speedChange>0) {
 					usingAlteredAttributes = true;
-					if (character!=null && character.hasMesmerizeEffect(Constants.WEAKENED)) {
-						speedChange=speedChange+1;
-					}
-					return new Speed(speedChange);
+					return new Speed(speedChange,mod);
 				}
 			}
-			if (character!=null && character.hasMesmerizeEffect(Constants.WEAKENED)) {
-				return new Speed(Integer.valueOf(getChitAttribute("speed"))+1);
-			}
-			return new Speed(getChitAttribute("speed"));
+			return new Speed(getChitAttribute("speed"),mod);
 		}
 		else if (isFly()) {
 			return getFlySpeed();
@@ -517,18 +522,23 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 	}
 	
 	public Speed getFlySpeed() {
-		if (this.isMagicMove()) return new Speed(0);
-		
 		GameObject owner = getGameObject().getHeldBy();
 		CharacterWrapper character = null;
 		if (owner!=null) {
 			character = new CharacterWrapper(getGameObject().getHeldBy());
 		}
-		if (character!=null && character.hasMesmerizeEffect(Constants.WEAKENED)) {
-			return new Speed(getChitAttribute("speed")+1);
+		int mod = 0;
+		if (character!=null) {
+			if (character.hasMesmerizeEffect(Constants.WEAKENED)) {
+				mod++;
+			}
+			if (new CombatWrapper(character.getGameObject()).isFreezed()) {
+				mod++;
+			}
 		}
 		
-		return new Speed(getChitAttribute("speed"));
+		if (this.isMagicMove()) return new Speed(0,mod);		
+		return new Speed(getChitAttribute("speed"),mod);
 	}
 
 	public boolean hasAnAttack() {
@@ -542,10 +552,14 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 			character = new CharacterWrapper(getGameObject().getHeldBy());
 		}
 		if (isFight()) {
+			int mod = 0;
 			if (character!=null && character.hasMesmerizeEffect(Constants.CALMED)) {
-				return new Speed(Integer.valueOf(getChitAttribute("speed"))+1);
+				mod++;
 			}
-			return new Speed(getChitAttribute("speed"));
+			if (new CombatWrapper(character.getGameObject()).isFreezed()) {
+				mod++;
+			}
+			return new Speed(getChitAttribute("speed"),mod);
 		}
 		return null;
 	}
@@ -558,14 +572,19 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 			character = new CharacterWrapper(getGameObject().getHeldBy());
 		}
 		if ("MAGIC".equals(action)) {
+			int mod = 0;
+			if (new CombatWrapper(character.getGameObject()).isFreezed()) {
+				mod++;
+			}
 			// alerted magic is always speed zero
 			if (isAlerted()) {
-				return new Speed(0); // wheee!
+				return new Speed(0,mod); // wheee!
 			}
-			if (character!=null && character.isCharacter() && character.hasMesmerizeEffect(Constants.INTOXICATED)) {
-				return new Speed(Integer.valueOf(getChitAttribute("speed"))+1);
+			if (character!=null && character.hasMesmerizeEffect(Constants.INTOXICATED)) {
+				mod++;
 			}
-			return new Speed(getChitAttribute("speed"));
+
+			return new Speed(getChitAttribute("speed"),mod);
 		}
 		return null;
 	}

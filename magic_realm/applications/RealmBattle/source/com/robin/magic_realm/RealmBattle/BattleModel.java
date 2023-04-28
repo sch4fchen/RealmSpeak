@@ -1549,7 +1549,7 @@ public class BattleModel {
 									// Apply the hit
 									targetCombat.addHitBy(attacker.getGameObject());
 									currentNewWounds = targetCombat.getNewWounds();
-									logBattleInfo(target.getGameObject().getNameWithNumber()+" is hit with "+spellHarm+" harm along box "+attacker.getAttackCombatBox());
+									logBattleInfo(target.getGameObject().getNameWithNumber()+" is hit by the spell "+spell.getName()+" with "+spellHarm+" harm along box "+attacker.getAttackCombatBox());
 									hitCausedHarm = target.applyHit(theGame,hostPrefs,attacker,attacker.getAttackCombatBox(),spellHarm,attackOrderPos);
 									i++;
 								}
