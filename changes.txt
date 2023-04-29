@@ -76,6 +76,7 @@ QUEST UPDATE:
 BUGS/ISSUES:
 # Add quest check when looting treasures inside a TWT
 # Fix QuestRequirementInventory not checking for already activated items, when activating another item
+# Fix advantages of characters count twice
 
 Version 1.1.7.6
 HINT: older save games are not fully compatible with this version (e.g. spell targeting)

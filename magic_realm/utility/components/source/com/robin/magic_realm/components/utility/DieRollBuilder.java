@@ -69,7 +69,6 @@ public class DieRollBuilder {
 		if (character!=null) {
 			objectsToTest.add(character.getGameObject());
 			if (character.isCharacter()) {
-				objectsToTest.add(character.getGameObject()); // the character
 				objectsToTest.addAll(character.getEnhancingItems()); // active treasures and travelers
 			}
 			TileLocation current = character.getCurrentLocation();
