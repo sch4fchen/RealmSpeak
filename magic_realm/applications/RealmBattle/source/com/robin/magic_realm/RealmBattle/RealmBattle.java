@@ -267,6 +267,7 @@ public class RealmBattle {
 					// Check special inits before moving onto actionState
 					switch(actionState) {
 						case Constants.COMBAT_PREBATTLE:
+							energizeDenizenPreBattleSpells(currentCombatLocation,data);
 							break;
 						case Constants.COMBAT_LURE:
 							// need to do preparation before moving onto LURE
@@ -618,6 +619,11 @@ public class RealmBattle {
 	public static void raiseDeads(TileLocation location,GameData data) {
 		BattleModel model = buildBattleModel(location,data);
 		model.doRaiseDeads();
+	}
+	
+	public static void energizeDenizenPreBattleSpells(TileLocation location,GameData data) {
+		BattleModel model = buildBattleModel(location,data);
+		model.doEnergizeDenizenPreBattleSpells();
 	}
 	
 	public static void energizeSpells(TileLocation location,GameData data) {

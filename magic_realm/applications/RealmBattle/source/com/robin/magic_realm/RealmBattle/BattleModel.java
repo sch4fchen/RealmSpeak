@@ -479,6 +479,42 @@ public class BattleModel {
 		}
 	}
 	
+	public void doEnergizeDenizenPreBattleSpells() {		
+		for (RealmComponent battleParticipant : getAllBattleParticipants(true)) {
+			if (battleParticipant.isDenizen() && battleParticipant.getGameObject().hasThisAttribute(Constants.SPELL_PRE_BATTLE)) {
+				String spellName = battleParticipant.getGameObject().getThisAttribute(Constants.SPELL_PRE_BATTLE);
+				SpellWrapper spell = null;
+				for (GameObject held : battleParticipant.getGameObject().getHold()) {
+					if (held.getName().toLowerCase().matches(spellName.toLowerCase()) && held.hasThisAttribute(Constants.SPELL_DENIZEN)) {
+						spell = new SpellWrapper(held);
+						break;
+					}
+				}
+				if (spell!=null && !spell.isAttackSpell()) {
+					boolean validTarget = spell.selectTargetForDenizen(hostPrefs, battleLocation, (BattleChit)battleParticipant,battleParticipant.getTarget());
+					if (validTarget) {
+						spell.castSpellByDenizen(battleParticipant.getGameObject());
+					}
+					
+					if (!validTarget || spell.isNullified() || !spell.isAlive()) continue;
+					ArrayList<String> logs = new ArrayList<String>();
+					if (spell.isInstantSpell() && !spell.uneffectAtMidnight()) {
+						logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,true,null);
+					}
+					else if (spell.isCombatSpell() || spell.isDaySpell() || spell.isPermanentSpell() || spell.isPhaseSpell() || spell.isMoveSpell() || spell.uneffectAtMidnight()) {
+						logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,false,null);
+					}
+					if (logs != null && !logs.isEmpty()) {
+						for (String log : logs) {
+							logBattleInfo(log);
+						}
+					}
+					continue;
+				}
+			}
+		}
+	}
+	
 	public void doEnergizeSpells() {
 		// Find and hash all spells and casters cast this round by speed
 		HashLists<Integer,SpellWrapper> spells = new HashLists<>();
@@ -509,11 +545,12 @@ public class BattleModel {
 			}
 			if ((battleParticipant.isDenizen() || transmorphed) && !battleParticipant.isMonsterPart()) {
 				BattleChit denizen = (BattleChit)battleParticipant;
-				if (hostPrefs.hasPref(Constants.OPT_POWER_OF_THE_PIT_DEMON) && "V".equals(denizen.getMagicType()) && Constants.POWER_OF_THE_PIT.matches(denizen.getAttackSpell()) && !spellCasters.contains(denizen)) {
+				if (hostPrefs.hasPref(Constants.OPT_POWER_OF_THE_PIT_DEMON) && Constants.POWER_OF_THE_PIT.matches(denizen.getAttackSpell()) && !spellCasters.contains(denizen)) {
 					spellCasters.add(denizen);
 					monsterSpells.put(Integer.valueOf(denizen.getAttackSpeed().getNum()),denizen);
 				}
-				else if (denizen.getGameObject().hasThisAttribute(Constants.FAST_CASTER) && denizen.getMagicType()!=null&&!denizen.getMagicType().isEmpty()) {
+				else if ((denizen.getGameObject().hasThisAttribute(Constants.FAST_CASTER) || ((ChitComponent)denizen).hasFaceAttribute(Constants.FAST_CASTER))
+						&& denizen.getMagicType()!=null&&!denizen.getMagicType().isEmpty()) {
 					String spellName = denizen.getAttackSpell();
 					SpellWrapper spell = null;
 					for (GameObject held : denizen.getGameObject().getHold()) {
@@ -701,11 +738,11 @@ public class BattleModel {
 					ArrayList<String> logs = new ArrayList<String>();
 					
 					if (spell.isDenizenSpell()) {
-						if (spell.isInstantSpell()) {
-							spell.affectTargets(CombatFrame.getSingleton(),theGame,false,null);
+						if (spell.isInstantSpell() && !spell.uneffectAtMidnight()) {
+							logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,true,null);
 						}
-						else if (spell.isCombatSpell() || spell.isDaySpell() || spell.isPermanentSpell() || spell.isPhaseSpell() || spell.isMoveSpell()) {
-							spell.affectTargets(CombatFrame.getSingleton(),theGame,true,null);
+						else if (spell.isCombatSpell() || spell.isDaySpell() || spell.isPermanentSpell() || spell.isPhaseSpell() || spell.isMoveSpell() || spell.uneffectAtMidnight()) {
+							logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,false,null);
 						}
 						if (logs != null && !logs.isEmpty()) {
 							for (String log : logs) {
@@ -720,10 +757,10 @@ public class BattleModel {
 						continue;
 					}
 					
-					if (spell.isInstantSpell()) {
+					if (spell.isInstantSpell() && !spell.uneffectAtMidnight()) {
 						logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,true,spellsAtSpeed);
 					}
-					else if (spell.isCombatSpell() || spell.isDaySpell() || spell.isPermanentSpell() || spell.isPhaseSpell() || spell.isMoveSpell()) {
+					else if (spell.isCombatSpell() || spell.isDaySpell() || spell.isPermanentSpell() || spell.isPhaseSpell() || spell.isMoveSpell() || spell.uneffectAtMidnight()) {
 						logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,false,spellsAtSpeed);
 					}
 					if (logs != null && !logs.isEmpty()) {
@@ -1072,7 +1109,8 @@ public class BattleModel {
 				transmorphed = true;
 			}
 		}
-		if ((attacker.isDenizen() || transmorphed) && magicType!=null && !magicType.isEmpty() && attacker.getGameObject().hasThisAttribute(Constants.SPELL_TARGETS_SELF)) {
+		if ((attacker.isDenizen() || transmorphed) && magicType!=null && !magicType.isEmpty()
+				&& (attacker.getGameObject().hasThisAttribute(Constants.SPELL_TARGETS_SELF) || ((ChitComponent)attacker).hasFaceAttribute(Constants.SPELL_TARGETS_SELF))) {
 			String spellName = attacker.getAttackSpell();
 			SpellWrapper spell = null;
 			for (GameObject held : attacker.getGameObject().getHold()) {
@@ -1082,7 +1120,9 @@ public class BattleModel {
 				}
 			}
 			if (spell!=null) {
-				if (attacker.isDenizen() && attacker.getGameObject().hasThisAttribute(Constants.ATTACK_AFTER_CASTING)) {
+				if (attacker.isDenizen()
+						&& (attacker.getGameObject().hasThisAttribute(Constants.ATTACK_AFTER_CASTING)
+						|| ((ChitComponent)attacker).hasFaceAttribute(Constants.ATTACK_AFTER_CASTING))) {
 					attackAfterCasting = false;
 				}
 				else {
@@ -1091,7 +1131,18 @@ public class BattleModel {
 				
 				spell.selectTargetForDenizen(hostPrefs, battleLocation, attacker,null);
 				spell.castSpellByDenizen(attacker.getGameObject());
-				spell.affectTargets(SpellWrapper.dummyFrame,theGame,false, null);
+				ArrayList<String> logs = new ArrayList<String>();
+				if (spell.isInstantSpell() && !spell.uneffectAtMidnight()) {
+					logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,true,null);
+				}
+				else if (spell.isCombatSpell() || spell.isDaySpell() || spell.isPermanentSpell() || spell.isPhaseSpell() || spell.isMoveSpell() || spell.uneffectAtMidnight()) {
+					logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,false,null);
+				}
+				if (logs != null && !logs.isEmpty()) {
+					for (String log : logs) {
+						logBattleInfo(log);
+					}
+				}
 				spellCasting = true;
 				
 				if ((attacker.isMonster() && ((MonsterChitComponent)attacker).changeTacticsAfterCasting())
@@ -1460,7 +1511,7 @@ public class BattleModel {
 							transmorphed = true;
 						}
 					}
-					if ((attacker.isDenizen() || transmorphed) && "V".equals(magicType) && Constants.POWER_OF_THE_PIT.matches(attacker.getAttackSpell())) {
+					if ((attacker.isDenizen() || transmorphed) && Constants.POWER_OF_THE_PIT.matches(attacker.getAttackSpell())) {
 						if (attacker instanceof SpellWrapper) {
 							// Spells belong to characters
 							SpellWrapper spell = (SpellWrapper)attacker;
@@ -1483,7 +1534,7 @@ public class BattleModel {
 						spellCasting = true;
 						spellCasted = true;
 					}
-					else if ((attacker.isDenizen() || transmorphed) && "V".equals(magicType) && Constants.DEVILS_SPELL.matches(attacker.getAttackSpell())) {
+					else if ((attacker.isDenizen() || transmorphed) && Constants.DEVILS_SPELL.matches(attacker.getAttackSpell())) {
 						if (attacker instanceof SpellWrapper) {
 							// Spells belong to characters
 							SpellWrapper spell = (SpellWrapper)attacker;
@@ -1506,7 +1557,7 @@ public class BattleModel {
 						spellCasting = true;
 						spellCasted = true;
 					}
-					else if ((attacker.isDenizen() || transmorphed) && "V".equals(magicType) && Constants.CURSE.equals(attacker.getAttackSpell())) {
+					else if ((attacker.isDenizen() || transmorphed) && Constants.CURSE.equals(attacker.getAttackSpell())) {
 						// Imp's Curse
 						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with a Curse along box "+attacker.getAttackCombatBox());
 						Curse curse = Curse.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject());
@@ -1514,14 +1565,15 @@ public class BattleModel {
 						spellCasting = true;
 						spellCasted = true;
 					}
-					else if ((attacker.isDenizen() || transmorphed) && "VIII".equals(magicType) && Constants.MESMERIZE.equals(attacker.getAttackSpell())) {
+					else if ((attacker.isDenizen() || transmorphed) && Constants.MESMERIZE.equals(attacker.getAttackSpell())) {
 						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with a Curse along box "+attacker.getAttackCombatBox());
 						Mesmerize mesmerize = Mesmerize.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject(),false,0);
 						hitCausedHarm = mesmerize.harmWasApplied();
 						spellCasting = true;
 						spellCasted = true;
 					}
-					else if ((attacker.isDenizen() || transmorphed) && !magicType.isEmpty() && !attacker.getGameObject().hasThisAttribute(Constants.SPELL_TARGETS_SELF)) {
+					else if ((attacker.isDenizen() || transmorphed) && !magicType.isEmpty()
+							&& !attacker.getGameObject().hasThisAttribute(Constants.SPELL_TARGETS_SELF) && !((ChitComponent)attacker).hasFaceAttribute(Constants.SPELL_TARGETS_SELF)) {
 						String spellName = attacker.getAttackSpell();
 						SpellWrapper spell = null;
 						for (GameObject held : attacker.getGameObject().getHold()) {
@@ -1555,7 +1607,18 @@ public class BattleModel {
 								}
 							}
 							else {
-								spell.affectTargets(SpellWrapper.dummyFrame,theGame,false, null);
+								ArrayList<String> logs = new ArrayList<String>();
+								if (spell.isInstantSpell() && !spell.uneffectAtMidnight()) {
+									logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,true,null);
+								}
+								else if (spell.isCombatSpell() || spell.isDaySpell() || spell.isPermanentSpell() || spell.isPhaseSpell() || spell.isMoveSpell() || spell.uneffectAtMidnight()) {
+									logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,false,null);
+								}
+								if (logs != null && !logs.isEmpty()) {
+									for (String log : logs) {
+										logBattleInfo(log);
+									}
+								}
 							}
 							spellCasting = true;
 							spellCasted = true;
@@ -1678,7 +1741,8 @@ public class BattleModel {
 					logBattleInfo(attacker.getGameObject().getNameWithNumber()+" didn't attack, and thus does not harm the target.");
 				}
 			}
-			if (attacker.getGameObject().hasThisAttribute(Constants.ATTACK_AFTER_CASTING) && attackerCombat.hasCastSpell() && !attackerCombat.getAttackedAfterCasting()) {
+			if ((attacker.getGameObject().hasThisAttribute(Constants.ATTACK_AFTER_CASTING) || ((ChitComponent)attacker).hasFaceAttribute(Constants.ATTACK_AFTER_CASTING)) 
+					&& attackerCombat.hasCastSpell() && !attackerCombat.getAttackedAfterCasting()) {
 				doTargetAttack(attacker,target,round,attackOrderPos);
 			}
 			return;

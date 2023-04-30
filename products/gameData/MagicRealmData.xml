@@ -1016,7 +1016,7 @@
         <attribute magic_type="VIII" />
         <attribute length="17" />
         <attribute chit_color="pink" />
-        <attribute attack_spell="powerofthepit" />
+        <attribute attack_spell="curse" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
@@ -35642,9 +35642,6 @@
         <attribute length="9" />
         <attribute chit_color="yellow" />
       </AttributeBlock>
-      <AttributeBlock blockName=" this">
-        <attribute native_name="Caster" />
-      </AttributeBlock>
       <contains id="2187" />
     </GameObject>
     <GameObject id="1319" name="Cultist 2">
@@ -35683,9 +35680,6 @@
         <attribute strength="M" />
         <attribute length="9" />
         <attribute chit_color="yellow" />
-      </AttributeBlock>
-      <AttributeBlock blockName=" this">
-        <attribute native_name="Caster" />
       </AttributeBlock>
       <contains id="2188" />
     </GameObject>
@@ -35726,9 +35720,6 @@
         <attribute length="9" />
         <attribute chit_color="yellow" />
       </AttributeBlock>
-      <AttributeBlock blockName=" this">
-        <attribute native_name="Caster" />
-      </AttributeBlock>
       <contains id="2189" />
     </GameObject>
     <GameObject id="1321" name="Cultist HQ">
@@ -35767,9 +35758,6 @@
         <attribute strength="M" />
         <attribute length="9" />
         <attribute chit_color="yellow" />
-      </AttributeBlock>
-      <AttributeBlock blockName=" this">
-        <attribute native_name="Caster" />
       </AttributeBlock>
       <contains id="2190" />
     </GameObject>
@@ -48679,21 +48667,24 @@
         <attribute clan="2" />
         <attribute icon_size="0.9" />
         <attribute native_name="Caster" />
+        <attribute spell_pre_battle="Elven Grace" />
+        <attribute spell_targets_self="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
-        <attribute move_speed="2" />
+        <attribute move_speed="3" />
         <attribute attack_speed="5" />
         <attribute strength="M" />
         <attribute length="9" />
         <attribute chit_color="lightgreen" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
-        <attribute move_speed="2" />
+        <attribute move_speed="3" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
         <attribute chit_color="forestgreen" />
       </AttributeBlock>
+      <contains id="2201" />
     </GameObject>
     <GameObject id="1833" name="Summoner 2">
       <AttributeBlock blockName="this">
@@ -48714,21 +48705,24 @@
         <attribute clan="2" />
         <attribute icon_size="0.9" />
         <attribute native_name="Caster" />
+        <attribute spell_pre_battle="Elven Grace" />
+        <attribute spell_targets_self="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
-        <attribute move_speed="2" />
+        <attribute move_speed="3" />
         <attribute attack_speed="5" />
         <attribute strength="M" />
         <attribute length="9" />
         <attribute chit_color="lightgreen" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
-        <attribute move_speed="2" />
+        <attribute move_speed="3" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
         <attribute chit_color="forestgreen" />
       </AttributeBlock>
+      <contains id="2202" />
     </GameObject>
     <GameObject id="1834" name="Summoner 3">
       <AttributeBlock blockName="this">
@@ -48749,21 +48743,24 @@
         <attribute clan="2" />
         <attribute icon_size="0.9" />
         <attribute native_name="Caster" />
+        <attribute spell_pre_battle="Elven Grace" />
+        <attribute spell_targets_self="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
-        <attribute move_speed="2" />
+        <attribute move_speed="3" />
         <attribute attack_speed="5" />
         <attribute strength="M" />
         <attribute length="9" />
         <attribute chit_color="lightgreen" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
-        <attribute move_speed="2" />
+        <attribute move_speed="3" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
         <attribute chit_color="forestgreen" />
       </AttributeBlock>
+      <contains id="2203" />
     </GameObject>
     <GameObject id="1835" name="Summoner HQ">
       <AttributeBlock blockName="this">
@@ -48784,21 +48781,24 @@
         <attribute clan="2" />
         <attribute icon_size="0.9" />
         <attribute native_name="Caster" />
+        <attribute spell_pre_battle="Elven Grace" />
+        <attribute spell_targets_self="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
-        <attribute move_speed="2" />
+        <attribute move_speed="3" />
         <attribute attack_speed="5" />
         <attribute strength="M" />
         <attribute length="9" />
         <attribute chit_color="lightgreen" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
-        <attribute move_speed="2" />
+        <attribute move_speed="3" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
         <attribute chit_color="forestgreen" />
       </AttributeBlock>
+      <contains id="2204" />
     </GameObject>
     <GameObject id="1836" name="Pagan 1">
       <AttributeBlock blockName="this">
@@ -56188,7 +56188,6 @@
         <attribute target="character" />
         <attribute text="Spellcaster rolls for Mesmerize, applies result to target." />
         <attribute magic_color="black" />
-        <attribute host_okay="" />
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute duration="instant" />
@@ -56867,6 +56866,7 @@
         <attribute summondemon="" />
         <attribute uneffect_at_midnight="" />
         <attribute super_realm_spell="" />
+        <attribute host_okay="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2187" name="Summon Demon">
@@ -56881,6 +56881,7 @@
         <attribute summondemon="" />
         <attribute spell_denizen="V" />
         <attribute uneffect_at_midnight="" />
+        <attribute host_okay="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2188" name="Summon Demon">
@@ -56895,6 +56896,7 @@
         <attribute summondemon="" />
         <attribute spell_denizen="V" />
         <attribute uneffect_at_midnight="" />
+        <attribute host_okay="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2189" name="Summon Demon">
@@ -56909,6 +56911,7 @@
         <attribute summondemon="" />
         <attribute spell_denizen="V" />
         <attribute uneffect_at_midnight="" />
+        <attribute host_okay="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2190" name="Summon Demon">
@@ -56923,6 +56926,7 @@
         <attribute summondemon="" />
         <attribute spell_denizen="V" />
         <attribute uneffect_at_midnight="" />
+        <attribute host_okay="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2191" name="Negative Aura">
@@ -56936,6 +56940,7 @@
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
         <attribute negative_aura="" />
+        <attribute host_okay="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2192" name="Stones Fly">
@@ -57091,6 +57096,78 @@
         <attribute super_realm="" />
         <attribute spell_denizen="IV" />
         <attribute freezing="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2201" name="Elven Grace">
+      <AttributeBlock blockName="this">
+        <attribute duration="combat" />
+        <attribute target="individual" />
+        <attribute text="Change MOVE L=1,M=2,H=3,T=4,X=5" />
+        <attribute magic_color="gold" />
+        <attribute l="1" />
+        <attribute m="2" />
+        <attribute h="3" />
+        <attribute t="4" />
+        <attribute x="5" />
+        <attribute move_speed_change="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute super_realm="" />
+        <attribute spell_denizen="III" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2202" name="Elven Grace">
+      <AttributeBlock blockName="this">
+        <attribute duration="combat" />
+        <attribute target="individual" />
+        <attribute text="Change MOVE L=1,M=2,H=3,T=4,X=5" />
+        <attribute magic_color="gold" />
+        <attribute l="1" />
+        <attribute m="2" />
+        <attribute h="3" />
+        <attribute t="4" />
+        <attribute x="5" />
+        <attribute move_speed_change="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute super_realm="" />
+        <attribute spell_denizen="III" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2203" name="Elven Grace">
+      <AttributeBlock blockName="this">
+        <attribute duration="combat" />
+        <attribute target="individual" />
+        <attribute text="Change MOVE L=1,M=2,H=3,T=4,X=5" />
+        <attribute magic_color="gold" />
+        <attribute l="1" />
+        <attribute m="2" />
+        <attribute h="3" />
+        <attribute t="4" />
+        <attribute x="5" />
+        <attribute move_speed_change="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute super_realm="" />
+        <attribute spell_denizen="III" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2204" name="Elven Grace">
+      <AttributeBlock blockName="this">
+        <attribute duration="combat" />
+        <attribute target="individual" />
+        <attribute text="Change MOVE L=1,M=2,H=3,T=4,X=5" />
+        <attribute magic_color="gold" />
+        <attribute l="1" />
+        <attribute m="2" />
+        <attribute h="3" />
+        <attribute t="4" />
+        <attribute x="5" />
+        <attribute move_speed_change="" />
+        <attribute host_okay="" />
+        <attribute benevolent="" />
+        <attribute super_realm="" />
+        <attribute spell_denizen="III" />
       </AttributeBlock>
     </GameObject>
   </objects>

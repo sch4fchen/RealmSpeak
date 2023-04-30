@@ -390,6 +390,7 @@ public class Constants {
 	public static final String SPELL_DENIZEN = "spell_denizen";
 	public static final String NO_COMBAT = "no_combat";
 	public static final String NO_SUMMONING = "no_summoning";
+	public static final String SPELL_PRE_BATTLE = "spell_pre_battle";
 	
 	// New Spells
 	public static final String SUMMONING = "summoning";

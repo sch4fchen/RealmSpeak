@@ -187,7 +187,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		return this;
 	}
 	public boolean selectTargetForDenizen(HostPrefWrapper hostPrefs, TileLocation battleLocation, BattleChit denizen, RealmComponent target) {
-		if (denizen.getGameObject().hasThisAttribute(Constants.SPELL_TARGETS_SELF)) {
+		if (denizen.getGameObject().hasThisAttribute(Constants.SPELL_TARGETS_SELF)||((ChitComponent)denizen).hasFaceAttribute(Constants.SPELL_TARGETS_SELF)) {
 			addTarget(hostPrefs, denizen.getGameObject());
 			return true;
 		}
@@ -649,6 +649,12 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		return ("permanent".equals(duration));
 	}
 	/**
+	 * @return		true if this spell uneffects targets at midnight
+	 */
+	public boolean uneffectAtMidnight() {
+		return getGameObject().hasThisAttribute(Constants.UNEFFECT_AT_MIDNIGHT);
+	}
+	/**
 	 * @return		true if this spell is a permanent spell
 	 */
 	public boolean isPhaseSpell() {
@@ -791,7 +797,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	public ArrayList<String> affectTargets(JFrame parent,GameWrapper theGame,boolean expireImmediately, ArrayList<SpellWrapper> simultaneousSpells) {
 		return affectTargets(parent,theGame,expireImmediately,true,simultaneousSpells);
 	}
-	public ArrayList<String> affectTargets(JFrame parent,GameWrapper theGame,boolean expireImmediately, boolean includeNullifyEffects, ArrayList<SpellWrapper> simultaneousSpells) {
+	private ArrayList<String> affectTargets(JFrame parent,GameWrapper theGame,boolean expireImmediately, boolean includeNullifyEffects, ArrayList<SpellWrapper> simultaneousSpells) {
 		if (getBoolean(SPELL_AFFECTED)) {
 			// Don't affect twice in a row!!
 			return null;

@@ -1,4 +1,5 @@
 ::ROADMAP::
+A11, Q57
 Character Potraits for Super Realm
 ---Basic Functionalities for current content---
 Super Realm: rules for minotaur shield
@@ -71,9 +72,10 @@ QUEST UPDATE:
 # SummonGeneratedMonster: Option to set notoriety and fame
 # SUPER REALM:
 # Transform can now be cast on the Skeleton Horse (change of Super Realm 0.997)
-# Native spell caster: Mages
+# Native spell caster: Mages, Summoners
 # New spell: Ice Bolt
 BUGS/ISSUES:
+# Fix Imp's curse
 # Add quest check when looting treasures inside a TWT
 # Fix QuestRequirementInventory not checking for already activated items, when activating another item
 # Fix advantages of characters count twice
