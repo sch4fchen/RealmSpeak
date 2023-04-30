@@ -1,8 +1,6 @@
 ::ROADMAP::
 Character Potraits for Super Realm
----Basic Functionalities for current content---
 Super Realm: rules for minotaur shield
-Super Realm: rules for special native attacks and native casters: Natives Casters (p. 89)
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 ---Detail Rules for Super Realm---
 Phantasm: If the phantasm discovers Hidden Enemies, the controlling character also discovers Hidden Enemies.;; it cannot take part in combat;; can now spy and be spied
@@ -65,6 +63,8 @@ First Edition Optional Rule - https://boardgamegeek.com/thread/2503528/1st-editi
 First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 
 Version 1.1.7.8
+QUEST UPDATE:
+# Update to quest A05
 # SUPER REALM:
 # Native spell caster: Zealot
 # New spell: Holy Shield
@@ -74,7 +74,7 @@ QUEST UPDATE:
 # Updates to quests: A04, A11, E13, E15, E17-E18, Q57, Q1019 (duplicate quest A56 removed)
 # QuestRewardQuestVps
 # SummonGeneratedMonster: Option to set notoriety and fame
-# SUPER REALM:
+SUPER REALM:
 # Transform can now be cast on the Skeleton Horse (change of Super Realm 0.997)
 # Native spell casters: Mages, Summoners
 # New spell: Ice Bolt
