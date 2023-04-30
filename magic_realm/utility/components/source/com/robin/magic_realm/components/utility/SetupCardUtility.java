@@ -721,6 +721,7 @@ public class SetupCardUtility {
 			MonsterChitComponent monster = (MonsterChitComponent)rc;
 			MonsterPartChitComponent shield = monster.getShield();
 			if (shield != null) {
+				shield.setDamaged(false);
 				shield.setDestroyed(false);
 			}
 			NativeSteedChitComponent horse = (NativeSteedChitComponent)rc.getHorseIncludeDead();

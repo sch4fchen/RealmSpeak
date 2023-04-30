@@ -1,6 +1,9 @@
 package com.robin.magic_realm.components;
 
+import java.awt.Graphics;
+
 import com.robin.game.objects.GameObject;
+import com.robin.general.graphics.TextType;
 import com.robin.magic_realm.components.attribute.Speed;
 import com.robin.magic_realm.components.attribute.Strength;
 import com.robin.magic_realm.components.utility.Constants;
@@ -66,6 +69,19 @@ public class MonsterPartChitComponent extends MonsterChitComponent {
 		return super.isMissile();
 	}
 	
+	public boolean isDamaged() {
+		return getGameObject().hasThisAttribute(Constants.DAMAGED);
+	}
+	
+	public void setDamaged(boolean value) {
+		if (value) {
+			getGameObject().setThisAttribute(Constants.DAMAGED);
+		}
+		else {
+			getGameObject().removeThisAttribute(Constants.DAMAGED);
+		}
+	}
+	
 	public boolean isDestroyed() {
 		return getGameObject().hasThisAttribute(Constants.DESTROYED);
 	}
@@ -76,6 +92,14 @@ public class MonsterPartChitComponent extends MonsterChitComponent {
 		}
 		else {
 			getGameObject().removeThisAttribute(Constants.DESTROYED);
+		}
+	}
+	
+	public void paintComponent(Graphics g1) {
+		super.paintComponent(g1);
+		if (isDamaged() && !isDestroyed()) {
+			TextType tt = new TextType("DAMAGED",getChitSize(),"TITLE_GRAY");
+			tt.draw(g1,0,getChitSize()>>2);
 		}
 	}
 }

@@ -1,6 +1,5 @@
 ::ROADMAP::
 Character Potraits for Super Realm
-Super Realm: rules for minotaur shield
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 ---Detail Rules for Super Realm---
 Phantasm: If the phantasm discovers Hidden Enemies, the controlling character also discovers Hidden Enemies.;; it cannot take part in combat;; can now spy and be spied
@@ -68,6 +67,7 @@ QUEST UPDATE:
 # SUPER REALM:
 # Native spell caster: Zealot
 # New spell: Holy Shield
+# Minotaur's shield can be damaged
 
 Version 1.1.7.7
 QUEST UPDATE:

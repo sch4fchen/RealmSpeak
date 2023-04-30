@@ -351,6 +351,8 @@ public class Constants {
 	public static final String NOPIN = "nopin";
 	public static final String DISCOVER_TO_LEAVE = "discover_to_leave";
 	public static final String MAP = "map";
+	public static final String DAMAGEABLE = "damageable";
+	public static final String DAMAGED = "damaged";
 	public static final String DESTROYED = "destroyed"; // this happens to the Ghost Armor
 	public static final String AUTO_FLEE = "auto_flee";
 	public static final String COMBAT_ONLY = "combat_only";

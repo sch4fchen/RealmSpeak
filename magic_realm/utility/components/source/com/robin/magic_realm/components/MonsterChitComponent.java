@@ -580,7 +580,12 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 			if (shieldCombat.getCombatBox() == box) {
 				harm.dampenSharpness();
 				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits shield, thus monster is not killed, and reduces sharpness: "+harm.toString());
-				if (harm.getAppliedStrength().strongerThan(shield.getStrength())) {
+				if (harm.getAppliedStrength().equalTo(shield.getStrength()) && !shield.isDamaged() && shield.getGameObject().hasThisAttribute(Constants.DAMAGEABLE)) {
+					shield.setDamaged(true);
+					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Damages "+this.getName()+"'s shield.");
+				}
+				else if ((harm.getAppliedStrength().strongerThan(shield.getStrength())
+						|| (harm.getAppliedStrength().equalTo(shield.getStrength()) && shield.isDamaged()))) {
 					shield.setDestroyed(true);
 					shieldCombat.setKilledBy(attacker.getGameObject());
 					shieldCombat.setKilledLength(attacker.getLength());
