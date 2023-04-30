@@ -509,6 +509,7 @@ public class BattleModel {
 							logBattleInfo(log);
 						}
 					}
+					spell.recognizeCastedSpellByDenizen();
 					continue;
 				}
 			}
@@ -748,7 +749,8 @@ public class BattleModel {
 							for (String log : logs) {
 								logBattleInfo(log);
 							}
-						}						
+						}
+						spell.recognizeCastedSpellByDenizen();
 						RealmComponent denizenRc = RealmComponent.getRealmComponent(spell.getCaster().getGameObject());
 						if ((denizenRc.isMonster() && ((MonsterChitComponent)denizenRc).changeTacticsAfterCasting())
 								|| (denizenRc.isNative() && ((NativeChitComponent)denizenRc).changeTacticsAfterCasting())) {
@@ -1143,6 +1145,7 @@ public class BattleModel {
 						logBattleInfo(log);
 					}
 				}
+				spell.recognizeCastedSpellByDenizen();
 				spellCasting = true;
 				
 				if ((attacker.isMonster() && ((MonsterChitComponent)attacker).changeTacticsAfterCasting())
@@ -1619,6 +1622,7 @@ public class BattleModel {
 										logBattleInfo(log);
 									}
 								}
+								spell.recognizeCastedSpellByDenizen();
 							}
 							spellCasting = true;
 							spellCasted = true;

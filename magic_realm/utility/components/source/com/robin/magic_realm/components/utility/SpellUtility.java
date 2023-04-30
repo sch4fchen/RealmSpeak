@@ -497,4 +497,7 @@ the Appearance Chart, he instantly becomes unhired.
 		return new RollResult(roller, roller.getStringResult(), die);
 	}
 
+	public static boolean hasHolyShield(GameObject go) {
+		return go.hasThisAttribute(Constants.HOLY_SHIELD) || SpellUtility.affectedByBewitchingSpellKey(go,Constants.HOLY_SHIELD);
+	}
 }

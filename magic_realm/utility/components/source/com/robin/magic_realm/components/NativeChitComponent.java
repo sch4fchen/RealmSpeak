@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
@@ -19,6 +20,7 @@ import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
 import com.robin.magic_realm.components.wrapper.GameWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
+import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class NativeChitComponent extends SquareChitComponent implements BattleChit,Horsebackable {
 	protected int chitSize;
@@ -436,6 +438,17 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 				}
 			}
 		}
+		
+		ArrayList<SpellWrapper> holyShields = SpellUtility.getBewitchingSpellsWithKey(getGameObject(),Constants.HOLY_SHIELD);
+		if ((holyShields!=null&&!holyShields.isEmpty()) || combat.hasHolyShield(attacker.getAttackSpeed(),attacker.getLength())) {
+			for (SpellWrapper spell : holyShields) {
+				spell.expireSpell();
+			}
+			combat.setHolyShield(attacker.getAttackSpeed(), attacker.getLength());
+			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits Holy Shield and the attack is blocked.");
+			return false;
+		}
+		
 		Harm harm = new Harm(attackerHarm);
 		Strength vulnerability = new Strength(getAttribute("this", "vulnerability"));
 		if (!harm.getIgnoresArmor() && getGameObject().hasThisAttribute(Constants.ARMORED)) {

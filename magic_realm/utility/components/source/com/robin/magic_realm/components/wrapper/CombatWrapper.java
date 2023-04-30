@@ -8,6 +8,7 @@ import com.robin.magic_realm.components.attribute.Harm;
 import com.robin.magic_realm.components.attribute.Speed;
 import com.robin.magic_realm.components.attribute.Spoils;
 import com.robin.magic_realm.components.quest.Quest;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmLogging;
 
 /**
@@ -765,6 +766,7 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,SPELL_CANCELED);
 			go.removeAttribute(COMBAT_BLOCK,ATTACKED_AFTER_CASTING);
 			go.removeAttribute(COMBAT_BLOCK,FREEZED);
+			go.removeAttribute(COMBAT_BLOCK,Constants.HOLY_SHIELD);
 			
 			ArrayList<String> list = go.getAttributeList(COMBAT_BLOCK,RANDOMIZE_PREFICES);
 			if (list!=null) {
@@ -797,5 +799,17 @@ public class CombatWrapper extends GameObjectWrapper {
 	}
 	public static boolean hasCombatInfo(GameObject test) {
 		return test.hasAttributeBlock(COMBAT_BLOCK);
+	}
+	
+	public void setHolyShield(Speed attackSpeed, int length) {
+		getGameObject().addAttributeListItem(COMBAT_BLOCK,Constants.HOLY_SHIELD,"s_"+String.valueOf(attackSpeed.getNum())+"l_"+String.valueOf(length));
+	}
+	public boolean hasHolyShield(Speed attackSpeed, int length) {
+		ArrayList<String> holyShields = getGameObject().getAttributeList(COMBAT_BLOCK,Constants.HOLY_SHIELD);
+		if (holyShields==null||holyShields.isEmpty()) return false;
+		for (String shield : holyShields) {
+			if (shield.matches("s_"+String.valueOf(attackSpeed.getNum())+"l_"+String.valueOf(length))) return true;
+		}
+		return false;
 	}
 }

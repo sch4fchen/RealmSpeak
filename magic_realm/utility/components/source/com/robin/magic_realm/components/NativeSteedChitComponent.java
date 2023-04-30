@@ -2,6 +2,7 @@ package com.robin.magic_realm.components;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 import com.robin.game.objects.GameObject;
 import com.robin.general.graphics.TextType;
@@ -9,6 +10,7 @@ import com.robin.general.graphics.TextType.Alignment;
 import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmLogging;
+import com.robin.magic_realm.components.utility.SpellUtility;
 import com.robin.magic_realm.components.wrapper.*;
 
 public class NativeSteedChitComponent extends SquareChitComponent implements BattleHorse {
@@ -232,6 +234,20 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		return combat.getCombatBox();
 	}
 	public boolean applyHit(GameWrapper game,HostPrefWrapper hostPrefs,BattleChit attacker,int box,Harm attackerHarm,int attackOrderPos) {
+		RealmComponent rider = getRider();
+		if (rider!=null) {
+			CombatWrapper combatRider = new CombatWrapper(rider.getGameObject());
+			ArrayList<SpellWrapper> holyShieldsRider = SpellUtility.getBewitchingSpellsWithKey(rider.getGameObject(),Constants.HOLY_SHIELD);
+			if ((holyShieldsRider!=null&&!holyShieldsRider.isEmpty()) || (holyShieldsRider!=null&&!holyShieldsRider.isEmpty())) {
+				for (SpellWrapper spell : holyShieldsRider) {
+					spell.expireSpell();
+				}
+				combatRider.setHolyShield(attacker.getAttackSpeed(), attacker.getLength());
+				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits Holy Shield and attack is blocked.");
+				return false;
+			}
+		}
+		
 		Harm harm = new Harm(attackerHarm);
 		Strength vulnerability = new Strength(getAttribute("this","vulnerability"));
 		if (!harm.getIgnoresArmor() && getGameObject().hasThisAttribute(Constants.ARMORED)) {

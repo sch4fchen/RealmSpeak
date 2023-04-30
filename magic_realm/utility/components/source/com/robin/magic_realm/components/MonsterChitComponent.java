@@ -12,6 +12,7 @@ import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
 import com.robin.magic_realm.components.wrapper.GameWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
+import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class MonsterChitComponent extends SquareChitComponent implements BattleChit {
 	protected int chitSize;
@@ -540,6 +541,17 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		Harm harm = new Harm(attackerHarm);
 		Strength vulnerability = getVulnerability();
 		
+		CombatWrapper combat = new CombatWrapper(getGameObject());
+		ArrayList<SpellWrapper> holyShields = SpellUtility.getBewitchingSpellsWithKey(getGameObject(),Constants.HOLY_SHIELD);
+		if ((holyShields!=null&&!holyShields.isEmpty()) || combat.hasHolyShield(attacker.getAttackSpeed(),attacker.getLength())) {
+			for (SpellWrapper spell : holyShields) {
+				spell.expireSpell();
+			}
+			combat.setHolyShield(attacker.getAttackSpeed(), attacker.getLength());
+			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits Holy Shield and attack is blocked.");
+			return false;
+		}
+		
 		if (getGameObject().hasThisAttribute(Constants.MAGIC_IMMUNITY)) {
 			if (attacker.isCharacter()) {
 				WeaponChitComponent weapon = ((CharacterChitComponent)attacker).getAttackingWeapon();
@@ -583,7 +595,6 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		Strength applied = harm.getAppliedStrength();
 		if (applied.strongerOrEqualTo(vulnerability)) {
 			// Dead monster!
-			CombatWrapper combat = new CombatWrapper(getGameObject());
 			combat.setKilledBy(attacker.getGameObject());
 			combat.setKilledLength(attacker.getLength());
 			combat.setKilledSpeed(attacker.getAttackSpeed());

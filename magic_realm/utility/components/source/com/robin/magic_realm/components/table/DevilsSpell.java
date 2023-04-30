@@ -94,6 +94,7 @@ public class DevilsSpell extends RealmTable {
 		SpellWrapper spell = new SpellWrapper(spellGo);
 		spell.castSpellByDenizen(caster);
 		SpellUtility.summonCompanion(getParentFrame(),caster,null,spell,SummonType.demon.toString(),2);
+		spell.recognizeCastedSpellByDenizen();
 		
 		return RESULT[1];
 	}
@@ -130,6 +131,7 @@ public class DevilsSpell extends RealmTable {
 		spell.castSpellByDenizen(caster);
 		spell.addTarget(hostPrefs, character.getGameObject());
 		spell.affectTargets(getParentFrame(), GameWrapper.findGame(character.getGameObject().getGameData()), false, null);
+		spell.recognizeCastedSpellByDenizen();
 
 		return RESULT[3];
 	}
@@ -154,6 +156,7 @@ public class DevilsSpell extends RealmTable {
 		spell.castSpellByDenizen(caster);
 		spell.addTarget(hostPrefs, character.getGameObject());
 		spell.affectTargets(getParentFrame(), GameWrapper.findGame(character.getGameObject().getGameData()), false, null);
+		spell.recognizeCastedSpellByDenizen();
 		
 		return RESULT[4];
 	}
@@ -179,6 +182,7 @@ public class DevilsSpell extends RealmTable {
 		spell.castSpellByDenizen(caster);
 		spell.addTarget(hostPrefs, character.getGameObject());
 		spell.affectTargets(getParentFrame(), GameWrapper.findGame(character.getGameObject().getGameData()), false, null);
+		spell.recognizeCastedSpellByDenizen();
 		
 		character.getGameObject().setThisAttribute(Constants.WEAKENED_VULNERABILITY);
 		

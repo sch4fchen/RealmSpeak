@@ -12,6 +12,7 @@ import com.robin.general.graphics.TextType.Alignment;
 import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmLogging;
+import com.robin.magic_realm.components.utility.SpellUtility;
 import com.robin.magic_realm.components.wrapper.*;
 
 public class SteedChitComponent extends RoundChitComponent implements BattleHorse {
@@ -59,6 +60,14 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		return T_CHIT_SIZE;
 	}
 
+	private RealmComponent getRider() {
+		RealmComponent rider = RealmComponent.getRealmComponent(getGameObject().getHeldBy());
+		if (rider.isCharacter() || rider.isNative() ||  rider.isMonster()) {
+			return rider;
+		}
+		return null;
+	}
+	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
@@ -187,6 +196,20 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		return combat.getCombatBox();
 	}
 	public boolean applyHit(GameWrapper game,HostPrefWrapper hostPrefs,BattleChit attacker,int box,Harm attackerHarm,int attackOrderPos) {
+		RealmComponent rider = getRider();
+		if (rider!=null) {
+			CombatWrapper combatRider = new CombatWrapper(rider.getGameObject());
+			ArrayList<SpellWrapper> holyShieldsRider = SpellUtility.getBewitchingSpellsWithKey(rider.getGameObject(),Constants.HOLY_SHIELD);
+			if ((holyShieldsRider!=null&&!holyShieldsRider.isEmpty()) || (holyShieldsRider!=null&&!holyShieldsRider.isEmpty())) {
+				for (SpellWrapper spell : holyShieldsRider) {
+					spell.expireSpell();
+				}
+				combatRider.setHolyShield(attacker.getAttackSpeed(), attacker.getLength());
+				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits Holy Shield and attack is blocked.");
+				return false;
+			}
+		}
+		
 		Harm harm = new Harm(attackerHarm);
 		Strength vulnerability = new Strength(getAttribute("this","vulnerability"));
 		if (!harm.getIgnoresArmor() && getGameObject().hasThisAttribute(Constants.ARMORED)) {

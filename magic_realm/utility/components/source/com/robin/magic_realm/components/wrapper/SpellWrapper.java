@@ -205,10 +205,13 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	public SpellWrapper castSpellByDenizen(GameObject denizen) {
 		setBoolean(SPELL_AFFECTED,false); // make sure this is cleared out
 		setBoolean(SPELL_ALIVE,true);
-		SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(getGameObject().getGameData());
-		sm.addSpell(this);
 		setString(CASTER_ID, String.valueOf(denizen.getId()));
 		(new CombatWrapper(denizen)).setCastSpell(getGameObject());
+		return this;
+	}
+	public SpellWrapper recognizeCastedSpellByDenizen() {
+		SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(getGameObject().getGameData());
+		sm.addSpell(this);
 		return this;
 	}
 	public CharacterWrapper getCaster() {
@@ -662,7 +665,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		return ("phase".equals(duration));
 	}
 	public boolean hasPhaseChit() {
-		return getGameObject().hasThisAttribute("phaseChitID");
+		return getGameObject().hasThisAttribute(Constants.PHASE_CHIT_ID);
 	}
 	/**
 	 * @return		true if this spell is a fly chit type of spell

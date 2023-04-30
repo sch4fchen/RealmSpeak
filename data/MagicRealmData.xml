@@ -49283,6 +49283,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
       <contains id="1854" />
+      <contains id="2206" />
     </GameObject>
     <GameObject id="1851" name="Zealot 2">
       <AttributeBlock blockName="this">
@@ -49397,6 +49398,7 @@
         <attribute chit_color="brown" />
       </AttributeBlock>
       <contains id="1857" />
+      <contains id="2207" />
     </GameObject>
     <GameObject id="1854" name="Warhorse 1">
       <AttributeBlock blockName="this">
@@ -57207,6 +57209,7 @@
         <attribute super_realm="" />
         <attribute benevolent="" />
         <attribute spell_denizen="I" />
+        <attribute uneffect_at_midnight="" />
       </AttributeBlock>
       <AttributeBlock blockName="phase_chit">
         <attribute phase_chit="" />
@@ -57227,6 +57230,7 @@
         <attribute super_realm="" />
         <attribute benevolent="" />
         <attribute spell_denizen="I" />
+        <attribute uneffect_at_midnight="" />
       </AttributeBlock>
       <AttributeBlock blockName="phase_chit">
         <attribute phase_chit="" />
