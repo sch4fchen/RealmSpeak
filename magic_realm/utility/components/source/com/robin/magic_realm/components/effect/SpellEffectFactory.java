@@ -137,6 +137,7 @@ public class SpellEffectFactory {
 			// super realm
 			case "deal with orcs and goblins": return new ISpellEffect[]{new PacifyEffect(0)};
 			case "guide beast": return new ISpellEffect[]{new ControlEffect()};
+			case "holy shield": return new ISpellEffect[]{new PhaseChitEffect()};
 			case "mesmerize": return new ISpellEffect[]{new MesmerizeEffect()};
 			case "negative aura": return new ISpellEffect[]{new ApplyNamedEffect(Constants.NEGATIVE_AURA)};
 			case "summon demon": return new ISpellEffect[]{new SummonEffect(SpellUtility.SummonType.demon.toString())};

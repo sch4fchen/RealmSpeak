@@ -1,5 +1,4 @@
 ::ROADMAP::
-Q57
 Character Potraits for Super Realm
 ---Basic Functionalities for current content---
 Super Realm: rules for minotaur shield
@@ -66,6 +65,9 @@ First Edition Optional Rule - https://boardgamegeek.com/thread/2503528/1st-editi
 First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 
 Version 1.1.7.8
+# SUPER REALM:
+# Native spell caster: Zealot
+# New spell: Holy Shield
 
 Version 1.1.7.7
 QUEST UPDATE:
@@ -74,13 +76,13 @@ QUEST UPDATE:
 # SummonGeneratedMonster: Option to set notoriety and fame
 # SUPER REALM:
 # Transform can now be cast on the Skeleton Horse (change of Super Realm 0.997)
-# Native spell caster: Mages, Summoners
+# Native spell casters: Mages, Summoners
 # New spell: Ice Bolt
 BUGS/ISSUES:
 # Fix Imp's curse
 # Add quest check when looting treasures inside a TWT
 # Fix QuestRequirementInventory not checking for already activated items, when activating another item
-# Fix advantages of characters count twice
+# Fix advantages of characters counting twice
 # Fix showing horses of treasure locations in setup card view
 
 Version 1.1.7.6
@@ -107,7 +109,7 @@ SUPER REALM:
 # Mesmerize Weakened effect applies to FlySpeed (change of Super Realm 0.997)
 # Optional rules for SR: Regenerating all denizen at the end of the month (no regenerating at 7th day of the week)
 # Optional rule for SR: Regenerating horses
-# Native spell caster: Conjurors, Coven, Cultists, Enchanters, Pagans
+# Native spell casters: Conjurors, Coven, Cultists, Enchanters, Pagans
 # New spell: Summon Demon
 # New spell: Negative Aura
 NEW FEATURES:

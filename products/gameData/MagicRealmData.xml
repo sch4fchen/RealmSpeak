@@ -49265,6 +49265,8 @@
         <attribute native_die="1" />
         <attribute icon_size="0.9" />
         <attribute native_name="Caster" />
+        <attribute spell_pre_battle="Holy Shield" />
+        <attribute spell_targets_self="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -49377,6 +49379,8 @@
         <attribute native_die="1" />
         <attribute icon_size="0.9" />
         <attribute native_name="Caster" />
+        <attribute spell_pre_battle="Holy Shield" />
+        <attribute spell_targets_self="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -57168,6 +57172,68 @@
         <attribute benevolent="" />
         <attribute super_realm="" />
         <attribute spell_denizen="III" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2205" name="Holy Shield">
+      <AttributeBlock blockName="this">
+        <attribute spell="I" />
+        <attribute duration="phase" />
+        <attribute target="individual" />
+        <attribute text="Block next attack made against target" />
+        <attribute magic_color="white" />
+        <attribute host_okay="" />
+        <attribute holy_shield="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+        <attribute benevolent="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="phase_chit">
+        <attribute phase_chit="" />
+        <attribute text="Holy Shield" />
+      </AttributeBlock>
+      <AttributeBlock blockName="phase_chit_effects">
+        <attribute holy_shield="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2206" name="Holy Shield">
+      <AttributeBlock blockName="this">
+        <attribute duration="phase" />
+        <attribute target="individual" />
+        <attribute text="Block next attack made against target" />
+        <attribute magic_color="white" />
+        <attribute host_okay="" />
+        <attribute holy_shield="" />
+        <attribute super_realm="" />
+        <attribute benevolent="" />
+        <attribute spell_denizen="I" />
+      </AttributeBlock>
+      <AttributeBlock blockName="phase_chit">
+        <attribute phase_chit="" />
+        <attribute text="Holy Shield" />
+      </AttributeBlock>
+      <AttributeBlock blockName="phase_chit_effects">
+        <attribute holy_shield="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2207" name="Holy Shield">
+      <AttributeBlock blockName="this">
+        <attribute duration="phase" />
+        <attribute target="individual" />
+        <attribute text="Block next attack made against target" />
+        <attribute magic_color="white" />
+        <attribute host_okay="" />
+        <attribute holy_shield="" />
+        <attribute super_realm="" />
+        <attribute benevolent="" />
+        <attribute spell_denizen="I" />
+      </AttributeBlock>
+      <AttributeBlock blockName="phase_chit">
+        <attribute phase_chit="" />
+        <attribute text="Holy Shield" />
+      </AttributeBlock>
+      <AttributeBlock blockName="phase_chit_effects">
+        <attribute holy_shield="" />
       </AttributeBlock>
     </GameObject>
   </objects>

@@ -750,7 +750,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		if (getGameObject().hasThisAttribute(Constants.WALL_OF_FORCE)) return Constants.WALL_OF_FORCE;
 		if (getGameObject().hasThisAttribute(Constants.FEAR)) return Constants.FEAR;
 		if (getGameObject().hasThisAttribute(Constants.MESMERIZE)) return Constants.MESMERIZE;
-		return null;
+		return getGameObject().getThisAttribute("magic_type");
 	}
 	public String getAttackSpell() {
 		if (getGameObject().hasThisAttribute(Constants.POWER_OF_THE_PIT)) return Constants.POWER_OF_THE_PIT;

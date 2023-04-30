@@ -434,6 +434,7 @@ public class Constants {
 	public static final String ALTERNATIVE_SPELL_EFFECT = "spell_effect";
 	public static final String FREEZING = "freezing";
 	public static final String FREEZED = "freezed";
+	public static final String HOLY_SHIELD = "holy_shield";
 	
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";
