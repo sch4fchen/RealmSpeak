@@ -137,6 +137,7 @@ public class SpellEffectFactory {
 			// super realm
 			case "deal with orcs and goblins": return new ISpellEffect[]{new PacifyEffect(0)};
 			case "divine protection": return new ISpellEffect[]{new ApplyNamedEffect(Constants.STRENGTHENED_VULNERABILITY)};
+			case "free the soul": return new ISpellEffect[]{new FreeTheSoulEffect()};
 			case "guide beast": return new ISpellEffect[]{new ControlEffect()};
 			case "holy shield": return new ISpellEffect[]{new PhaseChitEffect()};
 			case "mesmerize": return new ISpellEffect[]{new MesmerizeEffect()};

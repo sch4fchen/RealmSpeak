@@ -31,7 +31,7 @@ public class SpellTargetingClearing extends SpellTargetingSpecial {
 		if (clearingTargetType.contains("characters")) {
 			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
 			for (RealmComponent rc : allBattleParticipants) {
-				if (rc.isCharacter()) {
+				if (rc.isCharacter() && !gameObjects.contains(rc.getGameObject())) {
 					gameObjects.add(rc.getGameObject());
 				}
 			}
@@ -39,7 +39,7 @@ public class SpellTargetingClearing extends SpellTargetingSpecial {
 		if (clearingTargetType.contains("monsters")) {
 			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
 			for (RealmComponent rc : allBattleParticipants) {
-				if (rc.isMonster()) {
+				if (rc.isMonster() && !gameObjects.contains(rc.getGameObject())) {
 					gameObjects.add(rc.getGameObject());
 				}
 			}
@@ -47,7 +47,47 @@ public class SpellTargetingClearing extends SpellTargetingSpecial {
 		if (clearingTargetType.contains("demons")) {
 			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
 			for (RealmComponent rc : allBattleParticipants) {
-				if (rc.getGameObject().hasThisAttribute("demon")) {
+				if (rc.getGameObject().hasThisAttribute("demon") && !gameObjects.contains(rc.getGameObject())) {
+					gameObjects.add(rc.getGameObject());
+				}
+			}
+		}
+		if (clearingTargetType.contains("ghosts")) {
+			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
+			for (RealmComponent rc : allBattleParticipants) {
+				if (rc.getGameObject().hasThisAttribute("ghost") && !gameObjects.contains(rc.getGameObject())) {
+					gameObjects.add(rc.getGameObject());
+				}
+			}
+		}
+		if (clearingTargetType.contains("skeletons")) {
+			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
+			for (RealmComponent rc : allBattleParticipants) {
+				if (rc.getGameObject().hasThisAttribute("skeleton") && !gameObjects.contains(rc.getGameObject())) {
+					gameObjects.add(rc.getGameObject());
+				}
+			}
+		}
+		if (clearingTargetType.contains("wraiths")) {
+			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
+			for (RealmComponent rc : allBattleParticipants) {
+				if (rc.getGameObject().hasThisAttribute("wraith") && !gameObjects.contains(rc.getGameObject())) {
+					gameObjects.add(rc.getGameObject());
+				}
+			}
+		}
+		if (clearingTargetType.contains("ghouls")) {
+			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
+			for (RealmComponent rc : allBattleParticipants) {
+				if (rc.getGameObject().hasThisAttribute("ghoul") && !gameObjects.contains(rc.getGameObject())) {
+					gameObjects.add(rc.getGameObject());
+				}
+			}
+		}
+		if (clearingTargetType.contains("undead")) {
+			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
+			for (RealmComponent rc : allBattleParticipants) {
+				if (rc.getGameObject().hasThisAttribute("undead") && !gameObjects.contains(rc.getGameObject())) {
 					gameObjects.add(rc.getGameObject());
 				}
 			}

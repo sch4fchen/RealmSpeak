@@ -102,6 +102,7 @@ public class RaiseDead extends MonsterTable {
 		monsterCreator.setupGameObject(go,"Skeleton","skull","M",false);
 		MonsterCreator.setupSide(go,"light","L",0,4,0,4,"white");
 		MonsterCreator.setupSide(go,"dark","L",0,2,0,6,"gray");
+		go.setThisAttribute(Constants.UNDEAD);
 		return go;
 	}
 	public static GameObject createSkeletonArcher(MonsterCreator monsterCreator,GameData data) {
@@ -110,6 +111,7 @@ public class RaiseDead extends MonsterTable {
 		monsterCreator.setupGameObject(go,"Skeletal Archer","skullbow","M",false);
 		MonsterCreator.setupSide(go,"light",null,0,0,0,3,"white");
 		MonsterCreator.setupSide(go,"dark","M",1,3,14,5,"gray");
+		go.setThisAttribute(Constants.UNDEAD);
 		return go;
 	}
 	public static GameObject createSkeletonSwordsman(MonsterCreator monsterCreator,GameData data) {
@@ -118,12 +120,15 @@ public class RaiseDead extends MonsterTable {
 		monsterCreator.setupGameObject(go,"Skeletal Swordsman","skullsword","M",false);
 		MonsterCreator.setupSide(go,"light","L",1,4,3,4,"white");
 		MonsterCreator.setupSide(go,"dark","L",1,2,3,6,"gray");
+		go.setThisAttribute(Constants.UNDEAD);
 		return go;
 	}
 	public static GameObject createZombie(MonsterCreator monsterCreator,GameData data,int r) {
 		GameObject go = monsterCreator.createOrReuseMonster(data);
 		int z = RandomNumber.getRandom(2)+1;
 		monsterCreator.setupGameObject(go,"Zombie","zombie"+z,"M",false);
+		go.setThisAttribute("zombie");
+		go.setThisAttribute(Constants.UNDEAD);
 		switch(r) {
 			case 0:
 				// M5/5 and H6/5

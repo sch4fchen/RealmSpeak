@@ -23747,6 +23747,7 @@
         <attribute undead="" />
         <attribute denizen="" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -23777,6 +23778,7 @@
         <attribute undead="" />
         <attribute denizen="" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -23807,6 +23809,7 @@
         <attribute undead="" />
         <attribute denizen="" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -23839,6 +23842,7 @@
         <attribute archer="" />
         <attribute missile="" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -23869,6 +23873,7 @@
         <attribute undead="" />
         <attribute denizen="" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35316,6 +35321,7 @@
         <attribute icon_size="0.9" />
         <attribute icon_y_offset="6" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -35347,6 +35353,7 @@
         <attribute icon_size="1" />
         <attribute icon_type="ipoten" />
         <attribute undead="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -36032,6 +36039,7 @@
         <attribute icon_size="1" />
         <attribute icon_y_offset="6" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36069,6 +36077,7 @@
         <attribute icon_size="1" />
         <attribute icon_y_offset="6" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36106,6 +36115,7 @@
         <attribute icon_size="1" />
         <attribute icon_y_offset="6" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36143,6 +36153,7 @@
         <attribute icon_size="1" />
         <attribute icon_y_offset="6" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36180,6 +36191,7 @@
         <attribute icon_size="1" />
         <attribute icon_y_offset="6" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36217,6 +36229,7 @@
         <attribute icon_size="1" />
         <attribute icon_y_offset="6" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36254,6 +36267,7 @@
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36291,6 +36305,7 @@
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36328,6 +36343,7 @@
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36365,6 +36381,7 @@
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36402,6 +36419,7 @@
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36439,6 +36457,7 @@
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36476,6 +36495,7 @@
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36513,6 +36533,7 @@
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36550,6 +36571,7 @@
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36587,6 +36609,7 @@
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36624,6 +36647,7 @@
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36661,6 +36685,7 @@
         <attribute icon_size="1" />
         <attribute icon_y_offset="4" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36699,6 +36724,7 @@
         <attribute icon_y_offset="5" />
         <attribute archer="" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36734,6 +36760,7 @@
         <attribute icon_y_offset="5" />
         <attribute archer="" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36769,6 +36796,7 @@
         <attribute icon_y_offset="5" />
         <attribute archer="" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36804,6 +36832,7 @@
         <attribute icon_y_offset="5" />
         <attribute archer="" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36839,6 +36868,7 @@
         <attribute icon_y_offset="5" />
         <attribute archer="" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -36874,6 +36904,7 @@
         <attribute icon_y_offset="5" />
         <attribute archer="" />
         <attribute weapon_use="" />
+        <attribute skeleton="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -37641,6 +37672,7 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1.1" />
+        <attribute wraith="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -37671,6 +37703,7 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1.1" />
+        <attribute wraith="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -37701,6 +37734,7 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1.1" />
+        <attribute wraith="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -37731,6 +37765,7 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1.1" />
+        <attribute wraith="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -57253,6 +57288,27 @@
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
         <attribute benevolent="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2209" name="Free the Soul">
+      <AttributeBlock blockName="this">
+        <attribute spell="I" />
+        <attribute duration="instant" />
+        <attribute target="clearing" />
+        <attribute text="Raise vulnerability one level" />
+        <attribute magic_color="white" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+        <attribute free_soul="" />
+        <attributeList keyName="target_clearing">
+          <attributeVal N0="ghosts" />
+          <attributeVal N1="wraiths" />
+          <attributeVal N2="ghouls" />
+          <attributeVal N3="skeletons" />
+          <attributeVal N4="undead" />
+        </attributeList>
       </AttributeBlock>
     </GameObject>
   </objects>

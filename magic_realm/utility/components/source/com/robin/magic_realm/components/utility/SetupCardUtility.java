@@ -420,7 +420,6 @@ public class SetupCardUtility {
 				// color these undead a little differently to distinguish them from others
 				go.setAttribute("light","chit_color","gray");
 				go.setAttribute("dark","chit_color","darkgray");
-				go.setThisAttribute(Constants.UNDEAD);
 			}
 			if (go!=null) {
 				go.setThisAttribute(Constants.GENERATED);

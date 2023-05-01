@@ -40,7 +40,6 @@ public class ExorciseEffect implements ISpellEffect {
 		else {
 			System.out.println("No effect on target.");
 		}
-
 	}
 
 	@Override

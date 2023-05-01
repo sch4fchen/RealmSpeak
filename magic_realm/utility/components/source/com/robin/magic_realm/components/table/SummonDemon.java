@@ -94,6 +94,7 @@ public class SummonDemon extends MonsterTable {
 				getMonsterCreator().setupGameObject(demon,"Ghoul","ghoul","H",false,false,false,"wesnoth/units/undead");
 				MonsterCreator.setupSide(demon,"light","M",0,4,0,4,"gray");
 				MonsterCreator.setupSide(demon,"dark","M",0,4,0,4,"darkgray");
+				demon.setThisAttribute("ghoul");
 				demon.setThisAttribute(Constants.UNDEAD);
 				demon.setThisAttribute(Constants.ICON_SIZE,"0.9");
 				break;
@@ -101,6 +102,7 @@ public class SummonDemon extends MonsterTable {
 				getMonsterCreator().setupGameObject(demon,"Zombie","zombie","H",false,false,false,"wesnoth/units/undead");
 				MonsterCreator.setupSide(demon,"light","L",0,5,0,5,"gray");
 				MonsterCreator.setupSide(demon,"dark","L",0,5,0,5,"darkgray");
+				demon.setThisAttribute("zombie");
 				demon.setThisAttribute(Constants.UNDEAD);
 				demon.setThisAttribute(Constants.ICON_SIZE,"0.9");
 				break;
