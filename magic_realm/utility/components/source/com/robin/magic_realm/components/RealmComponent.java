@@ -1126,45 +1126,54 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
 		return getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL_ENHANCED) || !character.getActiveInventoryValuesForThisKey(Constants.MONSTER_CONTROL_ENHANCED,null).isEmpty();
 	}
-	public ArrayList<String> getControllableMonsters() {
-		ArrayList<String> controls = new ArrayList<>();
-		if (getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL)) {
-			controls.addAll(getGameObject().getThisAttributeList(Constants.MONSTER_CONTROL));
-		}
-		if (isCharacter()) {
-			CharacterWrapper character = new CharacterWrapper(getGameObject());
-			controls.addAll(character.getActiveInventoryValuesForThisKey(Constants.MONSTER_CONTROL,","));
-		}
-		return controls;
+	public Hashtable<String,Integer[]> getControllableMonsters() {
+		return getControllableMonsters(false);
 	}
-	public ArrayList<String> getControllableMonstersEnhanced() {
-		ArrayList<String> controls = new ArrayList<>();
-		if (getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL) && getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL_ENHANCED)) {
-			controls.addAll(getGameObject().getThisAttributeList(Constants.MONSTER_CONTROL));
+	public Hashtable<String,Integer[]> getControllableMonstersEnhanced() {
+		return getControllableMonsters(true);
+	}
+	public Hashtable<String,Integer[]> getControllableMonsters(boolean enhancedOnly) {
+		Hashtable<String,Integer[]> controls = new Hashtable<>();
+		if (getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL) && (!enhancedOnly || getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL_ENHANCED))) {
+			int duration = getGameObject().getThisInt(Constants.MONSTER_CONTROL_DURATION);
+			int limit = getGameObject().getThisInt(Constants.MONSTER_CONTROL_LIMIT);
+			for (String type : getGameObject().getThisAttributeList(Constants.MONSTER_CONTROL)) {
+				controls.put(type,new Integer[] {duration,limit});
+			}
 		}
 		if (isCharacter()) {
 			CharacterWrapper character = new CharacterWrapper(getGameObject());
 			for (GameObject inventory : character.getActiveInventoryAndTravelers()) {
-				if (inventory.hasThisAttribute(Constants.MONSTER_CONTROL) && inventory.hasThisAttribute(Constants.MONSTER_CONTROL_ENHANCED)) {
-					controls.addAll(inventory.getThisAttributeList(Constants.MONSTER_CONTROL));
+				if (inventory.hasThisAttribute(Constants.MONSTER_CONTROL) && (!enhancedOnly || inventory.hasThisAttribute(Constants.MONSTER_CONTROL_ENHANCED))) {
+					int duration = inventory.getThisInt(Constants.MONSTER_CONTROL_DURATION);
+					int limit = inventory.getThisInt(Constants.MONSTER_CONTROL_LIMIT);
+					for (String type : inventory.getThisAttributeList(Constants.MONSTER_CONTROL)) {
+						Integer[] values = controls.get(type);
+						int durationCalc = values==null?duration:((values[0]==0||duration==0)?0:Math.max(values[0], duration));
+						int limitCalc = values==null?limit:((values[1]==0||limit==0)?0:Math.addExact(values[1], limit));
+						controls.put(type,new Integer[] {durationCalc,limitCalc});
+					}
 				}
 			}
 		}
 		return controls;
 	}
-	public int getControllableMonstersDuration() {
-		int duration = 0;
-		if (getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL_DURATION)) {
-			duration = getGameObject().getThisInt(Constants.MONSTER_CONTROL_DURATION);
+	public Set<String> getControllableMonsterNames(boolean enhancedOnly) {
+		return getControllableMonsters(enhancedOnly).keySet();
+	}
+	public Integer getControllableMonsterDuration(boolean enhancedOnly,String monsterType) {
+		if (getControllableMonsters(enhancedOnly).get(monsterType)!=null) {
+			int duration = getControllableMonsters(enhancedOnly).get(monsterType)[0];
+			return duration==0?Constants.TEN_YEARS:duration;
 		}
-		if (isCharacter()) {
-			CharacterWrapper character = new CharacterWrapper(getGameObject());
-			Integer inventoryDuration = character.getHighestIntegerForActiveInventoryKey(Constants.MONSTER_CONTROL_DURATION);
-			if (inventoryDuration != null) {
-				duration = Math.max(duration, inventoryDuration.intValue());
-			}
+		return null;
+	}
+	public Integer getControllableMonsterLimit(boolean enhancedOnly,String monsterType) {
+		if (getControllableMonsters(enhancedOnly).get(monsterType)!=null) {
+			int limit = getControllableMonsters(enhancedOnly).get(monsterType)[1];
+			return limit==0?999:limit;
 		}
-		return duration == 0 ? Constants.TEN_YEARS : duration;
+		return null;
 	}
 	public boolean fears(RealmComponent rc) {
 		ArrayList<String> list = getFears();

@@ -196,6 +196,7 @@ public class Constants {
 	public static final String MONSTER_CONTROL_ENHANCED = "monster_control_enhanced";
 	public static final String MONSTER_CONTROL_DURATION = "monster_control_duration";
 	public static final String MONSTER_CONTROL_VALIDATE_CONTROL = "monster_control_validate_control";
+	public static final String MONSTER_CONTROL_LIMIT = "monster_control_limit";
 	public static final String MONSTER_FEAR = "monster_fear";
 	public static final String TREASURE_LOCATION_FEAR = "treasure_location_fear";
 	public static final String BONUS_CHIT = "bonus_chit";
@@ -352,6 +353,7 @@ public class Constants {
 	public static final String DISCOVER_TO_LEAVE = "discover_to_leave";
 	public static final String MAP = "map";
 	public static final String DAMAGEABLE = "damageable";
+	public static final String DAMAGEABLE_NOT = "not_damageable";
 	public static final String DAMAGED = "damaged";
 	public static final String DESTROYED = "destroyed"; // this happens to the Ghost Armor
 	public static final String AUTO_FLEE = "auto_flee";

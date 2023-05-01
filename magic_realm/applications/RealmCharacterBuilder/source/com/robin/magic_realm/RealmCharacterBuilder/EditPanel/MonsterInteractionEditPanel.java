@@ -31,9 +31,11 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 	private Hashtable<String,JCheckBox> hash;
 	private String selection;
 	private String duration;
+	private String limit;
 	private JCheckBox enhancedControl;
 	private JCheckBox validateControl;
 	JTextField durationComponent = new JTextField("Duration");
+	JTextField limitComponent = new JTextField("Limit");
 	
 	public MonsterInteractionEditPanel(CharacterWrapper pChar, String levelKey, String selected) {
 		super(pChar, levelKey);
@@ -52,17 +54,25 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 			durationComponent.setVisible(true);
 			ComponentTools.lockComponentSize(durationComponent,36,18);
 			box.add(durationComponent);
+			box.add(Box.createHorizontalStrut(10));
+			JLabel labelLimit = new JLabel("Limit (empty or 0 = unlimited):  ");
+			box.add(labelLimit);
+			limit = getAttribute(Constants.MONSTER_CONTROL_LIMIT);
+			limitComponent = new IntegerField(limit == null ? "0" : limit);
+			limitComponent.setVisible(true);
+			ComponentTools.lockComponentSize(limitComponent,36,18);
+			box.add(limitComponent);
+			box.add(Box.createHorizontalStrut(10));
 			enhancedControl = new JCheckBox("Enhanced Command");
 			if (hasAttribute(Constants.MONSTER_CONTROL_ENHANCED)) {
 				enhancedControl.setSelected(true);
 			}
-			box.add(Box.createHorizontalStrut(40));
 			box.add(enhancedControl);
+			box.add(Box.createHorizontalStrut(10));
 			validateControl = new JCheckBox("Loose control when loosing minor character");
 			if (hasAttribute(Constants.MONSTER_CONTROL_VALIDATE_CONTROL)) {
 				validateControl.setSelected(true);
 			}
-			box.add(Box.createHorizontalStrut(40));
 			box.add(validateControl);
 			add(box,"North");
 		}
@@ -110,7 +120,6 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 	private boolean fearSelected() {
 		return selection == Constants.MONSTER_FEAR;
 	}
-	
 	
 	private void updateSelection() {
 		ArrayList<String> list = new ArrayList<>();
@@ -161,6 +170,8 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 			setAttributeList(Constants.MONSTER_CONTROL,list);
 			duration = durationComponent.getText();
 			setAttribute(Constants.MONSTER_CONTROL_DURATION,duration == null || duration == "0" ? String.valueOf(Constants.TEN_YEARS) : duration);
+			limit = limitComponent.getText();
+			setAttribute(Constants.MONSTER_CONTROL_LIMIT,limit == null || limit == "0" ? "0" : limit);
 			if (enhancedControl.isSelected()) {
 				setAttribute(Constants.MONSTER_CONTROL_ENHANCED);
 			}

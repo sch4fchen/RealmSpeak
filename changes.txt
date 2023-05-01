@@ -63,11 +63,12 @@ First Edition Optional Rule - Glory: When a character or his hired natives kill 
 
 Version 1.1.7.8
 QUEST UPDATE:
-# Update to quest A05
+# Update to quests: A05, Q57
 # SUPER REALM:
 # Native spell caster: Zealot
 # New spell: Holy Shield
 # Minotaur's shield can be damaged
+
 
 Version 1.1.7.7
 QUEST UPDATE:
@@ -84,6 +85,8 @@ BUGS/ISSUES:
 # Fix QuestRequirementInventory not checking for already activated items, when activating another item
 # Fix advantages of characters counting twice
 # Fix showing horses of treasure locations in setup card view
+NEW FEATURES:
+MonsterControl: Option to set a limit for the number of controlled monsters
 
 Version 1.1.7.6
 HINT: older save games are not fully compatible with this version (e.g. spell targeting)

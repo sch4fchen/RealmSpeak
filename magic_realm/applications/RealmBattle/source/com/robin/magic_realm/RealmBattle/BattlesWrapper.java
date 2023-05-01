@@ -1,6 +1,7 @@
 package com.robin.magic_realm.RealmBattle;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
@@ -75,18 +76,18 @@ public class BattlesWrapper extends GameObjectWrapper {
 				ArrayList<RealmComponent> characterCanControl = new ArrayList<>();
 				for (RealmComponent characterRc : combatants) {
 					if (!characterRc.isCharacter()) continue;
-						for (String monsterType : characterRc.getControllableMonsters()) {
+						Hashtable<String,Integer[]> controllableMonsters = characterRc.getControllableMonsters();
+						for (String monsterType : controllableMonsters.keySet()) {
 							if (monster.getGameObject().getName().matches(monsterType.toString())) {
-								if (!characterCanControl.contains(characterRc)) {
+								if (!characterCanControl.contains(characterRc) && (controllableMonsters.get(monsterType)[1]==0 || (new CharacterWrapper(characterRc.getGameObject()).getAllControlledMonstersWithSameName(monsterType).size()<controllableMonsters.get(monsterType)[1]))) {
 									characterCanControl.add(characterRc);
 								}
 							}
 						}
-
 				}
 				if (characterCanControl.toArray().length == 1) { // only if exactly one character can control this monster
 					CharacterWrapper characterWrapper = new CharacterWrapper(characterCanControl.get(0).getGameObject());
-					int duration = characterCanControl.get(0).getControllableMonstersDuration();
+					int duration = characterCanControl.get(0).getControllableMonsterDuration(false,monster.getGameObject().getName());
 					RealmComponent monsterOwner = monster.getOwner();
 					
 					if(monsterOwner!=null && monsterOwner.isCharacter() && monsterOwner.getGameObject() == characterWrapper.getGameObject()) {

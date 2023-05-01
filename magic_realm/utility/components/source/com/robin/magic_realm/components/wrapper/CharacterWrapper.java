@@ -2480,7 +2480,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public ArrayList<GameObject> getActiveInventoryAndTravelers() {
 		ArrayList<GameObject> ret = getActiveInventory();
 		ret.addAll(getFollowingTravelers());
-		ret.addAll(getMinorCharacters());
 		ret.add(getGameObject());
 		return ret;
 	}
@@ -6207,6 +6206,15 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return list;
 	}
+	public ArrayList<RealmComponent> getAllControlledMonstersWithSameName(String monsterType) {
+		ArrayList<RealmComponent> list = new ArrayList<>();
+		for (RealmComponent hireling:getAllHirelings()) {
+			if (hireling.isMonster() && hireling.getGameObject().getName().matches(monsterType)) {
+				list.add(hireling);
+			}
+		}
+		return list;
+	}
 	public void setWantsCombat(boolean val) {
 		setBoolean(WANTS_COMBAT,val);
 	}
@@ -6928,16 +6936,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 				ArrayList<RealmComponent> characterCanControl = new ArrayList<>();
 				for (RealmComponent characterRc : clearingComponents) {
 					if (!characterRc.isCharacter()) continue;
-					ArrayList<String> controllableMonsters = null;
-					if (onlyEnhancedMonsterControl) {
-						controllableMonsters = characterRc.getControllableMonstersEnhanced();
-					}
-					else {
-						controllableMonsters = characterRc.getControllableMonsters();
-					}
-					for (String monsterType : controllableMonsters) {
+					Hashtable<String,Integer[]> controllableMonsters = characterRc.getControllableMonsters(onlyEnhancedMonsterControl);
+					for (String monsterType : controllableMonsters.keySet()) {
 						if (monster.getGameObject().getName().matches(monsterType.toString())) {
-							if (!characterCanControl.contains(characterRc)) {
+							if (!characterCanControl.contains(characterRc) && (controllableMonsters.get(monsterType)[1]==0 || (new CharacterWrapper(characterRc.getGameObject()).getAllControlledMonstersWithSameName(monsterType).size()<controllableMonsters.get(monsterType)[1]))) {
 								characterCanControl.add(characterRc);
 							}
 						}
@@ -6945,7 +6947,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				}
 				if (characterCanControl.toArray().length == 1) { // only if exactly one character can control this monster
 					CharacterWrapper characterWrapper = new CharacterWrapper(characterCanControl.get(0).getGameObject());
-					int duration = characterCanControl.get(0).getControllableMonstersDuration();
+					int duration = characterCanControl.get(0).getControllableMonsterDuration(onlyEnhancedMonsterControl,monster.getGameObject().getName());
 					RealmComponent monsterOwner = monster.getOwner();
 					
 					if(monsterOwner!=null && monsterOwner.isCharacter() && monsterOwner.getGameObject() == characterWrapper.getGameObject()) {

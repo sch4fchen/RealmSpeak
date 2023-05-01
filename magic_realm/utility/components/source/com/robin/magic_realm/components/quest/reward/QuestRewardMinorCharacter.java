@@ -1,6 +1,7 @@
 package com.robin.magic_realm.components.quest.reward;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import javax.swing.JFrame;
 
@@ -8,7 +9,6 @@ import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.RealmComponent;
-import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -57,7 +57,7 @@ public class QuestRewardMinorCharacter extends QuestReward {
 			
 			if (minorCharacter.getGameObject().hasThisAttribute(Constants.MONSTER_CONTROL_VALIDATE_CONTROL)) {
 				RealmComponent characterRC = RealmComponent.getRealmComponent(character.getGameObject());
-				ArrayList<String> canControl = characterRC.getControllableMonsters();
+				Set<String> canControl = characterRC.getControllableMonsters().keySet();
 				for (RealmComponent monster : character.getAllHirelings()) {
 					if (!monster.isMonster()) continue;
 					for (String monsterType : controls) {

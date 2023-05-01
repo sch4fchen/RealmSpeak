@@ -23477,6 +23477,7 @@
         <attribute icon_type="minotaur_buckler" />
         <attribute icon_folder="monsters2" />
         <attribute rw_expansion_1="" />
+        <attribute not_damageable="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="4" />
@@ -35535,7 +35536,6 @@
         <attribute icon_folder="wesnoth/icons" />
         <attribute super_realm="" />
         <attribute icon_size="0.6" />
-        <attribute damageable="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute strength="T" />
