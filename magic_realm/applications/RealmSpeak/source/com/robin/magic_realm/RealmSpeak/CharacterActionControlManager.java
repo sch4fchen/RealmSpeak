@@ -385,7 +385,7 @@ public class CharacterActionControlManager {
 							&& current.tile == tl.tile) {
 						overridePath = true;
 					}
-					if (current.isBetweenClearings() && character.canWalkWoods(current.tile) && current.getOther().tile == tl.tile) {
+					if (current.isBetweenClearings() && ((character.canWalkWoods(current.tile) && current.getOther().tile == tl.tile) || (current.contains(tl.tile) && current.contains(tl.clearing)))) {
 							overridePath = true;
 					}
 					if (ClearingUtility.canUseGates(character,tl.clearing)) {
