@@ -16218,7 +16218,7 @@
         <attribute strong_mf="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="664" name="Divine Protection">
+    <GameObject id="664" name="Divine Shield">
       <AttributeBlock blockName="this">
         <attribute spell="I" />
         <attribute duration="day" />
@@ -57239,6 +57239,20 @@
       </AttributeBlock>
       <AttributeBlock blockName="phase_chit_effects">
         <attribute holy_shield="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2208" name="Divine Protection">
+      <AttributeBlock blockName="this">
+        <attribute spell="I" />
+        <attribute duration="combat" />
+        <attribute target="individual" />
+        <attribute text="Raise vulnerability one level" />
+        <attribute magic_color="white" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+        <attribute benevolent="" />
       </AttributeBlock>
     </GameObject>
   </objects>

@@ -496,6 +496,12 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 	public Strength getVulnerability() {
 		Strength vul =  new Strength(getAttribute("this", "vulnerability"));
 		vul.modify(sizeModifier());
+		if (getGameObject().hasThisAttribute(Constants.WEAKENED_VULNERABILITY)) {
+			vul.modify(-1);
+		}
+		if (getGameObject().hasThisAttribute(Constants.STRENGTHENED_VULNERABILITY)) {
+			vul.modify(+1);
+		}
 		return vul;
 	}
 	public boolean isArmored() {

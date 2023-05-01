@@ -285,6 +285,12 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 	public Strength getVulnerability() {
 		Strength strength = new Strength(getAttribute("this", "vulnerability"));
 		strength.modify(sizeModifier());
+		if (getGameObject().hasThisAttribute(Constants.WEAKENED_VULNERABILITY)) {
+			strength.modify(-1);
+		}
+		if (getGameObject().hasThisAttribute(Constants.STRENGTHENED_VULNERABILITY)) {
+			strength.modify(+1);
+		}
 		return strength;
 	}
 	public boolean isArmored() {

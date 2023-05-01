@@ -66,8 +66,9 @@ QUEST UPDATE:
 # Update to quests: A05, Q57
 # SUPER REALM:
 # Native spell caster: Zealot
-# New spell: Holy Shield
+# New spell: Holy Shield, Divine Protection
 # Minotaur's shield can be damaged
+Hint: Expansion 1 spell "Divine Protection" renamed to "Divine Shield" (to avoid duplicate spell names)
 
 
 Version 1.1.7.7

@@ -456,6 +456,7 @@ public class Constants {
 	public static final String SAPPED = "sapped";
 	public static final String TIRED = "tired";
 	public static final String WEAKENED_VULNERABILITY = "weakened_vulnerability";
+	public static final String STRENGTHENED_VULNERABILITY = "strengthened_vulnerability";
 	public static final String NEGATIVE_AURA = "negative_aura";
 	
 	// Spells

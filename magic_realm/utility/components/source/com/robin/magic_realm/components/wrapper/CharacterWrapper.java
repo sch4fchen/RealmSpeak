@@ -641,6 +641,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (getGameObject().hasThisAttribute(Constants.WEAKENED_VULNERABILITY)) {
 			vul.modify(-1);
 		}
+		if (getGameObject().hasThisAttribute(Constants.STRENGTHENED_VULNERABILITY)) {
+			vul.modify(+1);
+		}
 		return vul;
 	}
 	public Strength getWeight() {

@@ -33,7 +33,7 @@ public class SpellEffectFactory {
 		
 			case "dissolve spell": return new ISpellEffect[]{new CancelEffect()};
 			case "divine might": return new ISpellEffect[]{new ApplyNamedEffect(Constants.STRONG_MF)};
-			case "divine protection": return new ISpellEffect[]{new ApplyNamedEffect(Constants.ADDS_ARMOR)};
+			case "divine shield": return new ISpellEffect[]{new ApplyNamedEffect(Constants.ADDS_ARMOR)};
 		
 			case "elemental power": return new ISpellEffect[]{new ForcedEnchantEffect()};
 			case "elemental spirit": return new ISpellEffect[]{new ChitChangeEffect()};
@@ -136,6 +136,7 @@ public class SpellEffectFactory {
 			
 			// super realm
 			case "deal with orcs and goblins": return new ISpellEffect[]{new PacifyEffect(0)};
+			case "divine protection": return new ISpellEffect[]{new ApplyNamedEffect(Constants.STRENGTHENED_VULNERABILITY)};
 			case "guide beast": return new ISpellEffect[]{new ControlEffect()};
 			case "holy shield": return new ISpellEffect[]{new PhaseChitEffect()};
 			case "mesmerize": return new ISpellEffect[]{new MesmerizeEffect()};
