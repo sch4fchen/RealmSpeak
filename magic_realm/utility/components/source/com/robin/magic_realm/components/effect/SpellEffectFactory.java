@@ -142,6 +142,7 @@ public class SpellEffectFactory {
 			case "holy shield": return new ISpellEffect[]{new PhaseChitEffect()};
 			case "mesmerize": return new ISpellEffect[]{new MesmerizeEffect()};
 			case "negative aura": return new ISpellEffect[]{new ApplyNamedEffect(Constants.NEGATIVE_AURA)};
+			case "reinvigorate": return new ISpellEffect[]{new ExtraActionEffect("R")};
 			case "summon demon": return new ISpellEffect[]{new SummonEffect(SpellUtility.SummonType.demon.toString())};
 			
 			default: break;

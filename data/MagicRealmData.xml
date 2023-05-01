@@ -57295,7 +57295,7 @@
         <attribute spell="I" />
         <attribute duration="instant" />
         <attribute target="clearing" />
-        <attribute text="Raise vulnerability one level" />
+        <attribute text="Roll for every Ghost, Ghoul, Skeleton, Undead and Wraith in the clearing. Target killed on a result &lt;6" />
         <attribute magic_color="white" />
         <attribute host_okay="" />
         <attribute learnable="" />
@@ -57309,6 +57309,19 @@
           <attributeVal N3="skeletons" />
           <attributeVal N4="undead" />
         </attributeList>
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2210" name="Reinvigorate">
+      <AttributeBlock blockName="this">
+        <attribute spell="I" />
+        <attribute duration="day" />
+        <attribute target="character" />
+        <attribute text="Target can record and do an extra REST phase." />
+        <attribute magic_color="white" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
       </AttributeBlock>
     </GameObject>
   </objects>
