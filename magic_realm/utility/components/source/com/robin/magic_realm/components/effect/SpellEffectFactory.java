@@ -135,6 +135,7 @@ public class SpellEffectFactory {
 			case "sleep": return new ISpellEffect[]{new SleepEffect()};
 			
 			// super realm
+			case "barkskin": return new ISpellEffect[]{new ApplyNamedEffect(Constants.BARKSKIN)};
 			case "deal with orcs and goblins": return new ISpellEffect[]{new PacifyEffect(0)};
 			case "divine protection": return new ISpellEffect[]{new ApplyNamedEffect(Constants.STRENGTHENED_VULNERABILITY)};
 			case "free the soul": return new ISpellEffect[]{new FreeTheSoulEffect()};

@@ -63,13 +63,12 @@ First Edition Optional Rule - Glory: When a character or his hired natives kill 
 
 Version 1.1.7.8
 QUEST UPDATE:
-# Update to quests: A05, Q57
+# Update to quests: A05, E16, Q57
 # SUPER REALM:
 # Native spell caster: Zealot
-# New spell: Holy Shield, Divine Protection, Free the Soul, Reinvigorate
+# New spell: Holy Shield, Divine Protection, Free the Soul, Reinvigorate, Barkskin
 # Minotaur's shield can be damaged
 Hint: Expansion 1 spell "Divine Protection" renamed to "Divine Shield" (to avoid duplicate spell names)
-
 
 Version 1.1.7.7
 QUEST UPDATE:

@@ -57324,6 +57324,20 @@
         <attribute super_realm_spell="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2211" name="Divine Protection">
+      <AttributeBlock blockName="this">
+        <attribute spell="II" />
+        <attribute duration="combat" />
+        <attribute target="individual" />
+        <attribute text="Target is armored. Character is treated as wearing M armor." />
+        <attribute magic_color="grey" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+        <attribute benevolent="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

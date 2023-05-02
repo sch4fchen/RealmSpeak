@@ -852,7 +852,6 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 								}
 							}
 						}
-
 						// Armor cards are simply removed (not relocated anywhere)
 					}
 				}
