@@ -624,6 +624,10 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		return null;
 	}
 	
+	public boolean hasBarkskin() {
+		return getGameObject().hasThisAttribute(Constants.BARKSKIN);
+	}
+	
 	/**
 	 * @return true if damage was applied in some way
 	 */
@@ -748,6 +752,28 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 							}
 						}
 					}
+					else if (hasBarkskin()) {
+						ColorMagic attackerImmunityColor = ColorMagic.makeColorMagic(attacker.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY),true);
+						if (attackerImmunityColor.isPrismColor()||attackerImmunityColor.getColorNumber()==ColorMagic.GRAY) {
+							RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Barkskin is ignored.");
+						}
+						else {
+							harm.dampenSharpness();
+							RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits barkskin, and reduces sharpness: "+harm.toString());
+							if ((new Strength("M")).strongerThan(harm.getAppliedStrength())) {
+								harm = new Harm(new Strength(),0); // negate harm!
+								RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Missile attack is stopped by barkskin.");
+							}
+							else if ((new Strength("M")).equals(harm.getAppliedStrength())) {
+								harm.setWound(true);
+								RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Missile attack is stopped by barkskin, but causes 1 wound.");
+							}
+							else { // can assume harm is greater than armor now
+								harm.dropOneLevel();
+								RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Missile attack penetrates barkskin!  Drops one level: "+harm);
+							}
+						}
+					}
 				}
 			}
 			else {
@@ -765,8 +791,22 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				harm.dampenSharpness();
 				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),getGameObject().getNameWithNumber() + " has natural armor, which reduces sharpness: "+harm.toString());
 			}
-						
-			if (!harm.getIgnoresArmor() && armor != null) {
+			
+			if (armor==null && !harm.getIgnoresArmor() && hasBarkskin()) {
+				ColorMagic attackerImmunityColor = ColorMagic.makeColorMagic(attacker.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY),true);
+				if (attackerImmunityColor.isPrismColor()||attackerImmunityColor.getColorNumber()==ColorMagic.GRAY) {
+					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Barkskin is ignored.");
+				}
+				else {
+					minForWound = new Strength("M");
+					harm.dampenSharpness();
+					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits barkskin, and reduces sharpness: "+harm.toString());
+					if (harm.getAppliedStrength().strongerOrEqualTo(new Strength("M"))) {
+						damageTaken = true;
+					}
+				}
+			}
+			else if (!harm.getIgnoresArmor() && armor != null) {
 				// Wound minimum is increased to M if there is armor involved
 				minForWound = new Strength("M");
 				
@@ -899,7 +939,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			// Check for wounds
 			if (!characterWasKilled && !tookSeriousWounds && harm.getAppliedStrength().strongerOrEqualTo(minForWound)) {
 				// Wound character here, unless character is immune...
-				if (armor==null || !character.hasActiveInventoryThisKey(Constants.STOP_WOUNDS)) {
+				if ((armor==null && !hasBarkskin()) || !character.hasActiveInventoryThisKey(Constants.STOP_WOUNDS)) {
 					Collection<CharacterActionChitComponent> c = character.getActiveChits();
 					int currentWounds = combat.getNewWounds();
 					if (c != null && c.size() > currentWounds) {
