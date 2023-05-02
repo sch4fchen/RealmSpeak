@@ -106,7 +106,7 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		tt = new TextType(speed.getSpeedString()+asterisk,getChitSize(),alteredMoveSpeed?"BIG_BOLD_BLUE":"BIG_BOLD");
 		tt.draw(g,getChitSize()>>1,getChitSize()-(getChitSize()>>2)-(getChitSize()>>3),Alignment.Left);
 		
-		if (RealmComponent.displayArmor && getGameObject().hasThisAttribute(Constants.ARMORED)) {
+		if (RealmComponent.displayArmor && isArmored()) {
 			Graphics2D g2 = (Graphics2D) g;
 			g2.setColor(Color.black);
 			g2.setStroke(new BasicStroke(2));
@@ -212,10 +212,21 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		
 		Harm harm = new Harm(attackerHarm);
 		Strength vulnerability = new Strength(getAttribute("this","vulnerability"));
-		if (!harm.getIgnoresArmor() && getGameObject().hasThisAttribute(Constants.ARMORED)) {
+		if (!harm.getIgnoresArmor() && isArmored()) {
 			harm.dampenSharpness();
-			RealmLogging.logMessage(attacker.getGameObject().getName(),"Hits armor, and reduces sharpness: "+harm.toString());
+			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor, and reduces sharpness: "+harm.toString());
 		}
+		else if (!harm.getIgnoresArmor() && hasBarkskin()) {
+			ColorMagic attackerImmunityColor = ColorMagic.makeColorMagic(attacker.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY),true);
+			if (attackerImmunityColor.isPrismColor()||attackerImmunityColor.getColorNumber()==ColorMagic.GRAY) {
+				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Barkskin is ignored.");
+			}
+			else {
+				harm.dampenSharpness();
+				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits barkskin, and reduces sharpness: "+harm.toString());
+			}
+		}
+		
 		Strength applied = harm.getAppliedStrength();
 		if (applied.strongerOrEqualTo(vulnerability)) {
 			// Dead horse!
@@ -224,7 +235,7 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 			combat.setKilledLength(attacker.getLength());
 			combat.setKilledSpeed(attacker.getAttackSpeed());
 			combat.setHitByOrderNumber(attackOrderPos);
-			RealmLogging.logMessage(attacker.getGameObject().getName(),"Kills the "+getGameObject().getName());
+			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Kills the "+getGameObject().getName());
 			return true;
 		}
 		return false;
@@ -256,6 +267,9 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 	}
 	public boolean isArmored() {
 		return getGameObject().hasThisAttribute(Constants.ARMORED);
+	}
+	public boolean hasBarkskin() {
+		return getGameObject().hasThisAttribute(Constants.BARKSKIN);
 	}
 	public boolean isDead() {
 		return getGameObject().hasThisAttribute(Constants.DEAD);

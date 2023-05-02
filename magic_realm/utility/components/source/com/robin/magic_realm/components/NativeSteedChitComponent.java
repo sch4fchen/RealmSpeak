@@ -171,7 +171,7 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		tt = new TextType(speed+asterisk,getChitSize(),"BIG_BOLD");
 		tt.draw(g,getChitSize()>>1,getChitSize()-(getChitSize()>>2)-(getChitSize()>>3),Alignment.Left);
 		
-		if (RealmComponent.displayArmor && getGameObject().hasThisAttribute(Constants.ARMORED)) {
+		if (RealmComponent.displayArmor && isArmored()) {
 			g.setColor(Color.black);
 			g.drawRect(0,0,getChitSize(),getChitSize());
 			g.drawRect(1,1,getChitSize()-2,getChitSize()-2);
@@ -250,9 +250,19 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		
 		Harm harm = new Harm(attackerHarm);
 		Strength vulnerability = new Strength(getAttribute("this","vulnerability"));
-		if (!harm.getIgnoresArmor() && getGameObject().hasThisAttribute(Constants.ARMORED)) {
+		if (!harm.getIgnoresArmor() && isArmored()) {
 			harm.dampenSharpness();
 			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor, and reduces sharpness: "+harm.toString());
+		}
+		else if (!harm.getIgnoresArmor() && hasBarkskin()) {
+			ColorMagic attackerImmunityColor = ColorMagic.makeColorMagic(attacker.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY),true);
+			if (attackerImmunityColor.isPrismColor()||attackerImmunityColor.getColorNumber()==ColorMagic.GRAY) {
+				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Barkskin is ignored.");
+			}
+			else {
+				harm.dampenSharpness();
+				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits barkskin, and reduces sharpness: "+harm.toString());
+			}
 		}
 		Strength applied = harm.getAppliedStrength();
 		if (applied.strongerOrEqualTo(vulnerability)) {
@@ -295,6 +305,9 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 	}
 	public boolean isArmored() {
 		return getGameObject().hasThisAttribute(Constants.ARMORED);
+	}
+	public boolean hasBarkskin() {
+		return getGameObject().hasThisAttribute(Constants.BARKSKIN);
 	}
 	public String getAttackString() {
 		Strength str = getStrength();

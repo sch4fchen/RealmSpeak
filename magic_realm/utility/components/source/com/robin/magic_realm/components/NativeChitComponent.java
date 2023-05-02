@@ -129,7 +129,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		tt = new TextType("G:"+hire, cs, "NORMAL");
 		tt.draw(g,cs-29,midy-11,Alignment.Left);
 		
-		boolean armored = getGameObject().hasThisAttribute(Constants.ARMORED);
+		boolean armored = isArmored();
 		int x = cs - 18;
 		int y = 5;
 		String vul = getGameObject().getThisAttribute("vulnerability");
@@ -288,7 +288,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 			paintFrenzelValues(g);
 		}
 		
-		if (RealmComponent.displayArmor && getGameObject().hasThisAttribute(Constants.ARMORED)) {
+		if (RealmComponent.displayArmor && isArmored()) {
 			Stroke stroke = g.getStroke();
 			g.setStroke(new BasicStroke(2));
 			g.setColor(Color.black);
@@ -451,9 +451,19 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		
 		Harm harm = new Harm(attackerHarm);
 		Strength vulnerability = new Strength(getAttribute("this", "vulnerability"));
-		if (!harm.getIgnoresArmor() && getGameObject().hasThisAttribute(Constants.ARMORED)) {
+		if (!harm.getIgnoresArmor() && isArmored()) {
 			harm.dampenSharpness();
 			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor, and reduces sharpness: "+harm.toString());
+		}
+		else if (!harm.getIgnoresArmor() && hasBarkskin()) {
+			ColorMagic attackerImmunityColor = ColorMagic.makeColorMagic(attacker.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY),true);
+			if (attackerImmunityColor.isPrismColor()||attackerImmunityColor.getColorNumber()==ColorMagic.GRAY) {
+				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Barkskin is ignored.");
+			}
+			else {
+				harm.dampenSharpness();
+				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits barkskin, and reduces sharpness: "+harm.toString());
+			}
 		}
 		Strength applied = harm.getAppliedStrength();
 		if (applied.strongerOrEqualTo(vulnerability)) {
@@ -506,6 +516,9 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 	}
 	public boolean isArmored() {
 		return getGameObject().hasThisAttribute(Constants.ARMORED);
+	}
+	public boolean hasBarkskin() {
+		return getGameObject().hasThisAttribute(Constants.BARKSKIN);
 	}
 	public String getAttackString() {
 		String magicType = getMagicType();
