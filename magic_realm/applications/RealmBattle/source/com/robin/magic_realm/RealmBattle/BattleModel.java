@@ -481,7 +481,7 @@ public class BattleModel {
 	
 	public void doEnergizeDenizenPreBattleSpells() {		
 		for (RealmComponent battleParticipant : getAllBattleParticipants(true)) {
-			if (battleParticipant.isDenizen() && battleParticipant.getGameObject().hasThisAttribute(Constants.SPELL_PRE_BATTLE)) {
+			if ((battleParticipant.isMonster() || battleParticipant.isNative()) && battleParticipant.getGameObject().hasThisAttribute(Constants.SPELL_PRE_BATTLE)) {
 				String spellName = battleParticipant.getGameObject().getThisAttribute(Constants.SPELL_PRE_BATTLE);
 				SpellWrapper spell = null;
 				for (GameObject held : battleParticipant.getGameObject().getHold()) {
@@ -544,7 +544,7 @@ public class BattleModel {
 					transmorphed = true;
 				}
 			}
-			if ((battleParticipant.isDenizen() || transmorphed) && !battleParticipant.isMonsterPart()) {
+			if ((battleParticipant.isMonster() || battleParticipant.isNative() || transmorphed) && !battleParticipant.isMonsterPart()) {
 				BattleChit denizen = (BattleChit)battleParticipant;
 				if (hostPrefs.hasPref(Constants.OPT_POWER_OF_THE_PIT_DEMON) && Constants.POWER_OF_THE_PIT.matches(denizen.getAttackSpell()) && !spellCasters.contains(denizen)) {
 					spellCasters.add(denizen);
@@ -1111,7 +1111,7 @@ public class BattleModel {
 				transmorphed = true;
 			}
 		}
-		if ((attacker.isDenizen() || transmorphed) && magicType!=null && !magicType.isEmpty()
+		if ((attacker.isMonster() || attacker.isNative() || transmorphed) && magicType!=null && !magicType.isEmpty()
 				&& (attacker.getGameObject().hasThisAttribute(Constants.SPELL_TARGETS_SELF) || ((ChitComponent)attacker).hasFaceAttribute(Constants.SPELL_TARGETS_SELF))) {
 			String spellName = attacker.getAttackSpell();
 			SpellWrapper spell = null;
@@ -1122,9 +1122,7 @@ public class BattleModel {
 				}
 			}
 			if (spell!=null) {
-				if (attacker.isDenizen()
-						&& (attacker.getGameObject().hasThisAttribute(Constants.ATTACK_AFTER_CASTING)
-						|| ((ChitComponent)attacker).hasFaceAttribute(Constants.ATTACK_AFTER_CASTING))) {
+				if (attacker.getGameObject().hasThisAttribute(Constants.ATTACK_AFTER_CASTING) || ((ChitComponent)attacker).hasFaceAttribute(Constants.ATTACK_AFTER_CASTING)) {
 					attackAfterCasting = false;
 				}
 				else {
@@ -1514,7 +1512,7 @@ public class BattleModel {
 							transmorphed = true;
 						}
 					}
-					if ((attacker.isDenizen() || transmorphed) && Constants.POWER_OF_THE_PIT.matches(attacker.getAttackSpell())) {
+					if ((attacker.isMonster() || attacker.isNative() || transmorphed) && Constants.POWER_OF_THE_PIT.matches(attacker.getAttackSpell())) {
 						if (attacker instanceof SpellWrapper) {
 							// Spells belong to characters
 							SpellWrapper spell = (SpellWrapper)attacker;
@@ -1537,7 +1535,7 @@ public class BattleModel {
 						spellCasting = true;
 						spellCasted = true;
 					}
-					else if ((attacker.isDenizen() || transmorphed) && Constants.DEVILS_SPELL.matches(attacker.getAttackSpell())) {
+					else if ((attacker.isMonster() || attacker.isNative() || transmorphed) && Constants.DEVILS_SPELL.matches(attacker.getAttackSpell())) {
 						if (attacker instanceof SpellWrapper) {
 							// Spells belong to characters
 							SpellWrapper spell = (SpellWrapper)attacker;
@@ -1560,7 +1558,7 @@ public class BattleModel {
 						spellCasting = true;
 						spellCasted = true;
 					}
-					else if ((attacker.isDenizen() || transmorphed) && Constants.CURSE.equals(attacker.getAttackSpell())) {
+					else if ((attacker.isMonster() || attacker.isNative() || transmorphed) && Constants.CURSE.equals(attacker.getAttackSpell())) {
 						// Imp's Curse
 						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with a Curse along box "+attacker.getAttackCombatBox());
 						Curse curse = Curse.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject());
@@ -1568,14 +1566,14 @@ public class BattleModel {
 						spellCasting = true;
 						spellCasted = true;
 					}
-					else if ((attacker.isDenizen() || transmorphed) && Constants.MESMERIZE.equals(attacker.getAttackSpell())) {
+					else if ((attacker.isMonster() || attacker.isNative() || transmorphed) && Constants.MESMERIZE.equals(attacker.getAttackSpell())) {
 						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with a Curse along box "+attacker.getAttackCombatBox());
 						Mesmerize mesmerize = Mesmerize.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject(),false,0);
 						hitCausedHarm = mesmerize.harmWasApplied();
 						spellCasting = true;
 						spellCasted = true;
 					}
-					else if ((attacker.isDenizen() || transmorphed) && !magicType.isEmpty()
+					else if ((attacker.isMonster() || attacker.isNative() || transmorphed) && !magicType.isEmpty()
 							&& !attacker.getGameObject().hasThisAttribute(Constants.SPELL_TARGETS_SELF) && !((ChitComponent)attacker).hasFaceAttribute(Constants.SPELL_TARGETS_SELF)) {
 						String spellName = attacker.getAttackSpell();
 						SpellWrapper spell = null;
@@ -1745,7 +1743,7 @@ public class BattleModel {
 					logBattleInfo(attacker.getGameObject().getNameWithNumber()+" didn't attack, and thus does not harm the target.");
 				}
 			}
-			if ((attacker.getGameObject().hasThisAttribute(Constants.ATTACK_AFTER_CASTING) || ((ChitComponent)attacker).hasFaceAttribute(Constants.ATTACK_AFTER_CASTING)) 
+			if ((attacker.getGameObject().hasThisAttribute(Constants.ATTACK_AFTER_CASTING) || ((attacker.isMonster() || attacker.isNative()) && ((ChitComponent)attacker).hasFaceAttribute(Constants.ATTACK_AFTER_CASTING))) 
 					&& attackerCombat.hasCastSpell() && !attackerCombat.getAttackedAfterCasting()) {
 				doTargetAttack(attacker,target,round,attackOrderPos);
 			}

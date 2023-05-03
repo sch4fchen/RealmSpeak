@@ -187,7 +187,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		return this;
 	}
 	public boolean selectTargetForDenizen(HostPrefWrapper hostPrefs, TileLocation battleLocation, BattleChit denizen, RealmComponent target) {
-		if (denizen.getGameObject().hasThisAttribute(Constants.SPELL_TARGETS_SELF)||((ChitComponent)denizen).hasFaceAttribute(Constants.SPELL_TARGETS_SELF)) {
+		if (denizen.getGameObject().hasThisAttribute(Constants.SPELL_TARGETS_SELF)|| ((denizen.isNative() || denizen.isMonster()) && ((ChitComponent)denizen).hasFaceAttribute(Constants.SPELL_TARGETS_SELF))) {
 			addTarget(hostPrefs, denizen.getGameObject());
 			return true;
 		}

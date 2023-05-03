@@ -1,6 +1,27 @@
 ::ROADMAP::
+Test: Super Realm: rules for max. strength attack
 Character Potraits for Super Realm
+Spells: II: Thorns III: Control Horse, Horse Whisper, Migration, Tracker’s Sense, Water Run IV-VIII
+Treasures
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
+---Super Realms: More content incl. functionalities---
+Super Realm: Nomads, Tasks, Travelers: 4.8 (p.41)
+Super Realm: Quests + Events
+Super Realm: Adapt Commerce optional rules for new natives
+Super Realm: Characters, including potraits with credits, different chit icon
+Super Realm: option to use Super Realm search tables etc., add search tables etc. to menu; add first edition search tables to menu
+---Super Realms Rules---
+Super Realm: icons for site chits, sound and warning chits, characters
+SUPER REALM: remaining RULES and LOGIC (rule changes compared to Magic Realm)
+Super Realm: Seasons + Weather 10.12 (p.117)
+Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
+3rdEdition / RealmSpeak: Optional Character Rules (A.6, p. 186): Captain, Druid, Magician, WIZARD ignores SPX, Woods Girl, Elf
+Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.121)
+Super Realm: Optional Rules: Initial quest card draw size (BGG variant: 3 quests)
+Super Realm: Optional Rules: No discarding or drawing new quest cards (but perhaps exchanging?)
+Super Realm: Optional Rules: No duplicate spell recording at start of the game
+Super Realm: Optional Rules: Starting location always the Inn
+Super Realm: Public quests on setup chart (+flag on quests if it can go on setup chart) (BGG variant: 2 quest cards per native)
 ---Detail Rules for Super Realm---
 Phantasm: If the phantasm discovers Hidden Enemies, the controlling character also discovers Hidden Enemies.;; it cannot take part in combat;; can now spy and be spied
 Melt into Mist: only move actions; canot follow or be followed; can be charged (difference), The target cannot attack or be attacked, except by individuals affected by the Enchant Weapon spell, If attacked, Mist’s vulnerability is Tremendous and non-armored; targeted monster stills prowls (like in base MR) even if ‘X’ weight
@@ -15,27 +36,6 @@ Ask Demon: 4 options, instead of just asking a question
 Absorb Essence: any denizens and Attention chits assigned to it become assigned to the spellcaster; absorbs steed when absorbing a monster
 	The spellcaster cannot be affected by multiple Absorb Essence spells. Any Absorb Essence spell he casts while he is already bewitched by Absorb Essence is cancelled.
 Hurricane Winds: check rule changes of newer Super Realm versions
----More content incl. functionalities---
-Super Realm: new treasures
-Super Realm: new spells
-Super Realm: Nomads, Tasks, Travelers: 4.8 (p.41)
-Super Realm: Quests + Events
-Super Realm: rules for max. strength attack
-Super Realm: Adapt Commerce optional rules for new natives
-Super Realm: Characters, including potraits with credits, different chit icon
-Super Realm: icons for site chits, sound and warning chits, characters
-Super Realm: option to use Super Realm search tables etc., add search tables etc. to menu; add first edition search tables to menu
----Rules---
-SUPER REALM: remaining RULES and LOGIC (rule changes compared to Magic Realm)
-Super Realm: Seasons + Weather 10.12 (p.117)
-Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
-3rdEdition / RealmSpeak: Optional Character Rules (A.6, p. 186): Captain, Druid, Magician, WIZARD ignores SPX, Woods Girl, Elf
-Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.121)
-Super Realm: Optional Rules: Initial quest card draw size (BGG variant: 3 quests)
-Super Realm: Optional Rules: No discarding or drawing new quest cards (but perhaps exchanging?)
-Super Realm: Optional Rules: No duplicate spell recording at start of the game
-Super Realm: Optional Rules: Starting location always the Inn
-Super Realm: Public quests on setup chart (+flag on quests if it can go on setup chart) (BGG variant: 2 quest cards per native)
 ---Optional Rules---
 Book of Quests: quests of the book
 Super Realm: Optional Rules (and 1st Ed): Severe wounds (SR: 10.1, p.114) = Serious Wounds, but wounds *2
@@ -66,7 +66,7 @@ QUEST UPDATE:
 # Update to quests: A05, E16, Q57
 # SUPER REALM:
 # Native spell caster: Zealot
-# New spell: Holy Shield, Divine Protection, Free the Soul, Reinvigorate, Barkskin
+# New spell: Holy Shield, Divine Protection, Free the Soul, Reinvigorate, Barkskind, Flood
 # Minotaur's shield can be damaged
 Hint: Expansion 1 spell "Divine Protection" renamed to "Divine Shield" (to avoid duplicate spell names)
 
