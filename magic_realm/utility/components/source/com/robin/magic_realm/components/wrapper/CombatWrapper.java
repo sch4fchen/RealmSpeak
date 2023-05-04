@@ -69,6 +69,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String BURNED_COLOR = "BURNED_COLOR"; // indicates the player burned a color chit this combat round
 	private static final String SERIOUS_WOUND_ROLLS = "S_W_ROLLS";
 	private static final String PLAYED_ATTACK = "PLAYED_ATTACK";
+	private static final String PLAYED_SPELL = "PLAYED_SPELL";
 	private static final String PLAYED_BONUS_PARRY = "PLAYED_BONUS_PARRY";
 	private static final String THROWN = "THROWN";
 	private static final String TARGETING_RIDER = "TARGETING_RIDER";
@@ -367,6 +368,12 @@ public class CombatWrapper extends GameObjectWrapper {
 	}
 	public boolean getPlayedAttack() {
 		return getBoolean(PLAYED_ATTACK);
+	}
+	public void setPlayedSpell(boolean val) {
+		setBoolean(PLAYED_SPELL,val);
+	}
+	public boolean getPlayedSpell() {
+		return getBoolean(PLAYED_SPELL);
 	}
 	public void setPlayedBonusParry(boolean val) {
 		setBoolean(PLAYED_BONUS_PARRY,val);
@@ -751,6 +758,7 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,HIT_BY_ORDER_NUMBER);
 			go.removeAttribute(COMBAT_BLOCK,WAS_FATIGUE);
 			go.removeAttribute(COMBAT_BLOCK,PLAYED_ATTACK);
+			go.removeAttribute(COMBAT_BLOCK,PLAYED_SPELL);
 			go.removeAttribute(COMBAT_BLOCK,PLAYED_BONUS_PARRY);
 			go.removeAttribute(COMBAT_BLOCK,THROWN);
 			go.removeAttribute(COMBAT_BLOCK,TARGETING_RIDER);

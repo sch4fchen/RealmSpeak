@@ -68,7 +68,11 @@ QUEST UPDATE:
 # Native spell caster: Zealot
 # New spell: Holy Shield, Divine Protection, Free the Soul, Reinvigorate, Barkskind, Flood
 # Minotaur's shield can be damaged
-Hint: Expansion 1 spell "Divine Protection" renamed to "Divine Shield" (to avoid duplicate spell names)
+NEW FEATURES:
+# Hint: Expansion 1 spell "Divine Protection" renamed to "Divine Shield" (to avoid duplicate spell names)
+BUGS/ISSUES:
+# Fix BattleMage placing attack spell and normal attack
+
 
 Version 1.1.7.7
 QUEST UPDATE:
@@ -79,14 +83,15 @@ SUPER REALM:
 # Transform can now be cast on the Skeleton Horse (change of Super Realm 0.997)
 # Native spell casters: Mages, Summoners
 # New spell: Ice Bolt
+NEW FEATURES:
+# MonsterControl: Option to set a limit for the number of controlled monsters
 BUGS/ISSUES:
 # Fix Imp's curse
 # Add quest check when looting treasures inside a TWT
 # Fix QuestRequirementInventory not checking for already activated items, when activating another item
 # Fix advantages of characters counting twice
 # Fix showing horses of treasure locations in setup card view
-NEW FEATURES:
-MonsterControl: Option to set a limit for the number of controlled monsters
+
 
 Version 1.1.7.6
 HINT: older save games are not fully compatible with this version (e.g. spell targeting)

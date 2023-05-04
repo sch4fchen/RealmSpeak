@@ -1596,7 +1596,7 @@ public class CombatFrame extends JFrame {
 			// Make sure the character has placed an attack
 			if (activeCharacterIsHere && activeParticipant.getTarget()!=null && activeParticipant.get2ndTarget()!=null) {
 				CombatWrapper charCombat = new CombatWrapper(activeParticipant.getGameObject());
-				if (!charCombat.getPlayedAttack() && canPlayAttack(0)) {
+				if (!charCombat.getPlayedAttack() && !charCombat.getPlayedSpell() && canPlayAttack(0)) {
 					return new RealmComponentError(activeParticipant,"Missing Attack Placement","The active character needs to place an attack.  Do you want to continue anyway?",true);
 				}
 			}
@@ -2442,7 +2442,7 @@ public class CombatFrame extends JFrame {
 				}
 			}
 		}
-		if (!charCombat.getPlayedAttack() && !charCombat.getPlayedBonusParry()) {
+		if (!charCombat.getPlayedAttack() && !charCombat.getPlayedBonusParry() && !charCombat.getPlayedSpell() ) {
 			// First, clear out any chits already in play for attack
 			for (CharacterActionChitComponent chit : activeCharacter.getActiveFightChits()) {
 				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
@@ -2540,25 +2540,25 @@ public class CombatFrame extends JFrame {
 		CombatWrapper charCombat = new CombatWrapper(activeCharacter.getGameObject());
 		GameObject go = charCombat.getCastSpell();
 		SpellWrapper spell = go==null?null:new SpellWrapper(go);
-		if (spell!=null) {
+		boolean battleMage = false;
+		if (activeCharacter.affectedByKey(Constants.BATTLE_MAGE) || hostPrefs.hasPref(Constants.OPT_SR_STEEL_AGAINST_MAGIC)) {
+			if (activeCharacter.hasOnlyStaffAsActivatedWeapon() && !activeCharacter.hasActiveArmorChits()) {
+				battleMage = true;
+			}
+		}
+		
+		if (spell!=null && !charCombat.getPlayedSpell()) {
 			GameObject incantationObject = spell.getIncantationObject();
 			if (incantationObject != null) {
 				CombatWrapper.clearRoundCombatInfo(spell.getIncantationObject());
 			}
 			// Can't play a normal attack if a spell was cast this round!
 			
-			boolean battleMage = false;
-			if (activeCharacter.affectedByKey(Constants.BATTLE_MAGE) || hostPrefs.hasPref(Constants.OPT_SR_STEEL_AGAINST_MAGIC)) {
-				if (activeCharacter.hasOnlyStaffAsActivatedWeapon() && !activeCharacter.hasActiveArmorChits()) {
-					battleMage = true;
-				}
-			}
-			
 			// If the spell is an attack spell, then place it now
 			if (spell.isAttackSpell()) {
 				CombatWrapper combat = new CombatWrapper(incantationObject);
 				combat.setCombatBox(box);
-				charCombat.setPlayedAttack(true);
+				charCombat.setPlayedSpell(true);
 				updateSelection();
 			}
 			else {
@@ -2572,14 +2572,14 @@ public class CombatFrame extends JFrame {
 		RealmComponent weaponCard = null;
 		ArrayList<WeaponChitComponent> weapons = activeCharacter.getActiveWeapons();
 		
-		// Check for Treasure Weapons (Alchemists Mixture)
+		// Check for Treasure Weapons (Alchemist's Mixture)
 		for (GameObject item : activeCharacter.getActiveInventory()) {
-			if (item.hasThisAttribute("attack")) { // ONLY the Alchemists Mixture has this, for now! - Now the Holy Hand Grenade
+			if (item.hasThisAttribute("attack")) { // ONLY the Alchemist's Mixture has this, for now! - Now the Holy Hand Grenade
 				weaponCard = RealmComponent.getRealmComponent(item);
 			}
 		}
 		
-		if (!charCombat.getPlayedAttack() && !charCombat.getPlayedBonusParry()) {
+		if (!charCombat.getPlayedAttack() && !charCombat.getPlayedBonusParry() && (!charCombat.getPlayedSpell() || battleMage)) {
 			// First, clear out any chits already in play for attack
 			for (CharacterActionChitComponent chit : activeCharacter.getActiveFightChits()) {
 				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
@@ -2642,7 +2642,6 @@ public class CombatFrame extends JFrame {
 					chooser.addRealmComponentToOption(key,weaponCard);
 				}
 			}
-			
 		}
 		
 		chooser.addOption("Reset", "Reset");
@@ -2679,8 +2678,16 @@ public class CombatFrame extends JFrame {
 				}
 			}
 			
+			if (spell != null) {
+				GameObject incantationObject = spell.getIncantationObject();
+				if (incantationObject != null) {
+					CombatWrapper.clearRoundCombatInfo(spell.getIncantationObject());
+				}
+			}
+			
 			charCombat.setPlayedAttack(false);
 			charCombat.setPlayedBonusParry(false);
+			charCombat.setPlayedSpell(false);
 		}
 		else if (chooser.getSelectedText()!=null) {
 			charCombat.setPlayedAttack(true);
@@ -2732,7 +2739,7 @@ public class CombatFrame extends JFrame {
 		
 		Collection<RealmComponent> fightOptions = getAvailableFightOptions(box);
 		ArrayList<WeaponChitComponent> weapons = activeCharacter.getActiveWeapons();		
-		if (!charCombat.getPlayedAttack() && !charCombat.getPlayedBonusParry()) {
+		if (!charCombat.getPlayedAttack() && !charCombat.getPlayedBonusParry() && !charCombat.getPlayedSpell() ) {
 			// First, clear out any chits already in play for attack
 			for (CharacterActionChitComponent chit : activeCharacter.getActiveFightChits()) {
 				CombatWrapper combat = new CombatWrapper(chit.getGameObject());

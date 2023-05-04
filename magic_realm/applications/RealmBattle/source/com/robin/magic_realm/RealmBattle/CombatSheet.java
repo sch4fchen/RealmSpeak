@@ -647,7 +647,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 								}
 							}
 						}
-						else {
+						if (spell!=null) {
 							// Attack spells are placed here
 							ArrayList<RealmComponent> targetTest = new ArrayList<>();
 							targetTest.addAll(sheetParticipants);
