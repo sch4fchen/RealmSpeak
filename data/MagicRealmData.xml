@@ -57338,6 +57338,31 @@
         <attribute benevolent="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2212" name="Flood">
+      <AttributeBlock blockName="this">
+        <attribute spell="II" />
+        <attribute duration="attack" />
+        <attribute target="clearing" />
+        <attribute text="Missle attack against all non- flying targets. Roll for direction." />
+        <attribute magic_color="grey" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+        <attribute benevolent="" />
+        <attribute length="18" />
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute attack_speed="3" />
+        <attribute random_attack_direction="" />
+        <attribute missile="magic" />
+        <attribute table="magicmissil" />
+        <attributeList keyName="target_clearing">
+          <attributeVal N0="combatants" />
+        </attributeList>
+        <attribute non-flying-targets="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
