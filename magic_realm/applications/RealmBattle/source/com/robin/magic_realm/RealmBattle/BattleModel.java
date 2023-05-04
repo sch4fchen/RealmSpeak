@@ -1374,16 +1374,23 @@ public class BattleModel {
 			}
 		}
 		
-		// Before anything else, check to see if character is immune to the attacker
-		if (attackCancelled == null && target!=null && (attacker instanceof RealmComponent) && target.isImmuneTo((RealmComponent)attacker)) {
-			attackCancelled = target.getGameObject().getNameWithNumber()+" is immune to "+attacker.getGameObject().getNameWithNumber()+".";
-		}
-		
 		// Before anything else, check to see if character fears the target
 		if (attackCancelled == null && !parry && (attacker instanceof RealmComponent) && (target instanceof RealmComponent) && ((RealmComponent)attacker).fears((RealmComponent)target)) {
 			attackCancelled = attacker.getGameObject().getNameWithNumber()+" fears "+target.getGameObject().getNameWithNumber()+" and cannot attack it.";
 		}
 		
+		if (attackCancelled == null && !parry && attacker.getGameObject().hasThisAttribute(Constants.NON_FLYING_TARGETS)) {
+			if ((target.getGameObject().hasThisAttribute(Constants.FLYING))
+				|| (target instanceof CharacterChitComponent && ((CharacterChitComponent)target).getManeuverChit().isFlyChit())) {
+				attackCancelled = attacker.getGameObject().getNameWithNumber()+" cannot attack flying targets: "+target.getGameObject().getNameWithNumber();
+			}
+		}
+		
+		// Before anything else, check to see if character is immune to the attacker
+		if (attackCancelled == null && target!=null && (attacker instanceof RealmComponent) && target.isImmuneTo((RealmComponent)attacker)) {
+			attackCancelled = target.getGameObject().getNameWithNumber()+" is immune to "+attacker.getGameObject().getNameWithNumber()+".";
+		}
+				
 		if (attackCancelled == null && attackerCombat.wasParried()) {
 			if (attackerCombat.getParriedBy().contains(target.getGameObject().getStringId()+":"+attacker.getLength()+":"+attacker.getAttackSpeed()+":"+attacker.getAttackCombatBox()+":"+attacker.getHarm().getStrength())) {
 				attackCancelled = attacker.getGameObject().getNameWithNumber()+" was already parried and cannot attack "+target.getGameObject().getNameWithNumber()+".";
@@ -1417,6 +1424,10 @@ public class BattleModel {
 			return;
 		}
 		if (!parry) {
+			if (attacker.getGameObject().hasThisAttribute(Constants.RANDOM_ATTACK_DIRECTION)) {
+					attackerCombat.setCombatBox(RandomNumber.getRandom(3));
+			}
+			
 			int hitType = NO_ATTACK;
 			if (attacker.hasAnAttack()) {
 				hitType = MISS;

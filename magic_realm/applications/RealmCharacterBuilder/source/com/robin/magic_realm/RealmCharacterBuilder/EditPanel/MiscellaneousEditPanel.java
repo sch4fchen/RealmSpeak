@@ -43,6 +43,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"Familiar",Constants.USE_FAMILIAR,""},
 		{"MAGIC chits don't fatigue when alerted and unused",Constants.NO_MAGIC_FATIGUE,""},
 		{"No SPX requirement",Constants.NO_SPX,""},
+		{"Flying",Constants.FLYING,""},
 	};
 	private static String[][] MISC_ADVANTAGE_COMBAT_AND_SPELLCASTING = {
 		{"Effort Limit of 3",Constants.EFFORT_LIMIT,"3"},

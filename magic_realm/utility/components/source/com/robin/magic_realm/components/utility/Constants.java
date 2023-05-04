@@ -227,6 +227,7 @@ public class Constants {
 	public static final String ADVENTURER = "adventurer";
 	public static final String ADVANCED_SHELTERS = "advanced_shelters";
 	public static final String NATIVE_FRIENDLY = "native_friendly";
+	public static final String FLYING = "flying";
 	
 	// Relationships
 	public static final String BASE_RELATIONSHIP = "relationship";
