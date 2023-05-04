@@ -57343,6 +57343,8 @@
         <attribute spell="II" />
         <attribute duration="attack" />
         <attribute target="clearing" />
+		<attribute non_mountain_clearing="" />
+		<attribute river_or_adjacent_hex="" />
         <attribute text="Missle attack against all non- flying targets. Roll for direction." />
         <attribute magic_color="grey" />
         <attribute host_okay="" />

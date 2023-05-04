@@ -4555,6 +4555,33 @@ public class CharacterWrapper extends GameObjectWrapper {
 				}
 			}
 			
+			if (set.getSpell().hasThisAttribute("non_mountain_clearing")) {
+				if (current!=null && current.tile!=null && current.tile.getTileType().matches("M")) {
+					continue;
+				}
+			}
+			if (set.getSpell().hasThisAttribute("river_or_adjacent_hex")) {
+				boolean riverTile = false;
+				boolean adjacentIsRiverTile = false;
+				if (current==null || current.tile==null) {
+					continue;
+				}
+				
+				if (current.tile.getTileType().matches("ST")) {
+					riverTile = true;
+				} else {
+					for (TileComponent adjacentTile : current.tile.getAllAdjacentTiles()) {
+						if (adjacentTile!=null && adjacentTile.getTileType().matches("ST")) {
+							adjacentIsRiverTile = true;
+							break;
+						}
+					}
+				}
+				if (!riverTile && !adjacentIsRiverTile) {
+					continue;
+				}			
+			}
+			
 			// Finally, add the spell set, but only if it can be cast
 			if (set.canBeCast() && !castableSpellSets.contains(set)) {
 				castableSpellSets.add(set);
