@@ -145,6 +145,7 @@ public class SpellEffectFactory {
 			case "negative aura": return new ISpellEffect[]{new ApplyNamedEffect(Constants.NEGATIVE_AURA)};
 			case "reinvigorate": return new ISpellEffect[]{new ExtraActionEffect("R")};
 			case "summon demon": return new ISpellEffect[]{new SummonEffect(SpellUtility.SummonType.demon.toString())};
+			case "thorns": return new ISpellEffect[]{new ThornsEffect()}; 
 			
 			default: break;
 		}

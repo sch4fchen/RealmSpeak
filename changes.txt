@@ -1,10 +1,16 @@
 ::ROADMAP::
+---Super Realms Content---
 Test: Super Realm: rules for max. strength attack
 Character Potraits for Super Realm
-Spells: II: Thorns III: Control Horse, Horse Whisper, Migration, Tracker’s Sense, Water Run IV-VIII
+Spells II: Thorns
+Spells III: Control Horse, Horse Whisper, Migration, Tracker’s Sense, Water Run
+Spells IV: Blinding Light, Control Element, Elemental Spirit, Frozen Water, Reserve, Violent Winds
+Spells V: Dark Favor, Reanimate
+Spells VI: Alter Object, Alter Size, Enchant Weapon, Grow Wings, Mountain Surge
+Spells VII: Charm Snake, Dazzle, Free Spell, Join, Luck, Meditate
+Spells VIII: Blunt (similar to blunting), Camouflage
 Treasures
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
----Super Realms: More content incl. functionalities---
 Super Realm: Nomads, Tasks, Travelers: 4.8 (p.41)
 Super Realm: Quests + Events
 Super Realm: Adapt Commerce optional rules for new natives
@@ -72,7 +78,6 @@ NEW FEATURES:
 # Hint: Expansion 1 spell "Divine Protection" renamed to "Divine Shield" (to avoid duplicate spell names)
 BUGS/ISSUES:
 # Fix BattleMage placing attack spell and normal attack
-
 
 Version 1.1.7.7
 QUEST UPDATE:
