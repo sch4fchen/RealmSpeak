@@ -183,7 +183,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 			if (iconDir==null) {
 				iconDir = "natives";
 			}
-			if ((isDisplayStyleColor() || isDisplayStyleFrenzel()) && !gameObject.hasThisAttribute("super_realm")) {
+			if ((isDisplayStyleColor() || isDisplayStyleFrenzel()) && !gameObject.hasThisAttribute(Constants.SUPER_REALM)) {
 				if (iconDir.startsWith("natives")) {
 					icon_type = icon_type+"_"+letterCode.toLowerCase();
 				}

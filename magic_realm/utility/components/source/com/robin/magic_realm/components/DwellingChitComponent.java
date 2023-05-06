@@ -48,7 +48,7 @@ public class DwellingChitComponent extends SquareChitComponent {
 		// Draw image
 		String icon_type = gameObject.getThisAttribute(Constants.ICON_TYPE);
 		if (icon_type!=null) {
-			if (gameObject.hasThisAttribute("super_realm")) {
+			if (gameObject.hasThisAttribute(Constants.SUPER_REALM)) {
 				drawIcon(g,gameObject.getThisAttribute(Constants.ICON_FOLDER),icon_type,1.1,0,20,null);
 			} else {
 				drawIcon(g,"dwellings"+(useColor?"_c":""),icon_type,0.9);

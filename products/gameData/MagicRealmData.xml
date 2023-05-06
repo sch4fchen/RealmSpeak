@@ -41627,6 +41627,8 @@
         <attribute artcredit="Ralph King" />
         <attribute meaning="Erosia: Love and Earth" />
         <attribute super_realm="" />
+        <attribute potrait_folder="characterdetail_sr" />
+        <attribute potrait_file="woodsgirl_sr" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Maid" />
@@ -41715,6 +41717,8 @@
         <attribute artcredit="Michael Brown" />
         <attribute meaning="Chaotic Intellect" />
         <attribute super_realm="" />
+        <attribute potrait_folder="characterdetail_sr" />
+        <attribute potrait_file="witch_king_sr" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Wraith" />
@@ -41800,6 +41804,8 @@
         <attribute artcredit="Chris White" />
         <attribute meaning="Letophoro: Death and Destruction" />
         <attribute super_realm="" />
+        <attribute potrait_folder="characterdetail_sr" />
+        <attribute potrait_file="berserker_sr" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Youth" />
@@ -41867,6 +41873,8 @@
         <attribute artcredit="Kim Gromoll" />
         <attribute meaning="Cross Pommee: Potent Cross" />
         <attribute super_realm="" />
+        <attribute potrait_folder="characterdetail_sr" />
+        <attribute potrait_file="white_knight_sr" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Squire" />
@@ -41944,6 +41952,8 @@
         <attribute artcredit="Steve Bickel" />
         <attribute meaning="wood" />
         <attribute super_realm="" />
+        <attribute potrait_folder="characterdetail_sr" />
+        <attribute potrait_file="druid_sr" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Herbalist" />
@@ -42027,6 +42037,8 @@
         <attribute artcredit="Kim Gromoll" />
         <attribute meaning="Crozier: Shepherd's staff" />
         <attribute super_realm="" />
+        <attribute potrait_folder="characterdetail_sr" />
+        <attribute potrait_file="pilgrim_sr" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Acolyte" />
@@ -42105,6 +42117,8 @@
         <attribute artcredit="Kelly Glancy" />
         <attribute meaning="Vitriole: Poison" />
         <attribute super_realm="" />
+        <attribute potrait_folder="characterdetail_sr" />
+        <attribute potrait_file="witch_sr" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Old Woman" />
@@ -42184,6 +42198,8 @@
         <attribute artcredit="Chris White" />
         <attribute meaning="Opposition" />
         <attribute super_realm="" />
+        <attribute potrait_folder="characterdetail_sr" />
+        <attribute potrait_file="dwarf_sr" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Youngster" />
@@ -42253,6 +42269,8 @@
         <attribute artcredit="Steve Bickel" />
         <attribute meaning="Sextile: Half-human" />
         <attribute super_realm="" />
+        <attribute potrait_folder="characterdetail_sr" />
+        <attribute potrait_file="elf_sr" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Stripling" />
@@ -42338,6 +42356,8 @@
         <attribute artcredit="Steve Bickel" />
         <attribute meaning="Controlled Intellect" />
         <attribute super_realm="" />
+        <attribute potrait_folder="characterdetail_sr" />
+        <attribute potrait_file="sorceror_sr" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Apprentice" />
@@ -42416,6 +42436,8 @@
         <attribute artcredit="Kim Gromoll" />
         <attribute meaning="Mars: God of War" />
         <attribute super_realm="" />
+        <attribute potrait_folder="characterdetail_sr" />
+        <attribute potrait_file="black_knight_sr" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Spearman" />
@@ -42485,6 +42507,8 @@
         <attribute artcredit="Chris White" />
         <attribute meaning="Ginner: Divine and Demonic" />
         <attribute super_realm="" />
+        <attribute potrait_folder="characterdetail_sr" />
+        <attribute potrait_file="magician_sr" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Student" />
@@ -42574,6 +42598,8 @@
         <attribute artcredit="Chris White" />
         <attribute meaning="Celestial Power" />
         <attribute super_realm="" />
+        <attribute potrait_folder="characterdetail_sr" />
+        <attribute potrait_file="wizard_sr" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Apprentice" />
@@ -42664,6 +42690,8 @@
         <attribute artcredit="Chris White" />
         <attribute meaning="Chevron: Military Leadership" />
         <attribute super_realm="" />
+        <attribute potrait_folder="characterdetail_sr" />
+        <attribute potrait_file="captain_sr" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Spearman" />
@@ -42741,6 +42769,8 @@
         <attribute creator="Richard Hamblen" />
         <attribute artcredit="Ralph King" />
         <attribute super_realm="" />
+        <attribute potrait_folder="characterdetail_sr" />
+        <attribute potrait_file="amazon_sr" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Scout" />
@@ -42809,6 +42839,8 @@
         <attribute artcredit="Kim Gromoll" />
         <attribute meaning="Wolf's Hook" />
         <attribute super_realm="" />
+        <attribute potrait_folder="characterdetail_sr" />
+        <attribute potrait_file="swordsman_sr" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Wanderer" />

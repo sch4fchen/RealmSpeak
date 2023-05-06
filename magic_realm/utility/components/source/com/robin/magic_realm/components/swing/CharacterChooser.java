@@ -259,8 +259,9 @@ public class CharacterChooser extends AggressiveDialog {
 			CharacterInfoCard card = new CharacterInfoCard(character);
 			String iconName = go.getThisAttribute(Constants.CHARACTER_POTRAIT_FILE);
 			String iconFolder = go.getThisAttribute(Constants.CHARACTER_POTRAIT_FOLDER);
-			if (iconName!=null & iconFolder!=null) {
-				ImageIcon icon = IconFactory.findIcon(iconFolder+iconName+".png");
+			if (iconName!=null && iconFolder!=null) {
+				ImageIcon icon = IconFactory.findIcon("images/"+iconFolder+"/"+iconName+".png");
+				if (icon==null) icon = IconFactory.findIcon("images/"+iconFolder+"/"+iconName+".jpg");
 				card.setPicture(icon);
 			}
 			return card.getImageIcon(true);
