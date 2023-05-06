@@ -192,47 +192,10 @@ public abstract class SpellTargeting {
 		else if ("animal".equals(targetType)) {
 			targeting = new SpellTargetingAnimal(combatFrame,spell);
 		}
+		else if ("roadway".equals(targetType)) {
+			targeting = new SpellTargetingRoadway(combatFrame,spell);
+		}
 		
 		return targeting;
 	}
-		/*
-		 * This is the complete list of target possibilities:
-		 * 
-		 * These are done:
-		 * ---------------
-		 * character
-		 * characterL			one Light character
-		 * individual			anyone in the clearing
-		 * attacker			anyone in the clearing that is an opponent
-		 * leader 			any character, hired leader or controlled monster
-		 * multiple 			any in clearing - multiple
-		 * magic(II,VIII)
-		 * magic(III,VII)
-		 * magic(IV,VI)
-		 * magic(all)
-		 * monster
-		 * spell				TEST - Any active spell in the clearing
-		 * spell,curse			TEST - One active spell or curse
-		 * artifact			TEST - Any artifact or book
-		 * sound				One face-up sound chit anywhere on the map
-		 * clearing(all)		Everything: monsters,natives,characters,spells
-		 * clearing			Monsters,natives,characters
-		 * bats				All bats in the clearing
-		 * spiderOctopus		Spider or Octopus
-		 * dragon				Any dragon
-		 * goblins			All goblins in the clearing
-		 * humanGroup			any one native group, or all giants, or all ogres
-		 * weather			the weather chit
-		 * 
-		 * Need to test:
-		 * ------------
-		 * weapon				Select any weapon, native, Goblin, Ogre, or Giant's Club
-		 * cave				The cave clearing itself.
-		 * demon				A demon
-		 * 
-		 * Still to do:
-		 * ------------
-		 * tile 				entire tile
-		 * character,tile		either one character or spellcaster tile
-		 */
 }
