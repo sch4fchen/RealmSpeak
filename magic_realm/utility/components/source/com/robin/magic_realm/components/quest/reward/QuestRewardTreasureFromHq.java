@@ -10,6 +10,7 @@ import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.DrawType;
 import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
@@ -22,6 +23,7 @@ public class QuestRewardTreasureFromHq extends QuestReward {
 	
 	public static final String HQ_REGEX = "_hqrx";
 	public static final String DRAW_TYPE = "_dt";
+	public static final String CLEARING = "_cl";
 
 	public QuestRewardTreasureFromHq(GameObject go) {
 		super(go);
@@ -31,7 +33,7 @@ public class QuestRewardTreasureFromHq extends QuestReward {
 	public void processReward(JFrame frame, CharacterWrapper character) {
 		GamePool pool = new GamePool(getGameData().getGameObjects());
 		ArrayList<GameObject> sourceObjects = pool.find("rank=HQ");
-		ArrayList<GameObject> objects = getObjectList(sourceObjects,getHqRegex());
+		ArrayList<GameObject> objects = getObjectList(sourceObjects,getHqRegex(),character);
 		ArrayList<GameObject> validObjects = new ArrayList<>();
 		for (GameObject object : objects) {
 			if (!object.hasThisAttribute(Constants.CLONED)) {
@@ -123,11 +125,27 @@ public class QuestRewardTreasureFromHq extends QuestReward {
 	public String getHqRegex() {
 		return getString(HQ_REGEX);
 	}
-	public static ArrayList<GameObject> getObjectList(ArrayList<GameObject> sourceObjects,String regEx) {
+	
+	public boolean sameClearing() {
+		return getBoolean(CLEARING);
+	}
+	
+	private ArrayList<GameObject> getObjectList(ArrayList<GameObject> sourceObjects,String regEx, CharacterWrapper character) {
+		ArrayList<GameObject> objects = new ArrayList<>();
+		TileLocation loc = null;
+		if (sameClearing()) {
+			loc = character.getCurrentLocation();
+			if (loc==null||loc.tile==null||loc.clearing==null) return objects;
+		}
+		
 		Pattern pattern = (regEx==null || regEx.length()==0)?null:Pattern.compile(regEx);
-		ArrayList<GameObject> objects = new ArrayList<GameObject>();
 		for(GameObject obj:sourceObjects) {
 			if (pattern==null || pattern.matcher(obj.getName()).find()) {
+				if (sameClearing()) {
+					RealmComponent rc = RealmComponent.getRealmComponent(obj);
+					TileLocation rcLoc = rc.getCurrentLocation();
+					if (rcLoc==null||rcLoc.tile!=loc.tile||rcLoc.clearing!=loc.clearing) continue;
+				}
 				objects.add(obj);
 			}
 		}

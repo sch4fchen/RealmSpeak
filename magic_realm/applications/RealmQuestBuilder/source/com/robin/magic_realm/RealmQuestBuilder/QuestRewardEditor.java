@@ -371,6 +371,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case TreasureFromHq:
 				list.add(new QuestPropertyBlock(QuestRewardTreasureFromHq.HQ_REGEX, "HQ RegEx", FieldType.Regex, null, new String[] { "rank=HQ" }));
 				list.add(new QuestPropertyBlock(QuestRewardTreasureFromHq.DRAW_TYPE, "Draw Type", FieldType.StringSelector, DrawType.values()));
+				list.add(new QuestPropertyBlock(QuestRewardTreasureFromHq.CLEARING, "Character's clearing?", FieldType.Boolean));
 				break;
 			case TreasureFromSite:
 				list.add(new QuestPropertyBlock(QuestRewardTreasureFromSite.SITE_REGEX, "Site RegEx", FieldType.Regex, null, new String[] { "treasure_location,!treasure_within_treasure,!cannot_move","visitor=scholar","dwelling,!native" }));
