@@ -69,6 +69,7 @@ First Edition Optional Rule - Glory: When a character or his hired natives kill 
 Version 1.1.7.8
 QUEST UPDATE:
 # Update to quests: A05, A22, E14, E16, E18, Q40, Q57
+# Quests are checked at midnight
 # QuestRewardTreasureFromHQ: Option for fetching treasure only from same clearing
 # SUPER REALM:
 # Native spell caster: Zealot
