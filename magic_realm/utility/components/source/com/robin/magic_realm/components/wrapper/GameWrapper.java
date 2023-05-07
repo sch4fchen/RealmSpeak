@@ -107,7 +107,7 @@ public class GameWrapper extends GameObjectWrapper {
 			case GAME_STATE_RECORDING: return GamePhaseType.Birdsong;
 			case GAME_STATE_PLAYING: return GamePhaseType.EndOfPhase;
 			case GAME_STATE_RESOLVING: return GamePhaseType.StartOfEvening;
-			case GAME_STATE_DAYEND: return GamePhaseType.EndOfTurn;
+			case GAME_STATE_DAYEND: return GamePhaseType.Midnight;
 			default: return GamePhaseType.Unspecified;
 		 }
 	}

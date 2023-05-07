@@ -25,8 +25,8 @@ public class QuestRequirementNextPhase extends QuestRequirement {
 			return false;
 		}
 		
-		int targetPhase = (getPhaseNumber(getPhaseStarted())+getNumberOfSkipPhases())%4;
-		DayKey targetDay = getDayStarted().addDays((getPhaseNumber(getPhaseStarted())+getNumberOfSkipPhases())/4);
+		int targetPhase = (getPhaseNumber(getPhaseStarted())+getNumberOfSkipPhases())%5;
+		DayKey targetDay = getDayStarted().addDays((getPhaseNumber(getPhaseStarted())+getNumberOfSkipPhases())/5);
 				
 		if ((getPhaseNumber(currentPhase) >= targetPhase && currentDay.equals(targetDay)) || currentDay.after(targetDay)) {
 			return true;
@@ -56,10 +56,12 @@ public class QuestRequirementNextPhase extends QuestRequirement {
 			return 2;
 		case StartOfEvening:
 			return 3;
+		case Midnight:
+			return 5;
 		case Unspecified:
 			return -1;
 		default: 
-			return 4;
+			return 5;
 		}
 	}
 	

@@ -24,6 +24,8 @@ import com.robin.magic_realm.RealmBattle.RealmBattle;
 import com.robin.magic_realm.components.MonsterChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.quest.GamePhaseType;
+import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
 import com.robin.magic_realm.components.swing.RealmLogWindow;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.*;
@@ -822,6 +824,8 @@ public class RealmHostPanel extends JPanel {
 		spellMaster.deenergizePermanentSpells();
 		spellMaster.uneffectTargetsForMidnightSpells(game);
 		
+		testQuestRequirements(activeCharacters);
+		
 		// New Day
 		int daysToAdd = 1; // default
 		int bumpMonth = 0;
@@ -937,6 +941,14 @@ public class RealmHostPanel extends JPanel {
 		SpellMasterWrapper spellMaster = SpellMasterWrapper.getSpellMaster(host.getGameData());
 		spellMaster.expireCombatSpells();
 		spellMaster.deenergizePermanentSpells();
+	}
+	private static void testQuestRequirements(ArrayList<GameObject> livingCharacters) {
+		for (GameObject go:livingCharacters) {
+			CharacterWrapper character = new CharacterWrapper(go);
+			QuestRequirementParams params = new QuestRequirementParams();
+			params.timeOfCall = GamePhaseType.Midnight;
+			character.testQuestRequirements(new JFrame(), params);
+		}
 	}
 	private void sendEmailAll(String message) {
 		sendEmail(message,null);

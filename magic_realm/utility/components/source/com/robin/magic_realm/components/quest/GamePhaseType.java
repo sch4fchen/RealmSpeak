@@ -6,5 +6,6 @@ public enum GamePhaseType {
 	EndOfPhase,		// in GameTurnPanel
 	EndOfTurn,		// in GameTurnPanel
 	StartOfEvening,	// in GameTurnPanel
+	Midnight
 	;
 }

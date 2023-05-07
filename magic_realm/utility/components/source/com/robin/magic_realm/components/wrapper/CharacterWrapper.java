@@ -6875,7 +6875,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean testQuestRequirements(JFrame parentFrame,QuestRequirementParams reqParams) {
 		return testQuestRequirements(parentFrame,reqParams,true);
 	}
-	public boolean testQuestRequirements(JFrame parentFrame,QuestRequirementParams reqParams,boolean processPost) {
+	private boolean testQuestRequirements(JFrame parentFrame,QuestRequirementParams reqParams,boolean processPost) {
 		boolean reward = false;
 		if (processPost && processPostQuestParams(parentFrame)) reward = true; // Process anything that might have been missed before testing new reqParams
 		ArrayList<Integer> cardTypesWithReward = new ArrayList<>();

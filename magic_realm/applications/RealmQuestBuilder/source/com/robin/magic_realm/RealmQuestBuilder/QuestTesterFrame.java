@@ -85,6 +85,7 @@ public class QuestTesterFrame extends JFrame {
 	JToggleButton phaseTime;
 	JToggleButton turnTime;
 	JToggleButton eveningTime;
+	JToggleButton midnightTime;
 
 	boolean inventorySelectionLock = false;
 
@@ -297,6 +298,15 @@ public class QuestTesterFrame extends JFrame {
 		});
 		timeGroup.add(eveningTime);
 		phaseOptions.add(eveningTime);
+		midnightTime = new ForceTextToggle("Midnight");
+		midnightTime.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				GameWrapper.findGame(gameData).setState(GameWrapper.GAME_STATE_DAYEND);
+				retestQuest();
+			}
+		});
+		timeGroup.add(midnightTime);
+		phaseOptions.add(midnightTime);
 		topPanel.add(phaseOptions);
 		superPanel.add(topPanel, BorderLayout.NORTH);
 		JPanel panel = new JPanel(new BorderLayout());
@@ -1511,6 +1521,8 @@ public class QuestTesterFrame extends JFrame {
 			return GamePhaseType.EndOfTurn;
 		if (eveningTime.isSelected())
 			return GamePhaseType.StartOfEvening;
+		if (midnightTime.isSelected())
+			return GamePhaseType.Midnight;
 		return GamePhaseType.Unspecified;
 	}
 	
