@@ -30,8 +30,11 @@ public class PeerClearingChooser {
 	}
 	
 	public static TileLocation chooseClearingFromMountain(JFrame frame, CharacterWrapper character) {
+		return chooseClearingFromMountain(frame,character,"Peer into which clearing?");
+	}
+	public static TileLocation chooseClearingFromMountain(JFrame frame, CharacterWrapper character, String text) {
 		TileLocation planned = character.getCurrentLocation();
-		CenteredMapView.getSingleton().setMarkClearingAlertText("Peer into which clearing?");
+		CenteredMapView.getSingleton().setMarkClearingAlertText(text);
 		ArrayList<ClearingDetail> clearingsMarked = CenteredMapView.getSingleton().markClearingsInTile(planned.tile,Arrays.asList(TYPES),true);
 		for(ClearingDetail clearing:clearingsMarked) {
 			if (clearing.getParent().getGameObject().hasThisAttribute(Constants.SP_NO_PEER)) {
