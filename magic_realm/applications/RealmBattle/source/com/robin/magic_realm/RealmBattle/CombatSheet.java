@@ -566,7 +566,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 					targetingSomeoneOnThisSheet = true;
 				}
 			}
-			if (isInactiveSheetOwner || targetingSomeoneOnThisSheet || (castingASpell && !battleMage)) {
+			if (isInactiveSheetOwner || targetingSomeoneOnThisSheet || castingASpell) {
 				if (excludeList==null || !excludeList.contains(rc)) {
 					if (!rc.isCharacter() && (sheetParticipants.contains(target) || sheetParticipants.contains(target2))) {
 						if (!addedToDead(rc)) {
