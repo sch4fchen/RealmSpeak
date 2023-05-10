@@ -20,7 +20,6 @@ public class ThornsEffect implements ISpellEffect {
 		TileComponent tile2 = (TileComponent)targets.get(1);
 		
 		TileComponent.addThorns(tile1,clearing1,tile2,clearing2);
-		TileComponent.addThorns(tile2,clearing2,tile1,clearing1);
 	}
 
 	@Override
@@ -34,7 +33,6 @@ public class ThornsEffect implements ISpellEffect {
 		TileComponent tile2 = (TileComponent)targets.get(1);
 		
 		TileComponent.removeThorns(tile1,clearing1,tile2,clearing2);
-		TileComponent.removeThorns(tile2,clearing2,tile1,clearing1);
 	}
 
 }

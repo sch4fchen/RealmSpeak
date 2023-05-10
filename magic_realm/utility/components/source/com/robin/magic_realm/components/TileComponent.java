@@ -1376,10 +1376,18 @@ public class TileComponent extends ChitComponent {
 	}
 	
 	public static void addThorns(TileComponent tile1, String clearing1, TileComponent tile2, String clearing2) {
-		
+		tile1.getGameObject().addThisAttributeListItem(Constants.THORNS, tile1.getGameObject().getStringId()+"_"+clearing1+"_"+tile2.getGameObject().getStringId()+"_"+clearing2);
+		tile2.getGameObject().addThisAttributeListItem(Constants.THORNS, tile2.getGameObject().getStringId()+"_"+clearing2+"_"+tile1.getGameObject().getStringId()+"_"+clearing1);
 	}
 	
 	public static void removeThorns(TileComponent tile1, String clearing1, TileComponent tile2, String clearing2) {
-		
+		tile1.getGameObject().removeThisAttributeListItem(Constants.THORNS, tile1.getGameObject().getStringId()+"_"+clearing1+"_"+tile2.getGameObject().getStringId()+"_"+clearing2);
+		tile2.getGameObject().removeThisAttributeListItem(Constants.THORNS, tile2.getGameObject().getStringId()+"_"+clearing2+"_"+tile1.getGameObject().getStringId()+"_"+clearing1);
+		if (tile1.getGameObject().hasThisAttribute(Constants.THORNS) && tile1.getGameObject().getThisAttributeList(Constants.THORNS).isEmpty()) {
+			tile1.getGameObject().removeThisAttribute(Constants.THORNS);
+		}
+		if (tile2.getGameObject().hasThisAttribute(Constants.THORNS) && tile2.getGameObject().getThisAttributeList(Constants.THORNS).isEmpty()) {
+			tile2.getGameObject().removeThisAttribute(Constants.THORNS);
+		}
 	}
 }
