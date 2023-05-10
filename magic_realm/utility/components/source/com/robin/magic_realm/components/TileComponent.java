@@ -1374,4 +1374,12 @@ public class TileComponent extends ChitComponent {
 			cl.energizeItems();
 		}
 	}
+	
+	public static void addThorns(TileComponent tile1, String clearing1, TileComponent tile2, String clearing2) {
+		
+	}
+	
+	public static void removeThorns(TileComponent tile1, String clearing1, TileComponent tile2, String clearing2) {
+		
+	}
 }

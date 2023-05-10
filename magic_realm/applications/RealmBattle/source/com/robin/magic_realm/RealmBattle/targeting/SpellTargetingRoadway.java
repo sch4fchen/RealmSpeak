@@ -64,7 +64,7 @@ public class SpellTargetingRoadway extends SpellTargeting {
 		
 		gameObjects.add(targetedTileLocation.tile.getGameObject());
 		gameObjects.add(targetedTileLocation2.tile.getGameObject());
-		spell.setExtraIdentifier(targetedTileLocation.clearing.getNum()+""+targetedTileLocation2.clearing.getNum());
+		spell.setExtraIdentifier(targetedTileLocation.clearing.getNum()+"_"+targetedTileLocation2.clearing.getNum());
 		spell.addTarget(hostPrefs,targetedTileLocation.tile.getGameObject());
 		spell.addTarget(hostPrefs,targetedTileLocation2.tile.getGameObject());
 		

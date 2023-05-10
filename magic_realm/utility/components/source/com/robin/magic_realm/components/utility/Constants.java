@@ -440,6 +440,7 @@ public class Constants {
 	public static final String FREEZING = "freezing";
 	public static final String FREEZED = "freezed";
 	public static final String HOLY_SHIELD = "holy_shield";
+	public static final String THORNS = "thorns";
 	
 	public static final String RANDOM_ATTACK_DIRECTION = "random_attack_direction";
 	public static final String NON_FLYING_TARGETS = "non_flying_targets";
