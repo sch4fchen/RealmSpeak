@@ -994,6 +994,21 @@ public class TileComponent extends ChitComponent {
 		}
 		return found;
 	}
+	
+	public ArrayList<RealmComponent> getRealmComponentsBetweenClearing(int clearing) {
+		ArrayList<RealmComponent> found = new ArrayList<>();
+		ArrayList<GameObject> hold = new ArrayList<>(gameObject.getHold());
+		for (GameObject obj : hold) {
+			if (obj.hasThisAttribute("otherClearing")) { // only components that are partway
+				RealmComponent goc = RealmComponent.getRealmComponent(obj);
+				String clearingNum = obj.getThisAttribute("clearing");
+				if (clearingNum != null && clearingNum.equals(String.valueOf(clearing))) {
+					found.add(goc);
+				}
+			}
+		}
+		return found;
+	}
 
 	/**
 	 * Returns a collection of chits that can be shown to the player when they get the "Clues" result on a search table.
@@ -1376,8 +1391,12 @@ public class TileComponent extends ChitComponent {
 	}
 	
 	public static void addThorns(TileComponent tile1, String clearing1, TileComponent tile2, String clearing2) {
-		tile1.getGameObject().addThisAttributeListItem(Constants.THORNS, tile1.getGameObject().getStringId()+"_"+clearing1+"_"+tile2.getGameObject().getStringId()+"_"+clearing2);
-		tile2.getGameObject().addThisAttributeListItem(Constants.THORNS, tile2.getGameObject().getStringId()+"_"+clearing2+"_"+tile1.getGameObject().getStringId()+"_"+clearing1);
+		String string1 = tile1.getGameObject().getStringId()+"_"+clearing1+"_"+tile2.getGameObject().getStringId()+"_"+clearing2;
+		String string2 = tile2.getGameObject().getStringId()+"_"+clearing2+"_"+tile1.getGameObject().getStringId()+"_"+clearing1;
+		ArrayList<String> list1 = tile1.getGameObject().getThisAttributeList(Constants.THORNS);
+		ArrayList<String> list2 = tile2.getGameObject().getThisAttributeList(Constants.THORNS);
+		if (list1==null||!list1.contains(string1)) tile1.getGameObject().addThisAttributeListItem(Constants.THORNS,string1);
+		if (list2==null||!list2.contains(string2)) tile2.getGameObject().addThisAttributeListItem(Constants.THORNS,string2);
 	}
 	
 	public static void removeThorns(TileComponent tile1, String clearing1, TileComponent tile2, String clearing2) {

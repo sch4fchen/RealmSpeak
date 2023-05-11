@@ -1932,13 +1932,17 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * @return		true if character can traverse path
 	 */
 	public boolean validPath(PathDetail path) {
+		boolean mistLike = isMistLike();
+		if (!mistLike && path.getTo().connectionHasThorns(path.getFrom())) {
+			return false;
+		}
+		
 		if (!path.requiresDiscovery() || isSpiritGuided()) return true;
 		if (path.connectsToMapEdge()) return true;
-		boolean mistLike = isMistLike();
-		if (path.isHidden() && (hasHiddenPathDiscovery(path.getFullPathKey()) || mistLike || moveRandomly())) return true;
-		if (path.isSecret() && (hasSecretPassageDiscovery(path.getFullPathKey()) || mistLike || moveRandomly())) return true;
 		if (!path.connectsToMapEdge() && canWalkWoods(path.getFrom().getParent())) return true;
 		
+		if (path.isHidden() && (hasHiddenPathDiscovery(path.getFullPathKey()) || mistLike || moveRandomly())) return true;
+		if (path.isSecret() && (hasSecretPassageDiscovery(path.getFullPathKey()) || mistLike || moveRandomly())) return true;
 		if (path.isHidden() && hasActiveInventoryThisKeyAndValue(Constants.ROAD_KNOWLEDGE,Constants.ROAD_KNOWLEDGE_HIDDEN)){
 			return true;
 		}

@@ -3264,7 +3264,7 @@ public class CombatFrame extends JFrame {
 							runToClearingOptions.add(movedFrom);
 						}
 						else {
-							JOptionPane.showMessageDialog(this,"The path you took to get here is now an undiscovered path, and you cannot run.","Path Gone",JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(this,"The path you took to get here is now an undiscovered or thorned path, and you cannot run.","Path Gone",JOptionPane.WARNING_MESSAGE);
 							return null;
 						}
 					}

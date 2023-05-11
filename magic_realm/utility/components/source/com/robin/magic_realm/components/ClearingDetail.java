@@ -742,4 +742,27 @@ public class ClearingDetail {
 			break;
 		}
 	}
+	
+	public boolean connectionHasThorns(TileLocation other) {
+		return this.connectionHasThorns(other.clearing);
+	}
+	public boolean connectionHasThorns(ClearingDetail other) {
+		if (this.getTileLocation().tile==null || other==null || other.getTileLocation().tile==null) return false;
+		TileComponent tile = this.getTileLocation().tile;
+		TileComponent otherTile = other.getTileLocation().tile;
+		if (testThorns(tile,otherTile,other)) return true;
+		if (testThorns(otherTile,tile,other)) return true;
+		return false;
+	}
+	private boolean testThorns(TileComponent tile, TileComponent otherTile, ClearingDetail other) {
+		if (tile==null||otherTile==null||other==null) return false;
+		if (tile.getGameObject().hasThisAttribute(Constants.THORNS)) {
+			ArrayList<String> allThorns = tile.getGameObject().getThisAttributeList(Constants.THORNS);
+			for (String thorns : allThorns) {
+				if (thorns.matches(tile.getGameObject().getStringId()+"_"+this.getNum()+"_"+otherTile.getGameObject().getStringId()+"_"+other.getNum())) return true;
+				if (thorns.matches(otherTile.getGameObject().getStringId()+"_"+other.getNum()+"_"+tile.getGameObject().getStringId()+"_"+this.getNum())) return true;
+			}
+		}
+		return false;
+	}
 }

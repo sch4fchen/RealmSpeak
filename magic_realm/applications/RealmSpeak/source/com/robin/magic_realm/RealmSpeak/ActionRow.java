@@ -682,7 +682,9 @@ public class ActionRow {
 				ClearingDetail clearing = path.findConnection(current.clearing);
 				if (clearing!=null) {
 					if (clearing.getNum()==c) {
-						clearings.add(clearing);
+						if (!clearing.connectionHasThorns(current)) {
+							clearings.add(clearing);
+						}
 					}
 				}
 			}
@@ -749,13 +751,14 @@ public class ActionRow {
 			boolean validMove = true;
 			if (current.isBetweenClearings()) {
 				validMove = current.clearing.equals(location.clearing) || current.getOther().clearing.equals(location.clearing);
+				if(current.clearing.connectionHasThorns(current.getOther())) validMove = false;
 			}
 			
 			if (!overridePath && path==null) {
 				overridePath = ClearingUtility.canUseGates(character,location.clearing);
 			}
 			
-			if (validMove && (overridePath || magicPath|| current.isBetweenClearings() || path!=null)) {
+			if (validMove && (overridePath || magicPath || current.isBetweenClearings() || path!=null)) {
 				if (overridePath || magicPath || current.isBetweenClearings() || character.validPath(path)) {
 					// Make sure that if the character is moving into a mountain clearing, check current clearing
 					// to make sure monsters don't block the first half of that move
@@ -954,7 +957,7 @@ public class ActionRow {
 				}
 				else {
 					cancelled = true;
-					result = "Cannot Move: undiscovered path";
+					result = "Cannot Move: undiscovered or thorned path";
 				}
 			}
 			else {
