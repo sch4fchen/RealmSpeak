@@ -694,4 +694,17 @@ public class ClearingUtility {
 		}
 		return null;
 	}
+	
+	public static String getEdgeNameBetweenClearings(ClearingDetail clearing1, ClearingDetail clearing2) {
+		ArrayList<PathDetail> edges1 = clearing1.getConnectedMapEdges();
+		if (edges1!=null) {
+			for (PathDetail edge : edges1) {
+				ClearingDetail edgeClearing = edge.getEdgeAsClearing();
+				if (clearing2.getConnectingPath(edgeClearing)!=null) {
+					return edgeClearing.toString();
+				}
+			}
+		}
+		return "";
+	}
 }

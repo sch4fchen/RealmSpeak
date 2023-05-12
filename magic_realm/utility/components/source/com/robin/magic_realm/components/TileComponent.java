@@ -1390,18 +1390,43 @@ public class TileComponent extends ChitComponent {
 		}
 	}
 	
-	public static void addThorns(TileComponent tile1, String clearing1, TileComponent tile2, String clearing2) {
-		String string1 = tile1.getGameObject().getStringId()+"_"+clearing1+"_"+tile2.getGameObject().getStringId()+"_"+clearing2;
-		String string2 = tile2.getGameObject().getStringId()+"_"+clearing2+"_"+tile1.getGameObject().getStringId()+"_"+clearing1;
-		ArrayList<String> list1 = tile1.getGameObject().getThisAttributeList(Constants.THORNS);
-		ArrayList<String> list2 = tile2.getGameObject().getThisAttributeList(Constants.THORNS);
-		if (list1==null||!list1.contains(string1)) tile1.getGameObject().addThisAttributeListItem(Constants.THORNS,string1);
-		if (list2==null||!list2.contains(string2)) tile2.getGameObject().addThisAttributeListItem(Constants.THORNS,string2);
+	public static void addThorns(TileComponent tile1, String num1, TileComponent tile2, String num2) {
+		if (tile1.equals(tile2)) {
+			String string1 = num1+"_"+num2;
+			String string2 = num2+"_"+num1;
+			ArrayList<String> list = tile1.getGameObject().getThisAttributeList(Constants.THORNS);
+			if (list==null||!list.contains(string1)) tile1.getGameObject().addThisAttributeListItem(Constants.THORNS,string1);
+			if (list==null||!list.contains(string2)) tile1.getGameObject().addThisAttributeListItem(Constants.THORNS,string2);
+		} else {
+			ClearingDetail clearing1 = tile1.getClearing(num1);
+			ClearingDetail clearing2 = tile2.getClearing(num2);
+			String edgeName1 = ClearingUtility.getEdgeNameBetweenClearings(clearing1,clearing2);
+			String edgeName2 = ClearingUtility.getEdgeNameBetweenClearings(clearing2,clearing1);
+			String string1 = num1+"_"+edgeName1;
+			String string2 = num2+"_"+edgeName2;
+			ArrayList<String> list1 = tile1.getGameObject().getThisAttributeList(Constants.THORNS);
+			ArrayList<String> list2 = tile2.getGameObject().getThisAttributeList(Constants.THORNS);
+			if (list1==null||!list1.contains(string1)) tile1.getGameObject().addThisAttributeListItem(Constants.THORNS,string1);
+			if (list2==null||!list2.contains(string2)) tile2.getGameObject().addThisAttributeListItem(Constants.THORNS,string2);
+		}
 	}
 	
-	public static void removeThorns(TileComponent tile1, String clearing1, TileComponent tile2, String clearing2) {
-		tile1.getGameObject().removeThisAttributeListItem(Constants.THORNS, tile1.getGameObject().getStringId()+"_"+clearing1+"_"+tile2.getGameObject().getStringId()+"_"+clearing2);
-		tile2.getGameObject().removeThisAttributeListItem(Constants.THORNS, tile2.getGameObject().getStringId()+"_"+clearing2+"_"+tile1.getGameObject().getStringId()+"_"+clearing1);
+	public static void removeThorns(TileComponent tile1, String num1, TileComponent tile2, String num2) {
+		if (tile1.equals(tile2)) {
+			String string1 = num1+"_"+num2;
+			String string2 = num2+"_"+num1;
+			ArrayList<String> list = tile1.getGameObject().getThisAttributeList(Constants.THORNS);
+			if (list==null||!list.contains(string1)) tile1.getGameObject().addThisAttributeListItem(Constants.THORNS,string1);
+			if (list==null||!list.contains(string2)) tile1.getGameObject().addThisAttributeListItem(Constants.THORNS,string2);
+		} else {
+			ClearingDetail clearing1 = tile1.getClearing(num1);
+			ClearingDetail clearing2 = tile2.getClearing(num2);
+			String edgeName1 = ClearingUtility.getEdgeNameBetweenClearings(clearing1,clearing2);
+			String edgeName2 = ClearingUtility.getEdgeNameBetweenClearings(clearing2,clearing1);
+			tile1.getGameObject().removeThisAttributeListItem(Constants.THORNS, num1+"_"+edgeName1);
+			tile2.getGameObject().removeThisAttributeListItem(Constants.THORNS, num2+"_"+edgeName2);
+		}
+		
 		if (tile1.getGameObject().hasThisAttribute(Constants.THORNS) && tile1.getGameObject().getThisAttributeList(Constants.THORNS).isEmpty()) {
 			tile1.getGameObject().removeThisAttribute(Constants.THORNS);
 		}

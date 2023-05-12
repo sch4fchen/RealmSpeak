@@ -29,7 +29,7 @@ public class ThornsEffect implements ISpellEffect {
 		
 		TileComponent.addThorns(tile1,clearing1,tile2,clearing2);
 		
-		RealmLogging.logMessage(context.Spell.getCaster().getGameObject().getName(),"Casts Thorns on roadway between clearings "+tile1+" "+clearing1+" and "+tile2+" "+clearing2+".");
+		RealmLogging.logMessage(context.Spell.getCaster().getGameObject().getName(),"Casts Thorns on "+context.Target.getGameObject().getNameWithNumber()+": Roadway between clearings "+tile1+" "+clearing1+" and "+tile2+" "+clearing2+".");
 	}
 
 	@Override

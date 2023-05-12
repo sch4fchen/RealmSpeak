@@ -758,9 +758,11 @@ public class ClearingDetail {
 		if (tile==null||otherTile==null||other==null) return false;
 		if (tile.getGameObject().hasThisAttribute(Constants.THORNS)) {
 			ArrayList<String> allThorns = tile.getGameObject().getThisAttributeList(Constants.THORNS);
+			String num1 = this.isEdge()?this.toString():this.getNumString();
+			String num2 = other.isEdge()?other.toString():other.getNumString();
 			for (String thorns : allThorns) {
-				if (thorns.matches(tile.getGameObject().getStringId()+"_"+this.getNum()+"_"+otherTile.getGameObject().getStringId()+"_"+other.getNum())) return true;
-				if (thorns.matches(otherTile.getGameObject().getStringId()+"_"+other.getNum()+"_"+tile.getGameObject().getStringId()+"_"+this.getNum())) return true;
+				if (thorns.matches(num1+"_"+num2)) return true;
+				if (thorns.matches(num2+"_"+num1)) return true;
 			}
 		}
 		return false;
