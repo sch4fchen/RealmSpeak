@@ -340,8 +340,13 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 				}
 				
 				if(!spell.isAlwaysActive()){
-					spell.unaffectTargets();
-					spell.makeInert();
+					if (spell.getGameObject().hasThisAttribute(Constants.BREAK_IF_INERT)) {
+						spell.expireSpell();
+					} else {
+						spell.unaffectTargets();
+						spell.makeInert();
+					}
+
 					didDeenergize = true;
 				}
 			}

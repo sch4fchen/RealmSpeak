@@ -6,6 +6,7 @@ import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
 import com.robin.magic_realm.RealmBattle.CombatSheet;
+import com.robin.magic_realm.components.BattleHorse;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
@@ -28,7 +29,7 @@ public class SpellTargetingActiveHorse extends SpellTargetingSingle {
 			if (rc.isNative() || rc.isMonster()) {
 				for (GameObject item : rc.getHold()) {
 					RealmComponent itemRc = (RealmComponent.getRealmComponent(item));
-					if (itemRc.isNativeHorse() && !itemRc.hasMagicProtection() && !itemRc.hasMagicColorImmunity(spell.getRequiredColorMagic())) {
+					if (itemRc.isNativeHorse() && !((BattleHorse)itemRc).isDead() && !itemRc.hasMagicProtection() && !itemRc.hasMagicColorImmunity(spell.getRequiredColorMagic())) {
 						gameObjects.add(item);
 					}
 				}

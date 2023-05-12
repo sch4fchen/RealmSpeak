@@ -57422,7 +57422,8 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
-        <attribute benevolent="" />
+        <attribute benevolent_hired="" />
+        <attribute break_if_inert="" />
       </AttributeBlock>
     </GameObject>
   </objects>
