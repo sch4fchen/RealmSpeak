@@ -57411,6 +57411,20 @@
         <attribute benevolent="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2214" name="Control Horse">
+      <AttributeBlock blockName="this">
+        <attribute spell="III" />
+        <attribute duration="permanent" />
+        <attribute target="active_horse" />
+        <attribute text="Horse is placed as active item. Spell is broken when horse leaves active inventory." />
+        <attribute magic_color="gold" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+        <attribute benevolent="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

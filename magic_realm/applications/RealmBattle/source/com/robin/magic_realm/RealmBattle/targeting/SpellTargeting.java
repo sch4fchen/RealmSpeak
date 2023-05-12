@@ -195,6 +195,9 @@ public abstract class SpellTargeting {
 		else if ("roadway".equals(targetType)) {
 			targeting = new SpellTargetingRoadway(combatFrame,spell);
 		}
+		else if ("active_horse".equals(targetType)) {
+			targeting = new SpellTargetingActiveHorse(combatFrame,spell);
+		}
 		
 		return targeting;
 	}
