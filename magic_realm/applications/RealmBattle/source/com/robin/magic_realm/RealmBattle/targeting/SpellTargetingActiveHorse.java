@@ -20,15 +20,25 @@ public class SpellTargetingActiveHorse extends SpellTargetingSingle {
 		ArrayList<RealmComponent> potentialTargets = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true);
 		potentialTargets = CombatSheet.filterNativeFriendly(activeParticipant, potentialTargets);
 		for (RealmComponent rc : potentialTargets) {
-			if (rc.hasMagicProtection() && rc.hasMagicColorImmunity(spell.getRequiredColorMagic())) continue;
+			if (rc.hasMagicProtection() || rc.hasMagicColorImmunity(spell.getRequiredColorMagic())) continue;
 			if (rc.isNativeHorse()) {
 				gameObjects.add(rc.getGameObject());
+				continue;
+			}
+			if (rc.isNative() || rc.isMonster()) {
+				for (GameObject item : rc.getHold()) {
+					RealmComponent itemRc = (RealmComponent.getRealmComponent(item));
+					if (itemRc.isHorse() && !itemRc.hasMagicProtection() && !itemRc.hasMagicColorImmunity(spell.getRequiredColorMagic())) {
+						gameObjects.add(item);
+					}
+				}
 				continue;
 			}
 			if (rc.isCharacter()) {
 				CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
 				for (GameObject item : character.getActiveInventory()) {
-					if ((RealmComponent.getRealmComponent(item)).isHorse()) {
+					RealmComponent itemRc = (RealmComponent.getRealmComponent(item));
+					if (itemRc.isHorse() && !itemRc.hasMagicProtection() && !itemRc.hasMagicColorImmunity(spell.getRequiredColorMagic())) {
 						gameObjects.add(item);
 					}
 				}
