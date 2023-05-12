@@ -1,6 +1,5 @@
 ::ROADMAP::
 ---Super Realms Content---
-Test: Super Realm: rules for max. strength attack
 Spells III: Control Horse, Horse Whisper, Migration, Tracker’s Sense, Water Run
 Spells IV: Blinding Light, Control Element, Elemental Spirit, Frozen Water, Reserve, Violent Winds
 Spells V: Dark Favor, Reanimate

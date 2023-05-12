@@ -35266,7 +35266,6 @@
         <attribute attack_speed="5" />
         <attribute strength="X" />
         <attribute chit_color="blue" />
-        <attribute pins="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1307" name="T Troll">
@@ -35452,15 +35451,15 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="4" />
-        <attribute strength="X" />
+        <attribute strength="M" />
         <attribute length="18" />
         <attribute sharpness="3" />
         <attribute chit_color="blue" />
         <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
-        <attribute attack_speed="5" />
-        <attribute strength="X" />
+        <attribute attack_speed="4" />
+        <attribute strength="M" />
         <attribute length="18" />
         <attribute sharpness="3" />
         <attribute chit_color="blue" />

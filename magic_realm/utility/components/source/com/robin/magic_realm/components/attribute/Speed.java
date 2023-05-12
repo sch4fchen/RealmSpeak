@@ -13,7 +13,7 @@ public class Speed implements Comparable {
 	}
 	public Speed(String val) {
 		this();
-		if (val!=null) {
+		if (val!=null && val!="X") {
 			num = Integer.valueOf(val).intValue(); // NumberFormatException here is desired if val is not a number!
 			infinitelySlow = false;
 		}
