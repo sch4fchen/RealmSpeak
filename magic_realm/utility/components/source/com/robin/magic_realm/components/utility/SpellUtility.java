@@ -413,7 +413,6 @@ the Appearance Chart, he instantly becomes unhired.
 				spellWrapper.cancelSpell();
 				RealmLogging.logMessage(spellWrapper.getCaster().getGameObject().getName(),"Spell cancelled, because the targeted character already has this ability.");
 			}
-		
 	}
 
 	public static void setAlteredSpeed(RealmComponent chit, String attributeName, SpellWrapper spellWrapper) {	

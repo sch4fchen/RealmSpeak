@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.utility.RealmLogging;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class ThornsEffect implements ISpellEffect {
@@ -27,6 +28,8 @@ public class ThornsEffect implements ISpellEffect {
 		moveCharactersBetweenClearings(tile2,Integer.valueOf(clearing2),tile1,Integer.valueOf(clearing1));
 		
 		TileComponent.addThorns(tile1,clearing1,tile2,clearing2);
+		
+		RealmLogging.logMessage(context.Spell.getCaster().getGameObject().getName(),"Casts Thorns on roadway between clearings "+tile1+" "+clearing1+" and "+tile2+" "+clearing2+".");
 	}
 
 	@Override
