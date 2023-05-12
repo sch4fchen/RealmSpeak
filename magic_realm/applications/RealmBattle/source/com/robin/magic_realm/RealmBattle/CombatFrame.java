@@ -1701,7 +1701,7 @@ public class CombatFrame extends JFrame {
 						list.add(rc);
 					}
 				}
-				else if (includeHorses && rc.isHorse()) {
+				else if (includeHorses && (rc.isHorse() || rc.isNativeHorse())) {
 					// Check strength on both sides to see which is stronger (when CHARGING, is coded, may have to determine if horse was used)
 					Strength trotStrength = new Strength(go.getAttribute("trot","strength"));
 					Strength gallopStrength = new Strength(go.getAttribute("gallop","strength"));

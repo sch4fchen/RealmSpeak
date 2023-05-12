@@ -88,6 +88,9 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	public boolean isBenevolent() {
 		return getGameObject().hasThisAttribute(Constants.BENEVOLENT);
 	}
+	public boolean isBenevolentForHirelings() {
+		return getGameObject().hasThisAttribute(Constants.BENEVOLENT_HIRED);
+	}
 	public boolean isDenizenSpell() {
 		return getGameObject().hasThisAttribute(Constants.SPELL_DENIZEN);
 	}

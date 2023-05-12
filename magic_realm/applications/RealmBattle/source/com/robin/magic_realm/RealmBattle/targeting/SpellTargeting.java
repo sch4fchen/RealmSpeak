@@ -27,7 +27,7 @@ public abstract class SpellTargeting {
 		gameObjects = new ArrayList<>();
 	}
 	protected boolean allowTargetingHirelings() {
-		return combatFrame.allowsTreachery() || (spell.isBenevolent() && combatFrame.getHostPrefs().hasPref(Constants.TE_BENEVOLENT_SPELLS));
+		return combatFrame.allowsTreachery() || (spell.isBenevolent() && combatFrame.getHostPrefs().hasPref(Constants.TE_BENEVOLENT_SPELLS)) || spell.isBenevolentForHirelings();
 	}
 	/**
 	 * This is the primary access to Spell Targeting

@@ -77,6 +77,18 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 	public String getDarkSideStat() {
 		return "gallop";
 	}
+	public Speed getTrotSpeed() {
+		return new Speed(getAttributeInt("trot","move_speed"),speedModifier());
+	}
+	public Speed getGallopSpeed() {
+		return new Speed(getAttributeInt("gallop","move_speed"),speedModifier());
+	}
+	public Strength getTrotStrength() {
+		return new Strength(getAttribute("trot","strength"));
+	}
+	public Strength getGallopStrength() {
+		return new Strength(getAttribute("gallop","strength"));
+	}
 	public String[] getFolderAndType() {
 		String[] ret = new String[3];
 		if (gameObject.hasThisAttribute(Constants.SUPER_REALM)) {

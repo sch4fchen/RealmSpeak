@@ -308,6 +308,32 @@ public class MoveActivator {
 					}
 				}
 			}
+			else if (includeHorseFlip && rc.isNativeHorse()) {
+				NativeSteedChitComponent horse = (NativeSteedChitComponent)rc;
+				String flipKey = key+"F";
+				
+				// This complication is to make sure they appear in the same order, and that they are strong enough
+				if (horse.isTrotting()) {
+					if (horse.getTrotStrength().strongerOrEqualTo(heaviestInv)) {
+						chooser.addOption(key,"");
+						chooser.addRealmComponentToOption(key,rc);
+					}
+					if (canGallop && horse.getGallopStrength().strongerOrEqualTo(heaviestInv)) {
+						chooser.addOption(flipKey,FLIP_SIDE_TEXT);
+						chooser.addRealmComponentToOption(flipKey,rc,RealmComponentOptionChooser.DisplayOption.Flipside);
+					}
+				}
+				else {
+					if (horse.getTrotStrength().strongerOrEqualTo(heaviestInv)) {
+						chooser.addOption(flipKey,FLIP_SIDE_TEXT);
+						chooser.addRealmComponentToOption(flipKey,rc,RealmComponentOptionChooser.DisplayOption.Flipside);
+					}
+					if (canGallop && horse.getGallopStrength().strongerOrEqualTo(heaviestInv)) {
+						chooser.addOption(key,"");
+						chooser.addRealmComponentToOption(key,rc);
+					}
+				}
+			}
 			else {
 				chooser.addOption(key,"");
 				chooser.addRealmComponentToOption(key,rc);

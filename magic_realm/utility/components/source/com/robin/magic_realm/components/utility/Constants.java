@@ -464,6 +464,7 @@ public class Constants {
 	public static final String STRENGTHENED_VULNERABILITY = "strengthened_vulnerability";
 	public static final String BARKSKIN = "barkskin";
 	public static final String NEGATIVE_AURA = "negative_aura";
+	public static final String BENEVOLENT_HIRED = "benevolent_hired";
 	
 	// Spells
 	public static final String SPELL_ID = "spellID";

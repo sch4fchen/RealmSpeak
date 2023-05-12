@@ -1285,6 +1285,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.ADV_DROPPING,true);
 		optionPane.setOption(Constants.TE_WATCHFUL_NATIVES,true);
 		optionPane.setOption(Constants.TE_EXTENDED_TREACHERY,true);
+		optionPane.setOption(Constants.TE_BENEVOLENT_SPELLS,true);
 		optionPane.setOption(Constants.OPT_GRUDGES,true);
 		optionPane.setOption(Constants.TE_EXTENDED_GRUDGES,true);
 		optionPane.setOption(Constants.OPT_PARRY,true);

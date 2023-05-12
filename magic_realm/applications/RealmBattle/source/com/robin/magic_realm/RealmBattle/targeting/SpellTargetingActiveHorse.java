@@ -28,13 +28,13 @@ public class SpellTargetingActiveHorse extends SpellTargetingSingle {
 			if (rc.isNative() || rc.isMonster()) {
 				for (GameObject item : rc.getHold()) {
 					RealmComponent itemRc = (RealmComponent.getRealmComponent(item));
-					if (itemRc.isHorse() && !itemRc.hasMagicProtection() && !itemRc.hasMagicColorImmunity(spell.getRequiredColorMagic())) {
+					if (itemRc.isNativeHorse() && !itemRc.hasMagicProtection() && !itemRc.hasMagicColorImmunity(spell.getRequiredColorMagic())) {
 						gameObjects.add(item);
 					}
 				}
 				continue;
 			}
-			if (rc.isCharacter()) {
+			if (rc.isCharacter() && !rc.getGameObject().equals(spell.getCaster().getGameObject())) {
 				CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
 				for (GameObject item : character.getActiveInventory()) {
 					RealmComponent itemRc = (RealmComponent.getRealmComponent(item));
