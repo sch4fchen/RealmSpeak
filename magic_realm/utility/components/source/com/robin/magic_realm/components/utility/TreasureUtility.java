@@ -658,6 +658,12 @@ public class TreasureUtility {
 			return true; // already deactivated, so automatically successful.
 		}
 		if (!forceDeactivation) {
+			if (thing.hasThisAttribute(Constants.NOT_DEACTIVATABLE)) {
+				if (frame!=null) {
+					JOptionPane.showMessageDialog(frame,"You cannot deactivate the item.");
+				}
+				return false;
+			}
 			// Potions cannot be deactivated - they expire at midnight
 			if (thing.hasThisAttribute(Constants.POTION)) {
 				if (frame!=null) {

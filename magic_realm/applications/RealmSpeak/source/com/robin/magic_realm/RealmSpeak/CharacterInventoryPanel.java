@@ -402,6 +402,13 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 					"Inactivate Inventory",JOptionPane.WARNING_MESSAGE);
 			return;
 		}
+		if (thing.hasThisAttribute(Constants.NOT_DEACTIVATABLE)) {
+			JOptionPane.showMessageDialog(
+					getGameHandler().getMainFrame(),
+					"You cannot deactivate the "+thing.getName()+".",
+					"Inactivate Inventory",JOptionPane.WARNING_MESSAGE);
+			return;
+		}
 		getGameHandler().broadcast(getCharacter().getGameObject().getName(),"Deactivates "+thing.getName());
 		if (TreasureUtility.doDeactivate(getGameHandler().getMainFrame(),getCharacter(),thing)) {
 			// deactivating an item means you are ignoring "new" items (which can't possibly be active)
