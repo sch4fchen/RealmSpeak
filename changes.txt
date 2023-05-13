@@ -71,6 +71,7 @@ SUPER REALM:
 # New spells: Control Horse
 BUGS/ISSUES:
 # QuestRewardVisitor: fix crash if character is not in a clearing
+# Fix crash for Tremendous monster without a target
 
 Version 1.1.7.8
 QUEST UPDATE:
