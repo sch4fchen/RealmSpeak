@@ -7,7 +7,9 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
+import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.utility.Constants;
@@ -54,7 +56,13 @@ public class QuestRewardVisitor extends QuestReward {
 				getGameData().removeObject(selected);
 			}
 			else {
-				character.getCurrentLocation().clearing.add(selected,character);
+				TileLocation loc = character.getCurrentLocation();
+				if (loc.clearing!=null) {
+					character.getCurrentLocation().clearing.add(selected,character);
+				}
+				else {
+					loc.tile.getClearing(RandomNumber.getRandom(loc.tile.getClearingCount())).add(selected,character);
+				}
 			}
 		}
 		else {
@@ -68,7 +76,7 @@ public class QuestRewardVisitor extends QuestReward {
 		}
 	}
 
-	private ArrayList<GameObject> getObjectList(ArrayList<GameObject> sourceObjects, ChitAcquisitionType at, String regEx) {
+	private static ArrayList<GameObject> getObjectList(ArrayList<GameObject> sourceObjects, ChitAcquisitionType at, String regEx) {
 		Pattern pattern = (regEx == null || regEx.length() == 0) ? null : Pattern.compile(regEx);
 		GamePool pool = new GamePool(sourceObjects);
 		ArrayList<GameObject> objects = new ArrayList<GameObject>();
