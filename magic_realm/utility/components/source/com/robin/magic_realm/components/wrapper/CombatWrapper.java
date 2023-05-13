@@ -78,6 +78,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String SPELL_CANCELED = "SPELL_CANCELED";
 	private static final String ATTACKED_AFTER_CASTING = "ATTACKED_AFTER_CASTING";
 	private static final String FREEZED = "FREEZED";
+	private static final String HORSE_CANNOT_MANEUVER = "HORSE_CANNOT_MANEUVER";
 	
 	private static final String HEALING = "HEALING";
 	
@@ -398,6 +399,12 @@ public class CombatWrapper extends GameObjectWrapper {
 	}
 	public boolean hasGalloped() {
 		return getBoolean(GALLOPED);
+	}
+	public void setHorseCannotManeuver(boolean val) {
+		setBoolean(HORSE_CANNOT_MANEUVER,val);
+	}
+	public boolean getHorseCannotManeuver() {
+		return getBoolean(HORSE_CANNOT_MANEUVER);
 	}
 	public void setKilledBy(GameObject killer) {
 		setString(KILLED_BY_ID,String.valueOf(killer.getId()));
@@ -763,6 +770,7 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,THROWN);
 			go.removeAttribute(COMBAT_BLOCK,TARGETING_RIDER);
 			go.removeAttribute(COMBAT_BLOCK,GALLOPED);
+			go.removeAttribute(COMBAT_BLOCK,HORSE_CANNOT_MANEUVER);
 			go.removeAttribute(COMBAT_BLOCK,HARM_APPLIED);
 			go.removeAttribute(COMBAT_BLOCK,HARM_APPLIED_ID);
 			go.removeAttribute(COMBAT_BLOCK,HIT_TYPE);

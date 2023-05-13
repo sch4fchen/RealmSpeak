@@ -1705,6 +1705,7 @@ public class CombatFrame extends JFrame {
 					// Check strength on both sides to see which is stronger (when CHARGING, is coded, may have to determine if horse was used)
 					Strength trotStrength = new Strength(go.getAttribute("trot","strength"));
 					Strength gallopStrength = new Strength(go.getAttribute("gallop","strength"));
+					if ((new CombatWrapper(rc.getGameObject()).getHorseCannotManeuver())) continue;
 					if (trotStrength.strongerOrEqualTo(heaviestInventory) || gallopStrength.strongerOrEqualTo(heaviestInventory)) {
 						list.add(rc);
 					}
@@ -2373,7 +2374,12 @@ public class CombatFrame extends JFrame {
 		for (RealmComponent rc : moveOptions) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 			if (!rc.isActionChit() || combat.getPlacedAsMove()) {
-				CombatWrapper.clearRoundCombatInfo(rc.getGameObject());
+				if (combat.getHorseCannotManeuver()) {
+					CombatWrapper.clearRoundCombatInfo(rc.getGameObject());
+					combat.setHorseCannotManeuver(true);
+				} else {
+					CombatWrapper.clearRoundCombatInfo(rc.getGameObject());
+				}
 			}
 		}
 		

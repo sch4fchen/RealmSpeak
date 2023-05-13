@@ -2,6 +2,7 @@ package com.robin.magic_realm.components.effect;
 
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.utility.Constants;
+import com.robin.magic_realm.components.wrapper.CombatWrapper;
 
 public class ControlHorseEffect implements ISpellEffect {
 	
@@ -9,6 +10,8 @@ public class ControlHorseEffect implements ISpellEffect {
 	public void apply(SpellEffectContext context) {
 		context.Spell.setExtraIdentifier(context.Target.getHeldBy().getGameObject().getStringId());
 		context.Target.getGameObject().setThisAttribute(Constants.ACTIVATED);
+		CombatWrapper combat = new CombatWrapper(context.Target.getGameObject());
+		combat.setHorseCannotManeuver(true);
 		context.Caster.add(context.Target.getGameObject());
 	}
 
