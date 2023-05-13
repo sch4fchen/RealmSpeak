@@ -755,10 +755,10 @@ public class SetupCardUtility {
 			}
 		}
 		
-		if (rc.isHorse() && !rc.isNative() && !rc.getGameObject().hasThisAttribute("monster_steed")) {
+		if (rc.isHorse() && !rc.isNative() && !rc.getGameObject().hasThisAttribute(RealmComponent.MONSTER_STEED)) {
 			SpellMasterWrapper smw = SpellMasterWrapper.getSpellMaster(denizen.getGameData());
-			smw.expireBewitchingSpells(rc.getGameObject(),null);
-			SetupCardUtility.getHorseHolder(rc.getGameObject()).add(rc.getGameObject());
+			smw.expireBewitchingSpells(denizen,null);
+			SetupCardUtility.getHorseHolder(denizen).add(denizen);
 		}
 	}
 

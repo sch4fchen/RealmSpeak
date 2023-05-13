@@ -496,9 +496,9 @@ public class RealmUtility {
 			}
 		}
 		else if (rc.isNative()) {
-			NativeChitComponent nativ = (NativeChitComponent)rc;
-			nativ.setLightSideUp();
-			NativeSteedChitComponent horse = (NativeSteedChitComponent)nativ.getHorse();
+			NativeChitComponent nativeChit = (NativeChitComponent)rc;
+			nativeChit.setLightSideUp();
+			NativeSteedChitComponent horse = (NativeSteedChitComponent)nativeChit.getHorse();
 			if (horse!=null) {
 				horse.setLightSideUp();
 			}

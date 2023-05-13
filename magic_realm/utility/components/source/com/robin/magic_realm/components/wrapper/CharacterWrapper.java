@@ -5798,6 +5798,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		
 		setDeathReason(reason);
+		// Mark DEAD
+		getGameObject().setThisAttribute(Constants.DEAD);
 		
 		// Make sure character name is restored
 		clearCharacterType();
@@ -5904,9 +5906,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 		for (CharacterActionChitComponent chit : getAllChits()) {
 			chit.makeActive();
 		}
-		
-		// Mark DEAD
-		getGameObject().setThisAttribute(Constants.DEAD);
 	}
 	/**
 	 * @return		null if thing can be activated, or a String describing why not.

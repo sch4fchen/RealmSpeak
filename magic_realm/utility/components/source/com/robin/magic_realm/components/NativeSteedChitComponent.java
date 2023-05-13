@@ -141,7 +141,7 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		TextType tt;
 		
 		// Draw Owner
-		if (!getGameObject().hasThisAttribute("companion") && !getGameObject().hasThisAttribute("monster_steed")) {
+		if (!getGameObject().hasThisAttribute("companion") && !getGameObject().hasThisAttribute(RealmComponent.MONSTER_STEED)) {
 			String id;
 			if (getGameObject().hasThisAttribute(Constants.BOARD_NUMBER)) {
 				id = name.substring(name.length() - 4,name.length()-2).trim();
