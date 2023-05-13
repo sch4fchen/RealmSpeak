@@ -65,6 +65,8 @@ First Edition Optional Rule - https://boardgamegeek.com/thread/2503528/1st-editi
 First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 
 Version 1.1.7.9
+QUEST UPDATE:
+# Updates to quests: A03
 SUPER REALM:
 # New spells: Control Horse
 BUGS/ISSUES:
@@ -72,7 +74,7 @@ BUGS/ISSUES:
 
 Version 1.1.7.8
 QUEST UPDATE:
-# Update to quests: A05, A22, E13-E16, E18, E23, Q12-Q14, Q40, Q57
+# Updates to quests: A05, A22, E13-E16, E18, E23, Q12-Q14, Q40, Q57
 # Quests are checked at midnight
 # QuestRewardTreasureFromHQ: Option for fetching treasure only from same clearing
 SUPER REALM:
@@ -102,7 +104,6 @@ BUGS/ISSUES:
 # Fix QuestRequirementInventory not checking for already activated items, when activating another item
 # Fix advantages of characters counting twice
 # Fix showing horses of treasure locations in setup card view
-
 
 Version 1.1.7.6
 HINT: older save games are not fully compatible with this version (e.g. spell targeting)
