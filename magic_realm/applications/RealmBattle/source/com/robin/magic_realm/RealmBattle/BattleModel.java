@@ -2866,7 +2866,7 @@ public class BattleModel {
 				monster.flip();
 				logBattleInfo(monster+" flips back to light side.");
 			}
-			else if (!monster.isPinningOpponent() && combat.getHitResult()!=null && targetCombat.getKilledBy()==null) {
+			else if (!monster.isPinningOpponent() && combat.getHitResult()!=null && targetCombat!=null && targetCombat.getKilledBy()==null) {
 				/* Tremendous Monsters flip to red when they hit, but only if they:
 				 * 		- aren't already red side up
 				 * 		- hit their target somehow
