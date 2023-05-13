@@ -57427,6 +57427,19 @@
         <attribute control_horse="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2215" name="Horse Whisper">
+      <AttributeBlock blockName="this">
+        <attribute spell="III" />
+        <attribute duration="combat" />
+        <attribute target="clearing" />
+        <attribute text="Horse is placed as active item. Spell is broken when horse leaves active inventory." />
+        <attribute magic_color="gold" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

@@ -142,6 +142,7 @@ public class SpellEffectFactory {
 			case "free the soul": return new ISpellEffect[]{new FreeTheSoulEffect()};
 			case "guide beast": return new ISpellEffect[]{new ControlEffect()};
 			case "holy shield": return new ISpellEffect[]{new PhaseChitEffect()};
+			case "horse whisper": return new ISpellEffect[]{new ApplyNamedEffect(Constants.CANNOT_GALLOP)};
 			case "mesmerize": return new ISpellEffect[]{new MesmerizeEffect()};
 			case "negative aura": return new ISpellEffect[]{new ApplyNamedEffect(Constants.NEGATIVE_AURA)};
 			case "reinvigorate": return new ISpellEffect[]{new ExtraActionEffect("R")};
