@@ -19,6 +19,7 @@ import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams
 import com.robin.magic_realm.components.swing.*;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.SpellMasterWrapper;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class CharacterInventoryPanel extends CharacterFramePanel {
@@ -450,6 +451,12 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 						TileLocation loc = getCharacter().getCurrentLocation();
 						if (loc!=null && loc.isInClearing() && (loc.clearing.isCave() || loc.clearing.isWater())) {
 							inactiveInv.add(item);
+							if (item.hasThisAttribute(Constants.BREAK_CONTROL_WHEN_INACTIVE)) {
+								SpellMasterWrapper spellmaster = SpellMasterWrapper.getSpellMaster(getCharacter().getGameData());
+								for (SpellWrapper spell : spellmaster.getAffectingSpells(item)) {
+									if (spell.isControlHorseSpell()) spell.expireSpell();
+								}
+							}
 							item = null;
 						}
 					}

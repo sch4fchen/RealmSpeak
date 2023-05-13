@@ -10,6 +10,7 @@ public class ControlHorseEffect implements ISpellEffect {
 	public void apply(SpellEffectContext context) {
 		context.Spell.setExtraIdentifier(context.Target.getHeldBy().getGameObject().getStringId());
 		context.Target.getGameObject().setThisAttribute(Constants.ACTIVATED);
+		context.Target.getGameObject().setThisAttribute(Constants.BREAK_CONTROL_WHEN_INACTIVE);
 		CombatWrapper combat = new CombatWrapper(context.Target.getGameObject());
 		combat.setHorseCannotManeuver(true);
 		context.Caster.add(context.Target.getGameObject());

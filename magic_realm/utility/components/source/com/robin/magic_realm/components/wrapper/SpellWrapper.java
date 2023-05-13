@@ -1125,4 +1125,8 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	public boolean freezingTarget() {
 		return getGameObject().hasThisAttribute(Constants.FREEZING);
 	}
+	
+	public boolean isControlHorseSpell() {
+		return getGameObject().hasThisAttribute(Constants.CONTROL_HORSE);
+	}
 }

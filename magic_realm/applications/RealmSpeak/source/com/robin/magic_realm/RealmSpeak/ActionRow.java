@@ -19,6 +19,8 @@ import com.robin.magic_realm.components.table.*;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
+import com.robin.magic_realm.components.wrapper.SpellMasterWrapper;
+import com.robin.magic_realm.components.wrapper.SpellWrapper;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper.ActionState;
 
 public class ActionRow {
@@ -879,6 +881,12 @@ public class ActionRow {
 							if (RealmComponent.getRealmComponent(item).isHorse() && !item.hasThisAttribute(Constants.STEED_IN_CAVES_AND_WATER)) {
 								TreasureUtility.doDeactivate(gameHandler.getMainFrame(), character, item);
 								item.detach();
+								if (item.hasThisAttribute(Constants.BREAK_CONTROL_WHEN_INACTIVE)) {
+									SpellMasterWrapper spellmaster = SpellMasterWrapper.getSpellMaster(gameHandler.getClient().getGameData());
+									for (SpellWrapper spell : spellmaster.getAffectingSpells(item)) {
+										if (spell.isControlHorseSpell()) spell.expireSpell();
+									}
+								}
 							}
 						}
 					}

@@ -1565,11 +1565,17 @@ public class CharacterWrapper extends GameObjectWrapper {
 			boolean water = location.clearing.isWater();
 			for (GameObject inv : getInventory()) {
 				RealmComponent rc = RealmComponent.getRealmComponent(inv);
-				if ((cave || water) && rc.isHorse() && rc.isActivated() && !rc.getGameObject().hasThisAttribute(Constants.STEED_IN_CAVES_AND_WATER)) {
+				if ((cave || water) && (rc.isHorse() || rc.isNative()) && rc.isActivated() && !rc.getGameObject().hasThisAttribute(Constants.STEED_IN_CAVES_AND_WATER)) {
 					if (frame!=null) {
 						JOptionPane.showMessageDialog(frame,"Your "+inv.getName()+" was inactivated on entering the cave.","",JOptionPane.WARNING_MESSAGE);
 					}
 					rc.setActivated(false);
+					if (inv.hasThisAttribute(Constants.BREAK_CONTROL_WHEN_INACTIVE)) {
+						SpellMasterWrapper spellmaster = SpellMasterWrapper.getSpellMaster(getGameData());
+						for (SpellWrapper spell : spellmaster.getAffectingSpells(inv)) {
+							if (spell.isControlHorseSpell()) spell.expireSpell();
+						}
+					}
 				}
 				else if (rc.isGoldSpecial()) {
 					GoldSpecialChitComponent gs = (GoldSpecialChitComponent)rc;
