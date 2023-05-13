@@ -57424,6 +57424,7 @@
         <attribute super_realm_spell="" />
         <attribute benevolent_hired="" />
         <attribute break_if_inert="" />
+        <attribute control_horse="" />
       </AttributeBlock>
     </GameObject>
   </objects>

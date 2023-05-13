@@ -396,6 +396,8 @@ public class Constants {
 	public static final String NO_COMBAT = "no_combat";
 	public static final String NO_SUMMONING = "no_summoning";
 	public static final String SPELL_PRE_BATTLE = "spell_pre_battle";
+	public static final String NOT_DEACTIVATABLE = "not_deactivatable";
+	public static final String NOT_TRADABLE = "not_tradable";
 	
 	// New Spells
 	public static final String SUMMONING = "summoning";

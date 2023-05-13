@@ -337,7 +337,7 @@ public class RealmPaymentDialog extends AggressiveDialog {
 		ArrayList<GameObject> unpresentedInventory = new ArrayList<>();
 		for (GameObject item : character.getInventory()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(item);
-			if (rc.isItem() && !rc.isNativeHorse()) {
+			if (rc.isItem() && !rc.isNativeHorse() && !item.hasThisAttribute(Constants.NOT_TRADABLE)) {
 				unpresentedInventory.add(item);
 			}
 		}
