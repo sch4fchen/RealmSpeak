@@ -444,7 +444,8 @@ public class Constants {
 	public static final String HOLY_SHIELD = "holy_shield";
 	public static final String THORNS = "thorns";
 	public static final String CONTROL_HORSE = "control_horse";
-	public static final String CANNOT_GALLOP = "cannot_gallop";
+	public static final String CONTROLLED_HORSE = "controlled_horse";
+	public static final String HORSE_WHISPER = "horse_whisper";
 	public static final String BREAK_CONTROL_WHEN_INACTIVE = "break_control_when_inactive";
 	public static final String RANDOM_ATTACK_DIRECTION = "random_attack_direction";
 	public static final String NON_FLYING_TARGETS = "non_flying_targets";

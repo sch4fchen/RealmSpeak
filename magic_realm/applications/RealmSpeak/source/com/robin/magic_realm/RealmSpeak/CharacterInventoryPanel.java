@@ -402,10 +402,10 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 					"Inactivate Inventory",JOptionPane.WARNING_MESSAGE);
 			return;
 		}
-		if (thing.hasThisAttribute(Constants.NOT_DEACTIVATABLE)) {
+		if (thing.hasThisAttribute(Constants.CONTROLLED_HORSE)) {
 			JOptionPane.showMessageDialog(
 					getGameHandler().getMainFrame(),
-					"You cannot deactivate the "+thing.getName()+".",
+					"You cannot deactivate the Steed "+thing.getName()+".",
 					"Inactivate Inventory",JOptionPane.WARNING_MESSAGE);
 			return;
 		}

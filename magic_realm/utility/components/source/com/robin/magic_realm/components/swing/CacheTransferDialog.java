@@ -195,7 +195,7 @@ public class CacheTransferDialog extends AggressiveDialog {
 			inventory = new ArrayList<>();
 			for (GameObject go:bin.getInventory()) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
-				if (rc.isItem() && !go.hasThisAttribute(Constants.NOT_TRADABLE)) {
+				if (rc.isItem() && !go.hasThisAttribute(Constants.CONTROLLED_HORSE)) {
 					inventory.add(go);
 				}
 			}

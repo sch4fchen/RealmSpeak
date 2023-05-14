@@ -67,14 +67,11 @@ public class SummonAidEffect implements ISpellEffect {
 		
 		if(cw.isDead()){
 			casterCharacter.changeRelationship(Constants.GAME_RELATIONSHIP, nativeGroup, -1, false);
-		} else
-		{
+		}
+		else {
 			casterCharacter.removeHireling(buddy);
 			SetupCardUtility.resetDenizen(buddy);
 		}
-		
-
-		
 	}
 
 }

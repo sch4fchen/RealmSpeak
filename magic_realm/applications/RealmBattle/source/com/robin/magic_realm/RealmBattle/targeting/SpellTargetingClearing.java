@@ -107,6 +107,19 @@ public class SpellTargetingClearing extends SpellTargetingSpecial {
 				}
 			}
 		}
+		if (clearingTargetType.contains("horses")) {
+			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
+			for (RealmComponent rc : allBattleParticipants) {
+				if ((rc.getGameObject().hasThisAttribute("horse") || rc.getGameObject().hasThisAttribute(RealmComponent.MONSTER_STEED)) && !gameObjects.contains(rc.getGameObject())) {
+					gameObjects.add(rc.getGameObject());
+				}
+				for (GameObject go : rc.getHold()) {
+					if ((go.hasThisAttribute("horse") || go.hasThisAttribute(RealmComponent.MONSTER_STEED)) && !gameObjects.contains(go)) {
+						gameObjects.add(go);
+					}
+				}
+			}
+		}
 		boolean ignorebattle = spell.getGameObject().hasThisAttribute("nobattle");
 		for (GameObject theTarget : gameObjects) {
 			spell.addTarget(combatFrame.getHostPrefs(),theTarget,ignorebattle);

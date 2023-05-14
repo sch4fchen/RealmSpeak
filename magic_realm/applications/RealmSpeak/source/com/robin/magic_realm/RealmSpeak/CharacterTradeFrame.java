@@ -433,7 +433,7 @@ public class CharacterTradeFrame extends JFrame {
 			ArrayList<GameObject> unpresentedInventory = new ArrayList<>();
 			for (GameObject item : character.getInventory()) {
 				Inventory inventory = new Inventory(item);
-				if (inventory.canDrop() && !item.hasThisAttribute(Constants.NOT_TRADABLE)) {
+				if (inventory.canDrop() && !item.hasThisAttribute(Constants.CONTROLLED_HORSE)) {
 					unpresentedInventory.add(item);
 				}
 			}

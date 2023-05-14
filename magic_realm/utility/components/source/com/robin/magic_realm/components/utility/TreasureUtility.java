@@ -658,9 +658,9 @@ public class TreasureUtility {
 			return true; // already deactivated, so automatically successful.
 		}
 		if (!forceDeactivation) {
-			if (thing.hasThisAttribute(Constants.NOT_DEACTIVATABLE)) {
+			if (thing.hasThisAttribute(Constants.CONTROLLED_HORSE)) {
 				if (frame!=null) {
-					JOptionPane.showMessageDialog(frame,"You cannot deactivate the item.");
+					JOptionPane.showMessageDialog(frame,"You cannot deactivate the steed.");
 				}
 				return false;
 			}
