@@ -1,4 +1,12 @@
 ::ROADMAP::
+Control horse: Spell breaks while controlling a regular horse, horse is paired with individual who killed the spellcaster (in the case of an unhired native, it is put with the native group's belongings).  If the spellcaster isn't killed, the horse is abandoned.
+	characters > HQs > natives; hired > unhired; If still a tie, roll for tiebreaker, modifiers apply.
+Horse Control: not twice on same target (add check in spell and add filter in spelltargeting clearing horses_uncontrolled)
+BONE HORSE is missing in combat, when using combat builder
+Raving natives always enemy not neutral
+Clan rules
+--FEATURE REQUEST---
+Wesnoth graphics  option for vanilla and exp1
 ---Super Realms Content---
 Spells III: Migration, Tracker’s Sense, Water Run
 Spells IV: Blinding Light, Control Element, Elemental Spirit, Frozen Water, Reserve, Violent Winds
@@ -69,6 +77,8 @@ QUEST UPDATE:
 # Updates to quests: A03
 SUPER REALM:
 # New spells: Control Horse, Horse Whisper
+NEW FEATURES:
+# Optional rule: No Spying (e.g. for Super Realm)
 BUGS/ISSUES:
 # QuestRewardVisitor: fix crash if character is not in a clearing
 # Fix crash for Tremendous monster without a target

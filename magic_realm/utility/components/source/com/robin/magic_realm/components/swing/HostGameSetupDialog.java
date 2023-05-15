@@ -1120,6 +1120,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_END_OF_MONTH_REGENERATION,"END OF MONTH REGENERATION (Super Realm rules) - All denizen regenerate at the end of the month.",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_NO_7TH_DAY_REGENERATION,"NO 7th day regeneration (Super Realm rules) - Denizens do NOT regenerate at the 7th day of the week.",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_HORSES_REGENERATION,"HORSES REGENERATION (Super Realm rules) - Horses are regenerated.",false));
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_NO_SPYING,"NO SPYING (Super Realm rules) - Spying is not possible (for looting or discovering paths).",false));
 		
 		newOptionPane.setTabHtmlDescription(HOUSE2_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">House Rules</font></body></html>");
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_NO_SPELL_LIMIT,"NO SPELL LIMIT - Magic Realm limits you to 14 spells per character.  This option removes that limit.",false));
@@ -1294,6 +1295,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.SR_END_OF_MONTH_REGENERATION,true);
 		optionPane.setOption(Constants.SR_NO_7TH_DAY_REGENERATION,true);
 		optionPane.setOption(Constants.SR_HORSES_REGENERATION,true);
+		optionPane.setOption(Constants.SR_NO_SPYING,true);
 		optionPane.setOption(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE,true);
 		optionPane.setOption(Constants.HOUSE1_CHIT_REMAIN_FACE_UP,true);
 		optionPane.setOption(Constants.RANDOM_ON_THE_FLY,true);

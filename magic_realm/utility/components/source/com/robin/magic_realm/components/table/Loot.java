@@ -60,18 +60,21 @@ public class Loot extends RealmTable {
 	public String apply(CharacterWrapper character, DieRoller inRoller) {
 		// Other characters in the clearing discover the treasureLocation when being looted (if found hidden enemies)
 		if (tileLocation==null) {
-			ClearingDetail current = character.getCurrentLocation().clearing;
-			for (RealmComponent rc : current.getClearingComponents()) {
-				if (rc.canSpy() && !rc.getGameObject().equals(character.getGameObject())) {
-					CharacterWrapper spy = new CharacterWrapper(rc.getGameObject());
-					if (!character.isHidden() || spy.foundHiddenEnemy(character.getGameObject())) {
-						if (!spy.hasTreasureLocationDiscovery(treasureLocation.getName())) {
-							spy.addTreasureLocationDiscovery(treasureLocation.getName());
-						}
-						// Observing a character looting a Site card leads to the discovery of the site card AND the original Site chit!!!
-						String siteChitName = treasureLocation.getThisAttribute("siteChitName");
-						if (siteChitName!=null && !spy.hasTreasureLocationDiscovery(siteChitName)) {
-							spy.addTreasureLocationDiscovery(siteChitName);
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
+			if (!hostPrefs.hasPref(Constants.SR_NO_SPYING)) {
+				ClearingDetail current = character.getCurrentLocation().clearing;
+				for (RealmComponent rc : current.getClearingComponents()) {
+					if (rc.canSpy() && !rc.getGameObject().equals(character.getGameObject())) {
+						CharacterWrapper spy = new CharacterWrapper(rc.getGameObject());
+						if (!character.isHidden() || spy.foundHiddenEnemy(character.getGameObject())) {
+							if (!spy.hasTreasureLocationDiscovery(treasureLocation.getName())) {
+								spy.addTreasureLocationDiscovery(treasureLocation.getName());
+							}
+							// Observing a character looting a Site card leads to the discovery of the site card AND the original Site chit!!!
+							String siteChitName = treasureLocation.getThisAttribute("siteChitName");
+							if (siteChitName!=null && !spy.hasTreasureLocationDiscovery(siteChitName)) {
+								spy.addTreasureLocationDiscovery(siteChitName);
+							}
 						}
 					}
 				}
