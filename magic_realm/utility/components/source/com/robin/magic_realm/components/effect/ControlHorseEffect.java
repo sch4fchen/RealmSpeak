@@ -3,7 +3,7 @@ package com.robin.magic_realm.components.effect;
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.utility.Constants;
-import com.robin.magic_realm.components.utility.RealmUtility;
+import com.robin.magic_realm.components.utility.RealmLogging;
 import com.robin.magic_realm.components.utility.SetupCardUtility;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
 
@@ -11,6 +11,11 @@ public class ControlHorseEffect implements ISpellEffect {
 	
 	@Override
 	public void apply(SpellEffectContext context) {
+		if (context.Target.getGameObject().hasThisAttribute(Constants.CONTROLLED_HORSE)) {
+			context.Spell.cancelSpell();
+			RealmLogging.logMessage(context.Spell.getCaster().getGameObject().getName(),"Spell cancelled, because the targeted horse is already controlled.");
+			return;
+		}
 		context.Spell.setExtraIdentifier(context.Target.getHeldBy().getGameObject().getStringId());
 		context.Target.getGameObject().setThisAttribute(Constants.ACTIVATED);
 		context.Target.getGameObject().setThisAttribute(Constants.BREAK_CONTROL_WHEN_INACTIVE);

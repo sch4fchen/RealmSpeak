@@ -1,7 +1,6 @@
 ::ROADMAP::
 Control horse: Spell breaks while controlling a regular horse, horse is paired with individual who killed the spellcaster (in the case of an unhired native, it is put with the native group's belongings).  If the spellcaster isn't killed, the horse is abandoned.
 	characters > HQs > natives; hired > unhired; If still a tie, roll for tiebreaker, modifiers apply.
-Horse Control: not twice on same target (add check in spell and add filter in spelltargeting clearing horses_uncontrolled)
 BONE HORSE is missing in combat, when using combat builder
 Raving natives always enemy not neutral
 Clan rules

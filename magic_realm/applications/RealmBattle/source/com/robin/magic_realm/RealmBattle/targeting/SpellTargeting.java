@@ -196,7 +196,10 @@ public abstract class SpellTargeting {
 			targeting = new SpellTargetingRoadway(combatFrame,spell);
 		}
 		else if ("active_horse".equals(targetType)) {
-			targeting = new SpellTargetingActiveHorse(combatFrame,spell);
+			targeting = new SpellTargetingActiveHorse(combatFrame,spell,false);
+		}
+		else if ("active_horse_uncontrolled".equals(targetType)) {
+			targeting = new SpellTargetingActiveHorse(combatFrame,spell,true);
 		}
 		
 		return targeting;
