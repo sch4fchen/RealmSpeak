@@ -17,7 +17,7 @@ import com.robin.magic_realm.components.wrapper.GameWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
-public class MonsterChitComponent extends SquareChitComponent implements BattleChit {
+public class MonsterChitComponent extends SquareChitComponent implements BattleChit,Horsebackable {
 	protected int chitSize;
 	
 	private boolean alteredMoveSpeed = false;
@@ -412,6 +412,15 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	}
 
 	public Speed getMoveSpeed() {
+		return getMoveSpeed(true);
+	}
+	public Speed getMoveSpeed(boolean includeHorse) {
+		if (includeHorse) {
+			BattleHorse horse = getHorse();
+			if (horse!=null) {
+				return horse.getMoveSpeed();
+			}
+		}
 		int otherSpeed = getGameObject().getThisInt("move_speed_change");
 		if (otherSpeed>0) {
 			alteredMoveSpeed = true;
@@ -509,6 +518,15 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	}
 
 	public int getManeuverCombatBox() {
+		return getManeuverCombatBox(true);
+	}
+	public int getManeuverCombatBox(boolean includeHorse) {
+		if (includeHorse) {
+			BattleHorse horse = getHorse();
+			if (horse!=null) {
+				return horse.getManeuverCombatBox();
+			}
+		}
 		CombatWrapper combat = new CombatWrapper(getGameObject());
 		return combat.getCombatBox();
 	}
@@ -566,8 +584,28 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	public boolean applyHit(GameWrapper game,HostPrefWrapper hostPrefs, BattleChit attacker, int box, Harm attackerHarm,int attackOrderPos) {
 		Harm harm = new Harm(attackerHarm);
 		Strength vulnerability = getVulnerability();
-		
 		CombatWrapper combat = new CombatWrapper(getGameObject());
+		
+		BattleHorse horse = null;
+		if (!combat.isTargetingRider(attacker.getGameObject())) {
+			horse = getHorse(attackOrderPos);
+		}
+		boolean horseHarmed = false;
+		if (horse!=null) {
+			CombatWrapper horseCombat = new CombatWrapper(horse.getGameObject());
+			if (horseCombat.getKilledBy()==null || horseCombat.getHitByOrderNumber()==attackOrderPos) {
+				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits the "
+						+getGameObject().getNameWithNumber()+"'s "
+						+horse.getGameObject().getNameWithNumber());
+						
+				horseHarmed = horse.applyHit(game,hostPrefs,attacker,box,attackerHarm,attackOrderPos);
+				if (!attackerHarm.getStrength().isRed()) {
+					// If harm is NOT RED, then only the horse is hit, otherwise, the RED continues to the native!
+					return horseHarmed;
+				}
+			}
+		}
+		
 		ArrayList<SpellWrapper> holyShields = SpellUtility.getBewitchingSpellsWithKey(getGameObject(),Constants.HOLY_SHIELD);
 		if ((holyShields!=null&&!holyShields.isEmpty()) || combat.hasHolyShield(attacker.getAttackSpeed(),attacker.getLength())) {
 			for (SpellWrapper spell : holyShields) {

@@ -57415,7 +57415,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="III" />
         <attribute duration="permanent" />
-        <attribute target="active_horse" />
+        <attribute target="active_horse_uncontrolled" />
         <attribute text="Horse is placed as active item. Spell is broken when horse leaves active inventory." />
         <attribute magic_color="gold" />
         <attribute host_okay="" />
