@@ -1,7 +1,6 @@
 ::ROADMAP::
 Control horse: Spell breaks while controlling a regular horse, horse is paired with individual who killed the spellcaster (in the case of an unhired native, it is put with the native group's belongings).  If the spellcaster isn't killed, the horse is abandoned.
 	characters > HQs > natives; hired > unhired; If still a tie, roll for tiebreaker, modifiers apply.
-BONE HORSE is missing in combat, when using combat builder
 Raving natives always enemy not neutral
 Clan rules
 --FEATURE REQUEST---
@@ -78,6 +77,7 @@ SUPER REALM:
 # New spells: Control Horse, Horse Whisper
 NEW FEATURES:
 # Optional rule: No Spying (e.g. for Super Realm)
+# Add functionality to horses for monsters (e.g. Bone Horse in Super Realm)
 BUGS/ISSUES:
 # QuestRewardVisitor: fix crash if character is not in a clearing
 # Fix crash for Tremendous monster without a target

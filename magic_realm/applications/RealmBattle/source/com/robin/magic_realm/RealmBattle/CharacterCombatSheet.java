@@ -368,6 +368,15 @@ public class CharacterCombatSheet extends CombatSheet {
 									layoutHash.put(Integer.valueOf(POS_TARGET+box),weapon);
 								}
 							}
+							RealmComponent horse = (RealmComponent)rc.getHorse();
+							if (horse!=null) {
+								combat = new CombatWrapper(horse.getGameObject());
+								box = combat.getCombatBox();
+								if (box>0) {
+									// only add horse to layout if in a combat box!
+									layoutHash.put(Integer.valueOf(POS_TARGET+box),horse);
+								}
+							}
 						}
 						else if (rc.isNative()) {
 							RealmComponent horse = (RealmComponent)rc.getHorse();
@@ -570,6 +579,16 @@ public class CharacterCombatSheet extends CombatSheet {
 								RealmComponent weapon = monster.getWeapon();
 								if (weapon!=null) {
 									list.add(0,weapon); // push
+								}
+								RealmComponent horse = (RealmComponent)rc.getHorse();
+								if (horse!=null) {
+									if (swingConstant==SwingConstants.LEFT) {
+										CombatWrapper combat = new CombatWrapper(horse.getGameObject());
+										combat.setCombatBox(n+1);
+									}
+									else {
+										list.add(0,horse); // push
+									}
 								}
 							}
 							else if (rc.isNative()) {

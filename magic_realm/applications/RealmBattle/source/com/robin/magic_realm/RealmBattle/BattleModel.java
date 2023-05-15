@@ -2116,6 +2116,15 @@ public class BattleModel {
 							}
 							boxHash.put(Integer.valueOf(box),weapon);
 						}
+						NativeSteedChitComponent horse = (NativeSteedChitComponent)rc.getHorse();
+						if (horse!=null) {
+							combat = new CombatWrapper(horse.getGameObject());
+							box = combat.getCombatBox();
+							if (box==0) {
+								throw new IllegalStateException("box is zero for "+horse.getGameObject().getName()+" during reposition!!");
+							}
+							boxHash.put(Integer.valueOf(box),horse);
+						}
 					}
 					else if (rc.isNative()) {
 						// Make sure we get native horses!
