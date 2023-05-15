@@ -97,7 +97,7 @@ public class CharacterBattleBuilderPanel extends JPanel {
 					for (RealmComponent hireling : hirelingPanel.getAllRealmComponents()) {
 						hireling.getGameObject().removeThisAttribute(BattleBuilder.BATTLE_BUILDER_KEY);
 						hireling.setHidden(false);
-						NativeSteedChitComponent horse = (NativeSteedChitComponent)hireling.getHorseIncludeDead();
+						BattleHorse horse = hireling.getHorseIncludeDead();
 						if (horse!=null) {
 							horse.getGameObject().removeThisAttribute(Constants.DEAD);
 						}
@@ -424,7 +424,7 @@ public class CharacterBattleBuilderPanel extends JPanel {
 					character.removeHireling(go);
 					go.removeThisAttribute(BattleBuilder.BATTLE_BUILDER_KEY);
 					rc.setHidden(false);
-					NativeSteedChitComponent horse = (NativeSteedChitComponent)rc.getHorseIncludeDead();
+					BattleHorse horse = rc.getHorseIncludeDead();
 					if (horse!=null) {
 						horse.getGameObject().removeThisAttribute(Constants.DEAD);
 					}

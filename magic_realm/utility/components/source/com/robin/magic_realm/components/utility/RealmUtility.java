@@ -494,6 +494,10 @@ public class RealmUtility {
 			if (weapon!=null) {
 				weapon.setLightSideUp();
 			}
+			NativeSteedChitComponent horse = (NativeSteedChitComponent)monster.getHorse();
+			if (horse!=null) {
+				horse.setLightSideUp();
+			}
 		}
 		else if (rc.isNative()) {
 			NativeChitComponent nativeChit = (NativeChitComponent)rc;

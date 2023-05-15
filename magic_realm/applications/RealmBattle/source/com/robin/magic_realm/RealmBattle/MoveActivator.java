@@ -292,7 +292,7 @@ public class MoveActivator {
 						chooser.addOption(key,"");
 						chooser.addRealmComponentToOption(key,rc);
 					}
-					if (canGallop && horse.getGallopStrength().strongerOrEqualTo(heaviestInv)) {
+					if (canGallop && !horse.getGameObject().hasThisAttribute(Constants.HORSE_WHISPER) && horse.getGallopStrength().strongerOrEqualTo(heaviestInv)) {
 						chooser.addOption(flipKey,FLIP_SIDE_TEXT);
 						chooser.addRealmComponentToOption(flipKey,rc,RealmComponentOptionChooser.DisplayOption.Flipside);
 					}
@@ -302,7 +302,7 @@ public class MoveActivator {
 						chooser.addOption(flipKey,FLIP_SIDE_TEXT);
 						chooser.addRealmComponentToOption(flipKey,rc,RealmComponentOptionChooser.DisplayOption.Flipside);
 					}
-					if (canGallop && horse.getGallopStrength().strongerOrEqualTo(heaviestInv)) {
+					if (canGallop && !horse.getGameObject().hasThisAttribute(Constants.HORSE_WHISPER) && horse.getGallopStrength().strongerOrEqualTo(heaviestInv)) {
 						chooser.addOption(key,"");
 						chooser.addRealmComponentToOption(key,rc);
 					}
@@ -318,7 +318,7 @@ public class MoveActivator {
 						chooser.addOption(key,"");
 						chooser.addRealmComponentToOption(key,rc);
 					}
-					if (canGallop && horse.getGallopStrength().strongerOrEqualTo(heaviestInv)) {
+					if (canGallop && !horse.getGameObject().hasThisAttribute(Constants.HORSE_WHISPER) && horse.getGallopStrength().strongerOrEqualTo(heaviestInv)) {
 						chooser.addOption(flipKey,FLIP_SIDE_TEXT);
 						chooser.addRealmComponentToOption(flipKey,rc,RealmComponentOptionChooser.DisplayOption.Flipside);
 					}
@@ -328,7 +328,7 @@ public class MoveActivator {
 						chooser.addOption(flipKey,FLIP_SIDE_TEXT);
 						chooser.addRealmComponentToOption(flipKey,rc,RealmComponentOptionChooser.DisplayOption.Flipside);
 					}
-					if (canGallop && horse.getGallopStrength().strongerOrEqualTo(heaviestInv)) {
+					if (canGallop && !horse.getGameObject().hasThisAttribute(Constants.HORSE_WHISPER) && horse.getGallopStrength().strongerOrEqualTo(heaviestInv)) {
 						chooser.addOption(key,"");
 						chooser.addRealmComponentToOption(key,rc);
 					}

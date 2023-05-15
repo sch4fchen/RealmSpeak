@@ -57438,6 +57438,9 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
+        <attributeList keyName="target_clearing">
+          <attributeVal N0="horses" />
+        </attributeList>
       </AttributeBlock>
     </GameObject>
   </objects>

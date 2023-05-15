@@ -3,10 +3,13 @@ package com.robin.magic_realm.components;
 import java.awt.*;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+
 import com.robin.game.objects.GameObject;
 import com.robin.general.graphics.StarShape;
 import com.robin.general.graphics.TextType;
 import com.robin.general.graphics.TextType.Alignment;
+import com.robin.general.swing.ImageCache;
 import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
@@ -374,12 +377,25 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 			g.setStroke(stroke);
 		}
 
+		drawHorse(g);
+		
 		drawEmployer(g);
 		drawHiddenStatus(g);
 		drawAttentionMarkers(g);
 		drawDamageAssessment(g);
 	}
 
+	private void drawHorse(Graphics g) {
+		int size = getChitSize();
+		NativeSteedChitComponent horse = (NativeSteedChitComponent)getHorse(false);
+		if (horse!=null) {
+			String[] ret = horse.getFolderAndType();
+			int horseSize = ret[2]==null?20:40*Integer.valueOf(ret[2]);
+			ImageIcon icon = ImageCache.getIcon(ret[0]+"/"+ret[1],horseSize);
+			g.drawImage(icon.getImage(),size-icon.getIconWidth()-2,(size>>1),null);
+		}
+	}
+	
 	// BattleChit Interface
 	public boolean targets(BattleChit chit) {
 		RealmComponent rc = getTarget();
