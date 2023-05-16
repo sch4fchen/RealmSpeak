@@ -239,6 +239,7 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 			updateControls();
 		}
 		updatePanel();
+		getGameHandler().submitChanges();
 	}
 
 	private void doDrawQuests() {
@@ -255,6 +256,7 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 		updatePanel();
 		updateControls();
 		getGameHandler().getInspector().redrawMap();
+		getGameHandler().submitChanges();
 	}
 
 	private Quest getSelectedQuest() {

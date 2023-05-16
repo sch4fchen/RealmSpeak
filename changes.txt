@@ -82,6 +82,7 @@ NEW FEATURES:
 BUGS/ISSUES:
 # QuestRewardVisitor: fix crash if character is not in a clearing
 # Fix crash for Tremendous monster without a target
+# Fix drawing same quest cards in multiplayer games
 
 Version 1.1.7.8
 QUEST UPDATE:
