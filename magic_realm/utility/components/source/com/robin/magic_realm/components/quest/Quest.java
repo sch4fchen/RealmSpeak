@@ -45,8 +45,6 @@ public class Quest extends GameObjectWrapper {
 	
 	public static Quest currentQuest;
 
-	// QuestAvailability - Which Guild? Which characters?
-
 	private ArrayList<QuestStep> steps;
 	private ArrayList<QuestRule> questRules;
 	private ArrayList<QuestLocation> locations;

@@ -28,6 +28,7 @@ public class QuestLocationEditor extends GenericEditor {
 	private JTextField name;
 	private JComboBox<LocationType> type;
 	private JCheckBox hideNotifcation;
+	private JCheckBox locationForClonedQuests;
 	private JComboBox<LocationClearingType> clearingType;
 	private JComboBox<LocationTileSideType> tileSideType;
 	private JRadioButton sameClearing;
@@ -99,6 +100,7 @@ public class QuestLocationEditor extends GenericEditor {
 		name.setText(location.getName());
 		type.setSelectedItem(location.getLocationType());
 		hideNotifcation.setSelected(location.hideNotification());
+		locationForClonedQuests.setSelected(location.locationForClonedQuests());
 		clearingType.setSelectedItem(location.getLocationClearingType());
 		tileSideType.setSelectedItem(location.getLocationTileSideType());
 		sameClearing.setSelected(!location.isSameTile());
@@ -125,6 +127,7 @@ public class QuestLocationEditor extends GenericEditor {
 		location.setName(name.getText());
 		location.setLocationType((LocationType)type.getSelectedItem());
 		location.setHideNotification(hideNotifcation.isSelected());
+		location.setLocationForClonedQuests(locationForClonedQuests.isSelected());
 		location.setLocationClearingType((LocationClearingType)clearingType.getSelectedItem());
 		location.setLocationTileSideType((LocationTileSideType)tileSideType.getSelectedItem());
 		location.setSameTile(sameTile.isSelected());
@@ -296,6 +299,18 @@ public class QuestLocationEditor extends GenericEditor {
 			}
 		});
 		line.add(hideNotifcation);
+		line.add(Box.createHorizontalGlue());
+		form.add(line);
+		
+		line = group.createLabelLine("Set location for all cloned quests");
+		locationForClonedQuests = new JCheckBox();
+		ComponentTools.lockComponentSize(locationForClonedQuests,100,25);
+		locationForClonedQuests.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				updateControls();
+			}
+		});
+		line.add(locationForClonedQuests);
 		line.add(Box.createHorizontalGlue());
 		form.add(line);
 		form.add(Box.createVerticalStrut(10));

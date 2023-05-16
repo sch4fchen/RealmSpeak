@@ -29,6 +29,8 @@ public class QuestLocation extends GameObjectWrapper {
 	private static final String LOC_CLEARING_TYPE = "_ct";
 	private static final String LOC_TILE_SIDE_TYPE = "_tst";
 	
+	private static final String LOC_FOR_CLONED_QUESTS = "_cloned_quests";
+	
 	public QuestLocation(GameObject go) {
 		super(go);
 	}
@@ -208,6 +210,9 @@ public class QuestLocation extends GameObjectWrapper {
 				setLockAddress(matchingAddress);
 				String message = getTagName()+" is at the "+matchingAddress;
 				character.addNote(getGameObject(),getQuestName(),message);
+				if (locationForClonedQuests()) {
+					setLocationAddressForClonedQuests(message);
+				}
 			}
 			return true;
 		}
@@ -266,54 +271,73 @@ public class QuestLocation extends GameObjectWrapper {
 		
 		return false;
 	}
-		public void resolveQuestStart(JFrame frame,CharacterWrapper character) {
+	public void resolveQuestStart(JFrame frame,CharacterWrapper character) {
+		if (locationForClonedQuests()) {
+			if (setLocationAddressByClonedQuest()) return;
+		}
+		
 		ArrayList<String> choices = getChoiceAddresses();
 		if (choices==null || choices.size()==0) return;
 		if (choices.size()==1) {
 			// This is easy
 			setLockAddress(choices.get(0));
+			if (locationForClonedQuests()) {
+				setLocationAddressByClonedQuest();
+			}
 			return;
 		}
 		
+		String message = null;
 		// More than one choice...
 		LocationType type = getLocationType();
 		if (type==LocationType.QuestRandom) {
 			int r = RandomNumber.getRandom(choices.size());
 			setLockAddress(choices.get(r));
-			String message = getTagName()+" is at the "+getLockAddress().toUpperCase();
+			message = getTagName()+" is at the "+getLockAddress().toUpperCase();
 			character.addNote(getGameObject(),getQuestName(),message);
 			if (!hideNotification()) {
 				Quest.showQuestMessage(frame,getParentQuest(),message,getGameObject().getHeldBy().getName());
 			}
-			return;
 		}
-		if (type==LocationType.QuestChoice) {
+		else if (type==LocationType.QuestChoice) {
 			// Allow the player to pick from the list
 			forcePlayerPick(frame,choices);
-			String message = getTagName()+" is at the "+getLockAddress().toUpperCase();
+			message = getTagName()+" is at the "+getLockAddress().toUpperCase();
 			character.addNote(getGameObject(),getQuestName(),message);
 		}
 		// All others are ignored at this point
+		
+		if (message!=null && locationForClonedQuests()) {
+			setLocationAddressForClonedQuests(message);
+		}
 	}
 	public void resolveStepStart(JFrame frame,CharacterWrapper character) {
 		if (!needsResolution()) return;
+		
+		if (locationForClonedQuests()) {
+			if (setLocationAddressByClonedQuest()) return;
+		}
+		
+		String message = null;
 		ArrayList<String> choices = getChoiceAddresses();
 		LocationType type = getLocationType();
 		if (type==LocationType.StepRandom) {
 			int r = RandomNumber.getRandom(choices.size());
 			setLockAddress(choices.get(r));
-			String message = getTagName()+" is at the "+getLockAddress().toUpperCase();
+			message = getTagName()+" is at the "+getLockAddress().toUpperCase();
 			character.addNote(getGameObject(),getQuestName(),message);
 			if (!hideNotification()) {
 				Quest.showQuestMessage(frame,getParentQuest(),message,getGameObject().getHeldBy().getName());
 			}
-			return;
 		}
-		if (type==LocationType.StepChoice) {
+		else if (type==LocationType.StepChoice) {
 			// Allow the player to pick from the list
 			forcePlayerPick(frame,choices);
-			String message = getTagName()+" is at the "+getLockAddress().toUpperCase();
+			message = getTagName()+" is at the "+getLockAddress().toUpperCase();
 			character.addNote(getGameObject(),getQuestName(),message);
+		}
+		if (message!=null && locationForClonedQuests()) {
+			setLocationAddressForClonedQuests(message);
 		}
 	}
 	private void forcePlayerPick(JFrame frame,ArrayList<String> choices) {
@@ -377,8 +401,16 @@ public class QuestLocation extends GameObjectWrapper {
 		return getBoolean(HIDE_NOTIFICATION);
 	}
 	
+	public boolean locationForClonedQuests() {
+		return getBoolean(LOC_FOR_CLONED_QUESTS);
+	}
+	
 	public void setHideNotification(boolean val) {
 		setBoolean(HIDE_NOTIFICATION,val);
+	}
+	
+	public void setLocationForClonedQuests(boolean val) {
+		setBoolean(LOC_FOR_CLONED_QUESTS,val);
 	}
 	
 	public ArrayList<String> getChoiceAddresses() {
@@ -555,5 +587,39 @@ public class QuestLocation extends GameObjectWrapper {
 	
 	public static boolean validLocation(GameData gameData,String val) {
 		return fetchTileLocation(gameData,val,false)!=null || fetchPieces(gameData,val,false)!=null;
+	}
+	
+	private boolean setLocationAddressByClonedQuest() {
+		GameObject questGo = getGameObject().getHeldBy();
+		Quest quest = new Quest(questGo);
+		for (GameObject clonedQuestGo : quest.findClones(getGameData().getGameObjects())) {
+			Quest clonedQuest = new Quest(clonedQuestGo);
+			for (QuestLocation loc : clonedQuest.getLocations()) {
+				if (loc.getTagName().matches(this.getTagName())) {
+					if (loc.getLockAddress()!=null&&!loc.getLockAddress().isEmpty()) {
+						this.setLockAddress(loc.getLockAddress());
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+	
+	private void setLocationAddressForClonedQuests(String message) {
+		if (this.getLockAddress()==null || this.getLockAddress().isEmpty()) return;
+		GameObject questGo = getGameObject().getHeldBy();
+		Quest quest = new Quest(questGo);
+		for (GameObject clonedQuestGo : quest.findClones(getGameData().getGameObjects())) {
+			Quest clonedQuest = new Quest(clonedQuestGo);
+			for (QuestLocation loc : clonedQuest.getLocations()) {
+				if (loc.getTagName().matches(this.getTagName())) {
+					loc.setLockAddress(this.getLockAddress());
+					if (message!=null && clonedQuest.getOwner()!=null) {
+						clonedQuest.getOwner().addNote(loc.getGameObject(),loc.getQuestName(), message);
+					}
+				}
+			}
+		}
 	}
 }
