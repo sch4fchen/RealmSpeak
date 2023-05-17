@@ -232,6 +232,7 @@ public class Constants {
 	// Relationships
 	public static final String BASE_RELATIONSHIP = "relationship";
 	public static final String GAME_RELATIONSHIP = "gamerel";
+	public static final String ROVING_NATIVE = "roving_native";
 	
 	// Spell induced advantages/disadvantages
 	public static final String SP_NO_PEER = "sp_no_peer";

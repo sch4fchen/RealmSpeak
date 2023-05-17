@@ -1113,7 +1113,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return list;
 	}
 	public int getRelationship(GameObject denizen) {
-		int relationship = getRelationship(RealmUtility.getRelationshipBlockFor(denizen),RealmUtility.getRelationshipGroupName(denizen));
+		boolean ravingNative = denizen.hasThisAttribute(Constants.ROVING_NATIVE);
+		int relationship = getRelationship(RealmUtility.getRelationshipBlockFor(denizen),RealmUtility.getRelationshipGroupName(denizen),ravingNative);
 		if (isNegativeAuraInClearing()) {
 			relationship--;
 		}
@@ -1135,6 +1136,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * @return				One of ALLY,FRIENDLY,NEUTRAL,UNFRIENDLY,ENEMY
 	 */
 	public int getRelationship(String relBlock,String groupName) {
+		return getRelationship(relBlock, groupName, false);
+	}
+	public int getRelationship(String relBlock,String groupName, boolean ravingNative) {
 		if (!isCharacter()) {
 			CharacterWrapper hiringCharacter = getHiringCharacter();
 			if (hiringCharacter!=null) {
@@ -1144,6 +1148,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		groupName = groupName.toLowerCase();
 		
 		int rel = getGameObject().getInt(relBlock,groupName);
+		if (ravingNative && !getGameObject().hasAttribute(relBlock,groupName)) {
+			rel = RelationshipType.ENEMY;
+		}
 		int mod = 0;
 		ArrayList<GameObject> list = getAllActiveInventoryThisKeyAndValue(Constants.MEETING_MOD,null);
 		for (GameObject item:list) {

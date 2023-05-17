@@ -1,8 +1,6 @@
 ::ROADMAP::
 Control horse: Spell breaks while controlling a regular horse, horse is paired with individual who killed the spellcaster (in the case of an unhired native, it is put with the native group's belongings).  If the spellcaster isn't killed, the horse is abandoned.
 	characters > HQs > natives; hired > unhired; If still a tie, roll for tiebreaker, modifiers apply.
-Raving natives always enemy not neutral
-Clan rules
 --FEATURE REQUEST---
 Wesnoth graphics  option for vanilla and exp1
 ---Super Realms Content---
@@ -79,10 +77,11 @@ SUPER REALM:
 NEW FEATURES:
 # Optional rule: No Spying (e.g. for Super Realm)
 # Add functionality to horses for monsters (e.g. Bone Horse in Super Realm)
+# Relationship of roving natives is enemy by default (Super Realm)
 BUGS/ISSUES:
-# QuestRewardVisitor: fix crash if character is not in a clearing
-# Fix crash for Tremendous monster without a target
 # Fix drawing same quest cards in multiplayer games
+# Fix crash for Tremendous monster without a target
+# QuestRewardVisitor: fix crash if character is not in a clearing
 
 Version 1.1.7.8
 QUEST UPDATE:
