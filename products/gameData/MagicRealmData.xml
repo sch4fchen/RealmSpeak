@@ -35604,6 +35604,7 @@
         <attribute icon_folder="wesnoth/units/tharis-magi" />
         <attribute virtual_dwelling="" />
         <attribute icon_size="0.9" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <contains id="1318" />
       <contains id="1319" />
@@ -35634,6 +35635,7 @@
         <attribute change_tactics_after_casting="" />
         <attribute fast_caster="" />
         <attribute native_name="Caster" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -35673,6 +35675,7 @@
         <attribute change_tactics_after_casting="" />
         <attribute fast_caster="" />
         <attribute native_name="Caster" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -35712,6 +35715,7 @@
         <attribute change_tactics_after_casting="" />
         <attribute fast_caster="" />
         <attribute native_name="Caster" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -35751,6 +35755,7 @@
         <attribute change_tactics_after_casting="" />
         <attribute fast_caster="" />
         <attribute native_name="Caster" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -38086,6 +38091,7 @@
         <attribute box_num="3" />
         <attribute ts_sort="3" />
         <attribute icon_size="0.9" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <contains id="1403" />
       <contains id="1404" />
@@ -38118,6 +38124,7 @@
         <attribute icon_size="0.9" />
         <attribute archer="" />
         <attribute native_name="Archer" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -38156,6 +38163,7 @@
         <attribute icon_size="0.9" />
         <attribute archer="" />
         <attribute native_name="Archer" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -38194,6 +38202,7 @@
         <attribute icon_size="0.9" />
         <attribute archer="" />
         <attribute native_name="Archer" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -38232,6 +38241,7 @@
         <attribute icon_size="0.9" />
         <attribute archer="" />
         <attribute native_name="Archer" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -38270,6 +38280,7 @@
         <attribute icon_size="0.9" />
         <attribute archer="" />
         <attribute native_name="Archer" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -38308,6 +38319,7 @@
         <attribute icon_size="0.9" />
         <attribute archer="" />
         <attribute native_name="Archer" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -40137,6 +40149,7 @@
         <attribute icon_folder="wesnoth/units/dwarves" />
         <attribute virtual_dwelling="" />
         <attribute icon_size="0.9" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <contains id="1477" />
       <contains id="1478" />
@@ -40168,6 +40181,7 @@
         <attribute armored="" />
         <attribute icon_size="0.9" />
         <attribute native_name="Axeman" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -40206,6 +40220,7 @@
         <attribute armored="" />
         <attribute icon_size="0.9" />
         <attribute native_name="Axeman" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -40244,6 +40259,7 @@
         <attribute armored="" />
         <attribute icon_size="0.9" />
         <attribute native_name="Axeman" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -40282,6 +40298,7 @@
         <attribute armored="" />
         <attribute icon_size="0.9" />
         <attribute native_name="Axeman" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -40320,6 +40337,7 @@
         <attribute armored="" />
         <attribute icon_size="0.9" />
         <attribute native_name="Axeman" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -40358,6 +40376,7 @@
         <attribute armored="" />
         <attribute icon_size="0.9" />
         <attribute native_name="Axeman" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -45769,6 +45788,7 @@
         <attribute ts_sort="3" />
         <attribute ts_offset="1" />
         <attribute icon_size="0.9" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <contains id="1743" />
       <contains id="1744" />
@@ -45799,6 +45819,7 @@
         <attribute needs_init="" />
         <attribute icon_size="0.9" />
         <attribute native_name="Assassin" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -45836,6 +45857,7 @@
         <attribute needs_init="" />
         <attribute icon_size="0.9" />
         <attribute native_name="Assassin" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -45873,6 +45895,7 @@
         <attribute needs_init="" />
         <attribute icon_size="0.9" />
         <attribute native_name="Swordsman" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -45910,6 +45933,7 @@
         <attribute needs_init="" />
         <attribute icon_size="0.9" />
         <attribute native_name="Swordsman" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -45947,6 +45971,7 @@
         <attribute needs_init="" />
         <attribute icon_size="0.9" />
         <attribute native_name="Swordsman" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -45984,6 +46009,7 @@
         <attribute needs_init="" />
         <attribute icon_size="0.9" />
         <attribute native_name="Assassin" />
+        <attribute roving_native="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
