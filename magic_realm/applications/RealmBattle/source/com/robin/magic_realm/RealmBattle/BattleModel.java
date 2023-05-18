@@ -2867,15 +2867,22 @@ public class BattleModel {
 	}
 
 	private boolean testRedDeadDisengage(MonsterChitComponent monster,CombatWrapper combat,CombatWrapper targetCombat) {
-		if (monster.canPinOpponent()) {
+		if (targetCombat==null) {
+				if (monster.isPinningOpponent()) {
+					monster.flip();
+					logBattleInfo(monster+" does flip back, because no target available.");
+				}
+			return true;
+		}
+		if (monster.canPinOpponent() && targetCombat!=null) {
 			logBattleInfo(monster+" is a Tremendous monster");
 			logBattleInfo(monster+" hit result: "+combat.getHitResult());
-			if (monster.isPinningOpponent() && targetCombat!=null && targetCombat.getKilledBy()!=null) {
+			if (monster.isPinningOpponent() && targetCombat.getKilledBy()!=null) {
 				// Red-side up monsters should flip back when their target is dead!
 				monster.flip();
 				logBattleInfo(monster+" flips back to light side.");
 			}
-			else if (!monster.isPinningOpponent() && combat.getHitResult()!=null && targetCombat!=null && targetCombat.getKilledBy()==null) {
+			else if (!monster.isPinningOpponent() && combat.getHitResult()!=null && targetCombat.getKilledBy()==null) {
 				/* Tremendous Monsters flip to red when they hit, but only if they:
 				 * 		- aren't already red side up
 				 * 		- hit their target somehow
@@ -2904,7 +2911,6 @@ public class BattleModel {
 			}
 			
 			if (monster.isPinningOpponent()) {
-				
 				RealmComponent targetRc = RealmComponent.getRealmComponent(targetCombat.getGameObject());
 				if (targetRc.isCharacter()) {
 					CharacterWrapper character = new CharacterWrapper(targetCombat.getGameObject());
