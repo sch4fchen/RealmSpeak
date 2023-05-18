@@ -206,6 +206,8 @@ public class RealmBattle {
 				return nextCombatAction(host,data); // recurses!
 			}
 			
+			checkForHurricaneWinds(currentCombatLocation,data);
+			
 			HashLists<Integer,CharacterWrapper> lists = findCharacterStates(currentCombatLocation,data);
 			ArrayList<Integer> states = new ArrayList<>(lists.keySet());
 			
@@ -624,6 +626,16 @@ public class RealmBattle {
 	public static void energizeDenizenPreBattleSpells(TileLocation location,GameData data) {
 		BattleModel model = buildBattleModel(location,data);
 		model.doEnergizeDenizenPreBattleSpells();
+	}
+	
+	public static void checkForHurricaneWinds(TileLocation location,GameData data) {
+		BattleModel model = buildBattleModel(location,data);
+		for (RealmComponent rc : model.getAllBattleParticipants(true)) {
+			String blownSpellId = rc.getGameObject().getThisAttribute(Constants.BLOWS_TARGET);
+			if (blownSpellId!=null) {
+				model.blowTarget(blownSpellId, rc);
+			}
+		}
 	}
 	
 	public static void energizeSpells(TileLocation location,GameData data) {

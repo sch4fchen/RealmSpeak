@@ -78,6 +78,7 @@ NEW FEATURES:
 # Optional rule: No Spying (e.g. for Super Realm)
 # Add functionality to horses for monsters (e.g. Bone Horse in Super Realm)
 # Relationship of roving natives is enemy by default (Super Realm)
+# Check for hurricane winds effect at the start of a combat (e.g. quests)
 BUGS/ISSUES:
 # Fix drawing same quest cards in multiplayer games
 # Fix crash for Tremendous monster without a target

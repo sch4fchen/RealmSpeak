@@ -2508,32 +2508,8 @@ public class BattleModel {
 				// Check first for Hurricane Winds
 				String blownSpellId = rc.getGameObject().getThisAttribute(Constants.BLOWS_TARGET);
 				if (blownSpellId!=null) {
-					// Yep, getting blown away here
-					
-					// Flip to light side
-					RealmUtility.normalizeParticipant(rc);
-					
-					// Move to target tile
-					GameObject go = gameData.getGameObject(Long.valueOf(blownSpellId));
-					SpellWrapper spell = new SpellWrapper(go);
-					TileComponent tile = (TileComponent)RealmComponent.getRealmComponent(spell.getSecondaryTarget());
-					TileLocation tl = new TileLocation(tile,true);
-					ClearingUtility.moveToLocation(rc.getGameObject(),tl);
-					
-					// Clear all attackers
-					for (GameObject attacker:combat.getAttackers()) {
-						RealmComponent arc = RealmComponent.getRealmComponent(attacker);
-						arc.clearTargets();
-						combat.removeAttacker(attacker);
-					}
-					
-					// Expire the wind spell if rc is a player controlled critter
-					if (rc.isAnyLeader()) {
-						spell.expireSpell();
-						rc.getGameObject().setThisAttribute(Constants.LAND_FIRST); // Forces a landing at the beginning of next turn
-					}
+					blowTarget(blownSpellId, rc);
 					disengage = true;
-					logBattleInfo(rc+" is blown away to "+tile.getGameObject().getNameWithNumber()+"!");
 				}
 				else {
 					RealmComponent target1 = rc.getTarget();
@@ -2865,7 +2841,37 @@ public class BattleModel {
 		}
 		return ret;
 	}
-
+	public void blowTarget(String blownSpellId, RealmComponent rc) {
+		if (blownSpellId!=null) {
+			// Yep, getting blown away here
+			
+			// Flip to light side
+			RealmUtility.normalizeParticipant(rc);
+			
+			// Move to target tile
+			GameObject go = gameData.getGameObject(Long.valueOf(blownSpellId));
+			SpellWrapper spell = new SpellWrapper(go);
+			TileComponent tile = (TileComponent)RealmComponent.getRealmComponent(spell.getSecondaryTarget());
+			TileLocation tl = new TileLocation(tile,true);
+			ClearingUtility.moveToLocation(rc.getGameObject(),tl);
+			
+			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
+			// Clear all attackers
+			for (GameObject attacker:combat.getAttackers()) {
+				RealmComponent arc = RealmComponent.getRealmComponent(attacker);
+				arc.clearTargets();
+				combat.removeAttacker(attacker);
+			}
+			
+			// Expire the wind spell if rc is a player controlled critter
+			if (rc.isAnyLeader()) {
+				spell.expireSpell();
+				rc.getGameObject().setThisAttribute(Constants.LAND_FIRST); // Forces a landing at the beginning of next turn
+			}
+			logBattleInfo(rc+" is blown away to "+tile.getGameObject().getNameWithNumber()+"!");
+		}
+	}
+	
 	private boolean testRedDeadDisengage(MonsterChitComponent monster,CombatWrapper combat,CombatWrapper targetCombat) {
 		if (targetCombat==null) {
 				if (monster.isPinningOpponent()) {
