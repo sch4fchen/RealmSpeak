@@ -235,7 +235,10 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 			GameObject owner = getGameObject().getHeldBy();
 			if (owner!=null) { // Might be null in the character builder app
 				CharacterWrapper character = new CharacterWrapper(getGameObject().getHeldBy());
-				if (strength.getChar()!="T" && character.getGameObject().hasThisAttribute(Constants.STRONG_MF)) {
+				if (character.getGameObject().hasThisAttribute(Constants.SHRINK)) {
+					strength.modify(-1);
+				}
+				if (character.getGameObject().hasThisAttribute(Constants.STRONG_MF)) {
 					strength.modify(1);
 				}
 			}
@@ -500,6 +503,12 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 				}
 				if (new CombatWrapper(character.getGameObject()).isFreezed()) {
 					mod++;
+				}
+				if (getGameObject().hasThisAttribute(Constants.SLOWED)) {
+					mod++;
+				}
+				if (getGameObject().hasThisAttribute(Constants.SHRINK)) {
+					mod--;
 				}
 			}
 			

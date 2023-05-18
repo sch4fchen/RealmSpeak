@@ -1,8 +1,6 @@
 ::ROADMAP::
 Control horse: Spell breaks while controlling a regular horse, horse is paired with individual who killed the spellcaster (in the case of an unhired native, it is put with the native group's belongings).  If the spellcaster isn't killed, the horse is abandoned.
 	characters > HQs > natives; hired > unhired; If still a tie, roll for tiebreaker, modifiers apply.
-	
-SLOWED, SHRINK for character
 --FEATURE REQUEST---
 Wesnoth graphics  option for vanilla and exp1
 ---Super Realms Content---
