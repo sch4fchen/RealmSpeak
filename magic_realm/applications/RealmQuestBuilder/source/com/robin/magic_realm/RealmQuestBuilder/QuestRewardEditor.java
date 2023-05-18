@@ -305,6 +305,10 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffectOnCharacter.SPELL, "Spell", FieldType.StringSelector, QuestRewardSpellEffectOnCharacter.EffectOnCharacter.values()));
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffectOnCharacter.REMOVE, "Remove spell", FieldType.Boolean));
 				break;
+			case SpellEffectOnClearing:
+				list.add(new QuestPropertyBlock(QuestRewardSpellEffectOnClearing.SPELL, "Spell", FieldType.StringSelector, QuestRewardSpellEffectOnClearing.EffectOnClearing.values()));
+				list.add(new QuestPropertyBlock(QuestRewardSpellEffectOnClearing.REMOVE, "Remove spell", FieldType.Boolean));
+				break;
 			case SpellEffectOnTile:
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffectOnTile.SPELL, "Spell", FieldType.StringSelector, QuestRewardSpellEffectOnTile.EffectOnTile.values()));
 				list.add(new QuestPropertyBlock(QuestRewardSpellEffectOnTile.REMOVE, "Remove spell", FieldType.Boolean));

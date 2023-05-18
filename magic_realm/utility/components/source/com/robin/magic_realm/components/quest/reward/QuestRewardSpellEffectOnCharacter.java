@@ -13,14 +13,18 @@ public class QuestRewardSpellEffectOnCharacter extends QuestReward {
 	public static final String REMOVE = "_remove";
 	
 	public enum EffectOnCharacter {
+		Barkskin,
 		BlazingLightX,
 		DivineMight,
 		DivineProtection,
+		DivineShield,
 		HurricaneWinds,
 		Lost,
+		NegativeAura,
 		PeaceWithNature,
 		Premonition,
 		Prophecy,
+		ProtectionFromMagic,
 		Shrink,
 		Slowed,
 		SpiritGuide,
@@ -34,6 +38,9 @@ public class QuestRewardSpellEffectOnCharacter extends QuestReward {
 	public void processReward(JFrame frame,CharacterWrapper character) {
 		String effect;
 		switch (getSpell()) {
+		case Barkskin:
+			effect = Constants.BARKSKIN;
+			break;
 		case BlazingLightX:
 			effect = Constants.TORCH_BEARER;
 			break;
@@ -41,6 +48,9 @@ public class QuestRewardSpellEffectOnCharacter extends QuestReward {
 			effect = Constants.STRONG_MF;
 			break;
 		case DivineProtection:
+			effect = Constants.STRENGTHENED_VULNERABILITY;
+			break;
+		case DivineShield:
 			effect = Constants.ADDS_ARMOR;
 			break;
 		case HurricaneWinds:
@@ -59,6 +69,9 @@ public class QuestRewardSpellEffectOnCharacter extends QuestReward {
 		case Lost:
 			effect = Constants.SP_MOVE_IS_RANDOM;
 			break;
+		case NegativeAura:
+			effect = Constants.NEGATIVE_AURA;
+			break;
 		case PeaceWithNature:
 			effect = Constants.PEACE_WITH_NATURE;
 			break;
@@ -67,6 +80,9 @@ public class QuestRewardSpellEffectOnCharacter extends QuestReward {
 			break;
 		case Prophecy:
 			effect = Constants.DAYTIME_ACTIONS;
+			break;
+		case ProtectionFromMagic:
+			effect = Constants.MAGIC_PROTECTION;
 			break;
 		case Shrink:
 			effect = Constants.SHRINK;
