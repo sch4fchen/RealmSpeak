@@ -33,8 +33,11 @@ public class ControlHorseEffect implements ISpellEffect {
 		GameObject formerOwner = context.getGameData().getGameObject(context.Spell.getExtraIdentifier());
 		RealmComponent formerOwnerRc = RealmComponent.getRealmComponent(formerOwner);
 		RealmComponent horse = context.Target;
-		if (context.Caster.hasThisAttribute(Constants.DEAD)) {
-			if (horse.isHorse()) {
+		if (formerOwnerRc.getCurrentLocation().equals(horse.getCurrentLocation()) && (formerOwnerRc.isNative() || formerOwnerRc.isMonster())) {
+			formerOwner.add(horse.getGameObject());
+		}
+		else if (horse.isHorse()){
+			if (context.Caster.hasThisAttribute(Constants.DEAD)) {
 				CombatWrapper combat = new CombatWrapper(context.Caster);
 				GameObject killedBy = combat.getKilledBy();
 				RealmComponent killer = RealmComponent.getRealmComponent(killedBy);
@@ -49,22 +52,6 @@ public class ControlHorseEffect implements ISpellEffect {
 					}
 				}
 			}
-			else if (horse.isNativeHorse()) {
-				if (formerOwnerRc.getCurrentLocation().equals(horse.getCurrentLocation())) {
-					formerOwner.add(horse.getGameObject());
-				}
-				else {
-					if (!horse.getGameObject().hasThisAttribute(RealmComponent.MONSTER_STEED) && formerOwnerRc.isNative() && horse.getCurrentLocation()!=null && horse.getCurrentLocation().clearing!=null) {
-						horse.getCurrentLocation().clearing.add(horse.getGameObject(),null);
-					}
-					else if (horse.getGameObject().hasThisAttribute(RealmComponent.MONSTER_STEED) ) {
-						formerOwnerRc.add(horse);
-					}
-					else {
-						SetupCardUtility.resetDenizen(horse.getGameObject());
-					}
-				}
-			}
 			else {
 				if (horse.getCurrentLocation()!=null && horse.getCurrentLocation().clearing!=null) {
 					horse.getCurrentLocation().clearing.add(horse.getGameObject(),null);
@@ -72,17 +59,18 @@ public class ControlHorseEffect implements ISpellEffect {
 					SetupCardUtility.resetDenizen(horse.getGameObject());
 				}
 			}
-		} else {
-			if (horse.getCurrentLocation()!=null && horse.getCurrentLocation().clearing!=null) {
+		}
+		else {
+			if (!horse.getGameObject().hasThisAttribute(RealmComponent.MONSTER_STEED) && horse.getCurrentLocation()!=null && horse.getCurrentLocation().clearing!=null) {
 				horse.getCurrentLocation().clearing.add(horse.getGameObject(),null);
 			}
 			else if (horse.getGameObject().hasThisAttribute(RealmComponent.MONSTER_STEED) ) {
 				formerOwnerRc.add(horse);
+				SetupCardUtility.resetDenizen(horse.getGameObject());
 			}
 			else {
 				SetupCardUtility.resetDenizen(horse.getGameObject());
 			}
 		}
 	}
-
 }
