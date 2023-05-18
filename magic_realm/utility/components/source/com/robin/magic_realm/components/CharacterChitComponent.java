@@ -92,7 +92,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	}
 
 	public void paintComponent(Graphics g1) {
-		if (displayStyle == DISPLAY_STYLE_LEGENDARY && legendaryImageExists()) {
+		if ((displayStyle == DISPLAY_STYLE_LEGENDARY || displayStyle == DISPLAY_STYLE_ALTERNATIVE) && legendaryImageExists()) {
 			super.paintComponent(g1, false);
 		}
 		else if (displayStyle == DISPLAY_STYLE_LEGENDARY_CLASSIC && legendaryClassicImageExists()) {
@@ -182,7 +182,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				String iconName = gameObject.getThisAttribute(Constants.ICON_TYPE);
 				String iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER);
 				if (iconName!=null && iconFolder!=null) {
-					if (displayStyle == DISPLAY_STYLE_LEGENDARY && legendaryImageExists()) {
+					if ((displayStyle == DISPLAY_STYLE_LEGENDARY || displayStyle == DISPLAY_STYLE_ALTERNATIVE) && legendaryImageExists()) {
 						iconFolder = iconFolder+"_legendary";
 						if (isHidden()) {
 							iconName=iconName+"_h";

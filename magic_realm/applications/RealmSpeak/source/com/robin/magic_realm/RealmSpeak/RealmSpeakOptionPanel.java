@@ -522,7 +522,6 @@ public class RealmSpeakOptionPanel extends JDialog {
 		group.add(legendaryChitsOption);
 		panel.add(legendaryChitsOption);
 		alternativeChitsOption = new JRadioButton("Alternative Chits");
-		alternativeChitsOption.setEnabled(false);
 		group.add(alternativeChitsOption);
 		panel.add(alternativeChitsOption);
 		chitArmorOption = new JCheckBox("Display Armor Border");

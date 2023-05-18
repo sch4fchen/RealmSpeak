@@ -630,11 +630,19 @@ public class TreasureSetupCardView extends JComponent {
 							}
 							
 							g.draw(rect);
-							String iconType = go.getThisAttribute(Constants.ICON_TYPE);
+							String iconType = null;
+							String folder = null;
+							if (RealmComponent.isDisplayStyleAlternative() && go.hasThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE) && go.hasThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE)) {
+								iconType = go.getThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE);
+								folder = go.getThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE);
+							}
+							else {
+								iconType = go.getThisAttribute(Constants.ICON_TYPE);
+								folder = go.getThisAttribute(Constants.ICON_FOLDER);
+							}
 							
 							// Draw the icon (if any)
-							if (iconType != null) {
-								String folder = go.getThisAttribute("icon_folder");
+							if (iconType != null && folder != null) {
 								String filename = folder+"/"+iconType;
 								ImageIcon icon = null;
 								String size = getChitSizeAttribute(go);
@@ -645,7 +653,11 @@ public class TreasureSetupCardView extends JComponent {
 								else {
 									sizePercentage=70;
 								}
-								if (go.hasThisAttribute(Constants.ICON_SIZE)) {
+								
+								if (RealmComponent.isDisplayStyleAlternative() && go.hasThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE)) {
+									sizePercentage = (int) (100*Double.parseDouble(go.getThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE)));
+								}
+								else if (go.hasThisAttribute(Constants.ICON_SIZE)) {
 									sizePercentage = (int) (100*Double.parseDouble(go.getThisAttribute(Constants.ICON_SIZE)));
 								}
 								
