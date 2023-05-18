@@ -39,6 +39,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 	protected JRadioButton colorChitsOption;
 	protected JRadioButton frenzelChitsOption;
 	protected JRadioButton legendaryChitsOption;
+	protected JRadioButton alternativeChitsOption;
 	protected JCheckBox chitArmorOption;
 	protected JCheckBox chitSublineOption;
 	protected JCheckBox monsterNumbersOption;
@@ -48,6 +49,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 	protected JRadioButton classicCharacterChitsOption;
 	protected JRadioButton legendaryClassicCharacterChitsOption;
 	protected JRadioButton legendaryCharacterChitsOption;
+	protected JRadioButton alternativeCharacterChitsOption;
 	
 	protected JRadioButton classicTilesOption;
 	protected JRadioButton legendaryTilesOption;
@@ -139,6 +141,9 @@ public class RealmSpeakOptionPanel extends JDialog {
 			case RealmComponent.DISPLAY_STYLE_LEGENDARY:
 				legendaryChitsOption.setSelected(true);
 				break;
+			case RealmComponent.DISPLAY_STYLE_ALTERNATIVE:
+				alternativeChitsOption.setSelected(true);
+				break;
 			default:
 				classicChitsOption.setSelected(true);
 				break;
@@ -155,6 +160,9 @@ public class RealmSpeakOptionPanel extends JDialog {
 				break;
 			case CharacterChitComponent.DISPLAY_STYLE_LEGENDARY:
 				legendaryCharacterChitsOption.setSelected(true);
+				break;
+			case CharacterChitComponent.DISPLAY_STYLE_ALTERNATIVE:
+				alternativeCharacterChitsOption.setSelected(true);
 				break;
 			default:
 				classicCharacterChitsOption.setSelected(true);
@@ -309,6 +317,9 @@ public class RealmSpeakOptionPanel extends JDialog {
 		else if (legendaryChitsOption.isSelected()) {
 			return RealmComponent.DISPLAY_STYLE_LEGENDARY;
 		}
+		else if (alternativeChitsOption.isSelected()) {
+			return RealmComponent.DISPLAY_STYLE_ALTERNATIVE;
+		}
 		return RealmComponent.DISPLAY_STYLE_CLASSIC;
 	}
 	private int getCharacterChitDisplayStyle() {
@@ -317,6 +328,9 @@ public class RealmSpeakOptionPanel extends JDialog {
 		}
 		if (legendaryCharacterChitsOption.isSelected()) {
 			return CharacterChitComponent.DISPLAY_STYLE_LEGENDARY;
+		}
+		if (alternativeCharacterChitsOption.isSelected()) {
+			return CharacterChitComponent.DISPLAY_STYLE_ALTERNATIVE;
 		}
 		return CharacterChitComponent.DISPLAY_STYLE_CLASSIC;
 	}
@@ -491,7 +505,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		return panel;
 	}
 	private JPanel getChitsOptionsPanel() {
-		JPanel panel = new JPanel(new GridLayout(9,1));
+		JPanel panel = new JPanel(new GridLayout(10,1));
 		panel.setBorder(BorderFactory.createTitledBorder("Game Chits"));
 		ButtonGroup group = new ButtonGroup();
 		classicChitsOption = new JRadioButton("Classic Chits");
@@ -507,6 +521,10 @@ public class RealmSpeakOptionPanel extends JDialog {
 		legendaryChitsOption.setEnabled(false);
 		group.add(legendaryChitsOption);
 		panel.add(legendaryChitsOption);
+		alternativeChitsOption = new JRadioButton("Alternative Chits");
+		alternativeChitsOption.setEnabled(false);
+		group.add(alternativeChitsOption);
+		panel.add(alternativeChitsOption);
 		chitArmorOption = new JCheckBox("Display Armor Border");
 		panel.add(chitArmorOption);
 		chitSublineOption = new JCheckBox("Show Native subline");
@@ -520,7 +538,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		return panel;
 	}
 	private JPanel getCharacterChitsOptionPanel() {
-		JPanel panel = new JPanel(new GridLayout(3,1));
+		JPanel panel = new JPanel(new GridLayout(4,1));
 		panel.setBorder(BorderFactory.createTitledBorder("Character Chits Style"));
 		ButtonGroup group = new ButtonGroup();
 		classicCharacterChitsOption = new JRadioButton("Classic");
@@ -532,6 +550,9 @@ public class RealmSpeakOptionPanel extends JDialog {
 		legendaryCharacterChitsOption = new JRadioButton("Legendary Realm");
 		group.add(legendaryCharacterChitsOption);
 		panel.add(legendaryCharacterChitsOption);
+		alternativeCharacterChitsOption = new JRadioButton("Alternative");
+		group.add(alternativeCharacterChitsOption);
+		panel.add(alternativeCharacterChitsOption);
 		return panel;
 	}
 	private JPanel getTilesOptionsPanel() {

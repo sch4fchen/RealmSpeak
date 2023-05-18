@@ -1,6 +1,4 @@
 ::ROADMAP::
---FEATURE REQUEST---
-Wesnoth graphics  option for vanilla and exp1
 ---Super Realms Content---
 Spells III: Migration, Tracker’s Sense, Water Run
 Spells IV: Blinding Light, Control Element, Elemental Spirit, Frozen Water, Reserve, Violent Winds
@@ -75,6 +73,7 @@ QUEST UPDATE:
 SUPER REALM:
 # New spells: Control Horse, Horse Whisper
 NEW FEATURES:
+# Option for alternative chit style (Wesnoth)
 # Optional rule: No Spying (e.g. for Super Realm)
 # Add functionality to horses for monsters (e.g. Bone Horse in Super Realm)
 # Relationship of roving natives is enemy by default (Super Realm)

@@ -31,7 +31,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 	public void updateChit() {
 		int oldSize = chitSize;
 		chitSize = isShrunk()?S_CHIT_SIZE:M_CHIT_SIZE;
-		if (isDisplayStyleFrenzel()) {
+		if (isDisplayStyleFrenzel() || isDisplayStyleAlternative()) {
 			chitSize = H_CHIT_SIZE;
 		}
 		else {
@@ -58,7 +58,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 			updateSize();
 		}
 		try {
-			if (isDisplayStyleFrenzel()) {
+			if (isDisplayStyleFrenzel() || isDisplayStyleAlternative()) {
 				lightColor = Color.white;
 				darkColor = Color.white;
 			}
@@ -170,16 +170,34 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		String letterCode = group.substring(0, 1).toUpperCase();
 		
 		// Draw image
-		String icon_type = gameObject.getThisAttribute(Constants.ICON_TYPE);
+		String icon_type = null;
+		if (isDisplayStyleAlternative() && gameObject.hasThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE)) {
+			gameObject.getThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE);
+		}
+		else {
+			icon_type = gameObject.getThisAttribute(Constants.ICON_TYPE);
+		}
 		if (icon_type != null) {
 			NativeSteedChitComponent horse = (NativeSteedChitComponent)getHorse(false);
 			if (horse!=null) {
-				String icon_rider = gameObject.getThisAttribute(Constants.ICON_TYPE_RIDER);
+				String icon_rider = null;
+				if (isDisplayStyleAlternative() && gameObject.hasThisAttribute(Constants.ICON_TYPE_RIDER+Constants.ALTERNATIVE)) {
+					icon_rider = gameObject.getThisAttribute(Constants.ICON_TYPE_RIDER+Constants.ALTERNATIVE);
+				}
+				else {
+					icon_rider = gameObject.getThisAttribute(Constants.ICON_TYPE_RIDER);
+				}
 				if (icon_rider!=null) {
 					icon_type = icon_rider;
 				}
 			}
-			String iconDir = gameObject.getThisAttribute(Constants.ICON_FOLDER);
+			String iconDir = null;
+			if (isDisplayStyleAlternative() && gameObject.hasThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE)) {
+				iconDir = gameObject.getThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE);
+			}
+			else {
+				iconDir = gameObject.getThisAttribute(Constants.ICON_FOLDER);
+			}
 			if (iconDir==null) {
 				iconDir = "natives";
 			}
@@ -192,10 +210,16 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 
 			double size = 0;
 			int yOffset = 0;
-			if (gameObject.hasThisAttribute(Constants.ICON_SIZE)) {
+			if (gameObject.hasThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE)) {
+				size = Double.parseDouble(gameObject.getThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE));
+			}
+			else if (gameObject.hasThisAttribute(Constants.ICON_SIZE)) {
 				size = Double.parseDouble(gameObject.getThisAttribute(Constants.ICON_SIZE));
 			}
-			if (gameObject.hasThisAttribute(Constants.ICON_Y_OFFSET)) {
+			if (gameObject.hasThisAttribute(Constants.ICON_Y_OFFSET+Constants.ALTERNATIVE)) {
+				size = Double.parseDouble(gameObject.getThisAttribute(Constants.ICON_Y_OFFSET+Constants.ALTERNATIVE));
+			}
+			else if (gameObject.hasThisAttribute(Constants.ICON_Y_OFFSET)) {
 				yOffset = getThisInt(Constants.ICON_Y_OFFSET);
 			}
 			
@@ -228,7 +252,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 			tt.draw(g, getChitSize() - 10 - tt.getWidth(g), 7, Alignment.Left);
 		}
 		
-		if (isDisplayStyleFrenzel() && isDarkSideUp()) {
+		if ((isDisplayStyleFrenzel() || isDisplayStyleAlternative())&& isDarkSideUp()) {
 			g.setColor(Color.black);
 			g.fillRect(4,cs-19,cs-8,17);
 		}
@@ -244,7 +268,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		int y;
 		
 		String statColor = "BOLD";
-		if (isDisplayStyleFrenzel()) {
+		if (isDisplayStyleFrenzel() || isDisplayStyleAlternative()) {
 			statColor = isLightSideUp()?"STAT_ORANGE":"STAT_BRIGHT_ORANGE";
 			
 			String length = getFaceAttributeString("length");
@@ -268,7 +292,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		}
 
 		String moveString = move_speed+(alteredMoveSpeed?"!":"");
-		if (isDisplayStyleFrenzel()) {
+		if (isDisplayStyleFrenzel() || isDisplayStyleAlternative()) {
 			tt = new TextType(moveString, cs, "STAT_WHITE");
 			x = cs - tt.getWidth(g) - 9;
 			y = cs - tt.getHeight(g) - 6;
@@ -284,7 +308,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 			tt.draw(g, x, y, Alignment.Left);
 		}
 		
-		if (isDisplayStyleFrenzel()) {
+		if (isDisplayStyleFrenzel() || isDisplayStyleAlternative()) {
 			paintFrenzelValues(g);
 		}
 		

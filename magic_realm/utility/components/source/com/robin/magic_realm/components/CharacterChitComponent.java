@@ -20,6 +20,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	public static final int DISPLAY_STYLE_CLASSIC = 0;
 	public static final int DISPLAY_STYLE_LEGENDARY_CLASSIC = 1;
 	public static final int DISPLAY_STYLE_LEGENDARY = 2;
+	public static final int DISPLAY_STYLE_ALTERNATIVE = 3;
 	public static final String HIDDEN = LIGHT_SIDE_UP;
 	public static final String UNHIDDEN = DARK_SIDE_UP;
 	
@@ -111,7 +112,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			if (icon_type != null) {
 				boolean transformSkin = false;
 				String iconDir = transmorph.getThisAttribute(Constants.ICON_FOLDER);
-				if (displayStyle == DISPLAY_STYLE_LEGENDARY) {
+				if (displayStyle == DISPLAY_STYLE_LEGENDARY || displayStyle == DISPLAY_STYLE_ALTERNATIVE) {
 					String iconDir_l = "characters_legendary";
 					String icon_type_l = icon_type;
 					if (isHidden()) {
@@ -149,7 +150,23 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		}
 		else {
 			// Draw image
-			if (gameObject.hasThisAttribute(Constants.SUPER_REALM) && gameObject.hasThisAttribute(Constants.ICON_TYPE+"_sr") && gameObject.hasThisAttribute(Constants.ICON_TYPE+"_sr")) {
+			if (displayStyle == DISPLAY_STYLE_ALTERNATIVE && gameObject.hasThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE) && gameObject.hasThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE)) {
+				String iconName = gameObject.getThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE);
+				String iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE);
+				Shape shape = getShape(SHADOW_BORDER,SHADOW_BORDER,getChitSize()-SHADOW_BORDER);
+				if (isHidden()) {
+					g.setColor(Color.green);
+				} else {
+					g.setColor(Color.white);
+				}
+				double size = 1.2;
+				if (gameObject.hasThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE)) {
+					size = Double.parseDouble(gameObject.getThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE));
+				}				
+				g.fill(shape);
+				drawIcon(g,iconFolder,iconName,size);
+			}
+			else if (gameObject.hasThisAttribute(Constants.SUPER_REALM) && gameObject.hasThisAttribute(Constants.ICON_TYPE+"_sr") && gameObject.hasThisAttribute(Constants.ICON_TYPE+"_sr")) {
 				String iconName = gameObject.getThisAttribute(Constants.ICON_TYPE+"_sr");
 				String iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER+"_sr");
 				Shape shape = getShape(SHADOW_BORDER,SHADOW_BORDER,getChitSize()-SHADOW_BORDER);

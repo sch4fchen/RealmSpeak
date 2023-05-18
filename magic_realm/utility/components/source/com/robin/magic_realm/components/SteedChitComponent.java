@@ -72,7 +72,20 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		super.paintComponent(g);
 		
 		// Draw image
-		if (gameObject.hasThisAttribute(Constants.SUPER_REALM)) {
+		if (isDisplayStyleAlternative() && gameObject.hasThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE) && gameObject.hasThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE)) {
+			double size = 0.5;
+			int yOffset = 0;
+			String folder = gameObject.getThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE);
+			String icon = gameObject.getThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE);
+			if (gameObject.hasThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE)) {
+				size = Double.parseDouble(gameObject.getThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE));
+			}
+			if (gameObject.hasThisAttribute(Constants.ICON_Y_OFFSET+Constants.ALTERNATIVE)) {
+				yOffset = getThisInt(Constants.ICON_Y_OFFSET+Constants.ALTERNATIVE);
+			}
+			drawIcon(g,folder,icon,size,0,yOffset,null);
+		}
+		else if (gameObject.hasThisAttribute(Constants.SUPER_REALM)) {
 			double size = 0.5;
 			int yOffset = 0;
 			String folder = gameObject.getThisAttribute(Constants.ICON_FOLDER);

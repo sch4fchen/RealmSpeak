@@ -44,7 +44,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	}
 	public void updateChit() {
 		int oldSize = chitSize;
-		if (isDisplayStyleFrenzel()) {
+		if (isDisplayStyleFrenzel() || isDisplayStyleAlternative()) {
 			chitSize = H_CHIT_SIZE;
 		}
 		else {
@@ -70,7 +70,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		}
 
 		try {
-			if (isDisplayStyleFrenzel()) {
+			if (isDisplayStyleFrenzel() || isDisplayStyleAlternative()) {
 				lightColor = Color.white;
 				darkColor = Color.white;
 			}
@@ -179,7 +179,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		boolean red = strength.equals("!");
 		String statColor = "STAT_BLACK";
 		g.setColor(Color.black);
-		if (isDisplayStyleFrenzel()) {
+		if (isDisplayStyleFrenzel() || isDisplayStyleAlternative()) {
 			if (!pins) {
 				if (isLightSideUp()) {
 					statColor = "STAT_ORANGE";
@@ -233,7 +233,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		Speed move_speed = getMoveSpeed();
 		if (move_speed!=null) {
 			String string = String.valueOf(move_speed.getNum())+(alteredMoveSpeed?"!":"");
-			if (isDisplayStyleFrenzel()) {
+			if (isDisplayStyleFrenzel() || isDisplayStyleAlternative()) {
 				int x,y;
 				TextType tt = new TextType(string, cs, "STAT_WHITE");
 				x = ox - tt.getWidth(g)-4;
@@ -298,6 +298,9 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		}
 	}
 	protected String getIconFolder() {
+		if (isDisplayStyleAlternative() && gameObject.hasThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE)) {
+			return gameObject.getThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE);
+		}
 		String iconDir = getGameObject().getThisAttribute(Constants.ICON_FOLDER);
 		if (useColorIcons() && !gameObject.hasThisAttribute(Constants.SUPER_REALM)) {
 			iconDir = iconDir+"_c";
@@ -317,15 +320,27 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		Color attackBack = isLightSideUp()?lightColor:darkColor;
 
 		// Draw image
-		String icon_type = gameObject.getThisAttribute(Constants.ICON_TYPE);
+		String icon_type = null;
+		if (isDisplayStyleAlternative() && gameObject.hasThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE)) {
+			icon_type = gameObject.getThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE);
+		}
+		else {
+			icon_type = gameObject.getThisAttribute(Constants.ICON_TYPE);
+		}
 		if (icon_type != null) {
-			if (isDisplayStyleFrenzel()) {
+			if (isDisplayStyleFrenzel() || isDisplayStyleAlternative()) {
 				double size = 0.6;
 				int yOffset = 1;
-				if (gameObject.hasThisAttribute(Constants.ICON_SIZE)) {
+				if (isDisplayStyleAlternative() && gameObject.hasThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE)) {
+					size = Double.parseDouble(gameObject.getThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE));
+				}
+				else if (gameObject.hasThisAttribute(Constants.ICON_SIZE)) {
 					size = Double.parseDouble(gameObject.getThisAttribute(Constants.ICON_SIZE));
 				}
-				if (gameObject.hasThisAttribute(Constants.ICON_Y_OFFSET)) {
+				if (isDisplayStyleAlternative() && gameObject.hasThisAttribute(Constants.ICON_Y_OFFSET+Constants.ALTERNATIVE)) {
+					yOffset = getThisInt(Constants.ICON_Y_OFFSET+Constants.ALTERNATIVE);
+				}
+				else if (gameObject.hasThisAttribute(Constants.ICON_Y_OFFSET)) {
 					yOffset = getThisInt(Constants.ICON_Y_OFFSET);
 				}
 				drawIcon(g, getIconFolder(), icon_type, size,-5,yOffset,null);
@@ -348,14 +363,14 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 			g.setFont(new Font("Dialog",Font.BOLD,11));
 			int x = 5;
 			int y = cs>>1;
-			if (isDisplayStyleFrenzel()) {
+			if (isDisplayStyleFrenzel() || isDisplayStyleAlternative()) {
 				y += 10;
 			}
 			g.drawString(gameObject.getThisAttribute(Constants.NUMBER),x,y);
 		}
 		
 		
-		if (isDisplayStyleFrenzel() && isDarkSideUp()) {
+		if ((isDisplayStyleFrenzel() || isDisplayStyleAlternative()) && isDarkSideUp()) {
 			attackBack = isPinningOpponent()?Color.red:Color.black;
 			g.setColor(attackBack);
 			g.fillRect(4,cs-20,cs-8,18);
@@ -365,7 +380,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		paintAttackValues(g,0,cs - 5,attackBack);
 		paintMoveValues(g,cs - 5,cs - 5);
 		
-		if (isDisplayStyleFrenzel()) {
+		if (isDisplayStyleFrenzel() || isDisplayStyleAlternative()) {
 			paintFrenzelValues(g);
 		}
 		

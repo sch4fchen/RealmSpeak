@@ -73,6 +73,9 @@ public class RealmSpeakOptions {
 			case RealmComponent.DISPLAY_STYLE_LEGENDARY:
 				RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_LEGENDARY;
 				break;
+			case RealmComponent.DISPLAY_STYLE_ALTERNATIVE:
+				RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_ALTERNATIVE;
+				break;
 			default:
 				RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_CLASSIC;
 				break;
@@ -89,6 +92,9 @@ public class RealmSpeakOptions {
 				break;
 			case CharacterChitComponent.DISPLAY_STYLE_LEGENDARY:
 				CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_LEGENDARY;
+				break;
+			case CharacterChitComponent.DISPLAY_STYLE_ALTERNATIVE:
+				CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_ALTERNATIVE;
 				break;
 			default:
 				CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_CLASSIC;

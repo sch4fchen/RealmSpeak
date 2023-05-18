@@ -300,7 +300,7 @@ public class TreasureSetupCardView extends JComponent {
 	}
 	private static String getChitSizeAttribute(GameObject go) {
 		String size = go.getThisAttribute("ts_size");
-		if (!"S+".equals(size) && !"HCARD".equals(size) && RealmComponent.isDisplayStyleFrenzel()) {
+		if (!"S+".equals(size) && !"HCARD".equals(size) && RealmComponent.isDisplayStyleFrenzel() || RealmComponent.isDisplayStyleAlternative()) {
 			return "H";
 		}
 		return size;

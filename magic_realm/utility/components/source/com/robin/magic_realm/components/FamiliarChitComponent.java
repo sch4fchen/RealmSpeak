@@ -27,15 +27,17 @@ public class FamiliarChitComponent extends SquareChitComponent {
 	}
 	
 	public Shape getShape(int x,int y,int size) {
-		if (CharacterChitComponent.displayStyle == CharacterChitComponent.DISPLAY_STYLE_LEGENDARY || 
-				CharacterChitComponent.displayStyle == CharacterChitComponent.DISPLAY_STYLE_LEGENDARY_CLASSIC) {
+		if (CharacterChitComponent.displayStyle == CharacterChitComponent.DISPLAY_STYLE_LEGENDARY
+			|| CharacterChitComponent.displayStyle == CharacterChitComponent.DISPLAY_STYLE_LEGENDARY_CLASSIC
+			|| CharacterChitComponent.displayStyle == CharacterChitComponent.DISPLAY_STYLE_ALTERNATIVE) {
 		return new Ellipse2D.Float(x,y,size-1,size-1);
 		}
 		return super.getShape(x, y, size);
 	}
 	
 	public void paintComponent(Graphics g) {
-		if (CharacterChitComponent.displayStyle == CharacterChitComponent.DISPLAY_STYLE_LEGENDARY) {
+		if (CharacterChitComponent.displayStyle == CharacterChitComponent.DISPLAY_STYLE_LEGENDARY
+				|| CharacterChitComponent.displayStyle ==DISPLAY_STYLE_ALTERNATIVE) {
 			super.paintComponent(g,false);
 			drawIcon(g,"characters_legendary","familiar",0.165);
 			return;

@@ -91,6 +91,14 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 	}
 	public String[] getFolderAndType() {
 		String[] ret = new String[3];
+		if (isDisplayStyleAlternative() && gameObject.hasThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE) && gameObject.hasThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE)) {
+			ret[0] = gameObject.getThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE);
+			ret[1] = gameObject.getThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE);
+			if (gameObject.hasThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE)) {
+				ret[2] = gameObject.getThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE);
+			}
+			return ret;
+		}
 		if (gameObject.hasThisAttribute(Constants.SUPER_REALM)) {
 			ret[0] = gameObject.getThisAttribute(Constants.ICON_FOLDER);
 			ret[1] = gameObject.getThisAttribute(Constants.ICON_TYPE);
@@ -116,7 +124,20 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		String letterCode = name.substring(0,1).toUpperCase();
 		
 		// Draw image
-		if (gameObject.hasThisAttribute(Constants.SUPER_REALM)) {
+		if (isDisplayStyleAlternative() && gameObject.hasThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE) && gameObject.hasThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE)) {
+			double size = 0.5;
+			int yOffset = 0;
+			String folder = gameObject.getThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE);
+			String icon = gameObject.getThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE);
+			if (gameObject.hasThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE)) {
+				size = Double.parseDouble(gameObject.getThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE));
+			}
+			if (gameObject.hasThisAttribute(Constants.ICON_Y_OFFSET+Constants.ALTERNATIVE)) {
+				yOffset = getThisInt(Constants.ICON_Y_OFFSET+Constants.ALTERNATIVE);
+			}
+			drawIcon(g,folder,icon,size,0,yOffset,null);
+		}
+		else if (gameObject.hasThisAttribute(Constants.SUPER_REALM)) {
 			double size = 0.5;
 			int yOffset = 0;
 			String folder = gameObject.getThisAttribute(Constants.ICON_FOLDER);

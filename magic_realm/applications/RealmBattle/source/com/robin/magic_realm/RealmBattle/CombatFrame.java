@@ -4019,6 +4019,9 @@ public class CombatFrame extends JFrame {
 			case RealmComponent.DISPLAY_STYLE_FRENZEL:
 				RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_FRENZEL;
 				break;
+			case RealmComponent.DISPLAY_STYLE_ALTERNATIVE:
+				RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_ALTERNATIVE;
+				break;
 			case RealmComponent.DISPLAY_STYLE_LEGENDARY:
 			default:
 				RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_LEGENDARY;
@@ -4030,6 +4033,9 @@ public class CombatFrame extends JFrame {
 				break;
 			case CharacterChitComponent.DISPLAY_STYLE_LEGENDARY_CLASSIC:
 				CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_LEGENDARY_CLASSIC;
+				break;
+			case CharacterChitComponent.DISPLAY_STYLE_ALTERNATIVE:
+				CharacterChitComponent.displayStyle = CharacterChitComponent.DISPLAY_STYLE_ALTERNATIVE;
 				break;
 			case CharacterChitComponent.DISPLAY_STYLE_LEGENDARY:
 			default:
