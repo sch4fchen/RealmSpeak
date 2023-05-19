@@ -34,7 +34,7 @@ public class QuestBookEvents extends GameObjectWrapper {
 	
 	public void setupEvents(JFrame frame,CharacterWrapper character) {
 		for(Quest card:getEvents()) {
-			if (card.getState()!=QuestState.New) continue; // skip all play cards that are no longer new (completed or failed)
+			if (card.getState()!=QuestState.New && !card.isMultipleUse()) continue; // skip all play cards that are no longer new (completed or failed)
 			Quest quest = card.copyQuestToGameData(getGameData());
 			quest.setState(QuestState.Assigned, character.getCurrentDayKey(), character); // indicates when the quest was first assigned
 			character.addQuest(frame,quest);

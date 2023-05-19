@@ -72,6 +72,7 @@ QUEST UPDATE:
 # QuestRewardSpellEffectOnCharacter: more effects
 # QuestRewardSpellEffectOnClearing
 # QuestRewardSpellEffectOnCharacter: Hurricane Winds: random adjacent tile is chosen
+# Quests: add option for multiple use quests for BoQ, All-Play quests and Events
 SUPER REALM:
 # New spells: Control Horse, Horse Whisper
 NEW FEATURES:

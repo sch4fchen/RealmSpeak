@@ -853,12 +853,16 @@ public class QuestBuilderFrame extends JFrame {
 		right.add(charLim);
 		right.add(Box.createVerticalGlue());
 		
+		JPanel clonedQuestsFrame = new JPanel(new GridLayout(1, 1));
+		clonedQuestsFrame.setMaximumSize(new Dimension(1000, 100));
+		clonedQuestsFrame.setBorder(BorderFactory.createTitledBorder("Multiple Use Quests"));
 		JPanel clonedQuests = new JPanel(new GridLayout(1, 1));
 		clonedQuests.setMaximumSize(new Dimension(1000, 100));
-		clonedQuests.setBorder(BorderFactory.createTitledBorder("Multiple Use Quests (All-Play,BoQ)"));
+		clonedQuests.setBorder(BorderFactory.createTitledBorder("(BOQ, All-Play, Events)"));
 		multipleUseOption = new JCheckBox("Multiple Use");
 		clonedQuests.add(multipleUseOption);
-		right.add(clonedQuests);
+		clonedQuestsFrame.add(clonedQuests);
+		right.add(clonedQuestsFrame);
 		right.add(Box.createVerticalGlue());
 		
 		panel.add(right);
