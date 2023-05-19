@@ -1,5 +1,5 @@
 ::ROADMAP::
-QuestReward for cloned quests: complete, fail, set counter
+QuestReward for cloned quests: ClonedQuestsComplete, ClonedQuestsFail, ClonedQuestsCounter
 ---Super Realms Content---
 Spells III: Migration, Tracker’s Sense, Water Run
 Spells IV: Blinding Light, Control Element, Elemental Spirit, Frozen Water, Reserve, Violent Winds
