@@ -26,12 +26,12 @@ public class QuestLoader {
 		GamePool pool = new GamePool(character.getGameData().getGameObjects());
 		ArrayList<String> query = new ArrayList<>();
 		query.add(RealmComponent.QUEST);
-		query.add("!"+Quest.STATE);
 		ArrayList<GameObject> allUnassingedQuests = pool.find(query);
 		ArrayList<Quest> quests = new ArrayList<>();
 		for (GameObject go : allUnassingedQuests) {
 			Quest quest = new Quest(go);
 			if (quest.canChooseQuest(character, hostPrefs)) {
+				if (go.hasThisAttribute(Quest.STATE) && !go.hasThisAttribute(QuestConstants.QUEST_MULTIPLE_USE)) continue;
 				if (hostPrefs.isUsingQuestCards() || (hostPrefs.isUsingBookOfQuests() && !quest.isEvent()) || hostPrefs.isUsingGuildQuests()) {
 					quests.add(quest);
 				}

@@ -98,6 +98,7 @@ public class QuestBuilderFrame extends JFrame {
 	private JCheckBox specificCharacterListOption;
 	private JTextField specificCharacterListField;
 	private JButton specificCharacterHelperButton;
+	private JCheckBox multipleUseOption;
 
 	private JTable ruleLimitationTable;
 
@@ -229,6 +230,8 @@ public class QuestBuilderFrame extends JFrame {
 		magicUserCharacterOption.setSelected(quest.getBoolean(QuestConstants.CHARACTER_MAGIC));
 		maleCharacterOption.setSelected(quest.getBoolean(QuestConstants.CHARACTER_MALE));
 		femaleCharacterOption.setSelected(quest.getBoolean(QuestConstants.CHARACTER_FEMALE));
+		
+		multipleUseOption.setSelected(quest.getBoolean(QuestConstants.QUEST_MULTIPLE_USE));
 
 		specificCharacterListOption.setSelected(quest.getBoolean(QuestConstants.CHARACTER_SPEC_REGEX));
 		specificCharacterListField.setText(specificCharacterListOption.isSelected() ? quest.getString(QuestConstants.CHARACTER_SPEC_REGEX) : "");
@@ -266,6 +269,8 @@ public class QuestBuilderFrame extends JFrame {
 		quest.setBoolean(QuestConstants.CHARACTER_MALE, maleCharacterOption.isSelected());
 		quest.setBoolean(QuestConstants.CHARACTER_FEMALE, femaleCharacterOption.isSelected());
 		quest.setString(QuestConstants.CHARACTER_SPEC_REGEX, specificCharacterListOption.isSelected() ? specificCharacterListField.getText() : null);
+		
+		quest.setBoolean(QuestConstants.QUEST_MULTIPLE_USE, multipleUseOption.isSelected());
 	}
 
 	private void rebuildSteps() {
@@ -847,7 +852,15 @@ public class QuestBuilderFrame extends JFrame {
 
 		right.add(charLim);
 		right.add(Box.createVerticalGlue());
-
+		
+		JPanel clonedQuests = new JPanel(new GridLayout(1, 1));
+		clonedQuests.setMaximumSize(new Dimension(1000, 100));
+		clonedQuests.setBorder(BorderFactory.createTitledBorder("Multiple Use Quests (All-Play,BoQ)"));
+		multipleUseOption = new JCheckBox("Multiple Use");
+		clonedQuests.add(multipleUseOption);
+		right.add(clonedQuests);
+		right.add(Box.createVerticalGlue());
+		
 		panel.add(right);
 
 		return panel;

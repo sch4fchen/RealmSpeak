@@ -838,4 +838,10 @@ public class Quest extends GameObjectWrapper {
 		}
 		JOptionPane.showMessageDialog(frame, area, title, JOptionPane.PLAIN_MESSAGE, icon);
 	}
+	public boolean isMultipleUse() {
+		return getBoolean(QuestConstants.QUEST_MULTIPLE_USE);
+	}
+	public void setMultipleUse(boolean val) {
+		setBoolean(QuestConstants.QUEST_MULTIPLE_USE,val);
+	}
 }
