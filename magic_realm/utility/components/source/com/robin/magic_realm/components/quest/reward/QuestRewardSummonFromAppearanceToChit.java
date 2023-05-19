@@ -184,7 +184,7 @@ public class QuestRewardSummonFromAppearanceToChit extends QuestReward {
 						if (warningName.toLowerCase().matches(warning)) {
 							ArrayList<ClearingDetail> clearings = rcChit.getCurrentLocation().tile.getClearings();
 							int random = RandomNumber.getRandom(clearings.size());
-							clearingSummonTo = rcChit.getCurrentLocation().tile.getClearing(random);
+							clearingSummonTo = clearings.get(random);
 						}
 					}
 				}

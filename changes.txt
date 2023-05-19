@@ -1,4 +1,6 @@
 ::ROADMAP::
+Correct Hurricane Winds Effect (optional rule for current behavior)
+QuestReward for cloned quests: complete, fail, set counter
 ---Super Realms Content---
 Spells III: Migration, Tracker’s Sense, Water Run
 Spells IV: Blinding Light, Control Element, Elemental Spirit, Frozen Water, Reserve, Violent Winds
@@ -38,7 +40,6 @@ Vault and Tomb (if discovered): can be opened with a missile attack, if after ro
 Ask Demon: 4 options, instead of just asking a question
 Absorb Essence: any denizens and Attention chits assigned to it become assigned to the spellcaster; absorbs steed when absorbing a monster
 	The spellcaster cannot be affected by multiple Absorb Essence spells. Any Absorb Essence spell he casts while he is already bewitched by Absorb Essence is cancelled.
-Hurricane Winds: check rule changes of newer Super Realm versions
 ---Optional Rules---
 Book of Quests: quests of the book
 Super Realm: Optional Rules (and 1st Ed): Severe wounds (SR: 10.1, p.114) = Serious Wounds, but wounds *2
@@ -68,16 +69,17 @@ Version 1.1.7.9
 QUEST UPDATE:
 # Updates to quests: A03
 # QuestLocation: Option to set location choice for cloned quests (e.g. All-Play quests)
-# QuestRewardSpellEffectOnCharacter: add more effects
+# QuestRewardSpellEffectOnCharacter: more effects
 # QuestRewardSpellEffectOnClearing
+# QuestRewardSpellEffectOnCharacter: Hurricane Winds: random adjacent tile is chosen
 SUPER REALM:
 # New spells: Control Horse, Horse Whisper
 NEW FEATURES:
 # Option for alternative chit style (Wesnoth)
 # Optional rule: No Spying (e.g. for Super Realm)
-# Add functionality to horses for monsters (e.g. Bone Horse in Super Realm)
-# Relationship of roving natives is enemy by default (Super Realm)
-# Check for hurricane winds effect at the start of a combat (e.g. quests)
+# Functionality for horses of monsters (e.g. Bone Horse in Super Realm)
+# Relationship of roving natives (enemy by default, e.g. Super Realm)
+# Hurricane Winds: check effect at the start of a combat (e.g. quests)
 BUGS/ISSUES:
 # Fix drawing same quest cards in multiplayer games
 # Fix crash for Tremendous monster without a target

@@ -120,7 +120,7 @@ public class Constants {
 	// Used by RealmComponent ThisAttributes
 	public static final String ICON_TYPE = "icon_type";
 	public static final String ICON_SIZE = "icon_size";
-	public static final String ALTERNATIVE = "_alternative";
+	public static final String ALTERNATIVE = "_alt";
 	public static final String ICON_Y_OFFSET = "icon_y_offset";
 	public static final String ICON_TYPE_RIDER = "icon_type_rider";
 	public static final String ICON_FOLDER = "icon_folder";

@@ -1,8 +1,11 @@
 package com.robin.magic_realm.components.quest.reward;
 
+import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
+import com.robin.general.util.RandomNumber;
+import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
@@ -54,8 +57,9 @@ public class QuestRewardSpellEffectOnCharacter extends QuestReward {
 			effect = Constants.ADDS_ARMOR;
 			break;
 		case HurricaneWinds:
-			GameObject hurricanWinds = character.getGameData().getGameObjectByNameIgnoreCase("hurricane winds");
-			if (hurricanWinds == null) return;
+			GameObject hurricanWindsOriginal = character.getGameData().getGameObjectByNameIgnoreCase("hurricane winds");
+			if (hurricanWindsOriginal == null) return;
+			GameObject hurricanWinds = hurricanWindsOriginal.copy();
 			if (remove()) {
 				character.getGameObject().removeThisAttribute(Constants.BLOWS_TARGET);
 				hurricanWinds.removeAttribute(SpellWrapper.SPELL_BLOCK_NAME,SpellWrapper.SECONDARY_TARGET);
@@ -63,7 +67,10 @@ public class QuestRewardSpellEffectOnCharacter extends QuestReward {
 			}
 			
 			if(character.getCurrentLocation() == null || character.getCurrentLocation().tile == null) return;
-			hurricanWinds.setAttribute(SpellWrapper.SPELL_BLOCK_NAME,SpellWrapper.SECONDARY_TARGET,character.getCurrentLocation().tile.getGameObject().getStringId());
+			ArrayList<TileComponent> adjacentTiles = new ArrayList<>(character.getCurrentLocation().tile.getAllAdjacentTiles());
+			TileComponent targetTile = adjacentTiles.get(RandomNumber.getRandom(adjacentTiles.size()));
+			SpellWrapper spell = new SpellWrapper(hurricanWinds);
+			spell.setSecondaryTarget(targetTile.getGameObject());
 			character.getGameObject().setThisAttribute(Constants.BLOWS_TARGET,hurricanWinds.getStringId());
 			return;
 		case Lost:

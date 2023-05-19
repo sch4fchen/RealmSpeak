@@ -6003,6 +6003,8 @@
         <attribute ts_color="tan" />
         <attribute icon_folder="dwellings" />
         <attribute rw_expansion_1="" />
+        <attribute icon_folder_alt="wesnoth/buildings" />
+        <attribute icon_type_alt="log-cabin4" />
       </AttributeBlock>
       <contains id="99" />
       <contains id="100" />
@@ -6034,6 +6036,8 @@
         <attribute ts_color="tan" />
         <attribute icon_folder="dwellings" />
         <attribute rw_expansion_1="" />
+        <attribute icon_folder_alt="wesnoth/buildings" />
+        <attribute icon_type_alt="log-cabin3" />
       </AttributeBlock>
       <contains id="91" />
       <contains id="92" />
@@ -6065,6 +6069,8 @@
         <attribute icon_folder="dwellings" />
         <attribute rw_expansion_1="" />
         <attribute remove_curses="" />
+        <attribute icon_folder_alt="wesnoth/buildings" />
+        <attribute icon_type_alt="elven2" />
       </AttributeBlock>
       <contains id="84" />
       <contains id="85" />
@@ -6094,6 +6100,8 @@
         <attribute ts_color="tan" />
         <attribute icon_folder="dwellings" />
         <attribute rw_expansion_1="" />
+        <attribute icon_folder_alt="wesnoth/buildings" />
+        <attribute icon_type_alt="drake5" />
       </AttributeBlock>
       <contains id="77" />
       <contains id="78" />
@@ -6118,6 +6126,8 @@
         <attribute rw_expansion_1="" />
         <attribute general_dwelling="" />
         <attribute no_shelter="" />
+        <attribute icon_folder_alt="wesnoth/buildings" />
+        <attribute icon_type_alt="fire3" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="232" name="Large Campfire">
@@ -6132,6 +6142,8 @@
         <attribute rw_expansion_1="" />
         <attribute general_dwelling="" />
         <attribute no_shelter="" />
+        <attribute icon_folder_alt="wesnoth/buildings" />
+        <attribute icon_type_alt="fire1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="233" name="Company Dwelling">
@@ -6150,6 +6162,9 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute virtual_dwelling="" />
+        <attribute icon_folder_alt="wesnoth/units/human-loyalists" />
+        <attribute icon_type_alt="sergeant" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <contains id="70" />
       <contains id="71" />
@@ -6178,6 +6193,9 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute virtual_dwelling="" />
+        <attribute icon_folder_alt="wesnoth/units/human-loyalists" />
+        <attribute icon_type_alt="bowman" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <contains id="103" />
       <contains id="104" />
@@ -6202,6 +6220,9 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute virtual_dwelling="" />
+        <attribute icon_folder_alt="wesnoth/units/human-loyalists" />
+        <attribute icon_type_alt="cavalryman" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <contains id="88" />
       <contains id="89" />
@@ -6226,6 +6247,9 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute virtual_dwelling="" />
+        <attribute icon_folder_alt="wesnoth/units/human-loyalists" />
+        <attribute icon_type_alt="horseman" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <contains id="80" />
       <contains id="81" />
@@ -6252,6 +6276,9 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute virtual_dwelling="" />
+        <attribute icon_folder_alt="wesnoth/units/human-outlaws" />
+        <attribute icon_type_alt="bandit" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <contains id="64" />
       <contains id="65" />
@@ -25535,6 +25562,8 @@
         <attribute icon_folder="dwellings" />
         <attribute rw_expansion_1="" />
         <attribute general_dwelling="" />
+        <attribute icon_folder_alt="wesnoth/buildings" />
+        <attribute icon_type_alt="hut" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1023" name="Dragonman 1">

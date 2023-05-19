@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.general.util.RandomNumber;
+import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.*;
@@ -61,7 +62,9 @@ public class QuestRewardVisitor extends QuestReward {
 					character.getCurrentLocation().clearing.add(selected,character);
 				}
 				else {
-					loc.tile.getClearing(RandomNumber.getRandom(loc.tile.getClearingCount())).add(selected,character);
+					ArrayList<ClearingDetail> clearings = loc.tile.getClearings();
+					int random = RandomNumber.getRandom(clearings.size());
+					clearings.get(random).add(selected,character);
 				}
 			}
 		}
