@@ -1,5 +1,4 @@
 ::ROADMAP::
-Correct Hurricane Winds Effect (optional rule for current behavior)
 QuestReward for cloned quests: complete, fail, set counter
 ---Super Realms Content---
 Spells III: Migration, Tracker’s Sense, Water Run
@@ -16,7 +15,7 @@ Super Realm: Adapt Commerce optional rules for new natives
 Super Realm: Characters, including potraits with credits, different chit icon
 Super Realm: option to use Super Realm search tables etc., add search tables etc. to menu; add first edition search tables to menu
 ---Super Realms Rules---
-Super Realm: icons for site chits, sound and warning chits, characters
+Super Realm: icons for site chits, sound and warning chits, characters, travelers/visitors etc.
 SUPER REALM: remaining RULES and LOGIC (rule changes compared to Magic Realm)
 Super Realm: Seasons + Weather 10.12 (p.117)
 Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
@@ -80,6 +79,7 @@ NEW FEATURES:
 # Functionality for horses of monsters (e.g. Bone Horse in Super Realm)
 # Relationship of roving natives (enemy by default, e.g. Super Realm)
 # Hurricane Winds: check effect at the start of a combat (e.g. quests)
+# Hurricane Winds: does not blows hirelings and companions anymore (optional rule added)
 BUGS/ISSUES:
 # Fix drawing same quest cards in multiplayer games
 # Fix crash for Tremendous monster without a target

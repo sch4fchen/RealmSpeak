@@ -643,6 +643,7 @@ public class Constants {
 	public static final String HOUSE2_DAY_END_TRADING_ON = "DayEndTradingOn";
 	public static final String HOUSE2_NO_NATIVES_BATTLING = "NoNativesBattling";
 	public static final String HOUSE2_PEACE_WITH_NATURE_SITES = "PeaceWithNatureSites";
+	public static final String HOUSE2_HURRICANE_WINDS_BLOWS_HIRELINGS = "HurricaneWindsBlowsHirelings";
 	public static final String HOUSE2_MULTIPLE_SUMMONING = "MultipleSummoning";
 	
 	// MORE House Rules

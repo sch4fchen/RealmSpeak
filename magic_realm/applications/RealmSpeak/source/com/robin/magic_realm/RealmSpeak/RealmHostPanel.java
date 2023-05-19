@@ -347,6 +347,18 @@ public class RealmHostPanel extends JPanel {
 							int r = RandomNumber.getHighLow(1,6);
 							current.clearing = current.tile.getClearing(r);
 						}
+						if (!hostPrefs.hasPref(Constants.HOUSE2_HURRICANE_WINDS_BLOWS_HIRELINGS)) {
+							ArrayList<GameObject> removedItems = new ArrayList<>();
+							for (GameObject item : go.getHold()) {
+								RealmComponent itemRc = RealmComponent.getRealmComponent(item);
+								if (itemRc.isHiredOrControlled()) {
+									removedItems.add(item);
+								}
+							}
+							for (GameObject item : removedItems) {
+								go.remove(item);
+							}
+						}
 						ClearingUtility.moveToLocation(go,current);
 					}
 				}
