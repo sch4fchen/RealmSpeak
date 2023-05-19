@@ -25582,6 +25582,8 @@
         <attribute rw_expansion_1="" />
         <attribute flying="" />
         <attribute denizen="" />
+        <attribute icon_folder_alt="wesnoth\units\drakes" />
+        <attribute icon_type_alt="slasher" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -25615,6 +25617,8 @@
         <attribute rw_expansion_1="" />
         <attribute flying="" />
         <attribute denizen="" />
+        <attribute icon_folder_alt="wesnoth\units\drakes" />
+        <attribute icon_type_alt="arbiter" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -25648,6 +25652,8 @@
         <attribute rw_expansion_1="" />
         <attribute flying="" />
         <attribute denizen="" />
+        <attribute icon_folder_alt="wesnoth\units\drakes" />
+        <attribute icon_type_alt="enforcer" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -25681,6 +25687,8 @@
         <attribute rw_expansion_1="" />
         <attribute flying="" />
         <attribute denizen="" />
+        <attribute icon_folder_alt="wesnoth\units\drakes" />
+        <attribute icon_type_alt="warden" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -25715,6 +25723,8 @@
         <attribute commerce="F,N" />
         <attribute flying="" />
         <attribute denizen="" />
+        <attribute icon_folder_alt="wesnoth\units\drakes" />
+        <attribute icon_type_alt="flameheart" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -26076,6 +26086,8 @@
         <attribute icon_folder="natives2" />
         <attribute rw_expansion_1="" />
         <attribute virtual_dwelling="" />
+        <attribute icon_folder_alt="wesnoth\units\drakes" />
+        <attribute icon_type_alt="slasher" />
       </AttributeBlock>
       <contains id="1028" />
       <contains id="1029" />

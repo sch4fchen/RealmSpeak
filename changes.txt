@@ -1,4 +1,5 @@
 ::ROADMAP::
+Alternative icons: monsters, natives, dwellings (murker, dragonmen), horses
 QuestReward for cloned quests: ClonedQuestsComplete, ClonedQuestsFail, ClonedQuestsCounter
 ---Super Realms Content---
 Spells III: Migration, Tracker’s Sense, Water Run

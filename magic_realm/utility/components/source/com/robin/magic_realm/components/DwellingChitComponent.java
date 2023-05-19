@@ -58,6 +58,8 @@ public class DwellingChitComponent extends SquareChitComponent {
 				yOffset = getThisInt(Constants.ICON_Y_OFFSET+Constants.ALTERNATIVE);
 			}
 			drawIcon(g,folder,icon,size,0,yOffset,null);
+			TextType tt = new TextType(getGameObject().getName(),T_CHIT_SIZE,"BOLD");
+			tt.draw(g1,5,2,Alignment.Left);
 		}
 		else {
 			String icon_type = gameObject.getThisAttribute(Constants.ICON_TYPE);
