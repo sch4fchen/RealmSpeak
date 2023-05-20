@@ -348,15 +348,14 @@ public class RealmHostPanel extends JPanel {
 							current.clearing = current.tile.getClearing(r);
 						}
 						if (!hostPrefs.hasPref(Constants.HOUSE2_HURRICANE_WINDS_BLOWS_HIRELINGS)) {
-							ArrayList<GameObject> removedItems = new ArrayList<>();
-							for (GameObject item : go.getHold()) {
-								RealmComponent itemRc = RealmComponent.getRealmComponent(item);
-								if (itemRc.isHiredOrControlled()) {
-									removedItems.add(item);
+							TileLocation loc = rc.getCurrentLocation();
+							if (loc.clearing!=null) {
+								for (GameObject item : go.getHold()) {
+									RealmComponent itemRc = RealmComponent.getRealmComponent(item);
+									if (itemRc.isHiredOrControlled()) {
+										loc.clearing.add(go, null);
+									}
 								}
-							}
-							for (GameObject item : removedItems) {
-								go.remove(item);
 							}
 						}
 						ClearingUtility.moveToLocation(go,current);
