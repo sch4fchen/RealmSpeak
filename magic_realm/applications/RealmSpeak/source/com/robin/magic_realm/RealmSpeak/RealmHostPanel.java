@@ -352,7 +352,7 @@ public class RealmHostPanel extends JPanel {
 							if (loc.clearing!=null) {
 								for (GameObject item : go.getHold()) {
 									RealmComponent itemRc = RealmComponent.getRealmComponent(item);
-									if (itemRc.isHiredOrControlled()) {
+									if (itemRc.isHiredOrControlled() && itemRc.getCurrentLocation().equals(loc)) {
 										loc.clearing.add(go, null);
 									}
 								}
