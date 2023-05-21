@@ -199,6 +199,7 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 			quest.clearAllPlay();
 			getCharacterFrame().updateCharacter();
 		}
+		getGameHandler().submitChanges();
 		questHandPanel.repaint();
 	}
 
