@@ -2857,10 +2857,10 @@ public class BattleModel {
 			if (!hostPrefs.hasPref(Constants.HOUSE2_HURRICANE_WINDS_BLOWS_HIRELINGS)) {
 				TileLocation loc = rc.getCurrentLocation();
 				if (loc.clearing!=null) {
-					for (GameObject item : go.getHold()) {
+					for (GameObject item : rc.getGameObject().getHold()) {
 						RealmComponent itemRc = RealmComponent.getRealmComponent(item);
-						if (itemRc.isHiredOrControlled() && itemRc.getCurrentLocation().equals(loc)) {
-							loc.clearing.add(go, null);
+						if ((itemRc.isHiredOrControlled() || itemRc.isNative() || itemRc.isMonster()) && itemRc.getCurrentLocation().equals(loc)) {
+							loc.clearing.add(item, null);
 						}
 					}
 				}
