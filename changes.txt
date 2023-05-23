@@ -1,5 +1,5 @@
 ::ROADMAP::
-Alternative icons: monsters, natives, horses, traveler_template 1-1075
+Alternative icons: monsters, natives, traveler_template 1-264,728-959, 1042-1087
 QuestReward for cloned quests: ClonedQuestsComplete, ClonedQuestsFail, ClonedQuestsCounter
 ---Super Realms Content---
 Spells III: Migration, Tracker’s Sense, Water Run
