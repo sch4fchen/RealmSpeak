@@ -172,7 +172,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		// Draw image
 		String icon_type = null;
 		if (isDisplayStyleAlternative() && gameObject.hasThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE)) {
-			gameObject.getThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE);
+			icon_type = gameObject.getThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE);
 		}
 		else {
 			icon_type = gameObject.getThisAttribute(Constants.ICON_TYPE);
@@ -201,7 +201,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 			if (iconDir==null) {
 				iconDir = "natives";
 			}
-			if ((isDisplayStyleColor() || isDisplayStyleFrenzel()) && !gameObject.hasThisAttribute(Constants.SUPER_REALM)) {
+			if ((isDisplayStyleColor() || isDisplayStyleFrenzel()) && !isDisplayStyleAlternative() && !gameObject.hasThisAttribute(Constants.SUPER_REALM)) {
 				if (iconDir.startsWith("natives")) {
 					icon_type = icon_type+"_"+letterCode.toLowerCase();
 				}

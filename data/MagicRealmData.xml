@@ -18,6 +18,10 @@
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
         <attribute dragon="" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_type_alt="fireDragon" />
+        <attribute icon_size_alt="0.4" />
+        <attribute icon_y_offset_alt="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -43,6 +47,9 @@
         <attribute dragon_missile="" />
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
+        <attribute icon_folder_alt="wesnoth/icons/attacks" />
+        <attribute icon_type_alt="fire-breath-drake" />
+        <attribute icon_size_alt="0.6" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="3" />
@@ -5834,6 +5841,9 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_type_alt="fireDragon" />
+        <attribute icon_size_alt="0.4" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="218" name="Lair">
@@ -5852,6 +5862,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_type_alt="wildWyvern" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="219" name="Altar">
@@ -5871,6 +5883,8 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute spell_site="" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_type_alt="yuureDreamweaver" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="220" name="Shrine">
@@ -5890,6 +5904,8 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute spell_site="" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_type_alt="galerunner" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="221" name="Pool">
@@ -5909,6 +5925,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_type_alt="kraken" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="222" name="Vault">
@@ -5928,6 +5946,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_type_alt="trollWarrior" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="223" name="Cairns">
@@ -5947,6 +5967,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_type_alt="spiderQueen" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="224" name="Statue">
@@ -5966,6 +5988,8 @@
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
         <attribute spell_site="" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_type_alt="brazierImp" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="225" name="Lost Castle">
@@ -24955,6 +24979,8 @@
         <attribute icon_type="basilisk" />
         <attribute icon_folder="monsters2" />
         <attribute rw_expansion_1="" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_type_alt="Forgotten_Legends-images-frakcja3-dark-lizard" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="971" name="Maze">
@@ -24972,6 +24998,8 @@
         <attribute icon_folder="monsters2" />
         <attribute rw_expansion_1="" />
         <attribute discover_to_leave="" />
+        <attribute icon_type_alt="minotaurKing" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="972" name="Tree">
@@ -24988,6 +25016,8 @@
         <attribute icon_type="harpy" />
         <attribute icon_folder="monsters2" />
         <attribute rw_expansion_1="" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_type_alt="harpy" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="973" name="Web">
@@ -25004,6 +25034,8 @@
         <attribute icon_type="spider" />
         <attribute icon_folder="monsters" />
         <attribute rw_expansion_1="" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_type_alt="spiderQueen" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="974" name="Hive">
@@ -25022,6 +25054,8 @@
         <attribute rw_expansion_1="" />
         <attribute generator="2d2" />
         <attribute susceptibleto="generator_flamed" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_type_alt="creepers" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="975" name="Tomb">
@@ -25040,6 +25074,8 @@
         <attribute rw_expansion_1="" />
         <attribute generator="2d4" />
         <attribute min_large_t="2" />
+        <attribute icon_folder_alt="wesnoth/units/undead" />
+        <attribute icon_type_alt="zombie" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="976" name="Pond">
@@ -25059,6 +25095,8 @@
         <attribute generator="1d3" />
         <attribute min_large_t="2" />
         <attribute susceptibleto="generator_flamed" />
+        <attribute icon_folder_alt="wesnoth/units/monsters" />
+        <attribute icon_type_alt="mudcrawler" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="977" name="Magic Guild">
@@ -25582,8 +25620,9 @@
         <attribute rw_expansion_1="" />
         <attribute flying="" />
         <attribute denizen="" />
-        <attribute icon_folder_alt="wesnoth\units\drakes" />
+        <attribute icon_folder_alt="wesnoth/units/drakes" />
         <attribute icon_type_alt="slasher" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -25617,8 +25656,9 @@
         <attribute rw_expansion_1="" />
         <attribute flying="" />
         <attribute denizen="" />
-        <attribute icon_folder_alt="wesnoth\units\drakes" />
+        <attribute icon_folder_alt="wesnoth/units/drakes" />
         <attribute icon_type_alt="arbiter" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -25652,8 +25692,9 @@
         <attribute rw_expansion_1="" />
         <attribute flying="" />
         <attribute denizen="" />
-        <attribute icon_folder_alt="wesnoth\units\drakes" />
+        <attribute icon_folder_alt="wesnoth/units/drakes" />
         <attribute icon_type_alt="enforcer" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -25687,8 +25728,9 @@
         <attribute rw_expansion_1="" />
         <attribute flying="" />
         <attribute denizen="" />
-        <attribute icon_folder_alt="wesnoth\units\drakes" />
+        <attribute icon_folder_alt="wesnoth/units/drakes" />
         <attribute icon_type_alt="warden" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -25723,8 +25765,9 @@
         <attribute commerce="F,N" />
         <attribute flying="" />
         <attribute denizen="" />
-        <attribute icon_folder_alt="wesnoth\units\drakes" />
+        <attribute icon_folder_alt="wesnoth/units/drakes" />
         <attribute icon_type_alt="flameheart" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -25893,6 +25936,9 @@
         <attribute icon_folder="natives" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute icon_folder_alt="wesnoth/units/kharos-sun" />
+        <attribute icon_type_alt="goldenwarrior" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -25926,6 +25972,9 @@
         <attribute icon_folder="natives" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute icon_folder_alt="wesnoth/units/kharos-sun" />
+        <attribute icon_type_alt="goldenwarrior" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -25960,6 +26009,9 @@
         <attribute rw_expansion_1="" />
         <attribute missile="" />
         <attribute denizen="" />
+        <attribute icon_folder_alt="wesnoth/units/kharos-sun" />
+        <attribute icon_type_alt="goldenwarrior" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -25989,6 +26041,9 @@
         <attribute icon_folder="natives" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute icon_folder_alt="wesnoth/units/kharos-sun" />
+        <attribute icon_type_alt="goldenwarrior" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -26023,6 +26078,9 @@
         <attribute rw_expansion_1="" />
         <attribute missile="" />
         <attribute denizen="" />
+        <attribute icon_folder_alt="wesnoth/units/kharos-sun" />
+        <attribute icon_type_alt="goldenwarrior" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -26054,6 +26112,9 @@
         <attribute rw_expansion_1="" />
         <attribute commerce="F" />
         <attribute denizen="" />
+        <attribute icon_folder_alt="wesnoth/units/kharos-sun" />
+        <attribute icon_type_alt="goldenwarrior" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -26086,21 +26147,22 @@
         <attribute icon_folder="natives2" />
         <attribute rw_expansion_1="" />
         <attribute virtual_dwelling="" />
-        <attribute icon_folder_alt="wesnoth\units\drakes" />
+        <attribute icon_folder_alt="wesnoth/units/drakes" />
         <attribute icon_type_alt="slasher" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
-      <contains id="1028" />
+      <contains id="1023" />
+      <contains id="1024" />
+      <contains id="1025" />
+      <contains id="1026" />
+      <contains id="1027" />
+	  <contains id="1028" />
       <contains id="1029" />
       <contains id="1030" />
       <contains id="1031" />
       <contains id="904" />
       <contains id="905" />
       <contains id="906" />
-      <contains id="1023" />
-      <contains id="1024" />
-      <contains id="1025" />
-      <contains id="1026" />
-      <contains id="1027" />
     </GameObject>
     <GameObject id="1041" name="Murker Dwelling">
       <AttributeBlock blockName="this">
@@ -26116,14 +26178,17 @@
         <attribute icon_folder="natives2" />
         <attribute rw_expansion_1="" />
         <attribute virtual_dwelling="" />
+        <attribute icon_folder_alt="wesnoth/units/kharos-sun" />
+        <attribute icon_type_alt="goldenwarrior" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
-      <contains id="1039" />
       <contains id="1034" />
       <contains id="1035" />
       <contains id="1036" />
       <contains id="1037" />
       <contains id="1038" />
-      <contains id="1032" />
+	  <contains id="1039" />
+	  <contains id="1032" />
       <contains id="1033" />
     </GameObject>
     <GameObject id="1042" name="Fairy">
