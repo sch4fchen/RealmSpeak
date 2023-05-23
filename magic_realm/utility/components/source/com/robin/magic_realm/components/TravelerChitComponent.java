@@ -105,9 +105,24 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 		
 		if (getGameObject().hasThisAttribute(Constants.ALWAYS_VISIBLE) || isFaceUp()) {
 			updateSize();
-			String icon_type = gameObject.getThisAttribute(Constants.ICON_TYPE);
-			String iconDir = gameObject.getThisAttribute(Constants.ICON_FOLDER);
-			drawIcon(g, iconDir, icon_type, 0.7);
+			String icon_type = "";
+			String iconDir = "";
+			double size = 0.7;
+			if (isDisplayStyleAlternative() && gameObject.hasThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE) && gameObject.hasThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE)) {
+				icon_type = gameObject.getThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE);
+				iconDir = gameObject.getThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE);
+				if (gameObject.hasThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE)) {
+					size = Double.parseDouble(gameObject.getThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE));
+				}
+			}
+			else {
+				icon_type = gameObject.getThisAttribute(Constants.ICON_TYPE);
+				iconDir = gameObject.getThisAttribute(Constants.ICON_FOLDER);
+				if (gameObject.hasThisAttribute(Constants.ICON_SIZE)) {
+					size = Double.parseDouble(gameObject.getThisAttribute(Constants.ICON_SIZE));
+				}
+			}
+			drawIcon(g, iconDir, icon_type, size);
 			
 			tt = new TextType(getGameObject().getName(),getChitSize(),"WHITE_NOTE");
 			tt.draw(g,0,3,Alignment.Center);
