@@ -28,6 +28,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 		AlterHide,
 		Attribute,
 		ChooseNextStep,
+		ClonedQuestsComplete,
+		ClonedQuestsFailed,
+		ClonedQuestsCounter,
 		Companion,
 		Control,
 		Counter,
@@ -107,8 +110,8 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case LostInventoryToLocation:
 				case MarkDenizen:
 					return false;
+				default: return true;
 			}
-			return true;
 		}
 
 		public String getDescription() {
@@ -118,6 +121,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case AlterHide:					return "Change questing character's hide status (from hidden to unhidden, or the other way around).";
 				case Attribute:					return "Modify Fame, Notoriety, or Gold.  Can either add or subtract points/gold.";
 				case ChooseNextStep:			return "Player chooses the next step to process from those steps that follow this step, and fullfill requirements.";
+				case ClonedQuestsComplete:		return "Tells RealmSpeak that the corresponding cloned quests have been completed.";
+				case ClonedQuestsFailed:		return "Tells RealmSpeak that the corresponding cloned quests have been failed.";
+				case ClonedQuestsCounter:		return "Modify count value of a counters of cloned quests.";
 				case Companion:					return "Add or remove a monster ally.";
 				case Control:					return "Gives the character control over denizens.";
 				case Counter:					return "Modify count value of a counter.";
@@ -187,8 +193,8 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case Visitor:					return "Add or remove a visitor.";
 				case Weather:					return "Sets the weather.";
 				case Wish:						return "Grants the character a wish.";
+				default:						return "(No Description)";
 			}
-			return "(No Description)";
 		}
 		public boolean requiresLocations() {
 			return this==LostInventoryToLocation || this==SummonGuardian || this==Teleport;
@@ -311,6 +317,15 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case ChooseNextStep:
 				reward = new QuestRewardChooseNextStep(go);
+				break;
+			case ClonedQuestsComplete:
+				reward = new QuestRewardClonedQuestsComplete(go);
+				break;
+			case ClonedQuestsFailed:
+				reward = new QuestRewardClonedQuestsFailed(go);
+				break;
+			case ClonedQuestsCounter:
+				reward = new QuestRewardClonedQuestsCounter(go);
 				break;
 			case Companion:
 				reward = new QuestRewardCompanion(go);

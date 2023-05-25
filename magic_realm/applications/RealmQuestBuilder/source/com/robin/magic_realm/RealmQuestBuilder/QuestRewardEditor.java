@@ -61,6 +61,18 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardChooseNextStep.TEXT, "Text", FieldType.TextLine));
 				list.add(new QuestPropertyBlock(QuestRewardChooseNextStep.RANDOM, "Random choice", FieldType.Boolean));
 				break;
+			case ClonedQuestsComplete:
+				list.add(new QuestPropertyBlock(QuestRewardClonedQuestsComplete.WIN_BOQ, "Win Book of Quests game with this 'Event'", FieldType.Boolean));
+				break;
+			case ClonedQuestsFailed:
+				break;
+			case ClonedQuestsCounter:
+				list.add(new QuestPropertyBlock(QuestRewardClonedQuestsCounter.COUNTER, "Quest Counter", FieldType.GameObjectWrapperSelector, quest.getCounters().toArray()));
+				list.add(new QuestPropertyBlock(QuestRewardClonedQuestsCounter.SET_COUNT, "Set current count ("+QuestConstants.ALL_VALUE+"=no change)", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRewardClonedQuestsCounter.RANDOM, "Set current count to random number (1-100)", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardClonedQuestsCounter.INCREASE_COUNT, "Increase count", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRewardClonedQuestsCounter.DECREASE_COUNT, "Decrease count", FieldType.NumberAll));
+				break;
 			case Companion:
 				list.add(new QuestPropertyBlock(QuestRewardCompanion.COMPANION_NAME, "Companion", FieldType.CompanionSelector, getAllCompanionKeyValues()));
 				list.add(new QuestPropertyBlock(QuestRewardCompanion.GAIN_TYPE, "Gain or lose", FieldType.StringSelector, GainType.values()));

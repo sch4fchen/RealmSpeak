@@ -194,7 +194,7 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 			getCharacterFrame().updateCharacter();
 			getGameHandler().getInspector().redrawMap();
 		}
-		if (quest.getState()!=QuestState.Assigned && quest.isAllPlay()) {
+		if (quest.getState()!=QuestState.Assigned && quest.isAllPlay() && !quest.isMultipleUse()) {
 			quest.revertAllPlay(dayKey,getCharacter());
 			quest.clearAllPlay();
 			getCharacterFrame().updateCharacter();
@@ -302,7 +302,7 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 						completedQuestsPanel.addObject(quest.getGameObject());
 					}
 				}
-				else if (!quest.isAllPlay() || hostPrefs.isUsingGuildQuests()) {
+				else if (!quest.isAllPlay() || hostPrefs.isUsingGuildQuests() || (quest.isAllPlay() && quest.isMultipleUse() && quest.isActivateable() && quest.getState()==QuestState.Active)) {
 					questHandPanel.addObject(quest.getGameObject());
 					slots--;
 				}

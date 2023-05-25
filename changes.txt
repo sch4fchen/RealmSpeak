@@ -1,7 +1,6 @@
 ::ROADMAP::
 Alternative icons: monsters, natives, traveler_template 1-264,728-959, 1042-1087
-QuestReward for cloned quests: ClonedQuestsComplete, ClonedQuestsFail, ClonedQuestsCounter
----Super Realms Content---
+---Super Realm Content---
 Spells III: Migration, Tracker’s Sense, Water Run
 Spells IV: Blinding Light, Control Element, Elemental Spirit, Frozen Water, Reserve, Violent Winds
 Spells V: Dark Favor, Reanimate
@@ -73,6 +72,7 @@ QUEST UPDATE:
 # QuestRewardSpellEffectOnClearing
 # QuestRewardSpellEffectOnCharacter: Hurricane Winds: random adjacent tile is chosen
 # Quests: add option for multiple use quests for BoQ, All-Play quests and Events
+# New rewards for cloned quests: ClonedQuestsComplete, ClonedQuestsFail, ClonedQuestsCounter
 SUPER REALM:
 # New spells: Control Horse, Horse Whisper
 NEW FEATURES:

@@ -335,7 +335,7 @@ public class Quest extends GameObjectWrapper {
 		if (state == QuestState.Active) {
 			activateRequirements(character);
 		}
-		if (state == QuestState.Complete) revertAllPlay(dayKey,character);
+		if (state == QuestState.Complete && !isMultipleUse()) revertAllPlay(dayKey,character);
 	}
 	
 	public void revertAllPlay(String dayKey, CharacterWrapper character) {
