@@ -1,5 +1,5 @@
 ::ROADMAP::
-Alternative icons: monsters, natives, traveler_template 742-870 907-959, 1042-1070
+Alternative icons: 764-870 909-959, 1043-1070, correct scaling
 ---Super Realm Content---
 Spells III: Migration, Tracker’s Sense, Water Run
 Spells IV: Blinding Light, Control Element, Elemental Spirit, Frozen Water, Reserve, Violent Winds
