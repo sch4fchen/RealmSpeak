@@ -1383,7 +1383,7 @@
         <attribute goblin="" />
         <attribute weapon_use="" />
         <attribute icon_folder_alt="wesnoth/units" />
-        <attribute icon_type_alt="goblinImpaler" />
+        <attribute icon_type_alt="goblinRouser" />
         <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -1449,7 +1449,7 @@
         <attribute goblin="" />
         <attribute weapon_use="" />
         <attribute icon_folder_alt="wesnoth/units" />
-        <attribute icon_type_alt="goblinImpaler" />
+        <attribute icon_type_alt="goblinRouser" />
         <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -1515,7 +1515,7 @@
         <attribute goblin="" />
         <attribute weapon_use="" />
         <attribute icon_folder_alt="wesnoth/units" />
-        <attribute icon_type_alt="goblinImpaler" />
+        <attribute icon_type_alt="goblinRouser" />
         <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -18282,6 +18282,7 @@
         <attribute kobold="" />
         <attribute icon_type_alt="Genesis_Resources-demons-red-red" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -18316,6 +18317,7 @@
         <attribute kobold="" />
         <attribute icon_type_alt="Genesis_Resources-demons-red-red" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -18350,6 +18352,7 @@
         <attribute kobold="" />
         <attribute icon_type_alt="Genesis_Resources-demons-red-red" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -18384,6 +18387,7 @@
         <attribute kobold="" />
         <attribute icon_type_alt="Genesis_Resources-demons-red-red" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -18418,6 +18422,7 @@
         <attribute kobold="" />
         <attribute icon_type_alt="Genesis_Resources-demons-red-red" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -18452,6 +18457,7 @@
         <attribute kobold="" />
         <attribute icon_type_alt="Genesis_Resources-demons-red-red" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -18486,6 +18492,7 @@
         <attribute denizen="" />
         <attribute icon_type_alt="crow" />
         <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="0.8" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -18516,6 +18523,7 @@
         <attribute denizen="" />
         <attribute icon_type_alt="crow" />
         <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="0.8" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -18546,6 +18554,7 @@
         <attribute denizen="" />
         <attribute icon_type_alt="crow" />
         <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="0.8" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -18576,6 +18585,7 @@
         <attribute denizen="" />
         <attribute icon_type_alt="crow" />
         <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="0.8" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -18607,6 +18617,8 @@
         <attribute denizen="" />
         <attribute icon_type_alt="giant-mudcrawler" />
         <attribute icon_folder_alt="wesnoth/units/monsters" />
+        <attribute icon_size_alt="1.1" />
+        <attribute icon_y_offset_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -18815,6 +18827,7 @@
         <attribute weapon_use="" />
         <attribute icon_type_alt="ambusher" />
         <attribute icon_folder_alt="wesnoth/units/saurians" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -18849,6 +18862,7 @@
         <attribute weapon_use="" />
         <attribute icon_type_alt="flanker" />
         <attribute icon_folder_alt="wesnoth/units/saurians" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -18883,6 +18897,7 @@
         <attribute weapon_use="" />
         <attribute icon_type_alt="skirmisher" />
         <attribute icon_folder_alt="wesnoth/units/saurians" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -18917,6 +18932,7 @@
         <attribute weapon_use="" />
         <attribute icon_type_alt="ambusher" />
         <attribute icon_folder_alt="wesnoth/units/saurians" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -18951,6 +18967,7 @@
         <attribute weapon_use="" />
         <attribute icon_type_alt="skirmisher" />
         <attribute icon_folder_alt="wesnoth/units/saurians" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -18985,6 +19002,7 @@
         <attribute denizen="" />
         <attribute icon_type_alt="spectre" />
         <attribute icon_folder_alt="wesnoth/units/undead" />
+        <attribute icon_size_alt="0.8" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19020,6 +19038,7 @@
         <attribute weapon_use_chit="" />
         <attribute icon_type_alt="yeti" />
         <attribute icon_folder_alt="wesnoth/units/monsters" />
+        <attribute icon_size_alt="0.8" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -19045,7 +19064,7 @@
         <attribute alt_monsters1_game="" />
         <attribute monster_die="4" />
         <attribute icon_type_alt="icestrike" />
-        <attribute icon_folder_alt="wesnoth\icons\attacks" />
+        <attribute icon_folder_alt="wesnoth/icons/attacks" />
         <attribute icon_size_alt="0.6" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -19078,6 +19097,7 @@
         <attribute weapon_use_chit="" />
         <attribute icon_type_alt="yeti" />
         <attribute icon_folder_alt="wesnoth/units/monsters" />
+        <attribute icon_size_alt="0.8" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -19103,7 +19123,7 @@
         <attribute alt_monsters1_game="" />
         <attribute monster_die="4" />
         <attribute icon_type_alt="icestrike" />
-        <attribute icon_folder_alt="wesnoth\icons\attacks" />
+        <attribute icon_folder_alt="wesnoth/icons/attacks" />
         <attribute icon_size_alt="0.6" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -19135,6 +19155,7 @@
         <attribute denizen="" />
         <attribute icon_folder_alt="wesnoth/units/monsters" />
         <attribute icon_type_alt="gryphon" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -19165,6 +19186,7 @@
         <attribute denizen="" />
         <attribute icon_folder_alt="wesnoth/units/monsters" />
         <attribute icon_type_alt="gryphon" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -19194,6 +19216,7 @@
         <attribute denizen="" />
         <attribute icon_type_alt="add-ons-Animals_Age-images-units-legendary-bagira" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.7" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19223,6 +19246,7 @@
         <attribute denizen="" />
         <attribute icon_type_alt="add-ons-Animals_Age-images-units-legendary-bagira" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.7" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19254,6 +19278,7 @@
         <attribute denizen="" />
         <attribute icon_type_alt="wraith" />
         <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -19288,6 +19313,8 @@
         <attribute denizen="" />
         <attribute icon_type_alt="Reign_of_the_Lords-drakes-apocalypse" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.8" />
+        <attribute icon_y_offset_alt="5" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -19320,6 +19347,8 @@
         <attribute denizen="" />
         <attribute icon_type_alt="WarOfTheGods-monsters-big_hell_hound" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="1" />
+        <attribute icon_y_offset_alt="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -19352,6 +19381,8 @@
         <attribute denizen="" />
         <attribute icon_type_alt="add-ons-Animals_Age-images-units-legendary-cockatrice" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="1" />
+        <attribute icon_y_offset_alt="5" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20000,6 +20031,9 @@
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
         <attribute dragon="" />
+        <attribute icon_type_alt="winglessDragon" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="0.7" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -20158,6 +20192,9 @@
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
         <attribute bat="" />
+        <attribute icon_type_alt="bloodBat" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1.2" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20188,6 +20225,9 @@
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
         <attribute bat="" />
+        <attribute icon_type_alt="vampireBat" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1.2" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20218,6 +20258,9 @@
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
         <attribute bat="" />
+        <attribute icon_type_alt="dreadBat" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1.2" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20248,6 +20291,9 @@
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
         <attribute bat="" />
+        <attribute icon_type_alt="dreadBat" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1.2" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20278,6 +20324,9 @@
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
         <attribute bat="" />
+        <attribute icon_type_alt="vampireBat" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1.2" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20308,6 +20357,9 @@
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
         <attribute bat="" />
+        <attribute icon_type_alt="bloodBat" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1.2" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20337,6 +20389,9 @@
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
         <attribute spider="" />
+        <attribute icon_type_alt="giantSpider" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20366,6 +20421,9 @@
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
         <attribute spider="" />
+        <attribute icon_type_alt="giantSpider" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20395,6 +20453,9 @@
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
         <attribute spider="" />
+        <attribute icon_type_alt="giantSpider" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20426,6 +20487,9 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute imp="" />
+        <attribute icon_type_alt="brazierImp" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -20456,6 +20520,10 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute icon_type_alt="viper" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1.1" />
+        <attribute icon_y_offset_alt="-7" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -20485,6 +20553,10 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
+        <attribute icon_type_alt="viper" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1.1" />
+        <attribute icon_y_offset_alt="-7" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -20514,6 +20586,9 @@
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
         <attribute ogre="" />
+        <attribute icon_type_alt="ogre" />
+        <attribute icon_folder_alt="wesnoth/units/ogres" />
+        <attribute icon_size_alt="1.1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -20542,6 +20617,9 @@
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
         <attribute ogre="" />
+        <attribute icon_type_alt="ogre" />
+        <attribute icon_folder_alt="wesnoth/units/ogres" />
+        <attribute icon_size_alt="1.1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -20571,6 +20649,9 @@
         <attribute denizen="" />
         <attribute goblin="" />
         <attribute weapon_use="" />
+        <attribute icon_type_alt="goblinImpaler" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20600,6 +20681,9 @@
         <attribute denizen="" />
         <attribute goblin="" />
         <attribute weapon_use="" />
+        <attribute icon_type_alt="goblinRouser" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20629,6 +20713,9 @@
         <attribute denizen="" />
         <attribute goblin="" />
         <attribute weapon_use="" />
+        <attribute icon_type_alt="goblinImpaler" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20658,6 +20745,9 @@
         <attribute denizen="" />
         <attribute goblin="" />
         <attribute weapon_use="" />
+        <attribute icon_type_alt="goblinRouser" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20687,6 +20777,9 @@
         <attribute denizen="" />
         <attribute goblin="" />
         <attribute weapon_use="" />
+        <attribute icon_type_alt="goblinImpaler" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20716,6 +20809,9 @@
         <attribute denizen="" />
         <attribute goblin="" />
         <attribute weapon_use="" />
+        <attribute icon_type_alt="goblinRouser" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20745,6 +20841,9 @@
         <attribute denizen="" />
         <attribute goblin="" />
         <attribute weapon_use="" />
+        <attribute icon_type_alt="goblinSwordmaster" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20778,6 +20877,9 @@
         <attribute denizen="" />
         <attribute goblin="" />
         <attribute weapon_use="" />
+        <attribute icon_type_alt="goblinSwordmaster" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20811,6 +20913,9 @@
         <attribute denizen="" />
         <attribute goblin="" />
         <attribute weapon_use="" />
+        <attribute icon_type_alt="goblinSwordmaster" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20844,6 +20949,9 @@
         <attribute denizen="" />
         <attribute goblin="" />
         <attribute weapon_use="" />
+        <attribute icon_type_alt="goblinSwordmaster" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20877,6 +20985,9 @@
         <attribute denizen="" />
         <attribute goblin="" />
         <attribute weapon_use="" />
+        <attribute icon_type_alt="goblinSwordmaster" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20910,6 +21021,9 @@
         <attribute denizen="" />
         <attribute goblin="" />
         <attribute weapon_use="" />
+        <attribute icon_type_alt="goblinSwordmaster" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20943,6 +21057,9 @@
         <attribute denizen="" />
         <attribute goblin="" />
         <attribute weapon_use="" />
+        <attribute icon_type_alt="bloodGoblinLord" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="0.8" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20976,6 +21093,9 @@
         <attribute denizen="" />
         <attribute goblin="" />
         <attribute weapon_use="" />
+        <attribute icon_type_alt="bloodGoblinLord" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="0.8" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -21009,6 +21129,9 @@
         <attribute denizen="" />
         <attribute goblin="" />
         <attribute weapon_use="" />
+        <attribute icon_type_alt="bloodGoblinLord" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="0.8" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -21042,6 +21165,9 @@
         <attribute denizen="" />
         <attribute goblin="" />
         <attribute weapon_use="" />
+        <attribute icon_type_alt="bloodGoblinLord" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="0.8" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -21075,6 +21201,9 @@
         <attribute denizen="" />
         <attribute goblin="" />
         <attribute weapon_use="" />
+        <attribute icon_type_alt="bloodGoblinLord" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="0.8" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -21108,6 +21237,9 @@
         <attribute denizen="" />
         <attribute goblin="" />
         <attribute weapon_use="" />
+        <attribute icon_type_alt="bloodGoblinLord" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="0.8" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -21140,6 +21272,9 @@
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
         <attribute wolf="" />
+        <attribute icon_type_alt="direwolf" />
+        <attribute icon_folder_alt="wesnoth/units/monsters" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -21168,6 +21303,9 @@
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
         <attribute wolf="" />
+        <attribute icon_type_alt="direwolf" />
+        <attribute icon_folder_alt="wesnoth/units/monsters" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -21196,6 +21334,9 @@
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
         <attribute wolf="" />
+        <attribute icon_type_alt="direwolf" />
+        <attribute icon_folder_alt="wesnoth/units/monsters" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -21224,6 +21365,9 @@
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
         <attribute wolf="" />
+        <attribute icon_type_alt="direwolf" />
+        <attribute icon_folder_alt="wesnoth/units/monsters" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -21252,6 +21396,9 @@
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
         <attribute wolf="" />
+        <attribute icon_type_alt="direwolf" />
+        <attribute icon_folder_alt="wesnoth/units/monsters" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -21280,6 +21427,9 @@
         <attribute alt_monsters1_game="" />
         <attribute denizen="" />
         <attribute wolf="" />
+        <attribute icon_type_alt="direwolf" />
+        <attribute icon_folder_alt="wesnoth/units/monsters" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -21305,6 +21455,8 @@
         <attribute icon_type="serpent" />
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="viper" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="810" />
       <contains id="811" />
@@ -21320,6 +21472,8 @@
         <attribute icon_type="dragon_flying" />
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="redDragon" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="793" />
       <contains id="794" />
@@ -21335,6 +21489,8 @@
         <attribute icon_type="dragon" />
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="winglessDragon" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="795" />
     </GameObject>
@@ -21349,6 +21505,8 @@
         <attribute icon_type="dragon" />
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="wildWyvern" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="780" />
     </GameObject>
@@ -21363,6 +21521,8 @@
         <attribute icon_type="wyrm" />
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="wildWyvern" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="732" />
     </GameObject>
@@ -21377,6 +21537,8 @@
         <attribute icon_type="griffon" />
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="gryphon" />
+        <attribute icon_folder_alt="wesnoth/units/monsters" />
       </AttributeBlock>
       <contains id="768" />
       <contains id="769" />
@@ -21392,6 +21554,8 @@
         <attribute icon_type="lizardman" />
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="flanker" />
+        <attribute icon_folder_alt="wesnoth/units/saurians" />
       </AttributeBlock>
       <contains id="758" />
       <contains id="759" />
@@ -21409,6 +21573,8 @@
         <attribute icon_type="behemoth" />
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="WarOfTheGods-monsters-big_hell_hound" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
       </AttributeBlock>
       <contains id="774" />
     </GameObject>
@@ -21424,6 +21590,8 @@
         <attribute icon_type="serpent" />
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="waterSerpent" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="798" />
       <contains id="799" />
@@ -21439,6 +21607,8 @@
         <attribute icon_type="serpent" />
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="seaSerpent" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="791" />
     </GameObject>
@@ -21454,6 +21624,8 @@
         <attribute icon_folder="monsters" />
         <attribute ts_sort="1" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="direwolf" />
+        <attribute icon_folder_alt="wesnoth/units/monsters" />
       </AttributeBlock>
       <contains id="832" />
       <contains id="833" />
@@ -21473,6 +21645,8 @@
         <attribute icon_type="sabertooth" />
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="add-ons-Animals_Age-images-units-legendary-bagira" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
       </AttributeBlock>
       <contains id="770" />
       <contains id="771" />
@@ -21489,6 +21663,8 @@
         <attribute icon_type="goblin_axe" />
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="bloodGoblinLord" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="826" />
       <contains id="827" />
@@ -21509,6 +21685,8 @@
         <attribute icon_type="goblin_spear" />
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="goblinImpaler" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="814" />
       <contains id="815" />
@@ -21529,6 +21707,8 @@
         <attribute icon_type="goblin_sword" />
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="goblinSwordsman" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="820" />
       <contains id="821" />
@@ -21549,6 +21729,8 @@
         <attribute icon_folder="monsters" />
         <attribute ts_sort="2" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="ogre" />
+        <attribute icon_folder_alt="wesnoth/units/ogres" />
       </AttributeBlock>
       <contains id="812" />
       <contains id="813" />
@@ -21564,6 +21746,8 @@
         <attribute icon_type="giant" />
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="giant" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="782" />
     </GameObject>
@@ -21578,6 +21762,8 @@
         <attribute icon_type="giant" />
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="giant" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="784" />
     </GameObject>
@@ -21592,6 +21778,8 @@
         <attribute icon_type="frostgiant" />
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="yeti" />
+        <attribute icon_folder_alt="wesnoth/units/monsters" />
       </AttributeBlock>
       <contains id="766" />
     </GameObject>
@@ -21607,6 +21795,8 @@
         <attribute icon_type="troll" />
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="troll" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="796" />
       <contains id="797" />
@@ -21622,6 +21812,8 @@
         <attribute icon_type="troll" />
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="trollWarrior" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="789" />
     </GameObject>
@@ -21637,6 +21829,8 @@
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
         <attribute ts_draw_below="" />
+        <attribute icon_type_alt="crow" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="748" />
       <contains id="749" />
@@ -21654,6 +21848,8 @@
         <attribute icon_type="spider" />
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="giantSpider" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="806" />
     </GameObject>
@@ -21669,6 +21865,8 @@
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute ts_count="2" />
+        <attribute icon_type_alt="giantSpider" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="807" />
       <contains id="808" />
@@ -21685,6 +21883,8 @@
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
         <attribute ts_draw_below="" />
+        <attribute icon_type_alt="scorpion" />
+        <attribute icon_folder_alt="wesnoth/units/monsters" />
       </AttributeBlock>
       <contains id="755" />
       <contains id="756" />
@@ -21702,6 +21902,8 @@
         <attribute icon_type="orc_archer" />
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="orcishArcher" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="738" />
       <contains id="739" />
@@ -21720,6 +21922,8 @@
         <attribute icon_type="orc_sword" />
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="orcishGrunt" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="734" />
       <contains id="735" />
@@ -21737,6 +21941,8 @@
         <attribute icon_type="kobold" />
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="Genesis_Resources-demons-red-red" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
       </AttributeBlock>
       <contains id="742" />
       <contains id="743" />
@@ -21756,6 +21962,8 @@
         <attribute icon_type="bat" />
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="bloodBat" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="800" />
     </GameObject>
@@ -21771,6 +21979,8 @@
         <attribute icon_type="bat" />
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="vampireBat" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="801" />
       <contains id="802" />
@@ -21787,6 +21997,8 @@
         <attribute icon_type="bat" />
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="dreadBat" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="803" />
       <contains id="804" />
@@ -21803,6 +22015,8 @@
         <attribute icon_type="minotaur" />
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="minotaurKing" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="753" />
     </GameObject>
@@ -21817,6 +22031,8 @@
         <attribute icon_type="minotaur" />
         <attribute icon_folder="monsters1" />
         <attribute alt_monsters1_game="" />
+        <attribute icon_type_alt="minotaurKing" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="754" />
     </GameObject>
