@@ -66,7 +66,7 @@ public class QuestRewardTransmorph extends QuestReward {
 			return;
 		}
 	
-		GameObject transform = transmorph.prepareTransformation(transformBlock, target, spell, frame);
+		GameObject transform = TransmorphEffect.prepareTransformation(transformBlock, target, spell, frame);
 		character.setTransmorph(transform);
 	}
 	

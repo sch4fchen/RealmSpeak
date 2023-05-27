@@ -1093,7 +1093,11 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		ArrayList<String> ignoreTest = new ArrayList<>(Arrays.asList(ignorVars));
 		
 		// Earmark some attributes for the "this" block
-		String[] thisVars = {"vulnerability",Constants.ICON_FOLDER,Constants.ICON_TYPE,"flying","walk_woods","armored","name",Constants.MIST_LIKE};
+		String[] thisVars = {"vulnerability",Constants.ICON_FOLDER,Constants.ICON_TYPE,"flying","walk_woods","armored","name",Constants.MIST_LIKE,Constants.SMALL,"animal",
+				Constants.ICON_FOLDER+Constants.ALTERNATIVE,Constants.ICON_TYPE+Constants.ALTERNATIVE,Constants.ICON_FOLDER+Constants.ICON_CHARACTER,Constants.ICON_TYPE+Constants.ICON_CHARACTER,
+				Constants.ICON_SIZE,Constants.ICON_FOLDER+Constants.ALTERNATIVE,Constants.ICON_Y_OFFSET,Constants.ICON_Y_OFFSET+Constants.ALTERNATIVE,
+				"dragon","demon",
+			};
 		ArrayList<String> thisTest = new ArrayList<>(Arrays.asList(thisVars));
 		Hashtable<String,Object> hash = source.getAttributeBlock(blockName);
 		for (String key : hash.keySet()) {

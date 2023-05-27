@@ -1117,6 +1117,7 @@
         <attribute icon_folder_alt="wesnoth/units" />
         <attribute icon_type_alt="brazierImp" />
         <attribute icon_size_alt="1" />
+        <attribute icon_y_offset_alt="-4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -7866,6 +7867,10 @@
         <attribute icon_folder="monsters" />
         <attribute armored="" />
         <attribute dragon="" />
+        <attribute icon_type_alt="wyrm" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_type_character="dragon_transform" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll2">
         <attribute vulnerability="H" />
@@ -7879,6 +7884,11 @@
         <attribute name="Lion" />
         <attribute icon_folder="monsters" />
         <attribute animal="" />
+        <attribute icon_type_alt="add-ons-Animals_Age-images-units-cats-puma" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="1" />
+        <attribute icon_type_character="lion" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll3">
         <attribute vulnerability="M" />
@@ -7892,6 +7902,10 @@
         <attribute name="Eagle" />
         <attribute icon_folder="monsters" />
         <attribute animal="" />
+        <attribute icon_type_alt="Forgotten_Legends-images-frakcja2-elder-falcon" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_type_character="eagle" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll4">
         <attribute vulnerability="L" />
@@ -7904,6 +7918,10 @@
         <attribute icon_folder="monsters" />
         <attribute small="" />
         <attribute animal="" />
+        <attribute icon_type_alt="falcon" />
+        <attribute icon_folder_alt="wesnoth/units/monsters" />
+        <attribute icon_type_character="bird" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll5">
         <attribute vulnerability="L" />
@@ -7916,6 +7934,10 @@
         <attribute icon_folder="monsters" />
         <attribute small="" />
         <attribute animal="" />
+        <attribute icon_type_alt="stoat" />
+        <attribute icon_folder_alt="wesnoth/units/monsters" />
+        <attribute icon_type_character="squirrel" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll6">
         <attribute vulnerability="L" />
@@ -7928,6 +7950,10 @@
         <attribute icon_folder="monsters" />
         <attribute small="" />
         <attribute animal="" />
+        <attribute icon_type_alt="Archaic_Era-khthon-toad-big-toad" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_type_character="frog" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="298" name="Sense Danger">
@@ -20490,6 +20516,7 @@
         <attribute icon_type_alt="brazierImp" />
         <attribute icon_folder_alt="wesnoth/units" />
         <attribute icon_size_alt="1" />
+        <attribute icon_y_offset_alt="-4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -27614,6 +27641,10 @@
         <attribute icon_folder="monsters" />
         <attribute armored="" />
         <attribute dragon="" />
+        <attribute icon_type_alt="wyrm" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_type_character="dragon_transform" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll2">
         <attribute vulnerability="H" />
@@ -27627,6 +27658,11 @@
         <attribute name="Lion" />
         <attribute icon_folder="monsters" />
         <attribute animal="" />
+        <attribute icon_type_alt="add-ons-Animals_Age-images-units-cats-puma" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="1" />
+        <attribute icon_type_character="lion" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll3">
         <attribute vulnerability="M" />
@@ -27640,6 +27676,10 @@
         <attribute name="Eagle" />
         <attribute icon_folder="monsters" />
         <attribute animal="" />
+        <attribute icon_type_alt="Forgotten_Legends-images-frakcja2-elder-falcon" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_type_character="eagle" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll4">
         <attribute vulnerability="L" />
@@ -27651,6 +27691,10 @@
         <attribute name="Bird" />
         <attribute icon_folder="monsters" />
         <attribute animal="" />
+        <attribute icon_type_alt="falcon" />
+        <attribute icon_folder_alt="wesnoth/units/monsters" />
+        <attribute icon_type_character="bird" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll5">
         <attribute vulnerability="L" />
@@ -27662,6 +27706,10 @@
         <attribute name="Squirrel" />
         <attribute icon_folder="monsters" />
         <attribute animal="" />
+        <attribute icon_type_alt="stoat" />
+        <attribute icon_folder_alt="wesnoth/units/monsters" />
+        <attribute icon_type_character="squirrel" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll6">
         <attribute vulnerability="L" />
@@ -27673,6 +27721,10 @@
         <attribute name="Frog" />
         <attribute icon_folder="monsters" />
         <attribute animal="" />
+        <attribute icon_type_alt="Archaic_Era-khthon-toad-big-toad" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_type_character="frog" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1077" name="Rock Golem">
@@ -36429,6 +36481,7 @@
         <attribute denizen="" />
         <attribute icon_size="1" />
         <attribute imp="" />
+        <attribute icon_y_offset="-4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -56898,76 +56951,95 @@
         <attribute strength="T" />
         <attribute attack_speed="4" />
         <attribute move_speed="4" />
-        <attribute icon_type="dragon_transform" />
+        <attribute icon_type="wyrm" />
         <attribute flying="" />
         <attribute light_color="lightblue" />
         <attribute dark_color="red" />
         <attribute name="Tremendous Dragon" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute armored="" />
         <attribute dragon="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="dragon_transform" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll2">
         <attribute vulnerability="H" />
         <attribute strength="H" />
         <attribute attack_speed="3" />
         <attribute move_speed="4" />
-        <attribute icon_type="lion" />
+        <attribute icon_type="add-ons-Animals_Age-images-units-cats-puma" />
         <attribute walk_woods="" />
         <attribute light_color="gold" />
         <attribute dark_color="orange" />
         <attribute name="Lion" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/addons" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_size="1" />
+        <attribute icon_type_character="lion" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll3">
         <attribute vulnerability="M" />
         <attribute strength="M" />
         <attribute attack_speed="2" />
         <attribute move_speed="2" />
-        <attribute icon_type="eagle" />
+        <attribute icon_type="Forgotten_Legends-images-frakcja2-elder-falcon" />
         <attribute flying="" />
         <attribute light_color="gray" />
         <attribute dark_color="darkgray" />
         <attribute name="Eagle" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/addons" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="eagle" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll4">
         <attribute vulnerability="L" />
         <attribute move_speed="1" />
-        <attribute icon_type="bird" />
+        <attribute icon_type="falcon" />
         <attribute flying="" />
         <attribute light_color="lightblue" />
         <attribute dark_color="blue" />
         <attribute name="Bird" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute small="" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="bird" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll5">
         <attribute vulnerability="L" />
         <attribute move_speed="2" />
-        <attribute icon_type="squirrel" />
+        <attribute icon_type="stoat" />
         <attribute walk_woods="" />
         <attribute light_color="peach" />
         <attribute dark_color="brown" />
         <attribute name="Squirrel" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute small="" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="squirrel" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll6">
         <attribute vulnerability="L" />
         <attribute move_speed="3" />
         <attribute walk_woods="" />
-        <attribute icon_type="frog" />
+        <attribute icon_type="Archaic_Era-khthon-toad-big-toad" />
         <attribute light_color="lightgreen" />
         <attribute dark_color="forestgreen" />
         <attribute name="Frog" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/addons" />
         <attribute small="" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="frog" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2141" name="Sense Danger">
@@ -57543,76 +57615,95 @@
         <attribute strength="T" />
         <attribute attack_speed="4" />
         <attribute move_speed="4" />
-        <attribute icon_type="dragon_transform" />
+        <attribute icon_type="wyrm" />
         <attribute flying="" />
         <attribute light_color="lightblue" />
         <attribute dark_color="red" />
         <attribute name="Tremendous Dragon" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute armored="" />
         <attribute dragon="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="dragon_transform" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll2">
         <attribute vulnerability="H" />
         <attribute strength="H" />
         <attribute attack_speed="3" />
         <attribute move_speed="4" />
-        <attribute icon_type="lion" />
+        <attribute icon_type="add-ons-Animals_Age-images-units-cats-puma" />
         <attribute walk_woods="" />
         <attribute light_color="gold" />
         <attribute dark_color="orange" />
         <attribute name="Lion" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/addons" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_size="1" />
+        <attribute icon_type_character="lion" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll3">
         <attribute vulnerability="M" />
         <attribute strength="M" />
         <attribute attack_speed="2" />
         <attribute move_speed="2" />
-        <attribute icon_type="eagle" />
+        <attribute icon_type="Forgotten_Legends-images-frakcja2-elder-falcon" />
         <attribute flying="" />
         <attribute light_color="gray" />
         <attribute dark_color="darkgray" />
         <attribute name="Eagle" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/addons" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="eagle" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll4">
         <attribute vulnerability="L" />
         <attribute move_speed="1" />
-        <attribute icon_type="bird" />
+        <attribute icon_type="falcon" />
         <attribute flying="" />
         <attribute light_color="lightblue" />
         <attribute dark_color="blue" />
         <attribute name="Bird" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute small="" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="bird" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll5">
         <attribute vulnerability="L" />
         <attribute move_speed="2" />
-        <attribute icon_type="squirrel" />
+        <attribute icon_type="stoat" />
         <attribute walk_woods="" />
         <attribute light_color="peach" />
         <attribute dark_color="brown" />
         <attribute name="Squirrel" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute small="" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="squirrel" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll6">
         <attribute vulnerability="L" />
         <attribute move_speed="3" />
         <attribute walk_woods="" />
-        <attribute icon_type="frog" />
+        <attribute icon_type="Archaic_Era-khthon-toad-big-toad" />
         <attribute light_color="lightgreen" />
         <attribute dark_color="forestgreen" />
         <attribute name="Frog" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/addons" />
         <attribute small="" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="frog" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2180" name="Transform">
@@ -57633,76 +57724,95 @@
         <attribute strength="T" />
         <attribute attack_speed="4" />
         <attribute move_speed="4" />
-        <attribute icon_type="dragon_transform" />
+        <attribute icon_type="wyrm" />
         <attribute flying="" />
         <attribute light_color="lightblue" />
         <attribute dark_color="red" />
         <attribute name="Tremendous Dragon" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute armored="" />
         <attribute dragon="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="dragon_transform" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll2">
         <attribute vulnerability="H" />
         <attribute strength="H" />
         <attribute attack_speed="3" />
         <attribute move_speed="4" />
-        <attribute icon_type="lion" />
+        <attribute icon_type="add-ons-Animals_Age-images-units-cats-puma" />
         <attribute walk_woods="" />
         <attribute light_color="gold" />
         <attribute dark_color="orange" />
         <attribute name="Lion" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/addons" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_size="1" />
+        <attribute icon_type_character="lion" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll3">
         <attribute vulnerability="M" />
         <attribute strength="M" />
         <attribute attack_speed="2" />
         <attribute move_speed="2" />
-        <attribute icon_type="eagle" />
+        <attribute icon_type="Forgotten_Legends-images-frakcja2-elder-falcon" />
         <attribute flying="" />
         <attribute light_color="gray" />
         <attribute dark_color="darkgray" />
         <attribute name="Eagle" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/addons" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="eagle" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll4">
         <attribute vulnerability="L" />
         <attribute move_speed="1" />
-        <attribute icon_type="bird" />
+        <attribute icon_type="falcon" />
         <attribute flying="" />
         <attribute light_color="lightblue" />
         <attribute dark_color="blue" />
         <attribute name="Bird" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute small="" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="bird" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll5">
         <attribute vulnerability="L" />
         <attribute move_speed="2" />
-        <attribute icon_type="squirrel" />
+        <attribute icon_type="stoat" />
         <attribute walk_woods="" />
         <attribute light_color="peach" />
         <attribute dark_color="brown" />
         <attribute name="Squirrel" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute small="" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="squirrel" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll6">
         <attribute vulnerability="L" />
         <attribute move_speed="3" />
         <attribute walk_woods="" />
-        <attribute icon_type="frog" />
+        <attribute icon_type="Archaic_Era-khthon-toad-big-toad" />
         <attribute light_color="lightgreen" />
         <attribute dark_color="forestgreen" />
         <attribute name="Frog" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/addons" />
         <attribute small="" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="frog" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2181" name="Transform">
@@ -57723,76 +57833,95 @@
         <attribute strength="T" />
         <attribute attack_speed="4" />
         <attribute move_speed="4" />
-        <attribute icon_type="dragon_transform" />
+        <attribute icon_type="wyrm" />
         <attribute flying="" />
         <attribute light_color="lightblue" />
         <attribute dark_color="red" />
         <attribute name="Tremendous Dragon" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute armored="" />
         <attribute dragon="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="dragon_transform" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll2">
         <attribute vulnerability="H" />
         <attribute strength="H" />
         <attribute attack_speed="3" />
         <attribute move_speed="4" />
-        <attribute icon_type="lion" />
+        <attribute icon_type="add-ons-Animals_Age-images-units-cats-puma" />
         <attribute walk_woods="" />
         <attribute light_color="gold" />
         <attribute dark_color="orange" />
         <attribute name="Lion" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/addons" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_size="1" />
+        <attribute icon_type_character="lion" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll3">
         <attribute vulnerability="M" />
         <attribute strength="M" />
         <attribute attack_speed="2" />
         <attribute move_speed="2" />
-        <attribute icon_type="eagle" />
+        <attribute icon_type="Forgotten_Legends-images-frakcja2-elder-falcon" />
         <attribute flying="" />
         <attribute light_color="gray" />
         <attribute dark_color="darkgray" />
         <attribute name="Eagle" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/addons" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="eagle" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll4">
         <attribute vulnerability="L" />
         <attribute move_speed="1" />
-        <attribute icon_type="bird" />
+        <attribute icon_type="falcon" />
         <attribute flying="" />
         <attribute light_color="lightblue" />
         <attribute dark_color="blue" />
         <attribute name="Bird" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute small="" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="bird" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll5">
         <attribute vulnerability="L" />
         <attribute move_speed="2" />
-        <attribute icon_type="squirrel" />
+        <attribute icon_type="stoat" />
         <attribute walk_woods="" />
         <attribute light_color="peach" />
         <attribute dark_color="brown" />
         <attribute name="Squirrel" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute small="" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="squirrel" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll6">
         <attribute vulnerability="L" />
         <attribute move_speed="3" />
         <attribute walk_woods="" />
-        <attribute icon_type="frog" />
+        <attribute icon_type="Archaic_Era-khthon-toad-big-toad" />
         <attribute light_color="lightgreen" />
         <attribute dark_color="forestgreen" />
         <attribute name="Frog" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/addons" />
         <attribute small="" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="frog" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2182" name="Transform">
@@ -57813,76 +57942,95 @@
         <attribute strength="T" />
         <attribute attack_speed="4" />
         <attribute move_speed="4" />
-        <attribute icon_type="dragon_transform" />
+        <attribute icon_type="wyrm" />
         <attribute flying="" />
         <attribute light_color="lightblue" />
         <attribute dark_color="red" />
         <attribute name="Tremendous Dragon" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units" />
         <attribute armored="" />
         <attribute dragon="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="dragon_transform" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll2">
         <attribute vulnerability="H" />
         <attribute strength="H" />
         <attribute attack_speed="3" />
         <attribute move_speed="4" />
-        <attribute icon_type="lion" />
+        <attribute icon_type="add-ons-Animals_Age-images-units-cats-puma" />
         <attribute walk_woods="" />
         <attribute light_color="gold" />
         <attribute dark_color="orange" />
         <attribute name="Lion" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/addons" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_size="1" />
+        <attribute icon_type_character="lion" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll3">
         <attribute vulnerability="M" />
         <attribute strength="M" />
         <attribute attack_speed="2" />
         <attribute move_speed="2" />
-        <attribute icon_type="eagle" />
+        <attribute icon_type="Forgotten_Legends-images-frakcja2-elder-falcon" />
         <attribute flying="" />
         <attribute light_color="gray" />
         <attribute dark_color="darkgray" />
         <attribute name="Eagle" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/addons" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="eagle" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll4">
         <attribute vulnerability="L" />
         <attribute move_speed="1" />
-        <attribute icon_type="bird" />
+        <attribute icon_type="falcon" />
         <attribute flying="" />
         <attribute light_color="lightblue" />
         <attribute dark_color="blue" />
         <attribute name="Bird" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute small="" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="bird" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll5">
         <attribute vulnerability="L" />
         <attribute move_speed="2" />
-        <attribute icon_type="squirrel" />
+        <attribute icon_type="stoat" />
         <attribute walk_woods="" />
         <attribute light_color="peach" />
         <attribute dark_color="brown" />
         <attribute name="Squirrel" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/monsters" />
         <attribute small="" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="squirrel" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
       <AttributeBlock blockName="roll6">
         <attribute vulnerability="L" />
         <attribute move_speed="3" />
         <attribute walk_woods="" />
-        <attribute icon_type="frog" />
+        <attribute icon_type="Archaic_Era-khthon-toad-big-toad" />
         <attribute light_color="lightgreen" />
         <attribute dark_color="forestgreen" />
         <attribute name="Frog" />
-        <attribute icon_folder="monsters" />
+        <attribute icon_folder="wesnoth/units/addons" />
         <attribute small="" />
         <attribute animal="" />
+        <attribute super_realm="" />
+        <attribute icon_type_character="frog" />
+        <attribute icon_folder_character="monsters" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2183" name="Melt Into Mist">

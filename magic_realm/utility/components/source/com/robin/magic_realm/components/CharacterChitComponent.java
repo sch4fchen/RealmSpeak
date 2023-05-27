@@ -108,10 +108,22 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		GameObject transmorph = character.getTransmorph();
 		if (transmorph != null) {
 			// Draw image
-			String icon_type = transmorph.getThisAttribute(Constants.ICON_TYPE);
+			String icon_type = null;
+			if (transmorph.hasThisAttribute(Constants.ICON_TYPE+Constants.ICON_CHARACTER)) {
+				icon_type = transmorph.getThisAttribute(Constants.ICON_TYPE+Constants.ICON_CHARACTER);
+			}
+			else {
+				icon_type = transmorph.getThisAttribute(Constants.ICON_TYPE);
+			}
 			if (icon_type != null) {
 				boolean transformSkin = false;
-				String iconDir = transmorph.getThisAttribute(Constants.ICON_FOLDER);
+				String iconDir = null;
+				if (transmorph.hasThisAttribute(Constants.ICON_FOLDER+Constants.ICON_CHARACTER)) {
+					iconDir = transmorph.getThisAttribute(Constants.ICON_FOLDER+Constants.ICON_CHARACTER);
+				}
+				else {
+					iconDir = transmorph.getThisAttribute(Constants.ICON_FOLDER);
+				}
 				if (displayStyle == DISPLAY_STYLE_LEGENDARY || displayStyle == DISPLAY_STYLE_ALTERNATIVE) {
 					String iconDir_l = "characters_legendary";
 					String icon_type_l = icon_type;
@@ -135,7 +147,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					}
 				}
 				if (!transformSkin) {
-					if (useColorIcons()) {
+					if (useColorIcons() && !isDisplayStyleAlternative() && !gameObject.hasThisAttribute(Constants.SUPER_REALM)) {
 						iconDir = iconDir+"_c";
 					}
 					drawIcon(g,iconDir, icon_type, 0.75);
@@ -179,8 +191,20 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				drawIcon(g,iconFolder,iconName,1.2);
 			}
 			else {
-				String iconName = gameObject.getThisAttribute(Constants.ICON_TYPE);
-				String iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER);
+				String iconName = null;
+				if (gameObject.hasThisAttribute(Constants.ICON_TYPE+Constants.ICON_CHARACTER)) {
+					iconName = gameObject.getThisAttribute(Constants.ICON_TYPE+Constants.ICON_CHARACTER);
+				}
+				else {
+					iconName = gameObject.getThisAttribute(Constants.ICON_TYPE);
+				}
+				String iconFolder = null;
+				if (gameObject.hasThisAttribute(Constants.ICON_FOLDER+Constants.ICON_CHARACTER)) {
+					iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER+Constants.ICON_CHARACTER);
+				}
+				else {
+					iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER);
+				}
 				if (iconName!=null && iconFolder!=null) {
 					if ((displayStyle == DISPLAY_STYLE_LEGENDARY || displayStyle == DISPLAY_STYLE_ALTERNATIVE) && legendaryImageExists()) {
 						iconFolder = iconFolder+"_legendary";

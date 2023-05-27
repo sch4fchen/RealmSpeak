@@ -70,7 +70,7 @@ public class DwellingChitComponent extends SquareChitComponent {
 					drawIcon(g,"dwellings"+(useColor?"_c":""),icon_type,0.9);
 				}
 			}
-			if (useColor) {
+			if (useColor || isDisplayStyleLegendary() || isDisplayStyleAlternative()) {
 				TextType tt = new TextType(getGameObject().getName(),T_CHIT_SIZE,"BOLD");
 				tt.draw(g1,5,2,Alignment.Left);
 			}

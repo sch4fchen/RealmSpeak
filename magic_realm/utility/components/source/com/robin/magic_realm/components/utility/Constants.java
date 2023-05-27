@@ -121,6 +121,7 @@ public class Constants {
 	public static final String ICON_TYPE = "icon_type";
 	public static final String ICON_SIZE = "icon_size";
 	public static final String ALTERNATIVE = "_alt";
+	public static final String ICON_CHARACTER = "_character";
 	public static final String ICON_Y_OFFSET = "icon_y_offset";
 	public static final String ICON_TYPE_RIDER = "icon_type_rider";
 	public static final String ICON_FOLDER = "icon_folder";
