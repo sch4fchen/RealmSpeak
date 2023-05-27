@@ -382,6 +382,9 @@ public class SetupCardUtility {
 		mc.setupGameObject(go,"Wasp","wasp","M",false,true);
 		MonsterCreator.setupSide(go,"light","L",1,2,0,3,"yellow");
 		MonsterCreator.setupSide(go,"dark","L",1,2,0,3,"yellow");
+		go.setThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE,"wasp");
+		go.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units");
+		go.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"0.9");
 		return go;
 	}
 	public static GameObject createBlob(MonsterCreator mc,GameData data) {
@@ -389,6 +392,10 @@ public class SetupCardUtility {
 		mc.setupGameObject(go,"Blob","blob","L",false);
 		MonsterCreator.setupSide(go,"light","L",0,3,0,5,"lightblue");
 		MonsterCreator.setupSide(go,"dark","L",0,3,0,5,"lightblue");
+		go.setThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE,"mudcrawler");
+		go.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units/monsters");
+		go.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"1.1");
+		go.setThisAttribute(Constants.ICON_Y_OFFSET+Constants.ALTERNATIVE,"1");
 		go.setThisAttribute(Constants.GM_GROW);
 		return go;
 	}
@@ -420,6 +427,9 @@ public class SetupCardUtility {
 				// color these undead a little differently to distinguish them from others
 				go.setAttribute("light","chit_color","gray");
 				go.setAttribute("dark","chit_color","darkgray");
+				go.setThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE,"zombie");
+				go.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units/undead");
+				go.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"0.9");
 			}
 			if (go!=null) {
 				go.setThisAttribute(Constants.GENERATED);

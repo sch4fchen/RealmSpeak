@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.MonsterCreator;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
@@ -65,34 +66,55 @@ public class SummonAnimal extends MonsterTable {
 				getMonsterCreator().setupGameObject(animal,"Basilisk","basilisk","T",true);
 				MonsterCreator.setupSide(animal,"light","T",0,5,0,6,"lightgreen");
 				MonsterCreator.setupSide(animal,"dark","RED",0,5,0,6,"red");
+				animal.setThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE,"WarOfTheGods-drakes-blue_lizard");
+				animal.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units/addons");
+				animal.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"1.2");
+				animal.setThisAttribute(Constants.ICON_Y_OFFSET+Constants.ALTERNATIVE,"-7");
 				animal.setAttribute("dark","pins");
 				break;
 			case Eagle:
 				getMonsterCreator().setupGameObject(animal,"Giant Eagle","eagle","H",false,true);
 				MonsterCreator.setupSide(animal,"light","M",0,3,0,4,"lightgreen");
 				MonsterCreator.setupSide(animal,"dark","M",0,3,0,4,"forestgreen");
+				animal.setThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE,"Rashy_Era-human-mountains-roc-big");
+				animal.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units/addons");
+				animal.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"0.5");
+				animal.setThisAttribute(Constants.ICON_Y_OFFSET+Constants.ALTERNATIVE,"2");
 				break;
 			case Bear:
 				getMonsterCreator().setupGameObject(animal,"Bear","bear","H",false);
 				MonsterCreator.setupSide(animal,"light","H",0,3,0,4,"lightgreen");
 				MonsterCreator.setupSide(animal,"dark","H",0,3,0,4,"forestgreen");
+				animal.setThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE,"bear");
+				animal.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units/monsters");
+				animal.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"0.9");
 				break;
 			case Wolf:
 				getMonsterCreator().setupGameObject(animal,"Wolf","wolf","M",false);
 				MonsterCreator.setupSide(animal,"light","M",0,4,0,4,"lightgreen");
 				MonsterCreator.setupSide(animal,"dark","M",0,4,0,4,"forestgreen");
+				animal.setThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE,"wolf-great");
+				animal.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units/monsters");
+				animal.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"1.1");
 				break;
 			case Hawk:
 				getMonsterCreator().setupGameObject(animal,"Hawk","hawk","L",false,true);
 				MonsterCreator.setupSide(animal,"light","L",0,2,0,2,"lightgreen");
 				MonsterCreator.setupSide(animal,"dark","L",0,2,0,2,"forestgreen");
+				animal.setThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE,"roc");
+				animal.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units/monsters");
+				animal.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"0.7");
 				break;
 			case Squirrel:
 				getMonsterCreator().setupGameObject(animal,"Squirrel","squirrel","L",false,false,true);
 				MonsterCreator.setupSide(animal,"light",null,0,0,0,2,"lightgreen");
 				MonsterCreator.setupSide(animal,"dark",null,0,0,0,2,"forestgreen");
+				animal.setThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE,"stoat");
+				animal.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units/monsters");
+				animal.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"0.7");
 				break;
 		}
+		animal.setThisAttribute("animal");
 		return animal;
 	}
 	private void summonAnimal(CharacterWrapper character, AnimalType type) {

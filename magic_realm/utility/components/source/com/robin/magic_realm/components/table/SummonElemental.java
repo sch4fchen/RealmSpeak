@@ -8,6 +8,7 @@ import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
 import com.robin.general.swing.ButtonOptionDialog;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.MonsterCreator;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
@@ -93,21 +94,37 @@ public class SummonElemental extends MonsterTable {
 				MonsterCreator.setupSide(elemental,"light","T",0,4,0,6,"tan");
 				MonsterCreator.setupSide(elemental,"dark","RED",0,4,0,6,"red");
 				elemental.setAttribute("dark","pins");
+				elemental.setThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE,"WarOfTheGods-monsters-elemental-earth");
+				elemental.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units/addons");
+				elemental.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"0.9");
+				elemental.setThisAttribute(Constants.ICON_Y_OFFSET+Constants.ALTERNATIVE,"9");
 				break;
 			case Fire:
 				getMonsterCreator().setupGameObject(elemental,"Fire Elemental","fire","H",false);
 				MonsterCreator.setupSide(elemental,"light","H",2,6,1,4,"lightorange");
 				MonsterCreator.setupSide(elemental,"dark","H",1,2,1,6,"orange");
+				elemental.setThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE,"WarOfTheGods-monsters-elemental-fire1");
+				elemental.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units/addons");
+				elemental.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"0.9");
+				elemental.setThisAttribute(Constants.ICON_Y_OFFSET+Constants.ALTERNATIVE,"9");
 				break;
 			case Water:
 				getMonsterCreator().setupGameObject(elemental,"Water Elemental","water","H",false);
 				MonsterCreator.setupSide(elemental,"light","H",0,4,0,2,"lightblue");
 				MonsterCreator.setupSide(elemental,"dark","H",0,2,0,4,"blue");
+				elemental.setThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE,"Reign_of_the_Lords-elementals-nymph");
+				elemental.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units/addons");
+				elemental.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"0.9");
+				elemental.setThisAttribute(Constants.ICON_Y_OFFSET+Constants.ALTERNATIVE,"9");
 				break;
 			case Air:
 				getMonsterCreator().setupGameObject(elemental,"Air Elemental","air","M",false,true);
 				MonsterCreator.setupSide(elemental,"light","M",0,3,0,4,"white");
 				MonsterCreator.setupSide(elemental,"dark","H",0,4,0,4,"gray");
+				elemental.setThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE,"dust-devil");
+				elemental.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units/monsters");
+				elemental.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"0.9");
+				elemental.setThisAttribute(Constants.ICON_Y_OFFSET+Constants.ALTERNATIVE,"9");
 				break;
 		}
 		return elemental;
