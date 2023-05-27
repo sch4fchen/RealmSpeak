@@ -24479,7 +24479,8 @@
         <attribute denizen="" />
         <attribute icon_type_alt="WarOfTheGods-drakes-blue_lizard" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
-        <attribute icon_size_alt="1" />
+        <attribute icon_size_alt="1.2" />
+        <attribute icon_y_offset_alt="-7" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -24511,8 +24512,8 @@
         <attribute denizen="" />
         <attribute icon_type_alt="Rashy_Era-elves-dark-spider" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
-        <attribute icon_size_alt="1" />
-        <attribute icon_y_offset_alt="4" />
+        <attribute icon_size_alt="1.2" />
+        <attribute icon_y_offset_alt="3" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -25195,6 +25196,9 @@
         <attribute box_num="1" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute icon_type_alt="Forgotten_Legends-images-frakcja2-alligator" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -25226,6 +25230,9 @@
         <attribute box_num="1" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute icon_type_alt="WarOfTheGods-monsters-Alligator" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -25257,6 +25264,9 @@
         <attribute box_num="2" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute icon_type_alt="Forgotten_Legends-images-frakcja2-alligator" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -25288,6 +25298,9 @@
         <attribute box_num="2" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute icon_type_alt="WarOfTheGods-monsters-Alligator" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -25319,6 +25332,9 @@
         <attribute box_num="2" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute icon_type_alt="Forgotten_Legends-images-frakcja2-alligator" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -25350,6 +25366,9 @@
         <attribute box_num="2" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute icon_type_alt="WarOfTheGods-monsters-Alligator" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -25380,6 +25399,9 @@
         <attribute rw_expansion_1="" />
         <attribute box_num="1" />
         <attribute denizen="" />
+        <attribute icon_type_alt="giant-mudcrawler" />
+        <attribute icon_folder_alt="wesnoth/units/monsters" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -25409,6 +25431,9 @@
         <attribute rw_expansion_1="" />
         <attribute box_num="1" />
         <attribute denizen="" />
+        <attribute icon_type_alt="zombie-troll" />
+        <attribute icon_folder_alt="wesnoth/units/undead" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -25437,6 +25462,9 @@
         <attribute rw_expansion_1="" />
         <attribute box_num="1" />
         <attribute denizen="" />
+        <attribute icon_type_alt="zombie-troll" />
+        <attribute icon_folder_alt="wesnoth/units/undead" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -25466,6 +25494,9 @@
         <attribute box_num="1" />
         <attribute denizen="" />
         <attribute weapon_use="" />
+        <attribute icon_type_alt="soulless-rat" />
+        <attribute icon_folder_alt="wesnoth/units/undead" />
+        <attribute icon_size_alt="1.2" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -25496,6 +25527,9 @@
         <attribute box_num="1" />
         <attribute denizen="" />
         <attribute weapon_use="" />
+        <attribute icon_type_alt="soulless-rat" />
+        <attribute icon_folder_alt="wesnoth/units/undead" />
+        <attribute icon_size_alt="1.2" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -25526,6 +25560,9 @@
         <attribute box_num="2" />
         <attribute denizen="" />
         <attribute weapon_use="" />
+        <attribute icon_type_alt="soulless-rat" />
+        <attribute icon_folder_alt="wesnoth/units/undead" />
+        <attribute icon_size_alt="1.2" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -25556,6 +25593,9 @@
         <attribute box_num="2" />
         <attribute denizen="" />
         <attribute weapon_use="" />
+        <attribute icon_type_alt="soulless-rat" />
+        <attribute icon_folder_alt="wesnoth/units/undead" />
+        <attribute icon_size_alt="1.2" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -25585,6 +25625,9 @@
         <attribute rw_expansion_1="" />
         <attribute flying="" />
         <attribute denizen="" />
+        <attribute icon_type_alt="Forgotten_Legends-images-frakcja4-harpie-glider-imag" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -25613,6 +25656,9 @@
         <attribute rw_expansion_1="" />
         <attribute flying="" />
         <attribute denizen="" />
+        <attribute icon_type_alt="Forgotten_Legends-images-frakcja4-dark-harpie" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -25641,6 +25687,9 @@
         <attribute rw_expansion_1="" />
         <attribute flying="" />
         <attribute denizen="" />
+        <attribute icon_type_alt="Forgotten_Legends-images-frakcja4-black-harpie" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -25667,6 +25716,8 @@
         <attribute icon_type="shade" />
         <attribute icon_folder="monsters2" />
         <attribute rw_expansion_1="" />
+        <attribute icon_type_alt="Era_of_Magic_Resources-destroyers-maras" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
       </AttributeBlock>
       <contains id="914" />
     </GameObject>
@@ -25682,6 +25733,8 @@
         <attribute icon_type="shade" />
         <attribute icon_folder="monsters2" />
         <attribute rw_expansion_1="" />
+        <attribute icon_type_alt="Era_of_Magic_Resources-destroyers-maras" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
       </AttributeBlock>
       <contains id="915" />
       <contains id="916" />
@@ -25698,6 +25751,8 @@
         <attribute icon_type="skull" />
         <attribute icon_folder="monsters2" />
         <attribute rw_expansion_1="" />
+        <attribute icon_type_alt="skeleton" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="917" />
       <contains id="918" />
@@ -25717,6 +25772,8 @@
         <attribute icon_type="carnoplant" />
         <attribute icon_folder="monsters2" />
         <attribute rw_expansion_1="" />
+        <attribute icon_type_alt="carnivorePlant" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="922" />
     </GameObject>
@@ -25732,6 +25789,8 @@
         <attribute icon_type="carnoplant" />
         <attribute icon_folder="monsters2" />
         <attribute rw_expansion_1="" />
+        <attribute icon_type_alt="carnivorePlant" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="923" />
       <contains id="924" />
@@ -25749,6 +25808,8 @@
         <attribute icon_type="carnoplant" />
         <attribute icon_folder="monsters2" />
         <attribute rw_expansion_1="" />
+        <attribute icon_type_alt="carnivorePlant" />
+        <attribute icon_folder_alt="wesnoth/units" />
       </AttributeBlock>
       <contains id="926" />
       <contains id="927" />
@@ -25768,6 +25829,8 @@
         <attribute icon_type="gator" />
         <attribute icon_folder="monsters2" />
         <attribute rw_expansion_1="" />
+        <attribute icon_type_alt="Forgotten_Legends-images-frakcja2-alligator" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
       </AttributeBlock>
       <contains id="931" />
       <contains id="932" />
@@ -25784,6 +25847,8 @@
         <attribute icon_type="gator" />
         <attribute icon_folder="monsters2" />
         <attribute rw_expansion_1="" />
+        <attribute icon_type_alt="WarOfTheGods-monsters-Alligator" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
       </AttributeBlock>
       <contains id="936" />
       <contains id="933" />
@@ -25802,6 +25867,8 @@
         <attribute icon_type="swampthing" />
         <attribute icon_folder="monsters2" />
         <attribute rw_expansion_1="" />
+        <attribute icon_type_alt="giant-mudcrawler" />
+        <attribute icon_folder_alt="wesnoth/units/monsters" />
       </AttributeBlock>
       <contains id="937" />
     </GameObject>
@@ -25817,6 +25884,8 @@
         <attribute icon_type="swampthing" />
         <attribute icon_folder="monsters2" />
         <attribute rw_expansion_1="" />
+        <attribute icon_type_alt="zombie-troll" />
+        <attribute icon_folder_alt="wesnoth/units/undead" />
       </AttributeBlock>
       <contains id="938" />
       <contains id="939" />
@@ -25833,6 +25902,8 @@
         <attribute icon_type="ratman" />
         <attribute icon_folder="monsters2" />
         <attribute rw_expansion_1="" />
+        <attribute icon_type_alt="soulless-rat" />
+        <attribute icon_folder_alt="wesnoth/units/undead" />
       </AttributeBlock>
       <contains id="940" />
       <contains id="941" />
@@ -25849,6 +25920,8 @@
         <attribute icon_type="ratman" />
         <attribute icon_folder="monsters2" />
         <attribute rw_expansion_1="" />
+        <attribute icon_type_alt="soulless-rat" />
+        <attribute icon_folder_alt="wesnoth/units/undead" />
       </AttributeBlock>
       <contains id="942" />
       <contains id="943" />
@@ -25865,6 +25938,8 @@
         <attribute icon_type="harpy" />
         <attribute icon_folder="monsters2" />
         <attribute rw_expansion_1="" />
+        <attribute icon_type_alt="Forgotten_Legends-images-frakcja4-black-harpie" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
       </AttributeBlock>
       <contains id="944" />
       <contains id="945" />

@@ -163,16 +163,16 @@ public class RealmViewer extends JFrame {
 		});
 	}
 	public static void main(String[]args) {
-		RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_FRENZEL;// RealmComponent.DISPLAY_STYLE_COLOR;
+		RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_ALTERNATIVE;// RealmComponent.DISPLAY_STYLE_COLOR;
 		RealmUtility.setupTextType();
 		RealmLoader loader = new RealmLoader();
 		GameData data = loader.getData();
 		ArrayList<String> query = new ArrayList<String>();
 		StringBuffer result = new StringBuffer();
-		query.add("super_realm");
-		data.doSetup(result,"super_realm_setup",query);
-		//query.add("rw_expansion_1");
-		//data.doSetup(result,"rw_expansion_1_setup",query);
+		//query.add("super_realm");
+		//data.doSetup(result,"super_realm_setup",query);
+		query.add("rw_expansion_1");
+		data.doSetup(result,"rw_expansion_1_setup",query);
 		//query.add("!original_game");
 		new RealmViewer(data,query).setVisible(true);
 		

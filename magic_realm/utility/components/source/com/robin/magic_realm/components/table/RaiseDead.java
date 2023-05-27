@@ -102,6 +102,9 @@ public class RaiseDead extends MonsterTable {
 		monsterCreator.setupGameObject(go,"Skeleton","skull","M",false);
 		MonsterCreator.setupSide(go,"light","L",0,4,0,4,"white");
 		MonsterCreator.setupSide(go,"dark","L",0,2,0,6,"gray");
+		go.setThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE,"skeleton");
+		go.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units");
+		go.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"0.9");
 		go.setThisAttribute(Constants.UNDEAD);
 		return go;
 	}
@@ -111,6 +114,9 @@ public class RaiseDead extends MonsterTable {
 		monsterCreator.setupGameObject(go,"Skeletal Archer","skullbow","M",false);
 		MonsterCreator.setupSide(go,"light",null,0,0,0,3,"white");
 		MonsterCreator.setupSide(go,"dark","M",1,3,14,5,"gray");
+		go.setThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE,"core-images-units-undead-skeletal-archer-archer");
+		go.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units/addons");
+		go.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"0.9");
 		go.setThisAttribute(Constants.UNDEAD);
 		return go;
 	}
@@ -120,6 +126,9 @@ public class RaiseDead extends MonsterTable {
 		monsterCreator.setupGameObject(go,"Skeletal Swordsman","skullsword","M",false);
 		MonsterCreator.setupSide(go,"light","L",1,4,3,4,"white");
 		MonsterCreator.setupSide(go,"dark","L",1,2,3,6,"gray");
+		go.setThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE,"core-images-units-undead-skeletal-deathblade");
+		go.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units/addons");
+		go.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"0.9");
 		go.setThisAttribute(Constants.UNDEAD);
 		return go;
 	}
@@ -146,6 +155,9 @@ public class RaiseDead extends MonsterTable {
 				MonsterCreator.setupSide(go,"dark","M",0,6,0,4,"purple");
 				break;
 		}
+		go.setThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE,"zombie");
+		go.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units/undead");
+		go.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"0.9");
 		return go;
 	}
 }
