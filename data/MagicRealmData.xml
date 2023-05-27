@@ -24477,6 +24477,9 @@
         <attribute rw_expansion_1="" />
         <attribute armored="" />
         <attribute denizen="" />
+        <attribute icon_type_alt="WarOfTheGods-drakes-blue_lizard" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -24506,6 +24509,10 @@
         <attribute needs_init="" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute icon_type_alt="Rashy_Era-elves-dark-spider" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="1" />
+        <attribute icon_y_offset_alt="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -24537,6 +24544,9 @@
         <attribute rw_expansion_1="" />
         <attribute flying="" />
         <attribute denizen="" />
+        <attribute icon_type_alt="harpy" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -24567,6 +24577,9 @@
         <attribute rw_expansion_1="" />
         <attribute flying="" />
         <attribute denizen="" />
+        <attribute icon_type_alt="wasp" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -24597,6 +24610,9 @@
         <attribute needs_init="" />
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
+        <attribute icon_type_alt="ancient-lich" />
+        <attribute icon_folder_alt="wesnoth/units/undead-necromancers" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -24628,6 +24644,9 @@
         <attribute rw_expansion_1="" />
         <attribute box_num="1" />
         <attribute denizen="" />
+        <attribute icon_type_alt="Era_of_Magic_Resources-destroyers-maras" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="1.1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="1" />
@@ -24657,6 +24676,9 @@
         <attribute rw_expansion_1="" />
         <attribute box_num="2" />
         <attribute denizen="" />
+        <attribute icon_type_alt="Era_of_Magic_Resources-destroyers-maras" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="1.1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="1" />
@@ -24686,6 +24708,9 @@
         <attribute rw_expansion_1="" />
         <attribute box_num="3" />
         <attribute denizen="" />
+        <attribute icon_type_alt="Era_of_Magic_Resources-destroyers-maras" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="1.1" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="1" />
@@ -24718,6 +24743,9 @@
         <attribute denizen="" />
         <attribute weapon_use="" />
         <attribute skeleton="" />
+        <attribute icon_type_alt="skeleton" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -24749,6 +24777,9 @@
         <attribute denizen="" />
         <attribute weapon_use="" />
         <attribute skeleton="" />
+        <attribute icon_type_alt="skeleton" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -24780,6 +24811,9 @@
         <attribute denizen="" />
         <attribute weapon_use="" />
         <attribute skeleton="" />
+        <attribute icon_type_alt="skeleton" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -24813,6 +24847,9 @@
         <attribute missile="" />
         <attribute weapon_use="" />
         <attribute skeleton="" />
+        <attribute icon_type_alt="core-images-units-undead-skeletal-archer-archer" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -24844,6 +24881,9 @@
         <attribute denizen="" />
         <attribute weapon_use="" />
         <attribute skeleton="" />
+        <attribute icon_type_alt="core-images-units-undead-skeletal-deathblade" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -24875,6 +24915,9 @@
         <attribute rw_expansion_1="" />
         <attribute box_num="1" />
         <attribute denizen="" />
+        <attribute icon_type_alt="carnivorePlant" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1.2" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -24903,6 +24946,9 @@
         <attribute rw_expansion_1="" />
         <attribute box_num="2" />
         <attribute denizen="" />
+        <attribute icon_type_alt="carnivorePlant" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1.2" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -24931,6 +24977,9 @@
         <attribute rw_expansion_1="" />
         <attribute box_num="2" />
         <attribute denizen="" />
+        <attribute icon_type_alt="carnivorePlant" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1.2" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -24959,6 +25008,9 @@
         <attribute rw_expansion_1="" />
         <attribute box_num="2" />
         <attribute denizen="" />
+        <attribute icon_type_alt="carnivorePlant" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1.2" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -24987,6 +25039,9 @@
         <attribute rw_expansion_1="" />
         <attribute box_num="3" />
         <attribute denizen="" />
+        <attribute icon_type_alt="carnivorePlant" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1.2" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -25015,6 +25070,9 @@
         <attribute rw_expansion_1="" />
         <attribute box_num="3" />
         <attribute denizen="" />
+        <attribute icon_type_alt="carnivorePlant" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1.2" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -25043,6 +25101,9 @@
         <attribute rw_expansion_1="" />
         <attribute box_num="3" />
         <attribute denizen="" />
+        <attribute icon_type_alt="carnivorePlant" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1.2" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -25071,6 +25132,9 @@
         <attribute rw_expansion_1="" />
         <attribute box_num="3" />
         <attribute denizen="" />
+        <attribute icon_type_alt="carnivorePlant" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1.2" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -25099,6 +25163,9 @@
         <attribute rw_expansion_1="" />
         <attribute box_num="3" />
         <attribute denizen="" />
+        <attribute icon_type_alt="carnivorePlant" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="1.2" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -27121,6 +27188,7 @@
         <attribute flying="" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
         <attribute icon_type_alt="WarOfTheGods-elves-wood-faerie" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="6" />
@@ -27495,6 +27563,7 @@
         <attribute companion="" />
         <attribute icon_type_alt="Archaic_Era-ukians-dog-harrier" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -27522,6 +27591,7 @@
         <attribute companion="" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
         <attribute icon_type_alt="Archaic_Era-ukians-dog-dog" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -27549,6 +27619,7 @@
         <attribute companion="" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
         <attribute icon_type_alt="Archaic_Era-ukians-dog-attack-dog" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -27576,6 +27647,7 @@
         <attribute companion="" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
         <attribute icon_type_alt="Archaic_Era-ukians-dog-war-hound" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -27603,6 +27675,7 @@
         <attribute companion="" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
         <attribute icon_type_alt="Archaic_Era-ukians-dog-attack-dog" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />

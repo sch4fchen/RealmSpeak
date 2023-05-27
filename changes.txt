@@ -1,5 +1,5 @@
 ::ROADMAP::
-Alternative icons: 909-959, 1043-1070, melt into mist spells, transform spells
+Alternative icons: 931-959, 1043-1070
 ---Super Realm Content---
 Spells III: Migration, Tracker’s Sense, Water Run
 Spells IV: Blinding Light, Control Element, Elemental Spirit, Frozen Water, Reserve, Violent Winds
