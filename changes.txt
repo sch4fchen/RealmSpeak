@@ -68,7 +68,7 @@ Version 1.1.8.0
 
 Version 1.1.7.9
 QUEST UPDATE:
-# Updates to quests: A03
+# Updates to quest: A03
 # QuestLocation: Option to set location choice for cloned quests (e.g. All-Play quests)
 # QuestRewardSpellEffectOnCharacter: more effects
 # QuestRewardSpellEffectOnClearing
@@ -83,10 +83,10 @@ NEW FEATURES:
 # Functionality for horses of monsters (e.g. Bone Horse in Super Realm)
 # Relationship of roving natives (enemy by default, e.g. Super Realm)
 # Hurricane Winds: check effect at the start of a combat (e.g. quests)
-# Hurricane Winds: does not blows hirelings and companions anymore (optional rule added)
+# Hurricane Winds: does not blow hirelings and companions anymore (optional rule added)
 BUGS/ISSUES:
 # Fix drawing same quest cards in multiplayer games
-# Fix crash for Tremendous monster without a target
+# Fix crash for Tremendous monsters without a target
 # QuestRewardVisitor: fix crash if character is not in a clearing
 
 Version 1.1.7.8
