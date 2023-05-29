@@ -1,5 +1,5 @@
 ::ROADMAP::
-Alternative icons: 1043-1070
+1166-1168
 ---Super Realm Content---
 Spells III: Migration, Tracker’s Sense, Water Run
 Spells IV: Blinding Light, Control Element, Elemental Spirit, Frozen Water, Reserve, Violent Winds

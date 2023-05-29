@@ -27284,6 +27284,9 @@
         <attribute traveler_template="" />
         <attribute store="merchant" />
         <attribute text="Buys one item per TRADE at face value - sold items end up at random dwellings" />
+        <attribute icon_type_alt="merchant" />
+        <attribute icon_folder_alt="wesnoth/units" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1044" name="Dwarven Miner">
@@ -27295,6 +27298,9 @@
         <attribute traveler_template="" />
         <attribute text="Use any secret passage" />
         <attribute road_knowledge="secret" />
+        <attribute icon_type_alt="miner" />
+        <attribute icon_folder_alt="wesnoth/units/dwarves" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1045" name="Horse Trainer">
@@ -27306,6 +27312,10 @@
         <attribute traveler_template="" />
         <attribute text="All non-native horses perform at MOVE -1" />
         <attribute horse_mod="-1" />
+        <attribute icon_type_alt="Forgotten_Legends-images-frakcja1-spearthrower" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
+        <attribute icon_y_offset_alt="12" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1046" name="Enchantress">
@@ -27317,6 +27327,10 @@
         <attribute traveler_template="" />
         <attribute text="Source of PURPLE magic" />
         <attribute color_source="purple" />
+        <attribute icon_type_alt="enchantress" />
+        <attribute icon_folder_alt="wesnoth/units/elves-wood" />
+        <attribute icon_size_alt="0.9" />
+        <attribute icon_y_offset_alt="4" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1047" name="Dragon Slayer">
@@ -27334,6 +27348,10 @@
         <attribute vulnerability="H" />
         <attribute text="Ignores armor when targeting dragons" />
         <attribute ignore_armor="(Dra(gon|ke)|Wyrm)" />
+        <attribute icon_type_alt="WarOfTheGods-elves-wood-slayer2" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
+        <attribute icon_y_offset_alt="9" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1048" name="Strongman">
@@ -27345,6 +27363,10 @@
         <attribute traveler_template="" />
         <attribute vulnerability="T" />
         <attribute text="T strength for carrying inactive inventory" />
+        <attribute icon_type_alt="add-ons-Silver_Age_demo-images-units-tribes-barut-strongman-" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
+        <attribute icon_y_offset_alt="5" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1049" name="Wood Sprite">
@@ -27356,6 +27378,9 @@
         <attribute traveler_template="" />
         <attribute color_source="gold" />
         <attribute text="Source of GOLD magic" />
+        <attribute icon_type_alt="Era_of_Chaos-faeries-sprite" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1050" name="Scout">
@@ -27367,6 +27392,9 @@
         <attribute traveler_template="" />
         <attribute text="Use any hidden path" />
         <attribute road_knowledge="hidden" />
+        <attribute icon_type_alt="add-ons-Silver_Age_demo-images-units-robbers-thiefs-scout-st" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1051" name="Cook">
@@ -27377,6 +27405,9 @@
         <attribute rw_expansion_1="" />
         <attribute traveler_template="" />
         <attribute text="Extra REST phase" />
+        <attribute icon_type_alt="add-ons-Silver_Age_demo-images-units-robbers-sailors-cook-st" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
         <attributeList keyName="extra_actions">
           <attributeVal N0="R" />
         </attributeList>
@@ -27391,6 +27422,9 @@
         <attribute traveler_template="" />
         <attribute text="Protects from new curses" />
         <attribute curse_immunity="" />
+        <attribute icon_type_alt="white-cleric" />
+        <attribute icon_folder_alt="wesnoth/units/human-magi" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1053" name="Blacksmith">
@@ -27401,6 +27435,9 @@
         <attribute rw_expansion_1="" />
         <attribute traveler_template="" />
         <attribute text="Provides armor repair services" />
+        <attribute icon_type_alt="WarOfTheGods-human-loyalists-blacksmith" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1054" name="Mercenary">
@@ -27417,6 +27454,9 @@
         <attribute move_speed="5" />
         <attribute length="8" />
         <attribute text="Fighter for hire" />
+        <attribute icon_type_alt="Rashy_Era-human-dardo-mercenary" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1055" name="Cleric">
@@ -27427,6 +27467,9 @@
         <attribute rw_expansion_1="" />
         <attribute traveler_template="" />
         <attribute text="Provides healing and curse removal services" />
+        <attribute icon_type_alt="cleric" />
+        <attribute icon_folder_alt="wesnoth/units/kharos-light" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1056" name="Shadow">
@@ -27438,6 +27481,9 @@
         <attribute magic_sight="" />
         <attribute text="Use MAGIC SIGHT" />
         <attribute capture="-1" />
+        <attribute icon_type_alt="Archaic_Era-despair-phantomshadow" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1057" name="Elven Guide">
@@ -27448,6 +27494,9 @@
         <attribute rw_expansion_1="" />
         <attribute traveler_template="" />
         <attribute text="Extra HIDE phase" />
+        <attribute icon_type_alt="Imperial_Era-elves-issaelfr-mistral-mag" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
         <attributeList keyName="extra_actions">
           <attributeVal N0="H" />
         </attributeList>
@@ -27461,6 +27510,9 @@
         <attribute rw_expansion_1="" />
         <attribute traveler_template="" />
         <attribute text="Sells trained war dogs" />
+        <attribute icon_type_alt="Archaic_Era-ukians-courrier" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
       <contains id="1071" />
       <contains id="1072" />
@@ -27477,6 +27529,9 @@
         <attribute traveler_template="" />
         <attribute text="Roll one level friendlier when dealing with natives" />
         <attribute meeting_mod="1" />
+        <attribute icon_type_alt="Forgotten_Legends-images-frakcja5-master-of-illusion" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1060" name="Young Knight">
@@ -27494,6 +27549,9 @@
         <attribute vulnerability="M" />
         <attribute text="A low skilled Knight for hire" />
         <attribute armored="" />
+        <attribute icon_type_alt="Imperial_Era-human-arendians-soldier" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1061" name="Fletcher">
@@ -27504,6 +27562,9 @@
         <attribute rw_expansion_1="" />
         <attribute traveler_template="" />
         <attribute text="Subtract 1 from all MISSILE rolls with bow/crossbow" />
+        <attribute icon_type_alt="Era_of_Chaos-dwarves-crossbowman" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
         <attributeList keyName="diemod">
           <attributeVal N0="-1:missile:all" />
         </attributeList>
@@ -27517,6 +27578,9 @@
         <attribute traveler_template="" />
         <attribute text="Will TRANSFORM you for a price" />
         <attribute store="spellcast" />
+        <attribute icon_type_alt="WarOfTheGods-dwarves-alchemist2" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
         <attributeList keyName="prices">
           <attributeVal N0="10=0" />
           <attributeVal N1="20=-1" />
@@ -27541,6 +27605,9 @@
         <attribute text="Attack speed 1 against Giant Bats" />
         <attribute attack_speed_target="Giant Bat" />
         <attribute attack_speed_new="1" />
+        <attribute icon_type_alt="WarOfTheGods-human-outlaws-man_hunter" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1064" name="Gnome">
@@ -27551,6 +27618,9 @@
         <attribute traveler_template="" />
         <attribute text="Extra SEARCH action" />
         <attribute capture="2" />
+        <attribute icon_type_alt="Rashy_Era-dwarves-forest-gnomejumper" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
         <attributeList keyName="extra_actions">
           <attributeVal N0="S" />
         </attributeList>
@@ -27565,6 +27635,9 @@
         <attribute traveler_template="" />
         <attribute text="Gain 0-5 gold/day at dwellings" />
         <attribute dwelling_gold="1D-1" />
+        <attribute icon_type_alt="WarOfTheGods-human-outlaws-pickpocket" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1066" name="Astronomer">
@@ -27576,6 +27649,10 @@
         <attribute base_price="7" />
         <attribute text="Use any GATE without discovering" />
         <attribute allgate="" />
+        <attribute icon_type_alt="add-ons-War_of_Legends-images-units-windsong-reaver" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
+        <attribute icon_y_offset_alt="7" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1067" name="Woodsman">
@@ -27586,6 +27663,9 @@
         <attribute traveler_template="" />
         <attribute base_price="5" />
         <attribute text="Roll 1 die for HIDE, LOCATE, LOOT, PEER in the woods" />
+        <attribute icon_type_alt="Imperial_Era-human-marauders-woodsman" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
         <attributeList keyName="diemod">
           <attributeVal N0="1d:hide,locate,loot,peer:&gt;woods" />
         </attributeList>
@@ -27599,6 +27679,9 @@
         <attribute rw_expansion_1="" />
         <attribute traveler_template="" />
         <attribute text="Extra ALERT  phase" />
+        <attribute icon_type_alt="Era_of_Chaos-dwarves-smith" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
         <attributeList keyName="extra_actions">
           <attributeVal N0="A" />
         </attributeList>
@@ -27612,6 +27695,9 @@
         <attribute rw_expansion_1="" />
         <attribute traveler_template="" />
         <attribute text="Conversationalist (no advantage)" />
+        <attribute icon_type_alt="Rashy_Era-human-mountains-traveller" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1070" name="Homonculous">
@@ -27623,6 +27709,9 @@
         <attribute traveler_template="" />
         <attribute color_source="black" />
         <attribute text="Source of BLACK magic" />
+        <attribute icon_type_alt="Era_of_Magic_Resources-runemasters-robo" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1071" name="War Dog">
@@ -27898,6 +27987,7 @@
         <attribute daytime_actions="" />
         <attribute icon_type_alt="WarOfTheGods-human-magi-Battle_Seer" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_y_offset_alt="4" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1079" name="Gypsy">
@@ -32605,6 +32695,9 @@
         <attribute traveler_template="" />
         <attribute doppleganger="" />
         <attribute text="Deal with all natives on friendly column" />
+        <attribute icon_type_alt="WarOfTheGods-human-outlaws-serpent2" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1167" name="Necromancer">
@@ -32616,6 +32709,9 @@
         <attribute traveler_template="" />
         <attribute raise_dead="" />
         <attribute text="Can raise dead once each evening" />
+        <attribute icon_type_alt="necromancer" />
+        <attribute icon_folder_alt="wesnoth/units/undead-necromancers" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1168" name="Soothsayer">
@@ -32627,6 +32723,9 @@
         <attribute traveler_template="" />
         <attribute change_recorded_action="" />
         <attribute text="Cancel any recorded actions during your turn" />
+        <attribute icon_type_alt="soothsayer" />
+        <attribute icon_folder_alt="wesnoth/units/saurians" />
+        <attribute icon_size_alt="0.9" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1169" name="Duel">

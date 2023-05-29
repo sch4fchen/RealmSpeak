@@ -108,11 +108,15 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 			String icon_type = "";
 			String iconDir = "";
 			double size = 0.7;
+			int yOffset = 0;
 			if (isDisplayStyleAlternative() && gameObject.hasThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE) && gameObject.hasThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE)) {
 				icon_type = gameObject.getThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE);
 				iconDir = gameObject.getThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE);
 				if (gameObject.hasThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE)) {
 					size = Double.parseDouble(gameObject.getThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE));
+				}
+				if (gameObject.hasThisAttribute(Constants.ICON_Y_OFFSET+Constants.ALTERNATIVE)) {
+					yOffset = gameObject.getThisInt(Constants.ICON_Y_OFFSET+Constants.ALTERNATIVE);
 				}
 			}
 			else {
@@ -122,7 +126,7 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 					size = Double.parseDouble(gameObject.getThisAttribute(Constants.ICON_SIZE));
 				}
 			}
-			drawIcon(g, iconDir, icon_type, size);
+			drawIcon(g, iconDir, icon_type, size, 0, yOffset, null);
 			
 			tt = new TextType(getGameObject().getName(),getChitSize(),"WHITE_NOTE");
 			tt.draw(g,0,3,Alignment.Center);
