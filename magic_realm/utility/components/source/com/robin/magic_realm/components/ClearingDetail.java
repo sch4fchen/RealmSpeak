@@ -696,7 +696,7 @@ public class ClearingDetail {
 		boolean usableGate = false;
 		for (RealmComponent rc:getDeepClearingComponents()) {
 			if (rc.isGate()) {
-				if (character.hasOtherChitDiscovery(rc.getGameObject().getName()) || character.hasActiveInventoryThisKey(Constants.ALL_GATE)) {
+				if (character.hasOtherChitDiscovery(rc.getGameObject().getName()) || character.affectedByKey(Constants.ALL_GATE)) {
 					usableGate = true;
 				}
 			}

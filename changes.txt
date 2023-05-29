@@ -1,5 +1,4 @@
 ::ROADMAP::
-1166-1168
 ---Super Realm Content---
 Spells III: Migration, Tracker’s Sense, Water Run
 Spells IV: Blinding Light, Control Element, Elemental Spirit, Frozen Water, Reserve, Violent Winds
@@ -65,6 +64,8 @@ First Edition Optional Rule - https://boardgamegeek.com/thread/2503528/1st-editi
 First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 
 Version 1.1.8.0
+NEW FEATURES:
+# Add some abilities of travelers to character editor (and minor characters in quest editor)
 
 Version 1.1.7.9
 QUEST UPDATE:

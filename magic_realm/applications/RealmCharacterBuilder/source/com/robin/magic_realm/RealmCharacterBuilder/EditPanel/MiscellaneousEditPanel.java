@@ -29,6 +29,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 	};
 	private static String[][] MISC_ADVANTAGE_DISCOVERIES = {
 		{"Knows all paths/passages",Constants.KNOWS_ROADS,""},
+		{"Use any GATE without discovering.",Constants.ALL_GATE,""},
 		{"Can open CHEST, CRYPT, or VAULT without the Lost Keys.",Constants.PICKS_LOCKS,""},
 		{"Gains points for recording certain discoveries.",Constants.ADVENTURER,""},
 		{"The Lost City and Lost Castle chits count as shelters.",Constants.ADVANCED_SHELTERS,""},
@@ -68,6 +69,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"Can boost MOVE chits with MAGIC chits.",Constants.MAGIC_MOVE,""},
 		{"Can cast multiple instances of a single spell.",Constants.ENHANCED_MAGIC,""},
 		{"Can use Artifacts and Spell Books as extra MAGIC chits.",Constants.ENHANCED_ARTIFACTS,""},
+		{"Can raise dead once each evening.",Constants.RAISE_DEAD,""},
 	};
 	private ButtonGroup group;
 	private ArrayList<JRadioButton> buttonList;
