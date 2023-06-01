@@ -534,7 +534,7 @@ public class BattleBuilder extends JFrame {
 		}
 	}
 	private void addDenizens() {
-		Collection<GameObject> monsters = pool.find("monster,!part,"+hostPrefs.getGameKeyVals()+",!"+BATTLE_BUILDER_KEY);
+		Collection<GameObject> monsters = pool.find("monster,!part,!treasure,"+hostPrefs.getGameKeyVals()+",!"+BATTLE_BUILDER_KEY);
 		Collection<GameObject> natives = pool.find("native,!horse,!treasure,"+hostPrefs.getGameKeyVals()+",!"+BATTLE_BUILDER_KEY);
 		RealmObjectChooser denizenChooser = new RealmObjectChooser("Choose Denizens to Add:",gameData,false);
 		denizenChooser.addObjectsToChoose(monsters);

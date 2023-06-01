@@ -1957,7 +1957,7 @@ public class BattleModel {
 		}
 
 		if (!totalHarm.isNegligible()) { // only apply missile/fumble if totalHarm is not completely negligible (like light side spear goblins)
-			if (attacker.isMissile()) {
+			if (attacker.isMissile() || (attacker.isDenizen() && ((ChitComponent)attacker).hasFaceAttribute("missile"))) {
 				// Do the missile roll
 				DieRoller roller;
 				RealmComponent rc = RealmComponent.getRealmComponent(combat.getGameObject());

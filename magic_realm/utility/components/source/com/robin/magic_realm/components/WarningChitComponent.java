@@ -40,11 +40,11 @@ public class WarningChitComponent extends StateChitComponent {
 				y = 20;
 			}
 			
-			String warning = getAttribute("this","warning");
+			String warning = getThisAttribute(RealmComponent.WARNING);
 			tt = new TextType(warning,getChitSize(),"BOLD");
 			tt.draw(g,0,y,Alignment.Center);
 			
-			String type = getAttribute("this","tile_type");
+			String type = getThisAttribute(RealmComponent.TILE_TYPE);
 			tt = new TextType(type,getChitSize(),"BOLD");
 			tt.draw(g,0,y+tt.getHeight(g),Alignment.Center);
 		}

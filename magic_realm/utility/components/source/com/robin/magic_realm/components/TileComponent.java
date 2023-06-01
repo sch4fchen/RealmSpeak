@@ -248,7 +248,7 @@ public class TileComponent extends ChitComponent {
 	}
 
 	public String getTileType() {
-		return gameObject.getThisAttribute("tile_type");
+		return gameObject.getThisAttribute(RealmComponent.TILE_TYPE);
 	}
 
 	public static Hashtable<String, Point> getEdgePositionHash() {
@@ -1356,7 +1356,7 @@ public class TileComponent extends ChitComponent {
 	}
 
 	public boolean isValley() {
-		if( this.getGameObject().getThisAttribute("tile_type").equals("V")){return true;}
+		if( this.getGameObject().getThisAttribute(RealmComponent.TILE_TYPE).equals("V")){return true;}
 		return false;
 	}
 	

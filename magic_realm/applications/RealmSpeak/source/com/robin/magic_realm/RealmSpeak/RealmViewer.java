@@ -169,10 +169,10 @@ public class RealmViewer extends JFrame {
 		GameData data = loader.getData();
 		ArrayList<String> query = new ArrayList<String>();
 		StringBuffer result = new StringBuffer();
-		//query.add("super_realm");
-		//data.doSetup(result,"super_realm_setup",query);
-		query.add("rw_expansion_1");
-		data.doSetup(result,"rw_expansion_1_setup",query);
+		query.add("super_realm");
+		data.doSetup(result,"super_realm_setup",query);
+		//query.add("rw_expansion_1");
+		//data.doSetup(result,"rw_expansion_1_setup",query);
 		//query.add("!original_game");
 		new RealmViewer(data,query).setVisible(true);
 		

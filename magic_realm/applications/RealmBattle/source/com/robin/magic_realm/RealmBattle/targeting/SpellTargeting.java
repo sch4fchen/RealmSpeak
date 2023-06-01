@@ -201,6 +201,9 @@ public abstract class SpellTargeting {
 		else if ("active_horse_uncontrolled".equals(targetType)) {
 			targeting = new SpellTargetingActiveHorse(combatFrame,spell,true);
 		}
+		else if ("warning chits".equals(targetType)) {
+			targeting = new SpellTargetingWarningChits(combatFrame,spell);
+		}
 		
 		return targeting;
 	}

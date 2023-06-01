@@ -485,7 +485,7 @@ public class TileEditFrame extends JFrame {
 		updatePathButtons();
 		changeWarningLabel.setVisible(activeTile!=null && activeTile.isChanged());
 		if (activeTile!=null) {
-			nameLabel.setText(activeTile+" ("+activeTile.getGameObject().getThisAttribute("code")+")"+" - Type: "+activeTile.getGameObject().getThisAttribute("tile_type"));
+			nameLabel.setText(activeTile+" ("+activeTile.getGameObject().getThisAttribute("code")+")"+" - Type: "+activeTile.getGameObject().getThisAttribute(RealmComponent.TILE_TYPE));
 		}
 		saveButton.setEnabled(changed);
 		applyButton.setEnabled(activeTile!=null && activeTile.isChanged());

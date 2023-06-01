@@ -36572,12 +36572,12 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="5" />
-        <attribute strength="X" />
+        <attribute strength="RED" />
         <attribute chit_color="blue" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute attack_speed="5" />
-        <attribute strength="X" />
+        <attribute strength="RED" />
         <attribute chit_color="blue" />
       </AttributeBlock>
     </GameObject>
@@ -36762,6 +36762,8 @@
         <attribute no_change_tactics="" />
         <attribute icon_size="1" />
         <attribute titan="" />
+        <attribute missile="" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="4" />
@@ -38044,6 +38046,7 @@
         <attribute archer="" />
         <attribute weapon_use="" />
         <attribute skeleton="" />
+        <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -38080,6 +38083,7 @@
         <attribute archer="" />
         <attribute weapon_use="" />
         <attribute skeleton="" />
+        <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -38116,6 +38120,7 @@
         <attribute archer="" />
         <attribute weapon_use="" />
         <attribute skeleton="" />
+        <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -38152,6 +38157,7 @@
         <attribute archer="" />
         <attribute weapon_use="" />
         <attribute skeleton="" />
+        <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -38188,6 +38194,7 @@
         <attribute archer="" />
         <attribute weapon_use="" />
         <attribute skeleton="" />
+        <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -38224,6 +38231,7 @@
         <attribute archer="" />
         <attribute weapon_use="" />
         <attribute skeleton="" />
+        <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39729,13 +39737,13 @@
         <attribute icon_y_offset="5" />
         <attribute color_source="gray" />
         <attribute magic_immunity="gray" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute chit_color="gray" />
-        <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
@@ -39744,6 +39752,7 @@
         <attribute chit_color="red" />
         <attribute length="14" />
         <attribute sharpness="2" />
+        <attribute missile="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1414" name="Gold Anomaly">
@@ -39765,13 +39774,13 @@
         <attribute icon_y_offset="10" />
         <attribute color_source="gold" />
         <attribute magic_immunity="gold" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute chit_color="gray" />
-        <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
@@ -39780,6 +39789,7 @@
         <attribute chit_color="red" />
         <attribute length="14" />
         <attribute sharpness="2" />
+        <attribute missile="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1415" name="Purple Anomaly">
@@ -39801,13 +39811,13 @@
         <attribute icon_y_offset="7" />
         <attribute color_source="purple" />
         <attribute magic_immunity="purple" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute chit_color="gray" />
-        <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
@@ -39816,6 +39826,7 @@
         <attribute chit_color="red" />
         <attribute length="14" />
         <attribute sharpness="2" />
+        <attribute missile="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1416" name="Prism Anomaly">
@@ -39837,13 +39848,13 @@
         <attribute icon_y_offset="5" />
         <attribute color_source="prism" />
         <attribute magic_immunity="prism" />
+        <attribute archer="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute chit_color="gray" />
-        <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
@@ -39852,6 +39863,7 @@
         <attribute chit_color="red" />
         <attribute length="14" />
         <attribute sharpness="2" />
+        <attribute missile="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1417" name="Giant Pod Box">
@@ -41101,6 +41113,7 @@
         <attribute goblin="" />
         <attribute archer="" />
         <attribute weapon_use="" />
+        <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -41133,6 +41146,7 @@
         <attribute goblin="" />
         <attribute archer="" />
         <attribute weapon_use="" />
+        <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -41165,6 +41179,7 @@
         <attribute goblin="" />
         <attribute archer="" />
         <attribute weapon_use="" />
+        <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -41197,6 +41212,7 @@
         <attribute goblin="" />
         <attribute archer="" />
         <attribute weapon_use="" />
+        <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -41229,6 +41245,7 @@
         <attribute goblin="" />
         <attribute archer="" />
         <attribute weapon_use="" />
+        <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -41261,6 +41278,7 @@
         <attribute goblin="" />
         <attribute archer="" />
         <attribute weapon_use="" />
+        <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -58872,6 +58890,19 @@
         <attributeList keyName="target_clearing">
           <attributeVal N0="horses" />
         </attributeList>
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2216" name="Migration">
+      <AttributeBlock blockName="this">
+        <attribute spell="III" />
+        <attribute duration="instant" />
+        <attribute target="warning chits" />
+        <attribute text="Swarp the warning chit in spellcaster's hex with another warning chit." />
+        <attribute magic_color="purple" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
       </AttributeBlock>
     </GameObject>
   </objects>
