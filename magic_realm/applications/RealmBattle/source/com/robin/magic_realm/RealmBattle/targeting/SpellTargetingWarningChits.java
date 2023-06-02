@@ -9,6 +9,7 @@ import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.swing.RealmObjectChooser;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
@@ -30,18 +31,26 @@ public class SpellTargetingWarningChits extends SpellTargeting {
 		else {
 			warningChit = gameObjects.get(RandomNumber.getRandom(gameObjects.size()));
 		}
-		spell.addTarget(hostPrefs,warningChit);
 		String type = warningChit.getThisAttribute(RealmComponent.TILE_TYPE);
 		GamePool pool = new GamePool(activeCharacter.getGameData().getGameObjects());
 		ArrayList<String> query = new ArrayList<>();
 		query.add(RealmComponent.WARNING);
 		query.add("!"+RealmComponent.DWELLING);
 		query.add(RealmComponent.TILE_TYPE+"="+type);
-		//RealmComponentOptionChooser chooser2 = new RealmComponentOptionChooser();
-		RealmObjectChooser chooser = new RealmObjectChooser("Select other warning chit",activeCharacter.getGameData(),true);
-		chooser.addObjectsToChoose(pool.find(query));
+		ArrayList<GameObject> options = pool.find(query);
+		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(combatFrame,"Select other warning chit",false);
+		String key = "chit";
+		int keyN = 0;
+		for (GameObject option : options) {
+			RealmComponent rc = RealmComponent.getRealmComponent(option);
+			GameObject tile = option.getHeldBy();
+			chooser.addOption(key+keyN,tile.getNameWithNumber());
+			chooser.addRealmComponentToOption(key+keyN,rc);
+			keyN++;
+		}
 		chooser.setVisible(true);
-		if (!chooser.pressedOkay()) return false;
+		spell.addTarget(hostPrefs,warningChit);
+		spell.setExtraIdentifier(chooser.getFirstSelectedComponent().getGameObject().getStringId());
 		return true;
 	}
 	public boolean populate(BattleModel battleModel, RealmComponent activeParticipant) {
