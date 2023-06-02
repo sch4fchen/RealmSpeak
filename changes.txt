@@ -70,6 +70,8 @@ SUPER REALM:
 # Fix missile attacks for anomalies
 NEW FEATURES:
 # Add some abilities of travelers to character editor (and minor characters in quest editor)
+BUGS/ISSUES:
+# Fix error in some situations of Hurricane Winds
 
 Version 1.1.7.9
 QUEST UPDATE:
