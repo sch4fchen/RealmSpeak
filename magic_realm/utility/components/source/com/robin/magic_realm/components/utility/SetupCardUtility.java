@@ -302,7 +302,7 @@ public class SetupCardUtility {
 				chit.addSummonedToday(monsterDie);
 			}
 			
-			String warningName = warning.getThisAttribute("warning"); // ie., bones
+			String warningName = warning.getThisAttribute(RealmComponent.WARNING); // ie., bones
 			String tileType = warning.getThisAttribute("tile_type");  // ie., C
 			if (tileType==null) {
 				tileType = tl.tile.getTileType();
@@ -578,7 +578,7 @@ public class SetupCardUtility {
 		ArrayList<GameObject> warnings = new ArrayList<>();
 		for (GameObject go : gos) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
-			if (!rc.isDwelling() && go.hasThisAttribute("warning")) {
+			if (!rc.isDwelling() && go.hasThisAttribute(RealmComponent.WARNING)) {
 				if (rc instanceof WarningChitComponent) {
 					if (includeWarningSounds) { // only add warning chits if allowed
 						WarningChitComponent warning = (WarningChitComponent)rc;
@@ -795,6 +795,32 @@ public class SetupCardUtility {
 		}
 	}
 
+	public static void resetGeneralDwellings(GameData data) {
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
+		GamePool pool = new GamePool(data.getGameObjects());
+		ArrayList<String> keyVals = new ArrayList<>();
+		keyVals.add(hostPrefs.getGameKeyVals());
+		keyVals.add(Constants.GENERAL_DWELLING);
+		ArrayList<GameObject> dwellings = pool.find(keyVals);
+		for (GameObject dwelling : dwellings) {
+			if (!dwelling.hasThisAttribute(RealmComponent.TILE_TYPE) || !dwelling.hasThisAttribute(RealmComponent.WARNING)) continue;
+			String type = dwelling.getThisAttribute(RealmComponent.TILE_TYPE);
+			String warning = dwelling.getThisAttribute(RealmComponent.WARNING);
+			ArrayList<String> keyValsChit = new ArrayList<>();
+			keyValsChit.add(hostPrefs.getGameKeyVals());
+			keyValsChit.add(RealmComponent.WARNING+"="+warning);
+			keyValsChit.add("!"+RealmComponent.DWELLING);
+			keyValsChit.add(RealmComponent.TILE_TYPE+"="+type);
+			ArrayList<GameObject> chits = pool.find(keyValsChit);
+			if (chits.size()!=1) continue;
+			if (!RealmComponent.getRealmComponent(chits.get(0)).getCurrentLocation().equals(RealmComponent.getRealmComponent(dwelling).getCurrentLocation())) {
+				//chits.get(0).getHeldBy().add(dwelling);
+				chits.get(0).add(dwelling);
+			}
+			
+		}
+	}
+	
 	/**
 	 * All monsters and natives for the given monster die are returned to the treasure setup card
 	 */
@@ -991,14 +1017,14 @@ public class SetupCardUtility {
 			// Simply flip those chits face up, and the rest will work
 			ArrayList<String> keyVals = new ArrayList<>();
 			keyVals.add(hostPrefs.getGameKeyVals());
-			keyVals.add("warning");
-			keyVals.add("tile_type=V");
+			keyVals.add(RealmComponent.WARNING);
+			keyVals.add(RealmComponent.TILE_TYPE+"=V");
 			keyVals.add("chit");
 			GamePool pool = new GamePool(data.getGameObjects());
 			Collection<GameObject> warningChits = pool.find(keyVals);
 			keyVals.clear();
-			keyVals.add("warning");
-			keyVals.add("tile_type=H");
+			keyVals.add(RealmComponent.WARNING);
+			keyVals.add(RealmComponent.TILE_TYPE+"=H");
 			keyVals.add("chit");
 			warningChits.addAll(pool.find(keyVals));
 			for (GameObject warningChit : warningChits) {

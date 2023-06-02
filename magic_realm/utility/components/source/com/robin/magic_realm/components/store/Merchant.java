@@ -71,7 +71,7 @@ public class Merchant extends Store {
 		RealmObjectMaster rom = RealmObjectMaster.getRealmObjectMaster(character.getGameData());
 		ArrayList<GameObject> dwellings = new ArrayList<GameObject>(); 
 		for(GameObject go:rom.getDwellingObjects()) {
-			if (!go.hasThisAttribute("general_dwelling")) { // exclude s_fire, l_fire, and hut!
+			if (!go.hasThisAttribute(Constants.GENERAL_DWELLING)) { // exclude s_fire, l_fire, and hut!
 				dwellings.add(go);
 			}
 		}

@@ -140,6 +140,7 @@ public class Constants {
 	
 	// Used by dwellings
 	public static final String NO_SHELTER = "no_shelter";
+	public static final String GENERAL_DWELLING = "general_dwelling";
 	
 	// Used by items
 	public static final String TWO_HANDED = "two_handed";

@@ -640,7 +640,7 @@ public class ClearingUtility {
 				}
 			}
 			for (GameObject chit:chits) {
-				if (!chit.hasThisAttribute("warning") && !chit.hasThisAttribute("clearing")) {
+				if (!chit.hasThisAttribute(RealmComponent.WARNING) && !chit.hasThisAttribute("clearing")) {
 					int r = RandomNumber.getRandom(connectedClearings.size());
 					ClearingDetail clearing = connectedClearings.get(r);
 					chit.setThisAttribute("clearing",clearing.getNum());
