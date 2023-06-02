@@ -7557,7 +7557,7 @@
         <attribute spell="III" />
         <attribute duration="combat" />
         <attribute target="individual" />
-        <attribute text="Change MOVE L=1,M=2,H=3,T=4" />
+        <attribute text="Change MOVE L=1, M=2, H=3, T=4" />
         <attribute magic_color="gold" />
         <attribute original_game="" />
         <attribute l="1" />
@@ -7682,7 +7682,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="V" />
         <attribute duration="instant" />
-        <attribute target="ask_demon" />
+        <attribute target="ask demon" />
         <attribute text="Ask question with yes/no or number answer" />
         <attribute magic_color="black" />
         <attribute original_game="" />
@@ -56249,7 +56249,7 @@
         <attribute great="" />
         <attribute fame="12" />
         <attribute native="Lancers" />
-        <attribute target="monsters_uncontrolled" />
+        <attribute target="uncontrolled monster" />
         <attribute targeted_monsters="dragon, drake, wyrm" />
         <attribute magic="*" />
         <attribute facing="face_dn" />
@@ -56635,7 +56635,7 @@
     <GameObject id="2103" name="Control Dragon">
       <AttributeBlock blockName="this">
         <attribute duration="day" />
-        <attribute target="monsters_uncontrolled" />
+        <attribute target="uncontrolled monster" />
         <attribute targeted_monsters="dragon, drake, wyrm" />
         <attribute text="Control ONE Dragon" />
         <attribute magic_color="purple" />
@@ -56946,7 +56946,7 @@
         <attribute spell="III" />
         <attribute duration="combat" />
         <attribute target="individual" />
-        <attribute text="Change MOVE L=1,M=2,H=3,T=4,X=5" />
+        <attribute text="Change MOVE L=1, M=2, H=3, T=4, X=5" />
         <attribute magic_color="gold" />
         <attribute l="1" />
         <attribute m="2" />
@@ -57057,7 +57057,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="V" />
         <attribute duration="instant" />
-        <attribute target="monsters_uncontrolled" />
+        <attribute target="uncontrolled monster" />
         <attribute targeted_monsters="demon, devil" />
         <attribute text="Ask question with yes/no or number answer" />
         <attribute magic_color="black" />
@@ -57071,7 +57071,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="VII" />
         <attribute duration="day" />
-        <attribute target="monsters_uncontrolled" />
+        <attribute target="uncontrolled monsters" />
         <attribute targeted_monsters="bat" />
         <attribute text="MOVE and FIGHT with bats" />
         <attribute magic_color="any" />
@@ -57352,7 +57352,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="V" />
         <attribute duration="permanent" />
-        <attribute target="monster_alive" />
+        <attribute target="living monster" />
         <attribute text="Become monster" />
         <attribute magic_color="black" />
         <attribute transmorph="target" />
@@ -57437,7 +57437,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="VIII" />
         <attribute duration="day" />
-        <attribute target="monsters_uncontrolled" />
+        <attribute target="uncontrolled monsters" />
         <attribute targeted_monsters="orc, goblin" />
         <attribute text="Group becomes NEUTRAL (can TRADE/HIRE)" />
         <attribute magic_color="black" />
@@ -57605,7 +57605,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="VIII" />
         <attribute duration="day" />
-        <attribute target="monsters_uncontrolled" />
+        <attribute target="uncontrolled monster" />
         <attribute targeted_monsters="spider, octopus, scorpion" />
         <attribute text="MOVE and FIGHT with one monster" />
         <attribute magic_color="gray" />
@@ -58864,7 +58864,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="III" />
         <attribute duration="permanent" />
-        <attribute target="active_horse_uncontrolled" />
+        <attribute target="active horse" />
         <attribute text="Horse is placed as active item. Spell is broken when horse leaves active inventory." />
         <attribute magic_color="gold" />
         <attribute host_okay="" />

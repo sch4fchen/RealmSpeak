@@ -65,7 +65,8 @@ public abstract class SpellTargeting {
 		else if ("monster".equals(targetType)) {
 			targeting = new SpellTargetingMonster(combatFrame,spell);
 		}
-		else if ("monster_alive".equals(targetType)) {
+		else if ("living monster".equals(targetType) || "monster alive".equals(targetType) || "monster_alive".equals(targetType)
+				|| "living monsters".equals(targetType) || "monsters alive".equals(targetType) || "monsters_alive".equals(targetType)) {
 			targeting = new SpellTargetingAliveMonster(combatFrame,spell);
 		}
 		else if ("sound".equals(targetType)) {
@@ -80,7 +81,8 @@ public abstract class SpellTargeting {
 		else if (targetType.startsWith("magic")) {
 			targeting = new SpellTargetingMagic(combatFrame,spell);
 		}
-		else if ("monsters_uncontrolled".equals(targetType)) {
+		else if ("uncontrolled monsters".equals(targetType) || "monsters uncontrolled".equals(targetType) || "monsters_uncontrolled".equals(targetType)
+				||"uncontrolled monster".equals(targetType) || "monster uncontrolled".equals(targetType) || "monster_uncontrolled".equals(targetType)) {
 			targeting = new SpellTargetingUncontrolledMonsters(combatFrame,spell);
 		}
 		else if ("spider, octopus".equals(targetType)) {
@@ -110,7 +112,7 @@ public abstract class SpellTargeting {
 		else if ("demon".equals(targetType)) {
 			targeting = new SpellTargetingDemon(combatFrame,spell);
 		}
-		else if ("ask_demon".equals(targetType)) {
+		else if ("ask demon".equals(targetType) || "ask_demon".equals(targetType)) {
 			targeting = new SpellTargetingAskDemon(combatFrame,spell);
 		}
 		else if ("weather".equals(targetType)) {
@@ -162,7 +164,7 @@ public abstract class SpellTargeting {
 		else if ("undead".equals(targetType)) {
 			targeting = new SpellTargetingUndead(combatFrame,spell);
 		}
-		else if ("dead monster".equals(targetType)) {
+		else if ("dead monster".equals(targetType) || "dead_monster".equals(targetType)) {
 			targeting = new SpellTargetingDeadMonster(combatFrame,spell);
 		}
 		else if ("staff".equals(targetType)) {
@@ -180,7 +182,7 @@ public abstract class SpellTargeting {
 		else if ("native".equals(targetType)) {
 			targeting = new SpellTargetingNative(combatFrame,spell);
 		}
-		else if ("combat_box".equals(targetType)) {
+		else if ("combat box".equals(targetType)) {
 			targeting = new SpellTargetingCombatBox(combatFrame,spell);
 		}
 		else if ("none".equals(targetType)) {
@@ -195,11 +197,8 @@ public abstract class SpellTargeting {
 		else if ("roadway".equals(targetType)) {
 			targeting = new SpellTargetingRoadway(combatFrame,spell);
 		}
-		else if ("active_horse".equals(targetType)) {
-			targeting = new SpellTargetingActiveHorse(combatFrame,spell,false);
-		}
-		else if ("active_horse_uncontrolled".equals(targetType)) {
-			targeting = new SpellTargetingActiveHorse(combatFrame,spell,true);
+		else if ("active horse".equals(targetType) || "active_horse".equals(targetType)) {
+			targeting = new SpellTargetingActiveHorse(combatFrame,spell);
 		}
 		else if ("warning chits".equals(targetType)) {
 			targeting = new SpellTargetingWarningChits(combatFrame,spell);

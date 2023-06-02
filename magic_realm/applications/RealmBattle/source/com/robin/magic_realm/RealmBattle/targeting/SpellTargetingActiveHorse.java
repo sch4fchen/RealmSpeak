@@ -15,9 +15,9 @@ import com.robin.magic_realm.components.wrapper.SpellWrapper;
 public class SpellTargetingActiveHorse extends SpellTargetingSingle {
 
 	private boolean filterControlledHorses = false;
-	protected SpellTargetingActiveHorse(CombatFrame combatFrame, SpellWrapper spell, boolean filterControlledHorses) {
+	protected SpellTargetingActiveHorse(CombatFrame combatFrame, SpellWrapper spell) {
 		super(combatFrame, spell);
-		this.filterControlledHorses = filterControlledHorses;
+		this.filterControlledHorses = spell.getGameObject().hasThisAttribute(Constants.CONTROL_HORSE);
 	}
 
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
