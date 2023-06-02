@@ -58903,6 +58903,7 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
+        <attribute target_invalid_chit_types="V,H" />
       </AttributeBlock>
     </GameObject>
   </objects>

@@ -1,6 +1,7 @@
 package com.robin.magic_realm.RealmBattle.targeting;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
@@ -10,7 +11,7 @@ import com.robin.magic_realm.RealmBattle.CombatFrame;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
-import com.robin.magic_realm.components.swing.RealmObjectChooser;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
@@ -57,20 +58,20 @@ public class SpellTargetingWarningChits extends SpellTargeting {
 		gameObjects.clear();
 		TileLocation loc = battleModel.getBattleLocation();
 		if (loc == null || loc.tile == null) return false;
-		for (GameObject go : loc.tile.getHold()) {
-			if (go.hasThisAttribute(RealmComponent.WARNING) && !go.hasThisAttribute(RealmComponent.DWELLING)) { 
-				gameObjects.add(go);
+		ArrayList<String> invalidTypes = new ArrayList<>();
+		if (spell.getGameObject().hasThisAttribute(Constants.TARGET_INVALID_CHIT_TYPES)) {
+			StringTokenizer types = new StringTokenizer(spell.getGameObject().getThisAttribute(Constants.TARGET_INVALID_CHIT_TYPES),",");
+			while(types.hasMoreTokens()) {
+				invalidTypes.add(types.nextToken());
 			}
 		}
-		return hasTargets();
+		for (GameObject go : loc.tile.getHold()) {
+			if (go.hasThisAttribute(RealmComponent.WARNING) && !go.hasThisAttribute(RealmComponent.DWELLING)) {
+				if (!invalidTypes.contains(go.getThisAttribute(RealmComponent.TILE_TYPE))) {
+					gameObjects.add(go);
+				}
+			}
+		}
+		return true;
 	}
 }
-
-/*
-Migration: PURPLE, warning chit, Instant: Swap the warning chit in the spellcaster’s hex with another warning
-chit of the same tile type. The chits can be face-up or face-down. The chits cannot be of type ‘V’ (Valley) or ‘H’
-(Hills). Example: spellcaster takes the Bones F chit in his Forest tile, and moves it to the tile with the Stink F chit;
-then he takes the Stink F chit and moves it to his tile. Note: If this causes warning chits to be moved that brought
-out a camp or campfire location, those locations move to the new tile during regeneration, as if being placed on the
-map for the first time (see rule 8.15.2.g).
-*/
