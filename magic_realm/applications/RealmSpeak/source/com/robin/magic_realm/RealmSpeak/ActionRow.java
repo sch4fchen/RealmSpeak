@@ -734,7 +734,7 @@ public class ActionRow {
 				magicPath = path == null && current.tile == location.tile?true:false;
 			}
 			
-			if (character.canWalkWoods(current.tile) || (current.isTileOnly() && !current.isFlying())) {
+			if (character.canWalkWoods(current.tile,current.clearing) || (current.isTileOnly() && !current.isFlying())) {
 				ArrayList<ClearingDetail> validClearings = new ArrayList<>();
 				if (current.clearing!=null) {
 					validClearings.addAll(current.clearing.getParent().getClearings());

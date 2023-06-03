@@ -457,6 +457,7 @@ public class Constants {
 	public static final String NON_FLYING_TARGETS = "non_flying_targets";
 	public static final String TARGET_INVALID_CHIT_TYPES = "target_invalid_chit_types";
 	public static final String TRACKERS_SENSE = "trackers_sense";
+	public static final String WATER_RUN = "water_run";
 	
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";

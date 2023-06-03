@@ -381,11 +381,11 @@ public class CharacterActionControlManager {
 							? current.clearing.getConnectingPath(tl.clearing)
 							: null;
 					boolean overridePath = false;
-					if ((character.canWalkWoods(current.tile) || character.affectedByKey(Constants.MAGIC_PATH_EFFECT) || (current.isTileOnly() && !current.isFlying()))
+					if ((character.canWalkWoods(current.tile,current.clearing) || character.affectedByKey(Constants.MAGIC_PATH_EFFECT) || (current.isTileOnly() && !current.isFlying()))
 							&& current.tile == tl.tile) {
 						overridePath = true;
 					}
-					if (current.isBetweenClearings() && ((character.canWalkWoods(current.tile) && current.getOther().tile == tl.tile) || (current.contains(tl.tile) && current.contains(tl.clearing)))) {
+					if (current.isBetweenClearings() && ((character.canWalkWoods(current.tile,current.clearing) && current.getOther().tile == tl.tile) || (current.contains(tl.tile) && current.contains(tl.clearing)))) {
 							overridePath = true;
 					}
 					if (ClearingUtility.canUseGates(character,tl.clearing)) {

@@ -28801,7 +28801,7 @@
         <attribute duration="combat" />
         <attribute target="individual" />
         <attribute text="Look away or turn into a statue" />
-        <attribute magic_color="grey" />
+        <attribute magic_color="gray" />
         <attribute transmorph="statue" />
         <attribute alt_monsters1_game="" />
         <attribute spell_strength="2" />
@@ -28839,7 +28839,7 @@
         <attribute duration="permanent" />
         <attribute target="character" />
         <attribute text="Extra HIDE phase until you fail to hide" />
-        <attribute magic_color="grey" />
+        <attribute magic_color="gray" />
         <attribute blending="" />
         <attribute always_active="" />
         <attribute alt_monsters1_game="" />
@@ -58813,7 +58813,7 @@
         <attribute duration="combat" />
         <attribute target="individual" />
         <attribute text="Target is armored. Character is treated as wearing M armor." />
-        <attribute magic_color="grey" />
+        <attribute magic_color="gray" />
         <attribute host_okay="" />
         <attribute learnable="" />
         <attribute super_realm="" />
@@ -58829,7 +58829,7 @@
         <attribute non_mountain_clearing="" />
         <attribute river_or_adjacent_hex="" />
         <attribute text="Missle attack against all non- flying targets. Roll for direction." />
-        <attribute magic_color="grey" />
+        <attribute magic_color="gray" />
         <attribute host_okay="" />
         <attribute learnable="" />
         <attribute super_realm="" />
@@ -58919,6 +58919,27 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2218" name="Water Run">
+      <AttributeBlock blockName="this">
+        <attribute spell="III" />
+        <attribute duration="day" />
+        <attribute target="character" />
+        <attribute text="Targets treated as having 'Discovered Hidden Enemies'" />
+        <attribute magic_color="gray" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="move_chit">
+        <attribute strength="" />
+        <attribute speed="" />
+        <attribute move_chit="" />
+        <attribute action="MOVE" />
+        <attribute chit_state="1" />
+        <attribute water_run="" />
       </AttributeBlock>
     </GameObject>
   </objects>

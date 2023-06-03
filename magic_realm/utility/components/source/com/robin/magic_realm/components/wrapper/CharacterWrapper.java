@@ -1797,10 +1797,16 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		updateChitEffects();
 	}
-	public boolean canWalkWoods(TileComponent tile) {
+	public boolean canWalkWoods(TileComponent tile, ClearingDetail clearing) {
 		String condition = null;
 		
-		if (tile.isValley() && this.isValeWalker() ){return true;}
+		if (tile.isValley() && this.isValeWalker() ) return true;
+		if (clearing!=null && clearing.isWater()) {
+			Collection<CharacterActionChitComponent> moveChits = this.getActiveMoveChits();
+			for (CharacterActionChitComponent chit : moveChits) {
+				if (chit.getGameObject().hasThisAttribute(Constants.WATER_RUN)) return true;
+			}
+		}
 		
 		GameObject transmorph = getTransmorph();
 		if (transmorph!=null) {
@@ -1880,7 +1886,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				}
 			}
 			else {
-				if (canWalkWoods(tl.tile)) {
+				if (canWalkWoods(tl.tile,tl.clearing)) {
 					// add ALL the clearings in the tile
 					ret.addAll(tl.tile.getClearings());
 					ret.addAll(tl.tile.getMapEdges());
@@ -1952,7 +1958,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		if (!path.requiresDiscovery() || isSpiritGuided()) return true;
 		if (path.connectsToMapEdge()) return true;
-		if (!path.connectsToMapEdge() && canWalkWoods(path.getFrom().getParent())) return true;
+		if (!path.connectsToMapEdge() && canWalkWoods(path.getFrom().getParent(),path.getFrom())) return true;
 		
 		if (path.isHidden() && (hasHiddenPathDiscovery(path.getFullPathKey()) || mistLike || moveRandomly())) return true;
 		if (path.isSecret() && (hasSecretPassageDiscovery(path.getFullPathKey()) || mistLike || moveRandomly())) return true;

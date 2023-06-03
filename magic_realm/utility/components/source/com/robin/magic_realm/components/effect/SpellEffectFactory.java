@@ -150,6 +150,7 @@ public class SpellEffectFactory {
 			case "summon demon": return new ISpellEffect[]{new SummonEffect(SpellUtility.SummonType.demon.toString())};
 			case "thorns": return new ISpellEffect[]{new ThornsEffect()};
 			case "tracker's sense": return new ISpellEffect[]{new ApplyNamedEffect(Constants.TRACKERS_SENSE)};
+			case "water run": return new ISpellEffect[]{new MoveChitEffect()};
 			
 			default: break;
 		}
