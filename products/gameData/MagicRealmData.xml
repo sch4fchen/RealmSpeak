@@ -58897,7 +58897,7 @@
         <attribute spell="III" />
         <attribute duration="instant" />
         <attribute target="warning chits" />
-        <attribute text="Swarp the warning chit in spellcaster's hex with another warning chit." />
+        <attribute text="Swap the warning chit in spellcaster's hex with another warning chit." />
         <attribute magic_color="purple" />
         <attribute host_okay="" />
         <attribute learnable="" />
@@ -58906,7 +58906,7 @@
         <attribute target_invalid_chit_types="V,H" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2217" name="Trackers Sense">
+    <GameObject id="2217" name="Tracker's Sense">
       <AttributeBlock blockName="this">
         <attribute spell="III" />
         <attribute duration="day" />
