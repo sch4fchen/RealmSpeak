@@ -708,19 +708,6 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		if (harm.getStrength().isRed()) {
 			// character is killed automatically if hit by a red side up monster
 			characterWasKilled = true;
-			BattleHorse horse = character.getActiveSteed();
-			if (attacker.getGameObject().hasThisAttribute(Constants.KILLS_HORSE) && horse!=null) {
-				horse.applyHit(game,hostPrefs, attacker, box, harm,attackOrderPos);				
-			}
-			if (attacker.getGameObject().hasThisAttribute(Constants.DESTROYS_ARMOR)) {
-				RealmComponent armor = getArmor(attacker.getAttackSpeed(),box,attackOrderPos);
-				if (armor!=null) {
-					CombatWrapper combatArmor = new CombatWrapper(armor.getGameObject());
-					combatArmor.setKilledBy(attacker.getGameObject());
-					combatArmor.setHitByOrderNumber(attackOrderPos);
-					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Destroys the "+getGameObject().getName()+"'s "+armor.getGameObject().getName());
-				}
-			}
 		}
 		else {
 			// First thing, check to see if a Horse maneuver was played
@@ -1014,6 +1001,19 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		if (characterWasKilled) {
 			combat.setKilledBy(attacker.getGameObject());
 			damageTaken = true;
+			BattleHorse horse = character.getActiveSteed();
+			if (attacker.getGameObject().hasThisAttribute(Constants.KILLS_HORSE) && horse!=null) {
+				horse.applyHit(game,hostPrefs, attacker, box, harm,attackOrderPos);				
+			}
+			if (attacker.getGameObject().hasThisAttribute(Constants.DESTROYS_ARMOR)) {
+				RealmComponent armor = getArmor(attacker.getAttackSpeed(),box,attackOrderPos);
+				if (armor!=null) {
+					CombatWrapper combatArmor = new CombatWrapper(armor.getGameObject());
+					combatArmor.setKilledBy(attacker.getGameObject());
+					combatArmor.setHitByOrderNumber(attackOrderPos);
+					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Destroys the "+getGameObject().getName()+"'s "+armor.getGameObject().getName());
+				}
+			}
 		}
 		return damageTaken;
 	}

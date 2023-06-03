@@ -2052,7 +2052,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		Collection<GameObject> inv = getInventory();
 		for (GameObject go : inv) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
-			if (rc.isNativeHorse() || (rc.isActivated() && rc.isHorse())) {
+			if ((rc.isNativeHorse() && !go.hasThisAttribute(RealmComponent.MONSTER_STEED)) || (rc.isActivated() && rc.isHorse())) {
 				steed = (BattleHorse)rc;
 				CombatWrapper horseCombat = new CombatWrapper(go);
 				if ((horseCombat.getKilledBy()!=null && !(horseCombat.getHitByOrderNumber()==attackOrderPos))
