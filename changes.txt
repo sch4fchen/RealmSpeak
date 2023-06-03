@@ -1,6 +1,6 @@
 ::ROADMAP::
 ---Super Realm Content---
-Spells III: Migration, Tracker’s Sense, Water Run
+Spells III: Water Run
 Spells IV: Blinding Light, Control Element, Elemental Spirit, Frozen Water, Reserve, Violent Winds
 Spells V: Dark Favor, Reanimate
 Spells VI: Alter Object, Alter Size, Enchant Weapon, Grow Wings, Mountain Surge
@@ -65,7 +65,7 @@ First Edition Optional Rule - Glory: When a character or his hired natives kill 
 
 Version 1.1.8.0
 SUPER REALM:
-# New spells: Migration
+# New spells: Migration, Tracker's Sense
 # Fix harm for Colossus
 # Fix missile attacks for anomalies
 NEW FEATURES:

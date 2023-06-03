@@ -31,6 +31,7 @@ public class QuestRewardSpellEffectOnCharacter extends QuestReward {
 		Shrink,
 		Slowed,
 		SpiritGuide,
+		TrackersSense,
 		ValeWalker
 	}
 	
@@ -99,6 +100,9 @@ public class QuestRewardSpellEffectOnCharacter extends QuestReward {
 			break;
 		case SpiritGuide:
 			effect = Constants.SPIRIT_GUIDE;
+			break;
+		case TrackersSense:
+			effect = Constants.TRACKERS_SENSE;
 			break;
 		case ValeWalker:
 			effect = Constants.VALE_WALKER;

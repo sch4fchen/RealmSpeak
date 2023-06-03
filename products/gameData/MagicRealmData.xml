@@ -58906,6 +58906,19 @@
         <attribute target_invalid_chit_types="V,H" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2217" name="Trackers Sense">
+      <AttributeBlock blockName="this">
+        <attribute spell="III" />
+        <attribute duration="day" />
+        <attribute target="character" />
+        <attribute text="Targets treated as having 'Discovered Hidden Enemies'" />
+        <attribute magic_color="gold" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

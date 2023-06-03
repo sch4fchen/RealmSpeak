@@ -3671,14 +3671,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 */
 	public boolean foundAllHiddenEnemies() {
 		String foundEnemyList = getString(FOUND_HIDDEN_ENEMIES);
-		return foundEnemyList!=null && foundEnemyList.length()==0;
+		return (foundEnemyList!=null && foundEnemyList.length()==0) || this.getGameObject().hasThisAttribute(Constants.TRACKERS_SENSE);
 	}
 	/**
 	 * @return	true if you found ANY hidden enemies
 	 */
 	public boolean foundHiddenEnemies() {
 		String foundEnemyList = getString(FOUND_HIDDEN_ENEMIES);
-		return foundEnemyList!=null;
+		return foundEnemyList!=null || this.getGameObject().hasThisAttribute(Constants.TRACKERS_SENSE);
 	}
 	public ArrayList<String> getFoundEnemies() {
 		if (foundAllHiddenEnemies()) {
@@ -3699,6 +3699,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * Returns true if given enemy was found.
 	 */
 	public boolean foundHiddenEnemy(GameObject enemy) {
+		if (this.getGameObject().hasThisAttribute(Constants.TRACKERS_SENSE)) return true;
 		String foundEnemyList = getString(FOUND_HIDDEN_ENEMIES);
 		if (foundEnemyList!=null) {
 			if (foundEnemyList.length()==0 || foundEnemyList.indexOf(enemy.getName())>=0) {
