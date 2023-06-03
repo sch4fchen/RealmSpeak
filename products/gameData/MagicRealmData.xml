@@ -58934,8 +58934,8 @@
         <attribute super_realm_spell="" />
       </AttributeBlock>
       <AttributeBlock blockName="move_chit">
-        <attribute strength="" />
-        <attribute speed="" />
+        <attribute strength="weight" />
+        <attribute speed="weight" />
         <attribute move_chit="" />
         <attribute action="MOVE" />
         <attribute chit_state="1" />
