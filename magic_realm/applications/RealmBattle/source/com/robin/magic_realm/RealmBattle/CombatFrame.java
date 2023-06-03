@@ -3199,7 +3199,7 @@ public class CombatFrame extends JFrame {
 		
 		// First check the special condition that the character can walk the woods
 		boolean walkingWoods = false;
-		if (activeCharacter.canWalkWoods(from.tile,from.clearing)) {
+		if (activeCharacter.canWalkWoods(from.tile,from.clearing,null)) {
 			int ret = JOptionPane.showConfirmDialog(
 					this,
 					"Run into the woods?",

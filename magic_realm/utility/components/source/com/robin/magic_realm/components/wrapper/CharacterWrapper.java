@@ -1797,11 +1797,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		updateChitEffects();
 	}
-	public boolean canWalkWoods(TileComponent tile, ClearingDetail clearing) {
+	public boolean canWalkWoods(TileComponent tile, ClearingDetail clearing1, ClearingDetail clearing2) {
 		String condition = null;
 		
 		if (tile.isValley() && this.isValeWalker() ) return true;
-		if (clearing!=null && clearing.isWater()) {
+		if ((clearing1!=null && clearing1.isWater()) || (clearing2!=null && clearing2.isWater()) ) {
 			Collection<CharacterActionChitComponent> moveChits = this.getActiveMoveChits();
 			for (CharacterActionChitComponent chit : moveChits) {
 				if (chit.getGameObject().hasThisAttribute(Constants.WATER_RUN)) return true;
@@ -1886,10 +1886,17 @@ public class CharacterWrapper extends GameObjectWrapper {
 				}
 			}
 			else {
-				if (canWalkWoods(tl.tile,tl.clearing)) {
+				if (canWalkWoods(tl.tile,tl.clearing,null)) {
 					// add ALL the clearings in the tile
 					ret.addAll(tl.tile.getClearings());
 					ret.addAll(tl.tile.getMapEdges());
+				}
+				else {
+					for (ClearingDetail clearing : tl.tile.getClearings()) {
+						if (canWalkWoods(tl.tile,tl.clearing,clearing)) {
+							ret.add(clearing);
+						}
+					}
 				}
 				ArrayList<PathDetail> paths = new ArrayList<>();
 				ArrayList<PathDetail> cPaths = tl.clearing.getConnectedPaths();
@@ -1958,7 +1965,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		if (!path.requiresDiscovery() || isSpiritGuided()) return true;
 		if (path.connectsToMapEdge()) return true;
-		if (!path.connectsToMapEdge() && canWalkWoods(path.getFrom().getParent(),path.getFrom())) return true;
+		if (!path.connectsToMapEdge() && canWalkWoods(path.getFrom().getParent(),path.getFrom(),path.getTo())) return true;
 		
 		if (path.isHidden() && (hasHiddenPathDiscovery(path.getFullPathKey()) || mistLike || moveRandomly())) return true;
 		if (path.isSecret() && (hasSecretPassageDiscovery(path.getFullPathKey()) || mistLike || moveRandomly())) return true;
