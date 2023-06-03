@@ -1797,11 +1797,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		updateChitEffects();
 	}
-	public boolean canWalkWoods(TileComponent tile, ClearingDetail clearing1, ClearingDetail clearing2) {
+	public boolean canWalkWoods(TileComponent tile, ClearingDetail fromClearing, ClearingDetail toClearing) {
 		String condition = null;
 		
 		if (tile.isValley() && this.isValeWalker() ) return true;
-		if ((clearing1!=null && clearing1.isWater()) || (clearing2!=null && clearing2.isWater()) ) {
+		if ((fromClearing!=null && fromClearing.isWater() && (toClearing==null || !toClearing.isMountain())) || (toClearing!=null && toClearing.isWater()) ) {
 			Collection<CharacterActionChitComponent> moveChits = this.getActiveMoveChits();
 			for (CharacterActionChitComponent chit : moveChits) {
 				if (chit.getGameObject().hasThisAttribute(Constants.WATER_RUN)) return true;
@@ -1886,7 +1886,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				}
 			}
 			else {
-				if (canWalkWoods(tl.tile,tl.clearing,null)) {
+				if (canWalkWoods(tl.tile,null,null)) {
 					// add ALL the clearings in the tile
 					ret.addAll(tl.tile.getClearings());
 					ret.addAll(tl.tile.getMapEdges());
