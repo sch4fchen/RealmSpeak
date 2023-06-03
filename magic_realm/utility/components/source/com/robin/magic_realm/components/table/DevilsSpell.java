@@ -165,7 +165,7 @@ public class DevilsSpell extends RealmTable {
 		sendMessage(character.getGameObject().getGameData(),
 				DemonsEffects.getDestClientName(caster,character.getGameObject()),
 				"Devil's Spell",
-				"The "+character.getCharacterName()+" is cursed with Weakened, target’s vulnerability is lowered one level until Sunset of the next day.");
+				"The "+character.getCharacterName()+" is cursed with Weakened, target's vulnerability is lowered one level until Sunset of the next day.");
 		
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameObject().getGameData());
 		GameObject spellGo = character.getGameObject().getGameData().createNewObject();
