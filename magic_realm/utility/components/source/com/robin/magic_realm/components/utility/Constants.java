@@ -392,6 +392,8 @@ public class Constants {
 	public static final String MAGIC_COLOR_BONUS_SHARPNESS = "magic_color_bonus_sharpness";
 	public static final String MAGIC_COLOR_BONUS_SPEED = "magic_color_bonus_speed";
 	public static final String NO_CHANGE_TACTICS = "no_change_tactics";
+	public static final String KILLS_HORSE = "kills_horse";
+	public static final String DESTROYS_ARMOR = "destroys_armor";
 	public static final String CHANGE_TACTICS_AFTER_CASTING = "change_tactics_after_casting";
 	public static final String ATTACK_AFTER_CASTING = "attack_after_casting";
 	public static final String SPELL_TARGETS_SELF = "spell_targets_self";

@@ -36569,6 +36569,8 @@
         <attribute no_change_tactics="" />
         <attribute icon_size="1" />
         <attribute colossus="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="5" />

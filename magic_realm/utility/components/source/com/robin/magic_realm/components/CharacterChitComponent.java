@@ -708,10 +708,21 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		if (harm.getStrength().isRed()) {
 			// character is killed automatically if hit by a red side up monster
 			characterWasKilled = true;
+			BattleHorse horse = character.getActiveSteed();
+			if (attacker.getGameObject().hasThisAttribute(Constants.KILLS_HORSE) && horse!=null) {
+				horse.applyHit(game,hostPrefs, attacker, box, harm,attackOrderPos);				
+			}
+			if (attacker.getGameObject().hasThisAttribute(Constants.DESTROYS_ARMOR)) {
+				RealmComponent armor = getArmor(attacker.getAttackSpeed(),box,attackOrderPos);
+				CombatWrapper combatArmor = new CombatWrapper(armor.getGameObject());
+				combatArmor.setKilledBy(attacker.getGameObject());
+				combatArmor.setHitByOrderNumber(attackOrderPos);
+				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Destroys the "+getGameObject().getName()+"'s "+armor.getGameObject().getName());
+			}
 		}
 		else {
 			// First thing, check to see if a Horse maneuver was played
-			SteedChitComponent horse = (SteedChitComponent) character.getActiveSteed(attackOrderPos);
+			BattleHorse horse = character.getActiveSteed(attackOrderPos);
 			if (horse != null && !combat.isTargetingRider(attacker.getGameObject())) {
 				CombatWrapper horseCombat = new CombatWrapper(horse.getGameObject());
 				if (horseCombat.getCombatBox() > 0) {

@@ -66,12 +66,13 @@ First Edition Optional Rule - Glory: When a character or his hired natives kill 
 Version 1.1.8.0
 SUPER REALM:
 # New spells: Migration, Tracker's Sense
-# Fix harm for Colossus
+# Fix harm for Colossus (and destroys horse and armor)
 # Fix missile attacks for anomalies
 NEW FEATURES:
 # Add some abilities of travelers to character editor (and minor characters in quest editor)
 BUGS/ISSUES:
 # Fix error in some situations of Hurricane Winds
+# Fix crash when destroying denizen horse used by character (Bone Horse)
 
 Version 1.1.7.9
 QUEST UPDATE:
