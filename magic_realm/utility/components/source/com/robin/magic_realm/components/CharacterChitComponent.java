@@ -714,10 +714,12 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			}
 			if (attacker.getGameObject().hasThisAttribute(Constants.DESTROYS_ARMOR)) {
 				RealmComponent armor = getArmor(attacker.getAttackSpeed(),box,attackOrderPos);
-				CombatWrapper combatArmor = new CombatWrapper(armor.getGameObject());
-				combatArmor.setKilledBy(attacker.getGameObject());
-				combatArmor.setHitByOrderNumber(attackOrderPos);
-				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Destroys the "+getGameObject().getName()+"'s "+armor.getGameObject().getName());
+				if (armor!=null) {
+					CombatWrapper combatArmor = new CombatWrapper(armor.getGameObject());
+					combatArmor.setKilledBy(attacker.getGameObject());
+					combatArmor.setHitByOrderNumber(attackOrderPos);
+					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Destroys the "+getGameObject().getName()+"'s "+armor.getGameObject().getName());
+				}
 			}
 		}
 		else {
