@@ -813,11 +813,28 @@ public class SetupCardUtility {
 			keyValsChit.add(RealmComponent.TILE_TYPE+"="+type);
 			ArrayList<GameObject> chits = pool.find(keyValsChit);
 			if (chits.size()!=1) continue;
-			if (!RealmComponent.getRealmComponent(chits.get(0)).getCurrentLocation().equals(RealmComponent.getRealmComponent(dwelling).getCurrentLocation())) {
-				//chits.get(0).getHeldBy().add(dwelling);
-				chits.get(0).add(dwelling);
+			GameObject chit = chits.get(0);
+			TileLocation chitLocation = RealmComponent.getRealmComponent(chit).getCurrentLocation();
+			if (dwelling.getHeldBy()!=chit && chitLocation!=null && chitLocation.tile!=null && !chitLocation.tile.getGameObject().equals(dwelling.getHeldBy())) {
+				ClearingDetail clearing5 = chitLocation.tile.getClearing(5);
+				if (clearing5!=null && clearing5.isConnectsToBorderland()) {
+					clearing5.add(dwelling, null);
+					continue;
+				}
+				ClearingDetail clearing4 = chitLocation.tile.getClearing(4);
+				if (clearing4!=null && clearing4.isConnectsToBorderland()) {
+					clearing4.add(dwelling, null);
+					continue;
+				}
+				ClearingDetail clearing2 = chitLocation.tile.getClearing(2);
+				if (clearing2!=null && clearing2.isConnectsToBorderland()) {
+					clearing2.add(dwelling, null);
+					continue;
+				}
+				ArrayList<ClearingDetail> clearings = chitLocation.tile.getClearings();
+				ClearingDetail clearing = clearings.get(RandomNumber.getRandom(clearings.size()));
+				clearing.add(dwelling, null);
 			}
-			
 		}
 	}
 	
