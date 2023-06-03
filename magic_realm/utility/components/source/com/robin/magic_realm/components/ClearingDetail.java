@@ -181,7 +181,7 @@ public class ClearingDetail {
 		if (isMountain()) {
 			val = character.getMountainMoveCost();
 		}
-		if (isWater()) {
+		if (isWater() && !character.canWaterRun(currentLocation.clearing,this)) {
 			if (!character.isTransmorphed()) val++;
 			if (character.affectedByKey(Constants.WATER_MOVE_ADJ)) val--;
 			if (!character.isTransmorphed() && currentLocation.clearing!=null && currentLocation.clearing.isWater()) {

@@ -1800,13 +1800,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean canWalkWoods(TileComponent tile, ClearingDetail fromClearing, ClearingDetail toClearing) {
 		String condition = null;
 		
-		if (tile.isValley() && this.isValeWalker() ) return true;
-		if ((fromClearing!=null && fromClearing.isWater() && (toClearing==null || !toClearing.isMountain())) || (toClearing!=null && toClearing.isWater()) ) {
-			Collection<CharacterActionChitComponent> moveChits = this.getActiveMoveChits();
-			for (CharacterActionChitComponent chit : moveChits) {
-				if (chit.getGameObject().hasThisAttribute(Constants.WATER_RUN)) return true;
-			}
-		}
+		if (tile.isValley() && this.isValeWalker()) return true;
+		if (canWaterRun(fromClearing,toClearing)) return true;
 		
 		GameObject transmorph = getTransmorph();
 		if (transmorph!=null) {
@@ -1839,6 +1834,18 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return false;
 	}
+	
+	public boolean canWaterRun(ClearingDetail fromClearing, ClearingDetail toClearing) {
+		if ((fromClearing!=null && fromClearing.isWater() && (toClearing==null || !toClearing.isMountain())) || (toClearing!=null && toClearing.isWater()) ) {
+			if (this.getGameObject().hasThisAttribute(Constants.WATER_RUN)) return true;
+			Collection<CharacterActionChitComponent> moveChits = this.getActiveMoveChits();
+			for (CharacterActionChitComponent chit : moveChits) {
+				if (chit.getGameObject().hasThisAttribute(Constants.WATER_RUN)) return true;
+			}
+		}
+		return false;
+	}
+	
 	/**
 	 * Can move on secret passages or hidden paths without discovering.
 	 * Cannot be targeted by attacks.
