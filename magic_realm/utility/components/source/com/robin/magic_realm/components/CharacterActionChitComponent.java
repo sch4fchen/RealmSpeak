@@ -223,18 +223,27 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 
 	public Strength getStrength() {
 		Strength strength;
+		GameObject owner = getGameObject().getHeldBy();
+		CharacterWrapper character = null;
+		if (owner!=null) { // Might be null in the character builder app
+			character = new CharacterWrapper(getGameObject().getHeldBy());
+		}
 		if (gameObject.hasThisAttribute("action_change_str") && !gameObject.hasAttribute(ALTERNATE_ATTRIBUTES, "strength")) {
 			usingAlteredAttributes = true;
 			strength = new Strength(gameObject.getThisAttribute("action_change_str"));
 		}
 		else {
-			String val = getChitAttribute("strength");
-			strength = new Strength(val);
+			if (getChitAttribute("strength").matches("weight")) {
+				if (character==null) strength = new Strength();
+				strength = new Strength(character.getWeight());
+			}
+			else {
+				String val = getChitAttribute("strength");
+				strength = new Strength(val);
+			}
 		}
 		if (isMove() || isFight()) {
-			GameObject owner = getGameObject().getHeldBy();
-			if (owner!=null) { // Might be null in the character builder app
-				CharacterWrapper character = new CharacterWrapper(getGameObject().getHeldBy());
+			if (character!=null) { // Might be null in the character builder app
 				if (character.getGameObject().hasThisAttribute(Constants.SHRINK)) {
 					strength.modify(-1);
 				}
@@ -522,6 +531,10 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 					return new Speed(speedChange,mod);
 				}
 			}
+			if (getChitAttribute("speed").matches("weight")) {
+				if (owner==null) return new Speed(8,mod);
+				return new Speed(character.getWeight().getLevels()+1,mod);
+			}
 			return new Speed(getChitAttribute("speed"),mod);
 		}
 		else if (isFly()) {
@@ -546,7 +559,11 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 			}
 		}
 		
-		if (this.isMagicMove()) return new Speed(0,mod);		
+		if (this.isMagicMove()) return new Speed(0,mod);
+		if (getChitAttribute("speed").matches("weight")) {
+			if (owner==null) return new Speed(8,mod);
+			return new Speed(character.getWeight().getLevels()+1,mod);
+		}
 		return new Speed(getChitAttribute("speed"),mod);
 	}
 
@@ -567,6 +584,10 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 			}
 			if (new CombatWrapper(character.getGameObject()).isFreezed()) {
 				mod++;
+			}
+			if (getChitAttribute("speed").matches("weight")) {
+				if (owner==null) return new Speed(8,mod);
+				return new Speed(character.getWeight().getLevels()+1,mod);
 			}
 			return new Speed(getChitAttribute("speed"),mod);
 		}
