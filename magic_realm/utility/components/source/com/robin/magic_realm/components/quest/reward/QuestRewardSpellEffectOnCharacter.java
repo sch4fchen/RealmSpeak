@@ -32,7 +32,8 @@ public class QuestRewardSpellEffectOnCharacter extends QuestReward {
 		Slowed,
 		SpiritGuide,
 		TrackersSense,
-		ValeWalker
+		ValeWalker,
+		WaterRun
 	}
 	
 	public QuestRewardSpellEffectOnCharacter(GameObject go) {
@@ -106,6 +107,9 @@ public class QuestRewardSpellEffectOnCharacter extends QuestReward {
 			break;
 		case ValeWalker:
 			effect = Constants.VALE_WALKER;
+			break;
+		case WaterRun:
+			effect = Constants.WATER_RUN;
 			break;
 		default:
 			return;

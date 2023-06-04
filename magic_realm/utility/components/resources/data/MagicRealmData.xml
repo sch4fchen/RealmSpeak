@@ -58807,7 +58807,7 @@
         <attribute super_realm_spell="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2211" name="Divine Protection">
+    <GameObject id="2211" name="Barkskin">
       <AttributeBlock blockName="this">
         <attribute spell="II" />
         <attribute duration="combat" />
@@ -58926,7 +58926,7 @@
         <attribute spell="III" />
         <attribute duration="day" />
         <attribute target="character" />
-        <attribute text="Targets treated as having 'Discovered Hidden Enemies'" />
+        <attribute text="Can 'walk the woods' to/from a water clearing. Move to a water clearing costs one phase." />
         <attribute magic_color="gray" />
         <attribute host_okay="" />
         <attribute learnable="" />

@@ -114,6 +114,13 @@ public class TransmorphEffect implements ISpellEffect {
 				casterCombat.clearCastSpell();
 			}
 		}
+		
+		ArrayList<SpellWrapper> affectingSpells = SpellMasterWrapper.getSpellMaster(context.getGameData()).getAffectingSpells(target.getGameObject());
+		for (SpellWrapper affectingSpell : affectingSpells) {
+			if (affectingSpell.getGameObject().hasThisAttribute(Constants.BREAK_WHEN_TRANSMORPHED)) {
+				affectingSpell.expireSpell();
+			}
+		}
 	}
 	
 	@Override

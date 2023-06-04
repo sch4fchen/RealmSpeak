@@ -384,6 +384,7 @@ public class Constants {
 	public static final String STEED_IN_CAVES_AND_WATER = "steed_in_caves_and_water";
 	public static final String TRANSMORPH_IMMUNITY = "transmorph_immunity";
 	public static final String TRANSMORPH_IMMUNITY_SELF = "transmorph_immunity_self";
+	public static final String BREAK_WHEN_TRANSMORPHED = "break_when_transmorphed";
 	public static final String MAGIC_IMMUNITY = "magic_immunity";
 	public static final String MAGIC_COLOR_BONUS = "magic_color_bonus";
 	public static final String MAGIC_COLOR_BONUS_ACTIVE = "magic_color_bonus_active";
