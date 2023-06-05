@@ -968,7 +968,7 @@ public class RealmUtility {
 										// don't block character if they have immunity to this monster
 										RealmComponent charRc = RealmComponent.getRealmComponent(character.getGameObject());
 										String magicImmunity = monster.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY);
-										if (!charRc.isImmuneTo(monster) && (!character.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT) || (magicImmunity!=null && (magicImmunity.matches("prism") || magicImmunity.matches("prism"))))) {
+										if (!charRc.isImmuneTo(monster) && (!character.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT) || (magicImmunity!=null && (magicImmunity.matches("prism") || magicImmunity.matches("purple"))))) {
 											blocked = true;
 											if (blockMonsters) {
 												monster.setBlocked(true); // so monster will stop prowling

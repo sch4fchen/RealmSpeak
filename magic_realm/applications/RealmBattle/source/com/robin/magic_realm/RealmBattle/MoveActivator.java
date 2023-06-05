@@ -95,8 +95,9 @@ public class MoveActivator {
 		for (RealmComponent rc : battleModel.getAllBattleParticipants(true)) {
 			RealmComponent target = rc.getTarget();
 			if (target!=null && target.equals(activeParticipant)) {
+				String magicImmunity = rc.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY);
 				// As long as the character is not immune to this monster type, include it
-				if (!activeParticipant.isImmuneTo(rc)) {
+				if (!activeParticipant.isImmuneTo(rc) && (!activeParticipant.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT) || (magicImmunity!=null && (magicImmunity.matches("prism") || magicImmunity.matches("purple"))))) {
 					BattleChit chit = (BattleChit)rc;
 					Speed speed = chit.getMoveSpeed();
 					if (speed.fasterThan(fastest)) {
@@ -107,7 +108,7 @@ public class MoveActivator {
 		}
 		
 		// Don't forget to check charge chits!!
-		if (activeParticipant.isCharacter()) {
+		if (activeParticipant.isCharacter() && !activeParticipant.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) {
 			CombatWrapper combat = new CombatWrapper(activeParticipant.getGameObject());
 			for (GameObject go : combat.getChargeChits()) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);

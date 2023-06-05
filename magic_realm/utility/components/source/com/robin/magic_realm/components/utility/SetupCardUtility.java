@@ -778,7 +778,7 @@ public class SetupCardUtility {
 			String magicImmunity = monster.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY);
 			for (RealmComponent rc : prowlerLocation.clearing.getClearingComponents()) {
 				if (rc.isPlayerControlledLeader() && !rc.isHidden() && !rc.isMistLike() && !rc.isImmuneTo(monster) 
-					&& (!rc.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT) || (magicImmunity!=null && (magicImmunity.matches("prism") || magicImmunity.matches("prism"))))) {
+					&& (!rc.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT) || (magicImmunity!=null && (magicImmunity.matches("prism") || magicImmunity.matches("purple"))))) {
 					CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
 					if (!character.isSleep()) {
 						monster.setBlocked(true);
