@@ -36280,6 +36280,8 @@
         <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
       <contains id="1297" />
     </GameObject>
@@ -36338,6 +36340,8 @@
         <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
       <contains id="1299" />
     </GameObject>
@@ -36397,6 +36401,8 @@
         <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
       <contains id="1301" />
     </GameObject>
@@ -36454,6 +36460,8 @@
         <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1303" name="Winged Demon">
@@ -36488,6 +36496,8 @@
         <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1304" name="T Serpent">
@@ -36519,6 +36529,8 @@
         <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1305" name="Octopus">
@@ -36550,6 +36562,8 @@
         <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1306" name="Colossus">
@@ -36614,6 +36628,8 @@
         <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1308" name="Skeleton Knight">
@@ -36711,6 +36727,8 @@
         <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1311" name="Imp">
@@ -37261,6 +37279,8 @@
         <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1329" name="Sword Skeleton Box">
@@ -38659,6 +38679,8 @@
         <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1373" name="Golem">
@@ -38690,6 +38712,8 @@
         <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1374" name="Golem">
@@ -38721,6 +38745,8 @@
         <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1375" name="H Scorpion Box">
@@ -38899,6 +38925,8 @@
         <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
       <contains id="1382" />
     </GameObject>
@@ -39941,6 +39969,8 @@
         <attribute strength="RED" />
         <attribute chit_color="forestgreen" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
       <contains id="1421" />
     </GameObject>
@@ -39996,6 +40026,8 @@
         <attribute strength="RED" />
         <attribute chit_color="forestgreen" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
       <contains id="1423" />
     </GameObject>
@@ -40051,6 +40083,8 @@
         <attribute strength="RED" />
         <attribute chit_color="forestgreen" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
       <contains id="1425" />
     </GameObject>
@@ -40285,6 +40319,8 @@
         <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
       <contains id="1436" />
     </GameObject>
@@ -40428,6 +40464,8 @@
         <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1441" name="Axe Goblins Box">
@@ -41464,6 +41502,8 @@
         <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1476" name="Dwarf Dwelling">
@@ -41900,6 +41940,8 @@
         <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
       <contains id="1490" />
     </GameObject>
@@ -42342,6 +42384,8 @@
         <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
       <contains id="1508" />
     </GameObject>
@@ -42396,6 +42440,8 @@
         <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
       <contains id="1510" />
     </GameObject>
@@ -42450,6 +42496,8 @@
         <attribute strength="RED" />
         <attribute chit_color="red" />
         <attribute pins="" />
+        <attribute kills_horse="" />
+        <attribute destroys_armor="" />
       </AttributeBlock>
       <contains id="1512" />
     </GameObject>
@@ -58819,6 +58867,7 @@
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
         <attribute benevolent="" />
+        <attribute break_when_transmorphed="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2212" name="Flood">
@@ -58940,6 +58989,25 @@
         <attribute action="MOVE" />
         <attribute chit_state="1" />
         <attribute water_run="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2219" name="Blinding Light">
+      <AttributeBlock blockName="this">
+        <attribute spell="IV" />
+        <attribute duration="phase" />
+        <attribute target="character" />
+        <attribute text="Target cannot be blocked and can play any action chit during Action Step." />
+        <attribute magic_color="purple" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="phase_chit">
+        <attribute phase_chit="" />
+        <attribute text="Blinding Light" />
+      </AttributeBlock>
+      <AttributeBlock blockName="phase_chit_effects">
+        <attribute blinding_light="" />
       </AttributeBlock>
     </GameObject>
   </objects>

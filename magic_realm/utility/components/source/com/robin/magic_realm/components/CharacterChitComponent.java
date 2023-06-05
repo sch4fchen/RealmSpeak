@@ -1002,10 +1002,10 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			combat.setKilledBy(attacker.getGameObject());
 			damageTaken = true;
 			BattleHorse horse = character.getActiveSteed();
-			if (attacker.getGameObject().hasThisAttribute(Constants.KILLS_HORSE) && horse!=null) {
+			if (horse!=null && (attacker.getGameObject().hasThisAttribute(Constants.KILLS_HORSE) || (attacker instanceof ChitComponent && ((ChitComponent)attacker).hasFaceAttribute(Constants.KILLS_HORSE)))) {
 				horse.applyHit(game,hostPrefs, attacker, box, harm,attackOrderPos);				
 			}
-			if (attacker.getGameObject().hasThisAttribute(Constants.DESTROYS_ARMOR)) {
+			if (attacker.getGameObject().hasThisAttribute(Constants.DESTROYS_ARMOR) || (attacker instanceof ChitComponent && ((ChitComponent)attacker).hasFaceAttribute(Constants.DESTROYS_ARMOR))) {
 				RealmComponent armor = getArmor(attacker.getAttackSpeed(),box,attackOrderPos);
 				if (armor!=null) {
 					CombatWrapper combatArmor = new CombatWrapper(armor.getGameObject());
