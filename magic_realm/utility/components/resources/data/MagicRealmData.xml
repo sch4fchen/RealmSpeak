@@ -38666,6 +38666,7 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute golem="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -38699,6 +38700,7 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute golem="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -38732,6 +38734,7 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="1" />
+        <attribute golem="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39768,6 +39771,7 @@
         <attribute color_source="gray" />
         <attribute magic_immunity="gray" />
         <attribute archer="" />
+        <attribute elemental="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39805,6 +39809,7 @@
         <attribute color_source="gold" />
         <attribute magic_immunity="gold" />
         <attribute archer="" />
+        <attribute elemental="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39842,6 +39847,7 @@
         <attribute color_source="purple" />
         <attribute magic_immunity="purple" />
         <attribute archer="" />
+        <attribute elemental="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39879,6 +39885,7 @@
         <attribute color_source="prism" />
         <attribute magic_immunity="prism" />
         <attribute archer="" />
+        <attribute elemental="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -56902,6 +56909,7 @@
         <attribute benevolent="" />
         <attribute learnable="" />
         <attribute super_realm="" />
+        <attribute targets_non_magic_changed_chits="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2118" name="Talk to Wise Bird">
@@ -57024,6 +57032,7 @@
         <attribute benevolent="" />
         <attribute learnable="" />
         <attribute super_realm="" />
+        <attribute targets_non_magic_changed_chits="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2126" name="See Hidden Signs">
@@ -57055,6 +57064,7 @@
         <attribute benevolent="" />
         <attribute learnable="" />
         <attribute super_realm="" />
+        <attribute targets_non_magic_changed_chits="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2128" name="Lost">

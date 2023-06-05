@@ -138,6 +138,7 @@ public class SpellEffectFactory {
 			case "barkskin": return new ISpellEffect[]{new ApplyNamedEffect(Constants.BARKSKIN)};
 			case "blinding light": return new ISpellEffect[]{new PhaseChitEffect()};
 			case "control horse": return new ISpellEffect[]{new ControlHorseEffect()};
+			case "control element": return new ISpellEffect[]{new ControlEffect()};
 			case "deal with orcs and goblins": return new ISpellEffect[]{new PacifyEffect(0)};
 			case "divine protection": return new ISpellEffect[]{new ApplyNamedEffect(Constants.STRENGTHENED_VULNERABILITY)};
 			case "free the soul": return new ISpellEffect[]{new FreeTheSoulEffect()};

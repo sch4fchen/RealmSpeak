@@ -58,8 +58,7 @@ public class ControlEffect implements ISpellEffect {
 			target.setOwner(RealmComponent.getRealmComponent(context.Spell.getCaster().getGameObject()));
 			combat.setSheetOwner(true);
 			combat.setWatchful(false);
-//			combat.removeAllAttackers();
-		
+//			combat.removeAllAttackers();	
 	}
 
 	@Override

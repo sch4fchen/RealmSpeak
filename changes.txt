@@ -1,6 +1,6 @@
 ::ROADMAP::
 ---Super Realm Content---
-Spells IV: Control Element, Elemental Spirit, Frozen Water, Reserve, Violent Winds
+Spells IV: Control Element, Frozen Water, Reserve, Violent Winds
 Spells V: Dark Favor, Reanimate
 Spells VI: Alter Object, Alter Size, Enchant Weapon, Grow Wings, Mountain Surge
 Spells VII: Charm Snake, Dazzle, Free Spell, Join, Luck, Meditate
