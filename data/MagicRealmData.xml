@@ -58943,6 +58943,25 @@
         <attribute water_run="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2219" name="Blinding Light">
+      <AttributeBlock blockName="this">
+        <attribute spell="IV" />
+        <attribute duration="phase" />
+        <attribute target="character" />
+        <attribute text="Target cannot be blocked and can play any action chit during Action Step." />
+        <attribute magic_color="purple" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="phase_chit">
+        <attribute phase_chit="" />
+        <attribute text="Blinding Light" />
+      </AttributeBlock>
+      <AttributeBlock blockName="phase_chit_effects">
+        <attribute blinding_light="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

@@ -775,19 +775,17 @@ public class SetupCardUtility {
 	public static void updateMonsterBlock(MonsterChitComponent monster) {
 		if (!monster.isMistLike()) { // Misty monsters don't block
 			TileLocation prowlerLocation = ClearingUtility.getTileLocation(monster);
+			String magicImmunity = monster.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY);
 			for (RealmComponent rc : prowlerLocation.clearing.getClearingComponents()) {
-				if (rc.isPlayerControlledLeader()) {
-					if (!rc.isHidden() && !rc.isMistLike()) {
-						if (!rc.isImmuneTo(monster)) {
-							CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
-							if (!character.isSleep()) {
-								monster.setBlocked(true);
-								HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(monster.getGameObject().getGameData());
-								if (!monster.isSmall() || !hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS)) {
-									character.setBlocked(true);
-									GameClient.broadcastClient("host",monster.getGameObject().getName()+" blocks the "+character.getGameObject().getName());
-								}
-							}
+				if (rc.isPlayerControlledLeader() && !rc.isHidden() && !rc.isMistLike() && !rc.isImmuneTo(monster) 
+					&& (!rc.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT) || (magicImmunity!=null && (magicImmunity.matches("prism") || magicImmunity.matches("prism"))))) {
+					CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
+					if (!character.isSleep()) {
+						monster.setBlocked(true);
+						HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(monster.getGameObject().getGameData());
+						if (!monster.isSmall() || !hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS)) {
+							character.setBlocked(true);
+							GameClient.broadcastClient("host",monster.getGameObject().getName()+" blocks the "+character.getGameObject().getName());
 						}
 					}
 				}
