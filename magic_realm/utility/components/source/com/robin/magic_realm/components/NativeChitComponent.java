@@ -464,7 +464,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		}
 		
 		ArrayList<SpellWrapper> holyShields = SpellUtility.getBewitchingSpellsWithKey(getGameObject(),Constants.HOLY_SHIELD);
-		if ((holyShields!=null&&!holyShields.isEmpty()) || combat.hasHolyShield(attacker.getAttackSpeed(),attacker.getLength())) {
+		if ((holyShields!=null&&!holyShields.isEmpty()) || affectedByKey(Constants.HOLY_SHIELD) || combat.hasHolyShield(attacker.getAttackSpeed(),attacker.getLength())) {
 			for (SpellWrapper spell : holyShields) {
 				spell.expireSpell();
 			}

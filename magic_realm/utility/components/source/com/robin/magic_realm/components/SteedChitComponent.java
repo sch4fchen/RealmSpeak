@@ -213,12 +213,12 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		if (rider!=null) {
 			CombatWrapper combatRider = new CombatWrapper(rider.getGameObject());
 			ArrayList<SpellWrapper> holyShieldsRider = SpellUtility.getBewitchingSpellsWithKey(rider.getGameObject(),Constants.HOLY_SHIELD);
-			if ((holyShieldsRider!=null&&!holyShieldsRider.isEmpty()) || (holyShieldsRider!=null&&!holyShieldsRider.isEmpty())) {
+			if ((holyShieldsRider!=null&&!holyShieldsRider.isEmpty()) || rider.affectedByKey(Constants.HOLY_SHIELD) || combatRider.hasHolyShield(attacker.getAttackSpeed(),attacker.getLength())) {
 				for (SpellWrapper spell : holyShieldsRider) {
 					spell.expireSpell();
 				}
 				combatRider.setHolyShield(attacker.getAttackSpeed(), attacker.getLength());
-				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits Holy Shield and attack is blocked.");
+				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits Holy Shield and the attack is blocked.");
 				return false;
 			}
 		}

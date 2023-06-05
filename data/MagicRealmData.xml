@@ -58819,6 +58819,7 @@
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
         <attribute benevolent="" />
+        <attribute break_when_transmorphed="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2212" name="Flood">

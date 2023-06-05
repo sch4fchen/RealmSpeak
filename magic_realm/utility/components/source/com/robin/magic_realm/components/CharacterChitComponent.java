@@ -680,14 +680,14 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 
 		// Start off with the assumption that the character was NOT killed
 		boolean characterWasKilled = false;
-
+		
 		ArrayList<SpellWrapper> holyShields = SpellUtility.getBewitchingSpellsWithKey(getGameObject(),Constants.HOLY_SHIELD);
-		if ((holyShields!=null&&!holyShields.isEmpty()) || combat.hasHolyShield(attacker.getAttackSpeed(),attacker.getLength())) {
+		if ((holyShields!=null&&!holyShields.isEmpty()) || affectedByKey(Constants.HOLY_SHIELD) || combat.hasHolyShield(attacker.getAttackSpeed(),attacker.getLength())) {
 			for (SpellWrapper spell : holyShields) {
 				spell.expireSpell();
 			}
 			combat.setHolyShield(attacker.getAttackSpeed(), attacker.getLength());
-			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits Holy Shield and attack is blocked.");
+			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits Holy Shield and the attack is blocked.");
 			return false;
 		}
 		

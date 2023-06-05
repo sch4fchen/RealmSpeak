@@ -57,13 +57,11 @@ public class SpellUtility {
 	
 	public static ArrayList<SpellWrapper>getBewitchingSpellsWithKey(GameObject target, String key){
 		ArrayList<SpellWrapper>result = new ArrayList<>();
-		
 		for(SpellWrapper spell:getBewitchingSpells(target)){
 			if(spell.isActive() && spell.getGameObject().hasThisAttribute(key)){
 				result.add(spell);
 			}
 		}
-		
 		return result;
 	}
 	
@@ -494,9 +492,5 @@ the Appearance Chart, he instantly becomes unhired.
 		
 		RealmLogging.logMessage(context.Spell.getCaster().getGameObject().getName(), rollType + " roll: "+ roller.getDescription());
 		return new RollResult(roller, roller.getStringResult(), die);
-	}
-
-	public static boolean hasHolyShield(GameObject go) {
-		return go.hasThisAttribute(Constants.HOLY_SHIELD) || SpellUtility.affectedByBewitchingSpellKey(go,Constants.HOLY_SHIELD);
 	}
 }
