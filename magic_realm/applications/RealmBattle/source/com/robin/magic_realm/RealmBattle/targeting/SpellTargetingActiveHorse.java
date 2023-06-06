@@ -24,7 +24,7 @@ public class SpellTargetingActiveHorse extends SpellTargetingSingle {
 		ArrayList<RealmComponent> potentialTargets = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true);
 		potentialTargets = CombatSheet.filterNativeFriendly(activeParticipant, potentialTargets);
 		for (RealmComponent rc : potentialTargets) {
-			if (rc.hasMagicProtection() || rc.hasMagicColorImmunity(spell.getRequiredColorMagic())) continue;
+			if (rc.hasMagicProtection() || rc.hasMagicColorImmunity(spell)) continue;
 			if (rc.isNativeHorse()) {
 				if (filterControlledHorses && rc.getGameObject().hasThisAttribute(Constants.CONTROLLED_HORSE)) continue;
 				gameObjects.add(rc.getGameObject());
@@ -33,7 +33,7 @@ public class SpellTargetingActiveHorse extends SpellTargetingSingle {
 			if (rc.isNative() || rc.isMonster()) {
 				for (GameObject item : rc.getHold()) {
 					RealmComponent itemRc = (RealmComponent.getRealmComponent(item));
-					if (itemRc.isNativeHorse() && !((BattleHorse)itemRc).isDead() && !itemRc.hasMagicProtection() && !itemRc.hasMagicColorImmunity(spell.getRequiredColorMagic())) {
+					if (itemRc.isNativeHorse() && !((BattleHorse)itemRc).isDead() && !itemRc.hasMagicProtection() && !itemRc.hasMagicColorImmunity(spell)) {
 						if (filterControlledHorses && rc.getGameObject().hasThisAttribute(Constants.CONTROLLED_HORSE)) continue;
 						gameObjects.add(item);
 					}
@@ -44,7 +44,7 @@ public class SpellTargetingActiveHorse extends SpellTargetingSingle {
 				CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
 				for (GameObject item : character.getActiveInventory()) {
 					RealmComponent itemRc = (RealmComponent.getRealmComponent(item));
-					if (itemRc.isHorse() && !itemRc.hasMagicProtection() && !itemRc.hasMagicColorImmunity(spell.getRequiredColorMagic())) {
+					if (itemRc.isHorse() && !itemRc.hasMagicProtection() && !itemRc.hasMagicColorImmunity(spell)) {
 						if (filterControlledHorses && rc.getGameObject().hasThisAttribute(Constants.CONTROLLED_HORSE)) continue;
 						gameObjects.add(item);
 					}

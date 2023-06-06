@@ -365,10 +365,18 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		return character.hasMagicProtection();
 	}
 	
-	public boolean hasMagicColorImmunity(ColorMagic spellColor) {
+	public boolean hasMagicColorImmunity(SpellWrapper spell) {
+		ColorMagic spellColor = spell.getRequiredColorMagic();
+		if (spellColor==null) {
+			RealmComponent incantation = RealmComponent.getRealmComponent(spell.getIncantationObject());
+			if (incantation instanceof CharacterActionChitComponent) {
+				spellColor = ((CharacterActionChitComponent)incantation).getColorMagic();
+			}
+			if (spellColor==null) return false;
+		}
 		if (getGameObject().hasThisAttribute(Constants.MAGIC_IMMUNITY)) {
 			String protection = getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY);
-			ColorMagic cm = ColorMagic.makeColorMagic(protection,true);
+			ColorMagic cm = ColorMagic.makeColorMagic(protection,false);
 			if (cm!=null && cm.sameColorAs(spellColor)) return true;
 			if (protection.matches("prism") && spellColor.isPrismColor()) return true;
 		}

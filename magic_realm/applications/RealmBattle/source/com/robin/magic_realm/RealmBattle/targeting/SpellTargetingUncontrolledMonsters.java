@@ -20,7 +20,7 @@ public class SpellTargetingUncontrolledMonsters extends SpellTargetingSingle {
 		String validTargets = spell.getGameObject().getThisAttribute("targeted_monsters");
 		String[] targetNames = validTargets.split(",");
 		for (RealmComponent rc : allDenizens) {
-			if (rc.isMonster() && !rc.isPlayerControlledLeader() && !rc.hasMagicProtection() && !rc.hasMagicColorImmunity(spell.getRequiredColorMagic())) {
+			if (rc.isMonster() && !rc.isPlayerControlledLeader() && !rc.hasMagicProtection() && !rc.hasMagicColorImmunity(spell)) {
 				String name = rc.getGameObject().getName().toLowerCase();
 				for (String targetName : targetNames) {
 					if (name.contains(targetName.trim())) {

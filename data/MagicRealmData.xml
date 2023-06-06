@@ -59020,6 +59020,21 @@
         <attribute blinding_light="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2220" name="Control Element">
+      <AttributeBlock blockName="this">
+        <attribute duration="day" />
+        <attribute target="uncontrolled monster" />
+        <attribute targeted_monsters="elemental, golem" />
+        <attribute text="Spellcaster controls an anomaly or golem." />
+        <attribute magic_color="any" />
+        <attribute control="" />
+        <attribute host_okay="" />
+        <attribute spell="*" />
+        <attribute awakened="" />
+        <attribute benevolent="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

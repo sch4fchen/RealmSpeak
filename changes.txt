@@ -1,6 +1,6 @@
 ::ROADMAP::
 ---Super Realm Content---
-Spells IV: Control Element, Frozen Water, Reserve, Violent Winds
+Spells IV: Frozen Water, Reserve, Violent Winds
 Spells V: Dark Favor, Reanimate
 Spells VI: Alter Object, Alter Size, Enchant Weapon, Grow Wings, Mountain Surge
 Spells VII: Charm Snake, Dazzle, Free Spell, Join, Luck, Meditate
@@ -64,7 +64,7 @@ First Edition Optional Rule - Glory: When a character or his hired natives kill 
 
 Version 1.1.8.0
 SUPER REALM:
-# New spells: Migration, Tracker's Sense, Water Run, Blinding Light
+# New spells: Migration, Tracker's Sense, Water Run, Blinding Light, Control Element
 # Fix harm for Colossus (and destroys horse and armor)
 # Fix missile attacks for anomalies
 # T monsters kill horse and destroy armor with RED attack

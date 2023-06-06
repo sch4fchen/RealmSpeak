@@ -16,7 +16,7 @@ public class SpellTargetingMonsters extends SpellTargetingMultiple {
 		BattleGroup bg = battleModel.getParticipantsBattleGroup(activeParticipant);
 		ArrayList<RealmComponent> otherOpponents = combatFrame.findCanBeSeen(battleModel.getAllOtherBattleParticipants(bg,true,combatFrame.allowsTreachery()),true);
 		for (RealmComponent rc : otherOpponents) {
-			if (rc.isMonster() && !rc.hasMagicProtection() && !rc.hasMagicColorImmunity(spell.getRequiredColorMagic())) {
+			if (rc.isMonster() && !rc.hasMagicProtection() && !rc.hasMagicColorImmunity(spell)) {
 				gameObjects.add(rc.getGameObject());
 			}
 		}
