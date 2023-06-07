@@ -58893,7 +58893,6 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
-        <attribute benevolent="" />
         <attribute length="18" />
         <attribute strength="M" />
         <attribute sharpness="1" />
@@ -58918,7 +58917,6 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
-        <attribute benevolent="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2214" name="Control Horse">
@@ -58951,6 +58949,7 @@
         <attributeList keyName="target_clearing">
           <attributeVal N0="horses" />
         </attributeList>
+        <attribute benevolent="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2216" name="Migration">
@@ -59011,6 +59010,7 @@
         <attribute host_okay="" />
         <attribute learnable="" />
         <attribute super_realm="" />
+        <attribute super_realm_spell="" />
       </AttributeBlock>
       <AttributeBlock blockName="phase_chit">
         <attribute phase_chit="" />
@@ -59033,6 +59033,7 @@
         <attribute awakened="" />
         <attribute benevolent="" />
         <attribute super_realm="" />
+        <attribute super_realm_spell="" />
       </AttributeBlock>
     </GameObject>
   </objects>
