@@ -37,6 +37,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	public static final String NULLIFIED_SPELLS = "nullified_spells"; // Other spells which have been nullified by this spell
 	private static final String SPELL_VIRTUAL = "virtual";		// A virtual spell is an instance of a real spell when cast using Enhanced Magic rules (i.e., the spell isn't tied up)
 	public static final String INCANTATION_TIE = "incantation_tie";
+	public static final String COLOR_CHIT = "color_chit";
 	public static final String CASTER_ID = "caster_id";
 	
 	private static final String TARGET_IDS = "target_ids";
@@ -131,6 +132,9 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	}
 	public SpellWrapper castSpellNoEnhancedMagic(GameObject incantationObject) {
 		return castSpell(incantationObject,true);
+	}
+	public void addColorChit(MagicChit chit) {
+		setString(COLOR_CHIT,chit.getGameObject().getStringId());
 	}
 	/**
 	 * Finds the spellcaster for a spell
@@ -236,6 +240,23 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		}
 		return null;
 	}
+	public GameObject getColorChitObject() {
+		String id = getString(COLOR_CHIT);
+		if (id!=null) { // Might be null if using other source
+			GameObject go = getGameObject().getGameData().getGameObject(Long.valueOf(id));
+			return go;
+		}
+		return null;
+	}
+	public ColorMagic getColorChitMagicColor() {
+		GameObject chit = getColorChitObject();
+		if (chit==null) return null;
+		RealmComponent chitRc = RealmComponent.getRealmComponent(chit);
+		if (chitRc instanceof CharacterActionChitComponent) {
+			return ((CharacterActionChitComponent)chitRc).getEnchantedColorMagic();
+		}
+		return null;
+	}
 	public void makeInert() {
 		setBoolean(SPELL_INERT,true);
 	}
@@ -298,6 +319,8 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 					combat.addUsedChit(io);
 				}
 			}
+			
+			removeAttribute(COLOR_CHIT);
 		}
 	}
 	/**
@@ -387,6 +410,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		clear(NULLIFIED_SPELLS);
 		clear(SPELL_VIRTUAL);
 		clear(INCANTATION_TIE);
+		clear(COLOR_CHIT);
 		clear(TARGET_IDS);
 		clear(TARGET_EXTRA_IDENTIFIER);
 		clear(SECONDARY_TARGET);

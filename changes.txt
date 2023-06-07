@@ -68,8 +68,10 @@ SUPER REALM:
 # Fix harm for Colossus (and destroys horse and armor)
 # Fix missile attacks for anomalies
 # T monsters kill horse and destroy armor with RED attack
+# Fix targeting anomalies depending on chosen chit color (or infinite color source)
 NEW FEATURES:
 # Add some abilities of travelers to character editor (and minor characters in quest editor)
+# Option to choose color chit instead of infinite source when casting a spell
 BUGS/ISSUES:
 # Fix error in some situations of Hurricane Winds
 # Fix crash when destroying denizen horse used by character (Bone Horse)

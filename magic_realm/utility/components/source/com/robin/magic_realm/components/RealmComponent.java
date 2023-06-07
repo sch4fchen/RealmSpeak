@@ -366,21 +366,25 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	}
 	
 	public boolean hasMagicColorImmunity(SpellWrapper spell) {
+		if (!getGameObject().hasThisAttribute(Constants.MAGIC_IMMUNITY)) return false;
+		
+		String protection = getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY);
+		ColorMagic cm = ColorMagic.makeColorMagic(protection,false);
 		ColorMagic spellColor = spell.getRequiredColorMagic();
-		if (spellColor==null) {
-			RealmComponent incantation = RealmComponent.getRealmComponent(spell.getIncantationObject());
-			if (incantation instanceof CharacterActionChitComponent) {
-				spellColor = ((CharacterActionChitComponent)incantation).getColorMagic();
-			}
-			if (spellColor==null) return false;
-		}
-		if (getGameObject().hasThisAttribute(Constants.MAGIC_IMMUNITY)) {
-			String protection = getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY);
-			ColorMagic cm = ColorMagic.makeColorMagic(protection,false);
+		if (spellColor==null) spellColor = spell.getColorChitMagicColor();
+
+		if (spellColor!=null) {
 			if (cm!=null && cm.sameColorAs(spellColor)) return true;
 			if (protection.matches("prism") && spellColor.isPrismColor()) return true;
+			return false;
 		}
-		return false;
+		
+		ArrayList<ColorMagic> colors = new ArrayList<>();
+		colors.addAll((new CharacterWrapper(getGameObject()).getInfiniteColorSources()));
+		for (ColorMagic color : colors) {
+			if ((cm!=null && !cm.sameColorAs(color)) || (protection.matches("prism") && !color.isPrismColor())) return false;
+		}
+		return true;
 	}
 	
 	public boolean isTransformAnimal() {

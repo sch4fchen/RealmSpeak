@@ -3498,7 +3498,7 @@ public class CombatFrame extends JFrame {
 								chooser.addRealmComponentToOption(key,RealmComponent.getRealmComponent(type));
 								setHash.put(key, set);
 							}
-							else {
+							if (set.getInfiniteSource()==null || set.getColorMagic()==null) {
 								// add options for every color chit (will this be too much??)
 								for (MagicChit chit:set.getValidColorChits()) {
 									String key = "P"+(keyN++);
@@ -3558,8 +3558,9 @@ public class CombatFrame extends JFrame {
 						}
 						if (i.hasNext()) {
 							// Color chits fatigue when they are used (if any was used)
-							MagicChit colorChit =  (MagicChit)i.next();
+							MagicChit colorChit = (MagicChit)i.next();
 							colorChit.makeFatigued();
+							spell.addColorChit(colorChit);
 							RealmUtility.reportChitFatigue(activeCharacter,colorChit,"Fatigued color chit: ");
 						}
 						combat.setCastSpell(spell.getGameObject());

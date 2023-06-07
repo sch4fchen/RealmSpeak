@@ -39772,6 +39772,7 @@
         <attribute magic_immunity="gray" />
         <attribute archer="" />
         <attribute elemental="" />
+        <attribute anomaly="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39810,6 +39811,7 @@
         <attribute magic_immunity="gold" />
         <attribute archer="" />
         <attribute elemental="" />
+        <attribute anomaly="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39848,6 +39850,7 @@
         <attribute magic_immunity="purple" />
         <attribute archer="" />
         <attribute elemental="" />
+        <attribute anomaly="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39886,6 +39889,7 @@
         <attribute magic_immunity="prism" />
         <attribute archer="" />
         <attribute elemental="" />
+        <attribute anomaly="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -58946,10 +58950,10 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
+        <attribute benevolent="" />
         <attributeList keyName="target_clearing">
           <attributeVal N0="horses" />
         </attributeList>
-        <attribute benevolent="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2216" name="Migration">
@@ -59024,16 +59028,16 @@
       <AttributeBlock blockName="this">
         <attribute duration="day" />
         <attribute target="uncontrolled monster" />
-        <attribute targeted_monsters="elemental, golem" />
+        <attribute targeted_monsters="anomaly, elemental, golem" />
         <attribute text="Spellcaster controls an anomaly or golem." />
         <attribute magic_color="any" />
         <attribute control="" />
         <attribute host_okay="" />
-        <attribute spell="*" />
-        <attribute awakened="" />
+        <attribute spell="IV" />
         <attribute benevolent="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
+        <attribute learnable="" />
       </AttributeBlock>
     </GameObject>
   </objects>

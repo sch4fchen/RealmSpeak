@@ -4573,7 +4573,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 					if (infiniteColors.size()>0) {
 						set.setInfiniteColor(infiniteColors.iterator().next());
 					}
-					else if (colorChits.size()>0) {
+					if (colorChits.size()>0) {
 						// Any of the chits may be used to cast the spell
 						set.addColorChits(colorChits);
 					}
