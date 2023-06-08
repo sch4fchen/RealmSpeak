@@ -19,17 +19,29 @@ public class SpellTargetingTile extends SpellTargetingSpecial {
 	public boolean populate(BattleModel battleModel, RealmComponent activeParticipant) {
 		// Target the spellcaster's clearing
 		TileLocation loc = battleModel.getBattleLocation();
+		boolean validTarget = true;
 		if (spell.getGameObject().hasThisAttribute(Constants.TARGET_CLEARINGS)) {
-			String tile = spell.getGameObject().getThisAttribute(Constants.TARGET_CLEARINGS);
-			if (tile.matches("river") || tile.matches("water")) {
+			validTarget = false;
+			String clearings = spell.getGameObject().getThisAttribute(Constants.TARGET_CLEARINGS);
+			if (clearings.matches("river") || clearings.matches("water")) {
 				for (ClearingDetail cl : loc.tile.getClearings()) {
-					if (!cl.isWater() && !cl.isFrozenWater()) return false;
+					if (cl.isWater() || cl.isFrozenWater()) {
+						validTarget = true;
+						break;
+					}
 				}
 			}
 		}
-		spell.addTarget(combatFrame.getHostPrefs(),loc.tile.getGameObject(),true);
-		CombatFrame.broadcastMessage(activeParticipant.getGameObject().getName(),"Targets the "+loc.tile.getGameObject().getName());
-		JOptionPane.showMessageDialog(combatFrame,"The current tile was selected as the target.");
+		if (validTarget) {
+			gameObjects.add(loc.tile.getGameObject());
+			spell.addTarget(combatFrame.getHostPrefs(),loc.tile.getGameObject(),true);
+			CombatFrame.broadcastMessage(activeParticipant.getGameObject().getName(),"Targets the "+loc.tile.getGameObject().getName());
+			JOptionPane.showMessageDialog(combatFrame,"The current tile was selected as the target.");
+		}
 		return true;
+	}
+	
+	public boolean hasTargets() {
+		return !gameObjects.isEmpty();
 	}
 }
