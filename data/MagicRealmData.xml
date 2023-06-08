@@ -35609,7 +35609,7 @@
         <attribute chit="" />
         <attribute ts_section="" />
       </AttributeBlock>
-      <contains id="1290" />
+      <contains id="1291" />
     </GameObject>
     <GameObject id="1249" name="Smoke ST">
       <AttributeBlock blockName="this">
@@ -35619,7 +35619,7 @@
         <attribute chit="" />
         <attribute ts_section="" />
       </AttributeBlock>
-      <contains id="1291" />
+      <contains id="1290" />
     </GameObject>
     <GameObject id="1250" name="Bones F">
       <AttributeBlock blockName="this">
@@ -35835,7 +35835,7 @@
         <attribute super_realm="" />
         <attribute chit="" />
       </AttributeBlock>
-      <contains id="1285" />
+      <contains id="1284" />
     </GameObject>
     <GameObject id="1275" name="Smoke M">
       <AttributeBlock blockName="this">
@@ -35869,7 +35869,7 @@
         <attribute super_realm="" />
         <attribute chit="" />
       </AttributeBlock>
-      <contains id="1284" />
+      <contains id="1285" />
     </GameObject>
     <GameObject id="1279" name="Stink M">
       <AttributeBlock blockName="this">
