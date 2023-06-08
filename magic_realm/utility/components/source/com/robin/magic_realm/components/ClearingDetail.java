@@ -276,12 +276,12 @@ public class ClearingDetail {
 		return sb.toString();
 	}
 	private int distanceToWaterSource(Collection<GameObject> waterSources) {
-		int distance = 0;
+		int distance = -1;
 		ArrayList<ClearingDetail> touchedWaterClearings = new ArrayList<>();
 		
 		touchedWaterClearings.add(this);
 		if (this.parent.getGameObject().hasThisAttribute("water_source_clearing") && this.parent.getGameObject().getThisAttribute("water_source_clearing").matches(this.getNumString())) {
-			return distance;
+			return 0;
 		}
 		
 		boolean foundNewClearings = true;
@@ -323,7 +323,7 @@ public class ClearingDetail {
 			}
 		}
 		
-		return -1;
+		return distance;
 	}
 	/**
 	 * Returns a PathDetail that connects two clearings, or null if none.
