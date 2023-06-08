@@ -813,7 +813,8 @@ public class SetupCardUtility {
 			if (chits.size()!=1) continue;
 			GameObject chit = chits.get(0);
 			TileLocation chitLocation = RealmComponent.getRealmComponent(chit).getCurrentLocation();
-			if (dwelling.getHeldBy()!=chit && chitLocation!=null && chitLocation.tile!=null && !chitLocation.tile.getGameObject().equals(dwelling.getHeldBy())) {
+			TileLocation dwellingLocation = RealmComponent.getRealmComponent(dwelling).getCurrentLocation();
+			if (dwelling.getHeldBy()!=chit && chitLocation!=null && chitLocation.tile!=null && !chitLocation.tile.getGameObject().equals(dwelling.getHeldBy()) && dwellingLocation.tile!=null && chitLocation.tile!=dwellingLocation.tile) {
 				ClearingDetail clearing5 = chitLocation.tile.getClearing(5);
 				if (clearing5!=null && clearing5.isConnectsToBorderland()) {
 					clearing5.add(dwelling, null);
