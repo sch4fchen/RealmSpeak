@@ -9,6 +9,7 @@ import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.*;
 
 public class SpellTargetingClearing extends SpellTargetingSpecial {
@@ -47,7 +48,7 @@ public class SpellTargetingClearing extends SpellTargetingSpecial {
 		if (clearingTargetType.contains("demons")) {
 			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
 			for (RealmComponent rc : allBattleParticipants) {
-				if (rc.getGameObject().hasThisAttribute("demon") && !gameObjects.contains(rc.getGameObject())) {
+				if (rc.getGameObject().hasThisAttribute(Constants.DEMON) && !gameObjects.contains(rc.getGameObject())) {
 					gameObjects.add(rc.getGameObject());
 				}
 			}
@@ -55,7 +56,7 @@ public class SpellTargetingClearing extends SpellTargetingSpecial {
 		if (clearingTargetType.contains("ghosts")) {
 			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
 			for (RealmComponent rc : allBattleParticipants) {
-				if (rc.getGameObject().hasThisAttribute("ghost") && !gameObjects.contains(rc.getGameObject())) {
+				if (rc.getGameObject().hasThisAttribute(Constants.GHOST) && !gameObjects.contains(rc.getGameObject())) {
 					gameObjects.add(rc.getGameObject());
 				}
 			}
@@ -63,7 +64,7 @@ public class SpellTargetingClearing extends SpellTargetingSpecial {
 		if (clearingTargetType.contains("skeletons")) {
 			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
 			for (RealmComponent rc : allBattleParticipants) {
-				if (rc.getGameObject().hasThisAttribute("skeleton") && !gameObjects.contains(rc.getGameObject())) {
+				if (rc.getGameObject().hasThisAttribute(Constants.SKELETON) && !gameObjects.contains(rc.getGameObject())) {
 					gameObjects.add(rc.getGameObject());
 				}
 			}
@@ -71,7 +72,7 @@ public class SpellTargetingClearing extends SpellTargetingSpecial {
 		if (clearingTargetType.contains("wraiths")) {
 			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
 			for (RealmComponent rc : allBattleParticipants) {
-				if (rc.getGameObject().hasThisAttribute("wraith") && !gameObjects.contains(rc.getGameObject())) {
+				if (rc.getGameObject().hasThisAttribute(Constants.WRAITH) && !gameObjects.contains(rc.getGameObject())) {
 					gameObjects.add(rc.getGameObject());
 				}
 			}
@@ -79,7 +80,7 @@ public class SpellTargetingClearing extends SpellTargetingSpecial {
 		if (clearingTargetType.contains("ghouls")) {
 			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
 			for (RealmComponent rc : allBattleParticipants) {
-				if (rc.getGameObject().hasThisAttribute("ghoul") && !gameObjects.contains(rc.getGameObject())) {
+				if (rc.getGameObject().hasThisAttribute(Constants.GHOUL) && !gameObjects.contains(rc.getGameObject())) {
 					gameObjects.add(rc.getGameObject());
 				}
 			}
@@ -87,7 +88,7 @@ public class SpellTargetingClearing extends SpellTargetingSpecial {
 		if (clearingTargetType.contains("undead")) {
 			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
 			for (RealmComponent rc : allBattleParticipants) {
-				if (rc.getGameObject().hasThisAttribute("undead") && !gameObjects.contains(rc.getGameObject())) {
+				if (rc.getGameObject().hasThisAttribute(Constants.UNDEAD) && !gameObjects.contains(rc.getGameObject())) {
 					gameObjects.add(rc.getGameObject());
 				}
 			}

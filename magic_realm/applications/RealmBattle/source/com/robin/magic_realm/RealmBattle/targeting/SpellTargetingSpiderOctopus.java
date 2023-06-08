@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class SpellTargetingSpiderOctopus extends SpellTargetingSingle {
@@ -19,7 +20,7 @@ public class SpellTargetingSpiderOctopus extends SpellTargetingSingle {
 		allDenizens.removeAll(allParticipantsSansDenizens);
 		for (RealmComponent rc : allDenizens) {
 			if (rc.isMonster() && !rc.isPlayerControlledLeader() && !rc.hasMagicProtection() && !rc.hasMagicColorImmunity(spell)) {
-				if (rc.getGameObject().hasThisAttribute("spider") || rc.getGameObject().hasThisAttribute("octopus")) {
+				if (rc.getGameObject().hasThisAttribute(Constants.SPIDER) || rc.getGameObject().hasThisAttribute(Constants.OCTOPUS)) {
 					gameObjects.add(rc.getGameObject());
 				}
 			}

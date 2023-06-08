@@ -7,6 +7,7 @@ import com.robin.magic_realm.RealmBattle.CombatFrame;
 import com.robin.magic_realm.RealmBattle.CombatSheet;
 import com.robin.magic_realm.components.MonsterChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class SpellTargetingHumanGroup extends SpellTargetingSingle {
@@ -24,10 +25,10 @@ public class SpellTargetingHumanGroup extends SpellTargetingSingle {
 			if (!rc.isCharacter() && !rc.hasMagicProtection() && !rc.hasMagicColorImmunity(spell) && (rc.getOwnerId()==null || rc.getOwnerId().equals(ownerId))) {
 				String groupName = null;
 				if (rc.isMonster() && !rc.isPlayerControlledLeader()) {
-					if (rc.getGameObject().hasThisAttribute("ogre")) {
+					if (rc.getGameObject().hasThisAttribute(Constants.OGRE)) {
 						groupName="Ogres";
 					}
-					if (rc.getGameObject().hasThisAttribute("giant")) {
+					if (rc.getGameObject().hasThisAttribute(Constants.GIANT)) {
 						groupName="Giants";
 					}
 				}

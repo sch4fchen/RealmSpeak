@@ -296,6 +296,13 @@ public class Constants {
 	public static final String SUMMON_COMPANION = "summon_companion";
 	public static final String MAGIC_FOOD = "magic_food";
 	
+	public static final String MAGIC_COLOR_BONUS = "magic_color_bonus";
+	public static final String MAGIC_COLOR_BONUS_ACTIVE = "magic_color_bonus_active";
+	public static final String MAGIC_COLOR_BONUS_ARMOR = "magic_color_bonus_armor";
+	public static final String MAGIC_COLOR_BONUS_LENGTH = "magic_color_bonus_length";
+	public static final String MAGIC_COLOR_BONUS_SHARPNESS = "magic_color_bonus_sharpness";
+	public static final String MAGIC_COLOR_BONUS_SPEED = "magic_color_bonus_speed";
+	
 	// Native ThisAttributes
 	public static final String HIDDEN = "hidden";
 	
@@ -305,6 +312,54 @@ public class Constants {
 	public static final String WEAPON_USE = "weapon_use";
 	public static final String WEAPON_USE_CHIT = "weapon_use_chit";
 	public static final String NATIVE_NAME = "native_name";
+	
+	public static final String SMALL = "small";
+	public static final String STEED_IN_CAVES_AND_WATER = "steed_in_caves_and_water";
+	public static final String TRANSMORPH_IMMUNITY = "transmorph_immunity";
+	public static final String TRANSMORPH_IMMUNITY_SELF = "transmorph_immunity_self";
+	public static final String MAGIC_IMMUNITY = "magic_immunity";
+	public static final String NO_CHANGE_TACTICS = "no_change_tactics";
+	public static final String KILLS_HORSE = "kills_horse";
+	public static final String DESTROYS_ARMOR = "destroys_armor";
+	public static final String CHANGE_TACTICS_AFTER_CASTING = "change_tactics_after_casting";
+	public static final String ATTACK_AFTER_CASTING = "attack_after_casting";
+	public static final String SPELL_TARGETS_SELF = "spell_targets_self";
+	public static final String FAST_CASTER = "fast_caster";
+	public static final String SPELL_DENIZEN = "spell_denizen";
+	public static final String SPELL_PRE_BATTLE = "spell_pre_battle";
+	
+	public static final String DRAGON = "dragon";
+	public static final String DRAKE = "drake";
+	public static final String WYRM = "wyrm";
+	public static final String DEMON = "demon";
+	public static final String DEVIL = "devil";
+	public static final String IMP = "imp";
+	public static final String ELEMENTAL = "elemental";
+	public static final String ANOMALY = "anomaly";
+	public static final String GOLEM = "golem";
+	public static final String ORC = "orc";
+	public static final String GOBLIN = "goblin";
+	public static final String OGRE = "ogre";
+	public static final String TROLL = "troll";
+	public static final String GIANT = "giant";
+	public static final String SPIDER = "spider";
+	public static final String OCTOPUS = "octopus";
+	public static final String SCORPION = "scorpion";
+	public static final String BAT = "bat";
+	public static final String WOLF = "wolf";
+	public static final String BEAST = "beast";
+	public static final String VAMPIRE = "vampire";
+	public static final String SUCCUBUS = "succubus";
+	public static final String GHOST = "ghost";
+	public static final String GHOUL = "ghoul";
+	public static final String ZOMBIE = "zombie";
+	public static final String SKELETON = "skeleton";
+	public static final String WRAITH = "wraith";
+	public static final String UNDEAD = "undead";
+	public static final String COLOSSUS = "colossus";
+	public static final String TITAN = "titan";	
+	public static final String MINOTAUR = "minotaur";
+	public static final String GARGOYLE = "gargoyle";
 	
 	// Other effects
 	public static final String BENEVOLENT = "benevolent"; // for spells
@@ -378,37 +433,11 @@ public class Constants {
 	public static final String REDUCED_VULNERABILITY = "red_vul";
 	public static final String INCREASE_SHARP = "inc_sharp";
 	public static final String LOCKPICK = "lockpick";
-	public static final String SMALL = "small";
 	public static final String MIST_LIKE = "mist_like";
 	public static final String REMOVE_CURSES = "remove_curses";
-	public static final String STEED_IN_CAVES_AND_WATER = "steed_in_caves_and_water";
-	public static final String TRANSMORPH_IMMUNITY = "transmorph_immunity";
-	public static final String TRANSMORPH_IMMUNITY_SELF = "transmorph_immunity_self";
-	public static final String BREAK_WHEN_TRANSMORPHED = "break_when_transmorphed";
-	public static final String MAGIC_IMMUNITY = "magic_immunity";
-	public static final String MAGIC_COLOR_BONUS = "magic_color_bonus";
-	public static final String MAGIC_COLOR_BONUS_ACTIVE = "magic_color_bonus_active";
-	public static final String MAGIC_COLOR_BONUS_ARMOR = "magic_color_bonus_armor";
-	public static final String MAGIC_COLOR_BONUS_LENGTH = "magic_color_bonus_length";
-	public static final String MAGIC_COLOR_BONUS_SHARPNESS = "magic_color_bonus_sharpness";
-	public static final String MAGIC_COLOR_BONUS_SPEED = "magic_color_bonus_speed";
-	public static final String NO_CHANGE_TACTICS = "no_change_tactics";
-	public static final String KILLS_HORSE = "kills_horse";
-	public static final String DESTROYS_ARMOR = "destroys_armor";
-	public static final String CHANGE_TACTICS_AFTER_CASTING = "change_tactics_after_casting";
-	public static final String ATTACK_AFTER_CASTING = "attack_after_casting";
-	public static final String SPELL_TARGETS_SELF = "spell_targets_self";
-	public static final String FAST_CASTER = "fast_caster";
-	public static final String SPELL_DENIZEN = "spell_denizen";
-	public static final String NO_COMBAT = "no_combat";
-	public static final String NO_SUMMONING = "no_summoning";
-	public static final String SPELL_PRE_BATTLE = "spell_pre_battle";
-	public static final String NOT_DEACTIVATABLE = "not_deactivatable";
-	public static final String NOT_TRADABLE = "not_tradable";
 	
 	// New Spells
 	public static final String SUMMONING = "summoning";
-	public static final String UNDEAD = "undead";
 	public static final String NO_WEIGHT = "no_weight";
 	public static final String HEAL_CHIT = "heal_chit";
 	public static final String SLOWED = "slowed";
@@ -446,6 +475,7 @@ public class Constants {
 	public static final String LIGHTED = "lighted";
 	public static final String UNEFFECT_AT_MIDNIGHT = "uneffect_at_midnight";
 	public static final String ALTERNATIVE_SPELL_EFFECT = "spell_effect";
+	public static final String BREAK_WHEN_TRANSMORPHED = "break_when_transmorphed";
 	public static final String FREEZING = "freezing";
 	public static final String FREEZED = "freezed";
 	public static final String HOLY_SHIELD = "holy_shield";
@@ -561,6 +591,8 @@ public class Constants {
 	public static final String ADV_FLYING_ACTIVITIES = "FlyingActivities";
 	
 	// Optional Rules
+	public static final String NO_COMBAT = "no_combat";
+	public static final String NO_SUMMONING = "no_summoning";
 	public static final String OPT_STUMBLE = "Stumble";
 	public static final String OPT_FUMBLE = "Fumble";
 	public static final String OPT_WEATHER = "Weather";

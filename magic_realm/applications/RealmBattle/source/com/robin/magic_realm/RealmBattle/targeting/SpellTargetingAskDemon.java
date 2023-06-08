@@ -32,7 +32,7 @@ public class SpellTargetingAskDemon extends SpellTargetingSpecial {
 		allDenizens.removeAll(allParticipantsSansDenizens);
 		for (RealmComponent rc : allDenizens) {
 			if (rc.isMonster() && !rc.hasMagicProtection() && !rc.hasMagicColorImmunity(spell)) {
-				if (rc.getGameObject().hasThisAttribute("demon") && !rc.getGameObject().hasThisAttribute("imp")) {
+				if ((rc.getGameObject().hasThisAttribute(Constants.DEMON) || rc.getGameObject().hasThisAttribute(Constants.DEVIL)) && !rc.getGameObject().hasThisAttribute(Constants.IMP)) {
 					gameObjects.add(rc.getGameObject());
 				}
 			}

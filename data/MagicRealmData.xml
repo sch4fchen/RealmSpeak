@@ -18679,6 +18679,7 @@
         <attribute icon_type_alt="minotaurKing" />
         <attribute icon_folder_alt="wesnoth/units" />
         <attribute icon_size_alt="0.8" />
+        <attribute minotaur="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -18716,6 +18717,7 @@
         <attribute icon_type_alt="minotaurKing" />
         <attribute icon_folder_alt="wesnoth/units" />
         <attribute icon_size_alt="0.8" />
+        <attribute minotaur="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -24419,6 +24421,7 @@
         <attribute icon_type_alt="minotaurKing" />
         <attribute icon_folder_alt="wesnoth/units" />
         <attribute icon_size_alt="0.8" />
+        <attribute minotaur="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -37173,6 +37176,7 @@
         <attribute denizen="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="5" />
+        <attribute gargoyle="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -37204,6 +37208,7 @@
         <attribute denizen="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="5" />
+        <attribute gargoyle="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -37235,6 +37240,7 @@
         <attribute denizen="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="5" />
+        <attribute gargoyle="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -37266,6 +37272,7 @@
         <attribute denizen="" />
         <attribute icon_size="1" />
         <attribute icon_y_offset="5" />
+        <attribute gargoyle="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -53012,8 +53019,8 @@
         <attribute chit_color="tan" />
       </AttributeBlock>
       <AttributeBlock blockName="gallop">
-        <attribute move_speed="L" />
-        <attribute strength="4" />
+        <attribute move_speed="4" />
+        <attribute strength="L" />
         <attribute chit_color="tan" />
       </AttributeBlock>
     </GameObject>
@@ -57121,8 +57128,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="V" />
         <attribute duration="instant" />
-        <attribute target="uncontrolled monster" />
-        <attribute targeted_monsters="demon, devil" />
+        <attribute target="ask demon" />
         <attribute text="Ask question with yes/no or number answer" />
         <attribute magic_color="black" />
         <attribute askdemon="" />

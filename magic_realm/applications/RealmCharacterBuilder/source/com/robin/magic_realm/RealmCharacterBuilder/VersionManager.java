@@ -58,6 +58,7 @@ public class VersionManager {
 					demons.add("Demon");
 					demons.add("Flying Demon");
 					demons.add("Imp");
+					demons.add("Devil");
 					character.setAttributeList(levelKey,"monster_immunity",demons);
 				}
 				

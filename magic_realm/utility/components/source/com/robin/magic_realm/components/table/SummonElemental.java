@@ -127,7 +127,7 @@ public class SummonElemental extends MonsterTable {
 				elemental.setThisAttribute(Constants.ICON_Y_OFFSET+Constants.ALTERNATIVE,"9");
 				break;
 		}
-		elemental.setThisAttribute("elemental");
+		elemental.setThisAttribute(Constants.ELEMENTAL);
 		return elemental;
 	}
 	private void summonElemental(CharacterWrapper character, ElementalType type) {

@@ -1117,10 +1117,14 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		ArrayList<String> ignoreTest = new ArrayList<>(Arrays.asList(ignorVars));
 		
 		// Earmark some attributes for the "this" block
-		String[] thisVars = {"vulnerability",Constants.ICON_FOLDER,Constants.ICON_TYPE,"flying","walk_woods","armored","name",Constants.MIST_LIKE,Constants.SMALL,"animal",
+		String[] thisVars = {"vulnerability",Constants.ICON_FOLDER,Constants.ICON_TYPE,Constants.FLYING,Constants.WALK_WOODS,Constants.ARMORED,"name",Constants.MIST_LIKE,Constants.SMALL,"animal",
 				Constants.ICON_FOLDER+Constants.ALTERNATIVE,Constants.ICON_TYPE+Constants.ALTERNATIVE,Constants.ICON_FOLDER+Constants.ICON_CHARACTER,Constants.ICON_TYPE+Constants.ICON_CHARACTER,
 				Constants.ICON_SIZE,Constants.ICON_FOLDER+Constants.ALTERNATIVE,Constants.ICON_Y_OFFSET,Constants.ICON_Y_OFFSET+Constants.ALTERNATIVE,
-				"dragon","demon",
+				Constants.DRAGON,Constants.DRAKE,Constants.WYRM,Constants.DEMON,Constants.DEVIL,Constants.IMP,Constants.ELEMENTAL,Constants.ANOMALY,Constants.GOLEM,
+				Constants.ORC,Constants.GOBLIN,Constants.OGRE,Constants.TROLL,Constants.GIANT,Constants.SPIDER,Constants.OCTOPUS,Constants.SCORPION,Constants.BAT,Constants.WOLF,Constants.BEAST,
+				Constants.VAMPIRE,Constants.SUCCUBUS,Constants.GHOST,Constants.GHOUL,Constants.ZOMBIE,Constants.SKELETON,Constants.WRAITH,Constants.UNDEAD,Constants.COLOSSUS,Constants.TITAN,Constants.MINOTAUR,Constants.GARGOYLE,
+				Constants.TRANSMORPH_IMMUNITY,Constants.TRANSMORPH_IMMUNITY_SELF,Constants.MAGIC_IMMUNITY,
+				Constants.NO_CHANGE_TACTICS,Constants.KILLS_HORSE,Constants.DESTROYS_ARMOR,Constants.CHANGE_TACTICS_AFTER_CASTING,Constants.ATTACK_AFTER_CASTING,Constants.SPELL_TARGETS_SELF,Constants.FAST_CASTER,Constants.SPELL_PRE_BATTLE,
 			};
 		ArrayList<String> thisTest = new ArrayList<>(Arrays.asList(thisVars));
 		Hashtable<String,Object> hash = source.getAttributeBlock(blockName);

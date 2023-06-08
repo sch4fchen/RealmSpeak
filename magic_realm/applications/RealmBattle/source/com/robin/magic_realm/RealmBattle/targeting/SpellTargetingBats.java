@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class SpellTargetingBats extends SpellTargetingAll {
@@ -16,7 +17,7 @@ public class SpellTargetingBats extends SpellTargetingAll {
 		ArrayList<RealmComponent> allBattleParticipants = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true);
 		for (RealmComponent rc : allBattleParticipants) {
 			if (rc.isMonster() && !rc.isPlayerControlledLeader() && !rc.hasMagicProtection() && !rc.hasMagicColorImmunity(spell)) {
-				if (rc.getGameObject().hasThisAttribute("bat")) {
+				if (rc.getGameObject().hasThisAttribute(Constants.BAT)) {
 					gameObjects.add(rc.getGameObject());
 				}
 			}

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class SpellTargetingDragon extends SpellTargetingSingle {
@@ -19,7 +20,7 @@ public class SpellTargetingDragon extends SpellTargetingSingle {
 		allDenizens.removeAll(allParticipantsSansDenizens);
 		for (RealmComponent rc : allDenizens) {
 			if (rc.isMonster() && !rc.isPlayerControlledLeader() && !rc.hasMagicProtection() && !rc.hasMagicColorImmunity(spell)) {
-				if (rc.getGameObject().hasThisAttribute("dragon") || rc.getGameObject().hasThisAttribute("drake") || rc.getGameObject().hasThisAttribute("wyrm")) {
+				if (rc.getGameObject().hasThisAttribute(Constants.DRAGON) || rc.getGameObject().hasThisAttribute(Constants.DRAKE) || rc.getGameObject().hasThisAttribute(Constants.WYRM)) {
 					gameObjects.add(rc.getGameObject());
 				}
 			}

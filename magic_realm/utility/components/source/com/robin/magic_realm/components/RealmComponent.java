@@ -1135,6 +1135,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 			immunities.add("Imp");
 			immunities.add("Winged Demon");
 			immunities.add("Demon");
+			immunities.add("Devil");
 		}
 		return immunities;
 	}
