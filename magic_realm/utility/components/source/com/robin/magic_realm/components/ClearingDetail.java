@@ -276,12 +276,12 @@ public class ClearingDetail {
 		return sb.toString();
 	}
 	private int distanceToWaterSource(Collection<GameObject> waterSources) {
-		int distance = -1;
+		int distance = 0;
 		ArrayList<ClearingDetail> touchedWaterClearings = new ArrayList<>();
 		
 		touchedWaterClearings.add(this);
 		if (this.parent.getGameObject().hasThisAttribute("water_source_clearing") && this.parent.getGameObject().getThisAttribute("water_source_clearing").matches(this.getNumString())) {
-			return 0;
+			return distance;
 		}
 		
 		boolean foundNewClearings = true;
@@ -295,7 +295,7 @@ public class ClearingDetail {
 			waterClearingsToCheck.addAll(newWaterClearings);
 			newWaterClearings.clear();
 			for (ClearingDetail clearing : waterClearingsToCheck) {
-				Collection<PathDetail> c = clearing.getConnectedPaths();
+				Collection<PathDetail> c = clearing.getConnectedPathsWithDirection();
 				if (c!=null) {
 					for (PathDetail path : c) {
 						if (!path.connectsToAnEdge()) {
@@ -341,6 +341,19 @@ public class ClearingDetail {
 			}
 		}
 		return null;
+	}
+	private ArrayList<PathDetail> getConnectedPathsWithDirection() {
+		ArrayList<PathDetail> paths = parent.findConnections(this);
+		if (paths==null) return null;
+		ArrayList<PathDetail> pathsDirected = new ArrayList<>(); 
+		for (PathDetail path : paths) {
+			if (path.getFrom().equals(this)) pathsDirected.add(path);
+			else {
+				PathDetail newPath = new PathDetail(path.parent,path.num,path.to,path.from,path.c2,path.c1,path.arc,path.type,path.tileSideName);
+				pathsDirected.add(newPath);
+			}
+		}
+		return pathsDirected;
 	}
 	public ArrayList<PathDetail> getConnectedPaths() {
 		return parent.findConnections(this);

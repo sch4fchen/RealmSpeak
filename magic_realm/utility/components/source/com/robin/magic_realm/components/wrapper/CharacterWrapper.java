@@ -2010,7 +2010,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		PhaseManager pm = getPhaseManager(true);
 		updatePhaseManagerWithCurrentActions(pm);
 		String testMove = "M";
-		int cost = clearing.moveCost(this,getCurrentLocation());
+		int cost = clearing.moveCost(this,getPlannedLocation());
 		if (cost>1) {
 			for (int i=1;i<cost;i++) {
 				testMove = testMove+",M";

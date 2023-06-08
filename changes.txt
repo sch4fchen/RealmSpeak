@@ -69,6 +69,7 @@ SUPER REALM:
 # Fix missile attacks for anomalies
 # T monsters kill horse and destroy armor with RED attack
 # Fix targeting anomalies depending on chosen chit color (or infinite color source)
+# Fix movement costs for river
 NEW FEATURES:
 # Add some abilities of travelers to character editor (and minor characters in quest editor)
 # Option to choose color chit instead of infinite source when casting a spell
