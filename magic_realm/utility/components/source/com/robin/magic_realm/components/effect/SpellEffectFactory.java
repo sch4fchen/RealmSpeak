@@ -142,6 +142,7 @@ public class SpellEffectFactory {
 			case "deal with orcs and goblins": return new ISpellEffect[]{new PacifyEffect(0)};
 			case "divine protection": return new ISpellEffect[]{new ApplyNamedEffect(Constants.STRENGTHENED_VULNERABILITY)};
 			case "free the soul": return new ISpellEffect[]{new FreeTheSoulEffect()};
+			case "frozen water": return new ISpellEffect[]{new FrozenWaterEffect()};
 			case "guide beast": return new ISpellEffect[]{new ControlEffect()};
 			case "holy shield": return new ISpellEffect[]{new PhaseChitEffect()};
 			case "horse whisper": return new ISpellEffect[]{new ApplyNamedEffect(Constants.HORSE_WHISPER),new TurnLightSideUpEffect()};

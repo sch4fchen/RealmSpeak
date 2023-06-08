@@ -59046,6 +59046,20 @@
         <attribute learnable="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2221" name="Frozen Water">
+      <AttributeBlock blockName="this">
+        <attribute spell="IV" />
+        <attribute duration="day" />
+        <attribute target="tile" />
+        <attribute text="All water clearings in target hey and each adjacent hex become wood clearings." />
+        <attribute magic_color="purple" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+        <attribute target_clearings="river" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

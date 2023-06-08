@@ -153,7 +153,7 @@ public class ClearingDetail {
 		return type.equals("water");
 	}
 	public boolean isFrozenWater() {
-		return type.equals("frozen_water");
+		return type.equals("frozen_water") || parent.getGameObject().hasThisAttribute(Constants.FROZEN_WATER);
 	}
 	public boolean isLighted() {
 		if (!parent.getGameObject().hasThisAttribute(Constants.LIGHTED)) return false;

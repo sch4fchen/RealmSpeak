@@ -6,6 +6,7 @@ import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
 import com.robin.magic_realm.components.wrapper.GameWrapper;
@@ -36,6 +37,10 @@ public class SpellEffectContext {
 	
 	public ClearingDetail getClearingTarget(){
 		return Spell.getTargetAsClearing(Target);
+	}
+	
+	public TileComponent getTileTarget(){
+		return new TileComponent(Target.getGameObject());
 	}
 	
 	public CharacterWrapper getCharacterCaster(){
