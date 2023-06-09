@@ -2553,7 +2553,7 @@ public class CombatFrame extends JFrame {
 			}
 		}
 		
-		if (spell!=null && !charCombat.getPlayedSpell()) {
+		if (spell!=null && !charCombat.getPlayedSpell() && (battleMage || (!charCombat.getPlayedAttack() && !charCombat.getPlayedBonusParry()))) {
 			GameObject incantationObject = spell.getIncantationObject();
 			if (incantationObject != null) {
 				CombatWrapper.clearRoundCombatInfo(spell.getIncantationObject());
@@ -2585,7 +2585,7 @@ public class CombatFrame extends JFrame {
 			}
 		}
 		
-		if (!charCombat.getPlayedAttack() && !charCombat.getPlayedBonusParry() && (!charCombat.getPlayedSpell() || battleMage)) {
+		if (!charCombat.getPlayedAttack() && !charCombat.getPlayedBonusParry() && !charCombat.getPlayedSpell()) {
 			// First, clear out any chits already in play for attack
 			for (CharacterActionChitComponent chit : activeCharacter.getActiveFightChits()) {
 				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
@@ -2611,7 +2611,7 @@ public class CombatFrame extends JFrame {
 			if(combat.getPlacedAsFightOrParryOrParryShield()) continue;
 					
 			if (weapons==null || weapons.isEmpty()) {
-				if (!charCombat.getPlayedAttack()) {
+				if (!charCombat.getPlayedAttack() && !charCombat.getPlayedBonusParry() && (!charCombat.getPlayedSpell() || battleMage)) {
 					// Dagger
 					String key = "N"+(keyN++);
 					chooser.addOption(key,"");
@@ -2745,7 +2745,7 @@ public class CombatFrame extends JFrame {
 		
 		Collection<RealmComponent> fightOptions = getAvailableFightOptions(box);
 		ArrayList<WeaponChitComponent> weapons = activeCharacter.getActiveWeapons();		
-		if (!charCombat.getPlayedAttack() && !charCombat.getPlayedBonusParry() && !charCombat.getPlayedSpell() ) {
+		if (!charCombat.getPlayedAttack() && !charCombat.getPlayedBonusParry() && !charCombat.getPlayedSpell()) {
 			// First, clear out any chits already in play for attack
 			for (CharacterActionChitComponent chit : activeCharacter.getActiveFightChits()) {
 				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
