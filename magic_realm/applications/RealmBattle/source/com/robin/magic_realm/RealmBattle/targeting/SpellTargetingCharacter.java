@@ -1,12 +1,20 @@
 package com.robin.magic_realm.RealmBattle.targeting;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
+import javax.swing.ListSelectionModel;
+
+import com.robin.general.swing.ListChooser;
 import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.attribute.ColorMagic;
 import com.robin.magic_realm.components.attribute.Strength;
+import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class SpellTargetingCharacter extends SpellTargetingSingle {
@@ -26,6 +34,35 @@ public class SpellTargetingCharacter extends SpellTargetingSingle {
 				gameObjects.add(rc.getGameObject());
 			}
 		}
+		return true;
+	}
+	
+	public boolean assign(HostPrefWrapper hostPrefs, CharacterWrapper activeCharacter) {
+		boolean assign = super.assign(hostPrefs,activeCharacter);
+		
+		if (!spell.getGameObject().hasThisAttribute(Constants.RESERVE)) return assign;
+		
+		TileLocation loc = activeCharacter.getCurrentLocation();
+		if (loc == null || loc.clearing == null || loc.clearing.getClearingColorMagic().isEmpty()) {
+			spell.expireSpell();
+			return false;
+		}
+		
+		ArrayList<ColorMagic> colors = loc.clearing.getClearingColorMagic();
+		ColorMagic selectedColor = null;
+		ListChooser chooser = new ListChooser(combatFrame, "Select magic color", colors);
+		chooser.setDoubleClickEnabled(true);
+		chooser.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		chooser.setLocationRelativeTo(combatFrame);
+		chooser.setVisible(true);
+		Vector<ColorMagic> v = chooser.getSelectedItems();
+		if (v == null || v.isEmpty()) {
+			spell.expireSpell();
+			return false;
+		}
+		
+		selectedColor = v.get(0);
+		spell.setExtraIdentifier(selectedColor.getColorName());		
 		return true;
 	}
 }

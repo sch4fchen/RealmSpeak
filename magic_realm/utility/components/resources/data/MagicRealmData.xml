@@ -59060,6 +59060,27 @@
         <attribute target_clearings="river" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2222" name="Reserve">
+      <AttributeBlock blockName="this">
+        <attribute spell="IV" />
+        <attribute duration="phase" />
+        <attribute target="character" />
+        <attribute text="Spell chit is enchanted into same color as the source in the clearing." />
+        <attribute magic_color="purple" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+        <attribute reserve="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="phase_chit">
+        <attribute phase_chit="" />
+        <attribute text="Reserve" />
+      </AttributeBlock>
+      <AttributeBlock blockName="phase_chit_effects">
+        <attribute reserve="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

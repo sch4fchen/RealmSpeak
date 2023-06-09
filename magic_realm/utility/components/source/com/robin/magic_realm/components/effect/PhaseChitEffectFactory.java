@@ -9,6 +9,7 @@ public class PhaseChitEffectFactory {
 			case "magic_protection": return new ISpellEffect[]{new ApplyNamedEffect(Constants.MAGIC_PROTECTION)};
 			case "blinding_light": return new ISpellEffect[]{new ApplyNamedEffect(Constants.BLINDING_LIGHT)};
 			case "holy_shield": return new ISpellEffect[]{new ApplyNamedEffect(Constants.HOLY_SHIELD)};
+			case "reserve": return new ISpellEffect[]{new ApplyNamedEffect(Constants.RESERVE)};
 			
 			default: return null;
 		}

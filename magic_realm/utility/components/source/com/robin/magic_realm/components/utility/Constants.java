@@ -493,6 +493,7 @@ public class Constants {
 	public static final String BLINDING_LIGHT = "blinding_light";
 	public static final String FROZEN_WATER = "frozen_water";
 	public static final String TARGET_CLEARINGS = "target_clearings";
+	public static final String RESERVE = "reserve";
 	
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";

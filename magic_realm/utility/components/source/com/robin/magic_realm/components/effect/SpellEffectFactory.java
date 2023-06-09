@@ -150,6 +150,7 @@ public class SpellEffectFactory {
 			case "migration": return new ISpellEffect[]{new MigrationEffect()};
 			case "negative aura": return new ISpellEffect[]{new ApplyNamedEffect(Constants.NEGATIVE_AURA)};
 			case "reinvigorate": return new ISpellEffect[]{new ExtraActionEffect("R")};
+			case "reserve": return new ISpellEffect[]{new PhaseChitEffect()};
 			case "summon demon": return new ISpellEffect[]{new SummonEffect(SpellUtility.SummonType.demon.toString())};
 			case "thorns": return new ISpellEffect[]{new ThornsEffect()};
 			case "tracker's sense": return new ISpellEffect[]{new ApplyNamedEffect(Constants.TRACKERS_SENSE)};
