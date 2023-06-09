@@ -150,7 +150,7 @@ public class ClearingDetail {
 		return type.equals("caves");
 	}
 	public boolean isWater() {
-		return type.equals("water");
+		return type.equals("water") && !parent.getGameObject().hasThisAttribute(Constants.FROZEN_WATER);
 	}
 	public boolean isFrozenWater() {
 		return type.equals("frozen_water") || parent.getGameObject().hasThisAttribute(Constants.FROZEN_WATER);
