@@ -84,7 +84,7 @@ public class ColorMagic implements Comparable {
 			case WHITE:			return infinite?ImageCache.getIcon("colormagic/white"):ImageCache.getIcon("colormagic/whitechit");
 			case GRAY:			return infinite?ImageCache.getIcon("colormagic/gray"):ImageCache.getIcon("colormagic/graychit");
 			case GOLD:			return infinite?ImageCache.getIcon("colormagic/gold"):ImageCache.getIcon("colormagic/goldchit");
-			case PURPLE:			return infinite?ImageCache.getIcon("colormagic/purple"):ImageCache.getIcon("colormagic/purplechit");
+			case PURPLE:		return infinite?ImageCache.getIcon("colormagic/purple"):ImageCache.getIcon("colormagic/purplechit");
 			case BLACK:			return infinite?ImageCache.getIcon("colormagic/black"):ImageCache.getIcon("colormagic/blackchit");
 		}
 		return null; // this shouldn't happen
@@ -134,5 +134,20 @@ public class ColorMagic implements Comparable {
 	
 	public boolean isPrismColor() {
 		return color == GRAY || color == GOLD || color == PURPLE;
+	}
+	
+	public static String getColorNumber(int number) {
+		switch(number) {
+			case 1: return "I";
+			case 2: return "II";
+			case 3: return "III";
+			case 4: return "IV";
+			case 5: return "V";
+			case 6: return "VI";
+			case 7: return "VII";
+			case 8: return "VIII";
+			default:
+				return null;
+		}
 	}
 }
