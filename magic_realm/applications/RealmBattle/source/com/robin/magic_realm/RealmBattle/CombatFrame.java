@@ -2553,7 +2553,7 @@ public class CombatFrame extends JFrame {
 			}
 		}
 		
-		if (spell!=null && !charCombat.getPlayedSpell() && (battleMage || (!charCombat.getPlayedAttack() && !charCombat.getPlayedBonusParry()))) {
+		if (spell!=null && !charCombat.getPlayedSpell() && (battleMage || !charCombat.getPlayedAttack())) {
 			GameObject incantationObject = spell.getIncantationObject();
 			if (incantationObject != null) {
 				CombatWrapper.clearRoundCombatInfo(spell.getIncantationObject());
@@ -2566,12 +2566,13 @@ public class CombatFrame extends JFrame {
 				combat.setCombatBox(box);
 				charCombat.setPlayedSpell(true);
 				updateSelection();
-			}
-			else {
-				if (!battleMage) JOptionPane.showMessageDialog(this,"There are no fight options available to you.","Cannot Attack",JOptionPane.ERROR_MESSAGE);
+				return;
 			}
 			
-			if (!battleMage) return;
+			if (!battleMage) {
+				JOptionPane.showMessageDialog(this,"There are no fight options available to you.","Cannot Attack",JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 		}
 		
 		Collection<RealmComponent> fightOptions = getAvailableFightOptions(box);
@@ -2606,46 +2607,46 @@ public class CombatFrame extends JFrame {
 		
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select Attack:",true);
 		int keyN = 0;
-		for (RealmComponent chit : fightOptions) {
-			CombatWrapper combat = new CombatWrapper(chit.getGameObject());
-			if(combat.getPlacedAsFightOrParryOrParryShield()) continue;
-					
-			if (weapons==null || weapons.isEmpty()) {
-				if (!charCombat.getPlayedAttack() && !charCombat.getPlayedBonusParry() && (!charCombat.getPlayedSpell() || battleMage)) {
+		if (!charCombat.getPlayedSpell() || battleMage) {
+			for (RealmComponent chit : fightOptions) {
+				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
+				if(combat.getPlacedAsFightOrParryOrParryShield()) continue;
+						
+				if (weapons==null || weapons.isEmpty()) {
 					// Dagger
 					String key = "N"+(keyN++);
 					chooser.addOption(key,"");
 					chooser.addRealmComponentToOption(key,chit);
 				}
-			}
-			else {
-				for (WeaponChitComponent weapon : weapons) {
-					if (CombatWrapper.hasCombatInfo(weapon.getGameObject())) continue;
+				else {
+					for (WeaponChitComponent weapon : weapons) {
+						if (CombatWrapper.hasCombatInfo(weapon.getGameObject())) continue;
+						
+						String key = "N"+(keyN++);
+						chooser.addOption(key,"");
+						chooser.addRealmComponentToOption(key,chit);
+						chooser.addRealmComponentToOption(key,weapon);
+						if (weapon.isThrowable() && (hostPrefs.hasPref(Constants.OPT_THROWING_WEAPONS) || activeCharacter.affectedByKey(Constants.THROWING_WEAPONS))) {
+							key = "N"+(keyN++);
+							chooser.addOption(key,THROWING);
+							chooser.addRealmComponentToOption(key,chit);
+							chooser.addRealmComponentToOption(key,weapon);
+						}
+					}
+				}
+				if (weaponCard!=null) {
+					if (CombatWrapper.hasCombatInfo(weaponCard.getGameObject())) continue;
 					
 					String key = "N"+(keyN++);
 					chooser.addOption(key,"");
 					chooser.addRealmComponentToOption(key,chit);
-					chooser.addRealmComponentToOption(key,weapon);
-					if (weapon.isThrowable() && (hostPrefs.hasPref(Constants.OPT_THROWING_WEAPONS) || activeCharacter.affectedByKey(Constants.THROWING_WEAPONS))) {
+					chooser.addRealmComponentToOption(key,weaponCard);
+					if (weaponCard.getGameObject().hasThisAttribute(Constants.THROWABLE) && (hostPrefs.hasPref(Constants.OPT_THROWING_WEAPONS) || activeCharacter.affectedByKey(Constants.THROWING_WEAPONS))) {
 						key = "N"+(keyN++);
 						chooser.addOption(key,THROWING);
 						chooser.addRealmComponentToOption(key,chit);
-						chooser.addRealmComponentToOption(key,weapon);
+						chooser.addRealmComponentToOption(key,weaponCard);
 					}
-				}
-			}
-			if (weaponCard!=null) {
-				if (CombatWrapper.hasCombatInfo(weaponCard.getGameObject())) continue;
-				
-				String key = "N"+(keyN++);
-				chooser.addOption(key,"");
-				chooser.addRealmComponentToOption(key,chit);
-				chooser.addRealmComponentToOption(key,weaponCard);
-				if (weaponCard.getGameObject().hasThisAttribute(Constants.THROWABLE) && (hostPrefs.hasPref(Constants.OPT_THROWING_WEAPONS) || activeCharacter.affectedByKey(Constants.THROWING_WEAPONS))) {
-					key = "N"+(keyN++);
-					chooser.addOption(key,THROWING);
-					chooser.addRealmComponentToOption(key,chit);
-					chooser.addRealmComponentToOption(key,weaponCard);
 				}
 			}
 		}
