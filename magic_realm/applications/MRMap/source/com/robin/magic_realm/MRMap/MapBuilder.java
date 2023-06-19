@@ -8,6 +8,7 @@ import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmLoader;
 import com.robin.magic_realm.components.utility.RealmObjectMaster;
+import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 import com.robin.magic_realm.map.Tile;
 
 public class MapBuilder {
@@ -48,6 +49,8 @@ public class MapBuilder {
 			reporter.setProgress(1,tiles.size());
 		}
 		
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
+		
 		// Cycle until the mapGrid has all the tiles
 		while(mapGrid.size()<tiles.size()) {
 			if (reporter!=null) {
@@ -73,6 +76,10 @@ public class MapBuilder {
 							// Test the tile at pos, with rotation rot
 							if (Tile.isMappingPossibility(mapGrid,tile,pos,rot,anchor.getGameObject().getName())) {
 								tileResults.add(new TileMappingPossibility(tile,pos,rot));
+								if (hostPrefs.hasPref(Constants.MAP_BUILDING_INCREASED_PRIO_TILE_PLACEMENT) && Tile.isMappingNextToPrioritizedTile(mapGrid,tile,pos,rot)) {
+									tileResults.add(new TileMappingPossibility(tile,pos,rot));
+									tileResults.add(new TileMappingPossibility(tile,pos,rot));
+								}
 							}
 						}
 					}

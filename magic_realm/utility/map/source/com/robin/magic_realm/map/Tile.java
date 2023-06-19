@@ -361,6 +361,18 @@ public class Tile {
 		return !joinError;
 	}
 	
+	public static boolean isMappingNextToPrioritizedTile(Hashtable mapGrid,Tile tile,Point pos,int rot) {
+		tile.setMapPosition(pos);
+		tile.setRotation(rot);
+		for (int edge=0;edge<6;edge++) {
+			Tile adjTile = (Tile)mapGrid.get(Tile.getAdjacentPosition(pos,edge));
+			if (adjTile!=null && tile.getGameObject().hasThisAttribute("map_building_increase_prio_tile_placement")) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public ArrayList<String> getPathTypes(int side,int edge) {
 		String sideName; 
 		if (side == 0) {

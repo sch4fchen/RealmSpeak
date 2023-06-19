@@ -1121,6 +1121,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_NO_7TH_DAY_REGENERATION,"NO 7th day regeneration (Super Realm rules) - Denizens do NOT regenerate at the 7th day of the week.",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_HORSES_REGENERATION,"HORSES REGENERATION (Super Realm rules) - Horses are regenerated.",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_NO_SPYING,"NO SPYING (Super Realm rules) - Spying is not possible (for looting or discovering paths).",false));
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.MAP_BUILDING_INCREASED_PRIO_TILE_PLACEMENT,"MAP GENERATION: MORE CONSINSTEN MAPS - Tiles are more likly to be placed to river tiles when generating the map.",false));
 		
 		newOptionPane.setTabHtmlDescription(HOUSE2_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">House Rules</font></body></html>");
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_NO_SPELL_LIMIT,"NO SPELL LIMIT - Magic Realm limits you to 14 spells per character.  This option removes that limit.",false));
@@ -1270,6 +1271,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.HOUSE2_NATIVES_REMEMBER_DISCOVERIES,true);
 		optionPane.setOption(Constants.HOUSE3_SNOW_HIDE_EXCLUDE_CAVES,true);
 		optionPane.setOption(Constants.RANDOM_ON_THE_FLY,true);
+		optionPane.setOption(Constants.MAP_BUILDING_INCREASED_PRIO_TILE_PLACEMENT,true);
 		
 		updateWarnings();
 	}
@@ -1300,6 +1302,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE,true);
 		optionPane.setOption(Constants.HOUSE1_CHIT_REMAIN_FACE_UP,true);
 		optionPane.setOption(Constants.RANDOM_ON_THE_FLY,true);
+		optionPane.setOption(Constants.MAP_BUILDING_INCREASED_PRIO_TILE_PLACEMENT,true);
 		updateWarnings();
 	}
 	
