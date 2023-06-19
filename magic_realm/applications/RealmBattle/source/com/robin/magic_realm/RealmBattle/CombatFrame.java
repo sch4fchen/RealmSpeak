@@ -1406,7 +1406,10 @@ public class CombatFrame extends JFrame {
 			for (RealmComponent rc : currentBattleModel.getAllBattleParticipants(true)) {
 				RealmComponent transmorphedMonster = null;
 				if (rc.isCharacter()) {
-					transmorphedMonster = RealmComponent.getRealmComponent((new CharacterWrapper(rc.getGameObject())).getTransmorph());
+					GameObject transmorphed = (new CharacterWrapper(rc.getGameObject())).getTransmorph();
+					if (transmorphed!=null) {
+						transmorphedMonster = RealmComponent.getRealmComponent(transmorphed);
+					}
 				}
 				if (monsterIsPinningActiveCharacter(rc) || monsterIsPinningActiveCharacter(transmorphedMonster)) {
 					return true;
