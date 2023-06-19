@@ -1404,15 +1404,24 @@ public class CombatFrame extends JFrame {
 	private boolean activeHasRedSideUpMonster() {
 		if (activeCharacterIsHere) { // no need to search if not here!
 			for (RealmComponent rc : currentBattleModel.getAllBattleParticipants(true)) {
-				if (rc.isMonster()) {
-					RealmComponent target = rc.getTarget();
-					if (target!=null && target.equals(activeParticipant)) {
-						MonsterChitComponent monster = (MonsterChitComponent)rc;
-						if (monster.isPinningOpponent()) {
-							return true;
-						}
-					}
+				RealmComponent transmorphedMonster = null;
+				if (rc.isCharacter()) {
+					transmorphedMonster = RealmComponent.getRealmComponent((new CharacterWrapper(rc.getGameObject())).getTransmorph());
 				}
+				if (monsterIsPinningActiveCharacter(rc) || monsterIsPinningActiveCharacter(transmorphedMonster)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	private boolean monsterIsPinningActiveCharacter(RealmComponent rc) {
+		if (rc==null) return false;
+		RealmComponent target = rc.getTarget();
+		if (target!=null && target.equals(activeParticipant)) {
+			MonsterChitComponent monster = (MonsterChitComponent)rc;
+			if (monster.isPinningOpponent()) {
+				return true;
 			}
 		}
 		return false;

@@ -633,7 +633,7 @@ public class Constants {
 	public static final String OPT_ENHANCED_ARTIFACTS = "OptEnhancedArtifacts";
 	public static final String OPT_POWER_OF_THE_PIT_ATTACK = "OptPowerOfThePitAttack";
 	public static final String OPT_POWER_OF_THE_PIT_DEMON = "OptPowerOfThePitDemon";
-	public static final String OPT_NATIVES_FRIENDLY = "NativeFriendly";
+	public static final String OPT_NATIVES_FRIENDLY = "OptNativeFriendly";
 	
 	// Revised Rules
 	public static final String REV_MISSILE = "RevisedMissileTable";

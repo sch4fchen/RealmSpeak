@@ -74,6 +74,7 @@ NEW FEATURES:
 # Add some abilities of travelers to character editor (and minor characters in quest editor)
 # Option to choose color chit instead of infinite source when casting a spell
 BUGS/ISSUES:
+# Absorbed T Monsters hinder characters to maneuver with a horse
 # Fix error in some situations of Hurricane Winds
 # Fix crash when destroying denizen horse used by character (Bone Horse)
 
