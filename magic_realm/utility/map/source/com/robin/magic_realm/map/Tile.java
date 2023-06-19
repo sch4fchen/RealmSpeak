@@ -366,7 +366,7 @@ public class Tile {
 		tile.setRotation(rot);
 		for (int edge=0;edge<6;edge++) {
 			Tile adjTile = (Tile)mapGrid.get(Tile.getAdjacentPosition(pos,edge));
-			if (adjTile!=null && tile.getGameObject().hasThisAttribute("map_building_increase_prio_tile_placement")) {
+			if (adjTile!=null && (tile.getGameObject().hasThisAttribute("map_building_increase_prio_tile_placement") || tile.getGameObject().hasThisAttribute("anchor_tile"))) {
 				return true;
 			}
 		}
