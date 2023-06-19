@@ -48,21 +48,23 @@ public class SpellTargetingCharacter extends SpellTargetingSingle {
 			return false;
 		}
 		
-		ArrayList<ColorMagic> colors = loc.clearing.getClearingColorMagic();
-		ColorMagic selectedColor = null;
-		ListChooser chooser = new ListChooser(combatFrame, "Select magic color", colors);
+		ArrayList<ColorMagic> colors = loc.clearing.getAllSourcesOfColor(true);
+		ArrayList<String> colorNames = new ArrayList<>();
+		for (ColorMagic color : colors) {
+			colorNames.add(color.getColorName());
+		}
+		ListChooser chooser = new ListChooser(combatFrame, "Select magic color", colorNames);
 		chooser.setDoubleClickEnabled(true);
 		chooser.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		chooser.setLocationRelativeTo(combatFrame);
 		chooser.setVisible(true);
-		Vector<ColorMagic> v = chooser.getSelectedItems();
+		Vector<String> v = chooser.getSelectedItems();
 		if (v == null || v.isEmpty()) {
 			spell.expireSpell();
 			return false;
 		}
 		
-		selectedColor = v.get(0);
-		spell.setExtraIdentifier(selectedColor.getColorName());		
+		spell.setExtraIdentifier(v.get(0));		
 		return true;
 	}
 }
