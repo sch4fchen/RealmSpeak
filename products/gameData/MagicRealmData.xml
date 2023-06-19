@@ -51498,7 +51498,7 @@
         <attribute native_name="Spearman" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
-        <attribute move_speed="3" />
+        <attribute move_speed="4" />
         <attribute chit_color="peach" />
         <attribute attack_speed="3" />
         <attribute length="10" />

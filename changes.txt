@@ -89,6 +89,7 @@ QUEST UPDATE:
 # New rewards for cloned quests: ClonedQuestsComplete, ClonedQuestsFail, ClonedQuestsCounter
 SUPER REALM:
 # New spells: Control Horse, Horse Whisper
+# Option for more consistent map generation (default on)
 NEW FEATURES:
 # Option for alternative chit style (Wesnoth)
 # Optional rule: No Spying (e.g. for Super Realm)
