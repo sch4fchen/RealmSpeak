@@ -36978,8 +36978,8 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
-        <attribute attack_speed="4" />
-        <attribute length="17" />
+        <attribute attack_speed="3" />
+        <attribute length="9" />
         <attribute chit_color="paleyellow" />
         <attribute magic_type="V" />
         <attribute attack_spell="Summon Demon" />
@@ -37018,8 +37018,8 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
-        <attribute attack_speed="4" />
-        <attribute length="17" />
+        <attribute attack_speed="3" />
+        <attribute length="9" />
         <attribute chit_color="paleyellow" />
         <attribute magic_type="V" />
         <attribute attack_spell="Summon Demon" />
@@ -37058,8 +37058,8 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
-        <attribute attack_speed="4" />
-        <attribute length="17" />
+        <attribute attack_speed="3" />
+        <attribute length="9" />
         <attribute chit_color="paleyellow" />
         <attribute magic_type="V" />
         <attribute attack_spell="Summon Demon" />
@@ -37098,8 +37098,8 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
-        <attribute attack_speed="4" />
-        <attribute length="17" />
+        <attribute attack_speed="2" />
+        <attribute length="9" />
         <attribute chit_color="paleyellow" />
         <attribute magic_type="V" />
         <attribute attack_spell="Summon Demon" />
@@ -39489,7 +39489,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
-        <attribute attack_speed="1" />
+        <attribute attack_speed="0" />
         <attribute strength="M" />
         <attribute chit_color="paleyellow" />
       </AttributeBlock>
@@ -39528,7 +39528,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
-        <attribute attack_speed="1" />
+        <attribute attack_speed="0" />
         <attribute strength="M" />
         <attribute chit_color="paleyellow" />
       </AttributeBlock>
@@ -39567,7 +39567,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
-        <attribute attack_speed="1" />
+        <attribute attack_speed="0" />
         <attribute strength="M" />
         <attribute chit_color="paleyellow" />
       </AttributeBlock>
@@ -39606,7 +39606,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
-        <attribute attack_speed="1" />
+        <attribute attack_speed="0" />
         <attribute strength="M" />
         <attribute chit_color="paleyellow" />
       </AttributeBlock>
@@ -39645,7 +39645,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
-        <attribute attack_speed="1" />
+        <attribute attack_speed="0" />
         <attribute strength="M" />
         <attribute chit_color="paleyellow" />
       </AttributeBlock>
@@ -39684,7 +39684,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
-        <attribute attack_speed="1" />
+        <attribute attack_speed="0" />
         <attribute strength="M" />
         <attribute chit_color="paleyellow" />
       </AttributeBlock>
@@ -41669,7 +41669,7 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1480" name="Dwarf 3">
+    <GameObject id="1480" name="Dwarf 4">
       <AttributeBlock blockName="this">
         <attribute native="Dwarves" />
         <attribute fame="0" />
@@ -41708,7 +41708,7 @@
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="1481" name="Dwarf 4">
+    <GameObject id="1481" name="Dwarf 5">
       <AttributeBlock blockName="this">
         <attribute native="Dwarves" />
         <attribute fame="0" />
@@ -47379,7 +47379,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
-        <attribute attack_speed="4" />
+        <attribute attack_speed="3" />
         <attribute strength="L" />
         <attribute length="4" />
         <attribute chit_color="yellow" />
@@ -51498,7 +51498,7 @@
         <attribute native_name="Spearman" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
-        <attribute move_speed="4" />
+        <attribute move_speed="3" />
         <attribute chit_color="peach" />
         <attribute attack_speed="3" />
         <attribute length="10" />
@@ -51905,7 +51905,6 @@
         <attribute attack_speed="6" />
         <attribute length="12" />
         <attribute strength="H" />
-        <attribute sharpness="1" />
         <attribute missile="" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
@@ -51914,7 +51913,6 @@
         <attribute strength="H" />
         <attribute length="12" />
         <attribute chit_color="blue" />
-        <attribute sharpness="1" />
         <attribute missile="" />
       </AttributeBlock>
     </GameObject>
@@ -52026,7 +52024,7 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
         <attribute chit_color="lightorange" />
-        <attribute attack_speed="4" />
+        <attribute attack_speed="0" />
         <attribute length="9" />
         <attribute magic_type="VI" />
         <attribute attack_spell="transform" />
@@ -52073,7 +52071,7 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
         <attribute chit_color="lightorange" />
-        <attribute attack_speed="4" />
+        <attribute attack_speed="0" />
         <attribute length="9" />
         <attribute magic_type="VI" />
         <attribute attack_spell="transform" />
@@ -52120,7 +52118,7 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
         <attribute chit_color="lightorange" />
-        <attribute attack_speed="4" />
+        <attribute attack_speed="0" />
         <attribute length="9" />
         <attribute magic_type="VI" />
         <attribute attack_spell="transform" />
@@ -52167,7 +52165,7 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
         <attribute chit_color="lightorange" />
-        <attribute attack_speed="4" />
+        <attribute attack_speed="0" />
         <attribute length="9" />
         <attribute magic_type="VI" />
         <attribute attack_spell="transform" />
@@ -52272,7 +52270,7 @@
         <attribute icon_type="nobleBeast" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
-        <attribute move_speed="5" />
+        <attribute move_speed="6" />
         <attribute strength="H" />
         <attribute chit_color="peach" />
       </AttributeBlock>
@@ -52346,7 +52344,7 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute chit_color="gold" />
-        <attribute attack_speed="4" />
+        <attribute attack_speed="0" />
         <attribute length="9" />
         <attribute magic_type="VI" />
         <attribute attack_spell="melt into mist" />
