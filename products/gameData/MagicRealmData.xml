@@ -52385,7 +52385,7 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute chit_color="gold" />
-        <attribute attack_speed="4" />
+        <attribute attack_speed="0" />
         <attribute length="9" />
         <attribute magic_type="VI" />
         <attribute attack_spell="melt into mist" />
@@ -52426,7 +52426,7 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute chit_color="gold" />
-        <attribute attack_speed="4" />
+        <attribute attack_speed="0" />
         <attribute length="9" />
         <attribute magic_type="VI" />
         <attribute attack_spell="melt into mist" />
