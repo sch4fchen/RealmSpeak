@@ -39490,8 +39490,8 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
         <attribute attack_speed="0" />
-        <attribute strength="M" />
         <attribute chit_color="paleyellow" />
+        <attribute magic_type="VII" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -39529,8 +39529,8 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
         <attribute attack_speed="0" />
-        <attribute strength="M" />
         <attribute chit_color="paleyellow" />
+        <attribute magic_type="VII" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -39568,8 +39568,8 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
         <attribute attack_speed="0" />
-        <attribute strength="M" />
         <attribute chit_color="paleyellow" />
+        <attribute magic_type="VII" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -39607,8 +39607,8 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
         <attribute attack_speed="0" />
-        <attribute strength="M" />
         <attribute chit_color="paleyellow" />
+        <attribute magic_type="VII" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -39646,8 +39646,8 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
         <attribute attack_speed="0" />
-        <attribute strength="M" />
         <attribute chit_color="paleyellow" />
+        <attribute magic_type="VII" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -39685,8 +39685,8 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
         <attribute attack_speed="0" />
-        <attribute strength="M" />
         <attribute chit_color="paleyellow" />
+        <attribute magic_type="VII" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -59078,6 +59078,7 @@
       <AttributeBlock blockName="phase_chit_effects">
         <attribute reserve="" />
       </AttributeBlock>
+      <AttributeBlock blockName="magic_chit" />
     </GameObject>
   </objects>
   <setups>

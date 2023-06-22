@@ -52,7 +52,7 @@ public class Speed implements Comparable {
 		return "Speed "+num;
 	}
 	public String getSpeedString() {
-		if (!infinitelySlow && num>0) {
+		if (!infinitelySlow) {
 			return String.valueOf(num);
 		}
 		return "";

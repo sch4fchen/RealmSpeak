@@ -1419,7 +1419,7 @@ public class CombatFrame extends JFrame {
 		return false;
 	}
 	private boolean monsterIsPinningActiveCharacter(RealmComponent rc) {
-		if (rc==null) return false;
+		if (rc==null || (!rc.isMonster() && !rc.isCharacter())) return false;
 		RealmComponent target = rc.getTarget();
 		if (target!=null && target.equals(activeParticipant)) {
 			MonsterChitComponent monster = (MonsterChitComponent)rc;
