@@ -717,7 +717,7 @@ public class RealmBattle {
 		}
 
 		TileLocation test = getCurrentCombatLocation(data); // if test is null, then all characters in the clearing are dead!
-		if (test==null || (model.getAllOwningCharacters().isEmpty()) || (tile.lastTwoAreMisses() && !model.arePinningMonsters()) || tile.isSleepClearing(location.clearing.getNum())) {
+		if (test==null || model.getAllOwningCharacters().isEmpty() || (tile.lastTwoAreMisses() && !model.arePinningMonsters()) || tile.isSleepClearing(location.clearing.getNum())) {
 			// Combat is over.  Move to the next clearing.
 			endCombatInClearing(location,data);
 			updateClearingOrder(data);

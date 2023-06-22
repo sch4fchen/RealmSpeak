@@ -37,6 +37,8 @@ public interface BattleChit {
 	public boolean isMonster();
 	public boolean isNative();
 	public boolean hasAnAttack();
+	public boolean isHorse();
+	public boolean isNativeHorse();
 	
 	public boolean applyHit(GameWrapper game,HostPrefWrapper hostPrefs,BattleChit attacker,int box,Harm attackerHarm,int attackOrderPos);
 }

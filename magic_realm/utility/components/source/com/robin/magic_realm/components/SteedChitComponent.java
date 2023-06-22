@@ -249,7 +249,7 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 			combat.setKilledSpeed(attacker.getAttackSpeed());
 			combat.setHitByOrderNumber(attackOrderPos);
 			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Kills the "+getGameObject().getName());
-			return true;
+			if (!hostPrefs.hasPref(Constants.OPT_SR_ENDING_COMBAT)) return true;
 		}
 		return false;
 	}

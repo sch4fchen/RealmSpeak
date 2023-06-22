@@ -812,6 +812,12 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	public boolean isMonster() {
 		return false;
 	}
+	public boolean isHorse() {
+		return false;
+	}
+	public boolean isNativeHorse() {
+		return false;
+	}
 	public boolean applyHit(GameWrapper game,HostPrefWrapper hostPrefs, BattleChit attacker, int box, Harm attackerHarm,int attackOrderPos) {
 		// Spells never take hits
 		return false;
