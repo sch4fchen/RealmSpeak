@@ -71,6 +71,7 @@ SUPER REALM:
 # Fix targeting anomalies depending on chosen chit color (or infinite color source)
 # Fix movement costs for river
 # End combat even if denizens are killed or armor is destroyed
+# Absorbed MAX monsters cannot move
 NEW FEATURES:
 # Add some abilities of travelers to character editor (and minor characters in quest editor)
 # Option to choose color chit instead of infinite source when casting a spell
