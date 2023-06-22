@@ -13,6 +13,7 @@ import com.robin.magic_realm.components.attribute.ColorMagic;
 import com.robin.magic_realm.components.attribute.Strength;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.utility.Constants;
+import com.robin.magic_realm.components.utility.RealmLogging;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
@@ -61,6 +62,7 @@ public class SpellTargetingCharacter extends SpellTargetingSingle {
 		Vector<String> v = chooser.getSelectedItems();
 		if (v == null || v.isEmpty()) {
 			spell.expireSpell();
+			RealmLogging.logMessage(RealmLogging.BATTLE,"Spell cancelled - no magic color chosen or none available.");
 			return false;
 		}
 		
