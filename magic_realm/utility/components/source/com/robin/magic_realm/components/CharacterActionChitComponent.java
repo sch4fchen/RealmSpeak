@@ -707,10 +707,16 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		if (getEffortAsterisks()>0) { // CANNOT fatigue non-effort chits
 			setState(ACTION_CHIT_STATE_FATIGUED);
 		}
+		if (getGameObject().hasThisAttribute(Constants.BREAK_WHEN_USED)) {
+			expireSourceSpell();
+		}
 	}
 
 	public void makeWounded() {
 		setState(ACTION_CHIT_STATE_WOUNDED);
+		if (getGameObject().hasThisAttribute(Constants.BREAK_WHEN_USED)) {
+			expireSourceSpell();
+		}
 	}
 
 	public void makeAlerted() {

@@ -44,7 +44,7 @@ public class SpellTargetingCharacter extends SpellTargetingSingle {
 		if (!spell.getGameObject().hasThisAttribute(Constants.RESERVE)) return assign;
 		
 		TileLocation loc = activeCharacter.getCurrentLocation();
-		if (loc == null || loc.clearing == null || loc.clearing.getClearingColorMagic().isEmpty()) {
+		if (loc == null || loc.clearing == null || loc.clearing.getAllSourcesOfColor(true).isEmpty()) {
 			RealmLogging.logMessage(spell.getCaster().getCharacterName(),"Spell cancelled - no magic color of the clearing available.");
 			spell.expireSpell();
 			return true;
