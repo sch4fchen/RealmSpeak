@@ -10,6 +10,7 @@ import com.robin.general.graphics.TextType;
 import com.robin.general.graphics.TextType.Alignment;
 import com.robin.magic_realm.components.attribute.Speed;
 import com.robin.magic_realm.components.attribute.Strength;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class FlyChitComponent extends StateChitComponent {
@@ -89,7 +90,7 @@ public class FlyChitComponent extends StateChitComponent {
 		tt.draw(g,0,y,Alignment.Center);
 	}
 	public void expireSourceSpell() {
-		String stringId = getGameObject().getThisAttribute("spellID");
+		String stringId = getGameObject().getThisAttribute(Constants.SPELL_ID);
 		GameObject sourceSpell = getGameObject().getGameData().getGameObject(Long.valueOf(stringId));
 		SpellWrapper spell = new SpellWrapper(sourceSpell);
 		spell.expireSpell();

@@ -45,8 +45,9 @@ public class SpellTargetingCharacter extends SpellTargetingSingle {
 		
 		TileLocation loc = activeCharacter.getCurrentLocation();
 		if (loc == null || loc.clearing == null || loc.clearing.getClearingColorMagic().isEmpty()) {
+			RealmLogging.logMessage(spell.getCaster().getCharacterName(),"Spell cancelled - no magic color of the clearing available.");
 			spell.expireSpell();
-			return false;
+			return true;
 		}
 		
 		ArrayList<ColorMagic> colors = loc.clearing.getAllSourcesOfColor(true);
@@ -62,11 +63,11 @@ public class SpellTargetingCharacter extends SpellTargetingSingle {
 		Vector<String> v = chooser.getSelectedItems();
 		if (v == null || v.isEmpty()) {
 			spell.expireSpell();
-			RealmLogging.logMessage(RealmLogging.BATTLE,"Spell cancelled - no magic color chosen or none available.");
+			RealmLogging.logMessage(spell.getCaster().getCharacterName(),"Spell cancelled - no magic color chosen or none available.");
 			return false;
 		}
-		
-		spell.setExtraIdentifier(v.get(0));		
+		spell.setExtraIdentifier(v.get(0));
+		RealmLogging.logMessage(spell.getCaster().getCharacterName(),"Magic Color chosen: "+v.get(0));
 		return true;
 	}
 }

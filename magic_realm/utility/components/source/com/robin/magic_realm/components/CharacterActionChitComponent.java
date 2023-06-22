@@ -886,4 +886,12 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		}
 		return sb.toString();
 	}
+	public void expireSourceSpell() {
+		if (getGameObject().hasThisAttribute(Constants.SPELL_ID)) {
+			String stringId = getGameObject().getThisAttribute(Constants.SPELL_ID);
+			GameObject sourceSpell = getGameObject().getGameData().getGameObject(Long.valueOf(stringId));
+			SpellWrapper spell = new SpellWrapper(sourceSpell);
+			spell.expireSpell();
+		}
+	}
 }

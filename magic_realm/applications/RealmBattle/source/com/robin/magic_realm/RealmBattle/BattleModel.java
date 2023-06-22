@@ -2650,6 +2650,9 @@ public class BattleModel {
 						FlyChitComponent flyChit = (FlyChitComponent)goc;
 						flyChit.expireSourceSpell();
 					}
+					if (goc.isActionChit() && go.hasThisAttribute(Constants.BREAK_WHEN_USED)) {
+						((CharacterActionChitComponent)goc).expireSourceSpell();
+					}
 				}
 				
 				// Don't forget to clear out any transmorphed monsters

@@ -16,7 +16,7 @@ public class MagicChitEffect implements ISpellEffect {
 		magicChit.setName(spellObj.getName()+" Magic Chit ("+ context.Caster.getName()+")");
 		magicChit.copyAttributeBlockFrom(spellObj,"magic_chit");
 		magicChit.renameAttributeBlock("magic_chit","this");
-		magicChit.setThisAttribute("spellID",spellObj.getStringId());
+		magicChit.setThisAttribute(Constants.SPELL_ID,spellObj.getStringId());
 		magicChit.setThisAttribute("sourceSpell",spellObj.getName());
 		magicChit.setThisAttribute(RealmComponent.CHARACTER_CHIT);
 		magicChit.setThisAttribute(CharacterActionChitComponent.ACTION_CHIT_STATE_KEY,CharacterActionChitComponent.ACTIVE_ID);

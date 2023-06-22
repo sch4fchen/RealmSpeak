@@ -2,6 +2,7 @@ package com.robin.magic_realm.components.effect;
 
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.utility.Constants;
 
 public class FlyChitEffect implements ISpellEffect {
 
@@ -14,7 +15,7 @@ public class FlyChitEffect implements ISpellEffect {
 		flyChit.setName(spellObj.getName()+" Fly Chit ("+ context.Caster.getName()+")");
 		flyChit.copyAttributeBlockFrom(spellObj,RealmComponent.FLY_CHIT);
 		flyChit.renameAttributeBlock(RealmComponent.FLY_CHIT,"this");
-		flyChit.setThisAttribute("spellID",spellObj.getStringId());
+		flyChit.setThisAttribute(Constants.SPELL_ID,spellObj.getStringId());
 		flyChit.setThisAttribute("sourceSpell",spellObj.getName());
 		spellObj.setThisAttribute("flyChitID",flyChit.getStringId());
 		context.Target.getGameObject().add(flyChit);

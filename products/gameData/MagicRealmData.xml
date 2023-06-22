@@ -59078,7 +59078,14 @@
       <AttributeBlock blockName="phase_chit_effects">
         <attribute reserve="" />
       </AttributeBlock>
-      <AttributeBlock blockName="magic_chit" />
+      <AttributeBlock blockName="magic_chit">
+        <attribute name="Reserve Chit" />
+        <attribute speed="0" />
+        <attribute magic_chit="" />
+        <attribute chit_state="1" />
+        <attribute action="MAGIC" />
+        <attribute break_when_used="" />
+      </AttributeBlock>
     </GameObject>
   </objects>
   <setups>

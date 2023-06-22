@@ -15,7 +15,7 @@ public class FightChitEffect implements ISpellEffect {
 		fightChit.setName(spellObj.getName()+" Fight Chit ("+ context.Caster.getName()+")");
 		fightChit.copyAttributeBlockFrom(spellObj,"fight_chit");
 		fightChit.renameAttributeBlock("fight_chit","this");
-		fightChit.setThisAttribute("spellID",spellObj.getStringId());
+		fightChit.setThisAttribute(Constants.SPELL_ID,spellObj.getStringId());
 		fightChit.setThisAttribute("sourceSpell",spellObj.getName());
 		fightChit.setThisAttribute(RealmComponent.CHARACTER_CHIT);
 		fightChit.setThisAttribute(CharacterActionChitComponent.ACTION_CHIT_STATE_KEY,CharacterActionChitComponent.ACTIVE_ID);

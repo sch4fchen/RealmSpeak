@@ -15,7 +15,7 @@ public class MoveChitEffect implements ISpellEffect {
 		moveChit.setName(spellObj.getName()+" Move Chit ("+ context.Caster.getName()+")");
 		moveChit.copyAttributeBlockFrom(spellObj,"move_chit");
 		moveChit.renameAttributeBlock("move_chit","this");
-		moveChit.setThisAttribute("spellID",spellObj.getStringId());
+		moveChit.setThisAttribute(Constants.SPELL_ID,spellObj.getStringId());
 		moveChit.setThisAttribute("sourceSpell",spellObj.getName());
 		moveChit.setThisAttribute(RealmComponent.CHARACTER_CHIT);
 		moveChit.setThisAttribute(CharacterActionChitComponent.ACTION_CHIT_STATE_KEY,CharacterActionChitComponent.ACTIVE_ID);
