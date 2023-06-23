@@ -283,9 +283,9 @@ public abstract class GameCommand extends ModifyableObject implements Serializab
 		if (usesNewPool()) sb.append(newPool);
 		if (usesFrom()) sb.append("from "+from+" ");
 		if (usesTo()) sb.append("to "+to+" ");
-		if (usesAttribute()) sb.append("Sets "+(attribute==null?"NULL":attribute));
-		if (usesTargetObject()) sb.append("to "+(targetObject==null?"NULL":targetObject.toString()));
-		if (usesValue()) sb.append("with value "+(value==null?"NULL":value));
+		if (usesAttribute()) sb.append(" sets "+(attribute==null?"NULL":attribute));
+		if (usesTargetObject()) sb.append(" to "+(targetObject==null?"NULL":targetObject.toString()));
+		if (usesValue()) sb.append(" with value "+(value==null?"NULL":value));
 		if (usesCount()) sb.append(", "+count+" ");
 		if (usesTransferType()) sb.append(GamePool.getTransferName(transferType));
 		if (usesKeyVals()) sb.append("using ["+getKeyValString()+"]");
