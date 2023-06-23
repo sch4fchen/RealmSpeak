@@ -17,20 +17,18 @@ public class GameCommandAlter extends GameCommand {
 	}
 	public String alter(ArrayList<GameObject> allGameObjects) {
 		// First find the targetObject to alter
-		GameObject targetObjectToAlter = null;
 		for (GameObject go : allGameObjects) {
 			if (go.equalsId(targetObject.getId())) {
-				targetObjectToAlter = go;
-				break;
+				if (getValue().matches("REMOVE")) {
+					go.removeThisAttribute(getAttribute());
+					return "Altered:  "+go+":  "+getAttribute()+" was removed";
+				}
+				go.setThisAttribute(getAttribute(),getValue());
+				return "Altered:  "+go+":  "+getAttribute()+": "+getValue();
 			}
 		}
-		if (targetObjectToAlter==null) return "Alter: Object not found!";
-		if (getValue().matches("REMOVE")) {
-			targetObjectToAlter.removeThisAttribute(getAttribute());
-			return "Altered:  "+targetObjectToAlter+":  "+getAttribute()+" was removed";
-		}
-		targetObjectToAlter.setThisAttribute(getAttribute(),getValue());
-		return "Altered:  "+targetObjectToAlter+":  "+getAttribute()+": "+getValue();
+		return "Alter: Object not found!";
+		
 	}
 	public boolean usesTargetObject() {
 		return true;
