@@ -3636,6 +3636,12 @@ public class CombatFrame extends JFrame {
 			boolean activate = "Activate".equals(selText);
 			RealmComponent rcToActivate = activate?chooser.getFirstSelectedComponent():null;
 			RealmComponent rcToInactivate = activate?null:chooser.getFirstSelectedComponent();
+			if (hostPrefs.hasPref(Constants.OPT_SR_PHASE_CHIT_ACTIVATION) && rcToActivate!=null && rcToActivate.isPhaseChit()) {
+				TreasureUtility.doActivate(this,activeCharacter,rcToActivate.getGameObject(),combatListener,true);
+				nonaffectingChanges = true;
+				updateControls();
+				return;
+			}
 			chooser = new RealmComponentOptionChooser(this,"Select an option below:",true);
 			Collection<GameObject> c = activate?activeCharacter.getActiveInventory():activeCharacter.getInactiveInventory();
 			if (c.size()>0) {

@@ -21,7 +21,7 @@ public class MagicChitEffect implements ISpellEffect {
 		magicChit.setThisAttribute(RealmComponent.CHARACTER_CHIT);
 		magicChit.setThisAttribute(CharacterActionChitComponent.ACTION_CHIT_STATE_KEY,CharacterActionChitComponent.ACTIVE_ID);
 		magicChit.setThisAttribute(Constants.CHIT_EARNED);
-		magicChit.setThisAttribute("action","magic");
+		magicChit.setThisAttribute("action","MAGIC");
 		spellObj.setThisAttribute("magicChitID",magicChit.getStringId());		
 		context.Target.getGameObject().add(magicChit);
 		
