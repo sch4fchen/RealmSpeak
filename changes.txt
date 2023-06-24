@@ -63,6 +63,8 @@ First Edition Optional Rule - https://boardgamegeek.com/thread/2503528/1st-editi
 First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 
 Version 1.1.8.0
+QUEST UPDATE:
+# Updates to quest: Q23
 SUPER REALM:
 # New spells: Migration, Tracker's Sense, Water Run, Blinding Light, Control Element, Frozen Water, Reserve
 # T monsters kill horse and destroy armor with RED attack
