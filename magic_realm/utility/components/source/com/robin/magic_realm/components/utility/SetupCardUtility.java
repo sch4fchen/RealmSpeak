@@ -611,7 +611,7 @@ public class SetupCardUtility {
 					if (summon!=null) {
 						StringTokenizer tokens = new StringTokenizer(summon,",");
 						while(tokens.hasMoreTokens()) {
-							String test = tokens.nextToken().toLowerCase();
+							String test = tokens.nextToken().toLowerCase().trim();
 							if (name.indexOf(test)>=0) {
 								return loc;
 							}

@@ -62,6 +62,8 @@ First Edition Optional Rule - https://boardgamegeek.com/thread/2503528/1st-editi
 First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 
 Version 1.1.8.1
+SUPER REALM:
+# Fix summoning for certain warnings
 
 Version 1.1.8.0
 QUEST UPDATE:

@@ -168,7 +168,7 @@ public class QuestRewardSummonFromAppearanceToChit extends QuestReward {
 					List<String> sounds = Arrays.asList(soundsList.split("\\s*,\\s*"));
 					String sound = chit.getThisAttribute("sound").toLowerCase();
 					for (String soundName : sounds) {
-						if (soundName.toLowerCase().matches(sound)) {
+						if (soundName.toLowerCase().trim().matches(sound)) {
 							int clearingNumber = chit.getThisInt("clearing");
 							clearingSummonTo = rcChit.getCurrentLocation().tile.getClearing(clearingNumber);
 							break;
@@ -181,7 +181,7 @@ public class QuestRewardSummonFromAppearanceToChit extends QuestReward {
 					List<String> warnings = Arrays.asList(warningsList.split("\\s*,\\s*"));
 					String warning = chit.getName().toLowerCase();
 					for (String warningName : warnings) {
-						if (warningName.toLowerCase().matches(warning)) {
+						if (warningName.toLowerCase().trim().matches(warning)) {
 							ArrayList<ClearingDetail> clearings = rcChit.getCurrentLocation().tile.getClearings();
 							int random = RandomNumber.getRandom(clearings.size());
 							clearingSummonTo = clearings.get(random);
