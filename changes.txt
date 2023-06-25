@@ -38,7 +38,6 @@ Ask Demon: 4 options, instead of just asking a question
 Absorb Essence: any denizens and Attention chits assigned to it become assigned to the spellcaster; absorbs steed when absorbing a monster
 	The spellcaster cannot be affected by multiple Absorb Essence spells. Any Absorb Essence spell he casts while he is already bewitched by Absorb Essence is cancelled.
 ---Optional Rules---
-Book of Quests: quests of the book
 Super Realm: Optional Rules (and 1st Ed): Severe wounds (SR: 10.1, p.114) = Serious Wounds, but wounds *2
 Super Realm: Optional Rules: Bounty campaign (SR: 10.2, p.114)
 Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
@@ -76,6 +75,7 @@ SUPER REALM:
 # Fix harm for Colossus (and destroys horse and armor)
 # Fix missile attacks for anomalies
 # Fix targeting anomalies depending on chosen chit color (or infinite color source)
+# Fix Howl/Flutter sound chit
 NEW FEATURES:
 # Add some abilities of travelers to character editor (and minor characters in quest editor)
 # Option to choose color chit instead of infinite source when casting a spell
