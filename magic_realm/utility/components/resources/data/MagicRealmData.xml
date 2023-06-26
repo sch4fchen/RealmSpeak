@@ -42694,7 +42694,7 @@
         <attribute notoriety="3" />
         <attribute icon_type="giantSpider" />
         <attribute setup_start="H Spider Box" />
-        <attribute box_num="3" />
+        <attribute box_num="4" />
         <attribute monster_die="5" />
         <attribute base_price="3" />
         <attribute icon_folder="wesnoth/units" />
