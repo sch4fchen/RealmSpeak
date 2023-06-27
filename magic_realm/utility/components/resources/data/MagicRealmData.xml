@@ -25713,7 +25713,6 @@
         <attribute monster_die="2" />
         <attribute box_num="1" />
         <attribute ts_section="outskirts" />
-        <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="lightgreen" />
         <attribute icon_type="shade" />
@@ -25769,7 +25768,6 @@
         <attribute monster_die="3" />
         <attribute box_num="1" />
         <attribute ts_section="outskirts" />
-        <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="lightgreen" />
         <attribute icon_type="carnoplant" />
@@ -25864,7 +25862,6 @@
         <attribute monster_die="4" />
         <attribute box_num="1" />
         <attribute ts_section="outskirts" />
-        <attribute ts_count="1" />
         <attribute ts_size="T" />
         <attribute ts_color="lightgreen" />
         <attribute icon_type="swampthing" />
@@ -37120,7 +37117,6 @@
         <attribute super_realm="" />
         <attribute box_num="1" />
         <attribute ts_section="lost fortress" />
-        <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="blue" />
         <attribute icon_type="gargoyle" />
@@ -37151,7 +37147,6 @@
         <attribute super_realm="" />
         <attribute box_num="3" />
         <attribute ts_section="lost fortress" />
-        <attribute ts_count="1" />
         <attribute ts_size="T" />
         <attribute ts_color="blue" />
         <attribute icon_type="marlgoyle" />
@@ -38283,7 +38278,6 @@
         <attribute super_realm="" />
         <attribute box_num="1" />
         <attribute ts_section="lost fortress" />
-        <attribute ts_count="1" />
         <attribute ts_size="M" />
         <attribute ts_color="purple" />
         <attribute icon_type="orcishGrunt" />
@@ -38619,7 +38613,6 @@
         <attribute super_realm="" />
         <attribute box_num="1" />
         <attribute ts_section="lost fortress" />
-        <attribute ts_count="1" />
         <attribute ts_size="T" />
         <attribute ts_color="brown" />
         <attribute icon_type="golem" />
@@ -38634,7 +38627,6 @@
         <attribute super_realm="" />
         <attribute box_num="2" />
         <attribute ts_section="lost fortress" />
-        <attribute ts_count="1" />
         <attribute ts_size="T" />
         <attribute ts_color="brown" />
         <attribute icon_type="golem" />
@@ -38649,7 +38641,6 @@
         <attribute super_realm="" />
         <attribute box_num="3" />
         <attribute ts_section="lost fortress" />
-        <attribute ts_count="1" />
         <attribute ts_size="T" />
         <attribute ts_color="brown" />
         <attribute icon_type="golem" />
@@ -38766,7 +38757,6 @@
         <attribute super_realm="" />
         <attribute box_num="1" />
         <attribute ts_section="lost palace" />
-        <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="red" />
         <attribute icon_type="sand-scuttler" />
@@ -38797,7 +38787,6 @@
         <attribute super_realm="" />
         <attribute box_num="3" />
         <attribute ts_section="lost palace" />
-        <attribute ts_count="1" />
         <attribute ts_size="T" />
         <attribute ts_color="red" />
         <attribute icon_type="scorpion" />
@@ -38970,7 +38959,6 @@
         <attribute super_realm="" />
         <attribute box_num="1" />
         <attribute ts_section="lost palace" />
-        <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="green" />
         <attribute icon_type="wraith" />
@@ -38985,7 +38973,6 @@
         <attribute super_realm="" />
         <attribute box_num="2" />
         <attribute ts_section="lost palace" />
-        <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="green" />
         <attribute icon_type="wraith" />
@@ -39000,7 +38987,6 @@
         <attribute super_realm="" />
         <attribute box_num="3" />
         <attribute ts_section="lost palace" />
-        <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="green" />
         <attribute icon_type="wraith" />
@@ -39015,7 +39001,6 @@
         <attribute super_realm="" />
         <attribute box_num="4" />
         <attribute ts_section="lost palace" />
-        <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="green" />
         <attribute icon_type="wraith" />
@@ -39154,7 +39139,7 @@
         <attribute super_realm="" />
         <attribute box_num="1" />
         <attribute ts_section="lost palace" />
-        <attribute ts_count="1" />
+        <attribute ts_count="6" />
         <attribute ts_size="M" />
         <attribute ts_color="blue" />
         <attribute icon_type="giant-rat" />
@@ -39349,7 +39334,6 @@
         <attribute super_realm="" />
         <attribute box_num="2" />
         <attribute ts_section="lost palace" />
-        <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="blue" />
         <attribute icon_type="bear" />
@@ -39394,7 +39378,6 @@
         <attribute super_realm="" />
         <attribute box_num="1" />
         <attribute ts_section="lost palace" />
-        <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="swampLizard" />
@@ -39705,7 +39688,6 @@
         <attribute super_realm="" />
         <attribute box_num="1" />
         <attribute ts_section="lost palace" />
-        <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="purple" />
         <attribute icon_type="wisp" />
@@ -39720,7 +39702,6 @@
         <attribute super_realm="" />
         <attribute box_num="2" />
         <attribute ts_section="lost palace" />
-        <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="purple" />
         <attribute icon_type="fireGod" />
@@ -39735,7 +39716,6 @@
         <attribute super_realm="" />
         <attribute box_num="3" />
         <attribute ts_section="lost palace" />
-        <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="purple" />
         <attribute icon_type="darkObserver" />
@@ -39750,7 +39730,6 @@
         <attribute super_realm="" />
         <attribute box_num="4" />
         <attribute ts_section="lost palace" />
-        <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="purple" />
         <attribute icon_type="battleEye" />
@@ -39921,7 +39900,6 @@
         <attribute super_realm="" />
         <attribute box_num="1" />
         <attribute ts_section="lost palace" />
-        <attribute ts_count="1" />
         <attribute ts_size="T" />
         <attribute ts_color="brown" />
         <attribute icon_type="banebush" />
@@ -39936,7 +39914,6 @@
         <attribute super_realm="" />
         <attribute box_num="2" />
         <attribute ts_section="lost palace" />
-        <attribute ts_count="1" />
         <attribute ts_size="T" />
         <attribute ts_color="brown" />
         <attribute icon_type="banebush" />
@@ -39951,7 +39928,6 @@
         <attribute super_realm="" />
         <attribute box_num="3" />
         <attribute ts_section="lost palace" />
-        <attribute ts_count="1" />
         <attribute ts_size="T" />
         <attribute ts_color="brown" />
         <attribute icon_type="banebush" />
@@ -40155,6 +40131,7 @@
         <attribute icon_type="winglessDragon" />
         <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
+        <attribute ts_count="2" />
       </AttributeBlock>
       <contains id="1433" />
       <contains id="1434" />
@@ -40179,7 +40156,6 @@
         <attribute monster_die="2" />
         <attribute box_num="1" />
         <attribute ts_section="lost city" />
-        <attribute ts_count="1" />
         <attribute ts_size="H" />
         <attribute ts_color="green" />
         <attribute icon_type="waterSerpent" />
@@ -41358,7 +41334,6 @@
         <attribute monster_die="4" />
         <attribute box_num="1" />
         <attribute ts_section="lost city" />
-        <attribute ts_count="2" />
         <attribute ts_size="H" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="troll" />
@@ -42727,7 +42702,6 @@
         <attribute icon_type="bloodBat" />
         <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
-        <attribute ts_count="1" />
       </AttributeBlock>
       <contains id="1525" />
     </GameObject>

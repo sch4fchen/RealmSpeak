@@ -67,6 +67,7 @@ QUEST UPDATE:
 SUPER REALM:
 # Fix summoning for certain warnings
 # Fix H Spider setup
+# Fix some numbers on setup chart
 
 Version 1.1.8.0
 QUEST UPDATE:
