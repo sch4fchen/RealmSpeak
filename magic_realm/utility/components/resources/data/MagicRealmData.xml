@@ -59095,6 +59095,19 @@
         <attribute dark_favor="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2225" name="Reanmiate">
+      <AttributeBlock blockName="this">
+        <attribute spell="V" />
+        <attribute duration="combat" />
+        <attribute target="killed denizen" />
+        <attribute text="Make a table roll, fatigue that many effort asteriks, then roll only one die for table rolls." />
+        <attribute magic_color="black" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

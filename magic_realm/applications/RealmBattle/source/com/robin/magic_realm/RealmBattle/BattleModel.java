@@ -2298,6 +2298,9 @@ public class BattleModel {
 			}
 		}
 	}
+	public Collection<GameObject> getKilledObjects() {
+		return killedTallyHash.keySet();		
+	}
 	/**
 	 * This has to happen separate from disengagement, so that the fatigue/wound step isn't confusing.
 	 */

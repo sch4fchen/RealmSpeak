@@ -1118,6 +1118,9 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			dest.setThisAttribute("animal");
 		}
 					
+		copyMonsterAttributesToObject(source,blockName,dest);
+	}
+	public static void copyMonsterAttributesToObject(GameObject source,String blockName,GameObject dest) {
 		// Ignore these attributes
 		String[] ignorVars = {"light_color","dark_color"};
 		ArrayList<String> ignoreTest = new ArrayList<>(Arrays.asList(ignorVars));

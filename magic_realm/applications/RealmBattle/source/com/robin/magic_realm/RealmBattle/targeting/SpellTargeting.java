@@ -203,6 +203,9 @@ public abstract class SpellTargeting {
 		else if ("warning chits".equals(targetType)) {
 			targeting = new SpellTargetingWarningChits(combatFrame,spell);
 		}
+		else if ("killed denizen".equals(targetType) || "killed_denizen".equals(targetType)) {
+			targeting = new SpellTargetingKilledDenizen(combatFrame,spell);
+		}
 		
 		return targeting;
 	}

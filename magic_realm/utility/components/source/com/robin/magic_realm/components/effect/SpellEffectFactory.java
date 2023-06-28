@@ -149,6 +149,7 @@ public class SpellEffectFactory {
 			case "mesmerize": return new ISpellEffect[]{new MesmerizeEffect()};
 			case "migration": return new ISpellEffect[]{new MigrationEffect()};
 			case "negative aura": return new ISpellEffect[]{new ApplyNamedEffect(Constants.NEGATIVE_AURA)};
+			case "reanimate": return new ISpellEffect[]{new ReanimateEffect()};
 			case "reinvigorate": return new ISpellEffect[]{new ExtraActionEffect("R")};
 			case "reserve": return new ISpellEffect[]{new PhaseChitEffect()};
 			case "summon demon": return new ISpellEffect[]{new SummonEffect(SpellUtility.SummonType.demon.toString())};
