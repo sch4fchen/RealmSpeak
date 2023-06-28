@@ -36774,7 +36774,7 @@
         <attribute super_realm="" />
         <attribute icon_type="stoneTitan2" />
         <attribute setup_start="Spire" />
-        <attribute monster_die="3" />
+        <attribute monster_die="5" />
         <attribute base_price="15" />
         <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
@@ -38658,7 +38658,7 @@
         <attribute super_realm="" />
         <attribute icon_type="golem" />
         <attribute setup_start="Golem Box" />
-        <attribute monster_die="4" />
+        <attribute monster_die="6" />
         <attribute base_price="8" />
         <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
@@ -38692,7 +38692,7 @@
         <attribute super_realm="" />
         <attribute icon_type="golem" />
         <attribute setup_start="Golem Box" />
-        <attribute monster_die="4" />
+        <attribute monster_die="6" />
         <attribute base_price="8" />
         <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
@@ -38726,7 +38726,7 @@
         <attribute super_realm="" />
         <attribute icon_type="golem" />
         <attribute setup_start="Golem Box" />
-        <attribute monster_die="4" />
+        <attribute monster_die="6" />
         <attribute base_price="8" />
         <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />

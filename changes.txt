@@ -3,7 +3,7 @@
 Spells VI: Alter Object, Alter Size, Enchant Weapon, Grow Wings, Mountain Surge
 Spells VII: Charm Snake, Dazzle, Free Spell, Join, Luck, Meditate
 Spells VIII: Blunt (similar to blunting), Camouflage
-Treasures
+Treasures: 
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Nomads, Tasks, Travelers: 4.8 (p.41)
 Super Realm: Quests + Events
@@ -67,6 +67,7 @@ SUPER REALM:
 # Fix summoning for certain warnings
 # Fix H Spider setup
 # Fix some numbers on setup chart
+# Fix prowling die number for Golems and Titan
 
 Version 1.1.8.0
 QUEST UPDATE:
