@@ -126,6 +126,10 @@ public class DieRollBuilder {
 			}
 		}
 		
+		if (character.getGameObject().hasThisAttribute(Constants.DARK_FAVOR)) {
+			dice = 1;
+		}
+		
 		if (character!=null && character.isCharacter() && tl.hasClearing() && !"wounds".equals(key)) {
 			// Only characters are affected by the Cloven Hoof.  Hired Leaders and Controlled monsters are not.
 			// Serious wounds are also not affected, as this isn't technically "rolling on a table".

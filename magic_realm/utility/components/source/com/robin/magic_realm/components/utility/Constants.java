@@ -496,6 +496,7 @@ public class Constants {
 	public static final String RESERVE = "reserve";
 	public static final String BREAK_WHEN_USED = "break_when_used";
 	public static final String VIOLENT_WINDS = "violent_winds";
+	public static final String DARK_FAVOR = "dark_favor";
 	
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";

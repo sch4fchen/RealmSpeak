@@ -59075,6 +59075,26 @@
         <attribute target_clearing="clearing" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2224" name="Dark Favor">
+      <AttributeBlock blockName="this">
+        <attribute spell="V" />
+        <attribute duration="phase" />
+        <attribute target="character" />
+        <attribute text="Make a table roll, fatigue that many effort asteriks, then roll only one die for table rolls." />
+        <attribute magic_color="black" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="phase_chit">
+        <attribute phase_chit="" />
+        <attribute text="Dark Favor" />
+      </AttributeBlock>
+      <AttributeBlock blockName="phase_chit_effects">
+        <attribute dark_favor="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
