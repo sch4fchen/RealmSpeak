@@ -780,4 +780,19 @@ public class ClearingDetail {
 		}
 		return false;
 	}
+	public boolean isAffectedByViolentWinds() {
+		GameObject tile = getTileLocation().tile.getGameObject();
+		return tile.hasThisAttributeListItem(Constants.VIOLENT_WINDS, String.valueOf(getNum()));
+	}
+	public void setAffectedByViolentWinds(boolean val) {
+		GameObject tile = getTileLocation().tile.getGameObject();
+		if (val && !tile.hasThisAttributeListItem(Constants.VIOLENT_WINDS, String.valueOf(getNum()))) {
+			tile.addThisAttributeListItem(Constants.VIOLENT_WINDS, String.valueOf(getNum()));
+			return;
+		}
+		if (!val && tile.hasThisAttributeListItem(Constants.VIOLENT_WINDS, String.valueOf(getNum()))) {
+			tile.removeThisAttributeListItem(Constants.VIOLENT_WINDS, String.valueOf(getNum()));
+			return;
+		}
+	}
 }

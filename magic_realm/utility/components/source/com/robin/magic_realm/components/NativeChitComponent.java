@@ -574,6 +574,9 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		if (new CombatWrapper(getGameObject()).isFreezed()) {
 			mod++;
 		}
+		if (flies() && getCurrentLocation()!=null && getCurrentLocation().clearing!=null && getCurrentLocation().clearing.isAffectedByViolentWinds()) {
+			mod++;
+		}
 		return mod;
 	}
 	protected boolean isShrunk() {

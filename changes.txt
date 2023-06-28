@@ -1,6 +1,5 @@
 ::ROADMAP::
 ---Super Realm Content---
-Spells IV: Violent Winds
 Spells V: Dark Favor, Reanimate
 Spells VI: Alter Object, Alter Size, Enchant Weapon, Grow Wings, Mountain Surge
 Spells VII: Charm Snake, Dazzle, Free Spell, Join, Luck, Meditate
@@ -65,6 +64,7 @@ Version 1.1.8.1
 QUEST UPDATE:
 # Updates to quest: A77
 SUPER REALM:
+# New spells: Violent Winds
 # Fix summoning for certain warnings
 # Fix H Spider setup
 # Fix some numbers on setup chart

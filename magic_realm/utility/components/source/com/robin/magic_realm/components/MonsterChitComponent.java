@@ -481,6 +481,9 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		if (new CombatWrapper(getGameObject()).isFreezed()) {
 			mod++;
 		}
+		if (flies() && getCurrentLocation()!=null && getCurrentLocation().clearing!=null && getCurrentLocation().clearing.isAffectedByViolentWinds()) {
+			mod++;
+		}
 		return mod;
 	}
 	protected int sizeModifier() {

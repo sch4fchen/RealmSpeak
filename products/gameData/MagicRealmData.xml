@@ -59061,6 +59061,20 @@
         <attribute break_when_used="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2223" name="Violent Winds">
+      <AttributeBlock blockName="this">
+        <attribute spell="IV" />
+        <attribute duration="day" />
+        <attribute target="clearing" />
+        <attribute text="No one can fly in the clearing. Flying denizens add +1 to maneuver speed." />
+        <attribute magic_color="purple" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+        <attribute target_clearing="clearing" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

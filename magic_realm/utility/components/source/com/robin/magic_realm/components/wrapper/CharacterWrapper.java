@@ -5734,11 +5734,19 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean land(JFrame frame) {
 		TileLocation current = getCurrentLocation();
 		if (current!=null && current.clearing==null && !current.isBetweenTiles() && current.isFlying()) { // NEVER land when between tiles!!!
-			current.setFlying(false); // landing
+			int clearingCount = current.tile.getClearingCount();
+			ArrayList<Integer> clearingsTriedToLand = new ArrayList<>();
 			while(current.clearing==null) {
 				int r = RandomNumber.getHighLow(1,6);
-				current.clearing = current.tile.getClearing(r);
+				if (!current.tile.getClearing(r).isAffectedByViolentWinds()) {
+					current.clearing = current.tile.getClearing(r);
+				}
+				else {
+					if (!clearingsTriedToLand.contains(r))  clearingsTriedToLand.add(r);
+				}
+				if (clearingsTriedToLand.size() == clearingCount) return false;
 			}
+			current.setFlying(false); // landing
 			jumpMoveHistory(); // Because we didn't walk here
 			moveToLocation(frame,current);
 			

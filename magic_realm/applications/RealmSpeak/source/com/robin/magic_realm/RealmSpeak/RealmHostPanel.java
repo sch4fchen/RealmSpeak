@@ -342,23 +342,33 @@ public class RealmHostPanel extends JPanel {
 					// Land now!
 					TileLocation current = rc.getCurrentLocation();
 					if (current!=null) {
-						current.setFlying(false);
+						int clearingCount = current.tile.getClearingCount();
+						ArrayList<Integer> clearingsTriedToLand = new ArrayList<>();
 						while(current.clearing==null) {
 							int r = RandomNumber.getHighLow(1,6);
-							current.clearing = current.tile.getClearing(r);
+							if (!current.tile.getClearing(r).isAffectedByViolentWinds()) {
+								current.clearing = current.tile.getClearing(r);
+							}
+							else {
+								if (!clearingsTriedToLand.contains(r))  clearingsTriedToLand.add(r);
+							}
+							if (clearingsTriedToLand.size() == clearingCount) break;
 						}
-						if (!hostPrefs.hasPref(Constants.HOUSE2_HURRICANE_WINDS_BLOWS_HIRELINGS)) {
-							TileLocation loc = rc.getCurrentLocation();
-							if (loc.clearing!=null) {
-								for (GameObject item : rc.getGameObject().getHold()) {
-									RealmComponent itemRc = RealmComponent.getRealmComponent(item);
-									if ((itemRc.isHiredOrControlled() || itemRc.isNative() || itemRc.isMonster()) && itemRc.getCurrentLocation().equals(loc)) {
-										loc.clearing.add(item, null);
+						if (current.clearing!=null) {
+							current.setFlying(false);
+							if (!hostPrefs.hasPref(Constants.HOUSE2_HURRICANE_WINDS_BLOWS_HIRELINGS)) {
+								TileLocation loc = rc.getCurrentLocation();
+								if (loc.clearing!=null) {
+									for (GameObject item : rc.getGameObject().getHold()) {
+										RealmComponent itemRc = RealmComponent.getRealmComponent(item);
+										if ((itemRc.isHiredOrControlled() || itemRc.isNative() || itemRc.isMonster()) && itemRc.getCurrentLocation().equals(loc)) {
+											loc.clearing.add(item, null);
+										}
 									}
 								}
 							}
+							ClearingUtility.moveToLocation(go,current);
 						}
-						ClearingUtility.moveToLocation(go,current);
 					}
 				}
 				

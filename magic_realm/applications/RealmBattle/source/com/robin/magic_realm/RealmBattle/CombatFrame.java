@@ -3149,6 +3149,13 @@ public class CombatFrame extends JFrame {
 		}
 		
 		MoveActivator activator = new MoveActivator(this);
+		TileLocation currentCombatLocation = RealmBattle.getCurrentCombatLocation(gameData);
+		if (activator.isFly() && currentCombatLocation.hasClearing() && currentCombatLocation.clearing.isAffectedByViolentWinds()) {
+			JOptionPane.showMessageDialog(
+					this,"Violent winds are blowing and you cannot FLY AWAY.",
+					"Violent Winds!",JOptionPane.PLAIN_MESSAGE,activeCharacter.getIcon());
+			return;
+		}
 		MoveActionResult result = activator.playedValidMoveChit("Run Away","You cannot run away, because you do not have a fast enough move to play.\n(Check your inventory!)");
 		if (result!=MoveActionResult.NO_MOVE_POSSIBLE) {
 			TileLocation runToClearing = chooseClearingToRunTo(activator.isFly());

@@ -557,6 +557,9 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 			if (new CombatWrapper(character.getGameObject()).isFreezed()) {
 				mod++;
 			}
+			if (character.getCurrentLocation()!=null && character.getCurrentLocation().clearing!=null && character.getCurrentLocation().clearing.isAffectedByViolentWinds()) {
+				mod++;
+			}
 		}
 		
 		if (this.isMagicMove()) return new Speed(0,mod);
