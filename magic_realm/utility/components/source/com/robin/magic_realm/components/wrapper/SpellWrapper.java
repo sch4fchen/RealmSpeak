@@ -1132,7 +1132,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 				Constants.ICON_SIZE,Constants.ICON_FOLDER+Constants.ALTERNATIVE,Constants.ICON_Y_OFFSET,Constants.ICON_Y_OFFSET+Constants.ALTERNATIVE,
 				Constants.DRAGON,Constants.DRAKE,Constants.WYRM,Constants.DEMON,Constants.DEVIL,Constants.IMP,Constants.ELEMENTAL,Constants.ANOMALY,Constants.GOLEM,
 				Constants.ORC,Constants.GOBLIN,Constants.OGRE,Constants.TROLL,Constants.GIANT,Constants.SPIDER,Constants.OCTOPUS,Constants.SCORPION,Constants.BAT,Constants.WOLF,Constants.BEAST,
-				Constants.VAMPIRE,Constants.SUCCUBUS,Constants.GHOST,Constants.GHOUL,Constants.ZOMBIE,Constants.SKELETON,Constants.WRAITH,Constants.UNDEAD,Constants.COLOSSUS,Constants.TITAN,Constants.MINOTAUR,Constants.GARGOYLE,
+				Constants.VAMPIRE,Constants.SUCCUBUS,Constants.GHOST,Constants.GHOUL,Constants.ZOMBIE,Constants.SKELETON,Constants.WRAITH,Constants.UNDEAD,Constants.COLOSSUS,Constants.TITAN,Constants.MINOTAUR,Constants.GARGOYLE,Constants.VIPER,Constants.SERPENT,
 				Constants.TRANSMORPH_IMMUNITY,Constants.TRANSMORPH_IMMUNITY_SELF,Constants.MAGIC_IMMUNITY,
 				Constants.NO_CHANGE_TACTICS,Constants.KILLS_HORSE,Constants.DESTROYS_ARMOR,Constants.CHANGE_TACTICS_AFTER_CASTING,Constants.ATTACK_AFTER_CASTING,Constants.SPELL_TARGETS_SELF,Constants.FAST_CASTER,Constants.SPELL_PRE_BATTLE,
 			};

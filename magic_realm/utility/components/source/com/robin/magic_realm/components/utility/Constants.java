@@ -360,6 +360,8 @@ public class Constants {
 	public static final String TITAN = "titan";	
 	public static final String MINOTAUR = "minotaur";
 	public static final String GARGOYLE = "gargoyle";
+	public static final String VIPER = "viper";
+	public static final String SERPENT = "serpent";
 	
 	// Other effects
 	public static final String BENEVOLENT = "benevolent"; // for spells

@@ -1,7 +1,7 @@
 ::ROADMAP::
 ---Super Realm Content---
 Spells VI: Alter Object, Alter Size, Enchant Weapon, Grow Wings, Mountain Surge
-Spells VII: Charm Snake, Dazzle, Free Spell, Join, Luck, Meditate
+Spells VII: Dazzle, Free Spell, Join, Luck, Meditate
 Spells VIII: Blunt (similar to blunting), Camouflage
 Treasures: 
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
@@ -63,7 +63,7 @@ Version 1.1.8.1
 QUEST UPDATE:
 # Updates to quest: A77
 SUPER REALM:
-# New spells: Violent Winds, Dark Favor, Reanimate
+# New spells: Violent Winds, Dark Favor, Reanimate, Charm Snake
 # Native Die is now white (not red)
 # Fix summoning for certain warnings
 # Fix H Spider setup

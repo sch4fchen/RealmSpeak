@@ -509,6 +509,7 @@
         <attribute icon_folder_alt="wesnoth/units" />
         <attribute icon_type_alt="seaSerpent" />
         <attribute icon_size_alt="0.9" />
+        <attribute serpent="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -748,6 +749,7 @@
         <attribute icon_folder_alt="wesnoth/units" />
         <attribute icon_type_alt="waterSerpent" />
         <attribute icon_size_alt="0.9" />
+        <attribute serpent="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -780,6 +782,7 @@
         <attribute icon_folder_alt="wesnoth/units" />
         <attribute icon_type_alt="waterSerpent" />
         <attribute icon_size_alt="0.9" />
+        <attribute serpent="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -1153,6 +1156,7 @@
         <attribute icon_type_alt="viper" />
         <attribute icon_size_alt="1.1" />
         <attribute icon_y_offset_alt="-7" />
+        <attribute viper="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -1187,6 +1191,7 @@
         <attribute icon_type_alt="viper" />
         <attribute icon_size_alt="1.1" />
         <attribute icon_y_offset_alt="-7" />
+        <attribute viper="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -19926,6 +19931,7 @@
         <attribute icon_type_alt="seaSerpent" />
         <attribute icon_folder_alt="wesnoth/units" />
         <attribute icon_size_alt="0.9" />
+        <attribute serpent="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -20159,6 +20165,7 @@
         <attribute icon_type_alt="waterSerpent" />
         <attribute icon_folder_alt="wesnoth/units" />
         <attribute icon_size_alt="0.9" />
+        <attribute serpent="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20190,6 +20197,7 @@
         <attribute icon_type_alt="waterSerpent" />
         <attribute icon_folder_alt="wesnoth/units" />
         <attribute icon_size_alt="0.9" />
+        <attribute serpent="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -20553,6 +20561,7 @@
         <attribute icon_folder_alt="wesnoth/units" />
         <attribute icon_size_alt="1.1" />
         <attribute icon_y_offset_alt="-7" />
+        <attribute viper="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -20586,6 +20595,7 @@
         <attribute icon_folder_alt="wesnoth/units" />
         <attribute icon_size_alt="1.1" />
         <attribute icon_y_offset_alt="-7" />
+        <attribute viper="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36516,6 +36526,7 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="0.9" />
+        <attribute serpent="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -40358,6 +40369,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
+        <attribute serpent="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40387,6 +40399,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
+        <attribute serpent="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40416,6 +40429,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
+        <attribute serpent="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -40445,6 +40459,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.9" />
+        <attribute serpent="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -41995,6 +42010,7 @@
         <attribute super_realm="" />
         <attribute icon_size="1.1" />
         <attribute icon_y_offset="-7" />
+        <attribute viper="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -42026,6 +42042,7 @@
         <attribute super_realm="" />
         <attribute icon_size="1.1" />
         <attribute icon_y_offset="-7" />
+        <attribute viper="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -59106,6 +59123,91 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2226" name="Alter Object">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="day" />
+        <attribute target="item" />
+        <attribute text="Alter object's weight. Roll on corresponding table." />
+        <attribute magic_color="Purple" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+        <attribute benevolent="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2227" name="Alter Size">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="day" />
+        <attribute target="individual, horse, hound" />
+        <attribute text="Alter object's size. Roll on corresponding table." />
+        <attribute magic_color="purple" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+        <attribute benevolent="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2228" name="Enchant Weapon">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="combat" />
+        <attribute target="active weapon" />
+        <attribute text="Weapon is transformed." />
+        <attribute magic_color="purple" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+        <attribute benevolent="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2229" name="Grow Wings">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="day" />
+        <attribute target="creature, horse, hound" />
+        <attribute text="Target can now FLY. Substract 1 from ove to minumum of 2." />
+        <attribute magic_color="purple" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+        <attribute benevolent="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2230" name="Mountain Surge">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="day" />
+        <attribute target="clearing" />
+        <attribute text="Target clearing is now a mountain clearing." />
+        <attribute magic_color="purple" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2232" name="Charm Snake">
+      <AttributeBlock blockName="this">
+        <attribute spell="VII" />
+        <attribute duration="day" />
+        <attribute target="uncontrolled monster" />
+        <attribute text="Control a viper or serpent in the clearing." />
+        <attribute magic_color="gray" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+        <attribute targeted_monsters="viper, serpent" />
+        <attribute control="" />
+        <attribute benevolent="" />
       </AttributeBlock>
     </GameObject>
   </objects>
