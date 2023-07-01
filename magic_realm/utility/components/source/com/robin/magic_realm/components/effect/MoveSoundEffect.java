@@ -9,6 +9,7 @@ public class MoveSoundEffect implements ISpellEffect {
 		// Target is a sound chit, secondary target is the tile to move to
 		GameObject soundChit = context.Target.getGameObject();
 		GameObject targetTile = context.Spell.getSecondaryTarget();
+		if (targetTile==null) targetTile = context.Spell.getCaster().getCurrentLocation().tile.getGameObject();
 		targetTile.add(soundChit);
 	}
 

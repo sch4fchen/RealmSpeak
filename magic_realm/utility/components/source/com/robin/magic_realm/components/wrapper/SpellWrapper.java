@@ -476,6 +476,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	}
 	public GameObject getSecondaryTarget() {
 		String id = getString(SECONDARY_TARGET);
+		if (id==null) return null;
 		GameObject go = getGameObject().getGameData().getGameObject(Long.valueOf(id));
 		return go;
 	}

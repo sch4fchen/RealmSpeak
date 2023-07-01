@@ -68,6 +68,8 @@ SUPER REALM:
 # Fix H Spider setup
 # Fix some numbers on setup chart
 # Fix prowling die number for Golems and Titan
+BUGS/ISSUES:
+# Fix Whistle for Monsters
 
 Version 1.1.8.0
 QUEST UPDATE:

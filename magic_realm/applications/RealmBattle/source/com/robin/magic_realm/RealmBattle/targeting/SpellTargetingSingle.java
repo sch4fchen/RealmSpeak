@@ -9,6 +9,7 @@ import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
 import com.robin.magic_realm.RealmBattle.CombatSheet;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
@@ -77,6 +78,7 @@ public abstract class SpellTargetingSingle extends SpellTargeting {
 		String selText = chooser.getSelectedText();
 		if (selText!=null) {
 			RealmComponent theTarget = chooser.getLastSelectedComponent();
+			updateSecondaryTargetsAfterSelection(activeCharacter.getCurrentLocation(), theTarget);
 			if (theTarget==null) {
 				CombatFrame.broadcastMessage(activeCharacter.getGameObject().getName(),"Targets the "+selText+" with "+spell.getGameObject().getName());
 				ArrayList<RealmComponent> list = secondaryTargets.get(selText);
@@ -101,6 +103,9 @@ public abstract class SpellTargetingSingle extends SpellTargeting {
 					chooser = new RealmComponentOptionChooser(combatFrame,secondaryTargetChoiceString,false);
 					Hashtable<String, GameObject> hash = new Hashtable<>();
 					ArrayList<GameObject> list = secondaryTargets.get(selText);
+					if (list.isEmpty()) {
+						return true;
+					}
 					for (GameObject st : list) {
 						String name = st.getName();
 						chooser.addOption(name,name); // FIXME This assumes names only here
@@ -122,5 +127,8 @@ public abstract class SpellTargetingSingle extends SpellTargeting {
 		for (GameObject hgo : rc.getGameObject().getHold()) {
 			chooser.addGameObjectToOption(option,hgo);
 		}
+	}
+	public void updateSecondaryTargetsAfterSelection(TileLocation battleLocation, RealmComponent theTarget) {
+		// can be overwritten
 	}
 }
