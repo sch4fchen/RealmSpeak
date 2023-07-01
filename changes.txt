@@ -64,6 +64,7 @@ QUEST UPDATE:
 # Updates to quest: A77
 SUPER REALM:
 # New spells: Violent Winds, Dark Favor, Reanimate
+# Native Die is now white (not red)
 # Fix summoning for certain warnings
 # Fix H Spider setup
 # Fix some numbers on setup chart

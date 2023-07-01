@@ -425,7 +425,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		panel.add(monsterDieLabel);
 		if (hostPrefs.usesSuperRealm()) {
 			DieRoller nativeDieRoller = game.getNativeDie();
-			nativeDieRoller.setAllRed();
+			nativeDieRoller.setAllWhite();
 			JLabel nativeDieLabel = new JLabel("Native Die:",nativeDieRoller.getIcon(),SwingConstants.CENTER);
 			nativeDieLabel.setHorizontalTextPosition(SwingConstants.LEFT);
 			panel.add(nativeDieLabel);

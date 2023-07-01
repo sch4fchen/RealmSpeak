@@ -251,7 +251,13 @@ public class DieRoller extends JComponent {
 	public void setAllRed() {
 		for (Die die:dice) {
 			die.setColor(Color.red,Color.white);
-			die.setName("red");
+			die.setName(Die.RED);
+		}
+	}
+	public void setAllWhite() {
+		for (Die die:dice) {
+			die.setColor(Color.white,Color.black);
+			die.setName(Die.WHITE);
 		}
 	}
 	public int getTotal() {
