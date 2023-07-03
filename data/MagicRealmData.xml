@@ -59239,6 +59239,71 @@
         <attribute super_realm_spell="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2235" name="Join">
+      <AttributeBlock blockName="this">
+        <attribute spell="VII" />
+        <attribute duration="phase" />
+        <attribute target="character" />
+        <attribute text="You may follow without starting in guide's clearing." />
+        <attribute magic_color="gold" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2236" name="Luck">
+      <AttributeBlock blockName="this">
+        <attribute spell="VII" />
+        <attribute duration="phase" />
+        <attribute target="character" />
+        <attribute text="You may re-roll a table roll you just made." />
+        <attribute magic_color="white" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2237" name="Mediate">
+      <AttributeBlock blockName="this">
+        <attribute spell="VII" />
+        <attribute duration="day" />
+        <attribute target="character" />
+        <attribute text="Target rolls on Meditate table and applies the result." />
+        <attribute magic_color="purple" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2238" name="Blunt">
+      <AttributeBlock blockName="this">
+        <attribute spell="VIII" />
+        <attribute duration="day" />
+        <attribute target="weapon, native, monster" />
+        <attribute text="Target loses one sharpness star." />
+        <attribute magic_color="gray" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2239" name="Mediate">
+      <AttributeBlock blockName="this">
+        <attribute spell="VIII" />
+        <attribute duration="day" />
+        <attribute target="character, native leader, controlled monster" />
+        <attribute text="Spell target cannot be followed or have hirelings assigned to him during Birdsong." />
+        <attribute magic_color="gold" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

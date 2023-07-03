@@ -36952,6 +36952,7 @@
         <attribute virtual_dwelling="" />
         <attribute icon_size="0.9" />
         <attribute roving_native="" />
+        <attribute summon="Lost Fortress Patter" />
       </AttributeBlock>
       <contains id="1318" />
       <contains id="1319" />
@@ -39443,10 +39444,10 @@
         <attribute icon_type="archer" />
         <attribute icon_folder="wesnoth/units/elves-wood" />
         <attribute virtual_dwelling="" />
-        <attribute box_num="3" />
         <attribute ts_sort="3" />
         <attribute icon_size="0.9" />
         <attribute roving_native="" />
+        <attribute summon="Lost Palace Patter" />
       </AttributeBlock>
       <contains id="1403" />
       <contains id="1404" />
@@ -41531,6 +41532,7 @@
         <attribute virtual_dwelling="" />
         <attribute icon_size="0.9" />
         <attribute roving_native="" />
+        <attribute summon="Lost City Patter" />
       </AttributeBlock>
       <contains id="1477" />
       <contains id="1478" />
@@ -47176,6 +47178,7 @@
         <attribute ts_offset="1" />
         <attribute icon_size="0.9" />
         <attribute roving_native="" />
+        <attribute summon="Lost Castle Patter" />
       </AttributeBlock>
       <contains id="1743" />
       <contains id="1744" />
@@ -59208,6 +59211,97 @@
         <attribute targeted_monsters="viper, serpent" />
         <attribute control="" />
         <attribute benevolent="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2233" name="Dazzle">
+      <AttributeBlock blockName="this">
+        <attribute spell="VII" />
+        <attribute duration="phase" />
+        <attribute target="character" />
+        <attribute text="Improve trading relationship with a native or monster group in clearing by one level." />
+        <attribute magic_color="any" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2234" name="Free Spell">
+      <AttributeBlock blockName="this">
+        <attribute spell="VII" />
+        <attribute duration="combat" />
+        <attribute target="site chit, TWT" />
+        <attribute text="You can cast the top most spell card from the target." />
+        <attribute magic_color="black" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2235" name="Join">
+      <AttributeBlock blockName="this">
+        <attribute spell="VII" />
+        <attribute duration="phase" />
+        <attribute target="character" />
+        <attribute text="You may follow without starting in guide's clearing." />
+        <attribute magic_color="gold" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2236" name="Luck">
+      <AttributeBlock blockName="this">
+        <attribute spell="VII" />
+        <attribute duration="phase" />
+        <attribute target="character" />
+        <attribute text="You may re-roll a table roll you just made." />
+        <attribute magic_color="white" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2237" name="Mediate">
+      <AttributeBlock blockName="this">
+        <attribute spell="VII" />
+        <attribute duration="day" />
+        <attribute target="character" />
+        <attribute text="Target rolls on Meditate table and applies the result." />
+        <attribute magic_color="purple" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2238" name="Blunt">
+      <AttributeBlock blockName="this">
+        <attribute spell="VIII" />
+        <attribute duration="day" />
+        <attribute target="weapon, native, monster" />
+        <attribute text="Target loses one sharpness star." />
+        <attribute magic_color="gray" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2239" name="Mediate">
+      <AttributeBlock blockName="this">
+        <attribute spell="VIII" />
+        <attribute duration="day" />
+        <attribute target="character, native leader, controlled monster" />
+        <attribute text="Spell target cannot be followed or have hirelings assigned to him during Birdsong." />
+        <attribute magic_color="gold" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute super_realm_spell="" />
       </AttributeBlock>
     </GameObject>
   </objects>
