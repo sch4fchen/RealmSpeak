@@ -745,10 +745,10 @@ public class RealmHostPanel extends JPanel {
 			SpellMasterWrapper spellMaster = SpellMasterWrapper.getSpellMaster(host.getGameData());
 			spellMaster.expireDaySpells();
 			
+			ClearingUtility.restoreChitState(host.getGameData());
 			// Init combat
 			if (hostPrefs.getEnableBattles()) {
 				// Init battles, so that RealmBattle.nextCombatAction will work
-				ClearingUtility.restoreChitState(host.getGameData());
 				RealmBattle.resetCombat(host.getGameData());
 				RealmBattle.initCombatOrder(host.getGameData());
 			}

@@ -108,12 +108,15 @@ public class ClearingUtility {
 		}
 		ArrayList<GameObject> added = new ArrayList<>();
 		Collection<GameObject> hold = new ArrayList<>(gameObject.getHold()); // this construction is necessary to prevent concurrent modification errors
+		boolean itemsAndSpells = !gameObject.hasThisAttribute(Constants.ROVING_NATIVE);
 		for (GameObject go : hold) {
 			if (testKey==null || go.hasThisAttribute(testKey)) {
-				go.setThisAttribute("clearing",String.valueOf(clearing));
-				GameClient.broadcastClient("host",go.getName()+" is added to "+tile.getName()+", clearing "+clearing);
-				tile.add(go);
-				added.add(go);
+				if (itemsAndSpells || (!go.hasThisAttribute("item") && !go.hasThisAttribute("spell"))) {
+					go.setThisAttribute("clearing",String.valueOf(clearing));
+					GameClient.broadcastClient("host",go.getName()+" is added to "+tile.getName()+", clearing "+clearing);
+					tile.add(go);
+					added.add(go);
+				}
 			}
 			if (go.hasThisAttribute("dwelling")) {
 				SetupCardUtility.setupDwellingNatives(go);

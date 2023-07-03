@@ -62,7 +62,7 @@ public class SetupCardUtility {
 			if (go.hasKey("gold_special_target")) {
 				goldSpecials.add(go);
 			}
-			else if (go.hasKey("dwelling")) {
+			else if (go.hasKey("dwelling") && !go.hasThisAttribute(Constants.ROVING_NATIVE)) {
 				// the native dwellings are dependant on the presence of another regular dwelling (campfires, house, etc.)
 				dwellingSpecific.add(go);
 			}
@@ -292,6 +292,10 @@ public class SetupCardUtility {
 			}
 		}
 		
+		ArrayList<String> goldChitNames = new ArrayList<>();
+		for (GameObject go : tl.tile.getHold()) {
+			if (go.hasKey("red_special")) goldChitNames.add(go.getName());
+		}
 		// Cycle through warning chits and summon anything possible (warning chits are already filtered when getWarnings is called)
 		for (GameObject warning : warningChits) {
 			if(!GameObjectMatchesBoardNumber(warning,boardNumber)) continue;
@@ -307,10 +311,9 @@ public class SetupCardUtility {
 			if (tileType==null) {
 				tileType = tl.tile.getTileType();
 			}
-			String summonName = warningName+" "+tileType; // ie., bones C
 			
 			String boardNum = warning.getThisAttribute(Constants.BOARD_NUMBER);
-			GameObject loc = SetupCardUtility.getFirstLocationWithSummonName(otherLocations,summonName,boardNum);
+			GameObject loc = SetupCardUtility.getFirstLocationWithSummonName(otherLocations,warningName,tileType,boardNum,goldChitNames);
 			if (loc!=null) {
 				// found one!  do summon by dumping hold to tile
 				
@@ -330,10 +333,10 @@ public class SetupCardUtility {
 				chit.addSummonedToday(monsterDie);
 				
 				String soundName = sound.getThisAttribute("sound"); // ie., roar
-				String name = soundName+" "+tileType; // ie., roar M
+				
 				int soundClearing = sound.getThisInt("clearing");
 				String boardNum = sound.getThisAttribute(Constants.BOARD_NUMBER);
-				GameObject loc = SetupCardUtility.getFirstLocationWithSummonName(otherLocations,name,boardNum);
+				GameObject loc = SetupCardUtility.getFirstLocationWithSummonName(otherLocations,soundName,tileType,boardNum,goldChitNames);
 				if (loc!=null) {
 					// found one!  do summon by dumping hold to tile
 					newMonsters.addAll(ClearingUtility.dumpHoldToTile(tl.tile.getGameObject(),loc,soundClearing));
@@ -354,6 +357,12 @@ public class SetupCardUtility {
 					}
 					else if (redSpecial.getGameObject().getThisAttribute(RealmComponent.RED_SPECIAL).matches("lost_city")) {
 						name = "city";
+					}
+					else if (redSpecial.getGameObject().getThisAttribute(RealmComponent.RED_SPECIAL).matches("lost_fortress")) {
+						name = "fortress";
+					}
+					else if (redSpecial.getGameObject().getThisAttribute(RealmComponent.RED_SPECIAL).matches("lost_palace")) {
+						name = "palace";
 					}
 					else {
 						continue;
@@ -601,7 +610,8 @@ public class SetupCardUtility {
 	 * location that matches up with the summon name.  This method is used by the summonMonsters(...) method
 	 * to determine which monsters/natives are summoned for a given warning or sound chit name.
 	 */
-	private static GameObject getFirstLocationWithSummonName(ArrayList<GameObject> otherLocations,String name,String boardNum) {
+	private static GameObject getFirstLocationWithSummonName(ArrayList<GameObject> otherLocations,String name,String tileType,String boardNum,Collection<String> redChitNames) {
+		String nameWithType = (name+" "+tileType).toLowerCase(); // ie., roar M
 		name = name.toLowerCase();
 		for (GameObject loc : otherLocations) {
 			String locBoardNum = loc.getThisAttribute(Constants.BOARD_NUMBER);
@@ -612,8 +622,16 @@ public class SetupCardUtility {
 						StringTokenizer tokens = new StringTokenizer(summon,",");
 						while(tokens.hasMoreTokens()) {
 							String test = tokens.nextToken().toLowerCase().trim();
-							if (name.indexOf(test)>=0) {
+							if (nameWithType.indexOf(test)>=0 || name.indexOf(test)>=0) {
 								return loc;
+							}
+							if (redChitNames!=null) {
+								for (String redChit : redChitNames) {
+									String nameWithRedChit = (redChit+" "+name).toLowerCase(); // ie., lost city patter
+									if (nameWithRedChit.indexOf(test)>=0) {
+										return loc;
+									}
+								}
 							}
 						}
 					} // else ---- This is probably a non-monster (Native, Treasure, Item, etc.)
