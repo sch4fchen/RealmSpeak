@@ -59126,6 +59126,7 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
+        <attribute benevolent="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2226" name="Alter Object">
@@ -59302,6 +59303,7 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
+        <attribute benevolent="" />
       </AttributeBlock>
     </GameObject>
   </objects>

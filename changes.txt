@@ -11,7 +11,7 @@ Super Realm: Adapt Commerce optional rules for new natives
 Super Realm: Characters, including potraits with credits, different chit icon
 Super Realm: option to use Super Realm search tables etc., add search tables etc. to menu; add first edition search tables to menu
 ---Super Realms Rules---
-Super Realm: icons for site chits, sound and warning chits, characters, travelers/visitors etc.
+Super Realm: icons for site chits, sound and warning chits, characters
 SUPER REALM: remaining RULES and LOGIC (rule changes compared to Magic Realm)
 Super Realm: Seasons + Weather 10.12 (p.117)
 Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
