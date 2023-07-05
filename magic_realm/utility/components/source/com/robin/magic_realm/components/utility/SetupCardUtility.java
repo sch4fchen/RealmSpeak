@@ -866,6 +866,9 @@ public class SetupCardUtility {
 	 * All monsters and natives for the given monster die are returned to the treasure setup card
 	 */
 	public static void resetDenizens(GameData data,int monsterDie, boolean regenerateHorses) {
+		resetDenizens(data,monsterDie,regenerateHorses,true);
+	}
+	public static void resetDenizens(GameData data,int monsterDie, boolean regenerateHorses, boolean seventhDay) {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		GameWrapper game = GameWrapper.findGame(data);
 		GamePool pool = new GamePool(data.getGameObjects());
@@ -920,7 +923,12 @@ public class SetupCardUtility {
 		returning.addAll(pool.extract(keyVals));
 		
 		if (!returning.isEmpty()) {
-			GameClient.broadcastClient("host","7th day - denizens return to setup card:");
+			if (seventhDay) {
+				GameClient.broadcastClient("host","7th day - denizens return to setup card:");
+			}
+			else {
+				GameClient.broadcastClient("host","Denizens return to setup card:");
+			}
 		}
 		
 		for (GameObject denizen : returning) {
@@ -951,6 +959,9 @@ public class SetupCardUtility {
 	 * All natives for the given native die are returned to the Chart of Clans
 	 */
 	public static void resetNatives(GameData data,int nativeDie) {
+		resetNatives(data,nativeDie,true);
+	}
+	public static void resetNatives(GameData data,int nativeDie,boolean seventhDay) {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		GameWrapper game = GameWrapper.findGame(data);
 		GamePool pool = new GamePool(data.getGameObjects());
@@ -997,7 +1008,12 @@ public class SetupCardUtility {
 		returning.addAll(pool.extract(keyVals));
 				
 		if (!returning.isEmpty()) {
-			GameClient.broadcastClient("host","7th day - natives return to the Chart of Clans:");
+			if (seventhDay) {
+				GameClient.broadcastClient("host","7th day - natives return to the Chart of Clans:");
+			}
+			else {
+				GameClient.broadcastClient("host","Natives return to the Chart of Clans:");
+			}
 		}
 		
 		for (GameObject denizen : returning) {

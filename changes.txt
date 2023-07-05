@@ -67,6 +67,7 @@ SUPER REALM:
 # Roving natives now spawn
 # Native Die is now white (not red)
 # Fix summoning for certain warnings
+# Fix end of month regeneration
 # Fix H Spider setup
 # Fix some numbers on setup chart
 # Fix prowling die number for Golems and Titan
