@@ -36952,7 +36952,7 @@
         <attribute virtual_dwelling="" />
         <attribute icon_size="0.9" />
         <attribute roving_native="" />
-        <attribute summon="Lost Fortress Patter" />
+        <attribute summon="Patter R, Patter H, Lost Fortress" />
       </AttributeBlock>
       <contains id="1318" />
       <contains id="1319" />
@@ -39447,7 +39447,7 @@
         <attribute ts_sort="3" />
         <attribute icon_size="0.9" />
         <attribute roving_native="" />
-        <attribute summon="Lost Palace Patter" />
+        <attribute summon="Patter F, Patter ST, Lost Palace" />
       </AttributeBlock>
       <contains id="1403" />
       <contains id="1404" />
@@ -41532,7 +41532,7 @@
         <attribute virtual_dwelling="" />
         <attribute icon_size="0.9" />
         <attribute roving_native="" />
-        <attribute summon="Lost City Patter" />
+        <attribute summon="Patter C, Patter V, Lost City" />
       </AttributeBlock>
       <contains id="1477" />
       <contains id="1478" />
@@ -47178,7 +47178,7 @@
         <attribute ts_offset="1" />
         <attribute icon_size="0.9" />
         <attribute roving_native="" />
-        <attribute summon="Lost Castle Patter" />
+        <attribute summon="Patter M, Patter W, Lost Castle" />
       </AttributeBlock>
       <contains id="1743" />
       <contains id="1744" />

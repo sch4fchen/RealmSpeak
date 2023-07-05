@@ -292,9 +292,16 @@ public class SetupCardUtility {
 			}
 		}
 		
-		ArrayList<String> goldChitNames = new ArrayList<>();
+		ArrayList<String> redChitNames = new ArrayList<>();
 		for (GameObject go : tl.tile.getHold()) {
-			if (go.hasKey("red_special")) goldChitNames.add(go.getName());
+			if (!go.hasKey("red_special")) continue;
+			redChitNames.add(go.getName());
+			String boardNum = go.getThisAttribute(Constants.BOARD_NUMBER);
+			int redChitClearing = go.getThisInt("clearing");
+			GameObject denizenDwelling = SetupCardUtility.getFirstLocationWithSummonName(otherLocations,go.getName(),null,boardNum,null);
+			if (denizenDwelling!=null) {
+				newMonsters.addAll(ClearingUtility.dumpHoldToTile(tl.tile.getGameObject(),denizenDwelling,redChitClearing));
+			}
 		}
 		// Cycle through warning chits and summon anything possible (warning chits are already filtered when getWarnings is called)
 		for (GameObject warning : warningChits) {
@@ -313,7 +320,7 @@ public class SetupCardUtility {
 			}
 			
 			String boardNum = warning.getThisAttribute(Constants.BOARD_NUMBER);
-			GameObject loc = SetupCardUtility.getFirstLocationWithSummonName(otherLocations,warningName,tileType,boardNum,goldChitNames);
+			GameObject loc = SetupCardUtility.getFirstLocationWithSummonName(otherLocations,warningName,tileType,boardNum,redChitNames);
 			if (loc!=null) {
 				// found one!  do summon by dumping hold to tile
 				
@@ -336,7 +343,7 @@ public class SetupCardUtility {
 				
 				int soundClearing = sound.getThisInt("clearing");
 				String boardNum = sound.getThisAttribute(Constants.BOARD_NUMBER);
-				GameObject loc = SetupCardUtility.getFirstLocationWithSummonName(otherLocations,soundName,tileType,boardNum,goldChitNames);
+				GameObject loc = SetupCardUtility.getFirstLocationWithSummonName(otherLocations,soundName,tileType,boardNum,redChitNames);
 				if (loc!=null) {
 					// found one!  do summon by dumping hold to tile
 					newMonsters.addAll(ClearingUtility.dumpHoldToTile(tl.tile.getGameObject(),loc,soundClearing));
@@ -611,8 +618,8 @@ public class SetupCardUtility {
 	 * to determine which monsters/natives are summoned for a given warning or sound chit name.
 	 */
 	private static GameObject getFirstLocationWithSummonName(ArrayList<GameObject> otherLocations,String name,String tileType,String boardNum,Collection<String> redChitNames) {
+		if (tileType==null) tileType = "";
 		String nameWithType = (name+" "+tileType).toLowerCase(); // ie., roar M
-		name = name.toLowerCase();
 		for (GameObject loc : otherLocations) {
 			String locBoardNum = loc.getThisAttribute(Constants.BOARD_NUMBER);
 			if ((boardNum==null && locBoardNum==null) || (boardNum!=null && boardNum.equals(locBoardNum))) {
@@ -622,7 +629,7 @@ public class SetupCardUtility {
 						StringTokenizer tokens = new StringTokenizer(summon,",");
 						while(tokens.hasMoreTokens()) {
 							String test = tokens.nextToken().toLowerCase().trim();
-							if (nameWithType.indexOf(test)>=0 || name.indexOf(test)>=0) {
+							if (nameWithType.indexOf(test)>=0) {
 								return loc;
 							}
 							if (redChitNames!=null) {
