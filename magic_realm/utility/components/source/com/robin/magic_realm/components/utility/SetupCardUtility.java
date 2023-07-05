@@ -293,7 +293,8 @@ public class SetupCardUtility {
 		}
 		
 		ArrayList<String> redChitNames = new ArrayList<>();
-		for (GameObject go : tl.tile.getHold()) {
+		Collection<GameObject> tileHold = tl.tile.getHold();
+		for (GameObject go : tileHold) {
 			if (!go.hasKey("red_special")) continue;
 			redChitNames.add(go.getName());
 			String boardNum = go.getThisAttribute(Constants.BOARD_NUMBER);
