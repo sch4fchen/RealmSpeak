@@ -122,6 +122,10 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		return getVulnerability().isTremendous();
 	}
 	
+	public boolean isMaximum() {
+		return getVulnerability().isMaximum();
+	}
+	
 	public boolean isSmall() {
 		return getGameObject().hasThisAttribute(Constants.SMALL);
 	}
