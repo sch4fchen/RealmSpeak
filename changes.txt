@@ -68,9 +68,10 @@ SUPER REALM:
 # Native Die is now white (not red)
 # Fix summoning for certain warnings
 # Fix end of month regeneration
-# Fix H Spider setup
+# Fix H Spider setup, fix other monster's regeneration
 # Fix some numbers on setup chart
 # Fix prowling die number for Golems and Titan
+# Fix prowling for X monsters
 BUGS/ISSUES:
 # Fix Whistle for Monsters
 

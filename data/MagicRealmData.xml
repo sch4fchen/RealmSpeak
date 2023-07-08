@@ -41910,7 +41910,7 @@
         <attribute fame="5" />
         <attribute notoriety="5" />
         <attribute icon_type="redDragon" />
-        <attribute setup_start="Flying Dragon Box" />
+        <attribute setup_start="H Flying Dragon Box" />
         <attribute monster_die="1" />
         <attribute flying="" />
         <attribute base_price="5" />
@@ -41943,7 +41943,7 @@
         <attribute fame="5" />
         <attribute notoriety="5" />
         <attribute icon_type="redDragon" />
-        <attribute setup_start="Flying Dragons Box" />
+        <attribute setup_start="H Flying Dragons Box" />
         <attribute monster_die="1" />
         <attribute flying="" />
         <attribute base_price="5" />
@@ -41976,7 +41976,7 @@
         <attribute fame="5" />
         <attribute notoriety="5" />
         <attribute icon_type="redDragon" />
-        <attribute setup_start="Flying Dragons Box" />
+        <attribute setup_start="H Flying Dragons Box" />
         <attribute monster_die="1" />
         <attribute flying="" />
         <attribute base_price="5" />
