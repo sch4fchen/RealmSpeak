@@ -294,7 +294,8 @@ public class SetupCardUtility {
 		}
 		
 		ArrayList<String> redChitNames = new ArrayList<>();
-		Collection<GameObject> tileHold = tl.tile.getHold();
+		ArrayList<GameObject> tileHold = new ArrayList<>();
+		tileHold.addAll(tl.tile.getHold());
 		for (GameObject go : tileHold) {
 			if (!go.hasKey("red_special")) continue;
 			redChitNames.add(go.getName());
