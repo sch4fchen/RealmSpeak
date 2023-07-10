@@ -1303,6 +1303,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.SR_NO_7TH_DAY_REGENERATION,true);
 		optionPane.setOption(Constants.SR_HORSES_REGENERATION,true);
 		optionPane.setOption(Constants.SR_NO_SPYING,true);
+		optionPane.setOption(Constants.FE_SEARCH_TABLES,true);
 		optionPane.setOption(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE,true);
 		optionPane.setOption(Constants.HOUSE1_CHIT_REMAIN_FACE_UP,true);
 		optionPane.setOption(Constants.RANDOM_ON_THE_FLY,true);

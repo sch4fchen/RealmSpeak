@@ -64,6 +64,7 @@ QUEST UPDATE:
 # Updates to quest: A77
 SUPER REALM:
 # New spells: Violent Winds, Dark Favor, Reanimate, Charm Snake
+# Default: First edition search tables for Search, Peer and Locate
 # Roving natives now spawn
 # Native Die is now white (not red)
 # Fix summoning for certain warnings
@@ -72,6 +73,7 @@ SUPER REALM:
 # Fix some numbers on setup chart
 # Fix prowling die number for Golems and Titan
 # Fix prowling for X monsters
+# Fix natives not affected by weakened or strengthened vulnerability
 BUGS/ISSUES:
 # Fix Whistle for Monsters
 
