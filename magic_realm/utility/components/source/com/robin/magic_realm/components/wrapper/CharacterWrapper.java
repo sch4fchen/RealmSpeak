@@ -2336,7 +2336,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 					// Must be someone to follow
 					for (RealmComponent rc : location.clearing.getClearingComponents()) {
 						// Someone, that isn't yourself (character or native leader only!)
-						if (rc.isPlayerControlledLeader() && !rc.getGameObject().equals(getGameObject())) {
+						if (rc.isPlayerControlledLeader() && !rc.getGameObject().equals(getGameObject()) && !rc.getGameObject().hasThisAttribute(Constants.CAMOUFLAGE)) {
 							// Only one is required!
 							return true;
 						}

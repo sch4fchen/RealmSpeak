@@ -2,14 +2,13 @@
 ---Super Realm Content---
 Spells VI: Alter Object, Alter Size, Enchant Weapon, Grow Wings, Mountain Surge
 Spells VII: Dazzle, Free Spell, Join, Luck, Meditate
-Spells VIII: Blunt (similar to blunting), Camouflage
+Spells VIII: Blunt (similar to blunting)
 Treasures: 
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Nomads, Tasks, Travelers: 4.8 (p.41)
 Super Realm: Quests + Events
 Super Realm: Adapt Commerce optional rules for new natives
 Super Realm: Characters, including potraits with credits, different chit icon
-Super Realm: option to use Super Realm search tables etc., add search tables etc. to menu; add first edition search tables to menu
 ---Super Realms Rules---
 Super Realm: icons for site chits, sound and warning chits, characters
 SUPER REALM: remaining RULES and LOGIC (rule changes compared to Magic Realm)
@@ -63,7 +62,7 @@ Version 1.1.8.1
 QUEST UPDATE:
 # Updates to quest: A77
 SUPER REALM:
-# New spells: Violent Winds, Dark Favor, Reanimate, Charm Snake
+# New spells: Violent Winds, Dark Favor, Reanimate, Charm Snake, Camouflage
 # Default: First edition search tables for Search, Peer and Locate
 # Roving natives now spawn
 # Native Die is now white (not red)

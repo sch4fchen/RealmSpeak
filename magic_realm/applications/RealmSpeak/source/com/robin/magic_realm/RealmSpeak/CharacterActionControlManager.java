@@ -565,7 +565,7 @@ public class CharacterActionControlManager {
 		TileLocation current = getCharacter().getCurrentLocation(); // since FOLLOW must the first and only action, current is good
 		for (RealmComponent rc : current.clearing.getClearingComponents()) {
 			// Someone, that isn't yourself
-			if (rc.isPlayerControlledLeader() && !rc.getGameObject().equals(getCharacter().getGameObject())) {
+			if (rc.isPlayerControlledLeader() && !rc.getGameObject().equals(getCharacter().getGameObject()) && !rc.getGameObject().hasThisAttribute(Constants.CAMOUFLAGE)) {
 				list.add(rc);
 			}
 		}
