@@ -59376,7 +59376,7 @@
         <attribute super_realm_spell="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2239" name="Mediate">
+    <GameObject id="2239" name="Camouflage">
       <AttributeBlock blockName="this">
         <attribute spell="VIII" />
         <attribute duration="day" />

@@ -1,6 +1,6 @@
 ::ROADMAP::
 ---Super Realm Content---
-Spells VI: Alter Object, Alter Size, Enchant Weapon, Grow Wings, Mountain Surge
+Spells VI: Alter Object, Alter Size, Enchant Weapon, Grow Wings
 Spells VII: Dazzle, Free Spell, Join, Luck, Meditate
 Spells VIII: Blunt (similar to blunting)
 Treasures: 
@@ -62,7 +62,7 @@ Version 1.1.8.1
 QUEST UPDATE:
 # Updates to quest: A77
 SUPER REALM:
-# New spells: Violent Winds, Dark Favor, Reanimate, Charm Snake, Camouflage
+# New spells: Violent Winds, Dark Favor, Reanimate, Charm Snake, Camouflage, Mountain Surge
 # Default: First edition search tables for Search, Peer and Locate
 # Roving natives now spawn
 # Native Die is now white (not red)

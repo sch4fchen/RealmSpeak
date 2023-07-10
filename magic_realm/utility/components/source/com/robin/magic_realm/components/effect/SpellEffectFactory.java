@@ -150,6 +150,7 @@ public class SpellEffectFactory {
 			case "horse whisper": return new ISpellEffect[]{new ApplyNamedEffect(Constants.HORSE_WHISPER),new TurnLightSideUpEffect()};
 			case "mesmerize": return new ISpellEffect[]{new MesmerizeEffect()};
 			case "migration": return new ISpellEffect[]{new MigrationEffect()};
+			case "mountain surge": return new ISpellEffect[]{new ApplyClearingEffect(Constants.MOUNTAIN_SURGE)};
 			case "negative aura": return new ISpellEffect[]{new ApplyNamedEffect(Constants.NEGATIVE_AURA)};
 			case "reanimate": return new ISpellEffect[]{new ReanimateEffect()};
 			case "reinvigorate": return new ISpellEffect[]{new ExtraActionEffect("R")};

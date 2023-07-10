@@ -500,6 +500,7 @@ public class Constants {
 	public static final String VIOLENT_WINDS = "violent_winds";
 	public static final String DARK_FAVOR = "dark_favor";
 	public static final String CAMOUFLAGE = "camouflage";
+	public static final String MOUNTAIN_SURGE = "mountain_surge";
 	
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";
