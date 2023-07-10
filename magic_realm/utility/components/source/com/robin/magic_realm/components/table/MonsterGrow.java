@@ -26,8 +26,8 @@ public class MonsterGrow extends RealmTable {
 	
 	private String doGrow(int sizes) {
 		Strength tremendous = new Strength("T");
-		Strength strength = monster.getVulnerability();
-		Strength newStrength = monster.getVulnerability();
+		Strength strength = new Strength(monster.getThisAttribute("vulnerability"));
+		Strength newStrength = new Strength(monster.getThisAttribute("vulnerability"));
 		newStrength.modify(sizes);
 		if (newStrength.strongerThan(tremendous)) {
 			newStrength = tremendous;

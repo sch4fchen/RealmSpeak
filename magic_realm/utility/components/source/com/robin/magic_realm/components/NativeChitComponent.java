@@ -132,7 +132,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		boolean armored = isArmored();
 		int x = cs - 18;
 		int y = 5;
-		String vul = getGameObject().getThisAttribute("vulnerability");
+		String vul = getVulnerability().getChar();
 		if (vul!=null) {
 			tt = new TextType(vul, cs, "STAT_BLACK");
 			int rad = Math.max(tt.getWidth(g), tt.getHeight(g)) + 4;
@@ -474,7 +474,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		}
 		
 		Harm harm = new Harm(attackerHarm);
-		Strength vulnerability = new Strength(getAttribute("this", "vulnerability"));
+		Strength vulnerability = getVulnerability();
 		if (!harm.getIgnoresArmor() && isArmored()) {
 			harm.dampenSharpness();
 			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor, and reduces sharpness: "+harm.toString());
