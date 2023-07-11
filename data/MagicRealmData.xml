@@ -58529,7 +58529,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="V" />
         <attribute duration="instant" />
-        <attribute target="clearing" />
+        <attribute target="caster" />
         <attribute text="Roll on Summon Demon table." />
         <attribute magic_color="black" />
         <attribute table="summondemon" />
@@ -58544,7 +58544,7 @@
     <GameObject id="2187" name="Summon Demon">
       <AttributeBlock blockName="this">
         <attribute duration="instant" />
-        <attribute target="clearing" />
+        <attribute target="caster" />
         <attribute text="Roll on Summon Demon table." />
         <attribute magic_color="black" />
         <attribute table="summondemon" />
@@ -58559,7 +58559,7 @@
     <GameObject id="2188" name="Summon Demon">
       <AttributeBlock blockName="this">
         <attribute duration="instant" />
-        <attribute target="clearing" />
+        <attribute target="caster" />
         <attribute text="Roll on Summon Demon table." />
         <attribute magic_color="black" />
         <attribute table="summondemon" />
@@ -58574,7 +58574,7 @@
     <GameObject id="2189" name="Summon Demon">
       <AttributeBlock blockName="this">
         <attribute duration="instant" />
-        <attribute target="clearing" />
+        <attribute target="caster" />
         <attribute text="Roll on Summon Demon table." />
         <attribute magic_color="black" />
         <attribute table="summondemon" />
@@ -58589,7 +58589,7 @@
     <GameObject id="2190" name="Summon Demon">
       <AttributeBlock blockName="this">
         <attribute duration="instant" />
-        <attribute target="clearing" />
+        <attribute target="caster" />
         <attribute text="Roll on Summon Demon table." />
         <attribute magic_color="black" />
         <attribute table="summondemon" />

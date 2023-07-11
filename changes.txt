@@ -73,7 +73,8 @@ SUPER REALM:
 # Fix prowling die number for Golems and Titan
 # Fix prowling for X monsters
 # Fix natives not affected by weakened or strengthened vulnerability
-# Fix exorcise not targeting vampires and succubi
+# Fix Exorcise not targeting vampires and succubi
+# Fix Summon Demon spell
 BUGS/ISSUES:
 # Fix Whistle for Monsters
 
