@@ -121,10 +121,13 @@ public abstract class SpellTargeting {
 		else if ("weapon".equals(targetType)) {
 			targeting = new SpellTargetingWeapon(combatFrame,spell);
 		}
+		else if ("weapon, denizen".equals(targetType)) {
+			targeting = new SpellTargetingWeaponOrDenizen(combatFrame,spell);
+		}
 		else if ("tile".equals(targetType)) {
 			targeting = new SpellTargetingTile(combatFrame,spell);
 		}
-		else if ("character,tile".equals(targetType)) {
+		else if ("character,tile".equals(targetType) || "character, tile".equals(targetType)) {
 			// Show a dialog to make a choice here
 			ButtonOptionDialog choice = new ButtonOptionDialog(combatFrame,null,"Target which?",spell.getGameObject().getName());
 			choice.addSelectionObject("Character");

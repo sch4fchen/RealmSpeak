@@ -527,6 +527,9 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 			if (tl!=null && tl.isInClearing() && tl.clearing.hasSpellEffect(Constants.BLUNTED)) {
 				sharpness--;
 			}
+			if (sharpness>0 && getGameObject().hasThisAttribute(Constants.BLUNT) && !getGameObject().hasThisAttribute(Constants.BLUNT_IMMUNITY)) {
+				sharpness--;
+			}
 		}
 		return sharpness;
 	}
@@ -534,7 +537,6 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	public String getMagicType() {
 		return getFaceAttributeString("magic_type");
 	}
-	
 	public String getAttackSpell() {
 		return getFaceAttributeString("attack_spell");
 	}

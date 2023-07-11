@@ -116,6 +116,10 @@ public class WeaponChitComponent extends RoundChitComponent {
 			sharpness++;
 		}
 		
+		if (sharpness>0 && getGameObject().hasThisAttribute(Constants.BLUNT)) {
+			sharpness--;
+		}
+		
 		if (sharpness>0) {
 			TileLocation tl = ClearingUtility.getTileLocation(getGameObject());
 			if (tl!=null && tl.isInClearing() && tl.clearing.hasSpellEffect(Constants.BLUNTED)) {

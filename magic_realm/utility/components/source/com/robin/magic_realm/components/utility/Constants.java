@@ -501,6 +501,8 @@ public class Constants {
 	public static final String DARK_FAVOR = "dark_favor";
 	public static final String CAMOUFLAGE = "camouflage";
 	public static final String MOUNTAIN_SURGE = "mountain_surge";
+	public static final String BLUNT = "blunt";
+	public static final String BLUNT_IMMUNITY = "blunt_immunity";
 	
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";

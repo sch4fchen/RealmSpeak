@@ -410,6 +410,9 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 			if (tl!=null && tl.isInClearing() && tl.clearing.hasSpellEffect(Constants.BLUNTED)) {
 				sharpness--;
 			}
+			if (sharpness>0 && getGameObject().hasThisAttribute(Constants.BLUNT) && !getGameObject().hasThisAttribute(Constants.BLUNT_IMMUNITY)) {
+				sharpness--;
+			}
 		}
 		return sharpness;
 	}

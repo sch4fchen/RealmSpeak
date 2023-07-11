@@ -137,6 +137,7 @@ public class SpellEffectFactory {
 			// super realm
 			case "barkskin": return new ISpellEffect[]{new ApplyNamedEffect(Constants.BARKSKIN)};
 			case "blinding light": return new ISpellEffect[]{new PhaseChitEffect()};
+			case "blunt": return new ISpellEffect[]{new ApplyNamedEffect(Constants.BLUNT)};
 			case "camouflage": return new ISpellEffect[]{new ApplyNamedEffect(Constants.CAMOUFLAGE)};
 			case "charm snake": return new ISpellEffect[]{new ControlEffect()};
 			case "control horse": return new ISpellEffect[]{new ControlHorseEffect()};

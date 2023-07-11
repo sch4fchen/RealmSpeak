@@ -7635,7 +7635,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="III" />
         <attribute duration="permanent" />
-        <attribute target="character,tile" />
+        <attribute target="character, tile" />
         <attribute text="MOVE randomly (roll for clearing)" />
         <attribute magic_color="gold" />
         <attribute original_game="" />
@@ -7650,7 +7650,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="III" />
         <attribute duration="permanent" />
-        <attribute target="character,tile" />
+        <attribute target="character, tile" />
         <attribute text="Add one to all SEARCH die rolls" />
         <attribute magic_color="gold" />
         <attribute original_game="" />
@@ -36795,6 +36795,7 @@
         <attribute titan="" />
         <attribute missile="" />
         <attribute archer="" />
+        <attribute blunt_immunity="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="4" />
@@ -39803,6 +39804,7 @@
         <attribute elemental="" />
         <attribute anomaly="" />
         <attribute box_num="1" />
+        <attribute blunt_immunity="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39843,6 +39845,7 @@
         <attribute elemental="" />
         <attribute anomaly="" />
         <attribute box_num="2" />
+        <attribute blunt_immunity="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39883,6 +39886,7 @@
         <attribute elemental="" />
         <attribute anomaly="" />
         <attribute box_num="3" />
+        <attribute blunt_immunity="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39923,6 +39927,7 @@
         <attribute elemental="" />
         <attribute anomaly="" />
         <attribute box_num="4" />
+        <attribute blunt_immunity="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -57161,7 +57166,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="III" />
         <attribute duration="permanent" />
-        <attribute target="character,tile" />
+        <attribute target="character, tile" />
         <attribute text="MOVE randomly (roll for clearing)" />
         <attribute magic_color="gold" />
         <attribute sp_mv_random="" />
@@ -57174,7 +57179,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="III" />
         <attribute duration="permanent" />
-        <attribute target="character,tile" />
+        <attribute target="character, tile" />
         <attribute text="Add one to all SEARCH die rolls" />
         <attribute magic_color="gold" />
         <attribute host_okay="" />
