@@ -57042,6 +57042,9 @@
           <attributeVal N1="demons" />
           <attributeVal N2="spells" />
           <attributeVal N3="curses" />
+          <attributeVal N4="imps" />
+          <attributeVal N5="succubi" />
+          <attributeVal N6="vampires" />
         </attributeList>
       </AttributeBlock>
     </GameObject>

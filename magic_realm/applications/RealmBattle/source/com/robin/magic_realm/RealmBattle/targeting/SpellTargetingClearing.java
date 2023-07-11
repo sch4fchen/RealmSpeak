@@ -53,6 +53,14 @@ public class SpellTargetingClearing extends SpellTargetingSpecial {
 				}
 			}
 		}
+		if (clearingTargetType.contains("imps")) {
+			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
+			for (RealmComponent rc : allBattleParticipants) {
+				if (rc.getGameObject().hasThisAttribute(Constants.IMP) && !gameObjects.contains(rc.getGameObject())) {
+					gameObjects.add(rc.getGameObject());
+				}
+			}
+		}
 		if (clearingTargetType.contains("ghosts")) {
 			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
 			for (RealmComponent rc : allBattleParticipants) {
@@ -81,6 +89,22 @@ public class SpellTargetingClearing extends SpellTargetingSpecial {
 			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
 			for (RealmComponent rc : allBattleParticipants) {
 				if (rc.getGameObject().hasThisAttribute(Constants.GHOUL) && !gameObjects.contains(rc.getGameObject())) {
+					gameObjects.add(rc.getGameObject());
+				}
+			}
+		}
+		if (clearingTargetType.contains("vampires")) {
+			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
+			for (RealmComponent rc : allBattleParticipants) {
+				if (rc.getGameObject().hasThisAttribute(Constants.VAMPIRE) && !gameObjects.contains(rc.getGameObject())) {
+					gameObjects.add(rc.getGameObject());
+				}
+			}
+		}
+		if (clearingTargetType.contains("succubi")) {
+			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
+			for (RealmComponent rc : allBattleParticipants) {
+				if (rc.getGameObject().hasThisAttribute(Constants.SUCCUBUS) && !gameObjects.contains(rc.getGameObject())) {
 					gameObjects.add(rc.getGameObject());
 				}
 			}
