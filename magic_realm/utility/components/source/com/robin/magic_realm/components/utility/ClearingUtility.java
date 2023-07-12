@@ -519,7 +519,7 @@ public class ClearingUtility {
 		if (location.isInClearing()) {
 			Collection<RealmComponent> c = location.clearing.getClearingComponents();
 			for (RealmComponent rc : c) {
-				if (rc.isPlayerControlledLeader()) {
+				if (rc.isPlayerControlledLeader() && !rc.getGameObject().hasThisAttribute(Constants.CAMOUFLAGE)) {
 					// Valid Guide
 					list.add(rc);
 				}

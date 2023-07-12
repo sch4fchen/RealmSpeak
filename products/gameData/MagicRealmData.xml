@@ -59408,7 +59408,7 @@
         <attribute spell="VIII" />
         <attribute duration="day" />
         <attribute target="character, native leader, controlled monster" />
-        <attribute text="Spell target cannot be followed or have hirelings assigned to him during Birdsong." />
+        <attribute text="Target cannot be followed or have hirelings assigned." />
         <attribute magic_color="gold" />
         <attribute host_okay="" />
         <attribute learnable="" />
