@@ -109,6 +109,14 @@ public class SpellTargetingClearing extends SpellTargetingSpecial {
 				}
 			}
 		}
+		if (clearingTargetType.contains("devils")) {
+			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
+			for (RealmComponent rc : allBattleParticipants) {
+				if (rc.getGameObject().hasThisAttribute(Constants.DEVIL) && !gameObjects.contains(rc.getGameObject())) {
+					gameObjects.add(rc.getGameObject());
+				}
+			}
+		}
 		if (clearingTargetType.contains("undead")) {
 			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
 			for (RealmComponent rc : allBattleParticipants) {

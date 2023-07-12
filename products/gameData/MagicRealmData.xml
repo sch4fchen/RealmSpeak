@@ -7876,6 +7876,7 @@
         <attribute icon_folder_alt="wesnoth/units" />
         <attribute icon_type_character="dragon_transform" />
         <attribute icon_folder_character="monsters" />
+        <attribute beast="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll2">
         <attribute vulnerability="H" />
@@ -7894,6 +7895,7 @@
         <attribute icon_size_alt="1" />
         <attribute icon_type_character="lion" />
         <attribute icon_folder_character="monsters" />
+        <attribute beast="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll3">
         <attribute vulnerability="M" />
@@ -7911,6 +7913,7 @@
         <attribute icon_folder_alt="wesnoth/units/addons" />
         <attribute icon_type_character="eagle" />
         <attribute icon_folder_character="monsters" />
+        <attribute beast="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll4">
         <attribute vulnerability="L" />
@@ -7927,6 +7930,7 @@
         <attribute icon_folder_alt="wesnoth/units/monsters" />
         <attribute icon_type_character="bird" />
         <attribute icon_folder_character="monsters" />
+        <attribute beast="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll5">
         <attribute vulnerability="L" />
@@ -7943,6 +7947,7 @@
         <attribute icon_folder_alt="wesnoth/units/monsters" />
         <attribute icon_type_character="squirrel" />
         <attribute icon_folder_character="monsters" />
+        <attribute beast="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll6">
         <attribute vulnerability="L" />
@@ -7959,6 +7964,7 @@
         <attribute icon_folder_alt="wesnoth/units/addons" />
         <attribute icon_type_character="frog" />
         <attribute icon_folder_character="monsters" />
+        <attribute beast="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="298" name="Sense Danger">
@@ -27892,6 +27898,7 @@
         <attribute icon_folder_alt="wesnoth/units" />
         <attribute icon_type_character="dragon_transform" />
         <attribute icon_folder_character="monsters" />
+        <attribute beast="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll2">
         <attribute vulnerability="H" />
@@ -27910,6 +27917,7 @@
         <attribute icon_size_alt="1" />
         <attribute icon_type_character="lion" />
         <attribute icon_folder_character="monsters" />
+        <attribute beast="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll3">
         <attribute vulnerability="M" />
@@ -27927,6 +27935,7 @@
         <attribute icon_folder_alt="wesnoth/units/addons" />
         <attribute icon_type_character="eagle" />
         <attribute icon_folder_character="monsters" />
+        <attribute beast="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll4">
         <attribute vulnerability="L" />
@@ -27942,6 +27951,7 @@
         <attribute icon_folder_alt="wesnoth/units/monsters" />
         <attribute icon_type_character="bird" />
         <attribute icon_folder_character="monsters" />
+        <attribute beast="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll5">
         <attribute vulnerability="L" />
@@ -27957,6 +27967,7 @@
         <attribute icon_folder_alt="wesnoth/units/monsters" />
         <attribute icon_type_character="squirrel" />
         <attribute icon_folder_character="monsters" />
+        <attribute beast="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll6">
         <attribute vulnerability="L" />
@@ -27972,6 +27983,7 @@
         <attribute icon_folder_alt="wesnoth/units/addons" />
         <attribute icon_type_character="frog" />
         <attribute icon_folder_character="monsters" />
+        <attribute beast="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1077" name="Rock Golem">
@@ -57050,6 +57062,7 @@
           <attributeVal N4="imps" />
           <attributeVal N5="succubi" />
           <attributeVal N6="vampires" />
+          <attributeVal N7="devils" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
@@ -57381,6 +57394,7 @@
         <attribute super_realm="" />
         <attribute icon_type_character="dragon_transform" />
         <attribute icon_folder_character="monsters" />
+        <attribute beast="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll2">
         <attribute vulnerability="H" />
@@ -57398,6 +57412,7 @@
         <attribute icon_size="1" />
         <attribute icon_type_character="lion" />
         <attribute icon_folder_character="monsters" />
+        <attribute beast="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll3">
         <attribute vulnerability="M" />
@@ -57414,6 +57429,7 @@
         <attribute super_realm="" />
         <attribute icon_type_character="eagle" />
         <attribute icon_folder_character="monsters" />
+        <attribute beast="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll4">
         <attribute vulnerability="L" />
@@ -57429,6 +57445,7 @@
         <attribute super_realm="" />
         <attribute icon_type_character="bird" />
         <attribute icon_folder_character="monsters" />
+        <attribute beast="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll5">
         <attribute vulnerability="L" />
@@ -57444,6 +57461,7 @@
         <attribute super_realm="" />
         <attribute icon_type_character="squirrel" />
         <attribute icon_folder_character="monsters" />
+        <attribute beast="" />
       </AttributeBlock>
       <AttributeBlock blockName="roll6">
         <attribute vulnerability="L" />
@@ -57459,6 +57477,7 @@
         <attribute super_realm="" />
         <attribute icon_type_character="frog" />
         <attribute icon_folder_character="monsters" />
+        <attribute beast="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2141" name="Sense Danger">
