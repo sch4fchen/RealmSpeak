@@ -494,6 +494,9 @@ public class CombatWrapper extends GameObjectWrapper {
 	public void addKillResult() {
 		addListItem(COMBAT_HIT_RESULT_LIST,"K"); // only used by battle participants to record kills
 	}
+	public void addKill(GameObject kill) {
+		addListItem(COMBAT_KILL_RESULT_LIST,kill.getStringId());; // only used by battle location to record kills
+	}
 	public void addSpoilsInfo(int round,GameObject kill,Spoils spoils) {
 		addListItem(COMBAT_ROUND_RESULT_LIST,String.valueOf(round));
 		addListItem(COMBAT_KILL_RESULT_LIST,kill.getStringId());
@@ -532,6 +535,9 @@ public class CombatWrapper extends GameObjectWrapper {
 	}
 	public void clearHitResults() {
 		setBoolean(COMBAT_HIT_RESULT_LIST,false);
+	}
+	public void clearKillResults() {
+		setBoolean(COMBAT_KILL_RESULT_LIST,false);
 	}
 	public int getHitResultCount() {
 		ArrayList<String> results = getList(COMBAT_HIT_RESULT_LIST);

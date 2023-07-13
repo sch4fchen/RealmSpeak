@@ -683,7 +683,7 @@ public class RealmBattle {
 			tile.setWasFatigue(false);
 		}
 		
-		int hits = model.doResolveAttacks(tile.getHitResultCount()+1);
+		int hits = model.doResolveAttacks(tile.getHitResultCount()+1,tile);
 		if (hits>0 || fatigue || spellCasting || model.wasSpellCasting()) {
 			tile.addHitResult();
 		}
@@ -754,6 +754,7 @@ public class RealmBattle {
 //		CombatWrapper.clearAllCombatInfo(location.tile.getGameObject());
 		CombatWrapper cw = new CombatWrapper(location.tile.getGameObject());
 		cw.clearHitResults();
+		cw.clearKillResults();
 		cw.setWasFatigue(false);
 		for (GameObject undead : cw.getRaisedUndeads()) {
 			RealmUtility.makeDead(RealmComponent.getRealmComponent(undead));

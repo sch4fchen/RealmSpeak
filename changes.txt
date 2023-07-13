@@ -76,6 +76,7 @@ SUPER REALM:
 # Fix Summon Demon spell
 # Fix Barkskin spell
 # Fix Mesermize spell
+# Fix Reanimate spell
 BUGS/ISSUES:
 # Fix Whistle for Monsters
 

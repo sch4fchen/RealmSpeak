@@ -59226,7 +59226,7 @@
         <attribute dark_favor="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2225" name="Reanmiate">
+    <GameObject id="2225" name="Reanimate">
       <AttributeBlock blockName="this">
         <attribute spell="V" />
         <attribute duration="combat" />

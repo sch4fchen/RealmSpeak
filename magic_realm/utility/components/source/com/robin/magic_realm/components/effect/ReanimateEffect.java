@@ -2,6 +2,7 @@ package com.robin.magic_realm.components.effect;
 
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
@@ -26,6 +27,12 @@ public class ReanimateEffect implements ISpellEffect {
 		monster.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units");
 		monster.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"0.9");
 		monster.setThisAttribute(Constants.UNDEAD);
+		if (context.Target.getGameObject().hasThisAttribute("monster") ) {
+			monster.setThisAttribute("monster");
+		}
+		if (context.Target.getGameObject().hasThisAttribute("native") ) {
+			monster.setThisAttribute("native");
+		}
 		monster.setThisAttribute(Constants.SPOILS_NONE);
 		for (GameObject held : context.Target.getGameObject().getHold()) {
 			if (held.hasThisAttribute(Constants.SPELL_DENIZEN)) {
@@ -35,6 +42,10 @@ public class ReanimateEffect implements ISpellEffect {
 		}
 		context.Spell.setExtraIdentifier(monster.getStringId());
 		context.getCharacterCaster().addHireling(monster);
+		TileLocation loc = RealmComponent.getRealmComponent(context.Caster).getCurrentLocation();
+		if (loc!=null && loc.clearing!=null) {
+			RealmComponent.getRealmComponent(context.Caster).getCurrentLocation().clearing.add(monster,null);
+		}
 	}
 
 	@Override

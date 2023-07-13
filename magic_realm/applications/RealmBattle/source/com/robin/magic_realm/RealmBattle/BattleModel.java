@@ -905,7 +905,7 @@ public class BattleModel {
 	/**
 	 * @return The number of hits that occurred during this round
 	 */
-	public int doResolveAttacks(int round) {
+	public int doResolveAttacks(int round,CombatWrapper tile) {
 		killedTallyHash = new HashLists<>();
 		killTallyHash = new HashLists<>();
 		killerOrder = new ArrayList<>();
@@ -944,6 +944,10 @@ public class BattleModel {
 		
 		// Now, do all the appropriate scoring for characters that killed things
 		scoreKills(round);
+		
+		for (GameObject kill : killedTallyHash.keySet()) {
+			tile.addKill(kill);
+		}		
 		
 		// Build a battle summary here
 		BattleSummaryWrapper bs = new BattleSummaryWrapper(theGame.getGameObject());
@@ -2299,7 +2303,8 @@ public class BattleModel {
 		}
 	}
 	public Collection<GameObject> getKilledObjects() {
-		return killedTallyHash.keySet();		
+		CombatWrapper cw = new CombatWrapper(battleLocation.tile.getGameObject());
+		return cw.getAllKills();
 	}
 	/**
 	 * This has to happen separate from disengagement, so that the fatigue/wound step isn't confusing.
