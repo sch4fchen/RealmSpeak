@@ -75,6 +75,7 @@ SUPER REALM:
 # Fix Exorcise not targeting vampires and succubi
 # Fix Summon Demon spell
 # Fix Barkskin spell
+# Fix Mesermize spell
 BUGS/ISSUES:
 # Fix Whistle for Monsters
 

@@ -600,20 +600,19 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 	public Speed getMagicSpeed() {
 		String action = getChitAttribute("action").toUpperCase();
 		GameObject owner = getGameObject().getHeldBy();
-		CharacterWrapper character = null;
-		if (owner!=null) {
-			character = new CharacterWrapper(getGameObject().getHeldBy());
+		if (owner.hasThisAttribute("spell") ) {
+			owner = owner.getHeldBy();
 		}
 		if ("MAGIC".equals(action)) {
 			int mod = 0;
-			if (new CombatWrapper(character.getGameObject()).isFreezed()) {
-				mod++;
-			}
 			// alerted magic is always speed zero
 			if (isAlerted()) {
 				return new Speed(0,mod); // wheee!
 			}
-			if (character!=null && character.hasMesmerizeEffect(Constants.INTOXICATED)) {
+			if (new CombatWrapper(owner).isFreezed()) {
+				mod++;
+			}
+			if ((new CharacterWrapper(owner)).hasMesmerizeEffect(Constants.INTOXICATED)) {
 				mod++;
 			}
 
