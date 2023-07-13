@@ -85,6 +85,9 @@ public abstract class SpellTargeting {
 				||"uncontrolled monster".equals(targetType) || "monster uncontrolled".equals(targetType) || "monster_uncontrolled".equals(targetType)) {
 			targeting = new SpellTargetingUncontrolledMonsters(combatFrame,spell);
 		}
+		else if ("creature, horse, hound".equals(targetType)) {
+			targeting = new SpellTargetingCreatureHorseHound(combatFrame,spell);
+		}
 		else if ("spider, octopus".equals(targetType)) {
 			targeting = new SpellTargetingSpiderOctopus(combatFrame,spell);
 		}

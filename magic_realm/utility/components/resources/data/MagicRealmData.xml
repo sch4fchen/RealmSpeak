@@ -58949,7 +58949,7 @@
         <attribute spell="I" />
         <attribute duration="instant" />
         <attribute target="clearing" />
-        <attribute text="Roll for every Ghost, Ghoul, Skeleton, Undead and Wraith in the clearing. Target killed on a result &lt;6" />
+        <attribute text="Roll for every Ghost, Ghoul, Skeleton, Undead and Wraith in the clearing, killed on a result &lt;6" />
         <attribute magic_color="white" />
         <attribute host_okay="" />
         <attribute learnable="" />

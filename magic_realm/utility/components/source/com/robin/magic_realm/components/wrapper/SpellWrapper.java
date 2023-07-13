@@ -887,7 +887,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		}
 		
 		AffectThread at = new AffectThread(parent,theGame,expireImmediately,includeNullifyEffects);
-		if (SwingUtilities.isEventDispatchThread() || this.getGameObject().hasThisAttribute(Constants.SPELL_DENIZEN)) {
+		if (SwingUtilities.isEventDispatchThread() || getGameObject().hasThisAttribute(Constants.SPELL_DENIZEN)) {
 //System.out.println("Already EDT");
 			// NON threaded
 			return at.doAffect(simultaneousSpells);
