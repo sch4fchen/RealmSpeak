@@ -76,6 +76,7 @@ SUPER REALM:
 # Fix Summon Demon spell
 # Fix Barkskin spell
 # Fix Mesermize spell
+# Fix Negative Auro affecting clearing without being cast
 BUGS/ISSUES:
 # Fix Whistle for Monsters
 
