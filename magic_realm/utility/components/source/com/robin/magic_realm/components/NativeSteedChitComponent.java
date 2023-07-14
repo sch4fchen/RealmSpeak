@@ -287,7 +287,7 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 			harm.dampenSharpness();
 			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor, and reduces sharpness: "+harm.toString());
 		}
-		else if (!harm.getIgnoresArmor() && hasBarkskin()) {
+		else if (!isArmored() && hasBarkskin()) {
 			ColorMagic attackerImmunityColor = ColorMagic.makeColorMagic(attacker.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY),true);
 			if (attackerImmunityColor.isPrismColor()||attackerImmunityColor.getColorNumber()==ColorMagic.GRAY) {
 				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Barkskin is ignored.");

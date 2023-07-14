@@ -65,6 +65,7 @@ SUPER REALM:
 # Default: First edition search tables for Search, Peer and Locate
 # Roving natives now spawn
 # Native Die is now white (not red)
+# Correct Barkskin rules (does not count as armor anymore)
 # Fix summoning for certain warnings
 # Fix end of month regeneration
 # Fix H Spider setup, fix other monster's regeneration
