@@ -514,9 +514,8 @@ public class CombatWrapper extends GameObjectWrapper {
 	}
 	public ArrayList<GameObject> getAllKills() {
 		GameData gameData = getGameObject().getGameData();
-		ArrayList<GameObject> kills = null;
+		ArrayList<GameObject> kills = new ArrayList<>();
 		if (getBoolean(COMBAT_KILL_RESULT_LIST)) {
-			kills = new ArrayList<>();
 			for (String i : getList(COMBAT_KILL_RESULT_LIST)) {
 				kills.add(gameData.getGameObject(Long.valueOf(i)));
 			}
