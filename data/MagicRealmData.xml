@@ -59307,6 +59307,9 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
+		<attributeList keyName="target_clearing">
+          <attributeVal N0="clearing" />
+        </attributeList>
       </AttributeBlock>
     </GameObject>
     <GameObject id="2232" name="Charm Snake">
