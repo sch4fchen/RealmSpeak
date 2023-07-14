@@ -1123,7 +1123,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean isNegativeAuraInClearing() {
 		if (getCurrentLocation()!=null && getCurrentLocation().clearing!=null) {
 			for (RealmComponent rc : getCurrentLocation().clearing.getDeepClearingComponents()) {
-				if (rc.getGameObject().hasThisAttribute(Constants.NEGATIVE_AURA)) {
+				if (rc.getGameObject().hasThisAttribute(Constants.NEGATIVE_AURA) && !rc.isSpell()) {
 					return true;
 				}
 			}
