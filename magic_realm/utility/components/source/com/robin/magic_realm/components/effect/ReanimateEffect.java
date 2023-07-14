@@ -23,6 +23,14 @@ public class ReanimateEffect implements ISpellEffect {
 		monster.setAttribute("light","move_speed",monster.getAttributeInt("light","attack_speed")+1);
 		monster.setAttribute("dark","move_speed",monster.getAttributeInt("light","attack_speed")+1);
 		monster.setThisAttribute(Constants.ARMORED);
+		monster.setAttribute(Constants.ICON_TYPE,context.Target.getGameObject().getThisAttribute(Constants.ICON_TYPE));
+		monster.setAttribute(Constants.ICON_FOLDER,context.Target.getGameObject().getThisAttribute(Constants.ICON_FOLDER));
+		if (context.Target.getGameObject().hasThisAttribute(Constants.ICON_SIZE)) {
+			monster.setAttribute(Constants.ICON_SIZE,context.Target.getGameObject().getThisAttribute(Constants.ICON_SIZE));
+		}
+		if (context.Target.getGameObject().hasThisAttribute(Constants.ICON_Y_OFFSET)) {
+			monster.setAttribute(Constants.ICON_Y_OFFSET,context.Target.getGameObject().getThisAttribute(Constants.ICON_Y_OFFSET));
+		}
 		monster.setThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE,"skeleton");
 		monster.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units");
 		monster.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"0.9");
