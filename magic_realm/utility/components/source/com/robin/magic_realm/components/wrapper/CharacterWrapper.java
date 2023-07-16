@@ -5567,10 +5567,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 */
 	public boolean mustFly() {
 		GameObject transmorph = getTransmorph();
-		if (transmorph!=null && transmorph.hasThisAttribute("flying")) {
+		if (transmorph!=null && (transmorph.hasThisAttribute(Constants.FLYING) || getGameObject().hasThisAttribute(Constants.GROW_WINGS))) {
 			return true;
 		}
-		else if ((isControlledMonster() || isHiredLeader()) && getGameObject().hasThisAttribute("flying")) {
+		else if ((isControlledMonster() || isHiredLeader()) && (getGameObject().hasThisAttribute(Constants.FLYING) || getGameObject().hasThisAttribute(Constants.GROW_WINGS))) {
 			return true;
 		}
 		TileLocation planned = getPlannedLocation();
@@ -5614,13 +5614,13 @@ public class CharacterWrapper extends GameObjectWrapper {
 		ArrayList<StrengthChit> list = new ArrayList<>();
 		
 		GameObject transmorph = getTransmorph();
-		if (transmorph!=null && transmorph.hasThisAttribute("flying")) {
+		if (transmorph!=null && (transmorph.hasThisAttribute(Constants.FLYING) || transmorph.hasThisAttribute(Constants.GROW_WINGS))) {
 			list.add(new StrengthChit(
 								transmorph,
 								new Strength(transmorph.getThisAttribute("vulnerability")),
 								BattleUtility.getMoveSpeed(RealmComponent.getRealmComponent(transmorph))));
 		}
-		if ((isControlledMonster() || isHiredLeader()) && getGameObject().hasThisAttribute("flying")) {
+		if ((isControlledMonster() || isHiredLeader()) && (getGameObject().hasThisAttribute(Constants.FLYING) || getGameObject().hasThisAttribute(Constants.GROW_WINGS))) {
 			list.add(new StrengthChit(
 							getGameObject(),
 							new Strength(getGameObject().getThisAttribute("vulnerability")),
@@ -5686,7 +5686,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 			
 			for (RealmComponent rc:getFollowingHirelings()) {
-				if (rc.getGameObject().hasThisAttribute("flying")) {
+				if (rc.getGameObject().hasThisAttribute(Constants.FLYING) || rc.getGameObject().hasThisAttribute(Constants.GROW_WINGS)) {
 					list.add(new StrengthChit(
 									rc.getGameObject(),
 									new Strength(rc.getGameObject().getThisAttribute("vulnerability")),

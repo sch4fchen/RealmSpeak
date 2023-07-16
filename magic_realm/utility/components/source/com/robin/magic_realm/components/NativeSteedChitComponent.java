@@ -222,7 +222,13 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 	public Speed getMoveSpeed() {
 	    return new Speed(getFaceAttributeInteger("move_speed"),speedModifier());
 	}
+	public boolean flies() {
+		return getGameObject().hasThisAttribute(Constants.FLYING) || getGameObject().hasThisAttribute(Constants.GROW_WINGS);
+	}
 	public Speed getFlySpeed() {
+		if (flies()) {
+			return getMoveSpeed();
+		}
 		return null;
 	}
 	public boolean hasAnAttack() {

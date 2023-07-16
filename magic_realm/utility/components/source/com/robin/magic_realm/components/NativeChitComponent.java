@@ -371,7 +371,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 	}
 
 	public boolean flies() {
-		return getGameObject().hasThisAttribute("flying");
+		return getGameObject().hasThisAttribute(Constants.FLYING) || getGameObject().hasThisAttribute(Constants.GROW_WINGS);
 	}
 	public Speed getFlySpeed() {
 		if (flies()) {

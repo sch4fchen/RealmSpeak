@@ -35,17 +35,18 @@ public class SpellTargetingCreatureHorseHound extends SpellTargetingSingle {
 		ArrayList<RealmComponent> potentialTargets = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true);
 		potentialTargets = CombatSheet.filterNativeFriendly(activeParticipant, potentialTargets);
 		for (RealmComponent rc : potentialTargets) {
-			if (onlyNonFlyingTargets && ((BattleChit)rc).getFlySpeed()!=null) continue;
-			
 			if ((rc.isMonster() || rc.getGameObject().hasThisAttribute(Constants.BEAST)) && !rc.hasMagicProtection() && !rc.hasMagicColorImmunity(spell)
-					&& (!onlyNonMaximumTargets || !(((MonsterChitComponent)rc).isMaximumWeight()))) {
+					&& (!onlyNonMaximumTargets || !(((MonsterChitComponent)rc).isMaximumWeight()))
+					&& (!onlyNonFlyingTargets || ((MonsterChitComponent)rc).getFlySpeed()==null)) {
 				gameObjects.add(rc.getGameObject());
 			}
 			else if ((rc.isHorse() || rc.isNativeHorse()) && !rc.hasMagicProtection() && !rc.hasMagicColorImmunity(spell)) {
-				if (!onlyNonMaximumTargets || (rc.isHorse() && !((SteedChitComponent)rc).getWeight().isMaximum())) {
+				if ((!onlyNonMaximumTargets || (rc.isHorse()&& !((SteedChitComponent)rc).getWeight().isMaximum()))
+						&& (!onlyNonFlyingTargets || ((SteedChitComponent)rc).getFlySpeed()==null)) {
 					gameObjects.add(rc.getGameObject());
 				}
-				else if (!onlyNonMaximumTargets || (rc.isNativeHorse() && !((NativeSteedChitComponent)rc).getWeight().isMaximum())) {
+				else if ((!onlyNonMaximumTargets || (rc.isNativeHorse() && !((NativeSteedChitComponent)rc).getWeight().isMaximum()))
+						&& (!onlyNonFlyingTargets || ((NativeSteedChitComponent)rc).getFlySpeed()==null)) {
 					gameObjects.add(rc.getGameObject());
 				}
 			}
@@ -54,20 +55,21 @@ public class SpellTargetingCreatureHorseHound extends SpellTargetingSingle {
 				for (GameObject item : character.getInventory()) {
 					RealmComponent itemRc = (RealmComponent.getRealmComponent(item));
 					if (itemRc.isHorse() && !itemRc.hasMagicProtection() && !itemRc.hasMagicColorImmunity(spell)) {
-						if (!onlyNonMaximumTargets || !((SteedChitComponent)rc).getWeight().isMaximum()) {
+						if ((!onlyNonMaximumTargets || !((SteedChitComponent)rc).getWeight().isMaximum())
+							&& (!onlyNonFlyingTargets || ((SteedChitComponent)rc).getFlySpeed()==null)) {
 							gameObjects.add(item);
 						}
 					}
 					else if (item.hasThisAttribute(Constants.HOUND) && !itemRc.hasMagicProtection() && !itemRc.hasMagicColorImmunity(spell)) {
 						Strength weight = new Strength(item.getThisAttribute("vulnerability"));
-						if (!onlyNonMaximumTargets || !weight.isMaximum()) {
+						if ((!onlyNonMaximumTargets || !weight.isMaximum()) && (!onlyNonFlyingTargets || ((MonsterChitComponent)rc).getFlySpeed()==null)) {
 							gameObjects.add(item);
 						}
 					}
 				}
 				if (character.isTransformedBeast() && !rc.hasMagicProtection() && !rc.hasMagicColorImmunity(spell)) {
 					Strength weight = new Strength(character.getTransmorph().getThisAttribute("vulnerability"));
-					if (!onlyNonMaximumTargets || !weight.isMaximum()) {
+					if ((!onlyNonMaximumTargets || !weight.isMaximum()) && (!onlyNonFlyingTargets || ((SteedChitComponent)rc).getFlySpeed()==null)) {
 						gameObjects.add(character.getTransmorph());
 					}
 				}

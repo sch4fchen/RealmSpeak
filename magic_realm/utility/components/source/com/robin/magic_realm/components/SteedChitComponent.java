@@ -138,7 +138,13 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 	public Speed getMoveSpeed() {
 	    return new Speed(getFaceAttributeInteger("move_speed"));
 	}
+	public boolean flies() {
+		return getGameObject().hasThisAttribute(Constants.FLYING) || getGameObject().hasThisAttribute(Constants.GROW_WINGS);
+	}
 	public Speed getFlySpeed() {
+		if (flies()) {
+			return getMoveSpeed();
+		}
 		return null;
 	}
 	private int getMoveModifier() {

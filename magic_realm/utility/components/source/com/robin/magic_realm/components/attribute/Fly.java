@@ -1,6 +1,7 @@
 package com.robin.magic_realm.components.attribute;
 
 import com.robin.magic_realm.components.*;
+import com.robin.magic_realm.components.utility.Constants;
 
 public class Fly {
 	private RealmComponent rc;
@@ -82,15 +83,15 @@ public class Fly {
 			return true;
 		}
 		else if (rc.isActionChit()) {
-			if ((rc instanceof MonsterActionChitComponent) && rc.getGameObject().hasThisAttribute("flying")) {
+			if ((rc instanceof MonsterActionChitComponent) && (rc.getGameObject().hasThisAttribute(Constants.FLYING) || rc.getGameObject().hasThisAttribute(Constants.GROW_WINGS))) {
 				return true;
 			}
 			else if ((rc instanceof CharacterActionChitComponent) && ((CharacterActionChitComponent)rc).isFly()) {
 				return true;
 			}
 		}
-		else if (rc.isTreasure()) { // Flying Carpet
-			return rc.getGameObject().hasThisAttribute("fly_strength");
+		else if (rc.isTreasure()) { // Flying Carpet or Hound with Grow Wings
+			return rc.getGameObject().hasThisAttribute("fly_strength") || rc.getGameObject().hasThisAttribute(Constants.GROW_WINGS);
 		}
 		return false;
 	}

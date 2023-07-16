@@ -1384,7 +1384,7 @@ public class BattleModel {
 		}
 		
 		if (attackCancelled == null && !parry && attacker.getGameObject().hasThisAttribute(Constants.NON_FLYING_TARGETS)) {
-			if ((target.getGameObject().hasThisAttribute(Constants.FLYING))
+			if ((target.getGameObject().hasThisAttribute(Constants.FLYING) || target.getGameObject().hasThisAttribute(Constants.GROW_WINGS))
 				|| (target instanceof CharacterChitComponent && ((CharacterChitComponent)target).getManeuverChit().isFlyChit())) {
 				attackCancelled = attacker.getGameObject().getNameWithNumber()+" cannot attack flying targets: "+target.getGameObject().getNameWithNumber();
 			}

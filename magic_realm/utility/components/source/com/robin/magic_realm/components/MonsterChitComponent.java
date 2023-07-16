@@ -450,7 +450,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		return new Speed(getFaceAttributeInteger("move_speed"),speedModifier());
 	}
 	public boolean flies() {
-		return getGameObject().hasThisAttribute("flying");
+		return getGameObject().hasThisAttribute(Constants.FLYING) || getGameObject().hasThisAttribute(Constants.GROW_WINGS);
 	}
 	public Speed getFlySpeed() {
 		if (flies()) {
