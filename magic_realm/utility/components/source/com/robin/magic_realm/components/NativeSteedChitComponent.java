@@ -151,7 +151,7 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 			drawIcon(g,folder,icon,size,0,yOffset,null);
 		}
 		else {
-			String horse_type = gameObject.getAttribute("this","horse");
+			String horse_type = gameObject.getThisAttribute("horse");
 			if (horse_type!=null) {
 				String folder = useColorIcons()?"steed_c":"steed";
 				horse_type = horse_type + (useColorIcons()?("_"+letterCode.toLowerCase()):"");
@@ -282,7 +282,7 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		}
 		
 		Harm harm = new Harm(attackerHarm);
-		Strength vulnerability = new Strength(getAttribute("this","vulnerability"));
+		Strength vulnerability = new Strength(getThisAttribute("vulnerability"));
 		if (!harm.getIgnoresArmor() && isArmored()) {
 			harm.dampenSharpness();
 			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor, and reduces sharpness: "+harm.toString());
@@ -325,8 +325,11 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 	public SpellWrapper getSpell() {
 		return null;
 	}
+	public Strength getWeight() {
+		return new Strength(getThisAttribute("vulnerability"));
+	}
 	public Strength getVulnerability() {
-		Strength strength = new Strength(getAttribute("this", "vulnerability"));
+		Strength strength = new Strength(getThisAttribute("vulnerability"));
 		strength.modify(sizeModifier());
 		if (getGameObject().hasThisAttribute(Constants.WEAKENED_VULNERABILITY)) {
 			strength.modify(-1);

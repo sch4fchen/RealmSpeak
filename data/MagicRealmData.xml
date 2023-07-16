@@ -59295,6 +59295,7 @@
         <attribute super_realm_spell="" />
         <attribute benevolent="" />
         <attribute non_flying_targets="" />
+        <attribute non_maximum_targets="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2230" name="Mountain Surge">

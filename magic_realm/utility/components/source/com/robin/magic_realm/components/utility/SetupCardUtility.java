@@ -118,7 +118,7 @@ public class SetupCardUtility {
 				int die4 = go.getThisInt("native_die2");
 				if (die==monsterDie || die2==monsterDie || die==99 || die3==nativeDie || die4==nativeDie) { // ghosts are ALWAYS prowling
 					MonsterChitComponent monster = (MonsterChitComponent)rc;
-					if (!monster.isBlocked() && !monster.isMaximum()) { // Exclude blocked and X monsters
+					if (!monster.isBlocked() && !monster.isMaximumWeight()) { // Exclude blocked and X monsters
 						// Finally, make sure there isn't a monster lure in the monster's clearing.
 						if (prowling && ClearingUtility.getItemInClearingWithKey(rc.getCurrentLocation(),Constants.NO_PROWLING)==null) {
 							prowlingMonsters.add(go);

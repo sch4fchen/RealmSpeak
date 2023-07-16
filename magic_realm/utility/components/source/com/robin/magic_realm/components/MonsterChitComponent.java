@@ -118,12 +118,14 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		return null;
 	}
 
-	public boolean isTremendous() {
-		return getVulnerability().isTremendous();
+	public boolean isTremendousWeight() {
+		Strength vul =  new Strength(getThisAttribute("vulnerability"));
+		return vul.isTremendous();
 	}
 	
-	public boolean isMaximum() {
-		return getVulnerability().isMaximum();
+	public boolean isMaximumWeight() {
+		Strength vul =  new Strength(getThisAttribute("vulnerability"));
+		return vul.isMaximum();
 	}
 	
 	public boolean isSmall() {
@@ -566,7 +568,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	}
 
 	public Strength getVulnerability() {
-		Strength vul =  new Strength(getAttribute("this", "vulnerability"));
+		Strength vul =  new Strength(getThisAttribute("vulnerability"));
 		vul.modify(sizeModifier());
 		if (getGameObject().hasThisAttribute(Constants.WEAKENED_VULNERABILITY)) {
 			vul.modify(-1);
