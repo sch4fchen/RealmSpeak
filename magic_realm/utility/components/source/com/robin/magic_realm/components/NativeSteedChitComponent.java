@@ -78,10 +78,18 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		return "gallop";
 	}
 	public Speed getTrotSpeed() {
-		return new Speed(getAttributeInt("trot","move_speed"),speedModifier());
+		Speed speed = new Speed(getAttributeInt("trot","move_speed"),speedModifier());
+		if (getGameObject().hasThisAttribute(Constants.GROW_WINGS) && (new Speed(Constants.GROW_WINGS_SPEED)).fasterThan(speed)) {
+			speed = new Speed(getAttributeInt("trot","move_speed"),speedModifier()-1);
+		}
+		return speed;
 	}
 	public Speed getGallopSpeed() {
-		return new Speed(getAttributeInt("gallop","move_speed"),speedModifier());
+		Speed speed =  new Speed(getAttributeInt("gallop","move_speed"),speedModifier());
+		if (getGameObject().hasThisAttribute(Constants.GROW_WINGS) && (new Speed(Constants.GROW_WINGS_SPEED)).fasterThan(speed)) {
+			speed = new Speed(getAttributeInt("gallop","move_speed"),speedModifier()-1);
+		}
+		return speed;
 	}
 	public Strength getTrotStrength() {
 		return new Strength(getAttribute("trot","strength"));
@@ -220,7 +228,11 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 	    return null; // horses don't have length
 	}
 	public Speed getMoveSpeed() {
-	    return new Speed(getFaceAttributeInteger("move_speed"),speedModifier());
+		Speed speed = new Speed(getFaceAttributeInteger("move_speed"),speedModifier());
+		if (getGameObject().hasThisAttribute(Constants.GROW_WINGS) && (new Speed(Constants.GROW_WINGS_SPEED)).fasterThan(speed)) {
+			speed = new Speed(getFaceAttributeInteger("move_speed"),speedModifier()-1);
+		}
+		return speed;
 	}
 	public boolean flies() {
 		return getGameObject().hasThisAttribute(Constants.FLYING) || getGameObject().hasThisAttribute(Constants.GROW_WINGS);
