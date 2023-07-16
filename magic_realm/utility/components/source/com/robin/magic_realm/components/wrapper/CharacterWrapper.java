@@ -6421,11 +6421,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean isTransmorphed() {
 		return getBoolean(TRANSMORPH_ID);
 	}
+	public boolean isTransformedBeast() {
+		return isTransmorphed() && getTransmorph() != null && getTransmorph().hasThisAttribute(Constants.BEAST);
+	}
 	public boolean isTransformed() {
-		return getBoolean(TRANSMORPH_ID) && getTransmorph() != null && getTransmorph().hasThisAttribute("animal");
+		return isTransmorphed() && getTransmorph() != null && getTransmorph().hasThisAttribute("animal");
 	}
 	public boolean isStatue() {
-		return getBoolean(TRANSMORPH_ID) && getTransmorph() != null && getTransmorph().hasThisAttribute("statue");
+		return isTransmorphed() && getTransmorph() != null && getTransmorph().hasThisAttribute("statue");
 	}
 	public boolean canChangeTactics() {
 		GameObject transmorph = getTransmorph();

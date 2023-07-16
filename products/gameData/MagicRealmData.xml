@@ -59294,6 +59294,7 @@
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
         <attribute benevolent="" />
+        <attribute non_flying_targets="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2230" name="Mountain Surge">
@@ -59307,7 +59308,7 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
-		<attributeList keyName="target_clearing">
+        <attributeList keyName="target_clearing">
           <attributeVal N0="clearing" />
         </attributeList>
       </AttributeBlock>
