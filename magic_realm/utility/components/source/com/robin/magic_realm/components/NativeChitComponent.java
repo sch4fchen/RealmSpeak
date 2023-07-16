@@ -36,7 +36,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		}
 		else {
 			if (getGameObject().hasThisAttribute("animal") || getGameObject().hasThisAttribute("statue")) {
-				String vul = getAttribute("this", "vulnerability");
+				String vul = getThisAttribute( "vulnerability");
 				if (vul.equals("X")) {
 					chitSize = X_CHIT_SIZE;
 				}
@@ -531,7 +531,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		return getGameObject().hasThisAttribute(Constants.HIDDEN);
 	}
 	public Strength getVulnerability() {
-		Strength vul =  new Strength(getAttribute("this", "vulnerability"));
+		Strength vul =  new Strength(getThisAttribute( "vulnerability"));
 		vul.modify(sizeModifier());
 		if (getGameObject().hasThisAttribute(Constants.WEAKENED_VULNERABILITY)) {
 			vul.modify(-1);

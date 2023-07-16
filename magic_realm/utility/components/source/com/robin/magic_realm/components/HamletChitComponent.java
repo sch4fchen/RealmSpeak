@@ -25,7 +25,7 @@ public class HamletChitComponent extends StateChitComponent {
 			tt = new TextType("Hamlet",getChitSize(),"BOLD");
 			tt.draw(g,0,12,Alignment.Center);
 			
-			String traveller = getAttribute("this","hamlet");
+			String traveller = getThisAttribute("hamlet");
 			tt = new TextType(traveller,getChitSize(),"BOLD");
 			tt.draw(g,0,12+tt.getHeight(g),Alignment.Center);
 		}

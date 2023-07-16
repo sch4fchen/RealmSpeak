@@ -47,7 +47,7 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 			
 			// Draw spots first (text can overwrite without harm)
 			
-			String tSize = gameObject.getAttribute("this","treasure");
+			String tSize = gameObject.getThisAttribute("treasure");
 			boolean large = tSize.equals("large");
 			boolean great = gameObject.hasKey("great");
 			
@@ -96,7 +96,7 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 			}
 			else {			
 				// Draw the description
-				String desc = gameObject.getAttribute("this","text");
+				String desc = gameObject.getThisAttribute("text");
 				if (desc!=null) {
 					tt = new TextType(desc,PRINT_WIDTH,"NORMAL");
 					tt.draw(g,PRINT_MARGIN,pos,Alignment.Center);
@@ -118,7 +118,7 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 				}
 				
 				// Draw TWT designation
-				String twt = gameObject.getAttribute("this","treasure_within_treasure");
+				String twt = gameObject.getThisAttribute("treasure_within_treasure");
 				if (twt!=null) {
 					tt = new TextType("P"+twt,PRINT_WIDTH,"TITLE_RED");
 					tt.draw(g,PRINT_MARGIN,CARD_HEIGHT - 50,Alignment.Center);

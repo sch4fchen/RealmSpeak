@@ -23,7 +23,7 @@ public class GateChitComponent extends StateChitComponent {
 		TextType tt;
 		
 		if (getGameObject().hasThisAttribute(Constants.ALWAYS_VISIBLE) || isFaceUp()) {
-			String gate = getAttribute("this","gate");
+			String gate = getThisAttribute("gate");
 			tt = new TextType(StringUtilities.capitalize(gate),getChitSize(),"BOLD");
 			tt.draw(g,0,12,Alignment.Center);
 			

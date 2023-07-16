@@ -241,7 +241,7 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 		}
 		
 		Harm harm = new Harm(attackerHarm);
-		Strength vulnerability = new Strength(getAttribute("this", "vulnerability"));
+		Strength vulnerability = new Strength(getThisAttribute( "vulnerability"));
 		if (!harm.getIgnoresArmor() && getGameObject().hasThisAttribute(Constants.ARMORED)) {
 			harm.dampenSharpness();
 			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor, and reduces sharpness: "+harm.toString());

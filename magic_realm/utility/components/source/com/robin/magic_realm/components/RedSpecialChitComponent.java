@@ -32,7 +32,7 @@ public class RedSpecialChitComponent extends StateChitComponent {
 			
 			y += tt.getHeight(g);
 			
-			String clearing = getAttribute("this","clearing");
+			String clearing = getThisAttribute("clearing");
 			tt = new TextType(clearing,getChitSize()-4,"BOLD");
 			tt.draw(g,2,y,Alignment.Center);
 		}

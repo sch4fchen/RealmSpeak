@@ -75,7 +75,7 @@ public class CacheChitComponent extends TreasureLocationChitComponent {
 			g.setColor(BACKING);
 			g.fillOval(half+5,half+5,15,15);
 			
-			String clearing = getAttribute("this","cache_number");
+			String clearing = getThisAttribute("cache_number");
 			tt = new TextType(clearing,half,"BOLD_BLUE");
 			tt.draw(g,half+1,18+tt.getHeight(g),Alignment.Center);
 		}

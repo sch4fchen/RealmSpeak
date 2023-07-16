@@ -25,7 +25,7 @@ public class GoldChitComponent extends StateChitComponent {
 			tt = new TextType("GOLD",getChitSize(),"BOLD");
 			tt.draw(g,0,12,Alignment.Center);
 			
-			String gold = getAttribute("this","gold");
+			String gold = getThisAttribute("gold");
 			tt = new TextType(gold,getChitSize(),"BOLD");
 			tt.draw(g,0,12+tt.getHeight(g),Alignment.Center);
 		}

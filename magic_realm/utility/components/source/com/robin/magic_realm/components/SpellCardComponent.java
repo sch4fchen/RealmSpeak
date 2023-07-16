@@ -91,7 +91,7 @@ public class SpellCardComponent extends CardComponent {
 			pos += tt.getHeight(g);
 			
 			// Draw the description
-			String desc = gameObject.getAttribute("this","text");
+			String desc = gameObject.getThisAttribute("text");
 			if (desc!=null) {
 				tt = new TextType(desc,PRINT_WIDTH,"NORMAL");
 				tt.draw(g,PRINT_MARGIN,pos,Alignment.Center);
@@ -123,8 +123,8 @@ public class SpellCardComponent extends CardComponent {
 			pos = CARD_HEIGHT - 18;
 			
 			// Spell Type
-			String spell = gameObject.getAttribute("this","spell");
-			String magic_color = ColorMagic.getColorName(gameObject.getAttribute("this","magic_color"));
+			String spell = gameObject.getThisAttribute("spell");
+			String magic_color = ColorMagic.getColorName(gameObject.getThisAttribute("magic_color"));
 			tt = new TextType("("+spell+","+magic_color.toUpperCase()+")",PRINT_WIDTH,"TITLE");
 			tt.draw(g,PRINT_MARGIN,pos,Alignment.Center);
 			

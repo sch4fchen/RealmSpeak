@@ -25,7 +25,7 @@ public class EventChitComponent extends StateChitComponent {
 			tt = new TextType("Event",getChitSize(),"BOLD");
 			tt.draw(g,0,12,Alignment.Center);
 			
-			String event = getAttribute("this","event");
+			String event = getThisAttribute("event");
 			tt = new TextType(event,getChitSize(),"BOLD");
 			tt.draw(g,0,12+tt.getHeight(g),Alignment.Center);
 		}

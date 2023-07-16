@@ -33,14 +33,14 @@ public class TreasureLocationChitComponent extends StateChitComponent {
 					y = 20;
 				}
 				
-				String tl = getAttribute("this","treasure_location");
+				String tl = getThisAttribute("treasure_location");
 				if (tl.length()==0) {
-					tl = getAttribute("this","minor_tl");
+					tl = getThisAttribute("minor_tl");
 				}
 				tt = new TextType(StringUtilities.capitalize(tl),getChitSize(),"BOLD");
 				tt.draw(g,0,y,Alignment.Center);
 			
-				String clearing = getAttribute("this","clearing");
+				String clearing = getThisAttribute("clearing");
 				tt = new TextType(clearing,getChitSize(),"BOLD");
 				tt.draw(g,0,y+tt.getHeight(g),Alignment.Center);
 			}

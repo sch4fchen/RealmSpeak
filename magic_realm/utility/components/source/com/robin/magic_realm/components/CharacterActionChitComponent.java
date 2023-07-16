@@ -439,7 +439,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 	private String getChitAttribute(String key) {
 		String ret = gameObject.getAttribute(ALTERNATE_ATTRIBUTES, key);
 		if (ret == null) {
-			ret = getAttribute("this", key);
+			ret = getThisAttribute( key);
 		}
 		else {
 			usingAlteredAttributes = true;

@@ -30,11 +30,11 @@ public class SoundChitComponent extends StateChitComponent {
 				y = 20;
 			}
 			
-			String sound = getAttribute("this","sound");
+			String sound = getThisAttribute("sound");
 			tt = new TextType(sound,getChitSize(),"BOLD");
 			tt.draw(g,0,y,Alignment.Center);
 			
-			String clearing = getAttribute("this","clearing");
+			String clearing = getThisAttribute("clearing");
 			tt = new TextType(clearing,getChitSize(),"BOLD");
 			tt.draw(g,0,y+tt.getHeight(g),Alignment.Center);
 		}

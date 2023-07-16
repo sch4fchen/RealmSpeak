@@ -99,7 +99,7 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 			drawIcon(g,folder,icon,size,0,yOffset,null);
 		}
 		else {
-			String horse_type = gameObject.getAttribute("this","horse");
+			String horse_type = gameObject.getThisAttribute("horse");
 			if (horse_type!=null) {
 				drawIcon(g,"steed"+(useColorIcons()?"_c":""),horse_type,0.5);
 			}
@@ -224,7 +224,7 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		}
 		
 		Harm harm = new Harm(attackerHarm);
-		Strength vulnerability = new Strength(getAttribute("this","vulnerability"));
+		Strength vulnerability = new Strength(getThisAttribute("vulnerability"));
 		if (!harm.getIgnoresArmor() && isArmored()) {
 			harm.dampenSharpness();
 			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor, and reduces sharpness: "+harm.toString());

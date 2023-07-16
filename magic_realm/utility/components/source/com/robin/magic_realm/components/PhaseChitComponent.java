@@ -42,7 +42,7 @@ public class PhaseChitComponent extends SquareChitComponent {
 		tt.draw(g,5,pos,Alignment.Center);
 		pos += (tt.getHeight(g)*2);
 		
-		String desc = gameObject.getAttribute("this","text");
+		String desc = gameObject.getThisAttribute("text");
 		if (desc!=null) {
 			tt = new TextType(desc,M_CHIT_SIZE-10,"NORMAL");
 			tt.draw(g,5,pos,Alignment.Center);

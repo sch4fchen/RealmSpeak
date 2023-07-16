@@ -78,7 +78,7 @@ public class ArmorChitComponent extends RoundChitComponent {
 		}
 		
 		// Draw Stats
-		String vulnerability = getAttribute("this","vulnerability");
+		String vulnerability = getThisAttribute("vulnerability");
 		TextType tt = new TextType(vulnerability,getChitSize(),"BIG_BOLD");
 		
 		if (getGameObject().hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE) && getGameObject().hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ARMOR)) {
@@ -109,6 +109,6 @@ public class ArmorChitComponent extends RoundChitComponent {
 		drawDamageAssessment(g);
 	}
 	public Strength getVulnerability() {
-		return new Strength(getAttribute("this", "vulnerability"));
+		return new Strength(getThisAttribute( "vulnerability"));
 	}
 }
