@@ -1,7 +1,4 @@
-Issue - Camouflage spell, unable to target
-0713: Thorn spell - unable to find valid target (Battle Builder)
 0713: Frozen Water spell only affects clearings on the current tile, adjacent tiles are not affected or altered (Main)
-0713: Need to update auto-kill for Devil, via the Exorcise spell -> should already be fixed
 
 ::ROADMAP::
 ---Super Realm Content---

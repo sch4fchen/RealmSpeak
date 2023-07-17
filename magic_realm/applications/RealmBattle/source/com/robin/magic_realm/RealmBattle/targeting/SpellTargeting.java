@@ -212,6 +212,9 @@ public abstract class SpellTargeting {
 		else if ("killed denizen".equals(targetType) || "killed_denizen".equals(targetType)) {
 			targeting = new SpellTargetingKilledDenizen(combatFrame,spell);
 		}
+		else if ("character, native leader, controlled monster".equals(targetType)) {
+			targeting = new SpellTargetingCharacterNativeLeaderControlledMonster(combatFrame,spell);
+		}
 		
 		return targeting;
 	}
