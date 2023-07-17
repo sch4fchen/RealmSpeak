@@ -343,9 +343,6 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 	public SpellWrapper getSpell() {
 		return null;
 	}
-	public Strength getWeight() {
-		return new Strength(getThisAttribute("vulnerability"));
-	}
 	public Strength getVulnerability() {
 		Strength strength = new Strength(getThisAttribute("vulnerability"));
 		strength.modify(sizeModifier());

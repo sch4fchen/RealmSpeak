@@ -286,9 +286,6 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 	public SpellWrapper getSpell() {
 		return null;
 	}
-	public Strength getWeight() {
-		return new Strength(getThisAttribute("vulnerability"));
-	}
 	public Strength getVulnerability() {
 		Strength strength = new Strength(getThisAttribute("vulnerability"));
 		if (getGameObject().hasThisAttribute(Constants.WEAKENED_VULNERABILITY)) {
