@@ -223,8 +223,10 @@ public class CharacterInfoCard {
 			}
 			int baseStage = level * 3;
 			for (int index = 0; index < 3; index++) {
-				addChitToImage(g,l,i-15,actionChits.get(baseStage+index));
-				l += 58;
+				if (actionChits.size()>baseStage+index) {
+					addChitToImage(g,l,i-15,actionChits.get(baseStage+index));
+					l += 58;
+				}
 			}
 
 			i += 40;

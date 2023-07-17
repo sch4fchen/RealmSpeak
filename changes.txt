@@ -1,8 +1,7 @@
-Issue: Pre-battle - Light weight characters unable to activate Pony L4 or Pony L5
 Issue - Camouflage spell, unable to target
 0713: Thorn spell - unable to find valid target (Battle Builder)
-0713: Control Horse spell - generate error (Battle Builder)
 0713: Frozen Water spell only affects clearings on the current tile, adjacent tiles are not affected or altered (Main)
+0713: Need to update auto-kill for Devil, via the Exorcise spell -> should already be fixed
 
 ::ROADMAP::
 ---Super Realm Content---
@@ -86,6 +85,7 @@ SUPER REALM:
 # Correct text of Control Horse spell
 BUGS/ISSUES:
 # Fix Whistle for Monsters
+# Fixed showing character card after casting a spell (for custom characters or in Super Realm)
 
 Version 1.1.8.0
 QUEST UPDATE:
