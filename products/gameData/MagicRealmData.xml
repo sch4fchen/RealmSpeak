@@ -59053,7 +59053,7 @@
         <attribute spell="III" />
         <attribute duration="combat" />
         <attribute target="clearing" />
-        <attribute text="Horse is placed as active item. Spell is broken when horse leaves active inventory." />
+        <attribute text="All horses in clearing cannot gallop." />
         <attribute magic_color="gold" />
         <attribute host_okay="" />
         <attribute learnable="" />

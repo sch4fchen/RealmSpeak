@@ -1,7 +1,12 @@
+Issue: Pre-battle - Light weight characters unable to activate Pony L4 or Pony L5
+Issue - Camouflage spell, unable to target
+0713: Thorn spell - unable to find valid target (Battle Builder)
+0713: Control Horse spell - generate error (Battle Builder)
+0713: Frozen Water spell only affects clearings on the current tile, adjacent tiles are not affected or altered (Main)
+
 ::ROADMAP::
 ---Super Realm Content---
-Spells VI: Alter Object, Alter Size, Enchant Weapon
-Spells VII: Dazzle, Free Spell, Join, Luck, Meditate
+Spells: Alter Object, Alter Size, Enchant Weapon, Dazzle, Free Spell, Luck, Meditate
 Treasures: 
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Nomads, Tasks, Travelers: 4.8 (p.41)
@@ -78,6 +83,7 @@ SUPER REALM:
 # Fix Barkskin spell
 # Fix Mesermize spell
 # Fix Negative Auro affecting clearing without being cast
+# Correct text of Control Horse spell
 BUGS/ISSUES:
 # Fix Whistle for Monsters
 
