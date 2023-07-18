@@ -6,6 +6,7 @@ import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
 import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
@@ -37,7 +38,18 @@ public class SpellTargetingTile extends SpellTargetingSpecial {
 			spell.addTarget(combatFrame.getHostPrefs(),loc.tile.getGameObject(),true);
 			CombatFrame.broadcastMessage(activeParticipant.getGameObject().getName(),"Targets the "+loc.tile.getGameObject().getName());
 			JOptionPane.showMessageDialog(combatFrame,"The current tile was selected as the target.");
+			if (spell.getGameObject().hasThisAttribute(Constants.TARGET_ADJACENT_TILES)) {
+				for (TileComponent tile : loc.tile.getAllAdjacentTiles()) {
+					gameObjects.add(tile.getGameObject());
+					spell.addTarget(combatFrame.getHostPrefs(),tile.getGameObject(),true);
+				}
+				JOptionPane.showMessageDialog(combatFrame,"The current tile and all adjacent tiles were selected as targets.");
+			}
+			else {
+				JOptionPane.showMessageDialog(combatFrame,"The current tile was selected as the target.");
+			}
 		}
+		
 		return true;
 	}
 	

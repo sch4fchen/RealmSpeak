@@ -497,6 +497,7 @@ public class Constants {
 	public static final String BLINDING_LIGHT = "blinding_light";
 	public static final String FROZEN_WATER = "frozen_water";
 	public static final String TARGET_CLEARINGS = "target_clearings";
+	public static final String TARGET_ADJACENT_TILES = "target_adjacent_tiles";
 	public static final String RESERVE = "reserve";
 	public static final String BREAK_WHEN_USED = "break_when_used";
 	public static final String VIOLENT_WINDS = "violent_winds";

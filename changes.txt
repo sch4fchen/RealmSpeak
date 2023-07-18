@@ -79,6 +79,7 @@ SUPER REALM:
 # Fix Barkskin spell
 # Fix Mesermize spell
 # Fix Negative Auro affecting clearing without being cast
+# Fix Frozen Water spell affecting adjacent tiles
 # Correct text of Control Horse spell
 BUGS/ISSUES:
 # Fix Whistle for Monsters

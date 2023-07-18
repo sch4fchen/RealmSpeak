@@ -1,5 +1,6 @@
 package com.robin.magic_realm.components.effect;
 import com.robin.magic_realm.components.TileComponent;
+import com.robin.magic_realm.components.utility.ClearingUtility;
 import com.robin.magic_realm.components.utility.Constants;
 
 public class FrozenWaterEffect implements ISpellEffect {	
@@ -10,11 +11,6 @@ public class FrozenWaterEffect implements ISpellEffect {
 		if(!targetTile.getGameObject().hasThisAttribute(Constants.FROZEN_WATER)){
 			targetTile.getGameObject().setThisAttribute(Constants.FROZEN_WATER);
 		}
-		for (TileComponent tile : targetTile.getAllAdjacentTiles()) {
-			if(!tile.getGameObject().hasThisAttribute(Constants.FROZEN_WATER)){
-				tile.getGameObject().setThisAttribute(Constants.FROZEN_WATER);
-			}
-		}
 	}
 
 	@Override
@@ -22,11 +18,6 @@ public class FrozenWaterEffect implements ISpellEffect {
 		TileComponent targetTile = context.getTileTarget();
 		if(targetTile.getGameObject().hasThisAttribute(Constants.FROZEN_WATER)){
 			targetTile.getGameObject().removeThisAttribute(Constants.FROZEN_WATER);
-		}
-		for (TileComponent tile : targetTile.getAllAdjacentTiles()) {
-			if(tile.getGameObject().hasThisAttribute(Constants.FROZEN_WATER)){
-				tile.getGameObject().removeThisAttribute(Constants.FROZEN_WATER);
-			}
 		}
 	}
 

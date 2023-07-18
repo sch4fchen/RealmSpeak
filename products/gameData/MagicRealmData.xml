@@ -59161,6 +59161,7 @@
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
         <attribute target_clearings="river" />
+        <attribute target_adjacent_tiles="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2222" name="Reserve">
