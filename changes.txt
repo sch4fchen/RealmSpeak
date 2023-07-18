@@ -1,5 +1,3 @@
-0713: Frozen Water spell only affects clearings on the current tile, adjacent tiles are not affected or altered (Main)
-
 ::ROADMAP::
 ---Super Realm Content---
 Spells: Alter Object, Alter Size, Enchant Weapon, Dazzle, Free Spell, Luck, Meditate
