@@ -253,7 +253,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		return false;
 	}
 	private boolean isAwaitingBlockDecision() {
-		if (getRealmComponent().isPlayerControlledLeader()) {
+		if (getRealmComponent().isPlayerControlledLeader() && !getCharacter().getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) {
 			blockWarningLabel.setText("");
 			if (!getCharacter().isBlocked() && getCharacter().hasDoneActionsToday()) {
 				TileLocation current = getCharacter().getCurrentLocation();

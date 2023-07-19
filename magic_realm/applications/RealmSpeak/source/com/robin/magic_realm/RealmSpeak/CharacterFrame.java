@@ -250,7 +250,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					// Check to see that this component is not yourself, and one of:  character, hired leader, or ANY monster
 					// (Yeah, you could block unhired natives, but what's the point?)
 					if (!rc.getGameObject().equals(getCharacter().getGameObject())) {
-						if (rc.isPlayerControlledLeader()) {
+						if (rc.isPlayerControlledLeader() && !rc.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) {
 							CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
 							boolean targetPlayingTurn = target.isPlayingTurn() && target.hasDoneActionsToday();
 							// Make sure that either the blocking character is taking a turn, or the target is
