@@ -17,6 +17,7 @@ public class QuestRewardSpellEffectOnTile extends QuestReward {
 	
 	public enum EffectOnTile {
 		Fog,
+		FrozenWater,
 		ViolentStorm,
 	}
 	
@@ -29,6 +30,9 @@ public class QuestRewardSpellEffectOnTile extends QuestReward {
 		switch (getSpell()) {
 		case Fog:
 			spell = "fog";
+			break;
+		case FrozenWater:
+			spell = "frozen water";
 			break;
 		case ViolentStorm:
 			spell = "violent storm";
