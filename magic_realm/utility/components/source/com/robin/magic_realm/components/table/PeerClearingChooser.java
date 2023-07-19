@@ -46,4 +46,13 @@ public class PeerClearingChooser {
 		CenteredMapView.getSingleton().markAllClearings(false);
 		return chooser.getSelectedLocation();
 	}
+	public static TileLocation chooseCurrentClearing(JFrame frame, CharacterWrapper character, String text) {
+		TileLocation planned = character.getCurrentLocation();
+		CenteredMapView.getSingleton().setMarkClearingAlertText(text);
+		CenteredMapView.getSingleton().markClearing(planned.clearing,true);
+		TileLocationChooser chooser = new TileLocationChooser(frame,CenteredMapView.getSingleton(),planned);
+		chooser.setVisible(true);
+		CenteredMapView.getSingleton().markAllClearings(false);
+		return chooser.getSelectedLocation();
+	}
 }

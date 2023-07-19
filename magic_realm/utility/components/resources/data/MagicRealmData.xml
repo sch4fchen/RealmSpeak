@@ -59111,6 +59111,7 @@
         <attribute action="MOVE" />
         <attribute chit_state="1" />
         <attribute water_run="" />
+        <attribute chit_color="BOLD_BLUE" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2219" name="Blinding Light">

@@ -373,6 +373,9 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 				g.draw(shape);
 				break;
 		}
+		if (getGameObject().hasThisAttribute("chit_color")) {
+			textTypeName = getGameObject().getThisAttribute("chit_color");
+		}
 
 		// Draw Information
 		int y = 12;

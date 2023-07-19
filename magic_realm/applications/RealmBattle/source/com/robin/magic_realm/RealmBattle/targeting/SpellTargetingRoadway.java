@@ -49,6 +49,10 @@ public class SpellTargetingRoadway extends SpellTargeting {
 				targetedTileLocation = PeerClearingChooser.chooseClearingFromMountain(combatFrame, character, "Choose a roadway between two clearings. Select first clearing.");
 				targetClearing = targetedTileLocation.clearing;
 			}
+			else {
+				targetedTileLocation = PeerClearingChooser.chooseCurrentClearing(combatFrame, character, "Choose a roadway between two clearings. Select first clearing.");
+				targetClearing = targetedTileLocation.clearing;
+			}
 		}
 		
 		if (targetedTileLocation==null || targetClearing==null) return true;
@@ -75,16 +79,5 @@ public class SpellTargetingRoadway extends SpellTargeting {
 		CharacterWrapper character = new CharacterWrapper(spell.getCaster().getGameObject());
 		TileLocation current = character.getCurrentLocation();
 		if (current==null||current.tile==null) return false;
-		
-		CenteredMapView map = CenteredMapView.getSingleton();
-		if (map.getTiles().size()==1) return false; //BattleBuilder
-
-		RealmCalendar cal = RealmCalendar.getCalendar(character.getGameData());
-		boolean canPeer = character.canPeer() && !cal.isPeerDisabled(character.getCurrentMonth());
-		if (character.getPeerAny() || (canPeer && current.clearing.isMountain())) {
-			return true;
-		}
-
-		return false;
-	}
+		return true;	}
 }

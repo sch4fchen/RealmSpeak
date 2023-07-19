@@ -681,6 +681,11 @@ public class CenteredMapView extends JComponent {
 		replot = true;
 		repaint();
 	}
+	public void markClearing(ClearingDetail clearing,boolean setMark) {
+		clearing.setMarked(setMark);
+		replot = true;
+		repaint();
+	}
 	public void markClearings(ArrayList<ClearingDetail> clearings,boolean setMark) {
 		markClearings(clearings,setMark,null);
 	}
