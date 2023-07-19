@@ -23,17 +23,17 @@ public class ReanimateEffect implements ISpellEffect {
 		monster.setAttribute("light","move_speed",monster.getAttributeInt("light","attack_speed")+1);
 		monster.setAttribute("dark","move_speed",monster.getAttributeInt("light","attack_speed")+1);
 		monster.setThisAttribute(Constants.ARMORED);
-		monster.setAttribute(Constants.ICON_TYPE,context.Target.getGameObject().getThisAttribute(Constants.ICON_TYPE));
-		monster.setAttribute(Constants.ICON_FOLDER,context.Target.getGameObject().getThisAttribute(Constants.ICON_FOLDER));
 		if (context.Target.getGameObject().hasThisAttribute(Constants.ICON_SIZE)) {
-			monster.setAttribute(Constants.ICON_SIZE,context.Target.getGameObject().getThisAttribute(Constants.ICON_SIZE));
+			monster.setThisAttribute(Constants.ICON_SIZE,context.Target.getGameObject().getThisAttribute(Constants.ICON_SIZE));
 		}
 		if (context.Target.getGameObject().hasThisAttribute(Constants.ICON_Y_OFFSET)) {
-			monster.setAttribute(Constants.ICON_Y_OFFSET,context.Target.getGameObject().getThisAttribute(Constants.ICON_Y_OFFSET));
+			monster.setThisAttribute(Constants.ICON_Y_OFFSET,context.Target.getGameObject().getThisAttribute(Constants.ICON_Y_OFFSET));
 		}
-		monster.setThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE,"skeleton");
-		monster.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units");
-		monster.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"0.9");
+		if (!monster.hasThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE) && !monster.hasThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE)) {
+			monster.setThisAttribute(Constants.ICON_TYPE+Constants.ALTERNATIVE,"skeleton");
+			monster.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units");
+			monster.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"0.9");
+		}
 		monster.setThisAttribute(Constants.UNDEAD);
 		if (context.Target.getGameObject().hasThisAttribute("monster") ) {
 			monster.setThisAttribute("monster");
@@ -63,8 +63,9 @@ public class ReanimateEffect implements ISpellEffect {
 			GameObject monster = context.Spell
 					.getGameObject()
 					.getGameData()
-					.getGameObject(Long.valueOf(context.Spell.getGameObject().getThisAttribute(Constants.PHASE_CHIT_ID)));
+					.getGameObject(Long.valueOf(id));
 			RealmUtility.makeDead(RealmComponent.getRealmComponent(monster));
+			context.Spell.setExtraIdentifier(null);
 		}
 	}
 

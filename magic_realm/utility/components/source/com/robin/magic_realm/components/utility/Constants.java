@@ -508,7 +508,8 @@ public class Constants {
 	public static final String BLUNT_IMMUNITY = "blunt_immunity";
 	public static final String GROW_WINGS = "grow_wings";
 	public static final int GROW_WINGS_SPEED = 2;
-	
+	public static final String AFFECTED_MONSTER_ID = "affected_monster_Id";
+
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";
 	public static final String EYEMIST = "Eyemist";
