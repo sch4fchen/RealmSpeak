@@ -19,8 +19,10 @@ public class QuestRewardSpellEffectOnClearing extends QuestReward {
 		Bewilder,
 		Blunting,
 		Gravity,
+		MountainSurge,
 		RocksGlow,
-		Sleep
+		Sleep,
+		ViolentWinds
 	}
 	
 	public QuestRewardSpellEffectOnClearing(GameObject go) {
@@ -39,11 +41,17 @@ public class QuestRewardSpellEffectOnClearing extends QuestReward {
 		case Gravity:
 			spell = "gravity";
 			break;
+		case MountainSurge:
+			spell = "mountain surge";
+			break;
 		case RocksGlow:
 			spell = "rocks glow";
 			break;
 		case Sleep:
 			spell = "sleep";
+			break;
+		case ViolentWinds:
+			spell = "violent winds";
 			break;
 		default:
 			return;

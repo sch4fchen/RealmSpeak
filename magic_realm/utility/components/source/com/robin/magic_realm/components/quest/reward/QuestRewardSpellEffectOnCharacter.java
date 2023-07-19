@@ -18,9 +18,12 @@ public class QuestRewardSpellEffectOnCharacter extends QuestReward {
 	public enum EffectOnCharacter {
 		Barkskin,
 		BlazingLightX,
+		Blunt,
+		Camouflage,
 		DivineMight,
 		DivineProtection,
 		DivineShield,
+		GrowWings,
 		HurricaneWinds,
 		Lost,
 		NegativeAura,
@@ -49,6 +52,12 @@ public class QuestRewardSpellEffectOnCharacter extends QuestReward {
 		case BlazingLightX:
 			effect = Constants.TORCH_BEARER;
 			break;
+		case Blunt:
+			effect = Constants.BLUNT;
+			break;
+		case Camouflage:
+			effect = Constants.CAMOUFLAGE;
+			break;
 		case DivineMight:
 			effect = Constants.STRONG_MF;
 			break;
@@ -58,6 +67,9 @@ public class QuestRewardSpellEffectOnCharacter extends QuestReward {
 		case DivineShield:
 			effect = Constants.ADDS_ARMOR;
 			break;
+		case GrowWings:
+			effect = Constants.GROW_WINGS;
+			break;	
 		case HurricaneWinds:
 			GameObject hurricanWindsOriginal = character.getGameData().getGameObjectByNameIgnoreCase("hurricane winds");
 			if (hurricanWindsOriginal == null) return;
