@@ -1,8 +1,5 @@
-0717: Camouflage spell - unable to target
 0717: Blinding Light chit cannot be used at the beginning of phase, if already blocked by another character
-0718: Violent Wind spell - other character is able to fly away (during Action step), before this spell take effect
 0718: Dark Favor spell - did not create a Phase chit after cast
-0718: Reanimate spell - "image not found" error occurs if "frame.cfg" text attribute <chitDisplayStyle> = 1 or 2
 Issue - Combat frame freezes when reanimating a monster
 
 ::ROADMAP::

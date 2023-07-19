@@ -27,6 +27,8 @@ public class ViolentWindsEffect implements ISpellEffect {
 				character.moveToLocation(new JFrame(), clearing.getTileLocation());
 			}
 		}
+		
+		moveFlyingCharactersBackToClearings(clearing);
 	}
 
 	@Override
@@ -37,4 +39,13 @@ public class ViolentWindsEffect implements ISpellEffect {
 		}
 	}
 
+	private static void moveFlyingCharactersBackToClearings(ClearingDetail clearing) {
+		for (RealmComponent rc : clearing.getTileLocation().tile.getRealmComponentsBetweenClearing(clearing.getNum())) {
+			if (!rc.isCharacter()) continue;
+			CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
+			if (character.canFly(clearing.getTileLocation())) {
+				character.moveToLocation(new JFrame(), clearing.getTileLocation());
+			}
+		}
+	}	
 }
