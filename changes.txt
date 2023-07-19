@@ -1,6 +1,4 @@
 0717: Blinding Light chit cannot be used at the beginning of phase, if already blocked by another character
-0718: Dark Favor spell - did not create a Phase chit after cast
-Issue - Combat frame freezes when reanimating a monster
 
 ::ROADMAP::
 ---Super Realm Content---

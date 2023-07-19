@@ -143,6 +143,7 @@ public class SpellEffectFactory {
 			case "control horse": return new ISpellEffect[]{new ControlHorseEffect()};
 			case "control element": return new ISpellEffect[]{new ControlEffect()};
 			case "deal with orcs and goblins": return new ISpellEffect[]{new PacifyEffect(0)};
+			case "dark favor": return new ISpellEffect[]{new PhaseChitEffect()};
 			case "divine protection": return new ISpellEffect[]{new ApplyNamedEffect(Constants.STRENGTHENED_VULNERABILITY)};
 			case "free the soul": return new ISpellEffect[]{new FreeTheSoulEffect()};
 			case "frozen water": return new ISpellEffect[]{new FrozenWaterEffect()};
