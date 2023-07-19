@@ -82,6 +82,7 @@ SUPER REALM:
 # Fix Negative Auro affecting clearing without being cast
 # Fix Frozen Water spell affecting adjacent tiles
 # Fix Thorns spell
+# Improve Blinding Light effect
 # Correct text of Control Horse spell
 BUGS/ISSUES:
 # Fix Whistle for Monsters
