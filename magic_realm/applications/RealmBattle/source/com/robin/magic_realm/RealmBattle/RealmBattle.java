@@ -546,7 +546,8 @@ public class RealmBattle {
 					int newWounds = combat.getNewWounds();
 					Effort effortUsed = BattleUtility.getEffortUsed(character);
 					int free = character.getEffortFreeAsterisks();
-					return (healing>0 || newWounds>0 || effortUsed.getNeedToFatigue(free)>0);
+					int weatherFatigue = character.getWeatherFatigue();
+					return (healing>0 || newWounds>0 || effortUsed.getNeedToFatigue(free)>0 || weatherFatigue>0);
 				}
 				return false;
 			case Constants.COMBAT_DONE:

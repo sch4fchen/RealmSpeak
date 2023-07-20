@@ -3834,21 +3834,24 @@ public class CombatFrame extends JFrame {
 			ChitRestManager rester = new ChitRestManager(parent,character,healing);
 			rester.setVisible(true);
 		}
-		
+		boolean dead = false;
 		int newWounds = combat.getNewWounds();
-		if (newWounds>0) {
-			broadcastMessage(character.getGameObject().getName(),"Wounding "+newWounds+" chit"+(newWounds==1?"":"s")+".");
-		}
 		Effort effortUsed = BattleUtility.getEffortUsed(character);
 		int free = character.getEffortFreeAsterisks();
 		int needToFatigue = effortUsed.getNeedToFatigue(free);
 		needToFatigue += runAwayFatigue;
-		if (needToFatigue>0) {
-			broadcastMessage(character.getGameObject().getName(),"Fatiguing "+needToFatigue+" asterisk"+(needToFatigue==1?"":"s")+".");
+		if (character.getWeatherFatigue()>0) {
+			broadcastMessage(character.getGameObject().getName(),"Fatiguing "+character.getWeatherFatigue()+" asterisk"+(character.getWeatherFatigue()==1?"":"s")+".");
+			ChitFatigueManager fatiguer = new ChitFatigueManager(parent,character,character.getWeatherFatigue());
+			fatiguer.setVisible(true);
+			character.clearWeatherFatigue();
+			// Test for death
+			if (fatiguer.isDead()) {
+				dead = true;
+			}
 		}
-		
-		boolean dead = false;
-		if (needToFatigue>0) {
+		if (!dead && needToFatigue>0) {
+			broadcastMessage(character.getGameObject().getName(),"Fatiguing "+needToFatigue+" asterisk"+(needToFatigue==1?"":"s")+".");
 			int runFatigueUsed = runAwayFatigue==0?0:runAwayFatigue+character.getEffortFreeAsterisks();
 			ChitFatigueManager fatiguer = new ChitFatigueManager(parent,character,needToFatigue,effortUsed.getMoveAsterisks()+runFatigueUsed,effortUsed.getFightAsterisks(),0);
 			fatiguer.setVisible(true);
@@ -3858,6 +3861,7 @@ public class CombatFrame extends JFrame {
 			}
 		}
 		if (!dead && newWounds>0) {
+			broadcastMessage(character.getGameObject().getName(),"Wounding "+newWounds+" chit"+(newWounds==1?"":"s")+".");
 			ChitWoundManager wounder = new ChitWoundManager(parent,character,newWounds);
 			wounder.setVisible(true);
 			
@@ -3945,6 +3949,11 @@ public class CombatFrame extends JFrame {
 			processBattlingNatives(frame,character,data);
 			character.setCombatStatus(Constants.COMBAT_WAIT+Constants.COMBAT_LURE);
 			listener.actionPerformed(new ActionEvent(parent,0,"")); // does the submit in RealmSpeak
+		}
+		else if (firstState.intValue()==Constants.COMBAT_ASSIGN) {
+			ArrayList<CharacterWrapper> list = lists.getList(firstState);
+			CharacterWrapper character = list.iterator().next();
+			doFatigueWounds(frame,character);
 		}
 		else if (firstState.intValue()==Constants.COMBAT_FATIGUE) {
 			logger.finer("handling fatigue/wounds");
