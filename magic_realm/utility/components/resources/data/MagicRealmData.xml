@@ -36608,6 +36608,7 @@
         <attribute colossus="" />
         <attribute kills_horse="" />
         <attribute destroys_armor="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="5" />
@@ -36682,9 +36683,10 @@
         <attribute strength="H" />
         <attribute length="8" />
         <attribute chit_color="white" />
+        <attribute sharpness="1" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
-        <attribute move_speed="6" />
+        <attribute move_speed="5" />
         <attribute attack_speed="5" />
         <attribute strength="T" />
         <attribute length="8" />
@@ -36808,6 +36810,7 @@
         <attribute missile="" />
         <attribute archer="" />
         <attribute blunt_immunity="" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="4" />
@@ -36852,7 +36855,7 @@
         <attribute attack_spell="mesmerize" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
-        <attribute move_speed="5" />
+        <attribute move_speed="4" />
         <attribute attack_speed="3" />
         <attribute strength="M" />
         <attribute chit_color="darkgray" />
@@ -36877,7 +36880,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
-        <attribute attack_speed="6" />
+        <attribute attack_speed="5" />
         <attribute strength="T" />
         <attribute chit_color="tan" />
         <attribute length="5" />
@@ -36945,7 +36948,6 @@
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute chit_color="darkgray" />
-        <attribute length="17" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1317" name="Cultist Dwelling">
@@ -37198,6 +37200,7 @@
         <attribute icon_y_offset="5" />
         <attribute gargoyle="" />
         <attribute box_num="1" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -37231,6 +37234,7 @@
         <attribute icon_y_offset="5" />
         <attribute gargoyle="" />
         <attribute box_num="2" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -37264,6 +37268,7 @@
         <attribute icon_y_offset="5" />
         <attribute gargoyle="" />
         <attribute box_num="2" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -37297,6 +37302,7 @@
         <attribute icon_y_offset="5" />
         <attribute gargoyle="" />
         <attribute box_num="3" />
+        <attribute armored="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -37874,7 +37880,7 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute attack_speed="6" />
-        <attribute strength="M" />
+        <attribute strength="H" />
         <attribute chit_color="white" />
         <attribute length="5" />
         <attribute sharpness="1" />
@@ -37912,7 +37918,7 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute attack_speed="6" />
-        <attribute strength="M" />
+        <attribute strength="H" />
         <attribute chit_color="white" />
         <attribute length="5" />
         <attribute sharpness="1" />
@@ -37950,7 +37956,7 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute attack_speed="6" />
-        <attribute strength="M" />
+        <attribute strength="H" />
         <attribute chit_color="white" />
         <attribute length="5" />
         <attribute sharpness="1" />
@@ -37988,7 +37994,7 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute attack_speed="6" />
-        <attribute strength="M" />
+        <attribute strength="H" />
         <attribute chit_color="white" />
         <attribute length="5" />
         <attribute sharpness="1" />
@@ -38026,7 +38032,7 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute attack_speed="6" />
-        <attribute strength="M" />
+        <attribute strength="H" />
         <attribute chit_color="white" />
         <attribute length="5" />
         <attribute sharpness="1" />
@@ -38064,7 +38070,7 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
         <attribute attack_speed="6" />
-        <attribute strength="M" />
+        <attribute strength="H" />
         <attribute chit_color="white" />
         <attribute length="5" />
         <attribute sharpness="1" />
@@ -38366,7 +38372,7 @@
     <GameObject id="1361" name="Orc">
       <AttributeBlock blockName="this">
         <attribute monster="" />
-        <attribute vulnerability="M" />
+        <attribute vulnerability="H" />
         <attribute fame="3" />
         <attribute notoriety="3" />
         <attribute super_realm="" />
@@ -38401,7 +38407,7 @@
     <GameObject id="1362" name="Orc">
       <AttributeBlock blockName="this">
         <attribute monster="" />
-        <attribute vulnerability="M" />
+        <attribute vulnerability="H" />
         <attribute fame="3" />
         <attribute notoriety="3" />
         <attribute super_realm="" />
@@ -38436,7 +38442,7 @@
     <GameObject id="1363" name="Orc">
       <AttributeBlock blockName="this">
         <attribute monster="" />
-        <attribute vulnerability="M" />
+        <attribute vulnerability="H" />
         <attribute fame="3" />
         <attribute notoriety="3" />
         <attribute super_realm="" />
@@ -38471,7 +38477,7 @@
     <GameObject id="1364" name="Orc">
       <AttributeBlock blockName="this">
         <attribute monster="" />
-        <attribute vulnerability="M" />
+        <attribute vulnerability="H" />
         <attribute fame="3" />
         <attribute notoriety="3" />
         <attribute super_realm="" />
@@ -38506,7 +38512,7 @@
     <GameObject id="1365" name="Orc">
       <AttributeBlock blockName="this">
         <attribute monster="" />
-        <attribute vulnerability="M" />
+        <attribute vulnerability="H" />
         <attribute fame="3" />
         <attribute notoriety="3" />
         <attribute super_realm="" />
@@ -38541,7 +38547,7 @@
     <GameObject id="1366" name="Orc">
       <AttributeBlock blockName="this">
         <attribute monster="" />
-        <attribute vulnerability="M" />
+        <attribute vulnerability="H" />
         <attribute fame="3" />
         <attribute notoriety="3" />
         <attribute super_realm="" />
@@ -38576,7 +38582,7 @@
     <GameObject id="1367" name="Orc">
       <AttributeBlock blockName="this">
         <attribute monster="" />
-        <attribute vulnerability="M" />
+        <attribute vulnerability="H" />
         <attribute fame="3" />
         <attribute notoriety="3" />
         <attribute super_realm="" />
@@ -38611,7 +38617,7 @@
     <GameObject id="1368" name="Orc">
       <AttributeBlock blockName="this">
         <attribute monster="" />
-        <attribute vulnerability="M" />
+        <attribute vulnerability="H" />
         <attribute fame="3" />
         <attribute notoriety="3" />
         <attribute super_realm="" />
@@ -38839,8 +38845,8 @@
         <attribute monster="" />
         <attribute armored="" />
         <attribute vulnerability="H" />
-        <attribute fame="10" />
-        <attribute notoriety="10" />
+        <attribute fame="5" />
+        <attribute notoriety="5" />
         <attribute super_realm="" />
         <attribute icon_type="sand-scuttler" />
         <attribute setup_start="H Scorpion Box" />
@@ -38873,8 +38879,8 @@
         <attribute monster="" />
         <attribute armored="" />
         <attribute vulnerability="H" />
-        <attribute fame="10" />
-        <attribute notoriety="10" />
+        <attribute fame="5" />
+        <attribute notoriety="5" />
         <attribute super_realm="" />
         <attribute icon_type="sand-scuttler" />
         <attribute setup_start="H Scorpions Box" />
@@ -38907,8 +38913,8 @@
         <attribute monster="" />
         <attribute armored="" />
         <attribute vulnerability="H" />
-        <attribute fame="10" />
-        <attribute notoriety="10" />
+        <attribute fame="5" />
+        <attribute notoriety="5" />
         <attribute super_realm="" />
         <attribute icon_type="sand-scuttler" />
         <attribute setup_start="H Scorpions Box" />
@@ -39081,7 +39087,6 @@
         <attribute attack_speed="5" />
         <attribute strength="T" />
         <attribute chit_color="darkgray" />
-        <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1388" name="Wraith">
@@ -39113,7 +39118,6 @@
         <attribute attack_speed="5" />
         <attribute strength="T" />
         <attribute chit_color="darkgray" />
-        <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1389" name="Wraith">
@@ -39145,7 +39149,6 @@
         <attribute attack_speed="5" />
         <attribute strength="T" />
         <attribute chit_color="darkgray" />
-        <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1390" name="Wraith">
@@ -39177,7 +39180,6 @@
         <attribute attack_speed="5" />
         <attribute strength="T" />
         <attribute chit_color="darkgray" />
-        <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1391" name="Rats Box">
@@ -39310,14 +39312,14 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
-        <attribute attack_speed="4" />
-        <attribute strength="M" />
+        <attribute attack_speed="3" />
+        <attribute strength="L" />
         <attribute chit_color="lightblue" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
-        <attribute attack_speed="4" />
-        <attribute strength="L" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
         <attribute chit_color="blue" />
       </AttributeBlock>
     </GameObject>
@@ -39340,14 +39342,14 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
-        <attribute attack_speed="4" />
-        <attribute strength="M" />
+        <attribute attack_speed="3" />
+        <attribute strength="L" />
         <attribute chit_color="lightblue" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
-        <attribute attack_speed="4" />
-        <attribute strength="L" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
         <attribute chit_color="blue" />
       </AttributeBlock>
     </GameObject>
@@ -39370,14 +39372,14 @@
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
-        <attribute attack_speed="4" />
-        <attribute strength="M" />
+        <attribute attack_speed="3" />
+        <attribute strength="L" />
         <attribute chit_color="lightblue" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="3" />
-        <attribute attack_speed="4" />
-        <attribute strength="L" />
+        <attribute attack_speed="5" />
+        <attribute strength="M" />
         <attribute chit_color="blue" />
       </AttributeBlock>
     </GameObject>
@@ -59205,7 +59207,9 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
-        <attribute target_clearing="clearing" />
+        <attributeList keyName="target_clearing">
+          <attributeVal N0="clearing" />
+        </attributeList>
       </AttributeBlock>
     </GameObject>
     <GameObject id="2224" name="Dark Favor">

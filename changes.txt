@@ -1,4 +1,5 @@
-0717: Blinding Light chit cannot be used at the beginning of phase, if already blocked by another character
+Dark Favor spell
+Thorns spell
 
 ::ROADMAP::
 ---Super Realm Content---
@@ -67,6 +68,7 @@ SUPER REALM:
 # Default: First edition search tables for Search, Peer and Locate
 # Roving natives now spawn
 # Native Die is now white (not red)
+# Correct monster stats
 # Correct Barkskin rules (does not count as armor anymore)
 # Fix summoning for certain warnings
 # Fix end of month regeneration
