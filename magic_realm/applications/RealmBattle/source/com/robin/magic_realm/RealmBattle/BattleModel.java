@@ -1429,7 +1429,13 @@ public class BattleModel {
 		}
 		if (!parry) {
 			if (attacker.getGameObject().hasThisAttribute(Constants.RANDOM_ATTACK_DIRECTION)) {
-					attackerCombat.setCombatBox(RandomNumber.getRandom(3));
+				if (attacker instanceof SpellWrapper) {
+					((SpellWrapper)attacker).setCombatBox(RandomNumber.getRandom(3)+1);
+				}
+				else {
+					attackerCombat.setCombatBox(RandomNumber.getRandom(3)+1);
+				}
+				logBattleInfo("Random attack direction! "+attacker.getName()+" attacks box "+attacker.getAttackCombatBox()+".");
 			}
 			
 			int hitType = NO_ATTACK;

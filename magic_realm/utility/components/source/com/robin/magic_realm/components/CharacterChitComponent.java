@@ -984,6 +984,8 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		}
 		if (characterWasKilled) {
 			combat.setKilledBy(attacker.getGameObject());
+			combat.setKilledSpeed(attacker.getAttackSpeed());
+			combat.setKilledLength(attacker.getLength());
 			damageTaken = true;
 			BattleHorse horse = character.getActiveSteed();
 			if (horse!=null && (attacker.getGameObject().hasThisAttribute(Constants.KILLS_HORSE) || (attacker instanceof ChitComponent && ((ChitComponent)attacker).hasFaceAttribute(Constants.KILLS_HORSE)))) {

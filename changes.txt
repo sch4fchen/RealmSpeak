@@ -1,5 +1,4 @@
 Thorns spell
-Flood spell: random attack direction, applies to all targets.
 
 ::ROADMAP::
 ---Super Realm Content---
@@ -84,6 +83,7 @@ SUPER REALM:
 # Fix Negative Auro affecting clearing without being cast
 # Fix Frozen Water spell affecting adjacent tiles
 # Fix Thorns spell
+# Fix Flood random attack direction and simoustanly killing
 # Improve Blinding Light effect
 # Correct text of Control Horse spell
 BUGS/ISSUES:
