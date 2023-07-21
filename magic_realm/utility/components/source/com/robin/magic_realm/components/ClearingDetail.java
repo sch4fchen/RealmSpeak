@@ -342,7 +342,7 @@ public class ClearingDetail {
 		}
 		return null;
 	}
-	private ArrayList<PathDetail> getConnectedPathsWithDirection() {
+	public ArrayList<PathDetail> getConnectedPathsWithDirection() {
 		ArrayList<PathDetail> paths = parent.findConnections(this);
 		if (paths==null) return null;
 		ArrayList<PathDetail> pathsDirected = new ArrayList<>(); 
@@ -769,14 +769,28 @@ public class ClearingDetail {
 	}
 	private boolean testThorns(TileComponent tile, TileComponent otherTile, ClearingDetail other) {
 		if (tile==null||otherTile==null||other==null) return false;
-		if (tile.getGameObject().hasThisAttribute(Constants.THORNS)) {
-			ArrayList<String> allThorns = tile.getGameObject().getThisAttributeList(Constants.THORNS);
-			String num1 = this.isEdge()?this.toString():this.getNumString();
-			String num2 = other.isEdge()?other.toString():other.getNumString();
-			for (String thorns : allThorns) {
-				if (thorns.matches(num1+"_"+num2)) return true;
-				if (thorns.matches(num2+"_"+num1)) return true;
+		if (tile.equals(otherTile)) {
+			if (tile.getGameObject().hasThisAttribute(Constants.THORNS)) {
+				ArrayList<String> allThorns = tile.getGameObject().getThisAttributeList(Constants.THORNS);
+				String num1 = this.isEdge()?this.toString():this.getNumString();
+				String num2 = other.isEdge()?other.toString():other.getNumString();
+				for (String thorns : allThorns) {
+					if (thorns.matches(num1+"_"+num2)) return true;
+					if (thorns.matches(num2+"_"+num1)) return true;
+				}
 			}
+		}
+		else {
+			ClearingDetail clearing1 = this;
+			ClearingDetail clearing2 = other;
+			String edgeName1 = ClearingUtility.getEdgeNameBetweenClearings(clearing1,clearing2);
+			String edgeName2 = ClearingUtility.getEdgeNameBetweenClearings(clearing2,clearing1);
+			String string1 = clearing1.getNum()+"_"+edgeName1;
+			String string2 = clearing2.getNum()+"_"+edgeName2;
+			ArrayList<String> list1 = tile.getGameObject().getThisAttributeList(Constants.THORNS);
+			ArrayList<String> list2 = otherTile.getGameObject().getThisAttributeList(Constants.THORNS);
+			if (list1!=null && list1.contains(string1)) return true;
+			if (list2!=null && list2.contains(string2)) return true;
 		}
 		return false;
 	}

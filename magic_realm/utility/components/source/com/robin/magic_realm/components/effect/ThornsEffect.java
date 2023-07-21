@@ -21,8 +21,8 @@ public class ThornsEffect implements ISpellEffect {
 		String clearing1 = clearingStrings[0];
 		String clearing2 = clearingStrings[1];
 		ArrayList<RealmComponent> targets = context.Spell.getTargets();
-		TileComponent tile1 = (TileComponent)targets.get(0);
-		TileComponent tile2 = (TileComponent)targets.get(1);
+		TileComponent tile1 = new TileComponent(targets.get(0).getGameObject());
+		TileComponent tile2 = new TileComponent(targets.get(1).getGameObject());
 		
 		moveCharactersBetweenClearings(tile1,Integer.valueOf(clearing1),tile2,Integer.valueOf(clearing2));
 		moveCharactersBetweenClearings(tile2,Integer.valueOf(clearing2),tile1,Integer.valueOf(clearing1));

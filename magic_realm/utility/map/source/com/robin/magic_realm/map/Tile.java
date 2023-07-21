@@ -51,6 +51,18 @@ public class Tile {
 		}
 		return edgeName;
 	}
+	public static int getEdgeIntByName(String edge) {
+		int edgeInt = -1;
+		switch(edge) {
+			case "S":	edgeInt = 0;   break;
+			case "SW":	edgeInt = 1;  break;
+			case "NW":	edgeInt = 2;  break;
+			case "N":	edgeInt = 3;   break;
+			case "NE":	edgeInt = 4;  break;
+			case "SE":	edgeInt = 5;  break;
+		}
+		return edgeInt;
+	}
 	public static Point getPositionFromGameObject(GameObject obj) {
 		String pos = obj.getAttribute(MAP_GRID,MAP_POSITION);
 		StringTokenizer st = new StringTokenizer(pos,",");

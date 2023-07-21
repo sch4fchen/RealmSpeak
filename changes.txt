@@ -1,5 +1,5 @@
-Dark Favor spell
 Thorns spell
+Flood spell: random attack direction, applies to all targets.
 
 ::ROADMAP::
 ---Super Realm Content---

@@ -20,8 +20,8 @@ public class ReanimateEffect implements ISpellEffect {
 		monster.copyAttributeBlockFrom(context.Target.getGameObject(), "dark");
 		monster.setAttribute("light","attack_speed",monster.getAttributeInt("light","attack_speed")+1);
 		monster.setAttribute("dark","attack_speed",monster.getAttributeInt("light","attack_speed")+1);
-		monster.setAttribute("light","move_speed",monster.getAttributeInt("light","attack_speed")+1);
-		monster.setAttribute("dark","move_speed",monster.getAttributeInt("light","attack_speed")+1);
+		monster.setAttribute("light","move_speed",monster.getAttributeInt("light","move_speed")+1);
+		monster.setAttribute("dark","move_speed",monster.getAttributeInt("light","move_speed")+1);
 		monster.setThisAttribute(Constants.ARMORED);
 		if (context.Target.getGameObject().hasThisAttribute(Constants.ICON_SIZE)) {
 			monster.setThisAttribute(Constants.ICON_SIZE,context.Target.getGameObject().getThisAttribute(Constants.ICON_SIZE));
