@@ -1,5 +1,3 @@
-Thorns spell
-
 ::ROADMAP::
 ---Super Realm Content---
 Spells: Alter Object, Alter Size, Enchant Weapon, Dazzle, Free Spell, Luck, Meditate
@@ -60,7 +58,7 @@ First Edition Optional Rule - Glory: When a character or his hired natives kill 
 
 Version 1.1.8.1
 QUEST UPDATE:
-# Updates to quest: A77
+# Updates to quest: A77, E13
 # Add more spells to quest rewards
 SUPER REALM:
 # New spells: Violent Winds, Dark Favor, Reanimate, Charm Snake, Camouflage, Mountain Surge, Blunt, Grow Wings
