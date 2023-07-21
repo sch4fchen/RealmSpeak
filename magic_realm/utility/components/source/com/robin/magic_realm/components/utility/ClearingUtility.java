@@ -699,12 +699,19 @@ public class ClearingUtility {
 	}
 	
 	public static String getEdgeNameBetweenClearings(ClearingDetail clearing1, ClearingDetail clearing2) {
-		ArrayList<PathDetail> edges1 = clearing1.getConnectedMapEdges();
-		if (edges1!=null) {
-			for (PathDetail edge : edges1) {
-				ClearingDetail edgeClearing = edge.getEdgeAsClearing();
-				if (clearing2.getConnectingPath(edgeClearing)!=null) {
-					return edgeClearing.toString();
+		Collection<PathDetail> c = clearing1.getConnectedMapEdges();
+		if (c!=null) {
+			int rot1 = Tile.getRotationFromGameObject(clearing1.getTileLocation().tile.getGameObject());
+			int rot2 = Tile.getRotationFromGameObject(clearing2.getTileLocation().tile.getGameObject());
+			int rot = (9+rot1-rot2)%6;
+			for (PathDetail path : c) {
+				ClearingDetail edgeClearing = path.getEdgeAsClearing();
+				int rotation = (rot+Tile.getEdgeIntByName(edgeClearing.toString()))%6;
+				String edgeName = Tile.getEdgeName(rotation);
+				for (PathDetail ed : clearing2.getConnectedMapEdges()) {
+					if (ed.getEdgeAsClearing().getType().matches(edgeName)) {
+						return edgeName;
+					}
 				}
 			}
 		}

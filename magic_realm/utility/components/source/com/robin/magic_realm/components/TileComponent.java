@@ -1400,8 +1400,8 @@ public class TileComponent extends ChitComponent {
 		} else {
 			ClearingDetail clearing1 = tile1.getClearing(num1);
 			ClearingDetail clearing2 = tile2.getClearing(num2);
-			String edgeName1 = ClearingUtility.getEdgeNameBetweenClearings(clearing1,clearing2);
-			String edgeName2 = ClearingUtility.getEdgeNameBetweenClearings(clearing2,clearing1);
+			String edgeName1 = ClearingUtility.getEdgeNameBetweenClearings(clearing2,clearing1);
+			String edgeName2 = ClearingUtility.getEdgeNameBetweenClearings(clearing1,clearing2);
 			String string1 = num1+"_"+edgeName1;
 			String string2 = num2+"_"+edgeName2;
 			ArrayList<String> list1 = tile1.getGameObject().getThisAttributeList(Constants.THORNS);
