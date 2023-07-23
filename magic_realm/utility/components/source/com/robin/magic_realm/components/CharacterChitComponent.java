@@ -727,6 +727,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 
 			// Find armor (if any) at box - chits before cards...
 			RealmComponent armor = null;
+			ArrayList<RealmComponent> armorsPenetratingAttack = null;
 			boolean isDragonBreath = attacker.isMissile() && attacker.getGameObject().hasThisAttribute("dragon_missile");
 			if (harm.getAppliedStrength().strongerThan(new Strength("T")) && attacker.isMissile()) {
 				// If harm exceeds T, armor is ignored, and target is killed, regardless of armor (damn!)
@@ -746,15 +747,15 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				 * Multiple layers can cause multiple reductions
 				 */
 				
+				armorsPenetratingAttack = getArmors(attacker.getAttackSpeed(),box,attackOrderPos);
 				if (harm.getAppliedStrength().strongerThan(new Strength("T"))) {
 				}
 				else {
-					ArrayList<RealmComponent> armors = getArmors(attacker.getAttackSpeed(),box,attackOrderPos);
-					if (armors!=null && !armors.isEmpty()) {
+					if (armorsPenetratingAttack!=null && !armorsPenetratingAttack.isEmpty()) {
 						harm.dampenSharpness();
 						RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor, and reduces sharpness: "+harm.toString());
 						
-						for (RealmComponent test:armors) {
+						for (RealmComponent test:armorsPenetratingAttack) {
 							if (isDragonBreath && test.getGameObject().hasThisAttribute(Constants.IMMUNE_BREATH)) {
 								harm = new Harm(new Strength(),0); // negate harm!
 								RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Dragon breath attack is stopped by "+test.getGameObject().getNameWithNumber());
@@ -795,7 +796,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					}
 					else if (hasBarkskin()) {
 						ColorMagic attackerImmunityColor = ColorMagic.makeColorMagic(attacker.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY),true);
-						if (attackerImmunityColor.isPrismColor()||attackerImmunityColor.getColorNumber()==ColorMagic.GRAY) {
+						if (attackerImmunityColor != null && (attackerImmunityColor.isPrismColor()||attackerImmunityColor.getColorNumber()==ColorMagic.GRAY)) {
 							RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Barkskin is ignored.");
 						}
 						else {
@@ -816,12 +817,12 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			boolean tookSeriousWounds = false;
 			Strength minForWound = new Strength("L"); // Without armor, L is all that is required to wound
 			
-			if (armor==null && hasNaturalArmor()) { // custom character possibility
+			if (armor==null && armorsPenetratingAttack==null && hasNaturalArmor()) { // custom character possibility
 				harm.dampenSharpness();
 				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),getGameObject().getNameWithNumber() + " has natural armor, which reduces sharpness: "+harm.toString());
 			}
 			
-			if (armor==null && hasBarkskin()) {
+			if (armor==null && armorsPenetratingAttack==null && hasBarkskin()) {
 				ColorMagic attackerImmunityColor = ColorMagic.makeColorMagic(attacker.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY),true);
 				if (attackerImmunityColor != null && (attackerImmunityColor.isPrismColor()||attackerImmunityColor.getColorNumber()==ColorMagic.GRAY)) {
 					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Barkskin is ignored.");
@@ -831,7 +832,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits barkskin, and reduces sharpness: "+harm.toString());
 				}
 			}
-			else if (!harm.getIgnoresArmor() && armor != null) {
+			if (!harm.getIgnoresArmor() && armor != null) {
 				// Wound minimum is increased to M if there is armor involved
 				minForWound = new Strength("M");
 				

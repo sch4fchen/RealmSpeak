@@ -1,5 +1,3 @@
-Issue: Sorcerer was not able to open Vault (open Vault button not working)
-Barkskin
 Violent Winds
 Sword of Terror (QuestReqInventoryMissing)
 Q1102 - Because It's There and Q44 - Underworld.
