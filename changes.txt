@@ -1,6 +1,12 @@
+Issue: Sorcerer was not able to open Vault (open Vault button not working)
+Barkskin
+Violent Winds
+Sword of Terror (QuestReqInventoryMissing)
+Q1102 - Because It's There and Q44 - Underworld.
 ::ROADMAP::
 ---Super Realm Content---
 Spells: Alter Object, Alter Size, Enchant Weapon, Dazzle, Free Spell, Luck, Meditate
+Spells: rtf files
 Treasures: 
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Nomads, Tasks, Travelers: 4.8 (p.41)

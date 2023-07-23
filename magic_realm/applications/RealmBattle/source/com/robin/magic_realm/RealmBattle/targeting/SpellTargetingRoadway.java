@@ -58,6 +58,7 @@ public class SpellTargetingRoadway extends SpellTargeting {
 		if (targetedTileLocation==null || targetClearing==null) return true;
 		TileLocation targetedTileLocation2 = null;
 		while (targetedTileLocation2==null||targetedTileLocation2.tile==null||targetedTileLocation2.clearing==null||targetedTileLocation2.equals(targetedTileLocation)) {
+			CenteredMapView.getSingleton().setMarkClearingAlertText("Select a second clearing. It must be a different clearing.");
 			TileLocationChooser clearingChooser = new TileLocationChooser(new JFrame(),CenteredMapView.getSingleton(),targetedTileLocation,"Select a second clearing. It must be a different clearing.");
 			CenteredMapView.getSingleton().markClearings(new ArrayList<>(Arrays.asList(targetClearing)),true,Color.red);
 			CenteredMapView.getSingleton().markClearingConnections(targetClearing,true);
