@@ -233,8 +233,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 			strength = new Strength(gameObject.getThisAttribute("action_change_str"));
 		}
 		else {
-			if (getChitAttribute("strength").matches("weight")) {
-				if (character==null) strength = new Strength();
+			if (getChitAttribute("strength")!=null && getChitAttribute("strength").matches("weight") && character!=null) {
 				strength = new Strength(character.getWeight());
 			}
 			else {
@@ -442,7 +441,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 	private String getChitAttribute(String key) {
 		String ret = gameObject.getAttribute(ALTERNATE_ATTRIBUTES, key);
 		if (ret == null) {
-			ret = getThisAttribute( key);
+			ret = getThisAttribute(key);
 		}
 		else {
 			usingAlteredAttributes = true;
