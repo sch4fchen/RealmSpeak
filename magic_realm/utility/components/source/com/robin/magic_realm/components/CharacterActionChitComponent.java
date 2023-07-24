@@ -587,7 +587,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 			if (character!=null && character.hasMesmerizeEffect(Constants.CALMED)) {
 				mod++;
 			}
-			if (new CombatWrapper(character.getGameObject()).isFreezed()) {
+			if (character!=null &&  new CombatWrapper(character.getGameObject()).isFreezed()) {
 				mod++;
 			}
 			if (getChitAttribute("speed").matches("weight")) {
