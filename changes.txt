@@ -1,4 +1,3 @@
-Grow WIngs
 Blunt
 Violent Winds
 Sword of Terror (QuestReqInventoryMissing)

@@ -52,12 +52,12 @@ public class SpellTargetingCreatureHorseHound extends SpellTargetingSingle {
 					RealmComponent itemRc = (RealmComponent.getRealmComponent(item));
 					if (itemRc.isHorse() && !itemRc.hasMagicProtection() && !itemRc.hasMagicColorImmunity(spell)) {
 						if ((!onlyNonMaximumTargets || !rc.getWeight().isMaximum())
-							&& (!onlyNonFlyingTargets || ((SteedChitComponent)rc).getFlySpeed()==null)) {
+							&& (!onlyNonFlyingTargets || ((SteedChitComponent)itemRc).getFlySpeed()==null)) {
 							gameObjects.add(item);
 						}
 					}
 					else if (item.hasThisAttribute(Constants.HOUND) && !itemRc.hasMagicProtection() && !itemRc.hasMagicColorImmunity(spell)) {
-						if ((!onlyNonMaximumTargets || !rc.getWeight().isMaximum()) && (!onlyNonFlyingTargets || ((MonsterChitComponent)rc).getFlySpeed()==null)) {
+						if ((!onlyNonMaximumTargets || !itemRc.getWeight().isMaximum()) && (!onlyNonFlyingTargets || ((MonsterChitComponent)itemRc).getFlySpeed()==null)) {
 							gameObjects.add(item);
 						}
 					}
