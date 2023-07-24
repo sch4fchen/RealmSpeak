@@ -1,5 +1,4 @@
 Sword of Terror (QuestReqInventoryMissing)
-Q1102 - Because It's There and Q44 - Underworld.
 ::ROADMAP::
 ---Super Realm Content---
 Spells: Alter Object, Alter Size, Enchant Weapon, Dazzle, Free Spell, Luck, Meditate
@@ -87,6 +86,8 @@ SUPER REALM:
 # Fix Flood random attack direction and simoustanly killing
 # Improve Blinding Light effect
 # Correct text of Control Horse spell
+NEW FEATURES:
+# Add spell detail rule texts for new Expansion 1 spells
 BUGS/ISSUES:
 # Fix Whistle for Monsters
 # Fixed showing character card after casting a spell (for custom characters or in Super Realm)
