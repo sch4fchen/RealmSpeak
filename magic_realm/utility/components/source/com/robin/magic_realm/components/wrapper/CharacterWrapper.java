@@ -158,6 +158,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String WANTS_COMBAT = "WANTS_CMB_";
 	public static final String WANTS_DAYEND_TRADING = "WANTS_DET_";
 	public static final String IS_DAYEND_TRADING = "IS_DET_";
+	public static final String RUN_AWAY_LAST_USED_CHIT = "RUN_AWAY_CHIT";
 	
 	// Day Actions
 	public static final String RELCHANGE_GROUP_LIST = "_relch_gl_";
@@ -1651,6 +1652,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		setDiscardedQuests(false);
 		clearActionFollowers();
 		removeAttribute(RELCHANGE_GROUP_LIST);
+		removeRunAwayLastUsedChit();
 		
 		if (getPonyGameObject()!=null) {
 			ArrayList<RealmComponent> fhList = getFollowingHirelings();
@@ -7086,4 +7088,13 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 	}
 
+    public void setRunAwayLastUsedChit(String chit) {
+    	setString(RUN_AWAY_LAST_USED_CHIT,chit);
+    }
+    public String getRunAwayLastUsedChit() {
+    	return getString(RUN_AWAY_LAST_USED_CHIT);
+    }
+    public void removeRunAwayLastUsedChit() {
+    	setString(RUN_AWAY_LAST_USED_CHIT,null);
+    }
 }

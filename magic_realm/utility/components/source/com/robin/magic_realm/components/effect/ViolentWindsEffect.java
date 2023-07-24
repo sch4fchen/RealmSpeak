@@ -43,7 +43,7 @@ public class ViolentWindsEffect implements ISpellEffect {
 		for (RealmComponent rc : clearing.getTileLocation().tile.getRealmComponentsBetweenClearing(clearing.getNum())) {
 			if (!rc.isCharacter()) continue;
 			CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
-			if (character.canFly(clearing.getTileLocation())) {
+			if (character.getRunAwayLastUsedChit().matches("FLY")) {
 				character.moveToLocation(new JFrame(), clearing.getTileLocation());
 			}
 		}

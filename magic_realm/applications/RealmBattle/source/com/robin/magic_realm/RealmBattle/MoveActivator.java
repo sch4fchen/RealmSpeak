@@ -167,26 +167,26 @@ public class MoveActivator {
 		moveSpeedOptions.retainAll(availableManeuverOptions); // Intersection between the two
 		
 		// Check for flying possibilities
-		ArrayList<StrengthChit> flyChits = null;
+		ArrayList<StrengthChit> flyChits = activeCharacter.getFlyStrengthChits(false);;
 		TileLocation currentCombatLocation = battleModel.getBattleLocation();
-		if (!currentCombatLocation.hasClearing() && !currentCombatLocation.clearing.isAffectedByViolentWinds()) {
-			flyChits = activeCharacter.getFlyStrengthChits(false);
-		}
+
 		
 		Speed fastestFlyer = null;
 		if (flyChits!=null && !flyChits.isEmpty()) {
 			fastestFlyer = getFastestAttackerFlySpeed();
 			Speed flyingSpeedToBeat = hostPrefs.hasPref(Constants.OPT_STUMBLE)?new Speed():fastestFlyer;
 			Strength needed = activeCharacter.getNeededSupportWeight();
-			// Filter out those flyChits that aren't strong enough or fast enough
-			for (StrengthChit sc:flyChits) {
-				if (sc.getSpeed().fasterThan(flyingSpeedToBeat) && sc.getStrength().strongerOrEqualTo(needed)) {
-					RealmComponent rc = sc.getRealmComponent();
-					if (rc.isMonster()) {
-						rc = ((MonsterChitComponent)rc).getMoveChit();
-					}
-					if (!moveSpeedOptions.contains(rc)) {
-						moveSpeedOptions.add(rc);
+			if (!currentCombatLocation.hasClearing() && !currentCombatLocation.clearing.isAffectedByViolentWinds()) {
+				// Filter out those flyChits that aren't strong enough or fast enough
+				for (StrengthChit sc:flyChits) {
+					if (sc.getSpeed().fasterThan(flyingSpeedToBeat) && sc.getStrength().strongerOrEqualTo(needed)) {
+						RealmComponent rc = sc.getRealmComponent();
+						if (rc.isMonster()) {
+							rc = ((MonsterChitComponent)rc).getMoveChit();
+						}
+						if (!moveSpeedOptions.contains(rc)) {
+							moveSpeedOptions.add(rc);
+						}
 					}
 				}
 			}
@@ -237,7 +237,7 @@ public class MoveActivator {
 					attackers = new ArrayList<>(filterFlyers(attackers));
 				}
 					
-				if (checkStumble &&!fastest.isInfinitelySlow() && hostPrefs.hasPref(Constants.OPT_STUMBLE)) {
+				if (checkStumble && !fastest.isInfinitelySlow() && hostPrefs.hasPref(Constants.OPT_STUMBLE)) {
 					// Running might NOT be a success...
 					Speed speed = fly!=null?fly.getSpeed():BattleUtility.getMoveSpeed(selectedMoveChit);
 					
@@ -259,6 +259,7 @@ public class MoveActivator {
 						return MoveActionResult.UNSUCCESSFUL;
 					}
 				}
+				activeCharacter.setRunAwayLastUsedChit(selectedMoveChit.isFlyChit()?"FLY":"MOVE");
 				return MoveActionResult.SUCCESSFUL;
 			}
 		}
