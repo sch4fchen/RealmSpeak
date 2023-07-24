@@ -167,10 +167,14 @@ public class MoveActivator {
 		moveSpeedOptions.retainAll(availableManeuverOptions); // Intersection between the two
 		
 		// Check for flying possibilities
-		ArrayList<StrengthChit> flyChits = activeCharacter.getFlyStrengthChits(false);
+		ArrayList<StrengthChit> flyChits = null;
+		TileLocation currentCombatLocation = battleModel.getBattleLocation();
+		if (!currentCombatLocation.hasClearing() && !currentCombatLocation.clearing.isAffectedByViolentWinds()) {
+			flyChits = activeCharacter.getFlyStrengthChits(false);
+		}
 		
 		Speed fastestFlyer = null;
-		if (!flyChits.isEmpty()) {
+		if (flyChits!=null && !flyChits.isEmpty()) {
 			fastestFlyer = getFastestAttackerFlySpeed();
 			Speed flyingSpeedToBeat = hostPrefs.hasPref(Constants.OPT_STUMBLE)?new Speed():fastestFlyer;
 			Strength needed = activeCharacter.getNeededSupportWeight();
