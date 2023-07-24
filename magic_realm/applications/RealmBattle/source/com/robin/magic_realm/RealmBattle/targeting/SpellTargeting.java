@@ -215,6 +215,9 @@ public abstract class SpellTargeting {
 		else if ("character, native leader, controlled monster".equals(targetType)) {
 			targeting = new SpellTargetingCharacterNativeLeaderControlledMonster(combatFrame,spell);
 		}
+		else if ("weapon, native, monster".equals(targetType)) {
+			targeting = new SpellTargetingWeaponNativeMonster(combatFrame,spell);
+		}
 		
 		return targeting;
 	}
