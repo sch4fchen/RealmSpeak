@@ -90,6 +90,7 @@ SUPER REALM:
 BUGS/ISSUES:
 # Fix Whistle for Monsters
 # Fixed showing character card after casting a spell (for custom characters or in Super Realm)
+# Fix QuestRequirementPath for some rare situations
 
 Version 1.1.8.0
 QUEST UPDATE:

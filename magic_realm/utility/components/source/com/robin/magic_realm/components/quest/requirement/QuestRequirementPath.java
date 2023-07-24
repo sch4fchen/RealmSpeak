@@ -87,11 +87,12 @@ public class QuestRequirementPath extends QuestRequirement {
 	
 	public static boolean testPath(String charPath,String testPath) {
 		
+		charPath = " "+charPath;
 		String[] each = testPath.split(" "); // "1 2 3 4 5"
 		String[] pathSections = new String[each.length - 1]; // "1 2" "2 3" "3 4" "4 5"
 		if (each.length == 1) {
 			String clearing = (String) Array.get(each, 0);
-			return charPath.contains(clearing) == true;
+			return charPath.contains(" "+clearing) == true;
 		}
 		
 		for (int i=0;i<pathSections.length;i++) {
@@ -103,7 +104,7 @@ public class QuestRequirementPath extends QuestRequirement {
 		
 		int lastIndex = -1;
 		for(String section:pathSections) {
-			int index = charPath.lastIndexOf(section);
+			int index = charPath.lastIndexOf(" "+section);
 			if (index<0 || index<=lastIndex) return false;
 			lastIndex = index;
 		}
