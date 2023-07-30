@@ -58985,7 +58985,7 @@
         <attribute spell="II" />
         <attribute duration="combat" />
         <attribute target="individual" />
-        <attribute text="Target is armored. Character is treated as wearing M armor." />
+        <attribute text="Target is armored, and removes a sharpness star from an attack that hits it." />
         <attribute magic_color="gray" />
         <attribute host_okay="" />
         <attribute learnable="" />
@@ -59293,7 +59293,7 @@
         <attribute spell="VI" />
         <attribute duration="day" />
         <attribute target="creature, horse, hound" />
-        <attribute text="Target can now FLY. Substract 1 from ove to minumum of 2." />
+        <attribute text="Target can now FLY. Substract 1 from move to minimum of 2." />
         <attribute magic_color="purple" />
         <attribute host_okay="" />
         <attribute learnable="" />

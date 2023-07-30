@@ -1,4 +1,7 @@
 Sword of Terror (QuestReqInventoryMissing)
+If I cast Grow Wings on a horse, can I choose to runaway with it by Flying? I think one should be able to fly away with a flying horse, correct?
+Again, same issue. Violent Storm spell is in effect. A character is able to fly away via Broomstick that evening.
+Issue: A character is unable to fly away from a non-flying creature (etc using Flying Carpet's Fly M2 from the Imp or Octopus).
 ::ROADMAP::
 ---Super Realm Content---
 Spells: Alter Object, Alter Size, Enchant Weapon, Dazzle, Free Spell, Luck, Meditate
