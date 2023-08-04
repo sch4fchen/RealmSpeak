@@ -57,7 +57,7 @@ Super Realm: Player building map: distribute tiles equally (including river tile
 First Edition Optional Rule - https://boardgamegeek.com/thread/2503528/1st-edition-vs-3rd-edition: Native blocking, First Edition Optional Rule - Native kiling, e.g. grudges but instantly relationship becomes enemy status, Followers summon Monsters?, Hired native Leaders?, learning spells? campaigns?, combat endls only if no attack was made
 First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 
-Version 1.1.8.1
+Version 1.1.8.2
 QUEST UPDATE:
 # Updates to quest:
 SUPER REALM:
