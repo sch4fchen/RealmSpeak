@@ -176,7 +176,7 @@ public class MoveActivator {
 			fastestFlyer = getFastestAttackerFlySpeed();
 			Speed flyingSpeedToBeat = hostPrefs.hasPref(Constants.OPT_STUMBLE)?new Speed():fastestFlyer;
 			Strength needed = activeCharacter.getNeededSupportWeight();
-			if (!currentCombatLocation.hasClearing() && !currentCombatLocation.clearing.isAffectedByViolentWinds()) {
+			if (currentCombatLocation.hasClearing() && !currentCombatLocation.clearing.isAffectedByViolentWinds()) {
 				// Filter out those flyChits that aren't strong enough or fast enough
 				for (StrengthChit sc:flyChits) {
 					if (sc.getSpeed().fasterThan(flyingSpeedToBeat) && sc.getStrength().strongerOrEqualTo(needed)) {
