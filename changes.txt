@@ -1,5 +1,4 @@
 Sword of Terror (QuestReqInventoryMissing)
-If I cast Grow Wings on a horse, can I choose to runaway with it by Flying? I think one should be able to fly away with a flying horse, correct?
 ::ROADMAP::
 ---Super Realm Content---
 Spells: Alter Object, Alter Size, Enchant Weapon, Dazzle, Free Spell, Luck, Meditate
