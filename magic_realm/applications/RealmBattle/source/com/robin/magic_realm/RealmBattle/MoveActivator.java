@@ -166,10 +166,20 @@ public class MoveActivator {
 		Collection<RealmComponent> availableManeuverOptions = combatFrame.getAvailableManeuverOptions(0,true); // if running away, then the red-side-up check has already been done
 		moveSpeedOptions.retainAll(availableManeuverOptions); // Intersection between the two
 		
+		TileLocation currentCombatLocation = battleModel.getBattleLocation();
+		//Remove flying chits if affected by Violent Winds
+		if (currentCombatLocation.clearing.isAffectedByViolentWinds()) {
+			Collection<RealmComponent> nonFlyingOptions = new ArrayList<>();
+			for (RealmComponent option : moveSpeedOptions) {	
+				if (!option.isFlyChit()) {
+					nonFlyingOptions.add(option);
+				}
+			}
+			moveSpeedOptions.retainAll(nonFlyingOptions);
+		}
+		
 		// Check for flying possibilities
 		ArrayList<StrengthChit> flyChits = activeCharacter.getFlyStrengthChits(false);;
-		TileLocation currentCombatLocation = battleModel.getBattleLocation();
-
 		
 		Speed fastestFlyer = null;
 		if (flyChits!=null && !flyChits.isEmpty()) {
