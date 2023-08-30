@@ -896,6 +896,7 @@ public class CenteredMapView extends JComponent {
 		int sw = (int)(w * scale);
 		int sh = (int)(h * scale);
 		
+		g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 		g.drawImage(mapImage,sx,sy,sx+sw-1,sy+sh-1,0,0,w,h,null);
 		g.setColor(Color.darkGray);
 		g.drawRect(sx,sy,sw,sh);

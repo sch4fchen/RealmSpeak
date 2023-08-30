@@ -1,4 +1,8 @@
 Sword of Terror (QuestReqInventoryMissing)
+I failed the Escort Party quest but the chit did not leave me. Instead it counts the days overdue. I hope it's not like overdue books - that's one hefty bill. v1181.
+Run Away Bug (EMail with save game): The game hangs when the character runs away between clearings. After executing the first move on the next day, it seems like it never recorded the subsequent moves. The screen says "blank move... " or something like that. It has happened several times now. Ending and restarting the game doesn't solve the problem. hmmm... I just realized I was running btw tiles, maybe that has something to do with it?
+Run Away with flying horses (Grow Wings spell)
+Super Realm thread: list of features (2 posts)
 ::ROADMAP::
 ---Super Realm Content---
 Spells: Alter Object, Alter Size, Enchant Weapon, Dazzle, Free Spell, Luck, Meditate
@@ -62,6 +66,8 @@ QUEST UPDATE:
 # Updates to quest:
 SUPER REALM:
 # New spells:
+NEW FEATURES:
+# Improve map rendering quality
 
 Version 1.1.8.1
 QUEST UPDATE:
