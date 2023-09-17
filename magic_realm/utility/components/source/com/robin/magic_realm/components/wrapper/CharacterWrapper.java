@@ -1689,7 +1689,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 					// Decrement "daysLeft" on any gold specials
 					int daysLeft = rc.getGameObject().getThisInt("daysLeft");
 					daysLeft--;
-					if (daysLeft==0) {
+					if (daysLeft<=0) {
 						// The chit should expire (undo its effect) and drop into the clearing.
 						GameClient.broadcastClient(getGameObject().getName(),"Failed to complete "+gs.getGameObject().getName()+" by the required time limit.");
 						gs.makePayment(this); // when it expires (instead of being completed) you have to pay a fine

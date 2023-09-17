@@ -1,5 +1,4 @@
 Sword of Terror (QuestReqInventoryMissing)
-I failed the Escort Party quest but the chit did not leave me. Instead it counts the days overdue.
 ::ROADMAP::
 ---Super Realm Content---
 Spells: Alter Object, Alter Size, Enchant Weapon, Dazzle, Free Spell, Luck, Meditate
