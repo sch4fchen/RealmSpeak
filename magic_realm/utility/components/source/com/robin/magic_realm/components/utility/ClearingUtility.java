@@ -708,7 +708,11 @@ public class ClearingUtility {
 				ClearingDetail edgeClearing = path.getEdgeAsClearing();
 				int rotation = (rot+Tile.getEdgeIntByName(edgeClearing.toString()))%6;
 				String edgeName = Tile.getEdgeName(rotation);
-				for (PathDetail ed : clearing2.getConnectedMapEdges()) {
+				ArrayList<PathDetail> connectedMapEdges = clearing2.getConnectedMapEdges();
+				if (connectedMapEdges == null)  {
+					continue;
+				}
+				for (PathDetail ed : connectedMapEdges) {
 					if (ed.getEdgeAsClearing().getType().matches(edgeName)) {
 						return edgeName;
 					}
