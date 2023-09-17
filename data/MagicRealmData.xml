@@ -59320,7 +59320,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2232" name="Charm Snake">
+    <GameObject id="2231" name="Charm Snake">
       <AttributeBlock blockName="this">
         <attribute spell="VII" />
         <attribute duration="day" />
@@ -59336,7 +59336,7 @@
         <attribute benevolent="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2233" name="Dazzle">
+    <GameObject id="2232" name="Dazzle">
       <AttributeBlock blockName="this">
         <attribute spell="VII" />
         <attribute duration="phase" />
@@ -59349,20 +59349,7 @@
         <attribute super_realm_spell="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2234" name="Free Spell">
-      <AttributeBlock blockName="this">
-        <attribute spell="VII" />
-        <attribute duration="combat" />
-        <attribute target="site chit, TWT" />
-        <attribute text="You can cast the top most spell card from the target." />
-        <attribute magic_color="black" />
-        <attribute host_okay="" />
-        <attribute learnable="" />
-        <attribute super_realm="" />
-        <attribute super_realm_spell="" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="2235" name="Join">
+    <GameObject id="2233" name="Join">
       <AttributeBlock blockName="this">
         <attribute spell="VII" />
         <attribute duration="phase" />
@@ -59375,20 +59362,7 @@
         <attribute super_realm_spell="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2236" name="Luck">
-      <AttributeBlock blockName="this">
-        <attribute spell="VII" />
-        <attribute duration="phase" />
-        <attribute target="character" />
-        <attribute text="You may re-roll a table roll you just made." />
-        <attribute magic_color="white" />
-        <attribute host_okay="" />
-        <attribute learnable="" />
-        <attribute super_realm="" />
-        <attribute super_realm_spell="" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="2237" name="Meditate">
+    <GameObject id="2234" name="Meditate">
       <AttributeBlock blockName="this">
         <attribute spell="VII" />
         <attribute duration="day" />
@@ -59401,7 +59375,7 @@
         <attribute super_realm_spell="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2238" name="Blunt">
+    <GameObject id="2235" name="Blunt">
       <AttributeBlock blockName="this">
         <attribute spell="VIII" />
         <attribute duration="day" />
@@ -59414,7 +59388,7 @@
         <attribute super_realm_spell="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2239" name="Camouflage">
+    <GameObject id="2236" name="Camouflage">
       <AttributeBlock blockName="this">
         <attribute spell="VIII" />
         <attribute duration="day" />
