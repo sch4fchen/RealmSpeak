@@ -108,8 +108,8 @@ public class SummonDemon extends MonsterTable {
 				break;
 			case Ghost:
 				getMonsterCreator().setupGameObject(demon,"Ghost","ghost","M",true,false,false,"wesnoth/units");
-				MonsterCreator.setupSide(demon,"light","M",0,4,0,4,"gray");
-				MonsterCreator.setupSide(demon,"dark","M",0,4,0,4,"darkgray");
+				MonsterCreator.setupSide(demon,"light","M",0,2,0,2,"gray");
+				MonsterCreator.setupSide(demon,"dark","M",0,2,0,2,"darkgray");
 				demon.setThisAttribute(Constants.GHOST);
 				demon.setThisAttribute(Constants.UNDEAD);
 				demon.setThisAttribute(Constants.ICON_SIZE,"0.9");

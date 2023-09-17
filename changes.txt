@@ -1,31 +1,5 @@
-SR 1.0 update
-Gex [GMT-7] — heute um 04:20 Uhr
-Made an update to the pnp file on google drive.  As of now, Super Realm is at version 1.0.  Changes include:
-SPELLS
---Barksin card updated to conform to rulebook (should've been done earlier).
---Pentangle card has reference to "Reaper" removed.
---Reserve card changed from requiring Purple color to requiring Any color.
---Violent Winds card changed to "Day" type spell.  Additional note added.
-TWT CHART
---Rename "Scroll of Nature" to "Elven Scroll."  This is what it should've been called to match up with the card and the rulebook.
---Stylized "Scroll of Malice" by italicizing "of."
-REFERENCE SHEETS
---Replaced "Lost" table with "Loot" table.  More beginner-friendly that way.
-RULEBOOK
---7.15.1.b.2, removed implication in an example that Hunters can move when on the map.
---9.4.a.7, added detail about Trek quests.
---List of Monsters, fixed error with Goblin w/Bow.  His move speed should be 5 on the dark side, not 4.
---List of Monsters, Vampire's attack on dark side should be 'M' force instead of 'H.'
---List of Natives, fixed stat correlation error with Enchanters, and Hunter 2.  Their attack/maneuver speed now matches that of their PDF file counterparts.
---List of Spells, revised V spell Reanimate for consistency, regarding when the Undead is removed from play (end of combat, not at Midnight).
---List of Spells, revised IV spell Reserve, making it require Any color instead of Purple color.
---List of Spells, added detail to IV spell Lightning Bolt, stating that site targets are considered armored.
---Summon Demon Table, Ghost now listed as having an L2 Attack force, and a 2 maneuver speed.
-
-
 Sword of Terror (QuestReqInventoryMissing)
 I failed the Escort Party quest but the chit did not leave me. Instead it counts the days overdue. I hope it's not like overdue books - that's one hefty bill. v1181.
-Run Away Bug (EMail with save game): The game hangs when the character runs away between clearings. After executing the first move on the next day, it seems like it never recorded the subsequent moves. The screen says "blank move... " or something like that. It has happened several times now. Ending and restarting the game doesn't solve the problem. hmmm... I just realized I was running btw tiles, maybe that has something to do with it?
 Run Away with flying horses (Grow Wings spell)
 ::ROADMAP::
 ---Super Realm Content---
@@ -49,6 +23,7 @@ Super Realm: Optional Rules: No duplicate spell recording at start of the game
 Super Realm: Optional Rules: Starting location always the Inn
 Super Realm: Public quests on setup chart (+flag on quests if it can go on setup chart) (BGG variant: 2 quest cards per native)
 ---Detail Rules for Super Realm---
+Lightning Bolt: List of Spells, added detail to IV spell Lightning Bolt, stating that site targets are considered armored.
 Phantasm: If the phantasm discovers Hidden Enemies, the controlling character also discovers Hidden Enemies.;; it cannot take part in combat;; can now spy and be spied
 Melt into Mist: only move actions; canot follow or be followed; can be charged (difference), The target cannot attack or be attacked, except by individuals affected by the Enchant Weapon spell, If attacked, Mist’s vulnerability is Tremendous and non-armored; targeted monster stills prowls (like in base MR) even if ‘X’ weight
 Melt into Mist: This spell is benevolent if, and only if, the spellcaster casts it on one of his hired leaders or controlled monsters.
@@ -89,6 +64,7 @@ Version 1.1.8.2
 QUEST UPDATE:
 # Updates to quest:
 SUPER REALM:
+# Update spells and monster stats reflecting v1 changes
 # New spells:
 NEW FEATURES:
 # Improve map rendering quality

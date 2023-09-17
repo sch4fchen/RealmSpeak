@@ -59173,7 +59173,7 @@
         <attribute duration="phase" />
         <attribute target="character" />
         <attribute text="Spell chit is enchanted into same color as the source in the clearing." />
-        <attribute magic_color="purple" />
+        <attribute magic_color="any" />
         <attribute host_okay="" />
         <attribute learnable="" />
         <attribute super_realm="" />
