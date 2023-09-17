@@ -1,6 +1,5 @@
 Sword of Terror (QuestReqInventoryMissing)
-I failed the Escort Party quest but the chit did not leave me. Instead it counts the days overdue. I hope it's not like overdue books - that's one hefty bill. v1181.
-Run Away with flying horses (Grow Wings spell)
+I failed the Escort Party quest but the chit did not leave me. Instead it counts the days overdue.
 ::ROADMAP::
 ---Super Realm Content---
 Spells: Alter Object, Alter Size, Enchant Weapon, Dazzle, Free Spell, Luck, Meditate
@@ -65,6 +64,7 @@ QUEST UPDATE:
 # Updates to quest:
 SUPER REALM:
 # Update spells and monster stats reflecting v1 changes
+# Run away with flying horses (Grow Wings spell)
 # New spells:
 NEW FEATURES:
 # Improve map rendering quality

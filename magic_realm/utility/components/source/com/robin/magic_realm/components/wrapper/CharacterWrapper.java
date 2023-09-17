@@ -5701,6 +5701,16 @@ public class CharacterWrapper extends GameObjectWrapper {
 									BattleUtility.getMoveSpeed(RealmComponent.getRealmComponent(rc.getGameObject()))));
 				}
 			}
+			
+			for (GameObject item:getActiveInventory()) {
+				RealmComponent itemRc = RealmComponent.getRealmComponent(item);
+				if (itemRc.isHorse() && ((SteedChitComponent)itemRc).flies()) {
+					list.add(new StrengthChit(
+							item,
+							new Strength(item.getThisAttribute("vulnerability")),
+							BattleUtility.getMoveSpeed(itemRc)));
+				}
+			}
 		}
 		
 		// Sort list by strength (strongest first)
