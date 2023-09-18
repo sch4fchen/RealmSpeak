@@ -183,7 +183,7 @@ public class MoveActivator {
 		
 		for (GameObject item:activeCharacter.getActiveInventory()) {
 			RealmComponent itemRc = RealmComponent.getRealmComponent(item);
-			if (itemRc.isHorse() && ((SteedChitComponent)itemRc).flies()) {
+			if ((itemRc.isHorse() && ((SteedChitComponent)itemRc).flies()) || (itemRc.isNativeHorse() && ((NativeSteedChitComponent)itemRc).flies())) {
 				flyChits.add(new StrengthChit(
 						item,
 						new Strength(item.getThisAttribute("vulnerability")),

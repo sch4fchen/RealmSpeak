@@ -5704,7 +5704,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			
 			for (GameObject item:getActiveInventory()) {
 				RealmComponent itemRc = RealmComponent.getRealmComponent(item);
-				if (itemRc.isHorse() && ((SteedChitComponent)itemRc).flies()) {
+				if ((itemRc.isHorse() && ((SteedChitComponent)itemRc).flies()) || (itemRc.isNativeHorse() && ((NativeSteedChitComponent)itemRc).flies())) {
 					list.add(new StrengthChit(
 							item,
 							new Strength(item.getThisAttribute("vulnerability")),
