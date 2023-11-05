@@ -132,6 +132,8 @@ public class CenteredMapView extends JComponent {
 	private ArrayList<ChatLine> chatLines;
 	private Hashtable<String,ChatStyle> chatStyles;
 	
+	private int interpolation = 0;
+	
 	/**
 	 * Constructor requires that the map has already been built - this just displays a built map
 	 */
@@ -896,7 +898,17 @@ public class CenteredMapView extends JComponent {
 		int sw = (int)(w * scale);
 		int sh = (int)(h * scale);
 		
-		g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+		switch (interpolation) {
+		case 1:
+			g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+			break;
+		case 2:
+			g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+			break;
+		default:
+			g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
+		}
+
 		g.drawImage(mapImage,sx,sy,sx+sw-1,sy+sh-1,0,0,w,h,null);
 		g.setColor(Color.darkGray);
 		g.drawRect(sx,sy,sw,sh);
@@ -1317,6 +1329,10 @@ public class CenteredMapView extends JComponent {
 		private JMenuItem showAllChits;
 		private JMenuItem showNoChits;
 		
+		private JMenuItem interpolationNearestNeighbor;
+		private JMenuItem interpolationBilinear;
+		private JMenuItem interpolationBicubic;
+		
 		private JSeparator separator;
 		private JMenuItem showClearingDetail;
 		
@@ -1482,6 +1498,34 @@ public class CenteredMapView extends JComponent {
 				}
 			});
 			add(showNoChits);
+			add(new JSeparator());
+			add(new JSeparator());
+			JLabel interpolationLabel = new JLabel("INTERPOLATION");
+			add(interpolationLabel);
+			interpolationNearestNeighbor = new JMenuItem("Off (NearestNeighbor)");
+			interpolationNearestNeighbor.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					interpolation = 0;
+					redraw();
+				}
+			});
+			add(interpolationNearestNeighbor);
+			interpolationBilinear = new JMenuItem("Bilinear");
+			interpolationBilinear.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					interpolation = 1;
+					redraw();
+				}
+			});
+			add(interpolationBilinear);
+			interpolationBicubic = new JMenuItem("Bicubic");
+			interpolationBicubic.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					interpolation = 2;
+					redraw();
+				}
+			});
+			add(interpolationBicubic);
 			
 			separator = new JSeparator();
 			add(separator);

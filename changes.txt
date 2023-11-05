@@ -1,7 +1,6 @@
 Sword of Terror (QuestReqInventoryMissing)
 ::ROADMAP::
 ---Super Realm Content---
-Option for Antialaising: default off
 Spells: Alter Object, Alter Size, Enchant Weapon, Dazzle, Meditate
 Treasures: 
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
@@ -62,6 +61,8 @@ First Edition Optional Rule - https://boardgamegeek.com/thread/2503528/1st-editi
 First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 
 Version 1.1.8.3
+NEW FEATURES:
+# Option for Interpolation mode (map rendering quality)
 
 Version 1.1.8.2
 QUEST UPDATE:
