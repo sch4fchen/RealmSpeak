@@ -96,7 +96,7 @@ public class FlyChitComponent extends StateChitComponent {
 		spell.expireSpell();
 	}
 	public Strength getStrength() {
-		if (affectedByKey(Constants.ALTERED_WEIGHT)) return new Strength(getGameObject().getThisAttribute(Constants.ALTERED_WEIGHT));
+		if (affectedByKey(Constants.ALTER_WEIGHT)) return new Strength(getGameObject().getThisAttribute(Constants.ALTER_WEIGHT));
 		return new Strength(getGameObject().getThisAttribute("strength"));
 	}
 	public Speed getSpeed() {

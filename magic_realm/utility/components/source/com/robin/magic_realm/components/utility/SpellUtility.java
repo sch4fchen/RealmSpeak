@@ -404,13 +404,17 @@ the Appearance Chart, he instantly becomes unhired.
 	}
 
 	public static void ApplyNamedSpellEffectToTarget(String effect, GameObject target, SpellWrapper spellWrapper) {
-			if(!target.hasThisAttribute(effect)){
-				target.setThisAttribute(effect);
-			}
-			else{
-				spellWrapper.cancelSpell();
-				RealmLogging.logMessage(spellWrapper.getCaster().getGameObject().getName(),"Spell cancelled, because the targeted character already has this ability.");
-			}
+		ApplyNamedSpellEffectWithValueToTarget(effect, target, spellWrapper, "");
+	}
+	
+	public static void ApplyNamedSpellEffectWithValueToTarget(String effect, GameObject target, SpellWrapper spellWrapper, String value) {
+		if(!target.hasThisAttribute(effect)){
+			target.setThisAttribute(effect,value);
+		}
+		else{
+			spellWrapper.cancelSpell();
+			RealmLogging.logMessage(spellWrapper.getCaster().getGameObject().getName(),"Spell cancelled, because the targeted character already has this ability.");
+		}
 	}
 
 	public static void setAlteredSpeed(RealmComponent chit, String attributeName, SpellWrapper spellWrapper) {	

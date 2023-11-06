@@ -31,6 +31,7 @@ public class SpellTargetingItem extends SpellTargetingSingle {
 			ArrayList<GameObject> items = new ArrayList<>();
 			if (participant.isCharacter()) {
 				CharacterWrapper character = new CharacterWrapper(participant.getGameObject());
+				if (character.isMistLike() || character.hasMagicProtection()) continue;
 				if (active) {
 					items.addAll(character.getActiveInventory());
 				}
@@ -47,6 +48,7 @@ public class SpellTargetingItem extends SpellTargetingSingle {
 					if (chit.getGameObject().hasThisAttribute(Constants.BROOMSTICK)) gameObjects.add(chit.getGameObject());
 				}
 			} else if (participant.isMonster() || participant.isNative()) {
+				if (participant.hasMagicProtection()) continue;
 				for (GameObject held : participant.getHold()) {
 					if (held.hasThisAttribute(Constants.SHIELD)) gameObjects.add(held);
 				}

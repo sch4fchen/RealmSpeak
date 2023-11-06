@@ -1256,7 +1256,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	
 	public Strength getWeight() {
 		if (affectedByKey(Constants.NO_WEIGHT)) return new Strength();
-		if (!affectedByKey(Constants.ENCHANTED_WEAPON) && affectedByKey(Constants.ALTERED_WEIGHT)) return new Strength(getGameObject().getThisAttribute(Constants.ALTERED_WEIGHT));
+		if (!affectedByKey(Constants.ENCHANT_WEAPON) && affectedByKey(Constants.ALTER_WEIGHT)) return new Strength(getGameObject().getThisAttribute(Constants.ALTER_WEIGHT));
 		return new Strength(getGameObject().getThisAttribute(Constants.WEIGHT));
 	}
 	
