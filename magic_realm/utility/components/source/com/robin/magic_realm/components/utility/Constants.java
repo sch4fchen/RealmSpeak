@@ -509,6 +509,9 @@ public class Constants {
 	public static final String GROW_WINGS = "grow_wings";
 	public static final int GROW_WINGS_SPEED = 2;
 	public static final String AFFECTED_MONSTER_ID = "affected_monster_Id";
+	public static final String ALTERED_WEIGHT = "altered_weight";
+	public static final String ENCHANTED_WEAPON = "enchanted_weapon";
+	public static final String BROOMSTICK = "broomstick";
 
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";

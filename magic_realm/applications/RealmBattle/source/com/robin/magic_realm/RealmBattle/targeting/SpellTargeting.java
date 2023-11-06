@@ -218,6 +218,9 @@ public abstract class SpellTargeting {
 		else if ("weapon, native, monster".equals(targetType)) {
 			targeting = new SpellTargetingWeaponNativeMonster(combatFrame,spell);
 		}
+		else if ("active item".equals(targetType)) {
+			targeting = new SpellTargetingItem(combatFrame,spell,true,false);
+		}
 		
 		return targeting;
 	}

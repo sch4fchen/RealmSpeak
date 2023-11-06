@@ -8236,6 +8236,7 @@
         <attribute rw_expansion_1="" />
         <attribute learnable="" />
         <attribute targetlightonly="" />
+        <attribute broomstick="" />
       </AttributeBlock>
       <AttributeBlock blockName="fly_chit">
         <attribute strength="L" />
@@ -32653,6 +32654,7 @@
         <attribute denizen="" />
         <attribute icon_type_alt="Era_of_Chaos-animals-hound" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute hound="" />
       </AttributeBlock>
       <AttributeBlock blockName="companion_light">
         <attribute move_speed="1" />
@@ -57719,6 +57721,7 @@
         <attribute host_okay="" />
         <attribute learnable="" />
         <attribute super_realm="" />
+        <attribute broomstick="" />
       </AttributeBlock>
       <AttributeBlock blockName="fly_chit">
         <attribute strength="L" />
@@ -59250,7 +59253,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="VI" />
         <attribute duration="day" />
-        <attribute target="item" />
+        <attribute target="active item" />
         <attribute text="Alter object's weight. Roll on corresponding table." />
         <attribute magic_color="Purple" />
         <attribute host_okay="" />
