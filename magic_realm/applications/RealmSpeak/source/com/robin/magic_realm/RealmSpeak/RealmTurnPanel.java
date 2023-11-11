@@ -541,8 +541,14 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		TileLocation current = getCharacter().getCurrentLocation();
 		String where = getCharacter().isHidden()?"at your feet":"in plain sight";
 		if (current.isInClearing()) {
-			ArrayList<RealmComponent> list = current.clearing.getClearingComponentsInPlainSight(getCharacter());
-			
+			ArrayList<RealmComponent> components = current.clearing.getClearingComponentsInPlainSight(getCharacter());
+			ArrayList<RealmComponent> list = new ArrayList<RealmComponent>();
+			for (RealmComponent item : components) {
+				if (!item.getWeight().equals(Strength.valueOf("X"))) {
+					list.add(item);
+				}
+			}
+
 			if (list.size()>0) {
 				// Pickup an item (one at a time)
 				StringBuffer sb = new StringBuffer();

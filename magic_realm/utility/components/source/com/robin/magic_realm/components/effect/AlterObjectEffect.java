@@ -2,6 +2,8 @@ package com.robin.magic_realm.components.effect;
 
 import com.robin.game.objects.GameObject;
 import com.robin.general.swing.DieRoller;
+import com.robin.magic_realm.components.attribute.Strength;
+import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.DieRollBuilder;
 import com.robin.magic_realm.components.utility.RealmLogging;
@@ -35,6 +37,13 @@ public class AlterObjectEffect implements ISpellEffect {
 		DieRoller roller = DieRollBuilder.getDieRollBuilder(context.Parent,context.Spell.getCaster(),redDie).createRoller("Alter Weight");
 		int die = roller.getHighDieResult();
 		SpellUtility.ApplyNamedSpellEffectWithValueToTarget(Constants.ALTER_WEIGHT, target, context.Spell, EFFECT[die-1]);
+		if (context.Target.getWeight().equals(Strength.valueOf("X")) && context.Target.isActivated() && !context.Target.isHorse() && !context.Target.isNativeHorse()) {
+			context.Target.setActivated(false);
+		}
+		TileLocation loc = caster.getCurrentLocation();
+		if (context.Target.getWeight().equals(Strength.valueOf("X")) && loc!=null && loc.clearing!=null && !context.Target.isHorse() && !context.Target.isNativeHorse()) {
+			loc.clearing.add(target, caster);
+		}
 		String result = RESULT[die-1];
 		RealmLogging.logMessage(caster.getName(),"Alter Object roll: "+roller.getDescription());
 		RealmLogging.logMessage(caster.getName(),"Alter Object result: "+result);

@@ -59354,6 +59354,13 @@
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
       </AttributeBlock>
+      <AttributeBlock blockName="phase_chit">
+        <attribute phase_chit="" />
+        <attribute text="Dazzle" />
+      </AttributeBlock>
+      <AttributeBlock blockName="phase_chit_effect">
+        <attribute dazzle="" />
+      </AttributeBlock>
     </GameObject>
     <GameObject id="2233" name="Join">
       <AttributeBlock blockName="this">
