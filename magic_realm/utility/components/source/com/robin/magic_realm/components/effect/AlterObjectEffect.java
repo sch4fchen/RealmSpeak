@@ -1,52 +1,14 @@
 package com.robin.magic_realm.components.effect;
 
-import com.robin.game.objects.GameObject;
-import com.robin.general.swing.DieRoller;
-import com.robin.magic_realm.components.attribute.Strength;
-import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.table.AlterObject;
 import com.robin.magic_realm.components.utility.Constants;
-import com.robin.magic_realm.components.utility.DieRollBuilder;
-import com.robin.magic_realm.components.utility.RealmLogging;
-import com.robin.magic_realm.components.utility.SpellUtility;
-import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class AlterObjectEffect implements ISpellEffect {
-
-	private static final String[] RESULT = {
-			"Negligible",
-			"Light",
-			"Medium",
-			"Heavy",
-			"Tremendous",
-			"Maximum",
-	};
-	private static final String[] EFFECT = {
-			"N",
-			"L",
-			"M",
-			"H",
-			"T",
-			"X",
-	};	
 	
 	@Override
 	public void apply(SpellEffectContext context) {
-		CharacterWrapper caster = context.Spell.getCaster();
-		GameObject target = context.Target.getGameObject();
 		int redDie = context.Spell.getRedDieLock();
-		DieRoller roller = DieRollBuilder.getDieRollBuilder(context.Parent,context.Spell.getCaster(),redDie).createRoller("Alter Weight");
-		int die = roller.getHighDieResult();
-		SpellUtility.ApplyNamedSpellEffectWithValueToTarget(Constants.ALTER_WEIGHT, target, context.Spell, EFFECT[die-1]);
-		if (context.Target.getWeight().equals(Strength.valueOf("X")) && context.Target.isActivated() && !context.Target.isHorse() && !context.Target.isNativeHorse()) {
-			context.Target.setActivated(false);
-		}
-		TileLocation loc = caster.getCurrentLocation();
-		if (context.Target.getWeight().equals(Strength.valueOf("X")) && loc!=null && loc.clearing!=null && !context.Target.isHorse() && !context.Target.isNativeHorse()) {
-			loc.clearing.add(target, caster);
-		}
-		String result = RESULT[die-1];
-		RealmLogging.logMessage(caster.getName(),"Alter Object roll: "+roller.getDescription());
-		RealmLogging.logMessage(caster.getName(),"Alter Object result: "+result);
+		AlterObject.doNow(context.Parent,context.Spell.getCaster().getGameObject(),context.Target.getGameObject(),redDie,context.Spell);
 	}
 
 	@Override
