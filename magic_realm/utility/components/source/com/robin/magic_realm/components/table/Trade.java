@@ -81,6 +81,7 @@ public abstract class Trade extends RealmTable {
 		// Make sure character is actually here (might just be a hireling)
 		if (!here.equals(currentLocation)) return "The "+character.getGameObject().getName()+" is not in the clearing to buy drinks.";
 		if (character.hasCurse(Constants.ASHES)) return "The "+character.getGameObject().getName()+" cannot buy drinks with the ASHES curse.";
+		if (character.affectedByKey(Constants.DAZZLE)) return "The "+character.getGameObject().getName()+" cannot buy drinks when affected by the DAZZLE spell.";
 		
 		int drinkPrice = info.getGroupCount();
 		if (character.hasActiveInventoryThisKey(Constants.LOW_DRINK_COST)) {

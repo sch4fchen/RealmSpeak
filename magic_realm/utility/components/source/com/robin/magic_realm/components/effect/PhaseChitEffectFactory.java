@@ -11,6 +11,7 @@ public class PhaseChitEffectFactory {
 			case "holy_shield": return new ISpellEffect[]{new ApplyNamedEffect(Constants.HOLY_SHIELD)};
 			case "reserve": return new ISpellEffect[]{new MagicChitEffect()};
 			case "dark_favor": return new ISpellEffect[]{new DarkFavorEffect(), new ApplyNamedEffect(Constants.DARK_FAVOR)};
+			case "dazzle": return new ISpellEffect[]{new ApplyNamedEffect(Constants.DAZZLE)};
 			
 			default: return null;
 		}

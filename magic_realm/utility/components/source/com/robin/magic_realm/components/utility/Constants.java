@@ -512,6 +512,7 @@ public class Constants {
 	public static final String ALTER_WEIGHT = "altered_weight";
 	public static final String ENCHANT_WEAPON = "enchanted_weapon";
 	public static final String BROOMSTICK = "broomstick";
+	public static final String DAZZLE = "dazzle";
 
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";

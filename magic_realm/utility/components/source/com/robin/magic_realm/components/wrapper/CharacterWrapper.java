@@ -1125,6 +1125,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (isNegativeAuraInClearing()) {
 			relationship--;
 		}
+		if (this.affectedByKey(Constants.DAZZLE)) {
+			relationship++;
+		}
 		return relationship;
 	}
 	public boolean isNegativeAuraInClearing() {

@@ -143,6 +143,7 @@ public class SpellEffectFactory {
 			case "charm snake": return new ISpellEffect[]{new ControlEffect()};
 			case "control horse": return new ISpellEffect[]{new ControlHorseEffect()};
 			case "control element": return new ISpellEffect[]{new ControlEffect()};
+			case "dazzle": return new ISpellEffect[]{new PhaseChitEffect()};
 			case "deal with orcs and goblins": return new ISpellEffect[]{new PacifyEffect(0)};
 			case "dark favor": return new ISpellEffect[]{new PhaseChitEffect()};
 			case "divine protection": return new ISpellEffect[]{new ApplyNamedEffect(Constants.STRENGTHENED_VULNERABILITY)};
