@@ -108,7 +108,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 					RealmComponent rc = RealmComponent.getRealmComponent(weapon);
 					if (rc.isMonsterPart()) { // Might be a Hurricane Winds FLY chit
 						MonsterPartChitComponent monsterPart = (MonsterPartChitComponent) RealmComponent.getRealmComponent(weapon);
-						if (!monsterPart.isDestroyed()) {
+						if (!monsterPart.isDestroyed() && this.getMoveStrength().strongerOrEqualTo((RealmComponent.getRealmComponent(weapon).getWeight()))) {
 							return monsterPart;
 						}
 					}
@@ -511,6 +511,24 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	public Speed getAttackSpeed() {
 		return new Speed(getFaceAttributeInteger("attack_speed"),speedModifier());
 	}
+	
+	public Strength getMoveStrength() {
+		Strength strength;
+		if (hasFaceAttribute("move_strength")) {
+			strength = new Strength(getFaceAttributeString("move_strength"));
+		} else {
+			strength = new Strength(getThisAttribute("vulnerability"));
+		}
+		int mod = sizeModifier();
+		if (mod<0) {
+			strength.moveRedToMaximum();
+		}
+		strength.modify(mod);
+		if (strength.getChar()!="T" && getGameObject().hasThisAttribute(Constants.STRONG_MF)) {
+			strength.modify(1);
+		}		
+		return strength;
+	}
 
 	public Strength getStrength() {
 		Strength strength = new Strength(getFaceAttributeString("strength"));
@@ -598,7 +616,8 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	public boolean hasActiveShield() {
 		ArrayList<GameObject> hold = getGameObject().getHold();
 		for (GameObject item : hold) {
-			if (item.hasThisAttribute(Constants.SHIELD) && !item.hasThisAttribute(Constants.DESTROYED)) {
+			if (item.hasThisAttribute(Constants.SHIELD) && !item.hasThisAttribute(Constants.DESTROYED)
+			&& this.getMoveStrength().strongerOrEqualTo((RealmComponent.getRealmComponent(item).getWeight()))) {
 				return true;
 			}
 		}

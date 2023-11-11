@@ -36879,6 +36879,7 @@
         <attribute denizen="" />
         <attribute icon_size="0.8" />
         <attribute weapon_use="" />
+        <attribute minotaur="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -36887,6 +36888,7 @@
         <attribute chit_color="tan" />
         <attribute length="5" />
         <attribute sharpness="1" />
+        <attribute move_strength="T" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="5" />
@@ -36895,6 +36897,7 @@
         <attribute chit_color="brown" />
         <attribute sharpness="1" />
         <attribute length="5" />
+        <attribute move_strength="T" />
       </AttributeBlock>
       <contains id="1315" />
     </GameObject>
