@@ -45,46 +45,42 @@ public class AlterObject extends RealmTable {
 	
 	public String applyOne(CharacterWrapper character) {
 		SpellUtility.ApplyNamedSpellEffectWithValueToTarget(Constants.ALTER_WEIGHT, character.getGameObject(), spell, EFFECT[0]);
-		checkForMaximumItemWeight(RealmComponent.getRealmComponent(character.getGameObject()));
+		checkForItemWeightMaximum(RealmComponent.getRealmComponent(character.getGameObject()));
 		return RESULT[0];
 	}
 
 	public String applyTwo(CharacterWrapper character) {
 		SpellUtility.ApplyNamedSpellEffectWithValueToTarget(Constants.ALTER_WEIGHT, character.getGameObject(), spell, EFFECT[1]);
-		checkForMaximumItemWeight(RealmComponent.getRealmComponent(character.getGameObject()));
+		checkForItemWeightMaximum(RealmComponent.getRealmComponent(character.getGameObject()));
 		return RESULT[1];
 	}
 
 	public String applyThree(CharacterWrapper character) {
 		SpellUtility.ApplyNamedSpellEffectWithValueToTarget(Constants.ALTER_WEIGHT, character.getGameObject(), spell, EFFECT[2]);
-		checkForMaximumItemWeight(RealmComponent.getRealmComponent(character.getGameObject()));
+		checkForItemWeightMaximum(RealmComponent.getRealmComponent(character.getGameObject()));
 		return RESULT[2];
 	}
 
 	public String applyFour(CharacterWrapper character) {
 		SpellUtility.ApplyNamedSpellEffectWithValueToTarget(Constants.ALTER_WEIGHT, character.getGameObject(), spell, EFFECT[3]);
-		checkForMaximumItemWeight(RealmComponent.getRealmComponent(character.getGameObject()));
+		checkForItemWeightMaximum(RealmComponent.getRealmComponent(character.getGameObject()));
 		return RESULT[3];
 	}
 
 	public String applyFive(CharacterWrapper character) {
 		SpellUtility.ApplyNamedSpellEffectWithValueToTarget(Constants.ALTER_WEIGHT, character.getGameObject(), spell, EFFECT[4]);
-		checkForMaximumItemWeight(RealmComponent.getRealmComponent(character.getGameObject()));
+		checkForItemWeightMaximum(RealmComponent.getRealmComponent(character.getGameObject()));
 		return RESULT[4];
 	}
 
 	public String applySix(CharacterWrapper character) {
 		SpellUtility.ApplyNamedSpellEffectWithValueToTarget(Constants.ALTER_WEIGHT, character.getGameObject(), spell, EFFECT[5]);
-		checkForMaximumItemWeight(RealmComponent.getRealmComponent(character.getGameObject()));
+		checkForItemWeightMaximum(RealmComponent.getRealmComponent(character.getGameObject()));
 		return RESULT[5];
 	}
-	private void checkForMaximumItemWeight(RealmComponent target) {
+	private static void checkForItemWeightMaximum(RealmComponent target) {
 		if (target.getWeight().equals(Strength.valueOf("X")) && target.isActivated() && !target.isHorse() && !target.isNativeHorse()) {
 			target.setActivated(false);
-		}
-		TileLocation loc = spell.getCaster().getCurrentLocation();
-		if (target.getWeight().equals(Strength.valueOf("X")) && loc!=null && loc.clearing!=null && !target.isHorse() && !target.isNativeHorse()) {
-			loc.clearing.add(target.getGameObject(), spell.getCaster());
 		}
 	}
 	public static AlterObject doNow(JFrame parent,GameObject attacker,GameObject target,int redDie,SpellWrapper spell) {

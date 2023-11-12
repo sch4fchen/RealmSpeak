@@ -101,6 +101,10 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	}
 
 	public MonsterPartChitComponent getWeapon() {
+		return getWeapon(false);
+	}
+	
+	public MonsterPartChitComponent getWeapon(boolean ignoreWeight) {
 		if (!getGameObject().hasThisAttribute("animal") && !getGameObject().hasThisAttribute("statue")) { // as long as the monster isn't transformed!
 			ArrayList<GameObject> list = getGameObject().getHold();
 			if (list != null && list.size() > 0) {
@@ -108,7 +112,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 					RealmComponent rc = RealmComponent.getRealmComponent(weapon);
 					if (rc.isMonsterPart()) { // Might be a Hurricane Winds FLY chit
 						MonsterPartChitComponent monsterPart = (MonsterPartChitComponent) RealmComponent.getRealmComponent(weapon);
-						if (!monsterPart.isDestroyed() && this.getMoveStrength().strongerOrEqualTo((RealmComponent.getRealmComponent(weapon).getWeight()))) {
+						if (!monsterPart.isDestroyed() && (ignoreWeight || this.getMoveStrength().strongerOrEqualTo((RealmComponent.getRealmComponent(weapon).getWeight())))) {
 							return monsterPart;
 						}
 					}
@@ -137,7 +141,8 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	}
 	
 	public boolean cannotChangeTactics() {
-		return getGameObject().hasThisAttribute(Constants.NO_CHANGE_TACTICS) || hasFaceAttribute(Constants.NO_CHANGE_TACTICS);
+		return getGameObject().hasThisAttribute(Constants.NO_CHANGE_TACTICS) || hasFaceAttribute(Constants.NO_CHANGE_TACTICS)
+				|| (getShield()!=null && !getShield().isDestroyed() && getShield().getWeight().equalTo(new Strength("X")));
 	}
 	
 	public boolean changeTacticsAfterCasting() {
@@ -632,6 +637,16 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 			}
 		}
 		return null;
+	}
+	
+	public boolean hasMaximumWeightItem() {
+		if (getShield()!=null && getShield().getWeight().equalTo(new Strength("X"))) {
+			return true;
+		}
+		if (getWeapon(true)!=null && getWeapon(true).getWeight().equalTo(new Strength("X"))) {
+			return true;
+		}
+		return false;
 	}
 
 	public boolean applyHit(GameWrapper game,HostPrefWrapper hostPrefs, BattleChit attacker, int box, Harm attackerHarm,int attackOrderPos) {
