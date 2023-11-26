@@ -38,7 +38,7 @@ Vault and Tomb (if discovered): can be opened with a missile attack, if after ro
 Ask Demon: 4 options, instead of just asking a question
 Absorb Essence: any denizens and Attention chits assigned to it become assigned to the spellcaster; absorbs steed when absorbing a monster
 	The spellcaster cannot be affected by multiple Absorb Essence spells. Any Absorb Essence spell he casts while he is already bewitched by Absorb Essence is cancelled.
----Remaining Features---
+---Remaining Super Realm Features---
 Spells: Free Spell, Luck 
 ---Optional Rules---
 Super Realm: Optional Rules (and 1st Ed): Severe wounds (SR: 10.1, p.114) = Serious Wounds, but wounds *2
@@ -63,6 +63,36 @@ Super Realm: Optional Rules: Cornered (SR: 11.13, p.128)
 Super Realm: Player building map: distribute tiles equally (including river tiles), distribute river tiles first, then grotto, then rest, each player has 3 tiles in the hand and draws after placing, skip player if he cannot place any tile (and he has no river tile), if all players are skipped or player would be skipped but has river tile, undo last placement, do not allow placing grotto before all other river tiles have been placed
 First Edition Optional Rule - https://boardgamegeek.com/thread/2503528/1st-edition-vs-3rd-edition: Native blocking, First Edition Optional Rule - Native kiling, e.g. grudges but instantly relationship becomes enemy status, Followers summon Monsters?, Hired native Leaders?, learning spells? campaigns?, combat endls only if no attack was made
 First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
+
+---New Features---
+Quest: option add icon for minor character
+Combat Help System
+Would be nice to make weapon abilities too:
+	Immobilizing1 - When it hits all attacks undercut in current round
+	Immobilizing2 - When it hits all attacks undercut in next round
+	Stunning - Target cannot play an attack next round
+Guilds: Assassins, Nature
+Nature Guild
+	Natives:	Scholar, Woodfolk
+	Cost:		4 Weapons (any kind) - these are destroyed.
+	Reward:		Two MAGIC II2* chits
+	Services:
+		Apprentice:
+		Journeyman:
+			Summon an animal companion for 10 gold
+		Master:
+Assassins Guild
+	Natives:	  Crone, Dragonmen
+	Cost:		  80 Notoriety per level
+	Reward:		  STAB T1** chit (THRUST box only)
+	Services:
+		Apprentice:
+			5 gold to buy a mark (L/M natives) -> Pays 10 gold	
+		Journeyman:
+			5 gold to buy a mark (H/T natives) -> Pays 20 gold
+		Master:
+			5 gold to buy a high profile mark (HQ natives) -> Pays 50 gold
+
 
 Version 1.1.8.3
 NEW FEATURES:
