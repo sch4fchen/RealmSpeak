@@ -38,8 +38,6 @@ Vault and Tomb (if discovered): can be opened with a missile attack, if after ro
 Ask Demon: 4 options, instead of just asking a question
 Absorb Essence: any denizens and Attention chits assigned to it become assigned to the spellcaster; absorbs steed when absorbing a monster
 	The spellcaster cannot be affected by multiple Absorb Essence spells. Any Absorb Essence spell he casts while he is already bewitched by Absorb Essence is cancelled.
----Remaining Super Realm Features---
-Spells: Free Spell, Luck 
 ---Optional Rules---
 Super Realm: Optional Rules (and 1st Ed): Severe wounds (SR: 10.1, p.114) = Serious Wounds, but wounds *2
 Super Realm: Optional Rules: Bounty campaign (SR: 10.2, p.114)
@@ -77,6 +75,7 @@ NEW FEATURES:
 # Legendary Realm tile style for Expansion 1
 SUPER REALM:
 # New spells: Dazzle
+# Spell from Expansion 1 (compensating Free Spell and Luck): Staff to Snake, Spirit Guide
 
 Version 1.1.8.2
 SUPER REALM:
