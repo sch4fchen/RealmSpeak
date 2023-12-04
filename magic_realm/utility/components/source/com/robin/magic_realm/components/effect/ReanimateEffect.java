@@ -1,10 +1,11 @@
 package com.robin.magic_realm.components.effect;
 
 import com.robin.game.objects.GameObject;
+import com.robin.magic_realm.components.MonsterChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
-import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmUtility;
+import com.robin.magic_realm.components.wrapper.CombatWrapper;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class ReanimateEffect implements ISpellEffect {
@@ -23,6 +24,12 @@ public class ReanimateEffect implements ISpellEffect {
 		monster.setAttribute("light","move_speed",monster.getAttributeInt("light","move_speed")+1);
 		monster.setAttribute("dark","move_speed",monster.getAttributeInt("light","move_speed")+1);
 		monster.setThisAttribute(Constants.ARMORED);
+		MonsterChitComponent monsterChit = (MonsterChitComponent)RealmComponent.getRealmComponent(monster);
+		if (monsterChit.getWeapon()!=null) {
+			GameObject weapon = monsterChit.getWeapon().getGameObject();
+			weapon.setAttribute("light","attack_speed",weapon.getAttributeInt("light","attack_speed")+1);
+			weapon.setAttribute("dark","attack_speed",weapon.getAttributeInt("dark","attack_speed")+1);
+		}
 		if (context.Target.getGameObject().hasThisAttribute(Constants.ICON_SIZE)) {
 			monster.setThisAttribute(Constants.ICON_SIZE,context.Target.getGameObject().getThisAttribute(Constants.ICON_SIZE));
 		}
@@ -50,10 +57,9 @@ public class ReanimateEffect implements ISpellEffect {
 		}
 		context.Spell.setExtraIdentifier(monster.getStringId());
 		context.getCharacterCaster().addHireling(monster);
-		TileLocation loc = RealmComponent.getRealmComponent(context.Caster).getCurrentLocation();
-		if (loc!=null && loc.clearing!=null) {
-			RealmComponent.getRealmComponent(context.Caster).getCurrentLocation().clearing.add(monster,null);
-		}
+		context.Caster.add(monster); // so that you don't have to assign as a follower right away
+		CombatWrapper monsterCw = new CombatWrapper(monster);
+		monsterCw.setSheetOwner(true);
 	}
 
 	@Override
