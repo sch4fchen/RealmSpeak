@@ -3,6 +3,7 @@ package com.robin.magic_realm.components.effect;
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.MonsterChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
@@ -60,6 +61,10 @@ public class ReanimateEffect implements ISpellEffect {
 		context.Caster.add(monster); // so that you don't have to assign as a follower right away
 		CombatWrapper monsterCw = new CombatWrapper(monster);
 		monsterCw.setSheetOwner(true);
+		TileLocation loc = RealmComponent.getRealmComponent(context.Caster).getCurrentLocation();
+		if (loc!=null && loc.clearing!=null) {
+			RealmComponent.getRealmComponent(context.Caster).getCurrentLocation().clearing.add(monster,null);
+		}
 	}
 
 	@Override
