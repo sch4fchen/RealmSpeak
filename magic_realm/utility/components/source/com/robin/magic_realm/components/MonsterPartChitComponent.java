@@ -28,6 +28,7 @@ public class MonsterPartChitComponent extends MonsterChitComponent {
 	}
 	public Strength getStrength() {
 		Strength strength = super.getStrength();
+		if (affectedByKey(Constants.ALTER_WEIGHT)) strength = new Strength(getGameObject().getThisAttribute(Constants.ALTER_WEIGHT));
 		if (strength.getChar()!="T" && getGameObject().getHeldBy().hasThisAttribute(Constants.STRONG_MF)) {
 			strength.modify(1);
 		}
@@ -36,6 +37,7 @@ public class MonsterPartChitComponent extends MonsterChitComponent {
 
 	public Strength getVulnerability() {
 		Strength vul = new Strength("M"); // This is the default "size" for a monster weapon
+		if (affectedByKey(Constants.ALTER_WEIGHT)) vul = new Strength(getGameObject().getThisAttribute(Constants.ALTER_WEIGHT));
 		vul.modify(sizeModifier());
 		return vul;
 	}
