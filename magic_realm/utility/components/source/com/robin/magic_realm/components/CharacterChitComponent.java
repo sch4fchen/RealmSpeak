@@ -762,6 +762,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 							}
 							else {
 								Strength armorVulnerability = new Strength(test.getGameObject().getThisAttribute("vulnerability"));
+								if (test.isArmor()) armorVulnerability = test.getWeight();
 								if (test.getGameObject().hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE) && test.getGameObject().hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ARMOR)) {
 									String immunity = attacker.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY);
 									ColorMagic attackerImmunityColor = ColorMagic.makeColorMagic(immunity,true);
@@ -774,7 +775,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 									}
 								}
 								if (!test.isArmor()) {
-									if (test.isWeapon()) armorVulnerability = new Strength(test.getGameObject().getThisAttribute("weight")); // parrying with weapon
+									if (test.isWeapon()) armorVulnerability = test.getWeight(); // parrying with weapon
 									if (test instanceof CharacterActionChitComponent) armorVulnerability = new Strength(test.getGameObject().getThisAttribute("strength")); // parrying with FIGHT chit
 								}
 								if (armorVulnerability.strongerThan(harm.getAppliedStrength())) {
@@ -848,6 +849,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor ("+armor.getGameObject().getNameWithNumber()+"), and reduces sharpness: "+harm.toString());
 				}
 				Strength armorVulnerability = new Strength(armor.getGameObject().getThisAttribute("vulnerability"));
+				if (armor.isArmor()) armorVulnerability = armor.getWeight();
 				if (armor.getGameObject().hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE) && armor.getGameObject().hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ARMOR)) {
 					String immunity = attacker.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY);
 					ColorMagic attackerImmunityColor = ColorMagic.makeColorMagic(immunity,true);
