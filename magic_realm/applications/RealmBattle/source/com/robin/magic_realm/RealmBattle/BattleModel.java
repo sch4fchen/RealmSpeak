@@ -1924,7 +1924,7 @@ public class BattleModel {
 			boolean twoHandedWeapon = false;
 			if (!attackerCharacter.affectedByKey(Constants.STRONG)) {
 				for (GameObject item : activeInventory) {
-					if (item.hasThisAttribute(Constants.SHIELD) && item.getThisAttribute("weight") != "L") shield = true;
+					if (item.hasThisAttribute(Constants.SHIELD) && item.getThisAttribute(Constants.WEIGHT) != "L") shield = true;
 					if (item.hasThisAttribute(Constants.TWO_HANDED)) twoHandedWeapon = true;
 				}
 			}

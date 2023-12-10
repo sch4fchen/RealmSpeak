@@ -58,6 +58,13 @@ public class WeaponChitComponent extends RoundChitComponent {
 		CombatWrapper combatWeapon = new CombatWrapper(gameObject);
 		if (combatWeapon.wasThrown()) return 12;
 		if (gameObject.hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE) && gameObject.hasThisAttribute(Constants.MAGIC_COLOR_BONUS_LENGTH)) return gameObject.getThisInt(Constants.MAGIC_COLOR_BONUS_LENGTH);
+		if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT)) {
+			int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((gameObject.getThisAttribute(Constants.WEIGHT)))).getLevels();
+			int length = gameObject.getThisInt("length")+difference;
+			if (length<=0) return 0;
+			if (length>=18) return 18;
+			return length;
+		}
 		return gameObject.getThisInt("length");
 	}
 	public String getLightSideStat() {
@@ -76,6 +83,21 @@ public class WeaponChitComponent extends RoundChitComponent {
 			String magicSpeed = getFaceAttributeString(Constants.MAGIC_COLOR_BONUS_SPEED);
 			if (magicSpeed!=null && magicSpeed.trim().length()>0) return new Speed(magicSpeed,mod);
 		}
+		if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT)) {
+			int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((gameObject.getThisAttribute(Constants.WEIGHT)))).getLevels();
+			int baseSpeed = Integer.valueOf(val).intValue();
+			if (!isMissile()) {
+				if (baseSpeed+difference<2) {
+					difference = 2-baseSpeed;
+				}
+			}
+			else {
+				if (baseSpeed+difference<1) {
+					difference = 1-baseSpeed;
+				}
+			}
+			mod = mod+difference;
+		}
 		if (val!=null && val.trim().length()>0) {
 			return new Speed(val,mod);
 		}
@@ -90,6 +112,10 @@ public class WeaponChitComponent extends RoundChitComponent {
 		TileLocation tl = ClearingUtility.getTileLocation(getGameObject());
 		if (tl!=null && tl.isInClearing() && tl.clearing.hasSpellEffect(Constants.HEAVIED)) {
 			strength.modify(1);
+		}
+		if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT)) {
+			int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((gameObject.getThisAttribute(Constants.WEIGHT)))).getLevels();
+			strength.modify(difference);
 		}
 		return strength;
 	}

@@ -862,7 +862,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					}
 				}
 				if (!armor.isArmor()) {
-					if (armor.isWeapon()) armorVulnerability = new Strength(armor.getGameObject().getThisAttribute("weight")); // parrying with weapon
+					if (armor.isWeapon()) armorVulnerability = new Strength(armor.getGameObject().getThisAttribute(Constants.WEIGHT)); // parrying with weapon
 					if (armor instanceof CharacterActionChitComponent) {
 						armorVulnerability = new Strength(armor.getGameObject().getThisAttribute("strength")); // parrying with FIGHT chit
 						minForWound = new Strength(armorVulnerability);
