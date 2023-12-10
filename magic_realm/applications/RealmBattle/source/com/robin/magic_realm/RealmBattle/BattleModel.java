@@ -1325,8 +1325,10 @@ public class BattleModel {
 		String attackCancelled = null;
 		
 		boolean parry = false;
+
 		if (attacker.isCharacter() && !(new CharacterWrapper(attacker.getGameObject()).isTransmorphed())) {
-			CombatWrapper combatAttackChit = new CombatWrapper(((CharacterChitComponent) attacker).getAttackChit().getGameObject());
+			CharacterChitComponent characterChit = (CharacterChitComponent) attacker;
+			CombatWrapper combatAttackChit = new CombatWrapper(characterChit.getAttackChit().getGameObject());
 			if (combatAttackChit.getPlacedAsParry()) {
 				parry = true;
 			}
@@ -1337,10 +1339,18 @@ public class BattleModel {
 					&& (!target.isCharacter() && !combatAttackChit.getSheetOwnerId().equals(RealmComponent.getRealmComponent(target.getGameObject()).get2ndTarget().getGameObject().getStringId()))) {
 				attackCancelled = "Miss! ("+attacker+" placed the attack not on same sheet as target.)";
 			}
+			if (attackCancelled==null && characterChit.getAttackingWeapon()!=null && characterChit.getAttackChit()!=null) {
+				if (characterChit.getAttackChit().isActionChit()) {
+					CharacterActionChitComponent fightChit = (CharacterActionChitComponent)characterChit.getAttackChit();
+					if(fightChit.isFight() && characterChit.getAttackingWeapon().getWeight().strongerThan(fightChit.getStrength())) {
+						attackCancelled = "Attack canceled! ("+attacker+" cannot hold weapon, it's too heavy.)";
+					}
+				}
+			}
 		}
 		
 		// You can't kill a target that is already dead, unless the target's killer attacked with the same speed and length (simultaneous)
-		if (targetKiller!=null) {
+		if (targetKiller!=null && attackCancelled==null) {
 			int targetKillerLength = targetCombat.getKilledLength();
 			int targetKillerSpeed = targetCombat.getKilledSpeed();
 			boolean simultaneous = targetKillerSpeed == attacker.getAttackSpeed().getNum()
@@ -1357,7 +1367,7 @@ public class BattleModel {
 		}
 		
 		// The attacker can't attack if he/she is dead, unless their attack is simultaneous with their killer.
-		if (killer!=null) {
+		if (killer!=null && attackCancelled==null) {
 			// The attacker was killed, but was it simultaneous?
 			boolean simultaneous = killSpeed == attacker.getAttackSpeed().getNum()
 					&& killLength == attacker.getLength().intValue();
