@@ -23,7 +23,7 @@ public class SpellTargetingItem extends SpellTargetingSingle {
 	}
 	
 	public boolean isAddable(RealmComponent item) {
-		return (item.isWeapon() || item.isArmor() || item.isTreasure()) && !item.getGameObject().hasThisAttribute(Constants.HOUND);
+		return (item.isWeapon() || item.isArmor() || item.isTreasure() || item.getGameObject().hasThisAttribute(Constants.BROOMSTICK)) && !item.getGameObject().hasThisAttribute(Constants.HOUND);
 	}
 
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {

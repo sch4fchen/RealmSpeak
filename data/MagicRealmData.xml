@@ -8242,6 +8242,7 @@
         <attribute strength="L" />
         <attribute speed="1" />
         <attribute fly_chit="" />
+		<attribute broomstick="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="314" name="Premonition">
@@ -57730,6 +57731,7 @@
         <attribute strength="L" />
         <attribute speed="1" />
         <attribute fly_chit="" />
+		<attribute broomstick="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2157" name="Premonition">
