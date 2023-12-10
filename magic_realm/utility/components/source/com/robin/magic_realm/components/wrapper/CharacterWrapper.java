@@ -758,6 +758,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * @return		true if character can move at all
 	 */
 	public boolean canMove() {
+		if (getWeight().isMaximum()) return false;
 		Strength moveStrength = getMoveStrength(true,false);
 		return canMove(moveStrength);
 	}
@@ -5729,6 +5730,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * @return			true if the character has the means to fly
 	 */
 	public boolean canFly(TileLocation location) {
+		if (getWeight().isMaximum()) return false;
 		if (mustFly()) {
 			return true;
 		}

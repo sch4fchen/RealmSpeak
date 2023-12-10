@@ -1,7 +1,6 @@
 Sword of Terror (QuestReqInventoryMissing)
 ::ROADMAP::
 Alter Object: (p38ff)
-	‘X’ weight individuals or items cannot Move, Fly, or be carried. The only way they can be moved to another clearing is by teleportation
 	Alter attack force, attack speed, and weapon length
 	Alter characters and denizens stats when weight changed
 	treasure with a Fight, Move, or Fly chit: alter chit
