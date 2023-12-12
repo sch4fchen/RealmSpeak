@@ -1,4 +1,4 @@
-P39: Alter denizen weight (=monster & native & native horse + hound + character)
+P39: Alter denizen weight (=monster & native & native horse + character)
 b.1) A denizen whose weight is decreased has his
 fight force, fight speed, move speed, and weapon length
 decreased by one for each level he is decreased from his
@@ -13,10 +13,6 @@ b.2) A denizen whose weight is increased has his
 fight force, fight speed, move speed, and weapon length
 increased by one for each level he is increased from his
 original weight (to a maximum of ‘X’ weight).
-Important: an individual whose weight becomes ‘X’ will
-have ‘X’ for Move speed, indicating they cannot Move.
-
-If this spell’s target is an ‘X’ weight individual, and their weight decreases, their new Move speed is 6.
 
 Sword of Terror (QuestReqInventoryMissing)
 ::ROADMAP::
@@ -29,7 +25,7 @@ Super Realm: Quests + Events
 Super Realm: Adapt Commerce optional rules for new natives
 Super Realm: Characters, including potraits with credits, different chit icon
 ---Super Realms Rules---
-Super Realm: icons for site chits, sound and warning chits, characters
+
 SUPER REALM: remaining RULES and LOGIC (rule changes compared to Magic Realm)
 Super Realm: Seasons + Weather 10.12 (p.117)
 Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
@@ -40,7 +36,8 @@ Super Realm: Optional Rules: No discarding or drawing new quest cards (but perha
 Super Realm: Optional Rules: No duplicate spell recording at start of the game
 Super Realm: Optional Rules: Starting location always the Inn
 Super Realm: Public quests on setup chart (+flag on quests if it can go on setup chart) (BGG variant: 2 quest cards per native)
----Detail Rules for Super Realm---
+---Detail Rules for Super Realm Spells---
+Poison: This spell cannot be cast on the Alchemist’s Mixture, or a dagger, or on any weapon or denizen affected by the Enchant Weapon spell. Special: the sharpness star added by this spell is ignored when the weapon is used against Grey/Prism Anomalies.
 Lightning Bolt: List of Spells, added detail to IV spell Lightning Bolt, stating that site targets are considered armored.
 Phantasm: If the phantasm discovers Hidden Enemies, the controlling character also discovers Hidden Enemies.;; it cannot take part in combat;; can now spy and be spied
 Melt into Mist: only move actions; canot follow or be followed; can be charged (difference), The target cannot attack or be attacked, except by individuals affected by the Enchant Weapon spell, If attacked, Mist’s vulnerability is Tremendous and non-armored; targeted monster stills prowls (like in base MR) even if ‘X’ weight
@@ -54,6 +51,8 @@ Vault and Tomb (if discovered): can be opened with a missile attack, if after ro
 Ask Demon: 4 options, instead of just asking a question
 Absorb Essence: any denizens and Attention chits assigned to it become assigned to the spellcaster; absorbs steed when absorbing a monster
 	The spellcaster cannot be affected by multiple Absorb Essence spells. Any Absorb Essence spell he casts while he is already bewitched by Absorb Essence is cancelled.
+---Additional features---
+Super Realm: icons for site chits, sound and warning chits, characters
 ---Optional Rules---
 Super Realm: Optional Rules (and 1st Ed): Severe wounds (SR: 10.1, p.114) = Serious Wounds, but wounds *2
 Super Realm: Optional Rules: Bounty campaign (SR: 10.2, p.114)
@@ -77,7 +76,7 @@ Super Realm: Optional Rules: Cornered (SR: 11.13, p.128)
 Super Realm: Player building map: distribute tiles equally (including river tiles), distribute river tiles first, then grotto, then rest, each player has 3 tiles in the hand and draws after placing, skip player if he cannot place any tile (and he has no river tile), if all players are skipped or player would be skipped but has river tile, undo last placement, do not allow placing grotto before all other river tiles have been placed
 First Edition Optional Rule - https://boardgamegeek.com/thread/2503528/1st-edition-vs-3rd-edition: Native blocking, First Edition Optional Rule - Native kiling, e.g. grudges but instantly relationship becomes enemy status, Followers summon Monsters?, Hired native Leaders?, learning spells? campaigns?, combat endls only if no attack was made
 First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
----New Features---
+---New Features - but currently of no use ---
 Quest: option add icon for minor character
 Combat Help System
 Would be nice to make weapon abilities too:

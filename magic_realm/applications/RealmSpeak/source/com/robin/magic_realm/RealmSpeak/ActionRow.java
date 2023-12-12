@@ -661,10 +661,13 @@ public class ActionRow {
 			return;
 		}
 		
-		if (character.isTransmorphed() && character.getTransmorph().hasThisAttribute(Constants.NO_CHANGE_TACTICS)) {
-			JOptionPane.showMessageDialog(gameHandler.getMainFrame(),"Your transmorphed form cannot move.");
-			cancelled = true;
-			return;
+		if (character.isTransmorphed()) {
+			RealmComponent transmorph = RealmComponent.getRealmComponent(character.getTransmorph());
+			if (character.getTransmorph().hasThisAttribute(Constants.NO_CHANGE_TACTICS) || transmorph.getWeight().equalTo(new Strength("X"))) {
+				JOptionPane.showMessageDialog(gameHandler.getMainFrame(),"Your transmorphed form cannot move.");
+				cancelled = true;
+				return;
+			}
 		}
 		
 		// First and foremost, make sure character can carry everything

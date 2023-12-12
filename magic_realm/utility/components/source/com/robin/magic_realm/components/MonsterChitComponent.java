@@ -141,7 +141,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	}
 	
 	public boolean cannotChangeTactics() {
-		return getGameObject().hasThisAttribute(Constants.NO_CHANGE_TACTICS) || hasFaceAttribute(Constants.NO_CHANGE_TACTICS)
+		return getGameObject().hasThisAttribute(Constants.NO_CHANGE_TACTICS) || hasFaceAttribute(Constants.NO_CHANGE_TACTICS) || getWeight().equalTo(new Strength("X"))
 				|| (getShield()!=null && !getShield().isDestroyed() && getShield().getWeight().equalTo(new Strength("X")));
 	}
 	
@@ -501,6 +501,12 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 			mod++;
 		}
 		if (flies() && getCurrentLocation()!=null && getCurrentLocation().clearing!=null && getCurrentLocation().clearing.isAffectedByViolentWinds()) {
+			mod++;
+		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
+			mod--;
+		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
 			mod++;
 		}
 		return mod;
