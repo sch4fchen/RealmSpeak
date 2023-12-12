@@ -21,6 +21,7 @@ public class AlterObject extends RealmTable {
 			"Heavy weight",
 			"Tremendous weight",
 			"Maximum weight",
+			"No effect - already affected by Enchant Weapon"
 	};
 	private static final String[] EFFECT = {
 			"N",
@@ -44,36 +45,42 @@ public class AlterObject extends RealmTable {
 	}
 	
 	public String applyOne(CharacterWrapper character) {
+		if (character.getGameObject().hasThisAttribute(Constants.ENCHANT_WEAPON)) return RESULT[6];
 		SpellUtility.ApplyNamedSpellEffectWithValueToTarget(Constants.ALTER_WEIGHT, character.getGameObject(), spell, EFFECT[0]);
 		checkForItemWeightMaximum(RealmComponent.getRealmComponent(character.getGameObject()));
 		return RESULT[0];
 	}
 
 	public String applyTwo(CharacterWrapper character) {
+		if (character.getGameObject().hasThisAttribute(Constants.ENCHANT_WEAPON)) return RESULT[6];
 		SpellUtility.ApplyNamedSpellEffectWithValueToTarget(Constants.ALTER_WEIGHT, character.getGameObject(), spell, EFFECT[1]);
 		checkForItemWeightMaximum(RealmComponent.getRealmComponent(character.getGameObject()));
 		return RESULT[1];
 	}
 
 	public String applyThree(CharacterWrapper character) {
+		if (character.getGameObject().hasThisAttribute(Constants.ENCHANT_WEAPON)) return RESULT[6];
 		SpellUtility.ApplyNamedSpellEffectWithValueToTarget(Constants.ALTER_WEIGHT, character.getGameObject(), spell, EFFECT[2]);
 		checkForItemWeightMaximum(RealmComponent.getRealmComponent(character.getGameObject()));
 		return RESULT[2];
 	}
 
 	public String applyFour(CharacterWrapper character) {
+		if (character.getGameObject().hasThisAttribute(Constants.ENCHANT_WEAPON)) return RESULT[6];
 		SpellUtility.ApplyNamedSpellEffectWithValueToTarget(Constants.ALTER_WEIGHT, character.getGameObject(), spell, EFFECT[3]);
 		checkForItemWeightMaximum(RealmComponent.getRealmComponent(character.getGameObject()));
 		return RESULT[3];
 	}
 
 	public String applyFive(CharacterWrapper character) {
+		if (character.getGameObject().hasThisAttribute(Constants.ENCHANT_WEAPON)) return RESULT[6];
 		SpellUtility.ApplyNamedSpellEffectWithValueToTarget(Constants.ALTER_WEIGHT, character.getGameObject(), spell, EFFECT[4]);
 		checkForItemWeightMaximum(RealmComponent.getRealmComponent(character.getGameObject()));
 		return RESULT[4];
 	}
 
 	public String applySix(CharacterWrapper character) {
+		if (character.getGameObject().hasThisAttribute(Constants.ENCHANT_WEAPON)) return RESULT[6];
 		SpellUtility.ApplyNamedSpellEffectWithValueToTarget(Constants.ALTER_WEIGHT, character.getGameObject(), spell, EFFECT[5]);
 		checkForItemWeightMaximum(RealmComponent.getRealmComponent(character.getGameObject()));
 		return RESULT[5];

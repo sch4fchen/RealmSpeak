@@ -59260,7 +59260,7 @@
         <attribute duration="day" />
         <attribute target="active item" />
         <attribute text="Alter object's weight. Roll on corresponding table." />
-        <attribute magic_color="Purple" />
+        <attribute magic_color="purple" />
         <attribute host_okay="" />
         <attribute learnable="" />
         <attribute super_realm="" />
