@@ -657,12 +657,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 		GameObject transmorph = getTransmorph();
 		int mod = 0;
 		if (transmorph!=null) {
-			if (transmorph.hasThisAttribute(Constants.ALTER_SIZE_INCREASE_WEIGHT)) mod=+1;
-			if (transmorph.hasThisAttribute(Constants.ALTER_SIZE_DECREASE_WEIGHT)) mod=-1;
+			if (transmorph.hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) mod=+1;
+			if (transmorph.hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) mod=-1;
 			return new Strength(transmorph.getThisAttribute("vulnerability")+mod);
 		}
-		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASE_WEIGHT)) mod=+1;
-		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASE_WEIGHT)) mod=-1;
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) mod=+1;
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) mod=-1;
 	    return new Strength(getGameObject().getThisAttribute("vulnerability")+mod);
 	}
 	/**

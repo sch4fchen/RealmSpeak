@@ -294,6 +294,12 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		if (getGameObject().hasThisAttribute(Constants.STRENGTHENED_VULNERABILITY)) {
 			strength.modify(+1);
 		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_VULNERABILITY)) {
+			strength.modify(-1);
+		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_VULNERABILITY)) {
+			strength.modify(+1);
+		}
 		return strength;
 	}
 	public boolean isArmored() {
