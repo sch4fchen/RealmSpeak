@@ -1708,7 +1708,7 @@ public class CombatFrame extends JFrame {
 			for (GameObject go : activeCharacter.getActiveInventory()) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
 				if (go.hasThisAttribute("boots")) {
-					Strength bootStrength = new Strength(go.getThisAttribute("strength"));
+					Strength bootStrength = RealmUtility.getBootsStrength(go);
 					if (bootStrength.strongerOrEqualTo(heaviestInventory)) {
 						list.add(rc);
 					}
@@ -1776,7 +1776,7 @@ public class CombatFrame extends JFrame {
 			for (GameObject go: activeCharacter.getActiveInventory()) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
 				if (go.hasThisAttribute("gloves")) {
-					Strength gloveStrength = new Strength(go.getThisAttribute("strength"));
+					Strength gloveStrength = RealmUtility.getGlovesStrength(go);
 					if (gloveStrength.strongerOrEqualTo(weaponWeight)) {
 						list.add(rc);
 					}

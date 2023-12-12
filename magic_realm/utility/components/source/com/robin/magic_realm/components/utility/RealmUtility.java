@@ -1067,4 +1067,14 @@ public class RealmUtility {
 			}
 		}
 	}
+	public static Strength getGlovesStrength(GameObject gloves) {
+		return getAlteredStrength(gloves);
+	}
+	public static Strength getBootsStrength(GameObject boots) {
+		return getAlteredStrength(boots);
+	}
+	private static Strength getAlteredStrength(GameObject boots) {
+		if (boots.hasThisAttribute(Constants.ALTER_WEIGHT)) return new Strength(boots.getThisAttribute(Constants.ALTER_WEIGHT));
+		return new Strength(boots.getThisAttribute("strength"));
+	}
 }

@@ -507,7 +507,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 						}
 						hasWeapon = true;
 						missileWeapon = tw.hasThisAttribute("missile");
-						weaponStrength = new Strength(tw.getThisAttribute("strength"));
+						weaponStrength = getStrengthForTreasure(tw);
 						sharpness = tw.getThisInt("sharpness");
 						sharpness += tw.getThisInt(Constants.ADD_SHARPNESS);
 						break;
@@ -538,6 +538,10 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		if (rc.isTreasure() && rc.getGameObject().hasThisAttribute("strength")) {
 			// This wont work for weapons, but that's what I want here!  Weapons are in ADDITION to fight strength.
 			Strength strength = new Strength(rc.getGameObject().getThisAttribute("strength"));
+			if (rc.getGameObject().hasThisAttribute(Constants.ALTER_WEIGHT)) {
+				int difference = (new Strength(rc.getGameObject().getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((rc.getGameObject().getThisAttribute("strength")))).getLevels();
+				strength.modify(difference);
+			}
 			harm = new Harm(strength,0);
 		}
 		if (rc.isBattleChit()) { // this handles character action chits, natives, and horses
@@ -1198,5 +1202,17 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	public boolean isMistLike() {
 		RealmComponent rc = getTransmorphedComponent();
 		return rc!=null && rc.isMistLike();
+	}
+	private static Strength getStrengthForTreasure(GameObject tw) {
+		Strength strength = new Strength(tw.getThisAttribute("strength"));
+		TileLocation tl = ClearingUtility.getTileLocation(tw);
+		if (tl!=null && tl.isInClearing() && tl.clearing.hasSpellEffect(Constants.HEAVIED)) {
+			strength.modify(1);
+		}
+		if (tw.hasThisAttribute(Constants.ALTER_WEIGHT)) {
+			int difference = (new Strength(tw.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((tw.getThisAttribute("strength")))).getLevels();
+			strength.modify(difference);
+		}
+		return strength; 
 	}
 }

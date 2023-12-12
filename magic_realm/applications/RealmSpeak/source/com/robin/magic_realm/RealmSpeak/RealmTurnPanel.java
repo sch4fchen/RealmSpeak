@@ -942,7 +942,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		for (GameObject go : getCharacter().getActiveInventory()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (go.hasThisAttribute("boots")) {
-				Strength bootStrength = new Strength(go.getThisAttribute("strength"));
+				Strength bootStrength = RealmUtility.getBootsStrength(go);
 				if (!bootStrength.strongerOrEqualTo(heaviestInventory)) {
 					list.add(rc);
 				}

@@ -133,7 +133,7 @@ public class TreasureUtility {
 				// Boots card
 				
 				// Check to see that boots are strong enough to carry character
-				Strength bootStrength = new Strength(thing.getThisAttribute("strength"));
+				Strength bootStrength = RealmUtility.getBootsStrength(thing);
 				if (bootStrength.strongerOrEqualTo(characterCarryWeight)) {
 					// If good, then inactivate any existing boots
 					for (GameObject otherThing : activeInventory) {

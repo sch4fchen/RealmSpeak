@@ -515,16 +515,20 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 				if (new CombatWrapper(character.getGameObject()).isFreezed()) {
 					mod++;
 				}
-				if (getGameObject().hasThisAttribute(Constants.SLOWED)) {
+				if (character.getGameObject().hasThisAttribute(Constants.SLOWED)) {
 					mod++;
 				}
-				if (getGameObject().hasThisAttribute(Constants.SHRINK)) {
+				if (character.getGameObject().hasThisAttribute(Constants.SHRINK)) {
 					mod--;
 				}
 			}
 			
 			if (this.isMagicMove()) return new Speed(0,mod);
 
+			if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT) && !getChitAttribute("speed").matches("weight")) {
+				int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((gameObject.getThisAttribute(Constants.WEIGHT)))).getLevels();
+				mod = mod+difference;
+			}
 			if (!gameObject.hasAttribute(ALTERNATE_ATTRIBUTES, "speed")) {
 				// speedChange is ignored if speed is already altered by a treasure
 				int speedChange = getGameObject().getThisInt("move_speed_change");
@@ -565,6 +569,11 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		}
 		
 		if (this.isMagicMove()) return new Speed(0,mod);
+		
+		if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT) && !getChitAttribute("speed").matches("weight")) {
+			int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((gameObject.getThisAttribute(Constants.WEIGHT)))).getLevels();
+			mod = mod+difference;
+		}
 		if (getChitAttribute("speed").matches("weight")) {
 			if (owner==null) return new Speed(8,mod);
 			return new Speed(character.getWeight().getLevels()+1,mod);
@@ -589,6 +598,10 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 			}
 			if (character!=null &&  new CombatWrapper(character.getGameObject()).isFreezed()) {
 				mod++;
+			}
+			if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT) && !getChitAttribute("speed").matches("weight")) {
+				int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((gameObject.getThisAttribute(Constants.WEIGHT)))).getLevels();
+				mod = mod+difference;
 			}
 			if (getChitAttribute("speed").matches("weight")) {
 				if (owner==null) return new Speed(8,mod);

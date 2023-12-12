@@ -6510,7 +6510,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 			RealmComponent boots = getActiveBoots();
 			if (boots!=null) {
-				Strength bootStrength = new Strength(boots.getGameObject().getThisAttribute("strength"));
+				Strength bootStrength = RealmUtility.getBootsStrength(boots.getGameObject());
 				if (bootStrength.strongerOrEqualTo(weight)) {
 					boots = null;
 				}
