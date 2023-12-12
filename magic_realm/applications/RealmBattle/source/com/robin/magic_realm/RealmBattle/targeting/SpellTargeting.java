@@ -221,6 +221,9 @@ public abstract class SpellTargeting {
 		else if ("active item".equals(targetType)) {
 			targeting = new SpellTargetingItem(combatFrame,spell,true,false);
 		}
+		else if ("individual, horse, hound".equals(targetType)) {
+			targeting = new SpellTargetingIndividualHorseHound(combatFrame,spell);
+		}
 		
 		return targeting;
 	}

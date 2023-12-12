@@ -1,10 +1,27 @@
+P39: Alter denizen weight (=monster & native & native horse + hound + character)
+b.1) A denizen whose weight is decreased has his
+fight force, fight speed, move speed, and weapon length
+decreased by one for each level he is decreased from his
+original weight (to a minimum of ‘-’ weight, and a
+minimum of 1 speed). Any denizen who becomes ‘-’
+weight cannot attack, but only maneuver. Important: if
+an individual’s weight was originally ‘X,’ and therefore
+didn’t have an initial Move speed other than ‘X’, it has a
+Move speed of 6 when it becomes ‘T,’ and decreases by
+one for each level it decreases from there.
+b.2) A denizen whose weight is increased has his
+fight force, fight speed, move speed, and weapon length
+increased by one for each level he is increased from his
+original weight (to a maximum of ‘X’ weight).
+Important: an individual whose weight becomes ‘X’ will
+have ‘X’ for Move speed, indicating they cannot Move.
+
+If this spell’s target is an ‘X’ weight individual, and their weight decreases, their new Move speed is 6.
+
 Sword of Terror (QuestReqInventoryMissing)
 ::ROADMAP::
-Alter Object: (p38ff)
-	Alter characters and denizens stats when weight changed
-	When an individual’s weight is altered, his fight chits and move chits are all adjusted. His vulnerability may or may not be adjusted depending on the spell table result.
 ---Super Realm Content---
-Spells: Alter Size, Enchant Weapon, Meditate
+Spells: Enchant Weapon, Meditate
 Treasures: 
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Nomads, Tasks, Travelers: 4.8 (p.41)
@@ -73,7 +90,7 @@ NEW FEATURES:
 # Option for Interpolation mode (map rendering quality), default: off
 # Legendary Realm tile style for Expansion 1
 SUPER REALM:
-# New spells: Alter Object, Dazzle
+# New spells: Alter Object, Alter Size, Dazzle
 # Spell from Expansion 1 (compensating Free Spell and Luck): Staff to Snake, Spirit Guide
 
 Version 1.1.8.2
