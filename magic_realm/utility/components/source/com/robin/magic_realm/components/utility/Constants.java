@@ -511,10 +511,10 @@ public class Constants {
 	public static final String AFFECTED_MONSTER_ID = "affected_monster_Id";
 	public static final String ALTER_WEIGHT = "altered_weight";
 	public static final String ALTER_SIZE = "altered_size";
-	public static final String ALTER_SIZE_INCREASE_VULNERABILITY = "altered_size_increase_vulnerability";
-	public static final String ALTER_SIZE_DECREASE_VULNERABILITY = "altered_size_decrease_vulnerability";
-	public static final String ALTER_SIZE_INCREASE_WEIGHT = "altered_size_increase_weight";
-	public static final String ALTER_SIZE_DECREASE_WEIGHT = "altered_size_decrease_weight";
+	public static final String ALTER_SIZE_INCREASE_VULNERABILITY = "altered_size_increased_vulnerability";
+	public static final String ALTER_SIZE_DECREASE_VULNERABILITY = "altered_size_decreased_vulnerability";
+	public static final String ALTER_SIZE_INCREASE_WEIGHT = "altered_size_increased_weight";
+	public static final String ALTER_SIZE_DECREASE_WEIGHT = "altered_size_decreased_weight";
 	public static final String ALTER_SIZE_ADD_VUL = "altered_size_add_vul";
 	public static final String ENCHANT_WEAPON = "enchanted_weapon";
 	public static final String BROOMSTICK = "broomstick";
