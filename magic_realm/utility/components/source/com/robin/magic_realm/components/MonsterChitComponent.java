@@ -646,6 +646,10 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		if (getWeapon(true)!=null && getWeapon(true).getWeight().equalTo(new Strength("X"))) {
 			return true;
 		}
+		NativeSteedChitComponent horse = (NativeSteedChitComponent)getHorse(false);
+		if (horse!=null && horse.getWeight().equalTo(new Strength("X"))) {
+			return true;
+		}
 		return false;
 	}
 
