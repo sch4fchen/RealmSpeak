@@ -33,32 +33,52 @@ public class AlterSize extends RealmTable {
 	}
 	
 	public String applyOne(CharacterWrapper character) {
-		SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE, character.getGameObject(), spell);
+		boolean spellApplied = SpellUtility.ApplyNamedSpellEffectToTargetAndReturn(Constants.ALTER_SIZE, character.getGameObject(), spell);
+		if (spellApplied) {
+			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_INCREASE_VULNERABILITY, character.getGameObject(), spell);
+		}
 		return RESULT[0];
 	}
 
 	public String applyTwo(CharacterWrapper character) {
-		SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE, character.getGameObject(), spell);
+		boolean spellApplied = SpellUtility.ApplyNamedSpellEffectToTargetAndReturn(Constants.ALTER_SIZE, character.getGameObject(), spell);
+		if (spellApplied) {
+			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_INCREASE_WEIGHT, character.getGameObject(), spell);
+			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_INCREASE_VULNERABILITY, character.getGameObject(), spell);
+		}
 		return RESULT[1];
 	}
 
 	public String applyThree(CharacterWrapper character) {
-		SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE, character.getGameObject(), spell);
+		boolean spellApplied = SpellUtility.ApplyNamedSpellEffectToTargetAndReturn(Constants.ALTER_SIZE, character.getGameObject(), spell);
+		if (spellApplied) {
+			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_INCREASE_WEIGHT, character.getGameObject(), spell);
+		}
 		return RESULT[2];
 	}
 
 	public String applyFour(CharacterWrapper character) {
-		SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE, character.getGameObject(), spell);
+		boolean spellApplied = SpellUtility.ApplyNamedSpellEffectToTargetAndReturn(Constants.ALTER_SIZE, character.getGameObject(), spell);
+		if (spellApplied) {
+			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_DECREASE_WEIGHT, character.getGameObject(), spell);
+		}
 		return RESULT[3];
 	}
 
 	public String applyFive(CharacterWrapper character) {
-		SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE, character.getGameObject(), spell);
+		boolean spellApplied = SpellUtility.ApplyNamedSpellEffectToTargetAndReturn(Constants.ALTER_SIZE, character.getGameObject(), spell);
+		if (spellApplied) {
+			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_DECREASE_WEIGHT, character.getGameObject(), spell);
+			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_DECREASE_VULNERABILITY, character.getGameObject(), spell);
+		}
 		return RESULT[4];
 	}
 
 	public String applySix(CharacterWrapper character) {
-		SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE, character.getGameObject(), spell);
+		boolean spellApplied = SpellUtility.ApplyNamedSpellEffectToTargetAndReturn(Constants.ALTER_SIZE, character.getGameObject(), spell);
+		if (spellApplied) {
+			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_DECREASE_VULNERABILITY, character.getGameObject(), spell);
+		}
 		return RESULT[5];
 	}
 	public static AlterSize doNow(JFrame parent,GameObject attacker,GameObject target,int redDie,SpellWrapper spell) {

@@ -417,6 +417,16 @@ the Appearance Chart, he instantly becomes unhired.
 		}
 	}
 
+	public static boolean ApplyNamedSpellEffectToTargetAndReturn(String effect, GameObject target, SpellWrapper spellWrapper) {
+		if(!target.hasThisAttribute(effect)){
+			target.setThisAttribute(effect);
+			return true;
+		}
+		spellWrapper.cancelSpell();
+		RealmLogging.logMessage(spellWrapper.getCaster().getGameObject().getName(),"Spell cancelled, because the targeted character already has this ability.");
+		return false;
+	}
+	
 	public static void setAlteredSpeed(RealmComponent chit, String attributeName, SpellWrapper spellWrapper) {	
 		String attributeValue = chit.getGameObject().getThisAttribute(attributeName);
 		int newspeed = spellWrapper.getGameObject().getThisInt(attributeValue);
