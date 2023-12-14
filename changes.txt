@@ -1,18 +1,11 @@
-P39: Alter denizen weight (=monster & native & native horse + character)
-b.1) A denizen whose weight is decreased has his
-fight force, fight speed, move speed, and weapon length
-decreased by one for each level he is decreased from his
-original weight (to a minimum of ‘-’ weight, and a
-minimum of 1 speed). Any denizen who becomes ‘-’
-weight cannot attack, but only maneuver. Important: if
-an individual’s weight was originally ‘X,’ and therefore
-didn’t have an initial Move speed other than ‘X’, it has a
-Move speed of 6 when it becomes ‘T,’ and decreases by
-one for each level it decreases from there.
-b.2) A denizen whose weight is increased has his
-fight force, fight speed, move speed, and weapon length
-increased by one for each level he is increased from his
-original weight (to a maximum of ‘X’ weight).
+Any denizen who becomes ‘-’ weight cannot attack, but only maneuver.
+Important: if an individual’s weight was originally ‘X,’ and therefore didn’t have an initial Move speed other than ‘X’, it has a Move speed of 6 when it becomes ‘T,’ and decreases by one for each level it decreases from there.
+
+Alter Object for Giant's Club
+Alter Size for Character Action Chits: his fight chits and move chits are all adjusted: fight force, fight speed, move speed +/- by weight
+
+Treasures and Character Action Chits:
+Important: Move and Fly chits that are ‘X’ force cannot be used. Fight chits that are ‘-’ force cannot be used. If the chit cannot be used, then the treasure card or spell ability that utilizes that chit cannot be used.
 
 Sword of Terror (QuestReqInventoryMissing)
 ::ROADMAP::

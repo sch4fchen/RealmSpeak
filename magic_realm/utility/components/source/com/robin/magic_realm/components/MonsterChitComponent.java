@@ -434,7 +434,13 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		if (length == null) {
 			length = Integer.valueOf(0); // tooth and claw
 		}
-		return length;
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
+			length--;
+		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
+			length++;
+		}
+		return length<0?0:length;
 	}
 
 	public Speed getMoveSpeed() {
@@ -515,6 +521,12 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		int mod = 0;
 		if (getGameObject().hasThisAttribute(Constants.SHRINK)) {
 			mod--;
+		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
+			mod--;
+		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
+			mod++;
 		}
 		return mod;
 	}

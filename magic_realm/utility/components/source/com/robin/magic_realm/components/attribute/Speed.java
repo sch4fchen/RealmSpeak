@@ -20,13 +20,13 @@ public class Speed implements Comparable {
 	}
 	public Speed(int val) {
 		this();
-		num = val;
+		num = Math.max(val, 0);
 		infinitelySlow = false;
 	}
 	public Speed(Integer val) {
 		this();
 		if (val!=null) {
-			num = val.intValue();
+			num = Math.max(val.intValue(),0);
 			infinitelySlow = false;
 		}
 	}
@@ -34,12 +34,14 @@ public class Speed implements Comparable {
 		this(val);
 		if (!infinitelySlow) {
 			num += modifier;
+			num = Math.max(num, 0);
 		}
 	}
 	public Speed(String val,int modifier) {
 		this(val);
 		if (!infinitelySlow) {
 			num += modifier;
+			num = Math.max(num, 0);
 		}
 	}
 	public boolean isInfinitelySlow() {

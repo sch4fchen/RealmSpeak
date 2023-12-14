@@ -136,9 +136,16 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 	    return null; // horses don't have length
 	}
 	public Speed getMoveSpeed() {
-		Speed speed = new Speed(getFaceAttributeInteger("move_speed"));
+		int mod = 0;
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
+			mod--;
+		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
+			mod++;
+		}
+		Speed speed = new Speed(getFaceAttributeInteger("move_speed"),mod);
 		if (getGameObject().hasThisAttribute(Constants.GROW_WINGS) && (new Speed(Constants.GROW_WINGS_SPEED)).fasterThan(speed)) {
-			speed = new Speed(getFaceAttributeInteger("move_speed"),-1);
+			speed = new Speed(getFaceAttributeInteger("move_speed"),-1+mod);
 		}
 		return speed;
 	}
@@ -168,6 +175,12 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 			mod--;
 		}
 		if (new CombatWrapper(getGameObject()).isFreezed()) {
+			mod++;
+		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
+			mod--;
+		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
 			mod++;
 		}
 		alteredMoveSpeed = mod!=0;

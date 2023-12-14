@@ -347,9 +347,16 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 
 	public Integer getLength() {
 		Integer length = getFaceAttributeInteger("length");
-		if (length == null)
+		if (length == null) {
 			length = Integer.valueOf(0);
-		return length;
+		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
+			length--;
+		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
+			length++;
+		}
+		return length<0?0:length;
 	}
 
 	public Speed getMoveSpeed() {
@@ -591,6 +598,12 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		if (new CombatWrapper(getGameObject()).isFreezed()) {
 			mod++;
 		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
+			mod--;
+		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
+			mod++;
+		}
 		if (flies() && getCurrentLocation()!=null && getCurrentLocation().clearing!=null && getCurrentLocation().clearing.isAffectedByViolentWinds()) {
 			mod++;
 		}
@@ -603,6 +616,12 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		int mod = 0;
 		if (isShrunk()) {
 			mod--;
+		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
+			mod--;
+		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
+			mod++;
 		}
 		return mod;
 	}

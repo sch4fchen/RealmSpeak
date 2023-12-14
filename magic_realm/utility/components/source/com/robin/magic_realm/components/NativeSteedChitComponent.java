@@ -69,6 +69,12 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		if (new CombatWrapper(getGameObject()).isFreezed()) {
 			mod++;
 		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
+			mod--;
+		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
+			mod++;
+		}
 		return mod;
 	}
 	public String getLightSideStat() {
