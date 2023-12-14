@@ -49,7 +49,12 @@ public class SpellTargetingItem extends SpellTargetingSingle {
 				}
 			} else if (participant.isMonster() || participant.isNative()) {
 				for (GameObject held : participant.getHold()) {
-					if (held.hasThisAttribute(Constants.SHIELD)) gameObjects.add(held);
+					if (held.hasThisAttribute(Constants.MONSTER_WEAPON)
+							|| held.hasThisAttribute(Constants.SHIELD)
+							|| held.hasThisAttribute(Constants.GIANT_CLUB)
+							|| held.hasThisAttribute(Constants.GIANT_AXE)) {
+						gameObjects.add(held);
+					}
 				}
 			}
 		}

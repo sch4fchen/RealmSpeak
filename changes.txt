@@ -1,4 +1,3 @@
-Alter Object for Giant's Club
 Sword of Terror (QuestReqInventoryMissing)
 ::ROADMAP::
 ---Super Realm Content---

@@ -343,6 +343,7 @@ public class Constants {
 	public static final String OGRE = "ogre";
 	public static final String TROLL = "troll";
 	public static final String GIANT = "giant";
+	public static final String FROST_GIANT = "frost_giant";
 	public static final String SPIDER = "spider";
 	public static final String OCTOPUS = "octopus";
 	public static final String SCORPION = "scorpion";
@@ -363,6 +364,10 @@ public class Constants {
 	public static final String GARGOYLE = "gargoyle";
 	public static final String VIPER = "viper";
 	public static final String SERPENT = "serpent";
+	
+	public static final String GIANT_CLUB = "giant_club";
+	public static final String GIANT_AXE = "giant_axe";
+	public static final String MONSTER_WEAPON = "monster_weapon";
 	
 	// Other effects
 	public static final String BENEVOLENT = "benevolent"; // for spells

@@ -240,6 +240,8 @@
         <attribute icon_folder_alt="wesnoth/icons/attacks" />
         <attribute icon_type_alt="club" />
         <attribute icon_size_alt="0.8" />
+        <attribute monster_weapon="" />
+        <attribute giant_club="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="6" />
@@ -301,6 +303,8 @@
         <attribute icon_folder_alt="wesnoth/icons/attacks" />
         <attribute icon_type_alt="club" />
         <attribute icon_size_alt="0.8" />
+        <attribute monster_weapon="" />
+        <attribute giant_club="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="6" />
@@ -8242,7 +8246,7 @@
         <attribute strength="L" />
         <attribute speed="1" />
         <attribute fly_chit="" />
-		<attribute broomstick="" />
+        <attribute broomstick="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="314" name="Premonition">
@@ -19107,6 +19111,9 @@
         <attribute icon_type_alt="icestrike" />
         <attribute icon_folder_alt="wesnoth/icons/attacks" />
         <attribute icon_size_alt="0.6" />
+        <attribute monster_weapon="" />
+        <attribute giant_axe="" />
+        <attribute frost_giant="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="4" />
@@ -19166,6 +19173,9 @@
         <attribute icon_type_alt="icestrike" />
         <attribute icon_folder_alt="wesnoth/icons/attacks" />
         <attribute icon_size_alt="0.6" />
+        <attribute monster_weapon="" />
+        <attribute giant_axe="" />
+        <attribute frost_giant="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="4" />
@@ -19673,6 +19683,7 @@
         <attribute alt_monsters1_game="" />
         <attribute icon_type_alt="club" />
         <attribute icon_folder_alt="wesnoth/icons/attacks" />
+        <attribute giant_club="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="6" />
@@ -19731,6 +19742,7 @@
         <attribute alt_monsters1_game="" />
         <attribute icon_type_alt="club" />
         <attribute icon_folder_alt="wesnoth/icons/attacks" />
+        <attribute giant_club="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="6" />
@@ -42517,6 +42529,8 @@
         <attribute icon_type="club" />
         <attribute icon_folder="wesnoth/icons/attacks" />
         <attribute super_realm="" />
+        <attribute monster_weapon="" />
+        <attribute giant_club="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="6" />
@@ -42573,6 +42587,8 @@
         <attribute icon_type="club" />
         <attribute icon_folder="wesnoth/icons/attacks" />
         <attribute super_realm="" />
+        <attribute monster_weapon="" />
+        <attribute giant_club="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="6" />
@@ -42629,6 +42645,8 @@
         <attribute icon_type="club" />
         <attribute icon_folder="wesnoth/icons/attacks" />
         <attribute super_realm="" />
+        <attribute monster_weapon="" />
+        <attribute giant_club="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute attack_speed="6" />
@@ -57731,7 +57749,7 @@
         <attribute strength="L" />
         <attribute speed="1" />
         <attribute fly_chit="" />
-		<attribute broomstick="" />
+        <attribute broomstick="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2157" name="Premonition">

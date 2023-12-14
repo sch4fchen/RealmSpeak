@@ -31,6 +31,9 @@ public class SpellTargetingHumanGroup extends SpellTargetingSingle {
 					if (rc.getGameObject().hasThisAttribute(Constants.GIANT)) {
 						groupName="Giants";
 					}
+					if (rc.getGameObject().hasThisAttribute(Constants.FROST_GIANT)) {
+						groupName="Frost Giants";
+					}
 				}
 				else if (rc.isNative()) {
 					groupName = rc.getGameObject().getAttribute(rc.getThisBlock(),"native");
