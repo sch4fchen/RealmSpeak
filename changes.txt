@@ -1,8 +1,6 @@
 Any denizen who becomes ‘-’ weight cannot attack, but only maneuver.
-Important: if an individual’s weight was originally ‘X,’ and therefore didn’t have an initial Move speed other than ‘X’, it has a Move speed of 6 when it becomes ‘T,’ and decreases by one for each level it decreases from there.
 
 Alter Object for Giant's Club
-Alter Size for Character Action Chits: his fight chits and move chits are all adjusted: fight force, fight speed, move speed +/- by weight
 
 Treasures and Character Action Chits:
 Important: Move and Fly chits that are ‘X’ force cannot be used. Fight chits that are ‘-’ force cannot be used. If the chit cannot be used, then the treasure card or spell ability that utilizes that chit cannot be used.

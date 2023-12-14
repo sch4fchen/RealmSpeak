@@ -249,6 +249,12 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 				if (character.getGameObject().hasThisAttribute(Constants.STRONG_MF)) {
 					strength.modify(1);
 				}
+				if (character.getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
+					strength.modify(-1);
+				}
+				if (character.getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
+					strength.modify(1);
+				}
 			}
 		}
 		return strength;
@@ -521,6 +527,12 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 				if (character.getGameObject().hasThisAttribute(Constants.SHRINK)) {
 					mod--;
 				}
+				if (character.getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT) && !getChitAttribute("speed").matches("weight") && !this.isMagicMove()) {
+					mod++;
+				}
+				if (character.getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT) && !getChitAttribute("speed").matches("weight") && !this.isMagicMove()) {
+					mod--;
+				}
 			}
 			
 			if (this.isMagicMove()) return new Speed(0,mod);
@@ -566,6 +578,12 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 			if (character.getCurrentLocation()!=null && character.getCurrentLocation().clearing!=null && character.getCurrentLocation().clearing.isAffectedByViolentWinds()) {
 				mod++;
 			}
+			if (character.getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT) && !getChitAttribute("speed").matches("weight") && !this.isMagicMove()) {
+				mod++;
+			}
+			if (character.getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT) && !getChitAttribute("speed").matches("weight") && !this.isMagicMove()) {
+				mod--;
+			}
 		}
 		
 		if (this.isMagicMove()) return new Speed(0,mod);
@@ -598,6 +616,12 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 			}
 			if (character!=null &&  new CombatWrapper(character.getGameObject()).isFreezed()) {
 				mod++;
+			}
+			if (character.getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT) && !getChitAttribute("speed").matches("weight")) {
+				mod++;
+			}
+			if (character.getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT) && !getChitAttribute("speed").matches("weight")) {
+				mod--;
 			}
 			if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT) && !getChitAttribute("speed").matches("weight")) {
 				int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((gameObject.getThisAttribute(Constants.WEIGHT)))).getLevels();
