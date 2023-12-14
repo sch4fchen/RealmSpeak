@@ -414,6 +414,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 	}
 
 	public Harm getHarm() {
+		if (getWeight().isNegligible()) return new Harm(new Strength("N"),0);
 		return new Harm(getStrength(), getSharpness());
 	}
 

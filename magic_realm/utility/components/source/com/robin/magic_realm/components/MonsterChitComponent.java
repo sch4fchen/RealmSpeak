@@ -567,6 +567,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	}
 
 	public Harm getHarm() {
+		if (getWeight().isNegligible()) return new Harm(new Strength("N"),0);
 		return new Harm(getStrength(), getSharpness());
 	}
 

@@ -1,5 +1,3 @@
-Any denizen who becomes ‘-’ weight cannot attack, but only maneuver.
-
 Alter Object for Giant's Club
 
 Treasures and Character Action Chits:
