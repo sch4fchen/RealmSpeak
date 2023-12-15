@@ -34,7 +34,7 @@ public class TreasureLocationChitComponent extends StateChitComponent {
 				}
 				
 				String tl = getThisAttribute("treasure_location");
-				if (tl.length()==0) {
+				if (tl == null || tl.length()==0) {
 					tl = getThisAttribute("minor_tl");
 				}
 				tt = new TextType(StringUtilities.capitalize(tl),getChitSize(),"BOLD");

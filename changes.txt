@@ -9,7 +9,6 @@ Super Realm: Quests + Events
 Super Realm: Adapt Commerce optional rules for new natives
 Super Realm: Characters, including potraits with credits, different chit icon
 ---Super Realms Rules---
-
 SUPER REALM: remaining RULES and LOGIC (rule changes compared to Magic Realm)
 Super Realm: Seasons + Weather 10.12 (p.117)
 Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
@@ -75,6 +74,8 @@ NEW FEATURES:
 SUPER REALM:
 # New spells: Alter Object, Alter Size, Dazzle
 # Spell from Expansion 1 (compensating Free Spell and Luck): Staff to Snake, Spirit Guide
+BUGS/ISSUES:
+# Fix drawing treasure chits for some cases (expansion 1)
 
 Version 1.1.8.2
 SUPER REALM:
