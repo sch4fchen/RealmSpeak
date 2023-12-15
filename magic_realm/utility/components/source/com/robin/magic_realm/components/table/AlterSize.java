@@ -35,7 +35,7 @@ public class AlterSize extends RealmTable {
 	public String applyOne(CharacterWrapper character) {
 		boolean spellApplied = SpellUtility.ApplyNamedSpellEffectToTargetAndReturn(Constants.ALTER_SIZE, character.getGameObject(), spell);
 		if (spellApplied) {
-			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_INCREASE_VULNERABILITY, character.getGameObject(), spell);
+			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_INCREASED_VULNERABILITY, character.getGameObject(), spell);
 		}
 		return RESULT[0];
 	}
@@ -43,8 +43,8 @@ public class AlterSize extends RealmTable {
 	public String applyTwo(CharacterWrapper character) {
 		boolean spellApplied = SpellUtility.ApplyNamedSpellEffectToTargetAndReturn(Constants.ALTER_SIZE, character.getGameObject(), spell);
 		if (spellApplied) {
-			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_INCREASE_WEIGHT, character.getGameObject(), spell);
-			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_INCREASE_VULNERABILITY, character.getGameObject(), spell);
+			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_INCREASED_WEIGHT, character.getGameObject(), spell);
+			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_INCREASED_VULNERABILITY, character.getGameObject(), spell);
 		}
 		return RESULT[1];
 	}
@@ -52,7 +52,7 @@ public class AlterSize extends RealmTable {
 	public String applyThree(CharacterWrapper character) {
 		boolean spellApplied = SpellUtility.ApplyNamedSpellEffectToTargetAndReturn(Constants.ALTER_SIZE, character.getGameObject(), spell);
 		if (spellApplied) {
-			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_INCREASE_WEIGHT, character.getGameObject(), spell);
+			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_INCREASED_WEIGHT, character.getGameObject(), spell);
 		}
 		return RESULT[2];
 	}
@@ -60,7 +60,7 @@ public class AlterSize extends RealmTable {
 	public String applyFour(CharacterWrapper character) {
 		boolean spellApplied = SpellUtility.ApplyNamedSpellEffectToTargetAndReturn(Constants.ALTER_SIZE, character.getGameObject(), spell);
 		if (spellApplied) {
-			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_DECREASE_WEIGHT, character.getGameObject(), spell);
+			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_DECREASED_WEIGHT, character.getGameObject(), spell);
 		}
 		return RESULT[3];
 	}
@@ -68,8 +68,8 @@ public class AlterSize extends RealmTable {
 	public String applyFive(CharacterWrapper character) {
 		boolean spellApplied = SpellUtility.ApplyNamedSpellEffectToTargetAndReturn(Constants.ALTER_SIZE, character.getGameObject(), spell);
 		if (spellApplied) {
-			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_DECREASE_WEIGHT, character.getGameObject(), spell);
-			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_DECREASE_VULNERABILITY, character.getGameObject(), spell);
+			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_DECREASED_WEIGHT, character.getGameObject(), spell);
+			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_DECREASED_VULNERABILITY, character.getGameObject(), spell);
 		}
 		return RESULT[4];
 	}
@@ -77,7 +77,7 @@ public class AlterSize extends RealmTable {
 	public String applySix(CharacterWrapper character) {
 		boolean spellApplied = SpellUtility.ApplyNamedSpellEffectToTargetAndReturn(Constants.ALTER_SIZE, character.getGameObject(), spell);
 		if (spellApplied) {
-			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_DECREASE_VULNERABILITY, character.getGameObject(), spell);
+			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_DECREASED_VULNERABILITY, character.getGameObject(), spell);
 		}
 		return RESULT[5];
 	}
