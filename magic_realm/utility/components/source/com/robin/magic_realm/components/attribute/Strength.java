@@ -31,6 +31,10 @@ public class Strength {
 			strengthId = NEGLIGIBLE;
 		}
 	}
+	public Strength(String val,int mod) {
+		strengthId = readString(val);
+		modify(mod);
+	}
 	public int getLevels() {
 		return strengthId;
 	}
