@@ -1,3 +1,8 @@
+The type VII "Staff to Snake" spell is not working, thematically.
+1) It should transform or change a staff into a snake, not summon a snake. Also, after the spell is cast, the staff is still visible in the inventory.
+2) It is possible to create multiple snakes with a single staff, which I think was not the original intent.
+3) Another question. Since this is a combat spell, shouldn't the snake disappear at the end of combat?
+
 Sword of Terror (QuestReqInventoryMissing)
 ::ROADMAP::
 ---Super Realm Content---
@@ -74,6 +79,8 @@ NEW FEATURES:
 SUPER REALM:
 # New spells: Alter Object, Alter Size, Dazzle
 # Spell from Expansion 1 (compensating Free Spell and Luck): Staff to Snake, Spirit Guide
+EXPANSION 1:
+# Change magic color of Decrepid Swamp and Putrid Swamp to Purple
 BUGS/ISSUES:
 # Fix drawing treasure chits for some cases (expansion 1)
 
