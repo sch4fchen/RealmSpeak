@@ -84,6 +84,7 @@ EXPANSION 1:
 # Add two hidden paths to Ambush tile
 BUGS/ISSUES:
 # Fix drawing treasure chits for some cases (expansion 1)
+# Improve Staff to Snake spell
 
 Version 1.1.8.2
 SUPER REALM:
