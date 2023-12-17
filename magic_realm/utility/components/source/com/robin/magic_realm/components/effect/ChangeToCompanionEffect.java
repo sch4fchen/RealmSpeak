@@ -44,6 +44,10 @@ public class ChangeToCompanionEffect implements ISpellEffect {
 				
 		SpellUtility.bringSummonToClearing(context.getCharacterCaster(), companion, context.Spell, monsterCreator.getMonstersCreated());
 		go.add(context.Target.getGameObject()); // move target into spell (since it is being converted)
+		GameObject held = context.Target.getGameObject().getHeldBy();
+		if (held!=null) {
+			held.remove(context.Target.getGameObject());
+		}
 	}
 
 	@Override
@@ -63,6 +67,9 @@ public class ChangeToCompanionEffect implements ISpellEffect {
 			RealmLogging.logMessage(caster.getName(),"Lost the "+ context.Target.getGameObject().getNameWithNumber()+".");
 			String targetForItem = context.Spell.getGameObject().getThisAttribute(Constants.CHANGE_TO_COMPANION);
 			GameObject dwelling = context.Spell.getGameData().getGameObjectByName(targetForItem);
+			if (dwelling==null) {
+				dwelling = context.Spell.getGameData().getGameObjectByName("Inn");
+			}
 			dwelling.add(context.Target.getGameObject());
 		}
 		else {
