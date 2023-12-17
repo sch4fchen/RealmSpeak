@@ -81,6 +81,7 @@ SUPER REALM:
 # Spell from Expansion 1 (compensating Free Spell and Luck): Staff to Snake, Spirit Guide
 EXPANSION 1:
 # Change magic color of Decrepid Swamp and Putrid Swamp to Purple
+# Add two hidden paths to Ambush tile
 BUGS/ISSUES:
 # Fix drawing treasure chits for some cases (expansion 1)
 
