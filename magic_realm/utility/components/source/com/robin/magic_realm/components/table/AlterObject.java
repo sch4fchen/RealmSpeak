@@ -86,7 +86,7 @@ public class AlterObject extends RealmTable {
 		return RESULT[5];
 	}
 	private static void checkForItemWeightMaximum(RealmComponent target) {
-		if (target.getWeight().equals(Strength.valueOf("X")) && target.isActivated() && !target.isHorse() && !target.isNativeHorse()) {
+		if ((target.isWeapon() || target.isArmor() || target.isTreasure()) && target.getWeight().equals(Strength.valueOf("X")) && target.isActivated()) {
 			target.setActivated(false);
 		}
 	}
