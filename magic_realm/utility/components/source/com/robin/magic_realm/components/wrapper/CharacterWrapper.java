@@ -637,6 +637,18 @@ public class CharacterWrapper extends GameObjectWrapper {
 		GameObject transform = getTransmorph();
 		if (transform!=null) {
 			vul = new Strength(transform.getThisAttribute("vulnerability"));
+			if (transform.hasThisAttribute(Constants.WEAKENED_VULNERABILITY)) {
+				vul.modify(-1);
+			}
+			if (transform.hasThisAttribute(Constants.STRENGTHENED_VULNERABILITY)) {
+				vul.modify(+1);
+			}
+			if (transform.hasThisAttribute(Constants.ALTER_SIZE_DECREASED_VULNERABILITY)) {
+				vul.modify(-1);
+			}
+			if (transform.hasThisAttribute(Constants.ALTER_SIZE_INCREASED_VULNERABILITY)) {
+				vul.modify(+1);
+			}
 		}
 		else if (getGameObject().hasThisAttribute(Constants.ENHANCED_VULNERABILITY)) {
 			// Beserker has the ability to raise his vulnerability temporarily
@@ -649,6 +661,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 			vul.modify(-1);
 		}
 		if (getGameObject().hasThisAttribute(Constants.STRENGTHENED_VULNERABILITY)) {
+			vul.modify(+1);
+		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_VULNERABILITY)) {
+			vul.modify(-1);
+		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_VULNERABILITY)) {
 			vul.modify(+1);
 		}
 		return vul;
