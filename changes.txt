@@ -82,6 +82,7 @@ SUPER REALM:
 EXPANSION 1:
 # Change magic color of Decrepid Swamp and Putrid Swamp to Purple
 # Add two hidden paths to Ambush tile
+# Staff to Snake: Targeted Staff is removed until the end of the spell
 BUGS/ISSUES:
 # Fix drawing treasure chits for some cases (expansion 1)
 # Improve Staff to Snake spell
