@@ -378,7 +378,14 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			if (n>0) {
 				g.setColor(Color.red);
 				g.setFont(Constants.HOTSPOT_FONT);
-				g.drawString("There was no damage, fatigue, or spellcasting last round.",5,15);
+				String text = "";
+				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(tile.getGameData());
+				if (hostPrefs.hasPref(Constants.OPT_SR_ENDING_COMBAT)) {
+					text = "There was no klling, wounds, fatigue, or spellcasting last round.";
+				} else {
+					text = "There was no damage, fatigue, or spellcasting last round.";
+				}
+				g.drawString(text,5,15);
 			}
 		}
 	}

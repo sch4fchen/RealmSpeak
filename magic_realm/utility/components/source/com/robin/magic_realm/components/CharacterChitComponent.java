@@ -681,6 +681,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		CombatWrapper combat = new CombatWrapper(getGameObject());
 		
 		boolean damageTaken = false;
+		boolean woundTaken = false;
 
 		// Start off with the assumption that the character was NOT killed
 		boolean characterWasKilled = false;
@@ -946,6 +947,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 						combat.addSeriousWoundRoll(roller.getStringResult());
 						tookSeriousWounds = true;
 						damageTaken = true;
+						woundTaken = true;
 					}
 					else {
 						// Dead character!
@@ -961,6 +963,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				Collection<CharacterActionChitComponent> c = character.getNonWoundedChits();
 				if (c.size() > 1) {
 					combat.addNewWounds(1);
+					woundTaken = true;
 				}
 				else {
 					// Dead character!
@@ -978,6 +981,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 						// Can't do the selection here! (this is called from the host, not the client)
 						combat.addNewWounds(1);
 						damageTaken = true;
+						woundTaken = true;
 					}
 					else {
 						// Dead character!
@@ -1009,7 +1013,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			}
 		}
 		if (hostPrefs.hasPref(Constants.OPT_SR_ENDING_COMBAT)) {
-			return characterWasKilled;
+			return characterWasKilled || woundTaken;
 		}
 		return damageTaken;
 	}
