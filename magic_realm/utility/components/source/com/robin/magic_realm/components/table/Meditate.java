@@ -43,7 +43,10 @@ public class Meditate extends RealmTable {
 	}
 
 	public String applyThree(CharacterWrapper character) {
-
+		boolean spellApplied = SpellUtility.ApplyNamedSpellEffectToTargetAndReturn(Constants.MEDITATE, character.getGameObject(), spell);
+		if (spellApplied) {
+			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.MEDITATE_USE_AND_DISCOVER_PATHS_AND_PASSAGES, character.getGameObject(), spell);
+		}
 		return RESULT[2];
 	}
 
