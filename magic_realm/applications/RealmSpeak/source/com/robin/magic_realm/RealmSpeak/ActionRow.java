@@ -427,6 +427,17 @@ public class ActionRow {
 		
 		checkSleep(); // check again, in case something changed during the action
 
+		if (character.getGameObject().hasThisAttribute(Constants.MEDITATE_DISCOVER_SITES)) {
+			TileLocation current = character.getCurrentLocation();
+			if (current.isInClearing()) {
+				for (RealmComponent rc : current.clearing.getClearingComponents(false)) {
+					if (rc.isTreasureLocation()) {
+						character.addTreasureLocationDiscovery(rc.getGameObject().getName());
+					}
+				}
+			}
+		}
+		
 		if (completed) { // don't check for blocking until completed!
 			
 			// Check for Violent Storm

@@ -1,7 +1,7 @@
 Sword of Terror (QuestReqInventoryMissing)
 ::ROADMAP::
 ---Super Realm Content---
-Spells: Enchant Weapon, Meditate: Sites
+Spells: Enchant Weapon
 Treasures: 
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Nomads, Tasks, Travelers: 4.8 (p.41)
@@ -72,7 +72,7 @@ NEW FEATURES:
 # Option for Interpolation mode (map rendering quality), default: off
 # Legendary Realm tile style for Expansion 1
 SUPER REALM:
-# New spells: Alter Object, Alter Size, Dazzle
+# New spells: Alter Object, Alter Size, Dazzle, Meditate
 # Spell from Expansion 1 (compensating Free Spell and Luck): Staff to Snake, Spirit Guide
 EXPANSION 1:
 # Change magic color of Decrepid Swamp and Putrid Swamp to Purple
