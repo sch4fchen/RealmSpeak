@@ -16102,6 +16102,7 @@
         <attribute no_cancel="" />
         <attribute host_okay="" />
         <attribute rw_expansion_1="" />
+        <attribute flying_carpet="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="621" name="Control Dragon">
@@ -16132,6 +16133,7 @@
         <attribute awakened="" />
         <attribute alt_monsters1_game="" />
         <attribute rw_expansion_1="" />
+        <attribute change_weather="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="623" name="Pillage">
@@ -16406,6 +16408,7 @@
         <attribute teleport="KnownGate" />
         <attribute author="Expansion 1" />
         <attribute learnable="" />
+        <attribute gate_travel="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="640" name="Disguise">
@@ -28867,6 +28870,7 @@
         <attribute benevolent="" />
         <attribute new_spells_1="" />
         <attribute learnable="" />
+        <attribute summon="fairy" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1120" name="Blend Into Background X">
@@ -28928,6 +28932,7 @@
         <attribute host_okay="" />
         <attribute benevolent="" />
         <attribute learnable="" />
+        <attribute summon="natives" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1124" name="Eternal Servant">
@@ -28942,6 +28947,7 @@
         <attribute host_okay="" />
         <attribute benevolent="" />
         <attribute learnable="" />
+        <attribute no_weight="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1125" name="Flame Staff">
@@ -28956,6 +28962,7 @@
         <attribute host_okay="" />
         <attribute benevolent="" />
         <attribute learnable="" />
+        <attribute add_sharpness="2" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1126" name="Mage Guard">
@@ -56817,6 +56824,7 @@
         <attribute no_cancel="" />
         <attribute host_okay="" />
         <attribute super_realm="" />
+        <attribute flying_carpet="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2103" name="Control Dragon">
@@ -56844,6 +56852,7 @@
         <attribute spell="*" />
         <attribute awakened="" />
         <attribute super_realm="" />
+        <attribute change_weather="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2105" name="Alchemist's Mixture">
@@ -58591,6 +58600,7 @@
         <attribute uneffect_at_midnight="" />
         <attribute super_realm_spell="" />
         <attribute host_okay="" />
+        <attribute summon="demon" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2187" name="Summon Demon">
@@ -58970,6 +58980,7 @@
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
         <attribute benevolent="" />
+        <attribute strengthened_vulnerability="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2209" name="Free the Soul">
@@ -59004,6 +59015,7 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
+        <attribute spell_extra_action="R" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2211" name="Barkskin">
@@ -59019,6 +59031,7 @@
         <attribute super_realm_spell="" />
         <attribute benevolent="" />
         <attribute break_when_transmorphed="" />
+        <attribute barkskin="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2212" name="Flood">
@@ -59058,6 +59071,7 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
+        <attribute block_road="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2214" name="Control Horse">
@@ -59091,6 +59105,7 @@
         <attributeList keyName="target_clearing">
           <attributeVal N0="horses" />
         </attributeList>
+        <attribute horse_no_gallop="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2216" name="Migration">
@@ -59105,6 +59120,7 @@
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
         <attribute target_invalid_chit_types="V,H" />
+        <attribute swap_warnings="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2217" name="Tracker's Sense">
@@ -59118,6 +59134,7 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
+        <attribute discover_hidden_enemies="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2218" name="Water Run">
@@ -59131,6 +59148,7 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
+        <attribute water_run="" />
       </AttributeBlock>
       <AttributeBlock blockName="move_chit">
         <attribute strength="weight" />
@@ -59153,6 +59171,7 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
+        <attribute cannot_be_blocked="" />
       </AttributeBlock>
       <AttributeBlock blockName="phase_chit">
         <attribute phase_chit="" />
@@ -59191,6 +59210,7 @@
         <attribute super_realm_spell="" />
         <attribute target_clearings="river" />
         <attribute target_adjacent_tiles="" />
+        <attribute freeze_river="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2222" name="Reserve">
@@ -59205,6 +59225,7 @@
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
         <attribute reserve="" />
+        <attribute change_chit_color="" />
       </AttributeBlock>
       <AttributeBlock blockName="phase_chit">
         <attribute phase_chit="" />
@@ -59236,6 +59257,7 @@
         <attributeList keyName="target_clearing">
           <attributeVal N0="clearing" />
         </attributeList>
+        <attribute no_fly="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2224" name="Dark Favor">
@@ -59249,6 +59271,7 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
+        <attribute dark_favor="" />
       </AttributeBlock>
       <AttributeBlock blockName="phase_chit">
         <attribute phase_chit="" />
@@ -59270,6 +59293,7 @@
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
         <attribute benevolent="" />
+        <attribute reanimate="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2226" name="Alter Object">
@@ -59284,6 +59308,7 @@
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
         <attribute benevolent="" />
+        <attribute alter_weight="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2227" name="Alter Size">
@@ -59298,6 +59323,7 @@
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
         <attribute benevolent="" />
+        <attribute alter_size="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2228" name="Enchant Weapon">
@@ -59312,6 +59338,7 @@
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
         <attribute benevolent="" />
+        <attribute enchant="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2229" name="Grow Wings">
@@ -59328,6 +59355,7 @@
         <attribute benevolent="" />
         <attribute non_flying_targets="" />
         <attribute non_maximum_targets="" />
+        <attribute can_fly="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2230" name="Mountain Surge">
@@ -59344,6 +59372,7 @@
         <attributeList keyName="target_clearing">
           <attributeVal N0="clearing" />
         </attributeList>
+        <attribute mountain_clearing="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2231" name="Charm Snake">
@@ -59373,6 +59402,7 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
+        <attribute improve_trading_rel="" />
       </AttributeBlock>
       <AttributeBlock blockName="phase_chit">
         <attribute phase_chit="" />
@@ -59393,6 +59423,7 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
+        <attribute join_following="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2234" name="Meditate">
@@ -59406,6 +59437,7 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
+        <attribute meditate="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2235" name="Blunt">
@@ -59419,6 +59451,7 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
+        <attribute remove_sharpness="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2236" name="Camouflage">
@@ -59433,6 +59466,7 @@
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
         <attribute benevolent="" />
+        <attribute cannot_be_followed="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2237" name="Staff to Snake">
