@@ -2194,6 +2194,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (getGameObject().hasThisAttribute(Constants.EXTRA_PHASE)) {
 			pm.addExtraBasicPhase();
 		}
+		if (getGameObject().hasThisAttribute(Constants.MEDITATE_EXTRA_PHASE)) {
+			pm.addExtraBasicPhase();
+		}
 		ArrayList<String> spellExtras = getSpellExtras();
 		if (spellExtras!=null) {
 			ArrayList<GameObject> spellExtraSources = getSpellExtraSources();

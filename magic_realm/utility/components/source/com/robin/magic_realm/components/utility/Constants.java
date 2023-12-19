@@ -526,6 +526,8 @@ public class Constants {
 	public static final String NON_ENCHANTED_WEAPON = "non_enchanted_weapon";
 	public static final String BROOMSTICK = "broomstick";
 	public static final String DAZZLE = "dazzle";
+	public static final String MEDITATE = "meditate";
+	public static final String MEDITATE_EXTRA_PHASE = "meditate_extra_phase";
 
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";

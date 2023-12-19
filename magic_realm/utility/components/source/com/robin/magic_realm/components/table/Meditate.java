@@ -10,14 +10,14 @@ import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class Meditate extends RealmTable {
 	
-	public static final String KEY = "Alter Object";
+	public static final String KEY = "Meditate";
 	private static final String[] RESULT = {
-			"Tougher",
-			"Larger",
-			"Fatter",
-			"Thinner",
-			"Smaller",
-			"Weaker",
+			"Revelation",
+			"Peaceful Aura",
+			"Insight",
+			"Energized",
+			"Prepared",
+			"Strained",
 	};
 	private SpellWrapper spell;
 	
@@ -26,69 +26,51 @@ public class Meditate extends RealmTable {
 		this.spell = spell;
 	}
 	public String getTableName(boolean longDescription) {
-		return "Alter Object";
+		return "Meditate";
 	}
 	public String getTableKey() {
 		return KEY;
 	}
 	
 	public String applyOne(CharacterWrapper character) {
-		boolean spellApplied = SpellUtility.ApplyNamedSpellEffectToTargetAndReturn(Constants.ALTER_SIZE, character.getGameObject(), spell);
-		if (spellApplied) {
-			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_INCREASED_VULNERABILITY, character.getGameObject(), spell);
-		}
+
 		return RESULT[0];
 	}
 
 	public String applyTwo(CharacterWrapper character) {
-		boolean spellApplied = SpellUtility.ApplyNamedSpellEffectToTargetAndReturn(Constants.ALTER_SIZE, character.getGameObject(), spell);
-		if (spellApplied) {
-			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_INCREASED_WEIGHT, character.getGameObject(), spell);
-			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_INCREASED_VULNERABILITY, character.getGameObject(), spell);
-		}
+
 		return RESULT[1];
 	}
 
 	public String applyThree(CharacterWrapper character) {
-		boolean spellApplied = SpellUtility.ApplyNamedSpellEffectToTargetAndReturn(Constants.ALTER_SIZE, character.getGameObject(), spell);
-		if (spellApplied) {
-			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_INCREASED_WEIGHT, character.getGameObject(), spell);
-		}
+
 		return RESULT[2];
 	}
 
 	public String applyFour(CharacterWrapper character) {
-		boolean spellApplied = SpellUtility.ApplyNamedSpellEffectToTargetAndReturn(Constants.ALTER_SIZE, character.getGameObject(), spell);
+		boolean spellApplied = SpellUtility.ApplyNamedSpellEffectToTargetAndReturn(Constants.MEDITATE, character.getGameObject(), spell);
 		if (spellApplied) {
-			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_DECREASED_WEIGHT, character.getGameObject(), spell);
+			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.MEDITATE_EXTRA_PHASE, character.getGameObject(), spell);
 		}
 		return RESULT[3];
 	}
 
 	public String applyFive(CharacterWrapper character) {
-		boolean spellApplied = SpellUtility.ApplyNamedSpellEffectToTargetAndReturn(Constants.ALTER_SIZE, character.getGameObject(), spell);
-		if (spellApplied) {
-			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_DECREASED_WEIGHT, character.getGameObject(), spell);
-			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_DECREASED_VULNERABILITY, character.getGameObject(), spell);
-		}
+
 		return RESULT[4];
 	}
 
 	public String applySix(CharacterWrapper character) {
-		boolean spellApplied = SpellUtility.ApplyNamedSpellEffectToTargetAndReturn(Constants.ALTER_SIZE, character.getGameObject(), spell);
-		if (spellApplied) {
-			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ALTER_SIZE_DECREASED_VULNERABILITY, character.getGameObject(), spell);
-		}
 		return RESULT[5];
 	}
 	public static Meditate doNow(JFrame parent,GameObject attacker,GameObject target,int redDie,SpellWrapper spell) {
-		Meditate alterSize = new Meditate(parent,attacker,spell);
+		Meditate meditate = new Meditate(parent,attacker,spell);
 		CharacterWrapper victim = new CharacterWrapper(target);
 		
-		DieRoller roller = DieRollBuilder.getDieRollBuilder(parent,spell.getCaster(),redDie).createRoller(alterSize);
-		String result = alterSize.apply(victim, roller);
-		RealmLogging.logMessage(spell.getCaster().getName(),"Alter Size roll: "+roller.getDescription());
-		RealmLogging.logMessage(spell.getCaster().getName(),"Alter Size result: "+result);
-		return alterSize;
+		DieRoller roller = DieRollBuilder.getDieRollBuilder(parent,spell.getCaster(),redDie).createRoller(meditate);
+		String result = meditate.apply(victim, roller);
+		RealmLogging.logMessage(spell.getCaster().getName(),"Meditate roll: "+roller.getDescription());
+		RealmLogging.logMessage(spell.getCaster().getName(),"Meditate result: "+result);
+		return meditate;
 	}
 }
