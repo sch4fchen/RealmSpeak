@@ -41,7 +41,7 @@ public class MonsterPartChitComponent extends MonsterChitComponent {
 		return strength;
 	}
 	public Strength getWeight() {
-		return super.getWeightWithFallbackStrengthAndMediumWeight();
+		return super.getWeightWithFallbackMediumWeight();
 	}
 	public Strength getVulnerability() {
 		Strength vul = new Strength("M"); // This is the default "size" for a monster weapon

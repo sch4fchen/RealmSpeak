@@ -1255,10 +1255,10 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	}
 	
 	public Strength getWeight() {
-		return getWeight(false,false);
+		return getWeight(false);
 	}
 	
-	private Strength getWeight(boolean fallbackStrength, boolean fallbackMediumWeight) {
+	private Strength getWeight(boolean fallbackMediumWeight) {
 		if (affectedByKey(Constants.NO_WEIGHT)) return new Strength();
 		int mod = 0;
 		if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) mod++;
@@ -1274,9 +1274,6 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		else {
 			baseValue=getGameObject().getThisAttribute(Constants.VULNERABILITY);
 		}
-		if (fallbackStrength && (baseValue==null||baseValue.isEmpty())) {
-			baseValue=getGameObject().getThisAttribute(Constants.STRENGTH);
-		}
 		if (fallbackMediumWeight && (baseValue==null||baseValue.isEmpty())) {
 			baseValue="M";
 		}
@@ -1284,8 +1281,8 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		return new Strength(baseValue,mod);
 	}
 
-	public Strength getWeightWithFallbackStrengthAndMediumWeight() {
-		return getWeight(true,true);
+	public Strength getWeightWithFallbackMediumWeight() {
+		return getWeight(true);
 	}
 	
 	public String getThisBlock() {
