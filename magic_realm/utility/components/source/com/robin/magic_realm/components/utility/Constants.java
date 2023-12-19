@@ -529,7 +529,7 @@ public class Constants {
 	public static final String MEDITATE = "meditate";
 	public static final String MEDITATE_DISCOVER_SITES = "meditate_discover_sites";
 	public static final String MEDITATE_NO_BLOCKING = "meditate_no_blocking";
-	public static final String MEDITATE_USE_AND_DISCOVER_PATHS_AND_PASSAGES = "meditate_paths_and_passages";
+	public static final String MEDITATE_PATHS_AND_PASSAGES = "meditate_paths_and_passages";
 	public static final String MEDITATE_EXTRA_PHASE = "meditate_extra_phase";
 	public static final String MEDITATE_IMPROVED_ENCHANTING = "meditate_improved_enchanting";
 

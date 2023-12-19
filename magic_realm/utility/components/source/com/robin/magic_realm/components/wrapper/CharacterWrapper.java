@@ -1903,6 +1903,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean isSpiritGuided(){
 		return this.getGameObject().hasThisAttribute(Constants.SPIRIT_GUIDE);
 	}
+	
+	public boolean hasMeditatePathsAndPassages(){
+		return this.getGameObject().hasThisAttribute(Constants.MEDITATE_PATHS_AND_PASSAGES);
+	}
 	/**
 	 * Returns all the clearings that are free and clear (ie., paths known, availablity, etc.)
 	 */
@@ -2005,7 +2009,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			return false;
 		}
 		
-		if (!path.requiresDiscovery() || isSpiritGuided()) return true;
+		if (!path.requiresDiscovery() || isSpiritGuided() || hasMeditatePathsAndPassages()) return true;
 		if (path.connectsToMapEdge()) return true;
 		if (!path.connectsToMapEdge() && canWalkWoods(path.getFrom().getParent(),path.getFrom(),path.getTo())) return true;
 		

@@ -22,8 +22,8 @@ public class MeditateEffect implements ISpellEffect {
 		if(context.Target.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)){
 			context.Target.getGameObject().removeThisAttribute(Constants.MEDITATE_NO_BLOCKING);
 		}
-		if(context.Target.getGameObject().hasThisAttribute(Constants.MEDITATE_USE_AND_DISCOVER_PATHS_AND_PASSAGES)){
-			context.Target.getGameObject().removeThisAttribute(Constants.MEDITATE_USE_AND_DISCOVER_PATHS_AND_PASSAGES);
+		if(context.Target.getGameObject().hasThisAttribute(Constants.MEDITATE_PATHS_AND_PASSAGES)){
+			context.Target.getGameObject().removeThisAttribute(Constants.MEDITATE_PATHS_AND_PASSAGES);
 		}
 		if(context.Target.getGameObject().hasThisAttribute(Constants.MEDITATE_EXTRA_PHASE)){
 			context.Target.getGameObject().removeThisAttribute(Constants.MEDITATE_EXTRA_PHASE);
