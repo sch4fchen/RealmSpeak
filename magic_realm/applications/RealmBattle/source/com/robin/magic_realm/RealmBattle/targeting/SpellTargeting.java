@@ -224,6 +224,9 @@ public abstract class SpellTargeting {
 		else if ("individual, horse, hound".equals(targetType)) {
 			targeting = new SpellTargetingIndividualHorseHound(combatFrame,spell);
 		}
+		else if ("active weapon, denizen weapon".equals(targetType)) {
+			targeting = new SpellTargetingWeaponNativeMonster(combatFrame,spell);
+		}
 		
 		return targeting;
 	}

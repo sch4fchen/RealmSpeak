@@ -51438,6 +51438,7 @@
         <attribute icon_size="0.9" />
         <attribute flying="" />
         <attribute native_name="Caster" />
+        <attribute no_weapon_usage="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="1" />
@@ -51475,6 +51476,7 @@
         <attribute icon_size="0.9" />
         <attribute flying="" />
         <attribute native_name="Caster" />
+        <attribute no_weapon_usage="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="1" />
@@ -51512,6 +51514,7 @@
         <attribute icon_size="0.9" />
         <attribute flying="" />
         <attribute native_name="Caster" />
+        <attribute no_weapon_usage="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="1" />
