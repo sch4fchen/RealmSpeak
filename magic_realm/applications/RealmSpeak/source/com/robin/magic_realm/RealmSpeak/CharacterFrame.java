@@ -414,7 +414,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		
 		// Check for blocking state
 		blockees = null;
-		if (blockButton.isSelected()) {
+		if (blockButton.isSelected() && !getCharacter().getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)) {
 			// Look for characters in the clearing
 			blockees = getPossibleBlockees();
 		}

@@ -947,6 +947,7 @@ public class RealmUtility {
 	}
 	
 	public static boolean willBeBlocked(CharacterWrapper character,boolean isFollowing,boolean blockMonsters) {
+		if (character.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)) return false;
 		// Player's current clearing is checked for monsters, and blocked if needed
 		boolean blocked = false;
 		if (!character.isMinion() && !character.isHidden() && !isFollowing && !character.isMistLike()) {
