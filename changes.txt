@@ -20,7 +20,7 @@ Super Realm: Optional Rules: No duplicate spell recording at start of the game
 Super Realm: Optional Rules: Starting location always the Inn
 Super Realm: Public quests on setup chart (+flag on quests if it can go on setup chart) (BGG variant: 2 quest cards per native)
 ---Detail Rules for Super Realm Spells---
-Poison: This spell cannot be cast on the Alchemist’s Mixture, or a dagger, or on any weapon or denizen affected by the Enchant Weapon spell. Special: the sharpness star added by this spell is ignored when the weapon is used against Grey/Prism Anomalies.
+Poison: Special: the sharpness star added by this spell is ignored when the weapon is used against Grey/Prism Anomalies.
 Lightning Bolt: List of Spells, added detail to IV spell Lightning Bolt, stating that site targets are considered armored.
 Phantasm: If the phantasm discovers Hidden Enemies, the controlling character also discovers Hidden Enemies.;; it cannot take part in combat;; can now spy and be spied
 Melt into Mist: only move actions; canot follow or be followed; can be charged (difference), The target cannot attack or be attacked, except by individuals affected by the Enchant Weapon spell, If attacked, Mist’s vulnerability is Tremendous and non-armored; targeted monster stills prowls (like in base MR) even if ‘X’ weight

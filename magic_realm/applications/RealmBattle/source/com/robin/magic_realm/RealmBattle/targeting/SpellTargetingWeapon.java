@@ -24,14 +24,13 @@ public class SpellTargetingWeapon extends SpellTargetingSingle {
 		realmComponents = CombatSheet.filterNativeFriendly(activeParticipant, realmComponents);
 		for (RealmComponent rc : realmComponents) {
 			if (rc.isWeapon()) {
-				gameObjects.add(rc.getGameObject());
-				identifiers.add(rc.getGameObject().getHeldBy().getName());
+				if (!spell.getGameObject().hasThisAttribute(Constants.NON_ENCHANTED_WEAPON)
+						|| !rc.getGameObject().hasThisAttribute(Constants.ENCHANT_WEAPON)) {
+					gameObjects.add(rc.getGameObject());
+					identifiers.add(rc.getGameObject().getHeldBy().getName());
+				}
 			}
-// Poison cannot be cast on Alchemist's Mixture!!
-//			else if (rc.isTreasure() && rc.getGameObject().hasThisAttribute("attack") && rc.getGameObject().hasThisAttribute(Constants.ACTIVATED)) {
-//				gameObjects.add(rc.getGameObject());
-//				identifiers.add(rc.getGameObject().getHeldBy().getName());
-//			}
+			//Poison cannot be cast on Alchemist's Mixture!!
 			else {
 				RealmComponent owner = rc.getOwner();
 				if (rc.isNative() && (owner==null || allowTargetingHirelings())) {
@@ -43,7 +42,7 @@ public class SpellTargetingWeapon extends SpellTargetingSingle {
 						gameObjects.add(rc.getGameObject());
 						identifiers.add(owner==null?"denizen":owner.getGameObject().getName());
 					}
-					else if (rc.getGameObject().hasThisAttribute(Constants.WEAPON_USE_CHIT)) {
+					else if (rc.getGameObject().hasThisAttribute(Constants.WEAPON_USE_CHIT) || rc.getGameObject().hasThisAttribute(Constants.MONSTER_WEAPON)) {
 						MonsterChitComponent monster = (MonsterChitComponent)rc;
 						gameObjects.add(monster.getWeapon().getGameObject());
 						identifiers.add(owner==null?"denizen":owner.getGameObject().getName());

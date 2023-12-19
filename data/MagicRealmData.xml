@@ -8082,6 +8082,7 @@
         <attribute benevolent="" />
         <attribute rw_expansion_1="" />
         <attribute learnable="" />
+        <attribute non_enchanted_weapon="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="305" name="Remedy">
@@ -57612,6 +57613,7 @@
         <attribute benevolent="" />
         <attribute learnable="" />
         <attribute super_realm="" />
+        <attribute non_enchanted_weapon="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2148" name="Remedy">
@@ -59102,10 +59104,10 @@
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
         <attribute benevolent="" />
+        <attribute horse_no_gallop="" />
         <attributeList keyName="target_clearing">
           <attributeVal N0="horses" />
         </attributeList>
-        <attribute horse_no_gallop="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2216" name="Migration">
@@ -59254,10 +59256,10 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
+        <attribute no_fly="" />
         <attributeList keyName="target_clearing">
           <attributeVal N0="clearing" />
         </attributeList>
-        <attribute no_fly="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2224" name="Dark Favor">
@@ -59369,10 +59371,10 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute super_realm_spell="" />
+        <attribute mountain_clearing="" />
         <attributeList keyName="target_clearing">
           <attributeVal N0="clearing" />
         </attributeList>
-        <attribute mountain_clearing="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2231" name="Charm Snake">
