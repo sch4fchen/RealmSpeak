@@ -698,7 +698,8 @@ public class CharacterActionControlManager {
 		Collection<String> c = getCharacter().getCurrentActions();
 		if (!c.contains(DayAction.SPELL_PREP_ACTION.getCode())) {
 			boolean canSkipSpellPrep = getCharacter().getGameObject().hasAttribute(Constants.OPTIONAL_BLOCK,Constants.NO_SPX)
-										|| getCharacter().affectedByKey(Constants.NO_SPX);
+										|| getCharacter().affectedByKey(Constants.NO_SPX)
+										|| getCharacter().getGameObject().hasThisAttribute(Constants.MEDITATE_IMPROVED_ENCHANTING);
 			if (!canSkipSpellPrep) {
 				doRecord(DayAction.SPELL_PREP_ACTION.getCode());
 				return;
@@ -749,7 +750,8 @@ public class CharacterActionControlManager {
 		}
 		if (action.equals(DayAction.SPELL_ACTION.getCode()) && !c.contains(DayAction.SPELL_PREP_ACTION.getCode())) {
 			boolean canSkipSpellPrep = getCharacter().getGameObject().hasAttribute(Constants.OPTIONAL_BLOCK,Constants.NO_SPX)
-									|| getCharacter().affectedByKey(Constants.NO_SPX);
+									|| getCharacter().affectedByKey(Constants.NO_SPX)
+									|| getCharacter().getGameObject().hasThisAttribute(Constants.MEDITATE_IMPROVED_ENCHANTING);
 			if (!canSkipSpellPrep) {
 				action = DayAction.SPELL_PREP_ACTION.getCode();
 			}
