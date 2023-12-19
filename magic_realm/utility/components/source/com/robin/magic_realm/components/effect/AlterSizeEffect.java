@@ -16,5 +16,17 @@ public class AlterSizeEffect implements ISpellEffect {
 		if(context.Target.getGameObject().hasThisAttribute(Constants.ALTER_SIZE)){
 			context.Target.getGameObject().removeThisAttribute(Constants.ALTER_SIZE);
 		}
+		if(context.Target.getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_VULNERABILITY)){
+			context.Target.getGameObject().removeThisAttribute(Constants.ALTER_SIZE_INCREASED_VULNERABILITY);
+		}
+		if(context.Target.getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_VULNERABILITY)){
+			context.Target.getGameObject().removeThisAttribute(Constants.ALTER_SIZE_DECREASED_VULNERABILITY);
+		}
+		if(context.Target.getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)){
+			context.Target.getGameObject().removeThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT);
+		}
+		if(context.Target.getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)){
+			context.Target.getGameObject().removeThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT);
+		}
 	}
 }
