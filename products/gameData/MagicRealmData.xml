@@ -8709,7 +8709,7 @@
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="Weapon stays alerted (discard to warlock)" />
-        <attribute base_price="5" />
+        <attribute base_price="3" />
         <attribute discard="warlock" />
         <attribute potion="" />
         <attribute original_game="" />

@@ -1268,7 +1268,10 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		}
 		
 		String baseValue = "";
-		if(getGameObject().hasThisAttribute(Constants.WEIGHT)) {
+		if(getGameObject().hasThisAttribute(Constants.POTION)) {
+			baseValue = "N";
+		}
+		else if(getGameObject().hasThisAttribute(Constants.WEIGHT)) {
 			baseValue=getGameObject().getThisAttribute(Constants.WEIGHT);
 		}
 		else {

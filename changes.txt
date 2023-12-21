@@ -80,6 +80,7 @@ EXPANSION 1:
 BUGS/ISSUES:
 # Fix drawing treasure chits for some cases (expansion 1)
 # Improve Staff to Snake spell
+# Correct gold value of Gripping Dust
 
 Version 1.1.8.2
 SUPER REALM:
