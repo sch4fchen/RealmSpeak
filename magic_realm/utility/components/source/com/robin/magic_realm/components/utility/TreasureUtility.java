@@ -46,6 +46,10 @@ public class TreasureUtility {
 				JOptionPane.showMessageDialog(parentFrame,"The "+thing.getName()+" can only be activated during combat.");
 				return false;
 			}
+			if ((RealmComponent.getRealmComponent(thing)).getWeight().equalTo(new Strength("X"))) {
+				JOptionPane.showMessageDialog(parentFrame,"The "+thing.getName()+" has maximum weight, and can not be activated.");
+				return false;
+			}
 			
 			/* Activating items in inventory:  Need to do a few checks and balances here.
 			 * Can't have multiple horses activated, for example.  What are the rules on this?
