@@ -32,6 +32,7 @@ public class AlterObject extends RealmTable {
 			"X",
 	};
 	private SpellWrapper spell;
+	private boolean cancelSpell = false;
 	
 	public AlterObject(JFrame frame,GameObject caster, SpellWrapper spell) {
 		super(frame,null);
@@ -45,42 +46,42 @@ public class AlterObject extends RealmTable {
 	}
 	
 	public String applyOne(CharacterWrapper character) {
-		if (character.getGameObject().hasThisAttribute(Constants.ENCHANT_WEAPON)) return RESULT[6];
+		if (character.getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON)) return RESULT[6];
 		SpellUtility.ApplyNamedSpellEffectWithValueToTarget(Constants.ALTER_WEIGHT, character.getGameObject(), spell, EFFECT[0]);
 		checkForItemWeightMaximum(RealmComponent.getRealmComponent(character.getGameObject()));
 		return RESULT[0];
 	}
 
 	public String applyTwo(CharacterWrapper character) {
-		if (character.getGameObject().hasThisAttribute(Constants.ENCHANT_WEAPON)) return RESULT[6];
+		if (character.getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON)) return RESULT[6];
 		SpellUtility.ApplyNamedSpellEffectWithValueToTarget(Constants.ALTER_WEIGHT, character.getGameObject(), spell, EFFECT[1]);
 		checkForItemWeightMaximum(RealmComponent.getRealmComponent(character.getGameObject()));
 		return RESULT[1];
 	}
 
 	public String applyThree(CharacterWrapper character) {
-		if (character.getGameObject().hasThisAttribute(Constants.ENCHANT_WEAPON)) return RESULT[6];
+		if (character.getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON)) return RESULT[6];
 		SpellUtility.ApplyNamedSpellEffectWithValueToTarget(Constants.ALTER_WEIGHT, character.getGameObject(), spell, EFFECT[2]);
 		checkForItemWeightMaximum(RealmComponent.getRealmComponent(character.getGameObject()));
 		return RESULT[2];
 	}
 
 	public String applyFour(CharacterWrapper character) {
-		if (character.getGameObject().hasThisAttribute(Constants.ENCHANT_WEAPON)) return RESULT[6];
+		if (character.getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON)) return RESULT[6];
 		SpellUtility.ApplyNamedSpellEffectWithValueToTarget(Constants.ALTER_WEIGHT, character.getGameObject(), spell, EFFECT[3]);
 		checkForItemWeightMaximum(RealmComponent.getRealmComponent(character.getGameObject()));
 		return RESULT[3];
 	}
 
 	public String applyFive(CharacterWrapper character) {
-		if (character.getGameObject().hasThisAttribute(Constants.ENCHANT_WEAPON)) return RESULT[6];
+		if (character.getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON)) return RESULT[6];
 		SpellUtility.ApplyNamedSpellEffectWithValueToTarget(Constants.ALTER_WEIGHT, character.getGameObject(), spell, EFFECT[4]);
 		checkForItemWeightMaximum(RealmComponent.getRealmComponent(character.getGameObject()));
 		return RESULT[4];
 	}
 
 	public String applySix(CharacterWrapper character) {
-		if (character.getGameObject().hasThisAttribute(Constants.ENCHANT_WEAPON)) return RESULT[6];
+		if (character.getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON)) return RESULT[6];
 		SpellUtility.ApplyNamedSpellEffectWithValueToTarget(Constants.ALTER_WEIGHT, character.getGameObject(), spell, EFFECT[5]);
 		checkForItemWeightMaximum(RealmComponent.getRealmComponent(character.getGameObject()));
 		return RESULT[5];
@@ -90,7 +91,7 @@ public class AlterObject extends RealmTable {
 			target.setActivated(false);
 		}
 	}
-	public static AlterObject doNow(JFrame parent,GameObject attacker,GameObject target,int redDie,SpellWrapper spell) {
+	public static boolean doNow(JFrame parent,GameObject attacker,GameObject target,int redDie,SpellWrapper spell) {
 		AlterObject alterObject = new AlterObject(parent,attacker,spell);
 		CharacterWrapper victim = new CharacterWrapper(target);
 		
@@ -98,6 +99,9 @@ public class AlterObject extends RealmTable {
 		String result = alterObject.apply(victim, roller);
 		RealmLogging.logMessage(spell.getCaster().getName(),"Alter Object roll: "+roller.getDescription());
 		RealmLogging.logMessage(spell.getCaster().getName(),"Alter Object result: "+result);
-		return alterObject;
+		if (result.matches(RESULT[6])) {
+			return false;
+		}
+		return true;
 	}
 }

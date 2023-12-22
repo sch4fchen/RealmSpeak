@@ -1,3 +1,9 @@
+Enchant Weapon:
+The targeted weapon transforms into a melee weapon of length 5, Heavy force with one sharpness star, and 5 speed, retaining its original start-of-game weight.
+These stats do not change, not even if a character wields it with a Fight chit with force greater than its weight (it is always Heavy with a sharpness star).
+This weapon is considered to be alerted at all times. In addition, this spell allows any individual wielding the target weapon to target and attack individuals transformed into mist.
+While in effect, the weapon cannot be affected by any other spells or items; but the spell itself can be targeted.
+Important: Any spells or effects affecting the target weapon are nullified while this spell is in effect. Lastly, while targeting a Purple or Prism Anomaly, this spell is nullified.
 Sword of Terror (QuestReqInventoryMissing)
 ::ROADMAP::
 ---Super Realm Content---

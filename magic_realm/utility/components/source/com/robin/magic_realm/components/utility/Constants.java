@@ -522,7 +522,7 @@ public class Constants {
 	public static final String ALTER_SIZE_DECREASED_VULNERABILITY = "altered_size_decreased_vulnerability";
 	public static final String ALTER_SIZE_INCREASED_WEIGHT = "altered_size_increased_weight";
 	public static final String ALTER_SIZE_DECREASED_WEIGHT = "altered_size_decreased_weight";
-	public static final String ENCHANT_WEAPON = "enchanted_weapon";
+	public static final String ENCHANTED_WEAPON = "enchanted_weapon";
 	public static final String NON_ENCHANTED_WEAPON = "non_enchanted_weapon";
 	public static final String BROOMSTICK = "broomstick";
 	public static final String DAZZLE = "dazzle";

@@ -24,11 +24,8 @@ public class SpellTargetingWeapon extends SpellTargetingSingle {
 		realmComponents = CombatSheet.filterNativeFriendly(activeParticipant, realmComponents);
 		for (RealmComponent rc : realmComponents) {
 			if (rc.isWeapon()) {
-				if (!spell.getGameObject().hasThisAttribute(Constants.NON_ENCHANTED_WEAPON)
-						|| !rc.getGameObject().hasThisAttribute(Constants.ENCHANT_WEAPON)) {
-					gameObjects.add(rc.getGameObject());
-					identifiers.add(rc.getGameObject().getHeldBy().getName());
-				}
+				gameObjects.add(rc.getGameObject());
+				identifiers.add(rc.getGameObject().getHeldBy().getName());
 			}
 			//Poison cannot be cast on Alchemist's Mixture!!
 			else {
