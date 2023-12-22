@@ -196,6 +196,10 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 			protected JMenuItem generatorRules;
 			protected JMenuItem travelerRules;
 			protected JMenuItem guildRules;
+
+		protected JMenu superRealmTablesMenuView;
+			protected JMenuItem superRealmTables1;
+			protected JMenuItem superRealmTables2;
 			
 		protected JMenu helpMenu;
 			protected JMenuItem spurGameHelp;
@@ -1377,6 +1381,22 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 					});
 				expansionRulesView.add(guildRules);
 			viewMenu.add(expansionRulesView);
+				superRealmTablesMenuView = new JMenu("Super Realm Tables");
+					superRealmTables1 = new JMenuItem("Super Realm Tables 1");
+					superRealmTables1.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent ev) {
+							showImage("Super Realm Tables 1","images/tables/SuperRealmTables1.png");
+						}
+					});
+				superRealmTablesMenuView.add(superRealmTables1);
+					superRealmTables2 = new JMenuItem("Super Realm Tables 2");
+					superRealmTables2.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent ev) {
+							showImage("Super Realm Tables 2","images/tables/SuperRealmTables2.png");
+						}
+					});
+				superRealmTablesMenuView.add(superRealmTables2);
+			viewMenu.add(superRealmTablesMenuView);
 				remodeledCounterKeyView = new JMenuItem("Key to Remodeled Counters");
 				remodeledCounterKeyView.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent ev) {
