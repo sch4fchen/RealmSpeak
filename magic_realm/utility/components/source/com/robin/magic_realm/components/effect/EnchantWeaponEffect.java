@@ -12,7 +12,9 @@ public class EnchantWeaponEffect implements ISpellEffect {
 			context.Spell.cancelSpell();
 			RealmLogging.logMessage(context.Spell.getName(),"Spell canceled, item already affected by Enchant Weapon spell.");
 		}
-		SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ENCHANTED_WEAPON, context.Target.getGameObject(), context.Spell);
+		if (SpellUtility.ApplyNamedSpellEffectToTargetAndReturn(Constants.ENCHANTED_WEAPON, context.Target.getGameObject(), context.Spell)) {
+			SpellUtility.ApplyNamedSpellEffectToTarget(Constants.ENCHANTED_ALERTED_WEAPON, context.Target.getGameObject(), context.Spell);
+		}
 	}
 	
 
@@ -20,6 +22,9 @@ public class EnchantWeaponEffect implements ISpellEffect {
 	public void unapply(SpellEffectContext context) {
 		if(context.Target.getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON)){
 			context.Target.getGameObject().removeThisAttribute(Constants.ENCHANTED_WEAPON);
+		}
+		if(context.Target.getGameObject().hasThisAttribute(Constants.ENCHANTED_ALERTED_WEAPON)){
+			context.Target.getGameObject().removeThisAttribute(Constants.ENCHANTED_ALERTED_WEAPON);
 		}
 	}
 

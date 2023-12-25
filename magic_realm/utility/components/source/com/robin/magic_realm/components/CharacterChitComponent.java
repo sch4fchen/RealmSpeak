@@ -1114,7 +1114,8 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	public boolean activeWeaponStaysAlerted(WeaponChitComponent weapon) {
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
 		GameObject dust = character.getActiveInventoryThisKey(Constants.ALERTED_WEAPON);
-		return dust!=null && testEffectIsOnActiveWeapon(dust, weapon);
+		GameObject enchantedWeapon = character.getActiveInventoryThisKey(Constants.ENCHANTED_ALERTED_WEAPON);
+		return (dust!=null && testEffectIsOnActiveWeapon(dust, weapon)) || (enchantedWeapon!=null && testEffectIsOnActiveWeapon(enchantedWeapon, weapon));
 	}
 	public boolean hitsOnTie() {
 		boolean hitsOnTie = getGameObject().hasThisAttribute(Constants.HIT_TIE); // In case Ointment of Bite was applied to dagger
@@ -1154,7 +1155,9 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		// make sure weapon was played in combat this round (otherwise it doesn't change)
 		int box = (new CombatWrapper(weapon.getGameObject())).getCombatBox();
 		if (box > 0) {
-			if (activeWeaponStaysAlerted(weapon) || weapon.getGameObject().hasThisAttribute(Constants.ALERTED_WEAPON)) {
+			if (activeWeaponStaysAlerted(weapon)
+					|| weapon.getGameObject().hasThisAttribute(Constants.ALERTED_WEAPON)
+					|| weapon.getGameObject().hasThisAttribute(Constants.ENCHANTED_ALERTED_WEAPON)) {
 				// Treat like the character just missed - keeps weapon alerted
 				hit = false;
 			}
