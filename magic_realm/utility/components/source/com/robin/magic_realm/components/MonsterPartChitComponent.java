@@ -28,12 +28,14 @@ public class MonsterPartChitComponent extends MonsterChitComponent {
 	}
 	public Strength getStrength() {
 		Strength strength = super.getStrength();
-		if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT)) strength = new Strength(getGameObject().getThisAttribute(Constants.ALTER_WEIGHT));
-		if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
-			strength.modify(-1);
-		}
-		if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
-			strength.modify(1);
+		if (!gameObject.hasThisAttribute(Constants.ENCHANTED_WEAPON)) {
+			if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT)) strength = new Strength(getGameObject().getThisAttribute(Constants.ALTER_WEIGHT));
+			if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
+				strength.modify(-1);
+			}
+			if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
+				strength.modify(1);
+			}
 		}
 		if (strength.getChar()!="T" && getGameObject().getHeldBy().hasThisAttribute(Constants.STRONG_MF)) {
 			strength.modify(1);

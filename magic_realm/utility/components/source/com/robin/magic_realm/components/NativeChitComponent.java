@@ -522,7 +522,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 	}
 
 	public boolean isMissile() {
-		return gameObject.hasThisAttribute("missile");
+		return gameObject.hasThisAttribute("missile") && !gameObject.hasThisAttribute(Constants.ENCHANTED_WEAPON);
 	}
 	public String getMissileType() {
 		return gameObject.getThisAttribute("missile");

@@ -166,7 +166,7 @@ public class WeaponChitComponent extends RoundChitComponent {
 		return light==null?dark==null:light.equals(dark);
 	}
 	public boolean isMissile() {
-		return gameObject.hasThisAttribute("missile");
+		return gameObject.hasThisAttribute("missile") && !gameObject.hasThisAttribute(Constants.ENCHANTED_WEAPON);
 	}
 	public boolean isThrowable() {
 		return gameObject.hasThisAttribute(Constants.THROWABLE);

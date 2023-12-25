@@ -1074,7 +1074,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			}
 			for (GameObject tw : getTreasureWeaponObjects()) {
 				if (tw!=null && (attackChit == null || combatChit.getWeaponId().equals(tw.getStringId()))) {
-					if (tw.hasThisAttribute("missile")) return true;
+					if (tw.hasThisAttribute("missile") && !tw.hasThisAttribute(Constants.ENCHANTED_WEAPON)) return true;
 				}
 			}
 		}

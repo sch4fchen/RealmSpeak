@@ -1259,14 +1259,15 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	}
 	
 	private Strength getWeight(String fallback) {
-		if (affectedByKey(Constants.NO_WEIGHT)) return new Strength();
 		int mod = 0;
-		if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) mod++;
-		if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) mod--;
-		if (!affectedByKey(Constants.ENCHANTED_WEAPON) && gameObject.hasThisAttribute(Constants.ALTER_WEIGHT)) {
-			return new Strength(getGameObject().getThisAttribute(Constants.ALTER_WEIGHT),mod);
+		if (!affectedByKey(Constants.ENCHANTED_WEAPON)) {
+			if (affectedByKey(Constants.NO_WEIGHT)) return new Strength();
+			if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) mod++;
+			if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) mod--;
+			if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT)) {
+				return new Strength(getGameObject().getThisAttribute(Constants.ALTER_WEIGHT),mod);
+			}
 		}
-		
 		String baseValue = "";
 		if(getGameObject().hasThisAttribute(Constants.POTION)) {
 			baseValue = "N";
@@ -1278,7 +1279,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 			baseValue=getGameObject().getThisAttribute(Constants.VULNERABILITY);
 		}
 		if (fallback!=null && (baseValue==null||baseValue.isEmpty())) {
-			baseValue="M";
+			baseValue=fallback;
 		}
 		
 		return new Strength(baseValue,mod);

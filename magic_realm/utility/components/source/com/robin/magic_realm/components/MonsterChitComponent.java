@@ -783,7 +783,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	}
 
 	public boolean isMissile() {
-		return gameObject.hasThisAttribute("missile");
+		return gameObject.hasThisAttribute("missile") && !gameObject.hasThisAttribute(Constants.ENCHANTED_WEAPON);
 	}
 	public String getMissileType() {
 		return gameObject.getThisAttribute("missile");

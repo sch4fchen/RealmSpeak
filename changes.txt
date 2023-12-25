@@ -1,13 +1,10 @@
 Enchant Weapon:
-The targeted weapon transforms into a melee weapon of length 5, Heavy force with one sharpness star, and 5 speed, retaining its original start-of-game weight. incl. overwrite weight, sharpness
-These stats do not change, not even if a character wields it with a Fight chit with force greater than its weight (it is always Heavy with a sharpness star).
-In addition, this spell allows any individual wielding the target weapon to target and attack individuals transformed into mist.
-Lastly, while targeting a Purple or Prism Anomaly, this spell is nullified.
+length 5, strength H, sharpness 1, speed 5
+These stats do not change, not even if a character wields it with a Fight chit with force greater than its weight
 
 Sword of Terror (QuestReqInventoryMissing)
 ::ROADMAP::
 ---Super Realm Content---
-Spells: Enchant Weapon
 Treasures: 
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Nomads, Tasks, Travelers: 4.8 (p.41)
@@ -17,14 +14,6 @@ Super Realm: Characters, including potraits with credits, different chit icon
 ---Super Realms Rules---
 SUPER REALM: remaining RULES and LOGIC (rule changes compared to Magic Realm)
 Super Realm: Seasons + Weather 10.12 (p.117)
-Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
-3rdEdition / RealmSpeak: Optional Character Rules (A.6, p. 186): Captain, Druid, Magician, WIZARD ignores SPX, Woods Girl, Elf
-Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.121)
-Super Realm: Optional Rules: Initial quest card draw size (BGG variant: 3 quests)
-Super Realm: Optional Rules: No discarding or drawing new quest cards (but perhaps exchanging?)
-Super Realm: Optional Rules: No duplicate spell recording at start of the game
-Super Realm: Optional Rules: Starting location always the Inn
-Super Realm: Public quests on setup chart (+flag on quests if it can go on setup chart) (BGG variant: 2 quest cards per native)
 ---Detail Rules for Super Realm Spells---
 Poison: Special: the sharpness star added by this spell is ignored when the weapon is used against Grey/Prism Anomalies.
 Lightning Bolt: List of Spells, added detail to IV spell Lightning Bolt, stating that site targets are considered armored.
@@ -33,6 +22,8 @@ Melt into Mist: only move actions; canot follow or be followed; can be charged (
 Melt into Mist: This spell is benevolent if, and only if, the spellcaster casts it on one of his hired leaders or controlled monsters.
 only the Melt into Mist transmorphization spell can be cast to affect carrying capacity.  Transform and Absorb Essence are no longer options for end-game scoring.
 Purple/Prism Anomalies can block/battle any individual transmorphized into mist.
+Enchant Weapon: any individual wielding the target weapon can target and attack individuals transformed into mist.
+Enchant Weapon: While targeting a Purple or Prism Anomaly, this spell is nullified.
 Protection from Magic: The target is also immune to spell-breaking spells, such as Exorcise, Remedy, and Dissolve Spell, while this spell is in effect (ie activated). Any transmorphization spells affecting the target would also be nullified when this spell is activated, which can be done during a phase even when the target is transmorphized.
 Exorcise: All native casters in the clearing cannot supply color magic, and they cannot cast spells for the rest of combat (including the current round), unless they are in a clearing with a magic source matching the color required to cast their spell.
 	Update 995: Tweaked description of the I Exorcise spell.  It does cause Phase spells to break, as the revised definition of Phase spells means they are continually in effect (even if they're not affecting the target with the spell ability due to not having been activated/used yet) until used, in which case the spell ends at the end of the phase/round it was activated.  For example, if someone had Broomstick cast earlier, but hadn't used it and was in the clearing when Exorcise is cast, he loses the phase chit reserved for Broomstick (the broomstick spell breaks).
@@ -40,6 +31,15 @@ Vault and Tomb (if discovered): can be opened with a missile attack, if after ro
 Ask Demon: 4 options, instead of just asking a question
 Absorb Essence: any denizens and Attention chits assigned to it become assigned to the spellcaster; absorbs steed when absorbing a monster
 	The spellcaster cannot be affected by multiple Absorb Essence spells. Any Absorb Essence spell he casts while he is already bewitched by Absorb Essence is cancelled.
+---Super Realms Rules - Optional Rules---
+Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
+3rdEdition / RealmSpeak: Optional Character Rules (A.6, p. 186): Captain, Druid, Magician, WIZARD ignores SPX, Woods Girl, Elf
+Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.121)
+Super Realm: Optional Rules: Initial quest card draw size (BGG variant: 3 quests)
+Super Realm: Optional Rules: No discarding or drawing new quest cards (but perhaps exchanging?)
+Super Realm: Optional Rules: No duplicate spell recording at start of the game
+Super Realm: Optional Rules: Starting location always the Inn
+Super Realm: Public quests on setup chart (+flag on quests if it can go on setup chart) (BGG variant: 2 quest cards per native)
 ---Additional features---
 Super Realm: icons for site chits, sound and warning chits, characters
 ---Optional Rules---
