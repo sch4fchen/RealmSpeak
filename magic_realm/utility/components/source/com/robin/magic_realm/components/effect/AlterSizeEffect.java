@@ -8,10 +8,6 @@ public class AlterSizeEffect implements ISpellEffect {
 	
 	@Override
 	public void apply(SpellEffectContext context) {
-		if (context.Target.getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON)) {
-			context.Spell.cancelSpell();
-			RealmLogging.logMessage(context.Spell.getName(),"Spell canceled, item already affected by Enchant Weapon spell.");
-		}
 		int redDie = context.Spell.getRedDieLock();
 		AlterSize.doNow(context.Parent,context.Spell.getCaster().getGameObject(),context.Target.getGameObject(),redDie,context.Spell);
 	}

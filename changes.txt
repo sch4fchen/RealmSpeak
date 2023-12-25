@@ -73,7 +73,7 @@ Would be nice to make weapon abilities too:
 	Immobilizing2 - When it hits all attacks undercut in next round
 	Stunning - Target cannot play an attack next round
 
-Version 1.1.8.3
+Version 1.1.8.4
 SUPER REALM:
 # New spells: Enchant Weapon
 
