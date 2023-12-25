@@ -579,7 +579,9 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 			if (tl!=null && tl.isInClearing() && tl.clearing.hasSpellEffect(Constants.BLUNTED)) {
 				sharpness--;
 			}
-			if (sharpness>0 && getGameObject().hasThisAttribute(Constants.BLUNT) && !getGameObject().hasThisAttribute(Constants.BLUNT_IMMUNITY)) {
+			if (sharpness>0 && getGameObject().hasThisAttribute(Constants.BLUNT)
+					&& !getGameObject().hasThisAttribute(Constants.BLUNT_IMMUNITY)
+					&& !getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON)) {
 				sharpness--;
 			}
 		}

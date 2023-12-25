@@ -142,7 +142,7 @@ public class WeaponChitComponent extends RoundChitComponent {
 			sharpness++;
 		}
 		
-		if (sharpness>0 && getGameObject().hasThisAttribute(Constants.BLUNT)) {
+		if (sharpness>0 && getGameObject().hasThisAttribute(Constants.BLUNT) && !getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON)) {
 			sharpness--;
 		}
 		

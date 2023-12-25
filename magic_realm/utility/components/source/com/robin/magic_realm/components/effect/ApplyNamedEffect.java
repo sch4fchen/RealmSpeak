@@ -1,6 +1,4 @@
 package com.robin.magic_realm.components.effect;
-import com.robin.magic_realm.components.utility.Constants;
-import com.robin.magic_realm.components.utility.RealmLogging;
 import com.robin.magic_realm.components.utility.SpellUtility;
 
 public class ApplyNamedEffect implements ISpellEffect {
@@ -12,10 +10,6 @@ public class ApplyNamedEffect implements ISpellEffect {
 	
 	@Override
 	public void apply(SpellEffectContext context) {
-		if (context.Target.getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON)) {
-			context.Spell.cancelSpell();
-			RealmLogging.logMessage(context.Spell.getName(),"Spell canceled, item already affected by Enchant Weapon spell.");
-		}
 		SpellUtility.ApplyNamedSpellEffectToTarget(_effectName, context.Target.getGameObject(), context.Spell);
 	}
 
