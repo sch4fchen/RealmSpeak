@@ -74,6 +74,10 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 Version 1.1.8.3
+SUPER REALM:
+# New spells: Enchant Weapon
+
+Version 1.1.8.3
 NEW FEATURES:
 # Option for Interpolation mode (map rendering quality), default: off
 # Legendary Realm tile style for Expansion 1
