@@ -1,7 +1,6 @@
 package com.robin.magic_realm.components.effect;
 
 import com.robin.general.util.OrderedHashtable;
-import com.robin.magic_realm.components.quest.QuestMinorCharacter;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmLogging;
 import com.robin.magic_realm.components.utility.SpellUtility;
