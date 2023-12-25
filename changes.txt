@@ -80,6 +80,7 @@ NEW FEATURES:
 SUPER REALM:
 # New spells: Alter Object, Alter Size, Dazzle, Meditate
 # Spell from Expansion 1 (compensating Free Spell and Luck): Staff to Snake, Spirit Guide
+# Add tables for Super Realm to menu
 EXPANSION 1:
 # Change magic color of Decrepid Swamp and Putrid Swamp to Purple
 # Add two hidden paths to Ambush tile
