@@ -59345,6 +59345,12 @@
         <attribute benevolent="" />
         <attribute enchant="" />
       </AttributeBlock>
+      <AttributeBlock blockName="enchanted_stats">
+        <attribute length="5" />
+        <attribute strength="H" />
+        <attribute sharpness="1" />
+        <attribute speed="5" />
+      </AttributeBlock>
     </GameObject>
     <GameObject id="2229" name="Grow Wings">
       <AttributeBlock blockName="this">

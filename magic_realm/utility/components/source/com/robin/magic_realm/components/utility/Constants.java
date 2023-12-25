@@ -532,7 +532,12 @@ public class Constants {
 	public static final String MEDITATE_EXTRA_PHASE = "meditate_extra_phase";
 	public static final String MEDITATE_IMPROVED_ENCHANTING = "meditate_improved_enchanting";
 	public static final String ENCHANTED_WEAPON = "enchanted_weapon";
+	public static final String ENCAHNTED_WEAPON_STATS = "enchanted_stats";
 	public static final String ENCHANTED_ALERTED_WEAPON = "enchanted_alerted_weapon";
+	public static final String ENCHANTED_WEAPON_LENGTH = "enchanted_weapon_length";
+	public static final String ENCHANTED_WEAPON_STRENGTH = "enchanted_weapon_strength";
+	public static final String ENCHANTED_WEAPON_SHARPNESS = "enchanted_weapon_sharpness";
+	public static final String ENCHANTED_WEAPON_SPEED = "enchanted_weapon_speed";
 
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";
