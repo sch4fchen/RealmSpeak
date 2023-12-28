@@ -298,6 +298,7 @@ public class RealmBattle {
 							fixSheetOwners(currentCombatLocation,data);
 							break;
 						case Constants.COMBAT_TACTICS:
+							endAttacksIfPeaceful(currentCombatLocation,data);
 							LogStage("Reposition/Tactics");
 							repositionTactics(currentCombatLocation,data);
 							break;
@@ -647,6 +648,14 @@ public class RealmBattle {
 	public static void fixSheetOwners(TileLocation location,GameData data) {
 		BattleModel model = buildBattleModel(location,data);
 		model.doFixSheetOwners();
+	}
+	
+	public static void endAttacksIfPeaceful(TileLocation location,GameData data) {
+		BattleModel model = buildBattleModel(location,data);
+		CombatWrapper tile = new CombatWrapper(location.tile.getGameObject());
+		if (tile.isPeaceClearing(location.clearing.getNum())) {
+			model.makePeace();
+		}
 	}
 	
 	public static void repositionTactics(TileLocation location,GameData data) {
