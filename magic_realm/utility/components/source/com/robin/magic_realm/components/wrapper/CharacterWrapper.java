@@ -1704,6 +1704,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				((WeaponChitComponent)rc).setAlerted(false);
 			}
 			else if (rc.isGoldSpecial()) {
+				if (!getGameObject().hasThisAttribute("mission") && !getGameObject().hasThisAttribute("campaign")) continue;
 				boolean drop = false;
 				GoldSpecialChitComponent gs = (GoldSpecialChitComponent)rc;
 				// Evaluate a satisfied condition

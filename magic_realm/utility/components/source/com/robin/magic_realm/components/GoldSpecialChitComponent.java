@@ -153,12 +153,14 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 			text.append(rowHeaderStart);
 			text.append("Time Limit:");
 			text.append(rowContentStart);
-			if (getGameObject().getThisAttribute("time_limit").matches("month")) {
-				text.append("end of month");
-			}
-			else {
-				text.append(getGameObject().getThisInt("time_limit"));
-				text.append(" days");
+			if (getGameObject().hasThisAttribute("time_limit")) { 
+				if (getGameObject().getThisAttribute("time_limit").matches("month")) {
+					text.append("end of month");
+				}
+				else {
+					text.append(getGameObject().getThisInt("time_limit"));
+					text.append(" days");
+				}
 			}
 			text.append(rowEnd);
 		}
@@ -315,6 +317,7 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 		return ClearingUtility.getTileLocation(go);
 	}
 	public void makePayment(CharacterWrapper character) {
+		if (!getGameObject().hasThisAttribute("time_limit")) return;
 		if (getGameObject().getThisAttribute("time_limit").matches("month")) {
 			GameWrapper game = GameWrapper.findGame(getGameObject().getGameData());
 			RealmCalendar cal = RealmCalendar.getCalendar(getGameObject().getGameData());
