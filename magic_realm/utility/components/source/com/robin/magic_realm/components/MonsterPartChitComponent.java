@@ -27,6 +27,9 @@ public class MonsterPartChitComponent extends MonsterChitComponent {
 		return getWielder().speedModifier();
 	}
 	public Strength getStrength() {
+		if (getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON_STRENGTH)) {
+			return new Strength(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_STRENGTH));
+		}
 		Strength strength = super.getStrength();
 		if (!gameObject.hasThisAttribute(Constants.ENCHANTED_WEAPON)) {
 			if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT)) strength = new Strength(getGameObject().getThisAttribute(Constants.ALTER_WEIGHT));

@@ -480,23 +480,26 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			}
 			boolean hasWeapon = false;
 			boolean missileWeapon = false;
+			boolean enchantedWeapon = false;
 			Harm baseHarm = getHarmForRealmComponent(rc); // harm from the attack (ignoring the weapon)
 			CombatWrapper combatChit = new CombatWrapper(rc.getGameObject());
 			ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
 			if (weapons != null) {
 				for (WeaponChitComponent weapon : weapons) {
-					if (combatChit.getWeaponId().equals(weapon.getGameObject().getStringId()))
-						if (weapon.getGameObject().hasThisAttribute(Constants.IGNORE_ARMOR)) {
-							ignoreArmor = true;
-						}
+					if (combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
 						CombatWrapper wCombat = new CombatWrapper(weapon.getGameObject());
 						if (wCombat.getCombatBox()>0) {
+							if (weapon.getGameObject().hasThisAttribute(Constants.IGNORE_ARMOR)) {
+								ignoreArmor = true;
+							}
 							hasWeapon = true;
 							missileWeapon = weapon.isMissile();
 							weaponStrength = weapon.getStrength();
 							sharpness = weapon.getSharpness();
+							enchantedWeapon = weapon.getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON);
 						}
 					}
+				}
 			}
 			if (!hasWeapon) {
 				// Check for treasure weapons
@@ -510,6 +513,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 						weaponStrength = getStrengthForTreasure(tw);
 						sharpness = tw.getThisInt("sharpness");
 						sharpness += tw.getThisInt(Constants.ADD_SHARPNESS);
+						enchantedWeapon = tw.hasThisAttribute(Constants.ENCHANTED_WEAPON);
 						break;
 					}
 				}
@@ -518,10 +522,10 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				weaponStrength = baseHarm.getStrength();
 				sharpness = 0;
 			}
-			if (!missileWeapon && baseHarm.getStrength().strongerThan(weaponStrength)) {
+			if (!missileWeapon && baseHarm.getStrength().strongerThan(weaponStrength) && !enchantedWeapon) {
 				weaponStrength.bumpUp();
 			}
-			if (combatChit.getGameObject().hasThisAttribute(Constants.FINAL_CHIT_HARM)) {
+			if (combatChit.getGameObject().hasThisAttribute(Constants.FINAL_CHIT_HARM) && !enchantedWeapon) {
 				Strength chitStrength = new Strength(combatChit.getGameObject().getThisAttribute(Constants.FINAL_CHIT_HARM));
 				if (chitStrength.strongerThan(weaponStrength)) {
 					weaponStrength = chitStrength;

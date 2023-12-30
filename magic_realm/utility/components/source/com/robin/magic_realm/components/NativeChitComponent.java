@@ -346,6 +346,9 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 	}
 
 	public Integer getLength() {
+		if (getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON_LENGTH)) {
+			return Integer.valueOf(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_LENGTH));
+		}
 		Integer length = getFaceAttributeInteger("length");
 		if (length == null) {
 			length = Integer.valueOf(0);
@@ -401,10 +404,16 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 	}
 	
 	public Speed getAttackSpeed() {
+		if (getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON_SPEED)) {
+			return new Speed(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_SPEED),0);
+		}
 		return new Speed(getFaceAttributeInteger("attack_speed"),speedModifier());
 	}
 
 	public Strength getStrength() {
+		if (getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON_STRENGTH)) {
+			return new Strength(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_STRENGTH));
+		}
 		Strength strength = new Strength(getFaceAttributeString("strength"));
 		strength.modify(sizeModifier());
 		if (strength.getChar()!="T" && SpellUtility.affectedByBewitchingSpellKey(getGameObject(),Constants.STRONG_MF)) {
@@ -419,6 +428,9 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 	}
 
 	public int getSharpness() {
+		if (getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON_SHARPNESS)) {
+			return Integer.valueOf(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_SHARPNESS));
+		}
 		int sharpness = getFaceAttributeInt("sharpness");
 		sharpness += getGameObject().getThisInt(Constants.ADD_SHARPNESS);
 		if (sharpness>0) {

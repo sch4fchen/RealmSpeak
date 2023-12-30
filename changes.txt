@@ -1,7 +1,3 @@
-Enchant Weapon:
-length 5, strength H, sharpness 1, speed 5
-These stats do not change, not even if a character wields it with a Fight chit with force greater than its weight
-
 Sword of Terror (QuestReqInventoryMissing)
 ::ROADMAP::
 ---Super Realm Content---

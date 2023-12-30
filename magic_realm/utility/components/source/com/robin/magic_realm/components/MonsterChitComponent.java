@@ -430,6 +430,9 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	}
 
 	public Integer getLength() {
+		if (getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON_LENGTH)) {
+			return Integer.valueOf(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_LENGTH));
+		}
 		Integer length = getFaceAttributeInteger("length");
 		if (length == null) {
 			length = Integer.valueOf(0); // tooth and claw
@@ -532,6 +535,9 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	}
 
 	public Speed getAttackSpeed() {
+		if (getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON_SPEED)) {
+			return new Speed(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_SPEED),0);
+		}
 		return new Speed(getFaceAttributeInteger("attack_speed"),speedModifier());
 	}
 	
@@ -554,6 +560,9 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	}
 
 	public Strength getStrength() {
+		if (getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON_STRENGTH)) {
+			return new Strength(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_STRENGTH));
+		}
 		Strength strength = new Strength(getFaceAttributeString("strength"));
 		int mod = sizeModifier();
 		if (mod<0) {
@@ -572,6 +581,9 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	}
 
 	public int getSharpness() {
+		if (getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON_SHARPNESS)) {
+			return Integer.valueOf(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_SHARPNESS));
+		}
 		int sharpness = getFaceAttributeInt("sharpness");
 		sharpness += getGameObject().getThisInt(Constants.ADD_SHARPNESS);
 		if (sharpness>0) {
