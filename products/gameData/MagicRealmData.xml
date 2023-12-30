@@ -59523,7 +59523,22 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2240" name="Ancient Rune">
+    <GameObject id="2240" name="Adventure Guide">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="9" />
+        <attribute fame="5" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute native="Peasants" />
+        <attribute text="A 5 result on Search, Peer and Locate rolls also discovers secret passages." />
+        <attribute adventure_guide="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2241" name="Ancient Rune">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="19" />
@@ -59535,10 +59550,10 @@
         <attribute item="" />
         <attribute super_realm="" />
         <attribute super_realm_treasure="" />
-        <attribute large="" />
         <attributeList keyName="diemod">
           <attributeVal N0="1d:readrunes:all" />
         </attributeList>
+        <attribute text="Roll 1 die on Reading Runes Table." />
       </AttributeBlock>
     </GameObject>
   </objects>

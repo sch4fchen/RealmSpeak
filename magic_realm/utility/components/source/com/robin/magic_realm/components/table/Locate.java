@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.swing.PathIcon;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class Locate extends Search {
@@ -48,6 +49,9 @@ public class Locate extends Search {
 	}
 
 	public String applyFive(CharacterWrapper character) {
+		if (character.affectedByKey(Constants.ADVENTURE_GUIDE)) {
+			doPassages(character);
+		}
 		// Nothing
 		return "Nothing";
 	}

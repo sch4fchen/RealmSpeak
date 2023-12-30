@@ -305,6 +305,9 @@ public class Constants {
 	public static final String MAGIC_COLOR_BONUS_SHARPNESS = "magic_color_bonus_sharpness";
 	public static final String MAGIC_COLOR_BONUS_SPEED = "magic_color_bonus_speed";
 	
+	// Super Realm Treasures
+	public static final String ADVENTURE_GUIDE = "adventure_guide";
+	
 	// Native ThisAttributes
 	public static final String HIDDEN = "hidden";
 	

@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 
 import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class Peer1ed extends Search {
@@ -44,6 +45,9 @@ public class Peer1ed extends Search {
 	}
 
 	public String applyFive(CharacterWrapper character) {
+		if (character.affectedByKey(Constants.ADVENTURE_GUIDE)) {
+			doPassages(character);
+		}
 		// Glimpse
 		return doGlimpse(character);
 	}

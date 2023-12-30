@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.PathDetail;
 import com.robin.magic_realm.components.swing.PathIcon;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class Peer extends Search {
@@ -55,6 +56,9 @@ public class Peer extends Search {
 	}
 
 	public String applyFive(CharacterWrapper character) {
+		if (character.affectedByKey(Constants.ADVENTURE_GUIDE)) {
+			doPassages(character);
+		}
 		// Clues
 		doClues(character);
 		return "Clues";
