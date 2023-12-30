@@ -71,7 +71,8 @@ Would be nice to make weapon abilities too:
 
 Version 1.1.8.4
 SUPER REALM:
-# New spells: Enchant Weapon
+# New spell: Enchant Weapon
+# New treasures: Ancient Rune
 BUGS/ISSUES:
 # Fix crash when holding a visitor
 # Fix Wish for Peace not working in some rare cases

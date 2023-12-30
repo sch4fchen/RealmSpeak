@@ -59523,6 +59523,24 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2240" name="Ancient Rune">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="19" />
+        <attribute notoriety="8" />
+        <attribute weight="L" />
+        <attribute fame="-5" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute large="" />
+        <attributeList keyName="diemod">
+          <attributeVal N0="1d:readrunes:all" />
+        </attributeList>
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
