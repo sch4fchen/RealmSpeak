@@ -59550,10 +59550,62 @@
         <attribute item="" />
         <attribute super_realm="" />
         <attribute super_realm_treasure="" />
+        <attribute text="Roll 1 die on Reading Runes Table." />
         <attributeList keyName="diemod">
           <attributeVal N0="1d:readrunes:all" />
         </attributeList>
-        <attribute text="Roll 1 die on Reading Runes Table." />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2242" name="Ancient Tome">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="18" />
+        <attribute weight="L" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="-1 on Reading Runes Table rolls." />
+        <attributeList keyName="diemod">
+          <attributeVal N0="-1:readrunes:all" />
+        </attributeList>
+        <attribute notoriety="7" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2243" name="Bag of Bones">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="17" />
+        <attribute notoriety="9" />
+        <attribute fame="3" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="-1 on Magic Sight Table" />
+        <attributeList keyName="diemod">
+          <attributeVal N0="-1:magicsight:all" />
+        </attributeList>
+        <attribute native="Enchanters" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2244" name="Bard's Lute">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="16" />
+        <attribute notoriety="-5" />
+        <attribute fame="20" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Natives become Friendly when you buy drinks." />
+        <attribute native="Guard" />
+        <attribute weight="L" />
+        <attribute bards_lute="" />
       </AttributeBlock>
     </GameObject>
   </objects>

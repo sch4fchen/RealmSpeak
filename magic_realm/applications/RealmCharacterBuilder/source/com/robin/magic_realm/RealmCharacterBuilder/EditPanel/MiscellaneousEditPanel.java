@@ -46,6 +46,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"MAGIC chits don't fatigue when alerted and unused",Constants.NO_MAGIC_FATIGUE,""},
 		{"No SPX requirement",Constants.NO_SPX,""},
 		{"Flying",Constants.FLYING,""},
+		{"Natives become Friendly when you buy drinks.",Constants.BARDS_LUTE,""},
 	};
 	private static String[][] MISC_ADVANTAGE_COMBAT_AND_SPELLCASTING = {
 		{"Effort Limit of 3",Constants.EFFORT_LIMIT,"3"},

@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 
 import com.robin.general.util.StringUtilities;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.attribute.RelationshipType;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.attribute.TradeInfo;
 import com.robin.magic_realm.components.utility.*;
@@ -96,7 +97,12 @@ public abstract class Trade extends RealmTable {
 		if (ret!=JOptionPane.YES_OPTION) return "The "+character.getGameObject().getName()+" chose not to buy drinks.";
 		
 		character.addGold(-drinkPrice);
-		info.addRelationship(1);
+		if (character.affectedByKey(Constants.BARDS_LUTE)) {
+			info.setRelationship(RelationshipType.FRIENDLY);
+		}
+		else {
+			info.addRelationship(1);
+		}
 		return null;
 	}
 }
