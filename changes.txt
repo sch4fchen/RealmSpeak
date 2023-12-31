@@ -1,7 +1,8 @@
 Sword of Terror (QuestReqInventoryMissing)
 ::ROADMAP::
 ---Super Realm Content---
-Treasures: 
+Treasures: Bottled Light, Bone Necklace (+misc advantage in editor) 
+Super Realm: visitors/travelers etc. (Shaman, Priest etc.)
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Nomads, Tasks, Travelers: 4.8 (p.41)
 Super Realm: Quests + Events
@@ -72,7 +73,7 @@ Would be nice to make weapon abilities too:
 Version 1.1.8.4
 SUPER REALM:
 # New spell: Enchant Weapon
-# New treasures: Adventure Guide, Ancient Rune, Ancient Tome, Bag of Bones, Bard's Lute
+# New treasures: Adventure Guide, Ancient Rune, Ancient Tome, Bag of Bones, Bard's Lute, Caged Bird
 BUGS/ISSUES:
 # Fix crash when holding a visitor
 # Fix Wish for Peace not working in some rare cases

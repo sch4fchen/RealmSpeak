@@ -55622,7 +55622,7 @@
         <attribute gold_reward="50" />
         <attribute treasure="large" />
         <attribute weight="T" />
-        <attribute text="Use LOST KEYS or Contorting Key to open" />
+        <attribute text="Use Lost Keys or Contorting Key to open" />
         <attribute treasure_within_treasure="1" />
         <attribute print="" />
         <attribute no_loot="" />
@@ -59567,10 +59567,10 @@
         <attribute super_realm="" />
         <attribute super_realm_treasure="" />
         <attribute text="-1 on Reading Runes Table rolls." />
+        <attribute notoriety="7" />
         <attributeList keyName="diemod">
           <attributeVal N0="-1:readrunes:all" />
         </attributeList>
-        <attribute notoriety="7" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2243" name="Bag of Bones">
@@ -59585,10 +59585,10 @@
         <attribute super_realm="" />
         <attribute super_realm_treasure="" />
         <attribute text="-1 on Magic Sight Table" />
+        <attribute native="Enchanters" />
         <attributeList keyName="diemod">
           <attributeVal N0="-1:magicsight:all" />
         </attributeList>
-        <attribute native="Enchanters" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2244" name="Bard's Lute">
@@ -59606,6 +59606,54 @@
         <attribute native="Guard" />
         <attribute weight="L" />
         <attribute bards_lute="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2245" name="Bottled Light">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="8" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Pacify all monsters in the clearing." />
+        <attribute discard="priest" />
+        <attribute potion="" />
+        <attribute pacify_monsters="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2246" name="Bone Necklace">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="7" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Pacify Skeletons and may hire them on Friendly Column." />
+        <attribute fame="-15" />
+        <attribute notoriety="20" />
+        <attribute great="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2247" name="Caged Bird">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="26" />
+        <attribute notoriety="2" />
+        <attribute fame="1" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Extra Alert" />
+        <attribute weight="M" />
+        <attributeList keyName="extra_actions">
+          <attributeVal N0="A" />
+        </attributeList>
       </AttributeBlock>
     </GameObject>
   </objects>
