@@ -59647,7 +59647,7 @@
     </GameObject>
     <GameObject id="2246" name="Pacify Skeletons">
       <AttributeBlock blockName="this">
-        <attribute duration="day" />
+        <attribute duration="permanent" />
         <attribute target="uncontrolled monster" />
         <attribute targeted_monsters="sekeleton" />
         <attribute text="Pacify Skeletons" />
@@ -59659,6 +59659,7 @@
         <attribute no_cancel="" />
         <attribute benevolent="" />
         <attribute super_realm="" />
+        <attribute no_expire="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2247" name="Caged Bird">
