@@ -628,7 +628,7 @@ public class DenizenCombatSheet extends CombatSheet {
 				}
 				CombatWrapper deployTargetCw = new CombatWrapper(deployTarget.getGameObject());
 				if (deployTargetCw.isPacified()) {
-					deployTargetCw.setPacify(false);
+					deployTargetCw.removePacified();
 				}
 				
 				// Refresh combat frame

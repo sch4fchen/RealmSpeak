@@ -198,9 +198,17 @@ public class CombatWrapper extends GameObjectWrapper {
 	}
 	public void pacify() {
 		setBoolean(PACIFIED, true);
+		RealmComponent rc = RealmComponent.getRealmComponent(this.getGameObject());
+		if (rc.getTarget()!=null) {
+			(new CombatWrapper(rc.getTarget().getGameObject())).removeAttacker(this.getGameObject());
+		}
+		if (rc.get2ndTarget()!=null) {
+			(new CombatWrapper(rc.get2ndTarget().getGameObject())).removeAttacker(this.getGameObject());
+		}
+		rc.clearTargets();
 	}
-	public void setPacify(boolean val) {
-		setBoolean(PACIFIED, val);
+	public void removePacified() {
+		setBoolean(PACIFIED, false);
 	}
 	public boolean isPacified() {
 		return getBoolean(PACIFIED);
@@ -691,7 +699,7 @@ public class CombatWrapper extends GameObjectWrapper {
 					"No longer affected by PEACE, because of attack by "+attacker.getName());
 		}
 		if (isPacified()) {
-			setPacify(false);
+			removePacified();
 		}
 		ArrayList<String> ids = getList(ATTACKER_IDS);
 		if (ids==null || !ids.contains(attacker.getStringId())) {
@@ -800,7 +808,6 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,SPELL_CANCELED);
 			go.removeAttribute(COMBAT_BLOCK,ATTACKED_AFTER_CASTING);
 			go.removeAttribute(COMBAT_BLOCK,FREEZED);
-			go.removeAttribute(COMBAT_BLOCK,PACIFIED);
 			go.removeAttribute(COMBAT_BLOCK,Constants.HOLY_SHIELD);
 			
 			ArrayList<String> list = go.getAttributeList(COMBAT_BLOCK,RANDOMIZE_PREFICES);

@@ -534,7 +534,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			}
 			
 			if (combat.isPacified()) {
-				combat.setPacify(false);
+				combat.removePacified();
 			}
 			
 			// Make sure we aren't ignoring battling...

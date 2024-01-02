@@ -1991,7 +1991,7 @@ public class CombatFrame extends JFrame {
 			}
 		}
 		if (denizenCw.isPacified()) {
-			denizenCw.setPacify(false);
+			denizenCw.removePacified();
 		}
 		return true;
 	}
@@ -2231,7 +2231,7 @@ public class CombatFrame extends JFrame {
 		}
 		CombatWrapper theTargetCw = new CombatWrapper(theTarget.getGameObject());
 		if (theTargetCw.isPacified()) {
-			theTargetCw.setPacify(false);
+			theTargetCw.removePacified();
 		}
 		if (theTarget.ownedBy(activeParticipant)) {
 			BattleUtility.processTreachery(activeCharacter,theTarget);
