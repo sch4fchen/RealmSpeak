@@ -6,6 +6,7 @@ import com.robin.general.swing.DieRoller;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.utility.DieRollBuilder;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.CombatWrapper;
 
 public class BattleGroup implements Comparable {
 
@@ -129,7 +130,7 @@ public class BattleGroup implements Comparable {
 			}
 		}
 		
-		if (attacker.isPacifiedBy(character)) {
+		if (attacker.isPacifiedBy(character) || (new CombatWrapper(attacker.getGameObject())).isPacified()) {
 			return false;
 		}
 		

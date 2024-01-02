@@ -1947,6 +1947,7 @@ public class CombatFrame extends JFrame {
 			JOptionPane.showMessageDialog(this,message,"Melted into Mist",JOptionPane.WARNING_MESSAGE,denizen.getIcon());
 			return false;
 		}
+		CombatWrapper denizenCw = new CombatWrapper(denizen.getGameObject());
 		if (!lurer.isImmuneTo(denizen)) {
 			CombatFrame.broadcastMessage(lurer.getGameObject().getNameWithNumber(),"Lures the "+denizen.getGameObject().getNameWithNumber());
 			
@@ -1962,8 +1963,7 @@ public class CombatFrame extends JFrame {
 			}
 			
 			denizen.setTarget(lurer);
-			CombatWrapper combat = new CombatWrapper(denizen.getGameObject());
-			combat.setCombatBox(box);
+			denizenCw.setCombatBox(box);
 			denizenPanel.removeGameObject(denizen.getGameObject());
 			denizenPanel.repaint();
 			if (lurer.isHidden()) {
@@ -1989,6 +1989,9 @@ public class CombatFrame extends JFrame {
 				spell.expireSpell();
 				JOptionPane.showMessageDialog(this,spell.getName()+" was broken!");
 			}
+		}
+		if (denizenCw.isPacified()) {
+			denizenCw.setPacify(false);
 		}
 		return true;
 	}
@@ -2225,6 +2228,10 @@ public class CombatFrame extends JFrame {
 			broadcastMessage(spell.getName()+" was broken!");
 				JOptionPane.showMessageDialog(this,spell.getName()+" was broken!");
 			}
+		}
+		CombatWrapper theTargetCw = new CombatWrapper(theTarget.getGameObject());
+		if (theTargetCw.isPacified()) {
+			theTargetCw.setPacify(false);
 		}
 		if (theTarget.ownedBy(activeParticipant)) {
 			BattleUtility.processTreachery(activeCharacter,theTarget);

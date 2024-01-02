@@ -533,6 +533,10 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 				}
 			}
 			
+			if (combat.isPacified()) {
+				combat.setPacify(false);
+			}
+			
 			// Make sure we aren't ignoring battling...
 			if (!ignoreBattling) {
 				// non-battling unhired natives will begin battling the character immediately if attacked

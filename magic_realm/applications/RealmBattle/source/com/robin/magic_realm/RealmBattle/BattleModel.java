@@ -121,7 +121,7 @@ public class BattleModel {
 			for (RealmComponent denizen:denizenBattleGroup.getBattleParticipants()) {
 				CombatWrapper combat = new CombatWrapper(denizen.getGameObject());
 				
-				if (denizen.isMistLike() || combat.isPeaceful() || isPacifiedByAllCharacters(denizen)) continue;
+				if (denizen.isMistLike() || combat.isPeaceful() || isPacifiedByAllCharacters(denizen) || combat.isPacified()) continue;
 				
 				for (BattleGroup group:getAllBattleGroups(false)) {
 					if (!group.canBeAttackedBy(denizen)) continue;
@@ -244,7 +244,7 @@ public class BattleModel {
 		if (denizenBattleGroup != null) {
 			for (RealmComponent denizen:denizenBattleGroup.getBattleParticipants()) {
 				CombatWrapper combat = new CombatWrapper(denizen.getGameObject());
-				if (!denizen.isAssigned() && !combat.isPeaceful() && !denizen.isMistLike()) {
+				if (!denizen.isAssigned() && !combat.isPeaceful()  && !combat.isPacified() && !denizen.isMistLike()) {
 					ArrayList<BattleGroup> availableGroups = new ArrayList<>();
 					// Find one possibility for each BattleGroup
 					for (BattleGroup bg:characterBattleGroups) {

@@ -59509,7 +59509,7 @@
         <attribute serpent="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2239" name="Spirit Guide">
+    <GameObject id="2238" name="Spirit Guide">
       <AttributeBlock blockName="this">
         <attribute spell="VII" />
         <attribute duration="day" />
@@ -59523,7 +59523,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2240" name="Adventure Guide">
+    <GameObject id="2239" name="Adventure Guide">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="9" />
@@ -59538,7 +59538,7 @@
         <attribute adventure_guide="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2241" name="Ancient Rune">
+    <GameObject id="2240" name="Ancient Rune">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="19" />
@@ -59556,7 +59556,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2242" name="Ancient Tome">
+    <GameObject id="2241" name="Ancient Tome">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="18" />
@@ -59573,7 +59573,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2243" name="Bag of Bones">
+    <GameObject id="2242" name="Bag of Bones">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="17" />
@@ -59591,7 +59591,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2244" name="Bard's Lute">
+    <GameObject id="2243" name="Bard's Lute">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="16" />
@@ -59608,7 +59608,7 @@
         <attribute bards_lute="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2245" name="Bottled Light">
+    <GameObject id="2244" name="Bottled Light">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="8" />
@@ -59621,9 +59621,10 @@
         <attribute discard="priest" />
         <attribute potion="" />
         <attribute pacify_monsters="" />
+        <attribute combat_only="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2246" name="Bone Necklace">
+    <GameObject id="2245" name="Bone Necklace">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="7" />
@@ -59636,6 +59637,28 @@
         <attribute fame="-15" />
         <attribute notoriety="20" />
         <attribute great="" />
+        <attribute pacify_sekeletons="" />
+        <attribute magic_color="black" />
+        <attribute target="uncontrolled skeletons" />
+        <attribute targeted_monsters="skeletons" />
+        <attribute magic="*" />
+      </AttributeBlock>
+      <contains id="2246" />
+    </GameObject>
+    <GameObject id="2246" name="Pacify Skeletons">
+      <AttributeBlock blockName="this">
+        <attribute duration="day" />
+        <attribute target="uncontrolled monster" />
+        <attribute targeted_monsters="sekeleton" />
+        <attribute text="Pacify Skeletons" />
+        <attribute magic_color="black" />
+        <attribute control="" />
+        <attribute host_okay="" />
+        <attribute spell="*" />
+        <attribute awakened="" />
+        <attribute no_cancel="" />
+        <attribute benevolent="" />
+        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2247" name="Caged Bird">

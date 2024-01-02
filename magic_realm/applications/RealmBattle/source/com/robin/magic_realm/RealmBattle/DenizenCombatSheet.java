@@ -626,6 +626,10 @@ public class DenizenCombatSheet extends CombatSheet {
 					spell.expireSpell();
 					JOptionPane.showMessageDialog(this,spell.getName()+" was broken!");
 				}
+				CombatWrapper deployTargetCw = new CombatWrapper(deployTarget.getGameObject());
+				if (deployTargetCw.isPacified()) {
+					deployTargetCw.setPacify(false);
+				}
 				
 				// Refresh combat frame
 				combatFrame.refreshParticipants();

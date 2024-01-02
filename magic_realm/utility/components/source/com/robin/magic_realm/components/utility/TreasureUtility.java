@@ -599,8 +599,20 @@ public class TreasureUtility {
 			character.addHireling(companion);
 		}
 		
+		if (thing.hasThisAttribute(Constants.PACIFY_MONSTERS)) {
+			TileLocation loc = character.getCurrentLocation();
+			if (loc != null) {
+				for (RealmComponent rc : loc.clearing.getClearingComponents(false)) {
+					if (rc.isMonster()) {
+						CombatWrapper cw = new CombatWrapper(rc.getGameObject());
+						cw.pacify();						
+					}
+				}
+			}
+		}
+		
+		WeaponChitComponent weapon = character.getActivePrimaryWeapon();
 		if (thing.hasThisAttribute(Constants.ALERTED_WEAPON)) {
-			WeaponChitComponent weapon = character.getActivePrimaryWeapon();
 			if (weapon!=null) {
 				if (!weapon.isAlerted()) {
 					weapon.setAlerted(true);
@@ -609,7 +621,6 @@ public class TreasureUtility {
 		}
 		
 		GameObject weaponObject = null;
-		WeaponChitComponent weapon = character.getActivePrimaryWeapon();
 		if (weapon!=null) {
 			weaponObject = weapon.getGameObject();
 		}

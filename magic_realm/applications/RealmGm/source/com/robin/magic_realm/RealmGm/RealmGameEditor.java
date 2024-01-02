@@ -929,7 +929,7 @@ public class RealmGameEditor extends JInternalFrame {
 		if (!rc.isDenizen()) return false;
 		if (!battleLocation.equals(rc.getCurrentLocation())) return false;
 		CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-		if (combat.isPeaceful()) return false;
+		if (combat.isPeaceful() || combat.isPacified()) return false;
 		if (rc.isMonster()) {
 			// pacified or peaceful
 			MonsterChitComponent monster = (MonsterChitComponent)rc;

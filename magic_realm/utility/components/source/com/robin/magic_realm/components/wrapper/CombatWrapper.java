@@ -78,6 +78,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String SPELL_CANCELED = "SPELL_CANCELED";
 	private static final String ATTACKED_AFTER_CASTING = "ATTACKED_AFTER_CASTING";
 	private static final String FREEZED = "FREEZED";
+	private static final String PACIFIED = "PACIFIED";
 	private static final String HORSE_CANNOT_MANEUVER = "HORSE_CANNOT_MANEUVER";
 	
 	private static final String HEALING = "HEALING";
@@ -194,6 +195,15 @@ public class CombatWrapper extends GameObjectWrapper {
 	}
 	public boolean isFreezed() {
 		return getBoolean(FREEZED);
+	}
+	public void pacify() {
+		setBoolean(PACIFIED, true);
+	}
+	public void setPacify(boolean val) {
+		setBoolean(PACIFIED, val);
+	}
+	public boolean isPacified() {
+		return getBoolean(PACIFIED);
 	}
 	public void setSkipCombat(boolean val) {
 		setBoolean(SKIP_COMBAT,val);
@@ -680,6 +690,9 @@ public class CombatWrapper extends GameObjectWrapper {
 					getGameObject().getName(),
 					"No longer affected by PEACE, because of attack by "+attacker.getName());
 		}
+		if (isPacified()) {
+			setPacify(false);
+		}
 		ArrayList<String> ids = getList(ATTACKER_IDS);
 		if (ids==null || !ids.contains(attacker.getStringId())) {
 			addListItem(ATTACKER_IDS,attacker.getStringId());
@@ -787,6 +800,7 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,SPELL_CANCELED);
 			go.removeAttribute(COMBAT_BLOCK,ATTACKED_AFTER_CASTING);
 			go.removeAttribute(COMBAT_BLOCK,FREEZED);
+			go.removeAttribute(COMBAT_BLOCK,PACIFIED);
 			go.removeAttribute(COMBAT_BLOCK,Constants.HOLY_SHIELD);
 			
 			ArrayList<String> list = go.getAttributeList(COMBAT_BLOCK,RANDOMIZE_PREFICES);
