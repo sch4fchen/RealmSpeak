@@ -97,6 +97,9 @@ public abstract class SpellTargeting {
 		else if ("bats".equals(targetType)) {
 			targeting = new SpellTargetingBats(combatFrame,spell);
 		}
+		else if ("skeletons".equals(targetType)) {
+			targeting = new SpellTargetingSkeletons(combatFrame,spell);
+		}
 		else if ("wolves".equals(targetType)) {
 			targeting = new SpellTargetingWolves(combatFrame,spell);
 		}

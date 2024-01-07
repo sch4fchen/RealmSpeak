@@ -1,7 +1,7 @@
 Sword of Terror (QuestReqInventoryMissing)
 ::ROADMAP::
 ---Super Realm Content---
-Treasures: Bone Necklace, ...
+Treasures: Bone Necklace: The owner may do the HIRE activity with the pacified skeletons using their notoriety value as their gold value, rolling on the Friendly Table (group hire for each skeleton type). He cannot buy drinks for the skeletons.
 Super Realm: visitors/travelers etc. (Shaman, Priest etc.)
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Nomads, Tasks, Travelers: 4.8 (p.41)
