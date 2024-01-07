@@ -1711,7 +1711,11 @@ public class ActionRow {
 					for (RealmComponent rc : list) {
 						if (rc.getOwnerId()==null) newhire++; else rehire++;
 						chooser.addRealmComponentToOption(option,rc);
-						basePrice += rc.getGameObject().getThisInt("base_price");
+						if (rc.isGroupPacifiedBy(character)) {
+							basePrice += rc.getGameObject().getThisInt("notoriety");
+						} else {
+							basePrice += rc.getGameObject().getThisInt("base_price");
+						}
 					}
 					String prefix = "Hire ";
 					if (rehire>0) {

@@ -178,9 +178,14 @@ public abstract class Meeting extends Trade {
 	public void hiringNatives(CharacterWrapper character,int mult) {
 		int basePrice = 0;
 		RealmComponent last = null;
-		boolean hireWithChit = false;
+		boolean hireWithChit = false;		
 		for (RealmComponent hire : hireGroup) {
-			basePrice += hire.getGameObject().getThisInt("base_price");
+			if (hire.isGroupPacifiedBy(character)) {
+				basePrice += hire.getGameObject().getThisInt("notoriety");
+			}
+			else {
+				basePrice += hire.getGameObject().getThisInt("base_price");
+			}
 			if (hire.getGameObject().hasThisAttribute(Constants.HIRE_WITH_CHIT)) {
 				hireWithChit = true;
 			}
@@ -232,7 +237,6 @@ public abstract class Meeting extends Trade {
 			return;
 		}
 		
-		//if (basePrice>0) { // Was this necessary?
 		int askingPrice = basePrice * mult;
 		
 		String groupName = tradeInfo.getThisAttribute("native");

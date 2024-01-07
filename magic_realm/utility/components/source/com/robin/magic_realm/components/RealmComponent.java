@@ -503,7 +503,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	}
 	
 	public boolean isGroupPacifiedBy(CharacterWrapper character) {
-		boolean monsterGroupPacified = false;
+		boolean groupPacified = false;
 		if (!this.hasMagicProtection()) {
 			ArrayList<SpellWrapper> spells = character.getAliveSpells();
 			ArrayList<String> pacifiedMonsterGroups = new ArrayList<>();
@@ -512,15 +512,15 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 					pacifiedMonsterGroups.addAll(spell.getGameObject().getThisAttributeList(Constants.PACIFY_GROUP));
 				}
 			}
-			String name = this.getGameObject().getName().toLowerCase();
 			for (String group : pacifiedMonsterGroups) {
-				if (name.contains(group.trim()) || this.getGameObject().hasThisAttribute(group)) {
-					monsterGroupPacified = true;
+				String groupName = this.getGameObject().getName().toLowerCase();
+				if (groupName.contains(group.trim()) || this.getGameObject().hasThisAttribute(group)) {
+					groupPacified = true;
 					break;
 				}
 			}
 		}
-		return monsterGroupPacified;
+		return groupPacified;
 	}
 	
 	public SpellWrapper getPacificationSpell(CharacterWrapper character) {

@@ -66,12 +66,18 @@ public abstract class Trade extends RealmTable {
 			info.bumpGroupCount();
 		}
 		
-		info.setRelationship(RealmUtility.getRelationshipBetween(character,tradeInfo));
-		
-		info.setNoDrinksReason(handleBuyDrinks(frame,info,currentLocation,character,ignoreBuyDrinksLimit));
+		if (tradeInfo.isGroupPacifiedBy(character)) {
+			info.setRelationship(RelationshipType.FRIENDLY);
+			info.setNoDrinksReason("You cannot buy drinks for the "+info.getGroupName()+"s.");
+		}
+		else {
+			info.setRelationship(RealmUtility.getRelationshipBetween(character,tradeInfo));
+			info.setNoDrinksReason(handleBuyDrinks(frame,info,currentLocation,character,ignoreBuyDrinksLimit));
+		}
 		if (info.getNoDrinksReason()!=null) {
 			RealmLogging.logMessage(character.getGameObject().getName(),info.getNoDrinksReason());
 		}
+
 		return info;
 	}
 	private static String handleBuyDrinks(JFrame frame,TradeInfo info,TileLocation currentLocation,CharacterWrapper character,int ignoreBuyDrinksLimit) {
