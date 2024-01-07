@@ -36626,7 +36626,6 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
-        <attribute no_change_tactics="" />
         <attribute icon_size="1" />
         <attribute colossus="" />
         <attribute kills_horse="" />
@@ -36827,7 +36826,6 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
-        <attribute no_change_tactics="" />
         <attribute icon_size="1" />
         <attribute titan="" />
         <attribute missile="" />
@@ -59647,9 +59645,9 @@
     </GameObject>
     <GameObject id="2246" name="Pacify Skeletons">
       <AttributeBlock blockName="this">
-        <attribute duration="permanent" />
+        <attribute duration="day" />
         <attribute target="uncontrolled monster" />
-        <attribute targeted_monsters="sekeleton" />
+        <attribute targeted_monsters="skeleton" />
         <attribute text="Pacify Skeletons" />
         <attribute magic_color="black" />
         <attribute control="" />
@@ -59659,7 +59657,6 @@
         <attribute no_cancel="" />
         <attribute benevolent="" />
         <attribute super_realm="" />
-        <attribute no_expire="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2247" name="Caged Bird">

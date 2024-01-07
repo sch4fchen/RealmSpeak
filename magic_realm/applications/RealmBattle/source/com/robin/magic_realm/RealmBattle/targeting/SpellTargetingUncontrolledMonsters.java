@@ -23,7 +23,7 @@ public class SpellTargetingUncontrolledMonsters extends SpellTargetingSingle {
 			if (rc.isMonster() && !rc.isPlayerControlledLeader() && !rc.hasMagicProtection() && !rc.hasMagicColorImmunity(spell)) {
 				String name = rc.getGameObject().getName().toLowerCase();
 				for (String targetName : targetNames) {
-					if (name.contains(targetName.trim())) {
+					if (name.contains(targetName.trim()) || rc.getGameObject().hasThisAttribute(targetName)) {
 						gameObjects.add(rc.getGameObject());
 						continue;
 					}

@@ -6,9 +6,8 @@ Super Realm: visitors/travelers etc. (Shaman, Priest etc.)
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Nomads, Tasks, Travelers: 4.8 (p.41)
 Super Realm: Quests + Events
-Super Realm: Adapt Commerce optional rules for new natives
-Super Realm: Characters, including potraits with credits, different chit icon
 ---Super Realms Rules---
+Super Realm: Adapt Commerce optional rules for new natives
 SUPER REALM: remaining RULES and LOGIC (rule changes compared to Magic Realm)
 Super Realm: Seasons + Weather 10.12 (p.117)
 ---Detail Rules for Super Realm Spells---
@@ -29,6 +28,7 @@ Ask Demon: 4 options, instead of just asking a question
 Absorb Essence: any denizens and Attention chits assigned to it become assigned to the spellcaster; absorbs steed when absorbing a monster
 	The spellcaster cannot be affected by multiple Absorb Essence spells. Any Absorb Essence spell he casts while he is already bewitched by Absorb Essence is cancelled.
 ---Super Realms Rules - Optional Rules---
+Super Realm: Public quests on setup chart (+flag on quests if it can go on setup chart) (BGG variant: 2 quest cards per native)
 Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
 3rdEdition / RealmSpeak: Optional Character Rules (A.6, p. 186): Captain, Druid, Magician, WIZARD ignores SPX, Woods Girl, Elf
 Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.121)
@@ -36,7 +36,7 @@ Super Realm: Optional Rules: Initial quest card draw size (BGG variant: 3 quests
 Super Realm: Optional Rules: No discarding or drawing new quest cards (but perhaps exchanging?)
 Super Realm: Optional Rules: No duplicate spell recording at start of the game
 Super Realm: Optional Rules: Starting location always the Inn
-Super Realm: Public quests on setup chart (+flag on quests if it can go on setup chart) (BGG variant: 2 quest cards per native)
+Super Realm: Characters, including potraits with credits, different chit icon
 ---Additional features---
 Super Realm: icons for site chits, sound and warning chits, characters
 ---Optional Rules---
@@ -84,7 +84,7 @@ NEW FEATURES:
 # Legendary Realm tile style for Expansion 1
 SUPER REALM:
 # New spells: Alter Object, Alter Size, Dazzle, Meditate
-# Spell from Expansion 1 (compensating Free Spell and Luck): Staff to Snake, Spirit Guide
+# Spells from Expansion 1 (compensating Free Spell and Luck): Staff to Snake, Spirit Guide
 # Add tables for Super Realm to the menu
 EXPANSION 1:
 # Change magic color of Decrepid Swamp and Putrid Swamp to Purple
