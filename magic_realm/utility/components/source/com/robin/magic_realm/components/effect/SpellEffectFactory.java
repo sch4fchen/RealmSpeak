@@ -160,7 +160,7 @@ public class SpellEffectFactory {
 			case "migration": return new ISpellEffect[]{new MigrationEffect()};
 			case "mountain surge": return new ISpellEffect[]{new ApplyClearingEffect(Constants.MOUNTAIN_SURGE)};
 			case "negative aura": return new ISpellEffect[]{new ApplyNamedEffect(Constants.NEGATIVE_AURA)};
-			case "pacify skeletons": return new ISpellEffect[]{new PacifyEffect(0)};
+			case "pacify skeletons": return new ISpellEffect[]{new ApplyNamedEffectWithValues(Constants.PACIFY_GROUP),new ApplyNamedEffectWithValues(Constants.PACIFY_MONSTER),new ApplyNamedEffectWithValue(Constants.PACIFY_TYPE)};
 			case "reanimate": return new ISpellEffect[]{new ReanimateEffect()};
 			case "reinvigorate": return new ISpellEffect[]{new ExtraActionEffect("R")};
 			case "reserve": return new ISpellEffect[]{new PhaseChitEffect()};

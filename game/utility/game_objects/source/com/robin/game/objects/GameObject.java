@@ -1196,7 +1196,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 	/**
 	 * Add a new attribute list
 	 */
-	public void setAttributeList(String blockName, String key, ArrayList val) {
+	public void setAttributeList(String blockName, String key, ArrayList<String> val) {
 		if (parent != null && parent.isTracksChanges()) {
 			GameAttributeListChange change = new GameAttributeListChange(this);
 			change.setAttributeList(blockName, key, getAttributeList(blockName, key), val);
@@ -1361,7 +1361,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		setAttributeBoolean(THIS, key, val);
 	}
 
-	public void setThisAttributeList(String key, ArrayList val) {
+	public void setThisAttributeList(String key, ArrayList<String> val) {
 		setAttributeList(THIS, key, val);
 	}
 

@@ -1010,11 +1010,13 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 				expireSpell();
 			}
 			
-			getCaster().addCastedSpell(getGameObject());
-			QuestRequirementParams reqParams = new QuestRequirementParams();
-			reqParams.actionType = CharacterActionType.CastSpell;
-			reqParams.objectList.add(getGameObject());
-			getCaster().testQuestRequirements(parent, reqParams);
+			if (getCaster()!=null) { //null for if cast by treasure
+				getCaster().addCastedSpell(getGameObject());
+				QuestRequirementParams reqParams = new QuestRequirementParams();
+				reqParams.actionType = CharacterActionType.CastSpell;
+				reqParams.objectList.add(getGameObject());
+				getCaster().testQuestRequirements(parent, reqParams);
+			}
 			
 			return logs;
 		}

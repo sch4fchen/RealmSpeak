@@ -416,6 +416,17 @@ the Appearance Chart, he instantly becomes unhired.
 			RealmLogging.logMessage(spellWrapper.getCaster().getGameObject().getName(),"Spell cancelled, because the targeted character already has this ability.");
 		}
 	}
+	
+	public static void ApplyNamedSpellEffectWithValuesToTarget(String effect, GameObject target, SpellWrapper spellWrapper, ArrayList<String> values) {
+		if(!target.hasThisAttribute(effect)){
+			target.setThisAttributeList(effect, values);
+		}
+		else {
+			for (String value : values) {
+				target.addThisAttributeListItem(effect, value);
+			}
+		}
+	}
 
 	public static boolean ApplyNamedSpellEffectToTargetAndReturn(String effect, GameObject target, SpellWrapper spellWrapper) {
 		if(!target.hasThisAttribute(effect)){

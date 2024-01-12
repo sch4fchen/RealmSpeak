@@ -59635,34 +59635,35 @@
         <attribute fame="-15" />
         <attribute notoriety="20" />
         <attribute great="" />
-        <attribute pacify_sekeletons="" />
         <attribute magic_color="black" />
-        <attribute target="uncontrolled skeletons" />
-        <attribute targeted_monsters="skeletons" />
+        <attribute target="spells item" />
         <attribute magic="*" />
+        <attribute cast_spell_on_init="" />
       </AttributeBlock>
       <contains id="2246" />
     </GameObject>
     <GameObject id="2246" name="Pacify Skeletons">
       <AttributeBlock blockName="this">
-        <attribute duration="day" />
-        <attribute target="skeletons" />
+        <attribute duration="permanent" />
+        <attribute target="spells item" />
         <attribute text="Pacify Skeletons" />
         <attribute magic_color="black" />
-        <attribute control="" />
         <attribute host_okay="" />
         <attribute spell="*" />
         <attribute awakened="" />
         <attribute no_cancel="" />
         <attribute benevolent="" />
         <attribute super_realm="" />
-        <attribute pacify="0" />
+        <attribute pacifytype="1" />
+        <attributeList keyName="pacifymonster">
+          <attributeVal N0="skeleton" />
+        </attributeList>
         <attributeList keyName="pacify_group">
           <attributeVal N0="skeleton" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2247" name="Caged Bird">
+    <GameObject id="2248" name="Caged Bird">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="26" />

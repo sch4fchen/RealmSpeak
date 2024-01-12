@@ -230,6 +230,12 @@ public abstract class SpellTargeting {
 		else if ("active weapon, denizen weapon".equals(targetType)) {
 			targeting = new SpellTargetingWeaponNativeMonster(combatFrame,spell);
 		}
+		else if ("spells item".equals(targetType)) {
+			targeting = new SpellTargetingSpellsItem(combatFrame,spell);
+		}
+		else if ("owner".equals(targetType)) {
+			targeting = new SpellTargetingOwner(combatFrame,spell);
+		}
 		
 		return targeting;
 	}

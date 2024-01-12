@@ -490,8 +490,19 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 				invWithPacify.add(character.getGameObject());
 			}
 			for (GameObject test:invWithPacify) {
+				boolean pacified = false;
 				ArrayList<String> monsters = test.getThisAttributeList("pacifymonster");
 				if (monsters.contains(getGameObject().getName())) {
+					pacified = true;
+				} else {
+					for (String type : monsters) {
+						if (getGameObject().hasThisAttribute(type.toLowerCase())) {
+							pacified = true;
+							break;
+						}
+					}
+				}
+				if (pacified) {
 					int testPacify = test.getThisInt("pacifyType");
 					if (pacifyType==null || testPacify>pacifyType) { // use the BEST one
 						pacifyType = testPacify;
@@ -502,25 +513,26 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		return pacifyType;
 	}
 	
-	public boolean isGroupPacifiedBy(CharacterWrapper character) {
-		boolean groupPacified = false;
+	public GameObject getItemIfGroupPacifiedBy(CharacterWrapper character) {
 		if (!this.hasMagicProtection()) {
-			ArrayList<SpellWrapper> spells = character.getAliveSpells();
 			ArrayList<String> pacifiedMonsterGroups = new ArrayList<>();
-			for (SpellWrapper spell:spells) {
-				if (spell.getGameObject().hasThisAttribute(Constants.PACIFY_GROUP)) {
-					pacifiedMonsterGroups.addAll(spell.getGameObject().getThisAttributeList(Constants.PACIFY_GROUP));
-				}
-			}
-			for (String group : pacifiedMonsterGroups) {
-				String groupName = this.getGameObject().getName().toLowerCase();
-				if (groupName.contains(group.trim()) || this.getGameObject().hasThisAttribute(group)) {
-					groupPacified = true;
-					break;
+			for (GameObject item : character.getActiveInventory()) {
+				pacifiedMonsterGroups.clear();
+				if (item.hasThisAttribute(Constants.PACIFY_GROUP)) {
+					pacifiedMonsterGroups.addAll(item.getThisAttributeList(Constants.PACIFY_GROUP));
+					for (String group : pacifiedMonsterGroups) {
+						String groupName = this.getGameObject().getName().toLowerCase();
+						if (groupName.contains(group.trim()) || this.getGameObject().hasThisAttribute(group)) {
+							return item;
+						}
+					}
 				}
 			}
 		}
-		return groupPacified;
+		return null;
+	}
+	public boolean isGroupPacifiedBy(CharacterWrapper character) {
+		return getItemIfGroupPacifiedBy(character)!=null;
 	}
 	
 	public SpellWrapper getPacificationSpell(CharacterWrapper character) {
