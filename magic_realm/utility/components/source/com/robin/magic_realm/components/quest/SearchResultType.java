@@ -23,6 +23,8 @@ public enum SearchResultType {
 	TreasureCards,
 	
 	CaveTeleport,
+	MountainTeleport,
+	RuinsTeleport,
 	PeerEnchantAnyClearing,
 	PowerOfThePit,
 	
@@ -136,6 +138,12 @@ public enum SearchResultType {
 				list.add(SearchResultType.Rest);
 				list.add(SearchResultType.RemoveCurse);
 				list.add(SearchResultType.Wound);
+				break;
+			case CircleOfStones:
+				list.add(SearchResultType.TreasureCards);
+				list.add(SearchResultType.MountainTeleport);
+				list.add(SearchResultType.RuinsTeleport);
+				list.add(SearchResultType.Curse);
 				break;
 			case ArcheologicalDig:
 				list.add(SearchResultType.DiscoverChits);

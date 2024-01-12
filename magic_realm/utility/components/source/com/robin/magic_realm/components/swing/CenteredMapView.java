@@ -683,6 +683,20 @@ public class CenteredMapView extends JComponent {
 		replot = true;
 		repaint();
 	}
+	public void markRuinsClearings(boolean setMark) {
+		for (TileComponent tile : mapGrid.values()) {
+			if (!tile.getTileType().matches("R")) continue;
+			ArrayList<ClearingDetail> c = tile.getClearings();
+			if (!c.isEmpty()) {
+				for (ClearingDetail clearing : c) {
+					clearing.setMarked(setMark);
+				}
+//				tile.doRepaint(); // KEEP FOR NOW
+			}
+		}
+		replot = true;
+		repaint();
+	}
 	public void markClearing(ClearingDetail clearing,boolean setMark) {
 		clearing.setMarked(setMark);
 		replot = true;

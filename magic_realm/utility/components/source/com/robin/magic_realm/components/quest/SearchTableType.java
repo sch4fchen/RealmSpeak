@@ -12,5 +12,6 @@ public enum SearchTableType {
 	EnchantedMeadow,
 	ArcheologicalDig,
 	FountainOfHealth,
+	CircleOfStones,
 	;
 }

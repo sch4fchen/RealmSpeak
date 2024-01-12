@@ -5374,6 +5374,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute bow="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="M" />
@@ -5400,6 +5401,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute bow="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -5426,6 +5428,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute bow="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -28309,6 +28312,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute bow="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -53952,6 +53956,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute bow="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="M" />
@@ -53976,6 +53981,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute bow="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -54000,6 +54006,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute bow="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -54846,6 +54853,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute bow="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="M" />
@@ -54870,6 +54878,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute bow="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="M" />
@@ -54894,6 +54903,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute bow="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -54918,6 +54928,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute bow="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -55519,6 +55530,7 @@
         <attribute fame="3" />
         <attribute magic="" />
         <attribute magic_color_bonus="purple" />
+        <attribute bow="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -55548,6 +55560,7 @@
         <attribute fame="0" />
         <attribute magic="" />
         <attribute magic_color_bonus="purple" />
+        <attribute bow="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="M" />
@@ -59707,6 +59720,34 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2250" name="Circle of Stones">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="circle_of_stones" />
+        <attribute treasure="large" />
+        <attribute text="Extra REST" />
+        <attribute cannot_move="" />
+        <attribute treasure_within_treasure="10" />
+        <attribute print="" />
+        <attribute discovery="" />
+        <attribute color_source="grey" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="twt" />
+        <attribute ts_color="lightblue" />
+        <attribute nosecret="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute extra_actions_clearing="R" />
+      </AttributeBlock>
+      <AttributeBlock blockName="table">
+        <attribute roll_1="bow" />
+        <attribute roll_2="treasure" />
+        <attribute roll_3="teleport_mountain" />
+        <attribute roll_4="teleport_ruins" />
+        <attribute roll_5="curse" />
+        <attribute roll_6="nothing" />
+      </AttributeBlock>
+      <contains id="2024" />
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
@@ -60046,6 +60087,7 @@
       <Add from="LARGE_TREASURES" targetObjectID="2028" count="2" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="2029" count="1" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="2031" count="1" transferType="Random" />
+      <Add from="LARGE_TREASURES" targetObjectID="2250" count="1" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="2033" count="1" transferType="Random" />
       <Move from="TWT" to="LARGE_TREASURES" count="6" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="1220" count="5" transferType="Random" />

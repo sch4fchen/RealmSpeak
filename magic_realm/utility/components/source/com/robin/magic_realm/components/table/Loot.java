@@ -216,6 +216,17 @@ public class Loot extends RealmTable {
 		}
 		return "Nothing";
 	}
+	
+	protected String takeBow(CharacterWrapper character) {
+		if (tileLocation!=null) return null;
+		for (GameObject thing : treasureLocation.getHold()) {
+			RealmComponent rc = RealmComponent.getRealmComponent(thing);
+			if (rc.getGameObject().hasThisAttribute("bow")) {
+				return characterFindsItem(character, thing);
+			}
+		}
+		return "Nothing";
+	}
 
 	protected String takeTreasure(CharacterWrapper character) {
 		if (tileLocation!=null) return null;

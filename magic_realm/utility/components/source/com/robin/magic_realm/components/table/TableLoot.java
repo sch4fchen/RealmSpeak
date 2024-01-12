@@ -30,6 +30,8 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
  * 		wish
  * 		heal
  *		teleport_cave
+ *		teleport_mountain
+ *		teleport_ruins
  *		peer_any
  *		power_pit
  * 		nothing
@@ -98,6 +100,11 @@ public class TableLoot extends Loot {
 			qp.searchType = SearchResultType.Counters;
 			qp.searchHadAnEffect = NOTHING.equals(ret);
 		}
+		else if ("bow".equals(result)) {
+			ret = takeBow(character);
+			qp.searchType = SearchResultType.Counters;
+			qp.searchHadAnEffect = NOTHING.equals(ret);
+		}
 		else if ("treasure".equals(result)) {
 			ret = takeTreasure(character);
 			qp.searchType = SearchResultType.TreasureCards;
@@ -134,9 +141,29 @@ public class TableLoot extends Loot {
 			 * Teleport to any cave on the map and continue turn from there as if nothing else had changed.  If
 			 * already in a cave, you can stay there.
 			 */
-			doTransport(character);
+			doTransport(character,"caves");
 			ret = "Teleport to ANY Cave";
 			qp.searchType = SearchResultType.CaveTeleport;
+			qp.searchHadAnEffect = true;
+		}
+		else if ("teleport_mountain".equals(result)) {
+			/*
+			 * Teleport to any mountain on the map and continue turn from there as if nothing else had changed.  If
+			 * already in a mountain clearing, you can stay there.
+			 */
+			doTransport(character,"mountain");
+			ret = "Teleport to ANY Mountain";
+			qp.searchType = SearchResultType.MountainTeleport;
+			qp.searchHadAnEffect = true;
+		}
+		else if ("teleport_ruins".equals(result)) {
+			/*
+			 * Teleport to any ruins on the map and continue turn from there as if nothing else had changed.  If
+			 * already in a ruins clearing, you can stay there.
+			 */
+			doTransport(character,"ruins");
+			ret = "Teleport to ANY Ruins";
+			qp.searchType = SearchResultType.RuinsTeleport;
 			qp.searchHadAnEffect = true;
 		}
 		else if ("peer_any".equals(result)) {
@@ -260,18 +287,26 @@ public class TableLoot extends Loot {
 			character.addNote(clearing.getParent(),"Clues",note);
 		}
 	}
-	private void doTransport(CharacterWrapper character) {
+	private void doTransport(CharacterWrapper character, String type) {
 		// Get the map to pop to the forefront, centered on the clearing, and the move possibilities marked
 		transportVictim = character;
 		TileLocation planned = character.getPlannedLocation();
-		CenteredMapView.getSingleton().setMarkClearingAlertText("Transport to which cave clearing?");
-		CenteredMapView.getSingleton().markClearings("caves",true);
+		CenteredMapView.getSingleton().setMarkClearingAlertText("Transport to which "+type+" clearing?");
+		if (type.matches("ruins")) {
+			CenteredMapView.getSingleton().markRuinsClearings(true);
+		} else {
+			CenteredMapView.getSingleton().markClearings(type,true);
+		}
 		TileLocationChooser chooser = new TileLocationChooser(getParentFrame(),CenteredMapView.getSingleton(),planned);
 		chooser.setVisible(true);
 		TileLocation tl = chooser.getSelectedLocation();
 		transportVictim.jumpMoveHistory(); // because the victim didn't walk there
 		transportVictim.moveToLocation(null,tl);
-		CenteredMapView.getSingleton().markClearings("caves",false);
+		if (type.matches("ruins")) {
+			CenteredMapView.getSingleton().markRuinsClearings(false);
+		} else {
+			CenteredMapView.getSingleton().markClearings(type,false);
+		}
 		CenteredMapView.getSingleton().centerOn(tl);
 		
 		// Followers should stay behind!
