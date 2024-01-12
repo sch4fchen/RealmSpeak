@@ -200,7 +200,8 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 					tt.draw(g,PRINT_MARGIN,pos,Alignment.Center);
 					
 					// Show awakened/not awakened
-					if ((magic!=null && magic.length()>0) || getGameObject().hasThisAttribute("book")) {
+					if ((magic!=null && magic.length()>0 && !getGameObject().hasThisAttribute("action"))
+							|| getGameObject().hasThisAttribute("book")) {
 						int total = SpellUtility.getSpellCount(getGameObject(),null,false);
 						int awakened = SpellUtility.getSpellCount(getGameObject(),Boolean.TRUE,false);
 						String awake = "Awakened "+awakened+"/"+total;

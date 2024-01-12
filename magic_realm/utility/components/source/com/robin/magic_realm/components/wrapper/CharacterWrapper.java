@@ -4596,10 +4596,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 					}
 				}
 			}
-			if (optionalArtifacts) {
-				// Check for artifacts and spell books
-				for (GameObject treasure:getActivatedTreasureObjects()) {
-					if (treasure.hasThisAttribute(SpellWrapper.INCANTATION_TIE)) continue; // tied up treasures cannot be used again
+			// Check for artifacts and spell books
+			for (GameObject treasure:getActivatedTreasureObjects()) {
+				if (optionalArtifacts || treasure.hasThisAttribute(Constants.RING)) {
+					if (treasure.hasThisAttribute(SpellWrapper.INCANTATION_TIE)) {
+						continue; // tied up treasures cannot be used again
+					}
 					ArrayList<String> availMagicTypes = TreasureCardComponent.readAvailableMagicTypes(dayKey,treasure);
 					if (availMagicTypes.contains(spellType)) {
 						MagicChit chit = (MagicChit)RealmComponent.getRealmComponent(treasure);

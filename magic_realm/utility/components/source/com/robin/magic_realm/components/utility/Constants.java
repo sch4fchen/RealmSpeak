@@ -313,6 +313,7 @@ public class Constants {
 	public static final String PACIFY_TYPE = "pacifytype";
 	public static final String UNBREAKABLE_SPELL = "unbreakable_spell";
 	public static final String CHITS_PRISM_COLOR = "chits_prism_color";
+	public static final String RING = "ring";
 	
 	// Native ThisAttributes
 	public static final String HIDDEN = "hidden";
