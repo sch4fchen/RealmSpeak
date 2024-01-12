@@ -59333,7 +59333,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="VI" />
         <attribute duration="combat" />
-        <attribute target="active weapon" />
+        <attribute target="active weapon, denizen weapon" />
         <attribute text="Weapon is transformed." />
         <attribute magic_color="purple" />
         <attribute host_okay="" />
@@ -59656,10 +59656,10 @@
         <attribute benevolent="" />
         <attribute super_realm="" />
         <attribute pacifytype="1" />
+        <attribute no_expire="" />
         <attributeList keyName="pacifymonster">
           <attributeVal N0="skeleton" />
         </attributeList>
-        <attribute no_expire="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2248" name="Caged Bird">
