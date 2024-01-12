@@ -539,7 +539,7 @@
         <attribute icon_type="spider" />
         <attribute setup_start="Cairns" />
         <attribute monster_die="5" />
-        <attribute base_price="8" />
+        <attribute base_price="6" />
         <attribute icon_folder="monsters" />
         <attribute needs_init="" />
         <attribute rw_expansion_1="" />
@@ -19980,7 +19980,7 @@
         <attribute icon_type="spider" />
         <attribute setup_start="Cairns" />
         <attribute monster_die="5" />
-        <attribute base_price="8" />
+        <attribute base_price="6" />
         <attribute icon_folder="monsters" />
         <attribute alt_monsters1_game="" />
         <attribute setup_start_tilereq="M" />
@@ -36754,7 +36754,7 @@
         <attribute icon_type="spiderQueen" />
         <attribute setup_start="Cairns" />
         <attribute monster_die="5" />
-        <attribute base_price="8" />
+        <attribute base_price="6" />
         <attribute icon_folder="wesnoth/units" />
         <attribute needs_init="" />
         <attribute denizen="" />
@@ -37433,7 +37433,7 @@
         <attribute icon_type="archer" />
         <attribute setup_start="Sword Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="1" />
@@ -37471,7 +37471,7 @@
         <attribute icon_type="deathblade" />
         <attribute setup_start="Sword Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="1" />
@@ -37509,7 +37509,7 @@
         <attribute icon_type="deathblade" />
         <attribute setup_start="Sword Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="1" />
@@ -37547,7 +37547,7 @@
         <attribute icon_type="deathblade" />
         <attribute setup_start="Sword Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="1" />
@@ -37585,7 +37585,7 @@
         <attribute icon_type="deathblade" />
         <attribute setup_start="Sword Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="1" />
@@ -37623,7 +37623,7 @@
         <attribute icon_type="deathblade" />
         <attribute setup_start="Sword Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="1" />
@@ -37661,7 +37661,7 @@
         <attribute icon_type="skeletonSpearman" />
         <attribute setup_start="Spear Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="2" />
@@ -37699,7 +37699,7 @@
         <attribute icon_type="skeletonSpearman" />
         <attribute setup_start="Spear Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="2" />
@@ -37737,7 +37737,7 @@
         <attribute icon_type="skeletonSpearman" />
         <attribute setup_start="Spear Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="2" />
@@ -37775,7 +37775,7 @@
         <attribute icon_type="skeletonSpearman" />
         <attribute setup_start="Spear Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="2" />
@@ -37813,7 +37813,7 @@
         <attribute icon_type="skeletonSpearman" />
         <attribute setup_start="Spear Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="2" />
@@ -37851,7 +37851,7 @@
         <attribute icon_type="skeletonSpearman" />
         <attribute setup_start="Spear Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute box_num="2" />
@@ -37889,7 +37889,7 @@
         <attribute icon_type="skeleton" />
         <attribute setup_start="Axe Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="3" />
@@ -37927,7 +37927,7 @@
         <attribute icon_type="skeleton" />
         <attribute setup_start="Axe Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="3" />
@@ -37965,7 +37965,7 @@
         <attribute icon_type="skeleton" />
         <attribute setup_start="Axe Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="3" />
@@ -38003,7 +38003,7 @@
         <attribute icon_type="skeleton" />
         <attribute setup_start="Axe Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="3" />
@@ -38041,7 +38041,7 @@
         <attribute icon_type="skeleton" />
         <attribute setup_start="Axe Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="3" />
@@ -38079,7 +38079,7 @@
         <attribute icon_type="skeleton" />
         <attribute setup_start="Axe Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="3" />
@@ -38117,7 +38117,7 @@
         <attribute icon_type="archer" />
         <attribute setup_start="Bow Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="4" />
@@ -38154,7 +38154,7 @@
         <attribute icon_type="archer" />
         <attribute setup_start="Bow Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="4" />
@@ -38191,7 +38191,7 @@
         <attribute icon_type="archer" />
         <attribute setup_start="Bow Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="4" />
@@ -38228,7 +38228,7 @@
         <attribute icon_type="archer" />
         <attribute setup_start="Bow Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="4" />
@@ -38265,7 +38265,7 @@
         <attribute icon_type="archer" />
         <attribute setup_start="Bow Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="4" />
@@ -38302,7 +38302,7 @@
         <attribute icon_type="archer" />
         <attribute setup_start="Bow Skeletons Box" />
         <attribute monster_die="4" />
-        <attribute base_price="1" />
+        <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units/undead-skeletal" />
         <attribute super_realm="" />
         <attribute box_num="4" />
@@ -38875,7 +38875,7 @@
         <attribute icon_type="sand-scuttler" />
         <attribute setup_start="H Scorpion Box" />
         <attribute monster_die="1" />
-        <attribute base_price="10" />
+        <attribute base_price="5" />
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute needs_init="" />
         <attribute denizen="" />
@@ -38909,7 +38909,7 @@
         <attribute icon_type="sand-scuttler" />
         <attribute setup_start="H Scorpions Box" />
         <attribute monster_die="1" />
-        <attribute base_price="10" />
+        <attribute base_price="5" />
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute needs_init="" />
         <attribute denizen="" />
@@ -38943,7 +38943,7 @@
         <attribute icon_type="sand-scuttler" />
         <attribute setup_start="H Scorpions Box" />
         <attribute monster_die="1" />
-        <attribute base_price="10" />
+        <attribute base_price="5" />
         <attribute icon_folder="wesnoth/units/monsters" />
         <attribute needs_init="" />
         <attribute denizen="" />
