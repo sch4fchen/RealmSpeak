@@ -59639,6 +59639,7 @@
         <attribute target="spells item" />
         <attribute magic="*" />
         <attribute cast_spell_on_init="" />
+        <attribute unbreakable_spell="" />
       </AttributeBlock>
       <contains id="2246" />
     </GameObject>
@@ -59658,6 +59659,7 @@
         <attributeList keyName="pacifymonster">
           <attributeVal N0="skeleton" />
         </attributeList>
+        <attribute no_expire="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2248" name="Caged Bird">
