@@ -402,6 +402,9 @@ public class Loot extends RealmTable {
 		if (thing.hasThisAttribute("curse")) {
 			setNewTable(new Curse(getParentFrame(), character.getGameObject()));
 		}
+		if (thing.hasThisAttribute("mesmerize")) {
+			setNewTable(new Mesmerize(getParentFrame(), character.getGameObject()));
+		}
 		if (thing.hasThisAttribute("add_to_pile") && treasureLocation != null) {
 			// Add everything to pile
 			ArrayList<GameObject> list = new ArrayList<GameObject>(thing.getHold());
@@ -427,6 +430,13 @@ public class Loot extends RealmTable {
 			int gold = thing.getThisInt("gold_reward");
 			character.addGold(gold);
 			JOptionPane.showMessageDialog(getParentFrame(),"Received "+gold+" gold.","Found Gold",JOptionPane.INFORMATION_MESSAGE);
+		}
+		if (thing.hasThisAttribute("enchant_tile")) {
+			TileLocation loc = character.getCurrentLocation();
+			if (loc!=null && loc.tile!=null) {
+				loc.tile.setDarkSideUp();
+				JOptionPane.showMessageDialog(getParentFrame(),"Current location was enchanted.","Tile enchanted",JOptionPane.INFORMATION_MESSAGE);
+			}
 		}
 		if (thing.hasThisAttribute(Constants.NO_LOOT)) {
 			// Gain all treasures immediately

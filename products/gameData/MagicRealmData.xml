@@ -59772,6 +59772,29 @@
         <attribute action="magic" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2252" name="Conjuror's Remains">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="conjuror" />
+        <attribute treasure="large" />
+        <attribute text="Get MESMERIZE, treasures" />
+        <attribute treasure_within_treasure="12" />
+        <attribute print="" />
+        <attribute no_loot="" />
+        <attribute remove_from_play="" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="twt" />
+        <attribute ts_color="lightblue" />
+        <attribute nosecret="" />
+        <attribute super_realm="" />
+        <attribute mesmerize="" />
+        <attribute super_realm_treasure="" />
+        <attribute needs_open="key" />
+        <attribute enchant_tile="" />
+      </AttributeBlock>
+      <contains id="2020" />
+      <contains id="2019" />
+      <contains id="2018" />
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
