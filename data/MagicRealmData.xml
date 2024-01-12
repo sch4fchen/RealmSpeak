@@ -59658,9 +59658,6 @@
         <attributeList keyName="pacifymonster">
           <attributeVal N0="skeleton" />
         </attributeList>
-        <attributeList keyName="pacify_group">
-          <attributeVal N0="skeleton" />
-        </attributeList>
       </AttributeBlock>
     </GameObject>
     <GameObject id="2248" name="Caged Bird">

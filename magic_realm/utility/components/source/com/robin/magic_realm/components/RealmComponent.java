@@ -513,28 +513,6 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		return pacifyType;
 	}
 	
-	public GameObject getItemIfGroupPacifiedBy(CharacterWrapper character) {
-		if (!this.hasMagicProtection()) {
-			ArrayList<String> pacifiedMonsterGroups = new ArrayList<>();
-			for (GameObject item : character.getActiveInventory()) {
-				pacifiedMonsterGroups.clear();
-				if (item.hasThisAttribute(Constants.PACIFY_GROUP)) {
-					pacifiedMonsterGroups.addAll(item.getThisAttributeList(Constants.PACIFY_GROUP));
-					for (String group : pacifiedMonsterGroups) {
-						String groupName = this.getGameObject().getName().toLowerCase();
-						if (groupName.contains(group.trim()) || this.getGameObject().hasThisAttribute(group)) {
-							return item;
-						}
-					}
-				}
-			}
-		}
-		return null;
-	}
-	public boolean isGroupPacifiedBy(CharacterWrapper character) {
-		return getItemIfGroupPacifiedBy(character)!=null;
-	}
-	
 	public SpellWrapper getPacificationSpell(CharacterWrapper character) {
 		ArrayList<String> list = getGameObject().getThisAttributeList("pacifyBlocks");
 		if (list!=null) {

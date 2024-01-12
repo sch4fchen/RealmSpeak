@@ -309,7 +309,6 @@ public class Constants {
 	public static final String ADVENTURE_GUIDE = "adventure_guide";
 	public static final String BARDS_LUTE = "bards_lute";
 	public static final String PACIFY_MONSTERS = "pacify_monsters";
-	public static final String PACIFY_GROUP = "pacify_group";
 	public static final String PACIFY_MONSTER = "pacifymonster";
 	public static final String PACIFY_TYPE = "pacifytype";
 	

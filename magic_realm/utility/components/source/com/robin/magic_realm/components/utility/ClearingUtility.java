@@ -496,7 +496,7 @@ public class ClearingUtility {
 			if (rc.isNative() && rc.getOwnerId()==null) {
 				hireables.add(rc);
 			}
-			else if (rc.isMonster() && (rc.isPacifiedBy(character) || rc.isGroupPacifiedBy(character))) {
+			else if (rc.isMonster() && rc.isPacifiedBy(character)) {
 				hireables.add(rc);
 			}
 			else if (rc.isTraveler() && rc.getOwnerId()==null && (rc.getGameObject().hasThisAttribute("base_price") || rc.getGameObject().hasThisAttribute(Constants.HIRE_WITH_CHIT))) {

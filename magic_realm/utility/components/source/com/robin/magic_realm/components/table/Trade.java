@@ -66,14 +66,9 @@ public abstract class Trade extends RealmTable {
 			info.bumpGroupCount();
 		}
 		
-		if (tradeInfo.isGroupPacifiedBy(character)) {
-			info.setRelationship(RelationshipType.FRIENDLY);
-			info.setNoDrinksReason("You cannot buy drinks for the "+info.getGroupName()+"s.");
-		}
-		else {
-			info.setRelationship(RealmUtility.getRelationshipBetween(character,tradeInfo));
-			info.setNoDrinksReason(handleBuyDrinks(frame,info,currentLocation,character,ignoreBuyDrinksLimit));
-		}
+		info.setRelationship(RealmUtility.getRelationshipBetween(character,tradeInfo));
+		info.setNoDrinksReason(handleBuyDrinks(frame,info,currentLocation,character,ignoreBuyDrinksLimit));
+
 		if (info.getNoDrinksReason()!=null) {
 			RealmLogging.logMessage(character.getGameObject().getName(),info.getNoDrinksReason());
 		}
@@ -82,6 +77,7 @@ public abstract class Trade extends RealmTable {
 	}
 	private static String handleBuyDrinks(JFrame frame,TradeInfo info,TileLocation currentLocation,CharacterWrapper character,int ignoreBuyDrinksLimit) {
 		if (info.getTrader().isVisitor() || info.getTrader().isTraveler() || info.getTrader().isGuild()) return "Buying drinks only affects native groups.";
+		if (info.getTrader().getGameObject().hasThisAttribute(Constants.UNDEAD)) return "You cannot buy drinks for the "+info.getGroupName()+"s.";
 		if (info.getRelationship()>=ignoreBuyDrinksLimit) return "The native group will be no more favorable with drinks.";
 			
 		TileLocation here = character.getCurrentLocation();

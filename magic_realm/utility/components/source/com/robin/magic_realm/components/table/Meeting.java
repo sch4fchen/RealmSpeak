@@ -180,12 +180,7 @@ public abstract class Meeting extends Trade {
 		RealmComponent last = null;
 		boolean hireWithChit = false;		
 		for (RealmComponent hire : hireGroup) {
-			if (hire.isGroupPacifiedBy(character)) {
-				basePrice += hire.getGameObject().getThisInt("notoriety");
-			}
-			else {
-				basePrice += hire.getGameObject().getThisInt("base_price");
-			}
+			basePrice += hire.getGameObject().getThisInt("base_price");
 			if (hire.getGameObject().hasThisAttribute(Constants.HIRE_WITH_CHIT)) {
 				hireWithChit = true;
 			}

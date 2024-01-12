@@ -965,7 +965,7 @@ public class RealmUtility {
 							if (!monster.isMistLike()) {
 								// pacified and small monsters don't block
 								if (!monster.isSmall() || !hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS)) {
-									if (!monster.isPacifiedBy(character) && !monster.isGroupPacifiedBy(character)) {
+									if (!monster.isPacifiedBy(character)) {
 										// don't block character if they have immunity to this monster
 										RealmComponent charRc = RealmComponent.getRealmComponent(character.getGameObject());
 										String magicImmunity = monster.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY);
