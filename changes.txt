@@ -1,7 +1,7 @@
 Sword of Terror (QuestReqInventoryMissing)
 ::ROADMAP::
 ---Super Realm Content---
-Treasures: Bone Necklace, ... test Enchant Weapon spell; remove PACIFY_GROUP, remove logic for casting spell on skeletons, test when Bone Necklace is active (needs black magic)
+Treasures: test Enchant Weapon spell
 Super Realm: visitors/travelers etc. (Shaman, Priest etc.)
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Nomads, Tasks, Travelers: 4.8 (p.41)

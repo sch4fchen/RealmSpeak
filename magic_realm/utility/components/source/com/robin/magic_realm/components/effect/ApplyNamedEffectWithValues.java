@@ -18,7 +18,7 @@ public class ApplyNamedEffectWithValues implements ISpellEffect {
 	public void unapply(SpellEffectContext context) {
 		if(context.Target.getGameObject().hasThisAttribute(_effectName)){
 			for (String value : context.Spell.getGameObject().getThisAttributeList(_effectName)) {
-				context.Spell.getGameObject().removeThisAttributeListItem(_effectName, value);
+				context.Target.getGameObject().removeThisAttributeListItem(_effectName, value);
 			}
 			if (context.Target.getGameObject().getThisAttributeList(_effectName).isEmpty()) {
 				context.Target.getGameObject().removeThisAttribute(_effectName);

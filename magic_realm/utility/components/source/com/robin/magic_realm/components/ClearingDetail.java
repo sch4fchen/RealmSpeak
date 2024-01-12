@@ -11,6 +11,7 @@ import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.GameWrapper;
+import com.robin.magic_realm.components.wrapper.SpellWrapper;
 import com.robin.magic_realm.map.Tile;
 
 public class ClearingDetail {
@@ -735,7 +736,7 @@ public class ClearingDetail {
 	}
 	
 	public void energizeItems() {
-		ArrayList<ColorMagic> colors = getClearingColorMagic();
+		ArrayList<ColorMagic> colors = getAllSourcesOfColor(true);
 		for (RealmComponent rc : getClearingComponents()) {
 			if (rc.isItem()) {
 				energizeItem(rc.getGameObject(),colors);
@@ -748,11 +749,36 @@ public class ClearingDetail {
 		}
 	}
 	private static void energizeItem(GameObject item, Collection<ColorMagic> colors) {
-		if (!item.hasThisAttribute(Constants.MAGIC_COLOR_BONUS)) return;
-		ColorMagic requiredColor = ColorMagic.makeColorMagic(item.getThisAttribute(Constants.MAGIC_COLOR_BONUS),true);
-		for (ColorMagic c : colors) {
-			if (c.sameColorAs(requiredColor)) item.setThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE);
-			break;
+		if (item.hasThisAttribute(Constants.MAGIC_COLOR_BONUS)) {
+			ColorMagic requiredColor = ColorMagic.makeColorMagic(item.getThisAttribute(Constants.MAGIC_COLOR_BONUS),true);
+			for (ColorMagic c : colors) {
+				if (c.sameColorAs(requiredColor)) item.setThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE);
+				break;
+			}
+		}
+		if (item.hasThisAttribute(Constants.UNBREAKABLE_SPELL)) {
+			boolean energized = false;
+			ColorMagic requiredColor = ColorMagic.makeColorMagic(item.getThisAttribute("magic_color"),true);
+			for (ColorMagic c : colors) {
+				if (c.sameColorAs(requiredColor)) {
+					energized = true;
+					break;
+				}
+			}
+
+			for (GameObject spell : item.getHold()) {
+				if (spell.hasThisAttribute("spell")) {
+					SpellWrapper spellWrapper = new SpellWrapper(spell);
+					if (energized) {
+						GameWrapper game = GameWrapper.findGame(item.getGameData());
+						spellWrapper.affectTargets(null,game,false,null);
+					}
+					if (!energized) {
+						spellWrapper.unaffectTargets();
+						spellWrapper.makeInert();
+					}
+				}
+			}
 		}
 	}
 	

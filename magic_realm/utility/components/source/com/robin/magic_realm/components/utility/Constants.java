@@ -311,6 +311,7 @@ public class Constants {
 	public static final String PACIFY_MONSTERS = "pacify_monsters";
 	public static final String PACIFY_MONSTER = "pacifymonster";
 	public static final String PACIFY_TYPE = "pacifytype";
+	public static final String UNBREAKABLE_SPELL = "unbreakable_spell";
 	
 	// Native ThisAttributes
 	public static final String HIDDEN = "hidden";
