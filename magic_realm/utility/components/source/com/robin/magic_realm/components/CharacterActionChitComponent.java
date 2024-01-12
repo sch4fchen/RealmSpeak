@@ -674,7 +674,18 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 	}
 	
 	public boolean compatibleWith(ColorMagic cm) {
-		return getMagicNumber()==cm.getColorNumber();
+		int magicNumber = getMagicNumber();
+		if (magicNumber==cm.getColorNumber()) return true;
+		if ((magicNumber==2||magicNumber==3||magicNumber==4) && cm.isPrismColor()) {
+			GameObject owner = getGameObject().getHeldBy();
+			if (owner!=null) { // Might be null in the character builder app
+				CharacterWrapper character = new CharacterWrapper(getGameObject().getHeldBy());
+				if (character.affectedByKey(Constants.CHITS_PRISM_COLOR)) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 	public int getMagicNumber() {

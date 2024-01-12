@@ -57018,20 +57018,6 @@
         <attribute super_realm_treasure="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2115" name="Withered Claw">
-      <AttributeBlock blockName="this">
-        <attribute treasure="small" />
-        <attribute text="Roll to get WISH and CURSE" />
-        <attribute base_price="3" />
-        <attribute discard="shaman" />
-        <attribute potion="" />
-        <attribute wish_and_curse="" />
-        <attribute facing="face_dn" />
-        <attribute item="" />
-        <attribute super_realm="" />
-        <attribute super_realm_treasure="" />
-      </AttributeBlock>
-    </GameObject>
     <GameObject id="2116" name="Scroll of Alchemy">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
@@ -59747,6 +59733,23 @@
         <attribute roll_6="nothing" />
       </AttributeBlock>
       <contains id="2024" />
+    </GameObject>
+    <GameObject id="2251" name="Color Prism">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="54" />
+        <attribute notoriety="15" />
+        <attribute fame="12" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Any chit enchanted to grey, gold, purple may be used as any one of those three colors." />
+        <attribute weight="H" />
+        <attribute native="Enchanters" />
+        <attribute chits_prism_color="" />
+      </AttributeBlock>
     </GameObject>
   </objects>
   <setups>

@@ -4630,6 +4630,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 						for (MagicChit colorChit:colorChits) {
 							if (colorChit.getColorMagic().sameColorAs(spellColor)) {
 								set.addColorChit(colorChit);
+							} else if (spellColor.isPrismColor() && colorChit.getColorMagic().isPrismColor()) {
+								if (this.affectedByKey(Constants.CHITS_PRISM_COLOR)) {
+									set.addColorChit(colorChit);
+								}
 							}
 						}
 					}
