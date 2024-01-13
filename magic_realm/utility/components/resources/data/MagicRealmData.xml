@@ -59843,6 +59843,36 @@
         <attribute change_recorded_action="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2256" name="Curdle of Bone">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="7" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Increase vulnerability one level" />
+        <attribute discard="priest" />
+        <attribute potion="" />
+        <attribute curdle_of_bone="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2257" name="Curdle of Bone">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="7" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Increase vulnerability one level" />
+        <attribute discard="priest" />
+        <attribute potion="" />
+        <attribute curdle_of_bone="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
