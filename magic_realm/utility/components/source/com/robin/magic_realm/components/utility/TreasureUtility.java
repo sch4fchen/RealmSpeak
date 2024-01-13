@@ -534,6 +534,15 @@ public class TreasureUtility {
 			wish.apply(character,roller);
 			curse.apply(character,roller);
 		}
+		if (thing.hasThisAttribute(Constants.WISH_AND_MESMERIZE)) {
+			// Roll wish and mesmerize (same die roll for both tables)
+			Wish wish = new Wish(parentFrame);
+			Mesmerize mesmerize = new Mesmerize(parentFrame, character.getGameObject());
+			DieRoller roller = DieRollBuilder.getDieRollBuilder(parentFrame,character).createRoller(wish);
+			roller.rollDice("Wish/Mesmerize");
+			wish.apply(character,roller);
+			mesmerize.apply(character,roller);
+		}
 		if (thing.hasThisAttribute(Constants.CANCEL_SPELL) || thing.hasThisAttribute(Constants.REMOVE_CURSE)) {
 			String title = thing.hasThisAttribute(Constants.CANCEL_SPELL) ? "Select spell or curse to break:" : "Select curse to remove:";
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(parentFrame,title,false);

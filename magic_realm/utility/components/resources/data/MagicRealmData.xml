@@ -59890,6 +59890,59 @@
         <attribute color_source="black" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2261" name="Decayed Fang">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="3" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Roll, use same result for WISH &amp; MESMERIZE" />
+        <attribute discard="shaman" />
+        <attribute potion="" />
+        <attribute wish_and_mesmerize="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2262" name="Demonic Ring">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="12" />
+        <attribute notoriety="15" />
+        <attribute fame="-15" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Can be used once per day to cast a V spell." />
+        <attribute great="" />
+        <attribute ring="" />
+        <attribute magic="V" />
+        <attribute speed="0" />
+        <attribute action="magic" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2263" name="Diamond Ring">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="10" />
+        <attribute notoriety="5" />
+        <attribute fame="5" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Can be used once per day to cast a VII spell." />
+        <attribute ring="" />
+        <attribute magic="VII" />
+        <attribute speed="0" />
+        <attribute action="magic" />
+        <attribute native="Soldiers" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
