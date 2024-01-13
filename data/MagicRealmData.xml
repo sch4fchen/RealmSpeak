@@ -59873,6 +59873,23 @@
         <attribute curdle_of_bone="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2259" name="Cursed Bell">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="No individual in the clearing may HIDE or remain hidden." />
+        <attribute notoriety="40" />
+        <attribute weight="M" />
+        <attribute facing="face_dn" />
+        <attribute no_hide="" />
+        <attribute base_price="8" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute fame="-20" />
+        <attribute great="" />
+        <attribute color_source="black" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
