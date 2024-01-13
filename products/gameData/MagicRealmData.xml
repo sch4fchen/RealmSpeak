@@ -59828,6 +59828,21 @@
         <attribute enchant_key="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2255" name="Crystal Shard">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute text="Once each Day, you may cancel your current activity." />
+        <attribute base_price="23" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute native="Soldiers" />
+        <attribute fame="5" />
+        <attribute notoriety="8" />
+        <attribute change_recorded_action="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
