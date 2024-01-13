@@ -56036,7 +56036,7 @@
     <GameObject id="2051" name="Lost Keys">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
-        <attribute text="Opens Chest, Crypt, Library, Tomb, Vault and Conjuror’s Remains," />
+        <attribute text="Opens Chest, Crypt, Abbey, Library, Tomb, Vault and Conjuror's Remains" />
         <attribute base_price="5" />
         <attribute key="" />
         <attribute facing="face_dn" />
@@ -59794,6 +59794,39 @@
       <contains id="2020" />
       <contains id="2019" />
       <contains id="2018" />
+    </GameObject>
+    <GameObject id="2253" name="Contorting Key">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="Opens Chest, Crypt, Abbey, Library, Tomb, Vault and Conjuror's Remains" />
+        <attribute base_price="5" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute magic_color="any" />
+        <attribute target="spells item" />
+        <attribute magic="*" />
+        <attribute cast_spell_on_init="" />
+        <attribute unbreakable_spell="" />
+      </AttributeBlock>
+      <contains id="2254" />
+    </GameObject>
+    <GameObject id="2254" name="Enchant Key">
+      <AttributeBlock blockName="this">
+        <attribute duration="permanent" />
+        <attribute target="spells item" />
+        <attribute text="Opens Chest, Crypt, Abbey, Library, Tomb, Vault and Conjuror's Remains" />
+        <attribute magic_color="any" />
+        <attribute host_okay="" />
+        <attribute spell="*" />
+        <attribute awakened="" />
+        <attribute no_cancel="" />
+        <attribute benevolent="" />
+        <attribute super_realm="" />
+        <attribute no_expire="" />
+        <attribute enchant_key="" />
+      </AttributeBlock>
     </GameObject>
   </objects>
   <setups>

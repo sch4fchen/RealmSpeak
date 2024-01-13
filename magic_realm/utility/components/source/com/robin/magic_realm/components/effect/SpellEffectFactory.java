@@ -148,6 +148,7 @@ public class SpellEffectFactory {
 			case "deal with orcs and goblins": return new ISpellEffect[]{new PacifyEffect(0)};
 			case "dark favor": return new ISpellEffect[]{new PhaseChitEffect()};
 			case "divine protection": return new ISpellEffect[]{new ApplyNamedEffect(Constants.STRENGTHENED_VULNERABILITY)};
+			case "enchant key": return new ISpellEffect[]{new ApplyNamedEffect(Constants.KEY)};
 			case "enchant weapon": return new ISpellEffect[]{new EnchantWeaponEffect()};
 			case "free the soul": return new ISpellEffect[]{new FreeTheSoulEffect()};
 			case "frozen water": return new ISpellEffect[]{new FrozenWaterEffect()};
