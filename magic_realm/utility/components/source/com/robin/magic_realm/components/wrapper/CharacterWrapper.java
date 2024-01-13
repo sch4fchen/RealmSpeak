@@ -663,6 +663,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (getGameObject().hasThisAttribute(Constants.STRENGTHENED_VULNERABILITY)) {
 			vul.modify(+1);
 		}
+		if (getGameObject().hasThisAttribute(Constants.CURDLE_OF_BONE)) {
+			vul.modify(+1);
+		}
 		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_VULNERABILITY)) {
 			vul.modify(-1);
 		}

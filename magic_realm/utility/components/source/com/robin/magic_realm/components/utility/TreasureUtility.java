@@ -594,6 +594,10 @@ public class TreasureUtility {
 			thing.setThisAttribute(Constants.MAGIC_PATH_AFFECTED_CHARACTER,character.getGameObject().getStringId());
 			character.getGameObject().setThisAttribute(Constants.MAGIC_PATH_EFFECT);
 		}
+		if (thing.hasThisAttribute(Constants.CURDLE_OF_BONE)) {
+			thing.setThisAttribute(Constants.CURDLE_OF_BONE_AFFECTED_CHARACTER,character.getGameObject().getStringId());
+			character.getGameObject().setThisAttribute(Constants.CURDLE_OF_BONE);
+		}
 		if (thing.hasThisAttribute(Constants.SUMMON_COMPANION)) {
 			GameObject companion = getCompanionFromItem(thing);
 			character.addHireling(companion);
@@ -1024,6 +1028,17 @@ public class TreasureUtility {
 			decrementKey(potion,Constants.IGNORE_ARMOR);
 			decrementKey(potion,Constants.HIT_TIE);
 			potion.removeThisAttribute(Constants.AFFECTED_WEAPON_ID); // just in case
+			
+			if (potion.hasThisAttribute(Constants.CURDLE_OF_BONE)) {
+				String id = potion.getThisAttribute(Constants.CURDLE_OF_BONE_AFFECTED_CHARACTER);
+				if (id!=null) {
+					GameObject charGo = potion.getGameData().getGameObject(Long.valueOf(id));
+					if (charGo != null) {
+						charGo.removeThisAttribute(Constants.CURDLE_OF_BONE);
+						potion.removeThisAttribute(Constants.CURDLE_OF_BONE_AFFECTED_CHARACTER);
+					}
+				}
+			}
 			
 			if (potion.hasThisAttribute(Constants.MAGIC_PATH)) {
 				String id = potion.getThisAttribute(Constants.MAGIC_PATH_AFFECTED_CHARACTER);

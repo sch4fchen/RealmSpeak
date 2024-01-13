@@ -1,7 +1,7 @@
 Sword of Terror (QuestReqInventoryMissing)
 ::ROADMAP::
 ---Super Realm Content---
-Treasures: 49: Curdle of Bone 2x, Cursed Bell, Decayed Fang, Demonic Ring, Diamond Ring, Disenchant Potion 2x, Elemental Ring, Elven Ring, Elven Scroll, Enchantment Potion, Ethereal Abbey, Expert Adventure Guide, Expert Travel Guide, Faerie Statue, Fairy Grove, Flash Bomb, Glider, Golden Lyre, Haunted Grave, Holy Ring, Holy Water 2x, Horse Armor, Hound, Links, Mage Diary, Mage Library, Map of Lost Fortress, Map of Lost Palace, Mist Crystal, Ointment of Stone 2x, Pagan Ring, Pentagram, Profane Idol, Realm Map, Repair Kit 2x, Ruby Ring, Sails, Scented Bait, Scope, Scribe Spectacles, Scroll of Alchemy, Scroll of Allure, Scroll of Lore, Scroll of Malice, Spirit Charm, Spurs, Talisman, Travelers Guide, White Feathered Wing
+Treasures: 48: Cursed Bell, Decayed Fang, Demonic Ring, Diamond Ring, Disenchant Potion 2x, Elemental Ring, Elven Ring, Elven Scroll, Enchantment Potion, Ethereal Abbey, Expert Adventure Guide, Expert Travel Guide, Faerie Statue, Fairy Grove, Flash Bomb, Glider, Golden Lyre, Haunted Grave, Holy Ring, Holy Water 2x, Horse Armor, Hound, Links, Mage Diary, Mage Library, Map of Lost Fortress, Map of Lost Palace, Mist Crystal, Ointment of Stone 2x, Pagan Ring, Pentagram, Profane Idol, Realm Map, Repair Kit 2x, Ruby Ring, Sails, Scented Bait, Scope, Scribe Spectacles, Scroll of Alchemy, Scroll of Allure, Scroll of Lore, Scroll of Malice, Spirit Charm, Spurs, Talisman, Travelers Guide, White Feathered Wing
 Super Realm: visitors/travelers etc. (Shaman, Priest etc.)
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Nomads, Tasks, Travelers: 4.8 (p.41)
@@ -72,7 +72,7 @@ Would be nice to make weapon abilities too:
 
 Version 1.1.8.5
 SUPER REALM:
-# New treasures: Circle of Stones, Color Prism, Conjure Ring, Conjuror's Remains, Contorting Keys, Crystal Shard
+# New treasures: Circle of Stones, Color Prism, Conjure Ring, Conjuror's Remains, Contorting Keys, Crystal Shard, Curdle of Bone
 
 Version 1.1.8.4
 SUPER REALM:
