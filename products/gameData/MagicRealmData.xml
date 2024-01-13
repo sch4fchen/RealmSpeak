@@ -57035,6 +57035,8 @@
         <attribute super_realm="" />
         <attribute super_realm_treasure="" />
         <attribute native="Enchanters" />
+        <attribute book="" />
+        <attribute scroll="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2116" name="Make Whole">
@@ -59873,7 +59875,7 @@
         <attribute curdle_of_bone="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2259" name="Cursed Bell">
+    <GameObject id="2258" name="Cursed Bell">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="No individual in the clearing may HIDE or remain hidden." />
@@ -59890,7 +59892,7 @@
         <attribute color_source="black" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2261" name="Decayed Fang">
+    <GameObject id="2259" name="Decayed Fang">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="3" />
@@ -59905,7 +59907,7 @@
         <attribute wish_and_mesmerize="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2262" name="Demonic Ring">
+    <GameObject id="2260" name="Demonic Ring">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="12" />
@@ -59924,7 +59926,7 @@
         <attribute action="magic" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2263" name="Diamond Ring">
+    <GameObject id="2261" name="Diamond Ring">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="10" />
@@ -59940,7 +59942,94 @@
         <attribute magic="VII" />
         <attribute speed="0" />
         <attribute action="magic" />
-        <attribute native="Soldiers" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2262" name="Disenchant Potion">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="6" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="For the phase/round, all spells are nullified and no spell can be cast from or onto the character." />
+        <attribute discard="priest" />
+        <attribute potion="" />
+        <attribute disenchant="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2263" name="Disenchant Potion">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="6" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="For the phase/round, all spells are nullified and no spell can be cast from or onto the character." />
+        <attribute discard="priest" />
+        <attribute potion="" />
+        <attribute disenchant="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2264" name="Elemental Ring">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="18" />
+        <attribute notoriety="10" />
+        <attribute fame="-5" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Can be used once per day to cast a IV spell." />
+        <attribute ring="" />
+        <attribute magic="IV" />
+        <attribute speed="0" />
+        <attribute action="magic" />
+        <attribute great="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2265" name="Elven Ring">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="15" />
+        <attribute notoriety="5" />
+        <attribute fame="0" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Can be used once per day to cast a III spell." />
+        <attribute ring="" />
+        <attribute magic="III" />
+        <attribute speed="0" />
+        <attribute action="magic" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2266" name="Elven Scroll">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="5" />
+        <attribute fame="0" />
+        <attribute notoriety="5" />
+        <attribute magic="II" />
+        <attribute book="" />
+        <attribute print="" />
+        <attribute scholar_price="50" />
+        <attribute warlock_price="50" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="magic" />
+        <attribute ts_color="lightgreen" />
+        <attribute item="" />
+        <attribute scroll="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute magic_other="III" />
       </AttributeBlock>
     </GameObject>
   </objects>
@@ -60395,6 +60484,8 @@
       <Add from="SPELL_VII" targetObjectID="2091" count="1" transferType="Random" />
       <Add from="SPELL_VI" targetObjectID="2101" count="4" transferType="Random" />
       <Add from="SPELL_VI" targetObjectID="2115" count="2" transferType="Random" />
+      <Add from="SPELL_II" targetObjectID="2266" count="1" transferType="Random" />
+      <Add from="SPELL_III" targetObjectID="2266" count="1" transferType="Random" />
       <Create newPool="LEFTOVER_SPELLS" />
       <Extract from="SPELL_I" to="LEFTOVER_SPELLS" keyVals="spell" />
       <Extract from="SPELL_II" to="LEFTOVER_SPELLS" keyVals="spell" />
@@ -60441,6 +60532,7 @@
       <Extract from="ALL" to="CHITS" keyVals="tile_type=ST,chit" />
       <Distribute from="CHITS" to="ST_TILES" count="5" transferType="Random" />
       <OrderSetup />
+      <Create newPool="" />
     </GameSetup>
   </setups>
 </game>
