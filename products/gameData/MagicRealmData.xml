@@ -8361,6 +8361,8 @@
         <attribute ts_color="lightgreen" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute merchant_price="20" />
+        <attribute priest_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="320" name="Eye of the Idol">
@@ -8381,6 +8383,8 @@
         <attribute ts_color="lightgreen" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute shaman_price="20" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="321" name="Dragon Essence">
@@ -8759,6 +8763,7 @@
         <attribute ts_color="lightgreen" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="343" name="Scroll of Nature">
@@ -8781,6 +8786,7 @@
         <attribute rw_expansion_1="" />
         <attribute item="" />
         <attribute scroll="" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="344" name="Good Book">
@@ -8802,6 +8808,8 @@
         <attribute ts_color="lightgreen" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute merchant_price="20" />
+        <attribute priest_price="50" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="345" name="Black Book">
@@ -8825,6 +8833,7 @@
         <attribute ts_color="lightgreen" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="346" name="Ointment of Bite">
@@ -8980,6 +8989,7 @@
         <attribute ts_color="lightgreen" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="355" name="Poultice of Health">
@@ -9063,6 +9073,7 @@
         <attribute ts_color="lightgreen" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="360" name="Hidden Ring">
@@ -9083,6 +9094,7 @@
         <attribute ts_color="lightgreen" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="361" name="Lucky Charm">
@@ -9170,6 +9182,7 @@
         <attribute ts_color="lightgreen" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="366" name="Sacred Grail">
@@ -9332,6 +9345,7 @@
         <attribute ts_color="lightgreen" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="376" name="Glowing Gem">
@@ -9352,6 +9366,8 @@
         <attribute ts_color="lightgreen" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute merchant_price="20" />
+        <attribute priest_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="377" name="Golden Icon">
@@ -9537,6 +9553,7 @@
         <attribute rw_expansion_1="" />
         <attribute item="" />
         <attribute scroll="" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="387" name="Scholar">
@@ -9552,6 +9569,7 @@
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
         <attribute rw_expansion_1="" />
+        <attribute buys_no_spells="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="388" name="Shaman">
@@ -55781,6 +55799,8 @@
         <attribute ts_color="lightgreen" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute merchant_price="20" />
+        <attribute priest_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2035" name="Eye of the Idol">
@@ -55799,6 +55819,8 @@
         <attribute ts_color="lightgreen" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute shaman_price="20" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2036" name="Dragon Essence">
@@ -56133,6 +56155,7 @@
         <attribute ts_color="lightgreen" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2058" name="Book of Nature">
@@ -56152,6 +56175,7 @@
         <attribute ts_color="lightgreen" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2059" name="Good Book">
@@ -56171,6 +56195,8 @@
         <attribute ts_color="lightgreen" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute merchant_price="20" />
+        <attribute priest_price="50" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2060" name="Black Book">
@@ -56192,6 +56218,7 @@
         <attribute ts_color="lightgreen" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2061" name="Ointment of Bite">
@@ -56329,6 +56356,7 @@
         <attribute ts_color="lightgreen" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2070" name="Poultice of Health">
@@ -56402,6 +56430,8 @@
         <attribute ts_color="lightgreen" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute crone_price="20" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2075" name="Hidden Ring">
@@ -56420,6 +56450,8 @@
         <attribute ts_color="lightgreen" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute warlock_price="20" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2076" name="Lucky Charm">
@@ -56498,6 +56530,7 @@
         <attribute ts_color="lightgreen" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2081" name="Sacred Grail">
@@ -56644,6 +56677,7 @@
         <attribute ts_color="lightgreen" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2091" name="Glowing Gem">
@@ -56662,6 +56696,8 @@
         <attribute ts_color="lightgreen" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute merchant_price="20" />
+        <attribute priest_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2092" name="Golden Icon">
@@ -56826,6 +56862,7 @@
         <attribute ts_color="lightgreen" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2102" name="Flying Carpet Spell">
@@ -57037,6 +57074,9 @@
         <attribute native="Enchanters" />
         <attribute book="" />
         <attribute scroll="" />
+        <attribute scholar_price="30" />
+        <attribute warlock_price="30" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2116" name="Make Whole">
@@ -59772,6 +59812,9 @@
         <attribute magic="VI" />
         <attribute speed="0" />
         <attribute action="magic" />
+        <attribute scholar_price="20" />
+        <attribute warlock_price="20" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2252" name="Conjuror's Remains">
@@ -59924,6 +59967,9 @@
         <attribute magic="V" />
         <attribute speed="0" />
         <attribute action="magic" />
+        <attribute scholar_price="20" />
+        <attribute crone_price="20" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2261" name="Diamond Ring">
@@ -59942,6 +59988,9 @@
         <attribute magic="VII" />
         <attribute speed="0" />
         <attribute action="magic" />
+        <attribute scholar_price="20" />
+        <attribute merchant_price="20" />
+        <attribute priest_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2262" name="Disenchant Potion">
@@ -59991,6 +60040,9 @@
         <attribute speed="0" />
         <attribute action="magic" />
         <attribute great="" />
+        <attribute scholar_price="20" />
+        <attribute warlock_price="20" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2265" name="Elven Ring">
@@ -60009,6 +60061,9 @@
         <attribute magic="III" />
         <attribute speed="0" />
         <attribute action="magic" />
+        <attribute scholar_price="20" />
+        <attribute schaman_price="20" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2266" name="Elven Scroll">
@@ -60020,8 +60075,7 @@
         <attribute magic="II" />
         <attribute book="" />
         <attribute print="" />
-        <attribute scholar_price="50" />
-        <attribute warlock_price="50" />
+        <attribute scholar_price="30" />
         <attribute facing="face_dn" />
         <attribute ts_section="magic" />
         <attribute ts_color="lightgreen" />
@@ -60030,6 +60084,8 @@
         <attribute super_realm="" />
         <attribute super_realm_treasure="" />
         <attribute magic_other="III" />
+        <attribute shaman_price="30" />
+        <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
   </objects>
