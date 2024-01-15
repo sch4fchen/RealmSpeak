@@ -255,7 +255,6 @@ public class Constants {
 	public static final String HIRELING = "hireling";
 	public static final String COMPANION = "companion";
 	public static final String SUMMONED = "summoned";
-	public static final String BUYS_NO_SPELLS = "buys_no_spells";
 	
 	// Spoils of War needed action
 	public static final String SPOILS_ = "spoils_";

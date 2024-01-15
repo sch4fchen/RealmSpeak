@@ -818,9 +818,6 @@ public class TreasureUtility {
 				if (specialPrice!=0) {
 					basePrice = specialPrice;
 				}
-				if (merchandise.isSpell() && trader.getGameObject().hasThisAttribute(Constants.BUYS_NO_SPELLS)) {
-					basePrice = 0;
-				}
 			}
 		}
 		

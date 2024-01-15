@@ -9569,7 +9569,6 @@
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
         <attribute rw_expansion_1="" />
-        <attribute buys_no_spells="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="388" name="Shaman">

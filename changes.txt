@@ -1,7 +1,7 @@
-Sword of Terror (QuestReqInventoryMissing)
+Sword of Terror (QuestReqInventoryMissing) - fix trigger for loosing the sword
 ::ROADMAP::
 ---Super Realm Content---
-Disenchant Potion: Immune to Spells and Attacks of Winged Demon and Demon (T monster that casts spells)
+Disenchant Potion: Nullify spells, protection from magic, cannot cast spells, Immune to Spells and Attacks of Winged Demon and Demon (T monster that casts spells)
 Treasures: 39: Enchantment Potion, Ethereal Abbey, Expert Adventure Guide, Expert Travel Guide, Faerie Statue, Fairy Grove, Flash Bomb, Glider, Golden Lyre, Haunted Grave, Holy Ring, Holy Water 2x, Horse Armor, Hound, Links, Mage Diary, Mage Library, Map of Lost Fortress, Map of Lost Palace, Mist Crystal, Ointment of Stone 2x, Pagan Ring, Pentagram, Profane Idol, Realm Map, Repair Kit 2x, Ruby Ring, Sails, Scented Bait, Scope, Scribe Spectacles, Scroll of Allure, Scroll of Lore, Scroll of Malice, Spirit Charm, Spurs, Talisman, Travelers Guide, White Feathered Wing
 Super Realm: visitors/travelers etc. (Shaman, Priest etc.)
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
@@ -12,15 +12,15 @@ Super Realm: Adapt Commerce optional rules for new natives
 SUPER REALM: remaining RULES and LOGIC (rule changes compared to Magic Realm)
 Super Realm: Seasons + Weather 10.12 (p.117)
 ---Detail Rules for Super Realm Spells---
+Purple/Prism Anomalies can block/battle any individual transmorphized into mist.
+Enchant Weapon: any individual wielding the target weapon can target and attack individuals transformed into mist.
+Enchant Weapon: While targeting a Purple or Prism Anomaly, this spell is nullified.
 Poison: Special: the sharpness star added by this spell is ignored when the weapon is used against Grey/Prism Anomalies.
 Lightning Bolt: List of Spells, added detail to IV spell Lightning Bolt, stating that site targets are considered armored.
 Phantasm: If the phantasm discovers Hidden Enemies, the controlling character also discovers Hidden Enemies.;; it cannot take part in combat;; can now spy and be spied
 Melt into Mist: only move actions; canot follow or be followed; can be charged (difference), The target cannot attack or be attacked, except by individuals affected by the Enchant Weapon spell, If attacked, Mist’s vulnerability is Tremendous and non-armored; targeted monster stills prowls (like in base MR) even if ‘X’ weight
 Melt into Mist: This spell is benevolent if, and only if, the spellcaster casts it on one of his hired leaders or controlled monsters.
 only the Melt into Mist transmorphization spell can be cast to affect carrying capacity.  Transform and Absorb Essence are no longer options for end-game scoring.
-Purple/Prism Anomalies can block/battle any individual transmorphized into mist.
-Enchant Weapon: any individual wielding the target weapon can target and attack individuals transformed into mist.
-Enchant Weapon: While targeting a Purple or Prism Anomaly, this spell is nullified.
 Protection from Magic: The target is also immune to spell-breaking spells, such as Exorcise, Remedy, and Dissolve Spell, while this spell is in effect (ie activated). Any transmorphization spells affecting the target would also be nullified when this spell is activated, which can be done during a phase even when the target is transmorphized.
 Exorcise: All native casters in the clearing cannot supply color magic, and they cannot cast spells for the rest of combat (including the current round), unless they are in a clearing with a magic source matching the color required to cast their spell.
 	Update 995: Tweaked description of the I Exorcise spell.  It does cause Phase spells to break, as the revised definition of Phase spells means they are continually in effect (even if they're not affecting the target with the spell ability due to not having been activated/used yet) until used, in which case the spell ends at the end of the phase/round it was activated.  For example, if someone had Broomstick cast earlier, but hadn't used it and was in the clearing when Exorcise is cast, he loses the phase chit reserved for Broomstick (the broomstick spell breaks).
@@ -75,8 +75,6 @@ Version 1.1.8.5
 SUPER REALM:
 # New treasures: Circle of Stones, Color Prism, Conjure Ring, Conjuror's Remains, Contorting Keys, Crystal Shard, Curdle of Bone, Cursed Bell,
 		Decayed Fang, Demonic Ring, Diamond Ring, Disenchant Potion, Elemental Ring, Elven Ring, Elven Scroll
-NEW FEATURES:
-
 
 Version 1.1.8.4
 SUPER REALM:
