@@ -869,6 +869,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 						if (spellMaster.expirePhaseSpells()) {
 							getCharacterFrame().updateCharacter();
 						}
+						getCharacter().expireTemporaryPotions();
 						getCharacter().endActivePhaseChits();
 					}
 				}
@@ -1038,6 +1039,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		TileLocation current = getCharacter().getCurrentLocation();
 		
 		getCharacter().getCurrentLocation().energizeItems();
+		getCharacter().expireTemporaryPotions();
 		
 		//CJM -- Quest check here
 		// Test requirements (in case any are dependent on end of turn)

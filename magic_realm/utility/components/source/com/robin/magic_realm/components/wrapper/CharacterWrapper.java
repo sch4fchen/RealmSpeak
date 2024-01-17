@@ -3978,6 +3978,13 @@ public class CharacterWrapper extends GameObjectWrapper {
 			RealmLogging.logMessage(getGameObject().getName(),"The "+thing.getName()+" is destroyed by the magic of the Chapel.");
 		}
 	}
+	public void expireTemporaryPotions() {
+		for (GameObject thing : getActiveInventory()) {
+			if (thing.hasThisAttribute(Constants.ONESHOT) && thing.hasThisAttribute(Constants.POTION)) {
+				expirePotion(thing);
+			}
+		}
+	}
 	// Other utility
 	
 	/**
@@ -6515,7 +6522,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return affectedByKey(Constants.CANCEL_RECORDED_ACTION);
 	}
 	public boolean hasMagicProtection() {
-		return affectedByKey(Constants.MAGIC_PROTECTION);
+		return affectedByKey(Constants.MAGIC_PROTECTION) || affectedByKey(Constants.DISENCHANTMENT_POTION);
 	}
 	public boolean hasHealing() {
 		return hasActiveInventoryThisKey(Constants.WOUNDS_TO_FATIGUE);

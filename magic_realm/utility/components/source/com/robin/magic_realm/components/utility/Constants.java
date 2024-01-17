@@ -290,6 +290,7 @@ public class Constants {
 	public static final String DROPPED_BY = "droppedby";
 	public static final String ENCHANTED_COLOR = "ench_clr";
 	public static final String POTION = "potion";
+	public static final String ONESHOT = "oneshot";
 	public static final String VALUABLE = "valuable";
 	public static final String MAGIC_PATH = "magic_path";
 	public static final String MAGIC_PATH_EFFECT = "magic_path_effect";
@@ -318,6 +319,8 @@ public class Constants {
 	public static final String CURDLE_OF_BONE = "curdle_of_bone";
 	public static final String CURDLE_OF_BONE_AFFECTED_CHARACTER = "curdle_of_bone_affected_character";
 	public static final String WISH_AND_MESMERIZE = "wish_and_mesmerize";
+	public static final String DISENCHANTMENT_POTION = "disenchantment_potion";
+	public static final String DISENCHANTMENT_POTION_AFFECTED_CHARACTER = "disenchantment_potion_affected_character";
 	public static final String DISENCHANT = "disenchant";
 	public static final String ENCHANT = "enchant";
 	

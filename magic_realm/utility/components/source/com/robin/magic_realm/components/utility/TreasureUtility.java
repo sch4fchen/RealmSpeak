@@ -605,7 +605,17 @@ public class TreasureUtility {
 			enchantChit(parentFrame,character);
 		}
 		if (thing.hasThisAttribute(Constants.DISENCHANT)) {
-			
+			thing.setThisAttribute(Constants.DISENCHANTMENT_POTION_AFFECTED_CHARACTER,character.getGameObject().getStringId());
+			character.getGameObject().setThisAttribute(Constants.DISENCHANTMENT_POTION);
+			character.nullifyCurses();
+			SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(thing.getGameData());
+			for (SpellWrapper spell:sm.getAffectingSpells(character.getGameObject())) {
+				if (spell.isNullified()) continue;
+				if (spell.isActive() && spell.hasAffectedTargets()) {
+					spell.nullifySpell(false);
+					RealmLogging.logMessage(character.getName(),"Spell effect nullified: "+spell.getName());
+				}
+			}
 		}
 		if (thing.hasThisAttribute(Constants.MAGIC_PATH)) {
 			thing.setThisAttribute(Constants.MAGIC_PATH_AFFECTED_CHARACTER,character.getGameObject().getStringId());
@@ -1132,6 +1142,21 @@ public class TreasureUtility {
 			decrementKey(potion,Constants.IGNORE_ARMOR);
 			decrementKey(potion,Constants.HIT_TIE);
 			potion.removeThisAttribute(Constants.AFFECTED_WEAPON_ID); // just in case
+			
+			if (potion.hasThisAttribute(Constants.DISENCHANT)) {
+				String id = potion.getThisAttribute(Constants.DISENCHANTMENT_POTION_AFFECTED_CHARACTER);
+				if (id!=null) {
+					GameObject charGo = potion.getGameData().getGameObject(Long.valueOf(id));
+					if (charGo != null) {
+						charGo.removeThisAttribute(Constants.DISENCHANTMENT_POTION);
+						potion.removeThisAttribute(Constants.DISENCHANTMENT_POTION_AFFECTED_CHARACTER);
+					}
+					CharacterWrapper character = new CharacterWrapper(charGo);
+					character.restoreCurses();
+					SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(potion.getGameData());
+					sm.restoreBewitchingNullifiedSpells(charGo,null);
+				}
+			}
 			
 			if (potion.hasThisAttribute(Constants.CURDLE_OF_BONE)) {
 				String id = potion.getThisAttribute(Constants.CURDLE_OF_BONE_AFFECTED_CHARACTER);

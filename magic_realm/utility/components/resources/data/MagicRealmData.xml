@@ -60004,7 +60004,7 @@
         <attribute priest_price="20" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2262" name="Disenchant Potion">
+    <GameObject id="2262" name="Disenchantment Potion">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="6" />
@@ -60017,9 +60017,10 @@
         <attribute discard="priest" />
         <attribute potion="" />
         <attribute disenchant="" />
+        <attribute oneshot="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2263" name="Disenchant Potion">
+    <GameObject id="2263" name="Disenchantment Potion">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="6" />
@@ -60032,6 +60033,7 @@
         <attribute discard="priest" />
         <attribute potion="" />
         <attribute disenchant="" />
+        <attribute oneshot="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2264" name="Elemental Ring">

@@ -446,7 +446,6 @@ public class ActionRow {
 		}
 		
 		if (completed) { // don't check for blocking until completed!
-			
 			// Check for Violent Storm
 			if (willBeAffectedByStorm()) {
 				TileLocation current = character.getCurrentLocation();

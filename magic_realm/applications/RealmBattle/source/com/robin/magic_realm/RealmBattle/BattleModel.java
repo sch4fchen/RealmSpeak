@@ -2402,7 +2402,7 @@ public class BattleModel {
 						TreasureUtility.handleDestroyedItem(character,thing); // armor
 					}
 	
-					if (thing.hasThisAttribute("oneshot") && thing.hasThisAttribute("potion")) {
+					if (thing.hasThisAttribute(Constants.ONESHOT) && thing.hasThisAttribute(Constants.POTION)) {
 						character.expirePotion(thing);
 					}
 					
