@@ -700,6 +700,14 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			return false;
 		}
 		
+		if (this.affectedByKey(Constants.DISENCHANTMENT_POTION) && attacker.isMonster()) {
+			MonsterChitComponent monster = (MonsterChitComponent)attacker;
+			if (!attacker.getAttackSpell().isEmpty() || (monster.getVulnerability().isTremendous() && monster.hasMagicType())) {
+				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Cannot hit "+this.getName()+", as the character is affected by Disenchantment Potion.");
+				return false;
+			}
+		}
+		
 		MonsterChitComponent transmorph = getTransmorphedComponent();
 		if (transmorph != null) {
 			boolean ret = transmorph.applyHit(game,hostPrefs, attacker, box, attackerHarm,attackOrderPos);

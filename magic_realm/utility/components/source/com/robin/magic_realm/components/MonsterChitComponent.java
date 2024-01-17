@@ -603,6 +603,9 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	public String getMagicType() {
 		return getFaceAttributeString("magic_type");
 	}
+	public boolean hasMagicType() {
+		return !getAttribute(getLightSideStat(),"magic_type").isEmpty() || !getAttribute(getDarkSideStat(),"magic_type").isEmpty();
+	}
 	public String getAttackSpell() {
 		return getFaceAttributeString("attack_spell");
 	}

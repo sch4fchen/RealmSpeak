@@ -37252,8 +37252,8 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
         <attribute attack_speed="4" />
-        <attribute magic_type="M" />
         <attribute chit_color="gray" />
+        <attribute strength="M" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -37286,8 +37286,8 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
         <attribute attack_speed="4" />
-        <attribute magic_type="M" />
         <attribute chit_color="gray" />
+        <attribute strength="M" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -37320,8 +37320,8 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
         <attribute attack_speed="4" />
-        <attribute magic_type="M" />
         <attribute chit_color="gray" />
+        <attribute strength="M" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -37354,8 +37354,8 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
         <attribute attack_speed="5" />
-        <attribute magic_type="H" />
         <attribute chit_color="purple" />
+        <attribute strength="H" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />

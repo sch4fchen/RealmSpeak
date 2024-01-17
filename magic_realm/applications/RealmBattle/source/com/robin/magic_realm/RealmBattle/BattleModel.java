@@ -468,7 +468,7 @@ public class BattleModel {
 	public void doRaiseDeads() {
 		for (CharacterChitComponent rc : getAllParticipatingCharacters()) {
 			CombatWrapper character = new CombatWrapper(rc.getGameObject());
-			if (character.getRaiseTheDead()) {
+			if (character.getRaiseTheDead() && !rc.affectedByKey(Constants.DISENCHANTMENT_POTION)) {
 				CharacterWrapper characterCasting = new CharacterWrapper(rc.getGameObject());
 				RaiseDead raiseDead = new RaiseDead(CombatFrame.getSingleton());
 				DieRoller deadRoller = DieRollBuilder.getDieRollBuilder(CombatFrame.getSingleton(),characterCasting).createRoller(raiseDead);
@@ -736,6 +736,11 @@ public class BattleModel {
 				if (spellsAtSpeed == null) continue;
 				for (SpellWrapper spell : spellsAtSpeed) {
 					if (spell.isNullified() || !spell.isAlive()) continue;
+					if (spell.getCaster().affectedByKey(Constants.DISENCHANTMENT_POTION)) {
+						spell.cancelSpell();
+						logBattleInfo("Spell canceled. Caster affected by Disenchantment Potion");
+						continue;
+					}
 					ArrayList<String> logs = new ArrayList<String>();
 					
 					if (spell.isDenizenSpell()) {
