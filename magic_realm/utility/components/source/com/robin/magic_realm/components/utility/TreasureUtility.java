@@ -8,6 +8,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import com.robin.game.objects.*;
+import com.robin.general.swing.ButtonOptionDialog;
 import com.robin.general.swing.DieRoller;
 import com.robin.general.swing.IconGroup;
 import com.robin.general.util.*;
@@ -378,7 +379,7 @@ public class TreasureUtility {
 					character.applyPhaseChit(parentFrame, thing, spell);
 				}
 				else if (thing.hasThisAttribute(Constants.POTION)) {
-					if (!TreasureUtility.handlePotionEffects(parentFrame,character,thing)) {
+					if (!TreasureUtility.handlePotionEffects(parentFrame,character,thing,listener)) {
 						return false;
 					}
 				}
@@ -468,7 +469,7 @@ public class TreasureUtility {
 			}
 		}
 	}
-	private static boolean handlePotionEffects(JFrame parentFrame,CharacterWrapper character,GameObject thing) {
+	private static boolean handlePotionEffects(JFrame parentFrame,CharacterWrapper character,GameObject thing,ChangeListener listener) {
 		// some potion and phase chit effects are immediate
 		if (thing.hasThisAttribute("attack")) {
 			ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
@@ -599,6 +600,13 @@ public class TreasureUtility {
 				}
 			}
 		}
+		if (thing.hasThisAttribute(Constants.ENCHANT)) {
+			enchantTile(parentFrame,character,listener);
+			enchantChit(parentFrame,character);
+		}
+		if (thing.hasThisAttribute(Constants.DISENCHANT)) {
+			
+		}
 		if (thing.hasThisAttribute(Constants.MAGIC_PATH)) {
 			thing.setThisAttribute(Constants.MAGIC_PATH_AFFECTED_CHARACTER,character.getGameObject().getStringId());
 			character.getGameObject().setThisAttribute(Constants.MAGIC_PATH_EFFECT);
@@ -678,6 +686,93 @@ public class TreasureUtility {
 		return true;
 	}
 
+	public static void enchantTile(JFrame frame, CharacterWrapper character,ChangeListener listener) {
+		TileLocation loc = character.getCurrentLocation();
+		if (loc!=null && loc.tile!=null) {
+			boolean enchanted = loc.tile.isEnchanted();
+			String text = "";
+			if (enchanted) {
+				text = "Do you want to disenchant your current tile?";
+			}
+			else {
+				text = "Do you want to enchant your current tile?";
+			}
+			int ret = JOptionPane.showConfirmDialog(frame, text, "Enchantment Potion", JOptionPane.YES_NO_OPTION);
+			if (ret == JOptionPane.YES_OPTION) {
+				loc.tile.flip();
+				if (listener!=null) {
+					listener.stateChanged(new ChangeEvent(character));
+				}
+			}
+		}
+	}
+	public static void enchantChit(JFrame frame, CharacterWrapper character) {
+		ArrayList<MagicChit> enchantable = new ArrayList<>();
+		ArrayList<CharacterActionChitComponent> enchantableChits = character.getEnchantableChits();
+		Collections.sort(enchantableChits);
+		enchantable.addAll(enchantableChits);
+		
+		RealmComponentOptionChooser compChooser = new RealmComponentOptionChooser(frame,"Enchant which?",true);
+		int keyN = 0;
+		for (MagicChit magicChit : enchantable) {
+			RealmComponent chit = (RealmComponent)magicChit;
+			String key = "k"+(keyN++);
+			if (chit.isActionChit()) {
+				compChooser.addOption(key,"MAGIC Chit");
+			}
+			else {
+				compChooser.addOption(key,"Artifact/Book");
+			}
+			compChooser.addRealmComponentToOption(key,chit);
+		}
+		
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
+		if (hostPrefs.hasPref(Constants.OPT_ENHANCED_ARTIFACTS) || character.affectedByKey(Constants.ENHANCED_ARTIFACTS)) {
+			// Enchantable Artifacts and Books
+			for(GameObject item:character.getActiveInventory()) {
+				RealmComponent rc = RealmComponent.getRealmComponent(item);
+				if (rc.isMagicChit()) {
+					MagicChit mc = (MagicChit)rc;
+					if (mc.isEnchantable()) {
+						enchantable.add(mc);
+					}
+				}
+			}
+		}
+		
+		if (compChooser.hasOptions()) {
+			compChooser.setVisible(true);
+			String text = compChooser.getSelectedText();
+			if (text!=null) {
+				MagicChit chit = (MagicChit)compChooser.getFirstSelectedComponent();
+				if (chit!=null) {
+					int enchantNumber;
+					ArrayList<Integer> list = chit.getEnchantableNumbers();
+					if (list.size()>1) {
+						ButtonOptionDialog colorChooser = new ButtonOptionDialog(frame,chit.getIcon(),"What color?","Enchant "+chit.getGameObject().getName(),false);
+						for(int mn:list) {
+							ColorMagic cm = new ColorMagic(mn,false);
+							colorChooser.addSelectionObject(cm.getColorName());
+						}
+						colorChooser.setVisible(true);
+						String colorName = (String)colorChooser.getSelectedObject();
+						enchantNumber = ColorMagic.makeColorMagic(colorName,false).getColorNumber();
+					}
+				else {
+					enchantNumber = list.get(0);
+				}
+					
+				chit.enchant(enchantNumber);
+				
+				QuestRequirementParams params = new QuestRequirementParams();
+				params.actionType = CharacterActionType.Enchant;
+				params.actionName = "chit";
+				character.testQuestRequirements(frame,params);
+				}
+			}
+		}
+	}
+	
 	public static boolean doDeactivate(JFrame frame,CharacterWrapper character,GameObject thing) {
 		return doDeactivate(frame, character, thing, false);
 	}
