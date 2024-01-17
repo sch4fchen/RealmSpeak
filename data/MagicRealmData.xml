@@ -60144,6 +60144,44 @@
       <contains id="2023" />
       <contains id="2021" />
     </GameObject>
+    <GameObject id="2269" name="Expert Adventure Guide">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="24" />
+        <attribute notoriety="0" />
+        <attribute fame="10" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Roll 1 die for LOCATE" />
+        <attribute native="Peasants" />
+        <attribute weight="L" />
+        <attributeList keyName="diemod">
+          <attributeVal N0="1d:locate:all" />
+        </attributeList>
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2270" name="Expert Travel Guide">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="10" />
+        <attribute notoriety="0" />
+        <attribute fame="5" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Roll 1 die for PEER" />
+        <attribute native="Peasants" />
+        <attribute weight="L" />
+        <attributeList keyName="diemod">
+          <attributeVal N0="1d:peer:all" />
+        </attributeList>
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
