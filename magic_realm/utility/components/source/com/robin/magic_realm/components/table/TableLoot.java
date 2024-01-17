@@ -101,7 +101,32 @@ public class TableLoot extends Loot {
 			qp.searchHadAnEffect = NOTHING.equals(ret);
 		}
 		else if ("bow".equals(result)) {
-			ret = takeBow(character);
+			ret = takeWeaponType(character,"bow");
+			qp.searchType = SearchResultType.Counters;
+			qp.searchHadAnEffect = NOTHING.equals(ret);
+		}
+		else if ("axe".equals(result)) {
+			ret = takeWeaponType(character,"axe");
+			qp.searchType = SearchResultType.Counters;
+			qp.searchHadAnEffect = NOTHING.equals(ret);
+		}
+		else if ("staff".equals(result)) {
+			ret = takeWeaponType(character,"staff");
+			qp.searchType = SearchResultType.Counters;
+			qp.searchHadAnEffect = NOTHING.equals(ret);
+		}
+		else if ("shield".equals(result)) {
+			ret = takeArmorType(character,"shield");
+			qp.searchType = SearchResultType.Counters;
+			qp.searchHadAnEffect = NOTHING.equals(ret);
+		}
+		else if ("helmet".equals(result)) {
+			ret = takeArmorType(character,"helmet");
+			qp.searchType = SearchResultType.Counters;
+			qp.searchHadAnEffect = NOTHING.equals(ret);
+		}
+		else if ("breastplate".equals(result)) {
+			ret = takeArmorType(character,"breastplate");
 			qp.searchType = SearchResultType.Counters;
 			qp.searchHadAnEffect = NOTHING.equals(ret);
 		}
@@ -116,11 +141,22 @@ public class TableLoot extends Loot {
 			qp.searchType = SearchResultType.Gold;
 			qp.searchHadAnEffect = true;
 		}
+		else if ("spell".equals(result)) {
+			ret = learnSpell(character);
+			qp.searchType = SearchResultType.LearnSpell;
+			qp.searchHadAnEffect = NOTHING.equals(ret);
+		}
 		else if ("curse".equals(result)) {
 			// Test code for curse result
 			setNewTable(new Curse(getParentFrame(), character.getGameObject()));
 			ret = "Curse!";
 			qp.searchType = SearchResultType.Curse;
+			qp.searchHadAnEffect = true;
+		}
+		else if ("mesmerize".equals(result)) {
+			setNewTable(new Mesmerize(getParentFrame(), character.getGameObject()));
+			ret = "Mesmerize!";
+			qp.searchType = SearchResultType.Mesmerize;
 			qp.searchHadAnEffect = true;
 		}
 		else if ("wish".equals(result)) {

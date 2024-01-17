@@ -373,6 +373,13 @@ the Appearance Chart, he instantly becomes unhired.
 		name = StringUtilities.findAndReplace(name, "'", "");
 		return name;
 	}
+	public static String getSpellName(GameObject spell) {
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(spell.getGameData());
+		if (hostPrefs.hasPref(Constants.HOUSE1_NO_SECRETS)) {
+			return spell.getName();
+		}
+		return "##a Spell|"+spell.getName()+"##";
+	}
 	public static String getSpellDetail(GameObject spell) {
 		String name = getSpellReferenceName(spell);
 		String resource = "text/"+name+".rtf";

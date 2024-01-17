@@ -102,11 +102,7 @@ public class ReadRunes extends RealmTable {
 		return "Nothing";
 	}
 	private String getSpellName() {
-		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(targetSpell.getGameData());
-		if (hostPrefs.hasPref(Constants.HOUSE1_NO_SECRETS)) {
-			return targetSpell.getName();
-		}
-		return "##a Spell|"+targetSpell.getName()+"##";
+		return SpellUtility.getSpellName(targetSpell);
 	}
 	private String learnAndAwaken(CharacterWrapper character) {
 		if (targetSpell==null) {

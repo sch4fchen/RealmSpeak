@@ -55362,6 +55362,7 @@
         <attribute helmet="" />
         <attribute magic_color_bonus="purple" />
         <attribute magic_color_bonus_armor="H" />
+        <attribute super_realm_treasure="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="12" />
@@ -55395,6 +55396,7 @@
         <attribute breastplate="" />
         <attribute magic_color_bonus="purple" />
         <attribute magic_color_bonus_armor="H" />
+        <attribute super_realm_treasure="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="16" />
@@ -55427,6 +55429,7 @@
         <attribute magic="" />
         <attribute magic_color_bonus="purple" />
         <attribute magic_color_bonus_armor="H" />
+        <attribute super_realm_treasure="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="14" />
@@ -55460,6 +55463,7 @@
         <attribute breastplate="" />
         <attribute magic_color_bonus="purple" />
         <attribute magic_color_bonus_armor="H" />
+        <attribute super_realm_treasure="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="35" />
@@ -55490,6 +55494,7 @@
         <attribute super_realm="" />
         <attribute magic="" />
         <attribute helmet="" />
+        <attribute super_realm_treasure="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="25" />
@@ -55520,6 +55525,7 @@
         <attribute item="" />
         <attribute super_realm="" />
         <attribute magic="" />
+        <attribute super_realm_treasure="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="30" />
@@ -55550,6 +55556,7 @@
         <attribute magic="" />
         <attribute magic_color_bonus="purple" />
         <attribute bow="" />
+        <attribute super_realm_treasure="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -55580,6 +55587,7 @@
         <attribute magic="" />
         <attribute magic_color_bonus="purple" />
         <attribute bow="" />
+        <attribute super_realm_treasure="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="M" />
@@ -55607,6 +55615,8 @@
         <attribute super_realm="" />
         <attribute magic="" />
         <attribute missile="" />
+        <attribute super_realm_treasure="" />
+        <attribute staff="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="4" />
@@ -55633,6 +55643,8 @@
         <attribute notoriety="3" />
         <attribute fame="6" />
         <attribute magic="" />
+        <attribute super_realm_treasure="" />
+        <attribute axe="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="T" />
@@ -60087,6 +60099,51 @@
         <attribute merchant_price="20" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2267" name="Enchantment Potion">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="6" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Enchant hex and enchant any of your magic chits." />
+        <attribute discard="warlock" />
+        <attribute potion="" />
+        <attribute enchant="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2268" name="Ethereal Abbey">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="abbey" />
+        <attribute treasure="large" />
+        <attribute text="" />
+        <attribute cannot_move="" />
+        <attribute treasure_within_treasure="11" />
+        <attribute print="" />
+        <attribute discovery="" />
+        <attribute color_source="white" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="twt" />
+        <attribute ts_color="lightblue" />
+        <attribute nosecret="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute search="fatigue_t,key" />
+      </AttributeBlock>
+      <AttributeBlock blockName="table">
+        <attribute roll_1="breastplate" />
+        <attribute roll_2="shield" />
+        <attribute roll_3="helmet" />
+        <attribute roll_4="treasure" />
+        <attribute roll_5="spell" />
+        <attribute roll_6="mesmerize" />
+      </AttributeBlock>
+      <contains id="2022" />
+      <contains id="2023" />
+      <contains id="2021" />
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
@@ -60428,6 +60485,7 @@
       <Add from="LARGE_TREASURES" targetObjectID="2031" count="1" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="2249" count="1" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="2033" count="1" transferType="Random" />
+      <Add from="LARGE_TREASURES" targetObjectID="2268" count="1" transferType="Random" />
       <Move from="TWT" to="LARGE_TREASURES" count="6" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="1220" count="5" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="1221" count="3" transferType="Random" />
@@ -60513,6 +60571,7 @@
       <Add from="SPELL_VIII" targetObjectID="1235" count="1" transferType="Random" />
       <Add from="SPELL_III" targetObjectID="1235" count="1" transferType="Random" />
       <Add from="SPELL_II" targetObjectID="1235" count="1" transferType="Random" />
+      <Add from="SPELL_VII" targetObjectID="2268" count="1" transferType="Random" />
       <Add from="SPELL_V" targetObjectID="1317" count="1" transferType="Random" />
       <Add from="SPELL_III" targetObjectID="1402" count="1" transferType="Random" />
       <Add from="SPELL_VIII" targetObjectID="1286" count="1" transferType="Random" />

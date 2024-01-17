@@ -217,11 +217,22 @@ public class Loot extends RealmTable {
 		return "Nothing";
 	}
 	
-	protected String takeBow(CharacterWrapper character) {
+	protected String takeWeaponType(CharacterWrapper character,String type) {
 		if (tileLocation!=null) return null;
 		for (GameObject thing : treasureLocation.getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(thing);
-			if (rc.getGameObject().hasThisAttribute("bow")) {
+			if (rc.isWeapon() && rc.getGameObject().hasThisAttribute(type)) {
+				return characterFindsItem(character, thing);
+			}
+		}
+		return "Nothing";
+	}
+	
+	protected String takeArmorType(CharacterWrapper character,String type) {
+		if (tileLocation!=null) return null;
+		for (GameObject thing : treasureLocation.getHold()) {
+			RealmComponent rc = RealmComponent.getRealmComponent(thing);
+			if (rc.isArmor() && rc.getGameObject().hasThisAttribute(type)) {
 				return characterFindsItem(character, thing);
 			}
 		}
@@ -234,6 +245,20 @@ public class Loot extends RealmTable {
 			RealmComponent rc = RealmComponent.getRealmComponent(thing);
 			if (rc.isTreasure()) {
 				return characterFindsItem(character, thing);
+			}
+		}
+		return "Nothing";
+	}
+	
+	public String learnSpell(CharacterWrapper character) {
+		if (tileLocation!=null) return null;
+		for (GameObject spell : treasureLocation.getHold()) {
+			RealmComponent rc = RealmComponent.getRealmComponent(spell);
+			if (rc.isSpell()) {
+				if (character.canLearn(spell)) {
+					character.recordNewSpell(getParentFrame(),spell);
+					return "Learned "+SpellUtility.getSpellName(spell);
+				}
 			}
 		}
 		return "Nothing";

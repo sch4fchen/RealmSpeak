@@ -8,9 +8,11 @@ public enum SearchResultType {
 	Clues,
 	Counters,
 	Curse,
+	Mesmerize,
 	DiscoverChits,
 	HiddenEnemies,
 	LearnAndAwaken,
+	LearnSpell,
 	Passages,
 	Paths,
 	PerceiveSpell,
@@ -56,6 +58,7 @@ public enum SearchResultType {
 			case LearnAndAwaken:
 			case Awaken:
 			case PerceiveSpell:
+			case LearnSpell:
 				return true;
 			default: return false;
 		}
@@ -139,17 +142,24 @@ public enum SearchResultType {
 				list.add(SearchResultType.RemoveCurse);
 				list.add(SearchResultType.Wound);
 				break;
-			case CircleOfStones:
-				list.add(SearchResultType.TreasureCards);
-				list.add(SearchResultType.MountainTeleport);
-				list.add(SearchResultType.RuinsTeleport);
-				list.add(SearchResultType.Curse);
-				break;
 			case ArcheologicalDig:
 				list.add(SearchResultType.DiscoverChits);
 				list.add(SearchResultType.Clues);
 				list.add(SearchResultType.Gold);
 				list.add(SearchResultType.Wound);
+				break;
+			case CircleOfStones:
+				list.add(SearchResultType.Counters);
+				list.add(SearchResultType.TreasureCards);
+				list.add(SearchResultType.MountainTeleport);
+				list.add(SearchResultType.RuinsTeleport);
+				list.add(SearchResultType.Curse);
+				break;
+			case EtherealAbbey:
+				list.add(SearchResultType.Counters);
+				list.add(SearchResultType.TreasureCards);
+				list.add(SearchResultType.LearnSpell);
+				list.add(SearchResultType.Mesmerize);
 				break;
 		}
 		
