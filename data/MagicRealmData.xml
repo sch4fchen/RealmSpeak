@@ -60282,6 +60282,26 @@
         <attribute must_land="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2276" name="Golden Lyre">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="71" />
+        <attribute notoriety="0" />
+        <attribute fame="7" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Extra Rest" />
+        <attribute weight="H" />
+        <attributeList keyName="extra_actions">
+          <attributeVal N0="R" />
+        </attributeList>
+        <attribute native="Lancers" />
+        <attribute great="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
