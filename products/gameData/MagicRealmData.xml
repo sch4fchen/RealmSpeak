@@ -59717,10 +59717,7 @@
         <attribute notoriety="20" />
         <attribute great="" />
         <attribute magic_color="black" />
-        <attribute target="spells item" />
-        <attribute magic="*" />
         <attribute cast_spell_on_init="" />
-        <attribute unbreakable_spell="" />
       </AttributeBlock>
       <contains id="2247" />
     </GameObject>
@@ -59862,10 +59859,7 @@
         <attribute super_realm="" />
         <attribute super_realm_treasure="" />
         <attribute magic_color="any" />
-        <attribute target="spells item" />
-        <attribute magic="*" />
         <attribute cast_spell_on_init="" />
-        <attribute unbreakable_spell="" />
       </AttributeBlock>
       <contains id="2254" />
     </GameObject>
@@ -60200,10 +60194,8 @@
         <attribute text="Weight becomes 'negligible' when energized." />
         <attribute weight="X" />
         <attribute magic="III" />
-        <attribute target="spells item" />
         <attribute magic_color="gold" />
         <attribute cast_spell_on_init="" />
-        <attribute unbreakable_spell="" />
         <attribute great="" />
         <attribute speed="0" />
         <attribute action="magic" />
@@ -60279,7 +60271,6 @@
         <attribute weight="H" />
         <attribute magic_color="purple" />
         <attribute text="FLY H3 (in purple) in mountain clearings" />
-        <attribute cast_spell_on_init="" />
         <attribute facing="face_dn" />
         <attribute item="" />
         <attribute super_realm="" />
