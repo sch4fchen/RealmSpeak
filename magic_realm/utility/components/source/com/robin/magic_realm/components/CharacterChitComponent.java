@@ -1224,7 +1224,6 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	}
 	private static Strength getStrengthForTreasure(GameObject tw) {
 		Strength strength = new Strength(tw.getThisAttribute("strength"));
-		TileLocation tl = ClearingUtility.getTileLocation(tw);
 		if (tw.hasThisAttribute(Constants.ALTER_WEIGHT)) {
 			int difference = (new Strength(tw.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((tw.getThisAttribute("strength")))).getLevels();
 			strength.modify(difference);

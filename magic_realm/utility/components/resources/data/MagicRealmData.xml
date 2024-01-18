@@ -59741,6 +59741,7 @@
         <attributeList keyName="pacifymonster">
           <attributeVal N0="skeleton" />
         </attributeList>
+        <attribute no_incantation_tie="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2248" name="Caged Bird">
@@ -59882,6 +59883,7 @@
         <attribute super_realm="" />
         <attribute no_expire="" />
         <attribute enchant_key="" />
+        <attribute no_incantation_tie="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2255" name="Crystal Shard">
@@ -60182,6 +60184,48 @@
         <attributeList keyName="diemod">
           <attributeVal N0="1d:peer:all" />
         </attributeList>
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2271" name="Faeri Statue">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="80" />
+        <attribute notoriety="10" />
+        <attribute fame="-10" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Weight becomes 'negligible' when energized." />
+        <attribute weight="X" />
+        <attribute magic="III" />
+        <attribute target="spells item" />
+        <attribute magic_color="gold" />
+        <attribute cast_spell_on_init="" />
+        <attribute unbreakable_spell="" />
+        <attribute great="" />
+        <attribute speed="0" />
+        <attribute action="magic" />
+        <attribute magic2="VI" />
+        <attribute provides_magic_chit="" />
+      </AttributeBlock>
+      <contains id="2272" />
+    </GameObject>
+    <GameObject id="2272" name="Lift Object">
+      <AttributeBlock blockName="this">
+        <attribute duration="permanent" />
+        <attribute target="spells item" />
+        <attribute text="Weight becomes 'negligible' when energized." />
+        <attribute magic_color="gold" />
+        <attribute host_okay="" />
+        <attribute spell="*" />
+        <attribute awakened="" />
+        <attribute no_cancel="" />
+        <attribute benevolent="" />
+        <attribute super_realm="" />
+        <attribute no_expire="" />
+        <attribute no_incantation_tie="" />
       </AttributeBlock>
     </GameObject>
   </objects>

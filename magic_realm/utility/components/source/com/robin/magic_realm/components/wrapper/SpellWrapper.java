@@ -37,6 +37,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	public static final String NULLIFIED_SPELLS = "nullified_spells"; // Other spells which have been nullified by this spell
 	private static final String SPELL_VIRTUAL = "virtual";		// A virtual spell is an instance of a real spell when cast using Enhanced Magic rules (i.e., the spell isn't tied up)
 	public static final String INCANTATION_TIE = "incantation_tie";
+	public static final String NO_INCANTATION_TIE = "no_incantation_tie";
 	public static final String COLOR_CHIT = "color_chit";
 	public static final String CASTER_ID = "caster_id";
 	
@@ -169,8 +170,10 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		
 		setBoolean(SPELL_AFFECTED,false); // make sure this is cleared out
 		setBoolean(SPELL_ALIVE,true);
-		setString(INCANTATION_TIE,incantationObject.getStringId());
-		incantationObject.addThisAttributeListItem(INCANTATION_TIE,getCastMagicType());
+		if (!getGameObject().hasThisAttribute(NO_INCANTATION_TIE)) {
+			setString(INCANTATION_TIE,incantationObject.getStringId());
+			incantationObject.addThisAttributeListItem(INCANTATION_TIE,getCastMagicType());
+		}
 		
 		RealmComponent rc = RealmComponent.getRealmComponent(incantationObject);
 		if (rc.isActionChit()) {

@@ -323,6 +323,8 @@ public class Constants {
 	public static final String DISENCHANTMENT_POTION_AFFECTED_CHARACTER = "disenchantment_potion_affected_character";
 	public static final String DISENCHANT = "disenchant";
 	public static final String ENCHANT = "enchant";
+	public static final String WEIGHT_NEGLIGIBLE = "weight_negligible";
+	public static final String PROVIDES_MAGIC_CHIT = "provides_magic_chit";
 	
 	// Native ThisAttributes
 	public static final String HIDDEN = "hidden";

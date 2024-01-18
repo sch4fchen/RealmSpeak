@@ -364,6 +364,10 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 		if (magic!=null) {
 			possMagicTypes.add(magic);
 		}
+		String magic2 = treasure.getThisAttribute("magic2");
+		if (magic2!=null) {
+			possMagicTypes.add(magic2);
+		}
 		
 		// Include any enchantments
 		ArrayList<String> enchants = treasure.getThisAttributeList(Constants.ARTIFACT_ENHANCED_MAGIC);

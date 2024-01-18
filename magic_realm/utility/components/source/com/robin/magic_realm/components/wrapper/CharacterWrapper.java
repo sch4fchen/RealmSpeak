@@ -4608,7 +4608,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 			// Check for artifacts and spell books
 			for (GameObject treasure:getActivatedTreasureObjects()) {
-				if (optionalArtifacts || treasure.hasThisAttribute(Constants.RING)) {
+				if (optionalArtifacts || treasure.hasThisAttribute(Constants.RING) || treasure.hasThisAttribute(Constants.PROVIDES_MAGIC_CHIT)) {
 					if (treasure.hasThisAttribute(SpellWrapper.INCANTATION_TIE)) {
 						continue; // tied up treasures cannot be used again
 					}

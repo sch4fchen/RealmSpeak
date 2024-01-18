@@ -156,6 +156,7 @@ public class SpellEffectFactory {
 			case "grow wings": return new ISpellEffect[]{new ApplyNamedEffect(Constants.GROW_WINGS)};
 			case "holy shield": return new ISpellEffect[]{new PhaseChitEffect()};
 			case "horse whisper": return new ISpellEffect[]{new ApplyNamedEffect(Constants.HORSE_WHISPER),new TurnLightSideUpEffect()};
+			case "lift object": return new ISpellEffect[]{new ApplyNamedEffect(Constants.WEIGHT_NEGLIGIBLE)};
 			case "meditate": return new ISpellEffect[]{new MeditateEffect()};
 			case "mesmerize": return new ISpellEffect[]{new MesmerizeEffect()};
 			case "migration": return new ISpellEffect[]{new MigrationEffect()};
