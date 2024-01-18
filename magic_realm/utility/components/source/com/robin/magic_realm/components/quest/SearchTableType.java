@@ -14,5 +14,6 @@ public enum SearchTableType {
 	FountainOfHealth,
 	CircleOfStones,
 	EtherealAbbey,
+	FairyGrove,
 	;
 }

@@ -141,6 +141,12 @@ public class TableLoot extends Loot {
 			qp.searchType = SearchResultType.Gold;
 			qp.searchHadAnEffect = true;
 		}
+		else if ("loose_gold".equals(result)) {
+			character.addGold(-1);
+			ret = "Loose 1 gold.";
+			qp.searchType = SearchResultType.Gold;
+			qp.searchHadAnEffect = true;
+		}
 		else if ("spell".equals(result)) {
 			ret = learnSpell(character);
 			qp.searchType = SearchResultType.LearnSpell;
@@ -200,6 +206,16 @@ public class TableLoot extends Loot {
 			doTransport(character,"ruins");
 			ret = "Teleport to ANY Ruins";
 			qp.searchType = SearchResultType.RuinsTeleport;
+			qp.searchHadAnEffect = true;
+		}
+		else if ("teleport_woods".equals(result)) {
+			/*
+			 * Teleport to any ruins on the map and continue turn from there as if nothing else had changed.  If
+			 * already in a woods clearing, you can stay there.
+			 */
+			doTransport(character,"woods");
+			ret = "Teleport to ANY Woods";
+			qp.searchType = SearchResultType.WoodsTeleport;
 			qp.searchHadAnEffect = true;
 		}
 		else if ("peer_any".equals(result)) {

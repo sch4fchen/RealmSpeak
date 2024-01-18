@@ -26,6 +26,7 @@ public enum SearchResultType {
 	
 	CaveTeleport,
 	MountainTeleport,
+	WoodsTeleport,
 	RuinsTeleport,
 	PeerEnchantAnyClearing,
 	PowerOfThePit,
@@ -160,6 +161,14 @@ public enum SearchResultType {
 				list.add(SearchResultType.TreasureCards);
 				list.add(SearchResultType.LearnSpell);
 				list.add(SearchResultType.Mesmerize);
+				break;
+			case FairyGrove:
+				list.add(SearchResultType.Counters);
+				list.add(SearchResultType.TreasureCards);
+				list.add(SearchResultType.LearnSpell);
+				list.add(SearchResultType.WoodsTeleport);
+				list.add(SearchResultType.Mesmerize);
+				list.add(SearchResultType.Gold);
 				break;
 		}
 		

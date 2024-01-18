@@ -59738,10 +59738,10 @@
         <attribute super_realm="" />
         <attribute pacifytype="1" />
         <attribute no_expire="" />
+        <attribute no_incantation_tie="" />
         <attributeList keyName="pacifymonster">
           <attributeVal N0="skeleton" />
         </attributeList>
-        <attribute no_incantation_tie="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2248" name="Caged Bird">
@@ -60228,6 +60228,34 @@
         <attribute no_incantation_tie="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2273" name="Fairy Grove">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="fairgy_grove" />
+        <attribute treasure="large" />
+        <attribute text="Extra ALERT" />
+        <attribute cannot_move="" />
+        <attribute treasure_within_treasure="7" />
+        <attribute print="" />
+        <attribute discovery="" />
+        <attribute color_source="gold" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="twt" />
+        <attribute ts_color="lightblue" />
+        <attribute nosecret="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute extra_actions_clearing="A" />
+      </AttributeBlock>
+      <AttributeBlock blockName="table">
+        <attribute roll_1="horse" />
+        <attribute roll_2="treasure" />
+        <attribute roll_3="spell" />
+        <attribute roll_4="teleport_woods" />
+        <attribute roll_5="mesmerize" />
+        <attribute roll_6="loose_gold" />
+      </AttributeBlock>
+      <contains id="1935" />
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
@@ -60570,6 +60598,7 @@
       <Add from="LARGE_TREASURES" targetObjectID="2249" count="1" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="2033" count="1" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="2268" count="1" transferType="Random" />
+      <Add from="LARGE_TREASURES" targetObjectID="2273" count="1" transferType="Random" />
       <Move from="TWT" to="LARGE_TREASURES" count="6" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="1220" count="5" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="1221" count="3" transferType="Random" />
@@ -60656,6 +60685,7 @@
       <Add from="SPELL_III" targetObjectID="1235" count="1" transferType="Random" />
       <Add from="SPELL_II" targetObjectID="1235" count="1" transferType="Random" />
       <Add from="SPELL_VII" targetObjectID="2268" count="1" transferType="Random" />
+      <Add from="SPELL_III" targetObjectID="2273" count="1" transferType="Random" />
       <Add from="SPELL_V" targetObjectID="1317" count="1" transferType="Random" />
       <Add from="SPELL_III" targetObjectID="1402" count="1" transferType="Random" />
       <Add from="SPELL_VIII" targetObjectID="1286" count="1" transferType="Random" />
@@ -60730,7 +60760,6 @@
       <Extract from="ALL" to="CHITS" keyVals="tile_type=ST,chit" />
       <Distribute from="CHITS" to="ST_TILES" count="5" transferType="Random" />
       <OrderSetup />
-      <Create newPool="" />
     </GameSetup>
   </setups>
 </game>

@@ -456,6 +456,11 @@ public class Loot extends RealmTable {
 			character.addGold(gold);
 			JOptionPane.showMessageDialog(getParentFrame(),"Received "+gold+" gold.","Found Gold",JOptionPane.INFORMATION_MESSAGE);
 		}
+		if (thing.hasThisAttribute("gold_penalty")) {
+			int gold = thing.getThisInt("gold_penalty");
+			character.addGold(-gold);
+			JOptionPane.showMessageDialog(getParentFrame(),"Lost "+gold+" gold.","Lost Gold",JOptionPane.INFORMATION_MESSAGE);
+		}
 		if (thing.hasThisAttribute("enchant_tile")) {
 			TileLocation loc = character.getCurrentLocation();
 			if (loc!=null && loc.tile!=null) {
