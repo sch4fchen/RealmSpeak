@@ -78,6 +78,12 @@ public class Fly {
 			}
 		}
 	}
+	public boolean mustLand() {
+		if (rc!=null&&rc.getGameObject().hasThisAttribute("must_land")) {
+			return true;			
+		}
+		return false;
+	}
 	public static boolean valid(RealmComponent rc) {
 		if (rc.isFlyChit()) {
 			return true;

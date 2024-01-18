@@ -5686,14 +5686,18 @@ public class CharacterWrapper extends GameObjectWrapper {
 							BattleUtility.getMoveSpeed(RealmComponent.getRealmComponent(getGameObject()))));
 		}
 		else {
-			// Check Treasures (Flying Carpet)
+			// Check Treasures (Flying Carpet and Glider)
 			for (GameObject item:getEnhancingItems()) {
 				String val = item.getThisAttribute("fly_strength");
 				if (val!=null) {
-					list.add(new StrengthChit(
-									item,
-									new Strength(val),
-									new Speed(item.getThisInt("fly_speed"))));
+					if (item.hasThisAttribute("clearing_req")) {
+						String clearingType = item.getThisAttribute("clearing_req");
+						ClearingDetail clearing = getCurrentLocation().clearing;
+						if (clearing==null || !clearing.getTypeCode().matches(clearingType)) {
+							continue;
+						}
+					}
+					list.add(new StrengthChit(item,new Strength(val),new Speed(item.getThisInt("fly_speed"))));
 				}
 			}
 			

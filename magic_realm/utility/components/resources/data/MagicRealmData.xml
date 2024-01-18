@@ -60271,6 +60271,26 @@
         <attribute flash_bomb="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2275" name="Glider">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="38" />
+        <attribute notoriety="4" />
+        <attribute weight="H" />
+        <attribute magic_color="purple" />
+        <attribute text="FLY H3 (in purple) in mountain clearings" />
+        <attribute cast_spell_on_init="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute fame="3" />
+        <attribute fly_strength="H" />
+        <attribute fly_speed="3" />
+        <attribute clearing_req="M" />
+        <attribute must_land="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

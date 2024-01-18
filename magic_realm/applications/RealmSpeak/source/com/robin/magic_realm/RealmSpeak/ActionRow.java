@@ -2118,6 +2118,10 @@ public class ActionRow {
 				character.setHidden(false);
 			}
 			
+			if (fly!=null&&fly.mustLand()) {
+				character.land(gameHandler.getMainFrame());
+			}
+			
 			// Followers shouldn't follow here, unless they can fly, or they are a familiar
 			for (CharacterWrapper follower : character.getActionFollowers()) {
 				if (follower.mustFly() || follower.isFamiliar()) {
