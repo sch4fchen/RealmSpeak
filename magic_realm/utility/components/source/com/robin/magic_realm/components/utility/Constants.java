@@ -325,6 +325,7 @@ public class Constants {
 	public static final String ENCHANT = "enchant";
 	public static final String WEIGHT_NEGLIGIBLE = "weight_negligible";
 	public static final String PROVIDES_MAGIC_CHIT = "provides_magic_chit";
+	public static final String FLASH_BOMB = "flash_bomb";
 	
 	// Native ThisAttributes
 	public static final String HIDDEN = "hidden";

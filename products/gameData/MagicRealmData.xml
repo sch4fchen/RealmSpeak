@@ -60256,6 +60256,21 @@
       </AttributeBlock>
       <contains id="1935" />
     </GameObject>
+    <GameObject id="2274" name="Flash Bomb">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="7" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Immediately become hidden. All denizens assigned to you become unassigned." />
+        <attribute discard="shaman" />
+        <attribute potion="" />
+        <attribute flash_bomb="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

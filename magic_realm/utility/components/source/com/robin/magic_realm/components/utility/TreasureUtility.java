@@ -629,6 +629,20 @@ public class TreasureUtility {
 			GameObject companion = getCompanionFromItem(thing);
 			character.addHireling(companion);
 		}
+		if (thing.hasThisAttribute(Constants.FLASH_BOMB)) {
+			character.setHidden(true);
+			CombatWrapper characterCw = new CombatWrapper(character.getGameObject());
+			ArrayList<RealmComponent> attackers = characterCw.getAttackersAsComponents();
+			for (RealmComponent attacker : attackers) {
+				if (attacker.getTarget()!=null && attacker.getTarget().getGameObject() == character.getGameObject()) {
+					attacker.clearTarget();
+				}
+				if (attacker.get2ndTarget()!=null && attacker.get2ndTarget().getGameObject() == character.getGameObject()) {
+					attacker.clear2ndTarget();
+				}
+			}
+			characterCw.removeAllAttackers();			
+		}
 		
 		if (thing.hasThisAttribute(Constants.PACIFY_MONSTERS)) {
 			TileLocation loc = character.getCurrentLocation();
