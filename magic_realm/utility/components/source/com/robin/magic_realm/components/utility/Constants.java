@@ -312,7 +312,7 @@ public class Constants {
 	public static final String PACIFY_MONSTERS = "pacify_monsters";
 	public static final String PACIFY_MONSTER = "pacifymonster";
 	public static final String PACIFY_TYPE = "pacifytype";
-	public static final String UNBREAKABLE_SPELL = "unbreakable_spell";
+	public static final String REENERGIZE = "reenergize";
 	public static final String CHITS_PRISM_COLOR = "chits_prism_color";
 	public static final String RING = "ring";
 	public static final String ENCHANT_TILE = "enchant_tile";

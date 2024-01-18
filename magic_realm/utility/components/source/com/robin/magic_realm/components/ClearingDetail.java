@@ -756,7 +756,7 @@ public class ClearingDetail {
 				break;
 			}
 		}
-		if (item.hasThisAttribute(Constants.UNBREAKABLE_SPELL)) {
+		if (item.hasThisAttribute(Constants.REENERGIZE)) {
 			boolean energized = false;
 			ColorMagic requiredColor = ColorMagic.makeColorMagic(item.getThisAttribute("magic_color"),true);
 			for (ColorMagic c : colors) {
