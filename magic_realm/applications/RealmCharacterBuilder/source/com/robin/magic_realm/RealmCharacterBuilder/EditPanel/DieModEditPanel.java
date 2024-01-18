@@ -21,7 +21,7 @@ public class DieModEditPanel extends AdvantageEditPanel {
 		{"Battle","Missile","Thrown","Fumble","Stumble"},
 		
 		{"Expansion","Raise Dead:raisedead","Summon Elemental:summonelemental","Summon Animal:summonanimal","Capture"},
-		{"Treasure within Treasure","Toadstool Circle","Crypt of the Knight","Enchanted Meadow", "Cicle of Stones", "Ethereal Abbey", "Fairy Grove"},
+		{"Treasure within Treasure","Toadstool Circle","Crypt of the Knight","Enchanted Meadow", "Cicle of Stones", "Ethereal Abbey", "Fairy Grove", "Haunted Grave"},
 		{"Search","Locate","Loot","Magic Sight:magicsight","Peer","Read Runes:readrunes"},
 	};
 	

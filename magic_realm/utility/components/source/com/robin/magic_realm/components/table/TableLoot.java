@@ -147,6 +147,12 @@ public class TableLoot extends Loot {
 			qp.searchType = SearchResultType.Gold;
 			qp.searchHadAnEffect = true;
 		}
+		else if ("notoriety".equals(result)) {
+			character.addNotoriety(1);
+			ret = "Gain 1 notoriety.";
+			qp.searchType = SearchResultType.Notoriety;
+			qp.searchHadAnEffect = true;
+		}
 		else if ("spell".equals(result)) {
 			ret = learnSpell(character);
 			qp.searchType = SearchResultType.LearnSpell;
@@ -237,6 +243,13 @@ public class TableLoot extends Loot {
 			qp.searchType = SearchResultType.PowerOfThePit;
 			qp.searchHadAnEffect = true;
 		}
+		else if ("summon_demon".equals(result)) {
+			SummonDemon summon = new SummonDemon(getParentFrame());
+			setNewTable(summon);
+			ret = "Summon Demon";
+			qp.searchType = SearchResultType.SummonDemon;
+			qp.searchHadAnEffect = true;
+		}
 		else if ("heal".equals(result)) {
 			SpellUtility.heal(character);
 			ret = "Heal";
@@ -249,6 +262,12 @@ public class TableLoot extends Loot {
 			rester.setVisible(true);
 			ret = "Rested "+rests+" asterisks";
 			qp.searchType = SearchResultType.Rest;
+			qp.searchHadAnEffect = true;
+		}
+		else if ("unhide".equals(result)) {
+			character.setHidden(false);
+			ret = "Unhide";
+			qp.searchType = SearchResultType.Unhide;
 			qp.searchHadAnEffect = true;
 		}
 		else if ("remove_curse".equals(result)) {

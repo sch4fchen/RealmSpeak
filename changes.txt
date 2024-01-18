@@ -1,7 +1,7 @@
 Sword of Terror (QuestReqInventoryMissing) - fix trigger for loosing the sword
 ::ROADMAP::
 ---Super Realm Content---
-Treasures: 30: Haunted Grave, Holy Ring, Holy Water 2x, Horse Armor, Hound, Links, Mage Diary, Mage Library, Map of Lost Fortress, Map of Lost Palace, Mist Crystal, Ointment of Stone 2x, Pagan Ring, Pentagram, Profane Idol, Realm Map, Repair Kit 2x, Ruby Ring, Sails, Scented Bait, Scope, Scribe Spectacles, Scroll of Allure, Scroll of Lore, Scroll of Malice, Spirit Charm, Spurs, Talisman, Travelers Guide, White Feathered Wing
+Treasures: 29: Holy Ring, Holy Water 2x, Horse Armor, Hound, Links, Mage Diary, Mage Library, Map of Lost Fortress, Map of Lost Palace, Mist Crystal, Ointment of Stone 2x, Pagan Ring, Pentagram, Profane Idol, Realm Map, Repair Kit 2x, Ruby Ring, Sails, Scented Bait, Scope, Scribe Spectacles, Scroll of Allure, Scroll of Lore, Scroll of Malice, Spirit Charm, Spurs, Talisman, Travelers Guide, White Feathered Wing
 Super Realm: visitors/travelers etc. (Shaman, Priest etc.)
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Nomads, Tasks, Travelers: 4.8 (p.41)
@@ -72,7 +72,7 @@ Would be nice to make weapon abilities too:
 
 Version 1.1.8.6
 SUPER REALM:
-# New treasures: Faerie Statue, Fairy Grove, Flash Bomb, Glider, Golden Lyre
+# New treasures: Faerie Statue, Fairy Grove, Flash Bomb, Glider, Golden Lyre, Haunted Grave
 
 Version 1.1.8.5
 SUPER REALM:

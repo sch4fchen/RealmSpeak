@@ -17,7 +17,7 @@ public class TreasureLocationEditPanel extends AdvantageEditPanel {
 				"Remains of Thief:thief","Mouldy Skeleton:skeleton","Crypt of the Knight:crypt","Enchanted Meadow:meadow","Toadstool Circle:toadstool_circle",
 				"Fountain of Health:fountain","Adventurer's Cache:adventurer_cache","Archeological Dig:dig","Stones","Maze","Tree","Web","Hive","Tomb","Pond",
 				"Pit","Den","Tower","Spire","Garden","Temple",
-				"Circle of Stones:circle_of_stones","Conjuror's Remains:conjuror", "Ethereal Abbey:abbey", "Fairy Grove:fairy_grove"};
+				"Circle of Stones:circle_of_stones","Conjuror's Remains:conjuror", "Ethereal Abbey:abbey", "Fairy Grove:grove", "Haunted Grave:grave"};
 
 	private Hashtable<String,JCheckBox> hash;
 	

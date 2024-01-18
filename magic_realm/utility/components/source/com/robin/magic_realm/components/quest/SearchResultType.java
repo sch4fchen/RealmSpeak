@@ -32,13 +32,16 @@ public enum SearchResultType {
 	PowerOfThePit,
 	
 	Gold,
+	Notoriety,
 	
 	Wish,
 	Heal,
+	SummonDemon,
 	
 	Rest,
 	RemoveCurse,
 	Wound,
+	Unhide,
 	;
 	public boolean canGetTreasure() {
 		switch(this) {
@@ -169,6 +172,14 @@ public enum SearchResultType {
 				list.add(SearchResultType.WoodsTeleport);
 				list.add(SearchResultType.Mesmerize);
 				list.add(SearchResultType.Gold);
+				break;
+			case HauntedGrave:
+				list.add(SearchResultType.Counters);
+				list.add(SearchResultType.TreasureCards);
+				list.add(SearchResultType.Notoriety);
+				list.add(SearchResultType.LearnSpell);
+				list.add(SearchResultType.SummonDemon);
+				list.add(SearchResultType.Unhide);
 				break;
 		}
 		

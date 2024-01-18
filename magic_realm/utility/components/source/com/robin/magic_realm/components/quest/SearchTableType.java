@@ -15,5 +15,6 @@ public enum SearchTableType {
 	CircleOfStones,
 	EtherealAbbey,
 	FairyGrove,
+	HauntedGrave,
 	;
 }
