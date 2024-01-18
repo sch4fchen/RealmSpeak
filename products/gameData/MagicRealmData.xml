@@ -59739,6 +59739,7 @@
         <attributeList keyName="pacifymonster">
           <attributeVal N0="skeleton" />
         </attributeList>
+        <attribute super_realm_treasure="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2248" name="Caged Bird">
@@ -59878,6 +59879,7 @@
         <attribute no_expire="" />
         <attribute enchant_key="" />
         <attribute no_incantation_tie="" />
+        <attribute super_realm_treasure="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2255" name="Crystal Shard">
@@ -60218,11 +60220,12 @@
         <attribute super_realm="" />
         <attribute no_expire="" />
         <attribute no_incantation_tie="" />
+        <attribute super_realm_treasure="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2273" name="Fairy Grove">
       <AttributeBlock blockName="this">
-        <attribute treasure_location="fairgy_grove" />
+        <attribute treasure_location="grove" />
         <attribute treasure="large" />
         <attribute text="Extra ALERT" />
         <attribute cannot_move="" />
@@ -60300,6 +60303,55 @@
         </attributeList>
         <attribute native="Lancers" />
         <attribute great="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2277" name="Haunted Grave">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="grave" />
+        <attribute treasure="large" />
+        <attribute text="" />
+        <attribute cannot_move="" />
+        <attribute treasure_within_treasure="9" />
+        <attribute print="" />
+        <attribute discovery="" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="twt" />
+        <attribute ts_color="lightblue" />
+        <attribute nosecret="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="table">
+        <attribute roll_1="axe" />
+        <attribute roll_2="treasure" />
+        <attribute roll_3="spell" />
+        <attribute roll_4="notoriety" />
+        <attribute roll_5="summon_demon" />
+        <attribute roll_6="unhide" />
+      </AttributeBlock>
+      <contains id="2027" />
+    </GameObject>
+    <GameObject id="2278" name="Holy Ring">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="16" />
+        <attribute notoriety="-5" />
+        <attribute fame="10" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Can be used once per day to cast a I spell." />
+        <attribute ring="" />
+        <attribute magic="I" />
+        <attribute speed="0" />
+        <attribute action="magic" />
+        <attribute great="" />
+        <attribute scholar_price="20" />
+        <attribute merchant_price="20" />
+        <attribute native="Order" />
+        <attribute priest_price="20" />
       </AttributeBlock>
     </GameObject>
   </objects>
@@ -60645,6 +60697,7 @@
       <Add from="LARGE_TREASURES" targetObjectID="2033" count="1" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="2268" count="1" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="2273" count="1" transferType="Random" />
+      <Add from="LARGE_TREASURES" targetObjectID="2277" count="1" transferType="Random" />
       <Move from="TWT" to="LARGE_TREASURES" count="6" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="1220" count="5" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="1221" count="3" transferType="Random" />
@@ -60732,6 +60785,7 @@
       <Add from="SPELL_II" targetObjectID="1235" count="1" transferType="Random" />
       <Add from="SPELL_VII" targetObjectID="2268" count="1" transferType="Random" />
       <Add from="SPELL_III" targetObjectID="2273" count="1" transferType="Random" />
+      <Add from="SPELL_V" targetObjectID="2277" count="1" transferType="Random" />
       <Add from="SPELL_V" targetObjectID="1317" count="1" transferType="Random" />
       <Add from="SPELL_III" targetObjectID="1402" count="1" transferType="Random" />
       <Add from="SPELL_VIII" targetObjectID="1286" count="1" transferType="Random" />
