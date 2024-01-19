@@ -650,7 +650,10 @@ public class TreasureUtility {
 		}
 		if (thing.hasThisAttribute(Constants.SUMMON_COMPANION)) {
 			GameObject companion = getCompanionFromItem(thing);
-			character.addHireling(companion);
+			character.addHireling(companion,Constants.TEN_YEARS);
+			if (character.getCurrentLocation().clearing!=null) {
+				character.getCurrentLocation().clearing.add(companion,null);
+			}
 		}
 		if (thing.hasThisAttribute(Constants.FLASH_BOMB)) {
 			character.setHidden(true);
