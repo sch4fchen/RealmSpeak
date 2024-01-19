@@ -1221,7 +1221,9 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		DieRoller monsterDieRoller = game.getMonsterDie();
 		DieRoller nativeDieRoller = game.getNativeDie();
 		for (CharacterWrapper aFollower : toRemove) {
-			getCharacter().removeActionFollower(aFollower,monsterDieRoller,nativeDieRoller);
+			if (!aFollower.hasActiveInventoryThisKey(Constants.LINKS)) {
+				getCharacter().removeActionFollower(aFollower,monsterDieRoller,nativeDieRoller);
+			}
 		}
 		
 		// Reset the list

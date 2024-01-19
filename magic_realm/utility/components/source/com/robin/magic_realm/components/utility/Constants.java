@@ -330,6 +330,7 @@ public class Constants {
 	public static final String HOLY_WATER = "holy_water";
 	public static final String HOLY_WATER_AFFECTED_CHARACTER = "holy_water_affected_character";
 	public static final String HORSE_ARMOR = "horse_armor";
+	public static final String LINKS = "links";
 	
 	// Native ThisAttributes
 	public static final String HIDDEN = "hidden";

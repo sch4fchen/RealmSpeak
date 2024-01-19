@@ -78,11 +78,8 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		RealmComponent owner = getHeldBy();
 		if (getGameObject().hasThisAttribute("horse") && getStrength().strongerOrEqualTo(new Strength("M")) && owner!=null) {
 			CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
-			for (GameObject treasure : character.getActivatedTreasureObjects()) {
-				if (treasure.hasThisAttribute(Constants.HORSE_ARMOR)) {
-					mod++;
-					break;
-				}
+			if (character.getActiveInventoryThisKey(Constants.HORSE_ARMOR)!=null) {
+				mod++;
 			}
 		}
 		return mod;
@@ -383,10 +380,8 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		RealmComponent owner = getHeldBy();
 		if (getGameObject().hasThisAttribute("horse") && getStrength().strongerOrEqualTo(new Strength("M")) && owner!=null) {
 			CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
-			for (GameObject treasure : character.getActivatedTreasureObjects()) {
-				if (treasure.hasThisAttribute(Constants.HORSE_ARMOR)) {
-					return true;
-				}
+			if (character.getActiveInventoryThisKey(Constants.HORSE_ARMOR)!=null) {
+				return true;
 			}
 		}
 		return false;
