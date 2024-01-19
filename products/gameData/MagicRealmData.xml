@@ -60421,6 +60421,20 @@
         <attribute chit_color="lightgreen" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2284" name="Links">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="If doing FOLLOW, the guide cannot leave you behind." />
+        <attribute base_price="7" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute links="" />
+        <attribute weight="L" />
+        <attribute notoriety="-5" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
