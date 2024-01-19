@@ -32730,7 +32730,6 @@
         <attribute text="All monsters in hex are lured to the clearing during evening" />
         <attribute rw_expansion_1="" />
         <attribute base_price="2" />
-        <attribute notoriety="0" />
         <attribute facing="face_dn" />
         <attribute fame="0" />
         <attribute magic_food="" />
@@ -32746,7 +32745,6 @@
         <attribute base_price="20" />
         <attribute discard="warlock" />
         <attribute potion="" />
-        <attribute notoriety="0" />
         <attribute facing="face_dn" />
         <attribute fame="0" />
         <attribute magic_path="" />
@@ -53913,7 +53911,6 @@
       <AttributeBlock blockName="this">
         <attribute weight="H" />
         <attribute length="7" />
-        <attribute fame="0" />
         <attribute notoriety="15" />
         <attribute base_price="20" />
         <attribute magic="" />
@@ -55583,7 +55580,6 @@
         <attribute item="" />
         <attribute super_realm="" />
         <attribute notoriety="15" />
-        <attribute fame="0" />
         <attribute magic="" />
         <attribute magic_color_bonus="purple" />
         <attribute bow="" />
@@ -55605,7 +55601,6 @@
       <AttributeBlock blockName="this">
         <attribute weight="L" />
         <attribute length="9" />
-        <attribute fame="0" />
         <attribute notoriety="9" />
         <attribute base_price="15" />
         <attribute weapon="" />
@@ -60061,7 +60056,6 @@
         <attribute treasure="large" />
         <attribute base_price="15" />
         <attribute notoriety="5" />
-        <attribute fame="0" />
         <attribute print="" />
         <attribute facing="face_dn" />
         <attribute item="" />
@@ -60081,7 +60075,6 @@
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="5" />
-        <attribute fame="0" />
         <attribute notoriety="5" />
         <attribute magic="II" />
         <attribute book="" />
@@ -60148,7 +60141,6 @@
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="24" />
-        <attribute notoriety="0" />
         <attribute fame="10" />
         <attribute print="" />
         <attribute facing="face_dn" />
@@ -60167,7 +60159,6 @@
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="10" />
-        <attribute notoriety="0" />
         <attribute fame="5" />
         <attribute print="" />
         <attribute facing="face_dn" />
@@ -60289,7 +60280,6 @@
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="71" />
-        <attribute notoriety="0" />
         <attribute fame="7" />
         <attribute print="" />
         <attribute facing="face_dn" />
@@ -60384,6 +60374,57 @@
         <attribute potion="" />
         <attribute holy_water="" />
         <attribute combat_only="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2281" name="Horse Armor">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="9" />
+        <attribute notoriety="6" />
+        <attribute fame="3" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="If you have an active horse, it is armored with +1 to its speed. Horse must be able to carry armor's weight." />
+        <attribute weight="M" />
+        <attribute horse_armor="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2283" name="Hound">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute text="Use to lure monsters to separate combat sheet" />
+        <attribute base_price="10" />
+        <attribute discard="warlock" />
+        <attribute potion="" />
+        <attribute facing="face_dn" />
+        <attribute fame="2" />
+        <attribute summon_companion="Hound" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute native="Hunters" />
+      </AttributeBlock>
+      <AttributeBlock blockName="companion">
+        <attribute monster="" />
+        <attribute vulnerability="M" />
+        <attribute fame="0" />
+        <attribute notoriety="0" />
+        <attribute icon_type="Era_of_Chaos-animals-hound" />
+        <attribute icon_folder="wesnoth/units/addons" />
+        <attribute denizen="" />
+        <attribute hound="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="companion_light">
+        <attribute move_speed="2" />
+        <attribute chit_color="lightgreen" />
+      </AttributeBlock>
+      <AttributeBlock blockName="companion_dark">
+        <attribute move_speed="2" />
+        <attribute chit_color="lightgreen" />
       </AttributeBlock>
     </GameObject>
   </objects>

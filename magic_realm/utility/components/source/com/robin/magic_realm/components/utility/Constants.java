@@ -328,6 +328,7 @@ public class Constants {
 	public static final String FLASH_BOMB = "flash_bomb";
 	public static final String HOLY_WATER = "holy_water";
 	public static final String HOLY_WATER_AFFECTED_CHARACTER = "holy_water_affected_character";
+	public static final String HORSE_ARMOR = "horse_armor";
 	
 	// Native ThisAttributes
 	public static final String HIDDEN = "hidden";

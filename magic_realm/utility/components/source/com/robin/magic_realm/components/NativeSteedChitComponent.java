@@ -75,6 +75,16 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
 			mod++;
 		}
+		RealmComponent owner = getHeldBy();
+		if (getGameObject().hasThisAttribute("horse") && getStrength().strongerOrEqualTo(new Strength("M")) && owner!=null) {
+			CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
+			for (GameObject treasure : character.getActivatedTreasureObjects()) {
+				if (treasure.hasThisAttribute(Constants.HORSE_ARMOR)) {
+					mod++;
+					break;
+				}
+			}
+		}
 		return mod;
 	}
 	public String getLightSideStat() {
@@ -367,7 +377,19 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		return strength;
 	}
 	public boolean isArmored() {
-		return getGameObject().hasThisAttribute(Constants.ARMORED);
+		if (getGameObject().hasThisAttribute(Constants.ARMORED)) {
+			return true;
+		}
+		RealmComponent owner = getHeldBy();
+		if (getGameObject().hasThisAttribute("horse") && getStrength().strongerOrEqualTo(new Strength("M")) && owner!=null) {
+			CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
+			for (GameObject treasure : character.getActivatedTreasureObjects()) {
+				if (treasure.hasThisAttribute(Constants.HORSE_ARMOR)) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	public boolean hasBarkskin() {
 		return getGameObject().hasThisAttribute(Constants.BARKSKIN);

@@ -128,6 +128,9 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		
 		drawDamageAssessment(g);
 	}
+	private Strength getStrength() {
+		return new Strength(getFaceAttributeString("strength"));
+	}
 	// BattleChit Interface
 	public boolean targets(BattleChit chit) {
 		return false;
@@ -142,6 +145,16 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		}
 		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
 			mod++;
+		}
+		RealmComponent owner = getHeldBy();
+		if (getGameObject().hasThisAttribute("horse") && getStrength().strongerOrEqualTo(new Strength("M")) && owner!=null) {
+			CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
+			for (GameObject treasure : character.getActivatedTreasureObjects()) {
+				if (treasure.hasThisAttribute(Constants.HORSE_ARMOR)) {
+					mod++;
+					break;
+				}
+			}
 		}
 		Speed speed = new Speed(getFaceAttributeInteger("move_speed"),mod);
 		if (getGameObject().hasThisAttribute(Constants.GROW_WINGS) && (new Speed(Constants.GROW_WINGS_SPEED)).fasterThan(speed)) {
@@ -182,6 +195,16 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		}
 		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
 			mod++;
+		}
+		RealmComponent owner = getHeldBy();
+		if (getGameObject().hasThisAttribute("horse") && getStrength().strongerOrEqualTo(new Strength("M")) && owner!=null) {
+			CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
+			for (GameObject treasure : character.getActivatedTreasureObjects()) {
+				if (treasure.hasThisAttribute(Constants.HORSE_ARMOR)) {
+					mod++;
+					break;
+				}
+			}
 		}
 		alteredMoveSpeed = mod!=0;
 		return mod;
@@ -316,7 +339,19 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		return strength;
 	}
 	public boolean isArmored() {
-		return getGameObject().hasThisAttribute(Constants.ARMORED);
+		if (getGameObject().hasThisAttribute(Constants.ARMORED)) {
+			return true;
+		}
+		RealmComponent owner = getHeldBy();
+		if (getGameObject().hasThisAttribute("horse") && getStrength().strongerOrEqualTo(new Strength("M")) && owner!=null) {
+			CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
+			for (GameObject treasure : character.getActivatedTreasureObjects()) {
+				if (treasure.hasThisAttribute(Constants.HORSE_ARMOR)) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	public boolean hasBarkskin() {
 		return getGameObject().hasThisAttribute(Constants.BARKSKIN);
