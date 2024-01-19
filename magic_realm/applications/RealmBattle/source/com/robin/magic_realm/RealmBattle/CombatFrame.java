@@ -1472,10 +1472,10 @@ public class CombatFrame extends JFrame {
 				if (activeCharacterIsHere) {
 					castableSpellSets = activeCharacter.getCastableSpellSets();
 				}
-				castSpellButton.setEnabled(endCombatFrame==null && !combat.isPeaceful() && activeCharacterIsHere && !combat.getHasCharged() && !activeCharacterIsTransmorphed && castableSpellSets != null && castableSpellSets.size()>0 && !activeCharacter.affectedByKey(Constants.DISENCHANTMENT_POTION) && !changes);
+				castSpellButton.setEnabled(endCombatFrame==null && !combat.isPeaceful() && activeCharacterIsHere && !combat.getHasCharged() && !activeCharacterIsTransmorphed && castableSpellSets != null && castableSpellSets.size()>0 && !activeCharacter.affectedByKey(Constants.DISENCHANT_POTION) && !changes);
 			}
 			if (raiseDeadButton!=null) {
-				raiseDeadButton.setEnabled(endCombatFrame==null && !combat.isPeaceful() && activeCharacterIsHere && activeCharacter.affectedByKey(Constants.RAISE_DEAD) && !activeCharacter.affectedByKey(Constants.DISENCHANTMENT_POTION) && !combat.getRaisedDead() && !combat.getRaiseTheDead());
+				raiseDeadButton.setEnabled(endCombatFrame==null && !combat.isPeaceful() && activeCharacterIsHere && activeCharacter.affectedByKey(Constants.RAISE_DEAD) && !activeCharacter.affectedByKey(Constants.DISENCHANT_POTION) && !combat.getRaisedDead() && !combat.getRaiseTheDead());
 			}
 			if (selectSpellTargetsButton!=null) {
 				GameObject go = combat.getCastSpell();

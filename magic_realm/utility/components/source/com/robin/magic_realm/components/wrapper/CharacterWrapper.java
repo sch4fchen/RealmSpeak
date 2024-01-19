@@ -6526,7 +6526,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return affectedByKey(Constants.CANCEL_RECORDED_ACTION);
 	}
 	public boolean hasMagicProtection() {
-		return affectedByKey(Constants.MAGIC_PROTECTION) || affectedByKey(Constants.DISENCHANTMENT_POTION);
+		return affectedByKey(Constants.MAGIC_PROTECTION) || affectedByKey(Constants.DISENCHANT_POTION);
 	}
 	public boolean hasHealing() {
 		return hasActiveInventoryThisKey(Constants.WOUNDS_TO_FATIGUE);

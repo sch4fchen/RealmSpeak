@@ -56469,7 +56469,7 @@
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="14" />
-        <attribute text="Roll 1 die all rolls" />
+        <attribute text="If active when using table, only roll one die." />
         <attribute facing="face_dn" />
         <attribute item="" />
         <attribute super_realm="" />
@@ -59736,10 +59736,10 @@
         <attribute pacifytype="1" />
         <attribute no_expire="" />
         <attribute no_incantation_tie="" />
+        <attribute super_realm_treasure="" />
         <attributeList keyName="pacifymonster">
           <attributeVal N0="skeleton" />
         </attributeList>
-        <attribute super_realm_treasure="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2248" name="Caged Bird">
@@ -60002,7 +60002,7 @@
         <attribute priest_price="20" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2262" name="Disenchantment Potion">
+    <GameObject id="2262" name="Disenchant Potion">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="6" />
@@ -60018,7 +60018,7 @@
         <attribute oneshot="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2263" name="Disenchantment Potion">
+    <GameObject id="2263" name="Disenchant Potion">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="6" />
@@ -60155,11 +60155,11 @@
         <attribute item="" />
         <attribute super_realm="" />
         <attribute super_realm_treasure="" />
-        <attribute text="Roll 1 die for LOCATE" />
+        <attribute text="Roll 1 die for PEER" />
         <attribute native="Peasants" />
         <attribute weight="L" />
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:locate:all" />
+          <attributeVal N0="1d:peer:all" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
@@ -60174,15 +60174,15 @@
         <attribute item="" />
         <attribute super_realm="" />
         <attribute super_realm_treasure="" />
-        <attribute text="Roll 1 die for PEER" />
+        <attribute text="Roll 1 die for LOCATE" />
         <attribute native="Peasants" />
         <attribute weight="L" />
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:peer:all" />
+          <attributeVal N0="1d:locate:all" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2271" name="Faeri Statue">
+    <GameObject id="2271" name="Faerie Statue">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="80" />
@@ -60298,11 +60298,11 @@
         <attribute super_realm_treasure="" />
         <attribute text="Extra Rest" />
         <attribute weight="H" />
+        <attribute native="Lancers" />
+        <attribute great="" />
         <attributeList keyName="extra_actions">
           <attributeVal N0="R" />
         </attributeList>
-        <attribute native="Lancers" />
-        <attribute great="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2277" name="Haunted Grave">

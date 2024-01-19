@@ -319,8 +319,8 @@ public class Constants {
 	public static final String CURDLE_OF_BONE = "curdle_of_bone";
 	public static final String CURDLE_OF_BONE_AFFECTED_CHARACTER = "curdle_of_bone_affected_character";
 	public static final String WISH_AND_MESMERIZE = "wish_and_mesmerize";
-	public static final String DISENCHANTMENT_POTION = "disenchantment_potion";
-	public static final String DISENCHANTMENT_POTION_AFFECTED_CHARACTER = "disenchantment_potion_affected_character";
+	public static final String DISENCHANT_POTION = "disenchant_potion";
+	public static final String DISENCHANT_POTION_AFFECTED_CHARACTER = "disenchant_potion_affected_character";
 	public static final String DISENCHANT = "disenchant";
 	public static final String ENCHANT = "enchant";
 	public static final String WEIGHT_NEGLIGIBLE = "weight_negligible";
