@@ -347,6 +347,16 @@ public class TreasureUtility {
 					return false;
 				}
 			}
+			if (thing.hasThisAttribute(Constants.SUMMON_COMPANION) && !thing.hasThisAttribute(Constants.POTION)) {
+				GameObject companion = getCompanionFromItem(thing);
+				character.addHireling(companion,Constants.TEN_YEARS);
+				CombatWrapper combat = new CombatWrapper(companion);
+				combat.setSheetOwner(true); // in case you are in combat!
+				if (character.getCurrentLocation().clearing!=null) {
+					character.getCurrentLocation().clearing.add(companion,null);
+				}
+				thing.setThisAttribute(Constants.SUMMON_COMPANION_ID,companion.getStringId());
+			}
 			if (thing.hasThisAttribute(Constants.COMPANION_FROM_HOLD)) {
 				ArrayList<GameObject> companions = new ArrayList<>(thing.getHold());
 				StringBufferedList list = new StringBufferedList();
@@ -359,9 +369,17 @@ public class TreasureUtility {
 					group.addIcon(crc.getIcon());
 					CombatWrapper combat = new CombatWrapper(companion);
 					combat.setSheetOwner(true); // in case you are in combat!
+					if (thing.hasThisAttribute(Constants.COMPANION_FROM_HOLD_RETURNS)) {
+						thing.addThisAttributeListItem(Constants.COMPANION_FROM_HOLD_RETURNS,companion.getStringId());
+					}
 				}
-				JOptionPane.showMessageDialog(parentFrame,"The "+thing.getName()+" vanishes, and a "+list.toString()+" appears in its place!",thing.getName(),JOptionPane.PLAIN_MESSAGE,group);
-				character.getGameObject().remove(thing);
+				if (!thing.hasThisAttribute(Constants.COMPANION_FROM_HOLD_RETURNS)) {
+					JOptionPane.showMessageDialog(parentFrame,"The "+thing.getName()+" vanishes, and a "+list.toString()+" appears in its place!",thing.getName(),JOptionPane.PLAIN_MESSAGE,group);
+					character.getGameObject().remove(thing);
+				}
+				else {
+					JOptionPane.showMessageDialog(parentFrame,"A "+list.toString()+" appears in its place!",thing.getName(),JOptionPane.PLAIN_MESSAGE,group);
+				}
 			}
 			if (thing.hasThisAttribute(Constants.SPECIAL_ACTION)) {
 				character.setNeedsActionPanelUpdate(true);
@@ -651,6 +669,8 @@ public class TreasureUtility {
 		if (thing.hasThisAttribute(Constants.SUMMON_COMPANION)) {
 			GameObject companion = getCompanionFromItem(thing);
 			character.addHireling(companion,Constants.TEN_YEARS);
+			CombatWrapper combat = new CombatWrapper(companion);
+			combat.setSheetOwner(true); // in case you are in combat!
 			if (character.getCurrentLocation().clearing!=null) {
 				character.getCurrentLocation().clearing.add(companion,null);
 			}
@@ -872,6 +892,42 @@ public class TreasureUtility {
 		else if(thing.hasThisAttribute("weapon")) {
 			WeaponChitComponent weapon = (WeaponChitComponent)RealmComponent.getRealmComponent(thing);
 			weapon.setAlerted(false);
+		}
+		
+		if (thing.hasThisAttribute(Constants.SUMMON_COMPANION) && !thing.hasThisAttribute(Constants.POTION)) {
+			String id = thing.getThisAttribute(Constants.SUMMON_COMPANION_ID);
+			if (id!=null) {
+				GameData data = thing.getGameData();
+				GameObject companion = data.getGameObject(Long.valueOf(id));
+				if (companion != null) {
+					RealmComponent rc = RealmComponent.getRealmComponent(companion);
+					RealmComponent owner = rc.getOwner();
+					if (owner!=null) {
+						(new CharacterWrapper(owner.getGameObject())).removeHireling(companion);
+					}
+					companion.detach();
+					data.removeObject(companion);
+				}
+			}
+			thing.removeThisAttribute(Constants.SUMMON_COMPANION_ID);
+		}
+		if (thing.hasThisAttribute(Constants.COMPANION_FROM_HOLD_RETURNS)) {
+			ArrayList<String> ids = thing.getThisAttributeList(Constants.COMPANION_FROM_HOLD_RETURNS);
+			if (ids!=null && !ids.isEmpty()) {
+				GameData data = thing.getGameData();
+				for (String id : ids) {
+					GameObject companion = data.getGameObject(Long.valueOf(id));
+					if (companion != null) {
+						RealmComponent rc = RealmComponent.getRealmComponent(companion);
+						RealmComponent owner = rc.getOwner();
+						if (owner!=null) {
+							(new CharacterWrapper(owner.getGameObject())).removeHireling(companion);
+						}
+						thing.add(companion);
+					}
+				}
+			}
+			thing.setThisAttributeList(Constants.COMPANION_FROM_HOLD_RETURNS,new ArrayList<String>());
 		}
 		if (thing.hasThisAttribute(Constants.ADD_CHIT)) {
 			GamePool pool = new GamePool(character.getGameObject().getHold());

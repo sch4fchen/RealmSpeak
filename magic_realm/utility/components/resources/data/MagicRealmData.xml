@@ -32678,11 +32678,7 @@
         <attribute text="Use to lure monsters to separate combat sheet" />
         <attribute rw_expansion_1="" />
         <attribute base_price="2" />
-        <attribute discard="warlock" />
-        <attribute potion="" />
-        <attribute notoriety="0" />
         <attribute facing="face_dn" />
-        <attribute fame="0" />
         <attribute summon_companion="Hound" />
         <attribute author="Expansion 1" />
         <attribute item="" />
@@ -60397,8 +60393,6 @@
         <attribute treasure="large" />
         <attribute text="Use to lure monsters to separate combat sheet" />
         <attribute base_price="10" />
-        <attribute discard="warlock" />
-        <attribute potion="" />
         <attribute facing="face_dn" />
         <attribute fame="2" />
         <attribute summon_companion="Hound" />

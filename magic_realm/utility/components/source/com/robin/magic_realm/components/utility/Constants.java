@@ -296,6 +296,7 @@ public class Constants {
 	public static final String MAGIC_PATH_EFFECT = "magic_path_effect";
 	public static final String MAGIC_PATH_AFFECTED_CHARACTER = "magic_path_character";
 	public static final String SUMMON_COMPANION = "summon_companion";
+	public static final String SUMMON_COMPANION_ID = "summon_companion_id";
 	public static final String MAGIC_FOOD = "magic_food";
 	public static final String HOUND = "hound";
 	
@@ -458,6 +459,7 @@ public class Constants {
 	public static final String NO_PROWLING = "no_prowling";
 	public static final String NO_GATE = "no_gate";
 	public static final String COMPANION_FROM_HOLD = "companion_from_hold";
+	public static final String COMPANION_FROM_HOLD_RETURNS = "companion_from_hold_returns";
 	public static final String REDUCE_WEIGHT = "reduce_weight";
 	public static final String MAGIC_CHANGE = "magic_change";
 	public static final String FORCED_ENCHANTMENT = "forced_enchant";
