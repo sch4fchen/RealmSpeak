@@ -625,6 +625,29 @@ public class TreasureUtility {
 			thing.setThisAttribute(Constants.CURDLE_OF_BONE_AFFECTED_CHARACTER,character.getGameObject().getStringId());
 			character.getGameObject().setThisAttribute(Constants.CURDLE_OF_BONE);
 		}
+		if (thing.hasThisAttribute(Constants.HOLY_WATER)) {
+			thing.setThisAttribute(Constants.HOLY_WATER_AFFECTED_CHARACTER,character.getGameObject().getStringId());
+			character.getGameObject().setThisAttribute(Constants.HOLY_WATER);
+			CombatWrapper characterCw = new CombatWrapper(character.getGameObject());
+			ArrayList<RealmComponent> attackers = characterCw.getAttackersAsComponents();
+			for (RealmComponent attacker : attackers) {
+				if (attacker.getGameObject().hasThisAttribute(Constants.DEMON)
+				|| attacker.getGameObject().hasThisAttribute(Constants.IMP)
+				|| attacker.getGameObject().hasThisAttribute(Constants.SUCCUBUS)
+				|| attacker.getGameObject().hasThisAttribute(Constants.VAMPIRE)
+				|| attacker.getGameObject().hasThisAttribute(Constants.DEVIL)
+				|| attacker.getGameObject().hasThisAttribute(Constants.UNDEAD)) {
+					if (attacker.getTarget()!=null && attacker.getTarget().getGameObject() == character.getGameObject()) {
+						attacker.clearTarget();
+						characterCw.removeAttacker(attacker.getGameObject());
+					}
+					if (attacker.get2ndTarget()!=null && attacker.get2ndTarget().getGameObject() == character.getGameObject()) {
+						attacker.clear2ndTarget();
+						characterCw.removeAttacker(attacker.getGameObject());
+					}
+				}
+			}
+		}
 		if (thing.hasThisAttribute(Constants.SUMMON_COMPANION)) {
 			GameObject companion = getCompanionFromItem(thing);
 			character.addHireling(companion);
@@ -641,7 +664,7 @@ public class TreasureUtility {
 					attacker.clear2ndTarget();
 				}
 			}
-			characterCw.removeAllAttackers();			
+			characterCw.removeAllAttackers();
 		}
 		
 		if (thing.hasThisAttribute(Constants.PACIFY_MONSTERS)) {
@@ -1179,6 +1202,17 @@ public class TreasureUtility {
 					if (charGo != null) {
 						charGo.removeThisAttribute(Constants.CURDLE_OF_BONE);
 						potion.removeThisAttribute(Constants.CURDLE_OF_BONE_AFFECTED_CHARACTER);
+					}
+				}
+			}
+			
+			if (potion.hasThisAttribute(Constants.HOLY_WATER)) {
+				String id = potion.getThisAttribute(Constants.HOLY_WATER_AFFECTED_CHARACTER);
+				if (id!=null) {
+					GameObject charGo = potion.getGameData().getGameObject(Long.valueOf(id));
+					if (charGo != null) {
+						charGo.removeThisAttribute(Constants.HOLY_WATER);
+						potion.removeThisAttribute(Constants.HOLY_WATER_AFFECTED_CHARACTER);
 					}
 				}
 			}

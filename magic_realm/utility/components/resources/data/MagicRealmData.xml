@@ -60354,6 +60354,38 @@
         <attribute priest_price="20" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2279" name="Holy Water">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="4" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="You cannot be targeted by Demons, Imp, Succubus, Vampire, Devil or Undead for the rest of combat." />
+        <attribute discard="priest" />
+        <attribute potion="" />
+        <attribute holy_water="" />
+        <attribute combat_only="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2280" name="Holy Water">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="4" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="You cannot be targeted by Demons, Imp, Succubus, Vampire, Devil or Undead for the rest of combat." />
+        <attribute discard="priest" />
+        <attribute potion="" />
+        <attribute holy_water="" />
+        <attribute combat_only="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

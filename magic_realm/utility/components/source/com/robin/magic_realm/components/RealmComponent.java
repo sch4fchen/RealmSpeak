@@ -1117,6 +1117,16 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		return !getImmunities().isEmpty();
 	}
 	public boolean isImmuneTo(RealmComponent rc) {
+		if (affectedByKey(Constants.HOLY_WATER)) {
+			if (rc.getGameObject().hasThisAttribute(Constants.DEMON)
+					|| rc.getGameObject().hasThisAttribute(Constants.IMP)
+					|| rc.getGameObject().hasThisAttribute(Constants.SUCCUBUS)
+					|| rc.getGameObject().hasThisAttribute(Constants.VAMPIRE)
+					|| rc.getGameObject().hasThisAttribute(Constants.DEVIL)
+					|| rc.getGameObject().hasThisAttribute(Constants.UNDEAD)) {
+				return true;
+			}
+		}
 		ArrayList<String> list = getImmunities();
 		if (!list.isEmpty()) {
 			// Make sure we resolve to the monster, not the part!
