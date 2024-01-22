@@ -22860,6 +22860,14 @@
         <attribute path_7_from="clearing_6" />
         <attribute path_7_to="NE" />
         <attribute path_7_type="normal" />
+        <attribute path_8_from="clearing_1" />
+        <attribute path_8_to="clearing_3" />
+        <attribute path_8_type="hidden" />
+        <attribute path_8_arc="16.1,44.2" />
+        <attribute path_9_from="clearing_5" />
+        <attribute path_9_to="clearing_6" />
+        <attribute path_9_type="hidden" />
+        <attribute path_9_arc="84.2,51.5" />
       </AttributeBlock>
       <AttributeBlock blockName="enchanted">
         <attribute offroad_xy="40.5,12.1" />
@@ -34068,7 +34076,7 @@
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="69.5,88.3" />
         <attribute clearing_1_type="water" />
-        <attribute clearing_1_xy="49.3,84.1" />
+        <attribute clearing_1_xy="50.0,85.0" />
         <attribute clearing_2_type="mountain" />
         <attribute clearing_2_xy="26.8,39.6" />
         <attribute clearing_3_type="mountain" />
@@ -34121,7 +34129,7 @@
       <AttributeBlock blockName="enchanted">
         <attribute offroad_xy="70.7,85.5" />
         <attribute clearing_1_type="water" />
-        <attribute clearing_1_xy="50.0,83.6" />
+        <attribute clearing_1_xy="50.0,84.8" />
         <attribute clearing_1_magic="P" />
         <attribute clearing_2_type="mountain" />
         <attribute clearing_2_xy="26.8,39.1" />
@@ -34172,6 +34180,10 @@
         <attribute path_10_from="clearing_1" />
         <attribute path_10_to="S" />
         <attribute path_10_type="river" />
+        <attribute path_11_from="clearing_1" />
+        <attribute path_11_to="clearing_6" />
+        <attribute path_11_type="normal" />
+        <attribute path_11_arc="50.6,84.8" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1191" name="Rapid River">

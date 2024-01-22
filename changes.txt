@@ -79,6 +79,7 @@ SUPER REALM:
 # New treasures: Faerie Statue, Fairy Grove, Flash Bomb, Glider, Golden Lyre, Haunted Grave, Holy Ring, Holy Water, Horse Armor, Hound, Links
 BUGS/ISSUES:
 # Fix spawning Hound in Expansion 1
+# Add missing paths to Ambush and Falls (enchanted)
 
 Version 1.1.8.5
 SUPER REALM:
