@@ -16,5 +16,6 @@ public enum SearchTableType {
 	EtherealAbbey,
 	FairyGrove,
 	HauntedGrave,
+	MageLibrary,
 	;
 }

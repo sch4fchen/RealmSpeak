@@ -347,6 +347,12 @@ public class TableLoot extends Loot {
 			qp.searchType = SearchResultType.Clues;
 			qp.searchHadAnEffect = true;
 		}
+		else if ("read_runes_any".equals(result)) {
+			//setNewTable(new ReadRunes(getParentFrame(), location));
+			String title = "Read Runes at any Site";
+			ret = title;
+			qp.searchHadAnEffect = true;
+		}
 		character.testQuestRequirements(getParentFrame(),qp);
 		return ret;
 	}

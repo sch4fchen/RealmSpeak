@@ -35551,12 +35551,12 @@
         <attribute print="" />
         <attribute chit="" />
         <attribute discovery="" />
-        <attribute search="fatigue_asterisk" />
         <attribute ts_section="treasure locations" />
         <attribute ts_size="HCARD" />
         <attribute ts_color="darkgray" />
         <attribute icon_type="draug" />
         <attribute icon_folder="wesnoth/units/undead-skeletal" />
+        <attribute needs_open="fatigue_t,key" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1237" name="Maze">
@@ -60447,6 +60447,77 @@
         <attribute notoriety="-5" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2285" name="Mage Diary">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute text="When READING RUNES, may look at all spells and attempt to learn any, even fi not awakened." />
+        <attribute base_price="14" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute weight="L" />
+        <attribute notoriety="7" />
+        <attribute mage_diary="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2286" name="Mage Library">
+      <AttributeBlock blockName="this">
+        <attribute treasure_location="library" />
+        <attribute treasure="large" />
+        <attribute text="" />
+        <attribute cannot_move="" />
+        <attribute treasure_within_treasure="8" />
+        <attribute print="" />
+        <attribute discovery="" />
+        <attribute color_source="purple" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="twt" />
+        <attribute ts_color="lightblue" />
+        <attribute nosecret="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute search="fatigue_t,key" />
+      </AttributeBlock>
+      <AttributeBlock blockName="table">
+        <attribute roll_1="staff" />
+        <attribute roll_2="bow" />
+        <attribute roll_3="treasure" />
+        <attribute roll_4="spell" />
+        <attribute roll_5="read_runes_any" />
+        <attribute roll_6="mesmerize" />
+      </AttributeBlock>
+      <contains id="2026" />
+      <contains id="2025" />
+    </GameObject>
+    <GameObject id="2287" name="Map of Lost Fortress">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="3" />
+        <attribute text="-1 to LOCATE rolls in Lost Fotress" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attributeList keyName="diemod">
+          <attributeVal N0="-1:locate:lost fortress#bn#" />
+        </attributeList>
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2288" name="Map of Lost Palace">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="3" />
+        <attribute text="-1 to LOCATE rolls in Lost Palace" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attributeList keyName="diemod">
+          <attributeVal N0="-1:locate:lost palace#bn#" />
+        </attributeList>
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
@@ -60791,6 +60862,7 @@
       <Add from="LARGE_TREASURES" targetObjectID="2268" count="1" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="2273" count="1" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="2277" count="1" transferType="Random" />
+      <Add from="LARGE_TREASURES" targetObjectID="2286" count="1" transferType="Random" />
       <Move from="TWT" to="LARGE_TREASURES" count="6" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="1220" count="5" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="1221" count="3" transferType="Random" />
@@ -60879,6 +60951,7 @@
       <Add from="SPELL_VII" targetObjectID="2268" count="1" transferType="Random" />
       <Add from="SPELL_III" targetObjectID="2273" count="1" transferType="Random" />
       <Add from="SPELL_V" targetObjectID="2277" count="1" transferType="Random" />
+      <Add from="SPELL_VII" targetObjectID="2286" count="1" transferType="Random" />
       <Add from="SPELL_V" targetObjectID="1317" count="1" transferType="Random" />
       <Add from="SPELL_III" targetObjectID="1402" count="1" transferType="Random" />
       <Add from="SPELL_VIII" targetObjectID="1286" count="1" transferType="Random" />

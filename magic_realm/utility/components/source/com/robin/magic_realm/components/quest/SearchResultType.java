@@ -181,6 +181,15 @@ public enum SearchResultType {
 				list.add(SearchResultType.SummonDemon);
 				list.add(SearchResultType.Unhide);
 				break;
+			case MageLibrary:
+				list.add(SearchResultType.Counters);
+				list.add(SearchResultType.TreasureCards);
+				list.add(SearchResultType.LearnSpell);
+				list.add(SearchResultType.Mesmerize);
+				list.add(SearchResultType.LearnAndAwaken);
+				list.add(SearchResultType.Awaken);
+				list.add(SearchResultType.Curse);
+				break;
 		}
 		
 		return list.toArray(new SearchResultType[list.size()]);
