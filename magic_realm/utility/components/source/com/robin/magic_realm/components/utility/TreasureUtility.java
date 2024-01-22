@@ -356,6 +356,7 @@ public class TreasureUtility {
 					character.getCurrentLocation().clearing.add(companion,null);
 				}
 				thing.setThisAttribute(Constants.SUMMON_COMPANION_ID,companion.getStringId());
+				thing.setThisAttribute(Constants.SUMMON_COMPANION_TREASURE_ID,thing.getStringId());
 			}
 			if (thing.hasThisAttribute(Constants.COMPANION_FROM_HOLD)) {
 				ArrayList<GameObject> companions = new ArrayList<>(thing.getHold());
@@ -371,6 +372,7 @@ public class TreasureUtility {
 					combat.setSheetOwner(true); // in case you are in combat!
 					if (thing.hasThisAttribute(Constants.COMPANION_FROM_HOLD_RETURNS)) {
 						thing.addThisAttributeListItem(Constants.COMPANION_FROM_HOLD_RETURNS,companion.getStringId());
+						companion.addThisAttributeListItem(Constants.COMPANION_FROM_HOLD_TREASURE_ID,thing.getStringId());
 					}
 				}
 				if (!thing.hasThisAttribute(Constants.COMPANION_FROM_HOLD_RETURNS)) {
@@ -900,16 +902,21 @@ public class TreasureUtility {
 				GameData data = thing.getGameData();
 				GameObject companion = data.getGameObject(Long.valueOf(id));
 				if (companion != null) {
-					RealmComponent rc = RealmComponent.getRealmComponent(companion);
-					RealmComponent owner = rc.getOwner();
-					if (owner!=null) {
-						(new CharacterWrapper(owner.getGameObject())).removeHireling(companion);
+					CombatWrapper combat = new CombatWrapper(companion);
+					RealmComponent companionRc = RealmComponent.getRealmComponent(companion);
+					if (forceDeactivation || (combat.getAttackerCount()!=0 && companionRc.hasTarget())) {
+						RealmComponent owner = companionRc.getOwner();
+						if (owner!=null) {
+							(new CharacterWrapper(owner.getGameObject())).removeHireling(companion);
+						}
+						combat.targetsRemoveAttackers();
+						CombatWrapper.clearAllCombatInfo(companion);
+						companion.detach();
+						data.removeObject(companion);
+						thing.removeThisAttribute(Constants.SUMMON_COMPANION_ID);
 					}
-					companion.detach();
-					data.removeObject(companion);
 				}
 			}
-			thing.removeThisAttribute(Constants.SUMMON_COMPANION_ID);
 		}
 		if (thing.hasThisAttribute(Constants.COMPANION_FROM_HOLD_RETURNS)) {
 			ArrayList<String> ids = thing.getThisAttributeList(Constants.COMPANION_FROM_HOLD_RETURNS);
@@ -918,11 +925,16 @@ public class TreasureUtility {
 				for (String id : ids) {
 					GameObject companion = data.getGameObject(Long.valueOf(id));
 					if (companion != null) {
-						RealmComponent rc = RealmComponent.getRealmComponent(companion);
-						RealmComponent owner = rc.getOwner();
+						CombatWrapper combat = new CombatWrapper(companion);
+						RealmComponent companionRc = RealmComponent.getRealmComponent(companion);
+						if (!forceDeactivation && (combat.getAttackerCount()==0 || companionRc.hasTarget())) continue;
+						
+						RealmComponent owner = companionRc.getOwner();
 						if (owner!=null) {
 							(new CharacterWrapper(owner.getGameObject())).removeHireling(companion);
 						}
+						combat.targetsRemoveAttackers();
+						CombatWrapper.clearAllCombatInfo(companion);
 						thing.add(companion);
 					}
 				}

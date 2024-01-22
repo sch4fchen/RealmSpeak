@@ -196,8 +196,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	public boolean isFreezed() {
 		return getBoolean(FREEZED);
 	}
-	public void pacify() {
-		setBoolean(PACIFIED, true);
+	public void targetsRemoveAttackers() {
 		RealmComponent rc = RealmComponent.getRealmComponent(this.getGameObject());
 		if (rc.getTarget()!=null) {
 			(new CombatWrapper(rc.getTarget().getGameObject())).removeAttacker(this.getGameObject());
@@ -206,6 +205,10 @@ public class CombatWrapper extends GameObjectWrapper {
 			(new CombatWrapper(rc.get2ndTarget().getGameObject())).removeAttacker(this.getGameObject());
 		}
 		rc.clearTargets();
+	}
+	public void pacify() {
+		setBoolean(PACIFIED, true);
+		targetsRemoveAttackers();
 	}
 	public void removePacified() {
 		setBoolean(PACIFIED, false);

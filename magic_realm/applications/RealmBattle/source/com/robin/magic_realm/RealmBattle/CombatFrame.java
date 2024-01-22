@@ -3376,6 +3376,12 @@ public class CombatFrame extends JFrame {
 		// Also, disengage the runner
 		activeParticipant.clearTargets();
 //		activeCharacter.clearCombat(); // can't clear out combat status: messes up hirelings left behind
+		for (GameObject treasure : activeCharacter.getActivatedTreasureObjects()) {
+			if (treasure.hasThisAttribute(Constants.COMPANION_FROM_HOLD_RETURNS)
+			|| (treasure.hasThisAttribute(Constants.SUMMON_COMPANION) && !treasure.hasThisAttribute(Constants.POTION))) {
+				TreasureUtility.doDeactivate(this, activeCharacter, treasure, true);
+			}
+		}
 		
 		// Need to check battle model - if nobody is left in the clearing to fight, things should get reset
 		RealmBattle.testCombatInClearing(currentBattleModel.getBattleLocation(),gameData);
