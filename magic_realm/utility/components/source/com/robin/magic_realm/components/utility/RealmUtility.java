@@ -471,6 +471,17 @@ public class RealmUtility {
 			}
 		}
 		
+		if (rc.getGameObject().hasThisAttribute(Constants.DESTROY_TREASURE_WHEN_KILLED)) {
+			String id = rc.getGameObject().getThisAttribute(Constants.DESTROY_TREASURE_WHEN_KILLED);
+			if (id!=null) {
+				GameData data = rc.getGameObject().getGameData();
+				GameObject treasure = data.getGameObject(Long.valueOf(id));
+				if (treasure!=null) {
+					treasure.detach();
+				}
+				rc.getGameObject().removeThisAttribute(Constants.DESTROY_TREASURE_WHEN_KILLED);
+			}
+		}
 		if (rc.getGameObject().hasThisAttribute(Constants.ABSORBED_CHITS)) {
 			Collection<String> chitIds = rc.getGameObject().getThisAttributeList(Constants.ABSORBED_CHITS);
 			CharacterWrapper character = new CharacterWrapper(rc.getOwner().getGameObject());

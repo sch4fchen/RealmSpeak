@@ -356,7 +356,7 @@ public class TreasureUtility {
 					character.getCurrentLocation().clearing.add(companion,null);
 				}
 				thing.setThisAttribute(Constants.SUMMON_COMPANION_ID,companion.getStringId());
-				thing.setThisAttribute(Constants.SUMMON_COMPANION_TREASURE_ID,thing.getStringId());
+				companion.setThisAttribute(Constants.DESTROY_TREASURE_WHEN_KILLED,thing.getStringId());
 			}
 			if (thing.hasThisAttribute(Constants.COMPANION_FROM_HOLD)) {
 				ArrayList<GameObject> companions = new ArrayList<>(thing.getHold());
@@ -372,7 +372,7 @@ public class TreasureUtility {
 					combat.setSheetOwner(true); // in case you are in combat!
 					if (thing.hasThisAttribute(Constants.COMPANION_FROM_HOLD_RETURNS)) {
 						thing.addThisAttributeListItem(Constants.COMPANION_FROM_HOLD_RETURNS,companion.getStringId());
-						companion.addThisAttributeListItem(Constants.COMPANION_FROM_HOLD_TREASURE_ID,thing.getStringId());
+						companion.addThisAttributeListItem(Constants.DESTROY_TREASURE_WHEN_KILLED,thing.getStringId());
 					}
 				}
 				if (!thing.hasThisAttribute(Constants.COMPANION_FROM_HOLD_RETURNS)) {
@@ -904,7 +904,7 @@ public class TreasureUtility {
 				if (companion != null) {
 					CombatWrapper combat = new CombatWrapper(companion);
 					RealmComponent companionRc = RealmComponent.getRealmComponent(companion);
-					if (forceDeactivation || (combat.getAttackerCount()!=0 && companionRc.hasTarget())) {
+					if (forceDeactivation || (combat.getAttackerCount()==0 && !companionRc.hasTarget())) {
 						RealmComponent owner = companionRc.getOwner();
 						if (owner!=null) {
 							(new CharacterWrapper(owner.getGameObject())).removeHireling(companion);
@@ -927,7 +927,7 @@ public class TreasureUtility {
 					if (companion != null) {
 						CombatWrapper combat = new CombatWrapper(companion);
 						RealmComponent companionRc = RealmComponent.getRealmComponent(companion);
-						if (!forceDeactivation && (combat.getAttackerCount()==0 || companionRc.hasTarget())) continue;
+						if (!forceDeactivation && (combat.getAttackerCount()!=0 || companionRc.hasTarget())) continue;
 						
 						RealmComponent owner = companionRc.getOwner();
 						if (owner!=null) {
