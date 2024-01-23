@@ -2,11 +2,14 @@ package com.robin.magic_realm.components.table;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Vector;
 
 import javax.swing.JFrame;
+import javax.swing.ListSelectionModel;
 import javax.swing.event.ChangeListener;
 
 import com.robin.game.objects.*;
+import com.robin.general.swing.ListChooser;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.Speed;
@@ -348,9 +351,31 @@ public class TableLoot extends Loot {
 			qp.searchHadAnEffect = true;
 		}
 		else if ("read_runes_any".equals(result)) {
-			//setNewTable(new ReadRunes(getParentFrame(), location));
-			String title = "Read Runes at any Site";
-			ret = title;
+			ArrayList<String> treasureLocationOptions = new ArrayList<>();
+			Hashtable<String, GameObject> hash = new Hashtable<>();
+			GamePool pool = new GamePool(data.getGameObjects());
+			for (GameObject treasureLocation : pool.find("treasure_location")) {
+				for (GameObject item : treasureLocation.getHold()) {
+					if (item.hasThisAttribute("spell")) {
+						treasureLocationOptions.add(treasureLocation.getNameWithNumber());
+						hash.put(treasureLocation.getNameWithNumber(), treasureLocation);
+						break;
+					}
+				}
+			}
+			ListChooser chooser = new ListChooser(getParentFrame(), "At which site do you want to read runes?", treasureLocationOptions, false);
+			chooser.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			chooser.setDoubleClickEnabled(true);
+			chooser.setLocationRelativeTo(getParentFrame());
+			chooser.setVisible(true);
+			Vector v = chooser.getSelectedItems();
+			if (v != null && !v.isEmpty()) {
+				String locationName = (String)v.get(0);
+				setNewTable(new ReadRunes(getParentFrame(), hash.get(locationName)));
+				
+			}
+			ret = "Read Runes at any Site";
+			qp.searchType = SearchResultType.ReadRunesAnySite;
 			qp.searchHadAnEffect = true;
 		}
 		character.testQuestRequirements(getParentFrame(),qp);

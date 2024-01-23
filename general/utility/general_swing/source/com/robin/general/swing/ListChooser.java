@@ -16,6 +16,7 @@ public class ListChooser extends AggressiveDialog implements ActionListener {
 	private JButton okay;
 	private JButton cancel;
 	private Vector selected;
+	private boolean cancelButtonEnabled = true;
 
 	private MouseAdapter doubleClick = new MouseAdapter() {
 		public void mouseClicked(MouseEvent ev) {
@@ -30,6 +31,13 @@ public class ListChooser extends AggressiveDialog implements ActionListener {
 		list = new JList(items);
 		initComponents();
 	}
+	
+	public ListChooser(JFrame parent, String title, Object[] items, boolean cancelEnabled) {
+		super(parent, title, true);
+		cancelButtonEnabled = cancelEnabled;
+		list = new JList(items);
+		initComponents();
+	}
 
 	public ListChooser(JFrame parent, String title, Vector items) {
 		super(parent, title, true);
@@ -37,8 +45,22 @@ public class ListChooser extends AggressiveDialog implements ActionListener {
 		initComponents();
 	}
 
+	public ListChooser(JFrame parent, String title, Vector items, boolean cancelEnabled) {
+		super(parent, title, true);
+		cancelButtonEnabled = cancelEnabled;
+		list = new JList(items);
+		initComponents();
+	}
+
 	public ListChooser(JFrame parent, String title, Collection items) {
 		super(parent, title, true);
+		list = new JList(new Vector(items));
+		initComponents();
+	}
+	
+	public ListChooser(JFrame parent, String title, Collection items, boolean cancelEnabled) {
+		super(parent, title, true);
+		cancelButtonEnabled = cancelEnabled;
 		list = new JList(new Vector(items));
 		initComponents();
 	}
@@ -72,8 +94,10 @@ public class ListChooser extends AggressiveDialog implements ActionListener {
 		setSize(new Dimension(300, 400));
 
 		Box box = Box.createHorizontalBox();
-		box.add(Box.createHorizontalGlue());
-		box.add(cancel);
+		if (cancelButtonEnabled) {
+			box.add(Box.createHorizontalGlue());
+			box.add(cancel);
+		}
 		box.add(Box.createHorizontalGlue());
 		box.add(okay);
 		box.add(Box.createHorizontalGlue());

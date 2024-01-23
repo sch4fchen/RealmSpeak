@@ -34,7 +34,7 @@ public class MageGuardEffect implements ISpellEffect {
 
 	@Override
 	public void unapply(SpellEffectContext context) {
-		Optional<GameObject> guard = context.Caster.getHoldAsGameObjects().stream()
+		Optional<GameObject> guard = context.Caster.getHold().stream()
 			.filter(go -> go.getName() == "Mage Guard")
 			.findFirst();
 		

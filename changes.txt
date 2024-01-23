@@ -1,7 +1,7 @@
 Sword of Terror (QuestReqInventoryMissing) - fix trigger for loosing the sword
 ::ROADMAP::
 ---Super Realm Content---
-Mage Diary: mage_diary, Mage Library: read runes, Map of Ruins: check if it works when on Ruins hex or hex with Ruins warning chit 
+Mage Diary: mage_diary, Map of Ruins: check if it works when on Ruins hex or hex with Ruins warning chit 
 Treasures: 20:  Mist Crystal, Ointment of Stone 2x, Pagan Ring, Pentagram, Profane Idol, Realm Map, Repair Kit 2x, Ruby Ring, Sails, Scented Bait, Scope, Scribe Spectacles, Scroll of Allure, Scroll of Lore, Scroll of Malice, Spirit Charm, Spurs, Talisman, Travelers Guide, White Feathered Wing
 Super Realm: visitors/travelers etc. (Shaman, Priest etc.)
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)

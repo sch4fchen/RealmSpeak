@@ -343,7 +343,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			TileLocation loc = getCaster().getCurrentLocation(); // might be null if character is dead!
 			boolean casterIsDead = (new CombatWrapper(getCaster().getGameObject())).getKilledBy()!=null;
 				
-			getGameObject().getHoldAsGameObjects().stream()
+			getGameObject().getHold().stream()
 				.forEach(go -> restoreAbsorbedMonster(go, loc, casterIsDead));
 				
 			// Remove all targets
@@ -385,7 +385,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			TileLocation loc = getCaster().getCurrentLocation(); // might be null if character is dead!
 			boolean casterIsDead = (new CombatWrapper(getCaster().getGameObject())).getKilledBy()!=null;
 				
-			getGameObject().getHoldAsGameObjects().stream()
+			getGameObject().getHold().stream()
 				.forEach(go -> restoreAbsorbedMonster(go, loc, casterIsDead));
 				
 			// Remove all targets
@@ -1105,7 +1105,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		return getFirstTarget(); // Not real fond of this, but it will work in all cases where it matters
 	}
 	public GameObject getTransformAnimalOrStatue() {
-		Optional<GameObject> animal = getGameObject().getHoldAsGameObjects().stream()
+		Optional<GameObject> animal = getGameObject().getHold().stream()
 										.filter(t -> t.hasThisAttribute("animal") || t.hasThisAttribute("statue"))
 										.findFirst();						
 		return animal.isPresent() ? animal.get() : null;

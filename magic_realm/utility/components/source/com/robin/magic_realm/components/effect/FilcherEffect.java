@@ -59,7 +59,7 @@ public class FilcherEffect implements ISpellEffect {
 		String msg;
 		GameObject dwelling = context.Game.getGameData().getGameObjectByName(dwellingName);
 		
-		ArrayList<GameObject>stuff = dwelling.getHoldAsGameObjects().stream()
+		ArrayList<GameObject>stuff = dwelling.getHold().stream()
 			.filter(go -> RealmComponent.getRealmComponent(go).isItem())
 			.filter(go -> !RealmComponent.getRealmComponent(go).isHorse())
 			.collect(Collectors.toCollection(ArrayList::new));

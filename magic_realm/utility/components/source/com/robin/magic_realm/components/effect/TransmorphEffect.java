@@ -199,7 +199,7 @@ public class TransmorphEffect implements ISpellEffect {
 					character.addGold(gold); // add gold, in case transmorphed character picked up some gold!
 				}
 				
-				spell.getGameObject().getHoldAsGameObjects().stream()
+				spell.getGameObject().getHold().stream()
 					.filter(go -> RealmComponent.getRealmComponent(go).isItem())
 					.forEach(i -> character.getGameObject().add(i));
 			}
