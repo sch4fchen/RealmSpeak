@@ -915,6 +915,9 @@ public class TreasureUtility {
 						data.removeObject(companion);
 						thing.removeThisAttribute(Constants.SUMMON_COMPANION_ID);
 					}
+					else {
+						return false;
+					}
 				}
 			}
 		}
@@ -922,12 +925,16 @@ public class TreasureUtility {
 			ArrayList<String> ids = thing.getThisAttributeList(Constants.COMPANION_FROM_HOLD_RETURNS);
 			if (ids!=null && !ids.isEmpty()) {
 				GameData data = thing.getGameData();
+				boolean success = true;
 				for (String id : ids) {
 					GameObject companion = data.getGameObject(Long.valueOf(id));
 					if (companion != null) {
 						CombatWrapper combat = new CombatWrapper(companion);
 						RealmComponent companionRc = RealmComponent.getRealmComponent(companion);
-						if (!forceDeactivation && (combat.getAttackerCount()!=0 || companionRc.hasTarget())) continue;
+						if (!forceDeactivation && (combat.getAttackerCount()!=0 || companionRc.hasTarget())) {
+							success = false;
+							continue;
+						}
 						
 						RealmComponent owner = companionRc.getOwner();
 						if (owner!=null) {
@@ -937,6 +944,9 @@ public class TreasureUtility {
 						CombatWrapper.clearAllCombatInfo(companion);
 						thing.add(companion);
 					}
+				}
+				if (success == false) {
+					return false;
 				}
 			}
 			thing.setThisAttributeList(Constants.COMPANION_FROM_HOLD_RETURNS,new ArrayList<String>());
