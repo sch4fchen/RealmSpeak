@@ -6627,7 +6627,16 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * This method is here primarily for the Fog spell
 	 */
 	public boolean canPeer() {
-		return !hasCharacterTileAttribute(Constants.SP_NO_PEER);
+		if (hasCharacterTileAttribute(Constants.SP_NO_PEER)) return false;
+		TileLocation loc = getCurrentLocation();
+		if (loc!=null && loc.clearing!=null) {
+			for (RealmComponent rc : loc.clearing.getDeepClearingComponents()) {
+				if (rc.getGameObject().hasThisAttribute(Constants.MIST_CRYSTAL)) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 	public boolean moveRandomly() {
 		return hasCharacterTileAttribute(Constants.SP_MOVE_IS_RANDOM);

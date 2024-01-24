@@ -59772,7 +59772,7 @@
         <attribute treasure_within_treasure="10" />
         <attribute print="" />
         <attribute discovery="" />
-        <attribute color_source="grey" />
+        <attribute color_source="gray" />
         <attribute facing="face_dn" />
         <attribute ts_section="twt" />
         <attribute ts_color="lightblue" />
@@ -60516,6 +60516,22 @@
         <attributeList keyName="diemod">
           <attributeVal N0="-1:locate:lost palace#bn#" />
         </attributeList>
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2289" name="Mist Crystal">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute text="No one can use the PEER table to Peer into the clearing." />
+        <attribute base_price="35" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute weight="M" />
+        <attribute notoriety="10" />
+        <attribute fame="-10" />
+        <attribute mist_crystal="" />
+        <attribute great="" />
       </AttributeBlock>
     </GameObject>
   </objects>

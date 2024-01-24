@@ -6,6 +6,7 @@ import java.util.Arrays;
 import javax.swing.JFrame;
 
 import com.robin.magic_realm.components.ClearingDetail;
+import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.swing.CenteredMapView;
 import com.robin.magic_realm.components.swing.TileLocationChooser;
@@ -39,6 +40,14 @@ public class PeerClearingChooser {
 		for(ClearingDetail clearing:clearingsMarked) {
 			if (clearing.getParent().getGameObject().hasThisAttribute(Constants.SP_NO_PEER)) {
 				clearing.setMarked(false);
+			}
+			else {
+				for (RealmComponent rc : clearing.getDeepClearingComponents()) {
+					if (rc.getGameObject().hasThisAttribute(Constants.MIST_CRYSTAL)) {
+						clearing.setMarked(false);
+						break;
+					}
+				}
 			}
 		}
 		TileLocationChooser chooser = new TileLocationChooser(frame,CenteredMapView.getSingleton(),planned);

@@ -301,6 +301,7 @@ public class Constants {
 	public static final String MAGIC_FOOD = "magic_food";
 	public static final String HOUND = "hound";
 	public static final String MAGE_DIARY = "mage_diary";
+	public static final String MIST_CRYSTAL = "mist_crystal";
 	
 	public static final String MAGIC_COLOR_BONUS = "magic_color_bonus";
 	public static final String MAGIC_COLOR_BONUS_ACTIVE = "magic_color_bonus_active";

@@ -45,13 +45,15 @@ public class SpellTargetingRoadway extends SpellTargeting {
 		else {
 			RealmCalendar cal = RealmCalendar.getCalendar(character.getGameData());
 			boolean canPeer = character.canPeer() && !cal.isPeerDisabled(character.getCurrentMonth());
-			if (canPeer && current.clearing.isMountain()) {
-				targetedTileLocation = PeerClearingChooser.chooseClearingFromMountain(combatFrame, character, "Choose a roadway between two clearings. Select first clearing.");
-				targetClearing = targetedTileLocation.clearing;
-			}
-			else {
-				targetedTileLocation = PeerClearingChooser.chooseCurrentClearing(combatFrame, character, "Choose a roadway between two clearings. Select first clearing.");
-				targetClearing = targetedTileLocation.clearing;
+			if (canPeer) {
+				if (current.clearing.isMountain()) {
+					targetedTileLocation = PeerClearingChooser.chooseClearingFromMountain(combatFrame, character, "Choose a roadway between two clearings. Select first clearing.");
+					targetClearing = targetedTileLocation.clearing;
+				}
+				else {
+					targetedTileLocation = PeerClearingChooser.chooseCurrentClearing(combatFrame, character, "Choose a roadway between two clearings. Select first clearing.");
+					targetClearing = targetedTileLocation.clearing;
+				}
 			}
 		}
 		
