@@ -141,7 +141,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	}
 	
 	public boolean cannotChangeTactics() {
-		return getGameObject().hasThisAttribute(Constants.NO_CHANGE_TACTICS) || hasFaceAttribute(Constants.NO_CHANGE_TACTICS) || getWeight().equalTo(new Strength("X"))
+		return getGameObject().hasThisAttribute(Constants.NO_CHANGE_TACTICS) || hasFaceAttribute(Constants.NO_CHANGE_TACTICS) || getWeight().isMaximum()
 				|| (getShield()!=null && !getShield().isDestroyed() && getShield().getWeight().equalTo(new Strength("X")));
 	}
 	
@@ -689,7 +689,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 			return true;
 		}
 		NativeSteedChitComponent horse = (NativeSteedChitComponent)getHorse(false);
-		if (horse!=null && horse.getWeight().equalTo(new Strength("X"))) {
+		if (horse!=null && horse.getWeight().isMaximum()) {
 			return true;
 		}
 		return false;

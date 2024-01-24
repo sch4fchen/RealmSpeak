@@ -794,6 +794,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * @return						true if provided strength is strong enough to carry all inventory
 	 */
 	public boolean canMove(Strength moveStrength) {
+		if (getWeight().isMaximum()) return false;
 		if (mustFly()) { // If you MUST fly, you can't MOVE
 			return false;
 		}
@@ -884,6 +885,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		Strength heaviest = includeCharacterWeight?getWeight():new Strength();
 		for (GameObject go:getActiveInventory()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
+			if (rc.isHorse() || rc.isNativeHorse()) continue;
 			Strength itemWeight = rc.getWeight();
 			if (itemWeight.strongerThan(heaviest)) {
 				heaviest = itemWeight;
@@ -897,6 +899,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			Strength heaviest = new Strength(); // negligible
 			for (GameObject go:getInactiveInventory()) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
+				if (rc.isHorse() || rc.isNativeHorse()) continue;
 				Strength itemWeight = rc.getWeight();
 				if (itemWeight.strongerThan(heaviest)) {
 					heaviest = itemWeight;
@@ -917,6 +920,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		for (GameObject go:getInactiveInventory()) {
 			if (ignore==null || !ignore.equals(go)) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
+				if (rc.isHorse() || rc.isNativeHorse()) continue;
 				Strength itemWeight = rc.getWeight();
 				if (itemWeight.strongerThan(heaviest)) {
 					heaviest = itemWeight;
@@ -2538,7 +2542,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		for (GameObject go:getInventory()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			Strength itemWeight = rc.getWeight();
-			if (strength.strongerOrEqualTo(itemWeight)) {
+			if (strength.strongerOrEqualTo(itemWeight) || rc.isHorse() || rc.isNativeHorse()) {
 				carryable.add(go);
 			}
 		}

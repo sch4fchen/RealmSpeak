@@ -544,7 +544,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			ArrayList<RealmComponent> components = current.clearing.getClearingComponentsInPlainSight(getCharacter());
 			ArrayList<RealmComponent> list = new ArrayList<RealmComponent>();
 			for (RealmComponent item : components) {
-				if (!item.getWeight().equals(Strength.valueOf("X"))) {
+				if (!item.getWeight().isMaximum()) {
 					list.add(item);
 				}
 			}

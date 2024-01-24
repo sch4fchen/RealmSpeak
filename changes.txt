@@ -81,8 +81,9 @@ SUPER REALM:
 EXPANSION 1:
 # Hound: add rules according to Super Realm
 BUGS/ISSUES:
-# Fix spawning Hound in Expansion 1
+# Fix activating horse
 # Add missing paths to Ambush and Falls (enchanted)
+# Fix spawning Hound in Expansion 1
 
 Version 1.1.8.5
 SUPER REALM:

@@ -680,7 +680,7 @@ public class ActionRow {
 		
 		if (character.isTransmorphed()) {
 			RealmComponent transmorph = RealmComponent.getRealmComponent(character.getTransmorph());
-			if (character.getTransmorph().hasThisAttribute(Constants.NO_CHANGE_TACTICS) || transmorph.getWeight().equalTo(new Strength("X"))) {
+			if (character.getTransmorph().hasThisAttribute(Constants.NO_CHANGE_TACTICS) || transmorph.getWeight().isMaximum()) {
 				JOptionPane.showMessageDialog(gameHandler.getMainFrame(),"Your transmorphed form cannot move.");
 				cancelled = true;
 				return;

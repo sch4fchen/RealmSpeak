@@ -47,7 +47,7 @@ public class TreasureUtility {
 				JOptionPane.showMessageDialog(parentFrame,"The "+thing.getName()+" can only be activated during combat.");
 				return false;
 			}
-			if ((RealmComponent.getRealmComponent(thing)).getWeight().equalTo(new Strength("X"))) {
+			if ((RealmComponent.getRealmComponent(thing)).getWeight().isMaximum()) {
 				JOptionPane.showMessageDialog(parentFrame,"The "+thing.getName()+" has maximum weight, and can not be activated.");
 				return false;
 			}
