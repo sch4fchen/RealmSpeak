@@ -73,6 +73,10 @@ Would be nice to make weapon abilities too:
 	Immobilizing2 - When it hits all attacks undercut in next round
 	Stunning - Target cannot play an attack next round
 
+Version 1.1.8.7
+SUPER REALM:
+# New treasures:
+
 Version 1.1.8.6
 SUPER REALM:
 # New treasures: Faerie Statue, Fairy Grove, Flash Bomb, Glider, Golden Lyre, Haunted Grave, Holy Ring, Holy Water, Horse Armor, Hound, Links,
