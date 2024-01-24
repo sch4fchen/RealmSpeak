@@ -3892,15 +3892,19 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public boolean immuneToCurses() {
 		return getGameObject().hasAttribute(Constants.OPTIONAL_BLOCK,Constants.CURSE_IMMUNITY)
-				|| affectedByKey(Constants.CURSE_IMMUNITY);
+				|| affectedByKey(Constants.CURSE_IMMUNITY) || affectedByKey(Constants.PENTAGRAM);
 	}
 	public void applyCurse(String curse) {
 		if (isCharacter() && !isMistLike() && !hasMagicProtection()) { // only true characters can be cursed!
 			getGameObject().setAttribute(CURSES_BLOCK,curse);
 		}
 	}
+	public boolean immuneToMesmerize() {
+		return getGameObject().hasAttribute(Constants.OPTIONAL_BLOCK,Constants.MESMERIZE_IMMUNITY)
+				|| affectedByKey(Constants.MESMERIZE_IMMUNITY) || affectedByKey(Constants.PENTAGRAM);
+	}
 	public void applyMesmerize(String effect) {
-		if (isCharacter() && !isMistLike() && !hasMagicProtection()) { // only true characters can be cursed!
+		if (isCharacter() && !isMistLike() && !hasMagicProtection() && !immuneToMesmerize() && !hasMesmerizeEffect(effect)) { // only true characters can be cursed!
 			getGameObject().setAttribute(CURSES_BLOCK,Constants.MESMERIZE);
 			getGameObject().addThisAttributeListItem(Constants.MESMERIZE, effect);
 		}
@@ -3913,7 +3917,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return !isNullifiedCurses() && getGameObject().hasAttribute(CURSES_BLOCK,curse);
 	}
 	public boolean hasMesmerizeEffect(String curse) {
-		return getGameObject().hasThisAttribute(Constants.MESMERIZE) && getGameObject().getThisAttributeList(Constants.MESMERIZE).contains(curse);
+		return !isNullifiedCurses() && getGameObject().hasThisAttribute(Constants.MESMERIZE) && getGameObject().getThisAttributeList(Constants.MESMERIZE).contains(curse);
 	}
 	public void removeCurse(String curse) {
 		getGameObject().removeAttribute(CURSES_BLOCK,curse);
@@ -3968,7 +3972,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		getGameObject().setThisAttribute(Constants.CURSES_NULLIFIED);
 	}
 	public boolean isNullifiedCurses() {
-		return getGameObject().hasThisAttribute(Constants.CURSES_NULLIFIED);
+		return getGameObject().hasThisAttribute(Constants.CURSES_NULLIFIED) || affectedByKey(Constants.PENTAGRAM);
 	}
 	public void restoreCurses() {
 		getGameObject().removeThisAttribute(Constants.CURSES_NULLIFIED);

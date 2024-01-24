@@ -181,6 +181,7 @@ public class Constants {
 	public static final String UNPLAYABLE = "unplayable";
 	public static final String NO_SPX = "no_spx";
 	public static final String CURSE_IMMUNITY = "curse_immunity";
+	public static final String MESMERIZE_IMMUNITY = "mesmerize_immunity";
 	
 	// New character advantages
 	public static final String LEVEL_KEY_TAG = "_lkt_";
@@ -306,6 +307,7 @@ public class Constants {
 	public static final String STICKS_TO_ARMOR = "sticks_armor";
 	public static final String AFFECTED_ARMOR_ID = "affected_armor_id";
 	public static final String OINTMENT_OF_STONE_AFFECTED_ARMOR = "ointment_of_steel_affected_armor_id";
+	public static final String PENTAGRAM = "pentagram";
 	
 	public static final String MAGIC_COLOR_BONUS = "magic_color_bonus";
 	public static final String MAGIC_COLOR_BONUS_ACTIVE = "magic_color_bonus_active";
@@ -583,6 +585,7 @@ public class Constants {
 	public static final String ASHES = "Ashes";
 	public static final String DISGUST = "Disgust";
 	public static final String MESMERIZE = "Mesmerize";
+	public static final String MESMERIZE_NULLIFIED = "mesmerize_nullified";
 	public static final String WEAKENED = "weakened";
 	public static final String INTOXICATED = "intoxicated";
 	public static final String CALMED = "calmed";

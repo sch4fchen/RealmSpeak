@@ -60586,6 +60586,21 @@
         <attribute shaman_price="20" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2293" name="Pentagram">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="You are immune to further CURSE and MESMERIZE spells." />
+        <attribute base_price="18" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute notoriety="15" />
+        <attribute pentagram="" />
+        <attribute fame="-10" />
+        <attribute great="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

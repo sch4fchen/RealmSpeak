@@ -40,6 +40,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"No monster summoning for sound/warning chits",Constants.PEACE_WITH_NATURE,""},
 		{"No monster summoning for treasure locations",Constants.DRUID_LULL,""},
 		{"Immune to Curses",Constants.CURSE_IMMUNITY,""},
+		{"Immune to Mesmerize",Constants.MESMERIZE_IMMUNITY,""},
 		{"Immunity to Transmorph spells (transform, melt into mist)",Constants.TRANSMORPH_IMMUNITY,""},
 		{"Immunity to Transmorph spells casted on yourself",Constants.TRANSMORPH_IMMUNITY_SELF,""},
 		{"Familiar",Constants.USE_FAMILIAR,""},
