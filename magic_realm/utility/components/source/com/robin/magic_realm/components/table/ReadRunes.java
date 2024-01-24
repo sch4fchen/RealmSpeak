@@ -133,11 +133,11 @@ public class ReadRunes extends RealmTable {
 		ArrayList<GameObject> list = new ArrayList<>();
 		for (GameObject spell : spellLocation.getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(spell);
-			if (rc.isSpell() && character.canLearn(spell) && rc.getGameObject().hasThisAttribute(Constants.SPELL_AWAKENED)) {
+			if (rc.isSpell() && ((character.canLearn(spell) && rc.getGameObject().hasThisAttribute(Constants.SPELL_AWAKENED)) || character.affectedByKey(Constants.MAGE_DIARY))) {
 				list.add(spell);
 			}
 		}
-		if (topSpell!=null) {
+		if (topSpell!=null && !character.affectedByKey(Constants.MAGE_DIARY)) {
 			list.add(topSpell);
 		}
 		if (list.size()>0) {
@@ -149,7 +149,7 @@ public class ReadRunes extends RealmTable {
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(getParentFrame(),"Choose a spell:",false);
 			for (GameObject go : list) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
-				if (go.hasThisAttribute(Constants.SPELL_AWAKENED)) {
+				if (go.hasThisAttribute(Constants.SPELL_AWAKENED) || character.affectedByKey(Constants.MAGE_DIARY)) {
 					chooser.addRealmComponent(rc);
 				}
 				else {
