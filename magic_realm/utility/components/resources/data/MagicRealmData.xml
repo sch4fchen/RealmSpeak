@@ -60497,11 +60497,11 @@
         <attribute text="-1 to LOCATE rolls in Lost Fotress" />
         <attribute facing="face_dn" />
         <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
         <attributeList keyName="diemod">
           <attributeVal N0="-1:locate:lost fortress#bn#" />
         </attributeList>
-        <attribute super_realm="" />
-        <attribute super_realm_treasure="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2288" name="Map of Lost Palace">
@@ -60511,11 +60511,11 @@
         <attribute text="-1 to LOCATE rolls in Lost Palace" />
         <attribute facing="face_dn" />
         <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
         <attributeList keyName="diemod">
           <attributeVal N0="-1:locate:lost palace#bn#" />
         </attributeList>
-        <attribute super_realm="" />
-        <attribute super_realm_treasure="" />
       </AttributeBlock>
     </GameObject>
   </objects>
@@ -60964,6 +60964,7 @@
       <Add from="SPELL_V" targetObjectID="1867" count="1" transferType="Random" />
       <Add from="SPELL_VI" targetObjectID="1890" count="1" transferType="Random" />
       <Add from="SPELL_VII" targetObjectID="1900" count="1" transferType="Random" />
+      <Add from="SPELL_I" targetObjectID="2034" count="1" transferType="Random" />
       <Add from="SPELL_II" targetObjectID="2035" count="1" transferType="Random" />
       <Add from="SPELL_IV" targetObjectID="2057" count="4" transferType="Random" />
       <Add from="SPELL_III" targetObjectID="2058" count="2" transferType="Random" />
@@ -60973,7 +60974,9 @@
       <Add from="SPELL_VIII" targetObjectID="2060" count="2" transferType="Random" />
       <Add from="SPELL_V" targetObjectID="2060" count="2" transferType="Random" />
       <Add from="SPELL_IV" targetObjectID="2069" count="1" transferType="Random" />
+      <Add from="SPELL_V" targetObjectID="2074" count="1" transferType="Random" />
       <Add from="SPELL_VI" targetObjectID="2075" count="1" transferType="Random" />
+      <Add from="SPELL_VIII" targetObjectID="2080" count="1" transferType="Random" />
       <Add from="SPELL_III" targetObjectID="2090" count="1" transferType="Random" />
       <Add from="SPELL_VII" targetObjectID="2091" count="1" transferType="Random" />
       <Add from="SPELL_VI" targetObjectID="2101" count="4" transferType="Random" />

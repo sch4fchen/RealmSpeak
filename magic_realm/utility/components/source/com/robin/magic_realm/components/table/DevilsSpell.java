@@ -150,7 +150,7 @@ public class DevilsSpell extends RealmTable {
 		spellGo.setThisAttribute("duration", "permanent");
 		spellGo.setThisAttribute("target", "character");
 		spellGo.setThisAttribute("magic_color", "any");
-		spellGo.addThisAttributeListItem("diemod","+1:all:all");
+		spellGo.addThisAttributeListItem(Constants.DIEMOD,"+1:all:all");
 		caster.add(spellGo);
 		SpellWrapper spell = new SpellWrapper(spellGo);
 		spell.castSpellByDenizen(caster);
