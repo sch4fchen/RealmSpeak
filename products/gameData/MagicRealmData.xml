@@ -60534,6 +60534,36 @@
         <attribute great="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2290" name="Ointment of Stone">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="4" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Active armor cannot be damaged (can still be destroyed)" />
+        <attribute discard="priest" />
+        <attribute potion="" />
+        <attribute ointment_of_stone="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2291" name="Ointment of Stone">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="4" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Active armor cannot be damaged (can still be destroyed)" />
+        <attribute discard="priest" />
+        <attribute potion="" />
+        <attribute ointment_of_stone="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

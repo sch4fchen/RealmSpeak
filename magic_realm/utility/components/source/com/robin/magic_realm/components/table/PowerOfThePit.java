@@ -208,7 +208,7 @@ public class PowerOfThePit extends RealmTable {
 		ArrayList<GameObject> destroyed = new ArrayList<>();
 		for (GameObject inv:character.getActiveInventory()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(inv);
-			if (rc.isArmor()) {
+			if (rc.isArmor() && !rc.getGameObject().hasThisAttribute(Constants.OINTMENT_OF_STONE)) {
 				ArmorChitComponent armor = (ArmorChitComponent)rc;
 				if (armor.isDamaged()) {
 					if (makeDeadWhenKilled) {

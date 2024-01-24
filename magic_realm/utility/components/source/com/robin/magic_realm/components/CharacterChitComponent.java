@@ -888,7 +888,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				if (harm.getAppliedStrength().strongerOrEqualTo(armorVulnerability)) {
 					boolean destroyed = true;
 					damageTaken = true;
-					if (armor.isArmor() && !harm.getAppliedStrength().strongerThan(armorVulnerability)) {
+					if ((armor.isArmor() || armor.isCharacter()) && !harm.getAppliedStrength().strongerThan(armorVulnerability)) {
 						// damaged
 						if (armor.isCharacter()) {
 							if (!character.isFortDamaged()) {
@@ -899,11 +899,24 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 						else {
 							ArmorChitComponent armorChit = (ArmorChitComponent) armor;
 							if (!armorChit.isDamaged()) {
-								RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Damages the "
+								if (armor.getGameObject().hasThisAttribute(Constants.OINTMENT_OF_STONE)) {
+									RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Cannot damage the "
+											+getGameObject().getName()+"'s "
+											+armor.getGameObject().getName()+" as it is protected by Ointment of Stone");
+								}
+								else {
+									RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Damages the "
+											+getGameObject().getName()+"'s "
+											+armor.getGameObject().getName());
+									destroyed = false;
+									armorChit.setIntact(false); // NOW its damaged
+								}
+							}
+							else if (armor.getGameObject().hasThisAttribute(Constants.OINTMENT_OF_STONE)) {
+								RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Cannot destroy the "
 										+getGameObject().getName()+"'s "
-										+armor.getGameObject().getName());
+										+armor.getGameObject().getName()+" as it is protected by Ointment of Stone");
 								destroyed = false;
-								armorChit.setIntact(false); // NOW its damaged
 							}
 						}
 					} else if ((armor.isWeapon() && !harm.getAppliedStrength().strongerThan(armorVulnerability)) || armor instanceof CharacterActionChitComponent) {

@@ -704,6 +704,29 @@ public class TreasureUtility {
 			}
 		}
 		
+		if (thing.hasThisAttribute(Constants.STICKS_TO_ARMOR)) {
+			ArrayList<ArmorChitComponent> list = new ArrayList<>();
+			for(GameObject go:character.getInventory()) {
+				RealmComponent rc = RealmComponent.getRealmComponent(go);
+				if (rc.isArmor()) {
+					list.add((ArmorChitComponent)rc);
+				}
+			}
+			if (list.size()>0) {
+				RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(parentFrame,"Apply to which armor?",false);
+				chooser.addRealmComponents(list,false);
+				chooser.setVisible(true);
+				if (chooser.getSelectedText()!=null) {
+					ArmorChitComponent armor = (ArmorChitComponent)chooser.getFirstSelectedComponent();
+					if (thing.hasThisAttribute(Constants.OINTMENT_OF_STONE)) {
+						armor.getGameObject().setThisAttribute(Constants.OINTMENT_OF_STONE);
+						RealmLogging.logMessage(character.getGameObject().getName(),"Applies Ointment of Stone to "+armor.getGameObject().getName());
+						thing.setThisAttribute(Constants.OINTMENT_OF_STONE_AFFECTED_ARMOR,armor.getGameObject().getStringId());
+					}
+				}
+			}
+		}
+		
 		WeaponChitComponent weapon = character.getActivePrimaryWeapon();
 		if (thing.hasThisAttribute(Constants.ALERTED_WEAPON)) {
 			if (weapon!=null) {
@@ -712,7 +735,6 @@ public class TreasureUtility {
 				}
 			}
 		}
-		
 		GameObject weaponObject = null;
 		if (weapon!=null) {
 			weaponObject = weapon.getGameObject();
@@ -726,7 +748,6 @@ public class TreasureUtility {
 				}
 			}
 		}
-		
 		if (weaponObject==null) {
 			// applies to dagger, which is effectively the character himself
 			weaponObject = character.getGameObject();
@@ -1260,6 +1281,7 @@ public class TreasureUtility {
 			decrementKey(potion,Constants.IGNORE_ARMOR);
 			decrementKey(potion,Constants.HIT_TIE);
 			potion.removeThisAttribute(Constants.AFFECTED_WEAPON_ID); // just in case
+			potion.removeThisAttribute(Constants.AFFECTED_ARMOR_ID); // just in case
 			
 			if (potion.hasThisAttribute(Constants.DISENCHANT)) {
 				String id = potion.getThisAttribute(Constants.DISENCHANT_POTION_AFFECTED_CHARACTER);
@@ -1276,38 +1298,10 @@ public class TreasureUtility {
 				}
 			}
 			
-			if (potion.hasThisAttribute(Constants.CURDLE_OF_BONE)) {
-				String id = potion.getThisAttribute(Constants.CURDLE_OF_BONE_AFFECTED_CHARACTER);
-				if (id!=null) {
-					GameObject charGo = potion.getGameData().getGameObject(Long.valueOf(id));
-					if (charGo != null) {
-						charGo.removeThisAttribute(Constants.CURDLE_OF_BONE);
-						potion.removeThisAttribute(Constants.CURDLE_OF_BONE_AFFECTED_CHARACTER);
-					}
-				}
-			}
-			
-			if (potion.hasThisAttribute(Constants.HOLY_WATER)) {
-				String id = potion.getThisAttribute(Constants.HOLY_WATER_AFFECTED_CHARACTER);
-				if (id!=null) {
-					GameObject charGo = potion.getGameData().getGameObject(Long.valueOf(id));
-					if (charGo != null) {
-						charGo.removeThisAttribute(Constants.HOLY_WATER);
-						potion.removeThisAttribute(Constants.HOLY_WATER_AFFECTED_CHARACTER);
-					}
-				}
-			}
-			
-			if (potion.hasThisAttribute(Constants.MAGIC_PATH)) {
-				String id = potion.getThisAttribute(Constants.MAGIC_PATH_AFFECTED_CHARACTER);
-				if (id!=null) {
-					GameObject charGo = potion.getGameData().getGameObject(Long.valueOf(id));
-					if (charGo != null) {
-						charGo.removeThisAttribute(Constants.MAGIC_PATH_EFFECT);
-						potion.removeThisAttribute(Constants.MAGIC_PATH_AFFECTED_CHARACTER);
-					}
-				}
-			}
+			removeEffectOnGameObject(potion,Constants.CURDLE_OF_BONE,Constants.CURDLE_OF_BONE_AFFECTED_CHARACTER);
+			removeEffectOnGameObject(potion,Constants.HOLY_WATER,Constants.HOLY_WATER_AFFECTED_CHARACTER);
+			removeEffectOnGameObject(potion,Constants.MAGIC_PATH,Constants.MAGIC_PATH_AFFECTED_CHARACTER);
+			removeEffectOnGameObject(potion,Constants.OINTMENT_OF_STONE,Constants.OINTMENT_OF_STONE_AFFECTED_ARMOR);
 		}
 		return discardTarget;
 	}
@@ -1325,6 +1319,19 @@ public class TreasureUtility {
 					else {
 						go.setThisAttribute(key,val);
 					}
+				}
+			}
+		}
+	}
+	
+	private static void removeEffectOnGameObject(GameObject potion, String effect, String itemId) {
+		if (potion.hasThisAttribute(effect)) {
+			String id = potion.getThisAttribute(itemId);
+			if (id!=null) {
+				GameObject charGo = potion.getGameData().getGameObject(Long.valueOf(id));
+				if (charGo != null) {
+					charGo.removeThisAttribute(effect);
+					potion.removeThisAttribute(itemId);
 				}
 			}
 		}
