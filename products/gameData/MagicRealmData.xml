@@ -60547,6 +60547,7 @@
         <attribute discard="priest" />
         <attribute potion="" />
         <attribute ointment_of_stone="" />
+        <attribute sticks_armor="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2291" name="Ointment of Stone">
@@ -60562,6 +60563,27 @@
         <attribute discard="priest" />
         <attribute potion="" />
         <attribute ointment_of_stone="" />
+        <attribute sticks_armor="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2292" name="Pagan Ring">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="10" />
+        <attribute notoriety="5" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Can be used once per day to cast a II spell." />
+        <attribute ring="" />
+        <attribute magic="II" />
+        <attribute speed="0" />
+        <attribute action="magic" />
+        <attribute scholar_price="20" />
+        <attribute merchant_price="20" />
+        <attribute shaman_price="20" />
       </AttributeBlock>
     </GameObject>
   </objects>
