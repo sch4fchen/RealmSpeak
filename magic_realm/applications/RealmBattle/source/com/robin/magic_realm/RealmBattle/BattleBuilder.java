@@ -703,9 +703,9 @@ public class BattleBuilder extends JFrame {
 		// Cast the spell
 		spell.castSpellNoEnhancedMagic(incantation);
 		spell.addTarget(hostPrefs,target.getGameObject());
-		caster.addThisAttributeListItem("diemod","1d:all:all");
+		caster.addThisAttributeListItem(Constants.DIEMOD,"1d:all:all");
 		spell.affectTargets(this,GameWrapper.findGame(gameData),false,null);
-		caster.removeThisAttributeListItem("diemod","1d:all:all");
+		caster.removeThisAttributeListItem(Constants.DIEMOD,"1d:all:all");
 		if (ret==JOptionPane.NO_OPTION) {
 			spell.unaffectTargets();
 			spell.makeInert();

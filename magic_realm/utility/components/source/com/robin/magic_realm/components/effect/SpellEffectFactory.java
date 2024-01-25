@@ -171,6 +171,7 @@ public class SpellEffectFactory {
 			case "tracker's sense": return new ISpellEffect[]{new ApplyNamedEffect(Constants.TRACKERS_SENSE)};
 			case "violent winds": return new ISpellEffect[]{new ViolentWindsEffect()};
 			case "water run": return new ISpellEffect[]{new MoveChitEffect()};
+			case "white feathered wing spell": return new ISpellEffect[]{new ApplyDieModEffect()};
 			
 			default: break;
 		}
