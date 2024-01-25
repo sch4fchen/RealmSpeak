@@ -1156,6 +1156,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (isNegativeAuraInClearing()) {
 			relationship--;
 		}
+		if (isProfaneIdolInClearing()) {
+			relationship--;
+		}
 		if (this.affectedByKey(Constants.DAZZLE)) {
 			relationship++;
 		}
@@ -1165,6 +1168,16 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (getCurrentLocation()!=null && getCurrentLocation().clearing!=null) {
 			for (RealmComponent rc : getCurrentLocation().clearing.getDeepClearingComponents()) {
 				if (rc.getGameObject().hasThisAttribute(Constants.NEGATIVE_AURA) && !rc.isSpell() && !rc.getGameObject().hasThisAttribute(Constants.SPELL_DENIZEN)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	public boolean isProfaneIdolInClearing() {
+		if (getCurrentLocation()!=null && getCurrentLocation().clearing!=null) {
+			for (RealmComponent rc : getCurrentLocation().clearing.getDeepClearingComponents()) {
+				if (rc.getGameObject().hasThisAttribute(Constants.PROFANE_IDOL)) {
 					return true;
 				}
 			}

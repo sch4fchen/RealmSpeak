@@ -183,6 +183,9 @@ public class RealmUtility {
 				if (character.isNegativeAuraInClearing()) {
 					relationship--;
 				}
+				if (character.isProfaneIdolInClearing()) {
+					relationship--;
+				}
 			}
 			else {
 				relationship = character.getRelationship(trader.getGameObject());

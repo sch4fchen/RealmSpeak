@@ -60601,6 +60601,23 @@
         <attribute great="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2294" name="Profane Idol">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="All natives and monsters in the clearing are one level less friendly." />
+        <attribute base_price="10" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute weight="M" />
+        <attribute notoriety="30" />
+        <attribute fame="-20" />
+        <attribute color_source="black" />
+        <attribute profane_idol="" />
+        <attribute great="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
