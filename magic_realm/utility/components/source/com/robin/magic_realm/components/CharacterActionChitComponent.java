@@ -617,10 +617,10 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 			if (character!=null &&  new CombatWrapper(character.getGameObject()).isFreezed()) {
 				mod++;
 			}
-			if (character.getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT) && !getChitAttribute("speed").matches("weight")) {
+			if (character!=null && character.getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT) && !getChitAttribute("speed").matches("weight")) {
 				mod++;
 			}
-			if (character.getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT) && !getChitAttribute("speed").matches("weight")) {
+			if (character!=null && character.getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT) && !getChitAttribute("speed").matches("weight")) {
 				mod--;
 			}
 			if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT) && !getChitAttribute("speed").matches("weight")) {

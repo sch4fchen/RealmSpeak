@@ -33,8 +33,9 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"Can open CHEST, CRYPT, or VAULT without the Lost Keys.",Constants.PICKS_LOCKS,""},
 		{"Gains points for recording certain discoveries.",Constants.ADVENTURER,""},
 		{"The Lost City and Lost Castle chits count as shelters.",Constants.ADVANCED_SHELTERS,""},
-		{"A 5 result on Search, Peer and Locate rolls also discovers secret passages.",Constants.ADVENTURE_GUIDE,""},
-		{"A 5 result on Search, Peer and Locate rolls also discovers hidden paths.",Constants.TRAVELERS_GUIDE,""},
+		{"A 5 result on Search, Peer and Locate also discovers secret passages.",Constants.ADVENTURE_GUIDE,""},
+		{"A 5 result on Search, Peer and Locate also discovers hidden paths.",Constants.TRAVELERS_GUIDE,""},
+		{"When Reading Runes, you may look at all spells, even not awakened.",Constants.MAGE_DIARY,""},
 	};
 	private static String[][] MISC_ADVANTAGE_OTHER_ABILITIES = {
 		{"Magic sight",Constants.MAGIC_SIGHT,""},
@@ -68,8 +69,8 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"Can throw corresponding weapons.",Constants.THROWING_WEAPONS,""},
 		{"A successful HIDE roll on missile attacks, allows to stay hidden.",Constants.SNEAKY,""},
 		{"Can penetrate targets armor with missile weapons.",Constants.SHARPSHOOTER,""},
-		{"Can attack with a staff additionally to casting a spell if having no active armor chits.",Constants.BATTLE_MAGE,""},
-		{"Cannot play a MAGIC counter, if he has any weapon counter except a staff activated.",Constants.STAFF_RESTRICTED_SPELLCASTING,""},
+		{"Can attack with a staff additionally to casting without any active armor.",Constants.BATTLE_MAGE,""},
+		{"Cannot play a MAGIC counter, if any weapon except a staff is activated.",Constants.STAFF_RESTRICTED_SPELLCASTING,""},
 		{"Can boost MOVE chits with MAGIC chits.",Constants.MAGIC_MOVE,""},
 		{"Can cast multiple instances of a single spell.",Constants.ENHANCED_MAGIC,""},
 		{"Can use Artifacts and Spell Books as extra MAGIC chits.",Constants.ENHANCED_ARTIFACTS,""},
@@ -93,11 +94,6 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 			addChoice(box1,MISC_ADVANTAGE_ACTION_RECORDING[i],MISC_ADVANTAGE_ACTION_RECORDING[i]==advKey);
 		}
 		box1.add(Box.createVerticalGlue());
-		box1.add(new JLabel("DISCOVERIES"));
-		for (int i=0;i<MISC_ADVANTAGE_DISCOVERIES.length;i++) {
-			addChoice(box1,MISC_ADVANTAGE_DISCOVERIES[i],MISC_ADVANTAGE_DISCOVERIES[i]==advKey);
-		}
-		box1.add(Box.createVerticalGlue());
 		box1.add(new JLabel("OTHER ABILITIES"));
 		for (int i=0;i<MISC_ADVANTAGE_OTHER_ABILITIES.length;i++) {
 			addChoice(box1,MISC_ADVANTAGE_OTHER_ABILITIES[i],MISC_ADVANTAGE_OTHER_ABILITIES[i]==advKey);
@@ -108,6 +104,11 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		box2.add(new JLabel("COMBAT & SPELLCASTING"));
 		for (int i=0;i<MISC_ADVANTAGE_COMBAT_AND_SPELLCASTING.length;i++) {
 			addChoice(box2,MISC_ADVANTAGE_COMBAT_AND_SPELLCASTING[i],MISC_ADVANTAGE_COMBAT_AND_SPELLCASTING[i]==advKey);
+		}
+		box2.add(Box.createVerticalGlue());
+		box2.add(new JLabel("DISCOVERIES"));
+		for (int i=0;i<MISC_ADVANTAGE_DISCOVERIES.length;i++) {
+			addChoice(box2,MISC_ADVANTAGE_DISCOVERIES[i],MISC_ADVANTAGE_DISCOVERIES[i]==advKey);
 		}
 		box2.add(Box.createVerticalGlue());
 		add(box2);
