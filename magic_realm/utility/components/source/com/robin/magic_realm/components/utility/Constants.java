@@ -341,6 +341,13 @@ public class Constants {
 	public static final String HORSE_ARMOR = "horse_armor";
 	public static final String LINKS = "links";
 	public static final String PROFANE_IDOL = "profane_idol";
+	public static final String REALM_MAP = "realm_map";
+	public static final String SAILS = "sails";
+	public static final String SCENTED_BAIT = "scented_bait";
+	public static final String SPIRIT_CHARM = "spirit_charm";
+	public static final String SPURS = "spurs";
+	public static final String TALISMAN = "talisman";
+	public static final String TRAVELERS_GUIDE = "travelers_guide";
 	
 	// Native ThisAttributes
 	public static final String HIDDEN = "hidden";

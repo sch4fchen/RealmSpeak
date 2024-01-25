@@ -34,6 +34,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"Gains points for recording certain discoveries.",Constants.ADVENTURER,""},
 		{"The Lost City and Lost Castle chits count as shelters.",Constants.ADVANCED_SHELTERS,""},
 		{"A 5 result on Search, Peer and Locate rolls also discovers secret passages.",Constants.ADVENTURE_GUIDE,""},
+		{"A 5 result on Search, Peer and Locate rolls also discovers hidden paths.",Constants.TRAVELERS_GUIDE,""},
 	};
 	private static String[][] MISC_ADVANTAGE_OTHER_ABILITIES = {
 		{"Magic sight",Constants.MAGIC_SIGHT,""},

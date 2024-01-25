@@ -48,6 +48,9 @@ public class Peer1ed extends Search {
 		if (character.affectedByKey(Constants.ADVENTURE_GUIDE)) {
 			doPassages(character);
 		}
+		if (character.affectedByKey(Constants.TRAVELERS_GUIDE)) {
+			doPaths(character);
+		}
 		// Glimpse
 		return doGlimpse(character);
 	}

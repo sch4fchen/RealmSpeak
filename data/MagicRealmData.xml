@@ -59616,7 +59616,7 @@
         <attribute super_realm="" />
         <attribute super_realm_treasure="" />
         <attribute native="Peasants" />
-        <attribute text="A 5 result on Search, Peer and Locate rolls also discovers secret passages." />
+        <attribute text="A 5 result on SEARCH, PEER and LOCATE rolls also discovers secret passages." />
         <attribute adventure_guide="" />
       </AttributeBlock>
     </GameObject>
@@ -60874,7 +60874,7 @@
         <attribute super_realm="" />
         <attribute super_realm_treasure="" />
         <attribute native="Peasants" />
-        <attribute text="A 5 result on SEARCH, PEER and LOCATE rolls also discovers secret passages." />
+        <attribute text="A 5 result on SEARCH, PEER and LOCATE rolls also discovers hidden paths." />
         <attribute travelers_guide="" />
       </AttributeBlock>
     </GameObject>

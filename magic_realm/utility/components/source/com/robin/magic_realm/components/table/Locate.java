@@ -52,6 +52,9 @@ public class Locate extends Search {
 		if (character.affectedByKey(Constants.ADVENTURE_GUIDE)) {
 			doPassages(character);
 		}
+		if (character.affectedByKey(Constants.TRAVELERS_GUIDE)) {
+			doPaths(character);
+		}
 		// Nothing
 		return "Nothing";
 	}

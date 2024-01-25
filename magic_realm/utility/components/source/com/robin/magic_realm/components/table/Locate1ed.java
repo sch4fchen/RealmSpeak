@@ -47,6 +47,9 @@ public class Locate1ed extends Search {
 		if (character.affectedByKey(Constants.ADVENTURE_GUIDE)) {
 			doPassages(character);
 		}
+		if (character.affectedByKey(Constants.TRAVELERS_GUIDE)) {
+			doPaths(character);
+		}
 		// Glimpse to find
 		if (character.getGameObject().getThisAttribute(Constants.GLIMPSED_COUNTERS+character.getCurrentLocation().tile.getName()).matches(character.getCurrentDayKey())) {
 			return doDiscoverChits(character);
