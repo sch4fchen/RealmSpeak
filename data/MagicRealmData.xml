@@ -60687,6 +60687,53 @@
         <attribute crone_price="20" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2299" name="Sails">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="Each MOVE phase done when moving to a water clearing allows you to do 2 moves." />
+        <attribute base_price="9" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute notoriety="2" />
+        <attribute fame="1" />
+        <attribute sails="" />
+        <attribute weight="L" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2300" name="Scented Bait">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="During Sunset, any monsters in the hex that haven't blocked anyone move to your clearing." />
+        <attribute base_price="6" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute notoriety="11" />
+        <attribute fame="12" />
+        <attribute native="Hunters" />
+        <attribute scented_bait="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2301" name="Scope">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute text="-1 to Missile Table rolls (excluding Spells)" />
+        <attribute base_price="19" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute notoriety="5" />
+        <attribute fame="10" />
+        <attribute native="Soldiers" />
+        <attributeList keyName="diemod">
+          <attributeVal N0="-1:missile:all" />
+        </attributeList>
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

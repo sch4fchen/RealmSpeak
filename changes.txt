@@ -1,8 +1,9 @@
 Sword of Terror (QuestReqInventoryMissing) - fix trigger for loosing the sword
 ::ROADMAP::
 ---Super Realm Content---
-Realm Map
-Treasures: Sails, Scented Bait, Scope, Scribe Spectacles, Scroll of Allure, Scroll of Lore, Scroll of Malice, Spirit Charm, Spurs, Talisman, Travelers Guide, White Feathered Wing
+Realm Map,Sails, Scented Bait
+Scribe Spectacles, Scroll of Allure, Scroll of Lore, Scroll of Malice, Spirit Charm, Spurs, Talisman, Travelers Guide, White Feathered Wing
+Character ability: Bards Lute, Crystal Shard, Mage Diary, Pentagram, Realm Map, Sails
 Super Realm: visitors/travelers etc. (Shaman, Priest etc.)
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Nomads, Tasks, Travelers: 4.8 (p.41)
@@ -76,7 +77,8 @@ Would be nice to make weapon abilities too:
 
 Version 1.1.8.7
 SUPER REALM:
-# New treasures: Mist Crystal, Ointment of Stone, Pagan Ring, Pentagram, Profane Idol, Realm Map, Repair Kit, Ruby Ring
+# New treasures: Mist Crystal, Ointment of Stone, Pagan Ring, Pentagram, Profane Idol, Realm Map, Repair Kit, Ruby Ring, Sails, Scented Bait,
+	Scope, Scribe Spectacles, Scroll of Allure, Scroll of Lore, Scroll of Malice, Spirit Charm, Spurs, Talisman, Travelers Guide, White Feathered Wing
 
 Version 1.1.8.6
 SUPER REALM:
