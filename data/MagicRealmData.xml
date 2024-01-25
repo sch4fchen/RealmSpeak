@@ -60634,6 +60634,36 @@
         <attribute native="Peasants" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2296" name="Repair Kit">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="6" />
+        <attribute text="Repair one damaged helmet, breastplate, shield or armor" />
+        <attribute potion="" />
+        <attribute discard="guard" />
+        <attribute facing="face_dn" />
+        <attribute repair_one="" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute weight="L" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2297" name="Repair Kit">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="6" />
+        <attribute text="Repair one damaged helmet, breastplate, shield or armor" />
+        <attribute potion="" />
+        <attribute discard="guard" />
+        <attribute facing="face_dn" />
+        <attribute repair_one="" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute weight="L" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
