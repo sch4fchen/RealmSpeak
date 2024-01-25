@@ -60664,6 +60664,29 @@
         <attribute weight="L" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2298" name="Ruby Ring">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="10" />
+        <attribute notoriety="5" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Can be used once per day to cast a VIII spell." />
+        <attribute ring="" />
+        <attribute magic="VIII" />
+        <attribute speed="0" />
+        <attribute action="magic" />
+        <attribute scholar_price="20" />
+        <attribute merchant_price="20" />
+        <attribute fame="5" />
+        <attribute native="Soldiers" />
+        <attribute great="" />
+        <attribute crone_price="20" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
@@ -61129,6 +61152,7 @@
       <Add from="SPELL_VI" targetObjectID="2115" count="2" transferType="Random" />
       <Add from="SPELL_II" targetObjectID="2266" count="1" transferType="Random" />
       <Add from="SPELL_III" targetObjectID="2266" count="1" transferType="Random" />
+      <Add from="SPELL_VIII" targetObjectID="2298" count="1" transferType="Random" />
       <Create newPool="LEFTOVER_SPELLS" />
       <Extract from="SPELL_I" to="LEFTOVER_SPELLS" keyVals="spell" />
       <Extract from="SPELL_II" to="LEFTOVER_SPELLS" keyVals="spell" />
