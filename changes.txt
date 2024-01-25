@@ -1,8 +1,8 @@
 Sword of Terror (QuestReqInventoryMissing) - fix trigger for loosing the sword
 ::ROADMAP::
 ---Super Realm Content---
-Realm Map,Sails, Scented Bait
-Scribe Spectacles, Scroll of Allure, Scroll of Lore, Scroll of Malice, Spirit Charm, Spurs, Talisman, Travelers Guide, White Feathered Wing
+Logic: Realm Map, Sails, Scented Bait, Scribe Spectacles (diemod twt), 
+GameData and Logic: Spirit Charm, Spurs, Talisman, Travelers Guide, White Feathered Wing
 Character ability: Bards Lute, Crystal Shard, Mage Diary, Pentagram, Realm Map, Sails
 Super Realm: visitors/travelers etc. (Shaman, Priest etc.)
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)

@@ -60719,7 +60719,7 @@
     </GameObject>
     <GameObject id="2301" name="Scope">
       <AttributeBlock blockName="this">
-        <attribute treasure="small" />
+        <attribute treasure="large" />
         <attribute text="-1 to Missile Table rolls (excluding Spells)" />
         <attribute base_price="19" />
         <attribute facing="face_dn" />
@@ -60730,8 +60730,93 @@
         <attribute fame="10" />
         <attribute native="Soldiers" />
         <attributeList keyName="diemod">
-          <attributeVal N0="-1:missile:all" />
+          <attributeVal N0="-1:missile,thrown:all" />
         </attributeList>
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2302" name="Scribe Spectacles">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute text="-1 to LOOT and TWT table rolls" />
+        <attribute base_price="21" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute notoriety="-15" />
+        <attribute fame="20" />
+        <attribute native="Guard" />
+        <attributeList keyName="diemod">
+          <attributeVal N0="-1:loot:all" />
+          <attributeVal N1="-1:twt:all" />
+        </attributeList>
+        <attribute weight="L" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2303" name="Scroll of Allure">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="5" />
+        <attribute notoriety="5" />
+        <attribute magic="I" />
+        <attribute book="" />
+        <attribute print="" />
+        <attribute scholar_price="30" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="magic" />
+        <attribute ts_color="lightgreen" />
+        <attribute item="" />
+        <attribute scroll="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute magic_other="VII" />
+        <attribute merchant_price="20" />
+        <attribute fame="5" />
+        <attribute priest_price="30" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2304" name="Scroll of Lore">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="5" />
+        <attribute notoriety="5" />
+        <attribute magic="IV" />
+        <attribute book="" />
+        <attribute print="" />
+        <attribute scholar_price="30" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="magic" />
+        <attribute ts_color="lightgreen" />
+        <attribute item="" />
+        <attribute scroll="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute merchant_price="20" />
+        <attribute fame="-5" />
+        <attribute warlock_price="30" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2305" name="Scroll of Malice">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="5" />
+        <attribute notoriety="10" />
+        <attribute magic="V" />
+        <attribute book="" />
+        <attribute print="" />
+        <attribute scholar_price="30" />
+        <attribute facing="face_dn" />
+        <attribute ts_section="magic" />
+        <attribute ts_color="lightgreen" />
+        <attribute item="" />
+        <attribute scroll="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute magic_other="VIII" />
+        <attribute merchant_price="20" />
+        <attribute fame="-5" />
+        <attribute great="" />
+        <attribute crone_price="30" />
       </AttributeBlock>
     </GameObject>
   </objects>
@@ -61200,6 +61285,11 @@
       <Add from="SPELL_II" targetObjectID="2266" count="1" transferType="Random" />
       <Add from="SPELL_III" targetObjectID="2266" count="1" transferType="Random" />
       <Add from="SPELL_VIII" targetObjectID="2298" count="1" transferType="Random" />
+      <Add from="SPELL_I" targetObjectID="2303" count="1" transferType="Random" />
+      <Add from="SPELL_VII" targetObjectID="2303" count="1" transferType="Random" />
+      <Add from="SPELL_IV" targetObjectID="2304" count="2" transferType="Random" />
+      <Add from="SPELL_V" targetObjectID="2305" count="1" transferType="Random" />
+      <Add from="SPELL_VIII" targetObjectID="2305" count="1" transferType="Random" />
       <Create newPool="LEFTOVER_SPELLS" />
       <Extract from="SPELL_I" to="LEFTOVER_SPELLS" keyVals="spell" />
       <Extract from="SPELL_II" to="LEFTOVER_SPELLS" keyVals="spell" />
