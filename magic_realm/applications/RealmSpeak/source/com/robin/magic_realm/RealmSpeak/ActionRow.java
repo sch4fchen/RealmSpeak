@@ -1939,13 +1939,15 @@ public class ActionRow {
 						tile.flip();
 						result = "enchanted "+tile.getTileName();
 						// fatigue the chit(s) used to do it
-						Collection<RealmComponent> chits = compChooser.getSelectedComponents();
-						for (RealmComponent rc : chits) {
-							if (rc.isMagicChit()) {
-								MagicChit chit = (MagicChit)rc;
-								if (chit.isColor()) { // Only fatigue the color chit - not the incantation
-									chit.makeFatigued();
-									RealmUtility.reportChitFatigue(character,chit,"Fatigued color chit: ");
+						if (!character.affectedByKey(Constants.TALISMAN)) {
+							Collection<RealmComponent> chits = compChooser.getSelectedComponents();
+							for (RealmComponent rc : chits) {
+								if (rc.isMagicChit()) {
+									MagicChit chit = (MagicChit)rc;
+									if (chit.isColor()) { // Only fatigue the color chit - not the incantation
+										chit.makeFatigued();
+										RealmUtility.reportChitFatigue(character,chit,"Fatigued color chit: ");
+									}
 								}
 							}
 						}

@@ -48,6 +48,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"Familiar",Constants.USE_FAMILIAR,""},
 		{"MAGIC chits don't fatigue when alerted and unused",Constants.NO_MAGIC_FATIGUE,""},
 		{"No SPX requirement",Constants.NO_SPX,""},
+		{"You do not fatigue color chits when enchanting tiles.",Constants.TALISMAN,""},
 		{"Flying",Constants.FLYING,""},
 		{"Natives become Friendly when you buy drinks.",Constants.BARDS_LUTE,""},
 	};
