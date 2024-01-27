@@ -3905,7 +3905,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public boolean immuneToCurses() {
 		return getGameObject().hasAttribute(Constants.OPTIONAL_BLOCK,Constants.CURSE_IMMUNITY)
-				|| affectedByKey(Constants.CURSE_IMMUNITY) || affectedByKey(Constants.PENTAGRAM);
+				|| affectedByKey(Constants.CURSE_IMMUNITY) || getGameObject().hasThisAttribute(Constants.PENTAGRAM) || hasActiveInventoryThisKey(Constants.PENTAGRAM);
 	}
 	public void applyCurse(String curse) {
 		if (isCharacter() && !isMistLike() && !hasMagicProtection()) { // only true characters can be cursed!
@@ -3914,7 +3914,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public boolean immuneToMesmerize() {
 		return getGameObject().hasAttribute(Constants.OPTIONAL_BLOCK,Constants.MESMERIZE_IMMUNITY)
-				|| affectedByKey(Constants.MESMERIZE_IMMUNITY) || affectedByKey(Constants.PENTAGRAM);
+				|| affectedByKey(Constants.MESMERIZE_IMMUNITY) || getGameObject().hasThisAttribute(Constants.PENTAGRAM) || hasActiveInventoryThisKey(Constants.PENTAGRAM);
 	}
 	public void applyMesmerize(String effect) {
 		if (isCharacter() && !isMistLike() && !hasMagicProtection() && !immuneToMesmerize() && !hasMesmerizeEffect(effect)) { // only true characters can be cursed!
@@ -3985,7 +3985,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		getGameObject().setThisAttribute(Constants.CURSES_NULLIFIED);
 	}
 	public boolean isNullifiedCurses() {
-		return getGameObject().hasThisAttribute(Constants.CURSES_NULLIFIED) || affectedByKey(Constants.PENTAGRAM);
+		return getGameObject().hasThisAttribute(Constants.CURSES_NULLIFIED) || getGameObject().hasThisAttribute(Constants.PENTAGRAM) || hasActiveInventoryThisKey(Constants.PENTAGRAM);
 	}
 	public void restoreCurses() {
 		getGameObject().removeThisAttribute(Constants.CURSES_NULLIFIED);
