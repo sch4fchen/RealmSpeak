@@ -759,6 +759,20 @@ public class RealmHostPanel extends JPanel {
 		for (GameObject go:activeCharacters) {
 			CharacterWrapper character = new CharacterWrapper(go);
 			for (GameObject item : character.getActiveInventory()) {
+				if (item.hasThisAttribute(Constants.SCENTED_BAIT)) {
+					TileLocation loc = character.getCurrentLocation();
+					if (loc == null || loc.isFlying() || loc.clearing == null) continue;
+					for (RealmComponent rc : loc.tile.getAllClearingComponents()) {
+						if (rc.isMonster() && !rc.isHiredOrControlled() && !((MonsterChitComponent)rc).isBlocked()) {					
+							loc.clearing.add(rc.getGameObject(),null);
+						}
+					}
+				}
+			}
+		}
+		for (GameObject go:activeCharacters) {
+			CharacterWrapper character = new CharacterWrapper(go);
+			for (GameObject item : character.getActiveInventory()) {
 				if (item.hasThisAttribute(Constants.MAGIC_FOOD)) {
 					TileLocation loc = character.getCurrentLocation();
 					if (loc == null || loc.isFlying() || loc.clearing == null) continue;

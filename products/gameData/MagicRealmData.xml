@@ -60749,7 +60749,6 @@
         <attribute weight="L" />
         <attributeList keyName="diemod">
           <attributeVal N0="-1:loot:all" />
-          <attributeVal N1="-1:twt:all" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
