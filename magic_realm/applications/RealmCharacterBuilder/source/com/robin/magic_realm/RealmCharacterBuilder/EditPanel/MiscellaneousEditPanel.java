@@ -51,6 +51,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"You do not fatigue color chits when enchanting tiles.",Constants.TALISMAN,""},
 		{"Flying",Constants.FLYING,""},
 		{"Natives become Friendly when you buy drinks.",Constants.BARDS_LUTE,""},
+		{"You cannot be blocked by Ghosts or Wraiths.",Constants.SPIRIT_CHARM,""},
 	};
 	private static String[][] MISC_ADVANTAGE_COMBAT_AND_SPELLCASTING = {
 		{"Effort Limit of 3",Constants.EFFORT_LIMIT,"3"},

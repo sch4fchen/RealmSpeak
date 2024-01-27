@@ -984,9 +984,11 @@ public class RealmUtility {
 										RealmComponent charRc = RealmComponent.getRealmComponent(character.getGameObject());
 										String magicImmunity = monster.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY);
 										if (!charRc.isImmuneTo(monster) && (!character.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT) || (magicImmunity!=null && (magicImmunity.matches("prism") || magicImmunity.matches("purple"))))) {
-											blocked = true;
-											if (blockMonsters) {
-												monster.setBlocked(true); // so monster will stop prowling
+											if ((!monster.getGameObject().hasThisAttribute(Constants.GHOST) && !monster.getGameObject().hasThisAttribute(Constants.WRAITH)) || !character.affectedByKey(Constants.SPIRIT_CHARM)) {
+												blocked = true;
+												if (blockMonsters) {
+													monster.setBlocked(true); // so monster will stop prowling
+												}
 											}
 										}
 									}
