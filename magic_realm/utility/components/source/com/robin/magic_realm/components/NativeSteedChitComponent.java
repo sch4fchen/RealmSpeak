@@ -76,9 +76,9 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 			mod++;
 		}
 		RealmComponent owner = getHeldBy();
-		if (getGameObject().hasThisAttribute("horse") && getStrength().strongerOrEqualTo(new Strength("M")) && owner!=null) {
+		if (getGameObject().hasThisAttribute("horse") && this.isActivated() && getStrength().strongerOrEqualTo(new Strength("M")) && owner!=null) {
 			CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
-			if (character.getActiveInventoryThisKey(Constants.HORSE_ARMOR)!=null) {
+			if (character.affectedByKey(Constants.HORSE_ARMOR)) {
 				mod++;
 			}
 		}
@@ -91,16 +91,40 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		return "gallop";
 	}
 	public Speed getTrotSpeed() {
-		Speed speed = new Speed(getAttributeInt("trot","move_speed"),speedModifier());
+		int mod = speedModifier();
+		Speed speed = new Speed(getAttributeInt("trot","move_speed"),mod);
 		if (getGameObject().hasThisAttribute(Constants.GROW_WINGS) && (new Speed(Constants.GROW_WINGS_SPEED)).fasterThan(speed)) {
-			speed = new Speed(getAttributeInt("trot","move_speed"),speedModifier()-1);
+			mod--;
+			speed = new Speed(getAttributeInt("trot","move_speed"),mod);
+		}
+		if (this.isActivated() && !speed.fasterThanOrEqual(new Speed(2))) {
+			RealmComponent owner = getHeldBy();
+			if (owner!=null) {
+				CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
+				if (character.affectedByKey(Constants.SPURS)) {
+					mod--;
+					speed = new Speed(getAttributeInt("trot","move_speed"),mod);
+				}
+			}
 		}
 		return speed;
 	}
 	public Speed getGallopSpeed() {
-		Speed speed =  new Speed(getAttributeInt("gallop","move_speed"),speedModifier());
+		int mod = speedModifier();
+		Speed speed =  new Speed(getAttributeInt("gallop","move_speed"),mod);
 		if (getGameObject().hasThisAttribute(Constants.GROW_WINGS) && (new Speed(Constants.GROW_WINGS_SPEED)).fasterThan(speed)) {
-			speed = new Speed(getAttributeInt("gallop","move_speed"),speedModifier()-1);
+			mod--;
+			speed = new Speed(getAttributeInt("gallop","move_speed"),mod);
+		}
+		if (this.isActivated() && !speed.fasterThanOrEqual(new Speed(2))) {
+			RealmComponent owner = getHeldBy();
+			if (owner!=null) {
+				CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
+				if (character.affectedByKey(Constants.SPURS)) {
+					mod--;
+					speed = new Speed(getAttributeInt("gallop","move_speed"),mod);
+				}
+			}
 		}
 		return speed;
 	}
@@ -241,9 +265,21 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 	    return null; // horses don't have length
 	}
 	public Speed getMoveSpeed() {
-		Speed speed = new Speed(getFaceAttributeInteger("move_speed"),speedModifier());
+		int mod = speedModifier();
+		Speed speed = new Speed(getFaceAttributeInteger("move_speed"),mod);
 		if (getGameObject().hasThisAttribute(Constants.GROW_WINGS) && (new Speed(Constants.GROW_WINGS_SPEED)).fasterThan(speed)) {
-			speed = new Speed(getFaceAttributeInteger("move_speed"),speedModifier()-1);
+			mod--;
+			speed = new Speed(getFaceAttributeInteger("move_speed"),mod);
+		}
+		if (this.isActivated() && !speed.fasterThanOrEqual(new Speed(2))) {
+			RealmComponent owner = getHeldBy();
+			if (owner!=null) {
+				CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
+				if (character.affectedByKey(Constants.SPURS)) {
+					mod--;
+					speed = new Speed(getFaceAttributeInteger("move_speed"),mod);
+				}
+			}
 		}
 		return speed;
 	}
@@ -378,9 +414,9 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 			return true;
 		}
 		RealmComponent owner = getHeldBy();
-		if (getGameObject().hasThisAttribute("horse") && getStrength().strongerOrEqualTo(new Strength("M")) && owner!=null) {
+		if (getGameObject().hasThisAttribute("horse") && this.isActivated() && getStrength().strongerOrEqualTo(new Strength("M")) && owner!=null) {
 			CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
-			if (character.getActiveInventoryThisKey(Constants.HORSE_ARMOR)!=null) {
+			if (character.affectedByKey(Constants.HORSE_ARMOR)) {
 				return true;
 			}
 		}

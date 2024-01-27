@@ -147,15 +147,25 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 			mod++;
 		}
 		RealmComponent owner = getHeldBy();
-		if (getGameObject().hasThisAttribute("horse") && getStrength().strongerOrEqualTo(new Strength("M")) && owner!=null) {
+		if (getGameObject().hasThisAttribute("horse") && this.isActivated() && getStrength().strongerOrEqualTo(new Strength("M")) && owner!=null) {
 			CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
-			if (character.getActiveInventoryThisKey(Constants.HORSE_ARMOR)!=null) {
+			if (character.affectedByKey(Constants.HORSE_ARMOR)) {
 				mod++;
 			}
 		}
 		Speed speed = new Speed(getFaceAttributeInteger("move_speed"),mod);
 		if (getGameObject().hasThisAttribute(Constants.GROW_WINGS) && (new Speed(Constants.GROW_WINGS_SPEED)).fasterThan(speed)) {
-			speed = new Speed(getFaceAttributeInteger("move_speed"),-1+mod);
+			mod--;
+			speed = new Speed(getFaceAttributeInteger("move_speed"),mod);
+		}
+		if (this.isActivated() && !speed.fasterThanOrEqual(new Speed(2))) {
+			if (owner!=null) {
+				CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
+				if (character.affectedByKey(Constants.SPURS)) {
+					mod--;
+					speed = new Speed(getFaceAttributeInteger("move_speed"),mod);
+				}
+			}
 		}
 		return speed;
 	}
@@ -194,9 +204,9 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 			mod++;
 		}
 		RealmComponent owner = getHeldBy();
-		if (getGameObject().hasThisAttribute("horse") && getStrength().strongerOrEqualTo(new Strength("M")) && owner!=null) {
+		if (getGameObject().hasThisAttribute("horse") && this.isActivated() && getStrength().strongerOrEqualTo(new Strength("M")) && owner!=null) {
 			CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
-			if (character.getActiveInventoryThisKey(Constants.HORSE_ARMOR)!=null) {
+			if (character.affectedByKey(Constants.HORSE_ARMOR)) {
 				mod++;
 			}
 		}
@@ -204,16 +214,40 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		return mod;
 	}
 	public Speed getTrotSpeed() {
-		Speed speed = new Speed(getAttributeInt("trot","move_speed"),getMoveModifier());
+		int mod = getMoveModifier();
+		Speed speed = new Speed(getAttributeInt("trot","move_speed"),mod);
 		if (getGameObject().hasThisAttribute(Constants.GROW_WINGS) && (new Speed(Constants.GROW_WINGS_SPEED)).fasterThan(speed)) {
-			speed = new Speed(getAttributeInt("trot","move_speed"),getMoveModifier()-1);
+			mod--;;
+			speed = new Speed(getAttributeInt("trot","move_speed"),mod);
+		}
+		if (this.isActivated() && !speed.fasterThanOrEqual(new Speed(2))) {
+			RealmComponent owner = getHeldBy();
+			if (owner!=null) {
+				CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
+				if (character.affectedByKey(Constants.SPURS)) {
+					mod--;
+					speed = new Speed(getAttributeInt("trot","move_speed"),mod);
+				}
+			}
 		}
 		return speed;
 	}
 	public Speed getGallopSpeed() {
-		Speed speed =  new Speed(getAttributeInt("gallop","move_speed"),getMoveModifier());
+		int mod = getMoveModifier();
+		Speed speed =  new Speed(getAttributeInt("gallop","move_speed"),mod);
 		if (getGameObject().hasThisAttribute(Constants.GROW_WINGS) && (new Speed(Constants.GROW_WINGS_SPEED)).fasterThan(speed)) {
-			speed = new Speed(getAttributeInt("gallop","move_speed"),getMoveModifier()-1);
+			mod--;;
+			speed = new Speed(getAttributeInt("gallop","move_speed"),mod);
+		}
+		if (this.isActivated() && !speed.fasterThanOrEqual(new Speed(2))) {
+			RealmComponent owner = getHeldBy();
+			if (owner!=null) {
+				CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
+				if (character.affectedByKey(Constants.SPURS)) {
+					mod--;
+					speed = new Speed(getAttributeInt("gallop","move_speed"),mod);
+				}
+			}
 		}
 		return speed;
 	}
@@ -337,9 +371,9 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 			return true;
 		}
 		RealmComponent owner = getHeldBy();
-		if (getGameObject().hasThisAttribute("horse") && getStrength().strongerOrEqualTo(new Strength("M")) && owner!=null) {
+		if (getGameObject().hasThisAttribute("horse") && this.isActivated() && getStrength().strongerOrEqualTo(new Strength("M")) && owner!=null) {
 			CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
-			if (character.getActiveInventoryThisKey(Constants.HORSE_ARMOR)!=null) {
+			if (character.affectedByKey(Constants.HORSE_ARMOR)) {
 				return true;
 			}
 		}
