@@ -1,6 +1,7 @@
 package com.robin.magic_realm.components.utility;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 import com.robin.magic_realm.components.attribute.TileLocation;
@@ -17,6 +18,7 @@ public class DieRule {
 	private ArrayList<String> keyList;
 	private boolean allLocations = false;
 	private ArrayList<String> locationList;
+	private ArrayList<String> twt = new ArrayList<String>(Arrays.asList("crypt of the knight","enchanted meadow","toadstool circle","circle of stones","ethereal abbey","fairy grove","haunted grave","mage library"));
 	
 	public DieRule(TileLocation tl,String rule) {
 		this.tl = tl;
@@ -62,7 +64,7 @@ public class DieRule {
 			}
 			return false;
 		}
-		boolean validKey = allKeys || keyList.contains(key);
+		boolean validKey = allKeys || keyList.contains(key) || (keyList.contains("twt") && twt.contains(key));
 		boolean validLocation = allLocations || locationMatches(chitDescList);
 		return validKey && validLocation;
 	}
