@@ -730,7 +730,7 @@ public class CenteredMapView extends JComponent {
 //		tile.doRepaint(); // KEEP FOR NOW
 		ArrayList<ClearingDetail> list = new ArrayList<>();
 		for (ClearingDetail clearing : tile.getClearings()) {
-			if (types.contains(clearing.getType())) {
+			if (types==null||types.contains(clearing.getType())) {
 				clearing.setMarked(true);
 				list.add(clearing);
 			}

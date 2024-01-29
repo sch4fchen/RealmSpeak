@@ -19,7 +19,9 @@ import com.robin.magic_realm.components.effect.PhaseChitEffectFactory;
 import com.robin.magic_realm.components.effect.SpellEffectContext;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
+import com.robin.magic_realm.components.swing.CenteredMapView;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
+import com.robin.magic_realm.components.swing.TileLocationChooser;
 import com.robin.magic_realm.components.utility.*;
 
 /**
@@ -5829,18 +5831,36 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean land(JFrame frame) {
 		TileLocation current = getCurrentLocation();
 		if (current!=null && current.clearing==null && !current.isBetweenTiles() && current.isFlying()) { // NEVER land when between tiles!!!
-			int clearingCount = current.tile.getClearingCount();
-			ArrayList<Integer> clearingsTriedToLand = new ArrayList<>();
-			while(current.clearing==null) {
-				int r = RandomNumber.getHighLow(1,6);
-				if (!current.tile.getClearing(r).isAffectedByViolentWinds()) {
-					current.clearing = current.tile.getClearing(r);
+			if (affectedByKey(Constants.REALM_MAP)) {
+				CenteredMapView.getSingleton().setMarkClearingAlertText("Select clearing to land");
+				ArrayList<ClearingDetail> clearingsMarked = CenteredMapView.getSingleton().markClearingsInTile(current.tile,null,true);
+				for(ClearingDetail clearing:clearingsMarked) {
+					if (clearing.isAffectedByViolentWinds()) {
+						clearing.setMarked(false);
+					}
 				}
-				else {
-					if (!clearingsTriedToLand.contains(r))  clearingsTriedToLand.add(r);
-				}
-				if (clearingsTriedToLand.size() == clearingCount) return false;
+				TileLocationChooser chooser = new TileLocationChooser(frame,CenteredMapView.getSingleton(),current);
+				chooser.setVisible(true);
+				CenteredMapView.getSingleton().markAllClearings(false);
+				current = chooser.getSelectedLocation();
 			}
+			else {
+				int clearingCount = current.tile.getClearingCount();
+				ArrayList<Integer> clearingsTriedToLand = new ArrayList<>();
+				while(current.clearing==null) {
+					int r = RandomNumber.getHighLow(1,6);
+					if (!current.tile.getClearing(r).isAffectedByViolentWinds()) {
+						current.clearing = current.tile.getClearing(r);
+					}
+					else {
+						if (!clearingsTriedToLand.contains(r)) {
+							clearingsTriedToLand.add(r);
+						}
+					}
+					if (clearingsTriedToLand.size() == clearingCount) return false;
+				}
+			}
+			
 			current.setFlying(false); // landing
 			jumpMoveHistory(); // Because we didn't walk here
 			moveToLocation(frame,current);
@@ -6656,7 +6676,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return true;
 	}
 	public boolean moveRandomly() {
-		return hasCharacterTileAttribute(Constants.SP_MOVE_IS_RANDOM);
+		return hasCharacterTileAttribute(Constants.SP_MOVE_IS_RANDOM) && !affectedByKey(Constants.REALM_MAP);
 	}
 	private boolean hasCharacterTileAttribute(String attribute) {
 		if (getGameObject().hasThisAttribute(attribute)) {
