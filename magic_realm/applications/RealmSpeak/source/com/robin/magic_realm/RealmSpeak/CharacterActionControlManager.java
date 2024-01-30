@@ -789,7 +789,7 @@ public class CharacterActionControlManager {
 			getCharacter().addCurrentActionTypeCode(actionTypeCode);
 			getCharacter().addCurrentAction(recordAction);
 			getCharacter().addCurrentActionValid(!recordingARed);
-			if (actionLocation.clearing!=null && actionLocation.clearing.isWater()) {
+			if (DayAction.MOVE_ACTION.getCode().equals(detailAction) && actionLocation.clearing!=null && actionLocation.clearing.isWater()) {
 				GameObject item = character.getActiveInventoryThisKey(Constants.SAILS);
 				if (item!=null) {
 					String lastLoc = character.getGameObject().getThisAttribute(Constants.SAILS_LAST_CLEARING);
