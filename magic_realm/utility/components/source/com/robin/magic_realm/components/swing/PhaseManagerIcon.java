@@ -90,9 +90,6 @@ public class PhaseManagerIcon extends ImageIcon {
 			Object[] obj = (Object[])i.next();
 			String action = (String)obj[0];
 			GameObject go = (GameObject)obj[1]; // could draw this as a RealmComponent small image...
-if (go==null) {
-	System.out.println("why is go null for "+action);
-}
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc!=null) {
 				int dx = pos+(rc.isCard()?3:0);

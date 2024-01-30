@@ -7,6 +7,7 @@ import java.util.*;
 
 import javax.swing.*;
 
+import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.PathDetail;
 import com.robin.magic_realm.components.RealmComponent;
@@ -788,6 +789,17 @@ public class CharacterActionControlManager {
 			getCharacter().addCurrentActionTypeCode(actionTypeCode);
 			getCharacter().addCurrentAction(recordAction);
 			getCharacter().addCurrentActionValid(!recordingARed);
+			if (actionLocation.clearing!=null && actionLocation.clearing.isWater()) {
+				GameObject item = character.getActiveInventoryThisKey(Constants.SAILS);
+				if (item!=null) {
+					String lastLoc = character.getGameObject().getThisAttribute(Constants.SAILS_LAST_CLEARING);
+					if (lastLoc==null || !lastLoc.matches(actionLocation.toString())) {
+						character.getGameObject().setThisAttribute(Constants.SAILS_LAST_CLEARING,actionLocation.toString());
+						PhaseManager pm = getCharacter().getPhaseManager(true);
+						pm.addFreeAction("M",item,true);
+					}
+				}
+			}
 		}
 		
 		PhaseManager pm = getCharacter().getPhaseManager(true);

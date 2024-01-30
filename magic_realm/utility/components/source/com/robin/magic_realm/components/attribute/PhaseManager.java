@@ -162,6 +162,9 @@ public class PhaseManager {
 	public void addFreeAction(String phase,GameObject go) {
 		addFreeAction(phase,go,null,false);
 	}
+	public void addFreeAction(String phase,GameObject go,boolean force) {
+		addFreeAction(phase,go,null,force);
+	}
 	public void addFreeAction(String phase,GameObject go,TileLocation requiredLocation,boolean force) {
 		if (force || !allObjects.contains(go)) { // RW 5/22/2011 - Commented out for quest support - See BUG 1050 for why this was added in the first place...
 			freeActions.put(phase,new Requirement(go,requiredLocation));
@@ -431,6 +434,17 @@ public class PhaseManager {
 			}
 			if (list.isEmpty()) {
 				freeActions.remove(trimmedPhase(phase));
+			}
+		}
+		
+		if (movePhase && actionLocation.hasClearing() && actionLocation.clearing.isWater()) {
+			GameObject item = character.getActiveInventoryThisKey(Constants.SAILS);
+			if (item!=null) {
+				String lastLoc = character.getGameObject().getThisAttribute(Constants.SAILS_LAST_CLEARING);
+				if (lastLoc==null || !lastLoc.matches(actionLocation.toString())) {
+					character.getGameObject().setThisAttribute(Constants.SAILS_LAST_CLEARING,actionLocation.toString());
+					addFreeAction("M",item,true);
+				}
 			}
 		}
 			

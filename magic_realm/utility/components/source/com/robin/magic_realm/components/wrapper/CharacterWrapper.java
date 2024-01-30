@@ -1702,6 +1702,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		clearActionFollowers();
 		removeAttribute(RELCHANGE_GROUP_LIST);
 		removeRunAwayLastUsedChit();
+		getGameObject().removeThisAttribute(Constants.SAILS_LAST_CLEARING);
 		
 		if (getPonyGameObject()!=null) {
 			ArrayList<RealmComponent> fhList = getFollowingHirelings();

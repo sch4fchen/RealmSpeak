@@ -29,7 +29,7 @@ public class Constants {
 	public static final String DIE_ROLL_LOG = "_die_roll_log_";
 	
 	public static final String APPLICATION_NAME = "Realm Speak";
-	public static final String REALM_SPEAK_VERSION = "1.1.8.7";
+	public static final String REALM_SPEAK_VERSION = "1.1.8.8";
 	public static final String REALM_SPEAK_IMAGES_VERSION = "1.1.8.0";
 	
 	public static final String PLAYER_TO_PLACE = "p_2_p";
@@ -343,6 +343,7 @@ public class Constants {
 	public static final String PROFANE_IDOL = "profane_idol";
 	public static final String REALM_MAP = "realm_map";
 	public static final String SAILS = "sails";
+	public static final String SAILS_LAST_CLEARING = "sails_last_clearing";
 	public static final String SCENTED_BAIT = "scented_bait";
 	public static final String SPIRIT_CHARM = "spirit_charm";
 	public static final String SPURS = "spurs";
