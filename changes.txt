@@ -76,6 +76,7 @@ Would be nice to make weapon abilities too:
 Version 1.1.8.8
 SUPER REALM:
 # New treasure: Sails
+#
 
 Version 1.1.8.7
 NEW FEATURES:
