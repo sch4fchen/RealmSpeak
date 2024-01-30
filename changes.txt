@@ -82,6 +82,7 @@ SUPER REALM:
 	Scribe Spectacles, Scroll of Allure, Scroll of Lore, Scroll of Malice, Spirit Charm, Spurs, Talisman, Travelers Guide, White Feathered Wing
 BUGS/ISSUES:
 # Fix crash when killing a transformed denizen
+# Fix crash when casted transmorph spell (Transform, Melt into Mist) becomes inert
 
 Version 1.1.8.6
 SUPER REALM:
