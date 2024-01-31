@@ -428,7 +428,7 @@ public class TreasureSetupCardView extends JComponent {
 			else {
 				if (rc.isChit() && rightClick) {
 					ChitComponent chit = (ChitComponent)rc;
-					if (chit instanceof GoldSpecialChitComponent) {
+					if (chit instanceof GoldSpecialChitComponent && chit.getGameObject().hasThisAttribute("pairid")) {
 						GameObject chitGo = chit.getGameObject();
 						GameObject other = data.getGameObject(Long.valueOf(chitGo.getThisAttribute("pairid")));
 						ChitComponent otherRc = (ChitComponent)RealmComponent.getRealmComponent(other);

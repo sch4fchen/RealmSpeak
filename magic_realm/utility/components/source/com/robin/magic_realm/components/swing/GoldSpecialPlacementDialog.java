@@ -89,8 +89,13 @@ public class GoldSpecialPlacementDialog extends AggressiveDialog {
 		while (!gs.isEmpty()) {
 			GameObject[] chit = new GameObject[2];
 			chit[0] = gs.remove(0);
-			chit[1] = gameData.getGameObject(Long.valueOf(chit[0].getThisAttribute("pairid")));
-			gs.remove(chit[1]);
+			if (chit[0].hasThisAttribute("pairid")) {
+				chit[1] = gameData.getGameObject(Long.valueOf(chit[0].getThisAttribute("pairid")));
+				gs.remove(chit[1]);
+			}
+			else {
+				chit[1] = chit[0];
+			}
 			chits.add(chit);
 		}
 	}
@@ -113,13 +118,22 @@ public class GoldSpecialPlacementDialog extends AggressiveDialog {
 		chitButtons = new ArrayList<>();
 		boolean ignoreCampaigns = hostPrefs.hasPref(Constants.HOUSE2_IGNORE_CAMPAIGNS);
 		for (GameObject[] chit:chits) {
-			if (count%6==0) {
+			if ((!hostPrefs.usesSuperRealm() && count%6==0) || (hostPrefs.usesSuperRealm() && count%12==0)) {
 				if (buttonGrid!=null) {
 					chitTabs.addTab(String.valueOf(++pageCount),buttonGrid);
 				}
-				buttonGrid = new JPanel(new GridLayout(6,1));
+				if (hostPrefs.usesSuperRealm()) {
+					buttonGrid = new JPanel(new GridLayout(6,2));
+				} else {
+					buttonGrid = new JPanel(new GridLayout(6,1));
+				}
 			}
-			JPanel subGrid = new JPanel(new GridLayout(1,2));
+			JPanel subGrid = null;
+			if (hostPrefs.usesSuperRealm()) {
+				subGrid = new JPanel(new GridLayout(1,1));
+			} else {
+				subGrid = new JPanel(new GridLayout(1,2));
+			}
 			subGrid.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 			for (int i=0;i<2;i++) {
 				JToggleButton button;
@@ -134,6 +148,7 @@ public class GoldSpecialPlacementDialog extends AggressiveDialog {
 				chitButtons.add(button);
 				subGrid.add(button);
 				group.add(button);
+				if (hostPrefs.usesSuperRealm()) break;
 			}
 			buttonGrid.add(subGrid);
 			count++;
