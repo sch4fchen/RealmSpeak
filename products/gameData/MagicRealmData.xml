@@ -57948,7 +57948,6 @@
         <attribute notoriety_cost="10" />
         <attribute item="" />
         <attribute super_realm="" />
-        <attribute pair="escort_foodale" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2165" name="Food Ale">
@@ -57960,7 +57959,6 @@
         <attribute notoriety_cost="10" />
         <attribute item="" />
         <attribute super_realm="" />
-        <attribute pair="escort_foodale" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2166" name="Books Art">
@@ -57972,7 +57970,6 @@
         <attribute notoriety_cost="10" />
         <attribute item="" />
         <attribute super_realm="" />
-        <attribute pair="books_tour" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2167" name="Tour Guide">
@@ -57984,12 +57981,10 @@
         <attribute notoriety_cost="10" />
         <attribute item="" />
         <attribute super_realm="" />
-        <attribute pair="books_tour" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2168" name="Pillage">
       <AttributeBlock blockName="this">
-        <attribute pair="pillage_raid" />
         <attribute gold_special="" />
         <attribute campaign="pillage" />
         <attribute monster_die="6" />
@@ -58003,7 +57998,6 @@
     </GameObject>
     <GameObject id="2169" name="Raid">
       <AttributeBlock blockName="this">
-        <attribute pair="pillage_raid" />
         <attribute gold_special="" />
         <attribute campaign="raid" />
         <attribute monster_die="6" />
@@ -58017,7 +58011,6 @@
     </GameObject>
     <GameObject id="2170" name="Conquer">
       <AttributeBlock blockName="this">
-        <attribute pair="conquer_war" />
         <attribute campaign="conquer" />
         <attribute gold_special="" />
         <attribute monster_die="6" />
@@ -58031,7 +58024,6 @@
     </GameObject>
     <GameObject id="2171" name="War">
       <AttributeBlock blockName="this">
-        <attribute pair="conquer_war" />
         <attribute campaign="war" />
         <attribute gold_special="" />
         <attribute monster_die="6" />
@@ -58046,7 +58038,6 @@
     </GameObject>
     <GameObject id="2172" name="Revolt">
       <AttributeBlock blockName="this">
-        <attribute pair="revolt_quest" />
         <attribute campaign="revolt" />
         <attribute gold_special="" />
         <attribute monster_die="6" />
@@ -58060,7 +58051,6 @@
     </GameObject>
     <GameObject id="2173" name="Quest">
       <AttributeBlock blockName="this">
-        <attribute pair="revolt_quest" />
         <attribute campaign="quest" />
         <attribute gold_special="" />
         <attribute monster_die="6" />
@@ -58075,7 +58065,6 @@
     </GameObject>
     <GameObject id="2174" name="Challenge">
       <AttributeBlock blockName="this">
-        <attribute pair="challenge_confront" />
         <attribute gold_special="" />
         <attribute campaign="challenge" />
         <attribute monster_die="6" />
@@ -58089,7 +58078,6 @@
     </GameObject>
     <GameObject id="2175" name="Confront">
       <AttributeBlock blockName="this">
-        <attribute pair="challenge_confront" />
         <attribute gold_special="" />
         <attribute campaign="confront" />
         <attribute monster_die="6" />
@@ -58103,7 +58091,6 @@
     </GameObject>
     <GameObject id="2176" name="Dominate">
       <AttributeBlock blockName="this">
-        <attribute pair="dominate_skirmish" />
         <attribute campaign="dominate" />
         <attribute gold_special="" />
         <attribute monster_die="6" />
@@ -58117,7 +58104,6 @@
     </GameObject>
     <GameObject id="2177" name="Hunt">
       <AttributeBlock blockName="this">
-        <attribute pair="hunt_liberate" />
         <attribute campaign="hunt" />
         <attribute gold_special="" />
         <attribute monster_die="6" />
@@ -58132,7 +58118,6 @@
     </GameObject>
     <GameObject id="2178" name="Skirmish">
       <AttributeBlock blockName="this">
-        <attribute pair="dominate_skirmish" />
         <attribute campaign="skirmish" />
         <attribute gold_special="" />
         <attribute monster_die="6" />
@@ -58147,7 +58132,6 @@
     </GameObject>
     <GameObject id="2179" name="Liberate">
       <AttributeBlock blockName="this">
-        <attribute pair="hunt_liberate" />
         <attribute campaign="liberate" />
         <attribute gold_special="" />
         <attribute monster_die="6" />
@@ -60916,6 +60900,102 @@
         <attributeList keyName="diemod">
           <attributeVal N0="-1:all:all" />
         </attributeList>
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2313" name="Scholar">
+      <AttributeBlock blockName="this">
+        <attribute visitor="scholar" />
+        <attribute print="" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute ts_section="visitors" />
+        <attribute ts_color="gold" />
+        <attribute ts_sidebar="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2314" name="Shaman">
+      <AttributeBlock blockName="this">
+        <attribute visitor="shaman" />
+        <attribute print="" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute ts_section="visitors" />
+        <attribute ts_color="gold" />
+        <attribute ts_sidebar="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2315" name="Warlock">
+      <AttributeBlock blockName="this">
+        <attribute visitor="warlock" />
+        <attribute print="" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute ts_section="visitors" />
+        <attribute ts_color="gold" />
+        <attribute ts_sidebar="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2316" name="Crone">
+      <AttributeBlock blockName="this">
+        <attribute visitor="crone" />
+        <attribute print="" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute ts_section="visitors" />
+        <attribute ts_color="gold" />
+        <attribute ts_sidebar="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2318" name="Priest">
+      <AttributeBlock blockName="this">
+        <attribute visitor="priest" />
+        <attribute print="" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute ts_section="visitors" />
+        <attribute ts_color="gold" />
+        <attribute ts_sidebar="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2319" name="Merchant">
+      <AttributeBlock blockName="this">
+        <attribute visitor="merchant" />
+        <attribute print="" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute ts_section="visitors" />
+        <attribute ts_color="gold" />
+        <attribute ts_sidebar="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2320" name="Blacksmith">
+      <AttributeBlock blockName="this">
+        <attribute visitor="blacksmith" />
+        <attribute print="" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute ts_section="visitors" />
+        <attribute ts_color="gold" />
+        <attribute ts_sidebar="" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2321" name="Cleric">
+      <AttributeBlock blockName="this">
+        <attribute visitor="cleric" />
+        <attribute print="" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute ts_section="visitors" />
+        <attribute ts_color="gold" />
+        <attribute ts_sidebar="" />
+        <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
   </objects>

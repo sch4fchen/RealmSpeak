@@ -232,7 +232,7 @@ public class RealmUtility {
 		else if (rc.isGuild()) {
 			return StringUtilities.capitalize(denizen.getThisAttribute("guild"))+" Guild";
 		}
-		return denizen.getThisAttribute("visitor");
+		return denizen.getThisAttribute(Constants.VISITOR);
 	}
 	public static TileComponent findTileForCode(GameData data,String code) {
 		GamePool pool = new GamePool(RealmObjectMaster.getRealmObjectMaster(data).getTileObjects());

@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.magic_realm.components.attribute.RelationshipType;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRequirementRelationship extends QuestRequirement {
@@ -70,7 +71,7 @@ public class QuestRequirementRelationship extends QuestRequirement {
 		ArrayList<String> queryVisitors = new ArrayList<String>();
 		queryNatives.add("native");
 		queryNatives.add("rank=HQ");
-		queryVisitors.add("visitor");
+		queryVisitors.add(Constants.VISITOR);
 		ArrayList<GameObject> representativeNatives = pool.find(queryNatives);
 		representativeNatives.addAll(pool.find(queryVisitors));
 		return representativeNatives;

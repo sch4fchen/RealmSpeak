@@ -16,7 +16,7 @@ public class QuestRequirementAction extends QuestRequirement {
 	}
 
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
-		boolean actionExecuted = reqParams != null & reqParams.actionType == getAction();
+		boolean actionExecuted = reqParams != null && reqParams.actionType == getAction();
 		
 		if ((getAction() == CharacterActionType.Hire || getAction() == CharacterActionType.Trading) && !actionWithoutNatives()) {
 			boolean actionExecutedWithNatives = reqParams.objectList != null && !reqParams.objectList.isEmpty();

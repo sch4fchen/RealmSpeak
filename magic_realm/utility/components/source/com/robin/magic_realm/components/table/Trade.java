@@ -62,7 +62,7 @@ public abstract class Trade extends RealmTable {
 			info.bumpGroupCount();
 		}
 		else {
-			info.setGroupName(tradeInfo.getGameObject().getThisAttribute("visitor"));
+			info.setGroupName(tradeInfo.getGameObject().getThisAttribute(Constants.VISITOR));
 			info.bumpGroupCount();
 		}
 		

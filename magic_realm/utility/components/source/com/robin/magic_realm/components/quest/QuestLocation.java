@@ -221,7 +221,7 @@ public class QuestLocation extends GameObjectWrapper {
 	}
 	public boolean locationMatchAddressForRealmComponent(JFrame frame,CharacterWrapper character, RealmComponent rc) {
 		LocationType type = getLocationType();
-		if (needsResolution() && frame != null & character != null) {
+		if (needsResolution() && frame != null && character != null) {
 			if (type==LocationType.Lock) {
 				RealmLogging.logMessage(QuestConstants.QUEST_ERROR,"Can't fetch locations for a LOCK type of location without requiring the character to first visit that location.");
 				return false;
@@ -535,7 +535,7 @@ public class QuestLocation extends GameObjectWrapper {
 	}
 	
 	public ArrayList<TileLocation> fetchAllLocations(JFrame frame, CharacterWrapper character, GameData gameData) {
-		if (needsResolution() && frame != null & character != null) {
+		if (needsResolution() && frame != null && character != null) {
 			if (getLocationType()==LocationType.Lock) {
 				RealmLogging.logMessage(QuestConstants.QUEST_ERROR,"Can't fetch locations for a LOCK type of location without requiring the character to first visit that location.");
 				return null;

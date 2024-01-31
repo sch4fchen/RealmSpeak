@@ -1331,8 +1331,8 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				ret[1] = "N" + StringUtilities.capitalize(nativeName);
 				relationshipNames.add(ret);
 			}
-			for (GameObject visitor : pool.find("visitor")) {
-				String visitorName = visitor.getThisAttribute("visitor");
+			for (GameObject visitor : pool.find(Constants.VISITOR)) {
+				String visitorName = visitor.getThisAttribute(Constants.VISITOR);
 				String relBlock = RealmUtility.getRelationshipBlockFor(visitor);
 				String[] ret = new String[2];
 				ret[0] = relBlock;

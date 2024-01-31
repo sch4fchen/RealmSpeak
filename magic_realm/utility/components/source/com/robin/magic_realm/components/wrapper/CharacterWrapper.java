@@ -2517,7 +2517,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public Collection<GameObject> getBoons(GameObject denizen) {
 		String nativeName = denizen.getThisAttribute("native");
 		if (nativeName==null) {
-			nativeName = denizen.getThisAttribute("visitor");
+			nativeName = denizen.getThisAttribute(Constants.VISITOR);
 		}
 		ArrayList<GameObject> list = new ArrayList<>();
 		Collection<GameObject> c = getInventory();

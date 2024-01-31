@@ -626,7 +626,7 @@ public class ClearingDetail {
 	 */
 	public boolean holdsGoldSpecial(String currentCampaign) {
 		for (RealmComponent rc : getClearingComponents()) {
-			if (rc.isGoldSpecial() && !rc.getGameObject().hasThisAttribute("visitor")) {
+			if (rc.isGoldSpecial() && !rc.getGameObject().hasThisAttribute(Constants.VISITOR)) {
 				if (currentCampaign==null || !rc.getGameObject().hasThisAttribute("campaign")) {
 					return true;
 				}

@@ -241,7 +241,7 @@ public class RealmPaymentDialog extends AggressiveDialog {
 		
 		String groupName = denizen.getThisAttribute("native");
 		if (groupName==null) {
-			groupName = denizen.getThisAttribute("visitor");
+			groupName = denizen.getThisAttribute(Constants.VISITOR);
 		}
 		
 		boon.setThisAttribute("boon",groupName);

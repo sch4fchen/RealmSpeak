@@ -145,7 +145,9 @@ public class RealmSpeakInit {
 		}
 		
 		// Match up the gold specials
-		RealmUtility.doMatchGoldSpecials(data);
+		if (!hostPrefs.usesSuperRealm()) {
+			RealmUtility.doMatchGoldSpecials(data);
+		}
 		
 		// Some items require a spell be cast (Flying Carpet)
 		doItemSpellCasting();

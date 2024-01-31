@@ -1082,7 +1082,7 @@ public class QuestTesterFrame extends JFrame {
 		JButton addVisitor = new JButton("Visitor");
 		addVisitor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				ArrayList<GameObject> things = chooseOther("Visitor", "visitor");
+				ArrayList<GameObject> things = chooseOther("Visitor", Constants.VISITOR);
 				if (things == null)
 					return;
 				for (GameObject thing : things) {

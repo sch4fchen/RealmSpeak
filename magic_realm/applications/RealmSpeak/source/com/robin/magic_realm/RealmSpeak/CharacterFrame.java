@@ -580,7 +580,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				destination.add(chit.getGameObject());
 				destination.setThisAttribute(Constants.GOLD_SPECIAL_PLACED);
 				chit.getGameObject().setThisAttribute(Constants.GOLD_SPECIAL_PLACED);
-				if (!hostPrefs.hasPref(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE) && !chit.getGameObject().hasThisAttribute(Constants.SUPER_REALM)) {
+				if (!hostPrefs.hasPref(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE) && !hostPrefs.usesSuperRealm()) {
 					chit.getOtherSide().getGameObject().setThisAttribute(Constants.GOLD_SPECIAL_PLACED);
 				}
 				if (getCharacter().getNeedsChooseGoldSpecial() && SetupCardUtility.stillChitsToPlace(hostPrefs)) {
