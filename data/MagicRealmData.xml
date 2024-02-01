@@ -47593,6 +47593,7 @@
         <attribute super_realm="" />
         <attribute native_die="3" />
         <attribute clan="1" />
+        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1750" name="Patrol Dwelling">
@@ -48590,6 +48591,7 @@
         <attribute super_realm="" />
         <attribute native_die="5" />
         <attribute clan="2" />
+        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1780" name="Woodfolk Dwelling">
@@ -48771,6 +48773,7 @@
         <attribute super_realm="" />
         <attribute native_die="6" />
         <attribute clan="2" />
+        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1786" name="Lancer Dwelling">
@@ -48965,6 +48968,7 @@
         <attribute super_realm="" />
         <attribute native_die="3" />
         <attribute clan="3" />
+        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1792" name="Pony 1">
@@ -49318,6 +49322,7 @@
         <attribute summon="company" />
         <attribute super_realm="" />
         <attribute native_die="5" />
+        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1804" name="Company Dwelling">
@@ -50867,6 +50872,7 @@
         <attribute super_realm="" />
         <attribute native_die="1" />
         <attribute clan="1" />
+        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1849" name="Zealot Dwelling">
@@ -51163,6 +51169,7 @@
         <attribute super_realm="" />
         <attribute native_die="2" />
         <attribute clan="2" />
+        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1859" name="Aborigine Dwelling">
@@ -51421,6 +51428,7 @@
         <attribute super_realm="" />
         <attribute native_die="2" />
         <attribute clan="3" />
+        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1867" name="Coven Dwelling">
@@ -51573,6 +51581,7 @@
         <attribute super_realm="" />
         <attribute native_die="4" />
         <attribute clan="3" />
+        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1872" name="Hunter Dwelling">
@@ -51861,6 +51870,7 @@
         <attribute super_realm="" />
         <attribute native_die="1" />
         <attribute clan="4" />
+        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1882" name="Mercenary Dwelling">
@@ -52125,6 +52135,7 @@
         <attribute super_realm="" />
         <attribute native_die="5" />
         <attribute clan="4" />
+        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1890" name="Conjuror Dwelling">
@@ -52452,6 +52463,7 @@
         <attribute super_realm="" />
         <attribute native_die="6" />
         <attribute clan="4" />
+        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1900" name="Enchanter Dwelling">
@@ -60384,7 +60396,7 @@
         <attribute horse_armor="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2283" name="Hound">
+    <GameObject id="2282" name="Hound">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute text="Use to lure monsters to separate combat sheet" />
@@ -60417,7 +60429,7 @@
         <attribute chit_color="lightgreen" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2284" name="Links">
+    <GameObject id="2283" name="Links">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="If doing FOLLOW, the guide cannot leave you behind." />
@@ -60431,7 +60443,7 @@
         <attribute notoriety="-5" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2285" name="Mage Diary">
+    <GameObject id="2284" name="Mage Diary">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute text="When READING RUNES, may look at all spells and attempt to learn any, even fi not awakened." />
@@ -60445,7 +60457,7 @@
         <attribute mage_diary="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2286" name="Mage Library">
+    <GameObject id="2285" name="Mage Library">
       <AttributeBlock blockName="this">
         <attribute treasure_location="library" />
         <attribute treasure="large" />
@@ -60474,7 +60486,7 @@
       <contains id="2026" />
       <contains id="2025" />
     </GameObject>
-    <GameObject id="2287" name="Map of Lost Fortress">
+    <GameObject id="2286" name="Map of Lost Fortress">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="3" />
@@ -60488,7 +60500,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2288" name="Map of Lost Palace">
+    <GameObject id="2287" name="Map of Lost Palace">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="3" />
@@ -60502,7 +60514,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2289" name="Mist Crystal">
+    <GameObject id="2288" name="Mist Crystal">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute text="No one can use the PEER table to Peer into the clearing." />
@@ -60516,6 +60528,22 @@
         <attribute fame="-10" />
         <attribute mist_crystal="" />
         <attribute great="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2289" name="Ointment of Stone">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="4" />
+        <attribute print="" />
+        <attribute facing="face_dn" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute text="Active armor cannot be damaged (can still be destroyed)" />
+        <attribute discard="priest" />
+        <attribute potion="" />
+        <attribute ointment_of_stone="" />
+        <attribute sticks_armor="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2290" name="Ointment of Stone">
@@ -60534,23 +60562,7 @@
         <attribute sticks_armor="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2291" name="Ointment of Stone">
-      <AttributeBlock blockName="this">
-        <attribute treasure="small" />
-        <attribute base_price="4" />
-        <attribute print="" />
-        <attribute facing="face_dn" />
-        <attribute item="" />
-        <attribute super_realm="" />
-        <attribute super_realm_treasure="" />
-        <attribute text="Active armor cannot be damaged (can still be destroyed)" />
-        <attribute discard="priest" />
-        <attribute potion="" />
-        <attribute ointment_of_stone="" />
-        <attribute sticks_armor="" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="2292" name="Pagan Ring">
+    <GameObject id="2291" name="Pagan Ring">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="10" />
@@ -60570,7 +60582,7 @@
         <attribute shaman_price="20" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2293" name="Pentagram">
+    <GameObject id="2292" name="Pentagram">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="You are immune to further CURSE and MESMERIZE spells." />
@@ -60585,7 +60597,7 @@
         <attribute great="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2294" name="Profane Idol">
+    <GameObject id="2293" name="Profane Idol">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="All natives and monsters in the clearing are one level less friendly." />
@@ -60602,7 +60614,7 @@
         <attribute great="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2295" name="Realm Map">
+    <GameObject id="2294" name="Realm Map">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="May choose which clearing to land in after doing FLY; immune to LOST (including Maze)" />
@@ -60616,6 +60628,21 @@
         <attribute great="" />
         <attribute realm_map="" />
         <attribute native="Peasants" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2295" name="Repair Kit">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="6" />
+        <attribute text="Repair one damaged helmet, breastplate, shield or armor" />
+        <attribute potion="" />
+        <attribute discard="guard" />
+        <attribute facing="face_dn" />
+        <attribute repair_one="" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute super_realm_treasure="" />
+        <attribute weight="L" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2296" name="Repair Kit">
@@ -60633,22 +60660,7 @@
         <attribute weight="L" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2297" name="Repair Kit">
-      <AttributeBlock blockName="this">
-        <attribute treasure="small" />
-        <attribute base_price="6" />
-        <attribute text="Repair one damaged helmet, breastplate, shield or armor" />
-        <attribute potion="" />
-        <attribute discard="guard" />
-        <attribute facing="face_dn" />
-        <attribute repair_one="" />
-        <attribute item="" />
-        <attribute super_realm="" />
-        <attribute super_realm_treasure="" />
-        <attribute weight="L" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="2298" name="Ruby Ring">
+    <GameObject id="2297" name="Ruby Ring">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="10" />
@@ -60671,7 +60683,7 @@
         <attribute crone_price="20" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2299" name="Sails">
+    <GameObject id="2298" name="Sails">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="Each MOVE phase done when moving to a water clearing allows you to do 2 moves." />
@@ -60686,7 +60698,7 @@
         <attribute weight="L" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2300" name="Scented Bait">
+    <GameObject id="2299" name="Scented Bait">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute text="During Sunset, any monsters in the hex that haven't blocked anyone move to your clearing." />
@@ -60701,7 +60713,7 @@
         <attribute scented_bait="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2301" name="Scope">
+    <GameObject id="2300" name="Scope">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute text="-1 to Missile Table rolls (excluding Spells)" />
@@ -60718,7 +60730,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2302" name="Scribe Spectacles">
+    <GameObject id="2301" name="Scribe Spectacles">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute text="-1 to LOOT and TWT table rolls" />
@@ -60736,7 +60748,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2303" name="Scroll of Allure">
+    <GameObject id="2302" name="Scroll of Allure">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="5" />
@@ -60758,7 +60770,7 @@
         <attribute priest_price="30" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2304" name="Scroll of Lore">
+    <GameObject id="2303" name="Scroll of Lore">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="5" />
@@ -60779,7 +60791,7 @@
         <attribute warlock_price="30" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2305" name="Scroll of Malice">
+    <GameObject id="2304" name="Scroll of Malice">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="5" />
@@ -60802,7 +60814,7 @@
         <attribute crone_price="30" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2306" name="Spirit Charm">
+    <GameObject id="2305" name="Spirit Charm">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="9" />
@@ -60816,7 +60828,7 @@
         <attribute weight="L" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2307" name="Spurs">
+    <GameObject id="2306" name="Spurs">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="9" />
@@ -60830,7 +60842,7 @@
         <attribute spurs="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2308" name="Talisman">
+    <GameObject id="2307" name="Talisman">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="17" />
@@ -60846,7 +60858,7 @@
         <attribute great="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2309" name="Traveler's Guide">
+    <GameObject id="2308" name="Traveler's Guide">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="10" />
@@ -60861,7 +60873,7 @@
         <attribute travelers_guide="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2310" name="White Feathered Wing">
+    <GameObject id="2309" name="White Feathered Wing">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="11" />
@@ -60878,9 +60890,9 @@
         <attribute cast_spell_on_init="" />
         <attribute magic_color="white" />
       </AttributeBlock>
-      <contains id="2312" />
+      <contains id="2310" />
     </GameObject>
-    <GameObject id="2312" name="White Feathered Wing Spell">
+    <GameObject id="2310" name="White Feathered Wing Spell">
       <AttributeBlock blockName="this">
         <attribute duration="permanent" />
         <attribute target="spells item" />
@@ -60902,7 +60914,7 @@
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2313" name="Scholar">
+    <GameObject id="2311" name="Scholar">
       <AttributeBlock blockName="this">
         <attribute visitor="scholar" />
         <attribute print="" />
@@ -60912,9 +60924,10 @@
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
         <attribute super_realm="" />
+        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2314" name="Shaman">
+    <GameObject id="2312" name="Shaman">
       <AttributeBlock blockName="this">
         <attribute visitor="shaman" />
         <attribute print="" />
@@ -60924,9 +60937,10 @@
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
         <attribute super_realm="" />
+        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2315" name="Warlock">
+    <GameObject id="2313" name="Warlock">
       <AttributeBlock blockName="this">
         <attribute visitor="warlock" />
         <attribute print="" />
@@ -60936,9 +60950,10 @@
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
         <attribute super_realm="" />
+        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2316" name="Crone">
+    <GameObject id="2314" name="Crone">
       <AttributeBlock blockName="this">
         <attribute visitor="crone" />
         <attribute print="" />
@@ -60948,9 +60963,10 @@
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
         <attribute super_realm="" />
+        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2318" name="Priest">
+    <GameObject id="2315" name="Priest">
       <AttributeBlock blockName="this">
         <attribute visitor="priest" />
         <attribute print="" />
@@ -60960,9 +60976,10 @@
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
         <attribute super_realm="" />
+        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2319" name="Merchant">
+    <GameObject id="2316" name="Merchant">
       <AttributeBlock blockName="this">
         <attribute visitor="merchant" />
         <attribute print="" />
@@ -60972,9 +60989,10 @@
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
         <attribute super_realm="" />
+        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2320" name="Blacksmith">
+    <GameObject id="2317" name="Blacksmith">
       <AttributeBlock blockName="this">
         <attribute visitor="blacksmith" />
         <attribute print="" />
@@ -60986,7 +61004,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2321" name="Cleric">
+    <GameObject id="2318" name="Cleric">
       <AttributeBlock blockName="this">
         <attribute visitor="cleric" />
         <attribute print="" />
@@ -60996,6 +61014,189 @@
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
         <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2319" name="Bandits Box">
+      <AttributeBlock blockName="this">
+        <attribute ts_section="lost castle" />
+        <attribute ts_size="S+" />
+        <attribute ts_color="yellow" />
+        <attribute ts_draw_below="" />
+        <attribute ts_sort="4" />
+        <attribute gold_special_target="" />
+        <attribute summon_n="bandits" />
+        <attribute summon="bandits" />
+        <attribute super_realm="" />
+        <attribute clan="2" />
+        <attribute quest_target="" />
+        <attribute monster_die="2" />
+        <attribute monster_die2="3" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2320" name="Dwarves Box">
+      <AttributeBlock blockName="this">
+        <attribute ts_section="lost city" />
+        <attribute ts_size="S+" />
+        <attribute ts_color="yellow" />
+        <attribute ts_draw_below="" />
+        <attribute gold_special_target="" />
+        <attribute summon_n="dwarves" />
+        <attribute summon="dwarves" />
+        <attribute super_realm="" />
+        <attribute quest_target="" />
+        <attribute monster_die="5" />
+        <attribute monster_die2="6" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2321" name="Cultists Box">
+      <AttributeBlock blockName="this">
+        <attribute ts_section="lost fortress" />
+        <attribute ts_size="S+" />
+        <attribute ts_color="yellow" />
+        <attribute ts_draw_below="" />
+        <attribute gold_special_target="" />
+        <attribute summon_n="cultists" />
+        <attribute summon="cultists" />
+        <attribute super_realm="" />
+        <attribute quest_target="" />
+        <attribute monster_die="1" />
+        <attribute monster_die2="2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2322" name="Elves Box">
+      <AttributeBlock blockName="this">
+        <attribute ts_section="lost palace" />
+        <attribute ts_size="S+" />
+        <attribute ts_color="yellow" />
+        <attribute ts_draw_below="" />
+        <attribute gold_special_target="" />
+        <attribute summon_n="elves" />
+        <attribute summon="elves" />
+        <attribute super_realm="" />
+        <attribute quest_target="" />
+        <attribute monster_die="3" />
+        <attribute monster_die2="4" />
+        <attribute ts_sort="4" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2323" name="Peasants Box">
+      <AttributeBlock blockName="this">
+        <attribute ts_section="clan 1" />
+        <attribute ts_size="S+" />
+        <attribute ts_color="blue" />
+        <attribute ts_draw_below="" />
+        <attribute ts_sort="2" />
+        <attribute gold_special_target="" />
+        <attribute summon_n="peasants" />
+        <attribute summon="peasants" />
+        <attribute super_realm="" />
+        <attribute native_die="2" />
+        <attribute quest_target="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2324" name="Soldiers Box">
+      <AttributeBlock blockName="this">
+        <attribute ts_section="clan 1" />
+        <attribute ts_size="S+" />
+        <attribute ts_color="blue" />
+        <attribute ts_draw_below="" />
+        <attribute ts_sort="2" />
+        <attribute gold_special_target="" />
+        <attribute summon_n="soldiers" />
+        <attribute summon="soldiers" />
+        <attribute super_realm="" />
+        <attribute native_die="4" />
+        <attribute quest_target="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2325" name="Guard Box">
+      <AttributeBlock blockName="this">
+        <attribute ts_section="clan 1" />
+        <attribute ts_size="S+" />
+        <attribute ts_color="blue" />
+        <attribute ts_draw_below="" />
+        <attribute ts_sort="2" />
+        <attribute gold_special_target="" />
+        <attribute summon_n="guard" />
+        <attribute summon="guard" />
+        <attribute super_realm="" />
+        <attribute native_die="5" />
+        <attribute quest_target="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2326" name="Order Box">
+      <AttributeBlock blockName="this">
+        <attribute ts_section="clan 1" />
+        <attribute ts_size="S+" />
+        <attribute ts_color="blue" />
+        <attribute ts_draw_below="" />
+        <attribute ts_sort="2" />
+        <attribute gold_special_target="" />
+        <attribute summon_n="order" />
+        <attribute summon="order" />
+        <attribute super_realm="" />
+        <attribute native_die="6" />
+        <attribute quest_target="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2327" name="Summoners Box">
+      <AttributeBlock blockName="this">
+        <attribute ts_section="clan 2" />
+        <attribute ts_size="S+" />
+        <attribute ts_color="green" />
+        <attribute ts_draw_below="" />
+        <attribute ts_sort="2" />
+        <attribute gold_special_target="" />
+        <attribute summon_n="summoners" />
+        <attribute summon="summoners" />
+        <attribute super_realm="" />
+        <attribute native_die="1" />
+        <attribute quest_target="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2328" name="Pagans Box">
+      <AttributeBlock blockName="this">
+        <attribute ts_section="clan 2" />
+        <attribute ts_size="S+" />
+        <attribute ts_color="green" />
+        <attribute ts_draw_below="" />
+        <attribute ts_sort="2" />
+        <attribute gold_special_target="" />
+        <attribute summon_n="pagans" />
+        <attribute summon="pagans" />
+        <attribute super_realm="" />
+        <attribute native_die="4" />
+        <attribute quest_target="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2329" name="Rogues Box">
+      <AttributeBlock blockName="this">
+        <attribute ts_section="clan 3" />
+        <attribute ts_size="S+" />
+        <attribute ts_color="red" />
+        <attribute ts_draw_below="" />
+        <attribute ts_sort="2" />
+        <attribute gold_special_target="" />
+        <attribute summon_n="rogues" />
+        <attribute summon="rogues" />
+        <attribute super_realm="" />
+        <attribute native_die="6" />
+        <attribute quest_target="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2330" name="Mages Box">
+      <AttributeBlock blockName="this">
+        <attribute ts_section="clan 4" />
+        <attribute ts_size="S+" />
+        <attribute ts_color="purple" />
+        <attribute ts_draw_below="" />
+        <attribute ts_sort="2" />
+        <attribute gold_special_target="" />
+        <attribute summon_n="mages" />
+        <attribute summon="mages" />
+        <attribute super_realm="" />
+        <attribute native_die="3" />
+        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
   </objects>
@@ -61342,7 +61543,7 @@
       <Add from="LARGE_TREASURES" targetObjectID="2268" count="1" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="2273" count="1" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="2277" count="1" transferType="Random" />
-      <Add from="LARGE_TREASURES" targetObjectID="2286" count="1" transferType="Random" />
+      <Add from="LARGE_TREASURES" targetObjectID="2285" count="1" transferType="Random" />
       <Move from="TWT" to="LARGE_TREASURES" count="6" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="1220" count="5" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="1221" count="3" transferType="Random" />
@@ -61431,7 +61632,7 @@
       <Add from="SPELL_VII" targetObjectID="2268" count="1" transferType="Random" />
       <Add from="SPELL_III" targetObjectID="2273" count="1" transferType="Random" />
       <Add from="SPELL_V" targetObjectID="2277" count="1" transferType="Random" />
-      <Add from="SPELL_VII" targetObjectID="2286" count="1" transferType="Random" />
+      <Add from="SPELL_VII" targetObjectID="2285" count="1" transferType="Random" />
       <Add from="SPELL_V" targetObjectID="1317" count="1" transferType="Random" />
       <Add from="SPELL_III" targetObjectID="1402" count="1" transferType="Random" />
       <Add from="SPELL_VIII" targetObjectID="1286" count="1" transferType="Random" />
@@ -61463,12 +61664,12 @@
       <Add from="SPELL_VI" targetObjectID="2115" count="2" transferType="Random" />
       <Add from="SPELL_II" targetObjectID="2266" count="1" transferType="Random" />
       <Add from="SPELL_III" targetObjectID="2266" count="1" transferType="Random" />
-      <Add from="SPELL_VIII" targetObjectID="2298" count="1" transferType="Random" />
-      <Add from="SPELL_I" targetObjectID="2303" count="1" transferType="Random" />
-      <Add from="SPELL_VII" targetObjectID="2303" count="1" transferType="Random" />
-      <Add from="SPELL_IV" targetObjectID="2304" count="2" transferType="Random" />
-      <Add from="SPELL_V" targetObjectID="2305" count="1" transferType="Random" />
-      <Add from="SPELL_VIII" targetObjectID="2305" count="1" transferType="Random" />
+      <Add from="SPELL_VIII" targetObjectID="2297" count="1" transferType="Random" />
+      <Add from="SPELL_I" targetObjectID="2302" count="1" transferType="Random" />
+      <Add from="SPELL_VII" targetObjectID="2302" count="1" transferType="Random" />
+      <Add from="SPELL_IV" targetObjectID="2303" count="2" transferType="Random" />
+      <Add from="SPELL_V" targetObjectID="2304" count="1" transferType="Random" />
+      <Add from="SPELL_VIII" targetObjectID="2304" count="1" transferType="Random" />
       <Create newPool="LEFTOVER_SPELLS" />
       <Extract from="SPELL_I" to="LEFTOVER_SPELLS" keyVals="spell" />
       <Extract from="SPELL_II" to="LEFTOVER_SPELLS" keyVals="spell" />

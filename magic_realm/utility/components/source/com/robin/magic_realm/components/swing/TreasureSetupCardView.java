@@ -709,9 +709,9 @@ public class TreasureSetupCardView extends JComponent {
 									allDrawableRects.add(new Rectangle(dx,dy,rect.width+10,rect.height+10));
 									offset+=3;
 								}
-								if (doubleBox) {
-									rect.y = rect.y-rect.height/4;
-								}
+							}
+							if (doubleBox) {
+								rect.y = rect.y-rect.height/4;
 							}
 						}
 					}

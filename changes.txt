@@ -1,9 +1,10 @@
 Sword of Terror (QuestReqInventoryMissing) - fix trigger for loosing the sword
 ::ROADMAP::
 ---Super Realm Content---
-Super Realm: visitors (Priest, Merchant, Cleric, Blacksmith)
+check backside of chits?! why can only 6 GoldSpecialChits be placed? add gold_special_target to sites and natives
+ts_draw_below: draw boxes below setup chart, below everything, if super_realm
+Super Realm: Travelers: Visitors (Priest, Merchant, Cleric, Blacksmith), Campaigns, Nomads, Tasks: 4.8 (p.41)
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
-Super Realm: Nomads, Campaigns, Tasks, Travelers: 4.8 (p.41)
 Super Realm: Quests + Events
 ---Super Realms Rules---
 Super Realm: Adapt Commerce optional rules for new natives
