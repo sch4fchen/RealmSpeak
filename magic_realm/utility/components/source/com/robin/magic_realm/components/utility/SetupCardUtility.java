@@ -1198,9 +1198,13 @@ public class SetupCardUtility {
 		return pool.findFirst(query);
 	}
 	public static boolean stillChitsToPlace(HostPrefWrapper hostPrefs) {
+		RealmObjectMaster rom = RealmObjectMaster.getRealmObjectMaster(hostPrefs.getGameData());
+		if (hostPrefs.usesSuperRealm()) {
+			ArrayList<GameObject> gs = new ArrayList<>(rom.findObjects("gold_special,!"+Constants.GOLD_SPECIAL_PLACED)); 
+			return !gs.isEmpty();
+		}
 		int boards = hostPrefs.getMultiBoardEnabled() ? hostPrefs.getMultiBoardCount() : 1;
 		int totalChitsToPlace = boards * 6;
-		RealmObjectMaster rom = RealmObjectMaster.getRealmObjectMaster(hostPrefs.getGameData());
 		ArrayList<GameObject> gs = new ArrayList<>(rom.findObjects("gold_special,"+Constants.GOLD_SPECIAL_PLACED));
 		int placedChits = gs.size();
 		if (!hostPrefs.hasPref(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE)&&!hostPrefs.usesSuperRealm()) {

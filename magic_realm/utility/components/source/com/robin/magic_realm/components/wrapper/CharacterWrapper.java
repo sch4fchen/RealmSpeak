@@ -314,9 +314,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public CharacterWrapper getHiringCharacter() {
 		if (!isCharacter()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(getGameObject());
-			RealmComponent owner = rc.getOwner();
-			if (owner!=null) {
-				return new CharacterWrapper(owner.getGameObject());
+			if (rc!=null&&rc.getOwner()!=null) {
+				return new CharacterWrapper(rc.getOwner().getGameObject());
 			}
 		}
 		return null;
