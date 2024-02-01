@@ -226,8 +226,12 @@ public class SetupCardUtility {
 			String summon_tl = gs.getThisAttribute("summon_tl");
 			
 			if (bn!=null) {
-				summon_t = summon_t+" "+bn;
-				summon_tl = summon_tl+" "+bn;
+				if (summon_t!=null) {
+					summon_t = summon_t+" "+bn;
+				}
+				if (summon_tl!=null) {
+					summon_tl = summon_tl+" "+bn;
+				}
 			}
 			
 			// Iterate through clearing components
