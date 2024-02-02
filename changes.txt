@@ -1,7 +1,7 @@
 Sword of Terror (QuestReqInventoryMissing) - fix trigger for loosing the sword
 ::ROADMAP::
 ---Super Realm Content---
-ts_draw_below: draw boxes below setup chart, below everything, if super_realm
+draw treasue site boxes
 Super Realm: Travelers: Visitors (Priest, Merchant, Cleric, Blacksmith), Campaigns, Nomads, Tasks: 4.8 (p.41), add taveler chit, when searching treasure site
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Quests + Events
@@ -41,6 +41,7 @@ Super Realm: Optional Rules: No discarding or drawing new quest cards (but perha
 Super Realm: Optional Rules: No duplicate spell recording at start of the game
 Super Realm: Optional Rules: Starting location always the Inn
 Super Realm: Characters, including potraits with credits, different chit icon
+Super Realm: Optional Rules: Starting location always the Inn
 ---Additional features---
 Super Realm: icons for site chits, sound and warning chits, characters
 ---Optional Rules---
@@ -60,7 +61,8 @@ Super Realm: Optional Rules: Hiring Unused Characters (SR: 11.4, p.122)
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt e.g. for assigning VPs
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt e.g. for assigning VPs
 Super Realm: Optional Rules: Easier Spell Learning (SR: 11.9, p.126)
-Super Realm: Optional Rules: Range Setup (SR: 11.0, p.126)
+Super Realm: Optional Rules: Range Setup (SR: 11.10, p.126)
+Super Realm: Optional Rules: Range Setup (SR: 11.11, p.126)
 Super Realm: Optional Rules: Commerce (SR: 11.12, p.126) - adapt e.g. rules for new native groups
 Super Realm: Optional Rules: Cornered (SR: 11.13, p.128)
 Super Realm: Player building map: distribute tiles equally (including river tiles), distribute river tiles first, then grotto, then rest, each player has 3 tiles in the hand and draws after placing, skip player if he cannot place any tile (and he has no river tile), if all players are skipped or player would be skipped but has river tile, undo last placement, do not allow placing grotto before all other river tiles have been placed
@@ -79,6 +81,7 @@ SUPER REALM:
 # New treasure: Sails
 # Missions: all missions are available in a game (no pairs)
 # Add visitors
+# Add boxes on setup chart for travelers and quest cards
 
 Version 1.1.8.7
 NEW FEATURES:

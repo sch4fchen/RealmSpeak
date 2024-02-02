@@ -575,8 +575,7 @@ public class TreasureSetupCardView extends JComponent {
 								c = GraphicsUtil.convertColor(c,HIGHLIGHT_COLOR,HIGHLIGHT_INTENSITY);
 							}
 							g.setColor(c);
-							boolean bottom = true;//go.hasThisAttribute("ts_draw_below");
-							yoffset = bottom?(ChitComponent.T_CHIT_SIZE-d.height):0;
+							yoffset = (ChitComponent.T_CHIT_SIZE-d.height);
 							if (yoffset>4) yoffset-=4;
 							if (go.hasThisAttribute("ts_offset")) {
 								int offset = go.getThisInt("ts_offset");
