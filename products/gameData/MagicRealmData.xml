@@ -61141,7 +61141,6 @@
         <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_draw_below="" />
         <attribute ts_sort="6" />
         <attribute gold_special_target="" />
         <attribute summon_t="Altar" />
@@ -61155,7 +61154,6 @@
         <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_draw_below="" />
         <attribute ts_sort="7" />
         <attribute gold_special_target="" />
         <attribute summon_t="Shrine" />
@@ -61169,7 +61167,6 @@
         <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_draw_below="" />
         <attribute ts_sort="6" />
         <attribute gold_special_target="" />
         <attribute summon_t="Hoard" />
@@ -61183,7 +61180,6 @@
         <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_draw_below="" />
         <attribute ts_sort="6" />
         <attribute gold_special_target="" />
         <attribute summon_t="Lair" />
@@ -61197,7 +61193,6 @@
         <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_draw_below="" />
         <attribute ts_sort="6" />
         <attribute gold_special_target="" />
         <attribute summon_t="Pit" />
@@ -61211,7 +61206,6 @@
         <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_draw_below="" />
         <attribute ts_sort="6" />
         <attribute gold_special_target="" />
         <attribute summon_t="Den" />
@@ -61225,7 +61219,6 @@
         <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_draw_below="" />
         <attribute ts_sort="6" />
         <attribute gold_special_target="" />
         <attribute summon_t="Pool" />
@@ -61239,7 +61232,6 @@
         <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_draw_below="" />
         <attribute ts_sort="6" />
         <attribute gold_special_target="" />
         <attribute summon_t="Tower" />
@@ -61253,7 +61245,6 @@
         <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_draw_below="" />
         <attribute ts_sort="6" />
         <attribute gold_special_target="" />
         <attribute summon_t="Vault" />
@@ -61267,7 +61258,6 @@
         <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_draw_below="" />
         <attribute ts_sort="6" />
         <attribute gold_special_target="" />
         <attribute summon_t="Tomb" />
@@ -61281,7 +61271,6 @@
         <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_draw_below="" />
         <attribute ts_sort="6" />
         <attribute gold_special_target="" />
         <attribute summon_t="Cairns" />
@@ -61295,7 +61284,6 @@
         <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_draw_below="" />
         <attribute ts_sort="6" />
         <attribute gold_special_target="" />
         <attribute summon_t="Statue" />
@@ -61309,7 +61297,6 @@
         <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_draw_below="" />
         <attribute ts_sort="6" />
         <attribute gold_special_target="" />
         <attribute summon_t="Spire" />
@@ -61323,7 +61310,6 @@
         <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_draw_below="" />
         <attribute ts_sort="6" />
         <attribute gold_special_target="" />
         <attribute summon_t="Garden" />
@@ -61337,7 +61323,6 @@
         <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_draw_below="" />
         <attribute ts_sort="6" />
         <attribute gold_special_target="" />
         <attribute summon_t="Maze" />
@@ -61351,7 +61336,6 @@
         <attribute ts_section="natives" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_draw_below="" />
         <attribute ts_sort="6" />
         <attribute gold_special_target="" />
         <attribute summon_t="Temple" />
@@ -61705,7 +61689,7 @@
       <Add from="LARGE_TREASURES" targetObjectID="2271" count="1" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="2275" count="1" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="2283" count="1" transferType="Random" />
-      <Move from="TWT" to="LARGE_TREASURES" count="6" transferType="Random" />
+      <Move from="TWT" to="LARGE_TREASURES" count="12" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="1220" count="5" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="1221" count="3" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="1222" count="4" transferType="Random" />

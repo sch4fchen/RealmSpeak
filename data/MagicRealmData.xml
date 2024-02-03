@@ -61689,7 +61689,7 @@
       <Add from="LARGE_TREASURES" targetObjectID="2271" count="1" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="2275" count="1" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="2283" count="1" transferType="Random" />
-      <Move from="TWT" to="LARGE_TREASURES" count="6" transferType="Random" />
+      <Move from="TWT" to="LARGE_TREASURES" count="12" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="1220" count="5" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="1221" count="3" transferType="Random" />
       <Add from="LARGE_TREASURES" targetObjectID="1222" count="4" transferType="Random" />
