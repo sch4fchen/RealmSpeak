@@ -51,6 +51,7 @@ public class TreasureSetupCardView extends JComponent {
 	private Dimension cardSize;
 	private Hashtable<String, HashLists<String, GameObject>> sectionRowHash;
 	private ArrayList<GameObject> nonMdList;
+	private ArrayList<GameObject> bottomList;
 	
 	private Image image;
 	
@@ -179,6 +180,7 @@ public class TreasureSetupCardView extends JComponent {
 			hash.put(key,go);
 		}
 		
+		bottomList = new ArrayList<>();
 		// Take each subsection (section+monster_die) and divide into groups based on summon string
 		sectionRowHash = new Hashtable<>();
 		for (int n=1;n<=6;n++) {
@@ -195,7 +197,11 @@ public class TreasureSetupCardView extends JComponent {
 								summon = go.getName();
 							}
 						}
-						groups.put(summon,go);
+						if (go.hasThisAttribute("ts_draw_below")) {
+							bottomList.add(go);
+						} else {
+							groups.put(summon,go);
+						}
 					}
 					sectionRowHash.put(key,groups);
 				}
@@ -227,7 +233,9 @@ public class TreasureSetupCardView extends JComponent {
 				for(GameObject go : l) {
 					if (!go.hasThisAttribute(CacheChitComponent.DEPLETED_CACHE) && go.hasThisAttribute("ts_color")) {
 						if (nativeSetup) {
-							if ((go.hasThisAttribute("native") || go.hasThisAttribute("native_die") || go.hasThisAttribute("gold_special_target")) && !go.hasThisAttribute("treasure")) nonMdList.add(go);
+							if ((go.hasThisAttribute("native") || go.hasThisAttribute("native_die") || go.hasThisAttribute("gold_special_target")) && !go.hasThisAttribute("treasure")) {
+								nonMdList.add(go);
+							}
 						} else {
 							nonMdList.add(go);
 						}
@@ -238,6 +246,9 @@ public class TreasureSetupCardView extends JComponent {
 		
 		// Now we have the sectionRowHash keyed on subsection, and hashing HashLists objects which divide summon groups
 		int height = SPACING+((ChitComponent.T_CHIT_SIZE+SPACING+TEXT_SPACING+SPACING)*6)+20;
+		if(structuredLayout && !nativeSetup && !bottomList.isEmpty()) {
+			height = height + SPACING + ChitComponent.T_CHIT_SIZE+SPACING+TEXT_SPACING+SPACING;
+		}
 		
 		int maxwidth = 0;
 		if(structuredLayout) {
@@ -712,6 +723,95 @@ public class TreasureSetupCardView extends JComponent {
 							if (doubleBox) {
 								rect.y = rect.y-rect.height/4;
 							}
+						}
+					}
+				}
+			}
+		}
+		
+		// Draw boxes below chart
+		if (!nativeSetup) {
+			int startX = LEFT_BORDER-SPACING;
+			int yoffset = 0;
+			int y = (6*h)+SPACING+TEXT_SPACING+25;
+			int x = 0+startX;
+			g.setComposite(defaultComposite);
+			Collections.sort(bottomList,new Comparator<GameObject>() {
+				public int compare(GameObject go1,GameObject go2) {
+					int ret = 0;
+					String s1 = go1.getThisAttribute(dieString1);
+					String s2 = go2.getThisAttribute(dieString1);
+					ret = s1.compareTo(s2);
+					if (ret==0) {
+						int md1 = go1.getThisInt("ts_sort");
+						int md2 = go2.getThisInt("ts_sort");
+						ret = md1-md2;
+					}
+					return ret;
+				}
+			});
+			for (GameObject go : bottomList) {
+				ArrayList<Rectangle> rects = new ArrayList<>();
+				String size = getChitSizeAttribute(go);
+				Dimension d = ChitComponent.getDimensionForSize(size);
+				String col = go.getThisAttribute("ts_color");
+				Color c = MagicRealmColor.getColor(col);
+				g.setColor(c);
+				yoffset = (ChitComponent.T_CHIT_SIZE-d.height);
+				if (yoffset>4) yoffset-=4;
+				rects.add(new Rectangle(x,y+yoffset,d.width-1,d.height));
+				g.fillRect(x,y-SPACING-TEXT_SPACING,d.width,h);
+				g.setColor(Color.black);
+				g.setFont(SUMMON_FONT);
+				String summon = go.getThisAttribute("summon_t");
+				String drawSummon = summon.replace('_',' ');
+				if (yoffset>0) {
+					TextType tt = new TextType(drawSummon,x-startX-20,"NORMAL");
+					tt.setDelims(",");
+					tt.setSpace(", ");
+					tt.draw(g,x+1,y-SPACING+yoffset-tt.getHeight(g),Alignment.Left);
+				}
+				else {
+					g.drawString(drawSummon,x+1,y-SPACING+yoffset);
+				}
+				x += d.width;
+				x += SPACING;
+				for (Rectangle rect : rects) {
+					// Save these attributes for later mouse point interpretations
+					drawRectList.add(rect);
+					drawContainerList.add(go);
+					g.setComposite(TRANSPARENT);				
+					g.draw(rect);
+					g.setComposite(defaultComposite);
+					// Draw contents
+					ArrayList<GameObject> hold = go.getHold();
+					ArrayList<RealmComponent> drawable = new ArrayList<>();
+					ArrayList<RealmComponent> horses = new ArrayList<>();
+					for (GameObject held : hold) {
+						RealmComponent rc = RealmComponent.getRealmComponent(held);
+						if (rc.isMonster() || rc.isNative() || rc.isGoldSpecial()) {
+							drawable.add(0,rc);
+							RealmComponent horse = (RealmComponent)rc.getHorse(false);
+							if (horse!=null) {
+								horses.add(0,horse);
+							}
+						}
+					}
+					drawable.addAll(0,horses);
+					
+					if (!drawable.isEmpty()) {
+						int offset = 0;
+						RealmComponent topChit = drawable.get(drawable.size()-1);
+						int diff = rect.height - topChit.getHeight();
+						int yoff = ((drawable.size()-1)*3)-(diff>>1);
+						
+						if (drawable.size()>5) yoff -= 4;
+						for (RealmComponent rc : drawable) {
+							int dx = rect.x+((rect.width-rc.getWidth())>>1)-offset;
+							int dy = rect.y+((rect.height-rc.getHeight())>>1)-offset+yoff;
+							allDrawables.add(rc);
+							allDrawableRects.add(new Rectangle(dx,dy,rect.width+10,rect.height+10));
+							offset+=3;
 						}
 					}
 				}

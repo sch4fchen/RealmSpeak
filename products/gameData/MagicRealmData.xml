@@ -61138,7 +61138,7 @@
     </GameObject>
     <GameObject id="2329" name="Altar Box">
       <AttributeBlock blockName="this">
-        <attribute ts_section="natives" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_sort="6" />
@@ -61146,12 +61146,13 @@
         <attribute summon_t="Altar" />
         <attribute summon="altar" />
         <attribute super_realm="" />
-        <attribute monster_die="7" />
+        <attribute monster_die="2" />
+        <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2331" name="Shrine Box">
       <AttributeBlock blockName="this">
-        <attribute ts_section="natives" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_sort="7" />
@@ -61159,12 +61160,13 @@
         <attribute summon_t="Shrine" />
         <attribute summon="shrine" />
         <attribute super_realm="" />
-        <attribute monster_die="7" />
+        <attribute monster_die="2" />
+        <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2333" name="Hoard Box">
       <AttributeBlock blockName="this">
-        <attribute ts_section="natives" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_sort="6" />
@@ -61172,12 +61174,13 @@
         <attribute summon_t="Hoard" />
         <attribute summon="hoard" />
         <attribute super_realm="" />
-        <attribute monster_die="7" />
+        <attribute monster_die="1" />
+        <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2334" name="Lair Box">
       <AttributeBlock blockName="this">
-        <attribute ts_section="natives" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_sort="6" />
@@ -61185,12 +61188,13 @@
         <attribute summon_t="Lair" />
         <attribute summon="lair" />
         <attribute super_realm="" />
-        <attribute monster_die="7" />
+        <attribute monster_die="1" />
+        <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2335" name="Pit Box">
       <AttributeBlock blockName="this">
-        <attribute ts_section="natives" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_sort="6" />
@@ -61198,12 +61202,13 @@
         <attribute summon_t="Pit" />
         <attribute summon="pit" />
         <attribute super_realm="" />
-        <attribute monster_die="7" />
+        <attribute monster_die="1" />
+        <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2336" name="Den Box">
       <AttributeBlock blockName="this">
-        <attribute ts_section="natives" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_sort="6" />
@@ -61211,12 +61216,13 @@
         <attribute summon_t="Den" />
         <attribute summon="den" />
         <attribute super_realm="" />
-        <attribute monster_die="7" />
+        <attribute monster_die="2" />
+        <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2337" name="Pool Box">
       <AttributeBlock blockName="this">
-        <attribute ts_section="natives" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_sort="6" />
@@ -61224,12 +61230,13 @@
         <attribute summon_t="Pool" />
         <attribute summon="pool" />
         <attribute super_realm="" />
-        <attribute monster_die="7" />
+        <attribute monster_die="3" />
+        <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2338" name="Tower Box">
       <AttributeBlock blockName="this">
-        <attribute ts_section="natives" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_sort="6" />
@@ -61237,12 +61244,13 @@
         <attribute summon_t="Tower" />
         <attribute summon="tower" />
         <attribute super_realm="" />
-        <attribute monster_die="7" />
+        <attribute monster_die="3" />
+        <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2339" name="Vault Box">
       <AttributeBlock blockName="this">
-        <attribute ts_section="natives" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_sort="6" />
@@ -61250,12 +61258,13 @@
         <attribute summon_t="Vault" />
         <attribute summon="vault" />
         <attribute super_realm="" />
-        <attribute monster_die="7" />
+        <attribute monster_die="4" />
+        <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2340" name="Tomb Box">
       <AttributeBlock blockName="this">
-        <attribute ts_section="natives" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_sort="6" />
@@ -61263,12 +61272,13 @@
         <attribute summon_t="Tomb" />
         <attribute summon="tomb" />
         <attribute super_realm="" />
-        <attribute monster_die="7" />
+        <attribute monster_die="4" />
+        <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2341" name="Cairns Box">
       <AttributeBlock blockName="this">
-        <attribute ts_section="natives" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_sort="6" />
@@ -61276,12 +61286,13 @@
         <attribute summon_t="Cairns" />
         <attribute summon="cairns" />
         <attribute super_realm="" />
-        <attribute monster_die="7" />
+        <attribute monster_die="5" />
+        <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2342" name="Statue Box">
       <AttributeBlock blockName="this">
-        <attribute ts_section="natives" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_sort="6" />
@@ -61289,12 +61300,13 @@
         <attribute summon_t="Statue" />
         <attribute summon="statue" />
         <attribute super_realm="" />
-        <attribute monster_die="7" />
+        <attribute monster_die="5" />
+        <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2343" name="Spire Box">
       <AttributeBlock blockName="this">
-        <attribute ts_section="natives" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_sort="6" />
@@ -61302,12 +61314,13 @@
         <attribute summon_t="Spire" />
         <attribute summon="spire" />
         <attribute super_realm="" />
-        <attribute monster_die="7" />
+        <attribute monster_die="5" />
+        <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2344" name="Garden Box">
       <AttributeBlock blockName="this">
-        <attribute ts_section="natives" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_sort="6" />
@@ -61315,12 +61328,13 @@
         <attribute summon_t="Garden" />
         <attribute summon="garden" />
         <attribute super_realm="" />
-        <attribute monster_die="7" />
+        <attribute monster_die="6" />
+        <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2345" name="Maze Box">
       <AttributeBlock blockName="this">
-        <attribute ts_section="natives" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_sort="6" />
@@ -61328,12 +61342,13 @@
         <attribute summon_t="Maze" />
         <attribute summon="maze" />
         <attribute super_realm="" />
-        <attribute monster_die="7" />
+        <attribute monster_die="6" />
+        <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2346" name="Temple Box">
       <AttributeBlock blockName="this">
-        <attribute ts_section="natives" />
+        <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
         <attribute ts_sort="6" />
@@ -61341,7 +61356,8 @@
         <attribute summon_t="Temple" />
         <attribute summon="temple" />
         <attribute super_realm="" />
-        <attribute monster_die="7" />
+        <attribute monster_die="6" />
+        <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
   </objects>
