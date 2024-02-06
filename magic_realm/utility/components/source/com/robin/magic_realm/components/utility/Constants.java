@@ -138,6 +138,7 @@ public class Constants {
 	public static final String GLIMPSED_COUNTERS = "glimpsedCounters";
 	public static final String VULNERABILITY = "vulnerability";
 	public static final String STRENGTH = "strength";
+	public static final String DRAW_BACKSIDE = "draw_backside";
 	
 	// Used by dwellings
 	public static final String NO_SHELTER = "no_shelter";

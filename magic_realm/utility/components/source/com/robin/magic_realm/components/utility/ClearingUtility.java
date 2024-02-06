@@ -116,6 +116,9 @@ public class ClearingUtility {
 					GameClient.broadcastClient("host",go.getName()+" is added to "+tile.getName()+", clearing "+clearing);
 					tile.add(go);
 					added.add(go);
+					if (go.hasThisAttribute(RealmComponent.GOLD_SPECIAL)) {
+						go.removeThisAttribute(Constants.DRAW_BACKSIDE);
+					}
 				}
 			}
 			if (go.hasThisAttribute("dwelling")) {

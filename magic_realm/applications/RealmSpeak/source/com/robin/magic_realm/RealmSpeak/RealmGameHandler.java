@@ -654,6 +654,9 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			if (!hostPrefs.hasPref(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE)&&!hostPrefs.usesSuperRealm()) {
 				chit[1 - s].setThisAttribute(Constants.GOLD_SPECIAL_PLACED);
 			}
+			if (hostPrefs.usesSuperRealm()) {
+				chit[s].setThisAttribute(Constants.DRAW_BACKSIDE);
+			}
 			target.setThisAttribute(Constants.GOLD_SPECIAL_PLACED);
 		}
 

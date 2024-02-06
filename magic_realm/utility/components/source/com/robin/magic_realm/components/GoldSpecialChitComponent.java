@@ -25,8 +25,18 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 
 	protected GoldSpecialChitComponent(GameObject obj) {
 		super(obj);
-		lightColor = MagicRealmColor.GOLD;
-		darkColor = MagicRealmColor.GOLD;
+		String color = obj.getThisAttribute("chit_color");
+		if (obj.hasThisAttribute(Constants.DRAW_BACKSIDE)) {
+			lightColor = MagicRealmColor.GRAY;
+			darkColor = MagicRealmColor.GRAY;
+		}
+		else if (color!=null) {
+			lightColor = MagicRealmColor.getColor(color);
+			darkColor = MagicRealmColor.getColor(color);
+		} else {
+			lightColor = MagicRealmColor.GOLD;
+			darkColor = MagicRealmColor.GOLD;
+		}
 	}
 	public String getLightSideStat() {
 		return "this";
@@ -52,8 +62,13 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 		
 		TextType tt;
 		
-		String name = gameObject.getName();
-		tt = new TextType(name,getChitSize()-4,"BOLD");
+		String name;
+		if (gameObject.hasThisAttribute(Constants.DRAW_BACKSIDE)) {
+			name = "Traveler";
+		} else {
+			name = gameObject.getName();
+		}
+		tt = new TextType(name,getChitSize()-4,"Plain");
 		int h = tt.getHeight(g);
 		int y = ((getChitSize()-h)>>1)-3;
 		tt.draw(g,2,y,Alignment.Center);
