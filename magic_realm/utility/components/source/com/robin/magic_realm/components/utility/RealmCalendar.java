@@ -459,7 +459,7 @@ public class RealmCalendar {
 		return day==1;
 	}
 	public static boolean isLastDayOfMonth(int day) {
-		return day==RealmCalendar.DAYS_IN_A_MONTH;
+		return day==DAYS_IN_A_MONTH;
 	}
 	public static RealmCalendar getCalendar(GameData data) {
 		GameWrapper game = GameWrapper.findGame(data);

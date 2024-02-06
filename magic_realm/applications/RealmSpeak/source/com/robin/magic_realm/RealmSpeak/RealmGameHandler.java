@@ -204,8 +204,14 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		startGameButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				int ret;
+				String text = "Allow characters to place visitor/mission chits?";
+				String title = "Visitor/Mission";
+				if (hostPrefs.usesSuperRealm()) {
+					text = "Allow characters to place travelers chits?";
+					title = "Travelers";
+				}
 				if (!characterList.isEmpty()) {
-					ret = JOptionPane.showConfirmDialog(getMainFrame(), "Allow characters to place visitor/mission chits?", "Visitor/Mission", JOptionPane.YES_NO_OPTION);
+					ret = JOptionPane.showConfirmDialog(getMainFrame(), text, title, JOptionPane.YES_NO_OPTION);
 				}
 				else {
 					// If there are no characters yet, then there is no point asking
@@ -634,7 +640,9 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			int r = RandomNumber.getRandom(gs.size());
 			int s = hostPrefs.hasPref(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE)||hostPrefs.usesSuperRealm() ? 0 : RandomNumber.getRandom(2);
 			chit[0] = gs.remove(r);
-			chit[1] = chit[0].getGameObjectFromThisAttribute("pairid");
+			if (!hostPrefs.usesSuperRealm()) {
+				chit[1] = chit[0].getGameObjectFromThisAttribute("pairid");
+			}
 			if (!hostPrefs.hasPref(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE)&&!hostPrefs.usesSuperRealm()) {
 				gs.remove(chit[1]);
 			}

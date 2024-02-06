@@ -166,7 +166,10 @@ public class RealmCalendarViewer extends JFrame implements ManagedFrame {
 			if (usingWeather && i%7==0) {
 				dayPanel[i].add(new JLabel("Weather Changes"));
 			}
-			if (i%7==6) {
+			if (i%7==6 && !hostPrefs.hasPref(Constants.SR_END_OF_MONTH_REGENERATION)) {
+				dayPanel[i].add(new JLabel("Denizen Reset"));
+			}
+			if (RealmCalendar.isLastDayOfMonth(i+1) && hostPrefs.hasPref(Constants.SR_END_OF_MONTH_REGENERATION)) {
 				dayPanel[i].add(new JLabel("Denizen Reset"));
 			}
 			ArrayList<ColorMagic> colors = realmCalendar.getColorMagic(month,i+1);

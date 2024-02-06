@@ -266,8 +266,12 @@ public class TreasureSetupCardView extends JComponent {
 							for (GameObject go : goArray) {
 								String size = getChitSizeAttribute(go);
 								sectionWidth += ChitComponent.getDimensionForSize(size).width;
+								if (go.hasThisAttribute("ts_offset")) {
+									sectionWidth += ChitComponent.T_CHIT_SIZE;
+								}
 							}
 						}
+						sectionWidth += 2*SPACING;
 						xMax = Math.max(xMax,sectionWidth);
 					}
 				}
@@ -576,6 +580,7 @@ public class TreasureSetupCardView extends JComponent {
 						ArrayList<GameObject> gos = new ArrayList<>();
 						int startX = x-SPACING;
 						int yoffset = 0;
+						int yoffsetDoubleBox = 6;
 						boolean doubleBox = false;
 						for (GameObject go : group) {
 							String size = getChitSizeAttribute(go);
@@ -586,6 +591,10 @@ public class TreasureSetupCardView extends JComponent {
 								c = GraphicsUtil.convertColor(c,HIGHLIGHT_COLOR,HIGHLIGHT_INTENSITY);
 							}
 							g.setColor(c);
+							if (!doubleBox && go.hasThisAttribute(dieString2)
+									&& go.getThisInt(dieString2)==n+1 && go.getThisInt(dieString1)==n) {
+								doubleBox = true;
+							}
 							yoffset = (ChitComponent.T_CHIT_SIZE-d.height);
 							if (yoffset>4) yoffset-=4;
 							if (go.hasThisAttribute("ts_offset")) {
@@ -593,13 +602,13 @@ public class TreasureSetupCardView extends JComponent {
 								startX  += offset*ChitComponent.T_CHIT_SIZE;
 								x += offset*ChitComponent.T_CHIT_SIZE;
 							}
-							rects.add(new Rectangle(x,y+yoffset,d.width-1,d.height));
+							if (doubleBox) {
+								rects.add(new Rectangle(x,y+yoffset+2*yoffsetDoubleBox,d.width-1,d.height-yoffsetDoubleBox));
+							} else {
+								rects.add(new Rectangle(x,y+yoffset,d.width-1,d.height));
+							}
 							gos.add(go);
 							x += d.width;
-							if (!doubleBox && go.hasThisAttribute(dieString2)
-									&& go.getThisInt(dieString2)==n+1 && go.getThisInt(dieString1)==n) {
-								doubleBox = true;
-							}
 						}
 						x += SPACING;
 						if (doubleBox) {
@@ -614,7 +623,11 @@ public class TreasureSetupCardView extends JComponent {
 							TextType tt = new TextType(drawSummon,x-startX-20,"NORMAL");
 							tt.setDelims(",");
 							tt.setSpace(", ");
-							tt.draw(g,startX+1,y-SPACING+yoffset-tt.getHeight(g),Alignment.Left);
+							if (doubleBox) {
+								tt.draw(g,startX+1,y-SPACING+yoffset-tt.getHeight(g)+2*yoffsetDoubleBox,Alignment.Left);
+							} else {
+								tt.draw(g,startX+1,y-SPACING+yoffset-tt.getHeight(g),Alignment.Left);
+							}
 						}
 						else {
 							g.drawString(drawSummon,startX+1,y-SPACING+yoffset);
@@ -764,6 +777,9 @@ public class TreasureSetupCardView extends JComponent {
 				g.setColor(Color.black);
 				g.setFont(SUMMON_FONT);
 				String summon = go.getThisAttribute("summon_t");
+				if (summon==null) {
+					summon = go.getThisAttribute("summon_n");
+				}
 				String drawSummon = summon.replace('_',' ');
 				if (yoffset>0) {
 					TextType tt = new TextType(drawSummon,x-startX-20,"NORMAL");
