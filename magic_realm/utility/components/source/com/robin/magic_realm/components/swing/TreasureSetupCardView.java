@@ -769,11 +769,13 @@ public class TreasureSetupCardView extends JComponent {
 				Dimension d = ChitComponent.getDimensionForSize(size);
 				String col = go.getThisAttribute("ts_color");
 				Color c = MagicRealmColor.getColor(col);
-				g.setColor(c);
 				yoffset = (ChitComponent.T_CHIT_SIZE-d.height);
 				if (yoffset>4) yoffset-=4;
+				g.setColor(MagicRealmColor.DARKGRAY);
+				g.fillRect(x-SPACING,y-TEXT_SPACING,d.width+2*SPACING,h-SPACING);
+				g.setColor(c);
 				rects.add(new Rectangle(x,y+yoffset,d.width-1,d.height));
-				g.fillRect(x,y-SPACING-TEXT_SPACING,d.width,h);
+				g.fillRect(x,y+2*SPACING,d.width,d.height);
 				g.setColor(Color.black);
 				g.setFont(SUMMON_FONT);
 				String summon = go.getThisAttribute("summon_t");

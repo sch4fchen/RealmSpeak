@@ -27,8 +27,8 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 		super(obj);
 		String color = obj.getThisAttribute("chit_color");
 		if (obj.hasThisAttribute(Constants.DRAW_BACKSIDE)) {
-			lightColor = MagicRealmColor.GRAY;
-			darkColor = MagicRealmColor.GRAY;
+			lightColor = MagicRealmColor.LIGHTBLUE;
+			darkColor = MagicRealmColor.LIGHTBLUE;
 		}
 		else if (color!=null) {
 			lightColor = MagicRealmColor.getColor(color);
