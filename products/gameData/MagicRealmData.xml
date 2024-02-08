@@ -61141,7 +61141,7 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_sort="6" />
+        <attribute ts_sort="4" />
         <attribute gold_special_target="" />
         <attribute summon_t="Altar" />
         <attribute summon="altar" />
@@ -61155,7 +61155,7 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_sort="7" />
+        <attribute ts_sort="6" />
         <attribute gold_special_target="" />
         <attribute summon_t="Shrine" />
         <attribute summon="shrine" />
@@ -61169,7 +61169,7 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_sort="6" />
+        <attribute ts_sort="1" />
         <attribute gold_special_target="" />
         <attribute summon_t="Hoard" />
         <attribute summon="hoard" />
@@ -61183,7 +61183,7 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_sort="6" />
+        <attribute ts_sort="2" />
         <attribute gold_special_target="" />
         <attribute summon_t="Lair" />
         <attribute summon="lair" />
@@ -61197,7 +61197,7 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_sort="6" />
+        <attribute ts_sort="3" />
         <attribute gold_special_target="" />
         <attribute summon_t="Pit" />
         <attribute summon="pit" />
@@ -61211,7 +61211,7 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_sort="6" />
+        <attribute ts_sort="5" />
         <attribute gold_special_target="" />
         <attribute summon_t="Den" />
         <attribute summon="den" />
@@ -61225,7 +61225,7 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_sort="6" />
+        <attribute ts_sort="7" />
         <attribute gold_special_target="" />
         <attribute summon_t="Pool" />
         <attribute summon="pool" />
@@ -61239,7 +61239,7 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_sort="6" />
+        <attribute ts_sort="8" />
         <attribute gold_special_target="" />
         <attribute summon_t="Tower" />
         <attribute summon="tower" />
@@ -61253,7 +61253,7 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_sort="6" />
+        <attribute ts_sort="10" />
         <attribute gold_special_target="" />
         <attribute summon_t="Vault" />
         <attribute summon="vault" />
@@ -61267,7 +61267,7 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_sort="6" />
+        <attribute ts_sort="9" />
         <attribute gold_special_target="" />
         <attribute summon_t="Tomb" />
         <attribute summon="tomb" />
@@ -61281,7 +61281,7 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_sort="6" />
+        <attribute ts_sort="11" />
         <attribute gold_special_target="" />
         <attribute summon_t="Cairns" />
         <attribute summon="cairns" />
@@ -61295,7 +61295,7 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_sort="6" />
+        <attribute ts_sort="13" />
         <attribute gold_special_target="" />
         <attribute summon_t="Statue" />
         <attribute summon="statue" />
@@ -61309,7 +61309,7 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_sort="6" />
+        <attribute ts_sort="12" />
         <attribute gold_special_target="" />
         <attribute summon_t="Spire" />
         <attribute summon="spire" />
@@ -61323,7 +61323,7 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_sort="6" />
+        <attribute ts_sort="14" />
         <attribute gold_special_target="" />
         <attribute summon_t="Garden" />
         <attribute summon="garden" />
@@ -61337,7 +61337,7 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_sort="6" />
+        <attribute ts_sort="15" />
         <attribute gold_special_target="" />
         <attribute summon_t="Maze" />
         <attribute summon="maze" />
@@ -61351,7 +61351,7 @@
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
         <attribute ts_color="gray" />
-        <attribute ts_sort="6" />
+        <attribute ts_sort="16" />
         <attribute gold_special_target="" />
         <attribute summon_t="Temple" />
         <attribute summon="temple" />

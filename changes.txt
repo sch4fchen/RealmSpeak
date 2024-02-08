@@ -81,6 +81,8 @@ SUPER REALM:
 # Add visitors
 # Add boxes on setup chart for travelers and quest cards
 # Place travelers face down, reveal when placed into a clearing
+BUGS/ISSUES:
+# Fix crash when moving generated monster
 
 Version 1.1.8.7
 NEW FEATURES:
@@ -91,7 +93,6 @@ SUPER REALM:
 BUGS/ISSUES:
 # Fix crash when killing a transformed denizen
 # Fix crash when casted transmorph spell (Transform, Melt into Mist) becomes inert
-# Fix crash when moving generated monster
 
 Version 1.1.8.6
 SUPER REALM:
