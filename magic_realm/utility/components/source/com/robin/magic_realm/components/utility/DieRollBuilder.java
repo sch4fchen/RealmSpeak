@@ -126,7 +126,7 @@ public class DieRollBuilder {
 			}
 		}
 		
-		if (character.getGameObject().hasThisAttribute(Constants.DARK_FAVOR)) {
+		if (character!=null && character.getGameObject().hasThisAttribute(Constants.DARK_FAVOR)) {
 			dice = 1;
 		}
 		
