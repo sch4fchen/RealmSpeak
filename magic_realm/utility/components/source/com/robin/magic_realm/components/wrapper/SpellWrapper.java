@@ -388,8 +388,11 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			TileLocation loc = getCaster().getCurrentLocation(); // might be null if character is dead!
 			boolean casterIsDead = (new CombatWrapper(getCaster().getGameObject())).getKilledBy()!=null;
 				
-			getGameObject().getHold().stream()
-				.forEach(go -> restoreAbsorbedMonster(go, loc, casterIsDead));
+			ArrayList<GameObject> hold = new ArrayList<>();
+			hold.addAll(getGameObject().getHold());
+			for (GameObject go : hold) {
+				restoreAbsorbedMonster(go, loc, casterIsDead);
+			}
 				
 			// Remove all targets
 			setBoolean(TARGET_IDS,false);

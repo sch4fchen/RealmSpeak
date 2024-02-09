@@ -77,6 +77,8 @@ Version 1.1.8.9
 QUEST UPDATE:
 # Update to quest: A77
 SUPER REALM:
+BUGS/ISSUES:
+# Fix crash when canceling a spell
 
 Version 1.1.8.8
 SUPER REALM:
