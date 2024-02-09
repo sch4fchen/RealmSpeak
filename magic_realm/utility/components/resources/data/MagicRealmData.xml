@@ -24399,6 +24399,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="2" />
@@ -24448,6 +24449,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute cuirass="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="9" />
@@ -27002,6 +27004,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="2" />
@@ -28428,6 +28431,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute cloak="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="12" />
@@ -28453,6 +28457,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute cloak="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="8" />
@@ -28478,6 +28483,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute cloak="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="8" />
@@ -28503,6 +28509,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute cloak="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="8" />
@@ -28528,6 +28535,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute cloak="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="8" />
@@ -28553,6 +28561,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute cloak="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="8" />
@@ -28649,6 +28658,7 @@
         <attribute icon_folder="armor" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="2" />
@@ -28732,6 +28742,7 @@
         <attribute rw_expansion_1="" />
         <attribute original_game="" />
         <attribute item="" />
+        <attribute helmet="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="2" />
@@ -28783,6 +28794,7 @@
         <attribute rw_expansion_1="" />
         <attribute original_game="" />
         <attribute item="" />
+        <attribute cuirass="" />
       </AttributeBlock>
       <AttributeBlock blockName="intact">
         <attribute base_price="9" />
@@ -60997,6 +61009,8 @@
         <attribute super_realm="" />
         <attribute chit_color="darkblue" />
         <attribute text_color="white" />
+        <attribute blacksmith="" />
+        <attribute no_selling="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2316" name="Cleric">
@@ -61011,6 +61025,8 @@
         <attribute super_realm="" />
         <attribute chit_color="darkblue" />
         <attribute text_color="white" />
+        <attribute cleric="" />
+        <attribute no_selling="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2317" name="Bandits Box">
