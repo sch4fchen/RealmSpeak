@@ -148,6 +148,11 @@ public class Constants {
 	public static final String TWO_HANDED = "two_handed";
 	public static final String SHIELD = "shield";
 	public static final String THROWABLE = "throwable";
+	public static final String HELMET = "helmet";
+	public static final String BREASTPLATE = "breastplate";
+	public static final String SUIT_OF_ARMOR = "suitofarmor";
+	public static final String CLAOK = "cloak";
+	public static final String CUIRASS = "cuirass";
 	
 	// ThisAttributes for DieRoller - The accompaning value lists tables that are affected
 	public static final String PLUS_ONE = "plus_one";
@@ -261,6 +266,10 @@ public class Constants {
 	public static final String NOMAD = "nomad";
 	public static final String TASK = "task";
 	public static final String CAMPAIGN = "campaign";
+	public static final String BLACKSMITH = "blacksmith";
+	public static final String CLERIC = "cleric";
+	public static final String NO_SELLING = "no_selling";
+	public static final String NO_BUYING = "no_buying";
 	
 	// Spoils of War needed action
 	public static final String SPOILS_ = "spoils_";

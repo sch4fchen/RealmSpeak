@@ -38,6 +38,7 @@ public class RealmTradeDialog extends AggressiveDialog {
 	
 	private boolean revealAll;
 	private boolean repairMode;
+	private boolean repairModeBlacksmith;
 	
 	private CharacterWrapper dealingCharacter;
 	
@@ -48,6 +49,7 @@ public class RealmTradeDialog extends AggressiveDialog {
 		this.forceSelection = forceSelection;
 		this.revealAll = true;
 		this.repairMode = false;
+		this.repairModeBlacksmith = false;
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 	}
 	public void setRevealAll(boolean val) {
@@ -55,6 +57,9 @@ public class RealmTradeDialog extends AggressiveDialog {
 	}
 	public void setRepairMode(boolean val) {
 		repairMode = val;
+	}
+	public void setRepairModeBlacksmith(boolean val) {
+		repairModeBlacksmith = val;
 	}
 	public void setDealingCharacter(CharacterWrapper character) {
 		dealingCharacter = character;
@@ -261,7 +266,17 @@ public class RealmTradeDialog extends AggressiveDialog {
 			else {
 				side2 = null;
 			}
-			if (repairMode && rc.isArmor() && ((ArmorChitComponent)rc).isDamaged()) {
+			if (repairModeBlacksmith && rc.isArmor() && ((ArmorChitComponent)rc).isDamaged()) {
+				if (rc.getGameObject().hasThisAttribute(Constants.SHIELD)
+						|| rc.getGameObject().hasThisAttribute(Constants.HELMET)
+						|| rc.getGameObject().hasThisAttribute(Constants.BREASTPLATE)) {
+					basePrice = 5;
+				}
+				else {
+					basePrice = 10;
+				}
+			}
+			else if (repairMode && rc.isArmor() && ((ArmorChitComponent)rc).isDamaged()) {
 				basePrice = Integer.valueOf(TreasureUtility.getBaseRepairPrice((ArmorChitComponent)rc));
 			}
 			else {

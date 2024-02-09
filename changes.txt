@@ -1,5 +1,5 @@
 ::ROADMAP::
-Super Realm: Visitors (Priest, Merchant, Cleric, Blacksmith), Campaigns, Nomads, Tasks: 4.8 (p.41)
+Super Realm: Visitors (Cleric: break spell), Nomads, Tasks: 4.8 (p.41)
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Quests + Events
 ---Super Realms Rules---
@@ -78,6 +78,8 @@ QUEST UPDATE:
 # Update to quest: A77
 SUPER REALM:
 # Travelers: add chit color and text color
+# Blacksmith: can repair armors, does not buy items
+# Cleric: does not buy items
 BUGS/ISSUES:
 # Fix crash when canceling a spell
 

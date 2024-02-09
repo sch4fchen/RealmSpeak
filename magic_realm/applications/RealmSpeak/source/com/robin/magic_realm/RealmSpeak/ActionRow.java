@@ -1162,6 +1162,7 @@ public class ActionRow {
 	private static final String TRADE_BUY = "BUY";
 	private static final String TRADE_SELL = "SELL";
 	private static final String TRADE_REPAIR = "Repair Armor";
+	private static final String TRADE_REPAIR_BLACKSMITH = "Repair Armor (Blacksmith)";
 	private static final String TRADE_JOIN = "Join Guild";
 	private static final String TRADE_SERVICES = "Guild Services";
 	private void doTradeAction() {
@@ -1201,10 +1202,14 @@ public class ActionRow {
 					}
 				}
 				else {
-					for (int n=0;n<2;n++) {
+					if (!rc.getGameObject().hasThisAttribute(Constants.NO_BUYING)) {
 						String key = "N"+(keyN++);
-						String text = n==0?TRADE_BUY:TRADE_SELL;
-						chooser.addOption(key,text);
+						chooser.addOption(key,TRADE_BUY);
+						chooser.addRealmComponentToOption(key,rc);
+					}
+					if (!rc.getGameObject().hasThisAttribute(Constants.NO_SELLING)) {
+						String key = "N"+(keyN++);
+						chooser.addOption(key,TRADE_SELL);
 						chooser.addRealmComponentToOption(key,rc);
 					}
 					if (hostPrefs.hasPref(Constants.HOUSE3_DWELLING_ARMOR_REPAIR)) {
@@ -1212,6 +1217,12 @@ public class ActionRow {
 							String key = chooser.generateOption(TRADE_REPAIR);
 							chooser.addRealmComponentToOption(key,rc);
 						}
+					}
+				}
+				if (rc.getGameObject().hasThisAttribute(Constants.BLACKSMITH)) {
+					if (TreasureUtility.getDamagedArmor(character.getSellableInventory()).size()>0) {
+						String key = chooser.generateOption(TRADE_REPAIR_BLACKSMITH);
+						chooser.addRealmComponentToOption(key,rc);
 					}
 				}
 			}
@@ -1301,7 +1312,7 @@ public class ActionRow {
 			// Update the character notebook accordingly
 			character.addNoteTrade(trader.getGameObject(),hold);
 		}
-		else if (TRADE_REPAIR.equals(tradeAction)) {
+		else if (TRADE_REPAIR.equals(tradeAction) || TRADE_REPAIR_BLACKSMITH.equals(tradeAction)) {
 			hold = TreasureUtility.getDamagedArmor(character.getSellableInventory());
 		}
 		else { // TRADE_SELL
@@ -1349,6 +1360,11 @@ public class ActionRow {
 				gameHandler.broadcast(character.getGameObject().getName(),"Available for sale: "+sb.toString());
 			}
 			else if (TRADE_REPAIR.equals(tradeAction)) {
+				// Repair
+				tradeDialog = new RealmTradeDialog(gameHandler.getMainFrame(),"Select armor to have "+traderRel+" REPAIR:",false,true,false);
+				tradeDialog.setRepairMode(true);
+			}
+			else if (TRADE_REPAIR_BLACKSMITH.equals(tradeAction)) {
 				// Repair
 				tradeDialog = new RealmTradeDialog(gameHandler.getMainFrame(),"Select armor to have "+traderRel+" REPAIR:",false,true,false);
 				tradeDialog.setRepairMode(true);
