@@ -25,6 +25,12 @@ public class MagicRealmColor {
 	public static final Color DARKGRAY		= new Color(170,170,170);
 	public static final Color WHITE			= new Color(255,255,255);
 	
+	public static final Color DARKBLUE		= new Color( 24, 66,132);
+	public static final Color DARKGREEN		= new Color(114,112, 22);
+	public static final Color DARKRED		= new Color(125,  6, 39);
+	public static final Color DARKORANGE	= new Color(199,108,  0);
+	public static final Color DARKPURPLE	= new Color( 93,  0,126);
+	
 	public static final Color DISCOVERY_HIGHLIGHT_COLOR = new Color(102,255,153);
 	
 	public static final Color CHIT_COMMITTED = Color.blue;
@@ -101,6 +107,21 @@ public class MagicRealmColor {
 		}
 		else if (string.equals("PALEYELLOW")) {
 			return PALEYELLOW;
+		}
+		else if (string.equals("DARKBLUE")) {
+			return DARKBLUE;
+		}
+		else if (string.equals("DARKGREEN")) {
+			return DARKGREEN;
+		}
+		else if (string.equals("DARKRED")) {
+			return DARKRED;
+		}
+		else if (string.equals("DARKORANGE")) {
+			return DARKORANGE;
+		}
+		else if (string.equals("DARKPURPLE")) {
+			return DARKPURPLE;
 		}
 		throw new IllegalArgumentException("Invalid color: "+string);
 	}

@@ -1,5 +1,6 @@
 package com.robin.magic_realm.components;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.*;
 
@@ -63,15 +64,42 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 		TextType tt;
 		
 		String name;
+		Color color = Color.black;
 		if (gameObject.hasThisAttribute(Constants.DRAW_BACKSIDE)) {
 			name = "Traveler";
 		} else {
 			name = gameObject.getName();
+			String colorString = gameObject.getThisAttribute("text_color");
+			if (colorString!=null) {
+				color = MagicRealmColor.getColor(colorString);
+			}
 		}
 		tt = new TextType(name,getChitSize()-4,"Plain");
 		int h = tt.getHeight(g);
 		int y = ((getChitSize()-h)>>1)-3;
-		tt.draw(g,2,y,Alignment.Center);
+		tt.draw(g,2,y,Alignment.Center,color);
+		if (!gameObject.hasThisAttribute(Constants.DRAW_BACKSIDE) && gameObject.hasThisAttribute(Constants.SUPER_REALM)) {
+			if (gameObject.hasThisAttribute(Constants.VISITOR)) {
+				tt = new TextType("Visitor",getChitSize()-4,"NORMAL");
+				tt.draw(g,2,y-11,Alignment.Center,color);
+			}
+			else if (gameObject.hasThisAttribute(Constants.MISSION)) {
+				tt = new TextType("Mission",getChitSize()-4,"NORMAL");
+				tt.draw(g,2,y-11,Alignment.Center,color);
+			}
+			else if (gameObject.hasThisAttribute(Constants.NOMAD)) {
+				tt = new TextType("Nomad",getChitSize()-4,"NORMAL");
+				tt.draw(g,2,y-11,Alignment.Center,color);
+			}
+			else if (gameObject.hasThisAttribute(Constants.TASK)) {
+				tt = new TextType("Task",getChitSize()-4,"NORMAL");
+				tt.draw(g,2,y-11,Alignment.Center,color);
+			}
+			else if (gameObject.hasThisAttribute(Constants.CAMPAIGN)) {
+				tt = new TextType("Campaign",getChitSize()-4,"NORMAL");
+				tt.draw(g,2,y-11,Alignment.Center,color);
+			}
+		}
 	}
 	public String generateHTML(CharacterWrapper character) {
 		/*

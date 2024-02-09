@@ -57909,6 +57909,8 @@
         <attribute notoriety_cost="10" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute chit_color="darkgreen" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2163" name="Food Ale">
@@ -57920,6 +57922,8 @@
         <attribute notoriety_cost="10" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute chit_color="darkgreen" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2164" name="Books Art">
@@ -57931,6 +57935,8 @@
         <attribute notoriety_cost="10" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute chit_color="darkgreen" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2165" name="Tour Guide">
@@ -57942,6 +57948,8 @@
         <attribute notoriety_cost="10" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute chit_color="darkgreen" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2166" name="Pillage">
@@ -57955,6 +57963,8 @@
         <attribute foe="patrol,soldiers" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute chit_color="darkred" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2167" name="Raid">
@@ -57968,6 +57978,8 @@
         <attribute foe="bashkars,rogues" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute chit_color="darkred" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2168" name="Conquer">
@@ -57981,6 +57993,8 @@
         <attribute foe="lancers,woodfolk,bashkars,rogues" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute chit_color="darkred" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2169" name="War">
@@ -57995,6 +58009,8 @@
         <attribute foe="company,bashkars,rogues" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute chit_color="darkred" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2170" name="Revolt">
@@ -58008,6 +58024,8 @@
         <attribute foe="soldiers,guard,patrol,company" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute chit_color="darkred" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2171" name="Quest">
@@ -58022,6 +58040,8 @@
         <attribute item="" />
         <attribute super_realm="" />
         <attribute foe_monsters="" />
+        <attribute chit_color="darkred" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2172" name="Challenge">
@@ -58035,6 +58055,8 @@
         <attribute foe="bashkars,company,hunters" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute chit_color="darkred" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2173" name="Confront">
@@ -58048,6 +58070,8 @@
         <attribute item="" />
         <attribute super_realm="" />
         <attribute notoriety_cost="25" />
+        <attribute chit_color="darkred" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2174" name="Dominate">
@@ -58061,6 +58085,8 @@
         <attribute foe="dwarves,hunters" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute chit_color="darkred" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2175" name="Hunt">
@@ -58075,6 +58101,8 @@
         <attribute super_realm="" />
         <attribute notoriety_cost="20" />
         <attribute foe_monsters="" />
+        <attribute chit_color="darkred" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2176" name="Skirmish">
@@ -58089,6 +58117,8 @@
         <attribute item="" />
         <attribute super_realm="" />
         <attribute fame_cost="8" />
+        <attribute chit_color="darkred" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2177" name="Liberate">
@@ -58102,6 +58132,8 @@
         <attribute item="" />
         <attribute super_realm="" />
         <attribute fame_cost="8" />
+        <attribute chit_color="darkred" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2178" name="Transform">
@@ -60874,6 +60906,8 @@
         <attribute ts_sidebar="" />
         <attribute super_realm="" />
         <attribute quest_target="" />
+        <attribute chit_color="darkblue" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2310" name="Shaman">
@@ -60887,6 +60921,8 @@
         <attribute ts_sidebar="" />
         <attribute super_realm="" />
         <attribute quest_target="" />
+        <attribute chit_color="darkblue" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2311" name="Warlock">
@@ -60900,6 +60936,8 @@
         <attribute ts_sidebar="" />
         <attribute super_realm="" />
         <attribute quest_target="" />
+        <attribute chit_color="darkblue" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2312" name="Crone">
@@ -60913,6 +60951,8 @@
         <attribute ts_sidebar="" />
         <attribute super_realm="" />
         <attribute quest_target="" />
+        <attribute chit_color="darkblue" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2313" name="Priest">
@@ -60926,6 +60966,8 @@
         <attribute ts_sidebar="" />
         <attribute super_realm="" />
         <attribute quest_target="" />
+        <attribute chit_color="darkblue" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2314" name="Merchant">
@@ -60939,6 +60981,8 @@
         <attribute ts_sidebar="" />
         <attribute super_realm="" />
         <attribute quest_target="" />
+        <attribute chit_color="darkblue" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2315" name="Blacksmith">
@@ -60951,6 +60995,8 @@
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
         <attribute super_realm="" />
+        <attribute chit_color="darkblue" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2316" name="Cleric">
@@ -60963,6 +61009,8 @@
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
         <attribute super_realm="" />
+        <attribute chit_color="darkblue" />
+        <attribute text_color="white" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2317" name="Bandits Box">

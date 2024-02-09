@@ -257,6 +257,10 @@ public class Constants {
 	public static final String HIRELING = "hireling";
 	public static final String COMPANION = "companion";
 	public static final String SUMMONED = "summoned";
+	public static final String MISSION = "mission";
+	public static final String NOMAD = "nomad";
+	public static final String TASK = "task";
+	public static final String CAMPAIGN = "campaign";
 	
 	// Spoils of War needed action
 	public static final String SPOILS_ = "spoils_";
