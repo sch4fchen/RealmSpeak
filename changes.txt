@@ -1,5 +1,5 @@
 ::ROADMAP::
-Super Realm: Visitors (Cleric: break spell: no meeting table), Nomads, Tasks: 4.8 (p.42 + p.51); allow only 1 task chit, allow only 1 campaign chit, show gs chits in inventory (but not activateable)
+Super Realm: Nomads, Tasks: 4.8 (p.42 + p.51); allow only 1 task chit, allow only 1 campaign chit, show gs chits in inventory (but not activateable)
 	Super Realm optional rule: can only complete each task/mission/campaign once per game
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Quests + Events

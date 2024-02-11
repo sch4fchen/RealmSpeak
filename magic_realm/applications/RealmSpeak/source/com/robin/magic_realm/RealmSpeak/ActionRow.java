@@ -1163,7 +1163,7 @@ public class ActionRow {
 	private static final String TRADE_SELL = "SELL";
 	private static final String TRADE_REPAIR = "Repair Armor";
 	private static final String TRADE_REPAIR_BLACKSMITH = "Repair Armor (Blacksmith)";
-	private static final String TRADE_CLERIC = "Break a Curse, Mesmerize effect or Spell";
+	private static final String TRADE_CLERIC = "Cleric Services";
 	private static final String TRADE_JOIN = "Join Guild";
 	private static final String TRADE_SERVICES = "Guild Services";
 	private void doTradeAction() {
@@ -1473,6 +1473,14 @@ public class ActionRow {
 		}
 	}
 	private boolean handleClericService() {
+		if (character.hasCurse(Constants.ASHES)) {
+			JOptionPane.showMessageDialog(gameHandler.getMainFrame(),
+					"You are cursed by the ASHES curse, and cannot pay the cleric.",
+					"No Cleric service possible",
+					JOptionPane.INFORMATION_MESSAGE,
+					character.getIcon());
+			return false;
+		}
 		RealmComponent rc = RealmComponent.getRealmComponent(character.getGameObject());
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Cancel which Curse, Mesmerize or Spell?",true);
 		boolean clericServiceNeeded = false;
@@ -1491,11 +1499,11 @@ public class ActionRow {
 		}
 		if (!clericServiceNeeded) {
 			JOptionPane.showMessageDialog(gameHandler.getMainFrame(),
-					"There are no curses, mesmerize effects or spell to cancel.",
+					"There are no curses, mesmerize effects or spells to cancel.",
 					"No Cleric service needed",
 					JOptionPane.INFORMATION_MESSAGE,
 					character.getIcon());
-		return false;
+			return false;
 		}
 		chooser.setVisible(true);
 		RealmComponent selectedRc = chooser.getFirstSelectedComponent();
