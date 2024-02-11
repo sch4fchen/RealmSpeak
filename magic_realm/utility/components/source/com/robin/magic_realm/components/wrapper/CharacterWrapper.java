@@ -3924,6 +3924,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 			getGameObject().addThisAttributeListItem(Constants.MESMERIZE, effect);
 		}
 	}
+	public void removeMesmerizeEffect(String effect) {
+		getGameObject().removeThisAttributeListItem(Constants.MESMERIZE, effect);
+		if (getGameObject().getThisAttributeList(Constants.MESMERIZE).isEmpty()) {
+			getGameObject().removeThisAttribute(Constants.MESMERIZE);
+		}
+	}
 	public boolean hasCurses() {
 		Hashtable hash = getGameObject().getAttributeBlock(CURSES_BLOCK);
 		return hash!=null && hash.size()>0;
@@ -3939,6 +3945,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (curse.matches(Constants.MESMERIZE)) {
 			getGameObject().removeThisAttribute(Constants.MESMERIZE);
 		}
+		for (String effect : Constants.MESMERIZE_EFFECTS) {
+			if (curse.matches(effect)) {
+				removeMesmerizeEffect(effect);
+			}
+		}
 	}
 	public ArrayList<String> getAllCurses() {
 		ArrayList<String> list = new ArrayList<>();
@@ -3948,7 +3959,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (getGameObject().hasAttribute(CURSES_BLOCK,Constants.ILL_HEALTH)) list.add(Constants.ILL_HEALTH);
 		if (getGameObject().hasAttribute(CURSES_BLOCK,Constants.SQUEAK)) list.add(Constants.SQUEAK);
 		if (getGameObject().hasAttribute(CURSES_BLOCK,Constants.WITHER)) list.add(Constants.WITHER);
-		if (getGameObject().hasAttribute(CURSES_BLOCK,Constants.MESMERIZE)) list.add(Constants.MESMERIZE);
+		if (getGameObject().hasAttribute(CURSES_BLOCK,Constants.MESMERIZE)) {
+			list.addAll(getGameObject().getThisAttributeList(Constants.MESMERIZE));
+		}
 		return list;
 	}
 	public void removeAllCurses() {

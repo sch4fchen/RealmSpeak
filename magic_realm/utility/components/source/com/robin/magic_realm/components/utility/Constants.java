@@ -621,12 +621,15 @@ public class Constants {
 	public static final String DISGUST = "Disgust";
 	public static final String MESMERIZE = "Mesmerize";
 	public static final String MESMERIZE_NULLIFIED = "mesmerize_nullified";
+	// Mesmerize effects
 	public static final String WEAKENED = "weakened";
 	public static final String INTOXICATED = "intoxicated";
 	public static final String CALMED = "calmed";
 	public static final String DISTRACTED = "distracted";
 	public static final String SAPPED = "sapped";
 	public static final String TIRED = "tired";
+	public static final String[] MESMERIZE_EFFECTS = new String[] {WEAKENED, INTOXICATED, CALMED, DISTRACTED, SAPPED, TIRED};
+	//
 	public static final String WEAKENED_VULNERABILITY = "weakened_vulnerability";
 	public static final String STRENGTHENED_VULNERABILITY = "strengthened_vulnerability";
 	public static final String BARKSKIN = "barkskin";

@@ -39,7 +39,6 @@ Super Realm: Optional Rules: No discarding or drawing new quest cards (but perha
 Super Realm: Optional Rules: No duplicate spell recording at start of the game
 Super Realm: Optional Rules: Starting location always the Inn
 Super Realm: Characters, including potraits with credits, different chit icon
-Super Realm: Optional Rules: Starting location always the Inn
 ---Additional features---
 Super Realm: icons for site chits, sound and warning chits, characters
 ---Optional Rules---
