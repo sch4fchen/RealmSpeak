@@ -386,6 +386,7 @@ public class Constants {
 	public static final String WEAPON_USE_CHIT = "weapon_use_chit";
 	public static final String NO_WEAPON_USAGE = "no_weapon_usage";
 	public static final String NATIVE_NAME = "native_name";
+	public static final String NATIVE = "native";
 	
 	public static final String SMALL = "small";
 	public static final String STEED_IN_CAVES_AND_WATER = "steed_in_caves_and_water";
@@ -401,6 +402,7 @@ public class Constants {
 	public static final String FAST_CASTER = "fast_caster";
 	public static final String SPELL_DENIZEN = "spell_denizen";
 	public static final String SPELL_PRE_BATTLE = "spell_pre_battle";
+	public static final String CLAN = "clan";
 	
 	public static final String DRAGON = "dragon";
 	public static final String DRAKE = "drake";
@@ -755,6 +757,7 @@ public class Constants {
 	public static final String OPT_NATIVES_FRIENDLY = "OptNativeFriendly";
 	public static final String OPT_SR_ENDING_COMBAT = "OptSrEndingCombat";
 	public static final String OPT_SR_PHASE_CHIT_ACTIVATION = "OptSrPhaseChitActivation";
+	public static final String OPT_SR_REVEAL_TRAVELERS = "OptSrRevealTravelers";
 	
 	// Revised Rules
 	public static final String REV_MISSILE = "RevisedMissileTable";

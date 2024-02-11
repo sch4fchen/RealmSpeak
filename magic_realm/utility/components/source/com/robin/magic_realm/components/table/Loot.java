@@ -6,6 +6,7 @@ import javax.swing.*;
 import javax.swing.event.ChangeListener;
 
 import com.robin.game.objects.GameObject;
+import com.robin.game.objects.GamePool;
 import com.robin.general.swing.ButtonOptionDialog;
 import com.robin.general.swing.DieRoller;
 import com.robin.general.util.StringUtilities;
@@ -255,6 +256,7 @@ public class Loot extends RealmTable {
 		for (GameObject spell : treasureLocation.getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(spell);
 			if (rc.isSpell()) {
+				dumpGoldSpecialsToClearing();
 				if (character.canLearn(spell)) {
 					character.recordNewSpell(getParentFrame(),spell);
 					return "Learned "+SpellUtility.getSpellName(spell);
@@ -325,11 +327,22 @@ public class Loot extends RealmTable {
 			}
 		}
 		
+		dumpGoldSpecialsToClearing();
+		
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(thing.getGameData());
 		if (hostPrefs.hasPref(Constants.HOUSE1_NO_SECRETS) || thing.hasThisAttribute(Constants.NO_SECRET)) {
 			return "Found " + thing.getName();
 		}
 		return "Found ##"+StringUtilities.capitalize(rc.getName())+"|"+thing.getName()+"##";
+	}
+	private void dumpGoldSpecialsToClearing() {
+		if (tileLocation!=null) {
+			GamePool pool = new GamePool(character.getGameData().getGameObjects());
+			ArrayList<GameObject> boxes = pool.find("summon_t="+treasureLocation.getName().toLowerCase());
+			for (GameObject box : boxes) {
+				ClearingUtility.dumpGoldSpecialsToTile(tileLocation.tile.getGameObject(),box,tileLocation.clearing.getNum());
+			}
+		}
 	}
 	public static void addItemToCharacter(JFrame frame,ChangeListener listener,CharacterWrapper character,GameObject thing) {
 		addItemToCharacter(frame,listener,character,thing,HostPrefWrapper.findHostPrefs(thing.getGameData()));

@@ -2,7 +2,7 @@
 Super Realm: Nomads, Tasks: 4.8 (p.42 + p.51); allow only 1 task chit, allow only 1 campaign chit, show gs chits in inventory (but not activateable)
 	Super Realm optional rule: can only complete each task/mission/campaign once per game
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
-Super Realm: Quests + Events
+Super Realm: Quests + Events (Global Events = optional rule)
 ---Super Realms Rules---
 Super Realm: Adapt Commerce optional rules for new natives
 SUPER REALM: remaining RULES and LOGIC (rule changes compared to Magic Realm)
@@ -81,7 +81,8 @@ SUPER REALM:
 # Blacksmith: can repair armors; does not buy items
 # Cleric: can cancel curse, mesmerize effect or spell; does not buy items
 # Add Nomads and Task chits
-# Update treasures reflecting changes of Super Realm 1.32 
+# Add travelers only to map, if searching a site or trading with a native
+# Update treasures reflecting changes of Super Realm 1.32
 BUGS/ISSUES:
 # Fix crash when canceling a spell
 

@@ -1075,6 +1075,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_NATIVES_FRIENDLY,"NO ATTACKING OF FRIENDLY NATIVES (Book of Learning) - FRIENDLY and ALLIED natives cannot be lured or targeted.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_ENDING_COMBAT,"ENDING COMBAT (Super Realm) - Combat ends, even if denizens are killed or armor is destroyed.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_PHASE_CHIT_ACTIVATION,"PHASE CHIT ACTIVATION (Super Realm) - Activating a phase chit in combat does not count as an action.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_REVEAL_TRAVELERS,"REVEAL TRAVELERS (Super Realm) - Travelers are revealed, when a character does a Search or Trade activity on the corresponding site or native leader.",false));
 		
 		newOptionPane.setTabHtmlDescription(EXPANDING_REALM_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Expanding the Realm</font></body></html>");
 		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_CUSTOM_CHARS,"CUSTOM CHARACTERS - Allow players to choose from custom characters.",true,null,requiresDevelopmentRules));
@@ -1298,6 +1299,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.OPT_SR_STEEL_AGAINST_MAGIC,true);
 		optionPane.setOption(Constants.OPT_SR_ENDING_COMBAT,true);
 		optionPane.setOption(Constants.OPT_SR_PHASE_CHIT_ACTIVATION,true);
+		optionPane.setOption(Constants.OPT_SR_REVEAL_TRAVELERS,true);
 		optionPane.setOption(Constants.SR_DEDUCT_VPS,true);
 		optionPane.setOption(Constants.SR_END_OF_MONTH_REGENERATION,true);
 		optionPane.setOption(Constants.SR_NO_7TH_DAY_REGENERATION,true);

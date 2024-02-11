@@ -5,6 +5,7 @@ import java.util.*;
 import javax.swing.*;
 
 import com.robin.game.objects.GameObject;
+import com.robin.game.objects.GamePool;
 import com.robin.general.swing.*;
 import com.robin.general.util.*;
 import com.robin.magic_realm.components.*;
@@ -1274,6 +1275,16 @@ public class ActionRow {
 					if (selText.startsWith(TRADE_SELL)) selText = TRADE_SELL;
 					processTrade(trader,selText,hostPrefs);
 				}
+				
+				if (trader.isNative()) {
+					String nativeName = trader.getGameObject().getThisAttribute(Constants.NATIVE);
+					GamePool pool = new GamePool(character.getGameData().getGameObjects());
+					ArrayList<GameObject> boxes = pool.find("summon_n="+nativeName.toLowerCase());
+					for (GameObject box : boxes) {
+						ClearingUtility.dumpGoldSpecialsToTile(tl.tile.getGameObject(),box,tl.clearing.getNum());
+					}
+				}
+				
 			}
 			else {
 				completed = false;

@@ -446,6 +446,10 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	public boolean isMinorCharacter() {
 		return (this instanceof MinorCharacterChitComponent);
 	}
+	
+	public boolean isNomad() {
+		return (this instanceof GoldSpecialChitComponent) && gameObject.hasThisAttribute(Constants.NOMAD);
+	}
 
 	public boolean isActivated() {
 		return gameObject.hasThisAttribute(Constants.ACTIVATED);

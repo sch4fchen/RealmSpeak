@@ -227,7 +227,7 @@ public class RealmUtility {
 	public static String getRelationshipGroupName(GameObject denizen) {
 		RealmComponent rc = RealmComponent.getRealmComponent(denizen);
 		if (rc.isNative()) {
-			return denizen.getThisAttribute("native");
+			return denizen.getThisAttribute(Constants.NATIVE);
 		}
 		else if (rc.isGuild()) {
 			return StringUtilities.capitalize(denizen.getThisAttribute("guild"))+" Guild";

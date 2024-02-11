@@ -96,21 +96,38 @@ public class ClearingUtility {
 	 * @return		The objects that were dumped
 	 */
 	public static ArrayList<GameObject> dumpHoldToTile(GameObject tile,GameObject gameObject,int clearing) {
-		return ClearingUtility.dumpHoldToTile(tile,gameObject,clearing,null);
+		return ClearingUtility.dumpHoldToTile(tile,gameObject,clearing,null,false);
 	}
 
 	/**
 	 * @return		The objects that were dumped
 	 */
 	public static ArrayList<GameObject> dumpHoldToTile(GameObject tile,GameObject gameObject,int clearing,String testKey) {
+		return ClearingUtility.dumpHoldToTile(tile,gameObject,clearing,testKey,false);
+	}
+	
+	/**
+	 * @return		The objects that were dumped
+	 */
+	public static ArrayList<GameObject> dumpGoldSpecialsToTile(GameObject tile,GameObject gameObject,int clearing) {
+		return ClearingUtility.dumpHoldToTile(tile,gameObject,clearing,null,true);
+	}
+	
+	/**
+	 * @return		The objects that were dumped
+	 */
+	public static ArrayList<GameObject> dumpHoldToTile(GameObject tile,GameObject gameObject,int clearing,String testKey,boolean onlyGoldSpecial) {
 		if (clearing==-1) {
 			clearing = recommendedClearing(tile);
 		}
 		ArrayList<GameObject> added = new ArrayList<>();
 		Collection<GameObject> hold = new ArrayList<>(gameObject.getHold()); // this construction is necessary to prevent concurrent modification errors
 		boolean itemsAndSpells = !gameObject.hasThisAttribute(Constants.ROVING_NATIVE);
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameObject.getGameData());
 		for (GameObject go : hold) {
 			if (testKey==null || go.hasThisAttribute(testKey)) {
+				if (!onlyGoldSpecial && hostPrefs.hasPref(Constants.OPT_SR_REVEAL_TRAVELERS) && go.hasThisAttribute(RealmComponent.GOLD_SPECIAL)) continue;
+				if (onlyGoldSpecial && !go.hasThisAttribute(RealmComponent.GOLD_SPECIAL)) continue;
 				if (itemsAndSpells || (!go.hasThisAttribute("item") && !go.hasThisAttribute("spell"))) {
 					go.setThisAttribute("clearing",String.valueOf(clearing));
 					GameClient.broadcastClient("host",go.getName()+" is added to "+tile.getName()+", clearing "+clearing);
