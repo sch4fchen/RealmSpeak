@@ -624,18 +624,11 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	}
 
 	private void pickupGoldSpecial() {
-		/*
-		 * Need to:
-		 * 	- allow only ONE campaign chit
-		 * 	- show gs chits in inventory (but not activateable)
-		 */
 		RealmComponent chosenGS = null;
-		RealmComponent rc = null;
 		ArrayList<RealmComponent> list = new ArrayList<>();
 		TileLocation tl = getCharacter().getCurrentLocation();
 		if (tl.isInClearing()) {
-			for (Iterator<RealmComponent> n = tl.clearing.getClearingComponents().iterator(); n.hasNext();) {
-				rc = n.next();
+			for (RealmComponent rc : tl.clearing.getClearingComponents()) {
 				if (rc.isGoldSpecial() && !rc.isVisitor()) {
 					list.add(rc);
 					chosenGS = rc;

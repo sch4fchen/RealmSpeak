@@ -126,13 +126,16 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 		text.append("<html><body><font size=\"-1\" face=\"Helvetical, Arial, sans-serif\">");
 		text.append("<table cellspacing=\"2\">");
 		boolean visitor = getGameObject().hasThisAttribute(Constants.VISITOR);
-		if (visitor) {
-			// Relationship to Character
-			text.append(rowHeaderStart);
-			text.append("Relationship:");
-			text.append(rowContentStart);
-			text.append(RealmUtility.getRelationshipNameFor(character,this));
-			text.append(rowEnd);
+		boolean nomad = getGameObject().hasThisAttribute(Constants.NOMAD);
+		if (visitor || nomad) {
+			if (visitor) {
+				// Relationship to Character
+				text.append(rowHeaderStart);
+				text.append("Relationship:");
+				text.append(rowContentStart);
+				text.append(RealmUtility.getRelationshipNameFor(character,this));
+				text.append(rowEnd);
+			}
 			
 			int small = 0;
 			int large = 0;
@@ -177,6 +180,106 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 					list.append(val);
 				}
 				text.append(list.toString());
+				text.append(rowEnd);
+			}
+			
+			// Special abilities
+			if (getGameObject().hasThisAttribute(Constants.BLACKSMITH)) {
+				text.append(rowHeaderStart);
+				text.append("Special ability:");
+				text.append(rowContentStart);
+				text.append("Repairs armor");
+				text.append(rowEnd);
+			}
+			if (getGameObject().hasThisAttribute(Constants.CLERIC)) {
+				text.append(rowHeaderStart);
+				text.append("Special ability:");
+				text.append(rowContentStart);
+				text.append("Breaks spells");
+				text.append(rowEnd);
+			}
+			if (getGameObject().hasThisAttribute(Constants.APPRENTICE)) {
+				text.append(rowHeaderStart);
+				text.append("Special ability:");
+				text.append(rowContentStart);
+				text.append("Reading Runes: 1 D6");
+				text.append(rowEnd);
+			}
+			if (getGameObject().hasThisAttribute(Constants.BARGAINER)) {
+				text.append(rowHeaderStart);
+				text.append("Special ability:");
+				text.append(rowContentStart);
+				text.append("Trade: 1 D6");
+				text.append(rowEnd);
+			}
+			if (getGameObject().hasThisAttribute(Constants.BARKEEP)) {
+				text.append(rowHeaderStart);
+				text.append("Special ability:");
+				text.append(rowContentStart);
+				text.append("Hire: 1 D6");
+				text.append(rowEnd);
+			}
+			if (getGameObject().hasThisAttribute(Constants.COOK)) {
+				text.append(rowHeaderStart);
+				text.append("Special ability:");
+				text.append(rowContentStart);
+				text.append("Double Rest");
+				text.append(rowEnd);
+			}
+			if (getGameObject().hasThisAttribute(Constants.MINER)) {
+				text.append(rowHeaderStart);
+				text.append("Special ability:");
+				text.append(rowContentStart);
+				text.append("Extra Cave Phase");
+				text.append(rowEnd);
+			}
+			if (getGameObject().hasThisAttribute(Constants.INITIATE)) {
+				text.append(rowHeaderStart);
+				text.append("Special ability:");
+				text.append(rowContentStart);
+				text.append("Extra Enchant");
+				text.append(rowEnd);
+			}
+			if (getGameObject().hasThisAttribute(Constants.HERMIT)) {
+				text.append(rowHeaderStart);
+				text.append("Special ability:");
+				text.append(rowContentStart);
+				text.append("Extra Move per Mountain");
+				text.append(rowEnd);
+			}
+			if (getGameObject().hasThisAttribute(Constants.FAIRY)) {
+				text.append(rowHeaderStart);
+				text.append("Special ability:");
+				text.append(rowContentStart);
+				text.append("Extra Alert, Hidden Enemies");
+				text.append(rowEnd);
+			}
+			if (getGameObject().hasThisAttribute(Constants.RANGER)) {
+				text.append(rowHeaderStart);
+				text.append("Special ability:");
+				text.append(rowContentStart);
+				text.append("Hide: 1 D6");
+				text.append(rowEnd);
+			}
+			if (getGameObject().hasThisAttribute(Constants.SHADOW)) {
+				text.append(rowHeaderStart);
+				text.append("Special ability:");
+				text.append(rowContentStart);
+				text.append("Magic Sight");
+				text.append(rowEnd);
+			}
+			if (getGameObject().hasThisAttribute(Constants.STRONGMAN)) {
+				text.append(rowHeaderStart);
+				text.append("Special ability:");
+				text.append(rowContentStart);
+				text.append("Move T");
+				text.append(rowEnd);
+			}
+			if (getGameObject().hasThisAttribute(Constants.TRACKER)) {
+				text.append(rowHeaderStart);
+				text.append("Special ability:");
+				text.append(rowContentStart);
+				text.append("Extra Search");
 				text.append(rowEnd);
 			}
 		}

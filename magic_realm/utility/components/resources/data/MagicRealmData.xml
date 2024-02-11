@@ -56116,7 +56116,7 @@
         <attribute treasure="small" />
         <attribute text="Move all wounds to fatigue (discard to order)" />
         <attribute base_price="2" />
-        <attribute discard="chapel" />
+        <attribute discard="order" />
         <attribute potion="" />
         <attribute wounds_to_fatigue="" />
         <attribute transferable="" />
@@ -57034,7 +57034,7 @@
         <attribute treasure="small" />
         <attribute text="Move all wounds to fatigue (discard to order)" />
         <attribute base_price="2" />
-        <attribute discard="chapel" />
+        <attribute discard="order" />
         <attribute potion="" />
         <attribute wounds_to_fatigue="" />
         <attribute transferable="" />
@@ -61422,6 +61422,226 @@
         <attribute super_realm="" />
         <attribute monster_die="6" />
         <attribute ts_draw_below="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2347" name="Apprentice">
+      <AttributeBlock blockName="this">
+        <attribute print="" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute ts_section="visitors" />
+        <attribute ts_color="gold" />
+        <attribute ts_sidebar="" />
+        <attribute super_realm="" />
+        <attribute chit_color="darkorange" />
+        <attribute text_color="white" />
+        <attribute nomad="apprentice" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2348" name="Bargainer">
+      <AttributeBlock blockName="this">
+        <attribute print="" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute ts_section="visitors" />
+        <attribute ts_color="gold" />
+        <attribute ts_sidebar="" />
+        <attribute super_realm="" />
+        <attribute chit_color="darkorange" />
+        <attribute text_color="white" />
+        <attribute nomad="bargainer" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2349" name="Barkeep">
+      <AttributeBlock blockName="this">
+        <attribute print="" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute ts_section="visitors" />
+        <attribute ts_color="gold" />
+        <attribute ts_sidebar="" />
+        <attribute super_realm="" />
+        <attribute chit_color="darkorange" />
+        <attribute text_color="white" />
+        <attribute nomad="barkeep" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2350" name="Cook">
+      <AttributeBlock blockName="this">
+        <attribute print="" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute ts_section="visitors" />
+        <attribute ts_color="gold" />
+        <attribute ts_sidebar="" />
+        <attribute super_realm="" />
+        <attribute chit_color="darkorange" />
+        <attribute text_color="white" />
+        <attribute nomad="cook" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2351" name="Miner">
+      <AttributeBlock blockName="this">
+        <attribute print="" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute ts_section="visitors" />
+        <attribute ts_color="gold" />
+        <attribute ts_sidebar="" />
+        <attribute super_realm="" />
+        <attribute chit_color="darkorange" />
+        <attribute text_color="white" />
+        <attribute nomad="miner" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2352" name="Initiate">
+      <AttributeBlock blockName="this">
+        <attribute print="" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute ts_section="visitors" />
+        <attribute ts_color="gold" />
+        <attribute ts_sidebar="" />
+        <attribute super_realm="" />
+        <attribute chit_color="darkorange" />
+        <attribute text_color="white" />
+        <attribute nomad="initiate" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2353" name="Hermit">
+      <AttributeBlock blockName="this">
+        <attribute print="" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute ts_section="visitors" />
+        <attribute ts_color="gold" />
+        <attribute ts_sidebar="" />
+        <attribute super_realm="" />
+        <attribute chit_color="darkorange" />
+        <attribute text_color="white" />
+        <attribute nomad="hermit" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2354" name="Fairy">
+      <AttributeBlock blockName="this">
+        <attribute print="" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute ts_section="visitors" />
+        <attribute ts_color="gold" />
+        <attribute ts_sidebar="" />
+        <attribute super_realm="" />
+        <attribute chit_color="darkorange" />
+        <attribute text_color="white" />
+        <attribute nomad="fairy" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2355" name="Ranger">
+      <AttributeBlock blockName="this">
+        <attribute print="" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute ts_section="visitors" />
+        <attribute ts_color="gold" />
+        <attribute ts_sidebar="" />
+        <attribute super_realm="" />
+        <attribute chit_color="darkorange" />
+        <attribute text_color="white" />
+        <attribute nomad="ranger" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2356" name="Shadow">
+      <AttributeBlock blockName="this">
+        <attribute print="" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute ts_section="visitors" />
+        <attribute ts_color="gold" />
+        <attribute ts_sidebar="" />
+        <attribute super_realm="" />
+        <attribute chit_color="darkorange" />
+        <attribute text_color="white" />
+        <attribute nomad="shadow" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2357" name="Strongman">
+      <AttributeBlock blockName="this">
+        <attribute print="" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute ts_section="visitors" />
+        <attribute ts_color="gold" />
+        <attribute ts_sidebar="" />
+        <attribute super_realm="" />
+        <attribute chit_color="darkorange" />
+        <attribute text_color="white" />
+        <attribute nomad="strongman" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2358" name="Tracker">
+      <AttributeBlock blockName="this">
+        <attribute print="" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute ts_section="visitors" />
+        <attribute ts_color="gold" />
+        <attribute ts_sidebar="" />
+        <attribute super_realm="" />
+        <attribute chit_color="darkorange" />
+        <attribute text_color="white" />
+        <attribute nomad="tracker" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2359" name="Journey">
+      <AttributeBlock blockName="this">
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute time_limit="month" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute chit_color="darkpurple" />
+        <attribute text_color="white" />
+        <attribute task="journey" />
+        <attribute fame_cost="5" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2363" name="Odyssey">
+      <AttributeBlock blockName="this">
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute time_limit="month" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute chit_color="darkpurple" />
+        <attribute text_color="white" />
+        <attribute task="odyssey" />
+        <attribute fame_cost="5" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2364" name="Seek">
+      <AttributeBlock blockName="this">
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute time_limit="month" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute chit_color="darkpurple" />
+        <attribute text_color="white" />
+        <attribute task="seek" />
+        <attribute fame_cost="5" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2365" name="Explore">
+      <AttributeBlock blockName="this">
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute time_limit="month" />
+        <attribute item="" />
+        <attribute super_realm="" />
+        <attribute chit_color="darkpurple" />
+        <attribute text_color="white" />
+        <attribute task="explore" />
+        <attribute fame_cost="5" />
       </AttributeBlock>
     </GameObject>
   </objects>

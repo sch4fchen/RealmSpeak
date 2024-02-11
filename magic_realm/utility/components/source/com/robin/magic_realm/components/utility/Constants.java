@@ -270,6 +270,18 @@ public class Constants {
 	public static final String CLERIC = "cleric";
 	public static final String NO_SELLING = "no_selling";
 	public static final String NO_BUYING = "no_buying";
+	public static final String APPRENTICE = "apprentice";
+	public static final String BARGAINER = "bargainer";
+	public static final String BARKEEP = "barkeep";
+	public static final String COOK = "cook";
+	public static final String MINER = "miner";
+	public static final String INITIATE = "initiate";
+	public static final String HERMIT = "hermit";
+	public static final String FAIRY = "fairy";
+	public static final String RANGER = "ranger";
+	public static final String SHADOW = "shadow";
+	public static final String STRONGMAN = "strongman";
+	public static final String TRACKER = "tracker";
 	
 	// Spoils of War needed action
 	public static final String SPOILS_ = "spoils_";
