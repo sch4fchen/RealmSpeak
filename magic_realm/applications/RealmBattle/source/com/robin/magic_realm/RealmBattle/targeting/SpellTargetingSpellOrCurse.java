@@ -35,7 +35,6 @@ public class SpellTargetingSpellOrCurse extends SpellTargetingSingle {
 				Collection<String> curses = character.getAllCurses();
 				if (curses.size()>0) {
 					for (String curse : curses) {
-						if (curse.toLowerCase().matches(Constants.MESMERIZE.toLowerCase())) continue;
 						identifiers.add(curse);
 						gameObjects.add(rc.getGameObject());
 					}

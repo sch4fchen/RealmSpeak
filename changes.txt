@@ -78,8 +78,8 @@ QUEST UPDATE:
 # Update to quest: A77
 SUPER REALM:
 # Travelers: add chit color and text color
-# Blacksmith: can repair armors, does not buy items
-# Cleric: does not buy items
+# Blacksmith: can repair armors; does not buy items
+# Cleric: can cancel curse, mesmerize effect or spell; does not buy items
 # Add Nomads and Task chits
 # Update treasures reflecting changes of Super Realm 1.32 
 BUGS/ISSUES:

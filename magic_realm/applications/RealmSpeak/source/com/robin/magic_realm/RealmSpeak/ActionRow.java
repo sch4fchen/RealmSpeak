@@ -1163,6 +1163,7 @@ public class ActionRow {
 	private static final String TRADE_SELL = "SELL";
 	private static final String TRADE_REPAIR = "Repair Armor";
 	private static final String TRADE_REPAIR_BLACKSMITH = "Repair Armor (Blacksmith)";
+	private static final String TRADE_CLERIC = "Break a Curse, Mesmerize effect or Spell";
 	private static final String TRADE_JOIN = "Join Guild";
 	private static final String TRADE_SERVICES = "Guild Services";
 	private void doTradeAction() {
@@ -1224,6 +1225,10 @@ public class ActionRow {
 						String key = chooser.generateOption(TRADE_REPAIR_BLACKSMITH);
 						chooser.addRealmComponentToOption(key,rc);
 					}
+				}
+				if (rc.getGameObject().hasThisAttribute(Constants.CLERIC)) {
+					String key = chooser.generateOption(TRADE_CLERIC);
+					chooser.addRealmComponentToOption(key,rc);
 				}
 			}
 			chooser.addOption("none","No Trade");
@@ -1315,6 +1320,10 @@ public class ActionRow {
 		else if (TRADE_REPAIR.equals(tradeAction) || TRADE_REPAIR_BLACKSMITH.equals(tradeAction)) {
 			hold = TreasureUtility.getDamagedArmor(character.getSellableInventory());
 		}
+		else if (TRADE_CLERIC.equals(tradeAction)) {
+			completed = handleClericService();
+			return;
+		}
 		else { // TRADE_SELL
 			hold = character.getSellableInventory();
 		}
@@ -1386,7 +1395,7 @@ public class ActionRow {
 			}
 			
 			if (selComponents!=null && selComponents.size()>0) {
-				boolean repair = TRADE_REPAIR.equals(tradeAction);
+				boolean repair = TRADE_REPAIR.equals(tradeAction) || TRADE_REPAIR_BLACKSMITH.equals(tradeAction);
 				if (TRADE_BUY.equals(tradeAction) || repair) { // TRADE_BUY or TRADE_REPAIR
 					
 					// Can only be one item purchased
@@ -1462,6 +1471,66 @@ public class ActionRow {
 			JOptionPane.showMessageDialog(gameHandler.getMainFrame(),"Nothing to trade!");
 			completed = false;
 		}
+	}
+	private boolean handleClericService() {
+		RealmComponent rc = RealmComponent.getRealmComponent(character.getGameObject());
+		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Cancel which Curse, Mesmerize or Spell?",true);
+		boolean clericServiceNeeded = false;
+		for (String curse:character.getAllCurses()) {
+			chooser.addOption(curse,"Remove "+curse+" Curse (5 gold)");
+			chooser.addRealmComponentToOption(curse,rc);
+			clericServiceNeeded = true;
+		}
+		SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(character.getGameData());
+		Collection<SpellWrapper> spells = sm.getAffectingSpells(character.getGameObject());
+		if (!spells.isEmpty()) {
+			clericServiceNeeded = true;
+			for (SpellWrapper spell : spells) {
+				chooser.addRealmComponentToOption(spell.getName(),RealmComponent.getRealmComponent(spell.getGameObject()));
+			}
+		}
+		if (!clericServiceNeeded) {
+			JOptionPane.showMessageDialog(gameHandler.getMainFrame(),
+					"There are no curses, mesmerize effects or spell to cancel.",
+					"No Cleric service needed",
+					JOptionPane.INFORMATION_MESSAGE,
+					character.getIcon());
+		return false;
+		}
+		chooser.setVisible(true);
+		RealmComponent selectedRc = chooser.getFirstSelectedComponent();
+		String optionKey = chooser.getSelectedOptionKey();
+		if (optionKey!=null) {
+			if (selectedRc.isSpell()) {
+				if (character.getGold()<10) {
+					JOptionPane.showMessageDialog(gameHandler.getMainFrame(),
+								"You do not have enough gold to cancel a spell.",
+								"Not enough gold",
+								JOptionPane.INFORMATION_MESSAGE,
+								selectedRc.getFaceUpIcon());
+					return false;
+				}
+				character.addGold(-10);
+				character.removeCurse(optionKey);
+				gameHandler.broadcast(character.getGameObject().getName(),"Canceled the "+optionKey+" spell by the Cleric.");
+				return true;
+			}
+			else if (character.getAllCurses().contains(optionKey)) {
+				if (character.getGold()<5) {
+					JOptionPane.showMessageDialog(gameHandler.getMainFrame(),
+								"You do not have enough gold to cancel a curse or mesmerize effect.",
+								"Not enough gold",
+								JOptionPane.INFORMATION_MESSAGE,
+								character.getIcon());
+					return false;
+				}
+				character.addGold(-5);
+				character.removeCurse(optionKey);
+				gameHandler.broadcast(character.getGameObject().getName(),"Removed the "+optionKey+" curse by the Cleric.");
+				return true;
+			}
+		}
+		return false;
 	}
 	private void doRestAction() {
 		if (character.hasCurse(Constants.ILL_HEALTH)) {
