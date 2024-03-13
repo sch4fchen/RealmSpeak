@@ -80,7 +80,9 @@ Would be nice to make weapon abilities too:
 	Immobilizing2 - When it hits all attacks undercut in next round
 	Stunning - Target cannot play an attack next round
 
-Version 1.1.8.9
+Version 1.1.9.1
+
+Version 1.1.9.0
 BUGS/ISSUES:
 # Fix crash in Super Realm (missing image for Patrol HQ)
 
