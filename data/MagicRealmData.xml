@@ -3240,7 +3240,7 @@
         <attribute rw_expansion_1="" />
         <attribute denizen="" />
         <attribute icon_folder_alt="wesnoth/units/human-loyalists" />
-        <attribute icon_type_alt="lieutnant" />
+        <attribute icon_type_alt="lieutenant" />
         <attribute icon_size_alt="0.9" />
         <attribute icon_type_rider_alt="cavalier" />
       </AttributeBlock>
@@ -47749,7 +47749,7 @@
         <attribute vulnerability="M" />
         <attribute rank="HQ" />
         <attribute armored="" />
-        <attribute icon_type="lieutnant" />
+        <attribute icon_type="lieutenant" />
         <attribute setup_start="Patrol Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="wesnoth/units/human-loyalists" />

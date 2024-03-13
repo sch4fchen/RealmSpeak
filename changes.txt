@@ -5,6 +5,8 @@ Super Realm: Nomads, Tasks: 4.8 (p.42 + p.51); allow only 1 task chit, allow onl
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Quests + Events (Global Events = optional rule) (incl. 4.5.4)
 Super Realm: Public quests on setup chart (+flag on quests if it can go on setup chart) (BGG variant: 2 quest cards per native)
+---UI---
+Dark Theme (flatLaf), Nimbus Theme
 ---Super Realms Rules---
 Super Realm: Adapt Commerce optional rules for new natives
 SUPER REALM: remaining RULES and LOGIC (rule changes compared to Magic Realm)
@@ -77,6 +79,10 @@ Would be nice to make weapon abilities too:
 	Immobilizing1 - When it hits all attacks undercut in current round
 	Immobilizing2 - When it hits all attacks undercut in next round
 	Stunning - Target cannot play an attack next round
+
+Version 1.1.8.9
+BUGS/ISSUES:
+# Fix crash in Super Realm (missing image for Patrol HQ)
 
 Version 1.1.8.9
 QUEST UPDATE:
