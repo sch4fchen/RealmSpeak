@@ -60,6 +60,8 @@ public class CharacterOptionsDialog extends AggressiveDialog {
 		GamePool pool = new GamePool(character.getGameData().getGameObjects());
 		Collection<GameObject> startDwellings = pool.find("dwelling,!general_dwelling");
 		ArrayList<String> startDwellingNames = new ArrayList<>();
+		startDwellingNames.add("Ghost");
+		startDwellingNames.add("Ghosts");
 		for (GameObject go:startDwellings) {
 			startDwellingNames.add(go.getName());
 		}
