@@ -83,6 +83,7 @@ Would be nice to make weapon abilities too:
 Version 1.1.9.1
 BUGS/ISSUES:
 # Fix location Ghosts for Witch King
+# Melt into Mist: cannot be followed
 
 Version 1.1.9.0
 BUGS/ISSUES:
