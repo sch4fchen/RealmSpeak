@@ -148,6 +148,8 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 				protected JMenuItem[] customCharacterCardView;
 			protected JMenu customCharacterMenuView2;
 				protected JMenuItem[] customCharacterCardView2;
+			protected JMenu customCharacterMenuView3;
+				protected JMenuItem[] customCharacterCardView3;
 			protected JMenu missionMenuView;
 				protected JMenuItem[] missionChitView;
 			protected JMenuItem remodeledCounterKeyView;
@@ -1118,29 +1120,39 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 					characterMenuView.add(characterCardView[i]);
 				}
 			viewMenu.add(characterMenuView);
-				ArrayList<ArrayList<String>> customCharacterCards = RealmCharacterBuilderModel.loadAllCustomCharacterCards();
-				customCharacterMenuView = new JMenu("Custom Characters (1-48)");
-				int maxSize = Math.min(customCharacterCards.size(), 48);
+			
+			ArrayList<ArrayList<String>> customCharacterCards = RealmCharacterBuilderModel.loadAllCustomCharacterCards();
+			customCharacterMenuView = new JMenu("Custom Characters (1-24)");
+				int maxSize = Math.min(customCharacterCards.size(), 24);
 				customCharacterCardView = new JMenuItem[maxSize];
 				for (int i=0;i<maxSize;i++) {
 					customCharacterCardView[i] = new ShowCustomCharCardViewAction(customCharacterCards.get(i));
 					customCharacterMenuView.add(customCharacterCardView[i]);
 				}
 			viewMenu.add(customCharacterMenuView);
-				customCharacterMenuView2 = new JMenu("Custom Characters (49-96)");
-				int maxSize2 = Math.min(customCharacterCards.size(), 96);
-				customCharacterCardView2 = new JMenuItem[maxSize2];
-				for (int i=48;i<maxSize2;i++) {
+			customCharacterMenuView2 = new JMenu("Custom Characters (25-48)");
+				maxSize = Math.min(customCharacterCards.size(), 48);
+				customCharacterCardView2 = new JMenuItem[maxSize];
+				for (int i=24;i<maxSize;i++) {
 					customCharacterCardView2[i] = new ShowCustomCharCardViewAction(customCharacterCards.get(i));
 					customCharacterMenuView2.add(customCharacterCardView2[i]);
 				}
 			viewMenu.add(customCharacterMenuView2);
-				viewSpellList = new JMenuItem("Game Spells");
-				viewSpellList.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent ev) {
-							showSpells();
-						}
-					});
+			customCharacterMenuView3 = new JMenu("Custom Characters (49-72)");
+				maxSize = Math.min(customCharacterCards.size(), 72);
+				customCharacterCardView3 = new JMenuItem[maxSize];
+				for (int i=48;i<maxSize;i++) {
+					customCharacterCardView3[i] = new ShowCustomCharCardViewAction(customCharacterCards.get(i));
+					customCharacterMenuView3.add(customCharacterCardView3[i]);
+				}
+			viewMenu.add(customCharacterMenuView3);
+			
+			viewSpellList = new JMenuItem("Game Spells");
+			viewSpellList.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					showSpells();
+				}
+			});
 			viewMenu.add(viewSpellList);
 				missionMenuView = new JMenu("Missions and Campaigns");
 				
