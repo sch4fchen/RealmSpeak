@@ -818,6 +818,7 @@ public class Constants {
 	public static final String HOUSE2_MULTIPLE_SUMMONING = "MultipleSummoning";
 	public static final String HOUSE2_ORGRE_WEAPON_LENGTH = "OgreWeaponLength";
 	public static final String HOUSE2_DENIZENS_SERIOUS_WOUNDS = "DenizenSeriousWounds";
+	public static final String HOUSE2_WOODLAND_MIGRATIONS = "WoodlandMigrations";
 	
 	// MORE House Rules
 	public static final String HOUSE3_DWELLING_ARMOR_REPAIR = "DwellingArmorRepair";

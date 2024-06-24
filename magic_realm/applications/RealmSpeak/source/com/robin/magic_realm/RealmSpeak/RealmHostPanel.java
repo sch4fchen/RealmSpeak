@@ -23,6 +23,7 @@ import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.RealmBattle.RealmBattle;
 import com.robin.magic_realm.components.MonsterChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.WarningChitComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.GamePhaseType;
 import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
@@ -905,6 +906,39 @@ public class RealmHostPanel extends JPanel {
 			for (int i = 1; i<=6; i++) {
 				SetupCardUtility.resetDenizens(host.getGameData(), i, hostPrefs.hasPref(Constants.SR_HORSES_REGENERATION),false);
 				SetupCardUtility.resetNatives(host.getGameData(), i,false);
+			}
+		}
+		if (hostPrefs.hasPref(Constants.SR_END_OF_MONTH_REGENERATION) && RealmCalendar.isLastDayOfMonth(game.getDay())) {
+			for (GameObject go:pool.find(hostPrefs.getGameKeyVals() + ",dwelling,warning,general_dwelling,tile_type=W")) {
+				GameObject tile = go.getHeldBy();
+				if (tile.hasThisAttribute("tile")) {
+					for (GameObject chit : tile.getHold()) {
+						if (RealmComponent.getRealmComponent(chit).isWarning()) {
+							chit.add(go);
+						}
+					}
+				}
+			}
+			
+			ArrayList<WarningChitComponent> chits = new ArrayList<>();
+			for (GameObject go:pool.find(hostPrefs.getGameKeyVals() + ",chit,warning,tile_type=W")) {
+				RealmComponent rc = RealmComponent.getRealmComponent(go);
+				if (!rc.isDwelling() && go.hasThisAttribute(RealmComponent.WARNING) && rc instanceof WarningChitComponent) {
+					WarningChitComponent chit = (WarningChitComponent)rc;
+					chits.add(chit);
+				}
+			}
+			ArrayList<RealmComponent> tiles = new ArrayList<>();
+			for (WarningChitComponent chit : chits) {
+				chit.setFaceDown();
+				chit.getGameObject().removeThisAttribute("seen");
+				tiles.add(chit.getHeldBy());
+				chit.getHeldBy().getGameObject().remove(chit.getGameObject());
+			}
+			Collections.shuffle(chits);
+			Collections.shuffle(tiles);
+			for (int i = 0; i < chits.size(); i++) {
+				tiles.get(i).getGameObject().add(chits.get(i).getGameObject());
 			}
 		}
 		
