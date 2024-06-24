@@ -291,6 +291,9 @@ public class BattleBuilder extends JFrame {
 					prepExpansionSpells("upg_day_spells", gameData);
 					removeSpells("upg_swap_out", gameData);
 				}
+				if(hostPrefs.hasPref(Constants.HOUSE2_ORGRE_WEAPON_LENGTH)){
+					alternateOgreWeaponLength("4", gameData);
+				}
 				if(hostPrefs.getIncludeExpansionTreasures()){
 					prepExpansionTreasures("rw_expansion_1", gameData);
 				}
@@ -381,6 +384,15 @@ public class BattleBuilder extends JFrame {
 		for (GameObject go:toRemove) {
 			go.stripThisKeyVals(hostPrefs.getGameKeyVals());
 		}	
+	}
+	private static void alternateOgreWeaponLength(String length, GameData data) {
+		GamePool pool = new GamePool(data.getGameObjects());
+		ArrayList<GameObject> ogres = pool.find(Constants.OGRE);
+		for (GameObject go:ogres) {
+			go.setAttribute("light","length",length);
+			go.setAttribute("dark","length",length);
+			go.setThisKeyVals(Constants.WEAPON_USE_CHIT);
+		}
 	}
 	private void prepExpansionTreasures(String gameKey, GameData data) {
 		GamePool pool = new GamePool(data.getGameObjects());

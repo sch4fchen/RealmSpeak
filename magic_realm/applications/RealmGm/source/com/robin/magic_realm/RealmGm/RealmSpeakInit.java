@@ -98,6 +98,9 @@ public class RealmSpeakInit {
 			prepExpansionSpells("upg_day_spells");
 			removeSpells("upg_swap_out");
 		}
+		if(hostPrefs.hasPref(Constants.HOUSE2_ORGRE_WEAPON_LENGTH)){
+			alternateOgreWeaponLength("4");
+		}
 		if(hostPrefs.getIncludeExpansionTreasures()){
 			prepExpansionTreasures("rw_expansion_1");
 		}
@@ -301,14 +304,6 @@ public class RealmSpeakInit {
 			go.setThisKeyVals(hostPrefs.getGameKeyVals());
 		}
 	}
-	private void prepExpansionTreasures(String gameKey) {
-		GamePool pool = new GamePool(data.getGameObjects());
-		ArrayList<GameObject> expansionSpells = pool.find("!original_game,treasure,!treasure_within_treasure,!ts_section," + gameKey);
-		for (GameObject go:expansionSpells) {
-			go.setThisKeyVals(hostPrefs.getGameKeyVals());
-		}
-	}
-	
 	private void removeSpells(String spellKey){
 		GamePool pool = new GamePool(data.getGameObjects());
 		ArrayList<GameObject> toRemove = pool.find("spell," + spellKey);
@@ -316,7 +311,22 @@ public class RealmSpeakInit {
 			go.stripThisKeyVals(hostPrefs.getGameKeyVals());
 		}	
 	}
-	
+	private void alternateOgreWeaponLength(String length) {
+		GamePool pool = new GamePool(data.getGameObjects());
+		ArrayList<GameObject> ogres = pool.find(Constants.OGRE);
+		for (GameObject go:ogres) {
+			go.setAttribute("light","length",length);
+			go.setAttribute("dark","length",length);
+			go.setThisKeyVals(Constants.WEAPON_USE_CHIT);
+		}
+	}
+	private void prepExpansionTreasures(String gameKey) {
+		GamePool pool = new GamePool(data.getGameObjects());
+		ArrayList<GameObject> expansionSpells = pool.find("!original_game,treasure,!treasure_within_treasure,!ts_section," + gameKey);
+		for (GameObject go:expansionSpells) {
+			go.setThisKeyVals(hostPrefs.getGameKeyVals());
+		}
+	}
 	private void markItemStartingLocations() {
 		GamePool pool = new GamePool(data.getGameObjects());
 		ArrayList<String> query = new ArrayList<>();

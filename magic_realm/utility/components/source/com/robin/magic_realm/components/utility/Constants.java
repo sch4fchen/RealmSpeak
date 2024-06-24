@@ -29,7 +29,7 @@ public class Constants {
 	public static final String DIE_ROLL_LOG = "_die_roll_log_";
 	
 	public static final String APPLICATION_NAME = "Realm Speak";
-	public static final String REALM_SPEAK_VERSION = "1.1.9.2";
+	public static final String REALM_SPEAK_VERSION = "1.1.9.3";
 	public static final String REALM_SPEAK_IMAGES_VERSION = "1.1.8.0";
 	
 	public static final String PLAYER_TO_PLACE = "p_2_p";
@@ -815,6 +815,7 @@ public class Constants {
 	public static final String HOUSE2_PEACE_WITH_NATURE_SITES = "PeaceWithNatureSites";
 	public static final String HOUSE2_HURRICANE_WINDS_BLOWS_HIRELINGS = "HurricaneWindsBlowsHirelings";
 	public static final String HOUSE2_MULTIPLE_SUMMONING = "MultipleSummoning";
+	public static final String HOUSE2_ORGRE_WEAPON_LENGTH = "OgreWeaponLength";
 	
 	// MORE House Rules
 	public static final String HOUSE3_DWELLING_ARMOR_REPAIR = "DwellingArmorRepair";
