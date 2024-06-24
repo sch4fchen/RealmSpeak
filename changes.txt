@@ -1,6 +1,6 @@
 House Rules:
 2) Serious Wounds for Denizens
-If harm equals a denizen's vulnerability, the denizen immediately returns to the Set Up Card and the player gets 1/2 of the normal Fame/Notoriety bounty (fractions rounded up). Harm must exceed vulnerability for a denizen to be killed.
+If harm equals a denizen's vulnerability, the denizen immediately returns to the Set Up Card and the player gets 1/2 of the normal Fame/Notoriety bounty (fractions rounded up).
 Comment: A simple and inventive way to make denizens harder to kill. It doesn't explain how to handle garrison natives, who normally aren't placed on the Set Up Card, so I would suggest that they return to their Dwelling at the start of the next day.
 3) Woodland Migrations
 When playing a long game: at the end of each month, remove any campfires that are on the board, then reshuffle the "W" Warning chits and place them face down on the Woods tiles to be discovered again. Any unhired natives at a campfire remain in the clearing when the campfire is removed.
@@ -89,7 +89,8 @@ Would be nice to make weapon abilities too:
 
 Version 1.1.9.3
 NEW FEATURES:
-# House Rule: Ogre Clubs Weapon Length
+# House Rule: Ogre Club Weapon Length
+# House Rule: Serious Wounds for Denizens
 
 Version 1.1.9.2
 BUGS/ISSUES:

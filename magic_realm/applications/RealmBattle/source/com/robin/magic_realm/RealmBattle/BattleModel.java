@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
+import com.robin.game.server.GameClient;
 import com.robin.general.swing.DieRoller;
 import com.robin.general.util.HashLists;
 import com.robin.general.util.RandomNumber;
@@ -2703,6 +2704,10 @@ public class BattleModel {
 				}
 			}
 			
+			if (rc.isMonster() && rc.getGameObject().hasThisAttribute(Constants.SERIOUS_WOUND)) {
+				GameClient.broadcastClient("host",rc.getName()+" returns to setup card");
+				SetupCardUtility.resetDenizen(rc.getGameObject());
+			}
 			CombatWrapper.clearRoundCombatInfo(rc.getGameObject());
 			
 			// Remove any dead horses...

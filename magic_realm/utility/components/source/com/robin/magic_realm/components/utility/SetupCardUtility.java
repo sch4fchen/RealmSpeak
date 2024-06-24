@@ -747,6 +747,7 @@ public class SetupCardUtility {
 		// Remove all DEAD designations and leftover killedBy info - make sure light side up too!
 		CombatWrapper.clearAllCombatInfo(denizen);
 		denizen.removeThisAttribute(Constants.DEAD);
+		denizen.removeThisAttribute(Constants.SERIOUS_WOUND);
 		ChitComponent rc = (ChitComponent)RealmComponent.getRealmComponent(denizen);
 		rc.setLightSideUp();
 		if (rc.isNative()) {
@@ -1013,6 +1014,18 @@ public class SetupCardUtility {
 		keyVals.add("setup_start");
 		keyVals.add(Constants.DEAD);
 		returning.addAll(pool.extract(keyVals));
+		
+		keyVals = new ArrayList<>();
+		keyVals.add(hostPrefs.getGameKeyVals());
+		keyVals.add("setup_start");
+		keyVals.add(Constants.DEAD);
+		keyVals.add(Constants.SERIOUS_WOUND);
+		for (GameObject woundedDenizen : pool.extract(keyVals)) {
+			if (!returning.contains(woundedDenizen)) {
+				returning.add(woundedDenizen);
+			}
+		}
+		
 				
 		if (!returning.isEmpty()) {
 			if (seventhDay) {

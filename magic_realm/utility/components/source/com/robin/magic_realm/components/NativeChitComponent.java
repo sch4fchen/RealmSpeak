@@ -528,6 +528,10 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 			combat.setKilledBy(attacker.getGameObject());
 			combat.setKilledLength(attacker.getLength());
 			combat.setKilledSpeed(attacker.getAttackSpeed());
+			if (hostPrefs.hasPref(Constants.HOUSE2_DENIZENS_SERIOUS_WOUNDS) && applied.equalTo(vulnerability)) {
+				combat.getGameObject().setThisAttribute(Constants.SERIOUS_WOUND);
+				RealmLogging.logMessage(combat.getGameObject().getNameWithNumber(),"Is seriously wounded.");
+			}
 			if (!hostPrefs.hasPref(Constants.OPT_SR_ENDING_COMBAT)) return true;
 		}
 		return horseHarmed;

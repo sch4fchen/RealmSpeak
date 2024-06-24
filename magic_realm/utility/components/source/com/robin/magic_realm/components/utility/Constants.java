@@ -291,6 +291,7 @@ public class Constants {
 	public static final String SPOILS_INVENTORY_TAKEN = "spoils_inv_taken";		// inventory is taken by the killer
 	public static final String SPOILS_GROUP_INV_DROP = "spoils_group_inv_drop";	// native group's inventory is abandoned in clearing
 	public static final String SPOILS_NONE = "spoils_none";
+	public static final String SERIOUS_WOUND = "serious_wound";
 	
 	// Treasure ThisAttributes
 	public static final String WEIGHT = "weight";
@@ -816,6 +817,7 @@ public class Constants {
 	public static final String HOUSE2_HURRICANE_WINDS_BLOWS_HIRELINGS = "HurricaneWindsBlowsHirelings";
 	public static final String HOUSE2_MULTIPLE_SUMMONING = "MultipleSummoning";
 	public static final String HOUSE2_ORGRE_WEAPON_LENGTH = "OgreWeaponLength";
+	public static final String HOUSE2_DENIZENS_SERIOUS_WOUNDS = "DenizenSeriousWounds";
 	
 	// MORE House Rules
 	public static final String HOUSE3_DWELLING_ARMOR_REPAIR = "DwellingArmorRepair";

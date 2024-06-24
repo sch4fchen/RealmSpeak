@@ -4,6 +4,7 @@ import java.util.StringTokenizer;
 
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class Spoils {
@@ -165,8 +166,16 @@ public class Spoils {
 			spoils.setUseMultiplier(attacker.isCharacter() && !victim.isCharacter());
 			
 			// Fame and Notoriety Bounty
-			spoils.addFame(victim.getGameObject().getThisInt("fame"));
-			spoils.addNotoriety(victim.getGameObject().getThisInt("notoriety"));
+			boolean seriousWound = victimGo.hasThisAttribute(Constants.SERIOUS_WOUND);
+			int fame = victim.getGameObject().getThisInt("fame");
+			int notoriety = victim.getGameObject().getThisInt("notoriety");
+			if (seriousWound) {
+				// divide by 2
+				fame = (fame+2-1)/2;
+				notoriety = (notoriety+2-1)/2;
+			}
+			spoils.addFame(fame);
+			spoils.addNotoriety(notoriety);
 			if (victim.isCharacter()) {
 				CharacterWrapper victimRecord = new CharacterWrapper(victim.getGameObject());
 				spoils.addNotoriety(victimRecord.getRoundedNotoriety()); // stored a bit differently
