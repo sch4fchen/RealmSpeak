@@ -638,41 +638,45 @@ public class CharacterWrapper extends GameObjectWrapper {
 		GameObject transform = getTransmorph();
 		if (transform!=null) {
 			vul = new Strength(transform.getThisAttribute("vulnerability"));
+			int mod = 0;
 			if (transform.hasThisAttribute(Constants.WEAKENED_VULNERABILITY)) {
-				vul.modify(-1);
+				mod--;
 			}
 			if (transform.hasThisAttribute(Constants.STRENGTHENED_VULNERABILITY)) {
-				vul.modify(+1);
+				mod++;
 			}
 			if (transform.hasThisAttribute(Constants.ALTER_SIZE_DECREASED_VULNERABILITY)) {
-				vul.modify(-1);
+				mod--;
 			}
 			if (transform.hasThisAttribute(Constants.ALTER_SIZE_INCREASED_VULNERABILITY)) {
-				vul.modify(+1);
+				mod++;
 			}
+			vul.modify(mod);
 		}
 		else if (getGameObject().hasThisAttribute(Constants.ENHANCED_VULNERABILITY)) {
 			// Beserker has the ability to raise his vulnerability temporarily
 			vul = new Strength(getGameObject().getThisAttribute(Constants.ENHANCED_VULNERABILITY));
 		}
+		int mod = 0;
 		if (hasActiveInventoryThisKey(Constants.REDUCED_VULNERABILITY)) {
-			vul.modify(-1);
+			mod--;
 		}
 		if (getGameObject().hasThisAttribute(Constants.WEAKENED_VULNERABILITY)) {
-			vul.modify(-1);
+			mod--;
 		}
 		if (getGameObject().hasThisAttribute(Constants.STRENGTHENED_VULNERABILITY)) {
-			vul.modify(+1);
+			mod++;
 		}
 		if (getGameObject().hasThisAttribute(Constants.CURDLE_OF_BONE)) {
-			vul.modify(+1);
+			mod++;
 		}
 		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_VULNERABILITY)) {
-			vul.modify(-1);
+			mod--;
 		}
 		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_VULNERABILITY)) {
-			vul.modify(+1);
+			mod++;
 		}
+		vul.modify(mod);
 		return vul;
 	}
 	public Strength getWeight() {

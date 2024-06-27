@@ -636,22 +636,23 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 
 	public Strength getVulnerability() {
 		Strength vul =  new Strength(getThisAttribute("vulnerability"));
-		vul.modify(sizeModifier());
+		int mod = sizeModifier();
 		if (getGameObject().hasThisAttribute(Constants.WEAKENED_VULNERABILITY)) {
-			vul.modify(-1);
+			mod--;
 		}
 		if (getGameObject().hasThisAttribute(Constants.STRENGTHENED_VULNERABILITY)) {
-			vul.modify(+1);
+			mod++;
 		}
 		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_VULNERABILITY)) {
-			vul.modify(-1);
+			mod--;
 		}
 		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_VULNERABILITY)) {
-			vul.modify(+1);
+			mod++;
 		}
 		if (getGameObject().hasThisAttribute(Constants.WOUNDS)) {
-			vul.modify(-getWounds());
+			mod = mod - getWounds();
 		}
+		vul.modify(mod);
 		return vul;
 	}
 	

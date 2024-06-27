@@ -243,18 +243,20 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		}
 		if (isMove() || isFight()) {
 			if (character!=null) { // Might be null in the character builder app
+				int mod = 0;
 				if (character.getGameObject().hasThisAttribute(Constants.SHRINK)) {
-					strength.modify(-1);
+					mod--;
 				}
 				if (character.getGameObject().hasThisAttribute(Constants.STRONG_MF)) {
-					strength.modify(1);
+					mod++;
 				}
 				if (character.getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
-					strength.modify(-1);
+					mod--;
 				}
 				if (character.getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
-					strength.modify(1);
+					mod++;
 				}
+				strength.modify(mod);
 			}
 		}
 		return strength;
