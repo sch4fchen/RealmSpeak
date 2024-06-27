@@ -2704,10 +2704,6 @@ public class BattleModel {
 				}
 			}
 			
-			if (rc.isMonster() && rc.getGameObject().hasThisAttribute(Constants.SERIOUS_WOUND)) {
-				GameClient.broadcastClient("host",rc.getName()+" returns to setup card");
-				SetupCardUtility.resetDenizen(rc.getGameObject());
-			}
 			CombatWrapper.clearRoundCombatInfo(rc.getGameObject());
 			
 			// Remove any dead horses...

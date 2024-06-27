@@ -84,6 +84,7 @@ Version 1.1.9.3
 NEW FEATURES:
 # House Rule: Ogre Club Weapon Length
 # House Rule: Serious Wounds for Denizens
+# House Rule: Wounds for Denizens
 # House Rule: Woodland Migrations
 
 Version 1.1.9.2

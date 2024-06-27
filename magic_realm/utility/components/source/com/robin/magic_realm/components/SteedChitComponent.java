@@ -323,7 +323,11 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		}
 		
 		Strength applied = harm.getAppliedStrength();
-		if (applied.strongerOrEqualTo(vulnerability)) {
+		if (hostPrefs.hasPref(Constants.HOUSE2_DENIZENS_WOUNDS) && applied.equalTo(vulnerability)) {
+			addWound();
+			RealmLogging.logMessage(getGameObject().getNameWithNumber(),"Wounded.");
+		}	
+		else if (applied.strongerOrEqualTo(vulnerability)) {
 			// Dead horse!
 			CombatWrapper combat = new CombatWrapper(getGameObject());
 			combat.setKilledBy(attacker.getGameObject());
@@ -364,6 +368,9 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_VULNERABILITY)) {
 			strength.modify(+1);
 		}
+		if (getGameObject().hasThisAttribute(Constants.WOUNDS)) {
+			strength.modify(-getWounds());
+		}
 		return strength;
 	}
 	public boolean isArmored() {
@@ -384,5 +391,14 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 	}
 	public boolean isDead() {
 		return getGameObject().hasThisAttribute(Constants.DEAD);
+	}
+	public void addWound() {
+		addWounds(1);
+	}
+	public void addWounds(int i) {
+		getGameObject().setThisAttribute(Constants.WOUNDS,getWounds()+i); 
+	}
+	public int getWounds() {
+		return getGameObject().getThisInt(Constants.WOUNDS);
 	}
 }

@@ -649,6 +649,9 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_VULNERABILITY)) {
 			vul.modify(+1);
 		}
+		if (getGameObject().hasThisAttribute(Constants.WOUNDS)) {
+			vul.modify(-getWounds());
+		}
 		return vul;
 	}
 	
@@ -787,14 +790,23 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		}
 	
 		Strength applied = harm.getAppliedStrength();
-		if (applied.strongerOrEqualTo(vulnerability)) {
+		
+		if (hostPrefs.hasPref(Constants.HOUSE2_DENIZENS_WOUNDS) && applied.equalTo(vulnerability)) {
+			addWound();
+			RealmLogging.logMessage(getGameObject().getNameWithNumber(),"Wounded.");
+			if (hostPrefs.hasPref(Constants.HOUSE2_DENIZENS_SERIOUS_WOUNDS) && applied.equalTo(vulnerability)) {
+				combat.getGameObject().setThisAttribute(Constants.SERIOUS_WOUND);
+				RealmLogging.logMessage(getGameObject().getNameWithNumber(),"Seriously wounded.");
+			}
+		}	
+		else if (applied.strongerOrEqualTo(vulnerability)) {
 			// Dead monster!
 			combat.setKilledBy(attacker.getGameObject());
 			combat.setKilledLength(attacker.getLength());
 			combat.setKilledSpeed(attacker.getAttackSpeed());
 			if (hostPrefs.hasPref(Constants.HOUSE2_DENIZENS_SERIOUS_WOUNDS) && applied.equalTo(vulnerability)) {
 				combat.getGameObject().setThisAttribute(Constants.SERIOUS_WOUND);
-				RealmLogging.logMessage(combat.getGameObject().getNameWithNumber(),"Is seriously wounded.");
+				RealmLogging.logMessage(getGameObject().getNameWithNumber(),"Seriously wounded.");
 			}
 			if (!hostPrefs.hasPref(Constants.OPT_SR_ENDING_COMBAT)) return true;
 		}
@@ -835,5 +847,14 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	public boolean isAbsorbed() {
 		GameObject heldBy = getGameObject().getHeldBy();
 		return heldBy!=null && heldBy.hasThisAttribute("spell");
+	}
+	public void addWound() {
+		addWounds(1);
+	}
+	public void addWounds(int i) {
+		getGameObject().setThisAttribute(Constants.WOUNDS,getWounds()+i); 
+	}
+	public int getWounds() {
+		return getGameObject().getThisInt(Constants.WOUNDS);
 	}
 }

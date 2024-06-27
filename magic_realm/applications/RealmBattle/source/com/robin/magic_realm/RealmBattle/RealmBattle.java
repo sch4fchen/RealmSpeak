@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
+import com.robin.game.server.GameClient;
 import com.robin.game.server.GameHost;
 import com.robin.general.util.HashLists;
 import com.robin.general.util.RandomNumber;
@@ -792,6 +793,11 @@ public class RealmBattle {
 						horse.setWalk();
 					}
 				}
+			}
+			
+			if (rc.isMonster() && rc.getGameObject().hasThisAttribute(Constants.SERIOUS_WOUND)) {
+				GameClient.broadcastClient("host",rc.getName()+" returns to setup card");
+				SetupCardUtility.resetDenizen(rc.getGameObject());
 			}
 		}
 	}
