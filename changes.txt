@@ -84,6 +84,7 @@ Version 1.1.9.4
 NEW FEATURES:
 # Setting for Interpolation mode (map rendering quality) is now saved
 BUGS/ISSUES:
+# Fix Productive Dwarf house rule
 # Updates to Legendary Tiles images: Descent, Grove, Pinnacle, Tristar
 
 Version 1.1.9.3
