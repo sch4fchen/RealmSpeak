@@ -13,6 +13,7 @@ import com.robin.game.objects.*;
 import com.robin.game.server.GameClient;
 import com.robin.general.graphics.GraphicsUtil;
 import com.robin.general.graphics.TextType;
+import com.robin.general.io.PreferenceManager;
 import com.robin.general.swing.ListChooser;
 import com.robin.general.swing.MouseUtility;
 import com.robin.general.util.RandomNumber;
@@ -133,12 +134,18 @@ public class CenteredMapView extends JComponent {
 	private Hashtable<String,ChatStyle> chatStyles;
 	
 	private int interpolation = 0;
+	private String rendering = "interpolation";
+	
+	private PreferenceManager prefs;
 	
 	/**
 	 * Constructor requires that the map has already been built - this just displays a built map
 	 */
 	public CenteredMapView(GameData data) {
 		this(data,true,false);
+		prefs = new PreferenceManager("RealmSpeak","map.cfg");
+		prefs.loadPreferences();
+		interpolation = prefs.getInt(rendering);
 	}
 	public CenteredMapView(GameData data,boolean enableShiftFlip,boolean enableGmFunctions) {
 		this.gmFunctions = enableGmFunctions;
@@ -1520,6 +1527,8 @@ public class CenteredMapView extends JComponent {
 			interpolationNearestNeighbor.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
 					interpolation = 0;
+					prefs.set(rendering, 0);
+					prefs.savePreferences();
 					redraw();
 				}
 			});
@@ -1528,6 +1537,8 @@ public class CenteredMapView extends JComponent {
 			interpolationBilinear.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
 					interpolation = 1;
+					prefs.set(rendering, 1);
+					prefs.savePreferences();
 					redraw();
 				}
 			});
@@ -1536,6 +1547,8 @@ public class CenteredMapView extends JComponent {
 			interpolationBicubic.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
 					interpolation = 2;
+					prefs.set(rendering, 2);
+					prefs.savePreferences();
 					redraw();
 				}
 			});
