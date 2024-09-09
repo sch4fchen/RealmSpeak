@@ -3842,6 +3842,9 @@ public class CombatFrame extends JFrame {
 		repaint();
 	}
 	private synchronized static void doFatigueWounds(JFrame parent,CharacterWrapper character) {
+		doFatigueWounds(parent,character,false);
+	}
+	private synchronized static void doFatigueWounds(JFrame parent,CharacterWrapper character, boolean ignoreBerserk) {
 		CombatWrapper combat = new CombatWrapper(character.getGameObject());
 		
 		int healing = combat.getHealing(); // i.e., Drain Life
@@ -3852,7 +3855,7 @@ public class CombatFrame extends JFrame {
 		}
 		boolean dead = false;
 		int newWounds = combat.getNewWounds();
-		Effort effortUsed = BattleUtility.getEffortUsed(character);
+		Effort effortUsed = BattleUtility.getEffortUsed(character,ignoreBerserk);
 		int free = character.getEffortFreeAsterisks();
 		int needToFatigue = effortUsed.getNeedToFatigue(free);
 		needToFatigue += runAwayFatigue;
@@ -3969,7 +3972,7 @@ public class CombatFrame extends JFrame {
 		else if (firstState.intValue()==Constants.COMBAT_ASSIGN) {
 			ArrayList<CharacterWrapper> list = lists.getList(firstState);
 			CharacterWrapper character = list.iterator().next();
-			doFatigueWounds(frame,character);
+			doFatigueWounds(frame,character,true);
 		}
 		else if (firstState.intValue()==Constants.COMBAT_FATIGUE) {
 			logger.finer("handling fatigue/wounds");

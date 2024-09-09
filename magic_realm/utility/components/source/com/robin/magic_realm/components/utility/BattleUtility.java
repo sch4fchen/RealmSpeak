@@ -63,9 +63,13 @@ public class BattleUtility {
 	}
 	
 	public static Effort getEffortUsed(CharacterWrapper character) {
+		return getEffortUsed(character,false);
+	}
+	public static Effort getEffortUsed(CharacterWrapper character, boolean ignoreBerserk) {
 		// Determine how many effort *s have already been played
 		Effort totalEffort = new Effort();
 		for (CharacterActionChitComponent chit:getPlayedChits(character)) {
+			if (ignoreBerserk && chit.isFightAlert()) continue;
 			totalEffort.addEffort(chit);
 		}
 		
