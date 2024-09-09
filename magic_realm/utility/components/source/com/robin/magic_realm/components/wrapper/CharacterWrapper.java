@@ -32,7 +32,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 	
 	public static enum ActionState{Pending,Completed,Cancelled,Invalid}
 	private static Logger logger = Logger.getLogger(CharacterWrapper.class.getName());
-	private static final String dwarfRegex = "(^Dwarf(\\s\\+\\s\\d|$))|^Smith$|^Warrior$";
 
 	// PlayerBlock attribute keys
 	public static final String MISSING_IN_ACTION = "MIA__";
@@ -2057,7 +2056,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		if (affectedByKey(Constants.NO_SUNLIGHT)) {
 			boolean house = HostPrefWrapper.findHostPrefs(getGameObject().getGameData()).hasPref(Constants.HOUSE1_DWARF_ACTION);
-			if (house && this.getCharacterName().matches(dwarfRegex) && !getGameObject().hasThisAttribute(Constants.CUSTOM_CHARACTER)) {
+			if (house && !getGameObject().hasThisAttribute(Constants.CUSTOM_CHARACTER)) {
 				return true;
 			}
 		}
@@ -2066,7 +2065,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean canUseSunlightPhases() {
 		if (affectedByKey(Constants.NO_SUNLIGHT)) {
 			boolean house = HostPrefWrapper.findHostPrefs(getGameObject().getGameData()).hasPref(Constants.HOUSE1_DWARF_ACTION);
-			if (house && this.getCharacterName().matches(dwarfRegex) && !getGameObject().hasThisAttribute(Constants.CUSTOM_CHARACTER)) {
+			if (house && !getGameObject().hasThisAttribute(Constants.CUSTOM_CHARACTER)) {
 				return true;
 			}
 			return false;
