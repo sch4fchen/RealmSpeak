@@ -3841,10 +3841,28 @@ public class CombatFrame extends JFrame {
 		refreshParticipants();
 		repaint();
 	}
-	private synchronized static void doFatigueWounds(JFrame parent,CharacterWrapper character) {
-		doFatigueWounds(parent,character,false);
+	private synchronized static void doDeadByFatigue(JFrame parent,CharacterWrapper character) {
+		CombatWrapper combat = new CombatWrapper(character.getGameObject());
+		ArrayList<GameObject> list = combat.getHitByList();
+		GameObject lastKiller = list.get(list.size()-1);
+		combat.setKilledBy(lastKiller);
+		RealmComponent rc = RealmComponent.getRealmComponent(character.getGameObject());
+		JOptionPane.showMessageDialog(parent,character.getCharacterName()+" was wounded to death.","Wounded to Death",JOptionPane.INFORMATION_MESSAGE,rc.getIcon());
 	}
-	private synchronized static void doFatigueWounds(JFrame parent,CharacterWrapper character, boolean ignoreBerserk) {
+	private synchronized static boolean doFatigueWeather(JFrame parent,CharacterWrapper character) {
+		if (character.getWeatherFatigue()>0) {
+			broadcastMessage(character.getGameObject().getName(),"Fatiguing "+character.getWeatherFatigue()+" asterisk"+(character.getWeatherFatigue()==1?"":"s")+".");
+			ChitFatigueManager fatiguer = new ChitFatigueManager(parent,character,character.getWeatherFatigue());
+			fatiguer.setVisible(true);
+			character.clearWeatherFatigue();
+			// Test for death
+			if (fatiguer.isDead()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	private synchronized static void doFatigueWounds(JFrame parent,CharacterWrapper character) {
 		CombatWrapper combat = new CombatWrapper(character.getGameObject());
 		
 		int healing = combat.getHealing(); // i.e., Drain Life
@@ -3853,22 +3871,12 @@ public class CombatFrame extends JFrame {
 			ChitRestManager rester = new ChitRestManager(parent,character,healing);
 			rester.setVisible(true);
 		}
-		boolean dead = false;
 		int newWounds = combat.getNewWounds();
-		Effort effortUsed = BattleUtility.getEffortUsed(character,ignoreBerserk);
+		Effort effortUsed = BattleUtility.getEffortUsed(character);
 		int free = character.getEffortFreeAsterisks();
 		int needToFatigue = effortUsed.getNeedToFatigue(free);
 		needToFatigue += runAwayFatigue;
-		if (character.getWeatherFatigue()>0) {
-			broadcastMessage(character.getGameObject().getName(),"Fatiguing "+character.getWeatherFatigue()+" asterisk"+(character.getWeatherFatigue()==1?"":"s")+".");
-			ChitFatigueManager fatiguer = new ChitFatigueManager(parent,character,character.getWeatherFatigue());
-			fatiguer.setVisible(true);
-			character.clearWeatherFatigue();
-			// Test for death
-			if (fatiguer.isDead()) {
-				dead = true;
-			}
-		}
+		boolean dead = doFatigueWeather(parent,character);
 		if (!dead && needToFatigue>0) {
 			broadcastMessage(character.getGameObject().getName(),"Fatiguing "+needToFatigue+" asterisk"+(needToFatigue==1?"":"s")+".");
 			int runFatigueUsed = runAwayFatigue==0?0:runAwayFatigue+character.getEffortFreeAsterisks();
@@ -3895,11 +3903,7 @@ public class CombatFrame extends JFrame {
 		}
 		
 		if (dead) {
-			ArrayList<GameObject> list = combat.getHitByList();
-			GameObject lastKiller = list.get(list.size()-1);
-			combat.setKilledBy(lastKiller);
-			RealmComponent rc = RealmComponent.getRealmComponent(character.getGameObject());
-			JOptionPane.showMessageDialog(parent,character.getCharacterName()+" was wounded to death.","Wounded to Death",JOptionPane.INFORMATION_MESSAGE,rc.getIcon());
+			doDeadByFatigue(parent,character);
 		}
 	}
 	/**
@@ -3972,7 +3976,10 @@ public class CombatFrame extends JFrame {
 		else if (firstState.intValue()==Constants.COMBAT_ASSIGN) {
 			ArrayList<CharacterWrapper> list = lists.getList(firstState);
 			CharacterWrapper character = list.iterator().next();
-			doFatigueWounds(frame,character,true);
+			boolean dead = doFatigueWeather(frame,character);
+			if (dead) {
+				doDeadByFatigue(parent,character);
+			}
 		}
 		else if (firstState.intValue()==Constants.COMBAT_FATIGUE) {
 			logger.finer("handling fatigue/wounds");

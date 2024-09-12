@@ -79,6 +79,10 @@ Would be nice to make weapon abilities too:
 	Immobilizing1 - When it hits all attacks undercut in current round
 	Immobilizing2 - When it hits all attacks undercut in next round
 	Stunning - Target cannot play an attack next round
+
+Version 1.1.9.5
+BUGS/ISSUES:
+# Fix fatigue in combat
 	
 Version 1.1.9.4
 NEW FEATURES:
