@@ -297,8 +297,7 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 		return null;
 	}
 	public ArrayList<Integer> getEnchantableNumbers() {
-		 // only 1-5 can be enchanted colors!
-		return getAllMagicNumbers(5);
+		return getAllMagicNumbers(8);
 	}
 	public ArrayList<Integer> getAllMagicNumbers(int maximum) {
 		ArrayList<Integer> list = new ArrayList<>();
