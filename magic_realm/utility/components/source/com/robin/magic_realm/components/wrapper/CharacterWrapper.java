@@ -4416,7 +4416,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 					RealmComponent rc = RealmComponent.getRealmComponent(item);
 					if (rc.isMagicChit()) { // doesn't matter if it is enchanted or not!
 						MagicChit chit = (MagicChit)rc;
-						if (chit.getEnchantableNumbers().contains(number)) {
+						if (chit.getEnchantableNumbers().contains(number) || (rc.isTreasure() && ((TreasureCardComponent)rc).getAllMagicNumbers(8).contains(number))) {
 							hasType = true;
 							break;
 						}
