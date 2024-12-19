@@ -550,7 +550,9 @@ public class SetupCardUtility {
 		HashLists<Integer,ClearingDetail> choices = new HashLists<>();
 		// Include current clearing when deciding (though with one less incentive)
 		choices.put(calculateIncentive(current.clearing.getClearingComponents(),-2,-1)-1,current.clearing);
-		for (PathDetail path:current.clearing.getConnectedPaths()) {
+		ArrayList<PathDetail> paths = current.clearing.getConnectedPaths();
+		if (paths == null) return;
+		for (PathDetail path:paths) {
 			ClearingDetail other = path.findConnection(current.clearing);
 			if (other.isEdge()) continue; // travelers don't leave the map
 
