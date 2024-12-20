@@ -437,7 +437,7 @@ public class PhaseManager {
 			}
 		}
 		
-		if (movePhase && actionLocation.hasClearing() && actionLocation.clearing.isWater()) {
+		if (movePhase && actionLocation!=null && actionLocation.hasClearing() && actionLocation.clearing.isWater()) {
 			GameObject item = character.getActiveInventoryThisKey(Constants.SAILS);
 			if (item!=null) {
 				String lastLoc = character.getGameObject().getThisAttribute(Constants.SAILS_LAST_CLEARING);

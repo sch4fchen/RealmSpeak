@@ -812,7 +812,10 @@ public class RealmTurnPanel extends CharacterFramePanel {
 				}
 			}
 			
-			getCharacter().getCurrentLocation().energizeItems();
+			TileLocation loc = getCharacter().getCurrentLocation();
+			if (loc!=null) {
+				getCharacter().getCurrentLocation().energizeItems();
+			}
 			
 			// Make sure action gets added to the phase manager
 			if (acm==null || !ar.isCancelled()) { // don't add canceled phases when using timeless jewel
@@ -1038,7 +1041,9 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		getCharacter().land(getGameHandler().getMainFrame());
 		TileLocation current = getCharacter().getCurrentLocation();
 		
-		getCharacter().getCurrentLocation().energizeItems();
+		if (current!=null) {
+			getCharacter().getCurrentLocation().energizeItems();
+		}
 		getCharacter().expireTemporaryPotions();
 		
 		//CJM -- Quest check here
