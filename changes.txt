@@ -82,7 +82,7 @@ Would be nice to make weapon abilities too:
 
 Version 1.1.9.8
 BUGS/ISSUES:
-# Fix crashes if character left map
+# Fix crashes if character has left map
 
 Version 1.1.9.7
 BUGS/ISSUES:
