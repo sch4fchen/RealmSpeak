@@ -1281,7 +1281,7 @@ public class ActionRow {
 					GamePool pool = new GamePool(character.getGameData().getGameObjects());
 					ArrayList<GameObject> boxes = pool.find("summon_n="+nativeName.toLowerCase());
 					for (GameObject box : boxes) {
-						ClearingUtility.dumpGoldSpecialsToTile(tl.tile.getGameObject(),box,tl.clearing.getNum());
+						ClearingUtility.dumpTravelersToTile(tl.tile.getGameObject(),box,tl.clearing.getNum());
 					}
 				}
 				
