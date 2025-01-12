@@ -839,6 +839,9 @@ public class RealmHostPanel extends JPanel {
 		for (GameObject item:pool.find("item,"+Constants.MAGIC_COLOR_BONUS)) {
 			item.removeThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE);
 		}
+		for (GameObject item:pool.find("item,"+Constants.RING)) {
+			item.removeThisAttribute(Constants.RING_USED);
+		}
 		
 		// Clean up all tile combat results (PEACE clearings, and WasFatigue results)
 		for (GameObject go:RealmObjectMaster.getRealmObjectMaster(host.getGameData()).getTileObjects()) {

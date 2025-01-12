@@ -2011,6 +2011,27 @@ public class ActionRow {
 						// find all possible combinations!
 					}
 				}
+				for (GameObject treasure:character.getActiveInventory()) {
+					if (treasure.hasThisAttribute(Constants.RING) && !treasure.hasThisAttribute(Constants.RING_USED)) {
+						if (treasure.hasThisAttribute(SpellWrapper.INCANTATION_TIE)) {
+							continue; // tied up treasures cannot be used again
+						}
+						MagicChit treasureChit = (MagicChit)RealmComponent.getRealmComponent(treasure);
+						if (!treasureChit.isColor()) {
+							ArrayList<String> treasureMagicTypes = TreasureCardComponent.readAvailableMagicTypes(character.getCurrentDayKey(),treasure);
+							if (treasureMagicTypes.isEmpty()) continue;
+							for (String treasureMagicColor : treasureMagicTypes) {
+								if (chit.compatibleWith(ColorMagic.getMagicColorFromMagicType(treasureMagicColor))) {
+									RealmComponent[] set = new RealmComponent[3];
+									set[0] = (RealmComponent)chit;
+									set[1] = RealmComponent.getRealmComponent(treasure);
+									set[2] = targetClearing.tile;
+									tileEnchantableSets.add(set);
+								}
+							}
+						}
+					}
+				}
 			}
 			
 			RealmComponentOptionChooser compChooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Enchant which?",true);
@@ -2043,16 +2064,17 @@ public class ActionRow {
 						tile.flip();
 						result = "enchanted "+tile.getTileName();
 						// fatigue the chit(s) used to do it
-						if (!character.affectedByKey(Constants.TALISMAN)) {
-							Collection<RealmComponent> chits = compChooser.getSelectedComponents();
-							for (RealmComponent rc : chits) {
-								if (rc.isMagicChit()) {
-									MagicChit chit = (MagicChit)rc;
-									if (chit.isColor()) { // Only fatigue the color chit - not the incantation
-										chit.makeFatigued();
-										RealmUtility.reportChitFatigue(character,chit,"Fatigued color chit: ");
-									}
+						Collection<RealmComponent> chits = compChooser.getSelectedComponents();
+						for (RealmComponent rc : chits) {
+							if (rc.isMagicChit() && !character.affectedByKey(Constants.TALISMAN)) {
+								MagicChit chit = (MagicChit)rc;
+								if (chit.isColor()) { // Only fatigue the color chit - not the incantation
+									chit.makeFatigued();
+									RealmUtility.reportChitFatigue(character,chit,"Fatigued color chit: ");
 								}
+							}
+							if (rc.getGameObject().hasThisAttribute(Constants.RING)) {
+								rc.getGameObject().setThisAttribute(Constants.RING_USED);
 							}
 						}
 						gameHandler.updateCharacterFrames();

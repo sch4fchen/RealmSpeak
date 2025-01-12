@@ -353,6 +353,7 @@ public class Constants {
 	public static final String REENERGIZE = "reenergize";
 	public static final String CHITS_PRISM_COLOR = "chits_prism_color";
 	public static final String RING = "ring";
+	public static final String RING_USED = "ring_used";
 	public static final String ENCHANT_TILE = "enchant_tile";
 	public static final String CURDLE_OF_BONE = "curdle_of_bone";
 	public static final String CURDLE_OF_BONE_AFFECTED_CHARACTER = "curdle_of_bone_affected_character";
