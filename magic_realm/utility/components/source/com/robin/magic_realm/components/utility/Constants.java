@@ -29,7 +29,7 @@ public class Constants {
 	public static final String DIE_ROLL_LOG = "_die_roll_log_";
 	
 	public static final String APPLICATION_NAME = "Realm Speak";
-	public static final String REALM_SPEAK_VERSION = "1.1.9.9";
+	public static final String REALM_SPEAK_VERSION = "1.2.0.0";
 	public static final String REALM_SPEAK_IMAGES_VERSION = "1.1.8.0";
 	
 	public static final String PLAYER_TO_PLACE = "p_2_p";
@@ -844,6 +844,7 @@ public class Constants {
 	public static final String SR_NO_7TH_DAY_REGENERATION = "No7thDayRegeneration";
 	public static final String SR_HORSES_REGENERATION = "HorsesRegeneration";
 	public static final String SR_NO_SPYING = "NoSpying";
+	public static final String SR_COMPLETE_GOLD_SPECIAL_ONLY_ONCE = "CompleteGoldSpecialOnlyOnce";
 	
 	// Random Number Generators
 	public static final String RANDOM_R250_521 = "RndR250_521";

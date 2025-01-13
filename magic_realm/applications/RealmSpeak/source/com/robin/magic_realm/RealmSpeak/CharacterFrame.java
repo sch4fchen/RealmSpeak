@@ -661,22 +661,40 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					// Verify the character can afford it
 					if (hostPrefs.hasPref(Constants.HOUSE2_CAMPAIGN_DEBT) || gsrc.meetsPointRequirement(getCharacter())) {
 						if (!gsrc.isComplete(getCharacter(),getCharacter().getCurrentLocation())) {
-							// Setup campaign/mission (do this BEFORE picking up chit, so clearing count is accurate!)
-							gsrc.setup(getCharacter());
-	
-							// Pickup chit
-							getCharacter().getGameObject().add(gsrc.getGameObject());
-							gsrc.getGameObject().removeThisAttribute("clearing");
-							QuestRequirementParams qp = new QuestRequirementParams();
-							qp.actionName = gsrc.getGameObject().getName();
-							qp.actionType = CharacterActionType.PickUpMissionCampaign;
-							qp.targetOfSearch = gsrc.getGameObject();
-							if(getCharacter().testQuestRequirements(gameHandler.getMainFrame(),qp)) {
-								gameHandler.getInspector().redrawMap();
+							boolean alreadyCompleted = false;
+							if (hostPrefs.hasPref(Constants.SR_COMPLETE_GOLD_SPECIAL_ONLY_ONCE)) {
+								if (gsrc.isMission() && character.hasMissionCompleted(gsrc.getName())) {
+									alreadyCompleted = true;
+									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You cannot pick up a Mission which you have already completed.", "Already completed mission", JOptionPane.ERROR_MESSAGE);
+								}
+								if (gsrc.isCampaign() && character.hasCampaignCompleted(gsrc.getName())) {
+									alreadyCompleted = true;
+									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You cannot pick up a Campaign which you have already completed.", "Already completed campaign", JOptionPane.ERROR_MESSAGE);
+								}
+								if (gsrc.isTask() && character.hasTaskCompleted(gsrc.getName())) {
+									alreadyCompleted = true;
+									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You cannot pick up a Mission which you have already completed.", "Already completed task", JOptionPane.ERROR_MESSAGE);
+								}
 							}
-	
-							gameHandler.submitChanges();
-							gameHandler.updateCharacterFrames();
+							
+							if (!alreadyCompleted) {
+								// Setup campaign/mission (do this BEFORE picking up chit, so clearing count is accurate!)
+								gsrc.setup(getCharacter());
+		
+								// Pickup chit
+								getCharacter().getGameObject().add(gsrc.getGameObject());
+								gsrc.getGameObject().removeThisAttribute("clearing");
+								QuestRequirementParams qp = new QuestRequirementParams();
+								qp.actionName = gsrc.getGameObject().getName();
+								qp.actionType = CharacterActionType.PickUpMissionCampaign;
+								qp.targetOfSearch = gsrc.getGameObject();
+								if(getCharacter().testQuestRequirements(gameHandler.getMainFrame(),qp)) {
+									gameHandler.getInspector().redrawMap();
+								}
+		
+								gameHandler.submitChanges();
+								gameHandler.updateCharacterFrames();
+							}
 						}
 						else {
 							JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You cannot pick up a chit that is already complete.", "Invalid chit", JOptionPane.ERROR_MESSAGE);

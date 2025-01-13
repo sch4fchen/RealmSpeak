@@ -514,6 +514,9 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 				character.addDeductVPs(2);
 			}
 		}
+		if (getGameObject().hasThisAttribute("task")) {
+			character.addCompletedTask(getGameObject().getName());
+		}
 		
 		QuestRequirementParams qp = new QuestRequirementParams();
 		qp.actionType = CharacterActionType.CompleteMissionCampaign;
@@ -683,6 +686,15 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 				JOptionPane.INFORMATION_MESSAGE,
 				getIcon()
 		);
+	}
+	public boolean isMission() {
+		return gameObject.hasThisAttribute(Constants.MISSION);
+	}
+	public boolean isCampaign() {
+		return gameObject.hasThisAttribute(Constants.CAMPAIGN);
+	}
+	public boolean isTask() {
+		return gameObject.hasThisAttribute(Constants.TASK);
 	}
 	/*
 	 * See Section 36 of 2nd edition manual

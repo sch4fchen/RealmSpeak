@@ -1120,6 +1120,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_QTR_AND_SR_QUEST_CARDS,"ADD ALL QUEST CARDS (Questing the Realm/Super Realm) - Add both, Questing the Realm and Super Realm quest cards, if playing Questing the Realm or Super Realm.",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_EXCHANGE_QTR_AND_SR_QUEST_CARDS,"EXCHANGE QtR and SR QUEST CARDS (Questing the Realm/Super Realm) - Add only the other quest card deck to the game (SR quest cards for QtR game, and QtR quest cards for SR game).",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_DEDUCT_VPS,"DEDUCTING VPS (Super Realm rules) - Deduct VPs for discovering site chits and TWT or for completing tasks, missions, campaigns and quests. Calculating score as in Super Realm.",false));
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_COMPLETE_GOLD_SPECIAL_ONLY_ONCE,"COMPLETE CAMPAIGNS, MISSIONS, TASKS only once (Super Realm rules) - Each Campaign, Mission and Task can only completed once by every character.",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_END_OF_MONTH_REGENERATION,"END OF MONTH REGENERATION (Super Realm rules) - All denizen regenerate at the end of the month.",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_NO_7TH_DAY_REGENERATION,"NO 7th day regeneration (Super Realm rules) - Denizens do NOT regenerate at the 7th day of the week.",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_HORSES_REGENERATION,"HORSES REGENERATION (Super Realm rules) - Horses are regenerated.",false));
@@ -1305,6 +1306,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.OPT_SR_PHASE_CHIT_ACTIVATION,true);
 		optionPane.setOption(Constants.OPT_SR_REVEAL_TRAVELERS,true);
 		optionPane.setOption(Constants.SR_DEDUCT_VPS,true);
+		optionPane.setOption(Constants.SR_COMPLETE_GOLD_SPECIAL_ONLY_ONCE,true);
 		optionPane.setOption(Constants.SR_END_OF_MONTH_REGENERATION,true);
 		optionPane.setOption(Constants.SR_NO_7TH_DAY_REGENERATION,true);
 		optionPane.setOption(Constants.SR_HORSES_REGENERATION,true);

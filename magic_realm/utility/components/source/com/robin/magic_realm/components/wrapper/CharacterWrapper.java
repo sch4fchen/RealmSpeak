@@ -119,6 +119,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	
 	public static final String COMPLETED_MISSIONS = "cMissions__";	// an AttributeList of completed missions
 	public static final String COMPLETED_CAMPAIGNS = "cCampaigns__";// an AttributeList of completed campaigns
+	public static final String COMPLETED_TASKS = "cTasks__";		// an AttributeList of completed tasks
 	
 	public static final String STARTING_SPELLS = "sSpells__";		// The spells you start the game with
 	public static final String RECORDED_SPELLS = "rSpells__";		// Spells you aquire
@@ -3593,6 +3594,28 @@ public class CharacterWrapper extends GameObjectWrapper {
 			return getHiringCharacter().getCompletedCampaigns();
 		}
 		return getList(COMPLETED_CAMPAIGNS);
+	}
+	public void addCompletedTask(String name) {
+		if (hasTaskCompleted(name)) {
+			return;
+		}
+		if (isMinion()) {
+			getHiringCharacter().addCompletedTask(name);
+			return;
+		}
+		addListItem(COMPLETED_TASKS,name);
+	}
+	public boolean hasTaskCompleted(String name) {
+		if (isMinion()) {
+			return getHiringCharacter().hasTaskCompleted(name);
+		}
+		return hasListItem(COMPLETED_TASKS,name);
+	}
+	public ArrayList<String> getCompletedTasks() {
+		if (isMinion()) {
+			return getHiringCharacter().getCompletedTasks();
+		}
+		return getList(COMPLETED_TASKS);
 	}
 	public void addHiddenPathDiscovery(String name) {
 		if (isMinion()) {
