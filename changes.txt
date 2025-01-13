@@ -80,6 +80,7 @@ Would be nice to make weapon abilities too:
 Version 1.2.0.0
 SUPER REALM:
 # Campaigns, Missions and Tasks can only be completed once by every character
+# Native Blocking Rule
 
 Version 1.1.9.9
 SUPER REALM:

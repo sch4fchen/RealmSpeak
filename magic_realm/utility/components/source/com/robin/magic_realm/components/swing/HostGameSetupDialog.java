@@ -1073,6 +1073,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY_WITH_MISSILE,"PARRYING WITH MISSILE WEAPONS - Parrying with missile weapons is possible (requires one of the parrying rules or abilities).",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC (Super Realm) - A character with no active armor counters casting a spell may also use his staff to make a separate attack.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_NATIVES_FRIENDLY,"NO ATTACKING OF FRIENDLY NATIVES (Book of Learning) - FRIENDLY and ALLIED natives cannot be lured or targeted.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_NATIVE_BLOCKING,"NO ATTACKING OF FRIENDLY NATIVES (Super Realm) - UNFRIENDLY and ENEMY native groups may block.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_ENDING_COMBAT,"ENDING COMBAT (Super Realm) - Combat ends, even if denizens are killed or armor is destroyed.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_PHASE_CHIT_ACTIVATION,"PHASE CHIT ACTIVATION (Super Realm) - Activating a phase chit in combat does not count as an action.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_REVEAL_TRAVELERS,"REVEAL TRAVELERS (Super Realm) - Travelers are revealed, when a character does a Search or Trade activity on the corresponding site or native leader.",false));
@@ -1252,6 +1253,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.ADV_CACHING,true);
 		optionPane.setOption(Constants.ADV_DROPPING,true);
 		optionPane.setOption(Constants.TE_WATCHFUL_NATIVES,true);
+		optionPane.setOption(Constants.OPT_SR_NATIVE_BLOCKING,true);
 		optionPane.setOption(Constants.TE_EXTENDED_TREACHERY,true);
 		optionPane.setOption(Constants.OPT_GRUDGES,true);
 		optionPane.setOption(Constants.TE_EXTENDED_GRUDGES,true);
@@ -1273,6 +1275,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.EXP_DEVELOPMENT_PLUS,true);
 		optionPane.setOption(Constants.EXP_MONSTER_DIE_PER_SET,true);
 		optionPane.setOption(Constants.EXP_BOUNTY_POINTS_FOR_DISCOVERIES,true);
+		optionPane.setOption(Constants.SR_COMPLETE_GOLD_SPECIAL_ONLY_ONCE,true);
 		optionPane.setOption(Constants.TE_KNIGHT_ADJUSTMENT,true);
 		optionPane.setOption(Constants.HOUSE1_CHIT_REMAIN_FACE_UP,true);
 		optionPane.setOption(Constants.HOUSE2_NO_SPELL_LIMIT,true);
@@ -1303,6 +1306,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.OPT_PARRY,true);
 		optionPane.setOption(Constants.OPT_SR_STEEL_AGAINST_MAGIC,true);
 		optionPane.setOption(Constants.OPT_SR_ENDING_COMBAT,true);
+		optionPane.setOption(Constants.OPT_SR_NATIVE_BLOCKING,true);
 		optionPane.setOption(Constants.OPT_SR_PHASE_CHIT_ACTIVATION,true);
 		optionPane.setOption(Constants.OPT_SR_REVEAL_TRAVELERS,true);
 		optionPane.setOption(Constants.SR_DEDUCT_VPS,true);

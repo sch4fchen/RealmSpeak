@@ -797,7 +797,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			ArrayList<String> se = getCharacter().getSpellExtras();
 			int seBefore = se==null?0:se.size();
 			spellMaster.energizePermanentSpells(getGameHandler().getMainFrame(),game);
-			ar.updateBlocked(); // check block status AFTER energizing spells - BUG 1624
+			ar.updateBlocked(hostPrefs); // check block status AFTER energizing spells - BUG 1624
 			getCharacterFrame().updateControls();
 			se = getCharacter().getSpellExtras();
 			int seAfter = se==null?0:se.size();

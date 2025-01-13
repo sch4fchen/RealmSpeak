@@ -758,6 +758,7 @@ public class Constants {
 	public static final String OPT_POWER_OF_THE_PIT_ATTACK = "OptPowerOfThePitAttack";
 	public static final String OPT_POWER_OF_THE_PIT_DEMON = "OptPowerOfThePitDemon";
 	public static final String OPT_NATIVES_FRIENDLY = "OptNativeFriendly";
+	public static final String OPT_SR_NATIVE_BLOCKING = "OptSrNativeBlocking";
 	public static final String OPT_SR_ENDING_COMBAT = "OptSrEndingCombat";
 	public static final String OPT_SR_PHASE_CHIT_ACTIVATION = "OptSrPhaseChitActivation";
 	public static final String OPT_SR_REVEAL_TRAVELERS = "OptSrRevealTravelers";

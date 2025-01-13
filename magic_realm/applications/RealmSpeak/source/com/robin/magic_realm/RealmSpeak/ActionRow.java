@@ -459,9 +459,57 @@ public class ActionRow {
 			character.addActionPerformedToday(action,getActionState(),result,roller);
 		}
 	}
-	public void updateBlocked() {
+	public void updateBlocked(HostPrefWrapper hostPrefs) {
 		if (!character.isBlocked() && RealmUtility.willBeBlocked(character,isFollowing,true)) {
 			character.setBlocked(true);
+		}
+		if (hostPrefs.hasPref(Constants.OPT_SR_NATIVE_BLOCKING)) {
+			ArrayList<RealmComponent> natives = RealmUtility.willBeBlockedByNatives(character,isFollowing);
+			
+			HashMap<String,Integer> groups = new HashMap<String,Integer>();
+			HashMap<String,RealmComponent> groupLeaders = new HashMap<String,RealmComponent>();
+			if (natives!=null && !natives.isEmpty()) {
+				for (RealmComponent denizen : natives) {
+					String group = RealmUtility.getRelationshipGroupName(denizen.getGameObject());
+					boolean unfriendlyOrEnemy = false;
+					if (!groups.containsKey(group)) {
+						boolean ravingNative = denizen.getGameObject().hasThisAttribute(Constants.ROVING_NATIVE);
+						int relationship = character.getRelationship(RealmUtility.getRelationshipBlockFor(denizen.getGameObject()),group,ravingNative);
+						if (relationship < RelationshipType.NEUTRAL) {
+							groups.put(group, relationship);
+							unfriendlyOrEnemy = true;
+						}
+					}
+					if (unfriendlyOrEnemy) {
+						if (!groupLeaders.containsKey(group)) {
+							groupLeaders.put(group, denizen);
+						}
+						else {
+							String rankStringLeader = (groupLeaders.get(group)).getGameObject().getThisAttribute("rank");
+							int rankLeader = "HQ".equals(rankStringLeader)?Integer.valueOf(0):Integer.valueOf(rankStringLeader);
+							String rankStringDenizen = denizen.getGameObject().getThisAttribute("rank");
+							int rankDenizen = "HQ".equals(rankStringDenizen)?Integer.valueOf(0):Integer.valueOf(rankStringDenizen);					
+							if (rankDenizen < rankLeader) {
+								groupLeaders.put(group, denizen);						
+							}
+						}
+					}
+				}
+			}
+			
+			if (!groups.isEmpty()) {
+				for (String group : groups.keySet()) {
+					realmTable = Meeting.createMeetingTable(
+							gameHandler.getMainFrame(),
+							character,
+							character.getCurrentLocation(),
+							groupLeaders.get(group),
+							null,
+							null,
+							groups.get(group));
+					handleTable();
+				}
+			}
 		}
 	}
 	public boolean willHavePhaseEndUpdates() {
