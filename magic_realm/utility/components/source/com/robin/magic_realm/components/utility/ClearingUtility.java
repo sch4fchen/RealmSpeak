@@ -117,7 +117,7 @@ public class ClearingUtility {
 	 * @return		The objects that were dumped
 	 */
 	public static ArrayList<GameObject> dumpTravelersToTile(GameObject tile,GameObject gameObject,int clearing) {
-		return ClearingUtility.dumpHoldToTile(tile,gameObject,clearing,null,true,true);
+		return ClearingUtility.dumpHoldToTile(tile,gameObject,clearing,null,false,true);
 	}
 	
 	/**
