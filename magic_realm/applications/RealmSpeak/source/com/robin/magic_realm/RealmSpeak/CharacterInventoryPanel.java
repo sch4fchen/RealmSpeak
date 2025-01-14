@@ -320,6 +320,7 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 			if (selInv.getRealmComponent().isGoldSpecial()) {
 				GoldSpecialChitComponent gs = (GoldSpecialChitComponent)selInv.getRealmComponent();
 				gs.expireEffect(getCharacter());
+				getCharacter().addFailedGoldSpecial(gs);
 				
 				QuestRequirementParams qp = new QuestRequirementParams();
 				qp.actionName = thing.getName();

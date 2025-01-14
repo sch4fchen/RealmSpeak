@@ -120,6 +120,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String COMPLETED_MISSIONS = "cMissions__";	// an AttributeList of completed missions
 	public static final String COMPLETED_CAMPAIGNS = "cCampaigns__";// an AttributeList of completed campaigns
 	public static final String COMPLETED_TASKS = "cTasks__";		// an AttributeList of completed tasks
+	public static final String FAILED_MISSIONS = "fMissions__";		// an AttributeList of failed missions
+	public static final String FAILED_CAMPAIGNS = "fCampaigns__";	// an AttributeList of failed campaigns
+	public static final String FAILED_TASKS = "fTasks__";			// an AttributeList of failed tasks
 	
 	public static final String STARTING_SPELLS = "sSpells__";		// The spells you start the game with
 	public static final String RECORDED_SPELLS = "rSpells__";		// Spells you aquire
@@ -1748,6 +1751,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 						// The chit should expire (undo its effect) and drop into the clearing.
 						GameClient.broadcastClient(getGameObject().getName(),"Failed to complete "+gs.getGameObject().getName()+" by the required time limit.");
 						gs.makePayment(this); // when it expires (instead of being completed) you have to pay a fine
+						addFailedGoldSpecial(gs);
 						gs.expireEffect(this);
 						drop = true;
 						QuestRequirementParams qp = new QuestRequirementParams();
@@ -3573,6 +3577,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return getList(COMPLETED_MISSIONS);
 	}
+	public boolean hasMissionFailed(String name) {
+		if (isMinion()) {
+			return getHiringCharacter().hasMissionFailed(name);
+		}
+		return hasListItem(FAILED_MISSIONS,name);
+	}
 	public void addCompletedCampaign(String name) {
 		if (hasCampaignCompleted(name)) {
 			return;
@@ -3595,6 +3605,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return getList(COMPLETED_CAMPAIGNS);
 	}
+	public boolean hasCampaignFailed(String name) {
+		if (isMinion()) {
+			return getHiringCharacter().hasCampaignFailed(name);
+		}
+		return hasListItem(FAILED_CAMPAIGNS,name);
+	}
 	public void addCompletedTask(String name) {
 		if (hasTaskCompleted(name)) {
 			return;
@@ -3616,6 +3632,27 @@ public class CharacterWrapper extends GameObjectWrapper {
 			return getHiringCharacter().getCompletedTasks();
 		}
 		return getList(COMPLETED_TASKS);
+	}
+	public boolean hasTaskFailed(String name) {
+		if (isMinion()) {
+			return getHiringCharacter().hasTaskFailed(name);
+		}
+		return hasListItem(FAILED_TASKS,name);
+	}
+	public void addFailedGoldSpecial(GoldSpecialChitComponent gs) {
+		if (isMinion()) {
+			getHiringCharacter().addFailedGoldSpecial(gs);
+			return;
+		}
+		if (gs.isMission()) {
+			addListItem(FAILED_MISSIONS,gs.getName());
+		}
+		if (gs.isCampaign()) {
+			addListItem(FAILED_CAMPAIGNS,gs.getName());
+		}
+		if (gs.isTask()) {
+			addListItem(FAILED_TASKS,gs.getName());
+		}
 	}
 	public void addHiddenPathDiscovery(String name) {
 		if (isMinion()) {

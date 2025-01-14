@@ -663,17 +663,17 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 						if (!gsrc.isComplete(getCharacter(),getCharacter().getCurrentLocation())) {
 							boolean alreadyCompleted = false;
 							if (hostPrefs.hasPref(Constants.SR_COMPLETE_GOLD_SPECIAL_ONLY_ONCE)) {
-								if (gsrc.isMission() && character.hasMissionCompleted(gsrc.getName())) {
+								if (gsrc.isMission() && (character.hasMissionCompleted(gsrc.getName()) || character.hasMissionFailed(gsrc.getName()))) {
 									alreadyCompleted = true;
-									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You cannot pick up a Mission which you have already completed.", "Already completed mission", JOptionPane.ERROR_MESSAGE);
+									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You cannot pick up a Mission which you have already completed (or failed).", "Already completed mission", JOptionPane.ERROR_MESSAGE);
 								}
-								if (gsrc.isCampaign() && character.hasCampaignCompleted(gsrc.getName())) {
+								if (gsrc.isCampaign() && character.hasCampaignCompleted(gsrc.getName()) || character.hasCampaignFailed(gsrc.getName())) {
 									alreadyCompleted = true;
-									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You cannot pick up a Campaign which you have already completed.", "Already completed campaign", JOptionPane.ERROR_MESSAGE);
+									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You cannot pick up a Campaign which you have already completed (or failed).", "Already completed campaign", JOptionPane.ERROR_MESSAGE);
 								}
-								if (gsrc.isTask() && character.hasTaskCompleted(gsrc.getName())) {
+								if (gsrc.isTask() && character.hasTaskCompleted(gsrc.getName()) || character.hasTaskFailed(gsrc.getName())) {
 									alreadyCompleted = true;
-									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You cannot pick up a Mission which you have already completed.", "Already completed task", JOptionPane.ERROR_MESSAGE);
+									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You cannot pick up a Task which you have already completed (or failed).", "Already completed task", JOptionPane.ERROR_MESSAGE);
 								}
 							}
 							
