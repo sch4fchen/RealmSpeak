@@ -61436,6 +61436,9 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="apprentice" />
+		<attributeList keyName="diemod">
+          <attributeVal N0="1d:readrunes:all" />
+        </attributeList>
       </AttributeBlock>
     </GameObject>
     <GameObject id="2348" name="Bargainer">
@@ -61450,6 +61453,9 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="bargainer" />
+		<attributeList keyName="diemod">
+          <attributeVal N0="1d:meeting,commerce:all" />
+        </attributeList>
       </AttributeBlock>
     </GameObject>
     <GameObject id="2349" name="Barkeep">
@@ -61464,6 +61470,9 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="barkeep" />
+		<attributeList keyName="diemod">
+          <attributeVal N0="1d:hire:all" />
+        </attributeList>
       </AttributeBlock>
     </GameObject>
     <GameObject id="2350" name="Cook">
@@ -61478,9 +61487,10 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="cook" />
+		<attribute rest_double="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2351" name="Miner">
+	<GameObject id="2351" name="Fairy">
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
@@ -61491,24 +61501,14 @@
         <attribute super_realm="" />
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
-        <attribute nomad="miner" />
+        <attribute nomad="fairy" />
+		<attributeList keyName="extra_actions">
+          <attributeVal N0="A" />
+        </attributeList>
+		<attribute fairy_sense="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2352" name="Initiate">
-      <AttributeBlock blockName="this">
-        <attribute print="" />
-        <attribute gold_special="" />
-        <attribute monster_die="6" />
-        <attribute ts_section="visitors" />
-        <attribute ts_color="gold" />
-        <attribute ts_sidebar="" />
-        <attribute super_realm="" />
-        <attribute chit_color="darkorange" />
-        <attribute text_color="white" />
-        <attribute nomad="initiate" />
-      </AttributeBlock>
-    </GameObject>
-    <GameObject id="2353" name="Hermit">
+	<GameObject id="2352" name="Hermit">
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
@@ -61522,7 +61522,7 @@
         <attribute nomad="hermit" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2354" name="Fairy">
+	<GameObject id="2353" name="Initiate">
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
@@ -61533,7 +61533,21 @@
         <attribute super_realm="" />
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
-        <attribute nomad="fairy" />
+        <attribute nomad="initiate" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2354" name="Miner">
+      <AttributeBlock blockName="this">
+        <attribute print="" />
+        <attribute gold_special="" />
+        <attribute monster_die="6" />
+        <attribute ts_section="visitors" />
+        <attribute ts_color="gold" />
+        <attribute ts_sidebar="" />
+        <attribute super_realm="" />
+        <attribute chit_color="darkorange" />
+        <attribute text_color="white" />
+        <attribute nomad="miner" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2355" name="Ranger">
