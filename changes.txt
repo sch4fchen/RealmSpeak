@@ -1,5 +1,5 @@
 ::ROADMAP::
-Super Realm: Nomads, Tasks: 4.8 (p.42 + p.51); show gs chits in inventory (but not activateable)
+Super Realm: Nomads, Tasks: p.53; show gs chits in inventory (but not activateable)
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Quests + Events (Global Events = optional rule) (incl. 4.5.4)
 Super Realm: Public quests on setup chart (+flag on quests if it can go on setup chart) (BGG variant: 2 quest cards per native)
@@ -79,9 +79,11 @@ Would be nice to make weapon abilities too:
 
 Version 1.2.0.0
 SUPER REALM:
-# Campaigns, Missions and Tasks can only be completed once by every character
 # Native Blocking Rule
-# Only one Campaign and one Task chit can be taken at the same time
+# Campaigns, Missions and Tasks can only be completed once by every character
+# Only one Campaign and one Task chit can be carried at the same time
+# Nomads: can only be picked up as Combat Action, are dropped at Sunset
+# Nomads: Apprentice, Bargainer, Barkeep, Cook
 
 Version 1.1.9.9
 SUPER REALM:

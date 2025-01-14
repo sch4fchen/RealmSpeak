@@ -1734,9 +1734,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 				((WeaponChitComponent)rc).setAlerted(false);
 			}
 			else if (rc.isGoldSpecial()) {
-				if (!getGameObject().hasThisAttribute("mission") && !getGameObject().hasThisAttribute("campaign")) continue;
-				boolean drop = false;
 				GoldSpecialChitComponent gs = (GoldSpecialChitComponent)rc;
+				if (!gs.isMission() && !gs.isCampaign()) continue;
+				boolean drop = false;
 				// Evaluate a satisfied condition
 				if (gs.isComplete(this,current)) {
 					gs.gainReward(this);
@@ -1764,7 +1764,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 						rc.getGameObject().setThisAttribute("daysLeft",daysLeft);
 					}
 				}
-				
+								
 				if (drop) {
 					if (current.isInClearing()) {
 						GameClient.broadcastClient("host",gs.getGameObject().getName()+" is dropped in "+current);
@@ -2249,7 +2249,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		boolean water = current!=null && current.isInClearing() && current.clearing.isWater();
 		
 		// search active treasures to determine if any items provide a free action
-		for (GameObject item:getEnhancingItems()) {
+		for (GameObject item:getEnhancingItemsAndNomads()) {
 			ArrayList<String> free = item.getThisAttributeList(Constants.EXTRA_ACTIONS);
 			if (free!=null) {
 				for (String freeAction : free) {
@@ -2763,6 +2763,25 @@ public class CharacterWrapper extends GameObjectWrapper {
 		items.addAll(getFollowingTravelers());
 		return items;
 	}
+	/**
+	 * Returns all activated treasures, nomads and travelers.
+	 */
+	public ArrayList<GameObject> getEnhancingItemsAndNomads() {
+		ArrayList<GameObject> items = getActivatedTreasureObjectsAndNomads();
+		items.addAll(getFollowingTravelers());
+		return items;
+	}
+	private ArrayList<GameObject> getActivatedTreasureObjectsAndNomads() {
+		ArrayList<GameObject> activatedTreasures = new ArrayList<>();
+		Collection<GameObject> inv = getInventory();
+		for (GameObject go : inv) {
+			RealmComponent rc = RealmComponent.getRealmComponent(go);
+			if (((rc.isActivated() && (rc.isTreasure() || rc.isMinorCharacter()))) || rc.isNomad()) {
+				activatedTreasures.add(go);
+			}
+		}
+		return activatedTreasures;
+	}
 	public ArrayList<GameObject> getActivatedTreasureObjects() {
 		ArrayList<GameObject> activatedTreasures = new ArrayList<>();
 		Collection<GameObject> inv = getInventory();
@@ -2791,6 +2810,17 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 		return travelers;
+	}
+	public ArrayList<GameObject> getNomads() {
+		ArrayList<GameObject> nomads = new ArrayList<>();
+		Collection<GameObject> inv = getInventory();
+		for (GameObject go : inv) {
+			RealmComponent rc = RealmComponent.getRealmComponent(go);
+			if (rc.isNomad()) {
+				nomads.add(go);
+			}
+		}
+		return nomads;
 	}
 	public void setQuestBonusVps(int val) {
 		getGameObject().setAttribute(CharacterWrapper.VICTORY_REQ_BLOCK,CharacterWrapper.QUEST_BONUS_VPS,val);
@@ -2962,7 +2992,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		boolean hasIt = false;
 		
 		// check activated treasures (there is only 1, but this code will support expansions)
-		for (GameObject item:getEnhancingItems()) {
+		for (GameObject item:getEnhancingItemsAndNomads()) {
 			if (item.hasThisAttribute(Constants.MAGIC_SIGHT)) {
 				hasIt = !hasIt; // toggle it
 			}
@@ -7056,7 +7086,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			advantage += 1;
 		}
 		// Check activated treasures for rest double
-		for (GameObject item:getEnhancingItems()) {
+		for (GameObject item:getEnhancingItemsAndNomads()) {
 			if (item.hasThisAttribute(Constants.REST_DOUBLE)) {
 				advantage += 1;
 				break;

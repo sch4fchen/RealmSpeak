@@ -69,7 +69,7 @@ public class DieRollBuilder {
 		if (character!=null) {
 			objectsToTest.add(character.getGameObject());
 			if (character.isCharacter()) {
-				objectsToTest.addAll(character.getEnhancingItems()); // active treasures and travelers
+				objectsToTest.addAll(character.getEnhancingItemsAndNomads()); // active treasures, nomads and travelers
 			}
 			TileLocation current = character.getCurrentLocation();
 			for (SpellWrapper spell:SpellUtility.getBewitchingSpells(character.getGameObject())) {

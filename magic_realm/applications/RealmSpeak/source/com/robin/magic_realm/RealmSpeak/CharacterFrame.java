@@ -629,7 +629,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		TileLocation tl = getCharacter().getCurrentLocation();
 		if (tl.isInClearing()) {
 			for (RealmComponent rc : tl.clearing.getClearingComponents()) {
-				if (rc.isGoldSpecial() && !rc.isVisitor()) {
+				if (rc.isGoldSpecial() && !rc.isVisitor() && !rc.isNomad()) {
 					list.add(rc);
 					chosenGS = rc;
 				}

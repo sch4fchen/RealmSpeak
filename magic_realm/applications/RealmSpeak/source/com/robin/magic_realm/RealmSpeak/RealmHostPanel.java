@@ -783,6 +783,13 @@ public class RealmHostPanel extends JPanel {
 						}
 					}
 				}
+				if ((RealmComponent.getRealmComponent(item)).isNomad()) {
+					TileLocation loc = character.getCurrentLocation();
+					if (loc.isInClearing()) {
+						GameClient.broadcastClient("host",item.getName()+" is dropped in "+loc);
+						loc.clearing.add(item,null);
+					}
+				}
 			}
 		}
 		if (RealmBattle.newClearingCombat) {
