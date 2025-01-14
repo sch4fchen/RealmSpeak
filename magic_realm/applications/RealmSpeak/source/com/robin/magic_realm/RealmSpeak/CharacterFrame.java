@@ -661,23 +661,43 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					// Verify the character can afford it
 					if (hostPrefs.hasPref(Constants.HOUSE2_CAMPAIGN_DEBT) || gsrc.meetsPointRequirement(getCharacter())) {
 						if (!gsrc.isComplete(getCharacter(),getCharacter().getCurrentLocation())) {
-							boolean alreadyCompleted = false;
+							boolean cannotPickUp = false;
 							if (hostPrefs.hasPref(Constants.SR_COMPLETE_GOLD_SPECIAL_ONLY_ONCE)) {
 								if (gsrc.isMission() && (character.hasMissionCompleted(gsrc.getName()) || character.hasMissionFailed(gsrc.getName()))) {
-									alreadyCompleted = true;
+									cannotPickUp = true;
 									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You cannot pick up a Mission which you have already completed (or failed).", "Already completed mission", JOptionPane.ERROR_MESSAGE);
 								}
 								if (gsrc.isCampaign() && character.hasCampaignCompleted(gsrc.getName()) || character.hasCampaignFailed(gsrc.getName())) {
-									alreadyCompleted = true;
+									cannotPickUp = true;
 									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You cannot pick up a Campaign which you have already completed (or failed).", "Already completed campaign", JOptionPane.ERROR_MESSAGE);
 								}
 								if (gsrc.isTask() && character.hasTaskCompleted(gsrc.getName()) || character.hasTaskFailed(gsrc.getName())) {
-									alreadyCompleted = true;
+									cannotPickUp = true;
 									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You cannot pick up a Task which you have already completed (or failed).", "Already completed task", JOptionPane.ERROR_MESSAGE);
 								}
 							}
+							if (hostPrefs.hasPref(Constants.SR_ONE_OF_EACH_GOLD_SPECIAL)) {
+								boolean hasCampaign = false;
+								boolean hasTask = false;
+								for (GameObject item : character.getInventory()) {
+									if (item.hasThisAttribute(Constants.CAMPAIGN)) {
+										hasCampaign = true;
+									}
+									if (item.hasThisAttribute(Constants.TASK)) {
+										hasTask = true;
+									}
+								}
+								if (gsrc.isCampaign() && hasCampaign) {
+									cannotPickUp = true;
+									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You cannot pick up a Campaign if you have already one.", "Campaign already active", JOptionPane.ERROR_MESSAGE);
+								}
+								if (gsrc.isTask() && hasTask) {
+									cannotPickUp = true;
+									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You cannot pick up a Task if you have already one.", "Task already active", JOptionPane.ERROR_MESSAGE);
+								}
+							}
 							
-							if (!alreadyCompleted) {
+							if (!cannotPickUp) {
 								// Setup campaign/mission (do this BEFORE picking up chit, so clearing count is accurate!)
 								gsrc.setup(getCharacter());
 		
