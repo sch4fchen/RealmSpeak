@@ -1,12 +1,11 @@
 ::ROADMAP::
-Super Realm: Nomads, Tasks: p.53; show gs chits in inventory (but not activateable)
+Super Realm: Nomads: p.53
+Super Realm: Tasks: p.53
+Super Realm: show gs chits in inventory (but not activateable)
+Super Realm: Adapt Commerce optional rules for new natives
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Quests + Events (Global Events = optional rule) (incl. 4.5.4)
 Super Realm: Public quests on setup chart (+flag on quests if it can go on setup chart) (BGG variant: 2 quest cards per native)
----Super Realms Rules---
-Super Realm: Adapt Commerce optional rules for new natives
-SUPER REALM: remaining RULES and LOGIC (rule changes compared to Magic Realm)
-Super Realm: Seasons + Weather 10.12 (p.117)
 ---Detail Rules for Super Realm Spells---
 Purple/Prism Anomalies can block/battle any individual transmorphized into mist.
 Enchant Weapon: any individual wielding the target weapon can target and attack individuals transformed into mist.
