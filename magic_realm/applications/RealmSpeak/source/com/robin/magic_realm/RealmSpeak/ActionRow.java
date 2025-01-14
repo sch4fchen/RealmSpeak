@@ -472,13 +472,13 @@ public class ActionRow {
 				for (RealmComponent denizen : natives) {
 					String group = RealmUtility.getRelationshipGroupName(denizen.getGameObject());
 					boolean unfriendlyOrEnemy = false;
-					if (!groups.containsKey(group)) {
-						boolean ravingNative = denizen.getGameObject().hasThisAttribute(Constants.ROVING_NATIVE);
-						int relationship = character.getRelationship(RealmUtility.getRelationshipBlockFor(denizen.getGameObject()),group,ravingNative);
-						if (relationship < RelationshipType.NEUTRAL) {
-							groups.put(group, relationship);
-							unfriendlyOrEnemy = true;
-						}
+					boolean ravingNative = denizen.getGameObject().hasThisAttribute(Constants.ROVING_NATIVE);
+					int relationship = character.getRelationship(RealmUtility.getRelationshipBlockFor(denizen.getGameObject()),group,ravingNative);
+					if (relationship < RelationshipType.NEUTRAL) {
+						unfriendlyOrEnemy = true;
+					}
+					if (!groups.containsKey(group) && unfriendlyOrEnemy) {
+						groups.put(group, relationship);
 					}
 					if (unfriendlyOrEnemy) {
 						if (!groupLeaders.containsKey(group)) {

@@ -984,12 +984,12 @@ public class RealmUtility {
 				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 				for (RealmComponent rc : components) {
 					if ((monsters && rc instanceof MonsterChitComponent) || (natives && rc instanceof NativeChitComponent)) {
-						MonsterChitComponent monster = (MonsterChitComponent)rc;
 						// don't block if monster has an owner (until I can get to that piece of code!)
 						if (rc.getOwner()==null) {
 							// Monsters with Melt-into-Mist affecting them don't block
 							if (!rc.isMistLike()) {
 								if (rc.isMonster()) {
+									MonsterChitComponent monster = (MonsterChitComponent)rc;
 									// pacified and small monsters don't block
 									if (!monster.isSmall() || !hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS)) {
 										if (!rc.isPacifiedBy(character)) {
