@@ -3850,14 +3850,30 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 */
 	public boolean foundAllHiddenEnemies() {
 		String foundEnemyList = getString(FOUND_HIDDEN_ENEMIES);
-		return (foundEnemyList!=null && foundEnemyList.length()==0) || this.getGameObject().hasThisAttribute(Constants.TRACKERS_SENSE);
+		if ((foundEnemyList!=null && foundEnemyList.length()==0) || this.getGameObject().hasThisAttribute(Constants.TRACKERS_SENSE)) {
+			return true;
+		}
+		for (GameObject nomad : getNomads()) {
+			if (nomad.hasThisAttribute(Constants.FAIRY_SENSE)) {
+				return true;
+			}
+		}
+		return false;
 	}
 	/**
 	 * @return	true if you found ANY hidden enemies
 	 */
 	public boolean foundHiddenEnemies() {
 		String foundEnemyList = getString(FOUND_HIDDEN_ENEMIES);
-		return foundEnemyList!=null || this.getGameObject().hasThisAttribute(Constants.TRACKERS_SENSE);
+		if (foundEnemyList!=null || this.getGameObject().hasThisAttribute(Constants.TRACKERS_SENSE)) {
+			return true;
+		}
+		for (GameObject nomad : getNomads()) {
+			if (nomad.hasThisAttribute(Constants.FAIRY_SENSE)) {
+				return true;
+			}
+		}
+		return false;
 	}
 	public ArrayList<String> getFoundEnemies() {
 		if (foundAllHiddenEnemies()) {
@@ -3883,6 +3899,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (foundEnemyList!=null) {
 			if (foundEnemyList.length()==0 || foundEnemyList.indexOf(enemy.getName())>=0) {
 				// an empty list, or one that contains the name of the enemy is a true result
+				return true;
+			}
+		}
+		for (GameObject nomad : getNomads()) {
+			if (nomad.hasThisAttribute(Constants.FAIRY_SENSE)) {
 				return true;
 			}
 		}

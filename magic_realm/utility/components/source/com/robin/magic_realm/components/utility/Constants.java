@@ -708,6 +708,9 @@ public class Constants {
 	public static final String RAISE_DEAD = "raise_dead";
 	public static final String CANCEL_RECORDED_ACTION = "change_recorded_action";
 	
+	// Nomads
+	public static final String FAIRY_SENSE = "fairy_sense";
+	
 	// Host Prefs
 	
 	// Advanced Rules
