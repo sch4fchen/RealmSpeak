@@ -143,6 +143,7 @@ public class CombatFrame extends JFrame {
 	private JButton raiseDeadButton;
 	private JButton activateInactivateButton;
 	private JButton pickupItemButton;
+	private JButton hireNomadButton;
 	private JButton dropBelongingsButton;
 	private JButton abandonBelongingsButton;
 	private JButton suggestButton;
@@ -313,6 +314,7 @@ public class CombatFrame extends JFrame {
 		alertWeaponButton = null;
 		activateInactivateButton = null;
 		pickupItemButton = null;
+		hireNomadButton = null;
 		dropBelongingsButton = null;
 		abandonBelongingsButton = null;
 		suggestButton = null;
@@ -759,6 +761,17 @@ public class CombatFrame extends JFrame {
 		}
 		return pickupItemButton;
 	}
+	private JButton getHireNomadButton() {
+		if (hireNomadButton==null) {
+			hireNomadButton = new JButton("Hire Nomad");
+			hireNomadButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					hireNomad();
+				}
+			});
+		}
+		return hireNomadButton;
+	}
 	private JButton getDropBelongingsButton() {
 		if (dropBelongingsButton==null) {
 			dropBelongingsButton = new JButton("Drop Belongings");
@@ -1028,6 +1041,10 @@ public class CombatFrame extends JFrame {
 					}
 					list.add(getAbandonBelongingsButton());
 
+					if (hostPrefs.usesSuperRealm()) {
+						list.add(getHireNomadButton());
+					}
+					
 					if (activeCharacterIsHere) {
 						list.add(getUseColorChitButton());
 					}
@@ -1499,6 +1516,9 @@ public class CombatFrame extends JFrame {
 			}
 			if (abandonBelongingsButton!=null) {
 				abandonBelongingsButton.setEnabled(!changes && activeCharacterIsHere && !combat.getHasCharged());
+			}
+			if (hireNomadButton!=null) {
+				hireNomadButton.setEnabled(!changes && activeCharacterIsHere && !combat.getHasCharged());
 			}
 			if (selectTargetFromUnassignedButton!=null) {
 				selectTargetFromUnassignedButton.setEnabled(!targetsSelected && activeCharacterIsHere);
@@ -3754,6 +3774,34 @@ public class CombatFrame extends JFrame {
 			}
 			else {
 				JOptionPane.showMessageDialog(this,"There are no items to pick up!","Pickup Item",JOptionPane.WARNING_MESSAGE);
+			}
+		}
+	}
+	private void hireNomad() {
+		TileLocation current = activeCharacter.getCurrentLocation();
+		if (current.isInClearing()) {
+			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Choose an nomad to hire:",true);
+			ArrayList<RealmComponent> list = current.clearing.getClearingComponents(false);
+			for(RealmComponent item:list) {
+				if (item.isNomad()) {
+					chooser.addRealmComponent(item);
+				}
+			}
+			if (chooser.hasOptions()) {
+				chooser.setVisible(true);
+				String option = chooser.getSelectedText();
+				if (option!=null) {
+					RealmComponent rc = chooser.getFirstSelectedComponent();
+										
+					Loot.addItemToCharacter(this,combatListener,activeCharacter,rc.getGameObject(),hostPrefs);
+					broadcastMessage(activeCharacter.getGameObject().getName(),"Hires the "+rc.getGameObject().getName());
+					
+					changes = true;
+					updateControls();
+				}
+			}
+			else {
+				JOptionPane.showMessageDialog(this,"There are no nomads to hire!","Hire Nomad",JOptionPane.WARNING_MESSAGE);
 			}
 		}
 	}

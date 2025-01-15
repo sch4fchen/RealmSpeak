@@ -1059,6 +1059,13 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		// Flip chits, and summon monsters/natives
 		if (getsTurn && current!=null && !getCharacter().isMinion() && !getCharacter().isSleep()) {
 			// UPDATE - According to RH, it doesn't matter whether or not you completed actions: if you fall asleep, you simply aren't there until Sunset
+			if (current!=null && current.clearing!=null) {
+				for (RealmComponent chit : current.clearing.getClearingComponents()) {
+					if (chit.isGoldSpecial()) {
+						((GoldSpecialChitComponent)chit).drawFrontside();
+					}
+				}
+			}
 			
 			if (!getCharacter().isHidden() || !hostPrefs.hasPref(Constants.OPT_QUIET_MONSTERS)) {
 				ArrayList<StateChitComponent> flipped = current.tile.setChitsFaceUp();

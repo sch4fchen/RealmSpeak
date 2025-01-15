@@ -26,24 +26,15 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 
 	protected GoldSpecialChitComponent(GameObject obj) {
 		super(obj);
-		String color = obj.getThisAttribute("chit_color");
-		if (obj.hasThisAttribute(Constants.DRAW_BACKSIDE)) {
-			lightColor = MagicRealmColor.LIGHTBLUE;
-			darkColor = MagicRealmColor.LIGHTBLUE;
-		}
-		else if (color!=null) {
-			lightColor = MagicRealmColor.getColor(color);
-			darkColor = MagicRealmColor.getColor(color);
-		} else {
-			lightColor = MagicRealmColor.GOLD;
-			darkColor = MagicRealmColor.GOLD;
-		}
 	}
 	public String getLightSideStat() {
 		return "this";
 	}
 	public String getDarkSideStat() {
 		return "this";
+	}
+	public void drawFrontside() {
+		gameObject.removeThisAttribute(Constants.DRAW_BACKSIDE);
 	}
 
 	public int getChitSize() {
@@ -58,7 +49,21 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 		GameObject other = getGameObject().getGameData().getGameObject(Long.valueOf(pairId));
 		return (GoldSpecialChitComponent)RealmComponent.getRealmComponent(other);
 	}
+	
 	public void paintComponent(Graphics g) {
+		String chitColor = gameObject.getThisAttribute("chit_color");
+		if (gameObject.hasThisAttribute(Constants.DRAW_BACKSIDE)) {
+			lightColor = MagicRealmColor.LIGHTBLUE;
+			darkColor = MagicRealmColor.LIGHTBLUE;
+		}
+		else if (chitColor!=null) {
+			lightColor = MagicRealmColor.getColor(chitColor);
+			darkColor = MagicRealmColor.getColor(chitColor);
+		} else {
+			lightColor = MagicRealmColor.GOLD;
+			darkColor = MagicRealmColor.GOLD;
+		}
+		
 		super.paintComponent(g);
 		
 		TextType tt;
