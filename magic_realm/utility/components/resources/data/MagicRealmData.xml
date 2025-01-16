@@ -61534,6 +61534,9 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="initiate" />
+		<attributeList keyName="extra_actions">
+          <attributeVal N0="SP" />
+        </attributeList>
       </AttributeBlock>
     </GameObject>
     <GameObject id="2354" name="Miner">
@@ -61548,6 +61551,7 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="miner" />
+		<attribute extra_cave_phase="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2355" name="Ranger">
@@ -61562,6 +61566,9 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="ranger" />
+		<attributeList keyName="diemod">
+          <attributeVal N0="1d:hide:all" />
+        </attributeList>
       </AttributeBlock>
     </GameObject>
     <GameObject id="2356" name="Shadow">
@@ -61604,6 +61611,9 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="tracker" />
+		<attributeList keyName="extra_actions">
+          <attributeVal N0="S" />
+        </attributeList>
       </AttributeBlock>
     </GameObject>
     <GameObject id="2359" name="Journey">

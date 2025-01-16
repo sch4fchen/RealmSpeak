@@ -1,5 +1,5 @@
 ::ROADMAP::
-Super Realm: Nomads: p.53
+Super Realm: Nomads: Hermit, Shadow, Strongman
 Super Realm: Tasks: p.53
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Quests + Events (Global Events = optional rule) (incl. 4.5.4)
@@ -80,7 +80,7 @@ SUPER REALM:
 # Campaigns, Missions and Tasks can only be completed once by every character
 # Only one Campaign and one Task chit can be carried at the same time
 # Nomads: can only be picked up as Combat Action and are dropped at Sunset
-# Nomads: Apprentice, Bargainer, Barkeep, Cook, Fairy
+# Nomads: Apprentice, Bargainer, Barkeep, Cook, Fairy, Miner, Ranger, Tracker
 # Reveal Traveler chits at the end of turn
 
 Version 1.1.9.9
