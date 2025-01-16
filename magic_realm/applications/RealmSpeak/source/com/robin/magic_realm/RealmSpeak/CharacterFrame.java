@@ -629,7 +629,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		TileLocation tl = getCharacter().getCurrentLocation();
 		if (tl.isInClearing()) {
 			for (RealmComponent rc : tl.clearing.getClearingComponents()) {
-				if (rc.isGoldSpecial() && !rc.isVisitor() && !rc.isNomad()) {
+				if (rc.isGoldSpecial() && !rc.isVisitor() && !rc.isNomad() && !rc.getGameObject().hasThisAttribute(Constants.DRAW_BACKSIDE)) {
 					list.add(rc);
 					chosenGS = rc;
 				}
@@ -663,15 +663,15 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 						if (!gsrc.isComplete(getCharacter(),getCharacter().getCurrentLocation())) {
 							boolean cannotPickUp = false;
 							if (hostPrefs.hasPref(Constants.SR_COMPLETE_GOLD_SPECIAL_ONLY_ONCE)) {
-								if (gsrc.isMission() && (character.hasMissionCompleted(gsrc.getName()) || character.hasMissionFailed(gsrc.getName()))) {
+								if (gsrc.isMission() && (character.hasMissionCompleted(gsrc.toString()) || character.hasMissionFailed(gsrc.toString()))) {
 									cannotPickUp = true;
 									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You cannot pick up a Mission which you have already completed (or failed).", "Already completed mission", JOptionPane.ERROR_MESSAGE);
 								}
-								if (gsrc.isCampaign() && character.hasCampaignCompleted(gsrc.getName()) || character.hasCampaignFailed(gsrc.getName())) {
+								if (gsrc.isCampaign() && character.hasCampaignCompleted(gsrc.toString()) || character.hasCampaignFailed(gsrc.toString())) {
 									cannotPickUp = true;
 									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You cannot pick up a Campaign which you have already completed (or failed).", "Already completed campaign", JOptionPane.ERROR_MESSAGE);
 								}
-								if (gsrc.isTask() && character.hasTaskCompleted(gsrc.getName()) || character.hasTaskFailed(gsrc.getName())) {
+								if (gsrc.isTask() && character.hasTaskCompleted(gsrc.toString()) || character.hasTaskFailed(gsrc.toString())) {
 									cannotPickUp = true;
 									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You cannot pick up a Task which you have already completed (or failed).", "Already completed task", JOptionPane.ERROR_MESSAGE);
 								}

@@ -555,26 +555,28 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 			return total==0;
 		}
 		else if (getGameObject().hasThisAttribute(Constants.TASK)) {
-			ArrayList<String> requiredTreasureLocations = getGameObject().getThisAttributeList(Constants.TASK);
-			ArrayList<String> visitedTreasureLocations;
+			List<String> requiredTreasureLocations = getGameObject().getThisAttributeList(Constants.TASK);
 			if (current.isInClearing()) {
-				ArrayList<RealmComponent> treasureLocations = current.clearing.getTreasureLocations();
+				Collection<RealmComponent> treasureLocations = current.clearing.getTreasureLocations();
+				Collection<String> visitedTreasureLocations;
 				if (treasureLocations != null && !treasureLocations.isEmpty()) {
 					visitedTreasureLocations = character.getGameObject().getThisAttributeList(Constants.TASK_VISITED_SITES);
 					for (RealmComponent tl : treasureLocations) {
-						if (requiredTreasureLocations.contains(tl.getName().toLowerCase()) && !visitedTreasureLocations.contains(tl.getName().toLowerCase()))
-							character.getGameObject().addThisAttributeListItem(Constants.TASK_VISITED_SITES, tl.getName().toLowerCase());
+						if (requiredTreasureLocations.contains(tl.toString().toLowerCase()) && (visitedTreasureLocations==null || !visitedTreasureLocations.contains(tl.toString().toLowerCase())))
+							character.getGameObject().addThisAttributeListItem(Constants.TASK_VISITED_SITES, tl.toString().toLowerCase());
 					}
 				}
 			}
 			
-			visitedTreasureLocations = character.getGameObject().getThisAttributeList(Constants.TASK_VISITED_SITES);
-			for (String requiredTl : requiredTreasureLocations) {
-				if (!visitedTreasureLocations.contains(requiredTl.toLowerCase())) {
-					return false;
+			Collection<String> visitedTreasureLocations = character.getGameObject().getThisAttributeList(Constants.TASK_VISITED_SITES);
+			if (visitedTreasureLocations!=null && !visitedTreasureLocations.isEmpty()) {
+				for (String requiredTl : requiredTreasureLocations) {
+					if (!visitedTreasureLocations.contains(requiredTl.toLowerCase())) {
+						return false;
+					}
 				}
+				return true;
 			}
-			return true;
 		}
 		
 		return false;

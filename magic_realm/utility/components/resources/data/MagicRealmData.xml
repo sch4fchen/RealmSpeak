@@ -61584,7 +61584,7 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="shadow" />
-		<attribute magic_sight />
+		<attribute magic_sight="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2357" name="Strongman">
