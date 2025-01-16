@@ -61597,6 +61597,7 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="strongman" />
+		<attribute carrier="T" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2358" name="Tracker">
