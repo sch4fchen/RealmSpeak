@@ -61520,6 +61520,7 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="hermit" />
+		<attribute mountain_move_adj="" />
       </AttributeBlock>
     </GameObject>
 	<GameObject id="2353" name="Initiate">
