@@ -80,7 +80,7 @@ SUPER REALM:
 # Campaigns, Missions and Tasks can only be completed once by every character
 # Only one Campaign and one Task chit can be carried at the same time
 # Nomads: can only be picked up as Combat Action and are dropped at Sunset
-# Nomads: Apprentice, Bargainer, Barkeep, Cook, Fairy, Miner, Ranger, Tracker
+# Nomads: Apprentice, Bargainer, Barkeep, Cook, Fairy, Miner, Ranger, Strongman, Tracker
 # Reveal Traveler chits at the end of turn
 
 Version 1.1.9.9

@@ -710,6 +710,7 @@ public class Constants {
 	
 	// Nomads
 	public static final String FAIRY_SENSE = "fairy_sense";
+	public static final String CARRIER = "carrier";
 	
 	// Host Prefs
 	

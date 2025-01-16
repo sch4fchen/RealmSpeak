@@ -883,6 +883,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (hirelingMoveStrength.strongerThan(strongest)) {
 			strongest = hirelingMoveStrength;
 		}
+		
+		// Nomads
+		for (GameObject go : getNomads()) {
+			Strength nomadStrength = new Strength(go.getThisAttribute(Constants.CARRIER));
+			if (nomadStrength.strongerThan(strongest)) {
+				strongest = nomadStrength;
+			}
+		}
 			
 		return strongest;
 	}
@@ -981,9 +989,15 @@ public class CharacterWrapper extends GameObjectWrapper {
 				else if (rc.isHorse()) {
 					itemStrength = new Strength(item.getAttribute("trot","strength"));
 				}
+				else if (rc.isNomad() && item.hasThisAttribute(Constants.CARRIER)) {
+					itemStrength = new Strength(item.getThisAttribute(Constants.CARRIER));
+				}
 			}
 			if (includeConvoyStrength && rc.isHorse()) { // include pack horses when doing things like opening VAULTs
 				itemStrength = new Strength(item.getAttribute("trot","strength"));
+			}
+			if (includeConvoyStrength && rc.isNomad()) {
+				itemStrength = new Strength(item.getThisAttribute(Constants.CARRIER));
 			}
 			if (itemStrength!=null && itemStrength.strongerThan(best)) {
 				best = itemStrength;
