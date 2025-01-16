@@ -61630,6 +61630,12 @@
         <attribute text_color="white" />
         <attribute task="journey" />
         <attribute fame_cost="5" />
+		<attributeList keyName="task">
+          <attributeVal N0="hoard" />
+		  <attributeVal N1="statue" />
+		  <attributeVal N2="tower" />
+		  <attributeVal N3="tomb" />
+        </attributeList>
       </AttributeBlock>
     </GameObject>
     <GameObject id="2363" name="Odyssey">
@@ -61643,6 +61649,12 @@
         <attribute text_color="white" />
         <attribute task="odyssey" />
         <attribute fame_cost="5" />
+		<attributeList keyName="task">
+          <attributeVal N0="pool" />
+		  <attributeVal N1="den" />
+		  <attributeVal N2="garden" />
+		  <attributeVal N3="vault" />
+        </attributeList>
       </AttributeBlock>
     </GameObject>
     <GameObject id="2364" name="Seek">
@@ -61656,6 +61668,12 @@
         <attribute text_color="white" />
         <attribute task="seek" />
         <attribute fame_cost="5" />
+		<attributeList keyName="task">
+          <attributeVal N0="spire" />
+		  <attributeVal N1="altar" />
+		  <attributeVal N2="cairns" />
+		  <attributeVal N3="maze" />
+        </attributeList>
       </AttributeBlock>
     </GameObject>
     <GameObject id="2365" name="Explore">
@@ -61669,6 +61687,12 @@
         <attribute text_color="white" />
         <attribute task="explore" />
         <attribute fame_cost="5" />
+		<attributeList keyName="task">
+          <attributeVal N0="pit" />
+		  <attributeVal N1="temple" />
+		  <attributeVal N2="shrine" />
+		  <attributeVal N3="lair" />
+        </attributeList>
       </AttributeBlock>
     </GameObject>
   </objects>

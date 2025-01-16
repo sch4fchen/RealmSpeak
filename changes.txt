@@ -1,5 +1,4 @@
 ::ROADMAP::
-Super Realm: Tasks: p.53
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Quests + Events (Global Events = optional rule) (incl. 4.5.4)
 Super Realm: Public quests on setup chart (+flag on quests if it can go on setup chart) (BGG variant: 2 quest cards per native)
@@ -76,11 +75,12 @@ Would be nice to make weapon abilities too:
 Version 1.2.0.0
 SUPER REALM:
 # Native Blocking Rule
+# Nomads: Apprentice, Bargainer, Barkeep, Cook, Fairy, Hermit, Miner, Ranger, Shadow, Strongman, Tracker
+# Tasks
+# Reveal Traveler chits at the end of turn
 # Campaigns, Missions and Tasks can only be completed once by every character
 # Only one Campaign and one Task chit can be carried at the same time
 # Nomads: can only be picked up as Combat Action and are dropped at Sunset
-# Nomads: Apprentice, Bargainer, Barkeep, Cook, Fairy, Hermit, Miner, Ranger, Shadow, Strongman, Tracker
-# Reveal Traveler chits at the end of turn
 
 Version 1.1.9.9
 SUPER REALM:

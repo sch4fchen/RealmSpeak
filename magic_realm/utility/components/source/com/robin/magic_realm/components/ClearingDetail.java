@@ -435,6 +435,16 @@ public class ClearingDetail {
 		}
 		return c;
 	}
+	public ArrayList<RealmComponent> getTreasureLocations() {
+		ArrayList<RealmComponent> c = getParent().getRealmComponentsAt(getNum());
+		ArrayList<RealmComponent> sites = new ArrayList<>();
+		for (RealmComponent rc : c) {
+			if (rc.isTreasureLocation() && !rc.isCacheChit()) {
+				sites.add(rc);
+			}
+		}
+		return sites;
+	}
 	/**
 	 * Returns a complete collection of all RealmComponents in the clearing, including those that are held by
 	 * other objects.  In fact, this will get all objects, regardless of depth.
