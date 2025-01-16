@@ -766,6 +766,7 @@ public class Constants {
 	public static final String OPT_SR_ENDING_COMBAT = "OptSrEndingCombat";
 	public static final String OPT_SR_PHASE_CHIT_ACTIVATION = "OptSrPhaseChitActivation";
 	public static final String OPT_SR_REVEAL_TRAVELERS = "OptSrRevealTravelers";
+	public static final String OPT_SR_MAGIC_SIGHT_OPTIONAL = "OptSrMagicSightNotSelfCancelling";
 	
 	// Revised Rules
 	public static final String REV_MISSILE = "RevisedMissileTable";

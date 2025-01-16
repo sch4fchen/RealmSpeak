@@ -1067,16 +1067,25 @@ public class ActionRow {
 		RealmTable searchTable = null;
 		TileLocation current = character.getCurrentLocation(); // shouldn't be able to do a search if not in a clearing!
 		
-		boolean magicSight = character.usesMagicSight(); // magic sight limits what character can do
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
+		boolean canUseMagicSight = false;
+		boolean mustUseMagicSight = false;
+		boolean optionalRule = hostPrefs.hasPref(Constants.OPT_SR_MAGIC_SIGHT_OPTIONAL);
+		if (optionalRule) {
+			canUseMagicSight = character.canUseMagicSight();
+		}
+		mustUseMagicSight = character.mustUseMagicSight(optionalRule); // magic sight limits what character can do
 		
 		// choose from Peer, Locate, Loot, ReadingRunes
 		// Should be able to cancel to stop a playAll
 		ButtonOptionDialog chooseSearch = new ButtonOptionDialog(gameHandler.getMainFrame(), null, "Search:", "", true);
-		if (magicSight) {
+		if (mustUseMagicSight && !canUseMagicSight) {
 			addTableToChooser(chooseSearch,RealmTable.magicSight(gameHandler.getMainFrame()));
 		}
 		else {
-			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
+			if (canUseMagicSight) {
+				addTableToChooser(chooseSearch,RealmTable.magicSight(gameHandler.getMainFrame()));
+			}
 			if (hostPrefs.hasPref(Constants.FE_SEARCH_TABLES)) {
 				addTableToChooser(chooseSearch,RealmTable.search1ed(gameHandler.getMainFrame(),null));
 			}
@@ -1128,14 +1137,14 @@ public class ActionRow {
 						// can't loot sites that still need to be opened (crypt, vault)
 						if (!rc.getGameObject().hasThisAttribute(Constants.NEEDS_OPEN)) {
 							Loot loot = (Loot)RealmTable.loot(gameHandler.getMainFrame(),character,rc.getGameObject(),gameHandler.getUpdateFrameListener());
-							if ((!magicSight || (loot instanceof TableLoot)) && character.canLoot(rc)) {
+							if (((!mustUseMagicSight || canUseMagicSight) || (loot instanceof TableLoot)) && character.canLoot(rc)) {
 								addTableToChooser(chooseSearch,loot);
 							}
 						}
 					}
-					
+										
 					// any spells for Read Runes?
-					if (!magicSight && character.isCharacter() && SpellUtility.getSpellCount(rc.getGameObject(),null,true)>0) {
+					if ((!mustUseMagicSight || canUseMagicSight) && character.isCharacter() && SpellUtility.getSpellCount(rc.getGameObject(),null,true)>0) {
 						addTableToChooser(chooseSearch,RealmTable.readRunes(gameHandler.getMainFrame(),rc.getGameObject()));
 					}
 				}
@@ -1156,13 +1165,13 @@ public class ActionRow {
 			chooseSearch.setSelectionObjectIcon(message,group);
 		}
 		
-		if (!magicSight && ClearingUtility.getAbandonedItemCount(current)>0) {
+		if ((!mustUseMagicSight || canUseMagicSight) && ClearingUtility.getAbandonedItemCount(current)>0) {
 			// don't need hint icons for clearing loots...
 			chooseSearch.addSelectionObject(RealmTable.loot(gameHandler.getMainFrame(),character,current,gameHandler.getUpdateFrameListener()));
 		}
 		
 		// check player inventory
-		if (!magicSight) {
+		if ((!mustUseMagicSight || canUseMagicSight)) {
 			for (GameObject item:character.getEnhancingItems()) {
 				if (SpellUtility.getSpellCount(item,null,true)>0) {
 					addTableToChooser(chooseSearch,RealmTable.readRunes(gameHandler.getMainFrame(),item));

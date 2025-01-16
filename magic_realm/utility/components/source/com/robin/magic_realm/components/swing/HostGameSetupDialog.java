@@ -1077,6 +1077,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_ENDING_COMBAT,"ENDING COMBAT (Super Realm) - Combat ends, even if denizens are killed or armor is destroyed.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_PHASE_CHIT_ACTIVATION,"PHASE CHIT ACTIVATION (Super Realm) - Activating a phase chit in combat does not count as an action.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_REVEAL_TRAVELERS,"REVEAL TRAVELERS (Super Realm) - Travelers are revealed, when a character does a Search or Trade activity on the corresponding site or native leader.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_MAGIC_SIGHT_OPTIONAL,"MAGIC SIGHT NOT SELF-CANCELLING (Super Realm) - Maigc Sight effect of abilities, spells, treasures and nomads is not self-cancelling and usage of Phantom Glass and Shadow are optional.",false));
 		
 		newOptionPane.setTabHtmlDescription(EXPANDING_REALM_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Expanding the Realm</font></body></html>");
 		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_CUSTOM_CHARS,"CUSTOM CHARACTERS - Allow players to choose from custom characters.",true,null,requiresDevelopmentRules));
@@ -1277,6 +1278,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.EXP_MONSTER_DIE_PER_SET,true);
 		optionPane.setOption(Constants.EXP_BOUNTY_POINTS_FOR_DISCOVERIES,true);
 		optionPane.setOption(Constants.SR_COMPLETE_GOLD_SPECIAL_ONLY_ONCE,true);
+		optionPane.setOption(Constants.OPT_SR_MAGIC_SIGHT_OPTIONAL,true);
 		optionPane.setOption(Constants.TE_KNIGHT_ADJUSTMENT,true);
 		optionPane.setOption(Constants.HOUSE1_CHIT_REMAIN_FACE_UP,true);
 		optionPane.setOption(Constants.HOUSE2_NO_SPELL_LIMIT,true);
@@ -1310,6 +1312,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.OPT_SR_NATIVE_BLOCKING,true);
 		optionPane.setOption(Constants.OPT_SR_PHASE_CHIT_ACTIVATION,true);
 		optionPane.setOption(Constants.OPT_SR_REVEAL_TRAVELERS,true);
+		optionPane.setOption(Constants.OPT_SR_MAGIC_SIGHT_OPTIONAL,true);
 		optionPane.setOption(Constants.SR_DEDUCT_VPS,true);
 		optionPane.setOption(Constants.SR_COMPLETE_GOLD_SPECIAL_ONLY_ONCE,true);
 		optionPane.setOption(Constants.SR_ONE_OF_EACH_GOLD_SPECIAL,true);

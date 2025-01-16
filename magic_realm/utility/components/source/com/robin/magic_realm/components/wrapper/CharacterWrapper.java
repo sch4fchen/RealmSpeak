@@ -2996,7 +2996,16 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return evps;
 	}
 	
-	public boolean usesMagicSight() {
+	public boolean canUseMagicSight() {	
+		for (GameObject item:getEnhancingItemsAndNomads()) {
+			if (item.hasThisAttribute(Constants.MAGIC_SIGHT)) {
+				return true;
+			}
+		}		
+		return false;
+	}
+	
+	public boolean mustUseMagicSight(boolean optionalRule) {
 		/*
 		 * See rule 43.6 - only ways to get magic sight:  activated Phantom Glass (treasure), spell (world fades), or Witch King
 		 * 
@@ -3015,11 +3024,17 @@ public class CharacterWrapper extends GameObjectWrapper {
 		// check character
 		if (getGameObject().hasThisAttribute(Constants.MAGIC_SIGHT)) {
 			hasIt = !hasIt; // toggle it
+			if (optionalRule) {
+				return true;
+			}
 		}
 		
 		// TODO check active spells for magic_sight
 		if (affectedByKey(Constants.COMBAT_HIDE)) {
 			hasIt = !hasIt; // toggle it
+			if (optionalRule) {
+				return true;
+			}
 		}
 		
 		return hasIt;
