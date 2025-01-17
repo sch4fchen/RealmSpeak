@@ -3691,7 +3691,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return hasListItem(COMPLETED_TASKS,name);
 	}
 	public GameObject getCompletedActiveTask() {
-		for (GameObject item : getActiveInventory()) {
+		for (GameObject item : getInventory()) {
 			if (item.hasThisAttribute(Constants.TASK) && item.hasThisAttribute(Constants.TASK_COMPLETED)) {
 				return item;
 			}

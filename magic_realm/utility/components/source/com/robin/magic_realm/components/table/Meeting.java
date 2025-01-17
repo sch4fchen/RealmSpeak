@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import com.robin.game.objects.GameObject;
+import com.robin.game.server.GameClient;
 import com.robin.general.util.StringUtilities;
 import com.robin.magic_realm.components.ArmorChitComponent;
 import com.robin.magic_realm.components.CharacterActionChitComponent;
@@ -364,9 +365,32 @@ public abstract class Meeting extends Trade {
 	protected String useCompletedActiveTask(CharacterWrapper character, String text) {
 		GameObject task = character.getCompletedActiveTask();
 		if (task!=null) {
-			
+			int ret = JOptionPane.showConfirmDialog(
+					getParentFrame(),
+					"Do you want to use your completed Task chit instead of the current result ('"+text+"')?",
+					"Use reward of completed Task, instead of '"+text+"'?",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+			if (ret==JOptionPane.YES_OPTION) {
+				TileLocation loc = character.getCurrentLocation();
+				if (loc!=null && loc.isInClearing()) {
+					task.removeThisAttribute(Constants.TASK_COMPLETED);
+					GameClient.broadcastClient("host",task.getName()+" is dropped in "+loc);
+					loc.clearing.add(task,null);
+					Object[] choices = {"Price x 1", "Boon"};
+					Object defaultChoice = choices[0];
+					ret = JOptionPane.showOptionDialog(
+							getParentFrame(),
+							"Treat as 'Price x 1' or 'Boon' result?",
+							"Price x 1 or Boon?",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,choices,defaultChoice);
+					if (ret==JOptionPane.YES_OPTION || ret==JOptionPane.CLOSED_OPTION) {
+						processPrice(character,0);
+						return "Price x 1";
+					}
+					processPrice(character,1);
+					return "Boon (x 1)";
+				}
+			}
 		}
-		return text;
+		return null;
 	}
 	public static Meeting createMeetingTable(JFrame frame,CharacterWrapper character,TileLocation currentLocation,RealmComponent trader,RealmComponent merchandise,Collection<RealmComponent> hireGroup,int ignoreBuyDrinksLimit) {
 		TradeInfo tradeInfo = getTradeInfo(frame,character,trader,currentLocation,ignoreBuyDrinksLimit,hireGroup==null?0:hireGroup.size());
