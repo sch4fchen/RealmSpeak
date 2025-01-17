@@ -17,32 +17,26 @@ public class MeetingEnemy extends Meeting {
 		return "Enemy";
 	}
 	public String applyOne(CharacterWrapper character) {
-		doInsult(character);
-		return "Insult";
+		return applyInsult(character);
 	}
 
 	public String applyTwo(CharacterWrapper character) {
-		doChallenge(character);
-		return "Challenge";
+		return applyChallenge(character);
 	}
 
 	public String applyThree(CharacterWrapper character) {
-		doBlockBattle(character);
-		return BLOCK_BATTLE;
+		return applyBlockBattle(character);
 	}
 
 	public String applyFour(CharacterWrapper character) {
-		doBlockBattle(character);
-		return BLOCK_BATTLE;
+		return applyBlockBattle(character);
 	}
 
 	public String applyFive(CharacterWrapper character) {
-		doBlockBattle(character);
-		return BLOCK_BATTLE;
+		return applyBlockBattle(character);
 	}
 
 	public String applySix(CharacterWrapper character) {
-		doBlockBattle(character);
-		return BLOCK_BATTLE;
+		return applyBlockBattle(character);
 	}
 }

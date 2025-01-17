@@ -17,30 +17,26 @@ public class MeetingUnfriendly extends Meeting {
 		return "Unfriendly";
 	}
 	public String applyOne(CharacterWrapper character) {
-		processPrice(character,4);
-		return "Price x 4";
+		return applyPrice(character,4);
 	}
 
 	public String applyTwo(CharacterWrapper character) {
-		return "No Deal";
+		return applyNoDeal(character);
 	}
 
 	public String applyThree(CharacterWrapper character) {
-		return "No Deal";
+		return applyNoDeal(character);
 	}
 
 	public String applyFour(CharacterWrapper character) {
-		doInsult(character);
-		return "Insult";
+		return applyInsult(character);
 	}
 
 	public String applyFive(CharacterWrapper character) {
-		doChallenge(character);
-		return "Challenge";
+		return applyChallenge(character);
 	}
 
 	public String applySix(CharacterWrapper character) {
-		doBlockBattle(character);
-		return BLOCK_BATTLE;
+		return applyBlockBattle(character);
 	}
 }

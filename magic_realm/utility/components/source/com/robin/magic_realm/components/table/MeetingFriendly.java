@@ -22,26 +22,22 @@ public class MeetingFriendly extends Meeting {
 	}
 
 	public String applyTwo(CharacterWrapper character) {
-		processPrice(character,2);
-		return "Price x 2";
+		return applyPrice(character,2);
 	}
 
 	public String applyThree(CharacterWrapper character) {
-		processPrice(character,2);
-		return "Price x 2";
+		return applyPrice(character,2);
 	}
 
 	public String applyFour(CharacterWrapper character) {
-		processPrice(character,3);
-		return "Price x 3";
+		return applyPrice(character,3);
 	}
 
 	public String applyFive(CharacterWrapper character) {
-		processPrice(character,4);
-		return "Price x 4";
+		return applyPrice(character,4);
 	}
 
 	public String applySix(CharacterWrapper character) {
-		return "No Deal";
+		return applyNoDeal(character);
 	}
 }

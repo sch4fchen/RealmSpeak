@@ -27,27 +27,22 @@ public class MeetingAlly extends Meeting {
 	}
 
 	public String applyTwo(CharacterWrapper character) {
-		processPrice(character,1);
-		return "Price x 1";
+		return applyPrice(character,1);
 	}
 
 	public String applyThree(CharacterWrapper character) {
-		processPrice(character,2);
-		return "Price x 2";
+		return applyPrice(character,2);
 	}
 
 	public String applyFour(CharacterWrapper character) {
-		processPrice(character,3);
-		return "Price x 3";
+		return applyPrice(character,3);
 	}
 
 	public String applyFive(CharacterWrapper character) {
-		processPrice(character,4);
-		return "Price x 4";
+		return applyPrice(character,4);
 	}
 
 	public String applySix(CharacterWrapper character) {
-		processPrice(character,4);
-		return "Price x 4";
+		return applyPrice(character,4);
 	}
 }

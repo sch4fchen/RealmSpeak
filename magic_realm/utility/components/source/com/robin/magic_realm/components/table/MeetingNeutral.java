@@ -22,26 +22,29 @@ public class MeetingNeutral extends Meeting {
 	}
 
 	public String applyTwo(CharacterWrapper character) {
-		processPrice(character,3);
-		return "Price x 3";
+		return applyPrice(character,3);
 	}
 
 	public String applyThree(CharacterWrapper character) {
-		processPrice(character,4);
-		return "Price x 4";
+		return applyPrice(character,4);
 	}
 
 	public String applyFour(CharacterWrapper character) {
-		return "No Deal";
+		return applyNoDeal(character);
 	}
 
 	public String applyFive(CharacterWrapper character) {
-		return "No Deal";
+		return applyNoDeal(character);
 	}
 
 	public String applySix(CharacterWrapper character) {
+		String text = "Trouble!";
+		String result = useCompletedActiveTask(character,text);
+		if (result!=null && !result.isEmpty()) {
+			return result;
+		}
 		MeetingUnfriendly table = new MeetingUnfriendly(getParentFrame(),tradeInfo,merchandise,hireGroup);
 		setNewTable(table);
-		return "Trouble!";
+		return text;
 	}
 }

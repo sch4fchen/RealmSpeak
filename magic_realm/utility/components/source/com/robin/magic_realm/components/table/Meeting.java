@@ -151,6 +151,50 @@ public abstract class Meeting extends Trade {
 		
 		doBlockBattle(character);
 	}
+	protected String applyInsult(CharacterWrapper character) {
+		String text = "Insult";
+		String result = useCompletedActiveTask(character,text);
+		if (result!=null && !result.isEmpty()) {
+			return result;
+		}
+		doInsult(character);
+		return text;
+	}
+	protected String applyChallenge(CharacterWrapper character) {
+		String text = "Challenge";
+		String result = useCompletedActiveTask(character,text);
+		if (result!=null && !result.isEmpty()) {
+			return result;
+		}
+		doChallenge(character);
+		return text;
+	}
+	protected String applyNoDeal(CharacterWrapper character) {
+		String text = "No Deal";
+		String result = useCompletedActiveTask(character,text);
+		if (result!=null && !result.isEmpty()) {
+			return result;
+		}
+		return text;
+	}
+	protected String applyBlockBattle(CharacterWrapper character) {
+		String text = BLOCK_BATTLE;
+		String result = useCompletedActiveTask(character,text);
+		if (result!=null && !result.isEmpty()) {
+			return result;
+		}
+		doBlockBattle(character);
+		return text;
+	}
+	protected String applyPrice(CharacterWrapper character, int mult) {
+		String text = "Price x "+mult;
+		String result = useCompletedActiveTask(character,text);
+		if (result!=null && !result.isEmpty()) {
+			return result;
+		}
+		processPrice(character,mult);
+		return text;
+	}
 	protected void processPrice(CharacterWrapper character,int mult) {
 		if (merchandise!=null) {
 			RealmComponent rc = RealmComponent.getRealmComponent(merchandise);
