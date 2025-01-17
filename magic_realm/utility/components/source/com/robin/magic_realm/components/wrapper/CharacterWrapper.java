@@ -1666,8 +1666,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 					if (gs.isComplete(this,location)) {
 						gs.gainReward(this);
 						gs.expireEffect(this);
-						location.clearing.add(inv,null);
-						GameClient.broadcastClient("host",gs.getGameObject().getName()+" is dropped in "+location);
+						if (!gs.isTask()) {
+							location.clearing.add(inv,null);
+							GameClient.broadcastClient("host",gs.getGameObject().getName()+" is dropped in "+location);
+						}
 					}
 				}
 			}
@@ -1755,7 +1757,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 				if (gs.isComplete(this,current)) {
 					gs.gainReward(this);
 					gs.expireEffect(this);
-					drop = true;
+					if (!gs.isTask()) {
+						drop = true;
+					}
 				}
 				else {
 					// Decrement "daysLeft" on any gold specials
@@ -3685,6 +3689,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 			return getHiringCharacter().hasTaskCompleted(name);
 		}
 		return hasListItem(COMPLETED_TASKS,name);
+	}
+	public GameObject getCompletedActiveTask() {
+		for (GameObject item : getActiveInventory()) {
+			if (item.hasThisAttribute(Constants.TASK) && item.hasThisAttribute(Constants.TASK_COMPLETED)) {
+				return item;
+			}
+		}
+		return null;
 	}
 	public ArrayList<String> getCompletedTasks() {
 		if (isMinion()) {

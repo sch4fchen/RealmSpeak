@@ -450,6 +450,10 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	public boolean isNomad() {
 		return (this instanceof GoldSpecialChitComponent) && gameObject.hasThisAttribute(Constants.NOMAD);
 	}
+	
+	public boolean isTask() {
+		return (this instanceof GoldSpecialChitComponent) && gameObject.hasThisAttribute(Constants.TASK);
+	}
 
 	public boolean isActivated() {
 		return gameObject.hasThisAttribute(Constants.ACTIVATED);

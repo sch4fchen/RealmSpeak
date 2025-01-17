@@ -17,8 +17,13 @@ public class MeetingAlly extends Meeting {
 		return "Ally";
 	}
 	public String applyOne(CharacterWrapper character) {
+		String text = "Boon (x 1)";
+		String result = useCompletedActiveTask(character,text);
+		if (result!=null && !result.isEmpty()) {
+			return result;
+		}
 		processPrice(character,0);
-		return "Boon (x 1)";
+		return text;
 	}
 
 	public String applyTwo(CharacterWrapper character) {

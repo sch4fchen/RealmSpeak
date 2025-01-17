@@ -317,6 +317,13 @@ public abstract class Meeting extends Trade {
 			JOptionPane.showMessageDialog(getParentFrame(),sb.toString(),offerTitle,JOptionPane.INFORMATION_MESSAGE,last.getIcon());
 		}
 	}
+	protected String useCompletedActiveTask(CharacterWrapper character, String text) {
+		GameObject task = character.getCompletedActiveTask();
+		if (task!=null) {
+			
+		}
+		return text;
+	}
 	public static Meeting createMeetingTable(JFrame frame,CharacterWrapper character,TileLocation currentLocation,RealmComponent trader,RealmComponent merchandise,Collection<RealmComponent> hireGroup,int ignoreBuyDrinksLimit) {
 		TradeInfo tradeInfo = getTradeInfo(frame,character,trader,currentLocation,ignoreBuyDrinksLimit,hireGroup==null?0:hireGroup.size());
 		

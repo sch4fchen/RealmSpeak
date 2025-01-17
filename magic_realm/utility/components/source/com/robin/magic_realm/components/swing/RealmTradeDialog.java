@@ -329,6 +329,12 @@ public class RealmTradeDialog extends AggressiveDialog {
 					}
 				}
 			}
+			else if (realmComponent.isNomad()) {
+				sb.append("Ability: "+realmComponent.getGameObject().getThisAttribute("text"));
+			}
+			else if (realmComponent.isTask()) {
+				sb.append(realmComponent.getGameObject().getThisAttribute(Constants.TASK)+": "+realmComponent.getGameObject().getThisAttributeList(Constants.TASK_SITES));
+			}
 			int fame = realmComponent.getGameObject().getThisInt("fame");
 			int not = realmComponent.getGameObject().getThisInt("notoriety");
 			if (fame>0) {
@@ -428,7 +434,7 @@ public class RealmTradeDialog extends AggressiveDialog {
 						return dsc.getSide2();
 					case 4:
 						String desc = dsc.getOtherInformation();
-						if (!rc.isMinorCharacter()) {
+						if (!rc.isMinorCharacter() && !rc.isNomad() && !rc.isTask()) {
 							desc = wrapString(desc);
 						}
 						return showAll?desc:null;

@@ -2,6 +2,7 @@ package com.robin.magic_realm.components;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.*;
 
 import javax.swing.*;
@@ -104,6 +105,13 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 				tt = new TextType("Campaign",getChitSize()-4,"NORMAL");
 				tt.draw(g,2,y-11,Alignment.Center,color);
 			}
+			if (getGameObject().hasThisAttribute(Constants.TASK_COMPLETED)) {
+				g.setColor(MagicRealmColor.GREEN);
+				Graphics2D g2 = (Graphics2D)g;
+				g2.setStroke(Constants.THICK_STROKE);
+				int m = T_CHIT_SIZE>>1;
+				g2.drawRect(1,1,m-1,m-1);
+			}
 		}
 	}
 	public String generateHTML(CharacterWrapper character) {
@@ -203,89 +211,15 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 				text.append("Breaks spells");
 				text.append(rowEnd);
 			}
-			if (getGameObject().hasAttribute(Constants.NOMAD,Constants.APPRENTICE)) {
-				text.append(rowHeaderStart);
-				text.append("Special ability:");
-				text.append(rowContentStart);
-				text.append("Reading Runes: 1 D6");
-				text.append(rowEnd);
-			}
-			if (getGameObject().hasAttribute(Constants.NOMAD,Constants.BARGAINER)) {
-				text.append(rowHeaderStart);
-				text.append("Special ability:");
-				text.append(rowContentStart);
-				text.append("Trade: 1 D6");
-				text.append(rowEnd);
-			}
-			if (getGameObject().hasAttribute(Constants.NOMAD,Constants.BARKEEP)) {
-				text.append(rowHeaderStart);
-				text.append("Special ability:");
-				text.append(rowContentStart);
-				text.append("Hire: 1 D6");
-				text.append(rowEnd);
-			}
-			if (getGameObject().hasAttribute(Constants.NOMAD,Constants.COOK)) {
-				text.append(rowHeaderStart);
-				text.append("Special ability:");
-				text.append(rowContentStart);
-				text.append("Double Rest");
-				text.append(rowEnd);
-			}
-			if (getGameObject().hasAttribute(Constants.NOMAD,Constants.MINER)) {
-				text.append(rowHeaderStart);
-				text.append("Special ability:");
-				text.append(rowContentStart);
-				text.append("Extra Cave Phase");
-				text.append(rowEnd);
-			}
-			if (getGameObject().hasAttribute(Constants.NOMAD,Constants.INITIATE)) {
-				text.append(rowHeaderStart);
-				text.append("Special ability:");
-				text.append(rowContentStart);
-				text.append("Extra Enchant");
-				text.append(rowEnd);
-			}
-			if (getGameObject().hasAttribute(Constants.NOMAD,Constants.HERMIT)) {
-				text.append(rowHeaderStart);
-				text.append("Special ability:");
-				text.append(rowContentStart);
-				text.append("Extra Move per Mountain");
-				text.append(rowEnd);
-			}
-			if (getGameObject().hasAttribute(Constants.NOMAD,Constants.FAIRY)) {
-				text.append(rowHeaderStart);
-				text.append("Special ability:");
-				text.append(rowContentStart);
-				text.append("Extra Alert, Hidden Enemies");
-				text.append(rowEnd);
-			}
-			if (getGameObject().hasAttribute(Constants.NOMAD,Constants.RANGER)) {
-				text.append(rowHeaderStart);
-				text.append("Special ability:");
-				text.append(rowContentStart);
-				text.append("Hide: 1 D6");
-				text.append(rowEnd);
-			}
-			if (getGameObject().hasAttribute(Constants.NOMAD,Constants.SHADOW)) {
-				text.append(rowHeaderStart);
-				text.append("Special ability:");
-				text.append(rowContentStart);
-				text.append("Magic Sight");
-				text.append(rowEnd);
-			}
-			if (getGameObject().hasAttribute(Constants.NOMAD,Constants.STRONGMAN)) {
-				text.append(rowHeaderStart);
-				text.append("Special ability:");
-				text.append(rowContentStart);
-				text.append("Move T");
-				text.append(rowEnd);
-			}
-			if (getGameObject().hasAttribute(Constants.NOMAD,Constants.TRACKER)) {
-				text.append(rowHeaderStart);
-				text.append("Special ability:");
-				text.append(rowContentStart);
-				text.append("Extra Search");
-				text.append(rowEnd);
+			if (getGameObject().hasThisAttribute(Constants.NOMAD)) {
+				String ability = getGameObject().getThisAttribute("text");
+				if (ability!=null && !ability.isEmpty()) {
+					text.append(rowHeaderStart);
+					text.append("Special ability:");
+					text.append(rowContentStart);
+					text.append(ability);
+					text.append(rowEnd);
+				}
 			}
 		}
 		else {
@@ -555,7 +489,7 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 			return total==0;
 		}
 		else if (getGameObject().hasThisAttribute(Constants.TASK)) {
-			List<String> requiredTreasureLocations = getGameObject().getThisAttributeList(Constants.TASK);
+			List<String> requiredTreasureLocations = getGameObject().getThisAttributeList(Constants.TASK_SITES);
 			if (current.isInClearing()) {
 				Collection<RealmComponent> treasureLocations = current.clearing.getTreasureLocations();
 				Collection<String> visitedTreasureLocations;
@@ -575,6 +509,7 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 						return false;
 					}
 				}
+				getGameObject().setThisAttribute(Constants.TASK_COMPLETED);
 				return true;
 			}
 		}
@@ -687,7 +622,7 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 			getGameObject().removeAttributeBlock("relationship");
 		}
 		else if (getGameObject().hasThisAttribute(Constants.TASK)) {
-			ArrayList<String> requiredTreasureLocations = getGameObject().getThisAttributeList(Constants.TASK);
+			ArrayList<String> requiredTreasureLocations = getGameObject().getThisAttributeList(Constants.TASK_SITES);
 			for (String requiredTl : requiredTreasureLocations) {
 				character.getGameObject().removeThisAttributeListItem(Constants.TASK_VISITED_SITES,requiredTl.toLowerCase());
 			}

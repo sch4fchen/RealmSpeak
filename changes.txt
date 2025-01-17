@@ -1,5 +1,6 @@
 ::ROADMAP::
 Tasks: Reward logic
+Pony rule changes?!
 Super Realm: rules for clans 4.7 (p. 41) (see tutorial 5; incl. Treachery)
 Super Realm: Quests + Events (Global Events = optional rule) (incl. 4.5.4)
 Super Realm: Public quests on setup chart (+flag on quests if it can go on setup chart) (BGG variant: 2 quest cards per native)

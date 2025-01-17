@@ -282,7 +282,9 @@ public class Constants {
 	public static final String SHADOW = "shadow";
 	public static final String STRONGMAN = "strongman";
 	public static final String TRACKER = "tracker";
+	public static final String TASK_SITES = "task_sites";
 	public static final String TASK_VISITED_SITES = "task_visited_sites";
+	public static final String TASK_COMPLETED = "task_completed";
 	
 	// Spoils of War needed action
 	public static final String SPOILS_ = "spoils_";

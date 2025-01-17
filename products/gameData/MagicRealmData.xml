@@ -61436,6 +61436,7 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="apprentice" />
+		<attribute text="Reading Runes: 1 D6" />
 		<attributeList keyName="diemod">
           <attributeVal N0="1d:readrunes:all" />
         </attributeList>
@@ -61453,6 +61454,7 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="bargainer" />
+		<attribute text="Trade: 1 D6" />
 		<attributeList keyName="diemod">
           <attributeVal N0="1d:meeting,commerce:all" />
         </attributeList>
@@ -61470,6 +61472,7 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="barkeep" />
+		<attribute text="Hire: 1 D6" />
 		<attributeList keyName="diemod">
           <attributeVal N0="1d:hire:all" />
         </attributeList>
@@ -61487,6 +61490,7 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="cook" />
+		<attribute text="Double Rest" />
 		<attribute rest_double="" />
       </AttributeBlock>
     </GameObject>
@@ -61502,6 +61506,7 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="fairy" />
+		<attribute text="Extra Alert, finds Hidden Enemies" />
 		<attributeList keyName="extra_actions">
           <attributeVal N0="A" />
         </attributeList>
@@ -61520,6 +61525,7 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="hermit" />
+		<attribute text="Extra Move per Mountain" />
 		<attribute mountain_move_adj="" />
       </AttributeBlock>
     </GameObject>
@@ -61535,6 +61541,7 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="initiate" />
+		<attribute text="Extra Enchant" />
 		<attributeList keyName="extra_actions">
           <attributeVal N0="SP" />
         </attributeList>
@@ -61552,6 +61559,7 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="miner" />
+		<attribute text="Extra Cave Phase" />
 		<attribute extra_cave_phase="" />
       </AttributeBlock>
     </GameObject>
@@ -61567,6 +61575,7 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="ranger" />
+		<attribute text="Hide: 1 D6" />
 		<attributeList keyName="diemod">
           <attributeVal N0="1d:hide:all" />
         </attributeList>
@@ -61584,6 +61593,7 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="shadow" />
+		<attribute text="Magic Sight" />
 		<attribute magic_sight="" />
       </AttributeBlock>
     </GameObject>
@@ -61599,6 +61609,7 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="strongman" />
+		<attribute text="Carrier with strength T" />
 		<attribute carrier="T" />
       </AttributeBlock>
     </GameObject>
@@ -61613,6 +61624,7 @@
         <attribute super_realm="" />
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
+		<attribute text="Extra Search" />
         <attribute nomad="tracker" />
 		<attributeList keyName="extra_actions">
           <attributeVal N0="S" />
@@ -61630,7 +61642,7 @@
         <attribute text_color="white" />
         <attribute task="journey" />
         <attribute fame_cost="5" />
-		<attributeList keyName="task">
+		<attributeList keyName="task_sites">
           <attributeVal N0="hoard" />
 		  <attributeVal N1="statue" />
 		  <attributeVal N2="tower" />
@@ -61649,7 +61661,7 @@
         <attribute text_color="white" />
         <attribute task="odyssey" />
         <attribute fame_cost="5" />
-		<attributeList keyName="task">
+		<attributeList keyName="task_sites">
           <attributeVal N0="pool" />
 		  <attributeVal N1="den" />
 		  <attributeVal N2="garden" />
@@ -61668,7 +61680,7 @@
         <attribute text_color="white" />
         <attribute task="seek" />
         <attribute fame_cost="5" />
-		<attributeList keyName="task">
+		<attributeList keyName="task_sites">
           <attributeVal N0="spire" />
 		  <attributeVal N1="altar" />
 		  <attributeVal N2="cairns" />
@@ -61687,7 +61699,7 @@
         <attribute text_color="white" />
         <attribute task="explore" />
         <attribute fame_cost="5" />
-		<attributeList keyName="task">
+		<attributeList keyName="task_sites">
           <attributeVal N0="pit" />
 		  <attributeVal N1="temple" />
 		  <attributeVal N2="shrine" />
