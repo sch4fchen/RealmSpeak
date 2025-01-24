@@ -1651,7 +1651,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 				RealmComponent rc = RealmComponent.getRealmComponent(inv);
 				if ((cave || water) && (rc.isHorse() || rc.isNative()) && rc.isActivated() && !rc.getGameObject().hasThisAttribute(Constants.STEED_IN_CAVES_AND_WATER)) {
 					if (frame!=null) {
-						JOptionPane.showMessageDialog(frame,"Your "+inv.getName()+" was inactivated on entering the cave.","",JOptionPane.WARNING_MESSAGE);
+						String clearing = "cave";
+						if (water) {
+							clearing = "river";
+						}
+						JOptionPane.showMessageDialog(frame,"Your "+inv.getName()+" was inactivated on entering the "+clearing+".","",JOptionPane.WARNING_MESSAGE);
 					}
 					rc.setActivated(false);
 					if (inv.hasThisAttribute(Constants.BREAK_CONTROL_WHEN_INACTIVE)) {
@@ -2311,16 +2315,22 @@ public class CharacterWrapper extends GameObjectWrapper {
 			boolean pony = isPonyActive();
 			int moveNumber = 0;
 			TileLocation loc = current;
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameData());
 			for (String action : getCurrentActions()) {
 				boolean inCave = false;
 				boolean inWater = false;
+				boolean onMountain = false;
 				loc = getClearingPlot().get(moveNumber);
 				if (action.startsWith("M") || action.startsWith("FLY")) {
 					inCave = loc!=null && loc.isInClearing() && loc.clearing.isCave();
 					inWater = loc!=null && loc.isInClearing() && loc.clearing.isWater();
+					if (hostPrefs.hasPref(Constants.FE_PONY_NO_MOUNTAINS) &&!inCave&&!inWater) {
+						TileLocation newLocation = ClearingUtility.deduceLocationFromAction(getGameData(),action);
+						onMountain = newLocation!=null && newLocation.isInClearing() && newLocation.clearing.isMountain();
+					}
 					moveNumber++;
 				}
-				pm.forcePerformedAction(action,pony&&!inCave&&!inWater,loc);
+				pm.forcePerformedAction(action,pony&&!inCave&&!inWater&&!onMountain,loc);
 			}
 		}
 		pm.removeLocationSpecificFreeActions(getPlannedLocation());

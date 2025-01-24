@@ -11,6 +11,7 @@ import com.robin.general.swing.QuietOptionPane;
 import com.robin.general.util.HashLists;
 import com.robin.magic_realm.components.BattleHorse;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.SteedChitComponent;
 import com.robin.magic_realm.components.attribute.DayAction.ActionId;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -29,7 +30,6 @@ import com.robin.magic_realm.components.wrapper.SpellWrapper;
  */
 public class PhaseManager {
 	public static final String REGULAR_PHASE = "REGULAR_PHASE";
-	public static final String PONY_PHASE = "PONY_PHASE";
 	public static final String EXTRA_CAVE_PHASE = "X";
 	
 	private int basic = 0;
@@ -167,7 +167,14 @@ public class PhaseManager {
 	}
 	public void addFreeAction(String phase,GameObject go,TileLocation requiredLocation,boolean force) {
 		if (force || !allObjects.contains(go)) { // RW 5/22/2011 - Commented out for quest support - See BUG 1050 for why this was added in the first place...
-			freeActions.put(phase,new Requirement(go,requiredLocation));
+			RealmComponent rc = RealmComponent.getRealmComponent(go);
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameObject().getGameData());
+			if (rc.isHorse() && ((SteedChitComponent)rc).doublesMove() && hostPrefs.hasPref(Constants.FE_PONY_NO_MOUNTAINS)) {
+				freeActions.put(phase,new Requirement(go,requiredLocation,null,"!M"));
+			}
+			else {
+				freeActions.put(phase,new Requirement(go,requiredLocation));
+			}
 			allObjects.add(go);
 		}
 	}
@@ -354,9 +361,9 @@ public class PhaseManager {
 	 * @return		A valid activated game object or null, if none required.  This method is called with the assumption
 	 * 				that the appropriate checks were already made regarding the viability of the presented phase.
 	 */
-	public GameObject getNextRequiredObject(String phase,boolean ponyActive) {
+	public GameObject getNextRequiredObject(String fullPhase,boolean ponyActive) {
 		// Convert detail action into plain action (M-CV3 becomes M)
-		phase = simplifyAction(phase);
+		String phase = simplifyAction(fullPhase);
 		Collection<GameObject> activeInventory = character.getActiveInventory();
 		Collection<GameObject> travelers = character.getFollowingTravelers();
 		Collection<GameObject> allSpells = character.getSpellExtraSources();
@@ -365,19 +372,22 @@ public class PhaseManager {
 		ArrayList list = getRequiredObjects(phase);
 		if (list!=null) {
 			TileLocation current = character.getCurrentLocation();
+			TileLocation newLocation = ClearingUtility.deduceLocationFromAction(character.getGameObject().getGameData(),fullPhase);
 			for (Iterator i=list.iterator();i.hasNext();) {
 				Object o = i.next();
 				if (o instanceof Requirement) {
 					Requirement r = (Requirement)o;
 					if (r.isMet(current)) {
-						GameObject go = r.getGameObject();
-						if (character.getGameObject().equals(go)
-								|| activeInventory.contains(go)
-								|| travelers.contains(go)
-								|| clearingObjects.contains(go)
-								|| (allSpells!=null && allSpells.contains(go))) {
-							
-							return go;
+						if (r.willBeMet(newLocation)) {
+							GameObject go = r.getGameObject();
+							if (character.getGameObject().equals(go)
+									|| activeInventory.contains(go)
+									|| travelers.contains(go)
+									|| clearingObjects.contains(go)
+									|| (allSpells!=null && allSpells.contains(go))) {
+								
+								return go;
+							}
 						}
 					}
 				}
@@ -393,18 +403,29 @@ public class PhaseManager {
 	public void addPerformedPhase(String phase,GameObject go,boolean ponyActive,TileLocation actionLocation) {
 		_addPerformedPhase(phase,go,ponyActive,actionLocation);
 	}
-	private void _addPerformedPhase(String phase,GameObject go,boolean ponyActive,TileLocation actionLocation) {
+	private void _addPerformedPhase(String fullPhase,GameObject go,boolean ponyActive,TileLocation actionLocation) {
 		// Convert detail action into plain action (M-CV3 becomes M)
-		phase = simplifyAction(phase);
+		String phase = simplifyAction(fullPhase);
 		
 		boolean movePhase = "M".equals(phase) || "M!".equals(phase);
 
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameObject().getGameData());
 		if (ponyObject!=null && go!=ponyObject && ponyActive && movePhase && ponyMoves==0) {
 			TileLocation current = ClearingUtility.getTileLocation(ponyObject);
-			if (current!=null && (!current.isInClearing() || (!current.clearing.isCave() && !current.clearing.isWater()))) {
-				ponyMoves++;
-				freeActions.put("M",new Requirement(ponyObject));
-				allObjects.add(ponyObject);
+			if (current!=null && (!current.isInClearing() || (!current.clearing.isCave() && !current.clearing.isWater()))) {			
+				if (hostPrefs.hasPref(Constants.FE_PONY_NO_MOUNTAINS)) {
+					TileLocation newLocation = ClearingUtility.deduceLocationFromAction(character.getGameObject().getGameData(),fullPhase);
+					if (newLocation==null || !newLocation.hasClearing() || !newLocation.clearing.isMountain()) {
+						ponyMoves++;
+						freeActions.put("M",new Requirement(ponyObject,null,null,"!M"));
+						allObjects.add(ponyObject);
+					}
+				}
+				else {
+					ponyMoves++;
+					freeActions.put("M",new Requirement(ponyObject));
+					allObjects.add(ponyObject);
+				}
 			}
 		}
 		
@@ -504,22 +525,25 @@ public class PhaseManager {
 	private ArrayList<GameObject> active;
 	private ArrayList<GameObject> inactive;
 
-	public boolean canAddAction(String action,boolean pony,JFrame parent) {
+	public boolean canAddAction(String fullAction,boolean pony,JFrame parent) {
 		// First, count the actions
 		int count = 1; // default
-		if (action.indexOf(",")>=0) {
-			StringTokenizer phases = new StringTokenizer(action,",");
+		if (fullAction.indexOf(",")>=0) {
+			StringTokenizer phases = new StringTokenizer(fullAction,",");
 			count = phases.countTokens();
 		}
 		// Convert detail action into plain action (M-CV3 becomes M)
-		action = simplifyAction(action);
+		String action = simplifyAction(fullAction);
 		ArrayList list = getRequiredObjects(action);
 		
 		// Have to check for a special case here - generalizing is just too damned complicated!
 		boolean specialCaseOverride = false;
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameObject().getGameData());
 		if (count>1 && list!=null && list.contains(REGULAR_PHASE) && "M".equals(action) && pony) {
 			// This override happens when you only have one phase left, and you are trying to enter the mountains with a pony
-			specialCaseOverride = true;
+			if (!hostPrefs.hasPref(Constants.FE_PONY_NO_MOUNTAINS)) {
+				specialCaseOverride = true;
+			}
 		}
 		if (specialCaseOverride || (list!=null && list.size()>=count)) {
 			if (parent!=null) {
@@ -543,8 +567,15 @@ public class PhaseManager {
 					// There are required items here!
 					GameObject toUse = null;
 					ArrayList<GameObject> needValidate = new ArrayList<>();
+					TileLocation newLocation = ClearingUtility.deduceLocationFromAction(character.getGameObject().getGameData(),fullAction);
 					for (GameObject go:requiredObjects) {
 						if (character.getGameObject().equals(go) || active.contains(go) || clearingObjects.contains(go)) {
+							RealmComponent rc = RealmComponent.getRealmComponent(go);
+							if ("M".equals(action) && hostPrefs.hasPref(Constants.FE_PONY_NO_MOUNTAINS) && rc.isHorse() && ((SteedChitComponent)rc).doublesMove()) {
+								if (newLocation!=null && newLocation.hasClearing() && newLocation.clearing.isMountain()) {
+									return false;
+								}
+							}
 							return true;
 						}
 						needValidate.add(go);
@@ -711,10 +742,10 @@ public class PhaseManager {
 	 * 
 	 * @return	true on success
 	 */
-	public boolean forcePerformedAction(String action,boolean pony,TileLocation actionLocation) {
-		if (action.indexOf(",")>=0) {
+	public boolean forcePerformedAction(String fullAction,boolean pony,TileLocation actionLocation) {
+		if (fullAction.indexOf(",")>=0) {
 			boolean ret = true;
-			StringTokenizer phases = new StringTokenizer(action,",");
+			StringTokenizer phases = new StringTokenizer(fullAction,",");
 			while(phases.hasMoreTokens()) {
 				if (!forcePerformedAction(phases.nextToken(),pony,actionLocation)) {
 					ret = false;
@@ -723,11 +754,11 @@ public class PhaseManager {
 			return ret;
 		}
 		// Convert detail action into plain action (M-CV3 becomes M)
-		DayAction da = DayAction.getDayAction(CharacterWrapper.getIdForAction(action));
+		DayAction da = DayAction.getDayAction(CharacterWrapper.getIdForAction(fullAction));
 		if (da==null) { // this can happen if an action becomes a blank phase, and this method is called too early
 			return false;
 		}
-		action = simplifyAction(action);
+		String action = simplifyAction(fullAction);
 		
 		boolean didit = false;
 		ArrayList list = getRequiredObjects(action);
@@ -740,23 +771,26 @@ public class PhaseManager {
 			for (Iterator n=list.iterator();n.hasNext();) {
 				Object req = n.next();
 				if (req instanceof String) {
-					addPerformedPhase(action,(GameObject)null,pony,actionLocation);
+					addPerformedPhase(fullAction,(GameObject)null,pony,actionLocation);
 					didit = true;
 					break;
 				}
 				else if (req!=ponyObject || pony) {
 					Requirement r = (Requirement)req;
 					if (r.isMet(actionLocation)) {
-						GameObject go = r.getGameObject();
-						addPerformedPhase(action,go,pony,actionLocation);
-						didit = true;
-						break;
+						TileLocation newLocation = ClearingUtility.deduceLocationFromAction(character.getGameObject().getGameData(),fullAction);
+						if (r.willBeMet(newLocation)) {
+							GameObject go = r.getGameObject();
+							addPerformedPhase(fullAction,go,pony,actionLocation);
+							didit = true;
+							break;
+						}
 					}
 				}
 			}
 		}
 		if (!didit) {
-			addPerformedPhase(action,(GameObject)null,pony,actionLocation);
+			addPerformedPhase(fullAction,(GameObject)null,pony,actionLocation);
 		}
 		return didit;
 	}
@@ -871,14 +905,19 @@ public class PhaseManager {
 	private static class Requirement {
 		private GameObject go;
 		private TileLocation tl;
-//		private String clearingType;
+		private String clearingType;
+		private String plannedClearingType;
 		public Requirement(GameObject go) {
-			this(go,null);
+			this(go,null,null,null);
 		}
 		public Requirement(GameObject go,TileLocation tl) {
+			this(go,tl,null,null);
+		}
+		public Requirement(GameObject go,TileLocation tl,String clearingType,String plannedClearingType) {
 			this.go = go;
 			this.tl = tl;
-//			this.clearingType = null;
+			this.clearingType = clearingType;
+			this.plannedClearingType = plannedClearingType;
 			
 //			// Handle this special case (Ancient Telescope)
 //			String ep = go.getThisAttribute(Constants.ENHANCED_PEER);
@@ -893,16 +932,30 @@ public class PhaseManager {
 			return go;
 		}
 		public boolean requiresLocation() {
-			return tl!=null;// || clearingType!=null;
+			return tl!=null || clearingType!=null;
 		}
 		public boolean isMet(TileLocation current) {
 			if (current!=null) {
 				if (tl!=null) {
 					return tl.equals(current);
 				}
-//				else if (clearingType!=null && current.hasClearing()) {
-//					return clearingType.equals(current.clearing.getType());
-//				}
+				else if (clearingType!=null && current.hasClearing()) {
+					if (clearingType.startsWith("!")) {
+						return !clearingType.substring(1).matches(current.clearing.getType());
+					}
+					return clearingType.equals(current.clearing.getType());
+				}
+			}
+			return true;
+		}
+		public boolean willBeMet(TileLocation plannedLocation) {
+			if (plannedClearingType!=null && plannedLocation!=null) {
+				if (plannedLocation.hasClearing()) {
+					if (plannedClearingType.startsWith("!")) {
+						return !plannedClearingType.substring(1).matches(plannedLocation.clearing.getType());
+					}
+					return plannedClearingType.matches(plannedLocation.clearing.getType());
+				}
 			}
 			return true;
 		}
