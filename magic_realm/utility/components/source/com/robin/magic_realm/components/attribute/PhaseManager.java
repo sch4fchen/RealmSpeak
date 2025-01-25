@@ -424,7 +424,7 @@ public class PhaseManager {
 
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameObject().getGameData());
 		TileLocation newLocation = null;
-		if (hostPrefs.hasPref(Constants.FE_PONY_NO_MOUNTAINS)) {
+		if (hostPrefs.hasPref(Constants.FE_PONY_NO_MOUNTAINS) && movePhase) {
 			newLocation = ClearingUtility.deduceLocationFromAction(character.getGameObject().getGameData(),fullPhase);
 		}
 				
