@@ -562,11 +562,7 @@ public class PhaseManager {
 		boolean movePhase = "M".equals(action) || "M!".equals(action);
 		TileLocation newLocation = null;
 		if (movePhase) {
-			String simpleAction = fullAction;
-			if (phases!=null) {
-				simpleAction = phases.nextToken();
-			}
-			newLocation = ClearingUtility.deduceLocationFromAction(character.getGameObject().getGameData(),simpleAction);
+			newLocation = ClearingUtility.deduceLocationFromAction(character.getGameObject().getGameData(),fullAction);
 		}
 		ArrayList list = getRequiredObjects(action,newLocation);
 		
