@@ -325,13 +325,6 @@ public class PhaseManager {
 			if (ponyLock && ponyObject!=null) {
 				list.remove(ponyObject);
 			}
-			else if (!ponyLock && ponyObject!=null) {
-				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameObject().getGameData());
-				if (hostPrefs.hasPref(Constants.FE_PONY_NO_MOUNTAINS)
-						&& newLocation!=null && newLocation.hasClearing() && newLocation.clearing.isMountain()) {
-					list.remove(ponyObject);
-				}
-			}
 			Collections.sort(list,new Comparator<Requirement>() {
 				public int compare(Requirement r1,Requirement r2) {
 					int ret = 0;
@@ -562,7 +555,11 @@ public class PhaseManager {
 		boolean movePhase = "M".equals(action) || "M!".equals(action);
 		TileLocation newLocation = null;
 		if (movePhase) {
-			newLocation = ClearingUtility.deduceLocationFromAction(character.getGameObject().getGameData(),fullAction);
+			String simpleAction = fullAction;
+			if (phases!=null) {
+				simpleAction = phases.nextToken();
+			}
+			newLocation = ClearingUtility.deduceLocationFromAction(character.getGameObject().getGameData(),simpleAction);
 		}
 		ArrayList list = getRequiredObjects(action,newLocation);
 		
