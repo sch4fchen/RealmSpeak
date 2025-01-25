@@ -603,12 +603,6 @@ public class PhaseManager {
 					ArrayList<GameObject> needValidate = new ArrayList<>();
 					for (GameObject go:requiredObjects) {
 						if (character.getGameObject().equals(go) || active.contains(go) || clearingObjects.contains(go)) {
-							RealmComponent rc = RealmComponent.getRealmComponent(go);
-							if ("M".equals(action) && hostPrefs.hasPref(Constants.FE_PONY_NO_MOUNTAINS) && rc.isHorse() && ((SteedChitComponent)rc).doublesMove()) {
-								if (newLocation!=null && newLocation.hasClearing() && newLocation.clearing.isMountain()) {
-									return false;
-								}
-							}
 							return true;
 						}
 						needValidate.add(go);
