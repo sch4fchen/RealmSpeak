@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
-import com.robin.game.server.GameClient;
+import com.robin.game.objects.GamePool;
 import com.robin.general.swing.DieRoller;
 import com.robin.general.util.HashLists;
 import com.robin.general.util.RandomNumber;
@@ -2481,7 +2481,7 @@ public class BattleModel {
 				logBattleInfo(rc+" is dead.  Killed by "+combat.getKilledBy().getNameWithNumber());
 				
 				// Test for Grudges/Gratitudes
-				if (rc.isNative() && rc.getOwner()==null && hostPrefs.hasPref(Constants.OPT_GRUDGES)) {
+				if (rc.isNative() && rc.getOwner()==null && (hostPrefs.hasPref(Constants.OPT_GRUDGES) || hostPrefs.hasPref(Constants.OPT_SR_DAMAGED_RELATIONS))) {
 					RealmComponent killer = RealmComponent.getRealmComponent(combat.getKilledBy());
 					if (killer.isSpell()) {
 						SpellWrapper spell = new SpellWrapper(killer.getGameObject());
@@ -2517,17 +2517,23 @@ public class BattleModel {
 							responsibleCharacter = new CharacterWrapper(killer.getOwner().getGameObject());
 						}
 						int rel = responsibleCharacter.getRelationship(rc.getGameObject());
-						if (rel==RelationshipType.FRIENDLY) {
-							doGrudge(killer,responsibleCharacter,rc,2,"GRUDGES");
-						}
-						else if (rel>=RelationshipType.ALLY) {
-							doGrudge(killer,responsibleCharacter,rc,4,"GRUDGES");
-						}
-						else if (hostPrefs.hasPref(Constants.TE_EXTENDED_GRUDGES)) {
-							// but only once per character per native group per evening!   ...but how...
-							if (!responsibleCharacter.hasChangedRelationshipToday(rc.getGameObject())) {
-								doGrudge(killer,responsibleCharacter,rc,1,"EXTENDED GRUDGES");
+						
+						if (hostPrefs.hasPref(Constants.OPT_GRUDGES)) {
+							if (rel==RelationshipType.FRIENDLY) {
+								doGrudge(killer,responsibleCharacter,rc,2,"GRUDGES");
 							}
+							else if (rel>=RelationshipType.ALLY) {
+								doGrudge(killer,responsibleCharacter,rc,4,"GRUDGES");
+							}
+							else if (hostPrefs.hasPref(Constants.TE_EXTENDED_GRUDGES)) {
+								// but only once per character per native group per evening!   ...but how...
+								if (!responsibleCharacter.hasChangedRelationshipToday(rc.getGameObject())) {
+									doGrudge(killer,responsibleCharacter,rc,1,"EXTENDED GRUDGES");
+								}
+							}
+						}
+						if (hostPrefs.hasPref(Constants.OPT_SR_DAMAGED_RELATIONS)) {
+							doDamagedRelations(killer,responsibleCharacter,rc);
 						}
 					}
 				}
@@ -2751,6 +2757,47 @@ public class BattleModel {
 		
 		logBattleInfo(killer.getGameObject().getNameWithNumber()+" killed "+currentRelString+" "+rc.toString()+".");
 		logBattleInfo(responsibleCharacter.getCharacterName()+" relationship is harmed by "+penalty+"! ("+ruleName+") --> "+newRelString);
+	}
+	private static void doDamagedRelations(RealmComponent killer,CharacterWrapper responsibleCharacter,RealmComponent rc) {
+		GameObject nativeMember = rc.getGameObject();
+		String nativeGroupName = nativeMember.getThisAttribute("native").toLowerCase();
+		boolean isFoe = false;
+		ArrayList<String> allFoes = new ArrayList<String>();
+		for (GameObject inv : responsibleCharacter.getInventory()) {
+			if (!isFoe && inv.hasThisAttribute(RealmComponent.GOLD_SPECIAL)) {
+				ArrayList<String> foes = inv.getThisAttributeList("foe");
+				for (String foe : foes) {
+					allFoes.add(foe.toLowerCase());
+					if (nativeGroupName.toLowerCase().matches(foe.toLowerCase())) {
+						isFoe = true;
+						break;
+					}
+				}
+			}
+		}		
+		if (!isFoe) {
+			String currentRelString = RealmUtility.getRelationshipNameFor(responsibleCharacter,rc);
+			responsibleCharacter.changeRelationshipTo(rc.getGameObject(),RelationshipType.ENEMY);
+			//responsibleCharacter.addDamagedRelations(rc.getGameObject());
+			logBattleInfo(killer.getGameObject().getNameWithNumber()+" killed "+currentRelString+" "+rc.toString()+".");
+			logBattleInfo(responsibleCharacter.getCharacterName()+" relationship is harmed! (DAMAGED RELATIONS) --> ENEMY");
+			
+			String clanId = nativeMember.getThisAttribute("clan");
+			if (clanId!=null) {
+				GamePool pool = new GamePool(responsibleCharacter.getGameData().getGameObjects());
+				ArrayList<GameObject> hqs = pool.extract("native,rank=HQ,clan="+clanId);
+				ArrayList<String> affectedClans = new ArrayList<String>();
+				for (GameObject hq : hqs) {
+					String nativeClanName = hq.getThisAttribute("native").toLowerCase();
+					if (!affectedClans.contains(nativeClanName) && !allFoes.contains(nativeClanName) && !responsibleCharacter.hasChangedRelationshipToday(hq)) {
+						affectedClans.add(hq.getThisAttribute("native").toLowerCase());
+						responsibleCharacter.changeRelationship(rc.getGameObject(),-1);
+						String newClanRelString = RealmUtility.getRelationshipNameFor(responsibleCharacter,rc);
+						logBattleInfo(responsibleCharacter.getCharacterName()+" relationship is harmed by -1! (AFFECTED CLAN) --> "+newClanRelString);
+					}
+				}
+			}
+		}
 	}
 	/**
 	 * @return		The appropriate DieRoller for this BattleGroup

@@ -6361,6 +6361,30 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (rc.getOwner()!=null) return; // hirelings can't ever be battling natives!!
 		String nativeGroupName = nativeMember.getThisAttribute("native").toLowerCase();
 		getGameObject().addAttributeListItem(BATTLING_NATIVE_BLOCK,nativeGroupName,"");
+		String clanId = nativeMember.getThisAttribute("clan");
+		if (clanId!=null) {
+			boolean isFoe = false;
+			for (GameObject inv : getInventory()) {
+				if (!isFoe && inv.hasThisAttribute(RealmComponent.GOLD_SPECIAL)) {
+					ArrayList<String> foes = inv.getThisAttributeList("foe");
+					for (String foe : foes) {
+						if (nativeGroupName.toLowerCase().matches(foe.toLowerCase())) {
+							isFoe = true;
+							break;
+						}
+					}
+				}
+			}
+			
+			if (!isFoe) {
+				GamePool pool = new GamePool(getGameData().getGameObjects());
+				ArrayList<GameObject> hqs = pool.extract("native,rank=HQ,clan="+clanId);
+				for (GameObject hq : hqs) {
+					String nativeClanName = hq.getThisAttribute("native").toLowerCase();
+					getGameObject().addAttributeListItem(BATTLING_NATIVE_BLOCK,nativeClanName,"");
+				}
+			}
+		}
 	}
 	public List<String> getBattlingNativeGroups() {
 		ArrayList<String> list = new ArrayList<>();

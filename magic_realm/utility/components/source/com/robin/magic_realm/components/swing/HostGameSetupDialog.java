@@ -1047,6 +1047,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.TE_EXTENDED_GRUDGES,"EXTENDED GRUDGES B.7 - Killing an unhired neutral, unfriendly or enemy native reduces one's friendship level with the native's group one level for the rest of the game.  This penalty can only be applied once per character per native group per evening.  REQUIRES Grudges optional rule to be in play.",false,null,requiresGrudges));
 		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.OPT_NATIVES_FRIENDLY,"NO ATTACKING OF FRIENDLY NATIVES (Book of Learning) - FRIENDLY and ALLIED natives cannot be lured or targeted.",false));
 		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.OPT_SR_NATIVE_BLOCKING,"NATIVE BLOCKING (Super Realm) - UNFRIENDLY and ENEMY native groups may block.",false));
+		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.OPT_SR_DAMAGED_RELATIONS,"DAMAGED RELATIONS (Super Realm) - Killing unhired native affects other clan members and relationship is set to enemy.",false));
 		
 		newOptionPane.setTabHtmlDescription(ADVANCED_MAGIC_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Advanced Magic Rules</font></body></html>");
 		newOptionPane.addOption(ADVANCED_MAGIC_RULES_TAB,new GameOption(Constants.OPT_ENHANCED_MAGIC,"ENHANCED MAGIC C.1 - Spells and Magic chits are not tied up by the casting of a spell, which allows the casting of multiple instances of a single spell.",false,exclusiveEnhancedMagicRules,null));
@@ -1306,8 +1307,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.TE_WATCHFUL_NATIVES,true);
 		optionPane.setOption(Constants.TE_EXTENDED_TREACHERY,true);
 		optionPane.setOption(Constants.TE_BENEVOLENT_SPELLS,true);
-		optionPane.setOption(Constants.OPT_GRUDGES,true);
-		optionPane.setOption(Constants.TE_EXTENDED_GRUDGES,true);
+		optionPane.setOption(Constants.OPT_SR_DAMAGED_RELATIONS,true);
 		optionPane.setOption(Constants.OPT_PARRY,true);
 		optionPane.setOption(Constants.OPT_SR_STEEL_AGAINST_MAGIC,true);
 		optionPane.setOption(Constants.OPT_SR_ENDING_COMBAT,true);
