@@ -440,6 +440,14 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 		if (reward>0) {
 			GameClient.broadcastClient(character.getGameObject().getName(),"Received "+reward+" gold as a reward.");
 		}
+
+		ArrayList<String> partners = getPartners();
+		if (partners!=null) {
+			for (String partner : partners) {
+				character.removeDamagedRelations(partner.toLowerCase());
+			}
+		}
+
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 		if (getGameObject().hasThisAttribute("mission")) {
 			character.addCompletedMission(getGameObject().getName());

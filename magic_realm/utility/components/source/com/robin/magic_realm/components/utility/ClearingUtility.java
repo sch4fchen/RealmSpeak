@@ -492,9 +492,12 @@ public class ClearingUtility {
 	/**
 	 * Returns all native leaders, visitors, and travelers w/stores that are in the clearing.
 	 */
-	public static ArrayList<RealmComponent> getAllTraders(ClearingDetail clearing) {
+	public static ArrayList<RealmComponent> getAllTraders(CharacterWrapper character,ClearingDetail clearing) {
 		ArrayList<RealmComponent> traders = new ArrayList<>();
 		for (RealmComponent rc:clearing.getClearingComponents()) {
+			if (character.hasDamagedRelations(rc.getGameObject())) {
+				continue;
+			}
 			if (rc.isNative() && rc.getOwnerId()==null) {
 				String rank = rc.getGameObject().getThisAttribute("rank");
 				if (rank!=null && "HQ".equals(rank)) {
@@ -521,6 +524,9 @@ public class ClearingUtility {
 		ArrayList<RealmComponent> hireables = new ArrayList<>();
 		Collection<RealmComponent> c = clearing.getClearingComponents();
 		for (RealmComponent rc : c) {
+			if (character.hasDamagedRelations(rc.getGameObject())) {
+				continue;
+			}
 			if (rc.isNative() && rc.getOwnerId()==null) {
 				hireables.add(rc);
 			}

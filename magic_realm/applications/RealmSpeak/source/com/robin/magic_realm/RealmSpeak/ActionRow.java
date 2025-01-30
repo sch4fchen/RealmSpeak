@@ -1229,7 +1229,7 @@ public class ActionRow {
 		// Player chooses from all native leaders in the clearing
 		// Player then chooses from items for sale
 		TileLocation tl = character.getCurrentLocation();
-		ArrayList<RealmComponent> traders = ClearingUtility.getAllTraders(tl.clearing);
+		ArrayList<RealmComponent> traders = ClearingUtility.getAllTraders(character,tl.clearing);
 		if (!traders.isEmpty()) { // need traders to trade!
 			// Select a trader
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Select trade action:",true);

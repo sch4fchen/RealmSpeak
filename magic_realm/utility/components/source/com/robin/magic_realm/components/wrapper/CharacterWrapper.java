@@ -1144,6 +1144,30 @@ public class CharacterWrapper extends GameObjectWrapper {
 		String groupName = RealmUtility.getRelationshipGroupName(denizen).toLowerCase().trim();
 		return hasListItem(RELCHANGE_GROUP_LIST,groupName);
 	}
+	public void addDamagedRelations(GameObject denizen) {
+		if (!isCharacter()) {
+			getHiringCharacter().addDamagedRelations(denizen);
+		}
+		String groupName = RealmUtility.getRelationshipGroupName(denizen).toLowerCase().trim();
+		getGameObject().addThisAttributeListItem(Constants.DAMAGED_RELATIONS,groupName);
+	}
+	public void removeDamagedRelations(GameObject denizen) {
+		if (!isCharacter()) {
+			getHiringCharacter().removeDamagedRelations(denizen);
+		}
+		String groupName = RealmUtility.getRelationshipGroupName(denizen).toLowerCase().trim();
+		removeDamagedRelations(groupName);
+	}
+	public void removeDamagedRelations(String groupName) {
+		getGameObject().removeThisAttributeListItem(Constants.DAMAGED_RELATIONS,groupName);
+	}
+	public boolean hasDamagedRelations(GameObject denizen) {
+		if (!isCharacter()) {
+			getHiringCharacter().hasDamagedRelations(denizen);
+		}
+		String groupName = RealmUtility.getRelationshipGroupName(denizen).toLowerCase().trim();
+		return getGameObject().hasThisAttributeListItem(Constants.DAMAGED_RELATIONS,groupName);
+	}
 	public ArrayList<String[]> getAllies(HostPrefWrapper hostPrefs) {
 		return getGroupsWithRelationship(hostPrefs,RelationshipType.ALLY);
 	}
@@ -6366,7 +6390,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			boolean isFoe = false;
 			for (GameObject inv : getInventory()) {
 				if (!isFoe && inv.hasThisAttribute(RealmComponent.GOLD_SPECIAL)) {
-					ArrayList<String> foes = inv.getThisAttributeList("foe");
+					ArrayList<String> foes = ((GoldSpecialChitComponent)RealmComponent.getRealmComponent(inv)).getFoes();
 					for (String foe : foes) {
 						if (nativeGroupName.toLowerCase().matches(foe.toLowerCase())) {
 							isFoe = true;

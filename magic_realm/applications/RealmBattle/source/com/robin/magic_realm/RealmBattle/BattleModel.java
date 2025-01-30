@@ -2765,7 +2765,7 @@ public class BattleModel {
 		ArrayList<String> allFoes = new ArrayList<String>();
 		for (GameObject inv : responsibleCharacter.getInventory()) {
 			if (!isFoe && inv.hasThisAttribute(RealmComponent.GOLD_SPECIAL)) {
-				ArrayList<String> foes = inv.getThisAttributeList("foe");
+				ArrayList<String> foes = ((GoldSpecialChitComponent)RealmComponent.getRealmComponent(inv)).getFoes();
 				for (String foe : foes) {
 					allFoes.add(foe.toLowerCase());
 					if (nativeGroupName.toLowerCase().matches(foe.toLowerCase())) {
@@ -2778,7 +2778,7 @@ public class BattleModel {
 		if (!isFoe) {
 			String currentRelString = RealmUtility.getRelationshipNameFor(responsibleCharacter,rc);
 			responsibleCharacter.changeRelationshipTo(rc.getGameObject(),RelationshipType.ENEMY);
-			//responsibleCharacter.addDamagedRelations(rc.getGameObject());
+			responsibleCharacter.addDamagedRelations(rc.getGameObject());
 			logBattleInfo(killer.getGameObject().getNameWithNumber()+" killed "+currentRelString+" "+rc.toString()+".");
 			logBattleInfo(responsibleCharacter.getCharacterName()+" relationship is harmed! (DAMAGED RELATIONS) --> ENEMY");
 			

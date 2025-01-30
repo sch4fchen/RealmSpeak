@@ -1,7 +1,4 @@
 ::ROADMAP::
-Super Realm: Damaged Relations: the character and his hired leaders cannot do trade or hire activity with any native group he has “damaged relations”
-Super Realm: If a character successfully completes a campaign, and he has “damaged relations” with a native group listed as Partner, then he has “repaired relations” with the group
-Super Realm: Damaged Relation 8.13.2 (p. 108)
 Super Realm: Quests + Events (Global Events = optional rule 11.11)
 Super Realm: Public quests on setup chart (+flag on quests if it can go on setup chart) (BGG variant: 2 quest cards per native)
 ---Detail Rules for Super Realm Spells---
