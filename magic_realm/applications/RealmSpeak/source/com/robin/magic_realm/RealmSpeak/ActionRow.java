@@ -1144,7 +1144,7 @@ public class ActionRow {
 					}
 										
 					// any spells for Read Runes?
-					if ((!mustUseMagicSight || canUseMagicSight) && character.isCharacter() && SpellUtility.getSpellCount(rc.getGameObject(),null,true)>0) {
+					if ((!mustUseMagicSight || canUseMagicSight) && !rc.getGameObject().hasThisAttribute(RealmComponent.TREASURE_WITHIN_TREASURE) && character.isCharacter() && SpellUtility.getSpellCount(rc.getGameObject(),null,true)>0) {
 						addTableToChooser(chooseSearch,RealmTable.readRunes(gameHandler.getMainFrame(),rc.getGameObject()));
 					}
 				}
@@ -1173,7 +1173,7 @@ public class ActionRow {
 		// check player inventory
 		if ((!mustUseMagicSight || canUseMagicSight)) {
 			for (GameObject item:character.getEnhancingItems()) {
-				if (SpellUtility.getSpellCount(item,null,true)>0) {
+				if (!item.hasThisAttribute(RealmComponent.TREASURE_WITHIN_TREASURE) && SpellUtility.getSpellCount(item,null,true)>0) {
 					addTableToChooser(chooseSearch,RealmTable.readRunes(gameHandler.getMainFrame(),item));
 				}
 			}

@@ -75,6 +75,7 @@ Would be nice to make weapon abilities too:
 
 Version 1.2.0.2
 SUPER REALM:
+# Cannot Read Runes of TWTs
 # Fix movement speed of Summoners
 
 Version 1.2.0.1

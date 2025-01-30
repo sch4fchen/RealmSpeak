@@ -118,7 +118,7 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 				}
 				
 				// Draw TWT designation
-				String twt = gameObject.getThisAttribute("treasure_within_treasure");
+				String twt = gameObject.getThisAttribute(TREASURE_WITHIN_TREASURE);
 				if (twt!=null) {
 					tt = new TextType("P"+twt,PRINT_WIDTH,"TITLE_RED");
 					tt.draw(g,PRINT_MARGIN,CARD_HEIGHT - 50,Alignment.Center);
