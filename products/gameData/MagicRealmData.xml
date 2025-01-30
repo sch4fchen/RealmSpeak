@@ -50290,14 +50290,14 @@
         <attribute spell_targets_self="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
-        <attribute move_speed="3" />
+        <attribute move_speed="2" />
         <attribute attack_speed="5" />
         <attribute strength="M" />
         <attribute length="9" />
         <attribute chit_color="lightgreen" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
-        <attribute move_speed="3" />
+        <attribute move_speed="2" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
@@ -50328,14 +50328,14 @@
         <attribute spell_targets_self="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
-        <attribute move_speed="3" />
+        <attribute move_speed="2" />
         <attribute attack_speed="5" />
         <attribute strength="M" />
         <attribute length="9" />
         <attribute chit_color="lightgreen" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
-        <attribute move_speed="3" />
+        <attribute move_speed="2" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
@@ -50366,14 +50366,14 @@
         <attribute spell_targets_self="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
-        <attribute move_speed="3" />
+        <attribute move_speed="2" />
         <attribute attack_speed="5" />
         <attribute strength="M" />
         <attribute length="9" />
         <attribute chit_color="lightgreen" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
-        <attribute move_speed="3" />
+        <attribute move_speed="2" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
@@ -50404,14 +50404,14 @@
         <attribute spell_targets_self="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
-        <attribute move_speed="3" />
+        <attribute move_speed="2" />
         <attribute attack_speed="5" />
         <attribute strength="M" />
         <attribute length="9" />
         <attribute chit_color="lightgreen" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
-        <attribute move_speed="3" />
+        <attribute move_speed="2" />
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
