@@ -35964,6 +35964,7 @@
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
         <attribute icon_folder="wesnoth/buildings" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1759" />
       <contains id="1760" />
@@ -35995,6 +35996,7 @@
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
         <attribute icon_folder="wesnoth/buildings" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1813" />
       <contains id="1814" />
@@ -36026,6 +36028,7 @@
         <attribute ts_color="tan" />
         <attribute icon_folder="wesnoth/buildings" />
         <attribute remove_curses="" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1769" />
       <contains id="1770" />
@@ -36054,6 +36057,7 @@
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
         <attribute icon_folder="wesnoth/buildings" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1765" />
       <contains id="1766" />
@@ -36103,6 +36107,7 @@
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
         <attribute icon_folder="wesnoth/buildings" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1834" />
       <contains id="1835" />
@@ -36124,6 +36129,7 @@
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
         <attribute icon_folder="wesnoth/buildings" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1838" />
       <contains id="1839" />
@@ -36147,6 +36153,7 @@
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
         <attribute icon_folder="wesnoth/buildings" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1830" />
       <contains id="1831" />
@@ -36166,6 +36173,7 @@
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
         <attribute icon_folder="wesnoth/buildings" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1823" />
       <contains id="1824" />
@@ -37024,6 +37032,7 @@
         <attribute icon_size="0.9" />
         <attribute roving_native="" />
         <attribute summon="Patter R, Patter H, Lost Fortress" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1318" />
       <contains id="1319" />
@@ -39550,6 +39559,7 @@
         <attribute icon_size="0.9" />
         <attribute roving_native="" />
         <attribute summon="Patter F, Patter ST, Lost Palace" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1403" />
       <contains id="1404" />
@@ -41685,6 +41695,7 @@
         <attribute icon_size="0.9" />
         <attribute roving_native="" />
         <attribute summon="Patter C, Patter V, Lost City" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1477" />
       <contains id="1478" />
@@ -47344,6 +47355,7 @@
         <attribute icon_size="0.9" />
         <attribute roving_native="" />
         <attribute summon="Patter M, Patter W, Lost Castle" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1743" />
       <contains id="1744" />
@@ -47595,7 +47607,6 @@
         <attribute super_realm="" />
         <attribute native_die="3" />
         <attribute clan="1" />
-        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1750" name="Patrol Dwelling">
@@ -47614,6 +47625,7 @@
         <attribute clan="1" />
         <attribute native_die="3" />
         <attribute icon_size="0.9" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1751" />
       <contains id="1752" />
@@ -48592,7 +48604,6 @@
         <attribute super_realm="" />
         <attribute native_die="5" />
         <attribute clan="2" />
-        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1780" name="Woodfolk Dwelling">
@@ -48611,6 +48622,7 @@
         <attribute native_die="5" />
         <attribute clan="2" />
         <attribute icon_size="0.9" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1781" />
       <contains id="1782" />
@@ -48773,7 +48785,6 @@
         <attribute super_realm="" />
         <attribute native_die="6" />
         <attribute clan="2" />
-        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1786" name="Lancer Dwelling">
@@ -48792,6 +48803,7 @@
         <attribute clan="2" />
         <attribute native_die="6" />
         <attribute icon_size="0.9" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1787" />
       <contains id="1788" />
@@ -48967,7 +48979,6 @@
         <attribute super_realm="" />
         <attribute native_die="3" />
         <attribute clan="3" />
-        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1792" name="Pony 1">
@@ -49078,6 +49089,7 @@
         <attribute native_die="3" />
         <attribute clan="3" />
         <attribute icon_size="0.9" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1797" />
       <contains id="1798" />
@@ -49320,7 +49332,6 @@
         <attribute summon="company" />
         <attribute super_realm="" />
         <attribute native_die="5" />
-        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1804" name="Company Dwelling">
@@ -49339,6 +49350,7 @@
         <attribute clan="3" />
         <attribute native_die="5" />
         <attribute icon_size="0.9" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1805" />
       <contains id="1806" />
@@ -50839,7 +50851,6 @@
         <attribute super_realm="" />
         <attribute native_die="1" />
         <attribute clan="1" />
-        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1847" name="Zealot Dwelling">
@@ -50858,6 +50869,7 @@
         <attribute clan="1" />
         <attribute native_die="1" />
         <attribute icon_size="0.9" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1848" />
       <contains id="1849" />
@@ -51135,7 +51147,6 @@
         <attribute super_realm="" />
         <attribute native_die="2" />
         <attribute clan="2" />
-        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1857" name="Aborigine Dwelling">
@@ -51154,6 +51165,7 @@
         <attribute native_die="2" />
         <attribute clan="2" />
         <attribute icon_size="0.9" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1858" />
       <contains id="1859" />
@@ -51393,7 +51405,6 @@
         <attribute super_realm="" />
         <attribute native_die="2" />
         <attribute clan="3" />
-        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1865" name="Coven Dwelling">
@@ -51412,6 +51423,7 @@
         <attribute native_die="2" />
         <attribute clan="3" />
         <attribute icon_size="0.9" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1866" />
       <contains id="1867" />
@@ -51545,7 +51557,6 @@
         <attribute super_realm="" />
         <attribute native_die="4" />
         <attribute clan="3" />
-        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1870" name="Hunter Dwelling">
@@ -51564,6 +51575,7 @@
         <attribute native_die="4" />
         <attribute clan="3" />
         <attribute icon_size="0.9" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1871" />
       <contains id="1872" />
@@ -51833,7 +51845,6 @@
         <attribute super_realm="" />
         <attribute native_die="1" />
         <attribute clan="4" />
-        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1880" name="Mercenary Dwelling">
@@ -51852,6 +51863,7 @@
         <attribute native_die="1" />
         <attribute clan="4" />
         <attribute icon_size="0.9" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1881" />
       <contains id="1882" />
@@ -52097,7 +52109,6 @@
         <attribute super_realm="" />
         <attribute native_die="5" />
         <attribute clan="4" />
-        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1888" name="Conjuror Dwelling">
@@ -52116,6 +52127,7 @@
         <attribute native_die="5" />
         <attribute clan="4" />
         <attribute icon_size="0.9" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1889" />
       <contains id="1890" />
@@ -52424,7 +52436,6 @@
         <attribute super_realm="" />
         <attribute native_die="6" />
         <attribute clan="4" />
-        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1898" name="Enchanter Dwelling">
@@ -52443,6 +52454,7 @@
         <attribute native_die="6" />
         <attribute clan="4" />
         <attribute icon_size="0.9" />
+		<attribute quest_target="" />
       </AttributeBlock>
       <contains id="1899" />
       <contains id="1900" />
@@ -61040,7 +61052,6 @@
         <attribute summon="bandits" />
         <attribute super_realm="" />
         <attribute clan="2" />
-        <attribute quest_target="" />
         <attribute monster_die="2" />
         <attribute monster_die2="3" />
       </AttributeBlock>
@@ -61054,7 +61065,6 @@
         <attribute summon_n="dwarves" />
         <attribute summon="dwarves" />
         <attribute super_realm="" />
-        <attribute quest_target="" />
         <attribute monster_die="5" />
         <attribute monster_die2="6" />
       </AttributeBlock>
@@ -61068,7 +61078,6 @@
         <attribute summon_n="cultists" />
         <attribute summon="cultists" />
         <attribute super_realm="" />
-        <attribute quest_target="" />
         <attribute monster_die="1" />
         <attribute monster_die2="2" />
       </AttributeBlock>
@@ -61082,7 +61091,6 @@
         <attribute summon_n="elves" />
         <attribute summon="elves" />
         <attribute super_realm="" />
-        <attribute quest_target="" />
         <attribute monster_die="3" />
         <attribute monster_die2="4" />
         <attribute ts_sort="4" />
@@ -61099,7 +61107,6 @@
         <attribute summon="peasants" />
         <attribute super_realm="" />
         <attribute native_die="2" />
-        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2322" name="Soldiers Box">
@@ -61113,7 +61120,6 @@
         <attribute summon="soldiers" />
         <attribute super_realm="" />
         <attribute native_die="4" />
-        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2323" name="Guard Box">
@@ -61127,7 +61133,6 @@
         <attribute summon="guard" />
         <attribute super_realm="" />
         <attribute native_die="5" />
-        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2324" name="Order Box">
@@ -61141,7 +61146,6 @@
         <attribute summon="order" />
         <attribute super_realm="" />
         <attribute native_die="6" />
-        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2325" name="Summoners Box">
@@ -61155,7 +61159,6 @@
         <attribute summon="summoners" />
         <attribute super_realm="" />
         <attribute native_die="1" />
-        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2326" name="Pagans Box">
@@ -61169,7 +61172,6 @@
         <attribute summon="pagans" />
         <attribute super_realm="" />
         <attribute native_die="4" />
-        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2327" name="Rogues Box">
@@ -61183,7 +61185,6 @@
         <attribute summon="rogues" />
         <attribute super_realm="" />
         <attribute native_die="6" />
-        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2328" name="Mages Box">
@@ -61197,7 +61198,6 @@
         <attribute summon="mages" />
         <attribute super_realm="" />
         <attribute native_die="3" />
-        <attribute quest_target="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2329" name="Altar Box">
