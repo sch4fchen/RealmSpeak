@@ -1347,8 +1347,9 @@ public class ActionRow {
 					ArrayList<QuestCardComponent> characterQuests = character.getUnfinishedNotAllPlayQuests();
 					if (character.getUnfinishedNotAllPlayQuestCount()!=0) {
 						ArrayList<QuestCardComponent> traderQuests = new ArrayList<>();
+						GameObject holder = null;
 						if (trader.isNative()) {
-							GameObject holder = SetupCardUtility.getDenizenHolder(trader.getGameObject());
+							holder = SetupCardUtility.getDenizenHolder(trader.getGameObject());
 							for(GameObject item:holder.getHold()) {
 								if ((RealmComponent.getRealmComponent(item)).isQuest()) {
 									traderQuests.add((QuestCardComponent) RealmComponent.getRealmComponent(item));
@@ -1382,9 +1383,15 @@ public class ActionRow {
 								if (selectedCharacterQuest!=null && selectedTraderQuest!="No Trade") {
 									RealmComponent quest1 = traderQuestChooser.getFirstSelectedComponent();
 									RealmComponent quest2 = characterQuestChooser.getFirstSelectedComponent();
+									
 									character.removeQuest(new Quest(quest2.getGameObject()));
-									trader.add(quest2);
-									trader.remove(quest1);
+									if (trader.isNative()) {
+										holder.remove(quest1.getGameObject());
+										holder.add(quest2.getGameObject());
+									} else {
+										trader.getGameObject().remove(quest1.getGameObject());
+										trader.getGameObject().add(quest2.getGameObject());
+									}
 									character.addQuest(gameHandler.getMainFrame(), new Quest(quest1.getGameObject()));
 								}
 							}
