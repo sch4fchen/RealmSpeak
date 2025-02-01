@@ -1148,25 +1148,32 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (!isCharacter()) {
 			getHiringCharacter().addDamagedRelations(denizen);
 		}
-		String groupName = RealmUtility.getRelationshipGroupName(denizen).toLowerCase().trim();
-		getGameObject().addThisAttributeListItem(Constants.DAMAGED_RELATIONS,groupName);
+		String groupName = RealmUtility.getRelationshipGroupName(denizen);
+		if (groupName!=null) {
+			getGameObject().addThisAttributeListItem(Constants.DAMAGED_RELATIONS,groupName.toLowerCase().trim());
+		}
 	}
 	public void removeDamagedRelations(GameObject denizen) {
 		if (!isCharacter()) {
 			getHiringCharacter().removeDamagedRelations(denizen);
 		}
-		String groupName = RealmUtility.getRelationshipGroupName(denizen).toLowerCase().trim();
-		removeDamagedRelations(groupName);
+		String groupName = RealmUtility.getRelationshipGroupName(denizen);
+		if (groupName!=null) {
+			removeDamagedRelations(groupName.toLowerCase().trim());
+		}
 	}
 	public void removeDamagedRelations(String groupName) {
-		getGameObject().removeThisAttributeListItem(Constants.DAMAGED_RELATIONS,groupName);
+		getGameObject().removeThisAttributeListItem(Constants.DAMAGED_RELATIONS,groupName.toLowerCase().trim());
 	}
 	public boolean hasDamagedRelations(GameObject denizen) {
 		if (!isCharacter()) {
 			getHiringCharacter().hasDamagedRelations(denizen);
 		}
-		String groupName = RealmUtility.getRelationshipGroupName(denizen).toLowerCase().trim();
-		return getGameObject().hasThisAttributeListItem(Constants.DAMAGED_RELATIONS,groupName);
+		String groupName = RealmUtility.getRelationshipGroupName(denizen);
+		if (groupName==null) {
+			return false;
+		}
+		return getGameObject().hasThisAttributeListItem(Constants.DAMAGED_RELATIONS,groupName.toLowerCase().trim());
 	}
 	public ArrayList<String[]> getAllies(HostPrefWrapper hostPrefs) {
 		return getGroupsWithRelationship(hostPrefs,RelationshipType.ALLY);
