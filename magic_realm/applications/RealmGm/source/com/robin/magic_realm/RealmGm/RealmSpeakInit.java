@@ -140,9 +140,7 @@ public class RealmSpeakInit {
 		assignTravelerTemplates();
 		
 		// Place quests to natives
-		if (hostPrefs.hasPref(Constants.QST_SR_QUESTS)) {
-			placeQuestsToNatives();
-		}
+		placeQuestsToNatives();
 		
 		// Build the map
 		if (hostPrefs.getBoardAutoSetup()) {

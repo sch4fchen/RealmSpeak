@@ -16,6 +16,7 @@ import com.robin.general.swing.IconFactory;
 import com.robin.general.util.*;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.*;
+import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.QuestBookEvents;
 import com.robin.magic_realm.components.quest.QuestDeck;
 import com.robin.magic_realm.components.swing.*;
@@ -804,6 +805,7 @@ public class RealmUtility {
 		ArrayList<GameObject> ret = new ArrayList<>();
 		for (GameObject ingo : go.getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(ingo);
+			if (ingo.hasThisAttribute(Constants.QUEST) || ingo.hasThisAttribute(Quest.QUEST_STEP)) continue;
 			if (!excludeUnseenTreasures || !rc.isTreasure() || ingo.hasThisAttribute(Constants.TREASURE_SEEN)) {
 				ret.add(ingo);
 				ret.addAll(getAllGameObjectsIn(ingo,excludeUnseenTreasures));

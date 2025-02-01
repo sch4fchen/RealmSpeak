@@ -1343,36 +1343,48 @@ public class ActionRow {
 					}
 				}
 				
-				if (hostPrefs.hasPref(Constants.QST_SR_QUESTS) && !character.isBlocked() && (trader.isNative() || trader.isVisitor() || trader.isTraveler())) {
-					ArrayList<QuestCardComponent> characterQuestsForTrade = character.getUnfinishedNotAllPlayQuests();
+				if (completed && hostPrefs.hasPref(Constants.QST_SR_QUESTS) && !character.isBlocked() && (trader.isNative() || trader.isVisitor() || trader.isTraveler())) {
+					ArrayList<QuestCardComponent> characterQuests = character.getUnfinishedNotAllPlayQuests();
 					if (character.getUnfinishedNotAllPlayQuestCount()!=0) {
-						ArrayList<QuestCardComponent> traderQuestsForTrade = new ArrayList<>();
-						for (GameObject item : trader.getHold()) {
-							if ((RealmComponent.getRealmComponent(item)).isQuest()) {
-								traderQuestsForTrade.add((QuestCardComponent) RealmComponent.getRealmComponent(item));
+						ArrayList<QuestCardComponent> traderQuests = new ArrayList<>();
+						if (trader.isNative()) {
+							GameObject holder = SetupCardUtility.getDenizenHolder(trader.getGameObject());
+							for(GameObject item:holder.getHold()) {
+								if ((RealmComponent.getRealmComponent(item)).isQuest()) {
+									traderQuests.add((QuestCardComponent) RealmComponent.getRealmComponent(item));
+								}
 							}
 						}
-						if (traderQuestsForTrade!=null && !traderQuestsForTrade.isEmpty()) {
+						else {
+							for (GameObject item : trader.getHold()) {
+								if ((RealmComponent.getRealmComponent(item)).isQuest()) {
+									traderQuests.add((QuestCardComponent) RealmComponent.getRealmComponent(item));
+								}
+							}
+						}
+						
+						if (traderQuests!=null && !traderQuests.isEmpty()) {
 							RealmComponentOptionChooser traderQuestChooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Select quest to trade:",true);
-							for (RealmComponent quest:traderQuestsForTrade) {
+							for (RealmComponent quest:traderQuests) {
 								traderQuestChooser.addRealmComponent(quest,quest.getGameObject().getName());
 							}
 							traderQuestChooser.addOption("none","No Trade");
 							traderQuestChooser.setVisible(true);
 							String selectedTraderQuest = traderQuestChooser.getSelectedText();
-							if (selectedTraderQuest!=null) {
+							if (selectedTraderQuest!=null && selectedTraderQuest!="No Trade") {
 								RealmComponentOptionChooser characterQuestChooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Select quest to trade:",true);
-								for (RealmComponent quest:characterQuestsForTrade) {
+								for (RealmComponent quest:characterQuests) {
 									characterQuestChooser.addRealmComponent(quest,quest.getGameObject().getName());
 								}
-								traderQuestChooser.addOption("none","No Trade");
+								characterQuestChooser.addOption("none","No Trade");
 								characterQuestChooser.setVisible(true);
 								String selectedCharacterQuest = characterQuestChooser.getSelectedText();
-								if (selectedCharacterQuest!=null) {
+								if (selectedCharacterQuest!=null && selectedTraderQuest!="No Trade") {
 									RealmComponent quest1 = traderQuestChooser.getFirstSelectedComponent();
 									RealmComponent quest2 = characterQuestChooser.getFirstSelectedComponent();
 									character.removeQuest(new Quest(quest2.getGameObject()));
 									trader.add(quest2);
+									trader.remove(quest1);
 									character.addQuest(gameHandler.getMainFrame(), new Quest(quest1.getGameObject()));
 								}
 							}
