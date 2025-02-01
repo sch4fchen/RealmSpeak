@@ -195,13 +195,9 @@ public class RealmSpeakInit {
 	private void placeQuestsToNatives() {
 		QuestDeck deck = QuestDeck.findDeck(data);
 		GamePool pool = new GamePool(data.getGameObjects());
-		ArrayList<GameObject> hqs = pool.find(hostPrefs.getGameKeyVals()+",native,rank=HQ");
+		ArrayList<GameObject> hqs = pool.find(hostPrefs.getGameKeyVals()+",quest_target");
 		for (GameObject go:hqs) {
-			deck.drawCard(go);
-		}
-		ArrayList<GameObject> visitors = pool.find(hostPrefs.getGameKeyVals()+",visitor");
-		for (GameObject go:visitors) {
-			deck.drawCard(go);
+			go.add(deck.drawCard(go).getGameObject());
 		}
 	}
 	private void enableAlternativeTilesInLoader(RealmLoader rl) {
