@@ -852,6 +852,7 @@ public class Constants {
 	
 	// Super Realm
 	public static final String SR_DEDUCT_VPS = "DeductVps";
+	public static final String SR_SETUP_TWO_QUESTS = "SetupTwoQuests";
 	public static final String SR_END_OF_MONTH_REGENERATION = "EndOfMonthRegeneration";
 	public static final String SR_NO_7TH_DAY_REGENERATION = "No7thDayRegeneration";
 	public static final String SR_HORSES_REGENERATION = "HorsesRegeneration";

@@ -1,6 +1,6 @@
 ::ROADMAP::
-Super Realm: Quests + Events (Global Events = optional rule 11.11)
-Super Realm: Public quests on setup chart (+flag on quests if it can go on setup chart) (BGG variant: 2 quest cards per native)
+Super Realm: Quests
+Super Realm: Events (Global Events = optional rule 11.11)
 ---Detail Rules for Super Realm Spells---
 Purple/Prism Anomalies can block/battle any individual transmorphized into mist.
 Enchant Weapon: any individual wielding the target weapon can target and attack individuals transformed into mist.

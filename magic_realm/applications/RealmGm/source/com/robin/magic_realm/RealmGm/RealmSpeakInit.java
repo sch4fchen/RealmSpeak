@@ -194,8 +194,12 @@ public class RealmSpeakInit {
 		QuestDeck deck = QuestDeck.findDeck(data);
 		GamePool pool = new GamePool(data.getGameObjects());
 		ArrayList<GameObject> hqs = pool.find(hostPrefs.getGameKeyVals()+",quest_target");
+		boolean twice = hostPrefs.hasPref(Constants.SR_SETUP_TWO_QUESTS);
 		for (GameObject go:hqs) {
 			go.add(deck.drawCard(go).getGameObject());
+			if (twice) {
+				go.add(deck.drawCard(go).getGameObject());
+			}
 		}
 	}
 	private void enableAlternativeTilesInLoader(RealmLoader rl) {
