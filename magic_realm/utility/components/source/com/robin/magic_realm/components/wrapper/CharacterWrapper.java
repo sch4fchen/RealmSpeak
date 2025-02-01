@@ -7309,6 +7309,17 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return count;
 	}
+	public ArrayList<QuestCardComponent> getUnfinishedNotAllPlayQuests() {
+		ArrayList<QuestCardComponent> quests = new ArrayList<>();
+		for(Quest quest:getAllQuests()) {
+			if (quest.isAllPlay()) continue;
+			QuestState state = quest.getState();
+			if (state!=QuestState.Complete && state!=QuestState.Failed) {
+				quests.add((QuestCardComponent) RealmComponent.getRealmComponent(quest.getGameObject()));
+			}
+		}
+		return quests;
+	}
 	public int getUnfinishedNonEventQuestCount() {
 		int count = 0;
 		for(Quest quest:getAllQuests()) {
@@ -7332,6 +7343,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public int getQuestSlotCount(HostPrefWrapper hostPrefs) {
 		if (hostPrefs.getQuestCardsHandSize() == 0) {
+			if (hostPrefs.hasPref(Constants.QST_SR_QUESTS)) {
+				return 5;
+			}
 			return getCharacterLevel() + 1;
 		}
 		return hostPrefs.getQuestCardsHandSize();

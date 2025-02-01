@@ -285,7 +285,7 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 
 			boolean hasAvailableSlots = (getCharacter().getQuestSlotCount(hostPrefs) - getCharacter().getUnfinishedNotAllPlayQuestCount()) > 0;
 			drawQuestsButton.setEnabled(isBirdsong && hasAvailableSlots && getCharacter().isCharacter() &&
-					((hostPrefs.isUsingQuestCards() && characterIsAtDwelling) || (hostPrefs.isUsingGuildQuests() && characterIsAtGuild)));
+					((hostPrefs.hasPref(Constants.QST_QUEST_CARDS) && characterIsAtDwelling) || (hostPrefs.isUsingGuildQuests() && characterIsAtGuild)));
 		}
 	}
 

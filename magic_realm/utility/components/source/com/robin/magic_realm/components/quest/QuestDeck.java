@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 
 import com.robin.game.objects.*;
 import com.robin.general.util.RandomNumber;
+import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
@@ -127,7 +129,7 @@ public class QuestDeck extends GameObjectWrapper {
 	/**
 	 * This will select a random quest card, remove it from the "deck", and add it to the current GameData collection.
 	 */
-	private Quest drawCard(CharacterWrapper character) {
+	public Quest drawCard(GameObject gameObject) {
 		ArrayList<String> list = getList(QUEST_CARD_LIST);
 		if (list!=null && list.size()>0) {
 			//int r = RandomNumber.getRandom(list.size());
@@ -142,10 +144,15 @@ public class QuestDeck extends GameObjectWrapper {
 			// If this is the last card, then "reshuffle" with discards
 			if (getListCount(QUEST_CARD_LIST)==0) reshuffle();
 			
-			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
-			if (hostPrefs.isUsingGuildQuests()) {
-				String guildName = character.getCurrentLocation().clearing.getGuild().getGameObject().getThisAttribute("guild");
-				if (!card.getGuild().matches(guildName)) {
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameObject.getGameData());
+			if (hostPrefs.isUsingGuildQuests() && gameObject.hasThisAttribute("character")) {
+				CharacterWrapper character = new CharacterWrapper(gameObject);
+				String guildName = null;
+				TileLocation loc = character.getCurrentLocation();
+				if (loc!=null && loc.hasClearing()) {
+					guildName = loc.clearing.getGuild().getGameObject().getThisAttribute("guild");
+				}
+				if (guildName==null || !card.getGuild().matches(guildName)) {
 					discardCard(card);
 					return null;
 				}
@@ -162,12 +169,17 @@ public class QuestDeck extends GameObjectWrapper {
 	public int drawCards(JFrame frame,CharacterWrapper character) {
 		int cardsDrawn = 0;
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
-		int n = character.getQuestSlotCount(hostPrefs) - character.getUnfinishedNotAllPlayQuestCount();
+		int n = 0;
+		if (hostPrefs.hasPref(Constants.QST_SR_QUESTS)) {
+			n = 2;
+		} else {
+			n = character.getQuestSlotCount(hostPrefs) - character.getUnfinishedNotAllPlayQuestCount();
+		}
 		if (getListCount(QUEST_CARD_LIST)==0) reshuffle();
 		if (getListCount(QUEST_CARD_LIST)==0) JOptionPane.showMessageDialog(frame,"There are no available quests to draw.","No available quests",JOptionPane.INFORMATION_MESSAGE);
 		boolean reshuffled = false;
 		while(n>0 && getCardCount()>0) {
-			Quest quest = drawCard(character);
+			Quest quest = drawCard(character.getGameObject());
 			if (quest==null) {
 				if (reshuffled) {
 					JOptionPane.showMessageDialog(frame,"There are not enough available quests to draw.","Not enough available quests",JOptionPane.INFORMATION_MESSAGE);
@@ -183,6 +195,10 @@ public class QuestDeck extends GameObjectWrapper {
 			n--;
 		}
 		return cardsDrawn;
+	}
+	public void drawCardForDenizen(GameObject denizen) {
+		if (getListCount(QUEST_CARD_LIST)==0) reshuffle();
+		if (getListCount(QUEST_CARD_LIST)==0) return;
 	}
 	
 	///////////////////////////////////////////////

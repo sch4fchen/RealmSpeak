@@ -139,6 +139,11 @@ public class RealmSpeakInit {
 		// Assign all travelers
 		assignTravelerTemplates();
 		
+		// Place quests to natives
+		if (hostPrefs.hasPref(Constants.QST_SR_QUESTS)) {
+			placeQuestsToNatives();
+		}
+		
 		// Build the map
 		if (hostPrefs.getBoardAutoSetup()) {
 			doBoardAutoSetup();
@@ -185,6 +190,18 @@ public class RealmSpeakInit {
 		for (GameObject go:travelers) {
 			TravelerChitComponent traveler = (TravelerChitComponent)RealmComponent.getRealmComponent(go);
 			traveler.assignTravelerTemplate();
+		}
+	}
+	private void placeQuestsToNatives() {
+		QuestDeck deck = QuestDeck.findDeck(data);
+		GamePool pool = new GamePool(data.getGameObjects());
+		ArrayList<GameObject> hqs = pool.find(hostPrefs.getGameKeyVals()+",native,rank=HQ");
+		for (GameObject go:hqs) {
+			deck.drawCard(go);
+		}
+		ArrayList<GameObject> visitors = pool.find(hostPrefs.getGameKeyVals()+",visitor");
+		for (GameObject go:visitors) {
+			deck.drawCard(go);
 		}
 	}
 	private void enableAlternativeTilesInLoader(RealmLoader rl) {

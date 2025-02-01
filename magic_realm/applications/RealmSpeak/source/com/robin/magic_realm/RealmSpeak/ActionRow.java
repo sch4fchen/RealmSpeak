@@ -12,6 +12,7 @@ import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.attribute.DayAction.ActionId;
 import com.robin.magic_realm.components.quest.CharacterActionType;
+import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
 import com.robin.magic_realm.components.store.GuildStore;
 import com.robin.magic_realm.components.store.Store;
@@ -1339,6 +1340,43 @@ public class ActionRow {
 					ArrayList<GameObject> boxes = pool.find("summon_n="+nativeName.toLowerCase());
 					for (GameObject box : boxes) {
 						ClearingUtility.dumpTravelersToTile(tl.tile.getGameObject(),box,tl.clearing.getNum());
+					}
+				}
+				
+				if (hostPrefs.hasPref(Constants.QST_SR_QUESTS) && !character.isBlocked() && (trader.isNative() || trader.isVisitor() || trader.isTraveler())) {
+					ArrayList<QuestCardComponent> characterQuestsForTrade = character.getUnfinishedNotAllPlayQuests();
+					if (character.getUnfinishedNotAllPlayQuestCount()!=0) {
+						ArrayList<QuestCardComponent> traderQuestsForTrade = new ArrayList<>();
+						for (GameObject item : trader.getHold()) {
+							if ((RealmComponent.getRealmComponent(item)).isQuest()) {
+								traderQuestsForTrade.add((QuestCardComponent) RealmComponent.getRealmComponent(item));
+							}
+						}
+						if (traderQuestsForTrade!=null && !traderQuestsForTrade.isEmpty()) {
+							RealmComponentOptionChooser traderQuestChooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Select quest to trade:",true);
+							for (RealmComponent quest:traderQuestsForTrade) {
+								traderQuestChooser.addRealmComponent(quest,quest.getGameObject().getName());
+							}
+							traderQuestChooser.addOption("none","No Trade");
+							traderQuestChooser.setVisible(true);
+							String selectedTraderQuest = traderQuestChooser.getSelectedText();
+							if (selectedTraderQuest!=null) {
+								RealmComponentOptionChooser characterQuestChooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Select quest to trade:",true);
+								for (RealmComponent quest:characterQuestsForTrade) {
+									characterQuestChooser.addRealmComponent(quest,quest.getGameObject().getName());
+								}
+								traderQuestChooser.addOption("none","No Trade");
+								characterQuestChooser.setVisible(true);
+								String selectedCharacterQuest = characterQuestChooser.getSelectedText();
+								if (selectedCharacterQuest!=null) {
+									RealmComponent quest1 = traderQuestChooser.getFirstSelectedComponent();
+									RealmComponent quest2 = characterQuestChooser.getFirstSelectedComponent();
+									character.removeQuest(new Quest(quest2.getGameObject()));
+									trader.add(quest2);
+									character.addQuest(gameHandler.getMainFrame(), new Quest(quest1.getGameObject()));
+								}
+							}
+						}
 					}
 				}
 				

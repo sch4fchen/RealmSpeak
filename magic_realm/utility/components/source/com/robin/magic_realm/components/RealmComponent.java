@@ -360,6 +360,10 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		return (this instanceof WarningChitComponent);
 	}
 	
+	public boolean isQuest() {
+		return (this instanceof QuestCardComponent);
+	}
+	
 	public boolean hasMagicProtection() {
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
 		return character.hasMagicProtection();
