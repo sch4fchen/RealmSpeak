@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
+import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.quest.CharacterActionType;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.TradeType;
@@ -17,6 +18,9 @@ public class QuestRequirementTrade extends QuestRequirement {
 	public static final String TRADE_TYPE = "_tt";
 	public static final String TRADE_WITH_REGEX = "_trx";
 	public static final String TRADE_ITEM_REGEX = "_irx";
+	public static final String TRADE_ITEM = "_trade_item";
+	public static final String TRADE_TREASURE = "_trade_treasure";
+	public static final String TRADE_SPELL = "_trade_spell";
 	public static final String ADD_MARK = "_add_mark";
 
 	public QuestRequirementTrade(GameObject go) {
@@ -41,15 +45,24 @@ public class QuestRequirementTrade extends QuestRequirement {
 			if (reqParams.objectList!=null && reqParams.objectList.size()>0) {
 				String itemRegex = getTradeItemRegEx();
 				Pattern itemPattern = itemRegex!=null && itemRegex.trim().length()>0?Pattern.compile(itemRegex):null;
+
 				for (GameObject go:reqParams.objectList) {
-					if (itemPattern==null || itemPattern.matcher(go.getName()).find()) {
-						if (markItem()) {
-							go.setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+					RealmComponent rc = RealmComponent.getRealmComponent(go);
+					if ((!tradeItem() && !tradeTreasure() && !tradeSpell()) ||
+							(tradeItem() && rc.isItem()) || (tradeTreasure() && rc.isTreasure()) || (tradeSpell() && rc.isSpell())) {	
+						if (itemPattern==null || itemPattern.matcher(go.getName()).find()) {
+							if (markItem()) {
+								go.setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+							}
+							return true;
 						}
-						return true;
 					}
 				}
-				logger.fine("No objects matching regex /"+itemRegex+"/ were traded.");
+				if (itemRegex==null) {
+					logger.fine("No objects of correct type were traded.");
+				} else {
+					logger.fine("No objects matching regex /"+itemRegex+"/ or of correct type were traded.");
+				}
 			}
 			else {
 				logger.fine("No objects were traded.");
@@ -89,6 +102,15 @@ public class QuestRequirementTrade extends QuestRequirement {
 	}
 	public String getTradeItemRegEx() {
 		return getString(TRADE_ITEM_REGEX);
+	}
+	public boolean tradeItem() {
+		return getBoolean(TRADE_ITEM);
+	}
+	public boolean tradeTreasure() {
+		return getBoolean(TRADE_TREASURE);
+	}
+	public boolean tradeSpell() {
+		return getBoolean(TRADE_SPELL);
 	}
 	public boolean markItem() {
 		return getBoolean(ADD_MARK);

@@ -244,6 +244,9 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementTrade.TRADE_TYPE, "Buy or Sell", FieldType.StringSelector,  TradeType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementTrade.TRADE_ITEM_REGEX, "Item Traded", FieldType.Regex, null, new String[] { "item" }));
 				list.add(new QuestPropertyBlock(QuestRequirementTrade.TRADE_WITH_REGEX, "Trade With", FieldType.Regex, null, new String[] { "native,rank=HQ","visitor" }));
+				list.add(new QuestPropertyBlock(QuestRequirementTrade.TRADE_ITEM, "Item?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementTrade.TRADE_TREASURE, "Treasure?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementTrade.TRADE_SPELL, "Spell?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementTrade.ADD_MARK, "Add mark to traded item?", FieldType.Boolean));
 				break;
 			case Weather:
