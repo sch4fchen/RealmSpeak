@@ -82,8 +82,8 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 Version 1.2.0.4
-SUPER REALM:
-
+BUGS/ISSUES:
+# Fix playing Super Realm without quests
 
 Version 1.2.0.3
 SUPER REALM:

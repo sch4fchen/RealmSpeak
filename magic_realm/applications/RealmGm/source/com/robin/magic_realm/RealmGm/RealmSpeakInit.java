@@ -197,12 +197,18 @@ public class RealmSpeakInit {
 	private void placeQuestsToNatives() {
 		QuestDeck deck = QuestDeck.findDeck(data);
 		GamePool pool = new GamePool(data.getGameObjects());
-		ArrayList<GameObject> hqs = pool.find(hostPrefs.getGameKeyVals()+",quest_target");
+		ArrayList<GameObject> targets = pool.find(hostPrefs.getGameKeyVals()+",quest_target");
 		boolean twice = hostPrefs.hasPref(Constants.SR_SETUP_TWO_QUESTS);
-		for (GameObject go:hqs) {
-			go.add(deck.drawCard(go).getGameObject());
+		for (GameObject go:targets) {
+			Quest quest = deck.drawCard(go);
+			if (quest!=null) {
+				go.add(quest.getGameObject());
+			}
 			if (twice) {
-				go.add(deck.drawCard(go).getGameObject());
+				Quest quest2 = deck.drawCard(go);
+				if (quest2!=null) {
+					go.add(quest2.getGameObject());
+				}
 			}
 		}
 	}
