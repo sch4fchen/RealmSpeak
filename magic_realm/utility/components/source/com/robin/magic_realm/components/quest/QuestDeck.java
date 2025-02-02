@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 import com.robin.game.objects.*;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.attribute.TileLocation;
-import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 

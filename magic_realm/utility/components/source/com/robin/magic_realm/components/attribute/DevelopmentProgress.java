@@ -2,6 +2,7 @@ package com.robin.magic_realm.components.attribute;
 
 import java.util.Collection;
 
+import com.robin.magic_realm.components.quest.QuestDeck;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
@@ -89,6 +90,12 @@ public class DevelopmentProgress {
 			
 			if (currentStage>stage) {
 				character.setCharacterStage(currentStage);
+				if (hostPrefs.hasPref(Constants.QST_SR_QUESTS)) {
+					if ((currentStage % 2) != 0) {
+						QuestDeck deck = QuestDeck.findDeck(character.getGameData());
+						deck.drawCard(character.getGameObject());
+					}
+				}
 			}
 		}
 	}
