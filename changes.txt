@@ -1,6 +1,16 @@
 ::ROADMAP::
-Super Realm: Quests
-Super Realm: Events (Global Events = optional rule 11.11)
+Super Realm: Quests:
+	page 1: 20x Trek the, The Dark Towers
+	page 2: Shake Rattle and Die, 20x Meet the
+	page 3: 10x Meet the, 4x Find, 7
+	page 4: 5x Silence, 15x Secrets, Traitor
+	page 5: 1x Secret, Ring Caster, Rat Pack, 16x Hire
+	page 6: 8x Hire, Happy Accident, 12x Assassinate
+	page 7: 13x Assassinate, Wraithbuster, World Without Magic, Warcraft, Troll Hunter, Tremendous Moster Hunter, Tomb Raider, There Can Be Only One
+	page 8: 5, 16 Massacre
+	page 9: 8x Massacre, 9, 4 Enchanting
+	page 10: Enchanting, 7
+Super Realm: Events (Global Events = optional rule 11.11): 33 Events
 ---Detail Rules for Super Realm Spells---
 Purple/Prism Anomalies can block/battle any individual transmorphized into mist.
 Enchant Weapon: any individual wielding the target weapon can target and attack individuals transformed into mist.
@@ -70,6 +80,10 @@ Would be nice to make weapon abilities too:
 	Immobilizing1 - When it hits all attacks undercut in current round
 	Immobilizing2 - When it hits all attacks undercut in next round
 	Stunning - Target cannot play an attack next round
+
+Version 1.2.0.4
+SUPER REALM:
+
 
 Version 1.2.0.3
 SUPER REALM:

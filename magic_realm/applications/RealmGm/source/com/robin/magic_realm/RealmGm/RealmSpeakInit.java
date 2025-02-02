@@ -68,6 +68,10 @@ public class RealmSpeakInit {
 			prepGuildQuests();
 		}
 		
+		if (hostPrefs.hasPref(Constants.SR_GLOBAL_EVENTS)) {
+			
+		}
+		
 		// Handle all pre-setup initialization
 		appendNames = new ArrayList<>();
 		if (hostPrefs.getAlternativeTilesEnabled()) {

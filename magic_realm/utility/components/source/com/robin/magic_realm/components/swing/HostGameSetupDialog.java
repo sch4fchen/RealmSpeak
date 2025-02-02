@@ -407,7 +407,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	}
 	private void initComponents() {
 		setIconImage(IconFactory.findIcon("images/interface/options.gif").getImage());
-		setSize(1080,900);
+		setSize(1080,980);
 		setLocationRelativeTo(null);
 		setModal(true);
 		
@@ -1079,7 +1079,12 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_PHASE_CHIT_ACTIVATION,"PHASE CHIT ACTIVATION (Super Realm) - Activating a phase chit in combat does not count as an action.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_REVEAL_TRAVELERS,"REVEAL TRAVELERS (Super Realm) - Travelers are revealed, when a character does a Search or Trade activity on the corresponding site or native leader.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_MAGIC_SIGHT_OPTIONAL,"MAGIC SIGHT NOT SELF-CANCELLING (Super Realm) - Maigc Sight effect of abilities, spells, treasures and nomads is not self-cancelling and usage of Phantom Glass and Shadow are optional.",false));
-		
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_NO_SPYING,"NO SPYING (Super Realm) - Spying is not possible (for looting or discovering paths).",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_END_OF_MONTH_REGENERATION,"END OF MONTH REGENERATION (Super Realm) - All denizen regenerate at the end of the month.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_NO_7TH_DAY_REGENERATION,"NO 7th day regeneration (Super Realm) - Denizens do NOT regenerate at the 7th day of the week.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_HORSES_REGENERATION,"HORSES REGENERATION (Super Realm) - Horses are regenerated.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.MAP_BUILDING_INCREASED_PRIO_TILE_PLACEMENT,"MAP GENERATION: MORE CONSISTENT MAPS - Tiles are more likly to be placed to river tiles when generating the map.",false));
+
 		newOptionPane.setTabHtmlDescription(EXPANDING_REALM_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Expanding the Realm</font></body></html>");
 		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_CUSTOM_CHARS,"CUSTOM CHARACTERS - Allow players to choose from custom characters.",true,null,requiresDevelopmentRules));
 		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_NO_DWELLING_START,"SOLITAIRE E.1.5-1.6 - No Dwelling Start - Dwellings/Ghosts are NOT revealed at the start, rather discovered like the Campfires.  Since there are no Dwellings at the start, you must enter the map from the edge.",false));
@@ -1123,15 +1128,11 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_NO_CHARACTER_QUEST_CARDS,"NO CHARACTER QUEST CARDS (Questing the Realm/Super Realm) - Characters cannot draw any quest cards (these quests are not added to the game).",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_QTR_AND_SR_QUEST_CARDS,"ADD ALL QUEST CARDS (Questing the Realm/Super Realm) - Add both, Questing the Realm and Super Realm quest cards, if playing Questing the Realm or Super Realm.",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_EXCHANGE_QTR_AND_SR_QUEST_CARDS,"EXCHANGE QtR and SR QUEST CARDS (Questing the Realm/Super Realm) - Add only the other quest card deck to the game (SR quest cards for QtR game, and QtR quest cards for SR game).",false));
-		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_DEDUCT_VPS,"DEDUCTING VPS (Super Realm rules) - Deduct VPs for discovering site chits and TWT or for completing tasks, missions, campaigns and quests. Calculating score as in Super Realm.",false));
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_DEDUCT_VPS,"DEDUCTING VPS (Super Realm) - Deduct VPs for discovering site chits and TWT or for completing tasks, missions, campaigns and quests. Calculating score as in Super Realm.",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_SETUP_TWO_QUESTS,"TWO QUESTS PER NATIVE - During setup, two instead of one quest card is added to every native HQ and traveler (requires Super Realm).",false));
-		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_COMPLETE_GOLD_SPECIAL_ONLY_ONCE,"COMPLETE CAMPAIGNS, MISSIONS, TASKS only once (Super Realm rules) - Each Campaign, Mission and Task can only completed once by every character.",false));
-		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_ONE_OF_EACH_GOLD_SPECIAL,"CAMPAIGNS and TASKS only one of each (Super Realm rules) - Only one Campaign and one Task token can be carried at the same time.",false));
-		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_END_OF_MONTH_REGENERATION,"END OF MONTH REGENERATION (Super Realm rules) - All denizen regenerate at the end of the month.",false));
-		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_NO_7TH_DAY_REGENERATION,"NO 7th day regeneration (Super Realm rules) - Denizens do NOT regenerate at the 7th day of the week.",false));
-		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_HORSES_REGENERATION,"HORSES REGENERATION (Super Realm rules) - Horses are regenerated.",false));
-		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_NO_SPYING,"NO SPYING (Super Realm rules) - Spying is not possible (for looting or discovering paths).",false));
-		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.MAP_BUILDING_INCREASED_PRIO_TILE_PLACEMENT,"MAP GENERATION: MORE CONSISTENT MAPS - Tiles are more likly to be placed to river tiles when generating the map.",false));
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_COMPLETE_GOLD_SPECIAL_ONLY_ONCE,"COMPLETE CAMPAIGNS, MISSIONS, TASKS only once (Super Realm) - Each Campaign, Mission and Task can only completed once by every character.",false));
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_ONE_OF_EACH_GOLD_SPECIAL,"CAMPAIGNS and TASKS only one of each (Super Realm) - Only one Campaign and one Task token can be carried at the same time.",false));
+		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_GLOBAL_EVENTS,"EVENTS (Super Realm) - Each day a random event is drawn.",false));
 		
 		newOptionPane.setTabHtmlDescription(HOUSE2_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">House Rules</font></body></html>");
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_NO_SPELL_LIMIT,"NO SPELL LIMIT - Magic Realm limits you to 14 spells per character.  This option removes that limit.",false));
