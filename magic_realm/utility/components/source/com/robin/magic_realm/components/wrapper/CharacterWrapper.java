@@ -7351,7 +7351,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public int getQuestSlotCount(HostPrefWrapper hostPrefs) {
 		if (hostPrefs.getQuestCardsHandSize() == 0) {
 			if (hostPrefs.hasPref(Constants.QST_SR_QUESTS)) {
-				return 5;
+				return (getCharacterLevel()+1)/2;
 			}
 			return getCharacterLevel() + 1;
 		}
