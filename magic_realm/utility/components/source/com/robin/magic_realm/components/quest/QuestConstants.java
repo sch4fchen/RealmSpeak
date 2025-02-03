@@ -35,7 +35,6 @@ public class QuestConstants {
 	public static final String FOR_FIGHTERS_GUILD = "_gfgt";
 	public static final String FOR_THIEVES_GUILD = "_gthv";
 	public static final String FOR_MAGIC_GUILD = "_gmag";
-	public static final String GLOBAL_EVENT = "_global_event";
 	
 	public static final String VARIANT_ORIGINAL = "_vorg";
 	public static final String VARIANT_PRUITTS = "_vprt";

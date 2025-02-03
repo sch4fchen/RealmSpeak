@@ -81,7 +81,6 @@ public class QuestBuilderFrame extends JFrame {
 	private JRadioButton magicGuildQuestOption;
 	private JRadioButton thievesGuildQuestOption;
 	private JRadioButton fightersGuildQuestOption;
-	private JCheckBox globalEvent;
 
 	private JCheckBox originalVariant;
 	private JCheckBox pruittsMonstersVariant;
@@ -209,7 +208,6 @@ public class QuestBuilderFrame extends JFrame {
 		bookOfQuestsEvent.setSelected(quest.getBoolean(QuestConstants.BOQ_EVENT));
 		questingTheRealm.setSelected(quest.getBoolean(QuestConstants.WORKS_WITH_QTR));
 		superRealm.setSelected(quest.getBoolean(QuestConstants.WORKS_WITH_SR));
-		globalEvent.setSelected(quest.getBoolean(QuestConstants.GLOBAL_EVENT));
 		cardCount.setText(quest.getString(QuestConstants.CARD_COUNT));
 		vpReward.setText(quest.getString(QuestConstants.VP_REWARD));
 		allPlayQuestOption.setSelected(quest.getBoolean(QuestConstants.QTR_ALL_PLAY));
@@ -248,7 +246,6 @@ public class QuestBuilderFrame extends JFrame {
 		quest.setBoolean(QuestConstants.WORKS_WITH_BOQ, bookOfQuests.isSelected());
 		quest.setBoolean(QuestConstants.WORKS_WITH_QTR, questingTheRealm.isSelected());
 		quest.setBoolean(QuestConstants.WORKS_WITH_SR, superRealm.isSelected());
-		quest.setBoolean(QuestConstants.GLOBAL_EVENT, globalEvent.isSelected());
 		quest.setBoolean(QuestConstants.BOQ_EVENT, bookOfQuestsEvent.isSelected());
 		quest.setBoolean(QuestConstants.QTR_ALL_PLAY, allPlayQuestOption.isSelected());
 		quest.setBoolean(QuestConstants.QTR_SECRET_QUEST, secretQuestOption.isSelected());
@@ -712,7 +709,7 @@ public class QuestBuilderFrame extends JFrame {
 	private JPanel buildLimitationCheckOptions() {
 		JPanel panel = new JPanel(new GridLayout(1, 3));
 
-		JPanel reallyLeft = new JPanel(new GridLayout(13, 1));
+		JPanel reallyLeft = new JPanel(new GridLayout(12, 1));
 		reallyLeft.setBorder(BorderFactory.createTitledBorder("Quest Type"));
 		bookOfQuests = new JCheckBox("Book of Quests");
 		bookOfQuests.addActionListener(cardUpdateListener);
@@ -787,10 +784,6 @@ public class QuestBuilderFrame extends JFrame {
 		boxGuilds.add(thievesGuildQuestOption);
 		reallyLeft.add(boxGuilds);
 		guildGroup.add(thievesGuildQuestOption);
-		
-		globalEvent = new JCheckBox("Global Event");
-		globalEvent.addActionListener(cardUpdateListener);
-		reallyLeft.add(globalEvent);
 
 		panel.add(reallyLeft);
 

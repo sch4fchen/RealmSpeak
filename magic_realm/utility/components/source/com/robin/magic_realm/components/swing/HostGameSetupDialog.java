@@ -1132,7 +1132,6 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_SETUP_TWO_QUESTS,"TWO QUESTS PER NATIVE - During setup, two instead of one quest card is added to every native HQ and traveler (requires Super Realm).",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_COMPLETE_GOLD_SPECIAL_ONLY_ONCE,"COMPLETE CAMPAIGNS, MISSIONS, TASKS only once (Super Realm) - Each Campaign, Mission and Task can only completed once by every character.",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_ONE_OF_EACH_GOLD_SPECIAL,"CAMPAIGNS and TASKS only one of each (Super Realm) - Only one Campaign and one Task token can be carried at the same time.",false));
-		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_GLOBAL_EVENTS,"EVENTS (Super Realm) - Each day a random event is drawn.",false));
 		
 		newOptionPane.setTabHtmlDescription(HOUSE2_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">House Rules</font></body></html>");
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_NO_SPELL_LIMIT,"NO SPELL LIMIT - Magic Realm limits you to 14 spells per character.  This option removes that limit.",false));
