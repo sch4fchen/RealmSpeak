@@ -1,7 +1,7 @@
 ::ROADMAP::
 Super Realm: Quests:
 	page 1: 20x Trek the, The Dark Towers
-	page 3: 10x Meet the, 4x Find, 7
+	page 3: 4x Find, 7
 	page 4: 5x Silence, 15x Secrets, Traitor
 	page 5: 1x Secret, Ring Caster, Rat Pack, 16x Hire
 	page 6: 8x Hire, Happy Accident, 12x Assassinate
