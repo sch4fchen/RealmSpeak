@@ -80,9 +80,33 @@ public class QuestRequirementTrade extends QuestRequirement {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Must ");
 		sb.append(tt.toString().toLowerCase());
-		sb.append(" the /");
-		sb.append(getTradeItemRegEx());
-		sb.append("/ ");
+		if (tradeItem()) {
+			sb.append(" an item");
+		}
+		if (tradeTreasure()) {
+			if (tradeItem()) {
+				sb.append(" or");
+			}
+			sb.append(" a treasure");
+		}
+		if (tradeSpell()) {
+			if (tradeTreasure() || (!tradeTreasure() && tradeItem())) {
+				sb.append(" or");
+			}
+			sb.append(" a spell");
+		}
+		if (getTradeItemRegEx()!=null && !getTradeItemRegEx().isEmpty()) {
+			if (tradeItem() || tradeTreasure() || tradeSpell()) {
+				sb.append(",");	
+			}
+			sb.append(" the /");
+			sb.append(getTradeItemRegEx());
+			sb.append("/");
+			if (tradeItem() || tradeTreasure() || tradeSpell()) {
+				sb.append(",");	
+			}
+			sb.append(" ");	
+		}
 		sb.append(tt==TradeType.Buy?"from":"to");
 		sb.append(" the ");
 		sb.append("/");

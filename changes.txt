@@ -1,7 +1,6 @@
 ::ROADMAP::
 Super Realm: Quests:
 	page 1: 20x Trek the, The Dark Towers
-	page 2: Shake Rattle and Die, 20x Meet the
 	page 3: 10x Meet the, 4x Find, 7
 	page 4: 5x Silence, 15x Secrets, Traitor
 	page 5: 1x Secret, Ring Caster, Rat Pack, 16x Hire
@@ -11,6 +10,8 @@ Super Realm: Quests:
 	page 9: 8x Massacre, 9, 4 Enchanting
 	page 10: Enchanting, 7
 Super Realm: Events (Global Events = optional rule 11.11): 33 Events
+Super Realm Combat System: 3x3 positioning
+Super Realm Combat optional rule: survival tactics
 ---Detail Rules for Super Realm Spells---
 Purple/Prism Anomalies can block/battle any individual transmorphized into mist.
 Enchant Weapon: any individual wielding the target weapon can target and attack individuals transformed into mist.
@@ -34,9 +35,6 @@ Randomize orders of weapons during setup: 4.3.4.2, optional rule 4.3.4.3, rules 
 Abandoning treasures, ordering stack: 4.3.4.5 and 4.3.5a+b
 Selling information: info about secret passages, hidden paths, treasures sites and TWT is not transferable 4.5.6
 Magic color at 7th day: White magic is supplied on Day 7 of month 1, 3, 5, etc), Black magic is supplied on the even numbered months on Day 7 (ie Black magic is supplied on Day 7 of month 2, 4, 6, etc),:  4.6.2.e
----Super Realms: Altered Combat System---
-3x3 positioning
-optional rule: survival tactics
 ---Super Realms Rules - Optional Rules---
 Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
 3rdEdition / RealmSpeak: Optional Character Rules (A.6, p. 186): Captain, Druid, Magician, WIZARD ignores SPX, Woods Girl, Elf
@@ -48,6 +46,7 @@ Super Realm: Optional Rules: Starting location always the Inn
 Super Realm: Characters, including potraits with credits, different chit icon
 ---Additional features---
 Super Realm: icons for site chits, sound and warning chits, characters
+Quest: option add icon for minor character
 UI: Dark Theme (flatLaf), Nimbus Theme
 ---Optional Rules---
 Super Realm: Optional Rules (and 1st Ed): Severe wounds (SR: 10.1, p.114) = Serious Wounds, but wounds *2
@@ -73,8 +72,7 @@ Super Realm: Optional Rules: Cornered (SR: 11.13, p.128)
 Super Realm: Player building map: distribute tiles equally (including river tiles), distribute river tiles first, then grotto, then rest, each player has 3 tiles in the hand and draws after placing, skip player if he cannot place any tile (and he has no river tile), if all players are skipped or player would be skipped but has river tile, undo last placement, do not allow placing grotto before all other river tiles have been placed
 First Edition Optional Rule - https://boardgamegeek.com/thread/2503528/1st-edition-vs-3rd-edition: Native blocking, First Edition Optional Rule - Native kiling, e.g. grudges but instantly relationship becomes enemy status, Followers summon Monsters?, Hired native Leaders?, learning spells? campaigns?, combat endls only if no attack was made
 First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
----New Features - but currently of no use ---
-Quest: option add icon for minor character
+---New Features---
 Combat Help System
 Would be nice to make weapon abilities too:
 	Immobilizing1 - When it hits all attacks undercut in current round
@@ -82,7 +80,8 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 Version 1.2.0.5
-
+SUPER REALM:
+# add some quests
 
 Version 1.2.0.4
 BUGS/ISSUES:
