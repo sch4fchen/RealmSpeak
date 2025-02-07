@@ -7,7 +7,7 @@ Super Realm: Quests:
 	page 6: 8x Hire, Happy Accident, 12x Assassinate
 	page 7: 13x Assassinate, Wraithbuster, World Without Magic, Warcraft, Troll Hunter, Tremendous Moster Hunter, Tomb Raider, There Can Be Only One
 	page 8: 5, 16 Massacre
-	page 9: 8x Massacre, 9, 4 Enchanting
+	page 9: 8x Massacre, 9, 4x Enchanting
 	page 10: Enchanting, 7
 Super Realm: Events (Global Events = optional rule 11.11): 33 Events
 Super Realm Combat System: 3x3 positioning
@@ -82,6 +82,10 @@ Would be nice to make weapon abilities too:
 Version 1.2.0.5
 SUPER REALM:
 # add some quests
+QUEST UPDATE:
+# QuestRequirementKillGuardian
+BUGS/ISSUES:
+# Fix casting tied up magic type of an scroll or spell book
 
 Version 1.2.0.4
 BUGS/ISSUES:

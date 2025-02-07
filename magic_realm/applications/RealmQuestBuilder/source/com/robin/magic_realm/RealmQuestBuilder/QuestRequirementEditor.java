@@ -168,6 +168,10 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementKill.TARGET_VALUE_TYPE, "Only count points gained during the", FieldType.StringSelector, TargetValueType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementKill.REQUIRE_MARK, "Mark is required", FieldType.Boolean));
 				break;
+			case KillGuardian:
+				list.add(new QuestPropertyBlock(QuestRequirementKillGuardian.GUARDIAN_AND_SITE, "Guardian", FieldType.StringSelector, getGuardians().toArray()));
+				list.add(new QuestPropertyBlock(QuestRequirementKillGuardian.TARGET_VALUE_TYPE, "Only count points gained during the", FieldType.StringSelector, TargetValueType.values()));
+				break;
 			case LearnAwaken:
 				list.add(new QuestPropertyBlock(QuestRequirementLearnAwaken.REGEX_FILTER, "Spell filter (regex)", FieldType.Regex, null, new String[] { "spell,learnable" }));
 				list.add(new QuestPropertyBlock(QuestRequirementLearnAwaken.MUST_LEARN, "Must Learn Spell", FieldType.Boolean));
@@ -317,5 +321,24 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 		}
 		Collections.sort(list);		
 		return list;
+	}
+	
+	private ArrayList<String> getGuardians() {
+		ArrayList<String> guardians = new ArrayList<String>();
+		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
+		ArrayList<GameObject> monsters = pool.find("monster,setup_start");
+		for (GameObject monster : monsters) {
+			String setupStart = monster.getThisAttribute("setup_start");
+			if (setupStart!=null && !setupStart.isEmpty()) {
+				ArrayList<GameObject> boxes = pool.find("name="+setupStart+",treasure_location");
+				for (GameObject box : boxes) {
+					String guardianAndSite = monster.getName()+" ("+box.getName()+")";
+					if (!guardians.contains(guardianAndSite)) {
+						guardians.add(guardianAndSite);
+					}
+				}
+			}
+		}
+		return guardians;
 	}
 }

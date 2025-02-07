@@ -39,6 +39,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		Hirelings,
 		Inventory, // a requirement that tests what you have in inventory
 		Kill,
+		KillGuardian,
 		LearnAwaken,
 		LocationExists,
 		Loot, // (optional location designation)
@@ -302,6 +303,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case Kill:
 				requirement = new QuestRequirementKill(go);
+				break;
+			case KillGuardian:
+				requirement = new QuestRequirementKillGuardian(go);
 				break;
 			case LearnAwaken:
 				requirement = new QuestRequirementLearnAwaken(go);
