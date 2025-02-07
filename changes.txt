@@ -2,11 +2,11 @@
 Super Realm: Quests:
 	page 1: 20x Trek the, The Dark Towers
 	page 3: Words Worth, Valiant
-	page 4: 5x Silence, 15x Secrets, Traitor
+	page 4: 5x Silence, Traitor
 	page 5: 1x Secret, Ring Caster, Rat Pack, 16x Hire
 	page 6: 8x Hire, Happy Accident, 12x Assassinate
 	page 7: 13x Assassinate, Wraithbuster, World Without Magic, Warcraft, Troll Hunter, Tremendous Moster Hunter, Tomb Raider, There Can Be Only One
-	page 8: 5, 16 Massacre
+	page 8: 5, 16x Massacre
 	page 9: 8x Massacre, 9, 4x Enchanting
 	page 10: Enchanting, 7
 Super Realm: Events (Global Events = optional rule 11.11): 33 Events
