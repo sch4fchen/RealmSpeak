@@ -398,6 +398,9 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case QuestFailed:
 				break;
+			case QuestSticky:
+				list.add(new QuestPropertyBlock(QuestRewardQuestSticky.UNSTICKY, "Remove sticky?", FieldType.Boolean));
+				break;
 			case QuestVps:
 				list.add(new QuestPropertyBlock(QuestRewardQuestVps.AMOUNT, "Amount", FieldType.Number));
 				list.add(new QuestPropertyBlock(QuestRewardQuestVps.SUBSTRACT, "Substract points?", FieldType.Boolean));

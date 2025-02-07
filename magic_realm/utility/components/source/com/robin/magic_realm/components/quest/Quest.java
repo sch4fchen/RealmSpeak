@@ -34,6 +34,7 @@ public class Quest extends GameObjectWrapper {
 	public static final String QUEST_BLOCK = "qb";
 	private static final String DESCRIPTION = "_d";
 	public static final String STATE = "_q_state";
+	public static final String QUEST_STICKY = "quest_sticky";
 	private static final String LOST_INVENTORY_RULE = "_li";
 	private static final String LOST_INVENTORY_LOCATION = "_lil";
 	private static final String REQ_RULES = "_rr";
@@ -369,6 +370,14 @@ public class Quest extends GameObjectWrapper {
 	public QuestState getState() {
 		String val = getString(STATE);
 		return val == null ? QuestState.New : QuestState.valueOf(val);
+	}
+	
+	public void setSticky(boolean sticky) {
+		setBoolean(QUEST_STICKY,sticky);
+	}
+	
+	public boolean isSticky() {
+		return getBoolean(QUEST_STICKY);
 	}
 
 	/**

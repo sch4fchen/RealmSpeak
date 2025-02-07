@@ -71,6 +71,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		PowerOfThePit,
 		QuestComplete,
 		QuestFailed,
+		QuestSticky,
 		QuestVps,
 		RegenerateDenizen,
 		RelationshipChange,
@@ -446,6 +447,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case QuestFailed:
 				reward = new QuestRewardFailed(go);
+				break;
+			case QuestSticky:
+				reward = new QuestRewardQuestSticky(go);
 				break;
 			case QuestVps:
 				reward = new QuestRewardQuestVps(go);

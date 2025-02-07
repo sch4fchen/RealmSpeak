@@ -1344,8 +1344,14 @@ public class ActionRow {
 				}
 				
 				if (completed && hostPrefs.hasPref(Constants.QST_SR_QUESTS) && !character.isBlocked() && (trader.isNative() || trader.isVisitor() || trader.isTraveler())) {
-					ArrayList<QuestCardComponent> characterQuests = character.getUnfinishedNotAllPlayQuests();
-					if (character.getUnfinishedNotAllPlayQuestCount()!=0) {
+					ArrayList<QuestCardComponent> unfinishedQuests = character.getUnfinishedNotAllPlayQuests();
+					ArrayList<QuestCardComponent> characterQuests = new ArrayList<>();
+					for (QuestCardComponent quest : unfinishedQuests) {
+						if (!(new Quest(quest.getGameObject()).isSticky())) {
+							characterQuests.add(quest);
+						}
+					}
+					if (!characterQuests.isEmpty()) {
 						ArrayList<QuestCardComponent> traderQuests = new ArrayList<>();
 						GameObject holder = null;
 						if (trader.isNative()) {
@@ -1375,6 +1381,7 @@ public class ActionRow {
 							if (selectedTraderQuest!=null && selectedTraderQuest!="No Trade") {
 								RealmComponentOptionChooser characterQuestChooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Select quest to trade:",true);
 								for (RealmComponent quest:characterQuests) {
+									
 									characterQuestChooser.addRealmComponent(quest,quest.getGameObject().getName());
 								}
 								characterQuestChooser.addOption("none","No Trade");
