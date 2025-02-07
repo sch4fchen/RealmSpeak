@@ -637,6 +637,10 @@ public class Quest extends GameObjectWrapper {
 		for (QuestStep step : steps) {
 			step.setState(QuestStepState.Pending, dayKey);
 		}
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameData());
+		if (hostPrefs.hasPref(Constants.QST_SR_QUESTS)) {
+			setState(QuestState.Active,character.getCurrentDayKey(), character);
+		}
 		updateStepStates(dayKey);
 		if (resetLocation) {
 			for (QuestLocation location : getLocations()) {

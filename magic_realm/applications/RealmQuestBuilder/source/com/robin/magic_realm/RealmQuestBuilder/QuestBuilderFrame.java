@@ -567,7 +567,7 @@ public class QuestBuilderFrame extends JFrame {
 		switch (mode) {
 		case QtR:
 			for (Quest quest : quests) {
-				if (quest.getBoolean(QuestConstants.WORKS_WITH_QTR) || quest.getBoolean(QuestConstants.WORKS_WITH_SR)) {
+				if (quest.getBoolean(QuestConstants.WORKS_WITH_QTR)) {
 					questCards.add(quest);
 				}
 			}
@@ -582,6 +582,13 @@ public class QuestBuilderFrame extends JFrame {
 		case GQ:
 			for (Quest quest : quests) {
 				if (quest.getGuild()!=null) {
+					questCards.add(quest);
+				}
+			}
+			break;
+		case SR:
+			for (Quest quest : quests) {
+				if (quest.getBoolean(QuestConstants.WORKS_WITH_SR)) {
 					questCards.add(quest);
 				}
 			}
