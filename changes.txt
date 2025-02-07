@@ -5,7 +5,7 @@ Super Realm: Quests:
 	page 4: 5x Silence, Traitor
 	page 5: Ring Caster, Rat Pack, 16x Hire
 	page 6: 8x Hire, Happy Accident
-	page 7: 13x Assassinate, Wraithbuster, World Without Magic, Warcraft, Troll Hunter, Tremendous Moster Hunter, Tomb Raider, There Can Be Only One
+	page 7: Artifact Caster, Wraithbuster, World Without Magic, Warcraft, Troll Hunter, Tremendous Moster Hunter, Tomb Raider, There Can Be Only One
 	page 8: 5, 16x Massacre
 	page 9: 8x Massacre, 9, 4x Enchanting
 	page 10: Enchanting, 7
