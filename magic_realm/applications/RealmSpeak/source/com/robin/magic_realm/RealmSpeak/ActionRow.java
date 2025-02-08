@@ -2142,7 +2142,8 @@ public class ActionRow {
 							ArrayList<String> treasureMagicTypes = TreasureCardComponent.readAvailableMagicTypes(character.getCurrentDayKey(),treasure);
 							if (treasureMagicTypes.isEmpty()) continue;
 							for (String treasureMagicColor : treasureMagicTypes) {
-								if (chit.compatibleWith(ColorMagic.getMagicColorFromMagicType(treasureMagicColor))) {
+								ColorMagic treasureColorMagic = ColorMagic.getMagicColorFromMagicType(treasureMagicColor);
+								if (treasureColorMagic!=null && chit.compatibleWith(treasureColorMagic)) {
 									RealmComponent[] set = new RealmComponent[3];
 									set[0] = (RealmComponent)chit;
 									set[1] = RealmComponent.getRealmComponent(treasure);

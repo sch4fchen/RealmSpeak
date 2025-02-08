@@ -676,6 +676,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 	}
 	
 	public boolean compatibleWith(ColorMagic cm) {
+		if (cm==null) return false;
 		int magicNumber = getMagicNumber();
 		if (magicNumber==cm.getColorNumber()) return true;
 		if ((magicNumber==2||magicNumber==3||magicNumber==4) && cm.isPrismColor()) {

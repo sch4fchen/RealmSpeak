@@ -3,7 +3,7 @@ Super Realm: Quests:
 	page 1: 20x Trek the, The Dark Towers
 	page 3: Words Worth, Valiant
 	page 4: 5x Silence, Traitor
-	page 5: Ring Caster, Rat Pack
+	page 5: Ring Caster
 	page 6: Happy Accident
 	page 7: Artifact Caster, Tomb Raider, There Can Be Only One
 	page 8: The Rings to Rule Them All, Small Collection, 16x Massacre
@@ -82,6 +82,8 @@ Would be nice to make weapon abilities too:
 
 Version 1.2.0.6
 SUPER REALM:
+BUGS/ISSUES:
+# Fix crash regarding Spell action and Magic Rings
 
 Version 1.2.0.5
 SUPER REALM:
