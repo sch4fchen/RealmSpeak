@@ -83,6 +83,8 @@ Would be nice to make weapon abilities too:
 Version 1.2.0.6
 SUPER REALM:
 # add some more quests
+Quest Update:
+QuestRequirementEnchant: option to test for site in the enchanted tile
 BUGS/ISSUES:
 # Fix crash regarding Spell action and Magic Rings
 

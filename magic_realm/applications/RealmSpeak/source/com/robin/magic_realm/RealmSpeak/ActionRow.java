@@ -2205,6 +2205,7 @@ public class ActionRow {
 						QuestRequirementParams params = new QuestRequirementParams();
 						params.actionType = CharacterActionType.Enchant;
 						params.actionName = "tile";
+						params.objectList.add(tile.getGameObject());
 						character.testQuestRequirements(gameHandler.getMainFrame(), params);
 					}
 					else {

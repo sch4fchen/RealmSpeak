@@ -107,6 +107,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				break;
 			case Enchant:
 				list.add(new QuestPropertyBlock(QuestRequirementEnchant.TYPE, "Target", FieldType.StringSelector, new String[] { "chit", "tile"} ));
+				list.add(new QuestPropertyBlock(QuestRequirementEnchant.SITE, "Site ust be on the tile?", FieldType.StringSelector, getTreasureLocationsAndRedSpecialsAndDwellingsStrings().toArray()));
 				break;
 			case Fighter:
 				break;
@@ -301,6 +302,29 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 		list.addAll(sublist);
 		
 		return list;
+	}
+	
+	private ArrayList<String> getTreasureLocationsAndRedSpecialsAndDwellingsStrings() {
+		ArrayList<String> list = new ArrayList<>();
+		ArrayList<String> choices = new ArrayList<>();
+		
+		// Build the discovery lists
+		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
+		for(GameObject go:pool.find("treasure_location")) {
+			if(!list.contains(go.getName())) list.add(go.getName());
+		}
+		for(GameObject go:pool.find("red_special")) {
+			if(!list.contains(go.getName())) list.add(go.getName());
+		}
+		for(GameObject go:pool.find("dwelling,!virtual_dwelling")) {
+			if(!list.contains(go.getName())) list.add(go.getName());
+		}
+		Collections.sort(list);
+		
+		choices.add("none");
+		choices.addAll(list);
+		
+		return choices;
 	}
 
 	private ArrayList<QuestLocation> getOptionalQuestLocationArray() {
