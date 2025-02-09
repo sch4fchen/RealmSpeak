@@ -8,7 +8,7 @@ Super Realm: Quests:
 	page 7: Artifact Caster, Tomb Raider, There Can Be Only One
 	page 8: The Rings to Rule Them All, Small Collection
 	page 9: Large Collection, 4x Enchanting
-	page 10: 1x Enchanting, Chronicler, Buying a Small Army, Beautiful View, Acquire Valuables
+	page 10: 1x Enchanting, Chronicler, Buying a Small Army, Acquire Valuables
 Tower + Spire: teleport, spell cannot be recorded (4.4.9)
 Super Realm Combat System: 3x3 positioning
 Super Realm Combat optional rule: survival tactics
