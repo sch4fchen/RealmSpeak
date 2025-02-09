@@ -6,9 +6,9 @@ Super Realm: Quests:
 	page 5: Ring Caster
 	page 6: Happy Accident
 	page 7: Artifact Caster, Tomb Raider, There Can Be Only One
-	page 8: The Rings to Rule Them All, Small Collection, 16x Massacre
-	page 9: 8x Massacre, 9, 4x Enchanting
-	page 10: Enchanting, 7
+	page 8: The Rings to Rule Them All, Small Collection
+	page 9: Large Collection, 4x Enchanting
+	page 10: 1x Enchanting, Chronicler, Buying a Small Army, Beautiful View, Acquire Valuables
 Tower + Spire: teleport, spell cannot be recorded (4.4.9)
 Super Realm Combat System: 3x3 positioning
 Super Realm Combat optional rule: survival tactics
@@ -82,6 +82,7 @@ Would be nice to make weapon abilities too:
 
 Version 1.2.0.6
 SUPER REALM:
+# add some more quests
 BUGS/ISSUES:
 # Fix crash regarding Spell action and Magic Rings
 
