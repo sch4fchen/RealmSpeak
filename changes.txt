@@ -81,11 +81,13 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 Version 1.2.0.7
+QUEST UPDATE:
+# QuestRequirementSearchTile
 
 Version 1.2.0.6
 SUPER REALM:
 # add some more quests
-Quest Update:
+QUEST UPDATE:
 QuestRequirementEnchant: option to test for site in the enchanted tile
 BUGS/ISSUES:
 # Fix crash regarding Spell action and Magic Rings

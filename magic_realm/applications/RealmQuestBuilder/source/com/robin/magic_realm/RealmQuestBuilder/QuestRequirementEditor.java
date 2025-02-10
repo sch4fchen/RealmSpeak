@@ -239,6 +239,15 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementSearchResult.REQUIRES_GAIN, "Require search effect", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementSearchResult.REQUIRES_NO_GAIN, "Requires no search effect", FieldType.Boolean));
 				break;
+			case SearchTile:
+				list.add(new QuestPropertyBlock(QuestRequirementSearchTile.TILE_TYPE, "Tile type", FieldType.StringSelector, getAllTileTypes()));
+				list.add(new QuestPropertyBlock(QuestRequirementSearchTile.CHIT, "Chit", FieldType.StringSelector, getAllChitTypes()));
+				list.add(new QuestPropertyBlock(QuestRequirementSearchTile.HIGHEST_NUMBERED_CLREAING, "Highest numbered clearing with site/sound", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementSearchTile.TABLENAME, "Search table", FieldType.StringSelector, SearchTableType.values()));
+				list.add(new QuestPropertyBlock(QuestRequirementSearchTile.RESULT1, "Search result", FieldType.StringSelector, SearchResultType.values()));
+				list.add(new QuestPropertyBlock(QuestRequirementSearchTile.RESULT2, "OR", FieldType.StringSelector, SearchResultType.optionalValues()));
+				list.add(new QuestPropertyBlock(QuestRequirementSearchTile.RESULT3, "OR", FieldType.StringSelector, SearchResultType.optionalValues()));
+				break;
 			case Season:
 				list.add(new QuestPropertyBlock(QuestRequirementSeason.SEASON, "Season", FieldType.StringSelector, getSeasonStrings().toArray() ));
 				break;
@@ -272,7 +281,44 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(code+clearing.getNumString());
 			}
 		}
+		Collections.sort(list);
 		return list.toArray(new String[list.size()]);
+	}
+	
+	private String[] getAllTileTypes() {
+		ArrayList<String> list = new ArrayList<>();
+		ArrayList<String> choices = new ArrayList<>();
+		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
+		for(GameObject go:pool.find("tile")) {
+			TileComponent tile = (TileComponent)RealmComponent.getRealmComponent(go);
+			String type = tile.getTileType();
+			if (!list.contains(type)) {
+				list.add(type);
+			}
+		}
+		Collections.sort(list);
+		
+		choices.add(QuestRequirementSearchTile.ANY);
+		choices.addAll(list);
+		
+		return choices.toArray(new String[list.size()]);
+	}
+	
+	private String[] getAllChitTypes() {
+		ArrayList<String> list = new ArrayList<>();
+		ArrayList<String> choices = new ArrayList<>();
+		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
+		for(GameObject go:pool.find("chit,!red_special,!treasure_location,!minor_tl,!traveler,!gold,!guild,!gate")) {
+			if (!list.contains(go.getName())) {
+				list.add(go.getName());
+			}
+		}
+		Collections.sort(list);
+		
+		choices.add(QuestRequirementSearchTile.NONE);
+		choices.addAll(list);
+		
+		return choices.toArray(new String[list.size()]);
 	}
 	
 	private ArrayList<String> getDiscoveryStrings() {
@@ -321,7 +367,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 		}
 		Collections.sort(list);
 		
-		choices.add("none");
+		choices.add(QuestRequirementEnchant.NONE);
 		choices.addAll(list);
 		
 		return choices;
@@ -363,6 +409,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				}
 			}
 		}
+		Collections.sort(guardians);
 		return guardians;
 	}
 }

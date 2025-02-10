@@ -55,6 +55,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		Relationship,
 		Season,
 		SearchResult, // (optional location designation) Clues, Paths, Passages, Hidden Enemies, Discover Chit(s), Learn and Awaken, Curse!, Awaken, Counters, Treasure Cards,Perceive Spell
+		SearchTile,
 		TimePassed,
 		Trade,
 		Weather,
@@ -109,6 +110,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests the contents of inventory.";
 				case Kill:
 					return "Tests for a specific kill or kills.";
+				case KillGuardian:
+					return "Tests for a kill of a specific Guardian.";
 				case LearnAwaken:
 					return "Tests whether a spell has just been awakened and/or learned.";
 				case LocationExists:
@@ -137,6 +140,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests whether the character has certain relationship with specific natives."; 
 				case SearchResult:
 					return "Tests for a specific search result.";
+				case SearchTile:
+					return "Tests for a specific search result on a specific tile.";
 				case Season:
 					return "Tests for a specific season.";
 				case TimePassed:
@@ -348,6 +353,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case SearchResult:
 				requirement = new QuestRequirementSearchResult(go);
+				break;
+			case SearchTile:
+				requirement = new QuestRequirementSearchTile(go);
 				break;
 			case Season:
 				requirement = new QuestRequirementSeason(go);

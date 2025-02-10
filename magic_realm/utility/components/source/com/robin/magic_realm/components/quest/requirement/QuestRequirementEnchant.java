@@ -13,6 +13,7 @@ public class QuestRequirementEnchant extends QuestRequirement {
 
 	public static final String TYPE = "_type";
 	public static final String SITE = "_site";
+	public static final String NONE = "none";
 	
 	public QuestRequirementEnchant(GameObject go) {
 		super(go);
@@ -68,7 +69,7 @@ public class QuestRequirementEnchant extends QuestRequirement {
 	
 	private String getSite() {
 		String tl = getString(SITE);
-		if (tl==null || tl.matches("none")) {
+		if (tl==null || tl.matches(NONE)) {
 			return null;
 		}
 		return tl;
