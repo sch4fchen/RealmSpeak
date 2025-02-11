@@ -100,8 +100,7 @@ public class SetupCardUtility {
 		ArrayList<GameObject> warningChits = SetupCardUtility.getWarnings(tl.tile.getGameObject().getHold(),monsterDie,includeWarningSounds,hostPrefs); // this is done separately to capture treasures...
 		ArrayList<GameObject> soundChits = new ArrayList<>();
 		ArrayList<GameObject> prowlingMonsters = new ArrayList<>();
-		for (Object o : tl.tile.getGameObject().getHold()) {
-			GameObject go = (GameObject)o;
+		for (GameObject go : tl.tile.getGameObject().getHold()) {
 			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
 			
 			RealmComponent rc = RealmComponent.getRealmComponent(go);

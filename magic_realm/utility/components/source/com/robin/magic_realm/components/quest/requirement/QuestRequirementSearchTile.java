@@ -6,6 +6,9 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.general.util.StringUtilities;
+import com.robin.magic_realm.components.ClearingDetail;
+import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -32,7 +35,13 @@ public class QuestRequirementSearchTile extends QuestRequirement {
 		if (reqParams==null) {
 			logger.fine("No search was done.");
 		}
-		//TILE_TYPE
+		TileLocation loc = character.getCurrentLocation();
+		if (getTileType()!=null && !getTileType().matches(ANY)) {
+			if (!loc.tile.getTileType().toLowerCase().matches(getTileType().toLowerCase())) {
+				logger.fine("Wrong tile type.");
+				return false;
+			}
+		}
 		if (reqParams!=null && reqTable!=SearchTableType.Any && !reqTable.toString().equals(reqParams.actionName)) {
 			logger.fine("Search table name "+reqParams.actionName+" does not match "+reqTable);
 			return false;
@@ -41,16 +50,71 @@ public class QuestRequirementSearchTile extends QuestRequirement {
 		if (reqParams!=null && reqParams.searchType!=null && !acceptibleSearchResults.contains(reqParams.searchType)) {
 			logger.fine("Search type "+reqParams.searchType+" wasn't among the acceptable search results: "+StringUtilities.collectionToString(acceptibleSearchResults,","));
 		}
-		//CHIT
-		//HIGHEST_NUMBERED_CLREAING
-		return false;
+		if (getChit()!=null && !getChit().matches(NONE)) {
+			boolean chitFound = false;
+			for (GameObject go : loc.tile.getGameObject().getHold()) {
+				RealmComponent rc = RealmComponent.getRealmComponent(go);
+				if (rc.isSound() || rc.isWarning()) {
+					if (go.getName().toLowerCase().matches(getChit().toLowerCase())) {
+						chitFound = true;
+						break;
+					}
+				}
+			}
+			if (!chitFound) { 
+				logger.fine("Required chit not present at the tile");
+				return false;
+			}
+		}
+		if (highestClearing()) {
+			ClearingDetail currentClearing = loc.clearing;
+			if (currentClearing==null) {
+				logger.fine("Not in a clearing");
+				return false;
+			}
+			int currentNum = currentClearing.getNum();
+			
+			int highestClearingNumberWithSite = 0;
+			int highestClearingNumberWithSound = 0;
+			for (ClearingDetail cl : loc.tile.getClearings()) {
+				if (cl.getTreasureLocations()!=null && !cl.getTreasureLocations().isEmpty()) {
+					if (cl.getNum()>highestClearingNumberWithSite) {
+						highestClearingNumberWithSite = cl.getNum();
+					}
+				}
+				if (cl.getSounds()!=null && !cl.getSounds().isEmpty()) {
+					if (cl.getNum()>highestClearingNumberWithSound) {
+						highestClearingNumberWithSound = cl.getNum();
+					}
+				}
+			}
+			if (highestClearingNumberWithSite!=0 && currentNum!=highestClearingNumberWithSite) {
+				logger.fine("Not in the highest numbered clearing with a site");
+				return false;
+			}
+			if (highestClearingNumberWithSite==0 && highestClearingNumberWithSound!=0 && currentNum!=highestClearingNumberWithSound) {
+				logger.fine("Not in the highest numbered clearing with a sound chit");
+				return false;
+			}
+			
+		}
+		return true;
 	}
 	protected String buildDescription() {
-		//TILE_TYPE
-		//CHIT
-		//HIGHEST_NUMBERED_CLREAING
 		StringBuilder sb = new StringBuilder();
-		sb.append("Must get a search result of ");
+		sb.append("Must ");
+		if ((getTileType()!=null && !getTileType().matches(ANY)) || (getChit()!=null && !getChit().matches(NONE))) {
+			sb.append("be in a ");
+			if (getTileType()!=null && !getTileType().matches(ANY)) {
+				sb.append(getTileType()+" ");
+			}
+			sb.append("tile ");
+			if (getChit()!=null && !getChit().matches(NONE)) {
+				sb.append("with a "+getChit()+" chit ");
+			}
+			sb.append("and ");
+		}
+		sb.append("get a search result of ");
 		sb.append(getSearchResult1());
 		SearchResultType r2 = getSearchResult2();
 		if (r2!=null) sb.append(" or "+r2);
@@ -60,6 +124,9 @@ public class QuestRequirementSearchTile extends QuestRequirement {
 		if (table!=SearchTableType.Any) {
 			sb.append(" from ");
 			sb.append(table);
+		}
+		if (highestClearing()) {
+			sb.append(" in the highest numbered clearing with a site (or sound chit)");
 		}
 		sb.append(".");
 		return sb.toString();
@@ -116,4 +183,14 @@ public class QuestRequirementSearchTile extends QuestRequirement {
 			return null;
 		}
 	}
+	public String getTileType() {
+		return getString(TILE_TYPE);
+	}
+	public String getChit() {
+		return getString(CHIT);
+	}
+	public boolean highestClearing() {
+		return getBoolean(HIGHEST_NUMBERED_CLREAING);
+	}
+	
 }
