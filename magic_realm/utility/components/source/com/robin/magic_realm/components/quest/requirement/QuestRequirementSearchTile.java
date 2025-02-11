@@ -31,8 +31,7 @@ public class QuestRequirementSearchTile extends QuestRequirement {
 	}
 
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
-		SearchTableType reqTable = getRequiredSearchTable();
-		if (reqParams==null) {
+		if (reqParams==null || reqParams.searchType==null) {
 			logger.fine("No search was done.");
 		}
 		TileLocation loc = character.getCurrentLocation();
@@ -42,13 +41,15 @@ public class QuestRequirementSearchTile extends QuestRequirement {
 				return false;
 			}
 		}
-		if (reqParams!=null && reqTable!=SearchTableType.Any && !reqTable.toString().equals(reqParams.actionName)) {
+		SearchTableType reqTable = getRequiredSearchTable();
+		if (reqTable!=SearchTableType.Any && !reqTable.toString().equals(reqParams.actionName)) {
 			logger.fine("Search table name "+reqParams.actionName+" does not match "+reqTable);
 			return false;
 		}
 		ArrayList<SearchResultType> acceptibleSearchResults = getAcceptableSearchResults();
-		if (reqParams!=null && reqParams.searchType!=null && !acceptibleSearchResults.contains(reqParams.searchType)) {
+		if (!acceptibleSearchResults.contains(reqParams.searchType)) {
 			logger.fine("Search type "+reqParams.searchType+" wasn't among the acceptable search results: "+StringUtilities.collectionToString(acceptibleSearchResults,","));
+			return false;
 		}
 		if (getChit()!=null && !getChit().matches(NONE)) {
 			boolean chitFound = false;
