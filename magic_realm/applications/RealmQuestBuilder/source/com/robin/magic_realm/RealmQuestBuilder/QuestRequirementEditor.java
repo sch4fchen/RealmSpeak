@@ -312,6 +312,19 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			if (!list.contains(go.getName())) {
 				list.add(go.getName());
 			}
+			RealmComponent rc = RealmComponent.getRealmComponent(go);
+			if (rc.isSound()) {
+				String sound = go.getThisAttribute(RealmComponent.SOUND);
+				if (!list.contains(sound.toString())) {
+					list.add(sound);
+				}
+			}
+			if (rc.isWarning()) {
+				String warning = go.getThisAttribute(RealmComponent.WARNING);
+				if (!list.contains(warning.toString())) {
+					list.add(warning);
+				}
+			}
 		}
 		Collections.sort(list);
 		

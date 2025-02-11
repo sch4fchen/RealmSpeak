@@ -60,6 +60,14 @@ public class QuestRequirementSearchTile extends QuestRequirement {
 						chitFound = true;
 						break;
 					}
+					if (rc.isSound() && go.getThisAttribute(RealmComponent.SOUND).toLowerCase().matches(getChit().toLowerCase())) {
+						chitFound = true;
+						break;
+					}
+					if (rc.isWarning() && go.getThisAttribute(RealmComponent.WARNING).toLowerCase().matches(getChit().toLowerCase())) {
+						chitFound = true;
+						break;
+					}
 				}
 			}
 			if (!chitFound) { 
