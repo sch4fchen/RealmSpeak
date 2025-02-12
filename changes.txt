@@ -1,6 +1,6 @@
 ::ROADMAP::
 Super Realm: Quests:
-	page 1: 20x Trek the, The Dark Towers
+	page 1: The Dark Towers
 	page 3: Words Worth, Valiant
 	page 4: 5x Silence, Traitor
 	page 5: Ring Caster
