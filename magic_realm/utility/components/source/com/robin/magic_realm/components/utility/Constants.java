@@ -340,6 +340,8 @@ public class Constants {
 	public static final String AFFECTED_ARMOR_ID = "affected_armor_id";
 	public static final String OINTMENT_OF_STONE_AFFECTED_ARMOR = "ointment_of_steel_affected_armor_id";
 	public static final String PENTAGRAM = "pentagram";
+	public static final String BOOK = "book";
+	public static final String SCROLL = "scroll";
 	
 	public static final String MAGIC_COLOR_BONUS = "magic_color_bonus";
 	public static final String MAGIC_COLOR_BONUS_ACTIVE = "magic_color_bonus_active";

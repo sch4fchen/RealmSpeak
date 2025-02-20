@@ -10,6 +10,8 @@ Super Realm: Quests:
 	page 10: 1x Enchanting, Chronicler, Buying a Small Army, Acquire Valuables
 Maze Rules (incl. Realm Map negates Lost in Maze)
 	Lost spell: if affected individual is in the clearing with the Maze site while this spell is energized, he becomes “lost in the maze” at the start of the next MOVE he does while affected by this spell;
+Blindly Reaching into the Pit: To make a Loot roll to loot a treasure from the Pit, an individual must use two consecutive Search-Loot phases for each Loot roll, not doing anything for the first Search phase.
+Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells) or with Hurricane Winds, can be opened by 'T' strength Fly chit (including flying denizens)
 Super Realm Combat System: 3x3 positioning
 Super Realm Combat optional rule: survival tactics
 ---Detail Rules for Super Realm---
@@ -26,13 +28,11 @@ Melt into Mist, added that mist can be followed by Purple/Prism Anomaly.
 Melt into Mist: only move actions; canot follow or be followed; can be charged (difference), The target cannot attack or be attacked, except by individuals affected by the Enchant Weapon spell, If attacked, Mist’s vulnerability is Tremendous and non-armored; targeted monster stills prowls (like in base MR) even if ‘X’ weight
 Melt into Mist: This spell is benevolent if, and only if, the spellcaster casts it on one of his hired leaders or controlled monsters.
 only the Melt into Mist transmorphization spell can be cast to affect carrying capacity.  Transform and Absorb Essence are no longer options for end-game scoring.
-Lost in the Maze effect for Maze treasure location (incl. Realm Map immunity); Blindly Reaching into the Pit: To make a Loot roll to loot a treasure from the Pit, an individual must use two consecutive Search-Loot phases for each Loot roll, not doing anything for the first Search phase.
 Lightning Bolt: List of Spells, added detail to IV spell Lightning Bolt, stating that site targets are considered armored.
 Phantasm: If the phantasm discovers Hidden Enemies, the controlling character also discovers Hidden Enemies.;; it cannot take part in combat;; can now spy and be spied
 Protection from Magic: The target is also immune to spell-breaking spells, such as Exorcise, Remedy, and Dissolve Spell, while this spell is in effect (ie activated). Any transmorphization spells affecting the target would also be nullified when this spell is activated, which can be done during a phase even when the target is transmorphized.
 Exorcise: All native casters in the clearing cannot supply color magic, and they cannot cast spells for the rest of combat (including the current round), unless they are in a clearing with a magic source matching the color required to cast their spell.
-	Update 995: Tweaked description of the I Exorcise spell.  It does cause Phase spells to break, as the revised definition of Phase spells means they are continually in effect (even if they're not affecting the target with the spell ability due to not having been activated/used yet) until used, in which case the spell ends at the end of the phase/round it was activated.  For example, if someone had Broomstick cast earlier, but hadn't used it and was in the clearing when Exorcise is cast, he loses the phase chit reserved for Broomstick (the broomstick spell breaks).
-Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells) or with Hurricane Winds, can be opened by 'T' strength Fly chit (including flying denizens) 
+	Update 995: Tweaked description of the I Exorcise spell.  It does cause Phase spells to break, as the revised definition of Phase spells means they are continually in effect (even if they're not affecting the target with the spell ability due to not having been activated/used yet) until used, in which case the spell ends at the end of the phase/round it was activated.  For example, if someone had Broomstick cast earlier, but hadn't used it and was in the clearing when Exorcise is cast, he loses the phase chit reserved for Broomstick (the broomstick spell breaks). 
 Ask Demon: 4 options, instead of just asking a question
 Absorb Essence: any denizens and Attention chits assigned to it become assigned to the spellcaster; absorbs steed when absorbing a monster
 	The spellcaster cannot be affected by multiple Absorb Essence spells. Any Absorb Essence spell he casts while he is already bewitched by Absorb Essence is cancelled.
@@ -83,6 +83,9 @@ Would be nice to make weapon abilities too:
 
 Version 1.2.0.8
 SUPER REALM:
+# add some more quests
+QUEST UPDATE:
+# QuestRequirementCastSpell: option to check for scroll or book
 
 Version 1.2.0.7
 SUPER REALM:

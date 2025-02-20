@@ -26118,6 +26118,7 @@
         <attribute discover_to_leave="" />
         <attribute icon_type_alt="minotaurKing" />
         <attribute icon_folder_alt="wesnoth/units" />
+		<attribute maze="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="972" name="Tree">
@@ -35528,6 +35529,7 @@
         <attribute ts_color="red" />
         <attribute icon_type="scorpion" />
         <attribute icon_folder="wesnoth/units/monsters" />
+		<attribute pit="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1235" name="Garden">
