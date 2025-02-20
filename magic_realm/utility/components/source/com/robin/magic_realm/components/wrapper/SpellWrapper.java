@@ -779,11 +779,13 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		
 		if (sharpness>0 && HostPrefWrapper.findHostPrefs(getGameObject().getGameData()).hasPref(Constants.REV_DAMPEN_FAST_SPELLS)) {
 			GameObject go = getIncantationObject();
-			RealmComponent rc = RealmComponent.getRealmComponent(go);
-			if (rc.isActionChit()) {
-				CharacterActionChitComponent chit = (CharacterActionChitComponent)rc;
-				if (chit.getMagicSpeed().getNum()==0) {
-					sharpness--;
+			if (go!=null) {
+				RealmComponent rc = RealmComponent.getRealmComponent(go);
+				if (rc.isActionChit()) {
+					CharacterActionChitComponent chit = (CharacterActionChitComponent)rc;
+					if (chit.getMagicSpeed().getNum()==0) {
+						sharpness--;
+					}
 				}
 			}
 		}
