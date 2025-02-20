@@ -36,7 +36,10 @@ Vault and Tomb (if discovered): can be opened with a missile attack, if after ro
 Ask Demon: 4 options, instead of just asking a question
 Absorb Essence: any denizens and Attention chits assigned to it become assigned to the spellcaster; absorbs steed when absorbing a monster
 	The spellcaster cannot be affected by multiple Absorb Essence spells. Any Absorb Essence spell he casts while he is already bewitched by Absorb Essence is cancelled.
+
+
 ---Super Realms Rules - Optional Rules---
+Super Realm: Characters, including potraits with credits, different chit icon
 Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
 3rdEdition / RealmSpeak: Optional Character Rules (A.6, p. 186): Captain, Druid, Magician, WIZARD ignores SPX, Woods Girl, Elf
 Super Realm: Events (Global Events = optional rule 11.11): 33 Events
@@ -45,8 +48,6 @@ Super Realm: Optional Rules: Initial quest card draw size (BGG variant: 3 quests
 Super Realm: Optional Rules: No discarding or drawing new quest cards (but perhaps exchanging?)
 Super Realm: Optional Rules: No duplicate spell recording at start of the game
 Super Realm: Optional Rules: Starting location always the Inn
-Super Realm: Characters, including potraits with credits, different chit icon
----Optional Rules---
 Super Realm: Optional Rules (and 1st Ed): Severe wounds (SR: 10.1, p.114) = Serious Wounds, but wounds *2
 Super Realm: Optional Rules: Bounty campaign (SR: 10.2, p.114)
 Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
@@ -70,7 +71,6 @@ Super Realm: Optional Rules: Cornered (SR: 11.13, p.128)
 Super Realm: Player building map: distribute tiles equally (including river tiles), distribute river tiles first, then grotto, then rest, each player has 3 tiles in the hand and draws after placing, skip player if he cannot place any tile (and he has no river tile), if all players are skipped or player would be skipped but has river tile, undo last placement, do not allow placing grotto before all other river tiles have been placed
 First Edition Optional Rule - https://boardgamegeek.com/thread/2503528/1st-edition-vs-3rd-edition: Native blocking, First Edition Optional Rule - Native kiling, e.g. grudges but instantly relationship becomes enemy status, Followers summon Monsters?, Hired native Leaders?, learning spells? campaigns?, combat endls only if no attack was made
 First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
-
 ---Additional and new features---
 Super Realm: icons for site chits, sound and warning chits, characters
 Quest: option add icon for minor character
@@ -81,11 +81,15 @@ Would be nice to make weapon abilities too:
 	Immobilizing2 - When it hits all attacks undercut in next round
 	Stunning - Target cannot play an attack next round
 
+Version 1.2.0.8
+SUPER REALM:
+
 Version 1.2.0.7
 SUPER REALM:
 # Tower and Spire: teleport
 # Hunter II vulnerability changed from Light to Medium
 # Conjuror's Remains does not require Lost Keys or Contorting Key
+# add some more quests
 QUEST UPDATE:
 # QuestRequirementSearchTile
 # QuestRequirementTeleport
