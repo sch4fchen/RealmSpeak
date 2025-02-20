@@ -18,6 +18,7 @@ public enum CharacterActionType {
 	Repair,
 	Rest,
 	SearchTable,
+	Teleport,
 	Trading,
 	AbandonMissionCampaign,
 	CompleteMissionCampaign,

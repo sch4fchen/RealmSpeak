@@ -14,6 +14,7 @@ import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.quest.requirement.*;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmCalendar;
+import com.robin.magic_realm.components.utility.SpellUtility.TeleportType;
 
 public class QuestRequirementEditor extends QuestBlockEditor {
 
@@ -263,6 +264,9 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementTrade.TRADE_SPELL, "Spell?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementTrade.ADD_MARK, "Add mark to traded item?", FieldType.Boolean));
 				break;
+			case Teleport:
+				list.add(new QuestPropertyBlock(QuestRequirementTeleport.TELEPORT_TYPE, "Teleport type", FieldType.StringSelector, getTeleportTypes().toArray()));
+				break;
 			case Weather:
 				list.add(new QuestPropertyBlock(QuestRequirementWeather.WEATHER_ENABLED, "Weather must be enabled", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementWeather.WEATHER, "Weather", FieldType.StringSelector, new String[] {"", RealmCalendar.WEATHER_CLEAR, RealmCalendar.WEATHER_SHOWERS, RealmCalendar.WEATHER_STORM, RealmCalendar.WEATHER_SPECIAL}));
@@ -424,5 +428,17 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 		}
 		Collections.sort(guardians);
 		return guardians;
+	}
+	
+	private static ArrayList<String> getTeleportTypes() {
+		ArrayList<String> list = new ArrayList<>();
+		ArrayList<String> teleportTypes = new ArrayList<String>();
+		for (TeleportType type : TeleportType.values()) {
+			list.add(type.toString());
+		}
+		teleportTypes.add(QuestRequirementTeleport.ANY_TYPE);
+		Collections.sort(list);
+		teleportTypes.addAll(list);
+		return teleportTypes;
 	}
 }

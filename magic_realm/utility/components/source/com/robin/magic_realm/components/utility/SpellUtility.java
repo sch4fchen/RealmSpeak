@@ -15,6 +15,8 @@ import com.robin.general.util.StringUtilities;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.effect.SpellEffectContext;
+import com.robin.magic_realm.components.quest.CharacterActionType;
+import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
 import com.robin.magic_realm.components.swing.CenteredMapView;
 import com.robin.magic_realm.components.swing.TileLocationChooser;
 import com.robin.magic_realm.components.table.*;
@@ -195,6 +197,11 @@ public class SpellUtility {
 				}
 			}
 		}
+		
+		QuestRequirementParams params = new QuestRequirementParams();
+		params.actionType = CharacterActionType.Teleport;
+		params.actionName = teleportType.toString();
+		character.testQuestRequirements(frame,params);
 	}
 	
 	private static ArrayList<GateChitComponent> findKnownGatesForCharacter(CharacterWrapper character) {

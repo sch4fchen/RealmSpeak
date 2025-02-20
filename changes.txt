@@ -1,3 +1,5 @@
+BUG
+
 NATIVES
 --Hunter II counter vulnerability changed from Light to Medium.
 SPELLS
@@ -22,7 +24,6 @@ Super Realm: Quests:
 	page 8: The Rings to Rule Them All, Small Collection
 	page 9: Large Collection, 4x Enchanting
 	page 10: 1x Enchanting, Chronicler, Buying a Small Army, Acquire Valuables
-Tower + Spire: teleport, spell cannot be recorded (4.4.9)
 Maze Rules (incl. Realm Map negates Lost in Maze)
 	Lost spell: if affected individual is in the clearing with the Maze site while this spell is energized, he becomes “lost in the maze” at the start of the next MOVE he does while affected by this spell;
 Super Realm Combat System: 3x3 positioning
@@ -101,6 +102,7 @@ SUPER REALM:
 # Tower and Spire: teleport
 QUEST UPDATE:
 # QuestRequirementSearchTile
+# QuestRequirementTeleport
 
 Version 1.2.0.6
 SUPER REALM:

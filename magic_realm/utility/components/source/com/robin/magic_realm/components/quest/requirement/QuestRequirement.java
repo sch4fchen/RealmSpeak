@@ -57,6 +57,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		SearchResult, // (optional location designation) Clues, Paths, Passages, Hidden Enemies, Discover Chit(s), Learn and Awaken, Curse!, Awaken, Counters, Treasure Cards,Perceive Spell
 		SearchTile,
 		TimePassed,
+		Teleport,
 		Trade,
 		Weather,
 		;
@@ -148,6 +149,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests for a specific length of time (in days) passed.";
 				case Trade:
 					return "Tests for a specific TRADE occurrence.";
+				case Teleport:
+					return "Tests for that character is teleported.";
 				case Weather:
 					return "Tests for a specific weather.";
 			default:
@@ -365,6 +368,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case Trade:
 				requirement = new QuestRequirementTrade(go);
+				break;
+			case Teleport:
+				requirement = new QuestRequirementTeleport(go);
 				break;
 			case Weather:
 				requirement = new QuestRequirementWeather(go);
