@@ -51630,7 +51630,7 @@
         <attribute fame="0" />
         <attribute notoriety="4" />
         <attribute base_price="2" />
-        <attribute vulnerability="L" />
+        <attribute vulnerability="M" />
         <attribute rank="2" />
         <attribute icon_type="Rashy_Era-human-forest-beastmaster" />
         <attribute setup_start="Hunter Dwelling" />
@@ -59849,7 +59849,6 @@
         <attribute super_realm="" />
         <attribute mesmerize="" />
         <attribute super_realm_treasure="" />
-        <attribute needs_open="key" />
         <attribute enchant_tile="" />
       </AttributeBlock>
       <contains id="2018" />
@@ -59859,7 +59858,7 @@
     <GameObject id="2251" name="Contorting Key">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
-        <attribute text="Opens Chest, Crypt, Abbey, Library, Tomb, Vault and Conjuror's Remains" />
+        <attribute text="Opens Chest, Crypt, Abbey, Library, Tomb and Vault, when energized." />
         <attribute base_price="5" />
         <attribute facing="face_dn" />
         <attribute item="" />
@@ -59874,7 +59873,7 @@
       <AttributeBlock blockName="this">
         <attribute duration="permanent" />
         <attribute target="spells item" />
-        <attribute text="Opens Chest, Crypt, Abbey, Library, Tomb, Vault and Conjuror's Remains" />
+        <attribute text="Opens Chest, Crypt, Abbey, Library, Tomb and Vault" />
         <attribute magic_color="any" />
         <attribute host_okay="" />
         <attribute spell="*" />

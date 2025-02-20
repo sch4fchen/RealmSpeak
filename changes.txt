@@ -1,21 +1,5 @@
-BUG
-
-NATIVES
---Hunter II counter vulnerability changed from Light to Medium.
-SPELLS
---Fog spell card type corrected from "Attack" to "Day."
-List of Native Statistics, p.165, Lancers unit type corrected from Spearman to Lancer.
-List of Treasures, page 173, Conjuror's Remains, removed mentions of requiring Lost Keys and Contorting Key.
-List of Treasures, page 174, Contorting Key, removed mention of Conjuror's Remains.
-List of Spells, page 190, Control Horse spell, added note stating that horse is abandoned if spellcaster is killed by an underling.
-List of Spells, page 191, Lost spell, specified a tile affected by this spell requires gold color in any clearing to be energized, rather than implying any color.
-List of Spells, page 197, Broomstick, stated that the Move chit to be played for the Fly chit can also be less than the strength of the Fly chit.
-List of Spells, page 199, Enchant Artifact, made it stronger by removing the cast-able spell restriction.
-
-
 ::ROADMAP::
 Super Realm: Quests:
-	page 1: The Dark Towers
 	page 3: Words Worth, Valiant
 	page 4: 5x Silence, Traitor
 	page 5: Ring Caster
@@ -100,6 +84,8 @@ Would be nice to make weapon abilities too:
 Version 1.2.0.7
 SUPER REALM:
 # Tower and Spire: teleport
+# Hunter II vulnerability changed from Light to Medium
+# Conjuror's Remains does not require Lost Keys or Contorting Key
 QUEST UPDATE:
 # QuestRequirementSearchTile
 # QuestRequirementTeleport
