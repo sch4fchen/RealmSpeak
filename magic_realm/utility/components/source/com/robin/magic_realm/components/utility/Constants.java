@@ -348,7 +348,7 @@ public class Constants {
 	public static final String MAGIC_COLOR_BONUS_SHARPNESS = "magic_color_bonus_sharpness";
 	public static final String MAGIC_COLOR_BONUS_SPEED = "magic_color_bonus_speed";
 	
-	// Super Realm Treasures
+	// Super Realm Treasures and Sites
 	public static final String ADVENTURE_GUIDE = "adventure_guide";
 	public static final String BARDS_LUTE = "bards_lute";
 	public static final String PACIFY_MONSTERS = "pacify_monsters";
@@ -382,6 +382,7 @@ public class Constants {
 	public static final String SPURS = "spurs";
 	public static final String TALISMAN = "talisman";
 	public static final String TRAVELERS_GUIDE = "travelers_guide";
+	public static final String TELEPORT_TO_LOCATION = "teleport_to_location";
 	
 	// Native ThisAttributes
 	public static final String HIDDEN = "hidden";

@@ -1,3 +1,16 @@
+NATIVES
+--Hunter II counter vulnerability changed from Light to Medium.
+SPELLS
+--Fog spell card type corrected from "Attack" to "Day."
+List of Native Statistics, p.165, Lancers unit type corrected from Spearman to Lancer.
+List of Treasures, page 173, Conjuror's Remains, removed mentions of requiring Lost Keys and Contorting Key.
+List of Treasures, page 174, Contorting Key, removed mention of Conjuror's Remains.
+List of Spells, page 190, Control Horse spell, added note stating that horse is abandoned if spellcaster is killed by an underling.
+List of Spells, page 191, Lost spell, specified a tile affected by this spell requires gold color in any clearing to be energized, rather than implying any color.
+List of Spells, page 197, Broomstick, stated that the Move chit to be played for the Fly chit can also be less than the strength of the Fly chit.
+List of Spells, page 199, Enchant Artifact, made it stronger by removing the cast-able spell restriction.
+
+
 ::ROADMAP::
 Super Realm: Quests:
 	page 1: The Dark Towers
@@ -24,6 +37,7 @@ Poison: Special: the sharpness star added by this spell is ignored when the weap
 Purple/Prism Anomalies can block/battle any individual transmorphized into mist.
 Enchant Weapon: any individual wielding the target weapon can target and attack individuals transformed into mist.
 Enchant Weapon: While targeting a Purple or Prism Anomaly, this spell is nullified.
+Melt into Mist, added that mist can be followed by Purple/Prism Anomaly.
 Melt into Mist: only move actions; canot follow or be followed; can be charged (difference), The target cannot attack or be attacked, except by individuals affected by the Enchant Weapon spell, If attacked, Mist’s vulnerability is Tremendous and non-armored; targeted monster stills prowls (like in base MR) even if ‘X’ weight
 Melt into Mist: This spell is benevolent if, and only if, the spellcaster casts it on one of his hired leaders or controlled monsters.
 only the Melt into Mist transmorphization spell can be cast to affect carrying capacity.  Transform and Absorb Essence are no longer options for end-game scoring.
@@ -83,6 +97,8 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 Version 1.2.0.7
+SUPER REALM:
+# Tower and Spire: teleport
 QUEST UPDATE:
 # QuestRequirementSearchTile
 

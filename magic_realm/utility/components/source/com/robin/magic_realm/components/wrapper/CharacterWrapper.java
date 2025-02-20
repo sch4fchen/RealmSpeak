@@ -2243,6 +2243,18 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return list;
 	}
+	public boolean canUseInstantTeleport() {
+		TileLocation loc = getCurrentLocation();
+		if(loc == null || loc.clearing==null) {
+			return false;
+		}
+		for (RealmComponent tl : loc.clearing.getTreasureLocations()) {
+			if (tl.getGameObject().hasThisAttribute(Constants.TELEPORT_TO_LOCATION) && hasTreasureLocationDiscovery(tl.getGameObject().getName())) {
+				return true;
+			}
+		}
+		return false;
+	}
 	public boolean hasSpecialActions() {
 		return !getSpecialActions().isEmpty();
 	}
@@ -4722,11 +4734,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public boolean isStartingSpell(GameObject spell) {
 		ArrayList<String> sSpellIds = getList(STARTING_SPELLS);
-		return sSpellIds.contains(spell.getStringId());
+		return sSpellIds!=null && sSpellIds.contains(spell.getStringId());
 	}
 	public boolean isRecordedSpell(GameObject spell) {
 		ArrayList<String> rSpellIds = getList(RECORDED_SPELLS);
-		return rSpellIds.contains(spell.getStringId());
+		return rSpellIds!=null && rSpellIds.contains(spell.getStringId());
 	}
 	public boolean hasSpells() {
 		return !getAllSpellIds().isEmpty();

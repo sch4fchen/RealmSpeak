@@ -27,6 +27,7 @@ public class SpellUtility {
 		RandomClearing,
 		KnownGate,
 		ClearingInSameTile,
+		Location,
 	}
 	
 	public static void heal(CharacterWrapper character) {
@@ -79,6 +80,10 @@ public class SpellUtility {
 	}
 	
 	public static void doTeleport(JFrame frame,String reason,CharacterWrapper character,TeleportType teleportType,int teleportSpeed) {
+		doTeleport(frame,reason,character,teleportType,teleportSpeed,null);
+	}
+	
+	public static void doTeleport(JFrame frame,String reason,CharacterWrapper character,TeleportType teleportType,int teleportSpeed,String location) {
 		if (character.getGameData().getDataName().matches(Constants.DATA_NAME_COMBAT_FRAME)) {
 			JOptionPane.showMessageDialog(frame,"There is no way to escape this combat!",reason,JOptionPane.INFORMATION_MESSAGE);
 			return;
@@ -89,6 +94,20 @@ public class SpellUtility {
 		if (teleportType==TeleportType.RandomClearing) {
 			ArrayList<ClearingDetail> clearings = planned.tile.getClearings();
 			clearings.remove(planned.clearing); // Any clearing EXCEPT this one
+			int r = RandomNumber.getRandom(clearings.size());
+			chosen = clearings.get(r).getTileLocation();
+			JOptionPane.showMessageDialog(frame,"The "+character.getGameObject().getName()+" teleports to "+chosen,reason,JOptionPane.INFORMATION_MESSAGE);
+		}
+		else if (teleportType==TeleportType.Location) {
+			ArrayList<ClearingDetail> clearings = new ArrayList<>();
+			GamePool pool = new GamePool(character.getGameData().getGameObjects());
+			ArrayList<GameObject> destinations = pool.find("name="+location);
+			for (GameObject destination : destinations) {
+				TileLocation loc = ClearingUtility.getTileLocation(destination);
+				if (loc!=null && loc.clearing!=null) {
+					clearings.add(loc.clearing);
+				}
+			}
 			int r = RandomNumber.getRandom(clearings.size());
 			chosen = clearings.get(r).getTileLocation();
 			JOptionPane.showMessageDialog(frame,"The "+character.getGameObject().getName()+" teleports to "+chosen,reason,JOptionPane.INFORMATION_MESSAGE);
@@ -137,7 +156,7 @@ public class SpellUtility {
 		character.jumpMoveHistory(); // because we didn't walk here
 		character.moveToLocation(null,chosen);
 		RealmLogging.logMessage(character.getGameObject().getName(),"Teleported to "+chosen);
-		if (teleportType!=TeleportType.RandomClearing) {
+		if (teleportType!=TeleportType.RandomClearing && teleportType!=TeleportType.Location) {
 			CenteredMapView.getSingleton().markAllClearings(false);
 			CenteredMapView.getSingleton().markAllTiles(false);
 		}

@@ -25,6 +25,7 @@ import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.swing.*;
 import com.robin.magic_realm.components.table.*;
 import com.robin.magic_realm.components.utility.*;
+import com.robin.magic_realm.components.utility.SpellUtility.TeleportType;
 import com.robin.magic_realm.components.utility.TreasureUtility.ArmorType;
 import com.robin.magic_realm.components.wrapper.*;
 
@@ -140,6 +141,7 @@ public class CombatFrame extends JFrame {
 	private JButton runAwayButton;
 	private JButton alertWeaponButton;
 	private JButton castSpellButton;
+	private JButton teleportInstantButton;
 	private JButton raiseDeadButton;
 	private JButton activateInactivateButton;
 	private JButton pickupItemButton;
@@ -308,6 +310,7 @@ public class CombatFrame extends JFrame {
 		chargeButton = null;
 		runAwayButton = null;
 		castSpellButton = null;
+		teleportInstantButton = null;
 		raiseDeadButton = null;
 		selectSpellTargetsButton = null;
 		cancelSpellButton = null;
@@ -728,6 +731,17 @@ public class CombatFrame extends JFrame {
 		}
 		return castSpellButton;
 	}
+	private JButton getTeleportInstantButton() {
+		if (teleportInstantButton==null) {
+			teleportInstantButton = new JButton("Teleport (instant)");
+			teleportInstantButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					teleportInstant();
+				}
+			});
+		}
+		return teleportInstantButton;
+	}
 	private JButton getRaiseDeadButton() {
 		if (raiseDeadButton==null) {
 			raiseDeadButton = new JButton("Raise Dead (Necromancer)");
@@ -1031,6 +1045,9 @@ public class CombatFrame extends JFrame {
 					list.add(getRunAwayButton());
 					list.add(getAlertWeaponButton());
 					list.add(getCastSpellButton());
+					if (activeCharacter.canUseInstantTeleport()) {
+						list.add(getTeleportInstantButton());
+					}
 					if (activeCharacter.affectedByKey(Constants.RAISE_DEAD)) {
 						list.add(getRaiseDeadButton());
 					}
@@ -1490,6 +1507,9 @@ public class CombatFrame extends JFrame {
 					castableSpellSets = activeCharacter.getCastableSpellSets();
 				}
 				castSpellButton.setEnabled(endCombatFrame==null && !combat.isPeaceful() && activeCharacterIsHere && !combat.getHasCharged() && !activeCharacterIsTransmorphed && castableSpellSets != null && castableSpellSets.size()>0 && !activeCharacter.affectedByKey(Constants.DISENCHANT_POTION) && !changes);
+			}
+			if (teleportInstantButton!=null) {
+				teleportInstantButton.setEnabled(endCombatFrame==null && activeCharacterIsHere && activeCharacter.canUseInstantTeleport());
 			}
 			if (raiseDeadButton!=null) {
 				raiseDeadButton.setEnabled(endCombatFrame==null && !combat.isPeaceful() && activeCharacterIsHere && activeCharacter.affectedByKey(Constants.RAISE_DEAD) && !activeCharacter.affectedByKey(Constants.DISENCHANT_POTION) && !combat.getRaisedDead() && !combat.getRaiseTheDead());
@@ -3627,6 +3647,33 @@ public class CombatFrame extends JFrame {
 			}
 			else {
 				JOptionPane.showMessageDialog(this,"There are no spellcasting options available to you.","Cannot Cast Spell",JOptionPane.ERROR_MESSAGE);
+			}
+		}
+	}
+	private void teleportInstant() {
+		int ret = JOptionPane.showConfirmDialog(null,"You want to teleport instantly?","Teleport",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		if (ret==JOptionPane.YES_OPTION) {
+			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select destination:",true);
+			TileLocation loc = activeCharacter.getCurrentLocation();
+			if(loc!=null && loc.clearing!=null) {
+				for (RealmComponent tl : loc.clearing.getTreasureLocations()) {
+					if (tl.getGameObject().hasThisAttribute(Constants.TELEPORT_TO_LOCATION)) {
+						String destination = tl.getGameObject().getThisAttribute(Constants.TELEPORT_TO_LOCATION);
+						if (destination!=null && activeCharacter.hasTreasureLocationDiscovery(tl.getGameObject().getName())) {
+							chooser.addRealmComponent(tl, "Teleport to "+destination);
+						}
+					}
+				}
+			}
+			chooser.setVisible(true);
+			String selText = chooser.getSelectedText();
+			if (selText!=null) {
+				RealmComponent treasureLocation = chooser.getFirstSelectedComponent();
+				String destination = treasureLocation.getGameObject().getThisAttribute(Constants.TELEPORT_TO_LOCATION);
+				SpellUtility.doTeleport(this, "Instant Teleport", activeCharacter, TeleportType.Location, 0, destination);
+				broadcastMessage(activeCharacter.getGameObject().getName(),"Teleported to "+destination);
+				changes = true;
+				updateControls();
 			}
 		}
 	}

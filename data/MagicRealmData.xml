@@ -35493,6 +35493,7 @@
         <attribute icon_type="stoneTitan" />
         <attribute icon_folder="wesnoth/units" />
         <attribute spell_site="" />
+		<attribute teleport_to_location="Spire" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1233" name="Spire">
@@ -35510,6 +35511,7 @@
         <attribute icon_type="stoneTitan2" />
         <attribute icon_folder="wesnoth/units" />
         <attribute spell_site="" />
+		<attribute teleport_to_location="Tower" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1234" name="Pit">

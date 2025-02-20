@@ -51,7 +51,8 @@ public class Locate1ed extends Search {
 			doPaths(character);
 		}
 		// Glimpse to find
-		if (character.getGameObject().getThisAttribute(Constants.GLIMPSED_COUNTERS+character.getCurrentLocation().tile.getName()).matches(character.getCurrentDayKey())) {
+		String glimpsedCounters = character.getGameObject().getThisAttribute(Constants.GLIMPSED_COUNTERS+character.getCurrentLocation().tile.getName());
+		if (glimpsedCounters!=null && glimpsedCounters.matches(character.getCurrentDayKey())) {
 			return doDiscoverChits(character);
 		}
 		return "Nothing";
