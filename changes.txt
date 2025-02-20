@@ -1,6 +1,6 @@
 ::ROADMAP::
 Super Realm: Quests:
-	page 3: Words Worth, Valiant
+	page 3: Valiant
 	page 4: 5x Silence, Traitor
 	page 5: Ring Caster
 	page 6: Happy Accident
@@ -17,7 +17,6 @@ Super Realm Combat optional rule: survival tactics
 ---Detail Rules for Super Realm---
 Randomize orders of weapons during setup: 4.3.4.2, optional rule 4.3.4.3, rules for horses 4.3.4.4
 Abandoning treasures, ordering stack: 4.3.4.5 and 4.3.5a+b
-Selling information: info about secret passages, hidden paths, treasures sites and TWT is not transferable 4.5.6
 Magic color at 7th day: White magic is supplied on Day 7 of month 1, 3, 5, etc), Black magic is supplied on the even numbered months on Day 7 (ie Black magic is supplied on Day 7 of month 2, 4, 6, etc),:  4.6.2.e
 
 Poison: Special: the sharpness star added by this spell is ignored when the weapon is used against Grey/Prism Anomalies.
@@ -84,6 +83,7 @@ Would be nice to make weapon abilities too:
 Version 1.2.0.8
 SUPER REALM:
 # add some more quests
+# no sharing of information about secret pasages, hidden paths, treasure sites and TWT
 QUEST UPDATE:
 # QuestRequirementCastSpell: option to check for scroll or book
 

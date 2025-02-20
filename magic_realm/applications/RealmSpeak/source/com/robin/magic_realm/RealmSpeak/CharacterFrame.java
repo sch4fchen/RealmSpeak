@@ -1364,7 +1364,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		shoutButton.setToolTipText("Shout Out Discoveries");
 		shoutButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				doShoutOut();
+				doShoutOut(gameHandler.getMainFrame());
 			}
 		});
 		box.add(shoutButton);
@@ -2119,7 +2119,10 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		});
 	}
 	
-	private void doShoutOut() {
+	private void doShoutOut(JFrame parent) {
+		if (hostPrefs.hasPref(Constants.SR_NO_SHARING_INFORMATION)) {
+			JOptionPane.showMessageDialog(parent, "You cannot share information about location of secret passages, hidden paths, treasure sites and TWT. This information is not transferable and can only be learned by following.", "Cannot share information", JOptionPane.ERROR_MESSAGE);
+		}
 		ArrayList<RealmComponent> chars = getTradeAvailableChars(gameHandler.getMainFrame(),showingTurn() || character.isFollowingCharacterPlayingTurn());
 		if (chars!=null) {
 			RealmObjectChooser chooser = new RealmObjectChooser("Shout discoveries out to who?",character.getGameObject().getGameData(),false);

@@ -862,6 +862,7 @@ public class Constants {
 	public static final String SR_NO_SPYING = "NoSpying";
 	public static final String SR_COMPLETE_GOLD_SPECIAL_ONLY_ONCE = "CompleteGoldSpecialOnlyOnce";
 	public static final String SR_ONE_OF_EACH_GOLD_SPECIAL = "GoldSpecialOnlyOneOfEach";
+	public static final String SR_NO_SHARING_INFORMATION = "NoSharingInformation";
 	
 	// Random Number Generators
 	public static final String RANDOM_R250_521 = "RndR250_521";
