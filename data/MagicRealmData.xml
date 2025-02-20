@@ -22147,7 +22147,7 @@
     <GameObject id="874" name="No Seasons">
       <AttributeBlock blockName="this">
         <attribute vps="5" />
-        <attribute magic="BLACK,WHITE" />
+        <attribute magic="WHITE,BLACK" />
         <attribute mountain_cost="2" />
         <attribute food_ale="Inn,House" />
         <attribute escort_party="Chapel,Guard" />

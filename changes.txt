@@ -84,6 +84,7 @@ Version 1.2.0.8
 SUPER REALM:
 # add some more quests
 # no sharing of information about secret pasages, hidden paths, treasure sites and TWT
+# White/Black magic supplied on the odd/even numbered months on Day 7
 QUEST UPDATE:
 # QuestRequirementCastSpell: option to check for scroll or book
 

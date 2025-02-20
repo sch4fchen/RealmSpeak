@@ -227,9 +227,21 @@ public class RealmCalendar {
 		String magic = currentSeason.getThisAttribute("magic");
 		StringTokenizer tokens = new StringTokenizer(magic,",");
 		seventhDayColors = new ArrayList<>();
-		while(tokens.hasMoreTokens()) {
-			String val = tokens.nextToken();
-			seventhDayColors.add(ColorMagic.makeColorMagic(val,true));
+		if (hostPrefs.hasPref(Constants.SR_ALTERNATING_7TH_DAY_MAGIC) && currentSeason.getThisInt("season")==0) {
+			String color = null;
+			if(tokens.hasMoreTokens()) {
+				color = tokens.nextToken();
+			}
+			if (currentMonth%2==0) {
+				color = tokens.nextToken();
+			}
+			seventhDayColors.add(ColorMagic.makeColorMagic(color,true));
+		}
+		else {
+			while(tokens.hasMoreTokens()) {
+				String val = tokens.nextToken();
+				seventhDayColors.add(ColorMagic.makeColorMagic(val,true));
+			}
 		}
 		
 		if (unpredictableWeather) {

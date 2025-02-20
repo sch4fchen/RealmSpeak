@@ -2120,7 +2120,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	}
 	
 	private void doShoutOut(JFrame parent) {
-		if (hostPrefs.hasPref(Constants.SR_NO_SHARING_INFORMATION)) {
+		if (hostPrefs.hasPref(Constants.SR_NO_INFORMATION_SHARING)) {
 			JOptionPane.showMessageDialog(parent, "You cannot share information about location of secret passages, hidden paths, treasure sites and TWT. This information is not transferable and can only be learned by following.", "Cannot share information", JOptionPane.ERROR_MESSAGE);
 		}
 		ArrayList<RealmComponent> chars = getTradeAvailableChars(gameHandler.getMainFrame(),showingTurn() || character.isFollowingCharacterPlayingTurn());
