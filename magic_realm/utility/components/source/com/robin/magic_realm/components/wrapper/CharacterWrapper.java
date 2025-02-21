@@ -1709,6 +1709,24 @@ public class CharacterWrapper extends GameObjectWrapper {
 				}
 			}
 		}
+		
+		if (getGameObject().hasThisAttribute(Constants.LOST_IN_THE_MAZE)) {
+			if (location==null || location.clearing==null) {
+				getGameObject().removeThisAttribute(Constants.LOST_IN_THE_MAZE);
+			}
+			else {
+				boolean mazeIsHere = false;
+				for (RealmComponent tl : location.clearing.getTreasureLocations()) {
+					if (tl.getGameObject().hasThisAttribute(Constants.MAZE)) {
+						mazeIsHere = true;
+						break;
+					}
+				}
+				if (!mazeIsHere) {
+					getGameObject().removeThisAttribute(Constants.LOST_IN_THE_MAZE);
+				}
+			}
+		}
 	}
 	public void applySunset() {
 		logger.fine("applySunset");
