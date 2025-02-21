@@ -50,6 +50,10 @@ public class TableLoot extends Loot {
 		super(frame,null,treasureLocation,listener);
 	}
 	
+	public TableLoot(JFrame frame,GameObject treasureLocation,ChangeListener listener,boolean ignorePit) {
+		super(frame,null,treasureLocation,listener,ignorePit);
+	}
+
 	public String getTableName(boolean longDescription) {
 		return "Loot the " + treasureLocation.getName()
 				+ (longDescription?("\n(" + treasureLocation.getHoldCount() + " left)"):"");

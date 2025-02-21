@@ -90,12 +90,12 @@ public class MagicSight extends Search {
 				if ("clearingLoot".equals(optionKey)) {
 					RealmComponent rc = clearingLoot.iterator().next();
 					topmostCounter = rc.getGameObject();
-					loot = (Loot)RealmTable.loot(getParentFrame(),character,character.getCurrentLocation(),getListener());
+					loot = (Loot)RealmTable.loot(getParentFrame(),character,character.getCurrentLocation(),getListener(),true);
 				}
 				else {
 					RealmComponent rc = chooser.getFirstSelectedComponent();
 					topmostCounter = getTreasureCounters(rc.getGameObject()).iterator().next();
-					loot = (Loot)RealmTable.loot(getParentFrame(),character,rc.getGameObject(),getListener());
+					loot = (Loot)RealmTable.loot(getParentFrame(),character,rc.getGameObject(),getListener(),true);
 				}
 				if (loot.fulfilledPrerequisite(getParentFrame(),character)) {
 					lootResult = loot.characterFindsItem(character,topmostCounter);
@@ -180,12 +180,12 @@ public class MagicSight extends Search {
 				if ("clearingLoot".equals(optionKey)) {
 					RealmComponent rc = clearingLoot.iterator().next();
 					topmostTreasureCard = rc.getGameObject();
-					loot = (Loot)RealmTable.loot(getParentFrame(),character,character.getCurrentLocation(),getListener());
+					loot = (Loot)RealmTable.loot(getParentFrame(),character,character.getCurrentLocation(),getListener(),true);
 				}
 				else {
 					RealmComponent rc = chooser.getFirstSelectedComponent();
 					topmostTreasureCard = TreasureUtility.getTreasureCards(rc.getGameObject()).iterator().next();
-					loot = (Loot)RealmTable.loot(getParentFrame(),character,rc.getGameObject(),getListener());
+					loot = (Loot)RealmTable.loot(getParentFrame(),character,rc.getGameObject(),getListener(),true);
 				}
 				if (loot.fulfilledPrerequisite(getParentFrame(),character)) {
 					lootResult = loot.characterFindsItem(character,topmostTreasureCard);

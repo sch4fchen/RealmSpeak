@@ -1499,6 +1499,7 @@ public class CombatFrame extends JFrame {
 						&& !activeCharacter.isFortified()
 						&& !combat.getHasCharged()
 						&& !activeHasRedSideUpMonster()
+						&& !activeCharacter.getGameObject().hasThisAttribute(Constants.LOST_IN_THE_MAZE)
 						&& !changes);
 			}
 			if (castSpellButton!=null) {

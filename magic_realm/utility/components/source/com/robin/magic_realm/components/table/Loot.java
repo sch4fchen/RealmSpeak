@@ -27,20 +27,31 @@ public class Loot extends RealmTable {
 	protected ActionPrerequisite searchPr;
 	protected ActionPrerequisite drawPr;
 	protected CharacterWrapper character;
+	protected Boolean ignorePit;
 	
 	public Loot(JFrame frame,ChangeListener listener) {
 		super(frame,listener);
 		this.treasureLocation = null;
 		this.tileLocation = null;
 		this.character = null;
+		this.ignorePit = false;
+	}
+	public Loot(JFrame frame,CharacterWrapper character,GameObject treasureLocation,ChangeListener listener,boolean ignorePit) {
+		this(frame,character,treasureLocation,listener);
+		this.ignorePit = ignorePit;
 	}
 	public Loot(JFrame frame,CharacterWrapper character,GameObject treasureLocation,ChangeListener listener) {
 		super(frame,listener);
 		this.character = character;
 		this.treasureLocation = treasureLocation;
 		this.tileLocation = null;
+		this.ignorePit = false;
 		searchPr = ActionPrerequisite.getActionPrerequisite(treasureLocation,treasureLocation.getThisAttribute(Constants.SEARCH),Constants.SEARCH);
 		drawPr = ActionPrerequisite.getActionPrerequisite(treasureLocation,treasureLocation.getThisAttribute("draw"),"draw from");
+	}
+	public Loot(JFrame frame,CharacterWrapper character,TileLocation tl,ChangeListener listener,boolean ignorePit) {
+		this(frame,character,tl.tile.getGameObject(),listener,ignorePit);
+		this.tileLocation = tl;
 	}
 	public Loot(JFrame frame,CharacterWrapper character,TileLocation tl,ChangeListener listener) {
 		this(frame,character,tl.tile.getGameObject(),listener);
@@ -141,7 +152,16 @@ public class Loot extends RealmTable {
 	protected String doLoot(CharacterWrapper character, int treasureNumber) {
 		Collection<GameObject> treasures;
 		
-		if (treasureLocation.hasThisAttribute(Constants.PIT)) {
+		if (treasureLocation.hasThisAttribute(Constants.MAZE)) {
+			if (!character.hasActiveInventoryThisKey(Constants.REALM_MAP)) {
+				character.getGameObject().setThisAttribute(Constants.LOST_IN_THE_MAZE);
+				for (CharacterWrapper follower : character.getActionFollowers()) {
+					follower.getGameObject().setThisAttribute(Constants.LOST_IN_THE_MAZE);
+				}
+			}
+		}
+		
+		if (treasureLocation.hasThisAttribute(Constants.PIT) && !ignorePit) {
 			if (character.getGameObject().hasThisAttribute(Constants.SEARCHED_PIT)) {
 				character.getGameObject().removeThisAttribute(Constants.SEARCHED_PIT);
 			}

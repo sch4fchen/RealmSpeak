@@ -6513,6 +6513,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		if (!characterRc.equals(rc.getOwner())) return; // not this character's hireling?  return!
 		
+		hireling.removeThisAttribute(Constants.LOST_IN_THE_MAZE);
 		rc.clearOwner(); // this also clears the term of hire
 		rc.clearTargets(); // make sure they aren't targeting anyone
 		rc.setHidden(false); // make sure they aren't hidden
@@ -6922,7 +6923,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return true;
 	}
 	public boolean moveRandomly() {
-		return hasCharacterTileAttribute(Constants.SP_MOVE_IS_RANDOM) && !affectedByKey(Constants.REALM_MAP);
+		return (hasCharacterTileAttribute(Constants.SP_MOVE_IS_RANDOM) || getGameObject().hasThisAttribute((Constants.LOST_IN_THE_MAZE))) && !affectedByKey(Constants.REALM_MAP);
 	}
 	private boolean hasCharacterTileAttribute(String attribute) {
 		if (getGameObject().hasThisAttribute(attribute)) {

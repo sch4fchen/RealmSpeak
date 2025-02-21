@@ -180,11 +180,20 @@ public abstract class RealmTable {
 	public static RealmTable loot(JFrame frame,CharacterWrapper character,TileLocation tl,ChangeListener listener) {
 		return new Loot(frame,character,tl,listener);
 	}
+	public static RealmTable loot(JFrame frame,CharacterWrapper character,TileLocation tl,ChangeListener listener,boolean ignorePit) {
+		return new Loot(frame,character,tl,listener,ignorePit);
+	}
 	public static RealmTable loot(JFrame frame,CharacterWrapper character,GameObject treasureLocation,ChangeListener listener) {
 		if (treasureLocation.hasAttributeBlock("table")) {
 			return new TableLoot(frame,treasureLocation,listener);
 		}
 		return new Loot(frame,character,treasureLocation,listener);
+	}
+	public static RealmTable loot(JFrame frame,CharacterWrapper character,GameObject treasureLocation,ChangeListener listener,boolean ignorePit) {
+		if (treasureLocation.hasAttributeBlock("table")) {
+			return new TableLoot(frame,treasureLocation,listener,ignorePit);
+		}
+		return new Loot(frame,character,treasureLocation,listener,ignorePit);
 	}
 	public static RealmTable readRunes(JFrame frame,GameObject spellLocation) {
 		return new ReadRunes(frame,spellLocation);
