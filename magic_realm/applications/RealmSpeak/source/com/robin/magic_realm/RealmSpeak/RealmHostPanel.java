@@ -823,6 +823,7 @@ public class RealmHostPanel extends JPanel {
 			character.getGameObject().removeThisAttribute(Constants.NO_SUMMONING);
 			character.getGameObject().removeThisAttribute(Constants.NO_PROWLING);
 			character.getGameObject().removeThisAttribute(Constants.NO_UNHIDE);
+			character.getGameObject().removeThisAttribute(Constants.SEARCHED_PIT);
 			if (character.isDayEndTradingActive()) {
 				doneTrading = false;
 			}

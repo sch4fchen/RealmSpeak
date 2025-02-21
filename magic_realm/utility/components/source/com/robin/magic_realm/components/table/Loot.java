@@ -140,6 +140,17 @@ public class Loot extends RealmTable {
 
 	protected String doLoot(CharacterWrapper character, int treasureNumber) {
 		Collection<GameObject> treasures;
+		
+		if (treasureLocation.hasThisAttribute(Constants.PIT)) {
+			if (character.getGameObject().hasThisAttribute(Constants.SEARCHED_PIT)) {
+				character.getGameObject().removeThisAttribute(Constants.SEARCHED_PIT);
+			}
+			else {
+				character.getGameObject().setThisAttribute(Constants.SEARCHED_PIT);
+				return "Blindly Reaching into the Pit";
+			}
+		}
+		
 		if (tileLocation==null) {
 			if (treasureLocation.hasThisAttribute(RealmComponent.CACHE_CHIT)) {
 				// This is a special case, where the person is looting someone's CACHE.  The first item in the

@@ -385,6 +385,9 @@ public class Constants {
 	public static final String TALISMAN = "talisman";
 	public static final String TRAVELERS_GUIDE = "travelers_guide";
 	public static final String TELEPORT_TO_LOCATION = "teleport_to_location";
+	public static final String MAZE = "maze";
+	public static final String PIT = "pit";
+	public static final String SEARCHED_PIT = "searched_pit";
 	
 	// Native ThisAttributes
 	public static final String HIDDEN = "hidden";
