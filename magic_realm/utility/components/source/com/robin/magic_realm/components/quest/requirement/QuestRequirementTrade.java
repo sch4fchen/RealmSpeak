@@ -10,6 +10,7 @@ import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.quest.CharacterActionType;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.TradeType;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRequirementTrade extends QuestRequirement {
@@ -21,6 +22,7 @@ public class QuestRequirementTrade extends QuestRequirement {
 	public static final String TRADE_ITEM = "_trade_item";
 	public static final String TRADE_TREASURE = "_trade_treasure";
 	public static final String TRADE_SPELL = "_trade_spell";
+	public static final String TRADE_CONDITIONAL_FAME = "_trade_conditional_fame";
 	public static final String ADD_MARK = "_add_mark";
 
 	public QuestRequirementTrade(GameObject go) {
@@ -49,8 +51,17 @@ public class QuestRequirementTrade extends QuestRequirement {
 				for (GameObject go:reqParams.objectList) {
 					RealmComponent rc = RealmComponent.getRealmComponent(go);
 					if ((!tradeItem() && !tradeTreasure() && !tradeSpell()) ||
-							(tradeItem() && rc.isItem()) || (tradeTreasure() && rc.isTreasure()) || (tradeSpell() && rc.isSpell())) {	
+							(tradeItem() && rc.isItem()) || (tradeTreasure() && rc.isTreasure()) || (tradeSpell() && rc.isSpell())) {							
 						if (itemPattern==null || itemPattern.matcher(go.getName()).find()) {
+							if (tradeWithConditionalFame()) {
+								String nativeGroup = go.getThisAttribute(Constants.NATIVE);
+								GameObject traderGo = reqParams.targetOfSearch;
+								String traderGroup = traderGo.getThisAttribute(Constants.NATIVE);
+								if (!nativeGroup.toLowerCase().matches(traderGroup.toLowerCase())) {
+									continue;
+								}
+							}
+							
 							if (markItem()) {
 								go.setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
 							}
@@ -95,6 +106,9 @@ public class QuestRequirementTrade extends QuestRequirement {
 			}
 			sb.append(" a spell");
 		}
+		if (tradeWithConditionalFame()) {
+			sb.append(" with conditional fame");
+		}
 		if (getTradeItemRegEx()!=null && !getTradeItemRegEx().isEmpty()) {
 			if (tradeItem() || tradeTreasure() || tradeSpell()) {
 				sb.append(",");	
@@ -105,13 +119,16 @@ public class QuestRequirementTrade extends QuestRequirement {
 			if (tradeItem() || tradeTreasure() || tradeSpell()) {
 				sb.append(",");	
 			}
-			sb.append(" ");	
 		}
-		sb.append(tt==TradeType.Buy?"from":"to");
-		sb.append(" the ");
-		sb.append("/");
-		sb.append(getTradeWithRegEx());
-		sb.append("/.");
+		if (getTradeWithRegEx()!=null && !getTradeWithRegEx().isEmpty()) {
+			sb.append(" ");	
+			sb.append(tt==TradeType.Buy?"from":"to");
+			sb.append(" the ");
+			sb.append("/");
+			sb.append(getTradeWithRegEx());
+			sb.append("/");
+		}
+		sb.append(".");
 		return sb.toString();
 	}
 
@@ -135,6 +152,9 @@ public class QuestRequirementTrade extends QuestRequirement {
 	}
 	public boolean tradeSpell() {
 		return getBoolean(TRADE_SPELL);
+	}
+	public boolean tradeWithConditionalFame() {
+		return getBoolean(TRADE_CONDITIONAL_FAME);
 	}
 	public boolean markItem() {
 		return getBoolean(ADD_MARK);

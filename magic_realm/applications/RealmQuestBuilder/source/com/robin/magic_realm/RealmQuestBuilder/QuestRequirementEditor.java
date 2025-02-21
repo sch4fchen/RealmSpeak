@@ -263,6 +263,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementTrade.TRADE_ITEM, "Item?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementTrade.TRADE_TREASURE, "Treasure?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementTrade.TRADE_SPELL, "Spell?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementTrade.TRADE_CONDITIONAL_FAME, "Trade item with conditional fame?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementTrade.ADD_MARK, "Add mark to traded item?", FieldType.Boolean));
 				break;
 			case Teleport:

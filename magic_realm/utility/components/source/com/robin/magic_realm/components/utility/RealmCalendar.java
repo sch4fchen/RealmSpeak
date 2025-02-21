@@ -233,9 +233,16 @@ public class RealmCalendar {
 				color = tokens.nextToken();
 			}
 			if (currentMonth%2==0) {
-				color = tokens.nextToken();
+				if (tokens.hasMoreTokens()) {
+					color = tokens.nextToken();
+				}
+				else {
+					color = null;
+				}
 			}
-			seventhDayColors.add(ColorMagic.makeColorMagic(color,true));
+			if (color!=null) {
+				seventhDayColors.add(ColorMagic.makeColorMagic(color,true));
+			}
 		}
 		else {
 			while(tokens.hasMoreTokens()) {
