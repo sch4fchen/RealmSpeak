@@ -2278,6 +2278,11 @@ public class ActionRow {
 		}
 	}
 	private void doFlyAction() {
+		if (character.getGameObject().hasThisAttribute(Constants.LOST_IN_THE_MAZE) && !character.affectedByKey(Constants.REALM_MAP)) {
+			doMoveAction();
+			return;
+		}
+		
 		// First, make sure Flying is a possibility - otherwise BLOCK character..? See Rule 47.2
 		ArrayList<StrengthChit> flyStrengthChits = character.getFlyStrengthChits(true);
 		TileLocation current = character.getCurrentLocation();

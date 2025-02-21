@@ -7,7 +7,6 @@ Super Realm: Quests:
 	page 8: The Rings to Rule Them All, Small Collection
 	page 9: Large Collection, 4x Enchanting
 	page 10: 1x Enchanting, Chronicler, Buying a Small Army, Acquire Valuables
-Maze Rules (incl. Realm Map negates Lost in Maze)
 Super Realm Combat System: 3x3 positioning
 Super Realm Combat optional rule: survival tactics
 
