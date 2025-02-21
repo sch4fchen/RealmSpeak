@@ -6925,7 +6925,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean moveRandomly() {
 		return (hasCharacterTileAttribute(Constants.SP_MOVE_IS_RANDOM) || getGameObject().hasThisAttribute((Constants.LOST_IN_THE_MAZE))) && !affectedByKey(Constants.REALM_MAP);
 	}
-	private boolean hasCharacterTileAttribute(String attribute) {
+	public boolean hasCharacterTileAttribute(String attribute) {
 		if (getGameObject().hasThisAttribute(attribute)) {
 			return true;
 		}

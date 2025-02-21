@@ -719,7 +719,20 @@ public class ActionRow {
 	private void doMoveAction() {
 		TileLocation current = character.getCurrentLocation();
 		
-		// Before starting, make sure that you aren't "lost in the maze"
+		// Lost in the Maze rule for Super Realm
+		if (current!=null && current.hasClearing() && character.hasCharacterTileAttribute(Constants.SP_MOVE_IS_RANDOM) && !character.affectedByKey(Constants.REALM_MAP)) {
+			for (RealmComponent tl : current.clearing.getTreasureLocations()) {
+				if (tl.getGameObject().hasThisAttribute(Constants.MAZE)) {
+					character.getGameObject().setThisAttribute(Constants.LOST_IN_THE_MAZE);
+					for (CharacterWrapper follower : character.getActionFollowers()) {
+						follower.getGameObject().setThisAttribute(Constants.LOST_IN_THE_MAZE);
+					}
+					break;
+				}
+			}
+		}
+		
+		// Before starting, make sure that you aren't "lost in the maze" (expansion 1)
 		RealmComponent discoverToLeave = ClearingUtility.findDiscoverToLeaveComponent(current,character);
 		if (discoverToLeave!=null) {
 			JOptionPane.showMessageDialog(gameHandler.getMainFrame(),"You are trapped in the "+discoverToLeave.getGameObject().getName()+"! MOVE is cancelled.",
