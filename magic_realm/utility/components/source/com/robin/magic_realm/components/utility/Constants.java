@@ -729,6 +729,7 @@ public class Constants {
 	public static final String ADV_DROPPING = "Dropping";
 	public static final String ADV_AMBUSHES = "Ambushes";
 	public static final String ADV_SERIOUS_WOUNDS = "SeriousWounds";
+	public static final String SR_SERVERE_WOUNDS = "SevereWounds";
 	public static final String ADV_DRAGON_HEADS = "DragonHeads";
 	public static final String ADV_FLYING_ACTIVITIES = "FlyingActivities";
 	

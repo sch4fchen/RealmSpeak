@@ -957,19 +957,31 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			}
 			else if (harm.getAppliedStrength().strongerOrEqualTo(vulnerability)) {
 				// Direct hit (no armor)
-				if ((hostPrefs.hasPref(Constants.ADV_SERIOUS_WOUNDS) || character.affectedByKey(Constants.TOUGHNESS)) && harm.getAppliedStrength().equalTo(vulnerability)) {
+				if ((hostPrefs.hasPref(Constants.ADV_SERIOUS_WOUNDS) || hostPrefs.hasPref(Constants.SR_SERVERE_WOUNDS) || character.affectedByKey(Constants.TOUGHNESS)) && harm.getAppliedStrength().equalTo(vulnerability)) {
+					boolean severeWounds = hostPrefs.hasPref(Constants.SR_SERVERE_WOUNDS);
 					// Serious wounds
 					Collection<CharacterActionChitComponent> c = character.getNonWoundedChits();
 					DieRoller roller = DieRollBuilder.getDieRollBuilder(null,character).createRoller("wounds");
 					int seriousWounds = roller.getHighDieResult();
+					if (severeWounds) {
+						seriousWounds = seriousWounds*2;
+					}
 					int currentWounds = combat.getNewWounds();
 					
 					RealmLogging.logMessage(getGameObject().getName(),"Takes a serious wound!");
-					RealmLogging.logMessage(getGameObject().getName(),roller.getDescription());
+					StringBuffer rollerDescription = new StringBuffer();
+					rollerDescription.append(roller.getDescription());
+					StringBuffer rollerResult = new StringBuffer();
+					rollerResult.append(roller.getStringResult());
+					if (severeWounds) {
+						rollerDescription.append(" *2");
+						rollerResult.append(" *2");
+					}
+					RealmLogging.logMessage(getGameObject().getName(),rollerDescription.toString());
 					RealmLogging.logMessage(getGameObject().getName(),"Serious wound = "+seriousWounds+" wound"+(seriousWounds==1?"":"s")+")");
 					if (c != null && c.size() > (currentWounds + seriousWounds)) {
 						combat.addNewWounds(seriousWounds);
-						combat.addSeriousWoundRoll(roller.getStringResult());
+						combat.addSeriousWoundRoll(rollerResult.toString());
 						tookSeriousWounds = true;
 						damageTaken = true;
 						woundTaken = true;

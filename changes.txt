@@ -8,12 +8,9 @@ Super Realm: Quests:
 	page 9: Large Collection, 4x Enchanting
 	page 10: 1x Enchanting, Chronicler, Buying a Small Army, Acquire Valuables
 Maze Rules (incl. Realm Map negates Lost in Maze)
-	Lost spell: if affected individual is in the clearing with the Maze site while this spell is energized, he becomes “lost in the maze” at the start of the next MOVE he does while affected by this spell;
-Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells) or with Hurricane Winds, can be opened by 'T' strength Fly chit (including flying denizens)
 Super Realm Combat System: 3x3 positioning
 Super Realm Combat optional rule: survival tactics
 
-Super Realm: Optional Rules (and 1st Ed): Severe wounds (SR: 10.1, p.114) = Serious Wounds, but wounds *2
 Randomize orders of weapons during setup: 4.3.4.2, optional rule 4.3.4.3, rules for horses 4.3.4.4
 Abandoning treasures, ordering stack: 4.3.4.5 and 4.3.5a+b
 
@@ -33,6 +30,7 @@ Exorcise: All native casters in the clearing cannot supply color magic, and they
 Ask Demon: 4 options, instead of just asking a question
 Absorb Essence: any denizens and Attention chits assigned to it become assigned to the spellcaster; absorbs steed when absorbing a monster
 	The spellcaster cannot be affected by multiple Absorb Essence spells. Any Absorb Essence spell he casts while he is already bewitched by Absorb Essence is cancelled.
+Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells) or with Hurricane Winds, can be opened by 'T' strength Fly chit (including flying denizens)
 ---Super Realms Rules + Optional Rules---
 Super Realm: Characters, including potraits with credits, different chit icon
 Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
@@ -80,6 +78,7 @@ SUPER REALM:
 # no sharing of information about secret pasages, hidden paths, treasure sites and TWT
 # White/Black magic supplied on the odd/even numbered months on Day 7
 # Blindly Reaching into the Pit rule
+# Optional Rule: Severe wounds
 QUEST UPDATE:
 # QuestRequirementCastSpell: option to check for scroll or book
 # QuestRequirementTrade: option to check for conditional fame
