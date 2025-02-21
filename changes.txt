@@ -82,6 +82,7 @@ SUPER REALM:
 # White/Black magic supplied on the odd/even numbered months on Day 7
 QUEST UPDATE:
 # QuestRequirementCastSpell: option to check for scroll or book
+# QuestRequirementTrade: option to check for conditional fame
 
 Version 1.2.0.7
 SUPER REALM:
@@ -90,7 +91,6 @@ SUPER REALM:
 # Conjuror's Remains does not require Lost Keys or Contorting Key
 # add some more quests
 QUEST UPDATE:
-# QuestRequirementTrade: option to check for conditional fame
 # QuestRequirementSearchTile
 # QuestRequirementTeleport
 
