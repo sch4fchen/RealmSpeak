@@ -10,9 +10,6 @@ Super Realm: Quests:
 Super Realm Combat System: 3x3 positioning
 Super Realm Combat optional rule: survival tactics
 
-Randomize orders of weapons during setup: 4.3.4.2, optional rule 4.3.4.3, rules for horses 4.3.4.4
-Abandoning treasures, ordering stack: 4.3.4.5 and 4.3.5a+b
-
 Poison: Special: the sharpness star added by this spell is ignored when the weapon is used against Grey/Prism Anomalies.
 Purple/Prism Anomalies can block/battle any individual transmorphized into mist.
 Enchant Weapon: any individual wielding the target weapon can target and attack individuals transformed into mist.
@@ -72,6 +69,8 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 Version 1.2.0.8
+NEW FEATURES:
+# Sort item stack when item dropped
 SUPER REALM:
 # add some more quests
 # no sharing of information about secret pasages, hidden paths, treasure sites and TWT

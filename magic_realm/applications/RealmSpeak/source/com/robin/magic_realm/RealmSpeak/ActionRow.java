@@ -2471,6 +2471,7 @@ public class ActionRow {
 				
 				// If cache is empty, delete it
 				cache.testEmpty();
+				RealmUtility.sortGameObjectsHold(cache.getGameObject(),false);
 				
 				QuestRequirementParams params = new QuestRequirementParams();
 				params.actionType = CharacterActionType.Cache;

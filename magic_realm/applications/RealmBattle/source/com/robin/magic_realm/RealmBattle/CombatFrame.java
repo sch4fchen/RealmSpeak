@@ -3880,6 +3880,7 @@ public class CombatFrame extends JFrame {
 					// Then drop
 					current.clearing.add(go,plainSight?activeCharacter:null);
 					broadcastMessage(activeCharacter.getGameObject().getName(),title+"s the "+go.getName());
+					RealmUtility.sortGameObjectsHold(current.tile.getGameObject(),false);
 				}
 			}
 			changes = true;
