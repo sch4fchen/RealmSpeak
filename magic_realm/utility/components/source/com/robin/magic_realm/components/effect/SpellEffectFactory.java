@@ -61,7 +61,7 @@ public class SpellEffectFactory {
 			case "hypnotize": return new ISpellEffect[]{new ControlEffect()};
 		
 			case "levitate": return new ISpellEffect[]{new NoWeightEffect()};
-			case "lost": return new ISpellEffect[]{new ApplyNamedEffect(Constants.SP_MOVE_IS_RANDOM)};
+			case "lost": return new ISpellEffect[]{new ApplyNamedEffect(Constants.SP_MOVE_IS_RANDOM), new MazeCheckEffect()};
 			case "mage guard": return new ISpellEffect[]{new MageGuardEffect()};
 			case "make whole": return new ISpellEffect[]{new MakeWholeEffect()};
 			case "melt into mist": return new ISpellEffect[]{new NullifyEffect(),new DisengageEffect(), new TransmorphEffect("mist")};

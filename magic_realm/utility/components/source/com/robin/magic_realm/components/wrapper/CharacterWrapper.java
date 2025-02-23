@@ -1728,6 +1728,20 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 	}
+	public void checkForLostInTheMaze(TileLocation current) {
+		// Lost in the Maze rule for Super Realm
+		if (current!=null && current.hasClearing() && hasCharacterTileAttribute(Constants.SP_MOVE_IS_RANDOM) && !affectedByKey(Constants.REALM_MAP)) {
+			for (RealmComponent tl : current.clearing.getTreasureLocations()) {
+				if (tl.getGameObject().hasThisAttribute(Constants.MAZE)) {
+					getGameObject().setThisAttribute(Constants.LOST_IN_THE_MAZE);
+					for (CharacterWrapper follower : getActionFollowers()) {
+						follower.getGameObject().setThisAttribute(Constants.LOST_IN_THE_MAZE);
+					}
+					break;
+				}
+			}
+		}
+	}
 	public void applySunset() {
 		logger.fine("applySunset");
 		if (isSleep()) {

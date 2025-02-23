@@ -719,18 +719,7 @@ public class ActionRow {
 	private void doMoveAction() {
 		TileLocation current = character.getCurrentLocation();
 		
-		// Lost in the Maze rule for Super Realm
-		if (current!=null && current.hasClearing() && character.hasCharacterTileAttribute(Constants.SP_MOVE_IS_RANDOM) && !character.affectedByKey(Constants.REALM_MAP)) {
-			for (RealmComponent tl : current.clearing.getTreasureLocations()) {
-				if (tl.getGameObject().hasThisAttribute(Constants.MAZE)) {
-					character.getGameObject().setThisAttribute(Constants.LOST_IN_THE_MAZE);
-					for (CharacterWrapper follower : character.getActionFollowers()) {
-						follower.getGameObject().setThisAttribute(Constants.LOST_IN_THE_MAZE);
-					}
-					break;
-				}
-			}
-		}
+		character.checkForLostInTheMaze(current); // Lost in the Maze rule for Super Realm
 		
 		// Before starting, make sure that you aren't "lost in the maze" (expansion 1)
 		RealmComponent discoverToLeave = ClearingUtility.findDiscoverToLeaveComponent(current,character);
@@ -2278,6 +2267,8 @@ public class ActionRow {
 		}
 	}
 	private void doFlyAction() {
+		TileLocation current = character.getCurrentLocation();
+		character.checkForLostInTheMaze(current); // Lost in the Maze rule for Super Realm
 		if (character.getGameObject().hasThisAttribute(Constants.LOST_IN_THE_MAZE) && !character.affectedByKey(Constants.REALM_MAP)) {
 			doMoveAction();
 			return;
@@ -2285,7 +2276,6 @@ public class ActionRow {
 		
 		// First, make sure Flying is a possibility - otherwise BLOCK character..? See Rule 47.2
 		ArrayList<StrengthChit> flyStrengthChits = character.getFlyStrengthChits(true);
-		TileLocation current = character.getCurrentLocation();
 		boolean startedBetweenTiles = current.isBetweenTiles();
 		if (current.isFlying() && (startedBetweenTiles || current.isTileOnly())) {
 			// Must be able to fly
