@@ -14,6 +14,9 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
  */
 public abstract class QuestRequirement extends AbstractQuestObject {
 
+	public static final String ANY = "any";
+	public static final String NONE = "none";
+	
 	public enum RequirementType {
 		Action,
 		Active, // active or inactive
@@ -39,6 +42,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		Hirelings,
 		Inventory, // a requirement that tests what you have in inventory
 		Kill,
+		KillDenizenSummonedByChit,
 		KillGuardian,
 		LearnAwaken,
 		LocationExists,
@@ -111,6 +115,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests the contents of inventory.";
 				case Kill:
 					return "Tests for a specific kill or kills.";
+				case KillDenizenSummonedByChit:
+					return "Tests for a kill of denizen summoned by a specific chit.";
 				case KillGuardian:
 					return "Tests for a kill of a specific Guardian.";
 				case LearnAwaken:
@@ -311,6 +317,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case Kill:
 				requirement = new QuestRequirementKill(go);
+				break;
+			case KillDenizenSummonedByChit:
+				requirement = new QuestRequirementKillDenizenSummonedByChit(go);
 				break;
 			case KillGuardian:
 				requirement = new QuestRequirementKillGuardian(go);

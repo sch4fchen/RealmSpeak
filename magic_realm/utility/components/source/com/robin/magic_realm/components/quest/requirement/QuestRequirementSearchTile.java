@@ -23,8 +23,6 @@ public class QuestRequirementSearchTile extends QuestRequirement {
 	public static final String RESULT2 = "_result2";
 	public static final String RESULT3 = "_result3";
 	private static final String[] ALL_RESULTS = new String[]{RESULT1,RESULT2,RESULT3};
-	public static final String ANY = "any";
-	public static final String NONE = "none";
 	
 	public QuestRequirementSearchTile(GameObject go) {
 		super(go);

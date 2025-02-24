@@ -171,6 +171,11 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementKill.TARGET_VALUE_TYPE, "Only count points gained during the", FieldType.StringSelector, TargetValueType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementKill.REQUIRE_MARK, "Mark is required", FieldType.Boolean));
 				break;
+			case KillDenizenSummonedByChit:
+				list.add(new QuestPropertyBlock(QuestRequirementKillDenizenSummonedByChit.CHIT, "Chit type", FieldType.StringSelector, getAllChitTypes()));
+				list.add(new QuestPropertyBlock(QuestRequirementKillDenizenSummonedByChit.TILE_TYPE, "Tile type", FieldType.StringSelector, getAllTileTypes()));
+				list.add(new QuestPropertyBlock(QuestRequirementKillDenizenSummonedByChit.SAME_CLEARING, "Must be in the clearing with the chit", FieldType.Boolean));
+				break;
 			case KillGuardian:
 				list.add(new QuestPropertyBlock(QuestRequirementKillGuardian.GUARDIAN_AND_SITE, "Guardian", FieldType.StringSelector, getGuardians().toArray()));
 				list.add(new QuestPropertyBlock(QuestRequirementKillGuardian.TARGET_VALUE_TYPE, "Only count points gained during the", FieldType.StringSelector, TargetValueType.values()));
@@ -304,7 +309,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 		}
 		Collections.sort(list);
 		
-		choices.add(QuestRequirementSearchTile.ANY);
+		choices.add(QuestRequirement.ANY);
 		choices.addAll(list);
 		
 		return choices.toArray(new String[list.size()]);
@@ -334,7 +339,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 		}
 		Collections.sort(list);
 		
-		choices.add(QuestRequirementSearchTile.NONE);
+		choices.add(QuestRequirement.NONE);
 		choices.addAll(list);
 		
 		return choices.toArray(new String[list.size()]);

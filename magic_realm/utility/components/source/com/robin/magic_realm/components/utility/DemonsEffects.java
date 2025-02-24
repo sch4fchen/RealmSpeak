@@ -79,7 +79,7 @@ public class DemonsEffects {
 		return killed;
 	}
 	public static void kill(GameObject go,Speed speed, GameObject caster, boolean makeDeadWhenKilled, ArrayList<GameObject> kills) {
-		RealmComponent attacker =RealmComponent.getRealmComponent(caster); 
+		RealmComponent attacker = RealmComponent.getRealmComponent(caster); 
 		RealmComponent victim = RealmComponent.getRealmComponent(go);
 		BattleUtility.handleSpoilsOfWar(attacker,victim);
 		

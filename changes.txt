@@ -1,6 +1,6 @@
 ::ROADMAP::
 Super Realm: Quests:
-	page 4: 5x Silence, Traitor
+	page 4: Traitor
 	page 5: Ring Caster
 	page 6: Happy Accident
 	page 7: Artifact Caster, Tomb Raider, There Can Be Only One
@@ -9,6 +9,9 @@ Super Realm: Quests:
 	page 10: 1x Enchanting, Chronicler, Buying a Small Army, Acquire Valuables
 Super Realm Combat System: 3x3 positioning
 Super Realm Combat optional rule: survival tactics
+
+Super Realm: Optional Rules: Thematic Roving Natives (SR: 10.5, p.114) - Standard Rule: Roving native Leader can only do the follow activity; roving native underlings can only be assigned to follow their group leader
+3rdEdition / RealmSpeak: Optional Character Rules (A.6, p. 186): Captain, Druid, Magician, WIZARD ignores SPX, Woods Girl, Elf
 
 Poison: Special: the sharpness star added by this spell is ignored when the weapon is used against Grey/Prism Anomalies.
 Purple/Prism Anomalies can block/battle any individual transmorphized into mist.
@@ -27,33 +30,31 @@ Ask Demon: 4 options, instead of just asking a question
 Absorb Essence: any denizens and Attention chits assigned to it become assigned to the spellcaster; absorbs steed when absorbing a monster
 	The spellcaster cannot be affected by multiple Absorb Essence spells. Any Absorb Essence spell he casts while he is already bewitched by Absorb Essence is cancelled.
 Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells) or with Hurricane Winds, can be opened by 'T' strength Fly chit (including flying denizens)
----Super Realms Rules + Optional Rules---
-Super Realm: Characters, including potraits with credits, different chit icon
-Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
-3rdEdition / RealmSpeak: Optional Character Rules (A.6, p. 186): Captain, Druid, Magician, WIZARD ignores SPX, Woods Girl, Elf
-Super Realm: Events (Global Events = optional rule 11.11): 33 Events
-Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.121)
-Super Realm: Optional Rules: Initial quest card draw size (BGG variant: 3 quests)
-Super Realm: Optional Rules: No duplicate spell recording at start of the game
-Super Realm: Optional Rules: Starting location always the Inn
-Super Realm: Optional Rules: Bounty campaign (SR: 10.2, p.114)
-Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
-Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
-Super Realm: Optional Rules: Thematic Roving Natives (SR: 10.5, p.114)
-Super Realm: Optional Rules: Sentimental Value (SR: 10.6, p.115)
-Super Realm: Optional Rules: Credit (SR: 10.7, p.115)
-Super Realm: Optional Rules: Grounded Missions and Tasks (SR: 10.8, p.115)
-Super Realm: Optional Rules: Horse Riding (SR: 10.9, p.115), partly different to 3rd edition
-Super Realm: Optional Rules: Regrouping (SR: 10.10, p.115)
-Super Realm: Optional Rules: Selling (SR: 10.11, p.116)
-Super Realm: Optional Rules: Stealing (SR: 11.3, p.121)
-Super Realm: Optional Rules: Hiring Unused Characters (SR: 11.4, p.122)
+
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt e.g. for assigning VPs
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt e.g. for assigning VPs
-Super Realm: Optional Rules: Easier Spell Learning (SR: 11.9, p.126)
-Super Realm: Optional Rules: Range Setup (SR: 11.10, p.126)
-Super Realm: Optional Rules: Range Setup (SR: 11.11, p.126)
 Super Realm: Optional Rules: Commerce (SR: 11.12, p.126) - adapt e.g. rules for new native groups
+Super Realm: Optional Rules: Selling (SR: 10.11, p.116)
+Super Realm: Optional Rules: Easier Spell Learning (SR: 11.9, p.126)
+Super Realm: Optional Rules: Initial quest card draw size (BGG variant: 3 quests)
+Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.121)
+Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
+Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
+Super Realm: Optional Rules: Sentimental Value (SR: 10.6, p.115)
+Super Realm: Optional Rules: Grounded Missions and Tasks (SR: 10.8, p.115)
+Super Realm: Optional Rules: Regrouping (SR: 10.10, p.115)
+
+---Super Realms Rules + Optional Rules---
+Super Realm: Characters, including potraits with credits, different chit icon; including optional abilities (SR 11.2)
+Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
+Super Realm: Events (Global Events = optional rule 11.11): 33 Events
+Super Realm: Optional Rules: No duplicate spell recording at start of the game
+Super Realm: Optional Rules: Starting location always the Inn
+Super Realm: Optional Rules: Bounty Hunters (SR: 10.2, p.114)
+Super Realm: Optional Rules: Credit (SR: 10.7, p.115)
+Super Realm: Optional Rules: Stealing (SR: 11.3, p.121)
+Super Realm: Optional Rules: Hiring Unused Characters (SR: 11.4, p.122)
+Super Realm: Optional Rules: Range Setup (SR: 11.10, p.126)
 Super Realm: Optional Rules: Cornered (SR: 11.13, p.128)
 Super Realm: Player building map: distribute tiles equally (including river tiles), distribute river tiles first, then grotto, then rest, each player has 3 tiles in the hand and draws after placing, skip player if he cannot place any tile (and he has no river tile), if all players are skipped or player would be skipped but has river tile, undo last placement, do not allow placing grotto before all other river tiles have been placed
 First Edition Optional Rule - https://boardgamegeek.com/thread/2503528/1st-edition-vs-3rd-edition: Native blocking, First Edition Optional Rule - Native kiling, e.g. grudges but instantly relationship becomes enemy status, Followers summon Monsters?, Hired native Leaders?, learning spells? campaigns?, combat endls only if no attack was made
@@ -81,6 +82,7 @@ SUPER REALM:
 QUEST UPDATE:
 # QuestRequirementCastSpell: option to check for scroll or book
 # QuestRequirementTrade: option to check for conditional fame
+# QuestRequirementKillDenizenSummonedByChit
 
 Version 1.2.0.7
 SUPER REALM:
