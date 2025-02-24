@@ -23,13 +23,14 @@ public class QuestRequirementKillDenizenSummonedByChit extends QuestRequirement 
 
 	protected boolean testFulfillsRequirement(JFrame frame,CharacterWrapper character,QuestRequirementParams reqParams) {
 		ArrayList<GameObject> kills = character.getKills(character.getCurrentDayKey());
-		String chit = getChit().toLowerCase();
+		String chitName = getChit().toLowerCase();
 		TileLocation loc = character.getCurrentLocation();
 		if (getTileType()!=null && !getTileType().matches(ANY)) {
 			if (!loc.tile.getTileType().toLowerCase().matches(getTileType().toLowerCase())) {
 				return false;
 			}
 		}
+		ArrayList<String> chitNames = new ArrayList<>();
 		if (sameClearing()) {			
 			if (getChit().matches(QuestRequirement.NONE)) {
 				if (loc==null || loc.clearing==null) {
@@ -50,21 +51,24 @@ public class QuestRequirementKillDenizenSummonedByChit extends QuestRequirement 
 					if (!rc.isWarning() && !rc.isSound()) {
 						continue;
 					}
-					String name = rc.toString().toLowerCase();
+					String name = rc.toString().toLowerCase().trim();
 					String nameWithoutTileType = null;
 					StringTokenizer stringTokenizer = new StringTokenizer(name," ");
 					if (stringTokenizer.hasMoreTokens()) {
 						nameWithoutTileType = stringTokenizer.nextToken().toLowerCase();
 					}
-					if (name.matches(chit) || nameWithoutTileType.matches(chit)) {
+					if (name.matches(chitName) || nameWithoutTileType.matches(chitName)) {
 						chitInClearing = true;
-						break;
+						chitNames.add(name);
 					}
 				}
 				if (!chitInClearing) {
 					return false;
 				}
 			}
+		}
+		else {
+			chitNames.add(chitName);
 		}
 		for(GameObject kill:kills) {
 			GameObject holder = SetupCardUtility.getDenizenHolder(kill);
@@ -82,8 +86,10 @@ public class QuestRequirementKillDenizenSummonedByChit extends QuestRequirement 
 						if (stringTokenizer.hasMoreTokens()) {
 							summonWithoutTileType = stringTokenizer.nextToken().toLowerCase().trim();
 						}
-						if (summon.matches(chit) || summonWithoutTileType.matches(chit)) {
-							return true;
+						for (String chit : chitNames) {
+							if (summon.matches(chit) || summonWithoutTileType.matches(chit)) {
+								return true;
+							}
 						}
 					}
 				}
