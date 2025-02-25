@@ -342,6 +342,7 @@ public class Constants {
 	public static final String PENTAGRAM = "pentagram";
 	public static final String BOOK = "book";
 	public static final String SCROLL = "scroll";
+	public static final String ARTIFACT = "artifact";
 	
 	public static final String MAGIC_COLOR_BONUS = "magic_color_bonus";
 	public static final String MAGIC_COLOR_BONUS_ACTIVE = "magic_color_bonus_active";

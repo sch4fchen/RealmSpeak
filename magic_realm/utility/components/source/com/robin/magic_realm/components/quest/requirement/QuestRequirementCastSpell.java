@@ -16,6 +16,7 @@ public class QuestRequirementCastSpell extends QuestRequirement {
 
 	public static final String REGEX_FILTER = "_regex";
 	public static final String SCROLL_OR_BOOK = "_scroll_or_book";
+	public static final String ARTIFACT = "_scroll_or_book";
 	public static final String RING = "_ring";
 
 	public QuestRequirementCastSpell(GameObject go) {
@@ -50,6 +51,14 @@ public class QuestRequirementCastSpell extends QuestRequirement {
 				return false;
 			}
 		}
+		if (mustUseArtifact()) {
+			GameObject spell = reqParams.objectList.get(0);
+			GameObject spellOwner = spell.getHeldBy();
+			if (!spellOwner.hasThisAttribute(Constants.ARTIFACT)) {
+				logger.fine("Did not use an Artifact for casting the spell.");
+				return false;
+			}
+		}
 		if (mustUseRing()) {
 			GameObject spell = reqParams.objectList.get(0);
 			SpellWrapper spellWrapper = new SpellWrapper(spell);
@@ -80,6 +89,9 @@ public class QuestRequirementCastSpell extends QuestRequirement {
 		if (mustUseScrollOrBook()) {
 			sb.append(" using a scroll or book");
 		}
+		if (mustUseArtifact()) {
+			sb.append(" using an artifact");
+		}
 		if (mustUseScrollOrBook() && mustUseRing()) {
 			sb.append(" and");
 		}
@@ -96,6 +108,9 @@ public class QuestRequirementCastSpell extends QuestRequirement {
 	
 	public boolean mustUseScrollOrBook() {
 		return getBoolean(SCROLL_OR_BOOK);
+	}
+	public boolean mustUseArtifact() {
+		return getBoolean(ARTIFACT);
 	}
 	public boolean mustUseRing() {
 		return getBoolean(RING);

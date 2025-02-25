@@ -64,6 +64,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case CastSpell:
 				list.add(new QuestPropertyBlock(QuestRequirementCastSpell.REGEX_FILTER, "Spell to be casted (regex)", FieldType.Regex, null, new String[] {"spell"}));
 				list.add(new QuestPropertyBlock(QuestRequirementCastSpell.SCROLL_OR_BOOK, "Must use a scroll or book", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementCastSpell.ARTIFACT, "Must use an artifact", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementCastSpell.RING, "Must use a ring", FieldType.Boolean));
 				break;
 			case CharacterClass:
