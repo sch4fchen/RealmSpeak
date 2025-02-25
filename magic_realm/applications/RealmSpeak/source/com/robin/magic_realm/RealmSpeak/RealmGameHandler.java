@@ -21,6 +21,7 @@ import com.robin.magic_realm.RealmBattle.RealmBattle;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.quest.*;
+import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
 import com.robin.magic_realm.components.swing.*;
 import com.robin.magic_realm.components.table.Loot;
 import com.robin.magic_realm.components.utility.*;
@@ -531,6 +532,8 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		for (GameObject character : characters) {
 			CharacterWrapper ch = new CharacterWrapper(character);
 			ch.setGameOver(true);
+			QuestRequirementParams params = new QuestRequirementParams();
+			ch.testQuestRequirements(null, params);
 			if (hostPrefs.hasPref(Constants.SR_DEDUCT_VPS)) {
 				ch.addPenaltyVps();
 			}

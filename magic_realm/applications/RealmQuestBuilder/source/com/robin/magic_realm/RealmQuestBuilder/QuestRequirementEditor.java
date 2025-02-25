@@ -119,6 +119,8 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				break;
 			case FoundHiddenEnemies:
 				break;
+			case GameEnd:
+				break;
 			case GamePhase:
 				list.add(new QuestPropertyBlock(QuestRequirementGamePhase.GAME_PHASE_TYPE, "Only at", FieldType.StringSelector, GamePhaseType.values()));
 				break;

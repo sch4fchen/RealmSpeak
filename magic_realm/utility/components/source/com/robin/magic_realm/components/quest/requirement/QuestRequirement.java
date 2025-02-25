@@ -34,6 +34,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		Fighter,
 		Fly,
 		FoundHiddenEnemies,
+		GameEnd,
 		GamePhase, // end of phase, end of day, start of evening, midnight, birdsong
 		Gender,
 		Guild,
@@ -99,7 +100,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				case Fly:
 					return "Tests if the character is currently flying or has the ability to fly.";
 				case FoundHiddenEnemies:
-					return "Tests if the character has found hidden enemies.";		
+					return "Tests if the character has found hidden enemies.";
+				case GameEnd:
+					return "Tests if the game ended.";
 				case GamePhase:
 					return "Tests for a specific game phase (Birdsong, End-of-phase, End-of-turn, Evening).";
 				case Gender:
@@ -296,6 +299,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case FoundHiddenEnemies:
 				requirement = new QuestRequirementFoundHiddenEnemies(go);
+				break;
+			case GameEnd:
+				requirement = new QuestRequirementGameEnd(go);
 				break;
 			case GamePhase:
 				requirement = new QuestRequirementGamePhase(go);

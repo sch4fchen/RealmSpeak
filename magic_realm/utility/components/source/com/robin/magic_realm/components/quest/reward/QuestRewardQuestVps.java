@@ -39,7 +39,7 @@ public class QuestRewardQuestVps extends QuestReward {
 			sb.append("Substract "+"VPs of ");
 		}
 		else {
-			sb.append("Add "+getAmount()+"to the ");
+			sb.append("Add "+getAmount()+" to the ");
 		}
 		if (bonus()) {
 			sb.append("bonus quest VP of the character.");

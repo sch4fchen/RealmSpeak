@@ -5,6 +5,7 @@ Super Realm: Quests:
 	page 8: The Rings to Rule Them All, Small Collection
 	page 9: Large Collection, 4x Enchanting
 	page 10: 1x Enchanting, Chronicler, Buying a Small Army, Acquire Valuables
+	
 Super Realm Combat System: 3x3 positioning
 Super Realm Combat optional rule: survival tactics
 
@@ -82,6 +83,7 @@ QUEST UPDATE:
 # QuestRequirementTrade: option to check for conditional fame
 # QuestRequirementKillDenizenSummonedByChit
 # QuestRequirementTreachery
+# QuestRequirementGameEnd
 
 Version 1.2.0.7
 SUPER REALM:
