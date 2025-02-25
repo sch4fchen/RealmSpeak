@@ -129,6 +129,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	
 	public static final String KILL_BLOCK = "kills_b"; // record of all kills
 	public static final String SPELL_BLOCK = "spells_b"; // record of all casted spells
+	public static final String TREACHERY_BLOCK = "treacheries_b"; // record of all treacheries
 	
 	public static final String PHASE_CHITS = "phaseChits__";
 	
@@ -1413,6 +1414,24 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 		return spells;
+	}
+	
+	public void addTreachery(GameObject victim) {
+		String dayKey = getCurrentDayKey();
+		if (!getGameObject().hasAttributeListItem(TREACHERY_BLOCK,dayKey,victim.getStringId())) {
+			getGameObject().addAttributeListItem(TREACHERY_BLOCK,dayKey,victim.getStringId());
+		}
+	}
+	public ArrayList<GameObject> getTreacheries(String dayKey) {
+		ArrayList<GameObject> treacheries = new ArrayList<>();
+		Collection<String> ids = getGameObject().getAttributeList(TREACHERY_BLOCK,dayKey);
+		if (ids!=null) {
+			GameData data = getGameObject().getGameData();
+			for (String id : ids) {
+				treacheries.add(data.getGameObject(Long.valueOf(id)));
+			}
+		}
+		return treacheries;
 	}
 	
 	/**
@@ -7406,7 +7425,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		qp.dayKey = getCurrentDayKey();
 		addListItem(POST_QUEST_PARAMS,qp.asString());
 	}
-	public boolean processPostQuestParams(JFrame frame) {
+	private boolean processPostQuestParams(JFrame frame) {
 		if (!getBoolean(POST_QUEST_PARAMS)) return false;
 		boolean reward = false;
 		for(Object obj:getList(POST_QUEST_PARAMS)) {

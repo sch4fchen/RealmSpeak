@@ -63,6 +63,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		TimePassed,
 		Teleport,
 		Trade,
+		Treachery,
 		Weather,
 		;
 		public String getDescription() {
@@ -151,12 +152,14 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests for a specific search result on a specific tile.";
 				case Season:
 					return "Tests for a specific season.";
+				case Teleport:
+					return "Tests for that character is teleported.";
 				case TimePassed:
 					return "Tests for a specific length of time (in days) passed.";
 				case Trade:
 					return "Tests for a specific TRADE occurrence.";
-				case Teleport:
-					return "Tests for that character is teleported.";
+				case Treachery:
+					return "Tests for that character commiting treachery.";
 				case Weather:
 					return "Tests for a specific weather.";
 			default:
@@ -372,14 +375,17 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 			case Season:
 				requirement = new QuestRequirementSeason(go);
 				break;
+			case Teleport:
+				requirement = new QuestRequirementTeleport(go);
+				break;
 			case TimePassed:
 				requirement = new QuestRequirementTimePassed(go);
 				break;
 			case Trade:
 				requirement = new QuestRequirementTrade(go);
 				break;
-			case Teleport:
-				requirement = new QuestRequirementTeleport(go);
+			case Treachery:
+				requirement = new QuestRequirementTreachery(go);
 				break;
 			case Weather:
 				requirement = new QuestRequirementWeather(go);

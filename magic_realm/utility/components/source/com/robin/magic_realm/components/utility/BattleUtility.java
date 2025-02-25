@@ -230,6 +230,13 @@ public class BattleUtility {
 		treacheryFlag = true;
 		for (RealmComponent rc:activeCharacter.getAllHirelingsFromSame(theTarget)) {
 			moveToNewSheet(rc,false,false);
+			
+			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
+			combat.setBetrayedBy(activeCharacter.getGameObject());
+			CombatWrapper combatCharacter = new CombatWrapper(activeCharacter.getGameObject());
+			combatCharacter.setBetrayed(rc.getGameObject());
+			activeCharacter.addTreachery(theTarget.getGameObject());
+			
 			activeCharacter.removeHireling(rc.getGameObject());
 			if (!activeCharacter.isBattling(rc.getGameObject())) {
 				activeCharacter.addBattlingNative(rc.getGameObject());

@@ -36,6 +36,8 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String LOCK_NEXT = "LOCK_NEXT";
 	private static final String CASTED_RAISE_THE_DEAD = "CAST_RAISE_THE_DEAD";
 	private static final String RAISED_UNDEADS_IN_COMBAT = "RAISED_UNDEADS";
+	private static final String BETRAYED = "BETRAYED";
+	private static final String BETRAYED_BY = "BETRAYED_BY";
 	
 	// Round-only Information
 	private static final String COMBAT_BOX = "CMB_BOX";
@@ -125,6 +127,18 @@ public class CombatWrapper extends GameObjectWrapper {
 	}
 	public boolean isWatchful() {
 		return getBoolean(WATCHFUL);
+	}
+	public void setBetrayed(GameObject go) {
+		addListItem(BETRAYED,go.getStringId());
+	}
+	public ArrayList<String> getBetrayedIds() {
+		return getList(BETRAYED);
+	}
+	public void setBetrayedBy(GameObject go) {
+		addListItem(BETRAYED_BY,go.getStringId());
+	}
+	public ArrayList<String> getBetrayedByIds() {
+		return getList(BETRAYED_BY);
 	}
 	public void setBurnedColor(boolean val) {
 		setBoolean(BURNED_COLOR,val);

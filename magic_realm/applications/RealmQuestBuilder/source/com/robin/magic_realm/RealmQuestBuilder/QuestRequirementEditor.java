@@ -271,6 +271,11 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementTrade.TRADE_CONDITIONAL_FAME, "Trade item with conditional fame?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementTrade.ADD_MARK, "Add mark to traded item?", FieldType.Boolean));
 				break;
+			case Treachery:
+				list.add(new QuestPropertyBlock(QuestRequirementTreachery.REGEX_FILTER, "Denizen", FieldType.Regex, null, new String[] {"denizen"}));
+				list.add(new QuestPropertyBlock(QuestRequirementTreachery.NATIVE_ONLY, "Only natives?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementTreachery.KILL_IN_COMBAT, "Kill betrayed denizen in same combat?", FieldType.Boolean));
+				break;
 			case Teleport:
 				list.add(new QuestPropertyBlock(QuestRequirementTeleport.TELEPORT_TYPE, "Teleport type", FieldType.StringSelector, getTeleportTypes().toArray()));
 				break;

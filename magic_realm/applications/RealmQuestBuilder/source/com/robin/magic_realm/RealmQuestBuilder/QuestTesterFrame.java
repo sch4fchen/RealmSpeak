@@ -65,6 +65,7 @@ public class QuestTesterFrame extends JFrame {
 	JList<RealmComponent> hirelings;
 	JButton hirelingAdd;
 	JButton hirelingUnhire;
+	JButton hirelingKill;
 	JButton hirelingToggleFollow;
 	JList<QuestJournalEntry> journalList;
 
@@ -369,6 +370,7 @@ public class QuestTesterFrame extends JFrame {
 				character.setCurrentMonth(game.getMonth());
 				character.setCurrentDay(game.getDay());
 				character.startNewDay(RealmCalendar.getCalendar(gameData), HostPrefWrapper.findHostPrefs(gameData));
+				CombatWrapper.clearAllCombatInfo(character.getGameObject());
 				updateCharacterPanel();
 				retestQuest();
 			}
@@ -832,7 +834,7 @@ public class QuestTesterFrame extends JFrame {
 				updateHirelingsButtons();
 			}
 		});
-		JPanel hirelingButtons = new JPanel(new GridLayout(1, 3));
+		JPanel hirelingButtons = new JPanel(new GridLayout(1, 4));
 		hirelings.setCellRenderer(new HirelingListRenderer());
 		hirelingsPanel.add(hirelings);
 		hirelingAdd = new JButton("Add");
@@ -866,6 +868,23 @@ public class QuestTesterFrame extends JFrame {
 			}
 		});
 		hirelingButtons.add(hirelingUnhire);
+		hirelingKill = new JButton("Kill");
+		hirelingKill.setToolTipText("Kill hireling");
+		hirelingKill.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				RealmComponent hireling = hirelings.getSelectedValue();
+				killDenizen(hireling);
+				
+				CombatWrapper combat = new CombatWrapper(hireling.getGameObject());
+				combat.setBetrayedBy(character.getGameObject());
+				CombatWrapper combatCharacter = new CombatWrapper(character.getGameObject());
+				combatCharacter.setBetrayed(hireling.getGameObject());
+				character.addTreachery(hireling.getGameObject());
+				
+				retestQuest();
+			}
+		});
+		hirelingButtons.add(hirelingKill);
 		hirelingToggleFollow = new JButton("Follow");
 		hirelingToggleFollow.setToolTipText("Toggle hireling to follow character");
 		hirelingToggleFollow.addActionListener(new ActionListener() {
@@ -897,8 +916,9 @@ public class QuestTesterFrame extends JFrame {
 	
 	private void updateHirelingsButtons() {
 		RealmComponent rc = hirelings.getSelectedValue();
-		hirelingToggleFollow.setEnabled(rc != null);
 		hirelingUnhire.setEnabled(rc != null);
+		hirelingKill.setEnabled(rc != null);
+		hirelingToggleFollow.setEnabled(rc != null);
 	}
 
 	private JPanel buildCharacterClearingPanel() {
@@ -1166,25 +1186,7 @@ public class QuestTesterFrame extends JFrame {
 				if (victim == null)
 					return;
 				int index = clearingComponents.getSelectedIndex();
-				String dayKey = character.getCurrentDayKey();
-				ArrayList<GameObject> kills = character.getKills(dayKey);
-				int killCount = kills == null ? 0 : kills.size();
-				GameObject victimGameObject = victim.getGameObject();
-				victimGameObject.setThisAttribute(Constants.DEAD);
-				Spoils spoils = new Spoils();
-				spoils.addFame(victimGameObject.getThisInt("fame"));
-				spoils.addNotoriety(victimGameObject.getThisInt("notoriety"));
-				spoils.setUseMultiplier(true);
-				spoils.setMultiplier(killCount + 1);
-				character.addKill(victimGameObject, spoils);
-				character.addFame(spoils.getFame());
-				character.addNotoriety(spoils.getNotoriety());
-				if (victimGameObject.hasThisAttribute("native")) {
-					character.addGold(Integer.parseInt(victimGameObject.getThisAttribute("base_price")));
-				}
-				character.removeHireling(victimGameObject);
-				victimGameObject.detach();
-				updateCharacterPanel();
+				killDenizen(victim);
 				int listLength = clearingComponents.getModel().getSize();
 				if (listLength > 0) {
 					if (index >= listLength)
@@ -1200,6 +1202,28 @@ public class QuestTesterFrame extends JFrame {
 		return locationPanel;
 	}
 
+	private void killDenizen(RealmComponent victim) {
+		String dayKey = character.getCurrentDayKey();
+		ArrayList<GameObject> kills = character.getKills(dayKey);
+		int killCount = kills == null ? 0 : kills.size();
+		GameObject victimGameObject = victim.getGameObject();
+		victimGameObject.setThisAttribute(Constants.DEAD);
+		Spoils spoils = new Spoils();
+		spoils.addFame(victimGameObject.getThisInt("fame"));
+		spoils.addNotoriety(victimGameObject.getThisInt("notoriety"));
+		spoils.setUseMultiplier(true);
+		spoils.setMultiplier(killCount + 1);
+		character.addKill(victimGameObject, spoils);
+		character.addFame(spoils.getFame());
+		character.addNotoriety(spoils.getNotoriety());
+		if (victimGameObject.hasThisAttribute("native")) {
+			character.addGold(Integer.parseInt(victimGameObject.getThisAttribute("base_price")));
+		}
+		character.removeHireling(victimGameObject);
+		victimGameObject.detach();
+		updateCharacterPanel();
+	}
+	
 	private ArrayList<GameObject> chooseItem() {
 		GamePool pool = new GamePool(gameData.getGameObjects());
 		Hashtable<String, GameObject> hash = new Hashtable<>();

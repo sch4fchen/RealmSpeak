@@ -1,6 +1,5 @@
 ::ROADMAP::
 Super Realm: Quests:
-	page 4: Traitor
 	page 5: Ring Caster
 	page 6: Happy Accident
 	page 7: Artifact Caster, Tomb Raider, There Can Be Only One
@@ -83,6 +82,7 @@ QUEST UPDATE:
 # QuestRequirementCastSpell: option to check for scroll or book
 # QuestRequirementTrade: option to check for conditional fame
 # QuestRequirementKillDenizenSummonedByChit
+# QuestRequirementTreachery
 
 Version 1.2.0.7
 SUPER REALM:
