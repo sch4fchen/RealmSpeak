@@ -19,6 +19,7 @@ public class QuestRequirementLoot extends QuestRequirement {
 	public static final String REGEX_FILTER = "_regex";
 	public static final String REQ_MARK = "_req_mark";
 	public static final String ADD_MARK = "_add_mark";
+	public static final String REQ_ABILITY = "_req_ability";
 	
 	public QuestRequirementLoot(GameObject go) {
 		super(go);
@@ -70,6 +71,9 @@ public class QuestRequirementLoot extends QuestRequirement {
 			case Small:
 				query="treasure=small";
 				break;
+			case Treasure:
+				query="treasure";
+				break;
 			case TWT:
 				query="treasure_within_treasure";
 				break;
@@ -91,11 +95,16 @@ public class QuestRequirementLoot extends QuestRequirement {
 						String mark = go.getThisAttribute(QuestConstants.QUEST_MARK);
 						if (mark==null || !mark.equals(questId)) continue;
 					}
+					if (getRequiredAbility()!=null && !getRequiredAbility().isEmpty()) {
+						if (!go.hasThisAttribute(getRequiredAbility())) {
+							continue;
+						}
+					}
 					matches.add(go);
 				}
 			}
 			if (matches.isEmpty()) {
-				myLogger.fine("None of the treasures tested matched the regex: "+regex);
+				myLogger.fine("None of the treasures tested had the required ability/mark and matched the regex: "+regex);
 			}
 		}
 		else {
@@ -135,6 +144,9 @@ public class QuestRequirementLoot extends QuestRequirement {
 	}
 	public boolean requiresMark() {
 		return getBoolean(REQ_MARK);
+	}
+	public String getRequiredAbility() {
+		return getString(REQ_ABILITY);
 	}
 	public boolean markItems() {
 		return getBoolean(ADD_MARK);

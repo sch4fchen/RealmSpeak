@@ -1,6 +1,5 @@
 ::ROADMAP::
 Super Realm: Quests:
-	page 6: Happy Accident
 	page 7: Artifact Caster, Tomb Raider, There Can Be Only One
 	page 8: The Rings to Rule Them All, Small Collection
 	page 9: Large Collection, 4x Enchanting
@@ -82,6 +81,7 @@ QUEST UPDATE:
 # QuestRequirementCastSpell: option to check for scroll/book or ring
 # QuestRequirementTrade: option to check for conditional fame
 # QuestRequirementKillDenizenSummonedByChit
+# QuestRequirement Inventory and Loot: can check for specific item ability
 # QuestRequirementTreachery
 # QuestRequirementGameEnd
 
