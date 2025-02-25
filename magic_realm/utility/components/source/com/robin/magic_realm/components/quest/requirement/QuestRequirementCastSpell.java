@@ -9,12 +9,14 @@ import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.quest.CharacterActionType;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class QuestRequirementCastSpell extends QuestRequirement {
 	private static Logger logger = Logger.getLogger(QuestRequirementCastSpell.class.getName());
 
 	public static final String REGEX_FILTER = "_regex";
 	public static final String SCROLL_OR_BOOK = "_scroll_or_book";
+	public static final String RING = "_ring";
 
 	public QuestRequirementCastSpell(GameObject go) {
 		super(go);
@@ -48,6 +50,14 @@ public class QuestRequirementCastSpell extends QuestRequirement {
 				return false;
 			}
 		}
+		if (mustUseRing()) {
+			GameObject spell = reqParams.objectList.get(0);
+			SpellWrapper spellWrapper = new SpellWrapper(spell);
+			if (spellWrapper.getIncantationObject()==null || !spellWrapper.getIncantationObject().hasThisAttribute(Constants.RING)) {
+				logger.fine("Did not use a Ring for casting the spell.");
+				return false;
+			}
+		}
 
 		return true;
 	}
@@ -67,6 +77,15 @@ public class QuestRequirementCastSpell extends QuestRequirement {
 			sb.append(regex);
 			sb.append("/");
 		}
+		if (mustUseScrollOrBook()) {
+			sb.append(" using a scroll or book");
+		}
+		if (mustUseScrollOrBook() && mustUseRing()) {
+			sb.append(" and");
+		}
+		if (mustUseRing()) {
+			sb.append(" using a ring");
+		}
 		sb.append(".");
 		return sb.toString();
 	}
@@ -77,5 +96,8 @@ public class QuestRequirementCastSpell extends QuestRequirement {
 	
 	public boolean mustUseScrollOrBook() {
 		return getBoolean(SCROLL_OR_BOOK);
+	}
+	public boolean mustUseRing() {
+		return getBoolean(RING);
 	}
 }
