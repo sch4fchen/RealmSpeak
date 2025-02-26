@@ -2,7 +2,7 @@
 Super Realm: Quests:
 	page 7: There Can Be Only One
 	page 9: 4x Enchanting
-	page 10: 1x Enchanting, Chronicler, Buying a Small Army, Acquire Valuables
+	page 10: 1x Enchanting, Buying a Small Army, Acquire Valuables
 	
 Super Realm Combat System: 3x3 positioning
 Super Realm Combat optional rule: survival tactics

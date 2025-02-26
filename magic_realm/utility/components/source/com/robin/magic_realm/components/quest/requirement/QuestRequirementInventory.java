@@ -101,7 +101,12 @@ public class QuestRequirementInventory extends QuestRequirementLoot {
 			sb.append(" ");
 			sb.append(getTreasureType().toString().toLowerCase());
 		}
-		sb.append(" treasure");
+		if (tt==TreasureType.Small || tt==TreasureType.Large) {
+			sb.append(" treasure");
+		}
+		else {
+			sb.append(" item");
+		}
 		sb.append(num==1?"":"s");
 		String regex = getRegExFilter();
 		if (regex!=null && regex.trim().length()>0) {
