@@ -57,6 +57,7 @@ public class QuestRequirementLoot extends QuestRequirement {
 			case Boots:
 			case Gloves:
 			case Great:
+			case Scroll:
 				query = tt.toString().toLowerCase();
 				break;
 			case Large:
@@ -96,7 +97,7 @@ public class QuestRequirementLoot extends QuestRequirement {
 						if (mark==null || !mark.equals(questId)) continue;
 					}
 					if (getRequiredAbility()!=null && !getRequiredAbility().isEmpty()) {
-						if (!go.hasThisAttribute(getRequiredAbility())) {
+						if (!go.hasAllKeyVals(getRequiredAbility())) {
 							continue;
 						}
 					}

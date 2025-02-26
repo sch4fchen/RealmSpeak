@@ -735,24 +735,40 @@ public class GameObject extends ModifyableObject implements Serializable {
 		ArrayList<String> fixedKeyVals = new ArrayList<>();
 		ArrayList<String> fixedNegativeKeyVals = new ArrayList<>();
 		for (String string : keyVals) {
-			StringTokenizer tokens = new StringTokenizer(string, "=");
-			if (tokens.countTokens() == 1) {
-				String key = tokens.nextToken().trim().toLowerCase();
-				if (key.startsWith("!")) {
-					fixedNegativeKeyVals.add(key);
+			if (string.contains("|")) {
+				StringTokenizer tokens = new StringTokenizer(string, "|");
+				boolean keyFound = false;
+				while (tokens.hasMoreTokens()) {
+					String singleKey = tokens.nextToken().trim().toLowerCase();
+					if (hasAllKeyVals(singleKey)) {
+						keyFound = true;
+						break;
+					}
 				}
-				else {
-					fixedKeyVals.add(key);
+				if (!keyFound) {
+					return false;
 				}
 			}
-			else if (tokens.countTokens() == 2) {
-				String key = tokens.nextToken().trim().toLowerCase();
-				String val = tokens.nextToken().trim();
-				if (key.startsWith("!")) {
-					fixedNegativeKeyVals.add(key + "=" + val);
+			else {
+				StringTokenizer tokens = new StringTokenizer(string, "=");
+				if (tokens.countTokens() == 1) {
+					String key = tokens.nextToken().trim().toLowerCase();
+					if (key.startsWith("!")) {
+						fixedNegativeKeyVals.add(key);
+					}
+					else {
+						fixedKeyVals.add(key);
+					}
 				}
-				else {
-					fixedKeyVals.add(key + "=" + val);
+				else if (tokens.countTokens() == 2) {
+					String key = tokens.nextToken().trim().toLowerCase();
+					String val = tokens.nextToken().trim();
+					if (key.startsWith("!")) {
+						fixedNegativeKeyVals.add(key + "=" + val);
+					}
+					else {
+						fixedKeyVals.add(key + "=" + val);
+					}
 				}
 			}
 		}

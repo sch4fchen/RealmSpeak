@@ -11,6 +11,7 @@ public enum TreasureType {
 	Large,
 	MagicArmor,
 	MagicWeapon,
+	Scroll,
 	Small,
 	Treasure,
 	TWT,
