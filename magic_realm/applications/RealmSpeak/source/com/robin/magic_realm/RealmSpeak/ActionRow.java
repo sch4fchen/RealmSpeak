@@ -1337,7 +1337,7 @@ public class ActionRow {
 				}
 				
 				if (trader.isNative()) {
-					String nativeName = trader.getGameObject().getThisAttribute(Constants.NATIVE);
+					String nativeName = trader.getGameObject().getThisAttribute(RealmComponent.NATIVE);
 					GamePool pool = new GamePool(character.getGameData().getGameObjects());
 					ArrayList<GameObject> boxes = pool.find("summon_n="+nativeName.toLowerCase());
 					for (GameObject box : boxes) {

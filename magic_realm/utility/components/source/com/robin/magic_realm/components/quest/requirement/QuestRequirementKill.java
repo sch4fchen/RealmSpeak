@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
+import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.quest.ArmoredType;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.QuestStep;
@@ -29,6 +30,7 @@ public class QuestRequirementKill extends QuestRequirement {
 	public static final String ARMORED = "_arm";
 	private static final String STEP_ONLY_KILLS = "_sok"; // compatibility for old quests
 	public static final String REGEX_DESCRIPTION = "_regex_description";
+	public static final String KILL_CHARACTERS = "_kill_characters";
 	
 	public QuestRequirementKill(GameObject go) {
 		super(go);
@@ -63,6 +65,8 @@ public class QuestRequirementKill extends QuestRequirement {
 		if (numberOfKillsNeeded==QuestConstants.ALL_VALUE) {
 			GamePool pool = new GamePool(getGameData().getGameObjects());
 			for(GameObject go:pool.find("vulnerability,!weight")) { // stuff that can be killed has a vulnerability, including characters!
+				if (!killCharacters() && !go.hasThisAttribute(Constants.DENIZEN)) continue;
+				if (killCharacters() && !go.hasThisAttribute(RealmComponent.CHARACTER)) continue;
 				if (pattern!=null && !pattern.matcher(go.getName()).find()) continue;
 				if (requireMark) {
 					String mark = go.getThisAttribute(QuestConstants.QUEST_MARK);
@@ -90,6 +94,8 @@ public class QuestRequirementKill extends QuestRequirement {
 			
 			ArrayList<GameObject> kills = character.getKills(dayKeyString);
 			for(GameObject kill:kills) {
+				if (!killCharacters() && !kill.hasThisAttribute(Constants.DENIZEN)) continue;
+				if (killCharacters() && !kill.hasThisAttribute(RealmComponent.CHARACTER)) continue;
 				if (pattern!=null && !pattern.matcher(kill.getName()).find()) continue;
 				if (requireMark) {
 					String mark = kill.getThisAttribute(QuestConstants.QUEST_MARK);
@@ -120,7 +126,12 @@ public class QuestRequirementKill extends QuestRequirement {
 		if (getArmored() != ArmoredType.Any) {
 			sb.append(" "+getArmored().toString().toLowerCase());
 		}
-		sb.append(" denizen");
+		if (killCharacters()) {
+			sb.append(" character");
+		}
+		else {
+			sb.append(" denizen");
+		}
 		sb.append(val==1?"":"s");
 		if(!getRegExFilter().isEmpty()) {
 			sb.append(" that match");
@@ -178,5 +189,8 @@ public class QuestRequirementKill extends QuestRequirement {
 			return getString(REGEX_DESCRIPTION);
 		}
 		return "";
+	}
+	private boolean killCharacters() {
+		return getBoolean(KILL_CHARACTERS);
 	}
 }

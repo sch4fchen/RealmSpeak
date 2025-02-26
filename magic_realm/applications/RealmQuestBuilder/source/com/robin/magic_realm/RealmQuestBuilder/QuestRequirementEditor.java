@@ -175,6 +175,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementKill.ARMORED, "Armor", FieldType.StringSelector, ArmoredType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementKill.TARGET_VALUE_TYPE, "Only count points gained during the", FieldType.StringSelector, TargetValueType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementKill.REQUIRE_MARK, "Mark is required", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementKill.KILL_CHARACTERS, "Must kill characters (not denizens)", FieldType.Boolean));
 				break;
 			case KillDenizenSummonedByChit:
 				list.add(new QuestPropertyBlock(QuestRequirementKillDenizenSummonedByChit.CHIT, "Chit type", FieldType.StringSelector, getAllChitTypes()));

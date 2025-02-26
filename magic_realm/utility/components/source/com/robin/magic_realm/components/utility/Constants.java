@@ -395,13 +395,13 @@ public class Constants {
 	public static final String HIDDEN = "hidden";
 	
 	// Denizen
+	public static final String DENIZEN = "denizen";
 	public static final String NUMBER = "number";
 	public static final String SETUP_START_TILE_REQ = "setup_start_tilereq";
 	public static final String WEAPON_USE = "weapon_use";
 	public static final String WEAPON_USE_CHIT = "weapon_use_chit";
 	public static final String NO_WEAPON_USAGE = "no_weapon_usage";
 	public static final String NATIVE_NAME = "native_name";
-	public static final String NATIVE = "native";
 	
 	public static final String SMALL = "small";
 	public static final String STEED_IN_CAVES_AND_WATER = "steed_in_caves_and_water";

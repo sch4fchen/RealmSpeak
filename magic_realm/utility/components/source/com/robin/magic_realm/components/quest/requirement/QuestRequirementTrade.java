@@ -54,9 +54,9 @@ public class QuestRequirementTrade extends QuestRequirement {
 							(tradeItem() && rc.isItem()) || (tradeTreasure() && rc.isTreasure()) || (tradeSpell() && rc.isSpell())) {							
 						if (itemPattern==null || itemPattern.matcher(go.getName()).find()) {
 							if (tradeWithConditionalFame()) {
-								String nativeGroup = go.getThisAttribute(Constants.NATIVE);
+								String nativeGroup = go.getThisAttribute(RealmComponent.NATIVE);
 								GameObject traderGo = reqParams.targetOfSearch;
-								String traderGroup = traderGo.getThisAttribute(Constants.NATIVE);
+								String traderGroup = traderGo.getThisAttribute(RealmComponent.NATIVE);
 								if (!nativeGroup.toLowerCase().matches(traderGroup.toLowerCase())) {
 									continue;
 								}

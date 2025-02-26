@@ -1,9 +1,9 @@
 ::ROADMAP::
 Super Realm: Quests: There Can Be Only One (p. 7), 5x Enchanting (p.9+10), Buying a Small Army (p. 10), Acquire Valuables (p.10)
-	
+Super Realm: Optional Rules: Thematic Roving Natives (SR: 10.5, p.114) - Standard Rule: Roving native Leader can only do the follow activity; roving native underlings can only be assigned to follow their group leader
+
 Super Realm Combat System: 3x3 positioning
 Super Realm Combat optional rule: survival tactics
-Super Realm: Optional Rules: Thematic Roving Natives (SR: 10.5, p.114) - Standard Rule: Roving native Leader can only do the follow activity; roving native underlings can only be assigned to follow their group leader
 
 Poison: Special: the sharpness star added by this spell is ignored when the weapon is used against Grey/Prism Anomalies.
 Purple/Prism Anomalies can block/battle any individual transmorphized into mist.
@@ -77,6 +77,7 @@ QUEST UPDATE:
 # QuestRequirementTrade: option to check for conditional fame
 # QuestRequirementKillDenizenSummonedByChit
 # QuestRequirement Inventory and Loot: can check for specific item ability
+# QuestRequirementKill: option to check for killing characters
 # QuestRequirementTreachery
 # QuestRequirementGameEnd
 
