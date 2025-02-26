@@ -1,14 +1,9 @@
 ::ROADMAP::
-Super Realm: Quests:
-	page 7: There Can Be Only One
-	page 9: 4x Enchanting
-	page 10: 1x Enchanting, Buying a Small Army, Acquire Valuables
+Super Realm: Quests: There Can Be Only One (p. 7), 5x Enchanting (p.9+10), Buying a Small Army (p. 10), Acquire Valuables (p.10)
 	
 Super Realm Combat System: 3x3 positioning
 Super Realm Combat optional rule: survival tactics
-
 Super Realm: Optional Rules: Thematic Roving Natives (SR: 10.5, p.114) - Standard Rule: Roving native Leader can only do the follow activity; roving native underlings can only be assigned to follow their group leader
-3rdEdition / RealmSpeak: Optional Character Rules (A.6, p. 186): Captain, Druid, Magician, WIZARD ignores SPX, Woods Girl, Elf
 
 Poison: Special: the sharpness star added by this spell is ignored when the weapon is used against Grey/Prism Anomalies.
 Purple/Prism Anomalies can block/battle any individual transmorphized into mist.
@@ -28,6 +23,7 @@ Absorb Essence: any denizens and Attention chits assigned to it become assigned 
 	The spellcaster cannot be affected by multiple Absorb Essence spells. Any Absorb Essence spell he casts while he is already bewitched by Absorb Essence is cancelled.
 Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells) or with Hurricane Winds, can be opened by 'T' strength Fly chit (including flying denizens)
 
+Super Realm: Optional Rules: Character Rules (A.6, p. 186): Witch, Witch King
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt e.g. for assigning VPs
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt e.g. for assigning VPs
 Super Realm: Optional Rules: Commerce (SR: 11.12, p.126) - adapt e.g. rules for new native groups
