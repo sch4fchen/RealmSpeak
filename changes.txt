@@ -1,8 +1,7 @@
 ::ROADMAP::
 Super Realm: Quests:
 	page 7: There Can Be Only One
-	page 8: Small Collection
-	page 9: Large Collection, 4x Enchanting
+	page 9: 4x Enchanting
 	page 10: 1x Enchanting, Chronicler, Buying a Small Army, Acquire Valuables
 	
 Super Realm Combat System: 3x3 positioning
