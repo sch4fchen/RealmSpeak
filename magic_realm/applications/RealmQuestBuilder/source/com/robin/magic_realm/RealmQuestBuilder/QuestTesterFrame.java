@@ -844,14 +844,18 @@ public class QuestTesterFrame extends JFrame {
 				ArrayList<GameObject> things = chooseOther("Hireling", "native,!treasure,!dwelling,!horse,!boon");
 				if (things == null)
 					return;
+				
+				QuestRequirementParams qp = new QuestRequirementParams();
+				qp.actionType = CharacterActionType.Hire;
 				for (GameObject thing : things) {
 					thing.setThisAttribute("seen");
 					thing.removeThisAttribute(Constants.DEAD);
 					character.getCurrentLocation().clearing.add(thing, null);
 					character.addHireling(thing);
+					qp.objectList.add(thing);
 				}
 				updateCharacterPanel();
-				retestQuest();
+				retestQuest(qp);
 			}
 		});
 		hirelingButtons.add(hirelingAdd);

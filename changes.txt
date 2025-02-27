@@ -1,5 +1,5 @@
 ::ROADMAP::
-Super Realm: Quests: 5x Enchanting (p.9+10), Buying a Small Army (p. 10)
+Super Realm: Quests: 5x Enchanting (p.9+10)
 
 Super Realm Combat System: 3x3 positioning
 Super Realm Combat optional rule: survival tactics
@@ -83,6 +83,7 @@ QUEST UPDATE:
 # QuestRequirementTreachery
 # QuestRequirementGameEnd
 # QuestRequirementInventoryValue
+# QuestRequirementHire
 
 Version 1.2.0.7
 SUPER REALM:
