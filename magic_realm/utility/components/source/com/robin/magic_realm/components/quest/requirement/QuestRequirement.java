@@ -40,6 +40,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		Guild,
 		Hidden,
 		HideResult,
+		Hire,
 		Hirelings,
 		Inventory, // a requirement that tests what you have in inventory
 		Kill,
@@ -113,6 +114,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests if the character is hidden.";
 				case HideResult:
 					return "Tests if the character succeeds a hide roll (below or equal to a specfic value).";
+				case Hire:
+					return "Tests if character hires certain natives.";
 				case Hirelings:
 					return "Tests if character owns certain hirelings.";
 				case Inventory:
@@ -317,6 +320,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case HideResult:
 				requirement = new QuestRequirementHideResult(go);
+				break;
+			case Hire:
+				requirement = new QuestRequirementHire(go);
 				break;
 			case Hirelings:
 				requirement = new QuestRequirementHirelings(go);

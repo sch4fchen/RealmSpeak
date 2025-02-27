@@ -2039,12 +2039,15 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 							character.unhideAllCharacterFollowers();
 						}
 						if (!frame.showingTurn()) {
-							broadcast(character.getGameObject().getName(), "Starts turn: " + character.getCurrentLocation());
-							character.getCurrentLocation().energizeItems();
+							TileLocation loc = character.getCurrentLocation();
+							broadcast(character.getGameObject().getName(), "Starts turn: " + loc);
+							if (loc!=null) {
+								character.getCurrentLocation().energizeItems();
+							}
 							RealmTurnPanel turn = new RealmTurnPanel(frame, game, hostPrefs);
 							needSubmit = true;
 							frame.showYourTurn(turn);
-							getInspector().getMap().centerOn(character.getCurrentLocation());
+							getInspector().getMap().centerOn(loc);
 							frame.toFront();
 							String id = character.getGameObject().getStringId();
 							characterFrameOrder.remove(id);

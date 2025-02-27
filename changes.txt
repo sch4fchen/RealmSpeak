@@ -1,6 +1,5 @@
 ::ROADMAP::
 Super Realm: Quests: 5x Enchanting (p.9+10), Buying a Small Army (p. 10), Acquire Valuables (p.10)
-Super Realm: Optional Rules: Thematic Roving Natives (SR: 10.5, p.114) - Standard Rule: Roving native Leader can only do the follow activity; roving native underlings can only be assigned to follow their group leader
 
 Super Realm Combat System: 3x3 positioning
 Super Realm Combat optional rule: survival tactics
@@ -23,6 +22,7 @@ Absorb Essence: any denizens and Attention chits assigned to it become assigned 
 	The spellcaster cannot be affected by multiple Absorb Essence spells. Any Absorb Essence spell he casts while he is already bewitched by Absorb Essence is cancelled.
 Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells) or with Hurricane Winds, can be opened by 'T' strength Fly chit (including flying denizens)
 
+Super Realm: Optional Rules: Thematic Roving Natives (SR: 10.5, p.114): In combat, when any roving native Dwarf (not just the leader) is dark-side up, they subtract one from their move speed when they do the Duck maneuver.
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt e.g. for assigning VPs
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt e.g. for assigning VPs
 Super Realm: Optional Rules: Commerce (SR: 11.12, p.126) - adapt e.g. rules for new native groups
@@ -71,6 +71,8 @@ SUPER REALM:
 # White/Black magic supplied on the odd/even numbered months on Day 7
 # Blindly Reaching into the Pit rule
 # Maze rules
+# Hired roving native leaders are just underlings
+# Optional Rule: Thematic roving natives (without Dwarf speed change)
 # Optional Rule: Severe wounds
 QUEST UPDATE:
 # QuestRequirementCastSpell: option to check for scroll/book, artifact or ring

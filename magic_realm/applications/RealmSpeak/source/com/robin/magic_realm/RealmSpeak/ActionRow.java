@@ -591,7 +591,7 @@ public class ActionRow {
 	public void checkSleep() {
 		// Find other characters in the clearing, and put them to sleep too
 		TileLocation tl = character.getCurrentLocation();
-		if (tl.isInClearing()) {
+		if (tl!=null && tl.isInClearing()) {
 			for (CharacterWrapper testCharacter:ClearingUtility.getCharactersInClearing(tl)) {
 				checkSleep(testCharacter);
 			}
@@ -2032,7 +2032,9 @@ public class ActionRow {
 				
 				QuestRequirementParams params = new QuestRequirementParams();
 				params.actionType = CharacterActionType.Hire;
-				params.objectList.add(last.getGameObject());
+				for (RealmComponent hired : list) {
+					params.objectList.add(hired.getGameObject());
+				}
 				character.testQuestRequirements(gameHandler.getMainFrame(),params);
 			}
 			else {

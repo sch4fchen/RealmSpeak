@@ -37188,6 +37188,9 @@
         <attribute fast_caster="" />
         <attribute native_name="Caster" />
         <attribute roving_native="" />
+		<attributeList keyName="extra_actions">
+          <attributeVal N0="SP" />
+        </attributeList>
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -39792,6 +39795,9 @@
         <attribute archer="" />
         <attribute native_name="Archer" />
         <attribute roving_native="" />
+		<attributeList keyName="extra_actions">
+          <attributeVal N0="H" />
+        </attributeList>
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
@@ -41927,6 +41933,10 @@
         <attribute icon_size="0.9" />
         <attribute native_name="Axeman" />
         <attribute roving_native="" />
+		<attribute no_sunlight="" />
+		<attributeList keyName="diemod">
+          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,hire,trade,commerce:&gt;caves" />
+        </attributeList>
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -47581,6 +47591,9 @@
         <attribute icon_size="0.9" />
         <attribute native_name="Assassin" />
         <attribute roving_native="" />
+		<attributeList keyName="extra_actions">
+          <attributeVal N0="M" />
+        </attributeList>
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />

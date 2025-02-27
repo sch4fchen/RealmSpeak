@@ -139,6 +139,8 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case HideResult:
 				list.add(new QuestPropertyBlock(QuestRequirementHideResult.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));
 				break;
+			case Hire:
+				break;
 			case Hirelings:
 				list.add(new QuestPropertyBlock(QuestRequirementHirelings.HIRELING_REGEX, "Hireling RegEx", FieldType.Regex, null, new String[] { "denizen" }));
 				list.add(new QuestPropertyBlock(QuestRequirementHirelings.AMOUNT, "Number of hirelings", FieldType.Number));

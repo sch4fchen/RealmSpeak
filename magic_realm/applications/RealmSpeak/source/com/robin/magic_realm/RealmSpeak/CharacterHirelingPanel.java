@@ -182,6 +182,8 @@ public class CharacterHirelingPanel extends CharacterFramePanel {
 	}
 	private void doAssign() {
 		if (selectedUnderlings.isEmpty()) return;
+		boolean rovingUnderlings = false;
+		ArrayList<String> rovingNatives = new ArrayList<>();
 		
 		// Need to group underlings by location - assignment may not be the same for all
 		HashLists<TileLocation,RealmComponent> underlingHash = new HashLists<>();
@@ -190,13 +192,36 @@ public class CharacterHirelingPanel extends CharacterFramePanel {
 			if (location!=null && location.isInClearing()) { // This should always be true, I think
 				underlingHash.put(location,underling);
 			}
+			if (underling.getGameObject().hasThisAttribute(Constants.ROVING_NATIVE)) {
+				rovingUnderlings = true;
+				rovingNatives.add(underling.getGameObject().getThisAttribute(RealmComponent.NATIVE));
+			}
 		}
 		
 		// Now, query each group of hirelings according to their clearing
 		boolean wasQueried = false; // Need to know this, in case there are no characters/leaders to assign hirelings to
 		for (TileLocation location : underlingHash.keySet()) {
 			ArrayList<RealmComponent> list = underlingHash.getList(location);
-			Collection<RealmComponent> guides = ClearingUtility.getGuidesInClearing(location);
+			Collection<RealmComponent> guides = new ArrayList<>();
+			Collection<RealmComponent> allGuides = ClearingUtility.getGuidesInClearing(location);
+			if (rovingUnderlings) {
+				for (RealmComponent guide : allGuides) {
+					boolean allGroupnamesFound = true;
+					for (String groupname : rovingNatives) {
+						if (!guide.getGameObject().hasThisAttribute(RealmComponent.NATIVE) || !guide.getGameObject().getThisAttribute(RealmComponent.NATIVE).matches(groupname)
+								|| !guide.getGameObject().hasThisAttribute("rank") || !guide.getGameObject().getThisAttribute("rank").toLowerCase().matches("hq")) {
+							allGroupnamesFound = false;
+							break;
+						}
+					}
+					if (allGroupnamesFound) {
+						guides.add(guide);
+					}
+				}
+			}
+			else {
+				guides.addAll(allGuides);
+			}
 			if (!guides.isEmpty()) {
 				wasQueried = true;
 				RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(
