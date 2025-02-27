@@ -43,6 +43,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		Hire,
 		Hirelings,
 		Inventory, // a requirement that tests what you have in inventory
+		InventoryValue,
 		Kill,
 		KillDenizenSummonedByChit,
 		KillGuardian,
@@ -120,6 +121,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests if character owns certain hirelings.";
 				case Inventory:
 					return "Tests the contents of inventory.";
+				case InventoryValue:
+					return "Tests the value of the inventory.";
 				case Kill:
 					return "Tests for a specific kill or kills.";
 				case KillDenizenSummonedByChit:
@@ -329,6 +332,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case Inventory:
 				requirement = new QuestRequirementInventory(go);
+				break;
+			case InventoryValue:
+				requirement = new QuestRequirementInventoryValue(go);
 				break;
 			case Kill:
 				requirement = new QuestRequirementKill(go);

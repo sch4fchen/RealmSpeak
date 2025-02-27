@@ -165,8 +165,16 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementInventory.EXACT_NUMBER, "Exactly the amount?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementInventory.ITEM_ACTIVE, "Require activated?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementInventory.ITEM_DEACTIVE, "Require deactivated?", FieldType.Boolean));
-				list.add(new QuestPropertyBlock(QuestRequirementInventory.REQ_MARK, "Require mark?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementLoot.REQ_MARK, "Require mark?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementLoot.ADD_MARK, "Add marks to items?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementLoot.REQ_ABILITY, "Requires ability?", FieldType.TextLine));
+				break;
+			case InventoryValue:
+				list.add(new QuestPropertyBlock(QuestRequirementInventoryValue.GOLD_VALUE, "Value of Gold", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRequirementInventoryValue.FAME_VALUE, "Value of Fame", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRequirementLoot.TREASURE_TYPE, "Type of inventory", FieldType.StringSelector, TreasureType.values()));
+				list.add(new QuestPropertyBlock(QuestRequirementLoot.REGEX_FILTER, "Inventory name filter (regex)", FieldType.Regex, null, new String[] { "item","treasure_within_treasure" }));
+				list.add(new QuestPropertyBlock(QuestRequirementLoot.REQ_MARK, "Add marks to items?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementLoot.REQ_ABILITY, "Requires ability?", FieldType.TextLine));
 				break;
 			case Kill:
