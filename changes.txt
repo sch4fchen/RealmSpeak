@@ -1,6 +1,4 @@
 ::ROADMAP::
-Super Realm: Quests: 5x Enchanting (p.9+10)
-
 Super Realm Combat System: 3x3 positioning
 Super Realm Combat optional rule: survival tactics
 
@@ -80,6 +78,7 @@ QUEST UPDATE:
 # QuestRequirementKillDenizenSummonedByChit
 # QuestRequirement Inventory and Loot: can check for specific item ability
 # QuestRequirementKill: option to check for killing characters
+# QuestRequirementEnchant: option to check for a specific chit to enchant or on the tile
 # QuestRequirementTreachery
 # QuestRequirementGameEnd
 # QuestRequirementInventoryValue

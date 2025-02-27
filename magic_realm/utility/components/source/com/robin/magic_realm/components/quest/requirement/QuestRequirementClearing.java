@@ -61,7 +61,7 @@ public class QuestRequirementClearing extends QuestRequirement {
 		String questId = getParentQuest().getGameObject().getStringId();
 		
 		for (RealmComponent rc : componentsToCheck) {
-			if (pattern != null && !pattern.matcher(rc.toString()).find()) continue;
+			if (pattern != null && !pattern.matcher(rc.getGameObject().getName()).find()) continue;
 			if (getChitType() != null && getChitType() != ChitType.Any && !getChitType().matches(rc)) continue;
 			if (requiresMark()) {
 				String mark = rc.getGameObject().getThisAttribute(QuestConstants.QUEST_MARK);

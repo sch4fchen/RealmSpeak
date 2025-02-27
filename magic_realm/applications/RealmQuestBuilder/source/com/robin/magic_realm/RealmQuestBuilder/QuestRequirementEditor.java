@@ -110,7 +110,8 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementDiscovery.DISCOVERY_KEY, "Discovery", FieldType.StringSelector, getDiscoveryStrings().toArray()));
 				break;
 			case Enchant:
-				list.add(new QuestPropertyBlock(QuestRequirementEnchant.TYPE, "Target", FieldType.StringSelector, new String[] { "chit", "tile"} ));
+				list.add(new QuestPropertyBlock(QuestRequirementEnchant.TYPE, "Target", FieldType.StringSelector, new String[] { "chit", RealmComponent.TILE} ));
+				list.add(new QuestPropertyBlock(QuestRequirementEnchant.CHIT, "Enchanted chit / chit must be on the tile", FieldType.StringSelector, getAllChitTypes() ));
 				list.add(new QuestPropertyBlock(QuestRequirementEnchant.SITE, "Site ust be on the tile?", FieldType.StringSelector, getTreasureLocationsAndRedSpecialsAndDwellingsStrings().toArray()));
 				break;
 			case Fighter:
@@ -415,7 +416,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 		}
 		Collections.sort(list);
 		
-		choices.add(QuestRequirementEnchant.NONE);
+		choices.add(QuestRequirement.NONE);
 		choices.addAll(list);
 		
 		return choices;

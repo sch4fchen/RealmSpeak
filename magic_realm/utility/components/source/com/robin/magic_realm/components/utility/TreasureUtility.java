@@ -860,6 +860,7 @@ public class TreasureUtility {
 				QuestRequirementParams params = new QuestRequirementParams();
 				params.actionType = CharacterActionType.Enchant;
 				params.actionName = "chit";
+				params.objectList.add(chit.getGameObject());
 				character.testQuestRequirements(frame,params);
 				}
 			}

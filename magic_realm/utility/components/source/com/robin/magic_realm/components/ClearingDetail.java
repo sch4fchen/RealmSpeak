@@ -465,6 +465,16 @@ public class ClearingDetail {
 		}
 		return sounds;
 	}
+	public ArrayList<RealmComponent> getSoundsAndWarnings() {
+		ArrayList<RealmComponent> c = getParent().getRealmComponentsAt(getNum());
+		ArrayList<RealmComponent> chits = new ArrayList<>();
+		for (RealmComponent rc : c) {
+			if (rc.isSound() || rc.isWarning()) {
+				chits.add(rc);
+			}
+		}
+		return chits;
+	}
 	/**
 	 * Returns a complete collection of all RealmComponents in the clearing, including those that are held by
 	 * other objects.  In fact, this will get all objects, regardless of depth.

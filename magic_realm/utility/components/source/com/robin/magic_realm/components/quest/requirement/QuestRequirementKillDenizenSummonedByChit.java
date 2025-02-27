@@ -51,7 +51,7 @@ public class QuestRequirementKillDenizenSummonedByChit extends QuestRequirement 
 					if (!rc.isWarning() && !rc.isSound()) {
 						continue;
 					}
-					String name = rc.toString().toLowerCase().trim();
+					String name = rc.getGameObject().getName().toLowerCase().trim();
 					String nameWithoutTileType = null;
 					StringTokenizer stringTokenizer = new StringTokenizer(name," ");
 					if (stringTokenizer.hasMoreTokens()) {
