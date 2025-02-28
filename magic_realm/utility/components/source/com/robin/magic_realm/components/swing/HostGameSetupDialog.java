@@ -1091,6 +1091,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_SR_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC (Super Realm) - A character with no active armor counters casting a spell may also use his staff to make a separate attack.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_SR_ENDING_COMBAT,"ENDING COMBAT (Super Realm) - Combat ends, even if denizens are killed or armor is destroyed.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_SR_PHASE_CHIT_ACTIVATION,"PHASE CHIT ACTIVATION (Super Realm) - Activating a phase chit in combat does not count as an action.",false));
+		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_SR_COMBAT,"SUPER REALM COMBAT (Super Realm) - 3x3 combat grid",false));
+		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_SR_SURVIVAL_TACTICS,"SURVIVAL TACTICS (Super Realm) - This rule makes it a little easier to survive in combat, and increases odds of killing denizens. It also makes combat more involved with decisions players have to make.",false));
 		
 		newOptionPane.setTabHtmlDescription(EXPANDING_REALM_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Expanding the Realm</font></body></html>");
 		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_CUSTOM_CHARS,"CUSTOM CHARACTERS - Allow players to choose from custom characters.",true,null,requiresDevelopmentRules));
