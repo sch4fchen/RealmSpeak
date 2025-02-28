@@ -40,7 +40,6 @@ Super Realm: Characters, including portraits with credits, different chit icon; 
 Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
 Super Realm: Events (Global Events = optional rule 11.11): 33 Events
 Super Realm: Optional Rules: No duplicate spell recording at start of the game
-Super Realm: Optional Rules: Starting location always the Inn
 Super Realm: Optional Rules: Bounty Hunters (SR: 10.2, p.114)
 Super Realm: Optional Rules: Credit (SR: 10.7, p.115)
 Super Realm: Optional Rules: Stealing (SR: 11.3, p.121)
