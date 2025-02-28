@@ -20,17 +20,20 @@ import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class HostGameSetupDialog extends AggressiveDialog {
 	private static final String MAIN_TAB = "Game";
+	
+	private static final String EXTENDING_GAME_SYSTEM_TAB = "Game System";
 	private static final String EXTENDED_CHAR_RULES_TAB = "Character Capabilities";
 	private static final String DENIZEN_RULES_TAB = "Denizen Rules";
 	private static final String ADVANCED_MAGIC_RULES_TAB = "Advanced Magic";
-	private static final String EXTENDING_GAME_SYSTEM_TAB = "Game System";
+	private static final String COMBAT_RULES_TAB = "Combat Rules";	
 	private static final String EXPANDING_REALM_TAB = "Expanded Realm";
-	private static final String REVISED_RULES_TAB = "Revised";
-	private static final String OPTIONAL_CHAR_RULES_TAB = "Characters";
-	private static final String FIRST_EDITION_RULES_TAB = "First Edition";
-	private static final String HOUSE1_RULES_TAB = "Robin's House";
-	private static final String HOUSE2_RULES_TAB = "House Rules";
 	private static final String HOUSE3_RULES_TAB = "Quests and VPs";
+	
+	private static final String OPTIONAL_CHAR_RULES_TAB = "Characters";
+	private static final String REVISED_RULES_TAB = "Revised";
+	private static final String FIRST_EDITION_RULES_TAB = "First Edition";
+	private static final String HOUSE2_RULES_TAB = "House Rules";
+	private static final String HOUSE1_RULES_TAB = "Robin's House";
 	private static final String RANDOM_GEN_TAB = "# Generators";
 	
 	private static final Border TOP_LINE = BorderFactory.createMatteBorder(2,0,0,0,Color.blue);
@@ -1028,6 +1031,34 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		
 		String[] exclusiveRandomGen = {Constants.RANDOM_R250_521,Constants.RANDOM_MERSENNE_TWISTER,Constants.RANDOM_ON_THE_FLY};
 		
+		newOptionPane.setTabHtmlDescription(EXTENDING_GAME_SYSTEM_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Extended Game System</font></body></html>");
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_COMMERCE,"COMMERCE D.2 - This includes changes in native trading prices based on the group and using the commerce table for selling goods.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_FUMBLE,"FUMBLE D.3.1 - Roll on fumble table for melee attacks.",false,null,null,cannotIncludeSepRiderRules));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_RIDING_HORSES,"RIDING HORSES D.3.2-3.3 - Characters MUST play active horses to run away.  No MOVE chits or BOOTS cards are allowed.  Also, any character or denizen on horseback, can play both a maneuver for the rider, as well as the horse.  When attacking mounted opponents, the rider may be targeted separate from the horse, but are then subject to the rider's maneuver when calculating harm. (REQUIRES FUMBLE RULES)",false,null,requiresFumbleRules));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_STUMBLE,"STUMBLE D.3.4 - Roll on stumble table when running.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_MISSILE,"OPTIONAL MISSILE TABLE D.3.4 - Use the Optional Missile Table for missile attacks.",false,exclusiveMissileRules,null));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PENETRATING_ARMOR,"PENETRATING ARMOR D.3.5 - When a missile attack hits a character's armor, the harm is inflicted on the character but the armor reduces the harm.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_TWO_HANDED_WEAPONS,"TWO HANDED WEAPONS (Book of Quests variant) - The use of a two-handed weapon limits a character's ability to use a shield for defense.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_DUAL_WIELDING,"DUAL WIELDING (Expansion 1) - Characters can use two weapons, one in each hand.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_DUAL_WIELDING_STRONG,"DUAL WIELDING ALL WEAPONS - Heavier and two-handed weapons can be dual wielded without an additional ability.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_DUAL_WIELDING_HEAVY,"DUAL WIELDING HEAVY WEAPONS - Heavier can be dual wielded without an additional ability.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_DUAL_WIELDING_TWO_HANDED,"DUAL WIELDING TWO-HANDED WEAPONS - Two-handed weapons can be dual wielded without an additional ability.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_THROWING_WEAPONS,"THROWING WEAPONS (Expansion 1) - A character can throw corresponding weapons.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY_LIKE_SHIELD,"PARRYING LIKE A SHIELD (Expansion 1) - A character can parry like with a shield other attacks with a weapon.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY,"PARRYING (1st Ed. and Super Realm) - A character can parry target's attack with a weapon.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY_MISSILE,"PARRYING MISSILE ATTACKS - Parrying missile attacks is possible (requires parrying rule or ability of 1st Ed./Super Realm).",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY_WITH_MISSILE,"PARRYING WITH MISSILE WEAPONS - Parrying with missile weapons is possible (requires one of the parrying rules or abilities).",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC (Super Realm) - A character with no active armor counters casting a spell may also use his staff to make a separate attack.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_ENDING_COMBAT,"ENDING COMBAT (Super Realm) - Combat ends, even if denizens are killed or armor is destroyed.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_PHASE_CHIT_ACTIVATION,"PHASE CHIT ACTIVATION (Super Realm) - Activating a phase chit in combat does not count as an action.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_REVEAL_TRAVELERS,"REVEAL TRAVELERS (Super Realm) - Travelers are revealed, when a character does a Search or Trade activity on the corresponding site or native leader.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_MAGIC_SIGHT_OPTIONAL,"MAGIC SIGHT NOT SELF-CANCELLING (Super Realm) - Maigc Sight effect of abilities, spells, treasures and nomads is not self-cancelling and usage of Phantom Glass and Shadow are optional.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_END_OF_MONTH_REGENERATION,"END OF MONTH REGENERATION (Super Realm) - All denizen regenerate at the end of the month.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_NO_7TH_DAY_REGENERATION,"NO 7TH DAY REGENERATION (Super Realm) - Denizens do NOT regenerate at the 7th day of the week.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_HORSES_REGENERATION,"HORSES REGENERATION (Super Realm) - Horses are regenerated.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.MAP_BUILDING_INCREASED_PRIO_TILE_PLACEMENT,"MAP GENERATION: MORE CONSISTENT MAPS - Tiles are more likly to be placed to river tiles when generating the map.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_ALTERNATING_7TH_DAY_MAGIC,"ALTERNATING 7TH DAY MAGIC (Super Realm) - White is supplied on the odd numbered months on Day 7, black magic on the even numbered months of Day 7.",false));
+		
 		newOptionPane.setTabHtmlDescription(EXTENDED_CHAR_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Extended Character Capabilities</font></body></html>");	
 		newOptionPane.addOption(EXTENDED_CHAR_RULES_TAB,new GameOption(Constants.ADV_SERIOUS_WOUNDS,"SERIOUS WOUNDS A.1 - Characters suffer 1D6 wounds instead of death when harm matches vulnerability.",false));
 		newOptionPane.addOption(EXTENDED_CHAR_RULES_TAB,new GameOption(Constants.SR_SERVERE_WOUNDS,"SEVERE WOUNDS (Super Realm 10.1) - Characters suffer the higher result of 2D6 wounds instead of death when harm matches vulnerability.",false));
@@ -1059,34 +1090,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(ADVANCED_MAGIC_RULES_TAB,new GameOption(Constants.OPT_POWER_OF_THE_PIT_DEMON,"POWER OF THE PIT OPTIONAL RULES - Demon's spell and characters' spells can cancel each other.",false));
 		newOptionPane.addOption(ADVANCED_MAGIC_RULES_TAB,new GameOption(Constants.OPT_AUTOMATIC_ENCHANTING,"AUTOMATIC ENCHANTING C.5 - Certain map tiles flip over automatically at the end of each week, changing many of the roadways and making more color magic available.",false));
 				
-		newOptionPane.setTabHtmlDescription(EXTENDING_GAME_SYSTEM_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Extended Game System</font></body></html>");
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_COMMERCE,"COMMERCE D.2 - This includes changes in native trading prices based on the group and using the commerce table for selling goods.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_FUMBLE,"FUMBLE D.3.1 - Roll on fumble table for melee attacks.",false,null,null,cannotIncludeSepRiderRules));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_RIDING_HORSES,"RIDING HORSES D.3.2-3.3 - Characters MUST play active horses to run away.  No MOVE chits or BOOTS cards are allowed.  Also, any character or denizen on horseback, can play both a maneuver for the rider, as well as the horse.  When attacking mounted opponents, the rider may be targeted separate from the horse, but are then subject to the rider's maneuver when calculating harm. (REQUIRES FUMBLE RULES)",false,null,requiresFumbleRules));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_STUMBLE,"STUMBLE D.3.4 - Roll on stumble table when running.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_MISSILE,"OPTIONAL MISSILE TABLE D.3.4 - Use the Optional Missile Table for missile attacks.",false,exclusiveMissileRules,null));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PENETRATING_ARMOR,"PENETRATING ARMOR D.3.5 - When a missile attack hits a character's armor, the harm is inflicted on the character but the armor reduces the harm.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_TWO_HANDED_WEAPONS,"TWO HANDED WEAPONS (Book of Quests variant) - The use of a two-handed weapon limits a character's ability to use a shield for defense.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_DUAL_WIELDING,"DUAL WIELDING (Expansion 1) - Characters can use two weapons, one in each hand.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_DUAL_WIELDING_STRONG,"DUAL WIELDING ALL WEAPONS - Heavier and two-handed weapons can be dual wielded without an additional ability.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_DUAL_WIELDING_HEAVY,"DUAL WIELDING HEAVY WEAPONS - Heavier can be dual wielded without an additional ability.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_DUAL_WIELDING_TWO_HANDED,"DUAL WIELDING TWO-HANDED WEAPONS - Two-handed weapons can be dual wielded without an additional ability.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_THROWING_WEAPONS,"THROWING WEAPONS (Expansion 1) - A character can throw corresponding weapons.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY_LIKE_SHIELD,"PARRYING LIKE A SHIELD (Expansion 1) - A character can parry like with a shield other attacks with a weapon.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY,"PARRYING (1st Ed. and Super Realm) - A character can parry target's attack with a weapon.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY_MISSILE,"PARRYING MISSILE ATTACKS - Parrying missile attacks is possible (requires parrying rule or ability of 1st Ed./Super Realm).",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PARRY_WITH_MISSILE,"PARRYING WITH MISSILE WEAPONS - Parrying with missile weapons is possible (requires one of the parrying rules or abilities).",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC (Super Realm) - A character with no active armor counters casting a spell may also use his staff to make a separate attack.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_ENDING_COMBAT,"ENDING COMBAT (Super Realm) - Combat ends, even if denizens are killed or armor is destroyed.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_PHASE_CHIT_ACTIVATION,"PHASE CHIT ACTIVATION (Super Realm) - Activating a phase chit in combat does not count as an action.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_REVEAL_TRAVELERS,"REVEAL TRAVELERS (Super Realm) - Travelers are revealed, when a character does a Search or Trade activity on the corresponding site or native leader.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SR_MAGIC_SIGHT_OPTIONAL,"MAGIC SIGHT NOT SELF-CANCELLING (Super Realm) - Maigc Sight effect of abilities, spells, treasures and nomads is not self-cancelling and usage of Phantom Glass and Shadow are optional.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_END_OF_MONTH_REGENERATION,"END OF MONTH REGENERATION (Super Realm) - All denizen regenerate at the end of the month.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_NO_7TH_DAY_REGENERATION,"NO 7TH DAY REGENERATION (Super Realm) - Denizens do NOT regenerate at the 7th day of the week.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_HORSES_REGENERATION,"HORSES REGENERATION (Super Realm) - Horses are regenerated.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.MAP_BUILDING_INCREASED_PRIO_TILE_PLACEMENT,"MAP GENERATION: MORE CONSISTENT MAPS - Tiles are more likly to be placed to river tiles when generating the map.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_ALTERNATING_7TH_DAY_MAGIC,"ALTERNATING 7TH DAY MAGIC (Super Realm) - White is supplied on the odd numbered months on Day 7, black magic on the even numbered months of Day 7.",false));
-
+		newOptionPane.setTabHtmlDescription(COMBAT_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Combat Rules</font></body></html>");
+		
 		newOptionPane.setTabHtmlDescription(EXPANDING_REALM_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Expanding the Realm</font></body></html>");
 		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_CUSTOM_CHARS,"CUSTOM CHARACTERS - Allow players to choose from custom characters.",true,null,requiresDevelopmentRules));
 		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_NO_DWELLING_START,"SOLITAIRE E.1.5-1.6 - No Dwelling Start - Dwellings/Ghosts are NOT revealed at the start, rather discovered like the Campfires.  Since there are no Dwellings at the start, you must enter the map from the edge.",false));
@@ -1099,29 +1104,6 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_BOUNTY_POINTS_FOR_DISCOVERIES,"BOUNTY POINTS FOR DISCOVERIES (Book of Quests Variant) - A character gains points for recording certain discoveries.",false));
 		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.SR_NO_SPYING,"NO SPYING (Super Realm) - Spying is not possible (for looting or discovering paths).",false));
 		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.SR_NO_INFORMATION_SHARING,"NO INFORMATION SHARING (Super Realm) - Information about the location of secret passages, hidden paths, treasure sites and TWT is not transferable. This information is not transferable and can only be learned by following.",false));
-		
-		newOptionPane.setTabHtmlDescription(OPTIONAL_CHAR_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Optional Character Rules</font></body></html>");
-		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.TE_KNIGHT_ADJUSTMENT,"KNIGHTS ADJUSTMENT (3rd ed) - To limit the Black/White Knight's advantage, their ALLY starts off as FRIENDLY.",false));
-		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_WIZARD_MAGIC_CHIT,"1.2a - WIZARD uses a MAGIC III2* instead of one MOVE M5 chit",false));
-		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_WIZARD_IGNORES_SPX,"1.2b - WIZARD ignores SPX",false));
-		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_CAPTAIN,"1.3 - CAPTAIN rolls one die for all HIRE rolls",false));
-		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_WOODSGIRL,"1.4 - WOODSGIRL uses one die for all HIDE, SEARCH, and MEETING rolls in any Woods Clearing (not just tiles)",false));
-		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_MAGICIAN,"1.5 - MAGICIAN's alerted MAGIC chits don't fatigue at Midnight (become active again)",false));
-		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_DRUID_SUMMON,"1.6a - DRUID doesn't summon monsters from Site chits.",false));
-		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_DRUID_CURSES,"1.6b - DRUID is immune to curses.",false));
-		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_ELF,"1.7 - ELF must choose between Light Elf, or Great Elf.  Affects which chits can be played during the game.",false));
-		
-		newOptionPane.setTabHtmlDescription(REVISED_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Revised Rules</font></body></html>");
-		newOptionPane.addOption(REVISED_RULES_TAB,new GameOption(Constants.REV_MISSILE,"REVISED MISSILE TABLE - Use the Revised Optional Missile Table for all missile attacks.",false,exclusiveMissileRules,null));
-		newOptionPane.addOption(REVISED_RULES_TAB,new GameOption(Constants.REV_DAMPEN_FAST_SPELLS,"HAMBLEN'S KLUDGE ADJUSTMENT - Drop one sharpness star from Attack spells (ie., Fiery Blast) cast at speed zero.",false));
-		
-		newOptionPane.setTabHtmlDescription(FIRST_EDITION_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">First Edition Rules</font></body></html>");
-		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_SEARCH_TABLES,"FIRST EDITION SEARCH TABLES - Search tables of first edition for Search, Peer and Locate.", false));
-		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_KILLER_CAVES,"KILLER CAVES - Horses are killed when they enter a cave clearing.", false));
-		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_DEADLY_REALM,"DEADLY REALM - Unhired natives, medium and heavy monsters are turned darker side up at the start of the game (and at the start of each month). Lost City and Lost Castle summon monsters like sound chits. Characters must assign attackers equally to the combat boxes.", false));
-		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_AMBUSH_END_OF_COMBATROUND,"AMBUSH ROLL AT THE END OF COMBAT ROUND - The ambush roll is made at the end of a combat round.", false));
-		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC - A character cannot play a MAGIC counter, if he has any weapon counter except a staff activated.", false));
-		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_PONY_NO_MOUNTAINS,"PONY NO MOUNTAINS (Super Realm) - Pony moves cannot be used for climbing mountains.", false));
 		
 		newOptionPane.setTabHtmlDescription(HOUSE3_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Quests and VPs</font></body></html>");
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.HOUSE3_SHOW_DISCARED_QUEST,"OPEN DISCARDED QUEST CARDS - When discarding a quest card, the name of the quest is shown in the log.",false));
@@ -1136,6 +1118,30 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_SETUP_TWO_QUESTS,"TWO QUESTS PER NATIVE - During setup, two instead of one quest card is added to every native HQ and traveler (requires Super Realm).",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_COMPLETE_GOLD_SPECIAL_ONLY_ONCE,"COMPLETE CAMPAIGNS, MISSIONS, TASKS only once (Super Realm) - Each Campaign, Mission and Task can only completed once by every character.",false));
 		newOptionPane.addOption(HOUSE3_RULES_TAB,new GameOption(Constants.SR_ONE_OF_EACH_GOLD_SPECIAL,"CAMPAIGNS and TASKS only one of each (Super Realm) - Only one Campaign and one Task token can be carried at the same time.",false));
+		
+		newOptionPane.setTabHtmlDescription(OPTIONAL_CHAR_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Optional Character Rules</font></body></html>");
+		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.TE_KNIGHT_ADJUSTMENT,"KNIGHTS ADJUSTMENT (3rd ed) - To limit the Black/White Knight's advantage, their ALLY starts off as FRIENDLY.",false));
+		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_WIZARD_MAGIC_CHIT,"1.2a - WIZARD uses a MAGIC III2* instead of one MOVE M5 chit",false));
+		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_WIZARD_IGNORES_SPX,"1.2b - WIZARD ignores SPX",false));
+		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_CAPTAIN,"1.3 - CAPTAIN rolls one die for all HIRE rolls",false));
+		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_WOODSGIRL,"1.4 - WOODSGIRL uses one die for all HIDE, SEARCH, and MEETING rolls in any Woods Clearing (not just tiles)",false));
+		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_MAGICIAN,"1.5 - MAGICIAN's alerted MAGIC chits don't fatigue at Midnight (become active again)",false));
+		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_DRUID_SUMMON,"1.6a - DRUID doesn't summon monsters from Site chits.",false));
+		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_DRUID_CURSES,"1.6b - DRUID is immune to curses.",false));
+		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_ELF,"1.7 - ELF must choose between Light Elf, or Great Elf.  Affects which chits can be played during the game.",false));
+		
+		
+		newOptionPane.setTabHtmlDescription(REVISED_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Revised Rules</font></body></html>");
+		newOptionPane.addOption(REVISED_RULES_TAB,new GameOption(Constants.REV_MISSILE,"REVISED MISSILE TABLE - Use the Revised Optional Missile Table for all missile attacks.",false,exclusiveMissileRules,null));
+		newOptionPane.addOption(REVISED_RULES_TAB,new GameOption(Constants.REV_DAMPEN_FAST_SPELLS,"HAMBLEN'S KLUDGE ADJUSTMENT - Drop one sharpness star from Attack spells (ie., Fiery Blast) cast at speed zero.",false));
+		
+		newOptionPane.setTabHtmlDescription(FIRST_EDITION_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">First Edition Rules</font></body></html>");
+		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_SEARCH_TABLES,"FIRST EDITION SEARCH TABLES - Search tables of first edition for Search, Peer and Locate.", false));
+		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_KILLER_CAVES,"KILLER CAVES - Horses are killed when they enter a cave clearing.", false));
+		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_DEADLY_REALM,"DEADLY REALM - Unhired natives, medium and heavy monsters are turned darker side up at the start of the game (and at the start of each month). Lost City and Lost Castle summon monsters like sound chits. Characters must assign attackers equally to the combat boxes.", false));
+		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_AMBUSH_END_OF_COMBATROUND,"AMBUSH ROLL AT THE END OF COMBAT ROUND - The ambush roll is made at the end of a combat round.", false));
+		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC - A character cannot play a MAGIC counter, if he has any weapon counter except a staff activated.", false));
+		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_PONY_NO_MOUNTAINS,"PONY NO MOUNTAINS (Super Realm) - Pony moves cannot be used for climbing mountains.", false));
 		
 		newOptionPane.setTabHtmlDescription(HOUSE2_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">House Rules</font></body></html>");
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE2_NO_SPELL_LIMIT,"NO SPELL LIMIT - Magic Realm limits you to 14 spells per character.  This option removes that limit.",false));
