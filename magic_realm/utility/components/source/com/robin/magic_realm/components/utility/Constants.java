@@ -783,7 +783,7 @@ public class Constants {
 	public static final String OPT_SR_REVEAL_TRAVELERS = "OptSrRevealTravelers";
 	public static final String OPT_SR_MAGIC_SIGHT_OPTIONAL = "OptSrMagicSightNotSelfCancelling";
 	public static final String OPT_SR_SURVIVAL_TACTICS = "OptSrSurvivalTactics";
-	public static final String OPT_SR_COMBAT = "OptSrCombat";
+	public static final String SR_COMBAT = "OptSrCombat";
 	
 	// Revised Rules
 	public static final String REV_MISSILE = "RevisedMissileTable";

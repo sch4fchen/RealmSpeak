@@ -1,7 +1,22 @@
 ::ROADMAP::
-Super Realm Combat System: 3x3 positioning
-Super Realm Combat optional rule: survival tactics
+Super Realm Combat System: 3x3 positioning: hostPref: OPT_SR_COMBAT
 
+CombatWrapper: getCombatBox setCombatBox setChangeTacticsResult getChangeTacticsResult
+CombatSheet: usesCombatBoxesEqually usesMaxCombatBoxes getAllBoxListFromLayout getSubtitleForReposition placeParticipant placeAllAttacks
+CharacterCombatSheet
+DenizenCombatSheet
+BattleModel: processHits doTargetAttack repositionAndChangeTactics reposition repositionToBox changeTactics changeTacticsOn
+CombatFrame: getSelectTargetFromUnassignedButton lureDenizen replaceManeuver playManeuver playParry replaceAttack playAttack playParryLikeShield positionTarget positionExtra positionAttacker
+"box_constraint":
+		{"MOVE chit - only CHARGE","move_lock","box_constraint=1"},
+		{"MOVE chit - only DODGE","move_lock","box_constraint=2"},
+		{"MOVE chit - only DUCK","move_lock","box_constraint=3"},
+		{"FIGHT chit - only THRUST","fight_lock","box_constraint=1"},
+		{"FIGHT chit - only SWING","fight_lock","box_constraint=2"},
+		{"FIGHT chit - only SMASH","fight_lock","box_constraint=3"},
+
+Power Gauntlets: When used to wield a weapon (including dagger), its owner treats Parry Circles as Attack Circles. You cannot use Survival Tactics when wielding a weapon with this treasure (see Advanced Rule 10.12).
+Super Realm Combat optional rule: survival tactics
 Poison: Special: the sharpness star added by this spell is ignored when the weapon is used against Grey/Prism Anomalies.
 Purple/Prism Anomalies can block/battle any individual transmorphized into mist.
 Enchant Weapon: any individual wielding the target weapon can target and attack individuals transformed into mist.
@@ -19,7 +34,6 @@ Ask Demon: 4 options, instead of just asking a question
 Absorb Essence: any denizens and Attention chits assigned to it become assigned to the spellcaster; absorbs steed when absorbing a monster
 	The spellcaster cannot be affected by multiple Absorb Essence spells. Any Absorb Essence spell he casts while he is already bewitched by Absorb Essence is cancelled.
 Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells) or with Hurricane Winds, can be opened by 'T' strength Fly chit (including flying denizens)
-
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt e.g. for assigning VPs
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt e.g. for assigning VPs
 Super Realm: Optional Rules: Commerce (SR: 11.12, p.126) - adapt e.g. rules for new native groups
@@ -58,6 +72,10 @@ Would be nice to make weapon abilities too:
 	Immobilizing1 - When it hits all attacks undercut in current round
 	Immobilizing2 - When it hits all attacks undercut in next round
 	Stunning - Target cannot play an attack next round
+
+Version 1.2.0.9
+BUGS/ISSUES:
+# Fix Rings enchanting a tile
 
 Version 1.2.0.8
 NEW FEATURES:

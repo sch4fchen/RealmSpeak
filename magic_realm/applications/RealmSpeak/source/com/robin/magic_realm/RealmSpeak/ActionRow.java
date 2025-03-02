@@ -2091,162 +2091,168 @@ public class ActionRow {
 			}
 		}
 	
-		if (!enchantable.isEmpty()) {
-			// Determine if any of the color magic (infinite sources first) are available to enchant the tile
-			ArrayList<RealmComponent[]> tileEnchantableSets = new ArrayList<>(); // CharacterChitActionComponent[] set
-			for (MagicChit chit:enchantable) {
-				for (ColorMagic infiniteSource : colorMagicSources) {
-					if (chit.compatibleWith(infiniteSource)) {
-						// Create a set of one (no need to use up your own color magic when there is an infinite source!)
-						RealmComponent[] set = new RealmComponent[2];
-						set[0] = (RealmComponent)chit;
-						set[1] = targetClearing.tile;
-						tileEnchantableSets.add(set);
-						break; // no need to keep searching infinite sources!  Any one is good enough.
+		ArrayList<RealmComponent[]> tileEnchantableSets = new ArrayList<>(); // CharacterChitActionComponent[] set
+		// Determine if any of the color magic (infinite sources first) are available to enchant the tile
+		for (MagicChit chit:enchantable) {
+			for (ColorMagic infiniteSource : colorMagicSources) {
+				if (chit.compatibleWith(infiniteSource)) {
+					// Create a set of one (no need to use up your own color magic when there is an infinite source!)
+					RealmComponent[] set = new RealmComponent[2];
+					set[0] = (RealmComponent)chit;
+					set[1] = targetClearing.tile;
+					tileEnchantableSets.add(set);
+					break; // no need to keep searching infinite sources!  Any one is good enough.
+				}
+			}
+		}
+		// check own color chits (player may not want to use infinite source if it uses the wrong chit!)
+		ArrayList<MagicChit> colorMagicChits = new ArrayList<>();
+		if ((!hostPrefs.hasPref(Constants.FE_STEEL_AGAINST_MAGIC) && !character.affectedByKey(Constants.STAFF_RESTRICTED_SPELLCASTING)) || character.hasOnlyStaffAsActivatedWeapon()) {
+			colorMagicChits.addAll(character.getColorChits());
+		}
+		if (hostPrefs.hasPref(Constants.OPT_ENHANCED_ARTIFACTS)) {
+			// Artifacts and Books enchanted into color
+			for(GameObject item:character.getActiveInventory()) {
+				RealmComponent rc = RealmComponent.getRealmComponent(item);
+				if (rc.isMagicChit()) {
+					MagicChit mc = (MagicChit)rc;
+					if (mc.isColor()) {
+						colorMagicChits.add(mc);
 					}
 				}
 			}
-			// check own color chits (player may not want to use infinite source if it uses the wrong chit!)
-			ArrayList<MagicChit> colorMagicChits = new ArrayList<>();
-			if ((!hostPrefs.hasPref(Constants.FE_STEEL_AGAINST_MAGIC) && !character.affectedByKey(Constants.STAFF_RESTRICTED_SPELLCASTING)) || character.hasOnlyStaffAsActivatedWeapon()) {
-				colorMagicChits.addAll(character.getColorChits());
+		}
+		for (MagicChit chit:enchantable) {
+			for (MagicChit colorChit:colorMagicChits) {
+				ColorMagic consumableSource = colorChit.getColorMagic();
+				if (chit.compatibleWith(consumableSource)) {
+					// Create a set of one (no need to use up your own color magic when there is an infinite source!)
+					RealmComponent[] set = new RealmComponent[3];
+					set[0] = (RealmComponent)chit;
+					set[1] = (RealmComponent)colorChit;
+					set[2] = targetClearing.tile;
+					tileEnchantableSets.add(set);
+					// find all possible combinations!
+				}
 			}
-			if (hostPrefs.hasPref(Constants.OPT_ENHANCED_ARTIFACTS)) {
-				// Artifacts and Books enchanted into color
-				for(GameObject item:character.getActiveInventory()) {
-					RealmComponent rc = RealmComponent.getRealmComponent(item);
-					if (rc.isMagicChit()) {
-						MagicChit mc = (MagicChit)rc;
-						if (mc.isColor()) {
-							colorMagicChits.add(mc);
+		}		
+		for (GameObject treasure:character.getActiveInventory()) {
+			if (treasure.hasThisAttribute(Constants.RING) && !treasure.hasThisAttribute(Constants.RING_USED)) {
+				if (treasure.hasThisAttribute(SpellWrapper.INCANTATION_TIE)) {
+					continue; // tied up treasures cannot be used again
+				}
+				MagicChit treasureChit = (MagicChit)RealmComponent.getRealmComponent(treasure);
+				if (!treasureChit.isColor()) {
+					for (ColorMagic infiniteSource : colorMagicSources) {
+						if (treasureChit.compatibleWith(infiniteSource)) {
+							// Create a set of one (no need to use up your own color magic when there is an infinite source!)
+							RealmComponent[] set = new RealmComponent[2];
+							set[0] = (RealmComponent)treasureChit;
+							set[1] = targetClearing.tile;
+							tileEnchantableSets.add(set);
+							break; // no need to keep searching infinite sources!  Any one is good enough.
+						}
+					}
+					for (MagicChit colorChit:colorMagicChits) {
+						ColorMagic consumableSource = colorChit.getColorMagic();
+						if (treasureChit.compatibleWith(consumableSource)) {
+							RealmComponent[] set = new RealmComponent[3];
+							set[0] = RealmComponent.getRealmComponent(treasure);
+							set[1] = (RealmComponent)colorChit;
+							set[2] = targetClearing.tile;
+							tileEnchantableSets.add(set);
 						}
 					}
 				}
 			}
-			for (MagicChit chit:enchantable) {
-				for (MagicChit colorChit:colorMagicChits) {
-					ColorMagic consumableSource = colorChit.getColorMagic();
-					if (chit.compatibleWith(consumableSource)) {
-						// Create a set of one (no need to use up your own color magic when there is an infinite source!)
-						RealmComponent[] set = new RealmComponent[3];
-						set[0] = (RealmComponent)chit;
-						set[1] = (RealmComponent)colorChit;
-						set[2] = targetClearing.tile;
-						tileEnchantableSets.add(set);
-						// find all possible combinations!
-					}
-				}
-				for (GameObject treasure:character.getActiveInventory()) {
-					if (treasure.hasThisAttribute(Constants.RING) && !treasure.hasThisAttribute(Constants.RING_USED)) {
-						if (treasure.hasThisAttribute(SpellWrapper.INCANTATION_TIE)) {
-							continue; // tied up treasures cannot be used again
-						}
-						MagicChit treasureChit = (MagicChit)RealmComponent.getRealmComponent(treasure);
-						if (!treasureChit.isColor()) {
-							ArrayList<String> treasureMagicTypes = TreasureCardComponent.readAvailableMagicTypes(character.getCurrentDayKey(),treasure);
-							if (treasureMagicTypes.isEmpty()) continue;
-							for (String treasureMagicColor : treasureMagicTypes) {
-								ColorMagic treasureColorMagic = ColorMagic.getMagicColorFromMagicType(treasureMagicColor);
-								if (treasureColorMagic!=null && chit.compatibleWith(treasureColorMagic)) {
-									RealmComponent[] set = new RealmComponent[3];
-									set[0] = (RealmComponent)chit;
-									set[1] = RealmComponent.getRealmComponent(treasure);
-									set[2] = targetClearing.tile;
-									tileEnchantableSets.add(set);
-								}
+		}
+			
+		RealmComponentOptionChooser compChooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Enchant which?",true);
+		int keyN = 0;
+		for (MagicChit magicChit : enchantable) {
+			RealmComponent chit = (RealmComponent)magicChit;
+			String key = "k"+(keyN++);
+			if (chit.isActionChit()) {
+				compChooser.addOption(key,"MAGIC Chit");
+			}
+			else {
+				compChooser.addOption(key,"Artifact/Book");
+			}
+			compChooser.addRealmComponentToOption(key,chit);
+		}
+		for (RealmComponent[] chit : tileEnchantableSets) {
+			String key = "k"+(keyN++);
+			compChooser.addOption(key,"Tile");
+			for (int n=0;n<chit.length;n++) {
+				compChooser.addRealmComponentToOption(key,chit[n]);
+			}
+		}
+		if (compChooser.hasOptions()) {
+			compChooser.setVisible(true);
+			String text = compChooser.getSelectedText();
+			if (text!=null) {
+				if ("Tile".equals(text)) {
+					// enchant a tile
+					TileComponent tile = targetClearing.tile;
+					tile.flip();
+					result = "enchanted "+tile.getTileName();
+					// fatigue the chit(s) used to do it
+					Collection<RealmComponent> chits = compChooser.getSelectedComponents();
+					for (RealmComponent rc : chits) {
+						if (rc.isMagicChit() && !character.affectedByKey(Constants.TALISMAN)) {
+							MagicChit chit = (MagicChit)rc;
+							if (chit.isColor()) { // Only fatigue the color chit - not the incantation
+								chit.makeFatigued();
+								RealmUtility.reportChitFatigue(character,chit,"Fatigued color chit: ");
 							}
 						}
+						if (rc.getGameObject().hasThisAttribute(Constants.RING)) {
+							rc.getGameObject().setThisAttribute(Constants.RING_USED);
+						}
 					}
-				}
-			}
-			
-			RealmComponentOptionChooser compChooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Enchant which?",true);
-			int keyN = 0;
-			for (MagicChit magicChit : enchantable) {
-				RealmComponent chit = (RealmComponent)magicChit;
-				String key = "k"+(keyN++);
-				if (chit.isActionChit()) {
-					compChooser.addOption(key,"MAGIC Chit");
+					gameHandler.updateCharacterFrames();
+					gameHandler.broadcastMapReplot();
+					
+					QuestRequirementParams params = new QuestRequirementParams();
+					params.actionType = CharacterActionType.Enchant;
+					params.actionName = RealmComponent.TILE;
+					params.objectList.add(tile.getGameObject());
+					character.testQuestRequirements(gameHandler.getMainFrame(), params);
 				}
 				else {
-					compChooser.addOption(key,"Artifact/Book");
-				}
-				compChooser.addRealmComponentToOption(key,chit);
-			}
-			for (RealmComponent[] chit : tileEnchantableSets) {
-				String key = "k"+(keyN++);
-				compChooser.addOption(key,"Tile");
-				for (int n=0;n<chit.length;n++) {
-					compChooser.addRealmComponentToOption(key,chit[n]);
-				}
-			}
-			if (compChooser.hasOptions()) {
-				compChooser.setVisible(true);
-				String text = compChooser.getSelectedText();
-				if (text!=null) {
-					if ("Tile".equals(text)) {
-						// enchant a tile
-						TileComponent tile = targetClearing.tile;
-						tile.flip();
-						result = "enchanted "+tile.getTileName();
-						// fatigue the chit(s) used to do it
-						Collection<RealmComponent> chits = compChooser.getSelectedComponents();
-						for (RealmComponent rc : chits) {
-							if (rc.isMagicChit() && !character.affectedByKey(Constants.TALISMAN)) {
-								MagicChit chit = (MagicChit)rc;
-								if (chit.isColor()) { // Only fatigue the color chit - not the incantation
-									chit.makeFatigued();
-									RealmUtility.reportChitFatigue(character,chit,"Fatigued color chit: ");
-								}
+					// enchant a chit
+					MagicChit chit = (MagicChit)compChooser.getFirstSelectedComponent();
+					if (chit!=null) {
+						int enchantNumber;
+						ArrayList<Integer> list = chit.getEnchantableNumbers();
+						if (list.size()>1) {
+							ButtonOptionDialog colorChooser = new ButtonOptionDialog(gameHandler.getMainFrame(),chit.getIcon(),"What color?","Enchant "+chit.getGameObject().getName(),false);
+							for(int mn:list) {
+								ColorMagic cm = new ColorMagic(mn,false);
+								colorChooser.addSelectionObject(cm.getColorName());
 							}
-							if (rc.getGameObject().hasThisAttribute(Constants.RING)) {
-								rc.getGameObject().setThisAttribute(Constants.RING_USED);
-							}
+							colorChooser.setVisible(true);
+							String colorName = (String)colorChooser.getSelectedObject();
+							enchantNumber = ColorMagic.makeColorMagic(colorName,false).getColorNumber();
 						}
+						else {
+							enchantNumber = list.get(0);
+						}
+						
+						chit.enchant(enchantNumber);
+						result = "enchanted "+chit.getGameObject().getName();
 						gameHandler.updateCharacterFrames();
-						gameHandler.broadcastMapReplot();
 						
 						QuestRequirementParams params = new QuestRequirementParams();
 						params.actionType = CharacterActionType.Enchant;
-						params.actionName = RealmComponent.TILE;
-						params.objectList.add(tile.getGameObject());
-						character.testQuestRequirements(gameHandler.getMainFrame(), params);
-					}
-					else {
-						// enchant a chit
-						MagicChit chit = (MagicChit)compChooser.getFirstSelectedComponent();
-						if (chit!=null) {
-							int enchantNumber;
-							ArrayList<Integer> list = chit.getEnchantableNumbers();
-							if (list.size()>1) {
-								ButtonOptionDialog colorChooser = new ButtonOptionDialog(gameHandler.getMainFrame(),chit.getIcon(),"What color?","Enchant "+chit.getGameObject().getName(),false);
-								for(int mn:list) {
-									ColorMagic cm = new ColorMagic(mn,false);
-									colorChooser.addSelectionObject(cm.getColorName());
-								}
-								colorChooser.setVisible(true);
-								String colorName = (String)colorChooser.getSelectedObject();
-								enchantNumber = ColorMagic.makeColorMagic(colorName,false).getColorNumber();
-							}
-							else {
-								enchantNumber = list.get(0);
-							}
-							
-							chit.enchant(enchantNumber);
-							result = "enchanted "+chit.getGameObject().getName();
-							gameHandler.updateCharacterFrames();
-							
-							QuestRequirementParams params = new QuestRequirementParams();
-							params.actionType = CharacterActionType.Enchant;
-							params.actionName = "chit";
-							character.testQuestRequirements(gameHandler.getMainFrame(),params);
-						}// this shouldn't happen
-					}
+						params.actionName = "chit";
+						character.testQuestRequirements(gameHandler.getMainFrame(),params);
+					}// this shouldn't happen
 				}
-				else {
-					completed = false;
-					return;
-				}
+			}
+			else {
+				completed = false;
+				return;
 			}
 		}
 		else {
