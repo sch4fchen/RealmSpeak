@@ -279,7 +279,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			for (WeaponChitComponent weapon : weapons) {
 				if (combatChit==null || combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
 					CombatWrapper wCombat = new CombatWrapper(weapon.getGameObject());
-					if (wCombat.getCombatBox()>0) {
+					if (wCombat.hasCombatBox()) {
 						if (length < weapon.getLength()) {
 							length = weapon.getLength();
 						}
@@ -488,7 +488,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				for (WeaponChitComponent weapon : weapons) {
 					if (combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
 						CombatWrapper wCombat = new CombatWrapper(weapon.getGameObject());
-						if (wCombat.getCombatBox()>0) {
+						if (wCombat.hasCombatBox()) {
 							if (weapon.getGameObject().hasThisAttribute(Constants.IGNORE_ARMOR)) {
 								ignoreArmor = true;
 							}
@@ -968,7 +968,11 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					}
 					int currentWounds = combat.getNewWounds();
 					
-					RealmLogging.logMessage(getGameObject().getName(),"Takes a serious wound!");
+					String woundType = "Serious";
+					if (hostPrefs.hasPref(Constants.SR_SERVERE_WOUNDS)) {
+						woundType = "Severe";
+					}
+					RealmLogging.logMessage(getGameObject().getName(),"Takes a "+woundType+" wound!");
 					StringBuffer rollerDescription = new StringBuffer();
 					rollerDescription.append(roller.getDescription());
 					StringBuffer rollerResult = new StringBuffer();
@@ -978,7 +982,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 						rollerResult.append(" *2");
 					}
 					RealmLogging.logMessage(getGameObject().getName(),rollerDescription.toString());
-					RealmLogging.logMessage(getGameObject().getName(),"Serious wound = "+seriousWounds+" wound"+(seriousWounds==1?"":"s")+")");
+					RealmLogging.logMessage(getGameObject().getName(),woundType+" wound = "+seriousWounds+" wound"+(seriousWounds==1?"":"s")+")");
 					if (c != null && c.size() > (currentWounds + seriousWounds)) {
 						combat.addNewWounds(seriousWounds);
 						combat.addSeriousWoundRoll(rollerResult.toString());
@@ -1164,7 +1168,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			for (GameObject weapon : weapons) {
 				if (combatChit.getWeaponId().equals(weapon.getStringId())) {
 					CombatWrapper wCombat = new CombatWrapper(weapon);
-					if (wCombat.getCombatBox()>0) {
+					if (wCombat.hasCombatBox()) {
 						if (weapon.hasThisAttribute(Constants.HIT_TIE)) {
 							weaponHitsOnTie = true;
 						}

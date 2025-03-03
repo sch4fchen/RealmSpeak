@@ -54,7 +54,7 @@ public class BattleUtility {
 		
 		for (CharacterActionChitComponent chit:character.getActiveAndAlertChits()) {
 			CombatWrapper combatChit = new CombatWrapper(chit.getGameObject());
-			if (combatChit.getCombatBox()>0) {
+			if (combatChit.hasCombatBox()) {
 				// chit is in play
 				list.add(chit);
 			}
@@ -112,7 +112,7 @@ public class BattleUtility {
 		ArrayList<RealmComponent> fightChits = new ArrayList<>();
 		for (RealmComponent rc : list) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-			if (combat.getCombatBox()>0 && (!rc.isActionChit() || combat.getPlacedAsFight() || combat.getPlacedAsParry())) {
+			if (combat.hasCombatBox() && (!rc.isActionChit() || combat.getPlacedAsFight() || combat.getPlacedAsParry())) {
 				fightChits.add(rc);
 			}
 		}
@@ -123,7 +123,7 @@ public class BattleUtility {
 		RealmComponent ret = null;
 		for (RealmComponent rc : list) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-			if (combat.getCombatBox()>0 && (!rc.isActionChit() || combat.getPlacedAsMove())) {
+			if (combat.hasCombatBox() && (!rc.isActionChit() || combat.getPlacedAsMove())) {
 				if (!rc.isHorse() || includeHorse) {
 					// found it!
 					ret = rc;

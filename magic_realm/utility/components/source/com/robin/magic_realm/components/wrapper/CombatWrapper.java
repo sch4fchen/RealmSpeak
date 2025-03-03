@@ -41,6 +41,8 @@ public class CombatWrapper extends GameObjectWrapper {
 	
 	// Round-only Information
 	private static final String COMBAT_BOX = "CMB_BOX";
+	private static final String COMBAT_BOXES_ATTACK = "CMB_BOXES_ATT";
+	private static final String COMBAT_BOXES_DEFENCE = "CMB_BOXES_DEF";
 	private static final String PLACED_AS_MOVE = "PAM"; // this is only important for the Unleash Power MOVE/FIGHT chits
 	private static final String PLACED_AS_FIGHT = "PAF"; // this is only important for the Unleash Power MOVE/FIGHT chits
 	private static final String PLACED_AS_PARRY = "PAP";
@@ -241,6 +243,21 @@ public class CombatWrapper extends GameObjectWrapper {
 	}
 	public int getCombatBox() {
 		return getInt(COMBAT_BOX);
+	}
+	public void setCombatBoxAttack(int val) {
+		setInt(COMBAT_BOXES_ATTACK,val);
+	}
+	public int getCombatBoxAttack() {
+		return getInt(COMBAT_BOXES_ATTACK);
+	}
+	public void setCombatBoxDefence(int val) {
+		setInt(COMBAT_BOXES_DEFENCE,val);
+	}
+	public int getCombatBoxDefence() {
+		return getInt(COMBAT_BOXES_DEFENCE);
+	}
+	public boolean hasCombatBox() {
+		return getInt(COMBAT_BOX)>0 || (getInt(COMBAT_BOXES_ATTACK)>0 && getInt(COMBAT_BOXES_DEFENCE)>0);
 	}
 	public void setPeace(boolean peace) {
 		setBoolean(PEACE,peace);
@@ -783,6 +800,8 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,USED_IDS);
 			go.removeAttribute(COMBAT_BLOCK,ATTACKER_IDS);
 			go.removeAttribute(COMBAT_BLOCK,COMBAT_BOX);
+			go.removeAttribute(COMBAT_BLOCK,COMBAT_BOXES_ATTACK);
+			go.removeAttribute(COMBAT_BLOCK,COMBAT_BOXES_DEFENCE);
 			go.removeAttribute(COMBAT_BLOCK,PLACED_AS_FIGHT);
 			go.removeAttribute(COMBAT_BLOCK,PLACED_AS_PARRY);
 			go.removeAttribute(COMBAT_BLOCK,PLACED_AS_PARRY_SHIELD);

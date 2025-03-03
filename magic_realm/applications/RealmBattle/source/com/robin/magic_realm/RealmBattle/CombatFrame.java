@@ -2411,7 +2411,7 @@ public class CombatFrame extends JFrame {
 		// Find out which maneuver is already placed, and change the box
 		for (RealmComponent maneuver : list) {
 			CombatWrapper combat = new CombatWrapper(maneuver.getGameObject());
-			if (combat.getCombatBox()>0) {
+			if (combat.hasCombatBox()) {
 				combat.setCombatBox(box);
 			}
 		}
@@ -2592,7 +2592,7 @@ public class CombatFrame extends JFrame {
 		// Find out which piece is placed, and change the box
 		for (RealmComponent rc : fightOptions) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-			if (combat.getCombatBox()>0) {
+			if (combat.hasCombatBox()) {
 				combat.setCombatBox(box);
 				if (weapon!=null) {
 					combat = new CombatWrapper(weapon.getGameObject());
