@@ -4064,7 +4064,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public void addDeductVPs(int amount) {
 		int oldAmount = 0;
 		if (getGameObject().hasAttribute(VICTORY_REQ_BLOCK,V_DEDUCT_VPS)) {
-			getGameObject().getAttributeInt(VICTORY_REQ_BLOCK,V_DEDUCT_VPS);
+			oldAmount = getGameObject().getAttributeInt(VICTORY_REQ_BLOCK,V_DEDUCT_VPS);
 		}
 		amount = oldAmount + amount;
 		getGameObject().setAttribute(VICTORY_REQ_BLOCK,V_DEDUCT_VPS,amount);

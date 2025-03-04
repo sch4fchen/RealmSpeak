@@ -257,7 +257,7 @@ public class CombatWrapper extends GameObjectWrapper {
 		return getInt(COMBAT_BOXES_DEFENCE);
 	}
 	public boolean hasCombatBox() {
-		return getInt(COMBAT_BOX)>0 || (getInt(COMBAT_BOXES_ATTACK)>0 && getInt(COMBAT_BOXES_DEFENCE)>0);
+		return getInt(COMBAT_BOX)>0 || getInt(COMBAT_BOXES_ATTACK)>0 || getInt(COMBAT_BOXES_DEFENCE)>0;
 	}
 	public void setPeace(boolean peace) {
 		setBoolean(PEACE,peace);

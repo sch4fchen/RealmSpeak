@@ -1,8 +1,5 @@
 ::ROADMAP::
-BUG: QuestReward during Combat with new information dialog??
-
 Super Realm Combat System: 3x3 positioning: hostPref: OPT_SR_COMBAT
-LayoutHash: set Combat boxes
 
 CombatWrapper: getCombatBox setCombatBox setChangeTacticsResult getChangeTacticsResult
 CombatSheet: usesCombatBoxesEqually usesMaxCombatBoxes getAllBoxListFromLayout getSubtitleForReposition placeParticipant placeAllAttacks
@@ -80,6 +77,7 @@ Version 1.2.0.9
 BUGS/ISSUES:
 # Fix Rings enchanting a tile
 # Fix quest: Q21 Dragon Rider
+# Fix deducting VPs when discovering multiple sites
 
 Version 1.2.0.8
 NEW FEATURES:
