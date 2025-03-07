@@ -30,6 +30,9 @@ public class QuestRequirementEnchant extends QuestRequirement {
 			
 			if (getType().matches(RealmComponent.TILE)) {
 				RealmComponent tileRc = RealmComponent.getRealmComponent(go);
+				if (!tileRc.isTile()) {
+					return false;
+				}
 				TileComponent tile = (TileComponent)tileRc;
 				boolean foundTl = false;
 				boolean foundChit = false;
