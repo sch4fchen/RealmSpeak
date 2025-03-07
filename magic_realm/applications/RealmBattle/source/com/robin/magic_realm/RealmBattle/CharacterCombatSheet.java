@@ -353,8 +353,8 @@ public class CharacterCombatSheet extends CombatSheet {
 					if (!addedToDead(rc)) {
 						updateBattleChitsWithRolls(rcCombat);
 						CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-						int box = combat.getCombatBox();
-						layoutHash.put(Integer.valueOf(POS_TARGET+box),rc);
+						int boxD = combat.getCombatBoxDefence();
+						layoutHash.put(Integer.valueOf(POS_TARGET+boxD),rc);
 						sheetParticipants.add(rc);
 						if (rc.isMonster()) {
 							MonsterChitComponent monster = (MonsterChitComponent)rc;
@@ -362,19 +362,19 @@ public class CharacterCombatSheet extends CombatSheet {
 							if (weapon!=null) {
 								updateBattleChitsWithRolls(new CombatWrapper(weapon.getGameObject()));
 								combat = new CombatWrapper(weapon.getGameObject());
-								box = combat.getCombatBox();
-								if (box>0) {
+								int boxA = combat.getCombatBoxAttack();
+								if (boxA>0) {
 									// only add monster weapon to layout if in a combat box!
-									layoutHash.put(Integer.valueOf(POS_TARGET+box),weapon);
+									layoutHash.put(Integer.valueOf(POS_TARGET+boxD),weapon);
 								}
 							}
 							RealmComponent horse = (RealmComponent)rc.getHorse();
 							if (horse!=null) {
 								combat = new CombatWrapper(horse.getGameObject());
-								box = combat.getCombatBox();
-								if (box>0) {
+								boxD = combat.getCombatBoxDefence();
+								if (boxD>0) {
 									// only add horse to layout if in a combat box!
-									layoutHash.put(Integer.valueOf(POS_TARGET+box),horse);
+									layoutHash.put(Integer.valueOf(POS_TARGET+boxD),horse);
 								}
 							}
 						}
@@ -382,10 +382,10 @@ public class CharacterCombatSheet extends CombatSheet {
 							RealmComponent horse = (RealmComponent)rc.getHorse();
 							if (horse!=null) {
 								combat = new CombatWrapper(horse.getGameObject());
-								box = combat.getCombatBox();
-								if (box>0) {
+								boxD = combat.getCombatBoxDefence();
+								if (boxD>0) {
 									// only add horse to layout if in a combat box!
-									layoutHash.put(Integer.valueOf(POS_TARGET+box),horse);
+									layoutHash.put(Integer.valueOf(POS_TARGET+boxD),horse);
 								}
 							}
 						}
@@ -542,7 +542,7 @@ public class CharacterCombatSheet extends CombatSheet {
 			case POS_TARGET:
 				if (combatFrame.getActionState()==Constants.COMBAT_LURE) {
 					// Luring
-					combatFrame.lureDenizens(sheetOwner,0,true);
+					combatFrame.lureDenizens(sheetOwner,0,0,true);
 				}
 				else if (combatFrame.getActionState()==Constants.COMBAT_ASSIGN) {
 					// Assign Targets
@@ -585,7 +585,7 @@ public class CharacterCombatSheet extends CombatSheet {
 								if (horse!=null) {
 									if (swingConstant==SwingConstants.LEFT) {
 										CombatWrapper combat = new CombatWrapper(horse.getGameObject());
-										combat.setCombatBox(n+1);
+										combat.setCombatBoxDefence(n+1);
 									}
 									else {
 										list.add(0,horse); // push
@@ -597,7 +597,7 @@ public class CharacterCombatSheet extends CombatSheet {
 								if (horse!=null) {
 									if (swingConstant==SwingConstants.LEFT) {
 										CombatWrapper combat = new CombatWrapper(horse.getGameObject());
-										combat.setCombatBox(n+1);
+										combat.setCombatBoxDefence(n+1);
 									}
 									else {
 										list.add(0,horse); // push
@@ -605,7 +605,8 @@ public class CharacterCombatSheet extends CombatSheet {
 								}
 							}
 							CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-							combat.setCombatBox(n+1);
+							combat.setCombatBoxDefence(n+1);
+							combat.setCombatBoxAttack(n+1);
 							n = (n+1)%3;
 						}
 						updateLayout();
@@ -629,7 +630,7 @@ public class CharacterCombatSheet extends CombatSheet {
 					combatFrame.replaceAttack(index-POS_ATTACK_BOX1+1);
 				}
 				else {
-					combatFrame.positionAttacker(getAllBoxListFromLayout(POS_ATTACK_BOX1),index-POS_ATTACK_BOX1+1,false,swingConstant==SwingConstants.LEFT);
+					combatFrame.positionAttacker(getAllBoxListFromLayout(POS_ATTACK_BOX1),index-POS_ATTACK_BOX1+1,index-POS_ATTACK_BOX1+1,false,swingConstant==SwingConstants.LEFT);
 					updateLayout();
 					repaint();
 				}

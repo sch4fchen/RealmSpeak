@@ -213,7 +213,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 					ss = combat.getMissileRollSubtitles();
 				}
 				
-				String prefix = (rc.isCharacter()?"":("B"+combat.getCombatBox()+" "));
+				String prefix = (rc.isCharacter()?"":("B"+combat.getCombatBoxAttack()+","+combat.getCombatBoxDefence()+" "));
 				Iterator<String> r=rs.iterator();
 				Iterator<String> s=ss.iterator();
 				while(r.hasNext()) {
@@ -449,14 +449,14 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		RealmComponent horse = (RealmComponent)participant.getHorse();
 		if (horse!=null) {
 			combat = new CombatWrapper(horse.getGameObject());
-			box = combat.getCombatBox();
+			box = combat.getCombatBoxDefence();
 			if (box==0) {
 				if (horseSameBox) {
-					combat.setCombatBox(1);
+					combat.setCombatBoxDefence(1);
 					box = 1;
 				}
 				else {
-					combat.setCombatBox(2);
+					combat.setCombatBoxDefence(2);
 					box = 2;
 				}
 			}
@@ -470,9 +470,12 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		combat = new CombatWrapper(participant.getGameObject());
 		updateBattleChitsWithRolls(combat);
 		
-		box = combat.getCombatBox();
-		if (box==0) {
-			combat.setCombatBox(1);
+		int boxA = combat.getCombatBoxAttack();
+		int boxD = combat.getCombatBoxDefence();
+		box = combat.getCombatBoxDefence();
+		if (boxA==0 || boxD==0) {
+			combat.setCombatBoxAttack(1);
+			combat.setCombatBoxDefence(1);
 			box = 1;
 		}
 		if (secrecy) {
@@ -600,7 +603,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 									if (weapons!=null) {
 										for (WeaponChitComponent weapon : weapons) {
 											CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
-											int box = combat.getCombatBox();
+											int box = combat.getCombatBoxAttack();
 											if (box>0 && !combat.getPlacedAsParry() && !combat.getPlacedAsParryShield() && this.sheetOwner.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
 												layoutHash.put(Integer.valueOf(weaponBox1+box-1),weapon);
 											}
@@ -608,7 +611,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 									}
 									for (RealmComponent chit : character.getActiveFightChits()) {
 										CombatWrapper combat = new CombatWrapper(chit.getGameObject());
-										int box = combat.getCombatBox();
+										int box = combat.getCombatBoxAttack();
 										if (box>0 && combat.getPlacedAsFight() && this.sheetOwner.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
 											layoutHash.put(Integer.valueOf(attackBox1+box-1),chit);
 										}
@@ -619,14 +622,14 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 										RealmComponent item = RealmComponent.getRealmComponent(go);
 										if (item.getGameObject().hasThisAttribute("gloves")) {
 											CombatWrapper combat = new CombatWrapper(item.getGameObject());
-											int box = combat.getCombatBox();
+											int box = combat.getCombatBoxAttack();
 											if (box>0 && this.sheetOwner.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
 												layoutHash.put(Integer.valueOf(attackBox1+box-1),item);
 											}
 										}
 										else if (item.getGameObject().hasThisAttribute("attack")) {
 											CombatWrapper combat = new CombatWrapper(item.getGameObject());
-											int box = combat.getCombatBox();
+											int box = combat.getCombatBoxAttack();
 											if (box>0 && this.sheetOwner.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
 												layoutHash.put(Integer.valueOf(weaponBox1+box-1),item);
 											}
@@ -636,7 +639,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 								else {
 									CombatWrapper combat = new CombatWrapper(transmorph.getGameObject());
 									updateBattleChitsWithRolls(combat);
-									int box = combat.getCombatBox();
+									int box = combat.getCombatBoxAttack();
 									if (box>0) {
 										layoutHash.put(Integer.valueOf(attackBox1+box-1),transmorph.getFightChit());
 									}
@@ -646,7 +649,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 									if (monsterWeapon!=null) {
 										combat = new CombatWrapper(monsterWeapon.getGameObject());
 										updateBattleChitsWithRolls(combat);
-										box = combat.getCombatBox();
+										box = combat.getCombatBoxAttack();
 										if (box>0) {
 											layoutHash.put(Integer.valueOf(attackBox1+box-1),monsterWeapon);
 										}

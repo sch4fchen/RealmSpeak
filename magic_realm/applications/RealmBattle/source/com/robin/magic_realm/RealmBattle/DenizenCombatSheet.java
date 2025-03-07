@@ -406,7 +406,7 @@ public class DenizenCombatSheet extends CombatSheet {
 				}
 				else if (combatFrame.getActionState()==Constants.COMBAT_RANDOM_ASSIGN) {
 					// Do random assignment (guaranteed to have ONE selected here)
-					combatFrame.lureDenizens(sheetOwner,1,false,false);
+					combatFrame.lureDenizens(sheetOwner,1,1,false,false);
 					combatFrame.updateRandomAssignment();
 				}
 				else if (combatFrame.getActionState()==Constants.COMBAT_ASSIGN) {
@@ -419,7 +419,7 @@ public class DenizenCombatSheet extends CombatSheet {
 						list = filterFriends(combatFrame.getActiveParticipant(),list);
 					}
 					
-					combatFrame.positionAttacker(list,index-POS_ATTACKERS_BOX1+1,false,swingConstant==SwingConstants.LEFT);
+					combatFrame.positionAttacker(list,index-POS_ATTACKERS_BOX1+1,index-POS_ATTACKERS_BOX1+1,false,swingConstant==SwingConstants.LEFT);
 					updateLayout();
 					repaint();
 				}
@@ -456,7 +456,7 @@ public class DenizenCombatSheet extends CombatSheet {
 					// Though MOST of the time, this list will only contain ONE defender, it does happen when there are more
 					ArrayList<RealmComponent> list = getAllBoxListFromLayout(POS_DEFENDER_BOX1);
 					boolean includeFlipside = sheetOwner.getOwnerId()!=null && !sheetOwner.isTraveler();
-					combatFrame.positionAttacker(list,index-POS_DEFENDER_BOX1+1,includeFlipside,swingConstant==SwingConstants.LEFT);
+					combatFrame.positionAttacker(list,index-POS_DEFENDER_BOX1+1,index-POS_DEFENDER_BOX1+1,includeFlipside,swingConstant==SwingConstants.LEFT);
 					updateLayout();
 					repaint();
 				}
@@ -481,7 +481,7 @@ public class DenizenCombatSheet extends CombatSheet {
 					}
 				}
 				else if (combatFrame.getActionState()==Constants.COMBAT_POSITIONING) {
-					combatFrame.positionAttacker(getAllBoxListFromLayout(POS_DEFENDER_TARGET_BOX1),index-POS_DEFENDER_TARGET_BOX1+1,false,swingConstant==SwingConstants.LEFT);
+					combatFrame.positionAttacker(getAllBoxListFromLayout(POS_DEFENDER_TARGET_BOX1),index-POS_DEFENDER_TARGET_BOX1+1,index-POS_DEFENDER_TARGET_BOX1+1,false,swingConstant==SwingConstants.LEFT);
 					updateLayout();
 					repaint();
 				}
@@ -673,7 +673,7 @@ public class DenizenCombatSheet extends CombatSheet {
 		int lureCount = combatFrame.selectedDenizenCount();
 		if (lureCount<=1) {
 			// Luring
-			combatFrame.lureDenizens(sheetOwner,1,false);
+			combatFrame.lureDenizens(sheetOwner,1,1,false);
 		}
 		else if (lureCount>1) {
 			showDialogOnlySingleDenizenCanBeLured(combatFrame);

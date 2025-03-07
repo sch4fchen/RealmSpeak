@@ -1,9 +1,6 @@
 ::ROADMAP::
 Super Realm Combat System: 3x3 positioning: hostPref: OPT_SR_COMBAT
 CombatWrapper, CombatSheet, CharacterCombatSheet, DenizenCombatSheet, BattleModel, CombatFrame
-
-CombatSheet: usesCombatBoxesEqually usesMaxCombatBoxes getAllBoxListFromLayout getSubtitleForReposition placeParticipant
-BattleModel: repositionAndChangeTactics repositionToBox changeTactics changeTacticsOn
 "box_constraint":
 		{"MOVE chit - only CHARGE","move_lock","box_constraint=1"},
 		{"MOVE chit - only DODGE","move_lock","box_constraint=2"},

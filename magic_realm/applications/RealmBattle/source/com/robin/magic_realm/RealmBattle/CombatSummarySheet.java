@@ -202,7 +202,7 @@ public class CombatSummarySheet extends JPanel {
 					lureButton.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent ev) {
 							if (battleParticipant.isCharacter()) {
-								combatFrame.lureDenizens(battleParticipant,0,true);
+								combatFrame.lureDenizens(battleParticipant,0,0,true);
 							} else {
 								DenizenCombatSheet denizenSheet = new DenizenCombatSheet(combatFrame,combatFrame.getBattleModel(),battleParticipant,false,null);
 								if (denizenSheet.canLureMoreDenizens()) {

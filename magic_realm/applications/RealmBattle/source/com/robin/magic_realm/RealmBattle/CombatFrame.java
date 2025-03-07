@@ -1618,12 +1618,12 @@ public class CombatFrame extends JFrame {
 				}
 				
 				// Verify that as many combat boxes as can be used, ARE used
-				if (!sheet.usesMaxCombatBoxes() && !hostPrefs.hasPref(Constants.OPT_NO_BATTLE_DIST)) {
+				if (!sheet.usesMaxCombatBoxes() && !hostPrefs.hasPref(Constants.OPT_NO_BATTLE_DIST) && !hostPrefs.hasPref(Constants.SR_COMBAT)) {
 					return new RealmComponentError(rc,"Not using enough boxes","You must place targets in as many boxes as possible (up to 3) before continuing.");
 				}
 				
 				// Verify that combat boxes are used equally
-				if (hostPrefs.hasPref(Constants.FE_DEADLY_REALM) && sheet.getSheetOwner().isCharacter() && !sheet.usesCombatBoxesEqually()) {
+				if (hostPrefs.hasPref(Constants.FE_DEADLY_REALM) && hostPrefs.hasPref(Constants.SR_COMBAT) && sheet.getSheetOwner().isCharacter() && !sheet.usesCombatBoxesEqually()) {
 					return new RealmComponentError(rc,"Not using boxes equally","You must place targets as equally as possible.");
 				}
 			}
@@ -1899,12 +1899,12 @@ public class CombatFrame extends JFrame {
 		}
 		return list;
 	}
-	public void lureDenizens(RealmComponent lurer,int box,boolean lureMultiple) {
-		lureDenizens(lurer,box,lureMultiple, true) ;
+	public void lureDenizens(RealmComponent lurer,int boxA,int boxD,boolean lureMultiple) {
+		lureDenizens(lurer,boxA,boxD,lureMultiple, true) ;
 	}
-	public void lureDenizens(RealmComponent lurer,int box,boolean lureMultiple, boolean filterNativeFriendly) {
+	public void lureDenizens(RealmComponent lurer,int boxA,int boxD,boolean lureMultiple, boolean filterNativeFriendly) {
 		if (denizenPanel.getSelectedCount()>0) {
-			lureSelectedDenizens(lurer,box, filterNativeFriendly);
+			lureSelectedDenizens(lurer,boxA,boxD,filterNativeFriendly);
 			changes = true;
 		}
 		else {
@@ -1944,7 +1944,7 @@ public class CombatFrame extends JFrame {
 					if (c!=null && !c.isEmpty()) {
 						for (GameObject go : c) {
 							RealmComponent luree = RealmComponent.getRealmComponent(go);
-							if (lureDenizen(lurer,box,luree)) {
+							if (lureDenizen(lurer,boxA,boxD,luree)) {
 								changes = true;
 							}
 						}
@@ -1954,7 +1954,7 @@ public class CombatFrame extends JFrame {
 		}
 		updateSelection();
 	}
-	private void lureSelectedDenizens(RealmComponent lurer,int box,boolean filterNativeFriendly) {
+	private void lureSelectedDenizens(RealmComponent lurer,int boxA,int boxD,boolean filterNativeFriendly) {
 		Collection<RealmComponent> denizens = denizenPanel.getSelectedComponents();
 		denizenPanel.clearSelected();
 		Collection<RealmComponent> validDenizens = denizens;
@@ -1977,11 +1977,11 @@ public class CombatFrame extends JFrame {
 				BattleUtility.processTreachery(new CharacterWrapper(lurer.getOwner().getGameObject()),denizen);
 			}
 			
-			lureDenizen(lurer,box,denizen);
+			lureDenizen(lurer,boxA,boxD,denizen);
 		}
 
 	}
-	private boolean lureDenizen(RealmComponent lurer,int box,RealmComponent denizen) {
+	private boolean lureDenizen(RealmComponent lurer,int boxA,int boxD,RealmComponent denizen) {
 		if (denizen.isMistLike()) {
 			String message = "The "+lurer.getGameObject().getName()
 							+" cannot lure the "+denizen.getGameObject().getName()
@@ -2005,7 +2005,8 @@ public class CombatFrame extends JFrame {
 			}
 			
 			denizen.setTarget(lurer);
-			denizenCw.setCombatBox(box);
+			denizenCw.setCombatBoxAttack(boxA);
+			denizenCw.setCombatBoxAttack(boxD);
 			denizenPanel.removeGameObject(denizen.getGameObject());
 			denizenPanel.repaint();
 			if (lurer.isHidden()) {
@@ -2474,7 +2475,7 @@ public class CombatFrame extends JFrame {
 			if (moveOptions.size()>0) {
 				RealmComponent chit = playManeuver(box,moveOptions);
 				if (chit!=null && separateRider) {
-					positionExtra(chit,0,false,false);
+					positionExtra(chit,0,0,false,false);
 				}
 			}
 			updateSelection();
@@ -2783,7 +2784,7 @@ public class CombatFrame extends JFrame {
 					if (monsterWeapon.isLightSideUp()) {
 						monsterWeapon.flip();
 					}
-					positionExtra(monster,0,false,false);
+					positionExtra(monster,0,0,false,false);
 				}
 			}
 			
@@ -3041,7 +3042,7 @@ public class CombatFrame extends JFrame {
 			int boxConstraint = target.getGameObject().getThisInt("box_constraint");
 			for (int i=1;i<=3;i++) {
 				if (boxConstraint==0 || i==boxConstraint) {
-					if (includeCurrentBox || box!=i) {
+					if (includeCurrentBox || boxA!=i || boxD!=i) {
 						String key = "C"+(keyN++);
 						chooser.addOption(key,"Box "+i+" ("+BOX_NAME[i-1]+")");
 						chooser.addRealmComponentToOption(key,extra);
@@ -3062,7 +3063,8 @@ public class CombatFrame extends JFrame {
 							extra.flip();
 						}
 						CombatWrapper combat = new CombatWrapper(extra.getGameObject());
-						combat.setCombatBox(i+1);
+						combat.setCombatBoxAttack(i+1);
+						combat.setCombatBoxDefence(i+1);
 						break;
 					}
 				}
@@ -3074,7 +3076,7 @@ public class CombatFrame extends JFrame {
 		}
 		return true;
 	}
-	public void positionAttacker(ArrayList<RealmComponent> attackers,int box,boolean includeFlipSide,boolean horseSameBox) {
+	public void positionAttacker(ArrayList<RealmComponent> attackers,int boxA,int boxD,boolean includeFlipSide,boolean horseSameBox) {
 		// Native/Horse positioning
 		int count = 0;
 		RealmComponent lonePiece = null;
@@ -3103,12 +3105,13 @@ public class CombatFrame extends JFrame {
 			}
 		}
 		if (count==1) {
-			if (!positionExtra(lonePiece,box,true,horseSameBox)) {
+			if (!positionExtra(lonePiece,boxA,boxD,true,horseSameBox)) {
 				return;
 			}
 			
 			CombatWrapper combat = new CombatWrapper(lonePiece.getGameObject());
-			combat.setCombatBox(box);
+			combat.setCombatBoxAttack(boxA);
+			combat.setCombatBoxDefence(boxD);
 		}
 		else {
 			chooser.setVisible(true);
@@ -3118,7 +3121,7 @@ public class CombatFrame extends JFrame {
 				if (rc.isChit()) {
 					ChitComponent chit = (ChitComponent)rc;
 	
-					if (!positionExtra(chit,box,true,horseSameBox)) {
+					if (!positionExtra(chit,boxA,boxD,true,horseSameBox)) {
 						return;
 					}
 					
@@ -3127,7 +3130,8 @@ public class CombatFrame extends JFrame {
 					}
 					
 					CombatWrapper combat = new CombatWrapper(chit.getGameObject());
-					combat.setCombatBox(box);
+					combat.setCombatBoxAttack(boxA);
+					combat.setCombatBoxDefence(boxD);
 				}
 			}
 		}
