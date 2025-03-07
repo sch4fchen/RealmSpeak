@@ -403,7 +403,7 @@ public class CharacterCombatSheet extends CombatSheet {
 					if (maneuverChit!=null) {
 						CombatWrapper combat = new CombatWrapper(maneuverChit.getGameObject());
 						if (combat.getPlacedAsMove()) {
-							int box = combat.getCombatBox();
+							int box = combat.getCombatBoxDefence();
 							if (maneuverChit.isCharacter()) { // This implies the character is transmorphed (normally, a character move chit is a chit)
 								maneuverChit = characterChit.getTransmorphedComponent().getMoveChit();
 							}
@@ -414,7 +414,7 @@ public class CharacterCombatSheet extends CombatSheet {
 					if (!character.isTransmorphed()) {
 						for (RealmComponent chit : character.getActiveFightChits()) {
 							CombatWrapper combat = new CombatWrapper(chit.getGameObject());
-							int box = combat.getCombatBox();
+							int box = combat.getCombatBoxDefence();
 							if (box>0 && this.sheetOwner.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
 								if (combat.getPlacedAsParry()) {
 									layoutHash.put(Integer.valueOf(POS_MOVE_BOX1+box-1),chit);
@@ -427,7 +427,7 @@ public class CharacterCombatSheet extends CombatSheet {
 						if (weapons!=null) {
 							for (WeaponChitComponent weapon : weapons) {
 								CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
-								int box = combat.getCombatBox();
+								int box = combat.getCombatBoxDefence();
 								if (box>0 && this.sheetOwner.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
 									if (combat.getPlacedAsParry()) {
 										layoutHash.put(Integer.valueOf(POS_MOVE_BOX1+box-1),weapon);
@@ -446,10 +446,10 @@ public class CharacterCombatSheet extends CombatSheet {
 					if (armorType!=ArmorType.None && armorType!=ArmorType.Special) {
 						if (armorType==ArmorType.Shield) {
 							CombatWrapper combat = new CombatWrapper(item.getGameObject());
-							int box = combat.getCombatBox();
+							int box = combat.getCombatBoxDefence();
 							if (box==0) { // default to box 1
 								box = 1;
-								combat.setCombatBox(box);
+								combat.setCombatBoxDefence(box);
 							}
 							sheetOwnerShield = item;
 							if (needsSecrecy) {
@@ -485,7 +485,7 @@ public class CharacterCombatSheet extends CombatSheet {
 						// Anything with a combat box!
 						CombatWrapper combat = new CombatWrapper(item.getGameObject());
 						if (combat.getPlacedAsMove()) {
-							int box = combat.getCombatBox();
+							int box = combat.getCombatBoxDefence();
 							if (box>0) {
 								layoutHash.put(Integer.valueOf(POS_MOVE_BOX1+box-1),item);
 							}
@@ -563,7 +563,8 @@ public class CharacterCombatSheet extends CombatSheet {
 						}
 						for (RealmComponent rc : toReset) {
 							CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-							combat.setCombatBox(0);
+							combat.setCombatBoxAttack(0);
+							combat.setCombatBoxDefence(0);
 						}
 						updateLayout();
 					}
@@ -617,7 +618,8 @@ public class CharacterCombatSheet extends CombatSheet {
 			case POS_TARGET_BOX3:
 				// Position targets
 				ArrayList<RealmComponent> list = layoutHash.getList(Integer.valueOf(POS_TARGET));
-				combatFrame.positionTarget(index-POS_TARGET_BOX1+1,list,false,swingConstant==SwingConstants.LEFT);
+				int box = index-POS_TARGET_BOX1+1;
+				combatFrame.positionTarget(box,box,list,false,swingConstant==SwingConstants.LEFT);
 				break;
 			case POS_ATTACK_BOX1:
 			case POS_ATTACK_BOX2:
@@ -666,7 +668,7 @@ public class CharacterCombatSheet extends CombatSheet {
 					// Position shield
 					if (sheetOwnerShield!=null) {
 						CombatWrapper combat = new CombatWrapper(sheetOwnerShield.getGameObject());
-						combat.setCombatBox(index-POS_SHIELD1+1);
+						combat.setCombatBoxDefence(index-POS_SHIELD1+1);
 						combatFrame.updateSelection();
 					}
 				}

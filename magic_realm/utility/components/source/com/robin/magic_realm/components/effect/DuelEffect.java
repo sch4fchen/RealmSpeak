@@ -6,7 +6,9 @@ import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.MonsterChitComponent;
 import com.robin.magic_realm.components.MonsterPartChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
+import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class DuelEffect implements ISpellEffect {
 
@@ -14,6 +16,8 @@ public class DuelEffect implements ISpellEffect {
 	
 	@Override
 	public void apply(SpellEffectContext context) {
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(context.getGameData());
+		
 		ArrayList<RealmComponent> targets = context.Spell.getTargets();
 		if (targets.size() != 2 || context.Spell.getExtraIdentifier() == DUELLING) return;
 		
@@ -24,10 +28,22 @@ public class DuelEffect implements ISpellEffect {
 		
 		CombatWrapper combat0 = new CombatWrapper(targets.get(0).getGameObject());
 		combat0.setSheetOwner(true);
-		combat0.setCombatBox(RandomNumber.getRandom(3));
 		CombatWrapper combat1 = new CombatWrapper(targets.get(1).getGameObject());
 		combat1.setSheetOwnerId(targets.get(0));
-		combat1.setCombatBox(RandomNumber.getRandom(3));
+		if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
+			combat0.setCombatBoxAttack(RandomNumber.getRandom(3));
+			combat0.setCombatBoxDefence(RandomNumber.getRandom(3));
+			combat1.setCombatBoxAttack(RandomNumber.getRandom(3));
+			combat1.setCombatBoxDefence(RandomNumber.getRandom(3));
+		}
+		else {
+			int random1 = RandomNumber.getRandom(3);
+			combat0.setCombatBoxAttack(random1);
+			combat0.setCombatBoxDefence(random1);
+			int random2 = RandomNumber.getRandom(3);
+			combat1.setCombatBoxAttack(random2);
+			combat1.setCombatBoxDefence(random2);
+		}
 		
 		for (RealmComponent target : targets) {
 			if (target instanceof MonsterChitComponent) {
@@ -35,9 +51,9 @@ public class DuelEffect implements ISpellEffect {
 				if (weapon != null) {
 					CombatWrapper combat = new CombatWrapper(target.getGameObject());
 					CombatWrapper combatWeapon = new CombatWrapper(weapon.getGameObject());
-					combatWeapon.setCombatBox(RandomNumber.getRandom(3));
-					while (combat.getCombatBox() == combatWeapon.getCombatBox()) {
-						combatWeapon.setCombatBox(RandomNumber.getRandom(3));
+					combatWeapon.setCombatBoxAttack(RandomNumber.getRandom(3));
+					while (combat.getCombatBoxAttack() == combatWeapon.getCombatBoxAttack()) {
+						combatWeapon.setCombatBoxAttack(RandomNumber.getRandom(3));
 					}
 				}
 			}

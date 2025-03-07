@@ -487,9 +487,9 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			if (weapon!=null) {
 				combat = new CombatWrapper(weapon.getGameObject());
 				updateBattleChitsWithRolls(combat);
-				box = combat.getCombatBox();
+				box = combat.getCombatBoxAttack();
 				if (box==0) {
-					combat.setCombatBox(2);
+					combat.setCombatBoxAttack(2);
 					box = 2;
 				}
 				if (secrecy) {
@@ -507,7 +507,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 				return true;
 			}
 			else if (combatFrame.getActionState()==Constants.COMBAT_RESOLVING) {
-				if (combat.getCombatBox()==0) {
+				if (!combat.hasCombatBox()) {
 					layoutHash.put(Integer.valueOf(getDeadBoxIndex()),rc);
 					return true;
 				}
@@ -677,7 +677,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 								if (reveal || showAttack) {
 									GameObject incObj = sw.getIncantationObject();
 									CombatWrapper combat = new CombatWrapper(incObj);
-									int box = combat.getCombatBox();
+									int box = combat.getCombatBoxAttack();
 									if (box>0) {
 										layoutHash.put(Integer.valueOf(weaponBox1+box-1),RealmComponent.getRealmComponent(spell));
 									}

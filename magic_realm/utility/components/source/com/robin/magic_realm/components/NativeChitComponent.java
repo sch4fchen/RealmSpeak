@@ -465,12 +465,12 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 			}
 		}
 		CombatWrapper combat = new CombatWrapper(getGameObject());
-		return combat.getCombatBox();
+		return combat.getCombatBoxDefence();
 	}
 
 	public int getAttackCombatBox() {
 		CombatWrapper combat = new CombatWrapper(getGameObject());
-		return combat.getCombatBox();
+		return combat.getCombatBoxAttack();
 	}
 
 	public boolean applyHit(GameWrapper game,HostPrefWrapper hostPrefs, BattleChit attacker, int box, Harm attackerHarm,int attackOrderPos) {

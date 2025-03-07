@@ -621,12 +621,12 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 			}
 		}
 		CombatWrapper combat = new CombatWrapper(getGameObject());
-		return combat.getCombatBox();
+		return combat.getCombatBoxDefence();
 	}
 	
 	public int getAttackCombatBox() {
 		CombatWrapper combat = new CombatWrapper(getGameObject());
-		return combat.getCombatBox();
+		return combat.getCombatBoxAttack();
 	}
 	
 	public boolean hasAnAttack() {
@@ -755,7 +755,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		if (!harm.getIgnoresArmor() && hasActiveShield()) {
 			MonsterPartChitComponent shield = getShield();
 			CombatWrapper shieldCombat = new CombatWrapper(getShield().getGameObject());
-			if (shieldCombat.getCombatBox() == box) {
+			if (shieldCombat.getCombatBoxDefence() == box) {
 				harm.dampenSharpness();
 				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits shield, thus monster is not killed, and reduces sharpness: "+harm.toString());
 				if (harm.getAppliedStrength().equalTo(shield.getStrength()) && !shield.isDamaged() && !shield.getGameObject().hasThisAttribute(Constants.DAMAGEABLE_NOT)) {

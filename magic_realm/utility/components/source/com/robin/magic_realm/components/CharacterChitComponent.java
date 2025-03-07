@@ -386,7 +386,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				for (WeaponChitComponent weapon : weapons) {
 					if (combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
 						CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
-						if (combat.getCombatBox() > 0) { // only if it was played!
+						if (combat.getCombatBoxAttack() > 0) { // only if it was played!
 							return weapon;
 						}
 					}
@@ -413,7 +413,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				for (WeaponChitComponent weapon : weapons) {
 					if (combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
 						CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
-						if (combat.getCombatBox() > 0) { // only if it was played!
+						if (combat.getCombatBoxAttack() > 0) { // only if it was played!
 							Speed weaponSpeed = weapon.getSpeed();
 							if (weaponSpeed != null) {
 								speed = weaponSpeed;
@@ -579,7 +579,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		for (CharacterActionChitComponent chit : character.getActiveFightChits()) {
 			CombatWrapper combatChit = new CombatWrapper(chit.getGameObject());
 			if(!combatChit.getPlacedAsParryShield()) continue;
-			if (chit.getSpeed().fasterThanOrEqual(attackerSpeed) || combatChit.getCombatBox() == box) {
+			if (chit.getSpeed().fasterThanOrEqual(attackerSpeed) || combatChit.getCombatBoxDefence() == box) {
 				if (combatChit.getWeaponId() == null) {
 					armors.add(chit);
 					continue;
@@ -612,7 +612,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				}
 				else if (armorType!=ArmorType.None) {
 					if (armorType==ArmorType.Shield) {
-						if (combat.getCombatBox() == box) {
+						if (combat.getCombatBoxDefence() == box) {
 							armors.add(item);
 						}
 					}
@@ -731,7 +731,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			BattleHorse horse = character.getActiveSteed(attackOrderPos);
 			if (horse != null && !combat.isTargetingRider(attacker.getGameObject())) {
 				CombatWrapper horseCombat = new CombatWrapper(horse.getGameObject());
-				if (horseCombat.getCombatBox() > 0) {
+				if (horseCombat.getCombatBoxDefence() > 0) {
 					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits the "
 							+getGameObject().getNameWithNumber()+"'s "
 							+horse.getGameObject().getNameWithNumber());
@@ -1082,7 +1082,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		RealmComponent rc = getManeuverChit(includeHorse);
 		if (rc != null) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-			return combat.getCombatBox();
+			return combat.getCombatBoxDefence();
 		}
 		return 0;
 	}
@@ -1091,7 +1091,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		RealmComponent rc = getAttackChit();
 		if (rc != null) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-			return combat.getCombatBox();
+			return combat.getCombatBoxAttack();
 		}
 		return 0;
 	}
@@ -1194,7 +1194,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	}
 	private void alertWeapon(WeaponChitComponent weapon, boolean hit) {
 		// make sure weapon was played in combat this round (otherwise it doesn't change)
-		int box = (new CombatWrapper(weapon.getGameObject())).getCombatBox();
+		int box = (new CombatWrapper(weapon.getGameObject())).getCombatBoxAttack();
 		if (box > 0) {
 			if (activeWeaponStaysAlerted(weapon)
 					|| weapon.getGameObject().hasThisAttribute(Constants.ALERTED_WEAPON)

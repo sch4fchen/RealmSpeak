@@ -327,11 +327,11 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 	}
 	public int getManeuverCombatBox() {
 		CombatWrapper combat = new CombatWrapper(getGameObject());
-		return combat.getCombatBox();
+		return combat.getCombatBoxDefence();
 	}
 	public int getAttackCombatBox() {
 		CombatWrapper combat = new CombatWrapper(getGameObject());
-		return combat.getCombatBox();
+		return combat.getCombatBoxAttack();
 	}
 	public boolean applyHit(GameWrapper game,HostPrefWrapper hostPrefs,BattleChit attacker,int box,Harm attackerHarm,int attackOrderPos) {
 		RealmComponent rider = getRider();

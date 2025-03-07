@@ -586,11 +586,13 @@ public class DenizenCombatSheet extends CombatSheet {
 				
 				// If deploying to a character sheet, go into the unpositioned box
 				if (deployTarget.isCharacter()) {
-					sCombat.setCombatBox(0);
+					sCombat.setCombatBoxAttack(0);
+					sCombat.setCombatBoxDefence(0);
 					RealmComponent horse = (RealmComponent)sheetOwner.getHorse();
 					if (horse!=null) {
 						CombatWrapper hCombat = new CombatWrapper(horse.getGameObject());
-						hCombat.setCombatBox(0);
+						hCombat.setCombatBoxAttack(0);
+						hCombat.setCombatBoxDefence(0);
 					}
 				}
 				

@@ -271,7 +271,7 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 	}
 	public int getAttackCombatBox() {
 		CombatWrapper combat = new CombatWrapper(getGameObject());
-		return combat.getCombatBox();
+		return combat.getCombatBoxAttack();
 	}
 	public Speed getAttackSpeed() {
 		String specialType = getGameObject().getThisAttribute(Constants.ATTACK_SPEED_TARGET);
@@ -314,7 +314,7 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 	}
 	public int getManeuverCombatBox() {
 		CombatWrapper combat = new CombatWrapper(getGameObject());
-		return combat.getCombatBox();
+		return combat.getCombatBoxDefence();
 	}
 	public String getMissileType() {
 		return gameObject.getThisAttribute("missile");

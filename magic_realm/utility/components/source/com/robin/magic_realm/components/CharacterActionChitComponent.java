@@ -887,7 +887,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 	public int getManeuverCombatBox() {
 		if (isMove()) {
 			CombatWrapper combat = new CombatWrapper(getGameObject());
-			return combat.getCombatBox();
+			return combat.getCombatBoxDefence();
 		}
 		return 0;
 	}
@@ -895,7 +895,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 	public int getAttackCombatBox() {
 		if (isFight()) {
 			CombatWrapper combat = new CombatWrapper(getGameObject());
-			return combat.getCombatBox();
+			return combat.getCombatBoxAttack();
 		}
 		return 0;
 	}

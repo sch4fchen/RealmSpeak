@@ -808,15 +808,16 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	}
 	public int getManeuverCombatBox() {
 		CombatWrapper combat = new CombatWrapper(getIncantationObject());
-		return combat.getCombatBox();
+		return combat.getCombatBoxDefence();
 	}
 	public int getAttackCombatBox() {
 		CombatWrapper combat = new CombatWrapper(getIncantationObject());
-		return combat.getCombatBox();
+		return combat.getCombatBoxAttack();
 	}
 	public void setCombatBox(int val) {
 		CombatWrapper combat = new CombatWrapper(getIncantationObject());
-		combat.setCombatBox(val);
+		combat.setCombatBoxAttack(val);
+		combat.setCombatBoxDefence(val);
 	}
 	public boolean isMissile() {
 		return getGameObject().hasThisAttribute("missile");

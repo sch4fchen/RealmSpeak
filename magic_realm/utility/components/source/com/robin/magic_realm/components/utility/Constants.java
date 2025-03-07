@@ -459,6 +459,8 @@ public class Constants {
 	public static final String GIANT_AXE = "giant_axe";
 	public static final String MONSTER_WEAPON = "monster_weapon";
 	
+	public static final String SENSITIVE_TACTICS = "sensitive_tactics";
+	
 	// Other effects
 	public static final String BENEVOLENT = "benevolent"; // for spells
 	public static final String AUTHOR = "author";

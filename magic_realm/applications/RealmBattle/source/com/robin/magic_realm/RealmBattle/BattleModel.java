@@ -8,6 +8,7 @@ import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.general.swing.DieRoller;
 import com.robin.general.util.HashLists;
+import com.robin.general.util.Key;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.*;
@@ -810,7 +811,8 @@ public class BattleModel {
 				if (rc.getTarget()==null && rc.get2ndTarget()==null && combat.getAttackerCount()>0 && !combat.isSheetOwner()) { // being attacked, but not already on their own sheet
 					// As far as I know, there is NEVER a reason that the denizen shouldn't get their own sheet at this time
 					combat.setSheetOwner(true);
-					combat.setCombatBox(1);
+					combat.setCombatBoxAttack(1);
+					combat.setCombatBoxDefence(1);
 				}
 			}
 		}
@@ -1067,7 +1069,7 @@ public class BattleModel {
 						int attackCombatBox = spell.getAttackCombatBox();
 						for (RealmComponent target : c) {
 							CombatWrapper combatTarget = new CombatWrapper(target.getGameObject());
-							if (combatTarget.getCombatBox() == attackCombatBox) {
+							if (combatTarget.getCombatBoxDefence() == attackCombatBox) {
 								spell.addTarget(hostPrefs, target.getGameObject());
 							}
 						}
@@ -1449,7 +1451,7 @@ public class BattleModel {
 					((SpellWrapper)attacker).setCombatBox(RandomNumber.getRandom(3)+1);
 				}
 				else {
-					attackerCombat.setCombatBox(RandomNumber.getRandom(3)+1);
+					attackerCombat.setCombatBoxAttack(RandomNumber.getRandom(3)+1);
 				}
 				logBattleInfo("Random attack direction! "+attacker.getName()+" attacks box "+attacker.getAttackCombatBox()+".");
 			}
@@ -2124,32 +2126,35 @@ public class BattleModel {
 	private void repositionAndChangeTactics(String prefix,CombatWrapper sheetOwner,ArrayList<RealmComponent> groupList) {
 		if (groupList.size()>0) {
 			// Hash by box
-			HashLists<Integer, RealmComponent> boxHash = new HashLists<>();
+			HashLists<Key, RealmComponent> boxHash = new HashLists<>();
 			for (RealmComponent rc : groupList) {
 				CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-				int box = combat.getCombatBox();
-				if (box>0) {
-					boxHash.put(Integer.valueOf(box),rc);
+				int boxA = combat.getCombatBoxAttack();
+				int boxD = combat.getCombatBoxDefence();
+				if (boxA>0 || boxD>0) {
+					boxHash.put(new Key(boxA,boxD),rc);
 					if (rc.isMonster()) {
 						// Make sure we get monster parts!
 						MonsterChitComponent monster = (MonsterChitComponent)rc;
 						RealmComponent weapon = monster.getWeapon();
 						if (weapon!=null) {
 							combat = new CombatWrapper(weapon.getGameObject());
-							box = combat.getCombatBox();
-							if (box==0) {
+							boxA = combat.getCombatBoxAttack();
+							boxD = combat.getCombatBoxDefence();
+							if (boxA==0) {
 								throw new IllegalStateException("box is zero for "+weapon.getGameObject().getName()+" during reposition!!");
 							}
-							boxHash.put(Integer.valueOf(box),weapon);
+							boxHash.put(new Key(boxA,boxD),weapon);
 						}
 						NativeSteedChitComponent horse = (NativeSteedChitComponent)rc.getHorse();
 						if (horse!=null) {
 							combat = new CombatWrapper(horse.getGameObject());
-							box = combat.getCombatBox();
-							if (box==0) {
+							boxA = combat.getCombatBoxAttack();
+							boxD = combat.getCombatBoxDefence();
+							if (boxD==0) {
 								throw new IllegalStateException("box is zero for "+horse.getGameObject().getName()+" during reposition!!");
 							}
-							boxHash.put(Integer.valueOf(box),horse);
+							boxHash.put(new Key(boxA,boxD),horse);
 						}
 					}
 					else if (rc.isNative()) {
@@ -2157,25 +2162,59 @@ public class BattleModel {
 						NativeSteedChitComponent horse = (NativeSteedChitComponent)rc.getHorse();
 						if (horse!=null) {
 							combat = new CombatWrapper(horse.getGameObject());
-							box = combat.getCombatBox();
-							if (box==0) {
+							boxA = combat.getCombatBoxAttack();
+							boxD = combat.getCombatBoxDefence();
+							if (boxA==0 || boxD==0) {
 								throw new IllegalStateException("box is zero for "+horse.getGameObject().getName()+" during reposition!!");
 							}
-							boxHash.put(Integer.valueOf(box),horse);
+							boxHash.put(new Key(boxA,boxD),horse);
 						}
 					}
 				}// box might be zero if targeting an unassigned monster with a spell
 			}
-			reposition(prefix,sheetOwner,boxHash);
-			if (!battleLocation.clearing.hasSpellEffect(Constants.BEWILDERED)) {
-				changeTactics(prefix,sheetOwner,boxHash);
+			
+			if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
+				reposition9x9(prefix,sheetOwner,boxHash);
 			}
 			else {
-				RealmLogging.logMessage(RealmLogging.BATTLE,"No Change Tactics rolls were made because of bewilder effect in clearing.");
+				reposition(prefix,sheetOwner,boxHash);
+				if (!battleLocation.clearing.hasSpellEffect(Constants.BEWILDERED)) {
+					changeTactics(prefix,sheetOwner,boxHash);
+				}
+				else {
+					RealmLogging.logMessage(RealmLogging.BATTLE,"No Change Tactics rolls were made because of bewilder effect in clearing.");
+				}
 			}
 		}
 	}
-	private static void reposition(String prefix,CombatWrapper combatTarget,HashLists<Integer, RealmComponent> boxHash) {
+	private void reposition9x9(String prefix,CombatWrapper combatTarget,HashLists<Key, RealmComponent> boxHash) {
+		boolean tacticChange = true;
+		if (battleLocation!=null && battleLocation.clearing!=null && battleLocation.clearing.hasSpellEffect(Constants.BEWILDERED)) {
+			tacticChange = false;
+			RealmLogging.logMessage(RealmLogging.BATTLE,"No Change Tactics rolls were made because of bewilder effect in clearing.");
+		}
+		for (Key key : boxHash.keySet()) {
+			ArrayList<RealmComponent> list = boxHash.getList(key);
+			for (RealmComponent rc : list) {
+				int boxA = RandomNumber.getRandom(3)+1;
+				int boxD = RandomNumber.getRandom(3)+1;
+				CombatWrapper combat = new CombatWrapper(rc.getGameObject());
+				combat.setCombatBoxAttack(boxA);
+				combat.setCombatBoxDefence(boxD);
+				
+				if (tacticChange && (boxA==boxD || rc.getGameObject().hasThisAttribute(Constants.SENSITIVE_TACTICS))) {
+					ChitComponent chit = (ChitComponent)rc;
+					if (canChangeTactics(chit)) {
+						chit.flip();
+						if (chit instanceof BattleChit) {
+							RealmLogging.logMessage(chit.getGameObject().getNameWithNumber(),"Changes tactics:  "+getCombatantInformation((BattleChit)chit,true));
+						}
+					}
+				}
+			}
+		}
+	}
+	private static void reposition(String prefix,CombatWrapper combatTarget,HashLists<Key, RealmComponent> boxHash) {		
 		DieRoller roller = new DieRoller(); // Rule 22.5/2 specifies that modifiers do NOT affect this roll
 		roller.addRedDie();
 		roller.rollDice("Reposition");
@@ -2226,25 +2265,26 @@ public class BattleModel {
 		}
 		boxHash.clear();
 		if (box1!=null) {
-			boxHash.putList(Integer.valueOf(1),box1);
-			repositionToBox(box1,1);
+			boxHash.putList(new Key(1,1),box1);
+			repositionToBox(box1,1,1);
 		}
 		if (box2!=null) {
-			boxHash.putList(Integer.valueOf(2),box2);
-			repositionToBox(box2,2);
+			boxHash.putList(new Key(2,2),box2);
+			repositionToBox(box2,2,2);
 		}
 		if (box3!=null) {
-			boxHash.putList(Integer.valueOf(3),box3);
-			repositionToBox(box3,3);
+			boxHash.putList(new Key(3,3),box3);
+			repositionToBox(box3,3,3);
 		}
 	}
-	private static void repositionToBox(ArrayList<RealmComponent> list,int box) {
+	private static void repositionToBox(ArrayList<RealmComponent> list,int boxA, int boxD) {
 		for (RealmComponent rc : list) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-			combat.setCombatBox(box);
+			combat.setCombatBoxAttack(boxA);
+			combat.setCombatBoxDefence(boxD);
 		}
 	}
-	private static void changeTactics(String prefix,CombatWrapper combatTarget,HashLists<Integer, RealmComponent> boxHash) {
+	private static void changeTactics(String prefix,CombatWrapper combatTarget,HashLists<Key, RealmComponent> boxHash) {		
 		DieRoller roller = new DieRoller(); // Rule 22.5/3 specifies that modifiers do NOT affect this roll
 		roller.addRedDie();
 		roller.addWhiteDie();
@@ -2253,7 +2293,7 @@ public class BattleModel {
 		changeTactics(prefix,combatTarget,boxHash,roller,2);
 		changeTactics(prefix,combatTarget,boxHash,roller,3);
 	}
-	private static void changeTactics(String prefix,CombatWrapper combatTarget,HashLists<Integer, RealmComponent> boxHash,DieRoller roller,int boxNumber) {
+	private static void changeTactics(String prefix,CombatWrapper combatTarget,HashLists<Key, RealmComponent> boxHash,DieRoller roller,int boxNumber) {
 		roller.reset();
 		roller.rollDice("Change Tactics");
 		if (SKIP_REPOSITIONING || DebugUtility.isMonsterLock()) {
@@ -2264,7 +2304,7 @@ public class BattleModel {
 			roller.setValue(0,6);
 		}
 		int result = roller.getHighDieResult();
-		ArrayList<RealmComponent> list = boxHash.getList(Integer.valueOf(boxNumber));
+		ArrayList<RealmComponent> list = boxHash.getList(new Key(boxNumber,boxNumber));
 		if (list!=null) {
 			// Make sure there is at least ONE chit to flip
 			boolean isOne = false;
@@ -2310,7 +2350,7 @@ public class BattleModel {
 			for (RealmComponent rc : list) {
 				ChitComponent chit = (ChitComponent)rc; // they should ALL be chits
 				if (canChangeTactics(chit)) {
-					if (result==6 || chit.getGameObject().hasThisAttribute("sensitive_tactics")) {
+					if (result==6 || chit.getGameObject().hasThisAttribute(Constants.SENSITIVE_TACTICS)) {
 						if (!reportedChange) {
 							RealmLogging.logMessage(RealmLogging.BATTLE,"Change Tactics in Box "+boxNumber);
 							reportedChange = true;

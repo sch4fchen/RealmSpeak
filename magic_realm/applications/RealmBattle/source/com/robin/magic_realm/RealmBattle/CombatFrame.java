@@ -827,7 +827,8 @@ public class CombatFrame extends JFrame {
 					
 					if (theTarget!=null && targetCombat!=null && (!theTarget.isNative() || !hostPrefs.hasPref(Constants.TE_WATCHFUL_NATIVES))) {
 							targetCombat.setSheetOwner(true);
-							targetCombat.setCombatBox(1);
+							targetCombat.setCombatBoxAttack(1);
+							targetCombat.setCombatBoxDefence(1);
 							changes = true;
 							removeDenizen(theTarget);
 							refreshParticipants();
@@ -2411,8 +2412,8 @@ public class CombatFrame extends JFrame {
 		// Find out which maneuver is already placed, and change the box
 		for (RealmComponent maneuver : list) {
 			CombatWrapper combat = new CombatWrapper(maneuver.getGameObject());
-			if (combat.hasCombatBox()) {
-				combat.setCombatBox(box);
+			if (combat.getCombatBoxDefence()>0) {
+				combat.setCombatBoxDefence(box);
 			}
 		}
 		updateSelection();
@@ -2497,7 +2498,7 @@ public class CombatFrame extends JFrame {
 				// Maneuvers are stored in character object in this rare case (transmorphed character)
 				combat = new CombatWrapper(activeCharacter.getGameObject());
 			}
-			combat.setCombatBox(box);
+			combat.setCombatBoxDefence(box);
 			combat.setPlacedAsMove(true);
 			return chit;
 		}
@@ -2573,12 +2574,12 @@ public class CombatFrame extends JFrame {
 			RealmComponent chit = chooser.getFirstSelectedComponent();
 			RealmComponent weapon = chooser.getLastSelectedComponent();
 			CombatWrapper combatChit = new CombatWrapper(chit.getGameObject());
-			combatChit.setCombatBox(box);
+			combatChit.setCombatBoxDefence(box);
 			combatChit.setPlacedAsParry(true);
 			combatChit.setSheetOwnerId(characterRc);
 			combatChit.setWeaponId(weapon);
 			CombatWrapper combatWeapon = new CombatWrapper(weapon.getGameObject());
-			combatWeapon.setCombatBox(box);
+			combatWeapon.setCombatBoxDefence(box);
 			combatWeapon.setPlacedAsParry(true);
 			combatWeapon.setSheetOwnerId(characterRc);
 			charCombat.setPlayedAttack(true);
@@ -2592,11 +2593,11 @@ public class CombatFrame extends JFrame {
 		// Find out which piece is placed, and change the box
 		for (RealmComponent rc : fightOptions) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-			if (combat.hasCombatBox()) {
-				combat.setCombatBox(box);
+			if (combat.getCombatBoxAttack()>0) {
+				combat.setCombatBoxAttack(box);
 				if (weapon!=null) {
 					combat = new CombatWrapper(weapon.getGameObject());
-					combat.setCombatBox(box);
+					combat.setCombatBoxAttack(box);
 				}
 			}
 		}
@@ -2633,7 +2634,7 @@ public class CombatFrame extends JFrame {
 			// If the spell is an attack spell, then place it now
 			if (spell.isAttackSpell()) {
 				CombatWrapper combat = new CombatWrapper(incantationObject);
-				combat.setCombatBox(box);
+				combat.setCombatBoxAttack(box);
 				charCombat.setPlayedSpell(true);
 				updateSelection();
 				return;
@@ -2770,7 +2771,7 @@ public class CombatFrame extends JFrame {
 			charCombat.setPlayedAttack(true);
 			RealmComponent chit = chooser.getFirstSelectedComponent();
 			CombatWrapper combat = new CombatWrapper(chit.getGameObject());
-			combat.setCombatBox(box);
+			combat.setCombatBoxAttack(box);
 			combat.setPlacedAsFight(true);
 			combat.setSheetOwnerId(sheetOwner);
 
@@ -2790,7 +2791,7 @@ public class CombatFrame extends JFrame {
 			if (weapon!=null) {
 				combat.setWeaponId(weapon);
 				CombatWrapper combatWeapon = new CombatWrapper(weapon.getGameObject());
-				combatWeapon.setCombatBox(box);
+				combatWeapon.setCombatBoxAttack(box);
 				combatWeapon.setSheetOwnerId(sheetOwner);
 				if (chooser.getSelectedText().matches(THROWING)) {
 					combatWeapon.setThrown(true);
@@ -2875,7 +2876,7 @@ public class CombatFrame extends JFrame {
 			case "W":
 				RealmComponent chit = chooser.getFirstSelectedComponent();
 				CombatWrapper combatChit = new CombatWrapper(chit.getGameObject());
-				combatChit.setCombatBox(box);
+				combatChit.setCombatBoxDefence(box);
 				combatChit.setPlacedAsParryShield(true);
 				combatChit.setSheetOwnerId(characterRc);
 				
@@ -2883,7 +2884,7 @@ public class CombatFrame extends JFrame {
 				if (weapon!=null) {
 					combatChit.setWeaponId(weapon);
 					CombatWrapper combatWeapon = new CombatWrapper(weapon.getGameObject());
-					combatWeapon.setCombatBox(box);
+					combatWeapon.setCombatBoxDefence(box);
 					combatWeapon.setPlacedAsParryShield(true);
 					combatWeapon.setSheetOwnerId(characterRc);
 				}
@@ -2892,7 +2893,7 @@ public class CombatFrame extends JFrame {
 			case "C":
 				RealmComponent fightChit = chooser.getFirstSelectedComponent();
 				CombatWrapper combatFightChit = new CombatWrapper(fightChit.getGameObject());
-				combatFightChit.setCombatBox(box);
+				combatFightChit.setCombatBoxDefence(box);
 				combatFightChit.setPlacedAsParryShield(true);
 				combatFightChit.setSheetOwnerId(characterRc);
 				charCombat.setPlayedBonusParry(true);
@@ -2901,7 +2902,7 @@ public class CombatFrame extends JFrame {
 			default:
 				RealmComponent shield = chooser.getFirstSelectedComponent();
 				CombatWrapper combat = new CombatWrapper(shield.getGameObject());
-				combat.setCombatBox(box);
+				combat.setCombatBoxDefence(box);
 				break;
 			}
 
@@ -2909,7 +2910,7 @@ public class CombatFrame extends JFrame {
 		updateSelection();
 	}
 	public static final String[] BOX_NAME = {"Thrust/Charge","Swing/Dodge","Smash/Duck"};
-	public void positionTarget(int box,ArrayList<RealmComponent> targets,boolean includeFlipside,boolean horseSameBox) {
+	public void positionTarget(int boxA, int boxD,ArrayList<RealmComponent> targets,boolean includeFlipside,boolean horseSameBox) {
 		RealmComponent target = null;
 		if (targets.size()==1) {
 			target = targets.iterator().next();
@@ -2924,7 +2925,7 @@ public class CombatFrame extends JFrame {
 					for (RealmComponent rc : targets) {
 						ArrayList<RealmComponent> targs = new ArrayList<>();
 						targs.add(rc);
-						positionTarget(box,targs,includeFlipside,horseSameBox); // recursive
+						positionTarget(boxA,boxD,targs,includeFlipside,horseSameBox); // recursive
 					}
 					return;
 				}
@@ -2932,12 +2933,13 @@ public class CombatFrame extends JFrame {
 			}
 		}
 		if (target!=null) {
-			if (!positionExtra(target,box,true,horseSameBox)) {
+			if (!positionExtra(target,boxA,boxD,true,horseSameBox)) {
 				return;
 			}
 			
 			CombatWrapper combat = new CombatWrapper(target.getGameObject());
-			combat.setCombatBox(box);
+			combat.setCombatBoxAttack(boxA);
+			combat.setCombatBoxDefence(boxD);
 			updateSelection();
 		}
 	}
@@ -2995,9 +2997,9 @@ public class CombatFrame extends JFrame {
 		}
 		return false;
 	}
-	public boolean positionExtra(RealmComponent target,int box,boolean allowCancel,boolean horseSameBox) {
+	public boolean positionExtra(RealmComponent target,int boxA,int boxD,boolean allowCancel,boolean horseSameBox) {
 		// allow current box, ONLY if target belongs to activeParticipant
-		boolean allowCurrentBox = box==0;
+		boolean allowCurrentBox = boxA==0&&boxD==0;
 		RealmComponent targetOwner = target.getOwner();
 		if (targetOwner!=null && targetOwner.getGameObject().equals(activeCharacter.getGameObject())) {
 			allowCurrentBox = true;
@@ -3022,7 +3024,8 @@ public class CombatFrame extends JFrame {
 			includeCurrentBox = true;
 			if (extra!=null && horseSameBox) {
 				CombatWrapper combat = new CombatWrapper(extra.getGameObject());
-				combat.setCombatBox(box);
+				combat.setCombatBoxAttack(boxA);
+				combat.setCombatBoxDefence(boxD);
 				return true;
 			}
 		}
@@ -4374,7 +4377,8 @@ public class CombatFrame extends JFrame {
 					CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 					if (!combat.isSheetOwner()) {
 						combat.setSheetOwner(true);
-						combat.setCombatBox(1);
+						combat.setCombatBoxAttack(1);
+						combat.setCombatBoxDefence(1);
 					}
 					rc.clearTarget();
 				}
@@ -4385,7 +4389,8 @@ public class CombatFrame extends JFrame {
 					CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 					if (!combat.isSheetOwner()) {
 						combat.setSheetOwner(true);
-						combat.setCombatBox(1);
+						combat.setCombatBoxAttack(1);
+						combat.setCombatBoxDefence(1);
 					}
 					rc.clear2ndTarget();
 				}

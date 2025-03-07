@@ -84,7 +84,7 @@ public class BattleUtility {
 					CombatWrapper chit = new CombatWrapper(rc.getGameObject());
 					// Only add effort if combat box is zero because if combat box is GREATER than
 					// zero, it already got added by the previous loop above.
-					if (chit.getCombatBox()==0) {
+					if (!chit.hasCombatBox()) {
 						totalEffort.addEffort((CharacterActionChitComponent)rc);
 					}
 				}
@@ -112,7 +112,7 @@ public class BattleUtility {
 		ArrayList<RealmComponent> fightChits = new ArrayList<>();
 		for (RealmComponent rc : list) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-			if (combat.hasCombatBox() && (!rc.isActionChit() || combat.getPlacedAsFight() || combat.getPlacedAsParry())) {
+			if ((combat.getCombatBoxAttack()>0 || combat.getCombatBoxDefence()>0) && (!rc.isActionChit() || combat.getPlacedAsFight() || combat.getPlacedAsParry())) {
 				fightChits.add(rc);
 			}
 		}
@@ -123,7 +123,7 @@ public class BattleUtility {
 		RealmComponent ret = null;
 		for (RealmComponent rc : list) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-			if (combat.hasCombatBox() && (!rc.isActionChit() || combat.getPlacedAsMove())) {
+			if (combat.getCombatBoxDefence()>0 && (!rc.isActionChit() || combat.getPlacedAsMove())) {
 				if (!rc.isHorse() || includeHorse) {
 					// found it!
 					ret = rc;
