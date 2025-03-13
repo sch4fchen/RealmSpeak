@@ -63,8 +63,8 @@ public class CharacterCombatSheet extends CombatSheet {
 	private static final int POS_TARGET_CHARGE_SWING	= 28; // attack (x-axis): 2 defense (y-axis): 1
 	private static final int POS_TARGET_DODGE_SMASH		= 29; // attack (x-axis): 3 defense (y-axis): 2
 	private static final int POS_TARGET_DODGE_THRUST	= 30; // attack (x-axis): 1 defense (y-axis): 2
-	private static final int POS_TARGET_DUCK_SWING		= 31; // attack (x-axis): 2 defense (y-axis): 3 
-	private static final int POS_TARGET_DUCK_THRUST		= 32; // attack (x-axis): 1 defense (y-axis): 3 
+	private static final int POS_TARGET_DUCK_SWING		= 31; // attack (x-axis): 2 defense (y-axis): 3
+	private static final int POS_TARGET_DUCK_THRUST		= 32; // attack (x-axis): 1 defense (y-axis): 3
 	
 	private static final int CHAR_ROW1 = 74;
 	private static final int CHAR_ROW2 = 171;
@@ -88,18 +88,18 @@ public class CharacterCombatSheet extends CombatSheet {
 			new Point(CHAR_COL2,690),
 			new Point(CHAR_COL3,690),
 			
-			// Attack
+			// Attacks
 			new Point(530,25),
 			new Point(429,CHAR_ROW1),
 			new Point(429,CHAR_ROW2),
 			new Point(429,CHAR_ROW3),
 			
-			// Attack Weapon
+			// Attacks - Weapon
 			new Point(525,CHAR_ROW1),
 			new Point(525,CHAR_ROW2),
 			new Point(525,CHAR_ROW3),
 			
-			// Defense
+			// Defenses
 			new Point(CHAR_COL1,402), //shield
 			new Point(CHAR_COL2,402), //shield
 			new Point(CHAR_COL3,402), //shield
@@ -131,14 +131,17 @@ public class CharacterCombatSheet extends CombatSheet {
 	private ArrayList<Rectangle> spellRegions;
 	private Hashtable<Rectangle,SpellCardComponent> spellRegionHash;
 	
+	HostPrefWrapper hostPrefs;
+	
 	/**
 	 * Testing constructor ONLY!!!
 	 */
 	private CharacterCombatSheet() {
 		super();
 	}
-	public CharacterCombatSheet(CombatFrame frame,BattleModel model,RealmComponent participant,boolean interactiveFrame) {
+	public CharacterCombatSheet(CombatFrame frame,BattleModel model,RealmComponent participant,boolean interactiveFrame, HostPrefWrapper hostPrefs) {
 		super(frame,model,participant,interactiveFrame);
+		this.hostPrefs = hostPrefs;
 		spellRegions = new ArrayList<>();
 		spellRegionHash = new Hashtable<>();
 		updateLayout();
@@ -217,7 +220,6 @@ public class CharacterCombatSheet extends CombatSheet {
 		GameObject go = combat.getCastSpell();
 		SpellWrapper spell = go==null?null:new SpellWrapper(go);
 		boolean battleMage = false;
-		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(combatFrame.getActiveParticipant().getGameObject().getGameData());
 		if (combatFrame.getActiveParticipant().isCharacter()) {
 			GameObject chararacterGo = combatFrame.getActiveParticipant().getGameObject();
 			CharacterWrapper activeCharacter = new CharacterWrapper(chararacterGo);
@@ -602,7 +604,6 @@ public class CharacterCombatSheet extends CombatSheet {
 		}
 		GameObject chararacterGo = combatFrame.getActiveParticipant().getGameObject();
 		CharacterWrapper activeCharacter = new CharacterWrapper(chararacterGo);
-		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(chararacterGo.getGameData());
 		
 		switch(index) {
 			case POS_OWNER:

@@ -21,15 +21,15 @@ public class DenizenCombatSheet extends CombatSheet {
 	// By definition, there can only be ONE defender, as the defender is the sheetowner
 	// EXCEPTION:  When hirelings deploy to RED-side up T Monsters, and there are other monster attackers, there can be multiple defenders
 	private static final int POS_DEFENDER			= 0;
-	private static final int POS_DEFENDER_BOX1		= 1; // sheet owner
-	private static final int POS_DEFENDER_BOX2		= 2;
-	private static final int POS_DEFENDER_BOX3		= 3;
+	private static final int POS_DEFENDER_BOX1		= 1; // sheet owner; charge and thrust
+	private static final int POS_DEFENDER_BOX2		= 2; // dodge and swing
+	private static final int POS_DEFENDER_BOX3		= 3; // duck and smash
 	
 	// By definition, there can only be ONE defender target (with or without a horse)
 	private static final int POS_DEFENDER_TARGETS	= 4;
-	private static final int POS_DEFENDER_TARGET_BOX1	= 5;
-	private static final int POS_DEFENDER_TARGET_BOX2	= 6;
-	private static final int POS_DEFENDER_TARGET_BOX3	= 7;
+	private static final int POS_DEFENDER_TARGET_BOX1	= 5; // charge and thrust
+	private static final int POS_DEFENDER_TARGET_BOX2	= 6; // dodge and swing
+	private static final int POS_DEFENDER_TARGET_BOX3	= 7; // duck and smash
 
 	// There can be MULTIPLE attackers
 	private static final int POS_ATTACKERS			= 8;
@@ -43,6 +43,22 @@ public class DenizenCombatSheet extends CombatSheet {
 	
 	private static final int POS_DEAD_BOX			=15;
 	
+	
+	private static final int POS_DEFENDER_CHARGE_SMASH	= 16; // attack (x-axis): 3 defense (y-axis): 1
+	private static final int POS_DEFENDER_CHARGE_SWING	= 17; // attack (x-axis): 2 defense (y-axis): 1
+	private static final int POS_DEFENDER_DODGE_SMASH	= 18; // attack (x-axis): 3 defense (y-axis): 2
+	private static final int POS_DEFENDER_DODGE_THRUST	= 19; // attack (x-axis): 1 defense (y-axis): 2
+	private static final int POS_DEFENDER_DUCK_SWING	= 20; // attack (x-axis): 2 defense (y-axis): 3
+	private static final int POS_DEFENDER_DUCK_THRUST	= 21; // attack (x-axis): 1 defense (y-axis): 3
+	
+	private static final int POS_DEFENDER_TARGET_CHARGE_SMASH	= 22; // attack (x-axis): 3 defense (y-axis): 1
+	private static final int POS_DEFENDER_TARGET_CHARGE_SWING	= 23; // attack (x-axis): 2 defense (y-axis): 1
+	private static final int POS_DEFENDER_TARGET_DODGE_SMASH	= 24; // attack (x-axis): 3 defense (y-axis): 2
+	private static final int POS_DEFENDER_TARGET_DODGE_THRUST	= 25; // attack (x-axis): 1 defense (y-axis): 2
+	private static final int POS_DEFENDER_TARGET_DUCK_SWING		= 26; // attack (x-axis): 2 defense (y-axis): 3
+	private static final int POS_DEFENDER_TARGET_DUCK_THRUST	= 27; // attack (x-axis): 1 defense (y-axis): 3
+	
+	
 	// Denizen sheet
 	private static final int DEN_ROW1 = 76;
 	private static final int DEN_ROW2 = 166;
@@ -52,17 +68,25 @@ public class DenizenCombatSheet extends CombatSheet {
 	private static final int DEN_COL2 = 168;
 	private static final int DEN_COL3 = 284;
 	
+	private static final int TARGET_ROW1 = 440;
+	private static final int TARGET_ROW2 = 530;
+	private static final int TARGET_ROW3 = 620;
+	
 	private static final Point[] DENIZEN_SHEET = {
+			
+			// Defender=Denizen
 			new Point(DEN_COL2+80,DEN_ROW1-20),
 			new Point(DEN_COL1,DEN_ROW1),
 			new Point(DEN_COL2,DEN_ROW2),
 			new Point(DEN_COL3,DEN_ROW3),
 			
+			// Target
 			new Point(DEN_COL1+50,320),
-			new Point(DEN_COL1,440),
-			new Point(DEN_COL2,440),
-			new Point(DEN_COL3,440),
+			new Point(DEN_COL1,TARGET_ROW1),
+			new Point(DEN_COL2,TARGET_ROW2),
+			new Point(DEN_COL3,TARGET_ROW3),
 			
+			// Attackers
 			new Point(540,25),
 			new Point(428,DEN_ROW1),
 			new Point(428,DEN_ROW2),
@@ -73,6 +97,22 @@ public class DenizenCombatSheet extends CombatSheet {
 			new Point(524,DEN_ROW3),
 			
 			new Point(524,440),
+			
+			// Additional defender (=denizen) spots for Super Realm
+			new Point(DEN_COL3,DEN_ROW1),
+			new Point(DEN_COL2,DEN_ROW1),
+			new Point(DEN_COL3,DEN_ROW2),
+			new Point(DEN_COL1,DEN_ROW2),
+			new Point(DEN_COL2,DEN_ROW3),
+			new Point(DEN_COL1,DEN_ROW3),
+			
+			// Additional target spots for Super Realm
+			new Point(DEN_COL3,TARGET_ROW1),
+			new Point(DEN_COL2,TARGET_ROW1),
+			new Point(DEN_COL3,TARGET_ROW2),
+			new Point(DEN_COL1,TARGET_ROW2),
+			new Point(DEN_COL2,TARGET_ROW3),
+			new Point(DEN_COL1,TARGET_ROW3),
 	};
 	
 	private boolean isOwnedByActive;
@@ -100,10 +140,16 @@ public class DenizenCombatSheet extends CombatSheet {
 	}
 		
 	protected int getBoxIndexFromCombatBoxes(int boxA, int boxD) {
-		if (boxA == 0 || boxD==0) return POS_ATTACKERS;
-		if (boxA == 1) return POS_ATTACKERS_BOX1;
-		if (boxA == 2) return POS_ATTACKERS_BOX2;
-		if (boxA == 2) return POS_ATTACKERS_BOX3;
+		if (boxA == 0 || boxD==0) return POS_DEFENDER_TARGETS;
+		if (boxA == 1 && boxD==1) return POS_DEFENDER_TARGET_BOX1;
+		if (boxA == 2 && boxD==2) return POS_DEFENDER_TARGET_BOX2;
+		if (boxA == 3 && boxD==3) return POS_DEFENDER_TARGET_BOX3;
+		if (boxA == 3 && boxD==1) return POS_DEFENDER_TARGET_CHARGE_SMASH;
+		if (boxA == 2 && boxD==1) return POS_DEFENDER_TARGET_CHARGE_SWING;
+		if (boxA == 3 && boxD==2) return POS_DEFENDER_TARGET_DODGE_SMASH;
+		if (boxA == 1 && boxD==2) return POS_DEFENDER_TARGET_DODGE_THRUST;
+		if (boxA == 2 && boxD==3) return POS_DEFENDER_TARGET_DUCK_SWING;
+		if (boxA == 1 && boxD==3) return POS_DEFENDER_TARGET_DUCK_THRUST;
 		return -1;
 	}
 	
@@ -122,11 +168,23 @@ public class DenizenCombatSheet extends CombatSheet {
 				case POS_DEFENDER_BOX1:
 				case POS_DEFENDER_BOX2:
 				case POS_DEFENDER_BOX3:
+				case POS_DEFENDER_CHARGE_SMASH:
+				case POS_DEFENDER_CHARGE_SWING:
+				case POS_DEFENDER_DODGE_SMASH:
+				case POS_DEFENDER_DODGE_THRUST:
+				case POS_DEFENDER_DUCK_SWING:
+				case POS_DEFENDER_DUCK_THRUST:
 					if (sheetOwner.hasHorse()) return horseRiderSplit;
 					break;
 				case POS_DEFENDER_TARGET_BOX1:
 				case POS_DEFENDER_TARGET_BOX2:
 				case POS_DEFENDER_TARGET_BOX3:
+				case POS_DEFENDER_TARGET_CHARGE_SMASH:
+				case POS_DEFENDER_TARGET_CHARGE_SWING:
+				case POS_DEFENDER_TARGET_DODGE_SMASH:
+				case POS_DEFENDER_TARGET_DODGE_THRUST:
+				case POS_DEFENDER_TARGET_DUCK_SWING:
+				case POS_DEFENDER_TARGET_DUCK_THRUST:
 					RealmComponent target = sheetOwner.getTarget();
 					RealmComponent target2 = sheetOwner.get2ndTarget();
 					if ((target!=null && target.hasHorse()) || (target2!=null && target2.hasHorse())) return horseRiderSplit;
@@ -284,6 +342,14 @@ public class DenizenCombatSheet extends CombatSheet {
 					hotspotHash.put(Integer.valueOf(POS_DEFENDER_BOX1),"Maneuver");
 					hotspotHash.put(Integer.valueOf(POS_DEFENDER_BOX2),"Maneuver");
 					hotspotHash.put(Integer.valueOf(POS_DEFENDER_BOX3),"Maneuver");
+					if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
+						hotspotHash.put(Integer.valueOf(POS_DEFENDER_CHARGE_SMASH),"Maneuver");
+						hotspotHash.put(Integer.valueOf(POS_DEFENDER_CHARGE_SWING),"Maneuver");
+						hotspotHash.put(Integer.valueOf(POS_DEFENDER_DODGE_SMASH),"Maneuver");
+						hotspotHash.put(Integer.valueOf(POS_DEFENDER_DODGE_THRUST),"Maneuver");
+						hotspotHash.put(Integer.valueOf(POS_DEFENDER_DUCK_SWING),"Maneuver");
+						hotspotHash.put(Integer.valueOf(POS_DEFENDER_DUCK_THRUST),"Maneuver");
+					}
 				}
 				if (canPositionCircle) {
 					hotspotHash.put(Integer.valueOf(POS_ATTACKERS_BOX1),"Position");
@@ -294,6 +360,14 @@ public class DenizenCombatSheet extends CombatSheet {
 					hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_BOX1),"Position");
 					hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_BOX2),"Position");
 					hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_BOX3),"Position");
+					if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
+						hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_CHARGE_SMASH),"Maneuver");
+						hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_CHARGE_SWING),"Maneuver");
+						hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_DODGE_SMASH),"Maneuver");
+						hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_DODGE_THRUST),"Maneuver");
+						hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_DUCK_SWING),"Maneuver");
+						hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_DUCK_THRUST),"Maneuver");
+					}
 				}
 				
 				// Character might have a target to attack
