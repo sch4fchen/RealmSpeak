@@ -812,7 +812,7 @@ public class BattleModel {
 					// As far as I know, there is NEVER a reason that the denizen shouldn't get their own sheet at this time
 					combat.setSheetOwner(true);
 					combat.setCombatBoxAttack(1);
-					combat.setCombatBoxDefence(1);
+					combat.setCombatBoxDefense(1);
 				}
 			}
 		}
@@ -1069,7 +1069,7 @@ public class BattleModel {
 						int attackCombatBox = spell.getAttackCombatBox();
 						for (RealmComponent target : c) {
 							CombatWrapper combatTarget = new CombatWrapper(target.getGameObject());
-							if (combatTarget.getCombatBoxDefence() == attackCombatBox) {
+							if (combatTarget.getCombatBoxDefense() == attackCombatBox) {
 								spell.addTarget(hostPrefs, target.getGameObject());
 							}
 						}
@@ -2130,7 +2130,7 @@ public class BattleModel {
 			for (RealmComponent rc : groupList) {
 				CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 				int boxA = combat.getCombatBoxAttack();
-				int boxD = combat.getCombatBoxDefence();
+				int boxD = combat.getCombatBoxDefense();
 				if (boxA>0 || boxD>0) {
 					boxHash.put(new Key(boxA,boxD),rc);
 					if (rc.isMonster()) {
@@ -2140,7 +2140,7 @@ public class BattleModel {
 						if (weapon!=null) {
 							combat = new CombatWrapper(weapon.getGameObject());
 							boxA = combat.getCombatBoxAttack();
-							boxD = combat.getCombatBoxDefence();
+							boxD = combat.getCombatBoxDefense();
 							if (boxA==0) {
 								throw new IllegalStateException("box is zero for "+weapon.getGameObject().getName()+" during reposition!!");
 							}
@@ -2150,7 +2150,7 @@ public class BattleModel {
 						if (horse!=null) {
 							combat = new CombatWrapper(horse.getGameObject());
 							boxA = combat.getCombatBoxAttack();
-							boxD = combat.getCombatBoxDefence();
+							boxD = combat.getCombatBoxDefense();
 							if (boxD==0) {
 								throw new IllegalStateException("box is zero for "+horse.getGameObject().getName()+" during reposition!!");
 							}
@@ -2163,7 +2163,7 @@ public class BattleModel {
 						if (horse!=null) {
 							combat = new CombatWrapper(horse.getGameObject());
 							boxA = combat.getCombatBoxAttack();
-							boxD = combat.getCombatBoxDefence();
+							boxD = combat.getCombatBoxDefense();
 							if (boxA==0 || boxD==0) {
 								throw new IllegalStateException("box is zero for "+horse.getGameObject().getName()+" during reposition!!");
 							}
@@ -2200,7 +2200,7 @@ public class BattleModel {
 				int boxD = RandomNumber.getRandom(3)+1;
 				CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 				combat.setCombatBoxAttack(boxA);
-				combat.setCombatBoxDefence(boxD);
+				combat.setCombatBoxDefense(boxD);
 				
 				if (tacticChange && (boxA==boxD || rc.getGameObject().hasThisAttribute(Constants.SENSITIVE_TACTICS))) {
 					ChitComponent chit = (ChitComponent)rc;
@@ -2281,7 +2281,7 @@ public class BattleModel {
 		for (RealmComponent rc : list) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 			combat.setCombatBoxAttack(boxA);
-			combat.setCombatBoxDefence(boxD);
+			combat.setCombatBoxDefense(boxD);
 		}
 	}
 	private static void changeTactics(String prefix,CombatWrapper combatTarget,HashLists<Key, RealmComponent> boxHash) {		

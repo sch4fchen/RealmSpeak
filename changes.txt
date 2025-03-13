@@ -1,6 +1,5 @@
 ::ROADMAP::
 Super Realm Combat System: 3x3 positioning: hostPref: OPT_SR_COMBAT
-CombatWrapper, CombatSheet, CharacterCombatSheet, DenizenCombatSheet, BattleModel, CombatFrame
 "box_constraint":
 		{"MOVE chit - only CHARGE","move_lock","box_constraint=1"},
 		{"MOVE chit - only DODGE","move_lock","box_constraint=2"},
@@ -8,7 +7,6 @@ CombatWrapper, CombatSheet, CharacterCombatSheet, DenizenCombatSheet, BattleMode
 		{"FIGHT chit - only THRUST","fight_lock","box_constraint=1"},
 		{"FIGHT chit - only SWING","fight_lock","box_constraint=2"},
 		{"FIGHT chit - only SMASH","fight_lock","box_constraint=3"},
-Check parrying is still working!
 
 Power Gauntlets: When used to wield a weapon (including dagger), its owner treats Parry Circles as Attack Circles. You cannot use Survival Tactics when wielding a weapon with this treasure (see Advanced Rule 10.12).
 Super Realm Combat optional rule: survival tactics
@@ -73,6 +71,7 @@ BUGS/ISSUES:
 # Fix Rings enchanting a tile
 # Fix quest: Q21 Dragon Rider
 # Fix deducting VPs when discovering multiple sites
+# Fix crashes for QuestRequirementEnchant
 
 Version 1.2.0.8
 NEW FEATURES:

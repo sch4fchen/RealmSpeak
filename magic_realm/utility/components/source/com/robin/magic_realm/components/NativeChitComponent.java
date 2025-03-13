@@ -465,7 +465,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 			}
 		}
 		CombatWrapper combat = new CombatWrapper(getGameObject());
-		return combat.getCombatBoxDefence();
+		return combat.getCombatBoxDefense();
 	}
 
 	public int getAttackCombatBox() {

@@ -40,6 +40,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 	protected abstract void drawRollers(Graphics g);
 	protected abstract void drawOther(Graphics g);
 	protected abstract int getDeadBoxIndex();
+	protected abstract int getBoxIndexFromCombatBoxes(int boxA, int boxD);
 	
 	private Point[] positions;		// Position of every hotspot
 	private int[] offset;			// Token draw offset for every hotspot
@@ -114,6 +115,18 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 					if (!rc.isNativeHorse() && !rc.isMonsterPart() && !rc.isActionChit()) {
 						all.add(rc);
 					}
+				}
+			}
+		}
+		return all;
+	}
+	protected ArrayList<RealmComponent> getAllFromSingleBoxListFromLayout(int box) {
+		ArrayList<RealmComponent> all = new ArrayList<>();
+		ArrayList<RealmComponent> list = layoutHash.getList(Integer.valueOf(box));
+		if (list!=null) {
+			for (RealmComponent rc : list) {
+				if (!rc.isNativeHorse() && !rc.isMonsterPart() && !rc.isActionChit()) {
+					all.add(rc);
 				}
 			}
 		}
@@ -213,7 +226,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 					ss = combat.getMissileRollSubtitles();
 				}
 				
-				String prefix = (rc.isCharacter()?"":("B"+combat.getCombatBoxAttack()+","+combat.getCombatBoxDefence()+" "));
+				String prefix = (rc.isCharacter()?"":("B"+combat.getCombatBoxAttack()+","+combat.getCombatBoxDefense()+" "));
 				Iterator<String> r=rs.iterator();
 				Iterator<String> s=ss.iterator();
 				while(r.hasNext()) {
@@ -442,28 +455,31 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		placeParticipant(participant,layoutIndex1,false,false);
 	}
 	protected void placeParticipant(RealmComponent participant,int layoutIndex1,boolean secrecy,boolean horseSameBox) {
-		CombatWrapper combat;
-		int box;
-		
+		CombatWrapper combat;		
 		// Place horse (if any) first
 		RealmComponent horse = (RealmComponent)participant.getHorse();
 		if (horse!=null) {
 			combat = new CombatWrapper(horse.getGameObject());
-			box = combat.getCombatBoxDefence();
-			if (box==0) {
+			int boxD = combat.getCombatBoxDefense();
+			int boxA = combat.getCombatBoxAttack();
+			if (boxD==0) {
 				if (horseSameBox) {
-					combat.setCombatBoxDefence(1);
-					box = 1;
+					combat.setCombatBoxDefense(1);
+					combat.setCombatBoxAttack(1);
+					boxA = 1;
+					boxD = 1;
 				}
 				else {
-					combat.setCombatBoxDefence(2);
-					box = 2;
+					combat.setCombatBoxDefense(2);
+					combat.setCombatBoxAttack(2);
+					boxA = 2;
+					boxD = 2;
 				}
 			}
 			if (secrecy) {
-				box = 0;
+				boxA = 0;
 			}
-			layoutHash.put(Integer.valueOf(layoutIndex1+box-1),horse);
+			layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),horse);
 		}
 		
 		// Place participant
@@ -471,17 +487,17 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		updateBattleChitsWithRolls(combat);
 		
 		int boxA = combat.getCombatBoxAttack();
-		int boxD = combat.getCombatBoxDefence();
-		box = combat.getCombatBoxDefence();
+		int boxD = combat.getCombatBoxDefense();
 		if (boxA==0 || boxD==0) {
 			combat.setCombatBoxAttack(1);
-			combat.setCombatBoxDefence(1);
-			box = 1;
+			combat.setCombatBoxDefense(1);
+			boxA = 1;
+			boxD = 1;
 		}
 		if (secrecy) {
-			box = 0;
+			boxA = 0;
 		}
-		layoutHash.put(Integer.valueOf(layoutIndex1+box-1),participant);
+		layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),participant);
 		
 		// Place weapon (if any)
 		if (participant.isMonster()) {
@@ -490,15 +506,17 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			if (weapon!=null) {
 				combat = new CombatWrapper(weapon.getGameObject());
 				updateBattleChitsWithRolls(combat);
-				box = combat.getCombatBoxAttack();
-				if (box==0) {
+				boxA = combat.getCombatBoxAttack();
+				if (boxA==0) {
 					combat.setCombatBoxAttack(2);
-					box = 2;
+					combat.setCombatBoxDefense(2);
+					boxA = 2;
+					boxD = 2;
 				}
 				if (secrecy) {
-					box = 0;
+					boxA = 0;
 				}
-				layoutHash.put(Integer.valueOf(layoutIndex1+box-1),weapon);
+				layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),weapon);
 			}
 		}
 	}

@@ -98,6 +98,14 @@ public class DenizenCombatSheet extends CombatSheet {
 	public int getDeadBoxIndex() {
 		return POS_DEAD_BOX;
 	}
+		
+	protected int getBoxIndexFromCombatBoxes(int boxA, int boxD) {
+		if (boxA == 0 || boxD==0) return POS_ATTACKERS;
+		if (boxA == 1) return POS_ATTACKERS_BOX1;
+		if (boxA == 2) return POS_ATTACKERS_BOX2;
+		if (boxA == 2) return POS_ATTACKERS_BOX3;
+		return -1;
+	}
 	
 	protected Point[] getPositions() {
 		return DENIZEN_SHEET;
@@ -587,12 +595,12 @@ public class DenizenCombatSheet extends CombatSheet {
 				// If deploying to a character sheet, go into the unpositioned box
 				if (deployTarget.isCharacter()) {
 					sCombat.setCombatBoxAttack(0);
-					sCombat.setCombatBoxDefence(0);
+					sCombat.setCombatBoxDefense(0);
 					RealmComponent horse = (RealmComponent)sheetOwner.getHorse();
 					if (horse!=null) {
 						CombatWrapper hCombat = new CombatWrapper(horse.getGameObject());
 						hCombat.setCombatBoxAttack(0);
-						hCombat.setCombatBoxDefence(0);
+						hCombat.setCombatBoxDefense(0);
 					}
 				}
 				

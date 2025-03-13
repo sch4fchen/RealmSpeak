@@ -13,6 +13,7 @@ import com.robin.general.graphics.GraphicsUtil;
 import com.robin.general.graphics.TextType;
 import com.robin.general.graphics.TextType.Alignment;
 import com.robin.general.swing.ImageCache;
+import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.SpellSet;
 import com.robin.magic_realm.components.utility.Constants;
@@ -25,9 +26,9 @@ public class CharacterCombatSheet extends CombatSheet {
 	private static final int POS_OWNER				= 0;
 	
 	private static final int POS_TARGET				= 1; // non-positioned targets
-	private static final int POS_TARGET_BOX1		= 2;
-	private static final int POS_TARGET_BOX2		= 3;
-	private static final int POS_TARGET_BOX3		= 4;
+	private static final int POS_TARGET_BOX1		= 2; // charge and thrust 1,1
+	private static final int POS_TARGET_BOX2		= 3; // dodge and swing 2,2
+	private static final int POS_TARGET_BOX3		= 4; // duck and smash 3,3
 	
 	private static final int POS_MOVE_BOX1			= 5;
 	private static final int POS_MOVE_BOX2			= 6;
@@ -54,6 +55,17 @@ public class CharacterCombatSheet extends CombatSheet {
 	
 	private static final int POS_DEADBOX			=23;
 	
+	private static final int POS_PARRY1				=24;
+	private static final int POS_PARRY2				=25;
+	private static final int POS_PARRY3				=26;
+	
+	private static final int POS_TARGET_CHARGE_SMASH	= 27; // attack (x-axis): 3 defense (y-axis): 1
+	private static final int POS_TARGET_CHARGE_SWING	= 28; // attack (x-axis): 2 defense (y-axis): 1
+	private static final int POS_TARGET_DODGE_SMASH		= 29; // attack (x-axis): 3 defense (y-axis): 2
+	private static final int POS_TARGET_DODGE_THRUST	= 30; // attack (x-axis): 1 defense (y-axis): 2
+	private static final int POS_TARGET_DUCK_SWING		= 31; // attack (x-axis): 2 defense (y-axis): 3 
+	private static final int POS_TARGET_DUCK_THRUST		= 32; // attack (x-axis): 1 defense (y-axis): 3 
+	
 	private static final int CHAR_ROW1 = 74;
 	private static final int CHAR_ROW2 = 171;
 	private static final int CHAR_ROW3 = 268;
@@ -65,35 +77,53 @@ public class CharacterCombatSheet extends CombatSheet {
 	private static final Point[] CHARACTER_SHEET = {
 			new Point(483,663),
 			
+			// Targets
 			new Point(303,CHAR_ROW1),
 			new Point(CHAR_COL1,CHAR_ROW1),
 			new Point(CHAR_COL2,CHAR_ROW2),
 			new Point(CHAR_COL3,CHAR_ROW3),
 			
+			// Move
 			new Point(CHAR_COL1,690),
 			new Point(CHAR_COL2,690),
 			new Point(CHAR_COL3,690),
 			
+			// Attack
 			new Point(530,25),
 			new Point(429,CHAR_ROW1),
 			new Point(429,CHAR_ROW2),
 			new Point(429,CHAR_ROW3),
 			
+			// Attack Weapon
 			new Point(525,CHAR_ROW1),
 			new Point(525,CHAR_ROW2),
 			new Point(525,CHAR_ROW3),
 			
-			new Point(CHAR_COL1,402),
-			new Point(CHAR_COL2,402),
-			new Point(CHAR_COL3,402),
-			new Point(150,507),
-			new Point(321,507),
-			new Point(206,603),
+			// Defense
+			new Point(CHAR_COL1,402), //shield
+			new Point(CHAR_COL2,402), //shield
+			new Point(CHAR_COL3,402), //shield
+			new Point(150,507), //breastplate
+			new Point(321,507), //helmet
+			new Point(206,603), //suit of armor
 			
 			new Point(494,458), // Used Chits
 			new Point(400,700), // Charge Chits
 			
 			new Point(CHAR_COL1,CHAR_ROW3), // Dead Box
+			
+			// Parry for Super Realm
+			new Point(CHAR_COL1,390),
+			new Point(CHAR_COL2,390),
+			new Point(CHAR_COL3,390),
+			
+			// Additional targets for Super Realm
+			new Point(CHAR_COL3,CHAR_ROW1),
+			new Point(CHAR_COL2,CHAR_ROW1),
+			new Point(CHAR_COL3,CHAR_ROW2),
+			new Point(CHAR_COL1,CHAR_ROW2),
+			new Point(CHAR_COL2,CHAR_ROW3),
+			new Point(CHAR_COL1,CHAR_ROW3),
 	};
 	
 	private RealmComponent sheetOwnerShield;
@@ -118,6 +148,20 @@ public class CharacterCombatSheet extends CombatSheet {
 		return POS_DEADBOX;
 	}
 	
+	protected int getBoxIndexFromCombatBoxes(int boxA, int boxD) {
+		if (boxA == 0 || boxD==0) return POS_TARGET;
+		if (boxA == 1 && boxD==1) return POS_TARGET_BOX1;
+		if (boxA == 2 && boxD==2) return POS_TARGET_BOX2;
+		if (boxA == 3 && boxD==3) return POS_TARGET_BOX3;
+		if (boxA == 3 && boxD==1) return POS_TARGET_CHARGE_SMASH;
+		if (boxA == 2 && boxD==1) return POS_TARGET_CHARGE_SWING;
+		if (boxA == 3 && boxD==2) return POS_TARGET_DODGE_SMASH;
+		if (boxA == 1 && boxD==2) return POS_TARGET_DODGE_THRUST;
+		if (boxA == 2 && boxD==3) return POS_TARGET_DUCK_SWING;
+		if (boxA == 1 && boxD==3) return POS_TARGET_DUCK_THRUST;
+		return -1;
+	}
+	
 	protected ImageIcon getImageIcon() {
 		return ImageCache.getIcon("combat/char_melee2");
 	}
@@ -132,7 +176,13 @@ public class CharacterCombatSheet extends CombatSheet {
 			switch(index) {
 				case POS_TARGET:
 					if (containsHorse(layoutHash.getList(POS_TARGET))) {
-						if (getAllBoxListFromLayout(POS_TARGET_BOX1).isEmpty()) {
+						if (getAllBoxListFromLayout(POS_TARGET_BOX1).isEmpty()
+								&& getAllFromSingleBoxListFromLayout(POS_TARGET_CHARGE_SMASH).isEmpty()
+								&& getAllFromSingleBoxListFromLayout(POS_TARGET_CHARGE_SWING).isEmpty()
+								&& getAllFromSingleBoxListFromLayout(POS_TARGET_DODGE_SMASH).isEmpty()
+								&& getAllFromSingleBoxListFromLayout(POS_TARGET_DODGE_THRUST).isEmpty()
+								&& getAllFromSingleBoxListFromLayout(POS_TARGET_DUCK_SWING).isEmpty()
+								&& getAllFromSingleBoxListFromLayout(POS_TARGET_DUCK_THRUST).isEmpty()) {
 							return horseRiderSplit;
 						}
 					}
@@ -140,6 +190,12 @@ public class CharacterCombatSheet extends CombatSheet {
 				case POS_TARGET_BOX1:
 				case POS_TARGET_BOX2:
 				case POS_TARGET_BOX3:
+				case POS_TARGET_CHARGE_SMASH:
+				case POS_TARGET_CHARGE_SWING:
+				case POS_TARGET_DODGE_SMASH:
+				case POS_TARGET_DODGE_THRUST:
+				case POS_TARGET_DUCK_SWING:
+				case POS_TARGET_DUCK_THRUST:
 					if (containsHorse(layoutHash.getList(POS_TARGET))) return horseRiderSplit;
 					break;
 			}
@@ -161,10 +217,10 @@ public class CharacterCombatSheet extends CombatSheet {
 		GameObject go = combat.getCastSpell();
 		SpellWrapper spell = go==null?null:new SpellWrapper(go);
 		boolean battleMage = false;
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(combatFrame.getActiveParticipant().getGameObject().getGameData());
 		if (combatFrame.getActiveParticipant().isCharacter()) {
 			GameObject chararacterGo = combatFrame.getActiveParticipant().getGameObject();
 			CharacterWrapper activeCharacter = new CharacterWrapper(chararacterGo);
-			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(chararacterGo.getGameData());
 			if (activeCharacter.affectedByKey(Constants.BATTLE_MAGE) || hostPrefs.hasPref(Constants.OPT_SR_STEEL_AGAINST_MAGIC)) {
 				if (activeCharacter.hasOnlyStaffAsActivatedWeapon() && !activeCharacter.hasActiveArmorChits()) {
 					battleMage = true;
@@ -212,7 +268,6 @@ public class CharacterCombatSheet extends CombatSheet {
 					if (combatFrame.getActiveParticipant().isCharacter()) {
 						GameObject chararacterGo = combatFrame.getActiveParticipant().getGameObject();
 						CharacterWrapper activeCharacter = new CharacterWrapper(chararacterGo);
-						HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(chararacterGo.getGameData());
 						canParryLikeShield = hostPrefs.hasPref(Constants.OPT_PARRY_LIKE_SHIELD) || activeCharacter.affectedByKey(Constants.PARRY_LIKE_SHIELD) || activeCharacter.affectedByKey(Constants.BLOCK_NO_WEAPON);
 					}
 					
@@ -228,7 +283,13 @@ public class CharacterCombatSheet extends CombatSheet {
 					
 					if (layoutHash.get(Integer.valueOf(POS_TARGET_BOX1))!=null
 							|| layoutHash.get(Integer.valueOf(POS_TARGET_BOX2))!=null
-							|| layoutHash.get(Integer.valueOf(POS_TARGET_BOX3))!=null) {
+							|| layoutHash.get(Integer.valueOf(POS_TARGET_BOX3))!=null
+							|| layoutHash.get(Integer.valueOf(POS_TARGET_CHARGE_SMASH))!=null
+							|| layoutHash.get(Integer.valueOf(POS_TARGET_CHARGE_SWING))!=null
+							|| layoutHash.get(Integer.valueOf(POS_TARGET_DODGE_SMASH))!=null
+							|| layoutHash.get(Integer.valueOf(POS_TARGET_DODGE_THRUST))!=null
+							|| layoutHash.get(Integer.valueOf(POS_TARGET_DUCK_SWING))!=null
+							|| layoutHash.get(Integer.valueOf(POS_TARGET_DUCK_THRUST))!=null) {
 						hotspotHash.put(Integer.valueOf(POS_TARGET),"Reset");
 					}
 					else if (layoutHash.get(Integer.valueOf(POS_TARGET))!=null) {
@@ -239,6 +300,14 @@ public class CharacterCombatSheet extends CombatSheet {
 						hotspotHash.put(Integer.valueOf(POS_TARGET_BOX1),"Position Target");
 						hotspotHash.put(Integer.valueOf(POS_TARGET_BOX2),"Position Target");
 						hotspotHash.put(Integer.valueOf(POS_TARGET_BOX3),"Position Target");
+						if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
+							hotspotHash.put(Integer.valueOf(POS_TARGET_CHARGE_SMASH),"Position Target");
+							hotspotHash.put(Integer.valueOf(POS_TARGET_CHARGE_SWING),"Position Target");
+							hotspotHash.put(Integer.valueOf(POS_TARGET_DODGE_SMASH),"Position Target");
+							hotspotHash.put(Integer.valueOf(POS_TARGET_DODGE_THRUST),"Position Target");
+							hotspotHash.put(Integer.valueOf(POS_TARGET_DUCK_SWING),"Position Target");
+							hotspotHash.put(Integer.valueOf(POS_TARGET_DUCK_THRUST),"Position Target");
+						}
 					}
 				}
 				// Have to have a target to attack!  (Not really:  see rule 22.4/2a)
@@ -353,8 +422,9 @@ public class CharacterCombatSheet extends CombatSheet {
 					if (!addedToDead(rc)) {
 						updateBattleChitsWithRolls(rcCombat);
 						CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-						int boxD = combat.getCombatBoxDefence();
-						layoutHash.put(Integer.valueOf(POS_TARGET+boxD),rc);
+						int boxA = combat.getCombatBoxAttack();
+						int boxD = combat.getCombatBoxDefense();
+						layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),rc);
 						sheetParticipants.add(rc);
 						if (rc.isMonster()) {
 							MonsterChitComponent monster = (MonsterChitComponent)rc;
@@ -362,19 +432,21 @@ public class CharacterCombatSheet extends CombatSheet {
 							if (weapon!=null) {
 								updateBattleChitsWithRolls(new CombatWrapper(weapon.getGameObject()));
 								combat = new CombatWrapper(weapon.getGameObject());
-								int boxA = combat.getCombatBoxAttack();
+								boxA = combat.getCombatBoxAttack();
+								boxD = combat.getCombatBoxDefense();
 								if (boxA>0) {
 									// only add monster weapon to layout if in a combat box!
-									layoutHash.put(Integer.valueOf(POS_TARGET+boxD),weapon);
+									layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),weapon);
 								}
 							}
 							RealmComponent horse = (RealmComponent)rc.getHorse();
 							if (horse!=null) {
 								combat = new CombatWrapper(horse.getGameObject());
-								boxD = combat.getCombatBoxDefence();
+								boxA = combat.getCombatBoxAttack();
+								boxD = combat.getCombatBoxDefense();
 								if (boxD>0) {
 									// only add horse to layout if in a combat box!
-									layoutHash.put(Integer.valueOf(POS_TARGET+boxD),horse);
+									layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),horse);
 								}
 							}
 						}
@@ -382,10 +454,11 @@ public class CharacterCombatSheet extends CombatSheet {
 							RealmComponent horse = (RealmComponent)rc.getHorse();
 							if (horse!=null) {
 								combat = new CombatWrapper(horse.getGameObject());
-								boxD = combat.getCombatBoxDefence();
+								boxA = combat.getCombatBoxAttack();
+								boxD = combat.getCombatBoxDefense();
 								if (boxD>0) {
 									// only add horse to layout if in a combat box!
-									layoutHash.put(Integer.valueOf(POS_TARGET+boxD),horse);
+									layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),horse);
 								}
 							}
 						}
@@ -403,7 +476,7 @@ public class CharacterCombatSheet extends CombatSheet {
 					if (maneuverChit!=null) {
 						CombatWrapper combat = new CombatWrapper(maneuverChit.getGameObject());
 						if (combat.getPlacedAsMove()) {
-							int box = combat.getCombatBoxDefence();
+							int box = combat.getCombatBoxDefense();
 							if (maneuverChit.isCharacter()) { // This implies the character is transmorphed (normally, a character move chit is a chit)
 								maneuverChit = characterChit.getTransmorphedComponent().getMoveChit();
 							}
@@ -414,7 +487,7 @@ public class CharacterCombatSheet extends CombatSheet {
 					if (!character.isTransmorphed()) {
 						for (RealmComponent chit : character.getActiveFightChits()) {
 							CombatWrapper combat = new CombatWrapper(chit.getGameObject());
-							int box = combat.getCombatBoxDefence();
+							int box = combat.getCombatBoxDefense();
 							if (box>0 && this.sheetOwner.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
 								if (combat.getPlacedAsParry()) {
 									layoutHash.put(Integer.valueOf(POS_MOVE_BOX1+box-1),chit);
@@ -427,7 +500,7 @@ public class CharacterCombatSheet extends CombatSheet {
 						if (weapons!=null) {
 							for (WeaponChitComponent weapon : weapons) {
 								CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
-								int box = combat.getCombatBoxDefence();
+								int box = combat.getCombatBoxDefense();
 								if (box>0 && this.sheetOwner.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
 									if (combat.getPlacedAsParry()) {
 										layoutHash.put(Integer.valueOf(POS_MOVE_BOX1+box-1),weapon);
@@ -446,10 +519,10 @@ public class CharacterCombatSheet extends CombatSheet {
 					if (armorType!=ArmorType.None && armorType!=ArmorType.Special) {
 						if (armorType==ArmorType.Shield) {
 							CombatWrapper combat = new CombatWrapper(item.getGameObject());
-							int box = combat.getCombatBoxDefence();
+							int box = combat.getCombatBoxDefense();
 							if (box==0) { // default to box 1
 								box = 1;
-								combat.setCombatBoxDefence(box);
+								combat.setCombatBoxDefense(box);
 							}
 							sheetOwnerShield = item;
 							if (needsSecrecy) {
@@ -485,7 +558,7 @@ public class CharacterCombatSheet extends CombatSheet {
 						// Anything with a combat box!
 						CombatWrapper combat = new CombatWrapper(item.getGameObject());
 						if (combat.getPlacedAsMove()) {
-							int box = combat.getCombatBoxDefence();
+							int box = combat.getCombatBoxDefense();
 							if (box>0) {
 								layoutHash.put(Integer.valueOf(POS_MOVE_BOX1+box-1),item);
 							}
@@ -552,7 +625,13 @@ public class CharacterCombatSheet extends CombatSheet {
 					// Auto-position targets or reset
 					if (layoutHash.get(Integer.valueOf(POS_TARGET_BOX1))!=null
 							|| layoutHash.get(Integer.valueOf(POS_TARGET_BOX2))!=null
-							|| layoutHash.get(Integer.valueOf(POS_TARGET_BOX3))!=null) {
+							|| layoutHash.get(Integer.valueOf(POS_TARGET_BOX3))!=null
+							|| layoutHash.get(Integer.valueOf(POS_TARGET_CHARGE_SMASH))!=null
+							|| layoutHash.get(Integer.valueOf(POS_TARGET_CHARGE_SWING))!=null
+							|| layoutHash.get(Integer.valueOf(POS_TARGET_DODGE_SMASH))!=null
+							|| layoutHash.get(Integer.valueOf(POS_TARGET_DODGE_THRUST))!=null
+							|| layoutHash.get(Integer.valueOf(POS_TARGET_DUCK_SWING))!=null
+							|| layoutHash.get(Integer.valueOf(POS_TARGET_DUCK_THRUST))!=null) {
 						// reset ALL when targets have already been placed, and the target hotspot is clicked
 						ArrayList<RealmComponent> toReset = new ArrayList<>();
 						for (int i=0;i<3;i++) {
@@ -561,10 +640,37 @@ public class CharacterCombatSheet extends CombatSheet {
 								toReset.addAll(list);
 							}
 						}
+						
+						ArrayList<RealmComponent> listToAdd = new ArrayList<>();
+						listToAdd=layoutHash.getList(Integer.valueOf(POS_TARGET_CHARGE_SMASH));
+						if (listToAdd!=null) {
+							toReset.addAll(listToAdd);
+						}
+						listToAdd=layoutHash.getList(Integer.valueOf(POS_TARGET_CHARGE_SWING));
+						if (listToAdd!=null) {
+							toReset.addAll(listToAdd);
+						}
+						listToAdd=layoutHash.getList(Integer.valueOf(POS_TARGET_DODGE_SMASH));
+						if (listToAdd!=null) {
+							toReset.addAll(listToAdd);
+						}
+						listToAdd=layoutHash.getList(Integer.valueOf(POS_TARGET_DODGE_THRUST));
+						if (listToAdd!=null) {
+							toReset.addAll(listToAdd);
+						}
+						listToAdd=layoutHash.getList(Integer.valueOf(POS_TARGET_DUCK_SWING));
+						if (listToAdd!=null) {
+							toReset.addAll(listToAdd);
+						}
+						listToAdd=layoutHash.getList(Integer.valueOf(POS_TARGET_DUCK_THRUST));
+						if (listToAdd!=null) {
+							toReset.addAll(listToAdd);
+						}
+						
 						for (RealmComponent rc : toReset) {
 							CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 							combat.setCombatBoxAttack(0);
-							combat.setCombatBoxDefence(0);
+							combat.setCombatBoxDefense(0);
 						}
 						updateLayout();
 					}
@@ -573,6 +679,11 @@ public class CharacterCombatSheet extends CombatSheet {
 						ArrayList<RealmComponent> list = new ArrayList<>(layoutHash.getList(Integer.valueOf(POS_TARGET)));
 						Collections.sort(list);
 						int n=0;
+						int m=0;
+						if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
+							n = RandomNumber.getRandom(3);
+							m = RandomNumber.getRandom(3);
+						}
 						while(list.size()>0) {
 							RealmComponent rc = list.remove(0); // pop
 							if (rc.isMonster()) {
@@ -585,7 +696,7 @@ public class CharacterCombatSheet extends CombatSheet {
 								if (horse!=null) {
 									if (swingConstant==SwingConstants.LEFT) {
 										CombatWrapper combat = new CombatWrapper(horse.getGameObject());
-										combat.setCombatBoxDefence(n+1);
+										combat.setCombatBoxDefense(n+1);
 									}
 									else {
 										list.add(0,horse); // push
@@ -597,7 +708,7 @@ public class CharacterCombatSheet extends CombatSheet {
 								if (horse!=null) {
 									if (swingConstant==SwingConstants.LEFT) {
 										CombatWrapper combat = new CombatWrapper(horse.getGameObject());
-										combat.setCombatBoxDefence(n+1);
+										combat.setCombatBoxDefense(n+1);
 									}
 									else {
 										list.add(0,horse); // push
@@ -605,9 +716,15 @@ public class CharacterCombatSheet extends CombatSheet {
 								}
 							}
 							CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-							combat.setCombatBoxDefence(n+1);
-							combat.setCombatBoxAttack(n+1);
-							n = (n+1)%3;
+							combat.setCombatBoxDefense(n+1);
+							combat.setCombatBoxAttack(m+1);
+							if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
+								n = RandomNumber.getRandom(3);
+								m = RandomNumber.getRandom(3);
+							} else {
+								n = (n+1)%3;
+								m = (m+1)%3;
+							}
 						}
 						updateLayout();
 					}
@@ -621,6 +738,34 @@ public class CharacterCombatSheet extends CombatSheet {
 				ArrayList<RealmComponent> list = layoutHash.getList(Integer.valueOf(POS_TARGET));
 				int box = index-POS_TARGET_BOX1+1;
 				combatFrame.positionTarget(box,box,list,false,swingConstant==SwingConstants.LEFT);
+				break;
+			case POS_TARGET_CHARGE_SMASH:
+			case POS_TARGET_CHARGE_SWING:
+			case POS_TARGET_DODGE_SMASH:
+			case POS_TARGET_DODGE_THRUST:
+			case POS_TARGET_DUCK_SWING:
+			case POS_TARGET_DUCK_THRUST:
+				ArrayList<RealmComponent> listTargets = layoutHash.getList(Integer.valueOf(POS_TARGET));
+				switch(index) {
+				case POS_TARGET_CHARGE_SMASH:
+					combatFrame.positionTarget(3,1,listTargets,false,swingConstant==SwingConstants.LEFT);
+					break;
+				case POS_TARGET_CHARGE_SWING:
+					combatFrame.positionTarget(2,1,listTargets,false,swingConstant==SwingConstants.LEFT);
+					break;
+				case POS_TARGET_DODGE_SMASH:
+					combatFrame.positionTarget(3,2,listTargets,false,swingConstant==SwingConstants.LEFT);
+					break;
+				case POS_TARGET_DODGE_THRUST:
+					combatFrame.positionTarget(1,2,listTargets,false,swingConstant==SwingConstants.LEFT);
+					break;
+				case POS_TARGET_DUCK_SWING:
+					combatFrame.positionTarget(2,3,listTargets,false,swingConstant==SwingConstants.LEFT);
+					break;
+				case POS_TARGET_DUCK_THRUST:
+					combatFrame.positionTarget(1,3,listTargets,false,swingConstant==SwingConstants.LEFT);
+					break;
+				}
 				break;
 			case POS_ATTACK_BOX1:
 			case POS_ATTACK_BOX2:
@@ -669,7 +814,7 @@ public class CharacterCombatSheet extends CombatSheet {
 					// Position shield
 					if (sheetOwnerShield!=null) {
 						CombatWrapper combat = new CombatWrapper(sheetOwnerShield.getGameObject());
-						combat.setCombatBoxDefence(index-POS_SHIELD1+1);
+						combat.setCombatBoxDefense(index-POS_SHIELD1+1);
 						combatFrame.updateSelection();
 					}
 				}

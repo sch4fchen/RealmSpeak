@@ -112,7 +112,7 @@ public class BattleUtility {
 		ArrayList<RealmComponent> fightChits = new ArrayList<>();
 		for (RealmComponent rc : list) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-			if ((combat.getCombatBoxAttack()>0 || combat.getCombatBoxDefence()>0) && (!rc.isActionChit() || combat.getPlacedAsFight() || combat.getPlacedAsParry())) {
+			if ((combat.getCombatBoxAttack()>0 || combat.getCombatBoxDefense()>0) && (!rc.isActionChit() || combat.getPlacedAsFight() || combat.getPlacedAsParry())) {
 				fightChits.add(rc);
 			}
 		}
@@ -123,7 +123,7 @@ public class BattleUtility {
 		RealmComponent ret = null;
 		for (RealmComponent rc : list) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-			if (combat.getCombatBoxDefence()>0 && (!rc.isActionChit() || combat.getPlacedAsMove())) {
+			if (combat.getCombatBoxDefense()>0 && (!rc.isActionChit() || combat.getPlacedAsMove())) {
 				if (!rc.isHorse() || includeHorse) {
 					// found it!
 					ret = rc;

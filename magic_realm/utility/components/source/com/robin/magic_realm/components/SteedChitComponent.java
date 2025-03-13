@@ -284,7 +284,7 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 	}
 	public int getManeuverCombatBox() {
 		CombatWrapper combat = new CombatWrapper(getGameObject());
-		return combat.getCombatBoxDefence();
+		return combat.getCombatBoxDefense();
 	}
 	public int getAttackCombatBox() {
 		CombatWrapper combat = new CombatWrapper(getGameObject());

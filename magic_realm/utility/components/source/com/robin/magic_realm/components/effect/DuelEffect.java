@@ -32,17 +32,17 @@ public class DuelEffect implements ISpellEffect {
 		combat1.setSheetOwnerId(targets.get(0));
 		if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
 			combat0.setCombatBoxAttack(RandomNumber.getRandom(3));
-			combat0.setCombatBoxDefence(RandomNumber.getRandom(3));
+			combat0.setCombatBoxDefense(RandomNumber.getRandom(3));
 			combat1.setCombatBoxAttack(RandomNumber.getRandom(3));
-			combat1.setCombatBoxDefence(RandomNumber.getRandom(3));
+			combat1.setCombatBoxDefense(RandomNumber.getRandom(3));
 		}
 		else {
 			int random1 = RandomNumber.getRandom(3);
 			combat0.setCombatBoxAttack(random1);
-			combat0.setCombatBoxDefence(random1);
+			combat0.setCombatBoxDefense(random1);
 			int random2 = RandomNumber.getRandom(3);
 			combat1.setCombatBoxAttack(random2);
-			combat1.setCombatBoxDefence(random2);
+			combat1.setCombatBoxDefense(random2);
 		}
 		
 		for (RealmComponent target : targets) {

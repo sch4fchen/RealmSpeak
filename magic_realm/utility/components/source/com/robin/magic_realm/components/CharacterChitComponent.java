@@ -579,7 +579,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		for (CharacterActionChitComponent chit : character.getActiveFightChits()) {
 			CombatWrapper combatChit = new CombatWrapper(chit.getGameObject());
 			if(!combatChit.getPlacedAsParryShield()) continue;
-			if (chit.getSpeed().fasterThanOrEqual(attackerSpeed) || combatChit.getCombatBoxDefence() == box) {
+			if (chit.getSpeed().fasterThanOrEqual(attackerSpeed) || combatChit.getCombatBoxDefense() == box) {
 				if (combatChit.getWeaponId() == null) {
 					armors.add(chit);
 					continue;
@@ -612,7 +612,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				}
 				else if (armorType!=ArmorType.None) {
 					if (armorType==ArmorType.Shield) {
-						if (combat.getCombatBoxDefence() == box) {
+						if (combat.getCombatBoxDefense() == box) {
 							armors.add(item);
 						}
 					}
@@ -731,7 +731,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			BattleHorse horse = character.getActiveSteed(attackOrderPos);
 			if (horse != null && !combat.isTargetingRider(attacker.getGameObject())) {
 				CombatWrapper horseCombat = new CombatWrapper(horse.getGameObject());
-				if (horseCombat.getCombatBoxDefence() > 0) {
+				if (horseCombat.getCombatBoxDefense() > 0) {
 					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits the "
 							+getGameObject().getNameWithNumber()+"'s "
 							+horse.getGameObject().getNameWithNumber());
@@ -1082,7 +1082,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		RealmComponent rc = getManeuverChit(includeHorse);
 		if (rc != null) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-			return combat.getCombatBoxDefence();
+			return combat.getCombatBoxDefense();
 		}
 		return 0;
 	}
