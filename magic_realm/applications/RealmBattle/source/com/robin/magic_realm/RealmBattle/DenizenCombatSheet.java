@@ -364,12 +364,12 @@ public class DenizenCombatSheet extends CombatSheet {
 					hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_BOX2),"Position");
 					hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_BOX3),"Position");
 					if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
-						hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_CHARGE_SMASH),"Maneuver");
-						hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_CHARGE_SWING),"Maneuver");
-						hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_DODGE_SMASH),"Maneuver");
-						hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_DODGE_THRUST),"Maneuver");
-						hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_DUCK_SWING),"Maneuver");
-						hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_DUCK_THRUST),"Maneuver");
+						hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_CHARGE_SMASH),"Position");
+						hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_CHARGE_SWING),"Position");
+						hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_DODGE_SMASH),"Position");
+						hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_DODGE_THRUST),"Position");
+						hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_DUCK_SWING),"Position");
+						hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_DUCK_THRUST),"Position");
 					}
 				}
 				
