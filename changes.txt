@@ -58,6 +58,8 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 Version 1.2.0.9
+SUPER REALM:
+# 3x3 combat grid
 BUGS/ISSUES:
 # Fix Rings enchanting a tile
 # Fix quest: Q21 Dragon Rider
