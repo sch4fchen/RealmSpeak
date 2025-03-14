@@ -1,16 +1,6 @@
 ::ROADMAP::
-Super Realm Combat System: 3x3 positioning: hostPref: OPT_SR_COMBAT
-"box_constraint":
-		{"MOVE chit - only CHARGE","move_lock","box_constraint=1"},
-		{"MOVE chit - only DODGE","move_lock","box_constraint=2"},
-		{"MOVE chit - only DUCK","move_lock","box_constraint=3"},
-		{"FIGHT chit - only THRUST","fight_lock","box_constraint=1"},
-		{"FIGHT chit - only SWING","fight_lock","box_constraint=2"},
-		{"FIGHT chit - only SMASH","fight_lock","box_constraint=3"},
-
-Power Gauntlets: When used to wield a weapon (including dagger), its owner treats Parry Circles as Attack Circles. You cannot use Survival Tactics when wielding a weapon with this treasure (see Advanced Rule 10.12).
 Super Realm Combat optional rule: survival tactics
-
+Power Gauntlets: When used to wield a weapon (including dagger), its owner treats Parry Circles as Attack Circles when it is used to parry an attack. When used in a Parry Circle, he cannot parry an attack; he just attacks the target directly, not the target’s attack. You cannot use Survival Tactics when wielding a weapon with this treasure (see Advanced Rule 10.12).
 Poison: Special: the sharpness star added by this spell is ignored when the weapon is used against Grey/Prism Anomalies.
 Purple/Prism Anomalies can block/battle any individual transmorphized into mist.
 Enchant Weapon: any individual wielding the target weapon can target and attack individuals transformed into mist.
