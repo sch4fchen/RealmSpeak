@@ -132,6 +132,13 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		}
 		return all;
 	}
+	protected ArrayList<RealmComponent> getAllBoxListsFromLayout(Integer[] boxes) {
+		ArrayList<RealmComponent> all = new ArrayList<>();
+		for (int box : boxes) {
+			all.addAll(getAllFromSingleBoxListFromLayout(box));
+		}
+		return all;
+	}
 	protected static DieRoller makeRoller(String val) {
 		return new DieRoller(val,25,6);
 	}

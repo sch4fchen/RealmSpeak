@@ -330,7 +330,10 @@ public class DenizenCombatSheet extends CombatSheet {
 					}
 					if (containsFriend(
 							combatFrame.getActiveParticipant(),
-							getAllBoxListFromLayout(POS_DEFENDER_TARGET_BOX1))) {
+							getAllBoxListsFromLayout(new Integer[] {POS_DEFENDER_TARGET_BOX1,POS_DEFENDER_TARGET_BOX2,POS_DEFENDER_TARGET_BOX3,
+									POS_DEFENDER_TARGET_CHARGE_SMASH,POS_DEFENDER_TARGET_CHARGE_SWING,
+									POS_DEFENDER_TARGET_DODGE_SMASH,POS_DEFENDER_TARGET_DODGE_THRUST,
+									POS_DEFENDER_TARGET_DUCK_SWING,POS_DEFENDER_TARGET_DUCK_THRUST}))) {
 						canPositionSquare = true;
 					}
 //					if (getAllBoxListFromLayout(POS_DEFENDER_BOX1).size()>1) {
@@ -521,6 +524,12 @@ public class DenizenCombatSheet extends CombatSheet {
 			case POS_DEFENDER_BOX1:
 			case POS_DEFENDER_BOX2:
 			case POS_DEFENDER_BOX3:
+			case POS_DEFENDER_CHARGE_SMASH:
+			case POS_DEFENDER_CHARGE_SWING:
+			case POS_DEFENDER_DODGE_SMASH:
+			case POS_DEFENDER_DODGE_THRUST:
+			case POS_DEFENDER_DUCK_SWING:
+			case POS_DEFENDER_DUCK_THRUST:
 				if (combatFrame.getActionState()==Constants.COMBAT_LURE) {
 					// Flip the counter
 					ArrayList<RealmComponent> list = layoutHash.getList(Integer.valueOf(index));
@@ -536,9 +545,37 @@ public class DenizenCombatSheet extends CombatSheet {
 //					ArrayList list = new ArrayList();
 //					list.add(sheetOwner);
 					// Though MOST of the time, this list will only contain ONE defender, it does happen when there are more
-					ArrayList<RealmComponent> list = getAllBoxListFromLayout(POS_DEFENDER_BOX1);
+					ArrayList<RealmComponent> list
+					= getAllBoxListsFromLayout(new Integer[] {POS_DEFENDER_BOX1,POS_DEFENDER_BOX2,POS_DEFENDER_BOX3,
+							POS_DEFENDER_CHARGE_SMASH,POS_DEFENDER_CHARGE_SWING,
+							POS_DEFENDER_DODGE_SMASH,POS_DEFENDER_DODGE_THRUST,
+							POS_DEFENDER_DUCK_SWING,POS_DEFENDER_DUCK_THRUST});
 					boolean includeFlipside = sheetOwner.getOwnerId()!=null && !sheetOwner.isTraveler();
-					combatFrame.positionAttacker(list,index-POS_DEFENDER_BOX1+1,index-POS_DEFENDER_BOX1+1,includeFlipside,swingConstant==SwingConstants.LEFT);
+					switch (index) {
+						case POS_DEFENDER_BOX1:
+						case POS_DEFENDER_BOX2:
+						case POS_DEFENDER_BOX3:
+							combatFrame.positionAttacker(list,index-POS_DEFENDER_BOX1+1,index-POS_DEFENDER_BOX1+1,includeFlipside,swingConstant==SwingConstants.LEFT);
+							break;
+						case POS_DEFENDER_CHARGE_SMASH:
+							combatFrame.positionAttacker(list,3,1,includeFlipside,swingConstant==SwingConstants.LEFT);
+							break;
+						case POS_DEFENDER_CHARGE_SWING:
+							combatFrame.positionAttacker(list,2,1,includeFlipside,swingConstant==SwingConstants.LEFT);
+							break;
+						case POS_DEFENDER_DODGE_SMASH:
+							combatFrame.positionAttacker(list,3,2,includeFlipside,swingConstant==SwingConstants.LEFT);
+							break;
+						case POS_DEFENDER_DODGE_THRUST:
+							combatFrame.positionAttacker(list,1,2,includeFlipside,swingConstant==SwingConstants.LEFT);
+							break;
+						case POS_DEFENDER_DUCK_SWING:
+							combatFrame.positionAttacker(list,2,3,includeFlipside,swingConstant==SwingConstants.LEFT);
+							break;
+						case POS_DEFENDER_DUCK_THRUST:
+							combatFrame.positionAttacker(list,1,3,includeFlipside,swingConstant==SwingConstants.LEFT);
+							break;
+					}
 					updateLayout();
 					repaint();
 				}
@@ -550,6 +587,12 @@ public class DenizenCombatSheet extends CombatSheet {
 			case POS_DEFENDER_TARGET_BOX1:
 			case POS_DEFENDER_TARGET_BOX2:
 			case POS_DEFENDER_TARGET_BOX3:
+			case POS_DEFENDER_TARGET_CHARGE_SMASH:
+			case POS_DEFENDER_TARGET_CHARGE_SWING:
+			case POS_DEFENDER_TARGET_DODGE_SMASH:
+			case POS_DEFENDER_TARGET_DODGE_THRUST:
+			case POS_DEFENDER_TARGET_DUCK_SWING:
+			case POS_DEFENDER_TARGET_DUCK_THRUST:
 				if (combatFrame.getActionState()==Constants.COMBAT_ASSIGN) {
 					if (sheetOwner.getTarget()==null && sheetOwner.get2ndTarget()==null) {
 						// Assign Target for denizen (sheetOwner)
@@ -563,7 +606,36 @@ public class DenizenCombatSheet extends CombatSheet {
 					}
 				}
 				else if (combatFrame.getActionState()==Constants.COMBAT_POSITIONING) {
-					combatFrame.positionAttacker(getAllBoxListFromLayout(POS_DEFENDER_TARGET_BOX1),index-POS_DEFENDER_TARGET_BOX1+1,index-POS_DEFENDER_TARGET_BOX1+1,false,swingConstant==SwingConstants.LEFT);
+					ArrayList<RealmComponent> list
+					= getAllBoxListsFromLayout(new Integer[] {POS_DEFENDER_TARGET_BOX1,POS_DEFENDER_TARGET_BOX2,POS_DEFENDER_TARGET_BOX3,
+							POS_DEFENDER_TARGET_CHARGE_SMASH,POS_DEFENDER_TARGET_CHARGE_SWING,
+							POS_DEFENDER_TARGET_DODGE_SMASH,POS_DEFENDER_TARGET_DODGE_THRUST,
+							POS_DEFENDER_TARGET_DUCK_SWING,POS_DEFENDER_TARGET_DUCK_THRUST});
+					switch (index) {
+						case POS_DEFENDER_TARGET_BOX1:
+						case POS_DEFENDER_TARGET_BOX2:
+						case POS_DEFENDER_TARGET_BOX3:
+							combatFrame.positionAttacker(list,index-POS_DEFENDER_TARGET_BOX1+1,index-POS_DEFENDER_TARGET_BOX1+1,false,swingConstant==SwingConstants.LEFT);
+							break;
+						case POS_DEFENDER_TARGET_CHARGE_SMASH:
+							combatFrame.positionAttacker(list,3,1,false,swingConstant==SwingConstants.LEFT);
+							break;
+						case POS_DEFENDER_TARGET_CHARGE_SWING:
+							combatFrame.positionAttacker(list,2,1,false,swingConstant==SwingConstants.LEFT);
+							break;
+						case POS_DEFENDER_TARGET_DODGE_SMASH:
+							combatFrame.positionAttacker(list,3,2,false,swingConstant==SwingConstants.LEFT);
+							break;
+						case POS_DEFENDER_TARGET_DODGE_THRUST:
+							combatFrame.positionAttacker(list,1,2,false,swingConstant==SwingConstants.LEFT);
+							break;
+						case POS_DEFENDER_TARGET_DUCK_SWING:
+							combatFrame.positionAttacker(list,2,3,false,swingConstant==SwingConstants.LEFT);
+							break;
+						case POS_DEFENDER_TARGET_DUCK_THRUST:
+							combatFrame.positionAttacker(list,1,3,false,swingConstant==SwingConstants.LEFT);
+							break;
+					}
 					updateLayout();
 					repaint();
 				}
