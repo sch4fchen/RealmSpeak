@@ -41,6 +41,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 	protected abstract void drawOther(Graphics g);
 	protected abstract int getDeadBoxIndex();
 	protected abstract int getBoxIndexFromCombatBoxes(int boxA, int boxD);
+	protected abstract int getBoxIndexFromCombatBoxesForDefender(int boxA, int boxD);
 	
 	private Point[] positions;		// Position of every hotspot
 	private int[] offset;			// Token draw offset for every hotspot
@@ -458,11 +459,21 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			}
 		}
 	}
-	protected void placeParticipant(RealmComponent participant,int layoutIndex1) {
-		placeParticipant(participant,layoutIndex1,false,false);
+	protected void placeParticipantDefender(RealmComponent participant) {
+		placeParticipantDefender(participant,false,false);
 	}
-	protected void placeParticipant(RealmComponent participant,int layoutIndex1,boolean secrecy,boolean horseSameBox) {
-		CombatWrapper combat;		
+	protected void placeParticipantDefender(RealmComponent participant,boolean secrecy,boolean horseSameBox) {
+		placeParticipant(participant,secrecy,horseSameBox,true);
+	}
+	protected void placeParticipant(RealmComponent participant) {
+		placeParticipant(participant,false,false);
+	}
+	protected void placeParticipant(RealmComponent participant,boolean secrecy,boolean horseSameBox) {
+		placeParticipant(participant,secrecy,horseSameBox,false);
+	}
+		
+	private void placeParticipant(RealmComponent participant,boolean secrecy,boolean horseSameBox,boolean defender) {
+		CombatWrapper combat;
 		// Place horse (if any) first
 		RealmComponent horse = (RealmComponent)participant.getHorse();
 		if (horse!=null) {
@@ -486,7 +497,11 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			if (secrecy) {
 				boxA = 0;
 			}
-			layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),horse);
+			if (defender) {
+				layoutHash.put(getBoxIndexFromCombatBoxesForDefender(boxA,boxD),horse);
+			} else {
+				layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),horse);
+			}
 		}
 		
 		// Place participant
@@ -504,7 +519,11 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		if (secrecy) {
 			boxA = 0;
 		}
-		layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),participant);
+		if (defender) {
+			layoutHash.put(getBoxIndexFromCombatBoxesForDefender(boxA,boxD),participant);
+		} else {
+			layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),participant);
+		}
 		
 		// Place weapon (if any)
 		if (participant.isMonster()) {
@@ -523,7 +542,11 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 				if (secrecy) {
 					boxA = 0;
 				}
-				layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),weapon);
+				if (defender) {
+					layoutHash.put(getBoxIndexFromCombatBoxesForDefender(boxA,boxD),weapon);
+				} else {
+					layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),weapon);
+				}
 			}
 		}
 	}
@@ -605,7 +628,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 				if (excludeList==null || !excludeList.contains(rc)) {
 					if (!rc.isCharacter() && (sheetParticipants.contains(target) || sheetParticipants.contains(target2))) {
 						if (!addedToDead(rc)) {
-							placeParticipant(rc,attackBox1);
+							placeParticipant(rc);
 							sheetParticipants.add(rc);
 						}
 					}

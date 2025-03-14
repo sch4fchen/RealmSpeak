@@ -153,6 +153,20 @@ public class DenizenCombatSheet extends CombatSheet {
 		return -1;
 	}
 	
+	protected int getBoxIndexFromCombatBoxesForDefender(int boxA, int boxD) {
+		if (boxA == 0 || boxD==0) return POS_DEFENDER;
+		if (boxA == 1 && boxD==1) return POS_DEFENDER_BOX1;
+		if (boxA == 2 && boxD==2) return POS_DEFENDER_BOX2;
+		if (boxA == 3 && boxD==3) return POS_DEFENDER_BOX3;
+		if (boxA == 3 && boxD==1) return POS_DEFENDER_CHARGE_SMASH;
+		if (boxA == 2 && boxD==1) return POS_DEFENDER_CHARGE_SWING;
+		if (boxA == 3 && boxD==2) return POS_DEFENDER_DODGE_SMASH;
+		if (boxA == 1 && boxD==2) return POS_DEFENDER_DODGE_THRUST;
+		if (boxA == 2 && boxD==3) return POS_DEFENDER_DUCK_SWING;
+		if (boxA == 1 && boxD==3) return POS_DEFENDER_DUCK_THRUST;
+		return -1;
+	}
+	
 	protected Point[] getPositions() {
 		return DENIZEN_SHEET;
 	}
@@ -423,12 +437,12 @@ public class DenizenCombatSheet extends CombatSheet {
 		
 		if (isOwnedByActive || combatFrame.getActionState()>=Constants.COMBAT_RESOLVING || sheetOwner.getOwnerId()==null) {
 			// Always place, if owned by active, owned by none, or resolving attacks
-			placeParticipant(sheetOwner,POS_DEFENDER_BOX1);
+			placeParticipantDefender(sheetOwner);
 		}
 		else {
 			// If being attacked by a character, then positioning secrecy is required
 			boolean needsSecrecy = isAttackedByCharacter();
-			placeParticipant(sheetOwner,POS_DEFENDER_BOX1,needsSecrecy,false);
+			placeParticipantDefender(sheetOwner,needsSecrecy,false);
 		}
 		
 		// Sheet owner's target
@@ -437,7 +451,7 @@ public class DenizenCombatSheet extends CombatSheet {
 			sheetParticipants.add(defenderTarget);
 			excludeList.add(defenderTarget);
 			if (!addedToDead(defenderTarget)) {
-				placeParticipant(defenderTarget,POS_DEFENDER_TARGET_BOX1);
+				placeParticipant(defenderTarget);
 			}
 		}
 		RealmComponent defenderTarget2 = sheetOwner.get2ndTarget();
@@ -445,22 +459,19 @@ public class DenizenCombatSheet extends CombatSheet {
 			sheetParticipants.add(defenderTarget2);
 			excludeList.add(defenderTarget2);
 			if (!addedToDead(defenderTarget2)) {
-				placeParticipant(defenderTarget2,POS_DEFENDER_TARGET_BOX1);
+				placeParticipant(defenderTarget2);
 			}
 		}
 		
 		// If the sheet owner is a denizen, then ALL denizens should be in the middle... I think...
 		if (sheetOwner.getOwnerId()==null && (defenderTarget!=null || defenderTarget2!=null)) {
-			int p = 1;
 			ArrayList<RealmComponent> denizens = new ArrayList<>(model.getDenizenBattleGroup().getBattleParticipants());
 			for (RealmComponent denizen : denizens) {
 				if (!excludeList.contains(denizen) && (
 						(defenderTarget!=null && (defenderTarget.equals(denizen.getTarget()) || defenderTarget.equals(denizen.get2ndTarget())))
 					|| (defenderTarget2!=null && (defenderTarget2.equals(denizen.getTarget()) || defenderTarget2.equals(denizen.get2ndTarget())))
 						)) {
-					placeParticipant(denizen,POS_DEFENDER_BOX1+p);
-					p++;
-					p%=3;
+					placeParticipant(denizen);
 					sheetParticipants.add(denizen);
 					excludeList.add(denizen);
 				}

@@ -164,6 +164,9 @@ public class CharacterCombatSheet extends CombatSheet {
 		if (boxA == 1 && boxD==3) return POS_TARGET_DUCK_THRUST;
 		return -1;
 	}
+	protected int getBoxIndexFromCombatBoxesForDefender(int boxA, int boxD) {
+		return getBoxIndexFromCombatBoxes(boxA,boxD);
+	}
 	
 	protected ImageIcon getImageIcon() {
 		return ImageCache.getIcon("combat/char_melee2");
