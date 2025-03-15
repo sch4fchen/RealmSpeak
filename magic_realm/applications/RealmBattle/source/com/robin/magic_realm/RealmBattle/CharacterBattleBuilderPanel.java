@@ -118,7 +118,7 @@ public class CharacterBattleBuilderPanel extends JPanel {
 			}
 		});
 		box.add(removeCharacterButton);
-		charToken = new JLabel(character.getCharacterName(),token.getIcon(),JLabel.LEADING);
+		charToken = new JLabel(character.getCharacterName(),token.getIcon(),SwingConstants.LEADING);
 		charToken.setFont(new Font("Arial",Font.PLAIN,18));
 		box.add(charToken);
 		toggleHiddenButton = new JButton("Toggle Hidden");

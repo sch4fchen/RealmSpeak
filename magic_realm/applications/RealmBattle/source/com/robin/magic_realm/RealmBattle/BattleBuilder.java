@@ -516,7 +516,9 @@ public class BattleBuilder extends JFrame {
 		battleClearing = clearingHash.get(clearingName);
 		
 		for (CharacterBattleBuilderPanel panel : characterPanels) {
-			battleClearing.add(panel.getCharacter().getGameObject(),null);
+			if (panel.getCharacter().getCurrentLocation()!=null) {
+				battleClearing.add(panel.getCharacter().getGameObject(),null);
+			}
 		}
 		
 		prefs.set(BATTLE_BUILDER_CLEARING,clearingHash.get(clearingName).getNum());
