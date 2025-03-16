@@ -172,6 +172,10 @@ public class CharacterCombatSheet extends CombatSheet {
 		return ImageCache.getIcon("combat/char_melee2");
 	}
 	
+	protected int getHotSpotSize() {
+		return 98;
+	}
+	
 	protected Point[] getPositions() {
 		return CHARACTER_SHEET;
 	}
@@ -297,11 +301,11 @@ public class CharacterCombatSheet extends CombatSheet {
 							|| layoutHash.get(Integer.valueOf(POS_TARGET_DUCK_THRUST))!=null) {
 						hotspotHash.put(Integer.valueOf(POS_TARGET),"Reset");
 					}
-					else if (layoutHash.get(Integer.valueOf(POS_TARGET))!=null) {
+					else if (layoutHash.get(Integer.valueOf(POS_TARGET))!=null && !hostPrefs.hasPref(Constants.SR_COMBAT)) {
 						hotspotHash.put(Integer.valueOf(POS_TARGET),"Auto-Position");
 					}
 					
-					if (layoutHash.get(Integer.valueOf(POS_TARGET))!=null) {
+					if (layoutHash.get(Integer.valueOf(POS_TARGET))!=null && !hostPrefs.hasPref(Constants.SR_COMBAT)) {
 						hotspotHash.put(Integer.valueOf(POS_TARGET_BOX1),"Position Target");
 						hotspotHash.put(Integer.valueOf(POS_TARGET_BOX2),"Position Target");
 						hotspotHash.put(Integer.valueOf(POS_TARGET_BOX3),"Position Target");

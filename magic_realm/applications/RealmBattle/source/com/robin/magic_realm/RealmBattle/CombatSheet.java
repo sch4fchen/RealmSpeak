@@ -42,6 +42,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 	protected abstract int getDeadBoxIndex();
 	protected abstract int getBoxIndexFromCombatBoxes(int boxA, int boxD);
 	protected abstract int getBoxIndexFromCombatBoxesForDefender(int boxA, int boxD);
+	protected abstract int getHotSpotSize();
 	
 	private Point[] positions;		// Position of every hotspot
 	private int[] offset;			// Token draw offset for every hotspot
@@ -746,6 +747,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 	private static final Color HOTSPOT_BACKING = new Color(0,255,0,40);
 	private static final Color HOTSPOT_SPLIT_BACKING = new Color(255,255,255,190);
 	private void paintHotSpot(Graphics g,String string,int index) {
+		int HOTSPOT_SIZE = getHotSpotSize();
 		Point p = positions[index];
 		int x = p.x - (HOTSPOT_SIZE>>1);
 		int y = p.y - (HOTSPOT_SIZE>>1);
@@ -958,7 +960,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		return null;
 	}
 	public static boolean attackerIsFriendlyToDenizen(RealmComponent attacker, RealmComponent rc, HostPrefWrapper hostPrefs) {
-		if (rc.isNative() && !((NativeChitComponent)rc).isHiredOrControlled()) {
+		if (rc.isNative() && !rc.isHiredOrControlled()) {
 			RealmComponent owner = attacker;
 			while (owner.isHiredOrControlled()) {
 				owner = owner.getOwner();

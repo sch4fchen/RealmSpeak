@@ -61,7 +61,7 @@ public class DenizenCombatSheet extends CombatSheet {
 	
 	// Denizen sheet
 	private static final int DEN_ROW1 = 76;
-	private static final int DEN_ROW2 = 166;
+	private static final int DEN_ROW2 = 167;
 	private static final int DEN_ROW3 = 258;
 	
 	private static final int DEN_COL1 = 52;
@@ -173,6 +173,10 @@ public class DenizenCombatSheet extends CombatSheet {
 
 	protected ImageIcon getImageIcon() {
 		return ImageCache.getIcon("combat/den_melee3");
+	}
+	
+	protected int getHotSpotSize() {
+		return 92;
 	}
 	
 	protected String[] splitHotSpot(int index) {
@@ -373,7 +377,7 @@ public class DenizenCombatSheet extends CombatSheet {
 					hotspotHash.put(Integer.valueOf(POS_ATTACKERS_BOX2),"Position");
 					hotspotHash.put(Integer.valueOf(POS_ATTACKERS_BOX3),"Position");
 				}
-				if (canPositionSquare) {
+				if (canPositionSquare && !hostPrefs.hasPref(Constants.SR_COMBAT)) {
 					hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_BOX1),"Position");
 					hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_BOX2),"Position");
 					hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_BOX3),"Position");
