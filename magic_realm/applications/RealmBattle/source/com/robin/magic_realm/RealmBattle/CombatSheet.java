@@ -740,7 +740,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			}
 		}
 	}
-	private static final int HOTSPOT_SIZE = 100;
+	private static final int HOTSPOT_SIZE = 98;
 	private static final Color HOTSPOT_TITLE_COLOR = Color.blue;
 	private static final Color HOTSPOT_LINE_COLOR = Color.green;//new Color(0,0,255,120);
 	private static final Color HOTSPOT_BACKING = new Color(0,255,0,40);
