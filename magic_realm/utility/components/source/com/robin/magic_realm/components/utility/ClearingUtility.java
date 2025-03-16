@@ -133,7 +133,7 @@ public class ClearingUtility {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameObject.getGameData());
 		for (GameObject go : hold) {
 			if (testKey==null || go.hasThisAttribute(testKey)) {
-				if (!onlyGoldSpecial && hostPrefs.hasPref(Constants.OPT_SR_REVEAL_TRAVELERS) && go.hasThisAttribute(RealmComponent.GOLD_SPECIAL)) continue;
+				if (!onlyGoldSpecial && hostPrefs.hasPref(Constants.SR_REVEAL_TRAVELERS) && go.hasThisAttribute(RealmComponent.GOLD_SPECIAL)) continue;
 				if (onlyGoldSpecial && !go.hasThisAttribute(RealmComponent.GOLD_SPECIAL)) continue;
 				if (onlyTravelers && !go.hasThisAttribute(RealmComponent.TRAVELER)) continue;
 				if (itemsAndSpells || (!go.hasThisAttribute("item") && !go.hasThisAttribute("spell"))) {

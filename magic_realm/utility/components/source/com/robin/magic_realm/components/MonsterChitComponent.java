@@ -809,7 +809,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 				combat.getGameObject().setThisAttribute(Constants.SERIOUS_WOUND);
 				RealmLogging.logMessage(getGameObject().getNameWithNumber(),"Seriously wounded.");
 			}
-			if (!hostPrefs.hasPref(Constants.OPT_SR_ENDING_COMBAT)) return true;
+			if (!hostPrefs.hasPref(Constants.SR_ENDING_COMBAT)) return true;
 		}
 		return false;
 	}

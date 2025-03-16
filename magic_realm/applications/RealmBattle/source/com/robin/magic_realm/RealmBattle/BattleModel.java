@@ -2521,7 +2521,7 @@ public class BattleModel {
 				logBattleInfo(rc+" is dead.  Killed by "+combat.getKilledBy().getNameWithNumber());
 				
 				// Test for Grudges/Gratitudes
-				if (rc.isNative() && rc.getOwner()==null && (hostPrefs.hasPref(Constants.OPT_GRUDGES) || hostPrefs.hasPref(Constants.OPT_SR_DAMAGED_RELATIONS))) {
+				if (rc.isNative() && rc.getOwner()==null && (hostPrefs.hasPref(Constants.OPT_GRUDGES) || hostPrefs.hasPref(Constants.SR_DAMAGED_RELATIONS))) {
 					RealmComponent killer = RealmComponent.getRealmComponent(combat.getKilledBy());
 					if (killer.isSpell()) {
 						SpellWrapper spell = new SpellWrapper(killer.getGameObject());
@@ -2572,7 +2572,7 @@ public class BattleModel {
 								}
 							}
 						}
-						if (hostPrefs.hasPref(Constants.OPT_SR_DAMAGED_RELATIONS)) {
+						if (hostPrefs.hasPref(Constants.SR_DAMAGED_RELATIONS)) {
 							doDamagedRelations(killer,responsibleCharacter,rc);
 						}
 					}

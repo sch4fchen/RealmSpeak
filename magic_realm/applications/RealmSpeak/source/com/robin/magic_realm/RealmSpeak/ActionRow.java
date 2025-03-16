@@ -464,7 +464,7 @@ public class ActionRow {
 		if (!character.isBlocked() && RealmUtility.willBeBlocked(character,isFollowing,true)) {
 			character.setBlocked(true);
 		}
-		if (hostPrefs.hasPref(Constants.OPT_SR_NATIVE_BLOCKING)) {
+		if (hostPrefs.hasPref(Constants.SR_NATIVE_BLOCKING)) {
 			ArrayList<RealmComponent> natives = RealmUtility.willBeBlockedByNatives(character,isFollowing);
 			
 			HashMap<String,Integer> groups = new HashMap<String,Integer>();
@@ -1073,7 +1073,7 @@ public class ActionRow {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
 		boolean canUseMagicSight = false;
 		boolean mustUseMagicSight = false;
-		boolean optionalRule = hostPrefs.hasPref(Constants.OPT_SR_MAGIC_SIGHT_OPTIONAL);
+		boolean optionalRule = hostPrefs.hasPref(Constants.SR_MAGIC_SIGHT_OPTIONAL);
 		if (optionalRule) {
 			canUseMagicSight = character.canUseMagicSight();
 		}

@@ -401,7 +401,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 				g.setFont(Constants.HOTSPOT_FONT);
 				String text = "";
 				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(tile.getGameData());
-				if (hostPrefs.hasPref(Constants.OPT_SR_ENDING_COMBAT)) {
+				if (hostPrefs.hasPref(Constants.SR_ENDING_COMBAT)) {
 					text = "There was no klling, wounds, fatigue, or spellcasting last round.";
 				} else {
 					text = "There was no damage, fatigue, or spellcasting last round.";
@@ -592,7 +592,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 				GameObject chararacterGo = rc.getGameObject();
 				CharacterWrapper activeCharacter = new CharacterWrapper(chararacterGo);
 				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(chararacterGo.getGameData());
-				if (activeCharacter.affectedByKey(Constants.BATTLE_MAGE) || hostPrefs.hasPref(Constants.OPT_SR_STEEL_AGAINST_MAGIC)) {
+				if (activeCharacter.affectedByKey(Constants.BATTLE_MAGE) || hostPrefs.hasPref(Constants.SR_ADV_STEEL_AGAINST_MAGIC)) {
 					if (activeCharacter.hasOnlyStaffAsActivatedWeapon() && !activeCharacter.hasActiveArmorChits()) {
 						battleMage = true;
 					}

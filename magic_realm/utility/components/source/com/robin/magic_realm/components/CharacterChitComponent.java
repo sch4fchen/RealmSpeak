@@ -957,8 +957,8 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			}
 			else if (harm.getAppliedStrength().strongerOrEqualTo(vulnerability)) {
 				// Direct hit (no armor)
-				if ((hostPrefs.hasPref(Constants.ADV_SERIOUS_WOUNDS) || hostPrefs.hasPref(Constants.SR_SERVERE_WOUNDS) || character.affectedByKey(Constants.TOUGHNESS)) && harm.getAppliedStrength().equalTo(vulnerability)) {
-					boolean severeWounds = hostPrefs.hasPref(Constants.SR_SERVERE_WOUNDS);
+				if ((hostPrefs.hasPref(Constants.ADV_SERIOUS_WOUNDS) || hostPrefs.hasPref(Constants.SR_ADV_SERVERE_WOUNDS) || character.affectedByKey(Constants.TOUGHNESS)) && harm.getAppliedStrength().equalTo(vulnerability)) {
+					boolean severeWounds = hostPrefs.hasPref(Constants.SR_ADV_SERVERE_WOUNDS);
 					// Serious wounds
 					Collection<CharacterActionChitComponent> c = character.getNonWoundedChits();
 					DieRoller roller = DieRollBuilder.getDieRollBuilder(null,character).createRoller("wounds");
@@ -969,7 +969,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					int currentWounds = combat.getNewWounds();
 					
 					String woundType = "Serious";
-					if (hostPrefs.hasPref(Constants.SR_SERVERE_WOUNDS)) {
+					if (hostPrefs.hasPref(Constants.SR_ADV_SERVERE_WOUNDS)) {
 						woundType = "Severe";
 					}
 					RealmLogging.logMessage(getGameObject().getName(),"Takes a "+woundType+" wound!");
@@ -1053,7 +1053,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				}
 			}
 		}
-		if (hostPrefs.hasPref(Constants.OPT_SR_ENDING_COMBAT)) {
+		if (hostPrefs.hasPref(Constants.SR_ENDING_COMBAT)) {
 			return characterWasKilled || woundTaken;
 		}
 		return damageTaken;

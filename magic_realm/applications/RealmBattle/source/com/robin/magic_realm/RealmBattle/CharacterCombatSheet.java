@@ -226,7 +226,7 @@ public class CharacterCombatSheet extends CombatSheet {
 		if (combatFrame.getActiveParticipant().isCharacter()) {
 			GameObject chararacterGo = combatFrame.getActiveParticipant().getGameObject();
 			CharacterWrapper activeCharacter = new CharacterWrapper(chararacterGo);
-			if (activeCharacter.affectedByKey(Constants.BATTLE_MAGE) || hostPrefs.hasPref(Constants.OPT_SR_STEEL_AGAINST_MAGIC)) {
+			if (activeCharacter.affectedByKey(Constants.BATTLE_MAGE) || hostPrefs.hasPref(Constants.SR_ADV_STEEL_AGAINST_MAGIC)) {
 				if (activeCharacter.hasOnlyStaffAsActivatedWeapon() && !activeCharacter.hasActiveArmorChits()) {
 					battleMage = true;
 				}

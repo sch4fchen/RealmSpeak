@@ -733,7 +733,6 @@ public class Constants {
 	public static final String ADV_DROPPING = "Dropping";
 	public static final String ADV_AMBUSHES = "Ambushes";
 	public static final String ADV_SERIOUS_WOUNDS = "SeriousWounds";
-	public static final String SR_SERVERE_WOUNDS = "SevereWounds";
 	public static final String ADV_DRAGON_HEADS = "DragonHeads";
 	public static final String ADV_FLYING_ACTIVITIES = "FlyingActivities";
 	
@@ -769,7 +768,6 @@ public class Constants {
 	public static final String OPT_PARRY = "OptParry";
 	public static final String OPT_PARRY_MISSILE = "OptParryMissile";
 	public static final String OPT_PARRY_WITH_MISSILE = "OptParryWithMissileWeapons";
-	public static final String OPT_SR_STEEL_AGAINST_MAGIC = "OptSrSteelAgainsMagic";
 	public static final String OPT_RIDING_HORSES = "OptRidingHorses";
 	public static final String OPT_AUTOMATIC_ENCHANTING = "OptAutomaticEnchanting";
 	public static final String OPT_ENHANCED_MAGIC = "OptEnhancedMagic";
@@ -777,15 +775,6 @@ public class Constants {
 	public static final String OPT_POWER_OF_THE_PIT_ATTACK = "OptPowerOfThePitAttack";
 	public static final String OPT_POWER_OF_THE_PIT_DEMON = "OptPowerOfThePitDemon";
 	public static final String OPT_NATIVES_FRIENDLY = "OptNativeFriendly";
-	public static final String OPT_SR_NATIVE_BLOCKING = "OptSrNativeBlocking";
-	public static final String OPT_SR_THEMATIC_ROVING_NATIVES = "OptSrThematicRovingNatives";
-	public static final String OPT_SR_DAMAGED_RELATIONS = "OptSrDamagedRelations";
-	public static final String OPT_SR_ENDING_COMBAT = "OptSrEndingCombat";
-	public static final String OPT_SR_PHASE_CHIT_ACTIVATION = "OptSrPhaseChitActivation";
-	public static final String OPT_SR_REVEAL_TRAVELERS = "OptSrRevealTravelers";
-	public static final String OPT_SR_MAGIC_SIGHT_OPTIONAL = "OptSrMagicSightNotSelfCancelling";
-	public static final String OPT_SR_SURVIVAL_TACTICS = "OptSrSurvivalTactics";
-	public static final String SR_COMBAT = "OptSrCombat";
 	
 	// Revised Rules
 	public static final String REV_MISSILE = "RevisedMissileTable";
@@ -875,6 +864,17 @@ public class Constants {
 	public static final String SR_ONE_OF_EACH_GOLD_SPECIAL = "GoldSpecialOnlyOneOfEach";
 	public static final String SR_NO_INFORMATION_SHARING = "NoInformationSharing";
 	public static final String SR_ALTERNATING_7TH_DAY_MAGIC = "Alternating7thDayMagic";
+	public static final String SR_NATIVE_BLOCKING = "NativeBlocking";
+	public static final String SR_DAMAGED_RELATIONS = "DamagedRelations";
+	public static final String SR_ENDING_COMBAT = "EndingCombat";
+	public static final String SR_PHASE_CHIT_ACTIVATION = "PhaseChitActivation";
+	public static final String SR_REVEAL_TRAVELERS = "RevealTravelers";
+	public static final String SR_MAGIC_SIGHT_OPTIONAL = "MagicSightNotSelfCancelling";
+	public static final String SR_COMBAT = "SrCombat";
+	public static final String SR_ADV_SERVERE_WOUNDS = "SevereWounds";
+	public static final String SR_ADV_STEEL_AGAINST_MAGIC = "SrSteelAgainstMagic";
+	public static final String SR_ADV_SURVIVAL_TACTICS = "SurvivalTactics";
+	public static final String SR_ADV_THEMATIC_ROVING_NATIVES = "ThematicRovingNatives";
 	
 	// Random Number Generators
 	public static final String RANDOM_R250_521 = "RndR250_521";

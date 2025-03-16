@@ -6540,7 +6540,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
 			// Check to see if hireling is a leader, and if so, make him active
-			if (rc.isNativeLeader() && (!rc.getGameObject().hasThisAttribute(Constants.ROVING_NATIVE) || hostPrefs.hasPref(Constants.OPT_SR_THEMATIC_ROVING_NATIVES))) {
+			if (rc.isNativeLeader() && (!rc.getGameObject().hasThisAttribute(Constants.ROVING_NATIVE) || hostPrefs.hasPref(Constants.SR_ADV_THEMATIC_ROVING_NATIVES))) {
 				CharacterWrapper leader = new CharacterWrapper(hireling);
 				leader.setJustUnhired(false);
 				leader.setPlayerName(getPlayerName());

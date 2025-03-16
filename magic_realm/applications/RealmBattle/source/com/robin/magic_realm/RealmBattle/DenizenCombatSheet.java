@@ -222,7 +222,7 @@ public class DenizenCombatSheet extends CombatSheet {
 			GameObject chararacterGo = combatFrame.getActiveParticipant().getGameObject();
 			CharacterWrapper activeCharacter = new CharacterWrapper(chararacterGo);
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(chararacterGo.getGameData());
-			if (activeCharacter.affectedByKey(Constants.BATTLE_MAGE) || hostPrefs.hasPref(Constants.OPT_SR_STEEL_AGAINST_MAGIC)) {
+			if (activeCharacter.affectedByKey(Constants.BATTLE_MAGE) || hostPrefs.hasPref(Constants.SR_ADV_STEEL_AGAINST_MAGIC)) {
 				if (activeCharacter.hasOnlyStaffAsActivatedWeapon() && !activeCharacter.hasActiveArmorChits()) {
 					battleMage = true;
 				}

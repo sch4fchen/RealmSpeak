@@ -2516,7 +2516,7 @@ public class CombatFrame extends JFrame {
 		if (spell!=null) {
 			// Can't play a normal attack if a spell was cast this round!
 			mageCastedSpell = true;
-			if (activeCharacter.affectedByKey(Constants.BATTLE_MAGE) || hostPrefs.hasPref(Constants.OPT_SR_STEEL_AGAINST_MAGIC)) {
+			if (activeCharacter.affectedByKey(Constants.BATTLE_MAGE) || hostPrefs.hasPref(Constants.SR_ADV_STEEL_AGAINST_MAGIC)) {
 				if (activeCharacter.hasOnlyStaffAsActivatedWeapon() && !activeCharacter.hasActiveArmorChits()) {
 					mageCastedSpell = false;
 				}
@@ -2621,7 +2621,7 @@ public class CombatFrame extends JFrame {
 		GameObject go = charCombat.getCastSpell();
 		SpellWrapper spell = go==null?null:new SpellWrapper(go);
 		boolean battleMage = false;
-		if (activeCharacter.affectedByKey(Constants.BATTLE_MAGE) || hostPrefs.hasPref(Constants.OPT_SR_STEEL_AGAINST_MAGIC)) {
+		if (activeCharacter.affectedByKey(Constants.BATTLE_MAGE) || hostPrefs.hasPref(Constants.SR_ADV_STEEL_AGAINST_MAGIC)) {
 			if (activeCharacter.hasOnlyStaffAsActivatedWeapon() && !activeCharacter.hasActiveArmorChits()) {
 				battleMage = true;
 			}
@@ -2811,7 +2811,7 @@ public class CombatFrame extends JFrame {
 		if (spell!=null) {
 			// Can't play a normal attack if a spell was cast this round!
 			mageCastedSpell = true;
-			if (activeCharacter.affectedByKey(Constants.BATTLE_MAGE) || hostPrefs.hasPref(Constants.OPT_SR_STEEL_AGAINST_MAGIC)) {
+			if (activeCharacter.affectedByKey(Constants.BATTLE_MAGE) || hostPrefs.hasPref(Constants.SR_ADV_STEEL_AGAINST_MAGIC)) {
 				if (activeCharacter.hasOnlyStaffAsActivatedWeapon() && !activeCharacter.hasActiveArmorChits()) {
 					mageCastedSpell = false;
 				}
@@ -3736,7 +3736,7 @@ public class CombatFrame extends JFrame {
 			boolean activate = "Activate".equals(selText);
 			RealmComponent rcToActivate = activate?chooser.getFirstSelectedComponent():null;
 			RealmComponent rcToInactivate = activate?null:chooser.getFirstSelectedComponent();
-			if (hostPrefs.hasPref(Constants.OPT_SR_PHASE_CHIT_ACTIVATION) && rcToActivate!=null && rcToActivate.isPhaseChit()) {
+			if (hostPrefs.hasPref(Constants.SR_PHASE_CHIT_ACTIVATION) && rcToActivate!=null && rcToActivate.isPhaseChit()) {
 				TreasureUtility.doActivate(this,activeCharacter,rcToActivate.getGameObject(),combatListener,true);
 				nonaffectingChanges = true;
 				updateControls();

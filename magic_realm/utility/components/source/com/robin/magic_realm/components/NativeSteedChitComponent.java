@@ -377,7 +377,7 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 			combat.setKilledSpeed(attacker.getAttackSpeed());
 			combat.setHitByOrderNumber(attackOrderPos);
 			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Kills the "+getGameObject().getNameWithNumber());
-			if (!hostPrefs.hasPref(Constants.OPT_SR_ENDING_COMBAT)) return true;
+			if (!hostPrefs.hasPref(Constants.SR_ENDING_COMBAT)) return true;
 		}
 		return false;
 	}

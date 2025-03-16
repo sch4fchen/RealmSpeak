@@ -540,7 +540,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 				combat.getGameObject().setThisAttribute(Constants.SERIOUS_WOUND);
 				RealmLogging.logMessage(getGameObject().getNameWithNumber(),"Is seriously wounded.");
 			}
-			if (!hostPrefs.hasPref(Constants.OPT_SR_ENDING_COMBAT)) return true;
+			if (!hostPrefs.hasPref(Constants.SR_ENDING_COMBAT)) return true;
 		}
 		return horseHarmed;
 	}
