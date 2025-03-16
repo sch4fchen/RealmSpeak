@@ -30,9 +30,9 @@ Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
 Super Realm: Optional Rules: Sentimental Value (SR: 10.6, p.115)
 Super Realm: Optional Rules: Grounded Missions and Tasks (SR: 10.8, p.115)
 Super Realm: Optional Rules: Regrouping (SR: 10.10, p.115)
+Super Realm: Optional Rules: Thematic Roving Natives (SR: 10.5, p.114): In combat, when any roving native Dwarf (not just the leader) is dark-side up, they subtract one from their move speed when they do the Duck maneuver.
 
 ---Super Realms Rules + Optional Rules---
-Super Realm: Optional Rules: Thematic Roving Natives (SR: 10.5, p.114): In combat, when any roving native Dwarf (not just the leader) is dark-side up, they subtract one from their move speed when they do the Duck maneuver.
 Super Realm: Optional Rules: Character Rules (A.6, p. 186): Witch, Witch King
 Super Realm: Characters, including portraits with credits, different chit icon; including optional abilities (SR 11.2)
 Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
@@ -56,6 +56,9 @@ Would be nice to make weapon abilities too:
 	Immobilizing1 - When it hits all attacks undercut in current round
 	Immobilizing2 - When it hits all attacks undercut in next round
 	Stunning - Target cannot play an attack next round
+
+Version 1.3.0.0
+SUPER REALM:
 
 Version 1.2.0.9
 SUPER REALM:
