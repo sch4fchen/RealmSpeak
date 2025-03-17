@@ -21,7 +21,7 @@ Of course, I'm always available at robin@dewkid.com (or inferno-dragon@web.de) i
 
 
 Robin
-(and Richard)
+(and sch4fchen)
 
 
 Notes about RealmSpeak Resource Pack:

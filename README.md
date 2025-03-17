@@ -43,7 +43,7 @@ WARNING:  BE VERY CAREFUL EDITING THE PATH VARIABLE!!  IF YOU DELETE SOMETHING I
 Robin (aka DewKid)
 
 
-# Hints (by Richard aka sch4fchen):
+# Hints (by sch4fchen):
 
 First time to run the game:
 1. You need to copy the .jar files from "libraries" directory, to "products" directory.
@@ -71,7 +71,7 @@ sch4fchen
 RealmSpeak is the Java application for playing the board game Magic Realm.
 Copyright (c) 2005-2015 Robin Warren
 E-mail: robin@dewkid.com
-Further development (since 2020-08-20): Richard
+Further development (since 2020-08-20): sch4fchen
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
