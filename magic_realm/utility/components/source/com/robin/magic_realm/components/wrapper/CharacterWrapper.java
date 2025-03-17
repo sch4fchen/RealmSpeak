@@ -7414,13 +7414,17 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return count;
 	}
 	public int getQuestSlotCount(HostPrefWrapper hostPrefs) {
+		int mod = 0;
+		if (hostPrefs.hasPref(Constants.HOUSE3_QUEST_CARD_HAND_SIZE_PLUS_ONE)) {
+			mod = 1;
+		}
 		if (hostPrefs.getQuestCardsHandSize() == 0) {
 			if (hostPrefs.hasPref(Constants.QST_SR_QUESTS)) {
-				return (getCharacterLevel()+1)/2;
+				return ((getCharacterLevel()+1)/2) + mod;
 			}
-			return getCharacterLevel() + 1;
+			return getCharacterLevel() + 1 + mod;
 		}
-		return hostPrefs.getQuestCardsHandSize();
+		return hostPrefs.getQuestCardsHandSize() + mod;
 	}
 	public void addPostQuestParams(QuestRequirementParams qp) {
 		qp.dayKey = getCurrentDayKey();
