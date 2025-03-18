@@ -286,6 +286,15 @@ public class DieRoller extends JComponent {
 		}
 		return max+modifier;
 	}
+	public int getLowDieResult() {
+		int min = 0;
+		for (Die die:dice) {
+			if (die.getValue()<min) {
+				min = die.getValue();
+			}
+		}
+		return min+modifier;
+	}
 	public void updateSize() {
 		updateSize(2);
 	}

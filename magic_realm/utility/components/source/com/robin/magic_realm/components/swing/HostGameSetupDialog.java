@@ -1068,6 +1068,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(ADVANCED_MAGIC_RULES_TAB,new GameOption(Constants.OPT_POWER_OF_THE_PIT_ATTACK,"POWER OF THE PIT OPTIONAL RULES - This rule requires the Power of the Pit attack to hit like an attack spell.",false));
 		newOptionPane.addOption(ADVANCED_MAGIC_RULES_TAB,new GameOption(Constants.OPT_POWER_OF_THE_PIT_DEMON,"POWER OF THE PIT OPTIONAL RULES - Demon's spell and characters' spells can cancel each other.",false));
 		newOptionPane.addOption(ADVANCED_MAGIC_RULES_TAB,new GameOption(Constants.OPT_AUTOMATIC_ENCHANTING,"AUTOMATIC ENCHANTING C.5 - Certain map tiles flip over automatically at the end of each week, changing many of the roadways and making more color magic available.",false));
+		newOptionPane.addOption(ADVANCED_MAGIC_RULES_TAB,new GameOption(Constants.SR_ADV_EASIER_SPELL_LEARNING,"EASIER SPELL LEARNING (Super Realm Advanced) - When a character rolls two dice on the Reading Runes table, if one die result is five and the other die result is less than five, both are applied.",false));
 				
 		newOptionPane.setTabHtmlDescription(COMBAT_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Combat Rules</font></body></html>");
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.ADV_SERIOUS_WOUNDS,"SERIOUS WOUNDS A.1 (Magic Realm Extended) - Characters suffer 1D6 wounds instead of death when harm matches vulnerability.",false, new String[]{Constants.SR_ADV_SERVERE_WOUNDS}, null));

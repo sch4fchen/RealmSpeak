@@ -108,8 +108,11 @@ public abstract class RealmTable {
 	public String apply(CharacterWrapper character, DieRoller inRoller) {
 		this.roller = inRoller;
 		int result = getResult(roller);
+		return apply(character,result);
+	}
+	public String apply(CharacterWrapper character, int number) {
 		String message = null;
-		switch(result) {
+		switch(number) {
 			case 1:
 				message = applyOne(character);
 				break;

@@ -23,7 +23,6 @@ Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt e.g.
 Super Realm: Optional Rules: Commerce (SR: 11.12, p.126) - adapt e.g. rules for new native groups
 Super Realm: Events (Global Events = optional rule 11.11): 33 Events
 Super Realm: Optional Rules: Selling (SR: 10.11, p.116)
-Super Realm: Optional Rules: Easier Spell Learning (SR: 11.9, p.126)
 Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.121)
 Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
 Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
@@ -60,6 +59,7 @@ Version 1.3.0.0
 SUPER REALM:
 NEW FEATURES:
 # Optional Rule: increase quest hand size limit by one
+# Optional Rule: Easier Spell Learning
 
 Version 1.2.0.9
 SUPER REALM:

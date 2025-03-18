@@ -61,6 +61,20 @@ public class ReadRunes extends RealmTable {
 //	roller.setValue(1,5);
 		// Before rolling, you must select a target spell, which for artifacts/books includes AWAKENED spells
 		targetSpell = selectFromAllAwakenedSpells(character);
+		
+		if (roller.getHighDieResult()==5 && roller.getLowDieResult()<5) {
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
+			if (hostPrefs.hasPref(Constants.SR_ADV_EASIER_SPELL_LEARNING)) {
+				String result1 = super.apply(character,roller);
+				int low = roller.getLowDieResult();
+				if (low<1) {
+					low = 1;
+				}
+				String result2 = super.apply(character,low);
+				return result1 + " AND " + result2;
+			}
+		}
+		
 		return super.apply(character,roller);
 	}
 	public String applyOne(CharacterWrapper character) {
