@@ -289,8 +289,11 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		}
 		for (GameObject tw : getTreasureWeaponObjects()) {
 			if (tw!=null && (combatChit==null || combatChit.getWeaponId().equals(tw.getStringId()))) {
-				if (length < tw.getThisInt("length")) {
-					length = tw.getThisInt("length");
+				CombatWrapper twCombat = new CombatWrapper(tw);
+				if (twCombat.hasCombatBox()) {
+					if (length < tw.getThisInt("length")) {
+						length = tw.getThisInt("length");
+					}
 				}
 			}
 		}
@@ -400,6 +403,14 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	 * @return The speed of the character's attack, which might be "stopped" if none was played
 	 */
 	public Speed getAttackSpeed() {
+		return getAttackSpeed(0, true);
+	}
+	
+	public Speed getAttackSpeedForCombatBox(int box) {
+		return getAttackSpeed(box, false);
+	}
+	
+	private Speed getAttackSpeed(int box, boolean allBoxesGreaterZero) {
 		// Find the character's attack for this round
 		Speed speed = new Speed();
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
@@ -413,7 +424,8 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				for (WeaponChitComponent weapon : weapons) {
 					if (combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
 						CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
-						if (combat.getCombatBoxAttack() > 0) { // only if it was played!
+						if ((allBoxesGreaterZero && combat.getCombatBoxAttack() > 0)  // only if it was played!
+								|| (!allBoxesGreaterZero && combat.getCombatBoxAttack() == box)) {
 							Speed weaponSpeed = weapon.getSpeed();
 							if (weaponSpeed != null) {
 								speed = weaponSpeed;
@@ -505,16 +517,19 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				// Check for treasure weapons
 				for (GameObject tw : getTreasureWeaponObjects()) {
 					if (tw!=null && combatChit.getWeaponId().equals(tw.getStringId())) {
-						if (tw.hasThisAttribute(Constants.IGNORE_ARMOR)) {
-							ignoreArmor = true;
+						CombatWrapper twCombat = new CombatWrapper(tw);
+						if (twCombat.hasCombatBox()) {
+							if (tw.hasThisAttribute(Constants.IGNORE_ARMOR)) {
+								ignoreArmor = true;
+							}
+							hasWeapon = true;
+							missileWeapon = tw.hasThisAttribute("missile");
+							weaponStrength = getStrengthForTreasure(tw);
+							sharpness = tw.getThisInt("sharpness");
+							sharpness += tw.getThisInt(Constants.ADD_SHARPNESS);
+							enchantedWeapon = tw.hasThisAttribute(Constants.ENCHANTED_WEAPON);
+							break;
 						}
-						hasWeapon = true;
-						missileWeapon = tw.hasThisAttribute("missile");
-						weaponStrength = getStrengthForTreasure(tw);
-						sharpness = tw.getThisInt("sharpness");
-						sharpness += tw.getThisInt(Constants.ADD_SHARPNESS);
-						enchantedWeapon = tw.hasThisAttribute(Constants.ENCHANTED_WEAPON);
-						break;
 					}
 				}
 			}
