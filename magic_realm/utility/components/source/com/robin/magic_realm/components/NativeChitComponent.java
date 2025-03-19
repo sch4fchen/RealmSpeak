@@ -552,7 +552,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		return gameObject.getThisAttribute("missile");
 	}
 
-	public void changeWeaponState() {
+	public void changeWeaponState(HostPrefWrapper hostPrefs) {
 		// Do nothing
 	}
 

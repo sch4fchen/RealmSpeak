@@ -11,7 +11,7 @@ public interface BattleChit {
 	// Battle
 	public RealmComponent getTarget();
 	public GameObject getGameObject();
-	public void changeWeaponState();
+	public void changeWeaponState(HostPrefWrapper hostPrefs);
 	public boolean isImmuneTo(RealmComponent rc);
 	
     // Chit handling

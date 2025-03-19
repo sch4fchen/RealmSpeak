@@ -912,7 +912,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		return null;
 	}
 
-	public void changeWeaponState() {
+	public void changeWeaponState(HostPrefWrapper hostPrefs) {
 		// Do nothing
 	}
 

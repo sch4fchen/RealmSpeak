@@ -725,7 +725,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	public RealmComponent getTarget() {
 		throw new RuntimeException("getTarget() is not functional in SpellWrapper!!  Use getTargets()");
 	}
-	public void changeWeaponState() {
+	public void changeWeaponState(HostPrefWrapper hostPrefs) {
 		// nothing
 	}
 	public void flip() {

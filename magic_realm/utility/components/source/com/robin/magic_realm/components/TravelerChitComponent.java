@@ -266,7 +266,7 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 		}
 		return false;
 	}
-	public void changeWeaponState() {
+	public void changeWeaponState(HostPrefWrapper hostPrefs) {
 		// Do nothing
 	}
 	public int getAttackCombatBox() {

@@ -2422,7 +2422,7 @@ public class BattleModel {
 			
 			// Adjust weapon alertness
 			BattleChit battle = (BattleChit)rc;
-			battle.changeWeaponState();
+			battle.changeWeaponState(hostPrefs);
 			
 			// Get rid of destroyed stuff and fatigue magic
 			if (rc.isCharacter()) {

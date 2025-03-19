@@ -13,7 +13,7 @@ public abstract class MonsterActionChitComponent extends StateChitComponent impl
 		lightColor = monster.lightColor;
 		darkColor = monster.darkColor;
 	}
-	public void changeWeaponState() {
+	public void changeWeaponState(HostPrefWrapper hostPrefs) {
 	}
 	public boolean hitsOnTie() {
 		return false;

@@ -875,6 +875,7 @@ public class Constants {
 	public static final String SR_ADV_SERVERE_WOUNDS = "SevereWounds";
 	public static final String SR_ADV_STEEL_AGAINST_MAGIC = "SrSteelAgainstMagic";
 	public static final String SR_ADV_SURVIVAL_TACTICS = "SurvivalTactics";
+	public static final String SR_ADV_SURVIVAL_TACTICS_PARRY_NOT_ALERTING = "SurvivalTacticsParryNotAlerting";
 	public static final String SR_ADV_THEMATIC_ROVING_NATIVES = "ThematicRovingNatives";
 	public static final String SR_ADV_EASIER_SPELL_LEARNING = "EasierSpellLearning";
 	

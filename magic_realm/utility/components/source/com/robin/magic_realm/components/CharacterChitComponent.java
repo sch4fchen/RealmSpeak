@@ -1184,7 +1184,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		}
 		return hitsOnTie || weaponHitsOnTie;
 	}
-	public void changeWeaponState() {
+	public void changeWeaponState(HostPrefWrapper hostPrefs) {
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
 		ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
 		if (weapons != null && !weapons.isEmpty()) {
@@ -1194,7 +1194,15 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				if (charCombat.weaponHasHit(weapon.getGameObject().getStringId())) {
 					hit = true;
 				}
-				alertWeapon(weapon, hit);
+				if (hostPrefs.hasPref(Constants.SR_ADV_SURVIVAL_TACTICS_PARRY_NOT_ALERTING)) {
+					CombatWrapper weaponCombat = new CombatWrapper(getGameObject());
+					if (!weaponCombat.getPlacedAsParry()) {
+						alertWeapon(weapon, hit);
+					}
+				}
+				else {
+					alertWeapon(weapon, hit);
+				}
 			}
 		}
 	}
