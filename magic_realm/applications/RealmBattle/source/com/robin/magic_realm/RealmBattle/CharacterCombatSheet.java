@@ -363,24 +363,32 @@ public class CharacterCombatSheet extends CombatSheet {
 				}
 				
 				// Check conditions for REPLACE_FIGHT (Battle Bracelets)
-				RealmComponent aTarget = combatFrame.getActiveParticipant().getTarget();
-				if (combatFrame.getActiveParticipant().getTarget()!=null && (sheetParticipants.contains(aTarget) || sheetOwner.equals(aTarget))) {
-					if (character.canReplaceFight(aTarget)) {
-						// can replace fight
-						hotspotHash.put(Integer.valueOf(POS_ATTACK_BOX1),"Replace Fight");
-						hotspotHash.put(Integer.valueOf(POS_ATTACK_BOX2),"Replace Fight");
-						hotspotHash.put(Integer.valueOf(POS_ATTACK_BOX3),"Replace Fight");
-					}
-				}
+				RealmComponent aTarget1 = combatFrame.getActiveParticipant().getTarget();
 				RealmComponent aTarget2 = combatFrame.getActiveParticipant().get2ndTarget();
-				if (combatFrame.getActiveParticipant().getTarget()!=null && (sheetParticipants.contains(aTarget2) || sheetOwner.equals(aTarget2))) {
-					if (character.canReplaceFight(aTarget2)) {
-						// can replace fight
-						hotspotHash.put(Integer.valueOf(POS_ATTACK_BOX1),"Replace Fight");
-						hotspotHash.put(Integer.valueOf(POS_ATTACK_BOX2),"Replace Fight");
-						hotspotHash.put(Integer.valueOf(POS_ATTACK_BOX3),"Replace Fight");
-					}
+				boolean canReplaceFightForTarget1 = combatFrame.getActiveParticipant().getTarget()!=null && (sheetParticipants.contains(aTarget1) || sheetOwner.equals(aTarget1));
+				boolean canReplaceFightForTarget2 = combatFrame.getActiveParticipant().get2ndTarget()!=null && (sheetParticipants.contains(aTarget2) || sheetOwner.equals(aTarget2));
+				if ((canReplaceFightForTarget1 && character.canReplaceFight(aTarget1)) || (canReplaceFightForTarget2 && character.canReplaceFight(aTarget2))) {
+					// can replace fight
+					hotspotHash.put(Integer.valueOf(POS_ATTACK_BOX1),"Replace Fight");
+					hotspotHash.put(Integer.valueOf(POS_ATTACK_BOX2),"Replace Fight");
+					hotspotHash.put(Integer.valueOf(POS_ATTACK_BOX3),"Replace Fight");
 				}
+				else {
+					if (hostPrefs.hasPref(Constants.SR_ADV_SURVIVAL_TACTICS)) {
+						if ((canReplaceFightForTarget1 && character.canReplaceParryThrustAttacks(aTarget1)) || (canReplaceFightForTarget2 && character.canReplaceParryThrustAttacks(aTarget2))
+								|| (canReplaceFightForTarget1 && character.canReplaceAlertedParryInBox(aTarget1,1)) || (canReplaceFightForTarget2 && character.canReplaceAlertedParryInBox(aTarget2,1))) {
+							hotspotHash.put(Integer.valueOf(POS_ATTACK_BOX1),"Replace Fight");
+						}
+						if ((canReplaceFightForTarget1 && character.canReplaceParrySwingAttacks(aTarget1)) || (canReplaceFightForTarget2 && character.canReplaceParrySwingAttacks(aTarget2))
+								|| (canReplaceFightForTarget1 && character.canReplaceAlertedParryInBox(aTarget1,2)) || (canReplaceFightForTarget2 && character.canReplaceAlertedParryInBox(aTarget2,2))) {
+							hotspotHash.put(Integer.valueOf(POS_ATTACK_BOX2),"Replace Fight");
+						}
+						if ((canReplaceFightForTarget1 && character.canReplaceParrySmashAttacks(aTarget1)) || (canReplaceFightForTarget2 && character.canReplaceParrySmashAttacks(aTarget2))
+								|| (canReplaceFightForTarget1 && character.canReplaceAlertedParryInBox(aTarget1,3)) || (canReplaceFightForTarget2 && character.canReplaceAlertedParryInBox(aTarget2,3))) {
+							hotspotHash.put(Integer.valueOf(POS_ATTACK_BOX3),"Replace Fight");
+						}
+					}
+				}				
 				break;
 		}
 	}
@@ -780,7 +788,11 @@ public class CharacterCombatSheet extends CombatSheet {
 			case POS_ATTACK_BOX3:
 				if (combatFrame.getActionState()==Constants.COMBAT_TACTICS) {
 					// Move attack
-					combatFrame.replaceAttack(index-POS_ATTACK_BOX1+1);
+					if (hostPrefs.hasPref(Constants.SR_ADV_SURVIVAL_TACTICS)){
+						combatFrame.replaceAttackOrParry(index-POS_ATTACK_BOX1+1,sheetOwner);
+					} else {
+						combatFrame.replaceAttack(index-POS_ATTACK_BOX1+1);
+					}
 				}
 				else {
 					combatFrame.positionAttacker(getAllBoxListFromLayout(POS_ATTACK_BOX1),index-POS_ATTACK_BOX1+1,index-POS_ATTACK_BOX1+1,false,swingConstant==SwingConstants.LEFT);
@@ -815,15 +827,17 @@ public class CharacterCombatSheet extends CombatSheet {
 			case POS_SHIELD1:
 			case POS_SHIELD2:
 			case POS_SHIELD3:
-				if (this.getSheetOwner() == RealmComponent.getRealmComponent(chararacterGo) && !activeCharacter.isTransmorphed() && (hostPrefs.hasPref(Constants.OPT_PARRY_LIKE_SHIELD) || activeCharacter.affectedByKey(Constants.PARRY_LIKE_SHIELD) || activeCharacter.affectedByKey(Constants.BLOCK_NO_WEAPON))){
-					combatFrame.playParryLikeShield(index-POS_SHIELD1+1);
-				}
-				else {
-					// Position shield
-					if (sheetOwnerShield!=null) {
-						CombatWrapper combat = new CombatWrapper(sheetOwnerShield.getGameObject());
-						combat.setCombatBoxDefense(index-POS_SHIELD1+1);
-						combatFrame.updateSelection();
+				if (combatFrame.getActionState()!=Constants.COMBAT_TACTICS) {
+					if (this.getSheetOwner() == RealmComponent.getRealmComponent(chararacterGo) && !activeCharacter.isTransmorphed() && (hostPrefs.hasPref(Constants.OPT_PARRY_LIKE_SHIELD) || activeCharacter.affectedByKey(Constants.PARRY_LIKE_SHIELD) || activeCharacter.affectedByKey(Constants.BLOCK_NO_WEAPON))){
+						combatFrame.playParryLikeShield(index-POS_SHIELD1+1);
+					}
+					else {
+						// Position shield
+						if (sheetOwnerShield!=null) {
+							CombatWrapper combat = new CombatWrapper(sheetOwnerShield.getGameObject());
+							combat.setCombatBoxDefense(index-POS_SHIELD1+1);
+							combatFrame.updateSelection();
+						}
 					}
 				}
 				break;

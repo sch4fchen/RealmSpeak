@@ -424,6 +424,17 @@ public class DenizenCombatSheet extends CombatSheet {
 						hotspotHash.put(Integer.valueOf(POS_ATTACKERS_WEAPON2),"Replace Attack");
 						hotspotHash.put(Integer.valueOf(POS_ATTACKERS_WEAPON3),"Replace Attack");
 					}
+					else if (hostPrefs.hasPref(Constants.SR_ADV_SURVIVAL_TACTICS)) {
+						if (character.canReplaceParryThrustAttacks(aTarget) || character.canReplaceAlertedParryInBox(aTarget,1)) {
+							hotspotHash.put(Integer.valueOf(POS_ATTACKERS_WEAPON1),"Replace Attack");
+						}
+						if (character.canReplaceParrySwingAttacks(aTarget) || character.canReplaceAlertedParryInBox(aTarget,2)) {
+							hotspotHash.put(Integer.valueOf(POS_ATTACKERS_WEAPON2),"Replace Attack");
+						}
+						if (character.canReplaceParrySmashAttacks(aTarget) || character.canReplaceAlertedParryInBox(aTarget,3)) {
+							hotspotHash.put(Integer.valueOf(POS_ATTACKERS_WEAPON2),"Replace Attack");
+						}
+					}
 				}
 				break;
 		}
@@ -532,8 +543,12 @@ public class DenizenCombatSheet extends CombatSheet {
 					combatFrame.playAttack(index-POS_ATTACKERS_WEAPON1+1,this.getSheetOwner());
 				}
 				else if (combatFrame.getActionState()==Constants.COMBAT_TACTICS) {
-					// Character Move attack
-					combatFrame.replaceAttack(index-POS_ATTACKERS_WEAPON1+1);
+					if (hostPrefs.hasPref(Constants.SR_ADV_SURVIVAL_TACTICS)){
+						combatFrame.replaceAttackOrParry(index-POS_ATTACKERS_WEAPON1+1,sheetOwner);
+					} else {
+						// Character Move attack
+						combatFrame.replaceAttack(index-POS_ATTACKERS_WEAPON1+1);
+					}
 				}
 				break;
 			case POS_DEFENDER_BOX1:

@@ -57,6 +57,7 @@ Would be nice to make weapon abilities too:
 
 Version 1.3.0.0
 SUPER REALM:
+# Optional Rule: Surviving Tactics
 NEW FEATURES:
 # Optional Rule: increase quest hand size limit by one
 # Optional Rule: Easier Spell Learning

@@ -262,14 +262,6 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	}
 	
 	public Integer getLength() {
-		return getLength(true,0);
-	}
-	
-	public Integer getLengthForParrying(int box) {
-		return getLength(false,box);
-	}
-	
-	private Integer getLength(boolean allCombatBoxes, int defenseBox) {
 		MonsterChitComponent transmorph = getTransmorphedComponent();
 		if (transmorph!=null) {
 			return transmorph.getLength();
@@ -287,7 +279,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			for (WeaponChitComponent weapon : weapons) {
 				if (combatChit==null || combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
 					CombatWrapper wCombat = new CombatWrapper(weapon.getGameObject());
-					if ((allCombatBoxes && wCombat.hasCombatBox()) || (!allCombatBoxes && wCombat.getCombatBoxDefense() == defenseBox)) {
+					if (wCombat.hasCombatBox()) {
 						if (length < weapon.getLength()) {
 							length = weapon.getLength();
 						}
@@ -298,7 +290,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		for (GameObject tw : getTreasureWeaponObjects()) {
 			if (tw!=null && (combatChit==null || combatChit.getWeaponId().equals(tw.getStringId()))) {
 				CombatWrapper twCombat = new CombatWrapper(tw);
-				if ((allCombatBoxes && twCombat.hasCombatBox()) || (!allCombatBoxes && twCombat.getCombatBoxDefense() == defenseBox)) {
+				if (twCombat.hasCombatBox()) {
 					if (length < tw.getThisInt("length")) {
 						length = tw.getThisInt("length");
 					}
@@ -411,14 +403,6 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	 * @return The speed of the character's attack, which might be "stopped" if none was played
 	 */
 	public Speed getAttackSpeed() {
-		return getAttackSpeed(true,0);
-	}
-	
-	public Speed getAttackSpeedForParrying(int box) {
-		return getAttackSpeed(false,box);
-	}
-	
-	private Speed getAttackSpeed(boolean allCombatBoxes, int defenseBox) {
 		// Find the character's attack for this round
 		Speed speed = new Speed();
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
@@ -432,7 +416,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				for (WeaponChitComponent weapon : weapons) {
 					if (combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
 						CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
-						if ((allCombatBoxes && combat.getCombatBoxAttack() > 0) || (!allCombatBoxes && combat.getCombatBoxDefense() == defenseBox)) { // only if it was played!
+						if (combat.getCombatBoxAttack() > 0) { // only if it was played!
 							Speed weaponSpeed = weapon.getSpeed();
 							if (weaponSpeed != null) {
 								speed = weaponSpeed;
@@ -480,14 +464,6 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	 * @return The total harm the attack would cause. It is up to the caller to handle reducing sharpness or harm based on factors like armor or using the missile table (or fumble table)
 	 */
 	public Harm getHarm() {
-		return getHarm(true,0);
-	}
-	
-	public Harm getHarmForParrying(int box) {
-		return getHarm(false,box);
-	}
-	
-	private Harm getHarm(boolean allCombatBoxes, int defenseBox) {
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
 		Strength wishStrength = character.getWishStrength();
 		if (wishStrength != null) {
@@ -515,7 +491,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				for (WeaponChitComponent weapon : weapons) {
 					if (combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
 						CombatWrapper wCombat = new CombatWrapper(weapon.getGameObject());
-						if ((allCombatBoxes && wCombat.hasCombatBox()) || (!allCombatBoxes && wCombat.getCombatBoxDefense()==defenseBox)) {
+						if (wCombat.hasCombatBox()) {
 							if (weapon.getGameObject().hasThisAttribute(Constants.IGNORE_ARMOR)) {
 								ignoreArmor = true;
 							}
@@ -533,7 +509,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				for (GameObject tw : getTreasureWeaponObjects()) {
 					if (tw!=null && combatChit.getWeaponId().equals(tw.getStringId())) {
 						CombatWrapper twCombat = new CombatWrapper(tw);
-						if ((allCombatBoxes && twCombat.hasCombatBox()) || (!allCombatBoxes && twCombat.getCombatBoxDefense()==defenseBox)) {
+						if (twCombat.hasCombatBox()) {
 							if (tw.hasThisAttribute(Constants.IGNORE_ARMOR)) {
 								ignoreArmor = true;
 							}
@@ -567,7 +543,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		return totalHarm;
 	}
 	
-	private static Harm getHarmForRealmComponent(RealmComponent rc) {
+	public static Harm getHarmForRealmComponent(RealmComponent rc) {
 		Harm harm = null;
 		if (rc.isTreasure() && rc.getGameObject().hasThisAttribute("strength")) {
 			// This wont work for weapons, but that's what I want here!  Weapons are in ADDITION to fight strength.
@@ -1281,7 +1257,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		RealmComponent rc = getTransmorphedComponent();
 		return rc!=null && rc.isMistLike();
 	}
-	private static Strength getStrengthForTreasure(GameObject tw) {
+	public static Strength getStrengthForTreasure(GameObject tw) {
 		Strength strength = new Strength(tw.getThisAttribute("strength"));
 		if (tw.hasThisAttribute(Constants.ALTER_WEIGHT)) {
 			int difference = (new Strength(tw.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((tw.getThisAttribute("strength")))).getLevels();

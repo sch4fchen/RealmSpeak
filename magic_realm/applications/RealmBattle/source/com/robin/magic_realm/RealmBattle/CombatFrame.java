@@ -1457,6 +1457,14 @@ public class CombatFrame extends JFrame {
 		if (rc==null || (!rc.isMonster() && !rc.isCharacter())) return false;
 		RealmComponent target = rc.getTarget();
 		if (target!=null && target.equals(activeParticipant)) {
+			if (rc.isCharacter()) {
+				CharacterWrapper chararacter = new CharacterWrapper(rc.getGameObject());
+				GameObject transmorphed = chararacter.getTransmorph();
+				if (transmorphed==null) {
+					return false;
+				}
+				rc = RealmComponent.getRealmComponent(transmorphed);
+			}
 			MonsterChitComponent monster = (MonsterChitComponent)rc;
 			if (monster.isPinningOpponent()) {
 				return true;
@@ -2419,6 +2427,7 @@ public class CombatFrame extends JFrame {
 				combat.setCombatBoxDefense(box);
 			}
 		}
+		changes = true;
 		updateSelection();
 	}
 	public void playManeuverOrParry(int box) {
@@ -2604,6 +2613,59 @@ public class CombatFrame extends JFrame {
 				}
 			}
 		}
+		changes = true;
+		updateSelection();
+	}
+	public void replaceAttackOrParry(int box, RealmComponent sheetOwner) {
+		RealmComponent characterRc = RealmComponent.getRealmComponent(activeCharacter.getGameObject());
+		boolean replaceAttackPossible = activeCharacter.canReplaceFight(characterRc.getTarget()) || activeCharacter.canReplaceFight(characterRc.get2ndTarget());
+		boolean replaceParryPossible = activeCharacter.canReplaceParry(characterRc.getTarget(),box) || activeCharacter.canReplaceParry(characterRc.get2ndTarget(),box);;
+		if (replaceAttackPossible && !replaceParryPossible) {
+			replaceAttack(box);
+		}
+		if (!replaceAttackPossible && replaceParryPossible) {
+			replaceParry(box, sheetOwner);
+		}
+		if (replaceAttackPossible && replaceParryPossible) {
+			String[] options = {"Attack","Parry","Cancel"};
+	        int choice = JOptionPane.showOptionDialog(null, "Change Attack or Parry?", "Change Attack or Parry", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+	        if (choice == 0) {
+	        	replaceAttack(box);
+	        }
+	        else if (choice == 1) {
+	        	replaceParry(box, sheetOwner);
+	        }
+		}
+	}
+	public void replaceParry(int box, RealmComponent sheetOwner) {
+		Collection<CharacterActionChitComponent> fightChits = activeCharacter.getActiveFightChits();
+		for (CharacterActionChitComponent chit : fightChits) {
+			CombatWrapper combatChit = new CombatWrapper(chit.getGameObject());
+			if (combatChit.getCombatBoxDefense()!=box || !combatChit.getPlacedAsParry()) continue;
+			ArrayList<WeaponChitComponent> weapons = activeCharacter.getActiveWeapons();
+			if (weapons != null) {
+				for (WeaponChitComponent weapon : weapons) {
+					if (combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
+						CombatWrapper wCombat = new CombatWrapper(weapon.getGameObject());
+						if (wCombat.getCombatBoxDefense()==box && wCombat.getPlacedAsParry()) {
+							wCombat.setCombatBoxAttack(box);
+							wCombat.setCombatBoxDefense(0);
+							wCombat.setPlacedAsParry(false);
+							wCombat.setPlacedAsFight(true);
+							wCombat.setSheetOwnerId(sheetOwner);
+						}
+					}
+				}
+			}
+			combatChit.setCombatBoxAttack(box);
+			combatChit.setCombatBoxDefense(0);
+			combatChit.setPlacedAsParry(false);
+			combatChit.setPlacedAsFight(true);
+			combatChit.setSheetOwnerId(sheetOwner);
+			CombatWrapper combatChar = new CombatWrapper(activeCharacter.getGameObject());
+			combatChar.setPlayedAttack(true);
+		}
+		changes = true;
 		updateSelection();
 	}
 	public boolean canPlayAttack(int box) {

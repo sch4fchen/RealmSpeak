@@ -537,8 +537,9 @@ public class RealmBattle {
 				RealmComponent target = attacker.getTarget();
 				RealmComponent target2 = attacker.get2ndTarget();
 				return (activeCharacterIsHere 
-						&& ( ((target!=null && character.canReplaceFight(target)) || (target2!=null && character.canReplaceFight(target2)) )
-								|| character.canReplaceMove(attackers)));
+						&& ( character.canReplaceMove(attackers))
+								|| (target!=null && (character.canReplaceFight(target) || character.canReplaceParry(target)))
+								|| (target2!=null && (character.canReplaceFight(target2) || character.canReplaceParry(target2))));
 			case Constants.COMBAT_RESOLVING: // determines hits, show results
 				return true; // Show resolution every round - this guarantees that everything is cleaned up properly.
 			case Constants.COMBAT_FATIGUE:

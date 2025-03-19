@@ -2832,23 +2832,22 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return (speedToBeatMove!=null);
 	}
 	public boolean canReplaceParryThrustAttacks(RealmComponent target) {
+		if (target==null) return false;
 		BattleChit targetChit = (BattleChit) target;
-		CharacterChitComponent characterChit = (CharacterChitComponent) RealmComponent.getRealmComponent(getGameObject());
-		return characterChit.getLengthForParrying(1) > targetChit.getLength();
+		return getLengthForParrying(1) > targetChit.getLength();
 	}
 	public boolean canReplaceParrySwingAttacks(RealmComponent target) {
+		if (target==null) return false;
 		BattleChit targetChit = (BattleChit) target;
-		CharacterChitComponent characterChit = (CharacterChitComponent) RealmComponent.getRealmComponent(getGameObject());
-		return characterChit.getAttackSpeedForParrying(2).fasterThan(targetChit.getAttackSpeed());
+		return getAttackSpeedForParrying(2).fasterThan(targetChit.getAttackSpeed());
 	}
 	public boolean canReplaceParrySmashAttacks(RealmComponent target) {
+		if (target==null) return false;
 		BattleChit targetChit = (BattleChit) target;
-		CharacterChitComponent characterChit = (CharacterChitComponent) RealmComponent.getRealmComponent(getGameObject());
-		return characterChit.getHarmForParrying(3).getStrength().strongerThan(targetChit.getHarm().getStrength());
+		return getHarmForParrying(3).getStrength().strongerThan(targetChit.getHarm().getStrength());
 	}
-	
-	// reposition his attack from the Parry Ahead circle to the	Thrust attack circle, or from Parry to Side to Swing, or from Parry Down to Smash.
 	public boolean canReplaceAlertedParry(RealmComponent target) {
+		if (target==null) return false;
 		for (WeaponChitComponent weapon : getActiveWeapons()) {
 			if (weapon.isAlerted()) {
 				CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
@@ -2857,12 +2856,179 @@ public class CharacterWrapper extends GameObjectWrapper {
 				}
 			}
 		}
-		
 		return false;
 	}
-	public boolean canReplaceParryLikeShield(RealmComponent attacker) {
+	public boolean canReplaceAlertedParryInBox(RealmComponent target, int box) {
+		if (target==null) return false;
+		for (WeaponChitComponent weapon : getActiveWeapons()) {
+			if (weapon.isAlerted()) {
+				CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
+				if (combat.getCombatBoxDefense()==box && combat.getPlacedAsParry()) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	public boolean canReplaceParry(RealmComponent attacker) {
 		return canReplaceParryThrustAttacks(attacker) || canReplaceParrySwingAttacks(attacker) || canReplaceParrySmashAttacks(attacker) || canReplaceAlertedParry(attacker);
 	}
+	public boolean canReplaceParry(RealmComponent attacker,int box) {
+		return canReplaceParryThrustAttacks(attacker) || canReplaceParrySwingAttacks(attacker) || canReplaceParrySmashAttacks(attacker) || canReplaceAlertedParryInBox(attacker,box);
+	}
+	
+	private Integer getLengthForParrying(int box) {
+		GameObject transmorph = getTransmorph();
+		if (transmorph!=null) {
+			MonsterChitComponent monster = (MonsterChitComponent) RealmComponent.getRealmComponent(transmorph);
+			return monster.getLength();
+		}
+		int totalLength = 0; // default length (dagger)
+		// Derive this from the weapon used.
+		CharacterWrapper character = new CharacterWrapper(getGameObject());
+		ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
+		Collection<CharacterActionChitComponent> fightChits = getActiveFightChits();
+		for (CharacterActionChitComponent chit : fightChits) {
+			CombatWrapper chitCombat = new CombatWrapper(chit.getGameObject());
+			if (chitCombat.getCombatBoxDefense()!=box || !chitCombat.getPlacedAsParry()) continue;
+			int length = 0;
+			if (weapons != null) {
+				for (WeaponChitComponent weapon : weapons) {
+					if (chitCombat.getWeaponId().equals(weapon.getGameObject().getStringId())) {
+						CombatWrapper wCombat = new CombatWrapper(weapon.getGameObject());
+						if (wCombat.getCombatBoxDefense()==box && wCombat.getPlacedAsParry()) {
+							if (length < weapon.getLength()) {
+								length = weapon.getLength();
+							}
+						}
+					}
+				}
+			}
+			for (GameObject tw : getActiveInventory()) {
+				if(!tw.hasThisAttribute("attack")) continue;
+				if (chitCombat.getWeaponId().equals(tw.getStringId())) {
+					CombatWrapper twCombat = new CombatWrapper(tw);
+					if (twCombat.getCombatBoxDefense()==box && twCombat.getPlacedAsParry()) {
+						if (length < tw.getThisInt("length")) {
+							length = tw.getThisInt("length");
+						}
+					}
+				}
+			}
+			if (length>totalLength) {
+				totalLength = length;
+			}
+		}
+		return Integer.valueOf(totalLength);
+	}
+	private Speed getAttackSpeedForParrying(int box) {
+		// Find the character's attack for this round
+		Speed fastestspeed = new Speed();
+		Collection<CharacterActionChitComponent> fightChits = getActiveFightChits();
+		for (CharacterActionChitComponent chit : fightChits) {
+			CombatWrapper chitCombat = new CombatWrapper(chit.getGameObject());
+			if (chitCombat.getCombatBoxDefense()!=box || !chitCombat.getPlacedAsParry()) continue;
+			Speed speed = BattleUtility.getFightSpeed(chit);
+			// Weapon speed overrides anything else
+			ArrayList<WeaponChitComponent> weapons = getActiveWeapons();
+			if (weapons != null) {
+				CombatWrapper combatChit = new CombatWrapper(chit.getGameObject());
+				for (WeaponChitComponent weapon : weapons) {
+					if (combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
+						CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
+						if (combat.getCombatBoxDefense()==box && combat.getPlacedAsParry()) { // only if it was played!
+							Speed weaponSpeed = weapon.getSpeed();
+							if (weaponSpeed != null) {
+								speed = weaponSpeed;
+							}
+						}
+					}
+				}
+			}
+			if (speed.fasterThan(fastestspeed)) {
+				fastestspeed = speed;
+			}
+		}
+		return fastestspeed;
+	}
+	private Harm getHarmForParrying(int box) {
+		Strength wishStrength = getWishStrength();
+		if (wishStrength != null) {
+			Harm harm = new Harm(wishStrength, 0);
+			harm.setAdjustable(false);
+			return harm;
+		}
+		Strength weaponStrength = new Strength(); // negligible strength (dagger) to start
+		int sharpness = 1; // default of a dagger
+		sharpness += getGameObject().getThisInt(Constants.ADD_SHARPNESS); // in case poison is applied to a dagger
+		boolean ignoreArmor = getGameObject().hasThisAttribute(Constants.IGNORE_ARMOR); // false, unless penetrating grease was applied to dagger
+		
+		Collection<CharacterActionChitComponent> fightChits = getActiveFightChits();
+		for (CharacterActionChitComponent chit : fightChits) {
+			CombatWrapper combatChit = new CombatWrapper(chit.getGameObject());
+			if (combatChit.getCombatBoxDefense()!=box || !combatChit.getPlacedAsParry()) continue;
+			boolean hasWeapon = false;
+			boolean missileWeapon = false;
+			boolean enchantedWeapon = false;
+			Harm baseHarm = CharacterChitComponent.getHarmForRealmComponent(chit); // harm from the attack (ignoring the weapon)
+			ArrayList<WeaponChitComponent> weapons = getActiveWeapons();
+			if (weapons != null) {
+				for (WeaponChitComponent weapon : weapons) {
+					if (combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
+						CombatWrapper wCombat = new CombatWrapper(weapon.getGameObject());
+						if (wCombat.getCombatBoxDefense()==box && wCombat.getPlacedAsParry()) {
+							if (weapon.getGameObject().hasThisAttribute(Constants.IGNORE_ARMOR)) {
+								ignoreArmor = true;
+							}
+							hasWeapon = true;
+							missileWeapon = weapon.isMissile();
+							weaponStrength = weapon.getStrength();
+							sharpness = weapon.getSharpness();
+							enchantedWeapon = weapon.getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON);
+						}
+					}
+				}
+			}
+			if (!hasWeapon) {
+				// Check for treasure weapons
+				for (GameObject tw : getActiveInventory()) {
+					if(!tw.hasThisAttribute("attack")) continue;
+					if (combatChit.getWeaponId().equals(tw.getStringId())) {
+						CombatWrapper twCombat = new CombatWrapper(tw);
+						if (twCombat.getCombatBoxDefense()==box && twCombat.getPlacedAsParry()) {
+							if (tw.hasThisAttribute(Constants.IGNORE_ARMOR)) {
+								ignoreArmor = true;
+							}
+							hasWeapon = true;
+							missileWeapon = tw.hasThisAttribute("missile");
+							weaponStrength = CharacterChitComponent.getStrengthForTreasure(tw);
+							sharpness = tw.getThisInt("sharpness");
+							sharpness += tw.getThisInt(Constants.ADD_SHARPNESS);
+							enchantedWeapon = tw.hasThisAttribute(Constants.ENCHANTED_WEAPON);
+							break;
+						}
+					}
+				}
+			}
+			if (!hasWeapon && getGameObject().hasThisAttribute(Constants.FIGHT_NO_WEAPON)) {
+				weaponStrength = baseHarm.getStrength();
+				sharpness = 0;
+			}
+			if (!missileWeapon && baseHarm.getStrength().strongerThan(weaponStrength) && !enchantedWeapon) {
+				weaponStrength.bumpUp();
+			}
+			if (combatChit.getGameObject().hasThisAttribute(Constants.FINAL_CHIT_HARM) && !enchantedWeapon) {
+				Strength chitStrength = new Strength(combatChit.getGameObject().getThisAttribute(Constants.FINAL_CHIT_HARM));
+				if (chitStrength.strongerThan(weaponStrength)) {
+					weaponStrength = chitStrength;
+				}
+			}
+		}
+
+		Harm totalHarm = new Harm(weaponStrength, sharpness, ignoreArmor);
+		return totalHarm;
+	}
+	
 	/**
 	 * This method is called at the beginning of every phase of a character's turn, and at midnight, to make sure
 	 * that ALL inventory is "not new" for purposes of knowing when they can be activated.  (3ed rule 7.5.5.f)

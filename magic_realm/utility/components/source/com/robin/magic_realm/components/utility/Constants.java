@@ -11,7 +11,7 @@ public class Constants {
 	public static final String ANCHOR_TILE = "anchor_tile";
 	public static final String DATA_NAME_COMBAT_FRAME = "CombatFrame";
 	
-	public static final Font HOTSPOT_FONT = new Font("Dialog",Font.BOLD|Font.ITALIC,12);
+	public static final Font HOTSPOT_FONT = new Font("Dialog",Font.BOLD|Font.ITALIC,11);
 	public static final Font RESULT_FONT = new Font("Dialog",Font.BOLD,12);
 	public static final Font VUL_FONT = new Font("Dialog",Font.BOLD,16);
 	public static final Font ATTRIBUTE_FONT = new Font("Dialog",Font.BOLD,11);
