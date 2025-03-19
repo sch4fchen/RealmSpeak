@@ -2781,7 +2781,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return highest;
 	}
-	public int getReplaceFight() {
+	private int getReplaceFight() {
 		Integer num = getLowestIntegerForActiveInventoryKey(Constants.REPLACE_FIGHT);
 		return num==null?0:num.intValue();
 	}
@@ -2790,7 +2790,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		list.add(target);
 		return canReplaceFight(list);
 	}
-	public boolean canReplaceFight(Collection<RealmComponent> targetComponents) {
+	private boolean canReplaceFight(Collection<RealmComponent> targetComponents) {
 		int replaceFight = getReplaceFight();
 		Speed speedToBeatFight = null;
 		if (replaceFight>0) {
@@ -2830,6 +2830,38 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 		return (speedToBeatMove!=null);
+	}
+	public boolean canReplaceParryThrustAttacks(RealmComponent target) {
+		BattleChit targetChit = (BattleChit) target;
+		CharacterChitComponent characterChit = (CharacterChitComponent) RealmComponent.getRealmComponent(getGameObject());
+		return characterChit.getLengthForParrying(1) > targetChit.getLength();
+	}
+	public boolean canReplaceParrySwingAttacks(RealmComponent target) {
+		BattleChit targetChit = (BattleChit) target;
+		CharacterChitComponent characterChit = (CharacterChitComponent) RealmComponent.getRealmComponent(getGameObject());
+		return characterChit.getAttackSpeedForParrying(2).fasterThan(targetChit.getAttackSpeed());
+	}
+	public boolean canReplaceParrySmashAttacks(RealmComponent target) {
+		BattleChit targetChit = (BattleChit) target;
+		CharacterChitComponent characterChit = (CharacterChitComponent) RealmComponent.getRealmComponent(getGameObject());
+		return characterChit.getHarmForParrying(3).getStrength().strongerThan(targetChit.getHarm().getStrength());
+	}
+	
+	// reposition his attack from the Parry Ahead circle to the	Thrust attack circle, or from Parry to Side to Swing, or from Parry Down to Smash.
+	public boolean canReplaceAlertedParry(RealmComponent target) {
+		for (WeaponChitComponent weapon : getActiveWeapons()) {
+			if (weapon.isAlerted()) {
+				CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
+				if (combat.getCombatBoxDefense()>0 && combat.getPlacedAsParry()) {
+					return true;
+				}
+			}
+		}
+		
+		return false;
+	}
+	public boolean canReplaceParryLikeShield(RealmComponent attacker) {
+		return canReplaceParryThrustAttacks(attacker) || canReplaceParrySwingAttacks(attacker) || canReplaceParrySmashAttacks(attacker) || canReplaceAlertedParry(attacker);
 	}
 	/**
 	 * This method is called at the beginning of every phase of a character's turn, and at midnight, to make sure
