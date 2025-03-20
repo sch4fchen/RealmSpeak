@@ -1344,6 +1344,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.HOUSE1_CHIT_REMAIN_FACE_UP,true);
 		optionPane.setOption(Constants.RANDOM_ON_THE_FLY,true);
 		optionPane.setOption(Constants.MAP_BUILDING_INCREASED_PRIO_TILE_PLACEMENT,true);
+		optionPane.setOption(Constants.SR_ADV_SURVIVAL_TACTICS,true);
+		optionPane.setOption(Constants.SR_ADV_SURVIVAL_TACTICS_PARRY_NOT_ALERTING,true);
 		updateWarnings();
 	}
 	

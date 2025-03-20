@@ -1,5 +1,4 @@
 ::ROADMAP::
-Super Realm Combat optional rule: survival tactics: auto parrying first attacker(s) if no target
 Power Gauntlets: When used to wield a weapon (including dagger), its owner treats Parry Circles as Attack Circles when it is used to parry an attack. When used in a Parry Circle, he cannot parry an attack; he just attacks the target directly, not the target’s attack. You cannot use Survival Tactics when wielding a weapon with this treasure (see Advanced Rule 10.12).
 Poison: Special: the sharpness star added by this spell is ignored when the weapon is used against Grey/Prism Anomalies.
 Purple/Prism Anomalies can block/battle any individual transmorphized into mist.
