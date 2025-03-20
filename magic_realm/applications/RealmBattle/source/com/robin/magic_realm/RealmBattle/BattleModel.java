@@ -1285,10 +1285,6 @@ public class BattleModel {
 				}
 			}
 		}
-		if (!attacker.hasAnAttack()) {
-			logBattleInfo(attacker.getGameObject().getNameWithNumber()+" didn't parry, and thus does not prevent an attack.");
-			return;
-		}
 
 		logBattleInfo(">");
 		RealmLogging.incrementIndent();
