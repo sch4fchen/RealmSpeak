@@ -1092,7 +1092,6 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		}
 		return 0;
 	}
-
 	public int getAttackCombatBox() {
 		RealmComponent rc = getAttackChit();
 		if (rc != null) {
