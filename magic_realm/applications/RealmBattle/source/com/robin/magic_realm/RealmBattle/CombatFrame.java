@@ -2550,6 +2550,7 @@ public class CombatFrame extends JFrame {
 		if (weapons == null || weapons.isEmpty()) {
 			boolean weaponAvailable = false;
 			for (WeaponChitComponent weapon : weapons) {
+				if (weapon.getGameObject().hasThisAttribute(Constants.NO_PARRY)) continue;
 				if (CombatWrapper.hasCombatInfo(weapon.getGameObject())) continue;
 				if (!weapon.isMissile() || activeCharacter.affectedByKey(Constants.PARRY_WITH_MISSILE) || hostPrefs.hasPref(Constants.PARRY_WITH_MISSILE)) {
 					weaponAvailable = true;
@@ -2569,9 +2570,11 @@ public class CombatFrame extends JFrame {
 		String key = "P"+(keyN);
 		if (!mageCastedSpell && weapons != null) {
 			for (RealmComponent chit : fightOptions) {
+				if (chit.getGameObject().hasThisAttribute(Constants.NO_PARRY)) continue;
 				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
 				if(combat.getPlacedAsFightOrParryOrParryShield()) continue;
 				for (WeaponChitComponent weapon : weapons) {
+					if (weapon.getGameObject().hasThisAttribute(Constants.NO_PARRY)) continue;
 					if (CombatWrapper.hasCombatInfo(weapon.getGameObject())) continue;
 					if (weapon.isMissile() && !activeCharacter.affectedByKey(Constants.PARRY_WITH_MISSILE) && !hostPrefs.hasPref(Constants.PARRY_WITH_MISSILE)) continue;
 					key = "P"+(keyN++);
@@ -2904,6 +2907,7 @@ public class CombatFrame extends JFrame {
 		String key = "N"+(keyN);
 		
 		for (GameObject itemGo : activeCharacter.getActiveInventory()) {
+			if (itemGo.hasThisAttribute(Constants.NO_PARRY)) continue;
 			ArmorType armorType = TreasureUtility.getArmorType(itemGo);
 			RealmComponent item = RealmComponent.getRealmComponent(itemGo);
 			if (armorType!=ArmorType.None && armorType!=ArmorType.Special && armorType==ArmorType.Shield) {
@@ -2913,6 +2917,7 @@ public class CombatFrame extends JFrame {
 			}
 		}
 		for (RealmComponent chit : fightOptions) {
+			if (chit.getGameObject().hasThisAttribute(Constants.NO_PARRY)) continue;
 			CombatWrapper combat = new CombatWrapper(chit.getGameObject());
 			if(combat.getPlacedAsFightOrParryOrParryShield()) continue;
 			
@@ -2923,6 +2928,7 @@ public class CombatFrame extends JFrame {
 			}
 			if (!mageCastedSpell && (hostPrefs.hasPref(Constants.OPT_PARRY_LIKE_SHIELD) || activeCharacter.affectedByKey(Constants.PARRY_LIKE_SHIELD))) {
 				for (WeaponChitComponent weapon : weapons) {
+					if (weapon.getGameObject().hasThisAttribute(Constants.NO_PARRY)) continue;
 					if (CombatWrapper.hasCombatInfo(weapon.getGameObject())) continue;
 					if (weapon.isMissile() && !activeCharacter.affectedByKey(Constants.PARRY_WITH_MISSILE) && !hostPrefs.hasPref(Constants.PARRY_WITH_MISSILE)) continue;
 					key = "W"+(keyN++);

@@ -55902,6 +55902,7 @@
         <attribute facing="face_dn" />
         <attribute item="" />
         <attribute super_realm="" />
+		<attribute no_parry="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2038" name="Handy Gloves">
