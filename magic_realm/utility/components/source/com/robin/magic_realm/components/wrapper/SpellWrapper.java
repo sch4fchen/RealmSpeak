@@ -531,7 +531,10 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			RealmComponent rc = RealmComponent.getRealmComponent(target);
 			if (rc.ownedBy(RealmComponent.getRealmComponent(caster))) {
 				if (!hostPrefs.hasPref(Constants.TE_BENEVOLENT_SPELLS) || !isBenevolent()) {
-					BattleUtility.processTreachery(character,rc);
+					if ((!getGameObject().hasThisAttribute(Constants.BENEVOLENT_FOR_LEADERS) || !rc.isNativeLeader())
+					&& (!getGameObject().hasThisAttribute(Constants.BENEVOLENT_FOR_MONSTERS) || !rc.isMonster())) {
+						BattleUtility.processTreachery(character,rc);
+					}
 				}
 			}
 			

@@ -659,6 +659,8 @@ public class Constants {
 	public static final String NEGATIVE_AURA = "negative_aura";
 	public static final String BENEVOLENT_HIRED = "benevolent_hired";
 	public static final String BREAK_IF_INERT = "break_if_inert";
+	public static final String BENEVOLENT_FOR_LEADERS = "benevolent_for_leaders";
+	public static final String BENEVOLENT_FOR_MONSTERS = "benevolent_for_monsters";
 	
 	// Spells
 	public static final String SPELL_ID = "spellID";

@@ -57810,6 +57810,8 @@
         <attribute spell_strength="3" />
         <attribute learnable="" />
         <attribute super_realm="" />
+		<attribute benevolent_for_leaders="" />
+		<attribute benevolent_for_monsters="" />
       </AttributeBlock>
       <AttributeBlock blockName="mist">
         <attribute vulnerability="T" />
