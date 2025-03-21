@@ -1,5 +1,4 @@
 ::ROADMAP::
-Purple/Prism Anomalies can battle any individual transmorphized into mist.
 Enchant Weapon: any individual wielding the target weapon can target and attack individuals transformed into mist.
 Enchant Weapon: While targeting a Purple or Prism Anomaly, this spell is nullified.
 Melt into Mist: only move actions; canot follow or be followed; can be charged (difference), The target cannot attack or be attacked, except by individuals affected by the Enchant Weapon spell, If attacked, Mist’s vulnerability is Tremendous and non-armored; targeted monster stills prowls (like in base MR) even if ‘X’ weight
@@ -47,13 +46,14 @@ Would be nice to make weapon abilities too:
 	Immobilizing2 - When it hits all attacks undercut in next round
 	Stunning - Target cannot play an attack next round
 
-Version 1.3.0.0
+Version 1.2.1.0
 SUPER REALM:
 # Optional Rule: Surviving Tactics
 # Grey/Prism Anomalies are ignore additional sharpness of poison
 # Power Gauntlets cannot be used to parry
 # Correct amount of VPs depending on character level
-# Purple and Prism anomalies can block and follow mist like characters
+# Purple and Prism Anomalies can block and follow mist like characters
+# Purple and Prism Anomalies can battle mist like individuals
 # Optional Rules: Commerce: adapt prices for native groups
 NEW FEATURES:
 # Optional Rule: Increase quest hand size limit by one

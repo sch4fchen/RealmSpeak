@@ -1992,7 +1992,7 @@ public class CombatFrame extends JFrame {
 
 	}
 	private boolean lureDenizen(RealmComponent lurer,int boxA,int boxD,RealmComponent denizen) {
-		if (denizen.isMistLike()) {
+		if (denizen.isMistLike() && !denizen.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) {
 			String message = "The "+lurer.getGameObject().getName()
 							+" cannot lure the "+denizen.getGameObject().getName()
 							+" because it has been transmorphed into mist.";
@@ -2187,7 +2187,7 @@ public class CombatFrame extends JFrame {
 		return assignTarget(activeParticipant,list);
 	}
 	public boolean canBeSeen(RealmComponent rc,boolean magicAttack) {
-		return !rc.isMistLike() && (!magicAttack || !rc.hasMagicProtection())
+		return (!rc.isMistLike() || activeCharacter.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) && (!magicAttack || !rc.hasMagicProtection())
 				&& (!rc.isHidden() || activeCharacter.foundHiddenEnemy(rc.getGameObject()) || rc.getOwner()==activeParticipant);
 	}
 	/**

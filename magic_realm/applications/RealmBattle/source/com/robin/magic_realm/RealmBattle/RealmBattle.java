@@ -410,7 +410,6 @@ public class RealmBattle {
 		}
 		RealmComponent charRc = RealmComponent.getRealmComponent(character.getGameObject());
 		boolean activeCharacterIsHere = model.getBattleGroup(charRc).getCharacterInBattle()!=null;
-		boolean activeUnmistyCharacterIsHere = activeCharacterIsHere && !character.isMistLike();
 		logger.finer(character.getGameObject().getName()+" is here = "+activeCharacterIsHere);
 		switch(character.getCombatStatus()) {
 			case Constants.COMBAT_PREBATTLE:
@@ -434,7 +433,7 @@ public class RealmBattle {
 					}
 				}
 				
-				if ((!activeCharacterIsHere || character.isMistLike()) && !hirelingsCanLure) {
+				if (!activeCharacterIsHere && !hirelingsCanLure) {
 					return false;
 				}
 			
@@ -442,6 +441,7 @@ public class RealmBattle {
 				RealmComponent characterTarget = null;
 				if (denizens!=null && denizens.size()>0) {
 					for (RealmComponent rc : denizens.getBattleParticipants()) {
+						if (character.isMistLike() && !rc.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) continue;
 						RealmComponent target = rc.getTarget();
 						RealmComponent target2 = rc.get2ndTarget();
 						if (target==null) { // only need one unassigned denizen
@@ -473,6 +473,9 @@ public class RealmBattle {
 					// If one of the current character's hirelings can lure, then return true here
 					return hirelingsCanLure;
 				}
+				if (character.isMistLike()) {
+					return false;
+				}
 				break;
 			case Constants.COMBAT_RANDOM_ASSIGN:
 				// Only true if the character "wins" a random assignment, and needs to select an
@@ -484,12 +487,18 @@ public class RealmBattle {
 				 * hired natives, or if combat can be skipped
 				 */
 				int count = 0;
+				int countAll = 0;
+				boolean ignoreMistLike = false;
 				for (CharacterChitComponent chit : model.getAllParticipatingCharacters()) {
+					if (chit.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) {
+						ignoreMistLike = true;
+					}
+					countAll++;
 					if (!chit.isMistLike()) {
 						count++;
 					}
 				}
-				boolean multipleCharacters = count>1;
+				boolean multipleCharacters = count>1 || (countAll>1 && ignoreMistLike);
 				BattleGroup battleGroup = model.getParticipantsBattleGroup(RealmComponent.getRealmComponent(character.getGameObject()));
 				Collection<RealmComponent> hirelings = battleGroup.getHirelings();
 				boolean unassignedHirelings = false;
@@ -506,13 +515,13 @@ public class RealmBattle {
 			case Constants.COMBAT_ASSIGN: // assigning targets
 				if (!peace && !combat.isPeaceful()) {
 					// First check to see if there are any unassigned denizens or an active combat spell
-					if (activeUnmistyCharacterIsHere && (model.areUnassignedDenizens() || combat.getCastSpell()!=null)) {
+					if (activeCharacterIsHere && (!character.isMistLike() || model.unassignedDenizenCanAttackMistLike()) && (model.areUnassignedDenizens() || combat.getCastSpell()!=null)) {
 						return true;
 					}
 					
 					// Test to see if the character is present and has potential targets to assign
 					BattleGroup group = model.getBattleGroup(charRc);
-					if (activeUnmistyCharacterIsHere) {
+					if (activeCharacterIsHere && !character.isMistLike()) {
 						Collection<RealmComponent> c = model.getAllOtherBattleParticipants(group,true,character.getTreacheryPreference());
 						if (c.size()>0) {
 							return true;

@@ -4,6 +4,7 @@ import java.util.*;
 
 import com.robin.general.swing.DieRoller;
 import com.robin.magic_realm.components.*;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.DieRollBuilder;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
@@ -136,7 +137,7 @@ public class BattleGroup implements Comparable {
 		
 		for (RealmComponent bp:battleParticipants) {
 			if (!bp.isHidden()
-					&& !bp.isMistLike()
+					&& (!bp.isMistLike() || attacker.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE))
 					&& !bp.isImmuneTo(attacker)
 					&& !hasPinningAttacker(bp)) {
 				
@@ -162,11 +163,11 @@ public class BattleGroup implements Comparable {
 	 */
 	public boolean canBeAttackedBy(RealmComponent attacker) {
 		CharacterChitComponent cc = getCharacterInBattle();
-		if (cc!=null && !cc.isHidden() && !cc.isMistLike() && !cc.isImmuneTo(attacker)) {
+		if (cc!=null && !cc.isHidden() && (!cc.isMistLike() || attacker.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) && !cc.isImmuneTo(attacker)) {
 			return true;
 		}
 		for (RealmComponent bp:getBattleParticipants()) {
-			if (!bp.isCharacter() && !bp.isHidden() && !bp.isMistLike()) {
+			if (!bp.isCharacter() && !bp.isHidden() && (!bp.isMistLike() || attacker.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE))) {
 				return true;
 			}
 		}
@@ -175,7 +176,7 @@ public class BattleGroup implements Comparable {
 	public RealmComponent getAvailableParticipant(RealmComponent attacker) {
 		// First, search for the character, and return if not hidden.
 		RealmComponent character = getCharacterInBattle();
-		if (character!=null && !character.isHidden() && !character.isMistLike()) {
+		if (character!=null && !character.isHidden() && (!character.isMistLike() || attacker.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE))) {
 			// Make sure there is not a demon immunity thing
 			if (!character.isImmuneTo(attacker)) {
 				return character;

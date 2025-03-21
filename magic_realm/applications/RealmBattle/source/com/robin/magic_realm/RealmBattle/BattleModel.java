@@ -123,7 +123,7 @@ public class BattleModel {
 			for (RealmComponent denizen:denizenBattleGroup.getBattleParticipants()) {
 				CombatWrapper combat = new CombatWrapper(denizen.getGameObject());
 				
-				if (denizen.isMistLike() || combat.isPeaceful() || isPacifiedByAllCharacters(denizen) || combat.isPacified()) continue;
+				if (combat.isPeaceful() || isPacifiedByAllCharacters(denizen) || combat.isPacified()) continue;
 				
 				for (BattleGroup group:getAllBattleGroups(false)) {
 					if (!group.canBeAttackedBy(denizen)) continue;
@@ -164,7 +164,20 @@ public class BattleModel {
 		}
 		return false;
 	}
-
+	
+	public boolean unassignedDenizenCanAttackMistLike() {
+		if (denizenBattleGroup != null) {
+			for (RealmComponent denizen : denizenBattleGroup.getBattleParticipants()) {
+				if (denizen.getTarget()==null && denizen.get2ndTarget()==null) {
+					if (denizen.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+		
 	public void addBattleGroup(BattleGroup group) {
 		if (group.isDenizen()) {
 			if (denizenBattleGroup == null) {
@@ -246,7 +259,7 @@ public class BattleModel {
 		if (denizenBattleGroup != null) {
 			for (RealmComponent denizen:denizenBattleGroup.getBattleParticipants()) {
 				CombatWrapper combat = new CombatWrapper(denizen.getGameObject());
-				if (!denizen.isAssigned() && !combat.isPeaceful()  && !combat.isPacified() && !denizen.isMistLike()) {
+				if (!denizen.isAssigned() && !combat.isPeaceful()  && !combat.isPacified()) {
 					ArrayList<BattleGroup> availableGroups = new ArrayList<>();
 					// Find one possibility for each BattleGroup
 					for (BattleGroup bg:characterBattleGroups) {
