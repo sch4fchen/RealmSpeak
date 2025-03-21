@@ -496,6 +496,20 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 			}
 		}
 		
+		if (getGameObject().hasThisAttribute(Constants.POISON_IMMUNITY)) {
+			if (attacker.isCharacter()) {
+				WeaponChitComponent weapon = ((CharacterChitComponent)attacker).getAttackingWeapon();
+				if (weapon!=null && weapon.getGameObject().hasThisAttribute(Constants.POISON)) {
+					attackerHarm.dampenSharpness();
+					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Native has poison immunity and additional sharpness is ignored: "+attackerHarm.toString());
+				}
+			}
+			if (attacker.getGameObject().hasThisAttribute(Constants.POISON)) {
+				attackerHarm.dampenSharpness();
+				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Native has poison immunity and additional sharpness is ignored: "+attackerHarm.toString());
+			}
+		}
+		
 		ArrayList<SpellWrapper> holyShields = SpellUtility.getBewitchingSpellsWithKey(getGameObject(),Constants.HOLY_SHIELD);
 		if ((holyShields!=null&&!holyShields.isEmpty()) || affectedByKey(Constants.HOLY_SHIELD) || combat.hasHolyShield(attacker.getAttackSpeed(),attacker.getLength())) {
 			for (SpellWrapper spell : holyShields) {

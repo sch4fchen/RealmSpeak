@@ -418,6 +418,7 @@ public class Constants {
 	public static final String SPELL_DENIZEN = "spell_denizen";
 	public static final String SPELL_PRE_BATTLE = "spell_pre_battle";
 	public static final String CLAN = "clan";
+	public static final String POISON_IMMUNITY = "poison_immunity";
 	
 	public static final String DRAGON = "dragon";
 	public static final String DRAKE = "drake";
@@ -536,6 +537,7 @@ public class Constants {
 	public static final String LOCKPICK = "lockpick";
 	public static final String MIST_LIKE = "mist_like";
 	public static final String REMOVE_CURSES = "remove_curses";
+	public static final String POISON = "poison";
 	
 	// New Spells
 	public static final String SUMMONING = "summoning";

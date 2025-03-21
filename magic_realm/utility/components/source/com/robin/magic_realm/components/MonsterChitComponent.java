@@ -752,6 +752,20 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 			}
 		}
 		
+		if (getGameObject().hasThisAttribute(Constants.POISON_IMMUNITY)) {
+			if (attacker.isCharacter()) {
+				WeaponChitComponent weapon = ((CharacterChitComponent)attacker).getAttackingWeapon();
+				if (weapon!=null && weapon.getGameObject().hasThisAttribute(Constants.POISON)) {
+					harm.dampenSharpness();
+					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Monster has poison immunity and additional sharpness is ignored: "+harm.toString());
+				}
+			}
+			if (attacker.getGameObject().hasThisAttribute(Constants.POISON)) {
+				harm.dampenSharpness();
+				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Monster has poison immunity and additional sharpness is ignored: "+harm.toString());
+			}
+		}
+		
 		if (!harm.getIgnoresArmor() && hasActiveShield()) {
 			MonsterPartChitComponent shield = getShield();
 			CombatWrapper shieldCombat = new CombatWrapper(getShield().getGameObject());

@@ -75,7 +75,7 @@ public class SpellEffectFactory {
 			case "persuade": return new ISpellEffect[]{new PacifyEffect(1)};
 		
 			case "phantasm": return new ISpellEffect[]{new PhantasmEffect()};
-			case "poison": return new ISpellEffect[]{new AddSharpnessEffect(1)};
+			case "poison": return new ISpellEffect[]{new AddSharpnessEffect(1),new ApplyNamedEffect(Constants.POISON)};
 			case "power of the pit": return new ISpellEffect[]{new PowerPitEffect()};
 		
 			case "prayer": return new ISpellEffect[]{new ExtraActionEffect("R")};
