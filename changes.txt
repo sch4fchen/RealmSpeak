@@ -17,7 +17,6 @@ Absorb Essence: any denizens and Attention chits assigned to it become assigned 
 Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells) or with Hurricane Winds, can be opened by 'T' strength Fly chit (including flying denizens)
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt e.g. for assigning VPs
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt e.g. for assigning VPs
-Super Realm: Optional Rules: Commerce (SR: 11.12, p.126) - adapt e.g. rules for new native groups
 Super Realm: Events (Global Events = optional rule 11.11): 33 Events
 Super Realm: Optional Rules: Selling (SR: 10.11, p.116)
 Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.121)
@@ -56,6 +55,7 @@ SUPER REALM:
 # Grey/Prism Anomalies are ignore additional sharpness of poison
 # Power Gauntlets cannot be used to parry
 # Correct amount of VPs depending on character level
+# Optional Rules: Commerce: adapt prices for native groups
 NEW FEATURES:
 # Optional Rule: Increase quest hand size limit by one
 # Optional Rule: Easier Spell Learning

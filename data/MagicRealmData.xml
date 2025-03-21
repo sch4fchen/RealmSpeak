@@ -37181,6 +37181,7 @@
         <attribute setup_start="Cultist Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="wesnoth/units/tharis-magi" />
+		<attribute commerce="N" />
         <attribute denizen="" />
         <attribute icon_size="0.9" />
         <attribute no_change_tactics="" />
@@ -39788,6 +39789,7 @@
         <attribute setup_start="Elf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="wesnoth/units/elves-wood" />
+		<attribute commerce="N" />
         <attribute denizen="" />
         <attribute magic_protection="" />
         <attribute missile="" />
@@ -41929,6 +41931,7 @@
         <attribute setup_start="Dwarf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="wesnoth/units/dwarves" />
+		<attribute commerce="N" />
         <attribute denizen="" />
         <attribute needs_init="" />
         <attribute armored="" />
@@ -47588,6 +47591,7 @@
         <attribute setup_start="Bandit Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="wesnoth/units/human-outlaws" />
+		<attribute commerce="N" />
         <attribute denizen="" />
         <attribute needs_init="" />
         <attribute icon_size="0.9" />
@@ -50276,6 +50280,7 @@
         <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="wesnoth/units/human-peasants" />
+		<attribute commerce="F" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="2" />
@@ -50425,6 +50430,7 @@
         <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="wesnoth/units" />
+		<attribute commerce="N" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="1" />
@@ -50583,6 +50589,7 @@
         <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="wesnoth/units/woses" />
+		<attribute commerce="N" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="4" />
@@ -50740,6 +50747,7 @@
         <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="wesnoth/units/skykingdom-elementalists" />
+		<attribute commerce="N" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="3" />
@@ -51023,7 +51031,7 @@
         <attribute setup_start="Zealot Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="wesnoth/units/skykingdom-magi" />
-        <attribute commerce="F,N" />
+        <attribute commerce="F" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute clan="1" />
@@ -51388,6 +51396,7 @@
         <attribute setup_start="Aborigine Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="wesnoth/units/addons" />
+		<attribute commerce="N" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="2" />
@@ -51538,6 +51547,7 @@
         <attribute setup_start="Coven Dwelling" />
         <attribute hire_type="single" />
         <attribute icon_folder="wesnoth/units" />
+		<attribute commerce="N" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="2" />
@@ -51727,6 +51737,7 @@
         <attribute setup_start="Hunter Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="wesnoth/units/addons" />
+		<attribute commerce="F,N" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="4" />
@@ -52091,6 +52102,7 @@
         <attribute setup_start="Mercenary Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="wesnoth/units/addons" />
+		<attribute commerce="F,N" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="1" />
@@ -52308,6 +52320,7 @@
         <attribute setup_start="Conjuror Dwelling" />
         <attribute hire_type="single" />
         <attribute icon_folder="wesnoth/units/quenoth" />
+		<attribute commerce="N" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="5" />
@@ -52575,6 +52588,7 @@
         <attribute setup_start="Enchanter Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="wesnoth/units/tharis-magi" />
+		<attribute commerce="F,N" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="6" />
