@@ -39980,6 +39980,7 @@
         <attribute anomaly="" />
         <attribute box_num="3" />
         <attribute blunt_immunity="" />
+		<attribute ignore_mist_like="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -40022,6 +40023,7 @@
         <attribute box_num="4" />
         <attribute blunt_immunity="" />
 		<attribute poison_immunity="" />
+		<attribute ignore_mist_like="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />

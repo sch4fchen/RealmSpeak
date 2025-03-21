@@ -982,13 +982,15 @@ public class RealmUtility {
 		if (character.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)) return null;
 		// Player's current clearing is checked for monsters, and blocked if needed
 		ArrayList<RealmComponent> blockers = new ArrayList<>();
-		if (!character.isMinion() && !character.isHidden() && !isFollowing && !character.isMistLike()) {
+		if (!character.isMinion() && !character.isHidden() && !isFollowing) {
 			TileLocation tl = character.getCurrentLocation();
 			if (tl!=null && tl.hasClearing() && !tl.isBetweenClearings()) {
 				ClearingDetail currentClearing = tl.clearing;
 				Collection<RealmComponent> components = currentClearing.getClearingComponents();
 				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
+				boolean mistLike = character.isMistLike();
 				for (RealmComponent rc : components) {
+					if (mistLike && !rc.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) continue;
 					if ((monsters && rc instanceof MonsterChitComponent) || (natives && rc instanceof NativeChitComponent)) {
 						// don't block if monster has an owner (until I can get to that piece of code!)
 						if (rc.getOwner()==null) {

@@ -929,7 +929,9 @@ public class ActionRow {
 						if (!followingHirelings.isEmpty()) {
 							// Drop following hirelings in the clearing
 							for (RealmComponent fh:followingHirelings) {
-								ClearingUtility.moveToLocation(fh.getGameObject(),current);
+								if (!fh.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) {
+									ClearingUtility.moveToLocation(fh.getGameObject(),current);
+								}
 							}
 						}
 					}
