@@ -808,6 +808,7 @@ public class Constants {
 	public static final String FE_STEEL_AGAINST_MAGIC = "SteelAgainstMagic";
 	public static final String FE_AMBUSH_END_OF_COMBATROUND = "AmbushRollEndOfCombatround";
 	public static final String FE_PONY_NO_MOUNTAINS = "PonyNoMountains";
+	public static final String FE_GLORY = "Glory";
 	
 	// My House Rules
 	public static final String HOUSE1_DWARF_ACTION = "DwarfActions";

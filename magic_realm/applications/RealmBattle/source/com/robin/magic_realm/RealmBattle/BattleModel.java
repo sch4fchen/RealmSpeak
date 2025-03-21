@@ -951,7 +951,7 @@ public class BattleModel {
 		processHits(attackBlockOrder, attackBlocks, round);
 		
 		// Now, do all the appropriate scoring for characters that killed things
-		scoreKills(round);
+		scoreKills(round, hostPrefs);
 		
 		for (GameObject kill : killedTallyHash.keySet()) {
 			tile.addKill(kill);
@@ -1185,7 +1185,7 @@ public class BattleModel {
 		return attackAfterCasting;
 	}
 	
-	private void scoreKills(int round) {
+	private void scoreKills(int round, HostPrefWrapper hostPrefs) {
 		for (GameObject attacker : killerOrder) { // use killerOrder instead of killTallyHash.keySet to guarantee proper ordering of calculations (fixes BUG 1719)
 			RealmComponent rc = RealmComponent.getRealmComponent(attacker);
 			RealmComponent owner = rc.getOwner();
@@ -1238,6 +1238,26 @@ public class BattleModel {
 								+spoils.getFameNotorietyString()
 								+" for the death of the "
 								+kill.getNameWithNumber());
+						if (hostPrefs.hasPref(Constants.FE_GLORY)) {
+							for (GameObject item : character.getInventory()) {
+								RealmComponent itemRc = RealmComponent.getRealmComponent(item);
+								if (!itemRc.isGoldSpecial()) continue;
+								GoldSpecialChitComponent gs = (GoldSpecialChitComponent)rc;
+								if (!gs.isCampaign()) continue;
+								for (String foe : gs.getFoes()) {
+									if (kill.hasThisAttribute(foe) || kill.hasThisAttribute(foe.toLowerCase())
+											|| (kill.hasThisAttribute("native") && kill.getThisAttribute("native").toLowerCase().matches(foe.toLowerCase()))
+											|| (kill.hasThisAttribute("icon_type") && kill.getThisAttribute("icon_type").toLowerCase().matches(foe.toLowerCase()))) {
+										character.addFame(spoils.getNotoriety());
+										logBattleInfo("The "+character.getGameObject().getName()
+												+" gets additional"
+												+spoils.getNotoriety()
+												+" fame (Glory rule) for the death of the "
+												+kill.getNameWithNumber());
+									}
+								}
+							}
+						}
 					}
 
 					if (spoils.hasGold() && rc.isPlayerControlledLeader()) {

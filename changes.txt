@@ -41,8 +41,6 @@ Super Realm: Optional Rules: Hiring Unused Characters (SR: 11.4, p.122)
 Super Realm: Optional Rules: Range Setup (SR: 11.10, p.126)
 Super Realm: Optional Rules: Cornered (SR: 11.13, p.128)
 Super Realm: Player building map: distribute tiles equally (including river tiles), distribute river tiles first, then grotto, then rest, each player has 3 tiles in the hand and draws after placing, skip player if he cannot place any tile (and he has no river tile), if all players are skipped or player would be skipped but has river tile, undo last placement, do not allow placing grotto before all other river tiles have been placed
-First Edition Optional Rule - https://boardgamegeek.com/thread/2503528/1st-edition-vs-3rd-edition: Native blocking, First Edition Optional Rule - Native kiling, e.g. grudges but instantly relationship becomes enemy status, Followers summon Monsters?, Hired native Leaders?, learning spells? campaigns?, combat endls only if no attack was made
-First Edition Optional Rule - Glory: When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.
 ---Additional and new features---
 Super Realm: icons for site chits, sound and warning chits, characters
 Quest: option add icon for minor character
@@ -60,6 +58,7 @@ SUPER REALM:
 NEW FEATURES:
 # Optional Rule: Increase quest hand size limit by one
 # Optional Rule: Easier Spell Learning
+# First Edition Optional Rule: Glory
 
 Version 1.2.0.9
 SUPER REALM:
