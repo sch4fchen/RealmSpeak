@@ -4303,6 +4303,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 			if (hostPrefs.hasPref(Constants.EXP_SUDDEN_DEATH) || hostPrefs.isFixedVps()) {
 				vps = hostPrefs.getVpsToAchieve();
 			}
+			else if (hostPrefs.hasPref(Constants.SR_DEDUCT_VPS)) {
+				vps = 12;
+			}
 			else {
 				int totalMonths = hostPrefs.getNumberMonthsToPlay();
 				for (int i = 0; i < totalMonths; i++) {
@@ -4311,8 +4314,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 				}
 			}
 
+			if (!hostPrefs.hasPref(Constants.SR_DEDUCT_VPS)) {
 			// Lower level characters get to choose fewer VPs
-			vps -= (Constants.MAX_LEVEL - level);
+				vps -= (Constants.MAX_LEVEL - level);
+			} else {
+				vps -= 3*(Constants.MAX_LEVEL - level);
+			}
 
 			if (vps < Constants.MINIMUM_VPS) {
 				vps = Constants.MINIMUM_VPS;

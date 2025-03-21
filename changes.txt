@@ -54,7 +54,8 @@ Version 1.3.0.0
 SUPER REALM:
 # Optional Rule: Surviving Tactics
 # Grey/Prism Anomalies are ignore additional sharpness of poison
-# Power Gauntlets cannot be used for parry
+# Power Gauntlets cannot be used to parry
+# Correct amount of VPs depending on character level
 NEW FEATURES:
 # Optional Rule: Increase quest hand size limit by one
 # Optional Rule: Easier Spell Learning
