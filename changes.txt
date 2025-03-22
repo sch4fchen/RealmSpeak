@@ -14,6 +14,7 @@ Absorb Essence: any denizens and Attention chits assigned to it become assigned 
 Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells) or with Hurricane Winds, can be opened by 'T' strength Fly chit (including flying denizens)
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt
+Super Realm: Optional Rules: Thematic Roving Natives (SR: 10.5, p.114): In combat, when any roving native Dwarf (not just the leader) is dark-side up, they subtract one from their move speed when they do the Duck maneuver.
 Super Realm: Events (Global Events = optional rule 11.11): 33 Events
 Super Realm: Optional Rules: Selling (SR: 10.11, p.116)
 Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
@@ -21,7 +22,6 @@ Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
 Super Realm: Optional Rules: Sentimental Value (SR: 10.6, p.115)
 Super Realm: Optional Rules: Grounded Missions and Tasks (SR: 10.8, p.115)
 Super Realm: Optional Rules: Regrouping (SR: 10.10, p.115)
-Super Realm: Optional Rules: Thematic Roving Natives (SR: 10.5, p.114): In combat, when any roving native Dwarf (not just the leader) is dark-side up, they subtract one from their move speed when they do the Duck maneuver.
 
 ---Super Realms Rules + Optional Rules---
 Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.123): Witch, Witch King

@@ -53,6 +53,8 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"Flying",Constants.FLYING,""},
 		{"Natives become Friendly when you buy drinks.",Constants.BARDS_LUTE,""},
 		{"You cannot be blocked by Ghosts or Wraiths.",Constants.SPIRIT_CHARM,""},
+		{"Immun to posion - additional sharpness doesn't count.",Constants.POISON_IMMUNITY,""},
+		{"Can follow and combat mist like individuals.",Constants.IGNORE_MIST_LIKE,""},
 	};
 	private static String[][] MISC_ADVANTAGE_COMBAT_AND_SPELLCASTING = {
 		{"Effort Limit of 3",Constants.EFFORT_LIMIT,"3"},
