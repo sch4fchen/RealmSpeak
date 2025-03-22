@@ -13,6 +13,8 @@ import javax.swing.event.ListSelectionListener;
 import com.robin.game.objects.*;
 import com.robin.general.io.PreferenceManager;
 import com.robin.general.swing.IconFactory;
+import com.robin.general.util.RandomNumber;
+import com.robin.general.util.RandomNumberType;
 import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderModel;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.TileLocation;
@@ -209,6 +211,7 @@ public class BattleBuilder extends JFrame {
 				setVisible(false);
 				if (skipRepositioningOption.isSelected()) BattleModel.SKIP_REPOSITIONING = true;
 				if (forceMonsterFlipOption.isSelected()) BattleModel.FORCE_MONSTER_FLIP = true;
+				setupRandomNumberGenerator(hostPrefs);
 				CombatFrame.startCombat(gameData);
 			}
 		});
@@ -223,11 +226,26 @@ public class BattleBuilder extends JFrame {
 				setVisible(false);
 				if (skipRepositioningOption.isSelected()) BattleModel.SKIP_REPOSITIONING = true;
 				if (forceMonsterFlipOption.isSelected()) BattleModel.FORCE_MONSTER_FLIP = true;
+				setupRandomNumberGenerator(hostPrefs);
 				CombatFrame.startCombat(gameData);
 			}
 		});
 		box.add(finishButton);
 		getContentPane().add(box,"South");
+	}
+	public static void setupRandomNumberGenerator(HostPrefWrapper hostPrefs) {
+		if (hostPrefs.hasPref(Constants.RANDOM_R250_521)) {
+			RandomNumber.setRandomNumberGenerator(RandomNumberType.R250_521);
+		}
+		else if (hostPrefs.hasPref(Constants.RANDOM_MERSENNE_TWISTER)) {
+			RandomNumber.setRandomNumberGenerator(RandomNumberType.MersenneTwister);
+		}
+		else if (hostPrefs.hasPref(Constants.RANDOM_ON_THE_FLY)) {
+			RandomNumber.setRandomNumberGenerator(RandomNumberType.RandomOnTheFly);
+		}
+		else {
+			RandomNumber.setRandomNumberGenerator(RandomNumberType.System);
+		}
 	}
 	public boolean initialize(GameData data) {
 		prefs = new PreferenceManager("BattleBuilder","BattleBuilder.cfg") {
