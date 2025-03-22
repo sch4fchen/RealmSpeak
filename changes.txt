@@ -59,6 +59,8 @@ NEW FEATURES:
 # Optional Rule: Increase quest hand size limit by one
 # Optional Rule: Easier Spell Learning
 # First Edition Optional Rule: Glory
+BUGS/ISSUES:
+# Fix parry in combat
 
 Version 1.2.0.9
 SUPER REALM:
