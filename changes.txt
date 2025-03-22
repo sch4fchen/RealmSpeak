@@ -61,6 +61,7 @@ NEW FEATURES:
 # First Edition Optional Rule: Glory
 BUGS/ISSUES:
 # Fix parry in combat
+# Fix monster weapons in 3x3 combat grid
 
 Version 1.2.0.9
 SUPER REALM:
