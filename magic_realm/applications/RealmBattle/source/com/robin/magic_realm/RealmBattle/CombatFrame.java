@@ -2212,9 +2212,10 @@ public class CombatFrame extends JFrame {
 	protected RealmComponent assignTarget(RealmComponent attacker,Collection<RealmComponent> list) {
 		if (list!=null && list.size()>0) {
 			ArrayList<RealmComponent> visibleList = findCanBeSeen(list,false);
-			String chooserTitle = "Select a target:";
+			String attackerName = attacker.getGameObject().getNameWithNumber(); 
+			String chooserTitle = attackerName+": Select a target:";
 			if (attacker.getTarget()!=null) {
-				chooserTitle = "Select secondary target:";
+				chooserTitle = attackerName+": Select secondary target:";
 			}
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,chooserTitle,true);
 			visibleList = CombatSheet.filterNativeFriendly(attacker, visibleList);

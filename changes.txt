@@ -62,6 +62,7 @@ NEW FEATURES:
 BUGS/ISSUES:
 # Fix parry in combat
 # Fix monster weapons in 3x3 combat grid
+# Fix selecting a target on denizen combat sheet
 
 Version 1.2.0.9
 SUPER REALM:
