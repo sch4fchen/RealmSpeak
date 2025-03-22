@@ -4307,7 +4307,9 @@ public class CombatFrame extends JFrame {
 			}
 			else if (result.equals("Play Battle")) {
 				GameData loadedData = loadBattleSituation();
-				BattleBuilder.setupRandomNumberGenerator(HostPrefWrapper.findHostPrefs(loadedData));
+				if (loadedData!=null) {
+					BattleBuilder.setupRandomNumberGenerator(HostPrefWrapper.findHostPrefs(loadedData));
+				}
 				startCombat(loadedData);
 			}
 			else {
