@@ -2213,9 +2213,9 @@ public class CombatFrame extends JFrame {
 		if (list!=null && list.size()>0) {
 			ArrayList<RealmComponent> visibleList = findCanBeSeen(list,false);
 			String attackerName = attacker.getGameObject().getNameWithNumber(); 
-			String chooserTitle = attackerName+": Select a target:";
+			String chooserTitle = attackerName+": Select a target";
 			if (attacker.getTarget()!=null) {
-				chooserTitle = attackerName+": Select secondary target:";
+				chooserTitle = attackerName+": Select secondary target";
 			}
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,chooserTitle,true);
 			visibleList = CombatSheet.filterNativeFriendly(attacker, visibleList);

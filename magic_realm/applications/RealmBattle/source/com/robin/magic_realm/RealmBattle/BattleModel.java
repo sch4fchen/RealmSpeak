@@ -2259,7 +2259,7 @@ public class BattleModel {
 				CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 				int boxA = combat.getCombatBoxAttack();
 				int boxD = combat.getCombatBoxDefense();
-				if (boxA>0 || boxD>0) {
+				if (boxA>0 || boxD>0 || hostPrefs.hasPref(Constants.SR_COMBAT)) {
 					boxHash.put(new Key(boxA,boxD),rc);
 					if (rc.isMonster()) {
 						// Make sure we get monster parts!

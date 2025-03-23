@@ -46,7 +46,8 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 Version 1.2.1.1
-SUPER REALM:
+BUGS/ISSUES:
+# Fix monster position on 3x3 combat grid
 
 Version 1.2.1.0
 SUPER REALM:
