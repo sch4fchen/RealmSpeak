@@ -379,6 +379,15 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		return getAttackCombatBox()>0;
 	}
 	
+	public boolean hasAnParry() {
+		RealmComponent rc = getAttackChit();
+		if (rc != null) {
+			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
+			return combat.getCombatBoxDefense()>0;
+		}
+		return false;
+	}
+	
 	public WeaponChitComponent getAttackingWeapon() {
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
 		RealmComponent rc = getAttackChit();

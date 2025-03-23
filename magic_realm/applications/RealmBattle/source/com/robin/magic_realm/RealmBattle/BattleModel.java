@@ -1318,6 +1318,11 @@ public class BattleModel {
 				}
 			}
 		}
+		
+		if (attacker.isCharacter() && ((CharacterChitComponent)attacker).hasAnParry()) {
+			logBattleInfo(attacker.getGameObject().getNameWithNumber()+" didn't parry, and thus does not prevent an attack.");
+			return;
+		}
 
 		logBattleInfo(">");
 		RealmLogging.incrementIndent();
@@ -1916,6 +1921,11 @@ public class BattleModel {
 			return;
 		}
 		if (parry) {
+			if (attacker.isCharacter() && ((CharacterChitComponent)attacker).hasAnParry()) {
+				logBattleInfo(attacker.getGameObject().getNameWithNumber()+" didn't parry, and thus does not prevent an attack.");
+				return;
+			}
+			
 			ArrayList<BattleChit> targets = new ArrayList<>();
 			if (!target.isCharacter()) {
 				targets.add(target);
