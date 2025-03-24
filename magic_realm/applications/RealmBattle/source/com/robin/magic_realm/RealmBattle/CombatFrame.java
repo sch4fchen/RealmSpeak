@@ -395,7 +395,7 @@ public class CombatFrame extends JFrame {
 	public void updateHotspotIndicators() {
 		int n=0;
 		for (RealmComponent rc:new ArrayList<>(allParticipants)) {
-			CombatSheet cs = CombatSheet.createCombatSheet(this,currentBattleModel,rc,interactiveFrame, hostPrefs);
+			CombatSheet cs = CombatSheet.createCombatSheet(this,currentBattleModel,rc,interactiveFrame,hostPrefs);
 			participantHasHotspots[n++] = cs.hasHotspots();
 		}
 		participantTable.revalidate();

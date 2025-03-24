@@ -74,6 +74,14 @@ public class CharacterCombatSheet extends CombatSheet {
 	private static final int CHAR_COL2 = 208;
 	private static final int CHAR_COL3 = 322;
 	
+	private static final int CHAR_ROW1_SR = 74;
+	private static final int CHAR_ROW2_SR = 171;
+	private static final int CHAR_ROW3_SR = 268;
+	
+	private static final int CHAR_COL1_SR = 92;
+	private static final int CHAR_COL2_SR = 208;
+	private static final int CHAR_COL3_SR = 322;
+	
 	private static final Point[] CHARACTER_SHEET = {
 			new Point(483,663),
 			
@@ -126,6 +134,58 @@ public class CharacterCombatSheet extends CombatSheet {
 			new Point(CHAR_COL1,CHAR_ROW3),
 	};
 	
+	private static final Point[] CHARACTER_SHEET_SR = {
+			new Point(483,663),
+			
+			// Targets
+			new Point(303,CHAR_ROW1_SR),
+			new Point(CHAR_COL1_SR,CHAR_ROW1_SR),
+			new Point(CHAR_COL2_SR,CHAR_ROW2_SR),
+			new Point(CHAR_COL3_SR,CHAR_ROW3_SR),
+			
+			// Move
+			new Point(CHAR_COL1_SR,690),
+			new Point(CHAR_COL2_SR,690),
+			new Point(CHAR_COL3_SR,690),
+			
+			// Attacks
+			new Point(530,25),
+			new Point(100,CHAR_ROW1_SR),
+			new Point(420,CHAR_ROW2_SR),
+			new Point(600,CHAR_ROW3_SR),
+			
+			// Attacks - Weapon
+			new Point(525,CHAR_ROW1_SR),
+			new Point(525,CHAR_ROW2_SR),
+			new Point(525,CHAR_ROW3_SR),
+			
+			// Defenses
+			new Point(CHAR_COL1_SR,402), //shield
+			new Point(CHAR_COL2_SR,402), //shield
+			new Point(CHAR_COL3_SR,402), //shield
+			new Point(150,507), //breastplate
+			new Point(321,507), //helmet
+			new Point(206,603), //suit of armor
+			
+			new Point(494,458), // Used Chits
+			new Point(400,700), // Charge Chits
+			
+			new Point(CHAR_COL1_SR,CHAR_ROW3_SR), // Dead Box
+			
+			// Parry for Super Realm
+			new Point(CHAR_COL1_SR,390),
+			new Point(CHAR_COL2_SR,390),
+			new Point(CHAR_COL3_SR,390),
+			
+			// Additional targets for Super Realm
+			new Point(CHAR_COL3_SR,CHAR_ROW1_SR),
+			new Point(CHAR_COL2_SR,CHAR_ROW1_SR),
+			new Point(CHAR_COL3_SR,CHAR_ROW2_SR),
+			new Point(CHAR_COL1_SR,CHAR_ROW2_SR),
+			new Point(CHAR_COL2_SR,CHAR_ROW3_SR),
+			new Point(CHAR_COL1_SR,CHAR_ROW3_SR),
+	};
+	
 	private RealmComponent sheetOwnerShield;
 	
 	private ArrayList<Rectangle> spellRegions;
@@ -140,7 +200,7 @@ public class CharacterCombatSheet extends CombatSheet {
 		super();
 	}
 	public CharacterCombatSheet(CombatFrame frame,BattleModel model,RealmComponent participant,boolean interactiveFrame, HostPrefWrapper hostPrefs) {
-		super(frame,model,participant,interactiveFrame);
+		super(frame,model,participant,interactiveFrame,hostPrefs);
 		this.hostPrefs = hostPrefs;
 		spellRegions = new ArrayList<>();
 		spellRegionHash = new Hashtable<>();
@@ -169,6 +229,9 @@ public class CharacterCombatSheet extends CombatSheet {
 	}
 	
 	protected ImageIcon getImageIcon() {
+		if (hostPrefs!=null && hostPrefs.hasPref(Constants.SR_COMBAT)) {
+			return ImageCache.getIcon("combat/char_sr");
+		}
 		return ImageCache.getIcon("combat/char_melee2");
 	}
 	
@@ -176,7 +239,10 @@ public class CharacterCombatSheet extends CombatSheet {
 		return 98;
 	}
 	
-	protected Point[] getPositions() {
+	protected Point[] getPositions(HostPrefWrapper hostPrefs) {
+		if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
+			return CHARACTER_SHEET_SR;
+		}
 		return CHARACTER_SHEET;
 	}
 	
@@ -902,7 +968,12 @@ public class CharacterCombatSheet extends CombatSheet {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
 				if (rc.isMonster()) {
 					MonsterChitComponent monster = (MonsterChitComponent)rc;
-					Point p = CHARACTER_SHEET[POS_OWNER];
+					Point p;
+					if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
+						p = CHARACTER_SHEET_SR[POS_OWNER];
+					} else {
+						p = CHARACTER_SHEET[POS_OWNER];
+					}
 					g.drawImage(monster.getFightChit().getImage(),p.x-60,p.y-110,null);
 					g.drawImage(monster.getMoveChit().getImage(),p.x+10,p.y-110,null);
 					MonsterPartChitComponent weapon = monster.getWeapon();
@@ -931,7 +1002,12 @@ public class CharacterCombatSheet extends CombatSheet {
 						totalWidth = maxWidth;
 						cardWidth = ((maxWidth+5)/(spells.size()+1))-5;
 					}
-					int center = CHARACTER_SHEET[POS_OWNER].x;
+					int center;
+					if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
+						center = CHARACTER_SHEET_SR[POS_OWNER].x;
+					} else {
+						center = CHARACTER_SHEET[POS_OWNER].x;
+					}
 					int x = center-(totalWidth>>1);
 					int y = 550;
 					for (SpellCardComponent spell:spells) {

@@ -31,7 +31,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 	public abstract boolean usesCombatBoxesEqually();
 	public abstract boolean needsTargetAssignment();
 	
-	protected abstract Point[] getPositions();
+	protected abstract Point[] getPositions(HostPrefWrapper hostPrefs);
 	protected abstract ImageIcon getImageIcon();
 	protected abstract void updateHotSpots();
 	protected abstract String[] splitHotSpot(int index);
@@ -51,6 +51,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 	protected RealmComponent sheetOwner;
 	protected Collection<RealmComponent> sheetParticipants;
 	protected HashLists<Integer,RealmComponent> layoutHash;
+	HostPrefWrapper hostPrefs;
 	
 	protected Integer mouseHoverIndex;
 	protected boolean mouseHoverShift = false;
@@ -74,21 +75,22 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		hotspotHash = new Hashtable<>();
 		layoutHash = new HashLists<>();
 		mouseHoverIndex = null;
-		positions = getPositions();
+		positions = getPositions(hostPrefs);
 		offset = new int[positions.length];
 		setIcon(getImageIcon());
 	}
-	protected CombatSheet(CombatFrame frame,BattleModel model,RealmComponent participant,boolean interactiveFrame) {
+	protected CombatSheet(CombatFrame frame,BattleModel model,RealmComponent participant,boolean interactiveFrame, HostPrefWrapper hostPrefs) {
 		super("");
 		this.combatFrame = frame;
 		this.model = model;
 		this.sheetOwner = participant;
 		this.interactiveFrame = interactiveFrame;
+		this.hostPrefs = hostPrefs;
 		battleChitsWithRolls = new ArrayList<>();
 		hotspotHash = new Hashtable<>();
 		layoutHash = new HashLists<>();
 		mouseHoverIndex = null;
-		positions = getPositions();
+		positions = getPositions(hostPrefs);
 		offset = new int[positions.length];
 		setIcon(getImageIcon());
 		updateRollers();

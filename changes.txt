@@ -11,7 +11,9 @@ Exorcise: All native casters in the clearing cannot supply color magic, and they
 Ask Demon: 4 options, instead of just asking a question
 Absorb Essence: any denizens and Attention chits assigned to it become assigned to the spellcaster; absorbs steed when absorbing a monster
 	The spellcaster cannot be affected by multiple Absorb Essence spells. Any Absorb Essence spell he casts while he is already bewitched by Absorb Essence is cancelled.
-Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells) or with Hurricane Winds, can be opened by 'T' strength Fly chit (including flying denizens)
+Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells: Lightning Bolt, Alchemists Mixture)
+Prying into the Crypt, Abbey, and Library: He must use the Lost Keys, energized Contorting Key, or ‘T’ or ‘X’ strength each time he rolls to loot the Crypt of the Knight, Ethereal Abbey, or Mage Library, whether he gets an item or not.
+Hurricane Winds: implement spell, different from base game
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt
 Super Realm: Optional Rules: Thematic Roving Natives (SR: 10.5, p.114): In combat, when any roving native Dwarf (not just the leader) is dark-side up, they subtract one from their move speed when they do the Duck maneuver.
