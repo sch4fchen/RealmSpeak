@@ -441,6 +441,9 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		scroller.addLine(new ScrollLine("Redesigned Melee Sections",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Jay Richardson",listing,listingColor));
 		scroller.addLine(new ScrollLine());
+		scroller.addLine(new ScrollLine("Redesigned Combat Charts for Super Realm",subheader,subheaderColor));
+		scroller.addLine(new ScrollLine("Casey Benn",listing,listingColor));
+		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Remodeled Counter Layout",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Dan Evans",listing,listingColor));
 		scroller.addLine(new ScrollLine("John Frenzel",listing,listingColor));

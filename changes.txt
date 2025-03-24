@@ -48,6 +48,8 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 Version 1.2.1.2
+SUPER REALM
+# New combat sheets images (thanks Casey!)
 
 Version 1.2.1.1
 BUGS/ISSUES:
