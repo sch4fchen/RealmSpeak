@@ -68,9 +68,9 @@ public class DenizenCombatSheet extends CombatSheet {
 	private static final int DEN_COL2 = 168;
 	private static final int DEN_COL3 = 284;
 	
-	private static final int TARGET_ROW1 = 440;
-	private static final int TARGET_ROW2 = 530;
-	private static final int TARGET_ROW3 = 620;
+	private static final int TARGET_ROW1 = 444;
+	private static final int TARGET_ROW2 = 534;
+	private static final int TARGET_ROW3 = 624;
 	
 	private static final int DEN_ROW1_SR = 76;
 	private static final int DEN_ROW2_SR = 167;
@@ -95,8 +95,8 @@ public class DenizenCombatSheet extends CombatSheet {
 			// Target
 			new Point(DEN_COL1+50,320),
 			new Point(DEN_COL1,TARGET_ROW1),
-			new Point(DEN_COL2,TARGET_ROW2),
-			new Point(DEN_COL3,TARGET_ROW3),
+			new Point(DEN_COL2,TARGET_ROW1),
+			new Point(DEN_COL3,TARGET_ROW1),
 			
 			// Attackers
 			new Point(540,25),
