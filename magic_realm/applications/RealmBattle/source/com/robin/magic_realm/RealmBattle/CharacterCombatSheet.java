@@ -74,13 +74,24 @@ public class CharacterCombatSheet extends CombatSheet {
 	private static final int CHAR_COL2 = 208;
 	private static final int CHAR_COL3 = 322;
 	//Super Realm
-	private static final int CHAR_ROW1_SR = 74;
-	private static final int CHAR_ROW2_SR = 171;
-	private static final int CHAR_ROW3_SR = 268;
+	private static final int CHAR_ROW1_SR = 62;
+	private static final int CHAR_ROW2_SR = 158;
+	private static final int CHAR_ROW3_SR = 254;
 	
 	private static final int CHAR_COL1_SR = 92;
 	private static final int CHAR_COL2_SR = 208;
-	private static final int CHAR_COL3_SR = 322;
+	private static final int CHAR_COL3_SR = 324;
+	
+	private static final int CHAR_ROW_LURE_SR = 338;
+	
+	private static final int CHAR_ATT_COL1_SR = 440;
+	private static final int CHAR_ATT_COL2_SR = 536;
+	
+	private static final int CHAR_ROW_PARRY_SR = 334;
+	private static final int CHAR_ROW_SHIELD_SR = 440;
+	private static final int CHAR_ROW_BREASTPLATE_SR = 528;
+	private static final int CHAR_ROW_SUIT_OF_ARMOR_SR = 614;
+	private static final int CHAR_ROW_MOVE_SR = 694;
 	
 	private static final Point[] CHARACTER_SHEET = {
 			new Point(483,663),
@@ -121,9 +132,9 @@ public class CharacterCombatSheet extends CombatSheet {
 			new Point(CHAR_COL1,CHAR_ROW3), // Dead Box
 			
 			// Parry for Super Realm
-			new Point(CHAR_COL1,390),
-			new Point(CHAR_COL2,390),
-			new Point(CHAR_COL3,390),
+			new Point(CHAR_COL1,CHAR_ROW_PARRY_SR),
+			new Point(CHAR_COL2,CHAR_ROW_PARRY_SR),
+			new Point(CHAR_COL3,CHAR_ROW_PARRY_SR),
 			
 			// Additional targets for Super Realm
 			new Point(CHAR_COL3,CHAR_ROW1),
@@ -138,44 +149,44 @@ public class CharacterCombatSheet extends CombatSheet {
 			new Point(483,663),
 			
 			// Targets
-			new Point(303,CHAR_ROW1_SR),
+			new Point((CHAR_ATT_COL1_SR+CHAR_ATT_COL2_SR)/2,CHAR_ROW_LURE_SR), //lure
 			new Point(CHAR_COL1_SR,CHAR_ROW1_SR),
 			new Point(CHAR_COL2_SR,CHAR_ROW2_SR),
 			new Point(CHAR_COL3_SR,CHAR_ROW3_SR),
 			
 			// Move
-			new Point(CHAR_COL1_SR,690),
-			new Point(CHAR_COL2_SR,690),
-			new Point(CHAR_COL3_SR,690),
+			new Point(CHAR_COL1_SR,CHAR_ROW_MOVE_SR),
+			new Point(CHAR_COL2_SR,CHAR_ROW_MOVE_SR),
+			new Point(CHAR_COL3_SR,CHAR_ROW_MOVE_SR),
 			
 			// Attacks
-			new Point(530,25),
-			new Point(100,CHAR_ROW1_SR),
-			new Point(420,CHAR_ROW2_SR),
-			new Point(600,CHAR_ROW3_SR),
+			new Point(530,25), //
+			new Point(CHAR_ATT_COL1_SR,CHAR_ROW1_SR),
+			new Point(CHAR_ATT_COL1_SR,CHAR_ROW2_SR),
+			new Point(CHAR_ATT_COL1_SR,CHAR_ROW3_SR),
 			
 			// Attacks - Weapon
-			new Point(525,CHAR_ROW1_SR),
-			new Point(525,CHAR_ROW2_SR),
-			new Point(525,CHAR_ROW3_SR),
+			new Point(CHAR_ATT_COL2_SR,CHAR_ROW1_SR),
+			new Point(CHAR_ATT_COL2_SR,CHAR_ROW2_SR),
+			new Point(CHAR_ATT_COL2_SR,CHAR_ROW3_SR),
 			
 			// Defenses
-			new Point(CHAR_COL1_SR,402), //shield
-			new Point(CHAR_COL2_SR,402), //shield
-			new Point(CHAR_COL3_SR,402), //shield
-			new Point(150,507), //breastplate
-			new Point(321,507), //helmet
-			new Point(206,603), //suit of armor
+			new Point(CHAR_COL1_SR,CHAR_ROW_SHIELD_SR), //shield
+			new Point(CHAR_COL2_SR,CHAR_ROW_SHIELD_SR), //shield
+			new Point(CHAR_COL3_SR,CHAR_ROW_SHIELD_SR), //shield
+			new Point((CHAR_COL1_SR+CHAR_COL2_SR)/2,CHAR_ROW_BREASTPLATE_SR), //breastplate
+			new Point(CHAR_COL3_SR,CHAR_ROW_BREASTPLATE_SR), //helmet
+			new Point(CHAR_COL2_SR,CHAR_ROW_SUIT_OF_ARMOR_SR), //suit of armor
 			
 			new Point(494,458), // Used Chits
 			new Point(400,700), // Charge Chits
 			
-			new Point(CHAR_COL1_SR,CHAR_ROW3_SR), // Dead Box
+			new Point(CHAR_COL1_SR,CHAR_ROW3_SR), // Dead Box //
 			
 			// Parry for Super Realm
-			new Point(CHAR_COL1_SR,390),
-			new Point(CHAR_COL2_SR,390),
-			new Point(CHAR_COL3_SR,390),
+			new Point(CHAR_COL1_SR,CHAR_ROW_PARRY_SR), //
+			new Point(CHAR_COL2_SR,CHAR_ROW_PARRY_SR), //
+			new Point(CHAR_COL3_SR,CHAR_ROW_PARRY_SR), //
 			
 			// Additional targets for Super Realm
 			new Point(CHAR_COL3_SR,CHAR_ROW1_SR),
@@ -236,7 +247,10 @@ public class CharacterCombatSheet extends CombatSheet {
 	}
 	
 	protected int getHotSpotSize() {
-		return 98;
+		if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
+			return 94;
+		}
+		return 100;
 	}
 	
 	protected Point[] getPositions(HostPrefWrapper hostPrefs) {
