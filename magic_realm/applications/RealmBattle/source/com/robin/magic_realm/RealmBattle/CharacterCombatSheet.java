@@ -73,7 +73,7 @@ public class CharacterCombatSheet extends CombatSheet {
 	private static final int CHAR_COL1 = 92;
 	private static final int CHAR_COL2 = 208;
 	private static final int CHAR_COL3 = 322;
-	
+	//Super Realm
 	private static final int CHAR_ROW1_SR = 74;
 	private static final int CHAR_ROW2_SR = 171;
 	private static final int CHAR_ROW3_SR = 268;

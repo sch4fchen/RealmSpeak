@@ -71,18 +71,21 @@ public class DenizenCombatSheet extends CombatSheet {
 	private static final int TARGET_ROW1 = 444;
 	private static final int TARGET_ROW2 = 534;
 	private static final int TARGET_ROW3 = 624;
+	//Super Realm
+	private static final int DEN_ROW1_SR = 78;
+	private static final int DEN_ROW2_SR = 174;
+	private static final int DEN_ROW3_SR = 270;
 	
-	private static final int DEN_ROW1_SR = 76;
-	private static final int DEN_ROW2_SR = 167;
-	private static final int DEN_ROW3_SR = 258;
+	private static final int DEN_COL1_SR = 89;
+	private static final int DEN_COL2_SR = 205;
+	private static final int DEN_COL3_SR = 322;
 	
-	private static final int DEN_COL1_SR = 52;
-	private static final int DEN_COL2_SR = 168;
-	private static final int DEN_COL3_SR = 284;
+	private static final int ATT_COL1_SR = 440;
+	private static final int ATT_COL2_SR = 536;
 	
-	private static final int TARGET_ROW1_SR = 440;
-	private static final int TARGET_ROW2_SR = 530;
-	private static final int TARGET_ROW3_SR = 620;
+	private static final int TARGET_ROW1_SR = 448;
+	private static final int TARGET_ROW2_SR = 544;
+	private static final int TARGET_ROW3_SR = 640;
 	
 	private static final Point[] DENIZEN_SHEET = {
 			
@@ -127,47 +130,47 @@ public class DenizenCombatSheet extends CombatSheet {
 			new Point(DEN_COL1,TARGET_ROW3),
 	};
 	
-private static final Point[] DENIZEN_SHEET_SR = {
+	private static final Point[] DENIZEN_SHEET_SR = {
 			
 			// Defender=Denizen
-			new Point(DEN_COL2_SR+80,DEN_ROW1_SR-20),
+			new Point(DEN_COL2_SR+80,DEN_ROW1_SR-20), //??
 			new Point(DEN_COL1_SR,DEN_ROW1_SR),
 			new Point(DEN_COL2_SR,DEN_ROW2_SR),
 			new Point(DEN_COL3_SR,DEN_ROW3_SR),
 			
 			// Target
-			new Point(DEN_COL1_SR+50,320),
+			new Point(ATT_COL1_SR,320), //??
 			new Point(DEN_COL1_SR,TARGET_ROW1_SR),
 			new Point(DEN_COL2_SR,TARGET_ROW2_SR),
 			new Point(DEN_COL3_SR,TARGET_ROW3_SR),
 			
 			// Attackers
-			new Point(540,25),
-			new Point(428,DEN_ROW1_SR),
-			new Point(428,DEN_ROW2_SR),
-			new Point(428,DEN_ROW3_SR),
+			new Point((ATT_COL1_SR+ATT_COL2_SR)/2,(DEN_ROW3_SR+TARGET_ROW1_SR)/2), //??
+			new Point(ATT_COL1_SR,DEN_ROW1_SR),
+			new Point(ATT_COL1_SR,DEN_ROW2_SR),
+			new Point(ATT_COL1_SR,DEN_ROW3_SR),
 			
-			new Point(524,DEN_ROW1_SR),
-			new Point(524,DEN_ROW2_SR),
-			new Point(524,DEN_ROW3_SR),
+			new Point(ATT_COL2_SR,DEN_ROW1_SR),
+			new Point(ATT_COL2_SR,DEN_ROW2_SR),
+			new Point(ATT_COL2_SR,DEN_ROW3_SR),
 			
-			new Point(524,440),
+			new Point(ATT_COL2_SR,440), //??
 			
 			// Additional defender (=denizen) spots for Super Realm
-			new Point(DEN_COL3,DEN_ROW1),
-			new Point(DEN_COL2,DEN_ROW1),
-			new Point(DEN_COL3,DEN_ROW2),
-			new Point(DEN_COL1,DEN_ROW2),
-			new Point(DEN_COL2,DEN_ROW3),
-			new Point(DEN_COL1,DEN_ROW3),
+			new Point(DEN_COL3_SR,DEN_ROW1_SR),
+			new Point(DEN_COL2_SR,DEN_ROW1_SR),
+			new Point(DEN_COL3_SR,DEN_ROW2_SR),
+			new Point(DEN_COL1_SR,DEN_ROW2_SR),
+			new Point(DEN_COL2_SR,DEN_ROW3_SR),
+			new Point(DEN_COL1_SR,DEN_ROW3_SR),
 			
 			// Additional target spots for Super Realm
-			new Point(DEN_COL3,TARGET_ROW1),
-			new Point(DEN_COL2,TARGET_ROW1),
-			new Point(DEN_COL3,TARGET_ROW2),
-			new Point(DEN_COL1,TARGET_ROW2),
-			new Point(DEN_COL2,TARGET_ROW3),
-			new Point(DEN_COL1,TARGET_ROW3),
+			new Point(DEN_COL3_SR,TARGET_ROW1_SR),
+			new Point(DEN_COL2_SR,TARGET_ROW1_SR),
+			new Point(DEN_COL3_SR,TARGET_ROW2_SR),
+			new Point(DEN_COL1_SR,TARGET_ROW2_SR),
+			new Point(DEN_COL2_SR,TARGET_ROW3_SR),
+			new Point(DEN_COL1_SR,TARGET_ROW3_SR),
 	};
 	
 	private boolean isOwnedByActive;
