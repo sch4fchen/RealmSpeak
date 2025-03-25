@@ -3,16 +3,14 @@ Enchant Weapon: any individual wielding the target weapon can target and attack 
 Enchant Weapon: While targeting a Purple or Prism Anomaly, this spell is nullified.
 Melt into Mist: only move actions; canot follow or be followed; can be charged (difference), The target cannot attack or be attacked, except by individuals affected by the Enchant Weapon spell, If attacked, Mist’s vulnerability is Tremendous and non-armored; targeted monster stills prowls (like in base MR) even if ‘X’ weight
 only the Melt into Mist transmorphization spell can be cast to affect carrying capacity. Transform and Absorb Essence are no longer options for end-game scoring.
-Lightning Bolt: List of Spells, added detail to IV spell Lightning Bolt, stating that site targets are considered armored.
 Phantasm: If the phantasm discovers Hidden Enemies, the controlling character also discovers Hidden Enemies.;; it cannot take part in combat;; can now spy and be spied
 Protection from Magic: The target is also immune to spell-breaking spells, such as Exorcise, Remedy, and Dissolve Spell, while this spell is in effect (ie activated). Any transmorphization spells affecting the target would also be nullified when this spell is activated, which can be done during a phase even when the target is transmorphized.
-Exorcise: All native casters in the clearing cannot supply color magic, and they cannot cast spells for the rest of combat (including the current round), unless they are in a clearing with a magic source matching the color required to cast their spell.
-	Update 995: Tweaked description of the I Exorcise spell.  It does cause Phase spells to break, as the revised definition of Phase spells means they are continually in effect (even if they're not affecting the target with the spell ability due to not having been activated/used yet) until used, in which case the spell ends at the end of the phase/round it was activated.  For example, if someone had Broomstick cast earlier, but hadn't used it and was in the clearing when Exorcise is cast, he loses the phase chit reserved for Broomstick (the broomstick spell breaks). 
+	prevents him from casting any spells and playing any color chits
+Exorcise: All native casters in the clearing cannot supply color magic, and they cannot cast spells for the rest of combat (including the current round), unless they are in a clearing with a magic source matching the color required to cast their spell. 
 Ask Demon: 4 options, instead of just asking a question
 Absorb Essence: any denizens and Attention chits assigned to it become assigned to the spellcaster; absorbs steed when absorbing a monster
 	The spellcaster cannot be affected by multiple Absorb Essence spells. Any Absorb Essence spell he casts while he is already bewitched by Absorb Essence is cancelled.
-Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells: Lightning Bolt, Alchemists Mixture)
-Prying into the Crypt, Abbey, and Library: He must use the Lost Keys, energized Contorting Key, or ‘T’ or ‘X’ strength each time he rolls to loot the Crypt of the Knight, Ethereal Abbey, or Mage Library, whether he gets an item or not.
+Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells: Lightning Bolt, Alchemists Mixture); site targets are considered armored.
 Hurricane Winds: implement spell, different from base game
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt
@@ -50,6 +48,7 @@ Would be nice to make weapon abilities too:
 Version 1.2.1.2
 SUPER REALM
 # New combat sheets images (thanks Casey!)
+# Enchant Weapon: can attack mist like individuals
 
 Version 1.2.1.1
 BUGS/ISSUES:

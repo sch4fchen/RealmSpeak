@@ -441,7 +441,8 @@ public class RealmBattle {
 				RealmComponent characterTarget = null;
 				if (denizens!=null && denizens.size()>0) {
 					for (RealmComponent rc : denizens.getBattleParticipants()) {
-						if (character.isMistLike() && !rc.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) continue;
+						if (character.isMistLike() && !rc.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)
+								&& (!rc.isCharacter() || !(new CharacterWrapper(rc.getGameObject())).affectedByKey(Constants.IGNORE_MIST_LIKE))) continue;
 						RealmComponent target = rc.getTarget();
 						RealmComponent target2 = rc.get2ndTarget();
 						if (target==null) { // only need one unassigned denizen

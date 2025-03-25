@@ -149,7 +149,7 @@ public class SpellEffectFactory {
 			case "dark favor": return new ISpellEffect[]{new PhaseChitEffect()};
 			case "divine protection": return new ISpellEffect[]{new ApplyNamedEffect(Constants.STRENGTHENED_VULNERABILITY)};
 			case "enchant key": return new ISpellEffect[]{new ApplyNamedEffect(Constants.KEY)};
-			case "enchant weapon": return new ISpellEffect[]{new EnchantWeaponEffect()};
+			case "enchant weapon": return new ISpellEffect[]{new EnchantWeaponEffect(),new ApplyNamedEffect(Constants.IGNORE_MIST_LIKE)};
 			case "free the soul": return new ISpellEffect[]{new FreeTheSoulEffect()};
 			case "frozen water": return new ISpellEffect[]{new FrozenWaterEffect()};
 			case "guide beast": return new ISpellEffect[]{new ControlEffect()};

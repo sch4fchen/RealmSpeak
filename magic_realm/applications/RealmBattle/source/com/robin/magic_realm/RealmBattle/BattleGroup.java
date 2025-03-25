@@ -137,7 +137,7 @@ public class BattleGroup implements Comparable {
 		
 		for (RealmComponent bp:battleParticipants) {
 			if (!bp.isHidden()
-					&& (!bp.isMistLike() || attacker.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE))
+					&& (!bp.isMistLike() || attacker.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE) || (attacker.isCharacter() && new CharacterWrapper(attacker.getGameObject()).affectedByKey(Constants.IGNORE_MIST_LIKE)))
 					&& !bp.isImmuneTo(attacker)
 					&& !hasPinningAttacker(bp)) {
 				
@@ -163,11 +163,12 @@ public class BattleGroup implements Comparable {
 	 */
 	public boolean canBeAttackedBy(RealmComponent attacker) {
 		CharacterChitComponent cc = getCharacterInBattle();
-		if (cc!=null && !cc.isHidden() && (!cc.isMistLike() || attacker.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) && !cc.isImmuneTo(attacker)) {
+		boolean attackerIgnoresMistLike = attacker.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE) || (attacker.isCharacter() && (new CharacterWrapper(attacker.getGameObject())).affectedByKey(Constants.IGNORE_MIST_LIKE));
+		if (cc!=null && !cc.isHidden() && (!cc.isMistLike() || attackerIgnoresMistLike) && !cc.isImmuneTo(attacker)) {
 			return true;
 		}
 		for (RealmComponent bp:getBattleParticipants()) {
-			if (!bp.isCharacter() && !bp.isHidden() && (!bp.isMistLike() || attacker.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE))) {
+			if (!bp.isCharacter() && !bp.isHidden() && (!bp.isMistLike() || attackerIgnoresMistLike)) {
 				return true;
 			}
 		}
@@ -176,7 +177,8 @@ public class BattleGroup implements Comparable {
 	public RealmComponent getAvailableParticipant(RealmComponent attacker) {
 		// First, search for the character, and return if not hidden.
 		RealmComponent character = getCharacterInBattle();
-		if (character!=null && !character.isHidden() && (!character.isMistLike() || attacker.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE))) {
+		if (character!=null && !character.isHidden()
+				&& (!character.isMistLike() || attacker.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)|| (attacker.isCharacter() && new CharacterWrapper(attacker.getGameObject()).affectedByKey(Constants.IGNORE_MIST_LIKE)))) {
 			// Make sure there is not a demon immunity thing
 			if (!character.isImmuneTo(attacker)) {
 				return character;
