@@ -88,7 +88,7 @@ public class CharacterCombatSheet extends CombatSheet {
 	private static final int CHAR_ATT_COL1_SR = 440;
 	private static final int CHAR_ATT_COL2_SR = 536;
 	
-	private static final int CHAR_ROW_PARRY_SR = 334;
+	private static final int CHAR_ROW_PARRY_SR = 348;
 	private static final int CHAR_ROW_SHIELD_SR = 440;
 	private static final int CHAR_ROW_BREASTPLATE_SR = 528;
 	private static final int CHAR_ROW_SUIT_OF_ARMOR_SR = 614;
@@ -351,13 +351,20 @@ public class CharacterCombatSheet extends CombatSheet {
 					hotspotHash.put(Integer.valueOf(POS_MOVE_BOX2),"Maneuver");
 					hotspotHash.put(Integer.valueOf(POS_MOVE_BOX3),"Maneuver");
 					
+					GameObject chararacterGo = combatFrame.getActiveParticipant().getGameObject();
+					CharacterWrapper activeCharacter = new CharacterWrapper(chararacterGo);
+					if (hostPrefs.hasPref(Constants.SR_COMBAT) && this.getSheetOwner() == RealmComponent.getRealmComponent(chararacterGo) && !activeCharacter.isTransmorphed()
+							&& (hostPrefs.hasPref(Constants.OPT_PARRY) || activeCharacter.affectedByKey(Constants.PARRY))){
+						hotspotHash.put(Integer.valueOf(POS_PARRY1),"Parry");
+						hotspotHash.put(Integer.valueOf(POS_PARRY2),"Parry");
+						hotspotHash.put(Integer.valueOf(POS_PARRY3),"Parry");
+					}
+					
 					boolean s1 = hasArmor(POS_SHIELD1);
 					boolean s2 = hasArmor(POS_SHIELD2);
 					boolean s3 = hasArmor(POS_SHIELD3);
 					boolean canParryLikeShield = false;
 					if (combatFrame.getActiveParticipant().isCharacter()) {
-						GameObject chararacterGo = combatFrame.getActiveParticipant().getGameObject();
-						CharacterWrapper activeCharacter = new CharacterWrapper(chararacterGo);
 						canParryLikeShield = hostPrefs.hasPref(Constants.OPT_PARRY_LIKE_SHIELD) || activeCharacter.affectedByKey(Constants.PARRY_LIKE_SHIELD) || activeCharacter.affectedByKey(Constants.BLOCK_NO_WEAPON);
 					}
 					
@@ -588,7 +595,11 @@ public class CharacterCombatSheet extends CombatSheet {
 							int box = combat.getCombatBoxDefense();
 							if (box>0 && this.sheetOwner.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
 								if (combat.getPlacedAsParry()) {
-									layoutHash.put(Integer.valueOf(POS_MOVE_BOX1+box-1),chit);
+									if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
+										layoutHash.put(Integer.valueOf(POS_PARRY1+box-1),chit);
+									} else {
+										layoutHash.put(Integer.valueOf(POS_MOVE_BOX1+box-1),chit);
+									}
 								} else if (combat.getPlacedAsParryShield()) {
 									layoutHash.put(Integer.valueOf(POS_SHIELD1+box-1),chit);
 								}
@@ -601,7 +612,11 @@ public class CharacterCombatSheet extends CombatSheet {
 								int box = combat.getCombatBoxDefense();
 								if (box>0 && this.sheetOwner.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
 									if (combat.getPlacedAsParry()) {
-										layoutHash.put(Integer.valueOf(POS_MOVE_BOX1+box-1),weapon);
+										if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
+											layoutHash.put(Integer.valueOf(POS_PARRY1+box-1),weapon);
+										} else {
+											layoutHash.put(Integer.valueOf(POS_MOVE_BOX1+box-1),weapon);
+										}
 									} else if (combat.getPlacedAsParryShield()) {
 										layoutHash.put(Integer.valueOf(POS_SHIELD1+box-1),weapon);
 									}
@@ -897,12 +912,21 @@ public class CharacterCombatSheet extends CombatSheet {
 					combatFrame.replaceManeuver(index-POS_MOVE_BOX1+1);
 				}
 				else {
-					if (this.getSheetOwner() == RealmComponent.getRealmComponent(chararacterGo) && !activeCharacter.isTransmorphed() && (hostPrefs.hasPref(Constants.OPT_PARRY) || activeCharacter.affectedByKey(Constants.PARRY))){
+					if (this.getSheetOwner() == RealmComponent.getRealmComponent(chararacterGo) && !activeCharacter.isTransmorphed()
+							&& !hostPrefs.hasPref(Constants.SR_COMBAT) && (hostPrefs.hasPref(Constants.OPT_PARRY) || activeCharacter.affectedByKey(Constants.PARRY))){
 						combatFrame.playManeuverOrParry(index-POS_MOVE_BOX1+1);
 					} else {
 						// Play maneuver
 						combatFrame.playManeuver(index-POS_MOVE_BOX1+1);
 					}
+				}
+				break;
+			case POS_PARRY1:
+			case POS_PARRY2:
+			case POS_PARRY3:
+				if (this.getSheetOwner() == RealmComponent.getRealmComponent(chararacterGo) && !activeCharacter.isTransmorphed()
+						&& hostPrefs.hasPref(Constants.SR_COMBAT) && (hostPrefs.hasPref(Constants.OPT_PARRY) || activeCharacter.affectedByKey(Constants.PARRY))){
+					combatFrame.playParry(index-POS_PARRY1+1);
 				}
 				break;
 			case POS_SHIELD1:

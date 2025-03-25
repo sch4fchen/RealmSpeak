@@ -2585,8 +2585,18 @@ public class CombatFrame extends JFrame {
 				}
 			}
 		}
+		chooser.addOption("Reset", "Reset");
 		chooser.setVisible(true);
-		if (chooser.getFirstSelectedComponent()!=null) {
+		if (chooser.getSelectedText() == "Reset") {
+			RealmComponent weaponCard = null;
+			for (GameObject item : activeCharacter.getActiveInventory()) {
+				if (item.hasThisAttribute("attack")) { // ONLY the Alchemist's Mixture has this, for now! - Now the Holy Hand Grenade
+					weaponCard = RealmComponent.getRealmComponent(item);
+				}
+			}
+			resetAttacks(charCombat,weapons,weaponCard,spell);
+		}
+		else if (chooser.getFirstSelectedComponent()!=null) {
 			RealmComponent chit = chooser.getFirstSelectedComponent();
 			RealmComponent weapon = chooser.getLastSelectedComponent();
 			CombatWrapper combatChit = new CombatWrapper(chit.getGameObject());
@@ -2794,47 +2804,7 @@ public class CombatFrame extends JFrame {
 		chooser.addOption("Reset", "Reset");
 		chooser.setVisible(true);
 		if (chooser.getSelectedText() == "Reset") {
-			// First, clear out any chits already in play for attack
-			for (CharacterActionChitComponent chit : activeCharacter.getActiveFightChits()) {
-				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
-				if (combat.getPlacedAsFightOrParryOrParryShield()) {
-					CombatWrapper.clearRoundCombatInfo(chit.getGameObject());
-				}
-			}
-			// Clear out weapon, if any played
-			if (weapons != null) {
-				for (WeaponChitComponent weapon : weapons) {
-					weapon.getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
-				}
-			}
-			if (weaponCard != null) {
-				weaponCard.getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
-			}
-			for (GameObject item: activeCharacter.getActiveInventory()) {
-				if (item.hasThisAttribute("gloves")) {
-					item.removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
-				}
-			}
-			
-			GameObject transmorph = activeCharacter.getTransmorph();
-			if (transmorph != null) {
-				RealmComponent rc = RealmComponent.getRealmComponent(transmorph);
-				if (rc.isMonster()) {
-					MonsterChitComponent monster = (MonsterChitComponent)rc;
-					monster.getFightChit().getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
-				}
-			}
-			
-			if (spell != null) {
-				GameObject incantationObject = spell.getIncantationObject();
-				if (incantationObject != null) {
-					CombatWrapper.clearRoundCombatInfo(spell.getIncantationObject());
-				}
-			}
-			
-			charCombat.setPlayedAttack(false);
-			charCombat.setPlayedBonusParry(false);
-			charCombat.setPlayedSpell(false);
+			resetAttacks(charCombat,weapons,weaponCard,spell);
 		}
 		else if (chooser.getSelectedText()!=null) {
 			charCombat.setPlayedAttack(true);
@@ -2980,6 +2950,49 @@ public class CombatFrame extends JFrame {
 
 		}
 		updateSelection();
+	}
+	private void resetAttacks(CombatWrapper charCombat, ArrayList<WeaponChitComponent> weapons, RealmComponent weaponCard, SpellWrapper spell) {
+		// First, clear out any chits already in play for attack
+		for (CharacterActionChitComponent chit : activeCharacter.getActiveFightChits()) {
+			CombatWrapper combat = new CombatWrapper(chit.getGameObject());
+			if (combat.getPlacedAsFightOrParryOrParryShield()) {
+				CombatWrapper.clearRoundCombatInfo(chit.getGameObject());
+			}
+		}
+		// Clear out weapon, if any played
+		if (weapons != null) {
+			for (WeaponChitComponent weapon : weapons) {
+				weapon.getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
+			}
+		}
+		if (weaponCard != null) {
+			weaponCard.getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
+		}
+		for (GameObject item : activeCharacter.getActiveInventory()) {
+			if (item.hasThisAttribute("gloves")) {
+				item.removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
+			}
+		}
+
+		GameObject transmorph = activeCharacter.getTransmorph();
+		if (transmorph != null) {
+			RealmComponent rc = RealmComponent.getRealmComponent(transmorph);
+			if (rc.isMonster()) {
+				MonsterChitComponent monster = (MonsterChitComponent) rc;
+				monster.getFightChit().getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
+			}
+		}
+
+		if (spell != null) {
+			GameObject incantationObject = spell.getIncantationObject();
+			if (incantationObject != null) {
+				CombatWrapper.clearRoundCombatInfo(spell.getIncantationObject());
+			}
+		}
+
+		charCombat.setPlayedAttack(false);
+		charCombat.setPlayedBonusParry(false);
+		charCombat.setPlayedSpell(false);
 	}
 	public static final String[] BOX_NAME = {"Thrust/Charge","Swing/Dodge","Smash/Duck"};
 	public void positionTarget(int boxA, int boxD,ArrayList<RealmComponent> targets,boolean includeFlipside,boolean horseSameBox) {
