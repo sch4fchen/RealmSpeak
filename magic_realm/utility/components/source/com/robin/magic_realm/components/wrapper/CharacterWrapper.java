@@ -5048,8 +5048,21 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * 				be a recorded spell, or one that was awakened in a book or artifact.
 	 */
 	public ArrayList<SpellSet> getCastableSpellSets() {
+		return getCastableSpellSets(false);
+	}
+	private ArrayList<SpellSet> getCastableSpellSets(boolean ignoreColorRequirement) {
 		// Find all color sources
-		Collection<ColorMagic> infiniteColors = getInfiniteColorSources();
+		Collection<ColorMagic> infiniteColors; 
+		if (ignoreColorRequirement) {
+			infiniteColors = new ArrayList<>();
+			infiniteColors.add(ColorMagic.makeColorMagic(ColorMagic.White,true));
+			infiniteColors.add(ColorMagic.makeColorMagic(ColorMagic.Grey,true));
+			infiniteColors.add(ColorMagic.makeColorMagic(ColorMagic.Gold,true));
+			infiniteColors.add(ColorMagic.makeColorMagic(ColorMagic.Purple,true));
+			infiniteColors.add(ColorMagic.makeColorMagic(ColorMagic.Black,true));
+		} else {
+			infiniteColors = getInfiniteColorSources();
+		}
 		ArrayList<MagicChit> colorChits = new ArrayList<>();
 		ArrayList<CharacterActionChitComponent> magicChits = new ArrayList<>();
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
@@ -5193,6 +5206,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		
 		return castableSpellSets;
+	}
+	
+	public ArrayList<SpellSet> getCastableSpellSetsIgnoringColorRequirement() {
+		return getCastableSpellSets(true);
 	}
 	
 	/**

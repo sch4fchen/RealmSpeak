@@ -1,6 +1,5 @@
 ::ROADMAP::
 Enchant Weapon: While targeting a Purple or Prism Anomaly, this spell is nullified. (ignore_enchanted_weapons)
-only the Melt into Mist transmorphization spell can be cast to affect carrying capacity. Transform and Absorb Essence are no longer options for end-game scoring.
 Phantasm: If the phantasm discovers Hidden Enemies, the controlling character also discovers Hidden Enemies.;; it cannot take part in combat;; can now spy and be spied
 Protection from Magic: The target is also immune to spell-breaking spells, such as Exorcise, Remedy, and Dissolve Spell, while this spell is in effect (ie activated). Any transmorphization spells affecting the target would also be nullified when this spell is activated, which can be done during a phase even when the target is transmorphized.
 	prevents him from casting any spells and playing any color chits
@@ -49,6 +48,7 @@ SUPER REALM
 # Enchant Weapon: can attack mist like individuals
 # Melt into Mist can only do move actions
 # Mist like monsters prowl (even if X weight)
+# End Game Scoring: Characters discard items exceeding the carrying capacity 
 
 Version 1.2.1.1
 BUGS/ISSUES:

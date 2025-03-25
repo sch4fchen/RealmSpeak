@@ -149,6 +149,21 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 		removeAttribute(PHASE_SPELLS);
 		removeAttribute(MOVE_SPELLS);
 	}
+	public void expireAllSpellsBut(String[] spells) {
+		// Expire the spells, one at a time
+		for (SpellWrapper spell:getSpells(null)) {
+			boolean ignoreSpell=false;
+			for (String spellName : spells) {
+				if (spellName.toLowerCase().matches(spell.getName().toLowerCase())) {
+					ignoreSpell = true;
+					break;
+				}
+			}
+			if (!ignoreSpell) {
+				spell.expireSpell();
+			}
+		}
+	}
 	/**
 	 * Causes all day spells to expire
 	 */

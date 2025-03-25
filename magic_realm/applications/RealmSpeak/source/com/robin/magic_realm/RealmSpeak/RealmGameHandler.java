@@ -516,7 +516,11 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 
 		// Expire ALL spells
 		SpellMasterWrapper smw = SpellMasterWrapper.getSpellMaster(getClient().getGameData());
-		smw.expireAllSpells();
+		if (hostPrefs.hasPref(Constants.SR_END_GAME_SCORING)) {
+			smw.expireAllSpellsBut(new String[] {"Enchant Artifact"});
+		} else {
+			smw.expireAllSpells();
+		}
 
 		// Penalize any mission/campaign chit carriers
 		GamePool pool = new GamePool(getClient().getGameData().getGameObjects());
@@ -532,6 +536,48 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		for (GameObject character : characters) {
 			CharacterWrapper ch = new CharacterWrapper(character);
 			ch.setGameOver(true);
+			
+			if (hostPrefs.hasPref(Constants.SR_END_GAME_SCORING)) {
+				boolean meltIntoMistAvailable = false;
+				for (SpellSet spellSet : ch.getCastableSpellSetsIgnoringColorRequirement()) {
+					if (spellSet.getSpell().getName().toLowerCase().matches("melt into mist")) {
+						meltIntoMistAvailable = true;
+						break;
+					}
+				}
+				if (!meltIntoMistAvailable) {
+					Speed slowestSpeed = new Speed();
+					for (CharacterActionChitComponent chit : ch.getAllChits()) {
+						chit.makeActive();
+						if ((chit.isMove() || chit.isFight()) && slowestSpeed.fasterThan(chit.getSpeed())) {
+							slowestSpeed = chit.getSpeed();
+						}
+					}
+					Strength unleashPowerStrength = null;
+					for (SpellSet spellSet : ch.getCastableSpellSets()) {
+						if (spellSet.getSpell().hasThisAttribute("action_change")) {
+							unleashPowerStrength = new Strength(spellSet.getSpell().getThisAttribute(slowestSpeed.toString()));
+							break;
+						}
+					}
+					Strength moveStrength = ch.getMoveStrength(true,true);
+					if (unleashPowerStrength!=null && unleashPowerStrength.strongerThan(moveStrength)) {
+						moveStrength = unleashPowerStrength;
+					}
+					TileLocation loc = ch.getCurrentLocation();
+					for (GameObject item : ch.getInventory()) {
+						if (RealmComponent.getRealmComponent(item).getWeight().strongerThan(moveStrength)) {
+							if (loc.clearing!=null) {
+								loc.clearing.add(item, ch);
+							}
+							else {
+								loc.tile.getGameObject().add(item);
+							}
+						}
+					}
+				}
+			}
+			
 			QuestRequirementParams params = new QuestRequirementParams();
 			ch.testQuestRequirements(null, params);
 			if (hostPrefs.hasPref(Constants.SR_DEDUCT_VPS)) {
