@@ -587,6 +587,9 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		return getGameObject().hasThisAttribute(Constants.HIDDEN);
 	}
 	public Strength getVulnerability() {
+		if (isMistLike()) {
+			return new Strength("T");
+		}
 		Strength vul =  new Strength(getThisAttribute( "vulnerability"));
 		int mod = sizeModifier();
 		if (getGameObject().hasThisAttribute(Constants.WEAKENED_VULNERABILITY)) {

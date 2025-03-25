@@ -405,6 +405,14 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				}
 			}
 		}
+		for (GameObject tw : getTreasureWeaponObjects()) {
+			if (tw!=null && (rc==null || new CombatWrapper(rc.getGameObject()).getWeaponId().equals(tw.getStringId()))) {
+				CombatWrapper combat = new CombatWrapper(tw);
+				if (combat.getCombatBoxAttack() > 0) {
+					return new WeaponChitComponent(tw);
+				}
+			}
+		}
 		return null;
 	}
 	

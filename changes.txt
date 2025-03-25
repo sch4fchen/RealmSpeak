@@ -1,7 +1,6 @@
 ::ROADMAP::
-Enchant Weapon: any individual wielding the target weapon can target and attack individuals transformed into mist.
 Enchant Weapon: While targeting a Purple or Prism Anomaly, this spell is nullified.
-Melt into Mist: only move actions; canot follow or be followed; can be charged (difference), The target cannot attack or be attacked, except by individuals affected by the Enchant Weapon spell, If attacked, Mist’s vulnerability is Tremendous and non-armored; targeted monster stills prowls (like in base MR) even if ‘X’ weight
+Melt into Mist: only move actions; can be charged (difference); targeted monster stills prowls (like in base MR) even if ‘X’ weight
 only the Melt into Mist transmorphization spell can be cast to affect carrying capacity. Transform and Absorb Essence are no longer options for end-game scoring.
 Phantasm: If the phantasm discovers Hidden Enemies, the controlling character also discovers Hidden Enemies.;; it cannot take part in combat;; can now spy and be spied
 Protection from Magic: The target is also immune to spell-breaking spells, such as Exorcise, Remedy, and Dissolve Spell, while this spell is in effect (ie activated). Any transmorphization spells affecting the target would also be nullified when this spell is activated, which can be done during a phase even when the target is transmorphized.

@@ -1544,6 +1544,34 @@ public class BattleModel {
 		if (attackCancelled == null && target!=null && (attacker instanceof RealmComponent) && target.isImmuneTo((RealmComponent)attacker)) {
 			attackCancelled = target.getGameObject().getNameWithNumber()+" is immune to "+attacker.getGameObject().getNameWithNumber()+".";
 		}
+		
+		if (attackCancelled == null && target!=null && (attacker instanceof RealmComponent)
+				&& (target.getGameObject().hasThisAttribute(Constants.MIST_LIKE) || (target.isCharacter() && new CharacterWrapper(target.getGameObject()).isMistLike()))) {
+			boolean ignoresMistLike = false;
+			if (!attacker.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) {
+				ignoresMistLike = true;
+			}
+			if (!ignoresMistLike && attacker.isCharacter()) {
+				CharacterChitComponent characterChit =(CharacterChitComponent)attacker;
+				if (characterChit.getAttackingWeapon().getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) {
+					ignoresMistLike = true;
+				}
+				if (!ignoresMistLike) {
+					CharacterWrapper character = new CharacterWrapper(attacker.getGameObject());
+					for (GameObject item : character.getActiveInventory()) {
+						if (item.hasThisAttribute(Constants.IGNORE_MIST_LIKE) && !item.hasThisAttribute("attack") && !item.hasThisAttribute("weapon")) {
+							ignoresMistLike = true;
+						}
+					}
+				}
+				if (!ignoresMistLike && SpellUtility.affectedByBewitchingSpellKey(attacker.getGameObject(),Constants.IGNORE_MIST_LIKE)) {
+					ignoresMistLike = true;
+				}
+			}
+			if (!ignoresMistLike) {
+				attackCancelled = target.getGameObject().getNameWithNumber()+" is mist like and cannot be attacked by "+attacker.getGameObject().getNameWithNumber()+".";
+			}
+		}
 				
 		if (attackCancelled == null && attackerCombat.wasParried()) {
 			if (attackerCombat.getParriedBy().contains(target.getGameObject().getStringId()+":"+attacker.getLength()+":"+attacker.getAttackSpeed()+":"+attacker.getAttackCombatBox()+":"+attacker.getHarm().getStrength())) {

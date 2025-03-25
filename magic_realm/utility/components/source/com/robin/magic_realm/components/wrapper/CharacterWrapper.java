@@ -639,6 +639,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return prefix+result;
 	}
 	public Strength getVulnerability() {
+		if (isMistLike()) {
+			return new Strength("T");
+		}
 		Strength vul = new Strength(getGameObject().getThisAttribute("vulnerability"));
 		GameObject transform = getTransmorph();
 		if (transform!=null) {
