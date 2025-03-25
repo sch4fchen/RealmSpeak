@@ -25,7 +25,7 @@ public class CharacterCombatSheet extends CombatSheet {
 
 	private static final int POS_OWNER				= 0;
 	
-	private static final int POS_TARGET				= 1; // non-positioned targets
+	private static final int POS_TARGET				= 1; // non-positioned targets = lure
 	private static final int POS_TARGET_BOX1		= 2; // charge and thrust 1,1
 	private static final int POS_TARGET_BOX2		= 3; // dodge and swing 2,2
 	private static final int POS_TARGET_BOX3		= 4; // duck and smash 3,3
@@ -74,6 +74,7 @@ public class CharacterCombatSheet extends CombatSheet {
 	private static final int CHAR_COL2 = 208;
 	private static final int CHAR_COL3 = 322;
 	//Super Realm
+	private static final int CHAR_ROW0_SR = 25;
 	private static final int CHAR_ROW1_SR = 62;
 	private static final int CHAR_ROW2_SR = 158;
 	private static final int CHAR_ROW3_SR = 254;
@@ -160,7 +161,7 @@ public class CharacterCombatSheet extends CombatSheet {
 			new Point(CHAR_COL3_SR,CHAR_ROW_MOVE_SR),
 			
 			// Attacks
-			new Point(530,25), //
+			new Point(CHAR_ATT_COL2_SR+5,CHAR_ROW0_SR),
 			new Point(CHAR_ATT_COL1_SR,CHAR_ROW1_SR),
 			new Point(CHAR_ATT_COL1_SR,CHAR_ROW2_SR),
 			new Point(CHAR_ATT_COL1_SR,CHAR_ROW3_SR),
@@ -181,12 +182,12 @@ public class CharacterCombatSheet extends CombatSheet {
 			new Point(494,458), // Used Chits
 			new Point(400,700), // Charge Chits
 			
-			new Point(CHAR_COL1_SR,CHAR_ROW3_SR), // Dead Box //
+			new Point((CHAR_ATT_COL1_SR+CHAR_ATT_COL2_SR)/2,(CHAR_ROW_BREASTPLATE_SR+CHAR_ROW_SUIT_OF_ARMOR_SR)/2), // Dead Box
 			
 			// Parry for Super Realm
-			new Point(CHAR_COL1_SR,CHAR_ROW_PARRY_SR), //
-			new Point(CHAR_COL2_SR,CHAR_ROW_PARRY_SR), //
-			new Point(CHAR_COL3_SR,CHAR_ROW_PARRY_SR), //
+			new Point(CHAR_COL1_SR,CHAR_ROW_PARRY_SR),
+			new Point(CHAR_COL2_SR,CHAR_ROW_PARRY_SR),
+			new Point(CHAR_COL3_SR,CHAR_ROW_PARRY_SR),
 			
 			// Additional targets for Super Realm
 			new Point(CHAR_COL3_SR,CHAR_ROW1_SR),
