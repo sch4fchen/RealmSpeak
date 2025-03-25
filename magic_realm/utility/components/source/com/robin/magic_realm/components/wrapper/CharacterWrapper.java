@@ -2527,6 +2527,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 				return false;
 			}
 		}
+		else if (getGameObject().hasThisAttribute(Constants.ONLY_MOVE) && id!=ActionId.Move) {
+			return false;
+		}
 		if (id==ActionId.Follow && location!=null) {
 			// Can't follow unless its the first and only action
 			if (getCurrentActions()==null || getCurrentActions().isEmpty()) {

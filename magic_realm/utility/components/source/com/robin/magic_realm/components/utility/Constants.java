@@ -421,6 +421,7 @@ public class Constants {
 	public static final String CLAN = "clan";
 	public static final String POISON_IMMUNITY = "poison_immunity";
 	public static final String IGNORE_MIST_LIKE = "ignore_mist_like";
+	public static final String IGNORE_ENCHANTED_WEAPONS = "ignore_enchanted_weapons";
 	
 	public static final String DRAGON = "dragon";
 	public static final String DRAKE = "drake";
@@ -633,6 +634,7 @@ public class Constants {
 	public static final String ENCHANTED_WEAPON_STRENGTH = "enchanted_weapon_strength";
 	public static final String ENCHANTED_WEAPON_SHARPNESS = "enchanted_weapon_sharpness";
 	public static final String ENCHANTED_WEAPON_SPEED = "enchanted_weapon_speed";
+	public static final String ONLY_MOVE = "only_move";
 
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";

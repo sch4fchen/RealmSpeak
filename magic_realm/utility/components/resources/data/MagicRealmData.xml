@@ -39981,6 +39981,7 @@
         <attribute box_num="3" />
         <attribute blunt_immunity="" />
 		<attribute ignore_mist_like="" />
+		<attribute ignore_enchanted_weapons="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -40024,6 +40025,7 @@
         <attribute blunt_immunity="" />
 		<attribute poison_immunity="" />
 		<attribute ignore_mist_like="" />
+		<attribute ignore_enchanted_weapons="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -57812,6 +57814,7 @@
         <attribute super_realm="" />
 		<attribute benevolent_for_leaders="" />
 		<attribute benevolent_for_monsters="" />
+		<attribute only_move="" />
       </AttributeBlock>
       <AttributeBlock blockName="mist">
         <attribute vulnerability="T" />

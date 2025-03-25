@@ -305,8 +305,13 @@ public class TransmorphEffect implements ISpellEffect {
 			ArrayList<CharacterWrapper> followers = character.getActionFollowers();
 			if (followers!=null) {
 				for (CharacterWrapper follower : followers) {
-					character.removeActionFollower(follower,null,null);
+					if (!follower.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) {
+						character.removeActionFollower(follower,null,null);
+					}
 				}
+			}
+			if (spell.getGameObject().hasThisAttribute(Constants.ONLY_MOVE)) {
+				target.getGameObject().setThisAttribute(Constants.ONLY_MOVE);
 			}
 		}
 	}
