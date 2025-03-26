@@ -583,15 +583,27 @@ public class CombatFrame extends JFrame {
 		ret = theGame.getNextInformation(myName);
 		if (ret!=null) {
 			GameObject go = gameData.getGameObject(Long.valueOf(ret[0]));
-			RealmComponentOptionChooser boxViewer = new RealmComponentOptionChooser(this, go.getName(), "Close");
-			for (GameObject hold : go.getHold()) {
-				RealmComponent rc = RealmComponent.getRealmComponent(hold);
-				if (!go.hasThisAttribute("tile") || rc.isChit() || rc.isTreasureLocation()) {
-					boxViewer.addRealmComponentAndFlipSide(rc);
+			RealmComponent rc = RealmComponent.getRealmComponent(go);
+			if (rc.isCharacter()) {
+				CharacterWrapper character = new CharacterWrapper(go);
+				RealmComponentOptionChooser questViewer = new RealmComponentOptionChooser(this, go.getName(), "Close");
+				for (GameObject quest : character.getAllQuestObjects()) {
+					questViewer.addRealmComponent(RealmComponent.getRealmComponent(quest),true);
 				}
+				questViewer.setLocationRelativeTo(this);
+				questViewer.setVisible(true);
 			}
-			boxViewer.setLocationRelativeTo(this);
-			boxViewer.setVisible(true);
+			else {
+				RealmComponentOptionChooser boxViewer = new RealmComponentOptionChooser(this, go.getName(), "Close");
+				for (GameObject hold : go.getHold()) {
+					RealmComponent holdRc = RealmComponent.getRealmComponent(hold);
+					if (!go.hasThisAttribute("tile") || holdRc.isChit() || holdRc.isTreasureLocation()) {
+						boxViewer.addRealmComponentAndFlipSide(holdRc);
+					}
+				}
+				boxViewer.setLocationRelativeTo(this);
+				boxViewer.setVisible(true);
+			}
 			broadcastMessage(RealmLogging.BATTLE,myName+" got information by a Demon.");
 		}
 //		if (actionState==Constants.COMBAT_RESOLVING) {
