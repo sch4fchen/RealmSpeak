@@ -102,6 +102,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	// Other identifiers
 	public static final String NATIVE_HORSE = "native_horse";
 	public static final String TREASURE_WITHIN_TREASURE = "treasure_within_treasure";
+	public static final String VIRTUAL_DWELLING = "virtual_dwelling";
 
 	public static boolean fullDetail = true; // by default, all objects should be detailed
 
@@ -895,6 +896,9 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		else if (obj.hasThisAttribute(NATIVE)) {
 			if (!obj.hasThisAttribute(HORSE) && !obj.hasThisAttribute(DWELLING)) {
 				comp = new NativeChitComponent(obj);
+			}
+			if (obj.hasThisAttribute(VIRTUAL_DWELLING)) {
+				comp = new DwellingVirtualChitComponent(obj);
 			}
 		}
 		else if (obj.hasThisAttribute(CHARACTER)) {

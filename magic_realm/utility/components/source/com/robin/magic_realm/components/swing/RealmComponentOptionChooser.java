@@ -120,7 +120,7 @@ public class RealmComponentOptionChooser extends AggressiveDialog {
 		
 		getContentPane().add(topPanel, "North");
 		setResizable(false);
-		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 	}
 	
 	public void setViewComponents(Collection<RealmComponent> c) {

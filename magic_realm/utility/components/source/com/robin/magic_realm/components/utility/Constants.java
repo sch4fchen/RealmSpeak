@@ -490,7 +490,12 @@ public class Constants {
 	public static final String BLOWS_TARGET = "blows_target"; // ie., Hurricane Winds
 	public static final String LAND_FIRST = "land_first"; // ie., Hurricane Winds
 	public static final String ASKDEMON = "askdemon"; // ie., Ask Demon... well duh!!
+	public static final String ASKDEMON_PEEK = "askdemon_peek";
 	public static final String DEMON_Q_DELIM = ":-:-:"; // the thing that separates the player name from the question
+	public static final String ASK_DEMON_QUESTION = "Ask a question to a player";
+	public static final String ASK_DEMON_PEEK_TILE = "Peek at all chits on a tile";
+	public static final String ASK_DEMON_PEEK_BOX = "Peek at all content in a single box on the Setup Chart";
+	public static final String ASK_DEMON_PEEK_QUEST_CARDS = "Peek at all Quest cards a single player is holding";
 	public static final String PONY_LOCK = "pony_lock";
 	public static final String MUST_DEACTIVATE = "must_deactivate";
 	public static final String REPAIR_ONE = "repair_one";

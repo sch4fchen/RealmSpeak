@@ -57376,6 +57376,7 @@
         <attribute host_okay="" />
         <attribute learnable="" />
         <attribute super_realm="" />
+		<attribute askdemon_peek="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2131" name="Control Bats">

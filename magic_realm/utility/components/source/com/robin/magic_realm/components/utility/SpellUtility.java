@@ -551,4 +551,15 @@ the Appearance Chart, he instantly becomes unhired.
 		RealmLogging.logMessage(context.Spell.getCaster().getGameObject().getName(), rollType + " roll: "+ roller.getDescription());
 		return new RollResult(roller, roller.getStringResult(), die);
 	}
+	
+	public static TileLocation chooseTileLocation(JFrame parent, String title) {
+		CenteredMapView cmap = CenteredMapView.getSingleton();
+		cmap.markAllTiles(true);
+		cmap.setMapAttentionMessage(title);
+		TileLocationChooser chooser = new TileLocationChooser(parent,cmap,null);
+		chooser.setLocationRelativeTo(parent);
+		chooser.setVisible(true);
+		cmap.markAllTiles(false);
+		return chooser.getSelectedLocation();
+	}
 }

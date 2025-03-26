@@ -17,6 +17,7 @@ import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class ActionPrerequisite {
 	private GameObject source;
@@ -107,11 +108,19 @@ public class ActionPrerequisite {
 		// Try fatiguing T
 		Strength tStrength = new Strength("T");
 		Strength wishStrength = character.getWishStrength();
+		String blownSpellId = character.getGameObject().getThisAttribute(Constants.BLOWS_TARGET);
 		if (tStrength.equalTo(character.getMoveStrength(false,true)) || tStrength.equalTo(character.getFightStrength(false,true))) {
 			// Having strength from horse,boots is enough to satisfy the requirement (see rule 9.3/3b)
 			success = true;
 		}
-		else {
+		if (!success && blownSpellId!=null) {
+			GameObject spell = character.getGameData().getGameObject(Long.valueOf(blownSpellId));
+			SpellWrapper spellWrapper = new SpellWrapper(spell);
+			if (spellWrapper.getCaster()!=null && spellWrapper.getCaster().getGameObject().getStringId().matches(character.getGameObject().getStringId())) {
+				success = true;
+			}
+		}
+		if (!success) {
 			// Instead, you need to fatigue a T chit
 			ArrayList<CharacterActionChitComponent> tremendousChits = new ArrayList<>();
 			Collection<CharacterActionChitComponent> active = character.getActiveChits();
