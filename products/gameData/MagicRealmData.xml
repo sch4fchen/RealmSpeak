@@ -8282,8 +8282,8 @@
         <attribute text="Protection from Magic" />
       </AttributeBlock>
       <AttributeBlock blockName="phase_chit_effects">
-        <attribute magic_protection="" />
         <attribute nullify="" />
+		<attribute magic_protection="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="316" name="Peace with Nature">
@@ -57906,8 +57906,9 @@
         <attribute text="Protection from Magic" />
       </AttributeBlock>
       <AttributeBlock blockName="phase_chit_effects">
-        <attribute magic_protection="" />
         <attribute nullify="" />
+		<attribute magic_protection="" />
+		<attribute magic_protection_extended="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2158" name="Peace with Nature">

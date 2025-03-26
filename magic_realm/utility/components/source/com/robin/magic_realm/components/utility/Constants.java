@@ -484,6 +484,7 @@ public class Constants {
 	public static final String WISH_AND_CURSE = "wish_and_curse";
 	public static final String CANCEL_SPELL = "cancel_spell";
 	public static final String MAGIC_PROTECTION = "magic_protection";
+	public static final String MAGIC_PROTECTION_EXTENDED = "magic_protection_extended";
 	public static final String INSTANT_PEER = "instant_peer"; // ie., Talk to Wise Bird
 	public static final String COMBAT_HIDE = "combat_hide"; // ie., World Fades
 	public static final String BLOWS_TARGET = "blows_target"; // ie., Hurricane Winds

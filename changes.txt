@@ -1,7 +1,5 @@
 ::ROADMAP::
-Phantasm: If the phantasm discovers Hidden Enemies, the controlling character also discovers Hidden Enemies.;; it cannot take part in combat;; can now spy and be spied
-Protection from Magic: The target is also immune to spell-breaking spells, such as Exorcise, Remedy, and Dissolve Spell, while this spell is in effect (ie activated). Any transmorphization spells affecting the target would also be nullified when this spell is activated, which can be done during a phase even when the target is transmorphized.
-	prevents him from casting any spells and playing any color chits
+Protection from Magic: prevents him from casting any spells and playing any color chits
 Exorcise: All native casters in the clearing cannot supply color magic, and they cannot cast spells for the rest of combat (including the current round), unless they are in a clearing with a magic source matching the color required to cast their spell. 
 Ask Demon: 4 options, instead of just asking a question
 Absorb Essence: any denizens and Attention chits assigned to it become assigned to the spellcaster; absorbs steed when absorbing a monster
@@ -47,7 +45,8 @@ SUPER REALM
 # Enchant Weapon: can attack mist like individuals
 # Melt into Mist can only do move actions
 # Mist like monsters prowl (even if X weight)
-# End Game Scoring: Characters discard items exceeding the carrying capacity 
+# End Game Scoring: Characters discard items exceeding the carrying capacity
+# Protection from Magic: target is immune to spell-breaking spells (Exorcise, Remedy, Dissolve Spell)
 
 Version 1.2.1.1
 BUGS/ISSUES:

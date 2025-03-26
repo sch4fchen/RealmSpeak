@@ -7,6 +7,7 @@ public class PhaseChitEffectFactory {
 		switch(effect.toLowerCase()){
 			case "nullify":return new ISpellEffect[]{new NullifyEffect()};
 			case "magic_protection": return new ISpellEffect[]{new ApplyNamedEffect(Constants.MAGIC_PROTECTION)};
+			case "magic_protection_extended": return new ISpellEffect[]{new ApplyNamedEffect(Constants.MAGIC_PROTECTION_EXTENDED)};
 			case "blinding_light": return new ISpellEffect[]{new ApplyNamedEffect(Constants.BLINDING_LIGHT),new RemovePotentialBlocksEffect()};
 			case "holy_shield": return new ISpellEffect[]{new ApplyNamedEffect(Constants.HOLY_SHIELD)};
 			case "reserve": return new ISpellEffect[]{new MagicChitEffect()};

@@ -12,6 +12,10 @@ public class ExorciseEffect implements ISpellEffect {
 	public void apply(SpellEffectContext context) {
 		CombatWrapper combat = context.getCombatTarget();
 		
+		if (context.Target.getGameObject().hasThisAttribute(Constants.MAGIC_PROTECTION_EXTENDED)) {
+			System.out.println("No effect on target.");
+			return;
+		}
 		if (context.Target.getGameObject().hasThisAttribute(Constants.DEMON)||context.Target.getGameObject().hasThisAttribute(Constants.IMP)||context.Target.getGameObject().hasThisAttribute(Constants.DEVIL)||context.Target.getGameObject().hasThisAttribute(Constants.VAMPIRE)||context.Target.getGameObject().hasThisAttribute(Constants.SUCCUBUS)) {
 			combat.setKilledBy(context.Caster);
 			combat.setKilledLength(18);
