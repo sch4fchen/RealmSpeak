@@ -580,6 +580,17 @@ public class CombatFrame extends JFrame {
 			broadcastMessage(key,answer);
 			broadcastMessage(RealmLogging.BATTLE,myName+" answered a question.");
 		}
+		ret = theGame.getNextInformation(myName);
+		if (ret!=null) {
+			GameObject go = gameData.getGameObject(Long.valueOf(ret[0]));
+			RealmComponentOptionChooser boxViewer = new RealmComponentOptionChooser(this, go.getName(), "Close");
+			for (GameObject hold : go.getHold()) {
+				boxViewer.add(RealmComponent.getRealmComponent(hold));
+			}
+			boxViewer.setLocationRelativeTo(this);
+			boxViewer.setVisible(true);
+			broadcastMessage(RealmLogging.BATTLE,myName+" got information by a Demon.");
+		}
 //		if (actionState==Constants.COMBAT_RESOLVING) {
 //			showCombatSummary();
 //		}

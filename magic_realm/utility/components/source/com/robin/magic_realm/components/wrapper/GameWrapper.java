@@ -33,6 +33,8 @@ public class GameWrapper extends GameObjectWrapper {
 	public static final String GAME_REVEALED = "_revv_";
 	public static final String GAME_Q_ID = "_gqid_";
 	public static final String GAME_Q_PREFIX = "_gqp__";
+	public static final String GAME_I_ID = "_giid_";
+	public static final String GAME_I_PREFIX = "_gip__";
 	public static final String GAME_LAST_REGEN = "_lrg__"; // keeps track of denizens that regenerate on the 7th day
 	public static final String GAME_CLIENTS_TAKEN_TURN = "_ctt__";
 	
@@ -270,12 +272,26 @@ public class GameWrapper extends GameObjectWrapper {
 		return qid;
 	}
 	
+	public int getNextInformationId() {
+		int iid = getInt(GAME_I_ID);
+		iid++;
+		setInt(GAME_I_ID,iid);
+		return iid;
+	}
+	
 	public void addQuestion(String askingPlayerName,String answeringPlayerName,String question) {
 		int qid = getNextQuestionId();
 		String qAttribute = GAME_Q_PREFIX+qid;
 		addListItem(qAttribute,answeringPlayerName);
 		addListItem(qAttribute,askingPlayerName);
 		addListItem(qAttribute,question);
+	}
+	
+	public void addInformation(String player,String gameObjectId) {
+		int iid = getNextInformationId();
+		String iAttribute = GAME_I_PREFIX+iid;
+		addListItem(iAttribute,player);
+		addListItem(iAttribute,gameObjectId);
 	}
 	
 	public void clearRegeneratedDenizens() {
@@ -340,6 +356,25 @@ public class GameWrapper extends GameObjectWrapper {
 					ret[0] = list.get(1); // askingPlayerName
 					ret[1] = list.get(2); // question
 					getGameObject().removeAttribute(GAME_BLOCK,qAttribute); // remove so it doesn't get asked twice!
+					return ret;
+				}
+			}
+		}
+		return null;
+	}
+	
+	public String[] getNextInformation(String player) {
+		int qid = getInt(GAME_I_ID);
+		// I don't like the loop, but considering that there isn't likely to be a lot of questions, this should be sufficient
+		for (int i=0;i<=qid;i++) {
+			String iAttribute = GAME_I_PREFIX+i;
+			if (getGameObject().hasAttribute(GAME_BLOCK,iAttribute)) {
+				ArrayList<String> list = getList(iAttribute);
+				String test = list.get(0);
+				if (test.equals(player)) {
+					String[] ret = new String[1];
+					ret[0] = list.get(1); // GameObjectId
+					getGameObject().removeAttribute(GAME_BLOCK,iAttribute); // remove so it doesn't get shown twice!
 					return ret;
 				}
 			}

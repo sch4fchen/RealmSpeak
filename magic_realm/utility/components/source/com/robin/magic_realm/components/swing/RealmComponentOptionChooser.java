@@ -67,6 +67,15 @@ public class RealmComponentOptionChooser extends AggressiveDialog {
 		initComponents(title,includeCancel);
 		updateLayout();
 	}
+	
+	public RealmComponentOptionChooser(JFrame parent, String title,String cancelButton) {
+		super(parent, "", true);
+		textHash = new OrderedHashtable<>();
+		componentHashLists = new HashLists<>();
+		iconHashLists= new HashLists<>();
+		initComponents(title,true,cancelButton);
+		updateLayout();
+	}
 
 	public int getMaxGroupSize() {
 		return maxGroupSize;
@@ -82,15 +91,20 @@ public class RealmComponentOptionChooser extends AggressiveDialog {
 		}
 		super.setVisible(val);
 	}
-
+	
 	private void initComponents(String title,boolean includeCancel) {
+		initComponents(title,includeCancel,null);
+	}
+	
+	private void initComponents(String title,boolean includeCancel, String cancelButtonText) {
 		buttonPanel = new JPanel(new BorderLayout());
 		getContentPane().setLayout(new BorderLayout(5, 5));
 		getContentPane().add(buttonPanel, "Center");
 		if (includeCancel) {
 			Box box = Box.createHorizontalBox();
 			box.add(Box.createHorizontalGlue());
-			cancelButton = new JButton("Cancel");
+			String text = cancelButtonText==null?"Cancel":cancelButtonText;
+			cancelButton = new JButton(text);
 			cancelButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
 					selectedKey = null;

@@ -12,16 +12,19 @@ public class AskDemonEffect implements ISpellEffect {
 		
 		if (string.matches(Constants.ASK_DEMON_PEEK_TILE)) {
 			GameObject tile = context.Spell.getSecondaryTarget();
+			context.Game.addInformation(context.Spell.getCaster().getPlayerName(),tile.getStringId());
 			return;
 		}
 		
 		if (string.matches(Constants.ASK_DEMON_PEEK_BOX)) {
-			
+			GameObject box = context.Spell.getSecondaryTarget();
+			context.Game.addInformation(context.Spell.getCaster().getPlayerName(),box.getStringId());
 			return;
 		}
 		
 		if (string.matches(Constants.ASK_DEMON_PEEK_QUEST_CARDS)) {
-			
+			GameObject player = context.Spell.getSecondaryTarget();
+			context.Game.addInformation(context.Spell.getCaster().getPlayerName(),player.getStringId());
 			return;
 		}
 		
