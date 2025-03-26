@@ -307,6 +307,21 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		
 		Harm harm = new Harm(attackerHarm);
 		Strength vulnerability = new Strength(getThisAttribute("vulnerability"));
+		
+		if (getGameObject().hasThisAttribute(Constants.POISON_IMMUNITY)) {
+			if (attacker.isCharacter()) {
+				WeaponChitComponent weapon = ((CharacterChitComponent)attacker).getAttackingWeapon();
+				if (weapon!=null && weapon.getGameObject().hasThisAttribute(Constants.POISON)) {
+					harm.dampenSharpness();
+					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Steed has poison immunity and additional sharpness is ignored: "+harm.toString());
+				}
+			}
+			if (attacker.getGameObject().hasThisAttribute(Constants.POISON)) {
+				harm.dampenSharpness();
+				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Steed has poison immunity and additional sharpness is ignored: "+harm.toString());
+			}
+		}
+		
 		if (!harm.getIgnoresArmor() && isArmored()) {
 			harm.dampenSharpness();
 			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor, and reduces sharpness: "+harm.toString());

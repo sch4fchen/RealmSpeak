@@ -1338,6 +1338,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.SR_NO_7TH_DAY_REGENERATION,true);
 		optionPane.setOption(Constants.SR_ALTERNATING_7TH_DAY_MAGIC,true);
 		optionPane.setOption(Constants.SR_HORSES_REGENERATION,true);
+		optionPane.setOption(Constants.SR_END_GAME_SCORING,true);
 		optionPane.setOption(Constants.SR_NO_SPYING,true);
 		optionPane.setOption(Constants.SR_NO_INFORMATION_SHARING,true);
 		optionPane.setOption(Constants.FE_SEARCH_TABLES,true);

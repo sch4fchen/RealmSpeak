@@ -763,6 +763,20 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				}
 			}
 
+			if (character.affectedByKey(Constants.POISON_IMMUNITY)) {
+				if (attacker.isCharacter()) {
+					WeaponChitComponent weapon = ((CharacterChitComponent)attacker).getAttackingWeapon();
+					if (weapon!=null && weapon.getGameObject().hasThisAttribute(Constants.POISON)) {
+						harm.dampenSharpness();
+						RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Character has poison immunity and additional sharpness is ignored: "+harm.toString());
+					}
+				}
+				if (attacker.getGameObject().hasThisAttribute(Constants.POISON)) {
+					harm.dampenSharpness();
+					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Character has poison immunity and additional sharpness is ignored: "+harm.toString());
+				}
+			}
+			
 			Strength vulnerability = character.getVulnerability();
 
 			// Find armor (if any) at box - chits before cards...
