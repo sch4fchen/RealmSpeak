@@ -2298,6 +2298,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return list;
 	}
 	public boolean canUseInstantTeleport() {
+		if (getGameObject().hasThisAttribute(Constants.MAGIC_PROTECTION_EXTENDED)) {
+			return false;
+		}
 		TileLocation loc = getCurrentLocation();
 		if(loc == null || loc.clearing==null) {
 			return false;
@@ -5051,6 +5054,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return getCastableSpellSets(false);
 	}
 	private ArrayList<SpellSet> getCastableSpellSets(boolean ignoreColorRequirement) {
+		ArrayList<SpellSet> castableSpellSets = new ArrayList<>();
+		if (getGameObject().hasThisAttribute(Constants.MAGIC_PROTECTION_EXTENDED)) {
+			return castableSpellSets;
+		}
 		// Find all color sources
 		Collection<ColorMagic> infiniteColors; 
 		if (ignoreColorRequirement) {
@@ -5114,7 +5121,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		// Now filter out the non-castable spells (missing some component)
 		boolean optionalArtifacts = hostPrefs.hasPref(Constants.OPT_ENHANCED_ARTIFACTS) || affectedByKey(Constants.ENHANCED_ARTIFACTS);
-		ArrayList<SpellSet> castableSpellSets = new ArrayList<>();
 		for (SpellSet set:potentialSets) {
 			// First, validate chit types (if needed)
 			String spellType = set.getCastMagicType();

@@ -1,5 +1,4 @@
 ::ROADMAP::
-Protection from Magic: prevents him from casting any spells and playing any color chits
 Exorcise: All native casters in the clearing cannot supply color magic, and they cannot cast spells for the rest of combat (including the current round), unless they are in a clearing with a magic source matching the color required to cast their spell. 
 Ask Demon: 4 options, instead of just asking a question
 Absorb Essence: any denizens and Attention chits assigned to it become assigned to the spellcaster; absorbs steed when absorbing a monster
@@ -47,6 +46,7 @@ SUPER REALM
 # Mist like monsters prowl (even if X weight)
 # End Game Scoring: Characters discard items exceeding the carrying capacity
 # Protection from Magic: target is immune to spell-breaking spells (Exorcise, Remedy, Dissolve Spell)
+# Protection from Magic: prevents target from casting spells and playing color chits
 
 Version 1.2.1.1
 BUGS/ISSUES:

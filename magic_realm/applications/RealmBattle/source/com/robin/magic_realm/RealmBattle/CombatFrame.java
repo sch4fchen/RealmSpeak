@@ -1516,13 +1516,19 @@ public class CombatFrame extends JFrame {
 				if (activeCharacterIsHere) {
 					castableSpellSets = activeCharacter.getCastableSpellSets();
 				}
-				castSpellButton.setEnabled(endCombatFrame==null && !combat.isPeaceful() && activeCharacterIsHere && !combat.getHasCharged() && !activeCharacterIsTransmorphed && castableSpellSets != null && castableSpellSets.size()>0 && !activeCharacter.affectedByKey(Constants.DISENCHANT_POTION) && !changes);
+				castSpellButton.setEnabled(endCombatFrame==null && !combat.isPeaceful() && activeCharacterIsHere && !combat.getHasCharged()
+						&& !activeCharacterIsTransmorphed && castableSpellSets != null && castableSpellSets.size()>0
+						&& !activeCharacter.affectedByKey(Constants.DISENCHANT_POTION) && !changes);
 			}
 			if (teleportInstantButton!=null) {
 				teleportInstantButton.setEnabled(endCombatFrame==null && activeCharacterIsHere && activeCharacter.canUseInstantTeleport());
 			}
 			if (raiseDeadButton!=null) {
-				raiseDeadButton.setEnabled(endCombatFrame==null && !combat.isPeaceful() && activeCharacterIsHere && activeCharacter.affectedByKey(Constants.RAISE_DEAD) && !activeCharacter.affectedByKey(Constants.DISENCHANT_POTION) && !combat.getRaisedDead() && !combat.getRaiseTheDead());
+				raiseDeadButton.setEnabled(endCombatFrame==null && !combat.isPeaceful() && activeCharacterIsHere
+						&& !activeCharacter.getGameObject().hasThisAttribute(Constants.MAGIC_PROTECTION_EXTENDED)
+						&& activeCharacter.affectedByKey(Constants.RAISE_DEAD)
+						&& !activeCharacter.affectedByKey(Constants.DISENCHANT_POTION)
+						&& !combat.getRaisedDead() && !combat.getRaiseTheDead());
 			}
 			if (selectSpellTargetsButton!=null) {
 				GameObject go = combat.getCastSpell();
@@ -1554,11 +1560,13 @@ public class CombatFrame extends JFrame {
 				selectTargetFromUnassignedButton.setEnabled(!targetsSelected && activeCharacterIsHere);
 			}
 			if (useColorChitButton!=null) {
-				useColorChitButton.setEnabled(activeCharacter.getColorMagicChits().size()>0
+				useColorChitButton.setEnabled(activeCharacter.getColorMagicChits().size()>0 && !activeCharacter.getGameObject().hasThisAttribute(Constants.MAGIC_PROTECTION_EXTENDED)
 						&& ((!hostPrefs.hasPref(Constants.FE_STEEL_AGAINST_MAGIC) && !activeCharacter.affectedByKey(Constants.STAFF_RESTRICTED_SPELLCASTING)) || activeCharacter.hasOnlyStaffAsActivatedWeapon()));
 			}
 			if (useMagicMoveButton!=null) {
-				useMagicMoveButton.setEnabled(activeCharacterIsHere && activeCharacter.affectedByKey(Constants.MAGIC_MOVE) && activeCharacter.getActiveMoveChits().size() > 0 && activeCharacter.getColorChits().size() > 0);
+				useMagicMoveButton.setEnabled(activeCharacterIsHere && activeCharacter.affectedByKey(Constants.MAGIC_MOVE)
+						&& !activeCharacter.getGameObject().hasThisAttribute(Constants.MAGIC_PROTECTION_EXTENDED)
+						&& activeCharacter.getActiveMoveChits().size() > 0 && activeCharacter.getColorChits().size() > 0);
 			}
 			undoButton.setEnabled(interactiveFrame && endCombatFrame==null && (changes || nonaffectingChanges));
 		}
