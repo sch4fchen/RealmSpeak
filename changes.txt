@@ -1,5 +1,4 @@
 ::ROADMAP::
-Ask Demon: 4 options, instead of just asking a question
 Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells: Lightning Bolt, Alchemists Mixture); site targets are considered armored. or by hurricane winds
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt
@@ -45,6 +44,7 @@ SUPER REALM
 # Protection from Magic: prevents target from casting spells and playing color chits
 # Exorcise: Native casters cannot cast spells for the rest of combat
 # Hurricane Winds: can open Vault, Tomb etc. (if cast on yourself)
+# Ask Demon: new options
 
 Version 1.2.1.1
 BUGS/ISSUES:

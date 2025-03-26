@@ -170,6 +170,11 @@ public class RealmComponentOptionChooser extends AggressiveDialog {
 		String key = generateOption(text);
 		addRealmComponentToOption(key,rc);
 	}
+	public void addRealmComponentAndFlipSide(RealmComponent rc) {
+		addRealmComponent(rc,true);
+		String option = generateOption(rc.getGameObject().getName()+" (flipside)");
+		addRealmComponentToOption(option,rc,DisplayOption.Flipside);
+	}
 	/**
 	 * Generates a numeric option, so that one doesn't HAVE to be created beforehand
 	 */

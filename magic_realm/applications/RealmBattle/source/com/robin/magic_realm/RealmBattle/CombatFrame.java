@@ -585,7 +585,10 @@ public class CombatFrame extends JFrame {
 			GameObject go = gameData.getGameObject(Long.valueOf(ret[0]));
 			RealmComponentOptionChooser boxViewer = new RealmComponentOptionChooser(this, go.getName(), "Close");
 			for (GameObject hold : go.getHold()) {
-				boxViewer.add(RealmComponent.getRealmComponent(hold));
+				RealmComponent rc = RealmComponent.getRealmComponent(hold);
+				if (!go.hasThisAttribute("tile") || rc.isChit() || rc.isTreasureLocation()) {
+					boxViewer.addRealmComponentAndFlipSide(rc);
+				}
 			}
 			boxViewer.setLocationRelativeTo(this);
 			boxViewer.setVisible(true);
