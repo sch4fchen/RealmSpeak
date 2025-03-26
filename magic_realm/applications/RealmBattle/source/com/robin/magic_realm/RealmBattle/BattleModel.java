@@ -575,11 +575,16 @@ public class BattleModel {
 							break;
 						}
 					}
-					if (spell!=null && !spell.isAttackSpell()) {
-						boolean validTarget = spell.selectTargetForDenizen(hostPrefs, battleLocation, denizen,denizen.getTarget());
-						if (validTarget) {
-							spell.castSpellByDenizen(denizen.getGameObject());
-							spells.put(Integer.valueOf(denizen.getAttackSpeed().getNum()),spell);
+					if (spell!=null && !spell.isAttackSpell()) {		
+						CombatWrapper combatDenizen = new CombatWrapper(battleParticipant.getGameObject());
+						if (!denizen.isNative() || !combatDenizen.isAffectedByExorcise() || colorSuppliedForDenizenSpell(spell)) {
+							boolean validTarget = spell.selectTargetForDenizen(hostPrefs, battleLocation, denizen,denizen.getTarget());
+							if (validTarget) {
+								spell.castSpellByDenizen(denizen.getGameObject());
+								spells.put(Integer.valueOf(denizen.getAttackSpeed().getNum()),spell);
+							}
+						} else {
+							logBattleInfo(denizen.getGameObject().getNameWithNumber()+" is affected by Exorcise and thus cannot cast "+spell.getName()+".");
 						}
 					}
 				}
@@ -809,6 +814,21 @@ public class BattleModel {
 				CombatFrame.closeCombatFrameIfNeeded();
 			}
 		}
+	}
+	
+	private boolean colorSuppliedForDenizenSpell(SpellWrapper spell) {
+		ColorMagic requiredColorMagic = spell.getRequiredColorMagic();
+		ArrayList<ColorMagic> availableColors = battleLocation.clearing.getAllSourcesOfColor(false);
+		RealmCalendar cal = RealmCalendar.getCalendar(gameData);
+		availableColors.addAll(cal.getColorMagic(theGame.getMonth(),theGame.getDay()));
+		boolean colorSupplied = false;
+		for (ColorMagic color : availableColors) {
+			if (requiredColorMagic.getColor() == color.getColor()) {
+				colorSupplied = true;
+				break;
+			}
+		}
+		return colorSupplied;
 	}
 	
 	/**
@@ -1172,22 +1192,26 @@ public class BattleModel {
 					attackAfterCasting = true;
 				}
 				
-				spell.selectTargetForDenizen(hostPrefs, battleLocation, attacker,null);
-				spell.castSpellByDenizen(attacker.getGameObject());
-				ArrayList<String> logs = new ArrayList<String>();
-				if (spell.isInstantSpell() && !spell.uneffectAtMidnight()) {
-					logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,true,null);
-				}
-				else if (spell.isCombatSpell() || spell.isDaySpell() || spell.isPermanentSpell() || spell.isPhaseSpell() || spell.isMoveSpell() || spell.uneffectAtMidnight()) {
-					logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,false,null);
-				}
-				if (logs != null && !logs.isEmpty()) {
-					for (String log : logs) {
-						logBattleInfo(log);
+				if (!attacker.isNative() || !new CombatWrapper(attacker).isAffectedByExorcise() || colorSuppliedForDenizenSpell(spell)){
+					spell.selectTargetForDenizen(hostPrefs, battleLocation, attacker,null);
+					spell.castSpellByDenizen(attacker.getGameObject());
+					ArrayList<String> logs = new ArrayList<String>();
+					if (spell.isInstantSpell() && !spell.uneffectAtMidnight()) {
+						logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,true,null);
 					}
+					else if (spell.isCombatSpell() || spell.isDaySpell() || spell.isPermanentSpell() || spell.isPhaseSpell() || spell.isMoveSpell() || spell.uneffectAtMidnight()) {
+						logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,false,null);
+					}
+					if (logs != null && !logs.isEmpty()) {
+						for (String log : logs) {
+							logBattleInfo(log);
+						}
+					}
+					spell.recognizeCastedSpellByDenizen();
+					spellCasting = true;
+				} else {
+					logBattleInfo(attacker.getGameObject().getNameWithNumber()+" is affected by Exorcise and thus cannot cast "+spell.getName()+".");
 				}
-				spell.recognizeCastedSpellByDenizen();
-				spellCasting = true;
 				
 				if ((attacker.isMonster() && ((MonsterChitComponent)attacker).changeTacticsAfterCasting())
 						|| (attacker.isNative() && ((NativeChitComponent)attacker).changeTacticsAfterCasting())) {
@@ -1783,46 +1807,51 @@ public class BattleModel {
 							}
 						}
 						if (spell!=null) {
-							spell.selectTargetForDenizen(hostPrefs, battleLocation, attacker, (RealmComponent)target);
-							spell.castSpellByDenizen(attacker.getGameObject());
-							if (spell.isAttackSpell()) {
-								int attacks = spell.getGameObject().getThisInt("min_targets");
-								if(attacks == 0) {
-									attacks = 1;
-								}
-								int i=1;
-								while (i<=attacks) {
-									Harm spellHarm = getAdjustedHarm(spell,fumbleModifier,targetCombat.getGameObject().getStringId());
-									CombatWrapper spellCaster = new CombatWrapper(spell.getCaster().getGameObject());
-									if (spell.freezingTarget()) {
-										targetCombat.freeze();
+							if (!attacker.isNative() || !attackerCombat.isAffectedByExorcise() || colorSuppliedForDenizenSpell(spell)) {
+								spell.selectTargetForDenizen(hostPrefs, battleLocation, attacker, (RealmComponent)target);
+								spell.castSpellByDenizen(attacker.getGameObject());
+								if (spell.isAttackSpell()) {
+									int attacks = spell.getGameObject().getThisInt("min_targets");
+									if(attacks == 0) {
+										attacks = 1;
 									}
-									spellCaster.addHarmApplied(spellHarm,targetCombat.getGameObject());
-									// Apply the hit
-									targetCombat.addHitBy(attacker.getGameObject());
-									currentNewWounds = targetCombat.getNewWounds();
-									logBattleInfo(target.getGameObject().getNameWithNumber()+" is hit by the spell "+spell.getName()+" with "+spellHarm+" harm along box "+attacker.getAttackCombatBox());
-									hitCausedHarm = target.applyHit(theGame,hostPrefs,attacker,attacker.getAttackCombatBox(),spellHarm,attackOrderPos);
-									i++;
+									int i=1;
+									while (i<=attacks) {
+										Harm spellHarm = getAdjustedHarm(spell,fumbleModifier,targetCombat.getGameObject().getStringId());
+										CombatWrapper spellCaster = new CombatWrapper(spell.getCaster().getGameObject());
+										if (spell.freezingTarget()) {
+											targetCombat.freeze();
+										}
+										spellCaster.addHarmApplied(spellHarm,targetCombat.getGameObject());
+										// Apply the hit
+										targetCombat.addHitBy(attacker.getGameObject());
+										currentNewWounds = targetCombat.getNewWounds();
+										logBattleInfo(target.getGameObject().getNameWithNumber()+" is hit by the spell "+spell.getName()+" with "+spellHarm+" harm along box "+attacker.getAttackCombatBox());
+										hitCausedHarm = target.applyHit(theGame,hostPrefs,attacker,attacker.getAttackCombatBox(),spellHarm,attackOrderPos);
+										i++;
+									}
 								}
+								else {
+									ArrayList<String> logs = new ArrayList<String>();
+									if (spell.isInstantSpell() && !spell.uneffectAtMidnight()) {
+										logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,true,null);
+									}
+									else if (spell.isCombatSpell() || spell.isDaySpell() || spell.isPermanentSpell() || spell.isPhaseSpell() || spell.isMoveSpell() || spell.uneffectAtMidnight()) {
+										logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,false,null);
+									}
+									if (logs != null && !logs.isEmpty()) {
+										for (String log : logs) {
+											logBattleInfo(log);
+										}
+									}
+									spell.recognizeCastedSpellByDenizen();
+								}
+								spellCasting = true;
+								spellCasted = true;
 							}
 							else {
-								ArrayList<String> logs = new ArrayList<String>();
-								if (spell.isInstantSpell() && !spell.uneffectAtMidnight()) {
-									logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,true,null);
-								}
-								else if (spell.isCombatSpell() || spell.isDaySpell() || spell.isPermanentSpell() || spell.isPhaseSpell() || spell.isMoveSpell() || spell.uneffectAtMidnight()) {
-									logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,false,null);
-								}
-								if (logs != null && !logs.isEmpty()) {
-									for (String log : logs) {
-										logBattleInfo(log);
-									}
-								}
-								spell.recognizeCastedSpellByDenizen();
+								logBattleInfo(attacker.getGameObject().getNameWithNumber()+" is affected by Exorcise and thus cannot cast "+spell.getName()+".");
 							}
-							spellCasting = true;
-							spellCasted = true;
 						}
 					}
 					else if (attacker instanceof SpellWrapper && Constants.WALL_OF_FORCE.matches(magicType)) {

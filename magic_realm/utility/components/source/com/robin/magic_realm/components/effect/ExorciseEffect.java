@@ -21,6 +21,9 @@ public class ExorciseEffect implements ISpellEffect {
 			combat.setKilledLength(18);
 			combat.setKilledSpeed(context.Spell.getAttackSpeed());
 		}
+		else if (context.Target.isDenizen()) {
+			combat.setAffectedByExorcise(true);
+		}
 		else if (context.Target.isCharacter()) {
 			CharacterWrapper targChar = new CharacterWrapper(context.Target.getGameObject());
 			

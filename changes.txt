@@ -1,8 +1,6 @@
 ::ROADMAP::
-Exorcise: All native casters in the clearing cannot supply color magic, and they cannot cast spells for the rest of combat (including the current round), unless they are in a clearing with a magic source matching the color required to cast their spell. 
+
 Ask Demon: 4 options, instead of just asking a question
-Absorb Essence: any denizens and Attention chits assigned to it become assigned to the spellcaster; absorbs steed when absorbing a monster
-	The spellcaster cannot be affected by multiple Absorb Essence spells. Any Absorb Essence spell he casts while he is already bewitched by Absorb Essence is cancelled.
 Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells: Lightning Bolt, Alchemists Mixture); site targets are considered armored.
 Hurricane Winds: implement spell, different from base game
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
@@ -47,6 +45,7 @@ SUPER REALM
 # End Game Scoring: Characters discard items exceeding the carrying capacity
 # Protection from Magic: target is immune to spell-breaking spells (Exorcise, Remedy, Dissolve Spell)
 # Protection from Magic: prevents target from casting spells and playing color chits
+# Exorcise: Native casters cannot cast spells for the rest of combat
 
 Version 1.2.1.1
 BUGS/ISSUES:
