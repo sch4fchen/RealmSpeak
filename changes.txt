@@ -20,7 +20,6 @@ Super Realm: Optional Rules: Grounded Missions and Tasks (SR: 10.8, p.115)
 Super Realm: Optional Rules: Regrouping (SR: 10.10, p.115)
 
 ---Super Realms Rules + Optional Rules---
-Enchant Weapon: While targeting a Purple or Prism Anomaly, this spell is nullified. (ignore_enchanted_weapons)
 Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.123): Witch, Witch King
 Super Realm: Characters, including portraits with credits, different chit icon; including optional abilities (SR 11.2)
 Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile

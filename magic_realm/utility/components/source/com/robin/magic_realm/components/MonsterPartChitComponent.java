@@ -17,7 +17,7 @@ public class MonsterPartChitComponent extends MonsterChitComponent {
 	public String getName() {
 	    return MONSTER_PART;
 	}
-	private MonsterChitComponent getWielder() {
+	public MonsterChitComponent getWielder() {
 		return (MonsterChitComponent)RealmComponent.getRealmComponent(getGameObject().getHeldBy());
 	}
 	protected int sizeModifier() {
@@ -28,7 +28,10 @@ public class MonsterPartChitComponent extends MonsterChitComponent {
 	}
 	public Strength getStrength() {
 		if (getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON_STRENGTH)) {
-			return new Strength(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_STRENGTH));
+			RealmComponent wielder = RealmComponent.getRealmComponent(getWielder().getGameObject());
+			if (!wielder.getTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS) && !wielder.get2ndTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS)) {
+				return new Strength(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_STRENGTH));
+			}
 		}
 		Strength strength = super.getStrength();
 		if (!gameObject.hasThisAttribute(Constants.ENCHANTED_WEAPON)) {
