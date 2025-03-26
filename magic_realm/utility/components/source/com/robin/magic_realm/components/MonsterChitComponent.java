@@ -436,7 +436,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 				MonsterPartChitComponent monsterPart = (MonsterPartChitComponent) monsterRc;
 				monsterRc = monsterPart.getWielder();
 			}
-			if (monsterRc.getTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS) && monsterRc.get2ndTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS)) {
+			if (!monsterRc.getTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS) && !monsterRc.get2ndTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS)) {
 				return Integer.valueOf(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_LENGTH));
 			}
 		}
@@ -548,7 +548,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 				MonsterPartChitComponent monsterPart = (MonsterPartChitComponent) monsterRc;
 				monsterRc = monsterPart.getWielder();
 			}
-			if (monsterRc.getTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS) && monsterRc.get2ndTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS)) {
+			if (!monsterRc.getTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS) && !monsterRc.get2ndTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS)) {
 				return new Speed(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_SPEED),0);
 			}
 		}
@@ -580,7 +580,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 				MonsterPartChitComponent monsterPart = (MonsterPartChitComponent) monsterRc;
 				monsterRc = monsterPart.getWielder();
 			}
-			if (monsterRc.getTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS) && monsterRc.get2ndTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS)) {
+			if (!monsterRc.getTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS) && !monsterRc.get2ndTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS)) {
 				return new Strength(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_STRENGTH));
 			}
 		}
@@ -608,7 +608,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 				MonsterPartChitComponent monsterPart = (MonsterPartChitComponent) monsterRc;
 				monsterRc = monsterPart.getWielder();
 			}
-			if (monsterRc.getTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS) && monsterRc.get2ndTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS)) {
+			if (!monsterRc.getTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS) && !monsterRc.get2ndTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS)) {
 				return Integer.valueOf(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_SHARPNESS));
 			}
 		}
