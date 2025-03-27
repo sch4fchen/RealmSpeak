@@ -208,6 +208,9 @@ public class TransmorphEffect implements ISpellEffect {
 				}
 			}
 		}
+		if (spell.getGameObject().hasThisAttribute(Constants.ONLY_MOVE)) {
+			target.getGameObject().removeThisAttribute(Constants.ONLY_MOVE);
+		}
 	}
 	
 	public static GameObject prepareTransformation(String transformName, RealmComponent target, SpellWrapper spell, JFrame frame){

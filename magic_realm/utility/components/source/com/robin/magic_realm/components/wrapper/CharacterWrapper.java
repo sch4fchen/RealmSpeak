@@ -2455,6 +2455,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		GameObject transmorph = getTransmorph();
 
 		// Test move types
+		if (getGameObject().hasThisAttribute(Constants.ONLY_MOVE) && id!=ActionId.Move) {
+			return false;
+		}
 		if (id==ActionId.Move && mustFly()) {
 			return false;
 		}
@@ -2529,9 +2532,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 					|| id==ActionId.RemSpell) {
 				return false;
 			}
-		}
-		else if (getGameObject().hasThisAttribute(Constants.ONLY_MOVE) && id!=ActionId.Move) {
-			return false;
 		}
 		if (id==ActionId.Follow && location!=null) {
 			// Can't follow unless its the first and only action

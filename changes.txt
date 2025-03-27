@@ -34,6 +34,8 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 Version 1.2.1.3
+BUGS/ISSUES:
+# Fix actions after inert Melt into Mist spell
 
 Version 1.2.1.2
 SUPER REALM
