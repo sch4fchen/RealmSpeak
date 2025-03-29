@@ -37,29 +37,45 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 	}
 	
 	public int getChitSize() {
-		if (getRider()!=null && getRider().isShrunk()) {
-			return M_CHIT_SIZE;
+		RealmComponent rider = getRider();
+		if (rider!=null) {
+			if ((rider.isNative() && ((NativeChitComponent)rider).isShrunk())
+					|| (rider.isMonster() && !rider.isMonsterPart() && ((MonsterChitComponent)rider).isShrunk())) {
+				return M_CHIT_SIZE;
+			}
 		}
 		return H_CHIT_SIZE;
 	}
-	private NativeChitComponent getRider() {
+	private RealmComponent getRider() {
 		RealmComponent rider = RealmComponent.getRealmComponent(getGameObject().getHeldBy());
-		if (rider instanceof NativeChitComponent) {
-			return (NativeChitComponent) rider;
+		if (rider.isNative() || (rider.isMonster() && !rider.isMonsterPart())) {
+			return rider;
 		}
 		return null;
 	}
 	protected int sizeModifier() {
-		if (getRider()!=null ) {
-			getRider().sizeModifier();
+		RealmComponent rider = getRider();
+		if (rider!=null) {
+			if (rider.isNative()) {
+				return ((NativeChitComponent)rider).sizeModifier();
+			}
+			else if (rider.isMonster() && !rider.isMonsterPart()) {
+				return ((MonsterChitComponent)rider).sizeModifier();
+			}
 		}
 		return 0;
 	}
 	protected int speedModifier() {
-		if (getRider()!=null ) {
-			getRider().speedModifier();
-		}
 		int mod = 0;
+		RealmComponent rider = getRider();
+		if (rider!=null ) {
+			if (rider.isNative()) {
+				mod = ((NativeChitComponent)rider).speedModifier();
+			}
+			else if (rider.isMonster() && !rider.isMonsterPart()) {
+				mod = ((MonsterChitComponent)rider).speedModifier();
+			}
+		}
 		if (getGameObject().hasThisAttribute(Constants.SLOWED)) {
 			mod++;
 		}

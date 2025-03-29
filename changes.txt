@@ -36,6 +36,7 @@ Would be nice to make weapon abilities too:
 Version 1.2.1.4
 BUGS/ISSUES:
 # Super Realm: Fix placing quest in a clearing
+# Monster Steed can now be killed (Bone Horse of the Skeleton Knight)
 
 Version 1.2.1.3
 BUGS/ISSUES:
