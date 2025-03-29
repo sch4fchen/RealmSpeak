@@ -132,6 +132,9 @@ public class ClearingUtility {
 		boolean itemsAndSpells = !gameObject.hasThisAttribute(Constants.ROVING_NATIVE);
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameObject.getGameData());
 		for (GameObject go : hold) {
+			if (go.hasThisAttribute(Constants.QUEST)) {
+				continue;
+			}
 			if (testKey==null || go.hasThisAttribute(testKey)) {
 				if (!onlyGoldSpecial && hostPrefs.hasPref(Constants.SR_REVEAL_TRAVELERS) && go.hasThisAttribute(RealmComponent.GOLD_SPECIAL)) continue;
 				if (onlyGoldSpecial && !go.hasThisAttribute(RealmComponent.GOLD_SPECIAL)) continue;
