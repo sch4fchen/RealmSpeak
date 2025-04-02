@@ -2369,7 +2369,7 @@ public class BattleModel {
 			}
 			
 			if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
-				reposition9x9(prefix,sheetOwner,boxHash);
+				reposition3x3(prefix,sheetOwner,boxHash);
 			}
 			else {
 				reposition(prefix,sheetOwner,boxHash);
@@ -2382,7 +2382,7 @@ public class BattleModel {
 			}
 		}
 	}
-	private void reposition9x9(String prefix,CombatWrapper combatTarget,HashLists<Key, RealmComponent> boxHash) {
+	private void reposition3x3(String prefix,CombatWrapper combatTarget,HashLists<Key, RealmComponent> boxHash) {
 		boolean tacticChange = true;
 		if (battleLocation!=null && battleLocation.clearing!=null && battleLocation.clearing.hasSpellEffect(Constants.BEWILDERED)) {
 			tacticChange = false;
