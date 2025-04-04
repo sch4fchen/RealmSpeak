@@ -51,12 +51,12 @@ public class DenizenCombatSheet extends CombatSheet {
 	private static final int POS_DEFENDER_DUCK_SWING	= 20; // attack (x-axis): 2 defense (y-axis): 3
 	private static final int POS_DEFENDER_DUCK_THRUST	= 21; // attack (x-axis): 1 defense (y-axis): 3
 	
-	private static final int POS_DEFENDER_TARGET_CHARGE_SMASH	= 22; // attack (x-axis): 3 defense (y-axis): 1
-	private static final int POS_DEFENDER_TARGET_CHARGE_SWING	= 23; // attack (x-axis): 2 defense (y-axis): 1
-	private static final int POS_DEFENDER_TARGET_DODGE_SMASH	= 24; // attack (x-axis): 3 defense (y-axis): 2
-	private static final int POS_DEFENDER_TARGET_DODGE_THRUST	= 25; // attack (x-axis): 1 defense (y-axis): 2
-	private static final int POS_DEFENDER_TARGET_DUCK_SWING		= 26; // attack (x-axis): 2 defense (y-axis): 3
-	private static final int POS_DEFENDER_TARGET_DUCK_THRUST	= 27; // attack (x-axis): 1 defense (y-axis): 3
+	private static final int POS_DEFENDER_TARGET_CHARGE_SMASH	= 22; // attack: 3 defense: 1
+	private static final int POS_DEFENDER_TARGET_CHARGE_SWING	= 23; // attack: 2 defense: 1
+	private static final int POS_DEFENDER_TARGET_DODGE_SMASH	= 24; // attack: 3 defense: 2
+	private static final int POS_DEFENDER_TARGET_DODGE_THRUST	= 25; // attack: 1 defense: 2
+	private static final int POS_DEFENDER_TARGET_DUCK_SWING		= 26; // attack: 2 defense: 3
+	private static final int POS_DEFENDER_TARGET_DUCK_THRUST	= 27; // attack: 1 defense: 3
 	
 	
 	// Denizen sheet
@@ -141,9 +141,9 @@ public class DenizenCombatSheet extends CombatSheet {
 			
 			// Target
 			new Point(ATT_COL1_SR,320), //??
-			new Point(DEN_COL1_SR,TARGET_ROW1_SR),
+			new Point(DEN_COL3_SR,TARGET_ROW1_SR),
 			new Point(DEN_COL2_SR,TARGET_ROW2_SR),
-			new Point(DEN_COL3_SR,TARGET_ROW3_SR),
+			new Point(DEN_COL1_SR,TARGET_ROW3_SR),
 			
 			// Attackers
 			new Point((DEN_COL3_SR+ATT_COL1_SR)/2,DEN_ROW0_SR),
@@ -166,12 +166,12 @@ public class DenizenCombatSheet extends CombatSheet {
 			new Point(DEN_COL1_SR,DEN_ROW3_SR),
 			
 			// Additional target spots for Super Realm
-			new Point(DEN_COL3_SR,TARGET_ROW1_SR),
-			new Point(DEN_COL2_SR,TARGET_ROW1_SR),
-			new Point(DEN_COL3_SR,TARGET_ROW2_SR),
+			new Point(DEN_COL1_SR,TARGET_ROW1_SR),
 			new Point(DEN_COL1_SR,TARGET_ROW2_SR),
+			new Point(DEN_COL2_SR,TARGET_ROW1_SR),
 			new Point(DEN_COL2_SR,TARGET_ROW3_SR),
-			new Point(DEN_COL1_SR,TARGET_ROW3_SR),
+			new Point(DEN_COL3_SR,TARGET_ROW2_SR),
+			new Point(DEN_COL3_SR,TARGET_ROW3_SR),
 	};
 	
 	private boolean isOwnedByActive;

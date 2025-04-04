@@ -2428,34 +2428,34 @@ public class BattleModel {
 		// 6 shift up/left
 		switch(result) {
 			case 1:
-				box1 = boxHash.getList(Integer.valueOf(1));
-				box2 = boxHash.getList(Integer.valueOf(3));
-				box3 = boxHash.getList(Integer.valueOf(2));
+				box1 = boxHash.getList(new Key(1,1));
+				box2 = boxHash.getList(new Key(3,3));
+				box3 = boxHash.getList(new Key(2,2));
 				break;
 			case 2:
-				box1 = boxHash.getList(Integer.valueOf(3));
-				box2 = boxHash.getList(Integer.valueOf(2));
-				box3 = boxHash.getList(Integer.valueOf(1));
+				box1 = boxHash.getList(new Key(3,3));
+				box2 = boxHash.getList(new Key(2,2));
+				box3 = boxHash.getList(new Key(1,1));
 				break;
 			case 3:
-				box1 = boxHash.getList(Integer.valueOf(2));
-				box2 = boxHash.getList(Integer.valueOf(1));
-				box3 = boxHash.getList(Integer.valueOf(3));
+				box1 = boxHash.getList(new Key(2,2));
+				box2 = boxHash.getList(new Key(1,1));
+				box3 = boxHash.getList(new Key(3,3));
 				break;
 			case 4:
-				box1 = boxHash.getList(Integer.valueOf(1));
-				box2 = boxHash.getList(Integer.valueOf(2));
-				box3 = boxHash.getList(Integer.valueOf(3));
+				box1 = boxHash.getList(new Key(1,1));
+				box2 = boxHash.getList(new Key(2,2));
+				box3 = boxHash.getList(new Key(3,3));
 				break;
 			case 5:
-				box1 = boxHash.getList(Integer.valueOf(3));
-				box2 = boxHash.getList(Integer.valueOf(1));
-				box3 = boxHash.getList(Integer.valueOf(2));
+				box1 = boxHash.getList(new Key(3,3));
+				box2 = boxHash.getList(new Key(1,1));
+				box3 = boxHash.getList(new Key(2,2));
 				break;
 			case 6:
-				box1 = boxHash.getList(Integer.valueOf(2));
-				box2 = boxHash.getList(Integer.valueOf(3));
-				box3 = boxHash.getList(Integer.valueOf(1));
+				box1 = boxHash.getList(new Key(2,2));
+				box2 = boxHash.getList(new Key(3,3));
+				box3 = boxHash.getList(new Key(1,1));
 				break;
 		}
 		boxHash.clear();

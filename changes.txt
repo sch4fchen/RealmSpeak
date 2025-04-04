@@ -34,6 +34,9 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 Version 1.2.1.5
+BUGS/ISSUES:
+# Fix target boxes on 3x3 combat grid on denizen sheet
+# Fix repositioning on denizen sheet for basic Magic Realm
 
 Version 1.2.1.4
 BUGS/ISSUES:
