@@ -2843,7 +2843,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean canReplaceParryThrustAttacks(RealmComponent target) {
 		if (target==null) return false;
 		BattleChit targetChit = (BattleChit) target;
-		return getLengthForParrying(1) > targetChit.getLength();
+		return targetChit.getLength()==null || getLengthForParrying(1) > targetChit.getLength();
 	}
 	public boolean canReplaceParrySwingAttacks(RealmComponent target) {
 		if (target==null) return false;
