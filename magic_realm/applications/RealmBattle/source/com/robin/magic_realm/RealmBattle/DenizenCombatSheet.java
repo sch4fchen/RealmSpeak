@@ -200,9 +200,9 @@ public class DenizenCombatSheet extends CombatSheet {
 		
 	protected int getBoxIndexFromCombatBoxes(int boxA, int boxD) {
 		if (boxA == 0 || boxD==0) return POS_DEFENDER_TARGETS;
-		if (boxA == 1 && boxD==1) return POS_DEFENDER_TARGET_BOX1;
+		if (boxA == 3 && boxD==3) return POS_DEFENDER_TARGET_BOX1;
 		if (boxA == 2 && boxD==2) return POS_DEFENDER_TARGET_BOX2;
-		if (boxA == 3 && boxD==3) return POS_DEFENDER_TARGET_BOX3;
+		if (boxA == 1 && boxD==1) return POS_DEFENDER_TARGET_BOX3;
 		if (boxA == 3 && boxD==1) return POS_DEFENDER_TARGET_CHARGE_SMASH;
 		if (boxA == 2 && boxD==1) return POS_DEFENDER_TARGET_CHARGE_SWING;
 		if (boxA == 3 && boxD==2) return POS_DEFENDER_TARGET_DODGE_SMASH;
@@ -708,9 +708,13 @@ public class DenizenCombatSheet extends CombatSheet {
 							POS_DEFENDER_TARGET_DUCK_SWING,POS_DEFENDER_TARGET_DUCK_THRUST});
 					switch (index) {
 						case POS_DEFENDER_TARGET_BOX1:
+							combatFrame.positionAttacker(list,3,3,false,swingConstant==SwingConstants.LEFT);
+							break;
 						case POS_DEFENDER_TARGET_BOX2:
+							combatFrame.positionAttacker(list,2,1,false,swingConstant==SwingConstants.LEFT);
+							break;
 						case POS_DEFENDER_TARGET_BOX3:
-							combatFrame.positionAttacker(list,index-POS_DEFENDER_TARGET_BOX1+1,index-POS_DEFENDER_TARGET_BOX1+1,false,swingConstant==SwingConstants.LEFT);
+							combatFrame.positionAttacker(list,1,1,false,swingConstant==SwingConstants.LEFT);
 							break;
 						case POS_DEFENDER_TARGET_CHARGE_SMASH:
 							combatFrame.positionAttacker(list,3,1,false,swingConstant==SwingConstants.LEFT);
