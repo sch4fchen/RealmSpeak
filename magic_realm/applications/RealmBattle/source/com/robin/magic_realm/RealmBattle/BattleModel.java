@@ -2393,11 +2393,13 @@ public class BattleModel {
 			for (RealmComponent rc : list) {
 				int boxA = RandomNumber.getRandom(3)+1;
 				int boxD = RandomNumber.getRandom(3)+1;
-				CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-				combat.setCombatBoxAttack(boxA);
-				combat.setCombatBoxDefense(boxD);
+				if (!SKIP_REPOSITIONING) {
+					CombatWrapper combat = new CombatWrapper(rc.getGameObject());
+					combat.setCombatBoxAttack(boxA);
+					combat.setCombatBoxDefense(boxD);
+				}
 				
-				if (tacticChange && (boxA==boxD || rc.getGameObject().hasThisAttribute(Constants.SENSITIVE_TACTICS))) {
+				if (tacticChange && (boxA==boxD || rc.getGameObject().hasThisAttribute(Constants.SENSITIVE_TACTICS) || FORCE_MONSTER_FLIP)) {
 					ChitComponent chit = (ChitComponent)rc;
 					if (canChangeTactics(chit)) {
 						chit.flip();
