@@ -809,6 +809,7 @@ public class CharacterCombatSheet extends CombatSheet {
 									if (swingConstant==SwingConstants.LEFT) {
 										CombatWrapper combat = new CombatWrapper(horse.getGameObject());
 										combat.setCombatBoxDefense(n+1);
+										combat.setCombatBoxAttack(m+1);
 									}
 									else {
 										list.add(0,horse); // push
@@ -821,6 +822,7 @@ public class CharacterCombatSheet extends CombatSheet {
 									if (swingConstant==SwingConstants.LEFT) {
 										CombatWrapper combat = new CombatWrapper(horse.getGameObject());
 										combat.setCombatBoxDefense(n+1);
+										combat.setCombatBoxAttack(m+1);
 									}
 									else {
 										list.add(0,horse); // push
