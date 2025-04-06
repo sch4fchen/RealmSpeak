@@ -98,9 +98,9 @@ public class DenizenCombatSheet extends CombatSheet {
 			
 			// Target
 			new Point(DEN_COL1+50,320),
-			new Point(DEN_COL1,TARGET_ROW1),
-			new Point(DEN_COL2,TARGET_ROW1),
 			new Point(DEN_COL3,TARGET_ROW1),
+			new Point(DEN_COL2,TARGET_ROW1),
+			new Point(DEN_COL1,TARGET_ROW1),
 			
 			// Attackers
 			new Point(540,25),
@@ -711,7 +711,7 @@ public class DenizenCombatSheet extends CombatSheet {
 							combatFrame.positionAttacker(list,3,3,false,swingConstant==SwingConstants.LEFT);
 							break;
 						case POS_DEFENDER_TARGET_BOX2:
-							combatFrame.positionAttacker(list,2,1,false,swingConstant==SwingConstants.LEFT);
+							combatFrame.positionAttacker(list,2,2,false,swingConstant==SwingConstants.LEFT);
 							break;
 						case POS_DEFENDER_TARGET_BOX3:
 							combatFrame.positionAttacker(list,1,1,false,swingConstant==SwingConstants.LEFT);

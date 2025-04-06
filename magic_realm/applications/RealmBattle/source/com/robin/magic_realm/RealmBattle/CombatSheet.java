@@ -838,10 +838,10 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		return rg;
 	}
 	protected void drawRollerGroup(Graphics g,RollerGroup rg,int repRoll,int ctRoll) {
-		paintRoller(g,"Repositioning Roll",getSubtitleForReposition(rg.repositionRoller),rg.repositionRoller,repRoll,0,0);
-		paintRoller(g,"Change Tactics",getSubtitleForTactics(rg.changeTacticsRoller1),rg.changeTacticsRoller1,ctRoll,0,-50);
-		paintRoller(g,"Change Tactics",getSubtitleForTactics(rg.changeTacticsRoller2),rg.changeTacticsRoller2,ctRoll+1,0,-50);
-		paintRoller(g,"Change Tactics",getSubtitleForTactics(rg.changeTacticsRoller3),rg.changeTacticsRoller3,ctRoll+2,0,-50);
+		paintRoller(g," ",getSubtitleForReposition(rg.repositionRoller),rg.repositionRoller,repRoll,0,0);
+		paintRoller(g,"Tactics",getSubtitleForTactics(rg.changeTacticsRoller1),rg.changeTacticsRoller1,ctRoll,0,-50);
+		paintRoller(g,"Tactics",getSubtitleForTactics(rg.changeTacticsRoller2),rg.changeTacticsRoller2,ctRoll+1,0,-50);
+		paintRoller(g,"Tactics",getSubtitleForTactics(rg.changeTacticsRoller3),rg.changeTacticsRoller3,ctRoll+2,0,-50);
 	}
 	
 	/**
