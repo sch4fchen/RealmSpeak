@@ -271,6 +271,7 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 			g.drawRect(1,1,getChitSize()-2,getChitSize()-2);
 		}
 		
+		drawAttentionMarkers(g);
 		drawDamageAssessment(g);
 	}
 	// BattleChit Interface

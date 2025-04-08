@@ -552,6 +552,7 @@ public class CharacterCombatSheet extends CombatSheet {
 								if (boxD>0) {
 									// only add horse to layout if in a combat box!
 									layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),horse);
+									sheetParticipants.add(horse);
 								}
 							}
 						}
@@ -564,6 +565,7 @@ public class CharacterCombatSheet extends CombatSheet {
 								if (boxD>0) {
 									// only add horse to layout if in a combat box!
 									layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),horse);
+									sheetParticipants.add(horse);
 								}
 							}
 						}

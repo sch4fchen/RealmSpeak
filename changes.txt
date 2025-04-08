@@ -37,6 +37,7 @@ Version 1.2.1.5
 BUGS/ISSUES:
 # Fix target boxes on 3x3 combat grid on denizen sheet
 # Fix repositioning on denizen sheet for basic Magic Realm
+# Fix optional rule Riding Horses
 
 Version 1.2.1.4
 BUGS/ISSUES:

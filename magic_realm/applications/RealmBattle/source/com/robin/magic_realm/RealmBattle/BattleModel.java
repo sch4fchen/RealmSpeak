@@ -1499,8 +1499,8 @@ public class BattleModel {
 			// Attack must be placed on target's sheet or target must be on character's sheet (=target attacks the character) or both must be on same denizen sheet
 			if (!parry && !combatAttackChit.getSheetOwnerId().equals(target.getGameObject().getStringId())
 					&& !(combatAttackChit.getSheetOwnerId().equals(attacker.getGameObject().getStringId()) && attackerCombat.getAttackers().contains(target.getGameObject()))
-					&& (!target.isCharacter() && !combatAttackChit.getSheetOwnerId().equals(RealmComponent.getRealmComponent(target.getGameObject()).getTarget().getGameObject().getStringId()))
-					&& (!target.isCharacter() && !combatAttackChit.getSheetOwnerId().equals(RealmComponent.getRealmComponent(target.getGameObject()).get2ndTarget().getGameObject().getStringId()))) {
+					&& (!target.isCharacter() && (RealmComponent.getRealmComponent(target.getGameObject()).getTarget()!=null && !combatAttackChit.getSheetOwnerId().equals(RealmComponent.getRealmComponent(target.getGameObject()).getTarget().getGameObject().getStringId())))
+					&& (!target.isCharacter() && (RealmComponent.getRealmComponent(target.getGameObject()).get2ndTarget()!=null && !combatAttackChit.getSheetOwnerId().equals(RealmComponent.getRealmComponent(target.getGameObject()).get2ndTarget().getGameObject().getStringId())))) {
 				attackCancelled = "Miss! ("+attacker+" placed the attack not on same sheet as target.)";
 			}
 			if (attackCancelled==null && characterChit.getAttackingWeapon()!=null && characterChit.getAttackChit()!=null) {
