@@ -2,7 +2,6 @@
 Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells: Lightning Bolt, Alchemists Mixture); site targets are considered armored. or by hurricane winds
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt
-Super Realm: Optional Rules: Thematic Roving Natives (SR: 10.5, p.114): In combat, when any roving native Dwarf (not just the leader) is dark-side up, they subtract one from their move speed when they do the Duck maneuver.
 Super Realm: Events (Global Events = optional rule 11.11): 33 Events
 Super Realm: Optional Rules: Selling (SR: 10.11, p.116)
 Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
@@ -34,6 +33,8 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 Version 1.2.1.5
+SUPER REALM
+# Roving native Dwarves get movement bonus when duck and dark side up
 BUGS/ISSUES:
 # Fix target boxes on 3x3 combat grid on denizen sheet
 # Fix repositioning on denizen sheet for basic Magic Realm

@@ -655,6 +655,15 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		if (flies() && getCurrentLocation()!=null && getCurrentLocation().clearing!=null && getCurrentLocation().clearing.isAffectedByViolentWinds()) {
 			mod++;
 		}
+		if (hasFaceAttribute(Constants.MOVE_SPEED_BONUS_COMBAT_BOX1) && getManeuverCombatBox()==1) {
+			mod=mod-getFaceAttributeInteger(Constants.MOVE_SPEED_BONUS_COMBAT_BOX1);
+		}
+		if (hasFaceAttribute(Constants.MOVE_SPEED_BONUS_COMBAT_BOX2) && getManeuverCombatBox()==2) {
+			mod=mod-getFaceAttributeInteger(Constants.MOVE_SPEED_BONUS_COMBAT_BOX2);
+		}
+		if (hasFaceAttribute(Constants.MOVE_SPEED_BONUS_COMBAT_BOX3) && getManeuverCombatBox()==3) {
+			mod=mod-getFaceAttributeInteger(Constants.MOVE_SPEED_BONUS_COMBAT_BOX3);
+		}
 		return mod;
 	}
 	protected boolean isShrunk() {

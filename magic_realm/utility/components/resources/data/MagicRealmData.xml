@@ -41762,6 +41762,7 @@
         <attribute length="5" />
         <attribute chit_color="yellow" />
         <attribute sharpness="1" />
+		<attribute move_speed_bonus_combat_box3="1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1478" name="Dwarf 2">
@@ -41801,6 +41802,7 @@
         <attribute length="5" />
         <attribute chit_color="yellow" />
         <attribute sharpness="1" />
+		<attribute move_speed_bonus_combat_box3="1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1479" name="Dwarf 3">
@@ -41840,6 +41842,7 @@
         <attribute length="5" />
         <attribute chit_color="yellow" />
         <attribute sharpness="1" />
+		<attribute move_speed_bonus_combat_box3="1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1480" name="Dwarf 4">
@@ -41879,6 +41882,7 @@
         <attribute length="5" />
         <attribute chit_color="yellow" />
         <attribute sharpness="1" />
+		<attribute move_speed_bonus_combat_box3="1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1481" name="Dwarf 5">
@@ -41918,6 +41922,7 @@
         <attribute length="5" />
         <attribute chit_color="yellow" />
         <attribute sharpness="1" />
+		<attribute move_speed_bonus_combat_box3="1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1482" name="Dwarf HQ">
@@ -41962,6 +41967,7 @@
         <attribute length="5" />
         <attribute chit_color="yellow" />
         <attribute sharpness="1" />
+		<attribute move_speed_bonus_combat_box3="1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1483" name="H Flying Dragon Box">
