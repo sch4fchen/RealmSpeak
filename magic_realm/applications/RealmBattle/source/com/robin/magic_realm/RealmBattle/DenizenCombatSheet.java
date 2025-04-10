@@ -348,7 +348,7 @@ public class DenizenCombatSheet extends CombatSheet {
 					// only unassigned hirelings owned by the playing character can deploy at this point
 					c = layoutHash.getList(Integer.valueOf(POS_ATTACKERS_BOX1));
 					if (c==null || c.size()==0) { // No direct attackers
-						c = layoutHash.getList(Integer.valueOf(POS_DEFENDER_TARGET_BOX1));
+						c = layoutHash.getList(Integer.valueOf(POS_DEFENDER_TARGET_BOX3));
 						if (c==null || c.size()==0) { // Don't forget to check defender target for red-side up T Monsters
 							if (isOwnedByActive && model.getAllBattleGroups(true).size()>1) {
 								hotspotHash.put(Integer.valueOf(POS_DEFENDER_BOX1),"Deploy");
@@ -372,8 +372,8 @@ public class DenizenCombatSheet extends CombatSheet {
 					}
 					if (containsEnemy(
 							combatFrame.getActiveParticipant(),
-							layoutHash.getList(Integer.valueOf(POS_DEFENDER_TARGET_BOX1)))) {
-						hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_BOX1),title);
+							layoutHash.getList(Integer.valueOf(POS_DEFENDER_TARGET_BOX3)))) {
+						hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_BOX3),title);
 					}
 					RealmComponent sheetOwnerOwner = sheetOwner.getOwner();
 					if (combatFrame.allowsTreachery() || !combatFrame.getActiveParticipant().equals(sheetOwnerOwner)) {
@@ -385,7 +385,7 @@ public class DenizenCombatSheet extends CombatSheet {
 						&& layoutHash.get(Integer.valueOf(POS_ATTACKERS_BOX1))!=null
 						&& sheetOwner.getTarget()==null
 						&& sheetOwner.get2ndTarget()==null) {
-					hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_BOX1),sheetOwner.getGameObject().getName()+" Target");
+					hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_BOX3),sheetOwner.getGameObject().getName()+" Target");
 					targetNeedsAssignment = true;
 				}
 				break;
@@ -697,7 +697,7 @@ public class DenizenCombatSheet extends CombatSheet {
 					}
 					else {
 						// Assign Target for character from defenders target box
-						combatFrame.assignTarget(layoutHash.getList(Integer.valueOf(POS_DEFENDER_TARGET_BOX1)));
+						combatFrame.assignTarget(layoutHash.getList(Integer.valueOf(POS_DEFENDER_TARGET_BOX3)));
 					}
 				}
 				else if (combatFrame.getActionState()==Constants.COMBAT_POSITIONING) {
@@ -916,7 +916,7 @@ public class DenizenCombatSheet extends CombatSheet {
 	protected void drawRollers(Graphics g) {
 		if (redGroup!=null) drawRollerGroup(g,redGroup,POS_DEFENDER,POS_DEFENDER_BOX1);
 		if (circleGroup!=null) drawRollerGroup(g,circleGroup,POS_ATTACKERS,POS_ATTACKERS_BOX1);
-		if (squareGroup!=null) drawRollerGroup(g,squareGroup,POS_DEFENDER_TARGETS,POS_DEFENDER_TARGET_BOX1);
+		if (squareGroup!=null) drawRollerGroup(g,squareGroup,POS_DEFENDER_TARGETS,POS_DEFENDER_TARGET_BOX3);
 	}
 	protected void drawOther(Graphics g) {
 		// This implementation does nothing
