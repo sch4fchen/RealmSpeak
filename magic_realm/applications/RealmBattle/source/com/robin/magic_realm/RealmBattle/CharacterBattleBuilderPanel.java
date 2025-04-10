@@ -374,7 +374,7 @@ public class CharacterBattleBuilderPanel extends JPanel {
 		addHirelingsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				String keyVals = hostPrefs.getGameKeyVals();
-				Collection<GameObject> natives = builder.getPool().find(keyVals+",native,!horse,!treasure,!"+BattleBuilder.BATTLE_BUILDER_KEY);
+				Collection<GameObject> natives = builder.getPool().find(keyVals+",native,!virtual_dwelling,!horse,!treasure,!"+BattleBuilder.BATTLE_BUILDER_KEY);
 				ArrayList<GameObject> travelers = builder.getPool().find(keyVals+",traveler,!"+BattleBuilder.BATTLE_BUILDER_KEY);
 				for(GameObject go:travelers) {
 					RealmComponent traveler = RealmComponent.getRealmComponent(go);
