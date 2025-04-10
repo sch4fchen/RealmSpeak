@@ -35,6 +35,8 @@ Would be nice to make weapon abilities too:
 
 
 Version 1.2.1.6
+BUGS/ISSUES:
+# Fix denizen combat sheet
 
 Version 1.2.1.5
 SUPER REALM
