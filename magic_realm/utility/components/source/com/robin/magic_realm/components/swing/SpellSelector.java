@@ -42,13 +42,17 @@ public class SpellSelector extends AggressiveDialog {
 	
 	private boolean allowAddSpell;
 	
+	private HostPrefWrapper hostPrefs;
+	
 	private MouseListener selectSpellListener = new MouseAdapter() {
 		public void mousePressed(MouseEvent ev) {
 			RealmObjectPanel source = (RealmObjectPanel)ev.getSource();
 			if (!MouseUtility.isRightOrControlClick(ev)) {
 				if (allowAddSpell) {
 					addSelection(source,ev.getPoint());
-					refreshFromPanel();
+					if (hostPrefs.hasPref(Constants.HOUSE2_NO_DUPLICATE_STARTING_SPELLS)) {
+						refreshFromPanel();
+					}
 					updateControls();
 				}
 				source.clearSelected();
@@ -66,6 +70,7 @@ public class SpellSelector extends AggressiveDialog {
 		this.totalPicks = totalPicks;
 		this.data = data;
 		currentPicks = 0;
+		hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		initComponents();
 	}
 	private void refreshFromPanel() {
@@ -89,7 +94,6 @@ public class SpellSelector extends AggressiveDialog {
 					return g1.getName().compareTo(g2.getName());
 				}
 			});
-			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 			for (GameObject spell:spells) {
 				if (hostPrefs.hasPref(Constants.HOUSE2_NO_DUPLICATE_STARTING_SPELLS)) {
 					boolean duplicateSpell = false;
@@ -179,7 +183,9 @@ public class SpellSelector extends AggressiveDialog {
 							if (!MouseUtility.isRightOrControlClick(ev)) {
 								updateControls();
 								removeSelection(ev.getPoint());
-								refreshFromPanel();
+								if (hostPrefs.hasPref(Constants.HOUSE2_NO_DUPLICATE_STARTING_SPELLS)) {
+									refreshFromPanel();
+								}
 							}
 							else {
 								showSpell(getSpellFromPanel(toPanel,ev.getPoint()));
