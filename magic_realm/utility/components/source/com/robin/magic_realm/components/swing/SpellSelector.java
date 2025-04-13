@@ -48,6 +48,7 @@ public class SpellSelector extends AggressiveDialog {
 			if (!MouseUtility.isRightOrControlClick(ev)) {
 				if (allowAddSpell) {
 					addSelection(source,ev.getPoint());
+					refreshFromPanel();
 					updateControls();
 				}
 				source.clearSelected();
@@ -88,9 +89,28 @@ public class SpellSelector extends AggressiveDialog {
 					return g1.getName().compareTo(g2.getName());
 				}
 			});
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 			for (GameObject spell:spells) {
-				RealmComponent rc = RealmComponent.getRealmComponent(spell);
-				fromPanel[n].add(rc);
+				if (hostPrefs.hasPref(Constants.HOUSE2_NO_DUPLICATE_STARTING_SPELLS)) {
+					boolean duplicateSpell = false;
+					if (toPanel!=null && toPanel.getComponents().length!=0) {
+						for (Object selectedSpellObject : toPanel.getComponents()) {
+							if (selectedSpellObject instanceof SpellCardComponent) {
+								GameObject selectedSpell = ((SpellCardComponent) selectedSpellObject).getGameObject();
+								if (spell.getName().toLowerCase().matches(selectedSpell.getName().toLowerCase())) {
+									duplicateSpell = true;
+								}
+							}
+						}
+					}
+					if (!duplicateSpell) {
+						RealmComponent rc = RealmComponent.getRealmComponent(spell);
+						fromPanel[n].add(rc);
+					}
+				} else {
+					RealmComponent rc = RealmComponent.getRealmComponent(spell);
+					fromPanel[n].add(rc);
+				}
 			}
 			fromPanel[n].adjustSize();
 			fromPanel[n].revalidate();
@@ -159,6 +179,7 @@ public class SpellSelector extends AggressiveDialog {
 							if (!MouseUtility.isRightOrControlClick(ev)) {
 								updateControls();
 								removeSelection(ev.getPoint());
+								refreshFromPanel();
 							}
 							else {
 								showSpell(getSpellFromPanel(toPanel,ev.getPoint()));
@@ -284,7 +305,6 @@ public class SpellSelector extends AggressiveDialog {
 			CardComponent nsc = (CardComponent)i.next();
 			toPanel.addRealmComponent(nsc);
 		}
-		
 		toPanel.revalidate();
 		toPanel.repaint();
 		updateControls();
@@ -361,11 +381,9 @@ public class SpellSelector extends AggressiveDialog {
 	}
 	private void updateControls() {
 		allowAddSpell = currentPicks<totalPicks;
-		
 		for (int i=0;i<fromPanel.length;i++) {
 			fromPanel[i].setEnabled(allowAddSpell);
 		}
-		
 		resetButton.setEnabled(currentPicks>0);
 		doneButton.setEnabled(currentPicks==totalPicks || spellChoices.isEmpty());
 	}

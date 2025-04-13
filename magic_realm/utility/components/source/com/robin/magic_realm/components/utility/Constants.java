@@ -855,6 +855,7 @@ public class Constants {
 	public static final String HOUSE2_DENIZENS_SERIOUS_WOUNDS = "DenizenSeriousWounds";
 	public static final String HOUSE2_DENIZENS_WOUNDS = "DenizenWounds";
 	public static final String HOUSE2_WOODLAND_MIGRATIONS = "WoodlandMigrations";
+	public static final String HOUSE2_NO_DUPLICATE_STARTING_SPELLS = "NoDuplicateStartingSpells";
 	
 	// MORE House Rules
 	public static final String HOUSE3_DWELLING_ARMOR_REPAIR = "DwellingArmorRepair";
