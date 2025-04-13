@@ -15,7 +15,6 @@ Super Realm: Optional Rules: Regrouping (SR: 10.10, p.115)
 Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.123): Witch, Witch King
 Super Realm: Characters, including portraits with credits, different chit icon; including optional abilities (SR 11.2)
 Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
-Super Realm: Optional Rules: No duplicate spell recording at start of the game
 Super Realm: Optional Rules: Bounty Hunters (SR: 10.2, p.114)
 Super Realm: Optional Rules: Credit (SR: 10.7, p.115)
 Super Realm: Optional Rules: Stealing (SR: 11.3, p.121)
@@ -34,6 +33,8 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 Version 1.2.1.7
+NEW FEATURES:
+# Optional Rules: No duplicate spell recording at start of the game
 
 Version 1.2.1.6
 BUGS/ISSUES:
