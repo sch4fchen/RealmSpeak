@@ -683,7 +683,7 @@ public class CharacterCombatSheet extends CombatSheet {
 			}
 		}
 		
-		placeAllAttacks(POS_ATTACK_BOX1,POS_ATTACK_WEAPON1,exclude);
+		placeAllAttacks(POS_ATTACK_WEAPON1,POS_ATTACK_BOX1,exclude);
 		
 		if (sheetOwner.isCharacter()) {
 			CombatWrapper combat = new CombatWrapper(sheetOwner.getGameObject());

@@ -559,7 +559,7 @@ public class DenizenCombatSheet extends CombatSheet {
 		}
 		
 		// Sheet owner's attackers (including characters)
-		placeAllAttacks(POS_ATTACKERS_BOX1,POS_ATTACKERS_WEAPON1,excludeList);
+		placeAllAttacks(POS_ATTACKERS_WEAPON1,POS_ATTACKERS_BOX1,excludeList);
 		
 		updateHotSpots();
 		

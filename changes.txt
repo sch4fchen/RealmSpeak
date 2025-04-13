@@ -35,6 +35,7 @@ Would be nice to make weapon abilities too:
 Version 1.2.1.7
 NEW FEATURES:
 # Optional Rules: No duplicate spell recording at start of the game
+# Switch position of weapon and attack chits on character and denizen sheets
 
 Version 1.2.1.6
 BUGS/ISSUES:
