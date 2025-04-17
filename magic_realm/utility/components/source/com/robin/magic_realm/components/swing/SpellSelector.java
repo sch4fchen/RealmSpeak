@@ -50,7 +50,7 @@ public class SpellSelector extends AggressiveDialog {
 			if (!MouseUtility.isRightOrControlClick(ev)) {
 				if (allowAddSpell) {
 					addSelection(source,ev.getPoint());
-					if (hostPrefs.hasPref(Constants.HOUSE2_NO_DUPLICATE_STARTING_SPELLS)) {
+					if (hostPrefs.hasPref(Constants.FE_NO_DUPLICATE_SPELL_RECORDING)) {
 						refreshFromPanel();
 					}
 					updateControls();
@@ -74,6 +74,7 @@ public class SpellSelector extends AggressiveDialog {
 		initComponents();
 	}
 	private void refreshFromPanel() {
+		int selectedTab = fromTabPanel.getSelectedIndex();
 		fromTabPanel.removeAll();
 		
 		HashLists<String,GameObject> hashList = new HashLists<>();
@@ -95,7 +96,7 @@ public class SpellSelector extends AggressiveDialog {
 				}
 			});
 			for (GameObject spell:spells) {
-				if (hostPrefs.hasPref(Constants.HOUSE2_NO_DUPLICATE_STARTING_SPELLS)) {
+				if (hostPrefs.hasPref(Constants.FE_NO_DUPLICATE_SPELL_RECORDING)) {
 					boolean duplicateSpell = false;
 					if (toPanel!=null && toPanel.getComponents().length!=0) {
 						for (Object selectedSpellObject : toPanel.getComponents()) {
@@ -103,6 +104,7 @@ public class SpellSelector extends AggressiveDialog {
 								GameObject selectedSpell = ((SpellCardComponent) selectedSpellObject).getGameObject();
 								if (spell.getName().toLowerCase().matches(selectedSpell.getName().toLowerCase())) {
 									duplicateSpell = true;
+									break;
 								}
 							}
 						}
@@ -121,6 +123,9 @@ public class SpellSelector extends AggressiveDialog {
 			fromPanel[n].repaint();
 			fromTabPanel.addTab(type,new JScrollPane(fromPanel[n]));
 			n++;
+		}
+		if (selectedTab>-1) {
+			fromTabPanel.setSelectedIndex(selectedTab);
 		}
 		updateControls();
 	}
@@ -183,7 +188,7 @@ public class SpellSelector extends AggressiveDialog {
 							if (!MouseUtility.isRightOrControlClick(ev)) {
 								updateControls();
 								removeSelection(ev.getPoint());
-								if (hostPrefs.hasPref(Constants.HOUSE2_NO_DUPLICATE_STARTING_SPELLS)) {
+								if (hostPrefs.hasPref(Constants.FE_NO_DUPLICATE_SPELL_RECORDING)) {
 									refreshFromPanel();
 								}
 							}

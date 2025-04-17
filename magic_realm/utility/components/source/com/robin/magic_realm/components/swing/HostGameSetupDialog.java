@@ -1145,10 +1145,10 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC - A character cannot play a MAGIC counter, if he has any weapon counter except a staff activated.", false));
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_GLORY,"GLORY - When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.", false));
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_PONY_NO_MOUNTAINS,"PONY NO MOUNTAINS (Super Realm Basic) - Pony moves cannot be used for climbing mountains.", false));
+		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_NO_DUPLICATE_SPELL_RECORDING,"NO DUPLICATE SPELL RECORDING SPELLS (Super Realm Basic) - Characters cannot record the same spell multiple times.",false));
 		
 		newOptionPane.setTabHtmlDescription(HOUSE_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">House Rules</font></body></html>");
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE2_NO_SPELL_LIMIT,"NO SPELL LIMIT - Magic Realm limits you to 14 spells per character.  This option removes that limit.",false));
-		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE2_NO_DUPLICATE_STARTING_SPELLS,"NO DUPLICATE STARTING SPELLS - When selecting starting spells, characters cannot record the same spell multiple times.",false));
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE2_REVISED_ENHANCED_MAGIC,"REVISED ENHANCED MAGIC - Spells are not tied up by the casting of a spell, which allows the casting of multiple instances of a single spell.  Unlike normal Enhanced Magic, MAGIC chits ARE tied up by each spell.",false,exclusiveEnhancedMagicRules,null));
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE2_PEACE_WITH_NATURE_SITES,"PEACE WITH NATURE ABILITY EXTENDED (to site chits) - When character with this ability ends his turn, the site chits in his tile do not summon monsters from the Chart of Appearances.",false));	
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE2_HURRICANE_WINDS_BLOWS_HIRELINGS,"HURRICANE WINDS BLOWS HIRELINGS - Hurricane Winds blows hirelings and companions of a character.",false));
@@ -1344,6 +1344,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.SR_NO_INFORMATION_SHARING,true);
 		optionPane.setOption(Constants.FE_SEARCH_TABLES,true);
 		optionPane.setOption(Constants.FE_PONY_NO_MOUNTAINS,true);
+		optionPane.setOption(Constants.FE_NO_DUPLICATE_SPELL_RECORDING,true);
 		optionPane.setOption(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE,true);
 		optionPane.setOption(Constants.HOUSE1_CHIT_REMAIN_FACE_UP,true);
 		optionPane.setOption(Constants.RANDOM_ON_THE_FLY,true);

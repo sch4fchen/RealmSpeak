@@ -824,6 +824,7 @@ public class Constants {
 	public static final String FE_AMBUSH_END_OF_COMBATROUND = "AmbushRollEndOfCombatround";
 	public static final String FE_PONY_NO_MOUNTAINS = "PonyNoMountains";
 	public static final String FE_GLORY = "Glory";
+	public static final String FE_NO_DUPLICATE_SPELL_RECORDING = "NoDuplicateSpellRecording";
 	
 	// My House Rules
 	public static final String HOUSE1_DWARF_ACTION = "DwarfActions";
@@ -855,7 +856,6 @@ public class Constants {
 	public static final String HOUSE2_DENIZENS_SERIOUS_WOUNDS = "DenizenSeriousWounds";
 	public static final String HOUSE2_DENIZENS_WOUNDS = "DenizenWounds";
 	public static final String HOUSE2_WOODLAND_MIGRATIONS = "WoodlandMigrations";
-	public static final String HOUSE2_NO_DUPLICATE_STARTING_SPELLS = "NoDuplicateStartingSpells";
 	
 	// MORE House Rules
 	public static final String HOUSE3_DWELLING_ARMOR_REPAIR = "DwellingArmorRepair";

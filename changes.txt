@@ -33,8 +33,9 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 Version 1.2.1.7
+SUPER REALM:
+# No duplicate spell recording
 NEW FEATURES:
-# Optional Rules: No duplicate spell recording at start of the game
 # Switch position of weapon and attack chits on character and denizen sheets
 
 Version 1.2.1.6
@@ -42,7 +43,7 @@ BUGS/ISSUES:
 # Fix denizen combat sheet
 
 Version 1.2.1.5
-SUPER REALM
+SUPER REALM:
 # Roving native Dwarves get movement bonus when duck and dark side up
 BUGS/ISSUES:
 # Fix target boxes on 3x3 combat grid on denizen sheet
@@ -59,7 +60,7 @@ BUGS/ISSUES:
 # Fix actions after inert Melt into Mist spell
 
 Version 1.2.1.2
-SUPER REALM
+SUPER REALM:
 # New combat sheets images (thanks Casey!)
 # Enchant Weapon: can attack mist like individuals
 # Melt into Mist can only do move actions
