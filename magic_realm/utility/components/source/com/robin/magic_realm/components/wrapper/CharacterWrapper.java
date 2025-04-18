@@ -4859,7 +4859,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean canLearn(GameObject spell) {
 		return canLearn(spell,false);
 	}
-	public boolean canLearn(GameObject spell,boolean ignoreDuplicates) {
+	private boolean canLearn(GameObject spell,boolean ignoreDuplicates) {
 		// Check to see if character has a chit to support learning the new spell
 		int number = RealmUtility.convertMod(spell.getThisAttribute("spell"));
 		
@@ -4904,8 +4904,16 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean hasAlreadyLearned(GameObject spell) {
 		// Now check to see that the character doesn't already have this spell recorded
 		for (GameObject recSpell:getRecordedSpells(spell.getGameData())) {
-			if (recSpell.getName().equals(spell.getName())) { // look for matches based on name
+			if (recSpell.getName().equals(spell.getName())) {
 				return true;
+			}
+		}
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
+		if (hostPrefs.hasPref(Constants.FE_NO_DUPLICATE_SPELL_RECORDING)) {
+			for (GameObject startSpell:getStartingSpells(spell.getGameData())) {
+				if (startSpell.getName().equals(spell.getName())) {
+					return true;
+				}
 			}
 		}
 		return false;
@@ -5264,6 +5272,16 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public ArrayList<GameObject> getRecordedSpells(GameData data) {
 		ArrayList<GameObject> recordedSpells = new ArrayList<>();
 		ArrayList<String> spellIds = getList(RECORDED_SPELLS);
+		if (spellIds!=null && !spellIds.isEmpty()) {
+			for (String id : spellIds) {
+				recordedSpells.add(data.getGameObject(Long.valueOf(id)));
+			}
+		}
+		return recordedSpells;
+	}
+	private ArrayList<GameObject> getStartingSpells(GameData data) {
+		ArrayList<GameObject> recordedSpells = new ArrayList<>();
+		ArrayList<String> spellIds = getList(STARTING_SPELLS);
 		if (spellIds!=null && !spellIds.isEmpty()) {
 			for (String id : spellIds) {
 				recordedSpells.add(data.getGameObject(Long.valueOf(id)));
