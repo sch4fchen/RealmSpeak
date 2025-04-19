@@ -1060,7 +1060,7 @@ public class CharacterCombatSheet extends CombatSheet {
 						spellRegionHash.put(r,spell);
 						x += (cardWidth+5);
 					}
-					tt = new TextType("Castable Spells",300,"BOLD_BLUE");
+					tt = new TextType("Available Spells",300,"BOLD_BLUE");
 					tt.draw(g, 333, 530, Alignment.Center);
 				}
 			}
