@@ -2393,14 +2393,14 @@ public class BattleModel {
 			for (RealmComponent rc : list) {
 				int boxA = RandomNumber.getRandom(3)+1;
 				int boxD = RandomNumber.getRandom(3)+1;
+				ChitComponent chit = (ChitComponent)rc;
 				if (!SKIP_REPOSITIONING) {
 					CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 					combat.setCombatBoxAttack(boxA);
 					combat.setCombatBoxDefense(boxD);
+					RealmLogging.logMessage(chit.getGameObject().getNameWithNumber(),"Changes position: "+getNameForDefensekBox(boxD)+" & "+getNameForAttackBox(boxA));
 				}
-				
 				if (tacticChange && (boxA==boxD || rc.getGameObject().hasThisAttribute(Constants.SENSITIVE_TACTICS) || FORCE_MONSTER_FLIP)) {
-					ChitComponent chit = (ChitComponent)rc;
 					if (canChangeTactics(chit)) {
 						chit.flip();
 						if (chit instanceof BattleChit) {
@@ -2410,6 +2410,28 @@ public class BattleModel {
 				}
 			}
 		}
+	}
+	private static String getNameForAttackBox(int box) {
+		switch(box) {
+			case 1:
+				return "THRUST";
+			case 2:
+				return "SWING";
+			case 3:
+				return "SMASH";
+			default: return "";
+		}
+	}
+	private static String getNameForDefensekBox(int box) {
+		switch(box) {
+		case 1:
+			return "CHARGE";
+		case 2:
+			return "DODGE";
+		case 3:
+			return "DUCK";
+		default: return "";
+	}
 	}
 	private static void reposition(String prefix,CombatWrapper combatTarget,HashLists<Key, RealmComponent> boxHash) {		
 		DieRoller roller = new DieRoller(); // Rule 22.5/2 specifies that modifiers do NOT affect this roll

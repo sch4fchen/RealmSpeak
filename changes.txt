@@ -33,6 +33,8 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 Version 1.2.1.8
+SUPER REALM:
+# Log repositioning in RealmLog
 
 Version 1.2.1.7
 SUPER REALM:
