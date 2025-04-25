@@ -35,6 +35,8 @@ Would be nice to make weapon abilities too:
 Version 1.2.1.8
 SUPER REALM:
 # Log repositioning in RealmLog
+BUGS/ISSUES:
+# Fix removing Mesmerize effects
 
 Version 1.2.1.7
 SUPER REALM:

@@ -97,12 +97,10 @@ public class MagicGuild extends GuildStore {
 				character.removeCurse(selText);
 				return "Removed "+selText+" curse.";
 			}
-			else {
-				GameObject go = chooser.getFirstSelectedComponent().getGameObject();
-				SpellWrapper spell = new SpellWrapper(go);
-				spell.expireSpell();
-				return "Breaked "+go.getName()+" spell.";
-			}
+			GameObject go = chooser.getFirstSelectedComponent().getGameObject();
+			SpellWrapper spell = new SpellWrapper(go);
+			spell.expireSpell();
+			return "Breaked "+go.getName()+" spell.";
 		}
 		return null;
 	}

@@ -4402,6 +4402,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		getGameObject().removeThisAttributeListItem(Constants.MESMERIZE, effect);
 		if (getGameObject().getThisAttributeList(Constants.MESMERIZE).isEmpty()) {
 			getGameObject().removeThisAttribute(Constants.MESMERIZE);
+			getGameObject().removeAttribute(CURSES_BLOCK,Constants.MESMERIZE);
 		}
 	}
 	public boolean hasCurses() {
