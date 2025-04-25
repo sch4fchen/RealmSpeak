@@ -2391,14 +2391,16 @@ public class BattleModel {
 		for (Key key : boxHash.keySet()) {
 			ArrayList<RealmComponent> list = boxHash.getList(key);
 			for (RealmComponent rc : list) {
-				int boxA = RandomNumber.getRandom(3)+1;
-				int boxD = RandomNumber.getRandom(3)+1;
+				int attackDie = RandomNumber.getRandom(6)+1;
+				int defenceDie = RandomNumber.getRandom(6)+1;
+				int boxA = (attackDie+1)/2;
+				int boxD = (defenceDie+1)/2;
 				ChitComponent chit = (ChitComponent)rc;
 				if (!SKIP_REPOSITIONING) {
 					CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 					combat.setCombatBoxAttack(boxA);
 					combat.setCombatBoxDefense(boxD);
-					RealmLogging.logMessage(chit.getGameObject().getNameWithNumber(),"Changes position: "+getNameForDefensekBox(boxD)+" & "+getNameForAttackBox(boxA));
+					RealmLogging.logMessage(chit.getGameObject().getNameWithNumber(),"Changes position: "+getNameForDefensekBox(boxD)+" (die: "+defenceDie+") & "+getNameForAttackBox(boxA)+" (die: "+attackDie+")");
 				}
 				if (tacticChange && (boxA==boxD || rc.getGameObject().hasThisAttribute(Constants.SENSITIVE_TACTICS) || FORCE_MONSTER_FLIP)) {
 					if (canChangeTactics(chit)) {
