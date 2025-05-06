@@ -34,6 +34,8 @@ Would be nice to make weapon abilities too:
 
 
 Version 1.2.1.9
+BUGS/ISSUES:
+# Fix endless loop of random assignment step in combat
 
 Version 1.2.1.8
 SUPER REALM:

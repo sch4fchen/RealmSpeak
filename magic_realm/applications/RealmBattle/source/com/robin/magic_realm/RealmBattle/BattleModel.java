@@ -2649,6 +2649,7 @@ public class BattleModel {
 			if (rc.isCharacter()) {
 				CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
 				
+				character.getGameObject().removeThisAttribute(Constants.RANDOM_ASSIGNMENT_WINNER);
 				for (CharacterActionChitComponent chit:character.getAllChits()) {
 					if (chit.isMagicMove()) {
 						chit.setMagicMove(false);
