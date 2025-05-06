@@ -2857,7 +2857,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public boolean canReplaceAlertedParry(RealmComponent target) {
 		if (target==null) return false;
-		for (WeaponChitComponent weapon : getActiveWeapons()) {
+		ArrayList<WeaponChitComponent> activeWeapons = getActiveWeapons();
+		if (activeWeapons==null || activeWeapons.isEmpty()) return false;
+		for (WeaponChitComponent weapon : activeWeapons) {
 			if (weapon.isAlerted()) {
 				CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
 				if (combat.getCombatBoxDefense()>0 && combat.getPlacedAsParry()) {
@@ -2869,7 +2871,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public boolean canReplaceAlertedParryInBox(RealmComponent target, int box) {
 		if (target==null) return false;
-		for (WeaponChitComponent weapon : getActiveWeapons()) {
+		ArrayList<WeaponChitComponent> activeWeapons = getActiveWeapons();
+		if (activeWeapons==null || activeWeapons.isEmpty()) return false;
+		for (WeaponChitComponent weapon : activeWeapons) {
 			if (weapon.isAlerted()) {
 				CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
 				if (combat.getCombatBoxDefense()==box && combat.getPlacedAsParry()) {
