@@ -3136,6 +3136,18 @@ public class CombatFrame extends JFrame {
 			if (monster.getOwnerId()!=null || monster.isAbsorbed()) { // Any type of hired or controlled monster should be able to flip its weapon anytime
 				includeFlipside = true;
 			}
+			
+			RealmComponent extra2 = (RealmComponent)target.getHorse();
+			includeCurrentBox = true;
+			if (extra2!=null && (horseSameBox || extra!=null)) {
+				CombatWrapper combat = new CombatWrapper(extra2.getGameObject());
+				combat.setCombatBoxAttack(boxA);
+				combat.setCombatBoxDefense(boxD);
+			}
+			else if (extra2!=null && extra==null) {
+				extra = extra2;
+				extraName = "monster horse";
+			}
 		}
 		else if (target.isNative() || target.isTraveler()) {
 			extra = (RealmComponent)target.getHorse();
