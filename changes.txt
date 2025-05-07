@@ -38,6 +38,7 @@ BUGS/ISSUES:
 # Fix endless loop of random assignment step in combat
 # Fix attacking as Transformed or Absorbed monster
 # Fix repositioning denizen weapon or horse on denizen combat sheet
+# Fix placing of lured denizens on denizen combat sheet
 
 Version 1.2.1.8
 SUPER REALM:

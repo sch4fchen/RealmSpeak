@@ -42,6 +42,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 	protected abstract int getDeadBoxIndex();
 	protected abstract int getBoxIndexFromCombatBoxes(int boxA, int boxD);
 	protected abstract int getBoxIndexFromCombatBoxesForDefender(int boxA, int boxD);
+	protected abstract int getBoxIndexFromCombatBoxesForLuredDenizen(int boxA, int boxD);
 	protected abstract int getHotSpotSize();
 	
 	private Point[] positions;		// Position of every hotspot
@@ -462,24 +463,27 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			}
 		}
 	}
+	protected void placeParticipantLuredDenizen(RealmComponent participant) {
+		placeParticipant(participant,false,true,false,true);
+	}
 	protected void placeParticipantDefender(RealmComponent participant) {
 		placeParticipantDefender(participant,false,false);
 	}
 	protected void placeParticipantDefender(RealmComponent participant,boolean secrecy,boolean horseSameBox) {
-		placeParticipant(participant,secrecy,horseSameBox,true);
+		placeParticipant(participant,secrecy,horseSameBox,true,false);
 	}
 	protected void placeParticipant(RealmComponent participant) {
 		placeParticipant(participant,false,false);
 	}
 	protected void placeParticipant(RealmComponent participant,boolean secrecy,boolean horseSameBox) {
-		placeParticipant(participant,secrecy,horseSameBox,false);
+		placeParticipant(participant,secrecy,horseSameBox,false,false);
 	}
 		
-	private void placeParticipant(RealmComponent participant,boolean secrecy,boolean horseSameBox,boolean defender) {
+	private void placeParticipant(RealmComponent participant,boolean secrecy,boolean horseSameBox,boolean defender, boolean luredDenizen) {
 		CombatWrapper combat;
 		// Place horse (if any) first
 		RealmComponent horse = (RealmComponent)participant.getHorse();
-		if (horse!=null) {
+		if (!luredDenizen && horse!=null) {
 			combat = new CombatWrapper(horse.getGameObject());
 			int boxD = combat.getCombatBoxDefense();
 			int boxA = combat.getCombatBoxAttack();
@@ -502,6 +506,8 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			}
 			if (defender) {
 				layoutHash.put(getBoxIndexFromCombatBoxesForDefender(boxA,boxD),horse);
+			} else if (luredDenizen) {
+					layoutHash.put(getBoxIndexFromCombatBoxesForLuredDenizen(boxA,boxD),horse);
 			} else {
 				layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),horse);
 			}
@@ -524,12 +530,14 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		}
 		if (defender) {
 			layoutHash.put(getBoxIndexFromCombatBoxesForDefender(boxA,boxD),participant);
+		} else if (luredDenizen) {
+			layoutHash.put(getBoxIndexFromCombatBoxesForLuredDenizen(boxA,boxD),participant);
 		} else {
 			layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),participant);
 		}
 		
 		// Place weapon (if any)
-		if (participant.isMonster()) {
+		if (participant.isMonster() && !luredDenizen) {
 			MonsterChitComponent monster = (MonsterChitComponent)participant;
 			MonsterPartChitComponent weapon = monster.getWeapon();
 			if (weapon!=null) {
@@ -548,6 +556,8 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 				}
 				if (defender) {
 					layoutHash.put(getBoxIndexFromCombatBoxesForDefender(boxA,boxD),weapon);
+				} else if (luredDenizen) {
+					layoutHash.put(getBoxIndexFromCombatBoxesForLuredDenizen(boxA,boxD),weapon);
 				} else {
 					layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),weapon);
 				}
@@ -632,7 +642,11 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 				if (excludeList==null || !excludeList.contains(rc)) {
 					if (!rc.isCharacter() && (sheetParticipants.contains(target) || sheetParticipants.contains(target2))) {
 						if (!addedToDead(rc)) {
-							placeParticipant(rc);
+							if(combatFrame.getActionState()==Constants.COMBAT_LURE) {
+								placeParticipantLuredDenizen(rc);
+							} else {
+								placeParticipant(rc);
+							}
 							sheetParticipants.add(rc);
 						}
 					}

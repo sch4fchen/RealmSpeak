@@ -197,7 +197,7 @@ public class DenizenCombatSheet extends CombatSheet {
 	public int getDeadBoxIndex() {
 		return POS_DEAD_BOX;
 	}
-		
+	
 	protected int getBoxIndexFromCombatBoxes(int boxA, int boxD) {
 		if (boxA == 0 || boxD==0) return POS_DEFENDER_TARGETS;
 		if (boxA == 3 && boxD==3) return POS_DEFENDER_TARGET_BOX1;
@@ -224,6 +224,15 @@ public class DenizenCombatSheet extends CombatSheet {
 		if (boxA == 2 && boxD==3) return POS_DEFENDER_DUCK_SWING;
 		if (boxA == 1 && boxD==3) return POS_DEFENDER_DUCK_THRUST;
 		return -1;
+	}
+	
+	protected int getBoxIndexFromCombatBoxesForLuredDenizen(int boxA, int boxD) {
+		switch (boxA) {
+			case 1: return POS_ATTACKERS_BOX1;
+			case 2: return POS_ATTACKERS_BOX2;
+			case 3: return POS_ATTACKERS_BOX3;
+			default: return POS_ATTACKERS;
+		}
 	}
 	
 	protected Point[] getPositions(HostPrefWrapper hostPrefs) {
