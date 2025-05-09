@@ -8283,7 +8283,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="phase_chit_effects">
         <attribute nullify="" />
-		<attribute magic_protection="" />
+        <attribute magic_protection="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="316" name="Peace with Nature">
@@ -61779,12 +61779,12 @@
         <attribute name="Hunter" />
         <attribute weapon="Broadsword" />
         <attribute armor="Breastplate" />
-        <attributeList keyName="advantages">
-          <attributeVal N0="RAGE: No effort limit in combat. Goes last in combat. Treat Insult and Challenge results on Meeting Table as Block/Battle." />
-        </attributeList>
         <attribute effort_limit="24" />
         <attribute combat_goes_last="" />
         <attribute insult_challenge_as_block_battle="" />
+        <attributeList keyName="advantages">
+          <attributeVal N0="RAGE:  No effort limit in combat. Goes last in combat. Treat Insult and Challenge results on Meeting Table as Block/Battle." />
+        </attributeList>
       </AttributeBlock>
       <AttributeBlock blockName="level_3">
         <attribute name="Raider" />
@@ -61831,7 +61831,7 @@
         <attribute strength="H" />
         <attribute speed="5" />
         <attribute character_level="1" />
-        <attribute stage="11" />
+        <attribute stage="1" />
         <attribute level="1" />
         <attribute icon_folder="characters" />
         <attribute icon_type="barbarian" />
@@ -61846,7 +61846,7 @@
         <attribute strength="H" />
         <attribute speed="6" />
         <attribute character_level="1" />
-        <attribute stage="3" />
+        <attribute stage="2" />
         <attribute level="1" />
         <attribute icon_folder="characters" />
         <attribute icon_type="barbarian" />
@@ -61875,7 +61875,7 @@
         <attribute strength="H" />
         <attribute speed="6" />
         <attribute character_level="2" />
-        <attribute stage="11" />
+        <attribute stage="4" />
         <attribute level="2" />
         <attribute icon_folder="characters" />
         <attribute icon_type="barbarian" />
@@ -61889,7 +61889,7 @@
         <attribute strength="H" />
         <attribute speed="4" />
         <attribute character_level="2" />
-        <attribute stage="11" />
+        <attribute stage="5" />
         <attribute level="2" />
         <attribute icon_folder="characters" />
         <attribute icon_type="barbarian" />
@@ -61904,7 +61904,7 @@
         <attribute strength="T" />
         <attribute speed="6" />
         <attribute character_level="2" />
-        <attribute stage="3" />
+        <attribute stage="6" />
         <attribute level="2" />
         <attribute icon_folder="characters" />
         <attribute icon_type="barbarian" />
@@ -61919,7 +61919,7 @@
         <attribute strength="H" />
         <attribute speed="5" />
         <attribute character_level="3" />
-        <attribute stage="11" />
+        <attribute stage="7" />
         <attribute level="3" />
         <attribute icon_folder="characters" />
         <attribute icon_type="barbarian" />
@@ -61934,7 +61934,7 @@
         <attribute strength="T" />
         <attribute speed="5" />
         <attribute character_level="3" />
-        <attribute stage="11" />
+        <attribute stage="8" />
         <attribute level="3" />
         <attribute icon_folder="characters" />
         <attribute icon_type="barbarian" />
@@ -61949,7 +61949,7 @@
         <attribute strength="T" />
         <attribute speed="5" />
         <attribute character_level="3" />
-        <attribute stage="3" />
+        <attribute stage="9" />
         <attribute level="3" />
         <attribute icon_folder="characters" />
         <attribute icon_type="barbarian" />
@@ -61964,7 +61964,7 @@
         <attribute strength="T" />
         <attribute speed="4" />
         <attribute character_level="4" />
-        <attribute stage="11" />
+        <attribute stage="10" />
         <attribute level="4" />
         <attribute icon_folder="characters" />
         <attribute icon_type="barbarian" />
@@ -61994,12 +61994,254 @@
         <attribute strength="H" />
         <attribute speed="4" />
         <attribute character_level="4" />
-        <attribute stage="3" />
+        <attribute stage="12" />
         <attribute level="4" />
         <attribute icon_folder="characters" />
         <attribute icon_type="barbarian" />
         <attribute super_realm="" />
         <attribute effort="2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2378" name="Bard">
+      <AttributeBlock blockName="this">
+        <attribute icon_type="bard" />
+        <attribute character="" />
+        <attribute vulnerability="L" />
+        <attribute start="Inn" />
+        <attribute facing="dark" />
+        <attribute pronoun="he" />
+        <attribute fighter="" />
+        <attribute icon_folder="characters" />
+        <attribute creator="Anomalous Host" />
+        <attribute artcredit="" />
+        <attribute super_realm="" />
+        <attribute potrait_folder="" />
+        <attribute potrait_file="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="level_1">
+        <attribute name="Servant" />
+      </AttributeBlock>
+      <AttributeBlock blockName="level_2">
+        <attribute name="Musician" />
+        <attributeList keyName="advantages">
+          <attributeVal N0="SWAY:  Subtract 1 from all Meeting Table die rolls." />
+        </attributeList>
+        <attributeList keyName="diemod">
+          <attributeVal N0="-1:meeting,commerce:all" />
+        </attributeList>
+        <attributeList keyName="spelltypes">
+          <attributeVal N0="VII" />
+        </attributeList>
+      </AttributeBlock>
+      <AttributeBlock blockName="level_3">
+        <attribute name="Poet" />
+        <attributeList keyName="spelltypes">
+          <attributeVal N0="II" />
+          <attributeVal N1="III" />
+          <attributeVal N2="VII" />
+        </attributeList>
+      </AttributeBlock>
+      <AttributeBlock blockName="level_4">
+        <attribute name="Bard" />
+        <attributeList keyName="advantages">
+          <attributeVal N0="KNOWLEDGE:  Subtract 1 from all Reading Runes die rolls." />
+        </attributeList>
+        <attributeList keyName="diemod">
+          <attributeVal N0="-1:readrunes:all" />
+        </attributeList>
+        <attributeList keyName="spelltypes">
+          <attributeVal N0="II" />
+          <attributeVal N1="III" />
+          <attributeVal N2="VII" />
+          <attributeVal N3="VIII" />
+        </attributeList>
+      </AttributeBlock>
+      <AttributeBlock blockName="relationship">
+        <attribute enchanters="1" />
+        <attribute pagans="1" />
+        <attribute summoners="1" />
+        <attribute scholar="1" />
+        <attribute mercenaries="-1" />
+        <attribute soldiers="-1" />
+        <attribute zealots="-1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2379" name="Bard Fight L4">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute strength="L" />
+        <attribute speed="4" />
+        <attribute character_level="1" />
+        <attribute stage="1" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="bard" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2380" name="Bard Move L3*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute strength="L" />
+        <attribute speed="3" />
+        <attribute character_level="1" />
+        <attribute stage="2" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="bard" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2381" name="Bard Move L3">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute strength="L" />
+        <attribute speed="3" />
+        <attribute character_level="1" />
+        <attribute stage="3" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="bard" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2382" name="Bard Magic VII3*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="3" />
+        <attribute character_level="2" />
+        <attribute stage="4" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="bard" />
+        <attribute super_realm="" />
+        <attribute magic="VII" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2383" name="Bard Move L2**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute strength="L" />
+        <attribute speed="2" />
+        <attribute character_level="2" />
+        <attribute stage="5" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="bard" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2384" name="Bard Fight L3*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute strength="L" />
+        <attribute speed="3" />
+        <attribute character_level="2" />
+        <attribute stage="6" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="bard" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2385" name="Bard Magic III3*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="3" />
+        <attribute character_level="3" />
+        <attribute stage="7" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="bard" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+        <attribute magic="III" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2386" name="Bard Magic II4*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="4" />
+        <attribute character_level="3" />
+        <attribute stage="8" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="bard" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+        <attribute magic="II" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2387" name="Bard Fight L3*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute strength="L" />
+        <attribute speed="3" />
+        <attribute character_level="3" />
+        <attribute stage="9" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="bard" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2388" name="Bard Magic III2*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="2" />
+        <attribute character_level="4" />
+        <attribute stage="10" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="bard" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+        <attribute magic="III" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2389" name="Bard Magic II3*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="3" />
+        <attribute character_level="4" />
+        <attribute stage="11" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="bard" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+        <attribute magic="II" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2390" name="Bard Magic VIII2**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="2" />
+        <attribute character_level="4" />
+        <attribute stage="12" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="bard" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+        <attribute magic="VIII" />
       </AttributeBlock>
     </GameObject>
   </objects>
