@@ -153,6 +153,9 @@ public abstract class Meeting extends Trade {
 		doBlockBattle(character);
 	}
 	protected String applyInsult(CharacterWrapper character) {
+		if (character.affectedByKey(Constants.INSULT_CHALLENGE_AS_BLOCK_BATTLE)) {
+			return applyBlockBattle(character);
+		}
 		String text = "Insult";
 		String result = useCompletedActiveTask(character,text);
 		if (result!=null && !result.isEmpty()) {
@@ -162,6 +165,9 @@ public abstract class Meeting extends Trade {
 		return text;
 	}
 	protected String applyChallenge(CharacterWrapper character) {
+		if (character.affectedByKey(Constants.INSULT_CHALLENGE_AS_BLOCK_BATTLE)) {
+			return applyBlockBattle(character);
+		}
 		String text = "Challenge";
 		String result = useCompletedActiveTask(character,text);
 		if (result!=null && !result.isEmpty()) {

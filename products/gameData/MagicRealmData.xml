@@ -26118,7 +26118,7 @@
         <attribute discover_to_leave="" />
         <attribute icon_type_alt="minotaurKing" />
         <attribute icon_folder_alt="wesnoth/units" />
-		<attribute maze="" />
+        <attribute maze="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="972" name="Tree">
@@ -35494,7 +35494,7 @@
         <attribute icon_type="stoneTitan" />
         <attribute icon_folder="wesnoth/units" />
         <attribute spell_site="" />
-		<attribute teleport_to_location="Spire" />
+        <attribute teleport_to_location="Spire" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1233" name="Spire">
@@ -35512,7 +35512,7 @@
         <attribute icon_type="stoneTitan2" />
         <attribute icon_folder="wesnoth/units" />
         <attribute spell_site="" />
-		<attribute teleport_to_location="Tower" />
+        <attribute teleport_to_location="Tower" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1234" name="Pit">
@@ -35529,7 +35529,7 @@
         <attribute ts_color="red" />
         <attribute icon_type="scorpion" />
         <attribute icon_folder="wesnoth/units/monsters" />
-		<attribute pit="" />
+        <attribute pit="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1235" name="Garden">
@@ -35968,7 +35968,7 @@
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
         <attribute icon_folder="wesnoth/buildings" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1759" />
       <contains id="1760" />
@@ -36000,7 +36000,7 @@
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
         <attribute icon_folder="wesnoth/buildings" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1813" />
       <contains id="1814" />
@@ -36032,7 +36032,7 @@
         <attribute ts_color="tan" />
         <attribute icon_folder="wesnoth/buildings" />
         <attribute remove_curses="" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1769" />
       <contains id="1770" />
@@ -36061,7 +36061,7 @@
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
         <attribute icon_folder="wesnoth/buildings" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1765" />
       <contains id="1766" />
@@ -36111,7 +36111,7 @@
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
         <attribute icon_folder="wesnoth/buildings" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1834" />
       <contains id="1835" />
@@ -36133,7 +36133,7 @@
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
         <attribute icon_folder="wesnoth/buildings" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1838" />
       <contains id="1839" />
@@ -36157,7 +36157,7 @@
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
         <attribute icon_folder="wesnoth/buildings" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1830" />
       <contains id="1831" />
@@ -36177,7 +36177,7 @@
         <attribute ts_section="dwellings" />
         <attribute ts_color="tan" />
         <attribute icon_folder="wesnoth/buildings" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1823" />
       <contains id="1824" />
@@ -37036,7 +37036,7 @@
         <attribute icon_size="0.9" />
         <attribute roving_native="" />
         <attribute summon="Patter R, Patter H, Lost Fortress" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1318" />
       <contains id="1319" />
@@ -37181,7 +37181,7 @@
         <attribute setup_start="Cultist Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="wesnoth/units/tharis-magi" />
-		<attribute commerce="N" />
+        <attribute commerce="N" />
         <attribute denizen="" />
         <attribute icon_size="0.9" />
         <attribute no_change_tactics="" />
@@ -37189,7 +37189,7 @@
         <attribute fast_caster="" />
         <attribute native_name="Caster" />
         <attribute roving_native="" />
-		<attributeList keyName="extra_actions">
+        <attributeList keyName="extra_actions">
           <attributeVal N0="SP" />
         </attributeList>
       </AttributeBlock>
@@ -39567,7 +39567,7 @@
         <attribute icon_size="0.9" />
         <attribute roving_native="" />
         <attribute summon="Patter F, Patter ST, Lost Palace" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1403" />
       <contains id="1404" />
@@ -39789,7 +39789,7 @@
         <attribute setup_start="Elf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="wesnoth/units/elves-wood" />
-		<attribute commerce="N" />
+        <attribute commerce="N" />
         <attribute denizen="" />
         <attribute magic_protection="" />
         <attribute missile="" />
@@ -39797,7 +39797,7 @@
         <attribute archer="" />
         <attribute native_name="Archer" />
         <attribute roving_native="" />
-		<attributeList keyName="extra_actions">
+        <attributeList keyName="extra_actions">
           <attributeVal N0="H" />
         </attributeList>
       </AttributeBlock>
@@ -39897,7 +39897,7 @@
         <attribute anomaly="" />
         <attribute box_num="1" />
         <attribute blunt_immunity="" />
-		<attribute poison_immunity="" />
+        <attribute poison_immunity="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -39980,8 +39980,8 @@
         <attribute anomaly="" />
         <attribute box_num="3" />
         <attribute blunt_immunity="" />
-		<attribute ignore_mist_like="" />
-		<attribute ignore_enchanted_weapons="" />
+        <attribute ignore_mist_like="" />
+        <attribute ignore_enchanted_weapons="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -40023,9 +40023,9 @@
         <attribute anomaly="" />
         <attribute box_num="4" />
         <attribute blunt_immunity="" />
-		<attribute poison_immunity="" />
-		<attribute ignore_mist_like="" />
-		<attribute ignore_enchanted_weapons="" />
+        <attribute poison_immunity="" />
+        <attribute ignore_mist_like="" />
+        <attribute ignore_enchanted_weapons="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -41713,7 +41713,7 @@
         <attribute icon_size="0.9" />
         <attribute roving_native="" />
         <attribute summon="Patter C, Patter V, Lost City" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1477" />
       <contains id="1478" />
@@ -41762,7 +41762,7 @@
         <attribute length="5" />
         <attribute chit_color="yellow" />
         <attribute sharpness="1" />
-		<attribute move_speed_bonus_combat_box3="1" />
+        <attribute move_speed_bonus_combat_box3="1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1478" name="Dwarf 2">
@@ -41802,7 +41802,7 @@
         <attribute length="5" />
         <attribute chit_color="yellow" />
         <attribute sharpness="1" />
-		<attribute move_speed_bonus_combat_box3="1" />
+        <attribute move_speed_bonus_combat_box3="1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1479" name="Dwarf 3">
@@ -41842,7 +41842,7 @@
         <attribute length="5" />
         <attribute chit_color="yellow" />
         <attribute sharpness="1" />
-		<attribute move_speed_bonus_combat_box3="1" />
+        <attribute move_speed_bonus_combat_box3="1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1480" name="Dwarf 4">
@@ -41882,7 +41882,7 @@
         <attribute length="5" />
         <attribute chit_color="yellow" />
         <attribute sharpness="1" />
-		<attribute move_speed_bonus_combat_box3="1" />
+        <attribute move_speed_bonus_combat_box3="1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1481" name="Dwarf 5">
@@ -41922,7 +41922,7 @@
         <attribute length="5" />
         <attribute chit_color="yellow" />
         <attribute sharpness="1" />
-		<attribute move_speed_bonus_combat_box3="1" />
+        <attribute move_speed_bonus_combat_box3="1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1482" name="Dwarf HQ">
@@ -41940,15 +41940,15 @@
         <attribute setup_start="Dwarf Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="wesnoth/units/dwarves" />
-		<attribute commerce="N" />
+        <attribute commerce="N" />
         <attribute denizen="" />
         <attribute needs_init="" />
         <attribute armored="" />
         <attribute icon_size="0.9" />
         <attribute native_name="Axeman" />
         <attribute roving_native="" />
-		<attribute no_sunlight="" />
-		<attributeList keyName="diemod">
+        <attribute no_sunlight="" />
+        <attributeList keyName="diemod">
           <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,hire,trade,commerce:&gt;caves" />
         </attributeList>
       </AttributeBlock>
@@ -41967,7 +41967,7 @@
         <attribute length="5" />
         <attribute chit_color="yellow" />
         <attribute sharpness="1" />
-		<attribute move_speed_bonus_combat_box3="1" />
+        <attribute move_speed_bonus_combat_box3="1" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1483" name="H Flying Dragon Box">
@@ -47384,7 +47384,7 @@
         <attribute icon_size="0.9" />
         <attribute roving_native="" />
         <attribute summon="Patter M, Patter W, Lost Castle" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1743" />
       <contains id="1744" />
@@ -47601,13 +47601,13 @@
         <attribute setup_start="Bandit Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="wesnoth/units/human-outlaws" />
-		<attribute commerce="N" />
+        <attribute commerce="N" />
         <attribute denizen="" />
         <attribute needs_init="" />
         <attribute icon_size="0.9" />
         <attribute native_name="Assassin" />
         <attribute roving_native="" />
-		<attributeList keyName="extra_actions">
+        <attributeList keyName="extra_actions">
           <attributeVal N0="M" />
         </attributeList>
       </AttributeBlock>
@@ -47658,7 +47658,7 @@
         <attribute clan="1" />
         <attribute native_die="3" />
         <attribute icon_size="0.9" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1751" />
       <contains id="1752" />
@@ -48655,7 +48655,7 @@
         <attribute native_die="5" />
         <attribute clan="2" />
         <attribute icon_size="0.9" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1781" />
       <contains id="1782" />
@@ -48836,7 +48836,7 @@
         <attribute clan="2" />
         <attribute native_die="6" />
         <attribute icon_size="0.9" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1787" />
       <contains id="1788" />
@@ -49122,7 +49122,7 @@
         <attribute native_die="3" />
         <attribute clan="3" />
         <attribute icon_size="0.9" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1797" />
       <contains id="1798" />
@@ -49383,7 +49383,7 @@
         <attribute clan="3" />
         <attribute native_die="5" />
         <attribute icon_size="0.9" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1805" />
       <contains id="1806" />
@@ -50290,7 +50290,7 @@
         <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="wesnoth/units/human-peasants" />
-		<attribute commerce="F" />
+        <attribute commerce="F" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="2" />
@@ -50440,7 +50440,7 @@
         <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="wesnoth/units" />
-		<attribute commerce="N" />
+        <attribute commerce="N" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="1" />
@@ -50599,7 +50599,7 @@
         <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="wesnoth/units/woses" />
-		<attribute commerce="N" />
+        <attribute commerce="N" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="4" />
@@ -50757,7 +50757,7 @@
         <attribute hire_type="single" />
         <attribute garrison="" />
         <attribute icon_folder="wesnoth/units/skykingdom-elementalists" />
-		<attribute commerce="N" />
+        <attribute commerce="N" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="3" />
@@ -50906,7 +50906,7 @@
         <attribute clan="1" />
         <attribute native_die="1" />
         <attribute icon_size="0.9" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1848" />
       <contains id="1849" />
@@ -51202,7 +51202,7 @@
         <attribute native_die="2" />
         <attribute clan="2" />
         <attribute icon_size="0.9" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1858" />
       <contains id="1859" />
@@ -51406,7 +51406,7 @@
         <attribute setup_start="Aborigine Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="wesnoth/units/addons" />
-		<attribute commerce="N" />
+        <attribute commerce="N" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="2" />
@@ -51461,7 +51461,7 @@
         <attribute native_die="2" />
         <attribute clan="3" />
         <attribute icon_size="0.9" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1866" />
       <contains id="1867" />
@@ -51557,7 +51557,7 @@
         <attribute setup_start="Coven Dwelling" />
         <attribute hire_type="single" />
         <attribute icon_folder="wesnoth/units" />
-		<attribute commerce="N" />
+        <attribute commerce="N" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="2" />
@@ -51614,7 +51614,7 @@
         <attribute native_die="4" />
         <attribute clan="3" />
         <attribute icon_size="0.9" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1871" />
       <contains id="1872" />
@@ -51747,7 +51747,7 @@
         <attribute setup_start="Hunter Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="wesnoth/units/addons" />
-		<attribute commerce="F,N" />
+        <attribute commerce="F,N" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="4" />
@@ -51903,7 +51903,7 @@
         <attribute native_die="1" />
         <attribute clan="4" />
         <attribute icon_size="0.9" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1881" />
       <contains id="1882" />
@@ -52112,7 +52112,7 @@
         <attribute setup_start="Mercenary Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="wesnoth/units/addons" />
-		<attribute commerce="F,N" />
+        <attribute commerce="F,N" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="1" />
@@ -52168,7 +52168,7 @@
         <attribute native_die="5" />
         <attribute clan="4" />
         <attribute icon_size="0.9" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1889" />
       <contains id="1890" />
@@ -52330,7 +52330,7 @@
         <attribute setup_start="Conjuror Dwelling" />
         <attribute hire_type="single" />
         <attribute icon_folder="wesnoth/units/quenoth" />
-		<attribute commerce="N" />
+        <attribute commerce="N" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="5" />
@@ -52496,7 +52496,7 @@
         <attribute native_die="6" />
         <attribute clan="4" />
         <attribute icon_size="0.9" />
-		<attribute quest_target="" />
+        <attribute quest_target="" />
       </AttributeBlock>
       <contains id="1899" />
       <contains id="1900" />
@@ -52598,7 +52598,7 @@
         <attribute setup_start="Enchanter Dwelling" />
         <attribute hire_type="group" />
         <attribute icon_folder="wesnoth/units/tharis-magi" />
-		<attribute commerce="F,N" />
+        <attribute commerce="F,N" />
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute native_die="6" />
@@ -55926,7 +55926,7 @@
         <attribute facing="face_dn" />
         <attribute item="" />
         <attribute super_realm="" />
-		<attribute no_parry="" />
+        <attribute no_parry="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2038" name="Handy Gloves">
@@ -57382,7 +57382,7 @@
         <attribute host_okay="" />
         <attribute learnable="" />
         <attribute super_realm="" />
-		<attribute askdemon_peek="" />
+        <attribute askdemon_peek="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2131" name="Control Bats">
@@ -57819,9 +57819,9 @@
         <attribute spell_strength="3" />
         <attribute learnable="" />
         <attribute super_realm="" />
-		<attribute benevolent_for_leaders="" />
-		<attribute benevolent_for_monsters="" />
-		<attribute only_move="" />
+        <attribute benevolent_for_leaders="" />
+        <attribute benevolent_for_monsters="" />
+        <attribute only_move="" />
       </AttributeBlock>
       <AttributeBlock blockName="mist">
         <attribute vulnerability="T" />
@@ -57914,8 +57914,8 @@
       </AttributeBlock>
       <AttributeBlock blockName="phase_chit_effects">
         <attribute nullify="" />
-		<attribute magic_protection="" />
-		<attribute magic_protection_extended="" />
+        <attribute magic_protection="" />
+        <attribute magic_protection_extended="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2158" name="Peace with Nature">
@@ -61262,7 +61262,7 @@
         <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2331" name="Shrine Box">
+    <GameObject id="2330" name="Shrine Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
@@ -61276,7 +61276,7 @@
         <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2333" name="Hoard Box">
+    <GameObject id="2331" name="Hoard Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
@@ -61290,7 +61290,7 @@
         <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2334" name="Lair Box">
+    <GameObject id="2332" name="Lair Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
@@ -61304,7 +61304,7 @@
         <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2335" name="Pit Box">
+    <GameObject id="2333" name="Pit Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
@@ -61318,7 +61318,7 @@
         <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2336" name="Den Box">
+    <GameObject id="2334" name="Den Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
@@ -61332,7 +61332,7 @@
         <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2337" name="Pool Box">
+    <GameObject id="2335" name="Pool Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
@@ -61346,7 +61346,7 @@
         <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2338" name="Tower Box">
+    <GameObject id="2336" name="Tower Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
@@ -61360,7 +61360,7 @@
         <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2339" name="Vault Box">
+    <GameObject id="2337" name="Vault Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
@@ -61374,7 +61374,7 @@
         <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2340" name="Tomb Box">
+    <GameObject id="2338" name="Tomb Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
@@ -61388,7 +61388,7 @@
         <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2341" name="Cairns Box">
+    <GameObject id="2339" name="Cairns Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
@@ -61402,7 +61402,7 @@
         <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2342" name="Statue Box">
+    <GameObject id="2340" name="Statue Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
@@ -61416,7 +61416,7 @@
         <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2343" name="Spire Box">
+    <GameObject id="2341" name="Spire Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
@@ -61430,7 +61430,7 @@
         <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2344" name="Garden Box">
+    <GameObject id="2342" name="Garden Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
@@ -61444,7 +61444,7 @@
         <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2345" name="Maze Box">
+    <GameObject id="2343" name="Maze Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
@@ -61458,7 +61458,7 @@
         <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2346" name="Temple Box">
+    <GameObject id="2344" name="Temple Box">
       <AttributeBlock blockName="this">
         <attribute ts_section="treasure locations" />
         <attribute ts_size="S+" />
@@ -61472,7 +61472,7 @@
         <attribute ts_draw_below="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2347" name="Apprentice">
+    <GameObject id="2345" name="Apprentice">
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
@@ -61484,13 +61484,13 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="apprentice" />
-		<attribute text="Reading Runes: 1 D6" />
-		<attributeList keyName="diemod">
+        <attribute text="Reading Runes: 1 D6" />
+        <attributeList keyName="diemod">
           <attributeVal N0="1d:readrunes:all" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2348" name="Bargainer">
+    <GameObject id="2346" name="Bargainer">
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
@@ -61502,13 +61502,13 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="bargainer" />
-		<attribute text="Trade: 1 D6" />
-		<attributeList keyName="diemod">
+        <attribute text="Trade: 1 D6" />
+        <attributeList keyName="diemod">
           <attributeVal N0="1d:meeting,commerce:all" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2349" name="Barkeep">
+    <GameObject id="2347" name="Barkeep">
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
@@ -61520,13 +61520,13 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="barkeep" />
-		<attribute text="Hire: 1 D6" />
-		<attributeList keyName="diemod">
+        <attribute text="Hire: 1 D6" />
+        <attributeList keyName="diemod">
           <attributeVal N0="1d:hire:all" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2350" name="Cook">
+    <GameObject id="2348" name="Cook">
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
@@ -61538,11 +61538,11 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="cook" />
-		<attribute text="Double Rest" />
-		<attribute rest_double="" />
+        <attribute text="Double Rest" />
+        <attribute rest_double="" />
       </AttributeBlock>
     </GameObject>
-	<GameObject id="2351" name="Fairy">
+    <GameObject id="2349" name="Fairy">
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
@@ -61554,14 +61554,14 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="fairy" />
-		<attribute text="Extra Alert, finds Hidden Enemies" />
-		<attributeList keyName="extra_actions">
+        <attribute text="Extra Alert, finds Hidden Enemies" />
+        <attribute fairy_sense="" />
+        <attributeList keyName="extra_actions">
           <attributeVal N0="A" />
         </attributeList>
-		<attribute fairy_sense="" />
       </AttributeBlock>
     </GameObject>
-	<GameObject id="2352" name="Hermit">
+    <GameObject id="2350" name="Hermit">
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
@@ -61573,11 +61573,11 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="hermit" />
-		<attribute text="Extra Move per Mountain" />
-		<attribute mountain_move_adj="" />
+        <attribute text="Extra Move per Mountain" />
+        <attribute mountain_move_adj="" />
       </AttributeBlock>
     </GameObject>
-	<GameObject id="2353" name="Initiate">
+    <GameObject id="2351" name="Initiate">
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
@@ -61589,13 +61589,13 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="initiate" />
-		<attribute text="Extra Enchant" />
-		<attributeList keyName="extra_actions">
+        <attribute text="Extra Enchant" />
+        <attributeList keyName="extra_actions">
           <attributeVal N0="SP" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2354" name="Miner">
+    <GameObject id="2352" name="Miner">
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
@@ -61607,11 +61607,11 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="miner" />
-		<attribute text="Extra Cave Phase" />
-		<attribute extra_cave_phase="" />
+        <attribute text="Extra Cave Phase" />
+        <attribute extra_cave_phase="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2355" name="Ranger">
+    <GameObject id="2353" name="Ranger">
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
@@ -61623,13 +61623,13 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="ranger" />
-		<attribute text="Hide: 1 D6" />
-		<attributeList keyName="diemod">
+        <attribute text="Hide: 1 D6" />
+        <attributeList keyName="diemod">
           <attributeVal N0="1d:hide:all" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2356" name="Shadow">
+    <GameObject id="2354" name="Shadow">
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
@@ -61641,11 +61641,11 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="shadow" />
-		<attribute text="Magic Sight" />
-		<attribute magic_sight="" />
+        <attribute text="Magic Sight" />
+        <attribute magic_sight="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2357" name="Strongman">
+    <GameObject id="2355" name="Strongman">
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
@@ -61657,11 +61657,11 @@
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
         <attribute nomad="strongman" />
-		<attribute text="Carrier with strength T" />
-		<attribute carrier="T" />
+        <attribute text="Carrier with strength T" />
+        <attribute carrier="T" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2358" name="Tracker">
+    <GameObject id="2356" name="Tracker">
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
@@ -61672,14 +61672,14 @@
         <attribute super_realm="" />
         <attribute chit_color="darkorange" />
         <attribute text_color="white" />
-		<attribute text="Extra Search" />
+        <attribute text="Extra Search" />
         <attribute nomad="tracker" />
-		<attributeList keyName="extra_actions">
+        <attributeList keyName="extra_actions">
           <attributeVal N0="S" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2359" name="Journey">
+    <GameObject id="2357" name="Journey">
       <AttributeBlock blockName="this">
         <attribute gold_special="" />
         <attribute monster_die="6" />
@@ -61690,15 +61690,15 @@
         <attribute text_color="white" />
         <attribute task="journey" />
         <attribute fame_cost="5" />
-		<attributeList keyName="task_sites">
+        <attributeList keyName="task_sites">
           <attributeVal N0="hoard" />
-		  <attributeVal N1="statue" />
-		  <attributeVal N2="tower" />
-		  <attributeVal N3="tomb" />
+          <attributeVal N1="statue" />
+          <attributeVal N2="tower" />
+          <attributeVal N3="tomb" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2363" name="Odyssey">
+    <GameObject id="2358" name="Odyssey">
       <AttributeBlock blockName="this">
         <attribute gold_special="" />
         <attribute monster_die="6" />
@@ -61709,15 +61709,15 @@
         <attribute text_color="white" />
         <attribute task="odyssey" />
         <attribute fame_cost="5" />
-		<attributeList keyName="task_sites">
+        <attributeList keyName="task_sites">
           <attributeVal N0="pool" />
-		  <attributeVal N1="den" />
-		  <attributeVal N2="garden" />
-		  <attributeVal N3="vault" />
+          <attributeVal N1="den" />
+          <attributeVal N2="garden" />
+          <attributeVal N3="vault" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2364" name="Seek">
+    <GameObject id="2359" name="Seek">
       <AttributeBlock blockName="this">
         <attribute gold_special="" />
         <attribute monster_die="6" />
@@ -61728,15 +61728,15 @@
         <attribute text_color="white" />
         <attribute task="seek" />
         <attribute fame_cost="5" />
-		<attributeList keyName="task_sites">
+        <attributeList keyName="task_sites">
           <attributeVal N0="spire" />
-		  <attributeVal N1="altar" />
-		  <attributeVal N2="cairns" />
-		  <attributeVal N3="maze" />
+          <attributeVal N1="altar" />
+          <attributeVal N2="cairns" />
+          <attributeVal N3="maze" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2365" name="Explore">
+    <GameObject id="2360" name="Explore">
       <AttributeBlock blockName="this">
         <attribute gold_special="" />
         <attribute monster_die="6" />
@@ -61747,12 +61747,259 @@
         <attribute text_color="white" />
         <attribute task="explore" />
         <attribute fame_cost="5" />
-		<attributeList keyName="task_sites">
+        <attributeList keyName="task_sites">
           <attributeVal N0="pit" />
-		  <attributeVal N1="temple" />
-		  <attributeVal N2="shrine" />
-		  <attributeVal N3="lair" />
+          <attributeVal N1="temple" />
+          <attributeVal N2="shrine" />
+          <attributeVal N3="lair" />
         </attributeList>
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2361" name="Barbarian">
+      <AttributeBlock blockName="this">
+        <attribute icon_type="barbarian" />
+        <attribute character="" />
+        <attribute vulnerability="H" />
+        <attribute start="Inn" />
+        <attribute facing="dark" />
+        <attribute pronoun="he" />
+        <attribute fighter="" />
+        <attribute icon_folder="characters" />
+        <attribute creator="Anomalous Host" />
+        <attribute artcredit="" />
+        <attribute super_realm="" />
+        <attribute potrait_folder="" />
+        <attribute potrait_file="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="level_1">
+        <attribute name="Nomad" />
+        <attribute weapon="Broadsword" />
+      </AttributeBlock>
+      <AttributeBlock blockName="level_2">
+        <attribute name="Hunter" />
+        <attribute weapon="Broadsword" />
+        <attribute armor="Breastplate" />
+        <attributeList keyName="advantages">
+          <attributeVal N0="RAGE: No effort limit in combat. Goes last in combat. Treat Insult and Challenge results on Meeting Table as Block/Battle." />
+        </attributeList>
+        <attribute effort_limit="24" />
+        <attribute combat_goes_last="" />
+        <attribute insult_challenge_as_block_battle="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="level_3">
+        <attribute name="Raider" />
+        <attribute weapon="Broadsword" />
+        <attribute armor="Breastplate,Shield" />
+      </AttributeBlock>
+      <AttributeBlock blockName="level_4">
+        <attribute name="Barbarian" />
+        <attribute weapon="Great Sword" />
+        <attribute armor="Breastplate,Shield" />
+        <attribute extra_actions="[R]" />
+        <attributeList keyName="advantages">
+          <attributeVal N0="ROBUST:  Get one extra REST phase every day." />
+        </attributeList>
+      </AttributeBlock>
+      <AttributeBlock blockName="relationship">
+        <attribute aborigines="2" />
+        <attribute bashkars="1" />
+        <attribute woodfolk="1" />
+        <attribute bandits="1" />
+        <attribute crone="1" />
+        <attribute guard="-1" />
+        <attribute order="-1" />
+        <attribute patrol="-1" />
+        <attribute peasants="-2" />
+      </AttributeBlock>
+      <contains id="2362" />
+      <contains id="2363" />
+      <contains id="2364" />
+      <contains id="2368" />
+      <contains id="2369" />
+      <contains id="2371" />
+      <contains id="2372" />
+      <contains id="2373" />
+      <contains id="2374" />
+      <contains id="2375" />
+      <contains id="2376" />
+      <contains id="2377" />
+    </GameObject>
+    <GameObject id="2362" name="Barbarian Fight H5*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute strength="H" />
+        <attribute speed="5" />
+        <attribute character_level="1" />
+        <attribute stage="11" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="barbarian" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2363" name="Barbarian Move H6">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute strength="H" />
+        <attribute speed="6" />
+        <attribute character_level="1" />
+        <attribute stage="3" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="barbarian" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2364" name="Barbarian Move H5*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute strength="H" />
+        <attribute speed="5" />
+        <attribute character_level="1" />
+        <attribute stage="3" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="barbarian" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2368" name="Barbarian Fight H6">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute strength="H" />
+        <attribute speed="6" />
+        <attribute character_level="2" />
+        <attribute stage="11" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="barbarian" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2369" name="Barbarian Fight H4**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute strength="H" />
+        <attribute speed="4" />
+        <attribute character_level="2" />
+        <attribute stage="11" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="barbarian" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2371" name="Barbarian Move T6*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute strength="T" />
+        <attribute speed="6" />
+        <attribute character_level="2" />
+        <attribute stage="3" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="barbarian" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2372" name="Barbarian Fight H5*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute strength="H" />
+        <attribute speed="5" />
+        <attribute character_level="3" />
+        <attribute stage="11" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="barbarian" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2373" name="Barbarian Fight T5*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute strength="T" />
+        <attribute speed="5" />
+        <attribute character_level="3" />
+        <attribute stage="11" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="barbarian" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2374" name="Barbarian Move T5**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute strength="T" />
+        <attribute speed="5" />
+        <attribute character_level="3" />
+        <attribute stage="3" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="barbarian" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2375" name="Barbarian Fight T5**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute strength="T" />
+        <attribute speed="4" />
+        <attribute character_level="4" />
+        <attribute stage="11" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="barbarian" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2376" name="Barbarian Fight T5**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute strength="T" />
+        <attribute speed="4" />
+        <attribute character_level="4" />
+        <attribute stage="11" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="barbarian" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2377" name="Barbarian Move H5**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute strength="H" />
+        <attribute speed="4" />
+        <attribute character_level="4" />
+        <attribute stage="3" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="barbarian" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
       </AttributeBlock>
     </GameObject>
   </objects>

@@ -1,7 +1,18 @@
 ::ROADMAP::
-Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells: Lightning Bolt, Alchemists Mixture); site targets are considered armored. or by hurricane winds
+Super Realm characters (add abilities to character editor)
+	Barbarian (missing images)
+	Bard
+	Gladiator
+	Necromancer
+	Paladin
+	Psychic
+	Trawler
+	Wanderer
+Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.123): Witch, Witch King, Paladin
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt
+
+Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells: Lightning Bolt, Alchemists Mixture); site targets are considered armored. or by hurricane winds
 Super Realm: Events (Global Events = optional rule 11.11): 33 Events
 Super Realm: Optional Rules: Selling (SR: 10.11, p.116)
 Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
@@ -11,8 +22,6 @@ Super Realm: Optional Rules: Grounded Missions and Tasks (SR: 10.8, p.115)
 Super Realm: Optional Rules: Regrouping (SR: 10.10, p.115)
 
 ---Super Realms Rules + Optional Rules---
-Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.123): Witch, Witch King
-Super Realm: Characters, including portraits with credits, different chit icon; including optional abilities (SR 11.2)
 Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
 Super Realm: Optional Rules: Bounty Hunters (SR: 10.2, p.114)
 Super Realm: Optional Rules: Credit (SR: 10.7, p.115)
@@ -34,6 +43,8 @@ Would be nice to make weapon abilities too:
 
 
 Version 1.2.2.0
+SUPER REALM:
+# New character: Barbarian
 
 Version 1.2.1.9
 BUGS/ISSUES:

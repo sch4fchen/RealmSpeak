@@ -55,9 +55,12 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"You cannot be blocked by Ghosts or Wraiths.",Constants.SPIRIT_CHARM,""},
 		{"Immun to posion - additional sharpness doesn't count.",Constants.POISON_IMMUNITY,""},
 		{"Can follow and combat mist like individuals.",Constants.IGNORE_MIST_LIKE,""},
+		{"Treats Insult and Challenge results on the Meeting Table as Block/Battle results.",Constants.INSULT_CHALLENGE_AS_BLOCK_BATTLE,""},
 	};
 	private static String[][] MISC_ADVANTAGE_COMBAT_AND_SPELLCASTING = {
 		{"Effort Limit of 3",Constants.EFFORT_LIMIT,"3"},
+		{"No Effort Limit",Constants.EFFORT_LIMIT,"24"},
+		{"Goes last in combat",Constants.COMBAT_GOES_LAST,""},
 		{"Become unhidden when attacking from an ambush.",Constants.NO_AMBUSH,""},
 		{"Cannot lure or target friendly and allied natives.",Constants.NATIVE_FRIENDLY,""},
 		{"Has natural armor (like armored monster).",Constants.ARMORED,""},
