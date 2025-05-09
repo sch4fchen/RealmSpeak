@@ -600,6 +600,13 @@ public class RealmBattle {
 			RealmComponent owner = RealmComponent.getRealmComponentFromId(data,ownerid); // could be null
 			BattleGroup group = new BattleGroup(owner);
 			
+			boolean goesLast=false;
+			if (owner!=null) {
+				if (owner.isCharacter() && (new CharacterWrapper(owner.getGameObject())).affectedByKey(Constants.COMBAT_GOES_LAST)) {
+					goesLast = true;
+				}
+			}
+			
 			// Put everyone in the list into the group
 			ArrayList<RealmComponent> list = lists.getList(ownerid);
 			for (RealmComponent rc : list) {
@@ -607,7 +614,7 @@ public class RealmBattle {
 			}
 			
 			// Add the group to the model
-			model.addBattleGroup(group);
+			model.addBattleGroup(group,goesLast);
 		}
 		return model;
 	}

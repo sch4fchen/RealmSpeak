@@ -1,6 +1,5 @@
 ::ROADMAP::
 Super Realm characters (add abilities to character editor)
-	Barbarian (missing images)
 	Bard
 	Gladiator
 	Necromancer
@@ -43,6 +42,8 @@ Would be nice to make weapon abilities too:
 
 
 Version 1.2.2.0
+NEW FEATURES:
+# Randomize order in combat
 SUPER REALM:
 # New character: Barbarian
 

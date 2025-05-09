@@ -46,6 +46,8 @@ public class BattleModel {
 
 	private BattleGroup denizenBattleGroup; // only one allowed
 	private ArrayList<BattleGroup> characterBattleGroups;
+	private ArrayList<BattleGroup> characterBattleGroupsNotGoingLast;
+	private ArrayList<BattleGroup> characterBattleGroupsGoingLast;
 
 	// The killedTallyHash is a hash of dead:killers - used to determine how many ways the points are divided
 	private HashLists<GameObject,GameObject> killedTallyHash;
@@ -64,6 +66,8 @@ public class BattleModel {
 		this.battleLocation = battleLocation;
 		denizenBattleGroup = null;
 		characterBattleGroups = new ArrayList<>();
+		characterBattleGroupsNotGoingLast = new ArrayList<>();
+		characterBattleGroupsGoingLast = new ArrayList<>();
 		hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
 		theGame = GameWrapper.findGame(gameData);
 	}
@@ -178,7 +182,7 @@ public class BattleModel {
 		return false;
 	}
 		
-	public void addBattleGroup(BattleGroup group) {
+	public void addBattleGroup(BattleGroup group,boolean goesLast) {
 		if (group.isDenizen()) {
 			if (denizenBattleGroup == null) {
 				denizenBattleGroup = group;
@@ -188,8 +192,20 @@ public class BattleModel {
 			}
 		}
 		else {
-			characterBattleGroups.add(group);
-			Collections.sort(characterBattleGroups);
+			if (goesLast) {
+				characterBattleGroupsGoingLast.add(group);
+				Collections.shuffle(characterBattleGroupsGoingLast);
+				Collections.shuffle(characterBattleGroupsGoingLast);
+			}
+			else {
+				characterBattleGroupsNotGoingLast.add(group);
+				Collections.shuffle(characterBattleGroupsNotGoingLast);
+				Collections.shuffle(characterBattleGroupsNotGoingLast);
+			}
+			characterBattleGroups.clear();
+			characterBattleGroups.addAll(characterBattleGroupsNotGoingLast);
+			characterBattleGroups.addAll(characterBattleGroupsGoingLast);
+			//Collections.sort(characterBattleGroups);
 		}
 		group.setModel(this);
 	}

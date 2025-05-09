@@ -359,6 +359,9 @@ public class CombatFrame extends JFrame {
 				CharacterWrapper c1 = new CharacterWrapper(rc1.getGameObject());
 				CharacterWrapper c2 = new CharacterWrapper(rc2.getGameObject());
 				ret = c1.getCombatPlayOrder()-c2.getCombatPlayOrder();
+				if (ret==0) {
+					ret = c1.getGameObject().getName().compareTo(c2.getGameObject().getName());
+				}
 				return ret;
 			}
 		});

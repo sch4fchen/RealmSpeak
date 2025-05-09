@@ -52,6 +52,9 @@ public class CombatSummarySheet extends JPanel {
 			public int compare(CharacterWrapper c1,CharacterWrapper c2) {
 				int ret = 0;
 				ret = c1.getCombatPlayOrder()-c2.getCombatPlayOrder();
+				if (ret==0) {
+					ret = c1.getGameObject().getName().compareTo(c2.getGameObject().getName());
+				}
 				return ret;
 			}
 		});
