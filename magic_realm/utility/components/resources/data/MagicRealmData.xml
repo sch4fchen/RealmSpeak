@@ -61795,7 +61795,9 @@
         <attribute name="Barbarian" />
         <attribute weapon="Great Sword" />
         <attribute armor="Breastplate,Shield" />
-        <attribute extra_actions="[R]" />
+        <attributeList keyName="extra_actions">
+          <attributeVal N0="R" />
+        </attributeList>
         <attributeList keyName="advantages">
           <attributeVal N0="ROBUST:  Get one extra REST phase every day." />
         </attributeList>
@@ -62065,6 +62067,18 @@
         <attribute soldiers="-1" />
         <attribute zealots="-1" />
       </AttributeBlock>
+      <contains id="2379" />
+      <contains id="2380" />
+      <contains id="2381" />
+      <contains id="2382" />
+      <contains id="2383" />
+      <contains id="2384" />
+      <contains id="2385" />
+      <contains id="2386" />
+      <contains id="2387" />
+      <contains id="2388" />
+      <contains id="2389" />
+      <contains id="2390" />
     </GameObject>
     <GameObject id="2379" name="Bard Fight L4">
       <AttributeBlock blockName="this">

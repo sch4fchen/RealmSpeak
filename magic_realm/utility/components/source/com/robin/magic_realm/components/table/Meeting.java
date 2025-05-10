@@ -154,7 +154,7 @@ public abstract class Meeting extends Trade {
 	}
 	protected String applyInsult(CharacterWrapper character) {
 		if (character.affectedByKey(Constants.INSULT_CHALLENGE_AS_BLOCK_BATTLE)) {
-			return applyBlockBattle(character);
+			return "Rage ability applies to Insult - " + applyBlockBattle(character);
 		}
 		String text = "Insult";
 		String result = useCompletedActiveTask(character,text);
@@ -166,7 +166,7 @@ public abstract class Meeting extends Trade {
 	}
 	protected String applyChallenge(CharacterWrapper character) {
 		if (character.affectedByKey(Constants.INSULT_CHALLENGE_AS_BLOCK_BATTLE)) {
-			return applyBlockBattle(character);
+			return "Rage ability applies to Challenge - " + applyBlockBattle(character);
 		}
 		String text = "Challenge";
 		String result = useCompletedActiveTask(character,text);
