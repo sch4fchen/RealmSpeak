@@ -62012,19 +62012,20 @@
         <attribute start="Inn" />
         <attribute facing="dark" />
         <attribute pronoun="he" />
-        <attribute fighter="" />
         <attribute icon_folder="characters" />
         <attribute creator="Anomalous Host" />
         <attribute artcredit="" />
         <attribute super_realm="" />
         <attribute potrait_folder="" />
         <attribute potrait_file="" />
+        <attribute magicuser="" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Servant" />
       </AttributeBlock>
       <AttributeBlock blockName="level_2">
         <attribute name="Musician" />
+        <attribute spellcount="1" />
         <attributeList keyName="advantages">
           <attributeVal N0="SWAY:  Subtract 1 from all Meeting Table die rolls." />
         </attributeList>
@@ -62037,6 +62038,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="level_3">
         <attribute name="Poet" />
+        <attribute spellcount="1" />
         <attributeList keyName="spelltypes">
           <attributeVal N0="II" />
           <attributeVal N1="III" />
@@ -62045,6 +62047,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="level_4">
         <attribute name="Bard" />
+        <attribute spellcount="2" />
         <attributeList keyName="advantages">
           <attributeVal N0="KNOWLEDGE:  Subtract 1 from all Reading Runes die rolls." />
         </attributeList>
