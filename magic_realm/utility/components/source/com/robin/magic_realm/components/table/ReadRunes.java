@@ -119,6 +119,8 @@ public class ReadRunes extends RealmTable {
 		return SpellUtility.getSpellName(targetSpell);
 	}
 	private String learnAndAwaken(CharacterWrapper character) {
+		revealTravelersForSpellSite(character,spellLocation);
+		
 		if (targetSpell==null) {
 			return "Learn and Awaken (nothing)";
 		}
@@ -213,5 +215,11 @@ public class ReadRunes extends RealmTable {
 		ArrayList<ImageIcon> list = new ArrayList<ImageIcon>();
 		list.add(getIconForSearch(RealmComponent.getRealmComponent(spellLocation)));
 		return list;
+	}
+	
+	private void revealTravelersForSpellSite(CharacterWrapper character,GameObject spellLocation) {
+		if (spellLocation.hasThisAttribute("spell_site")) {
+			revealTravelers(character,spellLocation);
+		}
 	}
 }

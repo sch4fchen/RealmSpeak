@@ -7,14 +7,18 @@ import javax.swing.event.ChangeListener;
 
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
+import com.robin.game.objects.GamePool;
 import com.robin.game.server.GameClient;
 import com.robin.general.swing.DieRoller;
 import com.robin.general.swing.IconGroup;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.utility.ClearingUtility;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmDirectInfoHolder;
 import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public abstract class RealmTable {
 	
@@ -210,5 +214,22 @@ public abstract class RealmTable {
 	protected ImageIcon getIconForSearch(RealmComponent rc) {
 		if (rc.isCard() || rc.isTraveler() || rc.isGuild()) return rc.getMediumIcon();
 		return rc.getIcon();
+	}
+	
+	protected void revealTravelers(CharacterWrapper character, GameObject location) {
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
+		if (!hostPrefs.hasPref(Constants.SR_REVEAL_TRAVELERS)) return;
+		
+		String locationName = location.getThisAttribute(RealmComponent.TREASURE_LOCATION);
+		RealmComponent locationRc = RealmComponent.getRealmComponent(location);
+		TileLocation tl = locationRc.getCurrentLocation();
+		if (tl==null || tl.tile==null || tl.clearing==null) {
+			return;
+		}
+		GamePool pool = new GamePool(character.getGameData().getGameObjects());
+		ArrayList<GameObject> boxes = pool.find("summon_t="+locationName.toLowerCase());
+		for (GameObject box : boxes) {
+			ClearingUtility.dumpTravelersToTile(tl.tile.getGameObject(),box,tl.clearing.getNum());
+		}
 	}
 }

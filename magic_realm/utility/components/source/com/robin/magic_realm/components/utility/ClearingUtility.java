@@ -117,13 +117,17 @@ public class ClearingUtility {
 	 * @return		The objects that were dumped
 	 */
 	public static ArrayList<GameObject> dumpTravelersToTile(GameObject tile,GameObject gameObject,int clearing) {
-		return ClearingUtility.dumpHoldToTile(tile,gameObject,clearing,null,false,true);
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameObject.getGameData());
+		if (hostPrefs.hasPref(Constants.SR_REVEAL_TRAVELERS)) {
+			return ClearingUtility.dumpHoldToTile(tile,gameObject,clearing,null,true,true);
+		}
+		return new ArrayList<>();
 	}
 	
 	/**
 	 * @return		The objects that were dumped
 	 */
-	public static ArrayList<GameObject> dumpHoldToTile(GameObject tile,GameObject gameObject,int clearing,String testKey,boolean onlyGoldSpecial,boolean onlyTravelers) {
+	public static ArrayList<GameObject> dumpHoldToTile(GameObject tile,GameObject gameObject,int clearing,String testKey,boolean onlyGoldSpecial, boolean onlyTravelers) {
 		if (clearing==-1) {
 			clearing = recommendedClearing(tile);
 		}
@@ -138,7 +142,6 @@ public class ClearingUtility {
 			if (testKey==null || go.hasThisAttribute(testKey)) {
 				if (!onlyGoldSpecial && hostPrefs.hasPref(Constants.SR_REVEAL_TRAVELERS) && go.hasThisAttribute(RealmComponent.GOLD_SPECIAL)) continue;
 				if (onlyGoldSpecial && !go.hasThisAttribute(RealmComponent.GOLD_SPECIAL)) continue;
-				if (onlyTravelers && !go.hasThisAttribute(RealmComponent.TRAVELER)) continue;
 				if (itemsAndSpells || (!go.hasThisAttribute("item") && !go.hasThisAttribute("spell"))) {
 					go.setThisAttribute("clearing",String.valueOf(clearing));
 					GameClient.broadcastClient("host",go.getName()+" is added to "+tile.getName()+", clearing "+clearing);
