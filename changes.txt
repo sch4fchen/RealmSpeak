@@ -6,9 +6,9 @@ Super Realm characters (add abilities to character editor)
 	Psychic
 	Trawler
 	Wanderer
-Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.123): Witch, Witch King, Paladin
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt
+Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.123): Witch, Witch King, Paladin
 
 Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells: Lightning Bolt, Alchemists Mixture); site targets are considered armored. or by hurricane winds
 Super Realm: Events (Global Events = optional rule 11.11): 33 Events
@@ -45,6 +45,7 @@ NEW FEATURES:
 # Randomize order in combat
 SUPER REALM:
 # New characters: Barbarian, Bard
+# Followers do not summon monsters
 
 Version 1.2.1.9
 BUGS/ISSUES:

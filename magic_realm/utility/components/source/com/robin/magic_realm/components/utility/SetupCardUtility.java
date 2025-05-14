@@ -713,6 +713,11 @@ public class SetupCardUtility {
 		if (!character.isMinion() && !character.isSleep()) { // Minions and sleeping characters do not summon monsters or prowling denizens
 			TileLocation current = character.getCurrentLocation();
 			if (!character.getNoSummon() && !character.getGameObject().hasThisAttribute(Constants.NO_SUMMONING)) { // Only the "first" follower in the "group" summons monsters!
+				
+				if (hostPrefs.hasPref(Constants.SR_NO_SUMMONING_FOR_FOLLOWERS) && character.getCharacterImFollowing()!=null && !character.isStopFollowing()) {
+					return;
+				}
+				
 				boolean atPeaceWithNature = character.affectedByKey(Constants.PEACE_WITH_NATURE);
 				boolean warningSounds = !atPeaceWithNature;
 				boolean prowling = true;
