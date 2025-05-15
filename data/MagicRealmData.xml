@@ -62261,6 +62261,251 @@
         <attribute magic="VIII" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2391" name="Gladiator">
+      <AttributeBlock blockName="this">
+        <attribute icon_type="gladiator" />
+        <attribute character="" />
+        <attribute vulnerability="H" />
+        <attribute start="Inn,Hamlet,Settlement" />
+        <attribute facing="dark" />
+        <attribute pronoun="he" />
+        <attribute icon_folder="characters" />
+        <attribute creator="Anomalous Host" />
+        <attribute artcredit="" />
+        <attribute super_realm="" />
+        <attribute potrait_folder="" />
+        <attribute potrait_file="" />
+        <attribute fighter="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="level_1">
+        <attribute name="Soldier" />
+        <attribute weapon="Spear" />
+        <attribute armor="Shield" />
+      </AttributeBlock>
+      <AttributeBlock blockName="level_2">
+        <attribute name="General" />
+        <attributeList keyName="advantages">
+          <attributeVal N0="REFLEX: Fatigue Reflex chit during the Action step to alert active weapon." />
+        </attributeList>
+        <attribute weapon="Broadsword" />
+        <attribute Armor="Helmet,Breastplate,Shield" />
+      </AttributeBlock>
+      <AttributeBlock blockName="level_3">
+        <attribute name="Slave" />
+        <attribute weapon="Mace" />
+        <attribute armor="Helmet,Breastplate,Shield" />
+      </AttributeBlock>
+      <AttributeBlock blockName="level_4">
+        <attribute name="Gladiator" />
+        <attributeList keyName="advantages">
+          <attributeVal N0="ROBUST:  Get one extra REST phase every day." />
+        </attributeList>
+        <attributeList keyName="extra_actions">
+          <attributeVal N0="R" />
+        </attributeList>
+        <attribute weapon="Morning Star" />
+        <attribute armor="Armor" />
+      </AttributeBlock>
+      <AttributeBlock blockName="relationship">
+        <attribute hunters="1" />
+        <attribute mages="1" />
+        <attribute peasants="1" />
+        <attribute scholar="1" />
+        <attribute conjurors="-1" />
+        <attribute guard="-1" />
+        <attribute patrol="-1" />
+      </AttributeBlock>
+      <contains id="2392" />
+      <contains id="2393" />
+      <contains id="2394" />
+      <contains id="2395" />
+      <contains id="2396" />
+      <contains id="2397" />
+      <contains id="2398" />
+      <contains id="2399" />
+      <contains id="2400" />
+      <contains id="2401" />
+      <contains id="2402" />
+      <contains id="2403" />
+    </GameObject>
+    <GameObject id="2392" name="Gladiator Move H6">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute strength="H" />
+        <attribute speed="6" />
+        <attribute character_level="1" />
+        <attribute stage="1" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="gladiator" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2393" name="Gladiator Move H4*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute strength="H" />
+        <attribute speed="4" />
+        <attribute character_level="1" />
+        <attribute stage="2" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="gladiator" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2394" name="Gladiator Fight H5*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute strength="H" />
+        <attribute speed="5" />
+        <attribute character_level="1" />
+        <attribute stage="3" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="gladiator" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2395" name="Gladiator Move T5*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute speed="5" />
+        <attribute character_level="2" />
+        <attribute stage="4" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="gladiator" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+        <attribute strength="T" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2396" name="Gladiator Reflex H3**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="reflex" />
+        <attribute strength="H" />
+        <attribute speed="3" />
+        <attribute character_level="2" />
+        <attribute stage="5" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="gladiator" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2397" name="Gladiator Fight H6">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute strength="H" />
+        <attribute speed="6" />
+        <attribute character_level="2" />
+        <attribute stage="6" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="gladiator" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2398" name="Gladiator Fight H4*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute speed="4" />
+        <attribute character_level="3" />
+        <attribute stage="7" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="gladiator" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+        <attribute strength="H" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2399" name="Gladiator Fight H5*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute speed="5" />
+        <attribute character_level="3" />
+        <attribute stage="8" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="gladiator" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+        <attribute strength="H" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2400" name="Gladiator Move T4**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute strength="T" />
+        <attribute speed="4" />
+        <attribute character_level="3" />
+        <attribute stage="9" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="gladiator" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2401" name="Gladiator Move T4**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute speed="2" />
+        <attribute character_level="4" />
+        <attribute stage="10" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="gladiator" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+        <attribute strength="T" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2402" name="Gladiator Fight H4**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute speed="4" />
+        <attribute character_level="4" />
+        <attribute stage="11" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="gladiator" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+        <attribute strength="H" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2403" name="Gladiator Fight H5**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute speed="5" />
+        <attribute character_level="4" />
+        <attribute stage="12" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="gladiator" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+        <attribute strength="H" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

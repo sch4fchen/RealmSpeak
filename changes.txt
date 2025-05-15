@@ -1,6 +1,5 @@
 ::ROADMAP::
 Super Realm characters (add abilities to character editor)
-	Gladiator
 	Necromancer
 	Paladin
 	Psychic
@@ -44,7 +43,7 @@ Version 1.2.2.0
 NEW FEATURES:
 # Randomize order in combat
 SUPER REALM:
-# New characters: Barbarian, Bard
+# New characters: Barbarian, Bard, Gladiator
 # Followers do not summon monsters
 BUGS/ISSUES:
 # Super Realm: Fix revealing travelers after trading or searching
