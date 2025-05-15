@@ -66,6 +66,7 @@ public class MagicSight extends Search {
 								components.add(rc);
 							}
 						}
+						revealTravelers(character, rc.getGameObject());
 					}
 				}
 			}
@@ -153,6 +154,7 @@ public class MagicSight extends Search {
 								added = true;
 							}
 						}
+						revealTravelers(character, rc.getGameObject());
 					}
 				}
 			}
@@ -240,6 +242,7 @@ public class MagicSight extends Search {
 						components.add(rc);
 					}
 				}
+				revealTravelers(character, rc.getGameObject());
 			}
 		}
 		// check player inventory

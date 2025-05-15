@@ -103,6 +103,7 @@ public class Loot extends RealmTable {
 					TileLocation tl = character.getCurrentLocation();
 					ClearingUtility.moveToLocation(chit.getGameObject(),tl);
 				}
+				revealTravelers(character, treasureLocation);
 			}
 		}
 		
@@ -188,6 +189,9 @@ public class Loot extends RealmTable {
 						return "Found "+gold+" gold!";
 					}
 				}
+			}
+			else {
+				revealTravelers(character, treasureLocation);
 			}
 			treasures = TreasureUtility.getTreasures(treasureLocation,null);
 		}
@@ -369,7 +373,7 @@ public class Loot extends RealmTable {
 	private void dumpGoldSpecialsToClearing() {
 		if (tileLocation!=null) {
 			GamePool pool = new GamePool(character.getGameData().getGameObjects());
-			ArrayList<GameObject> boxes = pool.find("summon_t="+treasureLocation.getName().toLowerCase());
+			ArrayList<GameObject> boxes = pool.find("summon="+treasureLocation.getName().toLowerCase());
 			for (GameObject box : boxes) {
 				ClearingUtility.dumpGoldSpecialsToTile(tileLocation.tile.getGameObject(),box,tileLocation.clearing.getNum());
 			}

@@ -227,7 +227,7 @@ public abstract class RealmTable {
 			return;
 		}
 		GamePool pool = new GamePool(character.getGameData().getGameObjects());
-		ArrayList<GameObject> boxes = pool.find("summon_t="+locationName.toLowerCase());
+		ArrayList<GameObject> boxes = pool.find("summon="+locationName.toLowerCase());
 		for (GameObject box : boxes) {
 			ClearingUtility.dumpTravelersToTile(tl.tile.getGameObject(),box,tl.clearing.getNum());
 		}
