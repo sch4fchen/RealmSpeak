@@ -3603,8 +3603,10 @@ public class CombatFrame extends JFrame {
 			return;
 		}
 		Collection<RealmComponent> fightSpeedOptions = activeCharacter.getFightSpeedOptions(fastest,true);
+		Collection<CharacterActionChitComponent> reflexChits = activeCharacter.getActiveReflexChits(fastest);
 		Collection<RealmComponent> availableFightOptions = getAvailableFightOptions(0);
 		fightSpeedOptions.retainAll(availableFightOptions); // Intersection between the two
+		fightSpeedOptions.addAll(reflexChits);
 		if (fightSpeedOptions.size()>0 || fightAlertChits.size()>0) {
 			// Choose one
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select an option:",true);

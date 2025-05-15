@@ -5838,7 +5838,22 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 		return activeFightAlertChits;
-		
+	}
+	public Collection<CharacterActionChitComponent> getActiveReflexChits(Speed fastestAttacker) { // only one right now:  Gladiator
+		ArrayList<CharacterActionChitComponent> activeReflexChits = new ArrayList<>();
+		Collection<CharacterActionChitComponent> c = getActiveChits();
+		for (CharacterActionChitComponent chit : c) {
+			if (chit.isReflex()) {
+				Speed chitSpeed = chit.getSpeed();
+				if (hasMesmerizeEffect(Constants.WEAKENED)) {
+					chitSpeed = new Speed(chitSpeed.getNum()+1);
+				}
+				if (chitSpeed.fasterThan(fastestAttacker)) {
+					activeReflexChits.add(chit);
+				}
+			}
+		}
+		return activeReflexChits;
 	}
 	public Collection<StateChitComponent> getFlyChits() {
 		return getFlyChits(false);

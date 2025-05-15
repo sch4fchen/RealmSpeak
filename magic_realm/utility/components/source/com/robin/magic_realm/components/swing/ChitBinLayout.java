@@ -37,7 +37,7 @@ public class ChitBinLayout {
 				else if (achit.isMove()) {
 					addChit("MOVE",achit);
 				}
-				else if (achit.isFight() || achit.isFightAlert()) {
+				else if (achit.isFight() || achit.isFightAlert() || achit.isReflex()) {
 					addChit("FIGHT",achit);
 				}
 				else if (achit.isFly()) {

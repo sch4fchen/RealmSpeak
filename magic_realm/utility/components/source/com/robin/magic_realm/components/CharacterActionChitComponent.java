@@ -126,7 +126,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		else if ("MOVE".equals(action)) {
 			return 2;
 		}
-		else if (isFightAlert()) {
+		else if (isFightAlert() || isReflex()) {
 			return 3;
 		}
 		else if (isFightLock()) {
@@ -160,7 +160,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		if (isMove()) {
 			return Color.blue;
 		}
-		else if (isFight() || isFightAlert()) {
+		else if (isFight() || isFightAlert() || isReflex()) {
 			return Color.red;
 		}
 		return null;
@@ -181,6 +181,11 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		return "FIGHT".equals(action)
 				|| isFightLock()
 				|| "M/F".equals(action);
+	}
+	
+	public boolean isReflex() {
+		String action = getAction().toUpperCase();
+		return "REFLEX".equals(action);
 	}
 	
 	public boolean isAnyEffort() {

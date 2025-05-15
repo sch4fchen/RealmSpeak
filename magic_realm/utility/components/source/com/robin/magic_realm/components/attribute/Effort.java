@@ -20,7 +20,7 @@ public class Effort {
 			if (chit.isMove()) {
 				addMoveAsterisks(val);
 			}
-			else if (chit.isFight() || chit.isFightAlert()) {
+			else if (chit.isFight() || chit.isFightAlert() || chit.isReflex()) {
 				addFightAsterisks(val);
 			}
 			else if (chit.isMagic()) {

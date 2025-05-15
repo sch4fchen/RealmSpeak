@@ -134,7 +134,7 @@ public class ChitFatigueManager extends ChitManager {
 		return chit.isMove() || chit.isFly() || chit.isAnyEffort();
 	}
 	protected boolean countsAsFight(CharacterActionChitComponent chit) {
-		return chit.isFight() || chit.isFightAlert() || chit.isAnyEffort();
+		return chit.isFight() || chit.isFightAlert() ||  chit.isReflex() || chit.isAnyEffort();
 	}
 	protected boolean countsAsMagic(CharacterActionChitComponent chit) {
 		return chit.isColor() || chit.isMagic() || chit.isAnyEffort();
@@ -277,7 +277,7 @@ public class ChitFatigueManager extends ChitManager {
 								if (clickedChit.isMove()) {
 									makeChangeType = TYPE_MOVE;
 								}
-								else if (clickedChit.isFight() || clickedChit.isFightAlert()) {
+								else if (clickedChit.isFight() || clickedChit.isFightAlert() || clickedChit.isReflex()) {
 									makeChangeType = TYPE_FIGHT;
 								}
 							}
