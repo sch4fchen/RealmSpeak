@@ -39,6 +39,8 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 
+Version 1.2.2.1
+
 Version 1.2.2.0
 NEW FEATURES:
 # Randomize order in combat
