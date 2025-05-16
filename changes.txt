@@ -47,6 +47,7 @@ SUPER REALM:
 # Followers do not summon monsters
 BUGS/ISSUES:
 # Super Realm: Fix revealing travelers after trading or searching
+# Fix positioning on the denizen combat sheet
 
 Version 1.2.1.9
 BUGS/ISSUES:

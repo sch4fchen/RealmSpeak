@@ -42,6 +42,8 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 	protected abstract int getDeadBoxIndex();
 	protected abstract int getBoxIndexFromCombatBoxes(int boxA, int boxD);
 	protected abstract int getBoxIndexFromCombatBoxesForDefender(int boxA, int boxD);
+	protected abstract int getBoxIndexFromCombatBoxesForDefenderTarget(int boxA, int boxD);
+	protected abstract int getBoxIndexFromCombatBoxesForAttacker(int boxA, int boxD);
 	protected abstract int getHotSpotSize();
 	
 	private Point[] positions;		// Position of every hotspot
@@ -462,24 +464,26 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			}
 		}
 	}
+	protected void placeParticipantAttacker(RealmComponent participant) {
+		placeParticipant(participant,false,false,false,false,true);
+	}
+	protected void placeParticipantDefenderTarget(RealmComponent participant) {
+		placeParticipant(participant,false,false,false,true,false);
+	}
 	protected void placeParticipantDefender(RealmComponent participant) {
 		placeParticipantDefender(participant,false,false);
 	}
 	protected void placeParticipantDefender(RealmComponent participant,boolean secrecy,boolean horseSameBox) {
-		placeParticipant(participant,secrecy,horseSameBox,true);
+		placeParticipant(participant,secrecy,horseSameBox,true,false,false);
 	}
 	protected void placeParticipant(RealmComponent participant) {
-		placeParticipant(participant,false,false);
+		placeParticipant(participant,false,false,false,false,false);
 	}
-	protected void placeParticipant(RealmComponent participant,boolean secrecy,boolean horseSameBox) {
-		placeParticipant(participant,secrecy,horseSameBox,false);
-	}
-		
-	private void placeParticipant(RealmComponent participant,boolean secrecy,boolean horseSameBox,boolean defender) {
+	private void placeParticipant(RealmComponent participant,boolean secrecy,boolean horseSameBox,boolean defender,boolean defenderTarget,boolean attacker) {
 		CombatWrapper combat;
 		// Place horse (if any) first
 		RealmComponent horse = (RealmComponent)participant.getHorse();
-		if (horse!=null) {
+		if (horse!=null && !attacker) {
 			combat = new CombatWrapper(horse.getGameObject());
 			int boxD = combat.getCombatBoxDefense();
 			int boxA = combat.getCombatBoxAttack();
@@ -502,6 +506,10 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			}
 			if (defender) {
 				layoutHash.put(getBoxIndexFromCombatBoxesForDefender(boxA,boxD),horse);
+			} else if (defenderTarget) {
+				layoutHash.put(getBoxIndexFromCombatBoxesForDefenderTarget(boxA,boxD),horse);
+			} else if (attacker) {
+				layoutHash.put(getBoxIndexFromCombatBoxesForAttacker(boxA,boxD),horse);
 			} else {
 				layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),horse);
 			}
@@ -524,6 +532,10 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		}
 		if (defender) {
 			layoutHash.put(getBoxIndexFromCombatBoxesForDefender(boxA,boxD),participant);
+		} else if (defenderTarget) {
+			layoutHash.put(getBoxIndexFromCombatBoxesForDefenderTarget(boxA,boxD),participant);
+		} else if (attacker) {
+			layoutHash.put(getBoxIndexFromCombatBoxesForAttacker(boxA,boxD),participant);
 		} else {
 			layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),participant);
 		}
@@ -548,6 +560,10 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 				}
 				if (defender) {
 					layoutHash.put(getBoxIndexFromCombatBoxesForDefender(boxA,boxD),weapon);
+				} else if (defenderTarget) {
+					layoutHash.put(getBoxIndexFromCombatBoxesForDefenderTarget(boxA,boxD),weapon);
+				} else if (attacker) {
+					layoutHash.put(getBoxIndexFromCombatBoxesForAttacker(boxA,boxD),weapon);
 				} else {
 					layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),weapon);
 				}
@@ -632,7 +648,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 				if (excludeList==null || !excludeList.contains(rc)) {
 					if (!rc.isCharacter() && (sheetParticipants.contains(target) || sheetParticipants.contains(target2))) {
 						if (!addedToDead(rc)) {
-							placeParticipant(rc);
+							placeParticipantAttacker(rc);
 							sheetParticipants.add(rc);
 						}
 					}

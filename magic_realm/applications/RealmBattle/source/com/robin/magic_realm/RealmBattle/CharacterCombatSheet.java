@@ -239,6 +239,16 @@ public class CharacterCombatSheet extends CombatSheet {
 	protected int getBoxIndexFromCombatBoxesForDefender(int boxA, int boxD) {
 		return getBoxIndexFromCombatBoxes(boxA,boxD);
 	}
+	protected int getBoxIndexFromCombatBoxesForDefenderTarget(int boxA, int boxD) {
+		return getBoxIndexFromCombatBoxes(boxA,boxD);
+	}
+	protected int getBoxIndexFromCombatBoxesForAttacker(int boxA, int boxD) {
+		if (boxA == 0) return POS_ATTACK;
+		if (boxA == 1) return POS_ATTACK_BOX1;
+		if (boxA == 2) return POS_ATTACK_BOX2;
+		if (boxA == 3) return POS_ATTACK_BOX3;
+		return -1;
+	}
 	
 	protected ImageIcon getImageIcon() {
 		if (hostPrefs!=null && hostPrefs.hasPref(Constants.SR_COMBAT)) {

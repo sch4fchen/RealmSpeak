@@ -226,6 +226,18 @@ public class DenizenCombatSheet extends CombatSheet {
 		return -1;
 	}
 	
+	protected int getBoxIndexFromCombatBoxesForDefenderTarget(int boxA, int boxD) {
+		return getBoxIndexFromCombatBoxes(boxA,boxD);
+	}
+	
+	protected int getBoxIndexFromCombatBoxesForAttacker(int boxA, int boxD) {
+		if (boxA == 0) return POS_ATTACKERS;
+		if (boxA == 1) return POS_ATTACKERS_BOX1;
+		if (boxA == 2) return POS_ATTACKERS_BOX2;
+		if (boxA == 3) return POS_ATTACKERS_BOX3;
+		return -1;
+	}
+	
 	protected Point[] getPositions(HostPrefWrapper hostPrefs) {
 		if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
 			return DENIZEN_SHEET_SR;
@@ -531,7 +543,7 @@ public class DenizenCombatSheet extends CombatSheet {
 			sheetParticipants.add(defenderTarget);
 			excludeList.add(defenderTarget);
 			if (!addedToDead(defenderTarget)) {
-				placeParticipant(defenderTarget);
+				placeParticipantDefenderTarget(defenderTarget);
 			}
 		}
 		RealmComponent defenderTarget2 = sheetOwner.get2ndTarget();
@@ -539,7 +551,7 @@ public class DenizenCombatSheet extends CombatSheet {
 			sheetParticipants.add(defenderTarget2);
 			excludeList.add(defenderTarget2);
 			if (!addedToDead(defenderTarget2)) {
-				placeParticipant(defenderTarget2);
+				placeParticipantDefenderTarget(defenderTarget2);
 			}
 		}
 		
@@ -551,7 +563,7 @@ public class DenizenCombatSheet extends CombatSheet {
 						(defenderTarget!=null && (defenderTarget.equals(denizen.getTarget()) || defenderTarget.equals(denizen.get2ndTarget())))
 					|| (defenderTarget2!=null && (defenderTarget2.equals(denizen.getTarget()) || defenderTarget2.equals(denizen.get2ndTarget())))
 						)) {
-					placeParticipant(denizen);
+					placeParticipantDefender(denizen);
 					sheetParticipants.add(denizen);
 					excludeList.add(denizen);
 				}
