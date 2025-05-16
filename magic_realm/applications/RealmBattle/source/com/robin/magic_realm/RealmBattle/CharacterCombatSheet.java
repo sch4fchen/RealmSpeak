@@ -239,14 +239,6 @@ public class CharacterCombatSheet extends CombatSheet {
 	protected int getBoxIndexFromCombatBoxesForDefender(int boxA, int boxD) {
 		return getBoxIndexFromCombatBoxes(boxA,boxD);
 	}
-	protected int getBoxIndexFromCombatBoxesForLuredDenizen(int boxA, int boxD) {
-		switch (boxA) {
-		case 1: return POS_ATTACK_BOX1;
-		case 2: return POS_ATTACK_BOX2;
-		case 3: return POS_ATTACK_BOX3;
-		default: return POS_ATTACK;
-	}
-	}
 	
 	protected ImageIcon getImageIcon() {
 		if (hostPrefs!=null && hostPrefs.hasPref(Constants.SR_COMBAT)) {

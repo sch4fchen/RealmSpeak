@@ -226,15 +226,6 @@ public class DenizenCombatSheet extends CombatSheet {
 		return -1;
 	}
 	
-	protected int getBoxIndexFromCombatBoxesForLuredDenizen(int boxA, int boxD) {
-		switch (boxA) {
-			case 1: return POS_ATTACKERS_BOX1;
-			case 2: return POS_ATTACKERS_BOX2;
-			case 3: return POS_ATTACKERS_BOX3;
-			default: return POS_ATTACKERS;
-		}
-	}
-	
 	protected Point[] getPositions(HostPrefWrapper hostPrefs) {
 		if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
 			return DENIZEN_SHEET_SR;
