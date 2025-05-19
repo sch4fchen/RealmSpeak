@@ -1797,7 +1797,7 @@ public class BattleModel {
 						spellCasting = true;
 						spellCasted = true;
 					}
-					else if ((attacker.isMonster() || attacker.isNative() || transmorphed) && Constants.CURSE.equals(attacker.getAttackSpell())) {
+					else if ((attacker.isMonster() || attacker.isNative() || transmorphed) && Constants.CURSE.toLowerCase().equals(attacker.getAttackSpell().toLowerCase())) {
 						// Imp's Curse
 						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with a Curse along box "+attacker.getAttackCombatBox());
 						Curse curse = Curse.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject());
@@ -1805,7 +1805,7 @@ public class BattleModel {
 						spellCasting = true;
 						spellCasted = true;
 					}
-					else if ((attacker.isMonster() || attacker.isNative() || transmorphed) && Constants.MESMERIZE.equals(attacker.getAttackSpell())) {
+					else if ((attacker.isMonster() || attacker.isNative() || transmorphed) && Constants.MESMERIZE.toLowerCase().equals(attacker.getAttackSpell().toLowerCase())) {
 						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with a Curse along box "+attacker.getAttackCombatBox());
 						Mesmerize mesmerize = Mesmerize.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject(),false,0);
 						hitCausedHarm = mesmerize.harmWasApplied();
