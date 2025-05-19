@@ -43,6 +43,7 @@ Would be nice to make weapon abilities too:
 Version 1.2.2.1
 NEW FEATURES:
 # Optional Rule: All characters can learn new spells, even without a magic chit
+# Optional Rule for Super Realm Combat: allow positioning before determining the random position for denizens
 BUGS/ISSUES:
 # Fix Vampire casting Mesmerize
 

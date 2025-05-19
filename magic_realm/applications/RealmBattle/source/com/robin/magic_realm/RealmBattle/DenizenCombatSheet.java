@@ -454,7 +454,7 @@ public class DenizenCombatSheet extends CombatSheet {
 					hotspotHash.put(Integer.valueOf(POS_ATTACKERS_BOX2),"Position");
 					hotspotHash.put(Integer.valueOf(POS_ATTACKERS_BOX3),"Position");
 				}
-				if (canPositionSquare && !hostPrefs.hasPref(Constants.SR_COMBAT)) {
+				if (canPositionSquare && (!hostPrefs.hasPref(Constants.SR_COMBAT) || hostPrefs.hasPref(Constants.SR_COMBAT_POSITIONING))) {
 					hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_BOX1),"Position");
 					hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_BOX2),"Position");
 					hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_BOX3),"Position");

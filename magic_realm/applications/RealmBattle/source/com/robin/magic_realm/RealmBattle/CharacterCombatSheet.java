@@ -399,11 +399,11 @@ public class CharacterCombatSheet extends CombatSheet {
 							|| layoutHash.get(Integer.valueOf(POS_TARGET_DUCK_THRUST))!=null) {
 						hotspotHash.put(Integer.valueOf(POS_TARGET),"Reset");
 					}
-					else if (layoutHash.get(Integer.valueOf(POS_TARGET))!=null && !hostPrefs.hasPref(Constants.SR_COMBAT)) {
+					else if (layoutHash.get(Integer.valueOf(POS_TARGET))!=null && (!hostPrefs.hasPref(Constants.SR_COMBAT) || hostPrefs.hasPref(Constants.SR_COMBAT_POSITIONING))) {
 						hotspotHash.put(Integer.valueOf(POS_TARGET),"Auto-Position");
 					}
 					
-					if (layoutHash.get(Integer.valueOf(POS_TARGET))!=null && !hostPrefs.hasPref(Constants.SR_COMBAT)) {
+					if (layoutHash.get(Integer.valueOf(POS_TARGET))!=null && (!hostPrefs.hasPref(Constants.SR_COMBAT) || hostPrefs.hasPref(Constants.SR_COMBAT_POSITIONING))) {
 						hotspotHash.put(Integer.valueOf(POS_TARGET_BOX1),"Position Target");
 						hotspotHash.put(Integer.valueOf(POS_TARGET_BOX2),"Position Target");
 						hotspotHash.put(Integer.valueOf(POS_TARGET_BOX3),"Position Target");

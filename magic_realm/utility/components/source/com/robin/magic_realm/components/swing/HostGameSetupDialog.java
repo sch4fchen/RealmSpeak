@@ -1095,6 +1095,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.SR_ENDING_COMBAT,"ENDING COMBAT (Super Realm Basic) - Combat ends, even if denizens are killed or armor is destroyed.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.SR_PHASE_CHIT_ACTIVATION,"PHASE CHIT ACTIVATION (Super Realm Basic) - Activating a phase chit in combat does not count as an action.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.SR_COMBAT,"SUPER REALM COMBAT (Super Realm Basic) - 3x3 combat grid",false));
+		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.SR_COMBAT_POSITIONING,"SUPER REALM COMBAT POSITIONING - Denizens can be positioned in 3x3 combat grid, before determining the random position.",false,null,new String[]{Constants.SR_COMBAT}));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.SR_ADV_SURVIVAL_TACTICS,"SURVIVAL TACTICS (Super Realm Advanced) - This rule makes it a little easier to survive in combat, and increases odds of killing denizens. It also makes combat more involved with decisions players have to make.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.SR_ADV_SURVIVAL_TACTICS_PARRY_NOT_ALERTING,"SURVIVAL TACTICS - PARRYING DOES NOT ALERT (Super Realm Advanced) - Weapon counters cannot become alerted as a result of doing a Parry and missing their target.",false));
 		

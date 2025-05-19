@@ -894,6 +894,7 @@ public class Constants {
 	public static final String SR_MAGIC_SIGHT_OPTIONAL = "MagicSightNotSelfCancelling";
 	public static final String SR_NO_SUMMONING_FOR_FOLLOWERS = "NoSummoningMonstersForFollowers";
 	public static final String SR_COMBAT = "SrCombat";
+	public static final String SR_COMBAT_POSITIONING = "SrCombatPositioning";
 	public static final String SR_ADV_SERVERE_WOUNDS = "SevereWounds";
 	public static final String SR_ADV_STEEL_AGAINST_MAGIC = "SrSteelAgainstMagic";
 	public static final String SR_ADV_SURVIVAL_TACTICS = "SurvivalTactics";
