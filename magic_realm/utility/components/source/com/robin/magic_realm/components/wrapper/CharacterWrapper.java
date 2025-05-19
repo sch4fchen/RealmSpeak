@@ -4865,6 +4865,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return canLearn(spell,false);
 	}
 	private boolean canLearn(GameObject spell,boolean ignoreDuplicates) {
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
+		if (hostPrefs.hasPref(Constants.NO_SPELL_LEARNING_RESTRICTIONS)) {
+			return true;
+		}
 		// Check to see if character has a chit to support learning the new spell
 		int number = RealmUtility.convertMod(spell.getThisAttribute("spell"));
 		
@@ -4884,7 +4888,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 		if (!hasType) {
-			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
 			if (hostPrefs.hasPref(Constants.OPT_ENHANCED_ARTIFACTS) || affectedByKey(Constants.ENHANCED_ARTIFACTS)) {
 				// Search artifacts
 				for (GameObject item:getInventory()) {

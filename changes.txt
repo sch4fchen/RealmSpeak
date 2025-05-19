@@ -1,3 +1,4 @@
+
 ::ROADMAP::
 Super Realm characters (add abilities to character editor)
 	Necromancer
@@ -40,6 +41,8 @@ Would be nice to make weapon abilities too:
 
 
 Version 1.2.2.1
+NEW FEATURES:
+# Optional Rule: All characters can learn new spells, even without a magic chit
 
 Version 1.2.2.0
 NEW FEATURES:
