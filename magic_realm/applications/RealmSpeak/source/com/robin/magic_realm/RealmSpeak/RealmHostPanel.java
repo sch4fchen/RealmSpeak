@@ -785,6 +785,11 @@ public class RealmHostPanel extends JPanel {
 						}
 					}
 				}
+			}
+		}
+		for (GameObject go:activeCharacters) {
+			CharacterWrapper character = new CharacterWrapper(go);
+			for (GameObject item : character.getInventory()) {
 				if ((RealmComponent.getRealmComponent(item)).isNomad()) {
 					TileLocation loc = character.getCurrentLocation();
 					if (loc.isInClearing()) {

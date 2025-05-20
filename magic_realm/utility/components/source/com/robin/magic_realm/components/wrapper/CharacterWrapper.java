@@ -2647,7 +2647,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				//go._outputDetail();
 				System.err.println(go+" has no RC?");
 			}
-			else if (rc.isItem() || rc.isPhaseChit() || rc.isGoldSpecial() || rc.isBoon() || rc.isMinorCharacter()) {
+			else if (rc.isItem() || rc.isPhaseChit() || rc.isGoldSpecial() || rc.isBoon() || rc.isMinorCharacter() || rc.isNomad()) {
 				ret.add(go);
 			}
 		}

@@ -1,5 +1,4 @@
 Possible Bug regarding Enchanted Cards: I did the trade action with a native group at the Inn and saw that they had the Profane Idol. This should have activated the card, and while there is now Black magic in the clearing, the card is not visible and more importantly the special effect of the card (natives one level less friendly) did not go into effect - i.e., the native groups in the clearing remained Neutral to my character.
-Nomads: should not be able to pick up, costs 1 gold, stays 1 day
 Possible bug regarding end-of-the-month regeneration: In a Super Realm game, after day 28 the majority of the monsters and unhired natives returned to the their starting locations correctly; however, the Company remained at the Inn, and the Bones H ghosts (which had been killed earlier in the month) did not return to the map.
 
 ::ROADMAP::
@@ -47,11 +46,10 @@ Version 1.2.2.1
 NEW FEATURES:
 # Optional Rule: All characters can learn new spells, even without a magic chit
 # Optional Rule for Super Realm Combat: allow positioning before determining the random position for denizens
-SUPER REALM:
-# Hiring a nomad costs 1 gold
 BUGS/ISSUES:
 # Fix Vampire casting Mesmerize
 # Fix assigning target on denizen combat sheet
+# Fix nomad costs and being dropped at sunset
 
 Version 1.2.2.0
 NEW FEATURES:
