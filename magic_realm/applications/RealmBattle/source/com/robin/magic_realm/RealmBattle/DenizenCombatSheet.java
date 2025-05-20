@@ -703,7 +703,7 @@ public class DenizenCombatSheet extends CombatSheet {
 				if (combatFrame.getActionState()==Constants.COMBAT_ASSIGN) {
 					if (sheetOwner.getTarget()==null && sheetOwner.get2ndTarget()==null) {
 						// Assign Target for denizen (sheetOwner)
-						combatFrame.assignTarget(sheetOwner,layoutHash.getList(Integer.valueOf(index)));
+						combatFrame.assignTarget(sheetOwner,layoutHash.getList(Integer.valueOf(POS_ATTACKERS_BOX1)));
 						updateLayout(); // so target can move to new box, if needed
 						repaint();
 					}

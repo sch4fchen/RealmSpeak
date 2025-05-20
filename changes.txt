@@ -46,6 +46,7 @@ NEW FEATURES:
 # Optional Rule for Super Realm Combat: allow positioning before determining the random position for denizens
 BUGS/ISSUES:
 # Fix Vampire casting Mesmerize
+# Fix assigning target on denizen combat sheet
 
 Version 1.2.2.0
 NEW FEATURES:
