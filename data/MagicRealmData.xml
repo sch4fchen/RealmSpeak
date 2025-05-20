@@ -36225,7 +36225,7 @@
         <attribute notoriety="2" />
         <attribute super_realm="" />
         <attribute icon_type="ghost" />
-        <attribute setup_start="Bones V" />
+        <attribute setup_start="Bones H" />
         <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units" />
         <attribute monster_die="99" />
@@ -36255,7 +36255,7 @@
         <attribute notoriety="2" />
         <attribute super_realm="" />
         <attribute icon_type="ghost" />
-        <attribute setup_start="Bones V" />
+        <attribute setup_start="Bones H" />
         <attribute base_price="2" />
         <attribute icon_folder="wesnoth/units" />
         <attribute monster_die="99" />

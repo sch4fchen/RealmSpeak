@@ -1,5 +1,3 @@
-Possible bug regarding end-of-the-month regeneration: In a Super Realm game, after day 28 the Company remained at the Inn, and the Bones H ghosts (which had been killed earlier in the month) did not return to the map.
-
 ::ROADMAP::
 Super Realm characters (add abilities to character editor)
 	Necromancer
@@ -49,7 +47,7 @@ BUGS/ISSUES:
 # Fix Vampire casting Mesmerize
 # Fix assigning target on denizen combat sheet
 # Fix Nomad costs and being dropped at sunset
-# Fix regenration for Company in Super Realm
+# Fix regeneration for Company and Ghosts in Super Realm
 
 Version 1.2.2.0
 NEW FEATURES:
