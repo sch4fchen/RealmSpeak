@@ -1,4 +1,3 @@
-Possible Bug regarding Enchanted Cards: I did the trade action with a native group at the Inn and saw that they had the Profane Idol. This should have activated the card, and while there is now Black magic in the clearing, the card is not visible and more importantly the special effect of the card (natives one level less friendly) did not go into effect - i.e., the native groups in the clearing remained Neutral to my character.
 Possible bug regarding end-of-the-month regeneration: In a Super Realm game, after day 28 the majority of the monsters and unhired natives returned to the their starting locations correctly; however, the Company remained at the Inn, and the Bones H ghosts (which had been killed earlier in the month) did not return to the map.
 
 ::ROADMAP::

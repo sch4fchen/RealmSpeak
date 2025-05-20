@@ -1235,7 +1235,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean isProfaneIdolInClearing() {
 		if (getCurrentLocation()!=null && getCurrentLocation().clearing!=null) {
 			for (RealmComponent rc : getCurrentLocation().clearing.getDeepClearingComponents()) {
-				if (rc.getGameObject().hasThisAttribute(Constants.PROFANE_IDOL)) {
+				if (rc.getGameObject().hasThisAttribute(Constants.TREASURE_SEEN) && rc.getGameObject().hasThisAttribute(Constants.PROFANE_IDOL)) {
 					return true;
 				}
 			}
