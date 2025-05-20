@@ -39,6 +39,8 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 
+Version 1.2.2.2
+
 Version 1.2.2.1
 NEW FEATURES:
 # Optional Rule: All characters can learn new spells, even without a magic chit
