@@ -49412,7 +49412,7 @@
         <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
-        <attribute native_die="7" />
+        <attribute native_die="5" />
         <attribute clan="3" />
         <attribute icon_size="0.9" />
         <attribute native_name="S.Swordsman" />
@@ -49449,7 +49449,7 @@
         <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
-        <attribute native_die="7" />
+        <attribute native_die="5" />
         <attribute clan="3" />
         <attribute icon_size="0.9" />
         <attribute native_name="Pikeman" />
@@ -49486,7 +49486,7 @@
         <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
-        <attribute native_die="7" />
+        <attribute native_die="5" />
         <attribute clan="3" />
         <attribute icon_size="0.9" />
         <attribute native_name="Pikeman" />
@@ -49523,7 +49523,7 @@
         <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
-        <attribute native_die="7" />
+        <attribute native_die="5" />
         <attribute clan="3" />
         <attribute icon_size="0.9" />
         <attribute native_name="Pikeman" />
@@ -49560,7 +49560,7 @@
         <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
-        <attribute native_die="7" />
+        <attribute native_die="5" />
         <attribute clan="3" />
         <attribute icon_size="0.9" />
         <attribute native_name="Swordsman" />
@@ -49598,7 +49598,7 @@
         <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
-        <attribute native_die="7" />
+        <attribute native_die="5" />
         <attribute clan="3" />
         <attribute icon_size="0.9" />
         <attribute native_name="Crossbowman" />
@@ -49636,7 +49636,7 @@
         <attribute icon_folder="wesnoth/units/human-loyalists" />
         <attribute denizen="" />
         <attribute super_realm="" />
-        <attribute native_die="7" />
+        <attribute native_die="5" />
         <attribute clan="3" />
         <attribute icon_size="0.9" />
         <attribute native_name="Crossbowman" />
@@ -49674,7 +49674,7 @@
         <attribute commerce="N" />
         <attribute denizen="" />
         <attribute super_realm="" />
-        <attribute native_die="7" />
+        <attribute native_die="5" />
         <attribute clan="3" />
         <attribute icon_size="0.9" />
         <attribute native_name="S.Swordsman" />
@@ -62284,11 +62284,11 @@
       </AttributeBlock>
       <AttributeBlock blockName="level_2">
         <attribute name="General" />
+        <attribute weapon="Broadsword" />
+        <attribute armor="Helmet,Breastplate,Shield" />
         <attributeList keyName="advantages">
           <attributeVal N0="REFLEX: Fatigue Reflex chit during the Action step to alert active weapon." />
         </attributeList>
-        <attribute weapon="Broadsword" />
-        <attribute Armor="Helmet,Breastplate,Shield" />
       </AttributeBlock>
       <AttributeBlock blockName="level_3">
         <attribute name="Slave" />
@@ -62297,14 +62297,14 @@
       </AttributeBlock>
       <AttributeBlock blockName="level_4">
         <attribute name="Gladiator" />
+        <attribute weapon="Morning Star" />
+        <attribute armor="Armor" />
         <attributeList keyName="advantages">
           <attributeVal N0="ROBUST:  Get one extra REST phase every day." />
         </attributeList>
         <attributeList keyName="extra_actions">
           <attributeVal N0="R" />
         </attributeList>
-        <attribute weapon="Morning Star" />
-        <attribute armor="Armor" />
       </AttributeBlock>
       <AttributeBlock blockName="relationship">
         <attribute hunters="1" />
