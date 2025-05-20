@@ -3969,6 +3969,16 @@ public class CombatFrame extends JFrame {
 	}
 	private void hireNomad() {
 		TileLocation current = activeCharacter.getCurrentLocation();
+		
+		if (activeCharacter.getRoundedGold()<1) {
+			JOptionPane.showMessageDialog(this,"You do not have enough gold for paying a nomad!","Hire Nomad - not enough gold",JOptionPane.INFORMATION_MESSAGE,activeCharacter.getIcon());
+			return;
+		}
+		if (activeCharacter.hasCurse(Constants.ASHES)) {
+			JOptionPane.showMessageDialog(this,"You are cursed by the ASHES curse, and cannot pay a nomad.!","Hire Nomad - cursed by ASHES",JOptionPane.INFORMATION_MESSAGE,activeCharacter.getIcon());
+			return;
+		}		
+		
 		if (current.isInClearing()) {
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Choose an nomad to hire:",true);
 			ArrayList<RealmComponent> list = current.clearing.getClearingComponents(false);
@@ -3982,7 +3992,8 @@ public class CombatFrame extends JFrame {
 				String option = chooser.getSelectedText();
 				if (option!=null) {
 					RealmComponent rc = chooser.getFirstSelectedComponent();
-										
+					
+					activeCharacter.addGold(-1);			
 					Loot.addItemToCharacter(this,combatListener,activeCharacter,rc.getGameObject(),hostPrefs);
 					broadcastMessage(activeCharacter.getGameObject().getName(),"Hires the "+rc.getGameObject().getName());
 					
@@ -3991,7 +4002,7 @@ public class CombatFrame extends JFrame {
 				}
 			}
 			else {
-				JOptionPane.showMessageDialog(this,"There are no nomads to hire!","Hire Nomad",JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this,"There are no nomads to hire!","Hire Nomad",JOptionPane.INFORMATION_MESSAGE,activeCharacter.getIcon());
 			}
 		}
 	}
