@@ -7306,7 +7306,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		StringBufferedList list = new StringBufferedList();
 		for (GameObject go : hold) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
-			if (rc.isTreasure() || rc.isSpell()) {
+			if (rc.isTreasure() || rc.isSpell() || rc.isQuest()) {
 				list.append(go.getName());
 			}
 		}

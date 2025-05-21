@@ -1422,26 +1422,29 @@ public class ActionRow {
 	}
 	private void processTrade(RealmComponent trader,String tradeAction,HostPrefWrapper hostPrefs) {
 		ArrayList<GameObject> hold = null;
+		ArrayList<GameObject> holdToNote = null;
 		String traderName = trader.isNative()?trader.getGameObject().getThisAttribute("native"):trader.getGameObject().getName();
 		String relName = RealmUtility.getRelationshipNameFor(character,trader);
 		String traderRel = traderName+" ("+relName+")";
 		if (TRADE_BUY.equals(tradeAction)) {
+			hold = new ArrayList<>();
+			holdToNote = new ArrayList<>();
 			if (trader.isNative()) {
 				// Native Leader - trade with their dwelling's hold
 				GameObject holder = SetupCardUtility.getDenizenHolder(trader.getGameObject());
-				hold = new ArrayList<>();
 				for(GameObject go:holder.getHold()) {
-					if (!go.hasThisAttribute(Constants.VALUABLE)) {
+					holdToNote.add(go);
+					if (!go.hasThisAttribute(Constants.VALUABLE) && !(RealmComponent.getRealmComponent(go)).isQuest()) {
 						hold.add(go);
 					}
 				}
 			}
 			else {
 				// Visitor or Guild - trade directly with their hold
-				hold = new ArrayList<>();
 				for(GameObject go:trader.getGameObject().getHold()) {
+					holdToNote.add(go);
 					RealmComponent rc = RealmComponent.getRealmComponent(go);
-					if (!go.hasThisAttribute(Constants.VALUABLE) && (!rc.isSpell() || character.canLearn(go))) {
+					if (!go.hasThisAttribute(Constants.VALUABLE) && !rc.isQuest() &&(!rc.isSpell() || character.canLearn(go))) {
 						hold.add(go);
 					}
 				}
@@ -1451,7 +1454,7 @@ public class ActionRow {
 			hold.addAll(character.getBoons(trader.getGameObject()));
 			
 			// Update the character notebook accordingly
-			character.addNoteTrade(trader.getGameObject(),hold);
+			character.addNoteTrade(trader.getGameObject(),holdToNote);
 		}
 		else if (TRADE_REPAIR.equals(tradeAction) || TRADE_REPAIR_BLACKSMITH.equals(tradeAction)) {
 			hold = TreasureUtility.getDamagedArmor(character.getSellableInventory());

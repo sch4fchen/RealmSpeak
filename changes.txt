@@ -40,6 +40,8 @@ Would be nice to make weapon abilities too:
 
 
 Version 1.2.2.2
+NEW FEATURES:
+# Personal notes when trading include Quests
 BUGS/ISSUES:
 # Fix Nomad being dropped at sunset
 
