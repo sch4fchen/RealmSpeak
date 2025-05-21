@@ -1792,6 +1792,16 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		// End any stop following commands
 		setStopFollowing(false);
+		
+		TileLocation loc = getCurrentLocation();
+		if (loc.isInClearing()) {
+			for (GameObject item : getNomads()) {
+				RealmComponent rc = RealmComponent.getRealmComponent(item);
+				GameClient.broadcastClient("host",item.getName()+" is dropped in "+loc);
+				rc.setActivated(false);
+				loc.clearing.add(item,null);
+			}
+		}
 	}
 	public void applyMidnight() {
 		if (isGone()) {
@@ -2647,7 +2657,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				//go._outputDetail();
 				System.err.println(go+" has no RC?");
 			}
-			else if (rc.isItem() || rc.isPhaseChit() || rc.isGoldSpecial() || rc.isBoon() || rc.isMinorCharacter() || rc.isNomad()) {
+			else if (rc.isItem() || rc.isPhaseChit() || rc.isGoldSpecial() || rc.isBoon() || rc.isMinorCharacter()) {
 				ret.add(go);
 			}
 		}
@@ -3146,8 +3156,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public ArrayList<GameObject> getNomads() {
 		ArrayList<GameObject> nomads = new ArrayList<>();
-		Collection<GameObject> inv = getInventory();
-		for (GameObject go : inv) {
+		for (GameObject go : getGameObject().getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc.isNomad()) {
 				nomads.add(go);
