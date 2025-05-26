@@ -1,10 +1,4 @@
-1: The Roving Natives (Bandits, Dwarves, Elves, Cultists), are "Enemies" to the following characters:
-Amazon, Bard, Captain, Druid, Gladiator,
-Magician, Paladin, Pilgrim, Psychic, Sorcerer,
-Swordsman, Trawler, Wanderer, White Knight, Witch,
-Wizard
-
-2:
+BUG:
 "When a guide uses a hidden path or secret passage, his followers discover it and move with him."
 
 "Whenever the guide discovers or loots a site, or
@@ -65,6 +59,7 @@ NEW FEATURES:
 BUGS/ISSUES:
 # Fix Nomad being dropped at sunset
 # Fix order of small and large treasures
+# Correct relationships for Roving Natives in Super Realm
 
 Version 1.2.2.1
 NEW FEATURES:

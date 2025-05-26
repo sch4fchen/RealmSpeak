@@ -43302,6 +43302,9 @@
         <attribute enchanters="1" />
         <attribute aborigines="-1" />
         <attribute summoners="-1" />
+        <attribute bandits="-2" />
+        <attribute dwarves="-2" />
+        <attribute cultists="-2" />
       </AttributeBlock>
       <contains id="1549" />
       <contains id="1550" />
@@ -43389,6 +43392,9 @@
         <attribute cultists="1" />
         <attribute mages="-1" />
         <attribute zealots="-1" />
+        <attribute bandits="-2" />
+        <attribute dwarves="-2" />
+        <attribute elves="-2" />
       </AttributeBlock>
       <contains id="1729" />
       <contains id="1730" />
@@ -43457,6 +43463,9 @@
         <attribute guard="-1" />
         <attribute bandits="1" />
         <attribute peasants="-1" />
+        <attribute dwarves="-2" />
+        <attribute elves="-2" />
+        <attribute cultists="-2" />
       </AttributeBlock>
       <contains id="1717" />
       <contains id="1718" />
@@ -43537,6 +43546,10 @@
         <attribute zealots="1" />
         <attribute priest="1" />
         <attribute coven="-1" />
+        <attribute bandits="-2" />
+        <attribute dwarves="-2" />
+        <attribute elves="-2" />
+        <attribute cultists="-2" />
       </AttributeBlock>
       <contains id="1705" />
       <contains id="1706" />
@@ -43622,6 +43635,10 @@
         <attribute woodfolk="-2" />
         <attribute pagans="1" />
         <attribute hunters="-1" />
+        <attribute bandits="-2" />
+        <attribute dwarves="-2" />
+        <attribute elves="-2" />
+        <attribute cultists="-2" />
       </AttributeBlock>
       <contains id="1693" />
       <contains id="1694" />
@@ -43702,6 +43719,10 @@
         <attribute crone="-1" />
         <attribute zealots="1" />
         <attribute coven="-1" />
+        <attribute bandits="-2" />
+        <attribute dwarves="-2" />
+        <attribute elves="-2" />
+        <attribute cultists="-2" />
       </AttributeBlock>
       <contains id="1681" />
       <contains id="1682" />
@@ -43783,6 +43804,10 @@
         <attribute coven="1" />
         <attribute pagans="1" />
         <attribute zealots="-2" />
+        <attribute bandits="-2" />
+        <attribute dwarves="-2" />
+        <attribute elves="-2" />
+        <attribute cultists="-2" />
       </AttributeBlock>
       <contains id="1669" />
       <contains id="1670" />
@@ -43853,6 +43878,9 @@
         <attribute dwarves="1" />
         <attribute aborigines="-1" />
         <attribute priest="-1" />
+        <attribute bandits="-2" />
+        <attribute elves="-2" />
+        <attribute cultists="-2" />
       </AttributeBlock>
       <contains id="1657" />
       <contains id="1658" />
@@ -43941,6 +43969,9 @@
         <attribute elves="1" />
         <attribute hunters="-1" />
         <attribute pagans="-1" />
+        <attribute bandits="-2" />
+        <attribute dwarves="-2" />
+        <attribute cultists="-2" />
       </AttributeBlock>
       <contains id="1645" />
       <contains id="1646" />
@@ -44020,6 +44051,10 @@
         <attribute guard="-2" />
         <attribute mages="1" />
         <attribute conjurors="-1" />
+        <attribute bandits="-2" />
+        <attribute dwarves="-2" />
+        <attribute elves="-2" />
+        <attribute cultists="-2" />
       </AttributeBlock>
       <contains id="1633" />
       <contains id="1634" />
@@ -44092,6 +44127,9 @@
         <attribute dwarves="1" />
         <attribute hunters="-1" />
         <attribute merchant="-1" />
+        <attribute bandits="-2" />
+        <attribute elves="-2" />
+        <attribute cultists="-2" />
       </AttributeBlock>
       <contains id="1621" />
       <contains id="1622" />
@@ -44183,6 +44221,10 @@
         <attribute crone="-1" />
         <attribute enchanters="2" />
         <attribute pagans="-2" />
+        <attribute bandits="-2" />
+        <attribute dwarves="-2" />
+        <attribute elves="-2" />
+        <attribute cultists="-2" />
       </AttributeBlock>
       <contains id="1609" />
       <contains id="1610" />
@@ -44274,6 +44316,10 @@
         <attribute lancers="-2" />
         <attribute enchanters="2" />
         <attribute aborigines="-2" />
+        <attribute bandits="-2" />
+        <attribute dwarves="-2" />
+        <attribute elves="-2" />
+        <attribute cultists="-2" />
       </AttributeBlock>
       <contains id="1597" />
       <contains id="1598" />
@@ -44354,6 +44400,10 @@
         <attribute enchanters="1" />
         <attribute aborigines="-1" />
         <attribute merchant="-1" />
+        <attribute bandits="-2" />
+        <attribute dwarves="-2" />
+        <attribute elves="-2" />
+        <attribute cultists="-2" />
       </AttributeBlock>
       <contains id="1585" />
       <contains id="1586" />
@@ -44424,6 +44474,10 @@
         <attribute mages="1" />
         <attribute merchant="1" />
         <attribute peasants="-1" />
+        <attribute bandits="-2" />
+        <attribute dwarves="-2" />
+        <attribute elves="-2" />
+        <attribute cultists="-2" />
       </AttributeBlock>
       <contains id="1573" />
       <contains id="1574" />
@@ -44486,6 +44540,10 @@
         <attribute patrol="-2" />
         <attribute aborigines="1" />
         <attribute hunters="-1" />
+        <attribute bandits="-2" />
+        <attribute dwarves="-2" />
+        <attribute elves="-2" />
+        <attribute cultists="-2" />
       </AttributeBlock>
       <contains id="1561" />
       <contains id="1562" />
@@ -61812,6 +61870,9 @@
         <attribute order="-1" />
         <attribute patrol="-1" />
         <attribute peasants="-2" />
+        <attribute dwarves="-2" />
+        <attribute elves="-2" />
+        <attribute cultists="-2" />
       </AttributeBlock>
       <contains id="2362" />
       <contains id="2363" />
@@ -62069,6 +62130,10 @@
         <attribute mercenaries="-1" />
         <attribute soldiers="-1" />
         <attribute zealots="-1" />
+        <attribute bandits="-2" />
+        <attribute dwarves="-2" />
+        <attribute elves="-2" />
+        <attribute cultists="-2" />
       </AttributeBlock>
       <contains id="2379" />
       <contains id="2380" />
@@ -62314,6 +62379,10 @@
         <attribute conjurors="-1" />
         <attribute guard="-1" />
         <attribute patrol="-1" />
+        <attribute bandits="-2" />
+        <attribute dwarves="-2" />
+        <attribute elves="-2" />
+        <attribute cultists="-2" />
       </AttributeBlock>
       <contains id="2392" />
       <contains id="2393" />
