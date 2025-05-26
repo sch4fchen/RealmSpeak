@@ -45,29 +45,19 @@ public class GameCommandOrderSetup extends GameCommand {
 	
 	private static int getOrderNumber(GameObject go) {
 		if (go.hasThisAttribute("treasure")) {
-			if (go.getThisAttribute("treasure").matches("small")) return 1;
-			if (go.getThisAttribute("treasure").matches("large")) return 2;
+			if (go.getThisAttribute("treasure").matches("large")) return 1;
+			if (go.getThisAttribute("treasure").matches("small")) return 2;
 		}
-		if (go.hasThisAttribute("spell")) {
-			String type = go.getThisAttribute("spell");
-			if (type.matches("I")) return 3;
-			if (type.matches("II")) return 4;
-			if (type.matches("III")) return 5;
-			if (type.matches("IV")) return 6;
-			if (type.matches("V")) return 7;
-			if (type.matches("VI")) return 8;
-			if (type.matches("VII")) return 9;
-			if (type.matches("VIII")) return 10;
-		}
+		if (go.hasThisAttribute("spell")) return 3;
 		if (go.hasThisAttribute("item")) {
-			if (go.hasThisAttribute("horse")) return 11;
-			if (go.hasThisAttribute("armor") && go.hasThisAttribute("armor_thrust") && go.hasThisAttribute("armor_swing") && go.hasThisAttribute("armor_smash")) return 12;
-			if (go.hasThisAttribute("weapon")) return 13;
-			if (go.hasThisAttribute("armor") && go.hasThisAttribute("armor_smash")) return 14;
-			if (go.hasThisAttribute("armor") && (go.hasThisAttribute("shield") || go.hasThisAttribute("armor_choice"))) return 15;
-			if (go.hasThisAttribute("armor") && go.hasThisAttribute("armor_thrust") && go.hasThisAttribute("armor_swing")) return 16;
+			if (go.hasThisAttribute("horse")) return 4;
+			if (go.hasThisAttribute("armor") && go.hasThisAttribute("armor_thrust") && go.hasThisAttribute("armor_swing") && go.hasThisAttribute("armor_smash")) return 5;
+			if (go.hasThisAttribute("weapon")) return 6;
+			if (go.hasThisAttribute("armor") && go.hasThisAttribute("armor_smash")) return 7;
+			if (go.hasThisAttribute("armor") && (go.hasThisAttribute("shield") || go.hasThisAttribute("armor_choice"))) return 8;
+			if (go.hasThisAttribute("armor") && go.hasThisAttribute("armor_thrust") && go.hasThisAttribute("armor_swing")) return 9;
 		}
-		if (go.hasThisAttribute("denizen")) return 17;
+		if (go.hasThisAttribute("denizen")) return 10;
 		
 		return 0;
 	}

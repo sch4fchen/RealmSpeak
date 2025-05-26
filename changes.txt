@@ -1,3 +1,23 @@
+1: The Roving Natives (Bandits, Dwarves, Elves, Cultists), are "Enemies" to the following characters:
+Amazon, Bard, Captain, Druid, Gladiator,
+Magician, Paladin, Pilgrim, Psychic, Sorcerer,
+Swordsman, Trawler, Wanderer, White Knight, Witch,
+Wizard
+
+2:
+"When a guide uses a hidden path or secret passage, his followers discover it and move with him."
+
+"Whenever the guide discovers or loots a site, or
+reads runes at a site, all followers discover the site.
+Whenever the guide discovers or loots a TWT, all
+followers discover the TWT and the site that contains it.
+This happens whenever the guide makes a Loot or
+Reading Runes table roll, even if he doesn’t draw a
+treasure, or learn or awaken any spell.
+Special: If the guide is using Magic Sight,
+followers only discover a site the guide uses if they also
+use Magic Sight."
+
 ::ROADMAP::
 Super Realm characters (add abilities to character editor)
 	Necromancer
@@ -7,11 +27,11 @@ Super Realm characters (add abilities to character editor)
 	Wanderer
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt
+Super Realm: Optional Rules: Selling (SR: 10.11, p.116)
 Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.123): Witch, Witch King, Paladin
 
 Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells: Lightning Bolt, Alchemists Mixture); site targets are considered armored. or by hurricane winds
 Super Realm: Events (Global Events = optional rule 11.11): 33 Events
-Super Realm: Optional Rules: Selling (SR: 10.11, p.116)
 Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
 Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
 Super Realm: Optional Rules: Sentimental Value (SR: 10.6, p.115)
@@ -44,6 +64,7 @@ NEW FEATURES:
 # Personal notes when trading include Quests
 BUGS/ISSUES:
 # Fix Nomad being dropped at sunset
+# Fix order of small and large treasures
 
 Version 1.2.2.1
 NEW FEATURES:
