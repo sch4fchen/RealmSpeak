@@ -1209,8 +1209,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return list;
 	}
 	public int getRelationship(GameObject denizen) {
-		boolean ravingNative = denizen.hasThisAttribute(Constants.ROVING_NATIVE);
-		int relationship = getRelationship(RealmUtility.getRelationshipBlockFor(denizen),RealmUtility.getRelationshipGroupName(denizen),ravingNative);
+		boolean rovingNative = denizen.hasThisAttribute(Constants.ROVING_NATIVE);
+		int relationship = getRelationship(RealmUtility.getRelationshipBlockFor(denizen),RealmUtility.getRelationshipGroupName(denizen),rovingNative);
 		if (isNegativeAuraInClearing()) {
 			relationship--;
 		}
@@ -1248,19 +1248,28 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * @return				One of ALLY,FRIENDLY,NEUTRAL,UNFRIENDLY,ENEMY
 	 */
 	public int getRelationship(String relBlock,String groupName) {
-		return getRelationship(relBlock, groupName, false);
+		boolean rovingNative = false;
+		if (groupName!=null && !groupName.isEmpty()) {
+			GameData data = getGameObject().getGameData();
+			GamePool pool = new GamePool(data.getGameObjects());
+			GameObject nativeHq = pool.findFirst("rank=HQ,native="+groupName);
+			if (nativeHq!=null) {
+				rovingNative = nativeHq.hasThisAttribute(Constants.ROVING_NATIVE);
+			}
+		}
+		return getRelationship(relBlock, groupName, rovingNative);
 	}
-	public int getRelationship(String relBlock,String groupName, boolean ravingNative) {
+	public int getRelationship(String relBlock,String groupName, boolean rovingNative) {
 		if (!isCharacter()) {
 			CharacterWrapper hiringCharacter = getHiringCharacter();
 			if (hiringCharacter!=null) {
-				return hiringCharacter.getRelationship(relBlock,groupName);
+				return hiringCharacter.getRelationship(relBlock,groupName, rovingNative);
 			}
 		}
 		groupName = groupName.toLowerCase();
 		
 		int rel = getGameObject().getInt(relBlock,groupName);
-		if (ravingNative && !getGameObject().hasAttribute(relBlock,groupName)) {
+		if (rovingNative && !getGameObject().hasAttribute(relBlock,groupName)) {
 			rel = RelationshipType.ENEMY;
 		}
 		int mod = 0;

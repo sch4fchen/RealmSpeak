@@ -434,17 +434,23 @@ public class CharacterEditRibbon extends JPanel {
 		for (GameObject nativeLeader : pool.find("native,rank=HQ")) {
 			String nativeName = nativeLeader.getThisAttribute("native");
 			String relBlock = RealmUtility.getRelationshipBlockFor(nativeLeader);
-			String[] ret = new String[2];
+			String[] ret = new String[3];
 			ret[0] = relBlock;
 			ret[1] = "N" + StringUtilities.capitalize(nativeName);
+			if (nativeLeader.hasThisAttribute(Constants.ROVING_NATIVE)) {
+				ret[2] = Constants.ROVING_NATIVE;
+			}
 			relationshipNames.add(ret);
 		}
 		for (GameObject visitor : pool.find(Constants.VISITOR)) {
 			String visitorName = visitor.getThisAttribute(Constants.VISITOR);
 			String relBlock = RealmUtility.getRelationshipBlockFor(visitor);
-			String[] ret = new String[2];
+			String[] ret = new String[3];
 			ret[0] = relBlock;
 			ret[1] = "V" + StringUtilities.capitalize(visitorName);
+			if (visitor.hasThisAttribute(Constants.ROVING_NATIVE)) {
+				ret[2] = Constants.ROVING_NATIVE;
+			}
 			relationshipNames.add(ret);
 		}
 		Collections.sort(relationshipNames, new Comparator<String[]>() {

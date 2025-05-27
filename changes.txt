@@ -1,3 +1,6 @@
+Relationship table: do not show custom characters if not enabled
+CharacterEditor: check RealmCharacterConstants
+
 BUG:
 "When a guide uses a hidden path or secret passage, his followers discover it and move with him."
 

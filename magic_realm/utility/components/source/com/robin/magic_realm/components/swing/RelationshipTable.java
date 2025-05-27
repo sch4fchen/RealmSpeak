@@ -58,7 +58,8 @@ public class RelationshipTable extends JTable {
 					character = character.getHiringCharacter();
 				}
 				
-				int rel = character.getRelationship(relBlock,groupName);
+				boolean rovingNative = ret.length>=3&&ret[2]!=null&&ret[2].matches(Constants.ROVING_NATIVE)?true:false;
+				int rel = character.getRelationship(relBlock,groupName,rovingNative);
 				
 				Color lightColor = Color.white;
 				
