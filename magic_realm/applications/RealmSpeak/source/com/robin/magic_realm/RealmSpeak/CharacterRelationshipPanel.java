@@ -11,6 +11,7 @@ import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.general.swing.ComponentTools;
 import com.robin.magic_realm.components.swing.RelationshipTable;
+import com.robin.magic_realm.components.utility.Constants;
 
 public class CharacterRelationshipPanel extends CharacterFramePanel {
 
@@ -47,6 +48,7 @@ public class CharacterRelationshipPanel extends CharacterFramePanel {
 			}
 		});
 		
+		boolean customCharacters = getHostPrefs().hasPref(Constants.EXP_CUSTOM_CHARS);
 		JPanel enemyPanel = new JPanel(new GridLayout(allChars.size()+1,1));
 		JLabel panelHeader = new JLabel("ENEMIES",SwingConstants.CENTER);
 		panelHeader.setBackground(Color.red);
@@ -56,6 +58,9 @@ public class CharacterRelationshipPanel extends CharacterFramePanel {
 		ComponentTools.lockComponentSize(enemyPanel,100,allChars.size()*18);
 		for (GameObject aChar : allChars) {
 			if (!aChar.equals(getCharacter().getGameObject())) { // no checkbox option for self
+				if (aChar.hasThisAttribute(Constants.CUSTOM_CHARACTER) && !customCharacters) {
+					continue;
+				}
 				JCheckBox cb = new JCheckBox(aChar.getName(),false);
 				charIdBoxHash.put(aChar.getStringId(),cb);
 				charNameObjectHash.put(aChar.getName(),aChar);

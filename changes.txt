@@ -1,6 +1,3 @@
-Relationship table: do not show custom characters if not enabled
-CharacterEditor: check RealmCharacterConstants
-
 BUG:
 "When a guide uses a hidden path or secret passage, his followers discover it and move with him."
 
@@ -63,6 +60,7 @@ BUGS/ISSUES:
 # Fix Nomad being dropped at sunset
 # Fix order of small and large treasures
 # Correct relationships for Roving Natives in Super Realm
+# Relationship table does not show custom characters if not enabled
 
 Version 1.2.2.1
 NEW FEATURES:
