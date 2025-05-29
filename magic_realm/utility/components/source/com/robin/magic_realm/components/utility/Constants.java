@@ -241,6 +241,7 @@ public class Constants {
 	public static final String FLYING = "flying";
 	public static final String COMBAT_GOES_LAST = "combat_goes_last";
 	public static final String INSULT_CHALLENGE_AS_BLOCK_BATTLE = "insult_challenge_as_block_battle";
+	public static final String BLOCKED_BY_MAGIC_COLOR = "blocked_by_magic_color";
 	
 	// Relationships
 	public static final String BASE_RELATIONSHIP = "relationship";

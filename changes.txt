@@ -1,6 +1,6 @@
 ::ROADMAP::
 Super Realm characters (add abilities to character editor)
-	Necromancer
+	Necromancer: color chits, lvl 4: blocked by white magic
 	Paladin
 	Psychic
 	Trawler
@@ -43,6 +43,8 @@ Version 1.2.2.2
 NEW FEATURES:
 # Personal notes when trading include Quests
 # Followers discover paths when moving and sites when looting
+SUPER REALM:
+# New character: Necromancer
 BUGS/ISSUES:
 # Fix Nomad being dropped at sunset
 # Fix order of small and large treasures

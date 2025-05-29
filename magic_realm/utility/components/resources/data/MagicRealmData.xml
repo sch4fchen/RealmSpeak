@@ -56757,7 +56757,7 @@
         <attribute notoriety="10" />
         <attribute fame="-10" />
         <attribute great="" />
-        <attribute red_die="wish,curse,powerofthepit,transform,lost,violentstorm,magicmissil,attackspell" />
+        <attribute red_die="wish,curse,powerofthepit,transform,lost,violentstorm,magicmissil,attackspell,meditate,mesmerize,summondemon" />
         <attribute facing="face_dn" />
         <attribute item="" />
         <attribute super_realm="" />
@@ -62573,6 +62573,268 @@
         <attribute super_realm="" />
         <attribute effort="2" />
         <attribute strength="H" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2404" name="Necromancer">
+      <AttributeBlock blockName="this">
+        <attribute icon_type="necromancer" />
+        <attribute character="" />
+        <attribute vulnerability="H" />
+        <attribute start="Inn,Settlement" />
+        <attribute facing="dark" />
+        <attribute pronoun="he" />
+        <attribute icon_folder="characters" />
+        <attribute creator="Anomalous Host" />
+        <attribute artcredit="" />
+        <attribute super_realm="" />
+        <attribute potrait_folder="" />
+        <attribute potrait_file="" />
+        <attribute weight="M" />
+        <attribute magicuser="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="level_1">
+        <attribute name="Gravedigger" />
+        <attribute spellcount="1" />
+        <attributeList keyName="spelltypes">
+          <attributeVal N0="V" />
+        </attributeList>
+      </AttributeBlock>
+      <AttributeBlock blockName="level_2">
+        <attribute name="Outcast" />
+        <attribute spellcount="2" />
+        <attributeList keyName="advantages">
+          <attributeVal N0="THIRD EYE:  Rolls one die when making a Spell Table roll." />
+        </attributeList>
+        <attributeList keyName="spelltypes">
+          <attributeVal N0="V" />
+          <attributeVal N1="VIII" />
+        </attributeList>
+        <attributeList keyName="diemod">
+          <attributeVal N0="1d:wish,curse,powerofthepit,transform,meditate,mesmerize,summondemon:all" />
+        </attributeList>
+      </AttributeBlock>
+      <AttributeBlock blockName="level_3">
+        <attribute name="Diabolist" />
+        <attribute spellcount="3" />
+        <attributeList keyName="spelltypes">
+          <attributeVal N0="V" />
+          <attributeVal N1="VIII" />
+        </attributeList>
+      </AttributeBlock>
+      <AttributeBlock blockName="level_4">
+        <attribute name="Necromancer" />
+        <attribute spellcount="4" />
+        <attribute curse_immunity="" />
+        <attributeList keyName="advantages">
+          <attributeVal N0="CORRUPTED:  Immune to Curses. Blocked by White color sources." />
+        </attributeList>
+        <attributeList keyName="spelltypes">
+          <attributeVal N0="V" />
+          <attributeVal N1="VI" />
+          <attributeVal N2="VIII" />
+        </attributeList>
+        <attributeList keyName="blocked_by_magic_color">
+          <attributeVal N0="white" />
+        </attributeList>
+      </AttributeBlock>
+      <AttributeBlock blockName="relationship">
+        <attribute coven="2" />
+        <attribute conjurors="1" />
+        <attribute mercenaries="1" />
+        <attribute cultists="1" />
+        <attribute mages="-1" />
+        <attribute patrol="-1" />
+        <attribute zealots="-1" />
+        <attribute priest="-1" />
+        <attribute order="-2" />
+        <attribute bandits="-2" />
+        <attribute dwarves="-2" />
+        <attribute elves="-2" />
+      </AttributeBlock>
+      <contains id="2405" />
+      <contains id="2406" />
+      <contains id="2407" />
+      <contains id="2408" />
+      <contains id="2409" />
+      <contains id="2410" />
+      <contains id="2411" />
+      <contains id="2412" />
+      <contains id="2413" />
+      <contains id="2414" />
+      <contains id="2415" />
+      <contains id="2416" />
+    </GameObject>
+    <GameObject id="2405" name="Necromancer Magic V4*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="4" />
+        <attribute character_level="1" />
+        <attribute stage="1" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="necromancer" />
+        <attribute super_realm="" />
+        <attribute magic="V" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2406" name="Necromancer Move M5">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute strength="M" />
+        <attribute speed="5" />
+        <attribute character_level="1" />
+        <attribute stage="2" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="necromancer" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2407" name="Necromancer Fight M4*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute strength="M" />
+        <attribute speed="4" />
+        <attribute character_level="1" />
+        <attribute stage="3" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="necromancer" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2408" name="Necromancer Magic V3*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="3" />
+        <attribute character_level="2" />
+        <attribute stage="4" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="necromancer" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+        <attribute magic="V" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2409" name="Necromancer Magic V2**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="2" />
+        <attribute character_level="2" />
+        <attribute stage="5" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="necromancer" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+        <attribute magic="V" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2410" name="Necromancer Magic VIII3**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="3" />
+        <attribute character_level="2" />
+        <attribute stage="6" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="necromancer" />
+        <attribute super_realm="" />
+        <attribute magic="VIII" />
+        <attribute effort="2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2411" name="Necromancer Magic VI5**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="5" />
+        <attribute character_level="3" />
+        <attribute stage="7" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="necromancer" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+        <attribute magic="VI" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2412" name="Necromancer Black">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="color" />
+        <attribute character_level="3" />
+        <attribute stage="8" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="necromancer" />
+        <attribute super_realm="" />
+        <attribute magic="V" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2413" name="Necromancer Purple">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="color" />
+        <attribute character_level="3" />
+        <attribute stage="9" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="necromancer" />
+        <attribute super_realm="" />
+        <attribute magic="IV" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2414" name="Necromancer Magic VI6*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="6" />
+        <attribute character_level="4" />
+        <attribute stage="10" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="necromancer" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+        <attribute magic="VI" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2415" name="Necromancer Magic VI6*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="6" />
+        <attribute character_level="4" />
+        <attribute stage="11" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="necromancer" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+        <attribute magic="VI" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2416" name="Necromancer Grey">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="color" />
+        <attribute character_level="4" />
+        <attribute stage="12" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="necromancer" />
+        <attribute super_realm="" />
+        <attribute magic="II" />
       </AttributeBlock>
     </GameObject>
   </objects>
