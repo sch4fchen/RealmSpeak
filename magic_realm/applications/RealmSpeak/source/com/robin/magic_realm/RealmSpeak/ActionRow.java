@@ -1541,17 +1541,29 @@ public class ActionRow {
 					RealmComponent merchandise = selComponents.iterator().next();
 					
 					// Let's make sure this item CAN be bought
-					if (!repair && hostPrefs.hasPref(Constants.HOUSE1_NO_NEGATIVE_POINTS)) {
+					if (!repair) {
 						int famePrice = TreasureUtility.getFamePrice(merchandise.getGameObject(),trader.getGameObject());
-						if (famePrice>character.getFame()) {
+						if (famePrice>0 && character.hasCurse(Constants.DISGUST)) {
 							JOptionPane.showMessageDialog(
 									gameHandler.getMainFrame(),
-									"That item would cause your fame to be negative, which violates the host's rules.",
+									"That item would cost fame, but you are affected by the curse DISGUST.",
 									"Invalid Purchase",
 									JOptionPane.INFORMATION_MESSAGE,
 									merchandise.getFaceUpIcon());
 							completed = false;
 							return;
+						}
+						if (famePrice>character.getFame() && hostPrefs.hasPref(Constants.HOUSE1_NO_NEGATIVE_POINTS)) {
+							if (famePrice>character.getFame()) {
+								JOptionPane.showMessageDialog(
+										gameHandler.getMainFrame(),
+										"That item would cause your fame to be negative, which violates the host's rules.",
+										"Invalid Purchase",
+										JOptionPane.INFORMATION_MESSAGE,
+										merchandise.getFaceUpIcon());
+								completed = false;
+								return;
+							}
 						}
 					}
 					

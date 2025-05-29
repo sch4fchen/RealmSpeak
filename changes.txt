@@ -61,6 +61,7 @@ BUGS/ISSUES:
 # Fix order of small and large treasures
 # Correct relationships for Roving Natives in Super Realm
 # Relationship table does not show custom characters if not enabled
+# Buying an item with fame cost while being affected by Disgust curse
 
 Version 1.2.2.1
 NEW FEATURES:
