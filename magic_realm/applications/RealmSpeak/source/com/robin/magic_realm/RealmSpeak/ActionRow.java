@@ -1013,18 +1013,15 @@ public class ActionRow {
 					if (magicPath) {
 						result = result+" (using Magic Path)";
 					}
-					
-					if (!hostPrefs.hasPref(Constants.SR_NO_SPYING)) {
-						if (!overridePath && !current.isBetweenClearings() && (path.isNarrow() || (reverse!=null && reverse.isNarrow()))) {
-							// Other characters in the same clearing who have found hidden enemies
-							// for the day should gain a discovery when this move occurs (on either end of the path!)
-							if (current.hasClearing()) {
-								for (RealmComponent rc:current.clearing.getClearingComponents()) {
-									if (rc.canSpy() && !rc.getGameObject().equals(character.getGameObject())) {
-										CharacterWrapper spy = new CharacterWrapper(rc.getGameObject());
-										if (!character.isHidden() || spy.foundHiddenEnemy(character.getGameObject())) {
-											spy.updatePathKnowledge(path); // spy's that see character leave only get the path they are leaving on!
-										}
+					if (!overridePath && !current.isBetweenClearings() && (path.isNarrow() || (reverse!=null && reverse.isNarrow()))) {
+						// Other characters in the same clearing who have found hidden enemies
+						// for the day should gain a discovery when this move occurs (on either end of the path!)
+						if (current.hasClearing() && !hostPrefs.hasPref(Constants.SR_NO_SPYING)) {
+							for (RealmComponent rc:current.clearing.getClearingComponents()) {
+								if (rc.canSpy() && !rc.getGameObject().equals(character.getGameObject())) {
+									CharacterWrapper spy = new CharacterWrapper(rc.getGameObject());
+									if (!character.isHidden() || spy.foundHiddenEnemy(character.getGameObject())) {
+										spy.updatePathKnowledge(path); // spy's that see character leave only get the path they are leaving on!
 									}
 								}
 							}
@@ -1042,6 +1039,10 @@ public class ActionRow {
 									}
 								}
 							}
+						}
+						for (CharacterWrapper follower : character.getActionFollowers()) {
+							follower.updatePathKnowledge(path);
+							follower.updatePathKnowledge(reverse);
 						}
 					}
 				}

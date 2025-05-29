@@ -1,17 +1,3 @@
-BUG:
-"When a guide uses a hidden path or secret passage, his followers discover it and move with him."
-
-"Whenever the guide discovers or loots a site, or
-reads runes at a site, all followers discover the site.
-Whenever the guide discovers or loots a TWT, all
-followers discover the TWT and the site that contains it.
-This happens whenever the guide makes a Loot or
-Reading Runes table roll, even if he doesn’t draw a
-treasure, or learn or awaken any spell.
-Special: If the guide is using Magic Sight,
-followers only discover a site the guide uses if they also
-use Magic Sight."
-
 ::ROADMAP::
 Super Realm characters (add abilities to character editor)
 	Necromancer
@@ -56,6 +42,7 @@ Would be nice to make weapon abilities too:
 Version 1.2.2.2
 NEW FEATURES:
 # Personal notes when trading include Quests
+# Followers discover paths when moving and sites when looting
 BUGS/ISSUES:
 # Fix Nomad being dropped at sunset
 # Fix order of small and large treasures

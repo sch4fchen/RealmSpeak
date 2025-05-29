@@ -91,6 +91,15 @@ public class Loot extends RealmTable {
 					}
 				}
 			}
+			for (CharacterWrapper follower : character.getActionFollowers()) {
+				if (!follower.hasTreasureLocationDiscovery(treasureLocation.getName())) {
+					follower.addTreasureLocationDiscovery(treasureLocation.getName());
+				}
+				String siteChitName = treasureLocation.getThisAttribute("siteChitName");
+				if (siteChitName!=null && !follower.hasTreasureLocationDiscovery(siteChitName)) {
+					follower.addTreasureLocationDiscovery(siteChitName);
+				}
+			}
 			
 			// Site chits are revealed immediately when looted
 			RealmComponent tlRc = RealmComponent.getRealmComponent(treasureLocation);
