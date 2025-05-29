@@ -1,6 +1,6 @@
 ::ROADMAP::
 Super Realm characters (add abilities to character editor)
-	Necromancer: color chits, lvl 4: blocked by white magic
+	Necromancer: color chits
 	Paladin
 	Psychic
 	Trawler

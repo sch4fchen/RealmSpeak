@@ -63,7 +63,7 @@ public class AdvantageEditDialog extends AggressiveDialog {
 	}
 	private void initComponents() {
 		setLayout(new BorderLayout());
-		setSize(1200,1000);
+		setSize(1200,1200);
 		
 		mainPanel = new JPanel(new BorderLayout());
 			Box box = Box.createHorizontalBox();
@@ -285,6 +285,7 @@ public class AdvantageEditDialog extends AggressiveDialog {
 		panelList = new ArrayList<>();
 		panelList.add(defaultEditPanel = new BlankEditPanel(model.getCharacter(),levelKey));
 		panelList.add(new ColorSourceEditPanel(model.getCharacter(),levelKey));
+		panelList.add(new ColorBlockingEditPanel(model.getCharacter(),levelKey));
 		panelList.add(new CompanionEditPanel(model.getCharacter(),levelKey));
 		panelList.add(new DieModEditPanel(model.getCharacter(),levelKey));
 		panelList.add(new ExtraActionEditPanel(model.getCharacter(),levelKey));

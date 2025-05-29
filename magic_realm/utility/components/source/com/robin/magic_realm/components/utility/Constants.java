@@ -553,6 +553,7 @@ public class Constants {
 	public static final String MOVE_SPEED_BONUS_COMBAT_BOX1 = "move_speed_bonus_combat_box1";
 	public static final String MOVE_SPEED_BONUS_COMBAT_BOX2 = "move_speed_bonus_combat_box2";
 	public static final String MOVE_SPEED_BONUS_COMBAT_BOX3 = "move_speed_bonus_combat_box3";
+	public static final String COLOR_SOURCE = "color_source";
 	
 	// New Spells
 	public static final String SUMMONING = "summoning";

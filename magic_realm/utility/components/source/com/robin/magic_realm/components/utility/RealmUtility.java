@@ -967,57 +967,69 @@ public class RealmUtility {
 	}
 	
 	public static ArrayList<RealmComponent> willBeBlockedByNatives(CharacterWrapper character,boolean isFollowing) {
-		return willBeBlockedByRealmComponent(character,isFollowing,false,false,true);
+		return willBeBlockedByRealmComponent(character,isFollowing,false,false,true,false);
 	}
 	
 	public static boolean willBeBlocked(CharacterWrapper character,boolean isFollowing,boolean blockMonsters) {
-		ArrayList<RealmComponent> blockers = willBeBlockedByRealmComponent(character,isFollowing,blockMonsters,true,false);
+		ArrayList<RealmComponent> blockers = willBeBlockedByRealmComponent(character,isFollowing,blockMonsters,true,false,true);
 		if (blockers!=null && !blockers.isEmpty()) {
 			return true;
-		}                                        
+		}
 		return false;
 	}
 	
-	public static ArrayList<RealmComponent> willBeBlockedByRealmComponent(CharacterWrapper character,boolean isFollowing,boolean blockMonsters, boolean monsters, boolean natives) {
+	private static ArrayList<RealmComponent> willBeBlockedByRealmComponent(CharacterWrapper character,boolean isFollowing,boolean blockMonsters, boolean monsters, boolean natives, boolean magic) {
 		if (character.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)) return null;
 		// Player's current clearing is checked for monsters, and blocked if needed
 		ArrayList<RealmComponent> blockers = new ArrayList<>();
-		if (!character.isMinion() && !character.isHidden() && !isFollowing) {
+		if (!character.isMinion() && !isFollowing) {
 			TileLocation tl = character.getCurrentLocation();
 			if (tl!=null && tl.hasClearing() && !tl.isBetweenClearings()) {
 				ClearingDetail currentClearing = tl.clearing;
 				Collection<RealmComponent> components = currentClearing.getClearingComponents();
 				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 				boolean mistLike = character.isMistLike();
-				for (RealmComponent rc : components) {
-					if (mistLike && !rc.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) continue;
-					if ((monsters && rc instanceof MonsterChitComponent) || (natives && rc instanceof NativeChitComponent)) {
-						// don't block if monster has an owner (until I can get to that piece of code!)
-						if (rc.getOwner()==null) {
-							// Monsters with Melt-into-Mist affecting them don't block
-							if (!rc.isMistLike()) {
-								if (rc.isMonster()) {
-									MonsterChitComponent monster = (MonsterChitComponent)rc;
-									// pacified and small monsters don't block
-									if (!monster.isSmall() || !hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS)) {
-										if (!rc.isPacifiedBy(character)) {
-											// don't block character if they have immunity to this monster
-											RealmComponent charRc = RealmComponent.getRealmComponent(character.getGameObject());
-											String magicImmunity = monster.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY);
-											if (!charRc.isImmuneTo(monster) && (!character.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT) || (magicImmunity!=null && (magicImmunity.matches("prism") || magicImmunity.matches("purple"))))) {
-												if ((!monster.getGameObject().hasThisAttribute(Constants.GHOST) && !monster.getGameObject().hasThisAttribute(Constants.WRAITH)) || !character.affectedByKey(Constants.SPIRIT_CHARM)) {
-													if (blockMonsters) {
-														monster.setBlocked(true); // so monster will stop prowling
+				if (!character.isHidden()) {
+					for (RealmComponent rc : components) {
+						if (mistLike && !rc.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) continue;
+						if ((monsters && rc instanceof MonsterChitComponent) || (natives && rc instanceof NativeChitComponent)) {
+							// don't block if monster has an owner (until I can get to that piece of code!)
+							if (rc.getOwner()==null) {
+								// Monsters with Melt-into-Mist affecting them don't block
+								if (!rc.isMistLike()) {
+									if (rc.isMonster()) {
+										MonsterChitComponent monster = (MonsterChitComponent)rc;
+										// pacified and small monsters don't block
+										if (!monster.isSmall() || !hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS)) {
+											if (!rc.isPacifiedBy(character)) {
+												// don't block character if they have immunity to this monster
+												RealmComponent charRc = RealmComponent.getRealmComponent(character.getGameObject());
+												String magicImmunity = monster.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY);
+												if (!charRc.isImmuneTo(monster) && (!character.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT) || (magicImmunity!=null && (magicImmunity.matches("prism") || magicImmunity.matches("purple"))))) {
+													if ((!monster.getGameObject().hasThisAttribute(Constants.GHOST) && !monster.getGameObject().hasThisAttribute(Constants.WRAITH)) || !character.affectedByKey(Constants.SPIRIT_CHARM)) {
+														if (blockMonsters) {
+															monster.setBlocked(true); // so monster will stop prowling
+														}
+														blockers.add(monster);
 													}
-													blockers.add(monster);
 												}
 											}
 										}
 									}
+									else if (rc.isNative()) {
+										blockers.add(rc);
+									}
 								}
-								else if (rc.isNative()) {
-									blockers.add(rc);
-								}
+							}
+						}
+					}
+				}
+				if (magic && character.getGameObject().hasThisAttribute(Constants.BLOCKED_BY_MAGIC_COLOR)) {
+					ArrayList<ColorMagic> colors = tl.clearing.getAllSourcesOfColor(true);
+					for (String blockingColor : character.getGameObject().getThisAttributeList(Constants.BLOCKED_BY_MAGIC_COLOR)) {
+						for (ColorMagic availableColors : colors) {
+							if (availableColors.getColorName().toLowerCase().matches(blockingColor.toLowerCase())) {
+								blockers.add(RealmComponent.getRealmComponent(character.getGameObject()));
 							}
 						}
 					}
