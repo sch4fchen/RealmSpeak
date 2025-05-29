@@ -693,11 +693,17 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (transmorph!=null) {
 			if (transmorph.hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) mod++;
 			if (transmorph.hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) mod--;
-			return new Strength(transmorph.getThisAttribute("vulnerability")+mod);
+			if (transmorph.hasThisAttribute(Constants.WEIGHT)) {
+				return new Strength(transmorph.getThisAttribute(Constants.WEIGHT)+mod);
+			}
+			return new Strength(transmorph.getThisAttribute(Constants.VULNERABILITY)+mod);
 		}
 		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) mod++;
 		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) mod--;
-	    return new Strength(getGameObject().getThisAttribute("vulnerability")+mod);
+		if (getGameObject().hasThisAttribute(Constants.WEIGHT)) {
+			return new Strength(getGameObject().getThisAttribute(Constants.WEIGHT)+mod);
+		}
+	    return new Strength(getGameObject().getThisAttribute(Constants.VULNERABILITY)+mod);
 	}
 	/**
 	 * @param speedToBeat			The speed to beat (all options must be FASTER than)
