@@ -1,10 +1,6 @@
 ::ROADMAP::
 Super Realm characters (add abilities to character editor)
-	Necromancer: color chits:
-		These chits start the game active.
-		They become inactive when used to supply color to a spell/item, or when a spell/item effect would normally cause color chits to fatigue (including paying fatigue cost).
-		They can become active again by enchanting them via the Enchant activity.
-		These chits can never be wounded. If the Necromancer’s other nine character chits become wounded and/or tied up in spells, the Necromancer dies.
+	If the Necromancer’s other nine character chits become wounded and/or tied up in spells, the Necromancer dies.
 	Paladin
 	Psychic
 	Trawler

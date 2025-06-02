@@ -90,9 +90,19 @@ public class ChitBinLayout {
 		}
 		return list;
 	}
+	public ArrayList<ChitComponent> getColorChits() {
+		ArrayList<ChitComponent> list = new ArrayList<>();
+		for (ChitBin bin : chitBins) {
+			ChitComponent chit = bin.getChit();
+			if (chit!=null && chit instanceof CharacterActionChitComponent && ((CharacterActionChitComponent)chit).isColorOnlyChit()) {
+				list.add(chit);
+			}
+		}
+		return list;
+	}
 	private void addChit(String type,CharacterActionChitComponent chit) {
 		ChitBin bin = new ChitBin();
-		if (chit!=null && chit.isMagic()) {
+		if (chit!=null && (chit.isMagic() || chit.isColorOnlyChit())) {
 			bin.setColorMagic(chit.getEnchantedColorMagic());
 		}
 		hashLists.put(type, bin);

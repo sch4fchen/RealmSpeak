@@ -1785,7 +1785,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 			// Waking up
 			setSleep(false);
 			for (CharacterActionChitComponent chit : getFatiguedChits()) {
-				chit.makeActive();
+				if (!chit.isColorOnlyChit()) {
+					chit.makeActive();
+				}
 			}
 		}
 		
@@ -5757,8 +5759,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 			return getHiringCharacter().getEnchantableChits();
 		}
 		ArrayList<CharacterActionChitComponent> ret = new ArrayList<>();
-		for (CharacterActionChitComponent chit:getActiveMagicChits()) {
-			if ("MAGIC".equals(chit.getAction()) && chit.getMagicNumber()<6) {
+		for (CharacterActionChitComponent chit:getActiveMagicAndColorChits()) {
+			if (("MAGIC".equals(chit.getAction()) || "COLOR".equals(chit.getAction())) && chit.getMagicNumber()<6) {
 				ret.add(chit);
 			}
 		}
@@ -5777,6 +5779,18 @@ public class CharacterWrapper extends GameObjectWrapper {
 		ArrayList<StateChitComponent> ret = new ArrayList<>();
 		for (CharacterActionChitComponent chit : getAllChits()) {
 			if ("MAGIC".equals(chit.getAction())) {
+				ret.add(chit);
+			}
+		}
+		return ret;
+	}
+	public ArrayList<CharacterActionChitComponent> getActiveMagicAndColorChits() {
+		ArrayList<CharacterActionChitComponent> ret = new ArrayList<>();
+		ArrayList<CharacterActionChitComponent> pool = new ArrayList<>();
+		pool.addAll(getActiveChits());
+		pool.addAll(getAlertedChits()); // I think ONLY MAGIC chits can be alerted
+		for (CharacterActionChitComponent chit : pool) {
+			if ("MAGIC".equals(chit.getAction()) || "COLOR".equals(chit.getAction())) {
 				ret.add(chit);
 			}
 		}

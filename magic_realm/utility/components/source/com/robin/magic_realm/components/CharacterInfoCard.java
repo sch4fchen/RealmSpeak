@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import com.robin.general.swing.MultiFormatString;
 import com.robin.general.util.StringBufferedList;
 import com.robin.general.util.StringUtilities;
+import com.robin.magic_realm.components.attribute.ColorMagic;
 import com.robin.magic_realm.components.attribute.RelationshipType;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmUtility;
@@ -287,9 +288,14 @@ public class CharacterInfoCard {
 		g.setFont(chitFont);
 		g.setColor(darkGreen);
 		String s = chit.getAction();
-		String s1 = (chit.isMagic()?chit.getMagicType():chit.getStrength().toString())
-						+chit.getSpeed().getNum()
-						+StringUtilities.getRepeatString("*",chit.getEffortAsterisks());
+		String s1 = null;
+		if (chit.isColorOnlyChit()) {
+			s1 = ColorMagic.getMagicColorFromMagicType(chit.getMagicType()).getColorName();
+		} else {
+			s1 = (chit.isMagic()?chit.getMagicType():chit.getStrength().toString())
+							+chit.getSpeed().getNum()
+							+StringUtilities.getRepeatString("*",chit.getEffortAsterisks());
+		}
 		g.drawString(s, x + (45 - g.getFontMetrics().stringWidth(s) >> 1), ((y + 22 + (g.getFontMetrics().getAscent() >> 1)) - g.getFontMetrics().getAscent()) + 4);
 		g.drawString(s1, x + (45 - g.getFontMetrics().stringWidth(s1) >> 1), y + 22 + (g.getFontMetrics().getAscent() >> 1) + 4);
 		g.setClip(null);

@@ -31,6 +31,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 	public static final String ACTION_CHIT_STATE_COLOR_PURPLE = "CP";
 	public static final String ACTION_CHIT_STATE_OUT_OF_PLAY = "X";
 	public static final String ACTION_CHIT_STATE_BERSERK = "B";
+	public static final String ACTION_CHIT_STATE_INACTIVE = "IA";
 
 	// FACE UP
 	public static final int ALERT_ID = 0;
@@ -188,6 +189,11 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		return "REFLEX".equals(action);
 	}
 	
+	public boolean isColorOnlyChit() {
+		String action = getAction().toUpperCase();
+		return "COLOR".equals(action);
+	}
+	
 	public boolean isAnyEffort() {
 		return getGameObject().hasThisAttribute(Constants.ANY_EFFORT);
 	}
@@ -223,7 +229,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 	}
 
 	public boolean isEnchantable() {
-		return isMagic() && getMagicNumber() < 6;
+		return (isMagic() || isColorOnlyChit()) && getMagicNumber() < 6;
 	}
 
 	public Strength getStrength() {
@@ -416,7 +422,10 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		}
 
 		Speed chitSpeed = getSpeed();
-		String speed = String.valueOf(chitSpeed.getNum());
+		String speed = "";
+		if (!action.equals("COLOR")) {
+			String.valueOf(chitSpeed.getNum());
+		}
 		if (chitSpeed.getNum() == 0) {
 			speed = getChitAttribute("speed") + "(0)"; // to indicate its actual speed
 		}
@@ -424,6 +433,9 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		String mod;
 		if (action.equals("MAGIC")) {
 			mod = getMagicType();
+		}
+		else if (action.equals("COLOR")) {
+			mod = ColorMagic.getMagicColorFromMagicType(getMagicType()).getColorName();
 		}
 		else {
 			mod = getStrength().toString();
@@ -764,7 +776,10 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 	}
 
 	public void makeFatigued() {
-		if (getEffortAsterisks()>0) { // CANNOT fatigue non-effort chits
+		if (isColorOnlyChit()) {
+			setState(ACTION_CHIT_STATE_INACTIVE);
+		}
+		else if (getEffortAsterisks()>0) { // CANNOT fatigue non-effort chits
 			setState(ACTION_CHIT_STATE_FATIGUED);
 		}
 		if (getGameObject().hasThisAttribute(Constants.BREAK_WHEN_USED)) {
@@ -773,7 +788,9 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 	}
 
 	public void makeWounded() {
-		setState(ACTION_CHIT_STATE_WOUNDED);
+		if (!isColorOnlyChit()) {
+			setState(ACTION_CHIT_STATE_WOUNDED);
+		}
 		if (getGameObject().hasThisAttribute(Constants.BREAK_WHEN_USED)) {
 			expireSourceSpell();
 		}
@@ -942,6 +959,9 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		sb.append(" ");
 		if (isMagic()) {
 			sb.append(getMagicType());
+		}
+		else if (isColorOnlyChit()){
+			sb.append(ColorMagic.getMagicColorFromMagicType(getMagicType()).getColorName());
 		}
 		else {
 			sb.append(getStrength().getChar());

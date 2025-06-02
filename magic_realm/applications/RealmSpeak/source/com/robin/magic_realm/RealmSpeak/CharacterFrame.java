@@ -1646,6 +1646,15 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 						}
 					}
 				}
+				else if (thingName.startsWith("wounds")) {
+					int wounds = 0;
+					try {
+						wounds = Integer.valueOf(thingName.substring(6)).intValue();
+					}
+					catch (Exception ex) {
+					}
+					character.setExtraWounds(wounds);
+				}
 				else if ("smack".equals(thingName)) {
 					for (CharacterActionChitComponent chit : character.getActiveChits()) {
 						if (chit.getEffortAsterisks() > 0) {

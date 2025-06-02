@@ -21,6 +21,7 @@ public class ChitEditDialog extends AggressiveDialog {
 	
 	private Box strengthLine;
 	private Box magicLine;
+	private Box speedLine;
 	private Box specialLine;
 	
 	private ButtonPanel typeSelector;
@@ -159,7 +160,7 @@ public class ChitEditDialog extends AggressiveDialog {
 			magicLine.add(magicSelector);
 		box.add(magicLine);
 		box.add(Box.createVerticalGlue());
-		line = group.createLabelLine("Speed");
+		speedLine = group.createLabelLine("Speed");
 			speedSelector = new ButtonPanel(RealmCharacterConstants.SPEEDS);
 			speedSelector.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
@@ -169,8 +170,8 @@ public class ChitEditDialog extends AggressiveDialog {
 				}
 			});
 			ComponentTools.lockComponentSize(speedSelector,w,25);
-			line.add(speedSelector);
-		box.add(line);
+			speedLine.add(speedSelector);
+		box.add(speedLine);
 		box.add(Box.createVerticalGlue());
 		line = group.createLabelLine("Effort");
 			effortSelector = new ButtonPanel(RealmCharacterConstants.EFFORTS);
@@ -213,7 +214,7 @@ public class ChitEditDialog extends AggressiveDialog {
 		StringBuffer sb = new StringBuffer();
 		sb.append(chit.getGameObject().getThisAttribute("action"));
 		sb.append(" ");
-		if (chit.isMagic()) {
+		if (chit.isMagic() || chit.isColorOnlyChit()) {
 			sb.append(chit.getGameObject().getThisAttribute("magic"));
 		}
 		else {
@@ -250,8 +251,10 @@ public class ChitEditDialog extends AggressiveDialog {
 	private void updateControls() {
 		chitView.setIcon(chit.getIcon());
 		boolean magic = chit.isMagic();
-		strengthLine.setVisible(!magic);
-		magicLine.setVisible(magic);
+		boolean colorOnly = chit.isColorOnlyChit();
+		strengthLine.setVisible(!magic&&!colorOnly);
+		speedLine.setVisible(!colorOnly);
+		magicLine.setVisible(magic||colorOnly);
 		specialLine.setVisible("SPECIAL".equals(typeSelector.getSelectedItem()));
 	}
 	private void clearChitSpecials() {

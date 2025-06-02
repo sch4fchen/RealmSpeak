@@ -52,7 +52,7 @@ public class ChitWoundManager extends ChitManager {
 		return false;
 	}
 	protected boolean canClickFatigue(CharacterActionChitComponent clickedChit) {
-		if (currentCount>0 && activeChits.getAllChits().size()==0) {
+		if (currentCount>0 && activeChits.getAllChits().size()-activeChits.getColorChits().size()==0) {
 			if (clickedChit!=null) {
 				return true;
 			}
@@ -73,8 +73,8 @@ public class ChitWoundManager extends ChitManager {
 	}
 	protected void fatigueClick(CharacterActionChitComponent clickedChit) {
 		// only allow this if all active chits are wounded.
-		if (currentCount>0 && activeChits.getAllChits().size()==0) {
-			if (clickedChit!=null) {
+		if (currentCount>0 && activeChits.getAllChits().size()-activeChits.getColorChits().size()==0) {
+			if (clickedChit!=null && !clickedChit.isColorOnlyChit()) {
 				// go ahead
 				moveChit(clickedChit,fatiguedChits,woundedChits);
 				currentCount -= 1;

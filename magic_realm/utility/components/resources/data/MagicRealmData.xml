@@ -62779,6 +62779,7 @@
         <attribute icon_type="necromancer" />
         <attribute super_realm="" />
         <attribute magic="V" />
+        <attribute chit_state="CB" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2413" name="Necromancer Purple">
@@ -62792,6 +62793,7 @@
         <attribute icon_type="necromancer" />
         <attribute super_realm="" />
         <attribute magic="IV" />
+        <attribute chit_state="CP" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2414" name="Necromancer Magic VI6*">
@@ -62835,6 +62837,7 @@
         <attribute icon_type="necromancer" />
         <attribute super_realm="" />
         <attribute magic="II" />
+        <attribute chit_state="CY" />
       </AttributeBlock>
     </GameObject>
   </objects>

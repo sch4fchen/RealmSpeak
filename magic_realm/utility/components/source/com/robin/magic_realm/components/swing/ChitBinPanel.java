@@ -25,7 +25,7 @@ public abstract class ChitBinPanel extends JComponent {
 	private static final int INNER_GROUP_SPACE = 3;
 	private static final int COLOR_MAGIC_SPACE = 10;
 	private static final int PANEL_BORDER = 10;
-	private static final int LABEL_WIDTH = 40;
+	private static final int LABEL_WIDTH = 44;
 	private ChitBinLayout layout;
 	private Border border;
 	private Border groupBorder;
@@ -49,7 +49,7 @@ public abstract class ChitBinPanel extends JComponent {
 		reset();
 	}
 	public void updateSize() {
-		cellSize = StateChitComponent.S_CHIT_SIZE + (INNER_CELL_SPACE << 1);
+		cellSize = ChitComponent.S_CHIT_SIZE + (INNER_CELL_SPACE << 1);
 		int w = cellSize * maxCols + (PANEL_BORDER << 1) + LABEL_WIDTH;
 		int h = cellSize * maxRows + (PANEL_BORDER << 1);
 		ComponentTools.lockComponentSize(this, w, h);
@@ -94,8 +94,13 @@ public abstract class ChitBinPanel extends JComponent {
 		int c=0;
 		for (String group : groups) {
 			boolean isMagic = "MAGIC".equals(group);
+			boolean isOther = "OTHER".equals(group);
 			g.setColor(Color.black);
-			GraphicsUtil.drawCenteredString(g,PANEL_BORDER,r*cellSize,LABEL_WIDTH,cellSize,group);
+			int yText = r*cellSize;
+			if (!isOther) {
+				yText+=COLOR_MAGIC_SPACE;
+			}
+			GraphicsUtil.drawCenteredString(g,PANEL_BORDER,yText,LABEL_WIDTH,cellSize,group);
 			ArrayList<ChitBin> bins = layout.getBins(group);
 			int rtop = (r*cellSize)+top;
 			for (ChitBin bin : bins) {
@@ -131,7 +136,7 @@ public abstract class ChitBinPanel extends JComponent {
 				if (c==maxCols) {
 					r++;
 					c=0;
-					if (isMagic) {
+					if (isMagic || isOther) {
 						top += COLOR_MAGIC_SPACE;
 					}
 				}
@@ -139,7 +144,7 @@ public abstract class ChitBinPanel extends JComponent {
 			if (c>0) {
 				r++;
 				c=0;
-				if (isMagic) {
+				if (isMagic || isOther) {
 					top += (COLOR_MAGIC_SPACE<<1);
 				}
 			}
@@ -180,6 +185,9 @@ public abstract class ChitBinPanel extends JComponent {
 	
 	public ArrayList<ChitComponent> getAllChits() {
 		return layout.getAllChits();
+	}
+	public ArrayList<ChitComponent> getColorChits() {
+		return layout.getColorChits();
 	}
 	public static void main(String[] args) {
 		RealmUtility.setupTextType();
