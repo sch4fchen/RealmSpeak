@@ -1,6 +1,5 @@
 ::ROADMAP::
 Super Realm characters (add abilities to character editor)
-	If the Necromancer’s other nine character chits become wounded and/or tied up in spells, the Necromancer dies.
 	Paladin
 	Psychic
 	Trawler

@@ -314,7 +314,7 @@ public abstract class ChitManager extends AggressiveDialog {
 	 * @return		True if no chits are active or fatigued
 	 */
 	public boolean isDead() {
-		return activeChits.getAllChits().size()==0 && fatiguedChits.getAllChits().size()==0;
+		return activeChits.getAllChits().size()-activeChits.getColorChits().size()==0 && fatiguedChits.getAllChits().size()==0;
 	}
 	public JPanel getMasterPanel() {
 		return masterPanel;

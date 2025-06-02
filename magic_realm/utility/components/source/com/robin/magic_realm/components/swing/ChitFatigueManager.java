@@ -137,7 +137,7 @@ public class ChitFatigueManager extends ChitManager {
 		return chit.isFight() || chit.isFightAlert() ||  chit.isReflex() || chit.isAnyEffort();
 	}
 	protected boolean countsAsMagic(CharacterActionChitComponent chit) {
-		return chit.isColor() || chit.isMagic() || chit.isAnyEffort();
+		return (chit.isColor() || chit.isMagic() || chit.isAnyEffort()) && !chit.isColorOnlyChit();
 	}
 	protected int totalPossibleCount() {
 		int val = 0;
