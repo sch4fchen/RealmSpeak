@@ -38,6 +38,9 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 
+Version 1.2.2.3
+
+
 Version 1.2.2.2
 NEW FEATURES:
 # Personal notes when trading include Quests
