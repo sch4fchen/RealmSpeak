@@ -424,7 +424,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		Speed chitSpeed = getSpeed();
 		String speed = "";
 		if (!action.equals("COLOR")) {
-			String.valueOf(chitSpeed.getNum());
+			speed = String.valueOf(chitSpeed.getNum());
 		}
 		if (chitSpeed.getNum() == 0) {
 			speed = getChitAttribute("speed") + "(0)"; // to indicate its actual speed

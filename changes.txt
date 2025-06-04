@@ -39,7 +39,8 @@ Would be nice to make weapon abilities too:
 
 
 Version 1.2.2.3
-
+BUGS/ISSUES:
+# Fix missing speed number on character chits
 
 Version 1.2.2.2
 NEW FEATURES:
