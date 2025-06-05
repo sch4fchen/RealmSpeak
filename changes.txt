@@ -1,13 +1,12 @@
 ::ROADMAP::
 Super Realm characters (add abilities to character editor)
-	Paladin
+	Paladin: comrad ability inl. optional negating it
 	Psychic
 	Trawler
 	Wanderer
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt
 Super Realm: Optional Rules: Selling (SR: 10.11, p.116)
-Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.123): Witch, Witch King, Paladin
 
 Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells: Lightning Bolt, Alchemists Mixture); site targets are considered armored. or by hurricane winds
 Super Realm: Events (Global Events = optional rule 11.11): 33 Events
@@ -25,6 +24,7 @@ Super Realm: Optional Rules: Stealing (SR: 11.3, p.121)
 Super Realm: Optional Rules: Hiring Unused Characters (SR: 11.4, p.122)
 Super Realm: Optional Rules: Range Setup (SR: 11.10, p.126)
 Super Realm: Optional Rules: Cornered (SR: 11.13, p.128)
+Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.123): Witch, Witch King
 Super Realm: Player building map: distribute tiles equally (including river tiles), distribute river tiles first, then grotto, then rest, each player has 3 tiles in the hand and draws after placing, skip player if he cannot place any tile (and he has no river tile), if all players are skipped or player would be skipped but has river tile, undo last placement, do not allow placing grotto before all other river tiles have been placed
 ---Additional and new features---
 Native, Monster, Steeds: Change color for altered move, attack strength, attack speed, length 
@@ -39,7 +39,8 @@ Would be nice to make weapon abilities too:
 
 
 Version 1.2.2.4
-
+SUPER REALM:
+# New character: Paladin
 
 Version 1.2.2.3
 BUGS/ISSUES:

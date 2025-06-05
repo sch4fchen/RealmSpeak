@@ -27,6 +27,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"Can walk woods on the 7th day of every week.",Constants.WALK_WOODS,"7th"},
 		{"Can walk woods on the every day of every week.",Constants.WALK_WOODS,""},
 		{"May choose which clearing to land, immune to Lost.",Constants.REALM_MAP,""},
+		{"Extra phase when being followed.",Constants.COMRADE,""},
 	};
 	private static String[][] MISC_ADVANTAGE_DISCOVERIES = {
 		{"Knows all paths/passages",Constants.KNOWS_ROADS,""},

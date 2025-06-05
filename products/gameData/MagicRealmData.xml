@@ -62840,6 +62840,282 @@
         <attribute chit_state="CY" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2417" name="Paladin">
+      <AttributeBlock blockName="this">
+        <attribute icon_type="paladin" />
+        <attribute character="" />
+        <attribute vulnerability="M" />
+        <attribute start="Inn,Chapel,Hamlet" />
+        <attribute facing="dark" />
+        <attribute pronoun="he" />
+        <attribute icon_folder="characters" />
+        <attribute creator="Anomalous Host" />
+        <attribute artcredit="" />
+        <attribute super_realm="" />
+        <attribute potrait_folder="" />
+        <attribute potrait_file="" />
+        <attribute fighter="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="level_1">
+        <attribute name="Scholar" />
+        <attribute armor="Helmet,Breastplate" />
+      </AttributeBlock>
+      <AttributeBlock blockName="level_2">
+        <attribute name="Zealot" />
+        <attribute weapon="Short Sword" />
+        <attribute armor="Breastplate,Shield" />
+        <attribute spellcount="1" />
+        <attributeList keyName="advantages">
+          <attributeVal N0="EXPLORER:  Rolls one die when making a Treasures Within Treasures table roll." />
+        </attributeList>
+        <attributeList keyName="spelltypes">
+          <attributeVal N0="I" />
+        </attributeList>
+        <attributeList keyName="diemod">
+          <attributeVal N0="1d:twt:all" />
+        </attributeList>
+      </AttributeBlock>
+      <AttributeBlock blockName="level_3">
+        <attribute name="Adventurer" />
+        <attribute weapon="Short Sword" />
+        <attribute armor="Helmet,Breastplate,Shield" />
+        <attribute spellcount="1" />
+        <attributeList keyName="spelltypes">
+          <attributeVal N0="I" />
+          <attributeVal N1="VII" />
+        </attributeList>
+      </AttributeBlock>
+      <AttributeBlock blockName="level_4">
+        <attribute name="Paladin" />
+        <attribute weapon="Mace" />
+        <attribute armor="Armor" />
+        <attribute spellcount="2" />
+        <attribute comrade="" />
+        <attributeList keyName="advantages">
+          <attributeVal N0="COMRADE:  Can record an extra phase if a character or hired leader is following." />
+        </attributeList>
+        <attributeList keyName="extra_actions">
+          <attributeVal N0="R" />
+        </attributeList>
+        <attributeList keyName="spelltypes">
+          <attributeVal N0="I" />
+          <attributeVal N1="IV" />
+          <attributeVal N2="VII" />
+        </attributeList>
+      </AttributeBlock>
+      <AttributeBlock blockName="relationship">
+        <attribute zealots="2" />
+        <attribute order="1" />
+        <attribute peasants="1" />
+        <attribute priest="1" />
+        <attribute aborigines="-1" />
+        <attribute coven="-1" />
+        <attribute pagans="-1" />
+        <attribute woodfolk="-1" />
+        <attribute bandits="-2" />
+        <attribute dwarves="-2" />
+        <attribute elves="-2" />
+        <attribute cultists="-2" />
+      </AttributeBlock>
+      <AttributeBlock blockName="optional_2">
+        <attribute optkey="OptCharPaladin" />
+        <attribute comrade_negate="" />
+        <attributeList keyName="extra_actions">
+          <attributeVal N0="R" />
+        </attributeList>
+        <attributeList keyName="advantages">
+          <attributeVal N0="COMRADE:  Get one extra REST phase every day." />
+        </attributeList>
+      </AttributeBlock>
+      <contains id="2418" />
+      <contains id="2419" />
+      <contains id="2420" />
+      <contains id="2421" />
+      <contains id="2422" />
+      <contains id="2423" />
+      <contains id="2424" />
+      <contains id="2425" />
+      <contains id="2426" />
+      <contains id="2427" />
+      <contains id="2428" />
+      <contains id="2429" />
+    </GameObject>
+    <GameObject id="2418" name="Paladin Move M5">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute strength="M" />
+        <attribute speed="5" />
+        <attribute character_level="1" />
+        <attribute stage="1" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="paladin" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2419" name="Paladin Move M4*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute strength="M" />
+        <attribute speed="4" />
+        <attribute character_level="1" />
+        <attribute stage="2" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="paladin" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2420" name="Paladin Fight M4*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute strength="M" />
+        <attribute speed="4" />
+        <attribute character_level="1" />
+        <attribute stage="3" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="paladin" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2421" name="Paladin Magic I4*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="4" />
+        <attribute character_level="2" />
+        <attribute stage="4" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="paladin" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+        <attribute magic="I" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2422" name="Paladin Fight M5">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute strength="M" />
+        <attribute speed="5" />
+        <attribute character_level="2" />
+        <attribute stage="5" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="paladin" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2423" name="Paladin Fight M3**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute strength="M" />
+        <attribute speed="3" />
+        <attribute character_level="2" />
+        <attribute stage="6" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="paladin" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2424" name="Paladin Magic VII6*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="6" />
+        <attribute character_level="3" />
+        <attribute stage="7" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="paladin" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+        <attribute magic="VII" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2425" name="Paladin Move M3**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute speed="3" />
+        <attribute character_level="3" />
+        <attribute stage="8" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="paladin" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+        <attribute strength="M" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2426" name="Paladin Move H6">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute strength="H" />
+        <attribute speed="6" />
+        <attribute character_level="3" />
+        <attribute stage="9" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="paladin" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2427" name="Paladin Magic I2**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="2" />
+        <attribute character_level="4" />
+        <attribute stage="10" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="paladin" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+        <attribute magic="I" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2428" name="Paladin Magic IV4*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="4" />
+        <attribute character_level="4" />
+        <attribute stage="11" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="paladin" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+        <attribute magic="IV" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2429" name="Paladin Fight H6">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute speed="6" />
+        <attribute character_level="4" />
+        <attribute stage="12" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="paladin" />
+        <attribute super_realm="" />
+        <attribute strength="H" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

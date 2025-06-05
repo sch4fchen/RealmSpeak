@@ -242,6 +242,8 @@ public class Constants {
 	public static final String COMBAT_GOES_LAST = "combat_goes_last";
 	public static final String INSULT_CHALLENGE_AS_BLOCK_BATTLE = "insult_challenge_as_block_battle";
 	public static final String BLOCKED_BY_MAGIC_COLOR = "blocked_by_magic_color";
+	public static final String COMRADE = "comrade";
+	public static final String COMRADE_NEGATE = "comrade_negate";
 	
 	// Relationships
 	public static final String BASE_RELATIONSHIP = "relationship";
@@ -778,6 +780,7 @@ public class Constants {
 	public static final String OPT_CHAR_ABILITY_DRUID_SUMMON = "OptCharDruidSummon";
 	public static final String OPT_CHAR_ABILITY_DRUID_CURSES = "OptCharDruidCurses";
 	public static final String OPT_CHAR_ABILITY_ELF = "OptCharElf";
+	public static final String OPT_CHAR_ABILITY_PALADIN = "OptCharPaladin";
 	public static final String OPT_PENETRATING_ARMOR = "OptPenArmor";
 	public static final String OPT_TWO_HANDED_WEAPONS = "OptTwoHandedWeapons";
 	public static final String OPT_DUAL_WIELDING = "OptDualWielding";
