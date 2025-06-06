@@ -62894,9 +62894,6 @@
         <attributeList keyName="advantages">
           <attributeVal N0="COMRADE:  Can record an extra phase if a character or hired leader is following." />
         </attributeList>
-        <attributeList keyName="extra_actions">
-          <attributeVal N0="R" />
-        </attributeList>
         <attributeList keyName="spelltypes">
           <attributeVal N0="I" />
           <attributeVal N1="IV" />
@@ -62917,14 +62914,17 @@
         <attribute elves="-2" />
         <attribute cultists="-2" />
       </AttributeBlock>
-      <AttributeBlock blockName="optional_2">
+      <AttributeBlock blockName="optional_4">
         <attribute optkey="OptCharPaladin" />
-        <attribute comrade_negate="" />
         <attributeList keyName="extra_actions">
           <attributeVal N0="R" />
         </attributeList>
         <attributeList keyName="advantages">
           <attributeVal N0="COMRADE:  Get one extra REST phase every day." />
+        </attributeList>
+        <attributeList keyName="replace">
+          <attributeVal N0="advantages" />
+          <attributeVal N1="comrade" />
         </attributeList>
       </AttributeBlock>
       <contains id="2418" />

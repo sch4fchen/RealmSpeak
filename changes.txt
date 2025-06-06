@@ -1,20 +1,20 @@
 ::ROADMAP::
 Super Realm characters (add abilities to character editor)
-	Paladin: comrad ability inl. optional negating it
-	Psychic
+	Paladin: comrad ability
 	Trawler
 	Wanderer
+	Psychic: Once per Day: Changing a Block/Battle result (even due to refusing to lose points from a Challenge or Insult) into a No Deal.
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt
 Super Realm: Optional Rules: Selling (SR: 10.11, p.116)
 
 Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells: Lightning Bolt, Alchemists Mixture); site targets are considered armored. or by hurricane winds
-Super Realm: Events (Global Events = optional rule 11.11): 33 Events
 Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
 Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
 Super Realm: Optional Rules: Sentimental Value (SR: 10.6, p.115)
 Super Realm: Optional Rules: Grounded Missions and Tasks (SR: 10.8, p.115)
 Super Realm: Optional Rules: Regrouping (SR: 10.10, p.115)
+Super Realm: Events (Global Events = optional rule 11.11): 33 Events
 
 ---Super Realms Rules + Optional Rules---
 Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile

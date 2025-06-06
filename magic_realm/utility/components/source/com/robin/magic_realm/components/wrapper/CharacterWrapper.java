@@ -4763,6 +4763,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		"custom_armor",
 		"optkey",
 		"badge_icon",
+		"replace"
 	};
 	/**
 	 * This updates the character based on their current level.  This method can be called multiple times without harm.  It will
@@ -4776,11 +4777,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 		// Attributes in optional_x should go into the "optional" block.
 		int currentLevel = getCharacterLevel();
 		for (int n = 1; n <= currentLevel; n++) {
-			copyAttributes(dontCopy, "level_" + n, "this", null);
 			copyAttributes(dontCopy, "optional_" + n, "optional", hostPrefs);
+			copyAttributes(dontCopy, "level_" + n, "this", null);
 			for (int i = 1; i <= 2; i++) {
-				copyAttributes(dontCopy, "level_" + n + "_" + i, "this", null);
 				copyAttributes(dontCopy, "optional_" + n + "_" + i, "optional", hostPrefs);
+				copyAttributes(dontCopy, "level_" + n + "_" + i, "this", null);
 			}
 		}
 		generalInitialization();
@@ -4815,12 +4816,24 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 		for (String key : levelBlock.keySet()) {
+			if (key.toLowerCase().matches("replace")) {
+				String levelBlockName = blockName.replace("optional", "level");
+				Object val = levelBlock.get(key);
+				if (val instanceof ArrayList) {
+					ArrayList<String> list = (ArrayList<String>)val;
+					for (String s : list) {
+						getGameObject().removeAttribute(levelBlockName,s);
+					}
+				}
+				else {
+					getGameObject().removeAttribute(levelBlockName,(String)val);
+				}
+			}
 			if (!dontCopy.contains(key)) {
 				Object val = levelBlock.get(key);
 				if (val instanceof ArrayList) {
-					ArrayList list = (ArrayList)val;
-					for (Iterator s=list.iterator();s.hasNext();) {
-						String string = (String)s.next();
+					ArrayList<String> list = (ArrayList<String>)val;
+					for (String string : list) {
 						getGameObject().addAttributeListItem(targetBlock,key,string);
 					}
 				}
