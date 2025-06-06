@@ -485,6 +485,13 @@ public class CharacterActionControlManager {
 				// deleting a move, so delete a clearing plot
 				getCharacter().chompClearingPlot();
 			}
+			if (removed.startsWith(DayAction.FOLLOW_ACTION.getCode())) {
+				GameObject guide = getCharacter().getCharacterImFollowing().getGameObject();
+				guide.removeThisAttributeListItem(Constants.COMRADE_WILL_BE_FOLLOWED_TODAY, getCharacter().getGameObject().getStringId());
+				if (guide.getThisAttributeList(Constants.COMRADE_WILL_BE_FOLLOWED_TODAY).isEmpty()) {
+					guide.removeThisAttribute(Constants.COMRADE_WILL_BE_FOLLOWED_TODAY);
+				}
+			}
 		}
 		if (cap!=null) {
 			if (getCharacter().getClearingPlot()==null) {
@@ -577,7 +584,9 @@ public class CharacterActionControlManager {
 		chooser.setVisible(true);
 		String selText = chooser.getSelectedText();
 		if (selText!=null) {
-			String id = chooser.getFirstSelectedComponent().getGameObject().getStringId();
+			GameObject guide = chooser.getFirstSelectedComponent().getGameObject();
+			guide.addThisAttributeListItem(Constants.COMRADE_WILL_BE_FOLLOWED_TODAY,getCharacter().getGameObject().getStringId());
+			String id = guide.getStringId();
 			doRecord(DayAction.FOLLOW_ACTION.getCode()+"("+selText+")~"+id);
 		}
 	}

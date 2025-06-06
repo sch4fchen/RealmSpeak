@@ -1842,6 +1842,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 		removeAttribute(RELCHANGE_GROUP_LIST);
 		removeRunAwayLastUsedChit();
 		getGameObject().removeThisAttribute(Constants.SAILS_LAST_CLEARING);
+		getGameObject().removeThisAttribute(Constants.COMRADE_BEING_FOLLOWED_TODAY);
+		getGameObject().removeThisAttribute(Constants.COMRADE_WILL_BE_FOLLOWED_TODAY);
 		
 		if (getPonyGameObject()!=null) {
 			ArrayList<RealmComponent> fhList = getFollowingHirelings();
@@ -2362,7 +2364,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			pm.addExtraDwellingPhase();
 		}
 		
-		if (getGameObject().hasThisAttribute(Constants.EXTRA_CAVE_PHASE)) {
+		if (affectedByKey(Constants.EXTRA_CAVE_PHASE)) {
 			pm.addExtraCavePhase(getGameObject());
 		}
 		
@@ -2380,6 +2382,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 			pm.addExtraBasicPhase();
 		}
 		if (getGameObject().hasThisAttribute(Constants.MEDITATE_EXTRA_PHASE)) {
+			pm.addExtraBasicPhase();
+		}
+		if (getGameObject().hasThisAttribute(Constants.COMRADE)
+				&& (getGameObject().hasThisAttribute(Constants.COMRADE_BEING_FOLLOWED_TODAY) || getGameObject().hasThisAttribute(Constants.COMRADE_WILL_BE_FOLLOWED_TODAY))) {
 			pm.addExtraBasicPhase();
 		}
 		ArrayList<String> spellExtras = getSpellExtras();
@@ -3679,9 +3685,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public void clearActionFollowers() {
 		removeAttribute(ACTION_FOLLOWER);
+		getGameObject().removeThisAttribute(Constants.COMRADE_WILL_BE_FOLLOWED_TODAY);
 	}
 	public void addActionFollower(CharacterWrapper follower) {
 		addListItem(ACTION_FOLLOWER,follower.getGameObject().getStringId());
+		getGameObject().setThisAttribute(Constants.COMRADE_BEING_FOLLOWED_TODAY);
 	}
 	
 	/**

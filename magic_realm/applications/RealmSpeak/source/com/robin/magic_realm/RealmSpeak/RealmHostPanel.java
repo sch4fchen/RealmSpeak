@@ -492,6 +492,7 @@ public class RealmHostPanel extends JPanel {
 			HashMap<String,CharacterWrapper> charHash = new HashMap<>(); // to identify all characters quickly
 			ArrayList<CharacterWrapper> charPool = new ArrayList<>(); // the ultimate list of characters that perform actions
 			for (GameObject characterGo : allChars) {
+				characterGo.removeThisAttribute(Constants.COMRADE_WILL_BE_FOLLOWED_TODAY);
 				CharacterWrapper character = new CharacterWrapper(characterGo);
 				if (!character.isGone() && !character.isJustUnhired()) {
 					character.setTodaysMonsterRoll(monsterDieRoller);
