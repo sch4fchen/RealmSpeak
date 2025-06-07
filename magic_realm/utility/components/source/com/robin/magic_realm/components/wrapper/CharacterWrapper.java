@@ -4916,6 +4916,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (hostPrefs.hasPref(Constants.NO_SPELL_LEARNING_RESTRICTIONS)) {
 			return true;
 		}
+		if (hostPrefs.hasPref(Constants.FE_NO_DUPLICATE_SPELL_RECORDING)) {
+			ignoreDuplicates = false;
+		}
 		// Check to see if character has a chit to support learning the new spell
 		int number = RealmUtility.convertMod(spell.getThisAttribute("spell"));
 		
