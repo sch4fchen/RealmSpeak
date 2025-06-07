@@ -243,6 +243,9 @@ public class Constants {
 	public static final String INSULT_CHALLENGE_AS_BLOCK_BATTLE = "insult_challenge_as_block_battle";
 	public static final String BLOCKED_BY_MAGIC_COLOR = "blocked_by_magic_color";
 	public static final String COMRADE = "comrade";
+	public static final String COMRADE_BEING_FOLLOWED_TODAY = "comrade_being_followed_today";
+	public static final String COMRADE_WILL_BE_FOLLOWED_TODAY = "comrade_will_be_followed_today";
+	public static final String FORESIGHT = "foresight";
 	
 	// Relationships
 	public static final String BASE_RELATIONSHIP = "relationship";
@@ -395,8 +398,6 @@ public class Constants {
 	public static final String LOST_IN_THE_MAZE = "maze_in_the_maze";
 	public static final String PIT = "pit";
 	public static final String SEARCHED_PIT = "searched_pit";
-	public static final String COMRADE_BEING_FOLLOWED_TODAY = "comrade_being_followed_today";
-	public static final String COMRADE_WILL_BE_FOLLOWED_TODAY = "comrade_will_be_followed_today";
 	
 	// Native ThisAttributes
 	public static final String HIDDEN = "hidden";

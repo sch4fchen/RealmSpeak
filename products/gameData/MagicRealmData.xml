@@ -63116,6 +63116,268 @@
         <attribute strength="H" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2430" name="Psychic">
+      <AttributeBlock blockName="this">
+        <attribute icon_type="psychic" />
+        <attribute character="" />
+        <attribute vulnerability="M" />
+        <attribute start="Inn,Hamlet,Settlement" />
+        <attribute facing="dark" />
+        <attribute pronoun="she" />
+        <attribute icon_folder="characters" />
+        <attribute creator="Anomalous Host" />
+        <attribute artcredit="" />
+        <attribute super_realm="" />
+        <attribute potrait_folder="" />
+        <attribute potrait_file="" />
+        <attribute fighter="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="level_1">
+        <attribute name="Apprentice" />
+        <attribute weapon="Staff" />
+      </AttributeBlock>
+      <AttributeBlock blockName="level_2">
+        <attribute name="Intellectual" />
+        <attribute weapon="Staff" />
+        <attribute spellcount="1" />
+        <attribute foresight="" />
+        <attributeList keyName="advantages">
+          <attributeVal N0="FORESIGHT:  After making a table roll, you may cancel your current Daylight activity." />
+        </attributeList>
+        <attributeList keyName="spelltypes">
+          <attributeVal N0="II" />
+          <attributeVal N1="IV" />
+        </attributeList>
+      </AttributeBlock>
+      <AttributeBlock blockName="level_3">
+        <attribute name="Oracle" />
+        <attribute weapon="Staff" />
+        <attribute spellcount="2" />
+        <attributeList keyName="spelltypes">
+          <attributeVal N0="II" />
+          <attributeVal N1="IV" />
+          <attributeVal N2="VII" />
+        </attributeList>
+      </AttributeBlock>
+      <AttributeBlock blockName="level_4">
+        <attribute name="Psychic" />
+        <attribute weapon="Mace" />
+        <attribute spellcount="2" />
+        <attributeList keyName="advantages">
+          <attributeVal N0="VISION:  Get one extra SARCH phase every day" />
+        </attributeList>
+        <attributeList keyName="spelltypes">
+          <attributeVal N0="I" />
+          <attributeVal N1="IV" />
+          <attributeVal N2="VII" />
+        </attributeList>
+        <attributeList keyName="extra_actions">
+          <attributeVal N0="S" />
+        </attributeList>
+      </AttributeBlock>
+      <AttributeBlock blockName="relationship">
+        <attribute conjurors="2" />
+        <attribute coven="1" />
+        <attribute enchanters="1" />
+        <attribute peasants="1" />
+        <attribute mages="-1" />
+        <attribute shaman="-1" />
+        <attribute pagans="-2" />
+        <attribute summoners="-2" />
+        <attribute bandits="-2" />
+        <attribute dwarves="-2" />
+        <attribute elves="-2" />
+        <attribute cultists="-2" />
+      </AttributeBlock>
+      <contains id="2431" />
+      <contains id="2432" />
+      <contains id="2433" />
+      <contains id="2434" />
+      <contains id="2435" />
+      <contains id="2436" />
+      <contains id="2437" />
+      <contains id="2438" />
+      <contains id="2439" />
+      <contains id="2440" />
+      <contains id="2441" />
+      <contains id="2442" />
+    </GameObject>
+    <GameObject id="2431" name="Psychic Move M5">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute strength="M" />
+        <attribute speed="5" />
+        <attribute character_level="1" />
+        <attribute stage="1" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="psychic" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2432" name="Psychic Move M4*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute strength="M" />
+        <attribute speed="4" />
+        <attribute character_level="1" />
+        <attribute stage="2" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="psychic" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2433" name="Psychic Fight L4">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute strength="L" />
+        <attribute speed="4" />
+        <attribute character_level="1" />
+        <attribute stage="3" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="psychic" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2434" name="Psychic Figth M5">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute speed="5" />
+        <attribute character_level="2" />
+        <attribute stage="4" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="psychic" />
+        <attribute super_realm="" />
+        <attribute strength="M" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2435" name="Psychic Magic IV4**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="4" />
+        <attribute character_level="2" />
+        <attribute stage="5" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="psychic" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+        <attribute magic="IV" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2436" name="Psychic Magic II4*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="3" />
+        <attribute character_level="2" />
+        <attribute stage="6" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="psychic" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+        <attribute magic="II" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2437" name="Psychic Magic VII4*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="4" />
+        <attribute character_level="3" />
+        <attribute stage="7" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="psychic" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+        <attribute magic="VII" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2438" name="Psychic Magic II3*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="3" />
+        <attribute character_level="3" />
+        <attribute stage="8" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="psychic" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+        <attribute magic="II" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2439" name="Psychic Move M5">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute strength="M" />
+        <attribute speed="5" />
+        <attribute character_level="3" />
+        <attribute stage="9" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="psychic" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2440" name="Psychic Fight M4*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute speed="4" />
+        <attribute character_level="4" />
+        <attribute stage="10" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="psychic" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+        <attribute strength="M" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2441" name="Psychic Magic VII2*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="2" />
+        <attribute character_level="4" />
+        <attribute stage="11" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="psychic" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+        <attribute magic="VII" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2442" name="Psychic Magic II2**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="2" />
+        <attribute character_level="4" />
+        <attribute stage="12" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="psychic" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+        <attribute magic="II" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
