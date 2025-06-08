@@ -1,9 +1,9 @@
 ::ROADMAP::
 Super Realm characters (add abilities to character editor)
-	add icons
 	Psychic: foresight: loot: revert fatigue for opening site, negate phase spells utilized for the phase
 	Trawler
 	Wanderer
+Abilities of nomads to character editor
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt
 Super Realm: Optional Rules: Selling (SR: 10.11, p.116)
