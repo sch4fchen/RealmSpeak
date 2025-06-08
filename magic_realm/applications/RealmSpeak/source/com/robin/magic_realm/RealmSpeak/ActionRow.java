@@ -139,7 +139,9 @@ public class ActionRow {
 		}
 		else {
 			roller = DieRollBuilder.getDieRollBuilder(gameHandler.getMainFrame(),character).createRoller(realmTable);
-			if (foresigthPossible && character.affectedByKey(Constants.FORESIGHT) && !character.getGameObject().hasThisAttribute(Constants.BOUGHT_DRINKS)) {
+			if (foresigthPossible && character.affectedByKey(Constants.FORESIGHT)
+					&& !character.getGameObject().hasThisAttribute(Constants.BOUGHT_DRINKS) && !character.getGameObject().hasThisAttribute(Constants.FORESIGHT_USED)) {
+				character.getGameObject().setThisAttribute(Constants.FORESIGHT_USED);
 				int ret = JOptionPane.showConfirmDialog(
 						new JFrame(),
 						"Do you want to cancel your current activity?\n"+realmTable.getTableName(false)+" - "+roller.getStringResult(),
@@ -454,6 +456,7 @@ public class ActionRow {
 		}
 		
 		character.getGameObject().removeThisAttribute(Constants.BOUGHT_DRINKS);
+		character.getGameObject().removeThisAttribute(Constants.FORESIGHT_USED);
 		if (character.getGameObject().hasThisAttribute(Constants.MEDITATE_DISCOVER_SITES)) {
 			TileLocation current = character.getCurrentLocation();
 			if (current.isInClearing()) {
@@ -1355,7 +1358,6 @@ public class ActionRow {
 					if (selText.startsWith(TRADE_BUY)) selText = TRADE_BUY;
 					if (selText.startsWith(TRADE_SELL)) selText = TRADE_SELL;
 					processTrade(trader,selText,hostPrefs);
-					character.getGameObject().removeThisAttribute(Constants.BOUGHT_DRINKS);				
 				}
 				
 				if (!negate && trader.isNative()) {
@@ -2067,7 +2069,6 @@ public class ActionRow {
 				}
 				else {
 					handleTable();
-					character.getGameObject().removeThisAttribute(Constants.BOUGHT_DRINKS);	
 				}
 				
 				if (!negate) {

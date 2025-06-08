@@ -1,7 +1,7 @@
 ::ROADMAP::
 Super Realm characters (add abilities to character editor)
 	add icons
-	Psychic: foresight: search, trade, hire (but not when buying drinks), negate phase spells utilized for the phase
+	Psychic: foresight: loot: revert fatigue for opening site, negate phase spells utilized for the phase
 	Trawler
 	Wanderer
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
