@@ -1844,6 +1844,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		getGameObject().removeThisAttribute(Constants.SAILS_LAST_CLEARING);
 		getGameObject().removeThisAttribute(Constants.COMRADE_BEING_FOLLOWED_TODAY);
 		getGameObject().removeThisAttribute(Constants.COMRADE_WILL_BE_FOLLOWED_TODAY);
+		getGameObject().removeThisAttribute(Constants.BOUGHT_DRINKS);
 		
 		if (getPonyGameObject()!=null) {
 			ArrayList<RealmComponent> fhList = getFollowingHirelings();

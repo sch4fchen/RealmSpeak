@@ -62854,7 +62854,7 @@
         <attribute super_realm="" />
         <attribute potrait_folder="" />
         <attribute potrait_file="" />
-        <attribute fighter="" />
+        <attribute magicuser="" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Scholar" />
@@ -63130,7 +63130,7 @@
         <attribute super_realm="" />
         <attribute potrait_folder="" />
         <attribute potrait_file="" />
-        <attribute fighter="" />
+        <attribute magicuser="" />
       </AttributeBlock>
       <AttributeBlock blockName="level_1">
         <attribute name="Apprentice" />

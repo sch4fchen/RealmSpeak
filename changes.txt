@@ -1,12 +1,12 @@
 ::ROADMAP::
 Super Realm characters (add abilities to character editor)
+	add icons
+	Psychic: foresight: search, trade, hire (but not when buying drinks), negate phase spells utilized for the phase
 	Trawler
 	Wanderer
-	Psychic: foresight
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt
 Super Realm: Optional Rules: Selling (SR: 10.11, p.116)
-
 Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells: Lightning Bolt, Alchemists Mixture); site targets are considered armored. or by hurricane winds
 Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
 Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
@@ -39,7 +39,7 @@ Would be nice to make weapon abilities too:
 
 Version 1.2.2.4
 SUPER REALM:
-# New character: Paladin
+# New characters: Paladin, Psychic
 BUGS/ISSUES:
 # Fix optional rule: no duplicate spell recording
 # Change optional rule: no spell learning restrictions

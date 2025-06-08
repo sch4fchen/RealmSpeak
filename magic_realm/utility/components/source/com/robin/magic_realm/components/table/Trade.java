@@ -99,6 +99,7 @@ public abstract class Trade extends RealmTable {
 		if (ret!=JOptionPane.YES_OPTION) return "The "+character.getGameObject().getName()+" chose not to buy drinks.";
 		
 		character.addGold(-drinkPrice);
+		character.getGameObject().setThisAttribute(Constants.BOUGHT_DRINKS);
 		if (character.affectedByKey(Constants.BARDS_LUTE)) {
 			info.setRelationship(RelationshipType.FRIENDLY);
 		}

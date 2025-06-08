@@ -41,6 +41,7 @@ public class ActionRow {
 	private String result;
 	private boolean completed;
 	private boolean cancelled;
+	private boolean negate;
 	
 	private boolean autoMarkInventory;
 	
@@ -130,25 +131,41 @@ public class ActionRow {
 	public ActionId getActionId() {
 		return CharacterWrapper.getIdForAction(action);
 	}
-	private void handleTable() {
+	private void handleTable(boolean foresigthPossible) {
 		result = realmTable.getTableName(false); // show the short name!
-		String message;
+		String message = null;
 		if (realmTable.hideRoller()) {
 			message = realmTable.applyOne(character);
 		}
 		else {
 			roller = DieRollBuilder.getDieRollBuilder(gameHandler.getMainFrame(),character).createRoller(realmTable);
-			message = realmTable.apply(character,roller);
+			if (foresigthPossible && character.affectedByKey(Constants.FORESIGHT) && !character.getGameObject().hasThisAttribute(Constants.BOUGHT_DRINKS)) {
+				int ret = JOptionPane.showConfirmDialog(
+						new JFrame(),
+						"Do you want to cancel your current activity?\n"+realmTable.getTableName(false)+" - "+roller.getStringResult(),
+						"Foresight",
+						JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE,character.getIcon());
+				if (ret == JOptionPane.YES_OPTION) {
+					negate = true;
+					message = character.getGameObject().getName() + " negates result of "+realmTable.getTableName(false);
+				}
+			}
+			if (!negate) {
+				message = realmTable.apply(character,roller);
+			}
 		}
 		if (message!=null) {
 			result = result + " - " + message;
 			gameHandler.updateCharacterFrames();
 		}
-		if (realmTable.getNewTable()!=null) {
+		if (!negate && realmTable.getNewTable()!=null) {
 			newAction = new ActionRow(turnPanel,character,realmTable.getNewTable(),isFollowing);
 			newAction.handleTable();
 		}
 		completed = true;
+	}
+	private void handleTable() {
+		handleTable(true);
 	}
 	public String getResult() {
 		return result;
@@ -436,6 +453,7 @@ public class ActionRow {
 			}
 		}
 		
+		character.getGameObject().removeThisAttribute(Constants.BOUGHT_DRINKS);
 		if (character.getGameObject().hasThisAttribute(Constants.MEDITATE_DISCOVER_SITES)) {
 			TileLocation current = character.getCurrentLocation();
 			if (current.isInClearing()) {
@@ -508,7 +526,7 @@ public class ActionRow {
 							null,
 							null,
 							groups.get(group));
-					handleTable();
+					handleTable(false);
 				}
 			}
 		}
@@ -1337,9 +1355,10 @@ public class ActionRow {
 					if (selText.startsWith(TRADE_BUY)) selText = TRADE_BUY;
 					if (selText.startsWith(TRADE_SELL)) selText = TRADE_SELL;
 					processTrade(trader,selText,hostPrefs);
+					character.getGameObject().removeThisAttribute(Constants.BOUGHT_DRINKS);				
 				}
 				
-				if (trader.isNative()) {
+				if (!negate && trader.isNative()) {
 					String nativeName = trader.getGameObject().getThisAttribute(RealmComponent.NATIVE);
 					GamePool pool = new GamePool(character.getGameData().getGameObjects());
 					ArrayList<GameObject> boxes = pool.find("summon_n="+nativeName.toLowerCase());
@@ -1348,7 +1367,7 @@ public class ActionRow {
 					}
 				}
 				
-				if (completed && hostPrefs.hasPref(Constants.QST_SR_QUESTS) && !character.isBlocked() && (trader.isNative() || trader.isVisitor() || trader.isTraveler())) {
+				if (!negate && completed && hostPrefs.hasPref(Constants.QST_SR_QUESTS) && !character.isBlocked() && (trader.isNative() || trader.isVisitor() || trader.isTraveler())) {
 					ArrayList<QuestCardComponent> unfinishedQuests = character.getUnfinishedNotAllPlayQuests();
 					ArrayList<QuestCardComponent> characterQuests = new ArrayList<>();
 					for (QuestCardComponent quest : unfinishedQuests) {
@@ -1417,9 +1436,11 @@ public class ActionRow {
 			}
 		}
 		
-		QuestRequirementParams params = new QuestRequirementParams();
-		params.actionType = CharacterActionType.Trading;
-		character.testQuestRequirements(gameHandler.getMainFrame(),params);
+		if (!negate) {
+			QuestRequirementParams params = new QuestRequirementParams();
+			params.actionType = CharacterActionType.Trading;
+			character.testQuestRequirements(gameHandler.getMainFrame(),params);
+		}
 	}
 	private void processTrade(RealmComponent trader,String tradeAction,HostPrefWrapper hostPrefs) {
 		ArrayList<GameObject> hold = null;
@@ -2046,14 +2067,17 @@ public class ActionRow {
 				}
 				else {
 					handleTable();
+					character.getGameObject().removeThisAttribute(Constants.BOUGHT_DRINKS);	
 				}
 				
-				QuestRequirementParams params = new QuestRequirementParams();
-				params.actionType = CharacterActionType.Hire;
-				for (RealmComponent hired : list) {
-					params.objectList.add(hired.getGameObject());
+				if (!negate) {
+					QuestRequirementParams params = new QuestRequirementParams();
+					params.actionType = CharacterActionType.Hire;
+					for (RealmComponent hired : list) {
+						params.objectList.add(hired.getGameObject());
+					}
+					character.testQuestRequirements(gameHandler.getMainFrame(),params);
 				}
-				character.testQuestRequirements(gameHandler.getMainFrame(),params);
 			}
 			else {
 				completed = false;
@@ -2063,9 +2087,11 @@ public class ActionRow {
 			result = "Nobody to hire";
 		}
 		
-		QuestRequirementParams params = new QuestRequirementParams();
-		params.actionType = CharacterActionType.Hire;
-		character.testQuestRequirements(gameHandler.getMainFrame(),params);
+		if (!negate) {
+			QuestRequirementParams params = new QuestRequirementParams();
+			params.actionType = CharacterActionType.Hire;
+			character.testQuestRequirements(gameHandler.getMainFrame(),params);
+		}
 	}
 	private void doSpellAction() {
 		if (character.hasMesmerizeEffect(Constants.SAPPED)) {
