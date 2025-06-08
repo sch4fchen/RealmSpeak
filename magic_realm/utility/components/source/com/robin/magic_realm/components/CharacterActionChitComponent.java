@@ -827,7 +827,12 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 	private void setState(String stateName) {
 		gameObject.setThisAttribute(ACTION_CHIT_STATE_KEY, stateName);
 	}
-
+	
+	public void setStateById(int stateId) {
+		String stateName = getStateNameById(stateId);
+		gameObject.setThisAttribute(ACTION_CHIT_STATE_KEY, stateName);
+	}
+	
 	public int getStateId() {
 		String val = gameObject.getThisAttribute(ACTION_CHIT_STATE_KEY);
 		if (ACTION_CHIT_STATE_ALERT.equals(val)) {
@@ -864,6 +869,36 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 			return BERSERK_ID;
 		}
 		return ACTIVE_ID;
+	}
+	
+	private static String getStateNameById(int id) {
+		switch (id) {
+			case ACTIVE_ID:
+				return ACTION_CHIT_STATE_ACTIVE;
+			case ALERT_ID:
+				return ACTION_CHIT_STATE_ALERT;
+			case FATIGUED_ID:
+				return ACTION_CHIT_STATE_FATIGUED;
+			case WOUNDED_ID:
+				return ACTION_CHIT_STATE_WOUNDED;
+			case COMMITTED_ID:
+				return ACTION_CHIT_STATE_COMMITTED;
+			case COLOR_WHITE_ID:
+				return ACTION_CHIT_STATE_COLOR_WHITE;
+			case COLOR_BLACK_ID:
+				return ACTION_CHIT_STATE_COLOR_BLACK;
+			case COLOR_GRAY_ID:
+				return ACTION_CHIT_STATE_COLOR_GRAY;
+			case COLOR_GOLD_ID:
+				return ACTION_CHIT_STATE_COLOR_GOLD;
+			case COLOR_PURPLE_ID:
+				return ACTION_CHIT_STATE_COLOR_PURPLE;
+			case OUT_OF_PLAY_ID:
+				return ACTION_CHIT_STATE_ALERT;
+			case BERSERK_ID:
+				return ACTION_CHIT_STATE_ALERT;
+		}
+		return null;
 	}
 
 	public void setAlternateStrength(Strength alt) {

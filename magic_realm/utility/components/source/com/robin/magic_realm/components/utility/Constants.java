@@ -247,7 +247,9 @@ public class Constants {
 	public static final String COMRADE_WILL_BE_FOLLOWED_TODAY = "comrade_will_be_followed_today";
 	public static final String FORESIGHT = "foresight";
 	public static final String FORESIGHT_USED = "foresight_used";
-	public static final String BOUGHT_DRINKS = "bought_drinks";
+	public static final String DRINKS_BOUGHT = "drinks_bought";
+	public static final String FORESIGHT_SAVED_STATS = "foresight_saved_stats";
+	public static final String FORESIGHT_SAVED_STATS_WISHED_STRENGTH = "wished_strength_";
 	
 	// Relationships
 	public static final String BASE_RELATIONSHIP = "relationship";

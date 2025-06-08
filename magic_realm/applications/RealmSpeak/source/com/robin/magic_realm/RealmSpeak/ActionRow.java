@@ -140,7 +140,7 @@ public class ActionRow {
 		else {
 			roller = DieRollBuilder.getDieRollBuilder(gameHandler.getMainFrame(),character).createRoller(realmTable);
 			if (foresigthPossible && character.affectedByKey(Constants.FORESIGHT)
-					&& !character.getGameObject().hasThisAttribute(Constants.BOUGHT_DRINKS) && !character.getGameObject().hasThisAttribute(Constants.FORESIGHT_USED)) {
+					&& !character.getGameObject().hasThisAttribute(Constants.DRINKS_BOUGHT) && !character.getGameObject().hasThisAttribute(Constants.FORESIGHT_USED)) {
 				character.getGameObject().setThisAttribute(Constants.FORESIGHT_USED);
 				int ret = JOptionPane.showConfirmDialog(
 						new JFrame(),
@@ -150,6 +150,26 @@ public class ActionRow {
 				if (ret == JOptionPane.YES_OPTION) {
 					negate = true;
 					message = character.getGameObject().getName() + " negates result of "+realmTable.getTableName(false);
+					// revert stats
+					if (character.getGameObject().hasThisAttribute(Constants.FORESIGHT_SAVED_STATS)) {
+						for (String stat : character.getGameObject().getThisAttributeList(Constants.FORESIGHT_SAVED_STATS)) {
+							if (stat.startsWith(Constants.FORESIGHT_SAVED_STATS_WISHED_STRENGTH)) {
+								stat.replace(Constants.FORESIGHT_SAVED_STATS_WISHED_STRENGTH,"");
+								character.setWishStrength(new Strength(stat));
+							}
+							else {
+								StringTokenizer tokens = new StringTokenizer(stat,"_");
+								String id = tokens.nextToken();
+								String statusId = tokens.nextToken();
+								for (CharacterActionChitComponent chit : character.getAllChits()) {
+									if (chit.getGameObject().getStringId().matches(id)) {
+										chit.setStateById(new Integer(statusId));
+										break;
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 			if (!negate) {
@@ -372,6 +392,17 @@ public class ActionRow {
 		completed = true; // the default - can be modified if there are problems
 		
 		if (blankReason==null && !invalid) {
+			
+			if (character.affectedByKey(Constants.FORESIGHT) && !character.getGameObject().hasThisAttribute(Constants.FORESIGHT_USED)) {
+				Strength wishStrength = character.getWishStrength();
+				if (wishStrength!=null) {
+					character.getGameObject().addThisAttributeListItem(Constants.FORESIGHT_SAVED_STATS,Constants.FORESIGHT_SAVED_STATS_WISHED_STRENGTH+wishStrength.getChitString());
+				}
+				for (CharacterActionChitComponent chit : character.getAllChits()) {
+					character.getGameObject().addThisAttributeListItem(Constants.FORESIGHT_SAVED_STATS,chit.getGameObject().getStringId()+"_"+chit.getStateId());
+				}
+			}
+			
 			autoMarkInventory = true;
 			ActionId id = CharacterWrapper.getIdForAction(action);
 			if (ActionId.Hide==id) {
@@ -455,8 +486,9 @@ public class ActionRow {
 			}
 		}
 		
-		character.getGameObject().removeThisAttribute(Constants.BOUGHT_DRINKS);
+		character.getGameObject().removeThisAttribute(Constants.DRINKS_BOUGHT);
 		character.getGameObject().removeThisAttribute(Constants.FORESIGHT_USED);
+		character.getGameObject().removeThisAttribute(Constants.FORESIGHT_SAVED_STATS);
 		if (character.getGameObject().hasThisAttribute(Constants.MEDITATE_DISCOVER_SITES)) {
 			TileLocation current = character.getCurrentLocation();
 			if (current.isInClearing()) {
