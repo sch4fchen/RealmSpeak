@@ -4913,9 +4913,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	private boolean canLearn(GameObject spell,boolean ignoreDuplicates) {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
-		if (hostPrefs.hasPref(Constants.NO_SPELL_LEARNING_RESTRICTIONS)) {
-			return true;
-		}
 		if (hostPrefs.hasPref(Constants.FE_NO_DUPLICATE_SPELL_RECORDING)) {
 			ignoreDuplicates = false;
 		}
@@ -4924,16 +4921,21 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		// Examine all chits for a match (active, inactive, or enchanted)
 		boolean hasType = false;
-		ArrayList<RealmComponent> allChits = new ArrayList<>();
-		allChits.addAll(getAllChits());
-		allChits.addAll(getDedicatedChits()); // don't forget the chits dedicated to spells!
-		allChits.addAll(getTransmorphedChits()); // and let's grab those that are transformed too, since that is also legal (apparently) - see bug 1733
-		for (RealmComponent i : allChits) {
-			CharacterActionChitComponent chit = (CharacterActionChitComponent)i;
-			if (chit.isMagic()) {
-				if (chit.getMagicNumber()==number) {
-					hasType = true;
-					break;
+		if (hostPrefs.hasPref(Constants.NO_SPELL_LEARNING_RESTRICTIONS)) {
+			hasType = true;
+		}
+		if (!hasType) {
+			ArrayList<RealmComponent> allChits = new ArrayList<>();
+			allChits.addAll(getAllChits());
+			allChits.addAll(getDedicatedChits()); // don't forget the chits dedicated to spells!
+			allChits.addAll(getTransmorphedChits()); // and let's grab those that are transformed too, since that is also legal (apparently) - see bug 1733
+			for (RealmComponent i : allChits) {
+				CharacterActionChitComponent chit = (CharacterActionChitComponent)i;
+				if (chit.isMagic()) {
+					if (chit.getMagicNumber()==number) {
+						hasType = true;
+						break;
+					}
 				}
 			}
 		}

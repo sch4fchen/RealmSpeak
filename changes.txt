@@ -2,7 +2,7 @@
 Super Realm characters (add abilities to character editor)
 	Trawler
 	Wanderer
-	Psychic
+	Psychic: foresight
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt
 Super Realm: Optional Rules: Selling (SR: 10.11, p.116)
@@ -42,6 +42,7 @@ SUPER REALM:
 # New character: Paladin
 BUGS/ISSUES:
 # Fix optional rule: no duplicate spell recording
+# Change optional rule: no spell learning restrictions
 
 Version 1.2.2.3
 BUGS/ISSUES:
