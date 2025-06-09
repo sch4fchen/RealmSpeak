@@ -7839,6 +7839,19 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 	}
+	public void unapplyPhaseChit(JFrame frame, GameObject phaseChit, SpellWrapper spell) {
+		getGameObject().removeThisAttributeListItem(PHASE_CHITS,phaseChit.getStringId());
+		if (phaseChit.hasAttributeBlock(Constants.EFFECTS)) {
+			GameWrapper game = GameWrapper.findGame(getGameObject().getGameData());
+			SpellEffectContext context = new SpellEffectContext(frame, game, RealmComponent.getRealmComponent(getGameObject()), spell, getGameObject());
+			for (String effect : phaseChit.getAttributeBlock(Constants.EFFECTS).keySet()) {
+				ISpellEffect[] effects = PhaseChitEffectFactory.create(effect);
+				for (ISpellEffect spellEffect : effects) {
+					spellEffect.unapply(context);
+				}
+			}
+		}
+	}
 	public void endActivePhaseChits() {
 		GameData gameData = getGameObject().getGameData();
 		if (getGameObject().hasThisAttribute(PHASE_CHITS)) {

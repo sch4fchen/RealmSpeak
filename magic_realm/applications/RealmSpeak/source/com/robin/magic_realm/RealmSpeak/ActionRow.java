@@ -4,6 +4,7 @@ import java.util.*;
 
 import javax.swing.*;
 
+import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.general.swing.*;
@@ -20,6 +21,7 @@ import com.robin.magic_realm.components.swing.*;
 import com.robin.magic_realm.components.table.*;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.GameWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 import com.robin.magic_realm.components.wrapper.SpellMasterWrapper;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
@@ -151,6 +153,24 @@ public class ActionRow {
 					negate = true;
 					message = character.getGameObject().getName() + " negates result of "+realmTable.getTableName(false);
 					// revert stats
+					ArrayList<String> phaseChitIds = new ArrayList<>();
+					for (String id : character.getGameObject().getThisAttributeList(CharacterWrapper.PHASE_CHITS)) {
+						phaseChitIds.add(id);
+					}
+					if (!phaseChitIds.isEmpty()) {
+						GameData gameData = character.getGameObject().getGameData();
+						for (String id : phaseChitIds) {
+							GameObject chitGo = gameData.getGameObject(id);
+							RealmComponent chitRc = RealmComponent.getRealmComponent(chitGo);
+							chitRc.setActivated(false);
+							String spellId = chitGo.getThisAttribute(Constants.SPELL_ID);
+							GameObject spelGo = gameData.getGameObject(Long.valueOf(spellId));
+							SpellWrapper spell = new SpellWrapper(spelGo);
+							spell.affectTargets(new JFrame(),GameWrapper.findGame(gameData),false,null);
+							SpellMasterWrapper.getSpellMaster(gameData).addSpell(spell);
+							character.unapplyPhaseChit(new JFrame(), chitGo, spell);
+						}
+					}
 					if (character.getGameObject().hasThisAttribute(Constants.FORESIGHT_SAVED_STATS)) {
 						for (String stat : character.getGameObject().getThisAttributeList(Constants.FORESIGHT_SAVED_STATS)) {
 							if (stat.startsWith(Constants.FORESIGHT_SAVED_STATS_WISHED_STRENGTH)) {
