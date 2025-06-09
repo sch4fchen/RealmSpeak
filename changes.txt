@@ -44,6 +44,7 @@ BUGS/ISSUES:
 # Don't place visitors and exchange quests if canceling a trade
 # Fix optional rule: no duplicate spell recording
 # Change optional rule: no spell learning restrictions
+# Fix Dazzle spell
 
 Version 1.2.2.3
 BUGS/ISSUES:

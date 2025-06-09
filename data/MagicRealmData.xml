@@ -59609,7 +59609,7 @@
         <attribute phase_chit="" />
         <attribute text="Dazzle" />
       </AttributeBlock>
-      <AttributeBlock blockName="phase_chit_effect">
+      <AttributeBlock blockName="phase_chit_effects">
         <attribute dazzle="" />
       </AttributeBlock>
     </GameObject>

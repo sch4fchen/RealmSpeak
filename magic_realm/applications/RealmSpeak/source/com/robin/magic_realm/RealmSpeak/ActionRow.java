@@ -154,21 +154,24 @@ public class ActionRow {
 					message = character.getGameObject().getName() + " negates result of "+realmTable.getTableName(false);
 					// revert stats
 					ArrayList<String> phaseChitIds = new ArrayList<>();
-					for (String id : character.getGameObject().getThisAttributeList(CharacterWrapper.PHASE_CHITS)) {
-						phaseChitIds.add(id);
-					}
-					if (!phaseChitIds.isEmpty()) {
-						GameData gameData = character.getGameObject().getGameData();
-						for (String id : phaseChitIds) {
-							GameObject chitGo = gameData.getGameObject(id);
-							RealmComponent chitRc = RealmComponent.getRealmComponent(chitGo);
-							chitRc.setActivated(false);
-							String spellId = chitGo.getThisAttribute(Constants.SPELL_ID);
-							GameObject spelGo = gameData.getGameObject(Long.valueOf(spellId));
-							SpellWrapper spell = new SpellWrapper(spelGo);
-							spell.affectTargets(new JFrame(),GameWrapper.findGame(gameData),false,null);
-							SpellMasterWrapper.getSpellMaster(gameData).addSpell(spell);
-							character.unapplyPhaseChit(new JFrame(), chitGo, spell);
+					if (character.getGameObject().hasThisAttribute(CharacterWrapper.PHASE_CHITS)) {
+						for (String id : character.getGameObject().getThisAttributeList(CharacterWrapper.PHASE_CHITS)) {
+							phaseChitIds.add(id);
+						}
+						if (!phaseChitIds.isEmpty()) {
+							GameData gameData = character.getGameObject().getGameData();
+							for (String id : phaseChitIds) {
+								GameObject chitGo = gameData.getGameObject(id);
+								RealmComponent chitRc = RealmComponent.getRealmComponent(chitGo);
+								chitRc.setActivated(false);
+								String spellId = chitGo.getThisAttribute(Constants.SPELL_ID);
+								GameObject spelGo = gameData.getGameObject(Long.valueOf(spellId));
+								SpellWrapper spell = new SpellWrapper(spelGo);
+								spell.affectTargets(new JFrame(),GameWrapper.findGame(gameData),false,null);
+								SpellMasterWrapper.getSpellMaster(gameData).addSpell(spell);
+								character.unapplyPhaseChit(new JFrame(), chitGo, spell);
+								character.getGameObject().add(chitGo);
+							}
 						}
 					}
 					if (character.getGameObject().hasThisAttribute(Constants.FORESIGHT_SAVED_STATS)) {
