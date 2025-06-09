@@ -41,6 +41,7 @@ SUPER REALM:
 # New characters: Paladin, Psychic
 BUGS/ISSUES:
 # Cannot cancel buy action
+# Don't place visitors and exchange quests if canceling a trade
 # Fix optional rule: no duplicate spell recording
 # Change optional rule: no spell learning restrictions
 

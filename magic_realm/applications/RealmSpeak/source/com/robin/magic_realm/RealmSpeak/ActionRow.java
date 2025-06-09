@@ -1412,7 +1412,7 @@ public class ActionRow {
 					processTrade(trader,selText,hostPrefs);
 				}
 				
-				if (!negate && trader.isNative()) {
+				if (!negate && completed && trader.isNative()) {
 					String nativeName = trader.getGameObject().getThisAttribute(RealmComponent.NATIVE);
 					GamePool pool = new GamePool(character.getGameData().getGameObjects());
 					ArrayList<GameObject> boxes = pool.find("summon_n="+nativeName.toLowerCase());
