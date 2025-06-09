@@ -1,6 +1,5 @@
 ::ROADMAP::
 Super Realm characters (add abilities to character editor)
-	Psychic: foresight: test: negate phase spells utilized for the phase
 	Trawler
 	Wanderer
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
@@ -35,6 +34,8 @@ Would be nice to make weapon abilities too:
 	Immobilizing2 - When it hits all attacks undercut in next round
 	Stunning - Target cannot play an attack next round
 
+
+Version 1.2.2.5
 
 Version 1.2.2.4
 SUPER REALM:
