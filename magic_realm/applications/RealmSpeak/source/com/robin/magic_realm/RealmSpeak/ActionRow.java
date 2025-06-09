@@ -1563,7 +1563,7 @@ public class ActionRow {
 			RealmTradeDialog tradeDialog;
 			if (TRADE_BUY.equals(tradeAction)) {
 				// Buying
-				tradeDialog = new RealmTradeDialog(gameHandler.getMainFrame(),"Select an item or spell to BUY from "+traderRel+":",false,true,true);
+				tradeDialog = new RealmTradeDialog(gameHandler.getMainFrame(),"Select an item or spell to BUY from "+traderRel+":",false,false,true);
 				
 				// Log what is being offered up
 				StringBufferedList sb = new StringBufferedList();
