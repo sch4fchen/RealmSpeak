@@ -6,6 +6,7 @@ Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt
 Super Realm: Optional Rules: Selling (SR: 10.11, p.116)
 Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells: Lightning Bolt, Alchemists Mixture); site targets are considered armored. or by hurricane winds
+To be faithful to the rules the followers should be given the chance to rest or alert at the time that the guide does these activities.
 Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
 Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
 Super Realm: Optional Rules: Sentimental Value (SR: 10.6, p.115)
@@ -36,6 +37,8 @@ Would be nice to make weapon abilities too:
 
 
 Version 1.2.2.5
+SUPER REALM:
+# Followers cannot voluntarily stop following
 
 Version 1.2.2.4
 SUPER REALM:

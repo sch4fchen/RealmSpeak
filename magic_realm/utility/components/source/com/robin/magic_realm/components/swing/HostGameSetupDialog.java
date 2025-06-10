@@ -1043,6 +1043,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_REVEAL_TRAVELERS,"REVEAL TRAVELERS (Super Realm Basic) - Travelers are revealed, when a character does a Search or Trade activity on the corresponding site or native leader.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_MAGIC_SIGHT_OPTIONAL,"MAGIC SIGHT NOT SELF-CANCELLING (Super Realm Basic) - Maigc Sight effect of abilities, spells, treasures and nomads is not self-cancelling and usage of Phantom Glass and Shadow are optional.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_NO_SUMMONING_FOR_FOLLOWERS,"NO SUMMONING FOR FOLLOWERS (Super Realm Basic) - Followers never cause summoning monsters.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_NO_STOPPING_FOLLOWING,"NO STOPPING FOLLOWING (Super Realm Basic) - Followers cannot voluntarily stop following.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.ADV_FLYING_ACTIVITIES,"FLYING ACTIVITIES A.3 (Magic Realm Advanced) - Flying characters can inspect the tiles they fly over and do the Alert activity.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.ADV_CACHING,"CACHING A.4 (Magic Realm Advanced/Super Realm Basic) - Characters may record a CACHE action during their turn to create private caches of treasure and gold.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.ADV_DROPPING,"DROPPING AND LOSING BELONGINGS A.5 (Magic Realm Advanced) - With this rule, characters have a choice of dropping an item in plain sight (where anyone can find it), or throwing it away (so it can only be found by searching).",false));
@@ -1336,6 +1337,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.SR_PHASE_CHIT_ACTIVATION,true);
 		optionPane.setOption(Constants.SR_REVEAL_TRAVELERS,true);
 		optionPane.setOption(Constants.SR_NO_SUMMONING_FOR_FOLLOWERS,true);
+		optionPane.setOption(Constants.SR_NO_STOPPING_FOLLOWING,true);
 		optionPane.setOption(Constants.SR_MAGIC_SIGHT_OPTIONAL,true);
 		optionPane.setOption(Constants.SR_DEDUCT_VPS,true);
 		optionPane.setOption(Constants.SR_COMPLETE_GOLD_SPECIAL_ONLY_ONCE,true);

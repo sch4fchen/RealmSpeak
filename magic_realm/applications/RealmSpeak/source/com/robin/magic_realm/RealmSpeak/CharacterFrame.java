@@ -1245,7 +1245,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 
 		stopFollowingButton = new SingleButton("Stop Following",false) {
 			public boolean needsShow() {
-				if (!character.isDoRecord() && character.getFollowStringId()!=null && !character.isStopFollowing()) {
+				if (!character.isDoRecord() && character.getFollowStringId()!=null && !character.isStopFollowing() && !hostPrefs.hasPref(Constants.SR_NO_STOPPING_FOLLOWING)) {
 					CharacterWrapper followed = character.getCharacterImFollowing();
 					String npa = followed.getNextPendingAction();
 					if (npa!=null) {
