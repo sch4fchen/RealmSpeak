@@ -1549,10 +1549,25 @@ public class ActionRow {
 		if (!hold.isEmpty()) {
 			// Cool - now do trading
 			
+			boolean unhide = false;
 			// First, make sure all treasures are marked as "seen"
 			for (GameObject item : hold) {
 				if (!item.hasThisAttribute(Constants.TREASURE_SEEN)) {
 					item.setThisAttribute(Constants.TREASURE_SEEN);
+					if (item.hasThisAttribute(Constants.NO_HIDE)) {
+						unhide = true;
+					}
+				}
+			}
+			TileLocation current = character.getCurrentLocation();
+			if (unhide) {
+				character.setHidden(false);
+				if (current!=null && current.hasClearing()) {
+					for (RealmComponent rc:current.clearing.getClearingComponents()) {
+						if (rc.isCharacter()) {
+							(new CharacterWrapper(rc.getGameObject())).setHidden(false);
+						}
+					}
 				}
 			}
 			

@@ -311,8 +311,23 @@ public class Loot extends RealmTable {
 	}
 
 	public String characterFindsItem(CharacterWrapper character, GameObject thing) {
+		boolean unhide = false;
 		if (!thing.hasThisAttribute(Constants.TREASURE_SEEN)) {
 			thing.setThisAttribute(Constants.TREASURE_SEEN);
+			if (thing.hasThisAttribute(Constants.NO_HIDE)) {
+				unhide = true;
+			}
+		}
+		TileLocation current = character.getCurrentLocation();
+		if (unhide) {
+			character.setHidden(false);
+			if (current!=null && current.hasClearing()) {
+				for (RealmComponent rc:current.clearing.getClearingComponents()) {
+					if (rc.isCharacter()) {
+						(new CharacterWrapper(rc.getGameObject())).setHidden(false);
+					}
+				}
+			}
 		}
 		
 		// This is it!  The character found the treasure...
@@ -394,8 +409,23 @@ public class Loot extends RealmTable {
 	public static void addItemToCharacter(JFrame frame,ChangeListener listener,CharacterWrapper character,GameObject thing,HostPrefWrapper hostPrefs) {
 		boolean drop = false;
 		boolean abandon = false;
+		boolean unhide = false;
 		if (!thing.hasThisAttribute(Constants.TREASURE_SEEN)) {
 			thing.setThisAttribute(Constants.TREASURE_SEEN);
+			if (thing.hasThisAttribute(Constants.NO_HIDE)) {
+				unhide = true;
+			}
+		}
+		TileLocation current = character.getCurrentLocation();
+		if (unhide) {
+			character.setHidden(false);
+			if (current!=null && current.hasClearing()) {
+				for (RealmComponent rc:current.clearing.getClearingComponents()) {
+					if (rc.isCharacter()) {
+						(new CharacterWrapper(rc.getGameObject())).setHidden(false);
+					}
+				}
+			}
 		}
 		RealmComponent rc = RealmComponent.getRealmComponent(thing);
 		if (thing.hasThisAttribute("color_source")) {
