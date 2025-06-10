@@ -46,6 +46,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	protected SingleButton chooseQuestButton;
 	protected SingleButton advancementButton;
 	protected SingleButton gsPlacementButton;
+	protected SingleButton alertButton;
 	protected SingleButton restButton;
 	protected SingleButton fatigueButton;
 	protected SingleButton woundButton;
@@ -740,6 +741,18 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			}
 		}
 	}
+	protected void alertToContinue() {
+		int count = character.getFollowAlerts();
+		if (count>0) {
+			ChitRestManager alerter = new ChitRestManager(gameHandler.getMainFrame(),character,count);
+			alerter.setVisible(true);
+			if (alerter.isFinished()) {
+				character.clearFollowAlerts();
+				gameHandler.submitChanges();
+				gameHandler.updateCharacterFrames();
+			}
+		}
+	}
 	protected void fatigueToContinue() {
 		int needToFatigue = character.getWeatherFatigue();
 		if (needToFatigue>0) {
@@ -1131,6 +1144,23 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		ComponentTools.lockComponentSize(gsPlacementButton, new Dimension(150, 25));
 		singleButtonManager.addButton(gsPlacementButton);
 		box.add(gsPlacementButton);
+		
+		// Alert Button
+		alertButton = new SingleButton("Alert to Continue",true) {
+			public boolean needsShow() {
+				return character.getFollowAlerts()>0;
+			}
+		};
+		alertButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				alertToContinue();
+			}
+		});
+		alertButton.setBorder(BorderFactory.createLineBorder(MagicRealmColor.GOLD, 2));
+		alertButton.setVisible(false);
+		ComponentTools.lockComponentSize(alertButton, new Dimension(150, 25));
+		singleButtonManager.addButton(alertButton);
+		box.add(alertButton);
 		
 		// Rest Button
 		restButton = new SingleButton("Rest to Continue",true) {

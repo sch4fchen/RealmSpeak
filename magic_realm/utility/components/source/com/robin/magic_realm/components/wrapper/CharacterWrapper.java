@@ -95,6 +95,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String TREACHERY_PREFERENCE = "_trpr_";
 	public static final String CHAT_STYLE = "_chs_";
 	public static final String FOLLOW_RESTS = "_fllr_";
+	public static final String FOLLOW_ALERTS = "_flla_";
 	public static final String NEED_QUEST_CHECK = "_qc_";
 	public static final String DISCARDED_QUESTS = "_dq_";
 	
@@ -7611,6 +7612,15 @@ public class CharacterWrapper extends GameObjectWrapper {
     }
     public void clearFollowRests() {
     	clear(FOLLOW_RESTS);
+    }
+    public void setFollowAlerts(int alert) {
+    	setInt(FOLLOW_ALERTS,alert);
+    }
+    public int getFollowAlerts() {
+    	return getInt(FOLLOW_ALERTS);
+    }
+    public void clearFollowAlerts() {
+    	clear(FOLLOW_ALERTS);
     }
     public int getRestBonus(int rests) {
 		int advantage = 0;

@@ -1886,11 +1886,21 @@ public class ActionRow {
 		character.testQuestRequirements(gameHandler.getMainFrame(),params);
 	}
 	private void doAlertAction() {
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
 		// Make sure followers get an alert too!
-		for (CharacterWrapper follower : character.getActionFollowers()) {
-			follower.addCurrentAction(DayAction.ALERT_ACTION.getCode());
-			follower.addCurrentActionTypeCode(actionTypeCode);
-			follower.addCurrentActionValid(true);
+		if (hostPrefs.hasPref(Constants.OPT_FOLLOWERS_ALERTING_DURING_PHASE)) {
+			// Make sure followers get a alert too!
+			for (CharacterWrapper follower : character.getActionFollowers()) {
+				if (!follower.hasMesmerizeEffect(Constants.TIRED)) {
+					follower.setFollowAlerts(follower.getFollowAlerts()+1);
+				}
+			}
+		} else {
+			for (CharacterWrapper follower : character.getActionFollowers()) {
+				follower.addCurrentAction(DayAction.ALERT_ACTION.getCode());
+				follower.addCurrentActionTypeCode(actionTypeCode);
+				follower.addCurrentActionValid(true);
+			}
 		}
 		if (character.hasMesmerizeEffect(Constants.TIRED)) {
 			result = "Cannot ALERT while tired.";

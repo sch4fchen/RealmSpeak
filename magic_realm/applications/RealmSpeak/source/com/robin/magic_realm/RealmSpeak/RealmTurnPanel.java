@@ -252,6 +252,14 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		}
 		return false;
 	}
+	private boolean isAwaitingFollowersAlerting() {
+		for (CharacterWrapper follower:actionFollowers) {
+			if (follower.getFollowAlerts()>0) {
+				return true;
+			}
+		}
+		return false;
+	}
 	private boolean isAwaitingBlockDecision() {
 		if (getRealmComponent().isPlayerControlledLeader() && !getCharacter().getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) {
 			blockWarningLabel.setText("");
@@ -296,6 +304,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			}
 		}
 		String me = getCharacter().getPlayerName();
+		boolean haveFollowersThatHaveFollowAlerts = isAwaitingFollowersAlerting();
 		boolean haveFollowersThatHaveFollowRests = isAwaitingFollowersResting();
 		boolean beingFollowedByOtherPlayers = false;
 		for (CharacterWrapper follower:actionFollowers) {
@@ -304,10 +313,11 @@ public class RealmTurnPanel extends CharacterFramePanel {
 				break;
 			}
 		}
+		playNextButton.setText(haveFollowersThatHaveFollowAlerts?"Followers Alerting...":PLAY_NEXT);
 		playNextButton.setText(haveFollowersThatHaveFollowRests?"Followers Resting...":PLAY_NEXT);
 		
 		boolean actionsLeft = isNextAction();
-		playNextButton.setEnabled(actionsLeft && !waitingForSingleButton && activatePlayNextTimer==null && !haveFollowersThatHaveFollowRests);
+		playNextButton.setEnabled(actionsLeft && !waitingForSingleButton && activatePlayNextTimer==null && !haveFollowersThatHaveFollowRests && !haveFollowersThatHaveFollowAlerts);
 		playNextButton.setFlashing(playNextButton.isEnabled());
 		playAllButton.setEnabled(!controlsLocked && actionsLeft && !beingFollowedByOtherPlayers);
 		finishedPlayButton.setEnabled(!controlsLocked && !actionsLeft && (current==null || (!current.isBetweenClearings() && !current.isBetweenTiles())));
@@ -896,7 +906,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 	}
 	
 	private void playAll() {
-		while(nextAction()!=null && !isAwaitingBlockDecision() && !isAwaitingFollowersResting()) {
+		while(nextAction()!=null && !isAwaitingBlockDecision() && !isAwaitingFollowersResting() && !isAwaitingFollowersAlerting()) {
 			if (!playNext(true)) {
 				// player cancelled action, or awaiting input (like transport to caves result in TableLoot)
 				break;
