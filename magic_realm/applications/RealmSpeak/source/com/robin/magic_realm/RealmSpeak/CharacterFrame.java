@@ -744,13 +744,55 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	protected void alertToContinue() {
 		int count = character.getFollowAlerts();
 		if (count>0) {
-			ChitRestManager alerter = new ChitRestManager(gameHandler.getMainFrame(),character,count);
-			alerter.setVisible(true);
-			if (alerter.isFinished()) {
-				character.clearFollowAlerts();
-				gameHandler.submitChanges();
+			for (CharacterWrapper follower : character.getActionFollowers()) {
+				if (!follower.hasMesmerizeEffect(Constants.TIRED)) {
+					follower.setFollowAlerts(follower.getFollowAlerts()+1);
+				}
+			}
+			
+			doAlertActionAsFollower();
+			
+			character.clearFollowAlerts();
+			gameHandler.submitChanges();
+			gameHandler.updateCharacterFrames();
+		}
+	}
+	private void doAlertActionAsFollower() {
+		if (character.hasMesmerizeEffect(Constants.TIRED)) {
+			return;
+		}
+		
+		RealmComponentOptionChooser chooser = ActionRow.alertChooser(character, gameHandler);
+		
+		if (chooser!=null) {
+			chooser.setVisible(true);
+			if (chooser.getSelectedText()!=null) {
+				ActionRow.alertChosenObject(character, chooser);
+								
+				QuestRequirementParams params = new QuestRequirementParams();
+				params.actionType = CharacterActionType.Alert;
+				character.testQuestRequirements(gameHandler.getMainFrame(),params);
+				
 				gameHandler.updateCharacterFrames();
 			}
+			else {
+				if (character.isFollowingCharacterPlayingTurn()) {
+					int ret = JOptionPane.showConfirmDialog(
+							gameHandler.getMainFrame(),
+							"Do you want to skip the ALERT action?",
+							"ALERT is optional for followers",
+							JOptionPane.YES_NO_OPTION);
+					if (ret==JOptionPane.YES_OPTION) {
+						return;
+					}
+				}
+				return;
+			}
+		}
+		else {
+			QuestRequirementParams params = new QuestRequirementParams();
+			params.actionType = CharacterActionType.Alert;
+			character.testQuestRequirements(gameHandler.getMainFrame(),params);
 		}
 	}
 	protected void fatigueToContinue() {
