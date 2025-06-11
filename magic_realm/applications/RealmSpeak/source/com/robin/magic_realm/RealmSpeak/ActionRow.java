@@ -1885,6 +1885,71 @@ public class ActionRow {
 		params.actionType = CharacterActionType.Heal;
 		character.testQuestRequirements(gameHandler.getMainFrame(),params);
 	}
+	public static RealmComponentOptionChooser alertChooser(CharacterWrapper character, RealmGameHandler gameHandler) {
+		RealmComponentOptionChooser chooser = null;
+		// Player chooses from all inactive weapons and spell chits
+		ArrayList<ChitComponent> alertChoices = new ArrayList<>();
+		Collection<CharacterActionChitComponent> c = character.getActiveChits();
+		for (CharacterActionChitComponent chit : c) {
+			if (chit.isMagic() || chit.isFightAlert()) {
+				alertChoices.add(chit);
+			}
+		}
+		ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
+		if (weapons!=null && !weapons.isEmpty()) {
+			if (character.affectedByKey(Constants.DUAL_WIELDING_ALERT)) {
+				for (WeaponChitComponent weapon : weapons) {
+					alertChoices.add(weapon);
+				}
+			}
+			else {
+				alertChoices.add(weapons.get(0));
+			}
+		}
+		if (alertChoices.size()<1) {
+			return null;
+		}
+		
+		chooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Alert which?",true);
+		int keyN = 0;
+		for (RealmComponent rc : alertChoices) {
+			if (rc.isWeapon()) {
+				// Add both sides of weapon, if any
+				WeaponChitComponent weapon = (WeaponChitComponent)rc;
+				String key = "a"+(keyN++);
+				chooser.addOption(key,"Alert");
+				chooser.addRealmComponentToOption(key,weapon,weapon.isAlerted()?RealmComponentOptionChooser.DisplayOption.Normal:RealmComponentOptionChooser.DisplayOption.Flipside);
+				key = "u"+(keyN++);
+				chooser.addOption(key,"Unalert");
+				chooser.addRealmComponentToOption(key,weapon,weapon.isAlerted()?RealmComponentOptionChooser.DisplayOption.Flipside:RealmComponentOptionChooser.DisplayOption.Normal);
+			}
+			else {
+				String key = "k"+(keyN++);
+				chooser.addOption(key,"Alert");
+				chooser.addRealmComponentToOption(key,rc);
+			}
+		}
+		
+		return chooser;
+	}
+	public static RealmComponent alertChosenObject(CharacterWrapper character, RealmComponentOptionChooser chooser) {
+		RealmComponent rc = chooser.getFirstSelectedComponent();
+		if (rc.isWeapon()) {
+			boolean alert = chooser.getSelectedOptionKey().startsWith("a");
+			((WeaponChitComponent)rc).setAlerted(alert);
+		}
+		else {
+			CharacterActionChitComponent chit = (CharacterActionChitComponent)rc;
+			if (chit.isFightAlert()) {
+			chit.makeFatigued(); // fatigues instantly
+				character.getGameObject().setThisAttribute(Constants.ENHANCED_VULNERABILITY,chit.getFightAlertVulnerability());
+			}
+			else {
+				chit.makeAlerted();
+			}
+		}
+		return rc;
+	}
 	private void doAlertAction() {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
 		// Make sure followers get an alert too!
@@ -1906,62 +1971,14 @@ public class ActionRow {
 			result = "Cannot ALERT while tired.";
 			return;
 		}
-		// Player chooses from all inactive weapons and spell chits
-		ArrayList<ChitComponent> alertChoices = new ArrayList<>();
-		Collection<CharacterActionChitComponent> c = character.getActiveChits();
-		for (CharacterActionChitComponent chit : c) {
-			if (chit.isMagic() || chit.isFightAlert()) {
-				alertChoices.add(chit);
-			}
-		}
-		ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
-		if (weapons!=null && !weapons.isEmpty()) {
-			if (character.affectedByKey(Constants.DUAL_WIELDING_ALERT)) {
-				for (WeaponChitComponent weapon : weapons) {
-					alertChoices.add(weapon);
-				}
-			}
-			else {
-				alertChoices.add(weapons.get(0));
-			}
-		}
-		if (alertChoices.size()>0) {
-			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Alert which?",true);
-			int keyN = 0;
-			for (RealmComponent rc : alertChoices) {
-				if (rc.isWeapon()) {
-					// Add both sides of weapon, if any
-					WeaponChitComponent weapon = (WeaponChitComponent)rc;
-					String key = "a"+(keyN++);
-					chooser.addOption(key,"Alert");
-					chooser.addRealmComponentToOption(key,weapon,weapon.isAlerted()?RealmComponentOptionChooser.DisplayOption.Normal:RealmComponentOptionChooser.DisplayOption.Flipside);
-					key = "u"+(keyN++);
-					chooser.addOption(key,"Unalert");
-					chooser.addRealmComponentToOption(key,weapon,weapon.isAlerted()?RealmComponentOptionChooser.DisplayOption.Flipside:RealmComponentOptionChooser.DisplayOption.Normal);
-				}
-				else {
-					String key = "k"+(keyN++);
-					chooser.addOption(key,"Alert");
-					chooser.addRealmComponentToOption(key,rc);
-				}
-			}
+		
+		RealmComponentOptionChooser chooser = alertChooser(character, gameHandler);
+		
+		if (chooser!=null) {
 			chooser.setVisible(true);
 			if (chooser.getSelectedText()!=null) {
-				RealmComponent rc = chooser.getFirstSelectedComponent();
-				if (rc.isWeapon()) {
-					boolean alert = chooser.getSelectedOptionKey().startsWith("a");
-					((WeaponChitComponent)rc).setAlerted(alert);
-				}
-				else {
-					CharacterActionChitComponent chit = (CharacterActionChitComponent)rc;
-					if (chit.isFightAlert()) {
-					chit.makeFatigued(); // fatigues instantly
-						character.getGameObject().setThisAttribute(Constants.ENHANCED_VULNERABILITY,chit.getFightAlertVulnerability());
-					}
-					else {
-						chit.makeAlerted();
-					}
-				}
+				RealmComponent rc = alertChosenObject(character, chooser);
+				
 				result = "alerted "+rc.getGameObject().getName();				
 				
 				QuestRequirementParams params = new QuestRequirementParams();
