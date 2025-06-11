@@ -46,6 +46,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	protected SingleButton chooseQuestButton;
 	protected SingleButton advancementButton;
 	protected SingleButton gsPlacementButton;
+	protected SingleButton enchantButton;
 	protected SingleButton alertButton;
 	protected SingleButton restButton;
 	protected SingleButton fatigueButton;
@@ -728,6 +729,28 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			}
 		}
 	}
+	protected void enchantToContinue() {
+		int count = character.getFollowSpellActions();
+		if (count>0) {
+			
+			doSpellActionAsFollower();
+			
+			character.clearFollowSpellActions();
+			gameHandler.submitChanges();
+			gameHandler.updateCharacterFrames();
+		}
+	}
+	protected void alertToContinue() {
+		int count = character.getFollowAlerts();
+		if (count>0) {
+			
+			doAlertActionAsFollower();
+			
+			character.clearFollowAlerts();
+			gameHandler.submitChanges();
+			gameHandler.updateCharacterFrames();
+		}
+	}
 	protected void restToContinue() {
 		int count = character.getFollowRests();
 		if (count>0) {
@@ -741,20 +764,27 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			}
 		}
 	}
-	protected void alertToContinue() {
-		int count = character.getFollowAlerts();
-		if (count>0) {
-			for (CharacterWrapper follower : character.getActionFollowers()) {
-				if (!follower.hasMesmerizeEffect(Constants.TIRED)) {
-					follower.setFollowAlerts(follower.getFollowAlerts()+1);
-				}
+	private void doSpellActionAsFollower() {
+		if (character.hasMesmerizeEffect(Constants.SAPPED)) {
+			return;
+		}
+		
+		TileLocation targetClearing = ActionRow.getTargetClearingForSpellAction(character, gameHandler);
+		RealmComponentOptionChooser compChooser = ActionRow.enchantChooser(character, gameHandler, targetClearing, character.getInfiniteColorSources());
+		if (compChooser.hasOptions()) {
+			compChooser.setVisible(true);
+			String text = compChooser.getSelectedText();
+			if (text!=null) {
+				ActionRow.enchantTileOrChit(character, compChooser, text, targetClearing, gameHandler);
 			}
-			
-			doAlertActionAsFollower();
-			
-			character.clearFollowAlerts();
-			gameHandler.submitChanges();
-			gameHandler.updateCharacterFrames();
+			else {
+				return;
+			}
+		}
+		else {
+			QuestRequirementParams params = new QuestRequirementParams();
+			params.actionType = CharacterActionType.Enchant;
+			character.testQuestRequirements(gameHandler.getMainFrame(), params);
 		}
 	}
 	private void doAlertActionAsFollower() {
@@ -1186,6 +1216,23 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		ComponentTools.lockComponentSize(gsPlacementButton, new Dimension(150, 25));
 		singleButtonManager.addButton(gsPlacementButton);
 		box.add(gsPlacementButton);
+		
+		// Enchant Button
+		enchantButton = new SingleButton("Enchant to Continue",true) {
+			public boolean needsShow() {
+				return character.getFollowSpellActions()>0;
+			}
+		};
+		enchantButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				enchantToContinue();
+			}
+		});
+		enchantButton.setBorder(BorderFactory.createLineBorder(MagicRealmColor.GOLD, 2));
+		enchantButton.setVisible(false);
+		ComponentTools.lockComponentSize(enchantButton, new Dimension(150, 25));
+		singleButtonManager.addButton(enchantButton);
+		box.add(enchantButton);
 		
 		// Alert Button
 		alertButton = new SingleButton("Alert to Continue",true) {

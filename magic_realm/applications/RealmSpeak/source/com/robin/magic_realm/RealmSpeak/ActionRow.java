@@ -2191,6 +2191,18 @@ public class ActionRow {
 			character.testQuestRequirements(gameHandler.getMainFrame(),params);
 		}
 	}
+	public static TileLocation getTargetClearingForSpellAction(CharacterWrapper character, RealmGameHandler gameHandler) {
+		TileLocation targetClearing = character.getCurrentLocation();
+		if (character.getPeerAny()) {
+			CenteredMapView.getSingleton().setMarkClearingAlertText("Enchant in which clearing?");
+			CenteredMapView.getSingleton().markAllClearings(true);
+			TileLocationChooser chooser = new TileLocationChooser(gameHandler.getMainFrame(),CenteredMapView.getSingleton(),targetClearing);
+			chooser.setVisible(true);
+			CenteredMapView.getSingleton().markAllClearings(false);
+			targetClearing = chooser.getSelectedLocation();
+		}
+		return targetClearing; 
+	}
 	private void doSpellAction() {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
 		if (hostPrefs.hasPref(Constants.SR_FOLLOWERS_ENCHANTING_ACTION)) {
@@ -2213,18 +2225,11 @@ public class ActionRow {
 			result = "Cannot ENCHANT while sapped.";
 			return;
 		}
-		TileLocation targetClearing = character.getCurrentLocation();
-		if (character.getPeerAny()) {
-			CenteredMapView.getSingleton().setMarkClearingAlertText("Enchant in which clearing?");
-			CenteredMapView.getSingleton().markAllClearings(true);
-			TileLocationChooser chooser = new TileLocationChooser(gameHandler.getMainFrame(),CenteredMapView.getSingleton(),targetClearing);
-			chooser.setVisible(true);
-			CenteredMapView.getSingleton().markAllClearings(false);
-			targetClearing = chooser.getSelectedLocation();
-		}
+		
+		TileLocation targetClearing = getTargetClearingForSpellAction(character, gameHandler);
 		doSpellAction(character.getInfiniteColorSources(),targetClearing);
 	}
-	private void doSpellAction(Collection<ColorMagic> colorMagicSources,TileLocation targetClearing) {
+	public static RealmComponentOptionChooser enchantChooser(CharacterWrapper character, RealmGameHandler gameHandler, TileLocation targetClearing, Collection<ColorMagic> colorMagicSources) {
 		// SPX actions are ignored.  Need to ask player if they want to enchant a chit, or a tile.
 		// The tile option would only be available if the conditions are right (right color/invocation combination available)		
 		ArrayList<MagicChit> enchantable = new ArrayList<>();
@@ -2344,68 +2349,77 @@ public class ActionRow {
 				compChooser.addRealmComponentToOption(key,chit[n]);
 			}
 		}
+		return compChooser;
+	}
+	public static String enchantTileOrChit(CharacterWrapper character, RealmComponentOptionChooser compChooser, String text, TileLocation targetClearing, RealmGameHandler gameHandler) {
+		String result = "";
+		if ("Tile".equals(text)) {
+			// enchant a tile
+			TileComponent tile = targetClearing.tile;
+			tile.flip();
+			result = "enchanted "+tile.getTileName();
+			// fatigue the chit(s) used to do it
+			Collection<RealmComponent> chits = compChooser.getSelectedComponents();
+			for (RealmComponent rc : chits) {
+				if (rc.isMagicChit() && !character.affectedByKey(Constants.TALISMAN)) {
+					MagicChit chit = (MagicChit)rc;
+					if (chit.isColor()) { // Only fatigue the color chit - not the incantation
+						chit.makeFatigued();
+						RealmUtility.reportChitFatigue(character,chit,"Fatigued color chit: ");
+					}
+				}
+				if (rc.getGameObject().hasThisAttribute(Constants.RING)) {
+					rc.getGameObject().setThisAttribute(Constants.RING_USED);
+				}
+			}
+			gameHandler.updateCharacterFrames();
+			gameHandler.broadcastMapReplot();
+			
+			QuestRequirementParams params = new QuestRequirementParams();
+			params.actionType = CharacterActionType.Enchant;
+			params.actionName = RealmComponent.TILE;
+			params.objectList.add(tile.getGameObject());
+			character.testQuestRequirements(gameHandler.getMainFrame(), params);
+		}
+		else {
+			// enchant a chit
+			MagicChit chit = (MagicChit)compChooser.getFirstSelectedComponent();
+			if (chit!=null) {
+				int enchantNumber;
+				ArrayList<Integer> list = chit.getEnchantableNumbers();
+				if (list.size()>1) {
+					ButtonOptionDialog colorChooser = new ButtonOptionDialog(gameHandler.getMainFrame(),chit.getIcon(),"What color?","Enchant "+chit.getGameObject().getName(),false);
+					for(int mn:list) {
+						ColorMagic cm = new ColorMagic(mn,false);
+						colorChooser.addSelectionObject(cm.getColorName());
+					}
+					colorChooser.setVisible(true);
+					String colorName = (String)colorChooser.getSelectedObject();
+					enchantNumber = ColorMagic.makeColorMagic(colorName,false).getColorNumber();
+				}
+				else {
+					enchantNumber = list.get(0);
+				}
+				
+				chit.enchant(enchantNumber);
+				result = "enchanted "+chit.getGameObject().getName();
+				gameHandler.updateCharacterFrames();
+				
+				QuestRequirementParams params = new QuestRequirementParams();
+				params.actionType = CharacterActionType.Enchant;
+				params.actionName = "chit";
+				character.testQuestRequirements(gameHandler.getMainFrame(),params);
+			}// this shouldn't happen
+		}
+		return result;
+	}
+	private void doSpellAction(Collection<ColorMagic> colorMagicSources,TileLocation targetClearing) {
+		RealmComponentOptionChooser compChooser = enchantChooser(character, gameHandler, targetClearing, colorMagicSources);
 		if (compChooser.hasOptions()) {
 			compChooser.setVisible(true);
 			String text = compChooser.getSelectedText();
 			if (text!=null) {
-				if ("Tile".equals(text)) {
-					// enchant a tile
-					TileComponent tile = targetClearing.tile;
-					tile.flip();
-					result = "enchanted "+tile.getTileName();
-					// fatigue the chit(s) used to do it
-					Collection<RealmComponent> chits = compChooser.getSelectedComponents();
-					for (RealmComponent rc : chits) {
-						if (rc.isMagicChit() && !character.affectedByKey(Constants.TALISMAN)) {
-							MagicChit chit = (MagicChit)rc;
-							if (chit.isColor()) { // Only fatigue the color chit - not the incantation
-								chit.makeFatigued();
-								RealmUtility.reportChitFatigue(character,chit,"Fatigued color chit: ");
-							}
-						}
-						if (rc.getGameObject().hasThisAttribute(Constants.RING)) {
-							rc.getGameObject().setThisAttribute(Constants.RING_USED);
-						}
-					}
-					gameHandler.updateCharacterFrames();
-					gameHandler.broadcastMapReplot();
-					
-					QuestRequirementParams params = new QuestRequirementParams();
-					params.actionType = CharacterActionType.Enchant;
-					params.actionName = RealmComponent.TILE;
-					params.objectList.add(tile.getGameObject());
-					character.testQuestRequirements(gameHandler.getMainFrame(), params);
-				}
-				else {
-					// enchant a chit
-					MagicChit chit = (MagicChit)compChooser.getFirstSelectedComponent();
-					if (chit!=null) {
-						int enchantNumber;
-						ArrayList<Integer> list = chit.getEnchantableNumbers();
-						if (list.size()>1) {
-							ButtonOptionDialog colorChooser = new ButtonOptionDialog(gameHandler.getMainFrame(),chit.getIcon(),"What color?","Enchant "+chit.getGameObject().getName(),false);
-							for(int mn:list) {
-								ColorMagic cm = new ColorMagic(mn,false);
-								colorChooser.addSelectionObject(cm.getColorName());
-							}
-							colorChooser.setVisible(true);
-							String colorName = (String)colorChooser.getSelectedObject();
-							enchantNumber = ColorMagic.makeColorMagic(colorName,false).getColorNumber();
-						}
-						else {
-							enchantNumber = list.get(0);
-						}
-						
-						chit.enchant(enchantNumber);
-						result = "enchanted "+chit.getGameObject().getName();
-						gameHandler.updateCharacterFrames();
-						
-						QuestRequirementParams params = new QuestRequirementParams();
-						params.actionType = CharacterActionType.Enchant;
-						params.actionName = "chit";
-						character.testQuestRequirements(gameHandler.getMainFrame(),params);
-					}// this shouldn't happen
-				}
+				result = enchantTileOrChit(character, compChooser, text, targetClearing, gameHandler);
 			}
 			else {
 				completed = false;

@@ -260,6 +260,14 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		}
 		return false;
 	}
+	private boolean isAwaitingFollowersSpellActions() {
+		for (CharacterWrapper follower:actionFollowers) {
+			if (follower.getFollowSpellActions()>0) {
+				return true;
+			}
+		}
+		return false;
+	}
 	private boolean isAwaitingBlockDecision() {
 		if (getRealmComponent().isPlayerControlledLeader() && !getCharacter().getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) {
 			blockWarningLabel.setText("");
@@ -304,6 +312,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			}
 		}
 		String me = getCharacter().getPlayerName();
+		boolean haveFollowersThatHaveSpellActions = isAwaitingFollowersSpellActions();
 		boolean haveFollowersThatHaveFollowAlerts = isAwaitingFollowersAlerting();
 		boolean haveFollowersThatHaveFollowRests = isAwaitingFollowersResting();
 		boolean beingFollowedByOtherPlayers = false;
@@ -313,11 +322,12 @@ public class RealmTurnPanel extends CharacterFramePanel {
 				break;
 			}
 		}
+		playNextButton.setText(haveFollowersThatHaveSpellActions?"Followers Enchanting...":PLAY_NEXT);
 		playNextButton.setText(haveFollowersThatHaveFollowAlerts?"Followers Alerting...":PLAY_NEXT);
 		playNextButton.setText(haveFollowersThatHaveFollowRests?"Followers Resting...":PLAY_NEXT);
 		
 		boolean actionsLeft = isNextAction();
-		playNextButton.setEnabled(actionsLeft && !waitingForSingleButton && activatePlayNextTimer==null && !haveFollowersThatHaveFollowRests && !haveFollowersThatHaveFollowAlerts);
+		playNextButton.setEnabled(actionsLeft && !waitingForSingleButton && activatePlayNextTimer==null && !haveFollowersThatHaveFollowRests && !haveFollowersThatHaveFollowAlerts && !haveFollowersThatHaveSpellActions);
 		playNextButton.setFlashing(playNextButton.isEnabled());
 		playAllButton.setEnabled(!controlsLocked && actionsLeft && !beingFollowedByOtherPlayers);
 		finishedPlayButton.setEnabled(!controlsLocked && !actionsLeft && (current==null || (!current.isBetweenClearings() && !current.isBetweenTiles())));
@@ -906,7 +916,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 	}
 	
 	private void playAll() {
-		while(nextAction()!=null && !isAwaitingBlockDecision() && !isAwaitingFollowersResting() && !isAwaitingFollowersAlerting()) {
+		while(nextAction()!=null && !isAwaitingBlockDecision() && !isAwaitingFollowersResting() && !isAwaitingFollowersAlerting() &!isAwaitingFollowersSpellActions()) {
 			if (!playNext(true)) {
 				// player cancelled action, or awaiting input (like transport to caves result in TableLoot)
 				break;
