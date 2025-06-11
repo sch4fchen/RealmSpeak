@@ -1953,7 +1953,7 @@ public class ActionRow {
 	private void doAlertAction() {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
 		// Make sure followers get an alert too!
-		if (hostPrefs.hasPref(Constants.OPT_FOLLOWERS_ALERTING_DURING_PHASE)) {
+		if (hostPrefs.hasPref(Constants.OPT_FOLLOWERS_ACTIONS_DURING_GUIDES_PHASE)) {
 			// Make sure followers get a alert too!
 			for (CharacterWrapper follower : character.getActionFollowers()) {
 				if (!follower.hasMesmerizeEffect(Constants.TIRED)) {
@@ -2192,6 +2192,23 @@ public class ActionRow {
 		}
 	}
 	private void doSpellAction() {
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
+		if (hostPrefs.hasPref(Constants.SR_FOLLOWERS_ENCHANTING_ACTION)) {
+			if (hostPrefs.hasPref(Constants.OPT_FOLLOWERS_ACTIONS_DURING_GUIDES_PHASE)) {
+				// Make sure followers get a alert too!
+				for (CharacterWrapper follower : character.getActionFollowers()) {
+					if (!character.hasMesmerizeEffect(Constants.SAPPED)) {
+						follower.setFollowSpellActions(follower.getFollowSpellActions()+1);
+					}
+				}
+			} else {
+				for (CharacterWrapper follower : character.getActionFollowers()) {
+					follower.addCurrentAction(DayAction.SPELL_ACTION.getCode());
+					follower.addCurrentActionTypeCode(actionTypeCode);
+					follower.addCurrentActionValid(true);
+				}
+			}
+		}
 		if (character.hasMesmerizeEffect(Constants.SAPPED)) {
 			result = "Cannot ENCHANT while sapped.";
 			return;
@@ -2209,10 +2226,7 @@ public class ActionRow {
 	}
 	private void doSpellAction(Collection<ColorMagic> colorMagicSources,TileLocation targetClearing) {
 		// SPX actions are ignored.  Need to ask player if they want to enchant a chit, or a tile.
-		// The tile option would only be available if the conditions are right (right color/invocation combination available)
-		
-		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
-		
+		// The tile option would only be available if the conditions are right (right color/invocation combination available)		
 		ArrayList<MagicChit> enchantable = new ArrayList<>();
 		
 		// Chits
@@ -2220,6 +2234,7 @@ public class ActionRow {
 		Collections.sort(enchantableChits);
 		enchantable.addAll(enchantableChits);
 		
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
 		if (hostPrefs.hasPref(Constants.OPT_ENHANCED_ARTIFACTS) || character.affectedByKey(Constants.ENHANCED_ARTIFACTS)) {
 			// Enchantable Artifacts and Books
 			for(GameObject item:character.getActiveInventory()) {

@@ -27,12 +27,12 @@ public class DayAction {
 	public static DayAction MOVE_ACTION = new DayAction(ActionId.Move,"Move","M","move"); // (clearing)
 	public static DayAction SEARCH_ACTION = new DayAction(ActionId.Search,"Search","S","search");
 	public static DayAction TRADE_ACTION = new DayAction(ActionId.Trade,"Trade","T","trade");
-	public static DayAction REST_ACTION = new DayAction(ActionId.Rest,"Rest","R","rest"); 
-	public static DayAction ALERT_ACTION = new DayAction(ActionId.Alert,"Alert","A","alert"); 
+	public static DayAction REST_ACTION = new DayAction(ActionId.Rest,"Rest","R","rest");
+	public static DayAction ALERT_ACTION = new DayAction(ActionId.Alert,"Alert","A","alert");
 	public static DayAction HIRE_ACTION = new DayAction(ActionId.Hire,"Hire","HR","hire");
 	public static DayAction FOLLOW_ACTION = new DayAction(ActionId.Follow,"Follow","F","follow");  // (individual)
-	public static DayAction SPELL_ACTION = new DayAction(ActionId.Spell,"Spell","SP","spell"); 
-	public static DayAction SPELL_PREP_ACTION = new DayAction(ActionId.SpellPrep,"Spell Prep","SPX","spell"); 
+	public static DayAction SPELL_ACTION = new DayAction(ActionId.Spell,"Spell","SP","spell");
+	public static DayAction SPELL_PREP_ACTION = new DayAction(ActionId.SpellPrep,"Spell Prep","SPX","spell");
 	public static DayAction ENH_PEER_ACTION = new DayAction(ActionId.EnhPeer,"Enh.Peer","P","peer"); // (clearing) 
 	public static DayAction FLY_ACTION = new DayAction(ActionId.Fly,"Fly","FLY","fly"); // (tile) 
 	public static DayAction REMOTE_SPELL_ACTION = new DayAction(ActionId.RemSpell,"Rem.Spell","RS","remotespell"); // (clearing)

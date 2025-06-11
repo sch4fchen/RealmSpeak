@@ -40,6 +40,7 @@ Version 1.2.2.5
 SUPER REALM:
 # Followers cannot voluntarily stop following
 # Followers alert during guide's turn
+# Followers can use the spell action
 BUGS/ISSUES:
 # Cursed Bell unhides character when trading or looting it
 
