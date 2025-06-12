@@ -502,10 +502,13 @@ public class ActionRow {
 		
 		checkSleep(); // check again, in case something changed during the action
 
-		if (character.isHidden()) {
-			GameObject noHideItem = ClearingUtility.getItemInClearingWithKey(location,Constants.NO_HIDE);
-			if (noHideItem!=null) {
-				character.setHidden(false);
+		GameObject noHideItem = ClearingUtility.getItemInClearingWithKey(location,Constants.NO_HIDE);
+		if (noHideItem!=null) {
+			character.setHidden(false);
+			for (RealmComponent rc:location.clearing.getClearingComponents()) {
+				if (rc.isCharacter()) {
+					(new CharacterWrapper(rc.getGameObject())).setHidden(false);
+				}
 			}
 		}
 		
