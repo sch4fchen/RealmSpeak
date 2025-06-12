@@ -2723,6 +2723,10 @@ public class BattleModel {
 						if (!canHide && hostPrefs.hasPref(Constants.HOUSE3_SNOW_HIDE_EXCLUDE_CAVES) && battleLocation.isInClearing() && battleLocation.clearing.isCave()) {
 							canHide = true;
 						}
+						GameObject noHideItem = ClearingUtility.getItemInClearingWithKey(battleLocation,Constants.NO_HIDE);
+						if (noHideItem!=null) {
+							canHide = false;
+						}
 						
 						if (canHide) {
 							DieRoller roller = DieRollBuilder.getDieRollBuilder(null,character).createHideRoller();
@@ -2733,7 +2737,11 @@ public class BattleModel {
 							}
 						}
 						else {
-							CombatFrame.broadcastMessage(character.getGameObject().getName(),"World Fades: Cannot HIDE due to inclement weather.");
+							if (noHideItem!=null) {
+								CombatFrame.broadcastMessage(character.getGameObject().getName(),"World Fades: Cannot HIDE due "+noHideItem.getName()+".");
+							} else {
+								CombatFrame.broadcastMessage(character.getGameObject().getName(),"World Fades: Cannot HIDE due to inclement weather.");
+							}
 						}
 					}
 					else {

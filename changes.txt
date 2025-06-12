@@ -43,6 +43,7 @@ SUPER REALM:
 # Followers can use the spell action
 BUGS/ISSUES:
 # Cursed Bell unhides characters when trading or looting it and after each activity
+# Cursed Bell counters World Fades
 
 Version 1.2.2.4
 SUPER REALM:
