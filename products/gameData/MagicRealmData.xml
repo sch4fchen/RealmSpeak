@@ -11645,9 +11645,9 @@
         <attribute name="Sprite" />
         <attribute spellcount="1" />
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce:% woods" />
-          <attributeVal N1="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce:% forest" />
-          <attributeVal N2="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce:grove" />
+          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce,selling:% woods" />
+          <attributeVal N1="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce,selling:% forest" />
+          <attributeVal N2="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce,selling:grove" />
         </attributeList>
         <attributeList keyName="spelltypes">
           <attributeVal N0="VII" />
@@ -11681,7 +11681,7 @@
       <AttributeBlock blockName="optional_2">
         <attribute optkey="OptCharWoodsgirl" />
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce:&gt;woods" />
+          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce,selling:&gt;woods" />
         </attributeList>
         <attributeList keyName="advantages">
           <attributeVal N0="EXPERT WOODCRAFT:  When on a Woods clearing (except on the RUINS and VALLEY tiles), roll 1 die instead of 2 for all Search, Hide, and Meeting rolls." />
@@ -11905,7 +11905,7 @@
         <attribute armor="Armor" />
         <attribute spellcount="1" />
         <attributeList keyName="diemod">
-          <attributeVal N0="-1:meeting,commerce:all" />
+          <attributeVal N0="-1:meeting,commerce,selling:all" />
         </attributeList>
         <attributeList keyName="spelltypes">
           <attributeVal N0="I" />
@@ -12212,7 +12212,7 @@
         <attribute weapon="Great Axe" />
         <attribute armor="Helmet" />
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,hire,trade,commerce:&gt;caves" />
+          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,hire,trade,commerce,selling:&gt;caves" />
         </attributeList>
         <attributeList keyName="advantages">
           <attributeVal N0="CAVE KNOWLEDGE:  When in a Cave clearing, roll 1 die instead of 2 for all Search, Hide, and Meeting die rolls." />
@@ -12443,7 +12443,7 @@
         <attribute weapon="Mace" />
         <attribute armor="Armor,Shield" />
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:meeting,commerce:all" />
+          <attributeVal N0="1d:meeting,commerce,selling:all" />
         </attributeList>
         <attributeList keyName="advantages">
           <attributeVal N0="FEAR:  Roll 1 die instead of 2 for all Meeting Table die rolls." />
@@ -28118,7 +28118,7 @@
         <attribute discard="none" />
         <attribute item="" />
         <attributeList keyName="diemod">
-          <attributeVal N0="-2:meeting,commerce:all" />
+          <attributeVal N0="-2:meeting,commerce,selling:all" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
@@ -41949,7 +41949,7 @@
         <attribute roving_native="" />
         <attribute no_sunlight="" />
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,hire,trade,commerce:&gt;caves" />
+          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,hire,trade,commerce,selling:&gt;caves" />
         </attributeList>
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -43250,9 +43250,9 @@
         <attribute name="Sprite" />
         <attribute spellcount="1" />
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce:% woods" />
-          <attributeVal N1="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce:% forest" />
-          <attributeVal N2="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce:grove" />
+          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce,selling:% woods" />
+          <attributeVal N1="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce,selling:% forest" />
+          <attributeVal N2="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce,selling:grove" />
         </attributeList>
         <attributeList keyName="spelltypes">
           <attributeVal N0="VII" />
@@ -43286,7 +43286,7 @@
       <AttributeBlock blockName="optional_2">
         <attribute optkey="OptCharWoodsgirl" />
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce:&gt;woods" />
+          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce,selling:&gt;woods" />
         </attributeList>
         <attributeList keyName="advantages">
           <attributeVal N0="EXPERT WOODCRAFT:  When on a Woods clearing (except on the RUINS and VALLEY tiles), roll 1 die instead of 2 for all Search, Hide, and Meeting rolls." />
@@ -43529,7 +43529,7 @@
         <attribute armor="Armor" />
         <attribute spellcount="1" />
         <attributeList keyName="diemod">
-          <attributeVal N0="-1:meeting,commerce:all" />
+          <attributeVal N0="-1:meeting,commerce,selling:all" />
         </attributeList>
         <attributeList keyName="spelltypes">
           <attributeVal N0="I" />
@@ -43864,7 +43864,7 @@
         <attribute weapon="Great Axe" />
         <attribute armor="Helmet" />
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,hire,trade,commerce:&gt;caves" />
+          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,hire,trade,commerce,selling:&gt;caves" />
         </attributeList>
         <attributeList keyName="advantages">
           <attributeVal N0="CAVE KNOWLEDGE:  When in a Cave clearing, roll 1 die instead of 2 for all Search, Hide, and Meeting die rolls." />
@@ -44113,7 +44113,7 @@
         <attribute weapon="Mace" />
         <attribute armor="Armor,Shield" />
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:meeting,commerce:all" />
+          <attributeVal N0="1d:meeting,commerce,selling:all" />
         </attributeList>
         <attributeList keyName="advantages">
           <attributeVal N0="FEAR:  Roll 1 die instead of 2 for all Meeting Table die rolls." />
@@ -60855,7 +60855,7 @@
         <attribute native="Guard" />
         <attribute weight="L" />
         <attributeList keyName="diemod">
-          <attributeVal N0="-1:loot:all" />
+          <attributeVal N0="-1:loot,twt:all" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
@@ -61562,7 +61562,7 @@
         <attribute nomad="bargainer" />
         <attribute text="Trade: 1 D6" />
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:meeting,commerce:all" />
+          <attributeVal N0="1d:meeting,commerce,selling:all" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
@@ -62091,7 +62091,7 @@
           <attributeVal N0="SWAY:  Subtract 1 from all Meeting Table die rolls." />
         </attributeList>
         <attributeList keyName="diemod">
-          <attributeVal N0="-1:meeting,commerce:all" />
+          <attributeVal N0="-1:meeting,commerce,selling:all" />
         </attributeList>
         <attributeList keyName="spelltypes">
           <attributeVal N0="VII" />
@@ -63376,6 +63376,514 @@
         <attribute super_realm="" />
         <attribute effort="2" />
         <attribute magic="II" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2443" name="Trawler">
+      <AttributeBlock blockName="this">
+        <attribute icon_type="trawler" />
+        <attribute character="" />
+        <attribute vulnerability="L" />
+        <attribute start="Inn,Cottage,Hut" />
+        <attribute facing="dark" />
+        <attribute pronoun="he" />
+        <attribute icon_folder="characters" />
+        <attribute creator="Anomalous Host" />
+        <attribute artcredit="" />
+        <attribute super_realm="" />
+        <attribute potrait_folder="" />
+        <attribute potrait_file="" />
+        <attribute fighter="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="level_1">
+        <attribute name="Fisherman" />
+        <attribute weapon="Short Sword" />
+      </AttributeBlock>
+      <AttributeBlock blockName="level_2">
+        <attribute name="Sailor" />
+        <attribute weapon="Short Sword" />
+        <attribute seafaring="" />
+        <attributeList keyName="advantages">
+          <attributeVal N0="SEAFARING:  Advantages in river hex tiles and water clearings." />
+        </attributeList>
+      </AttributeBlock>
+      <AttributeBlock blockName="level_3">
+        <attribute name="Pirate" />
+        <attribute weapon="Thrusting Sword" />
+      </AttributeBlock>
+      <AttributeBlock blockName="level_4">
+        <attribute name="Trawler" />
+        <attribute weapon="Thrusting Sword" />
+        <attribute fit="" />
+        <attributeList keyName="advantages">
+          <attributeVal N0="FIT:  When playing a FIGHT chit in the 'Thrust' attack during the Melee step, it forces increases one leve. Thid does apply to treasures that act as FIGHT chits (Deft Gloves). Does not allow to wield a weapon with a weight greater than the FIGHT chit itself." />
+        </attributeList>
+      </AttributeBlock>
+      <AttributeBlock blockName="relationship">
+        <attribute lancers="2" />
+        <attribute bashkars="1" />
+        <attribute hunters="1" />
+        <attribute mercenaries="1" />
+        <attribute merchant="1" />
+        <attribute aborigines="-1" />
+        <attribute pagans="-1" />
+        <attribute summoners="-1" />
+        <attribute soldiers="-2" />
+        <attribute bandits="-2" />
+        <attribute dwarves="-2" />
+        <attribute elves="-2" />
+        <attribute cultists="-2" />
+      </AttributeBlock>
+      <contains id="2444" />
+      <contains id="2445" />
+      <contains id="2446" />
+      <contains id="2447" />
+      <contains id="2448" />
+      <contains id="2449" />
+      <contains id="2450" />
+      <contains id="2451" />
+      <contains id="2452" />
+      <contains id="2453" />
+      <contains id="2454" />
+      <contains id="2455" />
+    </GameObject>
+    <GameObject id="2444" name="Trawler Move L3*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute strength="L" />
+        <attribute speed="3" />
+        <attribute character_level="1" />
+        <attribute stage="1" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="trawler" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2445" name="Trawler Move L4">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute strength="L" />
+        <attribute speed="4" />
+        <attribute character_level="1" />
+        <attribute stage="2" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="trawler" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2446" name="Trawler Fight L3*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute strength="L" />
+        <attribute speed="3" />
+        <attribute character_level="1" />
+        <attribute stage="3" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="trawler" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2447" name="Trawler Move L2**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute speed="2" />
+        <attribute character_level="2" />
+        <attribute stage="4" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="trawler" />
+        <attribute super_realm="" />
+        <attribute strength="L" />
+        <attribute effort="2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2448" name="Trawler Move M4*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute speed="4" />
+        <attribute character_level="2" />
+        <attribute stage="5" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="trawler" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+        <attribute strength="M" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2449" name="Trawler Fight M3**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute speed="3" />
+        <attribute character_level="2" />
+        <attribute stage="6" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="trawler" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+        <attribute strength="M" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2450" name="Trawler Move M3**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute speed="3" />
+        <attribute character_level="3" />
+        <attribute stage="7" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="trawler" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+        <attribute strength="M" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2451" name="Trawler Fight M4*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute speed="4" />
+        <attribute character_level="3" />
+        <attribute stage="8" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="trawler" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+        <attribute strength="M" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2452" name="Trawler Fight L3*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute strength="M" />
+        <attribute speed="3" />
+        <attribute character_level="3" />
+        <attribute stage="9" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="trawler" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2453" name="Trawler Fight M5">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute speed="5" />
+        <attribute character_level="4" />
+        <attribute stage="10" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="trawler" />
+        <attribute super_realm="" />
+        <attribute strength="M" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2454" name="Trawler Fight M3**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute speed="3" />
+        <attribute character_level="4" />
+        <attribute stage="11" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="trawler" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+        <attribute strength="M" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2455" name="Trawler Fight L4">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute speed="4" />
+        <attribute character_level="4" />
+        <attribute stage="12" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="trawler" />
+        <attribute super_realm="" />
+        <attribute strength="L" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2456" name="Wanderer">
+      <AttributeBlock blockName="this">
+        <attribute icon_type="wanderer" />
+        <attribute character="" />
+        <attribute vulnerability="M" />
+        <attribute start="Inn,Cottage" />
+        <attribute facing="dark" />
+        <attribute pronoun="he" />
+        <attribute icon_folder="characters" />
+        <attribute creator="Anomalous Host" />
+        <attribute artcredit="" />
+        <attribute super_realm="" />
+        <attribute potrait_folder="" />
+        <attribute potrait_file="" />
+        <attribute magicuser="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="level_1">
+        <attribute name="Orphan" />
+        <attribute weapon="Spear" />
+        <attribute armor="Breastplate" />
+      </AttributeBlock>
+      <AttributeBlock blockName="level_2">
+        <attribute name="Animalist" />
+        <attribute weapon="Short Sword" />
+        <attribute cragsman="" />
+        <attribute armor="Helmet,Breastplate,Shield" />
+        <attributeList keyName="advantages">
+          <attributeVal N0="CRAGSMAN:  Can 'walk the woods' when moving to or from a mountain clearing." />
+        </attributeList>
+        <attribute spellcount="1" />
+        <attributeList keyName="spelltypes">
+          <attributeVal N0="II" />
+        </attributeList>
+      </AttributeBlock>
+      <AttributeBlock blockName="level_3">
+        <attribute name="Traveler" />
+        <attribute weapon="Thrusting Sword" />
+        <attribute armor="Helmet,Breastplate,Shield" />
+        <attribute spellcount="1" />
+        <attributeList keyName="spelltypes">
+          <attributeVal N0="II" />
+        </attributeList>
+      </AttributeBlock>
+      <AttributeBlock blockName="level_4">
+        <attribute name="Wanderer" />
+        <attribute weapon="Broadsword" />
+        <attribute armor="Helmet,Breastplate,Shield" />
+        <attributeList keyName="advantages">
+          <attributeVal N0="FRONTIERSMAN:  Roll one die instead of two while in a mountain clearing on the Meeting Table, the Hide table, and any Search table." />
+        </attributeList>
+        <attributeList keyName="diemod">
+          <attributeVal N0="1d:meeting,commerce,selling,hide,locate,loot,peer:&amp;gt;mountain" />
+        </attributeList>
+        <attribute spellcount="1" />
+        <attributeList keyName="spelltypes">
+          <attributeVal N0="II" />
+        </attributeList>
+      </AttributeBlock>
+      <AttributeBlock blockName="relationship">
+        <attribute summoners="2" />
+        <attribute aborigines="1" />
+        <attribute conjurors="1" />
+        <attribute patrols="1" />
+        <attribute company="-1" />
+        <attribute mercenaries="-1" />
+        <attribute pagans="-1" />
+        <attribute crone="-1" />
+        <attribute hunters="-2" />
+        <attribute bandits="-2" />
+        <attribute dwarves="-2" />
+        <attribute elves="-2" />
+        <attribute cultists="-2" />
+      </AttributeBlock>
+      <contains id="2457" />
+      <contains id="2458" />
+      <contains id="2459" />
+      <contains id="2460" />
+      <contains id="2461" />
+      <contains id="2462" />
+      <contains id="2463" />
+      <contains id="2464" />
+      <contains id="2465" />
+      <contains id="2466" />
+      <contains id="2467" />
+      <contains id="2468" />
+    </GameObject>
+    <GameObject id="2457" name="Wanderer Move M4*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute strength="M" />
+        <attribute speed="4" />
+        <attribute character_level="1" />
+        <attribute stage="1" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="wanderer" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2458" name="Wanderer Move M5">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute strength="M" />
+        <attribute speed="5" />
+        <attribute character_level="1" />
+        <attribute stage="2" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="wanderer" />
+        <attribute super_realm="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2459" name="Wanderer Fight M4*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute strength="M" />
+        <attribute speed="4" />
+        <attribute character_level="1" />
+        <attribute stage="3" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="wanderer" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2460" name="Wanderer Magic II3*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="3" />
+        <attribute character_level="2" />
+        <attribute stage="4" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="wanderer" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+        <attribute magic="II" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2461" name="Wanderer Move M3**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute speed="3" />
+        <attribute character_level="2" />
+        <attribute stage="5" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="wanderer" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+        <attribute strength="M" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2462" name="Wanderer Fight M5">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute speed="5" />
+        <attribute character_level="2" />
+        <attribute stage="6" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="wanderer" />
+        <attribute super_realm="" />
+        <attribute strength="M" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2463" name="Wanderer Fight M3**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute speed="3" />
+        <attribute character_level="3" />
+        <attribute stage="7" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="wanderer" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+        <attribute strength="M" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2464" name="Wanderer Move M4*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute speed="4" />
+        <attribute character_level="3" />
+        <attribute stage="8" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="wanderer" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+        <attribute strength="M" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2465" name="Wanderer Fight H5*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute strength="H" />
+        <attribute speed="5" />
+        <attribute character_level="3" />
+        <attribute stage="9" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="wanderer" />
+        <attribute super_realm="" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2466" name="Wanderer Fight M4*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute speed="4" />
+        <attribute character_level="4" />
+        <attribute stage="10" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="wanderer" />
+        <attribute super_realm="" />
+        <attribute strength="M" />
+        <attribute effort="1" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2467" name="Wanderer Fight M3**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute speed="3" />
+        <attribute character_level="4" />
+        <attribute stage="11" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="wanderer" />
+        <attribute super_realm="" />
+        <attribute effort="2" />
+        <attribute strength="M" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2468" name="Trawler Fight H6">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute speed="6" />
+        <attribute character_level="4" />
+        <attribute stage="12" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="wanderer" />
+        <attribute super_realm="" />
+        <attribute strength="H" />
       </AttributeBlock>
     </GameObject>
   </objects>

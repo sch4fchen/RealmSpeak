@@ -1,7 +1,4 @@
 ::ROADMAP::
-Super Realm characters (add abilities to character editor)
-	Trawler
-	Wanderer
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt
 Super Realm: Optional Rules: Selling (SR: 10.11, p.116)
@@ -38,6 +35,7 @@ Would be nice to make weapon abilities too:
 
 Version 1.2.2.5
 SUPER REALM:
+# New characters: Trawler, Wanderer
 # Followers cannot voluntarily stop following
 # Followers alert during guide's turn
 # Followers can use the spell action

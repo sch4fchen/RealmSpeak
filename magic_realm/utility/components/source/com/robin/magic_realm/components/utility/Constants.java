@@ -250,6 +250,9 @@ public class Constants {
 	public static final String DRINKS_BOUGHT = "drinks_bought";
 	public static final String FORESIGHT_SAVED_STATS = "foresight_saved_stats";
 	public static final String FORESIGHT_SAVED_STATS_WISHED_STRENGTH = "wished_strength_";
+	public static final String SEAFARING = "seafaring";
+	public static final String FIT = "fit";
+	public static final String CRAGSMAN = "cragsman";
 	
 	// Relationships
 	public static final String BASE_RELATIONSHIP = "relationship";
