@@ -42,6 +42,7 @@ SUPER REALM:
 BUGS/ISSUES:
 # Cursed Bell unhides characters when trading or looting it and after each activity
 # Cursed Bell counters World Fades
+# Fix granting ability by minor characters twice
 
 Version 1.2.2.4
 SUPER REALM:

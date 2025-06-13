@@ -2368,7 +2368,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			pm.addExtraDwellingPhase();
 		}
 		
-		if (affectedByKey(Constants.EXTRA_CAVE_PHASE)) {
+		if (getGameObject().hasThisAttribute(Constants.EXTRA_CAVE_PHASE)) {
 			pm.addExtraCavePhase(getGameObject());
 		}
 		
