@@ -56,9 +56,6 @@ public class ReadRunes extends RealmTable {
 		return "ReadRunes";
 	}
 	public String apply(CharacterWrapper character,DieRoller roller) {
-//	System.err.println("REMOVE THIS LINE!!!! ReadRunes");
-//	roller.setValue(0,5);
-//	roller.setValue(1,5);
 		// Before rolling, you must select a target spell, which for artifacts/books includes AWAKENED spells
 		targetSpell = selectFromAllAwakenedSpells(character);
 		

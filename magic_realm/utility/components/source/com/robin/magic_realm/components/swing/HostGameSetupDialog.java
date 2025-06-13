@@ -1352,6 +1352,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.SR_END_GAME_SCORING,true);
 		optionPane.setOption(Constants.SR_NO_SPYING,true);
 		optionPane.setOption(Constants.SR_NO_INFORMATION_SHARING,true);
+		optionPane.setOption(Constants.SR_ADV_EASIER_SPELL_LEARNING,true);
+		optionPane.setOption(Constants.NO_SPELL_LEARNING_RESTRICTIONS,true);
 		optionPane.setOption(Constants.FE_SEARCH_TABLES,true);
 		optionPane.setOption(Constants.FE_PONY_NO_MOUNTAINS,true);
 		optionPane.setOption(Constants.FE_NO_DUPLICATE_SPELL_RECORDING,true);

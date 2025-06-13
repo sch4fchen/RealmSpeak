@@ -43,6 +43,7 @@ BUGS/ISSUES:
 # Cursed Bell unhides characters when trading or looting it and after each activity
 # Cursed Bell counters World Fades
 # Fix granting ability by minor characters twice
+# Fix Easier Spell Learning rule
 QUEST UPDATE:
 # Fix quest E13 Squire Joins You
 

@@ -287,7 +287,7 @@ public class DieRoller extends JComponent {
 		return max+modifier;
 	}
 	public int getLowDieResult() {
-		int min = 0;
+		int min = 12;
 		for (Die die:dice) {
 			if (die.getValue()<min) {
 				min = die.getValue();
