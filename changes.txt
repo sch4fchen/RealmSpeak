@@ -39,6 +39,7 @@ SUPER REALM:
 # Followers cannot voluntarily stop following
 # Followers alert during guide's turn
 # Followers can use the spell action
+# End combat if individual became unhidden but if tremendous monster is red-side up
 BUGS/ISSUES:
 # Cursed Bell unhides characters when trading or looting it, after each activity or if being dropped
 # Cursed Bell counters World Fades

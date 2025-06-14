@@ -712,8 +712,9 @@ public class RealmBattle {
 			tile.setWasFatigue(false);
 		}
 		
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		int hits = model.doResolveAttacks(tile.getHitResultCount()+1,tile);
-		if (hits>0 || fatigue || spellCasting || model.wasSpellCasting()) {
+		if (hits>0 || fatigue || spellCasting || model.wasSpellCasting() || (hostPrefs.hasPref(Constants.SR_ENDING_COMBAT) && model.gotUnhidden())) {
 			tile.addHitResult();
 		}
 		else {
@@ -745,8 +746,9 @@ public class RealmBattle {
 			CombatFrame.broadcastMessage(RealmLogging.BATTLE,rom+" consecutive round"+(rom==1?"":"s")+" of no damage, fatigue, or spellcasting.");
 		}
 
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		TileLocation test = getCurrentCombatLocation(data); // if test is null, then all characters in the clearing are dead!
-		if (test==null || model.getAllOwningCharacters().isEmpty() || (tile.lastTwoAreMisses() && !model.arePinningMonsters()) || tile.isSleepClearing(location.clearing.getNum())) {
+		if (test==null || model.getAllOwningCharacters().isEmpty() || (tile.lastTwoAreMisses() && (hostPrefs.hasPref(Constants.SR_ENDING_COMBAT) || !model.arePinningMonsters())) || tile.isSleepClearing(location.clearing.getNum())) {
 			// Combat is over.  Move to the next clearing.
 			endCombatInClearing(location,data);
 			updateClearingOrder(data);

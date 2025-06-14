@@ -1347,6 +1347,9 @@ public class CombatFrame extends JFrame {
 			if (!hiddenStatus) {
 				broadcastMessage(ambusher.getGameObject().getName(),"Becomes unhidden.");
 			}
+			if (ambusher.isHidden() && !hiddenStatus) {
+				currentBattleModel.setGotUnhidden();
+			}
 			ambusher.setHidden(hiddenStatus);
 		}
 	}
@@ -2057,6 +2060,7 @@ public class CombatFrame extends JFrame {
 			denizenPanel.removeGameObject(denizen.getGameObject());
 			denizenPanel.repaint();
 			if (lurer.isHidden()) {
+				currentBattleModel.setGotUnhidden();
 				lurer.setHidden(false);
 			}
 		}
@@ -2114,10 +2118,12 @@ public class CombatFrame extends JFrame {
 				false)) {
 			CombatFrame.broadcastMessage(activeCharacter.getGameObject().getName(),"Charges the "+charged.getGameObject().getName());
 			if (activeCharacter.isHidden()) {
+				currentBattleModel.setGotUnhidden();
 				activeCharacter.setHidden(false);
 				CombatFrame.broadcastMessage(activeCharacter.getGameObject().getName(),"Is unhidden!");
 			}
 			if (charged.isCharacter() && charged.isHidden()) {
+				currentBattleModel.setGotUnhidden();
 				charged.setHidden(false);
 				CombatFrame.broadcastMessage(activeCharacter.getGameObject().getName(),"Is unhidden!");
 			}
@@ -2186,6 +2192,9 @@ public class CombatFrame extends JFrame {
 					}
 				}
 				else {
+					if (activeCharacter.isHidden()) {
+						currentBattleModel.setGotUnhidden();
+					}
 					activeCharacter.setHidden(false,false);
 					refreshParticipants();
 					repaint();
@@ -2269,7 +2278,10 @@ public class CombatFrame extends JFrame {
 					attacker.set2ndTarget(theTarget);
 				}
 				broadcastMessage(attacker.getGameObject().getName(),"Attacks the "+theTarget.getGameObject().getNameWithNumber()+append);
-				makeTarget(this,hostPrefs,attacker,theTarget);
+				boolean gotUnhidden = makeTarget(this,hostPrefs,attacker,theTarget);
+				if (gotUnhidden) {
+					currentBattleModel.setGotUnhidden();
+				}
 				handleNativeReaction(theTarget);
 				handleHoundReaction(theTarget);
 				
@@ -2426,7 +2438,8 @@ public class CombatFrame extends JFrame {
 			}
 		}
 	}
-	public static void makeTarget(JFrame parent,HostPrefWrapper hostPrefs,RealmComponent theAttacker,RealmComponent theTarget) {
+	public static boolean makeTarget(JFrame parent,HostPrefWrapper hostPrefs,RealmComponent theAttacker,RealmComponent theTarget) {
+		boolean setGotUnhidden = false;
 		// A hidden attacker becomes unhidden on targeting (AMBUSH rules will change how this works somewhat)
 		if (theAttacker.isHidden()) {
 			boolean hiddenStatus = false;
@@ -2449,11 +2462,16 @@ public class CombatFrame extends JFrame {
 			if (!hiddenStatus) {
 				broadcastMessage(theAttacker.getGameObject().getName(),"Becomes unhidden.");
 			}
+			if (theAttacker.isHidden() && !hiddenStatus) {
+				setGotUnhidden = true;
+			}
 			theAttacker.setHidden(hiddenStatus);
 		}
 		
 		CombatWrapper combat = new CombatWrapper(theTarget.getGameObject());
 		combat.addAttacker(theAttacker.getGameObject());
+		
+		return setGotUnhidden;
 	}
 	public void replaceManeuver(int box) {
 		Collection<RealmComponent> list = getAvailableManeuverOptions(box,true,false);

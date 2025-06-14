@@ -60,6 +60,7 @@ public class BattleModel {
 	
 	private int totalHits;
 	private boolean spellCasting;
+	private boolean unhiding;
 	
 	public BattleModel(GameData data,TileLocation battleLocation) {
 		this.gameData = data;
@@ -476,7 +477,10 @@ public class BattleModel {
 						// its obvious, so do it here
 						RealmComponent soleAttacker = attackers.iterator().next();
 						hireling.setTarget(soleAttacker);
-						CombatFrame.makeTarget(null,null,hireling,soleAttacker);
+						boolean gotUnhidden = CombatFrame.makeTarget(null,null,hireling,soleAttacker);
+						if (gotUnhidden) {
+							setGotUnhidden();
+						}
 					}
 				}
 			}
@@ -968,6 +972,7 @@ public class BattleModel {
 		killerOrder = new ArrayList<>();
 		
 		spellCasting = false;
+		unhiding = false;
 		
 		ArrayList<RealmComponent> all = new ArrayList<>(getAllBattleParticipants(true));
 		
@@ -3336,5 +3341,13 @@ public class BattleModel {
 	
 	public boolean wasSpellCasting() {
 		return spellCasting;
+	}
+	
+	public void setGotUnhidden() {
+		unhiding = true;
+	}
+	
+	public boolean gotUnhidden() {
+		return unhiding;
 	}
 }
