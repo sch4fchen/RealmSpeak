@@ -32,6 +32,7 @@ public class RealmCalendar {
 	 * FINISHED - note4 = Fatigue 1 asterisk if in the heat (!cave && !mountain && !water) during Birdsong
 	 * FINISHED - note5 = Fatigue 1 asterisk/phase in mountains (even if you are blocked!)
 	 * FINISHED - note6 = Peer table cannot be used (enhanced peer is okay)
+	 * FINISHED - note7 = Fatigue 1 asterisk if in (non-frozen) water
 	 */
 	
 	private static final int FATIGUE_1_OUTSIDE = 1;
@@ -40,6 +41,7 @@ public class RealmCalendar {
 	private static final int FATIGUE_1_HEAT = 4;
 	private static final int FATIGUE_PHASES_MOUNTAIN = 5;
 	private static final int PEER_DISABLED = 6;
+	private static final int FATIGUE_1_WATER = 7;
 	
 	public static final String WEATHER_CLEAR = "clear";
 	public static final String WEATHER_SHOWERS = "showers";
@@ -347,7 +349,7 @@ public class RealmCalendar {
 		return specialNotes == FATIGUE_1_HEAT;
 	}
 	public boolean isFatiguePhasesType(int month) {
-		return isFatiguePhasesMountain(month) || isFatiguePhasesOutside(month);
+		return isFatiguePhasesMountain(month) || isFatiguePhasesOutside(month) || isFatiguePhasesWater(month);
 	}
 	public boolean isFatiguePhasesMountain(int month) {
 		updateSeason(month);
@@ -356,6 +358,10 @@ public class RealmCalendar {
 	public boolean isPeerDisabled(int month) {
 		updateSeason(month);
 		return specialNotes == PEER_DISABLED;
+	}
+	public boolean isFatiguePhasesWater(int month) {
+		updateSeason(month);
+		return specialNotes == FATIGUE_1_WATER;
 	}
 	public boolean hasSpecial(int month) {
 		updateSeason(month);

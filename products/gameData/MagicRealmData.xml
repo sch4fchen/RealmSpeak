@@ -33011,6 +33011,7 @@
         <attribute code="GT" />
         <attribute folder="sr_tiles_legendary" />
         <attribute stile="" />
+        <attribute water="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="63.7,84.6" />
@@ -33262,6 +33263,7 @@
         <attribute code="LA" />
         <attribute folder="sr_tiles_legendary" />
         <attribute stile="" />
+        <attribute water="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="62.9,87.1" />
@@ -34076,6 +34078,7 @@
         <attribute stile="" />
         <attribute water_source_clearing="1" />
         <attribute anchor_tile="" />
+        <attribute water="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="69.5,88.3" />
@@ -34201,6 +34204,7 @@
         <attribute code="RR" />
         <attribute folder="sr_tiles_legendary" />
         <attribute stile="" />
+        <attribute water="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="40.7,82.5" />
@@ -34294,6 +34298,7 @@
         <attribute code="RS" />
         <attribute folder="sr_tiles_legendary" />
         <attribute stile="" />
+        <attribute water="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="32.6,84.3" />
@@ -34389,6 +34394,7 @@
         <attribute code="RT" />
         <attribute folder="sr_tiles_legendary" />
         <attribute stile="" />
+        <attribute water="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="50.4,83.6" />
@@ -34478,6 +34484,7 @@
         <attribute code="RU" />
         <attribute folder="sr_tiles_legendary" />
         <attribute stile="" />
+        <attribute water="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="48.1,83.9" />
@@ -34568,6 +34575,7 @@
         <attribute code="RV" />
         <attribute folder="sr_tiles_legendary" />
         <attribute stile="" />
+        <attribute water="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="45.9,85.7" />
@@ -34775,6 +34783,7 @@
         <attribute code="SR" />
         <attribute folder="sr_tiles_legendary" />
         <attribute stile="" />
+        <attribute water="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
         <attribute offroad_xy="67.9,91.8" />
@@ -63405,6 +63414,9 @@
         <attributeList keyName="advantages">
           <attributeVal N0="SEAFARING:  Advantages in river hex tiles and water clearings." />
         </attributeList>
+        <attributeList keyName="diemod">
+          <attributeVal N0="1d:meeting,commerce,selling:'water" />
+        </attributeList>
       </AttributeBlock>
       <AttributeBlock blockName="level_3">
         <attribute name="Pirate" />
@@ -63649,10 +63661,10 @@
         <attribute weapon="Short Sword" />
         <attribute cragsman="" />
         <attribute armor="Helmet,Breastplate,Shield" />
+        <attribute spellcount="1" />
         <attributeList keyName="advantages">
           <attributeVal N0="CRAGSMAN:  Can 'walk the woods' when moving to or from a mountain clearing." />
         </attributeList>
-        <attribute spellcount="1" />
         <attributeList keyName="spelltypes">
           <attributeVal N0="II" />
         </attributeList>
@@ -63670,13 +63682,13 @@
         <attribute name="Wanderer" />
         <attribute weapon="Broadsword" />
         <attribute armor="Helmet,Breastplate,Shield" />
+        <attribute spellcount="1" />
         <attributeList keyName="advantages">
           <attributeVal N0="FRONTIERSMAN:  Roll one die instead of two while in a mountain clearing on the Meeting Table, the Hide table, and any Search table." />
         </attributeList>
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:meeting,commerce,selling,hide,locate,loot,peer:&amp;gt;mountain" />
+          <attributeVal N0="1d:meeting,commerce,selling,hide,locate,loot,peer:&gt;mountain" />
         </attributeList>
-        <attribute spellcount="1" />
         <attributeList keyName="spelltypes">
           <attributeVal N0="II" />
         </attributeList>

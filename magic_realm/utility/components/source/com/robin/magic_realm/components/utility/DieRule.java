@@ -100,6 +100,12 @@ public class DieRule {
 					}
 				}
 			}
+			else if (loc.startsWith("'")) {
+				loc = loc.substring(1);
+				if(tl.tile.getGameObject().hasThisAttribute(loc)) {
+					return true;
+				}
+			}
 			else if (chitDescList.contains(loc)) {
 				return true;
 			}

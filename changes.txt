@@ -1,4 +1,4 @@
-::ROADMAP::Abilities for Trawler: Seafaring, Fit
+::ROADMAP::Abilities for Trawler: Fit
 
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt
@@ -41,7 +41,7 @@ SUPER REALM:
 # Followers alert during guide's turn
 # Followers can use the spell action
 # End combat if individual became unhidden or tremendous monster flips red-side up but not if tremendous monster is still red-side up
-# End combat by spell casting only if done by use of a character's magic chit
+# End combat by spell casting only if done by use of a character's magic chit# Add weather fatigue for water clearings to Storm seasons
 BUGS/ISSUES:
 # Cursed Bell unhides characters when trading or looting it, after each activity or if being dropped
 # Cursed Bell counters World Fades

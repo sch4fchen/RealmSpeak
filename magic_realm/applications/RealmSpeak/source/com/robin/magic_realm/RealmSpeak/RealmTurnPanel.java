@@ -757,6 +757,13 @@ public class RealmTurnPanel extends CharacterFramePanel {
 					getCharacter().setWeatherFatigue(ar.getPhaseCount()*ar.getCount());
 				}
 			}
+			if (calendar.isFatiguePhasesWater(month)) {
+				if (locationAfterAction.isInClearing() && locationAfterAction.clearing.isWater() && !locationAfterAction.clearing.isFrozenWater() && !getCharacter().affectedByKey(Constants.SEAFARING)) {
+					if (!locationAfterAction.isInside(hostPrefs.hasPref(Constants.HOUSE2_RED_SPECIAL_SHELTER))) {
+						getCharacter().setWeatherFatigue(ar.getPhaseCount()*ar.getCount());
+					}
+				}
+			}
 			
 			getCharacterFrame().fatigueToContinue();
 		}
