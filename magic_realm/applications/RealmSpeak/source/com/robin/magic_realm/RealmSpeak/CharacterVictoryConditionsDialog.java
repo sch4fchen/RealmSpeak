@@ -268,7 +268,7 @@ public class CharacterVictoryConditionsDialog extends AggressiveDialog {
 			okayButton.setEnabled(assigned==required.intValue());
 		}
 		if (required!=null && deduct!=null) {
-			okayButton.setEnabled(assigned==required.intValue()-deduct.intValue());
+			okayButton.setEnabled((assigned==required.intValue()-deduct.intValue()) || assigned==0);
 		}
 	}
 	private static int getIntFromSpinner(JSpinner spinner) {

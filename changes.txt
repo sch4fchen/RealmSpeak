@@ -44,6 +44,7 @@ BUGS/ISSUES:
 # Cursed Bell counters World Fades
 # Fix granting ability by minor characters twice
 # Fix Easier Spell Learning rule
+# Fix deducting VPs if total points would be negative
 QUEST UPDATE:
 # Fix quest E13 Squire Joins You
 
