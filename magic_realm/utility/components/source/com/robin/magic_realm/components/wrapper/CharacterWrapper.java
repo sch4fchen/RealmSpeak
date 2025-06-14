@@ -2009,6 +2009,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		if (tile.isValley() && this.isValeWalker()) return true;
 		if (canWaterRun(fromClearing,toClearing)) return true;
+		if ((fromClearing.isMountain() || toClearing.isMountain()) && this.affectedByKey(Constants.CRAGSMAN)) return true;
 		
 		GameObject transmorph = getTransmorph();
 		if (transmorph!=null) {
