@@ -1033,6 +1033,15 @@ public class TreasureUtility {
 				}
 				tl.clearing.add(thing,null); // Things dropped when flying are always lost
 			}
+			
+			if (thing.hasThisAttribute(Constants.NO_HIDE)) {
+				for (RealmComponent rc:tl.clearing.getClearingComponents()) {
+					if (rc.isCharacter()) {
+						(new CharacterWrapper(rc.getGameObject())).setHidden(false);
+					}
+				}
+			}
+			
 			if (listener!=null) {
 				listener.stateChanged(new ChangeEvent(character));
 			}

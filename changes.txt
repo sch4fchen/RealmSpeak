@@ -40,7 +40,7 @@ SUPER REALM:
 # Followers alert during guide's turn
 # Followers can use the spell action
 BUGS/ISSUES:
-# Cursed Bell unhides characters when trading or looting it and after each activity
+# Cursed Bell unhides characters when trading or looting it, after each activity or if being dropped
 # Cursed Bell counters World Fades
 # Fix granting ability by minor characters twice
 # Fix Easier Spell Learning rule
