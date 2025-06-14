@@ -2364,7 +2364,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public PhaseManager getPhaseManager(boolean useClearingPlot) {
 		PhaseManager pm = new PhaseManager(this,getPonyGameObject(),getBasicPhases(),getSunlightPhases(),getShelteredPhases());
 		pm.setPonyLock(isPonyLock());
-		if (affectedByKey(Constants.EXTRA_DWELLING_PHASE)) {
+		if (getGameObject().hasThisAttribute(Constants.EXTRA_DWELLING_PHASE)) {
 			pm.addExtraDwellingPhase();
 		}
 		
@@ -2372,7 +2372,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			pm.addExtraCavePhase(getGameObject());
 		}
 		
-		if(getGameObject().hasThisAttribute(Constants.TORCH_BEARER)){
+		if (getGameObject().hasThisAttribute(Constants.TORCH_BEARER)){
 			pm.addExtraCavePhase(getGameObject());
 		}		
 		
@@ -2403,10 +2403,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 				}
 			}
 		}
-		TileLocation current = getCurrentLocation();
-		boolean cave = current!=null && current.isInClearing() && current.clearing.isCave();
-		boolean water = current!=null && current.isInClearing() && current.clearing.isWater();
-		
 		// search active treasures to determine if any items provide a free action
 		for (GameObject item:getEnhancingItemsAndNomads()) {
 			ArrayList<String> free = item.getThisAttributeList(Constants.EXTRA_ACTIONS);
@@ -2415,10 +2411,23 @@ public class CharacterWrapper extends GameObjectWrapper {
 					pm.addFreeAction(freeAction,item,null,true);
 				}
 			}
+			if (item.hasThisAttribute(Constants.EXTRA_PHASE)) {
+				pm.addExtraBasicPhase();
+			}
+			if (item.hasThisAttribute(Constants.EXTRA_DWELLING_PHASE)) {
+				pm.addExtraDwellingPhase();
+			}
 			if (item.hasThisAttribute(Constants.EXTRA_CAVE_PHASE)) {
 				pm.addExtraCavePhase(item);
 			}
+			if (item.hasThisAttribute(Constants.TORCH_BEARER)){
+				pm.addExtraCavePhase(getGameObject());
+			}
 		}
+		
+		TileLocation current = getCurrentLocation();
+		boolean cave = current!=null && current.isInClearing() && current.clearing.isCave();
+		boolean water = current!=null && current.isInClearing() && current.clearing.isWater();
 		// search clearing for free actions
 		// must be in the same clearing when recording
 		// ... and when using!
