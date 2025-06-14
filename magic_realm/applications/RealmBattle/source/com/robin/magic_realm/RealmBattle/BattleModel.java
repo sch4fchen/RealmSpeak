@@ -61,6 +61,7 @@ public class BattleModel {
 	private int totalHits;
 	private boolean spellCasting;
 	private boolean unhiding;
+	private boolean tremendousMonsterFlippingRedSideUp;
 	
 	public BattleModel(GameData data,TileLocation battleLocation) {
 		this.gameData = data;
@@ -973,6 +974,7 @@ public class BattleModel {
 		
 		spellCasting = false;
 		unhiding = false;
+		tremendousMonsterFlippingRedSideUp = false;
 		
 		ArrayList<RealmComponent> all = new ArrayList<>(getAllBattleParticipants(true));
 		
@@ -3284,6 +3286,7 @@ public class BattleModel {
 				 */
 				monster.flip();
 				logBattleInfo(monster+" flips RED side up.");
+				tremendousMonsterFlippingRedSideUp = true;
 			}
 			
 			// Also, test the monster weapon, if any
@@ -3300,6 +3303,7 @@ public class BattleModel {
 						// Target not dead, then monster goes RED (hey, that rhymes!)
 						monster.flip();
 						logBattleInfo(monster+" flips RED side up because of weapon hit.");
+						tremendousMonsterFlippingRedSideUp = true;
 					}
 				}
 			}
@@ -3349,5 +3353,9 @@ public class BattleModel {
 	
 	public boolean gotUnhidden() {
 		return unhiding;
+	}
+	
+	public boolean tremendousMonsterFlippedRedSideUp() {
+		return tremendousMonsterFlippingRedSideUp;
 	}
 }

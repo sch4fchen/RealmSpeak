@@ -714,7 +714,7 @@ public class RealmBattle {
 		
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		int hits = model.doResolveAttacks(tile.getHitResultCount()+1,tile);
-		if (hits>0 || fatigue || spellCasting || model.wasSpellCasting() || (hostPrefs.hasPref(Constants.SR_ENDING_COMBAT) && model.gotUnhidden())) {
+		if (hits>0 || fatigue || spellCasting || model.wasSpellCasting() || (hostPrefs.hasPref(Constants.SR_ENDING_COMBAT) && model.gotUnhidden()) || (hostPrefs.hasPref(Constants.SR_ENDING_COMBAT) && model.tremendousMonsterFlippedRedSideUp())) {
 			tile.addHitResult();
 		}
 		else {

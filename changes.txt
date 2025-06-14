@@ -1,3 +1,6 @@
+
+Abilities for Trawler and Wanderer
+
 ::ROADMAP::
 Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt
@@ -39,7 +42,7 @@ SUPER REALM:
 # Followers cannot voluntarily stop following
 # Followers alert during guide's turn
 # Followers can use the spell action
-# End combat if individual became unhidden but if tremendous monster is red-side up
+# End combat if individual became unhidden or tremendous monster flips red-side up but not if tremendous monster is still red-side up
 BUGS/ISSUES:
 # Cursed Bell unhides characters when trading or looting it, after each activity or if being dropped
 # Cursed Bell counters World Fades
