@@ -687,6 +687,7 @@ public class RealmBattle {
 		logger.fine("----");
 		CombatWrapper tile = new CombatWrapper(location.tile.getGameObject());
 		BattleModel model = buildBattleModel(location,data);
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		
 		boolean fatigue = tile.getWasFatigue(); // from running characters (rare situation)
 		boolean spellCasting = false;
@@ -703,8 +704,17 @@ public class RealmBattle {
 				
 				CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 				if (combat.getCastSpell()!=null || combat.isBurnedColor()) {
-					spellCasting = true;
-					break;
+					if (!hostPrefs.hasPref(Constants.SR_ENDING_COMBAT)) {
+						spellCasting = true;
+						break;
+					}
+					GameObject spell = combat.getCastSpell();
+					SpellWrapper spellWrapper = new SpellWrapper(spell);
+					GameObject incantationObject = spellWrapper.getIncantationObject();
+					if (incantationObject!=null && RealmComponent.getRealmComponent(incantationObject).isActionChit()) {
+						spellCasting = true;
+						break;
+					}
 				}
 			}
 		}
@@ -712,9 +722,8 @@ public class RealmBattle {
 			tile.setWasFatigue(false);
 		}
 		
-		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		int hits = model.doResolveAttacks(tile.getHitResultCount()+1,tile);
-		if (hits>0 || fatigue || spellCasting || model.wasSpellCasting() || (hostPrefs.hasPref(Constants.SR_ENDING_COMBAT) && model.gotUnhidden()) || (hostPrefs.hasPref(Constants.SR_ENDING_COMBAT) && model.tremendousMonsterFlippedRedSideUp())) {
+		if (hits>0 || fatigue || spellCasting || (!hostPrefs.hasPref(Constants.SR_ENDING_COMBAT) && model.wasSpellCasting()) || (hostPrefs.hasPref(Constants.SR_ENDING_COMBAT) && model.gotUnhidden()) || (hostPrefs.hasPref(Constants.SR_ENDING_COMBAT) && model.tremendousMonsterFlippedRedSideUp())) {
 			tile.addHitResult();
 		}
 		else {
