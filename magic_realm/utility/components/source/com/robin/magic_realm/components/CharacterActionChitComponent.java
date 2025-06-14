@@ -267,6 +267,15 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 				if (character.getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
 					mod++;
 				}
+				if (isFight() && character.getGameObject().hasThisAttribute(Constants.FIT)) {
+					CombatWrapper cw = new CombatWrapper(getGameObject());
+					for (String attackBox : character.getGameObject().getThisAttributeList(Constants.FIT)) {
+						if (cw.getCombatBoxAttack()==Integer.valueOf(attackBox)) {
+							mod++;
+							break;
+						}
+					}
+				}
 				strength.modify(mod);
 			}
 		}

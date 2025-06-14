@@ -79,7 +79,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"Can use two weapons, one in each hand.",Constants.DUAL_WIELDING,""},
 		{"When dual wielding both weapons can be alerted.",Constants.DUAL_WIELDING_ALERT,""},
 		{"Can throw corresponding weapons.",Constants.THROWING_WEAPONS,""},
-		{"Playing a Fight chit as 'Thrust' attack increases its force one leve,",Constants.FIT,""},
+		{"Playing a Fight chit as 'Thrust' attack increases its force one leve,",Constants.FIT,"1"},
 		{"A successful HIDE roll on missile attacks, allows to stay hidden.",Constants.SNEAKY,""},
 		{"Can penetrate targets armor with missile weapons.",Constants.SHARPSHOOTER,""},
 		{"Can attack with a staff additionally to casting without any active armor.",Constants.BATTLE_MAGE,""},

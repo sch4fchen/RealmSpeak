@@ -1,6 +1,4 @@
-::ROADMAP::Abilities for Trawler: Fit
-
-Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
+::ROADMAP::Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt
 Super Realm: Optional Rules: Selling (SR: 10.11, p.116)
 Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells: Lightning Bolt, Alchemists Mixture); site targets are considered armored. or by hurricane winds

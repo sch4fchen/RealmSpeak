@@ -63425,7 +63425,9 @@
       <AttributeBlock blockName="level_4">
         <attribute name="Trawler" />
         <attribute weapon="Thrusting Sword" />
-        <attribute fit="" />
+        <attributeList keyName="fit">
+          <attributeVal N0="1" />
+        </attributeList>
         <attributeList keyName="advantages">
           <attributeVal N0="FIT:  When playing a FIGHT chit in the 'Thrust' attack during the Melee step, it forces increases one leve. Thid does apply to treasures that act as FIGHT chits (Deft Gloves). Does not allow to wield a weapon with a weight greater than the FIGHT chit itself." />
         </attributeList>
