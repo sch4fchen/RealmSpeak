@@ -723,12 +723,15 @@ public class RealmBattle {
 		}
 		
 		int hits = model.doResolveAttacks(tile.getHitResultCount()+1,tile);
-		if (hits>0 || fatigue || spellCasting || (!hostPrefs.hasPref(Constants.SR_ENDING_COMBAT) && model.wasSpellCasting()) || (hostPrefs.hasPref(Constants.SR_ENDING_COMBAT) && model.gotUnhidden()) || (hostPrefs.hasPref(Constants.SR_ENDING_COMBAT) && model.tremendousMonsterFlippedRedSideUp())) {
+		if (hits>0 || fatigue || spellCasting || (!hostPrefs.hasPref(Constants.SR_ENDING_COMBAT) && tile.getWasSpellCasting()) || (hostPrefs.hasPref(Constants.SR_ENDING_COMBAT) && tile.getWasUnhiding()) || (hostPrefs.hasPref(Constants.SR_ENDING_COMBAT) && tile.getTremendousMonsterFlippedRedSideUp())) {
 			tile.addHitResult();
 		}
 		else {
 			tile.addMissResult();
 		}
+		tile.setWasSpellCasting(false);
+		tile.setWasUnhiding(false);
+		tile.setTremendousMonsterFlippedRedSideUp(false);
 	}
 	public static boolean expireWishStrength(TileLocation location,GameData data) {
 		BattleModel model = buildBattleModel(location,data);
@@ -796,6 +799,9 @@ public class RealmBattle {
 		cw.clearHitResults();
 		cw.clearKillResults();
 		cw.setWasFatigue(false);
+		cw.setWasSpellCasting(false);
+		cw.setWasUnhiding(false);
+		cw.setTremendousMonsterFlippedRedSideUp(false);
 		for (GameObject undead : cw.getRaisedUndeads()) {
 			RealmUtility.makeDead(RealmComponent.getRealmComponent(undead));
 		}

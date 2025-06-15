@@ -59,9 +59,6 @@ public class BattleModel {
 	private ArrayList<GameObject> killerOrder;
 	
 	private int totalHits;
-	private boolean spellCasting;
-	private boolean unhiding;
-	private boolean tremendousMonsterFlippingRedSideUp;
 	
 	public BattleModel(GameData data,TileLocation battleLocation) {
 		this.gameData = data;
@@ -972,10 +969,6 @@ public class BattleModel {
 		killTallyHash = new HashLists<>();
 		killerOrder = new ArrayList<>();
 		
-		spellCasting = false;
-		unhiding = false;
-		tremendousMonsterFlippingRedSideUp = false;
-		
 		ArrayList<RealmComponent> all = new ArrayList<>(getAllBattleParticipants(true));
 		
 		// Since things might have been killed previously this round (PoP), be sure to start with them now
@@ -1231,7 +1224,7 @@ public class BattleModel {
 						}
 					}
 					spell.recognizeCastedSpellByDenizen();
-					spellCasting = true;
+					setSpellCasting();
 				} else {
 					logBattleInfo(attacker.getGameObject().getNameWithNumber()+" is affected by Exorcise and thus cannot cast "+spell.getName()+".");
 				}
@@ -1778,7 +1771,7 @@ public class BattleModel {
 							BattleUtility.handleSpoilsOfWar((RealmComponent)attacker,RealmComponent.getRealmComponent(kill));
 						}
 						hitCausedHarm = pop.harmWasApplied();
-						spellCasting = true;
+						setSpellCasting();
 						spellCasted = true;
 					}
 					else if ((attacker.isMonster() || attacker.isNative() || transmorphed) && Constants.DEVILS_SPELL.matches(attacker.getAttackSpell())) {
@@ -1801,7 +1794,7 @@ public class BattleModel {
 							BattleUtility.handleSpoilsOfWar((RealmComponent)attacker,RealmComponent.getRealmComponent(kill));
 						}
 						hitCausedHarm = ds.harmWasApplied();
-						spellCasting = true;
+						setSpellCasting();
 						spellCasted = true;
 					}
 					else if ((attacker.isMonster() || attacker.isNative() || transmorphed) && Constants.CURSE.toLowerCase().equals(attacker.getAttackSpell().toLowerCase())) {
@@ -1809,14 +1802,14 @@ public class BattleModel {
 						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with a Curse along box "+attacker.getAttackCombatBox());
 						Curse curse = Curse.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject());
 						hitCausedHarm = curse.harmWasApplied();
-						spellCasting = true;
+						setSpellCasting();
 						spellCasted = true;
 					}
 					else if ((attacker.isMonster() || attacker.isNative() || transmorphed) && Constants.MESMERIZE.toLowerCase().equals(attacker.getAttackSpell().toLowerCase())) {
 						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with a Curse along box "+attacker.getAttackCombatBox());
 						Mesmerize mesmerize = Mesmerize.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject(),false,0);
 						hitCausedHarm = mesmerize.harmWasApplied();
-						spellCasting = true;
+						setSpellCasting();
 						spellCasted = true;
 					}
 					else if ((attacker.isMonster() || attacker.isNative() || transmorphed) && !magicType.isEmpty()
@@ -1869,7 +1862,7 @@ public class BattleModel {
 									}
 									spell.recognizeCastedSpellByDenizen();
 								}
-								spellCasting = true;
+								setSpellCasting();
 								spellCasted = true;
 							}
 							else {
@@ -1880,12 +1873,12 @@ public class BattleModel {
 					else if (attacker instanceof SpellWrapper && Constants.WALL_OF_FORCE.matches(magicType)) {
 						hitCausedHarm = WallOfForce.apply(new SpellWrapper(attacker.getGameObject()),target.getGameObject());
 						logBattleInfo(target.getGameObject().getNameWithNumber()+" was shielded by 'wall of force' by "+attacker.getName()+" along box "+attacker.getAttackCombatBox());
-						spellCasting = true;
+						setSpellCasting();
 					}
 					else if (attacker instanceof SpellWrapper && Constants.FEAR.matches(magicType)) {
 						hitCausedHarm = Fear.apply(new SpellWrapper(attacker.getGameObject()),target.getGameObject(),battleLocation);
 						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with Fear by "+attacker.getName()+" along box "+attacker.getAttackCombatBox());
-						spellCasting = true;
+						setSpellCasting();
 					}
 				}
 				else {
@@ -1900,7 +1893,7 @@ public class BattleModel {
 							targetCombat.freeze();;
 						}
 						spellCaster.addHarmApplied(attackerHarm,targetCombat.getGameObject());
-						spellCasting = true;
+						setSpellCasting();
 					}
 					else {
 						attackerCombat.addHarmApplied(attackerHarm,targetCombat.getGameObject());
@@ -3286,7 +3279,7 @@ public class BattleModel {
 				 */
 				monster.flip();
 				logBattleInfo(monster+" flips RED side up.");
-				tremendousMonsterFlippingRedSideUp = true;
+				setTremendousMonsterFlippedRedSideUp();
 			}
 			
 			// Also, test the monster weapon, if any
@@ -3303,7 +3296,7 @@ public class BattleModel {
 						// Target not dead, then monster goes RED (hey, that rhymes!)
 						monster.flip();
 						logBattleInfo(monster+" flips RED side up because of weapon hit.");
-						tremendousMonsterFlippingRedSideUp = true;
+						setTremendousMonsterFlippedRedSideUp();
 					}
 				}
 			}
@@ -3343,19 +3336,18 @@ public class BattleModel {
 		return participants;
 	}
 	
-	public boolean wasSpellCasting() {
-		return spellCasting;
+	public void setSpellCasting() {
+		CombatWrapper cw = new CombatWrapper(battleLocation.tile.getGameObject());
+		cw.setWasSpellCasting(true);
 	}
 	
 	public void setGotUnhidden() {
-		unhiding = true;
+		CombatWrapper cw = new CombatWrapper(battleLocation.tile.getGameObject());
+		cw.setWasUnhiding(true);
 	}
 	
-	public boolean gotUnhidden() {
-		return unhiding;
-	}
-	
-	public boolean tremendousMonsterFlippedRedSideUp() {
-		return tremendousMonsterFlippingRedSideUp;
+	public void setTremendousMonsterFlippedRedSideUp() {
+		CombatWrapper cw = new CombatWrapper(battleLocation.tile.getGameObject());
+		cw.setTremendousMonsterFlippedRedSideUp(true);
 	}
 }

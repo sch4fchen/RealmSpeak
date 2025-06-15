@@ -97,6 +97,9 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String HIT_BY_ORDER_NUMBER = "HIT_BY_ORDER_NUMBER";
 	
 	private static final String WAS_FATIGUE = "WAS_FATIGUE";
+	private static final String WAS_SPELL_CASTING = "WAS_SPELL_CASTING";
+	private static final String WAS_UNHIDING = "WAS_UNHIDING";
+	private static final String T_MONSTER_FLIPPED_RED_SIDE_UP = "T_MONSTER_FLIPPED_RED_SIDE_UP";
 	
 	public CombatWrapper(GameObject obj) {
 		super(obj);
@@ -537,6 +540,24 @@ public class CombatWrapper extends GameObjectWrapper {
 	public boolean getWasFatigue() {
 		return getBoolean(WAS_FATIGUE);
 	}
+	public void setWasSpellCasting(boolean val) {
+		setBoolean(WAS_SPELL_CASTING,val);
+	}
+	public boolean getWasSpellCasting() {
+		return getBoolean(WAS_SPELL_CASTING);
+	}
+	public void setWasUnhiding(boolean val) {
+		setBoolean(WAS_UNHIDING,val);
+	}
+	public boolean getWasUnhiding() {
+		return getBoolean(WAS_UNHIDING);
+	}
+	public void setTremendousMonsterFlippedRedSideUp(boolean val) {
+		setBoolean(T_MONSTER_FLIPPED_RED_SIDE_UP,val);
+	}
+	public boolean getTremendousMonsterFlippedRedSideUp() {
+		return getBoolean(T_MONSTER_FLIPPED_RED_SIDE_UP);
+	}
 	public void addHitResult() {
 		addListItem(COMBAT_HIT_RESULT_LIST,"H"); // only used by tile to record total combat hits
 	}
@@ -825,6 +846,9 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,SERIOUS_WOUND_ROLLS);
 			go.removeAttribute(COMBAT_BLOCK,HIT_BY_ORDER_NUMBER);
 			go.removeAttribute(COMBAT_BLOCK,WAS_FATIGUE);
+			go.removeAttribute(COMBAT_BLOCK,WAS_SPELL_CASTING);
+			go.removeAttribute(COMBAT_BLOCK,WAS_UNHIDING);
+			go.removeAttribute(COMBAT_BLOCK,T_MONSTER_FLIPPED_RED_SIDE_UP);
 			go.removeAttribute(COMBAT_BLOCK,PLAYED_ATTACK);
 			go.removeAttribute(COMBAT_BLOCK,PLAYED_SPELL);
 			go.removeAttribute(COMBAT_BLOCK,PLAYED_BONUS_PARRY);
