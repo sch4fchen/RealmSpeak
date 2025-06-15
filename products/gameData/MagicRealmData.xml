@@ -58044,7 +58044,6 @@
       <AttributeBlock blockName="this">
         <attribute mission="escort_party_sr" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute time_limit="14" />
         <attribute notoriety_cost="10" />
         <attribute item="" />
@@ -58057,7 +58056,6 @@
       <AttributeBlock blockName="this">
         <attribute mission="food_ale_sr" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute time_limit="14" />
         <attribute notoriety_cost="10" />
         <attribute item="" />
@@ -58070,7 +58068,6 @@
       <AttributeBlock blockName="this">
         <attribute mission="books_art" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute time_limit="14" />
         <attribute notoriety_cost="10" />
         <attribute item="" />
@@ -58083,7 +58080,6 @@
       <AttributeBlock blockName="this">
         <attribute mission="tour_guide" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute time_limit="14" />
         <attribute notoriety_cost="10" />
         <attribute item="" />
@@ -58096,7 +58092,6 @@
       <AttributeBlock blockName="this">
         <attribute gold_special="" />
         <attribute campaign="pillage" />
-        <attribute monster_die="6" />
         <attribute time_limit="month" />
         <attribute notoriety_cost="10" />
         <attribute partner="bashkars" />
@@ -58111,7 +58106,6 @@
       <AttributeBlock blockName="this">
         <attribute gold_special="" />
         <attribute campaign="raid" />
-        <attribute monster_die="6" />
         <attribute time_limit="month" />
         <attribute fame_cost="8" />
         <attribute partner="lancers,woodfolk" />
@@ -58126,7 +58120,6 @@
       <AttributeBlock blockName="this">
         <attribute campaign="conquer" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute time_limit="month" />
         <attribute notoriety_cost="40" />
         <attribute partner="soldiers,guard,patrol,company" />
@@ -58141,7 +58134,6 @@
       <AttributeBlock blockName="this">
         <attribute campaign="war" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute time_limit="month" />
         <attribute notoriety_cost="15" />
         <attribute fame_cost="10" />
@@ -58157,7 +58149,6 @@
       <AttributeBlock blockName="this">
         <attribute campaign="revolt" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute time_limit="month" />
         <attribute notoriety_cost="35" />
         <attribute partner="lancers,woodfolk,bashkars,rogues" />
@@ -58172,7 +58163,6 @@
       <AttributeBlock blockName="this">
         <attribute campaign="quest" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute time_limit="month" />
         <attribute notoriety_cost="20" />
         <attribute foe="dragon,dragon_flying,wyrm,firedrake" />
@@ -58188,7 +58178,6 @@
       <AttributeBlock blockName="this">
         <attribute gold_special="" />
         <attribute campaign="challenge" />
-        <attribute monster_die="6" />
         <attribute time_limit="month" />
         <attribute notoriety_cost="30" />
         <attribute partner="aborigines,lancers,woodfolk" />
@@ -58203,7 +58192,6 @@
       <AttributeBlock blockName="this">
         <attribute gold_special="" />
         <attribute campaign="confront" />
-        <attribute monster_die="6" />
         <attribute time_limit="month" />
         <attribute partner="bashkars,company,hunters" />
         <attribute foe="aborigines,lancers,woodfolk" />
@@ -58218,7 +58206,6 @@
       <AttributeBlock blockName="this">
         <attribute campaign="dominate" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute time_limit="month" />
         <attribute notoriety_cost="15" />
         <attribute partner="company,woodfolk" />
@@ -58233,7 +58220,6 @@
       <AttributeBlock blockName="this">
         <attribute campaign="hunt" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute time_limit="month" />
         <attribute partner="mages" />
         <attribute foe="colossus,titan" />
@@ -58249,7 +58235,6 @@
       <AttributeBlock blockName="this">
         <attribute campaign="skirmish" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute time_limit="month" />
         <attribute notoriety_cost="20" />
         <attribute partner="guard,hunters,patrol,soldiers" />
@@ -58265,7 +58250,6 @@
       <AttributeBlock blockName="this">
         <attribute campaign="liberate" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute time_limit="month" />
         <attribute foe="coven,cultists" />
         <attribute partner="zealots" />
@@ -61039,7 +61023,6 @@
         <attribute visitor="scholar" />
         <attribute print="" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute ts_section="visitors" />
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
@@ -61054,7 +61037,6 @@
         <attribute visitor="shaman" />
         <attribute print="" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute ts_section="visitors" />
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
@@ -61069,7 +61051,6 @@
         <attribute visitor="warlock" />
         <attribute print="" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute ts_section="visitors" />
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
@@ -61084,7 +61065,6 @@
         <attribute visitor="crone" />
         <attribute print="" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute ts_section="visitors" />
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
@@ -61099,7 +61079,6 @@
         <attribute visitor="priest" />
         <attribute print="" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute ts_section="visitors" />
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
@@ -61114,7 +61093,6 @@
         <attribute visitor="merchant" />
         <attribute print="" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute ts_section="visitors" />
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
@@ -61129,7 +61107,6 @@
         <attribute visitor="blacksmith" />
         <attribute print="" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute ts_section="visitors" />
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
@@ -61145,7 +61122,6 @@
         <attribute visitor="cleric" />
         <attribute print="" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute ts_section="visitors" />
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
@@ -61543,7 +61519,6 @@
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute ts_section="visitors" />
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
@@ -61561,7 +61536,6 @@
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute ts_section="visitors" />
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
@@ -61579,7 +61553,6 @@
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute ts_section="visitors" />
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
@@ -61597,7 +61570,6 @@
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute ts_section="visitors" />
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
@@ -61613,7 +61585,6 @@
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute ts_section="visitors" />
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
@@ -61632,7 +61603,6 @@
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute ts_section="visitors" />
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
@@ -61648,7 +61618,6 @@
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute ts_section="visitors" />
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
@@ -61666,7 +61635,6 @@
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute ts_section="visitors" />
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
@@ -61682,7 +61650,6 @@
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute ts_section="visitors" />
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
@@ -61700,7 +61667,6 @@
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute ts_section="visitors" />
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
@@ -61716,7 +61682,6 @@
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute ts_section="visitors" />
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
@@ -61732,7 +61697,6 @@
       <AttributeBlock blockName="this">
         <attribute print="" />
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute ts_section="visitors" />
         <attribute ts_color="gold" />
         <attribute ts_sidebar="" />
@@ -61749,7 +61713,6 @@
     <GameObject id="2357" name="Journey">
       <AttributeBlock blockName="this">
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute time_limit="month" />
         <attribute item="" />
         <attribute super_realm="" />
@@ -61768,7 +61731,6 @@
     <GameObject id="2358" name="Odyssey">
       <AttributeBlock blockName="this">
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute time_limit="month" />
         <attribute item="" />
         <attribute super_realm="" />
@@ -61787,7 +61749,6 @@
     <GameObject id="2359" name="Seek">
       <AttributeBlock blockName="this">
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute time_limit="month" />
         <attribute item="" />
         <attribute super_realm="" />
@@ -61806,7 +61767,6 @@
     <GameObject id="2360" name="Explore">
       <AttributeBlock blockName="this">
         <attribute gold_special="" />
-        <attribute monster_die="6" />
         <attribute time_limit="month" />
         <attribute item="" />
         <attribute super_realm="" />
