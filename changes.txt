@@ -7,8 +7,7 @@ Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
 Super Realm: Optional Rules: Sentimental Value (SR: 10.6, p.115)
 Super Realm: Optional Rules: Grounded Missions and Tasks (SR: 10.8, p.115)
 Super Realm: Optional Rules: Regrouping (SR: 10.10, p.115)
-Super Realm: Events (Global Events = optional rule 11.11): 33 Events
-
+Super Realm: Events (Global Events = optional rule 11.11): 33 Events
 ---Super Realms Rules + Optional Rules---
 Super Realm: Optional Rule: hill tiles must connect with all (4) clearings back to anchor tile
 Super Realm: Optional Rules: Bounty Hunters (SR: 10.2, p.114)
@@ -19,7 +18,7 @@ Super Realm: Optional Rules: Range Setup (SR: 11.10, p.126)
 Super Realm: Optional Rules: Cornered (SR: 11.13, p.128)
 Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.123): Witch, Witch King
 Super Realm: Player building map: distribute tiles equally (including river tiles), distribute river tiles first, then grotto, then rest, each player has 3 tiles in the hand and draws after placing, skip player if he cannot place any tile (and he has no river tile), if all players are skipped or player would be skipped but has river tile, undo last placement, do not allow placing grotto before all other river tiles have been placed
----Additional and new features---
+Expansion 1: Optional Rule: Offraod TravelExpansion 1: Optional Rule: BountyExpansion 1: Optional Rule: StealingExpansion 1: Optional Rule: GamblingExpansion 1: Optional Rule: Travellers (remaining rules and remaining travellers)Expansion 1: Optional Rule: new Treasures?Expansion 1: Optional Rule: Monster Generators?Expansion 1: Optional Rule: Revised charactersExpansion 1: Optional Rule: Minotaurs Lair rules---Additional and new features---
 Native, Monster, Steeds: Change color for altered move, attack strength, attack speed, length 
 Super Realm: icons for site chits, sound and warning chits, characters
 Quest: option add icon for minor character
@@ -29,7 +28,7 @@ Would be nice to make weapon abilities too:
 	Immobilizing1 - When it hits all attacks undercut in current round
 	Immobilizing2 - When it hits all attacks undercut in next round
 	Stunning - Target cannot play an attack next round
-Version 1.2.2.6
+Version 1.2.2.6BUGS/ISSUES:# Fix Maze in Super Realm (and remove effect for Maze of Expansion 1)
 
 Version 1.2.2.5
 SUPER REALM:

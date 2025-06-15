@@ -26118,7 +26118,6 @@
         <attribute discover_to_leave="" />
         <attribute icon_type_alt="minotaurKing" />
         <attribute icon_folder_alt="wesnoth/units" />
-        <attribute maze="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="972" name="Tree">
@@ -35589,6 +35588,7 @@
         <attribute ts_color="brown" />
         <attribute icon_type="minotaurKing" />
         <attribute icon_folder="wesnoth/units" />
+        <attribute maze="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1238" name="Lost Palace">

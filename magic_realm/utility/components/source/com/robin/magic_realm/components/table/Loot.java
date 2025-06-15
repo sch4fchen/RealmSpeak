@@ -161,10 +161,12 @@ public class Loot extends RealmTable {
 
 	protected String doLoot(CharacterWrapper character, int treasureNumber) {
 		Collection<GameObject> treasures;
+		boolean lostInMaze = false;
 		
 		if (treasureLocation.hasThisAttribute(Constants.MAZE)) {
 			if (!character.hasActiveInventoryThisKey(Constants.REALM_MAP)) {
 				character.getGameObject().setThisAttribute(Constants.LOST_IN_THE_MAZE);
+				lostInMaze = true;
 				for (CharacterWrapper follower : character.getActionFollowers()) {
 					follower.getGameObject().setThisAttribute(Constants.LOST_IN_THE_MAZE);
 				}
@@ -177,7 +179,11 @@ public class Loot extends RealmTable {
 			}
 			else {
 				character.getGameObject().setThisAttribute(Constants.SEARCHED_PIT);
-				return "Blindly Reaching into the Pit";
+				String text = "Blindly Reaching into the Pit";
+				if (lostInMaze) {
+					text = text + " and got lost in the Maze.";
+				}
+				return text;
 			}
 		}
 		
@@ -226,6 +232,11 @@ public class Loot extends RealmTable {
 			}
 		}
 		character.testQuestRequirements(getParentFrame(),qp);
+		
+		if (lostInMaze) {
+			ret = ret + " and got lost in the Maze.";
+		}
+		
 		return ret;
 	}
 
