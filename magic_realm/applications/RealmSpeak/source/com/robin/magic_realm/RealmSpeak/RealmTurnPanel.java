@@ -1093,6 +1093,17 @@ public class RealmTurnPanel extends CharacterFramePanel {
 					}
 				}
 			}
+			if (hostPrefs.hasPref(Constants.SR_REVEAL_TRAVELERS)) {
+				if (current!=null && current.tile!=null) {
+					for (ClearingDetail cl : current.tile.getClearings()) {
+						for (RealmComponent chit : cl.getClearingComponents()) {
+							if (chit.isGoldSpecial()) {
+								((GoldSpecialChitComponent)chit).drawFrontside();
+							}
+						}
+					}
+				}
+			}
 			
 			if (!getCharacter().isHidden() || !hostPrefs.hasPref(Constants.OPT_QUIET_MONSTERS)) {
 				ArrayList<StateChitComponent> flipped = current.tile.setChitsFaceUp();

@@ -148,7 +148,9 @@ public class ClearingUtility {
 					tile.add(go);
 					added.add(go);
 					if (go.hasThisAttribute(RealmComponent.GOLD_SPECIAL)) {
-						go.removeThisAttribute(Constants.DRAW_BACKSIDE);
+						if (!hostPrefs.hasPref(Constants.SR_REVEAL_TRAVELERS)) {
+							go.removeThisAttribute(Constants.DRAW_BACKSIDE);
+						}
 					}
 				}
 			}

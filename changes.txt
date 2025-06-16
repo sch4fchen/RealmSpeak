@@ -1,4 +1,4 @@
-Travelers: reveal at the end of the turn, not when dumping::ROADMAP::Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
+::ROADMAP::Super Realm: Optional Rules: Development (SR: 11.5, p.122) - adapt
 Super Realm: Optional Rules: Extended Development (SR: 11.6, p.124) - adapt
 Super Realm: Optional Rules: Selling (SR: 10.11, p.116)
 Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells: Lightning Bolt, Alchemists Mixture); site targets are considered armored. or by hurricane winds
@@ -28,7 +28,7 @@ Would be nice to make weapon abilities too:
 	Immobilizing1 - When it hits all attacks undercut in current round
 	Immobilizing2 - When it hits all attacks undercut in next round
 	Stunning - Target cannot play an attack next round
-Version 1.2.2.6BUGS/ISSUES:# Fix Maze in Super Realm (and remove effect for Maze of Expansion 1)# Fix Traveler chits in Super Realm being summoned by the monster die# Fix ending combat in Super Realm
+Version 1.2.2.6SUPER REALM:# Reveal travelers of current tile at the end of the turn (not when placed in the clearing)BUGS/ISSUES:# Fix Maze in Super Realm (and remove effect for Maze of Expansion 1)# Fix Traveler chits in Super Realm being summoned by the monster die# Fix ending combat in Super Realm
 
 Version 1.2.2.5
 SUPER REALM:

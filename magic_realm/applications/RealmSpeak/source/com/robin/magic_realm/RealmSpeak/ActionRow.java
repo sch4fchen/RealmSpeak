@@ -1626,7 +1626,11 @@ public class ActionRow {
 			Collection<RealmComponent> selComponents = tradeDialog.getSelectedRealmComponents();
 			// Cancel when buying ends action
 			if (selComponents == null && TRADE_BUY.equals(tradeAction)) {
-				completed = true;
+				completed = false;
+				return;
+			}
+			if (selComponents == null && TRADE_SELL.equals(tradeAction)) {
+				completed = false;
 				return;
 			}
 			
