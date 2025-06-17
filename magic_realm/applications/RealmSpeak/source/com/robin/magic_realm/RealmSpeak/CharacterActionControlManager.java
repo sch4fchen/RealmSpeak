@@ -486,10 +486,13 @@ public class CharacterActionControlManager {
 				getCharacter().chompClearingPlot();
 			}
 			if (removed.startsWith(DayAction.FOLLOW_ACTION.getCode())) {
-				GameObject guide = getCharacter().getCharacterImFollowing().getGameObject();
-				guide.removeThisAttributeListItem(Constants.COMRADE_WILL_BE_FOLLOWED_TODAY, getCharacter().getGameObject().getStringId());
-				if (guide.getThisAttributeList(Constants.COMRADE_WILL_BE_FOLLOWED_TODAY).isEmpty()) {
-					guide.removeThisAttribute(Constants.COMRADE_WILL_BE_FOLLOWED_TODAY);
+				CharacterWrapper guide = getCharacter().getCharacterImFollowing();
+				if (guide!=null) {
+					GameObject guideGo = guide.getGameObject();
+					guideGo.removeThisAttributeListItem(Constants.COMRADE_WILL_BE_FOLLOWED_TODAY, getCharacter().getGameObject().getStringId());
+					if (guideGo.getThisAttributeList(Constants.COMRADE_WILL_BE_FOLLOWED_TODAY).isEmpty()) {
+						guideGo.removeThisAttribute(Constants.COMRADE_WILL_BE_FOLLOWED_TODAY);
+					}
 				}
 			}
 		}
