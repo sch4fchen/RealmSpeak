@@ -313,7 +313,7 @@ public class Tile {
 	 * 
 	 * @return		true if the Tile object will fit at the specified location and rotation.
 	 */
-	public static boolean isMappingPossibility(Hashtable mapGrid,Tile tile,Point pos,int rot,String anchorTilename) {
+	public static boolean isMappingPossibility(Hashtable mapGrid,Tile tile,Point pos,int rot,String anchorTilename,boolean hillTilesRule) {
 		// Setup the position
 		tile.setMapPosition(pos);
 		tile.setRotation(rot);
@@ -360,6 +360,10 @@ public class Tile {
 				if (debug) System.out.println(tile.name+" doesn't have all 6 clearings connecting");
 				joinError = true;
 			}
+		}
+		else if (hillTilesRule && tileType=="H") {
+			if (debug) System.out.println(tile.name+" (hill tile) doesn't have all clearings connecting");
+			joinError = true;
 		}
 		else {
 			if (!anyConnect) {

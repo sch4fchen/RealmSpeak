@@ -2454,6 +2454,16 @@ public class ActionRow {
 	}
 	private void doFlyAction() {
 		TileLocation current = character.getCurrentLocation();
+		
+		// Before starting, make sure that you aren't "lost in the maze" (expansion 1)
+		RealmComponent discoverToLeave = ClearingUtility.findDiscoverToLeaveComponent(current,character);
+		if (discoverToLeave!=null) {
+			JOptionPane.showMessageDialog(gameHandler.getMainFrame(),"You are trapped in the "+discoverToLeave.getGameObject().getName()+"! MOVE is cancelled.",
+					"Trapped!",JOptionPane.PLAIN_MESSAGE,discoverToLeave.getFaceUpIcon());
+			cancelled = true;
+			return;
+		}
+		
 		character.checkForLostInTheMaze(current); // Lost in the Maze rule for Super Realm
 		if (character.getGameObject().hasThisAttribute(Constants.LOST_IN_THE_MAZE) && !character.affectedByKey(Constants.REALM_MAP)) {
 			doMoveAction();

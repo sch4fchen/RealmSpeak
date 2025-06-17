@@ -949,6 +949,7 @@ public class Constants {
 	public static final String OUT_OF_GAME = "OUT_OF_GAME";
 	public static final String MAP_BUILDING_PRIO = "map_building_prio";
 	public static final String MAP_BUILDING_INCREASED_PRIO_TILE_PLACEMENT = "map_building_increase_prio_tile_placement";
+	public static final String MAP_BUILDING_HILL_TILES = "map_building_hill_tiles";
 	
 	public static final String CACHE_NAME = "'s Cache #";
 }
