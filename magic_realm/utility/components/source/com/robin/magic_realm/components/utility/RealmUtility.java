@@ -409,6 +409,7 @@ public class RealmUtility {
 			character.makeDead(reason);
 		}
 		else if (rc.isNative() || rc.isHorse() || rc.isMonster() || rc.isTraveler()) {
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(rc.getGameObject().getGameData());
 			// Everything else is generic
 			GameObject dead = rc.getGameObject();
 			RealmComponent owner = rc.getOwner();
@@ -435,8 +436,16 @@ public class RealmUtility {
 					GameObject hireling = rcHireling.getGameObject();
 					controlledDenizen.removeHireling(hireling);
 				}
-				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(rc.getGameObject().getGameData());
 				controlledDenizen.clearPlayerAttributes(!rc.isMonster() && hostPrefs.hasPref(Constants.HOUSE2_NATIVES_REMEMBER_DISCOVERIES));
+			}
+			
+			if (hostPrefs.hasPref(Constants.SR_REVEAL_TRAVELERS) && rcLocation != null && rcLocation.hasClearing()) {
+				String nativeName = rc.getGameObject().getThisAttribute(RealmComponent.NATIVE);
+				GamePool pool = new GamePool(rc.getGameObject().getGameData().getGameObjects());
+				ArrayList<GameObject> boxes = pool.find("summon_n="+nativeName.toLowerCase());
+				for (GameObject box : boxes) {
+					ClearingUtility.dumpTravelersToTile(rcLocation.tile.getGameObject(),box,rcLocation.clearing.getNum());
+				}
 			}
 			
 			ClearingUtility.moveToLocation(dead,null);

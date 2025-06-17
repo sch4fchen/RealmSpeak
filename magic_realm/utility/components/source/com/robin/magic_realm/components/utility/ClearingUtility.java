@@ -127,7 +127,7 @@ public class ClearingUtility {
 	/**
 	 * @return		The objects that were dumped
 	 */
-	public static ArrayList<GameObject> dumpHoldToTile(GameObject tile,GameObject gameObject,int clearing,String testKey,boolean onlyGoldSpecial, boolean onlyTravelers) {
+	private static ArrayList<GameObject> dumpHoldToTile(GameObject tile,GameObject gameObject,int clearing,String testKey,boolean onlyGoldSpecial, boolean onlyTravelers) {
 		if (clearing==-1) {
 			clearing = recommendedClearing(tile);
 		}

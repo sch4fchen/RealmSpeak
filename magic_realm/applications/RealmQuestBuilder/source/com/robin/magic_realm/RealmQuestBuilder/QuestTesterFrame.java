@@ -1206,7 +1206,7 @@ public class QuestTesterFrame extends JFrame {
 		return locationPanel;
 	}
 
-	private void killDenizen(RealmComponent victim) {
+	private void killDenizen(RealmComponent victim) {		
 		String dayKey = character.getCurrentDayKey();
 		ArrayList<GameObject> kills = character.getKills(dayKey);
 		int killCount = kills == null ? 0 : kills.size();
