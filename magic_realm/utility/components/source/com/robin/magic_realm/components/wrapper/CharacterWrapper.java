@@ -806,6 +806,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 */
 	public boolean canMove() {
 		if (getWeight().isMaximum()) return false;
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameData());
+		if (hostPrefs.hasPref(Constants.SR_MOVEMENT_RESTRICTION) && !hasMoveChit(true,false)) {
+			return false;
+		}
 		Strength moveStrength = getMoveStrength(true,false);
 		return canMove(moveStrength);
 	}
@@ -865,9 +869,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return getNeededSupportWeight(true);
 	}
 	public Strength getNeededSupportWeight(boolean includeCharacterWeight) {
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameData());
 		Strength active = getActiveWeight(includeCharacterWeight);
 		Strength inactive = getInactiveWeight();
-		Strength convoy = getConvoyStrength();
+		Strength convoy = getConvoyStrength(hostPrefs);
 		
 		if (convoy.strongerOrEqualTo(inactive)) {
 			// Only worry about active weight if the convoy can handle the rest
@@ -879,7 +884,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	/**
 	 * @return		The strength of the strongest packhorse
 	 */
-	private Strength getConvoyStrength() {
+	private Strength getConvoyStrength(HostPrefWrapper hostPrefs) {
 		Strength strongest = new Strength();
 		
 		// Pack horses
@@ -891,7 +896,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		
 		// Hirelings
-		Strength hirelingMoveStrength = getBestFollowingHirelingStrength();
+		Strength hirelingMoveStrength = getBestFollowingHirelingStrength(hostPrefs);
 		if (hirelingMoveStrength.strongerThan(strongest)) {
 			strongest = hirelingMoveStrength;
 		}
@@ -962,6 +967,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * @return		A Strength object representing the best move strength available to the character
 	 */
 	public Strength getMoveStrength(boolean includeActionChits,boolean includeConvoyStrength) {
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
 		Strength best = new Strength(); // negligible by default
 		if (includeActionChits) {
 			// Check active chits
@@ -979,13 +985,13 @@ public class CharacterWrapper extends GameObjectWrapper {
 		GameObject transmorph = getTransmorph();
 		if (transmorph!=null) {
 			MonsterChitComponent monster = (MonsterChitComponent)RealmComponent.getRealmComponent(transmorph);
-			Strength transmorphStrength = monster.getVulnerability();
+			Strength transmorphStrength = monster.getMoveStrength();
 			if (transmorphStrength.strongerThan(best)) {
 				best = transmorphStrength;
 			}
 		}
 		if (isHiredLeader() || isControlledMonster()) {
-			Strength leaderStrength = getHirelingMoveStrength(RealmComponent.getRealmComponent(getGameObject()));
+			Strength leaderStrength = getHirelingMoveStrength(RealmComponent.getRealmComponent(getGameObject()),hostPrefs);
 			if (leaderStrength.strongerThan(best)) {
 				best = leaderStrength;
 			}
@@ -1016,24 +1022,74 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 		// Check move strengths of following hirelings (and their horses, if any)
-		Strength hirelingMoveStrength = getBestFollowingHirelingStrength();
+		Strength hirelingMoveStrength = getBestFollowingHirelingStrength(hostPrefs);
 		if (hirelingMoveStrength.strongerThan(best)) {
 			best = hirelingMoveStrength;
 		}
 		return best;
 	}
-	private Strength getBestFollowingHirelingStrength() {
+	public boolean hasMoveChit(boolean includeActionChits,boolean includeConvoyStrength) {
+		if (getWeight().isMaximum()) {
+			return false;
+		}
+		if (includeActionChits) {
+			// Check active chits
+			for (CharacterActionChitComponent chit : getActiveChits()) {
+				if (chit.isMove() && !chit.isMoveLock()) { // DUCK chit cannot be played to carry items
+					if (!chit.getGameObject().hasThisAttribute(Constants.UNPLAYABLE)) {
+						return true;
+					}
+				}
+			}
+		}
+		GameObject transmorph = getTransmorph();
+		if (transmorph!=null) {
+			if (!RealmComponent.getRealmComponent(transmorph).getWeight().isMaximum()) {
+				return true;
+			}
+		}
+		if (isHiredLeader() || isControlledMonster()) {
+			return true;
+		}
+		for (GameObject item : getInventory()) {
+			RealmComponent rc = RealmComponent.getRealmComponent(item);
+			if (item.hasThisAttribute(Constants.ACTIVATED)) {
+				if ((rc.isTreasure() && item.hasThisAttribute("move_speed")) || rc.isHorse() || (rc.isNomad() && item.hasThisAttribute(Constants.CARRIER))) {
+					return true;
+				}
+			}
+			if (includeConvoyStrength && (rc.isHorse() || (rc.isNomad() && item.hasThisAttribute(Constants.CARRIER)))) {
+				return true;
+			}
+		}
+		for (RealmComponent rc : getFollowingHirelings()) {
+			if (!rc.getWeight().isMaximum()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	private Strength getBestFollowingHirelingStrength(HostPrefWrapper hostPrefs) {
 		Strength best = new Strength();
 		for (RealmComponent rc : getFollowingHirelings()) {
-			Strength hirelingMoveStrength = getHirelingMoveStrength(rc);
+			Strength hirelingMoveStrength = getHirelingMoveStrength(rc,hostPrefs);
 			if (hirelingMoveStrength.strongerThan(best)) {
 				best = hirelingMoveStrength;
 			}
 		}
 		return best;
 	}
-	private static Strength getHirelingMoveStrength(RealmComponent rc) {
-		Strength hirelingMoveStrength = new Strength(rc.getGameObject().getThisAttribute("vulnerability"));
+	private static Strength getHirelingMoveStrength(RealmComponent rc,HostPrefWrapper hostPrefs) {
+		Strength hirelingMoveStrength = null;
+		if (rc instanceof ChitComponent && ((ChitComponent)rc).hasFaceAttribute("move_strength")) {
+			hirelingMoveStrength = new Strength(((ChitComponent)rc).getFaceAttributeString("move_strength"));
+		} else {
+			if (hostPrefs.hasPref(Constants.SR_MOVEMENT_RESTRICTION)) {
+				hirelingMoveStrength = rc.getWeight();
+			} else {
+				hirelingMoveStrength = new Strength(rc.getGameObject().getThisAttribute("vulnerability"));
+			}
+		}
 		RealmComponent nativeHorse = (RealmComponent)rc.getHorse();
 		if (nativeHorse!=null) {
 			Strength horseMoveStrength = new Strength(nativeHorse.getGameObject().getAttribute("trot","strength"));
@@ -2740,6 +2796,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public ArrayList<GameObject> getScorableInventory() {
 		Strength strength = getMoveStrength(true,false);
 		ArrayList<GameObject> carryable = new ArrayList<>();
+		
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameData());
+		if ((hostPrefs.hasPref(Constants.SR_MOVEMENT_RESTRICTION) && !hasMoveChit(true,false))) {
+			return carryable;
+		}
 		
 		for (GameObject go:getInventory()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);

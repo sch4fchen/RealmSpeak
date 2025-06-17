@@ -1045,6 +1045,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_NO_SUMMONING_FOR_FOLLOWERS,"NO SUMMONING FOR FOLLOWERS (Super Realm Basic) - Followers never cause summoning monsters, but when stopping following.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_NO_STOPPING_FOLLOWING,"NO STOPPING FOLLOWING (Super Realm Basic) - Followers cannot voluntarily stop following.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_FOLLOWERS_ENCHANTING_ACTION,"FOLLOWERS ENCHANTING ACTION (Super Realm Basic) - Followers can use the Enchant action if following (like the Rest and Alert action).",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_MOVEMENT_RESTRICTION,"MOVEMENT RESTRICTION (Super Realm Basic) - A MOVE chit is required for carring negligible weight items.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_FOLLOWERS_ACTIONS_DURING_GUIDES_PHASE,"FOLLOWERS ACTIONS DURING GUIDES PHASE (all Rules) - Followers are alerting (and enchanting) during the guide's turn (and not in their own turn).",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.ADV_FLYING_ACTIVITIES,"FLYING ACTIVITIES A.3 (Magic Realm Advanced) - Flying characters can inspect the tiles they fly over and do the Alert activity.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.ADV_CACHING,"CACHING A.4 (Magic Realm Advanced/Super Realm Basic) - Characters may record a CACHE action during their turn to create private caches of treasure and gold.",false));
@@ -1353,6 +1354,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.SR_NO_SPYING,true);
 		optionPane.setOption(Constants.SR_NO_INFORMATION_SHARING,true);
 		optionPane.setOption(Constants.SR_ADV_EASIER_SPELL_LEARNING,true);
+		optionPane.setOption(Constants.SR_MOVEMENT_RESTRICTION,true);
 		optionPane.setOption(Constants.FE_SEARCH_TABLES,true);
 		optionPane.setOption(Constants.FE_PONY_NO_MOUNTAINS,true);
 		optionPane.setOption(Constants.FE_NO_DUPLICATE_SPELL_RECORDING,true);

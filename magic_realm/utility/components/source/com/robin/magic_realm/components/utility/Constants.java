@@ -919,6 +919,7 @@ public class Constants {
 	public static final String SR_ADV_THEMATIC_ROVING_NATIVES = "ThematicRovingNatives";
 	public static final String SR_ADV_EASIER_SPELL_LEARNING = "EasierSpellLearning";
 	public static final String SR_END_GAME_SCORING = "SuperRealmEndGameScoring";
+	public static final String SR_MOVEMENT_RESTRICTION = "MovementRestriction";
 	public static final String NO_SPELL_LEARNING_RESTRICTIONS = "NoSpellLearningRestrictions";
 	
 	// Random Number Generators

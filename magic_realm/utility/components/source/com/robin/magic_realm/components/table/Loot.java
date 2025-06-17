@@ -472,7 +472,7 @@ public class Loot extends RealmTable {
 				
 				// Make sure item isn't heavier than the character can handle
 				Strength moveStrength = character.getMoveStrength(true,true);
-				if (!moveStrength.strongerOrEqualTo(weight)) {
+				if (!moveStrength.strongerOrEqualTo(weight) || (hostPrefs.hasPref(Constants.SR_MOVEMENT_RESTRICTION) && !character.hasMoveChit(true,true))) {
 					if (rc.isTreasure()) {
 						TreasureCardComponent treasure = (TreasureCardComponent)rc;
 						treasure.setFaceUp();

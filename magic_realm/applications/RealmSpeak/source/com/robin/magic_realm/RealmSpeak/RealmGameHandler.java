@@ -561,7 +561,8 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 						}
 					}
 					Strength moveStrength = ch.getMoveStrength(true,true);
-					if (unleashPowerStrength!=null && unleashPowerStrength.strongerThan(moveStrength)) {
+					if (unleashPowerStrength!=null && unleashPowerStrength.strongerThan(moveStrength)
+							&& (!hostPrefs.hasPref(Constants.SR_MOVEMENT_RESTRICTION) || ch.hasMoveChit(true,true))) {
 						moveStrength = unleashPowerStrength;
 					}
 					TileLocation loc = ch.getCurrentLocation();
