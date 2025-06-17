@@ -1363,15 +1363,50 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 	}
 	public void initRelationships(HostPrefWrapper hostPrefs) {
-		// Init relationships
+		initRelationships(hostPrefs,false);
+	}
+	public void initRelationships(HostPrefWrapper hostPrefs,boolean advancement) {
+		if (getCharacterLevel()<3 && !advancement) { // only set the relationships for roving natives
+			OrderedHashtable<String,Object> baseBlock = getGameObject().getAttributeBlock(Constants.BASE_RELATIONSHIP);
+			ArrayList<String> relBlocks = getAllRelationshipBlocks(hostPrefs);
+			GamePool pool = new GamePool(getGameData().getGameObjects());
+			for (String relBlock:relBlocks) {
+				for (String key:baseBlock.keySet()) {
+					boolean roving = false;
+					ArrayList<GameObject> hqs = pool.find("rank=HQ,native="+key);
+					for (GameObject hq : hqs) {
+						if (hq.hasThisAttribute(Constants.ROVING_NATIVE)) {
+							roving = true;
+						}
+					}
+					if (roving) {
+						int baseRel = getGameObject().getInt(Constants.BASE_RELATIONSHIP,key);
+						int currRel = getGameObject().getInt(relBlock,key);
+						getGameObject().setAttribute(relBlock,key,baseRel+currRel);
+					}
+				}
+			}
+		}
 		if (getCharacterLevel()>=3) { // only get the base relationships at level 3 or higher - otherwise all neutral!
 			OrderedHashtable<String,Object> baseBlock = getGameObject().getAttributeBlock(Constants.BASE_RELATIONSHIP);
 			ArrayList<String> relBlocks = getAllRelationshipBlocks(hostPrefs);
+			GamePool pool = new GamePool(getGameData().getGameObjects());
 			for (String relBlock:relBlocks) {
 				for (String key:baseBlock.keySet()) {
-					int baseRel = getGameObject().getInt(Constants.BASE_RELATIONSHIP,key);
-					int currRel = getGameObject().getInt(relBlock,key);
-					getGameObject().setAttribute(relBlock,key,baseRel+currRel);
+					boolean roving = false;
+					if (advancement) {
+						ArrayList<GameObject> hqs = pool.find("rank=HQ,native="+key);
+						for (GameObject hq : hqs) {
+							if (hq.hasThisAttribute(Constants.ROVING_NATIVE)) {
+								roving = true;
+							}
+						}
+					}
+					if (!advancement || !roving) {
+						int baseRel = getGameObject().getInt(Constants.BASE_RELATIONSHIP,key);
+						int currRel = getGameObject().getInt(relBlock,key);
+						getGameObject().setAttribute(relBlock,key,baseRel+currRel);
+					}
 				}
 			}
 			if (hostPrefs.hasPref(Constants.TE_KNIGHT_ADJUSTMENT) && getGameObject().hasThisAttribute("knight")) {

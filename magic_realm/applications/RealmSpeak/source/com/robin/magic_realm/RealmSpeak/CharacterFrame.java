@@ -2437,7 +2437,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			}
 			
 			if (newLevel==3 && gameHandler.getHostPrefs().hasPref(Constants.EXP_DEV_3RD_REL)) {
-				character.initRelationships(gameHandler.getHostPrefs());
+				character.initRelationships(gameHandler.getHostPrefs(),true);
 			}
 			ArrayList<String> advantages = character.getLevelAdvantages();
 			advantages.removeAll(oldAdvantages);
