@@ -15,19 +15,19 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 public class DieModEditPanel extends AdvantageEditPanel {
 	
 	private static final String[][] TABLE = {
-		{"Natives","Commerce","Meeting"},
-		{"Spells","Curse","PoP:powerofthepit","Wish","Transform","Meditate","Mesmerize","SummonDemon"},
+		{"Natives","Meeting","Commerce","Selling"},
+		{"Spells","Curse","PoP:powerofthepit","Wish","Transform","Meditate","Mesmerize","SummonDemon","Lost","Violent Storm","Magic Missile:magicmissil"},
 		{"Actions","Hide","Hire","Trade"},
 		{"Battle","Missile","Thrown","Fumble","Stumble"},
 		
 		{"Expansion","Raise Dead:raisedead","Summon Elemental:summonelemental","Summon Animal:summonanimal","Capture"},
-		{"Treasure within Treasure","Toadstool Circle","Crypt of the Knight","Enchanted Meadow", "Cicle of Stones", "Ethereal Abbey", "Fairy Grove", "Haunted Grave", "Mage Library"},
+		{"Treasure within Treasure","TWT:twt", "Toadstool Circle", "Crypt of the Knight", "Enchanted Meadow", "Cicle of Stones", "Ethereal Abbey", "Fairy Grove", "Haunted Grave", "Mage Library"},
 		{"Search","Locate","Loot","Magic Sight:magicsight","Peer","Read Runes:readrunes"},
 	};
 	
 	private static final String[][] CONDITION = {
 		{"Clearings","Woods:>woods","Caves:>caves","Mountains:>mountain"},
-		{"Civilizations","Lost City:lost city%","Lost Castle:lost castle%","Ruins:%ruins%"},
+		{"Civilizations","Lost City:lost city%","Lost Castle:lost castle%","Lost Fortress:lost fortress%","Lost Palace:lost palace%","Ruins:%ruins%"},
 		{"Tiles","Woods:% woods","Valley:% valley","Swamp:% swamp"},
 		{"Warnings","Stink:stink %","Smoke:smoke %","Bones:bones %","Dank:dank %","Ruins:ruins %"},
 	};
