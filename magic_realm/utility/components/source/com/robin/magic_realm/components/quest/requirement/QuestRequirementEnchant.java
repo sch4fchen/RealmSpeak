@@ -26,7 +26,10 @@ public class QuestRequirementEnchant extends QuestRequirement {
 				return false;
 			}
 			GameObject go = reqParams.objectList.get(0);
-			String chitName = getChit().toLowerCase();
+			String chitName = null;
+			if (getChit()!=null) {
+				chitName = getChit().toLowerCase();
+			}
 			
 			if (getType().matches(RealmComponent.TILE)) {
 				RealmComponent tileRc = RealmComponent.getRealmComponent(go);
@@ -53,7 +56,7 @@ public class QuestRequirementEnchant extends QuestRequirement {
 						if (stringTokenizer.hasMoreTokens()) {
 							nameWithoutTileType = stringTokenizer.nextToken().toLowerCase();
 						}
-						if (name.matches(chitName) || nameWithoutTileType.matches(chitName)) {
+						if (chitName == null || name.matches(chitName) || nameWithoutTileType.matches(chitName)) {
 							foundChit = true;
 						}
 					}
