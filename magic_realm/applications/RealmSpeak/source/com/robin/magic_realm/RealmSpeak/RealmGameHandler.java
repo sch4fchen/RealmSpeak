@@ -581,7 +581,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			
 			QuestRequirementParams params = new QuestRequirementParams();
 			ch.testQuestRequirements(null, params);
-			if (hostPrefs.hasPref(Constants.SR_DEDUCT_VPS)) {
+			if (hostPrefs.hasPref(Constants.SR_DEDUCT_VPS) && !hostPrefs.hasPref(Constants.EXP_DEVELOPMENT_SR)) {
 				ch.addPenaltyVps();
 			}
 		}

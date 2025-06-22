@@ -9,7 +9,16 @@ public class Score {
 	private int ownedPoints;
 	private int mult;
 	private int vps;
+	private boolean noPenalty = false;
 	private ArrayList<GameObject> scoringGameObjects;
+	public Score(int recordedPoints,int ownedPoints,int mult,int vps,ArrayList<GameObject> scoringGameObjects, boolean noPenalty) {
+		this.recordedPoints = recordedPoints;
+		this.ownedPoints = ownedPoints;
+		this.mult = mult;
+		this.vps = vps;
+		this.scoringGameObjects = scoringGameObjects;
+		this.noPenalty = noPenalty;
+	}
 	public Score(int recordedPoints,int ownedPoints,int mult,int vps,ArrayList<GameObject> scoringGameObjects) {
 		this.recordedPoints = recordedPoints;
 		this.ownedPoints = ownedPoints;
@@ -31,6 +40,9 @@ public class Score {
 	}
 	public int getScore() {
 		int score = getPoints() - getRequired();
+		if (noPenalty) {
+			return score;
+		}
 		return score<0?score*3:score;
 	}
 	public boolean hasPenalty() {
@@ -50,6 +62,9 @@ public class Score {
 		return (Double.valueOf(Math.floor(val))).intValue();
 	}
 	public int getBonusScore() {
+		if (noPenalty) { 
+			return 0;
+		}
 		return vps>0?(getBasicScore()*vps):0;
 	}
 	public int getTotalScore() {

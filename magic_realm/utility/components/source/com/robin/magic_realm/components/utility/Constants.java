@@ -820,6 +820,7 @@ public class Constants {
 	public static final String EXP_NO_DWELLING_START = "NoDwellingStart";
 	public static final String EXP_DEVELOPMENT = "AllowDevelopment";
 	public static final String EXP_DEVELOPMENT_PLUS = "DevelopmentPastFour";
+	public static final String EXP_DEVELOPMENT_SR = "DevelopmentInSuperRealm";
 	public static final String EXP_DEV_EXCLUDE_SW = "DevExcludeStartingWorth";
 	public static final String EXP_DEV_3RD_REL = "DevEarn3rdRelationships";
 	public static final String EXP_CUSTOM_CHARS = "CustomCharacters";

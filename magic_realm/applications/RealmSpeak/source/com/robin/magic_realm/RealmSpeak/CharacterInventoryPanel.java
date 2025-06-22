@@ -220,7 +220,8 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 				}
 			}
 			
-			if (allCharacters.size()>1 && (allGold>0.0 || !allInventory.isEmpty())) {
+			if ((allCharacters.size()>1 && (allGold>0.0 || !allInventory.isEmpty()))
+					|| getHostPrefs().hasPref(Constants.EXP_DEVELOPMENT_SR)) {
 				// First, make sure there aren't any local changes (so we can roll back)
 				getGameHandler().submitChanges();
 				

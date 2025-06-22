@@ -37,7 +37,7 @@ public class QuestRewardClonedQuestsComplete extends QuestReward {
 			clonedQuest.setEvent(false);
 		}
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameData());
-		if (hostPrefs.hasPref(Constants.SR_DEDUCT_VPS)) {
+		if (hostPrefs.hasPref(Constants.SR_DEDUCT_VPS) && !hostPrefs.hasPref(Constants.EXP_DEVELOPMENT_SR)) {
 			character.addDeductVPs(clonedQuest.getInt(QuestConstants.VP_REWARD));
 		}
 	}

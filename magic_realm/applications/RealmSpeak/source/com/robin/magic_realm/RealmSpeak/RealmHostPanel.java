@@ -396,7 +396,7 @@ public class RealmHostPanel extends JPanel {
 					character.setGameOver(true);
 					QuestRequirementParams params = new QuestRequirementParams();
 					character.testQuestRequirements(null, params);
-					if (hostPrefs.hasPref(Constants.SR_DEDUCT_VPS)) {
+					if (hostPrefs.hasPref(Constants.SR_DEDUCT_VPS) && !hostPrefs.hasPref(Constants.EXP_DEVELOPMENT_SR)) {
 						character.addPenaltyVps();
 					}
 				}
@@ -1010,7 +1010,7 @@ public class RealmHostPanel extends JPanel {
 				character.setGameOver(true);
 				QuestRequirementParams params = new QuestRequirementParams();
 				character.testQuestRequirements(null, params);
-				if (hostPrefs.hasPref(Constants.SR_DEDUCT_VPS)) {
+				if (hostPrefs.hasPref(Constants.SR_DEDUCT_VPS) && !hostPrefs.hasPref(Constants.EXP_DEVELOPMENT_SR)) {
 					character.addPenaltyVps();
 				}
 			}

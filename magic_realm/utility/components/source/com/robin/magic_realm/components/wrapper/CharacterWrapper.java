@@ -3307,6 +3307,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return getGameObject().getInt(CharacterWrapper.VICTORY_REQ_BLOCK,CharacterWrapper.QUEST_BONUS_VPS);
 	}
 	public Score getQuestPointScore() {
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
+		boolean noPenalty = hostPrefs.hasPref(Constants.EXP_DEVELOPMENT_SR);
 		int count = 0;
 		ArrayList<GameObject> list = new ArrayList<>();
 		for(Quest quest:getAllQuests()) {
@@ -3316,7 +3318,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 		count=count+getQuestBonusVps();
-		return new Score(0,count,1,getGameObject().getInt(CharacterWrapper.VICTORY_REQ_BLOCK,CharacterWrapper.V_QUEST_POINTS),list);
+		return new Score(0,count,1,getGameObject().getInt(CharacterWrapper.VICTORY_REQ_BLOCK,CharacterWrapper.V_QUEST_POINTS),list,noPenalty);
 	}
 	public Score getGreatTreasureScore() {
 		int count = 0;
@@ -3448,7 +3450,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public int getTotalEarnedVps(boolean restrictToAssigned,boolean excludeStartingWorth) {
 		int evps = 0;
-		//evps += getQuestPointScore().getEarnedVictoryPoints(restrictToAssigned); // quest points don't count towards earned VPs!
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
+		if (hostPrefs.hasPref(Constants.EXP_DEVELOPMENT_SR)) {
+			evps += getQuestPointScore().getEarnedVictoryPoints(restrictToAssigned); // quest points don't count towards earned VPs!
+		}
 		evps += getGreatTreasureScore().getEarnedVictoryPoints(restrictToAssigned);
 		evps += getUsableSpellScore().getEarnedVictoryPoints(restrictToAssigned);
 		evps += getFameScore().getEarnedVictoryPoints(restrictToAssigned);
@@ -4060,7 +4065,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				}
 			}
 		}
-		if (hostPrefs.hasPref(Constants.SR_DEDUCT_VPS)) {
+		if (hostPrefs.hasPref(Constants.SR_DEDUCT_VPS) && !hostPrefs.hasPref(Constants.EXP_DEVELOPMENT_SR)) {
 			addDeductVPs(1);
 		}
 		discovery.setThisAttribute(Constants.DISCOVERED);
@@ -4486,7 +4491,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 				vps = -1;
 			}
 
-			if (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) && vps!=-1 && !hostPrefs.hasPref(Constants.SR_DEDUCT_VPS)) {
+			if (!hostPrefs.hasPref(Constants.HOUSE2_ANY_VPS) && hostPrefs.hasPref(Constants.EXP_DEVELOPMENT_SR)) {
+				addVictoryRequirements(3*level,0,0,0,0,0);
+			} else if (!hostPrefs.hasPref(Constants.HOUSE2_ANY_VPS) && hostPrefs.hasPref(Constants.QST_QUEST_CARDS) && !hostPrefs.hasPref(Constants.SR_DEDUCT_VPS)) {
 				addVictoryRequirements(vps,0,0,0,0,0);
 			}
 			else {

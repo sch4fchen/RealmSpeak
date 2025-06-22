@@ -82,7 +82,8 @@ public class CharacterVictoryConditionsDialog extends AggressiveDialog {
 		topPanel.add(Box.createGlue());
 		getContentPane().add(topPanel,"North");
 		Box box = Box.createVerticalBox();
-		if (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) && !hostPrefs.hasPref(Constants.SR_DEDUCT_VPS)) {
+		if (hostPrefs.hasPref(Constants.EXP_DEVELOPMENT_SR) ||
+				(hostPrefs.hasPref(Constants.QST_QUEST_CARDS) && !hostPrefs.hasPref(Constants.SR_DEDUCT_VPS))) {
 			setSize(250,165);
 			line = group.createLabelLine("Quest Points");
 				if (deduct!=null) {

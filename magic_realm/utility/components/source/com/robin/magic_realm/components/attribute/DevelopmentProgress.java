@@ -23,7 +23,7 @@ public class DevelopmentProgress {
 	private int vpsToNextLevel;
 	
 	public static DevelopmentProgress createDevelopmentProgress(HostPrefWrapper hostPrefs,CharacterWrapper character) {
-		boolean restrictToAssigned = !hostPrefs.getRequiredVPsOff() && !hostPrefs.hasPref(Constants.HOUSE3_NO_RESTRICT_VPS_FOR_DEV);
+		boolean restrictToAssigned = !hostPrefs.getRequiredVPsOff() && !hostPrefs.hasPref(Constants.HOUSE3_NO_RESTRICT_VPS_FOR_DEV) && !hostPrefs.hasPref(Constants.EXP_DEVELOPMENT_SR);
 		int evps = character.getTotalEarnedVps(restrictToAssigned,hostPrefs.hasPref(Constants.EXP_DEV_EXCLUDE_SW));
 		int maxEvps = character.getHighestEarnedVps();
 		if (evps>maxEvps) {

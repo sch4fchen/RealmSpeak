@@ -363,7 +363,7 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 	
 	private ArrayList<VictoryTableRow> tableRows;
 	private void initializeTableRows(HostPrefWrapper hostPrefs) {
-		boolean showQuestPoints = hostPrefs.hasPref(Constants.QST_QUEST_CARDS);
+		boolean showQuestPoints = hostPrefs.hasPref(Constants.QST_QUEST_CARDS) || hostPrefs.hasPref(Constants.EXP_DEVELOPMENT_SR);
 		tableRows = new ArrayList<>();
 		if (showQuestPoints) {
 			tableRows.add(new ScoreRow(hostPrefs,"Quest Pts",VictoryRowType.QuestPoints) {
