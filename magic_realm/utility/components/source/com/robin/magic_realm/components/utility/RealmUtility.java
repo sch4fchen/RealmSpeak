@@ -441,10 +441,12 @@ public class RealmUtility {
 			
 			if (hostPrefs.hasPref(Constants.SR_REVEAL_TRAVELERS) && rcLocation != null && rcLocation.hasClearing()) {
 				String nativeName = rc.getGameObject().getThisAttribute(RealmComponent.NATIVE);
-				GamePool pool = new GamePool(rc.getGameObject().getGameData().getGameObjects());
-				ArrayList<GameObject> boxes = pool.find("summon_n="+nativeName.toLowerCase());
-				for (GameObject box : boxes) {
-					ClearingUtility.dumpTravelersToTile(rcLocation.tile.getGameObject(),box,rcLocation.clearing.getNum());
+				if (nativeName!=null && !nativeName.isEmpty()) {
+					GamePool pool = new GamePool(rc.getGameObject().getGameData().getGameObjects());
+					ArrayList<GameObject> boxes = pool.find("summon_n="+nativeName.toLowerCase());
+					for (GameObject box : boxes) {
+						ClearingUtility.dumpTravelersToTile(rcLocation.tile.getGameObject(),box,rcLocation.clearing.getNum());
+					}
 				}
 			}
 			
