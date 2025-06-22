@@ -922,6 +922,7 @@ public class Constants {
 	public static final String SR_END_GAME_SCORING = "SuperRealmEndGameScoring";
 	public static final String SR_MOVEMENT_RESTRICTION = "MovementRestriction";
 	public static final String NO_SPELL_LEARNING_RESTRICTIONS = "NoSpellLearningRestrictions";
+	public static final String SR_SELLING = "Selling";
 	
 	// Random Number Generators
 	public static final String RANDOM_R250_521 = "RndR250_521";

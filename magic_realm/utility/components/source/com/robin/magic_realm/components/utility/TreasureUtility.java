@@ -1049,6 +1049,12 @@ public class TreasureUtility {
 	}
 	
 	public static int getBasePrice(RealmComponent trader,RealmComponent merchandise) {
+		return getBasePrice(trader,merchandise,true);
+	}
+	public static int getBasePriceWithoutCommerceBonus(RealmComponent trader,RealmComponent merchandise) {
+		return getBasePrice(trader,merchandise,false);
+	}
+	public static int getBasePrice(RealmComponent trader,RealmComponent merchandise,boolean includeBonus) {
 		int basePrice = merchandise.getGameObject().getThisInt("base_price");
 		if (merchandise.isArmor()) {
 			// basePrice calculated differently for armor
@@ -1075,7 +1081,7 @@ public class TreasureUtility {
 			}
 		}
 		
-		if (trader!=null) {
+		if (trader!=null && includeBonus) {
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(trader.getGameObject().getGameData());
 			if (hostPrefs.hasPref(Constants.OPT_COMMERCE)) {
 				basePrice += TreasureUtility.getCommerceBonusPrice(trader,merchandise);

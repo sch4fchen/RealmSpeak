@@ -79,9 +79,12 @@ public abstract class Commerce extends Trade {
 		blockBattle = true;
 	}
 	protected int getTotalBasePrice() {
+		return getTotalBasePrice(true);
+	}
+	protected int getTotalBasePrice(boolean includeBonus) {
 		int totalPrice = 0;
 		for (RealmComponent merchandise : merchandise) {
-			totalPrice += TreasureUtility.getBasePrice(tradeInfo.getTrader(),merchandise);
+			totalPrice += TreasureUtility.getBasePrice(tradeInfo.getTrader(),merchandise,includeBonus);
 		}
 		return totalPrice;
 	}
@@ -110,6 +113,68 @@ public abstract class Commerce extends Trade {
 		}
 		doBlockBattle(character);
 		return "Block/Battle";
+	}
+	protected String sell(CharacterWrapper character, double multi) {
+		return selling(character,multi,false);
+	}
+	protected String sellOrBlock(CharacterWrapper character, double multi) {
+		return selling(character,multi,true);
+	}
+	private String selling(CharacterWrapper character, double multi,boolean block) {
+		double total = 0;
+		if (multi==0) {
+			total = 0;
+		}
+		else if (multi<1) {
+			total = getTotalBasePrice(true) * multi;
+		}
+		else {
+			total = (getTotalBasePrice(false) * multi);
+			for (RealmComponent merchandise : merchandise) {
+				total += TreasureUtility.getCommerceBonusPrice(tradeInfo.getTrader(),merchandise);
+			}
+		}
+		
+		int totalGold = (int) Math.ceil(total);
+		
+		String headline =  "Sellling for "+totalGold+"?";
+		if (block) {
+			headline = "Sell ("+totalGold+") or Block"; 
+		}
+		int ret = JOptionPane.showConfirmDialog(getParentFrame(),"They offer gold "+totalGold+".\n\nWill you sell?",headline,JOptionPane.YES_NO_OPTION);
+		if (ret==JOptionPane.YES_OPTION) {
+			return sellItems(character,totalGold);
+		}
+		if (block) {
+			doBlockBattle(character);
+			return "Block/Battle";
+		}
+		return "Declined Offer";
+	}
+	protected String sellItems(CharacterWrapper character, int price) {
+		String result = "";
+		StringBuffer sb = new StringBuffer();
+		ArrayList<GameObject> itemList = new ArrayList<GameObject>();
+		for (RealmComponent merchandise : merchandise) {
+			itemList.add(merchandise.getGameObject());
+			sb.append("You sold the "+merchandise.getGameObject().getName()+" for "+price+" gold.\n");
+			character.addGold(price);
+			TradeUtility.loseItem(character,merchandise.getGameObject(),tradeInfo.getGameObject(),hostPrefs.hasPref(Constants.OPT_GRUDGES));
+		}
+		
+		// Finally, make sure the inventory status is still legal 
+		character.checkInventoryStatus(getParentFrame(),null,getListener());
+		
+		if (merchandise.size()==1) {
+			RealmComponent item = merchandise.iterator().next();
+			result = "Total received for the "+item.getGameObject().getName()+" was "+price+" gold.";
+		}
+		else {
+			result = "Sold "+merchandise.size()+" items for "+price+" gold: ";
+		}
+		checkQuestRequirementsAfterSelling(itemList, character);
+		showConfirmationDialog(character,sb);
+		return result;
 	}
 	protected String process(CharacterWrapper character,int bonus) {
 		String result = "";
@@ -145,14 +210,19 @@ public abstract class Commerce extends Trade {
 		else {
 			result = "Sold "+merchandise.size()+" items for "+totalGoldReceieved+" gold: ";
 		}
-		
+		checkQuestRequirementsAfterSelling(itemList, character);
+		showConfirmationDialog(character,sb);
+		return result;
+	}
+	private void checkQuestRequirementsAfterSelling(ArrayList<GameObject> itemList, CharacterWrapper character) {
 		QuestRequirementParams params = new QuestRequirementParams();
 		params.actionType = CharacterActionType.Trading;
 		params.actionName = TradeType.Sell.toString();
 		params.objectList = itemList;
 		params.targetOfSearch = tradeInfo.getGameObject();
 		character.testQuestRequirements(getParentFrame(),params);
-		
+	}
+	private void showConfirmationDialog(CharacterWrapper character, StringBuffer sb) {
 		JTextArea area = new JTextArea();
 		area.setFont(UIManager.getFont("Label.font"));
 		area.setText(sb.toString());
@@ -162,32 +232,53 @@ public abstract class Commerce extends Trade {
 				area,
 				"Selling goods",
 				JOptionPane.INFORMATION_MESSAGE);
-		return result;
 	}
 	public static Commerce createCommerceTable(JFrame frame,CharacterWrapper character,TileLocation currentLocation,RealmComponent trader,Collection<RealmComponent> merchandise,int ignoreBuyDrinksLimit,HostPrefWrapper hostPrefs) {
-		if (!hostPrefs.hasPref(Constants.OPT_COMMERCE)) {
+		if (!hostPrefs.hasPref(Constants.OPT_COMMERCE) && !hostPrefs.hasPref(Constants.SR_SELLING)) {
 			return new CommerceNone(frame,new TradeInfo(trader),merchandise,hostPrefs);
 		}
 		
 		TradeInfo tradeInfo = getTradeInfo(frame,character,trader,currentLocation,ignoreBuyDrinksLimit);
 		
 		Commerce commerce = null;
-		switch(tradeInfo.getRelationshipType()) {
+		
+		if (hostPrefs.hasPref(Constants.SR_SELLING)) {
+			switch(tradeInfo.getRelationshipType()) {
 			case RelationshipType.ENEMY:
-				commerce = new CommerceEnemy(frame,tradeInfo,merchandise,hostPrefs);
+				commerce = new SellingEnemy(frame,tradeInfo,merchandise,hostPrefs);
 				break;
 			case RelationshipType.UNFRIENDLY:
-				commerce = new CommerceUnfriendly(frame,tradeInfo,merchandise,hostPrefs);
+				commerce = new SellingUnfriendly(frame,tradeInfo,merchandise,hostPrefs);
 				break;
 			case RelationshipType.NEUTRAL:
-				commerce = new CommerceNeutral(frame,tradeInfo,merchandise,hostPrefs);
+				commerce = new SellingNeutral(frame,tradeInfo,merchandise,hostPrefs);
 				break;
 			case RelationshipType.FRIENDLY:
-				commerce = new CommerceFriendly(frame,tradeInfo,merchandise,hostPrefs);
+				commerce = new SellingFriendly(frame,tradeInfo,merchandise,hostPrefs);
 				break;
 			case RelationshipType.ALLY:
-				commerce = new CommerceAlly(frame,tradeInfo,merchandise,hostPrefs);
+				commerce = new SellingAlly(frame,tradeInfo,merchandise,hostPrefs);
 				break;
+		}
+		}
+		else {
+			switch(tradeInfo.getRelationshipType()) {
+				case RelationshipType.ENEMY:
+					commerce = new CommerceEnemy(frame,tradeInfo,merchandise,hostPrefs);
+					break;
+				case RelationshipType.UNFRIENDLY:
+					commerce = new CommerceUnfriendly(frame,tradeInfo,merchandise,hostPrefs);
+					break;
+				case RelationshipType.NEUTRAL:
+					commerce = new CommerceNeutral(frame,tradeInfo,merchandise,hostPrefs);
+					break;
+				case RelationshipType.FRIENDLY:
+					commerce = new CommerceFriendly(frame,tradeInfo,merchandise,hostPrefs);
+					break;
+				case RelationshipType.ALLY:
+					commerce = new CommerceAlly(frame,tradeInfo,merchandise,hostPrefs);
+					break;
+			}
 		}
 		return commerce;
 	}

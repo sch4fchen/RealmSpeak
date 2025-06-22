@@ -1032,6 +1032,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		
 		newOptionPane.setTabHtmlDescription(EXTENDING_GAME_SYSTEM_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Extended Game System</font></body></html>");
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_COMMERCE,"COMMERCE D.2 (Magic Realm Extended) - This includes changes in native trading prices based on the group and using the commerce table for selling goods.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_SELLING,"SELLING (Super Realm Extended) - This includes changes in native trading prices based on the group and using the selling (instead of commerce) table for selling goods.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_NO_7TH_DAY_REGENERATION,"NO 7TH DAY REGENERATION (Super Realm Basic) - Denizens do NOT regenerate at the 7th day of the week.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_ALTERNATING_7TH_DAY_MAGIC,"ALTERNATING 7TH DAY MAGIC (Super Realm Basic) - White is supplied on the odd numbered months on Day 7, black magic on the even numbered months of Day 7.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_END_OF_MONTH_REGENERATION,"END OF MONTH REGENERATION (Super Realm Basic) - All denizen regenerate at the end of the month.",false));
@@ -1295,6 +1296,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.OPT_ENHANCED_ARTIFACTS,true);
 		optionPane.setOption(Constants.OPT_AUTOMATIC_ENCHANTING,true);
 		optionPane.setOption(Constants.OPT_COMMERCE,true);
+		optionPane.setOption(Constants.SR_SELLING,true);
 		optionPane.setOption(Constants.OPT_FUMBLE,true);
 		optionPane.setOption(Constants.OPT_STUMBLE,true);
 		optionPane.setOption(Constants.OPT_MISSILE,true);

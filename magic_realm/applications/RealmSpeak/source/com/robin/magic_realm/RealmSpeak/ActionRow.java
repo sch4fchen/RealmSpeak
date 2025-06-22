@@ -1615,7 +1615,11 @@ public class ActionRow {
 			}
 			else {
 				// Selling
-				tradeDialog = new RealmTradeDialog(gameHandler.getMainFrame(),"Select item(s) to SELL to "+traderRel+":",true,true,false);
+				boolean allowMultiple = true;
+				if (hostPrefs.hasPref(Constants.SR_SELLING)) {
+					allowMultiple = false;
+				}
+				tradeDialog = new RealmTradeDialog(gameHandler.getMainFrame(),"Select item(s) to SELL to "+traderRel+":",allowMultiple,true,false);
 			}
 			tradeDialog.setDealingCharacter(character);
 			tradeDialog.setTrader(trader);
