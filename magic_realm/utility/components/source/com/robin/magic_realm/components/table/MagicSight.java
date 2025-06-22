@@ -242,7 +242,6 @@ public class MagicSight extends Search {
 						components.add(rc);
 					}
 				}
-				revealTravelers(character, rc.getGameObject());
 			}
 		}
 		// check player inventory
@@ -295,6 +294,8 @@ public class MagicSight extends Search {
 				character.recordNewSpell(getParentFrame(),spell.getGameObject());
 				ret = "Perceive Spell - Learned "+spell.getGameObject().getName();
 			}
+			
+			revealTravelers(character, site.getGameObject());
 		}
 		
 		QuestRequirementParams qp = new QuestRequirementParams();
