@@ -189,8 +189,15 @@ public class ClearingDetail {
 				GamePool pool = new GamePool(this.parent.getGameObject().getGameData().getGameObjects());
 				ArrayList<GameObject> waterSources = pool.find("tile,water_source_clearing");
 				if (!waterSources.isEmpty()) {
-					if (this.distanceToWaterSource(waterSources)>currentLocation.clearing.distanceToWaterSource(waterSources)) {
-						val--;
+					if (this.distanceToWaterSource(waterSources)>=currentLocation.clearing.distanceToWaterSource(waterSources)) {
+						if (currentLocation.isBetweenClearings()) {
+							if (this.distanceToWaterSource(waterSources)>=currentLocation.getOther().clearing.distanceToWaterSource(waterSources)) {
+								val--;
+							}
+						}
+						else {
+							val--;
+						}
 					}
 				}
 			}
@@ -279,7 +286,6 @@ public class ClearingDetail {
 	private int distanceToWaterSource(Collection<GameObject> waterSources) {
 		int distance = 0;
 		ArrayList<ClearingDetail> touchedWaterClearings = new ArrayList<>();
-		
 		touchedWaterClearings.add(this);
 		if (this.parent.getGameObject().hasThisAttribute("water_source_clearing") && this.parent.getGameObject().getThisAttribute("water_source_clearing").matches(this.getNumString())) {
 			return distance;
