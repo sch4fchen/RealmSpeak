@@ -66,7 +66,6 @@ public class MagicSight extends Search {
 								components.add(rc);
 							}
 						}
-						revealTravelers(character, rc.getGameObject());
 					}
 				}
 			}
@@ -97,6 +96,7 @@ public class MagicSight extends Search {
 					RealmComponent rc = chooser.getFirstSelectedComponent();
 					topmostCounter = getTreasureCounters(rc.getGameObject()).iterator().next();
 					loot = (Loot)RealmTable.loot(getParentFrame(),character,rc.getGameObject(),getListener(),true);
+					revealTravelers(character, rc.getGameObject());
 				}
 				if (loot.fulfilledPrerequisite(getParentFrame(),character)) {
 					lootResult = loot.characterFindsItem(character,topmostCounter);
@@ -154,7 +154,6 @@ public class MagicSight extends Search {
 								added = true;
 							}
 						}
-						revealTravelers(character, rc.getGameObject());
 					}
 				}
 			}
@@ -188,6 +187,7 @@ public class MagicSight extends Search {
 					RealmComponent rc = chooser.getFirstSelectedComponent();
 					topmostTreasureCard = TreasureUtility.getTreasureCards(rc.getGameObject()).iterator().next();
 					loot = (Loot)RealmTable.loot(getParentFrame(),character,rc.getGameObject(),getListener(),true);
+					revealTravelers(character, rc.getGameObject());
 				}
 				if (loot.fulfilledPrerequisite(getParentFrame(),character)) {
 					lootResult = loot.characterFindsItem(character,topmostTreasureCard);
