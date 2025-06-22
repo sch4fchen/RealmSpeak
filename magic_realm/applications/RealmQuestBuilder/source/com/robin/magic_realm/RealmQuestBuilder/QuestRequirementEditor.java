@@ -106,6 +106,9 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementCounter.SUBCEED_TARGET_VALUE, "Subceed target value allowed", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirement.AUTO_JOURNAL, "Auto Journal Entry", FieldType.Boolean));
 				break;
+			case Curse:
+				list.add(new QuestPropertyBlock(QuestRequirementCurse.CURSE, "Curse", FieldType.StringSelector, getCurseStrings().toArray()));
+				break;
 			case Discovery:
 				list.add(new QuestPropertyBlock(QuestRequirementDiscovery.DISCOVERY_KEY, "Discovery", FieldType.StringSelector, getDiscoveryStrings().toArray()));
 				break;
@@ -368,6 +371,18 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 		choices.addAll(list);
 		
 		return choices.toArray(new String[list.size()]);
+	}
+	
+	private ArrayList<String> getCurseStrings() {
+		ArrayList<String> list = new ArrayList<>();
+		list.add(Constants.ASHES);
+		list.add(Constants.DISGUST);
+		list.add(Constants.EYEMIST);
+		list.add(Constants.ILL_HEALTH);
+		list.add(Constants.SQUEAK);
+		list.add(Constants.WITHER);
+		list.add(Constants.MESMERIZE);
+		return list;
 	}
 	
 	private ArrayList<String> getDiscoveryStrings() {

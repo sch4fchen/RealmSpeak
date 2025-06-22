@@ -29,6 +29,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		Clearing,
 		ColorMagic,
 		Counter,
+		Curse,
 		Discovery, // must have a specific discovery
 		Enchant,
 		Fighter,
@@ -93,6 +94,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests whether the character is in the presence of a specific color of magic (either permanent or burning a chit).";
 				case Counter:
 					return "Tests whether a specific counter has reached a certain value.";
+				case Curse:
+					return "Tests for a specific curse.";
 				case Discovery:
 					return "Tests for a specific recorded discovery.";
 				case Enchant:
@@ -290,6 +293,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case Counter:
 				requirement = new QuestRequirementCounter(go);
+				break;
+			case Curse:
+				requirement = new QuestRequirementCurse(go);
 				break;
 			case Discovery:
 				requirement = new QuestRequirementDiscovery(go);
