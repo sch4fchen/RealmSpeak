@@ -11645,9 +11645,9 @@
         <attribute name="Sprite" />
         <attribute spellcount="1" />
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce,selling:% woods" />
-          <attributeVal N1="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce,selling:% forest" />
-          <attributeVal N2="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce,selling:grove" />
+          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce:% woods" />
+          <attributeVal N1="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce:% forest" />
+          <attributeVal N2="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce:grove" />
         </attributeList>
         <attributeList keyName="spelltypes">
           <attributeVal N0="VII" />
@@ -11681,7 +11681,7 @@
       <AttributeBlock blockName="optional_2">
         <attribute optkey="OptCharWoodsgirl" />
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce,selling:&gt;woods" />
+          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce:&gt;woods" />
         </attributeList>
         <attributeList keyName="advantages">
           <attributeVal N0="EXPERT WOODCRAFT:  When on a Woods clearing (except on the RUINS and VALLEY tiles), roll 1 die instead of 2 for all Search, Hide, and Meeting rolls." />
@@ -11905,7 +11905,7 @@
         <attribute armor="Armor" />
         <attribute spellcount="1" />
         <attributeList keyName="diemod">
-          <attributeVal N0="-1:meeting,commerce,selling:all" />
+          <attributeVal N0="-1:meeting,commerce:all" />
         </attributeList>
         <attributeList keyName="spelltypes">
           <attributeVal N0="I" />
@@ -12212,7 +12212,7 @@
         <attribute weapon="Great Axe" />
         <attribute armor="Helmet" />
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,hire,trade,commerce,selling:&gt;caves" />
+          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,hire,trade,commerce:&gt;caves" />
         </attributeList>
         <attributeList keyName="advantages">
           <attributeVal N0="CAVE KNOWLEDGE:  When in a Cave clearing, roll 1 die instead of 2 for all Search, Hide, and Meeting die rolls." />
@@ -12443,7 +12443,7 @@
         <attribute weapon="Mace" />
         <attribute armor="Armor,Shield" />
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:meeting,commerce,selling:all" />
+          <attributeVal N0="1d:meeting,commerce:all" />
         </attributeList>
         <attributeList keyName="advantages">
           <attributeVal N0="FEAR:  Roll 1 die instead of 2 for all Meeting Table die rolls." />
@@ -28117,7 +28117,7 @@
         <attribute discard="none" />
         <attribute item="" />
         <attributeList keyName="diemod">
-          <attributeVal N0="-2:meeting,commerce,selling:all" />
+          <attributeVal N0="-2:meeting,commerce:all" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
@@ -41958,7 +41958,7 @@
         <attribute roving_native="" />
         <attribute no_sunlight="" />
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,hire,trade,commerce,selling:&gt;caves" />
+          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,hire,trade,commerce:&gt;caves" />
         </attributeList>
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -43259,9 +43259,9 @@
         <attribute name="Sprite" />
         <attribute spellcount="1" />
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce,selling:% woods" />
-          <attributeVal N1="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce,selling:% forest" />
-          <attributeVal N2="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce,selling:grove" />
+          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce:% woods" />
+          <attributeVal N1="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce:% forest" />
+          <attributeVal N2="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce:grove" />
         </attributeList>
         <attributeList keyName="spelltypes">
           <attributeVal N0="VII" />
@@ -43295,7 +43295,7 @@
       <AttributeBlock blockName="optional_2">
         <attribute optkey="OptCharWoodsgirl" />
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce,selling:&gt;woods" />
+          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,commerce:&gt;woods" />
         </attributeList>
         <attributeList keyName="advantages">
           <attributeVal N0="EXPERT WOODCRAFT:  When on a Woods clearing (except on the RUINS and VALLEY tiles), roll 1 die instead of 2 for all Search, Hide, and Meeting rolls." />
@@ -43538,7 +43538,7 @@
         <attribute armor="Armor" />
         <attribute spellcount="1" />
         <attributeList keyName="diemod">
-          <attributeVal N0="-1:meeting,commerce,selling:all" />
+          <attributeVal N0="-1:meeting,commerce:all" />
         </attributeList>
         <attributeList keyName="spelltypes">
           <attributeVal N0="I" />
@@ -43873,7 +43873,7 @@
         <attribute weapon="Great Axe" />
         <attribute armor="Helmet" />
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,hire,trade,commerce,selling:&gt;caves" />
+          <attributeVal N0="1d:hide,locate,loot,peer,readrunes,magicsight,meeting,hire,trade,commerce:&gt;caves" />
         </attributeList>
         <attributeList keyName="advantages">
           <attributeVal N0="CAVE KNOWLEDGE:  When in a Cave clearing, roll 1 die instead of 2 for all Search, Hide, and Meeting die rolls." />
@@ -44122,7 +44122,7 @@
         <attribute weapon="Mace" />
         <attribute armor="Armor,Shield" />
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:meeting,commerce,selling:all" />
+          <attributeVal N0="1d:meeting,commerce:all" />
         </attributeList>
         <attributeList keyName="advantages">
           <attributeVal N0="FEAR:  Roll 1 die instead of 2 for all Meeting Table die rolls." />
@@ -61545,7 +61545,7 @@
         <attribute nomad="bargainer" />
         <attribute text="Trade: 1 D6" />
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:meeting,commerce,selling:all" />
+          <attributeVal N0="1d:meeting,commerce:all" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
@@ -62060,7 +62060,7 @@
           <attributeVal N0="SWAY:  Subtract 1 from all Meeting Table die rolls." />
         </attributeList>
         <attributeList keyName="diemod">
-          <attributeVal N0="-1:meeting,commerce,selling:all" />
+          <attributeVal N0="-1:meeting,commerce:all" />
         </attributeList>
         <attributeList keyName="spelltypes">
           <attributeVal N0="VII" />
@@ -63375,7 +63375,7 @@
           <attributeVal N0="SEAFARING:  Advantages in river hex tiles and water clearings." />
         </attributeList>
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:meeting,commerce,selling:'water" />
+          <attributeVal N0="1d:meeting,commerce:'water" />
         </attributeList>
       </AttributeBlock>
       <AttributeBlock blockName="level_3">
@@ -63649,7 +63649,7 @@
           <attributeVal N0="FRONTIERSMAN:  Roll one die instead of two while in a mountain clearing on the Meeting Table, the Hide table, and any Search table." />
         </attributeList>
         <attributeList keyName="diemod">
-          <attributeVal N0="1d:meeting,commerce,selling,hide,locate,loot,peer:&gt;mountain" />
+          <attributeVal N0="1d:meeting,commerce,hide,locate,loot,peer:&gt;mountain" />
         </attributeList>
         <attributeList keyName="spelltypes">
           <attributeVal N0="II" />

@@ -15,7 +15,7 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 public class DieModEditPanel extends AdvantageEditPanel {
 	
 	private static final String[][] TABLE = {
-		{"Natives","Meeting","Commerce","Selling"},
+		{"Natives","Meeting","Commerce"},
 		{"Spells","Curse","PoP:powerofthepit","Wish","Transform","Meditate","Mesmerize","SummonDemon","Lost","Violent Storm","Magic Missile:magicmissil"},
 		{"Actions","Hide","Hire","Trade"},
 		{"Battle","Missile","Thrown","Fumble","Stumble"},
