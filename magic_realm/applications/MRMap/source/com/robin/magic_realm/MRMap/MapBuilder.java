@@ -59,7 +59,7 @@ public class MapBuilder {
 			// First, identify all connectable map placement locations
 			//		- Have paths leading to them
 			//		- Adjacent to at least two tiles (unless only one tile on map)
-			ArrayList<Point> availableMapPositions = Tile.findAvailableMapPositions(mapGrid,autoBuildRiver);
+			ArrayList<Point> availableMapPositions = Tile.findAvailableMapPositions(mapGrid,anchor.getGameObject().getName(),autoBuildRiver,hostPrefs.hasPref(Constants.MAP_BUILDING_HILL_TILES));
 			
 			// Cycle through every available (unplaced) tile
 			ArrayList<ArrayList<TileMappingPossibility>> allTileResults = new ArrayList<>();
@@ -74,7 +74,7 @@ public class MapBuilder {
 						// Try every rotation
 						for (int rot=0;rot<6;rot++) {
 							// Test the tile at pos, with rotation rot
-							if (Tile.isMappingPossibility(mapGrid,tile,pos,rot,anchor.getGameObject().getName(),hostPrefs.hasPref(Constants.MAP_BUILDING_INCREASED_PRIO_TILE_PLACEMENT))) {
+							if (Tile.isMappingPossibility(mapGrid,tile,pos,rot,anchor.getGameObject().getName(),hostPrefs.hasPref(Constants.MAP_BUILDING_HILL_TILES))) {
 								tileResults.add(new TileMappingPossibility(tile,pos,rot));
 								if (hostPrefs.hasPref(Constants.MAP_BUILDING_INCREASED_PRIO_TILE_PLACEMENT) && Tile.isMappingNextToPrioritizedTile(mapGrid,tile,pos,rot)) {
 									tileResults.add(new TileMappingPossibility(tile,pos,rot));

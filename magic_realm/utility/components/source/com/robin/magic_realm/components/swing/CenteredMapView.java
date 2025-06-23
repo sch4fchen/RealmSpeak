@@ -381,9 +381,13 @@ public class CenteredMapView extends JComponent {
 		Collection<GameObject> tileObjects = RealmObjectMaster.getRealmObjectMaster(gameData).getTileObjects();
 		
 		// Add all the tiles
+		String anchorTileName = "Borderland";
 		int emptyCount = 0;
 		ArrayList<Point> points = new ArrayList<>();
 		for (GameObject obj : tileObjects) {
+			if (obj.hasThisAttribute(Constants.ANCHOR_TILE)) {
+				anchorTileName = obj.toString();
+			}
 			TileComponent tc = (TileComponent)RealmComponent.getRealmComponent(obj); // ClassCastException here when building triple boards?
 			tc.resetClearingPositions();
 			tc.doRepaint();
@@ -405,7 +409,7 @@ public class CenteredMapView extends JComponent {
 		if (emptyCount>0) {
 			if (emptyCount<tileObjects.size()) {
 				// Add a border of empty tiles
-				ArrayList<Point> pos = Tile.findAvailableMapPositions(planningMapGrid);
+				ArrayList<Point> pos = Tile.findAvailableMapPositions(planningMapGrid,anchorTileName);
 				for (Point gp : pos) {
 					EmptyTileComponent empty = new EmptyTileComponent();
 					availablePositions.add(gp);

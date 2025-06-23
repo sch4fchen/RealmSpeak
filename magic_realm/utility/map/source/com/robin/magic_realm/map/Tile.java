@@ -232,6 +232,10 @@ public class Tile {
 		return clearings.size();
 	}
 	
+	public ArrayList<String> getClearings() {
+		return clearings;
+	}
+	
 	public Collection<String> getConnected(String clearing) {
 		return (Collection<String>)paths[side].get(clearing);
 	}
@@ -342,8 +346,8 @@ public class Tile {
 		}
 		boolean allConnect = true;
 		boolean anyConnect = false;
-		for (int i=0;i<6;i++) {
-			if (tile.connectsToTilename(mapGrid,"clearing_"+(i+1),anchorTilename)) {
+		for (String clearing : tile.getClearings()) {
+			if (tile.connectsToTilename(mapGrid,clearing,anchorTilename)) {
 				anyConnect = true;
 			}
 			else {
@@ -361,7 +365,7 @@ public class Tile {
 				joinError = true;
 			}
 		}
-		else if (hillTilesRule && tileType=="H") {
+		else if (hillTilesRule && tileType.matches("H") && !allConnect) {
 			if (debug) System.out.println(tile.name+" (hill tile) doesn't have all clearings connecting");
 			joinError = true;
 		}
@@ -463,10 +467,13 @@ public class Tile {
 	/**
 	 * @return		A Collection of Point objects that reference possible map placements
 	 */
-	public static ArrayList<Point> findAvailableMapPositions(Hashtable<Point, Tile> mapGrid) {
-		return findAvailableMapPositions(mapGrid,false);
+	public static ArrayList<Point> findAvailableMapPositions(Hashtable<Point, Tile> mapGrid,String anchorTilename) {
+		return findAvailableMapPositions(mapGrid,anchorTilename,false,false);
 	}
-	public static ArrayList<Point> findAvailableMapPositions(Hashtable<Point, Tile> mapGrid, boolean autoBuildRiver) {
+	public static ArrayList<Point> findAvailableMapPositions(Hashtable<Point, Tile> mapGrid,String anchorTilename,boolean hillTilesRule) {
+		return findAvailableMapPositions(mapGrid,anchorTilename,false,hillTilesRule);
+	}
+	public static ArrayList<Point> findAvailableMapPositions(Hashtable<Point, Tile> mapGrid, String anchorTilename, boolean autoBuildRiver, boolean hillTilesRule) {
 		ArrayList<Point> availableMapPositions = new ArrayList<>();
 		for (Tile tile : mapGrid.values()) {
 			Point pos = tile.getMapPosition();
@@ -490,7 +497,20 @@ public class Tile {
 							}
 							// only places adjacent to two tiles (unless only one tile on map)
 							if (mapGrid.size()==1 || adjCount>1 || tile.getGameObject().hasThisAttribute("map_building_prio")) {
-								availableMapPositions.add(adjPos);
+								if (hillTilesRule && tile.getGameObject().getThisAttribute("tile_type").matches("H")) {
+									boolean connects = true;
+									for (String clearing : tile.getClearings()) {
+										if (!tile.connectsToTilename(mapGrid,clearing,anchorTilename)) {
+											connects = false;
+											break;
+										}
+									}
+									if (connects) {
+										availableMapPositions.add(adjPos);
+									}
+								} else {
+									availableMapPositions.add(adjPos);
+								}
 							}
 						}
 					}
