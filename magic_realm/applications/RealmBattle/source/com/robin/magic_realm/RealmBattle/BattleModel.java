@@ -547,6 +547,16 @@ public class BattleModel {
 				}
 			}
 		}
+		
+		if (denizenBattleGroup != null) {			
+			// denizens reset to not having a sheet
+			for (RealmComponent rc : denizenBattleGroup.getBattleParticipants()) {
+				CombatWrapper combat = new CombatWrapper(rc.getGameObject());
+				if (combat.isSheetOwner() && !rc.hasTarget()) {
+					combat.setSheetOwner(false);
+				}
+			}
+		}
 	}
 	
 	public void doEnergizeSpells() {

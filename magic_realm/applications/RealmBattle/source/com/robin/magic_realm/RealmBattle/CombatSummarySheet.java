@@ -65,6 +65,8 @@ public class CombatSummarySheet extends JPanel {
 	private Color NAME_SECTION_COLOR = new Color(200,200,255,150);
 	private Color NUMBER_BOX_COLOR = new Color(0,0,0,100);
 	private Stroke MARK_STROKE = new BasicStroke(3,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND);
+	private int buttonWidth = 70;
+	private int buttonHeight = 20;
 	public void paintComponent(Graphics g1) {
 		super.paintComponent(g1);
 		g1.setFont(STAGE_FONT);
@@ -194,7 +196,7 @@ public class CombatSummarySheet extends JPanel {
 					combatFrame.participantTable.setRowSelectionInterval(rcRow,rcRow);
 				}
 			});
-			chartButton.setBounds(x,y-10,65,20);
+			chartButton.setBounds(x,y-10,buttonWidth,buttonHeight);
 			add(chartButton);
 			
 			RealmComponent owner = battleParticipant.getOwner();
@@ -217,7 +219,7 @@ public class CombatSummarySheet extends JPanel {
 							}
 						}
 					});
-					lureButton.setBounds(x,y-35,65,20);
+					lureButton.setBounds(x,y-35,buttonWidth,buttonHeight);
 					add(lureButton);
 				}
 				if (!battleParticipant.isCharacter() && DenizenCombatSheet.denizenCanFlip(battleParticipant)) {
@@ -228,7 +230,7 @@ public class CombatSummarySheet extends JPanel {
 							combatFrame.repaintCombatSheetPanel();
 						}
 					});
-					flip.setBounds(x,y+12,65,12);
+					flip.setBounds(x,y+12,buttonWidth,12);
 					add(flip);	
 				}
 				if (!battleParticipant.isCharacter() && battleParticipant.hasHorse()) {
