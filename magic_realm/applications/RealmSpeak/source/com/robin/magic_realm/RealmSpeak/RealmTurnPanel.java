@@ -749,18 +749,30 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		if (ar.isCompleted() && calendar.hasSpecial(month)) {
 			if (calendar.isFatiguePhasesOutside(month)) {
 				if (!locationAfterAction.isInside(hostPrefs.hasPref(Constants.HOUSE2_RED_SPECIAL_SHELTER))) {
-					getCharacter().setWeatherFatigue(ar.getPhaseCount()*ar.getCount());
+					if (locationBeforeAction.isInside(hostPrefs.hasPref(Constants.HOUSE2_RED_SPECIAL_SHELTER))) {
+						getCharacter().setWeatherFatigue(ar.getCount()); //climbing a mountain costs two phases, but only after second phase the fatigue is triggered
+					} else {
+						getCharacter().setWeatherFatigue(ar.getPhaseCount()*ar.getCount());
+					}
 				}
 			}
 			if (calendar.isFatiguePhasesMountain(month)) {
 				if (locationAfterAction.isInClearing() && locationAfterAction.clearing.isMountain()) {
-					getCharacter().setWeatherFatigue(ar.getPhaseCount()*ar.getCount());
+					if (locationBeforeAction.isInClearing() && !locationBeforeAction.clearing.isMountain()) {
+						getCharacter().setWeatherFatigue(ar.getCount()); //climbing a mountain costs two phases, but only after second phase the fatigue is triggered
+					} else {
+						getCharacter().setWeatherFatigue(ar.getPhaseCount()*ar.getCount());
+					}
 				}
 			}
 			if (calendar.isFatiguePhasesWater(month)) {
 				if (locationAfterAction.isInClearing() && locationAfterAction.clearing.isWater() && !locationAfterAction.clearing.isFrozenWater() && !getCharacter().affectedByKey(Constants.SEAFARING)) {
 					if (!locationAfterAction.isInside(hostPrefs.hasPref(Constants.HOUSE2_RED_SPECIAL_SHELTER))) {
-						getCharacter().setWeatherFatigue(ar.getPhaseCount()*ar.getCount());
+						if (locationBeforeAction.isInside(hostPrefs.hasPref(Constants.HOUSE2_RED_SPECIAL_SHELTER))) {
+							getCharacter().setWeatherFatigue(ar.getCount()); //climbing a mountain costs two phases, but only after second phase the fatigue is triggered
+						} else {
+							getCharacter().setWeatherFatigue(ar.getPhaseCount()*ar.getCount());
+						}
 					}
 				}
 			}
