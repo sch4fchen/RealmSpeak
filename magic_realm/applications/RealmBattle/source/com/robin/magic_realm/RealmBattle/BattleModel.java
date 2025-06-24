@@ -512,7 +512,8 @@ public class BattleModel {
 		}
 	}
 	
-	public void doEnergizeDenizenPreBattleSpells() {		
+	public void doEnergizeDenizenPreBattleSpells() {
+		ArrayList<RealmComponent> casters = new ArrayList<>();
 		for (RealmComponent battleParticipant : getAllBattleParticipants(true)) {
 			if ((battleParticipant.isMonster() || battleParticipant.isNative()) && battleParticipant.getGameObject().hasThisAttribute(Constants.SPELL_PRE_BATTLE)) {
 				String spellName = battleParticipant.getGameObject().getThisAttribute(Constants.SPELL_PRE_BATTLE);
@@ -543,16 +544,16 @@ public class BattleModel {
 						}
 					}
 					spell.recognizeCastedSpellByDenizen();
+					casters.add(battleParticipant);
 					continue;
 				}
 			}
 		}
 		
-		if (denizenBattleGroup != null) {			
-			// denizens reset to not having a sheet
-			for (RealmComponent rc : denizenBattleGroup.getBattleParticipants()) {
-				CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-				if (combat.isSheetOwner() && !rc.hasTarget()) {
+		for (RealmComponent rc : casters) {
+			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
+			if (combat.isSheetOwner()) {
+				if(!rc.hasTarget() || (rc.isMonster() && ((MonsterChitComponent)rc).isTremendousWeight() && rc.getTarget().isCharacter())) {
 					combat.setSheetOwner(false);
 				}
 			}
