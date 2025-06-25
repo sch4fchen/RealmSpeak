@@ -64327,7 +64327,6 @@
       <Add from="SPELL_VI" targetObjectID="2113" count="2" transferType="Random" />
       <Add from="SPELL_III" targetObjectID="2264" count="1" transferType="Random" />
       <Add from="SPELL_II" targetObjectID="2264" count="1" transferType="Random" />
-      <Add from="SPELL_VIII" targetObjectID="2295" count="1" transferType="Random" />
       <Add from="SPELL_VII" targetObjectID="2300" count="1" transferType="Random" />
       <Add from="SPELL_I" targetObjectID="2300" count="1" transferType="Random" />
       <Add from="SPELL_IV" targetObjectID="2301" count="2" transferType="Random" />
