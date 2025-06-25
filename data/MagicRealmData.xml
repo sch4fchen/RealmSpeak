@@ -57184,6 +57184,7 @@
         <attribute native="Enchanters" />
         <attribute book="" />
         <attribute scroll="" />
+		<attribute magic_other="IV" />
         <attribute scholar_price="30" />
         <attribute warlock_price="30" />
         <attribute merchant_price="20" />
@@ -60184,7 +60185,7 @@
         <attribute treasure="small" />
         <attribute base_price="5" />
         <attribute notoriety="5" />
-        <attribute magic="II" />
+        <attribute magic="III" />
         <attribute book="" />
         <attribute print="" />
         <attribute scholar_price="30" />
@@ -60195,7 +60196,7 @@
         <attribute scroll="" />
         <attribute super_realm="" />
         <attribute super_realm_treasure="" />
-        <attribute magic_other="III" />
+        <attribute magic_other="II" />
         <attribute shaman_price="30" />
         <attribute merchant_price="20" />
       </AttributeBlock>
@@ -60857,7 +60858,7 @@
         <attribute treasure="small" />
         <attribute base_price="5" />
         <attribute notoriety="5" />
-        <attribute magic="I" />
+        <attribute magic="VII" />
         <attribute book="" />
         <attribute print="" />
         <attribute scholar_price="30" />
@@ -60868,7 +60869,7 @@
         <attribute scroll="" />
         <attribute super_realm="" />
         <attribute super_realm_treasure="" />
-        <attribute magic_other="VII" />
+        <attribute magic_other="I" />
         <attribute merchant_price="20" />
         <attribute fame="5" />
         <attribute priest_price="30" />
@@ -60900,7 +60901,7 @@
         <attribute treasure="small" />
         <attribute base_price="5" />
         <attribute notoriety="10" />
-        <attribute magic="V" />
+        <attribute magic="VIII" />
         <attribute book="" />
         <attribute print="" />
         <attribute scholar_price="30" />
@@ -60911,7 +60912,7 @@
         <attribute scroll="" />
         <attribute super_realm="" />
         <attribute super_realm_treasure="" />
-        <attribute magic_other="VIII" />
+        <attribute magic_other="V" />
         <attribute merchant_price="20" />
         <attribute fame="-5" />
         <attribute great="" />
