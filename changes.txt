@@ -1,18 +1,15 @@
 ::ROADMAP::Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells: Lightning Bolt, Alchemists Mixture); site targets are considered armored. or by hurricane winds
-Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
+Expansion 1: remaining spells: Spider Web, Wall of Force, Magic Mirror, Body Double (50% hit chance), if hit double, spell is canceled (after combat round)Expansion 1: Optional Rule: Revised characters: DwarfSuper Realm: Events (Global Events = optional rule 11.11): 33 EventsSuper Realm: Optional Rules: Bounty Hunter (SR: 10.2, p.114)Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
 Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
-Super Realm: Optional Rules: Sentimental Value (SR: 10.6, p.115)
+Super Realm: Optional Rules: Sentimental Value (SR: 10.6, p.115)Super Realm: Optional Rules: Credit (SR: 10.7, p.115)
 Super Realm: Optional Rules: Grounded Missions and Tasks (SR: 10.8, p.115)
-Super Realm: Optional Rules: Regrouping (SR: 10.10, p.115)Super Realm: Optional Rules: Bounty Hunter (SR: 10.2, p.114)Super Realm: Optional Rules: Credit (SR: 10.7, p.115)
-Super Realm: Events (Global Events = optional rule 11.11): 33 EventsExpansion 1: remaining spells: Spider Web, Wall of Force, Magic Mirror, Body Double (50% hit chance), if hit double, spell is canceled (after combat round)Super Realm: Optional Rules: Stealing (SR: 11.3, p.121)
+Super Realm: Optional Rules: Regrouping (SR: 10.10, p.115)Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.123): Witch, Witch KingSuper Realm: Optional Rules: Stealing (SR: 11.3, p.121)
 Super Realm: Optional Rules: Hiring Unused Characters (SR: 11.4, p.122)
 Super Realm: Optional Rules: Range Setup (SR: 11.10, p.126)
-Super Realm: Optional Rules: Cornered (SR: 11.13, p.128)---Optional Rules---Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.123): Witch, Witch KingExpansion 1: Optional Rule: Revised characters: Dwarf
-Super Realm: Player building map: distribute tiles equally (including river tiles), distribute river tiles first, then grotto, then rest, each player has 3 tiles in the hand and draws after placing, skip player if he cannot place any tile (and he has no river tile), if all players are skipped or player would be skipped but has river tile, undo last placement, do not allow placing grotto before all other river tiles have been placed
-Expansion 1: Optional Rule: Stealing---Additional and new features---
+Super Realm: Optional Rules: Cornered (SR: 11.13, p.128)---Additional and new features---Expansion 1: Optional Rule: Stealing
 Native, Monster, Steeds: Change color for altered move, attack strength, attack speed, length 
 Super Realm: icons for site chits, sound and warning chits, characters
-Quest: option add icon for minor character
+Quest: option for adding an icon for minor characters
 UI: Dark Theme (flatLaf), Nimbus Theme
 Combat Help System
 Would be nice to make weapon abilities too:
