@@ -242,24 +242,42 @@ public abstract class Commerce extends Trade {
 		
 		Commerce commerce = null;
 		
-		if (hostPrefs.hasPref(Constants.SR_SELLING)) {
-			switch(tradeInfo.getRelationshipType()) {
-			case RelationshipType.ENEMY:
-				commerce = new SellingEnemy(frame,tradeInfo,merchandise,hostPrefs);
-				break;
-			case RelationshipType.UNFRIENDLY:
-				commerce = new SellingUnfriendly(frame,tradeInfo,merchandise,hostPrefs);
-				break;
-			case RelationshipType.NEUTRAL:
-				commerce = new SellingNeutral(frame,tradeInfo,merchandise,hostPrefs);
-				break;
-			case RelationshipType.FRIENDLY:
-				commerce = new SellingFriendly(frame,tradeInfo,merchandise,hostPrefs);
-				break;
-			case RelationshipType.ALLY:
-				commerce = new SellingAlly(frame,tradeInfo,merchandise,hostPrefs);
-				break;
-		}
+		if (hostPrefs.hasPref(Constants.SR_SELLING)) {		
+			String visitor = trader.getGameObject().getThisAttribute(Constants.VISITOR);
+			if (visitor!=null) {
+				String priceKey = visitor.toLowerCase()+"_price";
+				for (RealmComponent item : merchandise) {
+					if (item.getGameObject().hasThisAttribute(priceKey)) {
+						return new SellingVisitor(frame,tradeInfo,merchandise,hostPrefs,tradeInfo.getRelationshipType());
+					}
+				}
+			}
+			
+			int conditionalBonus = 0;
+			for (RealmComponent item : merchandise) {
+				if (TreasureUtility.getFamePrice(item.getGameObject(),trader.getGameObject())>0) {
+					conditionalBonus = 1;
+					break;
+				}
+			}
+			
+			switch(tradeInfo.getRelationshipType()+conditionalBonus) {
+				case RelationshipType.ENEMY:
+					commerce = new SellingEnemy(frame,tradeInfo,merchandise,hostPrefs);
+					break;
+				case RelationshipType.UNFRIENDLY:
+					commerce = new SellingUnfriendly(frame,tradeInfo,merchandise,hostPrefs);
+					break;
+				case RelationshipType.NEUTRAL:
+					commerce = new SellingNeutral(frame,tradeInfo,merchandise,hostPrefs);
+					break;
+				case RelationshipType.FRIENDLY:
+					commerce = new SellingFriendly(frame,tradeInfo,merchandise,hostPrefs);
+					break;
+				case RelationshipType.ALLY:
+					commerce = new SellingAlly(frame,tradeInfo,merchandise,hostPrefs);
+					break;
+			}
 		}
 		else {
 			switch(tradeInfo.getRelationshipType()) {
