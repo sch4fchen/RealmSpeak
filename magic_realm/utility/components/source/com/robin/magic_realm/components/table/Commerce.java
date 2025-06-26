@@ -137,11 +137,11 @@ public abstract class Commerce extends Trade {
 		
 		int totalGold = (int) Math.ceil(total);
 		
-		String headline =  "Sellling for "+totalGold+"?";
+		String headline =  "Sellling for "+totalGold+" gold?";
 		if (block) {
-			headline = "Sell ("+totalGold+") or Block"; 
+			headline = "Sell ("+totalGold+" gold) or Block"; 
 		}
-		int ret = JOptionPane.showConfirmDialog(getParentFrame(),"They offer gold "+totalGold+".\n\nWill you sell?",headline,JOptionPane.YES_NO_OPTION);
+		int ret = JOptionPane.showConfirmDialog(getParentFrame(),"They offer gold "+totalGold+" gold.\n\nWill you sell?",headline,JOptionPane.YES_NO_OPTION);
 		if (ret==JOptionPane.YES_OPTION) {
 			return sellItems(character,totalGold);
 		}
