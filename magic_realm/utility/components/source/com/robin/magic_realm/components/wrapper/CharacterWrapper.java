@@ -2279,7 +2279,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		if (path.isHidden() && (hasHiddenPathDiscovery(path.getFullPathKey()) || mistLike || moveRandomly())) return true;
 		if (path.isSecret() && (hasSecretPassageDiscovery(path.getFullPathKey()) || mistLike || moveRandomly())) return true;
-		if (path.isHidden() && hasActiveInventoryThisKeyAndValue(Constants.ROAD_KNOWLEDGE,Constants.ROAD_KNOWLEDGE_HIDDEN)){
+		if (path.isHidden() && (hasActiveInventoryThisKeyAndValue(Constants.ROAD_KNOWLEDGE,Constants.ROAD_KNOWLEDGE_HIDDEN))){
 			return true;
 		}
 		if (path.isSecret() && hasActiveInventoryThisKeyAndValue(Constants.ROAD_KNOWLEDGE,Constants.ROAD_KNOWLEDGE_SECRET)){
@@ -7639,7 +7639,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return getString(DEATH_REASON);
 	}
 	public void updatePathKnowledge(PathDetail path) {
-		if(isSpiritGuided() || isMistLike())return;
+		if(isSpiritGuided() || isMistLike()) return;
 		addPathKnowledge(path);
 	}
 	public void addPathKnowledge(PathDetail path) {	

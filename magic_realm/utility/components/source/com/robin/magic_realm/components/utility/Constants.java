@@ -753,6 +753,8 @@ public class Constants {
 	public static final String ABSORBED_CHITS = "absorbed_chits";
 	public static final String RAISE_DEAD = "raise_dead";
 	public static final String CANCEL_RECORDED_ACTION = "change_recorded_action";
+	public static final String PATHFINDER = "pathfinder";
+	public static final String GATE_MASTER = "gate_master";
 	
 	// Nomads
 	public static final String FAIRY_SENSE = "fairy_sense";

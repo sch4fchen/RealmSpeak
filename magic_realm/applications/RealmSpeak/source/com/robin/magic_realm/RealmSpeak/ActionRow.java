@@ -888,6 +888,9 @@ public class ActionRow {
 			
 			if (character.affectedByKey(Constants.MAGIC_PATH_EFFECT)) {
 				magicPath = path == null && current.tile == location.tile?true:false;
+				if (magicPath) {
+					overridePath = true;
+				}
 			}
 			
 			if (character.canWalkWoods(current.tile,current.clearing,location.clearing) || (current.isTileOnly() && !current.isFlying())) {
@@ -914,6 +917,10 @@ public class ActionRow {
 			
 			if (!overridePath && path==null) {
 				overridePath = ClearingUtility.canUseGates(character,location.clearing);
+			}
+			
+			if (path!=null && path.isHidden() && character.hasActiveInventoryThisKey(Constants.PATHFINDER)) {
+				overridePath = true;
 			}
 			
 			if (validMove && (overridePath || magicPath || current.isBetweenClearings() || path!=null)) {
@@ -1023,9 +1030,11 @@ public class ActionRow {
 					PathDetail reverse = null;
 					if (path!=null) {
 						reverse = path.getEdgePathFromOtherTile();
-						character.updatePathKnowledge(path);
+						if (!overridePath) {
+							character.updatePathKnowledge(path);
+						}
 					}
-					if (reverse!=null) {
+					if (reverse!=null && !overridePath) {
 						character.updatePathKnowledge(reverse);
 					}
 					

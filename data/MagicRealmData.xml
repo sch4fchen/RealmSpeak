@@ -57184,7 +57184,7 @@
         <attribute native="Enchanters" />
         <attribute book="" />
         <attribute scroll="" />
-		<attribute magic_other="IV" />
+        <attribute magic_other="IV" />
         <attribute scholar_price="30" />
         <attribute warlock_price="30" />
         <attribute merchant_price="20" />
@@ -63859,6 +63859,34 @@
         <attribute icon_type="wanderer" />
         <attribute super_realm="" />
         <attribute strength="H" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2469" name="Pathfinder">
+      <AttributeBlock blockName="this">
+        <attribute base_price="4" />
+        <attribute icon_type="t1" />
+        <attribute icon_folder="traveler" />
+        <attribute rw_expansion_1="" />
+        <attribute traveler_template="" />
+        <attribute text="Knows ALL hidden paths (not passages)." />
+        <attribute icon_type_alt="noble+female" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
+        <attribute pathfinder="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2470" name="Gate Master">
+      <AttributeBlock blockName="this">
+        <attribute base_price="5" />
+        <attribute icon_type="t1" />
+        <attribute icon_folder="traveler" />
+        <attribute rw_expansion_1="" />
+        <attribute traveler_template="" />
+        <attribute text="As gates are discovered by other players, so do you." />
+        <attribute icon_type_alt="orcish-shaman" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
+        <attribute gate_master="" />
       </AttributeBlock>
     </GameObject>
   </objects>

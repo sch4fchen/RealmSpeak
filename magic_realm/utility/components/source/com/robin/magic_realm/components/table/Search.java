@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.event.ChangeListener;
 
 import com.robin.game.objects.GameObject;
+import com.robin.game.objects.GamePool;
 import com.robin.general.swing.ButtonOptionDialog;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.quest.CharacterActionType;
@@ -223,6 +224,17 @@ public abstract class Search extends RealmTable {
 			if (!character.hasOtherChitDiscovery(rc.getGameObject().getName())) {
 				character.addOtherChitDiscovery(rc.getGameObject().getName());
 				qp.objectList.add(rc.getGameObject());
+				
+				if (rc.isGate()) {
+					GamePool pool = new GamePool(character.getGameData().getGameObjects());
+					ArrayList<GameObject> characters = pool.find(CharacterWrapper.NAME_KEY);
+					for (GameObject otherCharacterGo : characters) {
+						CharacterWrapper otherCharacter = new CharacterWrapper(otherCharacterGo);
+						if (otherCharacter.hasActiveInventoryThisKey(Constants.GATE_MASTER)) {
+							otherCharacter.addOtherChitDiscovery(rc.getGameObject().getName());
+						}
+					}
+				}
 				return true;
 			}
 		}
