@@ -3335,7 +3335,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		int count = 0;
 		ArrayList<GameObject> recSpells = getRecordedSpells(getGameObject().getGameData());
 		for (GameObject go:recSpells) {
-			if (canLearn(go,true)) { // only include spells that are still learnable, in case you learned a spell with an artifact (enhanced magic rules), and that artifact is gone!
+			if (canLearn(go,true,true)) { // only include spells that are still learnable, in case you learned a spell with an artifact (enhanced magic rules), and that artifact is gone!
 				count++;
 			}
 		}
@@ -5029,10 +5029,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return canLearn(spell,false);
 	}
 	private boolean canLearn(GameObject spell,boolean ignoreDuplicates) {
+		return canLearn(spell,ignoreDuplicates,false);
+	}
+	private boolean canLearn(GameObject spell,boolean ignoreDuplicates,boolean checkForRings) {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
-		if (hostPrefs.hasPref(Constants.FE_NO_DUPLICATE_SPELL_RECORDING)) {
-			ignoreDuplicates = false;
-		}
 		// Check to see if character has a chit to support learning the new spell
 		int number = RealmUtility.convertMod(spell.getThisAttribute("spell"));
 		
@@ -5067,6 +5067,18 @@ public class CharacterWrapper extends GameObjectWrapper {
 							hasType = true;
 							break;
 						}
+					}
+				}
+			}
+		}
+		if (!hasType && checkForRings) {
+			for (GameObject item:getActiveInventory()) {
+				RealmComponent rc = RealmComponent.getRealmComponent(item);
+				if (rc.isTreasure() && rc.getGameObject().hasThisAttribute(Constants.RING)) {
+					MagicChit chit = (MagicChit)rc;
+					if (chit.getEnchantableNumbers().contains(number) || ((TreasureCardComponent)rc).getAllMagicNumbers(8).contains(number)) {
+						hasType = true;
+						break;
 					}
 				}
 			}

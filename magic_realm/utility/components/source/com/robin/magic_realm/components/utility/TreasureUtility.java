@@ -678,7 +678,10 @@ public class TreasureUtility {
 			}
 		}
 		if (thing.hasThisAttribute(Constants.FLASH_BOMB)) {
-			character.setHidden(true);
+			GameObject noHideItem = ClearingUtility.getItemInClearingWithKey(character.getCurrentLocation(),Constants.NO_HIDE);
+			if (noHideItem==null) {
+				character.setHidden(true);
+			}
 			CombatWrapper characterCw = new CombatWrapper(character.getGameObject());
 			ArrayList<RealmComponent> attackers = characterCw.getAttackersAsComponents();
 			for (RealmComponent attacker : attackers) {
