@@ -52581,7 +52581,7 @@
         <attribute rank="1" />
         <attribute icon_type="masterofdarkness-magic1" />
         <attribute setup_start="Enchanter Dwelling" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute icon_folder="wesnoth/units/tharis-magi" />
         <attribute denizen="" />
         <attribute super_realm="" />
@@ -52622,7 +52622,7 @@
         <attribute rank="2" />
         <attribute icon_type="masterofdarkness-magic2" />
         <attribute setup_start="Enchanter Dwelling" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute icon_folder="wesnoth/units/tharis-magi" />
         <attribute denizen="" />
         <attribute super_realm="" />
@@ -52663,7 +52663,7 @@
         <attribute rank="HQ" />
         <attribute icon_type="shadowmatriarch" />
         <attribute setup_start="Enchanter Dwelling" />
-        <attribute hire_type="group" />
+        <attribute hire_type="single" />
         <attribute icon_folder="wesnoth/units/tharis-magi" />
         <attribute commerce="F,N" />
         <attribute denizen="" />
