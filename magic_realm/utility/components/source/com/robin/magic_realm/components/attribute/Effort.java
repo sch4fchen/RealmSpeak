@@ -17,7 +17,7 @@ public class Effort {
 	public void addEffort(CharacterActionChitComponent chit) {
 		int val = chit.getEffortAsterisks();
 		if (val>0) {
-			if (chit.isMove()) {
+			if (chit.isMove() || chit.isHitpoint()) {
 				addMoveAsterisks(val);
 			}
 			else if (chit.isFight() || chit.isFightAlert() || chit.isReflex()) {

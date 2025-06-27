@@ -139,6 +139,9 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		else if ("MAGIC".equals(action)) {
 			return 6;
 		}
+		else if ("HITPOINT".equals(action)) {
+			return 7;
+		}
 		return 999;
 	}
 	public String getAction() {
@@ -189,6 +192,11 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		return "REFLEX".equals(action);
 	}
 	
+	public boolean isHitpoint() {
+		String action = getAction().toUpperCase();
+		return "HITPOINT".equals(action);
+	}
+		
 	public boolean isColorOnlyChit() {
 		String action = getAction().toUpperCase();
 		return "COLOR".equals(action);

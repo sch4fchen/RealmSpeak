@@ -63897,7 +63897,7 @@
         <attribute rw_expansion_1="" />
         <attribute strength="M" />
         <attribute sharpness="1" />
-        <attribute length="10" />
+        <attribute length="7" />
         <attribute facing="face_dn" />
         <attribute attack="" />
         <attribute author="Expansion 1" />
@@ -63907,6 +63907,35 @@
         <attribute great="" />
         <attribute weight="H" />
         <attribute kill_monsters_permanently="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2472" name="Extra Hitpoint">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="14" />
+        <attribute text="Fatigue, wound and rest as if it was a chit." />
+        <attribute rw_expansion_1="" />
+        <attribute facing="face_dn" />
+        <attribute author="Expansion 1" />
+        <attribute item="" />
+        <attribute add_chit="" />
+      </AttributeBlock>
+      <contains id="2473" />
+    </GameObject>
+    <GameObject id="2473" name="Extra Hitpoint">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="hitpoint" />
+        <attribute effort="1" />
+        <attribute character_level="1" />
+        <attribute stage="1" />
+        <attribute level="1" />
+        <attribute icon_folder="monsters2" />
+        <attribute icon_type="unknown" />
+        <attribute rw_expansion_1="" />
+        <attribute add_chit="Extra Hitpoint" />
+        <attribute chitearned="" />
+        <attribute treasure_chit="" />
       </AttributeBlock>
     </GameObject>
   </objects>
