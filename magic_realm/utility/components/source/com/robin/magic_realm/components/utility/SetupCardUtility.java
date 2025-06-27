@@ -741,7 +741,11 @@ public class SetupCardUtility {
 		}
 	}
 
-	public static void resetDenizen(GameObject denizen) {
+	public static boolean resetDenizen(GameObject denizen) {
+		if (denizen.hasThisAttribute(Constants.DEAD_PERMANENT)) {
+			return false;
+		}
+		
 		denizen.removeThisAttribute("needs_init");
 		
 		// Remove tile clearing definition
@@ -809,6 +813,7 @@ public class SetupCardUtility {
 			smw.expireBewitchingSpells(denizen,null);
 			SetupCardUtility.getHorseHolder(denizen).add(denizen);
 		}
+		return true;
 	}
 
 	public static void updateMonsterBlock(MonsterChitComponent monster) {
@@ -947,8 +952,9 @@ public class SetupCardUtility {
 		
 		for (GameObject denizen : returning) {
 			GameClient.broadcastClient("host"," - "+denizen.getName());
-			game.addRegeneratedDenizen(denizen);
-			resetDenizen(denizen);
+			if (resetDenizen(denizen)) {
+				game.addRegeneratedDenizen(denizen);
+			}
 		}
 		
 		if (regenerateHorses) {

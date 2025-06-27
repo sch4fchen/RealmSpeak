@@ -2833,6 +2833,12 @@ public class BattleModel {
 							doDamagedRelations(killer,responsibleCharacter,rc);
 						}
 					}
+					if (killer!=null) {
+						if (killer.getGameObject().hasThisAttribute(Constants.KILL_MONSTERS_PERMANENTLY) ||
+								killer.isCharacter() && (new CharacterWrapper(killer.getGameObject()).affectedByKey(Constants.KILL_MONSTERS_PERMANENTLY))) {
+							rc.getGameObject().setThisAttribute(Constants.DEAD_PERMANENT);
+						}
+					}
 				}
 				
 				rcsToMakeDead.add(rc);

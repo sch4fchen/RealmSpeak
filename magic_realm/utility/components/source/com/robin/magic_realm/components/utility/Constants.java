@@ -268,6 +268,7 @@ public class Constants {
 	
 	// Character ThisAttribute flags
 	public static final String DEAD = "_dead_";
+	public static final String DEAD_PERMANENT = "_dead_permanent_";
 	public static final String GONE = "_gone_"; // left the board
 	public static final String RANDOM_ASSIGNMENT_WINNER = "_ra_win_";
 	
@@ -358,6 +359,8 @@ public class Constants {
 	public static final String SCROLL = "scroll";
 	public static final String ARTIFACT = "artifact";
 	public static final String NO_PARRY = "no_parry";
+	public static final String KILL_MONSTERS_PERMANENTLY = "kill_monsters_permanently";
+	public static final String D = "kill_monsters_permanently";
 	
 	public static final String MAGIC_COLOR_BONUS = "magic_color_bonus";
 	public static final String MAGIC_COLOR_BONUS_ACTIVE = "magic_color_bonus_active";

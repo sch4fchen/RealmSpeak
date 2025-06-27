@@ -63889,6 +63889,26 @@
         <attribute gate_master="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2471" name="Dark Sword">
+      <AttributeBlock blockName="this">
+        <attribute treasure="large" />
+        <attribute base_price="12" />
+        <attribute text="Monsters are killed permanently." />
+        <attribute rw_expansion_1="" />
+        <attribute strength="M" />
+        <attribute sharpness="1" />
+        <attribute length="10" />
+        <attribute facing="face_dn" />
+        <attribute attack="" />
+        <attribute author="Expansion 1" />
+        <attribute item="" />
+        <attribute fame="-60" />
+        <attribute notoriety="20" />
+        <attribute great="" />
+        <attribute weight="H" />
+        <attribute kill_monsters_permanently="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

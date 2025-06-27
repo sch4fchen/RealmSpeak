@@ -14,6 +14,7 @@ public class AnimateEffect implements ISpellEffect {
 		
 		go.setName(Constants.UNDEAD_PREFIX+go.getName());
 		go.removeThisAttribute(Constants.DEAD);
+		go.removeThisAttribute(Constants.DEAD_PERMANENT);
 		go.setThisAttribute(Constants.UNDEAD);
 		go.copyAttributeBlock("light","light_an");
 		go.copyAttributeBlock("dark","dark_an");
