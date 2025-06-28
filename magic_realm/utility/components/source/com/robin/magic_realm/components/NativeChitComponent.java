@@ -110,9 +110,9 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		if (getGameObject().hasThisAttribute(Constants.NATIVE_NAME) && RealmComponent.displaySubline) {
 			String text = getGameObject().getThisAttribute(Constants.NATIVE_NAME);
 			tt = new TextType(text,(cs>>1)+20, "ITALIC");
-			if (getGameObject().hasThisAttribute("clan")) {
+			if (getGameObject().hasThisAttribute(Constants.CLAN)) {
 				Color color = g.getColor();
-				Color clanColor = MagicRealmColor.getClanColor(getGameObject().getThisAttribute("clan"));
+				Color clanColor = MagicRealmColor.getClanColor(getGameObject().getThisAttribute(Constants.CLAN));
 				tt.draw(g,5,13,Alignment.Left,clanColor);
 				g.setColor(color);
 			} else {

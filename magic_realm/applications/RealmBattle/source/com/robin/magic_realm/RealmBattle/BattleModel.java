@@ -3085,7 +3085,7 @@ public class BattleModel {
 			logBattleInfo(killer.getGameObject().getNameWithNumber()+" killed "+currentRelString+" "+rc.toString()+".");
 			logBattleInfo(responsibleCharacter.getCharacterName()+" relationship is harmed! (DAMAGED RELATIONS) --> ENEMY");
 			
-			String clanId = nativeMember.getThisAttribute("clan");
+			String clanId = nativeMember.getThisAttribute(Constants.CLAN);
 			if (clanId!=null) {
 				GamePool pool = new GamePool(responsibleCharacter.getGameData().getGameObjects());
 				ArrayList<GameObject> hqs = pool.extract("native,rank=HQ,clan="+clanId);
@@ -3094,9 +3094,10 @@ public class BattleModel {
 					String nativeClanName = hq.getThisAttribute("native").toLowerCase();
 					if (!affectedClans.contains(nativeClanName) && !allFoes.contains(nativeClanName) && !responsibleCharacter.hasChangedRelationshipToday(hq)) {
 						affectedClans.add(hq.getThisAttribute("native").toLowerCase());
-						responsibleCharacter.changeRelationship(rc.getGameObject(),-1);
-						String newClanRelString = RealmUtility.getRelationshipNameFor(responsibleCharacter,rc);
-						logBattleInfo(responsibleCharacter.getCharacterName()+" relationship is harmed by -1! (AFFECTED CLAN) --> "+newClanRelString);
+						responsibleCharacter.changeRelationship(hq,-1);
+						String newClanRelString = RealmUtility.getRelationshipNameFor(responsibleCharacter,RealmComponent.getRealmComponent(hq));
+						nativeClanName = nativeClanName.substring(0, 1).toUpperCase() + nativeClanName.substring(1);
+						logBattleInfo(responsibleCharacter.getCharacterName()+" relationship with "+nativeClanName+" is harmed by -1! (AFFECTED CLAN) --> "+newClanRelString);
 					}
 				}
 			}

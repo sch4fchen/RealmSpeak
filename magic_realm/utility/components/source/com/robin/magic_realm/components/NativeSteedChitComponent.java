@@ -252,9 +252,9 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 				text = text + " " + getGameObject().getThisAttribute("rank");
 			}
 			tt = new TextType(text,(getChitSize()>>1)+20, "ITALIC");
-			if (getGameObject().hasThisAttribute("clan")) {
+			if (getGameObject().hasThisAttribute(Constants.CLAN)) {
 				Color color = g.getColor();
-				Color clanColor = MagicRealmColor.getClanColor(getGameObject().getThisAttribute("clan"));
+				Color clanColor = MagicRealmColor.getClanColor(getGameObject().getThisAttribute(Constants.CLAN));
 				tt.draw(g,5,13,Alignment.Left,clanColor);
 				g.setColor(color);
 			} else {

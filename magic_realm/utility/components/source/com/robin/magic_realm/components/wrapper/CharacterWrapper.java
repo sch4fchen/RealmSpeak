@@ -6923,7 +6923,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (rc.getOwner()!=null) return; // hirelings can't ever be battling natives!!
 		String nativeGroupName = nativeMember.getThisAttribute("native").toLowerCase();
 		getGameObject().addAttributeListItem(BATTLING_NATIVE_BLOCK,nativeGroupName,"");
-		String clanId = nativeMember.getThisAttribute("clan");
+		String clanId = nativeMember.getThisAttribute(Constants.CLAN);
 		if (clanId!=null) {
 			boolean isFoe = false;
 			for (GameObject inv : getInventory()) {
