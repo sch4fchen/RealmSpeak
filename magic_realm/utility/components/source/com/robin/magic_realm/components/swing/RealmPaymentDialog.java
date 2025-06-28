@@ -53,6 +53,8 @@ public class RealmPaymentDialog extends AggressiveDialog {
 	private JFrame mainFrame;
 	
 	private ChangeListener listener;
+	
+	private boolean characterNeedsToRunAway = false;
 		
 	public RealmPaymentDialog(JFrame parent,String title,CharacterWrapper character,TradeInfo tradeInfo,GameObject mer,int mul,ChangeListener listener) {
 		super(parent,title,true);
@@ -251,6 +253,9 @@ public class RealmPaymentDialog extends AggressiveDialog {
 	private void loseTradeItems() {
 		for (GameObject item : onTheTable) {
 			TradeUtility.loseItem(character,item,tradeInfo.getGameObject(),hostPrefs.hasPref(Constants.OPT_GRUDGES));
+			if (item.hasThisAttribute(Constants.FOOLS_GOLD)) {
+				characterNeedsToRunAway = true;
+			}
 		}
 	}
 	private void receiveItem() {
@@ -332,6 +337,9 @@ public class RealmPaymentDialog extends AggressiveDialog {
 	private void safeExit() {
 		setVisible(false);
 		dispose();
+	}
+	public boolean characterNeedsToRunAway() {
+		return characterNeedsToRunAway;
 	}
 	private void doAdd() {
 		ArrayList<GameObject> unpresentedInventory = new ArrayList<>();

@@ -174,6 +174,7 @@ public abstract class Commerce extends Trade {
 		}
 		checkQuestRequirementsAfterSelling(itemList, character);
 		showConfirmationDialog(character,sb);
+		handleFoolsGold(character);
 		return result;
 	}
 	protected String process(CharacterWrapper character,int bonus) {
@@ -212,6 +213,7 @@ public abstract class Commerce extends Trade {
 		}
 		checkQuestRequirementsAfterSelling(itemList, character);
 		showConfirmationDialog(character,sb);
+		handleFoolsGold(character);
 		return result;
 	}
 	private void checkQuestRequirementsAfterSelling(ArrayList<GameObject> itemList, CharacterWrapper character) {
@@ -232,6 +234,19 @@ public abstract class Commerce extends Trade {
 				area,
 				"Selling goods",
 				JOptionPane.INFORMATION_MESSAGE);
+	}
+	private void handleFoolsGold(CharacterWrapper character) {
+		boolean runAway = false;
+		for (RealmComponent merchandise : merchandise) {
+			if (merchandise.getGameObject().hasThisAttribute(Constants.FOOLS_GOLD)) {
+				runAway = true;
+				break;
+			}
+		}
+		if (runAway) {
+			RunningFromNative newTable = new RunningFromNative(character,tradeInfo.getTrader());
+			setNewTable(newTable);
+		}
 	}
 	public static Commerce createCommerceTable(JFrame frame,CharacterWrapper character,TileLocation currentLocation,RealmComponent trader,Collection<RealmComponent> merchandise,int ignoreBuyDrinksLimit,HostPrefWrapper hostPrefs) {
 		if (!hostPrefs.hasPref(Constants.OPT_COMMERCE) && !hostPrefs.hasPref(Constants.SR_SELLING)) {

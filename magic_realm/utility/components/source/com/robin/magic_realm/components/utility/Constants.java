@@ -360,6 +360,7 @@ public class Constants {
 	public static final String ARTIFACT = "artifact";
 	public static final String NO_PARRY = "no_parry";
 	public static final String KILL_MONSTERS_PERMANENTLY = "kill_monsters_permanently";
+	public static final String FOOLS_GOLD = "fools_gold";
 	
 	public static final String MAGIC_COLOR_BONUS = "magic_color_bonus";
 	public static final String MAGIC_COLOR_BONUS_ACTIVE = "magic_color_bonus_active";

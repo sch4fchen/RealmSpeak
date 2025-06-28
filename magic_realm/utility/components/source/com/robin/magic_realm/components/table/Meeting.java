@@ -42,6 +42,9 @@ public abstract class Meeting extends Trade {
 			if (newTable instanceof Meeting) { // guarantees specific action is translated across
 				((Meeting)newTable).setSpecificAction(specificAction.substring(1)); // trim comma
 			}
+			if (newTable instanceof RunningFromNative) {
+				((RunningFromNative)newTable).setSpecificAction(specificAction.substring(1));
+			}
 		}
 		super.setNewTable(newTable);
 	}
@@ -220,11 +223,19 @@ public abstract class Meeting extends Trade {
 		// Everything is handled by the RealmPaymentDialog now.
 		RealmPaymentDialog dialog = new RealmPaymentDialog(getParentFrame(),"REPAIR",character,tradeInfo,merchandise,mult,getListener());
 		dialog.setVisible(true);
+		if (dialog.characterNeedsToRunAway()) {
+			RunningFromNative newTable = new RunningFromNative(character,tradeInfo.getTrader());
+			setNewTable(newTable);
+		}
 	}
 	protected void buyingMerchandise(CharacterWrapper character,int mult) {
 		// Everything is handled by the RealmPaymentDialog now.
 		RealmPaymentDialog dialog = new RealmPaymentDialog(getParentFrame(),"TRADE",character,tradeInfo,merchandise,mult,getListener());
 		dialog.setVisible(true);
+		if (dialog.characterNeedsToRunAway()) {
+			RunningFromNative newTable = new RunningFromNative(character,tradeInfo.getTrader());
+			setNewTable(newTable);
+		}
 	}
 	public void hiringNatives(CharacterWrapper character,int mult) {
 		int basePrice = 0;

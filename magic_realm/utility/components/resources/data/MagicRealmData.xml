@@ -63938,6 +63938,20 @@
         <attribute treasure_chit="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2474" name="Fools Gold">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="50" />
+        <attribute text="Once sold, roll versus running to see if caught." />
+        <attribute rw_expansion_1="" />
+        <attribute facing="face_dn" />
+        <attribute author="Expansion 1" />
+        <attribute item="" />
+        <attribute weight="L" />
+        <attribute notoriety="1" />
+        <attribute fools_gold="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">
