@@ -722,7 +722,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				int result = roller.getHighDieResult();
 				if (result>3) {
 					spell.setBoolean(SpellWrapper.SPELL_EXPIRES_AT_ROUND_END,true);
-					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits the wrong body of "+getGameObject().getName()+".");
+					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits the wrong body of the "+getGameObject().getName()+".");
 					return false;
 				}
 			}
