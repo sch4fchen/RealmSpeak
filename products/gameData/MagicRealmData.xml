@@ -63952,6 +63952,19 @@
         <attribute fools_gold="" />
       </AttributeBlock>
     </GameObject>
+    <GameObject id="2475" name="Body Double">
+      <AttributeBlock blockName="this">
+        <attribute spell="VI" />
+        <attribute duration="combat" />
+        <attribute target="character" />
+        <attribute text="Character is hit wiht only a 50% chance." />
+        <attribute magic_color="gray" />
+        <attribute rw_expansion_1="" />
+        <attribute author="Expansion 1" />
+        <attribute learnable="" />
+        <attribute body_double="" />
+      </AttributeBlock>
+    </GameObject>
   </objects>
   <setups>
     <GameSetup name="standard_game">

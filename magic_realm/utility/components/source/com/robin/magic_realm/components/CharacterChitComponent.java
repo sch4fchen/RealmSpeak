@@ -713,6 +713,21 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		// Start off with the assumption that the character was NOT killed
 		boolean characterWasKilled = false;
 		
+		ArrayList<SpellWrapper> doubleBody = SpellUtility.getBewitchingSpellsWithKey(getGameObject(),Constants.BODY_DOUBLE);
+		if ((doubleBody!=null&&!doubleBody.isEmpty()) || affectedByKey(Constants.BODY_DOUBLE)) {
+			Collections.shuffle(doubleBody);
+			Collections.shuffle(doubleBody);
+			for (SpellWrapper spell : doubleBody) {
+				DieRoller roller = DieRollBuilder.getDieRollBuilder(null,character).createRoller("Body Double",1);
+				int result = roller.getHighDieResult();
+				if (result>3) {
+					spell.setBoolean(SpellWrapper.SPELL_EXPIRES_AT_ROUND_END,true);
+					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits the wrong body of "+getGameObject().getName()+".");
+					return false;
+				}
+			}
+		}
+		
 		ArrayList<SpellWrapper> holyShields = SpellUtility.getBewitchingSpellsWithKey(getGameObject(),Constants.HOLY_SHIELD);
 		if ((holyShields!=null&&!holyShields.isEmpty()) || affectedByKey(Constants.HOLY_SHIELD) || combat.hasHolyShield(attacker.getAttackSpeed(),attacker.getLength())) {
 			for (SpellWrapper spell : holyShields) {

@@ -2660,6 +2660,7 @@ public class BattleModel {
 		
 		// Need to get rid of dead participants here - wounds should have been handled already?  fatigued effort?
 		ArrayList<SpellWrapper> attackSpellsToExpire = new ArrayList<>();
+		ArrayList<SpellWrapper> spellsToExpireAtRoundEnd = new ArrayList<>();
 		ArrayList<RealmComponent> rcsToMakeDead = new ArrayList<>();
 		ArrayList<RealmComponent> all = getAllBattleParticipants(true);
 		for (RealmComponent rc:all) {
@@ -2721,6 +2722,9 @@ public class BattleModel {
 					if (spell.isAttackSpell()) {
 						attackSpellsToExpire.add(spell);
 					}
+					else if (spell.expiresAtRoundEnd()) {
+						spellsToExpireAtRoundEnd.add(spell);
+					}
 				}
 				
 				// Expire active phase chits
@@ -2757,6 +2761,21 @@ public class BattleModel {
 					}
 					else {
 						CombatFrame.broadcastMessage(character.getGameObject().getName(),"World Fades: Cannot HIDE due to SQUEAK curse.");
+					}
+				}
+			}
+			else {
+				for (GameObject go : rc.getHold()) {
+					if (go.hasThisAttribute(Constants.SPELL_DENIZEN)) {
+						SpellWrapper spell = new SpellWrapper(go);
+						if (spell.isAlive()) {
+							if (spell.isAttackSpell()) {
+								attackSpellsToExpire.add(spell);
+							}
+							else if (spell.expiresAtRoundEnd()) {
+								spellsToExpireAtRoundEnd.add(spell);
+							}
+						}
 					}
 				}
 			}
@@ -2934,6 +2953,9 @@ public class BattleModel {
 			RealmUtility.makeDead(rc);
 		}
 		for (SpellWrapper spell : attackSpellsToExpire) {
+			spell.expireSpell();
+		}
+		for (SpellWrapper spell : spellsToExpireAtRoundEnd) {
 			spell.expireSpell();
 		}
 		for (RealmComponent rc:all) {

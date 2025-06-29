@@ -51,8 +51,14 @@ public class DieRollBuilder {
 	public DieRoller createRoller(String key) {
 		return createRoller(key,character.getCurrentLocation());
 	}
+	public DieRoller createRoller(String key,int numberOfDice) {
+		return createRoller(key,character.getCurrentLocation(),numberOfDice);
+	}
 	public DieRoller createRoller(String key,TileLocation tl) {
-		int dice = 2;
+		return createRoller(key,tl,2);
+	}
+	public DieRoller createRoller(String key,TileLocation tl,int numberOfDice) {
+		int dice = numberOfDice;
 		int mod = 0;
 		boolean controlsRed = false;
 		

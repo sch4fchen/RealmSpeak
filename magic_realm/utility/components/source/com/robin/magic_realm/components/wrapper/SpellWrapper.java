@@ -47,6 +47,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	private static final String RED_DIE_LOCK = "red_die_lock";
 
 	private static final String ALWAYS_ACTIVE = "always_active";
+	public static final String SPELL_EXPIRES_AT_ROUND_END = "expires_at_round_end";
 	
 	public SpellWrapper(GameObject go) {
 		super(go);
@@ -359,6 +360,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			setBoolean(SPELL_INERT,false);
 			setBoolean(SPELL_ALIVE,false);
 			setBoolean(SPELL_AFFECTED,false); // Probably redundant
+			setBoolean(SPELL_EXPIRES_AT_ROUND_END,false);
 			
 			// Remove it from the spell master, just in case
 			SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(getGameObject().getGameData());
@@ -424,6 +426,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		clear(TARGET_EXTRA_IDENTIFIER);
 		clear(SECONDARY_TARGET);
 		clear(CASTER_ID);
+		clear(SPELL_EXPIRES_AT_ROUND_END);
 		clearRedDieLock();
 	}
 	
@@ -448,6 +451,9 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	
 	public boolean isAlwaysActive() {
 		return getGameObject().hasThisAttribute(ALWAYS_ACTIVE);
+	}
+	public boolean expiresAtRoundEnd() {
+		return getBoolean(SPELL_EXPIRES_AT_ROUND_END);
 	}
 	public void nullifySpell(boolean includeNullifyEffects) {
 		unaffectTargets(includeNullifyEffects);

@@ -13,6 +13,7 @@ public class SpellEffectFactory {
 			case "bewilder": return new ISpellEffect[]{new ApplyClearingEffect(Constants.BEWILDERED)};
 			case "blazing light": return new ISpellEffect[]{new ExtraCavePhaseEffect()};
 			case "blazing light x": return new ISpellEffect[]{new ApplyNamedEffect(Constants.TORCH_BEARER)};
+			case "body double": return new ISpellEffect[]{new ApplyNamedEffect(Constants.BODY_DOUBLE)};
 		
 			case "blend into background": return new ISpellEffect[]{new ExtraActionEffect("H")};
 			case "blend into background x": return new ISpellEffect[]{new ExtraActionEffect("H")};

@@ -662,6 +662,7 @@ public class Constants {
 	public static final String ENCHANTED_WEAPON_SHARPNESS = "enchanted_weapon_sharpness";
 	public static final String ENCHANTED_WEAPON_SPEED = "enchanted_weapon_speed";
 	public static final String ONLY_MOVE = "only_move";
+	public static final String BODY_DOUBLE = "body_double";
 
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";
