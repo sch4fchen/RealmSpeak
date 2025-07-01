@@ -460,7 +460,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		scroller.addLine(new ScrollLine("Jim (East Paladin)",listing,listingColor));
 		scroller.addLine(new ScrollLine("Aethmud",listing,listingColor));
 		scroller.addLine(new ScrollLine("Stephan Valksyer",listing,listingColor));
-		scroller.addLine(new ScrollLine("AIs: DALL-E, Gemini",listing,listingColor));
+		scroller.addLine(new ScrollLine("AIs used: DALL-E, Gemini, Midjourney",listing,listingColor));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Other Graphics",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Battle for Wesnoth",listing,listingColor,null,0,SwingConstants.CENTER,"https://www.wesnoth.org/"));
