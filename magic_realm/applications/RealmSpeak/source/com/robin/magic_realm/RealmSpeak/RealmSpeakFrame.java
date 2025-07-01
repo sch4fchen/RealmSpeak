@@ -458,6 +458,9 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		scroller.addLine(new ScrollLine("Custom Characters' Graphics",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Casey Benn",listing,listingColor));
 		scroller.addLine(new ScrollLine("Jim (East Paladin)",listing,listingColor));
+		scroller.addLine(new ScrollLine("Aethmud",listing,listingColor));
+		scroller.addLine(new ScrollLine("Stephan Valksyer",listing,listingColor));
+		scroller.addLine(new ScrollLine("AIs: DALL-E, Gemini",listing,listingColor));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Other Graphics",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Battle for Wesnoth",listing,listingColor,null,0,SwingConstants.CENTER,"https://www.wesnoth.org/"));
@@ -489,6 +492,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		scroller.addLine(new ScrollLine("Stephan Valkyser",listing,listingColor));
 		scroller.addLine(new ScrollLine("Reggie Kemp",listing,listingColor));
 		scroller.addLine(new ScrollLine("Jim (East Paladin)",listing,listingColor));
+		scroller.addLine(new ScrollLine("Casey Benn",listing,listingColor));
 		scroller.addLine(new ScrollLine("(let me know if I missed anyone!)",listing,listingColor));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Game Expansions",header,headerColor,Color.black,2));
