@@ -830,6 +830,7 @@ public class Constants {
 	public static final String EXP_DEV_EXCLUDE_SW = "DevExcludeStartingWorth";
 	public static final String EXP_DEV_3RD_REL = "DevEarn3rdRelationships";
 	public static final String EXP_CUSTOM_CHARS = "CustomCharacters";
+	public static final String SR_CHARS = "SuperRealmCharacters";
 	public static final String EXP_SUDDEN_DEATH = "SuddenDeath";
 	public static final String EXP_BOUNTY_POINTS_FOR_DISCOVERIES = "BountyPointsForDiscoeries";
 	

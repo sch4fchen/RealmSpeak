@@ -57,6 +57,10 @@ public class RealmSpeakInit {
 		// Add any custom characters now
 		RealmCharacterBuilderModel.addCustomCharacters(hostPrefs,data);
 		
+		if(!hostPrefs.usesSuperRealm() && hostPrefs.hasPref(Constants.SR_CHARS)){
+			prepSuperRealmCharacters();
+		}
+		
 		// Construct quest "deck" if any
 		if (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) || hostPrefs.hasPref(Constants.QST_SR_QUESTS)) {
 			prepQuestDeck();
@@ -317,6 +321,17 @@ public class RealmSpeakInit {
 			}
 		}
 		RealmObjectMaster.getRealmObjectMaster(data).resetTileObjects();
+	}
+	private void prepSuperRealmCharacters() {
+		GamePool pool = new GamePool(data.getGameObjects());
+		ArrayList<GameObject> baseCharacters = pool.find("character,original_game");
+		for (GameObject go:baseCharacters) {
+			go.stripThisKeyVals(hostPrefs.getGameKeyVals());
+		}
+		ArrayList<GameObject> srCharacters = pool.find("character,super_realm");
+		for (GameObject go:srCharacters) {
+			go.setThisKeyVals(hostPrefs.getGameKeyVals());
+		}
 	}
 	private void prepExpansionSpells(String spellKey) {
 		GamePool pool = new GamePool(data.getGameObjects());
