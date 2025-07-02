@@ -423,6 +423,7 @@ public class Constants {
 	
 	public static final String SMALL = "small";
 	public static final String STEED_IN_CAVES_AND_WATER = "steed_in_caves_and_water";
+	public static final String STEED_SURVIVES_CAVES = "steed_survives_caves";
 	public static final String TRANSMORPH_IMMUNITY = "transmorph_immunity";
 	public static final String TRANSMORPH_IMMUNITY_SELF = "transmorph_immunity_self";
 	public static final String MAGIC_IMMUNITY = "magic_immunity";

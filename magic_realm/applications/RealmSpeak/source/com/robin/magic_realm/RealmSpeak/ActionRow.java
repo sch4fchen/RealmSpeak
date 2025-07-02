@@ -1047,7 +1047,9 @@ public class ActionRow {
 						for (GameObject item : character.getInventory()) {
 							if (RealmComponent.getRealmComponent(item).isHorse() && !item.hasThisAttribute(Constants.STEED_IN_CAVES_AND_WATER)) {
 								TreasureUtility.doDeactivate(gameHandler.getMainFrame(), character, item);
-								item.detach();
+								if (!item.hasThisAttribute(Constants.STEED_SURVIVES_CAVES)) {
+									item.detach();
+								}
 								if (item.hasThisAttribute(Constants.BREAK_CONTROL_WHEN_INACTIVE)) {
 									SpellMasterWrapper spellmaster = SpellMasterWrapper.getSpellMaster(gameHandler.getClient().getGameData());
 									for (SpellWrapper spell : spellmaster.getAffectingSpells(item)) {

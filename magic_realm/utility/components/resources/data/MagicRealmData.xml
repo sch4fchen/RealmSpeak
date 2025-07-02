@@ -52927,6 +52927,7 @@
         <attribute icon_size="1" />
         <attribute icon_type="horse" />
         <attribute horse_holder="Bashkar Dwelling" />
+        <attribute steed_survives_caves="" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="4" />
@@ -53024,6 +53025,7 @@
         <attribute icon_size="1" />
         <attribute icon_type="royalBeast" />
         <attribute horse_holder="Chapel" />
+        <attribute steed_survives_caves="" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="5" />
@@ -53456,6 +53458,7 @@
         <attribute icon_size="1" />
         <attribute icon_type="nobleBeast" />
         <attribute horse_holder="Inn" />
+        <attribute steed_survives_caves="" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
