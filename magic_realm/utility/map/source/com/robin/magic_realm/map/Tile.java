@@ -470,9 +470,6 @@ public class Tile {
 	public static ArrayList<Point> findAvailableMapPositions(Hashtable<Point, Tile> mapGrid,String anchorTilename) {
 		return findAvailableMapPositions(mapGrid,anchorTilename,false,false);
 	}
-	public static ArrayList<Point> findAvailableMapPositions(Hashtable<Point, Tile> mapGrid,String anchorTilename,boolean hillTilesRule) {
-		return findAvailableMapPositions(mapGrid,anchorTilename,false,hillTilesRule);
-	}
 	public static ArrayList<Point> findAvailableMapPositions(Hashtable<Point, Tile> mapGrid, String anchorTilename, boolean autoBuildRiver, boolean hillTilesRule) {
 		ArrayList<Point> availableMapPositions = new ArrayList<>();
 		for (Tile tile : mapGrid.values()) {
