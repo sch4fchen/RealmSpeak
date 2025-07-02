@@ -406,7 +406,7 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 		if (getGameObject().getThisAttribute("time_limit").matches("month")) {
 			GameWrapper game = GameWrapper.findGame(getGameObject().getGameData());
 			RealmCalendar cal = RealmCalendar.getCalendar(getGameObject().getGameData());
-			int days = cal.getDays(game.getMonth());
+			int days = 4*cal.getDays(game.getMonth());
 			getGameObject().setThisAttribute("daysLeft",days-game.getDay()+1);
 		}
 		else {
