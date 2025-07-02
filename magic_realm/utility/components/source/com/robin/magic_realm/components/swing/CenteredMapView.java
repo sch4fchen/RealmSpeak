@@ -1632,7 +1632,7 @@ public class CenteredMapView extends JComponent {
 //		}
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
 		for (Point gp : availablePositions) {
-			boolean valid = Tile.isMappingPossibility(planningMapGrid,tile,gp,tileBeingPlaced.getRotation(),anchorTileName,hostPrefs.hasPref(Constants.MAP_BUILDING_INCREASED_PRIO_TILE_PLACEMENT));
+			boolean valid = Tile.isMappingPossibility(planningMapGrid,tile,gp,tileBeingPlaced.getRotation(),anchorTileName,hostPrefs.hasPref(Constants.MAP_BUILDING_HILL_TILES));
 			EmptyTileComponent empty = (EmptyTileComponent)mapGrid.get(gp);
 			empty.setValidPosition(valid);
 		}
@@ -1650,7 +1650,7 @@ public class CenteredMapView extends JComponent {
 		for (Point gp : availablePositions) {
 			for (int r=0;r<6;r++) {
 				Tile t = new Tile(tile);
-				if (Tile.isMappingPossibility(planningMapGrid,t,gp,r,anchorTileName,hostPrefs.hasPref(Constants.MAP_BUILDING_INCREASED_PRIO_TILE_PLACEMENT))) {
+				if (Tile.isMappingPossibility(planningMapGrid,t,gp,r,anchorTileName,hostPrefs.hasPref(Constants.MAP_BUILDING_HILL_TILES))) {
 					placeables.add(t);
 				}
 			}
