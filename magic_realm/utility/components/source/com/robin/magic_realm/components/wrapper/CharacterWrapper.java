@@ -806,10 +806,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 */
 	public boolean canMove() {
 		if (getWeight().isMaximum()) return false;
-		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameData());
-		if (hostPrefs.hasPref(Constants.SR_MOVEMENT_RESTRICTION) && !hasMoveChit(true,false)) {
-			return false;
-		}
 		Strength moveStrength = getMoveStrength(true,false);
 		return canMove(moveStrength);
 	}
@@ -823,6 +819,31 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (mustFly()) { // If you MUST fly, you can't MOVE
 			return false;
 		}
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameData());
+		if (hostPrefs.hasPref(Constants.SR_OPT_MOVEMENT_RESTRICTION) && !hasMoveChit(true,false)) {
+			return false;
+		}
+		if (hostPrefs.hasPref(Constants.SR_MOVEMENT_RESTRICTION) && !hasMoveChit(true,false)) {
+			Collection<GameObject> inv = getInventory();
+			boolean hasActiveInventory = false;
+			boolean hasInactiveInventory = false;
+			for (GameObject go : inv) {
+				RealmComponent rc = RealmComponent.getRealmComponent(go);
+				if (rc.isActivated()) {
+					hasActiveInventory = true;
+				}
+				else {
+					hasInactiveInventory = true;
+				}
+				if (hasActiveInventory && hasInactiveInventory) {
+					break;
+				}
+			}
+			if (hasActiveInventory || (hasInactiveInventory && getConvoyStrength(hostPrefs)==null)) {
+				return false;
+			}
+		}
+		
 		Strength supportWeight = getNeededSupportWeight(false);
 		return moveStrength.strongerOrEqualTo(supportWeight); // don't include character weight when determining if move is possible
 	}
@@ -874,7 +895,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		Strength inactive = getInactiveWeight();
 		Strength convoy = getConvoyStrength(hostPrefs);
 		
-		if (convoy.strongerOrEqualTo(inactive)) {
+		if (convoy!=null && convoy.strongerOrEqualTo(inactive)) {
 			// Only worry about active weight if the convoy can handle the rest
 			return active;
 		}
@@ -886,12 +907,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 */
 	private Strength getConvoyStrength(HostPrefWrapper hostPrefs) {
 		Strength strongest = new Strength();
+		boolean hasConvoyStrength = false;
 		
 		// Pack horses
 		for (GameObject go : getInactiveInventory()) {
 			Strength horseStrength = new Strength(go.getAttribute("trot","strength"));
 			if (horseStrength.strongerThan(strongest)) {
 				strongest = horseStrength;
+				hasConvoyStrength = true;
 			}
 		}
 		
@@ -899,6 +922,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		Strength hirelingMoveStrength = getBestFollowingHirelingStrength(hostPrefs);
 		if (hirelingMoveStrength.strongerThan(strongest)) {
 			strongest = hirelingMoveStrength;
+			hasConvoyStrength = true;
 		}
 		
 		// Nomads
@@ -906,10 +930,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 			Strength nomadStrength = new Strength(go.getThisAttribute(Constants.CARRIER));
 			if (nomadStrength.strongerThan(strongest)) {
 				strongest = nomadStrength;
+				hasConvoyStrength = true;
 			}
 		}
-			
-		return strongest;
+		
+		if (hasConvoyStrength) {
+			return strongest;
+		}
+		return null;
 	}
 	/**
 	 * @return		The maximum weight of the character.  This includes the character weight to start,
