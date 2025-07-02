@@ -2782,7 +2782,7 @@ public class BattleModel {
 			
 			// Test for deadness :)
 
-			if (rc.isNative()) {
+			if (rc.isNative() || rc.isMonster()) {
 				// Handle dead native horses separately
 				RealmComponent horse = (RealmComponent)rc.getHorse();
 				if (horse!=null) {
