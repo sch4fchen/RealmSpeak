@@ -459,7 +459,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		scroller.addLine(new ScrollLine("Casey Benn",listing,listingColor));
 		scroller.addLine(new ScrollLine("Jim (East Paladin)",listing,listingColor));
 		scroller.addLine(new ScrollLine("Aethmud",listing,listingColor));
-		scroller.addLine(new ScrollLine("Stephan Valksyer",listing,listingColor));
+		scroller.addLine(new ScrollLine("Stephan Valkyser",listing,listingColor));
 		scroller.addLine(new ScrollLine("AIs used: DALL-E, Gemini, Midjourney",listing,listingColor));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Other Graphics",subheader,subheaderColor));

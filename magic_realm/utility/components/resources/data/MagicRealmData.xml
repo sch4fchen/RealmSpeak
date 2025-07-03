@@ -61797,7 +61797,7 @@
         <attribute fighter="" />
         <attribute icon_folder="characters" />
         <attribute creator="Anomalous Host" />
-        <attribute artcredit="" />
+        <attribute artcredit="East Paladin Gallery / Gemini" />
         <attribute super_realm="" />
         <attribute potrait_folder="characterdetail_sr" />
         <attribute potrait_file="barbarian_sr" />
@@ -62309,7 +62309,7 @@
         <attribute pronoun="he" />
         <attribute icon_folder="characters" />
         <attribute creator="Anomalous Host" />
-        <attribute artcredit="Stephan Valksyer" />
+        <attribute artcredit="Stephan Valkyser" />
         <attribute super_realm="" />
         <attribute potrait_folder="characterdetail_sr" />
         <attribute potrait_file="gladiator_sr" />
