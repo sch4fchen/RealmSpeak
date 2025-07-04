@@ -709,11 +709,13 @@ public class RealmBattle {
 						break;
 					}
 					GameObject spell = combat.getCastSpell();
-					SpellWrapper spellWrapper = new SpellWrapper(spell);
-					GameObject incantationObject = spellWrapper.getIncantationObject();
-					if (incantationObject!=null && RealmComponent.getRealmComponent(incantationObject).isActionChit()) {
-						spellCasting = true;
-						break;
+					if (spell!=null) {
+						SpellWrapper spellWrapper = new SpellWrapper(spell);
+						GameObject incantationObject = spellWrapper.getIncantationObject();
+						if (incantationObject!=null && RealmComponent.getRealmComponent(incantationObject).isActionChit()) {
+							spellCasting = true;
+							break;
+						}
 					}
 				}
 			}
